@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { aiService } from "../../../../lib/ai-service";
+import { aiService } from "@/lib/ai-service";
+import { log, logApiError } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -83,7 +84,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(enhancedResponse);
   } catch (error) {
-    logger.error("Enhanced chat error:", error);
+    logApiError("POST", "/api/chat/enhanced", error);
     return NextResponse.json(
       {
         success: false,

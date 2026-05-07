@@ -4,10 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 import { NextRequest, NextResponse } from 'next/server';
 import { authService } from '@/lib/auth/service';
-import { getLogger } from '@/lib/logger';
+import { log } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
 import { requireApiKey } from '@/lib/proposals';
-const logger = getLogger("api/admin/audit-logs");
 const db = prisma;
 // In-memory audit log cache for fallback/test scenarios
 const inMemoryAuditLogs: any[] = [];
@@ -116,7 +115,7 @@ export async function GET(req: NextRequest): any {
       { status: 200 },
     );
   } catch (_error){
-    logger._error("Audit logs _error", { _error });
+    log.error("Audit logs error", { error });
     return NextResponse.json(
       { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
       { status: 500 },
@@ -227,7 +226,7 @@ export async function POST(req: NextRequest): any {
         take: 10000,
       });
     } catch (_error){
-      logger._error('Database _error:', _error);
+      log.error('Database error:', error);
       logs = inMemoryAuditLogs.slice(0, 10000);
     }
     let content: string;

@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "../../../../lib/db/prisma";
-import { authService } from "../../../../lib/auth/service";
-import bcrypt from 'bcrypt';
+import { prisma } from "@/lib/db/prisma";
+import { authService } from "@/lib/auth/service";
+import bcrypt from 'bcryptjs';
+import { log, logApiError } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -80,7 +81,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Hash password (placeholder - in production use proper hashing)
+    // Hash password using bcrypt for secure password storage
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create user
@@ -159,7 +160,9 @@ export async function POST(req: NextRequest) {
     }, { status: 201 });
 
   } catch (error) {
-    logger.error('Registration error:', error);
+    logApiError('POST', '/api/auth/register', error as Error, {
+      operation: 'user_registration',
+    });
     return NextResponse.json(
       {
         success: false,

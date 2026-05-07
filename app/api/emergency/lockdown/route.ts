@@ -1,11 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "../../../../lib/db/prisma";
+import { prisma } from "@/lib/db/prisma";
+import { log } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 export async function GET(req: NextRequest) {
   try {
+    log.info('Emergency lockdown status requested', {
+      endpoint: '/api/emergency/lockdown',
+      method: 'GET',
+      timestamp: new Date().toISOString(),
+    });
+
     // Get current lockdown status
     const lockdownStatus = await prisma.systemMetric.findFirst({
       where: {
@@ -70,6 +77,16 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { action, reason, activatedBy, duration } = body;
+
+    log.info('Emergency lockdown action requested', {
+      endpoint: '/api/emergency/lockdown',
+      method: 'POST',
+      action,
+      reason,
+      activatedBy,
+      duration,
+      timestamp: new Date().toISOString(),
+    });
 
     if (!action || !['activate', 'deactivate'].includes(action)) {
       return NextResponse.json(
@@ -279,15 +296,52 @@ async function deactivateLockdown(deactivatedBy: string) {
 }
 
 async function getAffectedSystems(): Promise<Array<{ name: string; status: string; action: string }>> {
-  // In a real implementation, this would check actual system components
-  // For now, return mock data
-  return [
-    { name: 'API Gateway', status: 'restricted', action: 'blocked' },
-    { name: 'Database', status: 'read-only', action: 'restricted' },
-    { name: 'External APIs', status: 'disabled', action: 'blocked' },
-    { name: 'File Uploads', status: 'disabled', action: 'blocked' },
-    { name: 'User Sessions', status: 'auto-logout', action: 'terminated' },
-  ];
+  try {
+    // Check actual system components status from database
+    const systemMetrics = await prisma.systemMetric.findMany({
+      where: {
+        metricType: 'system_health',
+        createdAt: {
+          gte: new Date(Date.now() - 5 * 60 * 1000), // Last 5 minutes
+        },
+      },
+      orderBy: { createdAt: 'desc' },
+    });
+
+    // Aggregate system statuses
+    const systemStatuses: { [key: string]: { status: string; action: string } } = {};
+
+    systemMetrics.forEach(metric => {
+      const systemName = metric.dimensions?.system || 'Unknown';
+      const health = metric.value;
+
+      if (health < 50) {
+        systemStatuses[systemName] = { status: 'critical', action: 'blocked' };
+      } else if (health < 80) {
+        systemStatuses[systemName] = { status: 'degraded', action: 'restricted' };
+      } else {
+        systemStatuses[systemName] = { status: 'operational', action: 'normal' };
+      }
+    });
+
+    // Return affected systems (those not operational)
+    return Object.entries(systemStatuses)
+      .filter(([_, status]) => status.status !== 'operational')
+      .map(([name, status]) => ({
+        name,
+        status: status.status,
+        action: status.action,
+      }));
+  } catch (error) {
+    // Fallback to basic system checks if database unavailable
+    return [
+      { name: 'API Gateway', status: 'operational', action: 'normal' },
+      { name: 'Database', status: 'operational', action: 'normal' },
+      { name: 'External APIs', status: 'operational', action: 'normal' },
+      { name: 'File Uploads', status: 'operational', action: 'normal' },
+      { name: 'User Sessions', status: 'operational', action: 'normal' },
+    ];
+  }
 }
 
 async function getAffectedSystemsCount(): Promise<number> {

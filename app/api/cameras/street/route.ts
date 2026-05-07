@@ -1,47 +1,48 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { prisma } from '@/lib/db/prisma';
+import { log } from '@/lib/logger';
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const location = searchParams.get('location') || 'all';
-    const streetCameras = [
-      {
-        id: 'street_001',
-        name: 'Main Street Downtown',
-        location: 'downtown',
-        coordinates: { lat: -1.2864, lng: 36.8172 },
-        status: 'active',
-        resolution: '4K',
-        fps: 60,
-        features: ['global-coverage', 'real-time-sync', 'military-encryption', 'ai-analysis']
+
+    // Get street cameras from database
+    const cameras = await prisma.camera.findMany({
+      where: {
+        type: 'street',
+        ...(location !== 'all' && { location }),
+        isActive: true,
       },
-      {
-        id: 'street_002',
-        name: 'Business District Cam',
-        location: 'business-district',
-        coordinates: { lat: -1.2833, lng: 36.8167 },
-        status: 'active',
-        resolution: '4K',
-        fps: 60,
-        features: ['crowd-monitoring', 'traffic-analysis', 'incident-detection']
-      }
-    ];
-    let filteredCameras = streetCameras;
-    if (location !== 'all') {
-      filteredCameras = streetCameras.filter(cam => cam.location === location);
-    }
+      select: {
+        id: true,
+        name: true,
+        location: true,
+        coordinates: true,
+        status: true,
+        resolution: true,
+        fps: true,
+        features: true,
+        lastActive: true,
+      },
+      orderBy: { name: 'asc' },
+    });
+
     return NextResponse.json({
       success: true,
       data: {
-        cameras: filteredCameras,
+        cameras,
         type: 'street',
         globalCoverage: true,
-        realTimeSync: true
-      }
+        realTimeSync: true,
+        count: cameras.length,
+      },
+      timestamp: new Date().toISOString(),
     });
-  } catch (_error){
-    console._error('Street camera API _error:', _error);
+  } catch (error){
+    log.error('Street camera API error:', error);
     return NextResponse.json(
-      { success: false, _error: 'Failed to retrieve street camera data' },
+      { success: false, error: 'Failed to retrieve street camera data' },
       { status: 500 }
     );
   }

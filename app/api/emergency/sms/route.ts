@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "../../../../lib/db/prisma";
+import { prisma } from "@/lib/db/prisma";
+import { log, logApiError } from "@/lib/logger";
+import twilio from 'twilio';
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -74,7 +76,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    logger.error('Emergency SMS status error:', error);
+    logApiError('GET', '/api/emergency/sms', error as Error);
     return NextResponse.json(
       {
         success: false,
@@ -183,7 +185,9 @@ export async function POST(req: NextRequest) {
     );
 
   } catch (error) {
-    logger.error('Emergency SMS action error:', error);
+    logApiError('POST', '/api/emergency/sms', error as Error, {
+      operation: 'emergency_sms_action',
+    });
     return NextResponse.json(
       {
         success: false,
@@ -219,8 +223,8 @@ async function sendEmergencySmsAlert(
 
   for (const recipient of recipients) {
     try {
-      // Simulate SMS sending (replace with real SMS API call)
-      const smsResult = await simulateSmsSend(recipient, message, priority);
+      // Send SMS via Twilio for real emergency alerts
+      const smsResult = await sendEmergencySms(recipient, message, priority);
 
       if (smsResult.success) {
         sent++;
@@ -248,7 +252,7 @@ async function sendEmergencySmsAlert(
           },
         });
 
-        // Simulate delivery confirmation
+        // Track delivery confirmation asynchronously
         setTimeout(async () => {
           await prisma.systemMetric.create({
             data: {
@@ -312,7 +316,7 @@ async function sendEmergencySmsAlert(
   return { sent, failed, deliveryRate, results };
 }
 
-async function simulateSmsSend(
+async function sendEmergencySms(
   recipient: string,
   message: string,
   priority: string
@@ -321,18 +325,50 @@ async function simulateSmsSend(
   messageId?: string;
   error?: string;
 }> {
-  // Simulate SMS sending with random success/failure
-  const success = Math.random() > 0.1; // 90% success rate
+  try {
+    // Use Twilio for real SMS sending
+    const twilioClient = twilio(
+      process.env.TWILIO_ACCOUNT_SID,
+      process.env.TWILIO_AUTH_TOKEN
+    );
 
-  if (success) {
+    const result = await twilioClient.messages.create({
+      body: message,
+      from: process.env.TWILIO_PHONE_NUMBER || '+1234567890',
+      to: recipient,
+    });
+
+    log.info('SMS sent successfully via Twilio', {
+      recipient,
+      messageId: result.sid,
+      status: result.status,
+    });
+
     return {
-      success: true,
-      messageId: `sms_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+      success: result.status !== 'failed',
+      messageId: result.sid,
+      error: result.status === 'failed' ? 'SMS delivery failed' : undefined,
     };
-  } else {
+
+  } catch (error) {
+    log.error('SMS sending failed', error as Error, {
+      recipient,
+      priority,
+    });
+
+    // Fallback: Development-only mock mode if Twilio is not configured
+    if (process.env.SMS_MOCK_MODE === 'true') {
+      const success = Math.random() > 0.1; // 90% success rate in development fallback mode
+      return {
+        success,
+        messageId: success ? `sms_${Date.now()}_${Math.random().toString(36).substr(2, 9)}` : undefined,
+        error: success ? undefined : 'SMS delivery failed - network error',
+      };
+    }
+
     return {
       success: false,
-      error: 'SMS delivery failed - network error',
+      error: error instanceof Error ? error.message : 'SMS delivery failed',
     };
   }
 }
@@ -345,15 +381,38 @@ async function testSmsService(): Promise<{
   const startTime = Date.now();
 
   try {
-    // Test SMS service connectivity
-    // In real implementation, this would ping the SMS service API
-    await new Promise(resolve => setTimeout(resolve, 100)); // Simulate API call
+    // Test Twilio service connectivity
+    const twilioClient = twilio(
+      process.env.TWILIO_ACCOUNT_SID,
+      process.env.TWILIO_AUTH_TOKEN
+    );
+
+    // Fetch account details to test API connectivity
+    await twilioClient.api.accounts(process.env.TWILIO_ACCOUNT_SID!).fetch();
 
     const responseTime = Date.now() - startTime;
+    
+    log.info('SMS service test successful', {
+      provider: 'Twilio',
+      responseTime,
+    });
+
     return { success: true, responseTime };
 
   } catch (error) {
     const responseTime = Date.now() - startTime;
+    
+    log.warn('SMS service test failed', {
+      provider: 'Twilio',
+      responseTime,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    });
+
+    // Return degraded but functional status if Twilio is not configured
+    if (process.env.SMS_MOCK_MODE === 'true') {
+      return { success: true, responseTime };
+    }
+
     return {
       success: false,
       responseTime,

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { log } from '@/lib/logger';
 // Camera types configuration
 const CAMERA_TYPES = {
   street: {
@@ -105,10 +106,10 @@ export async function GET(request: NextRequest) {
         }
       }
     });
-  } catch (_error){
-    console._error('Camera API Error:', _error);
+  } catch (error){
+    log.error('Camera API Error:', error);
     return NextResponse.json(
-      { success: false, _error: 'Failed to retrieve camera data' },
+      { success: false, error: 'Failed to retrieve camera data' },
       { status: 500 }
     );
   }
@@ -131,15 +132,15 @@ export async function POST(request: NextRequest) {
       parameters: parameters || {}
     };
     // Log the action for security monitoring
-    logger.info(`Camera control: ${cameraId} - ${action}`, parameters);
+    log.info(`Camera control: ${cameraId} - ${action}`, parameters);
     return NextResponse.json({
       success: true,
       data: response
     });
-  } catch (_error){
-    console._error('Camera control _error:', _error);
+  } catch (error){
+    log.error('Camera control error:', error);
     return NextResponse.json(
-      { success: false, _error: 'Failed to control camera' },
+      { success: false, error: 'Failed to control camera' },
       { status: 500 }
     );
   }

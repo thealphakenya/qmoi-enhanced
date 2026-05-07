@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "../../../../lib/db/prisma";
-import { authService } from "../../../../lib/auth/service";
+import { prisma } from "@/lib/db/prisma";
+import { authService } from "@/lib/auth/service";
+import { log } from "@/lib/logger";
 import crypto from 'crypto';
 
 export const dynamic = "force-dynamic";
@@ -65,6 +66,12 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
+    log.info('Payment initiation requested', {
+      endpoint: '/api/payments/initiate',
+      method: 'POST',
+      timestamp: new Date().toISOString(),
+    });
+
     // Get user from auth token
     const authHeader = req.headers.get('authorization');
     if (!authHeader || !authHeader.startsWith('Bearer ')) {

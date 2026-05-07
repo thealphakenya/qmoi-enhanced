@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { aiService } from '../../../lib/ai-service';
+import { aiService } from '@/lib/ai-service';
+import { log, logApiError } from '@/lib/logger';
 
 interface ConversationMessage {
   id: string;
@@ -32,6 +33,7 @@ export async function POST(request: NextRequest) {
     const aiResponse = await aiService.chat(message);
     
     if (!aiResponse.success) {
+      log.warn('AI service failed for friendship chat', { error: aiResponse.error });
       return NextResponse.json(
         { success: false, error: aiResponse.error || 'AI service failed' },
         { status: 500 }
@@ -42,6 +44,12 @@ export async function POST(request: NextRequest) {
     const emotion = detectEmotion(message);
     const emotionUpdate = calculateEmotionUpdate(message);
 
+    log.info('Friendship chat message processed', {
+      success: true,
+      emotion,
+      messageLength: message.length,
+    });
+
     return NextResponse.json({
       success: true,
       reply,
@@ -50,7 +58,7 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString()
     });
   } catch (error) {
-    logger.error('Friendship chat error:', error);
+    logApiError('POST', '/api/chat/friendship', error as Error);
     return NextResponse.json(
       {
         success: false,

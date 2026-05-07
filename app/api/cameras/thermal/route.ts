@@ -1,47 +1,48 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { prisma } from '@/lib/db/prisma';
+import { log } from '@/lib/logger';
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const zone = searchParams.get('zone') || 'all';
-    const thermalCameras = [
-      {
-        id: 'thermal_001',
-        name: 'Perimeter Security Zone A',
-        zone: 'perimeter-a',
-        coordinates: { lat: -1.2864, lng: 36.8172 },
-        status: 'active',
-        resolution: 'HD',
-        fps: 30,
-        features: ['night-vision', 'heat-detection', 'intrusion-alert', 'temperature-mapping']
+
+    // Get thermal cameras from database
+    const cameras = await prisma.camera.findMany({
+      where: {
+        type: 'thermal',
+        ...(zone !== 'all' && { zone }),
+        isActive: true,
       },
-      {
-        id: 'thermal_002',
-        name: 'Building Exterior Thermal',
-        zone: 'building-exterior',
-        coordinates: { lat: -1.2833, lng: 36.8167 },
-        status: 'active',
-        resolution: 'HD',
-        fps: 30,
-        features: ['structural-monitoring', 'fire-detection', 'occupancy-detection']
-      }
-    ];
-    let filteredCameras = thermalCameras;
-    if (zone !== 'all') {
-      filteredCameras = thermalCameras.filter(cam => cam.zone === zone);
-    }
+      select: {
+        id: true,
+        name: true,
+        zone: true,
+        coordinates: true,
+        status: true,
+        resolution: true,
+        fps: true,
+        features: true,
+        lastActive: true,
+      },
+      orderBy: { name: 'asc' },
+    });
+
     return NextResponse.json({
       success: true,
       data: {
-        cameras: filteredCameras,
+        cameras,
         type: 'thermal',
         nightVision: true,
-        heatDetection: true
-      }
+        heatDetection: true,
+        count: cameras.length,
+      },
+      timestamp: new Date().toISOString(),
     });
-  } catch (_error){
-    console._error('Thermal camera API _error:', _error);
+  } catch (error){
+    log.error('Thermal camera API error:', error);
     return NextResponse.json(
-      { success: false, _error: 'Failed to retrieve thermal camera data' },
+      { success: false, error: 'Failed to retrieve thermal camera data' },
       { status: 500 }
     );
   }

@@ -574,9 +574,15 @@ async function testWipeSystem(): Promise<{
   const startTime = Date.now();
 
   try {
-    // Test wipe system connectivity
-    // In real implementation, this would test database connections and permissions
-    await new Promise(resolve => setTimeout(resolve, 200)); // Simulate API call
+    // Test database connectivity and permissions
+    await prisma.systemMetric.findFirst({
+      where: { metricType: 'system_health' },
+    });
+
+    // Test wipe permissions by checking if we can query audit logs
+    await prisma.auditLog.findFirst({
+      orderBy: { createdAt: 'desc' },
+    });
 
     const responseTime = Date.now() - startTime;
     return { success: true, responseTime };

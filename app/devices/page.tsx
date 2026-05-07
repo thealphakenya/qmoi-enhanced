@@ -1,7 +1,4 @@
-import React from 'react';
-
-
-'use client';
+"use client";
 
 import { useState, useEffect } from 'react';
 

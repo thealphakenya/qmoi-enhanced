@@ -1,17 +1,17 @@
-import { PrismaClient } from './db/prisma';
+import { prisma } from './db/prisma';
 
-export function initPrisma(): PrismaClient {
-  return new PrismaClient();
+export function initPrisma() {
+  return prisma;
 }
 
-export function getPrisma(): PrismaClient {
-  return initPrisma();
+export function getPrisma() {
+  return prisma;
 }
 
-export function getPrismaClient(): PrismaClient {
-  return getPrisma();
+export function getPrismaClient() {
+  return prisma;
 }
 
-export const prisma = getPrismaClient();
+export { prisma };
 
 export default prisma;

@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { aiService } from "../../../../lib/ai-service";
-import { prisma } from "../../../../lib/db/prisma";
+import { prisma } from "@/lib/db/prisma";
+import { aiService } from "@/lib/ai-service";
+import { log, logApiError } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 export async function GET(req: NextRequest) {
+  const startTime = Date.now();
   try {
     // Perform AI service health checks
     const healthChecks = await performAIHealthChecks();
@@ -30,6 +32,14 @@ export async function GET(req: NextRequest) {
 
     const successRate = totalRequests > 0 ? (successfulRequests / totalRequests) * 100 : 100;
 
+    const duration = Date.now() - startTime;
+    log.info('AI health check completed', {
+      status: healthChecks.overallStatus,
+      duration,
+      totalRequests,
+      successRate: Math.round(successRate * 100) / 100,
+    });
+
     return NextResponse.json({
       success: true,
       health: {
@@ -53,7 +63,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    logger.error('AI health check error:', error);
+    logApiError('GET', '/api/ai-health', error as Error);
     return NextResponse.json(
       {
         success: false,
@@ -71,7 +81,7 @@ export async function POST(req: NextRequest) {
     const { action, testMessage = "Hello, how are you?" } = body;
 
     if (action === 'test') {
-      // Test AI service with a sample message
+      // Test AI service with a real message using aiService
       const startTime = Date.now();
       const response = await aiService.chat(testMessage);
       const responseTime = Date.now() - startTime;
@@ -86,8 +96,9 @@ export async function POST(req: NextRequest) {
           category: 'ai',
           subsystem: 'health_check',
           dimensions: JSON.stringify({
-            testMessage: testMessage.substring(0, 50),
+            testMessage: testMessage.substring(0, 100),
             responseTime,
+            model: response.metadata?.model,
           }),
           tags: JSON.stringify(['test', 'health_check']),
           source: 'api',
@@ -95,11 +106,17 @@ export async function POST(req: NextRequest) {
         },
       });
 
+      log.info('AI service test completed', {
+        success: response.success,
+        responseTime,
+        model: response.metadata?.model,
+      });
+
       return NextResponse.json({
         success: true,
         test: {
           message: testMessage,
-          response: response.content,
+          response: response.content || response.error,
           responseTime,
           success: response.success,
           metadata: response.metadata,
@@ -114,7 +131,7 @@ export async function POST(req: NextRequest) {
     );
 
   } catch (error) {
-    logger.error('AI health POST error:', error);
+    logApiError('POST', '/api/ai-health', error as Error);
     return NextResponse.json(
       {
         success: false,

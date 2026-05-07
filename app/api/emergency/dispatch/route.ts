@@ -493,9 +493,19 @@ async function testDispatchSystem(): Promise<{
   const startTime = Date.now();
 
   try {
-    // Test dispatch system connectivity
-    // In real implementation, this would test communication with dispatch services
-    await new Promise(resolve => setTimeout(resolve, 150)); // Simulate API call
+    // Test database connectivity for dispatch operations
+    await prisma.systemMetric.findFirst({
+      where: { metricType: 'emergency' },
+    });
+
+    // Test dispatch team availability
+    const availableTeams = await prisma.systemMetric.count({
+      where: {
+        metricType: 'emergency',
+        metricName: 'dispatch_team_available',
+        value: 1,
+      },
+    });
 
     const responseTime = Date.now() - startTime;
     return { success: true, responseTime };

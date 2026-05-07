@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { log } from "@/lib/logger";
 
 const defaultStatus = {
   success: true,
@@ -171,7 +172,7 @@ export async function GET(request: NextRequest) {
 
     const model = searchParams.get("model");
     if (model) {
-      console.warn(`Ignored client-supplied model param: ${model}`);
+      log.warn(`Client supplied model param will be ignored`, { clientModel: model });
     }
 
     return NextResponse.json(defaultStatus);

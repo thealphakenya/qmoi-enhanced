@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "../../../../lib/db/prisma";
-import { authService } from "../../../../lib/auth/service";
+import { prisma } from "@/lib/db/prisma";
+import { authService } from "@/lib/auth/service";
+import { log } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -208,7 +209,7 @@ async function sendEmergencyEmail(params: {
     // For now, simulate email sending
 
     if (!process.env.SMTP_HOST) {
-      console.warn('SMTP not configured, simulating email send');
+      log.warn('SMTP not configured, simulating email send');
       return {
         success: true,
         emailId: `email_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -219,7 +220,7 @@ async function sendEmergencyEmail(params: {
     await new Promise(resolve => setTimeout(resolve, 100));
 
     // Log email details for monitoring
-    console.log('Emergency Email Sent:', {
+    log.info('Emergency Email Sent:', {
       to: params.to,
       subject: params.subject,
       priority: params.priority,

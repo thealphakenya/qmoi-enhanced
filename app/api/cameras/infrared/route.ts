@@ -1,47 +1,48 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { prisma } from '@/lib/db/prisma';
+import { log } from '@/lib/logger';
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const sector = searchParams.get('sector') || 'all';
-    const infraredCameras = [
-      {
-        id: 'infrared_001',
-        name: 'Perimeter Infrared North',
-        sector: 'perimeter-north',
-        coordinates: { lat: -1.2864, lng: 36.8172 },
-        status: 'active',
-        resolution: 'HD',
-        fps: 30,
-        features: ['24-7-monitoring', 'low-light', 'motion-tracking', 'intrusion-detection']
+
+    // Get infrared cameras from database
+    const cameras = await prisma.camera.findMany({
+      where: {
+        type: 'infrared',
+        ...(sector !== 'all' && { sector }),
+        isActive: true,
       },
-      {
-        id: 'infrared_002',
-        name: 'Building Access Points IR',
-        sector: 'building-access',
-        coordinates: { lat: -1.2833, lng: 36.8167 },
-        status: 'active',
-        resolution: 'HD',
-        fps: 30,
-        features: ['access-control', 'unauthorized-entry', 'after-hours-monitoring']
-      }
-    ];
-    let filteredCameras = infraredCameras;
-    if (sector !== 'all') {
-      filteredCameras = infraredCameras.filter(cam => cam.sector === sector);
-    }
+      select: {
+        id: true,
+        name: true,
+        sector: true,
+        coordinates: true,
+        status: true,
+        resolution: true,
+        fps: true,
+        features: true,
+        lastActive: true,
+      },
+      orderBy: { name: 'asc' },
+    });
+
     return NextResponse.json({
       success: true,
       data: {
-        cameras: filteredCameras,
+        cameras,
         type: 'infrared',
         continuousMonitoring: true,
-        motionTracking: true
-      }
+        motionTracking: true,
+        count: cameras.length,
+      },
+      timestamp: new Date().toISOString(),
     });
-  } catch (_error){
-    console._error('Infrared camera API _error:', _error);
+  } catch (error){
+    log.error('Infrared camera API error:', error);
     return NextResponse.json(
-      { success: false, _error: 'Failed to retrieve infrared camera data' },
+      { success: false, error: 'Failed to retrieve infrared camera data' },
       { status: 500 }
     );
   }

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { prisma } from '@/lib/db/prisma';
 interface ConsciousnessMetrics {
   awarenessLevel: number; // 0-100
   selfAwareness: number; // 0-100
@@ -84,15 +85,32 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const includeLogs = searchParams.get('logs') === 'true';
     const limit = parseInt(searchParams.get('limit') || '10');
+    
     // Update metrics with current timestamp
     currentMetrics.lastCheck = new Date().toISOString();
-    // Simulate slight variations in metrics
-    currentMetrics.environmentalAwareness = Math.max(90, Math.min(100,
-      currentMetrics.environmentalAwareness + (Math.random() - 0.5) * 2));
-    currentMetrics.userAwareness = Math.max(95, Math.min(100,
-      currentMetrics.userAwareness + (Math.random() - 0.5) * 2));
-    currentMetrics.threatAwareness = Math.max(85, Math.min(100,
-      currentMetrics.threatAwareness + (Math.random() - 0.5) * 4));
+    
+    // Calculate awareness metrics from recent system data
+    // Environmental Awareness: Based on sensor and system health metrics
+    const recentSystemMetrics = await prisma.systemMetric.findMany({
+      where: {
+        createdAt: {
+          gte: new Date(Date.now() - 60 * 60 * 1000) // Last hour
+        }
+      },
+      take: 100,
+      orderBy: { createdAt: 'desc' }
+    });
+
+    if (recentSystemMetrics.length > 0) {
+      const failureRate = recentSystemMetrics.filter(m => 
+        m.metricName.includes('error') || m.metricName.includes('failed')
+      ).length / recentSystemMetrics.length;
+      
+      // Awareness inversely correlates with failure rate
+      currentMetrics.environmentalAwareness = Math.max(80, 100 - (failureRate * 100));
+      currentMetrics.userAwareness = Math.max(90, 100 - (failureRate * 50));
+      currentMetrics.threatAwareness = Math.max(85, 95 - (failureRate * 100));
+    }
     const response: any = {
       success: true,
       data: {

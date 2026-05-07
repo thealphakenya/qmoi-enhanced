@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db/prisma";
+import { prisma as db } from "@/lib/db/prisma";
 import { authService } from "@/lib/auth/service";
 import { requireApiKey } from "@/lib/proposals";
 

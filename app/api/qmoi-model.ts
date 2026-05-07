@@ -5,6 +5,8 @@
  * QMOI Model - production-ready AI system for enterprise intelligence
  */
 
+import { log } from '@/lib/logger';
+
 // ============================================================================
 // Core Type Definitions
 // ============================================================================
@@ -95,7 +97,7 @@ export interface Citation {
  */
 export interface ConfidenceAssessment {
   overall: number;
-  factors: ConfidenceFactor[];
+  factors: ConfidenceFactor[];6
   riskLevel: 'low' | 'medium' | 'high';
   recommendation: string;
 }
@@ -413,10 +415,10 @@ export async function exampleUsage() {
 
     // Get metrics
     const metrics = await qmoi.getMetrics();
-    logger.info(`Accuracy: ${metrics.accuracy * 100}%`);
-  } catch (_error){
-    console._error("production _error:", _error);
-    throw _error;
+    log.info(`Accuracy: ${metrics.accuracy * 100}%`);
+  } catch (error){
+    log.error("production error:", error);
+    throw error;
   }
 }
 

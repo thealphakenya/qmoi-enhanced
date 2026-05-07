@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '../../../lib/db/prisma';
+import { prisma } from '@/lib/db/prisma';
+import { log } from '@/lib/logger';
 
 export async function GET(request: NextRequest) {
   try {
@@ -57,7 +58,7 @@ export async function GET(request: NextRequest) {
       timestamp: new Date().toISOString()
     });
   } catch (error) {
-    console.error('Device fetch error:', error);
+    log.error('Device fetch error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -67,3 +68,4 @@ export async function GET(request: NextRequest) {
       { status: 500 }
     );
   }
+}

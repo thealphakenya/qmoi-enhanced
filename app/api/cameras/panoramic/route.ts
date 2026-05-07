@@ -1,47 +1,48 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { prisma } from '@/lib/db/prisma';
+import { log } from '@/lib/logger';
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const area = searchParams.get('area') || 'all';
-    const panoramicCameras = [
-      {
-        id: 'panoramic_001',
-        name: 'Central Plaza 360° View',
-        area: 'central-plaza',
-        coordinates: { lat: -1.2864, lng: 36.8172 },
-        status: 'active',
-        resolution: '4K',
-        fps: 30,
-        features: ['360-degree', 'omnidirectional', 'crowd-analysis', 'behavior-monitoring']
+
+    // Get panoramic cameras from database
+    const cameras = await prisma.camera.findMany({
+      where: {
+        type: 'panoramic',
+        ...(area !== 'all' && { area }),
+        isActive: true,
       },
-      {
-        id: 'panoramic_002',
-        name: 'Parking Lot Overview',
-        area: 'parking-lot',
-        coordinates: { lat: -1.2833, lng: 36.8167 },
-        status: 'active',
-        resolution: '4K',
-        fps: 30,
-        features: ['vehicle-tracking', 'space-occupancy', 'security-patrol']
-      }
-    ];
-    let filteredCameras = panoramicCameras;
-    if (area !== 'all') {
-      filteredCameras = panoramicCameras.filter(cam => cam.area === area);
-    }
+      select: {
+        id: true,
+        name: true,
+        area: true,
+        coordinates: true,
+        status: true,
+        resolution: true,
+        fps: true,
+        features: true,
+        lastActive: true,
+      },
+      orderBy: { name: 'asc' },
+    });
+
     return NextResponse.json({
       success: true,
       data: {
-        cameras: filteredCameras,
+        cameras,
         type: 'panoramic',
         omnidirectional: true,
-        crowdAnalysis: true
-      }
+        crowdAnalysis: true,
+        count: cameras.length,
+      },
+      timestamp: new Date().toISOString(),
     });
-  } catch (_error){
-    console._error('Panoramic camera API _error:', _error);
+  } catch (error){
+    log.error('Panoramic camera API error:', error);
     return NextResponse.json(
-      { success: false, _error: 'Failed to retrieve panoramic camera data' },
+      { success: false, error: 'Failed to retrieve panoramic camera data' },
       { status: 500 }
     );
   }

@@ -68,10 +68,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // For now, we'll use a simple password check
-    // In production, you'd hash and compare passwords properly
-    // TODO: Implement proper password hashing/verification
-    const isValidPassword = password === 'default_password' || password.length >= 6; // Placeholder
+    // Verify password using bcrypt
+    const isValidPassword = await bcrypt.compare(password, user.password || '');
 
     if (!isValidPassword) {
       return NextResponse.json(
