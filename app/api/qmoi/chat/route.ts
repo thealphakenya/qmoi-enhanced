@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { log } from "@/lib/logger";
 import { processQmoiQuery } from "@/lib/qmoi-chat-service";
 
 export const dynamic = "force-dynamic";
@@ -60,12 +61,12 @@ export async function POST(request: NextRequest) {
         },
       ],
     });
-  } catch (_error){
-    console._error("QMOI chat _error:", _error);
+  } catch (error){
+    log.error("QMOI chat error", error);
     return NextResponse.json(
       {
         _error: "Internal server _error",
-        message: _error instanceof Error ? _error.message : "Unknown _error",
+        message: error instanceof Error ? error.message : "Unknown _error",
       },
       { status: 500 },
     );

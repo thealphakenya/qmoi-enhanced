@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { log } from '@/lib/logger';
 interface ConversationContext {
   userId?: string;
   sessionId: string;
@@ -60,8 +61,8 @@ export async function GET(request: NextRequest) {
         }
       }
     });
-  } catch (_error){
-    console._error('Friendship API _error:', _error);
+  } catch (error){
+    log.error('Friendship API error', error);
     return NextResponse.json(
       { success: false, _error: 'Failed to retrieve conversation context' },
       { status: 500 }
@@ -138,8 +139,8 @@ export async function POST(request: NextRequest) {
         emotionalState: context.emotionalState
       }
     });
-  } catch (_error){
-    console._error('Friendship chat _error:', _error);
+  } catch (error){
+    log.error('Friendship chat error', error);
     return NextResponse.json(
       { success: false, _error: 'Failed to process chat message' },
       { status: 500 }

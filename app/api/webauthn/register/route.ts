@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../../lib/db/prisma";
+import { log } from '@/lib/logger';
 import crypto from 'crypto';
 
 export const dynamic = "force-dynamic";
@@ -39,13 +40,13 @@ export async function GET(req: NextRequest) {
     // Generate challenge
     const challenge = crypto.randomBytes(32).toString('base64url');
 
-    // Store challenge temporarily (production_IMPLEMENTED, use Redis or similar)
+    // Store challenge temporarily using memory cache for short-lived session. In production use Redis or secure store.
     const challengeKey = `webauthn_challenge_${userId}`;
-    global[challengeKey] = challenge;
+    (global as any)[challengeKey] = challenge;
 
     // Set expiry for challenge (5 minutes)
     setTimeout(() => {
-      delete global[challengeKey];
+      delete (global as any)[challengeKey];
     }, 5 * 60 * 1000);
 
     // Create credential creation options
@@ -81,7 +82,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    logger.error('WebAuthn registration GET error:', error);
+    log.error('WebAuthn registration GET error', error);
     return NextResponse.json(
       {
         success: false,
@@ -122,7 +123,7 @@ export async function POST(req: NextRequest) {
     // Clean up challenge
     delete global[challengeKey];
 
-    // Verify credential (simplified - production_IMPLEMENTED use a proper WebAuthn library)
+    // Verify credential (simplified - production use a proper WebAuthn library)
     const { id, rawId, response, type } = credential;
 
     if (type !== 'public-key') {
@@ -132,7 +133,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Store the credential
+    // Store the credential metadata securely (production should persist full credential data)
     const webAuthnCredential = await prisma.user.update({
       where: { id: userId },
       data: {
@@ -169,7 +170,7 @@ export async function POST(req: NextRequest) {
     });
 
   } catch (error) {
-    logger.error('WebAuthn registration POST error:', error);
+    log.error('WebAuthn registration POST error', error);
     return NextResponse.json(
       {
         success: false,

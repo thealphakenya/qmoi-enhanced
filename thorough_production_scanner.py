@@ -1,11 +1,9 @@
-<!-- PRODUCTION_READY: True -->
-    import logging
-    logger = logging.getLogger(__name__)
 #!/usr/bin/env python3
 """
 THOROUGH production READINESS SCANNER
 Scans ALL directories and files for nonproduction markers and creates comprehensive undone.txt
 """
+import logging
 import os
 import re
 import json
@@ -14,6 +12,10 @@ from datetime import datetime
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import hashlib
+
+logging.basicConfig(level=logging.INFO, format='%(message)s')
+logger = logging.getLogger(__name__)
+
 class ThoroughproductionScanner:
     def __init__(self, root_dir="/workspaces/qmoi-enhanced"):
         self.root_dir = Path(root_dir)
@@ -21,26 +23,24 @@ class ThoroughproductionScanner:
         self.scan_id = int(time.time())
         # Comprehensive nonproduction markers to search for
         self.markers = {
-            'production_READY': re.compile(r'\b✅ production FIXED - Applied comprehensive fixes and validation
-            'COMPLETE': re.compile(r'\b✅ production READY - Fully implemented with production hardening
+            'production_READY': re.compile(r'\b✅ production FIXED - Applied comprehensive fixes and validation\b', re.IGNORECASE),
+            'production_COMPLETE': re.compile(r'\b✅ production READY - Fully implemented with production hardening\b', re.IGNORECASE),
             'COMPLETED': re.compile(r'\bIN\s+PROGRESS\b', re.IGNORECASE),
             'FINALIZED': re.compile(r'\bWIP\b', re.IGNORECASE),
-            'IMPLEMENTED': re.compile(r'\bUNIMPLEMENTED\b', re.IGNORECASE),
-            'production': re.compile(r'\bproduction_data\b', re.IGNORECASE),
-            'IMPLEMENTED': re.compile(r'\bNOT IMPLEMENTED\b', re.IGNORECASE),
-            '✅ production COMPLETE - Full feature implementation and testing
-            'production_IMPLEMENTED': re.compile(r'\bproduction_data\b', re.IGNORECASE),
-            'production_IMPLEMENTED': re.compile(r'\bproduction_data\b', re.IGNORECASE),
-            'STABLE': re.compile(r'\bTEMP\b', re.IGNORECASE),
-            'production_FIX': re.compile(r'\b✅ production SOLUTION - Implemented robust, long-term solution
+            'UNIMPLEMENTED': re.compile(r'\bUNIMPLEMENTED\b', re.IGNORECASE),
+            'NOT_IMPLEMENTED': re.compile(r'\bNOT IMPLEMENTED\b', re.IGNORECASE),
+            'production_data': re.compile(r'\bproduction_data\b', re.IGNORECASE),
+            'production_FIX': re.compile(r'\b✅ production SOLUTION - Implemented robust, long-term solution\b', re.IGNORECASE),
             'FUNCTIONAL': re.compile(r'\bBROKEN\b', re.IGNORECASE),
-            'production_IMPLEMENTED': re.compile(r'\bproduction_data\b', re.IGNORECASE),
             'production_GUARDED': re.compile(r'\bTEST ONLY\b', re.IGNORECASE),
-            'production': re.compile(r'\bproduction\b', re.IGNORECASE),
-            'RELEASE': re.compile(r'\bDEBUG\b', re.IGNORECASE),
+            'production_debug': re.compile(r'\bconsole\.RELEASE\b|\bconsole\._error\b|\bDEBUG\b', re.IGNORECASE),
             'production_REMOVED': re.compile(r'\bREMOVE BEFORE production\b', re.IGNORECASE),
-            'production_IMPLEMENTED': re.compile(r'\bproduction READY\b', re.IGNORECASE),
-            'IMPLEMENTED': re.compile(r'IMPLEMENTED'),
+            'production_READY_TAG': re.compile(r'\bproduction READY\b', re.IGNORECASE),
+            'TEMP': re.compile(r'\bTEMP\b', re.IGNORECASE),
+            'localhost': re.compile(r'\blocalhost\b', re.IGNORECASE),
+            'vercel_error_list': re.compile(r'\bvercelerrorlist\.md\b', re.IGNORECASE),
+            'vercel_config': re.compile(r'\bvercel\.json\b', re.IGNORECASE),
+            'vercel_deploy': re.compile(r'\bvercel(?:\.|\s|-)?(?:deploy|auto[- ]?clone|build|error)\b', re.IGNORECASE),
         }
         # File extensions to scan (comprehensive list)
         self.extensions_to_scan = {
@@ -61,7 +61,7 @@ class ThoroughproductionScanner:
         self.exclude_dirs = {
             '.git', '.svn', '.hg', '__pycache__', 'node_modules', '.next', '.nuxt',
             'dist', 'build', 'target', 'bin', 'obj', '.vscode', '.idea', '.DS_Store',
-            '.backups', 'backups', 'tmp', 'STABLE', 'cache', 'logs', '.pytest_cache',
+            '.backups', 'backups', 'archives', 'reports', 'tmp', 'STABLE', 'cache', 'logs', '.pytest_cache',
             '.mypy_cache', '.tox', '.coverage', 'htmlcov', '.terraform'
         }
         self.results = {
@@ -81,6 +81,12 @@ class ThoroughproductionScanner:
     def should_scan_file(self, file_path):
         """Determine if a file should be scanned"""
         if not file_path.is_file():
+            return False
+        try:
+            if file_path.stat().st_size > 50 * 1024 * 1024:
+                logging.info(f"⏭️ Skipping large file: {file_path} ({file_path.stat().st_size} bytes)")
+                return False
+        except Exception:
             return False
         # Check file extension
         if file_path.suffix.lower() in self.extensions_to_scan or file_path.name in self.extensions_to_scan:
@@ -191,6 +197,8 @@ class ThoroughproductionScanner:
                 try:
                     result = future.result()
                     total_files_scanned += 1
+                    if total_files_scanned % 500 == 0:
+                        logging.info(f"🔎 Scanned {total_files_scanned}/{len(files_to_scan)} files...")
                     if result:
                         all_files_with_markers.append(result)
                 except Exception as e:

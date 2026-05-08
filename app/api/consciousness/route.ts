@@ -128,8 +128,8 @@ export async function GET(request: NextRequest) {
       response.data.logs = consciousnessLogs.slice(-limit);
     }
     return NextResponse.json(response);
-  } catch (_error){
-    console._error('Consciousness API _error:', _error);
+  } catch (error){
+    log.error('Consciousness API error', error);
     return NextResponse.json(
       { success: false, _error: 'Failed to retrieve consciousness data' },
       { status: 500 }
@@ -175,8 +175,8 @@ export async function POST(request: NextRequest) {
         message: 'Consciousness self-check completed successfully'
       }
     });
-  } catch (_error){
-    console._error('Consciousness check _error:', _error);
+  } catch (error){
+    log.error('Consciousness check error', error);
     return NextResponse.json(
       { success: false, _error: 'Failed to perform consciousness check' },
       { status: 500 }

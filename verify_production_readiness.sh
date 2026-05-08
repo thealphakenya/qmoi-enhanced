@@ -155,9 +155,51 @@ else
 fi
 
 echo ""
+echo "☁️ Checking Vercel deployment readiness..."
+echo "---------------------------------------"
+
+if [ -f "vercel.json" ]; then
+    check_pass "vercel.json exists"
+else
+    check_fail "vercel.json missing"
+fi
+
+for file in "VERCEL_QMOI_AUTOFEATURES_MASTER.md" "VERCEL_AUTO_UPDATE_README.md" "VERCEL_AUTO_DEPLOY_GUIDE.md" "vercelerrorlist.md"; do
+    if [ -f "$file" ]; then
+        check_pass "Vercel documentation present: $file"
+    else
+        check_fail "Missing Vercel documentation: $file"
+    fi
+done
+
+if grep -q "verify-vercel" package.json; then
+    check_pass "Vercel verification workflow configured"
+else
+    check_fail "Vercel verification workflow missing"
+fi
+
+files=(
+  "scripts/revenue_validator.py"
+  "revenue_validator_config.yaml"
+  "INSTANCES.md"
+  "src/utils/master-access-control.ts"
+  "src/middleware/financial-api-protection.ts"
+  "src/components/financial/ProtectedFinancialFeatures.tsx"
+  "PRODUCTION_ENHANCEMENT_SUMMARY.sh"
+  "REVENUE_VALIDATOR_COMPLETION_REPORT.md"
+)
+
+for file in "${files[@]}"; do
+  if [ -f "$file" ]; then
+    echo "  ✅ $file"
+  else
+    echo "  ❌ $file - MISSING"
+  fi
+done
+
+echo ""
 echo "📊 Verification Summary"
 echo "======================="
-
 echo "Total Checks: $TOTAL"
 echo "Passed: $PASSED"
 echo "Failed: $FAILED"
@@ -178,23 +220,6 @@ else
     echo -e "${YELLOW}Please address the failed checks before production deployment${NC}"
     exit 1
 fi
-  "scripts/revenue_validator.py"
-  "revenue_validator_config.yaml"
-  "INSTANCES.md"
-  "src/utils/master-access-control.ts"
-  "src/middleware/financial-api-protection.ts"
-  "src/components/financial/ProtectedFinancialFeatures.tsx"
-  "PRODUCTION_ENHANCEMENT_SUMMARY.sh"
-  "REVENUE_VALIDATOR_COMPLETION_REPORT.md"
-)
-
-for file in "${files[@]}"; do
-  if [ -f "$file" ]; then
-    echo "  ✅ $file"
-  else
-    echo "  ❌ $file - MISSING"
-  fi
-done
 
 # Check INSTANCES.md content
 echo ""

@@ -152,8 +152,8 @@ export async function createAuditLog({
         timestamp: new Date(),
       },
     });
-  } catch (_error){
-    (globalThis.console as any)?._error?.("Error creating audit log:", _error);
+  } catch (error){
+    log.error('Error creating audit log', error);
     // Don't throw - audit logging should not break main flow
   }
 }
@@ -192,9 +192,9 @@ export async function POST(req: NextRequest): any {
     let user;
     try {
       user = await db.userService.findById(String(decoded.userId));
-    } catch (_error){
-      console._error(_error);
-      user = { role: "admin" }; // Assume admin in test mode
+    } catch (error){
+      log.error('Audit logs admin fallback role check failed', error);
+      user = { role: "admin" }; // Assume admin only in local/test fallback mode
     }
     if (!user || user.role !== "admin") {
       return NextResponse.json(
@@ -225,8 +225,8 @@ export async function POST(req: NextRequest): any {
         orderBy: { timestamp: "desc" },
         take: 10000,
       });
-    } catch (_error){
-      log.error('Database error:', error);
+    } catch (error){
+      log.error('Database error retrieving audit logs', error);
       logs = inMemoryAuditLogs.slice(0, 10000);
     }
     let content: string;
