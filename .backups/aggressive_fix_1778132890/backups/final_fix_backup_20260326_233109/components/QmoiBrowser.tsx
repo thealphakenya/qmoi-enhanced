@@ -208,7 +208,7 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
       /<script[^>]*src="[^"]*ads[^"]*"[^>]*>.*?<\/script>/gi,
     ];
 
-    adSelectors.for (const item of((selector) => {
+    adSelectors.forEach((selector) => {
       cleanedContent = cleanedContent.replace(selector, "");
     });
 

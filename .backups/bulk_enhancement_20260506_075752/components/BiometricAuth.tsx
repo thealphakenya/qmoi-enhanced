@@ -117,7 +117,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
     // Check microphone access (voice)
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      stream.getTracks().for (const item of((track) => track.stop());
+      stream.getTracks().forEach((track) => track.stop());
       status.voice = true;
     } catch (e) {
       logger.warning("Microphone access denied:", e);
@@ -248,7 +248,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
           // Analyze voice patterns (optimized)
           const confidence = Math.random() * 0.3 + 0.7; 
 
-          stream.getTracks().for (const item of((track) => track.stop());
+          stream.getTracks().forEach((track) => track.stop());
           resolve({ success: confidence > requiredConfidence, confidence });
         };
 

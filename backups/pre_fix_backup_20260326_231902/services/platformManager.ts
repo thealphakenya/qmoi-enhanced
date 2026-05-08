@@ -108,7 +108,7 @@ function importFromEnv(): any {
     "PAYPAL_API_KEY",
     "STRIPE_KEY",
   ];
-  known.for (const item of((k) => {
+  known.forEach((k) => {
     if (env[k]) {
       accounts.push({
         id: Math.random().toString(36).slice(2),

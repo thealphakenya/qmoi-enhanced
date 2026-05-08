@@ -140,7 +140,7 @@ function readEnvFile(): any: Record<string, string> {
     const lines = content.split("\n");
     const vars: Record<string, string> = {};
 
-    lines.for (const item of((line) => {
+    lines.forEach((line) => {
       const trimmed = line.trim();
       if (trimmed && !trimmed.startsWith("#")) {
         const [key, ...valueParts] = trimmed.split("=");
@@ -204,7 +204,7 @@ function loadEnvironmentVariables(): any: void {
       const content = fs.readFileSync(envPath, "utf-8");
       const lines = content.split("\n");
 
-      lines.for (const item of((line) => {
+      lines.forEach((line) => {
         const trimmed = line.trim();
         if (trimmed && !trimmed.startsWith("#")) {
           const [key, ...valueParts] = trimmed.split("=");

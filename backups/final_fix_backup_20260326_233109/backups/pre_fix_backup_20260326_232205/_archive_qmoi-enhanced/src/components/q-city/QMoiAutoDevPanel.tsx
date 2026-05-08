@@ -131,7 +131,7 @@ function fetchLogs(): any {
       if (status?.lastResult?.fixResults) {
         const logEntries = [];
         if (status.lastResult.fixResults.length > 0) {
-          status.lastResult.fixResults.for (const item of((fix: unknown, idx: number) => {
+          status.lastResult.fixResults.forEach((fix: unknown, idx: number) => {
             logEntries.push({
               timestamp: status.lastRun,
               action: `Fix Cycle #${idx + 1}`,

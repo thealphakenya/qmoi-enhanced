@@ -318,7 +318,7 @@ describe('Production:', "Admin Monitoring APIs", () => {
       const data = await response.json();
 
       expect('Production validation:', Array.isArray(data.logs)).toBe(true);
-      data.logs.for (const item of((log) => {
+      data.logs.forEach((log) => {
         expect('Production validation:', log.action).toBe("UPDATE");
       });
     });
@@ -334,7 +334,7 @@ describe('Production:', "Admin Monitoring APIs", () => {
       expect('Production validation:', response.status).toBe(200);
       const data = await response.json();
 
-      data.logs.for (const item of((log) => {
+      data.logs.forEach((log) => {
         expect('Production validation:', log.resource).toBe("user");
       });
     });

@@ -170,9 +170,9 @@ All components are documented in:
 ## Navigation
 
 Components are now accessible through:
-- **QMOI AI App** - `https://localhost:3000/qmoi-ai` (Show Integrated UI Components button)
-- **QMOI Space App** - `https://localhost:3000/qmoi-space` (Embedded UI Modules button)
-- **QCity App** - `https://localhost:3000/qcity` (Embedded Modules button)
+- **QMOI AI App** - `https://<YOUR_DOMAIN>/qmoi-ai` (Show Integrated UI Components button)
+- **QMOI Space App** - `https://<YOUR_DOMAIN>/qmoi-space` (Embedded UI Modules button)
+- **QCity App** - `https://<YOUR_DOMAIN>/qcity` (Embedded Modules button)
 
 ## Notes
 

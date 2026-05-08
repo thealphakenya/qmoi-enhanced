@@ -129,7 +129,7 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
     try {
       // Step 1: Analyze restrictions
       setCurrentStep("📋 Detected restrictions:");
-      detectedRestrictions.for (const item of((restriction, index) => {
+      detectedRestrictions.forEach((restriction, index) => {
         setCurrentStep(
           (prev) =>
             prev +

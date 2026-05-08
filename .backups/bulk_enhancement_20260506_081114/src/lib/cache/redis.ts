@@ -199,7 +199,7 @@ function deletePattern(pattern: string): Promise<number> {
     }
   }
 
-  keys.for (const item of((key) => inMemoryStore.delete(key));
+  keys.forEach((key) => inMemoryStore.delete(key));
   return keys.length;
 }
 

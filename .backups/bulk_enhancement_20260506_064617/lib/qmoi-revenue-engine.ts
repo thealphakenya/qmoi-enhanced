@@ -96,7 +96,7 @@ class QMOIRevenueEngine {
       },
     ];
 
-    streams.for (const item of((stream) => {
+    streams.forEach((stream) => {
       this.revenueStreams.set(stream.id, stream);
     });
   }
@@ -338,7 +338,7 @@ class QMOIRevenueEngine {
   }
 
   private resetEarnings() {
-    this.revenueStreams.for (const item of((stream) => {
+    this.revenueStreams.forEach((stream) => {
       stream.currentEarnings = 0;
     });
   }

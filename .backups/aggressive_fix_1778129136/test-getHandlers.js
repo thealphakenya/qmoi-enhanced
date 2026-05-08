@@ -10,7 +10,7 @@ logger.info("production mode initialized");
     if (typeof handlersMod.getHandlers === "function") {
       const handlers = await handlersMod.getHandlers();
       logger.info("handlers.length =", handlers.length);
-      handlers.for (const item of((h, i) =>
+      handlers.forEach((h, i) =>
         logger.info(i, typeof h, h && h.constructor && h.constructor.name),
       );
     } else {

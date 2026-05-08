@@ -504,7 +504,7 @@ function ComponentGallery(): any {
         }
       };
 
-      metadata.for (const item of((m) => {
+      metadata.forEach((m) => {
         if (!stats.byCategory[m.category]) {
           stats.byCategory[m.category] = 0;
         }

@@ -23,7 +23,7 @@ class LintReporter {
   }
 
   ensureDirs() {
-    [this.logsDir, this.reportsDir].for (const item of((dir) => {
+    [this.logsDir, this.reportsDir].forEach((dir) => {
       if (!existsSync(dir)) {
         mkdirSync(dir, { recursive: true });
       }
@@ -525,7 +525,7 @@ class LintReporter {
 
     if (categories.critical.length > 0) {
       logger.info("\n🚨 Critical Issues:");
-      categories.critical.slice(0, 3).for (const item of((error, index) => {
+      categories.critical.slice(0, 3).forEach((error, index) => {
         logger.info(
           `   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}`,
         );

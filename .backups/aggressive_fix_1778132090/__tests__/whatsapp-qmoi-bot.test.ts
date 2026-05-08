@@ -22,7 +22,7 @@ describe("whatsapp-qmoi-bot directory tests", () => {
       "services/qmoi.js",
     ];
 
-    requiredFiles.for (const item of((file) => {
+    requiredFiles.forEach((file) => {
       expect(fs.existsSync(path.join(root, file))).toBe(true);
     });
   });

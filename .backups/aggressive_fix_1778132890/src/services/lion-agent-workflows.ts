@@ -51,7 +51,7 @@ export class SimpleEventEmitter {
 
   emit(event: string, args: any[]): boolean {
     const listeners = this.listeners.get(event) || [];
-    listeners.for (const item of(listener => {
+    listeners.forEach(listener => {
       try {
         listener(args);
       } catch (error) {
@@ -797,7 +797,7 @@ export class LionAgentWorkflowService extends SimpleEventEmitter {
       })
     );
 
-    healthEntries.for (const item of(([workflow, health]) => {
+    healthEntries.forEach(([workflow, health]) => {
       this.workflowHealthCache.set(workflow, health);
     });
   }

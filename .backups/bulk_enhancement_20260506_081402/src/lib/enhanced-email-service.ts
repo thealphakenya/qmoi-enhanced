@@ -80,7 +80,7 @@ export class EnhancedEmailService {
         s => Date.now() - s.timestamp.getTime() < 5000 // Last 5 seconds
       );
 
-      recentStatuses.for (const item of(callback);
+      recentStatuses.forEach(callback);
     }, 1000);
 
     return () => clearInterval(interval);

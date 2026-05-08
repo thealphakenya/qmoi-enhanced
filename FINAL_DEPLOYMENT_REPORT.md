@@ -202,7 +202,7 @@ bash ./scripts/prod-start.sh
 ### Monitor Server Health
 ```bash
 # Real-time health check
-curl https://localhost:3001/api/health | jq .
+curl https://${PRODUCTION_HOST:-qmoi.ai}:3001/api/health | jq .
 
 # View logs
 tail -f .qmoi_prod.log
@@ -240,9 +240,9 @@ bash ./scripts/prod-start.sh
 - **Source:** `app/`, `pages/`, `lib/`
 
 ### Important URLs
-- **Health Endpoint:** https://localhost:3001/api/health
-- **Dashboard Health:** https://localhost:3001/api/dashboard/health
-- **Memory API:** https://localhost:3001/api/memory
+- **Health Endpoint:** https://${PRODUCTION_HOST:-qmoi.ai}:3001/api/health
+- **Dashboard Health:** https://${PRODUCTION_HOST:-qmoi.ai}:3001/api/dashboard/health
+- **Memory API:** https://${PRODUCTION_HOST:-qmoi.ai}:3001/api/memory
 
 ---
 

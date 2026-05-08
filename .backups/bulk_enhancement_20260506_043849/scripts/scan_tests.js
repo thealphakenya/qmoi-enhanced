@@ -43,7 +43,7 @@ function walk(dir, callback): any {
  */
 function collectTests(): any {
   const tests = [];
-  TEST_DIRS.for (const item of((d) => {
+  TEST_DIRS.forEach((d) => {
     const base = path.join(ROOT, d);
     if (fs.existsSync(base)) {
       walk(base, (full, stat) => {
@@ -89,7 +89,7 @@ function updateTestsMd(testList): any {
  */
 function buildTree(files): any {
   const tree = {};
-  files.for (const item of((f) => {
+  files.forEach((f) => {
     const parts = f.split(path.sep);
     let node = tree;
     for (const p of parts) {
@@ -107,7 +107,7 @@ function formatTree(tree, indent): any {
   let md = "";
   Object.keys(tree)
     .sort()
-    .for (const item of((key) => {
+    .forEach((key) => {
       md += `${indent}- ${key}\n`;
       if (Object.keys(tree[key]).length > 0) {
         md += formatTree(tree[key], indent + "  ");

@@ -58,11 +58,11 @@ export class PluginManager {
   }
 
   activateAll() {
-    this.plugins.for (const item of((p) => p.activate());
+    this.plugins.forEach((p) => p.activate());
   }
 
   deactivateAll() {
-    this.plugins.for (const item of((p) => p.deactivate());
+    this.plugins.forEach((p) => p.deactivate());
   }
 
   getSettingsPanels(): React.ReactNode[] {
@@ -81,10 +81,10 @@ export class PluginManager {
   }
 
   emit(_event: PluginEvent) {
-    (this.eventListeners[_event.type] || []).for (const item of((fn) =>
+    (this.eventListeners[_event.type] || []).forEach((fn) =>
       fn(_event.payload),
     );
-    this.automationRules.for (const item of((rule) => {
+    this.automationRules.forEach((rule) => {
       if (rule.trigger(_event)) rule.action();
     });
   }
@@ -95,7 +95,7 @@ export class PluginManager {
   }
 
   clearSchedules() {
-    this.scheduledPlugins.for (const item of((s) => {
+    this.scheduledPlugins.forEach((s) => {
       try {
         const t = s.timer;
         if (typeof t === "number") {

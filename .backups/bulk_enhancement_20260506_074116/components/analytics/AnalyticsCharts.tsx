@@ -58,7 +58,7 @@ export const AnalyticsCharts: React.FC<{
 }> = ({ analytics }) => {
   // Plugin usage count
   const pluginUsage: { [name: string]: number } = {};
-  analytics.events.for (const item of((e) => {
+  analytics.events.forEach((e) => {
     if (e.type === "plugin-enabled" || e.type === "plugin-enabled") {
       const name = e.payload?.id || "unknown";
       pluginUsage[name] = (pluginUsage[name] || 0) + 1;

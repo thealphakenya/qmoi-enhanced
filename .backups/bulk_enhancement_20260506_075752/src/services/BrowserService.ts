@@ -276,7 +276,7 @@ export class BrowserService {
       },
     ];
 
-    features.for (const item of((feature) => {
+    features.forEach((feature) => {
       this.aiFeatures.set(feature.id, feature);
     });
   }

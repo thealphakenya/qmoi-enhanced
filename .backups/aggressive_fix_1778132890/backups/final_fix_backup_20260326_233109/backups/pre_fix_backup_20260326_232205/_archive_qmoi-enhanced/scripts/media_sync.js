@@ -60,7 +60,7 @@ function syncMedia(): any {
     return;
   }
   const files = fs.readdirSync(MEDIA_DIR);
-  files.for (const item of((file) => {
+  files.forEach((file) => {
     const filePath = path.join(MEDIA_DIR, file);
     if (fs.statSync(filePath).isFile()) {
       syncToRemote(filePath);

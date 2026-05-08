@@ -118,7 +118,7 @@ function groupTransactions(
 ): any: Record<string, any[]> {
   const grouped: Record<string, any[]> = {};
 
-  transactions.for (const item of((txn: any) => {
+  transactions.forEach((txn: any) => {
     const date = new Date(txn.createdAt);
     let key = "";
 
@@ -154,7 +154,7 @@ function calculateStats(transactions: unknown[]): any {
     averageAmount: 0,
   };
 
-  transactions.for (const item of((txn: any) => {
+  transactions.forEach((txn: any) => {
     stats.totalAmount += txn.amount;
 
     // Count by type

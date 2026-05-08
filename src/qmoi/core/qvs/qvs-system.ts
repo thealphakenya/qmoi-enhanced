@@ -166,7 +166,7 @@ export class QVSSystem extends EventEmitter {
       },
     ];
 
-    streams.for (const item of(stream => this.revenueStreams.set(stream.id, stream));
+    streams.forEach(stream => this.revenueStreams.set(stream.id, stream));
     consoleLog(`💰 Initialized ${streams.length} revenue streams`);
   }
 

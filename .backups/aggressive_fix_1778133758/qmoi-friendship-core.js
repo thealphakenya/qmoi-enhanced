@@ -426,11 +426,11 @@ class QMOIFriendshipCore {
     const message = interaction.message.toLowerCase();
     let score = 0.5; // neutral baseline
 
-    positiveIndicators.for (const item of((indicator) => {
+    positiveIndicators.forEach((indicator) => {
       if (message.includes(indicator)) score += 0.1;
     });
 
-    negativeIndicators.for (const item of((indicator) => {
+    negativeIndicators.forEach((indicator) => {
       if (message.includes(indicator)) score -= 0.2;
     });
 

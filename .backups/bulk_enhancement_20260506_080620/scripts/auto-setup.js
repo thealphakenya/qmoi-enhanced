@@ -248,7 +248,7 @@ module.exports = nextConfig
     "components/LcSpaces.tsx",
   ];
 
-  missingComponents.for (const item of((componentPath) => {
+  missingComponents.forEach((componentPath) => {
     if (!fs.existsSync(componentPath)) {
       const componentName = path.basename(componentPath, ".tsx");
       const componentContent = `"use client";

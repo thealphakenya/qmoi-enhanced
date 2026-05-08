@@ -76,10 +76,10 @@ function uploadAsset(uploadUrl, filePath): any {
   const files = [];
 
   const platforms = fs.readdirSync("Qmoi_apps");
-  platforms.for (const item of((platform) => {
+  platforms.forEach((platform) => {
     const subDir = `Qmoi_apps/${platform}`;
     if (fs.statSync(subDir).isDirectory()) {
-      fs.readdirSync(subDir).for (const item of((file) => {
+      fs.readdirSync(subDir).forEach((file) => {
         files.push(path.join(subDir, file));
       });
     }

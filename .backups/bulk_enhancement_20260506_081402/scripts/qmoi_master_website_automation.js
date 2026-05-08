@@ -81,7 +81,7 @@ function auditAndEnhanceSite(projectDir): any {
   };
   if (auditResults.issues.length > 0) {
     logAction(`[Enhance] Auto-fixing issues: ${JSON.stringify(auditResults.issues)}`);
-    auditResults.issues.for (const item of(issue => logAction(`[Enhance] Fixed: ${issue}`));
+    auditResults.issues.forEach(issue => logAction(`[Enhance] Fixed: ${issue}`));
   }
   logAction(`[Audit] Results for ${projectDir}: ${JSON.stringify(auditResults)}`);
   return auditResults;

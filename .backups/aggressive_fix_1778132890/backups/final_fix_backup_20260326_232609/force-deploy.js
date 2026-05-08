@@ -35,7 +35,7 @@ try {
     "styles",
   ];
 
-  directories.for (const item of((dir) => {
+  directories.forEach((dir) => {
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
       logger.info(`✅ Created directory: ${dir}`);

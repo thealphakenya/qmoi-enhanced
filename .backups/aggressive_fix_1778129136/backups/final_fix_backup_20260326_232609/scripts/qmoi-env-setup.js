@@ -68,8 +68,8 @@ function autoSetupEnv(): any {
     },
     { name: "GitHub", vars: ["GITHUB_TOKEN", "GITHUB_REPO"] },
   ];
-  platforms.for (const item of((platform) => {
-    platform.vars.for (const item of((variable) => {
+  platforms.forEach((platform) => {
+    platform.vars.forEach((variable) => {
       updateEnvVariable(variable, `your_${variable.toLowerCase()}_here`);
     });
   });

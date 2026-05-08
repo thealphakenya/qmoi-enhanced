@@ -118,7 +118,7 @@ function analyticsReport(): any {
   let max = 0;
   let min = Infinity;
   let sum = 0;
-  days.for (const item of(day => {
+  days.forEach(day => {
     const total = log[day].total;
     if (total > last) growthStreak++;
     last = total;

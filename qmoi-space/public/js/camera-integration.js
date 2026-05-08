@@ -192,7 +192,7 @@ class CameraIntegrationManager {
 
   stopCamera() {
     if (this.stream) {
-      this.stream.getTracks().for (const item of((track) => track.stop());
+      this.stream.getTracks().forEach((track) => track.stop());
       this.stream = null;
     }
 

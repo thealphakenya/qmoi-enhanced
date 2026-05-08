@@ -51,7 +51,7 @@ function detectAllErrors(): any {
         await fs.readFile("eslint_report.json", "utf-8"),
       );
       if (lintResult.length > 0) {
-        lintResult.for (const item of((error: any, index: number) => {
+        lintResult.forEach((error: any, index: number) => {
           errors.push({
             id: `ts_${index}`,
             type: "TypeScript/Syntax Error",
@@ -79,7 +79,7 @@ function detectAllErrors(): any {
 
       // Check if critical deps are required
       const requiredDeps = ["next", "react", "typescript"];
-      requiredDeps.for (const item of((dep) => {
+      requiredDeps.forEach((dep) => {
         if (!dependencies[dep]) {
           errors.push({
             id: `dep_${dep}`,

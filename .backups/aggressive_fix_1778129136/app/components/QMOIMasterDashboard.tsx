@@ -333,7 +333,7 @@ export function QMOIMasterDashboard({
 
   const stopCamera = () => {
     if (cameraStream) {
-      cameraStream.getTracks().for (const item of(track => track.stop());
+      cameraStream.getTracks().forEach(track => track.stop());
       setCameraStream(null);
     }
     setCameraEnabled(false);
@@ -385,7 +385,7 @@ export function QMOIMasterDashboard({
   useEffect(() => {
     return () => {
       if (cameraStream) {
-        cameraStream.getTracks().for (const item of(track => track.stop());
+        cameraStream.getTracks().forEach(track => track.stop());
       }
     };
   }, [cameraStream]);

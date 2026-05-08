@@ -131,7 +131,7 @@ export class QmoiTrader {
       },
     ];
 
-    strategies.for (const item of((strategy) => {
+    strategies.forEach((strategy) => {
       this.strategies.set(strategy.id, strategy);
     });
 

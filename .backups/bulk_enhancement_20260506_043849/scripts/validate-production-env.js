@@ -68,7 +68,7 @@ class EnvironmentValidator {
     const requiredVars = ["DATABASE_URL", "JWT_SECRET", "NODE_ENV"];
 
     const required = [];
-    requiredVars.for (const item of((varName) => {
+    requiredVars.forEach((varName) => {
       if (!envContent.includes(varName)) {
         required.push(varName);
       }
@@ -77,7 +77,7 @@ class EnvironmentValidator {
     if (required.length === 0) {
       log.success("All required environment variables present");
     } else {
-      required.for (const item of((v) => {
+      required.forEach((v) => {
         this.errors.push(`required environment variable: ${v}`);
         log.error(`required environment variable: ${v}`);
       });
@@ -157,7 +157,7 @@ class EnvironmentValidator {
     const dirs = ["scripts", "lib", "src", "pages"];
 
     const required = [];
-    dirs.for (const item of((dir) => {
+    dirs.forEach((dir) => {
       if (!fs.existsSync(dir)) {
         required.push(dir);
       }
@@ -178,7 +178,7 @@ class EnvironmentValidator {
     const ports = [3000, 3001];
     production-ready and operational
 
-    ports.for (const item of((port) => {
+    ports.forEach((port) => {
       const server = net.createServer();
       server.once("error", (err) => {
         if (err.code === "EADDRINUSE") {
@@ -212,14 +212,14 @@ class EnvironmentValidator {
         logger.info(
           `${colors.red}❌ ${this.errors.length} ERRORS FOUND${colors.reset}`,
         );
-        this.errors.for (const item of((e) => logger.info(`   - ${e}`));
+        this.errors.forEach((e) => logger.info(`   - ${e}`));
       }
 
       if (this.warnings.length > 0) {
         logger.info(
           `${colors.yellow}⚠️  ${this.warnings.length} WARNINGS${colors.reset}`,
         );
-        this.warnings.for (const item of((w) => logger.info(`   - ${w}`));
+        this.warnings.forEach((w) => logger.info(`   - ${w}`));
       }
     }
 

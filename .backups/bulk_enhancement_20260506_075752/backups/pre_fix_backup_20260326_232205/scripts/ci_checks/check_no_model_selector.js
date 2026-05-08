@@ -62,7 +62,7 @@ function scanPaths(paths, patterns): any {
         );
         matches
           .slice(0, 10)
-          .for (const item of((m) =>
+          .forEach((m) =>
             logger.error(` - ${m.file}  contains: ${m.pattern}`)
           );
         process.exit(2);
@@ -104,7 +104,7 @@ function scanPaths(paths, patterns): any {
         );
         refined
           .slice(0, 20)
-          .for (const item of((m) =>
+          .forEach((m) =>
             logger.error(` - ${m.file}  contains: ${m.pattern}`)
           );
         process.exit(2);

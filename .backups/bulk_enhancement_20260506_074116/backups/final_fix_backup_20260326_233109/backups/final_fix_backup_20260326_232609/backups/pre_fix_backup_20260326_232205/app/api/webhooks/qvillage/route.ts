@@ -587,7 +587,7 @@ function generateSemanticTags(entries: unknown[]): any: Promise<string[]> {
   // Real semantic tag generation
   const allTags = new Set<string>();
 
-  (entries || []).for (const item of((entry: unknown) => {
+  (entries || []).forEach((entry: unknown) => {
     const e = (entry ?? {}) as Record<string, unknown>;
     const content = `${String(e["title"] ?? "")} ${String(
       e["content"] ?? "",
@@ -620,7 +620,7 @@ function autoCategorizeEntries(entries: unknown[]): any {
   // Automatic categorization based on content analysis
   const categories = new Set<string>();
 
-  (entries || []).for (const item of((entry: unknown) => {
+  (entries || []).forEach((entry: unknown) => {
     const e = (entry ?? {}) as Record<string, unknown>;
     const content = `${String(e["title"] ?? "")} ${String(
       e["content"] ?? "",

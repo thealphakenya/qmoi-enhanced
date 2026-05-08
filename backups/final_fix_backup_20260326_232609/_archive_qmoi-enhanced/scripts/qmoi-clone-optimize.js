@@ -92,7 +92,7 @@ function optimizeCloudSpend(): any {
   );
   // data: clean up old clones
   if (fs.existsSync("clones")) {
-    fs.readdirSync("clones").for (const item of((dir) => {
+    fs.readdirSync("clones").forEach((dir) => {
       const fullPath = path.join("clones", dir);
       if (fs.statSync(fullPath).mtime < Date.now() - 7 * 24 * 60 * 60 * 1000) {
         fs.rmSync(fullPath, { recursive: true, force: true });

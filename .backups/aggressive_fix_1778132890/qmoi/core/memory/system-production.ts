@@ -192,7 +192,7 @@ export class MemorySystem {
       // Get memories for each tag
       for (const tag of tags) {
         const ids = await this.db.smembers(`memory_tag:${userId}:${tag}`);
-        ids.for (const item of((id) => memoryIds.add(id));
+        ids.forEach((id) => memoryIds.add(id));
       }
 
       // Retrieve memories

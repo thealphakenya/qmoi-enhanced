@@ -68,7 +68,7 @@ export const ChatMessaging: React.FC<ChatMessagingProps> = ({
           type: "audio/wav",
         });
         handleAudioRecorded(audioBlob);
-        stream.getTracks().for (const item of((track) => track.stop());
+        stream.getTracks().forEach((track) => track.stop());
       };
 
       mediaRecorder.start();
@@ -196,7 +196,7 @@ export const ChatMessaging: React.FC<ChatMessagingProps> = ({
       formData.append("input", message);
       formData.append("userId", userId);
 
-      files.for (const item of((file) => {
+      files.forEach((file) => {
         formData.append("files", file);
       });
 

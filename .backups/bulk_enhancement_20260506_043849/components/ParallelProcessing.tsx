@@ -208,7 +208,7 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
       });
 
       // Process running tasks
-      updatedTasks.for (const item of((task) => {
+      updatedTasks.forEach((task) => {
         if (task.status === "running") {
           
           task.progress = Math.min(100, task.progress + Math.random() * 15);

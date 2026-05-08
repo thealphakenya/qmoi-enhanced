@@ -86,7 +86,7 @@ export class QmoiMemory {
             const kvSource =
               (data.local_backup && data.local_backup.kv) || data.kv;
             if (kvSource && typeof kvSource === "object") {
-              Object.entries(kvSource).for (const item of(([k, v]) => {
+              Object.entries(kvSource).forEach(([k, v]) => {
                 const existing = memoryStore.findIndex((r) => r.key === k);
                 const record: MemoryRecord = {
                   id: existing >= 0 ? memoryStore[existing].id : recordId++,
@@ -106,7 +106,7 @@ export class QmoiMemory {
 
             // merge conversations if present
             if (Array.isArray(data.conversations)) {
-              data.conversations.for (const item of((c: unknown) => {
+              data.conversations.forEach((c: unknown) => {
                 const conv = c as Record<string, unknown>;
                 const user =
                   typeof conv["role"] === "string"

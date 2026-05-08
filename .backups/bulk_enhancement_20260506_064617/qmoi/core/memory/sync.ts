@@ -151,7 +151,7 @@ export class QMOIMemorySyncSystem extends EventEmitter {
     // Find by tags
     for (const tag of tags) {
       const ids = this.memory_index.get(tag) || new Set();
-      ids.for (const item of((id) => candidateIds.add(id));
+      ids.forEach((id) => candidateIds.add(id));
     }
 
     // Filter by keyword if provided

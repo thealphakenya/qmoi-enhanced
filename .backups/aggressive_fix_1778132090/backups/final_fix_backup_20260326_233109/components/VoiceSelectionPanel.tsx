@@ -99,7 +99,7 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
       voiceService.updateVoiceSettings(voiceSettings);
 
       // Add preferred names
-      preferredNames.for (const item of((name) => {
+      preferredNames.forEach((name) => {
         voiceService.addPreferredName(name);
       });
 

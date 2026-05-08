@@ -18,7 +18,7 @@ const missingVars = requiredEnvVars.filter(varName => !process.env[varName]);
 if (missingVars.length > 0) {
     logger.error('❌ required required environment variables:', missingVars.join(', '););
     logger.info('Please set the following environment variables:');
-    missingVars.for (const item of(varName => {
+    missingVars.forEach(varName => {
         logger.info(`  export ${varName}="your-value"`);
     });
     process.exit(1);

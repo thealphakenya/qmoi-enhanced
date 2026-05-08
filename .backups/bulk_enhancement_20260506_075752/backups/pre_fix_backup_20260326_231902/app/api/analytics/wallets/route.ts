@@ -110,7 +110,7 @@ function GET(_request: NextRequest): any {
     }
 
     // Calculate averages
-    Object.values(stats.currencyDistribution).for (const item of((dist: any) => {
+    Object.values(stats.currencyDistribution).forEach((dist: any) => {
       dist.averageBalance = dist.totalBalance / dist.walletCount;
     });
 

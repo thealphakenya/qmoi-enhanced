@@ -127,7 +127,7 @@ export const reducer = (state: State, action: Action): State => {
       if (toastId) {
         addToRemoveQueue(toastId);
       } else {
-        state.toasts.for (const item of((toast) => {
+        state.toasts.forEach((toast) => {
           addToRemoveQueue(toast.id);
         });
       }
@@ -167,7 +167,7 @@ let memoryState: State = { toasts: [] };
  */
 function dispatch(action: Action): any {
   memoryState = reducer(memoryState, action);
-  listeners.for (const item of((listener) => {
+  listeners.forEach((listener) => {
     listener(memoryState);
   });
 }

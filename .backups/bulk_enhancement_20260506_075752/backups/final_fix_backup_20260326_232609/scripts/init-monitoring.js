@@ -179,7 +179,7 @@ pm2.connect((err) => {
             },
         };
 
-        processes.for (const item of(proc => {
+        processes.forEach(proc => {
             metrics.processes[proc.name] = {
                 pid: proc.pid,
                 memory: proc.monit.memory,

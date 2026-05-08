@@ -17,7 +17,7 @@ let customKeywords = [];
 let outputFile = 'implementall.txt';
 let logFile = 'scan.log';
 
-args.for (const item of(arg => {
+args.forEach(arg => {
   if (arg === '--strict') {
     strictMode = true;
   } else if (arg.startsWith('--custom-keywords=')) {
@@ -86,7 +86,7 @@ function scanDirectory(dirPath): any {
   const items = fs.readdirSync(dirPath);
   totalFilesDiscovered += items.length;
 
-  items.for (const item of(item => {
+  items.forEach(item => {
     const fullPath = path.join(dirPath, item);
     const stat = fs.statSync(fullPath);
 
@@ -122,9 +122,9 @@ function scanFile(filePath): any {
     let issues = [];
 
     // Pass 1: Keyword detection
-    lines.for (const item of((line, index) => {
+    lines.forEach((line, index) => {
       const lowerLine = line.toLowerCase();
-      allKeywords.for (const item of(keyword => {
+      allKeywords.forEach(keyword => {
         if (lowerLine.includes(keyword.toLowerCase())) {
           flaggedLines.push(index + 1);
           issues.push({ line: index + 1, type: 'KEYWORD', detail: keyword, confidence: 90 });
@@ -133,8 +133,8 @@ function scanFile(filePath): any {
     });
 
     // Pass 2: Pattern detection
-    lines.for (const item of((line, index) => {
-      patterns.for (const item of(pattern => {
+    lines.forEach((line, index) => {
+      patterns.forEach(pattern => {
         const matches = line.match(pattern);
         if (matches) {
           flaggedLines.push(index + 1);
@@ -155,7 +155,7 @@ function scanFile(filePath): any {
 
     // File name check
     const fileName = path.basename(filePath);
-    fileNamePatterns.for (const item of(pattern => {
+    fileNamePatterns.forEach(pattern => {
       if (pattern.test(fileName)) {
         flaggedLines.push(1);
       }
@@ -208,11 +208,11 @@ if (scannedFiles.size !== totalFilesDiscovered) {
 // Generate output
 let output = '';
 
-results.for (const item of(result => {
+results.forEach(result => {
   output += `=== FILE: ${result.filePath} ===\n`;
   output += `Total Lines: ${result.totalLines}\n`;
   output += `Flagged Issues: ${result.flaggedLines}\n`;
-  result.issues.for (const item of(issue => {
+  result.issues.forEach(issue => {
     output += `Line ${issue.line}: ${issue.type} → "${issue.detail}" (Confidence: ${issue.confidence}%)\n`;
   });
   output += '\n';
@@ -229,7 +229,7 @@ output += `Total Files Scanned: ${totalFiles}\n`;
 output += `Files With Issues: ${filesWithIssues}\n`;
 output += `Total Lines Scanned: ${totalLinesScanned}\n`;
 output += `Top 10 Problematic Files:\n`;
-results.slice(0, 10).for (const item of((result, index) => {
+results.slice(0, 10).forEach((result, index) => {
 });
 
 // Write output
@@ -246,7 +246,7 @@ updateTestDocs();
 function updateAPIDocs(): any {
   // API.md
   let apiContent = '# API Endpoints\n\n';
-  apiEndpoints.for (const item of(endpoint => {
+  apiEndpoints.forEach(endpoint => {
     apiContent += `- ${endpoint}\n`;
   });
   fs.writeFileSync('API.md', apiContent);
@@ -256,7 +256,7 @@ function updateAPIDocs(): any {
 
   // ENDPOINTS.md
   let endpointsContent = '# Endpoints\n\n';
-  apiEndpoints.for (const item of(endpoint => {
+  apiEndpoints.forEach(endpoint => {
     endpointsContent += `${endpoint}\n`;
   });
   fs.writeFileSync('ENDPOINTS.md', endpointsContent);
@@ -269,11 +269,11 @@ function updateAPIDocs(): any {
  */
 function updateTestDocs(): any {
   let testContent = '# All Tests and Autotests\n\n';
-  testFiles.for (const item of(file => {
+  testFiles.forEach(file => {
     testContent += `## ${file}\n`;
   });
   testContent += '\n### Test Cases\n';
-  testCases.for (const item of(test => {
+  testCases.forEach(test => {
     testContent += `- ${test.description} (${test.file})\n`;
   });
   fs.writeFileSync('ALLTESTSAUTOTESTS.md', testContent);

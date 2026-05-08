@@ -231,7 +231,7 @@ export class VPNService {
       },
     ];
 
-    defaultServers.for (const item of((server) => {
+    defaultServers.forEach((server) => {
       this.servers.set(server.id, server);
     });
   }

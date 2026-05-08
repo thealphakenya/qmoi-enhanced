@@ -207,7 +207,7 @@ function distributeDividends(distributionData: unknown): any {
     megavaultData.totalDividends += totalAmount;
 
     // Log distributions
-    distributions.for (const item of((dist: unknown) => {
+    distributions.forEach((dist: unknown) => {
       megavaultData.dividendHistory.push({
         id: `div_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         ...dist,

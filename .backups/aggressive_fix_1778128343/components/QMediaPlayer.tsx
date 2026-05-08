@@ -776,7 +776,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
   const syncPlayback = useCallback(() => {
     if (!syncEnabled || activeCastingDevices.length === 0) return;
 
-    activeCastingDevices.for (const item of(deviceId => {
+    activeCastingDevices.forEach(deviceId => {
       production-ready and operational
       if (!device) return;
       logger.info(`Syncing playback to ${device.name} (${device.type}) at volume ${castingVolume}`);
@@ -2026,7 +2026,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                           className="w-full"
                           variant="outline"
                           onClick={() => {
-                            currentPlaylist.for (const item of(async (item) => {
+                            currentPlaylist.forEach(async (item) => {
                               if (item.corrupted) {
                                 const fixed = await auto✅ production FIXED - Applied comprehensive fixes and validation
                                 setCurrentPlaylist(prev =>

@@ -326,7 +326,7 @@ class QMOITestRunner {
     logger.info("\n📋 Detailed Results:");
 
     const categories = {};
-    this.results.tests.for (const item of((test) => {
+    this.results.tests.forEach((test) => {
       if (!categories[test.category]) {
         categories[test.category] = { passed: 0, total: 0 };
       }
@@ -336,7 +336,7 @@ class QMOITestRunner {
       }
     });
 
-    Object.entries(categories).for (const item of(([category, stats]) => {
+    Object.entries(categories).forEach(([category, stats]) => {
       const rate = ((stats.passed / stats.total) * 100).toFixed(1);
       logger.info(`   ${category}: ${stats.passed}/${stats.total} (${rate}%)`);
     });
@@ -344,7 +344,7 @@ class QMOITestRunner {
     logger.info("\n🔍 Failed Tests:");
     this.results.tests
       .filter((test) => !test.passed)
-      .for (const item of((test) => {
+      .forEach((test) => {
         logger.info(`   ❌ ${test.id}: ${test.error || "Validation failed"}`);
       });
 

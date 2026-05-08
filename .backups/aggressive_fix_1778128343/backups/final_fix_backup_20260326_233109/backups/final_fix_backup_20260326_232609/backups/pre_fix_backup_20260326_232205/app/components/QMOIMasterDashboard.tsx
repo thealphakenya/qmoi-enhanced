@@ -155,7 +155,7 @@ function QMOIMasterDashboard({
         window.matchMedia("(display-mode: standalone)").matches ||
         (window.navigator as any).standalone === true;
       if (isInstalled) {
-        PWA_PLATFORMS.for (const item of((p) => {
+        PWA_PLATFORMS.forEach((p) => {
           localStorage.setItem(`pwa_installed_${p.id}`, "true");
           setPwaInstallStatus((prev) => ({ ...prev, [p.id]: true }));
         });
@@ -369,7 +369,7 @@ function QMOIMasterDashboard({
 
   const stopCamera = () => {
     if (cameraStream) {
-      cameraStream.getTracks().for (const item of(track => track.stop());
+      cameraStream.getTracks().forEach(track => track.stop());
       setCameraStream(null);
     }
     setCameraEnabled(false);
@@ -421,7 +421,7 @@ function QMOIMasterDashboard({
   useEffect(() => {
     return () => {
       if (cameraStream) {
-        cameraStream.getTracks().for (const item of(track => track.stop());
+        cameraStream.getTracks().forEach(track => track.stop());
       }
     };
   }, [cameraStream]);

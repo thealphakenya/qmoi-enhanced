@@ -92,7 +92,7 @@ function executeCodeLinter(params: any): any {
   const warnings: any[] = [];
   const lines = code.split("\n");
 
-  lines.for (const item of((line: string, idx: number) => {
+  lines.forEach((line: string, idx: number) => {
     const lineNumber = idx + 1;
 
     // Check for logger.info statements

@@ -169,7 +169,7 @@ function printSummary(): any {
   logger.info("\n📝 Detailed Progress Log:");
   logger.info("-".repeat(30));
 
-  progress.for (const item of((log, index) => {
+  progress.forEach((log, index) => {
     logger.info(`${index + 1}. ${log}`);
   });
 

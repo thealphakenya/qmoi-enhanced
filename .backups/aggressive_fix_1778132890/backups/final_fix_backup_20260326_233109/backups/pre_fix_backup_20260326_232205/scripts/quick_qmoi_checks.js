@@ -61,7 +61,7 @@ function run(): any {
   const candidate1 = path.join('tests', 'quick_tmp_file.txt');
   const candidate2 = path.join('quick_tmp_file.txt');
   try {
-    [candidate1, candidate2].for (const item of((p)=>{ if (fs.existsSync(p)) fs.unlinkSync(p); });
+    [candidate1, candidate2].forEach((p)=>{ if (fs.existsSync(p)) fs.unlinkSync(p); });
     const payload = { messages: [{ role: 'user', content: `Create a file named ${candidate1} with the content 'optimized-test'` }] };
     const r = await fetchJson(`${HELPER_BASE}/v1/chat/completions`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
     const content = r.choices?.[0]?.message?.content || '';

@@ -325,7 +325,7 @@ class AutoLinter {
 
     if (report.errors.critical.length > 0) {
       logger.info(`\n🚨 CRITICAL ERRORS (${report.errors.critical.length}):`);
-      report.errors.critical.for (const item of((error, index) => {
+      report.errors.critical.forEach((error, index) => {
         logger.info(
           `   ${index + 1}. ${error.file}:${error.line}:${error.column}`,
         );
@@ -337,7 +337,7 @@ class AutoLinter {
       logger.info(
         `\n⚠️  UNFIXABLE ERRORS (${report.errors.unfixable.length}):`,
       );
-      report.errors.unfixable.slice(0, 5).for (const item of((error, index) => {
+      report.errors.unfixable.slice(0, 5).forEach((error, index) => {
         logger.info(
           `   ${index + 1}. ${error.file}:${error.line}:${error.column}`,
         );
@@ -351,11 +351,11 @@ class AutoLinter {
 
     if (report.recommendations.length > 0) {
       logger.info(`\n💡 RECOMMENDATIONS:`);
-      report.recommendations.for (const item of((rec, index) => {
+      report.recommendations.forEach((rec, index) => {
         logger.info(
           `   ${index + 1}. [${rec.priority.toUpperCase()}] ${rec.message}`,
         );
-        rec.actions.for (const item of((action) => {
+        rec.actions.forEach((action) => {
           logger.info(`      • ${action}`);
         });
       });

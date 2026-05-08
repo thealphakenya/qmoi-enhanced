@@ -937,14 +937,14 @@ class QuantumProcessor {
 
     // Entangle with context elements
     if (request.context) {
-      Object.keys(request.context).for (const item of(key => {
+      Object.keys(request.context).forEach(key => {
         entangledEntities.add(`context_${key}`);
       });
     }
 
     // Entangle with prompt elements
     const words = request.prompt.toLowerCase().split(/\s+/);
-    words.for (const item of(word => {
+    words.forEach(word => {
       if (word.length > 3) { // Only entangle meaningful words
         entangledEntities.add(`word_${word}`);
       }
@@ -980,9 +980,9 @@ class QuantumProcessor {
     const promptWords = prompt.toLowerCase().split(/\s+/).filter(word => word.length > 2);
 
     // Generate combinations of responses with prompt elements
-    baseResponses.for (const item of(base => {
+    baseResponses.forEach(base => {
       searchSpace.push(base);
-      promptWords.slice(0, 3).for (const item of(word => {
+      promptWords.slice(0, 3).forEach(word => {
         searchSpace.push(`${base}_${word}`);
         searchSpace.push(`${word}_${base}`);
       });
@@ -1292,7 +1292,7 @@ class SwarmIntelligence {
     // Implement consensus algorithm (majority voting with confidence weighting)
     const resultCounts: Record<string, { count: number; totalConfidence: number }> = {};
 
-    results.for (const item of(result => {
+    results.forEach(result => {
       const key = result.type;
       if (!resultCounts[key]) {
         resultCounts[key] = { count: 0, totalConfidence: 0 };
@@ -1305,7 +1305,7 @@ class SwarmIntelligence {
     let maxConsensus = 0;
     let consensusResult = null;
 
-    Object.entries(resultCounts).for (const item of(([type, data]) => {
+    Object.entries(resultCounts).forEach(([type, data]) => {
       const consensus = (data.count / results.length) * (data.totalConfidence / data.count);
       if (consensus > maxConsensus) {
         maxConsensus = consensus;
@@ -1324,7 +1324,7 @@ class SwarmIntelligence {
     const types = results.map(r => r.type);
     const uniqueTypes = [...new Set(types)];
 
-    uniqueTypes.for (const item of(type => {
+    uniqueTypes.forEach(type => {
       const count = types.filter(t => t === type).length;
       if (count > results.length * 0.3) { // Pattern if >30% of agents agree
         patterns[`collective_${type}_behavior`] = count / results.length;
@@ -1533,7 +1533,7 @@ class CognitiveEngine {
     // Keyword importance
     const importantKeywords = ['important', 'urgent', 'critical', 'learn', 'understand'];
     const lowerPrompt = request.prompt.toLowerCase();
-    importantKeywords.for (const item of(keyword => {
+    importantKeywords.forEach(keyword => {
       if (lowerPrompt.includes(keyword)) {
         importance += 0.1;
       }
@@ -1726,7 +1726,7 @@ class CognitiveEngine {
     const memories: any[] = [];
     const memoryItems = Array.from(memorySystem.items.values());
 
-    memoryItems.for (const item of(memory => {
+    memoryItems.forEach(memory => {
       const relevance = Math.random(); // optimized relevance calculation
       if (relevance > 0.7) {
         memories.push(memory);
@@ -2090,11 +2090,11 @@ class NeuromorphicEngine {
   private establishSynapticConnections(networkId: string): void {
     const neurons = Array.from(this.neuralNetwork.values());
 
-    neurons.for (const item of(neuron => {
+    neurons.forEach(neuron => {
       const connections: Synapse[] = [];
       const connectionTargets = this.selectConnectionTargets(neuron, neurons);
 
-      connectionTargets.for (const item of(target => {
+      connectionTargets.forEach(target => {
         const synapse: Synapse = {
           preNeuron: neuron.id,
           postNeuron: target.id,
@@ -2116,7 +2116,7 @@ class NeuromorphicEngine {
     const targets: Neuron[] = [];
     const maxConnections = 10;
 
-    allNeurons.for (const item of(candidate => {
+    allNeurons.forEach(candidate => {
       if (candidate.id !== neuron.id &&
           Math.abs(candidate.layer - neuron.layer) <= 1 && // Adjacent layers
           targets.length < maxConnections) {
@@ -2154,7 +2154,7 @@ class NeuromorphicEngine {
     const words = request.prompt.toLowerCase().split(/\s+/);
     const spikePatterns: number[][] = [];
 
-    words.for (const item of((word, index) => {
+    words.forEach((word, index) => {
       const pattern: number[] = [];
       // Convert word to spike timing pattern
       for (let i = 0; i < 20; i++) { // 20ms window
@@ -2209,7 +2209,7 @@ class NeuromorphicEngine {
     const activeNeurons: Neuron[] = [];
     const neurons = Array.from(this.neuralNetwork.values());
 
-    neurons.for (const item of(neuron => {
+    neurons.forEach(neuron => {
       // Update membrane potential
       const inputCurrent = this.calculateInputCurrent(neuron, timeStep, inputEncoding);
       neuron.membranePotential += inputCurrent - 0.01; // Leak current
@@ -2242,7 +2242,7 @@ class NeuromorphicEngine {
     let totalCurrent = 0;
     const synapses = this.synapticConnections.get(neuron.id) || [];
 
-    synapses.for (const item of(synapse => {
+    synapses.forEach(synapse => {
       const preNeuron = this.neuralNetwork.get(synapse.preNeuron);
       if (preNeuron && preNeuron.lastSpike === timeStep - synapse.delay) {
         totalCurrent += synapse.weight;
@@ -2257,7 +2257,7 @@ class NeuromorphicEngine {
     const learningResults: any[] = [];
     const synapses = Array.from(this.synapticConnections.values()).flat();
 
-    synapses.for (const item of(synapse => {
+    synapses.forEach(synapse => {
       const rule = this.plasticityRules.get(synapse.plasticity);
       if (rule) {
         const deltaW = this.calculateWeightChange(synapse, rule, spikePropagation);
@@ -2616,7 +2616,7 @@ class AGIFramework {
     const requiredCapabilities = this.analyzeRequestRequirements(request);
 
     // Activate relevant cognitive modules
-    requiredCapabilities.modules.for (const item of(moduleName => {
+    requiredCapabilities.modules.forEach(moduleName => {
       const module = this.cognitiveModules.get(moduleName);
       if (module) {
         module.lastUsed = Date.now();
@@ -2625,7 +2625,7 @@ class AGIFramework {
     });
 
     // Load relevant domain knowledge
-    requiredCapabilities.domains.for (const item of(domainName => {
+    requiredCapabilities.domains.forEach(domainName => {
       if (!this.domainKnowledge.has(domainName)) {
         this.domainKnowledge.set(domainName, {
           name: domainName,
@@ -2703,7 +2703,7 @@ class AGIFramework {
       'multiple', 'various', 'diverse', 'interconnected', 'systematic'
     ];
 
-    complexityIndicators.for (const item of(indicator => {
+    complexityIndicators.forEach(indicator => {
       if (lowerPrompt.includes(indicator)) {
         complexity += 0.1;
       }
@@ -2757,7 +2757,7 @@ class AGIFramework {
     const relations: any[] = [];
 
     // Extract concepts
-    words.for (const item of(word => {
+    words.forEach(word => {
       if (word.length > 3) {
         concepts.push(word);
       }
@@ -2997,7 +2997,7 @@ class AGIFramework {
       arts: ['music', 'art', 'literature', 'painting', 'sculpture'],
     };
 
-    Object.entries(topicKeywords).for (const item of(([topic, keywords]) => {
+    Object.entries(topicKeywords).forEach(([topic, keywords]) => {
       if (keywords.some(keyword => lowerPrompt.includes(keyword))) {
         topics.push(topic);
       }
@@ -3022,7 +3022,7 @@ class AGIFramework {
     const concepts: string[] = [];
     const words = prompt.toLowerCase().split(/\s+/);
 
-    words.for (const item of(word => {
+    words.forEach(word => {
       if (word.length > 4 && !['that', 'this', 'with', 'from', 'they', 'have'].includes(word)) {
         concepts.push(word);
       }
@@ -4095,7 +4095,7 @@ class TemporalManipulator {
       { keyword: 'yesterday', offset: -1 },
     ];
 
-    patterns.for (const item of(pattern => {
+    patterns.forEach(pattern => {
       if (lowerPrompt.includes(pattern.keyword)) {
         events.push({
           description: pattern.keyword,
@@ -4110,7 +4110,7 @@ class TemporalManipulator {
 
   private buildCausalGraph(events: any[]): string[] {
     const causality: string[] = [];
-    events.for (const item of((event, index) => {
+    events.forEach((event, index) => {
       if (index < events.length - 1) {
         causality.push(`${event.description}->${events[index + 1].description}`);
       }

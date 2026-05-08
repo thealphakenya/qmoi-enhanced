@@ -265,7 +265,7 @@ import { specificExports } from "@/lib/monitoring/error-tracker";
 
       const data = await response.json();
 
-      data.logs.for (const item of((log) => {
+      data.logs.forEach((log) => {
       });
     });
 
@@ -279,7 +279,7 @@ import { specificExports } from "@/lib/monitoring/error-tracker";
 
       const data = await response.json();
 
-      data.logs.for (const item of((log) => {
+      data.logs.forEach((log) => {
       });
     });
 

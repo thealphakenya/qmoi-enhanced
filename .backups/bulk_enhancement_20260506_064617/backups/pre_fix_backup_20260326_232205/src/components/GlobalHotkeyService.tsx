@@ -42,9 +42,9 @@ const keyMatcher = (e: KeyboardEvent, combo: string) => {
 export const GlobalHotkeyService: React.FC = () => {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      Object.keys(registry).for (const item of((combo) => {
+      Object.keys(registry).forEach((combo) => {
         if (keyMatcher(e, combo)) {
-          registry[combo].for (const item of((cb) => cb());
+          registry[combo].forEach((cb) => cb());
           e.preventDefault();
         }
       });

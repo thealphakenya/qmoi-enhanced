@@ -135,34 +135,34 @@ function EnhancedQMOIDashboard(): any {
       "taskProgress",
     ];
 
-    errorEvents.for (const item of((_event) => {
+    errorEvents.forEach((_event) => {
       enhancedErrorFixingService.on(_event, updateDashboard);
     });
 
-    siteEvents.for (const item of((_event) => {
+    siteEvents.forEach((_event) => {
       enhancedSiteGenerationService.on(_event, updateDashboard);
     });
 
-    revenueEvents.for (const item of((_event) => {
+    revenueEvents.forEach((_event) => {
       enhancedRevenueAutomationService.on(_event, updateDashboard);
     });
 
-    parallelEvents.for (const item of((_event) => {
+    parallelEvents.forEach((_event) => {
       enhancedParallelizationService.on(_event, updateDashboard);
     });
 
     return () => {
       clearInterval(interval);
-      errorEvents.for (const item of((_event) => {
+      errorEvents.forEach((_event) => {
         enhancedErrorFixingService.off(_event, updateDashboard);
       });
-      siteEvents.for (const item of((_event) => {
+      siteEvents.forEach((_event) => {
         enhancedSiteGenerationService.off(_event, updateDashboard);
       });
-      revenueEvents.for (const item of((_event) => {
+      revenueEvents.forEach((_event) => {
         enhancedRevenueAutomationService.off(_event, updateDashboard);
       });
-      parallelEvents.for (const item of((_event) => {
+      parallelEvents.forEach((_event) => {
         enhancedParallelizationService.off(_event, updateDashboard);
       });
     };

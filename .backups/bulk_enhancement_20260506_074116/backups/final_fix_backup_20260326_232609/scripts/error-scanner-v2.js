@@ -79,7 +79,7 @@ class ComprehensiveErrorScanner {
       }).toString();
 
       const lines = result.split("\n");
-      lines.for (const item of((line) => {
+      lines.forEach((line) => {
         if (line.includes("error TS") && !line.includes("error TS76")) {
           this.addError("syntax", "typescript", line, "CRITICAL");
           this.errorStats.syntax++;
@@ -109,8 +109,8 @@ class ComprehensiveErrorScanner {
       ];
 
       const lines = result.split("\n");
-      lines.for (const item of((line) => {
-        typeErrorCodes.for (const item of((code) => {
+      lines.forEach((line) => {
+        typeErrorCodes.forEach((code) => {
           if (line.includes(`TS${code}`)) {
             this.addError("type", `typescript-ts${code}`, line, "CRITICAL");
             this.errorStats.type++;
@@ -134,8 +134,8 @@ class ComprehensiveErrorScanner {
       try {
         const jsonResult = JSON.parse(result);
         if (Array.isArray(jsonResult)) {
-          jsonResult.for (const item of((file) => {
-            file.messages?.for (const item of((msg) => {
+          jsonResult.forEach((file) => {
+            file.messages?.forEach((msg) => {
               // Detect logic-related ESLint rules
               if (
                 msg.ruleId &&
@@ -175,11 +175,11 @@ class ComprehensiveErrorScanner {
 
     try {
       const files = this.getAllFiles();
-      files.for (const item of((file) => {
+      files.forEach((file) => {
         if (file.endsWith(".ts") || file.endsWith(".tsx")) {
           try {
             const content = fs.readFileSync(file, "utf8");
-            patterns.for (const item of((p) => {
+            patterns.forEach((p) => {
               const matches = content.match(p.regex);
               if (matches) {
                 this.addError("logic", "pattern", p.issue, "MEDIUM");
@@ -218,7 +218,7 @@ class ComprehensiveErrorScanner {
     try {
       const files = this.getAllFiles().filter((f) => f.endsWith(".ts") || f.endsWith(".tsx"));
 
-      files.for (const item of((file) => {
+      files.forEach((file) => {
         try {
           const content = fs.readFileSync(file, "utf8");
           // Check for common patterns of required imports
@@ -228,7 +228,7 @@ class ComprehensiveErrorScanner {
             { pattern: /AsyncComponent/, required: "async-component" },
           ];
 
-          patterns.for (const item of((p) => {
+          patterns.forEach((p) => {
             if (content.match(p.pattern) && !content.includes(`from "${p.required}"`)) {
               this.addError(
                 "runtime",
@@ -259,12 +259,12 @@ class ComprehensiveErrorScanner {
       ];
 
       const files = this.getAllFiles();
-      files.for (const item of((file) => {
+      files.forEach((file) => {
         if (file.includes("node_modules") || file.includes(".git")) return;
 
         try {
           const content = fs.readFileSync(file, "utf8");
-          secretPatterns.for (const item of((pattern) => {
+          secretPatterns.forEach((pattern) => {
             const matches = content.match(pattern);
             if (matches) {
               this.addError(
@@ -314,7 +314,7 @@ class ComprehensiveErrorScanner {
     try {
       const files = this.getAllFiles().filter((f) => f.endsWith(".ts") || f.endsWith(".tsx"));
 
-      files.for (const item of((file) => {
+      files.forEach((file) => {
         try {
           const content = fs.readFileSync(file, "utf8");
           const fileSize = content.length;
@@ -367,7 +367,7 @@ class ComprehensiveErrorScanner {
     try {
       const files = this.getAllFiles().filter((f) => f.endsWith(".tsx") || f.endsWith(".jsx"));
 
-      files.for (const item of((file) => {
+      files.forEach((file) => {
         try {
           const content = fs.readFileSync(file, "utf8");
 
@@ -388,7 +388,7 @@ class ComprehensiveErrorScanner {
             },
           ];
 
-          issues.for (const item of((issue) => {
+          issues.forEach((issue) => {
             const matches = content.match(issue.pattern);
             if (matches) {
               this.addError(
@@ -414,7 +414,7 @@ class ComprehensiveErrorScanner {
     try {
       const mdFiles = this.getAllFiles().filter((f) => f.endsWith(".md"));
 
-      mdFiles.for (const item of((file) => {
+      mdFiles.forEach((file) => {
         try {
           const content = fs.readFileSync(file, "utf8");
 
@@ -629,7 +629,7 @@ class ComprehensiveErrorScanner {
     try {
       const files = this.getAllFiles();
 
-      files.for (const item of((file) => {
+      files.forEach((file) => {
         try {
           // Check for Windows-specific path issues
           if (process.platform !== "win32" && file.includes("\\")) {
@@ -694,7 +694,7 @@ class ComprehensiveErrorScanner {
         (f) => f.includes(".test.") || f.includes(".spec.")
       );
 
-      srcFiles.for (const item of((srcFile) => {
+      srcFiles.forEach((srcFile) => {
         const baseName = srcFile.replace(/\.(ts|tsx)$/, "");
         const hasTest = testFiles.some(
           (tf) => tf.includes(baseName) || tf.includes(path.basename(baseName))
@@ -755,7 +755,7 @@ class ComprehensiveErrorScanner {
 
     try {
       const items = fs.readdirSync(dir);
-      items.for (const item of((item) => {
+      items.forEach((item) => {
         if (excludeDirs.includes(item)) return;
 
         const fullPath = path.join(dir, item);
@@ -852,7 +852,7 @@ class ComprehensiveErrorScanner {
     Object.entries(report.summary.by_type)
       .filter(([_, count]) => count > 0)
       .sort((a, b) => b[1] - a[1])
-      .for (const item of(([type, count]) => {
+      .forEach(([type, count]) => {
         logger.info(`  ${type}: ${count}`);
       });
 

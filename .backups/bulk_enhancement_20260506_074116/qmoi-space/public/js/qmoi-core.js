@@ -96,7 +96,7 @@ function updateFilesSection(): any {
     { name: "Images", type: "folder", size: "-", modified: "2025-10-11 10:00" },
     { name: "Videos", type: "folder", size: "-", modified: "2025-10-11 10:00" },
   ];
-  files.for (const item of((file) => {
+  files.forEach((file) => {
     const div = document.createElement("div");
     div.className = "file-item";
     div.textContent = `
@@ -192,7 +192,7 @@ function updateDashboardWidgets(): any {
   const projectList = document.getElementById("project-list");
   projectList.textContent = "";
   if (status.tasks && status.tasks.length) {
-    status.tasks.for (const item of((task) => {
+    status.tasks.forEach((task) => {
       const div = document.createElement("div");
       div.className = "project-item";
       div.textContent = `<span class="project-name">${task.type} (${task.status})</span>`;
@@ -208,7 +208,7 @@ function updateDashboardWidgets(): any {
   const activityList = document.getElementById("activity-list");
   activityList.textContent = "";
   if (status.activity && status.activity.length) {
-    status.activity.for (const item of((act) => {
+    status.activity.forEach((act) => {
       const div = document.createElement("div");
       div.className = "activity-item";
       div.textContent = `<span class="activity-time">${act.time}</span><span class="activity-text">${act.text}</span>`;
@@ -238,7 +238,7 @@ function updateGamingSection(): any {
     if (!gamingGrid) return;
     gamingGrid.textContent = "";
     if (status && status.tasks && status.tasks.length) {
-      status.tasks.for (const item of((task) => {
+      status.tasks.forEach((task) => {
         if (task.type && task.type.toLowerCase().includes("game")) {
           const div = document.createElement("div");
           div.className = "game-card";

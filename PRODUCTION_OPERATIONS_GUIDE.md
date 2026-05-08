@@ -49,16 +49,16 @@ grep -i error .qmoi_prod.log
 ### Check Server Health
 ```bash
 # Basic health check
-curl https://localhost:3001/api/health | jq .
+curl https://${PRODUCTION_HOST:-qmoi.ai}:3001/api/health | jq .
 
 # Dashboard health (comprehensive metrics)
-curl https://localhost:3001/api/dashboard/health | jq .
+curl https://${PRODUCTION_HOST:-qmoi.ai}:3001/api/dashboard/health | jq .
 
 # Memory status
-curl https://localhost:3001/api/memory | jq .
+curl https://${PRODUCTION_HOST:-qmoi.ai}:3001/api/memory | jq .
 
 # Homepage
-curl https://localhost:3001/
+curl https://${PRODUCTION_HOST:-qmoi.ai}:3001/
 ```
 
 ### Monitor Process
@@ -218,7 +218,7 @@ bash ./scripts/prod-start.sh
 ```bash
 # Wait for server to fully initialize
 sleep 30
-curl https://localhost:3001/api/health
+curl https://${PRODUCTION_HOST:-qmoi.ai}:3001/api/health
 
 # Check logs
 tail -50 .qmoi_prod.log
@@ -270,7 +270,7 @@ npx pm2 monit
 ### API Key Management
 All protected routes require API key authentication:
 ```bash
-curl -H "Authorization: Bearer YOUR_API_KEY" https://localhost:3001/api/protected-endpoint
+curl -H "Authorization: Bearer YOUR_API_KEY" https://${PRODUCTION_HOST:-qmoi.ai}:3001/api/protected-endpoint
 ```
 
 ### Environment Variables
@@ -291,13 +291,13 @@ production variables are in `.env.production`:
 ### Health Check Interval
 ```bash
 # Check every 5 seconds
-watch -n 5 'curl -s https://localhost:3001/api/health | jq ".status, .services"'
+watch -n 5 'curl -s https://${PRODUCTION_HOST:-qmoi.ai}:3001/api/health | jq ".status, .services"'
 ```
 
 ### Setup Monitoring (Example: Cron)
 ```bash
 # Add to crontab
-*/5 * * * * curl -s https://localhost:3001/api/health > /dev/null 2>&1 || /usr/bin/restart-qmoi.sh
+*/5 * * * * curl -s https://${PRODUCTION_HOST:-qmoi.ai}:3001/api/health > /dev/null 2>&1 || /usr/bin/restart-qmoi.sh
 ```
 
 ### Memory Monitoring

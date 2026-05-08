@@ -193,7 +193,7 @@ export class HealthCheckService {
 
     // Background services
     const bgServices = backgroundManager.getServices();
-    bgServices.for (const item of((s) => {
+    bgServices.forEach((s) => {
       status[`service-${s.name.toLowerCase().replace(/\s+/g, "-")}`] = s.status;
     });
 

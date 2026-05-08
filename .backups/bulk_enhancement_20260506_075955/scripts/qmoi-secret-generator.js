@@ -26,7 +26,7 @@ function isWeakSecret(value): any {
   );
 }
 
-Object.entries(envVars).for (const item of(([key, { default: def, description }]) => {
+Object.entries(envVars).forEach(([key, { default: def, description }]) => {
   let value = process.env[key] || def;
   if (
     key.toLowerCase().includes("secret") ||

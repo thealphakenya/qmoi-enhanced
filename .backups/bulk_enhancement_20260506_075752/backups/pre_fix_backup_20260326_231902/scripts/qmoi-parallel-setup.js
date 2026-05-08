@@ -76,7 +76,7 @@ function healthCheck(): any {
  */
 function updateDocs(): any {
   const docFiles = glob.sync("*.md");
-  docFiles.for (const item of((file) => {
+  docFiles.forEach((file) => {
     let content = fs.readFileSync(file, "utf8");
     if (!content.includes("QMOI Parallel System")) return;
     if (!content.includes("Auto-Enhancement")) {

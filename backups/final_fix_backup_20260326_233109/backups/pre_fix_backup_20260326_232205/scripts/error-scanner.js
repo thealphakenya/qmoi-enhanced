@@ -92,7 +92,7 @@ class ErrorScanner {
     const lines = output.split("\n");
     const errorPattern = /(.+?):(\d+):(\d+):\s+(error|warning)\s+(.+?)\s+\((.+?)\)/;
 
-    lines.for (const item of((line) => {
+    lines.forEach((line) => {
       const match = line.match(errorPattern);
       if (match) {
         const [, file, lnum, col, type, message, rule] = match;
@@ -124,7 +124,7 @@ class ErrorScanner {
     const lines = output.split("\n");
     const errorPattern = /(.+?)\((\d+),(\d+)\):\s+error\s+TS(\d+):\s+(.+)/;
 
-    lines.for (const item of((line) => {
+    lines.forEach((line) => {
       const match = line.match(errorPattern);
       if (match) {
         const [, file, lnum, col, code, message] = match;
@@ -197,7 +197,7 @@ class ErrorScanner {
    */
   groupByFile() {
     const byFile = {};
-    this.errors.for (const item of((error) => {
+    this.errors.forEach((error) => {
       if (!byFile[error.file]) {
         byFile[error.file] = [];
       }
@@ -278,7 +278,7 @@ generation_timestamp: "${new Date().toISOString()}"
 
     Object.entries(stats.by_category)
       .sort((a, b) => b[1] - a[1])
-      .for (const item of(([category, count]) => {
+      .forEach(([category, count]) => {
         content += `${category}: ${count}\n`;
       });
 
@@ -290,7 +290,7 @@ generation_timestamp: "${new Date().toISOString()}"
 |------|-------------|
 `;
 
-    topFiles.for (const item of(({ file, count }) => {
+    topFiles.forEach(({ file, count }) => {
       content += `| ${file} | ${count} |\n`;
     });
 
@@ -395,7 +395,7 @@ TypeScript: ${stats.by_source.tsc} issues
     Object.entries(stats.by_category)
       .sort((a, b) => b[1] - a[1])
       .slice(0, 15)
-      .for (const item of(([category, count]) => {
+      .forEach(([category, count]) => {
         content += `${category.padEnd(20)}: ${String(count).padStart(4)}\n`;
       });
 
@@ -406,7 +406,7 @@ TypeScript: ${stats.by_source.tsc} issues
 \`\`\`
 `;
 
-    topFiles.for (const item of(({ file, count }) => {
+    topFiles.forEach(({ file, count }) => {
       content += `${file.padEnd(50)}: ${String(count).padStart(4)} errors\n`;
     });
 
@@ -488,7 +488,7 @@ TypeScript: ${stats.by_source.tsc} issues
     Object.entries(stats.by_category)
       .sort((a, b) => b[1] - a[1])
       .slice(0, 5)
-      .for (const item of(([cat, count]) => {
+      .forEach(([cat, count]) => {
         logger.info(`  - ${cat}: ${count}`);
       });
   }

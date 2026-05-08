@@ -303,7 +303,7 @@ function checkGitStatus(): any {
       stdout
         .split("\n")
         .slice(0, 5)
-        .for (const item of((line) => {
+        .forEach((line) => {
           if (line) logger.info(`      ${line}`);
         });
       logger.info("   Tip: Commit changes before pushing to Vercel\n");
@@ -344,14 +344,14 @@ function main(): any {
 
     if (FIXES_APPLIED.length > 0) {
       logger.info("Fixes Applied:");
-      FIXES_APPLIED.for (const item of((fix) => logger.info(`  ${fix}`));
+      FIXES_APPLIED.forEach((fix) => logger.info(`  ${fix}`));
     } else {
       logger.info("✅ No fixes needed - configuration is correct!");
     }
 
     if (ERRORS_FOUND.length > 0) {
       logger.info("\nIssues Found:");
-      ERRORS_FOUND.for (const item of((error) => logger.info(`  ❌ ${error}`));
+      ERRORS_FOUND.forEach((error) => logger.info(`  ❌ ${error}`));
     }
 
     logger.info(`

@@ -157,7 +157,7 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
       const availableWorkers = workers.filter((w) => w.status === "idle");
 
       // Assign tasks to available workers
-      availableWorkers.for (const item of((worker) => {
+      availableWorkers.forEach((worker) => {
         const pendingTask = updatedTasks.find(
           (task) =>
             task.status === "pending" &&
@@ -187,7 +187,7 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
       });
 
       // Process running tasks
-      updatedTasks.for (const item of((task) => {
+      updatedTasks.forEach((task) => {
         if (task.status === "running") {
           // Production implementation: progress
           task.progress = Math.min(100, task.progress + Math.random() * 15);

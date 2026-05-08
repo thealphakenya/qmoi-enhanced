@@ -324,7 +324,7 @@ export class AppManagementService {
       },
     ];
 
-    defaultApps.for (const item of((app) => {
+    defaultApps.forEach((app) => {
       this.apps.set(app.id, app);
     });
   }

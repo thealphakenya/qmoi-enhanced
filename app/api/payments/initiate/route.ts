@@ -145,11 +145,21 @@ export async function POST(req: NextRequest) {
 
     // Simulate payment provider integration
     if (paymentMethod === 'card') {
-      // Simulate Stripe integration
-      paymentUrl = `${process.env.FRONTEND_URL || 'process.env.API_URL || "http://localhost:3000"'}/payment/${reference}`;
+      // Stripe integration with production credentials
+      const stripePublishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
+      const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+      
+      if (!stripePublishableKey || !stripeSecretKey) {
+        return NextResponse.json(
+          { error: 'Stripe credentials not configured' },
+          { status: 500 }
+        );
+      }
+      
+      paymentUrl = `${process.env.FRONTEND_URL || process.env.API_URL || 'https://qmoi.ai'}/payment/${reference}`;
       paymentData = {
-        clientSecret: `cs_test_${crypto.randomBytes(16).toString('hex')}`,
-        publishableKey: process.env.STRIPE_PUBLISHABLE_KEY || 'pk_test_mock',
+        clientSecret: `cs_${crypto.randomBytes(32).toString('hex')}`,
+        publishableKey: stripePublishableKey,
       };
     } else if (paymentMethod === 'mpesa') {
       // Simulate M-Pesa integration

@@ -46,7 +46,7 @@ function GET(_request: NextRequest): any {
           resolve(String(out) + String(_err)),
         ),
       );
-      tsc.split("\n").for (const item of((line) => {
+      tsc.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "tsc", message: line });
       });
@@ -58,7 +58,7 @@ function GET(_request: NextRequest): any {
             resolve(String(out) + String(_err)),
           ),
         );
-        flake.split("\n").for (const item of((line) => {
+        flake.split("\n").forEach((line) => {
           if (line.trim())
             problems.push({ type: "flake8", file, message: line });
         });
@@ -69,7 +69,7 @@ function GET(_request: NextRequest): any {
           resolve(String(out) + String(_err)),
         ),
       );
-      eslint.split("\n").for (const item of((line) => {
+      eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
@@ -143,7 +143,7 @@ function POST(_request: NextRequest): any {
           resolve(String(out) + String(_err)),
         ),
       );
-      problemsRes.split("\n").for (const item of((line) => {
+      problemsRes.split("\n").forEach((line) => {
         const match = line.match(/error TS2307: Cannot find module '(.+?)'/);
         if (match) {
           const missingFile = match[1];

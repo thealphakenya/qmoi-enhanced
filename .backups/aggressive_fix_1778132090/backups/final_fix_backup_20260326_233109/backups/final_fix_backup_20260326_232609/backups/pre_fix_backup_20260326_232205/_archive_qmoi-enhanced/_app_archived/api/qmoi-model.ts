@@ -201,7 +201,7 @@ function createProject(
 ): any {
   const projectDir = `/workspaces/latest-Q-ai/projects/${projectName}`;
   if (!fs.existsSync(projectDir)) fs.mkdirSync(projectDir, { recursive: true });
-  files.for (const item of((f) => {
+  files.forEach((f) => {
     const filePath = path.join(projectDir, f.name);
     fs.writeFileSync(filePath, f.content);
   });

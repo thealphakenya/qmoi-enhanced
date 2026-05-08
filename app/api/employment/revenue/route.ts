@@ -6,7 +6,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 const logger = {
-  info: logger.info.bind(console),
+  info: console.info.bind(console),
   warn: console.warn.bind(console),
   error: console.error.bind(console),
 };
@@ -83,7 +83,7 @@ function getMpesaCredentials(): any {
     consumerKey: consumerKey || null,
     consumerSecret: consumerSecret || null,
     shortcode: shortcode || null,
-    environment,
+    environment: process.env.MPESA_ENVIRONMENT || "production",
     configured: !!(consumerKey && consumerSecret && shortcode),
   };
 }

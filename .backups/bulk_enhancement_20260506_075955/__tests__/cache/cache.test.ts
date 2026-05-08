@@ -213,7 +213,7 @@ import {
           .map((_, i) => cacheManager.get(`concurrent:${i}`)),
       );
 
-      values.for (const item of((val, i) => {
+      values.forEach((val, i) => {
       });
     });
 
@@ -225,7 +225,7 @@ import {
 
       const values = await Promise.all(promises);
 
-      values.for (const item of((val) => {
+      values.forEach((val) => {
       });
     });
 

@@ -783,7 +783,7 @@ python scripts/{SCRIPT_NAME}.py
   scanDirectory(dir, type, newFeatures) {
     const files = this.getFilesRecursively(dir);
     
-    files.for (const item of(file => {
+    files.forEach(file => {
       const relativePath = path.relative(this.projectRoot, file);
       const pattern = this.featurePatterns[type];
       
@@ -1155,7 +1155,7 @@ function runWorker(task): any {
       if (fs.existsSync(dir)) {
         const items = fs.readdirSync(dir);
         
-        items.for (const item of(item => {
+        items.forEach(item => {
           const fullPath = path.join(dir, item);
           const stat = fs.statSync(fullPath);
           
@@ -1342,7 +1342,7 @@ autoGenerateCoverageReport();
       break;
     case 'create':
       verifier.scanForNewFeatures().then(features => {
-        features.for (const item of(feature => verifier.createDocumentation(feature));
+        features.forEach(feature => verifier.createDocumentation(feature));
       }).catch(console.error);
       break;
     default:

@@ -72,7 +72,7 @@ class QMOISpaceApp {
 
   setupEventListeners() {
     // Tab navigation
-    document.querySelectorAll(".nav-btn").for (const item of((btn) => {
+    document.querySelectorAll(".nav-btn").forEach((btn) => {
       btn.adprodentListener("click", (e) => {
         const tab = e.currentTarget.dataset.tab;
         this.switchTab(tab);
@@ -200,13 +200,13 @@ class QMOISpaceApp {
 
   switchTab(tabName) {
     // Update active tab button
-    document.querySelectorAll(".nav-btn").for (const item of((btn) => {
+    document.querySelectorAll(".nav-btn").forEach((btn) => {
       btn.classList.remove("active");
     });
     document.querySelector(`[data-tab="${tabName}"]`).classList.add("active");
 
     // Update active tab content
-    document.querySelectorAll(".tab-content").for (const item of((content) => {
+    document.querySelectorAll(".tab-content").forEach((content) => {
       content.classList.remove("active");
     });
     document.getElementById(`${tabName}-tab`).classList.add("active");
@@ -313,7 +313,7 @@ class QMOISpaceApp {
 
   updateRevenueDisplay(data) {
     // Update revenue cards
-    document.querySelectorAll(".revenue-amount").for (const item of((element, index) => {
+    document.querySelectorAll(".revenue-amount").forEach((element, index) => {
       if (data.amounts && data.amounts[index]) {
         element.textContent = `KSH ${data.amounts[index].toLocaleString()}`;
       }
@@ -363,7 +363,7 @@ class QMOISpaceApp {
 
     projectList.textContent = "";
 
-    projects.for (const item of((project) => {
+    projects.forEach((project) => {
       const projectElement = document.createElement("div");
       projectElement.className = "project-item";
       projectElement.textContent = `
@@ -388,7 +388,7 @@ class QMOISpaceApp {
 
     activityList.textContent = "";
 
-    activities.for (const item of((activity) => {
+    activities.forEach((activity) => {
       const activityElement = document.createElement("div");
       activityElement.className = "activity-item";
       activityElement.textContent = `
@@ -542,7 +542,7 @@ class QMOISpaceApp {
   }
 
   closeAllModals() {
-    document.querySelectorAll(".modal").for (const item of((modal) => {
+    document.querySelectorAll(".modal").forEach((modal) => {
       modal.style.display = "none";
     });
   }

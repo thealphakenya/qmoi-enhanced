@@ -487,7 +487,7 @@ function calculateOverallHealth(healthReport: unknown): any {
   let totalScore = 0;
   let totalWeight = 0;
 
-  components.for (const item of((component) => {
+  components.forEach((component) => {
     if (healthReport[component]) {
       const status = healthReport[component].status;
       const weight = weights[component as keyof typeof weights] || 1;

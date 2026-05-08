@@ -556,7 +556,7 @@ logger.info(usedVariable);
     
     // Print category summary
     logger.info('\n📋 Category Summary:');
-    Object.entries(report.categories).for (const item of(([category, results]) => {
+    Object.entries(report.categories).forEach(([category, results]) => {
       const successCount = results.filter(r => r.testSuccess).length;
       logger.info(`   ${category}: ${successCount}/${results.length} tests passed`);
     });
@@ -567,7 +567,7 @@ logger.info(usedVariable);
   groupByCategory() {
     const grouped = {};
     
-    this.testResults.for (const item of(result => {
+    this.testResults.forEach(result => {
       if (!grouped[result.category]) {
         grouped[result.category] = [];
       }
@@ -583,7 +583,7 @@ logger.info(usedVariable);
     if (!scenario) {
       logger.error(`❌ Test scenario "${testName}" not found`);
       logger.info('Available tests:');
-      this.testScenarios.for (const item of(s => logger.info(`   - ${s.name}`));
+      this.testScenarios.forEach(s => logger.info(`   - ${s.name}`));
       return;
     }
     
@@ -619,12 +619,12 @@ if (require.main === module) {
       } else {
         logger.info('Usage: node qmoi_self_test_runner.js test <test-name>');
         logger.info('Available tests:');
-        runner.testScenarios.for (const item of(s => logger.info(`   - ${s.name}`));
+        runner.testScenarios.forEach(s => logger.info(`   - ${s.name}`));
       }
       break;
     case 'list':
       logger.info('Available test scenarios:');
-      runner.testScenarios.for (const item of(s => {
+      runner.testScenarios.forEach(s => {
         logger.info(`   - ${s.name} (${s.category}, ${s.severity})`);
       });
       break;

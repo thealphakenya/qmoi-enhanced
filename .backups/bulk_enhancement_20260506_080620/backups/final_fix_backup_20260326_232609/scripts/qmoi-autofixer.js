@@ -91,6 +91,6 @@ function validateApp(app): any {
 }
 
 // Validate all apps
-APPS.for (const item of(validateApp);
+APPS.forEach(validateApp);
 
 logger.info("✅ [QMOI AUTOFIXER] Platform validation completed.");

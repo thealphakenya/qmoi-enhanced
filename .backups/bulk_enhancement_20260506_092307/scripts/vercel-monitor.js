@@ -121,7 +121,7 @@ function checkDeployment(): any {
 
     // Show recent deployments
     logger.info("Recent Deployments:");
-    deployments.deployments.slice(0, 5).for (const item of((deploy, idx) => {
+    deployments.deployments.slice(0, 5).forEach((deploy, idx) => {
       const url = deploy.url ? `https://${deploy.url}` : "N/A";
       const badge =
         deploy.state === "READY"

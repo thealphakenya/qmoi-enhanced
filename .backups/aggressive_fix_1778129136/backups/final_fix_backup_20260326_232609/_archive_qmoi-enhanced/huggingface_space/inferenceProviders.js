@@ -42,7 +42,7 @@ function autoDetectProvider(): any {
   const http = import("http");
   let best = null;
   let bestTime = Infinity;
-  providers.for (const item of((p) => {
+  providers.forEach((p) => {
     const start = Date.now();
     try {
       const req = http.request(

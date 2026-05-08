@@ -36,7 +36,7 @@ export const SelfHealingWindows: React.FC = () => {
   useEffect(() => {
     // Monitor for crashed windows (
     const checkHealth = () => {
-      wm.windows.for (const item of((win) => {
+      wm.windows.forEach((win) => {
         
         if (Math.random() < 0.1) {
           // 10% chance of "crash"

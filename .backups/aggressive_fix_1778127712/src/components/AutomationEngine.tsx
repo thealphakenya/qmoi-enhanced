@@ -80,7 +80,7 @@ export const AutomationEngine: React.FC = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      rules.for (const item of((rule) => {
+      rules.forEach((rule) => {
         if (rule.enabled) {
           
           if (rule.conditions && rule.conditions.always) {
@@ -101,7 +101,7 @@ export const AutomationEngine: React.FC = () => {
 
       if (!eventName) return;
 
-      rules.for (const item of((rule) => {
+      rules.forEach((rule) => {
         if (rule.event === eventName && rule.enabled) {
           // Check conditions
           if (matchesConditions(rule.conditions, payload)) {

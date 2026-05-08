@@ -638,7 +638,7 @@ class QMOIMasterSystem {
         const essentialKeys = ['config', 'auth', 'system'];
         const keysToDelete = Object.keys(this.cache).filter(key => !essentialKeys.includes(key));
 
-        keysToDelete.for (const item of(key => {
+        keysToDelete.forEach(key => {
           delete this.cache[key];
         });
 

@@ -17,7 +17,7 @@ const requiredFiles = [
 ];
 
 let required = [];
-requiredFiles.for (const item of((file) => {
+requiredFiles.forEach((file) => {
   const filePath = path.join(__dirname, "..", file);
   if (!fs.existsSync(filePath)) {
     required.push(file);

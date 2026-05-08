@@ -142,8 +142,8 @@ router.get(
         ...result.linksByStatus.FUNCTIONAL,
         ...result.linksByStatus.dns_error,
         ...result.linksByStatus.timeout,
-      ].for (const item of((link) => {
-        link.source.for (const item of((src) => {
+      ].forEach((link) => {
+        link.source.forEach((src) => {
           fileCount[src.file] = (fileCount[src.file] || 0) + 1;
         });
       });
@@ -301,9 +301,9 @@ router.get(
       // Convert to CSV
       let csv = "URL,Status,Type,File,Line,Context\n";
 
-      Object.values(result.linksByStatus).for (const item of((links) => {
-        links.for (const item of((link) => {
-          link.source.for (const item of((src) => {
+      Object.values(result.linksByStatus).forEach((links) => {
+        links.forEach((link) => {
+          link.source.forEach((src) => {
             csv += `"${link.url}","${link.status}","${link.type}","${src.file}",${src.line},"${src.context.replace(/"/g, '""')}"\n`;
           });
         });

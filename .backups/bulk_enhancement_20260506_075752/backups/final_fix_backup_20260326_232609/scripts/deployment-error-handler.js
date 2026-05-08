@@ -208,7 +208,7 @@ if (require.main === module) {
 ╚════════════════════════════════════════════════════╝
   `);
 
-  Object.entries(ERRORS_MAPPING).for (const item of(([pattern, fix]) => {
+  Object.entries(ERRORS_MAPPING).forEach(([pattern, fix]) => {
     logger.info(`\n${fix.title}`);
     logger.info(`Pattern: ${pattern}`);
     logger.info(`Solution: ${fix.solution.split("\n")[0]}...`);

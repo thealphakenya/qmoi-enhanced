@@ -341,13 +341,13 @@ function analyzePatterns(data): any {
   };
 
   // sophisticated pattern analysis
-  data.for (const item of((item) => {
+  data.forEach((item) => {
     if (item.language) {
       patterns.popularTechnologies[item.language] =
         (patterns.popularTechnologies[item.language] || 0) + 1;
     }
     if (item.topics) {
-      item.topics.for (const item of((topic) => {
+      item.topics.forEach((topic) => {
         patterns.trendingTopics[topic] =
           (patterns.trendingTopics[topic] || 0) + 1;
       });

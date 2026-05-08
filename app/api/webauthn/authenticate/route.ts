@@ -6,7 +6,8 @@ import crypto from 'crypto';
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-const RP_ID = process.env.RP_ID || 'localhost';
+const BASE_AUTH_URL = process.env.ORIGIN || process.env.API_URL || 'https://qmoi.ai';
+const RP_ID = process.env.RP_ID || BASE_AUTH_URL.replace(/^https?:\/\//, '').split('/')[0];
 
 export async function GET(req: NextRequest) {
   try {

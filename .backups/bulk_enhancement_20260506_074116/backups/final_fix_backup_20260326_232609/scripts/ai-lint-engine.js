@@ -402,7 +402,7 @@ Provide a specific fix that can be applied automatically.`;
 
       // Display remaining errors
       logger.info("\n📋 Remaining Issues:");
-      remainingErrors.slice(0, 10).for (const item of((error, index) => {
+      remainingErrors.slice(0, 10).forEach((error, index) => {
         logger.info(
           `   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}: ${error.message}`,
         );

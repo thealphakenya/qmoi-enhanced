@@ -225,7 +225,7 @@ class QMOIHuggingFaceSpaces {
 
         // Create subdirectories
         const dirs = ['data', 'models', 'logs', 'config', 'utils', 'components', 'api'];
-        dirs.for (const item of(dir => {
+        dirs.forEach(dir => {
             const dirPath = path.join(spaceDir, dir);
             if (!fs.existsSync(dirPath)) {
                 fs.mkdirSync(dirPath, { recursive: true });

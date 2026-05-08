@@ -44,7 +44,7 @@ class QCityAutomation {
 
   ensureDirectories() {
     const dirs = [this.logsDir, this.configDir, this.notificationsDir];
-    dirs.for (const item of((dir) => {
+    dirs.forEach((dir) => {
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
       }

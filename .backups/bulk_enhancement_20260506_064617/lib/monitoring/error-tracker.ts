@@ -107,7 +107,7 @@ class ErrorTracker {
     const byType: Record<string, number> = {};
     const bySeverity: Record<string, number> = {};
 
-    errors.for (const item of((error) => {
+    errors.forEach((error) => {
       const type = error.context?.endpoint || "unknown";
       byType[type] = (byType[type] || 0) + 1;
       bySeverity[error.severity] = (bySeverity[error.severity] || 0) + 1;

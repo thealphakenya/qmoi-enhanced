@@ -617,7 +617,7 @@ Confidence: 96-98% with epistemic humility acknowledging the limits of current k
 function generateAllIterations(): any {
   const stages = ["a", "b", "c", "d", "e", "f"];
 
-  stages.for (const item of((stage) => {
+  stages.forEach((stage) => {
     const filename = `responses${stage}.txt`;
     const filepath = path.join("/workspaces/qmoi-enhanced", filename);
 
@@ -637,7 +637,7 @@ Quality Metrics for Stage ${stage}:
 ${"=".repeat(88)}
 \n`;
 
-    testScenarios.for (const item of((scenario) => {
+    testScenarios.forEach((scenario) => {
       content += `\n${"─".repeat(88)}
 TEST ${scenario.id}: [${scenario.category}] ${scenario.query}
 ${"─".repeat(88)}\n`;

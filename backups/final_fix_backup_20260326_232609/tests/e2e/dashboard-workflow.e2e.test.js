@@ -39,7 +39,7 @@ describe('production:', 'QMOI Master Dashboard E2E', () => {
     // Check all tabs are accessible
     const tabs = ['automation', 'financial', 'logs', 'sponsored', 'links', 'avatar', 'permanence', 'global'];
 
-    tabs.for (const item of(tab => {
+    tabs.forEach(tab => {
       cy.get(`[data-testid="tab-${tab}"]`).click();
       cy.get(`[data-testid="${tab}-panel"]`).should('be.visible');
     });

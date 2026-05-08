@@ -1120,7 +1120,7 @@ function analyzeLocally(content: unknown, type: string, _options: unknown): any 
       // Keyword extraction (sophisticated implementation)
       const words = content.toLowerCase().match(/\b\w{4,}\b/g) || [];
       const wordFreq: { [key: string]: number } = {};
-      words.for (const item of((word: string) => {
+      words.forEach((word: string) => {
         wordFreq[word] = (wordFreq[word] || 0) + 1;
       });
 

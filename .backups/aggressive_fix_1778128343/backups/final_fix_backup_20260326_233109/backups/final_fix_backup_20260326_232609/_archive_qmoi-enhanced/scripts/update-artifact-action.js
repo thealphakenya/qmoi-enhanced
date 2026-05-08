@@ -34,7 +34,7 @@ function updateFile(filePath): any {
 function updateFiles(globPattern, description): any {
   const files = glob.sync(globPattern, { absolute: true });
   let changed = 0;
-  files.for (const item of((file) => {
+  files.forEach((file) => {
     if (updateFile(file)) {
       logger.info(`[UPDATED] ${description}: ${file}`);
       changed++;

@@ -53,7 +53,7 @@ function POST(req: NextRequest): any {
       report += `Total Domain Actions: ${domainTracks.length}\n\n`;
 
       report += `## Recent Domain Actions\n\n`;
-      domainTracks.slice(0, 50).for (const item of(track => {
+      domainTracks.slice(0, 50).forEach(track => {
         report += `### ${track.title}\n`;
         report += `- **Time**: ${track.precisionTime}\n`;
         report += `- **Status**: ${track.status}\n`;
@@ -108,7 +108,7 @@ function GET(req: NextRequest): any {
       report += `Total Domain Actions: ${domainTracks.length}\n\n`;
 
       report += `## Recent Domain Actions\n\n`;
-      domainTracks.slice(0, 50).for (const item of(track => {
+      domainTracks.slice(0, 50).forEach(track => {
         report += `### ${track.title}\n`;
         report += `- **Time**: ${track.precisionTime}\n`;
         report += `- **Status**: ${track.status}\n`;

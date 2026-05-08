@@ -83,7 +83,7 @@ export class QmoiMemory {
             if (data && data.profiles) {
               // merge conversations if present
               if (Array.isArray(data.conversations)) {
-                data.conversations.for (const item of((c: unknown) => {
+                data.conversations.forEach((c: unknown) => {
                   const conv = c as Record<string, unknown>;
                   const user =
                     typeof conv["role"] === "string"

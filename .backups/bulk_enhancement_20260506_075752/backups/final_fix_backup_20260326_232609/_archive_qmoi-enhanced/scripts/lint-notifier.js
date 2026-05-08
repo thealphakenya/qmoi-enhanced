@@ -131,7 +131,7 @@ class LintNotifier {
 
     if (report.summary.critical > 0) {
       logger.info("\n🚨 Critical Issues:");
-      report.errors.critical.slice(0, 3).for (const item of((error, index) => {
+      report.errors.critical.slice(0, 3).forEach((error, index) => {
         logger.info(
           `   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}`,
         );
@@ -140,7 +140,7 @@ class LintNotifier {
 
     if (report.recommendations.length > 0) {
       logger.info("\n💡 Next Steps:");
-      report.recommendations.for (const item of((rec, index) => {
+      report.recommendations.forEach((rec, index) => {
         logger.info(`   ${index + 1}. ${rec.message}`);
       });
     }

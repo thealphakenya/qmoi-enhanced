@@ -20,7 +20,7 @@
 ### Server Status
 - **Server:** ✅ Running (next-server process ID: 15123)
 - **Port:** 3001 ✅
-- **Listen Address:** localhost:3001 (Network: 10.0.2.197:3001) ✅
+- **Listen Address:** ${PRODUCTION_HOST:-qmoi.ai}:3001 (Network: 10.0.2.197:3001) ✅
 - **Startup Time:** Ready in 238ms ✅
 - **Memory Usage:** ~120-124MB RSS ✅
 

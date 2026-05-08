@@ -174,7 +174,7 @@ function runPreDeploymentTests(): any {
   let passed = 0;
   let failed = 0;
 
-  tests.for (const item of((test) => {
+  tests.forEach((test) => {
     try {
       logger.info(`   Testing: ${test.name}...`);
       execSync(test.command, { stdio: "pipe", timeout: 60000 });
@@ -205,7 +205,7 @@ function runAutoprod(): any {
   logger.info("🤖 Running Autoprod analysis...\n");
 
   logger.info("   Features to improve:");
-  Object.entries(config.autoprod.features).for (const item of(([feature, enabled]) => {
+  Object.entries(config.autoprod.features).forEach(([feature, enabled]) => {
     if (enabled) {
       logger.info(`     ✓ ${feature}`);
     }
@@ -250,7 +250,7 @@ function runQVillageResearch(): any {
   logger.info("🏘️  Triggering QVillage auto-research...\n");
 
   logger.info("   Research tasks:");
-  config.qvillage.autoResearch.tasks.for (const item of((task) => {
+  config.qvillage.autoResearch.tasks.forEach((task) => {
     logger.info(`     → ${task}`);
   });
 

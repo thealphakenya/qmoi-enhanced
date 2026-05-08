@@ -380,7 +380,7 @@ function calculateOverallHealth(healthReport: any): any {
   let totalScore = 0;
   let totalWeight = 0;
 
-  components.for (const item of((component) => {
+  components.forEach((component) => {
     const entry = healthReport[component];
     if (entry) {
       let score = 0;

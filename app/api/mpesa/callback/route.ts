@@ -10,7 +10,7 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 const logger = {
-  info: logger.info.bind(console),
+  info: console.info.bind(console),
   warn: console.warn.bind(console),
   error: console.error.bind(console),
 };
@@ -42,7 +42,7 @@ async function updateMpesaTransaction(details: any): any {
     }
     return true;
   } catch (_error){
-    logger._error("Failed to update M-Pesa transaction:", _error);
+    logger.error("Failed to update M-Pesa transaction:", _error);
     return false;
   }
 }

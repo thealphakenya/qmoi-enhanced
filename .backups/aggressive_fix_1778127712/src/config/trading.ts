@@ -326,7 +326,7 @@ export class TradingManager {
   }
 
   private startTradingStrategies(): void {
-    this.config.trading.strategies.for (const item of((strategy) => {
+    this.config.trading.strategies.forEach((strategy) => {
       .log(`Starting strategy: ${strategy}`);
       // Implement strategy execution
     });

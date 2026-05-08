@@ -613,7 +613,7 @@ qmoi_secret_flag
       }
 
       this.log("Diagnostics completed:");
-      diagnostics.for (const item of((diagnostic) => this.log(diagnostic));
+      diagnostics.forEach((diagnostic) => this.log(diagnostic));
 
       return diagnostics;
     } catch (error) {

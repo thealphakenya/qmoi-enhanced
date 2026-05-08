@@ -10,7 +10,7 @@ document.getElementById("avatar-PRODUCTION").adprodentListener("click", () => {
   document.getElementById("avatar-menu").classList.toggle("show");
 });
 
-document.querySelectorAll(".avatar-option").for (const item of((option) => {
+document.querySelectorAll(".avatar-option").forEach((option) => {
   option.adprodentListener("click", (e) => {
     const avatar = option.getAttribute("data-avatar");
     document.getElementById("avatar-PRODUCTION").querySelector("img").src =

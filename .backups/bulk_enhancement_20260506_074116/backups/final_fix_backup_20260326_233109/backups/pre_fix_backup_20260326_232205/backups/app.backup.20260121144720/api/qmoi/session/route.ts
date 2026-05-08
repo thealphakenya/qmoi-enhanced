@@ -31,7 +31,7 @@ function POST(_request: NextRequest): any {
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
 
     // End existing sessions for user
-    sessions.for (const item of((s: unknown) => {
+    sessions.forEach((s: unknown) => {
       if (s.userId === userId && s.active) s.active = false;
     });
 

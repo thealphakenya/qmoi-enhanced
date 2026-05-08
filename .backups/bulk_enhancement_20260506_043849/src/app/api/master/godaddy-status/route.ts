@@ -134,7 +134,7 @@ export async function GET(request: NextRequest): any {
       'huggingface.co', 'ngrok.io'
     ];
 
-    allDomains.for (const item of(domain => {
+    allDomains.forEach(domain => {
       if (!status[domain]) {
         status[domain] = { production_data_GODADDY_STATUS.default };
       }

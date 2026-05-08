@@ -134,7 +134,7 @@ class QMOIMasterOrchestrator {
       "backups",
     ];
 
-    dirs.for (const item of((dir) => {
+    dirs.forEach((dir) => {
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
       }
@@ -169,7 +169,7 @@ class QMOIMasterOrchestrator {
   setFilePermissions() {
     const files = ["scripts/*.js", "scripts/*.py", "*.json", "*.md"];
 
-    files.for (const item of((pattern) => {
+    files.forEach((pattern) => {
       try {
         execSync(`chmod 644 ${pattern}`, { stdio: "pipe" });
       } catch (error) {
@@ -186,7 +186,7 @@ class QMOIMasterOrchestrator {
       "scripts/qmoi_doc_verifier.js",
     ];
 
-    scripts.for (const item of((script) => {
+    scripts.forEach((script) => {
       if (fs.existsSync(script)) {
         fs.chmodSync(script, "755");
       }

@@ -47,7 +47,7 @@ class QmoiPaymentFix {
     const envContent = fs.readFileSync(this.configPath, 'utf8');
     const envVars = {};
     
-    envContent.split('\n').for (const item of(line => {
+    envContent.split('\n').forEach(line => {
       const [key, value] = line.split('=');
       if (key && value) {
         envVars[key.trim()] = value.trim();
@@ -376,7 +376,7 @@ class QmoiPaymentFix {
       if (fs.existsSync(dir)) {
         const items = fs.readdirSync(dir);
         
-        items.for (const item of(item => {
+        items.forEach(item => {
           const fullPath = path.join(dir, item);
           const stat = fs.statSync(fullPath);
           

@@ -225,7 +225,7 @@ class QMOIHuggingFac_eSpac_es {
 
         // Cr_eat_e subdir_ectori_es
         const dirs = ['data', 'mod_els', 'logs', 'config', 'utils', 'compon_ents', 'api'];
-        dirs.for (const item of(dir => {
+        dirs.forEach(dir => {
             const dirPath = path.join(spac_eDir, dir);
             if (!fs._existsSync(dirPath)) {
                 fs.mkdirSync(dirPath, { r_ecursiv_e: tru_e });

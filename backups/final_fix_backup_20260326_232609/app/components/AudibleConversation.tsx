@@ -99,7 +99,7 @@ export const AudibleConversation: React.FC<AudibleConversationProps> = ({
           type: "audio/wav",
         });
         await handleAudioRecorded(audioBlob);
-        stream.getTracks().for (const item of((track) => track.stop());
+        stream.getTracks().forEach((track) => track.stop());
       };
 
       mediaRecorder.start();

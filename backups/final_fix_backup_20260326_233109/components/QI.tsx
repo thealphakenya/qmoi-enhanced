@@ -522,7 +522,7 @@ function fetchData(): any {
     const types: Record<string, number> = {};
     tasks
       .filter((t) => t.type === "file-upload")
-      .for (const item of((t) => {
+      .forEach((t) => {
         const ext = t.file?.split(".").pop() || "unknown";
         types[ext] = (types[ext] || 0) + 1;
       });

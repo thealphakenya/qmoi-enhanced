@@ -39,7 +39,7 @@ function GET(request: NextRequest): any {
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (e, out, err) => resolve(out + err)),
       );
-      tsc.split("\n").for (const item of((line) => {
+      tsc.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "tsc", message: line });
       });
@@ -49,7 +49,7 @@ function GET(request: NextRequest): any {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (e, out, err) => resolve(out + err)),
         );
-        flake.split("\n").for (const item of((line) => {
+        flake.split("\n").forEach((line) => {
           if (line.trim())
             problems.push({ type: "flake8", file, message: line });
         });
@@ -58,7 +58,7 @@ function GET(request: NextRequest): any {
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (e, out, err) => resolve(out + err)),
       );
-      eslint.split("\n").for (const item of((line) => {
+      eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
@@ -122,7 +122,7 @@ function POST(request: NextRequest): any {
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (e, out, err) => resolve(out + err)),
       );
-      problemsRes.split("\n").for (const item of((line) => {
+      problemsRes.split("\n").forEach((line) => {
         const match = line.match(/error TS2307: Cannot find module '(.+?)'/);
         if (match) {
           const missingFile = match[1];

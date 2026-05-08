@@ -158,7 +158,7 @@ export class MultiUserSessionManager extends EventEmitter {
       session.lastActivity = new Date();
 
       // Remove from all groups
-      user.groupIds.for (const item of((groupId) => {
+      user.groupIds.forEach((groupId) => {
         this.removeUserFromGroup(userId, groupId);
       });
 

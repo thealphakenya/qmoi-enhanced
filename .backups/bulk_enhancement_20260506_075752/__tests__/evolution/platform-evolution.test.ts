@@ -43,7 +43,7 @@ import { specificExports } from '@/qmoi/core/evolution/autoclone-evolution';
 
       const platforms = ['qcity', 'qstore', 'qvillage'];
 
-      platforms.for (const item of((p) => {
+      platforms.forEach((p) => {
         const metrics: PlatformMetrics = {
           platformId: p,
           platformName: p,

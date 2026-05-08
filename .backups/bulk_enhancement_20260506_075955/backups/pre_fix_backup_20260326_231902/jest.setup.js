@@ -52,7 +52,7 @@ try {
                   return this._map.has(String(k).toLowerCase());
                 }
                 for (const item of(cb) {
-                  this._map.for (const item of((v, k) => cb(v, k));
+                  this._map.forEach((v, k) => cb(v, k));
                 }
               };
         this.headers =

@@ -167,7 +167,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
     const words = text.toLowerCase().split(/\s+/);
     const wordFrequency: Record<string, number> = {};
 
-    words.for (const item of((word) => {
+    words.forEach((word) => {
       wordFrequency[word] = (wordFrequency[word] || 0) + 1;
     });
 
@@ -191,7 +191,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
         word.toLowerCase().startsWith(input.toLowerCase()),
       );
 
-      matchingWords.slice(0, 5).for (const item of((word) => {
+      matchingWords.slice(0, 5).forEach((word) => {
         predictions.push({
           word,
           confidence: Math.random() * 0.5 + 0.5, // 0.5 to 1.0

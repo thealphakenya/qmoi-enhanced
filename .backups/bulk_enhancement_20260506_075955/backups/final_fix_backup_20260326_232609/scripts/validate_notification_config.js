@@ -46,7 +46,7 @@ fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
 
 if (issues.length) {
   logger.warn("Notification config issues found:");
-  issues.for (const item of((i) => logger.warn(" -", i));
+  issues.forEach((i) => logger.warn(" -", i));
   process.exit(1);
 } else {
   logger.info("Notification config validated: all credentials present.");

@@ -653,7 +653,7 @@ class QMOIAutomationAutotests {
     }
 
     logger.info("\n📁 Artifacts:");
-    report.artifacts.for (const item of((artifact) => {
+    report.artifacts.forEach((artifact) => {
       logger.info(`  - ${artifact}`);
     });
   }

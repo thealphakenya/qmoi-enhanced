@@ -775,7 +775,7 @@ jobs:
     const failedTests = this.testResults.filter((r) => r.status === "FAIL");
     if (failedTests.length > 0) {
       logger.info("\n❌ Failed Tests:");
-      failedTests.for (const item of((test) => {
+      failedTests.forEach((test) => {
         logger.info(`- ${test.testName}: ${test.message}`);
       });
     }

@@ -265,7 +265,7 @@ class QCityService {
    */
   emit(event, data) {
     if (this.listeners[event]) {
-      this.listeners[event].for (const item of((callback) => callback(data));
+      this.listeners[event].forEach((callback) => callback(data));
     }
   }
 
@@ -287,7 +287,7 @@ class QCityService {
    * Stop all services
    */
   stop() {
-    this.intervals.for (const item of((interval) => clearInterval(interval));
+    this.intervals.forEach((interval) => clearInterval(interval));
     logger.info("[QCity Service] All services stopped");
   }
 }

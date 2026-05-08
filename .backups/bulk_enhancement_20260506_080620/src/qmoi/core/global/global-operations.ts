@@ -143,7 +143,7 @@ export class GlobalOperationsSystem {
     const additionalCountries = this.generateAllCountries();
     countryData.push(...additionalCountries);
 
-    countryData.for (const item of(country => this.countries.set(country.name, country));
+    countryData.forEach(country => this.countries.set(country.name, country));
     consoleLog(`🌍 Initialized ${this.countries.size} countries across ${this.config.continents} continents`);
   }
 

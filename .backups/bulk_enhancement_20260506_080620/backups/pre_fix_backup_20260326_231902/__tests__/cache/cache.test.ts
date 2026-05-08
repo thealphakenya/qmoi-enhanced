@@ -287,7 +287,7 @@ describe('Production:', "Redis Cache Manager", () => {
       );
 
       expect('Production validation:', values).toHaveLength(10);
-      values.for (const item of((val, i) => {
+      values.forEach((val, i) => {
         expect('Production validation:', val?.index).toBe(i);
       });
     });
@@ -302,7 +302,7 @@ describe('Production:', "Redis Cache Manager", () => {
       const values = await Promise.all(promises);
 
       expect('Production validation:', values).toHaveLength(10);
-      values.for (const item of((val) => {
+      values.forEach((val) => {
         expect('Production validation:', val).toEqual({ value: "data" });
       });
     });

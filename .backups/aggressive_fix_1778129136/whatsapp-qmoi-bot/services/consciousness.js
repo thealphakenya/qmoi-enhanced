@@ -281,7 +281,7 @@ class QMOIConsciousnessEngine {
       negative: 0
     };
 
-    last10.for (const item of(entry => {
+    last10.forEach(entry => {
       sentiments[entry.sentiment]++;
     });
 

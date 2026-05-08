@@ -18,7 +18,7 @@ const envVars = JSON.parse(fs.readFileSync(configPath, "utf-8"));
 let envContent = "";
 let required = [];
 
-Object.entries(envVars).for (const item of(([key, { default: def }]) => {
+Object.entries(envVars).forEach(([key, { default: def }]) => {
   let value = process.env[key] || def;
   if (!process.env[key]) {
     logger.warn(`QMOI: ${key} not set, using default: ${def}`);

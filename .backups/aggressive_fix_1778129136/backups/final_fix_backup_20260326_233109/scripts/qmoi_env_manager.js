@@ -57,7 +57,7 @@ function getDefaultsFromExample(required): any {
   let defaults = {};
   if (fs.existsSync(envExamplePath)) {
     const exampleContent = fs.readFileSync(envExamplePath, 'utf8');
-    exampleContent.split('\n').for (const item of(line => {
+    exampleContent.split('\n').forEach(line => {
       const [key, value] = line.split('=');
       if (key && value && required.includes(key.trim())) {
         defaults[key.trim()] = value.trim();
@@ -79,7 +79,7 @@ function getSafeDefaults(required): any {
     'WHATSAPP_WEBHOOK_URL': 'https://data.com/webhook'
   };
   let defaults = {};
-  required.for (const item of(key => {
+  required.forEach(key => {
     if (safeDefaults[key]) defaults[key] = safeDefaults[key];
   });
   return defaults;
@@ -92,7 +92,7 @@ function checkAndCreateEnv(): any {
   let required = [];
   let envVars = {};
   // Try to load from process.env
-  requiredEnvs.for (const item of((key) => {
+  requiredEnvs.forEach((key) => {
     if (process.env[key]) {
       envVars[key] = process.env[key];
     } else {
@@ -143,7 +143,7 @@ function checkAndCreateEnv(): any {
   }
   // Write .env if needed
   let envContent = '';
-  Object.entries(envVars).for (const item of(([k, v]) => {
+  Object.entries(envVars).forEach(([k, v]) => {
     envContent += `${k}=${v}\n`;
   });
   if (envContent) {

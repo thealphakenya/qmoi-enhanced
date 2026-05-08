@@ -145,7 +145,7 @@ function checkForUpdates(): any {
       if (data.updateAvailable) {
         // Notify all clients about update
         const clients = await self.clients.matchAll();
-        clients.for (const item of((client) => {
+        clients.forEach((client) => {
           client.postMessage({
             type: "QMOI_UPDATE_AVAILABLE",
             version: data.version,
@@ -188,7 +188,7 @@ function checkAndApplyUpdates(): any {
       if (data.updateAvailable) {
         logger.info("[ServiceWorker] Update available:", data.version);
         const clients = await self.clients.matchAll();
-        clients.for (const item of((client) => {
+        clients.forEach((client) => {
           client.postMessage({
             type: "QMOI_AUTO_UPDATE",
             version: data.version,

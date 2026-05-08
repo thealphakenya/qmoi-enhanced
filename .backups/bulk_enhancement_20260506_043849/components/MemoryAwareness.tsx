@@ -207,14 +207,14 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
     const groups: { [key: string]: MemoryEntry[] } = {};
 
     // Group similar entries
-    entries.for (const item of((entry) => {
+    entries.forEach((entry) => {
       const key = `${entry.type}_${entry.content.substring(0, 50)}`;
       if (!groups[key]) groups[key] = [];
       groups[key].push(entry);
     });
 
     // Compress each group
-    Object.values(groups).for (const item of((group) => {
+    Object.values(groups).forEach((group) => {
       if (group.length === 1) {
         compressed.push(group[0]);
       } else {

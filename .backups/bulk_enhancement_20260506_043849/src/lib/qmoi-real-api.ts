@@ -30,7 +30,7 @@ export class QMOIRealAPI {
 
     // Add query parameters
     if (request.params) {
-      Object.entries(request.params).for (const item of(([key, value]) => {
+      Object.entries(request.params).forEach(([key, value]) => {
         url.searchParams.append(key, value);
       });
     }

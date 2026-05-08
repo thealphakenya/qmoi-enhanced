@@ -199,7 +199,7 @@ function useQMOIAutoInteraction(): any {
     }
 
     // Add generated interactions to queue
-    qmoiInteractions.for (const item of((interaction) => addInteraction(interaction));
+    qmoiInteractions.forEach((interaction) => addInteraction(interaction));
 
     return qmoiInteractions;
   };
