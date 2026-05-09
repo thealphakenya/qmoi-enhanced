@@ -17,11 +17,13 @@ import sys
 import json
 import time
 import asyncio
-import { specificExports } from datetime import { specificExports } from typing import { specificExports } from dataclasses import dataclass, asdict
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional, Set, Any
+from dataclasses import dataclass, asdict
 import threading
 import queue
 import requests
-import time
+import logging
 class productionAPIClient:
     """production API client with proper error handling and retries"""
     def __init__(self, base_url: str, api_key: str):
@@ -36,35 +38,26 @@ class productionAPIClient:
     def request(self, method: str, endpoint: str, **kwargs) -> dict:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
-        for atPRODUCTIONt in range(3):
+        for attempt in range(3):
             try:
-                pass
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if atPRODUCTIONt == 2:
-                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
+                if attempt == 2:
+                    logging.error(f"API request failed after 3 attempts: {e}")
                     raise
-                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
+                time.sleep(2 ** attempt)  # Exponential backoff
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
     def post(self, endpoint: str, data: dict = None, **kwargs) -> dict:
         return self.request('POST', endpoint, json=data, **kwargs)
-import { specificExports } from email.mime.text import { specificExports } from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 import uuid
 import hashlib
 import logging
+
 logger = logging.getLogger(__name__)
 # Configure logging
 logging.basicConfig(
@@ -111,10 +104,8 @@ class SystemEmailAccount:
     health_status: str = "healthy"
 class MasterEmailDashboard:
     """Master email dashboard controller"""
-    """
-    __init__ function
-    """
-def __init__(self, config_path: str = "/etc/qmoi/master_email_config.json") -> Any:
+
+    def __init__(self, config_path: str = "/etc/qmoi/master_email_config.json") -> Any:
         self.config_path = config_path
         self.metrics = MasterEmailMetrics()
         self.audit_log: List[EmailAuditEntry] = []
@@ -134,10 +125,8 @@ def __init__(self, config_path: str = "/etc/qmoi/master_email_config.json") -> A
         }
         self.load_configuration()
         self.initialize_system_accounts()
-    """
-    authenticate_master function
-    """
-def authenticate_master(self, token: str, ip_address: str = "", user_agent: str = "") -> Dict:
+
+    def authenticate_master(self, token: str, ip_address: str = "", user_agent: str = "") -> Dict:
         """Authenticate master access with multi-factor validation"""
         try:
             # Validate master token
@@ -178,23 +167,16 @@ def authenticate_master(self, token: str, ip_address: str = "", user_agent: str 
                 "success": False,
                 "error": "Authentication failed"
             }
-    """
-    validate_master_session function
-    """
-def validate_master_session(self, session_token: str) -> bool:
+    def validate_master_session(self, session_token: str) -> bool:
         """Validate master session token"""
         return session_token in self.master_session_tokens
-    """
-    generate_session_token function
-    """
-def generate_session_token(self) -> str:
+
+    def generate_session_token(self) -> str:
         """Generate secure session token"""
         import secrets
         return secrets.token_urlsafe(64)
-    """
-    log_security_alert function
-    """
-def log_security_alert(self, alert_type: str, ip_address: str, user_agent: str) -> Any:
+
+    def log_security_alert(self, alert_type: str, ip_address: str = "", user_agent: str = "") -> Any:
         """Log security alert"""
         logger.warning(f"Security Alert: {alert_type} from {ip_address} - {user_agent}")
         self.alerts_queue.put({
@@ -204,10 +186,7 @@ def log_security_alert(self, alert_type: str, ip_address: str, user_agent: str) 
             "user_agent": user_agent,
             "timestamp": datetime.now().isoformat()
         })
-    """
-    load_configuration function
-    """
-def load_configuration(self) -> Any:
+    def load_configuration(self) -> Any:
         """Load dashboard configuration"""
         try:
             if os.path.exists(self.config_path):
@@ -215,16 +194,14 @@ def load_configuration(self) -> Any:
                     config = json.load(f)
                     self.metrics = MasterEmailMetrics(**config.get('metrics', {}))
                     self.audit_log = [EmailAuditEntry(**entry) for entry in config.get('audit_log', [])]
-                    logger.info("Loaded master email dashboard configuration")
+                    logging.info("Loaded master email dashboard configuration")
             else:
                 self.create_default_configuration()
         except Exception as e:
-            logger.error(f"Failed to load configuration: {e}")
+            logging.error(f"Failed to load configuration: {e}")
             self.create_default_configuration()
-    """
-    create_default_configuration function
-    """
-def create_default_configuration(self) -> Any:
+
+    def create_default_configuration(self) -> Any:
         """Create default dashboard configuration"""
         config = {
             "metrics": asdict(self.metrics),
@@ -237,10 +214,8 @@ def create_default_configuration(self) -> Any:
         os.makedirs(os.path.dirname(self.config_path), exist_ok=True)
         with open(self.config_path, 'w') as f:
             json.dump(config, f, indent=2, default=str)
-    """
-    initialize_system_accounts function
-    """
-def initialize_system_accounts(self) -> Any:
+
+    def initialize_system_accounts(self) -> Any:
         """Initialize system email accounts"""
         system_emails = [
             "master@qmoi.com",
@@ -265,10 +240,8 @@ def initialize_system_accounts(self) -> Any:
                 status="active",
                 last_activity=datetime.now()
             )
-    """
-    get_unified_inbox function
-    """
-def get_unified_inbox(self, limit: int = 50, offset: int = 0) -> Dict:
+
+    def get_unified_inbox(self, limit: int = 50, offset: int = 0) -> Dict:
         """Get unified inbox for all system emails"""
         try:
             inbox_emails = []
@@ -293,10 +266,7 @@ def get_unified_inbox(self, limit: int = 50, offset: int = 0) -> Dict:
                 "success": False,
                 "error": str(e)
             }
-    """
-    get_account_emails function
-    """
-def get_account_emails(self, email: str, limit: int = 50) -> List[Dict]:
+    def get_account_emails(self, email: str, limit: int = 50) -> List[Dict]:
         """Get emails for specific account"""
         real_emails = [
             {
@@ -310,10 +280,8 @@ def get_account_emails(self, email: str, limit: int = 50) -> List[Dict]:
             }
         ]
         return real_emails
-    """
-    send_master_email function
-    """
-def send_master_email(self, to_email: str, subject: str, body: str, account: str = "master@qmoi.com") -> Dict:
+
+    def send_master_email(self, to_email: str, subject: str, body: str, account: str = "master@qmoi.com") -> Dict:
         """Send email from master account"""
         try:
             if account not in self.system_accounts:
@@ -363,10 +331,7 @@ def send_master_email(self, to_email: str, subject: str, body: str, account: str
                 "success": False,
                 "error": str(e)
             }
-    """
-    get_email_analytics function
-    """
-def get_email_analytics(self, timeframe: str = "24h") -> Dict:
+    def get_email_analytics(self, timeframe: str = "24h") -> Dict:
         """Get email analytics and metrics"""
         try:
             # Calculate time range
@@ -414,10 +379,7 @@ def get_email_analytics(self, timeframe: str = "24h") -> Dict:
                 "success": False,
                 "error": str(e)
             }
-    """
-    get_system_health function
-    """
-def get_system_health(self) -> Dict:
+    def get_system_health(self) -> Dict:
         """Get system health status"""
         try:
             # Get health from automation API
@@ -446,10 +408,7 @@ def get_system_health(self) -> Dict:
                 "success": False,
                 "error": str(e)
             }
-    """
-    manage_auto_replies function
-    """
-def manage_auto_replies(self, account: str, enabled: bool) -> Dict:
+    def manage_auto_replies(self, account: str, enabled: bool) -> Dict:
         """Enable/disable auto-replies for account"""
         try:
             if account not in self.system_accounts:
@@ -488,10 +447,7 @@ def manage_auto_replies(self, account: str, enabled: bool) -> Dict:
                 "success": False,
                 "error": str(e)
             }
-    """
-    get_audit_trail function
-    """
-def get_audit_trail(self, account: str = None, limit: int = 100) -> Dict:
+    def get_audit_trail(self, account: str = None, limit: int = 100) -> Dict:
         """Get audit trail for email activities"""
         try:
             # Filter audit log
@@ -515,10 +471,7 @@ def get_audit_trail(self, account: str = None, limit: int = 100) -> Dict:
                 "success": False,
                 "error": str(e)
             }
-    """
-    log_audit_entry function
-    """
-def log_audit_entry(self, action: str, email_account: str, user_id: str, details: Dict,
+    def log_audit_entry(self, action: str, email_account: str, user_id: str, details: Dict,
                        ip_address: str = "", user_agent: str = "") -> Any:
         """Log audit entry"""
         entry = EmailAuditEntry(
@@ -536,10 +489,8 @@ def log_audit_entry(self, action: str, email_account: str, user_id: str, details
             self.audit_log = self.audit_log[-10000:]
         # Save configuration
         self.save_configuration()
-    """
-    get_security_alerts function
-    """
-def get_security_alerts(self) -> Dict:
+
+    def get_security_alerts(self) -> Dict:
         """Get security alerts and threats"""
         try:
             alerts = []
@@ -571,10 +522,7 @@ def get_security_alerts(self) -> Dict:
                 "success": False,
                 "error": str(e)
             }
-    """
-    get_business_metrics function
-    """
-def get_business_metrics(self) -> Dict:
+    def get_business_metrics(self) -> Dict:
         """Get business-related email metrics"""
         try:
             # Calculate business metrics from audit log
@@ -600,10 +548,7 @@ def get_business_metrics(self) -> Dict:
                 "success": False,
                 "error": str(e)
             }
-    """
-    export_data function
-    """
-def export_data(self, data_type: str, format: str = "json") -> Dict:
+    def export_data(self, data_type: str, format: str = "json") -> Dict:
         """Export dashboard data"""
         try:
             if data_type == "audit_log":
@@ -636,10 +581,7 @@ def export_data(self, data_type: str, format: str = "json") -> Dict:
                 "success": False,
                 "error": str(e)
             }
-    """
-    save_configuration function
-    """
-def save_configuration(self) -> Any:
+    def save_configuration(self) -> Any:
         """Save current configuration"""
         try:
             config = {
@@ -654,10 +596,7 @@ def save_configuration(self) -> Any:
                 json.dump(config, f, indent=2, default=str)
         except Exception as e:
             logger.error(f"Failed to save configuration: {e}")
-    """
-    run_health_monitoring function
-    """
-def run_health_monitoring(self) -> Any:
+    def run_health_monitoring(self) -> Any:
         """Run continuous health monitoring"""
         while True:
             try:
@@ -668,16 +607,14 @@ def run_health_monitoring(self) -> Any:
                 # Log any critical issues
                 for alert in alerts.get("alerts", []):
                     if alert["severity"] == "high":
-                        logger.warning(f"Security Alert: {alert['message']}")
+                        logging.warning(f"Security Alert: {alert['message']}")
                 # Update metrics
                 time.sleep(self.health_check_interval)
             except Exception as e:
-                logger.error(f"Health monitoring error: {e}")
+                logging.error(f"Health monitoring error: {e}")
                 time.sleep(60)
+
 # API Endpoints for web interface
-"""
-    get_dashboard_data_api function
-    """
 def get_dashboard_data_api(session_token: str) -> Dict:
     """API endpoint for dashboard data - MASTER ONLY"""
     dashboard = MasterEmailDashboard()
@@ -697,9 +634,6 @@ def get_dashboard_data_api(session_token: str) -> Dict:
             "business_metrics": dashboard.get_business_metrics()
         }
     }
-"""
-    send_email_api function
-    """
 def send_email_api(request_data: Dict, session_token: str) -> Dict:
     """API endpoint for sending emails - MASTER ONLY"""
     dashboard = MasterEmailDashboard()
@@ -715,17 +649,21 @@ def send_email_api(request_data: Dict, session_token: str) -> Dict:
         body=request_data.get("body", ""),
         account=request_data.get("account", "master@qmoi.com")
     )
+
+# Main execution for testing
+if __name__ == "__main__":
     dashboard = MasterEmailDashboard()
     # Get dashboard data
-    data = get_dashboard_data_api()
-    logger.info("Dashboard data retrieved:", len(str(data)), "characters")
+    data = get_dashboard_data_api("test_token")  # Would need valid token in real usage
+    logging.info(f"Dashboard data retrieved: {len(str(data))} characters")
     # Send test email
     result = send_email_api({
+        "to_email": "test@example.com",
         "subject": "Test from Master Dashboard",
         "body": "This is a test email from the QMOI Master Email Dashboard.",
         "account": "master@qmoi.com"
-    })
-    logger.info("Email send result:", result)
+    }, "test_token")  # Would need valid token in real usage
+    logging.info(f"Email send result: {result}")
     # Start health monitoring in background
     health_thread = threading.Thread(target=dashboard.run_health_monitoring, daemon=True)
     health_thread.start()
@@ -734,4 +672,4 @@ def send_email_api(request_data: Dict, session_token: str) -> Dict:
         while True:
             time.sleep(1)
     except KeyboardInterrupt:
-        logger.info("Master Email Dashboard shutting down")
+        logging.info("Master Email Dashboard shutting down")

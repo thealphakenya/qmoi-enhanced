@@ -1,16 +1,18 @@
 {
-  "timestamp": "2026-04-27T05:17:31.026816",
+  "timestamp": "2026-05-09T06:07:27.962064",
   "validation_type": "PRODUCTION_DEPLOYMENT_VALIDATION",
-  "readiness_score": 100,
-  "validations_passed": 8,
+  "readiness_score": 87,
+  "validations_passed": 7,
   "total_validations": 8,
-  "execution_time": 1.052876,
-  "deployment_ready": true,
+  "execution_time": 37.599693,
+  "deployment_ready": false,
   "detailed_results": {
     "build_validation": {
-      "passed": true,
-      "message": "Build system validation: 0 issues found",
-      "issues": []
+      "passed": false,
+      "message": "Build system validation: 1 issues found",
+      "issues": [
+        "No build output directory found (checked: build, dist, .next)"
+      ]
     },
     "dependency_validation": {
       "passed": true,
@@ -49,10 +51,9 @@
     }
   },
   "recommendations": [
-    "System is near deployment-ready - minor fixes needed",
-    "Run final deployment test before production release",
-    "\ud83c\udf89 SYSTEM READY FOR production DEPLOYMENT!",
-    "All validations passed - proceed with deployment",
-    "Monitor health systems post-deployment"
+    "Address all validation failures before deployment",
+    "Review and fix configuration issues",
+    "Complete all documentation requirements",
+    "Fix issues in build validation"
   ]
 }
