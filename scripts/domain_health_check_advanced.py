@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -73,7 +79,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -93,7 +100,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -107,7 +115,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -366,7 +375,8 @@ def check_all_domains(self) -> Dict[str, DomainHealthStatus]:
                 "total_domains": len(self.QMOI_DOMAINS),
                 "check_type": "comprehensive"
             })
-        except Exception as e:
+    
+    except Exception as e:
             logger.warning(f"Failed to create health track: {e}")
         
         futures = {}
@@ -382,7 +392,8 @@ def check_all_domains(self) -> Dict[str, DomainHealthStatus]:
                 with self.lock:
                     self.health_results[domain] = status
                 logger.info(f"✓ Checked {domain}: {status.is_accessible}")
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Error checking {domain}: {e}")
                 with self.lock:
                     self.health_results[domain] = DomainHealthStatus(
@@ -464,7 +475,8 @@ def check_domain_health(self, domain: str) -> DomainHealthStatus:
                 ssl_expiry_days=ssl_expiry,
                 fallback_active=False
             )
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error checking {domain}: {e}")
             fallback = self._try_fallback_domain(domain)
             return DomainHealthStatus(
@@ -515,7 +527,8 @@ def _check_dns_resolution(self, domain: str) -> bool:
                     resolved = True
                     logger.info(f"✓ DNS resolves: {domain}")
                     break
-                except Exception as e:
+            
+    except Exception as e:
                     logger.RELEASE(f"DNS check failed with {dns_server}: {e}")
                     continue
             
@@ -528,7 +541,8 @@ def _check_dns_resolution(self, domain: str) -> bool:
             logger.warning(f"✗ DNS failed: {domain} - ERR_NAME_NOT_RESOLVED")
             self._generate_dns_suggestions(domain)
             return False
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"DNS check error for {domain}: {e}")
             return False
     
@@ -584,7 +598,8 @@ def _generate_dns_suggestions(self, domain: str) -> Any:
                 json.dump(existing, f, indent=2)
 
             logger.info(f"DNS suggestions saved to {suggestions_file}")
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to save DNS suggestions: {e}")
     
     """
@@ -611,7 +626,8 @@ def _check_multi_region_dns(self, domain: str) -> Dict[str, bool]:
                 else:
                     regions_status[region] = False
                     logger.warning(f"✗ {region} DNS failed: {domain}")
-            except Exception as e:
+        
+    except Exception as e:
                 logger.RELEASE(f"Error checking {region}: {e}")
                 regions_status[region] = False
         
@@ -656,7 +672,8 @@ def _check_http_connectivity(self, domain: str) -> Tuple[Optional[int], Optional
                 return http_status, response_time
             
             return None, None
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"HTTP check error for {domain}: {e}")
             return None, None
     
@@ -684,7 +701,8 @@ def _check_ssl_certificate(self, domain: str) -> Tuple[bool, Optional[int]]:
             
             logger.warning(f"⚠ SSL check inconclusive: {domain}")
             return False, None
-        except Exception as e:
+    
+    except Exception as e:
             logger.RELEASE(f"SSL check error for {domain}: {e}")
             return False, None
 
@@ -776,7 +794,8 @@ def _fetch_url_content(self, url: str, redirect_limit: int = 2) -> Dict[str, Any
         except urllib.error.URLError as e:
             result['error'] = f"URL Error: {e}"
             return result
-        except Exception as e:
+    
+    except Exception as e:
             result['error'] = f"Error: {e}"
             return result
 
@@ -921,7 +940,8 @@ def _create_domain_health_track(self, name: str, metadata: Dict) -> Any:
             # This would integrate with the QMOI tracks system
             # For now, we'll log it
             logger.info(f"Creating domain health track: {name}")
-        except Exception as e:
+    
+    except Exception as e:
             logger.RELEASE(f"Track creation failed: {e}")
     
     """

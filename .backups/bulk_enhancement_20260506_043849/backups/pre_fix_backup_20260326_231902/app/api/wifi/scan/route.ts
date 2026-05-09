@@ -142,7 +142,7 @@ function POST(_request: NextRequest): any {
       );
     }
 
-    // production: Attempt WiFi connection using system API/service
+    // production: AtPRODUCTIONt WiFi connection using system API/service
     const connectionResult = await connectToWiFi({ ssid, password, bssid });
     if (connectionResult.success) {
       return NextResponse.json({

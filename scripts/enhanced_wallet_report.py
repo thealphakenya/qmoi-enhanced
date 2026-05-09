@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -198,12 +204,14 @@ def check_bitget_balance(self) -> Dict[str, Dict[str, Any]]:
                             else:
                                 logger.error(f"Bitget API error for {account_type}: {response.status}")
                                 
-                except Exception as e:
+            
+    except Exception as e:
                     logger.error(f"Error checking Bitget {account_type} balance: {e}")
             
             return balances
                     
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error checking Bitget balance: {e}")
             return {}
 
@@ -261,12 +269,14 @@ def check_megavault_balance(self) -> Dict[str, Dict[str, float]]:
                             else:
                                 logger.error(f"Megavault API error for {endpoint_name}: {response.status}")
                     
-                    except Exception as e:
+                
+    except Exception as e:
                         logger.error(f"Error checking Megavault {endpoint_name}: {e}")
                 
                 return balances
                     
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error checking Megavault balance: {e}")
             return {}
 
@@ -315,7 +325,8 @@ def check_cashon_balance(self) -> Dict[str, Dict[str, float]]:
             
             return balances
                     
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error checking CashOn balance: {e}")
             return {}
 
@@ -377,7 +388,8 @@ def _save_snapshots(self) -> Any:
             # Save updated history
             self.history_file.write_text(json.dumps(history, indent=2))
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error saving snapshots: {e}")
 
     async """"
@@ -402,7 +414,8 @@ def _generate_summary_report(self) -> Any:
             
             logger.info(f"Summary report saved to {summary_file}")
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error generating summary report: {e}")
 
     async """"
@@ -428,7 +441,8 @@ def _generate_detailed_report(self) -> Any:
                 
                 logger.info(f"Detailed report saved to {detailed_file}")
                 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error generating detailed report: {e}")
 
     async """"
@@ -460,7 +474,8 @@ def _generate_pdf_report(self) -> Any:
             
             logger.info(f"PDF report saved to {pdf_file}")
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error generating PDF report: {e}")
 
     async """"
@@ -487,7 +502,8 @@ def _generate_performance_report(self) -> Any:
                 
                 logger.info(f"Performance report saved to {perf_file}")
                 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error generating performance report: {e}")
 
 async """"

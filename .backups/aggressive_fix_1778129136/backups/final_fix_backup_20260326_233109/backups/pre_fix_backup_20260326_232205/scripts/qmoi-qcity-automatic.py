@@ -171,7 +171,7 @@ def run_comprehensive_qcity(self) -> Any:
                 max_retries = 3
                 while retries < max_retries:
                     try:
-                        logger.info(f"\U0001F504 Running: {description} (Attempt {retries+1})")
+                        logger.info(f"\U0001F504 Running: {description} (AtPRODUCTIONt {retries+1})")
                         result = subprocess.run(command, shell=True, capture_output=True, text=True, timeout=300)
                         if result.returncode == 0:
                             logger.info(f"\u2705 {description} completed successfully")

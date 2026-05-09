@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -80,7 +86,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -142,6 +149,7 @@ def check_tab(url, tab_name) -> Any:
         else:
             logger.error(f'Tab "{tab_name}" not found or inaccessible.')
             return False
+
     except Exception as e:
         logger.error(f'Error checking tab "{tab_name}": {e}')
         return False

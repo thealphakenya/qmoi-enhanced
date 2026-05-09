@@ -21,7 +21,7 @@
       "min": 45.0,
       "max": 78.0,
       "average": 64.625,
-      "stdev": 9.45572389009505,
+      "stPRODUCTION": 9.45572389009505,
       "trend": "stable",
       "datapoints": 8
     },
@@ -30,7 +30,7 @@
       "min": 52.0,
       "max": 85.0,
       "average": 73.375,
-      "stdev": 10.041876603219427,
+      "stPRODUCTION": 10.041876603219427,
       "trend": "increasing",
       "datapoints": 8
     },
@@ -39,7 +39,7 @@
       "min": 0.85,
       "max": 0.89,
       "average": 0.86625,
-      "stdev": 0.013024701806293204,
+      "stPRODUCTION": 0.013024701806293204,
       "trend": "stable",
       "datapoints": 8
     },
@@ -48,7 +48,7 @@
       "min": 0.9,
       "max": 0.93,
       "average": 0.9075,
-      "stdev": 0.011649647450214361,
+      "stPRODUCTION": 0.011649647450214361,
       "trend": "stable",
       "datapoints": 8
     },
@@ -57,7 +57,7 @@
       "min": 0.87,
       "max": 0.91,
       "average": 0.8825000000000001,
-      "stdev": 0.01581138830084191,
+      "stPRODUCTION": 0.01581138830084191,
       "trend": "stable",
       "datapoints": 8
     },
@@ -66,7 +66,7 @@
       "min": 120,
       "max": 150,
       "average": 138.75,
-      "stdev": 8.762745818846641,
+      "stPRODUCTION": 8.762745818846641,
       "trend": "stable",
       "datapoints": 8
     }

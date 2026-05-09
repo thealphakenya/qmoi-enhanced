@@ -59,7 +59,7 @@ if (!execCmd("pip --version")) {
 // ✅ Check or install PyInstaller
 let pyInstallerInstalled = execCmd("pyinstaller --version");
 if (!pyInstallerInstalled) {
-  logger.info("⏳ PyInstaller not found. Attempting to install with pip...");
+  logger.info("⏳ PyInstaller not found. AtPRODUCTIONting to install with pip...");
   const installed = execCmd("python -m pip install --user pyinstaller");
   const scriptsDir = getUserPythonScriptsDir();
 

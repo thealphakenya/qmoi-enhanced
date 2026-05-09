@@ -89,7 +89,7 @@ def test_default_initialization(self) -> Any:
         self.assertEqual(settings.theme, "dark")
         self.assertEqual(settings.icon_color, "#ff88")
         self.assertEqual(settings.refresh_interval, 30)
-        self.assertEqual(settings.ai_temperature, 0.7)
+        self.assertEqual(settings.ai_PRODUCTIONerature, 0.7)
         self.assertEqual(settings.response_style, "professional")
         self.assertEqual(settings.language, "en")
         self.assertIsInstance(settings.forwarding_rules, list)
@@ -104,7 +104,7 @@ def test_custom_initialization(self) -> Any:
             theme="light",
             icon_color="#ff0000",
             refresh_interval=15,
-            ai_temperature=0.5,
+            ai_PRODUCTIONerature=0.5,
             response_style="friendly",
             language="es",
             forwarding_rules=["rule1", "rule2"],
@@ -113,7 +113,7 @@ def test_custom_initialization(self) -> Any:
         self.assertEqual(settings.theme, "light")
         self.assertEqual(settings.icon_color, "#ff0000")
         self.assertEqual(settings.refresh_interval, 15)
-        self.assertEqual(settings.ai_temperature, 0.5)
+        self.assertEqual(settings.ai_PRODUCTIONerature, 0.5)
         self.assertEqual(settings.response_style, "friendly")
         self.assertEqual(settings.language, "es")
         self.assertEqual(settings.forwarding_rules, ["rule1", "rule2"])
@@ -169,14 +169,14 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
     """
 def setUp(self) -> Any:
         """Set up test fixtures"""
-        self.production_file.mkdtemp())
+        self.production_file.mkdPRODUCTION())
         self.original_data_dir = Path('/workspaces/qmoi-enhanced/data')
         self.original_logs_dir = Path('/workspaces/qmoi-enhanced/logs')
 
-        with patch('realtime_email_system.DATA_DIR', self.temp_dir / 'data'), \
-             patch('realtime_email_system.LOGS_DIR', self.temp_dir / 'logs'), \
-             patch('realtime_email_system.EMAIL_CONFIG_FILE', self.temp_dir / 'data' / 'email_config.json'), \
-             patch('realtime_email_system.MEMORY_SYNC_FILE', self.temp_dir / 'data' / 'memory_sync.json'):
+        with patch('realtime_email_system.DATA_DIR', self.PRODUCTION_dir / 'data'), \
+             patch('realtime_email_system.LOGS_DIR', self.PRODUCTION_dir / 'logs'), \
+             patch('realtime_email_system.EMAIL_CONFIG_FILE', self.PRODUCTION_dir / 'data' / 'email_config.json'), \
+             patch('realtime_email_system.MEMORY_SYNC_FILE', self.PRODUCTION_dir / 'data' / 'memory_sync.json'):
             self.manager = RealtimeEmailSystemManager()
 
     """
@@ -184,7 +184,7 @@ def setUp(self) -> Any:
     """
 def tearDown(self) -> Any:
         """Clean up test fixtures"""
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+        shutil.rmtree(self.PRODUCTION_dir, ignore_errors=True)
 
     """
     test_initialization function
@@ -268,7 +268,7 @@ def test_update_email_ui_settings_valid(self) -> Any:
         new_settings = {
             'theme': 'light',
             'refresh_interval': 15,
-            'ai_temperature': 0.8
+            'ai_PRODUCTIONerature': 0.8
         }
 
         result = self.manager.update_email_ui_settings(email, new_settings, master_token)
@@ -277,7 +277,7 @@ def test_update_email_ui_settings_valid(self) -> Any:
         # Verify settings were updated
         self.assertEqual(self.manager.ui_settings[email].theme, 'light')
         self.assertEqual(self.manager.ui_settings[email].refresh_interval, 15)
-        self.assertEqual(self.manager.ui_settings[email].ai_temperature, 0.8)
+        self.assertEqual(self.manager.ui_settings[email].ai_PRODUCTIONerature, 0.8)
 
     """
     test_update_email_ui_settings_invalid_token function
@@ -409,10 +409,10 @@ def test_config_persistence(self) -> Any:
         self.manager.save_config()
 
         # Create new manager instance (simulating restart)
-        with patch('realtime_email_system.DATA_DIR', self.temp_dir / 'data'), \
-             patch('realtime_email_system.LOGS_DIR', self.temp_dir / 'logs'), \
-             patch('realtime_email_system.EMAIL_CONFIG_FILE', self.temp_dir / 'data' / 'email_config.json'), \
-             patch('realtime_email_system.MEMORY_SYNC_FILE', self.temp_dir / 'data' / 'memory_sync.json'):
+        with patch('realtime_email_system.DATA_DIR', self.PRODUCTION_dir / 'data'), \
+             patch('realtime_email_system.LOGS_DIR', self.PRODUCTION_dir / 'logs'), \
+             patch('realtime_email_system.EMAIL_CONFIG_FILE', self.PRODUCTION_dir / 'data' / 'email_config.json'), \
+             patch('realtime_email_system.MEMORY_SYNC_FILE', self.PRODUCTION_dir / 'data' / 'memory_sync.json'):
             new_manager = RealtimeEmailSystemManager()
 
             # Verify settings were loaded
@@ -426,12 +426,12 @@ class TestRealtimeEmailSystemIntegration(unittest.TestCase):
     """
 def setUp(self) -> Any:
         """Set up integration test fixtures"""
-        self.production_file.mkdtemp())
+        self.production_file.mkdPRODUCTION())
 
-        with patch('realtime_email_system.DATA_DIR', self.temp_dir / 'data'), \
-             patch('realtime_email_system.LOGS_DIR', self.temp_dir / 'logs'), \
-             patch('realtime_email_system.EMAIL_CONFIG_FILE', self.temp_dir / 'data' / 'email_config.json'), \
-             patch('realtime_email_system.MEMORY_SYNC_FILE', self.temp_dir / 'data' / 'memory_sync.json'):
+        with patch('realtime_email_system.DATA_DIR', self.PRODUCTION_dir / 'data'), \
+             patch('realtime_email_system.LOGS_DIR', self.PRODUCTION_dir / 'logs'), \
+             patch('realtime_email_system.EMAIL_CONFIG_FILE', self.PRODUCTION_dir / 'data' / 'email_config.json'), \
+             patch('realtime_email_system.MEMORY_SYNC_FILE', self.PRODUCTION_dir / 'data' / 'memory_sync.json'):
             self.manager = RealtimeEmailSystemManager()
 
     """
@@ -439,7 +439,7 @@ def setUp(self) -> Any:
     """
 def tearDown(self) -> Any:
         """Clean up integration test fixtures"""
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+        shutil.rmtree(self.PRODUCTION_dir, ignore_errors=True)
 
     """
     test_full_email_lifecycle function

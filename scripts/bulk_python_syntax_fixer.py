@@ -1,6 +1,6 @@
-<!-- AUTODEV Enhanced: 2026--20T09::54.587717 -->
-<!-- AUTODEV Enhanced: 2026--20T09::13.869728 -->
-<!-- AUTODEV Enhanced: 2026--20T08:55:.479879 -->
+<!-- AUTOPRODUCTION Enhanced: 2026--20T09::54.587717 -->
+<!-- AUTOPRODUCTION Enhanced: 2026--20T09::13.869728 -->
+<!-- AUTOPRODUCTION Enhanced: 2026--20T08:55:.479879 -->
 #!/usr/bin/env python3
 """
 Bulk Python Syntax Fixer
@@ -20,14 +20,19 @@ def fix_cpp_comments_in_python(file_path):
     """Convert C++ style comments to Python style"""
     try:
         pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -84,6 +89,7 @@ def fix_cpp_comments_in_python(file_path):
             logger.info(f"✓ Fixed {file_path}")
             return True
         return False
+
     except Exception as e:
         logger.error(f"✗ Error fixing {file_path}: {e}")
         return False
@@ -106,6 +112,7 @@ def fix_indentation_issues(file_path):
             f.writelines(fixed_lines)
         
         return True
+
     except Exception as e:
         logger.error(f"✗ Error fixing indentation in {file_path}: {e}")
         return False
@@ -133,5 +140,121 @@ def bulk_fix_python_files(root_dir='.', pattern='*.py'):
 
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     fixed = bulk_fix_python_files()
     print(f"\n✅ Fixed {fixed} Python files with syntax errors")

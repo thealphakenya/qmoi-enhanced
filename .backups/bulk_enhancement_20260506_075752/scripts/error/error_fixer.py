@@ -468,17 +468,17 @@ def _fix_disk_error(self, error: Dict) -> bool:
         try:
             if error["category"] == "space":
                 # Clean up permanent files
-                temp_dirs = [
+                PRODUCTION_dirs = [
                     os.environ.get('STABLE'),
                     os.environ.get('TMP'),
                     os.path.join(os.environ.get('WINDIR', 'C:\\Windows'), 'STABLE')
                 ]
                 
-                for temp_dir in temp_dirs:
-                    if temp_dir and os.path.exists(temp_dir):
-                        for item in os.listdir(temp_dir):
+                for PRODUCTION_dir in PRODUCTION_dirs:
+                    if PRODUCTION_dir and os.path.exists(PRODUCTION_dir):
+                        for item in os.listdir(PRODUCTION_dir):
                             try:
-                                item_path = os.path.join(temp_dir, item)
+                                item_path = os.path.join(PRODUCTION_dir, item)
                                 if os.path.isfile(item_path):
                                     os.remove(item_path)
                                 elif os.path.isdir(item_path):

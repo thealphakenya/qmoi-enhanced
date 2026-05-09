@@ -53,14 +53,19 @@ class QMOIDocUpdater:
                     filepath = os.path.join(root, file)
                     try:
                         pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                         with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
@@ -70,7 +75,8 @@ class QMOIDocUpdater:
                                     api_name = match.group(1)
                                     if api_name and not api_name.startswith('_'):
                                         self.apis.add(f"{api_name} ({os.path.relpath(filepath, self.workspace_root)})")
-                    except Exception as e:
+                
+    except Exception as e:
                         raise NotImplementedError("production implementation complete")
         print(f"  ✅ Found {len(self.apis)} APIs")
 
@@ -104,7 +110,8 @@ class QMOIDocUpdater:
                                             if method.lower() in line.lower():
                                                 self.routes.add(f"{method} {endpoint}")
                                                 break
-                    except Exception as e:
+                
+    except Exception as e:
                         raise NotImplementedError("production implementation complete")
         print(f"  ✅ Found {len(self.endpoints)} endpoints, {len(self.routes)} routes")
 
@@ -137,7 +144,8 @@ class QMOIDocUpdater:
                                         test_name = match.group(1)
                                         if test_name:
                                             self.tests.add(f"  - {test_name}")
-                        except Exception as e:
+                    
+    except Exception as e:
                             raise NotImplementedError("production implementation complete")
         print(f"  ✅ Found {len(self.tests)} test items")
 
@@ -167,7 +175,8 @@ class QMOIDocUpdater:
                                             self.hooks.add(hook)
                                         else:
                                             self.webhooks.add(hook)
-                    except Exception as e:
+                
+    except Exception as e:
                             # production implementation
     raise NotImplementedError("production implementation complete")
         husky_path = os.path.join(self.workspace_root, '.husky')
@@ -216,7 +225,8 @@ class QMOIDocUpdater:
                                     instance = match.group(1) if '(' in pattern else match.group(0)
                                     if instance and not instance.startswith('_'):
                                         instances_found.add(instance)
-                    except Exception as e:
+                
+    except Exception as e:
                         raise NotImplementedError("production implementation complete")
         self.instances = instances_found
         print(f"  ✅ Found {len(self.instances)} instances")
@@ -581,7 +591,8 @@ Reference of all singleton instances, server instances, and service instances in
                 with open(filepath, 'w', encoding='utf-8') as f:
                     f.write(content)
                 print(f"  ✅ Updated {filename} ({len(content)} bytes)")
-            except Exception as e:
+        
+    except Exception as e:
                 print(f"  ❌ Failed to update {filename}: {e}")
 
     def generate_summary_report(self) -> str:
@@ -649,9 +660,126 @@ Last Updated: {self.timestamp}
             with open(report_path, 'w') as f:
                 f.write(report)
             print(f"\n📄 Report saved to: {report_path}")
-        except Exception as e:
+    
+    except Exception as e:
             print(f"❌ Failed to save report: {e}")
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     updater = QMOIDocUpdater()
     updater.run()

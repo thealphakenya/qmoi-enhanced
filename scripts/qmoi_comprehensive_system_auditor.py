@@ -40,14 +40,19 @@ def derive_endpoint_from_file(path: Path) -> str:
     for root in API_ROOTS:
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             rel = path.relative_to(root)
@@ -184,11 +189,11 @@ def update_tree_file() -> None:
         tree_text = result.stdout if result.returncode == 0 else 'Tree command unavailable or failed.\n'
     except Exception:
         tree_text = 'Tree command unavailable.\n'
-    header = f'# TREE.md - Developer Structure Reference\n\n**Auto-generated on:** {datetime.now(timezone.utc).isoformat()}\n\n'
+    header = f'# TREE.md - PRODUCTIONeloper Structure Reference\n\n**Auto-generated on:** {datetime.now(timezone.utc).isoformat()}\n\n'
     body = "## Directory Structure\n\n```\n"
     body += tree_text
     body += '\n```\n\n'
-    body += '## Developer Structures\n\n- **API Layer**: API.md, APIs_1.md, ENDPOINTS.md, ROUTES.md\n- **Test Catalog**: ALLTESTSAUTOTESTS.md\n- **Hooks**: HOOKS.md, WEBHOOKS.md, ALLHOOKSWEBHOOKS.md\n- **Documentation Inventory**: ALLMDFILESREFS.md\n- **Financial**: FINANCIALMANAGER.md, BALANCES.md\n'
+    body += '## PRODUCTIONeloper Structures\n\n- **API Layer**: API.md, APIs_1.md, ENDPOINTS.md, ROUTES.md\n- **Test Catalog**: ALLTESTSAUTOTESTS.md\n- **Hooks**: HOOKS.md, WEBHOOKS.md, ALLHOOKSWEBHOOKS.md\n- **Documentation Inventory**: ALLMDFILESREFS.md\n- **Financial**: FINANCIALMANAGER.md, BALANCES.md\n'
     tree_path.write_text(header + body, encoding='utf-8')
 
 
@@ -260,4 +265,120 @@ def main() -> None:
 
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     main()

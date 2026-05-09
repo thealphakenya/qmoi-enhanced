@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -77,7 +83,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -97,7 +104,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -111,7 +119,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -131,6 +140,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -170,7 +180,8 @@ def create_backup(self, file_path) -> Any:
                 content = f.read()
             with open(backup_path, 'w', encoding='utf-8') as f:
                 f.write(content)
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"⚠️  Could not backup {file_path}: {e}")
 
     """
@@ -213,7 +224,8 @@ def fix_file(self, file_path, issues) -> Any:
                 self.fixes_applied[str(file_path.relative_to(BASE_DIR))] = fixes
                 logger.info(f"✅ Fixed {file_path.relative_to(BASE_DIR)} ({len(fixes)} fixes)")
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"❌ Error fixing {file_path}: {e}")
 
         # Common database patterns
@@ -355,7 +367,8 @@ def run_final_cleanup(self) -> Any:
                         cleanup_count += 1
                         logger.info(f"🧹 Cleaned {file_path.relative_to(BASE_DIR)}")
 
-                except Exception as e:
+            
+    except Exception as e:
                     logger.info(f"❌ Error cleaning {file_path}: {e}")
 
         logger.info(f"✅ Final cleanup complete: {cleanup_count} files cleaned")

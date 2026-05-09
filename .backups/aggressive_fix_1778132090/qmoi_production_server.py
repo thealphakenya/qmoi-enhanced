@@ -143,8 +143,8 @@ def run_server(port=8080):
     with socketserver.TCPServer(("", port), QMOIRequestHandler) as httpd:
         logger.info(f"🚀 QMOI production Server starting on port {port}")
         logger.info(f"📱 Serving QMOI AI, QMOI Space, QCity, QVillage")
-        logger.info(f"🔗 Health check: https://localhost:{port}/health")
-        logger.info(f"📊 PWA Update API: https://localhost:{port}/api/pwa/check-update")
+        logger.info(f"🔗 Health check: https://api.qmoi-enhanced.com:{port}/health")
+        logger.info(f"📊 PWA Update API: https://api.qmoi-enhanced.com:{port}/api/pwa/check-update")
         
         try:
             httpd.serve_forever()

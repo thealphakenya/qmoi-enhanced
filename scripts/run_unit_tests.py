@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -83,7 +89,8 @@ def run_tests_from_path(path: Path) -> int:
             try:
                 obj()
                 logger.info(f'PASS: {name}')
-            except Exception as e:
+        
+    except Exception as e:
                 failures += 1
                 logger.info(f'FAIL: {name} -> {e}')
     return failures

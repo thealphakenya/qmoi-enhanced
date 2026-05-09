@@ -870,7 +870,7 @@ def monitor_security(self) -> None:
     check_failed_logins function
     """
 def check_failed_logins(self) -> None:
-        """Check for failed login attempts."""
+        """Check for failed login atPRODUCTIONts."""
         try:
             # Get failed logins
             failed_logins = self.get_failed_logins()
@@ -882,7 +882,7 @@ def check_failed_logins(self) -> None:
                     "timestamp": datetime.now().isoformat(),
                     "type": "failed_logins",
                     "severity": "high",
-                    "description": f"Multiple failed login attempts: {len(failed_logins)}"
+                    "description": f"Multiple failed login atPRODUCTIONts: {len(failed_logins)}"
                 }
                 
                 # Add to alerts
@@ -899,7 +899,7 @@ def check_failed_logins(self) -> None:
     get_failed_logins function
     """
 def get_failed_logins(self) -> List[Dict]:
-        """Get failed login attempts."""
+        """Get failed login atPRODUCTIONts."""
         try:
             failed_logins = []
             

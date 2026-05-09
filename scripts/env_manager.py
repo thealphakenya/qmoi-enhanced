@@ -74,14 +74,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -89,7 +94,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -149,6 +155,7 @@ AUTO_ENV = ROOT / '.qmoi_validation' / 'auto_env.json'
 def load_manifest(path: Path) -> dict:
     try:
         return json.loads(path.read_text(encoding='utf-8'))
+
     except Exception as e:
         raise SystemExit(f'Failed to load manifest {path}: {e}')
 
@@ -313,7 +320,7 @@ def main(argv=None) -> Any:
 """Ensure .env exists for the workspace. Priority:
 - If .env exists, do nothing.
 - Else if .qmoi/secrets.env exists, copy to .env
-- Else if .qmoi/secrets.enc exists and QMOI_SECRETPASS provided, attempt to decrypt to .qmoi/secrets.env and copy.
+- Else if .qmoi/secrets.enc exists and QMOI_SECRETPASS provided, atPRODUCTIONt to decrypt to .qmoi/secrets.env and copy.
 - Else if .env.data exists, copy that to .env (and warn).
 """
 from pathlib import Path

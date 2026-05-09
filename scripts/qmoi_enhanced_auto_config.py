@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -285,7 +291,8 @@ def verify_credentials(self) -> bool:
 
             return True
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Credential verification failed: {e}")
             return False
 
@@ -312,7 +319,8 @@ def auto_configure(self) -> Any:
                 logger.error("❌ Auto-configuration verification failed")
                 sys.exit(1)
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"❌ Auto-configuration failed: {e}")
             sys.exit(1)
 

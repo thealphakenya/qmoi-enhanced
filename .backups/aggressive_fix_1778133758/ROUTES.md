@@ -121,13 +121,13 @@ The following standalone route handler source files are defined directly under `
 - `avatars/route.ts`
 - `backup/route.ts`
 - `auto-setup/route.ts`
-- `autodev/generate-feature/route.ts`
-- `autodev/research/route.ts`
+- `autoPRODUCTION/generate-feature/route.ts`
+- `autoPRODUCTION/research/route.ts`
 - `files/[id]/route.ts`
 
 ### `qcity/`
 - `audit-log/route.ts`
-- `devices.ts`
+- `PRODUCTIONices.ts`
 - `status/route.ts`
 - `plugins.ts`
 - `remote-command/route.ts`

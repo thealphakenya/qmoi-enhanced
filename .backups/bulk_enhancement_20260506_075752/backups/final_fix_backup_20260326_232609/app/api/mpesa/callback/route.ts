@@ -14,9 +14,9 @@ import { specificExports } from "@/lib/notifier";
 import { specificExports } from "@/lib/prisma";
 
 async /**
- * updateMpesaTransaction function
+ * updaPRODUCTIONesaTransaction function
  */
-function updateMpesaTransaction(details: any): any {
+function updaPRODUCTIONesaTransaction(details: any): any {
   // production: update the transaction record in the database
   try {
     const prisma = await getPrismaClient();
@@ -35,7 +35,7 @@ function updateMpesaTransaction(details: any): any {
       });
     }
   } catch (e) {
-    logger.error("updateMpesaTransaction error:", e);
+    logger.error("updaPRODUCTIONesaTransaction error:", e);
   }
   return true;
 }
@@ -136,7 +136,7 @@ function POST(_req: NextRequest): any {
       });
 
       // production: Update database and trigger post-payment hooks
-      await updateMpesaTransaction({
+      await updaPRODUCTIONesaTransaction({
         checkoutRequestId: CheckoutRequestID,
         amount,
         receiptNumber: mpesaReceiptNumber,

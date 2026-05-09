@@ -55,13 +55,13 @@ class ProductionFileManager:
                 file_path.rename(backup_path)
                 logger.debug(f"Created backup: {backup_path}")
 
-            temp_file = file_path.with_suffix('.tmp')
+            PRODUCTION_file = file_path.with_suffix('.tmp')
             file_path.parent.mkdir(parents=True, exist_ok=True)
 
-            with open(temp_file, 'w', encoding='utf-8') as f:
+            with open(PRODUCTION_file, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=indent, ensure_ascii=False)
 
-            temp_file.rename(file_path)
+            PRODUCTION_file.rename(file_path)
             logger.debug(f"Successfully wrote JSON to {file_path}")
 
         except Exception as e:
@@ -94,13 +94,13 @@ class ProductionFileManager:
                 backup_path = file_path.with_suffix('.bak')
                 file_path.rename(backup_path)
 
-            temp_file = file_path.with_suffix('.tmp')
+            PRODUCTION_file = file_path.with_suffix('.tmp')
             file_path.parent.mkdir(parents=True, exist_ok=True)
 
-            with open(temp_file, 'w', encoding=encoding) as f:
+            with open(PRODUCTION_file, 'w', encoding=encoding) as f:
                 f.write(content)
 
-            temp_file.rename(file_path)
+            PRODUCTION_file.rename(file_path)
 
         except Exception as e:
             logger.error(f"Error writing text file {file_path}: {e}")
@@ -242,16 +242,16 @@ class ProductionFileManager:
             logger.error(f"Failed to validate file integrity: {e}")
             return False
 
-    def clean_temp_files(self, pattern: str = "*.tmp", older_than_hours: int = 24) -> int:
-        """Clean up temporary files"""
+    def clean_PRODUCTION_files(self, pattern: str = "*.tmp", older_than_hours: int = 24) -> int:
+        """Clean up PRODUCTIONorary files"""
         cleaned = 0
         cutoff_time = datetime.now().timestamp() - (older_than_hours * 3600)
-        for temp_file in self.base_dir.rglob(pattern):
+        for PRODUCTION_file in self.base_dir.rglob(pattern):
             try:
-                if temp_file.stat().st_mtime < cutoff_time:
-                    temp_file.unlink()
+                if PRODUCTION_file.stat().st_mtime < cutoff_time:
+                    PRODUCTION_file.unlink()
                     cleaned += 1
             except Exception as e:
-                logger.warning(f"Failed to remove temp file {temp_file}: {e}")
-        logger.info(f"Cleaned {cleaned} temporary files")
+                logger.warning(f"Failed to remove PRODUCTION file {PRODUCTION_file}: {e}")
+        logger.info(f"Cleaned {cleaned} PRODUCTIONorary files")
         return cleaned

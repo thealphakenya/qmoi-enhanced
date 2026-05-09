@@ -33,7 +33,7 @@ class Phase2Setup:
         
         if missing:
             print(f"  ⚠️  Missing variables: {', '.join(missing)}")
-            print("  💡 Copy from .env.production.template and set actual values")
+            print("  💡 Copy from .env.production.PRODUCTIONlate and set actual values")
             self.errors.append(f"Missing env vars: {missing}")
         else:
             print("  ✅ All environment variables set")
@@ -183,20 +183,20 @@ CREATE INDEX idx_audit_logs_created_at ON audit_logs(created_at DESC);
             print(f"  ⓘ CashOn API test skipped: {e}")
 
     def create_env_file(self):
-        """Create .env.production from template if not exists."""
+        """Create .env.production from PRODUCTIONlate if not exists."""
         print("\n📝 Phase 2D: Setting up Environment File...")
         
-        template = PROJECT_ROOT / ".env.production.template"
+        PRODUCTIONlate = PROJECT_ROOT / ".env.production.PRODUCTIONlate"
         target = PROJECT_ROOT / ".env.production"
         
         if target.exists():
             print("  ✅ .env.production already exists")
             self.completed_steps.append("env_file")
-        elif template.exists():
-            print("  ℹ️  Please copy .env.production.template to .env.production")
+        elif PRODUCTIONlate.exists():
+            print("  ℹ️  Please copy .env.production.PRODUCTIONlate to .env.production")
             print("     and fill in production credentials")
         else:
-            print("  ❌ Template file not found")
+            print("  ❌ PRODUCTIONlate file not found")
 
     def run_phase_2(self):
         """Execute all Phase 2 setup steps."""

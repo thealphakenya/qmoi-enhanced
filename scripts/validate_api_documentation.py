@@ -29,7 +29,7 @@ REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
 LION_START = '<!-- LION_VALIDATION_START -->'
 LION_END = '<!-- LION_VALIDATION_END -->'
-LION_BLOCK_TEMPLATE = """<!-- LION_VALIDATION_START -->
+LION_BLOCK_PRODUCTIONLATE = """<!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -106,7 +106,8 @@ class APIDocumentationValidator:
                 matches = re.findall(pattern, content, re.IGNORECASE)
                 methods.extend(matches)
 
-        except Exception as e:
+    
+    except Exception as e:
             print(f"Error reading {route_path}: {e}")
 
         return list(set(methods))  # Remove duplicates
@@ -138,7 +139,8 @@ class APIDocumentationValidator:
             for method, path in matches:
                 endpoints.add(f"{method.upper()} {path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             print(f"Error reading {md_file}: {e}")
 
         return endpoints
@@ -218,7 +220,8 @@ class APIDocumentationValidator:
 
             print(f"Updated {md_file} with {len(endpoints)} missing endpoints")
 
-        except Exception as e:
+    
+    except Exception as e:
             print(f"Error updating {md_file}: {e}")
 
     def mark_balances_with_lion(self) -> None:
@@ -236,7 +239,7 @@ class APIDocumentationValidator:
 
             # Add lion validation block
             ts = datetime.utcnow().isoformat()
-            lion_block = LION_BLOCK_TEMPLATE.format(ts=ts)
+            lion_block = LION_BLOCK_PRODUCTIONLATE.format(ts=ts)
 
             # Insert at the beginning after any frontmatter
             lines = content.split('\n')
@@ -257,7 +260,8 @@ class APIDocumentationValidator:
 
             print(f"Marked {BALANCES_MD} with lion validation")
 
-        except Exception as e:
+    
+    except Exception as e:
             print(f"Error marking {BALANCES_MD}: {e}")
 
     def mark_validated_files(self) -> None:
@@ -281,7 +285,7 @@ class APIDocumentationValidator:
                     content = re.sub(rf'{re.escape(LION_START)}.*?{re.escape(LION_END)}', '', content, flags=re.DOTALL)
 
                     # Add lion validation block
-                    lion_block = LION_BLOCK_TEMPLATE.format(ts=ts)
+                    lion_block = LION_BLOCK_PRODUCTIONLATE.format(ts=ts)
 
                     # Insert at the beginning after any frontmatter
                     lines = content.split('\n')
@@ -302,7 +306,8 @@ class APIDocumentationValidator:
 
                     print(f"Marked {md_file.name} with lion validation")
 
-                except Exception as e:
+            
+    except Exception as e:
                     print(f"Error marking {md_file}: {e}")
 
     def generate_report(self, validation_results: Dict[str, any]) -> Path:
@@ -380,5 +385,121 @@ def main():
 
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     main()
     """production health monitoring system"""

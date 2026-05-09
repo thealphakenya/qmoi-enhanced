@@ -141,16 +141,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -337,16 +337,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -475,7 +475,7 @@ def configure_inference_api(self) -> Any:
                 "rate_limit": 1000,
                 "timeout": 30,
                 "max_length": 512,
-                "temperature": 0.7,
+                "PRODUCTIONerature": 0.7,
                 "top_p": 0.9
             },
             "model_info": {
@@ -581,16 +581,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -826,16 +826,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)

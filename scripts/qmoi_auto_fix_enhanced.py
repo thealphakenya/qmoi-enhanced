@@ -25,7 +25,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -62,7 +63,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -82,7 +84,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -96,7 +99,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -177,7 +181,8 @@ def load_configurations(self) -> Any:
                     self.error_patterns = json.load(f)
             
             logging.info("Configurations loaded successfully")
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error loading configurations: {e}")
     
     """
@@ -218,7 +223,8 @@ def parse_md_file(self, file_path: Path) -> Dict[str, Any]:
                 "file_refs": [ref[0] for ref in file_refs],
                 "last_modified": file_path.stat().st_mtime
             }
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error parsing {file_path}: {e}")
             return {"path": str(file_path), "error": str(e)}
     
@@ -258,7 +264,8 @@ def verify_claim(self, claim: str, file_path: Path) -> Dict[str, Any]:
                 "content_matches": content_matches,
                 "verified": len(found_files) > 0 or len(content_matches) > 0
             }
-        except Exception as e:
+    
+    except Exception as e:
             return {
                 "claim": claim,
                 "file": str(file_path),
@@ -395,7 +402,8 @@ def execute(self) -> Dict[str, Any]:
                 f.write(content)
             
             return {"success": True, "file": str(file_path)}
-        except Exception as e:
+    
+    except Exception as e:
             return {"success": False, "error": str(e)}
     
     """
@@ -425,7 +433,8 @@ def update_md_file(self, file_path: Path, fixes: List[Dict[str, Any]]) -> bool:
                 f.write(content)
             
             return True
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error updating {file_path}: {e}")
             return False
     
@@ -530,7 +539,8 @@ def fix_manual_errors(self, errors: List[Dict[str, Any]]) -> List[Dict[str, Any]
                         "original": original_line,
                         "fixed": lines[line_num]
                     })
-            except Exception as e:
+        
+    except Exception as e:
                 logging.error(f"Error fixing {error['file']}: {e}")
         
         return fixes
@@ -610,7 +620,8 @@ def save_report(self, report: Dict[str, Any]) -> Any:
                 json.dump(report, f, indent=2)
             
             logging.info(f"Report saved to {report_file}")
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error saving report: {e}")
     
     """
@@ -669,7 +680,8 @@ def run_comprehensive_fix(self) -> Any:
             logging.info("QMOI Enhanced Auto-Fix completed successfully")
             return final_report
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error in comprehensive fix: {e}")
             self.report["status"] = "error"
             self.report["error"] = str(e)

@@ -25,7 +25,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -62,7 +63,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -82,7 +84,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -96,7 +99,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -171,7 +175,8 @@ def load_config(self) -> Dict[str, Any]:
                 with open(config_file, 'r') as f:
                     file_config = json.load(f)
                     config.update(file_config)
-            except Exception as e:
+        
+    except Exception as e:
                 logger.warning(f"Could not load {config_file}: {e}")
         
         return config
@@ -241,7 +246,8 @@ def _monitoring_loop(self) -> Any:
                 
                 time.sleep(self.config.get('monitoring_interval', 2))
                 
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Monitoring error: {e}")
                 time.sleep(5)
     
@@ -265,7 +271,8 @@ def collect_system_stats(self) -> Dict[str, Any]:
                 'disk_total': disk.total,
                 'load_average': psutil.getloadavg() if hasattr(psutil, 'getloadavg') else None
             }
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Could not collect system stats: {e}")
             return {}
     
@@ -296,7 +303,8 @@ def collect_qmoi_stats(self) -> Dict[str, Any]:
             
             return qmoi_stats
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Could not collect QMOI stats: {e}")
             return {}
     
@@ -326,7 +334,8 @@ def collect_process_stats(self) -> Dict[str, Any]:
                 'qmoi_processes': [p for p in processes if 'qmoi' in p['name'].lower()]
             }
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Could not collect process stats: {e}")
             return {}
     
@@ -345,7 +354,8 @@ def collect_network_stats(self) -> Dict[str, Any]:
                 'network_interfaces': psutil.net_if_addrs()
             }
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Could not collect network stats: {e}")
             return {}
     
@@ -379,7 +389,8 @@ def collect_file_stats(self) -> Dict[str, Any]:
                 'recent_logs': log_files
             }
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Could not collect file stats: {e}")
             return {}
     
@@ -391,7 +402,8 @@ def save_stats(self, stats: Dict[str, Any]) -> Any:
         try:
             with open(stats_file, 'w') as f:
                 json.dump(stats, f, indent=2, default=str)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Could not save stats: {e}")
     
     """
@@ -432,7 +444,8 @@ def print_summary(self, stats: Dict[str, Any]) -> Any:
             
             logger.info(f"{'='*60}\n")
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Could not print summary: {e}")
     
     """
@@ -482,7 +495,8 @@ def broadcast_stats() -> Any:
                             # Remove disconnected clients
                             self.websocket_clients -= disconnected_clients
                             
-                    except Exception as e:
+                
+    except Exception as e:
                         logger.error(f"WebSocket broadcast error: {e}")
                     
                     await asyncio.sleep(1)
@@ -506,7 +520,8 @@ def run_websocket_server() -> Any:
             websocket_thread = threading.Thread(target=run_websocket_server, daemon=True)
             websocket_thread.start()
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Could not start WebSocket server: {e}")
     
     """
@@ -662,18 +677,18 @@ def generate_dashboard_html(self) -> Any:
     
     <script>
         let ws = null;
-        let reconnectAttempts = 0;
-        const maxReconnectAttempts = 5;
+        let reconnectAtPRODUCTIONts = 0;
+        const maxReconnectAtPRODUCTIONts = 5;
         
-        # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function connectWebSocket() {{
             ws = new WebSocket('wss://qmoi.ai:8080');
             
             ws.onopen = function() {{
                 document.getElementById('websocket-status').className = 'websocket-status websocket-connected';
-                reconnectAttempts = 0;
+                reconnectAtPRODUCTIONts = 0;
             }};
             
             ws.onmessage = function(event) {{
@@ -684,8 +699,8 @@ function connectWebSocket() {{
             ws.onclose = function() {{
                 document.getElementById('websocket-status').className = 'websocket-status';
                 
-                if (reconnectAttempts < maxReconnectAttempts) {{
-                    reconnectAttempts++;
+                if (reconnectAtPRODUCTIONts < maxReconnectAtPRODUCTIONts) {{
+                    reconnectAtPRODUCTIONts++;
                     setTimeout(connectWebSocket, 2000);
                 }}
             }};
@@ -695,9 +710,9 @@ function connectWebSocket() {{
             }};
         }}
         
-        # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function updateDashboard(data) {{
             # Update system stats
             if (data.system) {{
@@ -753,7 +768,8 @@ def run_dashboard_server() -> Any:
             dashboard_thread = threading.Thread(target=run_dashboard_server, daemon=True)
             dashboard_thread.start()
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Could not start dashboard server: {e}")
     
     """
@@ -774,7 +790,8 @@ def run(self) -> Any:
                 
         except KeyboardInterrupt:
             logger.info("Monitor interrupted by user")
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Monitor failed: {e}")
         finally:
             self.cleanup()
@@ -818,6 +835,7 @@ def main() -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

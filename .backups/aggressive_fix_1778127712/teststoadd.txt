@@ -209,7 +209,7 @@ Measures stability under challenging conditions.
 
 FGSM, PGD, or data poisoning [PRODUCTION_IMPLEMENTED]s
 
-Prompt injection or jailbreak attempts (for LLMs)
+Prompt injection or jailbreak atPRODUCTIONts (for LLMs)
 
 
 6.2 Noise Testing

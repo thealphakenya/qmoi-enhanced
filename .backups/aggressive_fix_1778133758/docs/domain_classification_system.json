@@ -44,7 +44,7 @@
         "api.github.com",
         "cdn.jsdelivr.net",
         "unpkg.com",
-        "cdn.skypack.dev",
+        "cdn.skypack.PRODUCTION",
         "esm.sh"
       ]
     },
@@ -67,8 +67,8 @@
   "classification_rules": {
     "identifier_patterns": {
       "qmoi_owned": [
-        ".*\\.qmoi\\.(com|ai|dev)$",
-        "^qmoi\\.(com|ai|dev)$",
+        ".*\\.qmoi\\.(com|ai|PRODUCTION)$",
+        "^qmoi\\.(com|ai|PRODUCTION)$",
         "^q[a-z]+\\.(ai|io|com)$",
         ".*qvillage.*",
         ".*qcity.*"
@@ -175,12 +175,12 @@
   "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:14:34.581091",
-  "autodev": {
+  "autoPRODUCTION": {
     "enhanced": true,
     "timestamp": "2026-04-20T08:55:06.578634",
     "version": "2026-04-20"
   },
-  "production_ready": true,
+  "PRODUCTION_READY": true,
   "last_production_enhancement": "2026-04-22T04:58:51.889336",
-  "autodev_version": "2026-04-20-aggressive"
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
 }

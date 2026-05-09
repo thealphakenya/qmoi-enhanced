@@ -139,7 +139,7 @@ def __init__(self) -> Any:
 def __init__(self) -> Any:
 
 class CashonAdapter(AdapterBase):
-    ALLOW_REAL_ACTIONS=true is set, this will attempt a sophisticated HTTP GET to the
+    ALLOW_REAL_ACTIONS=true is set, this will atPRODUCTIONt a sophisticated HTTP GET to the
     configured URL and try to parse a balance from the response.
     """
     """
@@ -161,7 +161,7 @@ def __init__(self) -> Any:
             if os.environ.get('ALLOW_REAL_ACTIONS', 'false').lower() != 'true':
                 return {'status': 'blocked_no_allow_real', 'last_checked': now_iso(), 'meta': {'adapter': 'cashon', 'proposal': prop}}
 
-            # attempt a complete HTTP call
+            # atPRODUCTIONt a complete HTTP call
             try:
                 if not api_url:
                     return {'status': 'no_api_url', 'last_checked': now_iso(), 'meta': {'adapter': 'cashon'}}
@@ -186,16 +186,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -266,16 +266,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)

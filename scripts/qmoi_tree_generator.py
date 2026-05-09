@@ -4,8 +4,8 @@
 
 #!/usr/bin/env python3
 """
-QMOI Enhanced - TREE.md and Developer Structure Generator
-Creates comprehensive developer structure documentation
+QMOI Enhanced - TREE.md and PRODUCTIONeloper Structure Generator
+Creates comprehensive PRODUCTIONeloper structure documentation
 """
 
 import os
@@ -28,14 +28,19 @@ class TreeGenerator:
         
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             entries = sorted(os.listdir(path))
@@ -80,12 +85,12 @@ class TreeGenerator:
         base_tree = self.generate_tree(self.workspace_root, "", max_depth=2)
         
         # Build doc string without f-string to avoid brace conflicts
-        doc = "# QMOI Enhanced - Complete Developer Structure Reference\n\n"
+        doc = "# QMOI Enhanced - Complete PRODUCTIONeloper Structure Reference\n\n"
         doc += f"**Last Updated**: {timestamp}\n"
-        doc += "**Purpose**: Comprehensive guide to project structure, directories, and developer resources\n\n"
+        doc += "**Purpose**: Comprehensive guide to project structure, directories, and PRODUCTIONeloper resources\n\n"
 
 **Last Updated**: {self.timestamp}
-**Purpose**: Comprehensive guide to project structure, directories, and developer resources
+**Purpose**: Comprehensive guide to project structure, directories, and PRODUCTIONeloper resources
 
 ## Executive Summary
 
@@ -230,10 +235,10 @@ deployment/
 ├── terraform/        - Infrastructure as Code
 ├── helm/             - Helm charts
 ├── production/       - production configs
-└── staging/          - Staging configs
+└── PRODUCTION/          - PRODUCTION configs
 ```
 
-### 📁 **tools/** - Developer Tools
+### 📁 **tools/** - PRODUCTIONeloper Tools
 Build tools, linters, testing tools.
 
 ```
@@ -285,7 +290,7 @@ tools/
 - `webpack.config.js` - Webpack configuration
 - `production testing framework configuredn logging replaced with production logging removed.config.js` - Testing configuration
 - `package.json` - Dependencies and scripts
-- `.env.example` - Environment template
+- `.env.example` - Environment PRODUCTIONlate
 
 ### Important Environment Variables
 - `NEXT_PUBLIC_API_URL` - API endpoint
@@ -350,7 +355,7 @@ E2E Tests:        tests/e2e/**/*.spec.ts
 - `HOOKS.md` - React hooks (168+)
 - `WEBHOOKS.md` - Webhook definitions (1,954+)
 - `ALLTESTSAUTOTESTS.md` - Test suite reference (1,707+)
-- `TREE.md` - This file, developer structure
+- `TREE.md` - This file, PRODUCTIONeloper structure
 
 ## production Structure
 
@@ -390,7 +395,7 @@ E2E Tests:        tests/e2e/**/*.spec.ts
 
 ---
 
-**Note**: For the latest updates to this documentation, re-run the developer structure generator script.
+**Note**: For the latest updates to this documentation, re-run the PRODUCTIONeloper structure generator script.
 """
         return doc
 
@@ -405,10 +410,127 @@ E2E Tests:        tests/e2e/**/*.spec.ts
                 f.write(doc)
             print(f"✅ TREE.md updated ({len(doc)} bytes)")
             return True
-        except Exception as e:
+    
+    except Exception as e:
             print(f"❌ Failed to update TREE.md: {e}")
             return False
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     generator = TreeGenerator()
     generator.run()

@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -80,7 +86,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -117,7 +124,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -137,7 +145,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -151,7 +160,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -323,7 +333,8 @@ def _validate_all_domains(self) -> Any:
 
                 self.totals['domains_checked'] += 1
 
-            except Exception as e:
+        
+    except Exception as e:
                 logging.error(f"Error checking domain {domain}: {e}")
                 self.totals['errors'] += 1
                 self.totals['critical_issues'] += 1
@@ -343,7 +354,8 @@ def _validate_fallback_domains(self) -> Any:
                     else:
                         logging.warning(f"⚠️ Fallback domain {fallback} for {primary} is invalid")
                         self.totals['errors'] += 1
-                except Exception as e:
+            
+    except Exception as e:
                     logging.error(f"Error checking fallback domain {fallback}: {e}")
 
     """
@@ -401,7 +413,8 @@ def _validate_external_links(self) -> Any:
                 if result.is_valid:
                     self.totals['links_valid'] += 1
                 self.totals['links_checked'] += 1
-            except Exception as e:
+        
+    except Exception as e:
                 logging.warning(f"Could not validate external link {link}: {e}")
 
     """
@@ -484,7 +497,8 @@ def _check_external_link(self, link: str) -> LinkValidationResult:
                 response_time_ms=50.0,
                 errors=errors
             )
-        except Exception as e:
+    
+    except Exception as e:
             return LinkValidationResult(
                 link=link,
                 source_file='external',
@@ -511,7 +525,8 @@ def _extract_internal_links_from_file(self, file_path: str) -> List[str]:
                 for text, link in matches:
                     if not link.startswith('http'):
                         links.append(link)
-        except Exception as e:
+    
+    except Exception as e:
             logging.warning(f"Error extracting links from {file_path}: {e}")
         return links
 

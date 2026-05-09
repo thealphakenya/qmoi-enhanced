@@ -342,7 +342,7 @@ STATUS: ✅ ALL production IMPLEMENTATIONS REPLACED
 ─────────────────────────────────────────────────────────────────────────────
 """
 
-        report_file = BASE_DIR / "reports" / "ENHANCED_production_FIXES.txt"
+        report_file = BASE_DIR / "reports" / "ENHANCED_PRODUCTION_FIXEDES.txt"
         with open(report_file, 'w') as f:
             f.write(report)
 

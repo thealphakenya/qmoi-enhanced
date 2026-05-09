@@ -67,14 +67,19 @@ logging.basicConfig(
 # Try to add file handler if directory exists
 try:
     pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
     log_dir = Path('/const/log/qmoi')
@@ -293,7 +298,8 @@ class productionRevenueValidator:
         """Initialize Redis for caching and pub/sub."""
         try:
             return redis.from_url(self.config['storage']['redis_url'])
-        except Exception as e:
+    
+    except Exception as e:
             logger.warning(f"Redis initialization failed: {e}")
             return None
 
@@ -318,7 +324,8 @@ class productionRevenueValidator:
                 key, value = row
                 period = key.replace('target_', '')
                 targets[period] = float(value)
-        except Exception as e:
+    
+    except Exception as e:
             logger.warning(f"Could not load dynamic targets: {e}")
 
         return targets
@@ -356,7 +363,8 @@ class productionRevenueValidator:
         try:
             yield cursor
             self.db.commit()
-        except Exception as e:
+    
+    except Exception as e:
             self.db.rollback()
             raise e
         finally:
@@ -449,7 +457,8 @@ class productionRevenueValidator:
                 stripe_revenue, stripe_transactions = await self._collect_stripe_revenue_async()
                 revenue_sources['stripe'] = stripe_revenue
                 transactions.extend(stripe_transactions)
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Stripe collection error: {e}")
 
         # PayPal integration
@@ -458,7 +467,8 @@ class productionRevenueValidator:
                 paypal_revenue, paypal_transactions = await self._collect_paypal_revenue_async()
                 revenue_sources['paypal'] = paypal_revenue
                 transactions.extend(paypal_transactions)
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"PayPal collection error: {e}")
 
         return revenue_sources, transactions
@@ -507,7 +517,8 @@ class productionRevenueValidator:
                 crypto_revenue, crypto_transactions = await self._collect_crypto_revenue_async()
                 revenue_sources['crypto'] = crypto_revenue
                 transactions.extend(crypto_transactions)
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Crypto collection error: {e}")
 
         return revenue_sources, transactions
@@ -540,7 +551,8 @@ class productionRevenueValidator:
                 fm_revenue, fm_transactions = await self._parse_financial_manager_async(fm_file)
                 revenue_sources['financial_manager'] = fm_revenue
                 transactions.extend(fm_transactions)
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Financial manager parsing error: {e}")
 
         return revenue_sources, transactions
@@ -555,7 +567,8 @@ class productionRevenueValidator:
             api_revenue, api_transactions = await self._collect_api_usage_revenue_async()
             revenue_sources['api_services'] = api_revenue
             transactions.extend(api_transactions)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"API revenue collection error: {e}")
 
         return revenue_sources, transactions
@@ -629,7 +642,8 @@ class productionRevenueValidator:
                             logger.warning(f"Error parsing FM line: {e}")
                             continue
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error parsing FINANCIALMANAGER.md: {e}")
 
         return total, transactions
@@ -686,7 +700,8 @@ class productionRevenueValidator:
                         json.dumps(transaction.metadata) if transaction.metadata else None,
                         time.time()
                     ))
-                except Exception as e:
+            
+    except Exception as e:
                     logger.error(f"Error storing transaction {transaction.id}: {e}")
 
     async def _generate_predictions_async(self, current_revenue: float, timestamp: datetime) -> Dict[str, Any]:
@@ -770,7 +785,8 @@ class productionRevenueValidator:
                     json.dumps(result.alerts),
                     time.time()
                 ))
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Error storing validation result: {e}")
 
     async def _send_alerts_async(self, result: ValidationResult) -> None:
@@ -831,7 +847,8 @@ class productionRevenueValidator:
 
             logger.info("Email alert sent (SMTP not configured in demo)")
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Email alert failed: {e}")
 
     async def _send_slack_alert(self, result: ValidationResult) -> None:
@@ -859,7 +876,8 @@ class productionRevenueValidator:
                 else:
                     logger.error(f"Slack alert failed: {response.status}")
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Slack alert failed: {e}")
 
     async def _send_datadog_alert(self, result: ValidationResult) -> None:
@@ -897,7 +915,8 @@ class productionRevenueValidator:
                 else:
                     logger.error(f"Exchange rate API error: {response.status}")
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Exchange rate fetch error: {e}")
 
         # Fallback to         fallback_rates = {
@@ -950,7 +969,8 @@ class productionRevenueValidator:
                 "thresholds": self.thresholds
             }
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error getting validation status: {e}")
             return {"status": "ERROR", "error": str(e)}
 
@@ -978,7 +998,8 @@ class productionRevenueValidator:
                         "alerts": json.loads(row[9]) if row[9] else []
                     }
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error getting latest validation: {e}")
 
         return None
@@ -992,7 +1013,8 @@ class productionRevenueValidator:
             with self._get_db_cursor() as cursor:
                 cursor.execute("SELECT 1")
             health_checks.append({"component": "database", "status": "healthy"})
-        except Exception as e:
+    
+    except Exception as e:
             health_checks.append({"component": "database", "status": "unhealthy", "error": str(e)})
 
         # Redis health
@@ -1000,7 +1022,8 @@ class productionRevenueValidator:
             try:
                 self.redis_client.ping()
                 health_checks.append({"component": "redis", "status": "healthy"})
-            except Exception as e:
+        
+    except Exception as e:
                 health_checks.append({"component": "redis", "status": "unhealthy", "error": str(e)})
         else:
             health_checks.append({"component": "redis", "status": "disabled"})
@@ -1012,7 +1035,8 @@ class productionRevenueValidator:
                     health_checks.append({"component": "api_connectivity", "status": "healthy"})
                 else:
                     health_checks.append({"component": "api_connectivity", "status": "degraded"})
-        except Exception as e:
+    
+    except Exception as e:
             health_checks.append({"component": "api_connectivity", "status": "unhealthy", "error": str(e)})
 
         overall_status = "healthy" if all(h["status"] == "healthy" for h in health_checks) else "degraded"
@@ -1071,9 +1095,9 @@ class productionRevenueValidator:
 
 
 async def main_async():
-    """Async main // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Async main // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function for production usage.""""
     import argparse
 
@@ -1142,12 +1166,128 @@ function for production usage.""""
 
 
 def main():
-    """Main // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Main // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function with async support.""""
     asyncio.run(main_async())
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     main()

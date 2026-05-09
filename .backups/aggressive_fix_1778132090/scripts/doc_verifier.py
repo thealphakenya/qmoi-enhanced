@@ -339,9 +339,9 @@ def create_missing_implementation(self, claim: str, md_file_path: str) -> Dict[s
 
 import { specificExports } from 'next/server';
 
-export async // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+export async // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function GET(request: NextRequest) {{
   try {{
     # DONE: Implement {claim} functionality
@@ -355,9 +355,9 @@ function GET(request: NextRequest) {{
   }}
 }}
 
-export async // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+export async // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function POST(request: NextRequest) {{
   try {{
     const body = await request.json();

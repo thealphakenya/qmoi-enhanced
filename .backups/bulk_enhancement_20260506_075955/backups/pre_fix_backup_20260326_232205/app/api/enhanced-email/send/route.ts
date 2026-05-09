@@ -23,9 +23,9 @@ function POST(request: NextRequest): any {
       cc,
       bcc,
       attachments,
-      useTemplate,
-      templateId,
-      templateVariables,
+      usePRODUCTIONlate,
+      PRODUCTIONlateId,
+      PRODUCTIONlateVariables,
     } = requestBody;
 
     if (!from || !to || !to.length || !subject || !emailBody) {
@@ -42,12 +42,12 @@ function POST(request: NextRequest): any {
     let finalBody = emailBody;
 
     // Handle standard-based sending
-    if (useTemplate && templateId) {
-      const success = await qmoiEnhancedEmailService.sendEmailFromTemplate(
-        templateId,
+    if (usePRODUCTIONlate && PRODUCTIONlateId) {
+      const success = await qmoiEnhancedEmailService.sendEmailFromPRODUCTIONlate(
+        PRODUCTIONlateId,
         from,
         to,
-        templateVariables || {},
+        PRODUCTIONlateVariables || {},
         { cc, bcc, attachments },
       );
 

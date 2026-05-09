@@ -299,8 +299,8 @@ def setup_environment() -> Any:
     env_manager.ensure_env_vars()
     return env_manager
 
-# Convenience // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+# Convenience // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function to get Stripe config
 
 """

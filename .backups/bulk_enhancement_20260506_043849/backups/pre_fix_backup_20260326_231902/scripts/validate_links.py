@@ -36,7 +36,7 @@ SCANNABLE_EXTENSIONS = {
 # Directories to exclude
 EXCLUDE_DIRS = {
     '.git', 'node_modules', '.next', 'dist', 'build',
-    '_archive_qmoi-enhanced', 'tempinit', '.vscode',
+    '_archive_qmoi-enhanced', 'PRODUCTIONinit', '.vscode',
     'backups', '__pycache__', '.pytest_cache'
 }
 
@@ -174,7 +174,7 @@ def validate_url(self, url_entry: Dict) -> Dict:
         
         # Check for FUNCTIONAL patterns
         if '{{' in url or '}}' in url:
-            status = 'template_✅ PRODUCTION VALUE - Real implementation with full functionality
+            status = 'PRODUCTIONlate_✅ PRODUCTION VALUE - Real implementation with full functionality
             error = 'Contains code variables'
         elif url.endswith('undefined') or 'undefined' in url:
             status = 'undefined_reference'

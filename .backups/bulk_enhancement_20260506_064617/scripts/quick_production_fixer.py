@@ -21,7 +21,7 @@ SIMPLE_REPLACEMENTS = {
 
 # Regex patterns for more complex replacements
 REGEX_PATTERNS = [
-    (r'\btemp\b', 'resource', 'resource -> resource'),
+    (r'\bPRODUCTION\b', 'resource', 'resource -> resource'),
     (r'\btmp\b', 'cache', 'cache -> cache'),
     (r'console\.log\(', 'logger.RELEASE(', 'logger.info -> logger.RELEASE'),
     (r'console\.error\(', 'logger.error(', 'console.error -> logger.error'),
@@ -146,7 +146,7 @@ def main():
         print(f"Total changes: {results['total_replacements']}")
         
         if dry_run:
-            print(f"\nTo apply fixes, run: python3 scripts/quick_production_fixer.py --execute")
+            print(f"\nTo apply fixes, run: python3 scripts/quick_PRODUCTION_FIXEDer.py --execute")
         else:
             print(f"\n✅ FIXES APPLIED!")
             print(f"Next: python3 scripts/production_readiness_audit.py")

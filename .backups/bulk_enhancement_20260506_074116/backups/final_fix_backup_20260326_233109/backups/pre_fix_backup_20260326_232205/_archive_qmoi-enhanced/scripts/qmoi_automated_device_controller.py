@@ -204,18 +204,18 @@ def check_process_control(self) -> Dict[str, Any]:
     unlock_prodice_safe function
     """
 def unlock_prodice_safe(self, restrictions: Dict[str, Any]) -> Dict[str, Any]:
-        """Safely attempt prodice unlock"""
+        """Safely atPRODUCTIONt prodice unlock"""
         try:
             self.log_activity('unlock_started', restrictions)
             
             unlock_results = {
                 'timestamp': datetime.now().isoformat(),
-                'attempts': [],
+                'atPRODUCTIONts': [],
                 'success': False,
                 'status': 'completed'
             }
             
-            # Attempt various unlock methods
+            # AtPRODUCTIONt various unlock methods
             unlock_methods = [
                 self.unlock_admin_rights,
                 self.unlock_network_access,
@@ -226,11 +226,11 @@ def unlock_prodice_safe(self, restrictions: Dict[str, Any]) -> Dict[str, Any]:
             for method in unlock_methods:
                 try:
                     result = method()
-                    unlock_results['attempts'].append(result)
+                    unlock_results['atPRODUCTIONts'].append(result)
                     if result.get('success', False):
                         unlock_results['success'] = True
                 except Exception as e:
-                    unlock_results['attempts'].append({
+                    unlock_results['atPRODUCTIONts'].append({
                         'method': method.__name__,
                         'success': False,
                         'error': str(e)
@@ -248,7 +248,7 @@ def unlock_prodice_safe(self, restrictions: Dict[str, Any]) -> Dict[str, Any]:
     unlock_admin_rights function
     """
 def unlock_admin_rights(self) -> Dict[str, Any]:
-        """Attempt to gain admin rights"""
+        """AtPRODUCTIONt to gain admin rights"""
         try:
             if platform.system() == 'Windows':
                 # Try to elevate privileges
@@ -262,7 +262,7 @@ def unlock_admin_rights(self) -> Dict[str, Any]:
     unlock_network_access function
     """
 def unlock_network_access(self) -> Dict[str, Any]:
-        """Attempt to ensure network access"""
+        """AtPRODUCTIONt to ensure network access"""
         try:
             # Test multiple endpoints
             endpoints = ['https://www.google.com', 'https://www.github.com', 'https://www.cloudflare.com']
@@ -281,7 +281,7 @@ def unlock_network_access(self) -> Dict[str, Any]:
     unlock_file_permissions function
     """
 def unlock_file_permissions(self) -> Dict[str, Any]:
-        """Attempt to ensure file permissions"""
+        """AtPRODUCTIONt to ensure file permissions"""
         try:
             test_dir = 'logs/qmoi_test'
             os.makedirs(test_dir, exist_ok=True)
@@ -301,7 +301,7 @@ def unlock_file_permissions(self) -> Dict[str, Any]:
     unlock_process_control function
     """
 def unlock_process_control(self) -> Dict[str, Any]:
-        """Attempt to ensure process control"""
+        """AtPRODUCTIONt to ensure process control"""
         try:
             # Test process creation
             result = subprocess.run(['echo', 'test'], capture_output=True, text=True, timeout=5)

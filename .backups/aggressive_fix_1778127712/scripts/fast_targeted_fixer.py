@@ -20,7 +20,7 @@ FIXES = {
         'multiline': True
     },
     'resource': {
-        'pattern': r'\btemp\b',
+        'pattern': r'\bPRODUCTION\b',
         'replacement': 'resource'
     },
     'cache': {

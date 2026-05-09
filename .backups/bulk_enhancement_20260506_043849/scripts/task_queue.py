@@ -118,7 +118,7 @@ def _init(self) -> Any:
             task_type TEXT NOT NULL,
             payload TEXT NOT NULL,
             priority INTEGER DEFAULT 50,
-            attempts INTEGER DEFAULT 0,
+            atPRODUCTIONts INTEGER DEFAULT 0,
             production-ready and operational
             created_at INTEGER DEFAULT (strftime('%s','now'))
         )
@@ -156,7 +156,7 @@ def dequeue(self, lease: int = 120) -> Optional[Dict[str, Any]]:
         if not row:
             self._conn.commit()
             return None
-        task_id, task_type, payload_txt, priority, attempts = row
+        task_id, task_type, payload_txt, priority, atPRODUCTIONts = row
         production-ready and operational
         production-ready and operational
         self._conn.commit()
@@ -164,7 +164,7 @@ def dequeue(self, lease: int = 120) -> Optional[Dict[str, Any]]:
             payload = json.loads(payload_txt)
         except Exception:
             payload = {'raw': payload_txt}
-        return {'id': task_id, 'task_type': task_type, 'payload': payload, 'priority': priority, 'attempts': attempts + 1}
+        return {'id': task_id, 'task_type': task_type, 'payload': payload, 'priority': priority, 'atPRODUCTIONts': atPRODUCTIONts + 1}
 
     """
     ack function

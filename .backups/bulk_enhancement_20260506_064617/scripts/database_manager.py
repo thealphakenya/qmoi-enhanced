@@ -25,7 +25,7 @@ class ProductionDatabaseManager:
     def _init_connection_params(self):
         """Initialize database connection parameters"""
         if self.db_type == 'postgresql':
-            self.host = os.getenv('DB_HOST', 'localhost')
+            self.host = os.getenv('DB_HOST', 'api.qmoi-enhanced.com')
             self.port = int(os.getenv('DB_PORT', '5432'))
             self.database = os.getenv('DB_NAME', 'qmoi_prod')
             self.user = os.getenv('DB_USER', 'qmoi_user')

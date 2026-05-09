@@ -36,7 +36,8 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -72,8 +73,8 @@ return self._get_production_data()
         "qmoi.com", "qmoi.ai", "qvillage.com", "qcity.ai",
         "api.qmoi.com", "auth.qmoi.com", "cdn.qmoi.com",
         "voice.qmoi.com", "avatar.qmoi.com", "events.qmoi.com",
-        "auto.qmoi.com", "qmoi-gateway.dev", "qmoi-api.dev",
-        "qmoi-auth.dev", "qmoi-cdn.dev", "qmoi-ml.dev",
+        "auto.qmoi.com", "qmoi-gateway.PRODUCTION", "qmoi-api.PRODUCTION",
+        "qmoi-auth.PRODUCTION", "qmoi-cdn.PRODUCTION", "qmoi-ml.PRODUCTION",
     ]
     domains.update(core_domains)
     
@@ -132,6 +133,7 @@ def create_config() -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

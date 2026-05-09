@@ -25,7 +25,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -62,7 +63,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -82,7 +84,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -96,7 +99,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -141,16 +145,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -253,7 +257,8 @@ def run_comprehensive_tests(self) -> Dict[str, Any]:
                         body=f"Test {test_name} completed with status: {result.status}",
                         recipients=[self.notify_email]
                     )
-                except Exception as e:
+            
+    except Exception as e:
                     error_result = TestResult(
                         test_name=test_name,
                         status="ERROR",
@@ -310,7 +315,8 @@ def _preflight_checks(self) -> Any:
                     logging.info(f"✅ {check_name}: OK")
                 else:
                     logging.warning(f"⚠️ {check_name}: Issues detected")
-            except Exception as e:
+        
+    except Exception as e:
                 logging.error(f"❌ {check_name}: Failed - {e}")
     
     """
@@ -444,7 +450,7 @@ def _test_system_integration(self) -> TestResult:
         
         try:
             # Test file operations
-            test_file = Path('autotest_temp.txt')
+            test_file = Path('autotest_PRODUCTION.txt')
             test_file.write_text('QMOI Autotest Test')
             test_file.unlink()
             
@@ -467,7 +473,8 @@ def test_thread() -> Any:
             duration = time.time() - start_time
             return TestResult("System Integration", "PASS", duration)
             
-        except Exception as e:
+    
+    except Exception as e:
             duration = time.time() - start_time
             return TestResult("System Integration", "FAIL", duration, str(e))
     
@@ -496,7 +503,8 @@ def _test_github_integration(self) -> TestResult:
             duration = time.time() - start_time
             return TestResult("GitHub Integration", "PASS", duration)
             
-        except Exception as e:
+    
+    except Exception as e:
             duration = time.time() - start_time
             return TestResult("GitHub Integration", "FAIL", duration, str(e))
     
@@ -518,13 +526,15 @@ def _test_huggingface_integration(self) -> TestResult:
                 # Try to download a small test model
                 hf_hub_download(repo_id="microsoft/DialoGPT-small", filename="config.json")
                 logging.info("✅ Hugging Face model download test passed")
-            except Exception as e:
+        
+    except Exception as e:
                 logging.warning(f"⚠️ Model download test failed: {e}")
             
             duration = time.time() - start_time
             return TestResult("Hugging Face Integration", "PASS", duration)
             
-        except Exception as e:
+    
+    except Exception as e:
             duration = time.time() - start_time
             return TestResult("Hugging Face Integration", "FAIL", duration, str(e))
     
@@ -557,7 +567,8 @@ def _test_qmoi_space(self) -> TestResult:
             duration = time.time() - start_time
             return TestResult("QMOI Space", "PASS", duration)
             
-        except Exception as e:
+    
+    except Exception as e:
             duration = time.time() - start_time
             return TestResult("QMOI Space", "FAIL", duration, str(e))
     
@@ -584,7 +595,8 @@ def _test_qcity_installation(self) -> TestResult:
             duration = time.time() - start_time
             return TestResult("Q City Installation", "PASS", duration)
             
-        except Exception as e:
+    
+    except Exception as e:
             duration = time.time() - start_time
             return TestResult("Q City Installation", "FAIL", duration, str(e))
     
@@ -611,7 +623,8 @@ def _test_cloud_services(self) -> TestResult:
             duration = time.time() - start_time
             return TestResult("Cloud Services", "PASS", duration)
             
-        except Exception as e:
+    
+    except Exception as e:
             duration = time.time() - start_time
             return TestResult("Cloud Services", "FAIL", duration, str(e))
     
@@ -632,7 +645,8 @@ def _test_autotest_itself(self) -> TestResult:
             duration = time.time() - start_time
             return TestResult("Autotest Self-Test", "PASS", duration)
             
-        except Exception as e:
+    
+    except Exception as e:
             duration = time.time() - start_time
             return TestResult("Autotest Self-Test", "FAIL", duration, str(e))
     
@@ -660,7 +674,8 @@ def _test_error_fixing_capabilities(self) -> TestResult:
             duration = time.time() - start_time
             return TestResult("Error Fixing", "PASS", duration)
             
-        except Exception as e:
+    
+    except Exception as e:
             duration = time.time() - start_time
             return TestResult("Error Fixing", "FAIL", duration, str(e))
     
@@ -690,7 +705,8 @@ def parallel_task(task_id) -> Any:
             duration = time.time() - start_time
             return TestResult("Parallel Processing", "PASS", duration)
             
-        except Exception as e:
+    
+    except Exception as e:
             duration = time.time() - start_time
             return TestResult("Parallel Processing", "FAIL", duration, str(e))
     
@@ -719,7 +735,8 @@ def _test_security_features(self) -> TestResult:
             duration = time.time() - start_time
             return TestResult("Security Features", "PASS", duration)
             
-        except Exception as e:
+    
+    except Exception as e:
             duration = time.time() - start_time
             return TestResult("Security Features", "FAIL", duration, str(e))
     
@@ -739,7 +756,8 @@ def _apply_automatic_fixes(self) -> Any:
                         result.fix_applied = "Automatic fix applied"
                         result.retry_count += 1
                         logging.info(f"✅ Applied fix for {result.test_name}")
-                    except Exception as e:
+                
+    except Exception as e:
                         logging.error(f"❌ Fix failed for {result.test_name}: {e}")
     
     """
@@ -865,7 +883,8 @@ def _test_vercel_self_healing(self) -> TestResult:
             time.sleep(2)
             duration = time.time() - start_time
             return TestResult("Vercel Self-Healing", "PASS", duration)
-        except Exception as e:
+    
+    except Exception as e:
             duration = time.time() - start_time
             return TestResult("Vercel Self-Healing", "FAIL", duration, str(e))
 
@@ -889,7 +908,8 @@ def _test_github_actions_self_healing(self) -> TestResult:
             time.sleep(2)
             duration = time.time() - start_time
             return TestResult("GitHub Actions Self-Healing", "PASS", duration)
-        except Exception as e:
+    
+    except Exception as e:
             duration = time.time() - start_time
             return TestResult("GitHub Actions Self-Healing", "FAIL", duration, str(e))
 
@@ -906,7 +926,8 @@ def _test_gitlab_self_healing(self) -> TestResult:
             time.sleep(2)
             duration = time.time() - start_time
             return TestResult("GitLab Self-Healing", "PASS", duration)
-        except Exception as e:
+    
+    except Exception as e:
             duration = time.time() - start_time
             return TestResult("GitLab Self-Healing", "FAIL", duration, str(e))
 
@@ -921,7 +942,8 @@ def _test_notification_system(self) -> TestResult:
             time.sleep(1)
             duration = time.time() - start_time
             return TestResult("Notification System", "PASS", duration)
-        except Exception as e:
+    
+    except Exception as e:
             duration = time.time() - start_time
             return TestResult("Notification System", "FAIL", duration, str(e))
     
@@ -1000,6 +1022,7 @@ def main() -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

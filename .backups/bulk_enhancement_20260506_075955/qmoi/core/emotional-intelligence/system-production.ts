@@ -505,7 +505,7 @@ export class EmotionalIntelligenceSystem {
     return combinations;
   }
 
-  private _findTemporalPatterns(emotions: EmotionAnalysis[]): Record<string, any> {
+  private _findPRODUCTIONoralPatterns(emotions: EmotionAnalysis[]): Record<string, any> {
     const patterns: Record<string, any> = {};
 
     for (const emotion of this.EMOTIONS) {

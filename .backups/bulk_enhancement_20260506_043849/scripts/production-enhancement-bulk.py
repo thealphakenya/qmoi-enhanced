@@ -296,7 +296,7 @@ def require_master(func):
                     "Multi-channel delivery",
                     "Real-time processing",
                     "Retry with exponential backoff",
-                    "Template management",
+                    "PRODUCTIONlate management",
                     "Delivery tracking"
                 ]
             },

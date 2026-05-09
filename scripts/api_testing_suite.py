@@ -84,14 +84,19 @@ def make_request(self, method: str, endpoint: str, **kwargs) -> requests.Respons
 
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             response = self.session.request(method, url, **kwargs)
@@ -856,6 +861,7 @@ def run_comprehensive_tests() -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

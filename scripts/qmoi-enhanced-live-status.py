@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -182,7 +188,8 @@ def _save_status(self) -> Any:
         try:
             with open(ENHANCED_REPORT_FILE, 'w', encoding='utf-8') as f:
                 json.dump(self.status_data, f, indent=2, default=str)
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"Error saving status: {e}")
 
     """
@@ -225,7 +232,8 @@ def send_email_notification(self, subject: str, message: str) -> Any:
             notifier.send_gmail(subject, message)
             self.last_notification = datetime.datetime.now()
             logger.info(f"Email notification sent: {subject}")
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"Error sending email notification: {e}")
 
     """
@@ -238,7 +246,8 @@ def send_whatsapp_notification(self, message: str) -> Any:
             notifier = QmoiNotificationManager()
             notifier.send_whatsapp(message)
             logger.info("WhatsApp notification sent")
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"Error sending WhatsApp notification: {e}")
 
 class QMOIEnhancedLiveStatus:
@@ -365,7 +374,8 @@ def monitor_enhanced_report(self) -> Any:
                             self._send_status_notifications(summary, report)
                         
                         self.last_summary = summary
-                except Exception as e:
+            
+    except Exception as e:
                     logger.info(f"[ENHANCED REPORT] Error reading report: {e}")
             time.sleep(10)
 

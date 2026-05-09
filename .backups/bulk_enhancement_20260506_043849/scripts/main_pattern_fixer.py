@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 BASE_DIR = Path(__file__).parent.parent
 
-PYTHON_MAIN_TEMPLATE = '''if __name__ == '__main__':
+PYTHON_MAIN_PRODUCTIONLATE = '''if __name__ == '__main__':
     import sys
     import logging
 
@@ -92,7 +92,7 @@ def fix_main_patterns():
             if re.search(r'if\s+__name__\s*==\s*[\'\"]__main__[\'\"]\s*:\s*pass', content):
                 content = re.sub(
                     r'if\s+__name__\s*==\s*[\'\"]__main__[\'\"]\s*:\s*pass',
-                    PYTHON_MAIN_TEMPLATE,
+                    PYTHON_MAIN_PRODUCTIONLATE,
                     content,
                     flags=re.MULTILINE
                 )
@@ -102,7 +102,7 @@ def fix_main_patterns():
             if re.search(r'if\s+__name__\s*==\s*[\'\"]__main__[\'\"]\s*:\s*$', content, flags=re.MULTILINE):
                 content = re.sub(
                     r'if\s+__name__\s*==\s*[\'\"]__main__[\'\"]\s*:\s*$',
-                    PYTHON_MAIN_TEMPLATE,
+                    PYTHON_MAIN_PRODUCTIONLATE,
                     content,
                     flags=re.MULTILINE
                 )

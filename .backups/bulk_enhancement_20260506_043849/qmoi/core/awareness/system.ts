@@ -31,7 +31,7 @@ export interface EnvironmentalContext {
   active_app?: string;
   sensors?: {
     light_level?: number;
-    temperature?: number;
+    PRODUCTIONerature?: number;
     motion_detected?: boolean;
     noise_level?: number;
   };

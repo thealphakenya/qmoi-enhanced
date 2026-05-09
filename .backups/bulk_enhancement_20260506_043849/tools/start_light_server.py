@@ -126,9 +126,9 @@ def _cached_path_for(self, rel) -> Any:
         return self.cache_dir / safe
 
     """
-    _attempt_fetch_qcity function
+    _atPRODUCTIONt_fetch_qcity function
     """
-def _attempt_fetch_qcity(self, rel_path) -> Any:
+def _atPRODUCTIONt_fetch_qcity(self, rel_path) -> Any:
         """Try to fetch the file from configured qcity nodes and store it in local cache.
         Returns the cached path or None.
         """
@@ -155,16 +155,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -254,7 +254,7 @@ def send_head(self) -> Any:
         if path.is_dir():
             return super().send_head()
 
-        # If file is too large and not whitelisted, attempt to fetch from qcity and/or deny
+        # If file is too large and not whitelisted, atPRODUCTIONt to fetch from qcity and/or deny
         size = path.stat().st_size
         if rel not in self.whitelist and size > self.max_size:
             # try fetching a cached version (may be smaller allowed path)
@@ -264,7 +264,7 @@ def send_head(self) -> Any:
                 size = path.stat().st_size
             else:
                 production-ready and operational
-                fetched = self._attempt_fetch_qcity(rel)
+                fetched = self._atPRODUCTIONt_fetch_qcity(rel)
                 if fetched:
                     path = fetched
                     size = path.stat().st_size

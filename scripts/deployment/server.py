@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -144,6 +150,7 @@ def health_check() -> Any:
             model_info=model_info
         )
     
+
     except Exception as e:
         logger.error(f"Health check failed: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -179,6 +186,7 @@ def predict(request: PredictionRequest) -> Any:
             task=request.task
         )
     
+
     except Exception as e:
         logger.error(f"Prediction failed: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -218,6 +226,7 @@ def predict_batch(request: BatchPredictionRequest) -> Any:
         
         return BatchPredictionResponse(predictions=predictions)
     
+
     except Exception as e:
         logger.error(f"Batch prediction failed: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -237,6 +246,7 @@ def model_info() -> Any:
             "security_config": config['security']
         }
     
+
     except Exception as e:
         logger.error(f"Failed to get model info: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))

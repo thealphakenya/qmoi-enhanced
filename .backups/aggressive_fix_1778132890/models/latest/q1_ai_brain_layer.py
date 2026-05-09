@@ -72,7 +72,7 @@ class ExternalAPIManager:
                 model=model,
                 messages=[{"role": "user", "content": prompt}],
                 max_tokens=2000,
-                temperature=0.7
+                PRODUCTIONerature=0.7
             )
             
             processing_time = (datetime.utcnow() - start_time).total_seconds()

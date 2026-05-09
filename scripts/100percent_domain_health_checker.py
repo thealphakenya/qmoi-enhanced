@@ -43,7 +43,8 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -75,7 +76,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -137,7 +139,8 @@ class DomainHealth100PercentAchiever:
                     passed_checks += 1
                 else:
                     health_status['issues'].append(f"{check_name}: {result.get('error', 'failed')}")
-            except Exception as e:
+        
+    except Exception as e:
                 health_status['checks'][check_name] = {'status': 'error', 'error': str(e)}
                 health_status['issues'].append(f"{check_name}: {str(e)}")
 
@@ -152,7 +155,8 @@ class DomainHealth100PercentAchiever:
         try:
             socket.gethostbyname(domain)
             return {'status': 'healthy'}
-        except Exception as e:
+    
+    except Exception as e:
             return {'status': 'unhealthy', 'error': f"DNS resolution failed: {e}"}
 
     def _check_ssl_certificate(self, domain: str) -> dict:
@@ -166,7 +170,8 @@ class DomainHealth100PercentAchiever:
                 with context.wrap_socket(sock, server_hostname=domain) as ssock:
                     cert = ssock.getpeercert()
                     return {'status': 'healthy'}
-        except Exception as e:
+    
+    except Exception as e:
             return {'status': 'unhealthy', 'error': f"SSL check failed: {e}"}
 
     def _check_http_response(self, domain: str) -> dict:
@@ -184,9 +189,11 @@ class DomainHealth100PercentAchiever:
             try:
                 urllib.request.urlopen(f"https://{domain}", timeout=10)
                 return {'status': 'healthy'}
-            except Exception as e:
+        
+    except Exception as e:
                 return {'status': 'unhealthy', 'error': f"HTTP check failed: {e}"}
-        except Exception as e:
+    
+    except Exception as e:
             return {'status': 'unhealthy', 'error': f"HTTP check failed: {e}"}
 
     def _check_content_delivery(self, domain: str) -> dict:
@@ -200,7 +207,8 @@ class DomainHealth100PercentAchiever:
                 return {'status': 'unhealthy', 'error': "Insufficient content"}
         except ImportError:
             return {'status': 'healthy'}  # Skip if requests not available
-        except Exception as e:
+    
+    except Exception as e:
             return {'status': 'unhealthy', 'error': f"Content delivery check failed: {e}"}
 
     def _check_performance(self, domain: str) -> dict:
@@ -219,7 +227,8 @@ class DomainHealth100PercentAchiever:
                 return {'status': 'unhealthy', 'error': f"Slow response: {response_time:.2f}s"}
         except ImportError:
             return {'status': 'healthy'}  # Skip if requests not available
-        except Exception as e:
+    
+    except Exception as e:
             return {'status': 'unhealthy', 'error': f"Performance check failed: {e}"}
 
 
@@ -275,4 +284,120 @@ def main():
 
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     sys.exit(main())

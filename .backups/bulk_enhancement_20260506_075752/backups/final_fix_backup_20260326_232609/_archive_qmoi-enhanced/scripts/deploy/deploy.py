@@ -83,7 +83,7 @@ def load_config(self) -> Dict:
                 "backup_before_deploy": True,
                 "notify_on_deploy": True,
                 "deployment_timeout": 3600,
-                "retry_attempts": 3,
+                "retry_atPRODUCTIONts": 3,
                 "targets": {
                     "local": {
                         "enabled": True,

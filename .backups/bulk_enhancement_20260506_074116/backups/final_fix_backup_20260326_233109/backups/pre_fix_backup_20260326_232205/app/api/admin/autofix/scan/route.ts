@@ -206,7 +206,7 @@ function applyAutofixes(errors: any[]): any {
 
         case "Configuration Error":
           .log(
-            `[AUTOFIX] Attempting to fix configuration: ${error.id}`,
+            `[AUTOFIX] AtPRODUCTIONting to fix configuration: ${error.id}`,
           );
           fixed = true;
           break;
@@ -232,7 +232,7 @@ function applyAutofixes(errors: any[]): any {
         default:
           // Try generic fix
           .log(
-            `[AUTOFIX] Attempting generic fix for: ${error.type}`,
+            `[AUTOFIX] AtPRODUCTIONting generic fix for: ${error.type}`,
           );
           fixed = Math.random() > 0.3; // 70% success rate
       }

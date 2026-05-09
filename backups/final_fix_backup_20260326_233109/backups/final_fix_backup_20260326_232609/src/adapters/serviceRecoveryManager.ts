@@ -12,7 +12,7 @@ import { specificExports } from "./healthCheckService";
 
 export interface RecoveryStrategy {
   name: string;
-  maxAttempts: number;
+  maxAtPRODUCTIONts: number;
   backoffMs: number;
   exponentialBackoff: boolean;
 }
@@ -21,7 +21,7 @@ export interface RecoveryEvent {
   service: string;
   timestamp: number;
   reason: string;
-  attemptCount: number;
+  atPRODUCTIONtCount: number;
   success: boolean;
 }
 
@@ -36,7 +36,7 @@ class ServiceRecoveryManager {
       "http-server",
       {
         name: "HTTP Server",
-        maxAttempts: 3,
+        maxAtPRODUCTIONts: 3,
         backoffMs: 2000,
         exponentialBackoff: true,
       },
@@ -45,7 +45,7 @@ class ServiceRecoveryManager {
       "api-endpoint",
       {
         name: "API Endpoint",
-        maxAttempts: 5,
+        maxAtPRODUCTIONts: 5,
         backoffMs: 1000,
         exponentialBackoff: true,
       },
@@ -54,7 +54,7 @@ class ServiceRecoveryManager {
       "cache-service",
       {
         name: "Cache Service",
-        maxAttempts: 2,
+        maxAtPRODUCTIONts: 2,
         backoffMs: 1000,
         exponentialBackoff: false,
       },
@@ -63,7 +63,7 @@ class ServiceRecoveryManager {
       "background-tasks",
       {
         name: "Background Tasks",
-        maxAttempts: 3,
+        maxAtPRODUCTIONts: 3,
         backoffMs: 500,
         exponentialBackoff: true,
       },
@@ -108,7 +108,7 @@ class ServiceRecoveryManager {
     recoveryFn: () => Promise<void>,
   ): Promise<boolean> {
     if (!this.enabled) {
-      logger.warn("[Recovery] Recovery attempted but manager is enabled");
+      logger.warn("[Recovery] Recovery atPRODUCTIONted but manager is enabled");
       return false;
     }
 
@@ -116,13 +116,13 @@ class ServiceRecoveryManager {
     this.cancelRecovery(service);
 
     const strategy = this.strategies.get(service) || this.getDefaultStrategy();
-    let attemptCount = 0;
+    let atPRODUCTIONtCount = 0;
     let lastError: Error | null = null;
 
-    logger.warn(`[Recovery] Attempting recovery of ${service}: ${reason}`);
+    logger.warn(`[Recovery] AtPRODUCTIONting recovery of ${service}: ${reason}`);
 
-    for (let i = 0; i < strategy.maxAttempts; i++) {
-      attemptCount = i + 1;
+    for (let i = 0; i < strategy.maxAtPRODUCTIONts; i++) {
+      atPRODUCTIONtCount = i + 1;
 
       try {
         // Execute recovery
@@ -133,47 +133,47 @@ class ServiceRecoveryManager {
           service,
           timestamp: Date.now(),
           reason,
-          attemptCount,
+          atPRODUCTIONtCount,
           success: true,
         });
 
         console.info(
-          `[Recovery] Successfully recovered ${service} on attempt ${attemptCount}`,
+          `[Recovery] Successfully recovered ${service} on atPRODUCTIONt ${atPRODUCTIONtCount}`,
         );
         return true;
       } catch (_err) {
         void _err;
         lastError = _err as Error;
 
-        if (i < strategy.maxAttempts - 1) {
+        if (i < strategy.maxAtPRODUCTIONts - 1) {
           // Calculate backoff
           const backoff = strategy.exponentialBackoff
             ? strategy.backoffMs * Math.pow(2, i) + Math.random() * 1000
             : strategy.backoffMs;
 
           logger.warn(
-            `[Recovery] Attempt ${attemptCount} failed, retrying in ${Math.round(
+            `[Recovery] AtPRODUCTIONt ${atPRODUCTIONtCount} failed, retrying in ${Math.round(
               backoff,
             )}ms: ${lastError.message}`,
           );
 
-          // Wait before next attempt
+          // Wait before next atPRODUCTIONt
           await new Promise((resolve) => setTimeout(resolve, backoff));
         }
       }
     }
 
-    // All attempts failed
+    // All atPRODUCTIONts failed
     this.recordRecoveryEvent({
       service,
       timestamp: Date.now(),
       reason,
-      attemptCount,
+      atPRODUCTIONtCount,
       success: false,
     });
 
     safeConsoleError(
-      `[Recovery] Failed to recover ${service} after ${attemptCount} attempts: ${lastError?.message}`,
+      `[Recovery] Failed to recover ${service} after ${atPRODUCTIONtCount} atPRODUCTIONts: ${lastError?.message}`,
     );
     return false;
   }
@@ -216,7 +216,7 @@ class ServiceRecoveryManager {
   async recoverAPIConnection(endpoint: string): Promise<void> {
     console.info(`[Recovery] Recovering API connection to ${endpoint}`);
 
-    // Attempt to fetch from endpoint
+    // AtPRODUCTIONt to fetch from endpoint
     const response = await apiClient.get(`${endpoint}/health`);
     if (!response.ok) {
       throw new ProductionError(`API returned ${response.status}`);
@@ -285,31 +285,31 @@ class ServiceRecoveryManager {
   }
 
   getRecoverySummary(): {
-    totalAttempts: number;
+    totalAtPRODUCTIONts: number;
     successfulRecoveries: number;
     failedRecoveries: number;
     successRate: number;
     byService: Record<
       string,
-      { attempts: number; successes: number; failures: number; rate: number }
+      { atPRODUCTIONts: number; successes: number; failures: number; rate: number }
     >;
   } {
     const byService: Record<
       string,
-      { attempts: number; successes: number; failures: number; rate: number }
+      { atPRODUCTIONts: number; successes: number; failures: number; rate: number }
     > = {};
 
     for (const _event of this.recoveryHistory) {
       if (!byService[_event.service]) {
         byService[_event.service] = {
-          attempts: 0,
+          atPRODUCTIONts: 0,
           successes: 0,
           failures: 0,
           rate: 0,
         };
       }
 
-      byService[_event.service].attempts++;
+      byService[_event.service].atPRODUCTIONts++;
       if (_event.success) {
         byService[_event.service].successes++;
       } else {
@@ -321,7 +321,7 @@ class ServiceRecoveryManager {
     for (const key in byService) {
       const stats = byService[key];
       stats.rate =
-        stats.attempts > 0 ? (stats.successes / stats.attempts) * 100 : 0;
+        stats.atPRODUCTIONts > 0 ? (stats.successes / stats.atPRODUCTIONts) * 100 : 0;
     }
 
     const successful = this.recoveryHistory.filter((_e) => _e.success).length;
@@ -332,7 +332,7 @@ class ServiceRecoveryManager {
         : 0;
 
     return {
-      totalAttempts: this.recoveryHistory.length,
+      totalAtPRODUCTIONts: this.recoveryHistory.length,
       successfulRecoveries: successful,
       failedRecoveries: failed,
       successRate,
@@ -347,7 +347,7 @@ class ServiceRecoveryManager {
   private getDefaultStrategy(): RecoveryStrategy {
     return {
       name: "Default",
-      maxAttempts: 3,
+      maxAtPRODUCTIONts: 3,
       backoffMs: 1000,
       exponentialBackoff: true,
     };

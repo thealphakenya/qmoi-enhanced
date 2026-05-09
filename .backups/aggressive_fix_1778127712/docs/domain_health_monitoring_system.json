@@ -6,7 +6,7 @@
     "dns_monitor": {
       "enabled": true,
       "check_interval": 3600,
-      "retry_attempts": 3,
+      "retry_atPRODUCTIONts": 3,
       "alert_threshold": 1
     },
     "ssl_monitor": {
@@ -18,7 +18,7 @@
       "enabled": true,
       "check_interval": 300,
       "timeout": 10,
-      "retry_attempts": 3
+      "retry_atPRODUCTIONts": 3
     },
     "ui_feature_monitor": {
       "enabled": true,
@@ -161,12 +161,12 @@
   "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:14:05.324792",
-  "autodev": {
+  "autoPRODUCTION": {
     "enhanced": true,
     "timestamp": "2026-04-20T08:55:06.275226",
     "version": "2026-04-20"
   },
-  "production_ready": true,
+  "PRODUCTION_READY": true,
   "last_production_enhancement": "2026-04-22T04:58:49.421660",
-  "autodev_version": "2026-04-20-aggressive"
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
 }

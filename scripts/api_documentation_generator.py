@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -80,7 +86,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -117,7 +124,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -137,7 +145,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -151,7 +160,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -1876,9 +1886,9 @@ def generate_html_docs(self, output_path: str = "api_docs.html") -> Any:
     main function
     """
 def main() -> Any:
-    """Main // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Main // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function to generate API documentation""""
     logger.info("🚀 Generating QMOI Enhanced API Documentation")
     logger.info("=" * 60)

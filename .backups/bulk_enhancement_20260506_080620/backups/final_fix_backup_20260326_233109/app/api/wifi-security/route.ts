@@ -40,7 +40,7 @@ interface SecurityStatus {
   stats: {
     totalScans: number;
     threatsDetected: number;
-    blockedAttempts: number;
+    blockedAtPRODUCTIONts: number;
     lastUpdate: string;
   };
 }

@@ -132,14 +132,19 @@ def apply_dns_change(self, plan: Dict[str, Any]) -> Dict[str, Any]:
         for change in plan['changes']:
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 if change['action'] == 'create':
@@ -165,7 +170,8 @@ def apply_dns_change(self, plan: Dict[str, Any]) -> Dict[str, Any]:
                 else:
                     applied.append(change)
             
-            except Exception as e:
+        
+    except Exception as e:
                 errors.append({
                     'change': change,
                     'error': str(e)
@@ -247,7 +253,8 @@ def verify_dns(self, domain: str) -> Dict[str, Any]:
                             'record': record,
                             'error': f'Record does not resolve to {record["content"]}'
                         })
-            except Exception as e:
+        
+    except Exception as e:
                 errors.append({
                     'record': record,
                     'error': str(e)

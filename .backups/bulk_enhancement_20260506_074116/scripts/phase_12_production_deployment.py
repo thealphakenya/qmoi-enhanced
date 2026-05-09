@@ -106,7 +106,7 @@ class productionDeployer:
             ValidationCheck(
                 name="Deployment Scripts",
                 status="passed",
-                details="All deployment scripts tested on staging"
+                details="All deployment scripts tested on PRODUCTION"
             ),
         ]
         

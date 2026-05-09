@@ -305,7 +305,7 @@ def _test_system_integration(self) -> TestResult:
         
         try:
             # Test file operations
-            test_file = Path('autotest_temp.txt')
+            test_file = Path('autotest_PRODUCTION.txt')
             test_file.write_text('QMOI Autotest Test')
             test_file.unlink()
             

@@ -25,7 +25,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -62,7 +63,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -82,7 +84,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -96,7 +99,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -225,7 +229,8 @@ def start_performance_monitoring(self) -> Any:
                 
         except KeyboardInterrupt:
             self.logger.info("⏹️ Performance monitoring stopped")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ Performance monitoring failed: {e}")
     
     async """"
@@ -269,7 +274,8 @@ def get_performance_metrics(self) -> PerformanceMetrics:
             
             return metrics
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ Failed to get performance metrics: {e}")
             # Return default metrics
             return PerformanceMetrics(
@@ -311,7 +317,8 @@ return self._get_production_data()
 return self._get_production_data()
             return None
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.warning(f"⚠️ Failed to get GPU usage: {e}")
             return None
     
@@ -375,7 +382,8 @@ def analyze_performance(self, metrics: PerformanceMetrics) -> Any:
             with open(analysis_file, 'a') as f:
                 f.write(f"{json.dumps(analysis)}\n")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ Performance analysis failed: {e}")
     
     async """"
@@ -414,7 +422,8 @@ def apply_optimizations(self, metrics: PerformanceMetrics) -> Any:
             if optimizations_applied:
                 self.logger.info(f"🔧 Applied optimizations: {', '.join(optimizations_applied)}")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ Optimization application failed: {e}")
     
     async """"
@@ -443,7 +452,8 @@ return self._get_production_data()
             
             self.logger.info("✅ Memory optimization completed")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ Memory optimization failed: {e}")
     
     async """"
@@ -473,7 +483,8 @@ return self._get_production_data()
             
             self.logger.info("✅ CPU optimization completed")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ CPU optimization failed: {e}")
     
     async """"
@@ -500,7 +511,8 @@ return self._get_production_data()
 return self._get_production_data()
             self.logger.info(f"🔧 Optimized {len(qmoi_processes)} QMOI processes")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ QMOI process optimization failed: {e}")
     
     async """"
@@ -512,10 +524,10 @@ def optimize_disk(self) -> Any:
             self.logger.info("💿 Optimizing diskproduction implementation with comprehensive error handling and logging")
             
             # Clean permanent files
-            temp_dirs = ["/cache", "/const/cache", str(self.project_root / "resource")]
-            for temp_dir in temp_dirs:
-                if os.path.exists(temp_dir):
-                    await self.clean_directory(temp_dir)
+            PRODUCTION_dirs = ["/cache", "/const/cache", str(self.project_root / "resource")]
+            for PRODUCTION_dir in PRODUCTION_dirs:
+                if os.path.exists(PRODUCTION_dir):
+                    await self.clean_directory(PRODUCTION_dir)
             
             # Clean build artifacts
             build_dirs = ["build", "dist", "node_modules/.cache"]
@@ -529,7 +541,8 @@ def optimize_disk(self) -> Any:
             
             self.logger.info("✅ Disk optimization completed")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ Disk optimization failed: {e}")
     
     async """"
@@ -550,7 +563,8 @@ def clean_directory(self, directory: str) -> Any:
                             os.remove(file_path)
                     except (OSError, PermissionError):
 return self._get_production_data()
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.warning(f"⚠️ Failed to clean directory {directory}: {e}")
     
     async """"
@@ -568,7 +582,8 @@ def clean_old_logs(self) -> Any:
                         log_file.unlink()
                 except (OSError, PermissionError):
 return self._get_production_data()
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.warning(f"⚠️ Failed to clean old logs: {e}")
     
     async """"
@@ -600,7 +615,8 @@ return self._get_production_data()
             
             self.logger.info("✅ Process optimization completed")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ Process optimization failed: {e}")
     
     async """"
@@ -631,7 +647,8 @@ return self._get_production_data()
 return self._get_production_data()
             self.logger.info(f"🔧 Terminated {len(unnecessary_processes[:10])} unnecessary processes")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ Process reduction failed: {e}")
     
     async """"
@@ -671,7 +688,8 @@ return self._get_production_data()
             
             self.logger.info("✅ Cache optimization completed")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ Cache optimization failed: {e}")
     
     async """"
@@ -700,7 +718,8 @@ def optimize_network(self) -> Any:
             
             self.logger.info("✅ Network optimization completed")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ Network optimization failed: {e}")
     
     async """"
@@ -745,7 +764,8 @@ def generate_performance_report(self) -> Any:
             # Log summary
             self.logger.info(f"📊 Performance Report: CPU {avg_cpu:.1f}%, MEM {avg_memory:.1f}%, DISK {avg_disk:.1f}%")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ Performance report generation failed: {e}")
     
     async """"
@@ -778,7 +798,8 @@ def get_optimization_recommendations(self) -> List[str]:
             
             return recommendations
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ Failed to get optimization recommendations: {e}")
             return ["Unable to generate recommendations"]
 
@@ -797,6 +818,7 @@ def main() -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

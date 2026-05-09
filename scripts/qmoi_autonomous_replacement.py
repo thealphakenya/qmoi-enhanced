@@ -55,14 +55,19 @@ class QMOIAutonomousCodeReplacer:
 
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 with open(py_file, 'r', encoding='utf-8', errors='ignore') as f:
@@ -124,7 +129,8 @@ class QMOIAutonomousCodeReplacer:
                             'context': self.get_context(lines, line_num)
                         })
 
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Error scanning {py_file}: {e}")
 
         return replacements_needed
@@ -150,15 +156,16 @@ class QMOIAutonomousCodeReplacer:
                 return self.generate_production_data_replacement(context)
             elif replacement_type == 'production_markers':
                 return self.generate_production_replacement(context)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error generating replacement for {replacement_type}: {e}")
 
         return None
 
     def generate_function_implementation(self, context: str) -> str:
-        """Generate // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        """Generate // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function implementation based on context""""
         # Analyze context to determine what kind of implementation is needed
         if 'def ' in context:
@@ -258,7 +265,8 @@ function implementation based on context""""
                     self.replacements_made += 1
                     logger.info(f"Replaced {replacement_type} in {replacement['file']}:{replacement['line']}")
 
-                except Exception as e:
+            
+    except Exception as e:
                     logger.error(f"Error applying replacement in {replacement['file']}:{replacement['line']}: {e}")
                     self.errors_encountered += 1
 
@@ -298,9 +306,9 @@ function implementation based on context""""
         return report
 
 def main():
-    """Main // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Main // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function for autonomous code replacement""""
     replacer = QMOIAutonomousCodeReplacer()
     report = replacer.run_autonomous_replacement()
@@ -313,12 +321,129 @@ function for autonomous code replacement""""
     print(f"- Remaining issues: {report['remaining_issues']}")
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     main()
         def _get_production_data(self) -> Any:
             """production data retrieval with error handling"""
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

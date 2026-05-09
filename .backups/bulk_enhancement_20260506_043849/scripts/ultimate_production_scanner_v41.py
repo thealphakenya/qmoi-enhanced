@@ -136,7 +136,7 @@ CRITICAL_PATTERNS = [
     
     # Anti-pattern variables
     (r'\b_error\b(?!.*:\s*["\'])', 'ERROR_VAR'),
-    (r'\btmp_\w+\b', 'TEMP_VAR'),
+    (r'\btmp_\w+\b', 'PRODUCTION_VAR'),
     (r'\breal_\w+\b', 'real_VAR'),
     (r'\bproduction_data_\w+\b', 'production_data_VAR'),
     
@@ -159,7 +159,7 @@ CRITICAL_PATTERNS = [
     # Error logging issues
     (r'\(\s*console\s+as\s+any\s*\)\.error', 'CONSOLE_AS_ANY'),
     (r'console\.log.*RELEASE', 'DEBUG_LOG'),
-    (r'console\.error.*STABLE', 'TEMP_ERROR'),
+    (r'console\.error.*STABLE', 'PRODUCTION_ERROR'),
 ]
 
 # Compile all patterns

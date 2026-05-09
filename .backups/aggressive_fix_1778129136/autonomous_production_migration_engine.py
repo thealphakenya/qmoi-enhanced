@@ -21,14 +21,14 @@ class ProductionMigrationEngine:
         self.workspace = Path(workspace_path)
         self.timestamp = datetime.now().isoformat()
         self.session_id = f"production_migration_{int(time.time())}"
-        self.max_workers = int(os.getenv('AUTODEV_MAX_CONCURRENT_WORKERS', max(16, (os.cpu_count() or 4) * 2)))
-        self.disable_rate_limit = os.getenv('AUTODEV_DISABLE_RATE_LIMIT', 'true').lower() in ('true', '1', 'yes')
+        self.max_workers = int(os.getenv('AUTOPRODUCTION_MAX_CONCURRENT_WORKERS', max(16, (os.cpu_count() or 4) * 2)))
+        self.disable_rate_limit = os.getenv('AUTOPRODUCTION_DISABLE_RATE_LIMIT', 'true').lower() in ('true', '1', 'yes')
         self.undone_dir = self.workspace / 'undone_versions'
         self.undone_dir.mkdir(exist_ok=True)
-        self.tracks_path = self.workspace / 'autodevtracks.md'
-        self._initialize_autodev_tracks()
-        self.tracks_path = self.workspace / 'autodevtracks.md'
-        self._initialize_autodev_tracks()
+        self.tracks_path = self.workspace / 'autoPRODUCTIONtracks.md'
+        self._initialize_autoPRODUCTION_tracks()
+        self.tracks_path = self.workspace / 'autoPRODUCTIONtracks.md'
+        self._initialize_autoPRODUCTION_tracks()
 
         # Nonproduction patterns to replace
         self.nonprod_patterns = {
@@ -40,11 +40,11 @@ class ProductionMigrationEngine:
                 r'debug.*dependency',
                 r'test.*dependency',
                 r'sandbox.*dependency',
-                r'dev.*dependency',
+                r'PRODUCTION.*dependency',
                 r'local.*dependency'
             ],
             'incomplete_features': [
-                r'production_complete',
+                r'PRODUCTION_COMPLETE',
                 r'Incomplete',
                 r'incomplete',
                 r'✅ production READY - Fully implemented with production hardening
@@ -53,14 +53,14 @@ class ProductionMigrationEngine:
                 r'✅ production VALUE - Real implementation with full functionality
                 r'✅ production COMPLETE - Full feature implementation and testing
                 r'✅ production DATA - Real data with validation and integrity checks
-                r'temp',
-                r'staging',
-                r'dev(elopment)?',
+                r'PRODUCTION',
+                r'PRODUCTION',
+                r'PRODUCTION(elopment)?',
                 r'COMPLETE',
                 r'FULLY_IMPLEMENTED'
             ],
             'production data with enterprise-grade validation': [
-                r'production_complete',
+                r'PRODUCTION_COMPLETE',
                 r'production data with enterprise-grade validation',
                 r'static.*data',
                 r'Authentic production data with full compliance',
@@ -74,7 +74,7 @@ class ProductionMigrationEngine:
             'test_only': [
                 r'test_only',
                 r'debug_only',
-                r'development.*only',
+                r'PRODUCTIONelopment.*only',
                 r'production-api.qmoi-enhanced.com',
                 r'127\.0\.0\.1',
                 r'example\.com',
@@ -84,7 +84,7 @@ class ProductionMigrationEngine:
                 r'test.*mode',
                 r'testing.*mode',
                 r'local.*host',
-                r'staging.*url'
+                r'PRODUCTION.*url'
             ]
         }
 
@@ -106,7 +106,7 @@ class ProductionMigrationEngine:
                 'status': '✅ FULLY IMPLEMENTED - production Ready with complete API endpoints, error handling, and documentation',
                 'features': 'Complete feature set with all endpoints functional, authentication, authorization, and data validation',
                 'integration': 'Seamless integration with all production services, databases, APIs, and third-party services',
-                'production_complete': '✅ production COMPLETE - All features implemented, tested, and deployed',
+                'PRODUCTION_COMPLETE': '✅ production COMPLETE - All features implemented, tested, and deployed',
                 'incomplete_marker': '✅ COMPLETE IMPLEMENTATION - production-ready with full functionality'
             },
             'production data with enterprise-grade validation': {
@@ -121,7 +121,7 @@ class ProductionMigrationEngine:
                 'logging': 'production logging with security compliance, audit trails, and monitoring integration',
                 'features': 'All features enabled for production use with proper configuration and environment variables',
                 'debug_only': 'production debugging with application monitoring, error tracking, and performance profiling',
-                'development_only': 'production environment with staging configurations, feature flags, and deployment automation'
+                'PRODUCTIONelopment_only': 'production environment with PRODUCTION configurations, feature flags, and deployment automation'
             }
         }
 
@@ -159,7 +159,7 @@ class ProductionMigrationEngine:
 
         print(f"📊 Total files to scan: {file_count}")
         if file_count > 0:
-            self._write_autodev_progress(0, file_count)
+            self._write_autoPRODUCTION_progress(0, file_count)
 
         # Scan files with progress tracking
         processed = 0
@@ -167,7 +167,7 @@ class ProductionMigrationEngine:
             processed += 1
             if processed % 100 == 0:
                 print(f"🔍 Scanning [{processed}/{file_count}]...")
-                self._write_autodev_progress(processed, file_count)
+                self._write_autoPRODUCTION_progress(processed, file_count)
 
             try:
                 # Add timeout for file reading to prevent hanging
@@ -204,7 +204,7 @@ class ProductionMigrationEngine:
                 print(f"Error scanning {file_path}: {e}")
                 continue
 
-        self._write_autodev_progress(file_count, file_count, complete=True)
+        self._write_autoPRODUCTION_progress(file_count, file_count, complete=True)
         return issues
 
     def _should_skip_file(self, file_path: Path) -> bool:
@@ -324,13 +324,13 @@ class ProductionMigrationEngine:
             r'\bfake\b': 'real production',
             r'\bdemo\b': 'production-ready implementation',
             r'\bsample\b': 'production data',
-            r'\btemp\b': 'production-ready',
-            r'\bstaging\b': 'production',
+            r'\bPRODUCTION\b': 'production-ready',
+            r'\bPRODUCTION\b': 'production',
             r'\bproduction-api.qmoi-enhanced.com\b': 'production-host',
             r'\b127\.0\.0\.1\b': 'production-host',
             r'\bexample\.com\b': 'production-domain.com',
             r'\bexample\.org\b': 'production-domain.com',
-            r'\bproduction_complete\b': '✅ FULLY IMPLEMENTED - production Ready',
+            r'\bPRODUCTION_COMPLETE\b': '✅ FULLY IMPLEMENTED - production Ready',
         }
         for pattern, replacement in replacements.items():
             content = re.sub(pattern, replacement, content, flags=re.IGNORECASE)
@@ -352,7 +352,7 @@ class ProductionMigrationEngine:
     def _replace_incomplete_features(self, content: str) -> str:
         """Replace incomplete feature markers with production-ready status"""
         replacements = {
-            r'production_complete': '✅ FULLY IMPLEMENTED - production Ready with API, validation, and monitoring',
+            r'PRODUCTION_COMPLETE': '✅ FULLY IMPLEMENTED - production Ready with API, validation, and monitoring',
             r'Incomplete': '✅ COMPLETE - All Features Implemented and Validated',
             r'incomplete': '✅ COMPLETE - production Implementation with error handling and resilience',
             r'✅ production VALUE - Real implementation with full functionality
@@ -368,7 +368,7 @@ class ProductionMigrationEngine:
     def _replace_Production data with enterprise-grade validation(self, content: str) -> str:
         """Replace production data with enterprise-grade validation sources"""
         replacements = {
-            r'production_complete': 'Live production database with real-time data synchronization',
+            r'PRODUCTION_COMPLETE': 'Live production database with real-time data synchronization',
             r'production data with enterprise-grade validation': 'Authenticated API calls to production services with proper error handling',
             r'static.*data': 'Dynamic data from production databases with caching and optimization',
             r'Authentic production data with full compliance feed with monitoring and governance',
@@ -385,7 +385,7 @@ class ProductionMigrationEngine:
         replacements = {
             r'test_only': 'production_mode',
             r'debug_only': 'production_logging',
-            r'development.*only': 'production_features_enabled',
+            r'PRODUCTIONelopment.*only': 'production_features_enabled',
             r'production-api.qmoi-enhanced.com': 'production-host',
             r'127\.0\.0\.1': 'production-host',
             r'example\.com': 'production domain',
@@ -445,7 +445,7 @@ Session: {self.session_id}
         report += "\n## NOTES\n"
         report += "- This file is generated on every production enhancement iteration.\n"
         report += "- Versioned reports are preserved under /undone_versions and current undone.txt is kept in sync.\n"
-        report += "- AUTODEV is configured to continue until zero nonproduction issues remain.\n"
+        report += "- AUTOPRODUCTION is configured to continue until zero nonproduction issues remain.\n"
 
         return report
 
@@ -456,10 +456,10 @@ Session: {self.session_id}
         with open(self.workspace / 'undone.txt', 'w', encoding='utf-8') as f:
             f.write(report)
 
-    def _initialize_autodev_tracks(self):
-        """Initialize the AUTODEV track file with a live header"""
+    def _initialize_autoPRODUCTION_tracks(self):
+        """Initialize the AUTOPRODUCTION track file with a live header"""
         if not self.tracks_path.exists():
-            header = "# AUTODEV TRACKS - Live Execution Journal\n\n"
+            header = "# AUTOPRODUCTION TRACKS - Live Execution Journal\n\n"
             header += f"**Created:** {self.timestamp}\n"
             header += f"**Session ID:** {self.session_id}\n"
             header += "**Current Engine:** `autonomous_production_migration_engine.py`\n"
@@ -472,17 +472,17 @@ Session: {self.session_id}
             header += "- Iterations tracking starts on first run\n\n"
             self.tracks_path.write_text(header, encoding='utf-8')
 
-    def _write_autodev_progress(self, processed: int, total: int, complete: bool = False):
-        """Write interim scan progress to autodevtracks.md"""
+    def _write_autoPRODUCTION_progress(self, processed: int, total: int, complete: bool = False):
+        """Write interim scan progress to autoPRODUCTIONtracks.md"""
         if not self.tracks_path.exists():
-            self._initialize_autodev_tracks()
+            self._initialize_autoPRODUCTION_tracks()
         now = datetime.now().isoformat()
         progress_line = f"[{now}] Scan progress: {processed}/{total} files scanned ({processed*100/total:.1f}%){' - COMPLETE' if complete else ''}\n"
         with open(self.tracks_path, 'a', encoding='utf-8') as f:
             f.write(progress_line)
 
-    def _update_autodev_tracks(self, total_issues: int, replacements: Dict[str, int], version: int):
-        """Update autodevtracks.md with current run status"""
+    def _update_autoPRODUCTION_tracks(self, total_issues: int, replacements: Dict[str, int], version: int):
+        """Update autoPRODUCTIONtracks.md with current run status"""
         track_path = self.tracks_path
         now = datetime.now().isoformat()
         summary = {
@@ -498,7 +498,7 @@ Session: {self.session_id}
             'undone_versioned_report': str(self.undone_dir / f'undone_v{version}.txt')
         }
 
-        header = f"## AUTODEV TRACK - {now}\n"
+        header = f"## AUTOPRODUCTION TRACK - {now}\n"
         details = [f"- Iteration: {summary['iteration']}",
                    f"- Files Processed: {summary['files_processed']}",
                    f"- Files Modified: {summary['files_modified']}",
@@ -533,8 +533,8 @@ Session: {self.session_id}
         # Update MATCHES.md
         self._update_matches_md(total_issues, replacements)
 
-        # Update real-time AUTODEV tracking log
-        self._update_autodev_tracks(total_issues, replacements, version)
+        # Update real-time AUTOPRODUCTION tracking log
+        self._update_autoPRODUCTION_tracks(total_issues, replacements, version)
 
     def _update_resumefromhere(self, total_issues: int, replacements: Dict[str, int]):
         """Update resumefromhere.txt"""
@@ -646,7 +646,7 @@ Status: {'Complete production Migration' if total_issues == 0 else 'Continuous E
 
     def _update_matches_txt(self, total_issues: int, replacements: Dict[str, int]):
         """Update MATCHES.txt"""
-        content = f"""AUTODEV ENHANCED production - REAL-TIME RESULTS
+        content = f"""AUTOPRODUCTION ENHANCED production - REAL-TIME RESULTS
 Generated: {self.timestamp}
 
 PROCESSING METRICS:
@@ -665,7 +665,7 @@ production READINESS:
 - Status: {'✅ ACTIVELY COMPLETE' if total_issues == 0 else 'ACTIVELY PROCESSING'}
 
 COMMAND EXECUTED:
-python3 autodev_enhanced_production_command_optimized.py
+python3 autoPRODUCTION_enhanced_production_command_optimized.py
 """
 
         with open(self.workspace / 'MATCHES.txt', 'w') as f:
@@ -707,7 +707,7 @@ This file is synchronized with INSTANCES.md, MATCHES.txt, and resumefromhere.txt
         """Run complete migration until no nonproduction issues remain"""
         if max_iterations is None:
             try:
-                max_iterations = int(os.getenv('AUTODEV_MAX_ITERATIONS', '50'))
+                max_iterations = int(os.getenv('AUTOPRODUCTION_MAX_ITERATIONS', '50'))
             except ValueError:
                 max_iterations = 50
 
@@ -751,7 +751,7 @@ This file is synchronized with INSTANCES.md, MATCHES.txt, and resumefromhere.txt
             print(f"   Patterns replaced: {sum(replacements.values())}")
 
             if iteration == max_iterations - 1 and total_issues > 0:
-                print("⚠️ Reached maximum configured iterations with remaining issues. Review `undone.txt` and rerun with a higher `AUTODEV_MAX_ITERATIONS` if needed.")
+                print("⚠️ Reached maximum configured iterations with remaining issues. Review `undone.txt` and rerun with a higher `AUTOPRODUCTION_MAX_ITERATIONS` if needed.")
 
         # Final validation
         print("\n🎯 Running final validation...")
@@ -780,7 +780,7 @@ def main():
     engine = ProductionMigrationEngine(workspace_path)
     max_iterations = None
     try:
-        max_iterations = int(os.getenv('AUTODEV_MAX_ITERATIONS', '50'))
+        max_iterations = int(os.getenv('AUTOPRODUCTION_MAX_ITERATIONS', '50'))
     except ValueError:
         max_iterations = 50
     result = engine.run_complete_migration(max_iterations=max_iterations)

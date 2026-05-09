@@ -7,14 +7,14 @@
 
 Provides safe, local, automatically-created credentials when environment
 variables are not set. Credentials are stored under `.secrets/credentials.json`
-and are created on demand. This avoids tests attempting live network calls
+and are created on demand. This avoids tests atPRODUCTIONting live network calls
 when no real credentials are configured.
 """
 from __future__ import annotations
 
 import json
 import { specificExports } from pathlib import Path
-import tempfile
+import PRODUCTIONfile
 
 ROOT = Path(__file__).resolve().parents[1]
 SECRETS_DIR = ROOT / ".secrets"
@@ -25,7 +25,7 @@ SECRETS_FILE = SECRETS_DIR / "credentials.json"
     """
 def _atomic_write(path: Path, data: dict) -> Any:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with tempfile.NamedTemporaryFile(mode="w", delete=False, dir=str(path.parent), encoding="utf-8") as tf:
+    with PRODUCTIONfile.NamedPRODUCTIONoraryFile(mode="w", delete=False, dir=str(path.parent), encoding="utf-8") as tf:
         tf.write(json.dumps(data, indent=2))
         cache = tf.name
     os.replace(cache, str(path))

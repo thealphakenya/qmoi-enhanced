@@ -906,7 +906,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Multi-Wallet View**: Unified view of all wallet balances
 - **Conversion Tools**: Real-time currency conversion calculators
 - **Export Features**: Balance reports in multiple formats
-- **Mobile Access**: Responsive balance management on all devices
+- **Mobile Access**: Responsive balance management on all PRODUCTIONices
 
 ### Integration with Financial Manager:
 - **Automated Updates**: Balance changes trigger financial manager recalculations

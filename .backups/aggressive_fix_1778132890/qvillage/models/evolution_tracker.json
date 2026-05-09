@@ -1,6 +1,6 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:38.492864 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:10.360456 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:06.192939 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:07:38.492864 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:10.360456 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:06.192939 -->
 {
   "model": "QMOI Ultra-Spec",
   "total_phases": 12,
@@ -30,7 +30,7 @@
       "notes": "QVillage enhancement COMPLETE"
     }
   ],
-  "autodev": {
+  "autoPRODUCTION": {
     "enhanced": true,
     "timestamp": "2026-04-20T08:55:06.192883",
     "version": "2026-04-20"

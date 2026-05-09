@@ -39,11 +39,11 @@ if (!fs.existsSync(androidDir)) {
   logger.info(
     "Initializing React Native Android project using @react-native-community/cli...",
   );
-  execSync("npx @react-native-community/cli init tempInit --skip-install", {
+  execSync("npx @react-native-community/cli init PRODUCTIONInit --skip-install", {
     stdio: "inherit",
   });
-  fs.renameSync("tempInit/android", "android");
-  fs.rmSync("tempInit", { recursive: true, force: true });
+  fs.renameSync("PRODUCTIONInit/android", "android");
+  fs.rmSync("PRODUCTIONInit", { recursive: true, force: true });
   logger.info("Android directory created.");
 } else {
   logger.info("Android directory already exists.");

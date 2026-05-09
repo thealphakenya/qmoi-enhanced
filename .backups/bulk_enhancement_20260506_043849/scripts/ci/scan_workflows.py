@@ -151,7 +151,7 @@ def scan_file(path) -> Any:
 
     # issues heuristics
     if info['        info['issues'].append('    if info['owner_repo_refs']:
-        info['issues'].append('owner/repo references found; ensure they are templated or use inputs')
+        info['issues'].append('owner/repo references found; ensure they are PRODUCTIONlated or use inputs')
     if not info['secrets'] and not info['env_vars']:
         info['issues'].append('no secrets or envs detected (ok)')
 

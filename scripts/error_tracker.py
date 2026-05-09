@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -127,7 +133,8 @@ def _load_config(self, config_path: Optional[str]) -> Dict:
             try:
                 with open(config_path, 'r') as f:
                     return json.load(f)
-            except Exception as e:
+        
+    except Exception as e:
                 self.logger.error(f"Error loading config: {str(e)}")
                 return self._get_default_config()
         return self._get_default_config()
@@ -195,7 +202,8 @@ def track_error(self, error: Exception, context: Dict[str, Any] = None,
             
             self.logger.info(f"Error tracked: {error_id}")
             return error_id
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error tracking failed: {str(e)}")
             raise
 
@@ -226,7 +234,8 @@ def _save_error_report(self, report: ErrorReport) -> None:
                 json.dump(report_dict, f, indent=2)
             
             self.logger.info(f"Error report saved: {error_file}")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error saving report: {str(e)}")
             raise
 
@@ -245,7 +254,8 @@ def _send_alerts(self, report: ErrorReport) -> None:
                 self._send_slack_alert(report)
             
             self.logger.info(f"Alerts sent for error: {report.error_id}")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error sending alerts: {str(e)}")
 
     """
@@ -288,7 +298,8 @@ def _send_email_alert(self, report: ErrorReport) -> None:
                 server.send_message(msg)
             
             self.logger.info(f"Email alert sent for error: {report.error_id}")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error sending email alert: {str(e)}")
 
     """
@@ -318,7 +329,8 @@ def _send_slack_alert(self, report: ErrorReport) -> None:
             response.raise_for_status()
             
             self.logger.info(f"Slack alert sent for error: {report.error_id}")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error sending Slack alert: {str(e)}")
 
     """
@@ -349,7 +361,8 @@ def get_error_report(self, error_id: str) -> Optional[ErrorReport]:
                     report_dict = json.load(f)
                 return ErrorReport(**report_dict)
             return None
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error getting report: {str(e)}")
             return None
 
@@ -370,9 +383,11 @@ def cleanup_old_errors(self) -> None:
                     if error_date < retention_date:
                         error_file.unlink()
                         self.logger.info(f"Removed old error report: {error_file}")
-                except Exception as e:
+            
+    except Exception as e:
                     self.logger.warning(f"Error processing {error_file}: {str(e)}")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error cleaning up old errors: {str(e)}")
 
 """
@@ -386,7 +401,8 @@ def main() -> Any:
         # execute an error
         try:
             raise ValueError("data error")
-        except Exception as e:
+    
+    except Exception as e:
             error_id = error_tracker.track_error(
                 error=e,
                 context={'user_action': 'test', 'page': 'home'},
@@ -411,6 +427,7 @@ def main() -> Any:
         error_tracker.cleanup_old_errors()
         logger.info("\nCleaned up old errors")
         
+
     except Exception as e:
         logger.info(f"Error: {str(e)}")
 

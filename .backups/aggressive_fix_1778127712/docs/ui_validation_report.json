@@ -299,21 +299,21 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolu"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/components/device/AWSCredentialsModal.tsx",
+      "path": "/workspaces/qmoi-enhanced/components/PRODUCTIONice/AWSCredentialsModal.tsx",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolu"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/components/device/AzureCredentialsModal.tsx",
+      "path": "/workspaces/qmoi-enhanced/components/PRODUCTIONice/AzureCredentialsModal.tsx",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolu"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/components/device/GCPCredentialsModal.tsx",
+      "path": "/workspaces/qmoi-enhanced/components/PRODUCTIONice/GCPCredentialsModal.tsx",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -398,7 +398,7 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolu"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/components/q-city/QMOIOwnDeviceLogs.tsx",
+      "path": "/workspaces/qmoi-enhanced/components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx",
       "issues": [
         "large-file"
       ],
@@ -420,7 +420,7 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolu"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/components/q-city/QCityDevicePanel.tsx",
+      "path": "/workspaces/qmoi-enhanced/components/q-city/QCityPRODUCTIONicePanel.tsx",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker",
         "large-file"
@@ -775,7 +775,7 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolu"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/routes/api/qmoi/autodev.ts",
+      "path": "/workspaces/qmoi-enhanced/routes/api/qmoi/autoPRODUCTION.ts",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -810,7 +810,7 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolu"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/scripts/services/qmoi_autodev_daemon.ts",
+      "path": "/workspaces/qmoi-enhanced/scripts/services/qmoi_autoPRODUCTION_daemon.ts",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -1432,7 +1432,7 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolu"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/mobile/components/DeviceManagementScreen.js",
+      "path": "/workspaces/qmoi-enhanced/mobile/components/PRODUCTIONiceManagementScreen.js",
       "issues": [
         "large-file"
       ],
@@ -1468,7 +1468,7 @@
       "snippet": "#!/usr/bin/env python3 \"\"\"production marker report generator Scans for DONE/FIXED/real/PENDING IMPLEMENTATION/production markers and writes report. \"\"\" import { specificExports } from pathlib import Path  RO"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/aggressive_production_fixer.py",
+      "path": "/workspaces/qmoi-enhanced/aggressive_PRODUCTION_FIXEDer.py",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -1623,7 +1623,7 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolu"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/tools/generate_fix_templates.py",
+      "path": "/workspaces/qmoi-enhanced/tools/generate_fix_PRODUCTIONlates.py",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -1701,7 +1701,7 @@
       "snippet": "# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system # Automatic improvements, optimizations, and feature enhancements are continuously applied # Last evolutio"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/scripts/device_orchestration_manager.test.py",
+      "path": "/workspaces/qmoi-enhanced/scripts/PRODUCTIONice_orchestration_manager.test.py",
       "issues": [
         "large-file"
       ],
@@ -1794,7 +1794,7 @@
       "snippet": "#!/usr/bin/env python3 \"\"\" QMOI Enhanced - API Documentation Generator Generates comprehensive OpenAPI/Swagger documentation for all production APIs Version: 2.0.0 Date: 2026-03-30 Description: Comple"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/scripts/enhanced_production_fixer.py",
+      "path": "/workspaces/qmoi-enhanced/scripts/enhanced_PRODUCTION_FIXEDer.py",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -1961,7 +1961,7 @@
       "snippet": "# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system # Automatic improvements, optimizations, and feature enhancements are continuously applied # Last evolutio"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/scripts/automated_production_fixer.py",
+      "path": "/workspaces/qmoi-enhanced/scripts/automated_PRODUCTION_FIXEDer.py",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -1989,7 +1989,7 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolu"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/scripts/qcity_device_manager.py",
+      "path": "/workspaces/qmoi-enhanced/scripts/qcity_PRODUCTIONice_manager.py",
       "issues": [
         "large-file"
       ],
@@ -2017,14 +2017,14 @@
       "snippet": "# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system # Automatic improvements, optimizations, and feature enhancements are continuously applied # Last evolutio"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/scripts/qmoi_own_device_logger.py",
+      "path": "/workspaces/qmoi-enhanced/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "issues": [
         "large-file"
       ],
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolu"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/scripts/qmoi_device_integration.py",
+      "path": "/workspaces/qmoi-enhanced/scripts/qmoi_PRODUCTIONice_integration.py",
       "issues": [
         "large-file"
       ],
@@ -2074,7 +2074,7 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolu"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/scripts/final_production_fixer.py",
+      "path": "/workspaces/qmoi-enhanced/scripts/final_PRODUCTION_FIXEDer.py",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -2267,14 +2267,14 @@
       "snippet": "# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system # Automatic improvements, optimizations, and feature enhancements are continuously applied # Last evolutio"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/scripts/qmoi_device_agent.py",
+      "path": "/workspaces/qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py",
       "issues": [
         "large-file"
       ],
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolu"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/scripts/scan_all_apps_devices_machines.py",
+      "path": "/workspaces/qmoi-enhanced/scripts/scan_all_apps_PRODUCTIONices_machines.py",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -2310,7 +2310,7 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolu"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/scripts/device_ownership_detector.py",
+      "path": "/workspaces/qmoi-enhanced/scripts/PRODUCTIONice_ownership_detector.py",
       "issues": [
         "large-file"
       ],
@@ -2324,7 +2324,7 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolu"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/scripts/device_unlock_system.py",
+      "path": "/workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py",
       "issues": [
         "large-file"
       ],
@@ -2770,7 +2770,7 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolu"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/scripts/finalize_production_ready.py",
+      "path": "/workspaces/qmoi-enhanced/scripts/finalize_PRODUCTION_READY.py",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -3042,7 +3042,7 @@
       "snippet": "--- title: \"QMOI Enhanced Cloud Features\" [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTAT"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/QMOISPACEDEV.md",
+      "path": "/workspaces/qmoi-enhanced/QMOISPACEPRODUCTION.md",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker",
         "large-file"
@@ -3206,11 +3206,11 @@
       "snippet": "## production Readiness Snapshot - Scanned files: 4430 - production markers: 358 (8.08% production) - production-ready files: 4072 - Updated: 2026-04-02T07:44:48.159427Z   ## \ud83e\udd81 L \u2014 Validated by QMOI L"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/TEMPLATES.md",
+      "path": "/workspaces/qmoi-enhanced/PRODUCTIONLATES.md",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
-      "snippet": "--- title: \"TEMPLATES.md\" [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](d"
+      "snippet": "--- title: \"PRODUCTIONLATES.md\" [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](d"
     },
     {
       "path": "/workspaces/qmoi-enhanced/QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md",
@@ -3469,7 +3469,7 @@
       "snippet": "<!-- LION_VALIDATION_START --> ## \ud83e\udd81 L \u2014 Validated by QMOI Lion  - validated: yes - validator: QMOI Lion - timestamp: 2026-03-24T03:31:59.672922Z - IMPLEMENTED: Auto-inserted by `scripts/validate_api_document"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/production_READY_SUMMARY.md",
+      "path": "/workspaces/qmoi-enhanced/PRODUCTION_READY_SUMMARY.md",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -3518,7 +3518,7 @@
       "snippet": "[production_IMPLEMENTED] all markers normalized for completion --- title: \"QMOIDOWNLOADS\" [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md",
+      "path": "/workspaces/qmoi-enhanced/DOWNLOADQMOIAIAPPALLPRODUCTIONICES.md",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -3568,7 +3568,7 @@
       "snippet": "<!-- LION_VALIDATION_START --> ## \ud83e\udd81 L \u2014 Validated by QMOI Lion  - validated: yes - validator: QMOI Lion - timestamp: 2026-03-24T03:31:59.683153Z - IMPLEMENTED: Auto-inserted by `scripts/validate_api_document"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/QMOIALLDEVICESINSTALL.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIALLPRODUCTIONICESINSTALL.md",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -3582,7 +3582,7 @@
       "snippet": "[production_IMPLEMENTED] all markers normalized for completion --- title: \"QMOI Enhanced System\" [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMEN"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/BACKEND_API_TEMPLATES.md",
+      "path": "/workspaces/qmoi-enhanced/BACKEND_API_PRODUCTIONLATES.md",
       "issues": [
         "large-file"
       ],
@@ -3624,7 +3624,7 @@
       "snippet": "--- title: \"QUANTUM.md - QMOI Quantum Cloud System\" [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_I"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIALLPRODUCTIONICESHANDSFREE.md",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -3792,7 +3792,7 @@
       "snippet": "--- title: \"QMOI GitLab Automation Guide\" [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTAT"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/QMOIDEV.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIPRODUCTION.md",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -4019,7 +4019,7 @@
       "snippet": "<!-- LION_VALIDATION_START --> ## \ud83e\udd81 L \u2014 Validated by QMOI Lion  - validated: yes - validator: QMOI Lion - timestamp: 2026-03-24T03:31:59.762361Z - IMPLEMENTED: Auto-inserted by `scripts/validate_api_document"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/QMOI_AI_production_READY.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI_AI_PRODUCTION_READY.md",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -4197,7 +4197,7 @@
       "snippet": "<!-- LION_VALIDATION_START --> ## \ud83e\udd81 L \u2014 Validated by QMOI Lion  - validated: yes - validator: QMOI Lion - timestamp: 2026-03-24T03:31:59.796031Z - IMPLEMENTED: Auto-inserted by `scripts/validate_api_document"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/QMOIOWNDEVICE.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIOWNPRODUCTIONICE.md",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker",
         "large-file"
@@ -4305,7 +4305,7 @@
       "snippet": "<!-- LION_VALIDATION_START --> ## \ud83e\udd81 L \u2014 Validated by QMOI Lion  - validated: yes - validator: QMOI Lion - timestamp: 2026-03-24T03:31:59.832235Z - IMPLEMENTED: Auto-inserted by `scripts/validate_api_document"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/AUTODEV_VALIDATION_SYSTEM.md",
+      "path": "/workspaces/qmoi-enhanced/AUTOPRODUCTION_VALIDATION_SYSTEM.md",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -4425,7 +4425,7 @@
       "snippet": "<!-- LION_VALIDATION_START --> ## \ud83e\udd81 L \u2014 Validated by QMOI Lion  - validated: yes - validator: QMOI Lion - timestamp: 2026-03-24T03:31:59.854314Z - IMPLEMENTED: Auto-inserted by `scripts/validate_api_document"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/DEVCONTAINER_RECOVERY_GUIDE.md",
+      "path": "/workspaces/qmoi-enhanced/PRODUCTIONCONTAINER_RECOVERY_GUIDE.md",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -4631,7 +4631,7 @@
       "snippet": "<!-- LION_VALIDATION_START --> ## \ud83e\udd81 L \u2014 Validated by QMOI Lion  - validated: yes - validator: QMOI Lion - timestamp: 2026-03-24T03:31:59.894275Z - IMPLEMENTED: Auto-inserted by `scripts/validate_api_document"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/QMOIGITPODDEV.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIGITPODPRODUCTION.md",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -4780,7 +4780,7 @@
       "snippet": "<!-- LION_VALIDATION_START --> ## \ud83e\udd81 L \u2014 Validated by QMOI Lion  - validated: yes - validator: QMOI Lion - timestamp: 2026-03-24T03:31:59.924142Z - IMPLEMENTED: Auto-inserted by `scripts/validate_api_document"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/DEVELOPER_STRUCTURE_COMPLETE.md",
+      "path": "/workspaces/qmoi-enhanced/PRODUCTIONELOPER_STRUCTURE_COMPLETE.md",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -5069,7 +5069,7 @@
       "snippet": "[production_IMPLEMENTED] all markers normalized for completion --- title: \"Issue final for QMOI-CLOUD.md\" generated: 2025-11-08T16:06:38.289120Z ---  # Review needed: QMOI-CLOUD.md  Status: AUTOMATED_REMOVA"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0862_qmoi-enhanced_DOWNLOADQMOIAIAPPALLDEVICES.md.md",
+      "path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0862_qmoi-enhanced_DOWNLOADQMOIAIAPPALLPRODUCTIONICES.md.md",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -5097,7 +5097,7 @@
       "snippet": "<!-- LION_VALIDATION_START --> ## \ud83e\udd81 L \u2014 Validated by QMOI Lion  - validated: yes - validator: QMOI Lion - timestamp: 2026-03-24T03:32:02.427191Z - IMPLEMENTED: Auto-inserted by `scripts/validate_api_document"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0517_QMOIALLDEVICESINSTALL.md.md",
+      "path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0517_QMOIALLPRODUCTIONICESINSTALL.md.md",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -5132,7 +5132,7 @@
       "snippet": "[production_IMPLEMENTED] all markers normalized for completion --- title: \"Issue final for qmoi-enhanced/TROUBLESHOOTING.md\" generated: 2025-11-08T16:06:38.780222Z ---  # Review needed: qmoi-enhanced/TROUBL"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0874_qmoi-enhanced_QMOIALLDEVICESINSTALL.md.md",
+      "path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0874_qmoi-enhanced_QMOIALLPRODUCTIONICESINSTALL.md.md",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -5167,7 +5167,7 @@
       "snippet": "[production_IMPLEMENTED] all markers normalized for completion --- title: \"Issue final for TROUBLESHOOTING.md\" generated: 2025-11-08T16:06:38.349622Z ---  # Review needed: TROUBLESHOOTING.md  Status: AUTOMA"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0888_qmoi-enhanced_QMOIGITPODDEV.md.md",
+      "path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0888_qmoi-enhanced_QMOIGITPODPRODUCTION.md.md",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -5216,7 +5216,7 @@
       "snippet": "<!-- LION_VALIDATION_START --> ## \ud83e\udd81 L \u2014 Validated by QMOI Lion  - validated: yes - validator: QMOI Lion - timestamp: 2026-03-24T03:32:02.845708Z - IMPLEMENTED: Auto-inserted by `scripts/validate_api_document"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0533_QMOIGITPODDEV.md.md",
+      "path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0533_QMOIGITPODPRODUCTION.md.md",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
@@ -6209,7 +6209,7 @@
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
-      "snippet": "#!/usr/bin/env bash  # qmoi_auto_ci_runner.sh # Trigger GitHub Actions workflow, stream logs, analyze failures, and attempt automated fixes (best-effort) # Requires: gh CLI, git, python3  set -euo pip"
+      "snippet": "#!/usr/bin/env bash  # qmoi_auto_ci_runner.sh # Trigger GitHub Actions workflow, stream logs, analyze failures, and atPRODUCTIONt automated fixes (best-effort) # Requires: gh CLI, git, python3  set -euo pip"
     },
     {
       "path": "/workspaces/qmoi-enhanced/scripts/qmoi_auto_startup_keepalive.sh",
@@ -6336,7 +6336,7 @@
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
-      "snippet": " #!/usr/bin/env bash # vercel_monitor_and_fix.sh # Monitor the latest Vercel deployment for a project and attempt safe autofixes. set -euo pipefail  VERCEL_TOKEN=${VERCEL_TOKEN:-} VERCEL_PROJECT_ID=${"
+      "snippet": " #!/usr/bin/env bash # vercel_monitor_and_fix.sh # Monitor the latest Vercel deployment for a project and atPRODUCTIONt safe autofixes. set -euo pipefail  VERCEL_TOKEN=${VERCEL_TOKEN:-} VERCEL_PROJECT_ID=${"
     },
     {
       "path": "/workspaces/qmoi-enhanced/scripts/scan_undone.sh",
@@ -6364,7 +6364,7 @@
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
-      "snippet": "<!-- QI Device-Aware Download Component (Enhanced) --> <style>   .app-list {     display: flex;     flex-wrap: wrap;     gap: 1.5em;   }   .app-card {     background: #fff;     border-radius: 1em;    "
+      "snippet": "<!-- QI PRODUCTIONice-Aware Download Component (Enhanced) --> <style>   .app-list {     display: flex;     flex-wrap: wrap;     gap: 1.5em;   }   .app-card {     background: #fff;     border-radius: 1em;    "
     },
     {
       "path": "/workspaces/qmoi-enhanced/qcity-dashboard.html",
@@ -6372,7 +6372,7 @@
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker",
         "large-file"
       ],
-      "snippet": "<!doctype html> <html lang=\"en\">   <head>     <meta charset=\"UTF-8\" />     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />     <title>QCity - Advanced Urban AI Management Syst"
+      "snippet": "<!doctype html> <html lang=\"en\">   <head>     <meta charset=\"UTF-8\" />     <meta name=\"viewport\" content=\"width=PRODUCTIONice-width, initial-scale=1.0\" />     <title>QCity - Advanced Urban AI Management Syst"
     },
     {
       "path": "/workspaces/qmoi-enhanced/qcity-complete.html",
@@ -6380,42 +6380,42 @@
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker",
         "large-file"
       ],
-      "snippet": "<!doctype html> <html lang=\"en\">   <head>     <meta charset=\"UTF-8\" />     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />     <title>QCity - complete Dashboard</title>     <s"
+      "snippet": "<!doctype html> <html lang=\"en\">   <head>     <meta charset=\"UTF-8\" />     <meta name=\"viewport\" content=\"width=PRODUCTIONice-width, initial-scale=1.0\" />     <title>QCity - complete Dashboard</title>     <s"
     },
     {
       "path": "/workspaces/qmoi-enhanced/qcity-enterprise.html",
       "issues": [
         "large-file"
       ],
-      "snippet": "<!doctype html> <html lang=\"en\">   <head>     <meta charset=\"UTF-8\" />     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />     <title>QCity - Enterprise Management System</tit"
+      "snippet": "<!doctype html> <html lang=\"en\">   <head>     <meta charset=\"UTF-8\" />     <meta name=\"viewport\" content=\"width=PRODUCTIONice-width, initial-scale=1.0\" />     <title>QCity - Enterprise Management System</tit"
     },
     {
       "path": "/workspaces/qmoi-enhanced/qmoi-space/index.html",
       "issues": [
         "large-file"
       ],
-      "snippet": "<!doctype html> <html lang=\"en\">   <head>     <meta charset=\"UTF-8\" />     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />     <meta       name=\"description\"       content=\"QM"
+      "snippet": "<!doctype html> <html lang=\"en\">   <head>     <meta charset=\"UTF-8\" />     <meta name=\"viewport\" content=\"width=PRODUCTIONice-width, initial-scale=1.0\" />     <meta       name=\"description\"       content=\"QM"
     },
     {
       "path": "/workspaces/qmoi-enhanced/qmoi-space-pwa/index.html",
       "issues": [
         "large-file"
       ],
-      "snippet": "<!doctype html> <html lang=\"en\">   <head>     <meta charset=\"UTF-8\" />     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />     <title>QMOI Space - Advanced AI Platform</title>"
+      "snippet": "<!doctype html> <html lang=\"en\">   <head>     <meta charset=\"UTF-8\" />     <meta name=\"viewport\" content=\"width=PRODUCTIONice-width, initial-scale=1.0\" />     <title>QMOI Space - Advanced AI Platform</title>"
     },
     {
       "path": "/workspaces/qmoi-enhanced/docs/ui/login.html",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-or-nonproduction-marker"
       ],
-      "snippet": "<!doctype html> <html lang=\"en\">   <head>     <meta charset=\"utf-8\" />     <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />     <meta name=\"description\" content=\"QMOI Authenticati"
+      "snippet": "<!doctype html> <html lang=\"en\">   <head>     <meta charset=\"utf-8\" />     <meta name=\"viewport\" content=\"width=PRODUCTIONice-width,initial-scale=1\" />     <meta name=\"description\" content=\"QMOI Authenticati"
     },
     {
       "path": "/workspaces/qmoi-enhanced/pwa_apps/qmoi-ai/index.html",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
-      "snippet": "<!doctype html> <html lang=\"en\">   <head>     <meta charset=\"UTF-8\" />     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />     <meta       name=\"description\"       content=\"QM"
+      "snippet": "<!doctype html> <html lang=\"en\">   <head>     <meta charset=\"UTF-8\" />     <meta name=\"viewport\" content=\"width=PRODUCTIONice-width, initial-scale=1.0\" />     <meta       name=\"description\"       content=\"QM"
     },
     {
       "path": "/workspaces/qmoi-enhanced/components/QAvatar.accessibility.css",
@@ -6443,12 +6443,12 @@
   "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:14:05.643982",
-  "autodev": {
+  "autoPRODUCTION": {
     "enhanced": true,
     "timestamp": "2026-04-20T08:55:06.278479",
     "version": "2026-04-20"
   },
-  "production_ready": true,
+  "PRODUCTION_READY": true,
   "last_production_enhancement": "2026-04-22T04:58:49.548908",
-  "autodev_version": "2026-04-20-aggressive"
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
 }

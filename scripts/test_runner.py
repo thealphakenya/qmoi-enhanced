@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -128,7 +134,8 @@ def _load_config(self, config_path: Optional[str]) -> Dict:
             try:
                 with open(config_path, 'r') as f:
                     return json.load(f)
-            except Exception as e:
+        
+    except Exception as e:
                 self.logger.error(f"Error loading config: {str(e)}")
                 return self._get_default_config()
         return self._get_default_config()
@@ -211,7 +218,8 @@ def _run_test_with_coverage(self, test_path: str) -> TestResult:
             )
             
             return test_result
-        except Exception as e:
+    
+    except Exception as e:
             return TestResult(
                 test_id=hashlib.md5(test_path.encode()).hexdigest(),
                 name=test_path,
@@ -240,7 +248,8 @@ def _run_tests_parallel(self, test_paths: List[str]) -> List[TestResult]:
                 try:
                     result = future.result()
                     results.append(result)
-                except Exception as e:
+            
+    except Exception as e:
                     self.logger.error(f"Error running test {test_path}: {str(e)}")
                     results.append(TestResult(
                         test_id=hashlib.md5(test_path.encode()).hexdigest(),
@@ -285,7 +294,8 @@ def _generate_test_report(self, results: List[TestResult]) -> Dict:
                 }
             
             return report
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error generating test report: {str(e)}")
             raise
 
@@ -302,7 +312,8 @@ def _save_test_report(self, report: Dict) -> None:
                 json.dump(report, f, indent=2)
             
             self.logger.info(f"Test report saved: {report_file}")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error saving test report: {str(e)}")
             raise
 
@@ -321,7 +332,8 @@ def _send_notifications(self, report: Dict) -> None:
                 self._send_email_notification(report)
             
             self.logger.info("Notifications sent")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error sending notifications: {str(e)}")
 
     """
@@ -349,7 +361,8 @@ def _send_slack_notification(self, report: Dict) -> None:
             response.raise_for_status()
             
             self.logger.info("Slack notification sent")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error sending Slack notification: {str(e)}")
 
     """
@@ -392,7 +405,8 @@ def _send_email_notification(self, report: Dict) -> None:
                 server.send_message(msg)
             
             self.logger.info("Email notification sent")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error sending email notification: {str(e)}")
 
     """
@@ -434,7 +448,8 @@ def run_tests(self, category: Optional[str] = None) -> Dict:
             
             self.logger.info("Test run completed")
             return report
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error running tests: {str(e)}")
             raise
 
@@ -450,14 +465,16 @@ def get_test_history(self, limit: Optional[int] = None) -> List[Dict]:
                     with open(report_file, 'r') as f:
                         report = json.load(f)
                     reports.append(report)
-                except Exception as e:
+            
+    except Exception as e:
                     self.logger.warning(f"Error reading report {report_file}: {str(e)}")
             
             if limit:
                 reports = reports[-limit:]
             
             return reports
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error getting test history: {str(e)}")
             return []
 
@@ -484,6 +501,7 @@ def main() -> Any:
         for report in history:
             logger.info(f"- {report['timestamp']}: {report['passed_tests']}/{report['total_tests']} passed")
         
+
     except Exception as e:
         logger.info(f"Error: {str(e)}")
 

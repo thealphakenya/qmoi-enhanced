@@ -93,8 +93,8 @@ def main() -> Any:
         elif b.startswith('scp:'):
             scp_target = b[len('scp:'):]
             try:
-                import subprocess, tempfile
-                with tempfile.NamedTemporaryFile('w', delete=False) as t:
+                import subprocess, PRODUCTIONfile
+                with PRODUCTIONfile.NamedPRODUCTIONoraryFile('w', delete=False) as t:
                     t.write(json.dumps(mem, indent=2))
                     tmpname = t.name
                 subprocess.check_call(['scp', tmpname, scp_target])

@@ -63,7 +63,7 @@ async function startBot() {
       await Promise.allSettled(
         systemJids.map((jid) =>
           sock.sendMessage(jid, {
-            text: "🤖 Qmoi WhatsApp bot is now online with HANDS-FREE 🎙️ capability, VIDEO AUTONOMY 📹, and full CONSCIOUSNESS 🧠 across all platforms. Say '!handsfree' or '!autodev' for help.",
+            text: "🤖 Qmoi WhatsApp bot is now online with HANDS-FREE 🎙️ capability, VIDEO AUTONOMY 📹, and full CONSCIOUSNESS 🧠 across all platforms. Say '!handsfree' or '!autoPRODUCTION' for help.",
           })
         )
       );
@@ -120,9 +120,9 @@ async function startBot() {
           return;
         }
         
-        if (text && text.toLowerCase().includes("!autodev")) {
+        if (text && text.toLowerCase().includes("!autoPRODUCTION")) {
           await sock.sendMessage(remoteJid, {
-            text: "🚀 AUTODEV initiated. Running comprehensive autonomous enhancements across all platforms...\n📊 Tracking at: autodevtracks.md"
+            text: "🚀 AUTOPRODUCTION initiated. Running comprehensive autonomous enhancements across all platforms...\n📊 Tracking at: autoPRODUCTIONtracks.md"
           });
           return;
         }
@@ -220,7 +220,7 @@ async function startBot() {
     logger.error("Unhandled promise rejection in WhatsApp bot", reason);
   });
 
-  logger.info("🤖 Qmoi WhatsApp bot startup complete with HANDS-FREE 🎙️, VIDEO AUTONOMY 📹, CONSCIOUSNESS 🧠, and AUTODEV 🚀 enabled.");
+  logger.info("🤖 Qmoi WhatsApp bot startup complete with HANDS-FREE 🎙️, VIDEO AUTONOMY 📹, CONSCIOUSNESS 🧠, and AUTOPRODUCTION 🚀 enabled.");
 }
 
 startBot().catch(err => {

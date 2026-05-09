@@ -36,7 +36,7 @@ interface SecurityStatus {
   stats: {
     totalScans: number;
     threatsDetected: number;
-    blockedAttempts: number;
+    blockedAtPRODUCTIONts: number;
     lastUpdate: string;
   };
 }
@@ -59,7 +59,7 @@ function GET(_request: NextRequest): any {
         stats: {
           totalScans: 150,
           threatsDetected: 3,
-          blockedAttempts: 12,
+          blockedAtPRODUCTIONts: 12,
           lastUpdate: new Date().toISOString(),
         },
       };

@@ -102,7 +102,7 @@ class QMOIMasterOrchestrator {
         autoFix: true,
         filePermissions: true,
         gitPermissions: true,
-        systemPermissions: true,
+        sysPRODUCTIONermissions: true,
       },
     };
   }
@@ -156,8 +156,8 @@ class QMOIMasterOrchestrator {
       }
 
       // Set system permissions
-      if (this.config.permissions.systemPermissions) {
-        this.setSystemPermissions();
+      if (this.config.permissions.sysPRODUCTIONermissions) {
+        this.setSysPRODUCTIONermissions();
       }
 
       this.log("✅ Permissions setup completed");
@@ -241,10 +241,10 @@ node scripts/qmoi_master_orchestrator.js post-commit
     fs.chmodSync(path.join(hooksDir, "post-commit"), "755");
   }
 
-  setSystemPermissions() {
+  setSysPRODUCTIONermissions() {
     // This would handle system-level permissions
-    // For now, just log the attempt
-    this.log("System permissions setup attempted");
+    // For now, just log the atPRODUCTIONt
+    this.log("System permissions setup atPRODUCTIONted");
   }
 
   log(message, level = "INFO") {
@@ -318,7 +318,7 @@ node scripts/qmoi_master_orchestrator.js post-commit
     if (serviceInfo.restarts < config.maxRestarts) {
       serviceInfo.restarts++;
       this.log(
-        `🔄 Restarting service ${serviceName} (attempt ${serviceInfo.restarts}/${config.maxRestarts})`,
+        `🔄 Restarting service ${serviceName} (atPRODUCTIONt ${serviceInfo.restarts}/${config.maxRestarts})`,
       );
 
       setTimeout(() => {

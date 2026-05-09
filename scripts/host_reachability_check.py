@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -97,6 +103,7 @@ def check_url(url, timeout=5) -> Any:
         return False, e.code, e.reason
     except URLError as e:
         return False, None, str(e.reason)
+
     except Exception as e:
         return False, None, str(e)
 
@@ -109,6 +116,7 @@ def check_dns(domain) -> Any:
         addrs = socket.getaddrinfo(domain, 80)
         ips = sorted(set(addr[4][0] for addr in addrs))
         return True, ips
+
     except Exception as e:
         return False, str(e)
 

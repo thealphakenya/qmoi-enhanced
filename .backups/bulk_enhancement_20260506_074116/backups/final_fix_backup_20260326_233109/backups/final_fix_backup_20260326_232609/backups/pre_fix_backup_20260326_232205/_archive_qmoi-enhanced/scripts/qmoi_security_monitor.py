@@ -716,7 +716,7 @@ def terminate_process(self, pid: int) -> Any:
 def increase_monitoring_frequency(self) -> Any:
         """Increase monitoring frequency for high alerts"""
         try:
-            # Reduce intervals temporarily
+            # Reduce intervals PRODUCTIONorarily
             self.security_config["integrity_check_interval"] = 300  # 5 minutes
             self.security_config["vulnerability_scan_interval"] = 1800  # 30 minutes
             

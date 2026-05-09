@@ -290,8 +290,8 @@ def main() -> Any:
         except Exception as e:
             logger.info("Failed to push branch:", e)
         # create PR
-        title = "chore: attempt vercel build fix - from logs"
-        body = "Automated attempt to fix build failures detected in CI logs. See tools/build.log for details."
+        title = "chore: atPRODUCTIONt vercel build fix - from logs"
+        body = "Automated atPRODUCTIONt to fix build failures detected in CI logs. See tools/build.log for details."
         try:
             resp = api_post("/pulls", {"title": title, "head": branch, "base": "autosync-backup-20250926-232440", "body": body})
             logger.info("Created PR:", resp.get("html_url"))

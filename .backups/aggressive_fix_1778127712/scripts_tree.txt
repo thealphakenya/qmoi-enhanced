@@ -146,12 +146,12 @@ scripts/
 │   └── server.py
 ├── deployment-error-handler.js
 ├── deployment-monitor.sh
-├── dev-healthcheck.sh
-├── dev-value.js
-├── device_orchestration_manager.py
-├── device_orchestration_manager.test.py
-├── device_ownership_detector.py
-├── device_unlock_system.py
+├── PRODUCTION-healthcheck.sh
+├── PRODUCTION-value.js
+├── PRODUCTIONice_orchestration_manager.py
+├── PRODUCTIONice_orchestration_manager.test.py
+├── PRODUCTIONice_ownership_detector.py
+├── PRODUCTIONice_unlock_system.py
 ├── diagnostics
 │   ├── README.md
 │   ├── parse_next_trace.cjs
@@ -201,7 +201,7 @@ scripts/
 ├── error_tracker.py
 ├── expand_platform_DONEs.py
 ├── fast_git_commit.py
-├── finalize_production_ready.py
+├── finalize_PRODUCTION_READY.py
 ├── finance
 │   ├── README.md
 │   └── settle_to_cashon.py
@@ -311,7 +311,7 @@ scripts/
 ├── models
 │   ├── advanced_architectures.py
 │   ├── architectures.py
-│   ├── qmoi_autodev.py
+│   ├── qmoi_autoPRODUCTION.py
 │   ├── qmoi_kernel.py
 │   ├── qmoi_manager.py
 │   ├── qmoi_permissions.json
@@ -384,11 +384,11 @@ scripts/
 ├── q.py
 ├── qcity-automation.cjs
 ├── qcity-automation.js
-├── qcity-device-manager.js
+├── qcity-PRODUCTIONice-manager.js
 ├── qcity-ui-server.js
 ├── qcity-ui-server.js.bak.1768901506
 ├── qcity_advanced_installer.py
-├── qcity_device_manager.py
+├── qcity_PRODUCTIONice_manager.py
 ├── qcity_enhancer.py
 ├── qcity_manager.py
 ├── qcity_npm_selfheal.ps1
@@ -426,7 +426,7 @@ scripts/
 ├── qmoi-controller.js
 ├── qmoi-dashboard-enhance.py
 ├── qmoi-dashboard.py
-├── qmoi-dev-actions.py
+├── qmoi-PRODUCTION-actions.py
 ├── qmoi-download-link-tester.py
 ├── qmoi-emergency-fix.js
 ├── qmoi-emergency-fix.js.FUNCTIONAL.1768901311
@@ -535,7 +535,7 @@ scripts/
 ├── qmoi_auto_startup.py
 ├── qmoi_auto_watcher.js
 ├── qmoi_automated_betting_system.py
-├── qmoi_automated_device_controller.py
+├── qmoi_automated_PRODUCTIONice_controller.py
 ├── qmoi_build_api.py
 ├── qmoi_build_ci.py
 ├── qmoi_chat_server.py
@@ -548,8 +548,8 @@ scripts/
 ├── qmoi_dashboard.cjs
 ├── qmoi_dashboard.py
 ├── qmoi_data_optimization_system.py
-├── qmoi_device_agent.py
-├── qmoi_device_integration.py
+├── qmoi_PRODUCTIONice_agent.py
+├── qmoi_PRODUCTIONice_integration.py
 ├── qmoi_doc_verifier.js
 ├── qmoi_doc_verifier.js.bak.1768901506
 ├── qmoi_earning_daemon.py
@@ -587,7 +587,7 @@ scripts/
 ├── qmoi_model_enhancer.py
 ├── qmoi_notification_manager.py
 ├── qmoi_notifier.cjs
-├── qmoi_own_device_logger.py
+├── qmoi_own_PRODUCTIONice_logger.py
 ├── qmoi_parallel_error_fixer.py
 ├── qmoi_payment_fix.js
 ├── qmoi_performance_monitor.py
@@ -657,8 +657,8 @@ scripts/
 ├── run_validations.py
 ├── rust_lint_fix.js
 ├── rust_lint_fix.rs
-├── scan_all_apps_devices_machines.py
-├── scan_all_apps_devices_machines.test.py
+├── scan_all_apps_PRODUCTIONices_machines.py
+├── scan_all_apps_PRODUCTIONices_machines.test.py
 ├── scan_and_index.py
 ├── scan_lion_usage.py
 ├── scan_production_endpoints.js
@@ -700,7 +700,7 @@ scripts/
 │   ├── plugin_loader.ts
 │   ├── project_service.ts
 │   ├── qcity_service.ts
-│   ├── qmoi_autodev_daemon.ts
+│   ├── qmoi_autoPRODUCTION_daemon.ts
 │   ├── qmoi_secrets_manager.js
 │   ├── role_management.ts
 │   ├── schedule_runner.ts
@@ -710,7 +710,7 @@ scripts/
 │   └── whatsapp_service.ts
 ├── setup-backup-system.sh
 ├── setup-database.sh
-├── setup-dev.sh
+├── setup-PRODUCTION.sh
 ├── setup-nginx-automated.sh
 ├── setup-production-secrets.sh
 ├── setup-ssl-automated.sh
@@ -733,10 +733,10 @@ scripts/
 ├── sync_qmoi_downloads.py
 ├── sync_to_draft_release.py
 ├── task_queue.py
-├── templates
-│   ├── README_template.en.md
-│   ├── README_template.md
-│   └── README_template.sw.md
+├── PRODUCTIONlates
+│   ├── README_PRODUCTIONlate.en.md
+│   ├── README_PRODUCTIONlate.md
+│   └── README_PRODUCTIONlate.sw.md
 ├── terms_enforcer.py
 ├── test-qmoi-system.js
 ├── test-worker.js
@@ -753,7 +753,7 @@ scripts/
 ├── test_payments.py
 ├── test_qmoi_ai.js
 ├── test_qmoi_ai.mjs
-├── test_qmoi_autodev.js
+├── test_qmoi_autoPRODUCTION.js
 ├── test_runner.py
 ├── test_stripe_checkout.py
 ├── test_wallets.py
@@ -824,7 +824,7 @@ scripts/
 ├── validate_ui_components.py
 ├── validate_yml.py
 ├── vercel-auto-deploy.mjs
-├── vercel-autoclone-autodev.js
+├── vercel-autoclone-autoPRODUCTION.js
 ├── vercel-deployment-test.js
 ├── vercel-monitor.js
 ├── vercel_deploy.sh

@@ -25,7 +25,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -159,7 +160,8 @@ def collect_system_metrics(self) -> Any:
                 }
             }
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Failed to collect system metrics: {str(e)}")
     
     """
@@ -323,7 +325,8 @@ def collect_historical_data(self) -> Any:
             if len(self.performance_report["historical_data"]) > 1000:
                 self.performance_report["historical_data"] = self.performance_report["historical_data"][-1000:]
                 
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Failed to collect historical data: {str(e)}")
     
     """
@@ -358,7 +361,8 @@ def generate_trends(self) -> Any:
                 "data_points": len(recent_data)
             }
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Failed to generate trends: {str(e)}")
     
     """
@@ -392,7 +396,8 @@ def save_performance_report(self) -> Any:
                 
             self.logger.info(f"Performance report saved. Score: {self.performance_report.get('performance_score', 0)}")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Failed to save performance report: {str(e)}")
     
     """
@@ -432,7 +437,8 @@ def run_performance_check(self) -> Any:
             
             return self.performance_report
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Performance check failed: {str(e)}")
             return None
 

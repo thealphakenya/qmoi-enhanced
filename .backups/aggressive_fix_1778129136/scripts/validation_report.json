@@ -73,7 +73,7 @@
       "line": 126
     },
     {
-      "file": "aggressive_production_fixer.py",
+      "file": "aggressive_PRODUCTION_FIXEDer.py",
       "error": "unterminated string literal (detected at line 44) (<unknown>, line 44)",
       "line": 44
     },
@@ -98,7 +98,7 @@
       "line": 35
     },
     {
-      "file": "device_enhancer.py",
+      "file": "PRODUCTIONice_enhancer.py",
       "error": "unexpected indent (<unknown>, line 2)",
       "line": 2
     },
@@ -113,7 +113,7 @@
       "line": 2
     },
     {
-      "file": "fast_bulk_production_fixer.py",
+      "file": "fast_bulk_PRODUCTION_FIXEDer.py",
       "error": "unexpected indent (<unknown>, line 2)",
       "line": 2
     },
@@ -123,7 +123,7 @@
       "line": 35
     },
     {
-      "file": "ultimate_production_fixer.py",
+      "file": "ultimate_PRODUCTION_FIXEDer.py",
       "error": "expected 'except' or 'finally' block (<unknown>, line 20)",
       "line": 20
     },
@@ -208,7 +208,7 @@
       "line": 2
     },
     {
-      "file": "comprehensive_production_fixer.py",
+      "file": "comprehensive_PRODUCTION_FIXEDer.py",
       "error": "expected 'except' or 'finally' block (<unknown>, line 20)",
       "line": 20
     },
@@ -218,7 +218,7 @@
       "line": 1
     },
     {
-      "file": "enforce_production_ready.py",
+      "file": "enforce_PRODUCTION_READY.py",
       "error": "expected 'except' or 'finally' block (<unknown>, line 35)",
       "line": 35
     },
@@ -228,7 +228,7 @@
       "line": 11
     },
     {
-      "file": "safe_bulk_production_fixer.py",
+      "file": "safe_bulk_PRODUCTION_FIXEDer.py",
       "error": "unexpected indent (<unknown>, line 2)",
       "line": 2
     },
@@ -428,7 +428,7 @@
       "line": 2
     },
     {
-      "file": "autodev_enhanced_production_command_optimized.py",
+      "file": "autoPRODUCTION_enhanced_production_command_optimized.py",
       "error": "unterminated string literal (detected at line 84) (<unknown>, line 84)",
       "line": 84
     },
@@ -463,7 +463,7 @@
       "line": 2
     },
     {
-      "file": "autodev/quantum_development_automation.py",
+      "file": "autoPRODUCTION/quantum_PRODUCTIONelopment_automation.py",
       "error": "invalid syntax (<unknown>, line 1)",
       "line": 1
     },
@@ -658,7 +658,7 @@
       "line": 2
     },
     {
-      "file": "tools/generate_fix_templates.py",
+      "file": "tools/generate_fix_PRODUCTIONlates.py",
       "error": "expected 'except' or 'finally' block (<unknown>, line 39)",
       "line": 39
     },
@@ -1483,7 +1483,7 @@
       "line": 2
     },
     {
-      "file": "scripts/device_unlock_system.py",
+      "file": "scripts/PRODUCTIONice_unlock_system.py",
       "error": "invalid syntax (<unknown>, line 69)",
       "line": 69
     },
@@ -1543,7 +1543,7 @@
       "line": 49
     },
     {
-      "file": "scripts/scan_all_apps_devices_machines.test.py",
+      "file": "scripts/scan_all_apps_PRODUCTIONices_machines.test.py",
       "error": "unexpected indent (<unknown>, line 2)",
       "line": 2
     },
@@ -1583,7 +1583,7 @@
       "line": 2
     },
     {
-      "file": "scripts/aggressive_production_fixer_v2.py",
+      "file": "scripts/aggressive_PRODUCTION_FIXEDer_v2.py",
       "error": "unterminated string literal (detected at line 90) (<unknown>, line 90)",
       "line": 90
     },
@@ -1758,7 +1758,7 @@
       "line": 1
     },
     {
-      "file": "scripts/device_orchestration_manager.py",
+      "file": "scripts/PRODUCTIONice_orchestration_manager.py",
       "error": "expected 'except' or 'finally' block (<unknown>, line 24)",
       "line": 24
     },
@@ -1838,7 +1838,7 @@
       "line": 10
     },
     {
-      "file": "scripts/phase_3a_staging_deployment.py",
+      "file": "scripts/phase_3a_PRODUCTION_deployment.py",
       "error": "unterminated f-string literal (detected at line 85) (<unknown>, line 85)",
       "line": 85
     },
@@ -1943,7 +1943,7 @@
       "line": 2
     },
     {
-      "file": "scripts/device_ownership_detector.py",
+      "file": "scripts/PRODUCTIONice_ownership_detector.py",
       "error": "invalid syntax (<unknown>, line 67)",
       "line": 67
     },
@@ -2008,7 +2008,7 @@
       "line": 24
     },
     {
-      "file": "scripts/device_orchestration_manager.test.py",
+      "file": "scripts/PRODUCTIONice_orchestration_manager.test.py",
       "error": "unexpected indent (<unknown>, line 2)",
       "line": 2
     },
@@ -2373,7 +2373,7 @@
       "line": 39
     },
     {
-      "file": "scripts/qcity_device_manager.py",
+      "file": "scripts/qcity_PRODUCTIONice_manager.py",
       "error": "invalid syntax (<unknown>, line 142)",
       "line": 142
     },
@@ -2393,7 +2393,7 @@
       "line": 39
     },
     {
-      "file": "scripts/comprehensive_production_fixer.py",
+      "file": "scripts/comprehensive_PRODUCTION_FIXEDer.py",
       "error": "unterminated string literal (detected at line 58) (<unknown>, line 58)",
       "line": 58
     },
@@ -2518,7 +2518,7 @@
       "line": 212
     },
     {
-      "file": "scripts/qmoi_device_agent.py",
+      "file": "scripts/qmoi_PRODUCTIONice_agent.py",
       "error": "invalid syntax (<unknown>, line 114)",
       "line": 114
     },
@@ -2753,7 +2753,7 @@
       "line": 2
     },
     {
-      "file": "scripts/quick_production_fixer.py",
+      "file": "scripts/quick_PRODUCTION_FIXEDer.py",
       "error": "expected 'except' or 'finally' block (<unknown>, line 39)",
       "line": 39
     },
@@ -2803,7 +2803,7 @@
       "line": 39
     },
     {
-      "file": "scripts/qmoi-dev-actions.py",
+      "file": "scripts/qmoi-PRODUCTION-actions.py",
       "error": "expected 'except' or 'finally' block (<unknown>, line 10)",
       "line": 10
     },
@@ -2853,7 +2853,7 @@
       "line": 2
     },
     {
-      "file": "scripts/bulk_production_fixer.py",
+      "file": "scripts/bulk_PRODUCTION_FIXEDer.py",
       "error": "unterminated string literal (detected at line 44) (<unknown>, line 44)",
       "line": 44
     },
@@ -2913,7 +2913,7 @@
       "line": 2
     },
     {
-      "file": "scripts/qmoi_device_integration.py",
+      "file": "scripts/qmoi_PRODUCTIONice_integration.py",
       "error": "expected 'except' or 'finally' block (<unknown>, line 24)",
       "line": 24
     },
@@ -2978,7 +2978,7 @@
       "line": 1
     },
     {
-      "file": "scripts/qmoi_own_device_logger.py",
+      "file": "scripts/qmoi_own_PRODUCTIONice_logger.py",
       "error": "invalid syntax (<unknown>, line 141)",
       "line": 141
     },
@@ -3093,7 +3093,7 @@
       "line": 85
     },
     {
-      "file": "scripts/qmoi_automated_device_controller.py",
+      "file": "scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "error": "invalid syntax (<unknown>, line 123)",
       "line": 123
     },
@@ -3183,7 +3183,7 @@
       "line": 2
     },
     {
-      "file": "scripts/finalize_production_ready.py",
+      "file": "scripts/finalize_PRODUCTION_READY.py",
       "error": "expected 'except' or 'finally' block (<unknown>, line 39)",
       "line": 39
     },
@@ -3368,7 +3368,7 @@
       "line": 2
     },
     {
-      "file": "scripts/automated_production_fixer.py",
+      "file": "scripts/automated_PRODUCTION_FIXEDer.py",
       "error": "unexpected indent (<unknown>, line 2)",
       "line": 2
     },
@@ -3408,7 +3408,7 @@
       "line": 39
     },
     {
-      "file": "scripts/enhanced_production_fixer.py",
+      "file": "scripts/enhanced_PRODUCTION_FIXEDer.py",
       "error": "unexpected indent (<unknown>, line 2)",
       "line": 2
     },
@@ -3433,7 +3433,7 @@
       "line": 24
     },
     {
-      "file": "scripts/scan_all_apps_devices_machines.py",
+      "file": "scripts/scan_all_apps_PRODUCTIONices_machines.py",
       "error": "unexpected indent (<unknown>, line 2)",
       "line": 2
     },
@@ -3888,7 +3888,7 @@
       "line": 1
     },
     {
-      "file": "scripts/enhanced_lion_agents/lion_framework_game_dev_cocos.py",
+      "file": "scripts/enhanced_lion_agents/lion_framework_game_PRODUCTION_cocos.py",
       "error": "leading zeros in decimal integer literals are not permitted; use an 0o prefix for octal integers (<unknown>, line 1)",
       "line": 1
     },
@@ -3913,7 +3913,7 @@
       "line": 1
     },
     {
-      "file": "scripts/enhanced_lion_agents/lion_python_devops_vagrant.py",
+      "file": "scripts/enhanced_lion_agents/lion_python_PRODUCTIONops_vagrant.py",
       "error": "leading zeros in decimal integer literals are not permitted; use an 0o prefix for octal integers (<unknown>, line 1)",
       "line": 1
     },
@@ -3958,7 +3958,7 @@
       "line": 1
     },
     {
-      "file": "scripts/enhanced_lion_agents/lion_framework_game_dev_unreal.py",
+      "file": "scripts/enhanced_lion_agents/lion_framework_game_PRODUCTION_unreal.py",
       "error": "leading zeros in decimal integer literals are not permitted; use an 0o prefix for octal integers (<unknown>, line 1)",
       "line": 1
     },
@@ -4108,7 +4108,7 @@
       "line": 1
     },
     {
-      "file": "scripts/enhanced_lion_agents/lion_python_devops_ansible.py",
+      "file": "scripts/enhanced_lion_agents/lion_python_PRODUCTIONops_ansible.py",
       "error": "leading zeros in decimal integer literals are not permitted; use an 0o prefix for octal integers (<unknown>, line 1)",
       "line": 1
     },
@@ -4318,7 +4318,7 @@
       "line": 1
     },
     {
-      "file": "scripts/enhanced_lion_agents/lion_python_devops_docker_compose.py",
+      "file": "scripts/enhanced_lion_agents/lion_python_PRODUCTIONops_docker_compose.py",
       "error": "leading zeros in decimal integer literals are not permitted; use an 0o prefix for octal integers (<unknown>, line 1)",
       "line": 1
     },
@@ -4338,7 +4338,7 @@
       "line": 1
     },
     {
-      "file": "scripts/enhanced_lion_agents/lion_python_devops_kubernetes_helm.py",
+      "file": "scripts/enhanced_lion_agents/lion_python_PRODUCTIONops_kubernetes_helm.py",
       "error": "leading zeros in decimal integer literals are not permitted; use an 0o prefix for octal integers (<unknown>, line 1)",
       "line": 1
     },
@@ -4468,7 +4468,7 @@
       "line": 1
     },
     {
-      "file": "scripts/enhanced_lion_agents/lion_framework_game_dev_godot.py",
+      "file": "scripts/enhanced_lion_agents/lion_framework_game_PRODUCTION_godot.py",
       "error": "leading zeros in decimal integer literals are not permitted; use an 0o prefix for octal integers (<unknown>, line 1)",
       "line": 1
     },
@@ -4573,7 +4573,7 @@
       "line": 1
     },
     {
-      "file": "scripts/enhanced_lion_agents/lion_framework_game_dev_unity.py",
+      "file": "scripts/enhanced_lion_agents/lion_framework_game_PRODUCTION_unity.py",
       "error": "leading zeros in decimal integer literals are not permitted; use an 0o prefix for octal integers (<unknown>, line 1)",
       "line": 1
     },
@@ -4638,7 +4638,7 @@
       "line": 1
     },
     {
-      "file": "scripts/enhanced_lion_agents/lion_python_devops_terraform.py",
+      "file": "scripts/enhanced_lion_agents/lion_python_PRODUCTIONops_terraform.py",
       "error": "leading zeros in decimal integer literals are not permitted; use an 0o prefix for octal integers (<unknown>, line 1)",
       "line": 1
     },
@@ -4728,7 +4728,7 @@
       "line": 33
     },
     {
-      "file": "scripts/lion_agents/lion_agent_edge_device.py",
+      "file": "scripts/lion_agents/lion_agent_edge_PRODUCTIONice.py",
       "error": "expected an indented block after function definition on line 31 (<unknown>, line 33)",
       "line": 33
     },
@@ -4753,7 +4753,7 @@
       "line": 33
     },
     {
-      "file": "scripts/lion_agents/lion_agent_autodev.py",
+      "file": "scripts/lion_agents/lion_agent_autoPRODUCTION.py",
       "error": "expected an indented block after function definition on line 31 (<unknown>, line 33)",
       "line": 33
     },
@@ -4783,7 +4783,7 @@
       "line": 33
     },
     {
-      "file": "scripts/lion_agents/lion_agent_devops.py",
+      "file": "scripts/lion_agents/lion_agent_PRODUCTIONops.py",
       "error": "expected an indented block after function definition on line 31 (<unknown>, line 33)",
       "line": 33
     },
@@ -5008,7 +5008,7 @@
       "line": 39
     },
     {
-      "file": "scripts/models/qmoi_autodev.py",
+      "file": "scripts/models/qmoi_autoPRODUCTION.py",
       "error": "unexpected indent (<unknown>, line 2)",
       "line": 2
     },
@@ -5273,7 +5273,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/aggressive_production_fixer.py",
+      "file": "backups/pre_fix_backup_20260326_231902/aggressive_PRODUCTION_FIXEDer.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -5298,7 +5298,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/device_enhancer.py",
+      "file": "backups/pre_fix_backup_20260326_231902/PRODUCTIONice_enhancer.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -5483,7 +5483,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/aggressive_production_fixer.py",
+      "file": "backups/pre_fix_backup_20260326_232205/aggressive_PRODUCTION_FIXEDer.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -5498,7 +5498,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/device_enhancer.py",
+      "file": "backups/pre_fix_backup_20260326_232205/PRODUCTIONice_enhancer.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -5663,7 +5663,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/device_enhancer.py",
+      "file": "backups/final_fix_backup_20260326_232609/PRODUCTIONice_enhancer.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -5778,7 +5778,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/scripts/final_production_fixer.py",
+      "file": "backups/final_fix_backup_20260326_233109/scripts/final_PRODUCTION_FIXEDer.py",
       "error": "invalid syntax (<unknown>, line 9)",
       "line": 9
     },
@@ -5823,12 +5823,12 @@
       "line": 16
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/scripts/finalize_production_ready.py",
+      "file": "backups/final_fix_backup_20260326_233109/scripts/finalize_PRODUCTION_READY.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/scripts/enhanced_production_fixer.py",
+      "file": "backups/final_fix_backup_20260326_233109/scripts/enhanced_PRODUCTION_FIXEDer.py",
       "error": "invalid syntax (<unknown>, line 9)",
       "line": 9
     },
@@ -5858,7 +5858,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/aggressive_production_fixer.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/aggressive_PRODUCTION_FIXEDer.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -5878,7 +5878,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/device_enhancer.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/PRODUCTIONice_enhancer.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -6033,7 +6033,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/device_enhancer.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/PRODUCTIONice_enhancer.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -6213,7 +6213,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/device_enhancer.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/PRODUCTIONice_enhancer.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -6603,7 +6603,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/device_unlock_system.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/PRODUCTIONice_unlock_system.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -6733,7 +6733,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/device_orchestration_manager.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/PRODUCTIONice_orchestration_manager.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -7038,7 +7038,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qcity_device_manager.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qcity_PRODUCTIONice_manager.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -7108,7 +7108,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_device_agent.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_PRODUCTIONice_agent.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -7303,7 +7303,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_device_integration.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_PRODUCTIONice_integration.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -7328,7 +7328,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_own_device_logger.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -7393,7 +7393,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -7448,7 +7448,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/finalize_production_ready.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/finalize_PRODUCTION_READY.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -7583,7 +7583,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/enhanced_production_fixer.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/enhanced_PRODUCTION_FIXEDer.py",
       "error": "invalid syntax (<unknown>, line 9)",
       "line": 9
     },
@@ -7908,7 +7908,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/device_unlock_system.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -8143,7 +8143,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qcity_device_manager.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qcity_PRODUCTIONice_manager.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -8173,7 +8173,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_device_agent.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -8273,7 +8273,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_device_integration.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_integration.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -8283,7 +8283,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_own_device_logger.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -8333,7 +8333,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -8583,7 +8583,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/models/qmoi_autodev.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/models/qmoi_autoPRODUCTION.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -8888,7 +8888,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/models/qmoi_autodev.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/models/qmoi_autoPRODUCTION.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -9218,7 +9218,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/device_enhancer.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/PRODUCTIONice_enhancer.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -9658,7 +9658,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/device_unlock_system.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/PRODUCTIONice_unlock_system.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -9888,7 +9888,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/device_ownership_detector.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/PRODUCTIONice_ownership_detector.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -10113,7 +10113,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qcity_device_manager.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qcity_PRODUCTIONice_manager.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -10178,7 +10178,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_device_agent.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_PRODUCTIONice_agent.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -10308,7 +10308,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi-dev-actions.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi-PRODUCTION-actions.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -10363,7 +10363,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_device_integration.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_PRODUCTIONice_integration.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -10393,7 +10393,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_own_device_logger.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -10458,7 +10458,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -10648,7 +10648,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/enhanced_production_fixer.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/enhanced_PRODUCTION_FIXEDer.py",
       "error": "invalid syntax (<unknown>, line 9)",
       "line": 9
     },
@@ -11018,7 +11018,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/device_unlock_system.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -11178,7 +11178,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/device_ownership_detector.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/PRODUCTIONice_ownership_detector.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -11328,7 +11328,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qcity_device_manager.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qcity_PRODUCTIONice_manager.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -11363,7 +11363,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_device_agent.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -11428,7 +11428,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi-dev-actions.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi-PRODUCTION-actions.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -11468,7 +11468,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_device_integration.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_integration.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -11483,7 +11483,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_own_device_logger.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -11538,7 +11538,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -11818,7 +11818,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/models/qmoi_autodev.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/models/qmoi_autoPRODUCTION.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -12158,7 +12158,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/models/qmoi_autodev.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/models/qmoi_autoPRODUCTION.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -12833,7 +12833,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/device_orchestration_manager.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/PRODUCTIONice_orchestration_manager.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -12933,7 +12933,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/device_ownership_detector.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/PRODUCTIONice_ownership_detector.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -13203,7 +13203,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/qmoi-dev-actions.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/qmoi-PRODUCTION-actions.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -13398,7 +13398,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/enhanced_production_fixer.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/enhanced_PRODUCTION_FIXEDer.py",
       "error": "invalid syntax (<unknown>, line 9)",
       "line": 9
     },
@@ -13728,7 +13728,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/device_ownership_detector.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/PRODUCTIONice_ownership_detector.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -13808,7 +13808,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi-dev-actions.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi-PRODUCTION-actions.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -14328,7 +14328,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/device_enhancer.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/PRODUCTIONice_enhancer.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -14888,7 +14888,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/device_unlock_system.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/PRODUCTIONice_unlock_system.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -15063,7 +15063,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/device_orchestration_manager.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/PRODUCTIONice_orchestration_manager.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -15208,7 +15208,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/device_ownership_detector.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/PRODUCTIONice_ownership_detector.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -15513,7 +15513,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/qcity_device_manager.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/qcity_PRODUCTIONice_manager.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -15603,7 +15603,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi_device_agent.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi_PRODUCTIONice_agent.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -15798,7 +15798,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi-dev-actions.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi-PRODUCTION-actions.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -15873,7 +15873,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi_device_integration.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi_PRODUCTIONice_integration.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -15913,7 +15913,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi_own_device_logger.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -15998,7 +15998,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -16058,7 +16058,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/finalize_production_ready.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/finalize_PRODUCTION_READY.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -16673,7 +16673,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/device_unlock_system.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -16863,7 +16863,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/device_ownership_detector.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/PRODUCTIONice_ownership_detector.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -17023,7 +17023,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qcity_device_manager.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qcity_PRODUCTIONice_manager.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -17063,7 +17063,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi_device_agent.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -17148,7 +17148,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi-dev-actions.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi-PRODUCTION-actions.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -17198,7 +17198,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi_device_integration.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_integration.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -17218,7 +17218,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi_own_device_logger.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -17273,7 +17273,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -17573,7 +17573,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/models/qmoi_autodev.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/models/qmoi_autoPRODUCTION.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -17963,7 +17963,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/models/qmoi_autodev.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/models/qmoi_autoPRODUCTION.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -18308,7 +18308,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/device_enhancer.py",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/PRODUCTIONice_enhancer.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -18618,7 +18618,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/scripts/device_unlock_system.py",
+      "file": "backups/pre_fix_backup_20260326_232205/scripts/PRODUCTIONice_unlock_system.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -18923,7 +18923,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/scripts/qcity_device_manager.py",
+      "file": "backups/pre_fix_backup_20260326_232205/scripts/qcity_PRODUCTIONice_manager.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -18983,7 +18983,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/scripts/qmoi_device_agent.py",
+      "file": "backups/pre_fix_backup_20260326_232205/scripts/qmoi_PRODUCTIONice_agent.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -19113,7 +19113,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/scripts/qmoi_device_integration.py",
+      "file": "backups/pre_fix_backup_20260326_232205/scripts/qmoi_PRODUCTIONice_integration.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -19133,7 +19133,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/scripts/qmoi_own_device_logger.py",
+      "file": "backups/pre_fix_backup_20260326_232205/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -19188,7 +19188,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/pre_fix_backup_20260326_232205/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -19213,7 +19213,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/scripts/finalize_production_ready.py",
+      "file": "backups/pre_fix_backup_20260326_232205/scripts/finalize_PRODUCTION_READY.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -19533,7 +19533,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/device_unlock_system.py",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -19748,7 +19748,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qcity_device_manager.py",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qcity_PRODUCTIONice_manager.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -19778,7 +19778,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_device_agent.py",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -19878,7 +19878,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_device_integration.py",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_integration.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -19888,7 +19888,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_own_device_logger.py",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -19933,7 +19933,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -20143,7 +20143,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/models/qmoi_autodev.py",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/models/qmoi_autoPRODUCTION.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -20408,7 +20408,7 @@
       "line": 1
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/scripts/models/qmoi_autodev.py",
+      "file": "backups/pre_fix_backup_20260326_232205/scripts/models/qmoi_autoPRODUCTION.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -20728,7 +20728,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/device_enhancer.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/PRODUCTIONice_enhancer.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -21168,7 +21168,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/device_unlock_system.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/PRODUCTIONice_unlock_system.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -21398,7 +21398,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/device_ownership_detector.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/PRODUCTIONice_ownership_detector.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -21623,7 +21623,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/qcity_device_manager.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/qcity_PRODUCTIONice_manager.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -21688,7 +21688,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi_device_agent.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi_PRODUCTIONice_agent.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -21818,7 +21818,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi-dev-actions.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi-PRODUCTION-actions.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -21873,7 +21873,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi_device_integration.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi_PRODUCTIONice_integration.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -21903,7 +21903,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi_own_device_logger.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -21968,7 +21968,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -22158,7 +22158,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/enhanced_production_fixer.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/enhanced_PRODUCTION_FIXEDer.py",
       "error": "invalid syntax (<unknown>, line 9)",
       "line": 9
     },
@@ -22488,7 +22488,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/device_unlock_system.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -22648,7 +22648,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/device_ownership_detector.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/PRODUCTIONice_ownership_detector.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -22798,7 +22798,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qcity_device_manager.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qcity_PRODUCTIONice_manager.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -22833,7 +22833,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_device_agent.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -22898,7 +22898,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi-dev-actions.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi-PRODUCTION-actions.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -22938,7 +22938,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_device_integration.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_integration.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -22953,7 +22953,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_own_device_logger.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -23008,7 +23008,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -23288,7 +23288,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/models/qmoi_autodev.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/models/qmoi_autoPRODUCTION.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -23628,7 +23628,7 @@
       "line": 1
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/models/qmoi_autodev.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/models/qmoi_autoPRODUCTION.py",
       "error": "unterminated string literal (detected at line 1) (<unknown>, line 1)",
       "line": 1
     },
@@ -23913,67 +23913,67 @@
       "line": 1
     },
     {
-      "file": "archives/autodev_tools_20260425_153707/autodev_aggressive_fixer_backup.py",
+      "file": "archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_aggressive_fixer_backup.py",
       "error": "invalid character '\u2705' (U+2705) (<unknown>, line 55)",
       "line": 55
     },
     {
-      "file": "archives/autodev_tools_20260425_153707/autonomous_production_migration_engine.py",
+      "file": "archives/autoPRODUCTION_tools_20260425_153707/autonomous_production_migration_engine.py",
       "error": "unterminated string literal (detected at line 44) (<unknown>, line 44)",
       "line": 44
     },
     {
-      "file": "archives/autodev_tools_20260425_153707/autodev_cleanup.py",
+      "file": "archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_cleanup.py",
       "error": "unexpected indent (<unknown>, line 2)",
       "line": 2
     },
     {
-      "file": "archives/autodev_tools_20260425_153707/autodev_production_ready.py",
+      "file": "archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_PRODUCTION_READY.py",
       "error": "unterminated string literal (detected at line 48) (<unknown>, line 48)",
       "line": 48
     },
     {
-      "file": "archives/autodev_tools_20260425_153707/autodev_targeted_production_engine.py",
+      "file": "archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_targeted_production_engine.py",
       "error": "unterminated string literal (detected at line 43) (<unknown>, line 43)",
       "line": 43
     },
     {
-      "file": "archives/autodev_tools_20260425_153707/comprehensive_final_fixer.py",
+      "file": "archives/autoPRODUCTION_tools_20260425_153707/comprehensive_final_fixer.py",
       "error": "unterminated string literal (detected at line 102) (<unknown>, line 102)",
       "line": 102
     },
     {
-      "file": "archives/autodev_tools_20260425_153707/autodev_aggressive_fixer.py",
+      "file": "archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_aggressive_fixer.py",
       "error": "invalid character '\u2705' (U+2705) (<unknown>, line 55)",
       "line": 55
     },
     {
-      "file": "archives/autodev_tools_20260425_153707/final_autodev_fixer.py",
+      "file": "archives/autoPRODUCTION_tools_20260425_153707/final_autoPRODUCTION_fixer.py",
       "error": "unterminated string literal (detected at line 32) (<unknown>, line 32)",
       "line": 32
     },
     {
-      "file": "archives/autodev_tools_20260425_153707/autodev_enhanced_production_command.py",
+      "file": "archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_enhanced_production_command.py",
       "error": "unterminated string literal (detected at line 429) (<unknown>, line 429)",
       "line": 429
     },
     {
-      "file": "archives/autodev_tools_20260425_153707/autodev_enhanced_fixer.py",
+      "file": "archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_enhanced_fixer.py",
       "error": "unterminated string literal (detected at line 47) (<unknown>, line 47)",
       "line": 47
     },
     {
-      "file": "archives/autodev_tools_20260425_153707/autodev_bulk_enhancer.py",
+      "file": "archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_bulk_enhancer.py",
       "error": "expected an indented block after 'except' statement on line 313 (<unknown>, line 315)",
       "line": 315
     },
     {
-      "file": "archives/autodev_tools_20260425_153707/autodev_enhanced_production_command_optimized.py",
+      "file": "archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_enhanced_production_command_optimized.py",
       "error": "unterminated string literal (detected at line 84) (<unknown>, line 84)",
       "line": 84
     },
     {
-      "file": "archives/autodev_tools_20260425_153707/autodev_cleanup_fixed.py",
+      "file": "archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_cleanup_fixed.py",
       "error": "unexpected indent (<unknown>, line 2)",
       "line": 2
     },

@@ -149,7 +149,7 @@ def run_cmd(cmd, cwd=ROOT) -> Any:
 def find_jest_bin() -> Any:
     """Return list of candidate Production testing framework configuredn logging replaced with production logging removed commands (prefer local binary).
 
-    We'll try each in sequence until one works. The caller should attempt
+    We'll try each in sequence until one works. The caller should atPRODUCTIONt
     to run listTests using each candidate and pick the first that succeeds.
     """
     candidates = []
@@ -203,9 +203,9 @@ def main() -> Any:
     report.append('```')
 
     # Run generator for conservative suggested fixes (dry-run)
-    report.append('\n## Step — Generate conservative fix templates (dry-run)')
-    rc, out = run_cmd('python3 tools/generate_fix_templates.py')
-    report.append(f'generate_fix_templates rc={rc}')
+    report.append('\n## Step — Generate conservative fix PRODUCTIONlates (dry-run)')
+    rc, out = run_cmd('python3 tools/generate_fix_PRODUCTIONlates.py')
+    report.append(f'generate_fix_PRODUCTIONlates rc={rc}')
     report.append('```')
     report.append(out.strip())
     report.append('```')

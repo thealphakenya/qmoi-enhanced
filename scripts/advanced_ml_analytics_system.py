@@ -29,7 +29,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -65,6 +66,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -131,7 +133,7 @@ def initialize_advanced_models(self) -> None:
             'fraud_detection_advanced': {
                 'model_type': 'Autoencoder + Isolation Forest + Graph Neural Network',
                 'accuracy': 97.9,
-                'features': ['transaction_graph', 'temporal_patterns', 'prodice_fingerprinting', 'behavioral_biometrics', 'network_analysis'],
+                'features': ['transaction_graph', 'PRODUCTIONoral_patterns', 'prodice_fingerprinting', 'behavioral_biometrics', 'network_analysis'],
                 'target': 'fraud_probability'
             },
             'portfolio_optimization': {
@@ -154,7 +156,7 @@ def initialize_advanced_models(self) -> None:
 def _setup_feature_engineering(self) -> None:
         """Setup advanced feature engineering pipelines"""
         self.feature_engineering = {
-            'temporal_features': ['hour_of_day', 'day_of_week', 'month', 'quarter', 'is_weekend', 'is_holiday'],
+            'PRODUCTIONoral_features': ['hour_of_day', 'day_of_week', 'month', 'quarter', 'is_weekend', 'is_holiday'],
             'statistical_features': ['rolling_mean_7d', 'rolling_std_7d', 'rolling_mean_30d', 'rolling_std_30d', 'z_score', 'percentile_rank'],
             'behavioral_features': ['transaction_frequency', 'average_amount', 'amount_volatility', 'geographic_diversity', 'prodice_consistency'],
             'market_features': ['volatility_index', 'fear_greed_index', 'bitcoin_dominance', 'altcoin_season_index', 'defi_tvl_change'],
@@ -826,7 +828,7 @@ def __init__(self) -> Any:
     """
 def initialize_complete_system(self) -> bool:
         """Initialize the complete advanced ML analytics system"""
-        logger.info('🚀 Initializing Advanced ML Analytics & Risk Management Systemproduction implementation with comprehensive error handling and logging')
+        logger.info('🚀 Initializing Advanced ML Analytics & Risk Management SysPRODUCTIONroduction implementation with comprehensive error handling and logging')
 
         try:
             # Initialize ML models
@@ -841,7 +843,8 @@ def initialize_complete_system(self) -> bool:
             logger.info('✅ Advanced ML Analytics System fully operational')
             return True
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f'❌ Failed to initialize system: {e}')
             return False
 
@@ -1340,6 +1343,7 @@ def main() -> Any:
         logger.info('💾 Full advanced analytics report saved to: ../ADVANCED_ML_ANALYTICS_REPORT.json')
         logger.info('🎉 Advanced ML Predictive Analytics & Risk Management System fully operational!')
 
+
     except Exception as e:
         logger.info(f'❌ Error: {e}')
         import traceback
@@ -1353,6 +1357,7 @@ def main() -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

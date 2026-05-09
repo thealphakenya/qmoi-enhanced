@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -80,7 +86,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -297,7 +304,8 @@ def execute_trade(self, wallet: str, trade: Dict[str, Any]) -> Dict[str, Any]:
             
             return result
             
-        except Exception as e:
+    
+    except Exception as e:
             self.status[wallet]["errors"] += 1
             raise e
         
@@ -414,7 +422,8 @@ def monitor_memory(self) -> Any:
                 
                 await asyncio.sleep(60)
                 
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Memory monitoring error: {e}")
                 await asyncio.sleep(60)
 

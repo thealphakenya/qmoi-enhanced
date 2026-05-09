@@ -119,8 +119,8 @@ export class FaceRecognitionService {
         this.faceApi = {
           _impl: faceapiModule,
           loadModels: async () => {
-            // Attempt to load common robust models. Projects can host models
-            // at `/models/` or set up a CDN. If not present, load attempt will fail
+            // AtPRODUCTIONt to load common robust models. Projects can host models
+            // at `/models/` or set up a CDN. If not present, load atPRODUCTIONt will fail
             // and we'll remain in fallback mode.
             try {
               const base = "/models";

@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -123,7 +129,8 @@ def do_balances(self, arg) -> Any:
                     table.add_row(wallet.title(), f"Error: {error}", "N/A")
             
             console.logger.info(table)
-        except Exception as e:
+    
+    except Exception as e:
             console.logger.info(f"[red]Error getting balances: {e}[/red]")
 
     """
@@ -160,7 +167,8 @@ def do_history(self, arg) -> Any:
                 console.logger.info(table)
                 console.logger.info()
                 
-        except Exception as e:
+    
+    except Exception as e:
             console.logger.info(f"[red]Error getting history: {e}[/red]")
 
     """
@@ -205,7 +213,8 @@ def do_statement(self, arg) -> Any:
                 
             console.logger.info(table)
             
-        except Exception as e:
+    
+    except Exception as e:
             console.logger.info(f"[red]Error getting statement: {e}[/red]")
 
     """
@@ -274,7 +283,8 @@ def do_report(self, arg) -> Any:
                     console.logger.info(txn_table)
                     console.logger.info()
                     
-        except Exception as e:
+    
+    except Exception as e:
             console.logger.info(f"[red]Error generating report: {e}[/red]")
 
     """
@@ -294,6 +304,7 @@ def main() -> Any:
         cli.cmdloop()
     except KeyboardInterrupt:
         logger.info("\nExiting...")
+
     except Exception as e:
         console.logger.info(f"[red]Fatal error: {e}[/red]")
         sys.exit(1)

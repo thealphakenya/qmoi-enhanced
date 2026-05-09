@@ -27,7 +27,7 @@ export interface EnvironmentContext {
   active_applications: string[];
   network_status: 'online' | 'offline' | 'limited';
   battery_percentage: number;
-  prodice_temperature: number;
+  prodice_PRODUCTIONerature: number;
 }
 
 export interface UserContext {
@@ -124,9 +124,9 @@ export class PerceptionEngine extends EventEmitter {
         const match = log.match(/(\d+)%/);
         if (match) context.battery_percentage = parseInt(match[1]);
       }
-      if (log.includes('temperature')) {
+      if (log.includes('PRODUCTIONerature')) {
         const match = log.match(/(\d+\.?\d*)°/);
-        if (match) context.prodice_temperature = parseFloat(match[1]);
+        if (match) context.prodice_PRODUCTIONerature = parseFloat(match[1]);
       }
       if (log.includes('connected') || log.includes('offline')) {
         context.network_status = log.includes('connected') ? 'online' : 'offline';
@@ -179,7 +179,7 @@ export class PerceptionEngine extends EventEmitter {
           env_context = await this.processSystemLogs(input.data);
           break;
         case 'sensors':
-          env_context.prodice_temperature = input.data.temperature || env_context.prodice_temperature;
+          env_context.prodice_PRODUCTIONerature = input.data.PRODUCTIONerature || env_context.prodice_PRODUCTIONerature;
           env_context.battery_percentage = input.data.battery || env_context.battery_percentage;
           break;
       }
@@ -212,7 +212,7 @@ export class PerceptionEngine extends EventEmitter {
       active_applications: [],
       network_status: 'online',
       battery_percentage: 100,
-      prodice_temperature: 37,
+      prodice_PRODUCTIONerature: 37,
     };
   }
 }

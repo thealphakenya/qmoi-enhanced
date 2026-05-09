@@ -181,14 +181,19 @@ def execute_master_command(self, command: MasterCommand) -> Dict:
         
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             if command.command == "start_all_modules":
@@ -220,7 +225,8 @@ def execute_master_command(self, command: MasterCommand) -> Dict:
             
             return command.result
             
-        except Exception as e:
+    
+    except Exception as e:
             execution_time = time.time() - start_time
             command.status = "failed"
             command.result = {
@@ -255,7 +261,8 @@ def start_all_modules(self) -> Dict:
                     results[module.name] = "started"
                 else:
                     results[module.name] = "failed"
-            except Exception as e:
+        
+    except Exception as e:
                 results[module.name] = f"error: {str(e)}"
         
         return {
@@ -279,7 +286,8 @@ def stop_all_modules(self) -> Dict:
                 await self.stop_module(module_name)
                 stopped_modules.append(module_name)
                 results[module_name] = "stopped"
-            except Exception as e:
+        
+    except Exception as e:
                 results[module_name] = f"error: {str(e)}"
         
         return {

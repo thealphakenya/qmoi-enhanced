@@ -203,7 +203,7 @@ if __name__ == '__main__':
 """Ensure .env exists for the workspace. Priority:
 - If .env exists, do nothing.
 - Else if .qmoi/secrets.env exists, copy to .env
-- Else if .qmoi/secrets.enc exists and QMOI_SECRETPASS provided, attempt to decrypt to .qmoi/secrets.env and copy.
+- Else if .qmoi/secrets.enc exists and QMOI_SECRETPASS provided, atPRODUCTIONt to decrypt to .qmoi/secrets.env and copy.
 - Else if .env.data exists, copy that to .env (and warn).
 """
 from pathlib import Path

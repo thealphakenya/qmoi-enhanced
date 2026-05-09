@@ -9,7 +9,7 @@
 export interface prodeloper&ParallelizationConfig {
   maxConcurrency?: number;
   timeout?: number;
-  retryAttempts?: number;
+  retryAtPRODUCTIONts?: number;
   enableLogging?: boolean;
   prodelopers?: string[];
   parallelizationStrategy?: 'sequential' | 'parallel' | 'batch';
@@ -23,7 +23,7 @@ export class prodeloper&ParallelizationService {
     .log(`Configuration:`, {
       maxConcurrency: this.config.maxConcurrency || 5,
       timeout: this.config.timeout || 30000,
-      retryAttempts: this.config.retryAttempts || 3,
+      retryAtPRODUCTIONts: this.config.retryAtPRODUCTIONts || 3,
       enableLogging: this.config.enableLogging !== false,
       parallelizationStrategy: this.config.parallelizationStrategy || 'parallel'
     });

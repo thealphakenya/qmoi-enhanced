@@ -47,14 +47,14 @@ MODEL_CARD_STATS_SECTION = '''
 - **Errors Remaining:** {errors_remaining}
 - **Errors Fixed:** {errors_fixed}
 - **Percent Fixed:** {percent_fixed}%
-- **Auto-Fix Attempts:** {auto_fix_attempts}
+- **Auto-Fix AtPRODUCTIONts:** {auto_fix_atPRODUCTIONts}
 - **Auto-Fix Success:** {auto_fix_success}
 - **Last Error:** {last_error}
 - **Last Fix:** {last_fix}
 - **Last Update:** {last_update}
 '''
 
-MODEL_CARD_TEMPLATE = """"
+MODEL_CARD_PRODUCTIONLATE = """"
 # QMOI AI Model Card (Hugging Face)
 
 [![Version](VERSION_BADGE)](DASHBOARD_URL)
@@ -134,7 +134,7 @@ def update_model_card(repo_id, version, health, status, dashboard_url, status_ur
         version_badge = make_badge('version', version, 'blue')
         health_badge = make_badge('health', f"{health}%25", 'brightgreen' if status == 'healthy' else 'yellow' if status == 'warning' else 'red')
         updated_badge = make_badge('updated', updated.replace(':','%3A'), 'informational')
-        card = MODEL_CARD_TEMPLATE.replace('VERSION_BADGE', version_badge)
+        card = MODEL_CARD_PRODUCTIONLATE.replace('VERSION_BADGE', version_badge)
         card = card.replace('HEALTH_BADGE', health_badge)
         card = card.replace('UPDATED_BADGE', updated_badge)
         card = card.replace('VERSION', version)

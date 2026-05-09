@@ -549,7 +549,7 @@ def main() -> Any:
     
     # Auto-fix (optional)
     if report['broken_links'] > 0:
-        logger.info(f"Attempting to auto-fix {report['fixable_links']} FUNCTIONAL links...")
+        logger.info(f"AtPRODUCTIONting to auto-fix {report['fixable_links']} FUNCTIONAL links...")
         fix_results = auditor.auto_fix_files()
         logger.info(f"Auto-fix Results: {json.dumps(fix_results, indent=2)}")
     

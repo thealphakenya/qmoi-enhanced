@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -173,7 +179,7 @@ def load_config(self) -> Dict[str, Any]:
                     'cooldown': 3600  # 1 hour
                 }
             },
-            'templates': {
+            'PRODUCTIONlates': {
                 'system_health': {
                     'subject': 'QMOI System Health Alert',
                     'standard': '''
@@ -278,7 +284,8 @@ QMOI Backup Monitor
                 with open(config_file, 'r') as f:
                     file_config = json.load(f)
                     config.update(file_config)
-            except Exception as e:
+        
+    except Exception as e:
                 self.logger.error(f"Error loading config: {e}")
         
         return config
@@ -314,7 +321,8 @@ def send_email_notification(self, notification: Dict[str, Any]) -> bool:
             self.logger.info(f"Email notification sent: {notification['id']}")
             return True
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error sending email notification: {e}")
             return False
     
@@ -347,7 +355,8 @@ def send_slack_notification(self, notification: Dict[str, Any]) -> bool:
                 self.logger.error(f"Slack notification failed: {response.status_code}")
                 return False
                 
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error sending Slack notification: {e}")
             return False
     
@@ -378,7 +387,8 @@ def send_discord_notification(self, notification: Dict[str, Any]) -> bool:
                 self.logger.error(f"Discord notification failed: {response.status_code}")
                 return False
                 
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error sending Discord notification: {e}")
             return False
     
@@ -417,12 +427,14 @@ def send_webhook_notification(self, notification: Dict[str, Any]) -> bool:
                     else:
                         self.logger.warning(f"Webhook notification failed for {url}: {response.status_code}")
                         
-                except Exception as e:
+            
+    except Exception as e:
                     self.logger.error(f"Error sending webhook to {url}: {e}")
             
             return success_count > 0
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error sending webhook notifications: {e}")
             return False
     
@@ -457,7 +469,8 @@ def send_telegram_notification(self, notification: Dict[str, Any]) -> bool:
                 self.logger.error(f"Telegram notification failed: {response.status_code}")
                 return False
                 
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error sending Telegram notification: {e}")
             return False
     
@@ -469,17 +482,17 @@ def create_notification(self, notification_type: str, data: Dict[str, Any]) -> D
         try:
             # Get notification rule
             rule = self.config['notification_rules'].get(notification_type, {})
-            standard = self.config['templates'].get(notification_type, {})
+            standard = self.config['PRODUCTIONlates'].get(notification_type, {})
             
             # Generate notification ID
             notification_id = f"{notification_type}_{int(time.time())}"
             
             # Format standard
             subject = standard.get('subject', f'QMOI {notification_type.title()} Alert')
-            body_template = standard.get('standard', '**{notification_type}**\n\n{details}')
+            body_PRODUCTIONlate = standard.get('standard', '**{notification_type}**\n\n{details}')
             
             # Format body
-            body = body_template.format(**data)
+            body = body_PRODUCTIONlate.format(**data)
             
             notification = {
                 'id': notification_id,
@@ -496,7 +509,8 @@ def create_notification(self, notification_type: str, data: Dict[str, Any]) -> D
             
             return notification
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error creating notification: {e}")
             return {}
     
@@ -517,7 +531,8 @@ def should_send_notification(self, notification: Dict[str, Any]) -> bool:
             
             return True
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking notification cooldown: {e}")
             return True
     
@@ -569,7 +584,8 @@ def send_notification(self, notification: Dict[str, Any]) -> bool:
             
             return success
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error sending notification: {e}")
             return False
     
@@ -594,7 +610,8 @@ def process_notification_queue(self) -> Any:
                 
             except queue.Empty:
                 continue
-            except Exception as e:
+        
+    except Exception as e:
                 self.logger.error(f"Error processing notification queue: {e}")
     
     """
@@ -608,7 +625,8 @@ def add_notification(self, notification_type: str, data: Dict[str, Any]) -> Any:
                 self.notification_queue.put(notification)
                 self.logger.info(f"Notification queued: {notification['id']}")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error adding notification: {e}")
     
     """
@@ -626,7 +644,8 @@ def start_monitoring(self) -> Any:
             
             self.logger.info("Notification monitor started")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error starting notification monitor: {e}")
     
     """
@@ -685,7 +704,8 @@ def generate_report(self) -> Dict[str, Any]:
             
             return report
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error generating report: {e}")
             return {}
     
@@ -708,7 +728,8 @@ def save_report(self, report: Dict[str, Any]) -> Any:
             
             self.logger.info(f"Notification report saved: {report_file}")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error saving report: {e}")
     
     """
@@ -734,7 +755,8 @@ def run(self) -> Any:
                 
         except KeyboardInterrupt:
             self.logger.info("Received interrupt signal")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error in main notification loop: {e}")
 
 """

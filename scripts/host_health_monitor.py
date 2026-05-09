@@ -105,18 +105,24 @@ def load_registry() -> Any:
 def check_domain_dns(domain) -> Any:
     try:
         pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
         ip = socket.gethostbyname(domain)
         return {"ok": True, "ip": ip}
+
     except Exception as e:
         return {"ok": False, "error": str(e)}
 
@@ -193,6 +199,7 @@ def check_http(domain: str, timeout=5) -> Any:
             return {"status": r.status, "reason": r.reason}
     except urllib.error.HTTPError as e:
         return {"status": e.code, "reason": str(e)}
+
     except Exception as e:
         return {"error": str(e)}
 

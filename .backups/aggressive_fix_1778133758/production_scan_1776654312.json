@@ -163,7 +163,7 @@
       "file_size": 709917,
       "last_modified": "2026-04-20T02:25:23.613989",
       "markers": {
-        "production_READY": 21,
+        "PRODUCTION_READY": 21,
         "COMPLETE": 63,
         "COMPLETED": 9,
         "FINALIZED": 6,
@@ -172,7 +172,7 @@
         "✅ production COMPLETE - Full feature implementation and testing
         "production_IMPLEMENTED": 2224,
         "STABLE": 18,
-        "production_FIX": 12,
+        "PRODUCTION_FIXED": 12,
         "FUNCTIONAL": 32,
         "production_GUARDED": 3,
         "RELEASE": 862,
@@ -194,8 +194,8 @@
       "file_hash": "b292aff2"
     },
     {
-      "file_path": "ultimate_production_fix_report.json",
-      "absolute_path": "/workspaces/qmoi-enhanced/ultimate_production_fix_report.json",
+      "file_path": "ultimate_PRODUCTION_FIXED_report.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/ultimate_PRODUCTION_FIXED_report.json",
       "file_size": 2562906,
       "last_modified": "2026-04-20T02:35:35.806017",
       "markers": {
@@ -1070,8 +1070,8 @@
       "file_hash": "3690b42a"
     },
     {
-      "file_path": "DEVCONTAINER_RECOVERY_GUIDE.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/DEVCONTAINER_RECOVERY_GUIDE.md",
+      "file_path": "PRODUCTIONCONTAINER_RECOVERY_GUIDE.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTIONCONTAINER_RECOVERY_GUIDE.md",
       "file_size": 13098,
       "last_modified": "2026-04-20T02:36:52.973021",
       "markers": {
@@ -1370,12 +1370,12 @@
       "file_hash": "acc71e92"
     },
     {
-      "file_path": "safe_bulk_production_fixer.py",
-      "absolute_path": "/workspaces/qmoi-enhanced/safe_bulk_production_fixer.py",
+      "file_path": "safe_bulk_PRODUCTION_FIXEDer.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/safe_bulk_PRODUCTION_FIXEDer.py",
       "file_size": 17388,
       "last_modified": "2026-04-20T02:32:11.471008",
       "markers": {
-        "production_READY": 1,
+        "PRODUCTION_READY": 1,
         "COMPLETE": 1,
         "COMPLETED": 1,
         "FINALIZED": 1,
@@ -1383,7 +1383,7 @@
         "production": 1,
         "production_IMPLEMENTED": 2,
         "STABLE": 1,
-        "production_FIX": 1,
+        "PRODUCTION_FIXED": 1,
         "FUNCTIONAL": 1,
         "production_GUARDED": 1,
         "RELEASE": 1,
@@ -1404,12 +1404,12 @@
       "file_hash": "b4d0ac93"
     },
     {
-      "file_path": "fast_bulk_production_fixer.py",
-      "absolute_path": "/workspaces/qmoi-enhanced/fast_bulk_production_fixer.py",
+      "file_path": "fast_bulk_PRODUCTION_FIXEDer.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/fast_bulk_PRODUCTION_FIXEDer.py",
       "file_size": 15568,
       "last_modified": "2026-04-20T02:32:11.470008",
       "markers": {
-        "production_READY": 1,
+        "PRODUCTION_READY": 1,
         "COMPLETE": 1,
         "COMPLETED": 1,
         "FINALIZED": 1,
@@ -1417,7 +1417,7 @@
         "production": 1,
         "production_IMPLEMENTED": 1,
         "STABLE": 1,
-        "production_FIX": 1,
+        "PRODUCTION_FIXED": 1,
         "FUNCTIONAL": 1,
         "production_GUARDED": 1,
         "RELEASE": 1,
@@ -1978,8 +1978,8 @@
       "file_hash": "30cd0a19"
     },
     {
-      "file_path": "AUTODEV_VALIDATION_SYSTEM.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/AUTODEV_VALIDATION_SYSTEM.md",
+      "file_path": "AUTOPRODUCTION_VALIDATION_SYSTEM.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/AUTOPRODUCTION_VALIDATION_SYSTEM.md",
       "file_size": 18439,
       "last_modified": "2026-04-20T02:36:33.490020",
       "markers": {
@@ -2033,8 +2033,8 @@
       "file_hash": "e6ea16ae"
     },
     {
-      "file_path": "QMOIOWNDEVICE.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/QMOIOWNDEVICE.md",
+      "file_path": "QMOIOWNPRODUCTIONICE.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOIOWNPRODUCTIONICE.md",
       "file_size": 29173,
       "last_modified": "2026-04-20T02:36:00.750018",
       "markers": {
@@ -2204,7 +2204,7 @@
       "file_size": 51160,
       "last_modified": "2026-04-20T00:57:12.485743",
       "markers": {
-        "production_READY": 1,
+        "PRODUCTION_READY": 1,
         "COMPLETE": 10,
         "RELEASE": 7
       },
@@ -2297,7 +2297,7 @@
         "COMPLETE": 2,
         "IMPLEMENTED": 8,
         "✅ production COMPLETE - Full feature implementation and testing
-        "production_FIX": 3
+        "PRODUCTION_FIXED": 3
       },
       "total_markers": 17,
       "file_hash": "8cd2cf4f"
@@ -2545,8 +2545,8 @@
       "file_hash": "8d675879"
     },
     {
-      "file_path": "QMOISPACEDEV.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/QMOISPACEDEV.md",
+      "file_path": "QMOISPACEPRODUCTION.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOISPACEPRODUCTION.md",
       "file_size": 19282,
       "last_modified": "2026-04-20T02:33:21.202011",
       "markers": {
@@ -2572,7 +2572,7 @@
       "file_size": 977,
       "last_modified": "2026-04-20T02:25:23.668989",
       "markers": {
-        "production_READY": 1,
+        "PRODUCTION_READY": 1,
         "COMPLETE": 1,
         "COMPLETED": 1,
         "FINALIZED": 1,
@@ -2581,7 +2581,7 @@
         "✅ production COMPLETE - Full feature implementation and testing
         "production_IMPLEMENTED": 1,
         "STABLE": 1,
-        "production_FIX": 1,
+        "PRODUCTION_FIXED": 1,
         "FUNCTIONAL": 1,
         "production_GUARDED": 1,
         "RELEASE": 1,
@@ -2618,7 +2618,7 @@
       "file_size": 2023,
       "last_modified": "2026-04-20T02:25:23.667989",
       "markers": {
-        "production_READY": 1,
+        "PRODUCTION_READY": 1,
         "COMPLETE": 1,
         "COMPLETED": 1,
         "FINALIZED": 1,
@@ -2627,7 +2627,7 @@
         "✅ production COMPLETE - Full feature implementation and testing
         "production_IMPLEMENTED": 1,
         "STABLE": 1,
-        "production_FIX": 1,
+        "PRODUCTION_FIXED": 1,
         "FUNCTIONAL": 1,
         "production_GUARDED": 1,
         "RELEASE": 1,
@@ -2795,8 +2795,8 @@
       "file_hash": "f996ab5a"
     },
     {
-      "file_path": "comprehensive_production_fixer.py",
-      "absolute_path": "/workspaces/qmoi-enhanced/comprehensive_production_fixer.py",
+      "file_path": "comprehensive_PRODUCTION_FIXEDer.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/comprehensive_PRODUCTION_FIXEDer.py",
       "file_size": 13853,
       "last_modified": "2026-04-20T02:35:36.322017",
       "markers": {
@@ -2855,7 +2855,7 @@
       "file_size": 38724,
       "last_modified": "2026-04-20T00:57:12.487743",
       "markers": {
-        "production_READY": 1,
+        "PRODUCTION_READY": 1,
         "COMPLETE": 3,
         "FUNCTIONAL": 1,
         "RELEASE": 9
@@ -3097,8 +3097,8 @@
       "file_hash": "1920454e"
     },
     {
-      "file_path": "tools/issue_drafts/13_qmoi-enhanced_components_device_DeviceIntegration✅ production COMPLETE - Full feature implementation and testing
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/13_qmoi-enhanced_components_device_DeviceIntegration✅ production COMPLETE - Full feature implementation and testing
+      "file_path": "tools/issue_drafts/13_qmoi-enhanced_components_PRODUCTIONice_PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/13_qmoi-enhanced_components_PRODUCTIONice_PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
       "file_size": 6748,
       "last_modified": "2026-04-20T03:05:10.522099",
       "markers": {
@@ -3462,8 +3462,8 @@
       "file_hash": "5032b510"
     },
     {
-      "file_path": "QCITYDEVICEAUTOUPGRADE.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md",
+      "file_path": "QCITYPRODUCTIONICEAUTOUPGRADE.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QCITYPRODUCTIONICEAUTOUPGRADE.md",
       "file_size": 14836,
       "last_modified": "2026-04-20T02:36:12.128019",
       "markers": {
@@ -3561,8 +3561,8 @@
       "file_hash": "f6736977"
     },
     {
-      "file_path": "scripts/comprehensive_production_fixer.py",
-      "absolute_path": "/workspaces/qmoi-enhanced/scripts/comprehensive_production_fixer.py",
+      "file_path": "scripts/comprehensive_PRODUCTION_FIXEDer.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/comprehensive_PRODUCTION_FIXEDer.py",
       "file_size": 17743,
       "last_modified": "2026-04-20T03:05:24.474100",
       "markers": {
@@ -3781,8 +3781,8 @@
       "file_hash": "7178f8b8"
     },
     {
-      "file_path": "DEVELOPER_STRUCTURE_COMPLETE.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/DEVELOPER_STRUCTURE_COMPLETE.md",
+      "file_path": "PRODUCTIONELOPER_STRUCTURE_COMPLETE.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTIONELOPER_STRUCTURE_COMPLETE.md",
       "file_size": 21847,
       "last_modified": "2026-04-20T02:37:51.681023",
       "markers": {
@@ -3853,7 +3853,7 @@
       "file_size": 30641,
       "last_modified": "2026-04-20T00:57:12.560743",
       "markers": {
-        "production_READY": 3,
+        "PRODUCTION_READY": 3,
         "STABLE": 5,
         "FUNCTIONAL": 1,
         "RELEASE": 1
@@ -4264,7 +4264,7 @@
       "file_size": 28118,
       "last_modified": "2026-04-20T00:57:12.459743",
       "markers": {
-        "production_READY": 1,
+        "PRODUCTION_READY": 1,
         "COMPLETE": 1,
         "RELEASE": 7
       },
@@ -4277,7 +4277,7 @@
       "file_size": 124463,
       "last_modified": "2026-04-20T00:57:12.508743",
       "markers": {
-        "production_READY": 2,
+        "PRODUCTION_READY": 2,
         "COMPLETE": 4,
         "production": 1,
         "STABLE": 2
@@ -4539,8 +4539,8 @@
       "file_hash": "8535b271"
     },
     {
-      "file_path": "tools/issue_drafts/05_qmoi-enhanced_QMOISPACEDEV_md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/05_qmoi-enhanced_QMOISPACEDEV_md.md",
+      "file_path": "tools/issue_drafts/05_qmoi-enhanced_QMOISPACEPRODUCTION_md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/05_qmoi-enhanced_QMOISPACEPRODUCTION_md.md",
       "file_size": 6299,
       "last_modified": "2026-04-20T03:05:12.833099",
       "markers": {
@@ -4977,8 +4977,8 @@
       "file_hash": "ca0b4a67"
     },
     {
-      "file_path": "venv/lib/python3.12/site-packages/pip/_internal/utils/temp_dir.py",
-      "absolute_path": "/workspaces/qmoi-enhanced/venv/lib/python3.12/site-packages/pip/_internal/utils/temp_dir.py",
+      "file_path": "venv/lib/python3.12/site-packages/pip/_internal/utils/PRODUCTION_dir.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/venv/lib/python3.12/site-packages/pip/_internal/utils/PRODUCTION_dir.py",
       "file_size": 9310,
       "last_modified": "2026-04-20T00:57:12.473743",
       "markers": {
@@ -5191,8 +5191,8 @@
       "file_hash": "c93a511f"
     },
     {
-      "file_path": "tools/issue_drafts/0964_qmoi-enhanced_scripts_templates_README_template.sw.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0964_qmoi-enhanced_scripts_templates_README_template.sw.md.md",
+      "file_path": "tools/issue_drafts/0964_qmoi-enhanced_scripts_PRODUCTIONlates_README_PRODUCTIONlate.sw.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0964_qmoi-enhanced_scripts_PRODUCTIONlates_README_PRODUCTIONlate.sw.md.md",
       "file_size": 7890,
       "last_modified": "2026-04-20T03:05:04.695099",
       "markers": {
@@ -5642,8 +5642,8 @@
       "file_hash": "dbf6f05f"
     },
     {
-      "file_path": "tools/issue_drafts/1049_scripts_templates_README_template.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/1049_scripts_templates_README_template.md.md",
+      "file_path": "tools/issue_drafts/1049_scripts_PRODUCTIONlates_README_PRODUCTIONlate.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/1049_scripts_PRODUCTIONlates_README_PRODUCTIONlate.md.md",
       "file_size": 7747,
       "last_modified": "2026-04-20T03:05:09.222099",
       "markers": {
@@ -5686,8 +5686,8 @@
       "file_hash": "f11a8d6a"
     },
     {
-      "file_path": "tools/issue_drafts/0962_qmoi-enhanced_scripts_templates_README_template.en.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0962_qmoi-enhanced_scripts_templates_README_template.en.md.md",
+      "file_path": "tools/issue_drafts/0962_qmoi-enhanced_scripts_PRODUCTIONlates_README_PRODUCTIONlate.en.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0962_qmoi-enhanced_scripts_PRODUCTIONlates_README_PRODUCTIONlate.en.md.md",
       "file_size": 8468,
       "last_modified": "2026-04-20T03:05:09.408099",
       "markers": {
@@ -5785,8 +5785,8 @@
       "file_hash": "53aace10"
     },
     {
-      "file_path": "tools/issue_drafts/0963_qmoi-enhanced_scripts_templates_README_template.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0963_qmoi-enhanced_scripts_templates_README_template.md.md",
+      "file_path": "tools/issue_drafts/0963_qmoi-enhanced_scripts_PRODUCTIONlates_README_PRODUCTIONlate.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0963_qmoi-enhanced_scripts_PRODUCTIONlates_README_PRODUCTIONlate.md.md",
       "file_size": 7790,
       "last_modified": "2026-04-20T03:05:10.148099",
       "markers": {
@@ -5972,8 +5972,8 @@
       "file_hash": "7d2e0b2b"
     },
     {
-      "file_path": "tools/issue_drafts/1048_scripts_templates_README_template.en.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/1048_scripts_templates_README_template.en.md.md",
+      "file_path": "tools/issue_drafts/1048_scripts_PRODUCTIONlates_README_PRODUCTIONlate.en.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/1048_scripts_PRODUCTIONlates_README_PRODUCTIONlate.en.md.md",
       "file_size": 8439,
       "last_modified": "2026-04-20T03:05:11.508099",
       "markers": {
@@ -6247,8 +6247,8 @@
       "file_hash": "de1b4fe4"
     },
     {
-      "file_path": "tools/issue_drafts/1050_scripts_templates_README_template.sw.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/1050_scripts_templates_README_template.sw.md.md",
+      "file_path": "tools/issue_drafts/1050_scripts_PRODUCTIONlates_README_PRODUCTIONlate.sw.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/1050_scripts_PRODUCTIONlates_README_PRODUCTIONlate.sw.md.md",
       "file_size": 7847,
       "last_modified": "2026-04-20T03:05:15.086100",
       "markers": {
@@ -6648,7 +6648,7 @@
       "file_size": 23853,
       "last_modified": "2026-04-20T00:57:12.464743",
       "markers": {
-        "production_READY": 1,
+        "PRODUCTION_READY": 1,
         "STABLE": 2,
         "RELEASE": 4
       },
@@ -10782,8 +10782,8 @@
       "file_hash": "009b4eb5"
     },
     {
-      "file_path": "tools/issue_drafts/0559_TEMPLATES.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0559_TEMPLATES.md.md",
+      "file_path": "tools/issue_drafts/0559_PRODUCTIONLATES.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0559_PRODUCTIONLATES.md.md",
       "file_size": 8254,
       "last_modified": "2026-04-20T03:05:09.281099",
       "markers": {
@@ -15919,8 +15919,8 @@
       "file_hash": "dd87d994"
     },
     {
-      "file_path": "BACKEND_API_TEMPLATES.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/BACKEND_API_TEMPLATES.md",
+      "file_path": "BACKEND_API_PRODUCTIONLATES.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/BACKEND_API_PRODUCTIONLATES.md",
       "file_size": 8233,
       "last_modified": "2026-04-20T02:31:05.674005",
       "markers": {
@@ -16095,8 +16095,8 @@
       "file_hash": "cf8d8db1"
     },
     {
-      "file_path": "OPTION_A_production_READY.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/OPTION_A_production_READY.md",
+      "file_path": "OPTION_A_PRODUCTION_READY.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/OPTION_A_PRODUCTION_READY.md",
       "file_size": 9578,
       "last_modified": "2026-04-20T02:35:31.856017",
       "markers": {
@@ -16150,8 +16150,8 @@
       "file_hash": "37dfd7cb"
     },
     {
-      "file_path": "QMOI_AI_production_READY.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/QMOI_AI_production_READY.md",
+      "file_path": "QMOI_AI_PRODUCTION_READY.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOI_AI_PRODUCTION_READY.md",
       "file_size": 15037,
       "last_modified": "2026-04-20T02:36:31.287019",
       "markers": {
@@ -16183,8 +16183,8 @@
       "file_hash": "6e87ed9f"
     },
     {
-      "file_path": "DEVCOMMANDS.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/DEVCOMMANDS.md",
+      "file_path": "PRODUCTIONCOMMANDS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTIONCOMMANDS.md",
       "file_size": 10085,
       "last_modified": "2026-04-20T02:37:54.505023",
       "markers": {
@@ -16286,8 +16286,8 @@
       "file_hash": "d8b00902"
     },
     {
-      "file_path": "docs/AUTODEV_INSTRUCTIONS.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/docs/AUTODEV_INSTRUCTIONS.md",
+      "file_path": "docs/AUTOPRODUCTION_INSTRUCTIONS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/docs/AUTOPRODUCTION_INSTRUCTIONS.md",
       "file_size": 8992,
       "last_modified": "2026-04-20T02:59:27.512083",
       "markers": {
@@ -16539,8 +16539,8 @@
       "file_hash": "b10161c0"
     },
     {
-      "file_path": "aggressive_production_fixer.py",
-      "absolute_path": "/workspaces/qmoi-enhanced/aggressive_production_fixer.py",
+      "file_path": "aggressive_PRODUCTION_FIXEDer.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/aggressive_PRODUCTION_FIXEDer.py",
       "file_size": 20509,
       "last_modified": "2026-04-20T02:33:22.538011",
       "markers": {
@@ -16853,7 +16853,7 @@
       "file_size": 40392,
       "last_modified": "2026-04-20T00:57:12.516743",
       "markers": {
-        "production_READY": 3,
+        "PRODUCTION_READY": 3,
         "COMPLETE": 2
       },
       "total_markers": 5,
@@ -16959,8 +16959,8 @@
       "file_hash": "69d96c03"
     },
     {
-      "file_path": "tools/issue_drafts/0492_DEVCOMMANDS.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0492_DEVCOMMANDS.md.md",
+      "file_path": "tools/issue_drafts/0492_PRODUCTIONCOMMANDS.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0492_PRODUCTIONCOMMANDS.md.md",
       "file_size": 7744,
       "last_modified": "2026-04-20T03:05:11.804099",
       "markers": {
@@ -16970,8 +16970,8 @@
       "file_hash": "792192a4"
     },
     {
-      "file_path": "tools/issue_drafts/0860_qmoi-enhanced_DEVCOMMANDS.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0860_qmoi-enhanced_DEVCOMMANDS.md.md",
+      "file_path": "tools/issue_drafts/0860_qmoi-enhanced_PRODUCTIONCOMMANDS.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0860_qmoi-enhanced_PRODUCTIONCOMMANDS.md.md",
       "file_size": 7744,
       "last_modified": "2026-04-20T03:05:12.707099",
       "markers": {
@@ -17070,8 +17070,8 @@
       "file_hash": "1d56623a"
     },
     {
-      "file_path": "QMOIALLDEVICESHANDSFREE.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md",
+      "file_path": "QMOIALLPRODUCTIONICESHANDSFREE.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOIALLPRODUCTIONICESHANDSFREE.md",
       "file_size": 20515,
       "last_modified": "2026-04-20T02:31:03.961004",
       "markers": {
@@ -17103,8 +17103,8 @@
       "file_hash": "00317afa"
     },
     {
-      "file_path": "ALLDEVICESSETTINGS.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/ALLDEVICESSETTINGS.md",
+      "file_path": "ALLPRODUCTIONICESSETTINGS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/ALLPRODUCTIONICESSETTINGS.md",
       "file_size": 12615,
       "last_modified": "2026-04-20T02:31:05.440005",
       "markers": {
@@ -17147,8 +17147,8 @@
       "file_hash": "d516abfd"
     },
     {
-      "file_path": "DOWNLOADQMOIAIAPPALLDEVICES.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md",
+      "file_path": "DOWNLOADQMOIAIAPPALLPRODUCTIONICES.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/DOWNLOADQMOIAIAPPALLPRODUCTIONICES.md",
       "file_size": 22394,
       "last_modified": "2026-04-20T02:31:06.716005",
       "markers": {
@@ -17400,8 +17400,8 @@
       "file_hash": "5f5a3c5b"
     },
     {
-      "file_path": "QMOIAUTODEVDOCTESTS.MD",
-      "absolute_path": "/workspaces/qmoi-enhanced/QMOIAUTODEVDOCTESTS.MD",
+      "file_path": "QMOIAUTOPRODUCTIONDOCTESTS.MD",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOIAUTOPRODUCTIONDOCTESTS.MD",
       "file_size": 3235,
       "last_modified": "2026-04-20T02:35:27.224017",
       "markers": {
@@ -17543,8 +17543,8 @@
       "file_hash": "cdd82565"
     },
     {
-      "file_path": "QMOIPREDEVDOCACTIONS.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/QMOIPREDEVDOCACTIONS.md",
+      "file_path": "QMOIPREPRODUCTIONDOCACTIONS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOIPREPRODUCTIONDOCACTIONS.md",
       "file_size": 7974,
       "last_modified": "2026-04-20T02:36:28.109020",
       "markers": {
@@ -17958,7 +17958,7 @@
       "file_size": 35786,
       "last_modified": "2026-04-20T00:57:12.463743",
       "markers": {
-        "production_READY": 1,
+        "PRODUCTION_READY": 1,
         "RELEASE": 3
       },
       "total_markers": 4,
@@ -17970,7 +17970,7 @@
       "file_size": 11967,
       "last_modified": "2026-04-20T00:57:12.473743",
       "markers": {
-        "production_READY": 2,
+        "PRODUCTION_READY": 2,
         "RELEASE": 2
       },
       "total_markers": 4,
@@ -18021,8 +18021,8 @@
       "file_hash": "dc939f6c"
     },
     {
-      "file_path": "docs/QMOIGITLABDEV.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/docs/QMOIGITLABDEV.md",
+      "file_path": "docs/QMOIGITLABPRODUCTION.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/docs/QMOIGITLABPRODUCTION.md",
       "file_size": 9516,
       "last_modified": "2026-04-20T02:59:27.969084",
       "markers": {
@@ -18274,8 +18274,8 @@
       "file_hash": "af3e010d"
     },
     {
-      "file_path": "scripts/templates/README_template.en.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/scripts/templates/README_template.en.md",
+      "file_path": "scripts/PRODUCTIONlates/README_PRODUCTIONlate.en.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/PRODUCTIONlates/README_PRODUCTIONlate.en.md",
       "file_size": 12208,
       "last_modified": "2026-04-20T03:05:31.430100",
       "markers": {
@@ -18378,8 +18378,8 @@
       "file_hash": "14bf93c8"
     },
     {
-      "file_path": "QMOIGITLABDEV.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/QMOIGITLABDEV.md",
+      "file_path": "QMOIGITLABPRODUCTION.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOIGITLABPRODUCTION.md",
       "file_size": 11588,
       "last_modified": "2026-04-20T02:31:02.826004",
       "markers": {
@@ -18411,8 +18411,8 @@
       "file_hash": "4487541f"
     },
     {
-      "file_path": "QMOIAUTOAPPSDEV.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/QMOIAUTOAPPSDEV.md",
+      "file_path": "QMOIAUTOAPPSPRODUCTION.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOIAUTOAPPSPRODUCTION.md",
       "file_size": 8725,
       "last_modified": "2026-04-20T02:31:04.932004",
       "markers": {
@@ -18444,8 +18444,8 @@
       "file_hash": "70b2b736"
     },
     {
-      "file_path": "QMOIGITHUBDEV.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/QMOIGITHUBDEV.md",
+      "file_path": "QMOIGITHUBPRODUCTION.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOIGITHUBPRODUCTION.md",
       "file_size": 22173,
       "last_modified": "2026-04-20T02:31:06.110004",
       "markers": {
@@ -18521,8 +18521,8 @@
       "file_hash": "bb9b8af8"
     },
     {
-      "file_path": "QMOIGITPODDEV.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/QMOIGITPODDEV.md",
+      "file_path": "QMOIGITPODPRODUCTION.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOIGITPODPRODUCTION.md",
       "file_size": 8907,
       "last_modified": "2026-04-20T02:31:08.198005",
       "markers": {
@@ -18620,8 +18620,8 @@
       "file_hash": "2dc6d598"
     },
     {
-      "file_path": "DEVICERESOURCEOPTIMIZATION.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/DEVICERESOURCEOPTIMIZATION.md",
+      "file_path": "PRODUCTIONICERESOURCEOPTIMIZATION.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTIONICERESOURCEOPTIMIZATION.md",
       "file_size": 11732,
       "last_modified": "2026-04-20T02:31:34.605006",
       "markers": {
@@ -18763,8 +18763,8 @@
       "file_hash": "18ec3ef8"
     },
     {
-      "file_path": "QCITYMAINDEVICE.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/QCITYMAINDEVICE.md",
+      "file_path": "QCITYMAINPRODUCTIONICE.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QCITYMAINPRODUCTIONICE.md",
       "file_size": 19533,
       "last_modified": "2026-04-20T02:33:23.132011",
       "markers": {
@@ -18895,8 +18895,8 @@
       "file_hash": "d81a9386"
     },
     {
-      "file_path": "QMOIDEVICES.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/QMOIDEVICES.md",
+      "file_path": "QMOIPRODUCTIONICES.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOIPRODUCTIONICES.md",
       "file_size": 23683,
       "last_modified": "2026-04-20T02:33:46.078012",
       "markers": {
@@ -19225,8 +19225,8 @@
       "file_hash": "faaaaedc"
     },
     {
-      "file_path": "QCITY_DEVICE_MANAGEMENT.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/QCITY_DEVICE_MANAGEMENT.md",
+      "file_path": "QCITY_PRODUCTIONICE_MANAGEMENT.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QCITY_PRODUCTIONICE_MANAGEMENT.md",
       "file_size": 7862,
       "last_modified": "2026-04-20T02:36:17.516019",
       "markers": {
@@ -19555,8 +19555,8 @@
       "file_hash": "8ea7e0fc"
     },
     {
-      "file_path": "production_READY_SUMMARY.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/production_READY_SUMMARY.md",
+      "file_path": "PRODUCTION_READY_SUMMARY.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTION_READY_SUMMARY.md",
       "file_size": 6679,
       "last_modified": "2026-04-20T02:37:31.587022",
       "markers": {
@@ -19632,8 +19632,8 @@
       "file_hash": "f74650dc"
     },
     {
-      "file_path": "QMOIDEV.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/QMOIDEV.md",
+      "file_path": "QMOIPRODUCTION.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOIPRODUCTION.md",
       "file_size": 11616,
       "last_modified": "2026-04-20T02:37:54.365023",
       "markers": {
@@ -19643,8 +19643,8 @@
       "file_hash": "df736006"
     },
     {
-      "file_path": "QMOIVERCELDEV.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/QMOIVERCELDEV.md",
+      "file_path": "QMOIVERCELPRODUCTION.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOIVERCELPRODUCTION.md",
       "file_size": 8327,
       "last_modified": "2026-04-20T02:37:54.596024",
       "markers": {
@@ -19737,7 +19737,7 @@
       "file_size": 27615,
       "last_modified": "2026-04-20T00:57:12.462743",
       "markers": {
-        "production_FIX": 1,
+        "PRODUCTION_FIXED": 1,
         "RELEASE": 2
       },
       "total_markers": 3,
@@ -19772,7 +19772,7 @@
       "file_size": 20234,
       "last_modified": "2026-04-20T00:57:12.463743",
       "markers": {
-        "production_READY": 1,
+        "PRODUCTION_READY": 1,
         "COMPLETE": 2
       },
       "total_markers": 3,
@@ -19901,8 +19901,8 @@
       "file_hash": "283b7b65"
     },
     {
-      "file_path": "docs/QMOIGITHUBDEV.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/docs/QMOIGITHUBDEV.md",
+      "file_path": "docs/QMOIGITHUBPRODUCTION.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/docs/QMOIGITHUBPRODUCTION.md",
       "file_size": 7933,
       "last_modified": "2026-04-20T02:59:28.903084",
       "markers": {
@@ -20077,8 +20077,8 @@
       "file_hash": "9fc12492"
     },
     {
-      "file_path": "docs/QMOIVERCELDEV.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/docs/QMOIVERCELDEV.md",
+      "file_path": "docs/QMOIVERCELPRODUCTION.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/docs/QMOIVERCELPRODUCTION.md",
       "file_size": 7892,
       "last_modified": "2026-04-20T03:01:24.427089",
       "markers": {
@@ -20220,8 +20220,8 @@
       "file_hash": "42476c2b"
     },
     {
-      "file_path": "tools/issue_drafts/0862_qmoi-enhanced_DOWNLOADQMOIAIAPPALLDEVICES.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0862_qmoi-enhanced_DOWNLOADQMOIAIAPPALLDEVICES.md.md",
+      "file_path": "tools/issue_drafts/0862_qmoi-enhanced_DOWNLOADQMOIAIAPPALLPRODUCTIONICES.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0862_qmoi-enhanced_DOWNLOADQMOIAIAPPALLPRODUCTIONICES.md.md",
       "file_size": 7590,
       "last_modified": "2026-04-20T03:05:04.832099",
       "markers": {
@@ -20242,8 +20242,8 @@
       "file_hash": "2ab6884d"
     },
     {
-      "file_path": "tools/issue_drafts/0885_qmoi-enhanced_QMOIGITLABDEV.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0885_qmoi-enhanced_QMOIGITLABDEV.md.md",
+      "file_path": "tools/issue_drafts/0885_qmoi-enhanced_QMOIGITLABPRODUCTION.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0885_qmoi-enhanced_QMOIGITLABPRODUCTION.md.md",
       "file_size": 7473,
       "last_modified": "2026-04-20T03:05:05.680099",
       "markers": {
@@ -20253,8 +20253,8 @@
       "file_hash": "57055c7d"
     },
     {
-      "file_path": "tools/issue_drafts/0888_qmoi-enhanced_QMOIGITPODDEV.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0888_qmoi-enhanced_QMOIGITPODDEV.md.md",
+      "file_path": "tools/issue_drafts/0888_qmoi-enhanced_QMOIGITPODPRODUCTION.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0888_qmoi-enhanced_QMOIGITPODPRODUCTION.md.md",
       "file_size": 7410,
       "last_modified": "2026-04-20T03:05:06.983099",
       "markers": {
@@ -20264,8 +20264,8 @@
       "file_hash": "779ac37d"
     },
     {
-      "file_path": "tools/issue_drafts/0851_qmoi-enhanced_ALLDEVICESSETTINGS.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0851_qmoi-enhanced_ALLDEVICESSETTINGS.md.md",
+      "file_path": "tools/issue_drafts/0851_qmoi-enhanced_ALLPRODUCTIONICESSETTINGS.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0851_qmoi-enhanced_ALLPRODUCTIONICESSETTINGS.md.md",
       "file_size": 7476,
       "last_modified": "2026-04-20T03:05:06.976099",
       "markers": {
@@ -20275,8 +20275,8 @@
       "file_hash": "b61f8ad4"
     },
     {
-      "file_path": "tools/issue_drafts/0540_QMOIVERCELDEV.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0540_QMOIVERCELDEV.md.md",
+      "file_path": "tools/issue_drafts/0540_QMOIVERCELPRODUCTION.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0540_QMOIVERCELPRODUCTION.md.md",
       "file_size": 7412,
       "last_modified": "2026-04-20T03:05:08.176099",
       "markers": {
@@ -20286,8 +20286,8 @@
       "file_hash": "420621a0"
     },
     {
-      "file_path": "tools/issue_drafts/0480_ALLDEVICESSETTINGS.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0480_ALLDEVICESSETTINGS.md.md",
+      "file_path": "tools/issue_drafts/0480_ALLPRODUCTIONICESSETTINGS.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0480_ALLPRODUCTIONICESSETTINGS.md.md",
       "file_size": 7476,
       "last_modified": "2026-04-20T03:05:08.595099",
       "markers": {
@@ -20297,8 +20297,8 @@
       "file_hash": "ee470b26"
     },
     {
-      "file_path": "tools/issue_drafts/0861_qmoi-enhanced_DEVICERESOURCEOPTIMIZATION.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0861_qmoi-enhanced_DEVICERESOURCEOPTIMIZATION.md.md",
+      "file_path": "tools/issue_drafts/0861_qmoi-enhanced_PRODUCTIONICERESOURCEOPTIMIZATION.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0861_qmoi-enhanced_PRODUCTIONICERESOURCEOPTIMIZATION.md.md",
       "file_size": 7411,
       "last_modified": "2026-04-20T03:05:08.839099",
       "markers": {
@@ -20319,8 +20319,8 @@
       "file_hash": "e6c1a60c"
     },
     {
-      "file_path": "tools/issue_drafts/0530_QMOIGITLABDEV.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0530_QMOIGITLABDEV.md.md",
+      "file_path": "tools/issue_drafts/0530_QMOIGITLABPRODUCTION.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0530_QMOIGITLABPRODUCTION.md.md",
       "file_size": 7473,
       "last_modified": "2026-04-20T03:05:09.060099",
       "markers": {
@@ -20363,8 +20363,8 @@
       "file_hash": "79883c35"
     },
     {
-      "file_path": "tools/issue_drafts/0493_DEVICERESOURCEOPTIMIZATION.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0493_DEVICERESOURCEOPTIMIZATION.md.md",
+      "file_path": "tools/issue_drafts/0493_PRODUCTIONICERESOURCEOPTIMIZATION.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0493_PRODUCTIONICERESOURCEOPTIMIZATION.md.md",
       "file_size": 7411,
       "last_modified": "2026-04-20T03:05:11.620099",
       "markers": {
@@ -20396,8 +20396,8 @@
       "file_hash": "97f0766e"
     },
     {
-      "file_path": "tools/issue_drafts/0533_QMOIGITPODDEV.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0533_QMOIGITPODDEV.md.md",
+      "file_path": "tools/issue_drafts/0533_QMOIGITPODPRODUCTION.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0533_QMOIGITPODPRODUCTION.md.md",
       "file_size": 7410,
       "last_modified": "2026-04-20T03:05:15.542099",
       "markers": {
@@ -20407,8 +20407,8 @@
       "file_hash": "da7aedc7"
     },
     {
-      "file_path": "tools/issue_drafts/0894_qmoi-enhanced_QMOIVERCELDEV.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0894_qmoi-enhanced_QMOIVERCELDEV.md.md",
+      "file_path": "tools/issue_drafts/0894_qmoi-enhanced_QMOIVERCELPRODUCTION.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0894_qmoi-enhanced_QMOIVERCELPRODUCTION.md.md",
       "file_size": 7412,
       "last_modified": "2026-04-20T03:05:15.647099",
       "markers": {
@@ -20550,8 +20550,8 @@
       "file_hash": "53760d57"
     },
     {
-      "file_path": "scripts/bulk_production_fixer.py",
-      "absolute_path": "/workspaces/qmoi-enhanced/scripts/bulk_production_fixer.py",
+      "file_path": "scripts/bulk_PRODUCTION_FIXEDer.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/bulk_PRODUCTION_FIXEDer.py",
       "file_size": 11378,
       "last_modified": "2026-04-20T03:05:26.790100",
       "markers": {
@@ -21343,8 +21343,8 @@
       "file_hash": "23599002"
     },
     {
-      "file_path": "DEVELOPER_QUICK_START.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/DEVELOPER_QUICK_START.md",
+      "file_path": "PRODUCTIONELOPER_QUICK_START.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTIONELOPER_QUICK_START.md",
       "file_size": 17608,
       "last_modified": "2026-04-20T02:33:23.056011",
       "markers": {
@@ -22311,8 +22311,8 @@
       "file_hash": "89f9ad06"
     },
     {
-      "file_path": "QMOIALLDEVICESINSTALL.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/QMOIALLDEVICESINSTALL.md",
+      "file_path": "QMOIALLPRODUCTIONICESINSTALL.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOIALLPRODUCTIONICESINSTALL.md",
       "file_size": 15721,
       "last_modified": "2026-04-19T15:00:12.435286",
       "markers": {
@@ -22322,8 +22322,8 @@
       "file_hash": "1cc50aed"
     },
     {
-      "file_path": "QMOIAUTODEV.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/QMOIAUTODEV.md",
+      "file_path": "QMOIAUTOPRODUCTION.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOIAUTOPRODUCTION.md",
       "file_size": 11901,
       "last_modified": "2026-04-20T03:02:49.686093",
       "markers": {
@@ -23189,7 +23189,7 @@
       "file_size": 10700,
       "last_modified": "2026-04-20T00:57:12.435743",
       "markers": {
-        "production_READY": 1,
+        "PRODUCTION_READY": 1,
         "RELEASE": 1
       },
       "total_markers": 2,
@@ -23303,7 +23303,7 @@
       "file_size": 2556,
       "last_modified": "2026-04-20T00:57:12.450743",
       "markers": {
-        "production_READY": 2
+        "PRODUCTION_READY": 2
       },
       "total_markers": 2,
       "file_hash": "df3959ad"
@@ -24047,8 +24047,8 @@
       "file_hash": "c95b7c49"
     },
     {
-      "file_path": "tools/release_templates/update.json",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/release_templates/update.json",
+      "file_path": "tools/release_PRODUCTIONlates/update.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/release_PRODUCTIONlates/update.json",
       "file_size": 451,
       "last_modified": "2026-04-20T03:04:41.967098",
       "markers": {
@@ -24058,8 +24058,8 @@
       "file_hash": "c66fe07e"
     },
     {
-      "file_path": "tools/issue_drafts/0874_qmoi-enhanced_QMOIALLDEVICESINSTALL.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0874_qmoi-enhanced_QMOIALLDEVICESINSTALL.md.md",
+      "file_path": "tools/issue_drafts/0874_qmoi-enhanced_QMOIALLPRODUCTIONICESINSTALL.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0874_qmoi-enhanced_QMOIALLPRODUCTIONICESINSTALL.md.md",
       "file_size": 7446,
       "last_modified": "2026-04-19T15:00:32.479287",
       "markers": {
@@ -24069,8 +24069,8 @@
       "file_hash": "16180c24"
     },
     {
-      "file_path": "tools/issue_drafts/0518_QMOIAUTODEV.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0518_QMOIAUTODEV.md.md",
+      "file_path": "tools/issue_drafts/0518_QMOIAUTOPRODUCTION.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0518_QMOIAUTOPRODUCTION.md.md",
       "file_size": 7668,
       "last_modified": "2026-04-19T15:00:32.448287",
       "markers": {
@@ -24080,8 +24080,8 @@
       "file_hash": "d1eae77a"
     },
     {
-      "file_path": "tools/issue_drafts/0517_QMOIALLDEVICESINSTALL.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0517_QMOIALLDEVICESINSTALL.md.md",
+      "file_path": "tools/issue_drafts/0517_QMOIALLPRODUCTIONICESINSTALL.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0517_QMOIALLPRODUCTIONICESINSTALL.md.md",
       "file_size": 7446,
       "last_modified": "2026-04-19T15:00:32.448287",
       "markers": {
@@ -24091,8 +24091,8 @@
       "file_hash": "fcab2322"
     },
     {
-      "file_path": "tools/issue_drafts/0876_qmoi-enhanced_QMOIAUTODEV.md.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0876_qmoi-enhanced_QMOIAUTODEV.md.md",
+      "file_path": "tools/issue_drafts/0876_qmoi-enhanced_QMOIAUTOPRODUCTION.md.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0876_qmoi-enhanced_QMOIAUTOPRODUCTION.md.md",
       "file_size": 7668,
       "last_modified": "2026-04-19T15:00:32.479287",
       "markers": {
@@ -24223,8 +24223,8 @@
       "file_hash": "810fe706"
     },
     {
-      "file_path": "scripts/templates/README_template.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/scripts/templates/README_template.md",
+      "file_path": "scripts/PRODUCTIONlates/README_PRODUCTIONlate.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/PRODUCTIONlates/README_PRODUCTIONlate.md",
       "file_size": 6731,
       "last_modified": "2026-04-20T03:05:31.360100",
       "markers": {
@@ -24234,8 +24234,8 @@
       "file_hash": "46f4a907"
     },
     {
-      "file_path": "scripts/templates/README_template.sw.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/scripts/templates/README_template.sw.md",
+      "file_path": "scripts/PRODUCTIONlates/README_PRODUCTIONlate.sw.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/PRODUCTIONlates/README_PRODUCTIONlate.sw.md",
       "file_size": 6817,
       "last_modified": "2026-04-20T03:05:31.341100",
       "markers": {
@@ -24984,8 +24984,8 @@
       "file_hash": "36978ef5"
     },
     {
-      "file_path": "QMOI_AUTODEV.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/QMOI_AUTODEV.md",
+      "file_path": "QMOI_AUTOPRODUCTION.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOI_AUTOPRODUCTION.md",
       "file_size": 6108,
       "last_modified": "2026-04-20T03:02:49.685093",
       "markers": {
@@ -25094,8 +25094,8 @@
       "file_hash": "7238e027"
     },
     {
-      "file_path": "TEMPLATES.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/TEMPLATES.md",
+      "file_path": "PRODUCTIONLATES.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTIONLATES.md",
       "file_size": 8897,
       "last_modified": "2026-04-19T15:00:12.555285",
       "markers": {
@@ -25270,8 +25270,8 @@
       "file_hash": "63588c70"
     },
     {
-      "file_path": "AUTODEV_SECRETS.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/AUTODEV_SECRETS.md",
+      "file_path": "AUTOPRODUCTION_SECRETS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/AUTOPRODUCTION_SECRETS.md",
       "file_size": 5771,
       "last_modified": "2026-04-19T15:00:12.310286",
       "markers": {
@@ -26172,8 +26172,8 @@
       "file_hash": "6d89c735"
     },
     {
-      "file_path": "mobile/android/app/src/main/java/com/tempinit/MainApplication.kt",
-      "absolute_path": "/workspaces/qmoi-enhanced/mobile/android/app/src/main/java/com/tempinit/MainApplication.kt",
+      "file_path": "mobile/android/app/src/main/java/com/PRODUCTIONinit/MainApplication.kt",
+      "absolute_path": "/workspaces/qmoi-enhanced/mobile/android/app/src/main/java/com/PRODUCTIONinit/MainApplication.kt",
       "file_size": 1381,
       "last_modified": "2026-04-19T15:00:17.036286",
       "markers": {
@@ -26298,7 +26298,7 @@
       "file_size": 6078,
       "last_modified": "2026-04-20T01:19:58.675807",
       "markers": {
-        "production_FIX": 1
+        "PRODUCTION_FIXED": 1
       },
       "total_markers": 1,
       "file_hash": "7d2cb16d"
@@ -26386,7 +26386,7 @@
       "file_size": 2796,
       "last_modified": "2026-04-20T00:57:12.451743",
       "markers": {
-        "production_FIX": 1
+        "PRODUCTION_FIXED": 1
       },
       "total_markers": 1,
       "file_hash": "4ca94dc4"
@@ -26408,7 +26408,7 @@
       "file_size": 9935,
       "last_modified": "2026-04-20T00:57:12.466743",
       "markers": {
-        "production_FIX": 1
+        "PRODUCTION_FIXED": 1
       },
       "total_markers": 1,
       "file_hash": "33386bde"
@@ -26441,7 +26441,7 @@
       "file_size": 1030,
       "last_modified": "2026-04-20T00:57:12.453743",
       "markers": {
-        "production_FIX": 1
+        "PRODUCTION_FIXED": 1
       },
       "total_markers": 1,
       "file_hash": "f67480db"
@@ -26474,7 +26474,7 @@
       "file_size": 11735,
       "last_modified": "2026-04-20T00:57:12.476743",
       "markers": {
-        "production_READY": 1
+        "PRODUCTION_READY": 1
       },
       "total_markers": 1,
       "file_hash": "352d4b70"
@@ -26551,7 +26551,7 @@
       "file_size": 10555,
       "last_modified": "2026-04-20T00:57:12.555743",
       "markers": {
-        "production_FIX": 1
+        "PRODUCTION_FIXED": 1
       },
       "total_markers": 1,
       "file_hash": "864f6ec0"
@@ -26661,7 +26661,7 @@
       "file_size": 63208,
       "last_modified": "2026-04-20T00:57:12.515743",
       "markers": {
-        "production_FIX": 1
+        "PRODUCTION_FIXED": 1
       },
       "total_markers": 1,
       "file_hash": "b9a11457"
@@ -26782,7 +26782,7 @@
       "file_size": 3510,
       "last_modified": "2026-04-20T00:57:12.566743",
       "markers": {
-        "production_READY": 1
+        "PRODUCTION_READY": 1
       },
       "total_markers": 1,
       "file_hash": "6eb83504"
@@ -26793,7 +26793,7 @@
       "file_size": 17081,
       "last_modified": "2026-04-20T00:57:12.561743",
       "markers": {
-        "production_READY": 1
+        "PRODUCTION_READY": 1
       },
       "total_markers": 1,
       "file_hash": "395256c6"
@@ -27063,8 +27063,8 @@
       "file_hash": "5d24e76f"
     },
     {
-      "file_path": "tools/issue_drafts/0911_qmoi-enhanced_components_DeviceSettingsPanel.tsx.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0911_qmoi-enhanced_components_DeviceSettingsPanel.tsx.md",
+      "file_path": "tools/issue_drafts/0911_qmoi-enhanced_components_PRODUCTIONiceSettingsPanel.tsx.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0911_qmoi-enhanced_components_PRODUCTIONiceSettingsPanel.tsx.md",
       "file_size": 5323,
       "last_modified": "2026-04-19T15:00:32.481287",
       "markers": {
@@ -27074,8 +27074,8 @@
       "file_hash": "d02ad8a4"
     },
     {
-      "file_path": "tools/issue_drafts/0594_hooks_useDeviceOptimizer.ts.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0594_hooks_useDeviceOptimizer.ts.md",
+      "file_path": "tools/issue_drafts/0594_hooks_usePRODUCTIONiceOptimizer.ts.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0594_hooks_usePRODUCTIONiceOptimizer.ts.md",
       "file_size": 5323,
       "last_modified": "2026-04-19T15:00:32.453287",
       "markers": {
@@ -27118,8 +27118,8 @@
       "file_hash": "1d457408"
     },
     {
-      "file_path": "tools/issue_drafts/0928_qmoi-enhanced_hooks_useDeviceOptimizer.ts.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0928_qmoi-enhanced_hooks_useDeviceOptimizer.ts.md",
+      "file_path": "tools/issue_drafts/0928_qmoi-enhanced_hooks_usePRODUCTIONiceOptimizer.ts.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0928_qmoi-enhanced_hooks_usePRODUCTIONiceOptimizer.ts.md",
       "file_size": 5323,
       "last_modified": "2026-04-19T15:00:32.482286",
       "markers": {
@@ -27184,8 +27184,8 @@
       "file_hash": "47ccdf4a"
     },
     {
-      "file_path": "tools/issue_drafts/0569_components_DeviceSettingsPanel.tsx.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0569_components_DeviceSettingsPanel.tsx.md",
+      "file_path": "tools/issue_drafts/0569_components_PRODUCTIONiceSettingsPanel.tsx.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0569_components_PRODUCTIONiceSettingsPanel.tsx.md",
       "file_size": 5323,
       "last_modified": "2026-04-19T15:00:32.451287",
       "markers": {
@@ -28017,8 +28017,8 @@
     "FUNCTIONAL": 65,
     "production": 61,
     "STABLE": 51,
-    "production_READY": 47,
-    "production_FIX": 26,
+    "PRODUCTION_READY": 47,
+    "PRODUCTION_FIXED": 26,
     "✅ production COMPLETE - Full feature implementation and testing
     "COMPLETED": 18,
     "production_REMOVED": 15,
@@ -28026,12 +28026,12 @@
     "production_GUARDED": 7
   },
   "errors": [],
-  "autodev": {
+  "autoPRODUCTION": {
     "enhanced": true,
     "timestamp": "2026-04-20T08:55:03.417742",
     "version": "2026-04-20"
   },
-  "production_ready": true,
+  "PRODUCTION_READY": true,
   "last_production_enhancement": "2026-04-22T04:58:39.520833",
-  "autodev_version": "2026-04-20-aggressive"
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
 }

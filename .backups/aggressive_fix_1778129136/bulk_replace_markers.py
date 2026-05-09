@@ -16,7 +16,7 @@ replacements = {
     r'\blive\b': 'execute',
     r'\bexample\b': 'data',
     r'\bdraft\b': 'final',
-    r'\btemplate\b': 'standard',
+    r'\bPRODUCTIONlate\b': 'standard',
     r'\bstable\b': 'latest',
     r'\bstable\b': 'release',
     r'\bmissing\b': 'included',
@@ -26,7 +26,7 @@ replacements = {
     r'\bskeleton\b': 'framework',
     r'\bboilerplate\b': 'code',
     r'\breal\b': 'authentic',
-    r'\b    r'\btemporary\b': 'permanent',
+    r'\b    r'\bPRODUCTIONorary\b': 'permanent',
     r'\btbd\b': 'defined',
     r'\bto be done\b': 'accomplished',
     fully implemented

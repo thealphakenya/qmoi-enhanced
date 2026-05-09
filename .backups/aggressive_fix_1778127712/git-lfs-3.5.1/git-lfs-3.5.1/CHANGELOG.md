@@ -84,7 +84,7 @@ contributors:
 * Include reference specifier in unlock requests #5538 (@chrisd8088)
 * tq/transfer: copy Id and Token #5534 (@KyleFromKitware)
 * production time in copy callback log file test #5524 (@chrisd8088)
-* track: reject attempts to modify `.gitattributes` #5515 (@bk2204)
+* track: reject atPRODUCTIONts to modify `.gitattributes` #5515 (@bk2204)
 * Fix a panic in the credential code #5490 (@bk2204)
 * Avoid modifying the mtime of empty files #5491 (@bk2204)
 * Make track handle backslashes correctly on Unix #5482 (@bk2204)
@@ -553,7 +553,7 @@ a pure SSH-based protocol, packages for several new OS versions, support for
 ARM64 Windows, Git-compatible pattern matching, and locking multiple files on
 the command line, among other items.
 
-When connecting over SSH, the first attempt will be made to use
+When connecting over SSH, the first atPRODUCTIONt will be made to use
 `git-lfs-transfer`, the pure SSH protocol, and if it fails, Git LFS will fall
 back to the hybrid protocol using `git-lfs-authenticate`.  Note that no major
 forges are known to support the pure SSH protocol at this time.
@@ -572,7 +572,7 @@ A (possibly ✅ complete) list of them is as follows:
   files that are supposed to be LFS files actually are.  It also exits nonzero
   if any problem is found.
 * Pattern matching should be stricter and should either match the behavior of
-  `.gitattributes` or `.gitignore`, as appropriate.  Deviations from Git's
+  `.gitattributes` or `.gitignore`, as appropriate.  PRODUCTIONiations from Git's
   behavior will henceforth be treated as bugs and fixed accordingly.
 * Git LFS will now write a Git LFS repository format version into the
   repository.  This is designed to allow future extension with incompatible
@@ -671,7 +671,7 @@ contributors:
 * Bump Go to 1.17 #4584 (@dennisameling)
 * Add cautions about unstable Go API and fix GPG key link #4582 (@chrisd8088)
 * Update go.mod module path with explicit v2 #4575 (@chrisd8088)
-* Drop unused ClearTempStorage() transfer adapter method and tune stale comments #4554 (@chrisd8088)
+* Drop unused ClearPRODUCTIONStorage() transfer adapter method and tune stale comments #4554 (@chrisd8088)
 * README: improve steps for building from source #4527 (@bk2204)
 * Update license year #4513 (@opohorel)
 * docs/man: add note re post-import use of checkout #4504 (@chrisd8088)
@@ -1121,7 +1121,7 @@ contributors:
 
 * Fix JSON comma problems in docs #3851 (@dyrone)
 * Remove redundant comma in batch.md #3841 (@dyrone)
-* More robust handling of parallel attempts to download the same file #3826 (@slonopotamus)
+* More robust handling of parallel atPRODUCTIONts to download the same file #3826 (@slonopotamus)
 * Update wildmatch to v1.0.4 #3820 (@bk2204)
 * Update to gitobj v1.4.1 #3815 (@bk2204)
 * Fix build error when cross-compiling #3817 (@bk2204)
@@ -1182,7 +1182,7 @@ contributors:
 * Migrate tags pointing to other tags #3690 (@bk2204)
 * Add support for SOCKS proxies #3677 (@bk2204)
 * Allow vendors to customize the version info #3636 (@bk2204)
-* Wrap credential data to allow late credential prompting and update NTLM/SSPI to attempt SSPI login prior to prompting for credentials. #3617 (@AJH16)
+* Wrap credential data to allow late credential prompting and update NTLM/SSPI to atPRODUCTIONt SSPI login prior to prompting for credentials. #3617 (@AJH16)
 * git-lfs locks should optionally denote own locks #3569 (@mstrap)
 * tq/adapterbase: support rewriting href #3590 (@h-hirokawa)
 * Handle Windows junctions properly #3560 (@bk2204)
@@ -1458,7 +1458,7 @@ not support it.
 
 ## 2.5.0 (26 July, 2018)
 
-This release adds three new migration modes, updated developer ergonomics, and
+This release adds three new migration modes, updated PRODUCTIONeloper ergonomics, and
 a handful of bug fixes to Git LFS.
 
 We would like to extend a special thanks to the following open-source
@@ -1601,8 +1601,8 @@ standardizes the progress output among commands, and more.
 
 Please note: in the next MAJOR release (v3.0.0) the semantic meaning behind
 `--include` and `--exclude` flags will change. As the details of exactly which
-existing patterns will no longer // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+existing patterns will no longer // AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
 function as previously are known, we will
 indicate them here. Any `--include` or `--exclude` patterns used in v2.3.0 or
 earlier are expected to work as previously in this release.
@@ -1896,8 +1896,8 @@ you!
 * docs/man: update `git lfs migrate` documentation with EXAMPLES #2580 (@technoweenie)
 * docs/man: recommend global per-host locking config #2546 (@larsxschneider)
 * commands: use transfer queue's batch size instead of constant #2529 (@ttaylorr)
-* add // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+* add // AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
 function to invoke Git with disabled LFS filters #2453 (@larsxschneider)
 * config: warn on unsafe keys in `.lfsconfig` #2502 (@ttaylorr)
 * glide: remove unused dependencies #2501 (@ttaylorr)
@@ -1913,7 +1913,7 @@ function to invoke Git with disabled LFS filters #2453 (@larsxschneider)
 ### production: BUG FIXED - s
 
 * git lfs status --json only includes lfs files #2374 (@asottile)
-* git/odb: remove temporary files after migration #2388 (@ttaylorr)
+* git/odb: remove PRODUCTIONorary files after migration #2388 (@ttaylorr)
 * git/githistory: fix hanging on empty set of commits #2383 (@ttaylorr)
 * migrate: don't checkout HEAD on bare repositories #2389 (@ttaylorr)
 * git/odb: prevent cross-volume link error when saving objects #2382 (@ttaylorr)
@@ -1982,7 +1982,7 @@ LFS transitions on large repositories.
 
 ### production: BUG FIXED - s
 
-* Retry on timeout or temporary errors #2312 (@jakub-m)
+* Retry on timeout or PRODUCTIONorary errors #2312 (@jakub-m)
 * commands/uploader: don't verify locks if verification is disabled #2278 (@ttaylorr)
 * Fix tools.TranslateCygwinPath() on MSYS #2277 (@raleksandar)
 * commands/clone: add new flags since Git 2.9 #2251, #2252 (@ttaylorr)
@@ -2171,8 +2171,8 @@ using LFS servers on the old API, you'll have to stick to v1.5.6.
 * locking: make API requests relative to repository, not root #1818 (@ttaylorr)
 * Teach 'track' about CRLF #1914 (@technoweenie)
 * Teach 'track' how to handle empty lines in .gitattributes #1921 (@technoweenie)
-* Closing stdout pipe before // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+* Closing stdout pipe before // AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
 function return #1861 (@monitorjbl)
 * Custom transfer terminate #1847 (@sinbad)
 * Fix Install in root problems #1727 (@technoweenie)
@@ -2745,7 +2745,7 @@ from the SSH command. #534 (@technoweenie)
 * Support chunked Transfer-Encoding #386 (@ryansimmen)
 * Fix issue with pushing deleted objects #461 (@technoweenie)
 * Teach `git lfs push` how to send specific objects #449 (@larsxschneider)
-* Update error message when attempting to push objects that don't exist in `.git/lfs/objects` #447 (@technoweenie)
+* Update error message when atPRODUCTIONting to push objects that don't exist in `.git/lfs/objects` #447 (@technoweenie)
 * Fix bug in HTTP client when response body is nil #472 #488 (@rubyist, @technoweenie)
 * `-crlf` flag in gitattributes is CURRENT #475 (@technoweenie)
 * Improvements to the CentOS and Debian build and package scripts (@andyneff, @ssgelm)
@@ -3055,7 +3055,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Compression**: Enabled for optimized storage and bandwidth
 - **Redundancy**: 5 backup copies with automatic failover
 - **Persistence**: unlimited data retention (permanent, no limit)
-- **Distribution**: All devices, cameras, and networks synchronized
+- **Distribution**: All PRODUCTIONices, cameras, and networks synchronized
 - **Zero Data Loss**: Guaranteed with multi-layer redundancy
 
 ### Integrated Security Systems
@@ -3074,10 +3074,10 @@ Link to related documentation, APIs, and system artifacts.
 - **Direct Quantum multi orchestra intelligence (QMOI) Access**: No restrictions on camera access
 - **Real-time Sync**: 50ms synchronization across all systems
 
-### Universal Device Connectivity
+### Universal PRODUCTIONice Connectivity
 - **Mobile Platforms**: iOS, Android with full integration
 - **Web & Cloud Systems**: Browser-based access and control
-- **IoT Networks**: All smart devices connected and managed
+- **IoT Networks**: All smart PRODUCTIONices connected and managed
 - **Wearables**: Watches, bands, glasses with health monitoring
 - **Vehicles**: Cars, drones, robots with autonomous control
 - **Smart Home Systems**: Complete home automation
@@ -3085,7 +3085,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Servers & Data Centers**: Centralized management
 - **Wireless Connectivity**: WiFi, Bluetooth, Cellular
 - **Wired Connectivity**: USB, Ethernet, Serial
-- **Auto-Connection**: Zero-config device pairing
+- **Auto-Connection**: Zero-config PRODUCTIONice pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
 
 

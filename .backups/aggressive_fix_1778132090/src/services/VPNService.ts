@@ -449,7 +449,7 @@ export class VPNService {
     };
 
     if (Math.random() > 0.8) {
-      report.threats.push("Suspicious connection attempt detected");
+      report.threats.push("Suspicious connection atPRODUCTIONt detected");
       report.recommendations.push("Enable additional security measures");
     }
 

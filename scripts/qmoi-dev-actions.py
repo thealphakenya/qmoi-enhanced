@@ -7,14 +7,19 @@ class productionFileManager:
         """Safely read file with error handling"""
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             with open(file_path, 'r', encoding=encoding) as f:
@@ -25,7 +30,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -45,7 +51,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -59,7 +66,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -96,16 +104,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)

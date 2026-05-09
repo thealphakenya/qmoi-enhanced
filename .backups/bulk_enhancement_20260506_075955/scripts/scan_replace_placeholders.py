@@ -90,9 +90,9 @@ def scan_file(path: Path) -> Any:
             matches.append({'token': t, 'start': m.start(), 'end': m.end(), 'line': text.count('\n', 0, m.start()) + 1})
     return matches
 
-# Safe replacement rules: map token -> replacement // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+# Safe replacement rules: map token -> replacement // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function or string
 REPLACEMENTS = {
     # key: exact substring to replace (case-sensitive)

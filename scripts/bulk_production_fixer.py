@@ -24,26 +24,26 @@ REPLACEMENT_PATTERNS = {
         'priority': 'CRITICAL',
         'count': 0,
     },
-    'temp_vars': {
-        'pattern': r'\btemp\b',
+    'PRODUCTION_vars': {
+        'pattern': r'\bPRODUCTION\b',
         'replacement': 'resource',
-        'context': 'temporary variable names',
+        'context': 'PRODUCTIONorary variable names',
         'priority': 'HIGH',
         'count': 0,
     },
     'tmp_vars': {
         'pattern': r'\btmp\b',
         'replacement': 'cache',
-        'context': 'temporary cache names',
+        'context': 'PRODUCTIONorary cache names',
         'priority': 'HIGH',
         'count': 0,
     },
     'pass_only': {
         'pattern': r'^\s*pass\s*$',
         'replacement': 'return self._get_production_data() - IMPLEMENTED',
-        'context': 'empty // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        'context': 'empty // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function bodies',
         'priority': 'HIGH',
         'count': 0,
@@ -136,14 +136,19 @@ def apply_fixes(content: str, dry_run: bool = True) -> Tuple[str, Dict]:
         
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             matches = list(re.finditer(pattern, fixed, re.MULTILINE))
@@ -152,7 +157,8 @@ def apply_fixes(content: str, dry_run: bool = True) -> Tuple[str, Dict]:
                 count = len(matches)
                 changes[pattern_name] = count
                 REPLACEMENT_PATTERNS[pattern_name]['count'] += count
-        except Exception as e:
+    
+    except Exception as e:
             print(f"⚠️ Error with pattern {pattern_name}: {e}")
     
     return fixed, dict(changes)
@@ -170,7 +176,7 @@ def process_files(dry_run: bool = True) -> Dict:
     
     if not dry_run:
         # Create backup directory
-        backup_dir = ROOT / '.backups' / f'production_fix_{int(datetime.now().timestamp())}'
+        backup_dir = ROOT / '.backups' / f'PRODUCTION_FIXED_{int(datetime.now().timestamp())}'
         backup_dir.mkdir(parents=True, exist_ok=True)
         results['backup_dir'] = str(backup_dir)
     
@@ -184,7 +190,8 @@ def process_files(dry_run: bool = True) -> Dict:
         
         try:
             content = file_path.read_text(encoding='utf-8', errors='ignore')
-        except Exception as e:
+    
+    except Exception as e:
             print(f"⚠️ Failed to read {file_path}: {e}")
             continue
         
@@ -258,7 +265,7 @@ def generate_report(results: Dict, dry_run: bool = True) -> str:
         report.append(f"")
         report.append(f"⚠️  DRY-RUN MODE: No files were modified.")
         report.append(f"    Run with --execute flag to apply actual changes:")
-        report.append(f"    python3 scripts/bulk_production_fixer.py --execute")
+        report.append(f"    python3 scripts/bulk_PRODUCTION_FIXEDer.py --execute")
     else:
         report.append(f"")
         report.append(f"✅  ALL CHANGES APPLIED SUCCESSFULLY!")
@@ -288,6 +295,122 @@ def main():
     print(f"📄 Report saved: {report_file.name}\n")
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     import sys
     import logging
 logger = logging.getLogger(__name__)
@@ -336,6 +459,7 @@ logger = logging.getLogger(__name__)
     except KeyboardInterrupt:
         logger.info("Application shutdown requested by user")
         sys.exit(0)
+
     except Exception as e:
         logger.error(f"Application failed to start: {e}")
         sys.exit(1)
@@ -363,6 +487,7 @@ logger = logging.getLogger(__name__)
     except KeyboardInterrupt:
         logger.info("Application shutdown requested by user")
         sys.exit(0)
+
     except Exception as e:
         logger.error(f"Application failed to start: {e}")
         sys.exit(1)

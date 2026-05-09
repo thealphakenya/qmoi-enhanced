@@ -117,7 +117,7 @@ class productionFileManager:
 
 Provides safe, local, automatically-created credentials when environment
 variables are not set. Credentials are stored under `.secrets/credentials.json`
-and are created on demand. This avoids tests attempting live network calls
+and are created on demand. This avoids tests atPRODUCTIONting live network calls
 """
 from __future__ import annotations
 

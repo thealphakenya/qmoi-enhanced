@@ -1,8 +1,8 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:19:36.154662 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:18:56.664651 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:06:49.833427 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:05.571351 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:00.480361 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:19:36.154662 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:18:56.664651 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:06:49.833427 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:05.571351 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:00.480361 -->
 ./components/EmergencyPanel.tsx
 ./components/FloatingPreviewWindow.tsx
 ./components/GlobalFileTransfer.tsx

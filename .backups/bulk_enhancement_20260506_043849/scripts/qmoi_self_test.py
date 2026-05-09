@@ -234,9 +234,9 @@ export default BrokenComponent;
 #!/usr/bin/env python3
 
 """
-    broken_// AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    broken_// AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function function
     """
 def broken_function() -> Any:

@@ -739,7 +739,7 @@
       "sentry.io": 4,
       "artillery.io": 4,
       "production.qmoi.ai:{port}": 2,
-      "production_READY@sentry.io": 4,
+      "PRODUCTION_READY@sentry.io": 4,
       "transfer.sh": 1,
       "file.io": 1,
       "qcity.qvillage.com": 2,
@@ -1014,7 +1014,7 @@
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFzBAEBCAAGBQJieOV3ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\\\\r\\\\nEgJ2VmofpxAAl6+isofpTjD9SVAmBVdCcartbQUNVx2SDVcVRt13+bGJV6WY\\\\r\\\\nmRnH0s3LvX3LrdPlhaALXAogGLykvVkHu00kID4qfNyfYXM1kKpW75+KVvKX\\\\r\\\\nIr8Hkr24Z1RmN": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFzBAEBCAAGBQJjac": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFzBAEBCAAGBQJjs+DOACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\\\\r\\\\nEgJ2VmqTAhAAicdAJWRH5vjc6e0FO83Gm": 1,
-      "slsa.dev": 294,
+      "slsa.PRODUCTION": 294,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJa4TO2CRA9TVsSAnZWagAA498P": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJa78ALCRA9TVsSAnZWagAA8XQP": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJa": 3,
@@ -2676,7 +2676,7 @@
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJhBr4pCRA9TVsSAnZWagAAwSwP": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJhBsP": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJhB42QCRA9TVsSAnZWagAA0qMP": 1,
-      "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJhDEv7CRA9TVsSAnZWagAAVN0P": 1,
+      "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJhPRODUCTION7CRA9TVsSAnZWagAAVN0P": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJhD9lWCRA9TVsSAnZWagAAyPIP": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJhD9mPCRA9TVsSAnZWagAALCAP": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJhJKy+CRA9TVsSAnZWagAA3iIP": 1,
@@ -3784,25 +3784,25 @@
       {
         "file": ".github/workflows/publish-releases-realtime.yml",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": ".github/workflows/publish-releases-realtime.yml",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": ".github/workflows/qvillage-sync.yml",
         "url": "https://oauth2:${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": ".github/workflows/deploy.yml",
         "url": "https://${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
@@ -4942,25 +4942,25 @@
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://oauth2:${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
@@ -6082,25 +6082,25 @@
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://oauth2:${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
@@ -7222,25 +7222,25 @@
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://oauth2:${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
@@ -8362,25 +8362,25 @@
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://oauth2:${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
@@ -9490,25 +9490,25 @@
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://oauth2:${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
@@ -10594,25 +10594,25 @@
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://oauth2:${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
@@ -11698,25 +11698,25 @@
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://oauth2:${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
@@ -11818,25 +11818,25 @@
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://oauth2:${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
@@ -11962,25 +11962,25 @@
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://oauth2:${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
@@ -12094,25 +12094,25 @@
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://oauth2:${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
@@ -12226,25 +12226,25 @@
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://oauth2:${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
@@ -12358,25 +12358,25 @@
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://oauth2:${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://${{",
-        "status": "template_real implementation",
+        "status": "PRODUCTIONlate_real implementation",
         "error": "Contains code variables"
       },
       {
@@ -12501,25 +12501,25 @@
     {
       "file": ".github/workflows/publish-releases-realtime.yml",
       "url": "https://github.com/${{",
-      "status": "template_real implementation",
+      "status": "PRODUCTIONlate_real implementation",
       "error": "Contains code variables"
     },
     {
       "file": ".github/workflows/publish-releases-realtime.yml",
       "url": "https://github.com/${{",
-      "status": "template_real implementation",
+      "status": "PRODUCTIONlate_real implementation",
       "error": "Contains code variables"
     },
     {
       "file": ".github/workflows/qvillage-sync.yml",
       "url": "https://oauth2:${{",
-      "status": "template_real implementation",
+      "status": "PRODUCTIONlate_real implementation",
       "error": "Contains code variables"
     },
     {
       "file": ".github/workflows/deploy.yml",
       "url": "https://${{",
-      "status": "template_real implementation",
+      "status": "PRODUCTIONlate_real implementation",
       "error": "Contains code variables"
     },
     {
@@ -12718,12 +12718,12 @@
   "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:15:47.326039",
-  "autodev": {
+  "autoPRODUCTION": {
     "enhanced": true,
     "timestamp": "2026-04-20T08:55:17.626202",
     "version": "2026-04-20"
   },
-  "production_ready": true,
+  "PRODUCTION_READY": true,
   "last_production_enhancement": "2026-04-22T04:59:14.510066",
-  "autodev_version": "2026-04-20-aggressive"
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
 }

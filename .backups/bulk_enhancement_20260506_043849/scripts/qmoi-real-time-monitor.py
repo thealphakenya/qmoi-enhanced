@@ -662,18 +662,18 @@ def generate_dashboard_html(self) -> Any:
     
     <script>
         let ws = null;
-        let reconnectAttempts = 0;
-        const maxReconnectAttempts = 5;
+        let reconnectAtPRODUCTIONts = 0;
+        const maxReconnectAtPRODUCTIONts = 5;
         
-        # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function connectWebSocket() {{
             ws = new WebSocket('wss://qmoi.ai:8080');
             
             ws.onopen = function() {{
                 document.getElementById('websocket-status').className = 'websocket-status websocket-connected';
-                reconnectAttempts = 0;
+                reconnectAtPRODUCTIONts = 0;
             }};
             
             ws.onmessage = function(event) {{
@@ -684,8 +684,8 @@ function connectWebSocket() {{
             ws.onclose = function() {{
                 document.getElementById('websocket-status').className = 'websocket-status';
                 
-                if (reconnectAttempts < maxReconnectAttempts) {{
-                    reconnectAttempts++;
+                if (reconnectAtPRODUCTIONts < maxReconnectAtPRODUCTIONts) {{
+                    reconnectAtPRODUCTIONts++;
                     setTimeout(connectWebSocket, 2000);
                 }}
             }};
@@ -695,9 +695,9 @@ function connectWebSocket() {{
             }};
         }}
         
-        # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function updateDashboard(data) {{
             # Update system stats
             if (data.system) {{

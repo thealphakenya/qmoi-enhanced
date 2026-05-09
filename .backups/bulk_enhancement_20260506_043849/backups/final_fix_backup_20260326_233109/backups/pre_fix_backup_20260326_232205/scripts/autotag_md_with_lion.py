@@ -30,7 +30,7 @@ logger = logging.getLogger(__name__)
 SKIP_DIRS = {'.git', 'node_modules', '.venv', 'venv', '.idea', '.pytest_cache'}
 LION_START = '<!-- LION_VALIDATION_START -->'
 LION_END = '<!-- LION_VALIDATION_END -->'
-LION_BLOCK_TEMPLATE = """<!-- LION_VALIDATION_START -->
+LION_BLOCK_PRODUCTIONLATE = """<!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -113,9 +113,9 @@ def insert_block(content, ts) -> Any:
                 break
         else:
             insert_at = 0
-        new = ''.join(lines[:insert_at]) + LION_BLOCK_TEMPLATE.format(ts=ts) + ''.join(lines[insert_at:])
+        new = ''.join(lines[:insert_at]) + LION_BLOCK_PRODUCTIONLATE.format(ts=ts) + ''.join(lines[insert_at:])
     else:
-        new = LION_BLOCK_TEMPLATE.format(ts=ts) + content
+        new = LION_BLOCK_PRODUCTIONLATE.format(ts=ts) + content
     return new
 
 """

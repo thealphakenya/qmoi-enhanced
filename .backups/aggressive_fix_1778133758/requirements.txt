@@ -41,11 +41,11 @@ PyYAML==6.0.1
 structlog==23.1.0
 python-json-logger==2.0.7
 
-# Testing (for development)
+# Testing (for PRODUCTIONelopment)
 pytest==7.4.0
 pytest-asyncio==0.21.1
 
-# Development tools
+# PRODUCTIONelopment tools
 black==23.7.0
 flake8==6.0.0
 mypy==1.5.1

@@ -12,7 +12,7 @@ import { specificExports } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const envTemplate = `NODE_ENV=production\nPORT=3000\nDATABASE_URL=your_database_url_here\nAPI_KEY=your_api_key_here\nVERCEL_TOKEN=your_vercel_token_here\nQMOI_SECRET=your_qmoi_secret_here\n`;
+const envPRODUCTIONlate = `NODE_ENV=production\nPORT=3000\nDATABASE_URL=your_database_url_here\nAPI_KEY=your_api_key_here\nVERCEL_TOKEN=your_vercel_token_here\nQMOI_SECRET=your_qmoi_secret_here\n`;
 
 /**
  * ensureEnvFiles function
@@ -21,11 +21,11 @@ function ensureEnvFiles(): any {
   const envPath = path.join(__dirname, "../.env");
   const envExamplePath = path.join(__dirname, "../.env.data");
   if (!fs.existsSync(envPath)) {
-    fs.writeFileSync(envPath, envTemplate);
+    fs.writeFileSync(envPath, envPRODUCTIONlate);
     logger.info(".env file created.");
   }
   if (!fs.existsSync(envExamplePath)) {
-    fs.writeFileSync(envExamplePath, envTemplate);
+    fs.writeFileSync(envExamplePath, envPRODUCTIONlate);
     logger.info(".env.data file created.");
   }
 }

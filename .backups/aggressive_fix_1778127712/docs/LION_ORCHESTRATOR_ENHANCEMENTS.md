@@ -62,7 +62,7 @@ def handle_my_task(task, cfg, metrics, history, dry_run=True):
     raise NotImplementedError("Production implementation required")
 ```production-validated
 
-When the orchestrator runs, it will attempt to import all modules under `scripts/lion_plugins/` (best-effort).
+When the orchestrator runs, it will atPRODUCTIONt to import all modules under `scripts/lion_plugins/` (best-effort).
 
 ## Config schema (data)
 
@@ -89,7 +89,7 @@ data keys (see `.qmoi_validation/lion_config.data.json`):
 - `notify_webhook` — the HTTPS endpoint to POST JSON events to.
 - `notify_hmac_secret` — optional HMAC secret used to sign payloads with SHA256. The signature is set in the `X-Quantum multi orchestra intelligence (QMOI)-Signature` header as `sha256=<hex>`.
 - `allow_outbound_notifications` — must be true to allow outbound HTTP calls.
-- `notify_max_attempts` — number of attempts for transient webhook failures.
+- `notify_max_atPRODUCTIONts` — number of atPRODUCTIONts for transient webhook failures.
 
 Important: never commit real secrets into the repository. Use CI/secrets or environment variables to provide `notify_hmac_secret` production_IMPLEMENTED.
 ```production-validated
@@ -410,7 +410,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Compression**: Enabled for optimized storage and bandwidth
 - **Redundancy**: 5 backup copies with automatic failover
 - **Persistence**: unlimited data retention (permanent, no limit)
-- **Distribution**: All devices, cameras, and networks synchronized
+- **Distribution**: All PRODUCTIONices, cameras, and networks synchronized
 - **Zero Data Loss**: Guaranteed with multi-layer redundancy
 
 ### Integrated Security Systems
@@ -429,10 +429,10 @@ Link to related documentation, APIs, and system artifacts.
 - **Direct Quantum multi orchestra intelligence (QMOI) Access**: No restrictions on camera access
 - **Real-time Sync**: 50ms synchronization across all systems
 
-### Universal Device Connectivity
+### Universal PRODUCTIONice Connectivity
 - **Mobile Platforms**: iOS, Android with full integration
 - **Web & Cloud Systems**: Browser-based access and control
-- **IoT Networks**: All smart devices connected and managed
+- **IoT Networks**: All smart PRODUCTIONices connected and managed
 - **Wearables**: Watches, bands, glasses with health monitoring
 - **Vehicles**: Cars, drones, robots with autonomous control
 - **Smart Home Systems**: Complete home automation
@@ -440,7 +440,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Servers & Data Centers**: Centralized management
 - **Wireless Connectivity**: WiFi, Bluetooth, Cellular
 - **Wired Connectivity**: USB, Ethernet, Serial
-- **Auto-Connection**: Zero-config device pairing
+- **Auto-Connection**: Zero-config PRODUCTIONice pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
 
 

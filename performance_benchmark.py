@@ -92,7 +92,7 @@ class PerformanceBenchmark:
             # Test trend analysis
             result = analytics.get_trend_analysis(f"test_series_{i}")
             # Simulate some processing time
-            time.sleep(0.)
+            time.sleep(0.1)
 
             end_time = time.time()
             response_times.append(end_time - start_time)
@@ -125,7 +125,7 @@ class PerformanceBenchmark:
 
             # Submit and process a task
             task_id = orchestrator.submit_task("anomaly_detection", {
-                "data": [0.1 + i*0., 0.2, 0.15, 0.25, 0.18, 0.22, 0.19, 0.21, 0.17, 0.23]
+                "data": [0.1 + i*0.1, 0.2, 0.15, 0.25, 0.18, 0.22, 0.19, 0.21, 0.17, 0.23]
             })
 
             result = orchestrator.process_next_task()
@@ -162,7 +162,7 @@ class PerformanceBenchmark:
             # Test metrics collection
             metrics = optimizer.metrics_collector.collect_system_metrics()
             # Simulate analysis time
-            time.sleep(0.)
+            time.sleep(0.1)
 
             end_time = time.time()
             response_times.append(end_time - start_time)
@@ -378,5 +378,121 @@ def main():
 
     return 0
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     sys.exit(main())

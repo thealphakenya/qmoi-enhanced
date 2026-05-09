@@ -23,14 +23,19 @@ import statistics
 # Try to import numpy and pandas, fallback to basic implementations
 try:
     pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
     import numpy as np
@@ -270,7 +275,8 @@ class QMOIConfidenceThresholdSystem:
 
             return max(0.0, min(1.0, sentiment_score))
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error in market sentiment assessment: {e}")
             return 0.5  # Neutral fallback
 
@@ -326,7 +332,8 @@ class QMOIConfidenceThresholdSystem:
 
             return max(0.0, min(1.0, score))
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error in technical analysis: {e}")
             return 0.5
 
@@ -375,7 +382,8 @@ class QMOIConfidenceThresholdSystem:
 
             return max(0.0, min(1.0, score))
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error in fundamental analysis: {e}")
             return 0.5
 
@@ -411,7 +419,7 @@ class QMOIConfidenceThresholdSystem:
                     std_return = np.std(returns)
                 else:
                     avg_return = statistics.mean(returns) if returns else 0
-                    std_return = statistics.stdev(returns) if len(returns) > 1 else 0
+                    std_return = statistics.stPRODUCTION(returns) if len(returns) > 1 else 0
                 sharpe_ratio = avg_return / std_return if std_return > 0 else 0
                 sharpe_score = min(1.0, max(0.0, (sharpe_ratio + 2) / 4))  # Normalize
             else:
@@ -441,7 +449,8 @@ class QMOIConfidenceThresholdSystem:
 
             return max(0.0, min(1.0, performance_score))
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error in platform performance assessment: {e}")
             return 0.5
 
@@ -465,7 +474,8 @@ class QMOIConfidenceThresholdSystem:
 
             return max(0.0, min(1.0, score))
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error in liquidity analysis: {e}")
             return 0.5
 
@@ -505,7 +515,8 @@ class QMOIConfidenceThresholdSystem:
 
             return max(0.0, min(1.0, score))
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error in risk management assessment: {e}")
             return 0.5
 
@@ -550,7 +561,8 @@ class QMOIConfidenceThresholdSystem:
 
             return max(0.0, min(1.0, confidence_score))
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error in AI prediction assessment: {e}")
             return 0.5
 
@@ -590,7 +602,8 @@ class QMOIConfidenceThresholdSystem:
 
             return max(0.0, min(1.0, signal_score))
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error in external signals assessment: {e}")
             return 0.5
 
@@ -629,7 +642,8 @@ class QMOIConfidenceThresholdSystem:
 
             return confidence_from_volatility
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error in volatility assessment: {e}")
             return 0.5
 
@@ -665,7 +679,8 @@ class QMOIConfidenceThresholdSystem:
 
             return max(0.0, min(1.0, correlation_score))
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error in correlation analysis: {e}")
             return 0.5
 
@@ -703,7 +718,8 @@ class QMOIConfidenceThresholdSystem:
                 self.update_factor_trend(factor)
                 self.update_factor_confidence_level(factor)
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error updating confidence factors: {e}")
 
     def update_factor_trend(self, factor: ConfidenceFactor) -> None:
@@ -734,7 +750,7 @@ class QMOIConfidenceThresholdSystem:
                 if NUMPY_AVAILABLE:
                     factor.volatility = np.std(recent_scores)
                 else:
-                    factor.volatility = statistics.stdev(recent_scores) if len(recent_scores) > 1 else 0
+                    factor.volatility = statistics.stPRODUCTION(recent_scores) if len(recent_scores) > 1 else 0
 
             # Add current score to history
             factor.historical_scores.append(factor.current_score)
@@ -743,7 +759,8 @@ class QMOIConfidenceThresholdSystem:
             if len(factor.historical_scores) > 100:
                 factor.historical_scores = factor.historical_scores[-100:]
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error updating factor trend: {e}")
             factor.trend_direction = 'stable'
             factor.volatility = 0.0
@@ -791,7 +808,8 @@ class QMOIConfidenceThresholdSystem:
 
             return should_deploy, win_probability, reason
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error in fund deployment decision: {e}")
             return False, 0.0, f"Error in confidence assessment: {e}"
 
@@ -824,7 +842,8 @@ class QMOIConfidenceThresholdSystem:
 
             return max(0.0, min(0.3, risk_adjustment))  # Cap adjustment
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error calculating risk adjustment: {e}")
             return 0.1  # Conservative default
 
@@ -854,7 +873,8 @@ class QMOIConfidenceThresholdSystem:
 
             return max(0.5, min(0.99, adjusted_probability))  # Reasonable bounds
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error estimating win probability: {e}")
             return 0.7  # Conservative default
 
@@ -878,7 +898,8 @@ class QMOIConfidenceThresholdSystem:
             if len(self.historical_performance) > 1000:
                 self.historical_performance = self.historical_performance[-1000:]
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error recording decision: {e}")
 
     def start_adaptive_learning(self) -> None:
@@ -898,7 +919,8 @@ class QMOIConfidenceThresholdSystem:
                     # Sleep for 5 minutes
                     time.sleep(300)
 
-                except Exception as e:
+            
+    except Exception as e:
                     logger.error(f"Error in adaptive learning loop: {e}")
                     time.sleep(60)  # Shorter sleep on error
 
@@ -945,7 +967,8 @@ class QMOIConfidenceThresholdSystem:
 
                 threshold.last_adjustment = datetime.now(timezone.utc)
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error adapting thresholds: {e}")
 
     def cleanup_old_data(self) -> None:
@@ -959,7 +982,8 @@ class QMOIConfidenceThresholdSystem:
                 if datetime.fromisoformat(record['timestamp']).timestamp() > cutoff_date
             ]
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error cleaning up old data: {e}")
 
     def load_historical_data(self) -> None:
@@ -970,7 +994,8 @@ class QMOIConfidenceThresholdSystem:
                     data = json.load(f)
                     self.historical_performance = data.get('historical_performance', [])
                     self.ai_model_weights = data.get('ai_model_weights', {})
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error loading historical data: {e}")
 
     def save_historical_data(self) -> None:
@@ -985,7 +1010,8 @@ class QMOIConfidenceThresholdSystem:
             with open(self.confidence_db, 'w') as f:
                 json.dump(data, f, indent=2)
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error saving historical data: {e}")
 
     def get_confidence_report(self) -> Dict[str, Any]:
@@ -1037,7 +1063,8 @@ class QMOIConfidenceThresholdSystem:
 
             return report
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error generating confidence report: {e}")
             return {'error': str(e)}
 
@@ -1057,6 +1084,122 @@ def update_confidence_factors() -> None:
     confidence_system.update_confidence_factors()
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     # Test the confidence system
     print("QMOI Advanced Confidence Threshold System")
     print("=" * 50)

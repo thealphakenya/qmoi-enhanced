@@ -180,14 +180,19 @@ def process_url(self, url: str) -> Dict[str, Any]:
         
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             # Fetch content
@@ -214,7 +219,8 @@ def process_url(self, url: str) -> Dict[str, Any]:
                 }
             }
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error processing URL: {str(e)}")
             return {
                 "status": "error",

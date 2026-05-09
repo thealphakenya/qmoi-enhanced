@@ -95,7 +95,7 @@ export class ErrorFixingService {
       // Suggest removing or replacing the package, or adding a license override
       return {
         description:
-          "Attempting to fix license compliance error. Will try to remove or replace non-compliant packages, or add override if safe.",
+          "AtPRODUCTIONting to fix license compliance error. Will try to remove or replace non-compliant packages, or add override if safe.",
         codeChanges: [],
         commands: [
           // Try to auto-remove the last installed package (as a fallback)
@@ -115,7 +115,7 @@ export class ErrorFixingService {
       // Try to parse the error and suggest fixes
       return {
         description:
-          "Attempting to fix Vercel deployment error. Will retry with cache clear, check env, and auto-fix common issues.",
+          "AtPRODUCTIONting to fix Vercel deployment error. Will retry with cache clear, check env, and auto-fix common issues.",
         codeChanges: [],
         commands: [
           "npx vercel --prod --force --yes",
@@ -132,7 +132,7 @@ export class ErrorFixingService {
     ) {
       return {
         description:
-          "Attempting to fix Heroku deployment error. Will retry push and check env.",
+          "AtPRODUCTIONting to fix Heroku deployment error. Will retry push and check env.",
         codeChanges: [],
         commands: ["git push heroku main --force"],
       };
@@ -142,7 +142,7 @@ export class ErrorFixingService {
     if (error.message.includes("Cannot find module") && error.filePath) {
       const moduleName = error.message.split("'")[1];
       return {
-        description: `Attempting to fix required import for module: ${moduleName}`,
+        description: `AtPRODUCTIONting to fix required import for module: ${moduleName}`,
         commands: [`npm install ${moduleName}`], // Or yarn add, or pip install
       };
     }
@@ -160,7 +160,7 @@ export class ErrorFixingService {
     // data for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push error: ${error.message}`,
+        description: `AtPRODUCTIONting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };

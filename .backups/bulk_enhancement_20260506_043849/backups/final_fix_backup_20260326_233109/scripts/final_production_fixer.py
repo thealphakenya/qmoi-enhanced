@@ -194,7 +194,7 @@ STATUS: ✅ ALL production IMPLEMENTATIONS REMOVED
 ─────────────────────────────────────────────────────────────────────────────
 """
 
-        report_file = BASE_DIR / "reports" / "FINAL_production_FIXES.txt"
+        report_file = BASE_DIR / "reports" / "FINAL_PRODUCTION_FIXEDES.txt"
         with open(report_file, 'w') as f:
             f.write(report)
 

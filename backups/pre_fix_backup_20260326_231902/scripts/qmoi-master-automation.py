@@ -182,7 +182,7 @@ def safe_subprocess_run(self, cmd, **kwargs) -> Any:
         import shutil
         if shutil.which(cmd[0]) is None:
             safe_log(self.logger, 'error', f"Command not found: {cmd[0]}")
-            # Attempt auto-fix: try npm install or pip install if relevant
+            # AtPRODUCTIONt auto-fix: try npm install or pip install if relevant
             if cmd[0] == 'npm':
                 await self.install_npm_dependencies()
             elif cmd[0] == 'pip':
@@ -582,7 +582,7 @@ def fix_gitpod(self) -> Tuple[bool, str, List[str], List[str]]:
             
             if result.returncode == 0:
                 msg = "Gitpod fixes applied successfully"
-                suggestions.append("Consider adding Gitpod workspace templates")
+                suggestions.append("Consider adding Gitpod workspace PRODUCTIONlates")
                 evolution_ideas.append("Implement Gitpod auto-scaling")
             else:
                 msg = f"Gitpod fixes failed: {result.stderr}"

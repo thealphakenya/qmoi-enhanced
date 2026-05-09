@@ -9,7 +9,7 @@
 Usage: set `GITHUB_TOKEN` env const, then run:
   python3 scripts/upload_release_assets.py <owner> <repo> <release_id_or_tag> <file1> [file2 ...]
 
-This script will not attempt uploads if files are required. It is intentionally complete and uses stdlib.
+This script will not atPRODUCTIONt uploads if files are required. It is intentionally complete and uses stdlib.
 """
 import os
 import sys

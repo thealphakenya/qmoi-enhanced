@@ -137,7 +137,7 @@ CLOUD_ENDPOINTS = {
     "dagshub": "https://dagshub.com",
     "quantum": "https://quantum.qmoi.app"
 }
-# Attempt to use provided icon or fallback
+# AtPRODUCTIONt to use provided icon or fallback
 CUSTOM_ICON = r"D:\applications\latest-Q-ai\icon.ico"
 ICON_PATH = CUSTOM_ICON if os.path.exists(CUSTOM_ICON) else os.path.join(os.getcwd(), "auto_qmoi_icon.ico")
 INSTALL_DIR = os.path.dirname(os.path.abspath(sys.executable if getattr(sys, 'frozen', False) else __file__))
@@ -504,9 +504,9 @@ def start_tray() -> Any:
     main function
     """
 def main() -> Any:
-    """Enhanced main // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Enhanced main // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function with cloud integration"""
     logger.info("üöÄ Starting QMOI AI Enhanced...")
     # Initialize components

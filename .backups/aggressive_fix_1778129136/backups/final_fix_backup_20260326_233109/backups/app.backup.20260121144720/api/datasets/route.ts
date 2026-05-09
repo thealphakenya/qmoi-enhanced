@@ -62,12 +62,12 @@ function GET(): any {
         message: "Using // production implementation: data - database not configured",
       });
     } else {
-      // Database code temporarily enabled
+      // Database code PRODUCTIONorarily enabled
       // production: Query Prisma DB for datasets
       // await prisma.dataset.findMany()
       return NextResponse.json({
         datasets: [],
-        message: "Database temporarily enabled for build compatibility",
+        message: "Database PRODUCTIONorarily enabled for build compatibility",
       });
     }
   } catch (_error) {
@@ -95,7 +95,7 @@ function POST(_request: Request): any {
       );
     }
 
-    // Database temporarily enabled - return // production implementation: data
+    // Database PRODUCTIONorarily enabled - return // production implementation: data
     // production: Store dataset in Prisma DB when configured
     // await prisma.dataset.create({ data: { name, description, type, ... } })
     const // production implementation:Dataset = {

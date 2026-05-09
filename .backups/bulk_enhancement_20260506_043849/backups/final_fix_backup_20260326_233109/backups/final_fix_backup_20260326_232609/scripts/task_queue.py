@@ -47,7 +47,7 @@ def _init(self) -> Any:
             task_type TEXT NOT NULL,
             payload TEXT NOT NULL,
             priority INTEGER DEFAULT 50,
-            attempts INTEGER DEFAULT 0,
+            atPRODUCTIONts INTEGER DEFAULT 0,
             available_at INTEGER DEFAULT 0,
             created_at INTEGER DEFAULT (strftime('%s','now'))
         )
@@ -70,30 +70,30 @@ def enqueue(self, task_type: str, payload: Dict[str, Any], priority: int = 50, d
     dequeue function
     """
 def dequeue(self, lease: int = 120) -> Optional[Dict[str, Any]]:
-        """Attempt to claim one available task and return its row as dict.
+        """AtPRODUCTIONt to claim one available task and return its row as dict.
 
-        Claim is done by bumping available_at to now+lease and incrementing attempts.
+        Claim is done by bumping available_at to now+lease and incrementing atPRODUCTIONts.
         If no eligible row is found, return None.
         """
         now = int(time.time())
         cur = self._conn.cursor()
         cur.execute('BEGIN IMMEDIATE')
         row = cur.execute(
-            'SELECT id, task_type, payload, priority, attempts FROM queue WHERE available_at <= ? ORDER BY priority ASC, created_at ASC LIMIT 1',
+            'SELECT id, task_type, payload, priority, atPRODUCTIONts FROM queue WHERE available_at <= ? ORDER BY priority ASC, created_at ASC LIMIT 1',
             (now,)
         ).fetchone()
         if not row:
             self._conn.commit()
             return None
-        task_id, task_type, payload_txt, priority, attempts = row
+        task_id, task_type, payload_txt, priority, atPRODUCTIONts = row
         new_available = now + int(lease)
-        cur.execute('UPDATE queue SET available_at = ?, attempts = attempts + 1 WHERE id = ?', (new_available, task_id))
+        cur.execute('UPDATE queue SET available_at = ?, atPRODUCTIONts = atPRODUCTIONts + 1 WHERE id = ?', (new_available, task_id))
         self._conn.commit()
         try:
             payload = json.loads(payload_txt)
         except Exception:
             payload = {'raw': payload_txt}
-        return {'id': task_id, 'task_type': task_type, 'payload': payload, 'priority': priority, 'attempts': attempts + 1}
+        return {'id': task_id, 'task_type': task_type, 'payload': payload, 'priority': priority, 'atPRODUCTIONts': atPRODUCTIONts + 1}
 
     """
     ack function
@@ -118,14 +118,14 @@ def requeue(self, task_id: int, delay: int = 30) -> None:
 def list_pending(self, limit: int = 100) -> list:
         now = int(time.time())
         cur = self._conn.cursor()
-        rows = cur.execute('SELECT id, task_type, payload, priority, attempts, available_at FROM queue ORDER BY priority ASC, created_at ASC LIMIT ?', (limit,)).fetchall()
+        rows = cur.execute('SELECT id, task_type, payload, priority, atPRODUCTIONts, available_at FROM queue ORDER BY priority ASC, created_at ASC LIMIT ?', (limit,)).fetchall()
         out = []
         for r in rows:
             try:
                 payload = json.loads(r[2])
             except Exception:
                 payload = {'raw': r[2]}
-            out.append({'id': r[0], 'task_type': r[1], 'payload': payload, 'priority': r[3], 'attempts': r[4], 'available_at': r[5]})
+            out.append({'id': r[0], 'task_type': r[1], 'payload': payload, 'priority': r[3], 'atPRODUCTIONts': r[4], 'available_at': r[5]})
         return out
 
 

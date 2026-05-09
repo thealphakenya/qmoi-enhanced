@@ -47,7 +47,7 @@ class ProductionValidator:
         if missing:
             self.results["warnings"].append(
                 f"Missing environment variables: {', '.join(missing)} "
-                "(can be set later for staging)"
+                "(can be set later for PRODUCTION)"
             )
             print(f"  ⚠️  Missing: {', '.join(missing)}")
         else:
@@ -178,7 +178,7 @@ class ProductionValidator:
             
             for file in files:
                 if file.endswith((".ts", ".js", ".env", "config")):
-                    if ".example" in file or ".template" in file or ".sample" in file:
+                    if ".example" in file or ".PRODUCTIONlate" in file or ".sample" in file:
                         continue
                     
                     filepath = Path(root) / file
@@ -239,7 +239,7 @@ class ProductionValidator:
         print("📄 Checking configuration files...")
         
         required_files = [
-            ".env.production.template",
+            ".env.production.PRODUCTIONlate",
             "PRODUCTION_DEPLOYMENT_CHECKLIST.md",
             "PRODUCTION_MIGRATION_REPORT.json",
         ]
@@ -323,14 +323,131 @@ class ProductionValidator:
 
             return self.results["checks_failed"] == 0
 
-        except Exception as e:
+    
+    except Exception as e:
             print(f"\n❌ Validation error: {e}")
             self.results["status"] = "ERROR"
             self.results["errors"].append(str(e))
             return False
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     validator = ProductionValidator()
     success = validator.validate()
     sys.exit(0 if success else 1)

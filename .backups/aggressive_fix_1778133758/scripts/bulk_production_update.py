@@ -133,7 +133,7 @@ class productionUpdateSystem:
     def scan_all_production_status(self) -> Dict[str, int]:
         """Scan all files and categorize by production status"""
         status_counts = {
-            "production_ready": 0,
+            "PRODUCTION_READY": 0,
             "needs_update": 0,
             "CURRENT": 0
         }
@@ -157,7 +157,7 @@ class productionUpdateSystem:
                 status_counts["needs_update"] += 1
                 self.results["non_production_patterns_found"].extend(issues)
             else:
-                status_counts["production_ready"] += 1
+                status_counts["PRODUCTION_READY"] += 1
         
         return status_counts
     
@@ -484,7 +484,7 @@ Contact: production@qmoi.ai
         print("\n📊 Scanning all files for production status...")
         status_counts = self.scan_all_production_status()
         print(f"✓ Scanned {self.results['total_files_scanned']} files")
-        print(f"  - production_IMPLEMENTED: {status_counts['production_ready']}")
+        print(f"  - production_IMPLEMENTED: {status_counts['PRODUCTION_READY']}")
         print(f"  - Needs update: {status_counts['needs_update']}")
         
         # Update UI components

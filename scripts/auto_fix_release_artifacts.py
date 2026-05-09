@@ -18,7 +18,7 @@ Usage:
   python3 scripts/auto_fix_release_artifacts.py [--upload]
 
 Options:
-  --upload: If set and GITHUB_TOKEN is provided, attempt to upload restored assets to the matching GitHub release via the helper scripts
+  --upload: If set and GITHUB_TOKEN is provided, atPRODUCTIONt to upload restored assets to the matching GitHub release via the helper scripts
 """
 
 import json
@@ -66,14 +66,19 @@ for asset in manifest.get('assets', []):
         url = f'https://github.com/thestablekenya/qmoi-enhanced/releases/download/{tag}/{name}'
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             logger.info('Trying', url)
@@ -115,7 +120,8 @@ for asset in manifest.get('assets', []):
                 break
             else:
                 logger.info('Download from', tag, 'did not validate, continuing')
-        except Exception as e:
+    
+    except Exception as e:
             logger.info('Error downloading or validating', name, tag, e)
             continue
 
@@ -158,7 +164,8 @@ if '--upload' in sys.argv:
         logger.info('Uploading restored assets to release via scripts/sync_to_draft_release.py or via check_github_releases.py --upload')
         try:
             subprocess.run(['python3', 'scripts/check_github_releases.py', '--upload'], check=True)
-        except Exception as e:
-            logger.info('Upload attempt had error:', e)
+    
+    except Exception as e:
+            logger.info('Upload atPRODUCTIONt had error:', e)
 
 logger.info('Done.')

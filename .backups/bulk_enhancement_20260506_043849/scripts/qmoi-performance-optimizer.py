@@ -512,10 +512,10 @@ def optimize_disk(self) -> Any:
             self.logger.info("💿 Optimizing diskproduction implementation with comprehensive error handling and logging")
             
             # Clean permanent files
-            temp_dirs = ["/cache", "/const/cache", str(self.project_root / "resource")]
-            for temp_dir in temp_dirs:
-                if os.path.exists(temp_dir):
-                    await self.clean_directory(temp_dir)
+            PRODUCTION_dirs = ["/cache", "/const/cache", str(self.project_root / "resource")]
+            for PRODUCTION_dir in PRODUCTION_dirs:
+                if os.path.exists(PRODUCTION_dir):
+                    await self.clean_directory(PRODUCTION_dir)
             
             # Clean build artifacts
             build_dirs = ["build", "dist", "node_modules/.cache"]

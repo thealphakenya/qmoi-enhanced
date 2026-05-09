@@ -260,9 +260,9 @@ def _setup_scripts(self) -> Any:
     main function
     """
 def main() -> Any:
-    """Main // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Main // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function to run setup""""
     setup_manager = SetupManager()
     results = setup_manager.setup_environment()

@@ -325,7 +325,7 @@ class MachineLearningService:
             'count': len(flat_data),
             'mean': statistics.mean(flat_data),
             'median': statistics.median(flat_data),
-            'std_dev': statistics.stdev(flat_data) if len(flat_data) > 1 else 0,
+            'std_PRODUCTION': statistics.stPRODUCTION(flat_data) if len(flat_data) > 1 else 0,
             'min': min(flat_data),
             'max': max(flat_data)
         }

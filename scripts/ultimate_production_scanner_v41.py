@@ -29,7 +29,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -66,7 +67,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -86,7 +88,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -100,7 +103,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -136,7 +140,7 @@ CRITICAL_PATTERNS = [
     
     # Anti-pattern variables
     (r'\b_error\b(?!.*:\s*["\'])', 'ERROR_VAR'),
-    (r'\btmp_\w+\b', 'TEMP_VAR'),
+    (r'\btmp_\w+\b', 'PRODUCTION_VAR'),
     (r'\breal_\w+\b', 'real_VAR'),
     (r'\bproduction_data_\w+\b', 'production_data_VAR'),
     
@@ -159,7 +163,7 @@ CRITICAL_PATTERNS = [
     # Error logging issues
     (r'\(\s*console\s+as\s+any\s*\)\.error', 'CONSOLE_AS_ANY'),
     (r'console\.log.*RELEASE', 'DEBUG_LOG'),
-    (r'console\.error.*STABLE', 'TEMP_ERROR'),
+    (r'console\.error.*STABLE', 'PRODUCTION_ERROR'),
 ]
 
 # Compile all patterns
@@ -241,7 +245,8 @@ def scan_file(self, file_path) -> Any:
                         })
                         self.pattern_hits[pattern_name] += 1
         
-        except Exception as e:
+    
+    except Exception as e:
 return self._get_production_data()
         return issues
 
@@ -421,6 +426,7 @@ def main() -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

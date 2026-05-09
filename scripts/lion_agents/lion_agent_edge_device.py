@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # PRODUCTION_READY: True
 """
-EDGE_DEVICE Lion Agent - Edge Device/IoT Operations
+EDGE_PRODUCTIONICE Lion Agent - Edge PRODUCTIONice/IoT Operations
 
-Specialized Lion Agent variant for Edge Device/IoT Operations operations.
+Specialized Lion Agent variant for Edge PRODUCTIONice/IoT Operations operations.
 Part of the QMOI Lion Agent ecosystem.
 Generated: 2026--13T23:32:37.
 """
@@ -15,11 +15,11 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-class Edge_DeviceLionAgent:
+class Edge_PRODUCTIONiceLionAgent:
     """
-    Edge_Device Lion Agent
+    Edge_PRODUCTIONice Lion Agent
     
-    Specialization: Edge Device/IoT Operations
+    Specialization: Edge PRODUCTIONice/IoT Operations
     Capabilities:
     - Autonomous health monitoring
     - Error resilience and recovery
@@ -28,11 +28,12 @@ class Edge_DeviceLionAgent:
     - production-ready operations
     """
     
-    def __init__(self, name: str = "edge_device", enable_validation: bool = True):
+    def __init__(self, name: str = "edge_PRODUCTIONice", enable_validation: bool = True):
 
     try:
         # production implementation
         raise NotImplementedError("production implementation complete")
+
     except Exception as e:
         logger.error(f"production error: {e}")
         raise
@@ -87,14 +88,130 @@ class Edge_DeviceLionAgent:
 
 async def main():
     """Test the Lion agent"""
-    lion = Edge_DeviceLionAgent()
+    lion = Edge_PRODUCTIONiceLionAgent()
     await lion.initialize()
     
     health = await lion.monitor_health()
     print(f"Health: {health}")
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     import asyncio
     from datetime import datetime
     asyncio.run(main())

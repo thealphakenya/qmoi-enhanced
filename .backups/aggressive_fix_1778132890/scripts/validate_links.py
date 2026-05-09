@@ -112,7 +112,7 @@ SCANNABLE_EXTENSIONS = {
 # Directories to exclude
 EXCLUDE_DIRS = {
     '.git', 'node_modules', '.next', 'dist', 'build',
-    '_archive_qmoi-enhanced', 'tempinit', '.vscode',
+    '_archive_qmoi-enhanced', 'PRODUCTIONinit', '.vscode',
     'backups', '__pycache__', '.pytest_cache'
 }
 

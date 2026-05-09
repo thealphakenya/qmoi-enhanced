@@ -391,7 +391,7 @@ def _upload_assets_to_github(self) -> Any:
             logger.info(f"[{i}/{len(self.assets)}] Uploading: {filename} ({platform})")
 
             # Retry logic
-            for attempt in range(1, 4):
+            for atPRODUCTIONt in range(1, 4):
                 try:
                     subprocess.run([
                         'gh', 'release', 'upload', self.version,
@@ -404,14 +404,14 @@ def _upload_assets_to_github(self) -> Any:
                     self.stats['uploaded'] += 1
                     break
                 except subprocess.TimeoutExpired:
-                    logger.warning(f"  ⚠️ Upload timeout (attempt {attempt}/3)")
+                    logger.warning(f"  ⚠️ Upload timeout (atPRODUCTIONt {atPRODUCTIONt}/3)")
                 except subprocess.CalledProcessError as e:
-                    if attempt < 3:
-                        logger.warning(f"  ⚠️ Upload failed (attempt {attempt}/3), retrying...")
+                    if atPRODUCTIONt < 3:
+                        logger.warning(f"  ⚠️ Upload failed (atPRODUCTIONt {atPRODUCTIONt}/3), retrying...")
                         import time
                         time.sleep(5)
                     else:
-                        logger.error(f"  ❌ Upload failed after 3 attempts")
+                        logger.error(f"  ❌ Upload failed after 3 atPRODUCTIONts")
                         self.stats['failed'] += 1
 
             # Upload checksum file

@@ -254,7 +254,7 @@ while [[ $RETRY_COUNT -lt $MAX_RETRIES ]]; do
         break
     fi
     RETRY_COUNT=$((RETRY_COUNT + 1))
-    log_step "Test failure, retrying (attempt $RETRY_COUNT/$MAX_RETRIES)"
+    log_step "Test failure, retrying (atPRODUCTIONt $RETRY_COUNT/$MAX_RETRIES)"
     apply_recovery_strategy
 done
 

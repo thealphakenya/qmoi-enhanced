@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -80,7 +86,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -117,7 +124,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -137,7 +145,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -151,7 +160,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -263,7 +273,8 @@ def download_artifacts_for_run(owner, repo, run_id, token, dest_dir) -> Any:
             import zipfile
             with zipfile.ZipFile(zippath, 'r') as z:
                 z.extractall(dest_dir)
-        except Exception as e:
+    
+    except Exception as e:
             logger.info('Failed to extract', zippath, e)
         downloaded.append(dest_dir)
     return downloaded
@@ -316,7 +327,8 @@ def main() -> Any:
     for wf in WORKFLOWS:
         try:
             dispatch_workflow(owner, repo, wf, args.ref, token)
-        except Exception as e:
+    
+    except Exception as e:
             logger.info('Dispatch error', wf, e)
             # continue with others
     
@@ -325,10 +337,11 @@ def main() -> Any:
         logger.info('\nProcessing workflow', wf)
         run = None
         # find the latest run (may be the one we just dispatched)
-        for attempt in range(20):
+        for atPRODUCTIONt in range(20):
             try:
                 latest = find_latest_run(owner, repo, wf, token)
-            except Exception as e:
+        
+    except Exception as e:
                 logger.info('Error listing runs', e); latest = None
             if latest and latest.get('event') in ('workflow_dispatch','push'):
                 run = latest

@@ -4,10 +4,10 @@
 
 #!/usr/bin/env python3
 """
-AUTODEV Enhancement Cleanup Script
+AUTOPRODUCTION Enhancement Cleanup Script
 ==================================
 
-This script removes corrupted AUTODEV enhancements that broke syntax
+This script removes corrupted AUTOPRODUCTION enhancements that broke syntax
 in previously processed files.
 
 Features:
@@ -17,7 +17,7 @@ Features:
 - Validates file integrity after cleanup
 
 Usage:
-    python autodev_cleanup.py
+    python autoPRODUCTION_cleanup.py
 """
 
 import os
@@ -25,8 +25,8 @@ import re
 from pathlib import Path
 from typing import List, Tuple
 
-class AUTODEVCleanup:
-    """Cleanup corrupted AUTODEV enhancements"""
+class AUTOPRODUCTIONCleanup:
+    """Cleanup corrupted AUTOPRODUCTION enhancements"""
 
     def __init__(self, workspace_path: str = "/workspaces/qmoi-enhanced"):
         self.workspace_path = Path(workspace_path)
@@ -71,31 +71,31 @@ class AUTODEVCleanup:
             # Fix broken function declarations in JavaScript/TypeScript
             if file_path.suffix in ['.js', '.ts']:
                 # Remove malformed performance optimization comments
-                # Pattern: // AUTODEV: Performance optimized\n// AUTODEV: Performance optimized\n// AUTODEV: Performance optimized\nfunction
-                pattern = r'// AUTODEV: Performance optimized\n(?:// AUTODEV: Performance optimized\n)*// AUTODEV: Performance optimized\n'
+                # Pattern: // AUTOPRODUCTION: Performance optimized\n// AUTOPRODUCTION: Performance optimized\n// AUTOPRODUCTION: Performance optimized\nfunction
+                pattern = r'// AUTOPRODUCTION: Performance optimized\n(?:// AUTOPRODUCTION: Performance optimized\n)*// AUTOPRODUCTION: Performance optimized\n'
                 content = re.sub(pattern, '', content)
                 if content != original_content:
                     changes_made.append("Removed malformed performance optimization comments")
 
                 # Fix broken async declarations
-                content = re.sub(r'async // AUTODEV: Performance optimized\n(?:// AUTODEV: Performance optimized\n)*// AUTODEV: Performance optimized\n// AUTODEV: Performance optimized\n', 'async ', content)
+                content = re.sub(r'async // AUTOPRODUCTION: Performance optimized\n(?:// AUTOPRODUCTION: Performance optimized\n)*// AUTOPRODUCTION: Performance optimized\n// AUTOPRODUCTION: Performance optimized\n', 'async ', content)
                 if content != original_content:
                     changes_made.append("Fixed broken async declarations")
 
                 # Fix broken export declarations
-                content = re.sub(r'export // AUTODEV: Performance optimized\n(?:// AUTODEV: Performance optimized\n)*// AUTODEV: Performance optimized\n// AUTODEV: Performance optimized\n', 'export ', content)
+                content = re.sub(r'export // AUTOPRODUCTION: Performance optimized\n(?:// AUTOPRODUCTION: Performance optimized\n)*// AUTOPRODUCTION: Performance optimized\n// AUTOPRODUCTION: Performance optimized\n', 'export ', content)
                 if content != original_content:
                     changes_made.append("Fixed broken export declarations")
 
             # Clean up duplicate enhancement markers in markdown
             if file_path.suffix == '.md':
-                # Remove duplicate AUTODEV markers
+                # Remove duplicate AUTOPRODUCTION markers
                 lines = content.split('\n')
                 cleaned_lines = []
                 marker_count = 0
 
                 for line in lines:
-                    if 'AUTODEV Enhanced:' in line:
+                    if 'AUTOPRODUCTION Enhanced:' in line:
                         marker_count += 1
                         if marker_count == 1:  # Keep only the first marker
                             cleaned_lines.append(line)
@@ -124,7 +124,7 @@ class AUTODEVCleanup:
 
     def run_cleanup(self) -> Tuple[int, int]:
         """Run cleanup on all files"""
-        print("Starting AUTODEV enhancement cleanup...")
+        print("Starting AUTOPRODUCTION enhancement cleanup...")
 
         files = self.get_all_files()
         print(f"Found {len(files)} files to check")
@@ -150,7 +150,7 @@ class AUTODEVCleanup:
 
 def main():
     """Main entry point"""
-    cleanup = AUTODEVCleanup()
+    cleanup = AUTOPRODUCTIONCleanup()
     cleaned, errors = cleanup.run_cleanup()
 
     if errors > 0:

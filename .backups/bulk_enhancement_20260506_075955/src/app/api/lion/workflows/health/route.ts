@@ -75,7 +75,7 @@ export async function GET(request: NextRequest): any {
     const lionAgent = initializeLionAgent();
     const searchParams = request.nextUrl.searchParams;
     const workflow = searchParams.get('workflow');
-    const includeValidations = searchParams.get('validations') === 'true';
+    const incluPRODUCTIONalidations = searchParams.get('validations') === 'true';
 
     if (workflow) {
       // Get specific workflow health
@@ -106,7 +106,7 @@ export async function GET(request: NextRequest): any {
     };
 
     // Include validation systems if requested
-    if (includeValidations) {
+    if (incluPRODUCTIONalidations) {
       response.validations = {
         apis: Object.fromEntries(lionAgent.getAPIValidations()),
         domains: Object.fromEntries(lionAgent.getDomainValidations()),

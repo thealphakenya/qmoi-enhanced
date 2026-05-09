@@ -198,7 +198,7 @@ def _check_connection(self) -> bool:
 def _reconnect(self) -> Any:
         """Reconnect to Colab"""
         try:
-            # Attempt to reconnect
+            # AtPRODUCTIONt to reconnect
             self.setup_colab()
             self.setup_models()
             self.logger.info("Successfully reconnected to Colab")

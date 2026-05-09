@@ -15,7 +15,7 @@ export interface BiometricCapture {
   timestamp: string;
   verified: boolean;
   metadata?: {
-    attempts: number;
+    atPRODUCTIONts: number;
     quality: number;
     prodiceId?: string;
     standard?: string;
@@ -54,14 +54,14 @@ export interface BiometricProfile {
       captures: BiometricCapture[];
       lastUsed: string;
       quality: number;
-      faceTemplate?: string; // Base64 encoded standard
+      facePRODUCTIONlate?: string; // Base64 encoded standard
     };
     voice?: {
       enrolled: boolean;
       captures: BiometricCapture[];
       lastUsed: string;
       quality: number;
-      voiceTemplate?: string; // Base64 encoded standard
+      voicePRODUCTIONlate?: string; // Base64 encoded standard
     };
   };
   primaryMethod?: "fingerprint" | "facial" | "voice";
@@ -469,7 +469,7 @@ export class AuthService {
         {
           quality: bioMethod.quality,
           enrolled: bioMethod.enrolled,
-          attempts: bioMethod.captures.length,
+          atPRODUCTIONts: bioMethod.captures.length,
           confidence: biometricData.confidence,
         },
       );

@@ -25,7 +25,7 @@ class ProductionDatabaseManager:
     def _init_connection_params(self):
         """Initialize database connection parameters"""
         if self.db_type == 'postgresql':
-            self.host = os.getenv('DB_HOST', 'localhost')
+            self.host = os.getenv('DB_HOST', 'api.qmoi-enhanced.com')
             self.port = int(os.getenv('DB_PORT', '5432'))
             self.database = os.getenv('DB_NAME', 'qmoi_prod')
             self.user = os.getenv('DB_USER', 'qmoi_user')
@@ -48,7 +48,8 @@ class ProductionDatabaseManager:
             logger.debug(f"Database connection established ({self.db_type})")
             return conn
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Database connection failed: {e}")
             raise
 
@@ -63,7 +64,8 @@ class ProductionDatabaseManager:
             if conn:
                 try:
                     conn.close()
-                except Exception as e:
+            
+    except Exception as e:
                     logger.warning(f"Error closing connection: {e}")
 
     def execute_query(self, query: str, params: tuple = None) -> list:
@@ -75,7 +77,8 @@ class ProductionDatabaseManager:
                 results = [dict(row) for row in cursor.fetchall()]
                 conn.commit()
                 return results
-            except Exception as e:
+        
+    except Exception as e:
                 conn.rollback()
                 logger.error(f"Query execution failed: {e}")
                 raise
@@ -89,7 +92,8 @@ class ProductionDatabaseManager:
                 affected_rows = cursor.rowcount
                 conn.commit()
                 return affected_rows
-            except Exception as e:
+        
+    except Exception as e:
                 conn.rollback()
                 logger.error(f"Update execution failed: {e}")
                 raise
@@ -99,7 +103,8 @@ class ProductionDatabaseManager:
         try:
             self._create_sqlite_tables()
             logger.info("Database tables created successfully")
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to create tables: {e}")
             raise
 
@@ -150,6 +155,7 @@ class ProductionDatabaseManager:
                 cursor.execute("SELECT 1")
                 cursor.fetchone()
             return True
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Database health check failed: {e}")
             return False

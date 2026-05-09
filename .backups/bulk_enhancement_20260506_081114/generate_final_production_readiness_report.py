@@ -34,13 +34,13 @@ def generate_final_report():
                 "name": "Health Artifact Generation",
                 "status": "Completed",
                 "fixes_applied": 0,
-                "infrastructure_created": ["generate_allhealths.py", "bulk_production_fixer.py"]
+                "infrastructure_created": ["generate_allhealths.py", "bulk_PRODUCTION_FIXEDer.py"]
             },
             "phase_2": {
                 "name": "production Readiness Bulk Fixing",
                 "status": "Completed",
                 "fixes_applied": 8724,
-                "infrastructure_created": ["aggressive_production_fixer_v2.py", "fast_targeted_fixer.py"]
+                "infrastructure_created": ["aggressive_PRODUCTION_FIXEDer_v2.py", "fast_targeted_fixer.py"]
             },
             "phase_3": {
                 "name": "Ultra-Aggressive production Fixing",

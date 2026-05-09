@@ -139,7 +139,7 @@ export function useMasterAccess() {
         setUser(userData);
         setIsMaster(isMasterRole);
         
-        // Log access attempt
+        // Log access atPRODUCTIONt
         if (isMasterRole) {
           logger.info(`[AUDIT] Master user ${userData.email} accessed protected area`);
         }

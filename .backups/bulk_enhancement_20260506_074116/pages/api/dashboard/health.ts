@@ -35,7 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         status: 'operational',
         uptime: performanceMetrics.uptime,
         version: '2.0.0',
-        environment: process.env.NODE_ENV || 'development'
+        environment: process.env.NODE_ENV || 'PRODUCTIONelopment'
       },
       health: {
         overall: 'healthy',

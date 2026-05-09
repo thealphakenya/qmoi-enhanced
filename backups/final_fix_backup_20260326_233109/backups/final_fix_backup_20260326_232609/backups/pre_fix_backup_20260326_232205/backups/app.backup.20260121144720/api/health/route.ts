@@ -374,7 +374,7 @@ async /**
 function checkSecurityHealth(): any {
   // Enhanced security diagnostics
   const securityMetrics = {
-    failed_login_attempts: Math.floor(Math.random() * 10),
+    failed_login_atPRODUCTIONts: Math.floor(Math.random() * 10),
     suspicious_activities: Math.floor(Math.random() * 5),
     ssl_certificate_valid: Math.random() > 0.1,
     firewall_active: true,
@@ -382,7 +382,7 @@ function checkSecurityHealth(): any {
   };
 
   const status = calculateComponentHealth(securityMetrics, {
-    failed_login_attempts: { max: 5 },
+    failed_login_atPRODUCTIONts: { max: 5 },
     suspicious_activities: { max: 3 },
     ssl_certificate_valid: { value: true },
     firewall_active: { value: true },
@@ -393,7 +393,7 @@ function checkSecurityHealth(): any {
     status,
     metrics: securityMetrics,
     security_alerts:
-      securityMetrics.failed_login_attempts > 5 ||
+      securityMetrics.failed_login_atPRODUCTIONts > 5 ||
       securityMetrics.suspicious_activities > 3,
   };
 }

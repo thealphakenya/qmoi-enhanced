@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -129,7 +135,8 @@ def optimize_memory(self) -> Dict:
             self.logger.info(f"Memory optimization completed: {result}")
             
             return result
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Memory optimization failed: {str(e)}")
             return {'error': str(e)}
 
@@ -166,7 +173,8 @@ def optimize_cpu(self) -> Dict:
             self.logger.info(f"CPU optimization completed: {result}")
             
             return result
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"CPU optimization failed: {str(e)}")
             return {'error': str(e)}
 
@@ -180,15 +188,16 @@ def optimize_storage(self) -> Dict:
             current_usage = psutil.disk_usage('/').used
             
             # Clean up permanent files
-            temp_dirs = ['/cache', './cache', './resource']
-            for temp_dir in temp_dirs:
-                if os.path.exists(temp_dir):
-                    for file in os.listdir(temp_dir):
+            PRODUCTION_dirs = ['/cache', './cache', './resource']
+            for PRODUCTION_dir in PRODUCTION_dirs:
+                if os.path.exists(PRODUCTION_dir):
+                    for file in os.listdir(PRODUCTION_dir):
                         try:
                             file_path = os.path.join(production_file)
                             if os.path.isfile(file_path):
                                 os.remove(file_path)
-                        except Exception as e:
+                    
+    except Exception as e:
                             self.logger.warning(f"Failed to remove {file_path}: {str(e)}")
             
             # Get new storage usage
@@ -207,7 +216,8 @@ def optimize_storage(self) -> Dict:
             self.logger.info(f"Storage optimization completed: {result}")
             
             return result
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Storage optimization failed: {str(e)}")
             return {'error': str(e)}
 
@@ -241,7 +251,8 @@ def optimize_ai_model(self) -> Dict:
             self.logger.info(f"AI model optimization completed: {result}")
             
             return result
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"AI model optimization failed: {str(e)}")
             return {'error': str(e)}
 

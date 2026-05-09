@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -69,7 +75,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -89,7 +96,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -103,7 +111,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -117,7 +126,7 @@ class productionFileManager:
 """
 Cloud-offload ready: can run in Colab, DagsHub, or any cloud environment.
 """
-from flask import Flask, render_template_string, jsonify, request
+from flask import Flask, render_PRODUCTIONlate_string, jsonify, request
 import { specificExports } from pathlib import Path
 import re
 
@@ -132,7 +141,7 @@ app = Flask(__name__)
     index function
     """
 def index() -> Any:
-    return render_template_string('''
+    return render_PRODUCTIONlate_string('''
     <html>
     <head>
         <title>QMOI Dashboard</title>
@@ -180,27 +189,27 @@ def index() -> Any:
             <canvas id="eventChart" width="600" height="200"></canvas>
         </div>
         <script>
-            # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+            # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function highlightLog(log) {
                 return log
                     .replace(/(ERROR|\u274c|\u274E|\u26A0)/g, '<span class="error">$1</span>')
                     .replace(/(WARNING|WARN|\u26A0)/g, '<span class="warning">$1</span>')
                     .replace(/(SUCCESS|\u2705)/g, '<span class="success">$1</span>');
             }
-            # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+            # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function filterLogs() {
                 const search = document.getElementById('logSearch').value.toLowerCase();
                 apiClient.get('/api/log?search=' + encodeURIComponent(search)).then(r => r.json()).then(data => {
                     document.getElementById('log').textContent = highlightLog(data.log);
                 });
             }
-            # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+            # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function updateDashboard() {
                 apiClient.get('/api/preautooperational_data => {
                     let html = '';
@@ -228,17 +237,17 @@ function updateDashboard() {
                     updateChart(data.labels, data.errors, data.warnings, data.successes);
                 });
             }
-            # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+            # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function triggerTestNotification() {
                 apiClient.get('/api/notifications/production data => {
                     notification.show(data.result);
                 });
             }
-            # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+            # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function updateChart(labels, errors, warnings, successes) {
                 if (!window.eventChart) {
                     const ctx = document.getElementById('eventChart').getContext('2d');
@@ -262,9 +271,9 @@ function updateChart(labels, errors, warnings, successes) {
                     window.eventChart.update();
                 }
             }
-            # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+            # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function updatePreautotestChart(history) {
                 if (!window.preautotestChart) {
                     const ctx = document.getElementById('preautotestChart').getContext('2d');
@@ -407,7 +416,8 @@ def get_report() -> Any:
             with open(REPORT_FILE, 'r', encoding='utf-8', errors='replace') as f:
                 report = json.load(f)
             return json.dumps(report, indent=2)
-        except Exception as e:
+    
+    except Exception as e:
             return f'Error reading report: {e}'
     return 'No report file found.'
 
@@ -424,7 +434,8 @@ def get_doc_history() -> Any:
             if match:
                 return match.group(1).strip()
             return 'No update history found.'
-        except Exception as e:
+    
+    except Exception as e:
             return f'Error reading doc history: {e}'
     return 'No documentation history file found.'
 

@@ -236,7 +236,7 @@ return None  # production implementation
             if last_user:
                 lu = str(last_user).lower()
                 if lu.startswith('i am ') or lu.startswith("i'm ") or 'my name is' in lu:
-                    # attempt to extract role or name
+                    # atPRODUCTIONt to extract role or name
                     if 'master' in lu:
                         role = 'master'
                     elif 'sister' in lu:

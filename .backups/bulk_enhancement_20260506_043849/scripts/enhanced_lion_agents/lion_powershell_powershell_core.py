@@ -1,6 +1,6 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:08:06.031591 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:14.385341 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:10.236759 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:08:06.031591 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:14.385341 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:10.236759 -->
 #!/usr/bin/env python3
 """
 Enhanced Lion Agent: lion_powershell_powershell_core
@@ -36,7 +36,7 @@ class AgentConfig:
     mode: OperationMode = OperationMode.STANDARD
     max_concurrency: int = 10
     timeout_seconds: int = 300
-    retry_attempts: int = 3
+    retry_atPRODUCTIONts: int = 3
     enable_consciousness_sync: bool = True
     enable_health_monitoring: bool = True
     enable_auto_healing: bool = True
@@ -165,7 +165,7 @@ class LionPowershellPowershellCoreLion:
         """Self-healing retry mechanism (Pillar 3)"""
         logger.info("Initiating self-healing recovery...")
         
-        for attempt in range(self.config.retry_attempts):
+        for atPRODUCTIONt in range(self.config.retry_atPRODUCTIONts):
             try:
                 # Analyze error
                 error_analysis = await self._analyze_error()
@@ -177,11 +177,11 @@ class LionPowershellPowershellCoreLion:
                 result = await self._process_with_features(task, context)
                 
                 if result.get("success"):
-                    logger.info(f"✅ Self-healing succeeded on attempt {attempt + 1}")
+                    logger.info(f"✅ Self-healing succeeded on atPRODUCTIONt {atPRODUCTIONt + 1}")
                     return result
                     
             except Exception as e:
-                logger.warning(f"Healing attempt {attempt + 1} failed: {e}")
+                logger.warning(f"Healing atPRODUCTIONt {atPRODUCTIONt + 1} failed: {e}")
                 continue
         
         return {"success": False}

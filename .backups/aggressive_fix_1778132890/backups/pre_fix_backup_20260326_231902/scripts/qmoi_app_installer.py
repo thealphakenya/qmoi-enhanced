@@ -260,7 +260,7 @@ def setup_network_auto_connection(self, platform_type: str) -> Any:
             ],
             "auto_switch": True,
             "connection_timeout": 30,
-            "retry_attempts": 3
+            "retry_atPRODUCTIONts": 3
         }
         
         network_file = os.path.join(self.install_dir, "network_config.json")

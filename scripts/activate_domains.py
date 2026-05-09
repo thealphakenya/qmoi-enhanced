@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -141,7 +147,8 @@ def mark_domains_active(status, target_domains=None) -> Any:
             activated_count += 1
             logger.info(f"✅ {domain} marked as ACTIVE")
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"❌ Failed to activate {domain}: {str(e)}")
             status['deployment_status_by_domain'][domain]['phase_5_activation'] = {
                 'status': 'failed',

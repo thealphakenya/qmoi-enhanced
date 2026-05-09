@@ -19,7 +19,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -39,7 +40,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -53,7 +55,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -317,7 +320,8 @@ def process_file(self, file_path: str) -> Dict:
                 if new_content:
                     content = new_content
                 file_fixes["domain_references"] = count
-            except Exception as e:
+        
+    except Exception as e:
                     # production implementation
     raise NotImplementedError("production implementation complete")
             try:
@@ -325,7 +329,8 @@ def process_file(self, file_path: str) -> Dict:
                 if new_content:
                     content = new_content
                 file_fixes["production-db.qmoi.ai_references"] = count
-            except Exception as e:
+        
+    except Exception as e:
                     # production implementation
     raise NotImplementedError("production implementation complete")
             try:
@@ -333,7 +338,8 @@ def process_file(self, file_path: str) -> Dict:
                 if new_content:
                     content = new_content
                 file_fixes["malformed_urls"] = count
-            except Exception as e:
+        
+    except Exception as e:
                     # production implementation
     raise NotImplementedError("production implementation complete")
             try:
@@ -341,7 +347,8 @@ def process_file(self, file_path: str) -> Dict:
                 if new_content:
                     content = new_content
                 file_fixes["internal_references"] = count
-            except Exception as e:
+        
+    except Exception as e:
                     # production implementation
     raise NotImplementedError("production implementation complete")
             try:
@@ -349,7 +356,8 @@ def process_file(self, file_path: str) -> Dict:
                 if new_content:
                     content = new_content
                 file_fixes["file_references"] = count
-            except Exception as e:
+        
+    except Exception as e:
                     # production implementation
     raise NotImplementedError("production implementation complete")
             file_fixes["total_fixes"] = sum([
@@ -367,7 +375,8 @@ def process_file(self, file_path: str) -> Dict:
                         f.write(content)
                     file_fixes["modified"] = True
                     self.fixes_applied["total_files_modified"] += 1
-                except Exception as e:
+            
+    except Exception as e:
                     file_fixes["write_error"] = str(e)
                     file_fixes["modified"] = False
             else:
@@ -383,7 +392,8 @@ def process_file(self, file_path: str) -> Dict:
             
             return file_fixes
         
-        except Exception as e:
+    
+    except Exception as e:
             return {"error": str(e), "file": file_path}
     
     """
@@ -457,6 +467,7 @@ def generate_report(self, output_file: str = "phase1_fixes_report.json") -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

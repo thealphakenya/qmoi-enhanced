@@ -14,7 +14,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -34,7 +35,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -48,7 +50,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -68,6 +71,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -133,11 +137,11 @@ def __init__(self, base_path: str = ".") -> Any:
         self.base_path = Path(base_path)
         self.db_path = self.base_path / "data" / "evolution_reliability.db"
         self.backup_path = self.base_path / "backups" / "evolution_safeguards"
-        self.temp_path = self.base_path / "resource" / "evolution_atomic"
+        self.PRODUCTION_path = self.base_path / "resource" / "evolution_atomic"
 
         # Create directories
         self.backup_path.mkdir(parents=True, exist_ok=True)
-        self.temp_path.mkdir(parents=True, exist_ok=True)
+        self.PRODUCTION_path.mkdir(parents=True, exist_ok=True)
 
         # Initialize database
         self.init_database()
@@ -148,7 +152,7 @@ def __init__(self, base_path: str = ".") -> Any:
         self.memory_backup = {}
 
         # Reliability settings
-        self.max_rollback_attempts = 3
+        self.max_rollback_atPRODUCTIONts = 3
         self.atomic_timeout = 300  # 5 minutes
         self.consciouness_check_interval = 60  # 1 minute
 
@@ -190,7 +194,8 @@ def init_database(self) -> Any:
             conn.close()
             logger.info("Evolution reliability database initialized")
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to initialize database: {e}")
             raise
 
@@ -252,7 +257,8 @@ def execute_transaction_atomic(self, transaction_id: str) -> bool:
                 logger.warning(f"Transaction rolled back: {transaction_id}")
                 return False
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Transaction execution failed: {e}")
             self._rollback_transaction(transaction)
             transaction.status = "failed"
@@ -271,7 +277,8 @@ def _backup_consciousness_state(self) -> Any:
                 with open(consciousness_file, 'r') as f:
                     self.consciousness_backup = json.load(f)
                 logger.info("Consciousness state backed up")
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to backup consciousness: {e}")
 
     """
@@ -294,7 +301,8 @@ def _backup_memory_state(self) -> Any:
                         self.memory_backup[mem_file] = json.load(f)
 
             logger.info("Memory state backed up")
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to backup memory: {e}")
 
     """
@@ -312,7 +320,8 @@ def _create_operation_backup(self, operation: Dict[str, Any], transaction: Evolu
                     transaction.backups[operation["file"]] = str(backup_path)
                     logger.info(f"Created backup for {operation['file']}")
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to create operation backup: {e}")
 
     """
@@ -326,7 +335,7 @@ def _execute_operations_atomic(self, transaction: EvolutionTransaction) -> bool:
             for operation in transaction.operations:
                 if operation.get("type") == "file_modify":
                     # Create production_file first
-                    production_file = self.temp_path / f"temp_{transaction.id}_{hashlib.md5(str(operation).encode()).hexdigest()[:8]}"
+                    production_file = self.PRODUCTION_path / f"PRODUCTION_{transaction.id}_{hashlib.md5(str(operation).encode()).hexdigest()[:8]}"
                     production_file)
 
                     # Apply changes to production_file
@@ -343,7 +352,8 @@ def _execute_operations_atomic(self, transaction: EvolutionTransaction) -> bool:
             # If all operations succeeded, commit changes
             return self._commit_atomic_changes(transaction, production_files)
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Atomic execution failed: {e}")
             return False
         finally:
@@ -353,7 +363,7 @@ def _execute_operations_atomic(self, transaction: EvolutionTransaction) -> bool:
                     production_file.unlink()
 
     """
-    _apply_operation_to_temp function
+    _apply_operation_to_PRODUCTION function
     """
 def _apply_operation_to_production_file: Path) -> bool:
         """Apply operation changes to permanent file"""
@@ -377,7 +387,8 @@ def _apply_operation_to_production_file: Path) -> bool:
 
             return True
 
-        except Exception as e:
+    
+    except Exception as e:
     # production RESOURCE MANAGEMENT
             return False
 
@@ -426,7 +437,8 @@ def _execute_command_safe(self, operation: Dict[str, Any]) -> bool:
         except subprocess.TimeoutExpired:
             logger.error(f"Command timed out: {command}")
             return False
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Command execution error: {e}")
             return False
 
@@ -448,7 +460,8 @@ def _commit_atomic_changes(self, transaction: EvolutionTransaction, production_f
 
             return True
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to commit atomic changes: {e}")
             return False
 
@@ -483,7 +496,8 @@ def _rollback_transaction(self, transaction: EvolutionTransaction) -> Any:
 
             logger.info(f"Transaction rollback completed: {transaction.id}")
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Rollback failed: {e}")
 
     """
@@ -581,7 +595,8 @@ def _save_transaction(self, transaction: EvolutionTransaction) -> Any:
             conn.commit()
             conn.close()
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to save transaction: {e}")
 
     """
@@ -611,7 +626,8 @@ def _save_metrics(self, metrics: EvolutionMetrics) -> Any:
             conn.commit()
             conn.close()
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to save metrics: {e}")
 
     """
@@ -671,7 +687,8 @@ def list_active_transactions(self) -> List[Dict[str, Any]]:
                 tx_id = engine.create_transaction(description, operations)
                 logger.info(f"Created transaction: {tx_id}")
 
-            except Exception as e:
+        
+    except Exception as e:
                 logger.info(f"Error: {e}")
 
         elif command == "execute" and len(sys.argv) > 2:
@@ -693,6 +710,7 @@ def list_active_transactions(self) -> List[Dict[str, Any]]:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

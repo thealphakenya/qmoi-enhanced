@@ -11,14 +11,19 @@ class productionFileManager:
         """Safely read file with error handling"""
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             with open(file_path, 'r', encoding=encoding) as f:
@@ -29,7 +34,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -49,7 +55,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -63,7 +70,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -210,7 +218,8 @@ return self._get_production_data()
         raw = self.rfile.read(length).decode('utf-8')
         try:
             payload = json.loads(raw)
-        except Exception as e:
+    
+    except Exception as e:
             self._set_json(400)
             self.wfile.write(json.dumps({'error': 'Invalid JSON', 'detail': str(e)}).encode())
             return
@@ -296,7 +305,7 @@ return self._get_production_data()
             if last_user:
                 lu = str(last_user).lower()
                 if lu.startswith('i am ') or lu.startswith("i'm ") or 'my name is' in lu:
-                    # attempt to extract role or name
+                    # atPRODUCTIONt to extract role or name
                     if 'master' in lu:
                         role = 'master'
                     elif 'sister' in lu:
@@ -601,6 +610,7 @@ def run(server_class=HTTPServer, handler_class=Handler) -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

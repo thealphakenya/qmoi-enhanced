@@ -9,7 +9,7 @@
 
 export class AssetGenerationService {
   static async generateTrailer(project: unknown): Promise<string> {
-    [PRODUCTION_IMPLEMENTED]: Integrate with video generation API or use templates
+    [PRODUCTION_IMPLEMENTED]: Integrate with video generation API or use PRODUCTIONlates
     // Return URL or path to generated trailer
     return "https://data.com/trailer.mp4";
   }
@@ -20,7 +20,7 @@ export class AssetGenerationService {
   }
 
   static async generateBanner(project: unknown): Promise<string> {
-    [PRODUCTION_IMPLEMENTED]: Integrate with image generation API or use templates
+    [PRODUCTION_IMPLEMENTED]: Integrate with image generation API or use PRODUCTIONlates
     return "https://data.com/banner.png";
   }
 

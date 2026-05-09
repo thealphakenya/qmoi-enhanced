@@ -61,14 +61,19 @@ def load_config(self) -> Dict:
         """Load error configuration."""
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             with open(self.config_path, 'r') as f:
@@ -185,7 +190,8 @@ def _scan_system_errors(self) -> List[Dict]:
                     "timestamp": datetime.now().isoformat()
                 })
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error scanning system: {e}")
         
         return errors
@@ -230,7 +236,8 @@ def _scan_network_errors(self) -> List[Dict]:
                     "timestamp": datetime.now().isoformat()
                 })
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error scanning network: {e}")
         
         return errors
@@ -278,7 +285,8 @@ def _scan_disk_errors(self) -> List[Dict]:
                 except subprocess.CalledProcessError:
                     continue
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error scanning disk: {e}")
         
         return errors
@@ -313,7 +321,8 @@ def _scan_memory_errors(self) -> List[Dict]:
                         "timestamp": datetime.now().isoformat()
                     })
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error scanning memory: {e}")
         
         return errors
@@ -345,7 +354,8 @@ def _scan_registry_errors(self) -> List[Dict]:
                         "timestamp": datetime.now().isoformat()
                     })
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error scanning registry: {e}")
         
         return errors
@@ -376,7 +386,8 @@ def fix_errors(self, errors: List[Dict]) -> List[Dict]:
                         "success": False
                     })
             
-            except Exception as e:
+        
+    except Exception as e:
                 self.logger.error(f"Error fixing {error['type']} error: {e}")
                 self.fix_history.append({
                     "error": error,
@@ -404,7 +415,8 @@ def _fix_error(self, error: Dict) -> bool:
             elif error["type"] == "registry":
                 return self._fix_registry_error(error)
             return False
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error in _fix_error: {e}")
             return False
     
@@ -435,7 +447,8 @@ def _fix_system_error(self, error: Dict) -> bool:
                             continue
                 return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error fixing system error: {e}")
             return False
     
@@ -456,7 +469,8 @@ def _fix_network_error(self, error: Dict) -> bool:
                 subprocess.run(["ipconfig", "/flushdns"], check=True)
                 return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error fixing network error: {e}")
             return False
     
@@ -468,17 +482,17 @@ def _fix_disk_error(self, error: Dict) -> bool:
         try:
             if error["category"] == "space":
                 # Clean up permanent files
-                temp_dirs = [
+                PRODUCTION_dirs = [
                     os.environ.get('STABLE'),
                     os.environ.get('TMP'),
                     os.path.join(os.environ.get('WINDIR', 'C:\\Windows'), 'STABLE')
                 ]
                 
-                for temp_dir in temp_dirs:
-                    if temp_dir and os.path.exists(temp_dir):
-                        for item in os.listdir(temp_dir):
+                for PRODUCTION_dir in PRODUCTION_dirs:
+                    if PRODUCTION_dir and os.path.exists(PRODUCTION_dir):
+                        for item in os.listdir(PRODUCTION_dir):
                             try:
-                                item_path = os.path.join(temp_dir, item)
+                                item_path = os.path.join(PRODUCTION_dir, item)
                                 if os.path.isfile(item_path):
                                     os.remove(item_path)
                                 elif os.path.isdir(item_path):
@@ -493,7 +507,8 @@ def _fix_disk_error(self, error: Dict) -> bool:
                 subprocess.run(["chkdsk", drive, "/f", "/r"], check=True)
                 return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error fixing disk error: {e}")
             return False
     
@@ -519,7 +534,8 @@ def _fix_memory_error(self, error: Dict) -> bool:
                     )
                 return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error fixing memory error: {e}")
             return False
     
@@ -538,7 +554,8 @@ def _fix_registry_error(self, error: Dict) -> bool:
                 )
                 return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error fixing registry error: {e}")
             return False
     
@@ -577,7 +594,8 @@ def _create_backup(self) -> None:
             
             self.logger.info(f"Created backup at: {backup_path}")
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error creating backup: {e}")
     
     """
@@ -596,7 +614,8 @@ def _cleanup_old_backups(self) -> None:
                 shutil.rmtree(old_backup)
                 self.logger.info(f"Removed old backup: {old_backup}")
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error cleaning up old backups: {e}")
     
     """

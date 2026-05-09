@@ -57,13 +57,13 @@ class OfflineModeManager {
    */
   private setupNetworkListeners(): void {
     if (typeof window !== 'undefined') {
-      window.addEventListener('online', () => {
+      window.adPRODUCTIONentListener('online', () => {
         this.isOnline = true;
         logger.info('[Offline Mode] Back online - starting sync');
         this.startSync();
       });
 
-      window.addEventListener('offline', () => {
+      window.adPRODUCTIONentListener('offline', () => {
         this.isOnline = false;
         logger.info('[Offline Mode] Went offline - enabling cached responses');
       });

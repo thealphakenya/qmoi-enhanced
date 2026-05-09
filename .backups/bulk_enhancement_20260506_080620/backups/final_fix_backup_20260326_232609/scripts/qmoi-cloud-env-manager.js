@@ -92,7 +92,7 @@ class CloudEnvironmentManager {
             timeoutMinutes: 60,
           });
         },
-        { maxAttempts: MAX_RETRIES },
+        { maxAtPRODUCTIONts: MAX_RETRIES },
       );
 
       // Wait for environment to be ready
@@ -145,7 +145,7 @@ class CloudEnvironmentManager {
         async () => {
           return await this.client.environments.delete(env.id);
         },
-        { maxAttempts: MAX_RETRIES },
+        { maxAtPRODUCTIONts: MAX_RETRIES },
       );
 
       // Wait for deletion to complete

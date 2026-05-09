@@ -105,7 +105,8 @@ class MasterAccessControl:
             token = jwt.encode(payload, self.secret_key, algorithm='HS256')
             logger.info(f"Generated master token for user: {user_id}")
             return token
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to generate master token: {e}")
             raise
 
@@ -141,7 +142,8 @@ class MasterAccessControl:
                 master_user['password_hash'] = self._hash_password(user_data['password'])
             logger.info(f"Created master user: {master_user['username']}")
             return master_user
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to create master user: {e}")
             raise
 
@@ -157,7 +159,8 @@ class MasterAccessControl:
             salt, hashed = password_hash.split(':', 1)
             expected = hashlib.sha256(f"{salt}{password}".encode()).hexdigest()
             return expected == hashed
-        except Exception as e:
+    
+    except Exception as e:
             logger.error("Password verification failed")
             return False
 

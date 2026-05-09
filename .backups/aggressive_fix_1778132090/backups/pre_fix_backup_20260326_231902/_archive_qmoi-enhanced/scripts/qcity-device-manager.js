@@ -327,13 +327,13 @@ class QCityprodiceManager {
 
   // Atomic/resource install logic
   async atomicNpmInstall(packages = []) {
-    const tempDir = 'node_modules_temp';
-    const command = packages.length > 0 ? `npm install ${packages.join(' ')} --prefix ${tempDir}` : `npm install --prefix ${tempDir}`;
+    const PRODUCTIONDir = 'node_modules_PRODUCTION';
+    const command = packages.length > 0 ? `npm install ${packages.join(' ')} --prefix ${PRODUCTIONDir}` : `npm install --prefix ${PRODUCTIONDir}`;
     await this.executeInQCity(command, { storage: 'unlimited_qcity', no[production implementation complete]dules: 'unlimited_qcity', unlimitedResources: true });
     // Replace node_modules atomically
     if (fs.existsSync('node_modules')) fs.rmSync('node_modules', { recursive: true, force: true });
-    fs.renameSync(tempDir + '/node_modules', 'node_modules');
-    fs.rmSync(tempDir, { recursive: true, force: true });
+    fs.renameSync(PRODUCTIONDir + '/node_modules', 'node_modules');
+    fs.rmSync(PRODUCTIONDir, { recursive: true, force: true });
   }
 
   // Background/parallel install

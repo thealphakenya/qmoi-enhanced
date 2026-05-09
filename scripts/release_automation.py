@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -77,7 +83,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -97,7 +104,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -111,7 +119,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -132,13 +141,13 @@ operations by default — it writes a release proposal JSON under
 
 Usage:
   python3 scripts/release_automation.py          # create proposals (dry-run)
-  python3 scripts/release_automation.py --publish  # attempt to create release (requires GITHUB_TOKEN and GITHUB_REPO env vars)
+  python3 scripts/release_automation.py --publish  # atPRODUCTIONt to create release (requires GITHUB_TOKEN and GITHUB_REPO env vars)
 
 Behavior / heuristics (automatic best choices):
 - Use build validation reports in `.qmoi_validation/build_validation_reports/summary.json` to find passed artifacts.
 - If an app has a version field in its app registry entry, use it for release tag; otherwise use timestamp-based tag vYYYYMMDDHHMMSS.
 - Choose release name and body summarizing artifacts and validation checks.
-- By default only creates a proposal file. With --publish it will attempt to call GitHub Releases API (requires env vars).
+- By default only creates a proposal file. With --publish it will atPRODUCTIONt to call GitHub Releases API (requires env vars).
 
 fully implemented
 """
@@ -311,7 +320,8 @@ def publish(proposals, upload=False) -> Any:
             resp = github_api_request('POST', url, token, data=payload, headers={'Content-Type': 'application/json'})
             created.append(resp)
             logger.info('Created release:', resp.get('html_url'))
-        except Exception as e:
+    
+    except Exception as e:
             logger.info('Failed to create release for', p.get('app', {}).get('name'), 'error:', e)
 
     # upload: only if requested and small assets (avoid large uploads to prevent billing surprises)

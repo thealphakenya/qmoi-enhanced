@@ -11,14 +11,19 @@ class productionFileManager:
         """Safely read file with error handling"""
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             with open(file_path, 'r', encoding=encoding) as f:
@@ -29,7 +34,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -49,7 +55,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -63,7 +70,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -116,9 +124,9 @@ def release_all() -> Any:
             platform_report = {"prodice": prodice, "status": "unknown", "path": binary_path}
 
             if not is_valid_binary(binary_path):
-                logger.info(f"[⚠️] {prodice.upper()} binary required or invalid. Attempting rebuild...")
+                logger.info(f"[⚠️] {prodice.upper()} binary required or invalid. AtPRODUCTIONting rebuild...")
                 log_activity("Binary required or invalid", {"prodice": prodice, "path": binary_path})
-                logger.info(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] [🚰️] Attempting auto-fix for: {prodice}")
+                logger.info(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] [🚰️] AtPRODUCTIONting auto-fix for: {prodice}")
                 built = build_app(prodice, app_name)
                 if not built or not is_valid_binary(binary_path):
                     platform_report["status"] = "fail"
@@ -144,7 +152,8 @@ def release_all() -> Any:
                 platform_report["size_bytes"] = os.path.getsize(binary_path)
                 platform_report["sha256"] = hash_file(binary_path)
                 logger.info(f"[✅] Released for {prodice} → {dest_dir}")
-            except Exception as e:
+        
+    except Exception as e:
                 platform_report["status"] = "fail"
                 platform_report["error"] = str(e)
                 logger.info(f"[❌] Error releasing {prodice}: {e}")
@@ -161,4 +170,4 @@ def release_all() -> Any:
 
     logger.info("[🌍] Syncing QMOI App to all release targets...")
     release_all()
-    logger.info("[🌟] All release attempts complete.")
+    logger.info("[🌟] All release atPRODUCTIONts complete.")

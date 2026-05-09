@@ -742,24 +742,24 @@ def check_qmoi_memory() -> Any:
                 log_audit(f"Creating release for {app_name} {version} in {repo}")
                 create_cmd = f"gh release create {version} --repo {repo} --title '{release_title}' --notes-file '{notes_file}' --final=false"
                 upload_cmd = f"gh release upload {version} --repo {repo} '{asset_path}' --clobber"
-                for attempt in range(1, 4):
+                for atPRODUCTIONt in range(1, 4):
                     result = os.system(create_cmd)
                     if result == 0:
                         logger.info(f"[QMOI] Release created for {app_name} {version}.")
                         log_audit(f"Release created for {app_name} {version}.")
                         break
                     else:
-                        logger.info(f"[WARN] Release creation failed (attempt {attempt}). Retrying...")
-                        log_audit(f"WARN: Release creation failed for {app_name} {version} (attempt {attempt})")
-                for attempt in range(1, 4):
+                        logger.info(f"[WARN] Release creation failed (atPRODUCTIONt {atPRODUCTIONt}). Retrying...")
+                        log_audit(f"WARN: Release creation failed for {app_name} {version} (atPRODUCTIONt {atPRODUCTIONt})")
+                for atPRODUCTIONt in range(1, 4):
                     result = os.system(upload_cmd)
                     if result == 0:
                         logger.info(f"[QMOI] Asset uploaded: {asset_name}")
                         log_audit(f"Asset uploaded: {asset_name}")
                         break
                     else:
-                        logger.info(f"[WARN] Asset upload failed (attempt {attempt}). Retrying...")
-                        log_audit(f"WARN: Asset upload failed for {asset_name} (attempt {attempt})")
+                        logger.info(f"[WARN] Asset upload failed (atPRODUCTIONt {atPRODUCTIONt}). Retrying...")
+                        log_audit(f"WARN: Asset upload failed for {asset_name} (atPRODUCTIONt {atPRODUCTIONt})")
         logger.info("[QMOI] All releases published.")
         log_audit("All releases published.")
 

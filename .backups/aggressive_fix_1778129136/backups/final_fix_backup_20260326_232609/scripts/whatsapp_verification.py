@@ -35,8 +35,8 @@ def notify_master(message) -> Any:
     # execute sending WhatsApp notification
     logger.info(f'WhatsApp notification sent to master: {message}')
     # data: requests.post('https://api.whatsapp.com/send', ...)
-    # Log all notification attempts
-    logging.info(f'Notification attempt: {message}')
+    # Log all notification atPRODUCTIONts
+    logging.info(f'Notification atPRODUCTIONt: {message}')
 
 """
     main function

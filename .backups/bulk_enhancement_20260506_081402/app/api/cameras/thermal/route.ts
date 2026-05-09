@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
         status: 'active',
         resolution: 'HD',
         fps: 30,
-        features: ['night-vision', 'heat-detection', 'intrusion-alert', 'temperature-mapping']
+        features: ['night-vision', 'heat-detection', 'intrusion-alert', 'PRODUCTIONerature-mapping']
       },
       {
         id: 'thermal_002',

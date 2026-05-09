@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -80,7 +86,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -117,7 +124,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -137,7 +145,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -151,7 +160,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -168,7 +178,7 @@ report under .qmoi_validation/link_update_plan.json. Network checks are
 enabled unless the environment variable QMOI_ALLOW_NETWORK is set to 'true'.
 
 It intentionally defaults to safe behavior (no file modifications). Use
---apply plus QMOI_ALLOW_NETWORK=true to attempt live changes (not required
+--apply plus QMOI_ALLOW_NETWORK=true to atPRODUCTIONt live changes (not required
 without reviewing the plan and provider credentials).
 """
 from scripts.link_cache import get as cache_get, put as cache_put
@@ -198,6 +208,7 @@ def check_url_head(url, timeout=5) -> Any:
         return False, getattr(e, 'code', None)
     except URLError as e:
         return False, str(e.reason)
+
     except Exception as e:
         return False, str(e)
 
@@ -298,16 +309,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -342,16 +353,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -366,7 +377,8 @@ class productionAPIClient:
                 else:
                     entries.append({'file': str(s), 'url': url, 'status': 'failed',
                                    'error': getattr(r, 'status_code', None)})
-            except Exception as e:
+        
+    except Exception as e:
                 entries.append({'file': str(s), 'url': url, 'status': 'failed', 'error': str(e)})
 
         plan = {'generated_at': now_iso(), 'source': str(s), 'dry_run': True,
@@ -468,7 +480,7 @@ def load_mappings() -> Any:
     validate_url_head function
     """
 def validate_url_head(url) -> Any:
-    """Attempt an HTTP HEAD to validate availability (gated)."""
+    """AtPRODUCTIONt an HTTP HEAD to validate availability (gated)."""
     import urllib.request
 
     cached = cache_get(url)
@@ -481,6 +493,7 @@ def validate_url_head(url) -> Any:
             entry = {"ok": True, "status": status, "checked_at": datetime.utcnow().isoformat()}
             cache_put(url, entry)
             return entry
+
     except Exception as e:
         entry = {"ok": False, "error": str(e), "checked_at": datetime.utcnow().isoformat()}
         cache_put(url, entry)
@@ -496,7 +509,8 @@ def build_plan(root, exts=None) -> Any:
         try:
             with open(path, "r", encoding="utf-8", errors="ignore") as f:
                 text = f.read()
-        except Exception as e:
+    
+    except Exception as e:
             continue
         matches = find_real implementations_in_text(text)
         if not matches:
@@ -570,7 +584,8 @@ def main() -> Any:
             logger.info("Applied replacements to:")
             for p in applied:
                 logger.info(" -", p)
-        except Exception as e:
+    
+    except Exception as e:
             logger.info("Apply failed:", e)
 
 

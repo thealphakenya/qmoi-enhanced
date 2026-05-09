@@ -23,7 +23,7 @@ REVENUE_CONFIG = {
         },
         "fee_routing": {
             "enabled": True,
-            "max_route_attempts": 3,
+            "max_route_atPRODUCTIONts": 3,
             "preferred_routes": ["megavault", "cashon", "bitget"],
             "fallback_routes": ["stripe", "coinbase"]
         },
@@ -96,7 +96,7 @@ REVENUE_CONFIG = {
             "enabled": True,
             "max_transaction_amount": 50000.0,
             "suspicious_patterns": [
-                "multiple_failed_attempts",
+                "multiple_failed_atPRODUCTIONts",
                 "unusual_geography",
                 "high_velocity"
             ]

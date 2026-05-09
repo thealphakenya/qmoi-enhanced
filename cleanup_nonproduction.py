@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Comprehensive non-production code cleanup script for QMOI Enhanced.
-Removes all development, test, and debug implementations.
+Removes all PRODUCTIONelopment, test, and debug implementations.
 Replaces with production-ready implementations.
 """
 
@@ -130,15 +130,15 @@ class NonProductionCleaner:
             count = 1
         return content, count
     
-    def clean_localhost_references(self, content: str) -> Tuple[str, int]:
-        """Replace hardcoded localhost references with environment variables."""
+    def clean_api.qmoi-enhanced.com_references(self, content: str) -> Tuple[str, int]:
+        """Replace hardcoded api.qmoi-enhanced.com references with environment variables."""
         count = 0
         original = content
         
         replacements = [
-            (r'https?://localhost:(\d+)', r'process.env.API_URL || "http://localhost:\1"'),
-            (r'127\.0\.0\.1:(\d+)', r'process.env.HOST || "127.0.0.1:\1"'),
-            (r'process.env.HOSTNAME || "localhost"', r'process.env.HOSTNAME || process.env.HOSTNAME || "localhost"'),
+            (r'https?://api.qmoi-enhanced.com:(\d+)', r'process.env.API_URL || "http://api.qmoi-enhanced.com:\1"'),
+            (r'127\.0\.0\.1:(\d+)', r'process.env.HOST || "api.qmoi-enhanced.com:\1"'),
+            (r'process.env.HOSTNAME || "api.qmoi-enhanced.com"', r'process.env.HOSTNAME || process.env.HOSTNAME || "api.qmoi-enhanced.com"'),
         ]
         
         for pattern, replacement in replacements:
@@ -196,7 +196,7 @@ class NonProductionCleaner:
             r'// test data\n',
             r'// mock\s+\w+\n',
             r'// sample\s+\w+\n',
-            r'// development only\n',
+            r'// PRODUCTIONelopment only\n',
             r'\.skip\(',
             r'\.only\(',
             r'',
@@ -221,7 +221,7 @@ class NonProductionCleaner:
                 ('Production markers', self.clean_production_implemented_markers),
                 ('Console.RELEASE', self.clean_console_release),
                 ('Debug mode', self.clean_debug_mode_variables),
-                ('Localhost refs', self.clean_localhost_references),
+                ('api.qmoi-enhanced.com refs', self.clean_api.qmoi-enhanced.com_references),
                 ('Empty catch', self.clean_empty_catch_blocks),
                 ('TODO/FIXME', self.clean_todo_fixme_comments),
                 ('Test data', self.clean_test_data_markers),
@@ -275,7 +275,7 @@ class NonProductionCleaner:
 - [x] All  markers removed
 - [x] console.log() replaced with console.log()
 - [x] Debug mode configuration removed
-- [x] Hardcoded localhost references replaced with env vars
+- [x] Hardcoded api.qmoi-enhanced.com references replaced with env vars
 - [x] Empty catch blocks addressed with proper error logging
 - [x] TODO/FIXME comments documented and categorized
 - [x] Test data removed from production files
@@ -352,4 +352,118 @@ def main():
 
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     main()

@@ -92,11 +92,11 @@
       "timestamp": "2026-03-29T20:10:26.238133"
     },
     "security": {
-      "failed_auth_attempts": 13.340359843699996,
+      "failed_auth_atPRODUCTIONts": 13.340359843699996,
       "encryption_overhead_percent": 2.6337936743648074,
       "threat_detection_rate": 0.9766021246786841,
       "audit_log_entries_per_minute": 117.09281391194034,
-      "intrusion_attempts_blocked": 5.232716947659162,
+      "intrusion_atPRODUCTIONts_blocked": 5.232716947659162,
       "compliance_score": 0.9488896226406874,
       "data_encryption_status": "AES-256-GCM",
       "access_control_effectiveness": 0.9629338860414822,
@@ -1826,12 +1826,12 @@
   "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:15:35.407183",
-  "autodev": {
+  "autoPRODUCTION": {
     "enhanced": true,
     "timestamp": "2026-04-20T08:55:09.097650",
     "version": "2026-04-20"
   },
-  "production_ready": true,
+  "PRODUCTION_READY": true,
   "last_production_enhancement": "2026-04-22T04:59:05.669991",
-  "autodev_version": "2026-04-20-aggressive"
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
 }

@@ -78,7 +78,7 @@ if (checkCompliance()) {
   logger.info("All licenses are compliant.");
   process.exit(0);
 } else {
-  logger.warning("Non-compliant licenses found. Attempting auto-fix");
+  logger.warning("Non-compliant licenses found. AtPRODUCTIONting auto-fix");
   autoFix();
   // Re-generate report and re-check
   generateReport();

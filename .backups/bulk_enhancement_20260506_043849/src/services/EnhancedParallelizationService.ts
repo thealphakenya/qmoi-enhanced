@@ -25,7 +25,7 @@ interface ParallelTask {
 interface ParallelExecutionConfig {
   maxConcurrentTasks: number;
   taskTimeout: number;
-  retryAttempts: number;
+  retryAtPRODUCTIONts: number;
   healthCheckInterval: number;
 }
 
@@ -65,7 +65,7 @@ export class EnhancedParallelizationService extends EventEmitter {
     this.config = {
       maxConcurrentTasks: 10,
       taskTimeout: 300000, // 5 minutes
-      retryAttempts: 3,
+      retryAtPRODUCTIONts: 3,
       healthCheckInterval: 30000, // 30 seconds
     };
     this.systemHealth = this.initializeSystemHealth();

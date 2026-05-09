@@ -29,7 +29,7 @@ REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
 LION_START = '<!-- LION_VALIDATION_START -->'
 LION_END = '<!-- LION_VALIDATION_END -->'
-LION_BLOCK_TEMPLATE = """<!-- LION_VALIDATION_START -->
+LION_BLOCK_PRODUCTIONLATE = """<!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -236,7 +236,7 @@ class APIDocumentationValidator:
 
             # Add lion validation block
             ts = datetime.utcnow().isoformat()
-            lion_block = LION_BLOCK_TEMPLATE.format(ts=ts)
+            lion_block = LION_BLOCK_PRODUCTIONLATE.format(ts=ts)
 
             # Insert at the beginning after any frontmatter
             lines = content.split('\n')
@@ -281,7 +281,7 @@ class APIDocumentationValidator:
                     content = re.sub(rf'{re.escape(LION_START)}.*?{re.escape(LION_END)}', '', content, flags=re.DOTALL)
 
                     # Add lion validation block
-                    lion_block = LION_BLOCK_TEMPLATE.format(ts=ts)
+                    lion_block = LION_BLOCK_PRODUCTIONLATE.format(ts=ts)
 
                     # Insert at the beginning after any frontmatter
                     lines = content.split('\n')

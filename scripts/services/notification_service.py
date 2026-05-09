@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -69,7 +75,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -89,7 +96,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -103,7 +111,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -145,7 +154,8 @@ def _load_config(self) -> Any:
             else:
                 self.enabled = True
                 self.log_file = "notifications.log"
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error loading notification config: {e}")
             self.enabled = True
             self.log_file = "notifications.log"
@@ -188,7 +198,8 @@ def send_notification(self, user: str, message: str, level: str = "info") -> boo
             
             return True
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error sending notification: {e}")
             return False
     
@@ -226,6 +237,7 @@ def clear_notifications(self, user: Optional[str] = None) -> bool:
             else:
                 self.notifications = []
             return True
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error clearing notifications: {e}")
             return False

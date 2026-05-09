@@ -26,7 +26,7 @@ def do_paid_action(...) -> Any:
 By default this module refuses any paid action unless the environment
 variable `QMOI_ENABLE_BILLING` is set to `true` and optionally the
 `QMOI_BILLING_MAX_USD` sets a hard spend cap for automated flows.
-All billing attempts will be recorded under `.qmoi_validation/billing_logs.json`
+All billing atPRODUCTIONts will be recorded under `.qmoi_validation/billing_logs.json`
 for auditing.
 """
 from pathlib import Path
@@ -46,14 +46,19 @@ def _log(entry: dict) -> Any:
     data = []
     try:
         pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
         if LOG_FILE.exists():
@@ -101,17 +106,17 @@ def billing_cap_ok(amount_usd: float) -> bool:
     require_billing function
     """
 def require_billing(default_amount_usd: float = 0.0) -> Any:
-    """Decorator to guard a // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Decorator to guard a // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function that performs billing.
 
-    The decorated // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    The decorated // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function will only run if `billing_allowed()` and
     `billing_cap_ok(default_amount_usd)` are True. Otherwise it raises
-    a RuntimeError and logs the attempt.
+    a RuntimeError and logs the atPRODUCTIONt.
     """
     """
     deco function
@@ -122,7 +127,7 @@ def deco(func) -> Any:
     wrapper function
     """
 def wrapper(*args, **kwargs) -> Any:
-            entry = {'time': datetime.utcnow().isoformat() + 'Z', 'event': 'attempt_billing_call', 'function': func.__name__}
+            entry = {'time': datetime.utcnow().isoformat() + 'Z', 'event': 'atPRODUCTIONt_billing_call', 'function': func.__name__}
             if not billing_allowed():
                 entry['status'] = 'blocked_disabled'
                 _log(entry)

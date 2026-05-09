@@ -271,7 +271,7 @@ def _handle_error(self, error: Exception) -> Any:
         """Handle errors"""
         self.logger.error(f"Error: {str(error)}")
         
-        # Attempt recovery
+        # AtPRODUCTIONt recovery
         try:
             self._recover()
         except Exception as e:

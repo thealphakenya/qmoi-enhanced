@@ -73,7 +73,7 @@ import sys
 import json
 import time
 import logging
-import { specificExports } from datetime import { specificExports } from typing import { specificExports } from flask import Flask, render_template, jsonify, request
+import { specificExports } from datetime import { specificExports } from typing import { specificExports } from flask import Flask, render_PRODUCTIONlate, jsonify, request
 import requests
 import time
 
@@ -94,16 +94,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -501,9 +501,9 @@ def render_dashboard(self) -> str:
     <script>
         let performanceChart;
         
-        # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function updateStatusIndicator(status) {
             const indicator = document.getElementById('overall-status');
             const text = document.getElementById('overall-status-text');
@@ -521,9 +521,9 @@ function updateStatusIndicator(status) {
             }
         }
         
-        # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function updateMetrics(containerId, metrics) {
             const container = document.getElementById(containerId);
             container.textContent = '';
@@ -539,9 +539,9 @@ function updateMetrics(containerId, metrics) {
             }
         }
         
-        # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function updateAlerts(alerts) {
             const container = document.getElementById('alerts-list');
             container.textContent = '';
@@ -563,9 +563,9 @@ function updateAlerts(alerts) {
             });
         }
         
-        # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function updatePerformanceChart(data) {
             const ctx = document.getElementById('performance-chart').getContext('2d');
             
@@ -604,9 +604,9 @@ function updatePerformanceChart(data) {
             });
         }
         
-        async // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        async // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function refreshData() {
             try {
                 const response = await apiClient.get('/api/status');

@@ -72,10 +72,10 @@
 - **Button:** "Open QVillage" link to `/qvillage`
 - **Button Styling:** Emerald background (emerald-600), hover emerald-500, rounded-xl, padding 5x3, small text, semibold
 
-#### Card 2: Developer & Support
-- **Title:** "Developer & Support" (2xl font, semibold, white)
+#### Card 2: PRODUCTIONeloper & Support
+- **Title:** "PRODUCTIONeloper & Support" (2xl font, semibold, white)
 - **Description:** "If this page is reaching you from the Next.js app, the QMOI system is wired correctly and active routes are available."
-- **Button:** "Open Dev Tools" link to `/dev`
+- **Button:** "Open PRODUCTION Tools" link to `/PRODUCTION`
 - **Button Styling:** Slate background (slate-700), hover slate-600, rounded-xl, padding 5x3, small text, semibold
 
 ## User Interactions
@@ -84,7 +84,7 @@
 - **Navigate to QCity:** Click "QCity Dashboard" card
 - **Navigate to QMOI Space:** Click "QMOI Space" card
 - **Navigate to QVillage:** Click "Open QVillage" button
-- **Navigate to Dev Tools:** Click "Open Dev Tools" button
+- **Navigate to PRODUCTION Tools:** Click "Open PRODUCTION Tools" button
 - **View Information:** Read static content about AI features
 
 ### Interactive Elements
@@ -98,7 +98,7 @@
   - QMOI Space: Border violet-500, background slate-950
 - **Button Hover States:**
   - QVillage: emerald-600 to emerald-500
-  - Dev Tools: slate-700 to slate-600
+  - PRODUCTION Tools: slate-700 to slate-600
 - **Transitions:** Smooth transitions for all hover effects
 
 ## Navigation Flow
@@ -111,7 +111,7 @@
 - **QCity Dashboard:** `/qcity`
 - **QMOI Space:** `/qmoi-space`
 - **QVillage:** `/qvillage`
-- **Dev Tools:** `/dev`
+- **PRODUCTION Tools:** `/PRODUCTION`
 
 ### Navigation Pattern
 ```
@@ -121,7 +121,7 @@ QMOI AI Hub (/qmoi-ai)
     ├── QCity Dashboard (/qcity)
     ├── QMOI Space (/qmoi-space)
     ├── QVillage (/qvillage)
-    └── Dev Tools (/dev)
+    └── PRODUCTION Tools (/PRODUCTION)
 ```
 
 ## Responsive Behavior
@@ -169,7 +169,7 @@ export default function QMoiAIPage() {
         {/* Bottom Section - 2 cards */}
         <section className="grid gap-6 md:grid-cols-2">
           {/* QVillage access card */}
-          {/* Developer support card */}
+          {/* PRODUCTIONeloper support card */}
         </section>
 
       </div>
@@ -186,7 +186,7 @@ export default function QMoiAIPage() {
   - Cyan: cyan-300 (status), cyan-500 (hover)
   - Violet: violet-500 (hover)
   - Emerald: emerald-600/emerald-500 (QVillage button)
-  - Slate: slate-700/slate-600 (Dev button)
+  - Slate: slate-700/slate-600 (PRODUCTION button)
 
 ## Accessibility Features
 - **Semantic HTML:** Proper heading hierarchy (h1, h2, h3)

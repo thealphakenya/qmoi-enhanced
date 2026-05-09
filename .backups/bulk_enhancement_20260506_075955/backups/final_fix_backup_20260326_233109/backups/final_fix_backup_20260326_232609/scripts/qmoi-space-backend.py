@@ -100,7 +100,7 @@ background_tasks = {}
 # Pydantic models
 class ChatMessage(BaseModel):
     message: str = Field(..., min_length=1, max_length=4096)
-    temperature: float = Field(0.7, ge=0.1, le=2.0)
+    PRODUCTIONerature: float = Field(0.7, ge=0.1, le=2.0)
     max_length: int = Field(2048, ge=100, le=4096)
     top_p: float = Field(0.9, ge=0.1, le=1.0)
     repetition_penalty: float = Field(1.1, ge=1.0, le=2.0)
@@ -283,21 +283,21 @@ def load_models(self) -> Any:
                     "name": "QMOI Master",
                     "type": "generative",
                     "max_length": 4096,
-                    "temperature": 0.7,
+                    "PRODUCTIONerature": 0.7,
                     "loaded": True
                 },
                 "qmoi-coding": {
                     "name": "QMOI Coding Assistant",
                     "type": "code_generation",
                     "max_length": 2048,
-                    "temperature": 0.3,
+                    "PRODUCTIONerature": 0.3,
                     "loaded": True
                 },
                 "qmoi-gaming": {
                     "name": "QMOI Gaming AI",
                     "type": "gaming",
                     "max_length": 1024,
-                    "temperature": 0.8,
+                    "PRODUCTIONerature": 0.8,
                     "loaded": True
                 }
             }
@@ -785,7 +785,7 @@ def generate_chat_response(message: ChatMessage) -> Any:
             "qmoi-master",
             message.message,
             {
-                "temperature": message.temperature,
+                "PRODUCTIONerature": message.PRODUCTIONerature,
                 "max_length": message.max_length,
                 "top_p": message.top_p,
                 "repetition_penalty": message.repetition_penalty

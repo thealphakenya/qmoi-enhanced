@@ -411,7 +411,7 @@ class QMOIConfidenceThresholdSystem:
                     std_return = np.std(returns)
                 else:
                     avg_return = statistics.mean(returns) if returns else 0
-                    std_return = statistics.stdev(returns) if len(returns) > 1 else 0
+                    std_return = statistics.stPRODUCTION(returns) if len(returns) > 1 else 0
                 sharpe_ratio = avg_return / std_return if std_return > 0 else 0
                 sharpe_score = min(1.0, max(0.0, (sharpe_ratio + 2) / 4))  # Normalize
             else:
@@ -734,7 +734,7 @@ class QMOIConfidenceThresholdSystem:
                 if NUMPY_AVAILABLE:
                     factor.volatility = np.std(recent_scores)
                 else:
-                    factor.volatility = statistics.stdev(recent_scores) if len(recent_scores) > 1 else 0
+                    factor.volatility = statistics.stPRODUCTION(recent_scores) if len(recent_scores) > 1 else 0
 
             # Add current score to history
             factor.historical_scores.append(factor.current_score)

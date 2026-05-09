@@ -10,8 +10,8 @@ from pathlib import Path
 from datetime import datetime
 import json
 
-def create_lion_agent_template(lion_type: str, specialization: str) -> str:
-    """Generate a Lion agent template"""
+def create_lion_agent_PRODUCTIONlate(lion_type: str, specialization: str) -> str:
+    """Generate a Lion agent PRODUCTIONlate"""
     return f'''#!/usr/bin/env python3
 """
 {lion_type.upper()} Lion Agent - {specialization}
@@ -133,7 +133,7 @@ def generate_all_lion_agents(scripts_dir: Path) -> int:
         for lang in langs:
             filename = f"lion_agent_{lang}.py"
             filepath = lion_agents_dir / filename
-            content = create_lion_agent_template(lang, f"{region} Language Support")
+            content = create_lion_agent_PRODUCTIONlate(lang, f"{region} Language Support")
             filepath.write_text(content)
             count += 1
     
@@ -143,7 +143,7 @@ def generate_all_lion_agents(scripts_dir: Path) -> int:
         ("kubernetes", "Kubernetes Orchestration"),
         ("java", "Java Environment Support"),
         ("python", "Python Environment Support"),
-        ("edge_device", "Edge Device/IoT Operations"),
+        ("edge_PRODUCTIONice", "Edge PRODUCTIONice/IoT Operations"),
         ("mobile", "Mobile Platform Support"),
         ("serverless", "Serverless/Lambda Functions"),
         ("hybrid", "Hybrid Cloud Operations")
@@ -152,25 +152,25 @@ def generate_all_lion_agents(scripts_dir: Path) -> int:
     for env, spec in environments:
         filename = f"lion_agent_{env}.py"
         filepath = lion_agents_dir / filename
-        content = create_lion_agent_template(env, spec)
+        content = create_lion_agent_PRODUCTIONlate(env, spec)
         filepath.write_text(content)
         count += 1
     
     # Specialized Functional Lions
     specializations = [
         ("validation", "Validation and Verification"),
-        ("autodev", "AutoDev Code Generation"),
+        ("autoPRODUCTION", "AutoPRODUCTION Code Generation"),
         ("security", "Security Auditing"),
         ("performance", "Performance Optimization"),
         ("testing", "Testing and QA"),
         ("documentation", "Documentation Generation"),
-        ("devops", "DevOps Automation")
+        ("PRODUCTIONops", "PRODUCTIONOps Automation")
     ]
     
     for spec, description in specializations:
         filename = f"lion_agent_{spec}.py"
         filepath = lion_agents_dir / filename
-        content = create_lion_agent_template(spec, description)
+        content = create_lion_agent_PRODUCTIONlate(spec, description)
         filepath.write_text(content)
         count += 1
     

@@ -7,14 +7,19 @@ def get_database_connection():
     """Get production database connection with proper error handling"""
     try:
         pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
         import psycopg2
@@ -28,6 +33,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise

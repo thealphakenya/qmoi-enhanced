@@ -9,7 +9,7 @@ Hugging Face (HF)
 3. 8× ZeroGPU quota and highest queue priority
 
 
-4. Spaces Dev Mode – SSH/VS Code access
+4. Spaces PRODUCTION Mode – SSH/VS Code access
 
 
 5. Dataset Viewer for private datasets
@@ -234,9 +234,9 @@ Vercel
 15. Configurable log drains and observability features
 
 
-16. Higher Edge Function execution units / serverless // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+16. Higher Edge Function execution units / serverless // AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
 function duration / higher limits
 
 
@@ -302,9 +302,9 @@ Netlify
 16. Large Media add-on (Netlify Large Media / Git LFS integration and paid storage for large assets). 
 
 
-17. Configurable log retention and extended // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+17. Configurable log retention and extended // AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
 function / edge logs (longer/structured logging windows and more observability on paid tiers). 
 
 
@@ -320,18 +320,18 @@ function / edge logs (longer/structured logging windows and more observability o
 21. On-demand / larger build compute classes (bigger build VMs: more CPU/RAM, longer build runtimes for paid customers). 
 
 
-22. Increased serverless // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+22. Increased serverless // AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
 function invocation quotas & paid overages (higher invocation budgets and enterprise scaling for Functions). 
 
 
-23. Background/DEPLOYED (cron) // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-function scheduling at scale (advanced DEPLOYED // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+23. Background/DEPLOYED (cron) // AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
+function scheduling at scale (advanced DEPLOYED // AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
 function capacity for paid plans). 
 
 

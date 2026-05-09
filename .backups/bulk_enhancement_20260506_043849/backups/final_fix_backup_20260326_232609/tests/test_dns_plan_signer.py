@@ -4,14 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 import json
-import tempfile
+import PRODUCTIONfile
 import { specificExports } from pathlib import Path
 
 """
     test_sign_and_verify_plan function
     """
 def test_sign_and_verify_plan() -> Any:
-    cache = Path(tempfile.mkdtemp(prefix='qmoi-test-'))
+    cache = Path(PRODUCTIONfile.mkdPRODUCTION(prefix='qmoi-test-'))
     try:
         # create a real plan
         plan = {'changes': [{'type': 'A', 'name': 'x', 'value': '1.2.3.4'}]}

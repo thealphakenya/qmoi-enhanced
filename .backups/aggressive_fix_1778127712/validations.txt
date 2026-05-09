@@ -1,7 +1,7 @@
 QMOI GLOBAL VALIDATION SYSTEM (COPILOT INSTRUCTIONS)
 🎯 OBJECTIVE
 Build a fully autonomous validation system that ensures:
-All apps work on ALL platforms/devices
+All apps work on ALL platforms/PRODUCTIONices
 All domains + links are always resolvable and accessible
 All .md instructions are accurate, implemented, and production-ready
 System automatically fixes, rebuilds, redeploys, and revalidates
@@ -26,7 +26,7 @@ The system must:
 - Assign validation scores (0–100%)
 - Automatically fix issues
 - Re-run validation after fixing
-📱 2. CROSS-PLATFORM APP VALIDATION (ALL DEVICES)
+📱 2. CROSS-PLATFORM APP VALIDATION (ALL PRODUCTIONICES)
 🎯 Goal
 Ensure apps work on:
 Android
@@ -34,7 +34,7 @@ iOS
 Windows
 Linux
 Web
-Tablets + low-end devices
+Tablets + low-end PRODUCTIONices
 🔧 Instructions for Copilot
 
 Implement platform-validator:
@@ -42,7 +42,7 @@ Implement platform-validator:
 Features:
 1. Detect all build outputs (.apk, .ipa, .exe, web builds)
 2. Automatically test installation + execution
-3. Use emulators + real-device cloud APIs
+3. Use emulators + real-PRODUCTIONice cloud APIs
 4. Validate:
    - Installation success
    - App launch success
@@ -53,7 +53,7 @@ Features:
 🔗 Required integrations
 Use tools like:
 Appium → for Android + iOS automation
-Browser/device testing platforms (cloud real devices)
+Browser/PRODUCTIONice testing platforms (cloud real PRODUCTIONices)
 Cross-platform automation tools
 👉 These tools allow write-once test scripts across platforms �
 Digital Fractal
@@ -67,7 +67,7 @@ Digital Fractal
 - Detect:
    - UI breakage
    - Localization issues
-   - Unsupported devices
+   - Unsupported PRODUCTIONices
 🌍 3. DOMAIN + LINK VALIDATION SYSTEM
 🎯 Goal
 Ensure:

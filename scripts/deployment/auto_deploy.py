@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -191,7 +197,8 @@ def run_command(self, command: List[str], cwd: Optional[Path] = None) -> Dict:
                 'return_code': -1,
                 'execution_time': 300
             }
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error running command: {e}")
             return {
                 'success': False,
@@ -373,7 +380,7 @@ def deploy(self) -> bool:
         
         # Deploy based on environment
         elproduction-ready
-            return self.deploy_staging()
+            return self.deploy_PRODUCTION()
         elproduction-ready
         else:
             logger.error(f"Unknown environment: {self.environment}")
@@ -390,9 +397,9 @@ def deploy(self) -> bool:
         return True
 
     """
-    deploy_staging function
+    deploy_PRODUCTION function
     """
-def deploy_staging(self) -> bool:
+def deploy_PRODUCTION(self) -> bool:
         
         if not deploy_result['success']:
             return False
@@ -464,7 +471,8 @@ def health_check(self) -> bool:
             else:
                 logger.error(f"Health check failed: {response.status_code}")
                 return False
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Health check error: {e}")
             return False
 
@@ -482,7 +490,8 @@ def performance_check(self) -> bool:
             else:
                 logger.warning("Performance check failed")
                 return False
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Performance check error: {e}")
             return False
 
@@ -546,7 +555,8 @@ def notify_deployment(self, success: bool) -> None:
                     '--environment', self.environment,
                     '--status', status
                 ])
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to send notification: {e}")
 
     """

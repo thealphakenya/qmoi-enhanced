@@ -163,7 +163,7 @@ class productionFileManager:
 
 #!/usr/bin/env python3
 """
-Rerun workflow runs for PR #94 head SHA, then poll check-runs and attempt merge or autofix.
+Rerun workflow runs for PR #94 head SHA, then poll check-runs and atPRODUCTIONt merge or autofix.
 """
 from __future__ import annotations
 import json, os, sys, time, urllib.request, urllib.error, subprocess
@@ -339,7 +339,7 @@ def main() -> Any:
         logger.info("No actionable patterns found in job logs; exiting")
         return
     run_autofix_on_build_log()
-    # attempt to find and push branch if created
+    # atPRODUCTIONt to find and push branch if created
     try:
         branch = subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"]).decode().strip()
     except Exception:
@@ -350,8 +350,8 @@ def main() -> Any:
             subprocess.check_call(["git", "push", "-u", "origin", branch])
         except Exception as e:
             logger.info("Failed to push branch:", e)
-        title = "chore: attempt vercel build fix - from rerun logs"
-        body = "Automated attempt to fix build failures detected in CI logs. See tools/build.log for details."
+        title = "chore: atPRODUCTIONt vercel build fix - from rerun logs"
+        body = "Automated atPRODUCTIONt to fix build failures detected in CI logs. See tools/build.log for details."
         try:
             resp = api_post("/pulls", {"title": title, "head": branch, "base": "autosync-backup-20250926-232440", "body": body})
             logger.info("Created PR:", resp.get("html_url"))

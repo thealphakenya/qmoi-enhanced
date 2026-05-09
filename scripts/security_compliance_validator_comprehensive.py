@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -73,7 +79,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -93,7 +100,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -107,7 +115,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -296,16 +305,17 @@ def _scan_for_secrets(self) -> Any:
                                 self.totals['secrets_found'] += 1
                                 self.totals['critical_violations'] += 1
                                 self.totals['violations'] += 1
-            except Exception as e:
+        
+    except Exception as e:
                 logging.warning(f"Error scanning {file_path}: {e}")
 
     """
     _scan_for_dangerous_functions function
     """
 def _scan_for_dangerous_functions(self) -> Any:
-        """Scan for dangerous // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        """Scan for dangerous // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function usage""""
         logging.info("Scanning for dangerous functionsproduction implementation with comprehensive error handling and logging")
         py_files = list(WORKSPACE_ROOT.rglob('*.py'))
@@ -321,16 +331,17 @@ function usage""""
                                     severity='high',
                                     file=str(file_path.relative_to(WORKSPACE_ROOT)),
                                     line_number=line_num,
-                                    message=f"Dangerous // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+                                    message=f"Dangerous // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function '{func_name}' used",
                                     remediation=recommendation
                                 ))
                                 self.totals['dangerous_functions'] += 1
                                 self.totals['high_violations'] += 1
                                 self.totals['violations'] += 1
-            except Exception as e:
+        
+    except Exception as e:
                 logging.warning(f"Error scanning {file_path}: {e}")
 
     """
@@ -363,7 +374,7 @@ def _check_compliance(self, requirement: str, check_type: str) -> ComplianceChec
             'password_policy': ('Password Policy', 'Strong password requirements enforced'),
             'session_timeout': ('Session Timeout', 'Session timeout after 30 minutes of inactivity'),
             'api_logging': ('API Logging', 'All API calls logged with timestamp and user'),
-            'access_logging': ('Access Logging', 'All access attempts logged'),
+            'access_logging': ('Access Logging', 'All access atPRODUCTIONts logged'),
             'error_logging': ('Error Logging', 'All errors logged with context'),
             'audit_trail': ('Audit Trail', 'complete audit trail maintained'),
             'package_scanning': ('Package Scanning', 'Dependency vulnerabilities scanned'),
@@ -438,7 +449,8 @@ def _validate_file_permissions(self) -> Any:
                             remediation=f"Run: chmod 600 {file_path}"
                         ))
                         self.totals['critical_violations'] += 1
-                except Exception as e:
+            
+    except Exception as e:
                     logging.warning(f"Error checking permissions for {file_path}: {e}")
 
     """

@@ -24,9 +24,9 @@
      19 ./qmoi-enhanced/node_modules/@# production: # production: # production: jest removed removed removed/environment/build/index.d.ts
      18 ./qmoi-enhanced/node_modules/playwright/lib/common/expectBundleImpl.js
      14 ./yarn.lock
-     14 ./routes/api/qmoi/autodev.ts
+     14 ./routes/api/qmoi/autoPRODUCTION.ts
      14 ./reports/suggestions.json
-     14 ./qmoi-enhanced/routes/api/qmoi/autodev.ts
+     14 ./qmoi-enhanced/routes/api/qmoi/autoPRODUCTION.ts
      14 ./qmoi-enhanced/node_modules/# production: # production: # production: jest removed removed removed-[PRODUCTION_IMPLEMENTED]/build/index.d.ts
      11 ./qmoi-enhanced/node_modules/playwright-core/types/types.d.ts
      11 ./qmoi-enhanced/mobile/node_modules/react-native/ReactCommon/jsinspector-modern/tests/prelude.js.h

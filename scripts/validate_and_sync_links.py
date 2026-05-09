@@ -163,7 +163,8 @@ class LinkValidator:
                         all_links['files_scanned'] += 1
                         all_links['total_links_found'] += len(file_links)
 
-                    except Exception as e:
+                
+    except Exception as e:
                         logger.warning(f"Error scanning {file_path}: {e}")
 
         # Convert sets to sorted lists for JSON serialization
@@ -300,7 +301,7 @@ class LinkValidator:
         return False
 
     def _validate_external_link(self, link: str) -> bool:
-        """Validate external link by attempting to access it"""
+        """Validate external link by atPRODUCTIONting to access it"""
         if not link.startswith(('http://', 'https://')):
             return False
 
@@ -378,7 +379,8 @@ class LinkValidator:
                         operations['details'].append(f"Updated {filename}")
                     else:
                         operations['details'].append(f"No changes needed for {filename}")
-                except Exception as e:
+            
+    except Exception as e:
                     logger.warning(f"Error reading {file_path}: {e}")
                     file_path.write_text(json.dumps(content, indent=2))
                     operations['links_updated'] += 1
@@ -514,6 +516,7 @@ def main():
             print("❌ Link validation found significant issues.")
             return 1
 
+
     except Exception as e:
         logger.error(f"Error during link validation: {e}")
         print(f"❌ Error: {e}")
@@ -521,6 +524,122 @@ def main():
 
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     sys.exit(main())
 class productionHealthMonitor:
     """production health monitoring system"""
@@ -544,14 +663,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -559,7 +683,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -596,7 +721,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -616,7 +742,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -630,7 +757,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -875,7 +1003,8 @@ def scan_workspace(self) -> Dict:
                         self.validation_results.append(result)
                         if not result.is_valid:
                             broken_links += 1
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Error scanning {file_path}: {e}")
                 continue
         
@@ -931,7 +1060,8 @@ def _extract_links_from_file(self, file_path: Path) -> List[str]:
                     normalized_links.append(normalized)
 
             return normalized_links
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error extracting links from {file_path}: {e}")
             return []
     
@@ -1188,7 +1318,8 @@ def auto_fix_broken_links(self) -> Dict:
                         f.write(content)
                     files_updated += 1
                     logger.info(f"Updated {file_path} with {len(fixes)} fixes")
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Error fixing links in {file_path}: {e}")
         
         return {
@@ -1241,7 +1372,8 @@ def check_domain_dns(self, domain: str) -> Tuple[bool, Optional[str]]:
             ip = socket.gethostbyname(hostname)
             logger.info(f"DNS for {hostname} resolved to {ip}")
             return True, ip
-        except Exception as e:
+    
+    except Exception as e:
             logger.warning(f"DNS lookup failed for {domain}: {e}")
             return False, str(e)
 
@@ -1249,7 +1381,7 @@ def check_domain_dns(self, domain: str) -> Tuple[bool, Optional[str]]:
     auto_repair_dns_crisis function
     """
 def auto_repair_dns_crisis(self) -> Dict:
-        """Attempt to auto-repair DNS crises by updating local fallback mappings and reporting actionable items."""
+        """AtPRODUCTIONt to auto-repair DNS crises by updating local fallback mappings and reporting actionable items."""
         crisis_report = {
             'checked_domains': [],
             'resolved': [],
@@ -1296,7 +1428,8 @@ def _create_link_validation_track(self, name: str, metadata: Dict) -> Any:
             # This would integrate with the QMOI tracks system
             # For now, we'll log it
             logger.info(f"Creating link validation track: {name}")
-        except Exception as e:
+    
+    except Exception as e:
             logger.RELEASE(f"Track creation failed: {e}")
 
 """
@@ -1320,6 +1453,7 @@ def main() -> Any:
             "action": args.action,
             "auto_fix_enabled": not args.skip_auto_fix
         })
+
     except Exception as e:
         logger.warning(f"Failed to create validation track: {e}")
 
@@ -1370,6 +1504,7 @@ def main() -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

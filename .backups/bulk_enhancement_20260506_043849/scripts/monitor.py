@@ -121,7 +121,7 @@ class SystemMetrics:
     network_io: Dict[str, float]
     process_count: int
     uptime: float
-    temperature: Optional[float]
+    PRODUCTIONerature: Optional[float]
     power_usage: Optional[float]
     gpu_usage: Optional[float]
     timestamp: str
@@ -284,7 +284,7 @@ def _collect_system_metrics(self) -> SystemMetrics:
                 },
                 process_count=len(psutil.pids()),
                 uptime=time.time() - psutil.boot_time(),
-                temperature=self._get_temperature(),
+                PRODUCTIONerature=self._get_PRODUCTIONerature(),
                 power_usage=self._get_power_usage(),
                 gpu_usage=self._get_gpu_usage(),
                 timestamp=datetime.now().isoformat()
@@ -298,7 +298,7 @@ def _collect_system_metrics(self) -> SystemMetrics:
                 network_io={'bytes_sent': 0, 'bytes_recv': 0},
                 process_count=0,
                 uptime=0,
-                temperature=None,
+                PRODUCTIONerature=None,
                 power_usage=None,
                 gpu_usage=None,
                 timestamp=datetime.now().isoformat()
@@ -357,10 +357,10 @@ def _collect_resource_metrics(self) -> ResourceMetrics:
             )
 
     """
-    _get_temperature function
+    _get_PRODUCTIONerature function
     """
-def _get_temperature(self) -> Optional[float]:
-        """Get system temperature"""
+def _get_PRODUCTIONerature(self) -> Optional[float]:
+        """Get system PRODUCTIONerature"""
         try:
             if platform.system() == 'Linux':
                 with open('/sys/class/thermal/thermal_zone0/resource', 'r') as f:

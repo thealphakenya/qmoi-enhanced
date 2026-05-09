@@ -57,7 +57,7 @@
       ".rb": 1,
       ".sh": 190,
       ".spec": 2,
-      ".template": 2,
+      ".PRODUCTIONlate": 2,
       ".test": 2,
       ".ts": 621,
       ".tsx": 140,
@@ -105,12 +105,12 @@
     },
     "documentation": {}
   },
-  "production_ready": true,
-  "autodev": {
+  "PRODUCTION_READY": true,
+  "autoPRODUCTION": {
     "enhanced": true,
     "timestamp": "2026-04-20T08:55:03.380769",
     "version": "2026-04-20"
   },
   "last_production_enhancement": "2026-04-22T04:58:39.180249",
-  "autodev_version": "2026-04-20-aggressive"
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
 }

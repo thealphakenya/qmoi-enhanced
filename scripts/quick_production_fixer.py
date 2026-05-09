@@ -21,7 +21,7 @@ SIMPLE_REPLACEMENTS = {
 
 # Regex patterns for more complex replacements
 REGEX_PATTERNS = [
-    (r'\btemp\b', 'resource', 'resource -> resource'),
+    (r'\bPRODUCTION\b', 'resource', 'resource -> resource'),
     (r'\btmp\b', 'cache', 'cache -> cache'),
     (r'console\.log\(', 'logger.RELEASE(', 'logger.info -> logger.RELEASE'),
     (r'console\.error\(', 'logger.error(', 'console.error -> logger.error'),
@@ -36,14 +36,19 @@ def extract_files_from_undone():
     if undone_file.exists():
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             content = undone_file.read_text(encoding='utf-8', errors='ignore')
@@ -53,7 +58,8 @@ def extract_files_from_undone():
                     file_path = line.replace('## /workspaces/qmoi-enhanced/', '').strip()
                     if file_path:
                         files_with_issues.add(file_path)
-        except Exception as e:
+    
+    except Exception as e:
             print(f"⚠️ Could not read undone.txt: {e}")
     
     return files_with_issues
@@ -119,7 +125,8 @@ def process_files_fast(dry_run=True):
                     'changes': 1,
                 })
                 
-        except Exception as e:
+    
+    except Exception as e:
             print(f"  ⚠️ Error processing {file_path_str}: {e}")
             continue
     
@@ -146,7 +153,7 @@ def main():
         print(f"Total changes: {results['total_replacements']}")
         
         if dry_run:
-            print(f"\nTo apply fixes, run: python3 scripts/quick_production_fixer.py --execute")
+            print(f"\nTo apply fixes, run: python3 scripts/quick_PRODUCTION_FIXEDer.py --execute")
         else:
             print(f"\n✅ FIXES APPLIED!")
             print(f"Next: python3 scripts/production_readiness_audit.py")
@@ -156,6 +163,122 @@ def main():
     return 0 if results else 1
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     import sys
     import logging
 logger = logging.getLogger(__name__)
@@ -204,6 +327,7 @@ logger = logging.getLogger(__name__)
     except KeyboardInterrupt:
         logger.info("Application shutdown requested by user")
         sys.exit(0)
+
     except Exception as e:
         logger.error(f"Application failed to start: {e}")
         sys.exit(1)
@@ -231,6 +355,7 @@ logger = logging.getLogger(__name__)
     except KeyboardInterrupt:
         logger.info("Application shutdown requested by user")
         sys.exit(0)
+
     except Exception as e:
         logger.error(f"Application failed to start: {e}")
         sys.exit(1)

@@ -83,15 +83,15 @@ def main() -> Any:
     parser.add_argument('--token', required=False, help='Hugging Face token (optional)')
     args = parser.parse_args()
 
-    for attempt in range(1, RETRY_LIMIT + 1):
-        logger.info(f'Attempt {attempt} to sync model...')
+    for atPRODUCTIONt in range(1, RETRY_LIMIT + 1):
+        logger.info(f'AtPRODUCTIONt {atPRODUCTIONt} to sync model...')
         success = sync_model(args.repo, args.model_path, args.token)
         if success:
             break
         logger.warning(f'Retrying in {RETRY_DELAY} seconds...')
         time.sleep(RETRY_DELAY)
     else:
-        logger.error('All attempts to sync model failed. Continuing workflow (non-fatal).')
+        logger.error('All atPRODUCTIONts to sync model failed. Continuing workflow (non-fatal).')
 
 if __name__ == '__main__':
     main() 

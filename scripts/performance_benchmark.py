@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -80,7 +86,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -116,6 +123,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -176,16 +184,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -296,7 +304,8 @@ def benchmark_api_endpoints(self, endpoints: List[str] = None) -> Dict[str, Any]
 
                 logger.info(f"Endpoint {endpoint}: {response_time:.3f}s")
 
-            except Exception as e:
+        
+    except Exception as e:
                 results[endpoint] = {
                     'error': str(e),
                     'success': False,
@@ -334,7 +343,8 @@ def load_baseline_metrics(self) -> Dict[str, Any]:
                 with baseline_file.open('r') as f:
                     self.baseline_metrics = json.load(f)
                 logger.info("Loaded baseline metrics")
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Error loading baseline: {e}")
 
         return self.baseline_metrics

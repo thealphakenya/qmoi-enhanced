@@ -42,7 +42,7 @@ export class QmoiMemory {
       memoryStore.push(record);
     }
 
-    // attempt to persist to server-side memory proxy
+    // atPRODUCTIONt to persist to server-side memory proxy
     try {
       if (typeof fetch === "function") {
         apiClient.get("/api/qmoi/memory", {

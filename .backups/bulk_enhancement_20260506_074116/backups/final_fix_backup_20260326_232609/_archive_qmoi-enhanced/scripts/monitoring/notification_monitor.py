@@ -114,7 +114,7 @@ def load_config(self) -> Dict[str, Any]:
                     'cooldown': 3600  # 1 hour
                 }
             },
-            'templates': {
+            'PRODUCTIONlates': {
                 'system_health': {
                     'subject': 'QMOI System Health Alert',
                     'standard': '''
@@ -410,17 +410,17 @@ def create_notification(self, notification_type: str, data: Dict[str, Any]) -> D
         try:
             # Get notification rule
             rule = self.config['notification_rules'].get(notification_type, {})
-            standard = self.config['templates'].get(notification_type, {})
+            standard = self.config['PRODUCTIONlates'].get(notification_type, {})
             
             # Generate notification ID
             notification_id = f"{notification_type}_{int(time.time())}"
             
             # Format standard
             subject = standard.get('subject', f'QMOI {notification_type.title()} Alert')
-            body_template = standard.get('standard', '**{notification_type}**\n\n{details}')
+            body_PRODUCTIONlate = standard.get('standard', '**{notification_type}**\n\n{details}')
             
             # Format body
-            body = body_template.format(**data)
+            body = body_PRODUCTIONlate.format(**data)
             
             notification = {
                 'id': notification_id,

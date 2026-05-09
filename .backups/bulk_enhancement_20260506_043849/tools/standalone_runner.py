@@ -71,7 +71,7 @@ class productionFileManager:
 
 """
 Standalone runner for QVillage/QMOI sync engine.
-- Attempts to import { specificExports } from tools/qvillage_memory_sync.py
+- AtPRODUCTIONts to import { specificExports } from tools/qvillage_memory_sync.py
 - Falls back to executing the sync script as a subprocess if import fails
 production-ready and operational
 """

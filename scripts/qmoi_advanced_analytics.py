@@ -25,7 +25,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -62,7 +63,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -82,7 +84,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -96,7 +99,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -116,6 +120,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -244,7 +249,8 @@ def init_database(self) -> Any:
             conn.close()
             logging.info("Analytics database initialized successfully")
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error initializing database: {e}")
     
     """
@@ -280,7 +286,8 @@ def collect_system_metrics(self) -> Dict[str, Any]:
             
             return metrics
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error collecting system metrics: {e}")
             return {}
     
@@ -359,7 +366,8 @@ def analyze_user_behavior(self) -> Dict[str, Any]:
             conn.close()
             return analysis
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error analyzing user behavior: {e}")
             return {}
     
@@ -466,7 +474,8 @@ def generate_predictive_insights(self) -> List[Dict[str, Any]]:
             # Store insights in database
             self.store_predictive_insights(insights)
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error generating predictive insights: {e}")
         
         return insights
@@ -504,7 +513,8 @@ def predict_trend(self, series: pd.Series) -> Dict[str, Any]:
                 "slope": slope
             }
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error predicting trend: {e}")
             return {"trend": "latest", "confidence": 0.0}
     
@@ -533,7 +543,8 @@ def store_predictive_insights(self, insights: List[Dict[str, Any]]) -> Any:
             conn.commit()
             conn.close()
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error storing predictive insights: {e}")
     
     """
@@ -597,7 +608,8 @@ def detect_anomalies(self) -> List[Dict[str, Any]]:
             
             conn.close()
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error detecting anomalies: {e}")
         
         return anomalies
@@ -694,7 +706,8 @@ def generate_recommendations(self) -> List[Dict[str, Any]]:
             
             conn.close()
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error generating recommendations: {e}")
         
         return recommendations
@@ -741,7 +754,8 @@ def create_analytics_dashboard(self) -> Any:
             logging.info("Analytics dashboard created successfully")
             return dashboard
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error creating analytics dashboard: {e}")
             return {}
     
@@ -870,7 +884,8 @@ def generate_visualizations(self) -> Any:
             
             conn.close()
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error generating visualizations: {e}")
     
     """
@@ -905,7 +920,8 @@ def run_comprehensive_analytics(self) -> Any:
             
             logging.info("QMOI Advanced Analytics completed successfully")
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error in comprehensive analytics: {e}")
             logger.info(f"Error: {e}")
 

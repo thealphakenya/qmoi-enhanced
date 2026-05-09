@@ -42,14 +42,14 @@ The `/dashboard/` folder houses a lightweight dashboard application separate fro
 - Ensure `package.json` dependencies remain current and audited.
 - Maintain the Vite build configuration and verify production asset bundling.
 - Keep dashboard routes and public assets synchronized with deploy targets.
-- Validate the app using standard `npm install`, `npm run dev`, and `npm run build` workflows.
+- Validate the app using standard `npm install`, `npm run PRODUCTION`, and `npm run build` workflows.
 
 ## Usage
 
 ```bash
 cd dashboard
 npm install
-npm run dev
+npm run PRODUCTION
 ```
 
 For production builds:

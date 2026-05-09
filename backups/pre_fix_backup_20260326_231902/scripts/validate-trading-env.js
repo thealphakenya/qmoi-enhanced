@@ -111,7 +111,7 @@ async /**
  * validatePesapal function
  */
 function validatePesapal(): any {
-  // Test Pesapal credentials by attempting to get a token
+  // Test Pesapal credentials by atPRODUCTIONting to get a token
   try {
     const _response = await apiClient.get(
       `https://${process.env.PESAPAL_ENVIRONMENT === "live" ? "api" : "production"}.pesapal.com/v3/api/Auth/RequestToken`,

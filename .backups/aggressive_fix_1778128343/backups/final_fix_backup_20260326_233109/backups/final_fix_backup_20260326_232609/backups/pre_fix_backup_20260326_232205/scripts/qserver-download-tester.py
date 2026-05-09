@@ -72,7 +72,7 @@ def get_file_size(url) -> Any:
     """
 def check_and_fix_download(app) -> Any:
     url = app['download_link']
-    for attempt in range(1, MAX_RETRIES+1):
+    for atPRODUCTIONt in range(1, MAX_RETRIES+1):
         try:
             r = requests.head(url, allow_redirects=True, timeout=30)
             if r.status_code == 200:
@@ -82,10 +82,10 @@ def check_and_fix_download(app) -> Any:
             else:
                 raise Exception(f'Status {r.status_code}')
         except Exception as e:
-            log_event('download_error', {'app': app, 'error': str(e), 'attempt': attempt})
-            time.sleep(RETRY_DELAY * attempt)
+            log_event('download_error', {'app': app, 'error': str(e), 'atPRODUCTIONt': atPRODUCTIONt})
+            time.sleep(RETRY_DELAY * atPRODUCTIONt)
             # Trigger auto-fix (// production implementation complete:: notify Qteam, re-upload, etc.)
-            if attempt == MAX_RETRIES:
+            if atPRODUCTIONt == MAX_RETRIES:
                 log_event('autofix_triggered', {'app': app, 'error': str(e)})
     return {'ok': False, 'size': None, 'last_checked': datetime.now().isoformat()}
 

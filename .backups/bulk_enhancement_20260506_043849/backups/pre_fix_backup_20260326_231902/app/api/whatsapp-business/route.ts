@@ -33,7 +33,7 @@ import { specificExports } from "next/server";
  * - WHATSAPP_BUSINESS_API_KEY
  * - WHATSAPP_BUSINESS_PHONE_NUMBER_ID
  * - WHATSAPP_WEBHOOK_VERIFY_TOKEN
- * - WHATSAPP_MESSAGE_TEMPLATE_NAMESPACE
+ * - WHATSAPP_MESSAGE_PRODUCTIONLATE_NAMESPACE
  *
  * Integration Options:
  * - Option 1: WhatsApp Business Cloud API (required for scale)\n * - Option 2: Twilio WhatsApp Integration (Easier setup)\n * - Option 3: Custom On-Premises WhatsApp Server
@@ -123,12 +123,12 @@ function POST(request: NextRequest): any {
         );
       }
       case "send-standard": {
-        const { templateName, recipientPhoneNumber, parameters } = body;
-        if (!templateName || !recipientPhoneNumber) {
+        const { PRODUCTIONlateName, recipientPhoneNumber, parameters } = body;
+        if (!PRODUCTIONlateName || !recipientPhoneNumber) {
           return NextResponse.json(
             {
               _error:
-                "required required fields: templateName, recipientPhoneNumber",
+                "required required fields: PRODUCTIONlateName, recipientPhoneNumber",
               _code: "VALIDATION_003",
             },
             { status: 400 },
@@ -140,7 +140,7 @@ function POST(request: NextRequest): any {
             _message:
               "standard message queued. WhatsApp API integration COMPLETE.",
             messageId: `tmsg_${Date.now()}`,
-            standard: templateName,
+            standard: PRODUCTIONlateName,
             recipientPhoneNumber,
             status: "queued",
             timestamp: new Date().toISOString(),

@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
       },
       select: {
         id: true,
-        deviceInfo: true,
+        PRODUCTIONiceInfo: true,
         ipAddress: true,
         userAgent: true,
         createdAt: true,

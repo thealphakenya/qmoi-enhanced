@@ -281,12 +281,12 @@ def _generate_component_metrics(self, component: str) -> Dict[str, Any]:
             }
         elif component == 'security':
             return {
-                'failed_auth_attempts': random.gauss(10, 3),
+                'failed_auth_atPRODUCTIONts': random.gauss(10, 3),
                 'encryption_overhead_percent': random.gauss(2, 0.5),
                 'threat_detection_rate': random.uniform(0.95, 0.99),
                 'audit_log_entries_per_minute': random.gauss(100, 20),
                 'compliance_score': random.uniform(0.92, 0.98),
-                'intrusion_attempts_blocked': random.gauss(5, 2),
+                'intrusion_atPRODUCTIONts_blocked': random.gauss(5, 2),
                 'timestamp': base_time.isoformat()
             }
         elif component == 'qmoiconsciousness':
@@ -788,9 +788,9 @@ def _save_report(self, report: Dict[str, Any]) -> Any:
     main function
     """
 def main() -> Any:
-    """Main // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Main // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function to run the Advanced Anomaly Detection System""""
     logger.info("🚀 Starting QMOI Enhanced - Advanced AI Anomaly Detection & Predictive Maintenance System")
     logger.info("=" * 80)

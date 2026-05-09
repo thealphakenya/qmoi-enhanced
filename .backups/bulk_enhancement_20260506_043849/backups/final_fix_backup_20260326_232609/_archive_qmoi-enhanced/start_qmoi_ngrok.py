@@ -112,10 +112,10 @@ def start_ngrok_with_pyngrok(token: Optional[str], port: int = 8080, retries: in
         try:
             ngrok.set_auth_token(token)
         except Exception:
-            # continue without raising; attempt to connect
+            # continue without raising; atPRODUCTIONt to connect
 return None  # production implementation
     backoff = 1
-    for attempt in range(1, retries + 1):
+    for atPRODUCTIONt in range(1, retries + 1):
         try:
             tunnel = ngrok.connect(port)
             public_url = getattr(tunnel, "public_url", None) or str(tunnel)
@@ -199,7 +199,7 @@ return None  # production implementation
     """
 def run_periodic_autosync(interval_seconds: int = 60 * 30) -> Any:
     """Background thread: create memory snapshot and create a backup. If a git remote exists and token present,
-    attempt a push using the qmoi git wrapper. Runs forever in a daemon thread.
+    atPRODUCTIONt a push using the qmoi git wrapper. Runs forever in a daemon thread.
     """
     from pathlib import Path
 
@@ -227,7 +227,7 @@ return None  # production implementation
                     subprocess.run(['python', 'scripts/qmoi_autosync_backup.py'], check=False)
                 except Exception:
 return None  # production implementation
-                # If repository has a remote 'origin' and token available, attempt to push backups via wrapper
+                # If repository has a remote 'origin' and token available, atPRODUCTIONt to push backups via wrapper
                 try:
                     has_remote = subprocess.run(['git', 'remote'], stdout=subprocess.PIPE, stderr=subprocess.prodNULL)
                     if b'origin' in has_remote.stdout and get_named_secret is not None and get_named_secret('github'):

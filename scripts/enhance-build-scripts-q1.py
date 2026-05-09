@@ -55,7 +55,7 @@ class BuildScriptOptimizer:
         "**/*.yaml"
     ]
     
-    HEADER_TEMPLATE = """# QMOI EVOLUTION ENHANCED
+    HEADER_PRODUCTIONLATE = """# QMOI EVOLUTION ENHANCED
 # Build script optimized with continuous evolution improvements
 # Features: {features}
 # Last enhanced: {timestamp}
@@ -78,9 +78,9 @@ handle_error() {{
     local line_no=$1
     log_error "Build failed at line $line_no"
     log_error "Command: $BASH_COMMAND"
-    # Attempt recovery
+    # AtPRODUCTIONt recovery
     if [[ -n "${{RECOVERY_SCRIPT:-}}" ]]; then
-        log_info "Attempting recovery..."
+        log_info "AtPRODUCTIONting recovery..."
         bash "$RECOVERY_SCRIPT" || true
     fi
     exit 1
@@ -207,7 +207,7 @@ report_metrics() {{
             
             # Add Q1 header
             features = ', '.join(['Parallel builds', 'AI optimization', 'Error recovery', 'Auto-monitoring'])
-            header = self.HEADER_TEMPLATE.format(
+            header = self.HEADER_PRODUCTIONLATE.format(
                 features=features,
                 timestamp=datetime.utcnow().isoformat() + 'Z'
             )
@@ -235,7 +235,8 @@ report_metrics() {{
             self.stats["improvements_applied"] += 4  # Header + Error + Parallel + Monitoring
             return True
             
-        except Exception as e:
+    
+    except Exception as e:
             self.log("ERROR", f"Failed to enhance {script_path}: {e}")
             return False
     
@@ -261,7 +262,8 @@ report_metrics() {{
             
             return False
             
-        except Exception as e:
+    
+    except Exception as e:
             self.log("ERROR", f"Failed to enhance {workflow_path}: {e}")
             return False
     
@@ -297,7 +299,8 @@ report_metrics() {{
                     if future.result():
                         self.stats["scripts_updated"] += 1
                         self.log("SUCCESS", f"Enhanced: {script_path.relative_to(self.project_root)}")
-                except Exception as e:
+            
+    except Exception as e:
                     self.log("ERROR", f"Error processing {script_path}: {e}")
     
     def generate_report(self) -> str:
@@ -374,4 +377,120 @@ def main():
 
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     sys.exit(main())

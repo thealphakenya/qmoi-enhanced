@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -77,7 +83,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -97,7 +104,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -111,7 +119,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -138,6 +147,7 @@ def test_listening_and_speaking() -> Any:
     try:
         # execute listening and speaking test
         log_test_result("Listening and Speaking", "Passed")
+
     except Exception as e:
         log_test_result("Listening and Speaking", f"Failed - {e}")
 
@@ -148,6 +158,7 @@ def test_memory_and_learning() -> Any:
     try:
         # execute memory and learning test
         log_test_result("Memory and Learning", "Passed")
+
     except Exception as e:
         log_test_result("Memory and Learning", f"Failed - {e}")
 
@@ -158,6 +169,7 @@ def test_automations() -> Any:
     try:
         # execute automation tests
         log_test_result("Automations", "Passed")
+
     except Exception as e:
         log_test_result("Automations", f"Failed - {e}")
 
@@ -168,6 +180,7 @@ def test_app_builds_and_releases() -> Any:
     try:
         # execute app builds and GitHub releases validation
         log_test_result("App Builds and Releases", "Passed")
+
     except Exception as e:
         log_test_result("App Builds and Releases", f"Failed - {e}")
 

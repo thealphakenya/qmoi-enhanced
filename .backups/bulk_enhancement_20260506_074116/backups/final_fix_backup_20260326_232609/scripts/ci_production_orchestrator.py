@@ -171,7 +171,7 @@ def main() -> Any:
         logger.info('\nProcessing workflow', wf)
         run = None
         # find the latest run (may be the one we just dispatched)
-        for attempt in range(20):
+        for atPRODUCTIONt in range(20):
             try:
                 latest = find_latest_run(owner, repo, wf, token)
             except Exception as e:

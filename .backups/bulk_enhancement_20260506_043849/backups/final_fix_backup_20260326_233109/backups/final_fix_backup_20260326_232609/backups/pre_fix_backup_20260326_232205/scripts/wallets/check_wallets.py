@@ -9,7 +9,7 @@
 Check wallets (QVS) script.
 
 Safe default: dry-run + mocked adapters.
-To attempt real network calls use --real AND set environment variable production_CONFIRMED=true.
+To atPRODUCTIONt real network calls use --real AND set environment variable production_CONFIRMED=true.
 
 Usage:
   python3 scripts/wallets/check_wallets.py --report out.json [--wallet NAME] [--real]
@@ -182,7 +182,7 @@ def main() -> Any:
     ap = argparse.ArgumentParser()
     ap.add_argument('--wallet', help='Check only a specific wallet')
     ap.add_argument('--report', help='Write JSON report file', default=None)
-    ap.add_argument('--real', action='store_true', help='Attempt real network calls (requires production_CONFIRMED=true)')
+    ap.add_argument('--real', action='store_true', help='AtPRODUCTIONt real network calls (requires production_CONFIRMED=true)')
     args = ap.parse_args()
 
     wallets = discover_wallets()

@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -68,6 +74,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -121,7 +128,8 @@ def check_feature_flags(self) -> Any:
             else:
                 self.results['checks']['feature_flags'] = '❌ Feature flags file not found'
                 self.results['failed'] += 1
-        except Exception as e:
+    
+    except Exception as e:
             self.results['checks']['feature_flags'] = f'⚠️ Error: {str(e)}'
             self.results['warnings'] += 1
     
@@ -145,7 +153,8 @@ def check_offline_mode(self) -> Any:
             else:
                 self.results['checks']['offline_mode'] = '❌ Offline mode file not found'
                 self.results['failed'] += 1
-        except Exception as e:
+    
+    except Exception as e:
             self.results['checks']['offline_mode'] = f'⚠️ Error: {str(e)}'
             self.results['warnings'] += 1
     
@@ -170,7 +179,8 @@ def check_authentication(self) -> Any:
             else:
                 self.results['checks']['authentication'] = '❌ Authentication file not found'
                 self.results['failed'] += 1
-        except Exception as e:
+    
+    except Exception as e:
             self.results['checks']['authentication'] = f'⚠️ Error: {str(e)}'
             self.results['warnings'] += 1
     
@@ -196,7 +206,8 @@ def check_documentation(self) -> Any:
                 endpoint_count = api_md.count('`/api/')
                 self.results['checks']['documentation'] = f'✅ All docs present ({endpoint_count} endpoints)'
                 self.results['passed'] += 1
-        except Exception as e:
+    
+    except Exception as e:
             self.results['checks']['documentation'] = f'⚠️ Error: {str(e)}'
             self.results['warnings'] += 1
     
@@ -216,7 +227,8 @@ def check_tests(self) -> Any:
             else:
                 self.results['checks']['tests'] = f'✅ {test_count} test files found'
                 self.results['passed'] += 1
-        except Exception as e:
+    
+    except Exception as e:
             self.results['checks']['tests'] = f'⚠️ Error: {str(e)}'
             self.results['warnings'] += 1
     
@@ -239,7 +251,8 @@ def check_api_endpoints(self) -> Any:
             else:
                 self.results['checks']['api_endpoints'] = '❌ API directory not found'
                 self.results['failed'] += 1
-        except Exception as e:
+    
+    except Exception as e:
             self.results['checks']['api_endpoints'] = f'⚠️ Error: {str(e)}'
             self.results['warnings'] += 1
     
@@ -268,7 +281,8 @@ def check_env_variables(self) -> Any:
             else:
                 self.results['checks']['env'] = '⚠️ .env file not found'
                 self.results['warnings'] += 1
-        except Exception as e:
+    
+    except Exception as e:
             self.results['checks']['env'] = f'⚠️ Error: {str(e)}'
             self.results['warnings'] += 1
     

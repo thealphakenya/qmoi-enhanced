@@ -146,10 +146,10 @@ def __init__(self) -> Any:
         self.fix_stats = {
             'total_errors_detected': 0,
             'total_errors_fixed': 0,
-            'fix_attempts': 0,
+            'fix_atPRODUCTIONts': 0,
             'successful_fixes': 0,
             'failed_fixes': 0,
-            'last_fix_attempt': None,
+            'last_fix_atPRODUCTIONt': None,
             'current_status': 'idle'
         }
         self.setup_file_watcher()
@@ -319,8 +319,8 @@ def trigger_error_fix(self, error_type: str, errors: List[str]) -> Any:
         """Trigger error fixing for specific error type"""
         try:
             logger.info(f"🔧 Triggering fix for {error_type}")
-            self.fix_stats['fix_attempts'] += 1
-            self.fix_stats['last_fix_attempt'] = datetime.now().isoformat()
+            self.fix_stats['fix_atPRODUCTIONts'] += 1
+            self.fix_stats['last_fix_atPRODUCTIONt'] = datetime.now().isoformat()
             
             if error_type in self.fix_strategies:
                 self.apply_fix_strategies(error_type, self.fix_strategies[error_type])

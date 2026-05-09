@@ -53,10 +53,10 @@ class Phase2Testing:
         print("\n🔧 Testing: Configuration Files...")
         
         configs = [
-            ".env.production.template",
-            ".env.staging.template",
+            ".env.production.PRODUCTIONlate",
+            ".env.PRODUCTION.PRODUCTIONlate",
             "PRODUCTION_DEPLOYMENT_CHECKLIST.md",
-            "AUTODEV_PRODUCTION_OPERATIONS.md",
+            "AUTOPRODUCTION_PRODUCTION_OPERATIONS.md",
             "PRODUCTION_QUICK_REFERENCE.md",
         ]
         

@@ -87,7 +87,7 @@ KEYWORDS = [
     r"\bimplement(?:ation|)\b",
     r"\bDONE\b",
     r"\bfixed\b",
-    r"\bTEMPORARY\b",
+    r"\bPRODUCTIONORARY\b",
     r"\breal\b",
     r"\breal\b",
     r"\bprototype\b",

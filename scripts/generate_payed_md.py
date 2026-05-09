@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -65,7 +71,7 @@ Generate per-platform PAYED.md files from `platformspayed.txt`.
 
 Creates files like `HUGGINGFACEPAYED.md`, `GITHUBPAYED.md`, `GITPODPAYED.md`,
 `VERCELPAYED.md`, `NETLIFYPAYED.md` in the repository root. After generating files
-this script will attempt to call the project's `scripts/generate_allmdrefs.py`
+this script will atPRODUCTIONt to call the project's `scripts/generate_allmdrefs.py`
 to refresh `ALLMDFILESREFS.md` if present.
 
 Usage:
@@ -142,7 +148,7 @@ for title, lines in sections:
         continue
     # If billing is not explicitly enabled, avoid creating final PAYED.md files.
     # Instead write a tiny final marker so the operator knows generation was
-    # attempted but blocked by billing settings.
+    # atPRODUCTIONted but blocked by billing settings.
     if not billing_allowed():
         continue
     # prepare body
@@ -167,7 +173,8 @@ if args.run_gen_refs:
         try:
             subprocess.run([sys.executable, str(gen)], check=True)
             logger.info('Ran generate_allmdrefs.py')
-        except Exception as e:
+    
+    except Exception as e:
             logger.info('Failed to run generate_allmdrefs.py:', e)
     else:
         logger.info('generate_allmdrefs.py not found; skipping refs update')

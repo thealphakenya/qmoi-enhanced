@@ -367,11 +367,11 @@ def _collect_cross_chain_metrics(self, timestamp: str) -> Dict[str, Any]:
 def _collect_security_metrics(self, timestamp: str) -> Dict[str, Any]:
         """Collect security system metrics"""
         return {
-            'failed_auth_attempts': random.gauss(10, 3),
+            'failed_auth_atPRODUCTIONts': random.gauss(10, 3),
             'encryption_overhead_percent': random.gauss(2, 0.5),
             'threat_detection_rate': random.uniform(0.95, 0.99),
             'audit_log_entries_per_minute': random.gauss(100, 20),
-            'intrusion_attempts_blocked': random.gauss(5, 2),
+            'intrusion_atPRODUCTIONts_blocked': random.gauss(5, 2),
             'compliance_score': random.uniform(0.92, 0.98),
             'data_encryption_status': 'AES-256-GCM',
             'access_control_effectiveness': random.uniform(0.95, 0.99),
@@ -867,9 +867,9 @@ def _save_dashboard_report(self, report: Dict[str, Any]) -> Any:
     main function
     """
 def main() -> Any:
-    """Main // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Main // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function to run the Advanced Analytics Dashboard"""
     logger.info("🚀 Starting QMOI Enhanced - Advanced AI Analytics Dashboard & Visualization System")
     logger.info("=" * 90)

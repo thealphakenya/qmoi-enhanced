@@ -148,7 +148,7 @@ def load_automation_config(self) -> Any:
         self.automation_config = {
             "max_concurrent_tasks": 5,
             "task_timeout": 300,  # 5 minutes
-            "retry_attempts": 3,
+            "retry_atPRODUCTIONts": 3,
             "auto_restart_failed": True,
             "intelligent_scheduling": True,
             "workflow_optimization": True,
@@ -646,14 +646,14 @@ def handle_task_failure(self, task: Dict[str, Any]) -> Any:
         """Handle task failure"""
         try:
             retry_count = task.get("retry_count", 0)
-            max_retries = self.automation_config["retry_attempts"]
+            max_retries = self.automation_config["retry_atPRODUCTIONts"]
             
             if retry_count < max_retries and self.automation_config["auto_restart_failed"]:
                 # Retry task
                 task["retry_count"] = retry_count + 1
                 task["status"] = "retrying"
                 
-                logging.info(f"Retrying task: {task.get('name', 'unknown')} (attempt {retry_count + 1}/{max_retries})")
+                logging.info(f"Retrying task: {task.get('name', 'unknown')} (atPRODUCTIONt {retry_count + 1}/{max_retries})")
                 
                 # Re-queue task
                 self.task_queue.put(task)

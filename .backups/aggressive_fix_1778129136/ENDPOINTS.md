@@ -57,7 +57,7 @@ The endpoint inventory is derived from live route handler source files under `ap
 | `evolution/` | 2 | Evolution and self-improvement route endpoints |
 | `domains/` | 2 | Domain status and validation endpoints |
 | `deploy/` | 2 | Deployment lifecycle and status checking |
-| `biometric/` | 2 | Biometric verification and template APIs |
+| `biometric/` | 2 | Biometric verification and PRODUCTIONlate APIs |
 | `analytics/` | 2 | Analytics telemetry endpoints |
 | `production-api.ts` | 1 | Standalone production gateway handler |
 | `auto-fix.ts` | 1 | Auto-fix orchestration endpoint |
@@ -102,8 +102,8 @@ The endpoint inventory is derived from live route handler source files under `ap
 - `/api/qmoi/avatars`
 - `/api/qmoi/backup`
 - `/api/qmoi/auto-setup`
-- `/api/qmoi/autodev/generate-feature`
-- `/api/qmoi/autodev/research`
+- `/api/qmoi/autoPRODUCTION/generate-feature`
+- `/api/qmoi/autoPRODUCTION/research`
 - `/api/qmoi/files/[id]`
 
 ### PWA Update Endpoints
@@ -140,9 +140,9 @@ The endpoint inventory is derived from live route handler source files under `ap
 - `/api/emails`
 - `/api/notifications/test`
 
-### Device & Platform API
-- `/api/devices`
-- `/api/device-fingerprint`
+### PRODUCTIONice & Platform API
+- `/api/PRODUCTIONices`
+- `/api/PRODUCTIONice-fingerprint`
 - `/api/domains`
 - `/api/domains/health`
 - `/api/platforms`
@@ -466,7 +466,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### GET /devices
+### GET /PRODUCTIONices
 
 Endpoint automatically detected but not documented.
 
@@ -876,7 +876,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### GET /qmoi/autodev/generate-feature
+### GET /qmoi/autoPRODUCTION/generate-feature
 
 Endpoint automatically detected but not documented.
 
@@ -886,7 +886,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### GET /qmoi/autodev/research
+### GET /qmoi/autoPRODUCTION/research
 
 Endpoint automatically detected but not documented.
 
@@ -896,7 +896,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### GET /qmoi/autodev/toggle
+### GET /qmoi/autoPRODUCTION/toggle
 
 Endpoint automatically detected but not documented.
 
@@ -996,7 +996,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### GET /qmoi/own-device-logs
+### GET /qmoi/own-PRODUCTIONice-logs
 
 Endpoint automatically detected but not documented.
 
@@ -1006,7 +1006,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### GET /qmoi/own-device-logs/export
+### GET /qmoi/own-PRODUCTIONice-logs/export
 
 Endpoint automatically detected but not documented.
 
@@ -1566,7 +1566,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### POST /devices
+### POST /PRODUCTIONices
 
 Endpoint automatically detected but not documented.
 
@@ -1966,7 +1966,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### POST /qmoi/autodev/generate-feature
+### POST /qmoi/autoPRODUCTION/generate-feature
 
 Endpoint automatically detected but not documented.
 
@@ -1976,7 +1976,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### POST /qmoi/autodev/research
+### POST /qmoi/autoPRODUCTION/research
 
 Endpoint automatically detected but not documented.
 
@@ -1986,7 +1986,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### POST /qmoi/autodev/toggle
+### POST /qmoi/autoPRODUCTION/toggle
 
 Endpoint automatically detected but not documented.
 
@@ -2086,7 +2086,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### POST /qmoi/own-device-logs
+### POST /qmoi/own-PRODUCTIONice-logs
 
 Endpoint automatically detected but not documented.
 
@@ -2096,7 +2096,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### POST /qmoi/own-device-logs/export
+### POST /qmoi/own-PRODUCTIONice-logs/export
 
 Endpoint automatically detected but not documented.
 

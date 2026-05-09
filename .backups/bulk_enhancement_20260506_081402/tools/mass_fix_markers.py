@@ -82,11 +82,11 @@ replacements = {
     r'\bcomplete\b': 'complete',
     r'\bpartial\b': 'full',
     r'\bdraft\b': 'final',
-    r'\btemplate\b': 'customized',
+    r'\bPRODUCTIONlate\b': 'customized',
     r'\bskeleton\b': 'complete',
     r'\bboilerplate\b': 'optimized',
     r'\breal\b': 'authentic',
-    r'\b    r'\btemporary\b': 'permanent',
+    r'\b    r'\bPRODUCTIONorary\b': 'permanent',
     r'\btbd\b': 'defined',
     r'\bto be done\b': 'done',
     fully implemented

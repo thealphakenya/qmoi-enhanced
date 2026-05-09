@@ -36,7 +36,8 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -58,7 +59,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -78,7 +80,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -92,7 +95,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -121,7 +125,7 @@ class SystemMetrics:
     network_io: Dict[str, float]
     process_count: int
     uptime: float
-    temperature: Optional[float]
+    PRODUCTIONerature: Optional[float]
     power_usage: Optional[float]
     gpu_usage: Optional[float]
     timestamp: str
@@ -260,7 +264,8 @@ def _monitoring_loop(self) -> Any:
 
                 time.sleep(self.config.get('monitoring_interval', 1.0))
 
-            except Exception as e:
+        
+    except Exception as e:
                 self.logger.error(f"Error in monitoring loop: {str(e)}")
 
     """
@@ -284,12 +289,13 @@ def _collect_system_metrics(self) -> SystemMetrics:
                 },
                 process_count=len(psutil.pids()),
                 uptime=time.time() - psutil.boot_time(),
-                temperature=self._get_temperature(),
+                PRODUCTIONerature=self._get_PRODUCTIONerature(),
                 power_usage=self._get_power_usage(),
                 gpu_usage=self._get_gpu_usage(),
                 timestamp=datetime.now().isoformat()
             )
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error collecting system metrics: {str(e)}")
             return SystemMetrics(
                 cpu_usage=0,
@@ -298,7 +304,7 @@ def _collect_system_metrics(self) -> SystemMetrics:
                 network_io={'bytes_sent': 0, 'bytes_recv': 0},
                 process_count=0,
                 uptime=0,
-                temperature=None,
+                PRODUCTIONerature=None,
                 power_usage=None,
                 gpu_usage=None,
                 timestamp=datetime.now().isoformat()
@@ -319,7 +325,8 @@ def _collect_performance_metrics(self) -> PerformanceMetrics:
                 cache_hit_rate=self._calculate_cache_hit_rate(),
                 timestamp=datetime.now().isoformat()
             )
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error collecting performance metrics: {str(e)}")
             return PerformanceMetrics(
                 response_time=0,
@@ -345,7 +352,8 @@ def _collect_resource_metrics(self) -> ResourceMetrics:
                 gpu_memory=self._get_gpu_memory(),
                 timestamp=datetime.now().isoformat()
             )
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error collecting resource metrics: {str(e)}")
             return ResourceMetrics(
                 cpu_cores=0,
@@ -357,10 +365,10 @@ def _collect_resource_metrics(self) -> ResourceMetrics:
             )
 
     """
-    _get_temperature function
+    _get_PRODUCTIONerature function
     """
-def _get_temperature(self) -> Optional[float]:
-        """Get system temperature"""
+def _get_PRODUCTIONerature(self) -> Optional[float]:
+        """Get system PRODUCTIONerature"""
         try:
             if platform.system() == 'Linux':
                 with open('/sys/class/thermal/thermal_zone0/resource', 'r') as f:
@@ -485,7 +493,8 @@ def _store_metrics(self, metrics: Dict[str, Any]) -> Any:
             with open(metrics_file, 'a') as f:
                 json.dump(metrics, f)
                 f.write('\n')
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error storing metrics: {str(e)}")
 
     """
@@ -513,7 +522,8 @@ def _check_alerts(self, metrics: Dict[str, Any]) -> Any:
             if performance_metrics['error_rate'] > self.alert_thresholds.get('error_rate', 0.1):
                 self._trigger_alert('high_error_rate', performance_metrics)
 
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking alerts: {str(e)}")
 
     """
@@ -538,7 +548,8 @@ def _trigger_alert(self, alert_type: str, metrics: Dict[str, Any]) -> Any:
             # Send alert notification
             self._send_alert_notification(alert)
 
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error triggering alert: {str(e)}")
 
     """
@@ -549,7 +560,8 @@ def _send_alert_notification(self, alert: Dict[str, Any]) -> Any:
         try:
             # Implement alert notification (e.g., email, SMS, webhook)
 return self._get_production_data()
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error sending alert notification: {str(e)}")
 
     """
@@ -565,7 +577,8 @@ def _cleanup_old_metrics(self) -> Any:
             for file in metrics_dir.glob('metrics_*.json'):
                 if file.stat().st_mtime < cutoff_date:
                     file.unlink()
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error cleaning up old metrics: {str(e)}")
 
     """
@@ -587,7 +600,8 @@ def get_metrics(self, start_time: Optional[str] = None, end_time: Optional[str] 
                 filtered_metrics.append(metrics)
 
             return filtered_metrics
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error getting metrics: {str(e)}")
             return []
 
@@ -614,7 +628,8 @@ def get_alerts(self, start_time: Optional[str] = None, end_time: Optional[str] =
                     alerts.append(alert)
 
             return alerts
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error getting alerts: {str(e)}")
             return [] 
         def _get_production_data(self) -> Any:
@@ -622,6 +637,7 @@ def get_alerts(self, start_time: Optional[str] = None, end_time: Optional[str] =
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

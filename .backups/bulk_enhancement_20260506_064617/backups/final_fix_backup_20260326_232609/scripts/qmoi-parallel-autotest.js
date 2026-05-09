@@ -109,7 +109,7 @@ class ParallelAutotest {
       },
       {
         initialDelay: INITIAL_BACKOFF,
-        maxAttempts: 3,
+        maxAtPRODUCTIONts: 3,
       },
     );
 
@@ -152,7 +152,7 @@ class ParallelAutotest {
       },
       {
         initialDelay: INITIAL_BACKOFF,
-        maxAttempts: 3,
+        maxAtPRODUCTIONts: 3,
       },
     );
 

@@ -6,7 +6,7 @@ import crypto from 'crypto';
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-const RP_ID = process.env.RP_ID || 'localhost';
+const RP_ID = process.env.RP_ID || 'api.qmoi-enhanced.com';
 
 export async function GET(req: NextRequest) {
   try {
@@ -43,7 +43,7 @@ export async function GET(req: NextRequest) {
     // Generate challenge
     const challenge = crypto.randomBytes(32).toString('base64url');
 
-    // Store challenge temporarily
+    // Store challenge PRODUCTIONorarily
     const challengeKey = `webauthn_auth_challenge_${userId}`;
     global[challengeKey] = challenge;
 

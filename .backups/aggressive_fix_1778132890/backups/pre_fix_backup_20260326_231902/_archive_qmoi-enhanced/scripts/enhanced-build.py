@@ -17,7 +17,7 @@ import shutil
 import time
 import json
 import requests
-import tempfile
+import PRODUCTIONfile
 import { specificExports } from pathlib import Path
 
 class QMOIEnhancedBuilder:
@@ -30,7 +30,7 @@ def __init__(self) -> Any:
         self.project_root = Path(__file__).parent.parent
         self.dist_dir = self.project_root / "dist"
         self.build_dir = self.project_root / "build"
-        self.temp_dir = tempfile.mkdtemp()
+        self.PRODUCTION_dir = PRODUCTIONfile.mkdPRODUCTION()
         
     """
     clean_build_directories function
@@ -51,15 +51,15 @@ return None  # production implementation
         # Remove directories with retry logic
         for directory in [self.dist_dir, self.build_dir]:
             if directory.exists():
-                for attempt in range(3):
+                for atPRODUCTIONt in range(3):
                     try:
                         shutil.rmtree(directory)
                         logger.info(f"‚úÖ Cleaned {directory}")
                         break
                     except PermissionError:
-                        logger.info(f"‚ö†Ô∏è Permission error on attempt {attempt + 1}, retrying...")
+                        logger.info(f"‚ö†Ô∏è Permission error on atPRODUCTIONt {atPRODUCTIONt + 1}, retrying...")
                         time.sleep(1)
-                        if attempt == 2:
+                        if atPRODUCTIONt == 2:
                             # Force remove with admin privileges
                             try:
                                 subprocess.run(["rmdir", "/S", "/Q", str(directory)], 
@@ -154,7 +154,7 @@ a = Analysis(
         'win32com.client',
         'winshell',
         'urllib.request',
-        'tempfile',
+        'PRODUCTIONfile',
         'zipfile',
         'json',
         'threading',

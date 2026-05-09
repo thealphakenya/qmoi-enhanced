@@ -41,7 +41,8 @@ class ProductionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error in {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading {file_path}: {e}")
             raise
 
@@ -55,16 +56,17 @@ class ProductionFileManager:
                 file_path.rename(backup_path)
                 logger.debug(f"Created backup: {backup_path}")
 
-            temp_file = file_path.with_suffix('.tmp')
+            PRODUCTION_file = file_path.with_suffix('.tmp')
             file_path.parent.mkdir(parents=True, exist_ok=True)
 
-            with open(temp_file, 'w', encoding='utf-8') as f:
+            with open(PRODUCTION_file, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=indent, ensure_ascii=False)
 
-            temp_file.rename(file_path)
+            PRODUCTION_file.rename(file_path)
             logger.debug(f"Successfully wrote JSON to {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error writing {file_path}: {e}")
             backup_path = file_path.with_suffix('.bak')
             if backup_path.exists():
@@ -81,7 +83,8 @@ class ProductionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading {file_path}: {e}")
             raise
 
@@ -94,15 +97,16 @@ class ProductionFileManager:
                 backup_path = file_path.with_suffix('.bak')
                 file_path.rename(backup_path)
 
-            temp_file = file_path.with_suffix('.tmp')
+            PRODUCTION_file = file_path.with_suffix('.tmp')
             file_path.parent.mkdir(parents=True, exist_ok=True)
 
-            with open(temp_file, 'w', encoding=encoding) as f:
+            with open(PRODUCTION_file, 'w', encoding=encoding) as f:
                 f.write(content)
 
-            temp_file.rename(file_path)
+            PRODUCTION_file.rename(file_path)
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error writing text file {file_path}: {e}")
             backup_path = file_path.with_suffix('.bak')
             if backup_path.exists():
@@ -115,7 +119,8 @@ class ProductionFileManager:
         try:
             with open(file_path, 'rb') as f:
                 return hashlib.sha256(f.read()).hexdigest()
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error calculating hash for {file_path}: {e}")
             return ""
 
@@ -132,7 +137,8 @@ class ProductionFileManager:
             logger.debug(f"Created backup: {backup_path}")
             return backup_path
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to create backup for {file_path}: {e}")
             return None
 
@@ -147,7 +153,8 @@ class ProductionFileManager:
             logger.info(f"Restored {file_path} from backup")
             return True
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to restore from backup: {e}")
             return False
 
@@ -161,7 +168,8 @@ class ProductionFileManager:
             logger.debug(f"Compressed {file_path} to {compressed_path}")
             return compressed_path
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to compress {file_path}: {e}")
             return None
 
@@ -175,7 +183,8 @@ class ProductionFileManager:
             logger.debug(f"Decompressed {compressed_path} to {output_path}")
             return output_path
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to decompress {compressed_path}: {e}")
             return None
 
@@ -188,7 +197,8 @@ class ProductionFileManager:
                         zipf.write(file_path, file_path.name)
             logger.debug(f"Created archive: {archive_path}")
             return True
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to create archive: {e}")
             return False
 
@@ -200,7 +210,8 @@ class ProductionFileManager:
                 zipf.extractall(extract_dir)
             logger.debug(f"Extracted archive to: {extract_dir}")
             return True
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to extract archive: {e}")
             return False
 
@@ -209,7 +220,8 @@ class ProductionFileManager:
         try:
             search_dir = directory or self.base_dir
             return list(search_dir.rglob(pattern))
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to find files with pattern {pattern}: {e}")
             return []
 
@@ -226,7 +238,8 @@ class ProductionFileManager:
                 'hash': self.calculate_file_hash(file_path),
                 'exists': file_path.exists()
             }
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to get file info for {file_path}: {e}")
             return {'path': str(file_path), 'exists': False}
 
@@ -238,20 +251,22 @@ class ProductionFileManager:
             if not is_valid:
                 logger.warning(f"File integrity check failed for {file_path}")
             return is_valid
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to validate file integrity: {e}")
             return False
 
-    def clean_temp_files(self, pattern: str = "*.tmp", older_than_hours: int = 24) -> int:
-        """Clean up temporary files"""
+    def clean_PRODUCTION_files(self, pattern: str = "*.tmp", older_than_hours: int = 24) -> int:
+        """Clean up PRODUCTIONorary files"""
         cleaned = 0
         cutoff_time = datetime.now().timestamp() - (older_than_hours * 3600)
-        for temp_file in self.base_dir.rglob(pattern):
+        for PRODUCTION_file in self.base_dir.rglob(pattern):
             try:
-                if temp_file.stat().st_mtime < cutoff_time:
-                    temp_file.unlink()
+                if PRODUCTION_file.stat().st_mtime < cutoff_time:
+                    PRODUCTION_file.unlink()
                     cleaned += 1
-            except Exception as e:
-                logger.warning(f"Failed to remove temp file {temp_file}: {e}")
-        logger.info(f"Cleaned {cleaned} temporary files")
+        
+    except Exception as e:
+                logger.warning(f"Failed to remove PRODUCTION file {PRODUCTION_file}: {e}")
+        logger.info(f"Cleaned {cleaned} PRODUCTIONorary files")
         return cleaned

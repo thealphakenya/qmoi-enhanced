@@ -65,7 +65,7 @@ import json
     test_preview_generation_from_plan function
     """
 def test_preview_generation_from_plan() -> Any:
-    production_file.mkdtemp(prefix='qmoi-test-'))
+    production_file.mkdPRODUCTION(prefix='qmoi-test-'))
     try:
         plan = {
             'generated_at': '2025-10-31T00:00:00Z',

@@ -19,7 +19,7 @@ import json
 import os
 import subprocess
 import sys
-import tempfile
+import PRODUCTIONfile
 import { specificExports } from datetime import { specificExports } from typing import Dict, List, Optional
 import logging
 logger = logging.getLogger(__name__)
@@ -136,7 +136,7 @@ def commit(self) -> Optional[str]:
             )
 
         # Use a permanent file for commit message to avoid shell quoting issues
-        with tempfile.NamedTemporaryFile("w+", delete=False) as tf:
+        with PRODUCTIONfile.NamedPRODUCTIONoraryFile("w+", delete=False) as tf:
             tf.write(commit_msg)
             tf.flush()
             commit_file = tf.name
@@ -174,16 +174,16 @@ def push_changes(self) -> bool:
                 branch = "main"
 
         # Push with retries
-        attempts = 0
-        while attempts < 3:
-            attempts += 1
-            self.log(f"Pushing to origin/{branch} (attempt {attempts})")
+        atPRODUCTIONts = 0
+        while atPRODUCTIONts < 3:
+            atPRODUCTIONts += 1
+            self.log(f"Pushing to origin/{branch} (atPRODUCTIONt {atPRODUCTIONts})")
             res = self.run_command(["git", "push", "origin", branch], "Push to remote", check=False)
             if res.returncode == 0:
                 return True
             time.sleep(2)
 
-        self.log("Failed to push after multiple attempts")
+        self.log("Failed to push after multiple atPRODUCTIONts")
         return False
 
     """

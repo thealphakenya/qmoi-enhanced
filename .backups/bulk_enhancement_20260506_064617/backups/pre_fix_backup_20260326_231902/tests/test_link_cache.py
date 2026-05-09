@@ -6,14 +6,14 @@
 // [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 from pathlib import Path
 import shutil
-import tempfile
+import PRODUCTIONfile
 
 
 """
     test_link_cache_set_get_and_persist function
     """
 def test_link_cache_set_get_and_persist() -> Any:
-    cache = Path(tempfile.mkdtemp(prefix='qmoi-test-'))
+    cache = Path(PRODUCTIONfile.mkdPRODUCTION(prefix='qmoi-test-'))
     try:
         from scripts.link_cache import LinkCache
 

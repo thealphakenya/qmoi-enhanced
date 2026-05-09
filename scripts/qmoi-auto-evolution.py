@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -120,7 +126,8 @@ def load_config(self) -> Dict[str, Any]:
                 with open(config_file, 'r') as f:
                     file_config = json.load(f)
                     config.update(file_config)
-            except Exception as e:
+        
+    except Exception as e:
                 logger.warning(f"Could not load {config_file}: {e}")
         
         return config
@@ -154,7 +161,8 @@ def run_auto_evolution_analysis(self) -> Any:
                 self.analysis_results[analysis_name] = result
                 logger.info(f"✅ {analysis_name} completed")
                 
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"{analysis_name} failed: {e}")
                 logger.info(f"❌ {analysis_name} failed: {e}")
         
@@ -203,7 +211,8 @@ def analyze_performance(self) -> Dict[str, Any]:
             for suggestion in suggestions:
                 logger.info(f"   ⚠️  {suggestion}")
             
-        except Exception as e:
+    
+    except Exception as e:
             results['error'] = str(e)
             logger.info(f"   Performance analysis error: {e}")
         
@@ -238,7 +247,8 @@ def analyze_security(self) -> Dict[str, Any]:
                 if not check_result.get('secure', False):
                     logger.info(f"      Issue: {check_result.get('issue', 'Unknown')}")
                     
-            except Exception as e:
+        
+    except Exception as e:
                 results['security_checks'][check_name] = {'secure': False, 'error': str(e)}
                 logger.info(f"   {check_name}: ❌ - {e}")
         
@@ -270,7 +280,8 @@ def analyze_code_quality(self) -> Dict[str, Any]:
                 results['quality_metrics'][metric_name] = metric_result
                 logger.info(f"   {metric_name}: {metric_result}")
                 
-            except Exception as e:
+        
+    except Exception as e:
                 results['quality_metrics'][metric_name] = {'error': str(e)}
                 logger.info(f"   {metric_name}: Error - {e}")
         
@@ -301,7 +312,8 @@ def analyze_trends(self) -> Dict[str, Any]:
                 results['trends'][trend_name] = trend_result
                 logger.info(f"   {trend_name}: {trend_result}")
                 
-            except Exception as e:
+        
+    except Exception as e:
                 results['trends'][trend_name] = {'error': str(e)}
                 logger.info(f"   {trend_name}: Error - {e}")
         
@@ -332,7 +344,8 @@ def analyze_architecture(self) -> Dict[str, Any]:
                 results['architecture'][check_name] = check_result
                 logger.info(f"   {check_name}: {check_result}")
                 
-            except Exception as e:
+        
+    except Exception as e:
                 results['architecture'][check_name] = {'error': str(e)}
                 logger.info(f"   {check_name}: Error - {e}")
         
@@ -363,7 +376,8 @@ def analyze_dependencies(self) -> Dict[str, Any]:
                 results['dependencies'][check_name] = check_result
                 logger.info(f"   {check_name}: {check_result}")
                 
-            except Exception as e:
+        
+    except Exception as e:
                 results['dependencies'][check_name] = {'error': str(e)}
                 logger.info(f"   {check_name}: Error - {e}")
         
@@ -394,7 +408,8 @@ def analyze_error_patterns(self) -> Dict[str, Any]:
                 results['error_patterns'][pattern_name] = pattern_result
                 logger.info(f"   {pattern_name}: {pattern_result}")
                 
-            except Exception as e:
+        
+    except Exception as e:
                 results['error_patterns'][pattern_name] = {'error': str(e)}
                 logger.info(f"   {pattern_name}: Error - {e}")
         
@@ -425,7 +440,8 @@ def analyze_success_patterns(self) -> Dict[str, Any]:
                 results['success_patterns'][pattern_name] = pattern_result
                 logger.info(f"   {pattern_name}: {pattern_result}")
                 
-            except Exception as e:
+        
+    except Exception as e:
                 results['success_patterns'][pattern_name] = {'error': str(e)}
                 logger.info(f"   {pattern_name}: Error - {e}")
         
@@ -792,7 +808,8 @@ def create_evolution_report(self) -> Any:
             
             logger.info(f"\n📊 Evolution report saved to logs/auto-evolution-report.json")
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Could not save evolution report: {e}")
         
         # Print summary
@@ -817,7 +834,8 @@ def run(self) -> Any:
         """Run the auto-evolution system"""
         try:
             self.run_auto_evolution_analysis()
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Auto-evolution failed: {e}")
 
 """

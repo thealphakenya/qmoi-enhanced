@@ -65,7 +65,7 @@ module.exports = async function handleText(sock, jid, text) {
         "- !language <code>: Change language (en, es, fr, de, sw, ar, zh)\n" +
         "- !responsemode <mode>: Change response style (professional, casual, technical, friendly)\n\n" +
         "**Advanced Features**\n" +
-        "- !autodev <command>: Run autonomous production\n" +
+        "- !autoPRODUCTION <command>: Run autonomous production\n" +
         "- !project <name>: Handle projects with video autonomy\n" +
         "- !video <action>: Control video autonomy\n" +
         "- !memory: Check consciousness state\n" +
@@ -123,15 +123,15 @@ module.exports = async function handleText(sock, jid, text) {
   }
 
   // Autonomous production Framework
-  if (command === "!autodev") {
-    const autodevCommand = normalized.slice(command.length).trim();
+  if (command === "!autoPRODUCTION") {
+    const autoPRODUCTIONCommand = normalized.slice(command.length).trim();
     const result = await askQmoi({
-      type: "autodev",
-      action: autodevCommand || "all",
+      type: "autoPRODUCTION",
+      action: autoPRODUCTIONCommand || "all",
       jid,
     });
     return sock.sendMessage(jid, {
-      text: `⚙️ **AUTODEV Execution Started**\n\n${result.message}\n\nCheck resumefromhere.txt and autodevtracks.md for detailed progress.`,
+      text: `⚙️ **AUTOPRODUCTION Execution Started**\n\n${result.message}\n\nCheck resumefromhere.txt and autoPRODUCTIONtracks.md for detailed progress.`,
     });
   }
 

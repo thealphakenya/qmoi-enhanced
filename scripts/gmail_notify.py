@@ -35,14 +35,19 @@ msg.attach(MIMEText(args.body, 'plain'))
 
 try:
     pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:

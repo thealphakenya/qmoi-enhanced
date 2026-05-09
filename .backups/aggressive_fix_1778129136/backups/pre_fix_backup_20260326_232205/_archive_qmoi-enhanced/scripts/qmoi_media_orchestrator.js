@@ -102,7 +102,7 @@ function runFixAndGit(): any {
     execSync("git push");
     log("Git push successful.");
   } catch (err) {
-    log("Git push failed, attempting pull/rebase and retry: " + err);
+    log("Git push failed, atPRODUCTIONting pull/rebase and retry: " + err);
     try {
       execSync("git pull --rebase");
       execSync("git push");

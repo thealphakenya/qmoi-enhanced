@@ -24,7 +24,7 @@ class BenchmarkType(Enum):
     MMLU_PRO = "mmlu_pro"  # Advanced multitask understanding
     HLE = "hle"  # Humanity's Last Exam
     SWE_BENCH = "swe_bench"  # Software engineering capability
-    TERMINAL_BENCH = "terminal_bench"  # DevOps/terminal capability
+    TERMINAL_BENCH = "terminal_bench"  # PRODUCTIONOps/terminal capability
     LMARENA = "lmarena"  # Human preference voting
 
 
@@ -215,7 +215,7 @@ class AutorateSystem:
         if rating["overall_rating"] < 80:
             rating["recommendations"].append("Focus on improving lower-scoring benchmarks")
         if not rating["strengths"]:
-            rating["recommendations"].append("Develop excellence in at least one benchmark area")
+            rating["recommendations"].append("PRODUCTIONelop excellence in at least one benchmark area")
         if len(rating["weaknesses"]) > 2:
             rating["recommendations"].append("Prioritize addressing multiple weak areas")
         

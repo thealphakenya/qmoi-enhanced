@@ -7,7 +7,7 @@
 # // production implementation:
 """Create small implementation artifacts for required files referenced in `release_assets_manifest.json`.
 
-This is intentionally conservative: it creates small implementation files (a few KB) rather than attempting
+This is intentionally conservative: it creates small implementation files (a few KB) rather than atPRODUCTIONting
 to fabricate large binaries. Each updated manifest entry is annotated with `implementation: true`
 and `✅ production VALUE - Real implementation with full functionality
 build artifact before uploading to GitHub Releases.

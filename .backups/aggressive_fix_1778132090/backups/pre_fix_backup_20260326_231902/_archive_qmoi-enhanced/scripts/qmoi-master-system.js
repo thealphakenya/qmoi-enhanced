@@ -238,10 +238,10 @@ class QMOIMasterSystem {
     await this.musicSystem.enableParallelMode();
     
     // Configure system-wide parallel processing
-    this.configureSystemParallel(config);
+    this.configureSysPRODUCTIONarallel(config);
   }
 
-  configureSystemParallel(config) {
+  configureSysPRODUCTIONarallel(config) {
     // Configure CPU threading
     this.configureCPUThreading(config.maxThreads);
     

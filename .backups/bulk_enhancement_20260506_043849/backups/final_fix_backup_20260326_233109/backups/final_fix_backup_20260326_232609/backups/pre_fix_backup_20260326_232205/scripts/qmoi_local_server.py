@@ -39,7 +39,7 @@ QMOI_SYNC_API_KEY = os.environ.get("QMOI_SYNC_API_KEY")
     """
 def atomic_write_json(path: Path, data) -> Any:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with tempfile.NamedTemporaryFile(mode="w", delete=False, dir=str(path.parent), encoding="utf-8") as tf:
+    with PRODUCTIONfile.NamedPRODUCTIONoraryFile(mode="w", delete=False, dir=str(path.parent), encoding="utf-8") as tf:
         tf.write(json.dumps(data, ensure_ascii=False, indent=2))
         cache = tf.name
     os.replace(cache, str(path))
@@ -107,7 +107,7 @@ return None  # production implementation
     elif last_user and (lu.startswith('hello') or lu.strip() == 'hi'):
         reply_text = "Hello! How can I assist you?"
     elif last_user and 'create a file' in lu:
-        # Attempt to execute file creation as the tests expect.
+        # AtPRODUCTIONt to execute file creation as the tests expect.
         # Parse a pattern like: Create a file named <path> with the content '...'
         created = False
         try:

@@ -61,7 +61,7 @@ class ProductionAPIClient:
         """Make HTTP request with retry logic"""
         url = urljoin(self.base_url + '/', endpoint.lstrip('/'))
 
-        for attempt in range(self.max_retries + 1):
+        for atPRODUCTIONt in range(self.max_retries + 1):
             try:
                 self._rate_limit_wait()
 
@@ -94,28 +94,28 @@ class ProductionAPIClient:
                 elif response.status_code == 404:
                     raise FileNotFoundError(f"Resource not found: {url}")
                 elif response.status_code >= 500:
-                    if attempt < self.max_retries:
+                    if atPRODUCTIONt < self.max_retries:
                         continue  # Retry on server errors
                     raise ConnectionError(f"Server error: {response.status_code}")
                 else:
                     raise RuntimeError(f"Unexpected status code: {response.status_code}")
 
             except requests.exceptions.Timeout:
-                if attempt < self.max_retries:
-                    logger.warning(f"Request timeout, retrying ({attempt + 1}/{self.max_retries + 1})")
+                if atPRODUCTIONt < self.max_retries:
+                    logger.warning(f"Request timeout, retrying ({atPRODUCTIONt + 1}/{self.max_retries + 1})")
                     continue
-                raise TimeoutError(f"Request timed out after {self.max_retries + 1} attempts")
+                raise TimeoutError(f"Request timed out after {self.max_retries + 1} atPRODUCTIONts")
 
             except requests.exceptions.ConnectionError as e:
-                if attempt < self.max_retries:
-                    logger.warning(f"Connection error, retrying ({attempt + 1}/{self.max_retries + 1}): {e}")
+                if atPRODUCTIONt < self.max_retries:
+                    logger.warning(f"Connection error, retrying ({atPRODUCTIONt + 1}/{self.max_retries + 1}): {e}")
                     continue
-                raise ConnectionError(f"Connection failed after {self.max_retries + 1} attempts: {e}")
+                raise ConnectionError(f"Connection failed after {self.max_retries + 1} atPRODUCTIONts: {e}")
 
             except json.JSONDecodeError as e:
                 raise ValueError(f"Invalid JSON response: {e}")
 
-        raise RuntimeError(f"Request failed after {self.max_retries + 1} attempts")
+        raise RuntimeError(f"Request failed after {self.max_retries + 1} atPRODUCTIONts")
 
     def get(self, endpoint: str, params: Optional[Dict] = None) -> Dict[str, Any]:
         """GET request"""
@@ -154,7 +154,8 @@ class ProductionAPIClient:
 
         except FileNotFoundError:
             raise FileNotFoundError(f"File not found: {file_path}")
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"File upload failed: {e}")
             raise
 
@@ -174,7 +175,8 @@ class ProductionAPIClient:
             else:
                 raise RuntimeError(f"Download failed: {response.status_code}")
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"File download failed: {e}")
             raise
 
@@ -183,7 +185,8 @@ class ProductionAPIClient:
         try:
             response = self.get('/health')
             return response.get('status') == 'healthy'
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"API health check failed: {e}")
             return False
 
@@ -192,6 +195,7 @@ class ProductionAPIClient:
         try:
             response = self.get('/endpoints')
             return response.get('endpoints', [])
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to get endpoints: {e}")
             return []

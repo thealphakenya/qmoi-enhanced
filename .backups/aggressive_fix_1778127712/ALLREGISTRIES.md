@@ -43,9 +43,9 @@ This document consolidates all registry, orchestrator, platform, and automation 
 - `DOMAIN_HEALTH_AUTOMATION_GUIDE.md` — Health check automation
 - `AUTO_RECOVERY_PROCEDURES.md` — Automated recovery workflows
 
-### DevOps & Infrastructure
-- `AUTODEV_SECRETS.md` — Secret management automation
-- `AUTODEV_VALIDATION_SYSTEM.md` — Deployment validation
+### PRODUCTIONOps & Infrastructure
+- `AUTOPRODUCTION_SECRETS.md` — Secret management automation
+- `AUTOPRODUCTION_VALIDATION_SYSTEM.md` — Deployment validation
 - `AUTOGIT.md` — Git automation workflows
 - `BACKGROUND_AUTOMATION_COMPLETE.md` — Background task automation
 

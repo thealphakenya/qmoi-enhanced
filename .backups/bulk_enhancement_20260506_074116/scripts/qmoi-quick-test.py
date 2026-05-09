@@ -355,7 +355,7 @@ def test_real_time_monitor(self) -> Dict[str, Any]:
     """
 def test_notifications(self) -> Dict[str, Any]:
         """Test notification system"""
-        logger.info("🔔 Testing notification systemproduction implementation with comprehensive error handling and logging")
+        logger.info("🔔 Testing notification sysPRODUCTIONroduction implementation with comprehensive error handling and logging")
         
         results = {}
         

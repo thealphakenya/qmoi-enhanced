@@ -388,7 +388,7 @@ logger.info(usedVariable);
       testSuccess: false,
       cleanupSuccess: false,
       _error: null,
-      autoFixAttempted: false,
+      autoFixAtPRODUCTIONted: false,
       autoFixSuccess: false
     };
     
@@ -427,10 +427,10 @@ logger.info(usedVariable);
       
       result.testTime = Date.now() - testStart;
       
-      // Attempt auto-fix
+      // AtPRODUCTIONt auto-fix
       if (result.testSuccess) {
-        logger.info('   🔧 Attempting auto-fix...');
-        result.autoFixAttempted = true;
+        logger.info('   🔧 AtPRODUCTIONting auto-fix...');
+        result.autoFixAtPRODUCTIONted = true;
         
         try {
           const fixResult = await this.runCommand('node scripts/enhanced-error-fix.js --type=comprehensive');
@@ -527,7 +527,7 @@ logger.info(usedVariable);
         setupSuccess: this.testResults.filter(r => r.setupSuccess).length,
         testSuccess: this.testResults.filter(r => r.testSuccess).length,
         cleanupSuccess: this.testResults.filter(r => r.cleanupSuccess).length,
-        autoFixAttempted: this.testResults.filter(r => r.autoFixAttempted).length,
+        autoFixAtPRODUCTIONted: this.testResults.filter(r => r.autoFixAtPRODUCTIONted).length,
         autoFixSuccess: this.testResults.filter(r => r.autoFixSuccess).length
       },
       results: this.testResults,
@@ -549,7 +549,7 @@ logger.info(usedVariable);
     logger.info(`   Setup success: ${report.summary.setupSuccess}/${report.summary.totalTests}`);
     logger.info(`   Test success: ${report.summary.testSuccess}/${report.summary.totalTests}`);
     logger.info(`   Cleanup success: ${report.summary.cleanupSuccess}/${report.summary.totalTests}`);
-    logger.info(`   Auto-fix attempted: ${report.summary.autoFixAttempted}`);
+    logger.info(`   Auto-fix atPRODUCTIONted: ${report.summary.autoFixAtPRODUCTIONted}`);
     logger.info(`   Auto-fix success: ${report.summary.autoFixSuccess}`);
     logger.info(`   Total time: ${(totalTime / 1000).toFixed(2)}s`);
     logger.info(`   Report saved to: ${reportPath}`);

@@ -57,7 +57,7 @@ function ensureNpmInstall(dir): any {
     await run('npm install', dir);
     log(`npm install successful in ${dir}`);
   } catch (_e) {
-    log(`npm install failed in ${dir}, attempting fix`);
+    log(`npm install failed in ${dir}, atPRODUCTIONting fix`);
     await run('npm audit fix || true', dir);
     await run('npm install --legacy-peer-deps', dir);
   }

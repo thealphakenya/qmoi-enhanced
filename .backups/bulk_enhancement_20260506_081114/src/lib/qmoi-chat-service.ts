@@ -11,7 +11,7 @@ export interface QMOIAdvancedFlags {
   universal: boolean;
   multiversal: boolean;
   reality: boolean;
-  temporal: boolean;
+  PRODUCTIONoral: boolean;
   omniscient: boolean;
   dimensional: boolean;
   realityWeaver: boolean;
@@ -50,7 +50,7 @@ const defaultAdvancedFlags: QMOIAdvancedFlags = {
   universal: false,
   multiversal: false,
   reality: false,
-  temporal: false,
+  PRODUCTIONoral: false,
   omniscient: false,
   dimensional: false,
   realityWeaver: false,
@@ -152,7 +152,7 @@ export function processQmoiQuery(
   if (/(universal|collective consciousness)/.test(lower)) flags.universal = true;
   if (/(multiversal|parallel universe|multiple universes)/.test(lower)) flags.multiversal = true;
   if (/(reality|reality engineering|reality weaver)/.test(lower)) flags.reality = true;
-  if (/(temporal|time manipulation|dilated)/.test(lower)) flags.temporal = true;
+  if (/(PRODUCTIONoral|time manipulation|dilated)/.test(lower)) flags.PRODUCTIONoral = true;
   if (/(omniscient|all-knowing|perfect knowledge)/.test(lower)) flags.omniscient = true;
   if (/(dimensional|multi-dimensional|dimension)/.test(lower)) flags.dimensional = true;
   if (/(reality weaver|weaver)/.test(lower)) flags.realityWeaver = true;

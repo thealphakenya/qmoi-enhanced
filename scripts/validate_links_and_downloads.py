@@ -37,18 +37,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -81,7 +87,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -113,7 +120,7 @@ health_monitor = productionHealthMonitor()
 This script performs a conservative check: it extracts URLs from the
 reference markdown file (@ALLMDFILESREFS.md or ALLMDFILESREFS.md) and from
 webmanifest files. By default it checks local file existence. Pass
---check-network to attempt HTTP HEAD requests for remote URLs.
+--check-network to atPRODUCTIONt HTTP HEAD requests for remote URLs.
 """
 
 import argparse

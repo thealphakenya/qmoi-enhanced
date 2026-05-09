@@ -303,9 +303,9 @@ def _scan_for_secrets(self) -> Any:
     _scan_for_dangerous_functions function
     """
 def _scan_for_dangerous_functions(self) -> Any:
-        """Scan for dangerous // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        """Scan for dangerous // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function usage""""
         logging.info("Scanning for dangerous functionsproduction implementation with comprehensive error handling and logging")
         py_files = list(WORKSPACE_ROOT.rglob('*.py'))
@@ -321,9 +321,9 @@ function usage""""
                                     severity='high',
                                     file=str(file_path.relative_to(WORKSPACE_ROOT)),
                                     line_number=line_num,
-                                    message=f"Dangerous // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+                                    message=f"Dangerous // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function '{func_name}' used",
                                     remediation=recommendation
                                 ))
@@ -363,7 +363,7 @@ def _check_compliance(self, requirement: str, check_type: str) -> ComplianceChec
             'password_policy': ('Password Policy', 'Strong password requirements enforced'),
             'session_timeout': ('Session Timeout', 'Session timeout after 30 minutes of inactivity'),
             'api_logging': ('API Logging', 'All API calls logged with timestamp and user'),
-            'access_logging': ('Access Logging', 'All access attempts logged'),
+            'access_logging': ('Access Logging', 'All access atPRODUCTIONts logged'),
             'error_logging': ('Error Logging', 'All errors logged with context'),
             'audit_trail': ('Audit Trail', 'complete audit trail maintained'),
             'package_scanning': ('Package Scanning', 'Dependency vulnerabilities scanned'),

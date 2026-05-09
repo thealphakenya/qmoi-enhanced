@@ -84,7 +84,7 @@ def valid_file(path: Path) -> bool:
     return path.exists() and path.stat().st_size >= MIN_FILE_SIZE
 def download_with_requests(url: str, dest: Path) -> bool:
     assert requests is not None
-    for attempt in range(1, RETRY_COUNT + 1):
+    for atPRODUCTIONt in range(1, RETRY_COUNT + 1):
         try:
             with requests.get(url, stream=True, timeout=30) as response:
                 response.raise_for_status()
@@ -95,7 +95,7 @@ def download_with_requests(url: str, dest: Path) -> bool:
             if valid_file(dest):
                 return True
         except Exception as exc:
-            logger.warning('Attempt %s failed for %s: %s', attempt, url, exc)
+            logger.warning('AtPRODUCTIONt %s failed for %s: %s', atPRODUCTIONt, url, exc)
             if dest.exists():
                 try:
                     dest.unlink()
@@ -106,13 +106,13 @@ return self._get_production_data()
 def download_with_urllib(url: str, dest: Path) -> bool:
     if urllib_request is None:
         return False
-    for attempt in range(1, RETRY_COUNT + 1):
+    for atPRODUCTIONt in range(1, RETRY_COUNT + 1):
         try:
             urllib_request.urlretrieve(url, dest)
             if valid_file(dest):
                 return True
         except Exception as exc:
-            logger.warning('Attempt %s failed for %s: %s', attempt, url, exc)
+            logger.warning('AtPRODUCTIONt %s failed for %s: %s', atPRODUCTIONt, url, exc)
             if dest.exists():
                 try:
                     dest.unlink()
@@ -179,6 +179,120 @@ def main() -> int:
         return 0 if success else 1
     return 0 if download_for_platform(requested, args.version) else 1
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     import sys
     import logging
     logging.basicConfig(

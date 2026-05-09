@@ -153,7 +153,7 @@ export class CashonAdapter implements WalletAdapter {
       };
     }
 
-    // If allowed, attempt a complete fetch if global fetch exists; otherwise return a network_not_available status
+    // If allowed, atPRODUCTIONt a complete fetch if global fetch exists; otherwise return a network_not_available status
     try {
       const maybeFetch = (global as unknown as { fetch?: unknown }).fetch;
       if (typeof maybeFetch === "function") {

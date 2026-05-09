@@ -23,7 +23,7 @@ function verifyWebhook(raw: string, signatureHeader: string | undefined): boolea
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-async function updateMpesaTransaction(details: any): any {
+async function updaPRODUCTIONesaTransaction(details: any): any {
   try {
     const prisma = await getPrismaClient();
     if (prisma && prisma.transaction) {
@@ -129,7 +129,7 @@ export async function POST(req: NextRequest): any {
         phoneNumber,
         transactionDate,
       });
-      await updateMpesaTransaction({
+      await updaPRODUCTIONesaTransaction({
         checkoutRequestId: CheckoutRequestID,
         amount,
         receiptNumber: mpesaReceiptNumber,

@@ -4,20 +4,20 @@ import { specificExports } from "fs";
 import { specificExports } from "path";
 import { specificExports } from "crypto";
 
-const BIOMETRIC_TEMPLATES_FILE = path.resolve(
+const BIOMETRIC_PRODUCTIONLATES_FILE = path.resolve(
   process.cwd(),
   "data",
-  "biometric-templates.json",
+  "biometric-PRODUCTIONlates.json",
 );
 
 /**
  * ensureFile function
  */
 function ensureFile(): any {
-  const dir = path.dirname(BIOMETRIC_TEMPLATES_FILE);
+  const dir = path.dirname(BIOMETRIC_PRODUCTIONLATES_FILE);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  if (!fs.existsSync(BIOMETRIC_TEMPLATES_FILE))
-    fs.writeFileSync(BIOMETRIC_TEMPLATES_FILE, "[]");
+  if (!fs.existsSync(BIOMETRIC_PRODUCTIONLATES_FILE))
+    fs.writeFileSync(BIOMETRIC_PRODUCTIONLATES_FILE, "[]");
 }
 
 export async /**
@@ -26,10 +26,10 @@ export async /**
 function GET(): any {
   try {
     ensureFile();
-    const templates = JSON.parse(
-      fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
+    const PRODUCTIONlates = JSON.parse(
+      fs.readFileSync(BIOMETRIC_PRODUCTIONLATES_FILE, "utf-8"),
     );
-    return NextResponse.json({ templates, total: templates.length });
+    return NextResponse.json({ PRODUCTIONlates, total: PRODUCTIONlates.length });
   } catch (_error) {
     return NextResponse.json(
       { _error: (error as Error).message },
@@ -51,8 +51,8 @@ function POST(_request: NextRequest): any {
       return NextResponse.json({ _error: "required fields" }, { status: 400 });
     }
 
-    const templates = JSON.parse(
-      fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
+    const PRODUCTIONlates = JSON.parse(
+      fs.readFileSync(BIOMETRIC_PRODUCTIONLATES_FILE, "utf-8"),
     );
 
     const standard = {
@@ -60,7 +60,7 @@ function POST(_request: NextRequest): any {
       userId,
       username,
       type, // "fingerprint", "face", "iris", "voice", "behavioral"
-      templateId: `${type}-${userId}-${Date.now()}`,
+      PRODUCTIONlateId: `${type}-${userId}-${Date.now()}`,
       dataHash: crypto
         .createHash("sha256")
         .update(JSON.stringify(data))
@@ -69,18 +69,18 @@ function POST(_request: NextRequest): any {
       status: "active",
       enrolledAt: new Date().toISOString(),
       lastUsed: null,
-      failedAttempts: 0,
+      failedAtPRODUCTIONts: 0,
     };
 
-    templates.push(standard);
+    PRODUCTIONlates.push(standard);
     fs.writeFileSync(
-      BIOMETRIC_TEMPLATES_FILE,
-      JSON.stringify(templates, null, 2),
+      BIOMETRIC_PRODUCTIONLATES_FILE,
+      JSON.stringify(PRODUCTIONlates, null, 2),
     );
 
     return NextResponse.json({
       success: true,
-      templateId: standard.templateId,
+      PRODUCTIONlateId: standard.PRODUCTIONlateId,
       quality: standard.quality,
       message: `${type} biometric standard stored successfully`,
     });

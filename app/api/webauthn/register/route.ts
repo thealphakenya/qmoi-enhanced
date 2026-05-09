@@ -40,7 +40,7 @@ export async function GET(req: NextRequest) {
     // Generate challenge
     const challenge = crypto.randomBytes(32).toString('base64url');
 
-    // Store challenge temporarily using memory cache for short-lived session. In production use Redis or secure store.
+    // Store challenge PRODUCTIONorarily using memory cache for short-lived session. In production use Redis or secure store.
     const challengeKey = `webauthn_challenge_${userId}`;
     (global as any)[challengeKey] = challenge;
 

@@ -1,4 +1,4 @@
-Continue work based on resumefromhere.txt. Once all tasks there are finalized, develop and execute a robust Python or Node.js script designed for a total repository audit. The script must meet these specific requirements:
+Continue work based on resumefromhere.txt. Once all tasks there are finalized, PRODUCTIONelop and execute a robust Python or Node.js script designed for a total repository audit. The script must meet these specific requirements:
 Exhaustive Recursive Scan: Scan every single directory and file within the repository (root and all subdirectories), ensuring no file is skipped regardless of depth.
 Heuristic Detection: Distinguish between actual executable code and 'instructional comments' (e.g., DONEs, fixeds, implementation notes, or real-service real implementations).
 Instruction Manifest Generation: Output all findings into a new file named instructionmanifest.txt. The structure must include:

@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -462,7 +468,7 @@ def __init__(self) -> Any:
     """
 def initialize_system(self) -> bool:
         """Initialize the complete AI-powered trading system"""
-        logger.info('🚀 Initializing QMOI AI-Powered Trading Systemproduction implementation with comprehensive error handling and logging')
+        logger.info('🚀 Initializing QMOI AI-Powered Trading SysPRODUCTIONroduction implementation with comprehensive error handling and logging')
 
         # Initialize all components
         self.predictive_engine.initialize_models()
@@ -684,6 +690,7 @@ def main() -> Any:
 
         logger.info('💾 Full report saved to: ../AI_POWERED_TRADING_REPORT.json')
         logger.info('🎉 AI-powered predictive analytics and autonomous operations fully operational!')
+
 
     except Exception as e:
         logger.info(f'❌ Error: {e}')

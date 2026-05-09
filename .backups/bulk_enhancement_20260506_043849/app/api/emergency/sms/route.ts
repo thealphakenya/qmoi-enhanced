@@ -373,7 +373,7 @@ async function getEmergencyContacts(): Promise<Array<{
   return [
     { name: 'System Administrator', phone: '+1234567890', role: 'admin', priority: 'high' },
     { name: 'Security Team Lead', phone: '+1234567891', role: 'security', priority: 'high' },
-    { name: 'DevOps Engineer', phone: '+1234567892', role: 'devops', priority: 'medium' },
+    { name: 'PRODUCTIONOps Engineer', phone: '+1234567892', role: 'PRODUCTIONops', priority: 'medium' },
     { name: 'Customer Support Lead', phone: '+1234567893', role: 'support', priority: 'medium' },
   ];
 }

@@ -95,16 +95,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -533,7 +533,7 @@ def start(self) -> Any:
             logging.warning("Betting system is already running")
             return
         
-        logging.info("🚀 Starting QMOI Automated Betting Systemproduction implementation with comprehensive error handling and logging")
+        logging.info("🚀 Starting QMOI Automated Betting SysPRODUCTIONroduction implementation with comprehensive error handling and logging")
         self.running = True
         
         # Update status
@@ -557,7 +557,7 @@ def start(self) -> Any:
     """
 def stop(self) -> Any:
         """Stop the automated betting system"""
-        logging.info("🛑 Stopping QMOI Automated Betting Systemproduction implementation with comprehensive error handling and logging")
+        logging.info("🛑 Stopping QMOI Automated Betting SysPRODUCTIONroduction implementation with comprehensive error handling and logging")
         self.running = False
         self.update_status({'running': False})
         logging.info("✅ Betting system stopped")

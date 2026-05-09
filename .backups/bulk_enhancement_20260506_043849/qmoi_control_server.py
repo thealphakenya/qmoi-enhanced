@@ -353,7 +353,7 @@ def save_revoked_token(token) -> Any:
         try:
             cur = conn.cursor()
             cur.execute('CREATE TABLE IF NOT EXISTS revoked_tokens (token TEXT PRIMARY KEY, jti TEXT)')
-            # attempt to decode jti
+            # atPRODUCTIONt to decode jti
             try:
                 payload = jwt.decode(token, JWT_SECRET, algorithms=['HS256'])
                 jti = payload.get('jti')
@@ -794,7 +794,7 @@ def deals_purchase(deal_id) -> Any:
                         (user, 0, 'sponsored', None, 0))
             conn.commit()
             fully implemented
-        # Otherwise, attempt to create a provider charge (Stripe if configured)
+        # Otherwise, atPRODUCTIONt to create a provider charge (Stripe if configured)
         adapter_result = None
         try:
             adapter_result = stripe_adapter.create_charge(user, price, 'usd')
@@ -1081,7 +1081,7 @@ def control() -> Any:
         else:
             token = auth.strip()
     if token != CONTROL_TOKEN:
-        app.logger.warning('Unauthorized control attempt')
+        app.logger.warning('Unauthorized control atPRODUCTIONt')
         return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
     app.logger.info('Received control command: %s target=%s', cmd, target)
     # Implement a few concrete commands
@@ -1565,7 +1565,7 @@ def attachment_download(att_id) -> Any:
         # If data_field looks like base64 without prefix, return it with mime
         if isinstance(data_field, str) and data_field:
             try:
-                # attempt base64 decode to validate
+                # atPRODUCTIONt base64 decode to validate
                 _ = base64.b64decode(data_field.split(',')[-1])
                 return jsonify({'status': 'ok', 'id': aid, 'name': name, 'size': size, 'mime': mime, 'dataBase64': data_field})
             except Exception:

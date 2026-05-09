@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -73,7 +79,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -93,7 +100,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -107,7 +115,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -160,14 +169,14 @@ MODEL_CARD_STATS_SECTION = '''
 - **Errors Remaining:** {errors_remaining}
 - **Errors Fixed:** {errors_fixed}
 - **Percent Fixed:** {percent_fixed}%
-- **Auto-Fix Attempts:** {auto_fix_attempts}
+- **Auto-Fix AtPRODUCTIONts:** {auto_fix_atPRODUCTIONts}
 - **Auto-Fix Success:** {auto_fix_success}
 - **Last Error:** {last_error}
 - **Last Fix:** {last_fix}
 - **Last Update:** {last_update}
 '''
 
-MODEL_CARD_TEMPLATE = """"
+MODEL_CARD_PRODUCTIONLATE = """"
 # QMOI AI Model Card (Hugging Face)
 
 [![Version](VERSION_BADGE)](DASHBOARD_URL)
@@ -246,7 +255,7 @@ def update_model_card(repo_id, version, health, status, dashboard_url, status_ur
         version_badge = make_badge('version', version, 'blue')
         health_badge = make_badge('health', f"{health}%25", 'brightgreen' if status == 'healthy' else 'yellow' if status == 'warning' else 'red')
         updated_badge = make_badge('updated', updated.replace(':','%3A'), 'informational')
-        card = MODEL_CARD_TEMPLATE.replace('VERSION_BADGE', version_badge)
+        card = MODEL_CARD_PRODUCTIONLATE.replace('VERSION_BADGE', version_badge)
         card = card.replace('HEALTH_BADGE', health_badge)
         card = card.replace('UPDATED_BADGE', updated_badge)
         card = card.replace('VERSION', version)
@@ -262,7 +271,8 @@ def update_model_card(repo_id, version, health, status, dashboard_url, status_ur
                 with open(HEALTH_STATS_PATH) as f:
                     stats = json.load(f)
                 stats_section = MODEL_CARD_STATS_SECTION.format(**stats)
-            except Exception as e:
+        
+    except Exception as e:
                 logger.warning(f'Could not load health stats: {e}')
         card = card + '\n' + stats_section
         # Download current README.md for backup
@@ -285,6 +295,7 @@ def update_model_card(repo_id, version, health, status, dashboard_url, status_ur
         )
         logger.info('Model card updated and pushed to Hugging Face.')
         return True
+
     except Exception as e:
         logger.error(f'Model card update failed: {e}')
         return False

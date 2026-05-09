@@ -435,7 +435,7 @@ def __init__(self) -> Any:
     """
 def initialize_system(self) -> bool:
         """Initialize the complete cross-chain interoperability system"""
-        logger.info('🌐 Initializing QMOI Cross-Chain Interoperability Systemproduction implementation with comprehensive error handling and logging')
+        logger.info('🌐 Initializing QMOI Cross-Chain Interoperability SysPRODUCTIONroduction implementation with comprehensive error handling and logging')
 
         # Add supported blockchains
         chains = [

@@ -189,7 +189,7 @@ for c in candidates:
         trial_url = f'https://github.com/thestablekenya/qmoi-enhanced/releases/download/{tag}/{name}'
         logger.info('  trying', trial_url)
         try:
-            # Attempt a optimized HEAD to check availability
+            # AtPRODUCTIONt a optimized HEAD to check availability
             with urllib.request.urlopen(trial_url) as r:
                 if r.status == 200:
                     url = trial_url

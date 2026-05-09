@@ -20,14 +20,19 @@ s3 = boto3.client('s3')
 # List all objects in the bucket and download them
 try:
     pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
     paginator = s3.get_paginator('list_objects_v2')

@@ -146,21 +146,21 @@ These files are responsible for importing and using multiple components:
 
 ---
 
-### 6️⃣ Device & Hardware Management
+### 6️⃣ PRODUCTIONice & Hardware Management
 
 **Components:**
-- `DeviceSettingsPanel.tsx`
-- `DeviceMap.tsx`
+- `PRODUCTIONiceSettingsPanel.tsx`
+- `PRODUCTIONiceMap.tsx`
 - `WifiPanel.tsx`
 - `WifiAutoConnectPanel.tsx`
 - `BluetoothManager.tsx`
-- `QMOIOwnDevice.tsx`
+- `QMOIOwnPRODUCTIONice.tsx`
 - `QmoiAccessibility.tsx`
 
 **Served By:**
-- `pages/devices/*.tsx`
-- `pages/settings/device*.tsx`
-- Device management pages
+- `pages/PRODUCTIONices/*.tsx`
+- `pages/settings/PRODUCTIONice*.tsx`
+- PRODUCTIONice management pages
 - Settings pages
 
 ---
@@ -322,7 +322,7 @@ all routes using context
 - **Communication:** ~6 components
 - **File Management:** ~8 components
 - **Financial:** ~9 components
-- **Device Management:** ~7 components
+- **PRODUCTIONice Management:** ~7 components
 - **User/Avatar:** ~5 components
 - **Community:** ~6 components
 - **production/Media:** ~5 components
@@ -381,7 +381,7 @@ grep -r "from.*components\|from.*'./components\|from.*\"./components" pages/ --i
    - `components/analytics/`
    - `components/auth/`
    - `components/automation/`
-   - `components/device/`
+   - `components/PRODUCTIONice/`
    - `components/global/`
    - `components/projects/`
    - `components/q-city/`

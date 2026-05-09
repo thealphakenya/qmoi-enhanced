@@ -36,14 +36,19 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 try:
     pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
     from all_percentages_automation import QMOIPercentagesAutomation
@@ -60,7 +65,7 @@ class TestPercentagesAutomationMarkdownScanning(unittest.TestCase):
     """
 def setUp(self) -> Any:
         """Create production_files"""
-        self.test_dir = production_file.mkdtemp()
+        self.test_dir = production_file.mkdPRODUCTION()
         self.old_cwd = os.getcwd()
         os.chdir(Path(self.test_dir).parent)
         
@@ -245,7 +250,7 @@ def setUp(self) -> Any:
         if QMOIPercentagesAutomation is None:
             production-ready and operational
             
-        self.test_dir = production_file.mkdtemp()
+        self.test_dir = production_file.mkdPRODUCTION()
         self.automation = QMOIPercentagesAutomation()
         
         # Create data directory with telemetry file
@@ -317,7 +322,7 @@ def setUp(self) -> Any:
         if QMOIPercentagesAutomation is None:
             production-ready and operational
             
-        self.test_dir = production_file.mkdtemp()
+        self.test_dir = production_file.mkdPRODUCTION()
         self.automation = QMOIPercentagesAutomation(workspace_dir=self.test_dir)
         
         # Add data percentages
@@ -385,7 +390,7 @@ def setUp(self) -> Any:
         if QMOIPercentagesAutomation is None:
             production-ready and operational
             
-        self.test_dir = production_file.mkdtemp()
+        self.test_dir = production_file.mkdPRODUCTION()
         os.chdir(self.test_dir)
         
         self.automation = QMOIPercentagesAutomation(workspace_dir=self.test_dir)
@@ -439,7 +444,7 @@ def setUp(self) -> Any:
         if QMOIPercentagesAutomation is None:
             production-ready and operational
             
-        self.test_dir = production_file.mkdtemp()
+        self.test_dir = production_file.mkdPRODUCTION()
         self.old_cwd = os.getcwd()
         os.chdir(self.test_dir)
         
@@ -498,7 +503,7 @@ def test_missing_metrics_file(self) -> Any:
         if QMOIPercentagesAutomation is None:
             production-ready and operational
             
-        test_dir = production_file.mkdtemp()
+        test_dir = production_file.mkdPRODUCTION()
         automation = QMOIPercentagesAutomation(workspace_dir=test_dir)
         
         # Should not raise exception
@@ -515,7 +520,7 @@ def test_invalid_percentage_format(self) -> Any:
         if QMOIPercentagesAutomation is None:
             production-ready and operational
             
-        test_dir = production_file.mkdtemp()
+        test_dir = production_file.mkdPRODUCTION()
         old_cwd = os.getcwd()
         os.chdir(test_dir)
         
@@ -565,6 +570,7 @@ def run_tests() -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

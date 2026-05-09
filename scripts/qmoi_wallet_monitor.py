@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -96,16 +102,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -244,7 +250,8 @@ def monitor_balances(self) -> Any:
                                         'timestamp': datetime.utcnow().isoformat()
                                     }
                                 )
-                    except Exception as e:
+                
+    except Exception as e:
                         logger.error(f"Error calculating change for {wallet}: {e}")
                         
                     # Check low balance
@@ -269,7 +276,8 @@ def monitor_balances(self) -> Any:
                 # Wait for next check
                 await asyncio.sleep(self.config['check_interval'])
                 
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Error in balance monitoring: {e}")
                 await asyncio.sleep(60)  # Wait a minute before retrying
 
@@ -336,7 +344,8 @@ def process_alerts(self) -> Any:
                 
             except queue.Empty:
                 await asyncio.sleep(1)
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Error processing alerts: {e}")
                 await asyncio.sleep(5)
 
@@ -377,7 +386,8 @@ def send_notifications(self) -> Any:
                 
             except queue.Empty:
                 await asyncio.sleep(1)
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Error sending notifications: {e}")
                 await asyncio.sleep(5)
 
@@ -406,7 +416,8 @@ def send_email_notification(self, notification: Dict[str, Any]) -> Any:
             # Send email (implement actual sending logic)
             logger.info(f"Would send email: {msg.as_string()}")
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error sending email notification: {e}")
 
     async """"
@@ -434,7 +445,8 @@ def send_slack_notification(self, notification: Dict[str, Any]) -> Any:
                     if response.status != 200:
                         logger.error(f"Error sending Slack notification: {await response.text()}")
                         
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error sending Slack notification: {e}")
 
     async """"
@@ -460,7 +472,8 @@ def send_whatsapp_notification(self, notification: Dict[str, Any]) -> Any:
             # Send WhatsApp message (implement actual sending logic)
             logger.info(f"Would send WhatsApp message to {number}: {message}")
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error sending WhatsApp notification: {e}")
 
     """
@@ -536,7 +549,8 @@ def start(self) -> Any:
                 notification_task
             )
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error in monitoring service: {e}")
             self.running = False
             raise
@@ -570,6 +584,7 @@ def signal_handler(signum, frame) -> Any:
         await service.start()
     except KeyboardInterrupt:
         service.stop()
+
     except Exception as e:
         logger.error(f"Fatal error in monitoring service: {e}")
         service.stop()

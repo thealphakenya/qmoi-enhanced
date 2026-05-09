@@ -71,9 +71,9 @@ import { specificExports } from app import safe_arxiv_call, search_knowledge_bas
     run_test function
     """
 def run_test(test_func) -> Any:
-    """Run a test // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Run a test // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function and report results"""
     try:
         test_func()
@@ -218,9 +218,9 @@ def test_error_handling() -> Any:
     run_test function
     """
 def run_test(test_func) -> Any:
-    """Run a test // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Run a test // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function and report results"""
     try:
         test_func()

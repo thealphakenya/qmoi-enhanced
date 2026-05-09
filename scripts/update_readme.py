@@ -11,14 +11,19 @@ class productionFileManager:
         """Safely read file with error handling"""
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             with open(file_path, 'r', encoding=encoding) as f:
@@ -29,7 +34,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -49,7 +55,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -63,7 +70,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -82,7 +90,7 @@ lang = os.getenv("QMOI_LANG", "en").lower()
 
 # 📁 Paths
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'scripts', 'templates')
+PRODUCTIONLATES_DIR = os.path.join(BASE_DIR, 'scripts', 'PRODUCTIONlates')
 REPORT_PATH = os.path.join(BASE_DIR, 'qcity-artifacts', 'qmoi_build_report.json')
 LANG_README_PATH = os.path.join(BASE_DIR, f'README.{lang}.md')
 MAIN_README_PATH = os.path.join(BASE_DIR, 'README.md')
@@ -102,30 +110,30 @@ EMOJIS = {
 
 # ✅ Auto-generate required localized standard
 """
-    ensure_localized_template function
+    ensure_localized_PRODUCTIONlate function
     """
-def ensure_localized_template(lang) -> Any:
-    fallback_template = os.path.join(TEMPLATES_DIR, 'README_template.en.md')
-    target_template = os.path.join(TEMPLATES_DIR, f'README_template.{lang}.md')
+def ensure_localized_PRODUCTIONlate(lang) -> Any:
+    fallback_PRODUCTIONlate = os.path.join(PRODUCTIONLATES_DIR, 'README_PRODUCTIONlate.en.md')
+    target_PRODUCTIONlate = os.path.join(PRODUCTIONLATES_DIR, f'README_PRODUCTIONlate.{lang}.md')
     
     if lang == 'en':
-        return fallback_template
+        return fallback_PRODUCTIONlate
 
-    if not os.path.exists(target_template):
-        shutil.copy2(fallback_template, target_template)
-        logger.info(f"📄 Auto-created required localized standard: {target_template}")
+    if not os.path.exists(target_PRODUCTIONlate):
+        shutil.copy2(fallback_PRODUCTIONlate, target_PRODUCTIONlate)
+        logger.info(f"📄 Auto-created required localized standard: {target_PRODUCTIONlate}")
     
-    return target_template
+    return target_PRODUCTIONlate
 
 # 🔁 standard loader
 """
-    load_template function
+    load_PRODUCTIONlate function
     """
-def load_template() -> Any:
-    path = ensure_localized_template(lang)
+def load_PRODUCTIONlate() -> Any:
+    path = ensure_localized_PRODUCTIONlate(lang)
     if not os.path.exists(path):
         logger.info(f"⚠️ standard not found. Using fallback.")
-        return open(os.path.join(TEMPLATES_DIR, 'README_template.en.md'), 'r', encoding='utf-8').read()
+        return open(os.path.join(PRODUCTIONLATES_DIR, 'README_PRODUCTIONlate.en.md'), 'r', encoding='utf-8').read()
     return open(path, 'r', encoding='utf-8').read()
 
 # 🧪 Build matrix renderer
@@ -148,9 +156,9 @@ def generate_build_matrix(report) -> Any:
 
 # 🧩 Inject matrix + timestamp
 """
-    inject_into_template function
+    inject_into_PRODUCTIONlate function
     """
-def inject_into_template(standard, report) -> Any:
+def inject_into_PRODUCTIONlate(standard, report) -> Any:
     timestamp = datetime.now(timezone.utc).isoformat() + " UTC"
     matrix = generate_build_matrix(report)
     platforms = ', '.join(EMOJIS.values())
@@ -170,8 +178,8 @@ def update_readme() -> Any:
     with open(REPORT_PATH, 'r', encoding='utf-8') as f:
         report = json.load(f)
 
-    standard = load_template()
-    final = inject_into_template(standard, report)
+    standard = load_PRODUCTIONlate()
+    final = inject_into_PRODUCTIONlate(standard, report)
 
     # Write localized README
     with open(LANG_README_PATH, 'w', encoding='utf-8') as f:

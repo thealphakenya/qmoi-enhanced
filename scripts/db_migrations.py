@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -73,7 +79,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -93,7 +100,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -107,7 +115,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -127,6 +136,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -187,7 +197,8 @@ def _load_config(self, config_path: Optional[str]) -> Dict:
             try:
                 with open(config_path, 'r') as f:
                     return json.load(f)
-            except Exception as e:
+        
+    except Exception as e:
                 self.logger.error(f"Error loading config: {str(e)}")
                 return self._get_default_config()
         return self._get_default_config()
@@ -235,7 +246,8 @@ def connect(self) -> None:
             self.cursor = self.connection.cursor()
             self._ensure_migrations_table()
             self.logger.info("Database connection established")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error connecting to database: {str(e)}")
             raise
 
@@ -264,7 +276,8 @@ def _ensure_migrations_table(self) -> None:
                     )
                 """)
             self.connection.commit()
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error creating migrations table: {str(e)}")
             raise
 
@@ -309,7 +322,8 @@ def get_applied_migrations(self) -> List[Dict]:
                 }
                 for row in self.cursor.fetchall()
             ]
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error getting applied migrations: {str(e)}")
             return []
 
@@ -338,7 +352,8 @@ def get_pending_migrations(self) -> List[Dict]:
                         })
             
             return pending
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error getting pending migrations: {str(e)}")
             return []
 
@@ -361,7 +376,8 @@ def apply_migration(self, migration: Dict) -> None:
             
             self.connection.commit()
             self.logger.info(f"Successfully applied migration: {migration['version']}")
-        except Exception as e:
+    
+    except Exception as e:
             self.connection.rollback()
             self.logger.error(f"Error applying migration {migration['version']}: {str(e)}")
             raise
@@ -385,7 +401,8 @@ def rollback_migration(self, migration: Dict) -> None:
             
             self.connection.commit()
             self.logger.info(f"Successfully rolled back migration: {migration['version']}")
-        except Exception as e:
+    
+    except Exception as e:
             self.connection.rollback()
             self.logger.error(f"Error rolling back migration {migration['version']}: {str(e)}")
             raise
@@ -406,7 +423,8 @@ def migrate(self) -> None:
                 self.apply_migration(migration)
             
             self.logger.info("All migrations applied successfully")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error during migration: {str(e)}")
             raise
 
@@ -442,7 +460,8 @@ def rollback(self, steps: int = 1) -> None:
                         })
             
             self.logger.info("Rollback completed successfully")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error during rollback: {str(e)}")
             raise
 
@@ -489,6 +508,7 @@ def main() -> Any:
         # Rollback last migration
         migrator.rollback()
         
+
     except Exception as e:
         logger.info(f"Error: {str(e)}")
     finally:

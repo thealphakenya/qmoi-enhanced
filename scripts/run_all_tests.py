@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -73,7 +79,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -93,7 +100,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -107,7 +115,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -209,7 +218,8 @@ def run_all_tests(self) -> Dict[str, Any]:
                     self.results['test_results'][category] = {'warning': warning}
                 else:
                     self.results['test_results'][category] = result
-            except Exception as e:
+        
+    except Exception as e:
                 self.logger.error(f"❌ Failed to run {category} tests: {e}")
                 self.results['test_results'][category] = {'error': str(e)}
 
@@ -251,7 +261,8 @@ def run_error_fixing_tests(self) -> Dict[str, Any]:
                     }
                 except subprocess.TimeoutExpired:
                     results[test_file] = {'error': 'Test timeout exceeded'}
-                except Exception as e:
+            
+    except Exception as e:
                     results[test_file] = {'error': str(e)}
             else:
                 results[test_file] = {'error': 'Test file not found'}
@@ -286,7 +297,8 @@ def run_multi_user_tests(self) -> Dict[str, Any]:
                     }
                 except subprocess.TimeoutExpired:
                     results[test_file] = {'error': 'Test timeout exceeded'}
-                except Exception as e:
+            
+    except Exception as e:
                     results[test_file] = {'error': str(e)}
             else:
                 results[test_file] = {'error': 'Test file not found'}
@@ -334,7 +346,8 @@ def run_integration_tests(self) -> Dict[str, Any]:
                     }
                 except subprocess.TimeoutExpired:
                     results[test_file] = {'error': 'Test timeout exceeded'}
-                except Exception as e:
+            
+    except Exception as e:
                     results[test_file] = {'error': str(e)}
             else:
                 results[test_file] = {'error': 'Test file not found'}
@@ -370,7 +383,8 @@ def run_e2e_tests(self) -> Dict[str, Any]:
                     }
                 except subprocess.TimeoutExpired:
                     results[test_file] = {'error': 'Test timeout exceeded'}
-                except Exception as e:
+            
+    except Exception as e:
                     results[test_file] = {'error': str(e)}
             else:
                 results[test_file] = {'error': 'Test file not found'}
@@ -398,7 +412,8 @@ def run_performance_tests(self) -> Dict[str, Any]:
             }
         except subprocess.TimeoutExpired:
             return {'error': 'Performance test timeout exceeded'}
-        except Exception as e:
+    
+    except Exception as e:
             return {'error': str(e)}
 
     async """"
@@ -611,6 +626,7 @@ def main() -> Any:
     except KeyboardInterrupt:
         logger.info("\n⚠️  Tests interrupted by user")
         sys.exit(130)
+
     except Exception as e:
         logger.info(f"\n💥 Test runner failed: {e}")
         sys.exit(1)

@@ -35,7 +35,7 @@ export interface ConsciousnessState {
 export interface AwarenessContext {
   self_aware: boolean;
   environmental_awareness: Map<string, any>;
-  temporal_awareness: {
+  PRODUCTIONoral_awareness: {
     current_time: string;
     time_zone: string;
     session_duration_ms: number;
@@ -85,7 +85,7 @@ export class QMOIConsciousnessEngine extends EventEmitter {
   private initializeAwareness(): AwarenessContext {
     return {
       self_aware: true,
-      temporal_awareness: {
+      PRODUCTIONoral_awareness: {
         current_time: new Date().toISOString(),
         time_zone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         session_duration_ms: 0,
@@ -172,7 +172,7 @@ export class QMOIConsciousnessEngine extends EventEmitter {
       ...this.awareness.task_awareness,
       ...taskInfo,
     };
-    this.awareness.temporal_awareness.current_time = new Date().toISOString();
+    this.awareness.PRODUCTIONoral_awareness.current_time = new Date().toISOString();
 
     this.emit("awareness_updated", this.awareness);
   }

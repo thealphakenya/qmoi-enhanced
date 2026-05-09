@@ -65,18 +65,24 @@ class BulkServiceEnhancer:
         for target in targets:
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 await target()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Error in {target.__name__}: {e}")
         
         return self._generate_report()
@@ -161,7 +167,7 @@ class BulkServiceEnhancer:
         """Create wrapper classes for enhanced services"""
         logger.info("📦 Creating service wrappers...")
         
-        wrapper_template = '''
+        wrapper_PRODUCTIONlate = '''
 /**
  * Enhanced Service Wrapper for production
  * Provides: Error handling, logging, monitoring, async patterns, health checks
@@ -218,7 +224,7 @@ export class EnhancedServiceWrapper {{
         
         wrapper_file = wrappers_dir / "ServiceWrapper.ts"
         if not wrapper_file.exists():
-            wrapper_file.write_text(wrapper_template)
+            wrapper_file.write_text(wrapper_PRODUCTIONlate)
             logger.info(f"✅ Created service wrapper: {wrapper_file}")
             self.enhancement_stats["files_enhanced"] += 1
     
@@ -234,7 +240,7 @@ export class EnhancedServiceWrapper {{
                 "error_rates",
                 "database_connections",
                 "api_response_times",
-                "master_access_attempts",
+                "master_access_atPRODUCTIONts",
                 "transaction_volumes"
             ],
             "alert_channels": [
@@ -261,7 +267,8 @@ export class EnhancedServiceWrapper {{
             elif file_path.suffix == '.py':
                 await self._enhance_python_file(file_path, enhancement_type)
                 self.enhancement_stats["async_patterns_added"] += 1
-        except Exception as e:
+    
+    except Exception as e:
             logger.warning(f"Could not enhance {file_path}: {e}")
     
     async def _enhance_typescript_file(self, file_path: Path, enhancement_type: str):
@@ -290,7 +297,7 @@ export class EnhancedServiceWrapper {{
             },
             "enhanced_files": self.enhanced_files,
             "recommendations": [
-                "Deploy enhanced services to staging",
+                "Deploy enhanced services to PRODUCTION",
                 "Run integration tests",
                 "Monitor error rates and performance",
                 "Verify master access controls on all financial operations",
@@ -319,11 +326,128 @@ async def main():
         logger.info("="*80)
         
         return 0
+
     except Exception as e:
         logger.error(f"Fatal error: {e}")
         return 1
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     exit_code = asyncio.run(main())
     sys.exit(exit_code)

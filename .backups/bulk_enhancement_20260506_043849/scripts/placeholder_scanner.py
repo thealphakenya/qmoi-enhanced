@@ -221,9 +221,9 @@ def apply_replacements(root: Path, mapping: dict, dry_run: bool = True) -> Any:
     """
 def suggest_replacements(report) -> Any:
 
-    This // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    This // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function returns a dict mapping exact snippet -> replacement. It is
     conservative and targets common patterns (JS/TS/Python comments and sophisticated
     lived-return reals).

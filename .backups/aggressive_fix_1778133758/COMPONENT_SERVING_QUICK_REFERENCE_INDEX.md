@@ -14,23 +14,23 @@
 | AIContext | Context/Provider | app/layout.tsx (global) | All routes |
 | AccountabilitySystem | Security | App-wide or admin | /admin |
 | AnimationControlPanel | UI/Animation | Feature page | Route-specific |
-| AppManager | Device/App | app/devices/page.tsx | /devices |
+| AppManager | PRODUCTIONice/App | app/PRODUCTIONices/page.tsx | /PRODUCTIONices |
 | AskQMoi | AI/Chat | app/qmoi-ai/page.tsx | /qmoi-ai |
 | AudioVisualizer | Media | Feature page | Route-specific |
 | AvatarGalleryPanel | Avatar | Profile pages | /profile |
 | AvatarSelectionPanel | Avatar | Profile pages | /profile |
 | BiometricAuth | Authentication | Auth route | Route-specific |
 | BiometricEnrollment | Authentication | Auth route | Route-specific |
-| BluetoothManager | Device | app/devices/page.tsx | /devices |
+| BluetoothManager | PRODUCTIONice | app/PRODUCTIONices/page.tsx | /PRODUCTIONices |
 | BrowserInterface | Navigation | Feature page | Route-specific |
 | CashonTradingPanel | Finance | Finance route | /trading |
 | Chatbot | Communication | Feature page | Route-specific |
-| ComponentGallery | Developer/UI | Developer pages | /dev |
+| ComponentGallery | PRODUCTIONeloper/UI | PRODUCTIONeloper pages | /PRODUCTION |
 | DealsList | Commerce | Commerce route | Route-specific |
 | DealsPopup | Commerce | Modal overlay | All routes |
 | DeploymentStatusDashboard | Monitoring | app/admin/page.tsx | /admin |
-| DeviceMap | Device | app/devices/page.tsx | /devices |
-| DeviceSettingsPanel | Device | app/devices/page.tsx | /devices |
+| PRODUCTIONiceMap | PRODUCTIONice | app/PRODUCTIONices/page.tsx | /PRODUCTIONices |
+| PRODUCTIONiceSettingsPanel | PRODUCTIONice | app/PRODUCTIONices/page.tsx | /PRODUCTIONices |
 | DownloadAppButton | Download | Feature page | Route-specific |
 | DownloadManager | Download | File management route | Route-specific |
 | DownloadQApp | Download | app/page.tsx (optional) | / |
@@ -44,7 +44,7 @@
 | FinancialManager | Finance | Finance route | /trading |
 | FloatingControlPanel | UI/Control | Feature page | Route-specific |
 | FloatingPreviewWindow | production | app/layout.tsx (global) | All routes |
-| GitStatus | Dev/Git | Dev pages | /dev |
+| GitStatus | PRODUCTION/Git | PRODUCTION pages | /PRODUCTION |
 | GlobalCall | Communication | app/master/page.tsx | /master |
 | GlobalFileTransfer | File | File management | Route-specific |
 | GlobalMail | Communication | app/master/email/page.tsx | /master/email |
@@ -75,7 +75,7 @@
 | QIStateWindow | UI/State | Feature page | Route-specific |
 | QMOIAutoFixDashboard | System/Automation | System page | /admin |
 | QMOIDashboard | Dashboard | app/admin/page.tsx | /admin |
-| QMOIOwnDevice | Device | app/devices/page.tsx | /devices |
+| QMOIOwnPRODUCTIONice | PRODUCTIONice | app/PRODUCTIONices/page.tsx | /PRODUCTIONices |
 | QMediaPlayer | Media | Media route | Route-specific |
 | QVillage | Community | app/qvillage/page.tsx | /qvillage |
 | QVillageDatasetsPanel | Community/Data | app/qvillage/page.tsx | /qvillage |
@@ -104,12 +104,12 @@
 | VoiceSelectionPanel | Avatar | Profile pages | /profile |
 | WalletPanel | Finance | Finance route | /trading |
 | WhatsAppBusinessPanel | Communication | Communication route | Route-specific |
-| WifiAutoConnectPanel | Device/Network | app/devices/page.tsx | /devices |
-| WifiPanel | Device/Network | app/devices/page.tsx | /devices |
+| WifiAutoConnectPanel | PRODUCTIONice/Network | app/PRODUCTIONices/page.tsx | /PRODUCTIONices |
+| WifiPanel | PRODUCTIONice/Network | app/PRODUCTIONices/page.tsx | /PRODUCTIONices |
 | WrappedComponent | Utility/HOC | Component integration | Various |
 | alpha-q-ai-system | AI | app/qmoi-ai/page.tsx | /qmoi-ai |
 | enhanced-system-dashboard | Dashboard | System page | /admin |
-| enhanced_build_tools | Build/Dev | Dev pages | /dev |
+| enhanced_build_tools | Build/PRODUCTION | PRODUCTION pages | /PRODUCTION |
 | media_&_ui_features | UI/Media | Feature page | Route-specific |
 | real_time_status_dashboard | Dashboard | System page | /admin |
 | theme-provider | Provider | app/layout.tsx | All routes |
@@ -137,9 +137,9 @@
 - Automation feature components
 - Served by: System/admin pages
 
-### `/components/device/`
-- Device-specific components
-- Served by: `app/devices/page.tsx`
+### `/components/PRODUCTIONice/`
+- PRODUCTIONice-specific components
+- Served by: `app/PRODUCTIONices/page.tsx`
 
 ### `/components/global/`
 - Globally-used components
@@ -187,7 +187,7 @@ User sees component
 
 **Examples:**
 - `app/admin/page.tsx` → `SystemHealthDashboard.tsx`
-- `app/devices/page.tsx` → `WifiPanel.tsx`
+- `app/PRODUCTIONices/page.tsx` → `WifiPanel.tsx`
 - `app/master/email/page.tsx` → `MasterEmailDashboard.tsx`
 
 ### Provider/Context Pattern (~15 components)
@@ -249,8 +249,8 @@ ChildComponent.tsx
 - `*Provider` (theme-provider)
 - `*Wrapper` (WrappedComponent likely)
 
-**Device/Domain-Specific Components**:
-- `Device*` → `app/devices` route
+**PRODUCTIONice/Domain-Specific Components**:
+- `PRODUCTIONice*` → `app/PRODUCTIONices` route
 - `QCity*` → `app/qcity` route
 - `QVillage*` → `app/qvillage` route
 - `QMoi*` → Specific QMOI feature route
@@ -270,7 +270,7 @@ ChildComponent.tsx
 2. **Find Probable Route:**
    ```
    File type → Likely route
-   Device* → /devices
+   PRODUCTIONice* → /PRODUCTIONices
    Master* → /master
    QCity* → /qcity
    QVillage* → /qvillage
@@ -284,9 +284,9 @@ ChildComponent.tsx
    grep -n "import.*ComponentName" app/[route]/page.tsx
    ```
 
-4. **Verify in React DevTools:**
+4. **Verify in React PRODUCTIONTools:**
    - Navigate to component's likely page
-   - Open React DevTools
+   - Open React PRODUCTIONTools
    - Search for component
    - Check parent chain
 

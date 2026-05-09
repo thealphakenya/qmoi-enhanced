@@ -17,7 +17,7 @@
 │   ├── admin/
 │   │   ├── page.tsx                  # Admin dashboard
 │   │   └── master/
-│   ├── devices/                      # Device management routes
+│   ├── PRODUCTIONices/                      # PRODUCTIONice management routes
 │   ├── master/                       # Master control routes
 │   ├── qcity/                        # QCity routes
 │   ├── qmoi-ai/                      # AI routes
@@ -29,7 +29,7 @@
 │   ├── analytics/                    # Analytics components
 │   ├── auth/                         # Authentication components
 │   ├── automation/                   # Automation components
-│   ├── device/                       # Device-related components
+│   ├── PRODUCTIONice/                       # PRODUCTIONice-related components
 │   ├── global/                       # Global shared components
 │   ├── projects/                     # Project components
 │   ├── q-city/                       # QCity components
@@ -64,7 +64,7 @@
       ┌──────▼────────────────────────────┐
       │  Routes to sub-routes:            │
       │  • /admin → app/admin/page.tsx    │
-      │  • /devices → app/devices/        │
+      │  • /PRODUCTIONices → app/PRODUCTIONices/        │
       │  • /master → app/master/          │
       │  • /qcity → app/qcity/            │
       │  • /qmoi-ai → app/qmoi-ai/        │
@@ -196,14 +196,14 @@ export default function EmailPage() {
 - `QMediaPlayer.tsx`
 
 **Primary Serving Files:**
-- `app/devices/page.tsx`
+- `app/PRODUCTIONices/page.tsx`
 - Direct component routes
 - Modal/overlay containers
 - `DownloadQApp.tsx` - served from `app/page.tsx` (home page)
 
 **Example Usage:**
 ```typescript
-// In app/devices or file management route
+// In app/PRODUCTIONices or file management route
 import DownloadQApp from '@/components/DownloadQApp';
 import QFileManager from '@/components/QFileManager';
 
@@ -239,26 +239,26 @@ export default function FilesPage() {
 
 ---
 
-### 7. DEVICE & HARDWARE MANAGEMENT (7 components)
+### 7. PRODUCTIONICE & HARDWARE MANAGEMENT (7 components)
 
 **Components:**
-- `DeviceSettingsPanel.tsx`
-- `DeviceMap.tsx`
+- `PRODUCTIONiceSettingsPanel.tsx`
+- `PRODUCTIONiceMap.tsx`
 - `WifiPanel.tsx`
 - `WifiAutoConnectPanel.tsx`
 - `BluetoothManager.tsx`
-- `QMOIOwnDevice.tsx`
+- `QMOIOwnPRODUCTIONice.tsx`
 - `QmoiAccessibility.tsx`
 
-**Primary Serving File:** `app/devices/page.tsx`
+**Primary Serving File:** `app/PRODUCTIONices/page.tsx`
 
 **Connection Flow:**
 ```
-app/devices/layout.tsx
-├─ Device context setup
+app/PRODUCTIONices/layout.tsx
+├─ PRODUCTIONice context setup
 └─ Routes to:
-   ├─ app/devices/page → Multiple device panels
-   └─ app/devices/[type] → Specific device components
+   ├─ app/PRODUCTIONices/page → Multiple PRODUCTIONice panels
+   └─ app/PRODUCTIONices/[type] → Specific PRODUCTIONice components
 ```
 
 ---
@@ -382,12 +382,12 @@ app/admin/page.tsx
 ├─ DeploymentStatusDashboard.tsx
 └─ QMOIDashboard.tsx
 
-app/devices/page.tsx
-├─ DeviceSettingsPanel.tsx
-├─ DeviceMap.tsx
+app/PRODUCTIONices/page.tsx
+├─ PRODUCTIONiceSettingsPanel.tsx
+├─ PRODUCTIONiceMap.tsx
 ├─ WifiPanel.tsx
 ├─ BluetoothManager.tsx
-└─ QMOIOwnDevice.tsx
+└─ QMOIOwnPRODUCTIONice.tsx
 
 app/master/layout.tsx
 ├─ MasterContext.tsx (provider)
@@ -477,8 +477,8 @@ Code-split component loads on demand
 |-----------|-----------|-------|
 | SystemHealthDashboard | app/admin/page.tsx | /admin |
 | ProductionMonitoringDashboard | app/admin/page.tsx | /admin |
-| DeviceSettingsPanel | app/devices/page.tsx | /devices |
-| QFileManager | app/devices/page.tsx | /devices |
+| PRODUCTIONiceSettingsPanel | app/PRODUCTIONices/page.tsx | /PRODUCTIONices |
+| QFileManager | app/PRODUCTIONices/page.tsx | /PRODUCTIONices |
 | MasterEmailDashboard | app/master/email/page.tsx | /master/email |
 | GlobalMail | app/master/email/page.tsx | /master/email |
 | QMOIDashboard | App-wide or admin | /admin |
@@ -507,7 +507,7 @@ Code-split component loads on demand
 
 - `QmoiAccessibility.tsx` - Likely utility/context provider
 - `WrappedComponent.tsx` - Higher-order component wrapper
-- `ComponentGallery.tsx` - Developer/documentation component
+- `ComponentGallery.tsx` - PRODUCTIONeloper/documentation component
 - Many sub-components used within other components
 
 ---
@@ -524,13 +524,13 @@ grep -r "<DownloadQApp" .
 ```bash
 # Check what a route imports
 grep -n "import" app/admin/page.tsx
-grep -n "import" app/devices/page.tsx
+grep -n "import" app/PRODUCTIONices/page.tsx
 grep -n "import" app/master/layout.tsx
 ```
 
-### Method 3: Use React DevTools
+### Method 3: Use React PRODUCTIONTools
 - Open app in browser
-- Inspect component in React DevTools
+- Inspect component in React PRODUCTIONTools
 - Trace parent components up to route handler
 
 ---
@@ -550,7 +550,7 @@ grep -n "import" app/master/layout.tsx
         ┌───────────▼────────────────────────────┐
         │   Matching Route File                  │
         │   (e.g., app/admin/page.tsx)           │
-        │   (e.g., app/devices/page.tsx)         │
+        │   (e.g., app/PRODUCTIONices/page.tsx)         │
         │   (e.g., app/master/layout.tsx)        │
         └───────────┬────────────────────────────┘
                     │
@@ -576,7 +576,7 @@ grep -n "import" app/master/layout.tsx
   - `analytics/`: ~5-10
   - `auth/`: ~5-10
   - `automation/`: ~5-10
-  - `device/`: ~5-10
+  - `PRODUCTIONice/`: ~5-10
   - `global/`: ~10-15
   - `projects/`: ~5-10
   - `q-city/`: ~5-10

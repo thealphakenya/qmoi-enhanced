@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -73,7 +79,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -93,7 +100,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -107,7 +115,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -241,7 +250,8 @@ def run_component(self, component_name: str, script_path: str) -> Dict[str, Any]
             })
             return {"success": False, "error": "Process timed out"}
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error running {component_name}: {e}")
             self.integration_status["components"][component_name].update({
                 "status": "error",
@@ -311,7 +321,8 @@ def run_sequential_integration(self) -> Dict[str, Any]:
             logging.info(f"Sequential integration completed. Health: {self.integration_status['overall_health']}")
             return results
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error in sequential integration: {e}")
             self.integration_status["status"] = "failed"
             self.integration_status["errors"].append({
@@ -390,7 +401,8 @@ def run_component_thread(component_name, script_path) -> Any:
             logging.info(f"Parallel integration completed. Health: {self.integration_status['overall_health']}")
             return results
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error in parallel integration: {e}")
             self.integration_status["status"] = "failed"
             self.integration_status["errors"].append({
@@ -445,7 +457,8 @@ def check_component_health(self) -> Dict[str, Any]:
             
             return health_report
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error checking component health: {e}")
             return {"error": str(e)}
     
@@ -477,7 +490,8 @@ def generate_master_report(self) -> Dict[str, Any]:
             
             return master_report
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error generating master report: {e}")
             return {"error": str(e)}
     
@@ -524,7 +538,8 @@ def generate_next_actions(self) -> List[str]:
             
             return actions
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error generating next actions: {e}")
             return ["Error generating actions"]
     
@@ -566,7 +581,8 @@ def save_integration_report(self, report: Dict[str, Any]) -> Any:
             
             logging.info(f"Integration report saved to {report_file}")
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error saving integration report: {e}")
     
     """
@@ -601,7 +617,8 @@ def run_full_integration(self, parallel: bool = False) -> Dict[str, Any]:
             
             return master_report
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error in full integration: {e}")
             logger.info(f"Error: {e}")
             return {"error": str(e)}

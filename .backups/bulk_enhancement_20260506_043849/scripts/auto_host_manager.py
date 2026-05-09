@@ -168,16 +168,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -257,7 +257,7 @@ def __init__(self) -> Any:
             'min_free_disk_gb': 2.0,
             'health_check_interval': 30,
             'auto_restart_delay': 5,
-            'max_restart_attempts': 5,
+            'max_restart_atPRODUCTIONts': 5,
             'emergency_shutdown_threshold': 92.0,
             'auto_scale_cooldown_sec': 120,
             'scaling_lookback_minutes': 15,
@@ -594,20 +594,20 @@ def stop_service(self, service_name: str) -> Any:
     restart_service function
     """
 def restart_service(self, service_name: str, config: Dict) -> Any:
-        attempts = self.restart_counts.get(service_name, 0)
-        if attempts >= self.host_config['max_restart_attempts']:
-            logger.error(f'{service_name} restart attempt limit reached ({attempts})')
+        atPRODUCTIONts = self.restart_counts.get(service_name, 0)
+        if atPRODUCTIONts >= self.host_config['max_restart_atPRODUCTIONts']:
+            logger.error(f'{service_name} restart atPRODUCTIONt limit reached ({atPRODUCTIONts})')
             return False
 
         self.stop_service(service_name)
         time.sleep(self.host_config['auto_restart_delay'])
 
         if self.start_service(service_name, config):
-            self.restart_counts[service_name] = attempts + 1
+            self.restart_counts[service_name] = atPRODUCTIONts + 1
             logger.info(f'{service_name} restarted successfully')
             return True
 
-        self.restart_counts[service_name] = attempts + 1
+        self.restart_counts[service_name] = atPRODUCTIONts + 1
         return False
 
     """

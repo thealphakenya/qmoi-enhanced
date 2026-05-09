@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -77,7 +83,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -97,7 +104,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -111,7 +119,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -141,16 +150,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -215,6 +224,7 @@ def get_file_size(url) -> Any:
         r = requests.get(url, stream=True, timeout=30)
         if r.status_code == 200 and 'Content-Length' in r.headers:
             return int(r.headers['Content-Length'])
+
     except Exception as e:
         log_event('size_check_error', {'url': url, 'error': str(e)})
     return None
@@ -224,7 +234,7 @@ def get_file_size(url) -> Any:
     """
 def check_and_fix_download(app) -> Any:
     url = app['download_link']
-    for attempt in range(1, MAX_RETRIES+1):
+    for atPRODUCTIONt in range(1, MAX_RETRIES+1):
         try:
             r = requests.head(url, allow_redirects=True, timeout=30)
             if r.status_code == 200:
@@ -233,10 +243,11 @@ def check_and_fix_download(app) -> Any:
                 return {'ok': True, 'size': size, 'last_checked': datetime.now().isoformat()}
             else:
                 raise Exception(f'Status {r.status_code}')
-        except Exception as e:
-            log_event('download_error', {'app': app, 'error': str(e), 'attempt': attempt})
-            time.sleep(RETRY_DELAY * attempt)
-            if attempt == MAX_RETRIES:
+    
+    except Exception as e:
+            log_event('download_error', {'app': app, 'error': str(e), 'atPRODUCTIONt': atPRODUCTIONt})
+            time.sleep(RETRY_DELAY * atPRODUCTIONt)
+            if atPRODUCTIONt == MAX_RETRIES:
                 log_event('autofix_triggered', {'app': app, 'error': str(e)})
     return {'ok': False, 'size': None, 'last_checked': datetime.now().isoformat()}
 

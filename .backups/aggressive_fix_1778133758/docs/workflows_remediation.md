@@ -18,51 +18,51 @@ _scanned at 2025-10-28T23:42:26.289223Z_
 
 ## .github/workflows/auto_release_variations.yml
 
-- Issue: owner/repo references found; ensure they are templated or use inputs
+- Issue: owner/repo references found; ensure they are PRODUCTIONlated or use inputs
 - Secrets used: GITHUB_TOKEN, PYPI_API_TOKEN, json
 - Env vars: GITHUB_TOKEN
 - Owner/repo references: actions/checkout, actions/setup-python, docker/build-push-action, docker/setup-buildx-action, softprops/action-gh-release
 
 ## .github/workflows/build.yml
 
-- Issue: owner/repo references found; ensure they are templated or use inputs
+- Issue: owner/repo references found; ensure they are PRODUCTIONlated or use inputs
 - Env vars: NODE_VERSION, QMOI_AUTOprod_ENABLED
 - Owner/repo references: actions/checkout, actions/setup-node, actions/setup-python
 
 ## .github/workflows/ci.yml
 
-- Issue: owner/repo references found; ensure they are templated or use inputs
+- Issue: owner/repo references found; ensure they are PRODUCTIONlated or use inputs
 - Secrets used: GITHUB_TOKEN
 - Owner/repo references: actions/checkout, actions/setup-node, actions/setup-python
 
 ## .github/workflows/github-actions-Quantum multi orchestra intelligence (QMOI)-build.yml
 
-- Issue: owner/repo references found; ensure they are templated or use inputs
+- Issue: owner/repo references found; ensure they are PRODUCTIONlated or use inputs
 - Secrets used: GITHUB_TOKEN
 - Env vars: GH_TOKEN, NODE_VERSION, QMOI_AUTOprod_ENABLED, matrix, platform, strategy
 - Owner/repo references: actions/checkout, actions/setup-node, actions/setup-python
 
 ## .github/workflows/nightly.yml
 
-- Issue: owner/repo references found; ensure they are templated or use inputs
+- Issue: owner/repo references found; ensure they are PRODUCTIONlated or use inputs
 - Env vars: NODE_VERSION, QMOI_AUTOprod_ENABLED
 - Owner/repo references: ./.github, workflows/build-and-publish.yml
 
 ## .github/workflows/npm.yml
 
-- Issue: owner/repo references found; ensure they are templated or use inputs
+- Issue: owner/repo references found; ensure they are PRODUCTIONlated or use inputs
 - Env vars: NODE_VERSION, QMOI_AUTOprod_ENABLED
 - Owner/repo references: actions/cache, actions/checkout, actions/setup-node
 
 ## .github/workflows/publish-q-latest.yml
 
-- Issue: owner/repo references found; ensure they are templated or use inputs
+- Issue: owner/repo references found; ensure they are PRODUCTIONlated or use inputs
 - Secrets used: GITHUB_TOKEN
 - Owner/repo references: actions/checkout, actions/setup-node, peaceiris/actions-gh-pages
 
 ## .github/workflows/q.yml
 
-- Issue: owner/repo references found; ensure they are templated or use inputs
+- Issue: owner/repo references found; ensure they are PRODUCTIONlated or use inputs
 - Env vars: NODE_VERSION, QMOI_AUTOprod_ENABLED
 - Owner/repo references: actions/checkout, actions/setup-node
 
@@ -73,19 +73,19 @@ _scanned at 2025-10-28T23:42:26.289223Z_
 
 ## .github/workflows/[Quantum multi orchestra intelligence (QMOI)](https://Quantum multi orchestra intelligence (QMOI).ai)(https://Quantum multi orchestra intelligence (QMOI).ai)(https://Quantum multi orchestra intelligence (QMOI).ai)(https://Quantum multi orchestra intelligence (QMOI).ai)(https://Quantum multi orchestra intelligence (QMOI).ai)-autoprod.yml
 
-- Issue: owner/repo references found; ensure they are templated or use inputs
+- Issue: owner/repo references found; ensure they are PRODUCTIONlated or use inputs
 - Issue: no secrets or envs detected (ok)
 - Owner/repo references: actions/checkout, actions/setup-python
 
 ## .github/workflows/Quantum multi orchestra intelligence (QMOI)-ci.yml
 
-- Issue: owner/repo references found; ensure they are templated or use inputs
+- Issue: owner/repo references found; ensure they are PRODUCTIONlated or use inputs
 - Env vars: NODE_VERSION, QMOI_AUTOprod_ENABLED
 - Owner/repo references: actions/checkout, actions/setup-node, actions/setup-python, actions/upload-artifact
 
 ## .github/workflows/release.yml
 
-- Issue: owner/repo references found; ensure they are templated or use inputs
+- Issue: owner/repo references found; ensure they are PRODUCTIONlated or use inputs
 - Secrets used: GH_TOKEN, GITHUB_TOKEN
 - Env vars: GH_TOKEN, GITHUB_TOKEN, NODE_VERSION, QMOI_AUTOprod_ENABLED, steps, timeout_minutes
 - Owner/repo references: actions/cache, actions/checkout, actions/setup-node, actions/setup-python, actions/upload-artifact, docker/setup-buildx-action, softprops/action-gh-release
@@ -96,13 +96,13 @@ _scanned at 2025-10-28T23:42:26.289223Z_
 
 ## .github/workflows/update-readme-cli.yml
 
-- Issue: owner/repo references found; ensure they are templated or use inputs
+- Issue: owner/repo references found; ensure they are PRODUCTIONlated or use inputs
 - Env vars: NODE_VERSION, QMOI_AUTOprod_ENABLED
 - Owner/repo references: actions/checkout, actions/setup-python
 
 ## .github/workflows/validate-and-tag-md.yml
 
-- Issue: owner/repo references found; ensure they are templated or use inputs
+- Issue: owner/repo references found; ensure they are PRODUCTIONlated or use inputs
 - Issue: no secrets or envs detected (ok)
 - Owner/repo references: actions/checkout, actions/setup-python, actions/upload-artifact
 
@@ -384,7 +384,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Compression**: Enabled for optimized storage and bandwidth
 - **Redundancy**: 5 backup copies with automatic failover
 - **Persistence**: unlimited data retention (permanent, no limit)
-- **Distribution**: All devices, cameras, and networks synchronized
+- **Distribution**: All PRODUCTIONices, cameras, and networks synchronized
 - **Zero Data Loss**: Guaranteed with multi-layer redundancy
 
 ### Integrated Security Systems
@@ -403,10 +403,10 @@ Link to related documentation, APIs, and system artifacts.
 - **Direct Quantum multi orchestra intelligence (QMOI) Access**: No restrictions on camera access
 - **Real-time Sync**: 50ms synchronization across all systems
 
-### Universal Device Connectivity
+### Universal PRODUCTIONice Connectivity
 - **Mobile Platforms**: iOS, Android with full integration
 - **Web & Cloud Systems**: Browser-based access and control
-- **IoT Networks**: All smart devices connected and managed
+- **IoT Networks**: All smart PRODUCTIONices connected and managed
 - **Wearables**: Watches, bands, glasses with health monitoring
 - **Vehicles**: Cars, drones, robots with autonomous control
 - **Smart Home Systems**: Complete home automation
@@ -414,7 +414,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Servers & Data Centers**: Centralized management
 - **Wireless Connectivity**: WiFi, Bluetooth, Cellular
 - **Wired Connectivity**: USB, Ethernet, Serial
-- **Auto-Connection**: Zero-config device pairing
+- **Auto-Connection**: Zero-config PRODUCTIONice pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
 
 

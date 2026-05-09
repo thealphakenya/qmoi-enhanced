@@ -72,7 +72,7 @@ def main() -> Any:
 if __name__ == '__main__':
     main()
 #!/usr/bin/env python3
-"""Attempt to find and run build scripts for known platforms.
+"""AtPRODUCTIONt to find and run build scripts for known platforms.
 
 This script scans the repository for common build entrypoints (Dockerfile, package.json, build scripts)
 and runs platform-specific commands in dry-run or apply mode.

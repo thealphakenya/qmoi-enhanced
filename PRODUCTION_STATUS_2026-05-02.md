@@ -58,7 +58,7 @@
 
 Key Categories:
 - **Authentication:** WebAuthn, OAuth, Session management
-- **User Management:** Profile, language, device logs
+- **User Management:** Profile, language, PRODUCTIONice logs
 - **QMOI Core:** Chat, memory, friendship, voice, projects
 - **Revenue System:** Transactions, transfers, dashboard, targets
 - **Social:** WhatsApp Business, social automation
@@ -112,7 +112,7 @@ bash ./scripts/prod-start.sh
 
 ```bash
 # Check server status
-curl https://localhost:3001/api/health
+curl https://api.qmoi-enhanced.com:3001/api/health
 
 # View logs
 tail -f .qmoi_prod.log

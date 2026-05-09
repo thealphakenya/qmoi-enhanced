@@ -40,7 +40,7 @@ Start the Next.js application and use the app routes on port `3000`:
 ```bash
 cd /workspaces/qmoi-enhanced
 npm install
-npm run dev
+npm run PRODUCTION
 ```
 Then open the QMOI AI app in a browser window at:
 - `https://prod.qmoi.ai:3000/qmoi-ai`
@@ -251,6 +251,6 @@ nohup bash run_qmoi.sh > /cache/qvillage-supervisor.log 2>&1 &
 ```
 
 ## 8) Troubleshooting
-- If `https://localhost:8080/qmoi-ai.html` does not load, verify the static server is running and serving from `/workspaces/qmoi-enhanced`.
+- If `https://api.qmoi-enhanced.com:8080/qmoi-ai.html` does not load, verify the static server is running and serving from `/workspaces/qmoi-enhanced`.
 - If QVillage does not stay running, use `pm2` or systemd to supervise `deploy/qvillage/run_qmoi.sh`.
 - If `OPEN_QMOI_AI.sh` or `open_qcity_safe.sh` fail, open the URL manually in a browser.

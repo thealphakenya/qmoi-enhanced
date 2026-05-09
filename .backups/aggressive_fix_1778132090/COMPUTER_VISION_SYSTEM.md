@@ -15,7 +15,7 @@ Advanced computer vision capabilities for image and video autonomy with avatar d
 - Real-time video autonomy with avatar display and autonomous streams analysis
 - Motion detection and tracking
 - Video content understanding
-- Temporal analysis and prediction
+- PRODUCTIONoral analysis and prediction
 
 ### Advanced Recognition
 - Facial recognition and analysis
@@ -58,7 +58,7 @@ Advanced computer vision capabilities for image and video autonomy with avatar d
 - You Only Look Once (YOLO) models
 
 ### Performance Optimization
-- Model optimization for edge devices
+- Model optimization for edge PRODUCTIONices
 - Quantization for efficient deployment
 - Knowledge distillation techniques
 - Hardware-specific optimizations

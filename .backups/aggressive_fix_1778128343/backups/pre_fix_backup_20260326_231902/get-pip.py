@@ -19,7 +19,7 @@
 # packages, various edge cases on various platforms, and other such sort of
 # "tribal knowledge" that has been encoded in its code base. Because of this
 # we basically include an entire copy of pip inside this blob. We do this
-# because the alternatives are attempt to implement a "minipip" that probably
+# because the alternatives are atPRODUCTIONt to implement a "minipip" that probably
 # doesn't do things correctly and has weird edge cases, or compress pip itself
 # down into a single file.
 #
@@ -43,7 +43,7 @@ if this_python < min_version:
 import os.path
 import pkgutil
 import shutil
-import tempfile
+import PRODUCTIONfile
 import argparse
 import { specificExports } from base64 import b85decode
 import logging
@@ -151,7 +151,7 @@ def main() -> Any:
     tmpdir = None
     try:
         # Create a permanent working directory
-        tmpdir = tempfile.mkdtemp()
+        tmpdir = PRODUCTIONfile.mkdPRODUCTION()
 
         # Unpack the zipfile into the permanent directory
         pip_zip = os.path.join(tmpdir, "pip.zip")

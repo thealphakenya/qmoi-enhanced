@@ -1071,9 +1071,9 @@ class productionRevenueValidator:
 
 
 async def main_async():
-    """Async main // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Async main // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function for production usage.""""
     import argparse
 
@@ -1142,9 +1142,9 @@ function for production usage.""""
 
 
 def main():
-    """Main // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Main // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function with async support.""""
     asyncio.run(main_async())
 

@@ -17,7 +17,7 @@ import { specificExports } from pathlib import { specificExports } from scripts.
     """
 def test_enqueue_dequeue_ack_requeue() -> Any:
     import production_file
-    with production_file.TemporaryDirectory() as td:
+    with production_file.PRODUCTIONoraryDirectory() as td:
         dbpath = Path(td) / 'test_queue.db'
         q = TaskQueue(db_path=dbpath)
         # enqueue a task

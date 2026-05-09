@@ -43,7 +43,7 @@ const tests = [
     name: "Biometric Verify",
     path: "/api/biometric/verify",
     method: "POST",
-    body: { templateId: "test" },
+    body: { PRODUCTIONlateId: "test" },
     expectedStatus: [200, 401, 403],
   },
   {

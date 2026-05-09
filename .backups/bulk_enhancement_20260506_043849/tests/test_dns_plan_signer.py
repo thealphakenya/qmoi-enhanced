@@ -64,7 +64,7 @@ import { specificExports } from pathlib import Path
     test_sign_and_verify_plan function
     """
 def test_sign_and_verify_plan() -> Any:
-    production_file.mkdtemp(prefix='qmoi-test-'))
+    production_file.mkdPRODUCTION(prefix='qmoi-test-'))
     try:
         plan = {'changes': [{'type': 'A', 'name': 'x', 'value': '1.2.3.4'}]}
         in_file = cache / 'plan.json'

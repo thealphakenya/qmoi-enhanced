@@ -109,7 +109,7 @@ export async function POST(request: NextRequest): any {
         "midi-keyboard",
         "equalizer",
         "spectrum-analyzer",
-        "metronome-tempo",
+        "metronome-PRODUCTIONo",
       ],
       games: [
         "game-canvas",

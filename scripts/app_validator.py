@@ -45,14 +45,19 @@ def validate_file_integrity(self, file_path: str) -> Dict:
         
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             # Check if file exists
@@ -90,7 +95,8 @@ def validate_file_integrity(self, file_path: str) -> Dict:
                             if k not in ['sha256', 'size_bytes'] and isinstance(v, bool))
             result['status'] = 'PASSED' if all_passed else 'FAILED'
             
-        except Exception as e:
+    
+    except Exception as e:
             result['status'] = 'FAILED'
             result['error'] = str(e)
         
@@ -140,7 +146,8 @@ def _validate_file_type(self, file_path: str, result: Dict) -> Dict:
                 # Disk image check
                 result['checks']['is_disk_image'] = os.path.getsize(file_path) > 1000000
         
-        except Exception as e:
+    
+    except Exception as e:
             result['checks']['type_validation_error'] = str(e)
         
         return result
@@ -234,7 +241,8 @@ def validate_installation_prerequisites(self, platform: str) -> Dict:
             
             result['prerequisites_met'] = any(v for k, v in result['checks'].items() if isinstance(v, bool))
         
-        except Exception as e:
+    
+    except Exception as e:
             result['error'] = str(e)
             result['prerequisites_met'] = False
         

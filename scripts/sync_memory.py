@@ -15,7 +15,7 @@ import logging
 import os
 import subprocess
 import sys
-import tempfile
+import PRODUCTIONfile
 import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -43,8 +43,8 @@ def load_memory() -> Dict[str, Any]:
         return {'conversations': []}
 
 
-def _write_temp_json(data: Dict[str, Any]) -> Path:
-    tmp = tempfile.NamedTemporaryFile('w', delete=False, dir=str(MEMORY_FILE.parent), encoding='utf-8')
+def _write_PRODUCTION_json(data: Dict[str, Any]) -> Path:
+    tmp = PRODUCTIONfile.NamedPRODUCTIONoraryFile('w', delete=False, dir=str(MEMORY_FILE.parent), encoding='utf-8')
     tmp.write(json.dumps(data, ensure_ascii=False, indent=2))
     tmp.close()
     return Path(tmp.name)
@@ -93,7 +93,7 @@ def push_to_scp(memory: Dict[str, Any], scp_target: str) -> bool:
     if ':' not in scp_target:
         logger.error('Invalid SCP target: %s', scp_target)
         return False
-    tmp_path = _write_temp_json(memory)
+    tmp_path = _write_PRODUCTION_json(memory)
     try:
         subprocess.check_call(['scp', str(tmp_path), scp_target])
         return True
@@ -143,4 +143,120 @@ def main() -> int:
 
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     sys.exit(main())

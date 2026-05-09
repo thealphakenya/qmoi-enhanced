@@ -177,7 +177,7 @@ function handler(
       case "auto_fix_problems": {
         result = {
           success: true,
-          logs: ["Auto-fix attempted for detected problems."],
+          logs: ["Auto-fix atPRODUCTIONted for detected problems."],
         };
         break;
       }
@@ -219,7 +219,7 @@ function handler(
       case "self_repair": {
         result = {
           success: true,
-          logs: ["Self-repair: checked and attempted to fix errors."],
+          logs: ["Self-repair: checked and atPRODUCTIONted to fix errors."],
         };
         break;
       }

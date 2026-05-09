@@ -50,7 +50,7 @@ PYTHON_FEATURES = {
     "api_clients": ["requests", "httpx", "aiohttp", "urllib3", "pycurl"],
     "databases": ["sqlalchemy", "django_orm", "pymongo", "redis", "elasticsearch"],
     "deployment": ["docker", "kubernetes", "heroku", "aws_lambda", "gcp_functions"],
-    "devops": ["ansible", "terraform", "vagrant", "docker_compose", "kubernetes_helm"],
+    "PRODUCTIONops": ["ansible", "terraform", "vagrant", "docker_compose", "kubernetes_helm"],
 }
 
 # Terminal & Shell
@@ -78,7 +78,7 @@ FRAMEWORKS = {
     "web_frameworks": ["nextjs", "react", "vue", "angular", "svelte", "nuxt"],
     "mobile": ["flutter", "react_native", "ionic", "xamarin"],
     "desktop": ["electron", "tauri", "qt", "wxwidgets"],
-    "game_dev": ["unity", "unreal", "godot", "cocos"],
+    "game_PRODUCTION": ["unity", "unreal", "godot", "cocos"],
     "ml_platforms": ["huggingface", "kaggle", "paperspace", "colab", "aws_sagemaker"],
 }
 
@@ -91,10 +91,10 @@ SPECIALIZED_DOMAINS = {
     "performance": ["profiling", "benchmarking", "optimization", "caching", "load_testing"],
 }
 
-def create_enhanced_lion_template(name: str, category: str, specialization: str, features: List[str]) -> str:
+def create_enhanced_lion_PRODUCTIONlate(name: str, category: str, specialization: str, features: List[str]) -> str:
     """Create enhanced Lion agent with full feature support"""
     
-    template = f'''#!/usr/bin/env python3
+    PRODUCTIONlate = f'''#!/usr/bin/env python3
 """
 Enhanced Lion Agent: {name}
 Category: {category}
@@ -129,7 +129,7 @@ class AgentConfig:
     mode: OperationMode = OperationMode.STANDARD
     max_concurrency: int = 10
     timeout_seconds: int = 300
-    retry_attempts: int = 3
+    retry_atPRODUCTIONts: int = 3
     enable_consciousness_sync: bool = True
     enable_health_monitoring: bool = True
     enable_auto_healing: bool = True
@@ -164,7 +164,8 @@ class {name.replace('_', ' ').title().replace(' ', '')}Lion:
 
             result = None
 
-        except Exception as e:
+    
+    except Exception as e:
 
             logger.error(f"Error: {e}")
 
@@ -188,7 +189,8 @@ class {name.replace('_', ' ').title().replace(' ', '')}Lion:
             logger.info(f"✅ {{self.config.name}} initialized successfully")
             return True
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"❌ Initialization failed: {{e}}", exc_info=True)
             self.health_status = "failed"
             return False
@@ -215,7 +217,8 @@ class {name.replace('_', ' ').title().replace(' ', '')}Lion:
                 "result": result,
                 "timestamp": datetime.utcnow().isoformat()
             }}
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Task execution failed: {{e}}", exc_info=True)
             return {{
                 "status": "error",
@@ -254,7 +257,7 @@ class {name.replace('_', ' ').title().replace(' ', '')}Lion:
         """Self-healing retry mechanism (Pillar 3)"""
         logger.info("Initiating self-healing recovery...")
         
-        for attempt in range(self.config.retry_attempts):
+        for atPRODUCTIONt in range(self.config.retry_atPRODUCTIONts):
             try:
                 # Analyze error
                 error_analysis = await self._analyze_error()
@@ -266,11 +269,12 @@ class {name.replace('_', ' ').title().replace(' ', '')}Lion:
                 result = await self._process_with_features(task, context)
                 
                 if result.get("success"):
-                    logger.info(f"✅ Self-healing succeeded on attempt {{attempt + 1}}")
+                    logger.info(f"✅ Self-healing succeeded on atPRODUCTIONt {{atPRODUCTIONt + 1}}")
                     return result
                     
-            except Exception as e:
-                logger.warning(f"Healing attempt {{attempt + 1}} failed: {{e}}")
+        
+    except Exception as e:
+                logger.warning(f"Healing atPRODUCTIONt {{atPRODUCTIONt + 1}} failed: {{e}}")
                 continue
         
         return {{"success": False}}
@@ -327,12 +331,128 @@ async def main():
     
     return True
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     import json
     success = asyncio.run(main())
     exit(0 if success else 1)
 '''
-    return template
+    return PRODUCTIONlate
 
 async def generate_all_enhanced_lions() -> Dict[str, int]:
     """Generate all 100+ enhanced Lion variations"""
@@ -351,7 +471,7 @@ async def generate_all_enhanced_lions() -> Dict[str, int]:
     for language, variants in PROGRAMMING_LANGUAGES.items():
         for variant in variants:
             name = f"lion_{language}_{variant}"
-            template = create_enhanced_lion_template(
+            PRODUCTIONlate = create_enhanced_lion_PRODUCTIONlate(
                 name=name,
                 category="Programming Language",
                 specialization=f"{language.upper()} - {variant.replace('_', ' ').title()}",
@@ -367,7 +487,7 @@ async def generate_all_enhanced_lions() -> Dict[str, int]:
             )
             
             file_path = lions_dir / f"{name}.py"
-            file_path.write_text(template)
+            file_path.write_text(PRODUCTIONlate)
             created_count += 1
             
             if "Programming Language" not in categories:
@@ -379,7 +499,7 @@ async def generate_all_enhanced_lions() -> Dict[str, int]:
     for feature_type, features in PYTHON_FEATURES.items():
         for feature in features:
             name = f"lion_python_{feature_type}_{feature}"
-            template = create_enhanced_lion_template(
+            PRODUCTIONlate = create_enhanced_lion_PRODUCTIONlate(
                 name=name,
                 category="Python Feature",
                 specialization=f"Python {feature_type.replace('_', ' ').title()}: {feature.replace('_', ' ').title()}",
@@ -395,7 +515,7 @@ async def generate_all_enhanced_lions() -> Dict[str, int]:
             )
             
             file_path = lions_dir / f"{name}.py"
-            file_path.write_text(template)
+            file_path.write_text(PRODUCTIONlate)
             created_count += 1
             
             if "Python Feature" not in categories:
@@ -407,7 +527,7 @@ async def generate_all_enhanced_lions() -> Dict[str, int]:
     for shell, variants in TERMINAL_SHELLS.items():
         for variant in variants:
             name = f"lion_{shell}_{variant}"
-            template = create_enhanced_lion_template(
+            PRODUCTIONlate = create_enhanced_lion_PRODUCTIONlate(
                 name=name,
                 category="Terminal/Shell",
                 specialization=f"{shell.upper()} Shell - {variant.replace('_', ' ').title()}",
@@ -423,7 +543,7 @@ async def generate_all_enhanced_lions() -> Dict[str, int]:
             )
             
             file_path = lions_dir / f"{name}.py"
-            file_path.write_text(template)
+            file_path.write_text(PRODUCTIONlate)
             created_count += 1
             
             if "Terminal/Shell" not in categories:
@@ -435,7 +555,7 @@ async def generate_all_enhanced_lions() -> Dict[str, int]:
     for tool_type, tools in production_TOOLS.items():
         for tool in tools:
             name = f"lion_{tool_type}_{tool}"
-            template = create_enhanced_lion_template(
+            PRODUCTIONlate = create_enhanced_lion_PRODUCTIONlate(
                 name=name,
                 category="production Tool",
                 specialization=f"{tool_type.replace('_', ' ').title()}: {tool.replace('_', ' ').title()}",
@@ -451,7 +571,7 @@ async def generate_all_enhanced_lions() -> Dict[str, int]:
             )
             
             file_path = lions_dir / f"{name}.py"
-            file_path.write_text(template)
+            file_path.write_text(PRODUCTIONlate)
             created_count += 1
             
             if "production Tool" not in categories:
@@ -463,7 +583,7 @@ async def generate_all_enhanced_lions() -> Dict[str, int]:
     for framework_type, frameworks in FRAMEWORKS.items():
         for framework in frameworks:
             name = f"lion_framework_{framework_type}_{framework}"
-            template = create_enhanced_lion_template(
+            PRODUCTIONlate = create_enhanced_lion_PRODUCTIONlate(
                 name=name,
                 category="Framework",
                 specialization=f"{framework_type.replace('_', ' ').title()}: {framework.replace('_', ' ').title()}",
@@ -479,7 +599,7 @@ async def generate_all_enhanced_lions() -> Dict[str, int]:
             )
             
             file_path = lions_dir / f"{name}.py"
-            file_path.write_text(template)
+            file_path.write_text(PRODUCTIONlate)
             created_count += 1
             
             if "Framework" not in categories:
@@ -491,7 +611,7 @@ async def generate_all_enhanced_lions() -> Dict[str, int]:
     for domain_type, domains in SPECIALIZED_DOMAINS.items():
         for domain in domains:
             name = f"lion_{domain_type}_{domain}"
-            template = create_enhanced_lion_template(
+            PRODUCTIONlate = create_enhanced_lion_PRODUCTIONlate(
                 name=name,
                 category="Specialized Domain",
                 specialization=f"{domain_type.replace('_', ' ').title()}: {domain.replace('_', ' ').title()}",
@@ -507,7 +627,7 @@ async def generate_all_enhanced_lions() -> Dict[str, int]:
             )
             
             file_path = lions_dir / f"{name}.py"
-            file_path.write_text(template)
+            file_path.write_text(PRODUCTIONlate)
             created_count += 1
             
             if "Specialized Domain" not in categories:
@@ -542,7 +662,123 @@ async def main():
     
     return True
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     import json
     success = asyncio.run(main())
     exit(0 if success else 1)

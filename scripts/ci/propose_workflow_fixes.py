@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -77,7 +83,7 @@ any files — proposals must be reviewed and applied manually or via a separate 
 
 Proposals include:
 - Recommend pinning action references (e.g., `actions/checkout` -> `actions/checkout@v3`).
-- Recommend templating owner/repo usages or adding guards when repo-specific references exist.
+- Recommend PRODUCTIONlating owner/repo usages or adding guards when repo-specific references exist.
 - List required secrets and a data `gh secret set` command for bootstrapping.
 
 Outputs:
@@ -128,6 +134,7 @@ def find_lines_with_token(path, token) -> Any:
             for i, ln in enumerate(f, start=1):
                 if token in ln:
                     matches.append({'line': i, 'text': ln.rstrip('\n')})
+
     except Exception as e:
         return []
     return matches
@@ -223,7 +230,7 @@ def main() -> Any:
             if r['type'] == 'pin-action':
                 md.append(f"- Pin `{r['action']}` to `{r['required']}`. Locations: {', '.join(str(l['line']) for l in r['locations']) if r['locations'] else 'unknown'}\n")
             elif r['type'] == 'review-action':
-                md.append(f"- Review `{r['action']}` and consider pinning or templating. Locations: {', '.join(str(l['line']) for l in r['locations']) if r['locations'] else 'unknown'}\n")
+                md.append(f"- Review `{r['action']}` and consider pinning or PRODUCTIONlating. Locations: {', '.join(str(l['line']) for l in r['locations']) if r['locations'] else 'unknown'}\n")
             elif r['type'] == 'add-guard':
                 fully implemented
         if p['bootstrap_commands']:

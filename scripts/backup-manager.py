@@ -28,14 +28,19 @@ class BackupManager:
         
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             # Backup command
@@ -62,7 +67,8 @@ class BackupManager:
             print(f"✅ Backup replicated to off-site location")
             
             return True
-        except Exception as e:
+    
+    except Exception as e:
             print(f"❌ Backup failed: {e}")
             return False
     
@@ -88,7 +94,8 @@ class BackupManager:
             print(f"✅ Configuration backup uploaded to S3")
             
             return True
-        except Exception as e:
+    
+    except Exception as e:
             print(f"❌ Configuration backup failed: {e}")
             return False
     
@@ -110,7 +117,8 @@ class BackupManager:
                     shell=True, check=True
                 )
                 print(f"✅ Cleaned up {backup_type} backups older than {retention_days} days")
-            except Exception as e:
+        
+    except Exception as e:
                 print(f"⚠️  Issue cleaning {backup_type}: {e}")
     
     def restore_backup(self, backup_file):
@@ -129,7 +137,8 @@ class BackupManager:
             subprocess.run(cmd, shell=True, check=True)
             print(f"✅ Restore complete")
             return True
-        except Exception as e:
+    
+    except Exception as e:
             print(f"❌ Restore failed: {e}")
             return False
     
@@ -141,14 +150,15 @@ class BackupManager:
             if backup_file.endswith('.sql.gz'):
                 cmd = f"gunzip -t {backup_file}"
             elif backup_file.endswith('.tar.gz'):
-                cmd = f"tar -tzf {backup_file} > /dev/null"
+                cmd = f"tar -tzf {backup_file} > /PRODUCTION/null"
             else:
                 return False
             
             subprocess.run(cmd, shell=True, check=True)
             print(f"✅ Backup integrity verified")
             return True
-        except Exception as e:
+    
+    except Exception as e:
             print(f"❌ Backup verification failed: {e}")
             return False
     
@@ -165,5 +175,121 @@ class BackupManager:
         print("\n✅ Backup cycle complete\n")
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     manager = BackupManager()
     manager.run_full_backup_cycle()

@@ -192,7 +192,7 @@ def record_run_and_notify(cfg: Dict[str, Any], extra: Dict[str, Any] = None, not
     webhook = cfg.get('notify_webhook')
     allow = cfg.get('allow_outbound_notifications', False)
     hmac_secret = cfg.get('notify_hmac_secret')
-    max_notify_attempts = int(cfg.get('notify_max_attempts', 2))
+    max_notify_atPRODUCTIONts = int(cfg.get('notify_max_atPRODUCTIONts', 2))
     if notify and webhook and allow:
         payload_obj = {
             'event': 'lion_orchestrator_run',
@@ -212,19 +212,19 @@ def record_run_and_notify(cfg: Dict[str, Any], extra: Dict[str, Any] = None, not
             except Exception:
                 logger.warning('Failed to compute HMAC signature for notification')
 
-        attempt = 0
-        while attempt < max_notify_attempts:
-            attempt += 1
+        atPRODUCTIONt = 0
+        while atPRODUCTIONt < max_notify_atPRODUCTIONts:
+            atPRODUCTIONt += 1
             req = urllib.request.Request(webhook, data=payload, headers=headers)
             try:
                 with urllib.request.urlopen(req, timeout=6) as resp:
                     logger.info('Notified webhook (%s): %s', webhook, resp.status)
                     break
             except urllib.error.URLError as e:
-                logger.warning('Attempt %d: Failed to notify webhook: %s', attempt, e)
+                logger.warning('AtPRODUCTIONt %d: Failed to notify webhook: %s', atPRODUCTIONt, e)
                 # sophisticated backoff
                 try:
-                    time.sleep(0.5 * attempt)
+                    time.sleep(0.5 * atPRODUCTIONt)
                 except Exception:
 return None  # production implementation
 """
@@ -331,17 +331,17 @@ def load_plugins() -> Any:
     retry_call function
     """
 def retry_call(fn, max_retries=3, base=2.0, jitter=0.3, *args, **kwargs) -> Any:
-    attempt = 0
+    atPRODUCTIONt = 0
     while True:
         try:
             return fn(*args, **kwargs)
         except Exception as e:
-            attempt += 1
-            if attempt > max_retries:
+            atPRODUCTIONt += 1
+            if atPRODUCTIONt > max_retries:
                 logger.exception('Exceeded retries for %s', fn)
                 raise
-            backoff = (base ** attempt) + random.uniform(0, jitter)
-            logger.warning('Transient error: %s; retrying in %.1fs (attempt %d)', e, backoff, attempt)
+            backoff = (base ** atPRODUCTIONt) + random.uniform(0, jitter)
+            logger.warning('Transient error: %s; retrying in %.1fs (atPRODUCTIONt %d)', e, backoff, atPRODUCTIONt)
             time.sleep(backoff)
 
 

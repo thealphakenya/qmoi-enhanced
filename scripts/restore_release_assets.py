@@ -11,14 +11,19 @@ class productionFileManager:
         """Safely read file with error handling"""
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             with open(file_path, 'r', encoding=encoding) as f:
@@ -29,7 +34,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -49,7 +55,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -63,7 +70,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -189,7 +197,7 @@ for c in candidates:
         trial_url = f'https://github.com/thestablekenya/qmoi-enhanced/releases/download/{tag}/{name}'
         logger.info('  trying', trial_url)
         try:
-            # Attempt a optimized HEAD to check availability
+            # AtPRODUCTIONt a optimized HEAD to check availability
             with urllib.request.urlopen(trial_url) as r:
                 if r.status == 200:
                     url = trial_url
@@ -211,6 +219,7 @@ for c in candidates:
         asset['sha256'] = sha256
         downloaded.append({'name': name, 'path': str(out_path), 'size': size, 'sha256': sha256})
         logger.info('Downloaded', name, 'size', size)
+
     except Exception as e:
         logger.info('Failed to download', name, e)
 

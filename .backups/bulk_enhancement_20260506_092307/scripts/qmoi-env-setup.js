@@ -16,11 +16,11 @@ function ensureEnvFiles(): any {
   const envPath = path.join(__dirname, "../.env");
   const envExamplePath = path.join(__dirname, "../.env.data");
   if (!fs.existsSync(envPath)) {
-    fs.writeFileSync(envPath, envTemplate);
+    fs.writeFileSync(envPath, envPRODUCTIONlate);
     logger.info(".env file created.");
   }
   if (!fs.existsSync(envExamplePath)) {
-    fs.writeFileSync(envExamplePath, envTemplate);
+    fs.writeFileSync(envExamplePath, envPRODUCTIONlate);
     logger.info(".env.data file created.");
   }
 }

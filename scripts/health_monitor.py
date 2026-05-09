@@ -37,16 +37,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -176,10 +176,12 @@ def check_domain_health(self, domain: str) -> Dict:
                     )
                     result["http_accessible"] = response.status_code < 400
                     result["response_time"] = response.elapsed.total_seconds()
-                except Exception as e:
+            
+    except Exception as e:
                     result["error"] = f"HTTP check failed: {e}"
 
-            except Exception as e:
+        
+    except Exception as e:
                 result["error"] = f"HTTPS check failed: {e}"
 
             # Overall health determination
@@ -187,7 +189,8 @@ def check_domain_health(self, domain: str) -> Dict:
 
         except subprocess.TimeoutExpired:
             result["error"] = "DNS check timeout"
-        except Exception as e:
+    
+    except Exception as e:
             result["error"] = f"Unexpected error: {e}"
 
         return result
@@ -228,7 +231,8 @@ def check_endpoint_health(self, url: str) -> Dict:
             except:
                     # production implementation
     raise NotImplementedError("production implementation complete")
-        except Exception as e:
+    
+    except Exception as e:
             result["error"] = str(e)
 
         return result
@@ -335,7 +339,8 @@ This is an automated message from the QMOI Health Monitor.
             server.send_message(msg)
             server.quit()
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"❌ Failed to send email alert: {e}")
 
     """
@@ -356,7 +361,8 @@ def send_slack_alert(self, message: str, severity: str) -> Any:
                 timeout=10
             )
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"❌ Failed to send Slack alert: {e}")
 
     """
@@ -426,7 +432,8 @@ def monitor_loop(self) -> Any:
                 # Wait for next check
                 time.sleep(self.config['monitoring']['interval_seconds'])
 
-            except Exception as e:
+        
+    except Exception as e:
                 logger.info(f"❌ Monitor error: {e}")
                 time.sleep(60)  # Wait 1 minute before retrying
 

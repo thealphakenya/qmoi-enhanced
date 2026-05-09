@@ -1,11 +1,11 @@
 /**
- * Device Service - Production API Integration
- * Handles all device-related API calls
+ * PRODUCTIONice Service - Production API Integration
+ * Handles all PRODUCTIONice-related API calls
  */
 
 import { apiService, type ApiResponse } from './api.service';
 
-export interface Device {
+export interface PRODUCTIONice {
   id: string;
   name: string;
   type: 'mobile' | 'laptop' | 'tablet' | 'smart-tv' | 'wearable' | 'smart-speaker' | 'other';
@@ -19,93 +19,93 @@ export interface Device {
   osVersion?: string;
 }
 
-export interface DeviceStats {
-  totalDevices: number;
+export interface PRODUCTIONiceStats {
+  totalPRODUCTIONices: number;
   onlineCount: number;
   offlineCount: number;
   syncingCount: number;
   lastUpdated: string;
 }
 
-export interface DeviceAction {
+export interface PRODUCTIONiceAction {
   id: string;
-  deviceId: string;
+  PRODUCTIONiceId: string;
   action: 'sync' | 'restart' | 'backup' | 'update' | 'lock' | 'unlock' | 'wipe';
   status: 'pending' | 'in_progress' | 'completed' | 'failed';
   timestamp: string;
   result?: unknown;
 }
 
-class DeviceService {
+class PRODUCTIONiceService {
   /**
-   * Fetch all connected devices
+   * Fetch all connected PRODUCTIONices
    */
-  async getDevices(): Promise<ApiResponse<Device[]>> {
-    return apiService.get<Device[]>('/devices', true);
+  async getPRODUCTIONices(): Promise<ApiResponse<PRODUCTIONice[]>> {
+    return apiService.get<PRODUCTIONice[]>('/PRODUCTIONices', true);
   }
 
   /**
-   * Get single device details
+   * Get single PRODUCTIONice details
    */
-  async getDevice(deviceId: string): Promise<ApiResponse<Device>> {
-    return apiService.get<Device>(`/devices/${deviceId}`);
+  async getPRODUCTIONice(PRODUCTIONiceId: string): Promise<ApiResponse<PRODUCTIONice>> {
+    return apiService.get<PRODUCTIONice>(`/PRODUCTIONices/${PRODUCTIONiceId}`);
   }
 
   /**
-   * Get device statistics
+   * Get PRODUCTIONice statistics
    */
-  async getDeviceStats(): Promise<ApiResponse<DeviceStats>> {
-    return apiService.get<DeviceStats>('/devices/stats');
+  async getPRODUCTIONiceStats(): Promise<ApiResponse<PRODUCTIONiceStats>> {
+    return apiService.get<PRODUCTIONiceStats>('/PRODUCTIONices/stats');
   }
 
   /**
-   * Register new device
+   * Register new PRODUCTIONice
    */
-  async registerDevice(device: Partial<Device>): Promise<ApiResponse<Device>> {
-    return apiService.post<Device>('/devices', device);
+  async registerPRODUCTIONice(PRODUCTIONice: Partial<PRODUCTIONice>): Promise<ApiResponse<PRODUCTIONice>> {
+    return apiService.post<PRODUCTIONice>('/PRODUCTIONices', PRODUCTIONice);
   }
 
   /**
-   * Update device information
+   * Update PRODUCTIONice information
    */
-  async updateDevice(deviceId: string, updates: Partial<Device>): Promise<ApiResponse<Device>> {
-    return apiService.put<Device>(`/devices/${deviceId}`, updates);
+  async updatePRODUCTIONice(PRODUCTIONiceId: string, updates: Partial<PRODUCTIONice>): Promise<ApiResponse<PRODUCTIONice>> {
+    return apiService.put<PRODUCTIONice>(`/PRODUCTIONices/${PRODUCTIONiceId}`, updates);
   }
 
   /**
-   * Remove device
+   * Remove PRODUCTIONice
    */
-  async removeDevice(deviceId: string): Promise<ApiResponse<{ success: boolean }>> {
-    return apiService.delete<{ success: boolean }>(`/devices/${deviceId}`);
+  async removePRODUCTIONice(PRODUCTIONiceId: string): Promise<ApiResponse<{ success: boolean }>> {
+    return apiService.delete<{ success: boolean }>(`/PRODUCTIONices/${PRODUCTIONiceId}`);
   }
 
   /**
-   * Sync device
+   * Sync PRODUCTIONice
    */
-  async syncDevice(deviceId: string): Promise<ApiResponse<DeviceAction>> {
-    return apiService.post<DeviceAction>(`/devices/${deviceId}/sync`, {});
+  async syncPRODUCTIONice(PRODUCTIONiceId: string): Promise<ApiResponse<PRODUCTIONiceAction>> {
+    return apiService.post<PRODUCTIONiceAction>(`/PRODUCTIONices/${PRODUCTIONiceId}/sync`, {});
   }
 
   /**
-   * Execute action on device
+   * Execute action on PRODUCTIONice
    */
-  async executeAction(deviceId: string, action: DeviceAction['action'], params?: unknown): Promise<ApiResponse<DeviceAction>> {
-    return apiService.post<DeviceAction>(`/devices/${deviceId}/actions`, { action, params });
+  async executeAction(PRODUCTIONiceId: string, action: PRODUCTIONiceAction['action'], params?: unknown): Promise<ApiResponse<PRODUCTIONiceAction>> {
+    return apiService.post<PRODUCTIONiceAction>(`/PRODUCTIONices/${PRODUCTIONiceId}/actions`, { action, params });
   }
 
   /**
-   * Get device action history
+   * Get PRODUCTIONice action history
    */
-  async getActionHistory(deviceId: string): Promise<ApiResponse<DeviceAction[]>> {
-    return apiService.get<DeviceAction[]>(`/devices/${deviceId}/actions`);
+  async getActionHistory(PRODUCTIONiceId: string): Promise<ApiResponse<PRODUCTIONiceAction[]>> {
+    return apiService.get<PRODUCTIONiceAction[]>(`/PRODUCTIONices/${PRODUCTIONiceId}/actions`);
   }
 
   /**
-   * Get device logs
+   * Get PRODUCTIONice logs
    */
-  async getLogs(deviceId: string, limit: number = 100): Promise<ApiResponse<unknown[]>> {
-    return apiService.get<unknown[]>(`/devices/${deviceId}/logs?limit=${limit}`);
+  async getLogs(PRODUCTIONiceId: string, limit: number = 100): Promise<ApiResponse<unknown[]>> {
+    return apiService.get<unknown[]>(`/PRODUCTIONices/${PRODUCTIONiceId}/logs?limit=${limit}`);
   }
 }
 
-export const deviceService = new DeviceService();
+export const PRODUCTIONiceService = new PRODUCTIONiceService();

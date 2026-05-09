@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # PRODUCTION_READY: True
 """
-QMOI AUTODEV Enhanced production Command - Optimized
+QMOI AUTOPRODUCTION Enhanced production Command - Optimized
 =====================================================
 
 Efficient autonomous production enhancement wrapper that delegates to `ProductionMigrationEngine` in `autonomous_production_migration_engine.py`.
@@ -9,10 +9,10 @@ Efficient autonomous production enhancement wrapper that delegates to `Productio
 - Replaces non-production implementations with enhanced production code
 - Updates tracking files in real-time
 - Generates versioned `undone.txt` reports until no nonproduction issues remain
-- Runs with no artificial internal AUTODEV rate limiting
+- Runs with no artificial internal AUTOPRODUCTION rate limiting
 
 Usage:
-    python3 autodev_enhanced_production_command_optimized.py
+    python3 autoPRODUCTION_enhanced_production_command_optimized.py
 """
 
 import os
@@ -29,7 +29,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('autodev_enhanced_production.log'),
+        logging.FileHandler('autoPRODUCTION_enhanced_production.log'),
         logging.StreamHandler()
     ]
 )
@@ -207,7 +207,7 @@ class OptimizedProductionEnhancer:
         timestamp = datetime.now().isoformat()
 
         # Update resumefromhere.txt
-        resume_content = f'''QMOI AUTODEV ENHANCED production - ACTIVELY PROCESSING
+        resume_content = f'''QMOI AUTOPRODUCTION ENHANCED production - ACTIVELY PROCESSING
 Status: 🚀 production ENHANCEMENT COMPLETE
 Last Updated: {timestamp}
 
@@ -225,12 +225,12 @@ Last Updated: {timestamp}
 - Validate all enhancements
 - Generate final production report
 
-Command: python3 autodev_enhanced_production_command_optimized.py
+Command: python3 autoPRODUCTION_enhanced_production_command_optimized.py
 '''
         Path('/workspaces/qmoi-enhanced/resumefromhere.txt').write_text(resume_content)
 
         # Update INSTANCES.md
-        instances = f'''# AUTODEV Enhanced production - Real-Time Progress
+        instances = f'''# AUTOPRODUCTION Enhanced production - Real-Time Progress
 
 **Last Updated:** {timestamp}
 
@@ -285,7 +285,7 @@ This file is synchronized with INSTANCES.md, MATCHES.txt, and resumefromhere.txt
         Path('/workspaces/qmoi-enhanced/MATCHES.md').write_text(matches_md)
 
         # Update MATCHES.txt
-        matches_txt = f'''AUTODEV ENHANCED production - REAL-TIME RESULTS
+        matches_txt = f'''AUTOPRODUCTION ENHANCED production - REAL-TIME RESULTS
 Generated: {timestamp}
 
 PROCESSING METRICS:
@@ -304,7 +304,7 @@ production READINESS:
 - Status: ACTIVELY PROCESSING
 
 COMMAND EXECUTED:
-python3 autodev_enhanced_production_command_optimized.py
+python3 autoPRODUCTION_enhanced_production_command_optimized.py
 '''
         Path('/workspaces/qmoi-enhanced/MATCHES.txt').write_text(matches_txt)
 
@@ -343,14 +343,14 @@ def main():
     """Main execution"""
     workspace_path = Path('/workspaces/qmoi-enhanced')
     engine = ProductionMigrationEngine(str(workspace_path))
-    result = engine.run_complete_migration(max_iterations=int(os.getenv('AUTODEV_MAX_ITERATIONS', '20')))
+    result = engine.run_complete_migration(max_iterations=int(os.getenv('AUTOPRODUCTION_MAX_ITERATIONS', '20')))
 
-    result_path = workspace_path / 'autodev_enhanced_production_results.json'
+    result_path = workspace_path / 'autoPRODUCTION_enhanced_production_results.json'
     with open(result_path, 'w', encoding='utf-8') as f:
         json.dump(result, f, indent=2, default=str)
 
-    summary_path = workspace_path / 'autodev_enhanced_production_summary.md'
-    summary = f"""# AUTODEV Enhanced production Command Summary
+    summary_path = workspace_path / 'autoPRODUCTION_enhanced_production_summary.md'
+    summary = f"""# AUTOPRODUCTION Enhanced production Command Summary
 Generated: {datetime.now().isoformat()}
 
 - Success: {'✅' if result['success'] else '⚠️'}
@@ -360,11 +360,125 @@ Generated: {datetime.now().isoformat()}
 - Remaining Issues: {result['remaining_issues']}
 - Execution Time: {result['execution_time']:.2f} seconds
 
-AUTODEV production migration executed against /workspaces/qmoi-enhanced with no internal rate limiting.
+AUTOPRODUCTION production migration executed against /workspaces/qmoi-enhanced with no internal rate limiting.
 """
     with open(summary_path, 'w', encoding='utf-8') as f:
         f.write(summary)
 
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     main()

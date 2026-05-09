@@ -13,7 +13,7 @@ export interface AIHealth {
   metrics?: {
     cpu: {
       usage: number;
-      temperature: number;
+      PRODUCTIONerature: number;
       cores: number;
     };
     memory: {
@@ -28,7 +28,7 @@ export interface AIHealth {
     };
     gpu?: {
       usage: number;
-      temperature: number;
+      PRODUCTIONerature: number;
       memory: {
         total: number;
         used: number;

@@ -25,7 +25,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -62,7 +63,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -82,7 +84,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -96,7 +99,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -178,7 +182,8 @@ def run_quick_test(self) -> Any:
                 logger.info(f"✅ {test_name}: PASSED")
                 logger.info(f"Test {test_name} passed")
                 
-            except Exception as e:
+        
+    except Exception as e:
                 self.test_results[test_name] = {
                     'status': 'FAILED',
                     'duration': str(datetime.now() - self.test_start_time),
@@ -276,7 +281,8 @@ def test_dependencies(self) -> Dict[str, Any]:
             else:
                 results['node_dependencies'] = {}
                 logger.info("   Node.js dependencies: package.json not found")
-        except Exception as e:
+    
+    except Exception as e:
             results['node_dependencies'] = {}
             logger.info(f"   Node.js dependencies: Error - {e}")
         
@@ -334,7 +340,8 @@ def test_real_time_monitor(self) -> Dict[str, Any]:
             dashboard_html = self.generate_test_dashboard()
             results['dashboard_generated'] = True
             logger.info("   Dashboard generation: ✅")
-        except Exception as e:
+    
+    except Exception as e:
             results['dashboard_generated'] = False
             results['dashboard_error'] = str(e)
             logger.info(f"   Dashboard generation: ❌ - {e}")
@@ -343,7 +350,8 @@ def test_real_time_monitor(self) -> Dict[str, Any]:
         try:
             results['websocket_simulation'] = self.simulate_websocket()
             logger.info("   WebSocket simulation: ✅")
-        except Exception as e:
+    
+    except Exception as e:
             results['websocket_simulation'] = False
             results['websocket_error'] = str(e)
             logger.info(f"   WebSocket simulation: ❌ - {e}")
@@ -355,7 +363,7 @@ def test_real_time_monitor(self) -> Dict[str, Any]:
     """
 def test_notifications(self) -> Dict[str, Any]:
         """Test notification system"""
-        logger.info("🔔 Testing notification systemproduction implementation with comprehensive error handling and logging")
+        logger.info("🔔 Testing notification sysPRODUCTIONroduction implementation with comprehensive error handling and logging")
         
         results = {}
         
@@ -380,7 +388,8 @@ def test_notifications(self) -> Dict[str, Any]:
                 }
                 results['notification_types'][ntype] = True
                 logger.info(f"   {ntype} notification: ✅")
-            except Exception as e:
+        
+    except Exception as e:
                 results['notification_types'][ntype] = False
                 logger.info(f"   {ntype} notification: ❌")
         
@@ -417,7 +426,8 @@ def test_error_handling(self) -> Dict[str, Any]:
                 results['error_simulation'][error_type] = True
                 logger.info(f"   {error_type} simulation: ✅")
                 
-        except Exception as e:
+    
+    except Exception as e:
             results['error_simulation'] = False
             results['error_simulation_error'] = str(e)
             logger.info(f"   Error simulation: ❌ - {e}")
@@ -458,7 +468,8 @@ def test_performance(self) -> Dict[str, Any]:
             results['disk_usage'] = disk.percent
             logger.info(f"   Disk usage: {disk.percent:.1f}%")
             
-        except Exception as e:
+    
+    except Exception as e:
             results['system_performance'] = False
             results['performance_error'] = str(e)
             logger.info(f"   System performance: ❌ - {e}")
@@ -529,7 +540,8 @@ def test_health_check(self) -> Dict[str, Any]:
             for metric, value in health_metrics.items():
                 logger.info(f"   {metric}: {value}")
                 
-        except Exception as e:
+    
+    except Exception as e:
             results['health_metrics'] = False
             results['health_error'] = str(e)
             logger.info(f"   Health metrics: ❌ - {e}")
@@ -576,7 +588,8 @@ def test_final_report(self) -> Dict[str, Any]:
             results['report_saved'] = True
             logger.info("   Report saved: ✅")
             
-        except Exception as e:
+    
+    except Exception as e:
             results['report_saved'] = False
             results['report_error'] = str(e)
             logger.info(f"   Report saved: ❌ - {e}")

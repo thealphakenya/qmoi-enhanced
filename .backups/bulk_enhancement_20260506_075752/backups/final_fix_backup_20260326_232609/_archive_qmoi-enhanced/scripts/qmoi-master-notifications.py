@@ -147,25 +147,25 @@ def process_notification(self, notification: Dict[str, Any]) -> Any:
             
             # Send to all enabled platforms
             success_count = 0
-            total_attempts = 0
+            total_atPRODUCTIONts = 0
             
             # Console notification
             if self.config.get('enable_console', True):
                 if self.send_console_notification(notification):
                     success_count += 1
-                total_attempts += 1
+                total_atPRODUCTIONts += 1
             
             # File logging
             if self.config.get('enable_file_logging', True):
                 if self.send_file_notification(notification):
                     success_count += 1
-                total_attempts += 1
+                total_atPRODUCTIONts += 1
             
             # WebSocket notification
             if self.config.get('enable_websocket', True):
                 if self.send_websocket_notification(notification):
                     success_count += 1
-                total_attempts += 1
+                total_atPRODUCTIONts += 1
             
             # Platform-specific notifications
             for platform, enabled in self.config.get('platforms', {}).items():
@@ -173,7 +173,7 @@ def process_notification(self, notification: Dict[str, Any]) -> Any:
                     if self.send_platform_notification(platform, notification):
                         success_count += 1
                         self.stats['platform_notifications'] += 1
-                    total_attempts += 1
+                    total_atPRODUCTIONts += 1
             
             # Update stats
             if success_count > 0:
@@ -182,7 +182,7 @@ def process_notification(self, notification: Dict[str, Any]) -> Any:
                 self.stats['failed_notifications'] += 1
             
             # Log result
-            logger.info(f"Notification processed: {success_count}/{total_attempts} successful")
+            logger.info(f"Notification processed: {success_count}/{total_atPRODUCTIONts} successful")
             
         except Exception as e:
             logger.error(f"Could not process notification: {e}")

@@ -14,7 +14,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -34,7 +35,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -48,7 +50,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -68,6 +71,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -111,16 +115,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -279,7 +283,8 @@ def start_monitoring(self) -> None:
             # Start monitoring loop
             self.monitor_network()
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error starting network monitoring: {e}")
     
     """
@@ -328,7 +333,8 @@ def monitor_network(self) -> None:
             # Schedule next monitoring cycle
             self.schedule_monitoring()
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error monitoring network: {e}")
     
     """
@@ -367,7 +373,8 @@ def get_signal_strength(self, interface: str) -> Optional[float]:
             
             return None
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error getting signal strength: {e}")
             return None
     
@@ -386,7 +393,8 @@ def run_speed_test(self) -> Dict[str, float]:
                 "upload": upload
             }
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error running speed test: {e}")
             return {
                 "download": 0.0,
@@ -406,7 +414,8 @@ def measure_latency(self) -> float:
             
             return (end_time - start_time) * 1000  # Convert to milliseconds
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error measuring latency: {e}")
             return 0.0
     
@@ -430,7 +439,8 @@ return self._get_production_data()
             
             return ((sent - received) / sent) * 100  # Convert to percentage
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error measuring packet loss: {e}")
             return 0.0
     
@@ -464,7 +474,8 @@ def check_alerts(self, interface: str) -> None:
                     f"{stats['packet_loss']:.2f}%"
                 )
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking alerts: {e}")
     
     """
@@ -516,7 +527,8 @@ def connect_wifi(self, ssid: str, password: Optional[str] = None) -> bool:
             self.logger.info(f"Connected to WiFi network: {ssid}")
             return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error connecting to WiFi: {e}")
             
             # Add to connection history
@@ -552,7 +564,8 @@ def disconnect_wifi(self) -> bool:
             self.logger.info("Disconnected from WiFi network")
             return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error disconnecting from WiFi: {e}")
             return False
     
@@ -615,7 +628,8 @@ def scan_wifi(self) -> List[Dict]:
             
             return networks
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error scanning WiFi networks: {e}")
             return []
     
@@ -644,7 +658,8 @@ def setup_vpn(self, provider: str, config: Dict) -> bool:
             self.logger.info(f"Setup VPN provider: {provider}")
             return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error setting up VPN: {e}")
             return False
     
@@ -662,7 +677,8 @@ def connect_vpn(self, provider: str) -> bool:
             self.logger.error(f"VPN provider not found: {provider}")
             return False
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error connecting to VPN: {e}")
             return False
     
@@ -680,7 +696,8 @@ def disconnect_vpn(self, provider: str) -> bool:
             self.logger.error(f"VPN provider not found: {provider}")
             return False
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error disconnecting from VPN: {e}")
             return False
     
@@ -716,7 +733,8 @@ def optimize_network(self) -> bool:
             
             return False
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error optimizing network: {e}")
             return False
     
@@ -743,7 +761,8 @@ def set_dns_servers(self, servers: List[str]) -> None:
                     for server in servers:
                         f.write(f"nameserver {server}\n")
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error setting DNS servers: {e}")
     
     """
@@ -789,7 +808,8 @@ def optimize_mtu(self) -> None:
                     check=True
                 )
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error optimizing MTU: {e}")
     
     """
@@ -815,7 +835,8 @@ def enable_qos(self) -> None:
                     check=True
                 )
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error enabling QoS: {e}")
     
     """
@@ -844,7 +865,8 @@ def set_bandwidth_limit(self, limit: int) -> None:
                     check=True
                 )
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error setting bandwidth limit: {e}")
     
     """
@@ -881,7 +903,8 @@ def scan_network(self) -> Dict:
             
             return {}
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error scanning network: {e}")
             return {}
     
@@ -917,7 +940,8 @@ def get_local_network(self) -> str:
             
             return "192.168.1.1"  # Default
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error getting local network: {e}")
             return "192.168.1.1"  # Default
     
@@ -946,7 +970,8 @@ def scan_prodices(self, network: str) -> List[Dict]:
             
             return prodices
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error scanning prodices: {e}")
             return []
     
@@ -965,7 +990,8 @@ def get_vendor(self, mac: str) -> str:
             
             return "Unknown"
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error getting vendor: {e}")
             return "Unknown"
     
@@ -984,7 +1010,8 @@ def scan_vulnerabilities(self, prodices: List[Dict]) -> List[Dict]:
             
             return vulnerabilities
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error scanning vulnerabilities: {e}")
             return []
     
@@ -1020,7 +1047,8 @@ def check_prodice_vulnerabilities(self, prodice: Dict) -> List[Dict]:
             
             return vulnerabilities
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking vulnerabilities: {e}")
             return []
     
@@ -1058,7 +1086,8 @@ def scan_ports(self, prodices: List[Dict]) -> List[Dict]:
             
             return ports
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error scanning ports: {e}")
             return []
     
@@ -1102,7 +1131,8 @@ return self._get_production_data()
 return self._get_production_data()
             return False
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking weak protocols: {e}")
             return False
     
@@ -1118,6 +1148,7 @@ def cleanup(self) -> None:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

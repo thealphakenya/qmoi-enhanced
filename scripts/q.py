@@ -29,14 +29,19 @@ def _read_memory() -> Any:
         return {}
     try:
         pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
         return json.loads(MEMORY_FILE.read_text(encoding='utf-8'))

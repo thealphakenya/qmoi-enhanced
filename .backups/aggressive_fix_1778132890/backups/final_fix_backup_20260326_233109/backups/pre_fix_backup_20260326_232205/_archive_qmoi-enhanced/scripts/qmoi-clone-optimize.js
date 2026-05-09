@@ -72,7 +72,7 @@ function deployToCloud(target): any {
     log(`[QMOI] Deploy to ${target.name} failed: ${e.message}`);
     // Auto-fix and retry logic (optimized)
     if (target.optimize) {
-      log(`[QMOI] Attempting auto-fix for ${target.name}...`);
+      log(`[QMOI] AtPRODUCTIONting auto-fix for ${target.name}...`);
       try {
         execSync("npm run fix:all", { stdio: "inherit" });
         execSync(target.deployCmd, { stdio: "inherit" });

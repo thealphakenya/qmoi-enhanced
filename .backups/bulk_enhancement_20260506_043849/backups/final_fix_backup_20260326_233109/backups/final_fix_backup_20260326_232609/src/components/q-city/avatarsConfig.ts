@@ -163,7 +163,7 @@ export const avatarsConfig: AvatarConfig[] = [
     thumbnailPath: "/avatars/elder/thumbnail.png",
     environment: "library",
     props: ["book", "staff"],
-    gestures: ["bless", "teach", "contemplate", "guide"],
+    gestures: ["bless", "teach", "conPRODUCTIONlate", "guide"],
     expressions: ["wise", "calm", "knowing", "gentle"],
     isActive: true,
     autoUpgrade: true,

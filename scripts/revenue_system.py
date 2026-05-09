@@ -58,7 +58,8 @@ class ProductionRevenueSystem:
                 'status': 'success'
             }
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Revenue collection failed: {e}")
             raise
 
@@ -70,7 +71,8 @@ class ProductionRevenueSystem:
                 lambda: self.api_client.get('/subscriptions/revenue')
             )
             return {'subscriptions': response.get('amount', 0.0)}
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Subscription revenue collection failed: {e}")
             return {'subscriptions': 0.0}
 
@@ -82,7 +84,8 @@ class ProductionRevenueSystem:
                 lambda: self.api_client.get('/transactions/revenue')
             )
             return {'transactions': response.get('amount', 0.0)}
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Transaction revenue collection failed: {e}")
             return {'transactions': 0.0}
 
@@ -94,7 +97,8 @@ class ProductionRevenueSystem:
                 lambda: self.api_client.get('/advertising/revenue')
             )
             return {'advertising': response.get('amount', 0.0)}
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Advertising revenue collection failed: {e}")
             return {'advertising': 0.0}
 
@@ -106,7 +110,8 @@ class ProductionRevenueSystem:
                 lambda: self.api_client.get('/affiliate/revenue')
             )
             return {'affiliate': response.get('amount', 0.0)}
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Affiliate revenue collection failed: {e}")
             return {'affiliate': 0.0}
 
@@ -128,7 +133,8 @@ class ProductionRevenueSystem:
 
             await asyncio.get_event_loop().run_in_executor(None, store_data)
             logger.info(f"Stored revenue data: ${total}")
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to store revenue data: {e}")
             raise
 
@@ -154,7 +160,8 @@ class ProductionRevenueSystem:
                 'record_count': len(results),
                 'period_days': days
             }
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to get revenue report: {e}")
             return {'error': str(e)}
 
@@ -187,7 +194,8 @@ class ProductionRevenueSystem:
             self.db.execute_update(query, params)
             logger.info(f"Processed payment: {payment_record['payment_id']}")
             return payment_record
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Payment processing failed: {e}")
             raise
 
@@ -211,7 +219,8 @@ class ProductionRevenueSystem:
                 params = (limit,)
             results = self.db.execute_query(query, params)
             return results
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to get payment history: {e}")
             return []
 
@@ -234,6 +243,7 @@ class ProductionRevenueSystem:
                 'total_days': 30,
                 'activity_rate': days_with_revenue / 30 * 100
             }
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to calculate revenue metrics: {e}")
             return {'error': str(e)}

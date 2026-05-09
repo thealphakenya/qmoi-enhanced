@@ -1371,16 +1371,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -1505,16 +1505,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -1740,19 +1740,19 @@ def handle_domain_failure(self, domain, status) -> Any:
         # Send notifications
         self.send_notifications(domain, status)
 
-        # Attempt automated content recovery first
+        # AtPRODUCTIONt automated content recovery first
         if not status.get('content_legitimate', False):
-            self.attempt_content_recovery(domain)
+            self.atPRODUCTIONt_content_recovery(domain)
 
         # Check if emergency takeover is still needed
         if domain in self.fallback_domains:
             self.initiate_emergency_takeover(domain)
 
     """
-    attempt_content_recovery function
+    atPRODUCTIONt_content_recovery function
     """
-def attempt_content_recovery(self, domain) -> Any:
-        logging.info(f"Attempting content recovery for {domain}")
+def atPRODUCTIONt_content_recovery(self, domain) -> Any:
+        logging.info(f"AtPRODUCTIONting content recovery for {domain}")
 
         # For live: record intent and mark as needing manual action.
         recovery_marker = {
@@ -1910,7 +1910,7 @@ def enforce_all_domains_healthy(self, max_cycles=6, interval_seconds=30) -> Any:
             for domain in failed_domains:
                 health = self.health_status.get(domain, {})
                 if not health.get('content_legitimate'):
-                    self.attempt_content_recovery(domain)
+                    self.atPRODUCTIONt_content_recovery(domain)
 
                 if domain in self.fallback_domains and health.get('overall_status') in ['critical', 'down']:
                     self.initiate_emergency_takeover(domain)

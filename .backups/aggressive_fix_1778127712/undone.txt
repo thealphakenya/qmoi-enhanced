@@ -29,12 +29,12 @@
 - \bTBD\b: TBD
 - \bTBD\b: TBD
 
-### AUTODEV_ENHANCEMENT_DELIVERY.md
+### AUTOPRODUCTION_ENHANCEMENT_DELIVERY.md
 - \bproduction_data\b: production_data
 - \bproduction_data\b: production_data
 - \bproduction_data\b: production_data
 
-### AUTODEV_PRODUCTION_READINESS_ENHANCEMENT_GUIDE.md
+### AUTOPRODUCTION_PRODUCTION_READINESS_ENHANCEMENT_GUIDE.md
 - \bproduction_data\b: production_data
 - \bproduction_data\b: production_data
 
@@ -72,13 +72,13 @@
 ### app/components/TrainingCenter.tsx
 - \bIN PROGRESS\b: In Progress
 
-### archives/autodev_tools_20260425_153707/autodev_aggressive_fixer.py
+### archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_aggressive_fixer.py
 - \bIN PROGRESS\b: IN PROGRESS
 - \bIN PROGRESS\b: IN PROGRESS
 - \bIN PROGRESS\b: IN PROGRESS
 - \bIN PROGRESS\b: IN PROGRESS
 
-### archives/autodev_tools_20260425_153707/autodev_aggressive_fixer_backup.py
+### archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_aggressive_fixer_backup.py
 - \bproduction_data\b: production_data
 - \bproduction_data\b: production_data
 - \bproduction_data\b: production_data
@@ -89,40 +89,40 @@
 - \bIN PROGRESS\b: IN PROGRESS
 - \bIN PROGRESS\b: IN PROGRESS
 
-### archives/autodev_tools_20260425_153707/autodev_enhanced_fixer.py
+### archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_enhanced_fixer.py
 - \bWIP\b: WIP
 
-### archives/autodev_tools_20260425_153707/autodev_enhanced_production_command.py
+### archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_enhanced_production_command.py
 - \bIN PROGRESS\b: IN PROGRESS
 - \bIN PROGRESS\b: IN PROGRESS
 
-### archives/autodev_tools_20260425_153707/autodev_enhanced_production_command_optimized.py
+### archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_enhanced_production_command_optimized.py
 - \bIN PROGRESS\b: IN PROGRESS
 
-### archives/autodev_tools_20260425_153707/autodev_production_ready.py
+### archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_PRODUCTION_READY.py
 - \bproduction_data\b: production_data
 - \bIN PROGRESS\b: IN PROGRESS
 - \bIN PROGRESS\b: in progress
 - \bIN PROGRESS\b: in progress
 
-### archives/autodev_tools_20260425_153707/autonomous_production_migration_engine.py
+### archives/autoPRODUCTION_tools_20260425_153707/autonomous_production_migration_engine.py
 - \bIN PROGRESS\b: IN PROGRESS
 - \bIN PROGRESS\b: IN PROGRESS
 - \bIN PROGRESS\b: IN PROGRESS
 - \bIN PROGRESS\b: IN PROGRESS
 - \bIN PROGRESS\b: IN PROGRESS
 
-### autodev_enhanced_production_command_optimized.py
+### autoPRODUCTION_enhanced_production_command_optimized.py
 - \bIN PROGRESS\b: IN PROGRESS
 
-### autodev_memory_sync.json
+### autoPRODUCTION_memory_sync.json
 - \bproduction_data\b: production_data
 - \bproduction_data\b: production_data
 - \bproduction_data\b: production_data
 - \bproduction_data\b: production_data
 - \bproduction_data\b: production_data
 
-### autodevtracks.md
+### autoPRODUCTIONtracks.md
 - \bIN PROGRESS\b: In Progress
 
 ### autonomous_production_migration_engine.py
@@ -137,7 +137,7 @@
 ### docs/INDEX.md
 - \bIN PROGRESS\b: In Progress
 
-### fast_bulk_production_fixer.py
+### fast_bulk_PRODUCTION_FIXEDer.py
 - \bproduction_data\b: production_data
 - \bproduction_data\b: production_data
 - \bproduction_data\b: production_data
@@ -151,7 +151,7 @@
 ### public/qmoi-pwa-manager.js
 - \bIN PROGRESS\b: in progress
 
-### safe_bulk_production_fixer.py
+### safe_bulk_PRODUCTION_FIXEDer.py
 - \bproduction_data\b: production_data
 - \bproduction_data\b: production_data
 - \bproduction_data\b: production_data
@@ -159,7 +159,7 @@
 - \bUNIMPLEMENTED\b: UNIMPLEMENTED
 - \bIN PROGRESS\b: IN PROGRESS
 
-### scripts/comprehensive_production_fixer.py
+### scripts/comprehensive_PRODUCTION_FIXEDer.py
 - \bproduction_data\b: production_data
 - \bproduction_data\b: production_data
 

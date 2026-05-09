@@ -53,9 +53,9 @@ def get_latest_github_release_info() -> Any:
     download_apk function
     """
 def download_apk(url, path) -> Any:
-    for attempt in range(1, RETRY_COUNT + 1):
+    for atPRODUCTIONt in range(1, RETRY_COUNT + 1):
         try:
-            log_activity(f'Attempt {attempt}: Downloading {APK_NAME}', {'url': url})
+            log_activity(f'AtPRODUCTIONt {atPRODUCTIONt}: Downloading {APK_NAME}', {'url': url})
             r = requests.get(url, stream=True, timeout=30)
             r.raise_for_status()
             with open(path, 'wb') as f:
@@ -68,8 +68,8 @@ def download_apk(url, path) -> Any:
             else:
                 log_activity(f'APK too small after download', {'size': os.path.getsize(path)})
         except Exception as e:
-            log_activity(f'Error downloading {APK_NAME}', {'error': str(e), 'attempt': attempt})
-            logger.info(f'Error: {e} (attempt {attempt})')
+            log_activity(f'Error downloading {APK_NAME}', {'error': str(e), 'atPRODUCTIONt': atPRODUCTIONt})
+            logger.info(f'Error: {e} (atPRODUCTIONt {atPRODUCTIONt})')
         time.sleep(RETRY_DELAY)
     return False
 

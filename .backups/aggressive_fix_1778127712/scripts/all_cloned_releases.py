@@ -205,7 +205,7 @@ def main() -> Any:
     lines = [f'# ALL CLONED RELEASES (generated {datetime.utcnow().isoformat()}Z)', '', 'This file lists discovered release status for platforms.']
     lines.append('')
     if not entries:
-        lines.append('*No release information found. Run `scripts/auto_release_manager.py --apply` to attempt discovery.*')
+        lines.append('*No release information found. Run `scripts/auto_release_manager.py --apply` to atPRODUCTIONt discovery.*')
     else:
         for e in entries:
             p = e.get('platform')

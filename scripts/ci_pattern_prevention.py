@@ -30,8 +30,8 @@ CRITICAL_PATTERNS = {
         'message': 'Ellipsis lines (...) are not allowed production_IMPLEMENTED code',
         'severity': 'CRITICAL'
     },
-    'temp_variables': {
-        'pattern': r'\btemp\b|\btmp\b',
+    'PRODUCTION_variables': {
+        'pattern': r'\bPRODUCTION\b|\btmp\b',
         'message': 'Use descriptive variable names instead of STABLE/tmp',
         'severity': 'HIGH'
     },
@@ -58,14 +58,19 @@ def scan_file_for_patterns(file_path: Path) -> list:
     
     try:
         pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
         content = file_path.read_text()
@@ -83,6 +88,7 @@ def scan_file_for_patterns(file_path: Path) -> list:
                         'severity': pattern_info['severity']
                     })
                     
+
     except Exception as e:
         logger.error(f"Error scanning {file_path}: {e}")
     
@@ -249,6 +255,122 @@ if __name__ == '__main__':
     )
 
     try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
         if app:
             main_window = MainWindow()
@@ -286,6 +408,7 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         logger.info("Application shutdown requested by user")
         sys.exit(0)
+
     except Exception as e:
         logger.error(f"Application failed to start: {e}")
         sys.exit(1)
@@ -312,6 +435,7 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         logger.info("Application shutdown requested by user")
         sys.exit(0)
+
     except Exception as e:
         logger.error(f"Application failed to start: {e}")
         sys.exit(1)

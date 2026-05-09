@@ -62,7 +62,7 @@ const APPS = [
  */
 function repairMissingFile(file): any {
   try {
-    logger.warn(`⚠️ Attempting to recover required file: ${file}`);
+    logger.warn(`⚠️ AtPRODUCTIONting to recover required file: ${file}`);
     execSync(`git checkout -- "${file}"`, { stdio: "inherit" });
   } catch (_err) {
     logger.error(`❌ Recovery failed for: ${file}`);

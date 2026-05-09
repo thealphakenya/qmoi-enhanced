@@ -8,7 +8,7 @@ import os
 import re
 import time
 
-COMPONENT_DIRS = ["components", "app", "src", "dashboard/src", "public", "templates", "pages"]
+COMPONENT_DIRS = ["components", "app", "src", "dashboard/src", "public", "PRODUCTIONlates", "pages"]
 UI_EXTENSIONS = [".js", ".jsx", ".ts", ".tsx", ".html", ".css"]
 # Write to root-level SERVINGERRORSISSUES.md (already tracked in repo)
 LOG_FILE = "SERVINGERRORSISSUES.md"

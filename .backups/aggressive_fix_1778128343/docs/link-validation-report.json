@@ -1130,7 +1130,7 @@
       }
     ],
     "TRADINGREADME.md": [],
-    "TEMPLATES.md": [],
+    "PRODUCTIONLATES.md": [],
     "QMOI_MEMORY.md": [],
     "CASHONTRADINGREADME.md": [],
     "QMOI-ENHANCED-FEATURES.md": [],
@@ -3393,7 +3393,7 @@
       },
       {
         "label": "Retool",
-        "url": "https://community.retool.com/t/i-am-attempting-to-append-several-text-fields-to-a-google-sheet-but-receiving-a-json5-invalid-character-error/7626",
+        "url": "https://community.retool.com/t/i-am-atPRODUCTIONting-to-append-several-text-fields-to-a-google-sheet-but-receiving-a-json5-invalid-character-error/7626",
         "ok": true,
         "reason": "external URL"
       },
@@ -26475,7 +26475,7 @@
       },
       {
         "label": "issues",
-        "url": "https://github.com/babel/babel/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3A%22pkg%3A%20template%22+is%3Aopen",
+        "url": "https://github.com/babel/babel/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3A%22pkg%3A%20PRODUCTIONlate%22+is%3Aopen",
         "ok": true,
         "reason": "external URL"
       }
@@ -27151,7 +27151,7 @@
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/@types/babel__template/README.md": [
+    "mobile/node_modules/@types/babel__PRODUCTIONlate/README.md": [
       {
         "label": "@babel/parser",
         "url": "https://npmjs.com/package/@babel/parser",
@@ -27229,8 +27229,8 @@
         "reason": "external URL"
       },
       {
-        "label": "@types/babel__template",
-        "url": "https://npmjs.com/package/@types/babel__template",
+        "label": "@types/babel__PRODUCTIONlate",
+        "url": "https://npmjs.com/package/@types/babel__PRODUCTIONlate",
         "ok": true,
         "reason": "external URL"
       },
@@ -34328,7 +34328,7 @@
       },
       {
         "label": "tagged standard literal",
-        "url": "https://exploringjs.com/es6/ch_template-literals.html#_tagged-standard-literals",
+        "url": "https://exploringjs.com/es6/ch_PRODUCTIONlate-literals.html#_tagged-standard-literals",
         "ok": true,
         "reason": "external URL"
       },
@@ -42485,7 +42485,7 @@
       },
       {
         "label": "standard literals",
-        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/PRODUCTIONlate_literals",
         "ok": true,
         "reason": "external URL"
       },
@@ -57642,7 +57642,7 @@
         "reason": "external URL"
       }
     ],
-    "scripts/templates/README_template.sw.md": [
+    "scripts/PRODUCTIONlates/README_PRODUCTIONlate.sw.md": [
       {
         "label": "Build",
         "url": "https://img.shields.io/badge/QMOI%20Build-Imepita-brightgreen?style=flat-square",
@@ -57656,7 +57656,7 @@
         "reason": "external URL"
       }
     ],
-    "scripts/templates/README_template.en.md": [
+    "scripts/PRODUCTIONlates/README_PRODUCTIONlate.en.md": [
       {
         "label": "Build",
         "url": "https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square",
@@ -57676,7 +57676,7 @@
         "reason": "external URL"
       }
     ],
-    "scripts/templates/README_template.md": [
+    "scripts/PRODUCTIONlates/README_PRODUCTIONlate.md": [
       {
         "label": "Build",
         "url": "https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square",
@@ -60949,7 +60949,7 @@
       },
       {
         "label": "Retool",
-        "url": "https://community.retool.com/t/i-am-attempting-to-append-several-text-fields-to-a-google-sheet-but-receiving-a-json5-invalid-character-error/7626",
+        "url": "https://community.retool.com/t/i-am-atPRODUCTIONting-to-append-several-text-fields-to-a-google-sheet-but-receiving-a-json5-invalid-character-error/7626",
         "ok": true,
         "reason": "external URL"
       },
@@ -84031,7 +84031,7 @@
       },
       {
         "label": "issues",
-        "url": "https://github.com/babel/babel/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3A%22pkg%3A%20template%22+is%3Aopen",
+        "url": "https://github.com/babel/babel/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3A%22pkg%3A%20PRODUCTIONlate%22+is%3Aopen",
         "ok": true,
         "reason": "external URL"
       }
@@ -84707,7 +84707,7 @@
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/@types/babel__template/README.md": [
+    "qmoi-enhanced/mobile/node_modules/@types/babel__PRODUCTIONlate/README.md": [
       {
         "label": "@babel/parser",
         "url": "https://npmjs.com/package/@babel/parser",
@@ -84785,8 +84785,8 @@
         "reason": "external URL"
       },
       {
-        "label": "@types/babel__template",
-        "url": "https://npmjs.com/package/@types/babel__template",
+        "label": "@types/babel__PRODUCTIONlate",
+        "url": "https://npmjs.com/package/@types/babel__PRODUCTIONlate",
         "ok": true,
         "reason": "external URL"
       },
@@ -91884,7 +91884,7 @@
       },
       {
         "label": "tagged standard literal",
-        "url": "https://exploringjs.com/es6/ch_template-literals.html#_tagged-standard-literals",
+        "url": "https://exploringjs.com/es6/ch_PRODUCTIONlate-literals.html#_tagged-standard-literals",
         "ok": true,
         "reason": "external URL"
       },
@@ -100041,7 +100041,7 @@
       },
       {
         "label": "standard literals",
-        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/PRODUCTIONlate_literals",
         "ok": true,
         "reason": "external URL"
       },
@@ -115199,7 +115199,7 @@
       }
     ],
     "qmoi-enhanced/scripts/README_QMOI_SECRETS.md": [],
-    "qmoi-enhanced/scripts/templates/README_template.sw.md": [
+    "qmoi-enhanced/scripts/PRODUCTIONlates/README_PRODUCTIONlate.sw.md": [
       {
         "label": "Build",
         "url": "https://img.shields.io/badge/QMOI%20Build-Imepita-brightgreen?style=flat-square",
@@ -115213,7 +115213,7 @@
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/scripts/templates/README_template.en.md": [
+    "qmoi-enhanced/scripts/PRODUCTIONlates/README_PRODUCTIONlate.en.md": [
       {
         "label": "Build",
         "url": "https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square",
@@ -115233,7 +115233,7 @@
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/scripts/templates/README_template.md": [
+    "qmoi-enhanced/scripts/PRODUCTIONlates/README_PRODUCTIONlate.md": [
       {
         "label": "Build",
         "url": "https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square",
@@ -115371,7 +115371,7 @@
       },
       {
         "label": "Retool",
-        "url": "https://community.retool.com/t/i-am-attempting-to-append-several-text-fields-to-a-google-sheet-but-receiving-a-json5-invalid-character-error/7626",
+        "url": "https://community.retool.com/t/i-am-atPRODUCTIONting-to-append-several-text-fields-to-a-google-sheet-but-receiving-a-json5-invalid-character-error/7626",
         "ok": true,
         "reason": "external URL"
       },
@@ -117544,7 +117544,7 @@
       },
       {
         "label": "issues",
-        "url": "https://github.com/babel/babel/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3A%22pkg%3A%20template%22+is%3Aopen",
+        "url": "https://github.com/babel/babel/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3A%22pkg%3A%20PRODUCTIONlate%22+is%3Aopen",
         "ok": true,
         "reason": "external URL"
       }
@@ -117685,7 +117685,7 @@
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/dashboard/node_modules/@types/babel__template/README.md": [
+    "qmoi-enhanced/dashboard/node_modules/@types/babel__PRODUCTIONlate/README.md": [
       {
         "label": "@babel/parser",
         "url": "https://npmjs.com/package/@babel/parser",
@@ -117743,8 +117743,8 @@
         "reason": "external URL"
       },
       {
-        "label": "@types/babel__template",
-        "url": "https://npmjs.com/package/@types/babel__template",
+        "label": "@types/babel__PRODUCTIONlate",
+        "url": "https://npmjs.com/package/@types/babel__PRODUCTIONlate",
         "ok": true,
         "reason": "external URL"
       },

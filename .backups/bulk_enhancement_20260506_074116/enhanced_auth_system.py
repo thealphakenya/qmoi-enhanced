@@ -38,16 +38,16 @@ class productionAPIClient:
     def request(self, method: str, endpoint: str, **kwargs) -> dict:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
     def post(self, endpoint: str, data: dict = None, **kwargs) -> dict:
@@ -86,7 +86,7 @@ class UserProfile:
     qmoi_memory_enabled: bool = True
     master_access: bool = False
     account_status: str = "active"
-    login_attempts: int = 0
+    login_atPRODUCTIONts: int = 0
     last_failed_login: datetime = None
     """
     __post_init__ function
@@ -133,7 +133,7 @@ def __init__(self, config_path: str = "/etc/qmoi/auth_config.json") -> Any:
         # Security settings
         self.jwt_secret = os.getenv("QMOI_JWT_SECRET", secrets.token_hex(32))
         self.session_timeout = 3600  # 1 hour
-        self.max_login_attempts = 5
+        self.max_login_atPRODUCTIONts = 5
         self.verification_code_expiry = 900  # 15 minutes
         # Email settings
         self.smtp_server = "smtp.qmoi.com"
@@ -169,7 +169,7 @@ def create_default_configuration(self) -> Any:
             "recovery_tokens": {},
             "jwt_secret": self.jwt_secret,
             "session_timeout": self.session_timeout,
-            "max_login_attempts": self.max_login_attempts,
+            "max_login_atPRODUCTIONts": self.max_login_atPRODUCTIONts,
             "verification_code_expiry": self.verification_code_expiry,
             "smtp_server": self.smtp_server,
             "smtp_port": self.smtp_port,
@@ -332,15 +332,15 @@ def login_user(self, login_data: Dict) -> Dict:
                     "success": False,
                     "error": "Account is not active"
                 }
-            # Check login attempts
-            if user.login_attempts >= self.max_login_attempts:
+            # Check login atPRODUCTIONts
+            if user.login_atPRODUCTIONts >= self.max_login_atPRODUCTIONts:
                 if user.last_failed_login and (datetime.now() - user.last_failed_login) < timedelta(minutes=30):
                     return {
                         "success": False,
-                        "error": "Account temporarily locked due to too many failed attempts"
+                        "error": "Account PRODUCTIONorarily locked due to too many failed atPRODUCTIONts"
                     }
                 else:
-                    user.login_attempts = 0  # Reset after 30 minutes
+                    user.login_atPRODUCTIONts = 0  # Reset after 30 minutes
             # Authenticate
             authenticated = False
             if password:
@@ -352,15 +352,15 @@ def login_user(self, login_data: Dict) -> Dict:
                 if self.verify_biometric(user, biometric_data):
                     authenticated = True
             if not authenticated:
-                user.login_attempts += 1
+                user.login_atPRODUCTIONts += 1
                 user.last_failed_login = datetime.now()
                 self.save_configuration()
                 return {
                     "success": False,
                     "error": "Invalid credentials"
                 }
-            # Reset login attempts on success
-            user.login_attempts = 0
+            # Reset login atPRODUCTIONts on success
+            user.login_atPRODUCTIONts = 0
             user.last_login = datetime.now()
             # Create session
             session = AuthSession(

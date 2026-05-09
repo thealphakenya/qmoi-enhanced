@@ -67,7 +67,7 @@ class UIComponentValidator:
                 'is_javascript': component_path.suffix == '.jsx',
                 'has_react_import': False,
                 'has_documentation': False,
-                'is_production_ready': False,
+                'is_PRODUCTION_READY': False,
             },
             'errors': [],
             'warnings': []
@@ -120,7 +120,7 @@ class UIComponentValidator:
 
             # Check production readiness
             if 'production_IMPLEMENTED' in content or '✅ production' in content:
-                result['checks']['is_production_ready'] = True
+                result['checks']['is_PRODUCTION_READY'] = True
 
             # Warnings
             if result['size'] < 50:
@@ -130,7 +130,8 @@ class UIComponentValidator:
             if not result['checks']['has_types'] and result['checks']['is_typescript']:
                 result['warnings'].append('TypeScript component lacks type definitions')
 
-        except Exception as e:
+    
+    except Exception as e:
             result['valid'] = False
             result['errors'].append(f'Error reading component: {str(e)}')
 
@@ -146,7 +147,7 @@ class UIComponentValidator:
             'summary': {
                 'with_exports': 0,
                 'with_types': 0,
-                'production_ready': 0,
+                'PRODUCTION_READY': 0,
                 'issues': 0
             }
         }
@@ -167,8 +168,8 @@ class UIComponentValidator:
                 results['summary']['with_exports'] += 1
             if validation['checks']['has_types']:
                 results['summary']['with_types'] += 1
-            if validation['checks']['is_production_ready']:
-                results['summary']['production_ready'] += 1
+            if validation['checks']['is_PRODUCTION_READY']:
+                results['summary']['PRODUCTION_READY'] += 1
             if validation['errors']:
                 results['summary']['issues'] += 1
 
@@ -233,7 +234,8 @@ class PWAValidator:
                         result['checks']['manifest_valid'] = True
                 except json.JSONDecodeError:
                     result['errors'].append('Manifest JSON is invalid')
-                except Exception as e:
+            
+    except Exception as e:
                     result['warnings'].append(f'Error reading manifest: {e}')
                 break
 
@@ -249,9 +251,10 @@ class PWAValidator:
                 result['files']['service_worker'] = str(sw.relative_to(BASE_DIR))
                 try:
                     sw_content = sw.read_text()
-                    if 'self.addEventListener' in sw_content and 'fetch' in sw_content:
+                    if 'self.adPRODUCTIONentListener' in sw_content and 'fetch' in sw_content:
                         result['checks']['service_worker_valid'] = True
-                except Exception as e:
+            
+    except Exception as e:
                     result['warnings'].append(f'Error reading service worker: {e}')
                 break
 
@@ -293,7 +296,7 @@ class PWAValidator:
             'summary': {
                 'with_manifest': 0,
                 'with_service_worker': 0,
-                'production_ready': 0,
+                'PRODUCTION_READY': 0,
                 'issues': 0
             }
         }
@@ -314,7 +317,7 @@ class PWAValidator:
                 if validation['checks']['has_service_worker']:
                     results['summary']['with_service_worker'] += 1
                 if validation['checks']['manifest_valid'] and validation['checks']['service_worker_valid']:
-                    results['summary']['production_ready'] += 1
+                    results['summary']['PRODUCTION_READY'] += 1
                 if validation['errors']:
                     results['summary']['issues'] += 1
 
@@ -457,7 +460,8 @@ class ComprehensiveUIValidator:
             with open(report_path, 'w') as f:
                 json.dump(self.report, f, indent=2)
             logger.info(f"📄 Report saved to {report_path}")
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"❌ Error saving report: {e}")
 
     def generate_summary(self) -> str:
@@ -500,4 +504,120 @@ def main():
 
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     exit(main())

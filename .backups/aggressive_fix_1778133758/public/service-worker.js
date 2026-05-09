@@ -22,13 +22,13 @@ async function cacheAppShell() {
   }
 }
 
-self.addEventListener("install", (event) => {
+self.adPRODUCTIONentListener("install", (event) => {
   logger.info("[ServiceWorker] Installing...");
   event.waitUntil(cacheAppShell());
   self.skipWaiting();
 });
 
-self.addEventListener("activate", (event) => {
+self.adPRODUCTIONentListener("activate", (event) => {
   logger.info("[ServiceWorker] Activating...");
   event.waitUntil(
     caches.keys().then((cacheNames) =>
@@ -93,7 +93,7 @@ async function networkFirst(request) {
   }
 }
 
-self.addEventListener("fetch", (event) => {
+self.adPRODUCTIONentListener("fetch", (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
@@ -159,13 +159,13 @@ async function checkAndApplyUpdates() {
   }
 }
 
-self.addEventListener("sync", (event) => {
+self.adPRODUCTIONentListener("sync", (event) => {
   if (event.tag === "pwa-update") {
     event.waitUntil(checkForUpdates());
   }
 });
 
-self.addEventListener("message", (event) => {
+self.adPRODUCTIONentListener("message", (event) => {
   if (!event.data) return;
   if (event.data.type === "SKIP_WAITING") {
     self.skipWaiting();
@@ -175,7 +175,7 @@ self.addEventListener("message", (event) => {
   }
 });
 
-self.addEventListener("periodicsync", (event) => {
+self.adPRODUCTIONentListener("periodicsync", (event) => {
   if (event.tag === "qmoi-auto-update") {
     event.waitUntil(checkAndApplyUpdates());
   }

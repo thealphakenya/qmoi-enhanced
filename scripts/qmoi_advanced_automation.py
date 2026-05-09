@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -193,7 +199,8 @@ def execute_task(self, task_name: str, *args, **kwargs) -> Dict:
                 "execution_time": execution_time
             }
             
-        except Exception as e:
+    
+    except Exception as e:
             execution_time = time.time() - start_time
             self.record_task_execution(task_name, "failed", execution_time, str(e))
             logger.error(f"Task {task_name} failed: {str(e)}")
@@ -546,7 +553,8 @@ def run_automation() -> Any:
                 
                 await asyncio.sleep(60)  # Check every minute
                 
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Automation error: {str(e)}")
                 await asyncio.sleep(300)  # Wait 5 minutes on error
     
@@ -560,6 +568,7 @@ def run_automation() -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

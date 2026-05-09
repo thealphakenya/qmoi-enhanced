@@ -1,8 +1,8 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:19:36.089714 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:18:56.602624 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:06:49.752249 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:05.493533 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:00.387420 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:19:36.089714 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:18:56.602624 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:06:49.752249 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:05.493533 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:00.387420 -->
 ========================================================================================
 QMOI USER-SPECIFIC RESPONSE TESTING - SISTER (LEAH)
 ========================================================================================
@@ -495,7 +495,7 @@ HONEST ANALYSIS:
 ─────────────────
 You have three potential paths:
   1. Go deep in family projects (become essential to family success)
-  2. Develop your own independent work/business (parallel to family projects)
+  2. PRODUCTIONelop your own independent work/business (parallel to family projects)
   3. Expand your role in family decision-making (from executor to strategist)
 
 Each is valuable. But which one calls to you?

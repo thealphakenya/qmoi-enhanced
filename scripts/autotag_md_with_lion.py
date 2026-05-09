@@ -29,14 +29,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -44,7 +49,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -81,7 +87,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -101,7 +108,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -115,7 +123,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -156,7 +165,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(mess
 SKIP_DIRS = {'.git', 'node_modules', '.venv', 'venv', '.idea', '.pytest_cache'}
 LION_START = '<!-- LION_VALIDATION_START -->'
 LION_END = '<!-- LION_VALIDATION_END -->'
-LION_BLOCK_TEMPLATE = """<!-- LION_VALIDATION_START -->
+LION_BLOCK_PRODUCTIONLATE = """<!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -239,9 +248,9 @@ def insert_block(content, ts) -> Any:
                 break
         else:
             insert_at = 0
-        new = ''.join(lines[:insert_at]) + LION_BLOCK_TEMPLATE.format(ts=ts) + ''.join(lines[insert_at:])
+        new = ''.join(lines[:insert_at]) + LION_BLOCK_PRODUCTIONLATE.format(ts=ts) + ''.join(lines[insert_at:])
     else:
-        new = LION_BLOCK_TEMPLATE.format(ts=ts) + content
+        new = LION_BLOCK_PRODUCTIONLATE.format(ts=ts) + content
     return new
 
 """
@@ -287,7 +296,8 @@ def main() -> Any:
                 with open(path, 'w', encoding='utf-8') as f:
                     f.write(new_content)
                 modified.append(rel)
-            except Exception as e:
+        
+    except Exception as e:
                 logger.info(f'ERROR writing {path}: {e}')
 
     # write index

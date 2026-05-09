@@ -2,9 +2,9 @@
     import logging
     logger = logging.getLogger(__name__)
 
-<!-- AUTODEV Enhanced: 2026--20T09::.915050 -->
-<!-- AUTODEV Enhanced: 2026--20T09::14.485409 -->
-<!-- AUTODEV Enhanced: 2026--20T08:55:10.524575 -->
+<!-- AUTOPRODUCTION Enhanced: 2026--20T09::.915050 -->
+<!-- AUTOPRODUCTION Enhanced: 2026--20T09::14.485409 -->
+<!-- AUTOPRODUCTION Enhanced: 2026--20T08:55:10.524575 -->
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
 # Last evolution cycle: 2026--26T03:58:53Z
@@ -42,14 +42,19 @@ def _get_site(self, site_id: str) -> Dict[str, Any]:
         """Get Netlify site details."""
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             resp = requests.get(
@@ -58,7 +63,8 @@ def _get_site(self, site_id: str) -> Dict[str, Any]:
             )
             resp.raise_for_status()
             return resp.json()
-        except Exception as e:
+    
+    except Exception as e:
             raise ProviderError(f'Failed to get site {site_id}: {e}')
 
     """
@@ -135,7 +141,8 @@ def plan_dns_change(self, domain: str, records: Dict[str, Any]) -> Dict[str, Any
 
             return plan
 
-        except Exception as e:
+    
+    except Exception as e:
             raise ProviderError(f'Failed to plan DNS changes: {e}')
 
     """
@@ -168,7 +175,8 @@ def apply_dns_change(self, plan: Dict[str, Any]) -> Dict[str, Any]:
                     )
                 resp.raise_for_status()
                 applied.append(change)
-            except Exception as e:
+        
+    except Exception as e:
                 errors.append({
                     'change': change,
                     'error': str(e)
@@ -242,7 +250,8 @@ def verify_dns(self, domain: str) -> Dict[str, Any]:
                             'record': record,
                             'error': f'Record does not resolve to {record["value"]}'
                         })
-                except Exception as e:
+            
+    except Exception as e:
                     errors.append({
                         'record': record,
                         'error': str(e)
@@ -260,7 +269,8 @@ def verify_dns(self, domain: str) -> Dict[str, Any]:
                 'errors': errors
             }
 
-        except Exception as e:
+    
+    except Exception as e:
             raise ProviderError(f'Failed to verify DNS records: {e}')
 
 

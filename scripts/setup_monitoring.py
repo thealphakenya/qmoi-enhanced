@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -150,7 +156,8 @@ def setup_uptime_monitoring(status, target_uptime=99.5, auto_failover=True) -> A
             monitored_count += 1
             logger.info(f"✅ Monitoring setup complete for {domain}")
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"❌ Failed to setup monitoring for {domain}: {str(e)}")
             status['deployment_status_by_domain'][domain]['phase_6_monitoring'] = {
                 'status': 'failed',

@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -382,7 +388,8 @@ def main() -> Any:
                 evt = {'event': 'validated', 'report': report}
                 (LION_TASKS_DIR / (rel.replace('/', '__') + '.event.json')).write_text(json.dumps(evt, indent=2), encoding='utf-8')
             logger.info(f"Validated {rel} -> ok={report.get('ok', False)}")
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"Error validating {p}: {e}")
 
     summary = {'total_validated': total, 'generated_at': datetime.now(timezone.utc).isoformat()}
@@ -397,6 +404,7 @@ def main() -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

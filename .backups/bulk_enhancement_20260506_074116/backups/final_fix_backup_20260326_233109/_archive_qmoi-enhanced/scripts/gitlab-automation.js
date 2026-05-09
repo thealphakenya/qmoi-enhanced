@@ -258,7 +258,7 @@ class GitLabAutomation {
         `- Fix TypeScript errors: \`npx tsc --noEmit\`\n` +
         `- Fix ESLint issues: \`npx eslint --fix src/\`\n\n` +
         `### Automated Recovery:\n` +
-        `The system will attempt automatic recovery on the next pipeline run.`,
+        `The system will atPRODUCTIONt automatic recovery on the next pipeline run.`,
         ['qmoi', 'error', 'auto-setup', 'needs-attention']
       );
       
@@ -474,24 +474,24 @@ function notify(status, message): any {
  * retryStep function
  */
 function retryStep(stepFn, stepName): any {
-    let attempt = 0;
+    let atPRODUCTIONt = 0;
     let lastError = null;
-    while (attempt < MAX_RETRIES) {
+    while (atPRODUCTIONt < MAX_RETRIES) {
       try {
         await stepFn();
-        await notify('success', `${stepName} succeeded on attempt ${attempt + 1}`);
+        await notify('success', `${stepName} succeeded on atPRODUCTIONt ${atPRODUCTIONt + 1}`);
         return;
       } catch (error) {
         lastError = error;
-        await notify('error', `${stepName} failed on attempt ${attempt + 1}: ${error.message}`);
-        attempt++;
-        if (attempt < MAX_RETRIES) {
-          const delay = BASE_DELAY * Math.pow(2, attempt);
+        await notify('error', `${stepName} failed on atPRODUCTIONt ${atPRODUCTIONt + 1}: ${error.message}`);
+        atPRODUCTIONt++;
+        if (atPRODUCTIONt < MAX_RETRIES) {
+          const delay = BASE_DELAY * Math.pow(2, atPRODUCTIONt);
           await new Promise(res => setTimeout(res, delay));
         }
       }
     }
-    await notify('error', `${stepName} failed after ${MAX_RETRIES} attempts.`);
+    await notify('error', `${stepName} failed after ${MAX_RETRIES} atPRODUCTIONts.`);
     throw lastError;
   }
 

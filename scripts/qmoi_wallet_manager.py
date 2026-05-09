@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -391,7 +397,8 @@ def _get_usdt_price(self, symbol: str) -> float:
                 data = response.json()
                 return float(data['data']['close'])
             return 0
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error getting price for {symbol}: {e}")
             return 0
 
@@ -516,7 +523,8 @@ def get_balance(self) -> Dict[str, Any]:
                 'balance': response.json(),
                 'timestamp': datetime.utcnow().isoformat()
             }
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Megavault API error: {e}")
             return {'error': str(e)}
 
@@ -538,6 +546,7 @@ def main() -> Any:
         report = wallet_manager.generate_accountability_report()
         logger.info(json.dumps(report, indent=2))
         
+
     except Exception as e:
         logger.error(f"Error in wallet management: {e}")
         raise

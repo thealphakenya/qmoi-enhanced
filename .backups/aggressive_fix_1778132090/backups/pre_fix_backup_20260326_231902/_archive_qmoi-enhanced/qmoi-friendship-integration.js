@@ -101,10 +101,10 @@ class QMOIFriendshipIntegration {
   }
 
   async monitorGitLabDeployment(pipelineId) {
-    let attempts = 0;
-    const maxAttempts = 30; // 5 minutes with 10-second intervals
+    let atPRODUCTIONts = 0;
+    const maxAtPRODUCTIONts = 30; // 5 minutes with 10-second intervals
 
-    while (attempts < maxAttempts) {
+    while (atPRODUCTIONts < maxAtPRODUCTIONts) {
       const response = await axios.get(
         `${this.gitlabConfig.baseURL}/projects/${this.gitlabConfig.projectId}/pipelines/${pipelineId}`,
         {
@@ -126,7 +126,7 @@ class QMOIFriendshipIntegration {
 
       // Wait 10 seconds before next check
       await new Promise((resolve) => setTimeout(resolve, 10000));
-      attempts++;
+      atPRODUCTIONts++;
     }
 
     return "timeout";
@@ -214,10 +214,10 @@ class QMOIFriendshipIntegration {
   }
 
   async monitorVercelDeployment(deploymentId) {
-    let attempts = 0;
-    const maxAttempts = 30; // 5 minutes with 10-second intervals
+    let atPRODUCTIONts = 0;
+    const maxAtPRODUCTIONts = 30; // 5 minutes with 10-second intervals
 
-    while (attempts < maxAttempts) {
+    while (atPRODUCTIONts < maxAtPRODUCTIONts) {
       const response = await axios.get(
         `${this.vercelConfig.baseURL}/deployments/${deploymentId}`,
         {
@@ -239,7 +239,7 @@ class QMOIFriendshipIntegration {
 
       // Wait 10 seconds before next check
       await new Promise((resolve) => setTimeout(resolve, 10000));
-      attempts++;
+      atPRODUCTIONts++;
     }
 
     return "timeout";
@@ -465,7 +465,7 @@ class QMOIFriendshipIntegration {
   }
 
   // System Performance Monitoring
-  async monitorSystemPerformance() {
+  async monitorSysPRODUCTIONerformance() {
     const metrics = {
       timestamp: new Date(),
       deploymentSuccess: this.performanceMetrics.deploymentSuccess,
@@ -566,7 +566,7 @@ class QMOIFriendshipIntegration {
       }
 
       // 5. Monitor performance
-      const performanceMetrics = await this.monitorSystemPerformance();
+      const performanceMetrics = await this.monitorSysPRODUCTIONerformance();
 
       logger.info("✅ QMOI Friendship Enhancement Deployment Completed!");
 

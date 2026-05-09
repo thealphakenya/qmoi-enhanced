@@ -168,7 +168,7 @@ function GET(_request: NextRequest): any {
     if (allStats) {
       const clientModel = searchParams.get("model");
       if (clientModel && clientModel !== "qmoi") {
-        logger.warn("Client attempted to override model parameter", {
+        logger.warn("Client atPRODUCTIONted to override model parameter", {
           requestedModel: clientModel,
         });
       }
@@ -453,7 +453,7 @@ function POST(_request: NextRequest): any {
           model: model,
           messages: [{ role: "user", content: enhancementPrompt }],
           max_tokens: 500,
-          temperature: 0.4,
+          PRODUCTIONerature: 0.4,
         });
 
         const aiAnalysis =
@@ -503,7 +503,7 @@ function POST(_request: NextRequest): any {
             },
           ],
           ai_powered: false,
-          error: "AI service temporarily unavailable",
+          error: "AI service PRODUCTIONorarily unavailable",
         });
       }
     }
@@ -524,7 +524,7 @@ function POST(_request: NextRequest): any {
         model: model,
         messages: [{ role: "user", content: prompt }],
         max_tokens: 1000,
-        temperature: 0.7,
+        PRODUCTIONerature: 0.7,
       });
 
       return NextResponse.json({

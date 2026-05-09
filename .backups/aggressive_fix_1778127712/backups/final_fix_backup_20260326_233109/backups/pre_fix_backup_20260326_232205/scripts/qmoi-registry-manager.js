@@ -312,8 +312,8 @@ class QMOIRegistryManager {
       context: context,
       timestamp: new Date().toISOString(),
       status: "detected",
-      fixAttempts: 0,
-      lastFixAttempt: null,
+      fixAtPRODUCTIONts: 0,
+      lastFixAtPRODUCTIONt: null,
       suggestions: [],
     };
     await this.saveRegistry();
@@ -323,8 +323,8 @@ class QMOIRegistryManager {
 
   async recordFix(errorId, fix, suggestion = null) {
     if (this.registry.errors[errorId]) {
-      this.registry.errors[errorId].fixAttempts++;
-      this.registry.errors[errorId].lastFixAttempt = new Date().toISOString();
+      this.registry.errors[errorId].fixAtPRODUCTIONts++;
+      this.registry.errors[errorId].lastFixAtPRODUCTIONt = new Date().toISOString();
       this.registry.errors[errorId].status = "fixed";
       if (suggestion) {
         this.registry.errors[errorId].suggestions.push(suggestion);

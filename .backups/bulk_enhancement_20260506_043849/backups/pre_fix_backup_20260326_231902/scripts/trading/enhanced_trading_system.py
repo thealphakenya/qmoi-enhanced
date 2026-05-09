@@ -127,7 +127,7 @@ def __init__(self, name: str, config: Dict) -> Any:
         # ENFORCE production MODE
         self.production = config.get('production', True)  # Default to True for safety
         if not production_MODE and not self.production:
-            logger.error(f"🚫 REAL TRADING ATTEMPTED ON {name} - BLOCKED FOR SAFETY")
+            logger.error(f"🚫 REAL TRADING ATPRODUCTIONTED ON {name} - BLOCKED FOR SAFETY")
             raise ValueError(f"Real trading disabled for {name}. Use production mode only.")
         self.enabled = config.get('enabled', True)
 

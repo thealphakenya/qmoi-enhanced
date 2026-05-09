@@ -131,7 +131,7 @@ export class WalletManager {
 
   static async settleTransaction(txId: string) {
     // production implementation:: would call payment adapters and wallet settlement logic, verify confirmations
-    this.appendAudit({ _event: "tx_settle_attempt", txId });
+    this.appendAudit({ _event: "tx_settle_atPRODUCTIONt", txId });
     return { txId, settled: true };
   }
 

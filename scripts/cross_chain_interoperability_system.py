@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -100,7 +106,8 @@ def connect(self) -> bool:
             self.gas_price = random.uniform(10, 50)
             self.tvl = random.uniform(1000000, 50000000)
             return True
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"❌ Failed to connect to {self.chain_name}: {e}")
             return False
 
@@ -435,7 +442,7 @@ def __init__(self) -> Any:
     """
 def initialize_system(self) -> bool:
         """Initialize the complete cross-chain interoperability system"""
-        logger.info('🌐 Initializing QMOI Cross-Chain Interoperability Systemproduction implementation with comprehensive error handling and logging')
+        logger.info('🌐 Initializing QMOI Cross-Chain Interoperability SysPRODUCTIONroduction implementation with comprehensive error handling and logging')
 
         # Add supported blockchains
         chains = [
@@ -589,6 +596,7 @@ def main() -> Any:
 
         logger.info('💾 Full report saved to: ../CROSS_CHAIN_INTEROPERABILITY_REPORT.json')
         logger.info('🎉 Cross-chain interoperability system fully operational!')
+
 
     except Exception as e:
         logger.info(f'❌ Error: {e}')

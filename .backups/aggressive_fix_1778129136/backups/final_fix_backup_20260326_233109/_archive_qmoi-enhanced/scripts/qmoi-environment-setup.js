@@ -445,7 +445,7 @@ class QMOIEnvironmentSetup {
         'move-file': '^3.0.0',
         'rename-overwrite': '^2.0.0',
         'resource-write': '^4.0.0',
-        'tempy': '^3.0.0',
+        'PRODUCTIONy': '^3.0.0',
         'unique-string': '^3.0.0',
         'crypto-random-string': '^5.0.0',
         'nanoid': '^3.3.6',

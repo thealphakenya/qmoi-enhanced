@@ -139,11 +139,11 @@ Wallet, trading, and revenue management:
 - `QmoiRevenueDashboard.tsx` – Revenue analytics
 - `EnhancedRevenuePanel.tsx` – Revenue enhancement
 
-### Device & IoT Management
-Device control and connectivity:
-- `DeviceMap.tsx` – Device visualization
-- `DeviceSettingsPanel.tsx` – Device configuration
-- `QMOIOwnDevice.tsx` – Device ownership
+### PRODUCTIONice & IoT Management
+PRODUCTIONice control and connectivity:
+- `PRODUCTIONiceMap.tsx` – PRODUCTIONice visualization
+- `PRODUCTIONiceSettingsPanel.tsx` – PRODUCTIONice configuration
+- `QMOIOwnPRODUCTIONice.tsx` – PRODUCTIONice ownership
 - `BluetoothManager.tsx` – Bluetooth control
 - `WifiPanel.tsx` – WiFi management
 - `WifiAutoConnectPanel.tsx` – Auto WiFi
@@ -206,13 +206,13 @@ AI-powered interfaces:
 ### Product-Specific Component Inventory
 
 #### QCity Components
-QCity is implemented as a dedicated product domain with its own dashboard, device management, enterprise feature set, and runtime adapters.
+QCity is implemented as a dedicated product domain with its own dashboard, PRODUCTIONice management, enterprise feature set, and runtime adapters.
 - `components/q-city/QCityDashboard.tsx`
-- `components/q-city/QCityDevicePanel.tsx`
+- `components/q-city/QCityPRODUCTIONicePanel.tsx`
 - `components/q-city/QCityprodicePanel.tsx`
 - `components/q-city/QMOIBiometricManager.tsx`
 - `components/q-city/QMOILinksManager.tsx`
-- `components/q-city/QMOIOwnDeviceLogs.tsx`
+- `components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx`
 - `components/q-city/QMOIRevenueDashboard.tsx`
 - `components/q-city/GlobalLinksManager.tsx`
 - `components/q-city/EmploymentDashboard.tsx`
@@ -222,7 +222,7 @@ QCity is implemented as a dedicated product domain with its own dashboard, devic
 - `components/q-city/QVillage.tsx`
 - `components/QCityErrorManager.tsx`
 - `components/QCityThemeProvider.tsx`
-- `components/QAvatar.tsx` (QCity-integrated dashboard and device launch panels)
+- `components/QAvatar.tsx` (QCity-integrated dashboard and PRODUCTIONice launch panels)
 
 #### QMOI AI + Alpha Q AI Components
 QMOI AI and Alpha Q AI share the same core UI and automation layer, with the alpha Q shell acting as an aggregator. These components are adapted specifically for the QMOI AI domain while remaining compatible with the Alpha Q shell.
@@ -299,7 +299,7 @@ Components integrate with the following API endpoints for full functionality:
 - `/api/auth` - User authentication
 - `/api/biometric` - Biometric authentication
 - `/api/webauthn` - WebAuthn security
-- `/api/device-fingerprint` - Device identification
+- `/api/PRODUCTIONice-fingerprint` - PRODUCTIONice identification
 
 ### AI & Intelligence APIs
 - `/api/ai` - Core AI operations
@@ -316,7 +316,7 @@ Components integrate with the following API endpoints for full functionality:
 - `/api/qmoi-database` - Database operations
 
 ### System Management APIs
-- `/api/devices` - Device management
+- `/api/PRODUCTIONices` - PRODUCTIONice management
 - `/api/deployment-status` - Deployment tracking
 - `/api/deploy` - Deployment operations
 - `/api/version` - Version management

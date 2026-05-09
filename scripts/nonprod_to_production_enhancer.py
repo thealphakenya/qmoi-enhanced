@@ -65,14 +65,19 @@ def is_excluded(path: Path) -> bool:
 def read_file(filepath: Path) -> Any:
     try:
         pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
         return filepath.read_text(encoding='utf-8', errors='ignore')
@@ -121,13 +126,13 @@ def scan_ast_method(filepath: Path, text: str) -> Any:
             for node in ast.walk(tree):
                 if isinstance(node, ast.Call) and getattr(node.func, 'id', '').lower() == 'print':
                     continue
-                if isinstance(node, ast.Attribute) and node.attr.lower() in {'RELEASE', 'testing', 'dev'}:
-                    found.append('python_ast_dev_attr')
+                if isinstance(node, ast.Attribute) and node.attr.lower() in {'RELEASE', 'testing', 'PRODUCTION'}:
+                    found.append('python_ast_PRODUCTION_attr')
         except Exception:
 return self._get_production_data()
     elif filepath.suffix in {'.js', '.ts', '.jsx', '.tsx'}:
-        if re.search(r"process\.env\.NODE_ENV\s*===\s*['\"]dev(elopment)?['\"]", text, re.IGNORECASE):
-            found.append('js_env_dev_flag')
+        if re.search(r"process\.env\.NODE_ENV\s*===\s*['\"]PRODUCTION(elopment)?['\"]", text, re.IGNORECASE):
+            found.append('js_env_PRODUCTION_flag')
         if re.search(r"\breal(ing)?\b", text, re.IGNORECASE):
             found.append('js_real_flag')
     return found

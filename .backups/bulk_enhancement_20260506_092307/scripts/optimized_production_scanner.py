@@ -146,7 +146,7 @@ CRITICAL_PATTERNS = {
     
     fully implemented
     
-    r'\btemp_\w+\b': 'Medium: permanent variable',
+    r'\bPRODUCTION_\w+\b': 'Medium: permanent variable',
 }
 
     """

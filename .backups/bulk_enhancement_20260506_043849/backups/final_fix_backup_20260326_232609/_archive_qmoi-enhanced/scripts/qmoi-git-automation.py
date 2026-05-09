@@ -59,7 +59,7 @@ def smart_git_command(self, command, retry_count=3) -> Any:
         """Execute git commands with smart retry logic"""
         logger.info(f"üîÑ Executing: git {command}")
         
-        for attempt in range(retry_count):
+        for atPRODUCTIONt in range(retry_count):
             try:
                 result = subprocess.run(
                     ["git"] + command.split(),
@@ -74,11 +74,11 @@ def smart_git_command(self, command, retry_count=3) -> Any:
                 return True, result.stdout
                 
             except subprocess.CalledProcessError as e:
-                logger.info(f"‚ö†Ô∏è Attempt {attempt + 1} failed: {e}")
+                logger.info(f"‚ö†Ô∏è AtPRODUCTIONt {atPRODUCTIONt + 1} failed: {e}")
                 if e.stderr:
                     logger.info(f"Error: {e.stderr}")
                 
-                if attempt < retry_count - 1:
+                if atPRODUCTIONt < retry_count - 1:
                     # Smart retry logic based on error type
                     if "permission" in str(e).lower():
                         time.sleep(2)  # Wait for file locks
@@ -89,7 +89,7 @@ def smart_git_command(self, command, retry_count=3) -> Any:
                     
                     time.sleep(1)
         
-        logger.info(f"‚ùå Git command failed after {retry_count} attempts: {command}")
+        logger.info(f"‚ùå Git command failed after {retry_count} atPRODUCTIONts: {command}")
         return False, None
     
     """
@@ -104,7 +104,7 @@ def resolve_conflicts(self) -> Any:
                                   capture_output=True, text=True, cwd=self.project_root)
             
             if "UU" in result.stdout or "AA" in result.stdout:
-                logger.info("‚ö†Ô∏è Conflicts detected, attempting auto-resolution...")
+                logger.info("‚ö†Ô∏è Conflicts detected, atPRODUCTIONting auto-resolution...")
                 
                 # Use QMOI's version for conflicts
                 subprocess.run(["git", "checkout", "--ours", "."], 

@@ -1,1 +1,1 @@
-"""Quantum-aware development automation package."""
+"""Quantum-aware PRODUCTIONelopment automation package."""

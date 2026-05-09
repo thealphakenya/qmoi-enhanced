@@ -421,7 +421,7 @@ for package in $PACKAGES; do
 done
 success "All required packages installed"
 
-# 2. Stop nginx temporarily for certbot
+# 2. Stop nginx PRODUCTIONorarily for certbot
 systemctl stop nginx || warning "Could not stop nginx"
 
 # 3. Get SSL certificates

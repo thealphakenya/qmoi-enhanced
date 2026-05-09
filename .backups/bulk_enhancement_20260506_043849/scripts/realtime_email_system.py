@@ -95,7 +95,7 @@ class EmailUISettings:
     theme: str = "dark"  # light/dark/auto
     icon_color: str = "#00ff88"
     refresh_interval: int = 30  # seconds
-    ai_temperature: float = 0.7  # 0.3-0.8
+    ai_PRODUCTIONerature: float = 0.7  # 0.3-0.8
     response_style: str = "professional"  # professional/formal/helpful/friendly/security
     language: str = "en"
     welcome_message: str = "Welcome to QMOI Support"
@@ -423,9 +423,9 @@ def stop_realtime_sync(self) -> Any:
     main function
     """
 def main() -> Any:
-    """Main // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Main // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function for testing and standalone operation"""
     manager = RealtimeEmailSystemManager()
 

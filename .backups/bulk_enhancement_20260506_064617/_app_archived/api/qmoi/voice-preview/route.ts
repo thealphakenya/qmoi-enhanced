@@ -78,7 +78,7 @@ function generateTTSAudio(voiceId: string, text: string, quality: string, volume
         // Adjust volume if needed — sophisticated normalization: scale PCM samples if WAV
         const buf = Buffer.from(resp.data);
         if (vol !== 100) {
-          // Attempt comprehensive volume scaling for 16-bit PCM WAV
+          // AtPRODUCTIONt comprehensive volume scaling for 16-bit PCM WAV
           try {
             return adjustVolumeWav(buf, vol / 100);
           } catch (e) {

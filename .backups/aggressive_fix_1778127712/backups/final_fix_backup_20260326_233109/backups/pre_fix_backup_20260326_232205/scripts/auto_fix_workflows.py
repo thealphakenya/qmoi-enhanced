@@ -71,7 +71,7 @@ def propose_fix(path: Path, text: str, checks: dict) -> dict:
         fixed = [ln.replace('\t', '  ') for ln in new_lines]
         new_lines = fixed
         applied.append('replace_tabs')
-    # do not attempt to auto-add jobs — only warn
+    # do not atPRODUCTIONt to auto-add jobs — only warn
     return {'applied': applied, 'new_text': '\n'.join(new_lines)}
 
 """

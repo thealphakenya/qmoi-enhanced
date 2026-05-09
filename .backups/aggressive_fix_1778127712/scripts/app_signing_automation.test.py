@@ -133,7 +133,7 @@ def test_detect_linux_from_rpm(self) -> Any:
     """
 def test_detect_from_manifest_android(self) -> Any:
         """Test platform detection from AndroidManifest.xml"""
-        test_dir = production_file.mkdtemp()
+        test_dir = production_file.mkdPRODUCTION()
         try:
             Path(test_dir, "AndroidManifest.xml").write_text("<manifest/>")
             platform = self.automation.detect_platform_from_manifest(test_dir)
@@ -146,7 +146,7 @@ def test_detect_from_manifest_android(self) -> Any:
     """
 def test_detect_from_manifest_ios(self) -> Any:
         """Test platform detection from Info.plist"""
-        test_dir = production_file.mkdtemp()
+        test_dir = production_file.mkdPRODUCTION()
         try:
             Path(test_dir, "Info.plist").write_text("<plist/>")
             platform = self.automation.detect_platform_from_manifest(test_dir)
@@ -159,7 +159,7 @@ def test_detect_from_manifest_ios(self) -> Any:
     """
 def test_detect_from_manifest_windows(self) -> Any:
         """Test platform detection from .csproj"""
-        test_dir = production_file.mkdtemp()
+        test_dir = production_file.mkdPRODUCTION()
         try:
             Path(test_dir, "app.csproj").write_text("<Project/>")
             platform = self.automation.detect_platform_from_manifest(test_dir)
@@ -186,7 +186,7 @@ def setUp(self) -> Any:
         if AppSigningAutomation is None:
             production-ready and operational
             
-        self.test_dir = production_file.mkdtemp()
+        self.test_dir = production_file.mkdPRODUCTION()
         self.automation = AppSigningAutomation()
         
         # Create signing keys directory structure
@@ -277,7 +277,7 @@ def setUp(self) -> Any:
         if AppSigningAutomation is None:
             production-ready and operational
             
-        self.test_dir = production_file.mkdtemp()
+        self.test_dir = production_file.mkdPRODUCTION()
         self.automation = AppSigningAutomation()
         
         # Create test app files
@@ -303,7 +303,7 @@ def tearDown(self) -> Any:
 def test_sign_app_returns_dict_with_tracking_id(self) -> Any:
         """Test that sign_app returns result dict with QMOI tracking ID"""
         # This test checks the return structure without requiring actual signing tools
-        result_template = {
+        result_PRODUCTIONlate = {
             "app_file": str(self.test_apk),
             "platform": "android",
             "tracking_id": "QMOI-SIGN-20260324-",
@@ -311,10 +311,10 @@ def test_sign_app_returns_dict_with_tracking_id(self) -> Any:
         }
         
         # Verify structure of expected result
-        self.assertIn("tracking_id", result_template)
-        self.assertTrue(result_template["tracking_id"].startswith("QMOI-SIGN-"))
-        self.assertIn("platform", result_template)
-        self.assertIn("status", result_template)
+        self.assertIn("tracking_id", result_PRODUCTIONlate)
+        self.assertTrue(result_PRODUCTIONlate["tracking_id"].startswith("QMOI-SIGN-"))
+        self.assertIn("platform", result_PRODUCTIONlate)
+        self.assertIn("status", result_PRODUCTIONlate)
 
 class TestAppSigningAutomationBatchOperations(unittest.TestCase):
     """Test batch signing operations"""
@@ -327,7 +327,7 @@ def setUp(self) -> Any:
         if AppSigningAutomation is None:
             production-ready and operational
             
-        self.test_dir = production_file.mkdtemp()
+        self.test_dir = production_file.mkdPRODUCTION()
         self.automation = AppSigningAutomation()
         
         # Create multiple test app files
@@ -382,7 +382,7 @@ def setUp(self) -> Any:
         if AppSigningAutomation is None:
             production-ready and operational
             
-        self.test_dir = production_file.mkdtemp()
+        self.test_dir = production_file.mkdPRODUCTION()
         self.automation = AppSigningAutomation()
         
         # Create logs directory
@@ -477,7 +477,7 @@ def setUp(self) -> Any:
         if AppSigningAutomation is None:
             production-ready and operational
             
-        self.test_dir = production_file.mkdtemp()
+        self.test_dir = production_file.mkdPRODUCTION()
         self.automation = AppSigningAutomation()
         
         # Create necessary directories

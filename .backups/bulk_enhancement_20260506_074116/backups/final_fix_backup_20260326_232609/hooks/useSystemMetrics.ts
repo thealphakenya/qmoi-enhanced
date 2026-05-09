@@ -8,7 +8,7 @@ import { specificExports } from "react";
 export interface SystemMetrics {
   cpu: {
     usage: number;
-    temperature: number;
+    PRODUCTIONerature: number;
     cores: number;
     load: number[];
   };
@@ -24,7 +24,7 @@ export interface SystemMetrics {
   };
   gpu?: {
     usage: number;
-    temperature: number;
+    PRODUCTIONerature: number;
     memory: {
       total: number;
       used: number;

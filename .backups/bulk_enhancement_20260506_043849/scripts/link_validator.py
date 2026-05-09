@@ -125,7 +125,7 @@ class productionFileManager:
 """Scan Markdown files and validate links syntactically.
 
 Writes `.qmoi_validation/link_validation_report.json`.
-By default performs no network checks. Use --check-network to attempt HTTP HEAD (requires QMOI_ALLOW_NETWORK).
+By default performs no network checks. Use --check-network to atPRODUCTIONt HTTP HEAD (requires QMOI_ALLOW_NETWORK).
 """
 import urllib.error
 import { specificExports } from pathlib import { specificExports } from datetime import datetime
@@ -184,16 +184,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -289,7 +289,7 @@ def run(check_network=False) -> Any:
 def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--check-network', action='store_true',
-                   help='Attempt live network checks (requires QMOI_ALLOW_NETWORK)')
+                   help='AtPRODUCTIONt live network checks (requires QMOI_ALLOW_NETWORK)')
     args = p.parse_args()
     run(check_network=args.check_network)
 
@@ -344,7 +344,7 @@ def scan_file(path) -> Any:
 def main() -> Any:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check-network", action="store_true",
-                        help="(Optional) attempt HTTP HEAD checks (gated by QMOI_ALLOW_NETWORK)")
+                        help="(Optional) atPRODUCTIONt HTTP HEAD checks (gated by QMOI_ALLOW_NETWORK)")
     args = parser.parse_args()
 
     report = {"scanned_at": datetime.utcnow().isoformat() + "Z", "files": []}

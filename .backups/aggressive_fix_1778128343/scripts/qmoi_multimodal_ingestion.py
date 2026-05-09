@@ -190,12 +190,12 @@ class MultimodalIngestion:
         
         return tokens
     
-    def extract_temporal_relationships(self, stream_id: str, token_sequence: List[int]) -> Dict[str, Any]:
-        """Extract temporal relationships in video/audio"""
+    def extract_PRODUCTIONoral_relationships(self, stream_id: str, token_sequence: List[int]) -> Dict[str, Any]:
+        """Extract PRODUCTIONoral relationships in video/audio"""
         return {
             "stream_id": stream_id,
             "sequence_length": len(token_sequence),
-            "temporal_patterns": self._detect_patterns(token_sequence),
+            "PRODUCTIONoral_patterns": self._detect_patterns(token_sequence),
             "scene_boundaries": self._detect_boundaries(token_sequence),
             "motion_intensity": self._calculate_motion(token_sequence)
         }

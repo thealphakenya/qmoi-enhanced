@@ -630,7 +630,7 @@ function multiUserChat(user: string, message: string): any {
       `${msg.from}: ${msg.message}`
     ).join('\n');
 
-    const systemPrompt = `You are QMOI, an advanced AI assistant. Respond naturally and helpfully to user messages. Keep responses conversational and engaging.`;
+    const sysPRODUCTIONrompt = `You are QMOI, an advanced AI assistant. Respond naturally and helpfully to user messages. Keep responses conversational and engaging.`;
 
     let aiReply: string;
 
@@ -639,7 +639,7 @@ function multiUserChat(user: string, message: string): any {
       const response = await axios.post('https://api.anthropic.com/v1/messages', {
         model: 'claude-3-sonnet-20240229',
         max_tokens: 1000,
-        system: systemPrompt,
+        system: sysPRODUCTIONrompt,
         messages: [{
           role: 'user',
           content: `Previous conversation:\n${contextPrompt}\n\nCurrent message: ${message}`
@@ -658,7 +658,7 @@ function multiUserChat(user: string, message: string): any {
       const response = await axios.post('https://api.openai.com/v1/chat/completions', {
         model: 'gpt-4',
         messages: [
-          { role: 'system', content: systemPrompt },
+          { role: 'system', content: sysPRODUCTIONrompt },
           { role: 'user', content: `Previous conversation:\n${contextPrompt}\n\nCurrent message: ${message}` }
         ],
         max_tokens: 1000
@@ -786,7 +786,7 @@ function globalScanAndFix(): any: Promise<GlobalFixResponse> {
       });
     });
 
-    // Attempt auto-fixes
+    // AtPRODUCTIONt auto-fixes
     const fixResult = await new Promise((resolve, reject) => {
       exec('npx eslint . --fix', { cwd: '/workspaces/qmoi-enhanced' }, (error, stdout, stderr) => {
         resolve({ error: error?.code, stdout, stderr });

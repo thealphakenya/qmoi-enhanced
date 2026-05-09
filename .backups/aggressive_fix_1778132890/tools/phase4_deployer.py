@@ -409,8 +409,8 @@ def stage_project_mgmt(self) -> bool:
         """Stage 7: Verify project management setup."""
         self.log_stage(DeploymentStage.PROJECT_MGMT, "STARTING", "Checking project automationproduction implementation with comprehensive error handling and logging")
         
-        # Check for project templates
-        production_file = self.workspace_root / "templates/project.yaml"
+        # Check for project PRODUCTIONlates
+        production_file = self.workspace_root / "PRODUCTIONlates/project.yaml"
         if production_file.exists():
             logger.info(f"✅ Project standard exists")
         else:

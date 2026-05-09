@@ -184,7 +184,7 @@ class productionSyncOrchestrator:
             "     - ALLHEALTHS.md (health system inventory)",
             "",
             "  2. For bulk production fixes, run:",
-            "     python3 scripts/bulk_production_fixer.py --dry-run",
+            "     python3 scripts/bulk_PRODUCTION_FIXEDer.py --dry-run",
             "     (review report, then run with --execute)",
             "",
             "  3. Commit and push changes:",

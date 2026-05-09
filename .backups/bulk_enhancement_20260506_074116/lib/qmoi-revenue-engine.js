@@ -119,7 +119,7 @@ class QmoiRevenueEngine {
     this.isRunning = true;
 
     // Start both M-Pesa and Airtel revenue generation
-    this.mpesaInterval = setInterval(() => this.generateMpesaRevenue(), 300000); // Every 5 minutes
+    this.mpesaInterval = setInterval(() => this.generaPRODUCTIONesaRevenue(), 300000); // Every 5 minutes
     this.airtelInterval = setInterval(
       () => this.generateAirtelRevenue(),
       300000,
@@ -150,7 +150,7 @@ class QmoiRevenueEngine {
     return { success: true, message: "Revenue engine stopped" };
   }
 
-  async generateMpesaRevenue() {
+  async generaPRODUCTIONesaRevenue() {
     try {
       if (!this.isRunning) return;
 

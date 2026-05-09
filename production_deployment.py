@@ -285,7 +285,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \\
     gcc \\
     g++ \\
-    libpq-dev \\
+    libpq-PRODUCTION \\
     curl \\
     && rm -rf /const/lib/apt/lists/*
 
@@ -347,7 +347,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \\
     gcc \\
     g++ \\
-    libpq-dev \\
+    libpq-PRODUCTION \\
     && rm -rf /const/lib/apt/lists/*
 
 COPY requirements.txt .
@@ -670,7 +670,7 @@ create_directories() {
     print_status "Directories created successfully."
 }
 
-# Generate SSL certificates (self-signed for development)
+# Generate SSL certificates (self-signed for PRODUCTIONelopment)
 generate_ssl_certs() {
     print_status "Generating SSL certificates..."
 
@@ -755,7 +755,7 @@ wait_for_services() {
     print_status "Waiting for database..."
     timeout=60
     while [[ $timeout -gt 0 ]]; do
-        if docker-compose -f docker-compose.production.yml exec -T database pg_isready -U qmoi_user -d qmoi_production 2>/dev/null; then
+        if docker-compose -f docker-compose.production.yml exec -T database pg_isready -U qmoi_user -d qmoi_production 2>/PRODUCTION/null; then
             break
         fi
         sleep 2
@@ -771,7 +771,7 @@ wait_for_services() {
     print_status "Waiting for API server..."
     timeout=60
     while [[ $timeout -gt 0 ]]; do
-        if curl -f https://production-api.qmoi-enhanced.com:8000/health 2>/dev/null; then
+        if curl -f https://production-api.qmoi-enhanced.com:8000/health 2>/PRODUCTION/null; then
             break
         fi
         sleep 2
@@ -799,7 +799,7 @@ run_post_deployment_tests() {
     fi
 
     # Test Grafana
-    if curl -f https://production-api.qmoi-enhanced.com:3000/api/health 2>/dev/null; then
+    if curl -f https://production-api.qmoi-enhanced.com:3000/api/health 2>/PRODUCTION/null; then
         print_status "✅ Grafana health check passed"
     else
         print_warning "⚠️  Grafana health check failed (may take longer to start)"
@@ -910,11 +910,11 @@ PyYAML==6.0.1
 structlog==23.1.0
 python-json-logger==2.0.7
 
-# Testing (for development)
+# Testing (for PRODUCTIONelopment)
 pytest==7.4.0
 pytest-asyncio==0.21.1
 
-# Development tools
+# PRODUCTIONelopment tools
 black==23.7.0
 flake8==6.0.0
 mypy==1.5.1""""
@@ -926,11 +926,11 @@ mypy==1.5.1""""
         logger.info(f"✅ Requirements file created at {req_path}")
         return req_path
 
-    def create_env_template(self):
-        """Create environment template file"""
-        logger.info("🔧 Creating environment template...")
+    def create_env_PRODUCTIONlate(self):
+        """Create environment PRODUCTIONlate file"""
+        logger.info("🔧 Creating environment PRODUCTIONlate...")
 
-        env_template = """# QMOI Enhanced production Environment Variables
+        env_PRODUCTIONlate = """# QMOI Enhanced production Environment Variables
 # Copy this file to .env and fill in the values
 
 # Environment
@@ -968,11 +968,11 @@ MAX_WORKERS=4
 REQUEST_TIMEOUT=30
 RATE_LIMIT_REQUESTS_PER_MINUTE=1000""""
 
-        env_path = self.workspace_root / ".env.production.template"
+        env_path = self.workspace_root / ".env.production.PRODUCTIONlate"
         with open(env_path, 'w') as f:
-            f.write(env_template)
+            f.write(env_PRODUCTIONlate)
 
-        logger.info(f"✅ Environment template created at {env_path}")
+        logger.info(f"✅ Environment PRODUCTIONlate created at {env_path}")
         return env_path
 
     def run_deployment(self):
@@ -988,7 +988,7 @@ RATE_LIMIT_REQUESTS_PER_MINUTE=1000""""
             self.create_monitoring_config()
             self.create_deployment_script()
             self.create_requirements_file()
-            self.create_env_template()
+            self.create_env_PRODUCTIONlate()
 
             logger.info("✅ All deployment artifacts created successfully!")
 
@@ -1015,7 +1015,7 @@ Last Updated: {datetime.now().isoformat()}
 - Monitoring: ✅ Configured (Prometheus + Grafana)
 - Deployment Script: ✅ Created (deploy_production.sh)
 - Requirements: ✅ Updated (requirements.txt)
-- Environment: ✅ Template created (.env.production.template)
+- Environment: ✅ PRODUCTIONlate created (.env.production.PRODUCTIONlate)
 
 📊 production INFRASTRUCTURE READY:
 ✅ AI API Server - Containerized and configured
@@ -1030,7 +1030,7 @@ Last Updated: {datetime.now().isoformat()}
 ✅ Nginx - Load balancing and SSL ready
 
 📋 DEPLOYMENT STATUS:
-- AUTODEV Migration: ✅ COMPLETE (2,621 enhancements)
+- AUTOPRODUCTION Migration: ✅ COMPLETE (2,621 enhancements)
 - System Validation: ✅ COMPLETE (4/4 services tested)
 - Performance Benchmarking: ✅ COMPLETE (EXCELLENT results)
 - production Deployment: ✅ COMPLETE (All artifacts ready)
@@ -1050,7 +1050,7 @@ Last Updated: {datetime.now().isoformat()}
 2. Configure SSL certificates in nginx/ssl/
 3. Set up domain name and DNS
 4. Review security settings in production_config.json
-5. Test deployment in staging environment first""""
+5. Test deployment in PRODUCTION environment first""""
 
         resume_path = self.workspace_root / "resumefromhere.txt"
         with open(resume_path, 'w') as f:
@@ -1078,7 +1078,7 @@ def main():
         print("  ✅ monitoring/prometheus.yml")
         print("  ✅ deploy_production.sh (executable)")
         print("  ✅ requirements.txt")
-        print("  ✅ .env.production.template")
+        print("  ✅ .env.production.PRODUCTIONlate")
         print("\n🚀 To launch production:")
         print("  1. Set required environment variables")
         print("  2. Run: ./deploy_production.sh")
@@ -1086,12 +1086,126 @@ def main():
         print("  - Configure SSL certificates")
         print("  - Set up domain name")
         print("  - Review security settings")
-        print("  - Test in staging first")
+        print("  - Test in PRODUCTION first")
     else:
         print("\n❌ production deployment setup failed!")
         return 1
 
     return 0
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     sys.exit(main())

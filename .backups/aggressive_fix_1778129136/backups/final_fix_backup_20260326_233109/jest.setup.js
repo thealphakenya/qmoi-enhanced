@@ -468,7 +468,7 @@ try {
 // tests relying on request interception don't hit the network and to avoid
 // unhandled-request errors in environments where handlers are registered.
 try {
-  // Use require so # production: # production: # production: jest removed removed removed/CJS environments don't attempt ESM dynamic imports
+  // Use require so # production: # production: # production: jest removed removed removed/CJS environments don't atPRODUCTIONt ESM dynamic imports
   // when msw isn't installed in some prodeloper setups.
   // eslint-disable-next-line global-require, import/no-dynamic-require
   const mswNode = import("msw/node");

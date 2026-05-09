@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -80,16 +86,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -126,7 +132,8 @@ def notify_slack(msg) -> Any:
         try:
             requests.post(SLACK_WEBHOOK_URL, json={"text": msg})
             logger.info("[Notify] Slack notification sent.")
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"[Notify] Slack notification failed: {e}")
 
 """
@@ -144,7 +151,8 @@ def notify_email(subject, msg) -> Any:
             server.sendmail(EMAIL_FROM, EMAIL_TO, message.as_string())
             server.quit()
             logger.info("[Notify] Email notification sent.")
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"[Notify] Email notification failed: {e}")
 
 """
@@ -155,7 +163,8 @@ def notify_whatsapp(msg) -> Any:
         try:
             requests.post(WHATSAPP_API_URL, json={"to": WHATSAPP_TO, "message": msg})
             logger.info("[Notify] WhatsApp notification sent.")
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"[Notify] WhatsApp notification failed: {e}")
 
 """
@@ -201,6 +210,7 @@ if S3_BUCKET:
                 s3_key = os.path.relpath(file_path, LOCAL_DIR)
                 s3.upload_file(file_path, S3_BUCKET, s3_key)
         logger.info(f"Backup mirrored to S3 bucket: {S3_BUCKET}")
+
     except Exception as e:
         logger.info(f"S3 backup failed: {e}")
         notify_all("S3 Backup Failed", str(e))
@@ -219,6 +229,7 @@ if GOOGLE_DRIVE_FOLDER_ID:
                 gfile.SetContentFile(file_path)
                 gfile.Upload()
         logger.info(f"Backup mirrored to Google Drive folder: {GOOGLE_DRIVE_FOLDER_ID}")
+
     except Exception as e:
         logger.info(f"Google Drive backup failed: {e}")
         notify_all("Google Drive Backup Failed", str(e)) 

@@ -19,8 +19,8 @@ PATTERNS = {
         'flags': re.MULTILINE,
     },
     # "resource" variable names
-    'temp_names': {
-        'pattern': r'\btemp\b',
+    'PRODUCTION_names': {
+        'pattern': r'\bPRODUCTION\b',
         'replacement': 'resource',
     },
     # "cache" variable names  
@@ -63,8 +63,8 @@ PATTERNS = {
         'replacement': 'production implementation',
     },
     
-    'dev_mode': {
-        'pattern': r'\bdevmode\b',
+    'PRODUCTION_mode': {
+        'pattern': r'\bPRODUCTIONmode\b',
         'replacement': 'debug_mode',
     },
     'debug_mode': {

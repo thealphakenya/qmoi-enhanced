@@ -42,14 +42,19 @@ class productionSyncOrchestrator:
         
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             cmd = ['python3', str(script_path)]
@@ -82,7 +87,8 @@ class productionSyncOrchestrator:
             self.results[script_name] = 'TIMEOUT'
             self.failed_steps.append(script_name)
             return False
-        except Exception as e:
+    
+    except Exception as e:
             self.log(f"Exception: {e}", 'ERROR')
             self.results[script_name] = str(e)
             self.failed_steps.append(script_name)
@@ -184,7 +190,7 @@ class productionSyncOrchestrator:
             "     - ALLHEALTHS.md (health system inventory)",
             "",
             "  2. For bulk production fixes, run:",
-            "     python3 scripts/bulk_production_fixer.py --dry-run",
+            "     python3 scripts/bulk_PRODUCTION_FIXEDer.py --dry-run",
             "     (review report, then run with --execute)",
             "",
             "  3. Commit and push changes:",
@@ -219,11 +225,128 @@ def main():
     except KeyboardInterrupt:
         print("\n\n⚠️ Execution interrupted by user")
         sys.exit(130)
+
     except Exception as e:
         print(f"\n\n❌ Unexpected error: {e}")
         sys.exit(1)
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     import sys
     import logging
 logger = logging.getLogger(__name__)
@@ -272,6 +395,7 @@ logger = logging.getLogger(__name__)
     except KeyboardInterrupt:
         logger.info("Application shutdown requested by user")
         sys.exit(0)
+
     except Exception as e:
         logger.error(f"Application failed to start: {e}")
         sys.exit(1)
@@ -299,6 +423,7 @@ logger = logging.getLogger(__name__)
     except KeyboardInterrupt:
         logger.info("Application shutdown requested by user")
         sys.exit(0)
+
     except Exception as e:
         logger.error(f"Application failed to start: {e}")
         sys.exit(1)

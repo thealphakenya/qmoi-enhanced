@@ -348,7 +348,7 @@ def run(self) -> Any:
             if not self.run_tests():
                 logger.error("System tests failed")
                 if self.fix_all:
-                    logger.info("Attempting to fix issues...")
+                    logger.info("AtPRODUCTIONting to fix issues...")
                     # Add fix logic here
                 return False
         

@@ -127,20 +127,26 @@ def load_config(self) -> Dict[str, Any]:
         if os.path.exists(config_file):
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 with open(config_file, 'r') as f:
                     file_config = json.load(f)
                     config.update(file_config)
-            except Exception as e:
+        
+    except Exception as e:
                 self.logger.error(f"Error loading config: {e}")
         
         return config
@@ -177,7 +183,8 @@ def check_dependencies(self) -> bool:
             self.logger.info("All dependencies satisfied")
             return True
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking dependencies: {e}")
             return False
     
@@ -200,7 +207,8 @@ def create_directories(self) -> Any:
             
             self.logger.info("Directories created")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error creating directories: {e}")
     
     """
@@ -249,7 +257,8 @@ def start_component(self, component: Dict[str, Any]) -> bool:
                 self.logger.error(f"Failed to start {name}")
                 return False
                 
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error starting component {name}: {e}")
             return False
     
@@ -288,7 +297,8 @@ def start_all_components(self) -> bool:
             
             return success_count >= total_count * 0.8  # 80% success rate
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error starting components: {e}")
             return False
     
@@ -324,7 +334,8 @@ def monitor_components(self) -> Any:
                 
         except KeyboardInterrupt:
             self.logger.info("Monitoring interrupted")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error monitoring components: {e}")
     
     """
@@ -373,7 +384,8 @@ def health_check(self) -> Dict[str, Any]:
             
             return health_status
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error performing health check: {e}")
             return {}
     
@@ -412,7 +424,8 @@ def save_startup_report(self, success: bool) -> Any:
             
             self.logger.info(f"Startup report saved: {report_file}")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error saving startup report: {e}")
     
     """
@@ -452,7 +465,8 @@ def print_status(self) -> Any:
             
             logger.info("="*60)
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error printing status: {e}")
     
     """
@@ -499,7 +513,8 @@ def run(self) -> Any:
             except KeyboardInterrupt:
                 self.logger.info("Received interrupt signal")
                 
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error in startup process: {e}")
             return False
         

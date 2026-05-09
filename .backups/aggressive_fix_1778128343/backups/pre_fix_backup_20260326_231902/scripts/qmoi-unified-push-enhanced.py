@@ -58,8 +58,8 @@ GITHUB_REPO = "latest-Q-ai"
 
 # Global state to prevent recursion
 already_fixed = set()
-error_fix_attempts = {}
-max_fix_attempts = 3
+error_fix_atPRODUCTIONts = {}
+max_fix_atPRODUCTIONts = 3
 fix_lock = threading.Lock()
 
 # -----------------------------
@@ -72,9 +72,9 @@ def run_cmd(cmd, cwd=PROJECT_ROOT, retries=3, backoff=5, critical=False, capture
     """Enhanced command execution with better error handling"""
     cmd_str = " ".join(cmd) if isinstance(cmd, list) else str(cmd)
     
-    for attempt in range(retries):
+    for atPRODUCTIONt in range(retries):
         try:
-            logger.info(f"üîÑ Running: {cmd_str} (attempt {attempt + 1}/{retries})")
+            logger.info(f"üîÑ Running: {cmd_str} (atPRODUCTIONt {atPRODUCTIONt + 1}/{retries})")
             
             result = subprocess.run(
                 cmd,
@@ -95,13 +95,13 @@ def run_cmd(cmd, cwd=PROJECT_ROOT, retries=3, backoff=5, critical=False, capture
             error_msg = e.stderr if e.stderr else str(e)
             logger.warning(f"‚ö†Ô∏è Command failed: {cmd_str} - {error_msg}")
             
-            if attempt < retries - 1:
+            if atPRODUCTIONt < retries - 1:
                 logger.info(f"‚è≥ Retrying in {backoff} seconds...")
                 time.sleep(backoff)
                 backoff *= 2  # Exponential backoff
             else:
                 if not skip_auto_fix and not critical:
-                    logger.info(f"üîß Attempting auto-fix for: {cmd_str}")
+                    logger.info(f"üîß AtPRODUCTIONting auto-fix for: {cmd_str}")
                     if auto_fix_error(cmd, error_msg):
                         continue
                 
@@ -109,12 +109,12 @@ def run_cmd(cmd, cwd=PROJECT_ROOT, retries=3, backoff=5, critical=False, capture
                     logger.error(f"‚ùå Critical command failed: {cmd_str}")
                     raise
                 else:
-                    logger.warning(f"‚ö†Ô∏è Command failed after all attempts: {cmd_str}")
+                    logger.warning(f"‚ö†Ô∏è Command failed after all atPRODUCTIONts: {cmd_str}")
                     return False
                     
         except subprocess.TimeoutExpired:
             logger.error(f"‚è∞ Command timed out: {cmd_str}")
-            if attempt < retries - 1:
+            if atPRODUCTIONt < retries - 1:
                 time.sleep(backoff)
             else:
                 if critical:
@@ -141,12 +141,12 @@ def auto_fix_error(cmd, error_msg="") -> Any:
     
     with fix_lock:
         # Check if we've already tried to fix this command too many times
-        if error_fix_attempts.get(cmd_str, 0) >= max_fix_attempts:
-            logger.warning(f"üö´ Max fix attempts reached for: {cmd_str}")
+        if error_fix_atPRODUCTIONts.get(cmd_str, 0) >= max_fix_atPRODUCTIONts:
+            logger.warning(f"üö´ Max fix atPRODUCTIONts reached for: {cmd_str}")
             return False
         
-        error_fix_attempts[cmd_str] = error_fix_attempts.get(cmd_str, 0) + 1
-        logger.info(f"üîß Auto-fixing: {cmd_str} (attempt {error_fix_attempts[cmd_str]})")
+        error_fix_atPRODUCTIONts[cmd_str] = error_fix_atPRODUCTIONts.get(cmd_str, 0) + 1
+        logger.info(f"üîß Auto-fixing: {cmd_str} (atPRODUCTIONt {error_fix_atPRODUCTIONts[cmd_str]})")
     
     try:
         if "git" in cmd[0] or "fatal" in error_msg.lower():

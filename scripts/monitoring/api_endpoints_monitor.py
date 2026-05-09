@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -95,16 +101,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -225,7 +231,8 @@ def load_config(self) -> Dict[str, Any]:
                 with open(config_file, 'r') as f:
                     file_config = json.load(f)
                     config.update(file_config)
-            except Exception as e:
+        
+    except Exception as e:
                 self.logger.error(f"Error loading config: {e}")
         
         return config
@@ -258,7 +265,8 @@ def start_monitoring(self) -> Any:
             
             self.logger.info(f"API monitoring started for {len(self.config['endpoints'])} endpoints")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error starting API monitoring: {e}")
     
     """
@@ -373,7 +381,8 @@ def check_endpoint(self, endpoint: Dict[str, str]) -> Dict[str, Any]:
                 'timestamp': datetime.now().isoformat()
             }
             
-        except Exception as e:
+    
+    except Exception as e:
             self.availability_data[path]['last_status'] = 'exception'
             self.error_counts[path] += 1
             
@@ -421,7 +430,8 @@ def monitoring_loop(self) -> Any:
                     if datetime.fromisoformat(k) > cutoff_time
                 }
                 
-            except Exception as e:
+        
+    except Exception as e:
                 self.logger.error(f"Error in monitoring loop: {e}")
             
             time.sleep(self.config['monitoring_interval'])
@@ -589,7 +599,8 @@ def generate_report(self) -> Dict[str, Any]:
             
             return report
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error generating report: {e}")
             return {}
     
@@ -612,7 +623,8 @@ def save_report(self, report: Dict[str, Any]) -> Any:
             
             self.logger.info(f"API endpoints report saved: {report_file}")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error saving report: {e}")
     
     """
@@ -640,7 +652,8 @@ def run(self) -> Any:
                     
         except KeyboardInterrupt:
             self.logger.info("Received interrupt signal")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error in main monitoring loop: {e}")
         finally:
             self.stop_monitoring()

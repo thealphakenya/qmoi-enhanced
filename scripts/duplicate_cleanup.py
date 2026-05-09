@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -206,7 +212,8 @@ def cleanup_duplicates():
                     shutil.rmtree(duplicate)
                     logger.info(f"Removed duplicate directory: {duplicate.relative_to(BASE_DIR)}")
                     removed_count += 1
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Failed to remove {duplicate}: {e}")
 
     # Clean up problematic files
@@ -223,7 +230,8 @@ def cleanup_duplicates():
                     file_path.unlink()
                     logger.info(f"Removed problematic file: {file_path.relative_to(BASE_DIR)}")
                     removed_count += 1
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Failed to remove {file_path}: {e}")
 
     # Clean up backup files
@@ -235,7 +243,8 @@ def cleanup_duplicates():
                     file_path.unlink()
                     logger.info(f"Removed backup file: {file_path.relative_to(BASE_DIR)}")
                     removed_count += 1
-                except Exception as e:
+            
+    except Exception as e:
                     logger.error(f"Failed to remove backup {file_path}: {e}")
 
     logger.info(f"Duplicate cleanup complete!")

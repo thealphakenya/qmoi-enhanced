@@ -222,7 +222,7 @@ export interface LinkValidationConfig {
   enabled: boolean;
   checkInterval: number;
   timeout: number;
-  retryAttempts: number;
+  retryAtPRODUCTIONts: number;
   userAgent: string;
   followRedirects: boolean;
   validateSSL: boolean;

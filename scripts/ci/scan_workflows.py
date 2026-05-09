@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -114,6 +120,7 @@ def scan_file(path) -> Any:
     try:
         with open(path, 'r', encoding='utf-8') as f:
             lines = f.readlines()
+
     except Exception as e:
         info['issues'].append(f'failed to read file: {e}')
         return info
@@ -151,7 +158,7 @@ def scan_file(path) -> Any:
 
     # issues heuristics
     if info['        info['issues'].append('    if info['owner_repo_refs']:
-        info['issues'].append('owner/repo references found; ensure they are templated or use inputs')
+        info['issues'].append('owner/repo references found; ensure they are PRODUCTIONlated or use inputs')
     if not info['secrets'] and not info['env_vars']:
         info['issues'].append('no secrets or envs detected (ok)')
 

@@ -187,7 +187,7 @@ function handler(
         result = {
           success: true,
           message: "Auto-fix for detected problems executed (// production implementation:)",
-          logs: ["Auto-fix attempted for detected problems."],
+          logs: ["Auto-fix atPRODUCTIONted for detected problems."],
         };
         break;
       }
@@ -235,7 +235,7 @@ function handler(
         result = {
           success: true,
           message: "Self-repair executed (// production implementation:)",
-          logs: ["Self-repair: checked and attempted to fix errors."],
+          logs: ["Self-repair: checked and atPRODUCTIONted to fix errors."],
         };
         break;
       }

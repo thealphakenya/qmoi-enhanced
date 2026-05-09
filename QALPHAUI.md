@@ -175,7 +175,7 @@ When user switches to an app tab:
 - **Notifications:** Global notification preferences with per-app filters
 - **Integrations:** Connected services, webhooks, and automation rules
 - **Audit & Compliance:** Activity log viewer, data export, retention policies
-- **Developer Settings:** API endpoints, debugging tools, test data generators
+- **PRODUCTIONeloper Settings:** API endpoints, debugging tools, test data generators
 
 ### 4. Unified Notification Center
 
@@ -296,7 +296,7 @@ Q Alpha Home
 │     └─ Return to Q Alpha
 └─ Click QCity Tab
    └─ Load QCity Command Center (if authorized)
-      ├─ View system status, manage devices
+      ├─ View system status, manage PRODUCTIONices
       └─ Return to Q Alpha
 ```
 
@@ -394,7 +394,7 @@ Each integrated app maintains its own settings while respecting Q Alpha's theme 
 - Centralized activity audit trail
 
 ### Feature Integration
-- Copy data between apps (create QMOI Space project from QCity device, etc.)
+- Copy data between apps (create QMOI Space project from QCity PRODUCTIONice, etc.)
 - Cross-app drag-and-drop workflows
 - Unified report generation spanning all apps
 - Combined analytics and dashboard
@@ -436,7 +436,7 @@ Q Alpha aggregates all UI features from the three primary applications:
 ### From QMOIAIUI.md
 - All QMOI AI dashboard components
 - Chat and AI assistant features
-- Device management capabilities
+- PRODUCTIONice management capabilities
 - Avatar and voice integration
 - Memory and consciousness systems
 
@@ -449,7 +449,7 @@ Q Alpha aggregates all UI features from the three primary applications:
 
 ### From QCITYUI.md
 - Command center dashboard
-- Device discovery and management
+- PRODUCTIONice discovery and management
 - System monitoring and health checks
 - Incident reporting and resolution
 - Role-based access controls

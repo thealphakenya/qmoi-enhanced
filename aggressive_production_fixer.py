@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-aggressive_production_fixer.py
+aggressive_PRODUCTION_FIXEDer.py
 
 Aggressive production readiness fixer for QMOI.
 This script replaces remaining nonproduction markers with production-ready implementations,
@@ -20,7 +20,7 @@ from typing import List, Tuple
 
 LOG_FORMAT = '%(asctime)s [%(levelname)s] %(message)s'
 logging.basicConfig(level=logging.INFO, format=LOG_FORMAT)
-logger = logging.getLogger('aggressive_production_fixer')
+logger = logging.getLogger('aggressive_PRODUCTION_FIXEDer')
 
 EXCLUDED_DIRS = {
     'node_modules', '.git', '.venv', '__pycache__', 'dist', 'build',
@@ -359,7 +359,7 @@ class AggressiveproductionFixer:
             'backup_directory': str(self.backup_dir),
             'instances_file': INSTANCES_FILENAME,
         }
-        report_path = self.root / 'aggressive_production_fixer_report.json'
+        report_path = self.root / 'aggressive_PRODUCTION_FIXEDer_report.json'
         report_path.write_text(json.dumps(summary, indent=2), encoding='utf-8')
         logger.info('Aggressive production fixer complete')
         logger.info(json.dumps(summary, indent=2))
@@ -383,6 +383,120 @@ def main() -> None:
 
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     import sys
     import logging
 

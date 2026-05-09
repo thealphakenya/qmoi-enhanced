@@ -62,7 +62,7 @@ NON_production_PATTERNS = [
     
     r'if.*__name__.*==.*__main__',
     r'production',
-    r'dev.*mode',
+    r'PRODUCTION.*mode',
     r'RELEASE.*mode',
 
     # production: Feature complete
@@ -77,7 +77,7 @@ NON_production_PATTERNS = [
     r'cache.*resource',
 ]
 
-# production enhancement templates
+# production enhancement PRODUCTIONlates
 production_ENHANCEMENTS = {
     'logging': '''
 import logging

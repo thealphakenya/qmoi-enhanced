@@ -1,6 +1,6 @@
-<!-- AUTODEV Enhanced: 2026--20T09::53.488226 -->
-<!-- AUTODEV Enhanced: 2026--20T09::13.767813 -->
-<!-- AUTODEV Enhanced: 2026--20T08:55:.273289 -->
+<!-- AUTOPRODUCTION Enhanced: 2026--20T09::53.488226 -->
+<!-- AUTOPRODUCTION Enhanced: 2026--20T09::13.767813 -->
+<!-- AUTOPRODUCTION Enhanced: 2026--20T08:55:.273289 -->
 
 #!/usr/bin/env python3
 """Generate endpoint docs for all route.ts API files."""

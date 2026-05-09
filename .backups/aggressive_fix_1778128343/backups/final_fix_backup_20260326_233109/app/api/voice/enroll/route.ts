@@ -56,7 +56,7 @@ function POST(_request: NextRequest): any {
       type: "voice",
       enrolledAt: new Date().toISOString(),
       lastVerified: null,
-      enrollmentAttempts: 1,
+      enrollmentAtPRODUCTIONts: 1,
     };
 
     if (existingIndex >= 0) {

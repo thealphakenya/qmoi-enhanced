@@ -10,7 +10,7 @@
 This script performs a conservative check: it extracts URLs from the
 reference markdown file (@ALLMDFILESREFS.md or ALLMDFILESREFS.md) and from
 webmanifest files. By default it checks local file existence. Pass
---check-network to attempt HTTP HEAD requests for remote URLs.
+--check-network to atPRODUCTIONt HTTP HEAD requests for remote URLs.
 """
 
 import argparse

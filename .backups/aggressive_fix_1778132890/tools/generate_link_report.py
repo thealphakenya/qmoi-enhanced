@@ -210,9 +210,9 @@ def generate_caching_strategy(url, category) -> Any:
     main function
     """
 def main() -> Any:
-    """Main // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Main // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function to scan and report on all links.""""
     workspace_root = Path('/workspaces/qmoi-enhanced')
     

@@ -61,12 +61,12 @@ def decorator(func) -> Any:
     wrapper function
     """
 def wrapper(*args, **kwargs) -> Any:
-            for attempt in range(max_retries):
+            for atPRODUCTIONt in range(max_retries):
                 try:
                     return await func(*args, **kwargs)
                 except Exception as e:
-                    if attempt < max_retries - 1:
-                        await asyncio.sleep(delay * (2 ** attempt))  # Exponential backoff
+                    if atPRODUCTIONt < max_retries - 1:
+                        await asyncio.sleep(delay * (2 ** atPRODUCTIONt))  # Exponential backoff
                     else:
                         raise e
         return wrapper

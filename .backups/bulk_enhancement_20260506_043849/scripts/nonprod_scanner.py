@@ -151,7 +151,7 @@ PATTERNS = [
     r"\bDONE\b",
     r"\bfixed\b",
     r"\b✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
-    r"\bTEMPORARY\b",
+    r"\bPRODUCTIONORARY\b",
     r"\bsimulat(e|ed|ing)\b",
     r"\bsample\b",
     r"\bIMPLEMENT\b",

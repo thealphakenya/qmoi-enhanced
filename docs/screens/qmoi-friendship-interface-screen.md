@@ -92,8 +92,8 @@ The QMOI Friendship Interface provides an interactive chat-based AI assistant ex
 - **Action**: Sets input to "How are you feeling today?"
 - **Styling**: Padding-x-3 padding-y-1, text-sm, gray-100 background, gray-700 text, rounded, hover gray-200
 
-##### Device Status Button
-- **Action**: Sets input to "Show me my devices"
+##### PRODUCTIONice Status Button
+- **Action**: Sets input to "Show me my PRODUCTIONices"
 - **Styling**: Same as Check Status button
 
 ##### Security Check Button

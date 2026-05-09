@@ -11,7 +11,7 @@
 ### 1. Environment Setup
 ```bash
 # Copy and configure environment file
-cp .env.production.template .env.production
+cp .env.production.PRODUCTIONlate .env.production
 
 # Edit and add credentials
 vim .env.production
@@ -227,7 +227,7 @@ echo "✅ All checks passed - Ready to deploy"
 | Document | Purpose |
 |----------|---------|
 | PRODUCTION_DEPLOYMENT_CHECKLIST.md | Full deployment steps |
-| AUTODEV_PRODUCTION_OPERATIONS.md | Complete ops guide |
+| AUTOPRODUCTION_PRODUCTION_OPERATIONS.md | Complete ops guide |
 | PRODUCTION_MIGRATION_SUMMARY.md | Migration details |
 | PRODUCTION_VALIDATION_REPORT.json | Validation results |
 
@@ -262,7 +262,7 @@ echo "✅ All checks passed - Ready to deploy"
 - Check implementation: `services/cashon-production.ts`
 - See database setup: `services/financial-stats-production.ts`  
 - Deployment guide: `PRODUCTION_DEPLOYMENT_CHECKLIST.md`
-- Full ops manual: `AUTODEV_PRODUCTION_OPERATIONS.md`
+- Full ops manual: `AUTOPRODUCTION_PRODUCTION_OPERATIONS.md`
 
 **Questions?** Contact: operations-team@qmoi.ai
 

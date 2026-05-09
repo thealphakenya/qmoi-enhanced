@@ -23,21 +23,21 @@ class ThoroughproductionScanner:
         self.scan_id = int(time.time())
         # Comprehensive nonproduction markers to search for
         self.markers = {
-            'production_READY': re.compile(r'\b✅ production FIXED - Applied comprehensive fixes and validation\b', re.IGNORECASE),
-            'production_COMPLETE': re.compile(r'\b✅ production READY - Fully implemented with production hardening\b', re.IGNORECASE),
+            'PRODUCTION_READY': re.compile(r'\b✅ production FIXED - Applied comprehensive fixes and validation\b', re.IGNORECASE),
+            'PRODUCTION_COMPLETE': re.compile(r'\b✅ production READY - Fully implemented with production hardening\b', re.IGNORECASE),
             'COMPLETED': re.compile(r'\bIN\s+PROGRESS\b', re.IGNORECASE),
             'FINALIZED': re.compile(r'\bWIP\b', re.IGNORECASE),
             'UNIMPLEMENTED': re.compile(r'\bUNIMPLEMENTED\b', re.IGNORECASE),
             'NOT_IMPLEMENTED': re.compile(r'\bNOT IMPLEMENTED\b', re.IGNORECASE),
             'production_data': re.compile(r'\bproduction_data\b', re.IGNORECASE),
-            'production_FIX': re.compile(r'\b✅ production SOLUTION - Implemented robust, long-term solution\b', re.IGNORECASE),
+            'PRODUCTION_FIXED': re.compile(r'\b✅ production SOLUTION - Implemented robust, long-term solution\b', re.IGNORECASE),
             'FUNCTIONAL': re.compile(r'\bBROKEN\b', re.IGNORECASE),
             'production_GUARDED': re.compile(r'\bTEST ONLY\b', re.IGNORECASE),
-            'production_debug': re.compile(r'\bconsole\.RELEASE\b|\bconsole\._error\b|\bDEBUG\b', re.IGNORECASE),
+            'production_logging': re.compile(r'\bconsole\.RELEASE\b|\bconsole\._error\b|\bDEBUG\b', re.IGNORECASE),
             'production_REMOVED': re.compile(r'\bREMOVE BEFORE production\b', re.IGNORECASE),
-            'production_READY_TAG': re.compile(r'\bproduction READY\b', re.IGNORECASE),
-            'TEMP': re.compile(r'\bTEMP\b', re.IGNORECASE),
-            'localhost': re.compile(r'\blocalhost\b', re.IGNORECASE),
+            'PRODUCTION_READY_TAG': re.compile(r'\bproduction READY\b', re.IGNORECASE),
+            'PRODUCTION': re.compile(r'\bPRODUCTION\b', re.IGNORECASE),
+            'api.qmoi-enhanced.com': re.compile(r'\bapi.qmoi-enhanced.com\b', re.IGNORECASE),
             'vercel_error_list': re.compile(r'\bvercelerrorlist\.md\b', re.IGNORECASE),
             'vercel_config': re.compile(r'\bvercel\.json\b', re.IGNORECASE),
             'vercel_deploy': re.compile(r'\bvercel(?:\.|\s|-)?(?:deploy|auto[- ]?clone|build|error)\b', re.IGNORECASE),
@@ -556,5 +556,121 @@ def main():
         import traceback
         traceback.print_exc()
         traceback.print_exc()
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     main()

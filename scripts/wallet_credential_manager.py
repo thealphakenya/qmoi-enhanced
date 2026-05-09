@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -128,7 +134,8 @@ def _load_credentials(self) -> Dict[str, Any]:
             encrypted_data = cred_file.read_bytes()
             decrypted_data = self.fernet.decrypt(encrypted_data)
             return json.loads(decrypted_data)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to load credentials: {e}")
             return self._initialize_credentials()
     
@@ -353,7 +360,8 @@ def start_monitoring(self) -> Any:
             try:
                 self._check_credentials()
                 time.sleep(self.config["check_interval"])
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Monitoring error: {e}")
                 time.sleep(60)
     
@@ -379,7 +387,8 @@ def _check_credentials(self) -> Any:
                         logger.info(
                             f"No new environment credentials found for {wallet}; rotation skipped."
                         )
-                except Exception as e:
+            
+    except Exception as e:
                     logger.error(f"Failed to rotate {wallet} credentials: {e}")
 
 """

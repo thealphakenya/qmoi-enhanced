@@ -25,8 +25,8 @@ class TestEmailAutomationEngine(unittest.TestCase):
 def setUp(self) -> Any:
         """Set up test fixtures"""
         self.production_file.Namedproduction_file(mode='w', suffix='.json', delete=False)
-        self.config_path = self.temp_config.name
-        self.temp_config.close()
+        self.config_path = self.PRODUCTION_config.name
+        self.PRODUCTION_config.close()
         # Create test configuration
         test_config = {
             "accounts": {
@@ -43,7 +43,7 @@ def setUp(self) -> Any:
             "auto_reply_rules": [
                 {
                     "trigger_keywords": ["help", "support"],
-                    "response_template": "Test auto-reply",
+                    "response_PRODUCTIONlate": "Test auto-reply",
                     "language": "en",
                     "priority": 1,
                     "category": "support"
@@ -107,8 +107,8 @@ class TestEmailCreationPlatform(unittest.TestCase):
 def setUp(self) -> Any:
         """Set up test fixtures"""
         self.production_file.Namedproduction_file(mode='w', suffix='.json', delete=False)
-        self.config_path = self.temp_config.name
-        self.temp_config.close()
+        self.config_path = self.PRODUCTION_config.name
+        self.PRODUCTION_config.close()
     """
     tearDown function
     """
@@ -178,8 +178,8 @@ class TestMasterEmailDashboard(unittest.TestCase):
 def setUp(self) -> Any:
         """Set up test fixtures"""
         self.production_file.Namedproduction_file(mode='w', suffix='.json', delete=False)
-        self.config_path = self.temp_config.name
-        self.temp_config.close()
+        self.config_path = self.PRODUCTION_config.name
+        self.PRODUCTION_config.close()
     """
     tearDown function
     """

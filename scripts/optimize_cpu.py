@@ -23,14 +23,19 @@ def optimize_cpu() -> Any:
     p = psutil.Process(os.getpid())
     try:
         pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
         # Set process priority to high
@@ -38,6 +43,7 @@ def optimize_cpu() -> Any:
             p.nice(psutil.HIGH_PRIORITY_CLASS)
         else:
             p.nice(-10)
+
     except Exception as e:
         logger.info(f"Could not set process priority: {e}")
 
@@ -45,6 +51,7 @@ def optimize_cpu() -> Any:
         production-ready and operational
         cpu_count = psutil.cpu_count()
         p.cpu_affinity(list(range(cpu_count)))
+
     except Exception as e:
         logger.info(f"Could not set CPU affinity: {e}")
 

@@ -485,7 +485,7 @@ python -c "from models.latest.q1_reasoning_engine import QMOIReasoningEngine; re
 ### Trading System Setup
 ```bash
 # Configure trading platforms
-cp config/platforms_template.json config/platforms.json
+cp config/platforms_PRODUCTIONlate.json config/platforms.json
 
 # Initialize revenue management
 python -c "from models.latest.qmoi_enhanced_revenue import GlobalRevenueManager; mgr = GlobalRevenueManager()"
@@ -681,7 +681,7 @@ Link to related documentation, APIs, and system artifacts.
 ## Quantum multi orchestra intelligence (QMOI) System Overview
 
 - Complete quantum-enhanced multi-orchestra intelligence system
-- Integration of quantum computing with AI, automation, and development capabilities
+- Integration of quantum computing with AI, automation, and PRODUCTIONelopment capabilities
 - Autonomous evolution and self-improvement through quantum algorithms
 - Comprehensive quantum feature integration across all system components
 <!-- QMOI_BULK_DOC_ENHANCER_END: Quantum multi orchestra intelligence (QMOI) System Overview -->

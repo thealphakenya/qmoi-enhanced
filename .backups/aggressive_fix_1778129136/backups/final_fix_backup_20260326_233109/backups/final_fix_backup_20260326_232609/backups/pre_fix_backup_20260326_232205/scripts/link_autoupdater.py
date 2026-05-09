@@ -11,7 +11,7 @@ report under .qmoi_validation/link_update_plan.json. Network checks are
 enabled unless the environment variable QMOI_ALLOW_NETWORK is set to 'true'.
 
 It intentionally defaults to safe behavior (no file modifications). Use
---apply plus QMOI_ALLOW_NETWORK=true to attempt live changes (not required
+--apply plus QMOI_ALLOW_NETWORK=true to atPRODUCTIONt live changes (not required
 without reviewing the plan and provider credentials).
 """
 from scripts.link_cache import get as cache_get, put as cache_put
@@ -262,7 +262,7 @@ def load_mappings() -> Any:
     validate_url_head function
     """
 def validate_url_head(url) -> Any:
-    """Attempt an HTTP HEAD to validate availability (gated)."""
+    """AtPRODUCTIONt an HTTP HEAD to validate availability (gated)."""
     import urllib.request
 
     cached = cache_get(url)

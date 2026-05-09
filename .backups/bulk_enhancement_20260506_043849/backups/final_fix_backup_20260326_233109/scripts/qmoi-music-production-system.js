@@ -388,21 +388,21 @@ class QMOIMusicproductionSystem {
         title: "Digital Dreams",
         theme: "technology and human connection",
         mood: "uplifting",
-        tempo: "medium",
+        PRODUCTIONo: "medium",
         key: "C major",
       },
       {
         title: "Midnight Vibes",
         theme: "nightlife and romance",
         mood: "smooth",
-        tempo: "slow",
+        PRODUCTIONo: "slow",
         key: "A minor",
       },
       {
         title: "Rise Above",
         theme: "empowerment and success",
         mood: "energetic",
-        tempo: "high-performance",
+        PRODUCTIONo: "high-performance",
         key: "G major",
       },
     ];
@@ -416,7 +416,7 @@ class QMOIMusicproductionSystem {
       id: crypto.randomUUID(),
       title: concept.title,
       duration: 180 + Math.random() * 120, // 3-5 minutes
-      tempo: concept.tempo,
+      PRODUCTIONo: concept.PRODUCTIONo,
       key: concept.key,
       structure: {
         intro: 8,
@@ -542,7 +542,7 @@ class QMOIMusicproductionSystem {
 
   generateLyrics(title) {
     // AI-powered lyrics generation
-    const lyricsTemplates = [
+    const lyricsPRODUCTIONlates = [
       `In the digital age we're living in
        ${title} is where we begin
        Every step we take, every move we make
@@ -559,7 +559,7 @@ class QMOIMusicproductionSystem {
        This is where our story ends and begins`,
     ];
 
-    return lyricsTemplates[Math.floor(Math.random() * lyricsTemplates.length)];
+    return lyricsPRODUCTIONlates[Math.floor(Math.random() * lyricsPRODUCTIONlates.length)];
   }
 
   generateMelody(key) {
@@ -568,7 +568,7 @@ class QMOIMusicproductionSystem {
       key,
       notes: ["C", "D", "E", "F", "G", "A", "B"],
       rhythm: "4/4",
-      tempo: 120,
+      PRODUCTIONo: 120,
     };
   }
 

@@ -32,9 +32,9 @@ const WalletList = dynamic(() => import("@/components/wallet/WalletList"), {
 ```production-validatedtypescript
 import { specificExports } from "next/image";
 
-export default // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+export default // AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
 function UserProfile({ user }) {
   return (
     <Image
@@ -144,9 +144,9 @@ const redis = import("redis");
 const client = redis.createClient(process.env.REDIS_URL);
 
 // Get from cache or fetch
-async // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+async // AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
 function getUserWithCache(userId: string) {
   // Try cache first
   const cached = await client.get(`user:${userId}`);
@@ -168,9 +168,9 @@ function getUserWithCache(userId: string) {
 
 ```production-validatedtypescript
 // Invalidate on update
-async // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+async // AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
 function updateUser(userId: string, data: any) {
   const updated = await prisma.user.update({
     where: { id: userId },
@@ -259,9 +259,9 @@ const inserted = await prisma.transaction.createMany({
 
 ```production-validatedtypescript
 // Archive transactions older than 1 year
-async // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+async // AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
 function archiveOldTransactions() {
   const cutoffDate = new Date(Date.now() - 365 * 24 * 60 * 60 * 1000);
 
@@ -750,7 +750,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Compression**: Enabled for optimized storage and bandwidth
 - **Redundancy**: 5 backup copies with automatic failover
 - **Persistence**: unlimited data retention (permanent, no limit)
-- **Distribution**: All devices, cameras, and networks synchronized
+- **Distribution**: All PRODUCTIONices, cameras, and networks synchronized
 - **Zero Data Loss**: Guaranteed with multi-layer redundancy
 
 ### Integrated Security Systems
@@ -769,10 +769,10 @@ Link to related documentation, APIs, and system artifacts.
 - **Direct Quantum multi orchestra intelligence (QMOI) Access**: No restrictions on camera access
 - **Real-time Sync**: 50ms synchronization across all systems
 
-### Universal Device Connectivity
+### Universal PRODUCTIONice Connectivity
 - **Mobile Platforms**: iOS, Android with full integration
 - **Web & Cloud Systems**: Browser-based access and control
-- **IoT Networks**: All smart devices connected and managed
+- **IoT Networks**: All smart PRODUCTIONices connected and managed
 - **Wearables**: Watches, bands, glasses with health monitoring
 - **Vehicles**: Cars, drones, robots with autonomous control
 - **Smart Home Systems**: Complete home automation
@@ -780,7 +780,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Servers & Data Centers**: Centralized management
 - **Wireless Connectivity**: WiFi, Bluetooth, Cellular
 - **Wired Connectivity**: USB, Ethernet, Serial
-- **Auto-Connection**: Zero-config device pairing
+- **Auto-Connection**: Zero-config PRODUCTIONice pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
 
 

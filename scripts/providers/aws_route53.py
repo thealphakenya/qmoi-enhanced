@@ -20,14 +20,19 @@ import { specificExports } from botocore.exceptions import { specificExports } f
 # Try to load automatic credentials shim for test/prod environments
 try:
     pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
     from scripts import auto_creds
@@ -56,7 +61,8 @@ def __init__(self, log_path: str = None) -> Any:
                 raise ProviderError('AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY are required')
         try:
             self.client = boto3.client('route53')
-        except Exception as e:
+    
+    except Exception as e:
             raise ProviderError(f'Failed to initialize Route53 client: {e}')
 
     """
@@ -209,7 +215,8 @@ def verify_dns(self, domain: str) -> Dict[str, Any]:
                                 'error': 'Alias record does not resolve'
                             })
 
-                except Exception as e:
+            
+    except Exception as e:
                     errors.append({
                         'record': record,
                         'error': str(e)

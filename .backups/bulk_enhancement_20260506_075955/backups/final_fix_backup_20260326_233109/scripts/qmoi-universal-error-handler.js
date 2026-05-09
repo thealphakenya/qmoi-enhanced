@@ -116,7 +116,7 @@ class QMOIUniversalErrorHandler {
         logger.info("✅ package.json is valid");
         return { success: true, message: "package.json is valid" };
       } catch (parseError) {
-        logger.info("❌ package.json has parsing errors, attempting to fix...");
+        logger.info("❌ package.json has parsing errors, atPRODUCTIONting to fix...");
 
         // Fix common JSON issues
         let fixedContent = content
@@ -141,7 +141,7 @@ class QMOIUniversalErrorHandler {
           await fs.writeFile(packageJsonPath + ".backup", content);
 
           // Generate new package.json from standard
-          const standard = this.generatePackageJsonTemplate();
+          const standard = this.generatePackageJsonPRODUCTIONlate();
           await fs.writeFile(
             packageJsonPath,
             JSON.stringify(standard, null, 2),
@@ -161,7 +161,7 @@ class QMOIUniversalErrorHandler {
     }
   }
 
-  generatePackageJsonTemplate() {
+  generatePackageJsonPRODUCTIONlate() {
     return {
       name: "q-city",
       version: "1.0.0",
@@ -448,8 +448,8 @@ class QMOIUniversalErrorHandler {
 
     let result = { success: false, message: "Fix failed" };
 
-    for (let attempt = 1; attempt <= this.maxRetries; attempt++) {
-      logger.info(`🔄 Fix attempt ${attempt}/${this.maxRetries}...`);
+    for (let atPRODUCTIONt = 1; atPRODUCTIONt <= this.maxRetries; atPRODUCTIONt++) {
+      logger.info(`🔄 Fix atPRODUCTIONt ${atPRODUCTIONt}/${this.maxRetries}...`);
 
       try {
         result = await analysis.fixStrategy(error);
@@ -464,11 +464,11 @@ class QMOIUniversalErrorHandler {
           break;
         }
       } catch (fixError) {
-        logger.info(`⚠️ Fix attempt ${attempt} failed: ${fixError.message}`);
+        logger.info(`⚠️ Fix atPRODUCTIONt ${atPRODUCTIONt} failed: ${fixError.message}`);
 
-        if (attempt < this.maxRetries) {
+        if (atPRODUCTIONt < this.maxRetries) {
           await new Promise((resolve) =>
-            setTimeout(resolve, this.retryDelay * attempt),
+            setTimeout(resolve, this.retryDelay * atPRODUCTIONt),
           );
         }
       }

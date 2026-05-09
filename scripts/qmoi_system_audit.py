@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -72,6 +78,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -161,6 +168,7 @@ def hash_file(path: Path) -> str:
                 if not chunk:
                     break
                 h.update(chunk)
+
     except Exception as e:
         logger.warning(f'Unable to hash file {path}: {e}')
         return ''
@@ -360,7 +368,8 @@ def delete_backup_duplicates(duplicates: Dict[str, List[Path]]) -> int:
                 path.unlink()
                 deleted += 1
                 logger.info(f'Removed backup duplicate: {path}')
-            except Exception as e:
+        
+    except Exception as e:
                 logger.warning(f'Unable to remove duplicate backup file {path}: {e}')
     return deleted
 

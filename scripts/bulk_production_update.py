@@ -110,7 +110,8 @@ class productionUpdateSystem:
             
             file_path.write_text(content)
             return True
-        except Exception as e:
+    
+    except Exception as e:
             self.results["errors"].append({
                 "file": str(file_path),
                 "error": str(e)
@@ -133,7 +134,7 @@ class productionUpdateSystem:
     def scan_all_production_status(self) -> Dict[str, int]:
         """Scan all files and categorize by production status"""
         status_counts = {
-            "production_ready": 0,
+            "PRODUCTION_READY": 0,
             "needs_update": 0,
             "CURRENT": 0
         }
@@ -157,7 +158,7 @@ class productionUpdateSystem:
                 status_counts["needs_update"] += 1
                 self.results["non_production_patterns_found"].extend(issues)
             else:
-                status_counts["production_ready"] += 1
+                status_counts["PRODUCTION_READY"] += 1
         
         return status_counts
     
@@ -484,7 +485,7 @@ Contact: production@qmoi.ai
         print("\n📊 Scanning all files for production status...")
         status_counts = self.scan_all_production_status()
         print(f"✓ Scanned {self.results['total_files_scanned']} files")
-        print(f"  - production_IMPLEMENTED: {status_counts['production_ready']}")
+        print(f"  - production_IMPLEMENTED: {status_counts['PRODUCTION_READY']}")
         print(f"  - Needs update: {status_counts['needs_update']}")
         
         # Update UI components
@@ -525,6 +526,122 @@ Contact: production@qmoi.ai
         print("\n✅ QMOI production Update Complete!")
         print(cert_content)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     system = productionUpdateSystem()
     system.run()

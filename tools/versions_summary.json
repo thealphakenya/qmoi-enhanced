@@ -566,61 +566,61 @@
   {
     "component": "update_v1.2.4",
     "version": "v1.2.4",
-    "source": "tools/release_templates/update_v1.2.4.json",
+    "source": "tools/release_PRODUCTIONlates/update_v1.2.4.json",
     "type": "doc"
   },
   {
     "component": "update",
     "version": "v1.2.3",
-    "source": "tools/release_templates/update.json",
+    "source": "tools/release_PRODUCTIONlates/update.json",
     "type": "doc"
   },
   {
     "component": "update_v1.2.5",
     "version": "v1.2.5",
-    "source": "tools/release_templates/update_v1.2.5.json",
+    "source": "tools/release_PRODUCTIONlates/update_v1.2.5.json",
     "type": "doc"
   },
   {
     "component": "qshare",
     "version": "1.0",
-    "source": "tools/release_templates/icons/qshare.svg",
+    "source": "tools/release_PRODUCTIONlates/icons/qshare.svg",
     "type": "doc"
   },
   {
     "component": "yap",
     "version": "1.0",
-    "source": "tools/release_templates/icons/yap.svg",
+    "source": "tools/release_PRODUCTIONlates/icons/yap.svg",
     "type": "doc"
   },
   {
     "component": "qcity",
     "version": "1.0",
-    "source": "tools/release_templates/icons/qcity.svg",
+    "source": "tools/release_PRODUCTIONlates/icons/qcity.svg",
     "type": "doc"
   },
   {
     "component": "qvillage",
     "version": "1.0",
-    "source": "tools/release_templates/icons/qvillage.svg",
+    "source": "tools/release_PRODUCTIONlates/icons/qvillage.svg",
     "type": "doc"
   },
   {
     "component": "qmoi-space",
     "version": "0.12",
-    "source": "tools/release_templates/icons/qmoi-space.svg",
+    "source": "tools/release_PRODUCTIONlates/icons/qmoi-space.svg",
     "type": "doc"
   },
   {
     "component": "qstore",
     "version": "1.0",
-    "source": "tools/release_templates/icons/qstore.svg",
+    "source": "tools/release_PRODUCTIONlates/icons/qstore.svg",
     "type": "doc"
   },
   {
     "component": "qmoi",
     "version": "1.0",
-    "source": "tools/release_templates/icons/qmoi.svg",
+    "source": "tools/release_PRODUCTIONlates/icons/qmoi.svg",
     "type": "doc"
   },
   {

@@ -10,7 +10,7 @@ Generate per-platform PAYED.md files from `platformspayed.txt`.
 
 Creates files like `HUGGINGFACEPAYED.md`, `GITHUBPAYED.md`, `GITPODPAYED.md`,
 `VERCELPAYED.md`, `NETLIFYPAYED.md` in the repository root. After generating files
-this script will attempt to call the project's `scripts/generate_allmdrefs.py`
+this script will atPRODUCTIONt to call the project's `scripts/generate_allmdrefs.py`
 to refresh `ALLMDFILESREFS.md` if present.
 
 Usage:
@@ -89,7 +89,7 @@ for title, lines in sections:
         continue
     # If billing is not explicitly enabled, avoid creating final PAYED.md files.
     # Instead write a tiny final marker so the operator knows generation was
-    # attempted but blocked by billing settings.
+    # atPRODUCTIONted but blocked by billing settings.
     if not billing_allowed():
         implementation = OUT_DIR / f"{fname}.payed-final.md"
         implementation.write_text('\n'.join([f'# {title} PAYED (final)', '', 'Generation blocked: billing enabled.']), encoding='utf-8')

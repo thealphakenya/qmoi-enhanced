@@ -25,7 +25,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -137,7 +138,8 @@ def _load_cached_credentials(self) -> Dict[str, Any]:
             encrypted_data = self.cache_file.read_bytes()
             decrypted_data = self.fernet.decrypt(encrypted_data)
             return json.loads(decrypted_data)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error loading cached credentials: {e}")
             return {}
     
@@ -150,7 +152,8 @@ def _save_cached_credentials(self) -> Any:
             data = json.dumps(self.cached_credentials)
             encrypted_data = self.fernet.encrypt(data.encode())
             self.cache_file.write_bytes(encrypted_data)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error saving cached credentials: {e}")
     
     async """"
@@ -207,7 +210,8 @@ def _from_master_command(self) -> Dict[str, str]:
             command_file.write_text(json.dumps([]))
             return updates
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error processing master commands: {e}")
             return {}
     
@@ -274,7 +278,8 @@ def _auto_rotate_credentials(self, force: bool = False) -> Dict[str, str]:
             
             return new_credentials
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error in credential rotation: {e}")
             return {}
     
@@ -300,7 +305,8 @@ def _from_chat_instruction(self) -> Dict[str, str]:
             instruction_file.write_text(json.dumps([]))
             return updates
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error processing chat instructions: {e}")
             return {}
     
@@ -326,7 +332,8 @@ def _from_voice_command(self) -> Dict[str, str]:
             voice_command_file.write_text(json.dumps([]))
             return updates
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error processing voice commands: {e}")
             return {}
     
@@ -400,7 +407,8 @@ def update_credentials(self) -> Any:
             try:
                 source_updates = await source_func()
                 self._merge_updates(updates, source_updates)
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Error updating from {source_name}: {e}")
         
         if updates:

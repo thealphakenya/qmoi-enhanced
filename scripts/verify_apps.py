@@ -80,7 +80,8 @@ def check_zip_valid(self, filepath) -> Any:
                 return True, f"Valid ZIP with {len(zf.namelist())} files"
         except zipfile.BadZipFile:
             return False, "Invalid ZIP format"
-        except Exception as e:
+    
+    except Exception as e:
             return False, f"ZIP error: {str(e)}"
 
     """
@@ -114,7 +115,8 @@ def check_apk(self, filepath) -> Any:
                 
                 self.log(f"  ✓ Valid APK structure with {len(files)} files", "INFO")
                 return True
-        except Exception as e:
+    
+    except Exception as e:
             self.log(f"  ✗ Error reading APK: {e}", "ERROR")
             return False
 
@@ -147,7 +149,8 @@ def check_ipa(self, filepath) -> Any:
                 
                 self.log(f"  ✓ Valid IPA structure", "INFO")
                 return True
-        except Exception as e:
+    
+    except Exception as e:
             self.log(f"  ✗ Error reading IPA: {e}", "ERROR")
             return False
 
@@ -166,7 +169,8 @@ def check_deb(self, filepath) -> Any:
                 if not header.startswith(b'!<arch>'):
                     self.log(f"  ✗ Invalid deb header: {header[:8]}", "ERROR")
                     return False
-        except Exception as e:
+    
+    except Exception as e:
             self.log(f"  ✗ Cannot read file: {e}", "ERROR")
             return False
         
@@ -205,7 +209,8 @@ def check_appimage(self, filepath) -> Any:
                 if not header.startswith(b'AI'):
                     self.log(f"  ✗ Invalid AppImage header: {header[:4]}", "ERROR")
                     return False
-        except Exception as e:
+    
+    except Exception as e:
             self.log(f"  ✗ Cannot read file: {e}", "ERROR")
             return False
         
@@ -223,7 +228,8 @@ def check_appimage(self, filepath) -> Any:
         except subprocess.TimeoutExpired:
             self.log(f"  ⚠ AppImage timeout - might be valid", "WARN")
             return True
-        except Exception as e:
+    
+    except Exception as e:
             self.log(f"  ⚠ Cannot execute AppImage: {e}", "WARN")
             return True  # Assume OK if we can't test execution
 
@@ -241,7 +247,8 @@ def check_dmg(self, filepath) -> Any:
                 if header != b'\x00\xad\x0b\xad':
                     self.log(f"  ⚠ Unexpected DMG header (might still be valid): {header.hex()}", "WARN")
                     # Don't fail just on header check
-        except Exception as e:
+    
+    except Exception as e:
             self.log(f"  ✗ Cannot read file: {e}", "ERROR")
             return False
         
@@ -284,7 +291,8 @@ def check_exe(self, filepath) -> Any:
                 
                 self.log(f"  ✓ Valid EXE header", "INFO")
                 return True
-        except Exception as e:
+    
+    except Exception as e:
             self.log(f"  ✗ Cannot read file: {e}", "ERROR")
             return False
 
@@ -317,7 +325,8 @@ def check_web_app(self, filepath) -> Any:
                 
                 self.log(f"  ✓ Valid web app with {len(files)} files", "INFO")
                 return True
-        except Exception as e:
+    
+    except Exception as e:
             self.log(f"  ✗ Error: {e}", "ERROR")
             return False
 
@@ -446,6 +455,7 @@ def run_all_checks(self) -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

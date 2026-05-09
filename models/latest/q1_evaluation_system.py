@@ -177,9 +177,9 @@ class CodingTestSuite:
         return [
             {
                 "test_id": "code_001",
-                "problem": "Write a // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+                "problem": "Write a // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function that reverses a string",
                 "expected_output": "dlrow olleh",
                 "test_input": "hello world",
@@ -187,9 +187,9 @@ function that reverses a string",
             },
             {
                 "test_id": "code_002",
-                "problem": "Write a // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+                "problem": "Write a // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function that checks if a number is prime",
                 "expected_output": "True",
                 "test_input": "7",
@@ -197,9 +197,9 @@ function that checks if a number is prime",
             },
             {
                 "test_id": "code_003",
-                "problem": "Write a // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+                "problem": "Write a // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function that finds the maximum in a list",
                 "expected_output": "10",
                 "test_input": "[1, 5, 10, 3, 8]",
@@ -207,9 +207,9 @@ function that finds the maximum in a list",
             },
             {
                 "test_id": "code_004",
-                "problem": "Write a // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+                "problem": "Write a // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function that sorts a list using bubble sort",
                 "expected_output": "[1, 2, 3, 4, 5]",
                 "test_input": "[3, 1, 4, 2, 5]",
@@ -217,9 +217,9 @@ function that sorts a list using bubble sort",
             },
             {
                 "test_id": "code_005",
-                "problem": "Write a // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+                "problem": "Write a // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function that calculates fibonacci numbers recursively",
                 "expected_output": "8",
                 "test_input": "6",

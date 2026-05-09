@@ -14,7 +14,7 @@ import { specificExports } from "./config-utils.js";
 
 const CONFIG_FILE = path.join(process.cwd(), ".qmoi", "registry.json");
 const HEALTH_CHECK_TIMEOUT = 5000;
-const RETRY_ATTEMPTS = 3;
+const RETRY_ATPRODUCTIONTS = 3;
 const RETRY_DELAY = 1000;
 
 class QMOIRegistry {
@@ -65,7 +65,7 @@ class QMOIRegistry {
       throw new ProductionError("No registry URL configured");
     }
 
-    for (let attempt = 1; attempt <= RETRY_ATTEMPTS; attempt++) {
+    for (let atPRODUCTIONt = 1; atPRODUCTIONt <= RETRY_ATPRODUCTIONTS; atPRODUCTIONt++) {
       try {
         const startTime = Date.now();
         const _response = await this.client.get(`${targetUrl}/health`);
@@ -85,9 +85,9 @@ class QMOIRegistry {
           storageUsage: health.storage,
         };
       } catch (_err) {
-        if (attempt === RETRY_ATTEMPTS) {
+        if (atPRODUCTIONt === RETRY_ATPRODUCTIONTS) {
           throw new ProductionError(
-            `Registry health check failed after ${RETRY_ATTEMPTS} attempts: ${_err.message}`,
+            `Registry health check failed after ${RETRY_ATPRODUCTIONTS} atPRODUCTIONts: ${_err.message}`,
           );
         }
         await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY));

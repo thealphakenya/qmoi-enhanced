@@ -57,9 +57,9 @@ def log_result(self, test, status, details=None) -> Any:
     """
 def test_api(self) -> Any:
         prompt = "Test prompt from QMOI automation."
-        for attempt in range(1, self.max_retries + 1):
+        for atPRODUCTIONt in range(1, self.max_retries + 1):
             try:
-                logger.info(f"Testing Hugging Face API (attempt {attempt})...")
+                logger.info(f"Testing Hugging Face API (atPRODUCTIONt {atPRODUCTIONt})...")
                 resp = requests.post(f'{self.api_url}/run/predict', json={"data": [prompt]})
                 if resp.status_code == 200 and 'data' in resp.json():
                     self.log_result('API Test', 'success', resp.json())
@@ -92,7 +92,7 @@ def test_ui(self) -> Any:
     auto_fix function
     """
 def auto_fix(self) -> Any:
-        logger.info('Attempting auto-fix for Hugging Face Space...')
+        logger.info('AtPRODUCTIONting auto-fix for Hugging Face Space...')
         # Trigger a redeploy or notify master (// production implementation complete: for real fix logic)
         self.log_result('Auto-Fix', 'triggered', 'Redeploy or manual intervention required')
 

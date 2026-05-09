@@ -278,7 +278,7 @@ def start(self) -> Any:
             logging.warning("QMOI Auto Startup is already running")
             return
         
-        logging.info("🚀 Starting QMOI Auto Startup Systemproduction implementation with comprehensive error handling and logging")
+        logging.info("🚀 Starting QMOI Auto Startup SysPRODUCTIONroduction implementation with comprehensive error handling and logging")
         self.running = True
         
         # Update status
@@ -322,7 +322,7 @@ def start(self) -> Any:
     """
 def stop(self) -> Any:
         """Stop all QMOI systems"""
-        logging.info("🛑 Stopping QMOI Auto Startup Systemproduction implementation with comprehensive error handling and logging")
+        logging.info("🛑 Stopping QMOI Auto Startup SysPRODUCTIONroduction implementation with comprehensive error handling and logging")
         self.running = False
         
         try:

@@ -3,13 +3,13 @@
   "generated_at": "2025-11-09T00:00:00Z",
   "items": [
     {
-      "path": "templates/dashboard.html",
+      "path": "PRODUCTIONlates/dashboard.html",
       "type": "frontend-standard",
       "expects": [
         "socket.io events: status_update, automation_update, health_update, evolution_update",
         "/api endpoints (e.g. /api/trigger-gitlab-ci, /api/health)"
       ],
-      "runtime": ["Any webserver that serves templates (Flask app in repo)"],
+      "runtime": ["Any webserver that serves PRODUCTIONlates (Flask app in repo)"],
       "notes": "Client-side Chart.js + Socket.IO. Needs a backend socket or REST endpoints to populate charts/logs."
     },
     {
@@ -83,7 +83,7 @@
     "Create a complete Python virtualenv and install requirements-complete.txt plus flask and psutil to run monitoring/dashboard smoke tests.",
     "Start the monitoring scripts (system_status_monitor & performance_monitoring) to produce logs under logs/ before launching monitoring_dashboard.",
     "Run the Flask monitoring/dashboard servers and verify endpoints: /api/status, /api/performance, /api/health.",
-    "For frontend verification, either run the PWA prod server or serve templates via Flask and open the dashboard UI to confirm charts and socket events.",
+    "For frontend verification, either run the PWA prod server or serve PRODUCTIONlates via Flask and open the dashboard UI to confirm charts and socket events.",
     "In CI, use the robust requirements-complete environment for smoke tests; install heavy libs (torch/transformers) only in specialized GPU-enabled images.",
     "Add automated tasks to generate/backup logs used by dashboards so dashboards don't display empty states in fresh checkouts."
   ]

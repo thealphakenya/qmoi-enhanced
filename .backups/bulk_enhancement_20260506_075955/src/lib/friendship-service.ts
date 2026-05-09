@@ -296,9 +296,9 @@ export class QMOIFriendshipService {
       ],
       programming: [
         "Why do programmers prefer dark mode? Because light attracts bugs! 🐛",
-        "Why did the developer go broke? Because he used up all his cache! 💰",
+        "Why did the PRODUCTIONeloper go broke? Because he used up all his cache! 💰",
         "What's a programmer's favorite type of music? Algo-rhythms! 🎼",
-        "Why did the JavaScript developer wear glasses? Because he couldn't C#! 👓",
+        "Why did the JavaScript PRODUCTIONeloper wear glasses? Because he couldn't C#! 👓",
       ],
       ai: [
         "Why did the AI break up with its calculator? It needed more space! 🔢",

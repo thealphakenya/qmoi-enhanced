@@ -160,7 +160,7 @@ def periodic_tasks(manifest: dict, interval_sec=3600, dry_run=False) -> Any:
 def ensure_manifest_written(runner_id: str = None) -> dict:
     """Try to run the repository manifest generator to create/write .qmoi/runner_manifest.json.
     This calls deploy/qcity/generate_runner_manifest.py --apply --runner-id <id>.
-    Returns the loaded manifest after attempting generation (may be empty if generation failed).
+    Returns the loaded manifest after atPRODUCTIONting generation (may be empty if generation failed).
     """
     gen = Path('deploy/qcity/generate_runner_manifest.py')
     if not gen.exists():
@@ -169,7 +169,7 @@ def ensure_manifest_written(runner_id: str = None) -> dict:
     cmd = f'python {str(gen)} --apply'
     if runner_id:
         cmd += f' --runner-id {runner_id}'
-    logger.info('Attempting to generate runner manifest via: %s', cmd)
+    logger.info('AtPRODUCTIONting to generate runner manifest via: %s', cmd)
     try:
         subprocess.check_call(cmd, shell=True)
     except Exception:
@@ -183,7 +183,7 @@ def main() -> Any:
     p.add_argument('--dry-run', action='store_true', help='Run in dry-run mode')
     p.add_argument('--apply', action='store_true', help='Run actions (shorthand; same as --no-dry)')
     p.add_argument('--interval', type=int, default=3600, help='Periodic tasks interval in seconds')
-    p.add_argument('--manifest-write', action='store_true', help='If manifest required, attempt to generate and write it')
+    p.add_argument('--manifest-write', action='store_true', help='If manifest required, atPRODUCTIONt to generate and write it')
     p.add_argument('--runner-id', type=str, default=None, help='Runner id to pass to manifest generator when writing')
     args = p.parse_args()
     dry = args.dry_run and not args.apply
@@ -192,7 +192,7 @@ def main() -> Any:
     logger.info('Starting QMOI Orchestrator (dry=%s)', dry)
     manifest = load_runner_manifest()
     if not manifest and args.manifest_write:
-        logger.info('No manifest present; attempting to write one')
+        logger.info('No manifest present; atPRODUCTIONting to write one')
         manifest = ensure_manifest_written(runner_id=args.runner_id)
     # Start supervised services conditionally
     supervise_startup(manifest, dry_run=dry)

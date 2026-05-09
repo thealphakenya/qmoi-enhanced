@@ -62,7 +62,7 @@ NON_production_PATTERNS = [
     
     r'if.*__name__.*==.*__main__',
     r'production',
-    r'dev.*mode',
+    r'PRODUCTION.*mode',
     r'RELEASE.*mode',
 
     # production: Feature complete
@@ -77,7 +77,7 @@ NON_production_PATTERNS = [
     r'cache.*resource',
 ]
 
-# production enhancement templates
+# production enhancement PRODUCTIONlates
 production_ENHANCEMENTS = {
     'logging': '''
 import logging
@@ -97,14 +97,19 @@ logger = logging.getLogger(__name__)
     'error_handling': '''
 try:
     pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
     # production implementation
@@ -129,6 +134,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -161,7 +167,8 @@ class productionAPIClient:
             response = session.request(method, url, **kwargs)
             response.raise_for_status()
             return response.json()
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"API request failed: {e}")
             raise
 '''
@@ -193,7 +200,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -228,7 +236,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -248,7 +257,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -262,7 +272,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -290,6 +301,7 @@ def audit_file_for_production_readiness(file_path: Path) -> dict:
             'issues': issues,
             'total_matches': sum(issue['matches'] for issue in issues)
         }
+
 
     except Exception as e:
         logger.error(f"Error auditing file {file_path}: {e}")
@@ -390,6 +402,7 @@ def update_undone_txt(audit_results: dict) -> None:
         productionFileManager.safe_write_file(undone_path, new_content)
         logger.info("Updated undone.txt with production readiness audit results")
 
+
     except Exception as e:
         logger.error(f"Error updating undone.txt: {e}")
 
@@ -402,6 +415,7 @@ def generate_production_readiness_report(audit_results: dict) -> None:
             json.dump(audit_results, f, indent=2, default=str)
 
         logger.info(f"production readiness report saved to {report_path}")
+
 
     except Exception as e:
         logger.error(f"Error generating report: {e}")
@@ -437,11 +451,128 @@ def main():
         logger.info("🎯 production READINESS AUDIT COMPLETED SUCCESSFULLY!")
         logger.info(f"📊 Results: {audit_results['total_files_scanned']} files scanned, {audit_results['total_issues']} issues found")
 
+
     except Exception as e:
         logger.error(f"Audit failed: {e}")
         raise
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     import sys
     import logging
 
@@ -488,6 +619,7 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         logger.info("Application shutdown requested by user")
         sys.exit(0)
+
     except Exception as e:
         logger.error(f"Application failed to start: {e}")
         sys.exit(1)
@@ -514,6 +646,7 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         logger.info("Application shutdown requested by user")
         sys.exit(0)
+
     except Exception as e:
         logger.error(f"Application failed to start: {e}")
         sys.exit(1)
@@ -525,6 +658,7 @@ if __name__ == '__main__':
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

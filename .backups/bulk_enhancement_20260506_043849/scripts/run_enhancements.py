@@ -278,9 +278,9 @@ def _run_preview_enhancements(self) -> Dict[str, Any]:
     main function
     """
 def main() -> Any:
-    """Main // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Main // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function to run enhancements"""
     runner = EnhancementRunner()
     results = runner.run_all_enhancements()

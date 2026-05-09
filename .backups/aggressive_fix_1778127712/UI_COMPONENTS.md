@@ -98,7 +98,7 @@ This document captures the current `components/ui/` directory inventory, usage r
 - `recharts-shim.tsx`
 - `progress.tsx`
 
-### Accessibility & Device Helpers
+### Accessibility & PRODUCTIONice Helpers
 - `AccessibilitySettingsPanel.tsx`
 - `use-mobile.tsx`
 - `skeleton.tsx`

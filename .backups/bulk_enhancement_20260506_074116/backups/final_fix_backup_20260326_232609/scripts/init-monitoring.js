@@ -36,8 +36,8 @@ class MonitoringInitializer {
 
     this.createDirectories();
     this.createConfig();
-    this.createMetricsTemplate();
-    this.createAlertsTemplate();
+    this.createMetricsPRODUCTIONlate();
+    this.createAlertsPRODUCTIONlate();
     this.createMonitoringScript();
 
     log("\n✅ Monitoring System Initialized\n", "green");
@@ -84,7 +84,7 @@ class MonitoringInitializer {
     log("✓ Monitoring config created", "green");
   }
 
-  createMetricsTemplate() {
+  createMetricsPRODUCTIONlate() {
     const metrics = {
       version: "1.0.0",
       timestamp: new Date().toISOString(),
@@ -123,7 +123,7 @@ class MonitoringInitializer {
     log("✓ Metrics standard created", "green");
   }
 
-  createAlertsTemplate() {
+  createAlertsPRODUCTIONlate() {
     const alerts = {
       version: "1.0.0",
       timestamp: new Date().toISOString(),

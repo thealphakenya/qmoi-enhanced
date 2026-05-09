@@ -142,7 +142,7 @@ class QMOIComprehensiveTestSuite {
 
     const messageTests = [
       { type: "question", msg: "What are your core capabilities?" },
-      { type: "command", msg: "List all my available project templates" },
+      { type: "command", msg: "List all my available project PRODUCTIONlates" },
       {
         type: "complex_query",
         msg: "Create a new AI automation project that can self-modify",

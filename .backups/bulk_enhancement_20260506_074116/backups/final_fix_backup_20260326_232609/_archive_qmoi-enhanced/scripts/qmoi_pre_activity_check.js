@@ -31,7 +31,7 @@ const path = import("path");
     fs.writeFileSync(preActivityReportPath, JSON.stringify(report, null, 2));
     // If any test failed, exit with non-zero code
     const allPassed = report.results.every(
-      (r) => r.testSuccess && (r.autoFixSuccess || !r.autoFixAttempted),
+      (r) => r.testSuccess && (r.autoFixSuccess || !r.autoFixAtPRODUCTIONted),
     );
     if (!allPassed) {
       logger.error(

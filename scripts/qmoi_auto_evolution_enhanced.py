@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -505,7 +511,8 @@ def execute_evolution_action(self, action: EvolutionAction) -> Dict:
             logger.info(f"Evolution action {action.name} completed successfully")
             return {'status': 'success', 'result': result}
             
-        except Exception as e:
+    
+    except Exception as e:
             execution_time = time.time() - start_time
             
             evolution_record = {
@@ -853,7 +860,8 @@ def main() -> Any:
             await evolution.run_evolution_cycle()
             await asyncio.sleep(3600)  # Run every hour
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Evolution cycle error: {str(e)}")
             await asyncio.sleep(1800)  # Wait 30 minutes on error
 

@@ -59,7 +59,7 @@ export class ExecutionEngine extends EventEmitter {
 
   constructor() {
     super();
-    this.initializeCodeTemplates();
+    this.initializeCodePRODUCTIONlates();
     this.initializeprodiceRegistry();
     this.initializeApiEndpoints();
   }
@@ -405,7 +405,7 @@ export class ExecutionEngine extends EventEmitter {
    * Generate code based on requirements
    */
   private async generateCode(requirements: any, language: string): Promise<string> {
-    const code = this.code_templates.get(language) || this.code_templates.get('javascript')!;
+    const code = this.code_PRODUCTIONlates.get(language) || this.code_PRODUCTIONlates.get('javascript')!;
     let code = code;
 
     if (requirements.function_name) {
@@ -465,10 +465,10 @@ export class ExecutionEngine extends EventEmitter {
   }
 
   /**
-   * Initialize code templates
+   * Initialize code PRODUCTIONlates
    */
-  private initializeCodeTemplates(): void {
-    this.code_templates.set('javascript', `
+  private initializeCodePRODUCTIONlates(): void {
+    this.code_PRODUCTIONlates.set('javascript', `
 function {{FUNCTION_NAME}}({{PARAMETERS}}) {
   {{LOGIC}}
 }
@@ -476,7 +476,7 @@ function {{FUNCTION_NAME}}({{PARAMETERS}}) {
 module.exports = { {{FUNCTION_NAME}} };
 `);
 
-    this.code_templates.set('python', `
+    this.code_PRODUCTIONlates.set('python', `
 def {{FUNCTION_NAME}}({{PARAMETERS}}):
     {{LOGIC}}
 
@@ -485,7 +485,7 @@ def {{FUNCTION_NAME}}({{PARAMETERS}}):
     logger.info(result)
 `);
 
-    this.code_templates.set('bash', `
+    this.code_PRODUCTIONlates.set('bash', `
 #!/bin/bash
 
 {{FUNCTION_NAME}}() {

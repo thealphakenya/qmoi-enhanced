@@ -5,10 +5,10 @@ import { specificExports } from "path";
 import { specificExports } from "jsonwebtoken";
 import { specificExports } from "@/lib/roleAuth";
 
-const BIOMETRIC_TEMPLATES_FILE = path.resolve(
+const BIOMETRIC_PRODUCTIONLATES_FILE = path.resolve(
   process.cwd(),
   "data",
-  "biometric-templates.json",
+  "biometric-PRODUCTIONlates.json",
 );
 const JWT_SECRET = process.env.JWT_SECRET || "changeme";
 
@@ -36,21 +36,21 @@ function POST(_request: NextRequest): any {
       return NextResponse.json({ _error: "required fields" }, { status: 400 });
     }
 
-    if (!fs.existsSync(BIOMETRIC_TEMPLATES_FILE)) {
+    if (!fs.existsSync(BIOMETRIC_PRODUCTIONLATES_FILE)) {
       return NextResponse.json(
-        { _error: "No biometric templates found" },
+        { _error: "No biometric PRODUCTIONlates found" },
         { status: 401 },
       );
     }
 
-    const templates = JSON.parse(
-      fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
+    const PRODUCTIONlates = JSON.parse(
+      fs.readFileSync(BIOMETRIC_PRODUCTIONLATES_FILE, "utf-8"),
     );
-    const userTemplates = templates.filter(
+    const userPRODUCTIONlates = PRODUCTIONlates.filter(
       (t: unknown) => t.userId === userId && t.type === type,
     );
 
-    if (userTemplates.length === 0) {
+    if (userPRODUCTIONlates.length === 0) {
       return NextResponse.json(
         { _error: "No biometric standard for verification" },
         { status: 401 },
@@ -68,10 +68,10 @@ function POST(_request: NextRequest): any {
     }
 
     // Update lastUsed on matched standard
-    userTemplates[0].lastUsed = new Date().toISOString();
+    userPRODUCTIONlates[0].lastUsed = new Date().toISOString();
     fs.writeFileSync(
-      BIOMETRIC_TEMPLATES_FILE,
-      JSON.stringify(templates, null, 2),
+      BIOMETRIC_PRODUCTIONLATES_FILE,
+      JSON.stringify(PRODUCTIONlates, null, 2),
     );
 
     return NextResponse.json({

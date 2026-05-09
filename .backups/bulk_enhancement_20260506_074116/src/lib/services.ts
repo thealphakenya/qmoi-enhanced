@@ -37,7 +37,7 @@ export class Services {
     return this.payments.find(p => `payment_${p.employeeId}_${p.amount}` === paymentId) || null;
   }
 
-  async getEmployeePayments(employeeId: string): Promise<EmploymentPayment[]> {
+  async gePRODUCTIONloyeePayments(employeeId: string): Promise<EmploymentPayment[]> {
     return this.payments.filter(p => p.employeeId === employeeId);
   }
 

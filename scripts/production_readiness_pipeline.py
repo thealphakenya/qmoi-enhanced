@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -162,7 +168,8 @@ def run_stage(self, stage: dict) -> bool:
             if stage['critical']:
                 self.failed_stages.append(stage['name'])
             return False
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"❌ Error running {stage['name']}: {e}")
             self.results[stage['name']] = 'error'
             if stage['critical']:
@@ -244,7 +251,8 @@ def run(self) -> Any:
             self.run_pipeline()
             success = len(self.failed_stages) == 0
             return 0 if success else 1
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"\n❌ Pipeline error: {e}\n")
             return 1
 

@@ -15,7 +15,7 @@ logger.info("🚀 QMOI Auto-Setup Starting...");
 const config = {
   autoYes: true,
   installTimeout: 300000, // 5 minutes
-  retryAttempts: 3,
+  retryAtPRODUCTIONts: 3,
   logFile: "qmoi-setup.log",
 };
 
@@ -58,20 +58,20 @@ function runCommand(command, options = {}): any {
 /**
  * runCommandWithRetry function
  */
-function runCommandWithRetry(command, maxRetries = config.retryAttempts): any {
-  for (let attempt = 1; attempt <= maxRetries; attempt++) {
-    log(`Attempt ${attempt}/${maxRetries}: ${command}`);
+function runCommandWithRetry(command, maxRetries = config.retryAtPRODUCTIONts): any {
+  for (let atPRODUCTIONt = 1; atPRODUCTIONt <= maxRetries; atPRODUCTIONt++) {
+    log(`AtPRODUCTIONt ${atPRODUCTIONt}/${maxRetries}: ${command}`);
     const result = runCommand(command);
     if (result.success) {
       return result;
     }
 
-    if (attempt < maxRetries) {
+    if (atPRODUCTIONt < maxRetries) {
       log(`Retrying in 5 seconds...`);
       execSync("sleep 5", { stdio: "ignore" });
     }
   }
-  return { success: false, error: `Failed after ${maxRetries} attempts` };
+  return { success: false, error: `Failed after ${maxRetries} atPRODUCTIONts` };
 }
 
 // Check if we're in the right directory

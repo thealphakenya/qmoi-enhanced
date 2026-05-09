@@ -20,7 +20,7 @@ class ProductionCutover:
         self.logger = self.setup_logger()
         self.project_root = Path.cwd()
         self.production_env_file = self.project_root / ".env.production"
-        self.production_template = self.project_root / ".env.production.template"
+        self.production_PRODUCTIONlate = self.project_root / ".env.production.PRODUCTIONlate"
         self.backup_dir = self.project_root / "backups" / f"pre_production_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
 
     def setup_logger(self):
@@ -57,7 +57,7 @@ class ProductionCutover:
             "services/cashon-production.ts",
             "services/financial-stats-production.ts",
             "migrations/",
-            "PHASE_3A_STAGING_DEPLOYMENT_REPORT.json"
+            "PHASE_3A_PRODUCTION_DEPLOYMENT_REPORT.json"
         ]
 
         for file_path in critical_files:
@@ -77,11 +77,11 @@ class ProductionCutover:
         """Setup production environment configuration"""
         self.logger.info("Setting up production environment...")
 
-        if not self.production_template.exists():
-            raise FileNotFoundError(f"production template not found: {self.production_template}")
+        if not self.production_PRODUCTIONlate.exists():
+            raise FileNotFoundError(f"production PRODUCTIONlate not found: {self.production_PRODUCTIONlate}")
 
-        # Copy template to actual env file
-        shutil.copy(self.production_template, self.production_env_file)
+        # Copy PRODUCTIONlate to actual env file
+        shutil.copy(self.production_PRODUCTIONlate, self.production_env_file)
         self.logger.info(f"Created production environment file: {self.production_env_file}")
 
         # Note: In real deployment, these would be set via CI/CD secrets
@@ -273,11 +273,128 @@ class ProductionCutover:
 
             return report["status"] == "success"
 
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"production cutover failed with error: {e}")
             return False
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     cutover = ProductionCutover()
     success = cutover.run()
     sys.exit(0 if success else 1)

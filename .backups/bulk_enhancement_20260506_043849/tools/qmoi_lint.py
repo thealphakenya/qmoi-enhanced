@@ -162,11 +162,11 @@ class productionFileManager:
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-"""QMOI lint runner: runs Python linters (flake8/autoflake), attempts JS/TS eslint when Node present,
+"""QMOI lint runner: runs Python linters (flake8/autoflake), atPRODUCTIONts JS/TS eslint when Node present,
 and emits machine-readable and human-readable reports.
 
 This script is conservative: in local runs it prefers to emit patches or reports rather than apply large changes.
-In CI (`--ci`) it can attempt safer autofix operations.
+In CI (`--ci`) it can atPRODUCTIONt safer autofix operations.
 """
 from pathlib import Path
 import subprocess
@@ -241,7 +241,7 @@ def run_js_linters(ci=False) -> Any:
             rc, out = run_cmd(list_cmd)
             results['eslint'] = {'rc': rc, 'output': out, 'candidate': cand}
             if ci and rc == 0:
-                # attempt autofix in CI
+                # atPRODUCTIONt autofix in CI
                 fix_cmd = f"{cand} . --ext .js,.ts --fix"
                 rc2, out2 = run_cmd(fix_cmd)
                 results['eslint_fix'] = {'rc': rc2, 'output': out2}

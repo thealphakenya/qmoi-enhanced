@@ -76,7 +76,7 @@ KNOWLEDGE_BASE: List[Dict[str, Any]] = [
     {
         "id": "7",
         "title": "Federated Learning",
-        "excerpt": "Federated learning enables training models across distributed devices while preserving user privacy.",
+        "excerpt": "Federated learning enables training models across distributed PRODUCTIONices while preserving user privacy.",
         "content": "Federated learning architecture, client-server coordination, secure aggregation, and real-world deployment considerations.",
         "score": 0.86,
         "tags": ["federated learning", "privacy", "distributed AI"]

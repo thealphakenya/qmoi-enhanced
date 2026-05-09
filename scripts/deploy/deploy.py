@@ -75,14 +75,19 @@ def load_config(self) -> Dict:
         """Load deployment configuration."""
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             with open(self.config_path, 'r') as f:
@@ -94,7 +99,7 @@ def load_config(self) -> Dict:
                 "backup_before_deploy": True,
                 "notify_on_deploy": True,
                 "deployment_timeout": 3600,
-                "retry_attempts": 3,
+                "retry_atPRODUCTIONts": 3,
                 "targets": {
                     "local": {
                         "enabled": True,
@@ -170,7 +175,8 @@ def initialize_cloud_clients(self) -> None:
             if self.config["targets"]["gcp"]["enabled"]:
                 self.gcp_client = google.cloud.resourcemanager.ProjectsClient()
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error initializing cloud clients: {e}")
     
     """
@@ -219,7 +225,8 @@ def deploy(self, target: Optional[str] = None) -> bool:
             
             return success
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error during deployment: {e}")
             if self.current_deployment:
                 self.current_deployment["end_time"] = datetime.now().isoformat()
@@ -263,7 +270,8 @@ def _deploy_local(self) -> bool:
             self.logger.info("Local deployment completed successfully")
             return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error in local deployment: {e}")
             return False
     
@@ -338,7 +346,8 @@ def _deploy_aws(self) -> bool:
             self.logger.info(f"AWS deployment completed successfully. Instance IP: {public_ip}")
             return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error in AWS deployment: {e}")
             return False
     
@@ -440,7 +449,8 @@ def _deploy_azure(self) -> bool:
             self.logger.info(f"Azure deployment completed successfully. VM IP: {public_ip}")
             return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error in Azure deployment: {e}")
             return False
     
@@ -524,7 +534,8 @@ def _deploy_gcp(self) -> bool:
             self.logger.info(f"GCP deployment completed successfully. Instance IP: {public_ip}")
             return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error in GCP deployment: {e}")
             return False
     
@@ -555,7 +566,8 @@ def _deploy_docker(self) -> bool:
             self.logger.info("Docker deployment completed successfully")
             return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error in Docker deployment: {e}")
             return False
     
@@ -621,7 +633,8 @@ def _deploy_kubernetes(self) -> bool:
             self.logger.info("Kubernetes deployment completed successfully")
             return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error in Kubernetes deployment: {e}")
             return False
 
@@ -644,7 +657,8 @@ def _deploy_vercel(self) -> bool:
             self.logger.error(f"Error in Vercel deployment: {e}")
             self.logger.error(e.stderr)
             return False
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"An unexpected error occurred during Vercel deployment: {e}")
             return False
     
@@ -678,7 +692,8 @@ def _create_backup(self) -> None:
             
             self.logger.info(f"Created backup at: {backup_dir}")
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error creating backup: {e}")
     
     """
@@ -700,7 +715,8 @@ def _cleanup_old_backups(self) -> None:
                 shutil.rmtree(old_backup)
                 self.logger.info(f"Removed old backup: {old_backup}")
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error cleaning up old backups: {e}")
     
     """
@@ -720,7 +736,8 @@ def _copy_directory(self, sftp: paramiko.SFTPClient, src: str, dst: str) -> None
                 else:
                     sftp.put(src_path, dst_path)
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error copying directory: {e}")
     
     """

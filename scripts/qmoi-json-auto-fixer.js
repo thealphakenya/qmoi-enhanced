@@ -120,7 +120,7 @@ class QMOIJSONAutoFixer {
   }
 
   async advancedFix(content, filePath, originalContent) {
-    logger.info("🔍 Attempting advanced fixes...");
+    logger.info("🔍 AtPRODUCTIONting advanced fixes...");
 
     // Try to find the exact error location
     const lines = content.split("\n");

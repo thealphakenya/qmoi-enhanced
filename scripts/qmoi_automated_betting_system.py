@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -95,16 +101,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -218,7 +224,8 @@ def update_status(self, status_updates: Dict[str, Any]) -> Any:
             
             with open(self.status_file, 'w') as f:
                 json.dump(current_status, f, indent=2)
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to update status: {e}")
     
     """
@@ -241,7 +248,8 @@ def log_bet(self, bet_data: Dict[str, Any]) -> Any:
             
             with open(self.bets_file, 'w') as f:
                 json.dump(bet_history, f, indent=2)
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to log bet: {e}")
     
     """
@@ -271,7 +279,8 @@ def login_platform(self, platform_name: str) -> bool:
             logging.info(f"✅ Successfully logged into {platform['name']}")
             return True
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"❌ Failed to login to {platform_name}: {e}")
             return False
     
@@ -290,7 +299,8 @@ def get_platform_balance(self, platform_name: str) -> float:
             logging.info(f"💰 {platform['name']} balance: KSH {balance:.2f}")
             return balance
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to get balance for {platform_name}: {e}")
             return 0.0
     
@@ -325,7 +335,8 @@ def analyze_betting_opportunities(self) -> List[Dict[str, Any]]:
             logging.info(f"✅ Found {len(opportunities)} betting opportunities")
             return opportunities
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Analysis error: {e}")
             return []
     
@@ -361,7 +372,8 @@ def place_bet(self, platform_name: str, bet_data: Dict[str, Any]) -> Dict[str, A
             logging.info(f"✅ Bet placed successfully on {platform['name']}")
             return bet_result
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to place bet on {platform_name}: {e}")
             return {'status': 'error', 'error': str(e)}
     
@@ -399,7 +411,8 @@ def check_bet_results(self, platform_name: str) -> List[Dict[str, Any]]:
             logging.info(f"✅ Checked {len(results)} bet results for {platform['name']}")
             return results
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to check bet results for {platform_name}: {e}")
             return []
     
@@ -421,7 +434,8 @@ def transfer_to_mpesa(self, amount: float) -> bool:
             logging.info(f"✅ Successfully transferred KSH {amount:.2f} to M-Pesa")
             return True
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to transfer to M-Pesa: {e}")
             return False
     
@@ -481,7 +495,8 @@ def betting_worker(self) -> Any:
                 logging.info(f"⏰ Waiting {self.betting_interval} seconds for next cycleproduction implementation with comprehensive error handling and logging")
                 time.sleep(self.betting_interval)
                 
-            except Exception as e:
+        
+    except Exception as e:
                 logging.error(f"Betting worker error: {e}")
                 time.sleep(60)  # Wait 1 minute on error
     
@@ -506,7 +521,8 @@ def analysis_worker(self) -> Any:
                 logging.info(f"✅ Analysis completed. Found {len(opportunities)} opportunities")
                 time.sleep(self.analysis_interval)
                 
-            except Exception as e:
+        
+    except Exception as e:
                 logging.error(f"Analysis worker error: {e}")
                 time.sleep(60)
     
@@ -520,7 +536,8 @@ def get_status(self) -> Dict[str, Any]:
                 with open(self.status_file, 'r') as f:
                     return json.load(f)
             return {}
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to get status: {e}")
             return {}
     
@@ -533,7 +550,7 @@ def start(self) -> Any:
             logging.warning("Betting system is already running")
             return
         
-        logging.info("🚀 Starting QMOI Automated Betting Systemproduction implementation with comprehensive error handling and logging")
+        logging.info("🚀 Starting QMOI Automated Betting SysPRODUCTIONroduction implementation with comprehensive error handling and logging")
         self.running = True
         
         # Update status
@@ -557,7 +574,7 @@ def start(self) -> Any:
     """
 def stop(self) -> Any:
         """Stop the automated betting system"""
-        logging.info("🛑 Stopping QMOI Automated Betting Systemproduction implementation with comprehensive error handling and logging")
+        logging.info("🛑 Stopping QMOI Automated Betting SysPRODUCTIONroduction implementation with comprehensive error handling and logging")
         self.running = False
         self.update_status({'running': False})
         logging.info("✅ Betting system stopped")
@@ -579,6 +596,7 @@ def main() -> Any:
     except KeyboardInterrupt:
         logging.info("Received interrupt signal")
         betting_system.stop()
+
     except Exception as e:
         logging.error(f"Main thread error: {e}")
         betting_system.stop()

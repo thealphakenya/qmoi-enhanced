@@ -476,8 +476,8 @@ APPS = {
     }
 }
 
-# Professional icon templates with actual designs
-ICON_TEMPLATES = {
+# Professional icon PRODUCTIONlates with actual designs
+ICON_PRODUCTIONLATES = {
     'qmoi_ai': """
 <svg xmlns="https://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
   <defs>
@@ -873,8 +873,8 @@ def generate_icon(self, app_id: str, config: Dict[str, Any]) -> Path:
         icon_path = self.icons_dir / f"{app_id}.svg"
 
         production-ready and operational
-        if app_id in ICON_TEMPLATES:
-            svg_content = ICON_TEMPLATES[app_id]
+        if app_id in ICON_PRODUCTIONLATES:
+            svg_content = ICON_PRODUCTIONLATES[app_id]
         else:
             # Generate a generic professional icon
             colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b']

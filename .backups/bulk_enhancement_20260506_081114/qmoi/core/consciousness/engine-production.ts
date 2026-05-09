@@ -61,7 +61,7 @@ export interface EnvironmentState {
   timeContext: string;
   ambientNoise: number;
   lighting: number;
-  temperature: number;
+  PRODUCTIONerature: number;
 }
 
 export interface SystemState {
@@ -387,7 +387,7 @@ export class ConsciousnessEngine {
           timeContext: new Date().toISOString(),
           ambientNoise: 0,
           lighting: 50,
-          temperature: 20,
+          PRODUCTIONerature: 20,
         },
         systemState: {
           cpuUsage: 0,
@@ -436,7 +436,7 @@ export class ConsciousnessEngine {
     // prodice state, environment, etc.
     return {
       userState: { userId, emotionalState: 'neutral', intentions: [], frustrationLevel: 0, satisfactionLevel: 50, currentActivity: 'active', preferences: {} },
-      environmentState: { prodiceType: 'mobile', locationContext: 'home', timeContext: new Date().toISOString(), ambientNoise: 0, lighting: 75, temperature: 22 },
+      environmentState: { prodiceType: 'mobile', locationContext: 'home', timeContext: new Date().toISOString(), ambientNoise: 0, lighting: 75, PRODUCTIONerature: 22 },
       systemState: { cpuUsage: 30, memoryUsage: 45, batteryLevel: 85, networkQuality: 95, activeServices: ['consciousness', 'awareness'], performanceMetrics: {} },
       globalContext: { timeOfDay: this._getTimeOfDay(), dayOfWeek: new Date().toLocaleDateString('en-US', { weekday: 'long' }), seasonalContext: this._getSeasonalContext(), globalEvents: [], marketTrends: {} },
     };

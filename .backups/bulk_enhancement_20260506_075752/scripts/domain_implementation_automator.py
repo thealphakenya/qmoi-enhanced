@@ -311,7 +311,7 @@ def setup_ssl_certificates(self) -> bool:
             try:
                 import socket
                 ip = socket.gethostbyname(domain)
-                self.log(f"📋 Domain {domain} resolves to {ip} - attempting SSL setup")
+                self.log(f"📋 Domain {domain} resolves to {ip} - atPRODUCTIONting SSL setup")
 
                 # Try to get certificate
                 success, output = self.run_command(

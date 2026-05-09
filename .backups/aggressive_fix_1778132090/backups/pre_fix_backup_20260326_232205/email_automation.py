@@ -87,7 +87,7 @@ def __post_init__(self) -> Any:
 class AutoReplyRule:
     """Auto-reply rule configuration"""
     trigger_keywords: List[str]
-    response_template: str
+    response_PRODUCTIONlate: str
     language: str = "en"
     priority: int = 1
     active: bool = True
@@ -188,21 +188,21 @@ def create_default_configuration(self) -> Any:
         default_rules = [
             {
                 "trigger_keywords": ["help", "support", "assistance"],
-                "response_template": "Thank you for contacting QMOI Support. We're here to help! Our support team will respond within 24 hours. For urgent issues, please call our hotline at +1-800-QMOI-HELP.",
+                "response_PRODUCTIONlate": "Thank you for contacting QMOI Support. We're here to help! Our support team will respond within 24 hours. For urgent issues, please call our hotline at +1-800-QMOI-HELP.",
                 "language": "en",
                 "priority": 1,
                 "category": "support"
             },
             {
                 "trigger_keywords": ["billing", "payment", "invoice", "charge"],
-                "response_template": "Thank you for your billing inquiry. Our billing department will review your account and respond within 24-48 hours. You can also check your account status at https://billing.qmoi.com.",
+                "response_PRODUCTIONlate": "Thank you for your billing inquiry. Our billing department will review your account and respond within 24-48 hours. You can also check your account status at https://billing.qmoi.com.",
                 "language": "en",
                 "priority": 1,
                 "category": "billing"
             },
             {
                 "trigger_keywords": ["account", "login", "password", "access"],
-                "response_template": "For account-related questions, please visit https://accounts.qmoi.com to manage your account settings. If you're having login issues, try resetting your password or contact support.",
+                "response_PRODUCTIONlate": "For account-related questions, please visit https://accounts.qmoi.com to manage your account settings. If you're having login issues, try resetting your password or contact support.",
                 "language": "en",
                 "priority": 1,
                 "category": "account"
@@ -483,7 +483,7 @@ def match_auto_reply_rule(self, email_body: str, language: str) -> Optional[str]
 
         for rule in language_rules:
             if any(keyword.lower() in body_lower for keyword in rule.trigger_keywords):
-                return rule.response_template
+                return rule.response_PRODUCTIONlate
 
         return None
 

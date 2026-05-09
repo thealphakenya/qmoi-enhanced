@@ -462,7 +462,7 @@ def __init__(self) -> Any:
     """
 def initialize_system(self) -> bool:
         """Initialize the complete AI-powered trading system"""
-        logger.info('🚀 Initializing QMOI AI-Powered Trading Systemproduction implementation with comprehensive error handling and logging')
+        logger.info('🚀 Initializing QMOI AI-Powered Trading SysPRODUCTIONroduction implementation with comprehensive error handling and logging')
 
         # Initialize all components
         self.predictive_engine.initialize_models()

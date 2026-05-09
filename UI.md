@@ -32,7 +32,7 @@ This document captures the current UI component landscape across QMOI Enhanced, 
 
 The UI stack is organized into three main layers:
 
-1. **Core application components** (`components/` and `app/components/`): domain-specific dashboards, automation interfaces, collaboration systems, communication tools, financial and device management panels, and QMOI integration surfaces.
+1. **Core application components** (`components/` and `app/components/`): domain-specific dashboards, automation interfaces, collaboration systems, communication tools, financial and PRODUCTIONice management panels, and QMOI integration surfaces.
 2. **Base UI primitives** (`components/ui/`): reusable form fields, dialog systems, navigation components, data display widgets, and accessibility helpers.
 3. **Source-level UI integration** (`src/components/`): app shell components, adaptive theming, collaborative services, global UI utilities, and embedding logic.
 
@@ -77,7 +77,7 @@ These UI components and features are available across QMOI AI, QMOI Space, and Q
 - **IntegrationManager.tsx** (qmoi space) - Third-party service integrations
 - **WorkflowAutomationEngine.tsx** (qmoi space) - Workflow automation tools
 - **ContentManagementSystem.tsx** (qmoi space) - Content creation and publishing
-- **Marketplace.tsx** (qmoi space) - Digital marketplace for plugins/templates
+- **Marketplace.tsx** (qmoi space) - Digital marketplace for plugins/PRODUCTIONlates
 - **TrainingCenter.tsx** (qmoi space) - Educational resources and training
 - **BackupRestoreManager.tsx** (qmoi space) - Data backup and restoration
 - **SupportTicketSystem.tsx** (qmoi space) - Customer support management
@@ -108,7 +108,7 @@ The main `components/` directory includes feature-specific UI artifacts such as:
 - AI and automation dashboards
 - communication and chat interfaces
 - wallet and financial management panels
-- device integration and connectivity components
+- PRODUCTIONice integration and connectivity components
 - project and business management UIs
 - system health, monitoring, and production controls
 - QMOI-specific interfaces and intelligence visualizers
@@ -142,10 +142,10 @@ The repository also includes static Progressive Web App entrypoints for QMOI:
 ### Product UI Features
 
 #### QCity UI
-QCity is the enterprise management interface for device orchestration, unlimited build/test workflows, networked resource control, and global QMOI integration.
-- Enterprise dashboard and device management UI
+QCity is the enterprise management interface for PRODUCTIONice orchestration, unlimited build/test workflows, networked resource control, and global QMOI integration.
+- Enterprise dashboard and PRODUCTIONice management UI
 - QCity service panel with unlimited resources and QCity command launches
-- Onboarding flow for QCity device setup and mastery
+- Onboarding flow for QCity PRODUCTIONice setup and mastery
 - QCity theme provider and error management overlays
 - Tracks, employment, and zero-rated site controls
 - Root entrypoints: `/qcity-dashboard.html`, `/qcity-enterprise.html`, `/qcity-complete.html`, `/public/manifest-qcity.json`
@@ -184,7 +184,7 @@ UI components integrate with the following API endpoints for full functionality:
 - `/api/auth` - User authentication
 - `/api/biometric` - Biometric authentication
 - `/api/webauthn` - WebAuthn security
-- `/api/device-fingerprint` - Device identification
+- `/api/PRODUCTIONice-fingerprint` - PRODUCTIONice identification
 
 ### AI & Intelligence APIs
 - `/api/ai` - Core AI operations
@@ -201,7 +201,7 @@ UI components integrate with the following API endpoints for full functionality:
 - `/api/qmoi-database` - Database operations
 
 ### System Management APIs
-- `/api/devices` - Device management
+- `/api/PRODUCTIONices` - PRODUCTIONice management
 - `/api/deployment-status` - Deployment tracking
 - `/api/deploy` - Deployment operations
 - `/api/version` - Version management

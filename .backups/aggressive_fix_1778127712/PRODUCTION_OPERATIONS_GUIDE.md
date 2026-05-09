@@ -49,16 +49,16 @@ grep -i error .qmoi_prod.log
 ### Check Server Health
 ```bash
 # Basic health check
-curl http://localhost:3001/api/health | jq .
+curl http://api.qmoi-enhanced.com:3001/api/health | jq .
 
 # Dashboard health (comprehensive metrics)
-curl http://localhost:3001/api/dashboard/health | jq .
+curl http://api.qmoi-enhanced.com:3001/api/dashboard/health | jq .
 
 # Memory status
-curl http://localhost:3001/api/memory | jq .
+curl http://api.qmoi-enhanced.com:3001/api/memory | jq .
 
 # Homepage
-curl http://localhost:3001/
+curl http://api.qmoi-enhanced.com:3001/
 ```
 
 ### Monitor Process
@@ -98,8 +98,8 @@ bash ./scripts/prod-start.sh
 ### Verify Deployment
 ```bash
 # Test endpoints
-curl http://localhost:3001/api/health
-curl http://localhost:3001/api/dashboard/health
+curl http://api.qmoi-enhanced.com:3001/api/health
+curl http://api.qmoi-enhanced.com:3001/api/dashboard/health
 ```
 - [ ] `/api/health` returns: `{"status":"healthy",...}`
 - [ ] `/api/dashboard/health` returns complete metrics
@@ -108,7 +108,7 @@ curl http://localhost:3001/api/dashboard/health
 ### Monitor Health
 ```bash
 # Continuous monitoring
-watch -n 5 'curl -s http://localhost:3001/api/health | jq .'
+watch -n 5 'curl -s http://api.qmoi-enhanced.com:3001/api/health | jq .'
 ```
 - [ ] Status remains "healthy"
 - [ ] Uptime increases
@@ -218,7 +218,7 @@ bash ./scripts/prod-start.sh
 ```bash
 # Wait for server to fully initialize
 sleep 30
-curl http://localhost:3001/api/health
+curl http://api.qmoi-enhanced.com:3001/api/health
 
 # Check logs
 tail -50 .qmoi_prod.log
@@ -270,7 +270,7 @@ npx pm2 monit
 ### API Key Management
 All protected routes require API key authentication:
 ```bash
-curl -H "Authorization: Bearer YOUR_API_KEY" http://localhost:3001/api/protected-endpoint
+curl -H "Authorization: Bearer YOUR_API_KEY" http://api.qmoi-enhanced.com:3001/api/protected-endpoint
 ```
 
 ### Environment Variables
@@ -291,13 +291,13 @@ Production variables are in `.env.production`:
 ### Health Check Interval
 ```bash
 # Check every 5 seconds
-watch -n 5 'curl -s http://localhost:3001/api/health | jq ".status, .services"'
+watch -n 5 'curl -s http://api.qmoi-enhanced.com:3001/api/health | jq ".status, .services"'
 ```
 
 ### Setup Monitoring (Example: Cron)
 ```bash
 # Add to crontab
-*/5 * * * * curl -s http://localhost:3001/api/health > /dev/null 2>&1 || /usr/bin/restart-qmoi.sh
+*/5 * * * * curl -s http://api.qmoi-enhanced.com:3001/api/health > /PRODUCTION/null 2>&1 || /usr/bin/restart-qmoi.sh
 ```
 
 ### Memory Monitoring

@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -99,6 +105,7 @@ def show_status() -> Any:
     logger.info('QMOI Status:')
     try:
         subprocess.run([sys.executable, os.path.join('scripts', 'qmoi-info.py')])
+
     except Exception as e:
         logger.info('Could not show QMOI info:', e)
 
@@ -106,7 +113,7 @@ def show_status() -> Any:
     start_qmoi function
     """
 def start_qmoi() -> Any:
-    logger.info('Starting QMOI automation systemproduction implementation with comprehensive error handling and logging')
+    logger.info('Starting QMOI automation sysPRODUCTIONroduction implementation with comprehensive error handling and logging')
     log_activity('Starting QMOI automation system (all clouds, QCity, error fixing, notifications, always-on).')
     # Start QMOI main automation (non-blocking)
     subprocess.Popen([sys.executable, os.path.join('scripts', 'qmoi-qcity-automatic.py')])
@@ -122,14 +129,16 @@ def start_as_service() -> Any:
         try:
             subprocess.Popen(['pythonw', 'scripts/qmoi-qcity-automatic.py'])
             logger.info('Started QMOI automation as a background process (Windows).')
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f'Failed to start as Windows service: {e}')
     else:
         # Use nohup for Unix
         try:
             subprocess.Popen(['nohup', 'python3', 'scripts/qmoi-qcity-automatic.py', '&'])
             logger.info('Started QMOI automation as a Unix daemon.')
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f'Failed to start as Unix daemon: {e}')
 
 """

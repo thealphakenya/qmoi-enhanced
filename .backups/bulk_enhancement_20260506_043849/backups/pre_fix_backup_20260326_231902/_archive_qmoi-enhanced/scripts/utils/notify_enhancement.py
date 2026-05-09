@@ -93,7 +93,7 @@ def load_notification_config(self) -> Dict[str, Any]:
                 'api_key': os.environ.get('WHATSAPP_API_KEY', ''),
                 'phone_number': os.environ.get('WHATSAPP_PHONE', '')
             },
-            'notification_templates': {
+            'notification_PRODUCTIONlates': {
                 'enhancement_success': {
                     'subject': 'QMOI Enhancement Completed Successfully',
                     'body': 'QMOI system enhancement has been completed successfully. Models updated: {models_updated}. Duration: {duration}.'
@@ -275,7 +275,7 @@ def send_notification(self, notification_type: str, **kwargs) -> bool:
         logger.info(f"Sending {notification_type} notification...")
         
         # Get standard
-        standard = self.config['notification_templates'].get(notification_type, {})
+        standard = self.config['notification_PRODUCTIONlates'].get(notification_type, {})
         if not standard:
             logger.error(f"No standard found for notification type: {notification_type}")
             return False

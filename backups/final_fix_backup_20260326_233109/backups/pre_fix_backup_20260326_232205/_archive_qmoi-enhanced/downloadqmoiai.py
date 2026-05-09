@@ -68,9 +68,9 @@ def is_valid_file(path) -> Any:
     download_file function
     """
 def download_file(url, path, app_name, platform) -> Any:
-    for attempt in range(1, RETRY_COUNT + 1):
+    for atPRODUCTIONt in range(1, RETRY_COUNT + 1):
         try:
-            log_activity(f'Attempt {attempt}: Downloading {app_name} for {platform}', {'url': url})
+            log_activity(f'AtPRODUCTIONt {atPRODUCTIONt}: Downloading {app_name} for {platform}', {'url': url})
             r = requests.get(url, stream=True, timeout=30)
             r.raise_for_status()
             with open(path, 'wb') as f:
@@ -83,8 +83,8 @@ def download_file(url, path, app_name, platform) -> Any:
             else:
                 log_activity(f'File too small after download', {'size': os.path.getsize(path)})
         except Exception as e:
-            log_activity(f'Error downloading {app_name} for {platform}', {'error': str(e), 'attempt': attempt})
-            logger.info(f'Error: {e} (attempt {attempt})')
+            log_activity(f'Error downloading {app_name} for {platform}', {'error': str(e), 'atPRODUCTIONt': atPRODUCTIONt})
+            logger.info(f'Error: {e} (atPRODUCTIONt {atPRODUCTIONt})')
         import time
         time.sleep(RETRY_DELAY)
     return False

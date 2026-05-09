@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -80,7 +86,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -171,7 +178,7 @@ def propose_fix(path: Path, text: str, checks: dict) -> dict:
         fixed = [ln.replace('\t', '  ') for ln in new_lines]
         new_lines = fixed
         applied.append('replace_tabs')
-    # do not attempt to auto-add jobs — only warn
+    # do not atPRODUCTIONt to auto-add jobs — only warn
     return {'applied': applied, 'new_text': '\n'.join(new_lines)}
 
 """

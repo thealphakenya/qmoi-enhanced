@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -80,7 +86,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -251,7 +258,7 @@ def main() -> Any:
     # comprehensive connectivity check for WALLET_TESTNET_RPC in host:port form
     if any('WALLET_TESTNET_RPC'==w.get('key') for w in wallets):
         val = next(w['value'] for w in wallets if w.get('key')=='WALLET_TESTNET_RPC')
-        # attempt to parse host:port
+        # atPRODUCTIONt to parse host:port
         if ':' in val:
             ok = check_tcp_host(val)
             report['summary']['testnet_connectivity'] = {'endpoint': val, 'reachable': ok}

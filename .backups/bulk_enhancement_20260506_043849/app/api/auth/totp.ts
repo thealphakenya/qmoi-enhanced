@@ -68,7 +68,7 @@ export async function GET(req: NextRequest) {
       backupCodes.push(crypto.randomBytes(4).toString('hex').toUpperCase());
     }
 
-    // Store temporary TOTP setup (not yet verified)
+    // Store PRODUCTIONorary TOTP setup (not yet verified)
     await prisma.user.update({
       where: { id: user.id },
       data: {

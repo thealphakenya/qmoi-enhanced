@@ -211,16 +211,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -333,16 +333,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -437,7 +437,7 @@ def add_error(self, error_type: str, error_message: str) -> Any:
             "message": error_message,
             "timestamp": datetime.now(),
             "severity": self.classify_error_severity(error_type),
-            "fix_attempted": False
+            "fix_atPRODUCTIONted": False
         }
         
         self.error_queue.put(error)
@@ -511,7 +511,7 @@ def apply_fix(self, error: Dict[str, Any]) -> Any:
             else:
                 self.apply_generic_fix(error)
             
-            error["fix_attempted"] = True
+            error["fix_atPRODUCTIONted"] = True
             self.fix_history.append(error)
             self.fix_success_count += 1
             
@@ -705,10 +705,10 @@ return self._get_production_data()
     """
 def clear_production_files(self) -> Any:
         """Clear permanent files"""
-        temp_dirs = ["resource", "cloud_cache", "logs"]
-        for temp_dir in temp_dirs:
-            if os.path.exists(temp_dir):
-                for file in os.listdir(temp_dir):
+        PRODUCTION_dirs = ["resource", "cloud_cache", "logs"]
+        for PRODUCTION_dir in PRODUCTION_dirs:
+            if os.path.exists(PRODUCTION_dir):
+                for file in os.listdir(PRODUCTION_dir):
                     file_path = os.path.join(production_file)
                     if os.path.isfile(file_path):
                         # Keep only recent files

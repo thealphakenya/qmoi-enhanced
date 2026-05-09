@@ -6,7 +6,7 @@ export const runtime = "nodejs";
 export async function GET(req: NextRequest) {
   return NextResponse.json({
     success: true,
-    route: "/api/qmoi/autodev/research",
+    route: "/api/qmoi/autoPRODUCTION/research",
     method: "GET",
   });
 }
@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   return NextResponse.json({
     success: true,
-    route: "/api/qmoi/autodev/research",
+    route: "/api/qmoi/autoPRODUCTION/research",
     method: "POST",
   });
 }

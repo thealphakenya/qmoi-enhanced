@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -77,7 +83,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -97,7 +104,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -111,7 +119,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -258,7 +267,8 @@ def validate_all_files(self) -> Dict[str, FileValidationReport]:
                 report = self.validate_file(md_file)
                 self.reports[str(md_file)] = report
                 self._update_summary(report)
-            except Exception as e:
+        
+    except Exception as e:
                 logging.error(f"Error validating {md_file}: {e}")
 
         return self.reports
@@ -272,7 +282,8 @@ def validate_file(self, file_path: Path) -> FileValidationReport:
 
         try:
             content = file_path.read_text(encoding='utf-8', errors='ignore')
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Cannot read file {file_path}: {e}")
             return report
 
@@ -643,7 +654,8 @@ fully implemented
                     file_path.write_text(new_content, encoding='utf-8')
                     added_count += 1
 
-            except Exception as e:
+        
+    except Exception as e:
                 logging.error(f"Error updating {file_path}: {e}")
 
         logging.info(f"Added lion validation to {added_count} files")

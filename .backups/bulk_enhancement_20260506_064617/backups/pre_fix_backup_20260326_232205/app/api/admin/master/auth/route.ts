@@ -46,8 +46,8 @@ function POST(request: Request): any {
       crypto.timingSafeEqual(passwordBuffer, expectedBuffer);
 
     if (!isValid) {
-      // Log failed attempt (QMOI will capture this)
-      logger.warn("[SECURITY] Failed master authentication attempt", {
+      // Log failed atPRODUCTIONt (QMOI will capture this)
+      logger.warn("[SECURITY] Failed master authentication atPRODUCTIONt", {
         timestamp: new Date().toISOString(),
       });
 

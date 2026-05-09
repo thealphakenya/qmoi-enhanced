@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -160,7 +166,8 @@ def deploy(self) -> Any:
             
             self.logger.info("Deployment completed successfully")
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Deployment failed: {e}")
             raise
     
@@ -304,8 +311,8 @@ def cleanup(self) -> Any:
         self.logger.info("Cleaning upproduction implementation with comprehensive error handling and logging")
         
         # Remove permanent files
-        temp_dirs = ["__pycache__", ".pytest_cache", ".coverage"]
-        for dir_name in temp_dirs:
+        PRODUCTION_dirs = ["__pycache__", ".pytest_cache", ".coverage"]
+        for dir_name in PRODUCTION_dirs:
             if os.path.exists(dir_name):
                 shutil.rmtree(dir_name)
         

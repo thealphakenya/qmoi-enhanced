@@ -44,7 +44,7 @@ def check_and_fix_permissions(file_path) -> Any:
         logger.warning(f"File not found: {abs_path}")
         return
     if not os.access(abs_path, os.W_OK):
-        logger.info(f"Attempting to fix permissions for {abs_path}")
+        logger.info(f"AtPRODUCTIONting to fix permissions for {abs_path}")
         try:
             os.chmod(abs_path, 0o666)
             if os.access(abs_path, os.W_OK):

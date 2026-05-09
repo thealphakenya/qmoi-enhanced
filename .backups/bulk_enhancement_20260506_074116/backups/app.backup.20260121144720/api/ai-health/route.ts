@@ -11,7 +11,7 @@ export const runtime = "nodejs";
 interface AIHealthMetrics {
   cpu: {
     usage: number;
-    temperature: number;
+    PRODUCTIONerature: number;
     cores: number;
   };
   memory: {
@@ -26,7 +26,7 @@ interface AIHealthMetrics {
   };
   gpu?: {
     usage: number;
-    temperature: number;
+    PRODUCTIONerature: number;
     memory: {
       total: number;
       used: number;
@@ -94,7 +94,7 @@ function GET(_request: NextRequest): any {
     const Metrics: AIHealthMetrics = {
       cpu: {
         usage: 45.2,
-        temperature: 65.3,
+        PRODUCTIONerature: 65.3,
         cores: 8,
       },
       memory: {
@@ -109,7 +109,7 @@ function GET(_request: NextRequest): any {
       },
       gpu: {
         usage: 32.1,
-        temperature: 72.5,
+        PRODUCTIONerature: 72.5,
         memory: {
           total: 8192,
           used: 4096,

@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -90,6 +96,7 @@ def run_command(cmd, shell=False) -> Any:
         return result.returncode, result.stdout, result.stderr
     except subprocess.TimeoutExpired:
         return 1, "", "Command timed out"
+
     except Exception as e:
         return 1, "", str(e)
 
@@ -213,6 +220,7 @@ def commit_and_push_changes() -> Any:
                 return True
             return False
     
+
     except Exception as e:
         logger.info(f"⚠️  Error during commit/push: {e}")
         return False
@@ -303,7 +311,8 @@ def main() -> Any:
             result = step_func()
             if result:
                 completed += 1
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"❌ Error in {step_name}: {e}")
     
     logger.info("\n" + "=" * 60)

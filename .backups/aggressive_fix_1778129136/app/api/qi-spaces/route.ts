@@ -16,9 +16,9 @@ export async function GET(req: NextRequest) {
       packageSize: "2.4GB",
     },
     activeProjects: [
-      { id: "PS-321", name: "Spatial AI Deployment", status: "staging" },
+      { id: "PS-321", name: "Spatial AI Deployment", status: "PRODUCTION" },
       { id: "PS-118", name: "Interactive Marketplace Sync", status: "production" },
-      { id: "PS-442", name: "Collaborative Dataset Builder", status: "development" },
+      { id: "PS-442", name: "Collaborative Dataset Builder", status: "PRODUCTIONelopment" },
     ],
     marketplace: [
       { id: "MKT-01", title: "Premium Dataset Exchange", price: "$99", access: "subscription" },

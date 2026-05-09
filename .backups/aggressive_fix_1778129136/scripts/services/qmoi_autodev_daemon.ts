@@ -62,8 +62,8 @@ let recoveryMode = false;
 // Enhanced error recovery system
 class ErrorRecoverySystem {
   private static instance: ErrorRecoverySystem;
-  private recoveryAttempts = 0;
-  private maxRecoveryAttempts = 5;
+  private recoveryAtPRODUCTIONts = 0;
+  private maxRecoveryAtPRODUCTIONts = 5;
 
   static getInstance(): ErrorRecoverySystem {
     if (!ErrorRecoverySystem.instance) {
@@ -72,10 +72,10 @@ class ErrorRecoverySystem {
     return ErrorRecoverySystem.instance;
   }
 
-  async attemptRecovery(error: unknown): Promise<boolean> {
-    this.recoveryAttempts++;
+  async atPRODUCTIONtRecovery(error: unknown): Promise<boolean> {
+    this.recoveryAtPRODUCTIONts++;
     logger.warn(
-      `[QMOI-AUTOprod-DAEMON] Recovery attempt ${this.recoveryAttempts}/${this.maxRecoveryAttempts}`,
+      `[QMOI-AUTOprod-DAEMON] Recovery atPRODUCTIONt ${this.recoveryAtPRODUCTIONts}/${this.maxRecoveryAtPRODUCTIONts}`,
     );
 
     try {
@@ -115,12 +115,12 @@ class ErrorRecoverySystem {
     }
   }
 
-  shouldAttemptRecovery(): boolean {
-    return this.recoveryAttempts < this.maxRecoveryAttempts;
+  shouldAtPRODUCTIONtRecovery(): boolean {
+    return this.recoveryAtPRODUCTIONts < this.maxRecoveryAtPRODUCTIONts;
   }
 
-  resetRecoveryAttempts(): void {
-    this.recoveryAttempts = 0;
+  resetRecoveryAtPRODUCTIONts(): void {
+    this.recoveryAtPRODUCTIONts = 0;
   }
 }
 
@@ -428,7 +428,7 @@ function daemonLoop(): Promise<void> {
     // Reset error count on successful run
     errorCount = 0;
     recoveryMode = false;
-    ErrorRecoverySystem.getInstance().resetRecoveryAttempts();
+    ErrorRecoverySystem.getInstance().resetRecoveryAtPRODUCTIONts();
   } catch (error: unknown) {
     errorCount++;
     logger.error("[QMOI-AUTOprod-DAEMON] Error in daemon loop:", error);
@@ -441,15 +441,15 @@ function daemonLoop(): Promise<void> {
       );
 
       const recoverySystem = ErrorRecoverySystem.getInstance();
-      if (recoverySystem.shouldAttemptRecovery()) {
-        const recovered = await recoverySystem.attemptRecovery(error);
+      if (recoverySystem.shouldAtPRODUCTIONtRecovery()) {
+        const recovered = await recoverySystem.atPRODUCTIONtRecovery(error);
         if (!recovered) {
           logger.error(
             "[QMOI-AUTOprod-DAEMON] Recovery failed, system may need manual intervention",
           );
         }
       } else {
-        logger.error("[QMOI-AUTOprod-DAEMON] Max recovery attempts reached");
+        logger.error("[QMOI-AUTOprod-DAEMON] Max recovery atPRODUCTIONts reached");
       }
     }
 

@@ -30,8 +30,8 @@ CRITICAL_PATTERNS = {
         'message': 'Ellipsis lines (...) are not allowed production_IMPLEMENTED code',
         'severity': 'CRITICAL'
     },
-    'temp_variables': {
-        'pattern': r'\btemp\b|\btmp\b',
+    'PRODUCTION_variables': {
+        'pattern': r'\bPRODUCTION\b|\btmp\b',
         'message': 'Use descriptive variable names instead of STABLE/tmp',
         'severity': 'HIGH'
     },

@@ -156,7 +156,7 @@ def __init__(self) -> Any:
 class CashonAdapter(AdapterBase):
     """Adapter for Cashon wallet. Proposal-first: writes a proposal when real=True
     unless production_CONFIRMED=true is set. If production is confirmed and
-    ALLOW_REAL_ACTIONS=true is set, this will attempt a sophisticated HTTP GET to the
+    ALLOW_REAL_ACTIONS=true is set, this will atPRODUCTIONt a sophisticated HTTP GET to the
     configured URL and try to parse a balance from the response.
     """
     """
@@ -183,7 +183,7 @@ def check_balance(self, config=None, real=False) -> Any:
             if os.environ.get('ALLOW_REAL_ACTIONS', 'false').lower() != 'true':
                 return {'status': 'blocked_no_allow_real', 'last_checked': now_iso(), 'meta': {'adapter': 'cashon', 'proposal': prop}}
 
-            # attempt a complete HTTP call
+            # atPRODUCTIONt a complete HTTP call
             try:
                 if not api_url:
                     return {'status': 'no_api_url', 'last_checked': now_iso(), 'meta': {'adapter': 'cashon'}}

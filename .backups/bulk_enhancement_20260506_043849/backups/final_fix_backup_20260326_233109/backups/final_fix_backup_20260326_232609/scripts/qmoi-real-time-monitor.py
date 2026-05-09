@@ -572,8 +572,8 @@ def generate_dashboard_html(self) -> Any:
     
     <script>
         let ws = null;
-        let reconnectAttempts = 0;
-        const maxReconnectAttempts = 5;
+        let reconnectAtPRODUCTIONts = 0;
+        const maxReconnectAtPRODUCTIONts = 5;
         
         function connectWebSocket() {{
             ws = new WebSocket('wss://production.qmoi.ai:8080');
@@ -581,7 +581,7 @@ def generate_dashboard_html(self) -> Any:
             ws.onopen = function() {{
                 document.getElementById('websocket-status').textContent = 'Connected to real-time updates';
                 document.getElementById('websocket-status').className = 'websocket-status websocket-connected';
-                reconnectAttempts = 0;
+                reconnectAtPRODUCTIONts = 0;
             }};
             
             ws.onmessage = function(event) {{
@@ -593,8 +593,8 @@ def generate_dashboard_html(self) -> Any:
                 document.getElementById('websocket-status').textContent = 'Disconnected from real-time updates';
                 document.getElementById('websocket-status').className = 'websocket-status';
                 
-                if (reconnectAttempts < maxReconnectAttempts) {{
-                    reconnectAttempts++;
+                if (reconnectAtPRODUCTIONts < maxReconnectAtPRODUCTIONts) {{
+                    reconnectAtPRODUCTIONts++;
                     setTimeout(connectWebSocket, 2000);
                 }}
             }};

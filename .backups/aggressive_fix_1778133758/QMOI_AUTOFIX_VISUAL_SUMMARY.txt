@@ -135,7 +135,7 @@ Total: 15 Files | ~3700 Lines of Code | PRODUCTION_IMPLEMENTED
       (~300 lines)
 
 📖 QMOI_AUTOFIX_QUICK_REFERENCE.md
-   └─ optimized reference card for developers
+   └─ optimized reference card for PRODUCTIONelopers
       Dashboard access, buttons, metrics, error types
       Command line usage, Python examples, shortcuts
       (~200 lines)
@@ -156,8 +156,8 @@ Total: 15 Files | ~3700 Lines of Code | PRODUCTION_IMPLEMENTED
 2. Set admin token in .env.local:
    ADMIN_TOKEN=your-secure-token-here
 
-3. Start dev server:
-   $ npm run dev
+3. Start PRODUCTION server:
+   $ npm run PRODUCTION
 
 4. Open admin dashboard:
    https://production.qmoi.ai:3000/admin

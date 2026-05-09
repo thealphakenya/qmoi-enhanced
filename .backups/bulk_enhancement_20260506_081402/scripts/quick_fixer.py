@@ -50,7 +50,7 @@ def main():
     print("✅ Ready to execute production fixes")
     print('')
     print("Next steps:")
-    print("  1. python3 scripts/bulk_production_fixer.py --execute")
+    print("  1. python3 scripts/bulk_PRODUCTION_FIXEDer.py --execute")
     print("  2. python3 scripts/production_readiness_audit.py")
     print("  3. python3 scripts/auto_update_matches_undone.py")
     print("  4. python3 scripts/qmoi_complete_production_sync.py")

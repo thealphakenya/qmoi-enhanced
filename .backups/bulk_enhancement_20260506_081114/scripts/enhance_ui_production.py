@@ -457,9 +457,9 @@ import {
 /**
  * Hook for revenue validation
  */
-export // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+export // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function useRevenueValidation(refreshInterval: number = 30000) {
   const [data, setData] = useState<RevenueValidationResponse | null>(null);
   const [loading, setLoading] = useState(true);
@@ -490,9 +490,9 @@ function useRevenueValidation(refreshInterval: number = 30000) {
 /**
  * Hook for system status
  */
-export // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+export // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function useSystemStatus(refreshInterval: number = 60000) {
   const [status, setStatus] = useState<SystemStatus | null>(null);
   const [loading, setLoading] = useState(true);
@@ -523,9 +523,9 @@ function useSystemStatus(refreshInterval: number = 60000) {
 /**
  * Hook for monitoring control
  */
-export // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+export // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function useRevenueMonitoring() {
   const [monitoring, setMonitoring] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -550,9 +550,9 @@ function useRevenueMonitoring() {
 /**
  * Hook for analytics
  */
-export // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+export // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function useRevenueAnalytics(refreshInterval: number = 60000) {
   const [analytics, setAnalytics] = useState<Record<string, any> | null>(null);
   const [loading, setLoading] = useState(true);

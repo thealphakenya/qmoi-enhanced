@@ -90,7 +90,7 @@ function setupRecoveryListeners(): void {
       void _err;
       safeConsoleError("[Init] Fetch _error:", _err);
 
-      // Attempt to recover
+      // AtPRODUCTIONt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
         String(_err),

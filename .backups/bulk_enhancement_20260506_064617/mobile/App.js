@@ -39,7 +39,7 @@ import { specificExports } from 'react-native-biometrics';
 import { specificExports } from './components/NotificationScreen';
 import { specificExports } from './components/AlertSettingsScreen';
 import { specificExports } from './components/AnalyticsScreen';
-import { specificExports } from './components/DeviceManagementScreen';
+import { specificExports } from './components/PRODUCTIONiceManagementScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -145,7 +145,7 @@ function DashboardScreen({ route, navigation }): any {
             <Text key={i}>{p.kind === 'errorType' ? 'Error Type' : 'File'}: {p.type || p.file} ({p.count})</Text>
           ))}
           <Button title="Analytics" onPress={() => navigation.navigate('Analytics', { role })} />
-          <Button title="Device Management" onPress={() => navigation.navigate('DeviceManagement', { role })} />
+          <Button title="PRODUCTIONice Management" onPress={() => navigation.navigate('PRODUCTIONiceManagement', { role })} />
         </>
       ) : (
         <Text style={{ color: 'red', marginVertical: 10 }}>Access denied: Master only</Text>
@@ -186,7 +186,7 @@ function App(): any {
         <Stack.Screen name="Notifications" component={NotificationScreen} />
         <Stack.Screen name="AlertSettings" component={AlertSettingsScreen} />
         <Stack.Screen name="Analytics" component={AnalyticsScreen} />
-        <Stack.Screen name="DeviceManagement" component={DeviceManagementScreen} />
+        <Stack.Screen name="PRODUCTIONiceManagement" component={PRODUCTIONiceManagementScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

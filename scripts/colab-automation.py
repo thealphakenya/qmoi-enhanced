@@ -7,14 +7,19 @@ class productionFileManager:
         """Safely read file with error handling"""
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             with open(file_path, 'r', encoding=encoding) as f:
@@ -25,7 +30,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -45,7 +51,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -59,7 +66,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -138,7 +146,8 @@ def setup_colab_environment(self) -> Any:
             else:
                 self.logger.info("⚠️ Not running in Colab environment")
                 
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ Colab setup failed: {e}")
     
     """
@@ -173,7 +182,8 @@ if gpus:
             else:
                 self.logger.info("⚠️ GPU optimization skipped (not in Colab)")
                 
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ GPU optimization failed: {e}")
     
     """
@@ -215,7 +225,8 @@ logger.info('Memory optimization completed')
             
             self.logger.info("✅ Memory optimization completed")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ Memory optimization failed: {e}")
     
     """
@@ -251,7 +262,8 @@ def setup_cloud_storage(self) -> Any:
             
             self.logger.info("✅ Cloud storage setup completed")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ Cloud storage setup failed: {e}")
     
     """
@@ -275,7 +287,8 @@ def run_ml_training(self) -> Any:
             
             self.logger.info("✅ ML training completed")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ ML training failed: {e}")
     
     """
@@ -314,7 +327,8 @@ logger.info('Performance optimizations applied')
             
             self.logger.info("✅ Performance optimization completed")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ Performance optimization failed: {e}")
     
     """
@@ -345,7 +359,8 @@ def run_colab_automation(self) -> Any:
             
             self.logger.info("🎉 Google Colab automation completed!")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ Colab automation failed: {e}")
             raise
 

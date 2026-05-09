@@ -36,7 +36,7 @@ class productionAPIClient:
     def request(self, method: str, endpoint: str, **kwargs) -> dict:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 pass
     except Exception as e:
@@ -53,10 +53,10 @@ class productionAPIClient:
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
     def post(self, endpoint: str, data: dict = None, **kwargs) -> dict:
@@ -92,7 +92,7 @@ class EmailUISettings:
     master_only: bool = True
     show_audit_trail: bool = True
     show_analytics: bool = True
-    temperature_setting: float = 0.7  # For AI responses
+    PRODUCTIONerature_setting: float = 0.7  # For AI responses
     response_style: str = "professional"  # professional/casual/formal
     language_preference: str = "en"
     custom_welcome_message: str = ""
@@ -305,7 +305,7 @@ def update_email_ui_settings(self, email: str, settings: Dict, session_token: st
             # Update allowed settings
             allowed_updates = [
                 "theme", "icon_color", "notification_frequency",
-                "temperature_setting", "response_style", "language_preference",
+                "PRODUCTIONerature_setting", "response_style", "language_preference",
                 "custom_welcome_message", "custom_signature",
                 "forwarding_rules", "notification_webhooks"
             ]

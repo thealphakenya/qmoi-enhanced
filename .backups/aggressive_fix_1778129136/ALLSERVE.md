@@ -171,8 +171,8 @@ def run_server(port=8080):
     with socketserver.TCPServer(("", port), QMOIRequestHandler) as httpd:
         logger.info(f"🚀 QMOI Production Server starting on port {port}")
         logger.info(f"📱 Serving QMOI AI, QMOI Space, QCity, QVillage")
-        logger.info(f"🔗 Health check: http://localhost:{port}/health")
-        logger.info(f"📊 PWA Update API: http://localhost:{port}/api/pwa/check-update")
+        logger.info(f"🔗 Health check: http://api.qmoi-enhanced.com:{port}/health")
+        logger.info(f"📊 PWA Update API: http://api.qmoi-enhanced.com:{port}/api/pwa/check-update")
         
         try:
             httpd.serve_forever()
@@ -210,7 +210,7 @@ nohup python3 qmoi_production_server.py > /tmp/qmoi-production-server.log 2>&1 &
 #!/bin/bash
 # monitor_qmoi_server.sh
 while true; do
-    if curl -f http://localhost:8080/health > /dev/null 2>&1; then
+    if curl -f http://api.qmoi-enhanced.com:8080/health > /PRODUCTION/null 2>&1; then
         echo "$(date): QMOI Server is healthy"
     else
         echo "$(date): QMOI Server is down - restarting..."
@@ -242,7 +242,7 @@ Start the Next.js application and use the app routes on port `3000`:
 ```bash
 cd /workspaces/qmoi-enhanced
 npm install
-npm run dev
+npm run PRODUCTION
 ```
 
 Then open the QMOI AI app in a browser window at:
@@ -431,6 +431,6 @@ nohup bash run_qmoi.sh > /cache/qvillage-supervisor.log 2>&1 &
 ```
 
 ## 8) Troubleshooting
-- If `https://localhost:8080/qmoi-ai.html` does not load, verify the static server is running and serving from `/workspaces/qmoi-enhanced`.
+- If `https://api.qmoi-enhanced.com:8080/qmoi-ai.html` does not load, verify the static server is running and serving from `/workspaces/qmoi-enhanced`.
 - If QVillage does not stay running, use `pm2` or systemd to supervise `deploy/qvillage/run_qmoi.sh`.
 - If `OPEN_QMOI_AI.sh` or `open_qcity_safe.sh` fail, open the URL manually in a browser.

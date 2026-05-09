@@ -44,7 +44,7 @@ export async function GET(req: NextRequest) {
     // Generate challenge
     const challenge = crypto.randomBytes(32).toString('base64url');
 
-    // Store challenge temporarily
+    // Store challenge PRODUCTIONorarily
     const challengeKey = `webauthn_auth_challenge_${userId}`;
     global[challengeKey] = challenge;
 

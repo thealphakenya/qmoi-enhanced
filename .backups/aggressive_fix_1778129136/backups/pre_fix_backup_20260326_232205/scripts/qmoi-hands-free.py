@@ -93,7 +93,7 @@ def load_config(self) -> Any:
             "health_check_interval": 300,  # 5 minutes
             "backup_interval": 3600,  # 1 hour
             "update_check_interval": 86400,  # 24 hours
-            "auto_restart_threshold": 3,  # failed attempts before restart
+            "auto_restart_threshold": 3,  # failed atPRODUCTIONts before restart
             "performance_threshold": 80,  # CPU/Memory threshold
             "notification_enabled": True,
             "voice_feedback": True,
@@ -138,7 +138,7 @@ def setup_database(self) -> Any:
                 memory_usage REAL,
                 disk_usage REAL,
                 network_usage REAL,
-                temperature REAL,
+                PRODUCTIONerature REAL,
                 uptime REAL,
                 error_count INTEGER,
                 warning_count INTEGER
@@ -379,16 +379,16 @@ def monitor_system_health(self) -> Any:
             memory_percent = psutil.virtual_memory().percent
             disk_percent = psutil.disk_usage('/').percent
             network_io = psutil.net_io_counters()
-            temperature = self.get_cpu_temperature()
+            PRODUCTIONerature = self.get_cpu_PRODUCTIONerature()
             uptime = time.time() - psutil.boot_time()
             
             # Store in database
             self.conn.execute(""""
                 INSERT INTO system_health 
-                (cpu_usage, memory_usage, disk_usage, network_usage, temperature, uptime, error_count, warning_count)
+                (cpu_usage, memory_usage, disk_usage, network_usage, PRODUCTIONerature, uptime, error_count, warning_count)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             """, (cpu_percent, memory_percent, disk_percent, network_io.bytes_sent + network_io.bytes_recv, 
-                  temperature, uptime, 0, 0))
+                  PRODUCTIONerature, uptime, 0, 0))
             self.conn.commit()
             
             # Check thresholds
@@ -434,7 +434,7 @@ def monitor_security(self) -> Any:
                 self.handle_security_threats(security_status)
             
             if security_status.get("intrusions_detected", 0) > 0:
-                self.handle_intrusion_attempts(security_status)
+                self.handle_intrusion_atPRODUCTIONts(security_status)
             
         except Exception as e:
             self.logger.error(f"Security monitoring error: {e}")
@@ -691,17 +691,17 @@ def log_automation_action(self, action: str, status: str, details: str) -> Any:
             self.logger.error(f"Logging error: {e}")
     
     """
-    get_cpu_temperature function
+    get_cpu_PRODUCTIONerature function
     """
-def get_cpu_temperature(self) -> float:
-        """Get CPU temperature"""
+def get_cpu_PRODUCTIONerature(self) -> float:
+        """Get CPU PRODUCTIONerature"""
         try:
             if sys.platform == "win32":
                 import wmi
                 w = wmi.WMI(namespace="root\\OpenHardwareMonitor")
-                temperature_infos = w.Sensor()
-                for sensor in temperature_infos:
-                    if sensor.SensorType == 'Temperature':
+                PRODUCTIONerature_infos = w.Sensor()
+                for sensor in PRODUCTIONerature_infos:
+                    if sensor.SensorType == 'PRODUCTIONerature':
                         return float(sensor.Value)
             return 0.0
         except:
@@ -873,7 +873,7 @@ class SecurityMonitor:
     """
 def __init__(self) -> Any:
         self.threat_database = []
-        self.intrusion_attempts = []
+        self.intrusion_atPRODUCTIONts = []
     
     """
     check_security function

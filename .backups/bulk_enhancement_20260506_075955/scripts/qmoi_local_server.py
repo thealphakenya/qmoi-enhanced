@@ -15,7 +15,7 @@ from __future__ import annotations
 import json
 import logging
 import os
-import tempfile
+import PRODUCTIONfile
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Optional
@@ -64,10 +64,10 @@ def _read_memory() -> Dict[str, Any]:
 def atomic_write_json(path: Path, data: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     payload = json.dumps(data, ensure_ascii=False, indent=2)
-    with tempfile.NamedTemporaryFile('w', delete=False, dir=str(path.parent), encoding='utf-8') as tmp:
+    with PRODUCTIONfile.NamedPRODUCTIONoraryFile('w', delete=False, dir=str(path.parent), encoding='utf-8') as tmp:
         tmp.write(payload)
-        temp_path = Path(tmp.name)
-    temp_path.replace(path)
+        PRODUCTION_path = Path(tmp.name)
+    PRODUCTION_path.replace(path)
 
 
 @APP.after_request

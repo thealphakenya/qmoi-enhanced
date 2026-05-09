@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -73,7 +79,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -93,7 +100,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -107,7 +115,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -127,6 +136,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -170,16 +180,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -260,7 +270,8 @@ def backup_existing_installation(self) -> bool:
             logger.info(f"Backup created: {backup_name}")
             return True
             
-        except Exception as e:
+    
+    except Exception as e:
             self.error_log.append(f"Backup failed: {e}")
             logger.error(f"Backup failed: {e}")
             return False
@@ -283,7 +294,8 @@ def clean_installation_directory(self) -> bool:
             logger.info("Installation directory cleaned")
             return True
             
-        except Exception as e:
+    
+    except Exception as e:
             self.error_log.append(f"Clean failed: {e}")
             logger.error(f"Clean failed: {e}")
             return False
@@ -320,14 +332,16 @@ def download_qcity_unlimited(self) -> bool:
                     self.success_log.append(f"Downloaded: {filename}")
                     return self.extract_download(file_path)
                     
-                except Exception as e:
+            
+    except Exception as e:
                     logger.warning(f"Download from {source} failed: {e}")
                     continue
             
             # If all downloads fail, create a comprehensive structure
             return self.create_basic_structure()
             
-        except Exception as e:
+    
+    except Exception as e:
             self.error_log.append(f"Download failed: {e}")
             logger.error(f"Download failed: {e}")
             return self.create_basic_structure()
@@ -359,7 +373,8 @@ def extract_download(self, file_path: Path) -> bool:
             logger.info("Download extracted successfully")
             return True
             
-        except Exception as e:
+    
+    except Exception as e:
             self.error_log.append(f"Extraction failed: {e}")
             logger.error(f"Extraction failed: {e}")
             return False
@@ -422,7 +437,8 @@ def create_basic_structure(self) -> bool:
             logger.info("comprehensive structure created")
             return True
             
-        except Exception as e:
+    
+    except Exception as e:
             self.error_log.append(f"Structure creation failed: {e}")
             logger.error(f"Structure creation failed: {e}")
             return False
@@ -643,7 +659,8 @@ def install_dependencies(self) -> Dict:
             self.error_log.append(error_msg)
             logger.error(error_msg)
             return {'status': 'failed', 'message': error_msg}
-        except Exception as e:
+    
+    except Exception as e:
             error_msg = f"Dependency installation error: {e}"
             self.error_log.append(error_msg)
             logger.error(error_msg)
@@ -715,7 +732,8 @@ def setup_database() -> Any:
             logger.info("Database setup script created")
             return {'status': 'success', 'message': 'Database setup script created'}
             
-        except Exception as e:
+    
+    except Exception as e:
             error_msg = f"Database setup failed: {e}"
             self.error_log.append(error_msg)
             logger.error(error_msg)
@@ -803,7 +821,8 @@ elif page == "Settings":
             logger.info("Services configured")
             return {'status': 'success', 'message': 'Services configured'}
             
-        except Exception as e:
+    
+    except Exception as e:
             error_msg = f"Service configuration failed: {e}"
             self.error_log.append(error_msg)
             logger.error(error_msg)

@@ -33,11 +33,11 @@ if (!fs.existsSync(STATE_DIR)) {
   constructor() {
     this.isRunning = false;
     this.healthChecks = [];
-    this.recoveryAttempts = {};
+    this.recoveryAtPRODUCTIONts = {};
     this.memory = this.loadMemory();
     this.config = {
       healthCheckInterval: 30000, // 30 seconds
-      maxRecoveryAttempts: 3,
+      maxRecoveryAtPRODUCTIONts: 3,
       alertEmail: process.env.ALERT_EMAIL || "admin@qmoi.com",
       slackWebhook: process.env.SLACK_WEBHOOK,
       enableAutoRestart: true,
@@ -411,38 +411,38 @@ if (!fs.existsSync(STATE_DIR)) {
    * Handle unhealthy state with automatic recovery
    */
   async handleUnhealthyState(results) {
-    logger.info("⚠️ Unhealthy state detected, attempting recovery...");
+    logger.info("⚠️ Unhealthy state detected, atPRODUCTIONting recovery...");
 
     for (const issue of results.issues) {
       const issueKey = `${issue.check}:${issue.error}`;
-      const attempts = this.recoveryAttempts[issueKey] || 0;
+      const atPRODUCTIONts = this.recoveryAtPRODUCTIONts[issueKey] || 0;
 
-      if (attempts < this.config.maxRecoveryAttempts) {
+      if (atPRODUCTIONts < this.config.maxRecoveryAtPRODUCTIONts) {
         logger.info(
-          `🔧 Recovery attempt ${attempts + 1}/${this.config.maxRecoveryAttempts} for: ${issue.check}`,
+          `🔧 Recovery atPRODUCTIONt ${atPRODUCTIONts + 1}/${this.config.maxRecoveryAtPRODUCTIONts} for: ${issue.check}`,
         );
 
-        const recovered = await this.attemptRecovery(issue.check, issue.error);
+        const recovered = await this.atPRODUCTIONtRecovery(issue.check, issue.error);
 
         if (recovered) {
           this.memory.successfulRecoveries.push({
             issue: issueKey,
             timestamp: new Date().toISOString(),
-            attempt: attempts + 1,
+            atPRODUCTIONt: atPRODUCTIONts + 1,
           });
           logger.info(`✅ Successfully recovered from: ${issue.check}`);
         } else {
-          this.recoveryAttempts[issueKey] = attempts + 1;
+          this.recoveryAtPRODUCTIONts[issueKey] = atPRODUCTIONts + 1;
           this.memory.failedRecoveries.push({
             issue: issueKey,
             timestamp: new Date().toISOString(),
-            attempt: attempts + 1,
+            atPRODUCTIONt: atPRODUCTIONts + 1,
           });
           logger.info(`❌ Recovery failed for: ${issue.check}`);
         }
       } else {
-        logger.error(`❌ Max recovery attempts exceeded for: ${issue.check}`);
-        await this.alertAdmins(issue, attempts);
+        logger.error(`❌ Max recovery atPRODUCTIONts exceeded for: ${issue.check}`);
+        await this.alertAdmins(issue, atPRODUCTIONts);
       }
     }
 
@@ -450,9 +450,9 @@ if (!fs.existsSync(STATE_DIR)) {
   }
 
   /**
-   * Attempt automatic recovery based on issue type
+   * AtPRODUCTIONt automatic recovery based on issue type
    */
-  async attemptRecovery(checkName, error) {
+  async atPRODUCTIONtRecovery(checkName, error) {
     try {
       switch (checkName) {
         case "API Health":
@@ -489,7 +489,7 @@ if (!fs.existsSync(STATE_DIR)) {
 
   async recoverDatabase() {
     try {
-      logger.info("🔄 Attempting database connection recovery...");
+      logger.info("🔄 AtPRODUCTIONting database connection recovery...");
       // Implement actual DB recovery logic
       return true;
     } catch (e) {
@@ -499,7 +499,7 @@ if (!fs.existsSync(STATE_DIR)) {
 
   async recoverMemory() {
     try {
-      logger.info("🔄 Attempting memory recovery...");
+      logger.info("🔄 AtPRODUCTIONting memory recovery...");
       if (global.gc) {
         global.gc();
         logger.info("✅ Garbage collection performed");
@@ -512,7 +512,7 @@ if (!fs.existsSync(STATE_DIR)) {
 
   async recoverDiskSpace() {
     try {
-      logger.info("🔄 Attempting to free disk space...");
+      logger.info("🔄 AtPRODUCTIONting to free disk space...");
       const { execSync } = await import("child_process");
       // Clear old logs when retention is configured
       if (this.config.logRetention > 0) {
@@ -546,11 +546,11 @@ if (!fs.existsSync(STATE_DIR)) {
   /**
    * Send alerts to admins
    */
-  async alertAdmins(issue, attempts) {
+  async alertAdmins(issue, atPRODUCTIONts) {
     const message = `
 Issue: ${issue.check}
 Error: ${issue.error}
-Failed Recovery Attempts: ${attempts}
+Failed Recovery AtPRODUCTIONts: ${atPRODUCTIONts}
 Timestamp: ${new Date().toISOString()}
 
 Action Required: Please investigate and resolve this issue manually.
@@ -621,7 +621,7 @@ Action Required: Please investigate and resolve this issue manually.
     return {
       isRunning: this.isRunning,
       memory: this.memory,
-      recoveryAttempts: this.recoveryAttempts,
+      recoveryAtPRODUCTIONts: this.recoveryAtPRODUCTIONts,
       config: this.config,
     };
   }

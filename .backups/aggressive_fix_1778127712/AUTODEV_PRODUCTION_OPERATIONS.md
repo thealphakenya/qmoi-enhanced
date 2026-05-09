@@ -1,4 +1,4 @@
-# QMOI Enhanced - AutoDev Production Operations Guide
+# QMOI Enhanced - AutoPRODUCTION Production Operations Guide
 
 **Version:** 2.0 - Production Enhanced
 **Last Updated:** 2026-04-24
@@ -6,7 +6,7 @@
 
 ## Overview
 
-QMOI's AutoDev system now provides comprehensive automated production operations for enterprise-grade financial management. This guide explains how to enable and execute bulk production commands to manage QMOI in production state.
+QMOI's AutoPRODUCTION system now provides comprehensive automated production operations for enterprise-grade financial management. This guide explains how to enable and execute bulk production commands to manage QMOI in production state.
 
 ## Quick Start - Production Commands
 
@@ -49,7 +49,7 @@ npm run deploy:production
 npm run post-deploy-verify
 ```
 
-## AutoDev Bulk Operations
+## AutoPRODUCTION Bulk Operations
 
 ### Wallet Management (Bulk)
 ```bash

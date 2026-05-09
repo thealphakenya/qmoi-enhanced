@@ -12,14 +12,14 @@ Detailed UI/UX specifications and visual element documentation for each applicat
 |--------|-------|---------|
 | [Home Screen](screens/home-screen.md) | `/` | Main navigation hub with feature cards |
 | [Admin Dashboard](screens/admin-dashboard-screen.md) | `/admin` | Administrative metrics and system overview |
-| [Device Management](screens/device-management-dashboard-screen.md) | `/devices` | Device monitoring and management interface |
+| [PRODUCTIONice Management](screens/PRODUCTIONice-management-dashboard-screen.md) | `/PRODUCTIONices` | PRODUCTIONice monitoring and management interface |
 | [Master Email Configuration](screens/master-email-configuration-screen.md) | `/master/email` | SMTP server and email setup |
 | [QMOI AI Hub](screens/qmoi-ai-interactive-assistant-screen.md) | `/qmoi-ai` | AI assistant hub and launcher |
 | [QVillage Community Hub](screens/qvillage-community-hub-screen.md) | `/qvillage` | Community datasets and model management |
 | [QCity Command Center](screens/qcity-command-center-dashboard-screen.md) | `/qcity` | Smart city operations dashboard |
 | [QMOI Space Hub](screens/qmoi-space-spatial-collaboration-hub-screen.md) | `/qmoi-space` | Central ecosystem navigation |
 | [Friendship AI Interface](screens/qmoi-friendship-interface-screen.md) | `/friendship` | Interactive AI companion chat |
-| [Developer Utilities](screens/developer-utilities-screen.md) | `/dev` | Development and testing tools |
+| [PRODUCTIONeloper Utilities](screens/PRODUCTIONeloper-utilities-screen.md) | `/PRODUCTION` | PRODUCTIONelopment and testing tools |
 | [Master Links Management](screens/master-links-management-screen.md) | `/master/links` | Global link configuration (Admin) |
 | [Master Tracks Management](screens/master-tracks-management-screen.md) | `/master/tracks` | System operations tracking (Admin) |
 | [Test Page](screens/test-page-screen.md) | `/test` | Application deployment verification |
@@ -40,7 +40,7 @@ Comprehensive reference for React/TypeScript components used throughout the appl
 - **[Components Index](components/COMPONENTS_INDEX.md)** - Complete component inventory organized by category
   - Core System Components
   - User Interface Components
-  - Device Management Components
+  - PRODUCTIONice Management Components
   - File & Storage Components
   - Communication Components
   - Entertainment & Media Components
@@ -52,7 +52,7 @@ Comprehensive reference for React/TypeScript components used throughout the appl
   - Advanced Features
   - Emergency & Safety
   - Administration & Management
-  - Development & Testing
+  - PRODUCTIONelopment & Testing
   - Utility Components
   - Third-party Integrations
 
@@ -76,7 +76,7 @@ Comprehensive reference for React/TypeScript components used throughout the appl
 **Additional Component Docs** (more being created):
   - Core components (MasterContext, QmoiEnhancedSystem, QMOIDashboard)
   - UI components (QAvatar, ThemeCustomizer, NotificationCenter)
-  - Device management (DeviceMap, DeviceSettingsPanel, BluetoothManager)
+  - PRODUCTIONice management (PRODUCTIONiceMap, PRODUCTIONiceSettingsPanel, BluetoothManager)
   - Communication (GlobalCall, GlobalMail, Chatbot)
   - System monitoring (SystemHealthDashboard, DeploymentStatusDashboard)
 
@@ -97,7 +97,7 @@ Complete navigation architecture and user journey flows.
 - Route hierarchy and relationships
 - Guest → User → Sister → Master progression
 - Feature-based navigation patterns
-- Responsive navigation across devices
+- Responsive navigation across PRODUCTIONices
 - Breadcrumb trails and navigation states
 - Quick access shortcuts
 
@@ -105,13 +105,13 @@ Complete navigation architecture and user journey flows.
 Detailed descriptions of all application features and capabilities.
 
 - **[Features Guide](features/features_guide.md)** - Complete feature list
-  1. Device Management
+  1. PRODUCTIONice Management
   2. AI Assistant & Friendship
   3. QCity Smart City Operations
   4. QVillage Community Collaboration
   5. Email Configuration & Management
   6. Master Administration
-  7. Developer Tools & Testing
+  7. PRODUCTIONeloper Tools & Testing
   8. Global Communication Features
   9. Security & Biometric Features
   10. Wallet & Financial Features
@@ -133,7 +133,7 @@ Complete guide to user preferences and system configuration.
   2. Authentication & Security
   3. Notification Settings
   4. Theme & Appearance
-  5. Device & Connectivity
+  5. PRODUCTIONice & Connectivity
   6. Privacy & Data
   7. Communication Preferences
   8. AI & Automation
@@ -178,7 +178,7 @@ Comprehensive user guide and support documentation.
 4. Review specific **[Screens Documentation](screens/)** - Detailed UI walkthroughs
 5. Use **[Navigation Flows](navigation/navigation_flows.md)** - Understand how to move around
 
-### 👨‍💻 For Developers
+### 👨‍💻 For PRODUCTIONelopers
 1. Start with **[Components Index](components/COMPONENTS_INDEX.md)** - Understand architecture
 2. Review **[Component Documentation](components/)** - Details on specific components
 3. Study **[Navigation Flows](navigation/navigation_flows.md)** - Route and state patterns
@@ -213,20 +213,20 @@ Comprehensive user guide and support documentation.
 ### By Route
 - `/` → [Home Screen](screens/home-screen.md)
 - `/admin` → [Admin Dashboard](screens/admin-dashboard-screen.md)
-- `/devices` → [Device Management](screens/device-management-dashboard-screen.md)
+- `/PRODUCTIONices` → [PRODUCTIONice Management](screens/PRODUCTIONice-management-dashboard-screen.md)
 - `/master/email` → [Master Email Configuration](screens/master-email-configuration-screen.md)
 - `/qmoi-ai` → [QMOI AI Hub](screens/qmoi-ai-interactive-assistant-screen.md)
 - `/qvillage` → [QVillage Community Hub](screens/qvillage-community-hub-screen.md)
 - `/qcity` → [QCity Command Center](screens/qcity-command-center-dashboard-screen.md)
 - `/qmoi-space` → [QMOI Space Hub](screens/qmoi-space-spatial-collaboration-hub-screen.md)
 - `/friendship` → [Friendship AI Interface](screens/qmoi-friendship-interface-screen.md)
-- `/dev` → [Developer Utilities](screens/developer-utilities-screen.md)
+- `/PRODUCTION` → [PRODUCTIONeloper Utilities](screens/PRODUCTIONeloper-utilities-screen.md)
 - `/master/links` → [Master Links Management](screens/master-links-management-screen.md)
 - `/master/tracks` → [Master Tracks Management](screens/master-tracks-management-screen.md)
 - `/test` → [Test Page](screens/test-page-screen.md)
 
 ### By Feature
-- Device Management → [Feature Guide](features/features_guide.md#1-device-management) + [Screen](screens/device-management-dashboard-screen.md)
+- PRODUCTIONice Management → [Feature Guide](features/features_guide.md#1-PRODUCTIONice-management) + [Screen](screens/PRODUCTIONice-management-dashboard-screen.md)
 - AI Companion → [Feature Guide](features/features_guide.md#2-ai-assistant--friendship-feature) + [Screen](screens/qmoi-friendship-interface-screen.md)
 - QCity Operations → [Feature Guide](features/features_guide.md#3-qcity-smart-city-operations) + [Screen](screens/qcity-command-center-dashboard-screen.md)
 - QVillage Community → [Feature Guide](features/features_guide.md#4-qvillage-community-collaboration) + [Screen](screens/qvillage-community-hub-screen.md)
@@ -248,7 +248,7 @@ Comprehensive user guide and support documentation.
 ### Roles & Permissions
 The application uses 4 primary roles with escalating permissions:
 1. **Guest** - Limited access, public features only
-2. **User** - Standard features, personal devices
+2. **User** - Standard features, personal PRODUCTIONices
 3. **Sister** - Collaboration and community features
 4. **Master** - Full administrative control
 
@@ -337,7 +337,7 @@ The app uses Tailwind CSS with:
 ### In Progress
 - Component-level documentation for high-priority components
 - API endpoint documentation
-- Development setup guide
+- PRODUCTIONelopment setup guide
 - Testing guidelines
 
 ### Planned
@@ -362,7 +362,7 @@ The app uses Tailwind CSS with:
 3. [All Screen Documentation](screens/) - learn every interface
 4. [Features Guide](features/features_guide.md) - master functionality
 
-### Developer Onboarding (1-2 hours)
+### PRODUCTIONeloper Onboarding (1-2 hours)
 1. [Components Index](components/COMPONENTS_INDEX.md)
 2. [Core Component Docs](components/AIContext_component.md)
 3. [Navigation System](navigation/navigation_flows.md)

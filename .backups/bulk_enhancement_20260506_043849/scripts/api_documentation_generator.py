@@ -1876,9 +1876,9 @@ def generate_html_docs(self, output_path: str = "api_docs.html") -> Any:
     main function
     """
 def main() -> Any:
-    """Main // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Main // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function to generate API documentation"""
     logger.info("🚀 Generating QMOI Enhanced API Documentation")
     logger.info("=" * 60)

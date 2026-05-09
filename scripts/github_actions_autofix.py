@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -73,7 +79,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -93,7 +100,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -107,7 +115,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -207,7 +216,8 @@ def scan_workflow_files(self) -> List[Dict]:
                     'line': None,
                     'fixable': True
                 })
-            except Exception as e:
+        
+    except Exception as e:
                 issues.append({
                     'file': str(workflow_file),
                     'type': 'file_error',
@@ -493,7 +503,8 @@ def secret_exists(self, secret_name: str) -> bool:
             if response.status_code == 200:
                 secrets = response.json()['secrets']
                 return any(secret['name'] == secret_name for secret in secrets)
-        except Exception as e:
+    
+    except Exception as e:
             logger.warning(f"Failed to check secret {secret_name}: {e}")
         
         return False
@@ -533,7 +544,8 @@ def apply_fixes(self, issues: List[Dict]) -> List[Dict]:
                 if fix:
                     fixes_applied.append(fix)
                     
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Failed to apply fix for {issue['type']}: {e}")
         
         return fixes_applied
@@ -570,7 +582,8 @@ def fix_missing_permissions(self, issue: Dict) -> Optional[Dict]:
                 'status': 'fixed'
             }
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to fix required permissions: {e}")
             return None
     
@@ -602,7 +615,8 @@ def fix_deprecated_action(self, issue: Dict) -> Optional[Dict]:
                 'status': 'fixed'
             }
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to fix CURRENT action: {e}")
             return None
     
@@ -631,7 +645,8 @@ def fix_missing_trigger(self, issue: Dict) -> Optional[Dict]:
                 'status': 'fixed'
             }
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to fix required trigger: {e}")
             return None
     
@@ -685,7 +700,8 @@ def fix_missing_jobs(self, issue: Dict) -> Optional[Dict]:
                 'status': 'fixed'
             }
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to fix required jobs: {e}")
             return None
     
@@ -717,7 +733,8 @@ def fix_missing_runs_on(self, issue: Dict) -> Optional[Dict]:
                 'status': 'fixed'
             }
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to fix required runs-on: {e}")
             return None
     
@@ -758,7 +775,8 @@ def fix_security_issue(self, issue: Dict) -> Optional[Dict]:
                 'status': 'fixed'
             }
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to fix security issue: {e}")
             return None
     
@@ -805,7 +823,8 @@ def fix_missing_cache(self, issue: Dict) -> Optional[Dict]:
                 'status': 'fixed'
             }
             
-        except Exception as e:
+    
+    except Exception as e:
     # production CACHING
             return None
     
@@ -851,7 +870,8 @@ Please review and address this issue manually.
         try:
             response = requests.post(url, headers=headers, json=issue_data)
             return response.status_code == 201
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to create GitHub issue: {e}")
             return False
     
@@ -912,7 +932,8 @@ def trigger_self_healing_if_needed(self, errors: List[Dict]) -> None:
             try:
                 result = subprocess.run([sys.executable, 'scripts/qmoi_self_healing_enhanced.py'], capture_output=True, text=True, timeout=900)
                 logger.info('Self-healing script output: ' + result.stdout + result.stderr)
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f'Failed to run self-healing script: {e}')
     
     """

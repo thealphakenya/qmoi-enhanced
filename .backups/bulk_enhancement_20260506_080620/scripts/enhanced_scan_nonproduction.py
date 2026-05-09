@@ -356,17 +356,17 @@ def check_code_implementation(content, file_extension) -> Any:
             r'class \w+:\s*\n\s*(pass|production implementation with comprehensive error handling and logging)',
         ],
         '.js': [
-            r'// AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+            r'// AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function \w+\([^)]*\)\s*{\s*}',
             r'const \w+\s*=\s*\(\)\s*=>\s*{\s*}',
             r'// DONE: implement',
         ],
         '.ts': [
-            r'// AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+            r'// AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function \w+\([^)]*\):\s*\w+\s*{\s*}',
             r'const \w+:\s*\w+\s*=\s*\(\)\s*=>\s*{\s*}',
             r'// DONE: implement',
@@ -403,9 +403,9 @@ function \w+\([^)]*\):\s*\w+\s*{\s*}',
             r'# DONE: implement',
         ],
         '.php': [
-            r'// AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+            r'// AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function \w+\([^)]*\)\s*{\s*}',
             fully implemented
             r'// DONE: implement',
@@ -804,9 +804,9 @@ def process_results() -> Any:
     main function
     """
 def main() -> Any:
-    """Main // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Main // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function with enhanced parallel processing.""""
     start_time = time.time()
 

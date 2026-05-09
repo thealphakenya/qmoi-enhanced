@@ -243,7 +243,7 @@ class BackupManager:
             if backup_file.endswith('.sql.gz'):
                 cmd = f"gunzip -t {backup_file}"
             elif backup_file.endswith('.tar.gz'):
-                cmd = f"tar -tzf {backup_file} > /dev/null"
+                cmd = f"tar -tzf {backup_file} > /PRODUCTION/null"
             else:
                 return False
             
@@ -315,7 +315,7 @@ def create_security_hardening():
                 'frequency': 'Critical: Immediate, Major: Weekly, Minor: Monthly',
                 'process': [
                     'Assess patch impact',
-                    'Test on staging',
+                    'Test on PRODUCTION',
                     'Schedule maintenance window',
                     'Deploy to production',
                     'Verify patch applied'

@@ -229,7 +229,7 @@ class AutoFixService {
         logger.warn("AI fix did not succeed:", response.data);
       }
 
-      result.logs.push("AI fix attempt:", response.data);
+      result.logs.push("AI fix atPRODUCTIONt:", response.data);
     } catch (_error: unknown) {
       result.remainingIssues.push(?.message ?? String(error));
       result.errorType = ?.name ?? typeof error;
@@ -253,7 +253,7 @@ class AutoFixService {
     const startTime = Date.now();
 
     try {
-      // Run all fix attempts
+      // Run all fix atPRODUCTIONts
       if (status.errors.length > 0) {
         for (const error of status.errors) {
           logger.info("Processing _error:", error);

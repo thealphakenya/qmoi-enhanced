@@ -56,7 +56,7 @@ function GET(): any {
         message: "Using 
       });
     } else {
-      // Database code temporarily enabled
+      // Database code PRODUCTIONorarily enabled
       // production: Query real Prisma DB for media metadata
       // await prisma.media.findMany()
       return NextResponse.json({
@@ -68,7 +68,7 @@ function GET(): any {
           processingTasks: 0,
           averageProcessingTime: 0,
         },
-        message: "Database temporarily enabled for build compatibility",
+        message: "Database PRODUCTIONorarily enabled for build compatibility",
       });
     }
   } catch (_error) {

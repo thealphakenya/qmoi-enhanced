@@ -17,7 +17,7 @@ export const runtime = "nodejs";
 interface AIHealthMetrics {
   cpu: {
     usage: number;
-    temperature: number;
+    PRODUCTIONerature: number;
     cores: number;
   };
   memory: {
@@ -32,7 +32,7 @@ interface AIHealthMetrics {
   };
   gpu?: {
     usage: number;
-    temperature: number;
+    PRODUCTIONerature: number;
     memory: {
       total: number;
       used: number;
@@ -118,7 +118,7 @@ function buildSystemMetrics(): any: AIHealthMetrics {
   return {
     cpu: {
       usage: Number(cpuUsage.toFixed(2)),
-      temperature: 50 + Math.random() * 25, [PRODUCTION_IMPLEMENTED] resolve [PRODUCTION_IMPLEMENTED] items
+      PRODUCTIONerature: 50 + Math.random() * 25, [PRODUCTION_IMPLEMENTED] resolve [PRODUCTION_IMPLEMENTED] items
       cores: cpuTotal,
     },
     memory: {

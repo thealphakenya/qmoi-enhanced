@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -116,7 +122,8 @@ def load_notification_config(self) -> Dict[str, Any]:
             try:
                 with open(config_path, 'r') as f:
                     return json.load(f)
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Error loading notification config: {e}")
         
         # Default configuration
@@ -150,7 +157,7 @@ def load_notification_config(self) -> Dict[str, Any]:
                 'api_key': os.environ.get('WHATSAPP_API_KEY', ''),
                 'phone_number': os.environ.get('WHATSAPP_PHONE', '')
             },
-            'notification_templates': {
+            'notification_PRODUCTIONlates': {
                 'enhancement_success': {
                     'subject': 'QMOI Enhancement Completed Successfully',
                     'body': 'QMOI system enhancement has been completed successfully. Models updated: {models_updated}. Duration: {duration}.'
@@ -207,7 +214,8 @@ def send_email_notification(self, subject: str, body: str, recipients: Optional[
             logger.info(f"Email notification sent to {len(recipients or self.config['email']['to_addresses'])} recipients")
             return True
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error sending email notification: {e}")
             return False
 
@@ -239,7 +247,8 @@ def send_slack_notification(self, message: str, channel: Optional[str] = None) -
                 logger.error(f"Slack notification failed: {response.status_code} - {response.text}")
                 return False
                 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error sending Slack notification: {e}")
             return False
 
@@ -271,7 +280,8 @@ def send_discord_notification(self, message: str, username: Optional[str] = None
                 logger.error(f"Discord notification failed: {response.status_code} - {response.text}")
                 return False
                 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error sending Discord notification: {e}")
             return False
 
@@ -301,7 +311,8 @@ def send_telegram_notification(self, message: str) -> bool:
                 logger.error(f"Telegram notification failed: {response.status_code} - {response.text}")
                 return False
                 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error sending Telegram notification: {e}")
             return False
 
@@ -318,7 +329,8 @@ def send_whatsapp_notification(self, message: str) -> bool:
             # You would need to implement the actual WhatsApp API integration
             return True
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error sending WhatsApp notification: {e}")
             return False
 
@@ -330,7 +342,7 @@ def send_notification(self, notification_type: str, **kwargs) -> bool:
         logger.info(f"Sending {notification_type} notificationproduction implementation with comprehensive error handling and logging")
         
         # Get standard
-        standard = self.config['notification_templates'].get(notification_type, {})
+        standard = self.config['notification_PRODUCTIONlates'].get(notification_type, {})
         if not standard:
             logger.error(f"No standard found for notification type: {notification_type}")
             return False
@@ -476,7 +488,8 @@ def save_notification_history(self) -> None:
             with open(history_file, 'w') as f:
                 json.dump(existing_history, f, indent=2, default=str)
                 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error saving notification history: {e}")
 
     """
@@ -570,6 +583,7 @@ def main() -> Any:
         # Save notification history
         notifier.save_notification_history()
         
+
     except Exception as e:
         logger.error(f"Notification error: {e}")
         sys.exit(1)

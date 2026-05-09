@@ -24,7 +24,7 @@ interface WhatsAppConfig {
   webhookUrl: string;
   autoReply: boolean;
   allowedContacts: string[];
-  messageTemplates: Record<string, string>;
+  messagePRODUCTIONlates: Record<string, string>;
 }
 
 export /**

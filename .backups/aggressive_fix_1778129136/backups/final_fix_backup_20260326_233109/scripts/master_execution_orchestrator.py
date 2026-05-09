@@ -119,7 +119,7 @@ def setup_tasks(self) -> Any:
         # Phase 3: Marker Elimination
         self.add_task(
             name="Marker Elimination & Cleanup",
-            command=['python3', 'scripts/finalize_production_ready.py', '--fix-all', '--verbose'],
+            command=['python3', 'scripts/finalize_PRODUCTION_READY.py', '--fix-all', '--verbose'],
             description="Remove all detected production markers",
             critical=False,
             timeout=600

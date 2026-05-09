@@ -262,7 +262,7 @@ def main():
     logging.info(f"✅ Backup created: {backup_id}\n")
     # Validate system files
     logging.info("🔍 Validating system integrity...")
-    validation_result = manager.validate_evolution_script('/workspaces/qmoi-enhanced/fast_bulk_production_fixer.py')
+    validation_result = manager.validate_evolution_script('/workspaces/qmoi-enhanced/fast_bulk_PRODUCTION_FIXEDer.py')
     logging.info(f"✅ System validation complete\n")
     # Execute monitoring test
     logging.info("⏱️  Testing evolution monitoring...")

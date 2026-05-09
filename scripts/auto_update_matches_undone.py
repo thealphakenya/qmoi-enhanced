@@ -20,18 +20,24 @@ def load_matches_priority() -> Dict:
     if priority_file.exists():
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return json.loads(priority_file.read_text(encoding='utf-8'))
-        except Exception as e:
+    
+    except Exception as e:
             print(f"⚠️ Could not load matches_priority.json: {e}")
             return {}
     return {}
@@ -84,7 +90,7 @@ def generate_matches_md(priority_data: Dict, reference_md: Optional[str]) -> str
         "## production: NOTE ADDRESSED - s",
         "- This file is intended to be refreshed whenever the prioritized match list changes.",
         "- For the authoritative list, review `tools/matches_priority.md` and `tools/matches_priority.json`.",
-        "- Keep `MATCHES.md` aligned with the production readiness review and developer action items.",
+        "- Keep `MATCHES.md` aligned with the production readiness review and PRODUCTIONeloper action items.",
         "",
     ])
     
@@ -121,6 +127,7 @@ def run_production_audit() -> bool:
         else:
             print(f"⚠️ Audit finished with code {result.returncode}")
             return False
+
     except Exception as e:
         print(f"⚠️ Could not run audit: {e}")
         return False
@@ -131,6 +138,7 @@ def update_file(file_path: Path, content: str) -> bool:
         file_path.write_text(content, encoding='utf-8')
         print(f"✅ Updated: {file_path.relative_to(ROOT)}")
         return True
+
     except Exception as e:
         print(f"❌ Failed to update {file_path}: {e}")
         return False
@@ -153,6 +161,7 @@ def verify_undone_txt(file_path: Path) -> Dict:
             'issues': issues,
             'file_count': len([l for l in lines if l.startswith('## /')])
         }
+
     except Exception as e:
         print(f"⚠️ Could not read {file_path}: {e}")
         return {'exists': False, 'error': str(e)}
@@ -215,12 +224,128 @@ def main():
     print(f"Next Steps:")
     print(f"  1. Review MATCHES.md for prioritized implementation work")
     print(f"  2. Check undone.txt to see remaining nonproduction patterns")
-    print(f"  3. Run bulk_production_fixer.py to fix remaining issues")
+    print(f"  3. Run bulk_PRODUCTION_FIXEDer.py to fix remaining issues")
     print(f"")
     print(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}")
     print(f"{'='*80}\n")
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     import sys
     import logging
 logger = logging.getLogger(__name__)
@@ -269,6 +394,7 @@ logger = logging.getLogger(__name__)
     except KeyboardInterrupt:
         logger.info("Application shutdown requested by user")
         sys.exit(0)
+
     except Exception as e:
         logger.error(f"Application failed to start: {e}")
         sys.exit(1)
@@ -296,6 +422,7 @@ logger = logging.getLogger(__name__)
     except KeyboardInterrupt:
         logger.info("Application shutdown requested by user")
         sys.exit(0)
+
     except Exception as e:
         logger.error(f"Application failed to start: {e}")
         sys.exit(1)

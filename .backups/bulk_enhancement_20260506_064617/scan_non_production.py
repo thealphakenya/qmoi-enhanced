@@ -466,9 +466,9 @@ return self._get_production_data() - IMPLEMENTED
     test_ function
     """
 def test_([^(]+)', re.IGNORECASE),
-            re.compile(r'// AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+            re.compile(r'// AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function test([^(]+)', re.IGNORECASE),
         ]
         for pattern in test_patterns:

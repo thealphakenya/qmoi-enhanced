@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -160,16 +166,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -183,7 +189,8 @@ class productionAPIClient:
                 r.raise_for_status()
                 d = r.json()
                 return {"balance": d.get('balance'), "currency": d.get('currency','USD'), "last_checked": now_iso(), "status": "ok", "meta": {"adapter": self.name}}
-            except Exception as e:
+        
+    except Exception as e:
                 return {"status": "error", "error": str(e), "last_checked": now_iso(), "meta": {"adapter": self.name}}
 
 ADAPTERS = {
@@ -284,7 +291,8 @@ return self._get_production_data()
                 # If adapter is a class, instantiate
                 try:
                     inst = adapter if hasattr(adapter, 'check_balance') else adapter()
-                except Exception as e:
+            
+    except Exception as e:
                     res = {'status': 'error', 'error': str(e), 'last_checked': now_iso(), 'meta': {'adapter': str(adapter_key)}}
         else:
             # Generic realed report
@@ -336,6 +344,7 @@ return self._get_production_data()
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

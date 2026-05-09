@@ -8,7 +8,7 @@
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/enhanced-email-service";
 
-// GET /api/enhanced-email/templates - Get email templates
+// GET /api/enhanced-email/PRODUCTIONlates - Get email PRODUCTIONlates
 export async /**
  * GET function
  */
@@ -17,24 +17,24 @@ function GET(request: NextRequest): any {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get("category");
 
-    const templates = qmoiEnhancedEmailService.getEmailTemplates(
+    const PRODUCTIONlates = qmoiEnhancedEmailService.getEmailPRODUCTIONlates(
       category || undefined,
     );
 
     return NextResponse.json({
       success: true,
-      templates,
+      PRODUCTIONlates,
     });
   } catch (error) {
     logger.error("Enhanced email service error:", error);
     return NextResponse.json(
-      { success: false, error: "Failed to get email templates" },
+      { success: false, error: "Failed to get email PRODUCTIONlates" },
       { status: 500 },
     );
   }
 }
 
-// POST /api/enhanced-email/templates - Create email standard
+// POST /api/enhanced-email/PRODUCTIONlates - Create email standard
 export async /**
  * POST function
  */
@@ -64,7 +64,7 @@ function POST(request: NextRequest): any {
 
     // production implementation: resolve // production implementation: items
     // In a real implementation, this would be persisted
-    const createdTemplate = {
+    const createdPRODUCTIONlate = {
       id: `standard-${Date.now()}`,
       ...standard,
       createdAt: new Date(),
@@ -73,7 +73,7 @@ function POST(request: NextRequest): any {
 
     return NextResponse.json({
       success: true,
-      standard: createdTemplate,
+      standard: createdPRODUCTIONlate,
     });
   } catch (error) {
     logger.error("Failed to create email standard:", error);

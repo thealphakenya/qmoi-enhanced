@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -80,7 +86,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -237,6 +244,7 @@ def write_proposal_for_DONE(DONE) -> Any:
             json.dump({'DONE': DONE, 'createdAt': _now_iso()}, fh, indent=2)
         logger.info('Wrote proposal for DONE to', fname)
         return str(fname)
+
     except Exception as e:
         logger.info('Failed to write proposal:', e)
         return None
@@ -293,7 +301,8 @@ def run_DONE(DONE_id) -> Any:
                 t['runs'][-1]['ended'] = _now_iso()
                 save_DONEs(DONEs)
                 return t
-            except Exception as e:
+        
+    except Exception as e:
                 t['status'] = 'failed'
                 t['runs'][-1]['ended'] = _now_iso()
                 t['runs'][-1]['error'] = str(e)

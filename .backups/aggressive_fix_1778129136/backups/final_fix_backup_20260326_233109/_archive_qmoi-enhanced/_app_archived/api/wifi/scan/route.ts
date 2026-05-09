@@ -77,7 +77,7 @@ function POST(request: NextRequest): any {
       );
     }
 
-    // production implementation: connection attempt - replace with actual implementation
+    // production implementation: connection atPRODUCTIONt - replace with actual implementation
     await new Promise((resolve) => setTimeout(resolve, 2000)); // production implementation: connection time
 
     // production implementation: random success/failure

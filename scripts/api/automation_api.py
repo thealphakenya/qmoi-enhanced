@@ -3,14 +3,19 @@ def get_database_connection():
     """Get production database connection with proper error handling"""
     try:
         pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
         import psycopg2
@@ -24,6 +29,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -165,6 +171,7 @@ def get_automation_status(current_user: User = Depends(get_current_user)):
             "active_tasks": len(automation.tasks),
             "system_state": automation._collect_system_state().__dict__
         }
+
     except Exception as e:
         logger.error(f"Error getting automation status: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -178,6 +185,7 @@ def start_automation(current_user: User = Depends(get_current_user)):
     try:
         automation.start()
         return {"status": "started", "message": "Automation system started successfully"}
+
     except Exception as e:
         logger.error(f"Error starting automation: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -191,6 +199,7 @@ def stop_automation(current_user: User = Depends(get_current_user)):
     try:
         automation.stop()
         return {"status": "stopped", "message": "Automation system stopped successfully"}
+
     except Exception as e:
         logger.error(f"Error stopping automation: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -203,6 +212,7 @@ def get_tasks(current_user: User = Depends(get_current_user)):
     """Get all automation tasks"""
     try:
         return [task.__dict__ for task in automation.tasks]
+
     except Exception as e:
         logger.error(f"Error getting tasks: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -219,6 +229,7 @@ def create_task(
     try:
         automation.tasks.append(task)
         return {"status": "created", "task_id": task.id}
+
     except Exception as e:
         logger.error(f"Error creating task: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -237,6 +248,7 @@ def get_metrics(current_user: User = Depends(get_current_user)):
             errors=state.errors,
             timestamp=state.timestamp
         )
+
     except Exception as e:
         logger.error(f"Error getting metrics: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -262,6 +274,7 @@ def optimize_system(
         )
         automation.tasks.append(task)
         return {"status": "optimization_scheduled", "task_id": task.id}
+
     except Exception as e:
         logger.error(f"Error scheduling optimization: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -274,6 +287,7 @@ def get_history(current_user: User = Depends(get_current_user)):
     """Get system state history"""
     try:
         return [state.__dict__ for state in automation.system_state_history]
+
     except Exception as e:
         logger.error(f"Error getting history: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -290,6 +304,7 @@ def get_trends(current_user: User = Depends(get_current_user)):
             "performance": automation._analyze_performance_trends(automation.system_state_history[-10:]),
             "errors": automation._analyze_error_trends(automation.system_state_history[-10:])
         }
+
     except Exception as e:
         logger.error(f"Error getting trends: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -306,6 +321,7 @@ def update_config(
     try:
         automation.config.update(config.dict())
         return {"status": "updated", "message": "Configuration updated successfully"}
+
     except Exception as e:
         logger.error(f"Error updating config: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -318,6 +334,7 @@ def get_config(current_user: User = Depends(get_current_user)):
     """Get current automation configuration"""
     try:
         return automation.config
+
     except Exception as e:
         logger.error(f"Error getting config: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -331,6 +348,7 @@ def get_config(current_user: User = Depends(get_current_user)):
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

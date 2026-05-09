@@ -155,9 +155,9 @@ def produce_edits(matches) -> Any:
             continue
         lines = original.splitlines(keepends=True)
         changed = False
-        # sophisticated heuristic: if a // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        # sophisticated heuristic: if a // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function contains 'pass' and nearby DONE/FIXED, replace raise NotImplementedError("production implementation complete")
         for e in entries:
             ln = e['line'] - 1

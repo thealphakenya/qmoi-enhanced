@@ -14,7 +14,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -34,7 +35,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -48,7 +50,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -68,6 +71,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -106,16 +110,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -290,7 +294,8 @@ def setup_security(self) -> None:
             if self.config["monitoring"]["enabled"]:
                 self.start_monitoring()
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error setting up security: {e}")
     
     """
@@ -316,7 +321,8 @@ def setup_firewall(self) -> None:
             # Load default rules
             self.load_firewall_rules()
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error setting up firewall: {e}")
     
     """
@@ -331,7 +337,8 @@ def load_firewall_rules(self) -> None:
             for rule in self.firewall_rules:
                 self.add_firewall_rule(rule)
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error loading firewall rules: {e}")
     
     """
@@ -373,7 +380,8 @@ def add_firewall_rule(self, rule: Dict) -> bool:
             self.logger.info(f"Added firewall rule: {rule['name']}")
             return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error adding firewall rule: {e}")
             return False
     
@@ -389,7 +397,8 @@ def setup_intrusion_detection(self) -> None:
             # Start monitoring
             self.start_intrusion_detection()
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error setting up intrusion detection: {e}")
     
     """
@@ -400,7 +409,8 @@ def load_intrusion_detection_rules(self) -> None:
         try:
             self.intrusion_detection_rules = self.config["intrusion_detection"]["rules"]
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error loading intrusion detection rules: {e}")
     
     """
@@ -415,7 +425,8 @@ def start_intrusion_detection(self) -> None:
                 store=0
             )
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error starting intrusion detection: {e}")
     
     """
@@ -429,7 +440,8 @@ def analyze_packet(self, packet: scapy.Packet) -> None:
                 if self.match_rule(packet, rule):
                     self.handle_intrusion(packet, rule)
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error analyzing packet: {e}")
     
     """
@@ -464,7 +476,8 @@ def match_rule(self, packet: scapy.Packet, rule: Dict) -> bool:
             
             return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error matching rule: {e}")
             return False
     
@@ -495,7 +508,8 @@ def handle_intrusion(self, packet: scapy.Packet, rule: Dict) -> None:
             if self.check_alert_threshold(alert):
                 self.block_ip(alert["source_ip"])
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error handling intrusion: {e}")
     
     """
@@ -513,7 +527,8 @@ def check_alert_threshold(self, alert: Dict) -> bool:
             # Check against threshold
             return count >= self.config["intrusion_detection"]["block_threshold"]
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking alert threshold: {e}")
             return False
     
@@ -545,7 +560,8 @@ def block_ip(self, ip: str) -> None:
             
             self.logger.info(f"Blocked IP address: {ip}")
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error blocking IP: {e}")
     
     """
@@ -560,7 +576,8 @@ def setup_vulnerability_scanning(self) -> None:
             # Start scanning
             self.start_vulnerability_scanning()
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error setting up vulnerability scanning: {e}")
     
     """
@@ -584,7 +601,8 @@ def start_vulnerability_scanning(self) -> None:
             # Schedule next scan
             self.schedule_vulnerability_scan()
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error starting vulnerability scanning: {e}")
     
     """
@@ -619,7 +637,8 @@ def get_local_network(self) -> str:
             
             return "192.168.1.1"  # Default
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error getting local network: {e}")
             return "192.168.1.1"  # Default
     
@@ -653,7 +672,8 @@ def analyze_scan_results(self) -> None:
                     if self.config["vulnerability_scanning"]["logging"]:
                         self.logger.warning(f"Vulnerability detected: {alert}")
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error analyzing scan results: {e}")
     
     """
@@ -685,7 +705,8 @@ def check_vulnerabilities(self, host_info: Dict) -> List[Dict]:
             
             return vulnerabilities
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking vulnerabilities: {e}")
             return []
     
@@ -712,7 +733,8 @@ def check_service_vulnerabilities(self, service: str, version: str) -> List[Dict
             
             return vulnerabilities
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking service vulnerabilities: {e}")
             return []
     
@@ -725,7 +747,8 @@ def schedule_vulnerability_scan(self) -> None:
             interval = self.config["vulnerability_scanning"]["scan_interval"] * 1000
             self.scan_timer = time.after(interval, self.start_vulnerability_scanning)
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error scheduling vulnerability scan: {e}")
     
     """
@@ -740,7 +763,8 @@ def setup_encryption(self) -> None:
             # Initialize Fernet
             self.fernet = Fernet(self.encryption_key)
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error setting up encryption: {e}")
     
     """
@@ -769,7 +793,8 @@ def generate_encryption_key(self) -> None:
             # Schedule key rotation
             self.schedule_key_rotation()
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error generating encryption key: {e}")
     
     """
@@ -781,7 +806,8 @@ def schedule_key_rotation(self) -> None:
             interval = self.config["encryption"]["key_rotation"] * 1000
             self.rotation_timer = time.after(interval, self.generate_encryption_key)
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error scheduling key rotation: {e}")
     
     """
@@ -792,7 +818,8 @@ def encrypt_data(self, data: bytes) -> bytes:
         try:
             return self.fernet.encrypt(data)
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error encrypting data: {e}")
             return data
     
@@ -804,7 +831,8 @@ def decrypt_data(self, data: bytes) -> bytes:
         try:
             return self.fernet.decrypt(data)
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error decrypting data: {e}")
             return data
     
@@ -821,7 +849,8 @@ def setup_authentication(self) -> None:
             if self.config["authentication"]["mfa"]:
                 self.setup_mfa()
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error setting up authentication: {e}")
     
     """
@@ -836,7 +865,8 @@ def setup_mfa(self) -> None:
             # Create TOTP
             self.totp = pyotp.TOTP(secret)
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error setting up MFA: {e}")
     
     """
@@ -867,7 +897,8 @@ def verify_password(self, password: str) -> bool:
             
             return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error verifying password: {e}")
             return False
     
@@ -879,7 +910,8 @@ def verify_mfa(self, code: str) -> bool:
         try:
             return self.totp.verify(code)
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error verifying MFA code: {e}")
             return False
     
@@ -892,7 +924,8 @@ def setup_access_control(self) -> None:
             # Load rules
             self.access_control_rules = self.config["access_control"]["rules"]
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error setting up access control: {e}")
     
     """
@@ -909,7 +942,8 @@ def setup_access_control(self) -> None:
             # Default policy
             return self.config["access_control"]["default_policy"] == "allow"
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking access: {e}")
             return False
     
@@ -933,7 +967,8 @@ def setup_access_control(self) -> None:
             
             return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error matching access rule: {e}")
             return False
     
@@ -946,7 +981,8 @@ def start_monitoring(self) -> None:
             # Start monitoring loop
             self.monitor_security()
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error starting security monitoring: {e}")
     
     """
@@ -974,14 +1010,15 @@ def monitor_security(self) -> None:
             # Schedule next monitoring cycle
             self.schedule_monitoring()
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error monitoring security: {e}")
     
     """
     check_failed_logins function
     """
 def check_failed_logins(self) -> None:
-        """Check for failed login attempts."""
+        """Check for failed login atPRODUCTIONts."""
         try:
             # Get failed logins
             failed_logins = self.get_failed_logins()
@@ -993,7 +1030,7 @@ def check_failed_logins(self) -> None:
                     "timestamp": datetime.now().isoformat(),
                     "type": "failed_logins",
                     "severity": "high",
-                    "description": f"Multiple failed login attempts: {len(failed_logins)}"
+                    "description": f"Multiple failed login atPRODUCTIONts: {len(failed_logins)}"
                 }
                 
                 # Add to alerts
@@ -1003,14 +1040,15 @@ def check_failed_logins(self) -> None:
                 if self.config["monitoring"]["logging"]:
                     self.logger.warning(f"Security alert: {alert}")
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking failed logins: {e}")
     
     """
     get_failed_logins function
     """
 def get_failed_logins(self) -> List[Dict]:
-        """Get failed login attempts."""
+        """Get failed login atPRODUCTIONts."""
         try:
             failed_logins = []
             
@@ -1039,7 +1077,8 @@ def get_failed_logins(self) -> List[Dict]:
             
             return failed_logins
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error getting failed logins: {e}")
             return []
     
@@ -1069,7 +1108,8 @@ def check_suspicious_ips(self) -> None:
                 if self.config["monitoring"]["logging"]:
                     self.logger.warning(f"Security alert: {alert}")
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking suspicious IPs: {e}")
     
     """
@@ -1090,7 +1130,8 @@ def get_suspicious_ips(self) -> List[str]:
             
             return suspicious_ips
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error getting suspicious IPs: {e}")
             return []
     
@@ -1114,7 +1155,8 @@ def is_suspicious_connection(self, conn: psutil._common.sconn) -> bool:
             
             return False
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking suspicious connection: {e}")
             return False
     
@@ -1139,7 +1181,8 @@ def is_malicious_ip(self, ip: str) -> bool:
             
             return False
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking malicious IP: {e}")
             return False
     
@@ -1169,7 +1212,8 @@ def check_malware(self) -> None:
                 if self.config["monitoring"]["logging"]:
                     self.logger.warning(f"Security alert: {alert}")
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking malware: {e}")
     
     """
@@ -1207,7 +1251,8 @@ def scan_malware(self) -> List[Dict]:
             
             return malware
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error scanning malware: {e}")
             return []
     
@@ -1233,7 +1278,8 @@ def is_system_file(self, path: str) -> bool:
             
             return False
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking system file: {e}")
             return False
     
@@ -1263,7 +1309,8 @@ def check_system_changes(self) -> None:
                 if self.config["monitoring"]["logging"]:
                     self.logger.warning(f"Security alert: {alert}")
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking system changes: {e}")
     
     """
@@ -1300,7 +1347,8 @@ def get_system_changes(self) -> List[Dict]:
             
             return changes
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error getting system changes: {e}")
             return []
     
@@ -1313,7 +1361,8 @@ def get_file_hash(self, path: str) -> str:
             with open(path, "rb") as f:
                 return hashlib.sha256(f.read()).hexdigest()
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error getting file hash: {e}")
             return ""
     
@@ -1329,7 +1378,8 @@ def has_hash_changed(self, path: str, current_hash: str) -> bool:
             # Compare hashes
             return stored_hash and stored_hash != current_hash
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking hash change: {e}")
             return False
     
@@ -1345,7 +1395,8 @@ def get_stored_hash(self, path: str) -> Optional[str]:
             
             return hashes.get(path)
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error getting stored hash: {e}")
             return None
     
@@ -1358,7 +1409,8 @@ def schedule_monitoring(self) -> None:
             interval = self.config["monitoring"]["interval"] * 1000
             self.monitor_timer = time.after(interval, self.monitor_security)
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error scheduling monitoring: {e}")
     
     """

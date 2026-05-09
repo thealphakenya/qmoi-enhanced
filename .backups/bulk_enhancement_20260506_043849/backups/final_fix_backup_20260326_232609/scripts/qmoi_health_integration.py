@@ -400,7 +400,7 @@ def _scan_performance(self) -> Any:
     autofix_all_errors function
     """
 def autofix_all_errors(self) -> Dict[str, Any]:
-        """Attempt to automatically fix all detected errors"""
+        """AtPRODUCTIONt to automatically fix all detected errors"""
         logger.info("⚡ Starting automatic fix process...")
         self.fix_in_progress = True
 
@@ -548,7 +548,7 @@ def _fix_security_issue(self, error: Dict) -> Dict[str, Any]:
 def _fix_process(self, error: Dict) -> Dict[str, Any]:
         """Fix process errors"""
         try:
-            # Attempt to restart the process
+            # AtPRODUCTIONt to restart the process
             result = subprocess.run(['npm', 'run', 'prod'], capture_output=True)
             return {'success': True, 'error_id': error['id']}
         except Exception as e:

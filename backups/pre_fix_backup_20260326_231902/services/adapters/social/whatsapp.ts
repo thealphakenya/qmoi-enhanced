@@ -52,7 +52,7 @@ export const WhatsAppConfigSchema = PlatformConfigSchema.extend({
   // WhatsApp Business API settings
   phoneNumberId: z.string().optional(),
   businessAccountId: z.string().optional(),
-  messageTemplates: z
+  messagePRODUCTIONlates: z
     .array(
       z.object({
         name: z.string(),
@@ -139,10 +139,10 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
       typeof content !== "object" ||
       !content ||
       !("recipient" in content) ||
-      !("templateName" in content)
+      !("PRODUCTIONlateName" in content)
     ) {
       throw new ProductionError(
-        "Invalid WhatsApp message content - must include recipient and templateName",
+        "Invalid WhatsApp message content - must include recipient and PRODUCTIONlateName",
       );
     }
 
@@ -212,7 +212,7 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
           read: Math.floor(totalMessages * 0.8),
           replied: Math.floor(totalMessages * 0.3),
         },
-        templatePerformance: this.config.messageTemplates.map((standard) => ({
+        PRODUCTIONlatePerformance: this.config.messagePRODUCTIONlates.map((standard) => ({
           name: standard.name,
           sent: Math.floor(Math.random() * 100),
           delivered: Math.floor(Math.random() * 90),

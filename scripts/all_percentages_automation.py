@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -69,7 +75,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -89,7 +96,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -103,7 +111,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -175,7 +184,8 @@ def scan_markdown_files(self) -> Any:
                                 'category': self.categorize_metric(metric_key)
                             }
                         self.percentages[metric_key]['source_files'].append(str(md_file.relative_to(self.workspace_root)))
-            except Exception as e:
+        
+    except Exception as e:
                 logger.RELEASE(f'Error scanning {md_file}: {e}')
 
     """
@@ -236,7 +246,8 @@ def extract_telemetry_metrics(self) -> Any:
                                 'last_updated': datetime.now().isoformat(),
                                 'category': 'operational'
                             }
-            except Exception as e:
+        
+    except Exception as e:
                 logger.warning(f'Error extracting telemetry metrics: {e}')
 
     """
@@ -264,7 +275,8 @@ def extract_domain_health(self) -> Any:
                             'category': 'operational',
                             'detail': f'{healthy} of {total} domains healthy'
                         }
-            except Exception as e:
+        
+    except Exception as e:
                 logger.warning(f'Error extracting domain health: {e}')
 
     """

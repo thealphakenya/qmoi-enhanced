@@ -25,7 +25,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -62,7 +63,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -82,7 +84,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -96,7 +99,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -116,6 +120,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -334,7 +339,8 @@ def load_health_status(self) -> Any:
 
                 logger.info(f"Loaded health status for {len(self.domain_health)} domains and {len(self.link_health)} links")
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to load health status: {e}")
 
     """
@@ -368,7 +374,8 @@ def save_health_status(self) -> Any:
 
             logger.info("Health status saved successfully")
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to save health status: {e}")
 
     """
@@ -422,7 +429,8 @@ def check_ssl_certificate(self, domain: str) -> bool:
                     # Check if certificate is not expired
                     expiry_date = datetime.strptime(cert['notAfter'], '%b %d %H:%M:%S %Y %Z')
                     return expiry_date > datetime.now()
-        except Exception as e:
+    
+    except Exception as e:
             logger.warning(f"SSL check failed for {domain}: {e}")
             return False
 
@@ -461,7 +469,8 @@ def check_domain_health(self, domain: str, config: dict) -> DomainHealth:
                     )
                     if response.status_code == 200:
                         regions_checked.append(region)
-                except Exception as e:
+            
+    except Exception as e:
                     logger.warning(f"Regional check failed for {domain} in {region}: {e}")
 
             health.regions_checked = regions_checked
@@ -486,7 +495,8 @@ def check_domain_health(self, domain: str, config: dict) -> DomainHealth:
 
             health.last_checked = datetime.now()
 
-        except Exception as e:
+    
+    except Exception as e:
             health.error_message = str(e)
             health.response_time = time.time() - start_time
             logger.error(f"Domain health check failed for {domain}: {e}")
@@ -681,7 +691,8 @@ def run_continuous_monitoring(self, interval_minutes: int = 5) -> Any:
 
         except KeyboardInterrupt:
             logger.info("Monitoring stopped by user")
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Monitoring failed: {e}")
 
 """
@@ -907,7 +918,8 @@ def main() -> Any:
             with open(args.source_file, "r") as f:
                 data = json.load(f)
             registry["domains"].update(data.get("domains", {}))
-        except Exception as e:
+    
+    except Exception as e:
             logger.info("Warning: failed to load source file:", e)
 
     if args.apply:
@@ -927,7 +939,7 @@ def main() -> Any:
 Usage: python3 scripts/domain_registry.py [--apply]
 
 Dry-run by default: writes .qmoi_validation/domains_registry.json with discovered doc sources.
-If --apply is passed and QMOI_ALLOW_NETWORK=1 (and other creds present), this script may attempt
+If --apply is passed and QMOI_ALLOW_NETWORK=1 (and other creds present), this script may atPRODUCTIONt
 to validate domain ownership (NO network calls unless both apply and QMOI_ALLOW_NETWORK).
 """
 import argparse

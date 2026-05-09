@@ -133,11 +133,11 @@ def __init__(self, base_path: str = ".") -> Any:
         self.base_path = Path(base_path)
         self.db_path = self.base_path / "data" / "evolution_reliability.db"
         self.backup_path = self.base_path / "backups" / "evolution_safeguards"
-        self.temp_path = self.base_path / "resource" / "evolution_atomic"
+        self.PRODUCTION_path = self.base_path / "resource" / "evolution_atomic"
 
         # Create directories
         self.backup_path.mkdir(parents=True, exist_ok=True)
-        self.temp_path.mkdir(parents=True, exist_ok=True)
+        self.PRODUCTION_path.mkdir(parents=True, exist_ok=True)
 
         # Initialize database
         self.init_database()
@@ -148,7 +148,7 @@ def __init__(self, base_path: str = ".") -> Any:
         self.memory_backup = {}
 
         # Reliability settings
-        self.max_rollback_attempts = 3
+        self.max_rollback_atPRODUCTIONts = 3
         self.atomic_timeout = 300  # 5 minutes
         self.consciouness_check_interval = 60  # 1 minute
 
@@ -326,7 +326,7 @@ def _execute_operations_atomic(self, transaction: EvolutionTransaction) -> bool:
             for operation in transaction.operations:
                 if operation.get("type") == "file_modify":
                     # Create production_file first
-                    production_file = self.temp_path / f"temp_{transaction.id}_{hashlib.md5(str(operation).encode()).hexdigest()[:8]}"
+                    production_file = self.PRODUCTION_path / f"PRODUCTION_{transaction.id}_{hashlib.md5(str(operation).encode()).hexdigest()[:8]}"
                     production_file)
 
                     # Apply changes to production_file
@@ -353,7 +353,7 @@ def _execute_operations_atomic(self, transaction: EvolutionTransaction) -> bool:
                     production_file.unlink()
 
     """
-    _apply_operation_to_temp function
+    _apply_operation_to_PRODUCTION function
     """
 def _apply_operation_to_production_file: Path) -> bool:
         """Apply operation changes to permanent file"""

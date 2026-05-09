@@ -1,6 +1,6 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:06:53.393274 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:06.198196 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:01.478522 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:06:53.393274 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:06.198196 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:01.478522 -->
 {
   "admin": {
     "key": "LnNpWKgi49ZC2hwi3E1ewnzXLLZiSxqOa7WqCuBpIjo",
@@ -25,7 +25,7 @@
       "write"
     ]
   },
-  "autodev": {
+  "autoPRODUCTION": {
     "enhanced": true,
     "timestamp": "2026-04-20T08:55:01.478472",
     "version": "2026-04-20"

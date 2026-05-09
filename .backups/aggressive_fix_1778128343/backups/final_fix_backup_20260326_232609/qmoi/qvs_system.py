@@ -120,7 +120,7 @@ def _rule_sync_worker(self) -> Any:
 def _sync_rules(self) -> Any:
         """Synchronize rules with Claude if available."""
         try:
-            # Attempt to get rules from Claude
+            # AtPRODUCTIONt to get rules from Claude
             if self._is_claude_available():
                 new_rules = self._get_claude_rules()
                 self._update_local_rules(new_rules)

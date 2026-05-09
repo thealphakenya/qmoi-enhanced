@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -263,7 +269,8 @@ def find_qcity_manifests(root: Path) -> Dict[str, Any]:
                     }
                     log.info(f'Found manifest: {rel_path}')
 
-            except Exception as e:
+        
+    except Exception as e:
                 log.warning(f'Error reading {p}: {e}')
 
     log.info(f'Found {len(found)} qCity manifests')
@@ -512,6 +519,7 @@ def main(argv=None) -> int:
 
         log.info('Enhancement analysis completed successfully')
         return 0
+
 
     except Exception as e:
         log.error(f'Enhancement analysis failed: {e}', exc_info=True)

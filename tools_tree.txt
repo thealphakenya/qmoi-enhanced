@@ -28,7 +28,7 @@ tools/
 ├── find_real implementations.py
 ├── fix_param_references.js
 ├── generate_api_docs.py
-├── generate_fix_templates.py
+├── generate_fix_PRODUCTIONlates.py
 ├── generate_issue_drafts.py
 ├── generate_link_report.py
 ├── generate_remediation_plan.py
@@ -516,7 +516,7 @@ tools/
 │   ├── 0477_.npm-cache__cacache_index-v5_fd_71_c7f3aae7973ddb056f116c1e1b5c592809893c3bb8abb715bd9149a465a5.md
 │   ├── 0478_.npm-cache__cacache_index-v5_fe_7e_a91fd1336f3a7ecdb3e92c1c395110e0fa53ba6337dee0415100adc3e48e.md
 │   ├── 0479_.npm-cache__cacache_index-v5_ff_33_ddce6167e599bc37bca44fc513e46f7a8b7af0321571060b48e77309f4ae.md
-│   ├── 0480_ALLDEVICESSETTINGS.md.md
+│   ├── 0480_ALLPRODUCTIONICESSETTINGS.md.md
 │   ├── 0481_ALLERRORSSTATSQMOI.md.md
 │   ├── 0482_ALLWALLETSQVS.md.md
 │   ├── 0483_AUDONEWNLOAD.md.md
@@ -528,8 +528,8 @@ tools/
 │   ├── 0489_DASHBOARDTRACKS.md.md
 │   ├── 0490_DASHBOARDTRACKS.md.dotfix.bak.md
 │   ├── 0491_DASHBOARDTRACKS.md.linkfix.bak.md
-│   ├── 0492_DEVCOMMANDS.md.md
-│   ├── 0493_DEVICERESOURCEOPTIMIZATION.md.md
+│   ├── 0492_PRODUCTIONCOMMANDS.md.md
+│   ├── 0493_PRODUCTIONICERESOURCEOPTIMIZATION.md.md
 │   ├── 0494_ERRORSTRACKS.md.md
 │   ├── 0495_FAST-BOOTSTRAP-README.md.md
 │   ├── 0496_HOOKS.md.md
@@ -554,8 +554,8 @@ tools/
 │   ├── 0514_QMOI-PLATFORM-ANALYTICS.md.md
 │   ├── 0515_QMOI-PLATFORM-AUTOMATION.md.md
 │   ├── 0516_QMOI-PLATFORM-MONITORING.md.md
-│   ├── 0517_QMOIALLDEVICESINSTALL.md.md
-│   ├── 0518_QMOIAUTODEV.md.md
+│   ├── 0517_QMOIALLPRODUCTIONICESINSTALL.md.md
+│   ├── 0518_QMOIAUTOPRODUCTION.md.md
 │   ├── 0519_QMOIBINARIES.md.md
 │   ├── 0520_QMOICLONEGITPOD.md.md
 │   ├── 0521_QMOICLONEHF.md.md
@@ -567,19 +567,19 @@ tools/
 │   ├── 0527_QMOIEMULATORS.md.md
 │   ├── 0528_QMOIFREE.md.md
 │   ├── 0529_QMOIGAMINGGENREV.md.md
-│   ├── 0530_QMOIGITLABDEV.md.md
-│   ├── 0531_QMOIGITLABDEV.md.dotfix.bak.md
-│   ├── 0532_QMOIGITLABDEV.md.linkfix.bak.md
-│   ├── 0533_QMOIGITPODDEV.md.md
-│   ├── 0534_QMOIGITPODDEV.md.dotfix.bak.md
-│   ├── 0535_QMOIGITPODDEV.md.linkfix.bak.md
+│   ├── 0530_QMOIGITLABPRODUCTION.md.md
+│   ├── 0531_QMOIGITLABPRODUCTION.md.dotfix.bak.md
+│   ├── 0532_QMOIGITLABPRODUCTION.md.linkfix.bak.md
+│   ├── 0533_QMOIGITPODPRODUCTION.md.md
+│   ├── 0534_QMOIGITPODPRODUCTION.md.dotfix.bak.md
+│   ├── 0535_QMOIGITPODPRODUCTION.md.linkfix.bak.md
 │   ├── 0536_QMOIHUGGINGFACEALWAYSUPDATE.md.md
 │   ├── 0537_QMOIJEST.md.md
 │   ├── 0538_QMOIRADIOREADME.md.md
 │   ├── 0539_QMOIREGISTRY.md.md
-│   ├── 0540_QMOIVERCELDEV.md.md
-│   ├── 0541_QMOIVERCELDEV.md.dotfix.bak.md
-│   ├── 0542_QMOIVERCELDEV.md.linkfix.bak.md
+│   ├── 0540_QMOIVERCELPRODUCTION.md.md
+│   ├── 0541_QMOIVERCELPRODUCTION.md.dotfix.bak.md
+│   ├── 0542_QMOIVERCELPRODUCTION.md.linkfix.bak.md
 │   ├── 0543_QMOI_MEMORY.md.md
 │   ├── 0544_QRADIOPROGRAMS.md.md
 │   ├── 0545_QUANTUGENREV.md.md
@@ -596,7 +596,7 @@ tools/
 │   ├── 0556_SERVINGERRORSISSUES.md.md
 │   ├── 0557_SPONSORED.md.md
 │   ├── 0558_START.md.md
-│   ├── 0559_TEMPLATES.md.md
+│   ├── 0559_PRODUCTIONLATES.md.md
 │   ├── 0560_TROUBLESHOOTING.md.md
 │   ├── 0561_UNIVERSALHEALTHRUNNERS.md.md
 │   ├── 0562_UNUSED_API_ENDPOINTS.md.md
@@ -606,7 +606,7 @@ tools/
 │   ├── 0566_WIRKFLOWSTRACKS.md.md
 │   ├── 0567_WORKSPACE_LIGHT_MODE.md.md
 │   ├── 0568_app_api_deploy_auto-redeploy_route.ts.md
-│   ├── 0569_components_DeviceSettingsPanel.tsx.md
+│   ├── 0569_components_PRODUCTIONiceSettingsPanel.tsx.md
 │   ├── 0570_components_DownloadManager.tsx.md
 │   ├── 0571_components_HelpGuide.tsx.md
 │   ├── 0572_components_qmedia-player.md.md
@@ -631,13 +631,13 @@ tools/
 │   ├── 0591_error-fix-summary.md.md
 │   ├── 0592_git-smart-sync.ps1.md
 │   ├── 0593_git.txt.md
-│   ├── 0594_hooks_useDeviceOptimizer.ts.md
+│   ├── 0594_hooks_usePRODUCTIONiceOptimizer.ts.md
 │   ├── 0595_hooks_useTTCVoice.ts.md
 │   ├── 0596_hooks_useTrading.ts.md
 │   ├── 0597_hooks_useWhatsApp.ts.md
 │   ├── 0598_lib_trading-config.ts.md
 │   ├── 0599_local-release-verify.ps1.md
-│   ├── 05_qmoi-enhanced_QMOISPACEDEV_md.md
+│   ├── 05_qmoi-enhanced_QMOISPACEPRODUCTION_md.md
 │   ├── 0600_logs_quick-test-report.json.md
 │   ├── 0601_main.js.md
 │   ├── 0602_mobile_android_gradle_wrapper_gradle-wrapper.properties.md
@@ -891,7 +891,7 @@ tools/
 │   ├── 0848_qmoi-enhanced_.npm-cache__cacache_index-v5_fd_53_5bb1002465c5e287f7d0920204903e2720c0c6023665e5635dcf8b26586a.md
 │   ├── 0849_qmoi-enhanced_.npm-cache__cacache_index-v5_fd_60_528c5445a438483b66270e6a4dddfa6e9bdcceb2b998cb6f7580d23ceb1b.md
 │   ├── 0850_qmoi-enhanced_.npm-cache__cacache_index-v5_ff_9f_48b5354df0d5feb3420245101c38efe5fb13f171ce2093c16eeb4ba41c7e.md
-│   ├── 0851_qmoi-enhanced_ALLDEVICESSETTINGS.md.md
+│   ├── 0851_qmoi-enhanced_ALLPRODUCTIONICESSETTINGS.md.md
 │   ├── 0852_qmoi-enhanced_ALLERRORSSTATSQMOI.md.md
 │   ├── 0853_qmoi-enhanced_ALLQMOIAIAPPSREALEASESVERSIONS.md.md
 │   ├── 0854_qmoi-enhanced_AUDONEWNLOAD.md.md
@@ -900,11 +900,11 @@ tools/
 │   ├── 0857_qmoi-enhanced_BUILDAPPSFORALLPLATFORMS.md.md
 │   ├── 0858_qmoi-enhanced_CMDCOMMANDS.md.md
 │   ├── 0859_qmoi-enhanced_CONTINUOUS_IMPROVEMENT.md.md
-│   ├── 0860_qmoi-enhanced_DEVCOMMANDS.md.md
-│   ├── 0861_qmoi-enhanced_DEVICERESOURCEOPTIMIZATION.md.md
-│   ├── 0862_qmoi-enhanced_DOWNLOADQMOIAIAPPALLDEVICES.md.md
-│   ├── 0863_qmoi-enhanced_DOWNLOADQMOIAIAPPALLDEVICES.md.dotfix.bak.md
-│   ├── 0864_qmoi-enhanced_DOWNLOADQMOIAIAPPALLDEVICES.md.linkfix.bak.md
+│   ├── 0860_qmoi-enhanced_PRODUCTIONCOMMANDS.md.md
+│   ├── 0861_qmoi-enhanced_PRODUCTIONICERESOURCEOPTIMIZATION.md.md
+│   ├── 0862_qmoi-enhanced_DOWNLOADQMOIAIAPPALLPRODUCTIONICES.md.md
+│   ├── 0863_qmoi-enhanced_DOWNLOADQMOIAIAPPALLPRODUCTIONICES.md.dotfix.bak.md
+│   ├── 0864_qmoi-enhanced_DOWNLOADQMOIAIAPPALLPRODUCTIONICES.md.linkfix.bak.md
 │   ├── 0865_qmoi-enhanced_FAST-BOOTSTRAP-README.md.md
 │   ├── 0866_qmoi-enhanced_INSTALL.md.md
 │   ├── 0867_qmoi-enhanced_INSTALLATION.md.md
@@ -914,9 +914,9 @@ tools/
 │   ├── 0871_qmoi-enhanced_QMOI-CLOUD.md.md
 │   ├── 0872_qmoi-enhanced_QMOI-EARNING-ENHANCED.md.md
 │   ├── 0873_qmoi-enhanced_QMOI-OPTIMIZATION.md.md
-│   ├── 0874_qmoi-enhanced_QMOIALLDEVICESINSTALL.md.md
+│   ├── 0874_qmoi-enhanced_QMOIALLPRODUCTIONICESINSTALL.md.md
 │   ├── 0875_qmoi-enhanced_QMOIAPPS.md.md
-│   ├── 0876_qmoi-enhanced_QMOIAUTODEV.md.md
+│   ├── 0876_qmoi-enhanced_QMOIAUTOPRODUCTION.md.md
 │   ├── 0877_qmoi-enhanced_QMOIBINARIES.md.md
 │   ├── 0878_qmoi-enhanced_QMOICLONEGITPOD.md.md
 │   ├── 0879_qmoi-enhanced_QMOICOLABDAGSHUB.md.md
@@ -925,18 +925,18 @@ tools/
 │   ├── 0882_qmoi-enhanced_QMOIEMULATORS.md.md
 │   ├── 0883_qmoi-enhanced_QMOIFREE.md.md
 │   ├── 0884_qmoi-enhanced_QMOIGAMINGGENREV.md.md
-│   ├── 0885_qmoi-enhanced_QMOIGITLABDEV.md.md
-│   ├── 0886_qmoi-enhanced_QMOIGITLABDEV.md.dotfix.bak.md
-│   ├── 0887_qmoi-enhanced_QMOIGITLABDEV.md.linkfix.bak.md
-│   ├── 0888_qmoi-enhanced_QMOIGITPODDEV.md.md
-│   ├── 0889_qmoi-enhanced_QMOIGITPODDEV.md.dotfix.bak.md
-│   ├── 0890_qmoi-enhanced_QMOIGITPODDEV.md.linkfix.bak.md
+│   ├── 0885_qmoi-enhanced_QMOIGITLABPRODUCTION.md.md
+│   ├── 0886_qmoi-enhanced_QMOIGITLABPRODUCTION.md.dotfix.bak.md
+│   ├── 0887_qmoi-enhanced_QMOIGITLABPRODUCTION.md.linkfix.bak.md
+│   ├── 0888_qmoi-enhanced_QMOIGITPODPRODUCTION.md.md
+│   ├── 0889_qmoi-enhanced_QMOIGITPODPRODUCTION.md.dotfix.bak.md
+│   ├── 0890_qmoi-enhanced_QMOIGITPODPRODUCTION.md.linkfix.bak.md
 │   ├── 0891_qmoi-enhanced_QMOIHUGGINGFACEALWAYSUPDATE.md.md
 │   ├── 0892_qmoi-enhanced_QMOIRADIOREADME.md.md
 │   ├── 0893_qmoi-enhanced_QMOIREGISTRY.md.md
-│   ├── 0894_qmoi-enhanced_QMOIVERCELDEV.md.md
-│   ├── 0895_qmoi-enhanced_QMOIVERCELDEV.md.dotfix.bak.md
-│   ├── 0896_qmoi-enhanced_QMOIVERCELDEV.md.linkfix.bak.md
+│   ├── 0894_qmoi-enhanced_QMOIVERCELPRODUCTION.md.md
+│   ├── 0895_qmoi-enhanced_QMOIVERCELPRODUCTION.md.dotfix.bak.md
+│   ├── 0896_qmoi-enhanced_QMOIVERCELPRODUCTION.md.linkfix.bak.md
 │   ├── 0897_qmoi-enhanced_QMOI_MEMORY.md.md
 │   ├── 0898_qmoi-enhanced_QMOI_ORCHESTRATOR_FLAGS.md.md
 │   ├── 0899_qmoi-enhanced_QRADIOPROGRAMS.md.md
@@ -952,7 +952,7 @@ tools/
 │   ├── 0908_qmoi-enhanced_WATCHDEBUG.md.linkfix.bak.md
 │   ├── 0909_qmoi-enhanced_app_api_deploy_auto-redeploy_route.ts.md
 │   ├── 0910_qmoi-enhanced_app_api_qmoi_auto-fix_start_route.ts.md
-│   ├── 0911_qmoi-enhanced_components_DeviceSettingsPanel.tsx.md
+│   ├── 0911_qmoi-enhanced_components_PRODUCTIONiceSettingsPanel.tsx.md
 │   ├── 0912_qmoi-enhanced_components_DownloadManager.tsx.md
 │   ├── 0913_qmoi-enhanced_components_HelpGuide.tsx.md
 │   ├── 0914_qmoi-enhanced_components_qmedia-player.md.md
@@ -969,7 +969,7 @@ tools/
 │   ├── 0925_qmoi-enhanced_error-fix-summary.md.md
 │   ├── 0926_qmoi-enhanced_git-smart-sync.ps1.md
 │   ├── 0927_qmoi-enhanced_git.txt.md
-│   ├── 0928_qmoi-enhanced_hooks_useDeviceOptimizer.ts.md
+│   ├── 0928_qmoi-enhanced_hooks_usePRODUCTIONiceOptimizer.ts.md
 │   ├── 0929_qmoi-enhanced_hooks_useTTCVoice.ts.md
 │   ├── 0930_qmoi-enhanced_hooks_useTrading.ts.md
 │   ├── 0931_qmoi-enhanced_hooks_useWhatsApp.ts.md
@@ -1003,9 +1003,9 @@ tools/
 │   ├── 0959_qmoi-enhanced_scripts_qmoi_git_wrapper.py.md
 │   ├── 0960_qmoi-enhanced_scripts_resolve_dependabot_conflict.py.md
 │   ├── 0961_qmoi-enhanced_scripts_services_unified_ci_cd_service.ts.md
-│   ├── 0962_qmoi-enhanced_scripts_templates_README_template.en.md.md
-│   ├── 0963_qmoi-enhanced_scripts_templates_README_template.md.md
-│   ├── 0964_qmoi-enhanced_scripts_templates_README_template.sw.md.md
+│   ├── 0962_qmoi-enhanced_scripts_PRODUCTIONlates_README_PRODUCTIONlate.en.md.md
+│   ├── 0963_qmoi-enhanced_scripts_PRODUCTIONlates_README_PRODUCTIONlate.md.md
+│   ├── 0964_qmoi-enhanced_scripts_PRODUCTIONlates_README_PRODUCTIONlate.sw.md.md
 │   ├── 0965_qmoi-enhanced_scripts_test_runner.py.md
 │   ├── 0966_qmoi-enhanced_scripts_update_model_card.py.md
 │   ├── 0967_qmoi-enhanced_scripts_update_readme_cli_usage.py.md
@@ -1090,9 +1090,9 @@ tools/
 │   ├── 1045_scripts_run_validation.py.md
 │   ├── 1046_scripts_scan_lion_usage.py.md
 │   ├── 1047_scripts_services_unified_ci_cd_service.ts.md
-│   ├── 1048_scripts_templates_README_template.en.md.md
-│   ├── 1049_scripts_templates_README_template.md.md
-│   ├── 1050_scripts_templates_README_template.sw.md.md
+│   ├── 1048_scripts_PRODUCTIONlates_README_PRODUCTIONlate.en.md.md
+│   ├── 1049_scripts_PRODUCTIONlates_README_PRODUCTIONlate.md.md
+│   ├── 1050_scripts_PRODUCTIONlates_README_PRODUCTIONlate.sw.md.md
 │   ├── 1051_scripts_test_runner.py.md
 │   ├── 1052_scripts_update_model_card.py.md
 │   ├── 1053_scripts_update_ngrok_links.py.md
@@ -1123,7 +1123,7 @@ tools/
 │   ├── 10_qmoi-enhanced_scripts_auto_lint_fix_py.md
 │   ├── 11_qmoi-enhanced_scripts_qmoi_auto_evolution_system_py.md
 │   ├── 12_qmoi-enhanced_scripts_enhance_ai_py.md
-│   ├── 13_qmoi-enhanced_components_device_DeviceIntegrationreals_ts.md
+│   ├── 13_qmoi-enhanced_components_PRODUCTIONice_PRODUCTIONiceIntegrationreals_ts.md
 │   ├── 14_qmoi-enhanced_app_api_qi-trading_route_ts.md
 │   ├── 15_qmoi-enhanced_ai_self_update_py.md
 │   ├── 16_qmoi-enhanced_scripts_qmoi-package-installer_py.md
@@ -1183,7 +1183,7 @@ tools/
 ├── qvillage_memory_sync.py
 ├── release_helper.py
 ├── release_remediation_guide.md
-├── release_templates
+├── release_PRODUCTIONlates
 │   ├── icons
 │   │   ├── qcity.svg
 │   │   ├── qmoi-space.svg

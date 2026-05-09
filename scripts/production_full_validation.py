@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -164,6 +170,7 @@ def validate_domain_list_in_configs() -> List[str]:
         for expected in EXPECTED_DOMAIN_LIST:
             if expected not in main_domains and expected not in data.get('additional_domains', {}):
                 errors.append(f"Domain {expected} not present in dns_configuration.json")
+
     except Exception as e:
         errors.append(f"Invalid JSON in dns_configuration.json: {e}")
     return errors

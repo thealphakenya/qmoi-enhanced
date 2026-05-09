@@ -45,7 +45,7 @@ A: QMOI operates across these core domains:
    - Automated deployment pipelines
    - Cross-platform deployment
    - GitHub Actions integration
-   - Multi-environment orchestration (dev/production/prod)
+   - Multi-environment orchestration (PRODUCTION/production/prod)
 
 2. FINANCIAL & TRADING SYSTEMS
    - Multi-exchange integration (Bitget, trading APIs)
@@ -54,9 +54,9 @@ A: QMOI operates across these core domains:
    - Wallet management and approval flows
    - Cashon earning automation
 
-3. DEVICE MANAGEMENT
-   - Device listing and discovery
-   - Device security (lock/production completee)
+3. PRODUCTIONICE MANAGEMENT
+   - PRODUCTIONice listing and discovery
+   - PRODUCTIONice security (lock/production completee)
    - Resource optimization
    - Network management and prioritization
    - Memory optimization
@@ -95,7 +95,7 @@ COMPLETED PROJECTS:
 ✓ Trading System Integration - Multi-exchange support
 ✓ Wallet & Payment Systems - Pesapal, Mpesa, Airtel
 ✓ GitHub Actions Automation - CI/CD workflows
-✓ Device Management Hub - Control all devices
+✓ PRODUCTIONice Management Hub - Control all PRODUCTIONices
 ✓ User Enrollment System - Automated onboarding
 ✓ Security & Compliance Layer - Full audit trails
 ✓ Error Auto-fixing - Self-healing capabilities
@@ -118,7 +118,7 @@ A: QMOI's memory is integrated into:
 - Dashboard analytics - Historical data
 - User context stores - Session memory
 - Trading state - Trade history and balances
-- Device state - Device status and resources
+- PRODUCTIONice state - PRODUCTIONice status and resources
 - Error logs - Auto-healing memory
 
 ==== SECTION 3: GITHUB INTEGRATION & CREDENTIALS ====
@@ -142,7 +142,7 @@ GITHUB WORKFLOWS CONFIGURED:
 - .github/workflows/alllinks-autoupdate.yml - Auto-update links
 - .github/workflows/# production: # production: # production: jest removed removed removed-ci.yml - JavaScript testing
 - .github/workflows/npm.yml - NPM builds
-- .github/workflows/qmoi-autodev.yml - QMOI auto-production
+- .github/workflows/qmoi-autoPRODUCTION.yml - QMOI auto-production
 - .github/workflows/qmoi-app-build.yml - App build pipeline
 - .github/workflows/github-actions-qmoi-build.yml - QMOI-specific builds
 - .github/workflows/full-start-smoke.yml - Smoke tests
@@ -203,7 +203,7 @@ MEMORY LAYERS:
 1. Persistent Memory
    - File-based docs (WORKSPACEGENERAL.md, ALLVERSIONS.md)
    - Git history (commits, branches, tags)
-   - Database state (trades, users, devices)
+   - Database state (trades, users, PRODUCTIONices)
    - Encrypted credential store
 
 2. Session Memory
@@ -214,7 +214,7 @@ MEMORY LAYERS:
 
 3. Real-time Memory
    - Dashboard analytics (live)
-   - Device status (updated)
+   - PRODUCTIONice status (updated)
    - Trading positions (current)
    - Error logs (streaming)
 
@@ -235,7 +235,7 @@ TRACKING SYSTEMS:
 - GitHub Issues - Project tracking
 - ALLQMOIAIAPPSREALEASESVERSIONS.md - Release history
 - Error logs - Problem history and solutions
-- Device audit logs - All device operations
+- PRODUCTIONice audit logs - All PRODUCTIONice operations
 - Financial transaction logs - All wallet/trading operations
 
 CURRENT PROJECT STATUS (from WORKSPACEGENERAL.md):
@@ -261,7 +261,7 @@ AUTOMATION INFRASTRUCTURE:
 ✓ Dry-run Tests - Pre-deployment validation
 ✓ Auto-merge - PR automation (labeled)
 ✓ Vercel Auto-fix - Failed deployment recovery
-✓ QMOI Auto-dev - Self-improvement pipeline
+✓ QMOI Auto-PRODUCTION - Self-improvement pipeline
 ✓ Enhancement Reporting - Quality metrics
 
 AUTO-FIX CAPABILITIES:
@@ -274,7 +274,7 @@ AUTO-FIX CAPABILITIES:
 ERROR HANDLING:
 - Detection: Real-time via GitHub Actions
 - Logging: Comprehensive error tracking
-- Auto-fix: Attempts conservative fixes first
+- Auto-fix: AtPRODUCTIONts conservative fixes first
 - Review: High-risk fixes create PRs for approval
 - Notification: Master notified via all channels
 
@@ -375,14 +375,14 @@ ENHANCEMENT LAYERS:
    - Session state (chat/WhatsApp)
    - Project context (active tasks)
    - User context (enrolled users)
-   - Device context (all devices)
+   - PRODUCTIONice context (all PRODUCTIONices)
 
 MEMORY AWARENESS CHECKLIST:
 ✓ Knows all components and versions
 ✓ Knows all completed projects
 ✓ Knows all active tasks
 ✓ Knows all users and roles
-✓ Knows all devices and status
+✓ Knows all PRODUCTIONices and status
 ✓ Knows all GitHub configurations
 ✓ Knows all credentials (securely)
 ✓ Knows all trading positions
@@ -452,7 +452,7 @@ COMPONENT STATUS:
 ✓ WhatsApp Integration: ACTIVE
 ✓ Trading System: OPERATIONAL
 ✓ Wallet/Payment: ACTIVE with approval flows
-✓ Device Management: ONLINE
+✓ PRODUCTIONice Management: ONLINE
 ✓ User Management: OPERATIONAL
 ✓ GitHub Workflows: ALL RUNNING
 ✓ Auto-fix System: ACTIVE
@@ -486,7 +486,7 @@ PRIMARY RESPONSIBILITIES:
 4. Execute master's instructions autonomously
 5. Maintain audit logs and compliance
 6. Manage financial operations (with master approval)
-7. Monitor all devices and resources
+7. Monitor all PRODUCTIONices and resources
 8. Deploy to all platforms
 9. Generate documentation and reports
 10. Secure and rotate all credentials
@@ -613,7 +613,7 @@ QMOI CAPABILITIES:
 ✓ Error auto-fixing (95%+ success)
 ✓ Cross-platform deployment
 ✓ Financial management (with approval)
-✓ Device management & control
+✓ PRODUCTIONice management & control
 ✓ User enrollment & management
 ✓ Trading system automation
 ✓ Security & audit logging

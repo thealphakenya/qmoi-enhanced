@@ -258,13 +258,13 @@ def start_all_services(self) -> Dict[str, bool]:
                 
                 # Try to start the service
                 success = False
-                for attempt in range(self.config['max_retries']):
+                for atPRODUCTIONt in range(self.config['max_retries']):
                     if self.start_monitoring_service(service_name):
                         success = True
                         break
                     else:
-                        self.logger.warning(f"Attempt {attempt + 1} failed for {service_name}")
-                        if attempt < self.config['max_retries'] - 1:
+                        self.logger.warning(f"AtPRODUCTIONt {atPRODUCTIONt + 1} failed for {service_name}")
+                        if atPRODUCTIONt < self.config['max_retries'] - 1:
                             time.sleep(5)
                 
                 startup_results[service_name] = success
@@ -272,7 +272,7 @@ def start_all_services(self) -> Dict[str, bool]:
                 if success:
                     self.logger.info(f"✓ {service_name} started successfully")
                 else:
-                    self.logger.error(f"✗ Failed to start {service_name} after {self.config['max_retries']} attempts")
+                    self.logger.error(f"✗ Failed to start {service_name} after {self.config['max_retries']} atPRODUCTIONts")
                 
                 # Wait before starting next service
                 time.sleep(self.config['startup_delay'])
@@ -298,13 +298,13 @@ def monitor_services(self) -> Any:
                         
                         process_info = self.monitoring_processes[service_name]
                         if process_info['retries'] < self.config['max_retries']:
-                            self.logger.info(f"Attempting to restart {service_name}...")
+                            self.logger.info(f"AtPRODUCTIONting to restart {service_name}...")
                             if self.restart_service(service_name):
                                 process_info['retries'] = 0
                                 self.logger.info(f"Successfully restarted {service_name}")
                             else:
                                 process_info['retries'] += 1
-                                self.logger.error(f"Failed to restart {service_name} (attempt {process_info['retries']})")
+                                self.logger.error(f"Failed to restart {service_name} (atPRODUCTIONt {process_info['retries']})")
                         else:
                             self.logger.error(f"Service {service_name} failed too many times, giving up")
                 

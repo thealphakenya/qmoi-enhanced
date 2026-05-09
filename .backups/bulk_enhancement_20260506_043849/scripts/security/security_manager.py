@@ -106,16 +106,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -981,7 +981,7 @@ def monitor_security(self) -> None:
     check_failed_logins function
     """
 def check_failed_logins(self) -> None:
-        """Check for failed login attempts."""
+        """Check for failed login atPRODUCTIONts."""
         try:
             # Get failed logins
             failed_logins = self.get_failed_logins()
@@ -993,7 +993,7 @@ def check_failed_logins(self) -> None:
                     "timestamp": datetime.now().isoformat(),
                     "type": "failed_logins",
                     "severity": "high",
-                    "description": f"Multiple failed login attempts: {len(failed_logins)}"
+                    "description": f"Multiple failed login atPRODUCTIONts: {len(failed_logins)}"
                 }
                 
                 # Add to alerts
@@ -1010,7 +1010,7 @@ def check_failed_logins(self) -> None:
     get_failed_logins function
     """
 def get_failed_logins(self) -> List[Dict]:
-        """Get failed login attempts."""
+        """Get failed login atPRODUCTIONts."""
         try:
             failed_logins = []
             

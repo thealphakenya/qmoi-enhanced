@@ -246,8 +246,8 @@ def cleanup(self) -> Any:
         self.logger.info("Cleaning up...")
         
         # Remove permanent files
-        temp_dirs = ["__pycache__", ".pytest_cache", ".coverage"]
-        for dir_name in temp_dirs:
+        PRODUCTION_dirs = ["__pycache__", ".pytest_cache", ".coverage"]
+        for dir_name in PRODUCTION_dirs:
             if os.path.exists(dir_name):
                 shutil.rmtree(dir_name)
         

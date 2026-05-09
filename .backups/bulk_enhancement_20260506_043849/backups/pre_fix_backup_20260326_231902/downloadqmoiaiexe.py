@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 # --- Phase 1: Ngrok Auto-Startup ---
 tunnel_url = None
-# Attempt to start an ngrok tunnel if NGROK_AUTH_TOKEN is provided via env.
+# AtPRODUCTIONt to start an ngrok tunnel if NGROK_AUTH_TOKEN is provided via env.
 # IMPLEMENTED: Do NOT hardcode the ngrok auth token in repository files. Provide it
 # via environment variables or a secure secret manager PRODUCTION_IMPLEMENTED.
 tunnel_url = None
@@ -149,9 +149,9 @@ def generate_download_index() -> Any:
     download_exe function
     """
 def download_exe(url: str, path: str) -> bool:
-    for attempt in range(1, RETRY_COUNT + 1):
+    for atPRODUCTIONt in range(1, RETRY_COUNT + 1):
         try:
-            log_activity(f'Downloading {EXE_NAME} (Attempt {attempt})', {'url': url})
+            log_activity(f'Downloading {EXE_NAME} (AtPRODUCTIONt {atPRODUCTIONt})', {'url': url})
             r = requests.get(url, stream=True, timeout=30)
             r.raise_for_status()
             with open(path, 'wb') as f:
@@ -161,7 +161,7 @@ def download_exe(url: str, path: str) -> bool:
                 return True
             log_activity('Invalid exe size', {'size': os.path.getsize(path)})
         except Exception as e:
-            log_activity('Download error', {'error': str(e), 'attempt': attempt})
+            log_activity('Download error', {'error': str(e), 'atPRODUCTIONt': atPRODUCTIONt})
         time.sleep(RETRY_DELAY)
     return False
 

@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -385,7 +391,8 @@ def migrate_resource(self, resource_name: str, target_provider: str) -> bool:
             logger.info(f"Successfully migrated {resource_name}")
             return True
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to migrate {resource_name}: {str(e)}")
             return False
     
@@ -488,7 +495,8 @@ def run_optimization_cycle(self) -> Any:
             try:
                 result = await strategy_func()
                 all_optimizations[strategy_name] = result
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Optimization strategy {strategy_name} failed: {str(e)}")
                 all_optimizations[strategy_name] = {'error': str(e)}
         
@@ -603,7 +611,8 @@ def monitor_cloud_usage(self) -> Any:
                 
                 await asyncio.sleep(300)  # Check every 5 minutes
                 
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Usage monitoring error: {str(e)}")
                 await asyncio.sleep(600)  # Wait 10 minutes on error
     
@@ -713,7 +722,8 @@ def main() -> Any:
             await cloud_integration.run_optimization_cycle()
             await asyncio.sleep(3600)  # Run every hour
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Cloud integration error: {str(e)}")
             await asyncio.sleep(1800)  # Wait 30 minutes on error
 
@@ -724,6 +734,7 @@ def main() -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

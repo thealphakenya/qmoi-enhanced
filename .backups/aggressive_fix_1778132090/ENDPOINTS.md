@@ -47,7 +47,7 @@ The endpoint inventory is derived from live route handler source files under `ap
 | `cameras` | 6 | Camera feeds, thermal, panoramic, and road sensor APIs |
 | `emergency` | 6 | Emergency dispatch, email, SMS, lockdown and recovery endpoints |
 | `git` | 6 | Git operations, jobs, pipelines, and deployment integration |
-| `enhanced-email` | 5 | Email automation, analytics, templates and realtime messaging |
+| `enhanced-email` | 5 | Email automation, analytics, PRODUCTIONlates and realtime messaging |
 | `qmoi-gitlab` | 5 | GitLab integration and CI/CD endpoints |
 | `qvillage` | 5 | Community workspace, collaboration, and dataset endpoints |
 | `financial` | 4 | Balance, transactions, payments, and revenue APIs |
@@ -59,7 +59,7 @@ The endpoint inventory is derived from live route handler source files under `ap
 | `media` | 3 | Media generation, search, and status APIs |
 | `ssh` | 3 | SSH remote operations and host management |
 | `analytics` | 2 | Analytics telemetry and reporting |
-| `biometric` | 2 | Biometric verification and security templates |
+| `biometric` | 2 | Biometric verification and security PRODUCTIONlates |
 | `consciousness` | 2 | Consciousness health and validation |
 | `debug` | 2 | Debug helpers and diagnostics |
 | `deploy` | 2 | Deployment lifecycle and status checking |
@@ -99,8 +99,8 @@ The endpoint inventory is derived from live route handler source files under `ap
 - `/api/qmoi/avatars`
 - `/api/qmoi/backup`
 - `/api/qmoi/auto-setup`
-- `/api/qmoi/autodev/generate-feature`
-- `/api/qmoi/autodev/research`
+- `/api/qmoi/autoPRODUCTION/generate-feature`
+- `/api/qmoi/autoPRODUCTION/research`
 - `/api/qmoi/files/[id]`
 
 ### PWA Update Endpoints
@@ -137,9 +137,9 @@ The endpoint inventory is derived from live route handler source files under `ap
 - `/api/emails`
 - `/api/notifications/test`
 
-### Device & Platform API
-- `/api/devices`
-- `/api/device-fingerprint`
+### PRODUCTIONice & Platform API
+- `/api/PRODUCTIONices`
+- `/api/PRODUCTIONice-fingerprint`
 - `/api/domains`
 - `/api/domains/health`
 - `/api/platforms`
@@ -416,7 +416,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### GET /devices
+### GET /PRODUCTIONices
 
 Endpoint automatically detected but not documented.
 
@@ -826,7 +826,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### GET /qmoi/autodev/generate-feature
+### GET /qmoi/autoPRODUCTION/generate-feature
 
 Endpoint automatically detected but not documented.
 
@@ -836,7 +836,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### GET /qmoi/autodev/research
+### GET /qmoi/autoPRODUCTION/research
 
 Endpoint automatically detected but not documented.
 
@@ -846,7 +846,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### GET /qmoi/autodev/toggle
+### GET /qmoi/autoPRODUCTION/toggle
 
 Endpoint automatically detected but not documented.
 
@@ -946,7 +946,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### GET /qmoi/own-device-logs
+### GET /qmoi/own-PRODUCTIONice-logs
 
 Endpoint automatically detected but not documented.
 
@@ -956,7 +956,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### GET /qmoi/own-device-logs/export
+### GET /qmoi/own-PRODUCTIONice-logs/export
 
 Endpoint automatically detected but not documented.
 
@@ -1516,7 +1516,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### POST /devices
+### POST /PRODUCTIONices
 
 Endpoint automatically detected but not documented.
 
@@ -1916,7 +1916,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### POST /qmoi/autodev/generate-feature
+### POST /qmoi/autoPRODUCTION/generate-feature
 
 Endpoint automatically detected but not documented.
 
@@ -1926,7 +1926,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### POST /qmoi/autodev/research
+### POST /qmoi/autoPRODUCTION/research
 
 Endpoint automatically detected but not documented.
 
@@ -1936,7 +1936,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### POST /qmoi/autodev/toggle
+### POST /qmoi/autoPRODUCTION/toggle
 
 Endpoint automatically detected but not documented.
 
@@ -2036,7 +2036,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### POST /qmoi/own-device-logs
+### POST /qmoi/own-PRODUCTIONice-logs
 
 Endpoint automatically detected but not documented.
 
@@ -2046,7 +2046,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### POST /qmoi/own-device-logs/export
+### POST /qmoi/own-PRODUCTIONice-logs/export
 
 Endpoint automatically detected but not documented.
 

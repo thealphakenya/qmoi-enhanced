@@ -94,7 +94,7 @@
 ### PROJECT_COMPLETION_CERTIFICATE.md
 - production_data: production_data
 
-### QMOIALLDEVICESHANDSFREE.md
+### QMOIALLPRODUCTIONICESHANDSFREE.md
 - WIP: wip
 
 ### QMOIAUTOBET.md
@@ -117,7 +117,7 @@
 - production_data: production_data
 - production_data: production_data
 
-### QMOISPACEDEV.md
+### QMOISPACEPRODUCTION.md
 - production_data: production_data
 - production_data: production_data
 - production_data: production_data
@@ -172,7 +172,7 @@
 - production_data: production_data
 - production_data: production_data
 
-### aggressive_production_fixer.py
+### aggressive_PRODUCTION_FIXEDer.py
 - production_data: production_data
 - production_data: production_data
 - production_data: production_data
@@ -212,27 +212,27 @@
 ### app/api/production_STATUS.md
 - WIP: wip
 
-### app/api/qcity/devices.ts
+### app/api/qcity/PRODUCTIONices.ts
 - WIP: wip
 
 ### app/api/qmoi-model.ts
 - POC: poc
 
-### archives/autodev_tools_20260425_153707/autodev_aggressive_fixer_backup.py
+### archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_aggressive_fixer_backup.py
 - production_data: production_data
 
-### archives/autodev_tools_20260425_153707/autodev_enhanced_fixer.py
+### archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_enhanced_fixer.py
 - WIP: wip
 
-### archives/autodev_tools_20260425_153707/autodev_enhanced_production_command.py
+### archives/autoPRODUCTION_tools_20260425_153707/autoPRODUCTION_enhanced_production_command.py
 - production_data: production_data
 - production_data: production_data
 
-### autodev_enhanced_production_results.json
+### autoPRODUCTION_enhanced_production_results.json
 - WIP: wip
 - WIP: wip
 
-### autodev_memory_sync.json
+### autoPRODUCTION_memory_sync.json
 - production_data: production_data
 - production_data: production_data
 - production_data: production_data
@@ -302,19 +302,19 @@
 ### backups/final_fix_backup_20260326_232609/src/config/bitget.ts
 - WIP: wIp
 
-### backups/final_fix_backup_20260326_232609/src/services/DeviceTrackingService.ts
+### backups/final_fix_backup_20260326_232609/src/services/PRODUCTIONiceTrackingService.ts
 - WIP: wip
 - WIP: wip
 - WIP: wip
 
-### backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/components/q-city/DevicesHub.tsx
+### backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/components/q-city/PRODUCTIONicesHub.tsx
 - WIP: wip
 - WIP: wip
 - WIP: wip
 - WIP: wip
 - WIP: Wip
 
-### backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/services/DeviceTrackingService.ts
+### backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/services/PRODUCTIONiceTrackingService.ts
 - WIP: wip
 - WIP: wip
 
@@ -377,7 +377,7 @@
 ### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/config/bitget.ts
 - WIP: wIp
 
-### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/services/DeviceTrackingService.ts
+### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/services/PRODUCTIONiceTrackingService.ts
 - WIP: wip
 - WIP: wip
 - WIP: wip
@@ -407,7 +407,7 @@
 ### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/config/bitget.ts
 - WIP: wIp
 
-### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/services/DeviceTrackingService.ts
+### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/services/PRODUCTIONiceTrackingService.ts
 - WIP: wip
 - WIP: wip
 - WIP: wip
@@ -441,14 +441,14 @@
 ### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/config/bitget.ts
 - WIP: wIp
 
-### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/aggressive_production_fixer.py
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/aggressive_PRODUCTION_FIXEDer.py
 - WIP: wip
 - TBD: tbd
 
 ### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/config/bitget.ts
 - WIP: wIp
 
-### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/services/DeviceTrackingService.ts
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/services/PRODUCTIONiceTrackingService.ts
 - WIP: wip
 - WIP: wip
 - WIP: wip
@@ -492,7 +492,7 @@
 ### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/config/bitget.ts
 - WIP: wIp
 
-### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/services/DeviceTrackingService.ts
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/services/PRODUCTIONiceTrackingService.ts
 - WIP: wip
 - WIP: wip
 - WIP: wip
@@ -503,7 +503,7 @@
 - WIP: wip
 - TBD: tbd
 
-### backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/components/q-city/DevicesHub.tsx
+### backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/components/q-city/PRODUCTIONicesHub.tsx
 - WIP: wip
 - WIP: wip
 - WIP: wip
@@ -523,7 +523,7 @@
 - WIP: wip
 - WIP: wip
 
-### backups/final_fix_backup_20260326_233109/src/components/q-city/DevicesHub.tsx
+### backups/final_fix_backup_20260326_233109/src/components/q-city/PRODUCTIONicesHub.tsx
 - WIP: wip
 - WIP: wip
 - WIP: wip
@@ -556,7 +556,7 @@
 - POC: poc
 - POC: poc
 
-### backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/DevicesHub.tsx
+### backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/PRODUCTIONicesHub.tsx
 - WIP: wip
 - WIP: wip
 - WIP: wip
@@ -566,15 +566,15 @@
 ### backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/config/bitget.ts
 - WIP: wIp
 
-### backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/services/DeviceTrackingService.ts
+### backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/services/PRODUCTIONiceTrackingService.ts
 - WIP: wip
 - WIP: wip
 
-### backups/pre_fix_backup_20260326_231902/aggressive_production_fixer.py
+### backups/pre_fix_backup_20260326_231902/aggressive_PRODUCTION_FIXEDer.py
 - WIP: wip
 - TBD: tbd
 
-### backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/q-city/DevicesHub.tsx
+### backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/q-city/PRODUCTIONicesHub.tsx
 - WIP: wip
 - WIP: wip
 - WIP: wip
@@ -584,7 +584,7 @@
 ### backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/config/bitget.ts
 - WIP: wIp
 
-### backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/services/DeviceTrackingService.ts
+### backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/services/PRODUCTIONiceTrackingService.ts
 - WIP: wip
 - WIP: wip
 - WIP: wip
@@ -663,7 +663,7 @@
 - WIP: wip
 - WIP: wip
 
-### backups/pre_fix_backup_20260326_231902/src/components/q-city/DevicesHub.tsx
+### backups/pre_fix_backup_20260326_231902/src/components/q-city/PRODUCTIONicesHub.tsx
 - WIP: wip
 - WIP: wip
 - WIP: wip
@@ -673,7 +673,7 @@
 ### backups/pre_fix_backup_20260326_231902/src/config/bitget.ts
 - WIP: wIp
 
-### backups/pre_fix_backup_20260326_231902/src/services/DeviceTrackingService.ts
+### backups/pre_fix_backup_20260326_231902/src/services/PRODUCTIONiceTrackingService.ts
 - WIP: wip
 - WIP: wip
 - WIP: wip
@@ -713,7 +713,7 @@
 ### backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/config/bitget.ts
 - WIP: wIp
 
-### backups/pre_fix_backup_20260326_232205/aggressive_production_fixer.py
+### backups/pre_fix_backup_20260326_232205/aggressive_PRODUCTION_FIXEDer.py
 - WIP: wip
 - TBD: tbd
 
@@ -730,7 +730,7 @@
 ### backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/config/bitget.ts
 - WIP: wIp
 
-### backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/services/DeviceTrackingService.ts
+### backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/services/PRODUCTIONiceTrackingService.ts
 - WIP: wip
 - WIP: wip
 - WIP: wip
@@ -778,7 +778,7 @@
 ### backups/pre_fix_backup_20260326_232205/src/config/bitget.ts
 - WIP: wIp
 
-### backups/pre_fix_backup_20260326_232205/src/services/DeviceTrackingService.ts
+### backups/pre_fix_backup_20260326_232205/src/services/PRODUCTIONiceTrackingService.ts
 - WIP: wip
 - WIP: wip
 - WIP: wip
@@ -789,7 +789,7 @@
 - WIP: wip
 - TBD: tbd
 
-### backups/src.backup.20260121144720/components/q-city/DevicesHub.tsx
+### backups/src.backup.20260121144720/components/q-city/PRODUCTIONicesHub.tsx
 - WIP: wip
 - WIP: wip
 - WIP: wip
@@ -813,7 +813,7 @@
 - WIP: wip
 - WIP: wip
 
-### comprehensive_production_fixer.py
+### comprehensive_PRODUCTION_FIXEDer.py
 - production_data: production_data
 
 ### comprehensive_production_implementer.py
@@ -970,7 +970,7 @@
 ### eslint_report_after_ignore.json
 - POC: poc
 
-### fast_bulk_production_fixer.py
+### fast_bulk_PRODUCTION_FIXEDer.py
 - production_data: production_data
 - production_data: production_data
 - production_data: production_data
@@ -1015,7 +1015,7 @@
 ### lib/ml-trading-strategy.ts
 - POC: poc
 
-### lib/services/device.service.ts
+### lib/services/PRODUCTIONice.service.ts
 - WIP: wip
 
 ### link_validation_report.json
@@ -1214,7 +1214,7 @@
 - production_data: production_data
 - production_data: production_data
 
-### safe_bulk_production_fixer.py
+### safe_bulk_PRODUCTION_FIXEDer.py
 - production_data: production_data
 - production_data: production_data
 - production_data: production_data
@@ -1236,7 +1236,7 @@
 - production_data: production_data
 - production_data: production_data
 
-### scripts/aggressive_production_fixer_v2.py
+### scripts/aggressive_PRODUCTION_FIXEDer_v2.py
 - production_data: production_data
 - production_data: production_data
 - production_data: production_data
@@ -1288,7 +1288,7 @@
 ### scripts/bulk_component_generator.py
 - production_data: production_data
 
-### scripts/bulk_production_fixer.py
+### scripts/bulk_PRODUCTION_FIXEDer.py
 - production_data: production_data
 - production_data: production_data
 - production_data: production_data
@@ -1308,7 +1308,7 @@
 ### scripts/comprehensive_docs_update.py
 - production_data: production_data
 
-### scripts/comprehensive_production_fixer.py
+### scripts/comprehensive_PRODUCTION_FIXEDer.py
 - production_data: production_data
 - production_data: production_data
 
@@ -1329,17 +1329,17 @@
 - production_data: production_data
 - production_data: production_data
 
-### scripts/device_orchestration_manager.test.py
+### scripts/PRODUCTIONice_orchestration_manager.test.py
 - production_data: production_data
 
-### scripts/device_ownership_detector.py
+### scripts/PRODUCTIONice_ownership_detector.py
 - production_data: production_data
 - production_data: production_data
 - production_data: production_data
 - production_data: production_data
 - production_data: production_data
 
-### scripts/device_unlock_system.py
+### scripts/PRODUCTIONice_unlock_system.py
 - production_data: production_data
 - production_data: production_data
 - production_data: production_data
@@ -1660,7 +1660,7 @@
 - production_data: production_data
 - production_data: production_data
 
-### scripts/qmoi_device_agent.py
+### scripts/qmoi_PRODUCTIONice_agent.py
 - production_data: production_data
 - production_data: production_data
 - production_data: production_data
@@ -1715,7 +1715,7 @@
 - production_data: production_data
 - production_data: production_data
 
-### scripts/qmoi_own_device_logger.py
+### scripts/qmoi_own_PRODUCTIONice_logger.py
 - production_data: production_data
 - production_data: production_data
 
@@ -1886,7 +1886,7 @@
 - production_data: production_data
 - production_data: production_data
 
-### src/components/q-city/DevicesHub.tsx
+### src/components/q-city/PRODUCTIONicesHub.tsx
 - WIP: wip
 - WIP: wip
 - WIP: wip
@@ -1896,7 +1896,7 @@
 ### src/config/bitget.ts
 - WIP: wIp
 
-### src/services/DeviceTrackingService.ts
+### src/services/PRODUCTIONiceTrackingService.ts
 - WIP: wip
 - WIP: wip
 
@@ -1951,7 +1951,7 @@
 - production_data: production_data
 - production_data: production_data
 
-### ultimate_production_fix_report.json
+### ultimate_PRODUCTION_FIXED_report.json
 - production_data: production_data
 - production_data: production_data
 - production_data: production_data

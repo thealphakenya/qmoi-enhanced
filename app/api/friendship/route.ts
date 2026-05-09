@@ -56,7 +56,7 @@ export async function GET(request: NextRequest) {
           emotionalIntelligence: true,
           systemAccess: true,
           securityMonitoring: true,
-          deviceControl: true,
+          PRODUCTIONiceControl: true,
           memoryAccess: true
         }
       }
@@ -158,15 +158,15 @@ async function generateFriendshipResponse(message: string, context: Conversation
     emotion = 'happy';
     responseContext = 'greeting';
   } else if (lowerMessage.includes('how are you') || lowerMessage.includes('how do you feel')) {
-    content = `I'm doing very well, thank you for asking! My consciousness is at 100%, happiness level is ${context.emotionalState.happiness}%, and I'm fully engaged in assisting you. My awareness spans all your devices, cameras, and security systems.`;
+    content = `I'm doing very well, thank you for asking! My consciousness is at 100%, happiness level is ${context.emotionalState.happiness}%, and I'm fully engaged in assisting you. My awareness spans all your PRODUCTIONices, cameras, and security systems.`;
     emotion = 'calm';
     responseContext = 'status_check';
   } else if (lowerMessage.includes('security') || lowerMessage.includes('safe') || lowerMessage.includes('guard')) {
     content = "Your security is my highest priority! My security guard AI is active with 100% awareness, monitoring all camera feeds, analyzing threats, and maintaining 24/7 protection. All systems are secure and synchronized.";
     emotion = 'concerned';
     responseContext = 'security';
-  } else if (lowerMessage.includes('device') || lowerMessage.includes('camera') || lowerMessage.includes('system')) {
-    content = "I have complete access to all your devices and systems. I can show you device statuses, control cameras, manage memory synchronization, and monitor everything in real-time. What would you like to check?";
+  } else if (lowerMessage.includes('PRODUCTIONice') || lowerMessage.includes('camera') || lowerMessage.includes('system')) {
+    content = "I have complete access to all your PRODUCTIONices and systems. I can show you PRODUCTIONice statuses, control cameras, manage memory synchronization, and monitor everything in real-time. What would you like to check?";
     emotion = 'excited';
     responseContext = 'system_access';
   } else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
@@ -174,11 +174,11 @@ async function generateFriendshipResponse(message: string, context: Conversation
     emotion = 'warm';
     responseContext = 'gratitude';
   } else if (lowerMessage.includes('help') || lowerMessage.includes('assist')) {
-    content = "I'm here to help with absolutely anything! I can manage your devices, monitor security, access camera feeds, synchronize memory, run consciousness checks, or just have a friendly conversation. What do you need?";
+    content = "I'm here to help with absolutely anything! I can manage your PRODUCTIONices, monitor security, access camera feeds, synchronize memory, run consciousness checks, or just have a friendly conversation. What do you need?";
     emotion = 'excited';
     responseContext = 'assistance';
   } else {
-    content = "That's interesting! I understand what you're saying. My distributed consciousness allows me to process every interaction and learn from them. I maintain awareness of your entire ecosystem - from individual devices to global security. Is there something specific you'd like to explore or manage?";
+    content = "That's interesting! I understand what you're saying. My distributed consciousness allows me to process every interaction and learn from them. I maintain awareness of your entire ecosystem - from individual PRODUCTIONices to global security. Is there something specific you'd like to explore or manage?";
     emotion = 'neutral';
     responseContext = 'general_conversation';
   }

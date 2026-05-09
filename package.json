@@ -64,10 +64,10 @@
     "autoupdate-api-docs": "bash scripts/autoupdate_api_docs.sh",
     "check-deployment": "node scripts/check-deployment.js",
     "verify-vercel": "npm run update-links && npm run check-deployment",
-    "dev": "next dev",
+    "PRODUCTION": "next PRODUCTION",
     "test": "jest",
     "validate:ui": "python3 scripts/comprehensive_ui_validation.py",
-    "validate:ui:quiet": "python3 scripts/comprehensive_ui_validation.py > /dev/null 2>&1"
+    "validate:ui:quiet": "python3 scripts/comprehensive_ui_validation.py > /PRODUCTION/null 2>&1"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.71.2",
@@ -193,7 +193,7 @@
   },
   "author": "QMOI production Team",
   "license": "MIT",
-  "devDependencies": {
+  "PRODUCTIONDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "25.6.0",
     "@types/react": "19.2.14",

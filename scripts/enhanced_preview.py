@@ -7,14 +7,19 @@ class productionFileManager:
         """Safely read file with error handling"""
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             with open(file_path, 'r', encoding=encoding) as f:
@@ -25,7 +30,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -45,7 +51,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -59,7 +66,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -200,7 +208,8 @@ def preview_file(self, file_path: str) -> Dict[str, Any]:
                     "error": f"Unsupported file type: {file_type}"
                 }
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error previewing file: {str(e)}")
             return {
                 "status": "error",
@@ -225,7 +234,8 @@ def _preview_text(self, file_path: str) -> Dict[str, Any]:
                     "modified": datetime.fromtimestamp(os.path.getmtime(file_path)).isoformat()
                 }
             }
-        except Exception as e:
+    
+    except Exception as e:
             return {"status": "error", "error": str(e)}
 
     """
@@ -249,7 +259,8 @@ def _preview_image(self, file_path: str) -> Dict[str, Any]:
                     "modified": datetime.fromtimestamp(os.path.getmtime(file_path)).isoformat()
                 }
             }
-        except Exception as e:
+    
+    except Exception as e:
             return {"status": "error", "error": str(e)}
 
     """
@@ -273,7 +284,8 @@ def _preview_audio(self, file_path: str) -> Dict[str, Any]:
                     "modified": datetime.fromtimestamp(os.path.getmtime(file_path)).isoformat()
                 }
             }
-        except Exception as e:
+    
+    except Exception as e:
             return {"status": "error", "error": str(e)}
 
     """
@@ -297,7 +309,8 @@ def _preview_video(self, file_path: str) -> Dict[str, Any]:
                     "modified": datetime.fromtimestamp(os.path.getmtime(file_path)).isoformat()
                 }
             }
-        except Exception as e:
+    
+    except Exception as e:
             return {"status": "error", "error": str(e)}
 
     """
@@ -321,7 +334,8 @@ def _preview_document(self, file_path: str) -> Dict[str, Any]:
                     "modified": datetime.fromtimestamp(os.path.getmtime(file_path)).isoformat()
                 }
             }
-        except Exception as e:
+    
+    except Exception as e:
             return {"status": "error", "error": str(e)}
 
     """
@@ -370,7 +384,8 @@ def convert_format(self, file_path: str, target_format: str) -> Dict[str, Any]:
                 }
             }
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error converting file: {str(e)}")
             return {
                 "status": "error",
@@ -415,6 +430,7 @@ return self._get_production_data()
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

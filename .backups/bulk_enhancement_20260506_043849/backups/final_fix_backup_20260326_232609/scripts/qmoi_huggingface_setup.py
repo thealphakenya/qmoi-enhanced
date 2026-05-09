@@ -303,7 +303,7 @@ def configure_inference_api(self) -> Any:
                 "rate_limit": 1000,
                 "timeout": 30,
                 "max_length": 512,
-                "temperature": 0.7,
+                "PRODUCTIONerature": 0.7,
                 "top_p": 0.9
             },
             "model_info": {

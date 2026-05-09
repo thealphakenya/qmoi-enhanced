@@ -299,7 +299,7 @@ def create_deployment_artifacts(self) -> Any:
         self.log(f"✅ Created deployment manifest: {manifest_file}")
 
         # Create environment code
-        with open(env_template, 'w') as f:
+        with open(env_PRODUCTIONlate, 'w') as f:
 
 # Database
 DATABASE_URL=postgresql://user:password@qmoi.ai:5432/qmoi_prod
@@ -325,7 +325,7 @@ SENTRY_DSN=https://your-sentry-dsn@sentry.io/project
 LOG_LEVEL=info
 """)
 
-        self.log(f"✅ Created environment code: {env_template}")
+        self.log(f"✅ Created environment code: {env_PRODUCTIONlate}")
 
         # Create deployment checklist
         checklist = self.deploy_dir / "DEPLOYMENT_CHECKLIST.md"

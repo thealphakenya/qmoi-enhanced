@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -80,7 +86,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -205,7 +212,7 @@ def main() -> Any:
     lines = [f'# ALL CLONED RELEASES (generated {datetime.utcnow().isoformat()}Z)', '', 'This file lists discovered release status for platforms.']
     lines.append('')
     if not entries:
-        lines.append('*No release information found. Run `scripts/auto_release_manager.py --apply` to attempt discovery.*')
+        lines.append('*No release information found. Run `scripts/auto_release_manager.py --apply` to atPRODUCTIONt discovery.*')
     else:
         for e in entries:
             p = e.get('platform')

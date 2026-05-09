@@ -39,14 +39,19 @@ def sync() -> Any:
             dfile = target_dir / f
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 # production: test code removed
@@ -57,7 +62,8 @@ def sync() -> Any:
                 shutil.copy2(sfile, dfile)
                 copied += 1
                 logger.info(f"Copied: {sfile} -> {dfile}")
-            except Exception as e:
+        
+    except Exception as e:
                 logger.info("Failed to copy", sfile, e)
     logger.info(f"Done. Files copied: {copied}")
     return 0

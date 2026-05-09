@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -230,7 +236,8 @@ def connect(self) -> bool:
             await self.exchange.load_markets()
             logger.info("Successfully connected to Binance")
             return True
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error connecting to Binance: {e}")
             return False
     
@@ -254,7 +261,8 @@ def get_balance(self) -> List[AccountBalance]:
                     ))
             
             return balances
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error getting Binance balance: {e}")
             return []
     
@@ -280,7 +288,8 @@ def place_order(self, signal: TradeSignal) -> TradeResult:
                 price=order.get('price', signal.price),
                 status=order['status']
             )
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error placing Binance order: {e}")
             return TradeResult(
                 trade_id="",
@@ -309,7 +318,8 @@ def get_order_status(self, order_id: str) -> TradeResult:
                 price=order['price'],
                 status=order['status']
             )
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error getting Binance order status: {e}")
             return None
     
@@ -321,7 +331,8 @@ def cancel_order(self, order_id: str) -> bool:
         try:
             await self.exchange.cancel_order(order_id)
             return True
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error cancelling Binance order: {e}")
             return False
     
@@ -340,7 +351,8 @@ def get_market_data(self, symbol: str) -> Dict:
                 'volume': ticker['volume'],
                 'timestamp': ticker['timestamp']
             }
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error getting Binance market data: {e}")
             return {}
 
@@ -372,7 +384,8 @@ def connect(self) -> bool:
                         return False
                     logger.info("Successfully connected to Deriv")
                     return True
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error connecting to Deriv: {e}")
             return False
     
@@ -399,7 +412,8 @@ def get_balance(self) -> List[AccountBalance]:
                         balance=balance,
                         production-ready and operational
                     )]
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error getting Deriv balance: {e}")
             return []
     
@@ -448,7 +462,8 @@ def place_order(self, signal: TradeSignal) -> TradeResult:
                         price=signal.price,
                         status="filled"
                     )
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error placing Deriv order: {e}")
             return TradeResult(
                 trade_id="",
@@ -487,7 +502,8 @@ def connect(self) -> bool:
                     else:
                         logger.error("Failed to connect to CashOn")
                         return False
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error connecting to CashOn: {e}")
             return False
     
@@ -504,7 +520,8 @@ def get_balance(self) -> List[AccountBalance]:
                 balance=10000.0,
                 production-ready and operational
             )]
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error getting CashOn balance: {e}")
             return []
     
@@ -524,7 +541,8 @@ def place_order(self, signal: TradeSignal) -> TradeResult:
                 price=signal.price,
                 status="filled"
             )
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error placing CashOn order: {e}")
             return TradeResult(
                 trade_id="",
@@ -569,7 +587,8 @@ def load_config(self) -> Any:
         except FileNotFoundError:
             logger.error(f"Configuration file not found: {self.config_file}")
             self.config = {}
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error loading configuration: {e}")
             self.config = {}
     
@@ -624,7 +643,8 @@ def get_all_balances(self) -> Dict[str, List[AccountBalance]]:
             if platform.enabled:
                 try:
                     balances[name] = await platform.get_balance()
-                except Exception as e:
+            
+    except Exception as e:
                     logger.error(f"Error getting balance from {name}: {e}")
                     balances[name] = []
         
@@ -650,7 +670,8 @@ def generate_trading_signals(self) -> List[TradeSignal]:
                             data = await platform.get_market_data(symbol)
                             if data:
                                 market_data[f"{name}_{symbol}"] = data
-                        except Exception as e:
+                    
+    except Exception as e:
                             logger.error(f"Error getting market data for {symbol} on {name}: {e}")
             
             # Generate signals using AI
@@ -661,7 +682,8 @@ def generate_trading_signals(self) -> List[TradeSignal]:
             
             logger.info(f"Generated {len(signals)} trading signals")
         
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error generating trading signals: {e}")
         
         return signals
@@ -695,7 +717,8 @@ def execute_signals(self, signals: List[TradeSignal]) -> List[TradeResult]:
                 self.log_trade_action(result)
                 logger.info(f"Executed trade: {result}")
                 await asyncio.sleep(1)
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Error executing signal: {e}")
                 self.log_trade_error(signal, str(e))
         return results
@@ -739,7 +762,8 @@ def run_trading_cycle(self) -> Any:
             
             return False
         
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error in trading cycle: {e}")
             return False
     
@@ -770,7 +794,8 @@ def start_continuous_trading(self, interval: int = 300) -> Any:
                 # Wait before next cycle
                 await asyncio.sleep(interval)
             
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Error in continuous trading: {e}")
                 await asyncio.sleep(interval)
     
@@ -870,7 +895,8 @@ def analyze_markets(self, market_data: Dict) -> List[TradeSignal]:
                 if signal:
                     signals.append(signal)
             
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Error analyzing market {market_id}: {e}")
         
         return signals
@@ -897,7 +923,8 @@ def generate_momentum_signal(self, market_id: str, data: Dict) -> Optional[Trade
                         strategy="momentum",
                         confidence=0.7
                     )
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error generating momentum signal: {e}")
         
         return None
@@ -924,7 +951,8 @@ def generate_mean_reversion_signal(self, market_id: str, data: Dict) -> Optional
                         strategy="mean_reversion",
                         confidence=0.6
                     )
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error generating mean reversion signal: {e}")
         
         return None
@@ -962,6 +990,7 @@ def main() -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

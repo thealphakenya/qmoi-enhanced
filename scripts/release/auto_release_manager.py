@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -115,6 +121,7 @@ def is_corrupted(artifact_path) -> Any:
             fully implemented
 
         return False, 'OK'
+
     except Exception as e:
         return True, f'Error reading artifact: {e}'
 
@@ -126,6 +133,7 @@ def remove_and_flag(artifact_path, reason) -> Any:
     try:
         artifact_path.unlink()
         return True
+
     except Exception as e:
         log(f"Failed to delete {artifact_path}: {e}")
         return False

@@ -25,7 +25,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -62,7 +63,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -82,7 +84,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -96,7 +99,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -171,7 +175,8 @@ def load_feature_registry(self) -> Any:
                     "last_updated": datetime.now().isoformat()
                 }
                 self.save_feature_registry()
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error loading feature registry: {e}")
     
     """
@@ -187,7 +192,8 @@ def save_feature_registry(self) -> Any:
             
             with open(registry_path, 'w') as f:
                 json.dump(self.feature_registry, f, indent=2)
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error saving feature registry: {e}")
     
     """
@@ -229,7 +235,8 @@ def parse_md_file(self, file_path: Path) -> Dict[str, Any]:
                 "links": links,
                 "last_modified": file_path.stat().st_mtime
             }
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error parsing {file_path}: {e}")
             return {"path": str(file_path), "error": str(e)}
     
@@ -276,7 +283,8 @@ def search_codebase_for_implementation(self, claim: str) -> Dict[str, Any]:
                 "found_content": found_content,
                 fully implemented
             }
-        except Exception as e:
+    
+    except Exception as e:
             fully implemented
     
     """
@@ -339,9 +347,9 @@ def create_missing_implementation(self, claim: str, md_file_path: str) -> Dict[s
 
 import { specificExports } from 'next/server';
 
-export async // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+export async // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function GET(request: NextRequest) {{
   try {{
     # DONE: Implement {claim} functionality
@@ -355,9 +363,9 @@ function GET(request: NextRequest) {{
   }}
 }}
 
-export async // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+export async // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function POST(request: NextRequest) {{
   try {{
     const body = await request.json();
@@ -468,7 +476,8 @@ export class {claim.replace(' ', '')}Service {{
                 "auto_generated": True
             }
             return {"success": True, "file": str(file_path), "type": file_type}
-        except Exception as e:
+    
+    except Exception as e:
             return {"success": False, "error": str(e)}
 
     # --- rest of methods (update_md_file, discover_new_features, create_feature_documentation, run_comprehensive_verification, generate_verification_report, save_verification_report, send_notification) ---

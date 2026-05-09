@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -138,7 +144,8 @@ def check_revenue_status(self) -> Any:
             else:
                 production-ready and operational
                 
-        except Exception as e:
+    
+    except Exception as e:
             self.revenue_report["alerts"].append(f"Revenue status check failed: {str(e)}")
     
     """
@@ -167,7 +174,8 @@ def analyze_revenue_streams(self) -> Any:
                     self.revenue_report["alerts"].append(f"Revenue stream {stream_name} underperforming: {stream_performance:.1f}%")
                     self.revenue_report["recommendations"].append(f"Optimize {stream_name} revenue generation")
                 
-            except Exception as e:
+        
+    except Exception as e:
                 self.revenue_report["alerts"].append(f"Analysis failed for stream {stream_name}: {str(e)}")
     
     """
@@ -213,7 +221,8 @@ def check_revenue_trends(self) -> Any:
                             self.revenue_report["alerts"].append(f"Revenue declining: {abs(growth_rate):.1f}% decrease")
                             self.revenue_report["recommendations"].append("Investigate revenue decline and implement corrective measures")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.revenue_report["alerts"].append(f"Revenue trend analysis failed: {str(e)}")
     
     """
@@ -325,7 +334,8 @@ def save_revenue_report(self) -> Any:
                 
             self.logger.info(f"Revenue report saved. Score: {self.revenue_report['performance_metrics'].get('revenue_score', 0)}")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Failed to save revenue report: {str(e)}")
     
     """
@@ -367,7 +377,8 @@ def run_revenue_check(self) -> Any:
             
             return self.revenue_report
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Revenue check failed: {str(e)}")
             self.revenue_report["alerts"].append(f"Revenue check failed: {str(e)}")
             self.save_revenue_report()

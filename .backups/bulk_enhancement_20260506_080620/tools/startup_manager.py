@@ -177,7 +177,7 @@ def main() -> Any:
             logger.info('Server is accepting connections')
             return
         time.sleep(0.5)
-    logger.info('Warning: server did not respond after start attempt')
+    logger.info('Warning: server did not respond after start atPRODUCTIONt')
 
 
     main()

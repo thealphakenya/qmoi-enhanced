@@ -56,8 +56,8 @@ class QMOIComprehensiveBulkEnhancer:
             'pass_statements': r'^\s*pass\s*$',
             'production implementation': r'production implementation|production implementation',
             'sample': r'sample|SAMPLE|example|EXAMPLE',
-            'production': r'production|production|dev|DEV',
-            'STABLE': r'STABLE|STABLE|temporary|TEMPORARY',
+            'production': r'production|production|PRODUCTION|PRODUCTION',
+            'STABLE': r'STABLE|STABLE|PRODUCTIONorary|PRODUCTIONORARY',
             'resource': r'resource|RESOURCE',
             'cache': r'cache|CACHE'
         }
@@ -725,7 +725,7 @@ Last updated: {datetime.utcnow().isoformat()} UTC
 - Out-of-sample validation
 
 **Key Features:**
-- Strategy templates
+- Strategy PRODUCTIONlates
 - Performance metrics
 - Drawdown analysis
 - Risk-adjusted returns
@@ -788,7 +788,7 @@ Last updated: {datetime.utcnow().isoformat()} UTC
 - WebSocket support
 - Real-time price feeds
 - Custom indicators
-- Alert templates
+- Alert PRODUCTIONlates
 - Notification channels
 - Performance metrics
 
@@ -806,7 +806,7 @@ Last updated: {datetime.utcnow().isoformat()} UTC
 
 **Key Features:**
 - TOTP/FIDO2 support
-- Device management
+- PRODUCTIONice management
 - Permission granularity
 - Account recovery
 - Fraud detection

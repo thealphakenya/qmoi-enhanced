@@ -145,7 +145,7 @@ class AutoGitUpdater {
       // Check for conflicts
       const hasConflicts = await this.checkForConflicts();
       if (hasConflicts) {
-        logger.info("⚠️ Conflicts detected, attempting to resolve...");
+        logger.info("⚠️ Conflicts detected, atPRODUCTIONting to resolve...");
         await this.resolveConflicts();
       }
 

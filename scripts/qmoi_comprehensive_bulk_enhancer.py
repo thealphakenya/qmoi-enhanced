@@ -56,8 +56,8 @@ class QMOIComprehensiveBulkEnhancer:
             'pass_statements': r'^\s*pass\s*$',
             'production implementation': r'production implementation|production implementation',
             'sample': r'sample|SAMPLE|example|EXAMPLE',
-            'production': r'production|production|dev|DEV',
-            'STABLE': r'STABLE|STABLE|temporary|TEMPORARY',
+            'production': r'production|production|PRODUCTION|PRODUCTION',
+            'STABLE': r'STABLE|STABLE|PRODUCTIONorary|PRODUCTIONORARY',
             'resource': r'resource|RESOURCE',
             'cache': r'cache|CACHE'
         }
@@ -72,14 +72,19 @@ class QMOIComprehensiveBulkEnhancer:
                 
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 with open(file_path, 'r', encoding='utf-8') as f:
@@ -92,7 +97,8 @@ class QMOIComprehensiveBulkEnhancer:
                                 rel_path = str(file_path.relative_to(self.workspace))
                                 record = f"{rel_path}:{line_num}:{line.strip()[:80]}"
                                 issues[issue_type].append(record)
-            except Exception as e:
+        
+    except Exception as e:
                 logger.warning(f"Error scanning {file_path}: {e}")
         
         # Count total issues
@@ -725,7 +731,7 @@ Last updated: {datetime.utcnow().isoformat()} UTC
 - Out-of-sample validation
 
 **Key Features:**
-- Strategy templates
+- Strategy PRODUCTIONlates
 - Performance metrics
 - Drawdown analysis
 - Risk-adjusted returns
@@ -788,7 +794,7 @@ Last updated: {datetime.utcnow().isoformat()} UTC
 - WebSocket support
 - Real-time price feeds
 - Custom indicators
-- Alert templates
+- Alert PRODUCTIONlates
 - Notification channels
 - Performance metrics
 
@@ -806,7 +812,7 @@ Last updated: {datetime.utcnow().isoformat()} UTC
 
 **Key Features:**
 - TOTP/FIDO2 support
-- Device management
+- PRODUCTIONice management
 - Permission granularity
 - Account recovery
 - Fraud detection
@@ -1007,10 +1013,127 @@ Last updated: {datetime.utcnow().isoformat()} UTC
             print(f"   4. Monitor system performance")
             print("\n" + "="*60 + "\n")
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error during enhancement: {e}")
             raise
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     enhancer = QMOIComprehensiveBulkEnhancer()
     enhancer.run_comprehensive_enhancement()

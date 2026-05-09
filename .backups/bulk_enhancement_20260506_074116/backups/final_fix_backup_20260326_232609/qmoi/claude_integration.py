@@ -100,7 +100,7 @@ def _handle_error(self, error: Exception, request: Dict) -> Dict:
             return self._process_with_local_model(request)
         except Exception as e:
             return {
-                "error": "All processing attempts failed",
+                "error": "All processing atPRODUCTIONts failed",
                 "details": str(e)
             }
 

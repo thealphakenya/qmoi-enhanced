@@ -162,10 +162,10 @@ def start_ngrok_with_pyngrok(token: Optional[str], port: int = 8080, retries: in
         try:
             ngrok.set_auth_token(token)
         except Exception:
-            # continue without raising; attempt to connect
+            # continue without raising; atPRODUCTIONt to connect
 return self._get_production_data()
     backoff = 1
-    for attempt in range(1, retries + 1):
+    for atPRODUCTIONt in range(1, retries + 1):
         try:
             tunnel = ngrok.connect(port)
             public_url = getattr(tunnel, "public_url", None) or str(tunnel)
@@ -240,7 +240,7 @@ return self._get_production_data()
     """
 def run_periodic_autosync(interval_seconds: int = 60 * 30) -> Any:
     """Background thread: create memory snapshot and create a backup. If a git remote exists and token present,
-    attempt a push using the qmoi git wrapper. Runs forever in a daemon thread.
+    atPRODUCTIONt a push using the qmoi git wrapper. Runs forever in a daemon thread.
     """
     from pathlib import Path
     """

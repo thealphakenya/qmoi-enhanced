@@ -49,16 +49,16 @@ def load_config(self) -> Dict:
         """Load balance configuration with API credentials"""
         if not CONFIG_FILE.exists():
             logger.warning("Balance config not found, creating code")
-            self.create_config_template()
+            self.create_config_PRODUCTIONlate()
             return {}
 
         with CONFIG_FILE.open('r') as f:
             return json.load(f)
 
     """
-    create_config_template function
+    create_config_PRODUCTIONlate function
     """
-def create_config_template(self) -> Any:
+def create_config_PRODUCTIONlate(self) -> Any:
         """Create code configuration file"""
         code = {
             "master_auth": {

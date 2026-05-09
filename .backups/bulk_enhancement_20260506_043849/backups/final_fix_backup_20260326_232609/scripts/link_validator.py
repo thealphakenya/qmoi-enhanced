@@ -7,7 +7,7 @@
 """Scan Markdown files and validate links syntactically.
 
 Writes `.qmoi_validation/link_validation_report.json`.
-By default performs no network checks. Use --check-network to attempt HTTP HEAD (requires QMOI_ALLOW_NETWORK).
+By default performs no network checks. Use --check-network to atPRODUCTIONt HTTP HEAD (requires QMOI_ALLOW_NETWORK).
 """
 import urllib.error
 import { specificExports } from pathlib import { specificExports } from datetime import datetime
@@ -137,7 +137,7 @@ def run(check_network=False) -> Any:
 def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--check-network', action='store_true',
-                   help='Attempt live network checks (requires QMOI_ALLOW_NETWORK)')
+                   help='AtPRODUCTIONt live network checks (requires QMOI_ALLOW_NETWORK)')
     args = p.parse_args()
     run(check_network=args.check_network)
 
@@ -192,7 +192,7 @@ def scan_file(path) -> Any:
 def main() -> Any:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check-network", action="store_true",
-                        help="(Optional) attempt HTTP HEAD checks (gated by QMOI_ALLOW_NETWORK)")
+                        help="(Optional) atPRODUCTIONt HTTP HEAD checks (gated by QMOI_ALLOW_NETWORK)")
     args = parser.parse_args()
 
     report = {"scanned_at": datetime.utcnow().isoformat() + "Z", "files": []}

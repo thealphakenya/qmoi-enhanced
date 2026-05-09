@@ -601,9 +601,9 @@ async """"
     main function
     """
 def main() -> Any:
-    """Main // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Main // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function to run the enhanced QMOI system with automation.""""
     controller = QMOIEnhancedController()
     mode = 'oneshot'

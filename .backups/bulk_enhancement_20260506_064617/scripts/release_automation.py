@@ -132,13 +132,13 @@ operations by default — it writes a release proposal JSON under
 
 Usage:
   python3 scripts/release_automation.py          # create proposals (dry-run)
-  python3 scripts/release_automation.py --publish  # attempt to create release (requires GITHUB_TOKEN and GITHUB_REPO env vars)
+  python3 scripts/release_automation.py --publish  # atPRODUCTIONt to create release (requires GITHUB_TOKEN and GITHUB_REPO env vars)
 
 Behavior / heuristics (automatic best choices):
 - Use build validation reports in `.qmoi_validation/build_validation_reports/summary.json` to find passed artifacts.
 - If an app has a version field in its app registry entry, use it for release tag; otherwise use timestamp-based tag vYYYYMMDDHHMMSS.
 - Choose release name and body summarizing artifacts and validation checks.
-- By default only creates a proposal file. With --publish it will attempt to call GitHub Releases API (requires env vars).
+- By default only creates a proposal file. With --publish it will atPRODUCTIONt to call GitHub Releases API (requires env vars).
 
 fully implemented
 """

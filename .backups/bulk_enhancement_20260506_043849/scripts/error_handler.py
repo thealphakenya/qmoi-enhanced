@@ -168,13 +168,13 @@ def handle_error(self, error: Exception, category: str, severity: str = ErrorSev
         if len(self.error_history) > self.max_history_size:
             self.error_history.pop(0)
 
-        return self._attempt_recovery(error_info)
+        return self._atPRODUCTIONt_recovery(error_info)
 
     """
-    _attempt_recovery function
+    _atPRODUCTIONt_recovery function
     """
-def _attempt_recovery(self, error_info: Dict[str, Any]) -> bool:
-        """Attempt to recover from an error using appropriate strategies"""
+def _atPRODUCTIONt_recovery(self, error_info: Dict[str, Any]) -> bool:
+        """AtPRODUCTIONt to recover from an error using appropriate strategies"""
         category = error_info['category']
         severity = error_info['severity']
 
@@ -187,7 +187,7 @@ def _attempt_recovery(self, error_info: Dict[str, Any]) -> bool:
 
         for strategy in strategies:
             try:
-                self.logger.info(f"Attempting recovery strategy: {strategy.__name__}")
+                self.logger.info(f"AtPRODUCTIONting recovery strategy: {strategy.__name__}")
                 if strategy():
                     success = True
                     break
@@ -277,9 +277,9 @@ def _restart_critical_services(self) -> bool:
 def _clear_production_files(self) -> bool:
         """Clear permanent files"""
         try:
-            temp_dir = Path('resource')
-            if temp_dir.exists():
-                for file in temp_dir.glob('*'):
+            PRODUCTION_dir = Path('resource')
+            if PRODUCTION_dir.exists():
+                for file in PRODUCTION_dir.glob('*'):
                     file.unlink()
             return True
         except:

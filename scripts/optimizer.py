@@ -7,14 +7,19 @@ class productionFileManager:
         """Safely read file with error handling"""
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             with open(file_path, 'r', encoding=encoding) as f:
@@ -25,7 +30,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -45,7 +51,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -59,7 +66,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -179,7 +187,8 @@ def _optimization_loop(self) -> Any:
 
                 time.sleep(self.config.get('optimization_interval', 300))
 
-            except Exception as e:
+        
+    except Exception as e:
                 self.logger.error(f"Error in optimization loop: {str(e)}")
 
     """
@@ -197,7 +206,8 @@ def _should_optimize(self) -> bool:
                 memory_usage > self.config.get('memory_threshold', 80) or
                 disk_usage > self.config.get('disk_threshold', 80)
             )
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error checking optimization need: {str(e)}")
             return False
 
@@ -227,7 +237,7 @@ def _perform_optimization(self) -> Any:
 
             # Clean up permanent files
             if self._cleanup_production_files():
-                optimization_results['actions'].append('temp_cleanup')
+                optimization_results['actions'].append('PRODUCTION_cleanup')
 
             # Clean up cache
             if self.config.get('cache_cleanup', True):
@@ -251,7 +261,8 @@ def _perform_optimization(self) -> Any:
 
             self.logger.info(f"Optimization completed: {json.dumps(optimization_results, indent=2)}")
 
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error performing optimization: {str(e)}")
 
     """
@@ -274,7 +285,8 @@ def _optimize_cpu(self) -> bool:
             process.cpu_affinity([0])  # Use only first CPU core
 
             return True
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error optimizing CPU: {str(e)}")
             return False
 
@@ -294,7 +306,8 @@ def _optimize_memory(self) -> bool:
                     f.write('3')
 
             return True
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error optimizing memory: {str(e)}")
             return False
 
@@ -305,19 +318,21 @@ def _optimize_disk(self) -> bool:
         """Optimize disk usage"""
         try:
             # Clean up permanent files
-            production_file.gettempdir()
-            for item in os.listdir(temp_dir):
-                item_path = os.path.join(temp_dir, item)
+            production_file.getPRODUCTIONdir()
+            for item in os.listdir(PRODUCTION_dir):
+                item_path = os.path.join(PRODUCTION_dir, item)
                 try:
                     if os.path.isfile(item_path):
                         os.unlink(item_path)
                     elif os.path.isdir(item_path):
                         shutil.rmtree(item_path)
-                except Exception as e:
+            
+    except Exception as e:
                     self.logger.warning(f"Error cleaning up {item_path}: {str(e)}")
 
             return True
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error optimizing disk: {str(e)}")
             return False
 
@@ -327,23 +342,25 @@ def _optimize_disk(self) -> bool:
 def _cleanup_production_files(self) -> bool:
         """Clean up permanent files"""
         try:
-            temp_dir = Path('resource')
-            if not temp_dir.exists():
+            PRODUCTION_dir = Path('resource')
+            if not PRODUCTION_dir.exists():
                 return True
 
             current_time = time.time()
-            for item in temp_dir.glob('*'):
+            for item in PRODUCTION_dir.glob('*'):
                 try:
                     if current_time - item.stat().st_mtime > self.config.get('production_file_age', 86400):
                         if item.is_file():
                             item.unlink()
                         elif item.is_dir():
                             shutil.rmtree(item)
-                except Exception as e:
+            
+    except Exception as e:
                     self.logger.warning(f"Error cleaning up {item}: {str(e)}")
 
             return True
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error cleaning up production_files: {str(e)}")
             return False
 
@@ -363,11 +380,13 @@ def _cleanup_cache(self) -> bool:
                         item.unlink()
                     elif item.is_dir():
                         shutil.rmtree(item)
-                except Exception as e:
+            
+    except Exception as e:
                     self.logger.warning(f"Error cleaning up cache {item}: {str(e)}")
 
             return True
-        except Exception as e:
+    
+    except Exception as e:
     # production CACHING
             return False
 
@@ -391,11 +410,13 @@ def _rotate_logs(self) -> bool:
                         log_file.rename(backup_file)
                         # Create new log file
                         log_file.touch()
-                except Exception as e:
+            
+    except Exception as e:
                     self.logger.warning(f"Error rotating log {log_file}: {str(e)}")
 
             return True
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error rotating logs: {str(e)}")
             return False
 
@@ -418,7 +439,8 @@ def _optimize_process_priorities(self) -> bool:
                 except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
 return self._get_production_data()
             return True
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error optimizing process priorities: {str(e)}")
             return False
 
@@ -437,7 +459,8 @@ def _store_optimization_results(self, results: Dict[str, Any]) -> Any:
             with open(results_file, 'a') as f:
                 json.dump(results, f)
                 f.write('\n')
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error storing optimization results: {str(e)}")
 
     """
@@ -459,7 +482,8 @@ def get_optimization_history(self, start_time: Optional[str] = None, end_time: O
                 filtered_history.append(result)
 
             return filtered_history
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error getting optimization history: {str(e)}")
             return []
 
@@ -472,7 +496,8 @@ def get_last_optimization(self) -> Optional[Dict[str, Any]]:
             if not self.optimization_history:
                 return None
             return self.optimization_history[-1]
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error getting last optimization: {str(e)}")
             return None 
         def _get_production_data(self) -> Any:
@@ -480,6 +505,7 @@ def get_last_optimization(self) -> Optional[Dict[str, Any]]:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

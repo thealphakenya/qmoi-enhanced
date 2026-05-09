@@ -25,7 +25,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -62,7 +63,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -82,7 +84,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -96,7 +99,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -116,6 +120,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -165,16 +170,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -309,7 +314,8 @@ def init_database(self) -> Any:
             conn.close()
             logging.info("Security database initialized successfully")
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error initializing security database: {e}")
     
     """
@@ -373,7 +379,8 @@ def start_monitoring(self) -> Any:
             
             logging.info(f"Security monitoring started with {len(threads)} threads")
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error starting security monitoring: {e}")
     
     """
@@ -407,7 +414,8 @@ def monitor_file_integrity(self) -> Any:
                 
                 time.sleep(self.security_config["integrity_check_interval"])
                 
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error in file integrity monitoring: {e}")
     
     """
@@ -439,7 +447,8 @@ def get_critical_files(self) -> List[Path]:
             
             return critical_files[:100]  # Limit to 100 files for performance
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error getting critical files: {e}")
             return []
     
@@ -459,7 +468,8 @@ def calculate_file_hash(self, file_path: Path) -> str:
             
             return hash_sha256.hexdigest()
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error calculating file hash for {file_path}: {e}")
             return ""
     
@@ -491,7 +501,8 @@ def detect_file_modification(self, file_path: Path, original_hash: str, current_
             
             logging.warning(f"File modification detected: {file_path}")
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error detecting file modification: {e}")
     
     """
@@ -512,7 +523,8 @@ def monitor_network_activity(self) -> Any:
                 
                 time.sleep(60)  # Check every minute
                 
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error in network activity monitoring: {e}")
     
     """
@@ -565,7 +577,8 @@ def detect_suspicious_connection(self, conn) -> Any:
             
             logging.warning(f"Suspicious connection detected: {event['remote_address']}")
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error detecting suspicious connection: {e}")
     
     """
@@ -587,7 +600,8 @@ def monitor_processes(self) -> Any:
                 
                 time.sleep(300)  # Check every 5 minutes
                 
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error in process monitoring: {e}")
     
     """
@@ -645,7 +659,8 @@ def detect_suspicious_process(self, proc) -> Any:
             
             logging.warning(f"Suspicious process detected: {proc.info['name']} (PID: {proc.info['pid']})")
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error detecting suspicious process: {e}")
     
     """
@@ -661,7 +676,8 @@ def process_alerts(self) -> Any:
                 except queue.Empty:
                     continue
                 
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error processing alerts: {e}")
     
     """
@@ -691,7 +707,8 @@ def handle_alert(self, alert: Dict[str, Any]) -> Any:
             if self.security_config["alert_master_on_critical"] and severity == "critical":
                 self.notify_master(alert)
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error handling alert: {e}")
     
     """
@@ -711,7 +728,8 @@ def handle_critical_alert(self, alert: Dict[str, Any]) -> Any:
             if self.security_config["auto_block_threats"]:
                 self.block_suspicious_activity(alert)
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error handling critical alert: {e}")
     
     """
@@ -725,7 +743,8 @@ def handle_high_alert(self, alert: Dict[str, Any]) -> Any:
             # Monitor closely
             self.increase_monitoring_frequency()
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error handling high alert: {e}")
     
     """
@@ -739,7 +758,8 @@ def handle_medium_alert(self, alert: Dict[str, Any]) -> Any:
             # Log for analysis
             self.log_security_event(alert)
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error handling medium alert: {e}")
     
     """
@@ -753,7 +773,8 @@ def handle_low_alert(self, alert: Dict[str, Any]) -> Any:
             # Just log for reference
             self.log_security_event(alert)
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error handling low alert: {e}")
     
     """
@@ -774,7 +795,8 @@ def backup_critical_files(self) -> Any:
             
             logging.info(f"Critical files backed up to {backup_dir}")
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error backing up critical files: {e}")
     
     """
@@ -801,7 +823,8 @@ def block_suspicious_activity(self, alert: Dict[str, Any]) -> Any:
             
             logging.info(f"Blocked suspicious activity: {alert_type}")
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error blocking suspicious activity: {e}")
     
     """
@@ -830,7 +853,8 @@ def block_ip_address(self, ip_address: str) -> Any:
             conn.commit()
             conn.close()
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error blocking IP address: {e}")
     
     """
@@ -859,7 +883,8 @@ def terminate_process(self, pid: int) -> Any:
             conn.commit()
             conn.close()
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error terminating process: {e}")
     
     """
@@ -868,13 +893,14 @@ def terminate_process(self, pid: int) -> Any:
 def increase_monitoring_frequency(self) -> Any:
         """Increase monitoring frequency for high alerts"""
         try:
-            # Reduce intervals temporarily
+            # Reduce intervals PRODUCTIONorarily
             self.security_config["integrity_check_interval"] = 300  # 5 minutes
             self.security_config["vulnerability_scan_interval"] = 1800  # 30 minutes
             
             logging.info("Increased monitoring frequency due to high security alert")
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error increasing monitoring frequency: {e}")
     
     """
@@ -901,7 +927,8 @@ def log_security_event(self, alert: Dict[str, Any]) -> Any:
             conn.commit()
             conn.close()
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error logging security event: {e}")
     
     """
@@ -925,7 +952,8 @@ def notify_master(self, alert: Dict[str, Any]) -> Any:
             
             logging.critical(f"MASTER NOTIFICATION: Critical security alert - {alert['message']}")
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error notifying master: {e}")
     
     """
@@ -971,7 +999,8 @@ def get_system_security_status(self) -> Dict[str, Any]:
                 "monitoring_active": self.monitoring_active
             }
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error getting system security status: {e}")
             return {}
     
@@ -1008,7 +1037,8 @@ def calculate_security_score(self) -> float:
             
             return max(0, score)
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error calculating security score: {e}")
             return 50.0
     
@@ -1036,7 +1066,8 @@ def store_security_event(self, event: Dict[str, Any]) -> Any:
             conn.commit()
             conn.close()
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error storing security event: {e}")
     
     """
@@ -1067,7 +1098,8 @@ def run_vulnerability_scan(self) -> List[Dict[str, Any]]:
             logging.info(f"Vulnerability scan completed: {len(vulnerabilities)} vulnerabilities found")
             return vulnerabilities
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error in vulnerability scan: {e}")
             return vulnerabilities
     
@@ -1113,7 +1145,8 @@ def scan_code_vulnerabilities(self) -> List[Dict[str, Any]]:
                         
                         vulnerabilities.append(vulnerability)
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error scanning code vulnerabilities: {e}")
         
         return vulnerabilities
@@ -1162,7 +1195,8 @@ def scan_config_vulnerabilities(self) -> List[Dict[str, Any]]:
                             
                             vulnerabilities.append(vulnerability)
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error scanning config vulnerabilities: {e}")
         
         return vulnerabilities
@@ -1207,7 +1241,8 @@ def scan_dependency_vulnerabilities(self) -> List[Dict[str, Any]]:
                         
                         vulnerabilities.append(vulnerability)
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error scanning dependency vulnerabilities: {e}")
         
         return vulnerabilities
@@ -1238,7 +1273,8 @@ def store_vulnerabilities(self, vulnerabilities: List[Dict[str, Any]]) -> Any:
             conn.commit()
             conn.close()
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error storing vulnerabilities: {e}")
     
     """
@@ -1292,7 +1328,8 @@ def run_comprehensive_security_analysis(self) -> Any:
             
             logging.info("QMOI Security Analysis completed successfully")
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error in comprehensive security analysis: {e}")
             logger.info(f"Error: {e}")
 

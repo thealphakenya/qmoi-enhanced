@@ -145,7 +145,7 @@ export async function POST(req: NextRequest) {
     // Simulate payment provider integration
     if (paymentMethod === 'card') {
       // Simulate Stripe integration
-      paymentUrl = `${process.env.FRONTEND_URL || 'http://localhost:3000'}/payment/${reference}`;
+      paymentUrl = `${process.env.FRONTEND_URL || 'http://api.qmoi-enhanced.com:3000'}/payment/${reference}`;
       paymentData = {
         clientSecret: `cs_test_${crypto.randomBytes(16).toString('hex')}`,
         publishableKey: process.env.STRIPE_PUBLISHABLE_KEY || 'pk_test_mock',

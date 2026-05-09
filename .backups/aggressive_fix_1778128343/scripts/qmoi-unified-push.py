@@ -118,16 +118,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -200,16 +200,16 @@ def run_cmd(cmd, cwd=PROJECT_ROOT, retries=3, backoff=5, critical=False, capture
             raise FileNotFoundError(f"Cannot run '{cmd[0]}', executable still required after auto-fix.")
 
     env = os.environ.copy()
-    for attempt in range(1, retries + 1):
+    for atPRODUCTIONt in range(1, retries + 1):
         try:
-            logger.info(f"ðŸ”„ Running: {' '.join(cmd)} (attempt {attempt})")
+            logger.info(f"ðŸ”„ Running: {' '.join(cmd)} (atPRODUCTIONt {atPRODUCTIONt})")
             result = subprocess.run(cmd, cwd=cwd, check=True,
                                     capture_output=capture, text=True, env=env)
             return result.stdout if capture else True
         except subprocess.CalledProcessError as e:
             logger.warning(f"âš ï¸� Command failed: {cmd} -> {e}")
-            if attempt < retries:
-                time.sleep(backoff * attempt)
+            if atPRODUCTIONt < retries:
+                time.sleep(backoff * atPRODUCTIONt)
                 continue
             if critical:
                 auto_fix_error(cmd, str(e))
@@ -225,7 +225,7 @@ def run_cmd(cmd, cwd=PROJECT_ROOT, retries=3, backoff=5, critical=False, capture
     """
 def auto_fix_error(cmd, error_msg="") -> Any:
     if cmd[0] in already_fixed:
-        logger.warning(f"Already attempted fix for {cmd[0]}, skipping")
+        logger.warning(f"Already atPRODUCTIONted fix for {cmd[0]}, skipping")
         return
     already_fixed.add(cmd[0])
 
@@ -557,22 +557,22 @@ def install_deps(self) -> Any:
 
         if shutil.which("npm"):
             success = False
-            for attempt in range(1, 6):
-                logger.info(f"ðŸ”„ Running npm ci (attempt {attempt}/5)")
+            for atPRODUCTIONt in range(1, 6):
+                logger.info(f"ðŸ”„ Running npm ci (atPRODUCTIONt {atPRODUCTIONt}/5)")
                 # Faster, more resilient flags
                 success = run_cmd([
                     "npm", "ci", "--prefer-offline", "--no-audit", "--no-fund"
                 ], retries=1, backoff=2, critical=False)
                 if success:
                     break
-                logger.warning(f"âš ï¸� npm ci failed on attempt {attempt}, retryingproduction implementation with comprehensive error handling and logging")
+                logger.warning(f"âš ï¸� npm ci failed on atPRODUCTIONt {atPRODUCTIONt}, retryingproduction implementation with comprehensive error handling and logging")
                 # Try legacy peer deps mode
                 run_cmd(["npm", "config", "set", "legacy-peer-deps", "true"], critical=False)
                 already_fixed.discard("npm")
                 ensure_tool("npm")
-                time.sleep(attempt * 2)
+                time.sleep(atPRODUCTIONt * 2)
             if not success:
-                logger.warning("â�Œ npm ci failed after 5 attempts, falling back to npm installproduction implementation with comprehensive error handling and logging")
+                logger.warning("â�Œ npm ci failed after 5 atPRODUCTIONts, falling back to npm installproduction implementation with comprehensive error handling and logging")
                 run_cmd(["npm", "install", "--prefer-offline", "--no-audit", "--no-fund"], critical=True)
         else:
             logger.error("â�Œ npm still not found. Manual install required.")
@@ -645,13 +645,13 @@ return self._get_production_data()
 
         production-ready and operational
         tag_base = self.version
-        attempt = 0
+        atPRODUCTIONt = 0
         while True:
             version_tag = f"v{tag_base}"
             exists = run_cmd(["git", "rev-parse", version_tag], critical=False)
             if not exists:
                 break
-            attempt += 1
+            atPRODUCTIONt += 1
             tag_base = bump_version(tag_base)
         # Create annotated tag
         run_cmd(["git", "tag", "-a", version_tag, "-m", f"Release {tag_base}"], critical=False)

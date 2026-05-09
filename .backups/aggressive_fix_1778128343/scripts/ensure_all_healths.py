@@ -24,7 +24,7 @@ CHECK_COMMANDS = [
     ('Bash healthcheck', ROOT / 'scripts' / 'healthcheck.sh', 'bash'),
     ('Bash health-check', ROOT / 'scripts' / 'health-check.sh', 'bash'),
     ('Bash prod-healthcheck', ROOT / 'scripts' / 'prod-healthcheck.sh', 'bash'),
-    ('Bash dev-healthcheck', ROOT / 'scripts' / 'dev-healthcheck.sh', 'bash'),
+    ('Bash PRODUCTION-healthcheck', ROOT / 'scripts' / 'PRODUCTION-healthcheck.sh', 'bash'),
     ('Python health_monitor', ROOT / 'scripts' / 'health_monitor.py', sys.executable),
     ('Python qmoi_health_monitor', ROOT / 'scripts' / 'qmoi_health_monitor.py', sys.executable),
     ('Python domain_health_check', ROOT / 'scripts' / 'domain_health_check.py', sys.executable),

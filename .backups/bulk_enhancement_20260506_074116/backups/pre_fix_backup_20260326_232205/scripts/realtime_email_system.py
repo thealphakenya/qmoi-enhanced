@@ -46,7 +46,7 @@ class EmailUISettings:
     theme: str = "dark"  # light/dark/auto
     icon_color: str = "#ff88"
     refresh_interval: int = 30  # seconds
-    ai_temperature: float = 0.7  # 0.3-0.8
+    ai_PRODUCTIONerature: float = 0.7  # 0.3-0.8
     response_style: str = "professional"  # professional/formal/helpful/friendly/security
     language: str = "en"
     welcome_message: str = "Welcome to QMOI Support"

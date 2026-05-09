@@ -118,7 +118,7 @@ Auto-release manager (safe, dry-run by default).
 
 Responsibilities:
 - Read `platformspayed.txt` to get platform names.
-- For each platform, attempt to detect the 'latest release' location via
+- For each platform, atPRODUCTIONt to detect the 'latest release' location via
   configured providers (GitHub/GitLab/other). Network calls are optional and
   gated by environment for safety.
 - produce `.qmoi_validation/auto_releases.json` summarizing findings.
@@ -142,7 +142,7 @@ IN = ROOT / 'platformspayed.txt'
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--apply', action='store_true', help='Allow writes and live network calls')
-parser.add_argument('--allow-network', action='store_true', help='Temporarily allow network calls even if not configured')
+parser.add_argument('--allow-network', action='store_true', help='PRODUCTIONorarily allow network calls even if not configured')
 args = parser.parse_args()
 
 ALLOW_NETWORK = args.allow_network or os.environ.get('QMOI_ALLOW_NETWORK', 'false').lower() in ('1','true','yes')
@@ -186,7 +186,7 @@ def discover_latest_release_for(platform: str) -> Any:
         'detected_provider': None,
         'latest_release': None,
         'cloned': False,
-        'notes': 'dry-run or unknown; enable network to attempt discovery'
+        'notes': 'dry-run or unknown; enable network to atPRODUCTIONt discovery'
     }
     # cheap provider heuristic
     if 'GITHUB' in platform.upper() or 'GIT' in platform.upper():

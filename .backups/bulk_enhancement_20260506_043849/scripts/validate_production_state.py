@@ -47,7 +47,7 @@ class ProductionValidator:
         if missing:
             self.results["warnings"].append(
                 f"Missing environment variables: {', '.join(missing)} "
-                "(can be set later for staging)"
+                "(can be set later for PRODUCTION)"
             )
             print(f"  ⚠️  Missing: {', '.join(missing)}")
         else:
@@ -178,7 +178,7 @@ class ProductionValidator:
             
             for file in files:
                 if file.endswith((".ts", ".js", ".env", "config")):
-                    if ".example" in file or ".template" in file or ".sample" in file:
+                    if ".example" in file or ".PRODUCTIONlate" in file or ".sample" in file:
                         continue
                     
                     filepath = Path(root) / file
@@ -239,7 +239,7 @@ class ProductionValidator:
         print("📄 Checking configuration files...")
         
         required_files = [
-            ".env.production.template",
+            ".env.production.PRODUCTIONlate",
             "PRODUCTION_DEPLOYMENT_CHECKLIST.md",
             "PRODUCTION_MIGRATION_REPORT.json",
         ]

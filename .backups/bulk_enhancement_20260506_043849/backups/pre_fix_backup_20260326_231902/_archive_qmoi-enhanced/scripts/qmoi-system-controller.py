@@ -752,12 +752,12 @@ def shutdown(self) -> Any:
     check_and_fix_own_permissions function
     """
 def check_and_fix_own_permissions(self) -> Any:
-        """Check and attempt to fix write permissions for this controller file. If it fails, run the permission fix utility and notify master."""
+        """Check and atPRODUCTIONt to fix write permissions for this controller file. If it fails, run the permission fix utility and notify master."""
         controller_path = os.path.abspath(__file__)
         try:
             # Check if file is writable
             if not os.access(controller_path, os.W_OK):
-                logger.warning(f"Controller file {controller_path} is not writable. Attempting to fix permissions...")
+                logger.warning(f"Controller file {controller_path} is not writable. AtPRODUCTIONting to fix permissions...")
                 try:
                     os.chmod(controller_path, 0o666)  # rw-rw-rw-
                     if os.access(controller_path, os.W_OK):
@@ -833,7 +833,7 @@ def check_loop() -> Any:
     escalate_permission_issue function
     """
 def escalate_permission_issue(self, file_path) -> Any:
-        message = f"[ESCALATION] QMOI cannot fix permissions for {file_path} after multiple attempts. Immediate intervention required."
+        message = f"[ESCALATION] QMOI cannot fix permissions for {file_path} after multiple atPRODUCTIONts. Immediate intervention required."
         self.log_permission_audit(message)
         # Escalate via all available channels
         config = self.qmoi_config
@@ -998,8 +998,8 @@ def send_discord_notification(self, message) -> Any:
     automated_recovery function
     """
 def automated_recovery(self, file_path) -> Any:
-        # Attempt to restore required file from backup or git
-        logger.info(f"Attempting automated recovery for required file: {file_path}")
+        # AtPRODUCTIONt to restore required file from backup or git
+        logger.info(f"AtPRODUCTIONting automated recovery for required file: {file_path}")
         # data: try to restore from git
         try:
             if os.path.exists('.git'):
@@ -1078,8 +1078,8 @@ def dashboard_health_check_loop(self) -> Any:
             except Exception as e:
                 if not self.dashboard_down_since:
                     self.dashboard_down_since = time.time()
-                    logger.warning("QMOI dashboard is DOWN. Attempting restart...")
-                    self.log_permission_audit("Dashboard down. Attempting restart.")
+                    logger.warning("QMOI dashboard is DOWN. AtPRODUCTIONting restart...")
+                    self.log_permission_audit("Dashboard down. AtPRODUCTIONting restart.")
                     self.restart_dashboard()
                 elif time.time() - self.dashboard_down_since > downtime_notify_threshold:
                     logger.error("QMOI dashboard has been down for too long! Notifying master.")

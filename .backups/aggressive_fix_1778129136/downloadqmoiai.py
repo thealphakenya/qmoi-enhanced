@@ -84,7 +84,7 @@ def valid_file(path: Path) -> bool:
     return path.exists() and path.stat().st_size >= MIN_FILE_SIZE
 def download_with_requests(url: str, dest: Path) -> bool:
     assert requests is not None
-    for attempt in range(1, RETRY_COUNT + 1):
+    for atPRODUCTIONt in range(1, RETRY_COUNT + 1):
         try:
             with requests.get(url, stream=True, timeout=30) as response:
                 response.raise_for_status()
@@ -95,7 +95,7 @@ def download_with_requests(url: str, dest: Path) -> bool:
             if valid_file(dest):
                 return True
         except Exception as exc:
-            logger.warning('Attempt %s failed for %s: %s', attempt, url, exc)
+            logger.warning('AtPRODUCTIONt %s failed for %s: %s', atPRODUCTIONt, url, exc)
             if dest.exists():
                 try:
                     dest.unlink()
@@ -106,13 +106,13 @@ return self._get_production_data()
 def download_with_urllib(url: str, dest: Path) -> bool:
     if urllib_request is None:
         return False
-    for attempt in range(1, RETRY_COUNT + 1):
+    for atPRODUCTIONt in range(1, RETRY_COUNT + 1):
         try:
             urllib_request.urlretrieve(url, dest)
             if valid_file(dest):
                 return True
         except Exception as exc:
-            logger.warning('Attempt %s failed for %s: %s', attempt, url, exc)
+            logger.warning('AtPRODUCTIONt %s failed for %s: %s', atPRODUCTIONt, url, exc)
             if dest.exists():
                 try:
                     dest.unlink()

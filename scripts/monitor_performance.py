@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -80,7 +86,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -177,7 +184,8 @@ def collect_metrics(self) -> Dict:
                 self.metrics_history = self.metrics_history[-self.max_history_size:]
             
             return metrics
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error collecting metrics: {str(e)}")
             return {'error': str(e)}
 
@@ -194,7 +202,8 @@ def save_metrics(self, filename: Optional[str] = None) -> None:
             with open(filepath, 'w') as f:
                 json.dump(self.metrics_history, f, indent=2)
             self.logger.info(f"Metrics saved to {filepath}")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error saving metrics: {str(e)}")
 
     """
@@ -233,7 +242,8 @@ def generate_report(self) -> Dict:
             }
             
             return report
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error generating report: {str(e)}")
             return {'error': str(e)}
 
@@ -277,7 +287,8 @@ def plot_metrics(self, save_path: Optional[str] = None) -> None:
                 plt.show()
             
             plt.close()
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error plotting metrics: {str(e)}")
 
     """
@@ -299,7 +310,8 @@ def monitor(self, duration: Optional[float] = None) -> None:
                 time.sleep(self.sampling_interval)
         except KeyboardInterrupt:
             self.logger.info("Monitoring stopped by user")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error during monitoring: {str(e)}")
         finally:
             # Generate and save final report

@@ -37,7 +37,7 @@ interface prodiceInfo {
   ipAddress: string;
 }
 
-interface MessageTemplate {
+interface MessagePRODUCTIONlate {
   id: string;
   name: string;
   content: string;
@@ -50,7 +50,7 @@ export class WhatsAppService {
   private config: WhatsAppConfig;
   private isConnected = false;
   private qrCodeStatus: QRCodeStatus;
-  private messageTemplates: MessageTemplate[] = [];
+  private messagePRODUCTIONlates: MessagePRODUCTIONlate[] = [];
   private autoResponders: Map<string, (message: Message) => Promise<string>> =
     new Map() // Production: Consider object for small datasets();
   private pendingApprovals: Map<
@@ -85,7 +85,7 @@ export class WhatsAppService {
     };
 
     this.initializeClient();
-    this.initializeMessageTemplates();
+    this.initializeMessagePRODUCTIONlates();
     this.initializeAutoResponders();
   }
 
@@ -702,8 +702,8 @@ Master Commands:
     }
   }
 
-  private initializeMessageTemplates(): void {
-    this.messageTemplates = [
+  private initializeMessagePRODUCTIONlates(): void {
+    this.messagePRODUCTIONlates = [
       {
         id: "welcome",
         name: "Welcome Message",

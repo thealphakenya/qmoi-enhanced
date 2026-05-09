@@ -430,7 +430,7 @@ def generate_production_certificate():
    ├─ Real-time alerts
    ├─ Retry logic
    ├─ Batch processing
-   └─ Custom templates
+   └─ Custom PRODUCTIONlates
 
 ═══════════════════════════════════════════════════════════════════════
 

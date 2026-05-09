@@ -1,6 +1,6 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:38.883308 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:10.634173 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:06.846537 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:07:38.883308 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:10.634173 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:06.846537 -->
 {
   "system.initialized": {
     "value": true,
@@ -51,11 +51,11 @@
     "expires_at": null,
     "hash": "89a174b4d9e4c94e26fa0173e4a5dcc341b1bb0d61171aa7de275eaa68ce6176"
   },
-  "device.battery": {
+  "PRODUCTIONice.battery": {
     "value": 85,
     "timestamp": "2026-04-14T01:40:11.137443",
     "tags": [
-      "device",
+      "PRODUCTIONice",
       "battery"
     ],
     "expires_at": "2026-04-15T01:40:11.137429",
@@ -71,7 +71,7 @@
     "expires_at": null,
     "hash": "4e9b539756dcfa674dc9bfb60983db54ae8b93a0e0cca9706d4022ce592a7739"
   },
-  "autodev": {
+  "autoPRODUCTION": {
     "enhanced": true,
     "timestamp": "2026-04-20T08:55:06.846441",
     "version": "2026-04-20"

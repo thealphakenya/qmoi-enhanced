@@ -61,7 +61,7 @@ console.log("production mode initialized");
     cy.get("button").contains("Logout").click();
     cy.url().should("include", "/");
 
-    // Attempt duplicate registration
+    // AtPRODUCTIONt duplicate registration
     cy.contains("Register").click();
     cy.get('input[name="email"]').type(email);
     cy.get('input[name="username"]').type(username);

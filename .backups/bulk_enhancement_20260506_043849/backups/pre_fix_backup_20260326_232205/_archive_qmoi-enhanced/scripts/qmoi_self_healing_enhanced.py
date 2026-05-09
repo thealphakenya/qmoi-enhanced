@@ -118,7 +118,7 @@ def apply_fixes(self, errors: List[Dict]) -> List[Dict]:
     fix_dependencies function
     """
 def fix_dependencies(self, error: Dict) -> Dict:
-        logger.info(f"Attempting to auto-fix dependency issue in {error['file']} (line {error['line']})")
+        logger.info(f"AtPRODUCTIONting to auto-fix dependency issue in {error['file']} (line {error['line']})")
         # Try running pip install -r requirements.txt
         try:
             result = subprocess.run([sys.executable, '-m', 'pip', 'install', '-r', 'requirements.txt'],
@@ -144,7 +144,7 @@ def fix_dependencies(self, error: Dict) -> Dict:
     fix_npm_dependencies function
     """
 def fix_npm_dependencies(self, error: Dict) -> Dict:
-        logger.info(f"Attempting to auto-fix npm dependency issue in {error['file']} (line {error['line']})")
+        logger.info(f"AtPRODUCTIONting to auto-fix npm dependency issue in {error['file']} (line {error['line']})")
         try:
             result = subprocess.run(['npm', 'install', '--legacy-peer-deps'], capture_output=True, text=True, timeout=600)
             status = 'success' if result.returncode == 0 else 'failed'
@@ -168,7 +168,7 @@ def fix_npm_dependencies(self, error: Dict) -> Dict:
     upgrade_pip function
     """
 def upgrade_pip(self, error: Dict) -> Dict:
-        logger.info(f"Attempting to auto-upgrade pip due to version issue in {error['file']} (line {error['line']})")
+        logger.info(f"AtPRODUCTIONting to auto-upgrade pip due to version issue in {error['file']} (line {error['line']})")
         try:
             result = subprocess.run([sys.executable, '-m', 'pip', 'install', '--upgrade', 'pip'], capture_output=True, text=True, timeout=300)
             status = 'success' if result.returncode == 0 else 'failed'
@@ -192,7 +192,7 @@ def upgrade_pip(self, error: Dict) -> Dict:
     fix_permissions function
     """
 def fix_permissions(self, error: Dict) -> Dict:
-        logger.info(f"Attempting to auto-fix permission issue in {error['file']} (line {error['line']})")
+        logger.info(f"AtPRODUCTIONting to auto-fix permission issue in {error['file']} (line {error['line']})")
         # Try chmod 755 on the file
         try:
             file_path = error['file']
@@ -216,7 +216,7 @@ def fix_permissions(self, error: Dict) -> Dict:
     fix_timeout function
     """
 def fix_timeout(self, error: Dict) -> Dict:
-        logger.info(f"Attempting to auto-fix timeout issue in {error['file']} (line {error['line']})")
+        logger.info(f"AtPRODUCTIONting to auto-fix timeout issue in {error['file']} (line {error['line']})")
         # Try rerunning the last failed command (if possible)
         # For now, just log and suggest increasing timeout
         return {

@@ -23,9 +23,9 @@ q = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(q)
 
 """
-    setup_// AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    setup_// AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function function
     """
 def setup_function(function) -> Any:

@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -73,7 +79,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -93,7 +100,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -107,7 +115,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -143,16 +152,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -207,7 +216,8 @@ def _load_config(self, config_path: Optional[str]) -> Dict:
             try:
                 with open(config_path, 'r') as f:
                     return json.load(f)
-            except Exception as e:
+        
+    except Exception as e:
                 self.logger.error(f"Error loading config: {str(e)}")
                 return self._get_default_config()
         return self._get_default_config()
@@ -263,7 +273,8 @@ def _get_current_version(self) -> str:
                 with open(version_file, 'r') as f:
                     return f.read().strip()
             return '0.0.0'
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error getting current version: {str(e)}")
             return '0.0.0'
 
@@ -277,7 +288,8 @@ def _update_version(self, new_version: str) -> None:
                 f.write(new_version)
             self.current_version = new_version
             self.logger.info(f"Version updated to: {new_version}")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error updating version: {str(e)}")
             raise
 
@@ -304,7 +316,8 @@ def _create_deployment_record(self, environment: str, version: str,
                 json.dump(record, f, indent=2)
             
             self.logger.info(f"Deployment record created: {deployment_file}")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error creating deployment record: {str(e)}")
 
     """
@@ -328,7 +341,8 @@ def _build_docker_image(self, version: str) -> str:
             
             self.logger.info(f"Docker image built and pushed: {image_name}")
             return image_name
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error building Docker image: {str(e)}")
             raise
 
@@ -373,7 +387,8 @@ def _deploy_docker_compose(self, environment: str, version: str) -> None:
                 conn.run('docker-compose up -d')
             
             self.logger.info(f"Docker Compose deployment completed for {environment}")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error deploying with Docker Compose: {str(e)}")
             raise
 
@@ -410,7 +425,8 @@ def _backup_environment(self, environment: str) -> None:
                 conn.run(f'rm {backup_name}.tar.gz')
             
             self.logger.info(f"Backup created: {backup_path}")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error creating backup: {str(e)}")
             raise
 
@@ -445,9 +461,11 @@ def _cleanup_old_backups(self) -> None:
                             if backup_date < retention_date:
                                 backup_file.unlink()
                                 self.logger.info(f"Removed old backup: {backup_file}")
-                        except Exception as e:
+                    
+    except Exception as e:
                             self.logger.warning(f"Error processing backup {backup_file}: {str(e)}")
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error cleaning up old backups: {str(e)}")
 
     """
@@ -493,7 +511,8 @@ def deploy(self, environment: str, version: Optional[str] = None) -> bool:
             
             self.logger.info(f"Deployment completed successfully: {environment} -> {version}")
             return True
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Deployment failed: {str(e)}")
             
             # Create failed deployment record
@@ -564,7 +583,8 @@ def rollback(self, environment: str, version: str) -> bool:
             
             self.logger.info(f"Rollback completed successfully: {environment} -> {version}")
             return True
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Rollback failed: {str(e)}")
             
             # Create failed rollback record
@@ -605,6 +625,7 @@ def main() -> Any:
             last_version = history[-1]['version']
             logger.info(f"\nRollback to {last_version}: {'Success' if rollback_success else 'Failed'}")
         
+
     except Exception as e:
         logger.info(f"Error: {str(e)}")
 

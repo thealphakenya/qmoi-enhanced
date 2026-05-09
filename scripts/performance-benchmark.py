@@ -26,14 +26,19 @@ class PerformanceBenchmark:
         
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
@@ -52,7 +57,8 @@ class PerformanceBenchmark:
             self.results['benchmarks'][endpoint] = metrics
             print(f"✅ {endpoint}: {metrics}")
             return metrics
-        except Exception as e:
+    
+    except Exception as e:
             print(f"❌ Benchmarking failed: {e}")
             return None
     
@@ -76,7 +82,8 @@ class PerformanceBenchmark:
                 subprocess.run(cmd, shell=True, check=True, capture_output=True)
                 duration = time.time() - start
                 results[query[:50]] = f"{duration:.3f}s"
-            except Exception as e:
+        
+    except Exception as e:
                 print(f"Query failed: {e}")
         
         self.results['benchmarks']['database'] = results
@@ -109,7 +116,8 @@ class PerformanceBenchmark:
             self.results['benchmarks']['cache'] = metrics
             print(f"✅ Cache benchmarks complete")
             return metrics
-        except Exception as e:
+    
+    except Exception as e:
             print(f"❌ Cache benchmarking failed: {e}")
             return None
     
@@ -133,6 +141,122 @@ class PerformanceBenchmark:
         print("✅ Report saved to benchmark_report.json")
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     benchmark = PerformanceBenchmark()
     benchmark.benchmark_api_latency('https://api.qmoi.prod/api/health', num_requests=100)
     benchmark.benchmark_database()

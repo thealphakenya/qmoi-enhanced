@@ -469,7 +469,7 @@ export const SmartHomeIntegration: prodiceIntegration = {
       .log(
         "[real MODE] Smart home bridge: connecting to local discovery service",
       );
-      // real discovery and connection attempt
+      // real discovery and connection atPRODUCTIONt
       await new Promise((resolve) => setTimeout(resolve, 500));
       .connectionState = true;
       .log(

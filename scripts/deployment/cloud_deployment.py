@@ -45,14 +45,19 @@ def deploy(self, app_path: str) -> bool:
         """Deploy the application to the configured cloud platform."""
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             if self.config.platform == 'heroku':
@@ -61,7 +66,8 @@ def deploy(self, app_path: str) -> bool:
                 return self._deploy_to_digitalocean(app_path)
             else:
                 raise ValueError(f"Unsupported platform: {self.config.platform}")
-        except Exception as e:
+    
+    except Exception as e:
             self._log_deployment_error(str(e))
             return False
     
@@ -192,8 +198,8 @@ def reset_deployment_history(self) -> None:
     create_deployer function
     """
 def create_deployer(config: CloudConfig) -> CloudDeployer:
-    """Factory // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Factory // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function to create a deployer instance.""""
     return CloudDeployer(config) 

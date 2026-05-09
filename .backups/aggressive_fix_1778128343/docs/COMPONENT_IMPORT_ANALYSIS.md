@@ -15,14 +15,14 @@ All 17 app pages (page.tsx/page.jsx files) follow a consistent pattern:
 - **They render JSX inline or use local state management**
 - **They are primarily Server Components or Client Components with inline logic**
 
-#### Example: Device Management Page Pattern
+#### Example: PRODUCTIONice Management Page Pattern
 ```typescript
-// app/devices/page.tsx
+// app/PRODUCTIONices/page.tsx
 "use client";
 import React, { useMemo } from "react";
 import { useAuth } from "../hooks/useAuth";
 
-export default function DevicesPage() {
+export default function PRODUCTIONicesPage() {
   const { user, hasAccess } = useAuth();
   // Renders custom JSX - no component imports
   return (
@@ -131,14 +131,14 @@ These import from UI primitives and provide business logic:
 /components/
 ├── QFileManager.tsx ───────┐
 ├── AdminDashboard.tsx ─────┼─→ Import UI components
-├── DeviceMap.tsx ──────────┤
+├── PRODUCTIONiceMap.tsx ──────────┤
 ├── ... (126 more) ─────────┘
 ```
 
 **Most Imported Feature Components**:
 - `QFileManager.tsx`: Used by 15+ files
 - `AdminDashboard.tsx`: Used by 12+ files  
-- `DeviceMap.tsx`: Used by 8+ files
+- `PRODUCTIONiceMap.tsx`: Used by 8+ files
 
 #### Tier 3: App-Scoped Components (16 files in `/app/components/`)
 
@@ -193,7 +193,7 @@ Component Availability: Universal
 #### Connection Type 1: Direct Import Chain
 ```
 Page → Feature Component → UI Component
-app/devices/page.tsx → DeviceMap.tsx → @/components/ui/card
+app/PRODUCTIONices/page.tsx → PRODUCTIONiceMap.tsx → @/components/ui/card
 ```
 
 #### Connection Type 2: Context Providers
@@ -220,11 +220,11 @@ QMOIDashboard.tsx
 ```
 **Shared UI**: card, tabs, progress, badge
 
-#### Device Management Cluster
+#### PRODUCTIONice Management Cluster
 ```
-QMOIOwnDevice.tsx
-├── DeviceMap.tsx
-├── DeviceSettingsPanel.tsx
+QMOIOwnPRODUCTIONice.tsx
+├── PRODUCTIONiceMap.tsx
+├── PRODUCTIONiceSettingsPanel.tsx
 ├── BluetoothManager.tsx
 └── WifiPanel.tsx
 ```
@@ -265,11 +265,11 @@ QFileManager.tsx
 
 **UI Components**: tabs, card, progress, alert
 
-#### Device Routes (`/devices`)
+#### PRODUCTIONice Routes (`/PRODUCTIONices`)
 **Primary Components Used**:
-- QMOIOwnDevice.tsx
-- DeviceMap.tsx
-- DeviceSettingsPanel.tsx
+- QMOIOwnPRODUCTIONice.tsx
+- PRODUCTIONiceMap.tsx
+- PRODUCTIONiceSettingsPanel.tsx
 - BluetoothManager.tsx
 
 **UI Components**: button, input, switch, badge
@@ -286,7 +286,7 @@ QFileManager.tsx
 #### QCity Routes (`/qcity`)
 **Primary Components Used**:
 - QCityDashboard.tsx
-- QCityDevicePanel.tsx
+- QCityPRODUCTIONicePanel.tsx
 - QMOIBiometricManager.tsx
 - EmploymentDashboard.tsx
 
@@ -332,9 +332,9 @@ QFileManager.tsx
 - QMOIAutoFixDashboard.tsx
 - DeploymentStatusDashboard.tsx
 
-#### Device-Only Components
-- QMOIOwnDevice.tsx
-- DeviceMap.tsx
+#### PRODUCTIONice-Only Components
+- QMOIOwnPRODUCTIONice.tsx
+- PRODUCTIONiceMap.tsx
 - BluetoothManager.tsx
 - WifiPanel.tsx
 
@@ -365,9 +365,9 @@ QMOIDashboard.tsx
 └── @/components/ui/badge
 ```
 
-#### Chain 2: Device Management → UI
+#### Chain 2: PRODUCTIONice Management → UI
 ```
-DeviceMap.tsx
+PRODUCTIONiceMap.tsx
 ├── @/components/ui/button
 ├── @/components/ui/input
 ├── @/components/ui/dialog
@@ -395,7 +395,7 @@ Chatbot.tsx
 #### Most Used Feature Components
 1. **QFileManager.tsx**: 15+ files
 2. **AdminDashboard.tsx**: 12+ files
-3. **DeviceMap.tsx**: 8+ files
+3. **PRODUCTIONiceMap.tsx**: 8+ files
 4. **AIContext.tsx**: 25+ files
 5. **NotificationCenter.tsx**: 18+ files
 
@@ -417,7 +417,7 @@ Chatbot.tsx
 
 #### Finding 3: Feature Components Provide Business Logic
 - **25% of imports** are feature components
-- Organized by functionality (AI, Device, File, etc.)
+- Organized by functionality (AI, PRODUCTIONice, File, etc.)
 - Import from UI layer extensively
 
 #### Finding 4: App Components Are Specialized Modules
@@ -499,7 +499,7 @@ import { Tabs } from "@/components/ui/tabs"
 These optionally import from Tiers 1 & 2, but mostly self-contain logic.
 
 ```
-app/devices/page.tsx (can import from Tier 2)
+app/PRODUCTIONices/page.tsx (can import from Tier 2)
   ├── Optional: import QFileManager from "@/components/QFileManager"
   ├── Optional: import { Card } from "@/components/ui/card"
   └── Primarily: Renders inline JSX
@@ -531,23 +531,23 @@ import QConverse from "@/components/QConverse"
 // app/friendship/page.tsx → Uses ChatMessaging + AI logic
 ```
 
-#### Cluster 2: Device & Hardware Management
+#### Cluster 2: PRODUCTIONice & Hardware Management
 
 **Central Components**:
-- `QMOIOwnDevice.tsx` (device master)
+- `QMOIOwnPRODUCTIONice.tsx` (PRODUCTIONice master)
 - `QFileManager.tsx` (file operations)
-- `DeviceSettingsPanel.tsx` (settings)
+- `PRODUCTIONiceSettingsPanel.tsx` (settings)
 - `BluetoothManager.tsx` (Bluetooth)
 - `WifiPanel.tsx` (WiFi)
-- `QCityDevicePanel.tsx` (Q-City specific)
+- `QCityPRODUCTIONicePanel.tsx` (Q-City specific)
 
 **Connection Pattern**:
 ```
-app/devices/page.tsx
+app/PRODUCTIONices/page.tsx
   ├── May render QFileManager
-  ├── May render DeviceSettingsPanel
+  ├── May render PRODUCTIONiceSettingsPanel
   ├── May render WifiPanel
-  └── Handles device state management
+  └── Handles PRODUCTIONice state management
 ```
 
 #### Cluster 3: Dashboard & Monitoring
@@ -563,7 +563,7 @@ app/devices/page.tsx
 ```
 Multiple app routes can import:
   - app/admin/page.tsx → QMOIDashboard
-  - app/dev/page.tsx → SystemHealthDashboard
+  - app/PRODUCTION/page.tsx → SystemHealthDashboard
   - app/qmoi-space/page.tsx → ProductionMonitoringDashboard
 ```
 
@@ -603,7 +603,7 @@ Wallet access available through:
   - Can be rendered in:
     - app/friendship/page.tsx
     - app/admin/page.tsx
-    - app/devices/page.tsx
+    - app/PRODUCTIONices/page.tsx
 ```
 
 #### Cluster 6: Community & Spaces
@@ -627,7 +627,7 @@ app/qvillage/page.tsx
 
 **Central Components** (in `/components/q-city/`):
 - `QCityDashboard.tsx` (main dashboard)
-- `QCityDevicePanel.tsx` (device control)
+- `QCityPRODUCTIONicePanel.tsx` (PRODUCTIONice control)
 - `QMOIBiometricManager.tsx` (biometrics)
 - `QMOILinksManager.tsx` (links)
 - `GlobalLinksManager.tsx` (global links)
@@ -675,9 +675,9 @@ app/qmoi-space/page.tsx
 ### Chain 1: Complete Page → Components → UI
 
 ```
-User visits: /devices
+User visits: /PRODUCTIONices
   ↓
-app/devices/page.tsx (loads)
+app/PRODUCTIONices/page.tsx (loads)
   ├── Imports: React hooks
   ├── Optional: import QFileManager from "@/components/QFileManager"
   │   ↓
@@ -772,10 +772,10 @@ Most `/app/components/` files are self-contained and serve as modules available 
 - **Possible Imports**: Form components from `/components/ui/`
 - **Primary Function**: Master administration
 
-### `/devices` Device Management
-- **Component Serving**: None (inline device listing)
-- **Possible Imports**: QFileManager, DeviceSettingsPanel
-- **Primary Function**: Device control
+### `/PRODUCTIONices` PRODUCTIONice Management
+- **Component Serving**: None (inline PRODUCTIONice listing)
+- **Possible Imports**: QFileManager, PRODUCTIONiceSettingsPanel
+- **Primary Function**: PRODUCTIONice control
 
 ### `/friendship` AI Friendship
 - **Component Serving**: ChatMessaging.tsx (imported)
@@ -807,10 +807,10 @@ Most `/app/components/` files are self-contained and serve as modules available 
 - **Possible Imports**: Form components
 - **Primary Function**: System configuration
 
-### `/dev` Developer Tools
+### `/PRODUCTION` PRODUCTIONeloper Tools
 - **Component Serving**: None (placeholder)
-- **Possible Imports**: Dev utilities
-- **Primary Function**: Development access
+- **Possible Imports**: PRODUCTION utilities
+- **Primary Function**: PRODUCTIONelopment access
 
 ---
 
@@ -823,11 +823,11 @@ Most `/app/components/` files are self-contained and serve as modules available 
 - (Most others available but not explicitly served)
 
 #### Components Available for Enhancement
-- **QFileManager.tsx** - Ready to serve `/devices`
+- **QFileManager.tsx** - Ready to serve `/PRODUCTIONices`
 - **QMOIDashboard.tsx** - Ready to serve `/admin`
 - **Chatbot.tsx** - Ready to serve `/friendship`
 - **ProjectDashboard.tsx** - Ready to serve `/qvillage`
-- **SystemHealthDashboard.tsx** - Ready to serve `/dev` or `/admin`
+- **SystemHealthDashboard.tsx** - Ready to serve `/PRODUCTION` or `/admin`
 
 #### Components Currently Unused
 - **QmoiBrowser.tsx** - No route currently uses it
@@ -884,8 +884,8 @@ This means:
 ### Definitely Active (Served by Current App Routes)
 1. AdminDashboard (mentioned in /admin scope)
 2. ChatMessaging (used in /friendship context)
-3. QFileManager (referenced in /devices context)
-4. DeviceSettingsPanel (device management)
+3. QFileManager (referenced in /PRODUCTIONices context)
+4. PRODUCTIONiceSettingsPanel (PRODUCTIONice management)
 
 ### Likely Active (Feature-Complete)
 - All `/components/ui/` components (foundation)

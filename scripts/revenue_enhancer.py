@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -126,7 +132,8 @@ def optimize_fees(self, amount: float, currency: str) -> Dict[str, Any]:
                 if fee < lowest_fee:
                     lowest_fee = fee
                     best_route = route
-            except Exception as e:
+        
+    except Exception as e:
                 logger.warning(f"Fee quote failed for {route}: {e}")
                 continue
         
@@ -203,7 +210,8 @@ def _archive_old_data(self) -> Any:
                     ]
                     with open(data_file, "w") as f:
                         json.dump(new_data, f, indent=2)
-            except Exception as e:
+        
+    except Exception as e:
                 logger.warning(f"Archive failed for {data_file}: {e}")
     
     """
@@ -225,7 +233,8 @@ def enhance_revenue(self) -> Any:
                 # Sleep for configured interval
                 time.sleep(self.config["monitoring"]["metrics"]["collection_interval"])
                 
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Revenue enhancement error: {e}")
                 time.sleep(60)  # Error backoff
     
@@ -247,7 +256,8 @@ def _update_metrics(self) -> Any:
                     "valid": validation["valid"],
                     "balance": self.wallet_manager.get_balance(wallet, "USD")
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Failed to update {wallet} metrics: {e}")
         
         # Save metrics
@@ -277,7 +287,8 @@ def _optimize_routes(self) -> Any:
                     "avg_fee": avg_fee,
                     "score": success_rate * (1 - avg_fee)  # sophisticated scoring
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 logger.warning(f"Route optimization failed for {route}: {e}")
         
         # Update route preferences

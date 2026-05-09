@@ -631,7 +631,7 @@
       "file": "QMOI-ENHANCED-AUTOTESTS.md",
       "keywords": [
         "simulation",
-        "staging"
+        "PRODUCTION"
       ],
       "regex": [
         "local_api"
@@ -964,7 +964,7 @@
       "ast": []
     },
     {
-      "file": "QCITYDEVICEAUTOUPGRADE.md",
+      "file": "QCITYPRODUCTIONICEAUTOUPGRADE.md",
       "keywords": [
         "alpha"
       ],
@@ -1004,7 +1004,7 @@
       "ast": []
     },
     {
-      "file": "aggressive_production_fixer.py",
+      "file": "aggressive_PRODUCTION_FIXEDer.py",
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
@@ -1014,7 +1014,7 @@
         "✅ complete",
         "real",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "COMPLETE"
       ],
@@ -1080,7 +1080,7 @@
       "ast": []
     },
     {
-      "file": "production_READY_SUMMARY.md",
+      "file": "PRODUCTION_READY_SUMMARY.md",
       "keywords": [
         "alpha"
       ],
@@ -1096,7 +1096,7 @@
       "ast": []
     },
     {
-      "file": "OPTION_A_production_READY.md",
+      "file": "OPTION_A_PRODUCTION_READY.md",
       "keywords": [
         "demo"
       ],
@@ -1170,7 +1170,7 @@
       "ast": []
     },
     {
-      "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
+      "file": "DOWNLOADQMOIAIAPPALLPRODUCTIONICES.md",
       "keywords": [
         "alpha"
       ],
@@ -1303,7 +1303,7 @@
       "ast": []
     },
     {
-      "file": "BACKEND_API_TEMPLATES.md",
+      "file": "BACKEND_API_PRODUCTIONLATES.md",
       "keywords": [
         "COMPLETE"
       ],
@@ -1372,7 +1372,7 @@
       "ast": []
     },
     {
-      "file": "QMOIALLDEVICESHANDSFREE.md",
+      "file": "QMOIALLPRODUCTIONICESHANDSFREE.md",
       "keywords": [
         "COMPLETE"
       ],
@@ -1601,7 +1601,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "COMPLETE",
@@ -1834,7 +1834,7 @@
       "ast": []
     },
     {
-      "file": "enforce_production_ready.py",
+      "file": "enforce_PRODUCTION_READY.py",
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
@@ -2302,7 +2302,7 @@
         "real",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
-        "staging",
+        "PRODUCTION",
         "COMPLETE",
         "completed implementation"
       ],
@@ -2450,7 +2450,7 @@
       "ast": []
     },
     {
-      "file": "QMOIPREDEVDOCACTIONS.md",
+      "file": "QMOIPREPRODUCTIONDOCACTIONS.md",
       "keywords": [
         "alpha"
       ],
@@ -2861,7 +2861,7 @@
     {
       "file": "ENVIRONMENT_CONFIG.md",
       "keywords": [
-        "staging"
+        "PRODUCTION"
       ],
       "regex": [
         "local_api"
@@ -2869,7 +2869,7 @@
       "ast": []
     },
     {
-      "file": "test-autodev-enhanced.js",
+      "file": "test-autoPRODUCTION-enhanced.js",
       "keywords": [],
       "regex": [
         "local_api"
@@ -3166,7 +3166,7 @@
       "ast": []
     },
     {
-      "file": "AUTODEV_VALIDATION_SYSTEM.md",
+      "file": "AUTOPRODUCTION_VALIDATION_SYSTEM.md",
       "keywords": [
         "real"
       ],
@@ -3271,7 +3271,7 @@
       "ast": []
     },
     {
-      "file": "DEVCOMMANDS.md",
+      "file": "PRODUCTIONCOMMANDS.md",
       "keywords": [],
       "regex": [
         "local_api"
@@ -3466,7 +3466,7 @@
       "ast": []
     },
     {
-      "file": "DEVCONTAINER_RECOVERY_GUIDE.md",
+      "file": "PRODUCTIONCONTAINER_RECOVERY_GUIDE.md",
       "keywords": [],
       "regex": [
         "local_api"
@@ -3561,7 +3561,7 @@
         "demo",
         "real",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
-        "staging"
+        "PRODUCTION"
       ],
       "regex": [
         "local_api"
@@ -4188,7 +4188,7 @@
       "ast": []
     },
     {
-      "file": "requirements-dev.txt",
+      "file": "requirements-PRODUCTION.txt",
       "keywords": [
         "production",
         "production"
@@ -4275,7 +4275,7 @@
         "✅ complete",
         "real",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "COMPLETE",
         "completed implementation"
@@ -4391,7 +4391,7 @@
       "ast": []
     },
     {
-      "file": "DEVELOPER_STRUCTURE_COMPLETE.md",
+      "file": "PRODUCTIONELOPER_STRUCTURE_COMPLETE.md",
       "keywords": [
         "alpha"
       ],
@@ -4489,7 +4489,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -4500,7 +4500,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -4524,7 +4524,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -4535,7 +4535,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -4640,7 +4640,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -4651,7 +4651,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -4665,7 +4665,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -4676,7 +4676,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -4711,7 +4711,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -4722,7 +4722,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -4736,7 +4736,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -4747,7 +4747,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -4761,7 +4761,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -4772,7 +4772,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -4786,7 +4786,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -4797,7 +4797,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -4811,7 +4811,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -4822,7 +4822,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -4921,7 +4921,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -4932,7 +4932,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -4977,7 +4977,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -4988,7 +4988,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -5023,7 +5023,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -5034,7 +5034,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -5125,7 +5125,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -5136,7 +5136,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -5155,7 +5155,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation"
       ],
       "regex": [],
@@ -5244,7 +5244,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -5255,7 +5255,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -5288,7 +5288,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -5299,7 +5299,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -5344,7 +5344,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -5355,7 +5355,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -5386,7 +5386,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -5397,7 +5397,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -5440,7 +5440,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -5451,7 +5451,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "COMPLETE",
@@ -5531,7 +5531,7 @@
         "alpha",
         "beta",
         "demo",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -5542,7 +5542,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -5571,7 +5571,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -5582,7 +5582,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -5654,7 +5654,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -5665,7 +5665,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -5690,7 +5690,7 @@
         "alpha",
         "beta",
         "demo",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -5701,7 +5701,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -5715,7 +5715,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -5726,7 +5726,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -5740,7 +5740,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -5751,7 +5751,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -5841,7 +5841,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation"
       ],
       "regex": [],
@@ -5853,7 +5853,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -5864,7 +5864,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "COMPLETE",
@@ -5879,7 +5879,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -5890,7 +5890,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -5904,7 +5904,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -5915,7 +5915,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -6040,7 +6040,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -6051,7 +6051,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "COMPLETE",
@@ -6359,7 +6359,7 @@
       "ast": []
     },
     {
-      "file": "temps/atoz.txt",
+      "file": "PRODUCTIONs/atoz.txt",
       "keywords": [
         "production",
         "production",
@@ -6418,7 +6418,7 @@
     {
       "file": "qvillage/undone.txt",
       "keywords": [
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "production",
         "production",
@@ -7295,7 +7295,7 @@
         "real",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "COMPLETE",
         "completed implementation"
       ],
@@ -7303,7 +7303,7 @@
       "ast": []
     },
     {
-      "file": "tools/generate_fix_templates.py",
+      "file": "tools/generate_fix_PRODUCTIONlates.py",
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
@@ -7463,7 +7463,7 @@
       ],
       "regex": [],
       "ast": [
-        "python_ast_dev_attr"
+        "python_ast_PRODUCTION_attr"
       ]
     },
     {
@@ -7498,7 +7498,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -7545,7 +7545,7 @@
       ],
       "regex": [],
       "ast": [
-        "python_ast_dev_attr"
+        "python_ast_PRODUCTION_attr"
       ]
     },
     {
@@ -7659,7 +7659,7 @@
       "ast": []
     },
     {
-      "file": "scripts/enhanced_production_fixer.py",
+      "file": "scripts/enhanced_PRODUCTION_FIXEDer.py",
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
@@ -7714,12 +7714,12 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation"
       ],
       "regex": [],
       "ast": [
-        "python_ast_dev_attr"
+        "python_ast_PRODUCTION_attr"
       ]
     },
     {
@@ -7838,7 +7838,7 @@
       "ast": []
     },
     {
-      "file": "scripts/setup-dev.sh",
+      "file": "scripts/setup-PRODUCTION.sh",
       "keywords": [],
       "regex": [
         "local_api"
@@ -8008,7 +8008,7 @@
       "ast": []
     },
     {
-      "file": "scripts/automated_production_fixer.py",
+      "file": "scripts/automated_PRODUCTION_FIXEDer.py",
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
@@ -8167,7 +8167,7 @@
         "real",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
-        "staging",
+        "PRODUCTION",
         "implementation"
       ],
       "regex": [],
@@ -8205,7 +8205,7 @@
       "keywords": [],
       "regex": [],
       "ast": [
-        "python_ast_dev_attr"
+        "python_ast_PRODUCTION_attr"
       ]
     },
     {
@@ -8318,7 +8318,7 @@
       "ast": []
     },
     {
-      "file": "scripts/final_production_fixer.py",
+      "file": "scripts/final_PRODUCTION_FIXEDer.py",
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
@@ -8395,10 +8395,10 @@
       ],
       "regex": [],
       "ast": [
-        "python_ast_dev_attr",
-        "python_ast_dev_attr",
-        "python_ast_dev_attr",
-        "python_ast_dev_attr"
+        "python_ast_PRODUCTION_attr",
+        "python_ast_PRODUCTION_attr",
+        "python_ast_PRODUCTION_attr",
+        "python_ast_PRODUCTION_attr"
       ]
     },
     {
@@ -8448,7 +8448,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "COMPLETE",
         "completed implementation"
@@ -8708,7 +8708,7 @@
       "ast": []
     },
     {
-      "file": "scripts/scan_all_apps_devices_machines.py",
+      "file": "scripts/scan_all_apps_PRODUCTIONices_machines.py",
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
@@ -8721,7 +8721,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation"
       ],
       "regex": [],
@@ -8826,7 +8826,7 @@
       "ast": []
     },
     {
-      "file": "scripts/device_ownership_detector.py",
+      "file": "scripts/PRODUCTIONice_ownership_detector.py",
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
@@ -8843,7 +8843,7 @@
       "ast": []
     },
     {
-      "file": "scripts/dev-healthcheck.sh",
+      "file": "scripts/PRODUCTION-healthcheck.sh",
       "keywords": [],
       "regex": [
         "local_api"
@@ -8926,7 +8926,7 @@
       "file": "scripts/final_validation_report.py",
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
-        "staging"
+        "PRODUCTION"
       ],
       "regex": [],
       "ast": []
@@ -9044,7 +9044,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "COMPLETE"
       ],
@@ -9192,7 +9192,7 @@
         "real",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
-        "staging",
+        "PRODUCTION",
         "implementation"
       ],
       "regex": [],
@@ -9238,8 +9238,8 @@
         "alpha",
         "beta",
         "demo",
-        "dev only",
-        "dev-mode",
+        "PRODUCTION only",
+        "PRODUCTION-mode",
         "production-only",
         "experimental",
         "real",
@@ -9254,7 +9254,7 @@
         "sandbox",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "verify manually",
@@ -9367,7 +9367,7 @@
       "ast": []
     },
     {
-      "file": "scripts/qmoi-dev-actions.py",
+      "file": "scripts/qmoi-PRODUCTION-actions.py",
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate"
@@ -9407,7 +9407,7 @@
       "file": "scripts/update_percentage_scripts.py",
       "keywords": [
         "real",
-        "staging"
+        "PRODUCTION"
       ],
       "regex": [],
       "ast": []
@@ -9671,7 +9671,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
-        "dev only",
+        "PRODUCTION only",
         "experimental",
         "real",
         "✅ complete",
@@ -9682,7 +9682,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation",
         "production_GUARDED",
         "completed implementation"
@@ -9745,7 +9745,7 @@
         "real",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
-        "staging",
+        "PRODUCTION",
         "implementation"
       ],
       "regex": [],
@@ -9810,7 +9810,7 @@
       "ast": []
     },
     {
-      "file": "scripts/finalize_production_ready.py",
+      "file": "scripts/finalize_PRODUCTION_READY.py",
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
@@ -9818,7 +9818,7 @@
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "staging",
+        "PRODUCTION",
         "implementation"
       ],
       "regex": [],
@@ -9871,7 +9871,7 @@
       "file": "config/test_config.json",
       "keywords": [
         "alpha",
-        "staging"
+        "PRODUCTION"
       ],
       "regex": [
         "local_api"
@@ -9898,7 +9898,7 @@
     {
       "file": "config/test-config.json",
       "keywords": [
-        "staging"
+        "PRODUCTION"
       ],
       "regex": [
         "local_api"
@@ -9906,7 +9906,7 @@
       "ast": []
     },
     {
-      "file": ".devcontainer/devcontainer-init.sh",
+      "file": ".PRODUCTIONcontainer/PRODUCTIONcontainer-init.sh",
       "keywords": [],
       "regex": [
         "local_api"
@@ -9919,10 +9919,10 @@
         "demo"
       ],
       "regex": [
-        "dev_env"
+        "PRODUCTION_env"
       ],
       "ast": [
-        "js_env_dev_flag"
+        "js_env_PRODUCTION_flag"
       ]
     },
     {
@@ -9987,7 +9987,7 @@
       "file": "reports/COMPREHENSIVE_production_READINESS_REPORT.md",
       "keywords": [
         "real",
-        "staging"
+        "PRODUCTION"
       ],
       "regex": [],
       "ast": []
@@ -10061,7 +10061,7 @@
       "ast": []
     },
     {
-      "file": "components/device/DeviceIntegration✅ production COMPLETE - Full feature implementation and testing
+      "file": "components/PRODUCTIONice/PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
       "keywords": [
         "real",
         "implementation"
@@ -10128,7 +10128,7 @@
       "ast": []
     },
     {
-      "file": "mobile/components/DeviceManagementScreen.js",
+      "file": "mobile/components/PRODUCTIONiceManagementScreen.js",
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
@@ -10194,7 +10194,7 @@
     {
       "file": ".github/workflows/ci-cd.yml",
       "keywords": [
-        "staging"
+        "PRODUCTION"
       ],
       "regex": [],
       "ast": []
@@ -10386,7 +10386,7 @@
       "ast": []
     },
     {
-      "file": "__tests__/api/qmoi-autodev-research.test.ts",
+      "file": "__tests__/api/qmoi-autoPRODUCTION-research.test.ts",
       "keywords": [
         "real",
         "simulate"
@@ -10397,7 +10397,7 @@
       ]
     },
     {
-      "file": "__tests__/api/qmoi-autodev-toggle-generate-state.test.ts",
+      "file": "__tests__/api/qmoi-autoPRODUCTION-toggle-generate-state.test.ts",
       "keywords": [
         "real"
       ],
@@ -10531,7 +10531,7 @@
       "ast": []
     },
     {
-      "file": ".next/types/app/dev/page.ts",
+      "file": ".next/types/app/PRODUCTION/page.ts",
       "keywords": [
         "experimental"
       ],
@@ -10835,7 +10835,7 @@
       "ast": []
     },
     {
-      "file": ".next/types/app/api/device-fingerprint/route.ts",
+      "file": ".next/types/app/api/PRODUCTIONice-fingerprint/route.ts",
       "keywords": [
         "experimental"
       ],
@@ -11147,7 +11147,7 @@
       "ast": []
     },
     {
-      "file": ".next/types/app/api/biometric/templates/route.ts",
+      "file": ".next/types/app/api/biometric/PRODUCTIONlates/route.ts",
       "keywords": [
         "experimental"
       ],
@@ -11179,7 +11179,7 @@
       "ast": []
     },
     {
-      "file": ".next/types/app/api/enhanced-email/templates/route.ts",
+      "file": ".next/types/app/api/enhanced-email/PRODUCTIONlates/route.ts",
       "keywords": [
         "experimental"
       ],
@@ -11419,7 +11419,7 @@
       "ast": []
     },
     {
-      "file": ".next/types/app/api/qmoi/own-device-logs/route.ts",
+      "file": ".next/types/app/api/qmoi/own-PRODUCTIONice-logs/route.ts",
       "keywords": [
         "experimental"
       ],
@@ -11571,7 +11571,7 @@
       "ast": []
     },
     {
-      "file": ".next/types/app/api/qmoi/own-device-logs/export/route.ts",
+      "file": ".next/types/app/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
       "keywords": [
         "experimental"
       ],
@@ -11643,7 +11643,7 @@
       "ast": []
     },
     {
-      "file": ".next/types/app/api/qmoi/autodev/research/route.ts",
+      "file": ".next/types/app/api/qmoi/autoPRODUCTION/research/route.ts",
       "keywords": [
         "experimental"
       ],
@@ -11651,7 +11651,7 @@
       "ast": []
     },
     {
-      "file": ".next/types/app/api/qmoi/autodev/toggle/route.ts",
+      "file": ".next/types/app/api/qmoi/autoPRODUCTION/toggle/route.ts",
       "keywords": [
         "experimental"
       ],
@@ -11659,7 +11659,7 @@
       "ast": []
     },
     {
-      "file": ".next/types/app/api/qmoi/autodev/generate-feature/route.ts",
+      "file": ".next/types/app/api/qmoi/autoPRODUCTION/generate-feature/route.ts",
       "keywords": [
         "experimental"
       ],
@@ -12507,7 +12507,7 @@
       "ast": []
     },
     {
-      "file": ".next/server/app/dev/page.js",
+      "file": ".next/server/app/PRODUCTION/page.js",
       "keywords": [
         "experimental"
       ],
@@ -12824,7 +12824,7 @@
       "ast": []
     },
     {
-      "file": ".next/server/app/api/device-fingerprint/route.js",
+      "file": ".next/server/app/api/PRODUCTIONice-fingerprint/route.js",
       "keywords": [
         "experimental"
       ],
@@ -13139,7 +13139,7 @@
       "ast": []
     },
     {
-      "file": ".next/server/app/api/biometric/templates/route.js",
+      "file": ".next/server/app/api/biometric/PRODUCTIONlates/route.js",
       "keywords": [
         "experimental"
       ],
@@ -13172,7 +13172,7 @@
       "ast": []
     },
     {
-      "file": ".next/server/app/api/enhanced-email/templates/route.js",
+      "file": ".next/server/app/api/enhanced-email/PRODUCTIONlates/route.js",
       "keywords": [
         "experimental"
       ],
@@ -13412,7 +13412,7 @@
       "ast": []
     },
     {
-      "file": ".next/server/app/api/qmoi/own-device-logs/route.js",
+      "file": ".next/server/app/api/qmoi/own-PRODUCTIONice-logs/route.js",
       "keywords": [
         "experimental"
       ],
@@ -13566,7 +13566,7 @@
       "ast": []
     },
     {
-      "file": ".next/server/app/api/qmoi/own-device-logs/export/route.js",
+      "file": ".next/server/app/api/qmoi/own-PRODUCTIONice-logs/export/route.js",
       "keywords": [
         "experimental"
       ],
@@ -13638,7 +13638,7 @@
       "ast": []
     },
     {
-      "file": ".next/server/app/api/qmoi/autodev/research/route.js",
+      "file": ".next/server/app/api/qmoi/autoPRODUCTION/research/route.js",
       "keywords": [
         "experimental"
       ],
@@ -13646,7 +13646,7 @@
       "ast": []
     },
     {
-      "file": ".next/server/app/api/qmoi/autodev/toggle/route.js",
+      "file": ".next/server/app/api/qmoi/autoPRODUCTION/toggle/route.js",
       "keywords": [
         "experimental"
       ],
@@ -13654,7 +13654,7 @@
       "ast": []
     },
     {
-      "file": ".next/server/app/api/qmoi/autodev/generate-feature/route.js",
+      "file": ".next/server/app/api/qmoi/autoPRODUCTION/generate-feature/route.js",
       "keywords": [
         "experimental"
       ],
@@ -14490,7 +14490,7 @@
       "ast": []
     },
     {
-      "file": "tools/release_templates/update_v1.2.4.json",
+      "file": "tools/release_PRODUCTIONlates/update_v1.2.4.json",
       "keywords": [
         "alpha"
       ],
@@ -14498,7 +14498,7 @@
       "ast": []
     },
     {
-      "file": "tools/release_templates/update.json",
+      "file": "tools/release_PRODUCTIONlates/update.json",
       "keywords": [
         "alpha"
       ],
@@ -14506,7 +14506,7 @@
       "ast": []
     },
     {
-      "file": "tools/release_templates/update_v1.2.5.json",
+      "file": "tools/release_PRODUCTIONlates/update_v1.2.5.json",
       "keywords": [
         "alpha"
       ],
@@ -14562,7 +14562,7 @@
       "ast": []
     },
     {
-      "file": "tools/issue_drafts/0963_qmoi-enhanced_scripts_templates_README_template.md.md",
+      "file": "tools/issue_drafts/0963_qmoi-enhanced_scripts_PRODUCTIONlates_README_PRODUCTIONlate.md.md",
       "keywords": [
         "alpha"
       ],
@@ -14594,7 +14594,7 @@
       "ast": []
     },
     {
-      "file": "tools/issue_drafts/1048_scripts_templates_README_template.en.md.md",
+      "file": "tools/issue_drafts/1048_scripts_PRODUCTIONlates_README_PRODUCTIONlate.en.md.md",
       "keywords": [
         "alpha"
       ],
@@ -14698,7 +14698,7 @@
       "ast": []
     },
     {
-      "file": "tools/issue_drafts/0860_qmoi-enhanced_DEVCOMMANDS.md.md",
+      "file": "tools/issue_drafts/0860_qmoi-enhanced_PRODUCTIONCOMMANDS.md.md",
       "keywords": [],
       "regex": [
         "local_api"
@@ -14730,7 +14730,7 @@
       "ast": []
     },
     {
-      "file": "tools/issue_drafts/1049_scripts_templates_README_template.md.md",
+      "file": "tools/issue_drafts/1049_scripts_PRODUCTIONlates_README_PRODUCTIONlate.md.md",
       "keywords": [
         "alpha"
       ],
@@ -14746,7 +14746,7 @@
       "ast": []
     },
     {
-      "file": "tools/issue_drafts/0964_qmoi-enhanced_scripts_templates_README_template.sw.md.md",
+      "file": "tools/issue_drafts/0964_qmoi-enhanced_scripts_PRODUCTIONlates_README_PRODUCTIONlate.sw.md.md",
       "keywords": [
         "alpha"
       ],
@@ -14786,7 +14786,7 @@
       "ast": []
     },
     {
-      "file": "tools/issue_drafts/0962_qmoi-enhanced_scripts_templates_README_template.en.md.md",
+      "file": "tools/issue_drafts/0962_qmoi-enhanced_scripts_PRODUCTIONlates_README_PRODUCTIONlate.en.md.md",
       "keywords": [
         "alpha"
       ],
@@ -14794,7 +14794,7 @@
       "ast": []
     },
     {
-      "file": "tools/issue_drafts/0492_DEVCOMMANDS.md.md",
+      "file": "tools/issue_drafts/0492_PRODUCTIONCOMMANDS.md.md",
       "keywords": [],
       "regex": [
         "local_api"
@@ -14842,7 +14842,7 @@
       "ast": []
     },
     {
-      "file": "tools/issue_drafts/1050_scripts_templates_README_template.sw.md.md",
+      "file": "tools/issue_drafts/1050_scripts_PRODUCTIONlates_README_PRODUCTIONlate.sw.md.md",
       "keywords": [
         "alpha"
       ],
@@ -14866,7 +14866,7 @@
       "ast": []
     },
     {
-      "file": "scripts/templates/README_template.md",
+      "file": "scripts/PRODUCTIONlates/README_PRODUCTIONlate.md",
       "keywords": [
         "alpha"
       ],
@@ -14874,7 +14874,7 @@
       "ast": []
     },
     {
-      "file": "scripts/templates/README_template.sw.md",
+      "file": "scripts/PRODUCTIONlates/README_PRODUCTIONlate.sw.md",
       "keywords": [
         "alpha"
       ],
@@ -14882,7 +14882,7 @@
       "ast": []
     },
     {
-      "file": "scripts/templates/README_template.en.md",
+      "file": "scripts/PRODUCTIONlates/README_PRODUCTIONlate.en.md",
       "keywords": [
         "alpha"
       ],
@@ -15066,7 +15066,7 @@
     {
       "file": "scripts/deployment/auto_deploy.py",
       "keywords": [
-        "staging"
+        "PRODUCTION"
       ],
       "regex": [
         "local_api"
@@ -15098,7 +15098,7 @@
       "ast": []
     },
     {
-      "file": "scripts/services/qmoi_autodev_daemon.ts",
+      "file": "scripts/services/qmoi_autoPRODUCTION_daemon.ts",
       "keywords": [],
       "regex": [
         "local_api"
@@ -15277,7 +15277,7 @@
       "ast": []
     },
     {
-      "file": "app/api/qmoi/autodev/research/route.ts",
+      "file": "app/api/qmoi/autoPRODUCTION/research/route.ts",
       "keywords": [
         "simulate"
       ],
@@ -15445,7 +15445,7 @@
       "ast": []
     },
     {
-      "file": "src/services/DeviceTrackingService.ts",
+      "file": "src/services/PRODUCTIONiceTrackingService.ts",
       "keywords": [
         "COMPLETE"
       ],
@@ -15469,7 +15469,7 @@
       "ast": []
     },
     {
-      "file": "src/components/q-city/QMoiAutoDevPanel.tsx",
+      "file": "src/components/q-city/QMoiAutoPRODUCTIONPanel.tsx",
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
@@ -15477,7 +15477,7 @@
       "ast": []
     },
     {
-      "file": "src/components/q-city/DevicesHub.tsx",
+      "file": "src/components/q-city/PRODUCTIONicesHub.tsx",
       "keywords": [
         "COMPLETE"
       ],
@@ -15555,13 +15555,13 @@
       "file": "src/app/api/consciousness/health/route.ts",
       "keywords": [
         "alpha",
-        "staging"
+        "PRODUCTION"
       ],
       "regex": [],
       "ast": []
     },
     {
-      "file": "src/app/api/qmoi/autodev/research/route.ts",
+      "file": "src/app/api/qmoi/autoPRODUCTION/research/route.ts",
       "keywords": [
         "simulate"
       ],
@@ -15597,12 +15597,12 @@
   "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:15:30.733718",
-  "autodev": {
+  "autoPRODUCTION": {
     "enhanced": true,
     "timestamp": "2026-04-20T08:55:06.912261",
     "version": "2026-04-20"
   },
-  "production_ready": true,
+  "PRODUCTION_READY": true,
   "last_production_enhancement": "2026-04-22T04:58:54.099426",
-  "autodev_version": "2026-04-20-aggressive"
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
 }

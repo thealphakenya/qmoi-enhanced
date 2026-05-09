@@ -205,7 +205,7 @@ Content-Type: application/json
         api_content += f"- `GET/POST /api/{path}`\n"
     
     api_content += "\n### Autoprod System\n"
-    autoprod_endpoints = [r for r in routes if 'autoprod' in r or 'autodev' in r]
+    autoprod_endpoints = [r for r in routes if 'autoprod' in r or 'autoPRODUCTION' in r]
     for endpoint in autoprod_endpoints:
         path = endpoint.replace('src/app/api/', '').replace('/route.ts', '').replace('/route.js', '')
         api_content += f"- `GET/POST /api/{path}`\n"

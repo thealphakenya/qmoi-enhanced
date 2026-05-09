@@ -20,7 +20,7 @@
 ### Server Status
 - **Server:** ✅ Running (next-server process ID: 15123)
 - **Port:** 3001 ✅
-- **Listen Address:** localhost:3001 (Network: 10.0.2.197:3001) ✅
+- **Listen Address:** api.qmoi-enhanced.com:3001 (Network: 10.0.2.197:3001) ✅
 - **Startup Time:** Ready in 238ms ✅
 - **Memory Usage:** ~120-124MB RSS ✅
 
@@ -58,7 +58,7 @@
 
 Key Categories:
 - **Authentication:** WebAuthn, OAuth, Session management
-- **User Management:** Profile, language, device logs
+- **User Management:** Profile, language, PRODUCTIONice logs
 - **QMOI Core:** Chat, memory, friendship, voice, projects
 - **Revenue System:** Transactions, transfers, dashboard, targets
 - **Social:** WhatsApp Business, social automation
@@ -112,7 +112,7 @@ bash ./scripts/prod-start.sh
 
 ```bash
 # Check server status
-curl http://localhost:3001/api/health
+curl http://api.qmoi-enhanced.com:3001/api/health
 
 # View logs
 tail -f .qmoi_prod.log

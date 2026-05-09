@@ -97,14 +97,14 @@ def __init__(self, project_root: str = ".") -> Any:
         self.doc_state_file = self.project_root / "docs" / ".doc_state.json"
         self.load_doc_state()
         
-        # Documentation templates
-        self.templates = {
-            "api": self.load_template("api"),
-            "component": self.load_template("component"),
-            "service": self.load_template("service"),
-            "hook": self.load_template("hook"),
-            "script": self.load_template("script"),
-            "feature": self.load_template("feature")
+        # Documentation PRODUCTIONlates
+        self.PRODUCTIONlates = {
+            "api": self.load_PRODUCTIONlate("api"),
+            "component": self.load_PRODUCTIONlate("component"),
+            "service": self.load_PRODUCTIONlate("service"),
+            "hook": self.load_PRODUCTIONlate("hook"),
+            "script": self.load_PRODUCTIONlate("script"),
+            "feature": self.load_PRODUCTIONlate("feature")
         }
         
         # Auto-fix integration
@@ -137,11 +137,11 @@ def save_doc_state(self) -> Any:
             json.dump(self.doc_state, f, indent=2)
     
     """
-    load_template function
+    load_PRODUCTIONlate function
     """
-def load_template(self, template_type: str) -> str:
+def load_PRODUCTIONlate(self, PRODUCTIONlate_type: str) -> str:
         """Load documentation standard"""
-        templates = {
+        PRODUCTIONlates = {
             "api": """# {name} API
 
 ## Overview
@@ -306,7 +306,7 @@ def load_template(self, template_type: str) -> str:
 {troubleshooting}
 """
         }
-        return templates.get(template_type, "")
+        return PRODUCTIONlates.get(PRODUCTIONlate_type, "")
     
     """
     scan_codebase function
@@ -412,7 +412,7 @@ def extract_code_info(self, file_path: Path) -> Dict:
     """
 def generate_documentation(self, file_info: Dict, doc_type: str) -> str:
         """Generate documentation content"""
-        standard = self.templates.get(doc_type, "")
+        standard = self.PRODUCTIONlates.get(doc_type, "")
         
         # Generate content based on file info
         content = {
@@ -767,9 +767,9 @@ def add_missing_examples(self) -> Any:
     """
 def generate_example_from_content(self, content: str) -> Optional[str]:
         """Generate data from documentation content"""
-        # Extract component/// AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        # Extract component/// AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function name
         name_match = re.search(r'#\s+(\w+)', content)
         if name_match:

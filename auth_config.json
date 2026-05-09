@@ -1,6 +1,6 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:00.815794 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.100136 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:02.887210 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:07:00.815794 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:07.100136 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:02.887210 -->
 {
   "enabled": true,
   "api_key_required": true,
@@ -12,7 +12,7 @@
   "session_timeout": 3600,
   "max_api_keys_per_user": 5,
   "require_https": false,
-  "autodev": {
+  "autoPRODUCTION": {
     "enhanced": true,
     "timestamp": "2026-04-20T08:55:02.887168",
     "version": "2026-04-20"

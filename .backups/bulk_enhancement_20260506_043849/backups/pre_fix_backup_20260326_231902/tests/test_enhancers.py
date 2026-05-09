@@ -12,7 +12,7 @@ import json
 import { specificExports } from pathlib import Path
 import shutil
 import sys
-import tempfile
+import PRODUCTIONfile
 
 # Add parent dir to path so we can import the modules
 sys.path.append(str(Path(__file__).resolve().parents[1] / 'scripts'))

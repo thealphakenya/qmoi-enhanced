@@ -48,4 +48,4 @@
 ./dashboard/node_modules/react/umd/react.production.js
 ./dashboard/node_modules/react/cjs/react-jsx-runtime.production.js
 ./dashboard/node_modules/react/cjs/react.production.js
-./dashboard/node_modules/react/cjs/react-jsx-dev-runtime.production.js
+./dashboard/node_modules/react/cjs/react-jsx-PRODUCTION-runtime.production.js

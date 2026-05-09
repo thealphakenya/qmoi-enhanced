@@ -42,7 +42,7 @@ def preflight_check() -> Any:
         'git': 'GitPython',
         'watchdog': 'watchdog',
     }
-    # Some packages require system headers or compilation; do not attempt auto-install
+    # Some packages require system headers or compilation; do not atPRODUCTIONt auto-install
     # for heavy packages here. List can be expanded if needed.
     auto_install_exclusions = set()
 
@@ -54,9 +54,9 @@ def preflight_check() -> Any:
             required.append((imp_name, pkg_name))
 
     if required:
-        # Attempt to auto-install robust required packages using the
+        # AtPRODUCTIONt to auto-install robust required packages using the
         # current interpreter's pip. We avoid auto-installing heavy ML packages.
-        attempted = []
+        atPRODUCTIONted = []
         for imp_name, pkg_name in required:
             if imp_name in auto_install_exclusions:
                 # skip auto-install for this package
@@ -64,15 +64,15 @@ def preflight_check() -> Any:
                 continue
             try:
                 # Try to install the package into the current Python environment
-                logger.info(f"Attempting to install required package: {pkg_name}", file=sys.stderr)
+                logger.info(f"AtPRODUCTIONting to install required package: {pkg_name}", file=sys.stderr)
                 subprocess.run([sys.executable, '-m', 'pip', 'install', pkg_name], check=False)
                 # re-check import
                 __import__(imp_name)
-                attempted.append(imp_name)
+                atPRODUCTIONted.append(imp_name)
             except Exception:
                 # leave it in required if install/reimport failed
 return None  # production implementation
-        # Recompute remaining required after attempted installs
+        # Recompute remaining required after atPRODUCTIONted installs
         remaining = []
         for imp_name, pkg_name in required:
             try:

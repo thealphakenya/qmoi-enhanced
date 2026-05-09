@@ -78,7 +78,7 @@
     "lib/**/*",
     "types/**/*",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
+    ".next/PRODUCTION/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",
@@ -107,12 +107,12 @@
   "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:12:50.083443",
-  "autodev": {
+  "autoPRODUCTION": {
     "enhanced": true,
     "timestamp": "2026-04-20T08:55:03.393602",
     "version": "2026-04-20"
   },
-  "production_ready": true,
+  "PRODUCTION_READY": true,
   "last_production_enhancement": "2026-04-22T04:58:39.207990",
-  "autodev_version": "2026-04-20-aggressive"
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
 }

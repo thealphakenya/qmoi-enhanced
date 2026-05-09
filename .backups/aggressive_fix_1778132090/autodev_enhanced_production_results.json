@@ -209,7 +209,7 @@
       "score": 100
     },
     {
-      "file": "test-autodev-enhanced.js",
+      "file": "test-autoPRODUCTION-enhanced.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -743,7 +743,7 @@
       "score": 100
     },
     {
-      "file": "scripts/dev-production_config.js",
+      "file": "scripts/PRODUCTION-production_config.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -875,7 +875,7 @@
       "score": 100
     },
     {
-      "file": "scripts/vercel-autoclone-autodev.js",
+      "file": "scripts/vercel-autoclone-autoPRODUCTION.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -983,7 +983,7 @@
       "score": 100
     },
     {
-      "file": "scripts/qcity-device-manager.js",
+      "file": "scripts/qcity-PRODUCTIONice-manager.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -1069,7 +1069,7 @@
       "score": 100
     },
     {
-      "file": "scripts/test_qmoi_autodev.js",
+      "file": "scripts/test_qmoi_autoPRODUCTION.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -1441,7 +1441,7 @@
       "score": 100
     },
     {
-      "file": "mobile/components/DeviceManagementScreen.js",
+      "file": "mobile/components/PRODUCTIONiceManagementScreen.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -1507,7 +1507,7 @@
       "score": 100
     },
     {
-      "file": "cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js",
+      "file": "cypress/e2e/qmoi_kernel_panel_sso_oauth_PRODUCTIONice_delegated.cy.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -2083,7 +2083,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/test-autodev-enhanced.js",
+      "file": "backups/pre_fix_backup_20260326_231902/test-autoPRODUCTION-enhanced.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -2227,7 +2227,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/test-autodev-enhanced.js",
+      "file": "backups/pre_fix_backup_20260326_232205/test-autoPRODUCTION-enhanced.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -2329,7 +2329,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/test-autodev-enhanced.js",
+      "file": "backups/final_fix_backup_20260326_232609/test-autoPRODUCTION-enhanced.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -2479,7 +2479,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/scripts/dev-production_config.js",
+      "file": "backups/final_fix_backup_20260326_233109/scripts/PRODUCTION-production_config.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -2551,7 +2551,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/scripts/qcity-device-manager.js",
+      "file": "backups/final_fix_backup_20260326_233109/scripts/qcity-PRODUCTIONice-manager.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -2637,7 +2637,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/mobile/components/DeviceManagementScreen.js",
+      "file": "backups/final_fix_backup_20260326_233109/mobile/components/PRODUCTIONiceManagementScreen.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -2685,7 +2685,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js",
+      "file": "backups/final_fix_backup_20260326_233109/cypress/e2e/qmoi_kernel_panel_sso_oauth_PRODUCTIONice_delegated.cy.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -2901,7 +2901,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/scripts/qcity-device-manager.js",
+      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/scripts/qcity-PRODUCTIONice-manager.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -2979,7 +2979,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/mobile/components/DeviceManagementScreen.js",
+      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/mobile/components/PRODUCTIONiceManagementScreen.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -3027,7 +3027,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js",
+      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_PRODUCTIONice_delegated.cy.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -3207,7 +3207,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/test-autodev-enhanced.js",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/test-autoPRODUCTION-enhanced.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -3351,7 +3351,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/test-autodev-enhanced.js",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/test-autoPRODUCTION-enhanced.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -3885,7 +3885,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/vercel-autoclone-autodev.js",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/vercel-autoclone-autoPRODUCTION.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -4885,7 +4885,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/test_qmoi_autodev.js",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/test_qmoi_autoPRODUCTION.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -5995,7 +5995,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/vercel-autoclone-autodev.js",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/vercel-autoclone-autoPRODUCTION.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -6957,7 +6957,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/test_qmoi_autodev.js",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/test_qmoi_autoPRODUCTION.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -8273,7 +8273,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/dev-production_config.js",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/PRODUCTION-production_config.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -8405,7 +8405,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/vercel-autoclone-autodev.js",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/vercel-autoclone-autoPRODUCTION.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -8513,7 +8513,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/qcity-device-manager.js",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/qcity-PRODUCTIONice-manager.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -8917,7 +8917,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/mobile/components/DeviceManagementScreen.js",
+      "file": "backups/pre_fix_backup_20260326_231902/mobile/components/PRODUCTIONiceManagementScreen.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -8983,7 +8983,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js",
+      "file": "backups/pre_fix_backup_20260326_231902/cypress/e2e/qmoi_kernel_panel_sso_oauth_PRODUCTIONice_delegated.cy.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -9697,7 +9697,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qcity-device-manager.js",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qcity-PRODUCTIONice-manager.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -9747,7 +9747,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/test_qmoi_autodev.js",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/test_qmoi_autoPRODUCTION.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -9999,7 +9999,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/mobile/components/DeviceManagementScreen.js",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/mobile/components/PRODUCTIONiceManagementScreen.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -10065,7 +10065,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_PRODUCTIONice_delegated.cy.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -11037,7 +11037,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/scripts/vercel-autoclone-autodev.js",
+      "file": "backups/pre_fix_backup_20260326_232205/scripts/vercel-autoclone-autoPRODUCTION.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -11999,7 +11999,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/test_qmoi_autodev.js",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/test_qmoi_autoPRODUCTION.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -13093,7 +13093,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/vercel-autoclone-autodev.js",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/vercel-autoclone-autoPRODUCTION.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -13977,7 +13977,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/test_qmoi_autodev.js",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/test_qmoi_autoPRODUCTION.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -14675,7 +14675,7 @@
       "score": 100
     },
     {
-      "file": "autodev_aggressive_fixer_backup.py",
+      "file": "autoPRODUCTION_aggressive_fixer_backup.py",
       "status": "enhanced",
       "enhancements": [
         "Replaced non-production patterns: {'✅ production COMPLETE - Full feature implementation and testing
@@ -14747,7 +14747,7 @@
       "score": 100
     },
     {
-      "file": "aggressive_production_fixer.py",
+      "file": "aggressive_PRODUCTION_FIXEDer.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -14783,19 +14783,19 @@
       "score": 100
     },
     {
-      "file": "device_enhancer.py",
+      "file": "PRODUCTIONice_enhancer.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "autodev_cleanup.py",
+      "file": "autoPRODUCTION_cleanup.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "autodev_production_ready.py",
+      "file": "autoPRODUCTION_PRODUCTION_READY.py",
       "status": "enhanced",
       "enhancements": [
         "Replaced non-production patterns: {'test_only': 4, 'production-api.qmoi-enhanced.com': 2}"
@@ -14815,7 +14815,7 @@
       "score": 100
     },
     {
-      "file": "fast_bulk_production_fixer.py",
+      "file": "fast_bulk_PRODUCTION_FIXEDer.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -14827,7 +14827,7 @@
       "score": 100
     },
     {
-      "file": "ultimate_production_fixer.py",
+      "file": "ultimate_PRODUCTION_FIXEDer.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -14951,7 +14951,7 @@
       "score": 100
     },
     {
-      "file": "comprehensive_production_fixer.py",
+      "file": "comprehensive_PRODUCTION_FIXEDer.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -14963,7 +14963,7 @@
       "score": 100
     },
     {
-      "file": "enforce_production_ready.py",
+      "file": "enforce_PRODUCTION_READY.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -14975,13 +14975,13 @@
       "score": 100
     },
     {
-      "file": "safe_bulk_production_fixer.py",
+      "file": "safe_bulk_PRODUCTION_FIXEDer.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "autodev_aggressive_fixer.py",
+      "file": "autoPRODUCTION_aggressive_fixer.py",
       "status": "enhanced",
       "enhancements": [
         "Replaced non-production patterns: {'✅ production COMPLETE - Full feature implementation and testing
@@ -15035,7 +15035,7 @@
       "score": 0
     },
     {
-      "file": "autodev_enhanced_production_command.py",
+      "file": "autoPRODUCTION_enhanced_production_command.py",
       "status": "enhanced",
       "enhancements": [
         "Replaced non-production patterns: {'production-api.qmoi-enhanced.com': 8}"
@@ -15181,7 +15181,7 @@
       "score": 100
     },
     {
-      "file": "autodev_enhanced_fixer.py",
+      "file": "autoPRODUCTION_enhanced_fixer.py",
       "status": "enhanced",
       "enhancements": [
         "Replaced non-production patterns: {'test_only': 2, 'production-api.qmoi-enhanced.com': 2}"
@@ -15293,7 +15293,7 @@
       "score": 100
     },
     {
-      "file": "autodev_bulk_enhancer.py",
+      "file": "autoPRODUCTION_bulk_enhancer.py",
       "status": "enhanced",
       "enhancements": [
         "Replaced non-production patterns: {'✅ production COMPLETE - Full feature implementation and testing
@@ -15301,7 +15301,7 @@
       "score": 95
     },
     {
-      "file": "autodev_enhanced_production_command_optimized.py",
+      "file": "autoPRODUCTION_enhanced_production_command_optimized.py",
       "status": "enhanced",
       "enhancements": [
         "Replaced non-production patterns: {'test_only': 4, 'production-api.qmoi-enhanced.com': 4, 'debug_mode': 1}"
@@ -15335,7 +15335,7 @@
       "score": 100
     },
     {
-      "file": "autodev_cleanup_fixed.py",
+      "file": "autoPRODUCTION_cleanup_fixed.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -15353,13 +15353,13 @@
       "score": 100
     },
     {
-      "file": "autodev/__init__.py",
+      "file": "autoPRODUCTION/__init__.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "autodev/quantum_development_automation.py",
+      "file": "autoPRODUCTION/quantum_PRODUCTIONelopment_automation.py",
       "status": "enhanced",
       "enhancements": [
         "Replaced non-production patterns: {'✅ production COMPLETE - Full feature implementation and testing
@@ -15599,7 +15599,7 @@
       "score": 100
     },
     {
-      "file": "tools/generate_fix_templates.py",
+      "file": "tools/generate_fix_PRODUCTIONlates.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -15817,7 +15817,7 @@
       "score": 50
     },
     {
-      "file": "scripts/final_production_fixer.py",
+      "file": "scripts/final_PRODUCTION_FIXEDer.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -16685,7 +16685,7 @@
       "score": 100
     },
     {
-      "file": "scripts/device_unlock_system.py",
+      "file": "scripts/PRODUCTIONice_unlock_system.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -16759,7 +16759,7 @@
       "score": 100
     },
     {
-      "file": "scripts/scan_all_apps_devices_machines.test.py",
+      "file": "scripts/scan_all_apps_PRODUCTIONices_machines.test.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -16807,7 +16807,7 @@
       "score": 100
     },
     {
-      "file": "scripts/aggressive_production_fixer_v2.py",
+      "file": "scripts/aggressive_PRODUCTION_FIXEDer_v2.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -17043,7 +17043,7 @@
       "score": 65
     },
     {
-      "file": "scripts/device_orchestration_manager.py",
+      "file": "scripts/PRODUCTIONice_orchestration_manager.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -17281,7 +17281,7 @@
       "score": 100
     },
     {
-      "file": "scripts/device_ownership_detector.py",
+      "file": "scripts/PRODUCTIONice_ownership_detector.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -17373,7 +17373,7 @@
       "score": 100
     },
     {
-      "file": "scripts/device_orchestration_manager.test.py",
+      "file": "scripts/PRODUCTIONice_orchestration_manager.test.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -17841,7 +17841,7 @@
       "score": 100
     },
     {
-      "file": "scripts/qcity_device_manager.py",
+      "file": "scripts/qcity_PRODUCTIONice_manager.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -17865,7 +17865,7 @@
       "score": 100
     },
     {
-      "file": "scripts/comprehensive_production_fixer.py",
+      "file": "scripts/comprehensive_PRODUCTION_FIXEDer.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -18031,7 +18031,7 @@
       "score": 100
     },
     {
-      "file": "scripts/qmoi_device_agent.py",
+      "file": "scripts/qmoi_PRODUCTIONice_agent.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -18313,7 +18313,7 @@
       "score": 100
     },
     {
-      "file": "scripts/quick_production_fixer.py",
+      "file": "scripts/quick_PRODUCTION_FIXEDer.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -18373,7 +18373,7 @@
       "score": 100
     },
     {
-      "file": "scripts/qmoi-dev-actions.py",
+      "file": "scripts/qmoi-PRODUCTION-actions.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -18435,7 +18435,7 @@
       "score": 100
     },
     {
-      "file": "scripts/bulk_production_fixer.py",
+      "file": "scripts/bulk_PRODUCTION_FIXEDer.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -18515,7 +18515,7 @@
       "score": 100
     },
     {
-      "file": "scripts/qmoi_device_integration.py",
+      "file": "scripts/qmoi_PRODUCTIONice_integration.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -18597,7 +18597,7 @@
       "score": 100
     },
     {
-      "file": "scripts/qmoi_own_device_logger.py",
+      "file": "scripts/qmoi_own_PRODUCTIONice_logger.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -18753,7 +18753,7 @@
       "score": 100
     },
     {
-      "file": "scripts/qmoi_automated_device_controller.py",
+      "file": "scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -18871,7 +18871,7 @@
       "score": 100
     },
     {
-      "file": "scripts/finalize_production_ready.py",
+      "file": "scripts/finalize_PRODUCTION_READY.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -19127,7 +19127,7 @@
       "score": 100
     },
     {
-      "file": "scripts/automated_production_fixer.py",
+      "file": "scripts/automated_PRODUCTION_FIXEDer.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -19175,7 +19175,7 @@
       "score": 100
     },
     {
-      "file": "scripts/enhanced_production_fixer.py",
+      "file": "scripts/enhanced_PRODUCTION_FIXEDer.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -19205,7 +19205,7 @@
       "score": 100
     },
     {
-      "file": "scripts/scan_all_apps_devices_machines.py",
+      "file": "scripts/scan_all_apps_PRODUCTIONices_machines.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -19787,7 +19787,7 @@
       "score": 100
     },
     {
-      "file": "scripts/enhanced_lion_agents/lion_framework_game_dev_cocos.py",
+      "file": "scripts/enhanced_lion_agents/lion_framework_game_PRODUCTION_cocos.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -19817,7 +19817,7 @@
       "score": 100
     },
     {
-      "file": "scripts/enhanced_lion_agents/lion_python_devops_vagrant.py",
+      "file": "scripts/enhanced_lion_agents/lion_python_PRODUCTIONops_vagrant.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -19877,7 +19877,7 @@
       "score": 100
     },
     {
-      "file": "scripts/enhanced_lion_agents/lion_framework_game_dev_unreal.py",
+      "file": "scripts/enhanced_lion_agents/lion_framework_game_PRODUCTION_unreal.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -20087,7 +20087,7 @@
       "score": 100
     },
     {
-      "file": "scripts/enhanced_lion_agents/lion_python_devops_ansible.py",
+      "file": "scripts/enhanced_lion_agents/lion_python_PRODUCTIONops_ansible.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -20393,7 +20393,7 @@
       "score": 100
     },
     {
-      "file": "scripts/enhanced_lion_agents/lion_python_devops_docker_compose.py",
+      "file": "scripts/enhanced_lion_agents/lion_python_PRODUCTIONops_docker_compose.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -20423,7 +20423,7 @@
       "score": 100
     },
     {
-      "file": "scripts/enhanced_lion_agents/lion_python_devops_kubernetes_helm.py",
+      "file": "scripts/enhanced_lion_agents/lion_python_PRODUCTIONops_kubernetes_helm.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -20597,7 +20597,7 @@
       "score": 100
     },
     {
-      "file": "scripts/enhanced_lion_agents/lion_framework_game_dev_godot.py",
+      "file": "scripts/enhanced_lion_agents/lion_framework_game_PRODUCTION_godot.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -20753,7 +20753,7 @@
       "score": 100
     },
     {
-      "file": "scripts/enhanced_lion_agents/lion_framework_game_dev_unity.py",
+      "file": "scripts/enhanced_lion_agents/lion_framework_game_PRODUCTION_unity.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -20873,7 +20873,7 @@
       "score": 100
     },
     {
-      "file": "scripts/enhanced_lion_agents/lion_python_devops_terraform.py",
+      "file": "scripts/enhanced_lion_agents/lion_python_PRODUCTIONops_terraform.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -21011,7 +21011,7 @@
       "score": 95
     },
     {
-      "file": "scripts/lion_agents/lion_agent_edge_device.py",
+      "file": "scripts/lion_agents/lion_agent_edge_PRODUCTIONice.py",
       "status": "enhanced",
       "enhancements": [
         "Replaced non-production patterns: {'✅ production COMPLETE - Full feature implementation and testing
@@ -21051,7 +21051,7 @@
       "score": 95
     },
     {
-      "file": "scripts/lion_agents/lion_agent_autodev.py",
+      "file": "scripts/lion_agents/lion_agent_autoPRODUCTION.py",
       "status": "enhanced",
       "enhancements": [
         "Replaced non-production patterns: {'✅ production COMPLETE - Full feature implementation and testing
@@ -21099,7 +21099,7 @@
       "score": 95
     },
     {
-      "file": "scripts/lion_agents/lion_agent_devops.py",
+      "file": "scripts/lion_agents/lion_agent_PRODUCTIONops.py",
       "status": "enhanced",
       "enhancements": [
         "Replaced non-production patterns: {'✅ production COMPLETE - Full feature implementation and testing
@@ -21413,7 +21413,7 @@
       "score": 100
     },
     {
-      "file": "scripts/models/qmoi_autodev.py",
+      "file": "scripts/models/qmoi_autoPRODUCTION.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -21753,7 +21753,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/aggressive_production_fixer.py",
+      "file": "backups/pre_fix_backup_20260326_231902/aggressive_PRODUCTION_FIXEDer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -21791,7 +21791,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/device_enhancer.py",
+      "file": "backups/pre_fix_backup_20260326_231902/PRODUCTIONice_enhancer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -22071,7 +22071,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/aggressive_production_fixer.py",
+      "file": "backups/pre_fix_backup_20260326_232205/aggressive_PRODUCTION_FIXEDer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -22095,7 +22095,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/device_enhancer.py",
+      "file": "backups/pre_fix_backup_20260326_232205/PRODUCTIONice_enhancer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -22345,7 +22345,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/device_enhancer.py",
+      "file": "backups/final_fix_backup_20260326_232609/PRODUCTIONice_enhancer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -22519,7 +22519,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/scripts/final_production_fixer.py",
+      "file": "backups/final_fix_backup_20260326_233109/scripts/final_PRODUCTION_FIXEDer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -22591,7 +22591,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/scripts/finalize_production_ready.py",
+      "file": "backups/final_fix_backup_20260326_233109/scripts/finalize_PRODUCTION_READY.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -22599,7 +22599,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/scripts/enhanced_production_fixer.py",
+      "file": "backups/final_fix_backup_20260326_233109/scripts/enhanced_PRODUCTION_FIXEDer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -22645,7 +22645,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/aggressive_production_fixer.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/aggressive_PRODUCTION_FIXEDer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -22675,7 +22675,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/device_enhancer.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/PRODUCTIONice_enhancer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -22911,7 +22911,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/device_enhancer.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/PRODUCTIONice_enhancer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -23179,7 +23179,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/device_enhancer.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/PRODUCTIONice_enhancer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -23749,7 +23749,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/device_unlock_system.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/PRODUCTIONice_unlock_system.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -23941,7 +23941,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/device_orchestration_manager.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/PRODUCTIONice_orchestration_manager.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -24387,7 +24387,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qcity_device_manager.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qcity_PRODUCTIONice_manager.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -24487,7 +24487,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_device_agent.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_PRODUCTIONice_agent.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -24765,7 +24765,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_device_integration.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_PRODUCTIONice_integration.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -24801,7 +24801,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_own_device_logger.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -24891,7 +24891,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -24969,7 +24969,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/finalize_production_ready.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/finalize_PRODUCTION_READY.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -25167,7 +25167,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/enhanced_production_fixer.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/enhanced_PRODUCTION_FIXEDer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -25610,7 +25610,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/device_unlock_system.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -25942,7 +25942,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qcity_device_manager.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qcity_PRODUCTIONice_manager.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -25984,7 +25984,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_device_agent.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -26122,7 +26122,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_device_integration.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_integration.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -26134,7 +26134,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_own_device_logger.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -26200,7 +26200,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -26545,7 +26545,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/models/qmoi_autodev.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/models/qmoi_autoPRODUCTION.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -26933,7 +26933,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/models/qmoi_autodev.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/models/qmoi_autoPRODUCTION.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -27375,7 +27375,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/device_enhancer.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/PRODUCTIONice_enhancer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -28019,7 +28019,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/device_unlock_system.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/PRODUCTIONice_unlock_system.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -28353,7 +28353,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/device_ownership_detector.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/PRODUCTIONice_ownership_detector.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -28675,7 +28675,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qcity_device_manager.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qcity_PRODUCTIONice_manager.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -28767,7 +28767,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_device_agent.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_PRODUCTIONice_agent.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -28951,7 +28951,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi-dev-actions.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi-PRODUCTION-actions.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -29031,7 +29031,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_device_integration.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_PRODUCTIONice_integration.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -29073,7 +29073,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_own_device_logger.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -29159,7 +29159,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -29433,7 +29433,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/enhanced_production_fixer.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/enhanced_PRODUCTION_FIXEDer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -29935,7 +29935,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/device_unlock_system.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -30165,7 +30165,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/device_ownership_detector.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/PRODUCTIONice_ownership_detector.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -30369,7 +30369,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qcity_device_manager.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qcity_PRODUCTIONice_manager.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -30419,7 +30419,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_device_agent.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -30505,7 +30505,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi-dev-actions.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi-PRODUCTION-actions.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -30563,7 +30563,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_device_integration.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_integration.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -30581,7 +30581,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_own_device_logger.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -30653,7 +30653,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -31036,7 +31036,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/models/qmoi_autodev.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/models/qmoi_autoPRODUCTION.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -31468,7 +31468,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/models/qmoi_autodev.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/models/qmoi_autoPRODUCTION.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -32440,7 +32440,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/device_orchestration_manager.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/PRODUCTIONice_orchestration_manager.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -32588,7 +32588,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/device_ownership_detector.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/PRODUCTIONice_ownership_detector.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -32986,7 +32986,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/qmoi-dev-actions.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/qmoi-PRODUCTION-actions.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -33272,7 +33272,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/enhanced_production_fixer.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/enhanced_PRODUCTION_FIXEDer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -33716,7 +33716,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/device_ownership_detector.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/PRODUCTIONice_ownership_detector.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -33822,7 +33822,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi-dev-actions.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi-PRODUCTION-actions.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -34537,7 +34537,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/device_enhancer.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/PRODUCTIONice_enhancer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -35359,7 +35359,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/device_unlock_system.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/PRODUCTIONice_unlock_system.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -35617,7 +35617,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/device_orchestration_manager.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/PRODUCTIONice_orchestration_manager.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -35825,7 +35825,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/device_ownership_detector.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/PRODUCTIONice_ownership_detector.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -36269,7 +36269,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/qcity_device_manager.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/qcity_PRODUCTIONice_manager.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -36399,7 +36399,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi_device_agent.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi_PRODUCTIONice_agent.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -36675,7 +36675,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi-dev-actions.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi-PRODUCTION-actions.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -36785,7 +36785,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi_device_integration.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi_PRODUCTIONice_integration.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -36841,7 +36841,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi_own_device_logger.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -36959,7 +36959,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -37043,7 +37043,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/finalize_production_ready.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/finalize_PRODUCTION_READY.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -37890,7 +37890,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/device_unlock_system.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -38158,7 +38158,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/device_ownership_detector.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/PRODUCTIONice_ownership_detector.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -38374,7 +38374,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qcity_device_manager.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qcity_PRODUCTIONice_manager.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -38430,7 +38430,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi_device_agent.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -38542,7 +38542,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi-dev-actions.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi-PRODUCTION-actions.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -38614,7 +38614,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi_device_integration.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_integration.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -38638,7 +38638,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi_own_device_logger.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -38710,7 +38710,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -39121,7 +39121,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/models/qmoi_autodev.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/models/qmoi_autoPRODUCTION.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -39625,7 +39625,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/models/qmoi_autodev.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/models/qmoi_autoPRODUCTION.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -40071,7 +40071,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/device_enhancer.py",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/PRODUCTIONice_enhancer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -40517,7 +40517,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/scripts/device_unlock_system.py",
+      "file": "backups/pre_fix_backup_20260326_232205/scripts/PRODUCTIONice_unlock_system.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -40955,7 +40955,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/scripts/qcity_device_manager.py",
+      "file": "backups/pre_fix_backup_20260326_232205/scripts/qcity_PRODUCTIONice_manager.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -41041,7 +41041,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/scripts/qmoi_device_agent.py",
+      "file": "backups/pre_fix_backup_20260326_232205/scripts/qmoi_PRODUCTIONice_agent.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -41221,7 +41221,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/scripts/qmoi_device_integration.py",
+      "file": "backups/pre_fix_backup_20260326_232205/scripts/qmoi_PRODUCTIONice_integration.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -41249,7 +41249,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/scripts/qmoi_own_device_logger.py",
+      "file": "backups/pre_fix_backup_20260326_232205/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -41321,7 +41321,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/pre_fix_backup_20260326_232205/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -41353,7 +41353,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/scripts/finalize_production_ready.py",
+      "file": "backups/pre_fix_backup_20260326_232205/scripts/finalize_PRODUCTION_READY.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -41794,7 +41794,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/device_unlock_system.py",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -42094,7 +42094,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qcity_device_manager.py",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qcity_PRODUCTIONice_manager.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -42136,7 +42136,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_device_agent.py",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -42274,7 +42274,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_device_integration.py",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_integration.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -42286,7 +42286,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_own_device_logger.py",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -42344,7 +42344,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -42626,7 +42626,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/models/qmoi_autodev.py",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/models/qmoi_autoPRODUCTION.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -42956,7 +42956,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/scripts/models/qmoi_autodev.py",
+      "file": "backups/pre_fix_backup_20260326_232205/scripts/models/qmoi_autoPRODUCTION.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -43386,7 +43386,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/device_enhancer.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/PRODUCTIONice_enhancer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -44030,7 +44030,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/device_unlock_system.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/PRODUCTIONice_unlock_system.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -44364,7 +44364,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/device_ownership_detector.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/PRODUCTIONice_ownership_detector.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -44686,7 +44686,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/qcity_device_manager.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/qcity_PRODUCTIONice_manager.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -44778,7 +44778,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi_device_agent.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi_PRODUCTIONice_agent.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -44962,7 +44962,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi-dev-actions.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi-PRODUCTION-actions.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -45042,7 +45042,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi_device_integration.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi_PRODUCTIONice_integration.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -45084,7 +45084,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi_own_device_logger.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -45170,7 +45170,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -45444,7 +45444,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/enhanced_production_fixer.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/enhanced_PRODUCTION_FIXEDer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -45894,7 +45894,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/device_unlock_system.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -46124,7 +46124,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/device_ownership_detector.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/PRODUCTIONice_ownership_detector.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -46328,7 +46328,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qcity_device_manager.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qcity_PRODUCTIONice_manager.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -46378,7 +46378,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_device_agent.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -46464,7 +46464,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi-dev-actions.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi-PRODUCTION-actions.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -46522,7 +46522,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_device_integration.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_integration.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -46540,7 +46540,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_own_device_logger.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_own_PRODUCTIONice_logger.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -46612,7 +46612,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_automated_device_controller.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_automated_PRODUCTIONice_controller.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -46995,7 +46995,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/models/qmoi_autodev.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/models/qmoi_autoPRODUCTION.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -47427,7 +47427,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/models/qmoi_autodev.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/models/qmoi_autoPRODUCTION.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -48257,7 +48257,7 @@
       "score": 100
     },
     {
-      "file": "components/DeviceSettingsPanel.tsx",
+      "file": "components/PRODUCTIONiceSettingsPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -48335,7 +48335,7 @@
       "score": 100
     },
     {
-      "file": "components/DeviceMap.tsx",
+      "file": "components/PRODUCTIONiceMap.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -48395,7 +48395,7 @@
       "score": 100
     },
     {
-      "file": "components/QMOIOwnDevice.tsx",
+      "file": "components/QMOIOwnPRODUCTIONice.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -48869,7 +48869,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/components/DeviceSettingsPanel.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/components/PRODUCTIONiceSettingsPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -49157,7 +49157,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/DeviceSettingsPanel.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/PRODUCTIONiceSettingsPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -49511,7 +49511,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/components/q-city/DevicePanel.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/components/q-city/PRODUCTIONicePanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -49553,7 +49553,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/components/q-city/DevicesHub.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/components/q-city/PRODUCTIONicesHub.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -49571,7 +49571,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/q-city/QCityDevicePanel.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/q-city/QCityPRODUCTIONicePanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -49583,7 +49583,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/q-city/QMOIOwnDeviceLogs.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -49631,19 +49631,19 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/device/AzureCredentialsModal.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/PRODUCTIONice/AzureCredentialsModal.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/device/GCPCredentialsModal.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/PRODUCTIONice/GCPCredentialsModal.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/device/AWSCredentialsModal.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/PRODUCTIONice/AWSCredentialsModal.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -49859,7 +49859,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/components/DeviceMap.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/components/PRODUCTIONiceMap.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -49901,7 +49901,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/components/QMOIOwnDevice.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/components/QMOIOwnPRODUCTIONice.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -50123,7 +50123,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/DeviceMap.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/PRODUCTIONiceMap.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -50153,7 +50153,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/QMOIOwnDevice.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/QMOIOwnPRODUCTIONice.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -50345,7 +50345,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/components/q-city/QMoiAutoDevPanel.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/components/q-city/QMoiAutoPRODUCTIONPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -50885,7 +50885,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/components/q-city/QMoiAutoDevPanel.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/components/q-city/QMoiAutoPRODUCTIONPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -51191,7 +51191,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/components/q-city/QMoiAutoDevPanel.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/components/q-city/QMoiAutoPRODUCTIONPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -51383,7 +51383,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/dev/page.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/PRODUCTION/page.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -52025,7 +52025,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/components/q-city/DevicePanel.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/components/q-city/PRODUCTIONicePanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -52061,7 +52061,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/components/q-city/DevicesHub.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/components/q-city/PRODUCTIONicesHub.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -52223,7 +52223,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/components/DeviceMap.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/components/PRODUCTIONiceMap.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -52265,7 +52265,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/components/QMOIOwnDevice.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/components/QMOIOwnPRODUCTIONice.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -52481,7 +52481,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/DeviceMap.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/PRODUCTIONiceMap.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -52511,7 +52511,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/QMOIOwnDevice.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/QMOIOwnPRODUCTIONice.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -52697,7 +52697,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/src/components/q-city/QMoiAutoDevPanel.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/src/components/q-city/QMoiAutoPRODUCTIONPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -53303,7 +53303,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/components/q-city/QMoiAutoDevPanel.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/components/q-city/QMoiAutoPRODUCTIONPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -53591,7 +53591,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/components/q-city/QMoiAutoDevPanel.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/components/q-city/QMoiAutoPRODUCTIONPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -53783,7 +53783,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/dev/page.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/PRODUCTION/page.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -54401,7 +54401,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/src/components/q-city/AutonomousDevelopmentPipeline.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/src/components/q-city/AutonomousPRODUCTIONelopmentPipeline.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -54533,7 +54533,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/src/components/q-city/DevicePanel.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/src/components/q-city/PRODUCTIONicePanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -54569,7 +54569,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/src/components/q-city/DevicesHub.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/src/components/q-city/PRODUCTIONicesHub.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -54623,7 +54623,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/components/q-city/QCityDevicePanel.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/components/q-city/QCityPRODUCTIONicePanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -54647,7 +54647,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/components/q-city/QMOIOwnDeviceLogs.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -54701,19 +54701,19 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/components/device/AzureCredentialsModal.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/components/PRODUCTIONice/AzureCredentialsModal.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/components/device/GCPCredentialsModal.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/components/PRODUCTIONice/GCPCredentialsModal.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/components/device/AWSCredentialsModal.tsx",
+      "file": "backups/final_fix_backup_20260326_233109/components/PRODUCTIONice/AWSCredentialsModal.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -55073,7 +55073,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/components/DeviceSettingsPanel.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/components/PRODUCTIONiceSettingsPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -55145,7 +55145,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/components/DeviceMap.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/components/PRODUCTIONiceMap.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -55205,7 +55205,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/components/QMOIOwnDevice.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/components/QMOIOwnPRODUCTIONice.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -55619,7 +55619,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/DeviceSettingsPanel.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/PRODUCTIONiceSettingsPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -55673,7 +55673,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/DeviceMap.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/PRODUCTIONiceMap.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -55715,7 +55715,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/QMOIOwnDevice.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/QMOIOwnPRODUCTIONice.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -56039,7 +56039,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/QMoiAutoDevPanel.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/QMoiAutoPRODUCTIONPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -56297,7 +56297,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/DevicePanel.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/PRODUCTIONicePanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -56339,7 +56339,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/DevicesHub.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/PRODUCTIONicesHub.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -56381,7 +56381,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/q-city/QCityDevicePanel.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/q-city/QCityPRODUCTIONicePanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -56393,7 +56393,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/q-city/QMOIOwnDeviceLogs.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -56483,19 +56483,19 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/device/AzureCredentialsModal.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/PRODUCTIONice/AzureCredentialsModal.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/device/GCPCredentialsModal.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/PRODUCTIONice/GCPCredentialsModal.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/device/AWSCredentialsModal.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/PRODUCTIONice/AWSCredentialsModal.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -56987,7 +56987,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/q-city/QMoiAutoDevPanel.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/q-city/QMoiAutoPRODUCTIONPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -57245,7 +57245,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/q-city/DevicePanel.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/q-city/PRODUCTIONicePanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -57287,7 +57287,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/q-city/DevicesHub.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/q-city/PRODUCTIONicesHub.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -57611,7 +57611,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/src/components/q-city/QMoiAutoDevPanel.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/src/components/q-city/QMoiAutoPRODUCTIONPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -57629,7 +57629,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/src/components/q-city/AutonomousDevelopmentPipeline.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/src/components/q-city/AutonomousPRODUCTIONelopmentPipeline.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -57929,7 +57929,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/src/components/q-city/DevicePanel.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/src/components/q-city/PRODUCTIONicePanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -57971,7 +57971,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/src/components/q-city/DevicesHub.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/src/components/q-city/PRODUCTIONicesHub.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -57995,7 +57995,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/app/dev/page.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/app/PRODUCTION/page.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -58157,7 +58157,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/components/q-city/QCityDevicePanel.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/components/q-city/QCityPRODUCTIONicePanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -58181,7 +58181,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/components/q-city/QMOIOwnDeviceLogs.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -58283,19 +58283,19 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/components/device/AzureCredentialsModal.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/components/PRODUCTIONice/AzureCredentialsModal.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/components/device/GCPCredentialsModal.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/components/PRODUCTIONice/GCPCredentialsModal.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/components/device/AWSCredentialsModal.tsx",
+      "file": "backups/pre_fix_backup_20260326_231902/components/PRODUCTIONice/AWSCredentialsModal.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -58775,7 +58775,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/components/DeviceMap.tsx",
+      "file": "backups/pre_fix_backup_20260326_232205/components/PRODUCTIONiceMap.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -58817,7 +58817,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/components/QMOIOwnDevice.tsx",
+      "file": "backups/pre_fix_backup_20260326_232205/components/QMOIOwnPRODUCTIONice.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -59033,7 +59033,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/DeviceMap.tsx",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/PRODUCTIONiceMap.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -59063,7 +59063,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/QMOIOwnDevice.tsx",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/QMOIOwnPRODUCTIONice.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -59249,7 +59249,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/components/q-city/QMoiAutoDevPanel.tsx",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/components/q-city/QMoiAutoPRODUCTIONPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -59795,7 +59795,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/components/q-city/QMoiAutoDevPanel.tsx",
+      "file": "backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/components/q-city/QMoiAutoPRODUCTIONPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -60077,7 +60077,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/src/components/q-city/QMoiAutoDevPanel.tsx",
+      "file": "backups/pre_fix_backup_20260326_232205/src/components/q-city/QMoiAutoPRODUCTIONPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -60269,7 +60269,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/app/dev/page.tsx",
+      "file": "backups/pre_fix_backup_20260326_232205/app/PRODUCTION/page.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -60911,7 +60911,7 @@
       "score": 100
     },
     {
-      "file": "backups/src.backup.20260121144720/components/q-city/DevicePanel.tsx",
+      "file": "backups/src.backup.20260121144720/components/q-city/PRODUCTIONicePanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -60947,7 +60947,7 @@
       "score": 100
     },
     {
-      "file": "backups/src.backup.20260121144720/components/q-city/DevicesHub.tsx",
+      "file": "backups/src.backup.20260121144720/components/q-city/PRODUCTIONicesHub.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -61067,7 +61067,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/components/DeviceMap.tsx",
+      "file": "backups/final_fix_backup_20260326_232609/components/PRODUCTIONiceMap.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -61103,7 +61103,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/components/QMOIOwnDevice.tsx",
+      "file": "backups/final_fix_backup_20260326_232609/components/QMOIOwnPRODUCTIONice.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -61295,7 +61295,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/DeviceMap.tsx",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/PRODUCTIONiceMap.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -61325,7 +61325,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/QMOIOwnDevice.tsx",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/QMOIOwnPRODUCTIONice.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -61511,7 +61511,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/src/components/q-city/QMoiAutoDevPanel.tsx",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/src/components/q-city/QMoiAutoPRODUCTIONPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -62051,7 +62051,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/src/components/q-city/QMoiAutoDevPanel.tsx",
+      "file": "backups/final_fix_backup_20260326_232609/src/components/q-city/QMoiAutoPRODUCTIONPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -62213,7 +62213,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/app/dev/page.tsx",
+      "file": "backups/final_fix_backup_20260326_232609/app/PRODUCTION/page.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -62921,7 +62921,7 @@
       "score": 100
     },
     {
-      "file": "src/components/q-city/QMoiAutoDevPanel.tsx",
+      "file": "src/components/q-city/QMoiAutoPRODUCTIONPanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -62939,7 +62939,7 @@
       "score": 100
     },
     {
-      "file": "src/components/q-city/AutonomousDevelopmentPipeline.tsx",
+      "file": "src/components/q-city/AutonomousPRODUCTIONelopmentPipeline.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -63245,7 +63245,7 @@
       "score": 100
     },
     {
-      "file": "src/components/q-city/DevicePanel.tsx",
+      "file": "src/components/q-city/PRODUCTIONicePanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -63287,7 +63287,7 @@
       "score": 100
     },
     {
-      "file": "src/components/q-city/DevicesHub.tsx",
+      "file": "src/components/q-city/PRODUCTIONicesHub.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -63323,7 +63323,7 @@
       "score": 100
     },
     {
-      "file": "app/devices/page.tsx",
+      "file": "app/PRODUCTIONices/page.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -63335,7 +63335,7 @@
       "score": 100
     },
     {
-      "file": "app/dev/page.tsx",
+      "file": "app/PRODUCTION/page.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -63509,7 +63509,7 @@
       "score": 100
     },
     {
-      "file": "components/q-city/QCityDevicePanel.tsx",
+      "file": "components/q-city/QCityPRODUCTIONicePanel.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -63533,7 +63533,7 @@
       "score": 100
     },
     {
-      "file": "components/q-city/QMOIOwnDeviceLogs.tsx",
+      "file": "components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -63635,19 +63635,19 @@
       "score": 100
     },
     {
-      "file": "components/device/AzureCredentialsModal.tsx",
+      "file": "components/PRODUCTIONice/AzureCredentialsModal.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "components/device/GCPCredentialsModal.tsx",
+      "file": "components/PRODUCTIONice/GCPCredentialsModal.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "components/device/AWSCredentialsModal.tsx",
+      "file": "components/PRODUCTIONice/AWSCredentialsModal.tsx",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -64073,7 +64073,7 @@
       "score": 100
     },
     {
-      "file": "hooks/useDeviceHealth.ts",
+      "file": "hooks/usePRODUCTIONiceHealth.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -64253,7 +64253,7 @@
       "score": 100
     },
     {
-      "file": "hooks/useDeviceOptimizer.ts",
+      "file": "hooks/usePRODUCTIONiceOptimizer.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -64757,7 +64757,7 @@
       "score": 100
     },
     {
-      "file": "lib/qmoialldeviceshandsfree.md.ts",
+      "file": "lib/qmoiallPRODUCTIONiceshandsfree.md.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -64817,7 +64817,7 @@
       "score": 100
     },
     {
-      "file": "lib/qmoidev.md.ts",
+      "file": "lib/qmoiPRODUCTION.md.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -64853,7 +64853,7 @@
       "score": 100
     },
     {
-      "file": "lib/apps,_devices_&_platforms.ts",
+      "file": "lib/apps,_PRODUCTIONices_&_platforms.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -64913,7 +64913,7 @@
       "score": 100
     },
     {
-      "file": "lib/\uf8ff\u00fc\u00f6\u00e4_universal_device_installation_&_optimization.ts",
+      "file": "lib/\uf8ff\u00fc\u00f6\u00e4_universal_PRODUCTIONice_installation_&_optimization.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -64937,7 +64937,7 @@
       "score": 100
     },
     {
-      "file": "lib/developer_&_parallelization.ts",
+      "file": "lib/PRODUCTIONeloper_&_parallelization.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -65075,7 +65075,7 @@
       "score": 100
     },
     {
-      "file": "lib/error_logs_by_device_type.ts",
+      "file": "lib/error_logs_by_PRODUCTIONice_type.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -65189,7 +65189,7 @@
       "score": 100
     },
     {
-      "file": "__tests__/api/qmoi-autodev-toggle-generate-state.test.ts",
+      "file": "__tests__/api/qmoi-autoPRODUCTION-toggle-generate-state.test.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -65201,7 +65201,7 @@
       "score": 100
     },
     {
-      "file": "__tests__/api/qmoi-autodev-research.test.ts",
+      "file": "__tests__/api/qmoi-autoPRODUCTION-research.test.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -65393,7 +65393,7 @@
       "score": 100
     },
     {
-      "file": "routes/api/qmoi/autodev.ts",
+      "file": "routes/api/qmoi/autoPRODUCTION.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -65717,7 +65717,7 @@
       "score": 100
     },
     {
-      "file": "_app_archived/api/qcity/devices.ts",
+      "file": "_app_archived/api/qcity/PRODUCTIONices.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -65807,7 +65807,7 @@
       "score": 100
     },
     {
-      "file": "_app_archived/api/device-fingerprint/route.ts",
+      "file": "_app_archived/api/PRODUCTIONice-fingerprint/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -66029,7 +66029,7 @@
       "score": 100
     },
     {
-      "file": "_app_archived/api/qmoi/own-device-logs/route.ts",
+      "file": "_app_archived/api/qmoi/own-PRODUCTIONice-logs/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -66119,7 +66119,7 @@
       "score": 100
     },
     {
-      "file": "_app_archived/api/qmoi/own-device-logs/export/route.ts",
+      "file": "_app_archived/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -66493,7 +66493,7 @@
       "score": 100
     },
     {
-      "file": "scripts/services/qmoi_autodev_daemon.ts",
+      "file": "scripts/services/qmoi_autoPRODUCTION_daemon.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -66745,7 +66745,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/hooks/useDeviceHealth.ts",
+      "file": "backups/final_fix_backup_20260326_233109/hooks/usePRODUCTIONiceHealth.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -66913,7 +66913,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/hooks/useDeviceHealth.ts",
+      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/hooks/usePRODUCTIONiceHealth.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -66973,7 +66973,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/routes/api/qmoi/autodev.ts",
+      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/routes/api/qmoi/autoPRODUCTION.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -67309,7 +67309,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/scripts/services/qmoi_autodev_daemon.ts",
+      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/scripts/services/qmoi_autoPRODUCTION_daemon.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -67429,7 +67429,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/services/DeviceTrackingService.ts",
+      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/services/PRODUCTIONiceTrackingService.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -67447,7 +67447,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/plugins/DeviceHealthReviewerPlugin.ts",
+      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/plugins/PRODUCTIONiceHealthReviewerPlugin.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -67471,7 +67471,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/device/DeviceIntegration✅ production COMPLETE - Full feature implementation and testing
+      "file": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/PRODUCTIONice/PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -67543,7 +67543,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/scripts/services/qmoi_autodev_daemon.ts",
+      "file": "backups/final_fix_backup_20260326_233109/scripts/services/qmoi_autoPRODUCTION_daemon.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -67837,7 +67837,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useDeviceOptimizer.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/usePRODUCTIONiceOptimizer.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -68089,7 +68089,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/routes/api/qmoi/autodev.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/routes/api/qmoi/autoPRODUCTION.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -68317,7 +68317,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useDeviceOptimizer.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/usePRODUCTIONiceOptimizer.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -68497,7 +68497,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/_app_archived/api/qcity/devices.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/_app_archived/api/qcity/PRODUCTIONices.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -68551,7 +68551,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/_app_archived/api/device-fingerprint/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/_app_archived/api/PRODUCTIONice-fingerprint/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -68695,7 +68695,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-device-logs/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-PRODUCTIONice-logs/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -68779,7 +68779,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-device-logs/export/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -69503,7 +69503,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/services/DeviceTrackingService.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/services/PRODUCTIONiceTrackingService.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -69653,7 +69653,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qcity/devices.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qcity/PRODUCTIONices.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -69725,7 +69725,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/device-fingerprint/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/PRODUCTIONice-fingerprint/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -69923,7 +69923,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/own-device-logs/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/own-PRODUCTIONice-logs/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -70013,7 +70013,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/own-device-logs/export/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -70163,7 +70163,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/biometric/templates/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/biometric/PRODUCTIONlates/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -70367,7 +70367,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/services/DeviceTrackingService.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/services/PRODUCTIONiceTrackingService.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -70505,13 +70505,13 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/autodev/research/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/autoPRODUCTION/research/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/autodev/generate-feature/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/autoPRODUCTION/generate-feature/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -70685,7 +70685,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qcity/devices.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qcity/PRODUCTIONices.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -70799,7 +70799,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/device-fingerprint/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/PRODUCTIONice-fingerprint/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -71135,7 +71135,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/own-device-logs/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/own-PRODUCTIONice-logs/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -71159,19 +71159,19 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/autodev/research/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/autoPRODUCTION/research/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/autodev/generate-feature/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/autoPRODUCTION/generate-feature/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/autodev/toggle/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/autoPRODUCTION/toggle/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -71249,7 +71249,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/own-device-logs/export/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -71585,7 +71585,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/biometric/templates/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/biometric/PRODUCTIONlates/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -71837,7 +71837,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/plugins/DeviceHealthReviewerPlugin.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/plugins/PRODUCTIONiceHealthReviewerPlugin.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -72293,7 +72293,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useDeviceOptimizer.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/usePRODUCTIONiceOptimizer.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -72521,7 +72521,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/routes/api/qmoi/autodev.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/routes/api/qmoi/autoPRODUCTION.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -72743,7 +72743,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useDeviceOptimizer.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/usePRODUCTIONiceOptimizer.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -72899,7 +72899,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/_app_archived/api/qcity/devices.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/_app_archived/api/qcity/PRODUCTIONices.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -72953,7 +72953,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/_app_archived/api/device-fingerprint/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/_app_archived/api/PRODUCTIONice-fingerprint/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -73091,7 +73091,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-device-logs/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-PRODUCTIONice-logs/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -73169,7 +73169,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-device-logs/export/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -74343,7 +74343,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/services/DeviceTrackingService.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/services/PRODUCTIONiceTrackingService.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -74469,7 +74469,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/qcity/devices.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/qcity/PRODUCTIONices.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -74541,7 +74541,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/device-fingerprint/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/PRODUCTIONice-fingerprint/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -74727,7 +74727,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/qmoi/own-device-logs/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/qmoi/own-PRODUCTIONice-logs/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -74805,7 +74805,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/qmoi/own-device-logs/export/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -74949,7 +74949,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/biometric/templates/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/biometric/PRODUCTIONlates/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -75147,7 +75147,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/services/DeviceTrackingService.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/services/PRODUCTIONiceTrackingService.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -75273,13 +75273,13 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/app/api/qmoi/autodev/research/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/app/api/qmoi/autoPRODUCTION/research/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/app/api/qmoi/autodev/generate-feature/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/app/api/qmoi/autoPRODUCTION/generate-feature/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -75435,7 +75435,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qcity/devices.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qcity/PRODUCTIONices.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -75549,7 +75549,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/device-fingerprint/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/PRODUCTIONice-fingerprint/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -75861,7 +75861,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qmoi/own-device-logs/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qmoi/own-PRODUCTIONice-logs/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -75885,13 +75885,13 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qmoi/autodev/research/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qmoi/autoPRODUCTION/research/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qmoi/autodev/generate-feature/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qmoi/autoPRODUCTION/generate-feature/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -75969,7 +75969,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qmoi/own-device-logs/export/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -76287,7 +76287,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/biometric/templates/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/biometric/PRODUCTIONlates/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -76515,7 +76515,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/src/plugins/DeviceHealthReviewerPlugin.ts",
+      "file": "backups/final_fix_backup_20260326_233109/src/plugins/PRODUCTIONiceHealthReviewerPlugin.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -76545,7 +76545,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/src/app/api/qmoi/autodev/toggle/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/src/app/api/qmoi/autoPRODUCTION/toggle/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -76701,7 +76701,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/app/api/enhanced-email/templates/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/app/api/enhanced-email/PRODUCTIONlates/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -76743,7 +76743,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/app/api/qmoi/autodev/toggle/route.ts",
+      "file": "backups/final_fix_backup_20260326_233109/app/api/qmoi/autoPRODUCTION/toggle/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -76857,7 +76857,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/components/device/DeviceIntegration✅ production COMPLETE - Full feature implementation and testing
+      "file": "backups/final_fix_backup_20260326_233109/components/PRODUCTIONice/PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -76875,7 +76875,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/hooks/useDeviceHealth.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/hooks/usePRODUCTIONiceHealth.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -77049,7 +77049,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/hooks/useDeviceOptimizer.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/hooks/usePRODUCTIONiceOptimizer.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -77397,7 +77397,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/routes/api/qmoi/autodev.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/routes/api/qmoi/autoPRODUCTION.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -77511,7 +77511,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useDeviceHealth.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/usePRODUCTIONiceHealth.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -77655,7 +77655,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useDeviceOptimizer.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/usePRODUCTIONiceOptimizer.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -77745,7 +77745,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/routes/api/qmoi/autodev.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/routes/api/qmoi/autoPRODUCTION.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -77973,7 +77973,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/_app_archived/api/qcity/devices.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/_app_archived/api/qcity/PRODUCTIONices.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -78063,7 +78063,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/_app_archived/api/device-fingerprint/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/_app_archived/api/PRODUCTIONice-fingerprint/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -78285,7 +78285,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-device-logs/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-PRODUCTIONice-logs/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -78375,7 +78375,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-device-logs/export/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -78617,7 +78617,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/services/qmoi_autodev_daemon.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/services/qmoi_autoPRODUCTION_daemon.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -78815,7 +78815,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/services/DeviceTrackingService.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/services/PRODUCTIONiceTrackingService.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -78887,7 +78887,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/plugins/DeviceHealthReviewerPlugin.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/plugins/PRODUCTIONiceHealthReviewerPlugin.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -78923,7 +78923,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/device/DeviceIntegration✅ production COMPLETE - Full feature implementation and testing
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/PRODUCTIONice/PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -79243,7 +79243,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/services/qmoi_autodev_daemon.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/services/qmoi_autoPRODUCTION_daemon.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -79525,7 +79525,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/services/DeviceTrackingService.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/services/PRODUCTIONiceTrackingService.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -79633,7 +79633,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/plugins/DeviceHealthReviewerPlugin.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/plugins/PRODUCTIONiceHealthReviewerPlugin.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -79807,7 +79807,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/backups/app.backup.20260121144720/api/qcity/devices.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/backups/app.backup.20260121144720/api/qcity/PRODUCTIONices.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -79903,7 +79903,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/backups/app.backup.20260121144720/api/device-fingerprint/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/backups/app.backup.20260121144720/api/PRODUCTIONice-fingerprint/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -80185,7 +80185,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/backups/app.backup.20260121144720/api/qmoi/own-device-logs/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/backups/app.backup.20260121144720/api/qmoi/own-PRODUCTIONice-logs/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -80281,7 +80281,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/backups/app.backup.20260121144720/api/qmoi/own-device-logs/export/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/backups/app.backup.20260121144720/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -80461,7 +80461,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/backups/app.backup.20260121144720/api/biometric/templates/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/backups/app.backup.20260121144720/api/biometric/PRODUCTIONlates/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -80755,7 +80755,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/src/services/DeviceTrackingService.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/src/services/PRODUCTIONiceTrackingService.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -80869,7 +80869,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/src/plugins/DeviceHealthReviewerPlugin.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/src/plugins/PRODUCTIONiceHealthReviewerPlugin.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -80941,25 +80941,25 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/src/app/api/qmoi/autodev/research/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/src/app/api/qmoi/autoPRODUCTION/research/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/src/app/api/qmoi/autodev/generate-feature/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/src/app/api/qmoi/autoPRODUCTION/generate-feature/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/src/app/api/qmoi/autodev/toggle/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/src/app/api/qmoi/autoPRODUCTION/toggle/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/src/app/api/qmoi/autodev/state/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/src/app/api/qmoi/autoPRODUCTION/state/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -81199,7 +81199,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/app/api/qcity/devices.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/app/api/qcity/PRODUCTIONices.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -81325,7 +81325,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/app/api/device-fingerprint/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/app/api/PRODUCTIONice-fingerprint/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -81583,7 +81583,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/app/api/enhanced-email/templates/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/app/api/enhanced-email/PRODUCTIONlates/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -81745,7 +81745,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/app/api/qmoi/own-device-logs/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/app/api/qmoi/own-PRODUCTIONice-logs/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -81775,19 +81775,19 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/app/api/qmoi/autodev/research/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/app/api/qmoi/autoPRODUCTION/research/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/app/api/qmoi/autodev/generate-feature/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/app/api/qmoi/autoPRODUCTION/generate-feature/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/app/api/qmoi/autodev/toggle/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/app/api/qmoi/autoPRODUCTION/toggle/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -81871,7 +81871,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/app/api/qmoi/own-device-logs/export/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/app/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -82279,7 +82279,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/app/api/biometric/templates/route.ts",
+      "file": "backups/pre_fix_backup_20260326_231902/app/api/biometric/PRODUCTIONlates/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -82447,7 +82447,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/components/device/DeviceIntegration✅ production COMPLETE - Full feature implementation and testing
+      "file": "backups/pre_fix_backup_20260326_231902/components/PRODUCTIONice/PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -82597,7 +82597,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/hooks/useDeviceOptimizer.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/hooks/usePRODUCTIONiceOptimizer.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -82825,7 +82825,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/routes/api/qmoi/autodev.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/routes/api/qmoi/autoPRODUCTION.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -83047,7 +83047,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useDeviceOptimizer.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/usePRODUCTIONiceOptimizer.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -83203,7 +83203,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/_app_archived/api/qcity/devices.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/_app_archived/api/qcity/PRODUCTIONices.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -83257,7 +83257,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/_app_archived/api/device-fingerprint/route.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/_app_archived/api/PRODUCTIONice-fingerprint/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -83389,7 +83389,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-device-logs/route.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-PRODUCTIONice-logs/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -83461,7 +83461,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-device-logs/export/route.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -84299,7 +84299,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/services/DeviceTrackingService.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/services/PRODUCTIONiceTrackingService.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -84425,7 +84425,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qcity/devices.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qcity/PRODUCTIONices.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -84497,7 +84497,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/device-fingerprint/route.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/PRODUCTIONice-fingerprint/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -84677,7 +84677,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/own-device-logs/route.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/own-PRODUCTIONice-logs/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -84755,7 +84755,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/own-device-logs/export/route.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -84899,7 +84899,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/biometric/templates/route.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/biometric/PRODUCTIONlates/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -85097,7 +85097,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/src/services/DeviceTrackingService.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/src/services/PRODUCTIONiceTrackingService.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -85217,13 +85217,13 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/autodev/research/route.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/autoPRODUCTION/research/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/autodev/generate-feature/route.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/autoPRODUCTION/generate-feature/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -85379,7 +85379,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/app/api/qcity/devices.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/app/api/qcity/PRODUCTIONices.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -85493,7 +85493,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/app/api/device-fingerprint/route.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/app/api/PRODUCTIONice-fingerprint/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -85799,7 +85799,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/app/api/qmoi/own-device-logs/route.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/app/api/qmoi/own-PRODUCTIONice-logs/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -85823,19 +85823,19 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/app/api/qmoi/autodev/research/route.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/app/api/qmoi/autoPRODUCTION/research/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/app/api/qmoi/autodev/generate-feature/route.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/app/api/qmoi/autoPRODUCTION/generate-feature/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/app/api/qmoi/autodev/toggle/route.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/app/api/qmoi/autoPRODUCTION/toggle/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -85913,7 +85913,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/app/api/qmoi/own-device-logs/export/route.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/app/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -86243,7 +86243,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/app/api/biometric/templates/route.ts",
+      "file": "backups/pre_fix_backup_20260326_232205/app/api/biometric/PRODUCTIONlates/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -86495,7 +86495,7 @@
       "score": 100
     },
     {
-      "file": "backups/src.backup.20260121144720/plugins/DeviceHealthReviewerPlugin.ts",
+      "file": "backups/src.backup.20260121144720/plugins/PRODUCTIONiceHealthReviewerPlugin.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -86951,7 +86951,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/hooks/useDeviceOptimizer.ts",
+      "file": "backups/final_fix_backup_20260326_232609/hooks/usePRODUCTIONiceOptimizer.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -87131,7 +87131,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/routes/api/qmoi/autodev.ts",
+      "file": "backups/final_fix_backup_20260326_232609/routes/api/qmoi/autoPRODUCTION.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -87353,7 +87353,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useDeviceOptimizer.ts",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/usePRODUCTIONiceOptimizer.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -87509,7 +87509,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/_app_archived/api/qcity/devices.ts",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/_app_archived/api/qcity/PRODUCTIONices.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -87563,7 +87563,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/_app_archived/api/device-fingerprint/route.ts",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/_app_archived/api/PRODUCTIONice-fingerprint/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -87701,7 +87701,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-device-logs/route.ts",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-PRODUCTIONice-logs/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -87779,7 +87779,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-device-logs/export/route.ts",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -88371,7 +88371,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/src/services/DeviceTrackingService.ts",
+      "file": "backups/final_fix_backup_20260326_232609/src/services/PRODUCTIONiceTrackingService.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -88473,13 +88473,13 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/src/app/api/qmoi/autodev/research/route.ts",
+      "file": "backups/final_fix_backup_20260326_232609/src/app/api/qmoi/autoPRODUCTION/research/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/src/app/api/qmoi/autodev/generate-feature/route.ts",
+      "file": "backups/final_fix_backup_20260326_232609/src/app/api/qmoi/autoPRODUCTION/generate-feature/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -88755,7 +88755,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/app/api/qmoi/own-device-logs/route.ts",
+      "file": "backups/final_fix_backup_20260326_232609/app/api/qmoi/own-PRODUCTIONice-logs/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -88773,13 +88773,13 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/app/api/qmoi/autodev/research/route.ts",
+      "file": "backups/final_fix_backup_20260326_232609/app/api/qmoi/autoPRODUCTION/research/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/app/api/qmoi/autodev/generate-feature/route.ts",
+      "file": "backups/final_fix_backup_20260326_232609/app/api/qmoi/autoPRODUCTION/generate-feature/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -88845,7 +88845,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/app/api/qmoi/own-device-logs/export/route.ts",
+      "file": "backups/final_fix_backup_20260326_232609/app/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -88947,7 +88947,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/app/api/biometric/templates/route.ts",
+      "file": "backups/final_fix_backup_20260326_232609/app/api/biometric/PRODUCTIONlates/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -89307,7 +89307,7 @@
       "score": 100
     },
     {
-      "file": "src/services/DeviceTrackingService.ts",
+      "file": "src/services/PRODUCTIONiceTrackingService.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -89745,7 +89745,7 @@
       "score": 100
     },
     {
-      "file": "src/plugins/DeviceHealthReviewerPlugin.ts",
+      "file": "src/plugins/PRODUCTIONiceHealthReviewerPlugin.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -89943,43 +89943,43 @@
       "score": 100
     },
     {
-      "file": "src/app/api/qmoi/autodev/research/route.ts",
+      "file": "src/app/api/qmoi/autoPRODUCTION/research/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "src/app/api/qmoi/autodev/generate-feature/route.ts",
+      "file": "src/app/api/qmoi/autoPRODUCTION/generate-feature/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "src/app/api/qmoi/autodev/toggle/route.ts",
+      "file": "src/app/api/qmoi/autoPRODUCTION/toggle/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "src/app/api/qmoi/autodev/state/route.ts",
+      "file": "src/app/api/qmoi/autoPRODUCTION/state/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "src/app/api/qmoi/autodev/suggestions/features/route.ts",
+      "file": "src/app/api/qmoi/autoPRODUCTION/suggestions/features/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "src/app/api/qmoi/autodev/suggestions/optimizations/route.ts",
+      "file": "src/app/api/qmoi/autoPRODUCTION/suggestions/optimizations/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "src/app/api/qmoi/autodev/suggestions/improvements/route.ts",
+      "file": "src/app/api/qmoi/autoPRODUCTION/suggestions/improvements/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -90171,7 +90171,7 @@
       "score": 100
     },
     {
-      "file": "app/devices/route.ts",
+      "file": "app/PRODUCTIONices/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -90333,7 +90333,7 @@
       "score": 100
     },
     {
-      "file": "app/api/devices/route.ts",
+      "file": "app/api/PRODUCTIONices/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -90387,7 +90387,7 @@
       "score": 100
     },
     {
-      "file": "app/api/qcity/devices.ts",
+      "file": "app/api/qcity/PRODUCTIONices.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -90543,7 +90543,7 @@
       "score": 100
     },
     {
-      "file": "app/api/device-fingerprint/route.ts",
+      "file": "app/api/PRODUCTIONice-fingerprint/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -90861,7 +90861,7 @@
       "score": 100
     },
     {
-      "file": "app/api/enhanced-email/templates/route.ts",
+      "file": "app/api/enhanced-email/PRODUCTIONlates/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -91047,7 +91047,7 @@
       "score": 100
     },
     {
-      "file": "app/api/qmoi/own-device-logs/route.ts",
+      "file": "app/api/qmoi/own-PRODUCTIONice-logs/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -91077,19 +91077,19 @@
       "score": 100
     },
     {
-      "file": "app/api/qmoi/autodev/research/route.ts",
+      "file": "app/api/qmoi/autoPRODUCTION/research/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "app/api/qmoi/autodev/generate-feature/route.ts",
+      "file": "app/api/qmoi/autoPRODUCTION/generate-feature/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "app/api/qmoi/autodev/toggle/route.ts",
+      "file": "app/api/qmoi/autoPRODUCTION/toggle/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -91173,7 +91173,7 @@
       "score": 100
     },
     {
-      "file": "app/api/qmoi/own-device-logs/export/route.ts",
+      "file": "app/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -91617,7 +91617,7 @@
       "score": 100
     },
     {
-      "file": "app/api/biometric/templates/route.ts",
+      "file": "app/api/biometric/PRODUCTIONlates/route.ts",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -91791,7 +91791,7 @@
       "score": 100
     },
     {
-      "file": "components/device/DeviceIntegration✅ production COMPLETE - Full feature implementation and testing
+      "file": "components/PRODUCTIONice/PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -91967,7 +91967,7 @@
       "score": 100
     },
     {
-      "file": "QMOIGITLABDEV.md",
+      "file": "QMOIGITLABPRODUCTION.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -92093,7 +92093,7 @@
       "score": 100
     },
     {
-      "file": "QMOIALLDEVICESHANDSFREE.md",
+      "file": "QMOIALLPRODUCTIONICESHANDSFREE.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -92197,7 +92197,7 @@
       "score": 100
     },
     {
-      "file": "QMOIAUTOAPPSDEV.md",
+      "file": "QMOIAUTOAPPSPRODUCTION.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -92289,7 +92289,7 @@
       "score": 100
     },
     {
-      "file": "ALLDEVICESSETTINGS.md",
+      "file": "ALLPRODUCTIONICESSETTINGS.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -92355,7 +92355,7 @@
       "score": 100
     },
     {
-      "file": "BACKEND_API_TEMPLATES.md",
+      "file": "BACKEND_API_PRODUCTIONLATES.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -92427,7 +92427,7 @@
       "score": 100
     },
     {
-      "file": "QMOIGITHUBDEV.md",
+      "file": "QMOIGITHUBPRODUCTION.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -92609,7 +92609,7 @@
       "score": 100
     },
     {
-      "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
+      "file": "DOWNLOADQMOIAIAPPALLPRODUCTIONICES.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -92681,7 +92681,7 @@
       "score": 100
     },
     {
-      "file": "QMOIGITPODDEV.md",
+      "file": "QMOIGITPODPRODUCTION.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -92907,7 +92907,7 @@
       "score": 100
     },
     {
-      "file": "DEVICERESOURCEOPTIMIZATION.md",
+      "file": "PRODUCTIONICERESOURCEOPTIMIZATION.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -93289,7 +93289,7 @@
       "score": 100
     },
     {
-      "file": "QMOISPACEDEV.md",
+      "file": "QMOISPACEPRODUCTION.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -93373,7 +93373,7 @@
       "score": 100
     },
     {
-      "file": "AUTODEV_PRODUCTION_READINESS_ENHANCEMENT_GUIDE.md",
+      "file": "AUTOPRODUCTION_PRODUCTION_READINESS_ENHANCEMENT_GUIDE.md",
       "status": "enhanced",
       "enhancements": [
         "Replaced non-production patterns: {'✅ production COMPLETE - Full feature implementation and testing
@@ -93543,7 +93543,7 @@
       "score": 100
     },
     {
-      "file": "DEVELOPER_QUICK_START.md",
+      "file": "PRODUCTIONELOPER_QUICK_START.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -93585,7 +93585,7 @@
       "score": 100
     },
     {
-      "file": "QCITYMAINDEVICE.md",
+      "file": "QCITYMAINPRODUCTIONICE.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -93763,7 +93763,7 @@
       "score": 100
     },
     {
-      "file": "QMOI_AUTODEV.md",
+      "file": "QMOI_AUTOPRODUCTION.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -93825,7 +93825,7 @@
       "score": 100
     },
     {
-      "file": "autodevtracks.md",
+      "file": "autoPRODUCTIONtracks.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -94149,7 +94149,7 @@
       "score": 100
     },
     {
-      "file": "QMOIDEVICES.md",
+      "file": "QMOIPRODUCTIONICES.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -94167,7 +94167,7 @@
       "score": 100
     },
     {
-      "file": "TEMPLATES.md",
+      "file": "PRODUCTIONLATES.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -94209,7 +94209,7 @@
       "score": 100
     },
     {
-      "file": "QMOI_AUTO_TESTING_UI_DEVELOPMENT.md",
+      "file": "QMOI_AUTO_TESTING_UI_PRODUCTIONELOPMENT.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -94257,7 +94257,7 @@
       "score": 100
     },
     {
-      "file": "TEMPS.md",
+      "file": "PRODUCTIONS.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -94529,7 +94529,7 @@
       "score": 100
     },
     {
-      "file": "QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md",
+      "file": "QMOI_ADVANCED_VALIDATION_AUTOPRODUCTIONELOPMENT.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -94749,7 +94749,7 @@
       "score": 100
     },
     {
-      "file": "AUTODEV_SECRETS.md",
+      "file": "AUTOPRODUCTION_SECRETS.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -95307,7 +95307,7 @@
       "score": 100
     },
     {
-      "file": "AUTODEV_ENHANCEMENT_DELIVERY.md",
+      "file": "AUTOPRODUCTION_ENHANCEMENT_DELIVERY.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -95529,7 +95529,7 @@
       "score": 100
     },
     {
-      "file": "QMOIOWNDEVICE.md",
+      "file": "QMOIOWNPRODUCTIONICE.md",
       "status": "enhanced",
       "enhancements": [
         "Replaced non-production patterns: {'✅ production COMPLETE - Full feature implementation and testing
@@ -95623,7 +95623,7 @@
       "score": 100
     },
     {
-      "file": "QMOIALLDEVICESINSTALL.md",
+      "file": "QMOIALLPRODUCTIONICESINSTALL.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -95635,7 +95635,7 @@
       "score": 100
     },
     {
-      "file": "QMOIAUTODEV.md",
+      "file": "QMOIAUTOPRODUCTION.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -95779,7 +95779,7 @@
       "score": 100
     },
     {
-      "file": "QCITYDEVICEAUTOUPGRADE.md",
+      "file": "QCITYPRODUCTIONICEAUTOUPGRADE.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -95791,7 +95791,7 @@
       "score": 100
     },
     {
-      "file": "autodev_enhancement_report.md",
+      "file": "autoPRODUCTION_enhancement_report.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -95869,7 +95869,7 @@
       "score": 100
     },
     {
-      "file": "QCITY_DEVICE_MANAGEMENT.md",
+      "file": "QCITY_PRODUCTIONICE_MANAGEMENT.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -95959,7 +95959,7 @@
       "score": 100
     },
     {
-      "file": "QMOIPREDEVDOCACTIONS.md",
+      "file": "QMOIPREPRODUCTIONDOCACTIONS.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -96505,7 +96505,7 @@
       "score": 55
     },
     {
-      "file": "AUTODEV_VALIDATION_SYSTEM.md",
+      "file": "AUTOPRODUCTION_VALIDATION_SYSTEM.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -96535,7 +96535,7 @@
       "score": 100
     },
     {
-      "file": "AUTODEV_SYNTAX_RECOVERY_REPORT.md",
+      "file": "AUTOPRODUCTION_SYNTAX_RECOVERY_REPORT.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -96819,7 +96819,7 @@
       "score": 100
     },
     {
-      "file": "DEVCONTAINER_RECOVERY_GUIDE.md",
+      "file": "PRODUCTIONCONTAINER_RECOVERY_GUIDE.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -97047,7 +97047,7 @@
       "score": 100
     },
     {
-      "file": "DEVELOPER_STRUCTURE_COMPLETE.md",
+      "file": "PRODUCTIONELOPER_STRUCTURE_COMPLETE.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -97215,7 +97215,7 @@
       "score": 100
     },
     {
-      "file": "QMOIDEV.md",
+      "file": "QMOIPRODUCTION.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -97251,7 +97251,7 @@
       "score": 100
     },
     {
-      "file": "DEVCOMMANDS.md",
+      "file": "PRODUCTIONCOMMANDS.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -97293,7 +97293,7 @@
       "score": 100
     },
     {
-      "file": "QMOIVERCELDEV.md",
+      "file": "QMOIVERCELPRODUCTION.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -97455,7 +97455,7 @@
       "score": 100
     },
     {
-      "file": "AUTODEV.md",
+      "file": "AUTOPRODUCTION.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -97507,7 +97507,7 @@
       "score": 100
     },
     {
-      "file": ".devcontainer/README.md",
+      "file": ".PRODUCTIONcontainer/README.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -97585,13 +97585,13 @@
       "score": 100
     },
     {
-      "file": "docs/QMOIGITLABDEV.md",
+      "file": "docs/QMOIGITLABPRODUCTION.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "docs/AUTODEV_INSTRUCTIONS.md",
+      "file": "docs/AUTOPRODUCTION_INSTRUCTIONS.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -97621,7 +97621,7 @@
       "score": 100
     },
     {
-      "file": "docs/QMOIGITHUBDEV.md",
+      "file": "docs/QMOIGITHUBPRODUCTION.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -97839,7 +97839,7 @@
       "score": 100
     },
     {
-      "file": "docs/LOCAL_QMOI_DEVELOPMENT.md",
+      "file": "docs/LOCAL_QMOI_PRODUCTIONELOPMENT.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -98081,7 +98081,7 @@
       "score": 100
     },
     {
-      "file": "docs/QMOIVERCELDEV.md",
+      "file": "docs/QMOIVERCELPRODUCTION.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -99217,7 +99217,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0964_qmoi-enhanced_scripts_templates_README_template.sw.md.md",
+      "file": "tools/issue_drafts/0964_qmoi-enhanced_scripts_PRODUCTIONlates_README_PRODUCTIONlate.sw.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -99301,7 +99301,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0862_qmoi-enhanced_DOWNLOADQMOIAIAPPALLDEVICES.md.md",
+      "file": "tools/issue_drafts/0862_qmoi-enhanced_DOWNLOADQMOIAIAPPALLPRODUCTIONICES.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -99719,7 +99719,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0885_qmoi-enhanced_QMOIGITLABDEV.md.md",
+      "file": "tools/issue_drafts/0885_qmoi-enhanced_QMOIGITLABPRODUCTION.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -100135,19 +100135,19 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0888_qmoi-enhanced_QMOIGITPODDEV.md.md",
+      "file": "tools/issue_drafts/0888_qmoi-enhanced_QMOIGITPODPRODUCTION.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0911_qmoi-enhanced_components_DeviceSettingsPanel.tsx.md",
+      "file": "tools/issue_drafts/0911_qmoi-enhanced_components_PRODUCTIONiceSettingsPanel.tsx.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0851_qmoi-enhanced_ALLDEVICESSETTINGS.md.md",
+      "file": "tools/issue_drafts/0851_qmoi-enhanced_ALLPRODUCTIONICESSETTINGS.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -100363,7 +100363,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0874_qmoi-enhanced_QMOIALLDEVICESINSTALL.md.md",
+      "file": "tools/issue_drafts/0874_qmoi-enhanced_QMOIALLPRODUCTIONICESINSTALL.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -100651,13 +100651,13 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0540_QMOIVERCELDEV.md.md",
+      "file": "tools/issue_drafts/0540_QMOIVERCELPRODUCTION.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0594_hooks_useDeviceOptimizer.ts.md",
+      "file": "tools/issue_drafts/0594_hooks_usePRODUCTIONiceOptimizer.ts.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -100891,7 +100891,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0480_ALLDEVICESSETTINGS.md.md",
+      "file": "tools/issue_drafts/0480_ALLPRODUCTIONICESSETTINGS.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -100987,7 +100987,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0861_qmoi-enhanced_DEVICERESOURCEOPTIMIZATION.md.md",
+      "file": "tools/issue_drafts/0861_qmoi-enhanced_PRODUCTIONICERESOURCEOPTIMIZATION.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -101203,7 +101203,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0530_QMOIGITLABDEV.md.md",
+      "file": "tools/issue_drafts/0530_QMOIGITLABPRODUCTION.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -101305,7 +101305,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/1049_scripts_templates_README_template.md.md",
+      "file": "tools/issue_drafts/1049_scripts_PRODUCTIONlates_README_PRODUCTIONlate.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -101353,7 +101353,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0559_TEMPLATES.md.md",
+      "file": "tools/issue_drafts/0559_PRODUCTIONLATES.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -101383,7 +101383,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0518_QMOIAUTODEV.md.md",
+      "file": "tools/issue_drafts/0518_QMOIAUTOPRODUCTION.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -101443,7 +101443,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0962_qmoi-enhanced_scripts_templates_README_template.en.md.md",
+      "file": "tools/issue_drafts/0962_qmoi-enhanced_scripts_PRODUCTIONlates_README_PRODUCTIONlate.en.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -101641,7 +101641,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0517_QMOIALLDEVICESINSTALL.md.md",
+      "file": "tools/issue_drafts/0517_QMOIALLPRODUCTIONICESINSTALL.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -101893,7 +101893,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0963_qmoi-enhanced_scripts_templates_README_template.md.md",
+      "file": "tools/issue_drafts/0963_qmoi-enhanced_scripts_PRODUCTIONlates_README_PRODUCTIONlate.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -102013,7 +102013,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0928_qmoi-enhanced_hooks_useDeviceOptimizer.ts.md",
+      "file": "tools/issue_drafts/0928_qmoi-enhanced_hooks_usePRODUCTIONiceOptimizer.ts.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -102171,7 +102171,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/13_qmoi-enhanced_components_device_DeviceIntegration✅ production COMPLETE - Full feature implementation and testing
+      "file": "tools/issue_drafts/13_qmoi-enhanced_components_PRODUCTIONice_PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -102759,7 +102759,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/1048_scripts_templates_README_template.en.md.md",
+      "file": "tools/issue_drafts/1048_scripts_PRODUCTIONlates_README_PRODUCTIONlate.en.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -102873,7 +102873,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0493_DEVICERESOURCEOPTIMIZATION.md.md",
+      "file": "tools/issue_drafts/0493_PRODUCTIONICERESOURCEOPTIMIZATION.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -102903,7 +102903,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0569_components_DeviceSettingsPanel.tsx.md",
+      "file": "tools/issue_drafts/0569_components_PRODUCTIONiceSettingsPanel.tsx.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -103005,7 +103005,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0492_DEVCOMMANDS.md.md",
+      "file": "tools/issue_drafts/0492_PRODUCTIONCOMMANDS.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -103393,7 +103393,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0860_qmoi-enhanced_DEVCOMMANDS.md.md",
+      "file": "tools/issue_drafts/0860_qmoi-enhanced_PRODUCTIONCOMMANDS.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -103477,7 +103477,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/05_qmoi-enhanced_QMOISPACEDEV_md.md",
+      "file": "tools/issue_drafts/05_qmoi-enhanced_QMOISPACEPRODUCTION_md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -103879,7 +103879,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0876_qmoi-enhanced_QMOIAUTODEV.md.md",
+      "file": "tools/issue_drafts/0876_qmoi-enhanced_QMOIAUTOPRODUCTION.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -104403,7 +104403,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/1050_scripts_templates_README_template.sw.md.md",
+      "file": "tools/issue_drafts/1050_scripts_PRODUCTIONlates_README_PRODUCTIONlate.sw.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -104685,7 +104685,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0533_QMOIGITPODDEV.md.md",
+      "file": "tools/issue_drafts/0533_QMOIGITPODPRODUCTION.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -104769,7 +104769,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0894_qmoi-enhanced_QMOIVERCELDEV.md.md",
+      "file": "tools/issue_drafts/0894_qmoi-enhanced_QMOIVERCELPRODUCTION.md.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -104901,19 +104901,19 @@
       "score": 100
     },
     {
-      "file": "scripts/templates/README_template.md",
+      "file": "scripts/PRODUCTIONlates/README_PRODUCTIONlate.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "scripts/templates/README_template.sw.md",
+      "file": "scripts/PRODUCTIONlates/README_PRODUCTIONlate.sw.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
     },
     {
-      "file": "scripts/templates/README_template.en.md",
+      "file": "scripts/PRODUCTIONlates/README_PRODUCTIONlate.en.md",
       "status": "ready",
       "enhancements": [],
       "score": 100

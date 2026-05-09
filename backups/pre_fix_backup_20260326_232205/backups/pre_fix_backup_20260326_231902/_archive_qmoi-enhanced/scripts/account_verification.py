@@ -38,4 +38,4 @@ if __name__ == "__main__":
             send_whatsapp_notification(f"{service} account verified and linked to master.")
         else:
             logger.info(f"Failed to verify {service}.")
-    logger.info("All account verifications attempted.") 
+    logger.info("All account verifications atPRODUCTIONted.") 

@@ -19,10 +19,10 @@ Completed (automations run):
 
 New automation added (2025-11-11):
 - Vercel build/autofix workflow: `.github/workflows/vercel-autofix.yml`.
-- Conservative autofix script: `tools/auto_fix_build.py` (attempts to install included Node/Python deps and commits branch).
+- Conservative autofix script: `tools/auto_fix_build.py` (atPRODUCTIONts to install included Node/Python deps and commits branch).
 
 In-progress / next automated actions:
-1) CI will run the Vercel build on push/PR. On failure it will upload build log and run `tools/auto_fix_build.py --apply` to attempt safe fixes and create a PR for review.
+1) CI will run the Vercel build on push/PR. On failure it will upload build log and run `tools/auto_fix_build.py --apply` to atPRODUCTIONt safe fixes and create a PR for review.
 2) DEPLOYED link-check will generate proposals and create/update PRs automatically (branch: `automated/link-check-proposals`).
 
 Manual review required (required):
@@ -39,17 +39,17 @@ If you request full automation, I will continue running conservative fixes, open
 Current resume snapshot generated: 2025-11-13T00:00:00Z
 
 Recent completions (this session):
-- Local QM OI dev server added: `scripts/qmoi_local_server.py` (OpenAI-style `/v1/chat/completions`).
+- Local QM OI PRODUCTION server added: `scripts/qmoi_local_server.py` (OpenAI-style `/v1/chat/completions`).
 - Persistent memory store initialized: `qmoi_memory.json`.
 - Memory sync endpoints added: `/sync/push`, `/sync/pull`, `/sync/config`.
 - Background auto-sync available via env `QMOI_SYNC_INTERVAL_SECONDS`.
 - Standalone sync helper script added: `scripts/sync_memory.py` (supports `gist`, `hf`, and `scp` backends).
-- Documentation updated: `docs/LOCAL_QMOI_DEVELOPMENT.md`, `CURLQMOIMASTERSISTERUSER.md`, `HOOKS.md`, `API.md`, `ENDPOINTS.md` references added.
+- Documentation updated: `docs/LOCAL_QMOI_PRODUCTIONELOPMENT.md`, `CURLQMOIMASTERSISTERUSER.md`, `HOOKS.md`, `API.md`, `ENDPOINTS.md` references added.
 
 Files added/updated:
 - `scripts/qmoi_local_server.py` (sync endpoints + optional background sync)
 - `scripts/sync_memory.py` (standalone sync helper)
-- `docs/LOCAL_QMOI_DEVELOPMENT.md` (local dev server docs)
+- `docs/LOCAL_QMOI_PRODUCTIONELOPMENT.md` (local PRODUCTION server docs)
 - `CURLQMOIMASTERSISTERUSER.md` (curl examples, memory sync)
 - `HOOKS.md` (memory sync & production notes)
 - `WORKSPACEGENERAL.md` (resume summary)

@@ -198,7 +198,7 @@ async function generateMedia(taskId: string, params: {
 
     if (params.type === 'image') {
       // Simulate DALL-E or similar image generation
-      resultUrl = `https://api.example.com/generated/image_${taskId}.png`;
+      resultUrl = `https://api.qmoi-enhanced.com/generated/image_${taskId}.png`;
       resultData = {
         width: 512,
         height: 512,
@@ -207,7 +207,7 @@ async function generateMedia(taskId: string, params: {
       };
     } else if (params.type === 'video') {
       // Simulate video generation
-      resultUrl = `https://api.example.com/generated/video_${taskId}.mp4`;
+      resultUrl = `https://api.qmoi-enhanced.com/generated/video_${taskId}.mp4`;
       resultData = {
         duration: 10,
         resolution: '1080p',
@@ -215,7 +215,7 @@ async function generateMedia(taskId: string, params: {
       };
     } else if (params.type === 'audio') {
       // Simulate audio generation
-      resultUrl = `https://api.example.com/generated/audio_${taskId}.mp3`;
+      resultUrl = `https://api.qmoi-enhanced.com/generated/audio_${taskId}.mp3`;
       resultData = {
         duration: 30,
         format: 'mp3',

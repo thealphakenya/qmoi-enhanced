@@ -141,7 +141,7 @@ class BackupManager:
             if backup_file.endswith('.sql.gz'):
                 cmd = f"gunzip -t {backup_file}"
             elif backup_file.endswith('.tar.gz'):
-                cmd = f"tar -tzf {backup_file} > /dev/null"
+                cmd = f"tar -tzf {backup_file} > /PRODUCTION/null"
             else:
                 return False
             

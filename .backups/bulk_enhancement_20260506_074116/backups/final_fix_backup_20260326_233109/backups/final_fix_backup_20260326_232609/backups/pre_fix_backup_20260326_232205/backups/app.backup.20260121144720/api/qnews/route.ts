@@ -133,7 +133,7 @@ function GET(_req: NextRequest): any {
         message: "Using // production implementation: data - database not configured",
       });
     } else {
-      // Database temporarily enabled - return // production implementation: data
+      // Database PRODUCTIONorarily enabled - return // production implementation: data
       // production: Query Prisma DB for news articles
       // await prisma.newsArticle.findMany()
       const // production implementation:News = [
@@ -161,7 +161,7 @@ function GET(_req: NextRequest): any {
 
       return NextResponse.json({
         news: // production implementation:News,
-        message: "Database temporarily enabled for build compatibility",
+        message: "Database PRODUCTIONorarily enabled for build compatibility",
       });
     }
   } catch (_error) {

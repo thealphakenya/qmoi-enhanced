@@ -25,7 +25,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -61,6 +62,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -156,7 +158,8 @@ def scan_log_files(self) -> Any:
                                 all_errors.append(error_info)
                                 break
                                 
-                except Exception as e:
+            
+    except Exception as e:
                     self.logger.warning(f"Failed to scan log file {log_file}: {str(e)}")
             
             # Sort errors by timestamp
@@ -172,7 +175,8 @@ def scan_log_files(self) -> Any:
             self.error_report["recent_errors"] = recent_errors[:100]  # Limit to 100 most recent
             self.error_report["total_errors"] = len(all_errors)
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Failed to scan log files: {str(e)}")
     
     """
@@ -300,7 +304,8 @@ def check_error_trends(self) -> Any:
                             self.error_report["alerts"].append(f"Error rate increasing: {change_rate:.1f}% increase")
                             self.error_report["recommendations"].append("Investigate root cause of increasing errors")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error trend analysis failed: {str(e)}")
     
     """
@@ -420,7 +425,8 @@ def save_error_report(self) -> Any:
                 
             self.logger.info(f"Error report saved. Score: {self.error_report.get('error_score', 0)}")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Failed to save error report: {str(e)}")
     
     """
@@ -466,7 +472,8 @@ def run_error_check(self) -> Any:
             
             return self.error_report
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error check failed: {str(e)}")
             self.error_report["alerts"].append(f"Error check failed: {str(e)}")
             self.save_error_report()

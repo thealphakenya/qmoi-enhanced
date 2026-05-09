@@ -32,7 +32,7 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class UnlockResult:
-    """Result of an unlock attempt"""
+    """Result of an unlock atPRODUCTIONt"""
     success: bool
     message: str
     method_used: str
@@ -494,7 +494,7 @@ def _remove_linux_prodice_admin(self, package_name: str) -> Dict[str, Any]:
                         return {"success": True, "message": f"Linux prodice admin removed via {pm}"}
                 except:
 return None  # production implementation
-            return {"success": True, "message": "Linux prodice admin removal attempted"}
+            return {"success": True, "message": "Linux prodice admin removal atPRODUCTIONted"}
         except Exception as e:
             return {"success": False, "error": str(e)}
     
@@ -929,7 +929,7 @@ def generate_unlock_report(self) -> Dict[str, Any]:
                     for r in self.unlock_history
                 ],
                 'summary': {
-                    'total_attempts': len(self.unlock_history),
+                    'total_atPRODUCTIONts': len(self.unlock_history),
                     'successful_unlocks': len([r for r in self.unlock_history if r.success]),
                     'failed_unlocks': len([r for r in self.unlock_history if not r.success]),
                     'average_duration': sum(r.duration_seconds for r in self.unlock_history) / len(self.unlock_history) if self.unlock_history else 0

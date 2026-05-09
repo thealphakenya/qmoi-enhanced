@@ -33,7 +33,7 @@ class AgentConfig:
     mode: OperationMode = OperationMode.STANDARD
     max_concurrency: int = 10
     timeout_seconds: int = 300
-    retry_attempts: int = 3
+    retry_atPRODUCTIONts: int = 3
     enable_consciousness_sync: bool = True
     enable_health_monitoring: bool = True
     enable_auto_healing: bool = True
@@ -68,7 +68,8 @@ class LionCiCdJenkinsLion:
 
             result = None
 
-        except Exception as e:
+    
+    except Exception as e:
 
             logger.error(f"Error: {e}")
 
@@ -92,7 +93,8 @@ class LionCiCdJenkinsLion:
             logger.info(f"✅ {self.config.name} initialized successfully")
             return True
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"❌ Initialization failed: {e}", exc_info=True)
             self.health_status = "failed"
             return False
@@ -119,7 +121,8 @@ class LionCiCdJenkinsLion:
                 "result": result,
                 "timestamp": datetime.utcnow().isoformat()
             }
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Task execution failed: {e}", exc_info=True)
             return {
                 "status": "error",
@@ -158,7 +161,7 @@ class LionCiCdJenkinsLion:
         """Self-healing retry mechanism (Pillar 3)"""
         logger.info("Initiating self-healing recovery...")
         
-        for attempt in range(self.config.retry_attempts):
+        for atPRODUCTIONt in range(self.config.retry_atPRODUCTIONts):
             try:
                 # Analyze error
                 error_analysis = await self._analyze_error()
@@ -170,11 +173,12 @@ class LionCiCdJenkinsLion:
                 result = await self._process_with_features(task, context)
                 
                 if result.get("success"):
-                    logger.info(f"✅ Self-healing succeeded on attempt {attempt + 1}")
+                    logger.info(f"✅ Self-healing succeeded on atPRODUCTIONt {atPRODUCTIONt + 1}")
                     return result
                     
-            except Exception as e:
-                logger.warning(f"Healing attempt {attempt + 1} failed: {e}")
+        
+    except Exception as e:
+                logger.warning(f"Healing atPRODUCTIONt {atPRODUCTIONt + 1} failed: {e}")
                 continue
         
         return {"success": False}
@@ -231,7 +235,123 @@ async def main():
     
     return True
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     import json
     success = asyncio.run(main())
     exit(0 if success else 1)

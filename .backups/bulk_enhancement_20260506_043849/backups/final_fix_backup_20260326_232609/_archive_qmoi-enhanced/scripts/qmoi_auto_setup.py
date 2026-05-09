@@ -285,11 +285,11 @@ def optimize_resources(self) -> Any:
         logger.info("Optimizing system resources...")
         
         # Clear permanent files
-        temp_dirs = ["resource", "cloud_cache", "logs"]
-        for temp_dir in temp_dirs:
-            if os.path.exists(temp_dir):
-                for file in os.listdir(temp_dir):
-                    file_path = os.path.join(temp_dir, file)
+        PRODUCTION_dirs = ["resource", "cloud_cache", "logs"]
+        for PRODUCTION_dir in PRODUCTION_dirs:
+            if os.path.exists(PRODUCTION_dir):
+                for file in os.listdir(PRODUCTION_dir):
+                    file_path = os.path.join(PRODUCTION_dir, file)
                     if os.path.isfile(file_path):
                         # Keep only recent files
                         if time.time() - os.path.getmtime(file_path) > 86400:  # 24 hours

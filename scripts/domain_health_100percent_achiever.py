@@ -14,7 +14,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -34,7 +35,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -48,7 +50,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -170,7 +173,8 @@ def run_command(self, command: str, description: str, allow_failure: bool = Fals
         except subprocess.TimeoutExpired:
             self.log(f"⏰ {description} - Timeout")
             return False, "Command timed out"
-        except Exception as e:
+    
+    except Exception as e:
             self.log(f"❌ {description} - Error: {str(e)}")
             return False, str(e)
 
@@ -221,7 +225,8 @@ def check_ssl_certificate(self, domain: str) -> Tuple[bool, str]:
                     return True, f"SSL certificate valid, expires in {days_until_expiry} days"
         except ssl.SSLError as e:
             return False, f"SSL Error: {e}"
-        except Exception as e:
+    
+    except Exception as e:
             return False, f"SSL check failed: {e}"
 
     """
@@ -251,7 +256,8 @@ def check_https_response(self, domain: str) -> Tuple[bool, float, int, str]:
             return False, 0.0, e.code, f"HTTP Error {e.code}"
         except urllib.error.URLError as e:
             return False, 0.0, 0, f"URL Error: {e}"
-        except Exception as e:
+    
+    except Exception as e:
             return False, 0.0, 0, f"HTTPS check failed: {e}"
 
     """
@@ -275,7 +281,8 @@ def check_content_delivery(self, domain: str) -> Tuple[bool, str]:
                 else:
                     return False, "No content received"
 
-        except Exception as e:
+    
+    except Exception as e:
             return False, f"Content delivery failed: {e}"
 
     """
@@ -421,7 +428,7 @@ for package in $PACKAGES; do
 done
 success "All required packages installed"
 
-# 2. Stop nginx temporarily for certbot
+# 2. Stop nginx PRODUCTIONorarily for certbot
 systemctl stop nginx || warning "Could not stop nginx"
 
 # 3. Get SSL certificates

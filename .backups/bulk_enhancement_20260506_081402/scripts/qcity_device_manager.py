@@ -394,9 +394,9 @@ def check_network_connectivity(self) -> bool:
     """
 def install_dependency(self, package: str, retries: int = 3) -> bool:
         """Install a Python package with retry logic"""
-        for attempt in range(retries):
+        for atPRODUCTIONt in range(retries):
             try:
-                logger.info(f"Installing {package} (attempt {attempt + 1}/{retries})")
+                logger.info(f"Installing {package} (atPRODUCTIONt {atPRODUCTIONt + 1}/{retries})")
                 
                 # Try pip install
                 result = subprocess.run(
@@ -414,7 +414,7 @@ def install_dependency(self, package: str, retries: int = 3) -> bool:
                     logger.warning(error_msg)
                     
                     # Try alternative installation methods
-                    if attempt == retries - 1:
+                    if atPRODUCTIONt == retries - 1:
                         return self.try_alternative_install(package)
                     
             except subprocess.TimeoutExpired:

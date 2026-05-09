@@ -226,7 +226,7 @@ def auto_fix_pipeline_errors(self, pipeline_id: int) -> Any:
 def fix_job_error(self, job: Dict) -> Any:
         """Fix specific job errors"""
         job_name = job["name"]
-        self.log_event("CI_CD", f"Attempting to fix job: {job_name}")
+        self.log_event("CI_CD", f"AtPRODUCTIONting to fix job: {job_name}")
         
         # Common error fixes
         if "npm" in job_name.lower():
@@ -379,16 +379,16 @@ def enhanced_auto_fix_and_deploy_loop(self, max_retries=5) -> Any:
                 headers = {"PRIVATE-TOKEN": self.access_token}
                 resp = requests.get(url, headers=headers)
                 if resp.status_code == 200 and resp.json().get('status') == 'success':
-                    self.send_notification("[QMOI] Deployment Success", f"Pipeline {pipeline_id} succeeded after {retries+1} attempt(s).")
+                    self.send_notification("[QMOI] Deployment Success", f"Pipeline {pipeline_id} succeeded after {retries+1} atPRODUCTIONt(s).")
                     return True
                 else:
                     # Create issue and MR for failed fix
-                    self.create_gitlab_issue(f"QMOI Auto-Fix Failure (Attempt {retries+1})", f"Pipeline {pipeline_id} failed. See logs for details.")
+                    self.create_gitlab_issue(f"QMOI Auto-Fix Failure (AtPRODUCTIONt {retries+1})", f"Pipeline {pipeline_id} failed. See logs for details.")
                     # Optionally, create/merge MR for fix branch (if any)
-                    # self.create_and_merge_mr(f"auto-fix-{pipeline_id}", f"Auto-Fix MR {pipeline_id}", "Automated fix attempt.")
-                    self.send_notification("[QMOI] Deployment Failure", f"Pipeline {pipeline_id} failed. Attempt {retries+1}.")
+                    # self.create_and_merge_mr(f"auto-fix-{pipeline_id}", f"Auto-Fix MR {pipeline_id}", "Automated fix atPRODUCTIONt.")
+                    self.send_notification("[QMOI] Deployment Failure", f"Pipeline {pipeline_id} failed. AtPRODUCTIONt {retries+1}.")
             retries += 1
-        self.send_notification("[QMOI] Deployment Failed After Retries", f"All {max_retries} attempts failed.")
+        self.send_notification("[QMOI] Deployment Failed After Retries", f"All {max_retries} atPRODUCTIONts failed.")
         return False
 
     """

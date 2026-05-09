@@ -25,7 +25,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -62,7 +63,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -82,7 +84,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -96,7 +99,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -116,6 +120,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -228,7 +233,8 @@ def get_network_info(self) -> Dict:
                     'addresses': [addr.address for addr in addresses if addr.family == socket.AF_INET],
                     'mac': [addr.address for addr in addresses if addr.family == psutil.AF_LINK]
                 }
-        except Exception as e:
+    
+    except Exception as e:
             logger.warning(f"Failed to get network info: {e}")
         
         return interfaces
@@ -246,7 +252,8 @@ def get_installed_packages(self) -> List[str]:
                 if line.strip():
                     packages.append(line.split()[0])
             return packages
-        except Exception as e:
+    
+    except Exception as e:
             logger.warning(f"Failed to get installed packages: {e}")
             return []
     
@@ -266,7 +273,8 @@ def get_windows_info(self) -> Dict:
                                   capture_output=True, text=True, timeout=10)
             info['powershell_version'] = result.stdout.strip()
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.warning(f"Failed to get Windows info: {e}")
         
         return info
@@ -290,7 +298,8 @@ def get_linux_info(self) -> Dict:
             result = subprocess.run(['uname', '-r'], capture_output=True, text=True, timeout=10)
             info['kernel_version'] = result.stdout.strip()
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.warning(f"Failed to get Linux info: {e}")
         
         return info
@@ -312,7 +321,8 @@ def get_macos_info(self) -> Dict:
                                   capture_output=True, text=True, timeout=10)
             info['xcode_version'] = result.stdout.strip()
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.warning(f"Failed to get macOS info: {e}")
         
         return info
@@ -394,9 +404,9 @@ def check_network_connectivity(self) -> bool:
     """
 def install_dependency(self, package: str, retries: int = 3) -> bool:
         """Install a Python package with retry logic"""
-        for attempt in range(retries):
+        for atPRODUCTIONt in range(retries):
             try:
-                logger.info(f"Installing {package} (attempt {attempt + 1}/{retries})")
+                logger.info(f"Installing {package} (atPRODUCTIONt {atPRODUCTIONt + 1}/{retries})")
                 
                 # Try pip install
                 result = subprocess.run(
@@ -414,14 +424,15 @@ def install_dependency(self, package: str, retries: int = 3) -> bool:
                     logger.warning(error_msg)
                     
                     # Try alternative installation methods
-                    if attempt == retries - 1:
+                    if atPRODUCTIONt == retries - 1:
                         return self.try_alternative_install(package)
                     
             except subprocess.TimeoutExpired:
                 error_msg = f"Timeout installing {package}"
                 self.error_log.append(error_msg)
                 logger.warning(error_msg)
-            except Exception as e:
+        
+    except Exception as e:
                 error_msg = f"Error installing {package}: {str(e)}"
                 self.error_log.append(error_msg)
                 logger.error(error_msg)
@@ -443,7 +454,8 @@ def try_alternative_install(self, package: str) -> bool:
                 if result.returncode == 0:
                     self.success_log.append(f"Successfully installed {package} via conda")
                     return True
-            except Exception as e:
+        
+    except Exception as e:
                 logger.warning(f"Conda install failed for {package}: {e}")
         
         # Try system package manager
@@ -474,7 +486,8 @@ def try_system_package_manager(self, package: str) -> bool:
                 if result.returncode == 0:
                     self.success_log.append(f"Successfully installed {package} via apt")
                     return True
-            except Exception as e:
+        
+    except Exception as e:
                 logger.warning(f"Apt install failed for {package}: {e}")
         
         # Try yum (RHEL/CentOS)
@@ -485,7 +498,8 @@ def try_system_package_manager(self, package: str) -> bool:
                 if result.returncode == 0:
                     self.success_log.append(f"Successfully installed {package} via yum")
                     return True
-            except Exception as e:
+        
+    except Exception as e:
                 logger.warning(f"Yum install failed for {package}: {e}")
         
         return False
@@ -579,7 +593,8 @@ def setup_qcity_environment(self) -> Dict:
             try:
                 Path(directory).mkdir(exist_ok=True)
                 setup_results['directories_created'].append(directory)
-            except Exception as e:
+        
+    except Exception as e:
                 setup_results['errors'].append(f"Failed to create {directory}: {e}")
         
         # Create configuration files
@@ -611,7 +626,8 @@ def setup_qcity_environment(self) -> Dict:
                 with open(config_path, 'w') as f:
                     json.dump(config_data, f, indent=2)
                 setup_results['configs_created'].append(config_file)
-            except Exception as e:
+        
+    except Exception as e:
                 setup_results['errors'].append(f"Failed to create {config_file}: {e}")
         
         return setup_results
@@ -656,7 +672,8 @@ def test_network_connectivity(self) -> Dict:
                     'response_time': response.elapsed.total_seconds(),
                     'status_code': response.status_code
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results[service] = {
                     'status': 'failed',
                     'error': str(e)
@@ -704,7 +721,8 @@ def run_performance_test(self) -> Dict:
             results['disk_test']['read_time'] = time.time() - start_time
             
             os.remove(test_file)
-        except Exception as e:
+    
+    except Exception as e:
             results['disk_test']['error'] = str(e)
         
         return results
@@ -735,7 +753,8 @@ def run_security_check(self) -> Dict:
                         'owner': stat.st_uid,
                         'group': stat.st_gid
                     }
-            except Exception as e:
+        
+    except Exception as e:
                 security['file_permissions'][file_path] = {'error': str(e)}
         
         # Check Python security
@@ -743,7 +762,8 @@ def run_security_check(self) -> Dict:
             result = subprocess.run([sys.executable, '-m', 'pip', 'audit'], 
                                   capture_output=True, text=True, timeout=60)
             security['python_security']['audit_result'] = result.stdout
-        except Exception as e:
+    
+    except Exception as e:
             security['python_security']['error'] = str(e)
         
         return security

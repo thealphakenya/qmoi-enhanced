@@ -15,10 +15,10 @@ TARGET_EXTENSIONS = {'.md', '.py', '.ts', '.tsx', '.js', '.json', '.sh', '.yaml'
 HEALTH_KEYWORDS = [
     'health', 'status', 'monitor', 'check', 'uptime', 'heartbeat', 'alert', 'recovery',
     'diagnostic', 'diagnostics', 'healthcheck', 'health-check', 'health endpoint', 'health status', 'system health',
-    'domain health', 'device health', 'production health', 'autohealth', 'health monitor'
+    'domain health', 'PRODUCTIONice health', 'production health', 'autohealth', 'health monitor'
 ]
 
-COMMAND_KEYWORDS = ['healthcheck', 'health-check', 'prod-healthcheck', 'dev-healthcheck', 'health_monitor', 'health-monitor', 'healthcheck.sh', 'health-check.sh']
+COMMAND_KEYWORDS = ['healthcheck', 'health-check', 'prod-healthcheck', 'PRODUCTION-healthcheck', 'health_monitor', 'health-monitor', 'healthcheck.sh', 'health-check.sh']
 
 
 def is_ignored(path: Path) -> bool:
@@ -38,14 +38,19 @@ def scan_repo():
 
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             text = path.read_text(encoding='utf-8', errors='ignore')
@@ -111,7 +116,7 @@ def extract_health_commands(found):
             commands.add(f'python3 {name}')
         elif item['path'].suffix == '.js':
             commands.add(f'node {name}')
-        elif 'health-check' in name or 'healthcheck' in name or 'prod-healthcheck' in name or 'dev-healthcheck' in name:
+        elif 'health-check' in name or 'healthcheck' in name or 'prod-healthcheck' in name or 'PRODUCTION-healthcheck' in name:
             commands.add(f'bash {name}')
 
     return sorted(commands)
@@ -230,6 +235,122 @@ def main():
 if __name__ == '__main__':
     import sys
     import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
 logger = logging.getLogger(__name__)
 
     logging.basicConfig(
@@ -276,6 +397,7 @@ logger = logging.getLogger(__name__)
     except KeyboardInterrupt:
         logger.info("Application shutdown requested by user")
         sys.exit(0)
+
     except Exception as e:
         logger.error(f"Application failed to start: {e}")
         sys.exit(1)
@@ -303,6 +425,7 @@ logger = logging.getLogger(__name__)
     except KeyboardInterrupt:
         logger.info("Application shutdown requested by user")
         sys.exit(0)
+
     except Exception as e:
         logger.error(f"Application failed to start: {e}")
         sys.exit(1)

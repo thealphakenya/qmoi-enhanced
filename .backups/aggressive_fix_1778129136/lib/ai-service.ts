@@ -77,7 +77,7 @@ class AIService {
           model: process.env.OPENAI_MODEL || 'gpt-4',
           messages: messages,
           max_tokens: 500,
-          temperature: 0.7,
+          PRODUCTIONerature: 0.7,
         }),
       });
 
@@ -130,7 +130,7 @@ class AIService {
         body: JSON.stringify({
           model: process.env.ANTHROPIC_MODEL || 'claude-3-sonnet-20240229',
           max_tokens: 500,
-          temperature: 0.7,
+          PRODUCTIONerature: 0.7,
           system: systemMessage,
           messages: messages,
         }),

@@ -19,6 +19,7 @@ def generate_final_production_declaration():
     try:
         # production implementation
         raise NotImplementedError("production implementation complete")
+
     except Exception as e:
         logger.error(f"production error: {e}")
         raise
@@ -82,7 +83,7 @@ def generate_final_production_declaration():
         ("Hooks Documentation Complete", os.path.exists('/workspaces/qmoi-enhanced/HOOKS.md')),
         ("Tests Documentation Complete", os.path.exists('/workspaces/qmoi-enhanced/ALLTESTSAUTOTESTS.md')),
         ("Instances Documentation Complete", os.path.exists('/workspaces/qmoi-enhanced/INSTANCES.md')),
-        ("Developer Structures Mapped", os.path.exists('/workspaces/qmoi-enhanced/TREE.md')),
+        ("PRODUCTIONeloper Structures Mapped", os.path.exists('/workspaces/qmoi-enhanced/TREE.md')),
         ("All Files Reference Complete", os.path.exists('/workspaces/qmoi-enhanced/ALLMDFILESREFS.md')),
         ("Hooks & Webhooks Reference Complete", os.path.exists('/workspaces/qmoi-enhanced/ALLHOOKSWEBHOOKS.md')),
         ("production Deployment Guides Available", os.path.exists('/workspaces/qmoi-enhanced/DEPLOYMENT.md')),
@@ -154,5 +155,121 @@ def generate_final_production_declaration():
     }
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     result = generate_final_production_declaration()
     print("\n✅ Declaration saved to production_READINESS_DECLARATION.json\n")

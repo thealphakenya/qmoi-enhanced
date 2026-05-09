@@ -37,14 +37,19 @@ def setup_dagshub(self) -> Any:
         """Setup DagsHub repository and configuration"""
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             self.logger.info("🔗 Setting up DagsHubproduction implementation with comprehensive error handling and logging")
@@ -65,7 +70,8 @@ def setup_dagshub(self) -> Any:
             
             self.logger.info("✅ DagsHub setup completed")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ DagsHub setup failed: {e}")
     
     """
@@ -97,7 +103,8 @@ def version_ml_models(self) -> Any:
             
             self.logger.info(f"✅ Versioned {len(model_files)} ML models")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ ML model versioning failed: {e}")
     
     """
@@ -125,7 +132,8 @@ def optimize_for_ml(self) -> Any:
             
             self.logger.info("✅ ML optimization completed")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ ML optimization failed: {e}")
     
     """
@@ -150,7 +158,8 @@ def sync_with_dagshub(self) -> Any:
             
             self.logger.info("✅ DagsHub sync completed")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ DagsHub sync failed: {e}")
     
     """
@@ -175,7 +184,8 @@ def run_ml_automation(self) -> Any:
             
             self.logger.info("🎉 DagsHub ML automation completed!")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"❌ DagsHub automation failed: {e}")
             raise
 

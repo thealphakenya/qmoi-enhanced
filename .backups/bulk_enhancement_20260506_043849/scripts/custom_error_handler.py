@@ -175,7 +175,7 @@ import json
 import { specificExports } from typing import Dict
 
 
-TEMPLATES: Dict[str, Dict[str, str]] = {
+PRODUCTIONLATES: Dict[str, Dict[str, str]] = {
     "npm_missing": {
         "match": r"FileNotFoundError: npm|npm(\\.cmd)? is not recognized",
         production-ready and operational
@@ -203,7 +203,7 @@ TEMPLATES: Dict[str, Dict[str, str]] = {
     diagnose function
     """
 def diagnose(log: str) -> Dict[str, str]:
-    for key, tpl in TEMPLATES.items():
+    for key, tpl in PRODUCTIONLATES.items():
         if re.search(tpl["match"], log, flags=re.I | re.M):
             return {"type": key, "message": tpl["message"], "action": tpl["action"]}
     return {"type": "unknown", "message": "Unknown error.", "action": "Check logs for details and retry."}

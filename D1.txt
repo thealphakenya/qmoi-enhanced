@@ -1,15 +1,15 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:19:40.044697 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:19:00.143613 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:05.613249 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.503171 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:03.455351 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:19:40.044697 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:19:00.143613 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:07:05.613249 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:07.503171 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:03.455351 -->
 ﻿2025-07-07T02:23:37.4091217Z ##[group]Run npm ci --legacy-peer-deps
 npm ci --legacy-peer-deps
 npm install -g vercel@latest
 shell: /usr/bin/bash -e {0}
 env:
   NODE_VERSION: 18
-  QMOI_AUTODEV_ENABLED: true
+  QMOI_AUTOPRODUCTION_ENABLED: true
 npm error code ETARGET
 npm error notarget No matching version found for k6@^0.47.0.
 npm error notarget In most cases you or one of your dependencies are requesting
@@ -60,7 +60,7 @@ npm warn ERESOLVE overriding peer dependency
 npm warn While resolving: react-scripts@5.0.1
 npm warn Found: typescript@5.8.3
 npm warn node_modules/typescript
-npm warn   dev typescript@"^5.3.0" from the root project
+npm warn   PRODUCTION typescript@"^5.3.0" from the root project
 npm warn   10 more (fork-ts-checker-webpack-plugin, cosmiconfig, ...)
 npm warn
 npm warn Could not resolve dependency:

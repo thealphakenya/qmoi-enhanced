@@ -28,13 +28,13 @@
     "/workspaces/qmoi-enhanced/DOCKER_DEPLOYMENT_GUIDE.md",
     "/workspaces/qmoi-enhanced/DOMAINSANDLINKS.md",
     "/workspaces/qmoi-enhanced/link_report.md",
-    "/workspaces/qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md",
+    "/workspaces/qmoi-enhanced/DOWNLOADQMOIAIAPPALLPRODUCTIONICES.md",
     "/workspaces/qmoi-enhanced/SECURITY_AUDIT_CHECKLIST.md",
     "/workspaces/qmoi-enhanced/DEPLOYMENT_QUICK_START.md"
   ],
   "high_priority_files": [
     "/workspaces/qmoi-enhanced/RELEASE_FINALIZATION_PLAN.md",
-    "/workspaces/qmoi-enhanced/QMOISPACEDEV.md",
+    "/workspaces/qmoi-enhanced/QMOISPACEPRODUCTION.md",
     "/workspaces/qmoi-enhanced/V1_2_3_QUICK_REFERENCE.md",
     "/workspaces/qmoi-enhanced/MONITORING_API_DOCS.md",
     "/workspaces/qmoi-enhanced/SERVEQCITYQMOIAIQMOISPACE.md",
@@ -101,12 +101,12 @@
   "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:13:01.842842",
-  "autodev": {
+  "autoPRODUCTION": {
     "enhanced": true,
     "timestamp": "2026-04-20T08:55:02.207318",
     "version": "2026-04-20"
   },
-  "production_ready": true,
+  "PRODUCTION_READY": true,
   "last_production_enhancement": "2026-04-22T04:58:32.129304",
-  "autodev_version": "2026-04-20-aggressive"
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
 }

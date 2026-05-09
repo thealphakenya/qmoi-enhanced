@@ -60,7 +60,7 @@ export class QMOIEnhancedIntelligence {
         });
         break;
       case 'anomaly':
-        result.anomalies = ['Minor deviation detected'];
+        result.anomalies = ['Minor PRODUCTIONiation detected'];
         break;
     }
 

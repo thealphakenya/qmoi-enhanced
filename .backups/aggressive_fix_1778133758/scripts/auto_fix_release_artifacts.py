@@ -18,7 +18,7 @@ Usage:
   python3 scripts/auto_fix_release_artifacts.py [--upload]
 
 Options:
-  --upload: If set and GITHUB_TOKEN is provided, attempt to upload restored assets to the matching GitHub release via the helper scripts
+  --upload: If set and GITHUB_TOKEN is provided, atPRODUCTIONt to upload restored assets to the matching GitHub release via the helper scripts
 """
 
 import json
@@ -159,6 +159,6 @@ if '--upload' in sys.argv:
         try:
             subprocess.run(['python3', 'scripts/check_github_releases.py', '--upload'], check=True)
         except Exception as e:
-            logger.info('Upload attempt had error:', e)
+            logger.info('Upload atPRODUCTIONt had error:', e)
 
 logger.info('Done.')

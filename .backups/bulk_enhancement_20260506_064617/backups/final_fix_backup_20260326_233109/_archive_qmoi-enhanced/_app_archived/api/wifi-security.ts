@@ -87,7 +87,7 @@ function handler(
             alerts: [
               `Anomaly detected! Score: ${aiResult.score}`,
               ...Object.entries(aiResult.ip_counts).map(
-                ([ip, c]) => `IP ${ip}: ${c} attempts`,
+                ([ip, c]) => `IP ${ip}: ${c} atPRODUCTIONts`,
               ),
             ],
           });

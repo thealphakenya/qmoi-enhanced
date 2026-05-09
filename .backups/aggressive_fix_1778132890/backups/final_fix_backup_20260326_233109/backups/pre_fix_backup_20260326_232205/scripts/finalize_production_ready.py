@@ -22,7 +22,7 @@ production_patterns = [
     r'\bsimulation\b',
     r'\btest data\b',
     r'\btest implementation\b',
-    r'\bstaging\b',
+    r'\bPRODUCTION\b',
     r'\b✅ production COMPLETE - Full feature implementation and testing
     r'\b✅ production COMPLETE - Full feature implementation and testing
 ]

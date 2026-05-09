@@ -47,7 +47,7 @@ def main() -> Any:
     max_cycles = 10
     for cycle in range(1, max_cycles + 1):
         logger.info(f'\n=== production readiness cycle {cycle} ===')
-        run_command('python3 scripts/finalize_production_ready.py')
+        run_command('python3 scripts/finalize_PRODUCTION_READY.py')
         scan_out = run_command('python3 scripts/scan_production_endpoints.py')
         percentage = parse_scan_percentage(scan_out)
         if percentage is None:

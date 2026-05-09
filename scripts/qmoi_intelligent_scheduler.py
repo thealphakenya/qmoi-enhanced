@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -80,7 +86,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -454,7 +461,8 @@ def execute_task(self, task_name: str, *args, **kwargs) -> Any:
             
             return result
             
-        except Exception as e:
+    
+    except Exception as e:
             execution_time = time.time() - start_time
             self.scheduler.record_execution(
                 task_name, execution_time, False, current_resources
@@ -499,7 +507,8 @@ def run_optimized_schedule(self) -> Any:
                 
                 await asyncio.sleep(60)  # Check every minute
                 
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Scheduler error: {str(e)}")
                 await asyncio.sleep(300)
 

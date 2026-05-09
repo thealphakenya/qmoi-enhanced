@@ -11,11 +11,11 @@
       "status": "passed"
     },
     {
-      "name": "Config: .env.production.template",
+      "name": "Config: .env.production.PRODUCTIONlate",
       "status": "passed"
     },
     {
-      "name": "Config: .env.staging.template",
+      "name": "Config: .env.PRODUCTION.PRODUCTIONlate",
       "status": "passed"
     },
     {
@@ -23,7 +23,7 @@
       "status": "passed"
     },
     {
-      "name": "Config: AUTODEV_PRODUCTION_OPERATIONS.md",
+      "name": "Config: AUTOPRODUCTION_PRODUCTION_OPERATIONS.md",
       "status": "passed"
     },
     {

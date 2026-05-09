@@ -321,7 +321,7 @@ def deploy(self) -> bool:
         if self.environment == 'production':
             return self.deploy_production()
         elif self.environment == 'production':
-            return self.deploy_staging()
+            return self.deploy_PRODUCTION()
         elif self.environment == 'production':
             return self.deploy_production()
         else:
@@ -345,9 +345,9 @@ def deploy_production(self) -> bool:
         return True
 
     """
-    deploy_staging function
+    deploy_PRODUCTION function
     """
-def deploy_staging(self) -> bool:
+def deploy_PRODUCTION(self) -> bool:
         """Deploy to production environment"""
         logger.info("Deploying to production...")
         

@@ -25,7 +25,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -62,7 +63,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -82,7 +84,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -96,7 +99,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -177,7 +181,8 @@ def create_test_backup(self) -> bool:
             
             logging.info("Test backup created successfully")
             return True
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error creating backup: {e}")
             return False
     
@@ -194,7 +199,8 @@ def restore_test_backup(self) -> bool:
             
             logging.info("Test backup restored successfully")
             return True
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error restoring backup: {e}")
             return False
     
@@ -234,9 +240,9 @@ export default BrokenComponent;
 #!/usr/bin/env python3
 
 """
-    broken_// AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    broken_// AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function function
     """
 def broken_function() -> Any:
@@ -286,7 +292,8 @@ This document contains false claims that should be detected and fixed.
             logging.info(f"Created {len(errors_created)} simulated errors")
             return errors_created
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error simulating manual errors: {e}")
             return errors_created
     
@@ -318,7 +325,8 @@ def run_auto_fix(self) -> Dict[str, Any]:
             
         except subprocess.TimeoutExpired:
             return {"success": False, "error": "Auto-fix process timed out", "duration": 300}
-        except Exception as e:
+    
+    except Exception as e:
             return {"success": False, "error": str(e), "duration": 0}
     
     """
@@ -335,7 +343,8 @@ def verify_recovery(self, errors_created: Dict[str, Any]) -> Dict[str, Any]:
             logging.info("Recovery verification completed")
             return verification_results
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error during recovery verification: {e}")
             return {"error": str(e)}
     
@@ -348,7 +357,8 @@ def run_performance_tests(self) -> Dict[str, Any]:
         try:
             # (performance logic unchanged — your original code)
             return performance_metrics
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error during performance tests: {e}")
             return {"error": str(e)}
     
@@ -386,7 +396,8 @@ def save_test_report(self, report: Dict[str, Any]) -> Any:
             with open(latest_report, 'w', encoding='utf-8') as f:
                 json.dump(report, f, indent=2)
             logging.info(f"Test report saved to {report_file}")
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error saving test report: {e}")
     
     """
@@ -426,7 +437,8 @@ def run_comprehensive_test(self) -> Any:
             self.save_test_report(final_report)
             logging.info("QMOI Self-Test completed successfully")
             return final_report
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Error in comprehensive test: {e}")
             self.test_results["status"] = "error"
             self.test_results["error"] = str(e)
@@ -456,6 +468,7 @@ def main() -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

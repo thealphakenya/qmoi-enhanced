@@ -112,7 +112,7 @@ def __init__(self) -> Any:
             'min_free_disk_gb': 2.0,
             'health_check_interval': 30,
             'auto_restart_delay': 5,
-            'max_restart_attempts': 5,
+            'max_restart_atPRODUCTIONts': 5,
             'emergency_shutdown_threshold': 92.0,
             'auto_scale_cooldown_sec': 120,
             'scaling_lookback_minutes': 15,
@@ -451,20 +451,20 @@ def stop_service(self, service_name: str) -> Any:
     restart_service function
     """
 def restart_service(self, service_name: str, config: Dict) -> Any:
-        attempts = self.restart_counts.get(service_name, 0)
-        if attempts >= self.host_config['max_restart_attempts']:
-            logger.error(f'{service_name} restart attempt limit reached ({attempts})')
+        atPRODUCTIONts = self.restart_counts.get(service_name, 0)
+        if atPRODUCTIONts >= self.host_config['max_restart_atPRODUCTIONts']:
+            logger.error(f'{service_name} restart atPRODUCTIONt limit reached ({atPRODUCTIONts})')
             return False
 
         self.stop_service(service_name)
         time.sleep(self.host_config['auto_restart_delay'])
 
         if self.start_service(service_name, config):
-            self.restart_counts[service_name] = attempts + 1
+            self.restart_counts[service_name] = atPRODUCTIONts + 1
             logger.info(f'{service_name} restarted successfully')
             return True
 
-        self.restart_counts[service_name] = attempts + 1
+        self.restart_counts[service_name] = atPRODUCTIONts + 1
         return False
 
     """

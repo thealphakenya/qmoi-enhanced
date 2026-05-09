@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -80,7 +86,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -155,7 +162,8 @@ def main() -> Any:
             mod = importlib.util.module_from_spec(spec)
             try:
                 spec.loader.exec_module(mod)  # type: ignore
-            except Exception as e:
+        
+    except Exception as e:
                 logger.info('  error executing file:', e)
                 failures += 1
                 continue
@@ -169,7 +177,8 @@ def main() -> Any:
                     except AssertionError as ae:
                         logger.info(f'  FAIL {name}: {ae}')
                         failures += 1
-                    except Exception as e:
+                
+    except Exception as e:
                         logger.info(f'  ERROR {name}: {e}')
                         failures += 1
         raise SystemExit(0 if failures == 0 else 2)

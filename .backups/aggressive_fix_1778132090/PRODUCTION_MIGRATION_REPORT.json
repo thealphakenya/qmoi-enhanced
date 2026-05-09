@@ -7,7 +7,7 @@
   "modified_files": [
     "/workspaces/qmoi-enhanced/services/cashon-production.ts",
     "/workspaces/qmoi-enhanced/services/financial-stats-production.ts",
-    "/workspaces/qmoi-enhanced/.env.production.template",
+    "/workspaces/qmoi-enhanced/.env.production.PRODUCTIONlate",
     "/workspaces/qmoi-enhanced/PRODUCTION_DEPLOYMENT_CHECKLIST.md",
     "/workspaces/qmoi-enhanced/__tests__/phase-10-feature-flags.test.ts",
     "/workspaces/qmoi-enhanced/__tests__/api/monitoring.test.ts",

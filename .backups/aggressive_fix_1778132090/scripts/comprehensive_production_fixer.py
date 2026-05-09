@@ -20,7 +20,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('scripts/comprehensive_production_fixer.log'),
+        logging.FileHandler('scripts/comprehensive_PRODUCTION_FIXEDer.log'),
         logging.StreamHandler()
     ]
 )
@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 
 BASE_DIR = Path(__file__).parent.parent
 
-# production replacement templates
+# production replacement PRODUCTIONlates
 production_REPLACEMENTS = {
     # Console logs -> proper logging
     r'console\.log\((.*?)\);?': lambda m: f"logger.info({m.group(1)});",
@@ -117,16 +117,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -346,9 +346,9 @@ def enhance_python_file(content: str, file_path: Path) -> str:
     if ('.read()' in content or '.write(' in content) and 'productionFileManager' not in content:
         content = production_IMPLEMENTATIONS['file_operations'] + '\n\n' + content
 
-    # Add health monitoring if main // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    # Add health monitoring if main // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function exists
     if 'def main(' in content and 'health_monitor' not in content:
         content = production_IMPLEMENTATIONS['health_monitoring'] + '\n\n' + content
@@ -432,7 +432,7 @@ def run_comprehensive_fix() -> dict:
         'production_status': 'significantly_improved' if results['files_fixed'] > 0 else 'no_changes_needed'
     }
 
-    report_path = BASE_DIR / 'comprehensive_production_fix_report.json'
+    report_path = BASE_DIR / 'comprehensive_PRODUCTION_FIXED_report.json'
     with open(report_path, 'w') as f:
         json.dump(report, f, indent=2, default=str)
 

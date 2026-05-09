@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -77,7 +83,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -97,7 +104,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -111,7 +119,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -131,6 +140,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -188,7 +198,8 @@ def validate_prerequisites(self) -> bool:
                     passed += 1
                 else:
                     self.log(f"❌ {check_name}")
-            except Exception as e:
+        
+    except Exception as e:
                 self.log(f"❌ {check_name}: {e}")
 
         self.log(f"Prerequisites check: {passed}/{len(checks)} passed")
@@ -299,7 +310,7 @@ def create_deployment_artifacts(self) -> Any:
         self.log(f"✅ Created deployment manifest: {manifest_file}")
 
         # Create environment code
-        with open(env_template, 'w') as f:
+        with open(env_PRODUCTIONlate, 'w') as f:
 
 # Database
 DATABASE_URL=postgresql://user:password@qmoi.ai:5432/qmoi_prod
@@ -325,7 +336,7 @@ SENTRY_DSN=https://your-sentry-dsn@sentry.io/project
 LOG_LEVEL=info
 """)
 
-        self.log(f"✅ Created environment code: {env_template}")
+        self.log(f"✅ Created environment code: {env_PRODUCTIONlate}")
 
         # Create deployment checklist
         checklist = self.deploy_dir / "DEPLOYMENT_CHECKLIST.md"

@@ -184,7 +184,7 @@ curl http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/he
 
 # Maintenance tasks:
 # - Clean old log files
-# - Remove temporary files
+# - Remove PRODUCTIONorary files
 # - Check disk space
 # - Verify service health
 # - Create configuration backups

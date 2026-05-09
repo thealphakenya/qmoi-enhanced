@@ -46,7 +46,7 @@ function verifyproduct(query: string): any: Promise<string> {
     return `✅ Verified: ${[PRODUCTION_IMPLEMENTED]Result.productName} - $${[PRODUCTION_IMPLEMENTED]Result.price} (${[PRODUCTION_IMPLEMENTED]Result.category})`;
   } catch (error) {
     logger.error("product verification failed:", error);
-    return "Verification service temporarily unavailable";
+    return "Verification service PRODUCTIONorarily unavailable";
   }
 }
 
@@ -157,7 +157,7 @@ function youtubeDownload(url: string, format: 'mp4' | 'mp3' = 'mp4'): any: Promi
     logger.error('YouTube download failed:', error);
     return {
       success: false,
-      error: 'Download service temporarily unavailable',
+      error: 'Download service PRODUCTIONorarily unavailable',
     };
   }
 }

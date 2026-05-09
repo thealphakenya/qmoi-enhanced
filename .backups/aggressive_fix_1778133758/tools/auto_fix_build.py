@@ -128,7 +128,7 @@ tools/auto_fix_build.py
 Conservative automatic build fixer.
 
 Given a build log, this script looks for common, low-risk causes of build
-failures and attempts safe automated fixes:
+failures and atPRODUCTIONts safe automated fixes:
  - Node.js "Cannot find module" / Webpack "Can't resolve" -> run `npm install <mod> --save`
  - Python "ModuleNotFoundError" -> append to `requirements.txt` and run `pip install -r requirements.txt`
 
@@ -263,8 +263,8 @@ def main() -> Any:
             logger.info("pip install failed:", e)
 
     if changed:
-        commit_changes(f"chore: attempt build fixes (deps) {timestamp}")
-        logger.info("Created branch and committed attempted fixes:", branch)
+        commit_changes(f"chore: atPRODUCTIONt build fixes (deps) {timestamp}")
+        logger.info("Created branch and committed atPRODUCTIONted fixes:", branch)
         logger.info("Push branch and create a PR for review.")
     else:
         logger.info("No changes applied; nothing to commit.")

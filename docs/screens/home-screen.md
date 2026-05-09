@@ -29,9 +29,9 @@
   - Padding: 6 units (24px)
   - Hover effects: lift animation, border color change to blue-500, background darkening
 
-### Developer Resources Section (Bottom)
+### PRODUCTIONeloper Resources Section (Bottom)
 - **Container:** Rounded corners (3xl), dark background, padding 8 units
-- **Title:** "Developer & UI Inventory" (3xl font, bold, white)
+- **Title:** "PRODUCTIONeloper & UI Inventory" (3xl font, bold, white)
 - **Description:** Text explaining the documentation structure
 - **Resource Cards:** 2-column grid on small screens and up
   - COMPONENTS.md card
@@ -46,10 +46,10 @@ Each card contains:
 - **Description:** Feature purpose (slate-400 color)
 - **Action Indicator:** "Open page →" text with arrow (blue-300 color)
 
-#### Card 1: Device Management
-- **Link:** `/devices`
-- **Title:** "Device Management"
-- **Description:** "Monitor and manage connected devices across the QMOI ecosystem."
+#### Card 1: PRODUCTIONice Management
+- **Link:** `/PRODUCTIONices`
+- **Title:** "PRODUCTIONice Management"
+- **Description:** "Monitor and manage connected PRODUCTIONices across the QMOI ecosystem."
 
 #### Card 2: Admin Dashboard
 - **Link:** `/admin`
@@ -81,15 +81,15 @@ Each card contains:
 - **Title:** "Master Links Dashboard"
 - **Description:** "Manage and monitor master-level link operations."
 
-#### Card 8: Developer Utilities
-- **Link:** `/dev`
-- **Title:** "Developer Utilities"
-- **Description:** "Developer tools, self-service pages, and automation utilities."
+#### Card 8: PRODUCTIONeloper Utilities
+- **Link:** `/PRODUCTION`
+- **Title:** "PRODUCTIONeloper Utilities"
+- **Description:** "PRODUCTIONeloper tools, self-service pages, and automation utilities."
 
 ### Documentation Links (3 total)
 - **COMPONENTS.md:** "React component inventory and feature categorization."
 - **UI_COMPONENTS.md:** "Shared UI primitives inventory for the system."
-- **TREE.md:** "Repository structure and developer architecture guide."
+- **TREE.md:** "Repository structure and PRODUCTIONeloper architecture guide."
 
 ## User Interactions
 
@@ -154,7 +154,7 @@ Each card contains:
       {/* Mapped feature cards */}
     </section>
 
-    {/* Developer resources */}
+    {/* PRODUCTIONeloper resources */}
     <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/90 p-8">
       {/* Documentation links */}
     </section>

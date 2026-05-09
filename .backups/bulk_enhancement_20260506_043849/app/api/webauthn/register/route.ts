@@ -7,8 +7,8 @@ export const runtime = "nodejs";
 
 // WebAuthn configuration
 const RP_NAME = 'QMOI Enhanced';
-const RP_ID = process.env.RP_ID || 'localhost';
-const ORIGIN = process.env.ORIGIN || 'http://localhost:3000';
+const RP_ID = process.env.RP_ID || 'api.qmoi-enhanced.com';
+const ORIGIN = process.env.ORIGIN || 'http://api.qmoi-enhanced.com:3000';
 
 export async function GET(req: NextRequest) {
   try {
@@ -38,7 +38,7 @@ export async function GET(req: NextRequest) {
     // Generate challenge
     const challenge = crypto.randomBytes(32).toString('base64url');
 
-    // Store challenge temporarily (in production, use Redis or similar)
+    // Store challenge PRODUCTIONorarily (in production, use Redis or similar)
     const challengeKey = `webauthn_challenge_${userId}`;
     global[challengeKey] = challenge;
 

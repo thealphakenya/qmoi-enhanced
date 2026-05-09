@@ -117,7 +117,7 @@ class productionFileManager:
 """
 Cloud-offload ready: can run in Colab, DagsHub, or any cloud environment.
 """
-from flask import Flask, render_template_string, jsonify, request
+from flask import Flask, render_PRODUCTIONlate_string, jsonify, request
 import { specificExports } from pathlib import Path
 import re
 
@@ -132,7 +132,7 @@ app = Flask(__name__)
     index function
     """
 def index() -> Any:
-    return render_template_string('''
+    return render_PRODUCTIONlate_string('''
     <html>
     <head>
         <title>QMOI Dashboard</title>
@@ -180,27 +180,27 @@ def index() -> Any:
             <canvas id="eventChart" width="600" height="200"></canvas>
         </div>
         <script>
-            # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+            # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function highlightLog(log) {
                 return log
                     .replace(/(ERROR|\u274c|\u274E|\u26A0)/g, '<span class="error">$1</span>')
                     .replace(/(WARNING|WARN|\u26A0)/g, '<span class="warning">$1</span>')
                     .replace(/(SUCCESS|\u2705)/g, '<span class="success">$1</span>');
             }
-            # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+            # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function filterLogs() {
                 const search = document.getElementById('logSearch').value.toLowerCase();
                 apiClient.get('/api/log?search=' + encodeURIComponent(search)).then(r => r.json()).then(data => {
                     document.getElementById('log').textContent = highlightLog(data.log);
                 });
             }
-            # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+            # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function updateDashboard() {
                 apiClient.get('/api/preautooperational_data => {
                     let html = '';
@@ -228,17 +228,17 @@ function updateDashboard() {
                     updateChart(data.labels, data.errors, data.warnings, data.successes);
                 });
             }
-            # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+            # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function triggerTestNotification() {
                 apiClient.get('/api/notifications/production data => {
                     notification.show(data.result);
                 });
             }
-            # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+            # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function updateChart(labels, errors, warnings, successes) {
                 if (!window.eventChart) {
                     const ctx = document.getElementById('eventChart').getContext('2d');
@@ -262,9 +262,9 @@ function updateChart(labels, errors, warnings, successes) {
                     window.eventChart.update();
                 }
             }
-            # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+            # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function updatePreautotestChart(history) {
                 if (!window.preautotestChart) {
                     const ctx = document.getElementById('preautotestChart').getContext('2d');

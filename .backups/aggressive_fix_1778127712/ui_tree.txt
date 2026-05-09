@@ -19,8 +19,8 @@
 ./components/DealsList.tsx
 ./components/DealsPopup.tsx
 ./components/DeploymentStatusDashboard.tsx
-./components/DeviceMap.tsx
-./components/DeviceSettingsPanel.tsx
+./components/PRODUCTIONiceMap.tsx
+./components/PRODUCTIONiceSettingsPanel.tsx
 ./components/DownloadAppButton.tsx
 ./components/DownloadManager.tsx
 ./components/DownloadQApp.tsx
@@ -66,7 +66,7 @@
 ./components/QIStateWindow.tsx
 ./components/QMOIAutoFixDashboard.tsx
 ./components/QMOIDashboard.tsx
-./components/QMOIOwnDevice.tsx
+./components/QMOIOwnPRODUCTIONice.tsx
 ./components/QMediaPlayer.tsx
 ./components/QVillage.tsx
 ./components/QVillageDatasetsPanel.tsx
@@ -106,10 +106,10 @@
 ./components/auth/BiometricAuth.tsx
 ./components/automation/AutomationRulesPanel.tsx
 ./components/components/qmedia_player.md.tsx
-./components/device/AWSCredentialsModal.tsx
-./components/device/AzureCredentialsModal.tsx
-./components/device/DeviceIntegration✅ PRODUCTION COMPLETE - Full feature implementation and testing
-./components/device/GCPCredentialsModal.tsx
+./components/PRODUCTIONice/AWSCredentialsModal.tsx
+./components/PRODUCTIONice/AzureCredentialsModal.tsx
+./components/PRODUCTIONice/PRODUCTIONiceIntegration✅ PRODUCTION COMPLETE - Full feature implementation and testing
+./components/PRODUCTIONice/GCPCredentialsModal.tsx
 ./components/enhanced-system-dashboard.tsx
 ./components/enhanced_build_tools.tsx
 ./components/global/GlobalOperationsDashboard.tsx
@@ -125,10 +125,10 @@
 ./components/q-city/GlobalLinksManager.tsx
 ./components/q-city/Onboarding.tsx
 ./components/q-city/QCityDashboard.tsx
-./components/q-city/QCityDevicePanel.tsx
+./components/q-city/QCityPRODUCTIONicePanel.tsx
 ./components/q-city/QMOIBiometricManager.tsx
 ./components/q-city/QMOILinksManager.tsx
-./components/q-city/QMOIOwnDeviceLogs.tsx
+./components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx
 ./components/q-city/QMOIRevenueDashboard.tsx
 ./components/q-city/QVillage.tsx
 ./components/q-city/TracksPanel.tsx
@@ -256,13 +256,13 @@
 ./src/components/q-city/AuditLogPanel.tsx
 ./src/components/q-city/AutoHealingPlatform.tsx
 ./src/components/q-city/AutoMLEngine.tsx
-./src/components/q-city/AutonomousDevelopmentPipeline.tsx
+./src/components/q-city/AutonomousPRODUCTIONelopmentPipeline.tsx
 ./src/components/q-city/AvatarSelector.tsx
 ./src/components/q-city/AviatorGalleryPanel.tsx
 ./src/components/q-city/CommandPanel.tsx
 ./src/components/q-city/Dashboard.tsx
-./src/components/q-city/DevicePanel.tsx
-./src/components/q-city/DevicesHub.tsx
+./src/components/q-city/PRODUCTIONicePanel.tsx
+./src/components/q-city/PRODUCTIONicesHub.tsx
 ./src/components/q-city/DistributedCompute.tsx
 ./src/components/q-city/DocumentManagerPanel.tsx
 ./src/components/q-city/EarningDashboard.tsx
@@ -283,7 +283,7 @@
 ./src/components/q-city/QMOIAutoFixDashboard.tsx
 ./src/components/q-city/QMOIDashboard.tsx
 ./src/components/q-city/QMOIStateProvider.tsx
-./src/components/q-city/QMoiAutoDevPanel.tsx
+./src/components/q-city/QMoiAutoPRODUCTIONPanel.tsx
 ./src/components/q-city/QMoiDatabaseDashboard.tsx
 ./src/components/q-city/QMoiFileEditorChat.tsx
 ./src/components/q-city/QMoiKernelPanel.integration.test.tsx

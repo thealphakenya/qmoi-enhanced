@@ -1,7 +1,7 @@
 # QVillage Community Hub Screen
 
 ## Overview
-The QVillage screen serves as a community hub for collaborative AI development, dataset management, and model deployment within the QMOI ecosystem. It provides role-based access to community features with different capabilities for Master, Sister, and User roles.
+The QVillage screen serves as a community hub for collaborative AI PRODUCTIONelopment, dataset management, and model deployment within the QMOI ecosystem. It provides role-based access to community features with different capabilities for Master, Sister, and User roles.
 
 ## Screen Layout Structure
 
@@ -52,9 +52,9 @@ The QVillage screen serves as a community hub for collaborative AI development, 
 #### Model Deployment Card
 - **Container**: Same styling as Datasets card
 - **Title**: "Model Deployment" (text-2xl, font-semibold)
-- **Description**: "Collaborative AI model development with production sync and inference." (slate-400)
+- **Description**: "Collaborative AI model PRODUCTIONelopment with production sync and inference." (slate-400)
 - **Features List**:
-  - Model discovery and staging
+  - Model discovery and PRODUCTION
   - Continuous training pipelines
   - Community research notebooks
   - Deployment history & status

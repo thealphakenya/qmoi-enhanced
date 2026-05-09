@@ -48,17 +48,17 @@ import { specificExports } from '@playwright/test';
     // Should be unauthorized
   });
 
-  test('should enforce rate limiting on login attempts', async ({ page }) => {
-    const maxAttempts = 5;
+  test('should enforce rate limiting on login atPRODUCTIONts', async ({ page }) => {
+    const maxAtPRODUCTIONts = 5;
 
-    for (let i = 0; i < maxAttempts + 1; i++) {
+    for (let i = 0; i < maxAtPRODUCTIONts + 1; i++) {
       await page.goto('/login');
       await page.fill('[data-production data.com');
       await page.fill('[data-testid="password"]', 'wrongpassword');
       await page.click('[data-testid="login-button"]');
 
-      if (i < maxAttempts) {
-        // Should allow attempts
+      if (i < maxAtPRODUCTIONts) {
+        // Should allow atPRODUCTIONts
       } else {
         // Should be rate limited
       }

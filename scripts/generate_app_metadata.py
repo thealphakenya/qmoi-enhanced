@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -80,7 +86,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -117,7 +124,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -137,7 +145,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -151,7 +160,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -476,8 +486,8 @@ APPS = {
     }
 }
 
-# Professional icon templates with actual designs
-ICON_TEMPLATES = {
+# Professional icon PRODUCTIONlates with actual designs
+ICON_PRODUCTIONLATES = {
     'qmoi_ai': """"
 <svg xmlns="https://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
   <defs>
@@ -873,8 +883,8 @@ def generate_icon(self, app_id: str, config: Dict[str, Any]) -> Path:
         icon_path = self.icons_dir / f"{app_id}.svg"
 
         production-ready and operational
-        if app_id in ICON_TEMPLATES:
-            svg_content = ICON_TEMPLATES[app_id]
+        if app_id in ICON_PRODUCTIONLATES:
+            svg_content = ICON_PRODUCTIONLATES[app_id]
         else:
             # Generate a generic professional icon
             colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b']
@@ -1189,7 +1199,8 @@ def generate(self) -> Any:
                 generated_apps.append(app_id)
                 logger.info(f"  🎉 Completed {config['display_name']}")
 
-            except Exception as e:
+        
+    except Exception as e:
                 error_msg = f"Failed to generate {app_id}: {str(e)}"
                 logger.info(f"  ❌ {error_msg}")
                 errors.append(error_msg)

@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -103,14 +109,15 @@ def check_and_fix_permissions(file_path) -> Any:
         logger.warning(f"File not found: {abs_path}")
         return
     if not os.access(abs_path, os.W_OK):
-        logger.info(f"Attempting to fix permissions for {abs_path}")
+        logger.info(f"AtPRODUCTIONting to fix permissions for {abs_path}")
         try:
             os.chmod(abs_path, 0o666)
             if os.access(abs_path, os.W_OK):
                 logger.info(f"Permissions fixed for {abs_path}")
             else:
                 logger.error(f"Failed to fix permissions for {abs_path}")
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error fixing permissions for {abs_path}: {e}")
     else:
         logger.info(f"{abs_path} is already writable.")

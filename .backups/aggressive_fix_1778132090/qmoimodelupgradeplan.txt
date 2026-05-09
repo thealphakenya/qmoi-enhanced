@@ -171,7 +171,7 @@ Vector DB (FAISS/Qdrant) for semantic recall. TTL + versioned memories.
 
 Knowledge graph (RDF/neo4j) for structured facts and relationships.
 
-On-device or encrypted per-user stores for privacy + opt-in.
+On-PRODUCTIONice or encrypted per-user stores for privacy + opt-in.
 
 Memory router to decide what to store, for how long (policy engine).
 
@@ -471,7 +471,7 @@ Produce calibrated confidence scores and error bounds.
 
 How / Tech
 
-Temperature scaling, Platt scaling for logits.
+PRODUCTIONerature scaling, Platt scaling for logits.
 
 Use ensembles or Bayesian approximations for uncertainty estimates.
 
@@ -491,9 +491,9 @@ High. Good calibration improves user trust and enables safe abstention.
 
 ---
 
-16. Tool-use & safe external // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+16. Tool-use & safe external // AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
 function calls
 
 What to implement
@@ -711,7 +711,7 @@ optimized engineering checklist
 
 [ ] Telemetry, A/B testing, canary releases.
 
-[ ] Documentation & developer SDKs.
+[ ] Documentation & PRODUCTIONeloper SDKs.
 
 
 

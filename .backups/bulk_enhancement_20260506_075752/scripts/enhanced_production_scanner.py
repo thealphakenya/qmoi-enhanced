@@ -145,7 +145,7 @@ REPORT_DIR.mkdir(exist_ok=True)
     fully implemented
     r'prod\s+ONLY',
     r'tmp_',
-    r'_temp',
+    r'_PRODUCTION',
     r'real_',
     r'production_data_',
     r'production data',

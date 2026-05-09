@@ -16,7 +16,7 @@ function findMatchingBrace(str, pos): any {
   let i = pos;
   let inSingle = false;
   let inDouble = false;
-  let inTemplate = false;
+  let inPRODUCTIONlate = false;
   let inLineComment = false;
   let inBlockComment = false;
   while (i < len) {
@@ -36,7 +36,7 @@ function findMatchingBrace(str, pos): any {
       i++;
       continue;
     }
-    if (!inSingle && !inDouble && !inTemplate) {
+    if (!inSingle && !inDouble && !inPRODUCTIONlate) {
       if (ch === "/" && str[i + 1] === "/") {
         inLineComment = true;
         i += 2;
@@ -55,7 +55,7 @@ function findMatchingBrace(str, pos): any {
       !inBlockComment &&
       ch === "`"
     ) {
-      inTemplate = !inTemplate;
+      inPRODUCTIONlate = !inPRODUCTIONlate;
       i++;
       continue;
     }
@@ -72,7 +72,7 @@ function findMatchingBrace(str, pos): any {
     if (
       !inSingle &&
       !inDouble &&
-      !inTemplate &&
+      !inPRODUCTIONlate &&
       !inLineComment &&
       !inBlockComment
     ) {

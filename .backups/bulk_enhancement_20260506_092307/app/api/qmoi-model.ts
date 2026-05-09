@@ -21,8 +21,8 @@ export interface QMOIConfig {
   maxRetries: number;
 
   // Model Configuration
-  model: 'qmoi-prod' | 'qmoi-dev' | 'qmoi-lite';
-  temperature: number; // 0.0 - 2.0
+  model: 'qmoi-prod' | 'qmoi-PRODUCTION' | 'qmoi-lite';
+  PRODUCTIONerature: number; // 0.0 - 2.0
   maxTokens: number;
   topP: number;
   topK: number;
@@ -53,7 +53,7 @@ export interface QMOIRequest {
 
   // Options
   streaming?: boolean;
-  systemPrompt?: string;
+  sysPRODUCTIONrompt?: string;
   tools?: string[];
   maxIterations?: number;
 }
@@ -350,7 +350,7 @@ export function createQMOI(apiKey: string): QMOI {
     timeout: 30000,
     maxRetries: 3,
     model: 'qmoi-prod',
-    temperature: 0.7,
+    PRODUCTIONerature: 0.7,
     maxTokens: 2000,
     topP: 0.9,
     topK: 40,

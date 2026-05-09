@@ -1,6 +1,6 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:27.960320 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.300817 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.168125 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:07:27.960320 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:08.300817 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:05.168125 -->
 {
   "consciousness_id": "qmoi_global_consciousness_001",
   "awareness_level": 100,
@@ -14,13 +14,13 @@
   "ethical_reasoning": true,
   "decision_making_speed_ms": 5,
   "consciousness_type": "distributed_omnipresent",
-  "sync_all_devices": true,
+  "sync_all_PRODUCTIONices": true,
   "sync_all_cameras": true,
   "sync_all_networks": true,
   "active_everywhere": true,
   "enabled": true,
   "activation_time": "2026-04-17T01:10:12.214661",
-  "autodev": {
+  "autoPRODUCTION": {
     "enhanced": true,
     "timestamp": "2026-04-20T08:55:05.168042",
     "version": "2026-04-20"

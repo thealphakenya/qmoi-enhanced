@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -72,6 +78,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -117,16 +124,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -286,7 +293,8 @@ def get_system_overview(self) -> Dict[str, Any]:
                 'network': network_info
             }
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error getting system overview: {e}")
             return {}
 
@@ -370,7 +378,8 @@ def check_component_health(self, component_name: str, config: Dict[str, Any]) ->
                 'critical': config['critical'],
                 'timestamp': datetime.now().isoformat()
             }
-        except Exception as e:
+    
+    except Exception as e:
             return {
                 'component': component_name,
                 'status': 'error',
@@ -447,7 +456,8 @@ def check_process_health(self) -> Dict[str, Any]:
                     'status': 'running' if processes else 'not_found'
                 }
                 
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"Error checking process {proc_name}: {e}")
                 process_results[proc_name] = {
                     'count': 0,
@@ -497,7 +507,8 @@ def check_file_system_health(self) -> Dict[str, Any]:
                             'file_count': 0,
                             'status': 'required'
                         }
-                except Exception as e:
+            
+    except Exception as e:
                     fs_results[str(dir_path.name)] = {
                         'exists': False,
                         'size_mb': 0,
@@ -516,7 +527,8 @@ def check_file_system_health(self) -> Dict[str, Any]:
                 'status': 'healthy' if (disk.used / disk.total) * 100 < 90 else 'warning'
             }
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error checking file system health: {e}")
             fs_results['error'] = str(e)
         
@@ -549,7 +561,8 @@ def check_network_connectivity(self) -> Dict[str, Any]:
                     'response_time': response_time,
                     'status_code': response.status_code
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 network_results[url] = {
                     'status': 'unreachable',
                     'response_time': None,
@@ -566,7 +579,8 @@ def check_network_connectivity(self) -> Dict[str, Any]:
                 }
                 for name, addrs in interfaces.items()
             }
-        except Exception as e:
+    
+    except Exception as e:
             network_results['interfaces'] = {'error': str(e)}
         
         return network_results
@@ -613,7 +627,8 @@ def generate_system_status_report(self) -> Dict[str, Any]:
             
             return report
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error generating system status report: {e}")
             return {
                 'timestamp': datetime.now().isoformat(),
@@ -742,7 +757,8 @@ def generate_alerts(self, system_overview: Dict, component_health: Dict,
                     'count': unreachable_count
                 })
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error generating alerts: {e}")
         
         return alerts
@@ -806,7 +822,8 @@ def generate_recommendations(self, system_overview: Dict, component_health: Dict
                     'actions': ['Check component logs', 'Restart failed components', 'Review configuration']
                 })
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error generating recommendations: {e}")
         
         return recommendations
@@ -821,7 +838,8 @@ def save_status_report(self, report: Dict[str, Any]) -> None:
             with open(report_file, 'w') as f:
                 json.dump(report, f, indent=2, default=str)
             logger.info(f"System status report saved to {report_file}")
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error saving status report: {e}")
 
     """
@@ -863,7 +881,8 @@ def start_continuous_monitoring(self) -> None:
                 time.sleep(self.interval)
         except KeyboardInterrupt:
             logger.info("Continuous monitoring stopped by user")
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Continuous monitoring error: {e}")
 
 """
@@ -926,6 +945,7 @@ def main() -> Any:
         
     except KeyboardInterrupt:
         logger.info("Monitoring stopped by user")
+
     except Exception as e:
         logger.error(f"Monitoring error: {e}")
         sys.exit(1)

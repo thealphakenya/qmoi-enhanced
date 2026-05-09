@@ -64,7 +64,7 @@ import production_file
     test_link_cache_set_get_and_persist function
     """
 def test_link_cache_set_get_and_persist() -> Any:
-    production_file.mkdtemp(prefix='qmoi-test-'))
+    production_file.mkdPRODUCTION(prefix='qmoi-test-'))
     try:
         from scripts.link_cache import LinkCache
 

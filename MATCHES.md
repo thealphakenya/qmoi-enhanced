@@ -12,7 +12,7 @@
 - docs/nonproduction_comprehensive_report.json — 43922 markers
 - non_production_implementations_report.json — 34506 markers
 - archives/placeholders_replacement_report_20260426_102212.json — 22785 markers
-- ultimate_production_fix_report.json — 21074 markers
+- ultimate_PRODUCTION_FIXED_report.json — 21074 markers
 - instructionmanifest.txt — 14516 markers
 - reports/production_readiness_scan.txt — 11846 markers
 - archives/placeholder_actions_20260426_102212.md — 9420 markers

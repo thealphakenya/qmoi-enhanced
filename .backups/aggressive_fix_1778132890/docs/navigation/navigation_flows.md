@@ -12,7 +12,7 @@ The QMOI Enhanced application uses a Next.js App Router-based navigation system 
 
 #### Navigation Destinations
 - **Admin Dashboard** → `/admin` (Master/Admin users)
-- **Devices** → `/devices` (All authenticated users)
+- **PRODUCTIONices** → `/PRODUCTIONices` (All authenticated users)
 - **QMOI AI** → `/qmoi-ai` (All authenticated users)
 - **QCity** → `/qcity` (All authenticated users)
 - **QVillage** → `/qvillage` (All authenticated users)
@@ -45,23 +45,23 @@ The QMOI Enhanced application uses a Next.js App Router-based navigation system 
 
 #### Admin Dashboard (`/admin`)
 - **Role Access**: Admin/Master role
-- **Metrics Displayed**: System health, devices, users, activities
+- **Metrics Displayed**: System health, PRODUCTIONices, users, activities
 - **Actions Available**:
   - View system metrics
   - Monitor performance
   - Access master controls
 - **Previous Navigation**: Home screen, QMOI Space hub
-- **Next Navigation**: Device Management, QCity, Master Email
+- **Next Navigation**: PRODUCTIONice Management, QCity, Master Email
 
-#### Device Management (`/devices`)
+#### PRODUCTIONice Management (`/PRODUCTIONices`)
 - **Role Access**: All authenticated users
-- **Purpose**: Monitor and manage connected devices
+- **Purpose**: Monitor and manage connected PRODUCTIONices
 - **Features**:
-  - Device filtering and search
+  - PRODUCTIONice filtering and search
   - Real-time status monitoring
-  - Device-specific settings
+  - PRODUCTIONice-specific settings
 - **Previous Navigation**: Home, Admin Dashboard, QCity
-- **Next Navigation**: Device settings, QCity
+- **Next Navigation**: PRODUCTIONice settings, QCity
 
 ### Ecosystem Hub Routes
 
@@ -103,7 +103,7 @@ The QMOI Enhanced application uses a Next.js App Router-based navigation system 
   - QCity Dashboard (Link to `/qcity`)
   - QVillage (Link to `/qvillage`)
   - QMOI AI (Button to `/qmoi-ai`)
-  - Developer Tools (Button to `/dev`)
+  - PRODUCTIONeloper Tools (Button to `/PRODUCTION`)
 - **Styling**: Replacement for legacy static PWA launcher
 
 ### Engagement & Communication
@@ -119,11 +119,11 @@ The QMOI Enhanced application uses a Next.js App Router-based navigation system 
 - **Context**: Maintains emotional bonding metrics
 - **Navigation**: Sidebar or command access
 
-### Development & Testing
+### PRODUCTIONelopment & Testing
 
-#### Developer Utilities (`/dev`)
-- **Role Access**: Developers/Admin
-- **Purpose**: Internal development tools
+#### PRODUCTIONeloper Utilities (`/PRODUCTION`)
+- **Role Access**: PRODUCTIONelopers/Admin
+- **Purpose**: Internal PRODUCTIONelopment tools
 - **Components**:
   - API Endpoint Tester
   - Debug Console
@@ -156,7 +156,7 @@ Authenticated User
 Home Screen (full features)
     ↓
 Choose System:
-├─ Devices (/devices) - Manage devices
+├─ PRODUCTIONices (/PRODUCTIONices) - Manage PRODUCTIONices
 ├─ QMOI AI (/qmoi-ai) - AI assistant
 ├─ QCity (/qcity) - City operations
 ├─ QVillage (/qvillage) - Community
@@ -177,7 +177,7 @@ Choose Admin Function:
 ├─ Master Tracks (/master/tracks)
 └─ System Management
     ↓
-Device/User/System Management
+PRODUCTIONice/User/System Management
 ```
 
 ### System Operator Journey
@@ -205,7 +205,7 @@ Model Deployment
     ↓
 Training & Testing
     ↓
-Optional: Device Management (/devices)
+Optional: PRODUCTIONice Management (/PRODUCTIONices)
 ```
 
 ## Role-Based Navigation Restrictions
@@ -222,7 +222,7 @@ Optional: Device Management (/devices)
 - ✅ All public routes
 - ✅ Dataset management (limited)
 - ✅ Model deployment
-- ✅ Device access
+- ✅ PRODUCTIONice access
 - ✅ Friendship/AI companion
 - ❌ Admin functions
 - ❌ Master configuration
@@ -230,7 +230,7 @@ Optional: Device Management (/devices)
 ### User Role Permissions
 - ✅ All public routes
 - ✅ View-only dashboards
-- ✅ Device monitoring
+- ✅ PRODUCTIONice monitoring
 - ✅ AI assistant access
 - ✅ Friendship/AI companion
 - ❌ Admin functions
@@ -243,7 +243,7 @@ Optional: Device Management (/devices)
 - ✅ Onboarding flows
 - ❌ Authenticated routes
 - ❌ System management
-- ❌ Device access
+- ❌ PRODUCTIONice access
 
 ## Navigation Components & Patterns
 
@@ -303,12 +303,12 @@ Optional: Device Management (/devices)
 - Context: Maintains user role and session
 
 #### QMOI Space (Hub) → Any System
-- Path: `/qmoi-space` → `/qcity`, `/qvillage`, `/qmoi-ai`, `/dev`
+- Path: `/qmoi-space` → `/qcity`, `/qvillage`, `/qmoi-ai`, `/PRODUCTION`
 - Trigger: Card/button click on hub
 - Purpose: Central navigation distribution
 
-#### QMOI AI → Device Management
-- Path: `/qmoi-ai` → `/devices`
+#### QMOI AI → PRODUCTIONice Management
+- Path: `/qmoi-ai` → `/PRODUCTIONices`
 - Trigger: AI suggestion or user command
 - Context: AI-mediated system navigation
 
@@ -323,7 +323,7 @@ Optional: Device Management (/devices)
 ```
 Routes by Access Level:
 ├─ Public: `/test`, `/` (guest view)
-├─ Authenticated: `/devices`, `/qmoi-ai`, `/friendship`
+├─ Authenticated: `/PRODUCTIONices`, `/qmoi-ai`, `/friendship`
 ├─ Admin: `/admin`, `/qcity`, `/qvillage`, `/qmoi-space`
 └─ Master: `/master/**` (all master routes)
 ```
@@ -376,7 +376,7 @@ Routes by Access Level:
 3. Use role-appropriate features
 4. Contact admin for permission issues
 
-### For Developers
+### For PRODUCTIONelopers
 1. Use Next.js Link for internal navigation
 2. Implement proper error boundaries
 3. Validate user permissions before rendering

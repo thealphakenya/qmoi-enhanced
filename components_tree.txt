@@ -1,8 +1,8 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:19:39.888958 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:18:59.932541 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:05.412454 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.438585 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:03.302577 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:19:39.888958 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:18:59.932541 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:07:05.412454 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:07.438585 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:03.302577 -->
 components/
 ├── AIContext.tsx
 ├── AccountabilitySystem.tsx
@@ -24,8 +24,8 @@ components/
 ├── DealsList.tsx
 ├── DealsPopup.tsx
 ├── DeploymentStatusDashboard.tsx
-├── DeviceMap.tsx
-├── DeviceSettingsPanel.tsx
+├── PRODUCTIONiceMap.tsx
+├── PRODUCTIONiceSettingsPanel.tsx
 ├── DownloadAppButton.tsx
 ├── DownloadManager.tsx
 ├── DownloadQApp.tsx
@@ -73,7 +73,7 @@ components/
 ├── QIStateWindow.tsx
 ├── QMOIAutoFixDashboard.tsx
 ├── QMOIDashboard.tsx
-├── QMOIOwnDevice.tsx
+├── QMOIOwnPRODUCTIONice.tsx
 ├── QVillage.tsx
 ├── QVillageDatasetsPanel.tsx
 ├── QiSpaces.tsx
@@ -118,10 +118,10 @@ components/
 │   └── AutomationRulesPanel.tsx
 ├── components
 │   └── qmedia_player.md.tsx
-├── device
+├── PRODUCTIONice
 │   ├── AWSCredentialsModal.tsx
 │   ├── AzureCredentialsModal.tsx
-│   ├── DeviceIntegrationreals.ts
+│   ├── PRODUCTIONiceIntegrationreals.ts
 │   └── GCPCredentialsModal.tsx
 ├── enhanced-system-dashboard.tsx
 ├── enhanced_build_tools.tsx
@@ -139,10 +139,10 @@ components/
 │   ├── GlobalLinksManager.tsx
 │   ├── Onboarding.tsx
 │   ├── QCityDashboard.tsx
-│   ├── QCityDevicePanel.tsx
+│   ├── QCityPRODUCTIONicePanel.tsx
 │   ├── QMOIBiometricManager.tsx
 │   ├── QMOILinksManager.tsx
-│   ├── QMOIOwnDeviceLogs.tsx
+│   ├── QMOIOwnPRODUCTIONiceLogs.tsx
 │   ├── QMOIRevenueDashboard.tsx
 │   ├── QVillage.tsx
 │   ├── TracksPanel.tsx

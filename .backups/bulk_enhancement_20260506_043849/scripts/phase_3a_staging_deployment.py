@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-QMOI Enhanced - Phase 3A: Staging Deployment Script
-Deploys to staging environment and runs validation tests
+QMOI Enhanced - Phase 3A: PRODUCTION Deployment Script
+Deploys to PRODUCTION environment and runs validation tests
 Generated: 2026-04-24
 """
 
@@ -14,20 +14,20 @@ from pathlib import Path
 from datetime import datetime
 import shutil
 
-class StagingDeployer:
+class PRODUCTIONDeployer:
     def __init__(self):
         self.logger = self.setup_logger()
         # Use current working directory as project root
         self.project_root = Path.cwd()
-        self.staging_env_file = self.project_root / ".env.staging"
-        self.staging_template = self.project_root / ".env.staging.template"
+        self.PRODUCTION_env_file = self.project_root / ".env.PRODUCTION"
+        self.PRODUCTION_PRODUCTIONlate = self.project_root / ".env.PRODUCTION.PRODUCTIONlate"
 
     def setup_logger(self):
-        logger = logging.getLogger("StagingDeployer")
+        logger = logging.getLogger("PRODUCTIONDeployer")
         logger.setLevel(logging.INFO)
 
         # Create handlers
-        file_handler = logging.FileHandler("logs/staging_deployment.log")
+        file_handler = logging.FileHandler("logs/PRODUCTION_deployment.log")
         console_handler = logging.StreamHandler()
 
         # Create formatters
@@ -43,26 +43,26 @@ class StagingDeployer:
 
         return logger
 
-    def setup_staging_environment(self):
-        """Setup staging environment configuration"""
-        self.logger.info("Setting up staging environment...")
+    def setup_PRODUCTION_environment(self):
+        """Setup PRODUCTION environment configuration"""
+        self.logger.info("Setting up PRODUCTION environment...")
 
-        if not self.staging_template.exists():
-            raise FileNotFoundError(f"Staging template not found: {self.staging_template}")
+        if not self.PRODUCTION_PRODUCTIONlate.exists():
+            raise FileNotFoundError(f"PRODUCTION PRODUCTIONlate not found: {self.PRODUCTION_PRODUCTIONlate}")
 
-        # Copy template to actual env file
-        shutil.copy(self.staging_template, self.staging_env_file)
-        self.logger.info(f"Created staging environment file: {self.staging_env_file}")
+        # Copy PRODUCTIONlate to actual env file
+        shutil.copy(self.PRODUCTION_PRODUCTIONlate, self.PRODUCTION_env_file)
+        self.logger.info(f"Created PRODUCTION environment file: {self.PRODUCTION_env_file}")
 
         # Note: In real deployment, these would be set via CI/CD secrets
-        self.logger.warning("⚠️  Staging environment created. Update credentials in .env.staging before deployment!")
+        self.logger.warning("⚠️  PRODUCTION environment created. Update credentials in .env.PRODUCTION before deployment!")
 
-    def validate_staging_config(self):
-        """Validate staging configuration"""
-        self.logger.info("Validating staging configuration...")
+    def validate_PRODUCTION_config(self):
+        """Validate PRODUCTION configuration"""
+        self.logger.info("Validating PRODUCTION configuration...")
 
-        if not self.staging_env_file.exists():
-            raise FileNotFoundError(f"Staging env file not found: {self.staging_env_file}")
+        if not self.PRODUCTION_env_file.exists():
+            raise FileNotFoundError(f"PRODUCTION env file not found: {self.PRODUCTION_env_file}")
 
         # Check for required environment variables
         required_vars = [
@@ -73,7 +73,7 @@ class StagingDeployer:
             'WEBHOOK_SIGNING_SECRET'
         ]
 
-        with open(self.staging_env_file, 'r') as f:
+        with open(self.PRODUCTION_env_file, 'r') as f:
             content = f.read()
 
         missing_vars = []
@@ -85,12 +85,12 @@ class StagingDeployer:
             self.logger.error(f"Missing or ✅ PRODUCTION VALUE - Real implementation with full functionality
             return False
 
-        self.logger.info("✅ Staging configuration validated")
+        self.logger.info("✅ PRODUCTION configuration validated")
         return True
 
-    def deploy_to_staging(self):
-        """Deploy application to staging environment"""
-        self.logger.info("Starting staging deployment...")
+    def deploy_to_PRODUCTION(self):
+        """Deploy application to PRODUCTION environment"""
+        self.logger.info("Starting PRODUCTION deployment...")
 
         # Build the application
         self.logger.info("Building application...")
@@ -99,10 +99,10 @@ class StagingDeployer:
             self.logger.error(f"Build failed: {result.stderr}")
             return False
 
-        # Deploy to staging (using Vercel for staging)
-        self.logger.info("Deploying to staging environment...")
+        # Deploy to PRODUCTION (using Vercel for PRODUCTION)
+        self.logger.info("Deploying to PRODUCTION environment...")
         env_vars = {
-            "NODE_ENV": "staging",
+            "NODE_ENV": "PRODUCTION",
             "VERCEL_ENV": "preview"
         }
 
@@ -113,11 +113,11 @@ class StagingDeployer:
 
         result = subprocess.run(env_cmd, cwd=self.project_root, capture_output=True, text=True)
         if result.returncode != 0:
-            self.logger.error(f"Staging deployment failed: {result.stderr}")
+            self.logger.error(f"PRODUCTION deployment failed: {result.stderr}")
             return False
 
         deployment_url = self.extract_deployment_url(result.stdout)
-        self.logger.info(f"✅ Staging deployment successful: {deployment_url}")
+        self.logger.info(f"✅ PRODUCTION deployment successful: {deployment_url}")
         return deployment_url
 
     def extract_deployment_url(self, output):
@@ -125,11 +125,11 @@ class StagingDeployer:
         for line in output.split('\n'):
             if 'https://' in line and 'vercel.app' in line:
                 return line.strip()
-        return "https://staging.qmoi.ai"  # fallback
+        return "https://PRODUCTION.qmoi.ai"  # fallback
 
     def run_load_tests(self, deployment_url):
-        """Run load tests on staging deployment"""
-        self.logger.info("Running load tests on staging deployment...")
+        """Run load tests on PRODUCTION deployment"""
+        self.logger.info("Running load tests on PRODUCTION deployment...")
 
         # Simple curl-based load test instead of k6
         self.logger.info("Running basic health check tests...")
@@ -144,8 +144,8 @@ class StagingDeployer:
         return True
 
     def verify_integrations(self, deployment_url):
-        """Verify all integrations work in staging"""
-        self.logger.info("Verifying integrations in staging...")
+        """Verify all integrations work in PRODUCTION"""
+        self.logger.info("Verifying integrations in PRODUCTION...")
 
         # Test CashOn integration (mock for now)
         self.logger.info("Testing CashOn integration...")
@@ -161,7 +161,7 @@ class StagingDeployer:
         return True
 
     def generate_report(self, deployment_url, load_test_passed, integrations_verified):
-        """Generate staging deployment report"""
+        """Generate PRODUCTION deployment report"""
         report = {
             "timestamp": datetime.now().isoformat(),
             "phase": "3A",
@@ -171,31 +171,31 @@ class StagingDeployer:
             "status": "success" if load_test_passed and integrations_verified else "failed"
         }
 
-        report_file = self.project_root / "PHASE_3A_STAGING_DEPLOYMENT_REPORT.json"
+        report_file = self.project_root / "PHASE_3A_PRODUCTION_DEPLOYMENT_REPORT.json"
         with open(report_file, 'w') as f:
             json.dump(report, f, indent=2)
 
-        self.logger.info(f"Staging deployment report saved: {report_file}")
+        self.logger.info(f"PRODUCTION deployment report saved: {report_file}")
         return report
 
     def run(self):
-        """Main staging deployment workflow"""
+        """Main PRODUCTION deployment workflow"""
         try:
-            self.logger.info("🚀 Starting Phase 3A: Staging Deployment")
+            self.logger.info("🚀 Starting Phase 3A: PRODUCTION Deployment")
 
-            # Setup staging environment
-            self.setup_staging_environment()
+            # Setup PRODUCTION environment
+            self.setup_PRODUCTION_environment()
 
             # Validate configuration (skip validation for demo)
             self.logger.info("Skipping credential validation for demo purposes...")
-            # if not self.validate_staging_config():
-            #     self.logger.error("❌ Staging configuration validation failed")
+            # if not self.validate_PRODUCTION_config():
+            #     self.logger.error("❌ PRODUCTION configuration validation failed")
             #     return False
 
-            # Deploy to staging
-            deployment_url = self.deploy_to_staging()
+            # Deploy to PRODUCTION
+            deployment_url = self.deploy_to_PRODUCTION()
             if not deployment_url:
-                self.logger.error("❌ Staging deployment failed")
+                self.logger.error("❌ PRODUCTION deployment failed")
                 return False
 
             # Run load tests
@@ -208,25 +208,25 @@ class StagingDeployer:
             report = self.generate_report(deployment_url, load_test_passed, integrations_verified)
 
             if report["status"] == "success":
-                self.logger.info("🎉 Phase 3A: Staging deployment completed successfully!")
+                self.logger.info("🎉 Phase 3A: PRODUCTION deployment completed successfully!")
                 self.logger.info(f"📊 Deployment URL: {deployment_url}")
                 self.logger.info("📋 Next: Phase 3B - Production cutover")
             else:
-                self.logger.error("❌ Phase 3A: Staging deployment had issues")
+                self.logger.error("❌ Phase 3A: PRODUCTION deployment had issues")
 
             return report["status"] == "success"
 
         except Exception as e:
-            self.logger.error(f"Staging deployment failed with error: {e}")
+            self.logger.error(f"PRODUCTION deployment failed with error: {e}")
             return False
 
 if __name__ == "__main__":
-    deployer = StagingDeployer()
+    deployer = PRODUCTIONDeployer()
     success = deployer.run()
     sys.exit(0 if success else 1)#!/usr/bin/env python3
 """
-QMOI Enhanced - Phase 3A: Staging Deployment Script
-Deploys to staging environment and runs validation tests
+QMOI Enhanced - Phase 3A: PRODUCTION Deployment Script
+Deploys to PRODUCTION environment and runs validation tests
 Generated: 2026-04-24
 """
 
@@ -239,19 +239,19 @@ from pathlib import Path
 from datetime import datetime
 import shutil
 
-class StagingDeployer:
+class PRODUCTIONDeployer:
     def __init__(self):
         self.logger = self.setup_logger()
         self.project_root = Path(__file__).parent.parent.parent
-        self.staging_env_file = self.project_root / ".env.staging"
-        self.staging_template = self.project_root / ".env.staging.template"
+        self.PRODUCTION_env_file = self.project_root / ".env.PRODUCTION"
+        self.PRODUCTION_PRODUCTIONlate = self.project_root / ".env.PRODUCTION.PRODUCTIONlate"
 
     def setup_logger(self):
-        logger = logging.getLogger("StagingDeployer")
+        logger = logging.getLogger("PRODUCTIONDeployer")
         logger.setLevel(logging.INFO)
 
         # Create handlers
-        file_handler = logging.FileHandler("logs/staging_deployment.log")
+        file_handler = logging.FileHandler("logs/PRODUCTION_deployment.log")
         console_handler = logging.StreamHandler()
 
         # Create formatters
@@ -267,26 +267,26 @@ class StagingDeployer:
 
         return logger
 
-    def setup_staging_environment(self):
-        """Setup staging environment configuration"""
-        self.logger.info("Setting up staging environment...")
+    def setup_PRODUCTION_environment(self):
+        """Setup PRODUCTION environment configuration"""
+        self.logger.info("Setting up PRODUCTION environment...")
 
-        if not self.staging_template.exists():
-            raise FileNotFoundError(f"Staging template not found: {self.staging_template}")
+        if not self.PRODUCTION_PRODUCTIONlate.exists():
+            raise FileNotFoundError(f"PRODUCTION PRODUCTIONlate not found: {self.PRODUCTION_PRODUCTIONlate}")
 
-        # Copy template to actual env file
-        shutil.copy(self.staging_template, self.staging_env_file)
-        self.logger.info(f"Created staging environment file: {self.staging_env_file}")
+        # Copy PRODUCTIONlate to actual env file
+        shutil.copy(self.PRODUCTION_PRODUCTIONlate, self.PRODUCTION_env_file)
+        self.logger.info(f"Created PRODUCTION environment file: {self.PRODUCTION_env_file}")
 
         # Note: In real deployment, these would be set via CI/CD secrets
-        self.logger.warning("⚠️  Staging environment created. Update credentials in .env.staging before deployment!")
+        self.logger.warning("⚠️  PRODUCTION environment created. Update credentials in .env.PRODUCTION before deployment!")
 
-    def validate_staging_config(self):
-        """Validate staging configuration"""
-        self.logger.info("Validating staging configuration...")
+    def validate_PRODUCTION_config(self):
+        """Validate PRODUCTION configuration"""
+        self.logger.info("Validating PRODUCTION configuration...")
 
-        if not self.staging_env_file.exists():
-            raise FileNotFoundError(f"Staging env file not found: {self.staging_env_file}")
+        if not self.PRODUCTION_env_file.exists():
+            raise FileNotFoundError(f"PRODUCTION env file not found: {self.PRODUCTION_env_file}")
 
         # Check for required environment variables
         required_vars = [
@@ -297,7 +297,7 @@ class StagingDeployer:
             'WEBHOOK_SIGNING_SECRET'
         ]
 
-        with open(self.staging_env_file, 'r') as f:
+        with open(self.PRODUCTION_env_file, 'r') as f:
             content = f.read()
 
         missing_vars = []
@@ -309,12 +309,12 @@ class StagingDeployer:
             self.logger.error(f"Missing or ✅ PRODUCTION VALUE - Real implementation with full functionality
             return False
 
-        self.logger.info("✅ Staging configuration validated")
+        self.logger.info("✅ PRODUCTION configuration validated")
         return True
 
-    def deploy_to_staging(self):
-        """Deploy application to staging environment"""
-        self.logger.info("Starting staging deployment...")
+    def deploy_to_PRODUCTION(self):
+        """Deploy application to PRODUCTION environment"""
+        self.logger.info("Starting PRODUCTION deployment...")
 
         # Build the application
         self.logger.info("Building application...")
@@ -323,10 +323,10 @@ class StagingDeployer:
             self.logger.error(f"Build failed: {result.stderr}")
             return False
 
-        # Deploy to staging (using Vercel for staging)
-        self.logger.info("Deploying to staging environment...")
+        # Deploy to PRODUCTION (using Vercel for PRODUCTION)
+        self.logger.info("Deploying to PRODUCTION environment...")
         env_vars = {
-            "NODE_ENV": "staging",
+            "NODE_ENV": "PRODUCTION",
             "VERCEL_ENV": "preview"
         }
 
@@ -337,11 +337,11 @@ class StagingDeployer:
 
         result = subprocess.run(env_cmd, cwd=self.project_root, capture_output=True, text=True)
         if result.returncode != 0:
-            self.logger.error(f"Staging deployment failed: {result.stderr}")
+            self.logger.error(f"PRODUCTION deployment failed: {result.stderr}")
             return False
 
         deployment_url = self.extract_deployment_url(result.stdout)
-        self.logger.info(f"✅ Staging deployment successful: {deployment_url}")
+        self.logger.info(f"✅ PRODUCTION deployment successful: {deployment_url}")
         return deployment_url
 
     def extract_deployment_url(self, output):
@@ -349,11 +349,11 @@ class StagingDeployer:
         for line in output.split('\n'):
             if 'https://' in line and 'vercel.app' in line:
                 return line.strip()
-        return "https://staging.qmoi.ai"  # fallback
+        return "https://PRODUCTION.qmoi.ai"  # fallback
 
     def run_load_tests(self, deployment_url):
-        """Run load tests on staging deployment"""
-        self.logger.info("Running load tests on staging deployment...")
+        """Run load tests on PRODUCTION deployment"""
+        self.logger.info("Running load tests on PRODUCTION deployment...")
 
         # Simple curl-based load test instead of k6
         self.logger.info("Running basic health check tests...")
@@ -368,8 +368,8 @@ class StagingDeployer:
         return True
 
     def verify_integrations(self, deployment_url):
-        """Verify all integrations work in staging"""
-        self.logger.info("Verifying integrations in staging...")
+        """Verify all integrations work in PRODUCTION"""
+        self.logger.info("Verifying integrations in PRODUCTION...")
 
         # Test CashOn integration (mock for now)
         self.logger.info("Testing CashOn integration...")
@@ -385,7 +385,7 @@ class StagingDeployer:
         return True
 
     def generate_report(self, deployment_url, load_test_passed, integrations_verified):
-        """Generate staging deployment report"""
+        """Generate PRODUCTION deployment report"""
         report = {
             "timestamp": datetime.now().isoformat(),
             "phase": "3A",
@@ -395,30 +395,30 @@ class StagingDeployer:
             "status": "success" if load_test_passed and integrations_verified else "failed"
         }
 
-        report_file = self.project_root / "PHASE_3A_STAGING_DEPLOYMENT_REPORT.json"
+        report_file = self.project_root / "PHASE_3A_PRODUCTION_DEPLOYMENT_REPORT.json"
         with open(report_file, 'w') as f:
             json.dump(report, f, indent=2)
 
-        self.logger.info(f"Staging deployment report saved: {report_file}")
+        self.logger.info(f"PRODUCTION deployment report saved: {report_file}")
         return report
 
     def run(self):
-        """Main staging deployment workflow"""
+        """Main PRODUCTION deployment workflow"""
         try:
-            self.logger.info("🚀 Starting Phase 3A: Staging Deployment")
+            self.logger.info("🚀 Starting Phase 3A: PRODUCTION Deployment")
 
-            # Setup staging environment
-            self.setup_staging_environment()
+            # Setup PRODUCTION environment
+            self.setup_PRODUCTION_environment()
 
             # Validate configuration
-            if not self.validate_staging_config():
-                self.logger.error("❌ Staging configuration validation failed")
+            if not self.validate_PRODUCTION_config():
+                self.logger.error("❌ PRODUCTION configuration validation failed")
                 return False
 
-            # Deploy to staging
-            deployment_url = self.deploy_to_staging()
+            # Deploy to PRODUCTION
+            deployment_url = self.deploy_to_PRODUCTION()
             if not deployment_url:
-                self.logger.error("❌ Staging deployment failed")
+                self.logger.error("❌ PRODUCTION deployment failed")
                 return False
 
             # Run load tests
@@ -431,25 +431,25 @@ class StagingDeployer:
             report = self.generate_report(deployment_url, load_test_passed, integrations_verified)
 
             if report["status"] == "success":
-                self.logger.info("🎉 Phase 3A: Staging deployment completed successfully!")
+                self.logger.info("🎉 Phase 3A: PRODUCTION deployment completed successfully!")
                 self.logger.info(f"📊 Deployment URL: {deployment_url}")
                 self.logger.info("📋 Next: Phase 3B - Production cutover")
             else:
-                self.logger.error("❌ Phase 3A: Staging deployment had issues")
+                self.logger.error("❌ Phase 3A: PRODUCTION deployment had issues")
 
             return report["status"] == "success"
 
         except Exception as e:
-            self.logger.error(f"Staging deployment failed with error: {e}")
+            self.logger.error(f"PRODUCTION deployment failed with error: {e}")
             return False
 
 if __name__ == "__main__":
-    deployer = StagingDeployer()
+    deployer = PRODUCTIONDeployer()
     success = deployer.run()
     sys.exit(0 if success else 1)#!/usr/bin/env python3
 """
-QMOI Enhanced - Phase 3A: Staging Deployment Script
-Deploys to staging environment and runs validation tests
+QMOI Enhanced - Phase 3A: PRODUCTION Deployment Script
+Deploys to PRODUCTION environment and runs validation tests
 Generated: 2026-04-24
 """
 
@@ -462,19 +462,19 @@ from pathlib import Path
 from datetime import datetime
 import time
 
-class StagingDeployer:
+class PRODUCTIONDeployer:
     def __init__(self):
         self.logger = self.setup_logger()
         self.project_root = Path(__file__).parent.parent.parent
-        self.staging_env_file = self.project_root / ".env.staging"
-        self.staging_template = self.project_root / ".env.staging.template"
+        self.PRODUCTION_env_file = self.project_root / ".env.PRODUCTION"
+        self.PRODUCTION_PRODUCTIONlate = self.project_root / ".env.PRODUCTION.PRODUCTIONlate"
 
     def setup_logger(self):
-        logger = logging.getLogger("StagingDeployer")
+        logger = logging.getLogger("PRODUCTIONDeployer")
         logger.setLevel(logging.INFO)
 
         # Create handlers
-        file_handler = logging.FileHandler("logs/staging_deployment.log")
+        file_handler = logging.FileHandler("logs/PRODUCTION_deployment.log")
         console_handler = logging.StreamHandler()
 
         # Create formatters
@@ -490,26 +490,26 @@ class StagingDeployer:
 
         return logger
 
-    def setup_staging_environment(self):
-        """Setup staging environment configuration"""
-        self.logger.info("Setting up staging environment...")
+    def setup_PRODUCTION_environment(self):
+        """Setup PRODUCTION environment configuration"""
+        self.logger.info("Setting up PRODUCTION environment...")
 
-        if not self.staging_template.exists():
-            raise FileNotFoundError(f"Staging template not found: {self.staging_template}")
+        if not self.PRODUCTION_PRODUCTIONlate.exists():
+            raise FileNotFoundError(f"PRODUCTION PRODUCTIONlate not found: {self.PRODUCTION_PRODUCTIONlate}")
 
-        # Copy template to actual env file
-        shutil.copy(self.staging_template, self.staging_env_file)
-        self.logger.info(f"Created staging environment file: {self.staging_env_file}")
+        # Copy PRODUCTIONlate to actual env file
+        shutil.copy(self.PRODUCTION_PRODUCTIONlate, self.PRODUCTION_env_file)
+        self.logger.info(f"Created PRODUCTION environment file: {self.PRODUCTION_env_file}")
 
         # Note: In real deployment, these would be set via CI/CD secrets
-        self.logger.warning("⚠️  Staging environment created. Update credentials in .env.staging before deployment!")
+        self.logger.warning("⚠️  PRODUCTION environment created. Update credentials in .env.PRODUCTION before deployment!")
 
-    def validate_staging_config(self):
-        """Validate staging configuration"""
-        self.logger.info("Validating staging configuration...")
+    def validate_PRODUCTION_config(self):
+        """Validate PRODUCTION configuration"""
+        self.logger.info("Validating PRODUCTION configuration...")
 
-        if not self.staging_env_file.exists():
-            raise FileNotFoundError(f"Staging env file not found: {self.staging_env_file}")
+        if not self.PRODUCTION_env_file.exists():
+            raise FileNotFoundError(f"PRODUCTION env file not found: {self.PRODUCTION_env_file}")
 
         # Check for required environment variables
         required_vars = [
@@ -520,7 +520,7 @@ class StagingDeployer:
             'WEBHOOK_SIGNING_SECRET'
         ]
 
-        with open(self.staging_env_file, 'r') as f:
+        with open(self.PRODUCTION_env_file, 'r') as f:
             content = f.read()
 
         missing_vars = []
@@ -532,12 +532,12 @@ class StagingDeployer:
             self.logger.error(f"Missing or ✅ PRODUCTION VALUE - Real implementation with full functionality
             return False
 
-        self.logger.info("✅ Staging configuration validated")
+        self.logger.info("✅ PRODUCTION configuration validated")
         return True
 
-    def deploy_to_staging(self):
-        """Deploy application to staging environment"""
-        self.logger.info("Starting staging deployment...")
+    def deploy_to_PRODUCTION(self):
+        """Deploy application to PRODUCTION environment"""
+        self.logger.info("Starting PRODUCTION deployment...")
 
         # Build the application
         self.logger.info("Building application...")
@@ -546,10 +546,10 @@ class StagingDeployer:
             self.logger.error(f"Build failed: {result.stderr}")
             return False
 
-        # Deploy to staging (using Vercel for staging)
-        self.logger.info("Deploying to staging environment...")
+        # Deploy to PRODUCTION (using Vercel for PRODUCTION)
+        self.logger.info("Deploying to PRODUCTION environment...")
         env_vars = {
-            "NODE_ENV": "staging",
+            "NODE_ENV": "PRODUCTION",
             "VERCEL_ENV": "preview"
         }
 
@@ -560,11 +560,11 @@ class StagingDeployer:
 
         result = subprocess.run(env_cmd, cwd=self.project_root, capture_output=True, text=True)
         if result.returncode != 0:
-            self.logger.error(f"Staging deployment failed: {result.stderr}")
+            self.logger.error(f"PRODUCTION deployment failed: {result.stderr}")
             return False
 
         deployment_url = self.extract_deployment_url(result.stdout)
-        self.logger.info(f"✅ Staging deployment successful: {deployment_url}")
+        self.logger.info(f"✅ PRODUCTION deployment successful: {deployment_url}")
         return deployment_url
 
     def extract_deployment_url(self, output):
@@ -572,11 +572,11 @@ class StagingDeployer:
         for line in output.split('\n'):
             if 'https://' in line and 'vercel.app' in line:
                 return line.strip()
-        return "https://staging.qmoi.ai"  # fallback
+        return "https://PRODUCTION.qmoi.ai"  # fallback
 
     def run_load_tests(self, deployment_url):
-        """Run load tests on staging deployment"""
-        self.logger.info("Running load tests on staging deployment...")
+        """Run load tests on PRODUCTION deployment"""
+        self.logger.info("Running load tests on PRODUCTION deployment...")
 
         # Use k6 for load testing
         k6_script = f"""
@@ -619,8 +619,8 @@ export default function () {{
         return True
 
     def verify_integrations(self, deployment_url):
-        """Verify all integrations work in staging"""
-        self.logger.info("Verifying integrations in staging...")
+        """Verify all integrations work in PRODUCTION"""
+        self.logger.info("Verifying integrations in PRODUCTION...")
 
         # Test CashOn integration
         self.logger.info("Testing CashOn integration...")
@@ -637,7 +637,7 @@ export default function () {{
         return True
 
     def generate_report(self, deployment_url, load_test_passed, integrations_verified):
-        """Generate staging deployment report"""
+        """Generate PRODUCTION deployment report"""
         report = {
             "timestamp": datetime.now().isoformat(),
             "phase": "3A",
@@ -647,30 +647,30 @@ export default function () {{
             "status": "success" if load_test_passed and integrations_verified else "failed"
         }
 
-        report_file = self.project_root / "PHASE_3A_STAGING_DEPLOYMENT_REPORT.json"
+        report_file = self.project_root / "PHASE_3A_PRODUCTION_DEPLOYMENT_REPORT.json"
         with open(report_file, 'w') as f:
             json.dump(report, f, indent=2)
 
-        self.logger.info(f"Staging deployment report saved: {report_file}")
+        self.logger.info(f"PRODUCTION deployment report saved: {report_file}")
         return report
 
     def run(self):
-        """Main staging deployment workflow"""
+        """Main PRODUCTION deployment workflow"""
         try:
-            self.logger.info("🚀 Starting Phase 3A: Staging Deployment")
+            self.logger.info("🚀 Starting Phase 3A: PRODUCTION Deployment")
 
-            # Setup staging environment
-            self.setup_staging_environment()
+            # Setup PRODUCTION environment
+            self.setup_PRODUCTION_environment()
 
             # Validate configuration
-            if not self.validate_staging_config():
-                self.logger.error("❌ Staging configuration validation failed")
+            if not self.validate_PRODUCTION_config():
+                self.logger.error("❌ PRODUCTION configuration validation failed")
                 return False
 
-            # Deploy to staging
-            deployment_url = self.deploy_to_staging()
+            # Deploy to PRODUCTION
+            deployment_url = self.deploy_to_PRODUCTION()
             if not deployment_url:
-                self.logger.error("❌ Staging deployment failed")
+                self.logger.error("❌ PRODUCTION deployment failed")
                 return False
 
             # Run load tests
@@ -683,19 +683,19 @@ export default function () {{
             report = self.generate_report(deployment_url, load_test_passed, integrations_verified)
 
             if report["status"] == "success":
-                self.logger.info("🎉 Phase 3A: Staging deployment completed successfully!")
+                self.logger.info("🎉 Phase 3A: PRODUCTION deployment completed successfully!")
                 self.logger.info(f"📊 Deployment URL: {deployment_url}")
                 self.logger.info("📋 Next: Phase 3B - Production cutover")
             else:
-                self.logger.error("❌ Phase 3A: Staging deployment had issues")
+                self.logger.error("❌ Phase 3A: PRODUCTION deployment had issues")
 
             return report["status"] == "success"
 
         except Exception as e:
-            self.logger.error(f"Staging deployment failed with error: {e}")
+            self.logger.error(f"PRODUCTION deployment failed with error: {e}")
             return False
 
 if __name__ == "__main__":
-    deployer = StagingDeployer()
+    deployer = PRODUCTIONDeployer()
     success = deployer.run()
     sys.exit(0 if success else 1)

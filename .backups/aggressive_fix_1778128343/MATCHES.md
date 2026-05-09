@@ -37,5 +37,5 @@ This file is synchronized with INSTANCES.md, MATCHES.txt, and resumefromhere.txt
 ## Notes
 - `undone.txt` is being updated with the latest scan results.
 - Versioned undone reports are stored under `/undone_versions`.
-- AUTODEV is configured to never add artificial rate limits and process files in parallel.
+- AUTOPRODUCTION is configured to never add artificial rate limits and process files in parallel.
 - Current operation: Scanning 5,895+ files for nonproduction implementations.

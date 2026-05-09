@@ -4,13 +4,13 @@ export async function GET(req: NextRequest) {
   try {
     const debugInfo = {
       timestamp: new Date().toISOString(),
-      environment: process.env.NODE_ENV || 'development',
+      environment: process.env.NODE_ENV || 'PRODUCTIONelopment',
       version: process.env.npm_package_version || 'unknown',
       uptime: process.uptime(),
       memory: process.memoryUsage(),
       platform: process.platform,
       arch: process.arch,
-      nodeVersion: process.version,
+      noPRODUCTIONersion: process.version,
       cwd: process.cwd(),
       pid: process.pid
     };

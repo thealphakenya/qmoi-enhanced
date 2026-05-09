@@ -2,8 +2,8 @@
     import logging
     logger = logging.getLogger(__name__)
 
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.482122 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.230292 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:23.482122 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:17.230292 -->
 #!/usr/bin/env python3
 """
 Test suite for QVillage HF Space app.

@@ -1,7 +1,7 @@
 # QMOI Space Spatial Collaboration Hub Screen
 
 ## Overview
-The QMOI Space screen serves as a central navigation hub for the QMOI ecosystem, providing access to various system components including AI tools, city dashboards, community workspaces, and developer utilities. It represents the active Next.js application interface replacing legacy static PWA launchers.
+The QMOI Space screen serves as a central navigation hub for the QMOI ecosystem, providing access to various system components including AI tools, city dashboards, community workspaces, and PRODUCTIONeloper utilities. It represents the active Next.js application interface replacing legacy static PWA launchers.
 
 ## Screen Layout Structure
 
@@ -65,14 +65,14 @@ The QMOI Space screen serves as a central navigation hub for the QMOI ecosystem,
   - **Hover Effect**: Background changes to cyan-500
   - **Link**: Next.js Link component to "/qmoi-ai"
 
-#### Developer Tools Card
+#### PRODUCTIONeloper Tools Card
 - **Container**: Same styling as Interactive Links card
-- **Title**: "Developer Tools" (text-2xl, font-semibold, white)
-- **Description**: "Use the developer utilities for tracing, diagnostics, and internal tooling in this workspace." (slate-400)
-- **Interactive Element**: "Open Dev Tools" button
+- **Title**: "PRODUCTIONeloper Tools" (text-2xl, font-semibold, white)
+- **Description**: "Use the PRODUCTIONeloper utilities for tracing, diagnostics, and internal tooling in this workspace." (slate-400)
+- **Interactive Element**: "Open PRODUCTION Tools" button
   - **Styling**: Inline-flex, rounded-xl, slate-700 background, padding-x-5 padding-y-3, text-sm font-semibold, white text
   - **Hover Effect**: Background changes to slate-600
-  - **Link**: Next.js Link component to "/dev"
+  - **Link**: Next.js Link component to "/PRODUCTION"
 
 ## User Interactions
 
@@ -82,7 +82,7 @@ The QMOI Space screen serves as a central navigation hub for the QMOI ecosystem,
   - QVillage: Emerald border hover effect
 - **Secondary Links**: Two action buttons in feature cards
   - QMOI AI: Cyan button with hover background change
-  - Dev Tools: Gray button with hover background change
+  - PRODUCTION Tools: Gray button with hover background change
 
 ### Interactive Behavior
 - **Hover Effects**: Border color and background changes on navigation cards
@@ -117,7 +117,7 @@ The QMOI Space screen serves as a central navigation hub for the QMOI ecosystem,
 
 ### Navigation Architecture
 - **Client-Side Routing**: All links use Next.js Link for SPA navigation
-- **Route Structure**: Connects to various app routes (/qcity, /qvillage, /qmoi-ai, /dev)
+- **Route Structure**: Connects to various app routes (/qcity, /qvillage, /qmoi-ai, /PRODUCTION)
 - **Legacy Migration**: Notes about replacing static PWA launcher
 
 ### Component Structure
@@ -131,7 +131,7 @@ The QMOI Space screen serves as a central navigation hub for the QMOI ecosystem,
   - `/qcity` - City command center
   - `/qvillage` - Community workspace
   - `/qmoi-ai` - AI assistant interface
-  - `/dev` - Developer tools
+  - `/PRODUCTION` - PRODUCTIONeloper tools
 - **System Integration**: Central hub for QMOI ecosystem navigation
 
 ## Accessibility Features

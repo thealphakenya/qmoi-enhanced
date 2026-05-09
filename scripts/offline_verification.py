@@ -36,7 +36,8 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -69,7 +70,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -106,7 +108,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -126,7 +129,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -140,7 +144,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -177,6 +182,7 @@ def check_cache_integrity() -> Any:
                     return False, f'required field {field} for {domain}'
         
         return True, f'Cache valid with {len(data)} domains'
+
     except Exception as e:
         return False, f'Cache read error: {e}'
 
@@ -198,6 +204,7 @@ def check_offline_docs() -> Any:
             return False, 'Offline docs content invalid'
         
         return True, 'Offline docs accessible'
+
     except Exception as e:
         return False, f'Docs read error: {e}'
 
@@ -235,6 +242,7 @@ def check_cache_freshness() -> Any:
             return False, f'Cache stale (last checked: {latest_check})'
         
         return True, f'Cache fresh (last checked: {latest_check})'
+
     except Exception as e:
         return False, f'Freshness check error: {e}'
 

@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -77,7 +83,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -97,7 +104,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -111,7 +119,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -187,7 +196,7 @@ def get_or_create_release() -> Any:
     """
 def upload_asset(upload_url, file_path) -> Any:
     file_name = os.path.basename(file_path)
-    for attempt in range(1, RETRY_COUNT + 1):
+    for atPRODUCTIONt in range(1, RETRY_COUNT + 1):
         try:
             with open(file_path, 'rb') as f:
                 headers = HEADERS.copy()
@@ -204,9 +213,10 @@ def upload_asset(upload_url, file_path) -> Any:
                     return None
                 else:
                     log_activity(f'Failed to upload {file_name}', {'status': r.status_code, 'response': r.text})
-        except Exception as e:
-            log_activity(f'Error uploading {file_name}', {'error': str(e), 'attempt': attempt})
-            logger.info(f'Error: {e} (attempt {attempt})')
+    
+    except Exception as e:
+            log_activity(f'Error uploading {file_name}', {'error': str(e), 'atPRODUCTIONt': atPRODUCTIONt})
+            logger.info(f'Error: {e} (atPRODUCTIONt {atPRODUCTIONt})')
         time.sleep(RETRY_DELAY)
     return None
 

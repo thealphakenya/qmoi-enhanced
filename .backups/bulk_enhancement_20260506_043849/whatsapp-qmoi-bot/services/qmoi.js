@@ -28,8 +28,8 @@ async function sleep(ms) {
 }
 
 async function askQmoi(payload) {
-  let attempt = 0;
-  while (attempt < MAX_RETRIES) {
+  let atPRODUCTIONt = 0;
+  while (atPRODUCTIONt < MAX_RETRIES) {
     try {
       const res = await client.post("", payload);
       if (res?.data?.response) {
@@ -44,20 +44,20 @@ async function askQmoi(payload) {
       logger.warn("QMOI returned unexpected response", { status: res.status, data: res.data });
       return "🤖 QMOI returned an unexpected response. Please try again.";
     } catch (error) {
-      attempt++;
-      logger.error(`QMOI request failed (attempt ${attempt})`, { payload, error: error?.message || error });
+      atPRODUCTIONt++;
+      logger.error(`QMOI request failed (atPRODUCTIONt ${atPRODUCTIONt})`, { payload, error: error?.message || error });
       if (error?.response?.status === 429) {
         // Rate limited, wait longer
-        await sleep(RETRY_DELAY_MS * attempt * 2);
+        await sleep(RETRY_DELAY_MS * atPRODUCTIONt * 2);
       } else if (error?.response?.status >= 500) {
         // Server error, retry
-        await sleep(RETRY_DELAY_MS * attempt);
+        await sleep(RETRY_DELAY_MS * atPRODUCTIONt);
       } else {
         // Client error, don't retry
         break;
       }
-      if (attempt >= MAX_RETRIES) {
-        return "⚠️ Sorry, I'm having trouble processing your request after multiple attempts. Please try again later.";
+      if (atPRODUCTIONt >= MAX_RETRIES) {
+        return "⚠️ Sorry, I'm having trouble processing your request after multiple atPRODUCTIONts. Please try again later.";
       }
     }
   }

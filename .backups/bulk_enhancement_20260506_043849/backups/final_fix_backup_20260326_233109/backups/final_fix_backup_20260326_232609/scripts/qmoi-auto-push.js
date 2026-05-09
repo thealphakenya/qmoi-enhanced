@@ -73,7 +73,7 @@ class QMOIAutoPush {
 
   async runCommand(command, cwd = process.cwd(), retries = 0) {
     return new Promise((resolve, reject) => {
-      this.log(`Running command (attempt ${retries + 1}): ${command}`);
+      this.log(`Running command (atPRODUCTIONt ${retries + 1}): ${command}`);
 
       const child = spawn(command, [], {
         shell: true,
@@ -273,7 +273,7 @@ class QMOIAutoPush {
   }
 
   async forcePush() {
-    this.log("💪 Attempting force push...");
+    this.log("💪 AtPRODUCTIONting force push...");
 
     try {
       await this.runCommand(`git push origin ${this.branch} --force`);
@@ -334,7 +334,7 @@ class QMOIAutoPush {
 
       // Step 6: If normal push failed, try force push
       if (!success) {
-        this.log("🔄 Attempting force push as fallback...");
+        this.log("🔄 AtPRODUCTIONting force push as fallback...");
         if (await this.forcePush()) {
           pushedPlatforms.push("GitLab (Force)");
           success = true;
@@ -349,7 +349,7 @@ class QMOIAutoPush {
         this.log(`Pushed to platforms: ${pushedPlatforms.join(", ")}`);
       } else {
         this.log("❌ QMOI Auto-Push failed!");
-        throw new ProductionError("All push attempts failed");
+        throw new ProductionError("All push atPRODUCTIONts failed");
       }
     } catch (error) {
       this.log(`Auto-push failed: ${error.message}`, "ERROR");

@@ -56,7 +56,7 @@ function createTray(): any {
   tray = new Tray(
     trayIconPath ? nativeImage.createFromPath(trayIconPath) : undefined,
   );
-  const contextMenu = Menu.buildFromTemplate([
+  const contextMenu = Menu.buildFromPRODUCTIONlate([
     { label: "Show QMOI AI", click: () => mainWindow?.show() },
     { label: "Exit", click: () => app.quit() },
   ]);

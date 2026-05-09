@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -133,7 +139,8 @@ def execute_task(self, task: Dict) -> Tuple[bool, str]:
         except subprocess.TimeoutExpired:
             logger.info(f"⏱️  TIMEOUT - {task['name']}")
             return False, "Command timed out"
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"❌ ERROR - {str(e)}")
             return False, str(e)
 
@@ -222,7 +229,8 @@ def run(self) -> Any:
             self.setup_tasks()
             success = self.run_orchestra()
             return 0 if success else 1
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"\n❌ Error: {e}\n")
             return 1
 

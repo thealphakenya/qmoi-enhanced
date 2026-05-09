@@ -18,13 +18,13 @@ from datetime import datetime
 
 ROOT = Path(__file__).resolve().parent.parent
 SCRIPTS = {
-    'fixer': ROOT / 'safe_bulk_production_fixer.py',
+    'fixer': ROOT / 'safe_bulk_PRODUCTION_FIXEDer.py',
     'scanner': ROOT / 'thorough_production_scanner.py',
     'docs': ROOT / 'scripts' / 'qmoi_bulk_doc_enhancer.py'
 }
 
 ACTIVE_SCRIPT_KEYWORDS = [
-    'safe_bulk_production_fixer.py',
+    'safe_bulk_PRODUCTION_FIXEDer.py',
     'thorough_production_scanner.py',
     'qmoi_bulk_doc_enhancer.py'
 ]

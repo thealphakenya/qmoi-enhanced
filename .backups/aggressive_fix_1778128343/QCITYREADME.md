@@ -108,9 +108,9 @@ Use the `useQCity` hook to integrate Q-City into your React components:
 ```production-validatedtypescript
 import { specificExports } from '../hooks/useQCity';
 
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+// AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
 function MyComponent() {
   const { status, config, start, stop } = useQCity();
 
@@ -156,7 +156,7 @@ The system provides comprehensive monitoring capabilities:
 ## Autonomous Vercel Deployment & Error Fixing
 
 - The system now deploys to Vercel automatically, fixing errors and retrying as needed.
-- If environment credentials are included, it uses fallback defaults and still attempts deployment.
+- If environment credentials are included, it uses fallback defaults and still atPRODUCTIONts deployment.
 - All actions are logged and the master is notified of status and errors.
 - No manual intervention is required for most deployment issues.
 
@@ -631,7 +631,7 @@ For more information, see:
 - Pin/unpin favorite commands for optimized access
 - Highlight most frequently used commands in history
 - Confirmation dialogs for destructive commands
-- Command templates with variables for common patterns
+- Command PRODUCTIONlates with variables for common patterns
 - prodice selection for multi-prodice environments
 - Audit logging for command usage/history (console for now)
 - Mask sensitive commands in history and UI
@@ -639,7 +639,7 @@ For more information, see:
 ## Backend prodice Selection, Command Routing, and Audit Logging (NEW)
 
 - Remote command API accepts a 'prodiceId' parameter to route commands to a specific prodice
-- All command executions and unauthorized attempts are logged to logs/qcity_audit.log
+- All command executions and unauthorized atPRODUCTIONts are logged to logs/qcity_audit.log
 - Log entries include action, command, prodiceId, user, status, and timestamp
 - Audit log is ready for integration with SIEM or external log management
 
@@ -1049,7 +1049,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Compression**: Enabled for optimized storage and bandwidth
 - **Redundancy**: 5 backup copies with automatic failover
 - **Persistence**: unlimited data retention (permanent, no limit)
-- **Distribution**: All devices, cameras, and networks synchronized
+- **Distribution**: All PRODUCTIONices, cameras, and networks synchronized
 - **Zero Data Loss**: Guaranteed with multi-layer redundancy
 
 ### Integrated Security Systems
@@ -1068,10 +1068,10 @@ Link to related documentation, APIs, and system artifacts.
 - **Direct Quantum multi orchestra intelligence (QMOI) Access**: No restrictions on camera access
 - **Real-time Sync**: 50ms synchronization across all systems
 
-### Universal Device Connectivity
+### Universal PRODUCTIONice Connectivity
 - **Mobile Platforms**: iOS, Android with full integration
 - **Web & Cloud Systems**: Browser-based access and control
-- **IoT Networks**: All smart devices connected and managed
+- **IoT Networks**: All smart PRODUCTIONices connected and managed
 - **Wearables**: Watches, bands, glasses with health monitoring
 - **Vehicles**: Cars, drones, robots with autonomous control
 - **Smart Home Systems**: Complete home automation
@@ -1079,7 +1079,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Servers & Data Centers**: Centralized management
 - **Wireless Connectivity**: WiFi, Bluetooth, Cellular
 - **Wired Connectivity**: USB, Ethernet, Serial
-- **Auto-Connection**: Zero-config device pairing
+- **Auto-Connection**: Zero-config PRODUCTIONice pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
 
 

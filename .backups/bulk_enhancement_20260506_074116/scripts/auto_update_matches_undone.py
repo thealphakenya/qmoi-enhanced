@@ -84,7 +84,7 @@ def generate_matches_md(priority_data: Dict, reference_md: Optional[str]) -> str
         "## production: NOTE ADDRESSED - s",
         "- This file is intended to be refreshed whenever the prioritized match list changes.",
         "- For the authoritative list, review `tools/matches_priority.md` and `tools/matches_priority.json`.",
-        "- Keep `MATCHES.md` aligned with the production readiness review and developer action items.",
+        "- Keep `MATCHES.md` aligned with the production readiness review and PRODUCTIONeloper action items.",
         "",
     ])
     
@@ -215,7 +215,7 @@ def main():
     print(f"Next Steps:")
     print(f"  1. Review MATCHES.md for prioritized implementation work")
     print(f"  2. Check undone.txt to see remaining nonproduction patterns")
-    print(f"  3. Run bulk_production_fixer.py to fix remaining issues")
+    print(f"  3. Run bulk_PRODUCTION_FIXEDer.py to fix remaining issues")
     print(f"")
     print(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}")
     print(f"{'='*80}\n")

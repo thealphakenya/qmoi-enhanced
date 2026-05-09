@@ -84,19 +84,25 @@ class QMOIproductionReplacer:
         """production data retrieval with error handling"""
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             # Real implementation with database/API calls
             return self._fetch_live_data()
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production data retrieval failed: {e}")
             return self._get_fallback_data()
 ''',
@@ -108,7 +114,8 @@ class QMOIproductionReplacer:
             self._validate_inputs()
             self._execute_business_rules()
             self._update_state()
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production logic failed: {e}")
             self._handle_error(e)
 ''',
@@ -120,7 +127,8 @@ class QMOIproductionReplacer:
             result = self._execute_production_workflow()
             self._validate_result(result)
             return result
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production implementation failed: {e}")
             raise
 ''',
@@ -130,7 +138,8 @@ class QMOIproductionReplacer:
         try:
             # Use actual ML model for embeddings
             return self.embedding_model.encode(text).tolist()
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Embedding generation failed: {e}")
             return [0.0] * self.embedding_dim
 ''',
@@ -141,7 +150,8 @@ class QMOIproductionReplacer:
             # Real API call with authentication and error handling
             response = self._make_authenticated_request()
             return self._parse_response(response)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production response failed: {e}")
             return self._get_error_response()
 ''',
@@ -151,7 +161,8 @@ class QMOIproductionReplacer:
         try:
             # Real data loading with caching and fallbacks
             return self._fetch_from_cache_or_db()
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production data load failed: {e}")
             return self._get_default_data()
 '''
@@ -184,7 +195,8 @@ class QMOIproductionReplacer:
                     if nonprod_lines:
                         nonprod_files[str(file_path.relative_to(self.workspace))] = nonprod_lines
 
-                except Exception as e:
+            
+    except Exception as e:
                     print(f"Error scanning {file_path}: {e}")
 
         return nonprod_files
@@ -224,7 +236,8 @@ class QMOIproductionReplacer:
 
             return replacements
 
-        except Exception as e:
+    
+    except Exception as e:
             print(f"Error replacing in {file_path}: {e}")
             return 0
 
@@ -276,13 +289,130 @@ def main():
     print(f"Total replacements: {report['total_replacements']}")
     print("="*80)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     main()
         def _get_production_data(self) -> Any:
             """production data retrieval with error handling"""
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

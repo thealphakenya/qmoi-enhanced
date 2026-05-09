@@ -82,7 +82,7 @@ if __name__ == "__main__":
 Usage: python3 scripts/host_health_monitor.py [--apply]
 
 Dry-run: reads .qmoi_validation/domains_registry.json and writes .qmoi_validation/host_health.json
-with implementation entries. With --apply and QMOI_ALLOW_NETWORK=1 the script may attempt sophisticated
+with implementation entries. With --apply and QMOI_ALLOW_NETWORK=1 the script may atPRODUCTIONt sophisticated
 DNS resolution (best-effort) for listed domains.
 """
 import argparse

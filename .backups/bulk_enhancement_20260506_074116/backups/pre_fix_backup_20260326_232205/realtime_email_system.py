@@ -62,7 +62,7 @@ class EmailUISettings:
     master_only: bool = True
     show_audit_trail: bool = True
     show_analytics: bool = True
-    temperature_setting: float = 0.7  # For AI responses
+    PRODUCTIONerature_setting: float = 0.7  # For AI responses
     response_style: str = "professional"  # professional/casual/formal
     language_preference: str = "en"
     custom_welcome_message: str = ""
@@ -305,7 +305,7 @@ def update_email_ui_settings(self, email: str, settings: Dict, session_token: st
             # Update allowed settings
             allowed_updates = [
                 "theme", "icon_color", "notification_frequency",
-                "temperature_setting", "response_style", "language_preference",
+                "PRODUCTIONerature_setting", "response_style", "language_preference",
                 "custom_welcome_message", "custom_signature",
                 "forwarding_rules", "notification_webhooks"
             ]

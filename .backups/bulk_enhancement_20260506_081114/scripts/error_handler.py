@@ -39,8 +39,8 @@ class ProductionErrorHandler:
                 }
 
                 if isinstance(e, ConnectionError):
-                    logger.warning(f"Connection error in {func.__name__}, attempting recovery...")
-                    recovery_result = ProductionErrorHandler._attempt_connection_recovery(func, *args, **kwargs)
+                    logger.warning(f"Connection error in {func.__name__}, atPRODUCTIONting recovery...")
+                    recovery_result = ProductionErrorHandler._atPRODUCTIONt_connection_recovery(func, *args, **kwargs)
                     if recovery_result is not None:
                         return recovery_result
 
@@ -71,8 +71,8 @@ class ProductionErrorHandler:
         return wrapper
 
     @staticmethod
-    def _attempt_connection_recovery(func: Callable, *args, **kwargs) -> Optional[Any]:
-        """Attempt to recover from connection errors"""
+    def _atPRODUCTIONt_connection_recovery(func: Callable, *args, **kwargs) -> Optional[Any]:
+        """AtPRODUCTIONt to recover from connection errors"""
         try:
             time.sleep(1)
             return func(*args, **kwargs)
@@ -82,12 +82,12 @@ class ProductionErrorHandler:
     @staticmethod
     def _retry_with_backoff(func: Callable, *args, max_retries: int = 3, **kwargs) -> Optional[Any]:
         """Retry function with exponential backoff"""
-        for attempt in range(max_retries):
+        for atPRODUCTIONt in range(max_retries):
             try:
-                time.sleep(2 ** attempt)
+                time.sleep(2 ** atPRODUCTIONt)
                 return func(*args, **kwargs)
             except Exception as e:
-                logger.warning(f"Retry {attempt + 1} failed: {e}")
+                logger.warning(f"Retry {atPRODUCTIONt + 1} failed: {e}")
                 continue
         return None
 

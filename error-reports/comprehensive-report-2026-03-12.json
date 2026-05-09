@@ -5041,9 +5041,9 @@
     {
       "type": "syntax",
       "category": "typescript",
-      "message": "src/services/ErrorFixingService.ts(98,27): error TS2347: Untyped // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+      "message": "src/services/ErrorFixingService.ts(98,27): error TS2347: Untyped // AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
 function calls may not accept type arguments.",
       "severity": "CRITICAL",
       "timestamp": "2026-03-12T23:15:31.215Z"
@@ -8726,7 +8726,7 @@ function calls may not accept type arguments.",
     {
       "type": "security",
       "category": "exposed_secret",
-      "message": "Possible exposed secret in OPTION_A_production_READY.md",
+      "message": "Possible exposed secret in OPTION_A_PRODUCTION_READY.md",
       "severity": "CRITICAL",
       "timestamp": "2026-03-12T23:16:43.127Z"
     },
@@ -12821,14 +12821,14 @@ function calls may not accept type arguments.",
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in .github/PULL_REQUEST_TEMPLATE/automated_fix.md",
+      "message": "included frontmatter in .github/PULL_REQUEST_PRODUCTIONLATE/automated_fix.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.425Z"
     },
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in .github/PULL_REQUEST_TEMPLATE.md",
+      "message": "included frontmatter in .github/PULL_REQUEST_PRODUCTIONLATE.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.425Z"
     },
@@ -13647,21 +13647,21 @@ function calls may not accept type arguments.",
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.en.md.json",
+      "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.429Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.md.json",
+      "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.429Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.sw.md.json",
+      "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.429Z"
     },
@@ -13710,21 +13710,21 @@ function calls may not accept type arguments.",
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/scripts__templates__README_template.en.md.json",
+      "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.429Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/scripts__templates__README_template.md.json",
+      "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.429Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/scripts__templates__README_template.sw.md.json",
+      "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.429Z"
     },
@@ -13941,7 +13941,7 @@ function calls may not accept type arguments.",
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in BACKEND_API_TEMPLATES.md",
+      "message": "included frontmatter in BACKEND_API_PRODUCTIONLATES.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.433Z"
     },
@@ -15166,7 +15166,7 @@ function calls may not accept type arguments.",
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in OPTION_A_production_READY.md",
+      "message": "included frontmatter in OPTION_A_PRODUCTION_READY.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.443Z"
     },
@@ -15537,7 +15537,7 @@ function calls may not accept type arguments.",
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in production_READY_SUMMARY.md",
+      "message": "included frontmatter in PRODUCTION_READY_SUMMARY.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.445Z"
     },
@@ -15803,7 +15803,7 @@ function calls may not accept type arguments.",
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in QMOI_AI_production_READY.md",
+      "message": "included frontmatter in QMOI_AI_PRODUCTION_READY.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.455Z"
     },
@@ -16811,7 +16811,7 @@ function calls may not accept type arguments.",
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in SESSION_COMPLETION_REPORT_[production_IMPLEMENTED]S_production_READY.md",
+      "message": "included frontmatter in SESSION_COMPLETION_REPORT_[production_IMPLEMENTED]S_PRODUCTION_READY.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.463Z"
     },
@@ -20402,21 +20402,21 @@ function calls may not accept type arguments.",
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.en.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.631Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.631Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.sw.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.631Z"
     },
@@ -20465,21 +20465,21 @@ function calls may not accept type arguments.",
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.en.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.631Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.631Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.sw.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.631Z"
     },
@@ -40093,21 +40093,21 @@ function calls may not accept type arguments.",
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.en.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.669Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.669Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.sw.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.669Z"
     },
@@ -40156,21 +40156,21 @@ function calls may not accept type arguments.",
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.en.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.669Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.669Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.sw.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.669Z"
     },
@@ -59784,21 +59784,21 @@ function calls may not accept type arguments.",
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.en.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.692Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.692Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.sw.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.692Z"
     },
@@ -59847,21 +59847,21 @@ function calls may not accept type arguments.",
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.en.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.692Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.692Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.sw.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.692Z"
     },
@@ -79475,21 +79475,21 @@ function calls may not accept type arguments.",
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.en.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.712Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.712Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.sw.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.712Z"
     },
@@ -79538,21 +79538,21 @@ function calls may not accept type arguments.",
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.en.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.712Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.712Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.sw.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.712Z"
     },
@@ -99166,21 +99166,21 @@ function calls may not accept type arguments.",
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.en.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.735Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.735Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.sw.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.735Z"
     },
@@ -99229,21 +99229,21 @@ function calls may not accept type arguments.",
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.en.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.735Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.735Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.sw.md.json",
+      "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.735Z"
     },
@@ -129983,9 +129983,9 @@ function calls may not accept type arguments.",
       {
         "type": "syntax",
         "category": "typescript",
-        "message": "src/services/ErrorFixingService.ts(98,27): error TS2347: Untyped // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+        "message": "src/services/ErrorFixingService.ts(98,27): error TS2347: Untyped // AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
+// AUTOPRODUCTION: Performance optimized
 function calls may not accept type arguments.",
         "severity": "CRITICAL",
         "timestamp": "2026-03-12T23:15:31.215Z"
@@ -133676,7 +133676,7 @@ function calls may not accept type arguments.",
       {
         "type": "security",
         "category": "exposed_secret",
-        "message": "Possible exposed secret in OPTION_A_production_READY.md",
+        "message": "Possible exposed secret in OPTION_A_PRODUCTION_READY.md",
         "severity": "CRITICAL",
         "timestamp": "2026-03-12T23:16:43.127Z"
       },
@@ -137777,14 +137777,14 @@ function calls may not accept type arguments.",
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in .github/PULL_REQUEST_TEMPLATE/automated_fix.md",
+        "message": "included frontmatter in .github/PULL_REQUEST_PRODUCTIONLATE/automated_fix.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.425Z"
       },
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in .github/PULL_REQUEST_TEMPLATE.md",
+        "message": "included frontmatter in .github/PULL_REQUEST_PRODUCTIONLATE.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.425Z"
       },
@@ -138603,21 +138603,21 @@ function calls may not accept type arguments.",
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.en.md.json",
+        "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.429Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.md.json",
+        "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.429Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.sw.md.json",
+        "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.429Z"
       },
@@ -138666,21 +138666,21 @@ function calls may not accept type arguments.",
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/scripts__templates__README_template.en.md.json",
+        "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.429Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/scripts__templates__README_template.md.json",
+        "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.429Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/scripts__templates__README_template.sw.md.json",
+        "message": "FUNCTIONAL link in ALLVERSIONS.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.429Z"
       },
@@ -138897,7 +138897,7 @@ function calls may not accept type arguments.",
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in BACKEND_API_TEMPLATES.md",
+        "message": "included frontmatter in BACKEND_API_PRODUCTIONLATES.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.433Z"
       },
@@ -140122,7 +140122,7 @@ function calls may not accept type arguments.",
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in OPTION_A_production_READY.md",
+        "message": "included frontmatter in OPTION_A_PRODUCTION_READY.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.443Z"
       },
@@ -140493,7 +140493,7 @@ function calls may not accept type arguments.",
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in production_READY_SUMMARY.md",
+        "message": "included frontmatter in PRODUCTION_READY_SUMMARY.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.445Z"
       },
@@ -140759,7 +140759,7 @@ function calls may not accept type arguments.",
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in QMOI_AI_production_READY.md",
+        "message": "included frontmatter in QMOI_AI_PRODUCTION_READY.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.455Z"
       },
@@ -141767,7 +141767,7 @@ function calls may not accept type arguments.",
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in SESSION_COMPLETION_REPORT_[production_IMPLEMENTED]S_production_READY.md",
+        "message": "included frontmatter in SESSION_COMPLETION_REPORT_[production_IMPLEMENTED]S_PRODUCTION_READY.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.463Z"
       },
@@ -145358,21 +145358,21 @@ function calls may not accept type arguments.",
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.en.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.631Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.631Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.sw.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.631Z"
       },
@@ -145421,21 +145421,21 @@ function calls may not accept type arguments.",
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.en.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.631Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.631Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.sw.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.631Z"
       },
@@ -165049,21 +165049,21 @@ function calls may not accept type arguments.",
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.en.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.669Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.669Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.sw.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.669Z"
       },
@@ -165112,21 +165112,21 @@ function calls may not accept type arguments.",
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.en.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.669Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.669Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.sw.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.669Z"
       },
@@ -184740,21 +184740,21 @@ function calls may not accept type arguments.",
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.en.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.692Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.692Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.sw.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.692Z"
       },
@@ -184803,21 +184803,21 @@ function calls may not accept type arguments.",
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.en.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.692Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.692Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.sw.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.692Z"
       },
@@ -204431,21 +204431,21 @@ function calls may not accept type arguments.",
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.en.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.712Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.712Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.sw.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.712Z"
       },
@@ -204494,21 +204494,21 @@ function calls may not accept type arguments.",
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.en.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.712Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.712Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.sw.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.712Z"
       },
@@ -224122,21 +224122,21 @@ function calls may not accept type arguments.",
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.en.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.735Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.735Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__templates__README_template.sw.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/qmoi-enhanced__scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.735Z"
       },
@@ -224185,21 +224185,21 @@ function calls may not accept type arguments.",
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.en.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.en.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.735Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.735Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__templates__README_template.sw.md.json",
+        "message": "FUNCTIONAL link in link_report.md: .qmoi_validation/validation_reports/scripts__PRODUCTIONlates__README_PRODUCTIONlate.sw.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.735Z"
       },

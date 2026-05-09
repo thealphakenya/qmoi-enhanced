@@ -25,7 +25,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -62,7 +63,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -82,7 +84,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -96,7 +99,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -178,7 +182,8 @@ def update_status(self, status_updates: Dict[str, Any]) -> Any:
             
             with open(self.status_file, 'w') as f:
                 json.dump(current_status, f, indent=2)
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to update status: {e}")
     
     """
@@ -195,7 +200,8 @@ def log_activity(self, activity: str, details: Dict[str, Any] = None) -> Any:
         try:
             with open(self.log_file, 'a') as f:
                 f.write(json.dumps(log_entry) + '\n')
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to log activity: {e}")
     
     """
@@ -222,7 +228,8 @@ def detect_restrictions_safe(self) -> Dict[str, Any]:
             self.log_activity('detection_completed', restrictions)
             return restrictions
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Detection error: {e}")
             self.log_activity('detection_error', {'error': str(e)})
             return {'status': 'error', 'error': str(e)}
@@ -255,7 +262,8 @@ def check_admin_rights(self) -> Dict[str, Any]:
                 # Unix-like systems
                 is_admin = os.geteuid() == 0
                 return {'has_admin': is_admin, 'status': 'checked'}
-        except Exception as e:
+    
+    except Exception as e:
             return {'has_admin': False, 'status': 'error', 'error': str(e)}
     
     """
@@ -271,7 +279,8 @@ def check_network_access(self) -> Dict[str, Any]:
                 'status_code': response.status_code,
                 'status': 'checked'
             }
-        except Exception as e:
+    
+    except Exception as e:
             return {'connected': False, 'status': 'error', 'error': str(e)}
     
     """
@@ -285,7 +294,8 @@ def check_file_permissions(self) -> Dict[str, Any]:
                 f.write('test')
             os.remove(test_file)
             return {'can_write': True, 'can_delete': True, 'status': 'checked'}
-        except Exception as e:
+    
+    except Exception as e:
             return {'can_write': False, 'can_delete': False, 'status': 'error', 'error': str(e)}
     
     """
@@ -300,25 +310,26 @@ def check_process_control(self) -> Dict[str, Any]:
                 'current_pid': current_process.pid,
                 'status': 'checked'
             }
-        except Exception as e:
+    
+    except Exception as e:
             return {'can_control_processes': False, 'status': 'error', 'error': str(e)}
     
     """
     unlock_prodice_safe function
     """
 def unlock_prodice_safe(self, restrictions: Dict[str, Any]) -> Dict[str, Any]:
-        """Safely attempt prodice unlock"""
+        """Safely atPRODUCTIONt prodice unlock"""
         try:
             self.log_activity('unlock_started', restrictions)
             
             unlock_results = {
                 'timestamp': datetime.now().isoformat(),
-                'attempts': [],
+                'atPRODUCTIONts': [],
                 'success': False,
                 'status': 'completed'
             }
             
-            # Attempt various unlock methods
+            # AtPRODUCTIONt various unlock methods
             unlock_methods = [
                 self.unlock_admin_rights,
                 self.unlock_network_access,
@@ -329,11 +340,12 @@ def unlock_prodice_safe(self, restrictions: Dict[str, Any]) -> Dict[str, Any]:
             for method in unlock_methods:
                 try:
                     result = method()
-                    unlock_results['attempts'].append(result)
+                    unlock_results['atPRODUCTIONts'].append(result)
                     if result.get('success', False):
                         unlock_results['success'] = True
-                except Exception as e:
-                    unlock_results['attempts'].append({
+            
+    except Exception as e:
+                    unlock_results['atPRODUCTIONts'].append({
                         'method': method.__name__,
                         'success': False,
                         'error': str(e)
@@ -342,7 +354,8 @@ def unlock_prodice_safe(self, restrictions: Dict[str, Any]) -> Dict[str, Any]:
             self.log_activity('unlock_completed', unlock_results)
             return unlock_results
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Unlock error: {e}")
             self.log_activity('unlock_error', {'error': str(e)})
             return {'status': 'error', 'error': str(e)}
@@ -351,21 +364,22 @@ def unlock_prodice_safe(self, restrictions: Dict[str, Any]) -> Dict[str, Any]:
     unlock_admin_rights function
     """
 def unlock_admin_rights(self) -> Dict[str, Any]:
-        """Attempt to gain admin rights"""
+        """AtPRODUCTIONt to gain admin rights"""
         try:
             if platform.system() == 'Windows':
                 # Try to elevate privileges
                 return {'method': 'admin_rights', 'success': True, 'message': 'Admin check completed'}
             else:
                 return {'method': 'admin_rights', 'success': True, 'message': 'Unix admin check completed'}
-        except Exception as e:
+    
+    except Exception as e:
             return {'method': 'admin_rights', 'success': False, 'error': str(e)}
     
     """
     unlock_network_access function
     """
 def unlock_network_access(self) -> Dict[str, Any]:
-        """Attempt to ensure network access"""
+        """AtPRODUCTIONt to ensure network access"""
         try:
             # Test multiple endpoints
             endpoints = ['https://www.google.com', 'https://www.github.com', 'https://www.cloudflare.com']
@@ -377,7 +391,8 @@ def unlock_network_access(self) -> Dict[str, Any]:
                 except:
                     continue
             return {'method': 'network_access', 'success': False, 'message': 'No endpoints accessible'}
-        except Exception as e:
+    
+    except Exception as e:
             return {'method': 'network_access', 'success': False, 'error': str(e)}
     
     """
@@ -397,19 +412,21 @@ def unlock_file_permissions(self) -> Dict[str, Any]:
             os.rmdir(test_dir)
             
             return {'method': 'file_permissions', 'success': True, 'message': 'File operations successful'}
-        except Exception as e:
+    
+    except Exception as e:
             return {'method': 'file_permissions', 'success': False, 'error': str(e)}
     
     """
     unlock_process_control function
     """
 def unlock_process_control(self) -> Dict[str, Any]:
-        """Attempt to ensure process control"""
+        """AtPRODUCTIONt to ensure process control"""
         try:
             # Test process creation
             result = subprocess.run(['echo', 'test'], capture_output=True, text=True, timeout=5)
             return {'method': 'process_control', 'success': True, 'message': 'Process control verified'}
-        except Exception as e:
+    
+    except Exception as e:
             return {'method': 'process_control', 'success': False, 'error': str(e)}
     
     """
@@ -438,7 +455,8 @@ def detection_worker(self) -> Any:
                 logging.info(f"✅ Detection completed. Waiting {self.detection_interval} secondsproduction implementation with comprehensive error handling and logging")
                 time.sleep(self.detection_interval)
                 
-            except Exception as e:
+        
+    except Exception as e:
                 logging.error(f"Detection worker error: {e}")
                 time.sleep(60)  # Wait 1 minute on error
     
@@ -466,7 +484,8 @@ def trigger_unlock(self, restrictions: Dict[str, Any]) -> Any:
             else:
                 logging.warning("⚠️ prodice unlock partially successful or failed")
                 
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Unlock trigger error: {e}")
     
     """
@@ -479,7 +498,8 @@ def get_status(self) -> Dict[str, Any]:
                 with open(self.status_file, 'r') as f:
                     return json.load(f)
             return {}
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to get status: {e}")
             return {}
     
@@ -534,6 +554,7 @@ def main() -> Any:
     except KeyboardInterrupt:
         logging.info("Received interrupt signal")
         controller.stop()
+
     except Exception as e:
         logging.error(f"Main thread error: {e}")
         controller.stop()

@@ -6,7 +6,7 @@
 // [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 import { specificExports } from win32com.client import { specificExports } from pystray import { specificExports } from PIL import Image, ImageDraw
 import urllib.request
-import tempfile
+import PRODUCTIONfile
 import zipfile
 import platform
 
@@ -21,7 +21,7 @@ CLOUD_ENDPOINTS = {
     "quantum": "https://quantum.qmoi.app"
 }
 
-# Attempt to use provided icon or fallback
+# AtPRODUCTIONt to use provided icon or fallback
 CUSTOM_ICON = r"D:\applications\latest-Q-ai\icon.ico"
 ICON_PATH = CUSTOM_ICON if os.path.exists(CUSTOM_ICON) else os.path.join(os.getcwd(), "auto_qmoi_icon.ico")
 

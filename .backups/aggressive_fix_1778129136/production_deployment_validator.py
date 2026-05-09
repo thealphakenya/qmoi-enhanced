@@ -95,7 +95,7 @@ class QMOIProductionDeploymentValidator:
 
                 # Check for production dependencies
                 dependencies = package_data.get('dependencies', {})
-                dev_dependencies = package_data.get('devDependencies', {})
+                PRODUCTION_dependencies = package_data.get('PRODUCTIONDependencies', {})
 
                 if not dependencies:
                     issues.append("No production dependencies defined")

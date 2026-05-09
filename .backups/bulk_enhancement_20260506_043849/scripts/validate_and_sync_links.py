@@ -300,7 +300,7 @@ class LinkValidator:
         return False
 
     def _validate_external_link(self, link: str) -> bool:
-        """Validate external link by attempting to access it"""
+        """Validate external link by atPRODUCTIONting to access it"""
         if not link.startswith(('http://', 'https://')):
             return False
 
@@ -1249,7 +1249,7 @@ def check_domain_dns(self, domain: str) -> Tuple[bool, Optional[str]]:
     auto_repair_dns_crisis function
     """
 def auto_repair_dns_crisis(self) -> Dict:
-        """Attempt to auto-repair DNS crises by updating local fallback mappings and reporting actionable items."""
+        """AtPRODUCTIONt to auto-repair DNS crises by updating local fallback mappings and reporting actionable items."""
         crisis_report = {
             'checked_domains': [],
             'resolved': [],

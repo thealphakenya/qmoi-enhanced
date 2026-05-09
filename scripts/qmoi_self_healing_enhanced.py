@@ -121,14 +121,19 @@ def fix_dependencies(self, error: Dict) -> Dict:
         # Try running pip install -r requirements.txt
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             result = subprocess.run([sys.executable, '-m', 'pip', 'install', '-r', 'requirements.txt'],
@@ -141,7 +146,8 @@ def fix_dependencies(self, error: Dict) -> Dict:
                 'status': status,
                 'output': result.stdout + result.stderr
             }
-        except Exception as e:
+    
+    except Exception as e:
             return {
                 'type': 'dependency_fix',
                 'file': error['file'],
@@ -165,7 +171,8 @@ def fix_npm_dependencies(self, error: Dict) -> Dict:
                 'status': status,
                 'output': result.stdout + result.stderr
             }
-        except Exception as e:
+    
+    except Exception as e:
             return {
                 'type': 'npm_dependency_fix',
                 'file': error['file'],
@@ -189,7 +196,8 @@ def upgrade_pip(self, error: Dict) -> Dict:
                 'status': status,
                 'output': result.stdout + result.stderr
             }
-        except Exception as e:
+    
+    except Exception as e:
             return {
                 'type': 'pip_upgrade',
                 'file': error['file'],
@@ -213,7 +221,8 @@ def fix_permissions(self, error: Dict) -> Dict:
                 'line': error['line'],
                 'status': 'success'
             }
-        except Exception as e:
+    
+    except Exception as e:
             return {
                 'type': 'permission_fix',
                 'file': error['file'],
@@ -256,7 +265,8 @@ def trigger_deep_diagnostics(self, error: Dict) -> Dict:
                     'status': 'completed',
                     'output': result.stdout + result.stderr
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 return {
                     'type': 'deep_diagnostics',
                     'file': error['file'],

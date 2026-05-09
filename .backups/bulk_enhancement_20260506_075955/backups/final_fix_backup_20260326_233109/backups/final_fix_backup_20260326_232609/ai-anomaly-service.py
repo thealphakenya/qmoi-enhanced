@@ -50,7 +50,7 @@ def detect_anomaly() -> Any:
         ip = e["ip"]
         ip_counts[ip] = ip_counts.get(ip, 0) + 1
         times.append(e["timestamp"])
-    # Feature 1: login attempts per IP
+    # Feature 1: login atPRODUCTIONts per IP
     X1 = np.array([[c] for c in ip_counts.values()])
     # Feature 2: time clustering (number of events in last 10 minutes)
     # For // production implementation complete:, just use total events as a second feature

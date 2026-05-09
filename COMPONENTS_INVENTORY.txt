@@ -1,8 +1,8 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:19:39.817237 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:18:59.859244 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:05.299353 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.339835 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:03.198993 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:19:39.817237 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:18:59.859244 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:07:05.299353 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:07.339835 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:03.198993 -->
 qmoi-enhanced/components/EnhancedRevenuePanel.tsx
 qmoi-enhanced/components/FinancialManager.tsx
 qmoi-enhanced/components/GlobalCall.tsx
@@ -11,7 +11,7 @@ qmoi-enhanced/components/WifiPanel.tsx
 qmoi-enhanced/components/QmoiDialer.tsx
 qmoi-enhanced/components/SettingsPanel.tsx
 qmoi-enhanced/components/QmoiAutoDistribution.tsx
-qmoi-enhanced/components/QMOIOwnDevice.tsx
+qmoi-enhanced/components/QMOIOwnPRODUCTIONice.tsx
 qmoi-enhanced/components/QMOIAutoFixDashboard.tsx
 qmoi-enhanced/components/theme-provider.tsx
 qmoi-enhanced/components/SystemHealthDashboard.tsx
@@ -20,8 +20,8 @@ qmoi-enhanced/components/DownloadAppButton.tsx
 qmoi-enhanced/components/q-city/QVillage.tsx
 qmoi-enhanced/components/q-city/EmploymentDashboard.tsx
 qmoi-enhanced/components/q-city/Onboarding.tsx
-qmoi-enhanced/components/q-city/QCityDevicePanel.tsx
-qmoi-enhanced/components/q-city/QMOIOwnDeviceLogs.tsx
+qmoi-enhanced/components/q-city/QCityPRODUCTIONicePanel.tsx
+qmoi-enhanced/components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx
 qmoi-enhanced/components/q-city/QMOIBiometricManager.tsx
 qmoi-enhanced/components/q-city/QMOIRevenueDashboard.tsx
 qmoi-enhanced/components/q-city/QCityDashboard.tsx
@@ -40,7 +40,7 @@ qmoi-enhanced/components/PriceProductVerifier.tsx
 qmoi-enhanced/components/AIContext.tsx
 qmoi-enhanced/components/QmoiKeyboard.tsx
 qmoi-enhanced/components/TeamRoleManager.tsx
-qmoi-enhanced/components/DeviceSettingsPanel.tsx
+qmoi-enhanced/components/PRODUCTIONiceSettingsPanel.tsx
 qmoi-enhanced/components/QmoiMemoryPanel.tsx
 qmoi-enhanced/components/ui/pagination.tsx
 qmoi-enhanced/components/ui/popover.tsx
@@ -129,14 +129,14 @@ qmoi-enhanced/components/real_time_status_dashboard_with_universal_language_supp
 qmoi-enhanced/components/AppManager.tsx
 qmoi-enhanced/components/BluetoothManager.tsx
 qmoi-enhanced/components/CashonTradingPanel.tsx
-qmoi-enhanced/components/DeviceMap.tsx
+qmoi-enhanced/components/PRODUCTIONiceMap.tsx
 qmoi-enhanced/components/üõ°ô∏è_automated_build,_install,_and_error_fix_strategies.tsx
 qmoi-enhanced/components/EnhancedPreviewWindow.tsx
 qmoi-enhanced/components/DeploymentStatusDashboard.tsx
 qmoi-enhanced/components/GlobalFileTransfer.tsx
-qmoi-enhanced/components/device/AzureCredentialsModal.tsx
-qmoi-enhanced/components/device/AWSCredentialsModal.tsx
-qmoi-enhanced/components/device/GCPCredentialsModal.tsx
+qmoi-enhanced/components/PRODUCTIONice/AzureCredentialsModal.tsx
+qmoi-enhanced/components/PRODUCTIONice/AWSCredentialsModal.tsx
+qmoi-enhanced/components/PRODUCTIONice/GCPCredentialsModal.tsx
 qmoi-enhanced/components/MasterContext.tsx
 qmoi-enhanced/components/predeploy/OrchestratorStatusPanel.tsx
 qmoi-enhanced/components/QmoiRevenueDashboard.tsx

@@ -15,10 +15,10 @@ TARGET_EXTENSIONS = {'.md', '.py', '.ts', '.tsx', '.js', '.json', '.sh', '.yaml'
 HEALTH_KEYWORDS = [
     'health', 'status', 'monitor', 'check', 'uptime', 'heartbeat', 'alert', 'recovery',
     'diagnostic', 'diagnostics', 'healthcheck', 'health-check', 'health endpoint', 'health status', 'system health',
-    'domain health', 'device health', 'production health', 'autohealth', 'health monitor'
+    'domain health', 'PRODUCTIONice health', 'production health', 'autohealth', 'health monitor'
 ]
 
-COMMAND_KEYWORDS = ['healthcheck', 'health-check', 'prod-healthcheck', 'dev-healthcheck', 'health_monitor', 'health-monitor', 'healthcheck.sh', 'health-check.sh']
+COMMAND_KEYWORDS = ['healthcheck', 'health-check', 'prod-healthcheck', 'PRODUCTION-healthcheck', 'health_monitor', 'health-monitor', 'healthcheck.sh', 'health-check.sh']
 
 
 def is_ignored(path: Path) -> bool:
@@ -111,7 +111,7 @@ def extract_health_commands(found):
             commands.add(f'python3 {name}')
         elif item['path'].suffix == '.js':
             commands.add(f'node {name}')
-        elif 'health-check' in name or 'healthcheck' in name or 'prod-healthcheck' in name or 'dev-healthcheck' in name:
+        elif 'health-check' in name or 'healthcheck' in name or 'prod-healthcheck' in name or 'PRODUCTION-healthcheck' in name:
             commands.add(f'bash {name}')
 
     return sorted(commands)

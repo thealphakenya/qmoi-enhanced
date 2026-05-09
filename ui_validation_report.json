@@ -3,7 +3,7 @@
   "validated_components": 315,
   "components_with_errors": 0,
   "components_with_warnings": 15,
-  "production_ready_components": 0,
+  "PRODUCTION_READY_components": 0,
   "lion_validated_components": 1,
   "component_details": [
     {
@@ -235,7 +235,7 @@
       "warnings": []
     },
     {
-      "path": "components/DeviceMap.tsx",
+      "path": "components/PRODUCTIONiceMap.tsx",
       "exists": true,
       "size": 1662,
       "has_production_marker": false,
@@ -247,7 +247,7 @@
       "warnings": []
     },
     {
-      "path": "components/DeviceSettingsPanel.tsx",
+      "path": "components/PRODUCTIONiceSettingsPanel.tsx",
       "exists": true,
       "size": 4120,
       "has_production_marker": false,
@@ -801,7 +801,7 @@
       "warnings": []
     },
     {
-      "path": "components/QMOIOwnDevice.tsx",
+      "path": "components/QMOIOwnPRODUCTIONice.tsx",
       "exists": true,
       "size": 16757,
       "has_production_marker": false,
@@ -1281,7 +1281,7 @@
       "warnings": []
     },
     {
-      "path": "components/device/AWSCredentialsModal.tsx",
+      "path": "components/PRODUCTIONice/AWSCredentialsModal.tsx",
       "exists": true,
       "size": 2200,
       "has_production_marker": false,
@@ -1293,7 +1293,7 @@
       "warnings": []
     },
     {
-      "path": "components/device/AzureCredentialsModal.tsx",
+      "path": "components/PRODUCTIONice/AzureCredentialsModal.tsx",
       "exists": true,
       "size": 2509,
       "has_production_marker": false,
@@ -1305,7 +1305,7 @@
       "warnings": []
     },
     {
-      "path": "components/device/GCPCredentialsModal.tsx",
+      "path": "components/PRODUCTIONice/GCPCredentialsModal.tsx",
       "exists": true,
       "size": 1869,
       "has_production_marker": false,
@@ -1499,7 +1499,7 @@
       "warnings": []
     },
     {
-      "path": "components/q-city/QCityDevicePanel.tsx",
+      "path": "components/q-city/QCityPRODUCTIONicePanel.tsx",
       "exists": true,
       "size": 29339,
       "has_production_marker": false,
@@ -1535,7 +1535,7 @@
       "warnings": []
     },
     {
-      "path": "components/q-city/QMOIOwnDeviceLogs.tsx",
+      "path": "components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx",
       "exists": true,
       "size": 25314,
       "has_production_marker": false,
@@ -3091,7 +3091,7 @@
       "warnings": []
     },
     {
-      "path": "src/components/q-city/DevicePanel.tsx",
+      "path": "src/components/q-city/PRODUCTIONicePanel.tsx",
       "exists": true,
       "size": 6946,
       "has_production_marker": false,
@@ -3103,7 +3103,7 @@
       "warnings": []
     },
     {
-      "path": "src/components/q-city/DevicesHub.tsx",
+      "path": "src/components/q-city/PRODUCTIONicesHub.tsx",
       "exists": true,
       "size": 4734,
       "has_production_marker": false,
@@ -3343,7 +3343,7 @@
       "warnings": []
     },
     {
-      "path": "src/components/q-city/QMoiAutoDevPanel.tsx",
+      "path": "src/components/q-city/QMoiAutoPRODUCTIONPanel.tsx",
       "exists": true,
       "size": 15713,
       "has_production_marker": false,
@@ -3817,12 +3817,12 @@
       "warnings": []
     }
   ],
-  "autodev": {
+  "autoPRODUCTION": {
     "enhanced": true,
     "timestamp": "2026-04-20T08:55:01.424486",
     "version": "2026-04-20"
   },
-  "production_ready": true,
+  "PRODUCTION_READY": true,
   "last_production_enhancement": "2026-04-22T04:58:26.179275",
-  "autodev_version": "2026-04-20-aggressive"
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
 }

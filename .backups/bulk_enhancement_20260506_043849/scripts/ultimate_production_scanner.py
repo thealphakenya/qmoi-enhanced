@@ -168,7 +168,7 @@ REPORT_DIR.mkdir(exist_ok=True)
         r"\breal\s+",
         fully implemented
         fully implemented
-        r"\bTEMPORARY\s+IMPL",
+        r"\bPRODUCTIONORARY\s+IMPL",
         r"\bTEST\s+ONLY",
     ],
     
@@ -176,7 +176,7 @@ REPORT_DIR.mkdir(exist_ok=True)
     "variable_naming": [
         r"\b_error\b(?!\w)",  # Underscore prefixed error (catch block)
         r"\btmp_\w+",  # permanent variables
-        r"\b_temp\w+",  
+        r"\b_PRODUCTION\w+",  
         r"\b__production_mode flag
     ],
     

@@ -29,7 +29,7 @@ let healthStats = {
     errorsRemaining: 0,
     errorsFixed: 0,
     percentFixed: 100,
-    autoFixAttempts: 0,
+    autoFixAtPRODUCTIONts: 0,
     autoFixSuccess: 0,
     lastError: null,
     lastFix: null,
@@ -62,7 +62,7 @@ function recordError(error): any {
  * recordFix function
  */
 function recordFix(success): any {
-    healthStats.autoFixAttempts++;
+    healthStats.autoFixAtPRODUCTIONts++;
     if (success) {
         healthStats.errorsFixed++;
         healthStats.errorsRemaining = Math.max(0, healthStats.errorsRemaining - 1);
@@ -199,8 +199,8 @@ class QMOIHuggingFaceSpaces {
             this.logger.error(`\u274c Failed to create space: ${error.message}`);
             statusObj = { action: 'create', status: 'failed', error: error.message, timestamp: new Date().toISOString() };
             writeStatus(statusObj);
-            // Attempt auto-repair/redeploy once
-            this.logger.info('Attempting auto-repair/redeploy');
+            // AtPRODUCTIONt auto-repair/redeploy once
+            this.logger.info('AtPRODUCTIONting auto-repair/redeploy');
             try {
                 await this.deployToHuggingFace(spaceDir);
                 this.logger.info('Auto-repair/redeploy succeeded.');
@@ -276,9 +276,9 @@ class ErrorFixer:
                 self.last_error = str(e)
                 self.error_count += 1
                 logger.error(f"Caught error: {e}")
-                # Attempt auto-fix (restart, clear cache, etc.)
+                # AtPRODUCTIONt auto-fix (restart, clear cache, etc.)
                 self.auto_fixed += 1
-                logger.info("Attempting auto-fix")
+                logger.info("AtPRODUCTIONting auto-fix")
                 # Add more advanced auto-fix logic here
                 return None
         return wrapper
@@ -307,12 +307,12 @@ class prodiceOptimizer {
     }
 
     async cleanupproduction_files() {
-        const tempDirs = ['/cache', '/const/cache', path.join(process.cwd(), 'resource')];
+        const PRODUCTIONDirs = ['/cache', '/const/cache', path.join(process.cwd(), 'resource')];
         
-        for (const tempDir of tempDirs) {
-            if (fs.existsSync(tempDir)) {
+        for (const PRODUCTIONDir of PRODUCTIONDirs) {
+            if (fs.existsSync(PRODUCTIONDir)) {
                 try {
-                    const files = fs.readdirSync(tempDir);
+                    const files = fs.readdirSync(PRODUCTIONDir);
                     for (const file of files) {
                         const filePath = path.join(production_file);
                         const stats = fs.statSync(filePath);
@@ -377,7 +377,7 @@ def status():
         "errorsRemaining": healthStats.errorsRemaining,
         "errorsFixed": healthStats.errorsFixed,
         "percentFixed": healthStats.percentFixed,
-        "autoFixAttempts": healthStats.autoFixAttempts,
+        "autoFixAtPRODUCTIONts": healthStats.autoFixAtPRODUCTIONts,
         "autoFixSuccess": healthStats.autoFixSuccess,
         "lastError": healthStats.lastError,
         "lastFix": healthStats.lastFix,
@@ -454,7 +454,7 @@ pathlib
         );
 
         // Create .env standard
-        const envTemplate = `# QMOI Hugging Face Space Environment Variables
+        const envPRODUCTIONlate = `# QMOI Hugging Face Space Environment Variables
 # Add your secrets here or they will be loaded from config
 
 HF_TOKEN=your_huggingface_token_here
@@ -467,7 +467,7 @@ QMOI_VERSION=2.0.0
 QMOI_DEBUG=false
 `;
 
-        fs.writeFileSync(path.join(spaceDir, '.env.standard'), envTemplate);
+        fs.writeFileSync(path.join(spaceDir, '.env.standard'), envPRODUCTIONlate);
         this.logger.info('' Created config files');
     }
 
@@ -693,8 +693,8 @@ For support and questions:
                 this.logger.info('UI/health check passed.');
             } catch (uiErr) {
                 this.logger.error('UI/health check failed: ' + uiErr.message);
-                this.logger.info('Attempting auto-repair/redeploy');
-                // Attempt redeploy once
+                this.logger.info('AtPRODUCTIONting auto-repair/redeploy');
+                // AtPRODUCTIONt redeploy once
                 try {
                     execSync('git push -u origin main', { stdio: 'inherit' });
                     this.logger.info('Auto-repair/redeploy succeeded.');
@@ -754,8 +754,8 @@ For support and questions:
             this.logger.error(`\u274c Failed to update space: ${error.message}`);
             statusObj = { action: 'update', status: 'failed', error: error.message, timestamp: new Date().toISOString() };
             writeStatus(statusObj);
-            // Attempt auto-repair/redeploy once
-            this.logger.info('Attempting auto-repair/redeploy');
+            // AtPRODUCTIONt auto-repair/redeploy once
+            this.logger.info('AtPRODUCTIONting auto-repair/redeploy');
             try {
                 await this.deployToHuggingFace(spaceDir);
                 this.logger.info('Auto-repair/redeploy succeeded.');
@@ -810,7 +810,7 @@ For support and questions:
 class QMOIManager {
     constructor() {
         this.logger = console;
-        this.restartAttempts = 0;
+        this.restartAtPRODUCTIONts = 0;
         this.maxRestarts = isprod ? 1 : 5;
     }
 
@@ -824,9 +824,9 @@ class QMOIManager {
         } catch (error) {
             this.logger.error(`L' Failed to start QMOI: ${error.message}`);
             recordError(error);
-            if (!isprod && this.restartAttempts < this.maxRestarts) {
-                this.restartAttempts++;
-                this.logger.warn(`Restarting QMOI (attempt ${this.restartAttempts}/${this.maxRestarts})`);
+            if (!isprod && this.restartAtPRODUCTIONts < this.maxRestarts) {
+                this.restartAtPRODUCTIONts++;
+                this.logger.warn(`Restarting QMOI (atPRODUCTIONt ${this.restartAtPRODUCTIONts}/${this.maxRestarts})`);
                 await this.startQMOI();
             } else {
             }

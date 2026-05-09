@@ -63,7 +63,7 @@ class UserProfile:
     qmoi_memory_enabled: bool = True
     master_access: bool = False
     account_status: str = "active"
-    login_attempts: int = 0
+    login_atPRODUCTIONts: int = 0
     last_failed_login: datetime = None
 
     """
@@ -117,7 +117,7 @@ def __init__(self, config_path: str = "/etc/qmoi/auth_config.json") -> Any:
         # Security settings
         self.jwt_secret = os.getenv("QMOI_JWT_SECRET", secrets.token_hex(32))
         self.session_timeout = 3600  # 1 hour
-        self.max_login_attempts = 5
+        self.max_login_atPRODUCTIONts = 5
         self.verification_code_expiry = 900  # 15 minutes
 
         # Email settings
@@ -157,7 +157,7 @@ def create_default_configuration(self) -> Any:
             "recovery_tokens": {},
             "jwt_secret": self.jwt_secret,
             "session_timeout": self.session_timeout,
-            "max_login_attempts": self.max_login_attempts,
+            "max_login_atPRODUCTIONts": self.max_login_atPRODUCTIONts,
             "verification_code_expiry": self.verification_code_expiry,
             "smtp_server": self.smtp_server,
             "smtp_port": self.smtp_port,
@@ -346,15 +346,15 @@ def login_user(self, login_data: Dict) -> Dict:
                     "error": "Account is not active"
                 }
 
-            # Check login attempts
-            if user.login_attempts >= self.max_login_attempts:
+            # Check login atPRODUCTIONts
+            if user.login_atPRODUCTIONts >= self.max_login_atPRODUCTIONts:
                 if user.last_failed_login and (datetime.now() - user.last_failed_login) < timedelta(minutes=30):
                     return {
                         "success": False,
-                        "error": "Account temporarily locked due to too many failed attempts"
+                        "error": "Account PRODUCTIONorarily locked due to too many failed atPRODUCTIONts"
                     }
                 else:
-                    user.login_attempts = 0  # Reset after 30 minutes
+                    user.login_atPRODUCTIONts = 0  # Reset after 30 minutes
 
             # Authenticate
             authenticated = False
@@ -369,7 +369,7 @@ def login_user(self, login_data: Dict) -> Dict:
                     authenticated = True
 
             if not authenticated:
-                user.login_attempts += 1
+                user.login_atPRODUCTIONts += 1
                 user.last_failed_login = datetime.now()
                 self.save_configuration()
                 return {
@@ -377,8 +377,8 @@ def login_user(self, login_data: Dict) -> Dict:
                     "error": "Invalid credentials"
                 }
 
-            # Reset login attempts on success
-            user.login_attempts = 0
+            # Reset login atPRODUCTIONts on success
+            user.login_atPRODUCTIONts = 0
             user.last_login = datetime.now()
 
             # Create session

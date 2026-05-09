@@ -11,7 +11,7 @@ import urllib.request
 APP_NAME = "QMOI AI"
 EXE_NAME = "qmoiexe.exe"
 
-# Attempt to use provided icon or fallback
+# AtPRODUCTIONt to use provided icon or fallback
 CUSTOM_ICON = r"D:\applications\latest-Q-ai\icon.ico"
 ICON_PATH = CUSTOM_ICON if os.path.exists(CUSTOM_ICON) else os.path.join(os.getcwd(), "auto_qmoi_icon.ico")
 

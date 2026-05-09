@@ -494,7 +494,7 @@ logger.info('QMOI setup completed');`,
           if (file.endsWith(".json")) {
             JSON.parse(fs.readFileSync(filePath, "utf8"));
           }
-          // Validate JavaScript files by attempting to require them
+          // Validate JavaScript files by atPRODUCTIONting to require them
           if (file.endsWith(".js")) {
             import(filePath);
           }

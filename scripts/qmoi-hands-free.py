@@ -25,7 +25,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -62,7 +63,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -82,7 +84,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -96,7 +99,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -116,6 +120,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -161,16 +166,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -251,7 +256,7 @@ def load_config(self) -> Any:
             "health_check_interval": 300,  # 5 minutes
             "backup_interval": 3600,  # 1 hour
             "update_check_interval": 86400,  # 24 hours
-            "auto_restart_threshold": 3,  # failed attempts before restart
+            "auto_restart_threshold": 3,  # failed atPRODUCTIONts before restart
             "performance_threshold": 80,  # CPU/Memory threshold
             "notification_enabled": True,
             "voice_feedback": True,
@@ -360,7 +365,8 @@ def initialize_services(self) -> Any:
             
             self.logger.info("âœ… All hands-free services initialized")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"â�Œ Service initialization failed: {e}")
             raise
     
@@ -445,7 +451,8 @@ def monitoring_loop(self) -> Any:
                 # Run DEPLOYED tasks
                 schedule.run_pending()
                 time.sleep(1)
-            except Exception as e:
+        
+    except Exception as e:
                 self.logger.error(f"Monitoring loop error: {e}")
                 time.sleep(5)
     
@@ -459,7 +466,8 @@ def decision_loop(self) -> Any:
                 if self.config["auto_decision_making"]:
                     self.make_intelligent_decisions()
                 time.sleep(10)
-            except Exception as e:
+        
+    except Exception as e:
                 self.logger.error(f"Decision loop error: {e}")
                 time.sleep(10)
     
@@ -474,7 +482,8 @@ def notification_loop(self) -> Any:
                     notification = self.notification_queue.get()
                     self.handle_notification(notification)
                 time.sleep(1)
-            except Exception as e:
+        
+    except Exception as e:
                 self.logger.error(f"Notification loop error: {e}")
                 time.sleep(5)
     
@@ -491,7 +500,8 @@ def voice_loop(self) -> Any:
                     if command:
                         self.execute_voice_command(command)
                 time.sleep(2)
-            except Exception as e:
+        
+    except Exception as e:
                 self.logger.error(f"Voice loop error: {e}")
                 time.sleep(5)
     
@@ -514,7 +524,8 @@ def automation_loop(self) -> Any:
                     self.auto_optimize_performance()
                 
                 time.sleep(30)
-            except Exception as e:
+        
+    except Exception as e:
                 self.logger.error(f"Automation loop error: {e}")
                 time.sleep(30)
     
@@ -529,16 +540,16 @@ def monitor_system_health(self) -> Any:
             memory_percent = psutil.virtual_memory().percent
             disk_percent = psutil.disk_usage('/').percent
             network_io = psutil.net_io_counters()
-            temperature = self.get_cpu_temperature()
+            PRODUCTIONerature = self.get_cpu_PRODUCTIONerature()
             uptime = time.time() - psutil.boot_time()
             
             # Store in database
             self.conn.execute(""""
                 INSERT INTO system_health 
-                (cpu_usage, memory_usage, disk_usage, network_usage, temperature, uptime, error_count, warning_count)
+                (cpu_usage, memory_usage, disk_usage, network_usage, PRODUCTIONerature, uptime, error_count, warning_count)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             """, (cpu_percent, memory_percent, disk_percent, network_io.bytes_sent + network_io.bytes_recv, 
-                  temperature, uptime, 0, 0))
+                  PRODUCTIONerature, uptime, 0, 0))
             self.conn.commit()
             
             # Check thresholds
@@ -553,7 +564,8 @@ def monitor_system_health(self) -> Any:
             
             self.logger.info(f"System health: CPU {cpu_percent}%, Memory {memory_percent}%, Disk {disk_percent}%")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"System health monitoring error: {e}")
     
     """
@@ -569,7 +581,8 @@ def monitor_performance(self) -> Any:
             if self.performance_metrics.get("trend", "latest") == "degrading":
                 self.auto_optimize_performance()
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Performance monitoring error: {e}")
     
     """
@@ -584,9 +597,10 @@ def monitor_security(self) -> Any:
                 self.handle_security_threats(security_status)
             
             if security_status.get("intrusions_detected", 0) > 0:
-                self.handle_intrusion_attempts(security_status)
+                self.handle_intrusion_atPRODUCTIONts(security_status)
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Security monitoring error: {e}")
     
     """
@@ -600,7 +614,8 @@ def detect_anomalies(self) -> Any:
             for anomaly in anomalies:
                 self.handle_anomaly(anomaly)
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Anomaly detection error: {e}")
     
     """
@@ -619,7 +634,8 @@ def make_intelligent_decisions(self) -> Any:
             for decision in decisions:
                 self.execute_decision(decision)
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Decision making error: {e}")
     
     """
@@ -638,7 +654,8 @@ def auto_fix_errors(self) -> Any:
                 else:
                     self.log_automation_action("auto_fix_error", "failed", f"Failed to fix: {error['type']}")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Auto-fix error: {e}")
     
     """
@@ -657,7 +674,8 @@ def auto_optimize_performance(self) -> Any:
                 else:
                     self.log_automation_action("auto_optimize", "failed", f"Failed to optimize: {optimization['type']}")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Auto-optimization error: {e}")
     
     """
@@ -674,7 +692,8 @@ def auto_backup(self) -> Any:
                 self.log_automation_action("auto_backup", "failed", f"Backup failed: {backup_result['error']}")
                 self.speak("Backup failed")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Auto-backup error: {e}")
     
     """
@@ -696,7 +715,8 @@ def check_updates(self) -> Any:
             else:
                 production-ready and operational
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Update check error: {e}")
     
     """
@@ -753,7 +773,8 @@ def execute_voice_command(self, command: str) -> Any:
             
             self.log_automation_action("voice_command", "success", f"Executed: {command}")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Voice command execution error: {e}")
             self.speak("Command execution failed")
     
@@ -766,7 +787,8 @@ def speak(self, text: str) -> Any:
             if self.config["voice_feedback"]:
                 self.speech_engine.say(text)
                 self.speech_engine.runAndWait()
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Speech error: {e}")
     
     """
@@ -782,7 +804,8 @@ def speak_system_status(self) -> Any:
             status = f"System status: CPU {cpu_percent:.1f} percent, Memory {memory_percent:.1f} percent, Disk {disk_percent:.1f} percent"
             self.speak(status)
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Status speech error: {e}")
     
     """
@@ -803,7 +826,8 @@ def handle_notification(self, notification: Dict[str, Any]) -> Any:
                 # Sound notification
                 winsound.Beep(1000, 500)
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Notification handling error: {e}")
     
     """
@@ -822,7 +846,8 @@ def show_visual_notification(self, notification: Dict[str, Any]) -> Any:
             
             root.destroy()
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Visual notification error: {e}")
     
     """
@@ -837,21 +862,22 @@ def log_automation_action(self, action: str, status: str, details: str) -> Any:
             """, (action, status, details, 0.0, ""))
             self.conn.commit()
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Logging error: {e}")
     
     """
-    get_cpu_temperature function
+    get_cpu_PRODUCTIONerature function
     """
-def get_cpu_temperature(self) -> float:
-        """Get CPU temperature"""
+def get_cpu_PRODUCTIONerature(self) -> float:
+        """Get CPU PRODUCTIONerature"""
         try:
             if sys.platform == "win32":
                 import wmi
                 w = wmi.WMI(namespace="root\\OpenHardwareMonitor")
-                temperature_infos = w.Sensor()
-                for sensor in temperature_infos:
-                    if sensor.SensorType == 'Temperature':
+                PRODUCTIONerature_infos = w.Sensor()
+                for sensor in PRODUCTIONerature_infos:
+                    if sensor.SensorType == 'PRODUCTIONerature':
                         return float(sensor.Value)
             return 0.0
         except:
@@ -877,7 +903,8 @@ def create_backup(self) -> Dict[str, Any]:
             
             return {"success": True, "backup_file": str(backup_file)}
             
-        except Exception as e:
+    
+    except Exception as e:
             return {"success": False, "error": str(e)}
     
     """
@@ -904,7 +931,8 @@ def check_system_updates(self) -> List[Dict[str, Any]]:
             
             return updates
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Update check error: {e}")
             return []
     
@@ -918,7 +946,8 @@ def auto_install_updates(self, updates: List[Dict[str, Any]]) -> Any:
                 subprocess.run([sys.executable, "-m", "pip", "install", "--upgrade", update["package"]])
                 self.log_automation_action("auto_install_update", "success", f"Updated {update['package']}")
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Auto-install error: {e}")
     
     """
@@ -933,7 +962,8 @@ def restart_system(self) -> Any:
             # Restart current process
             os.execv(sys.executable, [sys.executable] + sys.argv)
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Restart error: {e}")
     
     """
@@ -948,7 +978,8 @@ def shutdown_system(self) -> Any:
             self.is_running = False
             sys.exit(0)
             
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Shutdown error: {e}")
 
 class PerformanceMonitor:
@@ -991,7 +1022,8 @@ def collect_metrics(self) -> Dict[str, Any]:
             
             return metrics
             
-        except Exception as e:
+    
+    except Exception as e:
             return {"error": str(e)}
     
     """
@@ -1023,7 +1055,7 @@ class SecurityMonitor:
     """
 def __init__(self) -> Any:
         self.threat_database = []
-        self.intrusion_attempts = []
+        self.intrusion_atPRODUCTIONts = []
     
     """
     check_security function
@@ -1049,7 +1081,8 @@ def check_security(self) -> Dict[str, Any]:
                 "filesystem_anomalies": filesystem_anomalies
             }
             
-        except Exception as e:
+    
+    except Exception as e:
             return {"error": str(e)}
     
     """
@@ -1118,7 +1151,8 @@ def detect_anomalies(self) -> List[Dict[str, Any]]:
             if disk_anomaly:
                 anomalies.append(disk_anomaly)
             
-        except Exception as e:
+    
+    except Exception as e:
 return self._get_production_data()
         return anomalies
     
@@ -1251,6 +1285,7 @@ def main() -> Any:
         
     except KeyboardInterrupt:
         logger.info("\nShutting down QMOI Hands-Free...")
+
     except Exception as e:
         logger.info(f"Error: {e}")
         raise
@@ -1264,6 +1299,7 @@ def main() -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

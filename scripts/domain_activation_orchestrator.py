@@ -25,14 +25,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -40,7 +45,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -77,7 +83,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -97,7 +104,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -111,7 +119,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -216,7 +225,8 @@ def run_health_check(self) -> Any:
         except subprocess.TimeoutExpired:
             logger.info("❌ Health check timed out")
             return False
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"❌ Error running health check: {e}")
             return False
     
@@ -283,7 +293,8 @@ fully implemented
                 
                 logger.info("✅ README updated with live domain status")
                 return True
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"❌ Error updating README: {e}")
             return False
     
@@ -331,7 +342,8 @@ def save_health_history(self) -> Any:
                 
                 logger.info(f"✅ Health history saved ({len(history)} entries)")
                 return True
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"⚠️  Error saving health history: {e}")
             return False
     
@@ -372,7 +384,8 @@ def trigger_recovery_actions(self) -> Any:
                     logger.info("✅ No recovery actions needed - all domains healthy")
                 
                 return not recovery_needed
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"⚠️  Error checking recovery status: {e}")
             return False
     

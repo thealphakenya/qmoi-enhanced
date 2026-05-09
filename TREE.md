@@ -50,7 +50,7 @@ The QMOI Enhanced repository is organized into distinct architectural zones supp
 /components/          — React components (201 files across 15 domains)
 /src/components/      — Source-level UI integration (123 files)
 /components/ui/       — Shared UI primitives (54 shadcn/ui components)
-/components/q-city/    — QCity product-specific dashboard and device management components (14 files)
+/components/q-city/    — QCity product-specific dashboard and PRODUCTIONice management components (14 files)
 /dashboard/           — Lightweight dashboard application package
 /pwa_apps/qmoi-ai/     — QMOI AI static PWA assets and service worker
 /pwa_apps/qmoi-space/  — QMOI Space static PWA assets and installable shell
@@ -74,7 +74,7 @@ The QMOI Enhanced repository is organized into distinct architectural zones supp
 /hooks/useQAlpha.ts    — Q Alpha aggregator integration hook
 /api/qcity.ts          — QCity API surface
 /api/qalpha.ts         — Q Alpha API surface for unified metrics and orchestration
-/scripts/qcity-ui-server.js — QCity development UI server helper
+/scripts/qcity-ui-server.js — QCity PRODUCTIONelopment UI server helper
 /scripts/qmoi-ai-server.js  — QMOI AI local server helper
 /scripts/qalpha-server.js  — Q Alpha orchestration server helper
 ```
@@ -91,14 +91,14 @@ The QMOI Enhanced repository is organized into distinct architectural zones supp
 ### Automation & Scripting
 ```
 /scripts/             — Automation and utility scripts (build, deploy, audit)
-/autodev/             — DevOps automation framework
-/tools/               — Development and utility tools
+/autoPRODUCTION/             — PRODUCTIONOps automation framework
+/tools/               — PRODUCTIONelopment and utility tools
 ```
 
 ### Configuration & Infrastructure
 ```
 /.github/             — GitHub Actions workflows and configuration
-/.devcontainer/       — VS Code development container setup
+/.PRODUCTIONcontainer/       — VS Code PRODUCTIONelopment container setup
 /config/              — Application configuration files
 ```
 
@@ -142,7 +142,7 @@ Main React component library organized by domain:
 - Core system & monitoring
 - Communication & collaboration
 - Financial & trading
-- Device & IoT management
+- PRODUCTIONice & IoT management
 - Authentication & security
 - File & media management
 - UI & theming
@@ -221,7 +221,7 @@ Library-level services:
 - **Script automation handles 5000+ files** with parallel processing
 - **Documentation system auto-indexes** all markdown files
 
-## 🛠️ Developer Guidance
+## 🛠️ PRODUCTIONeloper Guidance
 
 1. **Adding new components**: Place in `/components/` and register in `COMPONENTS.md`
 2. **Adding services**: Use `/services/adapters/` pattern for external integrations

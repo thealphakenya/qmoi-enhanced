@@ -32,7 +32,7 @@
 - useDatasetQuery
 - useDatasetRecommendations
 - useDatasetSelect
-- useDeviceHealth
+- usePRODUCTIONiceHealth
 - useDown
 - useEffect
 - useEmblaCarousel
@@ -99,7 +99,7 @@
 - useSystemMetrics
 - useTTCVoice
 - useTaskQueue
-- useTemplate
+- usePRODUCTIONlate
 - useTheme
 - useTimezone
 - useToast

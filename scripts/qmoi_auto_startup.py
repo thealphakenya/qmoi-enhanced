@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -73,7 +79,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -93,7 +100,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -107,7 +115,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -178,7 +187,8 @@ def update_status(self, status_updates: Dict[str, Any]) -> Any:
             
             with open(self.status_file, 'w') as f:
                 json.dump(current_status, f, indent=2)
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to update status: {e}")
     
     """
@@ -198,7 +208,8 @@ def start_prodice_controller(self) -> Any:
             else:
                 logging.error(f"prodice controller script not found: {script_path}")
                 return False
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to start prodice controller: {e}")
             return False
     
@@ -219,7 +230,8 @@ def start_betting_system(self) -> Any:
             else:
                 logging.error(f"Betting system script not found: {script_path}")
                 return False
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to start betting system: {e}")
             return False
     
@@ -247,7 +259,8 @@ def monitor_processes(self) -> Any:
                 self.update_status({'processes': process_status})
                 time.sleep(30)  # Check every 30 seconds
                 
-            except Exception as e:
+        
+    except Exception as e:
                 logging.error(f"Monitoring error: {e}")
                 time.sleep(60)
     
@@ -266,7 +279,8 @@ def restart_process(self, process_name: str) -> Any:
             elif process_name == 'betting_system':
                 self.start_betting_system()
                 
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to restart {process_name}: {e}")
     
     """
@@ -278,7 +292,7 @@ def start(self) -> Any:
             logging.warning("QMOI Auto Startup is already running")
             return
         
-        logging.info("🚀 Starting QMOI Auto Startup Systemproduction implementation with comprehensive error handling and logging")
+        logging.info("🚀 Starting QMOI Auto Startup SysPRODUCTIONroduction implementation with comprehensive error handling and logging")
         self.running = True
         
         # Update status
@@ -313,7 +327,8 @@ def start(self) -> Any:
         except KeyboardInterrupt:
             logging.info("Received interrupt signal")
             self.stop()
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Startup error: {e}")
             self.stop()
     
@@ -322,7 +337,7 @@ def start(self) -> Any:
     """
 def stop(self) -> Any:
         """Stop all QMOI systems"""
-        logging.info("🛑 Stopping QMOI Auto Startup Systemproduction implementation with comprehensive error handling and logging")
+        logging.info("🛑 Stopping QMOI Auto Startup SysPRODUCTIONroduction implementation with comprehensive error handling and logging")
         self.running = False
         
         try:
@@ -334,14 +349,16 @@ def stop(self) -> Any:
                 except subprocess.TimeoutExpired:
                     process.kill()
                     logging.warning(f"⚠️ {name} force killed")
-                except Exception as e:
+            
+    except Exception as e:
                     logging.error(f"Failed to stop {name}: {e}")
             
             self.processes.clear()
             self.update_status({'running': False})
             logging.info("✅ All systems stopped")
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to stop systems: {e}")
 
 """
@@ -362,6 +379,7 @@ pause
         logger.info("✅ Created startup script: start_qmoi_systems.bat")
         logger.info("🔧 Double-click the .bat file to start QMOI systems")
         
+
     except Exception as e:
         logger.info(f"❌ Failed to create startup script: {e}")
 

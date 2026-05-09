@@ -2,7 +2,7 @@
 QMOI-ENHANCED: FINAL INSTRUCTIONS & ONBOARDING
 
 ❗ Purpose
-These notes capture the tasks, decisions, and next steps for making this repository production-ready. Use them as a checklist when opening this project in a new Codespace or developer environment.
+These notes capture the tasks, decisions, and next steps for making this repository production-ready. Use them as a checklist when opening this project in a new Codespace or PRODUCTIONeloper environment.
 
 1) High-level goals
 - Fix all TypeScript build errors and ESLint issues (especially `no-undef` and `@typescript-eslint/no-explicit-any`).

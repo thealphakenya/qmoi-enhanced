@@ -33,7 +33,7 @@ class Phase2Setup:
         
         if missing:
             print(f"  ⚠️  Missing variables: {', '.join(missing)}")
-            print("  💡 Copy from .env.production.template and set actual values")
+            print("  💡 Copy from .env.production.PRODUCTIONlate and set actual values")
             self.errors.append(f"Missing env vars: {missing}")
         else:
             print("  ✅ All environment variables set")
@@ -149,7 +149,8 @@ CREATE INDEX idx_audit_logs_created_at ON audit_logs(created_at DESC);
                 error = result.stderr.decode()
                 self.errors.append(f"DB connection failed: {error}")
                 print(f"  ❌ Connection failed: {error[:100]}")
-        except Exception as e:
+    
+    except Exception as e:
             self.errors.append(str(e))
             print(f"  ❌ Error: {e}")
 
@@ -179,24 +180,25 @@ CREATE INDEX idx_audit_logs_created_at ON audit_logs(created_at DESC);
             else:
                 print("  ⚠️  Unable to verify CashOn API (may not be accessible in test environment)")
                 self.completed_steps.append("cashon_api_skipped")
-        except Exception as e:
+    
+    except Exception as e:
             print(f"  ⓘ CashOn API test skipped: {e}")
 
     def create_env_file(self):
-        """Create .env.production from template if not exists."""
+        """Create .env.production from PRODUCTIONlate if not exists."""
         print("\n📝 Phase 2D: Setting up Environment File...")
         
-        template = PROJECT_ROOT / ".env.production.template"
+        PRODUCTIONlate = PROJECT_ROOT / ".env.production.PRODUCTIONlate"
         target = PROJECT_ROOT / ".env.production"
         
         if target.exists():
             print("  ✅ .env.production already exists")
             self.completed_steps.append("env_file")
-        elif template.exists():
-            print("  ℹ️  Please copy .env.production.template to .env.production")
+        elif PRODUCTIONlate.exists():
+            print("  ℹ️  Please copy .env.production.PRODUCTIONlate to .env.production")
             print("     and fill production_IMPLEMENTED credentials")
         else:
-            print("  ❌ Template file not found")
+            print("  ❌ PRODUCTIONlate file not found")
 
     def run_phase_2(self):
         """Execute all Phase 2 setup steps."""
@@ -227,12 +229,129 @@ CREATE INDEX idx_audit_logs_created_at ON audit_logs(created_at DESC);
                 print("\n✅ Phase 2 Setup Complete!")
                 return True
                 
-        except Exception as e:
+    
+    except Exception as e:
             print(f"\n❌ Setup failed: {e}")
             return False
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     setup = Phase2Setup()
     success = setup.run_phase_2()
     sys.exit(0 if success else 1)

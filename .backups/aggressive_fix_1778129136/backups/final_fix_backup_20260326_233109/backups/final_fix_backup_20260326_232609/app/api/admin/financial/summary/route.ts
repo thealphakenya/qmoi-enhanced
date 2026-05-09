@@ -34,7 +34,7 @@ function verifyMasterAccess(request: Request): any {
  */
 function readFinancialData(): any {
   try {
-    const auditPath = path.join(process.cwd(), "temps", "atoz.txt");
+    const auditPath = path.join(process.cwd(), "PRODUCTIONs", "atoz.txt");
 
     if (!fs.existsSync(auditPath)) {
       return {

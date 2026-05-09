@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -111,7 +117,8 @@ def collect_metrics(self) -> Any:
             try:
                 data = json.loads(api_report_file.read_text())
                 self.metrics['of_api_endpoints_documented'] = float(data.get('endpoint_coverage', 0.0))
-            except Exception as e:
+        
+    except Exception as e:
                 logging.warning(f"Could not parse API report file: {e}")
 
         # Link/domain validator summary
@@ -120,7 +127,8 @@ def collect_metrics(self) -> Any:
             try:
                 data = json.loads(link_report_file.read_text())
                 self.metrics['of_links_and_domains_are_accessible'] = float(data.get('domain_availability', 0.0))
-            except Exception as e:
+        
+    except Exception as e:
                 logging.warning(f"Could not parse link report file: {e}")
 
         # Security/compliance summary
@@ -129,7 +137,8 @@ def collect_metrics(self) -> Any:
             try:
                 data = json.loads(sec_report_file.read_text())
                 self.metrics['of_security_compliance_passed'] = float(data.get('compliance_rate', 0.0))
-            except Exception as e:
+        
+    except Exception as e:
                 logging.warning(f"Could not parse security report file: {e}")
 
         # Markdown understanding summary
@@ -138,7 +147,8 @@ def collect_metrics(self) -> Any:
             try:
                 data = json.loads(md_report_file.read_text())
                 self.metrics['of_markdown_understanding'] = float(data.get('understanding_confidence', 0.0))
-            except Exception as e:
+        
+    except Exception as e:
                 logging.warning(f"Could not parse markdown understanding report file: {e}")
 
         # Reasoning logic summary
@@ -147,7 +157,8 @@ def collect_metrics(self) -> Any:
             try:
                 data = json.loads(reasoning_report_file.read_text())
                 self.metrics['of_reasoning_validation'] = float(data.get('reasoning_confidence', 0.0))
-            except Exception as e:
+        
+    except Exception as e:
                 logging.warning(f"Could not parse reasoning report file: {e}")
 
         # Balances summary
@@ -156,7 +167,8 @@ def collect_metrics(self) -> Any:
             try:
                 data = json.loads(balances_report_file.read_text())
                 self.metrics['of_balances_validated'] = float(data.get('validation_success', 0.0))
-            except Exception as e:
+        
+    except Exception as e:
                 logging.warning(f"Could not parse balances report file: {e}")
 
         # Compound confidence

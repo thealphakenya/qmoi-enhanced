@@ -616,7 +616,7 @@ def check_domain_dns(self, domain: str) -> Tuple[bool, Optional[str]]:
     auto_repair_dns_crisis function
     """
 def auto_repair_dns_crisis(self) -> Dict:
-        """Attempt to auto-repair DNS crises by updating local fallback mappings and reporting actionable items."""
+        """AtPRODUCTIONt to auto-repair DNS crises by updating local fallback mappings and reporting actionable items."""
         crisis_report = {
             'checked_domains': [],
             'resolved': [],

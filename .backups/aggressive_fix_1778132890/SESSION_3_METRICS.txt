@@ -41,7 +41,7 @@ Parallel Analysis Capability:
 
 Analysis Dimensions:
   - 5 primary metrics
-  - 7 AutoDev research topics
+  - 7 AutoPRODUCTION research topics
   - Total analysis points: 50+
 
 QMOI Replacement Improvements:

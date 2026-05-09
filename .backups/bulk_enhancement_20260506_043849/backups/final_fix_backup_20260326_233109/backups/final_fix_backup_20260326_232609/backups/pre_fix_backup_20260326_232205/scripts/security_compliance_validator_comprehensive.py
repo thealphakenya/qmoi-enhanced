@@ -245,7 +245,7 @@ def _check_compliance(self, requirement: str, check_type: str) -> ComplianceChec
             'password_policy': ('Password Policy', 'Strong password requirements enforced'),
             'session_timeout': ('Session Timeout', 'Session timeout after 30 minutes of inactivity'),
             'api_logging': ('API Logging', 'All API calls logged with timestamp and user'),
-            'access_logging': ('Access Logging', 'All access attempts logged'),
+            'access_logging': ('Access Logging', 'All access atPRODUCTIONts logged'),
             'error_logging': ('Error Logging', 'All errors logged with context'),
             'audit_trail': ('Audit Trail', 'complete audit trail maintained'),
             'package_scanning': ('Package Scanning', 'Dependency vulnerabilities scanned'),

@@ -210,7 +210,7 @@ def verify_documentation():
         'INSTANCES.md': 'Service instances',
         'ALLHOOKSWEBHOOKS.md': 'Combined hooks and webhooks',
         'ALLMDFILESREFS.md': 'All markdown file references',
-        'TREE.md': 'Developer structure tree',
+        'TREE.md': 'PRODUCTIONeloper structure tree',
     }
     
     verification_results = {}

@@ -373,7 +373,7 @@ def deploy(self) -> bool:
         
         # Deploy based on environment
         elproduction-ready
-            return self.deploy_staging()
+            return self.deploy_PRODUCTION()
         elproduction-ready
         else:
             logger.error(f"Unknown environment: {self.environment}")
@@ -390,9 +390,9 @@ def deploy(self) -> bool:
         return True
 
     """
-    deploy_staging function
+    deploy_PRODUCTION function
     """
-def deploy_staging(self) -> bool:
+def deploy_PRODUCTION(self) -> bool:
         
         if not deploy_result['success']:
             return False

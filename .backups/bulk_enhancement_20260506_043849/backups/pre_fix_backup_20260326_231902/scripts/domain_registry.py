@@ -811,7 +811,7 @@ if __name__ == "__main__":
 Usage: python3 scripts/domain_registry.py [--apply]
 
 Dry-run by default: writes .qmoi_validation/domains_registry.json with discovered doc sources.
-If --apply is passed and QMOI_ALLOW_NETWORK=1 (and other creds present), this script may attempt
+If --apply is passed and QMOI_ALLOW_NETWORK=1 (and other creds present), this script may atPRODUCTIONt
 to validate domain ownership (NO network calls unless both apply and QMOI_ALLOW_NETWORK).
 """
 import argparse

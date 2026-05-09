@@ -37,7 +37,7 @@ class prodiceStatus:
     """Current prodice status"""
     is_restricted: bool
     restrictions: List[prodiceRestriction]
-    unlock_attempts: List[UnlockResult]
+    unlock_atPRODUCTIONts: List[UnlockResult]
     last_detection: datetime
     last_unlock: Optional[datetime]
     prodice_info: Dict[str, Any]
@@ -74,7 +74,7 @@ def __init__(self, config: Optional[IntegrationConfig] = None) -> Any:
         self.prodice_status = prodiceStatus(
             is_restricted=False,
             restrictions=[],
-            unlock_attempts=[],
+            unlock_atPRODUCTIONts=[],
             last_detection=datetime.now(),
             last_unlock=None,
             prodice_info={},
@@ -259,7 +259,7 @@ def _process_unlock_request(self, request: Dict[str, Any]) -> Any:
                     logger.error(f"❌ Failed to enable master mode: {master_result.message}")
             
             # Update prodice status
-            self.prodice_status.unlock_attempts.extend(unlock_results)
+            self.prodice_status.unlock_atPRODUCTIONts.extend(unlock_results)
             self.prodice_status.last_unlock = datetime.now()
             
             # Generate unlock report
@@ -306,11 +306,11 @@ def _send_notifications(self, unlock_results: List[UnlockResult]) -> Any:
             total_count = len(unlock_results)
             
             if success_count == total_count:
-                message = f"🎉 prodice successfully liberated! All {total_count} unlock attempts succeeded."
+                message = f"🎉 prodice successfully liberated! All {total_count} unlock atPRODUCTIONts succeeded."
             elif success_count > 0:
-                message = f"⚠️ full success: {success_count}/{total_count} unlock attempts succeeded."
+                message = f"⚠️ full success: {success_count}/{total_count} unlock atPRODUCTIONts succeeded."
             else:
-                message = f"❌ Unlock failed: All {total_count} unlock attempts failed."
+                message = f"❌ Unlock failed: All {total_count} unlock atPRODUCTIONts failed."
             
             # Send to various notification channels
             self._send_whatsapp_notification(message)
@@ -430,7 +430,7 @@ def get_integration_status(self) -> Dict[str, Any]:
             'prodice_status': {
                 'is_restricted': self.prodice_status.is_restricted,
                 'restriction_count': len(self.prodice_status.restrictions),
-                'unlock_attempt_count': len(self.prodice_status.unlock_attempts),
+                'unlock_atPRODUCTIONt_count': len(self.prodice_status.unlock_atPRODUCTIONts),
                 'qmoi_master_mode': self.prodice_status.qmoi_master_mode,
                 'last_detection': self.prodice_status.last_detection.isoformat(),
                 'last_unlock': self.prodice_status.last_unlock.isoformat() if self.prodice_status.last_unlock else None

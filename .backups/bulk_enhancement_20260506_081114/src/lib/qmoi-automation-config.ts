@@ -7,7 +7,7 @@ export interface AutomationConfig {
   enabled: boolean;
   interval: number;
   maxConcurrency: number;
-  retryAttempts: number;
+  retryAtPRODUCTIONts: number;
 }
 
 export class QMOIAutomationConfig {
@@ -15,7 +15,7 @@ export class QMOIAutomationConfig {
     enabled: true,
     interval: 10000, // 10 seconds
     maxConcurrency: 5,
-    retryAttempts: 3,
+    retryAtPRODUCTIONts: 3,
   };
 
   getConfig(): AutomationConfig {

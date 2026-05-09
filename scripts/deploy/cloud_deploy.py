@@ -14,7 +14,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -34,7 +35,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -48,7 +50,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -233,7 +236,8 @@ def initialize_cloud_clients(self) -> None:
             if self.config["gcp"]["enabled"]:
                 self.gcp_client = google.cloud.resourcemanager.ProjectsClient()
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error initializing cloud clients: {e}")
     
     """
@@ -275,7 +279,8 @@ def deploy(self, target: str) -> bool:
             
             return success
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error during deployment: {e}")
             if self.current_deployment:
                 self.current_deployment["end_time"] = datetime.now().isoformat()
@@ -352,7 +357,8 @@ def _deploy_heroku(self) -> bool:
             self.logger.info(f"Deployed to Heroku app: {app.name}")
             return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error deploying to Heroku: {e}")
             return False
     
@@ -429,7 +435,8 @@ def _deploy_digitalocean(self) -> bool:
             self.logger.info(f"Deployed to DigitalOcean droplet: {ip_address}")
             return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error deploying to DigitalOcean: {e}")
             return False
     
@@ -506,7 +513,8 @@ def _deploy_aws(self) -> bool:
             self.logger.info(f"Deployed to AWS instance: {public_ip}")
             return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error deploying to AWS: {e}")
             return False
     
@@ -608,7 +616,8 @@ def _deploy_azure(self) -> bool:
             self.logger.info(f"Deployed to Azure VM: {public_ip}")
             return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error deploying to Azure: {e}")
             return False
     
@@ -692,7 +701,8 @@ def _deploy_gcp(self) -> bool:
             self.logger.info(f"Deployed to GCP instance: {public_ip}")
             return True
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error deploying to GCP: {e}")
             return False
     
@@ -715,7 +725,8 @@ def _deploy_vercel(self) -> bool:
             self.logger.error(f"Error in Vercel deployment: {e}")
             self.logger.error(e.stderr)
             return False
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"An unexpected error occurred during Vercel deployment: {e}")
             return False
     
@@ -736,7 +747,8 @@ def _copy_directory(self, sftp: paramiko.SFTPClient, src: str, dst: str) -> None
                 else:
                     sftp.put(src_path, dst_path)
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error copying directory: {e}")
     
     """
@@ -802,7 +814,8 @@ def _create_network_interface(self, resource_group) -> str:
             
             return nic.id
         
-        except Exception as e:
+    
+    except Exception as e:
             self.logger.error(f"Error creating network interface: {e}")
             return ""
     

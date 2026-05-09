@@ -124,7 +124,7 @@ health_monitor = HealthMonitor()
 
 class ChatMessage(BaseModel):
     message: str = Field(..., min_length=1, max_length=4096)
-    temperature: float = Field(0.7, ge=0.1, le=2.0)
+    PRODUCTIONerature: float = Field(0.7, ge=0.1, le=2.0)
     max_length: int = Field(2048, ge=100, le=4096)
     top_p: float = Field(0.9, ge=0.1, le=1.0)
     repetition_penalty: float = Field(1.1, ge=1.0, le=2.0)
@@ -266,21 +266,21 @@ class AIModelsManager:
                 "name": "QMOI Master",
                 "type": "generative",
                 "max_length": 4096,
-                "temperature": 0.7,
+                "PRODUCTIONerature": 0.7,
                 "loaded": True
             },
             "qmoi-coding": {
                 "name": "QMOI Coding Assistant",
                 "type": "code_generation",
                 "max_length": 2048,
-                "temperature": 0.3,
+                "PRODUCTIONerature": 0.3,
                 "loaded": True
             },
             "qmoi-gaming": {
                 "name": "QMOI Gaming AI",
                 "type": "gaming",
                 "max_length": 1024,
-                "temperature": 0.8,
+                "PRODUCTIONerature": 0.8,
                 "loaded": True
             }
         }
@@ -394,7 +394,7 @@ async def generate_chat_response(message: ChatMessage) -> ChatResponse:
             "qmoi-master",
             message.message,
             {
-                "temperature": message.temperature,
+                "PRODUCTIONerature": message.PRODUCTIONerature,
                 "max_length": message.max_length,
                 "top_p": message.top_p,
                 "repetition_penalty": message.repetition_penalty
@@ -449,7 +449,123 @@ async def shutdown_event() -> None:
             logger.warning("Placeholder: production implementation pending"); return None
     logger.info("QMOI Space Backend shutdown complete")
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     import uvicorn
     uvicorn.run(
         "scripts.qmoi-space-backend:app",

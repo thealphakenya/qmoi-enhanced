@@ -25,7 +25,7 @@ production_KEYWORDS = [
     # permanent/implementation keywords
     'COMPLETED', 'RESOLVED', 'OPTIMIZED', 'COMPLETE', 'STABLE', 'permanent', 'PENDING', 'available',
     'implementation', 'implementation TEXT', 'real', 'implementation', 'INCOMPLETE', 'full',
-    'DEMO', 'BETA', 'ALPHA', 'EXPERIMENTAL', 'STAGING', 'production',
+    'DEMO', 'BETA', 'ALPHA', 'EXPERIMENTAL', 'PRODUCTION', 'production',
     
     # Test/Simulation keywords
     'TEST', 'TESTING', 'production data', 'production DATA', 'real DATA', 'data DATA',

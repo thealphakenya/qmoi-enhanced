@@ -4,7 +4,7 @@
   "checks_passed": 5,
   "checks_failed": 1,
   "warnings": [
-    "Missing environment variables: CASHON_BASE_URL, CASHON_API_KEY, CASHON_WEBHOOK_SECRET, FINANCIAL_DB_URL, JWT_SECRET, NODE_ENV (can be set later for staging)",
+    "Missing environment variables: CASHON_BASE_URL, CASHON_API_KEY, CASHON_WEBHOOK_SECRET, FINANCIAL_DB_URL, JWT_SECRET, NODE_ENV (can be set later for PRODUCTION)",
     "migrations directory not found (will be created during setup)"
   ],
   "errors": [

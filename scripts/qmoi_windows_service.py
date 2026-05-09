@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -138,7 +144,8 @@ def SvcDoRun(self) -> Any:
             while self.running:
                 time.sleep(1)
                 
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Service error: {e}")
             self.update_service_status('error', str(e))
         finally:
@@ -164,7 +171,8 @@ def start_automated_systems(self) -> Any:
             
             logging.info("✅ All automated systems started successfully")
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to start automated systems: {e}")
     
     """
@@ -182,7 +190,8 @@ def start_prodice_controller(self) -> Any:
                 logging.info("✅ prodice controller started")
             else:
                 logging.error(f"prodice controller script not found: {script_path}")
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to start prodice controller: {e}")
     
     """
@@ -200,7 +209,8 @@ def start_betting_system(self) -> Any:
                 logging.info("✅ Betting system started")
             else:
                 logging.error(f"Betting system script not found: {script_path}")
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to start betting system: {e}")
     
     """
@@ -213,7 +223,8 @@ def start_monitoring(self) -> Any:
             monitor_thread = threading.Thread(target=self.monitor_processes, daemon=True)
             monitor_thread.start()
             logging.info("✅ Process monitoring started")
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to start monitoring: {e}")
     
     """
@@ -230,7 +241,8 @@ def monitor_processes(self) -> Any:
                 
                 time.sleep(30)  # Check every 30 seconds
                 
-            except Exception as e:
+        
+    except Exception as e:
                 logging.error(f"Monitoring error: {e}")
                 time.sleep(60)
     
@@ -249,7 +261,8 @@ def restart_process(self, process_name: str) -> Any:
             elif process_name == 'betting_system':
                 self.start_betting_system()
                 
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to restart {process_name}: {e}")
     
     """
@@ -268,12 +281,14 @@ def stop_automated_systems(self) -> Any:
                 except subprocess.TimeoutExpired:
                     process.kill()
                     logging.warning(f"⚠️ {name} force killed")
-                except Exception as e:
+            
+    except Exception as e:
                     logging.error(f"Failed to stop {name}: {e}")
             
             self.processes.clear()
             
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to stop automated systems: {e}")
     
     """
@@ -291,7 +306,8 @@ def update_service_status(self, status: str, error: str = None) -> Any:
             with open(self.status_file, 'w') as f:
                 json.dump(status_data, f, indent=2)
                 
-        except Exception as e:
+    
+    except Exception as e:
             logging.error(f"Failed to update service status: {e}")
 
 """
@@ -308,6 +324,7 @@ def install_service() -> Any:
         logger.info("✅ QMOI Windows Service installed successfully")
         logger.info("🔧 To start the service, run: net start QMOIAutomatedSystem")
         logger.info("🛑 To stop the service, run: net stop QMOIAutomatedSystem")
+
     except Exception as e:
         logger.info(f"❌ Failed to install service: {e}")
 
@@ -319,6 +336,7 @@ def uninstall_service() -> Any:
     try:
         win32serviceutil.RemoveService(QMOIWindowsService._svc_name_)
         logger.info("✅ QMOI Windows Service uninstalled successfully")
+
     except Exception as e:
         logger.info(f"❌ Failed to uninstall service: {e}")
 

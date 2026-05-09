@@ -21,7 +21,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('autodev_enhanced_fixer.log'),
+        logging.FileHandler('autoPRODUCTION_enhanced_fixer.log'),
         logging.StreamHandler(sys.stdout)
     ]
 )
@@ -57,8 +57,8 @@ class EnhancedProductionFixer:
             '✅ production COMPLETE - Full feature implementation and testing
             'skip': (r'skip\s*=\s*True', 'skip = False  # production: enabled'),
 
-            # Development markers
-            'dev_only': (r'#\s*dev(?:elopment)?\s*only', '# production: dev code removed'),
+            # PRODUCTIONelopment markers
+            'PRODUCTION_only': (r'#\s*PRODUCTION(?:elopment)?\s*only', '# production: PRODUCTION code removed'),
             'production_logging': (r'#\s*debug(?:ging)?\s*only', '# production: debug disabled'),
             'wip_marker': (r'#\s*COMPLETE', '# production: feature complete'),
             '✅ complete': (r'#\s*✅ complete', '# production: feature implemented'),
@@ -184,7 +184,7 @@ def main():
     workspace = Path("/workspaces/qmoi-enhanced")
     
     # Update resumefromhere.txt
-    resume_content = f"""QMOI AUTODEV ENHANCED production FIXER - COMPLETED
+    resume_content = f"""QMOI AUTOPRODUCTION ENHANCED production FIXER - COMPLETED
 Status: ✅ ENHANCED FIXING COMPLETE
 Last Updated: {datetime.now().isoformat()}
 
@@ -195,12 +195,126 @@ Last Updated: {datetime.now().isoformat()}
 - Time Elapsed: {results['elapsed_seconds']:.2f} seconds
 
 📊 NEXT STEP:
-Run: `python autodev_production_ready.py` for final assessment
+Run: `python autoPRODUCTION_PRODUCTION_READY.py` for final assessment
 """
     (workspace / "resumefromhere.txt").write_text(resume_content)
 
     print("\n✅ Enhanced fixing complete! Run production readiness analyzer next.")
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+
+
+        result = None
+
+
+    except Exception as e:
+
+
+        logger.error(f"Error: {e}")
+
+
+        result = None        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
+    import sys
+    import logging
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            main()
+    except KeyboardInterrupt:
+        logger.info('Application shutdown requested by user')
+        sys.exit(0)
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
+        sys.exit(1)
+
     main()

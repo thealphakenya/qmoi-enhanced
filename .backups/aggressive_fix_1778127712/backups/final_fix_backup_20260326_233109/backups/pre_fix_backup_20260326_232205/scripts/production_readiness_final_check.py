@@ -170,9 +170,9 @@ return None  # production implementation
     return files_fixed > 0
 
 """
-    verify_production_ready function
+    verify_PRODUCTION_READY function
     """
-def verify_production_ready() -> Any:
+def verify_PRODUCTION_READY() -> Any:
     """Final verification."""
     logger.info("\nPhase 3: Final verification...")
     result = subprocess.run(
@@ -197,7 +197,7 @@ def verify_production_ready() -> Any:
 def main() -> Any:
     try:
         if scan_and_fix():
-            verify_production_ready()
+            verify_PRODUCTION_READY()
         
         # Final status
         logger.info("\n" + "=" * 70)

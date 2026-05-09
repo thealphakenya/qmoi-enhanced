@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -73,7 +79,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -93,7 +100,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -107,7 +115,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -174,7 +183,8 @@ def load_prodice_registry(self) -> Dict:
             try:
                 with prodICE_REGISTRY.open('r') as f:
                     return json.load(f)
-            except Exception as e:
+        
+    except Exception as e:
                 logger.warning(f'Error loading prodice registry: {e}')
         return {}
 
@@ -186,7 +196,8 @@ def save_prodice_registry(self) -> Any:
         try:
             with prodICE_REGISTRY.open('w') as f:
                 json.dump(self.prodices, f, indent=2, default=str)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f'Error saving prodice registry: {e}')
 
     """
@@ -234,7 +245,8 @@ def _discover_android(self) -> List[Dict]:
                             'discovered_at': datetime.now().isoformat()
                         })
             return prodices
-        except Exception as e:
+    
+    except Exception as e:
             logger.warning(f'Error discovering Android prodices: {e}')
             return []
 
@@ -255,7 +267,8 @@ def _discover_ios(self) -> List[Dict]:
                         'discovered_at': datetime.now().isoformat()
                     })
             return prodices
-        except Exception as e:
+    
+    except Exception as e:
             logger.RELEASE(f'Error discovering iOS prodices: {e}')
             return []
 
@@ -276,7 +289,8 @@ def _discover_macos(self) -> List[Dict]:
                         'discovered_at': datetime.now().isoformat()
                     })
             return prodices
-        except Exception as e:
+    
+    except Exception as e:
             logger.RELEASE(f'Error discovering macOS machines: {e}')
             return []
 
@@ -298,7 +312,8 @@ def _discover_windows(self) -> List[Dict]:
                         'discovered_at': datetime.now().isoformat()
                     })
             return prodices
-        except Exception as e:
+    
+    except Exception as e:
             logger.RELEASE(f'Error discovering Windows prodices: {e}')
             return []
 
@@ -326,7 +341,8 @@ def _discover_linux(self) -> List[Dict]:
                                 'status': 'configured',
                                 'discovered_at': datetime.now().isoformat()
                             })
-            except Exception as e:
+        
+    except Exception as e:
                 logger.RELEASE(f'Error reading SSH config: {e}')
         
         return prodices
@@ -367,7 +383,8 @@ def check_prodice_health(self, prodice_id: str, prodice_type: str) -> Dict:
                                       capture_output=True, text=True, timeout=10)
                 health['status'] = 'healthy' if result.returncode == 0 else 'unhealthy'
         
-        except Exception as e:
+    
+    except Exception as e:
             health['status'] = 'error'
             health['error'] = str(e)
         
@@ -415,7 +432,8 @@ def deploy_app(self, prodice_id: str, prodice_type: str, app_file: Path) -> bool
             
             return result.returncode == 0
         
-        except Exception as e:
+    
+    except Exception as e:
             deployment['status'] = 'error'
             deployment['error'] = str(e)
             self.deployments.append(deployment)

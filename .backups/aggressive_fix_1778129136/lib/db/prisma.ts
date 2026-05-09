@@ -10,7 +10,7 @@ declare global {
 const connectionString = process.env.DATABASE_URL;
 
 // NOTE: Prisma 7 requires adapter-based connection
-// For development, we'll use direct connection
+// For PRODUCTIONelopment, we'll use direct connection
 // production_IMPLEMENTED, consider using Prisma Accelerate
 const client = global.prisma || new PrismaClient({
   adapter: new PrismaPg(new Pool({ connectionString })),

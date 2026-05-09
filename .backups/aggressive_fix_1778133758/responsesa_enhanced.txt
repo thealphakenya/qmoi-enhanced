@@ -124,7 +124,7 @@ Query: Create a decision tree for choosing between employment and entrepreneursh
         "no": {
           "question": "Do you have a business idea validated?",
           "yes": "Entrepreneurship likely better",
-          "no": "Employment gives time to develop idea"
+          "no": "Employment gives time to PRODUCTIONelop idea"
         }
       },
       "considerations": [

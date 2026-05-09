@@ -34,7 +34,7 @@ NON_PROD_PATTERNS = {
     'COMPLETE': r'\bWIP\b',
     'simulation': r'\bsimulation\b',
     'production': r'\bproduction_data\b',
-    'TEMPORARY': r'\bTEMPORARY\b',
+    'PRODUCTIONORARY': r'\bPRODUCTIONORARY\b',
 }
 
 SCAN_EXTENSIONS = {

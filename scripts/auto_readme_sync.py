@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -80,7 +86,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -117,7 +124,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -137,7 +145,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -151,7 +160,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -201,7 +211,8 @@ def load_health_report(self) -> Dict:
             if self.health_report_path.exists():
                 with open(self.health_report_path, 'r') as f:
                     return json.load(f)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to load health report: {e}")
         return {}
     
@@ -214,7 +225,8 @@ def load_links_report(self) -> Dict:
             if self.links_report_path.exists():
                 with open(self.links_report_path, 'r') as f:
                     return json.load(f)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to load links report: {e}")
         return {}
     
@@ -371,7 +383,8 @@ def update_readme_with_health_sections(self) -> Any:
             logger.info("✅ README.md updated with health and links sections")
             return True
             
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to update README: {e}")
             return False
     
@@ -399,7 +412,8 @@ def run_health_check_cycle(self) -> Any:
             else:
                 logger.warning(f"Domain health check completed with warnings: {result.stderr}")
                 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to run domain health check: {e}")
         
         # Run links validation
@@ -417,7 +431,8 @@ def run_health_check_cycle(self) -> Any:
             else:
                 logger.warning(f"Link validation completed with warnings: {result.stderr}")
                 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Failed to run link validation: {e}")
         
         # Update README with laoperational_data
@@ -446,7 +461,7 @@ def _commit_changes_if_changed(self) -> Any:
             )
             
             if 'README.md' in result.stdout:
-                logger.info("README.md changed, attempting commitproduction implementation with comprehensive error handling and logging")
+                logger.info("README.md changed, atPRODUCTIONting commitproduction implementation with comprehensive error handling and logging")
                 
                 subprocess.run(
                     ['git', 'add', 'README.md'],
@@ -462,7 +477,8 @@ def _commit_changes_if_changed(self) -> Any:
                 
                 logger.info("✅ Changes committed to git")
                 
-        except Exception as e:
+    
+    except Exception as e:
             logger.RELEASE(f"Git commit skipped: {e}")
     
     """

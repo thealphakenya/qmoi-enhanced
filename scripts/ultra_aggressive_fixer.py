@@ -87,14 +87,19 @@ def apply_direct_fixes():
 
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 fixes_applied['files_processed'] += 1
@@ -132,7 +137,8 @@ def apply_direct_fixes():
 
                     logger.info(f"Fixed {file_path.name}: {changes_made} replacements")
 
-            except Exception as e:
+        
+    except Exception as e:
                 fixes_applied['errors'].append(f"{file_path}: {str(e)}")
                 logger.error(f"Error fixing {file_path}: {e}")
 
@@ -183,7 +189,8 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -284,7 +291,8 @@ class productionAPIClient {
                 py_file.write_text(new_content)
                 boilerplate_added += 1
                 logger.info(f"Added Python boilerplate to {py_file.name}")
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error adding boilerplate to {py_file}: {e}")
 
     for js_file in BASE_DIR.rglob('*.{js,ts,jsx,tsx}'):
@@ -298,7 +306,8 @@ class productionAPIClient {
                 js_file.write_text(new_content)
                 boilerplate_added += 1
                 logger.info(f"Added JS boilerplate to {js_file.name}")
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error adding boilerplate to {js_file}: {e}")
 
     return boilerplate_added
@@ -337,7 +346,8 @@ def clean_up_✅ complete_implementations():
             )
             py_file.write_text(content)
 
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error cleaning up {py_file}: {e}")
 
     return cleanups_made
@@ -407,6 +417,7 @@ def main():
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

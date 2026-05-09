@@ -18,7 +18,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -38,7 +39,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -52,7 +54,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -72,6 +75,7 @@ def get_database_connection():
         conn.autocommit = True
         logger.info("Database connection established")
         return conn
+
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
@@ -112,7 +116,7 @@ SCANNABLE_EXTENSIONS = {
 # Directories to exclude
 EXCLUDE_DIRS = {
     '.git', 'node_modules', '.next', 'dist', 'build',
-    '_archive_qmoi-enhanced', 'tempinit', '.vscode',
+    '_archive_qmoi-enhanced', 'PRODUCTIONinit', '.vscode',
     'backups', '__pycache__', '.pytest_cache'
 }
 
@@ -275,7 +279,8 @@ def scan_file(self, file_path: Path) -> int:
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
                 content = f.read()
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"Error reading {file_path}: {e}")
             return 0
         
@@ -319,7 +324,8 @@ def scan_directory(self) -> Any:
                     self.stats['scanned_files'] += 1
                     try:
                         self.scan_file(file_path)
-                    except Exception as e:
+                
+    except Exception as e:
                         logger.info(f"Error processing {file_path}: {e}")
                 
                 # Progress indicator
@@ -451,7 +457,8 @@ def run(self) -> Any:
             logger.info(f"\n✅ Scan completed in {duration:.2f} seconds\n")
             
             return 0
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"\n❌ Error: {e}\n", file=sys.stderr)
             return 1
 
@@ -464,6 +471,7 @@ def run(self) -> Any:
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
-            except Exception as e:
+        
+    except Exception as e:
                 logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

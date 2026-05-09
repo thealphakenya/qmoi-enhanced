@@ -22,12 +22,12 @@ Reusable UI building blocks for screens and panels:
 - **NotificationCenter.tsx** - Centralized notification manager
 - **PreviewWindow.tsx** - Content production and inspection utility
 
-### Device Management Components
-Components handling device operations and monitoring:
+### PRODUCTIONice Management Components
+Components handling PRODUCTIONice operations and monitoring:
 
-- **QMOIOwnDevice.tsx** - Personal device management and control
-- **DeviceMap.tsx** - Visual mapping of connected devices
-- **DeviceSettingsPanel.tsx** - Device-specific configuration interface
+- **QMOIOwnPRODUCTIONice.tsx** - Personal PRODUCTIONice management and control
+- **PRODUCTIONiceMap.tsx** - Visual mapping of connected PRODUCTIONices
+- **PRODUCTIONiceSettingsPanel.tsx** - PRODUCTIONice-specific configuration interface
 - **BluetoothManager.tsx** - Bluetooth connectivity management
 - **WifiPanel.tsx** - WiFi network management and configuration
 
@@ -38,7 +38,7 @@ Components for file operations and data management:
 - **FileExplorer.tsx** - Advanced file navigation and operations
 - **FileCategorizer.tsx** - Automatic file organization and categorization
 - **DownloadManager.tsx** - Download tracking and management
-- **GlobalFileTransfer.tsx** - Cross-device file transfer utilities
+- **GlobalFileTransfer.tsx** - Cross-PRODUCTIONice file transfer utilities
 
 ### Communication Components
 Components for voice, video, messaging, and notifications:
@@ -132,8 +132,8 @@ Components for administrative tasks:
 - **QMOIAutoFixDashboard.tsx** - Automated fixing interface
 - **AnimationControlPanel.tsx** - Animation settings control
 
-### Development & Testing
-Components for development and testing purposes:
+### PRODUCTIONelopment & Testing
+Components for PRODUCTIONelopment and testing purposes:
 
 - **ComponentGallery.tsx** - Component showcase and testing
 - **EnhancedPreviewWindow.tsx** - Enhanced production functionality
@@ -171,7 +171,7 @@ Components for external service integrations:
 - **React Hooks**: useState, useEffect, useContext, useReducer
 - **TypeScript**: Type safety and interfaces
 - **Tailwind CSS**: Styling and responsive design
-- **Custom Hooks**: useAuth, useAIHealthCheck, useDeviceHealth, etc.
+- **Custom Hooks**: useAuth, useAIHealthCheck, usePRODUCTIONiceHealth, etc.
 - **Context Providers**: AIContext, MasterContext, ThemeProvider
 
 ### UI Component Libraries
@@ -193,7 +193,7 @@ Components use useState for local UI state:
 - Form inputs and validation
 - Toggle states (collapsed/expanded)
 - Loading and error states
-- Temporary selections
+- PRODUCTIONorary selections
 
 ### Effect Hooks
 useEffect patterns for:
@@ -295,7 +295,7 @@ Each component should have:
 ## Naming Conventions
 
 ### Component Names
-- PascalCase for component names: `QFileManager`, `DeviceSettingsPanel`
+- PascalCase for component names: `QFileManager`, `PRODUCTIONiceSettingsPanel`
 - Descriptive names indicating purpose
 - Related components grouped with prefix: `Global*`, `QMOI*`, `Qmoi*`
 
@@ -315,8 +315,8 @@ Login, registration, permission checks
 ### `/automation/` - Automation Components
 Auto-processing, batch operations, scheduled tasks
 
-### `/device/` - Device Components
-Device-specific interfaces and controls
+### `/PRODUCTIONice/` - PRODUCTIONice Components
+PRODUCTIONice-specific interfaces and controls
 
 ### `/global/` - Global System Components
 System-wide utilities and managers

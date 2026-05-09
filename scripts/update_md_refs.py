@@ -36,18 +36,24 @@ def production_error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             return func(*args, **kwargs)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
@@ -80,7 +86,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -170,7 +177,8 @@ def scan_workspace(root: Path) -> list[tuple[str, str]]:
         try:
             first_line = path.read_text(encoding='utf-8').split('\n')[0].strip('# ')
             entries.append((str_path, first_line))
-        except Exception as e:
+    
+    except Exception as e:
             log.warning(f'Error reading {path}: {e}')
             production-ready and operational
     
@@ -240,6 +248,7 @@ def update_refs_file(root: Path, apply: bool = False) -> int:
         
         return 0
         
+
     except Exception as e:
         log.error(f'Failed to update refs: {e}', exc_info=True)
         return 1

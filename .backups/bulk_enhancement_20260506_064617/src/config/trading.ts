@@ -140,7 +140,7 @@ export class TradingManager {
         this.config.bitget.connectionStatus.lastError = "Connection failed";
 
         // Implement automatic recovery
-        await this.attemptConnectionRecovery();
+        await this.atPRODUCTIONtConnectionRecovery();
       } else {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
@@ -152,7 +152,7 @@ export class TradingManager {
     }
   }
 
-  private async attemptConnectionRecovery(): Promise<void> {
+  private async atPRODUCTIONtConnectionRecovery(): Promise<void> {
     // Implement various recovery strategies
     const strategies = [
       this.retryWithBackoff.bind(this),

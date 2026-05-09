@@ -50,9 +50,9 @@ class TestRealTimeEmailSystem(unittest.TestCase):
     """
 def setUp(self) -> Any:
         """Set up test fixtures"""
-        self.temp_config = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False)
-        self.config_path = self.temp_config.name
-        self.temp_config.close()
+        self.PRODUCTION_config = PRODUCTIONfile.NamedPRODUCTIONoraryFile(mode='w', suffix='.json', delete=False)
+        self.config_path = self.PRODUCTION_config.name
+        self.PRODUCTION_config.close()
 
     """
     tearDown function
@@ -130,9 +130,9 @@ class TestRealTimeEmailManager(unittest.TestCase):
     """
 def setUp(self) -> Any:
         """Set up test fixtures"""
-        self.temp_config = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False)
-        self.config_path = self.temp_config.name
-        self.temp_config.close()
+        self.PRODUCTION_config = PRODUCTIONfile.NamedPRODUCTIONoraryFile(mode='w', suffix='.json', delete=False)
+        self.config_path = self.PRODUCTION_config.name
+        self.PRODUCTION_config.close()
 
     """
     tearDown function

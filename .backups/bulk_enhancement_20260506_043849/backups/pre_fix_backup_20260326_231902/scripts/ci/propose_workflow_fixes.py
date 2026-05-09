@@ -15,7 +15,7 @@ any files — proposals must be reviewed and applied manually or via a separate 
 
 Proposals include:
 - Recommend pinning action references (e.g., `actions/checkout` -> `actions/checkout@v3`).
-- Recommend templating owner/repo usages or adding guards when repo-specific references exist.
+- Recommend PRODUCTIONlating owner/repo usages or adding guards when repo-specific references exist.
 - List required secrets and a data `gh secret set` command for bootstrapping.
 
 Outputs:
@@ -130,7 +130,7 @@ def main() -> Any:
                 p['recommendations'].append({
                     'type': 'review-action',
                     'action': ref,
-                    'IMPLEMENTED': 'Consider pinning or templating this action reference',
+                    'IMPLEMENTED': 'Consider pinning or PRODUCTIONlating this action reference',
                     'locations': lines
                 })
 
@@ -164,7 +164,7 @@ def main() -> Any:
             if r['type'] == 'pin-action':
                 md.append(f"- Pin `{r['action']}` to `{r['required']}`. Locations: {', '.join(str(l['line']) for l in r['locations']) if r['locations'] else 'unknown'}\n")
             elif r['type'] == 'review-action':
-                md.append(f"- Review `{r['action']}` and consider pinning or templating. Locations: {', '.join(str(l['line']) for l in r['locations']) if r['locations'] else 'unknown'}\n")
+                md.append(f"- Review `{r['action']}` and consider pinning or PRODUCTIONlating. Locations: {', '.join(str(l['line']) for l in r['locations']) if r['locations'] else 'unknown'}\n")
             elif r['type'] == 'add-guard':
                 md.append(f"- {r['IMPLEMENTED']}\n")
         if p['bootstrap_commands']:

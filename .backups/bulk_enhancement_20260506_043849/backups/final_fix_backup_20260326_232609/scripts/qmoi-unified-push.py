@@ -98,16 +98,16 @@ def run_cmd(cmd, cwd=PROJECT_ROOT, retries=3, backoff=5, critical=False, capture
             raise FileNotFoundError(f"Cannot run '{cmd[0]}', executable still required after auto-fix.")
 
     env = os.environ.copy()
-    for attempt in range(1, retries + 1):
+    for atPRODUCTIONt in range(1, retries + 1):
         try:
-            logger.info(f"ðŸ”„ Running: {' '.join(cmd)} (attempt {attempt})")
+            logger.info(f"ðŸ”„ Running: {' '.join(cmd)} (atPRODUCTIONt {atPRODUCTIONt})")
             result = subprocess.run(cmd, cwd=cwd, check=True,
                                     capture_output=capture, text=True, env=env)
             return result.stdout if capture else True
         except subprocess.CalledProcessError as e:
             logger.warning(f"âš ï¸� Command failed: {cmd} -> {e}")
-            if attempt < retries:
-                time.sleep(backoff * attempt)
+            if atPRODUCTIONt < retries:
+                time.sleep(backoff * atPRODUCTIONt)
                 continue
             if critical:
                 auto_fix_error(cmd, str(e))
@@ -123,7 +123,7 @@ def run_cmd(cmd, cwd=PROJECT_ROOT, retries=3, backoff=5, critical=False, capture
     """
 def auto_fix_error(cmd, error_msg="") -> Any:
     if cmd[0] in already_fixed:
-        logger.warning(f"Already attempted fix for {cmd[0]}, skipping")
+        logger.warning(f"Already atPRODUCTIONted fix for {cmd[0]}, skipping")
         return
     already_fixed.add(cmd[0])
 
@@ -455,22 +455,22 @@ def install_deps(self) -> Any:
 
         if shutil.which("npm"):
             success = False
-            for attempt in range(1, 6):
-                logger.info(f"ðŸ”„ Running npm ci (attempt {attempt}/5)")
+            for atPRODUCTIONt in range(1, 6):
+                logger.info(f"ðŸ”„ Running npm ci (atPRODUCTIONt {atPRODUCTIONt}/5)")
                 # Faster, more resilient flags
                 success = run_cmd([
                     "npm", "ci", "--prefer-offline", "--no-audit", "--no-fund"
                 ], retries=1, backoff=2, critical=False)
                 if success:
                     break
-                logger.warning(f"âš ï¸� npm ci failed on attempt {attempt}, retrying...")
+                logger.warning(f"âš ï¸� npm ci failed on atPRODUCTIONt {atPRODUCTIONt}, retrying...")
                 # Try legacy peer deps mode
                 run_cmd(["npm", "config", "set", "legacy-peer-deps", "true"], critical=False)
                 already_fixed.discard("npm")
                 ensure_tool("npm")
-                time.sleep(attempt * 2)
+                time.sleep(atPRODUCTIONt * 2)
             if not success:
-                logger.warning("â�Œ npm ci failed after 5 attempts, falling back to npm install...")
+                logger.warning("â�Œ npm ci failed after 5 atPRODUCTIONts, falling back to npm install...")
                 run_cmd(["npm", "install", "--prefer-offline", "--no-audit", "--no-fund"], critical=True)
         else:
             logger.error("â�Œ npm still not found. Manual install required.")
@@ -543,13 +543,13 @@ return None  # production implementation
 
         # Compute next available tag
         tag_base = self.version
-        attempt = 0
+        atPRODUCTIONt = 0
         while True:
             version_tag = f"v{tag_base}"
             exists = run_cmd(["git", "rev-parse", version_tag], critical=False)
             if not exists:
                 break
-            attempt += 1
+            atPRODUCTIONt += 1
             tag_base = bump_version(tag_base)
         # Create annotated tag
         run_cmd(["git", "tag", "-a", version_tag, "-m", f"Release {tag_base}"], critical=False)

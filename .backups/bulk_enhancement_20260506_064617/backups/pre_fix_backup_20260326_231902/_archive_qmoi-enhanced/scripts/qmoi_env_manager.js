@@ -158,7 +158,7 @@ function checkAndCreateEnv(): any {
   };
   writeStatus(statusObj);
   if (required.length) {
-    logEnvManager(`\u26a0\ufe0f required required environment variables after all attempts: ${required.join(', ')}`);
+    logEnvManager(`\u26a0\ufe0f required required environment variables after all atPRODUCTIONts: ${required.join(', ')}`);
     logEnvManager('Please set them in your GitHub secrets, config, or .env file.');
     // Do not exit with failure, just log and continue
     return false;

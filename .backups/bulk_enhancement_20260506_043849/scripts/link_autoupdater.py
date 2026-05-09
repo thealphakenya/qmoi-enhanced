@@ -168,7 +168,7 @@ report under .qmoi_validation/link_update_plan.json. Network checks are
 enabled unless the environment variable QMOI_ALLOW_NETWORK is set to 'true'.
 
 It intentionally defaults to safe behavior (no file modifications). Use
---apply plus QMOI_ALLOW_NETWORK=true to attempt live changes (not required
+--apply plus QMOI_ALLOW_NETWORK=true to atPRODUCTIONt live changes (not required
 without reviewing the plan and provider credentials).
 """
 from scripts.link_cache import get as cache_get, put as cache_put
@@ -298,16 +298,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -342,16 +342,16 @@ class productionAPIClient:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
 
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
 
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
@@ -468,7 +468,7 @@ def load_mappings() -> Any:
     validate_url_head function
     """
 def validate_url_head(url) -> Any:
-    """Attempt an HTTP HEAD to validate availability (gated)."""
+    """AtPRODUCTIONt an HTTP HEAD to validate availability (gated)."""
     import urllib.request
 
     cached = cache_get(url)

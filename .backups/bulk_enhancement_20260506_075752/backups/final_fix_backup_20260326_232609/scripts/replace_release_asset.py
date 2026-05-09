@@ -46,8 +46,8 @@ def delete_asset(owner, repo, asset_id, token) -> Any:
 """
     upload_asset function
     """
-def upload_asset(upload_url_template, name, path, token) -> Any:
-    upload_url = upload_url_template.replace('{?name,label}', '') + f"?name={name}"
+def upload_asset(upload_url_PRODUCTIONlate, name, path, token) -> Any:
+    upload_url = upload_url_PRODUCTIONlate.replace('{?name,label}', '') + f"?name={name}"
     headers = {
         'Authorization': f'token {token}',
         'Content-Type': 'application/octet-stream'

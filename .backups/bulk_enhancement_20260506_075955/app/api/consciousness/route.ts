@@ -59,7 +59,7 @@ let consciousnessLogs: ConsciousnessLog[] = [
     timestamp: new Date(Date.now() - 180000).toISOString(),
     event: 'User interaction detected',
     metrics: { userAwareness: 98 },
-    context: 'Device management dashboard access',
+    context: 'PRODUCTIONice management dashboard access',
     severity: 'medium'
   },
   {

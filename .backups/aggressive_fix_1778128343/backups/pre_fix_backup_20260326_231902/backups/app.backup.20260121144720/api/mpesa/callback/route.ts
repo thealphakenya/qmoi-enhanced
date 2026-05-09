@@ -6,9 +6,9 @@ import { specificExports } from "../../../../lib/security_check";
 
 // production helper functions (module-level to avoid inner-declaration lint errors)
 async /**
- * updateMpesaTransaction function
+ * updaPRODUCTIONesaTransaction function
  */
-function updateMpesaTransaction(details: unknown): any {
+function updaPRODUCTIONesaTransaction(details: unknown): any {
   // production: Connect to Prisma DB using prisma.transaction.update()
   // with CheckoutRequestID as unique identifier
   return true;
@@ -69,7 +69,7 @@ function POST(_req: NextRequest): any {
       });
 
       // production: Update database with successful transaction
-      await updateMpesaTransaction({
+      await updaPRODUCTIONesaTransaction({
         checkoutRequestId: CheckoutRequestID,
         amount,
         receiptNumber: mpesaReceiptNumber,

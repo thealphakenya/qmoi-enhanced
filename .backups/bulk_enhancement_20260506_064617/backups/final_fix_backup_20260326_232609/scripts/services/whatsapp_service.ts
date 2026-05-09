@@ -14,7 +14,7 @@ interface WhatsAppConfig {
   webhookUrl: string;
   autoReply: boolean;
   allowedContacts: string[];
-  messageTemplates: Record<string, string>;
+  messagePRODUCTIONlates: Record<string, string>;
 }
 
 interface WhatsAppMessage {
@@ -41,7 +41,7 @@ export class WhatsAppService {
       webhookUrl: "",
       autoReply: false,
       allowedContacts: [],
-      messageTemplates: {},
+      messagePRODUCTIONlates: {},
     };
   }
 
@@ -72,8 +72,8 @@ export class WhatsAppService {
         allowedContacts: (process.env.WHATSAPP_ALLOWED_CONTACTS || "").split(
           ",",
         ),
-        messageTemplates: JSON.parse(
-          process.env.WHATSAPP_MESSAGE_TEMPLATES || "{}",
+        messagePRODUCTIONlates: JSON.parse(
+          process.env.WHATSAPP_MESSAGE_PRODUCTIONLATES || "{}",
         ),
       };
       logger.info("WhatsApp configuration loaded successfully");
@@ -162,8 +162,8 @@ export class WhatsAppService {
 
       if (this.config.autoReply) {
         const standard =
-          this.config.messageTemplates[message.type] ||
-          this.config.messageTemplates["default"];
+          this.config.messagePRODUCTIONlates[message.type] ||
+          this.config.messagePRODUCTIONlates["default"];
         if (standard) {
           const reply = standard.replace("{sender}", message.from);
           await this.sendMessage(message.from, reply);

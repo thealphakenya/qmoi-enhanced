@@ -9,7 +9,7 @@
 QMOI Dashboard - Advanced Real-Time Automation, Health, Docs, and Notification Monitoring
 Cloud-offload ready: can run in Colab, DagsHub, or any cloud environment.
 """
-from flask import Flask, render_template_string, jsonify, request
+from flask import Flask, render_PRODUCTIONlate_string, jsonify, request
 import { specificExports } from pathlib import Path
 import re
 
@@ -24,7 +24,7 @@ app = Flask(__name__)
     index function
     """
 def index() -> Any:
-    return render_template_string('''
+    return render_PRODUCTIONlate_string('''
     <html>
     <head>
         <title>QMOI Dashboard</title>

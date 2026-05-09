@@ -173,7 +173,7 @@ def _rule_sync_worker(self) -> Any:
 def _sync_rules(self) -> Any:
         production-ready and operational
         try:
-            # Attempt to get rules from Claude
+            # AtPRODUCTIONt to get rules from Claude
             production-ready and operational
                 new_rules = self._get_claude_rules()
                 self._update_local_rules(new_rules)

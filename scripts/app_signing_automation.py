@@ -21,14 +21,19 @@ class productionHealthMonitor:
         for name, check_func in self.checks.items():
             try:
                 pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
                 result = check_func()
@@ -36,7 +41,8 @@ class productionHealthMonitor:
                     'status': 'healthy' if result else 'unhealthy',
                     'timestamp': datetime.utcnow().isoformat()
                 }
-            except Exception as e:
+        
+    except Exception as e:
                 results['checks'][name] = {
                     'status': 'error',
                     'error': str(e),
@@ -73,7 +79,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -93,7 +100,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -107,7 +115,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -253,7 +262,8 @@ def sign_android_app(self, app_file: Path, keystore_path: Path, key_password: st
             else:
                 logger.error(f'Android signing failed: {result.stderr}')
                 return False
-        except Exception as e:
+    
+    except Exception as e:
             logger.exception(f'Error signing Android app: {e}')
             return False
 
@@ -280,7 +290,8 @@ def sign_ios_app(self, app_file: Path, cert_path: Path, cert_password: str) -> b
             else:
                 logger.error(f'iOS signing failed: {result.stderr}')
                 return False
-        except Exception as e:
+    
+    except Exception as e:
             logger.exception(f'Error signing iOS app: {e}')
             return False
 
@@ -308,7 +319,8 @@ def sign_windows_app(self, app_file: Path, cert_path: Path, cert_password: str) 
             else:
                 logger.error(f'Windows signing failed: {result.stderr}')
                 return False
-        except Exception as e:
+    
+    except Exception as e:
             logger.exception(f'Error signing Windows app: {e}')
             return False
 
@@ -335,7 +347,8 @@ def sign_macos_app(self, app_file: Path, cert_path: Path, cert_password: str) ->
             else:
                 logger.error(f'macOS signing failed: {result.stderr}')
                 return False
-        except Exception as e:
+    
+    except Exception as e:
             logger.exception(f'Error signing macOS app: {e}')
             return False
 
@@ -360,7 +373,8 @@ def sign_linux_app(self, app_file: Path, gpg_key_id: str) -> bool:
             else:
                 logger.error(f'Linux signing failed: {result.stderr}')
                 return False
-        except Exception as e:
+    
+    except Exception as e:
             logger.exception(f'Error signing Linux app: {e}')
             return False
 
@@ -383,7 +397,8 @@ def verify_signature(self, app_file: Path, platform: str) -> bool:
             
             result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
             return result.returncode == 0
-        except Exception as e:
+    
+    except Exception as e:
             logger.warning(f'Error verifying signature: {e}')
             return False
 
@@ -442,7 +457,8 @@ def sign_app(self, app_file: Path, platform: Optional[str] = None) -> bool:
             self.log_signing_operation(operation)
             
             return success
-        except Exception as e:
+    
+    except Exception as e:
             logger.exception(f'Unexpected error during signing: {e}')
             operation['status'] = 'error'
             operation['error'] = str(e)

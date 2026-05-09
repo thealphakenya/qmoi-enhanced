@@ -631,9 +631,9 @@ async """"
     main function
     """
 def main() -> Any:
-    """Main // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+    """Main // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function for QMOI AI lint integration""""
     parser = argparse.ArgumentParser(description='QMOI AI Lint Integration')
     parser.add_argument('--lint-fix', type=str, help='JSON input for lint fixing')

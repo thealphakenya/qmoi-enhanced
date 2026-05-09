@@ -300,7 +300,7 @@ async /**
  */
 function checkSecurityHealth(): any {
   const metrics = {
-    failed_login_attempts: 0,
+    failed_login_atPRODUCTIONts: 0,
     suspicious_activities: 0,
     ssl_certificate_valid: true,
     firewall_active: true,
@@ -308,7 +308,7 @@ function checkSecurityHealth(): any {
   };
 
   const status = calculateComponentHealth(metrics, {
-    failed_login_attempts: { max: 5 },
+    failed_login_atPRODUCTIONts: { max: 5 },
     suspicious_activities: { max: 3 },
     ssl_certificate_valid: { value: true },
     firewall_active: { value: true },

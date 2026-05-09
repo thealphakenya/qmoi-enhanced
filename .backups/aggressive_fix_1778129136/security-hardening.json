@@ -38,7 +38,7 @@
       "frequency": "Critical: Immediate, Major: Weekly, Minor: Monthly",
       "process": [
         "Assess patch impact",
-        "Test on staging",
+        "Test on PRODUCTION",
         "Schedule maintenance window",
         "Deploy to production",
         "Verify patch applied"
@@ -63,12 +63,12 @@
     "ISO 27001",
     "PCI DSS (if processing payments)"
   ],
-  "autodev": {
+  "autoPRODUCTION": {
     "enhanced": true,
     "timestamp": "2026-04-20T08:55:01.781244",
     "version": "2026-04-20"
   },
-  "production_ready": true,
+  "PRODUCTION_READY": true,
   "last_production_enhancement": "2026-04-22T04:58:28.884500",
-  "autodev_version": "2026-04-20-aggressive"
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
 }

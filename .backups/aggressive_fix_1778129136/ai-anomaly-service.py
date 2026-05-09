@@ -180,16 +180,16 @@ class productionAPIClient:
     def request(self, method: str, endpoint: str, **kwargs) -> dict:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
-        for attempt in range(3):
+        for atPRODUCTIONt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
-                if attempt == 2:
-                    logger.error(f"API request failed after 3 attempts: {e}")
+                if atPRODUCTIONt == 2:
+                    logger.error(f"API request failed after 3 atPRODUCTIONts: {e}")
                     raise
-                time.sleep(2 ** attempt)  # Exponential backoff
+                time.sleep(2 ** atPRODUCTIONt)  # Exponential backoff
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
     def post(self, endpoint: str, data: dict = None, **kwargs) -> dict:
@@ -227,7 +227,7 @@ def detect_anomaly() -> Any:
         ip = e["ip"]
         ip_counts[ip] = ip_counts.get(ip, 0) + 1
         times.append(e["timestamp"])
-    # Feature 1: login attempts per IP
+    # Feature 1: login atPRODUCTIONts per IP
     X1 = np.array([[c] for c in ip_counts.values()])
     # Feature 2: time clustering (number of events in last 10 minutes)
     X2 = np.full((len(ip_counts), 1), len(events))

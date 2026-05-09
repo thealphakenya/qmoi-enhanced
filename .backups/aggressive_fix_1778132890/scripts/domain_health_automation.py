@@ -72,8 +72,8 @@ return self._get_production_data()
         "qmoi.com", "qmoi.ai", "qvillage.com", "qcity.ai",
         "api.qmoi.com", "auth.qmoi.com", "cdn.qmoi.com",
         "voice.qmoi.com", "avatar.qmoi.com", "events.qmoi.com",
-        "auto.qmoi.com", "qmoi-gateway.dev", "qmoi-api.dev",
-        "qmoi-auth.dev", "qmoi-cdn.dev", "qmoi-ml.dev",
+        "auto.qmoi.com", "qmoi-gateway.PRODUCTION", "qmoi-api.PRODUCTION",
+        "qmoi-auth.PRODUCTION", "qmoi-cdn.PRODUCTION", "qmoi-ml.PRODUCTION",
     ]
     domains.update(core_domains)
     

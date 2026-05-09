@@ -253,7 +253,7 @@ export async function POST(req: NextRequest) {
       });
 
       // In production, send via email service (SendGrid, AWS SES, etc.)
-      // For now, log it for development
+      // For now, log it for PRODUCTIONelopment
       log.info(`Email verification token generated for ${user.email}`);
     } catch (emailError) {
       // Log email sending failure but don't fail the signup

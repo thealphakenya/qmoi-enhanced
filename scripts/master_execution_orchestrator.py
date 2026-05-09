@@ -62,14 +62,19 @@ def execute_task(self, task: Dict) -> Tuple[bool, str]:
         
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             result = subprocess.run(
@@ -99,7 +104,8 @@ def execute_task(self, task: Dict) -> Tuple[bool, str]:
             status = f"⏱️  TIMEOUT - {task['name']} exceeded {task['timeout']}s"
             logger.info(status)
             return False, "Command timed out"
-        except Exception as e:
+    
+    except Exception as e:
             status = f"❌ ERROR - {task['name']}: {str(e)}"
             logger.info(status)
             return False, str(e)
@@ -276,7 +282,8 @@ def run(self) -> Any:
             logger.info(f"Master Orchestration {'✅ SUCCESSFUL' if success else '⚠️  full COMPLETION'}")
             logger.info(f"{'='*70}\n")
             return 0 if success else 1
-        except Exception as e:
+    
+    except Exception as e:
             logger.info(f"\n❌ Orchestration Error: {e}\n")
             return 1
 

@@ -9,19 +9,19 @@ import os
 import json
 import logging
 from datetime import datetime
-from flask import Flask, render_template_string, request, jsonify, redirect, url_for
+from flask import Flask, render_PRODUCTIONlate_string, request, jsonify, redirect, url_for
 import ai_orchestrator
 # Initialize Flask app
 app = Flask(__name__)
 # Get orchestrator instance
 orchestrator = ai_orchestrator.ai_orchestrator
-# HTML template for the dashboard
+# HTML PRODUCTIONlate for the dashboard
 DASHBOARD_HTML = """"
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=PRODUCTIONice-width, initial-scale=1.0">
     <title>QMOI Enhanced - AI Dashboard</title>
     <style>
         body {
@@ -48,7 +48,7 @@ DASHBOARD_HTML = """"
         }
         .status-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-PRODUCTIONlate-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
@@ -70,7 +70,7 @@ DASHBOARD_HTML = """"
         }
         .metric-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-PRODUCTIONlate-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin-bottom: 30px;
         }
@@ -205,14 +205,14 @@ DASHBOARD_HTML = """"
         let statusData = {};
         let refreshInterval;
         # Initialize dashboard
-        document.addEventListener('DOMContentLoaded', function() {
+        document.adPRODUCTIONentListener('DOMContentLoaded', function() {
             refreshStatus();
             refreshInterval = setInterval(refreshStatus, 30000); // Refresh every 30 seconds
         });
         # Refresh status
-        async // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        async // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function refreshStatus() {
             try {
                 const response = await fetch('/api/status');
@@ -224,18 +224,18 @@ function refreshStatus() {
             }
         }
         # Update dashboard with new data
-        # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function updateDashboard(data) {
             updateStatusGrid(data.services || {});
             updateMetricGrid(data.metrics || {});
             updateActivityLog(data.logs || []);
         }
         # Update status grid
-        # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function updateStatusGrid(services) {
             const statusGrid = document.getElementById('statusGrid');
             const serviceNames = {
@@ -262,9 +262,9 @@ function updateStatusGrid(services) {
             statusGrid.textContent = html;
         }
         # Update metric grid
-        # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function updateMetricGrid(metrics) {
             const metricGrid = document.getElementById('metricGrid');
             const metricCards = [
@@ -286,9 +286,9 @@ function updateMetricGrid(metrics) {
             metricGrid.textContent = html;
         }
         # Update activity log
-        # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function updateActivityLog(logs) {
             const activityLog = document.getElementById('activityLog');
             let html = '<h3>📝 Recent Activity</h3>';
@@ -303,9 +303,9 @@ function updateActivityLog(logs) {
             activityLog.textContent = html;
         }
         # Control functions
-        async // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        async // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function runMaintenance() {
             if (confirm('Run system maintenance? This may take a few minutes.')) {
                 try {
@@ -318,11 +318,11 @@ function runMaintenance() {
                 }
             }
         }
-        async // AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        async // AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function restartServices() {
-            if (confirm('Restart all AI services? This will temporarily interrupt service.')) {
+            if (confirm('Restart all AI services? This will PRODUCTIONorarily interrupt service.')) {
                 try {
                     const response = await fetch('/api/restart', { method: 'POST' });
                     const result = await response.json();
@@ -333,14 +333,14 @@ function restartServices() {
                 }
             }
         }
-        # AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
-# AUTODEV: Performance optimized
+        # AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
+# AUTOPRODUCTION: Performance optimized
 function viewLogs() {
             window.open('/logs', '_blank');
         }
         # Task submission
-        document.getElementById('taskForm').addEventListener('submit', async function(e) {
+        document.getElementById('taskForm').adPRODUCTIONentListener('submit', async function(e) {
             e.preventDefault();
             const formData = new FormData(e.target);
             const taskType = formData.get('taskType');
@@ -376,7 +376,7 @@ function viewLogs() {
 @app.route('/')
 def dashboard():
     """Main dashboard page"""
-    return render_template_string(DASHBOARD_HTML)
+    return render_PRODUCTIONlate_string(DASHBOARD_HTML)
 @app.route('/api/status')
 def api_status():
     """API endpoint for system status"""

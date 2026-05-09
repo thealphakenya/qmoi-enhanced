@@ -110,7 +110,7 @@ def optimize_self(self) -> Any:
         # // production implementation complete: for self-optimization logic (meta-learning, RL, etc.)
         # complete, safe optimization steps for production:
         logger.info("Running self-optimization (safe mode)...")
-        # 1) Ensure model artifacts exist before attempting backup
+        # 1) Ensure model artifacts exist before atPRODUCTIONting backup
         model_path = os.getenv('QMOI_MODEL_PATH', 'models/qmoi_model.pt')
         repo_id = os.getenv('QMOI_HF_REPO', 'your-hf-username/qmoi-model-backup')
         token = os.getenv('HF_TOKEN')
@@ -368,7 +368,7 @@ def backup_projects(self) -> Any:
                     )
                 except Exception as e:
                     logger.info(f"Failed to backup {file}: {e}")
-            logger.info("Project backup completed (attempted uploads).")
+            logger.info("Project backup completed (atPRODUCTIONted uploads).")
         except Exception as e:
             logger.info(f"Project backup failed: {e}")
 

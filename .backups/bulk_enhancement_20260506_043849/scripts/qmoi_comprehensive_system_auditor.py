@@ -184,11 +184,11 @@ def update_tree_file() -> None:
         tree_text = result.stdout if result.returncode == 0 else 'Tree command unavailable or failed.\n'
     except Exception:
         tree_text = 'Tree command unavailable.\n'
-    header = f'# TREE.md - Developer Structure Reference\n\n**Auto-generated on:** {datetime.now(timezone.utc).isoformat()}\n\n'
+    header = f'# TREE.md - PRODUCTIONeloper Structure Reference\n\n**Auto-generated on:** {datetime.now(timezone.utc).isoformat()}\n\n'
     body = "## Directory Structure\n\n```\n"
     body += tree_text
     body += '\n```\n\n'
-    body += '## Developer Structures\n\n- **API Layer**: API.md, APIs_1.md, ENDPOINTS.md, ROUTES.md\n- **Test Catalog**: ALLTESTSAUTOTESTS.md\n- **Hooks**: HOOKS.md, WEBHOOKS.md, ALLHOOKSWEBHOOKS.md\n- **Documentation Inventory**: ALLMDFILESREFS.md\n- **Financial**: FINANCIALMANAGER.md, BALANCES.md\n'
+    body += '## PRODUCTIONeloper Structures\n\n- **API Layer**: API.md, APIs_1.md, ENDPOINTS.md, ROUTES.md\n- **Test Catalog**: ALLTESTSAUTOTESTS.md\n- **Hooks**: HOOKS.md, WEBHOOKS.md, ALLHOOKSWEBHOOKS.md\n- **Documentation Inventory**: ALLMDFILESREFS.md\n- **Financial**: FINANCIALMANAGER.md, BALANCES.md\n'
     tree_path.write_text(header + body, encoding='utf-8')
 
 

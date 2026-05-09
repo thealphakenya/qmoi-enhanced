@@ -170,7 +170,7 @@ def validate_ui_coverage():
         'validated_components': 0,
         'components_with_errors': 0,
         'components_with_warnings': 0,
-        'production_ready_components': 0,
+        'PRODUCTION_READY_components': 0,
         'lion_validated_components': 0,
         'component_details': []
     }
@@ -189,7 +189,7 @@ def validate_ui_coverage():
             validation_results['components_with_warnings'] += 1
 
         if result['has_production_marker']:
-            validation_results['production_ready_components'] += 1
+            validation_results['PRODUCTION_READY_components'] += 1
 
         if result['has_lion_validation']:
             validation_results['lion_validated_components'] += 1
@@ -207,7 +207,7 @@ def validate_ui_coverage():
     logger.info(f"Validated: {validation_results['validated_components']}")
     logger.info(f"With errors: {validation_results['components_with_errors']}")
     logger.info(f"With warnings: {validation_results['components_with_warnings']}")
-    logger.info(f"production_IMPLEMENTED: {validation_results['production_ready_components']}")
+    logger.info(f"production_IMPLEMENTED: {validation_results['PRODUCTION_READY_components']}")
     logger.info(f"Lion validated: {validation_results['lion_validated_components']}")
 
     return validation_results['components_with_errors'] == 0
@@ -232,12 +232,12 @@ def update_ui_documentation(validation_results):
 **Validated Components:** {validation_results['validated_components']}
 **Components with Errors:** {validation_results['components_with_errors']}
 **Components with Warnings:** {validation_results['components_with_warnings']}
-**production_IMPLEMENTED:** {validation_results['production_ready_components']}
+**production_IMPLEMENTED:** {validation_results['PRODUCTION_READY_components']}
 **Lion Validated:** {validation_results['lion_validated_components']}
 
 ### Validation Status
 - {'✅' if validation_results['components_with_errors'] == 0 else '❌'} All components exist and are readable
-- {'✅' if validation_results['production_ready_components'] > 0 else '⚠️'} production markers present
+- {'✅' if validation_results['PRODUCTION_READY_components'] > 0 else '⚠️'} production markers present
 - {'✅' if validation_results['lion_validated_components'] > 0 else '⚠️'} Lion validation applied
 
 """

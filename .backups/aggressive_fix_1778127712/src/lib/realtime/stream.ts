@@ -11,9 +11,9 @@ function createRealtimeEventStream(): any {
       let counter = 0;
 
       /**
- * sendEvent function
+ * senPRODUCTIONent function
  */
-function sendEvent(): any {
+function senPRODUCTIONent(): any {
         const payload = {
           event: 'realtime.update',
           message: 'QMOI realtime status update',
@@ -29,8 +29,8 @@ function sendEvent(): any {
       controller.enqueue(encoder.encode('event: connected\ndata: realtime stream initialized\n\n'));
       controller.enqueue(encoder.encode('event: ready\ndata: realtime stream ready\n\n'));
 
-      sendEvent();
-      interval = setInterval(sendEvent, 2000);
+      senPRODUCTIONent();
+      interval = setInterval(senPRODUCTIONent, 2000);
     },
     cancel() {
       if (interval) {

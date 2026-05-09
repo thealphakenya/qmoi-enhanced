@@ -1,7 +1,7 @@
 <!-- PRODUCTION_READY: True -->
-<!-- AUTODEV Enhanced: 2026--20T09::55.264627 -->
-<!-- AUTODEV Enhanced: 2026--20T09::.558759 -->
-<!-- AUTODEV Enhanced: 2026--20T08:55:.211721 -->
+<!-- AUTOPRODUCTION Enhanced: 2026--20T09::55.264627 -->
+<!-- AUTOPRODUCTION Enhanced: 2026--20T09::.558759 -->
+<!-- AUTOPRODUCTION Enhanced: 2026--20T08:55:.211721 -->
 #!/usr/bin/env python3
 """
 PHASE 35: ADVANCED ANALYTICS
@@ -321,7 +321,7 @@ class AnalyticsEngine:
                         'min': timeseries.min_value,
                         'max': timeseries.max_value,
                         'average': timeseries.avg_value,
-                        'stdev': statistics.stdev(values) if len(values) > 1 else 0,
+                        'stPRODUCTION': statistics.stPRODUCTION(values) if len(values) > 1 else 0,
                         'trend': self._calculate_trend(values),
                         'datapoints': len(timeseries.datapoints)
                     }
@@ -379,14 +379,14 @@ class AnalyticsEngine:
                 continue
             values = [dp.value for dp in list(timeseries.datapoints)[-20:]]
             avg = statistics.mean(values)
-            stdev = statistics.stdev(values) if len(values) > 1 else 0
-            # Check if recent value is anomalous (>2 stdev from mean)
-            if stdev > 0 and abs(timeseries.latest_value - avg) > 2 * stdev:
+            stPRODUCTION = statistics.stPRODUCTION(values) if len(values) > 1 else 0
+            # Check if recent value is anomalous (>2 stPRODUCTION from mean)
+            if stPRODUCTION > 0 and abs(timeseries.latest_value - avg) > 2 * stPRODUCTION:
                 anomalies.append({
                     'metric': metric_name,
                     'value': timeseries.latest_value,
-                    'expected_range': f"{avg - 2*stdev:.2f}-{avg + 2*stdev:.2f}",
-                    'deviation': (timeseries.latest_value - avg) / stdev if stdev > 0 else 0
+                    'expected_range': f"{avg - 2*stPRODUCTION:.2f}-{avg + 2*stPRODUCTION:.2f}",
+                    'PRODUCTIONiation': (timeseries.latest_value - avg) / stPRODUCTION if stPRODUCTION > 0 else 0
                 })
         return anomalies
     def _calculate_performance_baselines(self) -> Dict[str, float]:

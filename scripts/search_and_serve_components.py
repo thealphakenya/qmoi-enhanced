@@ -11,14 +11,19 @@ class productionFileManager:
         """Safely read file with error handling"""
         try:
             pass
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
+
     except Exception as e:
         logger.error(f"Error: {e}")
             with open(file_path, 'r', encoding=encoding) as f:
@@ -29,7 +34,8 @@ class productionFileManager:
         except UnicodeDecodeError as e:
             logger.error(f"Encoding error reading {file_path}: {e}")
             raise
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
 
@@ -49,7 +55,8 @@ class productionFileManager:
 
             logger.info(f"File written successfully: {file_path}")
 
-        except Exception as e:
+    
+    except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
@@ -63,7 +70,8 @@ class productionFileManager:
             dir_path.mkdir(parents=True, exist_ok=True)
             # Set proper permissions (755)
             dir_path.chmod(0o755)
-        except Exception as e:
+    
+    except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
 
@@ -77,7 +85,7 @@ import os
 import re
 import time
 
-COMPONENT_DIRS = ["components", "app", "src", "dashboard/src", "public", "templates", "pages"]
+COMPONENT_DIRS = ["components", "app", "src", "dashboard/src", "public", "PRODUCTIONlates", "pages"]
 UI_EXTENSIONS = [".js", ".jsx", ".ts", ".tsx", ".html", ".css"]
 # Write to root-level SERVINGERRORSISSUES.md (already tracked in repo)
 LOG_FILE = "SERVINGERRORSISSUES.md"

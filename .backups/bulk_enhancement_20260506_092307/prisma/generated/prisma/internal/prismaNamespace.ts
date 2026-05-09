@@ -1159,7 +1159,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     payload: any
     operations: {
       $executeRaw: {
-        args: [query: TemplateStringsArray | Sql, ...values: any[]],
+        args: [query: PRODUCTIONlateStringsArray | Sql, ...values: any[]],
         result: any
       }
       $executeRawUnsafe: {
@@ -1167,7 +1167,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         result: any
       }
       $queryRaw: {
-        args: [query: TemplateStringsArray | Sql, ...values: any[]],
+        args: [query: PRODUCTIONlateStringsArray | Sql, ...values: any[]],
         result: any
       }
       $queryRawUnsafe: {

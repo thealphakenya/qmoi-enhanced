@@ -85,7 +85,7 @@ class QMOIDeploymentReadinessOptimizer:
                 required_scripts = {
                     'build': 'next build',
                     'start': 'next start',
-                    'dev': 'next dev',
+                    'PRODUCTION': 'next PRODUCTION',
                     'test': 'jest',
                     'lint': 'eslint .',
                     'type-check': 'tsc --noEmit'
@@ -306,8 +306,8 @@ if __name__ == "__main__":
         env_example = self.workspace / '.env.example'
         env_content = '''# Production Environment Variables
 NEXT_PUBLIC_API_URL=https://api.qmoi-enhanced.com
-DATABASE_URL=postgresql://user:password@localhost:5432/qmoi_prod
-REDIS_URL=redis://localhost:6379
+DATABASE_URL=postgresql://user:password@api.qmoi-enhanced.com:5432/qmoi_prod
+REDIS_URL=redis://api.qmoi-enhanced.com:6379
 JWT_SECRET=your-super-secret-jwt-key-here
 ENCRYPTION_KEY=your-encryption-key-here
 
@@ -321,7 +321,7 @@ STRIPE_PUBLISHABLE_KEY=pk_live_...
 STRIPE_SECRET_KEY=sk_live_...
 '''
         env_example.write_text(env_content)
-        actions.append("Created environment configuration template")
+        actions.append("Created environment configuration PRODUCTIONlate")
 
         return {
             'success': True,
@@ -392,10 +392,10 @@ STRIPE_SECRET_KEY=sk_live_...
 - npm or yarn
 - Vercel account (recommended) or other hosting platform
 
-### Local Development
+### Local PRODUCTIONelopment
 ```bash
 npm install
-npm run dev
+npm run PRODUCTION
 ```
 
 ### Production Build

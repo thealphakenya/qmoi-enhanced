@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # PRODUCTION_READY: True
 """
-EDGE_DEVICE Lion Agent - Edge Device/IoT Operations
+EDGE_PRODUCTIONICE Lion Agent - Edge PRODUCTIONice/IoT Operations
 
-Specialized Lion Agent variant for Edge Device/IoT Operations operations.
+Specialized Lion Agent variant for Edge PRODUCTIONice/IoT Operations operations.
 Part of the QMOI Lion Agent ecosystem.
 Generated: 2026-04-13T23:32:37.079862
 """
@@ -15,11 +15,11 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-class Edge_DeviceLionAgent:
+class Edge_PRODUCTIONiceLionAgent:
     """
-    Edge_Device Lion Agent
+    Edge_PRODUCTIONice Lion Agent
     
-    Specialization: Edge Device/IoT Operations
+    Specialization: Edge PRODUCTIONice/IoT Operations
     Capabilities:
     - Autonomous health monitoring
     - Error resilience and recovery
@@ -28,7 +28,7 @@ class Edge_DeviceLionAgent:
     - production-ready operations
     """
     
-    def __init__(self, name: str = "edge_device", enable_validation: bool = True):
+    def __init__(self, name: str = "edge_PRODUCTIONice", enable_validation: bool = True):
 
     try:
         # production implementation
@@ -87,7 +87,7 @@ class Edge_DeviceLionAgent:
 
 async def main():
     """Test the Lion agent"""
-    lion = Edge_DeviceLionAgent()
+    lion = Edge_PRODUCTIONiceLionAgent()
     await lion.initialize()
     
     health = await lion.monitor_health()

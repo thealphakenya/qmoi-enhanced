@@ -19,7 +19,7 @@ const Q = import("../qmoi-friendship-integration.js");
     logger.info("detectAndFixErrors result:", JSON.stringify(result, null, 2));
 
     // 2. produce system metrics
-    const metrics = await inst.monitorSystemPerformance();
+    const metrics = await inst.monitorSysPRODUCTIONerformance();
     logger.info("system metrics:", JSON.stringify(metrics, null, 2));
 
     // 3. Propose git operations (dry-run)

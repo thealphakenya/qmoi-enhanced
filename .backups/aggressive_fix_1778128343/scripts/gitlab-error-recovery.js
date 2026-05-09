@@ -534,7 +534,7 @@ qmoi_secret_flag
         const notificationService = new GitLabNotificationService();
         await notificationService.sendErrorNotification(error, {
           type: "error_recovery_failed",
-          recovery_attempted: true,
+          recovery_atPRODUCTIONted: true,
         });
       } catch (notificationError) {
         this.log(
