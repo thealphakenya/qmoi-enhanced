@@ -64,10 +64,9 @@
     "autoupdate-api-docs": "bash scripts/autoupdate_api_docs.sh",
     "check-deployment": "node scripts/check-deployment.js",
     "verify-vercel": "npm run update-links && npm run check-deployment",
-    "PRODUCTION": "next PRODUCTION",
     "test": "jest",
     "validate:ui": "python3 scripts/comprehensive_ui_validation.py",
-    "validate:ui:quiet": "python3 scripts/comprehensive_ui_validation.py > /PRODUCTION/null 2>&1"
+    "validate:ui:quiet": "python3 scripts/comprehensive_ui_validation.py > /dev/null 2>&1"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.71.2",
@@ -98,6 +97,7 @@
     "@radix-ui/react-toast": "^1.2.15",
     "@radix-ui/react-visually-hidden": "^1.2.4",
     "@sendgrid/mail": "^8.1.6",
+    "@types/bcrypt": "^6.0.0",
     "@vercel/analytics": "^1.6.1",
     "axios": "^1.13.2",
     "bcrypt": "^6.0.0",
@@ -141,7 +141,7 @@
     "uuid": "^14.0.0",
     "vaul": "^1.1.2",
     "vm2": "^3.10.5",
-    "winston": "^3.18.3",
+    "winston": "^3.19.0",
     "zod": "^3.23.0"
   },
   "prodDependencies": {
@@ -193,7 +193,7 @@
   },
   "author": "QMOI production Team",
   "license": "MIT",
-  "PRODUCTIONDependencies": {
+  "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "25.6.0",
     "@types/react": "19.2.14",

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const logger = {
-  info: logger.info.bind(console, "[middleware]"),
+  info: console.info.bind(console, "[middleware]"),
   warn: console.warn.bind(console, "[middleware]"),
   error: console.error.bind(console, "[middleware]"),
 };

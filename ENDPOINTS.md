@@ -81,16 +81,17 @@ The endpoint inventory is derived from live route handler source files under `ap
 - `/api/admin/users`
 
 ### Authentication API
-- `/api/auth/login`
-- `/api/auth/logout`
-- `/api/auth/register`
-- `/api/auth/refresh`
-- `/api/auth/profile`
-- `/api/auth/verify`
-- `/api/auth/webauthn/register`
-- `/api/auth/webauthn/authenticate`
-- `/api/auth/settings`
-- `/api/auth/session`
+- `POST /api/auth/signin` - User signin with email/username and password or biometric data
+- `POST /api/auth/signup` - User registration with optional biometric enrollment
+- `POST /api/auth/logout` - User logout and session invalidation
+- `GET /api/auth/session` - Verify current session validity
+- `POST /api/auth/verify-session` - Verify session token
+- `POST /api/auth/biometric/capture` - Capture and enroll biometric data
+- `GET /api/auth/profile` - Get user profile information
+- `PUT /api/auth/profile` - Update user profile settings
+- `POST /api/auth/change-password` - Change user password
+- `POST /api/auth/reset-password` - Initiate password reset
+- `POST /api/auth/confirm-reset` - Confirm password reset with token
 
 ### QMOI Core API
 - `/api/qmoi/chat`

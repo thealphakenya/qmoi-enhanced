@@ -78,7 +78,8 @@
     "lib/**/*",
     "types/**/*",
     ".next/types/**/*.ts",
-    ".next/PRODUCTION/types/**/*.ts"
+    ".next/PRODUCTION/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

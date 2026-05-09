@@ -27,6 +27,71 @@ model User {
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
   devices           Device[]
+  authProfile       AuthProfile?
+  biometricProfile  BiometricProfile?
+  sessions          Session[]
+}
+
+model AuthProfile {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  email         String   @unique
+  username      String   @unique
+  passwordHash  String
+  fullName      String
+  phone         String?
+  dateOfBirth   String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  lastLoginAt   DateTime?
+  lastLoginMethod String @default("password")
+  isActive      Boolean  @default(true)
+  emailVerified Boolean  @default(false)
+  phoneVerified Boolean  @default(false)
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model BiometricProfile {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  primaryMethod   String?
+  backupMethods   String   @default("[]") // JSON array
+  securityLevel   String   @default("standard")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  captures        BiometricCapture[]
+}
+
+model BiometricCapture {
+  id            String   @id @default(cuid())
+  biometricProfileId String
+  method        String // "fingerprint" | "facial" | "voice"
+  confidence    Float
+  verified      Boolean @default(false)
+  timestamp     DateTime @default(now())
+  metadata      String? // JSON string
+  biometricProfile BiometricProfile @relation(fields: [biometricProfileId], references: [id], onDelete: Cascade)
+
+  @@index([biometricProfileId])
+}
+
+model Session {
+  id            String   @id @default(cuid())
+  userId        String
+  sessionId     String   @unique
+  authMethod    String   @default("password")
+  biometricMethod String?
+  createdAt     DateTime @default(now())
+  expiresAt     DateTime
+  lastActivityAt DateTime @default(now())
+  ipAddress     String?
+  userAgent     String?
+  isActive      Boolean  @default(true)
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([sessionId])
 }
 
 model Device {

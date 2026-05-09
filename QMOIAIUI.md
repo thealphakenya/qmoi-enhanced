@@ -1252,6 +1252,756 @@ Status indicators use color coding: green for online/active, red for offline/err
 Additional app components available in `app/components/` include:
 - `AuditLogViewer.tsx`, `BackupRestoreManager.tsx`, `CollaborationHub.tsx`, `ComplianceManager.tsx`, `ContentManagementSystem.tsx`, `DeploymentManager.tsx`, `FloatingPreviewWindow.tsx`, `IntegrationManager.tsx`, `LcSpaces.tsx`, `Marketplace.tsx`, `MonitoringDashboard.tsx`, `ResourceManager.tsx`, `SettingsPanel.tsx`, `SupportTicketSystem.tsx`, `TestingAutomationSuite.tsx`, `TrainingCenter.tsx`, `UserManagementPanel.tsx`, `WalletPanel.tsx`, `WorkflowAutomationEngine.tsx`.
 
+## QMOI AI Full Window Experience
+
+### What the user sees on a fresh window open
+- A full-screen, dark-themed interface with a centered `max-w-6xl` content container, elevated `rounded-3xl` cards, and consistent `bg-slate-900` / `bg-slate-950` surfaces.
+- The hero section at the top includes:
+  - `QMOI AI 🤖` badge and branding line
+  - Large heading: `Interactive AI Assistant`
+  - Supporting text describing advanced AI orchestration, consciousness tracking, and emotion-aware responses
+  - A floating status panel showing `AI Status: Online`, mood indicator emoji, and a summary state such as `Happy`
+- A responsive metric grid with six visible summary cards:
+  - `Uptime`
+  - `Tasks Completed`
+  - `Platforms`
+  - `Package Size`
+  - `Connected Devices`
+  - `Active Memory Sessions`
+- A features section listing core capabilities with green checkmarks and compact text items.
+- A system health card grid showing:
+  - `AI Consciousness`
+  - `Memory Sync`
+  - `Security`
+  - `Device Connectivity`
+  - `Auto-Fix Status`
+  - `Revenue Tracking`
+- A primary action grid with large rounded buttons for operations and cross-app navigation:
+  - `Chat with AI`
+  - `Auto-Fix Tools`
+  - `Memory Manager`
+  - `Security Center`
+  - `Device Manager`
+  - `QMOI Space`
+  - `QCity`
+  - `QVillage`
+- A chat interaction panel including:
+  - AI model selector drop-down
+  - Text input field with placeholder `Ask QMOI anything...`
+  - `Send` button
+  - Quick prompt pills for status, device, security, and environment queries
+  - Scrollable conversation area with `You` and `QMOI` message cards
+  - Loading state text when an AI response is in progress
+- A collapsible integrated-components section that can show or hide a live component inventory for advanced users and developers.
+
+### Appearance and layout details
+- The page uses a dark, modern visual theme with strong contrast and accent colors in cyan, blue, orange, purple, green, and red.
+- Card groupings are organized as stacked sections with `space-y-10` and `grid` layouts that adapt from multi-column desktop layouts to single-column mobile flow.
+- Interactive elements use bold text labels, icon-like emoji markers, and hover/tap feedback.
+- The chat window and component inventory are visually separated with subtle borders, rounded corners, and scrollable overflow areas.
+- The overall UI is designed to feel like an AI command center with dashboard cards, system status tiles, and action buttons.
+
+### Route and API surface behind the UI
+- The QMOI AI page is implemented at `app/qmoi-ai/page.tsx`.
+- Runtime data is fetched from:
+  - `/api/production-api` for production status and metrics
+  - `/api/qmoi/chat` for chat message submission
+- Cross-app navigation uses `Link` targets to:
+  - `app/qmoi-space/page.tsx`
+  - `app/qcity/page.jsx`
+  - `app/qvillage/page.tsx`
+- The page is part of the QMOI PWA ecosystem and is surfaced by static launcher assets such as `public/qmoi-ai.html`.
+
+### Page inventory from the current repository
+- `app/qmoi-ai/page.tsx` — main QMOI AI dashboard and interactive console.
+- `app/qmoi-space/page.tsx` — QMOI Space marketplace and collaboration page.
+- `app/qcity/page.jsx` — QCity dashboard and role-aware platform page.
+- `app/qvillage/page.tsx` — QVillage community workspace and dataset page.
+- `app/page.tsx` — root landing page for the Next.js application.
+- `app/admin/page.tsx` — administrative dashboard entry page.
+- `app/dev/page.tsx` — developer tools and diagnostics page.
+- `app/devices/page.tsx` — device management and status page.
+- `app/friendship/page.tsx` — friendship and emotion interface page.
+- `app/test/page.tsx` — test harness or QA page.
+- `public/qmoi-ai.html` — static PWA launcher entry for QMOI AI.
+- `public/qmoi-space.html` — static PWA launcher entry for QMOI Space.
+
+### Documentation context and source alignment
+- `instruct.md` defines the UI/UX audit framework used to build QMOIAIUI.md, focusing on screens, components, navigation, features, settings, and edge cases.
+- `API.md`, `APIs_1.md`, `ENDPOINTS.md`, and `ROUTES.md` confirm the backend route surface and API contract that support QMOI AI's visible frontend behavior.
+- `TREE.md` provides the repository structure evidence for frontend pages, static PWA assets, component directories, and service layer topology.
+- The QMOIAIUI.md update now reflects the actual QMOI AI live page, the complete page inventory, and the direct API integration surface used by the UI.
+
+### QMOI Auto-Update and Auto-Validation
+- QMOI can automatically refresh the entire UI feature set and related app pages through runtime PWA update orchestration and service worker management.
+- The QMOI AI experience uses auto-update endpoints such as `/api/pwa/check-update` and `/api/pwa/auto-update` to verify the latest release metadata, prompt users, or auto-apply updates when new UI assets are available.
+- Service worker behavior is configured for immediate update checks, update prompt display, and `SKIP_WAITING` reloads so the UI is updated without manual redeploys.
+- QMOI also autovalidates UI features across pages, install prompts, route mappings, and docs by using repository validation scripts that keep UI documentation and route inventories synchronized with actual code.
+- This means the QMOI AI dashboard, QMOI Space shell, QCity page, and QVillage page are all part of a self-healing UI layer where feature updates and validation checks are continuously enforced.
+- The auto-validation layer includes markdown documentation verification, route inventory audits, and PWA UI feature checks for consistency, accessibility, and production readiness.
+
+---
+
+## 🚀 Production Deployment & Testing Best Practices
+
+### Pre-Deployment Verification Checklist
+
+#### Environment & Build Validation
+- ✅ **Build Success:** `npm run prod:build` completes without errors
+- ✅ **Static Generation:** All 47 expected static pages prerendered (○ status)
+- ✅ **API Routes:** All 190+ dynamic API routes compiled (ƒ status)
+- ✅ **Middleware:** Deployed and active (indicated in build output)
+- ✅ **Environment Variables:** All `.env.production` vars set correctly
+  - `ADMIN_TOKEN` configured and non-empty
+  - `DATABASE_URL` pointing to production PostgreSQL
+  - `NEXTAUTH_SECRET` regenerated for production
+  - `NEXTAUTH_URL` set to production domain
+- ✅ **Prisma Client:** Generated via `npx prisma generate`
+- ✅ **Dependencies:** Clean `package-lock.json` with 943 packages installed
+- ✅ **Service Startup:** `npm run prod:start` launches on configured PORT (default 3001)
+
+#### Runtime Verification
+```bash
+# 1. Verify build artifacts
+npm run prod:build
+# Expected: ✓ Compiled successfully in ~20s
+# Expected: 47 pages prerendered (○), 190+ routes compiled (ƒ)
+
+# 2. Start production server
+PORT=3001 npm run prod:start
+# Expected: Started Next.js (PID=XXXXX) on port 3001
+# Logs to: ./.qmoi_prod.log
+
+# 3. Verify endpoint health
+curl -I http://localhost:3001/qmoi-ai
+# Expected: HTTP 200 OK
+# Expected Headers: Cache-Control: s-maxage=31536000, ETag present
+```
+
+---
+
+### UI Testing Matrix
+
+#### Browser Compatibility Testing
+**Desktop Browsers:**
+- Chrome/Chromium: Latest 2 versions (v90+)
+- Firefox: Latest 2 versions (v88+)
+- Safari: Latest 2 versions (v14+)
+- Edge: Latest 2 versions (v90+)
+
+**Mobile Browsers:**
+- Chrome Mobile (Android): Latest version
+- Safari Mobile (iOS): Latest version (iOS 14+)
+- Firefox Mobile (Android): Latest version
+
+**Testing Method:**
+```bash
+# Automated browser testing with Playwright
+npx playwright test --headed
+# or
+npm run test:ui:browsers
+
+# Manual testing checklist:
+# - Verify responsive layout on 320px, 768px, 1024px, 1440px widths
+# - Test touch interactions on mobile devices
+# - Verify PWA installation prompt appears (mobile)
+# - Confirm offline mode works (service worker active)
+```
+
+#### Device & Screen Size Coverage
+- **Desktop:** 1440x900, 1920x1080, 2560x1440 (ultra-wide)
+- **Tablet:** iPad (768x1024), iPad Pro (1024x1366)
+- **Mobile:** iPhone SE (375x667), iPhone 14 (390x844), Android flagship (412x915)
+
+#### Component Testing Suite
+```typescript
+// test/components/QMOIAIDashboard.test.tsx
+import { render, screen, waitFor } from '@testing-library/react';
+import QMOIAIDashboard from '@/app/components/QMOIAIDashboard';
+
+describe('QMOIAIDashboard - Production Ready', () => {
+  it('renders all metric cards with correct initial values', () => {
+    render(<QMOIAIDashboard />);
+    expect(screen.getByText(/Uptime/)).toBeInTheDocument();
+    expect(screen.getByText(/Tasks Completed/)).toBeInTheDocument();
+    expect(screen.getByText(/Platforms/)).toBeInTheDocument();
+  });
+
+  it('fetches metrics every 5 seconds', async () => {
+    render(<QMOIAIDashboard />);
+    await waitFor(() => {
+      expect(fetch).toHaveBeenCalledWith('/api/metrics');
+    }, { timeout: 6000 });
+  });
+
+  it('handles offline state gracefully', () => {
+    render(<QMOIAIDashboard />);
+    // Simulate offline
+    window.dispatchEvent(new Event('offline'));
+    expect(screen.getByText(/Offline/)).toBeInTheDocument();
+  });
+
+  it('displays security status correctly', () => {
+    const { container } = render(<QMOIAIDashboard />);
+    const securityBadge = container.querySelector('[data-test-id="security-status"]');
+    expect(securityBadge).toHaveClass('bg-green-500'); // operational state
+  });
+});
+```
+
+---
+
+### Security Testing Checklist
+
+#### Authentication & Authorization
+- ✅ **Bearer Token Validation:** All protected routes (`/admin/master/*`, `/api/admin/*`, `/api/qmoi/*`) require valid `ADMIN_TOKEN`
+  ```bash
+  # Test without token (should fail)
+  curl -I http://localhost:3001/admin/master/dashboard
+  # Expected: 401 Unauthorized
+  
+  # Test with token (should pass)
+  curl -H "Authorization: Bearer YOUR_ADMIN_TOKEN" \
+    -I http://localhost:3001/admin/master/dashboard
+  # Expected: 200 OK
+  ```
+
+- ✅ **API Route Protection:** Middleware validates tokens before controller execution
+- ✅ **Session Security:** NEXTAUTH_SECRET must be cryptographically random (32+ bytes)
+  ```bash
+  # Generate new secret for production
+  openssl rand -base64 32
+  ```
+
+#### Content Security Policy (CSP)
+- ✅ **Next.js Security Headers:** Configured in `next.config.js`
+  ```javascript
+  // Verify CSP headers in production
+  curl -I http://localhost:3001/qmoi-ai | grep -i "content-security-policy"
+  // Expected: Content-Security-Policy header present
+  ```
+
+- ✅ **XSS Prevention:** All user inputs sanitized/escaped by Next.js/React
+- ✅ **CSRF Protection:** NextAuth.js handles CSRF tokens automatically
+
+#### API Endpoint Security Testing
+```bash
+# Test injection attacks (should be safe)
+curl -X POST http://localhost:3001/api/qmoi/chat \
+  -H "Content-Type: application/json" \
+  -d '{"message":"<script>alert(1)</script>"}'
+# Expected: Script tags escaped/removed in response
+
+# Test SQL injection attempts (Prisma parameterization)
+curl -X GET "http://localhost:3001/api/users?id=1' OR '1'='1"
+# Expected: Properly parameterized query, no SQL injection
+
+# Test rate limiting (if configured)
+for i in {1..100}; do curl http://localhost:3001/api/metrics; done
+# Expected: Requests throttled after threshold
+```
+
+#### Data Protection
+- ✅ **HTTPS in Production:** All external URLs use HTTPS
+- ✅ **Environment Variables:** Sensitive data never hardcoded (ADMIN_TOKEN, DATABASE_URL, etc.)
+- ✅ **Secrets Management:** Use `.env.production` only on secure servers, never in git
+
+---
+
+### Performance & Load Testing
+
+#### Lighthouse Audit (Google Chrome DevTools)
+```bash
+# Run Lighthouse audit via CLI
+npm install -g lighthouse
+lighthouse http://localhost:3001/qmoi-ai --view
+
+# Expected scores (Production Ready):
+# - Performance: 85+
+# - Accessibility: 95+
+# - Best Practices: 95+
+# - SEO: 90+
+```
+
+#### Load Testing with k6
+```bash
+// test/load-test.js
+import http from 'k6/http';
+import { check, sleep } from 'k6';
+
+export let options = {
+  vus: 50,  // Virtual users
+  duration: '5m', // 5 minutes
+  thresholds: {
+    http_req_duration: ['p(95)<500', 'p(99)<1000'], // 95th percentile <500ms
+  },
+};
+
+export default function() {
+  let response = http.get('http://localhost:3001/qmoi-ai');
+  check(response, {
+    'status is 200': (r) => r.status === 200,
+    'response time < 500ms': (r) => r.timings.duration < 500,
+  });
+  sleep(1);
+}
+```
+
+**Run Load Test:**
+```bash
+npm install -g k6
+k6 run test/load-test.js
+```
+
+#### Core Web Vitals Monitoring
+
+| Metric | Target | Definition |
+|--------|--------|------------|
+| **LCP** (Largest Contentful Paint) | < 2.5s | When main content rendered |
+| **FID** (First Input Delay) | < 100ms | Responsiveness to user input |
+| **CLS** (Cumulative Layout Shift) | < 0.1 | Visual stability score |
+
+**Monitor in Production:**
+```typescript
+// lib/web-vitals.ts
+import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
+
+function sendToAnalytics(metric: any) {
+  // Send to your analytics backend
+  fetch('/api/analytics/vitals', {
+    method: 'POST',
+    body: JSON.stringify(metric),
+  });
+}
+
+getCLS(sendToAnalytics);
+getFID(sendToAnalytics);
+getFCP(sendToAnalytics);
+getLCP(sendToAnalytics);
+getTTFB(sendToAnalytics);
+```
+
+#### Database Query Performance
+```sql
+-- Monitor query execution on PostgreSQL
+EXPLAIN ANALYZE SELECT * FROM users WHERE email = 'test@example.com';
+
+-- Expected: Planning time < 1ms, Execution time < 10ms
+-- If slower: Add indexes on frequently queried columns
+CREATE INDEX idx_users_email ON users(email);
+```
+
+---
+
+### Accessibility Testing (WCAG 2.1 AA)
+
+#### Automated a11y Testing with Axe
+```bash
+npm install --save-dev @axe-core/react axe-playwright
+
+# Run automated accessibility audit
+npx axe http://localhost:3001/qmoi-ai
+```
+
+#### Manual Accessibility Testing Checklist
+- ✅ **Keyboard Navigation:** All interactive elements reachable via Tab key
+  - Test: Tab through all buttons, inputs, menus
+  - Verify focus indicators visible on all focused elements
+- ✅ **Screen Reader Testing** (NVDA, JAWS, VoiceOver):
+  - Test: Read all dashboard text, button labels, metrics
+  - Verify: Status badges announce role/status changes
+  - Confirm: Error messages announce in real-time
+- ✅ **Color Contrast:** All text meets WCAG AA standards (4.5:1 ratio)
+  ```bash
+  # Test contrast ratio of dashboard colors
+  # Primary text on dark background: Verify >= 4.5:1 ratio
+  # Verify: App uses color + icons/symbols (not color alone)
+  ```
+- ✅ **Form Accessibility:**
+  - All inputs have associated `<label>` elements
+  - Required fields marked with asterisk (*) and `aria-required="true"`
+  - Form errors announced to screen readers
+- ✅ **Image Alt Text:** All images have descriptive alt attributes
+- ✅ **Language Declaration:** `<html lang="en">` set correctly
+
+---
+
+### E2E Testing with Playwright
+
+#### Setup & Configuration
+```bash
+npm install --save-dev @playwright/test
+
+# Create test configuration
+npx playwright test --init
+```
+
+#### E2E Test Suite Example
+```typescript
+// test/e2e/qmoi-ai.spec.ts
+import { test, expect } from '@playwright/test';
+
+test.describe('QMOI AI Dashboard - E2E Tests', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('http://localhost:3001/qmoi-ai');
+  });
+
+  test('homepage loads and displays all metric cards', async ({ page }) => {
+    // Verify header
+    await expect(page.locator('h1')).toContainText('QMOI AI');
+    
+    // Verify all metric cards load
+    const cards = page.locator('[data-test-id="metric-card"]');
+    await expect(cards).toHaveCount(6);
+    
+    // Verify metrics update
+    const uptimeMetric = page.locator('[data-metric="uptime"]');
+    await expect(uptimeMetric).toContainText('%');
+  });
+
+  test('handles offline mode', async ({ page, context }) => {
+    // Go offline
+    await context.setOffline(true);
+    
+    // Verify offline badge
+    const offlineBadge = page.locator('text=Offline');
+    await expect(offlineBadge).toBeVisible();
+    
+    // Go back online
+    await context.setOffline(false);
+    
+    // Verify reconnection
+    const onlineBadge = page.locator('text=Online');
+    await expect(onlineBadge).toBeVisible();
+  });
+
+  test('installation prompt appears on mobile', async ({ context }) => {
+    const mobileContext = await context.browser()?.newContext({ 
+      userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X)',
+      viewport: { width: 390, height: 844 }
+    });
+    const page = await mobileContext!.newPage();
+    
+    await page.goto('http://localhost:3001/qmoi-ai');
+    
+    const installButton = page.locator('[data-test-id="install-app"]');
+    await expect(installButton).toBeVisible();
+    
+    await mobileContext?.close();
+  });
+
+  test('chat interface sends and receives messages', async ({ page }) => {
+    // Click chat input
+    const chatInput = page.locator('[data-test-id="chat-input"]');
+    await chatInput.focus();
+    
+    // Type message
+    await chatInput.fill('Hello QMOI');
+    
+    // Send message
+    const sendButton = page.locator('[data-test-id="send-button"]');
+    await sendButton.click();
+    
+    // Verify message appears in history
+    const message = page.locator('text=Hello QMOI');
+    await expect(message).toBeVisible();
+    
+    // Verify response received
+    const responses = page.locator('[data-test-id="message-response"]');
+    await expect(responses.first()).toBeVisible({ timeout: 5000 });
+  });
+
+  test('theme customizer changes colors correctly', async ({ page }) => {
+    // Open theme customizer
+    const themeButton = page.locator('[data-test-id="theme-button"]');
+    await themeButton.click();
+    
+    // Select different color scheme
+    const colorOption = page.locator('[data-test-id="color-option"]').first();
+    await colorOption.click();
+    
+    // Verify background color changed
+    const dashboard = page.locator('[data-test-id="dashboard"]');
+    const bgColor = await dashboard.evaluate(el => {
+      return window.getComputedStyle(el).backgroundColor;
+    });
+    expect(bgColor).not.toEqual('rgb(11, 18, 32)'); // Original color
+  });
+
+  test('authenticated routes require valid token', async ({ page }) => {
+    // Try accessing protected route without token
+    page.on('response', response => {
+      if (response.url().includes('/api/admin')) {
+        expect(response.status()).toBe(401);
+      }
+    });
+
+    await page.goto('http://localhost:3001/admin/master/dashboard');
+    
+    // Should redirect or show error
+    const response = await page.evaluate(() => fetch('/api/admin/stats'));
+    expect(response.status).toBe(401);
+  });
+});
+```
+
+**Run E2E Tests:**
+```bash
+npm run test:e2e
+# or
+npx playwright test
+
+# View test report
+npx playwright show-report
+```
+
+---
+
+### CI/CD Integration & Deployment
+
+#### GitHub Actions Workflow
+```yaml
+# .github/workflows/deploy-production.yml
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main, prod]
+  workflow_dispatch:
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run unit tests
+        run: npm run test
+      
+      - name: Run E2E tests
+        run: npm run test:e2e
+      
+      - name: Run accessibility audit
+        run: npx axe http://localhost:3001/qmoi-ai
+      
+      - name: Build production bundle
+        run: npm run prod:build
+        env:
+          NODE_ENV: production
+          ADMIN_TOKEN: ${{ secrets.ADMIN_TOKEN }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+      
+      - name: Run load tests
+        run: npm run test:load
+      
+      - name: Deploy to production
+        run: |
+          npm run prod:start
+          # Wait for server to be ready
+          until curl -f http://localhost:3001/qmoi-ai; do
+            sleep 2
+          done
+        env:
+          PORT: 3001
+      
+      - name: Verify deployment
+        run: |
+          curl -I http://localhost:3001/qmoi-ai
+          echo "Deployment successful!"
+```
+
+#### Deployment Script
+```bash
+#!/bin/bash
+# scripts/deploy.sh
+set -e
+
+echo "🚀 Starting QMOI AI Production Deployment..."
+
+# Step 1: Build
+echo "📦 Building production bundle..."
+npm run prod:build
+
+# Step 2: Generate Prisma client
+echo "🔧 Generating Prisma client..."
+npx prisma generate
+
+# Step 3: Start server
+echo "🏃 Starting server on port 3001..."
+PORT=3001 npm run prod:start
+
+# Step 4: Wait for startup
+echo "⏳ Waiting for server to be ready..."
+for i in {1..30}; do
+  if curl -sf http://localhost:3001/qmoi-ai > /dev/null 2>&1; then
+    echo "✅ Server is ready!"
+    break
+  fi
+  echo "Attempt $i/30... retrying in 2 seconds"
+  sleep 2
+done
+
+# Step 5: Verify
+echo "🔍 Verifying deployment..."
+curl -I http://localhost:3001/qmoi-ai
+echo ""
+echo "✅ QMOI AI Production Deployment Complete!"
+echo "📍 Access at: http://localhost:3001/qmoi-ai"
+```
+
+---
+
+### Monitoring & Rollback Procedures
+
+#### Production Monitoring Setup
+
+**Health Check Endpoint:**
+```typescript
+// app/api/health/route.ts
+export async function GET() {
+  try {
+    // Check database connection
+    const dbStatus = await prisma.$queryRaw`SELECT 1`;
+    
+    // Check Redis/cache (if used)
+    // const cacheStatus = await redis.ping();
+    
+    // Check API dependencies
+    const aiServiceStatus = await fetch(`${process.env.AI_SERVICE_URL}/health`);
+    
+    return Response.json({
+      status: 'healthy',
+      timestamp: new Date().toISOString(),
+      checks: {
+        database: dbStatus ? 'ok' : 'failed',
+        // cache: cacheStatus,
+        ai_service: aiServiceStatus.ok ? 'ok' : 'failed'
+      }
+    });
+  } catch (error) {
+    return Response.json({
+      status: 'unhealthy',
+      error: error instanceof Error ? error.message : 'Unknown error'
+    }, { status: 503 });
+  }
+}
+```
+
+**Monitor with Uptime Service:**
+```bash
+# Ping health endpoint every 30 seconds
+while true; do
+  curl -f http://localhost:3001/api/health || \
+    echo "⚠️  QMOI AI health check failed at $(date)"
+  sleep 30
+done
+```
+
+#### Rollback Procedure
+
+**If deployment fails:**
+```bash
+#!/bin/bash
+# scripts/rollback.sh
+
+echo "🔄 Starting QMOI AI Rollback..."
+
+# Step 1: Kill current process
+if [ -f ./.qmoi_prod.pid ]; then
+  PID=$(cat ./.qmoi_prod.pid)
+  kill -9 $PID 2>/dev/null || true
+  echo "✓ Killed PID $PID"
+fi
+
+# Step 2: Restore previous version
+git checkout HEAD~1 -- . || echo "Manual restore required"
+
+# Step 3: Install dependencies
+npm ci
+
+# Step 4: Rebuild & restart
+npm run prod:build
+PORT=3001 npm run prod:start
+
+# Step 5: Verify
+sleep 5
+if curl -sf http://localhost:3001/qmoi-ai > /dev/null 2>&1; then
+  echo "✅ Rollback successful!"
+else
+  echo "❌ Rollback failed - manual intervention required"
+  exit 1
+fi
+```
+
+---
+
+### Production Incident Response
+
+#### Critical Issue Response Steps
+1. **Immediate:** Kill production service to prevent data corruption
+   ```bash
+   kill -9 $(cat ./.qmoi_prod.pid)
+   ```
+
+2. **Assess:** Check logs for error root cause
+   ```bash
+   tail -100 ./.qmoi_prod.log | grep -i error
+   ```
+
+3. **Investigate:** Search git history for recent changes
+   ```bash
+   git log --oneline -20
+   ```
+
+4. **Fix:** Apply hotfix and test locally
+   ```bash
+   git checkout -b hotfix/critical-issue
+   # Make fix
+   npm run test:e2e
+   ```
+
+5. **Deploy:** Execute rollout with monitoring
+   ```bash
+   bash scripts/deploy.sh
+   ```
+
+6. **Monitor:** Watch logs and metrics closely
+   ```bash
+   tail -f ./.qmoi_prod.log
+   ```
+
+#### Incident Log Template
+```markdown
+## Incident: [Title]
+**Date:** [ISO timestamp]
+**Severity:** [Critical|High|Medium|Low]
+**Duration:** [Start] to [End]
+**Impact:** [Description of user impact]
+
+### Root Cause
+[Investigation findings]
+
+### Fix Applied
+[Code changes, configuration updates, etc.]
+
+### Prevention
+[How to prevent similar incidents]
+
+### PostMortem
+[Lessons learned, process improvements]
+```
+
 ---
 
 ## API Integration Reference

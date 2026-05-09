@@ -14,7 +14,7 @@ import { QMOIMasterDashboard } from "../components/QMOIMasterDashboard";
 import SponsoredUsersManager from "../components/SponsoredUsersManager";
 import UserProfile from "../components/user/UserProfile";
 import WalletList from "../components/wallet/WalletList";
-import RegisterForm from "../components/auth/RegisterForm";
+import LoginForm from "../components/auth/LoginForm";
 import QI from "../components/QI";
 import QIStateWindow from "../components/QIStateWindow";
 import NotificationCenter from "../components/NotificationCenter";
@@ -53,6 +53,8 @@ export default function QMoiAIPage() {
   const [chatHistory, setChatHistory] = useState([]);
   const [isChatLoading, setIsChatLoading] = useState(false);
   const [statusInfo, setStatusInfo] = useState(fallbackStatus);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     let active = true;
@@ -99,7 +101,15 @@ export default function QMoiAIPage() {
       }
     : fallbackStatus;
 
-  const handleChatSend = async () => {
+  const handleLogin = (userData) => {
+    setUser(userData);
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    setIsLoggedIn(false);
+  };
     const input = chatMessage.trim();
     if (!input) return;
 
@@ -140,28 +150,39 @@ export default function QMoiAIPage() {
 
   return (
     <main className="min-h-screen bg-slate-950 p-8 text-white">
-      <div className="max-w-6xl mx-auto space-y-10">
-        <section className="rounded-3xl bg-slate-900 p-8 border border-slate-700 shadow-xl">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p className="mb-2 text-sm uppercase tracking-[0.3em] text-slate-400">QMOI AI 🤖</p>
-              <h1 className="text-5xl font-extrabold text-white sm:text-6xl">Interactive AI Assistant</h1>
-              <p className="mt-4 max-w-3xl text-lg text-slate-300">
-                Advanced AI orchestration with consciousness tracking, emotion-aware responses, and comprehensive system control.
-              </p>
-            </div>
-            <div className="rounded-3xl bg-slate-950/80 px-5 py-4 border border-slate-700 text-right">
-              <p className="text-xs uppercase tracking-[0.24em] text-slate-400">AI Status</p>
-              <p className="mt-2 text-3xl font-semibold text-cyan-300">● Online</p>
-              <div className="mt-2 text-sm">
-                <div className="flex items-center gap-2">
-                  <span className="text-emerald-400">😊</span>
-                  <span>Happy</span>
+      {!isLoggedIn ? (
+        <div className="flex items-center justify-center min-h-screen">
+          <LoginForm onLogin={handleLogin} />
+        </div>
+      ) : (
+        <div className="max-w-6xl mx-auto space-y-10">
+          <section className="rounded-3xl bg-slate-900 p-8 border border-slate-700 shadow-xl">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              <div>
+                <p className="mb-2 text-sm uppercase tracking-[0.3em] text-slate-400">QMOI AI 🤖</p>
+                <h1 className="text-5xl font-extrabold text-white sm:text-6xl">Interactive AI Assistant</h1>
+                <p className="mt-4 max-w-3xl text-lg text-slate-300">
+                  Advanced AI orchestration with consciousness tracking, emotion-aware responses, and comprehensive system control.
+                </p>
+              </div>
+              <div className="rounded-3xl bg-slate-950/80 px-5 py-4 border border-slate-700 text-right">
+                <p className="text-xs uppercase tracking-[0.24em] text-slate-400">AI Status</p>
+                <p className="mt-2 text-3xl font-semibold text-cyan-300">● Online</p>
+                <div className="mt-2 text-sm">
+                  <div className="flex items-center gap-2">
+                    <span className="text-emerald-400">😊</span>
+                    <span>Happy</span>
+                  </div>
                 </div>
+                <button
+                  onClick={handleLogout}
+                  className="mt-2 text-xs text-slate-400 hover:text-white underline"
+                >
+                  Logout
+                </button>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
         {/* Statistics Grid */}
         <section className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -441,6 +462,7 @@ export default function QMoiAIPage() {
           )}
         </section>
       </div>
+      )}
     </main>
   );
 }
