@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { AuthService } from "../../../../lib/auth-service";
+import { authService } from "../../../../lib/auth/service";
+import { prisma } from "../../../../lib/db/prisma";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -9,62 +10,81 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { email, username, password, biometricMethod, biometricData, rememberMe } = body;
 
-    // Validate required fields
     if ((!email && !username) || (!password && !biometricData)) {
       return NextResponse.json(
-        { success: false, message: "Email/username and password/biometric data are required" },
+        { success: false, message: "Email/username and password or biometric data are required" },
         { status: 400 }
       );
     }
 
-    // Get client information
-    const ipAddress = req.headers.get('x-forwarded-for') ||
-                     req.headers.get('x-real-ip') ||
-                     'unknown';
+    const identifier = email || username || '';
+    const ipAddress = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
     const userAgent = req.headers.get('user-agent') || 'unknown';
 
-    const signinData = {
-      email,
-      username,
-      password,
-      biometricMethod,
-      biometricData,
-      rememberMe,
-      ipAddress,
-      userAgent,
-    };
+    // Ensure the user exists before attempting authentication
+    const authProfile = await prisma.authProfile.findFirst({
+      where: email
+        ? { email }
+        : { username },
+      include: { user: true },
+    });
 
-    const result = await AuthService.signin(signinData);
-
-    if (result.success) {
-      // Set session cookie for web clients
-      const response = NextResponse.json({
-        success: true,
-        user: result.user,
-        sessionId: result.sessionId,
-        message: result.message,
-      });
-
-      // Set secure session cookie
-      response.cookies.set('sessionId', result.sessionId!, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
-        maxAge: 30 * 24 * 60 * 60, // 30 days
-        path: '/',
-      });
-
-      return response;
-    } else {
+    if (!authProfile) {
       return NextResponse.json(
-        { success: false, message: result.message, error: result.error },
+        { success: false, message: "Invalid credentials", error: "INVALID_CREDENTIALS" },
         { status: 401 }
       );
     }
+
+    let authResult;
+
+    if (password) {
+      authResult = await authService.authenticatePassword(identifier, password);
+    } else if (biometricMethod && biometricData) {
+      authResult = await authService.verifyBiometric(
+        authProfile.userId,
+        biometricMethod,
+        biometricData,
+      );
+    }
+
+    if (!authResult || !authResult.success) {
+      return NextResponse.json(
+        { success: false, message: authResult?.message || "Authentication failed", error: authResult?.error },
+        { status: 401 }
+      );
+    }
+
+    const response = NextResponse.json({
+      success: true,
+      user: authResult.user,
+      tokens: authResult.tokens,
+      message: authResult.message || "Signin successful",
+    });
+
+    response.cookies.set('accessToken', authResult.tokens.accessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 60 * 60, // 1 hour
+      path: '/',
+    });
+
+    if (authResult.tokens.refreshToken) {
+      response.cookies.set('refreshToken', authResult.tokens.refreshToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict',
+        maxAge: 7 * 24 * 60 * 60, // 7 days
+        path: '/',
+      });
+    }
+
+    return response;
   } catch (error) {
     console.error("Signin error:", error);
     return NextResponse.json(
-      { success: false, message: "Internal server error" },
+      { success: false, message: "Internal server error", error: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     );
   }

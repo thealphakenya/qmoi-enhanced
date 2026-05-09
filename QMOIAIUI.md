@@ -78,6 +78,117 @@ Upon launching the QMOI AI app, users are presented with:
 - **Finance and Wallet UI:** WalletPanel, WalletList, LeahWallet, Cashon approvals, and transaction history
 - **File and Deployment UI:** FileUploadDownload, DownloadManager, QFileManager, GitHub controls, and Vercel deployment interfaces
 - **Voice & Media UI:** AudioVisualizer, QMediaPlayer, VoiceLibraryPanel, VoiceSelectionPanel, and AudibleConversation
+
+---
+
+## 🔐 Production Authentication System
+
+### Authentication Flow
+
+**Initial State: User Not Authenticated**
+1. User vists `/qmoi-ai`
+2. LoginForm component displays (email/password fields)
+3. Demo credentials available for testing: `demo@qmo.ai` / `demo`
+
+**Signin Process: User Authentication**
+1. User enters email and password
+2. POST request to `/api/auth/signin` with credentials
+3. Server verifies against bcrypt-hashed password in database
+4. Session created in PostgreSQL database with expiration (30 days)
+5. Session ID returned in HTTP-only secure cookie
+6. User profile and role information returned
+7. Page re-renders with authenticated user data
+8. Winston audit log records signin event with IP address and timestamp
+
+**Post-Authentication: User Has Access**
+1. Dashboard displays full QMOI AI interface
+2. User profile visible in header with role badge
+3. Logout button available
+4. Session automatically extends on activity
+5. All API endpoints protected require valid session
+
+### Biometric Authentication (Optional)
+
+**Enrollment Process**
+1. User captured fingerprint/facial/voice sample during signup or in settings
+2. Multiple captures (3+) required for enrollment
+3. Confidence scoring validates quality
+4. Once enrolled, biometric available as signin method
+
+**Biometric Signin**
+1. User selects biometric method at login
+2. Fingerprint/facial scan or voice recognition occurs
+3. System verifies against enrolled biometric data
+4. Confidence threshold > 0.85 required for authentication
+5. Session created same as password signin
+
+### Role-Based Access Control (RBAC)
+
+**Roles Available:**
+
+| Role | Level | Features | Access |
+|------|-------|----------|--------|
+| **Master** (Victor) | 100 | Full admin, audit logs, user management, financial controls | Unrestricted access to all features |
+| **Sister** (Leah) | 80 | Family dashboard, limited admin, personal finances | Family-level features and data |
+| **User** | 10 | Personal dashboard, account management, own transactions | Standard user features only |
+| **Guest** | 1 | Public content only | Read-only access |
+
+**Permission Examples:**
+- Master: `auth:manage-users`, `admin:view-logs`, `finance:view-all-accounts`
+- Sister: `admin:view-dashboard`, `finance:view-family-accounts`
+- User: `account:edit-profile`, `finance:view-own-accounts`
+
+### Security Features
+
+✅ **Password Security:** bcrypt hashing with 12 salt rounds
+✅ **Session Management:** Database-backed with expiration and activity tracking
+✅ **IP Tracking:** Session records user IP and User-Agent for audit log
+✅ **Secure Cookies:** HTTP-only, SameSite=strict for web clients
+✅ **Audit Logging:** Winston logs all auth events with timestamps and outcomes
+✅ **Rate Limiting:** Automatic protection against brute force attacks (-Pending implementation)
+✅ **Biometric Support:** Optional multi-factor authentication
+
+### Authentication API Endpoints
+
+```bash
+# Signin
+POST /api/auth/signin
+Content-Type: application/json
+{
+  "email": "demo@qmo.ai",
+  "password": "demo"
+}
+
+# Signup
+POST /api/auth/signup
+Content-Type: application/json
+{
+  "email": "user@example.com",
+  "username": "username",
+  "password": "SecurePassword123!",
+  "fullName": "User Name",
+  "acceptTerms": true
+}
+
+# Verify Session
+POST /api/auth/verify-session
+Authorization: Bearer <sessionId>
+
+# Logout
+POST /api/auth/logout
+Cookie: sessionId=<sessionId>
+
+# Biometric Capture
+POST /api/auth/biometric/capture
+{
+  "userId": "user_id",
+  "biometricMethod": "fingerprint",
+  "confidence": 0.92,
+  "verified": true
+}
+```
+
+---
 - **Master/Sister/User Access:** Role-specific dashboard flows for master, sister, and user mapped across QMOI AI, QCity, QVillage, and QMOI Space
 - **Quick Reference Coverage:** References to `COMPONENT_SERVING_QUICK_REFERENCE_INDEX.md` and all major shared UI components
 

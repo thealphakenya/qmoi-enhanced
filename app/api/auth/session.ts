@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { AuthService } from "../../../lib/auth-service";
 import { prisma } from "../../../lib/db/prisma";
 import { authService } from "../../../lib/auth/service";
 

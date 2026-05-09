@@ -1,33 +1,35 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "../../../lib/db/prisma";
-import { authService } from "../../../lib/auth/service";
+import { AuthService } from "../../../../lib/auth-service";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
   try {
-    // Get token from Authorization header
-    const authHeader = req.headers.get('authorization');
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    // Get session ID from cookie or Authorization header
+    const sessionId = req.cookies.get('sessionId')?.value ||
+                     req.headers.get('authorization')?.substring(7);
+
+    if (!sessionId) {
       return NextResponse.json(
-        { success: false, error: "Authorization header required" },
+        { success: false, message: "No active session found" },
         { status: 401 }
       );
     }
 
-    const token = authHeader.substring(7);
-    const decoded = authService.decodeToken(token);
-
-    if (!decoded) {
+    // Verify session exists and is active
+    const session = await AuthService.verifySession(sessionId);
+    if (!session) {
       return NextResponse.json(
-        { success: false, error: "Invalid or expired token" },
+        { success: false, message: "Session is invalid or expired" },
         { status: 401 }
       );
     }
 
-    const body = await req.json();
-    const { revokeAllSessions = false } = body;
+    // Logout (invalidate session)
+    const logoutResult = await AuthService.logout(sessionId);
+
+    if (logoutResult.success) {
 
     // Get user info for audit log
     const user = await prisma.user.findUnique({

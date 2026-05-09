@@ -25,6 +25,43 @@ fully implemented
 - 249 of those files are active route handler endpoints; 28 files are supporting config/docs and helper files under `app/api/`.
 - Route categories include auth, qmoi, qcity, qvillage, cashon, ai, media, deploy, and more.
 
+## Production Authentication System
+
+### Database Models (Prisma ORM with PostgreSQL)
+- **User**: Core user record with email, username, role, permissions, account status
+- **AuthProfile**: Authentication credentials (bcrypt-hashed password), email verification, last login timestamp
+- **BiometricProfile**: Biometric enrollment status and security level settings
+- **BiometricCapture**: Individual biometric capture records with confidence scores and metadata
+- **Session**: Active user sessions with expiration, IP/User-Agent tracking
+
+### Security Features
+- **Password Hashing**: bcrypt with 12 salt rounds (production-grade)
+- **Session Management**: Database-backed sessions with 30-day expiration and activity tracking
+- **Biometric Authentication**: Support for fingerprint, facial, and voice recognition with confidence scoring
+- **Audit Logging**: Winston structured logging with IP, device, and timestamp tracking for all auth events
+- **Secure Cookies**: HTTP-only, SameSite=strict cookies for web clients
+- **Rate Limiting**: Automatic rate limiting on signin/signup endpoints
+- **Multi-Factor**: Optional biometric as secondary authentication factor
+
+### Authentication Flow
+1. User calls POST /api/auth/signin with email and password
+2. Service queries AuthProfile by email/username
+3. bcrypt compares provided password with stored hash
+4. Session created in database with expiration timestamp
+5. Session ID returned in HTTP-only cookie and response body
+6. Winston logs signin event with IP, result, duration
+
+### Biometric Enrollment Flow
+1. User provides fingerprint/facial/voice sample
+2. Service stores capture with confidence score and metadata
+3. After 3+ captures with avg confidence > 0.8, enrollment complete
+4. User can use biometric for future signin (confidence > 0.85 required)
+
+### Role-Based Access Control (RBAC)
+- **Master**: Full system access, audit log viewing, user management
+- **Sister**: Family-level access, limited administrative functions
+- **User**: Standard user access, personal data only
+
 ## Complete API List
 
 1. `AlertSettingsScreen()`

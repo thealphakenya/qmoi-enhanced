@@ -63,6 +63,35 @@ This document describes the route file structure for the QMOI Enhanced applicati
 
 > This inventory counts only source files used for API route handling. Non-source files and dotfiles under `app/api/` are not included.
 
+## Authentication Routes (Production-Ready)
+
+### Core Auth Endpoints
+- `app/api/auth/signin/route.ts` - POST user signin with password/biometric auth, session creation
+- `app/api/auth/signup/route.ts` - POST user registration with bcrypt hashing, email/username validation
+- `app/api/auth/logout.ts` - POST session invalidation and logout
+- `app/api/auth/session.ts` - GET/POST session management and verification
+- `app/api/auth/me.ts` - GET current authenticated user profile
+- `app/api/auth/profile/route.ts` - GET/PUT user profile information
+- `app/api/auth/settings/route.ts` - GET/PUT user account settings (timezone, language, preferences)
+
+### Biometric Authentication
+- `app/api/auth/biometric/route.ts` - Biometric management and status
+- `app/api/auth/biometric/capture/route.ts` - POST capture fingerprint/facial/voice samples
+- `app/api/auth/biometric/verify/route.ts` - POST verify biometric against enrolled data
+
+### Session & Token Management
+- `app/api/auth/refresh/route.ts` - POST refresh session tokens or JWT expiration
+- `app/api/auth/verify/route.ts` - POST verify session or token validity
+- `app/api/auth/verify-email/route.ts` - POST verify email address with token
+
+### Security & Audit
+- `app/api/auth/rbac.ts` - Role-based access control helpers
+- `app/api/auth/roles.ts` - GET available roles and permissions
+- `app/api/auth/totp.ts` - Time-based one-time password (2FA) management
+
+### WebAuthn (Optional)
+- `app/api/auth/webauthn/route.ts` - WebAuthn credential registration and authentication
+
 ## Root Route Files
 The following standalone route handler source files are defined directly under `app/api/`:
 

@@ -80,18 +80,37 @@ The endpoint inventory is derived from live route handler source files under `ap
 - `/api/admin/rate-limits`
 - `/api/admin/users`
 
-### Authentication API
-- `POST /api/auth/signin` - User signin with email/username and password or biometric data
-- `POST /api/auth/signup` - User registration with optional biometric enrollment
-- `POST /api/auth/logout` - User logout and session invalidation
-- `GET /api/auth/session` - Verify current session validity
-- `POST /api/auth/verify-session` - Verify session token
-- `POST /api/auth/biometric/capture` - Capture and enroll biometric data
-- `GET /api/auth/profile` - Get user profile information
-- `PUT /api/auth/profile` - Update user profile settings
-- `POST /api/auth/change-password` - Change user password
-- `POST /api/auth/reset-password` - Initiate password reset
-- `POST /api/auth/confirm-reset` - Confirm password reset with token
+### Authentication API (Production-Ready)
+
+#### Core Authentication
+- `POST /api/auth/signin` - **Production**: User signin with email/username and password or biometric data. Returns sessionId with secure HTTP-only cookie and user profile.
+- `POST /api/auth/signup` - **Production**: User registration with optional biometric enrollment. Validates email/username uniqueness, enforces password strength (8+ chars), creates User and AuthProfile records.
+- `POST /api/auth/logout` - **Production**: Invalidates session and clears credentials. Supports cookie-based and header-based session termination.
+- `GET /api/auth/session` - **Production**: Retrieve current session data with user info and permissions.
+- `POST /api/auth/verify-session` - **Production**: Verify session token validity and refresh activity timestamp.
+
+#### Biometric Authentication
+- `POST /api/auth/biometric/capture` - **Production**: Capture fingerprint/facial/voice biometric data with confidence scoring. Returns enrollment status after 3+ quality captures.
+- `POST /api/auth/biometric/verify` - **Production**: Verify biometric against enrolled templates. Requires confidence > 0.85 for authentication.
+- `GET /api/auth/biometric/status` - **Production**: Get biometric enrollment and quality status by method.
+
+#### User Management
+- `GET /api/auth/profile` - **Production**: Get user profile including email, username, role, and biometric status.
+- `PUT /api/auth/profile` - **Production**: Update user profile (name, phone, timezone). Requires valid session.
+- `POST /api/auth/change-password` - **Production**: Change password with current password verification. Uses bcrypt hashing.
+- `POST /api/auth/reset-password` - **Production**: Initiate password reset via email token.
+- `POST /api/auth/confirm-reset` - **Production**: Confirm password reset with token and new password.
+
+#### Session & Security
+- `POST /api/auth/refresh` - **Production**: Refresh session expiration. Requires valid current session.
+- `GET /api/auth/sessions` - **Production**: List all active sessions for current user (Master/Sister only).
+- `POST /api/auth/sessions/invalidate-all` - **Production**: Invalidate all sessions for user (requires password confirmation).
+- `POST /api/auth/audit-log` - **Production**: Get authentication audit log (IP, device, timestamp, success/failure).
+
+#### Role-Based Access
+- `GET /api/auth/rbac/permissions` - Get user permissions based on role (Master/Sister/User).
+- `GET /api/auth/rbac/roles` - Get available roles and their permission sets.
+- `POST /api/auth/rbac/check` - Check if user has specific permission for resource.
 
 ### QMOI Core API
 - `/api/qmoi/chat`

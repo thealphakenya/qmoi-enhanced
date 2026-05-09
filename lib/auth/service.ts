@@ -4,6 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 import crypto from 'crypto';
 import { prisma } from '@/lib/prisma';
 
@@ -51,7 +52,117 @@ export const authService = {
     return { accessToken, refreshToken, sessionId, expiresAt };
   },
 
-  verifyJwt: (token: string) => {
+  hashPassword: async (password: string) => {
+    return bcrypt.hash(password, 12);
+  },
+
+  verifyPassword: async (password: string, hash: string) => {
+    return bcrypt.compare(password, hash);
+  },
+
+  authenticatePassword: async (
+    identifier: string,
+    password: string
+  ) => {
+    const profile = await prisma.authProfile.findFirst({
+      where: {
+        OR: [
+          { email: identifier },
+          { username: identifier },
+        ],
+      },
+      include: { user: true },
+    });
+
+    if (!profile || !profile.user || !profile.isActive || profile.user.accountStatus !== 'active') {
+      return { success: false, message: 'Invalid credentials', error: 'INVALID_CREDENTIALS' };
+    }
+
+    const passwordMatches = await authService.verifyPassword(password, profile.passwordHash);
+    if (!passwordMatches) {
+      return { success: false, message: 'Invalid credentials', error: 'INVALID_CREDENTIALS' };
+    }
+
+    const permissions = profile.user.permissions ? JSON.parse(profile.user.permissions) : [];
+    const tokens = await authService.generateTokens(profile.userId, profile.email, profile.user.role, permissions);
+
+    await prisma.authProfile.update({
+      where: { userId: profile.userId },
+      data: { lastLoginAt: new Date(), lastLoginMethod: 'password' },
+    });
+
+    return {
+      success: true,
+      user: {
+        id: profile.userId,
+        email: profile.email,
+        username: profile.username,
+        fullName: profile.fullName,
+        role: profile.user.role,
+        permissions,
+      },
+      tokens,
+    };
+  },
+
+  verifyBiometric: async (
+    userId: string,
+    method: 'fingerprint' | 'facial' | 'voice',
+    biometricData: { confidence: number; verified: boolean; metadata?: Record<string, any> },
+  ) => {
+    const profile = await prisma.authProfile.findUnique({
+      where: { userId },
+      include: { user: true, biometricProfile: { include: { captures: true } } },
+    });
+
+    if (!profile || !profile.user || !profile.biometricProfile) {
+      return { success: false, message: 'Biometric profile not found', error: 'PROFILE_NOT_FOUND' };
+    }
+
+    const captureRecords = profile.biometricProfile.captures.filter((capture) => capture.method === method && capture.verified === true);
+    if (captureRecords.length < 1) {
+      return { success: false, message: 'No enrolled biometric captures found', error: 'BIOMETRIC_NOT_ENROLLED' };
+    }
+
+    const verified = biometricData.confidence > 0.85;
+    if (!verified) {
+      return { success: false, message: 'Biometric authentication failed', error: 'INVALID_BIOMETRIC' };
+    }
+
+    // Record new biometric capture event
+    await prisma.biometricCapture.create({
+      data: {
+        biometricProfileId: profile.biometricProfile.id,
+        method,
+        confidence: biometricData.confidence,
+        verified: biometricData.verified,
+        metadata: biometricData.metadata ? JSON.stringify(biometricData.metadata) : null,
+      },
+    });
+
+    const permissions = profile.user.permissions ? JSON.parse(profile.user.permissions) : [];
+    const tokens = await authService.generateTokens(profile.userId, profile.email, profile.user.role, permissions);
+
+    await prisma.authProfile.update({
+      where: { userId: profile.userId },
+      data: { lastLoginAt: new Date(), lastLoginMethod: 'biometric' },
+    });
+
+    return {
+      success: true,
+      user: {
+        id: profile.userId,
+        email: profile.email,
+        username: profile.username,
+        fullName: profile.fullName,
+        role: profile.user.role,
+        permissions,
+      },
+      tokens,
+    };
+  },
+
+  decodeToken: (token: string) => {
     try {
       const payload = jwt.verify(token, JWT_SECRET) as any;
       return { ok: true, payload };
