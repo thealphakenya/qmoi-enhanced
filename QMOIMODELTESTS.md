@@ -184,6 +184,12 @@ assert result["coherence"] > 0.8
 assert result["relevance"] > 0.85
 ```
 
+## Production Integration Tests
+- API connectivity test coverage for `/api/qmoi-model`, `/api/qmoi/chat`, `/api/qcity/status`, and `/api/qi-spaces`.
+- Chat/messaging workflow tests validate QMOI inference output structure and production response behavior.
+- UI integration tests ensure QMOI chat works in QMOI AI and QCity dashboards and that model health is displayed correctly.
+- Static shell tests verify `/q-alpha.html` can retrieve QMOI model status and surface successful production state.
+
 ## ⚡ Continuous Testing
 
 ### CI/CD Pipeline

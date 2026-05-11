@@ -9,7 +9,7 @@ const urlsToCache = [
 ];
 
 // Install event
-self.adPRODUCTIONentListener('install', event => {
+self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
@@ -19,7 +19,7 @@ self.adPRODUCTIONentListener('install', event => {
 });
 
 // Fetch event
-self.adPRODUCTIONentListener('fetch', event => {
+self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
@@ -30,7 +30,7 @@ self.adPRODUCTIONentListener('fetch', event => {
 });
 
 // Activate event
-self.adPRODUCTIONentListener('activate', event => {
+self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(

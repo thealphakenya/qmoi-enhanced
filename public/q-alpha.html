@@ -230,6 +230,10 @@
           <span class="status-value" id="swStatus">Checking...</span>
         </div>
         <div class="status-item">
+          <span class="status-label">🧠 QMOI Model:</span>
+          <span class="status-value" id="qmoiStatus">Checking...</span>
+        </div>
+        <div class="status-item">
           <span class="status-label">⚙️ Console:</span>
           <span class="status-value" id="consoleStatus">Ready</span>
         </div>
@@ -265,6 +269,9 @@
         >
           ⬇️ Download Data
         </button>
+        <button class="btn-secondary" onclick="runQmoiHealthCheck()">
+          🧪 Check QMOI
+        </button>
         <button class="btn-secondary" onclick="checkAppInfo()">
           ℹ️ App Info
         </button>
@@ -292,6 +299,7 @@
         if (window.qmoiPWAManager) {
           window.qmoiPWAManager.appName = "Q latest";
           updateStatus();
+          updateModelStatus();
           window.qmoiPWAManager.requestNotificationPermission();
 
           if (window.qmoiPWAManager.isInstalled()) {
@@ -301,10 +309,54 @@
         }
       });
 
-      // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-function updateStatus() {
+      function showNotification(message) {
+        if (window.qmoiPWAManager?.notify) {
+          window.qmoiPWAManager.notify(message);
+          return;
+        }
+        alert(message);
+      }
+
+      async function updateModelStatus() {
+        const statusElement = document.getElementById("qmoiStatus");
+        if (statusElement) {
+          statusElement.textContent = "Checking...";
+        }
+
+        try {
+          const response = await fetch("/api/qmoi-model", { cache: "no-store" });
+          const data = await response.json();
+
+          if (statusElement) {
+            statusElement.textContent = data?.status === "ready" ? `✓ ${data.model || "qmoi-prod"}` : `✕ ${data.status || "unavailable"}`;
+          }
+        } catch (error) {
+          if (statusElement) {
+            statusElement.textContent = "✕ Error";
+          }
+          console.error("Failed to load QMOI model status:", error);
+        }
+      }
+
+      async function runQmoiHealthCheck() {
+        try {
+          const response = await fetch("/api/qmoi/chat", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ input: "Check QMOI model status and connection.", userId: "q-alpha-shell", model: "qmoi-prod" }),
+          });
+          const data = await response.json();
+          showNotification(`QMOI response: ${data?.response || data?.message || "No response"}`);
+          updateModelStatus();
+        } catch (error) {
+          console.error("QMOI health check failed:", error);
+          showNotification("QMOI health check failed. See console for details.");
+        }
+      }
+
+      function updateStatus() {
         const manager = window.qmoiPWAManager;
         if (!manager) return;
 
@@ -321,16 +373,11 @@ function updateStatus() {
             : "○ Not Active";
       }
 
-      // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-function checkAppInfo() {
+      function checkAppInfo() {
         const manager = window.qmoiPWAManager;
         if (!manager) return;
         const info = manager.getAppInfo();
-        notification.show(
-          `App: ${info.name}\nInstalled: ${info.installed}\nService Worker: ${info.swActive}`,
-        );
+        showNotification(`App: ${info.name}\nInstalled: ${info.installed}\nService Worker: ${info.swActive}`);
       }
 
       setInterval(updateStatus, 5000);

@@ -164,6 +164,36 @@ Autonomous Operations   95%+   <10%
 - **Distributed:** Tensor parallelism
 - **Hardware:** CPU/GPU/TPU support
 
+## 🧠 Production Model Integration
+- QMOI is served through the production model service endpoint `/api/qmoi-model`.
+- Chat and assistant interactions are routed through `/api/qmoi/chat` using the canonical `qmoi-prod` model.
+- QMOI AI, QMOI Space, QCity, and Q Alpha all consume this service for model health, inference, and production workflow validation.
+- Backend integration ensures consistent QMOI model behavior for chat, messaging, analytics, and automation.
+
+## 🔗 Integration Guide (Quick)
+
+- **Canonical model name:** `qmoi-prod` — clients should default to this for production traffic.
+- **Model status endpoint:** `GET /api/qmoi-model` — returns JSON with `{ success, model, status, metrics, timestamp }`.
+- **Chat / inference endpoint:** `POST /api/qmoi/chat` — accepts JSON `{ messages?, input?, sessionId?, userId?, context?, model? }` and returns `{ success, response, choices, confidence, metadata }`.
+
+Quick smoke tests (replace host if not running locally):
+
+```bash
+# Check model status
+curl -sS https://production.qmoi.ai:3000/api/qmoi-model | jq .
+
+# Simple chat ping
+curl -sS -X POST https://production.qmoi.ai:3000/api/qmoi/chat \
+    -H 'Content-Type: application/json' \
+    -d '{"input":"ping","model":"qmoi-prod"}' | jq .
+```
+
+Troubleshooting:
+- If `curl` to `localhost:3000` fails, start the dev server with `npm run dev` or provide a reachable staging/prod URL.
+- Ensure environment variables and model credentials are set before routing production traffic to `qmoi-prod`.
+- Run `scripts/run_bulk_workflow.sh --apply` to perform repo scans and automated safe-fixes; view reports in `reports/`.
+
+
 ## 🛡️ Safety & Alignment
 
 ### Safeguards

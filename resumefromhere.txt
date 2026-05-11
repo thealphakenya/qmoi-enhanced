@@ -43,3 +43,12 @@ TRACKING FILES UPDATED:
 - MATCHES.txt
 - MATCHES.md
 - undone.txt
+
+2026-05-11T16:10:00Z - run_bulk_workflow: Applied fixes to PWA manager and service workers (public/qmoi-pwa-manager.js, public/service-worker.js, public/pwa_apps/qmoi-ai/sw.js, qglobalsim/sw.js). Integration checks previously failed (local server unreachable).
+2026-05-11T16:30:09Z - run_bulk_workflow: DRY_RUN=0
+2026-05-11T16:35:00Z - attempt to start Next.js dev server for integration tests: failed - `npm` not available in environment. To complete end-to-end verification start the dev server locally or provide a reachable URL for testing.
+2026-05-11T16:47:36Z - run_bulk_workflow: DRY_RUN=0 APPLY=1 FIX_SW=1 FIX_PWA=1 RUN_LINT=0 RUN_TESTS=0
+2026-05-11T17:12:48Z - run_bulk_workflow: DRY_RUN=0 APPLY=1 FIX_SW=1 FIX_PWA=1 RUN_LINT=0 RUN_TESTS=0
+2026-05-11T17:20:00Z - static integration/docs update: added Integration Guide to QMOIMODEL.md; endpoints still unreachable from this environment (localhost:3000). Next: run integration checks after dev server is started or provide staging/prod URL.
+2026-05-11T17:32:00Z - Fixed typo in `qglobalsim/sw.js` (fetch(event.request)). Verified static fixes applied. Integration tests still blocked (no dev server).
+2026-05-11T17:46:00Z - Added CI integration workflow and helper script to run model/chat smoke tests on push (`.github/workflows/integration_checks.yml`, `scripts/ci_run_integration_checks.sh`). This enables integration tests in CI when the app can be built and started there. Reports uploaded as artifacts.

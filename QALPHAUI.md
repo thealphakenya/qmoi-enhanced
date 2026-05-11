@@ -90,6 +90,8 @@ Upon launching Q Alpha, users encounter the unified aggregator interface:
   - Unified sync status indicator
   - Performance metrics aggregator
   - Footer action buttons (Settings, Support, Documentation)
+- **Production Shell Integration:** Q Alpha is delivered through `/q-alpha.html` and `/pwa_apps/q-alpha/` as a static PWA shell with live QMOI model health checks.
+- **Model Use:** The Q Alpha shell connects to the QMOI backend (`/api/qmoi-model` and `/api/qmoi/chat`) to surface unified health, chat, and orchestration insights.
 
 ### User Flow by Role
 

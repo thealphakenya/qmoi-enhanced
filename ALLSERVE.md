@@ -557,3 +557,14 @@ For production support, reference:
 - **Setup issues:** Run `bash scripts/verify-startup.sh`
 
 Ensure that on-call rotation and incident response procedures are ready before production deployment.
+
+## QMOI Production Model Integration
+
+- **Canonical production model:** `qmoi-prod` — the canonical production inference model used across UIs and shells.
+- **Model status endpoint:** `GET /api/qmoi-model` — returns model health, uptime, accuracy, and latency metrics for `qmoi-prod`.
+- **Chat endpoint (production):** `POST /api/qmoi/chat` — accepts chat requests and routes them to the effective production model (defaults to `qmoi-prod` when an explicit QMOI model is not selected).
+- **UI Integration:** The main UIs and shells now call the model endpoints directly for live status and chat flows:
+  - `/qmoi-ai` (app/qmoi-ai/page.tsx) — default model selection set to `qmoi-prod` and chat routed via `/api/qmoi/chat`.
+  - `/qmoi-space` (app/qmoi-space/page.tsx) — displays live model health fetched from `/api/qmoi-model`.
+  - Q Alpha static shell (`/q-alpha.html`, `public/q-alpha.html`) — fetches `/api/qmoi-model` and can perform a lightweight chat-based health probe to `/api/qmoi/chat`.
+- **Operational note:** Ensure environment variables and any model service credentials are present in production before enabling live traffic. Run integration tests against `/api/qmoi-model` and `/api/qmoi/chat` as part of your deployment verification (see `QMOIMODELTESTS.md`).

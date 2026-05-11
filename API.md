@@ -18,7 +18,29 @@ fully implemented
 - `app/qmoi-space/page.tsx` is a live QMOI Space Next.js page with a marketplace and collaborative dashboard.
 - `public/qmoi-ai.html` and `public/qmoi-space.html` provide static PWA launcher entry points for their respective shell assets.
 - `app/qcity/page.jsx` and `app/qvillage/page.tsx` are active role-aware UI pages using `app/hooks/useAuth.ts`.
+- `public/q-alpha.html` is the Q Alpha static aggregator shell providing live QMOI model health checks and aggregator launch controls.
 - Runtime update support is available via `/api/pwa/check-update` and `/api/pwa/auto-update`.
+
+## QMOI Production Model Integration
+
+- **Canonical model name:** `qmoi-prod` — all UI clients should default to this production model for inference and orchestration.
+- **Model status endpoint:** `GET /api/qmoi-model` — returns JSON with `{ success, message, status, model, metrics, timestamp }` and supports query params (`allStats`, `analytics`, `trainingStatus`, etc.) for richer responses.
+- **Model control endpoint:** `POST /api/qmoi-model?applyprodiceFeature=<feature>` etc. — supports targeted management actions as documented in the route handler `app/api/qmoi-model/route.ts`.
+- **Chat/inference endpoint:** `POST /api/qmoi/chat` — accepts `{ messages?, input?, sessionId?, userId?, context? }` and returns `{ success, message, response, confidence, metadata, choices }` (see `app/api/qmoi/chat/route.ts`).
+- **Client integration:** `app/qmoi-ai/page.tsx`, `app/qmoi-space/page.tsx`, `app/qcity/page.jsx`, and `app/components/ChatMessaging.tsx` now default to `qmoi-prod` and call the above endpoints.
+- **PWA shell:** `public/q-alpha.html` now probes `/api/qmoi-model` and uses `/api/qmoi/chat` for health checks.
+
+Files touched for production integration:
+- `app/qmoi-ai/page.tsx`
+- `app/qmoi-space/page.tsx`
+- `app/components/ChatMessaging.tsx`
+- `public/q-alpha.html`
+- `app/api/qmoi-model/route.ts`
+- `app/api/qmoi/chat/route.ts`
+- `public/qmoi-pwa-manager.js` (fixed event listeners, notification fallback)
+- `public/service-worker.js` (fixed event listeners and SW lifecycle handling)
+
+Note: run integration tests against a running dev server to validate connectivity and response shapes before enabling traffic to the production model.
 
 ## Route Source Inventory
 - `app/api/` contains 277 source files in the live project tree.

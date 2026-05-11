@@ -1,0 +1,36 @@
+Integration live checks run at Mon May 11 17:19:02 UTC 2026
+--- HOST: http://localhost:3000 ---
+GET http://localhost:3000/api/qmoi-model
+curl: (7) Failed to connect to localhost port 3000 after 0 ms: Could not connect to server
+FAIL: GET http://localhost:3000/api/qmoi-model
+POST http://localhost:3000/api/qmoi/chat (simple)
+curl: (7) Failed to connect to localhost port 3000 after 0 ms: Could not connect to server
+FAIL: POST http://localhost:3000/api/qmoi/chat
+--- HOST: http://127.0.0.1:3000 ---
+GET http://127.0.0.1:3000/api/qmoi-model
+curl: (7) Failed to connect to 127.0.0.1 port 3000 after 0 ms: Could not connect to server
+FAIL: GET http://127.0.0.1:3000/api/qmoi-model
+POST http://127.0.0.1:3000/api/qmoi/chat (simple)
+curl: (7) Failed to connect to 127.0.0.1 port 3000 after 0 ms: Could not connect to server
+FAIL: POST http://127.0.0.1:3000/api/qmoi/chat
+--- HOST: https://production.qmoi.ai:3000 ---
+GET https://production.qmoi.ai:3000/api/qmoi-model
+curl: (6) Could not resolve host: production.qmoi.ai (Domain name not found)
+FAIL: GET https://production.qmoi.ai:3000/api/qmoi-model
+POST https://production.qmoi.ai:3000/api/qmoi/chat (simple)
+curl: (6) Could not resolve host: production.qmoi.ai (Domain name not found)
+FAIL: POST https://production.qmoi.ai:3000/api/qmoi/chat
+--- HOST: https://production.qmoi.ai ---
+GET https://production.qmoi.ai/api/qmoi-model
+curl: (6) Could not resolve host: production.qmoi.ai (Domain name not found)
+FAIL: GET https://production.qmoi.ai/api/qmoi-model
+POST https://production.qmoi.ai/api/qmoi/chat (simple)
+curl: (6) Could not resolve host: production.qmoi.ai (Domain name not found)
+FAIL: POST https://production.qmoi.ai/api/qmoi/chat
+--- HOST: https://production.qmoi.ai:443 ---
+GET https://production.qmoi.ai:443/api/qmoi-model
+curl: (6) Could not resolve host: production.qmoi.ai (Domain name not found)
+FAIL: GET https://production.qmoi.ai:443/api/qmoi-model
+POST https://production.qmoi.ai:443/api/qmoi/chat (simple)
+curl: (6) Could not resolve host: production.qmoi.ai (Domain name not found)
+FAIL: POST https://production.qmoi.ai:443/api/qmoi/chat

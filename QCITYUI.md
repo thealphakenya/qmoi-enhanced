@@ -83,6 +83,8 @@ Upon launching QCity, users see:
 - **File and Deployment UI:** FileUploadDownload, DownloadManager, QFileManager, GitHub and Vercel deployment interfaces
 - **Voice & Media UI:** AudioVisualizer, QMediaPlayer, VoiceLibraryPanel, VoiceSelectionPanel, and AudibleConversation
 - **Role-Based UI:** Master, Sister, and User dashboards with distinct access and control patterns across QCity and connected applications
+- **Backend Integration:** QCity uses `/api/qcity/status`, `/api/qcity/metrics`, and `/api/qmoi/chat` for live command center telemetry and messaging.
+- **Model Use:** QMOI is the primary chat assistant and operational intelligence engine inside QCity for alert triage and incident response.
 - **Quick Reference Coverage:** Mapped components from `COMPONENT_SERVING_QUICK_REFERENCE_INDEX.md` and related documentation
 
 ## Actual QCity Page Features

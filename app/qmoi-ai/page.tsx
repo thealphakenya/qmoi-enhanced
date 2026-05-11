@@ -15,6 +15,7 @@ import SponsoredUsersManager from "../components/SponsoredUsersManager";
 import UserProfile from "../components/user/UserProfile";
 import WalletList from "../components/wallet/WalletList";
 import LoginForm from "../components/auth/LoginForm";
+import RegisterForm from "../components/auth/RegisterForm";
 import QI from "../components/QI";
 import QIStateWindow from "../components/QIStateWindow";
 import NotificationCenter from "../components/NotificationCenter";
@@ -46,7 +47,7 @@ const fallbackStatus = {
 };
 
 export default function QMoiAIPage() {
-  const [selectedModel, setSelectedModel] = useState('auto');
+  const [selectedModel, setSelectedModel] = useState('qmoi-prod');
   const [chatMessage, setChatMessage] = useState('');
   const [showComponents, setShowComponents] = useState(true);
   const [productionData, setProductionData] = useState(null);
@@ -111,7 +112,7 @@ export default function QMoiAIPage() {
     setIsLoggedIn(false);
   };
 
-  const handleChatSubmit = async () => {
+  const handleChatSend = async () => {
     const input = chatMessage.trim();
     if (!input) return;
 
@@ -119,13 +120,17 @@ export default function QMoiAIPage() {
     setChatMessage('');
     setIsChatLoading(true);
 
+    const effectiveModel = ['auto', 'gpt4', 'claude', 'gemini', 'local'].includes(selectedModel)
+      ? 'qmoi-prod'
+      : selectedModel;
+
     try {
       const response = await fetch('/api/qmoi/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ input, userId: 'qmoi-enhanced-client' }),
+        body: JSON.stringify({ input, userId: 'qmoi-enhanced-client', model: effectiveModel }),
       });
 
       const result = await response.json();
@@ -339,11 +344,9 @@ export default function QMoiAIPage() {
                 onChange={(e) => setSelectedModel(e.target.value)}
                 className="bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-white"
               >
-                <option value="auto">Auto Select</option>
-                <option value="gpt4">GPT-4</option>
-                <option value="claude">Claude</option>
-                <option value="gemini">Gemini</option>
-                <option value="local">Local AI</option>
+                <option value="auto">Auto (QMOI Prod)</option>
+                <option value="qmoi-prod">QMOI Prod</option>
+                <option value="qmoi-lite">QMOI Lite</option>
               </select>
             </div>
             <div className="flex gap-2">

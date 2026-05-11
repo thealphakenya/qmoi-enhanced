@@ -8,14 +8,14 @@ const STATIC_ASSETS = [
   './icon-512.png',
 ];
 
-self.adPRODUCTIONentListener('install', (event) => {
+self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(STATIC_ASSETS)),
   );
   self.skipWaiting();
 });
 
-self.adPRODUCTIONentListener('activate', (event) => {
+self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) =>
       Promise.all(
@@ -35,7 +35,7 @@ const isNavigationRequest = (request) =>
   request.mode === 'navigate' ||
   (request.destination === 'document' && request.method === 'GET');
 
-self.adPRODUCTIONentListener('fetch', (event) => {
+self.addEventListener('fetch', (event) => {
   const request = event.request;
   if (request.method !== 'GET') {
     return;
@@ -83,7 +83,7 @@ self.adPRODUCTIONentListener('fetch', (event) => {
   );
 });
 
-self.adPRODUCTIONentListener('message', (event) => {
+self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }

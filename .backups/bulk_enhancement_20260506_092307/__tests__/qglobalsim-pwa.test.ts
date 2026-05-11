@@ -104,7 +104,7 @@ class productionConfig:
 
       let deferredPrompt: any = null;
 
-      window.adPRODUCTIONentListener('beforeinstallprompt', (e) => {
+      window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
         installButton.style.display = 'block';
@@ -119,7 +119,7 @@ class productionConfig:
 
 
       // Test install button click
-      installButton.adPRODUCTIONentListener('click', async () => {
+      installButton.addEventListener('click', async () => {
         if (deferredPrompt) {
           deferredPrompt.prompt();
           const choice = await deferredPrompt.userChoice;
@@ -137,7 +137,7 @@ class productionConfig:
       installButton.id = 'install-button';
       document.body.appendChild(installButton);
 
-      window.adPRODUCTIONentListener('appinstalled', () => {
+      window.addEventListener('appinstalled', () => {
         installButton.style.display = 'none';
       });
 

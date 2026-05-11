@@ -81,6 +81,8 @@ Upon launching the QMOI Space app, users encounter:
 - **File and Deployment UI:** FileUploadDownload, DownloadManager, QFileManager, and marketplace deployment controls
 - **Voice & Media UI:** AudioVisualizer, QMediaPlayer, VoiceLibraryPanel, VoiceSelectionPanel, and AudibleConversation
 - **Master/Sister/User Access:** Role-specific collaboration and content flows for master, sister, and user on QMOI Space and connected apps
+- **Backend Integration:** QMOI Space fetches market and dataset data from `/api/qi-spaces` and monitors model status through `/api/qmoi-model`.
+- **Model Use:** The QMOI model powers marketplace recommendations, dataset analytics, and deployment health signals for QMOI Space.
 - **Quick Reference Coverage:** All relevant components from `COMPONENT_SERVING_QUICK_REFERENCE_INDEX.md` are documented here
 
 ---

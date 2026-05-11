@@ -115,6 +115,8 @@ The endpoint inventory is derived from live route handler source files under `ap
 ### QMOI Core API
 - `/api/qmoi/chat`
 - `/api/qmoi/chat-enhanced`
+ - `GET /api/qmoi-model` — Returns model status and metrics. Example response: `{ success: true, model: "qmoi-prod", status: "ready", metrics: { accuracy: 0.94, latencyMs: 112, uptime: "99.94%" } }`.
+ - `POST /api/qmoi-model` — Supports management actions via query params or body (e.g., `?applyprodiceFeature=true`, `?runEarningTask=true`, or body `{ action: 'analyze', data: ... }`). See `app/api/qmoi-model/route.ts` for supported actions and query params.
 - `/api/qmoi/auto-fix/status`
 - `/api/qmoi/avatars`
 - `/api/qmoi/backup`
@@ -126,6 +128,10 @@ The endpoint inventory is derived from live route handler source files under `ap
 ### PWA Update Endpoints
 - `/api/pwa/check-update`
 - `/api/pwa/auto-update`
+
+### Notes on Production PWA Fixes
+- `public/qmoi-pwa-manager.js` event-listener and notification fallbacks corrected to ensure reliable install/update flows.
+- `public/service-worker.js` and app-specific SWs updated to use `addEventListener`, call `skipWaiting()` / `clients.claim()` appropriately, and handle network/cache fallback safely.
 
 ### QCity & Platform API
 - `/api/qcity/status`

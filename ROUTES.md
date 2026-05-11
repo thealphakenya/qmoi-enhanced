@@ -146,6 +146,7 @@ The following standalone route handler source files are defined directly under `
 ### `qmoi/`
 - `chat/route.ts`
 - `chat-enhanced/route.ts`
+- `qmoi-model/route.ts` - Model status and management endpoint (GET/POST).
 - `auto-fix/status/route.ts`
 - `avatars/route.ts`
 - `backup/route.ts`
