@@ -8,6 +8,7 @@ It also explains the role of `public/qmoi-pwa-manager.js` and the updated static
 - `public/qmoi-ai.html` and `public/qmoi-space.html` are production-ready PWA landing shells.
 - `public/qmoi-pwa-manager.js` manages install prompts, service worker registration, and update flows.
 - `public/manifest-qmoi-ai.json` and `public/manifest-qmoi-space.json` define install metadata and shortcuts.
+- `/q-alpha.html` and `/pwa_apps/q-alpha/` provide a static Q Alpha aggregator shell that unifies QMOI AI, QMOI Space, and QCity install flows.
 - `/api/pwa/check-update` and `/api/pwa/auto-update` support runtime update checks used by the service worker and install manager.
 
 ## Features

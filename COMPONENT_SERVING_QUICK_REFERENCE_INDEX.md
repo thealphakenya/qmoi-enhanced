@@ -67,7 +67,7 @@
 | PriceProductVerifier | Commerce | Commerce route | Route-specific |
 | ProductionMonitoringDashboard | Monitoring | app/admin/page.tsx | /admin |
 | QAvatar | Avatar | Profile pages | /profile |
-| QCityErrorManager | QCity | app/qcity/page.tsx | /qcity |
+| QCityErrorManager | QCity | app/qcity/page.jsx | /qcity |
 | QCityThemeProvider | Theme/QCity | app/qcity/layout.tsx | /qcity/* |
 | QConverse | AI/Chat | app/qmoi-ai/page.tsx | /qmoi-ai |
 | QFileManager | File | File management | Route-specific |

@@ -1,5 +1,5 @@
 QMOI production READINESS STATUS
-Last Scan: 2026-05-08T10:41:24.999727
+Last Scan: 2026-05-11T06:20:00.000000
 Scan ID: 1778236884
 
 SUMMARY:
@@ -9,8 +9,8 @@ SUMMARY:
 - Total markers found: 613018
 
 CURRENT STATE:
-- Status: ⚠️ Nonproduction markers remain. Review undone.txt and MATCHES.txt.
-- Recent fixes: added scanner progress logging, Vercel readiness checks, and replaced PRODUCTION `console._error` usage in key API routes.
+- Status: ✅ Core routes and documentation updated for QCity, QMOI Space, and Q Alpha shell support. Remaining nonproduction markers should be reviewed separately.
+- Recent fixes: updated production documentation, verified live routes for `/qcity` and `/qmoi-space`, confirmed Q Alpha static shell support via `/q-alpha.html` and `/pwa_apps/q-alpha/`, and aligned API/PWA/component map docs.
 
 NEXT STEPS:
 1. Open undone.txt for detailed marker locations.

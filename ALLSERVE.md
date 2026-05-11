@@ -1,6 +1,6 @@
 # ALLSERVE.md — Production Service Architecture for QMOI AI, QMOI Space, QCity, Q Alpha, and QVillage
 
-**Last Updated:** May 10, 2026
+**Last Updated:** May 11, 2026
 **Status:** ✅ PRODUCTION CERTIFIED - Production Auth System Implemented
 **Apps Serving:** Q Alpha Aggregator, QMOI AI, QMOI Space, QCity, QVillage
 **Production Readiness:** ✅ Fully implemented production server orchestration, security, monitoring, autoscaling, and authentication
@@ -15,10 +15,11 @@
 
 ## Production Architecture
 
-- **Unified Aggregator:** Q Alpha Aggregator serves as the primary entry point and orchestrator for all QMOI applications.
+- **Unified Aggregator:** Q Alpha Aggregator serves as the primary entry point and orchestrator for all QMOI applications. It is currently supplied as a static PWA shell under `/pwa_apps/q-alpha/` and accessible via `/q-alpha.html`, instead of a live Next.js route.
 - **Service Mesh:** All apps run behind a secure load balancer with API gateway routing and JWT/API key validation.
 - **Containerized Deployment:** Docker-based deployment with production-ready runtime containers.
 - **Infrastructure:** AWS/EKS-ready with auto-scaling groups, security groups, private subnets, and managed databases.
+- **Live Page Routing:** Production web UI routes include `/qcity`, `/qmoi-space`, and `/qmoi-ai`, while the Q Alpha aggregator shell is served from `/q-alpha.html` and `/pwa_apps/q-alpha/`.
 - **Monitoring:** CloudWatch/Datadog monitoring, log aggregation, alerting, and health checks.
 - **Security:** TLS, API authentication, environment-based secrets management, and rate limiting.
 
@@ -132,6 +133,10 @@ npm run dev
 - `/api/qmoi-space` — QMOI Space API
 - `/api/qcity` — QCity service endpoints
 - `/api/qvillage` — QVillage integrations
+- `/qmoi-space` — QMOI Space live UI route
+- `/qcity` — QCity live UI route
+- `/qmoi-ai` — QMOI AI live UI route
+- `/q-alpha.html` — Q Alpha static aggregator shell entry point (redirects into the Q Alpha PWA experience)
 - `/api/payments` — Production payment gateway
 - `/api/emergency` — Emergency and lockdown orchestration
 - `/api/auth/signin` — Production authentication endpoint with biometric support

@@ -68,12 +68,12 @@ The QMOI Enhanced repository is organized into distinct architectural zones supp
 /app/qmoi-space/page.tsx — Live QMOI Space Next.js page with collaboration and marketplace UI
 /app/qcity/page.jsx    — Live QCity dashboard page with role-aware controls
 /app/qvillage/page.tsx — Live QVillage community workspace page with dataset and model summaries
-/app/qalpha/page.tsx   — Live Q Alpha aggregator page with unified app navigation and global controls
+/app/qalpha/page.tsx   — Not present in this release; Q Alpha is served as a static PWA shell via /q-alpha.html and /pwa_apps/q-alpha/
 /public/              — Static manifest and app entrypoint assets for installable PWA shells
 /hooks/useQCity.ts     — QCity integration hook
-/hooks/useQAlpha.ts    — Q Alpha aggregator integration hook
+/hooks/useQAlpha.ts    — Not present in this release; Q Alpha aggregation is handled by static PWA shell assets
 /api/qcity.ts          — QCity API surface
-/api/qalpha.ts         — Q Alpha API surface for unified metrics and orchestration
+/api/qalpha.ts         — Planned Q Alpha API surface for unified metrics and orchestration
 /scripts/qcity-ui-server.js — QCity PRODUCTIONelopment UI server helper
 /scripts/qmoi-ai-server.js  — QMOI AI local server helper
 /scripts/qalpha-server.js  — Q Alpha orchestration server helper

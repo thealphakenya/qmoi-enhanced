@@ -35,6 +35,8 @@
 ### Q Alpha Aggregator App Overview
 Q Alpha is the unified aggregator Progressive Web App (PWA) that intelligently consolidates and proxies all QMOI AI, QMOI Space, and QCity functionality into a single cohesive interface. It serves as the master control center, providing seamless navigation between specialized apps while maintaining persistent state, shared authentication, and centralized analytics.
 
+> Note: Q Alpha is currently implemented as a static PWA shell for this release. The static entry point is located in `/pwa_apps/q-alpha/` and is available via `q-alpha.html` rather than a live `/app/qalpha/page.tsx` route.
+
 ### Key UI Characteristics
 - **Theme:** Dark background (#0a0e27) with dynamic multi-color accent cycling (Blue → Purple → Cyan)
 - **Layout:** Master-detail responsive grid with floating panels and adaptive sidebars
@@ -141,7 +143,7 @@ Upon launching Q Alpha, users encounter the unified aggregator interface:
 - Use search bar for cross-app queries
 
 **Data Source:**
-- Aggregated from `/api/qalpha/unified-metrics`
+- Planned aggregation from `/api/qalpha/unified-metrics` (static shell currently manages client-side orchestration)
 - Real-time WebSocket updates from all three apps' servers
 
 ### 2. App Context Screens (QMOI AI, QMOI Space, QCity)

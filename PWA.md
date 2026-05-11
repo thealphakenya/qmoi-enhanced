@@ -51,8 +51,9 @@ This file documents all PWAs available for each platform and app type. Each PWA 
 ## PWA Serving and UI Convergence
 
 - PWAs are served from `pwa_apps/` and the browser host can deliver all app shells from one root origin.
-- `app/qmoi-ai/page.tsx` and `app/qmoi-space/page.tsx` are live Next.js UI pages, while `public/qmoi-ai.html` and `public/qmoi-space.html` remain static PWA launcher assets.
-- The repository supports both interactive page routes and installable shell entry points for consistent QMOI AI and QMOI Space experiences.
+- `app/qmoi-ai/page.tsx`, `app/qmoi-space/page.tsx`, and `app/qcity/page.jsx` are live Next.js UI pages, while `public/qmoi-ai.html` and `public/qmoi-space.html` remain static PWA launcher assets.
+- `q-alpha.html` and `/pwa_apps/q-alpha/` are the Q Alpha aggregator shell entry points, providing a unified installable hub that consolidates QMOI AI, QMOI Space, and QCity.
+- The repository supports both interactive page routes and installable shell entry points for consistent QMOI AI, QMOI Space, and Q Alpha experiences.
 - Runtime update checks, service worker lifecycle handling, and offline fallbacks are all part of the documented PWA build and validation flow.
 
 ---

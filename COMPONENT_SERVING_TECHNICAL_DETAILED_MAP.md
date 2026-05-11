@@ -69,6 +69,7 @@
       │  • /qcity → app/qcity/            │
       │  • /qmoi-ai → app/qmoi-ai/        │
       │  • /qmoi-space → app/qmoi-space/  │
+      │  • /q-alpha.html → /pwa_apps/q-alpha/ │
       │  • /qvillage → app/qvillage/      │
       └──────────────────────────────────┘
 ```
@@ -398,7 +399,7 @@ app/master/email/page.tsx
 ├─ MasterEmailDashboard.tsx
 └─ GlobalMail.tsx
 
-app/qcity/page.tsx
+app/qcity/page.jsx
 ├─ Multiple QCity-specific components
 
 app/qmoi-ai/page.tsx

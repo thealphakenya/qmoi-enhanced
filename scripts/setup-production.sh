@@ -93,7 +93,7 @@ run_migrations() {
   echo ""
   
   if [[ $REPLY =~ ^[Yy]$ ]]; then
-    npx prisma db push --schema prisma/schema.prisma
+    npx prisma db push --schema prisma/schema.prisma --url "$DATABASE_URL"
     echo -e "${GREEN}✅ Database migrations completed${NC}"
   else
     echo -e "${YELLOW}⏭️  Skipping database migrations${NC}"

@@ -110,6 +110,8 @@ export default function QMoiAIPage() {
     setUser(null);
     setIsLoggedIn(false);
   };
+
+  const handleChatSubmit = async () => {
     const input = chatMessage.trim();
     if (!input) return;
 

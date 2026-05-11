@@ -7,6 +7,7 @@ Route source files in `app/api/`: 277 (249 active endpoint handlers, 12 top-leve
 - `app/qmoi-ai/page.tsx` is a live QMOI AI Next.js page delivering the full interactive AI dashboard.
 - `app/qmoi-space/page.tsx` is a live QMOI Space Next.js page delivering marketplace and community collaboration features.
 - `public/qmoi-ai.html` and `public/qmoi-space.html` remain static PWA launcher assets for their respective shell apps.
+- `/q-alpha.html` and `/pwa_apps/q-alpha/` are the static Q Alpha aggregator shell entry points, consolidating QMOI AI, QMOI Space, and QCity.
 - `app/qcity/page.jsx` and `app/qvillage/page.tsx` are role-aware, page-level UI routes using `app/hooks/useAuth.ts`.
 - PWA update endpoints `/api/pwa/check-update` and `/api/pwa/auto-update` are available and documented.
 
