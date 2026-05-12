@@ -9,3 +9,4 @@ Scanning files for common non-production markers...
 \n--- PATTERN: production_IMPLEMENTED=false ---
 \n--- PATTERN: TODO: non-prod ---
 \n--- PATTERN: PLACEHOLDER ---
+\n--- PATTERN: XXX ---
