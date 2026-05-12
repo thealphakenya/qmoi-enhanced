@@ -161,6 +161,7 @@ docker-compose -f docker-compose.yml up -d app nginx
 - `/api/qvillage` — QVillage integrations
 - `/qmoi-space` — QMOI Space live UI route
 - `/qcity` — QCity live UI route
+- `/qvillage` — QVillage live UI route
 - `/qmoi-ai` — QMOI AI live UI route
 - `/q-alpha.html` — Q Alpha static aggregator shell entry point (redirects into the Q Alpha PWA experience)
 - `/api/payments` — Production payment gateway

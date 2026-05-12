@@ -32,7 +32,7 @@
 ## Executive Summary
 
 ### QMOI AI App Overview
-QMOI AI is a Progressive Web App (PWA) that provides advanced AI-powered orchestration and automation capabilities. The app features a dark theme with gradient accents, real-time status indicators, and comprehensive AI interaction tools.
+QMOI AI is a Progressive Web App (PWA) that provides advanced AI-powered orchestration and automation capabilities. The live route is `/qmoi-ai`, and the source landing page is `app/qmoi-ai/page.tsx`. The app features a dark theme with gradient accents, real-time status indicators, and comprehensive AI interaction tools.
 
 ### Key UI Characteristics
 - **Theme:** Dark background (#0b1220) with primary blue (#0b5fff) accents
@@ -55,6 +55,7 @@ QMOI AI is a Progressive Web App (PWA) that provides advanced AI-powered orchest
 Upon launching the QMOI AI app, users are presented with:
 
 - **Header Section:** Large "🤖 QMOI AI" title with install button and online status badge
+- **Live Route:** `/qmoi-ai` via `app/qmoi-ai/page.tsx`
 - **Dashboard Cards:** Statistics display (Uptime, Tasks Completed, Platforms, Total Package Size, Connected PRODUCTIONices, Active Memory Sessions)
 - **Feature Overview:** List of core capabilities (Cross-platform support, Real-time orchestration, etc.)
 - **QMOI AI Feature Set:** Detailed component highlights

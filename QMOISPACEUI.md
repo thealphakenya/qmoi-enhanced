@@ -55,6 +55,7 @@ QMOI Space is a Progressive Web App (PWA) marketplace and distributed production
 Upon launching the QMOI Space app, users encounter:
 
 - **Header Section:** "🌐 QMOI Space" title with install button
+- **Live Route:** `/qmoi-space` via `app/qmoi-space/page.tsx`
 - **Welcome Card:** Brief app description
 - **Statistics Grid:** Platform metrics (Supported Platforms, Total Builds, Validation Success, Package Size)
 - **Core Features Grid:** Key capability cards (production, Gaming, Revenue, Cloud, Security, Cross-Platform)
@@ -159,15 +160,15 @@ export default function QMOISpaceMarketplace() {
   const fetchMarketplaceData = async () => {
     try {
       const [itemsResponse, statsResponse] = await Promise.all([
-        fetch('/api/marketplace/items'),
-        fetch('/api/marketplace/stats')
+        fetch('/api/qi-spaces'),
+        fetch('/api/qmoi-model')
       ]);
 
       const itemsData = await itemsResponse.json();
       const statsData = await statsResponse.json();
 
-      setItems(itemsData);
-      setStats(statsData);
+      setItems(itemsData.items || itemsData);
+      setStats(statsData.stats || statsData);
     } catch (error) {
       console.error('Failed to fetch marketplace data:', error);
     }

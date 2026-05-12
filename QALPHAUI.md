@@ -57,6 +57,7 @@ Q Alpha is the unified aggregator Progressive Web App (PWA) that intelligently c
 
 Upon launching Q Alpha, users encounter the unified aggregator interface:
 
+- **Shell Entry Point:** Static PWA shell at `/q-alpha.html` served from `public/q-alpha.html` and `/pwa_apps/q-alpha/`
 - **Header Section:** "🔷 Q Alpha Aggregator" title with role indicator and global actions
 - **Unified Dashboard:** Consolidated metrics from all three apps (QMOI AI, QMOI Space, QCity)
 - **Quick Stats Panel:** Real-time aggregated statistics

@@ -54,6 +54,7 @@ QCity is a React-based dashboard application providing command center functional
 
 Upon launching QCity, users see:
 
+- **Live Route:** `/qcity` via `app/qcity/page.jsx`
 - **Header Section:** "QCity Command Center" title with user info and role display
 - **Role Summary:** Access level description based on user role
 - **Metrics Grid:** Real-time system statistics (Connected Nodes, Active Services, Open Alerts, Incident Response)
