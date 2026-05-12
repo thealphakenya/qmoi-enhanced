@@ -54,3 +54,21 @@ TRACKING FILES UPDATED:
 2026-05-11T17:46:00Z - Added CI integration workflow and helper script to run model/chat smoke tests on push (`.github/workflows/integration_checks.yml`, `scripts/ci_run_integration_checks.sh`). This enables integration tests in CI when the app can be built and started there. Reports uploaded as artifacts.
 2026-05-11T17:55:00Z - Local workspace clean on branch `autosync-backup-20250926-232440`. All planned static fixes applied: PWA/SW fixes, reverted unwanted dependency/backups edits, added integration docs, added CI workflow to run integration checks on push. Local integration tests blocked here (no npm/dev server). Waiting for CI run results after push or for a reachable staging/prod URL.
 2026-05-11T17:50:34Z - Ran production readiness scanner (`scripts/production_readiness_check.sh`). Report: `reports/production_readiness.txt`. Findings: scan executed; review report for any remaining non-production markers. Remaining blocking items: integration endpoint checks require a running server or CI run; DNS for production.qmoi.ai not resolvable from this environment.
+2026-05-11T18:02:00Z - Changes pushed from branch `autosync-backup-20250926-232440` (commit `5445615`). CI workflow `.github/workflows/integration_checks.yml` should run and upload `integration_test_results_ci.txt` artifact. Monitoring CI artifacts now; will re-run local checks if you start dev server here.
+2026-05-11T18:05:00Z - Changes pushed to remote. Branch: `autosync-backup-20250926-232440`, last commit: `544561534cda7cd64f1cd3753f55fb6a491c636`. CI workflow `.github/workflows/integration_checks.yml` should run and produce integration report artifact. Waiting for CI results; will re-run local checks if you start the dev server here.
+2026-05-12T08:30:00Z - Added static fallback support: `scripts/serve-static.sh` and `STATIC_FALLBACK.md`. Started a local static server (python `http.server`) serving `public/` on port 8000 and attempted to open the local PWA at `http://127.0.0.1:8000/pwa_apps/qmoi-ai/index.html`.
+2026-05-12T08:35:00Z - Added containerized static deployment artifacts under `deploy/static-nginx/` (Dockerfile, `nginx.conf`, `docker-compose.yml`, `README.md`) and GitHub Actions workflow `.github/workflows/build-static-image.yml` to build the static nginx image and upload as artifact or push to GHCR if credentials provided.
+2026-05-12T08:36:00Z - Attempted to run `docker compose up --build` in the environment to verify the container, but `docker` is not available here. To complete container verification run the compose command on a host with Docker.
+
+NEXT ACTIONS (recommended):
+- Trigger the `.github/workflows/build-static-image.yml` workflow (Actions tab) to build the static image and upload artifact or push to GHCR.
+- On your host, run `scripts/serve-static.sh 8000` for quick local test, or build/run the docker image from `deploy/static-nginx`:
+	```bash
+	cd deploy/static-nginx
+	docker build -t qmoi-static:latest .
+	docker run -p 8080:80 qmoi-static:latest
+	# then open http://localhost:8080/pwa_apps/qmoi-ai/index.html
+	```
+- Once a running server (local/staging/prod) is available, re-run the integration smoke tests for `/api/qmoi-model` and `/api/qmoi/chat` or wait for CI artifact results.
+
+Tracking: resumefromhere.txt updated with static fallback and CI image build additions.

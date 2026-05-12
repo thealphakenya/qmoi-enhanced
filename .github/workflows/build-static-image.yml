@@ -1,0 +1,55 @@
+name: Build Static Nginx Image
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [ autosync-backup-20250926-232440, main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU (for cross-platform builds)
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build image (and push to GHCR if GITHUB_CR_PAT provided)
+        env:
+          IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/qmoi-static
+        run: |
+          set -euo pipefail
+          echo "Building static nginx image from deploy/static-nginx"
+          docker build -t "$IMAGE_NAME:${{ github.sha }}" deploy/static-nginx
+          if [ -n "${{ secrets.GITHUB_CR_PAT }}" ]; then
+            echo "Logging into GHCR"
+            echo "${{ secrets.GITHUB_CR_PAT }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+            docker tag "$IMAGE_NAME:${{ github.sha }}" "$IMAGE_NAME:latest"
+            docker push "$IMAGE_NAME:${{ github.sha }}"
+            docker push "$IMAGE_NAME:latest"
+            echo "Pushed to GHCR: $IMAGE_NAME"
+          else
+            echo "No GITHUB_CR_PAT provided — skipping push. Saving image as artifact."
+            IMAGE_TAR=qmoi-static-${{ github.sha }}.tar.gz
+            docker save "$IMAGE_NAME:${{ github.sha }}" | gzip > "$IMAGE_TAR"
+            ls -lh "$IMAGE_TAR"
+            echo "::set-output name=image_tar::$IMAGE_TAR"
+          fi
+
+      - name: Upload image artifact (if not pushed)
+        if: ${{ secrets.GITHUB_CR_PAT == '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: qmoi-static-image
+          path: qmoi-static-${{ github.sha }}.tar.gz
+
+      - name: Image info
+        run: docker images | grep qmoi-static || true

@@ -81,6 +81,31 @@ Upon launching the QMOI AI app, users are presented with:
 
 ---
 
+## Quick Start — Open the QMOI AI UI Locally
+
+To run and open the `QMOI AI` UI locally, use one of the following options depending on your environment:
+
+- Local Node.js (development):
+
+```bash
+# Ensure Node.js is installed on the host (use nvm or installer)
+npm install
+npm run dev
+# Then open: http://localhost:3000/qmoi-ai
+"$BROWSER" http://localhost:3000/qmoi-ai
+```
+
+- Docker / Compose (host):
+
+```bash
+docker-compose -f docker-compose.yml up -d app nginx
+# Then open: http://localhost/qmoi-ai or http://localhost:<NGINX_PORT>
+"$BROWSER" http://localhost/qmoi-ai
+```
+
+- Troubleshooting inside devcontainer: If `npm` or `docker` is `command not found`, run the above commands on your host machine or install Node/Docker in the devcontainer. The repository's automated setup script (`scripts/setup-production.sh`) expects Node.js and npm to be available where it runs.
+
+
 ## 🔐 Production Authentication System
 
 ### Authentication Flow

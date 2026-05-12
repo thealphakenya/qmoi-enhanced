@@ -124,6 +124,32 @@ For development testing with the new auth system:
 npm run dev
 ```
 
+### Local Development / Quick Start (when `npm` or Docker is not available in this container)
+
+If `npm` or Docker is not installed in your current environment (for example, inside a restricted devcontainer), follow these options:
+
+- Run on your host machine (recommended):
+
+```bash
+# On your host (macOS / Linux / Windows WSL)
+git clone <repo-url> && cd qmoi-enhanced
+nvm install --lts      # or install Node.js from nodejs.org
+npm install
+npm run dev
+# Open the UI at: http://localhost:3000/qmoi-ai
+"$BROWSER" http://localhost:3000/qmoi-ai
+```
+
+- Use Docker on host (if available):
+
+```bash
+docker-compose -f docker-compose.yml up -d app nginx
+# Open the UI at: http://localhost:80/qmoi-ai (or use APP_PORT if overridden)
+"$BROWSER" http://localhost/qmoi-ai
+```
+
+- Troubleshooting: If `npm` returns `command not found` inside the container, either install Node.js inside the container or run the commands on the host. This repository's automated setup script (`scripts/setup-production.sh`) assumes Node.js and npm are available on the machine where it runs.
+
 **Note:** The application now requires database connectivity and proper environment variables for authentication to function.
 
 ## Production Service Endpoints
