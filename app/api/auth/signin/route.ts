@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { authService } from "../../../../lib/auth/service";
-import { prisma } from "../../../../lib/db/prisma";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -21,28 +20,13 @@ export async function POST(req: NextRequest) {
     const ipAddress = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
     const userAgent = req.headers.get('user-agent') || 'unknown';
 
-    // Ensure the user exists before attempting authentication
-    const authProfile = await prisma.authProfile.findFirst({
-      where: email
-        ? { email }
-        : { username },
-      include: { user: true },
-    });
-
-    if (!authProfile) {
-      return NextResponse.json(
-        { success: false, message: "Invalid credentials", error: "INVALID_CREDENTIALS" },
-        { status: 401 }
-      );
-    }
-
     let authResult;
 
     if (password) {
       authResult = await authService.authenticatePassword(identifier, password);
-    } else if (biometricMethod && biometricData) {
+    } else if (biometricMethod && biometricData && username) {
       authResult = await authService.verifyBiometric(
-        authProfile.userId,
+        username,
         biometricMethod,
         biometricData,
       );

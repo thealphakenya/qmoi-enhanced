@@ -243,8 +243,8 @@
           .catch(() => {});
       }
 
-      // Voice control using Web Speech API (client-side). Recognized commands are sent to the control server.
-      const controlUrl = window.location.origin + "/control";
+      // Voice control using Web Speech API (client-side). Recognized commands are processed locally.
+      // Note: Control server endpoint not implemented, using local processing only
       let recognition;
       if (
         "webkitSpeechRecognition" in window ||
@@ -294,46 +294,17 @@
               }).catch(() => {});
               return;
             }
-            // request download URL from control server
-            try {
-              const res = await apiClient.get(controlUrl, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  Authorization: "Bearer dev-token",
-                },
-                body: JSON.stringify({ command: "download", target: filename }),
-              });
-              if (res.ok) {
-                const j = await res.json();
-                if (j.url) {
-                  document.getElementById("voice-status").innerText =
-                    "Opening download: " + filename;
-                  window.open(j.url, "_blank");
-                } else {
-                  document.getElementById("voice-status").innerText =
-                    "Download handler returned no URL";
-                }
-              } else {
-                document.getElementById("voice-status").innerText =
-                  "Download request failed";
-              }
-            } catch (e) {
-              document.getElementById("voice-status").innerText =
-                "Error contacting control server";
-            }
+            // For now, handle downloads locally - control server integration not implemented
+            document.getElementById("voice-status").innerText =
+              "Download requested but control server not available: " + filename;
             return;
           }
 
-          // Fallback: send to control server for logging/processing
-          apiClient.get(controlUrl, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer dev-token",
-            },
-            body: JSON.stringify({ command: "voice", text: transcript }),
-          }).catch(() => {});
+          // Fallback: process voice commands locally
+          // For now, just log the command - control server integration not implemented
+          console.log("Voice command received:", transcript);
+          document.getElementById("voice-status").innerText =
+            "Command logged: " + transcript;
         };
       } else {
         document.getElementById("voice-status").innerText =
@@ -404,10 +375,10 @@ function stopAutosync() {
       document.getElementById("su-btn").addEventListener("click", async () => {
         const u = document.getElementById("su-username").value;
         const p = document.getElementById("su-password").value;
-        const res = await apiClient.get(window.location.origin + "/signup", {
+        const res = await apiClient.get(window.location.origin + "/api/auth/signup", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ username: u, password: p }),
+          body: JSON.stringify({ email: u, password: p, username: u }),
         });
         if (res.ok) {
           notification.show("Signup ok, please login");
@@ -419,10 +390,10 @@ function stopAutosync() {
       document.getElementById("li-btn").addEventListener("click", async () => {
         const u = document.getElementById("li-username").value;
         const p = document.getElementById("li-password").value;
-        const res = await apiClient.get(window.location.origin + "/login", {
+        const res = await apiClient.get(window.location.origin + "/api/auth/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ username: u, password: p }),
+          body: JSON.stringify({ email: u, password: p }),
         });
         if (res.ok) {
           const j = await res.json();
@@ -437,21 +408,28 @@ function stopAutosync() {
           localStorage.getItem("qstable_token") ||
           localStorage.getItem("qmoi_token");
         if (t) {
-          await apiClient.get(window.location.origin + "/logout", {
-            method: "POST",
-            headers: { Authorization: "Bearer " + t },
-          }).catch(() => {});
+          // Note: logout endpoint may not exist, clear token locally
+          _clearToken();
+          stopAutosync();
         }
-        _clearToken();
-        stopAutosync();
       });
 
-      // App launcher wiring: open mirrored app in iframe
-      document.querySelectorAll(".app-launch").for (const item of((btn) => {
+      // App launcher wiring: open app in iframe using real routes
+      document.querySelectorAll(".app-launch").forEach((btn) => {
         btn.addEventListener("click", () => {
           const app = btn.getAttribute("data-app");
           const frame = document.getElementById("app-frame");
-          frame.src = window.location.origin + "/mirror/app/" + app;
+          // Map app names to real routes
+          const routeMap = {
+            "q-latest": "/q-alpha.html",
+            "qmoi": "/qmoi-ai",
+            "qmoi-ai": "/qmoi-ai",
+            "qmoi-space": "/qmoi-space",
+            "qcity": "/qcity",
+            "qvillage": "/qvillage"
+          };
+          const route = routeMap[app] || "/";
+          frame.src = window.location.origin + route;
         });
       });
 
@@ -540,18 +518,35 @@ function autosyncOnce() {
         const local = _getLocalMemories();
         const attachments = _getLocalAttachments();
         try {
-          // push local
-          await apiClient.get(window.location.origin + "/sync-memory", {
+          // Store local memories using the correct API format
+          for (const memory of local) {
+            await apiClient.get(window.location.origin + "/api/auth/memory", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + t,
+              },
+              body: JSON.stringify({
+                action: "store_memory",
+                userId: "q-alpha-user", // TODO: get from auth context
+                key: memory.key,
+                value: memory.value,
+                category: memory.category || "context"
+              }),
+            });
+          }
+
+          // Fetch all memories
+          const res = await apiClient.get(window.location.origin + "/api/auth/memory", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
               Authorization: "Bearer " + t,
             },
-            body: JSON.stringify({ memories: local, attachments: attachments }),
-          });
-          // fetch merged
-          const res = await apiClient.get(window.location.origin + "/memories", {
-            headers: { Authorization: "Bearer " + t },
+            body: JSON.stringify({
+              action: "get_all_memory",
+              userId: "q-alpha-user" // TODO: get from auth context
+            }),
           });
           if (res.ok) {
             const j = await res.json();

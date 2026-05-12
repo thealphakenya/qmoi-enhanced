@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Link from "next/link";
 import AdminDashboard from "../components/AdminDashboard";
 import ChatMessaging from "../components/ChatMessaging";
@@ -15,7 +15,6 @@ import SponsoredUsersManager from "../components/SponsoredUsersManager";
 import UserProfile from "../components/user/UserProfile";
 import WalletList from "../components/wallet/WalletList";
 import LoginForm from "../components/auth/LoginForm";
-import RegisterForm from "../components/auth/RegisterForm";
 import QI from "../components/QI";
 import QIStateWindow from "../components/QIStateWindow";
 import NotificationCenter from "../components/NotificationCenter";
@@ -116,7 +115,8 @@ export default function QMoiAIPage() {
     const input = chatMessage.trim();
     if (!input) return;
 
-    setChatHistory((current) => [...current, { id: Date.now() + '-user', role: 'user', content: input }]);
+    const userMessage = { id: Date.now() + '-user', role: 'user', content: input };
+    setChatHistory((current) => [...current, userMessage]);
     setChatMessage('');
     setIsChatLoading(true);
 
@@ -125,21 +125,41 @@ export default function QMoiAIPage() {
       : selectedModel;
 
     try {
+      // Store conversation in QMOI memory
+      const memoryPayload = {
+        action: 'store_memory',
+        userId: user?.userId || 'anonymous-user',
+        key: `chat-${Date.now()}`,
+        value: input,
+        category: 'conversation',
+      };
+
+      // Send memory store request
+      await fetch('/api/auth/memory', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(memoryPayload),
+      }).catch(() => {}); // Non-critical
+
       const response = await fetch('/api/qmoi/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ input, userId: 'qmoi-enhanced-client', model: effectiveModel }),
+        body: JSON.stringify({ 
+          input, 
+          userId: user?.userId || 'anonymous-user', 
+          model: effectiveModel,
+          sessionId: user?.sessionId || 'default',
+          role: user?.role,
+        }),
       });
 
       const result = await response.json();
       const answer = result?.response || result?.message || 'No response from QMOI AI.';
 
-      setChatHistory((current) => [
-        ...current,
-        { id: Date.now() + '-assistant', role: 'assistant', content: answer },
-      ]);
+      const assistantMessage = { id: Date.now() + '-assistant', role: 'assistant', content: answer };
+      setChatHistory((current) => [...current, assistantMessage]);
     } catch (error) {
       console.error('QMOI chat failed:', error);
       setChatHistory((current) => [
@@ -181,6 +201,7 @@ export default function QMoiAIPage() {
                     <span>Happy</span>
                   </div>
                 </div>
+                <p className="mt-2 text-xs text-slate-400">Role: {user?.role || 'user'}</p>
                 <button
                   onClick={handleLogout}
                   className="mt-2 text-xs text-slate-400 hover:text-white underline"
@@ -218,6 +239,21 @@ export default function QMoiAIPage() {
             <div className="text-slate-400">Active Memory Sessions</div>
           </div>
         </section>
+
+        {/* Role-Specific Features */}
+        {user?.role === 'master' && (
+          <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700">
+            <h2 className="text-2xl font-semibold mb-4">Master Control Panel</h2>
+            <QMOIMasterDashboard />
+          </section>
+        )}
+
+        {user?.role === 'sister' && (
+          <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700">
+            <h2 className="text-2xl font-semibold mb-4">Family Dashboard</h2>
+            <SponsoredUsersManager />
+          </section>
+        )}
 
         {/* Features List */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700">

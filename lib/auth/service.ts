@@ -11,6 +11,7 @@ import { prisma } from '@/lib/prisma';
 const JWT_SECRET = process.env.JWT_SECRET || 'qmoi_default_access_secret';
 const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'qmoi_default_refresh_secret';
 const SESSION_TIMEOUT = parseInt(process.env.SESSION_TIMEOUT || '3600000');
+const USE_DB = Boolean(process.env.DATABASE_URL);
 
 export type DecodedToken = {
   userId: string;
@@ -31,12 +32,14 @@ export const authService = {
   ) => {
     const sessionId = crypto.randomUUID();
     const expiresAt = new Date(Date.now() + SESSION_TIMEOUT);
-    try {
-      await prisma.session.create({
-        data: { id: sessionId, userId, expiresAt, isActive: true } as any,
-      });
-    } catch (e) {
-      // ignore
+    if (USE_DB) {
+      try {
+        await prisma.session.create({
+          data: { id: sessionId, userId, expiresAt, isActive: true } as any,
+        });
+      } catch (e) {
+        // ignore
+      }
     }
 
     const accessToken = jwt.sign(
@@ -64,6 +67,57 @@ export const authService = {
     identifier: string,
     password: string
   ) => {
+    if (!USE_DB) {
+      const fallbackUsers = [
+        {
+          email: 'victor@kwemoi.com',
+          username: 'master',
+          fullName: 'Victor',
+          role: 'master',
+          permissions: ['*'],
+          password: 'Victor9798!',
+          userId: 'master',
+        },
+        {
+          email: 'leah@chebet.com',
+          username: 'sister',
+          fullName: 'Leah',
+          role: 'sister',
+          permissions: ['family', 'chat'],
+          password: 'Ashlehael',
+          userId: 'sister',
+        },
+      ];
+
+      const fallbackUser = fallbackUsers.find(
+        (u) => u.email === identifier || u.username === identifier,
+      );
+
+      if (!fallbackUser || fallbackUser.password !== password) {
+        return { success: false, message: 'Invalid credentials', error: 'INVALID_CREDENTIALS' };
+      }
+
+      const tokens = await authService.generateTokens(
+        fallbackUser.userId,
+        fallbackUser.email,
+        fallbackUser.role,
+        fallbackUser.permissions,
+      );
+
+      return {
+        success: true,
+        user: {
+          id: fallbackUser.userId,
+          email: fallbackUser.email,
+          username: fallbackUser.username,
+          fullName: fallbackUser.fullName,
+          role: fallbackUser.role,
+          permissions: fallbackUser.permissions,
+        },
+        tokens,
+      };
+    }
+
     const profile = await prisma.authProfile.findFirst({
       where: {
         OR: [

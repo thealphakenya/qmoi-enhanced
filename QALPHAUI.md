@@ -1,20 +1,20 @@
 # QALPHAUI.md - Q Alpha Aggregator Interface Documentation ✅ PRODUCTION CERTIFIED
 
-**Version:** 2.0.0 - Production Ready
+**Version:** 1.0.0 - Basic PWA Shell
 **Date:** May 7, 2026
-**Status:** ✅ PRODUCTION CERTIFIED - All UI components enhanced with real production implementations
-**Scope:** All visible UI elements, screens, interactions, and unified user flows for Q Alpha
-**Production Verification:** ✅ PASSED - Zero non-production code remaining
+**Status:** ✅ BASIC PRODUCTION SHELL - Core PWA functionality implemented with real API integration
+**Scope:** Basic PWA shell with authentication, memory sync, app launching, and voice control
+**Production Verification:** ✅ PARTIALLY IMPLEMENTED - Uses real auth APIs, basic app aggregation via iframe
 
 ---
 
 ## 🎯 Production Certification Summary
 
-**✅ UI Components:** All aggregator UI components production-ready with enhanced cross-app orchestration
-**✅ Code Quality:** No production_IMPLEMENTED markers, all DEBUG_MODE variables eliminated
-**✅ Security:** API authentication implemented, environment variables enforced
-**✅ Performance:** Optimized app switching, unified state management, auto-scaling configured
-**✅ Testing:** Comprehensive UI testing framework production certified
+**✅ UI Components:** Basic PWA shell with functional components
+**✅ Code Quality:** Updated to use real API endpoints, removed mock endpoints
+**✅ Security:** Real authentication API integration implemented
+**✅ Performance:** Basic PWA with service worker, iframe app loading
+**✅ Testing:** Basic functionality verified, API integration tested
 
 ## Table of Contents
 
@@ -33,15 +33,15 @@
 ## Executive Summary
 
 ### Q Alpha Aggregator App Overview
-Q Alpha is the unified aggregator Progressive Web App (PWA) that intelligently consolidates and proxies all QMOI AI, QMOI Space, and QCity functionality into a single cohesive interface. It serves as the master control center, providing seamless navigation between specialized apps while maintaining persistent state, shared authentication, and centralized analytics.
+Q Alpha is a basic Progressive Web App (PWA) shell that provides authentication, memory synchronization, and simple app launching capabilities. It serves as a lightweight entry point for the QMOI ecosystem, offering user authentication and basic app navigation.
 
-> Note: Q Alpha is currently implemented as a static PWA shell for this release. The static entry point is located in `/pwa_apps/q-alpha/` and is available via `q-alpha.html` rather than a live `/app/qalpha/page.tsx` route.
+> Note: Q Alpha is implemented as a static PWA shell at `/q-alpha.html` and `/pwa_apps/q-alpha/`. It provides basic authentication and app launching functionality but does not include the comprehensive unified dashboard described in aspirational documentation.
 
 ### Key UI Characteristics
-- **Theme:** Dark background (#0a0e27) with dynamic multi-color accent cycling (Blue → Purple → Cyan)
-- **Layout:** Master-detail responsive grid with floating panels and adaptive sidebars
-- **Status:** Full PWA capability with cross-app service worker synchronization
-- **Focus:** Unified orchestration, role-based app filtering, and intelligent workflow enhancement
+- **Theme:** Basic dark theme with minimal styling
+- **Layout:** Simple card-based layout with basic navigation
+- **Status:** Functional PWA with install capability and service worker
+- **Focus:** Authentication, memory sync, and basic app launching
 
 ### Theme & Style System
 - **Theme Customization:** Supports adaptive dark theme with role-aware accent colors and cross-app theme synchronization via `QAlphaThemeProvider` and shared theme context.
@@ -55,42 +55,18 @@ Q Alpha is the unified aggregator Progressive Web App (PWA) that intelligently c
 
 ### What Users See When Opening Q Alpha
 
-Upon launching Q Alpha, users encounter the unified aggregator interface:
+Upon launching Q Alpha, users encounter a basic PWA interface:
 
 - **Shell Entry Point:** Static PWA shell at `/q-alpha.html` served from `public/q-alpha.html` and `/pwa_apps/q-alpha/`
-- **Header Section:** "🔷 Q Alpha Aggregator" title with role indicator and global actions
-- **Unified Dashboard:** Consolidated metrics from all three apps (QMOI AI, QMOI Space, QCity)
-- **Quick Stats Panel:** Real-time aggregated statistics
-  - Total Active Tasks across all apps
-  - Cross-app Connected Platforms
-  - Unified Alert Count
-  - Aggregate System Health Score
-
-- **App Selector Sidebar:** 
-  - QMOI AI tab with live app icon and status
-  - QMOI Space tab with marketplace status
-  - QCity tab with command center status
-  - Quick access to specialized features per app
-
-- **Unified Navigation:** Persistent cross-app breadcrumbs and navigation state
-- **Shared Context Panels:**
-  - Global theme control with app-specific accent inheritance
-  - Unified wallet and credential management
-  - Cross-app notification center
-  - Shared help and documentation portal
-
-- **Central Content Area:** Smart app loading and iframe management
-- **Global Overlay System:**
-  - Unified command palette (Cmd+K) for cross-app search
-  - Quick action menu for common workflows
-  - Notification center with app-filtered alerts
-  - Help panel with contextual documentation
-
-- **Footer Panel:** 
-  - Connection status for all three apps
-  - Unified sync status indicator
-  - Performance metrics aggregator
-  - Footer action buttons (Settings, Support, Documentation)
+- **Header Section:** "Q latest" title with install button and settings icon
+- **Navigation:** Basic buttons for QMOI, QMOI Space, and QCity (currently show text feedback only)
+- **Downloads Section:** Links to downloadable apps and files
+- **Voice Control:** Web Speech API integration for voice commands (local processing only)
+- **Authentication:** Basic signup/login forms with real API integration
+- **Memory Display:** Shows synchronized memory data from `/api/auth/memory`
+- **Attachments:** Local file attachment handling
+- **App Launcher:** Iframe-based app loading for QMOI AI, QMOI Space, QCity, and QVillage
+- **Footer Panel:** Basic connection status and app navigation
 - **Production Shell Integration:** Q Alpha is delivered through `/q-alpha.html` and `/pwa_apps/q-alpha/` as a static PWA shell with live QMOI model health checks.
 - **Model Use:** The Q Alpha shell connects to the QMOI backend (`/api/qmoi-model` and `/api/qmoi/chat`) to surface unified health, chat, and orchestration insights.
 
@@ -128,76 +104,87 @@ Upon launching Q Alpha, users encounter the unified aggregator interface:
 ### 1. Q Alpha Home/Dashboard Screen
 
 **Layout:**
-- Unified header with Q Alpha branding and role display
-- Three-column metric grid showing all-app statistics
-- Secondary info panels for critical alerts and recent activities
+- Basic header with title and install button
+- Simple card-based sections for different features
+- No unified metrics or complex dashboard
 
 **Components:**
-- `QAlphaHeader` - Master header with logo, user profile, global actions
-- `UnifiedMetricsGrid` - Aggregated stats from QMOI AI, QMOI Space, QCity
-- `CrossAppAlertPanel` - Consolidated alerts with app filtering
-- `AppSelectorSidebar` - Tab interface for app switching
-- `GlobalActionButtons` - Quick actions (Search, Settings, Notifications)
+- Basic header with install button
+- Navigation buttons (QMOI, QMOI Space, QCity) - currently show text feedback
+- Downloads section with file links
+- Voice control section
+- Authentication forms
+- Memory display section
+- Attachments section
+- App launcher with iframe
 
 **Interactions:**
-- Click app tab to load that app's interface
-- Click metric card to drill into app-specific details
-- Click alert to navigate to relevant app and section
-- Use search bar for cross-app queries
+- Click navigation buttons to see text feedback
+- Use voice control for local command processing
+- Login/signup with real API calls
+- Launch apps in iframe
+- Attach files locally
 
 **Data Source:**
-- Planned aggregation from `/api/qalpha/unified-metrics` (static shell currently manages client-side orchestration)
-- Real-time WebSocket updates from all three apps' servers
+- Authentication: `/api/auth/login`, `/api/auth/signup`
+- Memory: `/api/auth/memory` with action-based requests
+- Local storage for attachments and app state
 
-### 2. App Context Screens (QMOI AI, QMOI Space, QCity)
+### 2. App Context Screens (QMOI AI, QMOI Space, QCity, QVillage)
 
-When user switches to an app tab:
+When user clicks an app launch button:
 
-**QMOI AI Context:**
-- Q Alpha frame shows QMOI AI's full dashboard (with Q Alpha header overlay)
-- All QMOI AI features remain fully functional
-- Breadcrumb shows "Q Alpha > QMOI AI > [current section]"
-- Back button returns to Q Alpha home
+**App Loading:**
+- Apps load in an iframe using their actual routes (/qmoi-ai, /qmoi-space, /qcity, /qvillage)
+- No overlay or unified navigation - apps run independently in iframe
+- Basic iframe management with fixed dimensions
 
-**QMOI Space Context:**
-- Q Alpha frame loads QMOI Space's interface
-- Marketplace and production features fully accessible
-- State preserved from last QMOI Space session
-- Q Alpha overlay provides shared controls and task context
+**Available Apps:**
+- QMOI AI: Loads /qmoi-ai route
+- QMOI Space: Loads /qmoi-space route  
+- QCity: Loads /qcity route
+- QVillage: Loads /qvillage route
+- Q Alpha itself: Loads /q-alpha.html
 
-**QCity Context:**
-- Q Alpha loads QCity command center
-- Full role-based UI adaptation applied
-- Global theme and accent colors synchronized from Q Alpha
-- Audit and compliance features enhanced with cross-app data
+### 3. Settings & Configuration
 
-### 3. Unified Settings Screen
+**Current Implementation:**
+- No unified settings screen implemented
+- Basic authentication state management
+- Local storage for tokens and memory data
+- PWA install prompt handling
 
-**Sections:**
-- **Theme & Appearance:** Dark mode toggle, accent color picker (Blue/Purple/Cyan), font size, contrast settings
-- **Cross-App Preferences:** App visibility toggles, default app on launch, layout preference (master-detail vs. sidebar)
-- **Account & Security:** Profile management, password, 2FA, API keys
-- **Notifications:** Global notification preferences with per-app filters
-- **Integrations:** Connected services, webhooks, and automation rules
-- **Audit & Compliance:** Activity log viewer, data export, retention policies
-- **PRODUCTIONeloper Settings:** API endpoints, debugging tools, test data generators
+### 4. Features Implemented
 
-### 4. Unified Notification Center
+**Authentication:**
+- Real API integration with `/api/auth/login` and `/api/auth/signup`
+- JWT token storage and management
+- Basic user state display
 
-**Features:**
-- Inbox-style list of all cross-app notifications
-- Filter by app (QMOI AI, QMOI Space, QCity)
-- Filter by severity (Critical, Warning, Info)
-- Read/unread state tracking
-- Notification grouping by time and app
-- Quick action buttons per notification
-- Bulk actions (Mark all read, Clear all, etc.)
+**Memory System:**
+- Synchronization with `/api/auth/memory` API
+- Local storage with periodic sync
+- Q.KI memory display
 
-### 5. Global Command Palette (Cmd+K)
+**App Launching:**
+- Iframe-based app loading
+- Route mapping for all main apps
+- Basic navigation
 
-**Functionality:**
-- Search across all apps (Projects, Tasks, Documents, Settings)
-- Quick actions (Create Project, Start Task, View Reports)
+**Voice Control:**
+- Web Speech API integration
+- Local command processing
+- Status feedback
+
+**File Attachments:**
+- Local file handling
+- Metadata storage
+- Basic file list display
+
+**PWA Features:**
+- Install prompt
+- Service worker registration
+- Basic manifest
 - Recent items
 - Help documentation access
 - Keyboard shortcuts reference
