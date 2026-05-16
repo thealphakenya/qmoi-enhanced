@@ -217,4 +217,4 @@ vulnerability_reports/
 *.p12
 .npmrc
 .yarnrc
-config/local.json
+config/local.jsonbackup_archives/
