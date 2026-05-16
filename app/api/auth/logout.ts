@@ -1,14 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { AuthService } from "../../../../lib/auth-service";
+import { prisma } from "../../../../lib/db/prisma";
+import { logger } from "../../../../lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
   try {
-    // Get session ID from cookie or Authorization header
+    const body = await req.json().catch(() => ({}));
+    const revokeAllSessions = Boolean(body.revokeAllSessions);
+    const authHeader = req.headers.get('authorization');
     const sessionId = req.cookies.get('sessionId')?.value ||
-                     req.headers.get('authorization')?.substring(7);
+      (authHeader?.startsWith('Bearer ') ? authHeader.substring(7) : undefined);
 
     if (!sessionId) {
       return NextResponse.json(
@@ -17,7 +21,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Verify session exists and is active
     const session = await AuthService.verifySession(sessionId);
     if (!session) {
       return NextResponse.json(
@@ -26,14 +29,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Logout (invalidate session)
-    const logoutResult = await AuthService.logout(sessionId);
-
-    if (logoutResult.success) {
-
-    // Get user info for audit log
     const user = await prisma.user.findUnique({
-      where: { id: decoded.userId },
+      where: { id: session.userId },
       select: { id: true, email: true },
     });
 
@@ -45,16 +42,14 @@ export async function POST(req: NextRequest) {
     }
 
     if (revokeAllSessions) {
-      // Revoke all active sessions for the user
       await prisma.session.updateMany({
         where: {
-          userId: decoded.userId,
+          userId: session.userId,
           expiresAt: { gt: new Date() },
         },
-        data: { expiresAt: new Date() },
+        data: { expiresAt: new Date(), isActive: false },
       });
 
-      // Create audit log
       await prisma.auditLog.create({
         data: {
           userId: user.id,
@@ -62,7 +57,7 @@ export async function POST(req: NextRequest) {
           action: 'logout_all_sessions',
           resource: 'auth',
           details: JSON.stringify({
-            sessionId: decoded.sessionId,
+            sessionId,
             userAgent: req.headers.get('user-agent'),
             ipAddress: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip'),
           }),
@@ -71,17 +66,9 @@ export async function POST(req: NextRequest) {
           status: 'success',
         } as any,
       });
-
     } else {
-      // Revoke only the current session
-      if (decoded.sessionId) {
-        await prisma.session.updateMany({
-          where: { id: decoded.sessionId },
-          data: { expiresAt: new Date() },
-        });
-      }
+      await AuthService.logout(sessionId);
 
-      // Create audit log
       await prisma.auditLog.create({
         data: {
           userId: user.id,
@@ -89,7 +76,7 @@ export async function POST(req: NextRequest) {
           action: 'logout',
           resource: 'auth',
           details: JSON.stringify({
-            sessionId: decoded.sessionId,
+            sessionId,
             userAgent: req.headers.get('user-agent'),
             ipAddress: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip'),
           }),
@@ -100,10 +87,9 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // Update user's last logout time
     await prisma.user.update({
       where: { id: user.id },
-      data: { lastLoginAt: new Date() }, // This represents last activity, not login
+      data: { lastLoginAt: new Date() },
     });
 
     return NextResponse.json({
@@ -126,6 +112,5 @@ export async function POST(req: NextRequest) {
 }
 
 export async function GET(req: NextRequest) {
-  // Support GET requests for logout (useful for browser-based logout links)
   return POST(req);
 }

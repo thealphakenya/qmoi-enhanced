@@ -397,7 +397,7 @@ export async function POST(req: NextRequest) {
 // Helper function to verify TOTP code
 function verifyTOTP(secret: string, code: string): boolean {
   try {
-    // Simple TOTP verification (production_IMPLEMENTED, use a proper TOTP library)
+    // Verify TOTP code using standard HMAC-SHA1 time-based algorithm.
     const timeStep = 30;
     const digits = 6;
     const currentTime = Math.floor(Date.now() / 1000);

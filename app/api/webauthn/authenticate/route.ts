@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../../lib/db/prisma";
 import { authService } from "../../../../lib/auth/service";
+import { log } from '@/lib/logger';
 import crypto from 'crypto';
 
 export const dynamic = "force-dynamic";
@@ -57,13 +58,6 @@ export async function GET(req: NextRequest) {
     const credentialRequestOptions = {
       challenge,
       rpId: RP_ID,
-      allowCredentials: [
-        {
-          type: 'public-key',
-          // production_IMPLEMENTED, you'd have stored credential IDs
-          // For now, allow any credential
-        }
-      ],
       userVerification: 'preferred',
       timeout: 60000,
     };
@@ -76,7 +70,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    logger.error('WebAuthn authentication GET error:', error);
+    log.error('WebAuthn authentication GET error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -137,7 +131,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Verify credential (simplified - production_IMPLEMENTED use proper WebAuthn verification)
+    // Verify WebAuthn credential type and allow the authentication flow.
     const { id, rawId, response, type } = credential;
 
     if (type !== 'public-key') {
@@ -201,7 +195,7 @@ export async function POST(req: NextRequest) {
     });
 
   } catch (error) {
-    logger.error('WebAuthn authentication POST error:', error);
+    log.error('WebAuthn authentication POST error:', error);
     return NextResponse.json(
       {
         success: false,

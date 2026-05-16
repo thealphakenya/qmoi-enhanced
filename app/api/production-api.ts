@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../lib/db/prisma";
+import { log } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -94,7 +95,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    logger.error('production API status error:', error);
+    log.error('production API status error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -150,7 +151,7 @@ export async function POST(req: NextRequest) {
     );
 
   } catch (error) {
-    logger.error('production API POST error:', error);
+    log.error('production API POST error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -166,7 +167,7 @@ async function getTotalEndpoints(): Promise<number> {
   // Count all API route files
   const { execSync } = require('child_process');
   try {
-    const result = execSync('find app/api -name "*.ts" -o -name "*.js" | wc -l', { encoding: 'utf8' });
+    const result = execSync("find app/api -name \"*.ts\" -o -name \"*.js\" | grep -v '\\.backups' | grep -v '\\bbackups\\b' | wc -l", { encoding: 'utf8' });
     return parseInt(result.trim()) || 0;
   } catch {
     return 0;
@@ -177,8 +178,8 @@ async function getImplementedEndpoints(): Promise<number> {
   // Count routes without placeholder patterns
   const { execSync } = require('child_process');
   try {
-    const total = execSync('find app/api -name "*.ts" -o -name "*.js" | wc -l', { encoding: 'utf8' });
-    const placeholders = execSync('find app/api -name "*.ts" -o -name "*.js" | xargs grep -l "\\${routeName}" | wc -l', { encoding: 'utf8' });
+    const total = execSync("find app/api -name \"*.ts\" -o -name \"*.js\" | grep -v '\\.backups' | grep -v '\\bbackups\\b' | wc -l", { encoding: 'utf8' });
+    const placeholders = execSync("find app/api -name \"*.ts\" -o -name \"*.js\" | grep -v '\\.backups' | grep -v '\\bbackups\\b' | xargs grep -l "\\\${routeName}" | wc -l", { encoding: 'utf8' });
     return (parseInt(total.trim()) || 0) - (parseInt(placeholders.trim()) || 0);
   } catch {
     return 0;
@@ -189,7 +190,7 @@ async function getPlaceholderEndpoints(): Promise<number> {
   // Count routes with placeholder patterns
   const { execSync } = require('child_process');
   try {
-    const result = execSync('find app/api -name "*.ts" -o -name "*.js" | xargs grep -l "\\${routeName}" | wc -l', { encoding: 'utf8' });
+    const result = execSync("find app/api -name \"*.ts\" -o -name \"*.js\" | grep -v '\\.backups' | grep -v '\\bbackups\\b' | xargs grep -l "\\\${routeName}" | wc -l", { encoding: 'utf8' });
     return parseInt(result.trim()) || 0;
   } catch {
     return 0;
@@ -214,7 +215,7 @@ async function performHealthCheck(): Promise<{
     await prisma.user.count();
     health.database = true;
   } catch (error) {
-    logger.error('Database health check failed:', error);
+  log.error('Database health check failed:', error);
   }
 
   // Check external APIs

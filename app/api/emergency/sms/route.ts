@@ -67,7 +67,9 @@ export async function GET(req: NextRequest) {
         recentMessages: smsHistory.slice(0, 10).map(sms => ({
           type: sms.metricName.replace('sms_', ''),
           recipient: sms.dimensions?.recipient || 'Unknown',
-          message: sms.dimensions?.message?.substring(0, 50) + '...' || 'Emergency alert',
+          message: sms.dimensions?.message
+            ? sms.dimensions.message.substring(0, 50) + (sms.dimensions.message.length > 50 ? '...' : '')
+            : 'Emergency alert',
           status: sms.value === 1 ? 'success' : 'failed',
           timestamp: sms.createdAt.toISOString(),
         })),
@@ -100,16 +102,27 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (action === 'send_alert' && (!recipients || !message)) {
-      return NextResponse.json(
-        { success: false, error: "Recipients and message are required for sending alerts" },
-        { status: 400 }
-      );
-    }
-
     if (action === 'send_alert') {
+      if (!Array.isArray(recipients) || recipients.length === 0 || !message) {
+        return NextResponse.json(
+          { success: false, error: "Recipients and message are required for sending alerts" },
+          { status: 400 }
+        );
+      }
+
+      const normalizedRecipients = recipients
+        .map((recipient: any) => String(recipient || '').trim())
+        .filter((recipient: string) => recipient.length > 0);
+
+      if (normalizedRecipients.length === 0) {
+        return NextResponse.json(
+          { success: false, error: "At least one valid recipient phone number is required" },
+          { status: 400 }
+        );
+      }
+
       // Send emergency SMS alert
-      const results = await sendEmergencySmsAlert(recipients, message, priority, alertType);
+      const results = await sendEmergencySmsAlert(normalizedRecipients, message, priority, alertType);
 
       // Log the alert
       await prisma.auditLog.create({
@@ -326,7 +339,16 @@ async function sendEmergencySms(
   error?: string;
 }> {
   try {
-    // Use Twilio for real SMS sending
+    if (!process.env.TWILIO_ACCOUNT_SID || !process.env.TWILIO_AUTH_TOKEN || !process.env.TWILIO_PHONE_NUMBER) {
+      const errMsg = 'Twilio credentials are not fully configured';
+      log.error(errMsg, {
+        missingAccountSid: !process.env.TWILIO_ACCOUNT_SID,
+        missingAuthToken: !process.env.TWILIO_AUTH_TOKEN,
+        missingPhoneNumber: !process.env.TWILIO_PHONE_NUMBER,
+      });
+      return { success: false, error: errMsg };
+    }
+
     const twilioClient = twilio(
       process.env.TWILIO_ACCOUNT_SID,
       process.env.TWILIO_AUTH_TOKEN
@@ -334,7 +356,7 @@ async function sendEmergencySms(
 
     const result = await twilioClient.messages.create({
       body: message,
-      from: process.env.TWILIO_PHONE_NUMBER || '+1234567890',
+      from: process.env.TWILIO_PHONE_NUMBER,
       to: recipient,
     });
 
@@ -397,11 +419,6 @@ async function testSmsService(): Promise<{
       responseTime,
       error: error instanceof Error ? error.message : 'Unknown error',
     });
-
-    // Return degraded but functional status if Twilio is not configured
-    if (process.env.SMS_MOCK_MODE === 'true') {
-      return { success: true, responseTime };
-    }
 
     return {
       success: false,

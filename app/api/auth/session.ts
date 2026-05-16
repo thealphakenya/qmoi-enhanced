@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { AuthService } from "../../../lib/auth-service";
 import { prisma } from "../../../lib/db/prisma";
 import { authService } from "../../../lib/auth/service";
+import { logger } from "../../../lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -35,13 +35,14 @@ export async function GET(req: NextRequest) {
       },
       select: {
         id: true,
-        PRODUCTIONiceInfo: true,
         ipAddress: true,
         userAgent: true,
         createdAt: true,
         expiresAt: true,
         lastActivityAt: true,
-        isCurrentSession: true,
+        authMethod: true,
+        biometricMethod: true,
+        isActive: true,
       },
       orderBy: { createdAt: 'desc' },
     });

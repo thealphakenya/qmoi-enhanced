@@ -317,8 +317,21 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      // Verify current password (simplified - production_IMPLEMENTED use proper password verification)
-      const isValidCurrentPassword = await authService.verifyPassword(user.email, currentPassword);
+      // Verify current password using stored hash from authProfile or legacy user record
+      const authProfile = await prisma.authProfile.findUnique({
+        where: { userId: user.id },
+        select: { passwordHash: true },
+      });
+
+      const userRecord = await prisma.user.findUnique({
+        where: { id: user.id },
+        select: { passwordHash: true, password: true },
+      });
+
+      const currentHash = authProfile?.passwordHash || userRecord?.passwordHash || userRecord?.password || '';
+      const isValidCurrentPassword = currentHash
+        ? await authService.verifyPassword(currentPassword, currentHash)
+        : false;
 
       if (!isValidCurrentPassword) {
         await prisma.auditLog.create({

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../../lib/db/prisma";
 import { authService } from "../../../../lib/auth/service";
-import bcrypt from 'bcrypt';
+import { log } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -30,24 +30,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Find user by email
-    const user = await prisma.user.findUnique({
-      where: { email },
-      select: {
-        id: true,
-        email: true,
-        username: true,
-        name: true,
-        role: true,
-        permissions: true,
-        accountStatus: true,
-        biometricEnabled: true,
-        trustScore: true,
-        lastLogin: true,
-      },
-    });
+    // Authenticate using central auth service (handles DB and fallback)
+    const authResult = await authService.authenticatePassword(email, password);
 
-    if (!user) {
+    if (!authResult || !authResult.success) {
       return NextResponse.json(
         {
           success: false,
@@ -57,44 +43,26 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Check account status
-    if (user.accountStatus !== 'active') {
-      return NextResponse.json(
-        {
-          success: false,
-          error: "Account is not active",
-        },
-        { status: 403 }
-      );
+    const user = authResult.user as any;
+    const tokens = authResult.tokens as any;
+
+    const permissions = Array.isArray(user.permissions)
+      ? user.permissions
+      : user.permissions
+      ? JSON.parse(user.permissions)
+      : [];
+
+    // Update last login in user record if using DB
+    try {
+      if (user?.id) {
+        await prisma.user.update({
+          where: { id: user.id },
+          data: { lastLogin: new Date() },
+        });
+      }
+    } catch (_e) {
+      // ignore update errors
     }
-
-    // Verify password using bcrypt
-    const isValidPassword = await bcrypt.compare(password, user.password || '');
-
-    if (!isValidPassword) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: "Invalid email or password",
-        },
-        { status: 401 }
-      );
-    }
-
-    // Generate tokens
-    const permissions = user.permissions ? JSON.parse(user.permissions) : [];
-    const tokens = await authService.generateTokens(
-      user.id,
-      user.email,
-      user.role,
-      permissions
-    );
-
-    // Update last login
-    await prisma.user.update({
-      where: { id: user.id },
-      data: { lastLogin: new Date() },
-    });
 
     // Create audit log
     await prisma.auditLog.create({
@@ -138,7 +106,7 @@ export async function POST(req: NextRequest) {
     });
 
   } catch (error) {
-    logger.error('Login error:', error);
+    log.error('Login error:', error);
     return NextResponse.json(
       {
         success: false,

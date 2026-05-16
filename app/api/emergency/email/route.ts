@@ -130,7 +130,6 @@ export async function POST(req: NextRequest) {
 
     const emailRecipients = recipients.length > 0 ? recipients : defaultRecipients;
 
-    // production_IMPLEMENTED, integrate with email service (SendGrid, AWS SES, etc.)
     const emailResult = await sendEmergencyEmail({
       to: emailRecipients,
       subject: `[EMERGENCY] ${subject}`,
@@ -205,34 +204,59 @@ async function sendEmergencyEmail(params: {
   sender: string;
 }): Promise<{ success: boolean; emailId?: string; error?: string }> {
   try {
-    // production_IMPLEMENTED, integrate with email service provider
-    // For now, simulate email sending
+    const sendGridKey = process.env.SENDGRID_API_KEY;
+    const sendGridFrom = process.env.SENDGRID_FROM || process.env.SENDGRID_VERIFICATION_FROM;
 
-    if (!process.env.SMTP_HOST) {
-      log.warn('SMTP not configured, simulating email send');
+if (!sendGridKey || !sendGridFrom) {
+        const errMsg = 'SendGrid email provider is not configured';
+        log.error(errMsg, {
+          hasApiKey: !!sendGridKey,
+          hasFrom: !!sendGridFrom,
+        });
+        return {
+          success: false,
+          error: errMsg,
+        };
+      }
+
+      const payload = {
+        personalizations: [{
+          to: params.to.map((email) => ({ email })),
+          subject: params.subject,
+        }],
+        from: { email: sendGridFrom, name: 'QMOI Emergency Alerts' },
+        content: [
+          {
+            type: 'text/html',
+            value: `<p>${params.message}</p><p>Priority: ${params.priority}</p><p>Type: ${params.type}</p><p>Sender: ${params.sender}</p>`,
+          },
+        ],
+      };
+
+      const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${sendGridKey}`,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`SendGrid send failed: ${response.status} ${errorText}`);
+      }
+
+      log.info('Emergency email queued via SendGrid', {
+        to: params.to,
+        subject: params.subject,
+        sender: params.sender,
+      });
+
       return {
         success: true,
-        emailId: `email_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+        emailId: `sendgrid_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
       };
-    }
-
-    // Simulate email sending with delay
-    await new Promise(resolve => setTimeout(resolve, 100));
-
-    // Log email details for monitoring
-    log.info('Emergency Email Sent:', {
-      to: params.to,
-      subject: params.subject,
-      priority: params.priority,
-      type: params.type,
-      sender: params.sender,
-      timestamp: new Date().toISOString(),
-    });
-
-    return {
-      success: true,
-      emailId: `email_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-    };
 
   } catch (error) {
     logger.error('Email sending failed:', error);

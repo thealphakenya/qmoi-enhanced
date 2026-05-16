@@ -234,7 +234,6 @@ export async function POST(req: NextRequest) {
 
     // Send email verification using production email service
     try {
-      // Store token verification audit log
       await prisma.auditLog.create({
         data: {
           userId: user.id,
@@ -252,11 +251,8 @@ export async function POST(req: NextRequest) {
         } as any,
       });
 
-      // production_IMPLEMENTED, send via email service (SendGrid, AWS SES, etc.)
-      // For now, log it for PRODUCTIONelopment
-      log.info(`Email verification token generated for ${user.email}`);
+      await sendVerificationEmail(user.email, emailVerificationToken, user.username);
     } catch (emailError) {
-      // Log email sending failure but don't fail the signup
       log.error('Failed to send verification email:', emailError as Error);
     }
 
@@ -283,7 +279,7 @@ export async function POST(req: NextRequest) {
     }, { status: 201 });
 
   } catch (error) {
-    logger.error('Signup error:', error);
+    log.error('Signup error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -293,6 +289,50 @@ export async function POST(req: NextRequest) {
       { status: 500 }
     );
   }
+}
+
+async function sendVerificationEmail(email: string, token: string, username: string) {
+  const fromAddress = process.env.SENDGRID_VERIFICATION_FROM;
+  const apiKey = process.env.SENDGRID_API_KEY;
+  const verificationUrl = `${process.env.APP_BASE_URL || 'https://qmoi-enhanced.com'}/api/auth/verify-email?token=${encodeURIComponent(token)}`;
+
+  if (!apiKey || !fromAddress) {
+    log.warn('Verification email not sent because SendGrid is not configured', {
+      email,
+      sendGridConfigured: Boolean(apiKey && fromAddress),
+    });
+    return;
+  }
+
+  const payload = {
+    personalizations: [{
+      to: [{ email }],
+      subject: 'Verify your QMOI account',
+    }],
+    from: { email: fromAddress, name: 'QMOI Authentication' },
+    content: [
+      {
+        type: 'text/html',
+        value: `<p>Hi ${username || 'User'},</p><p>Please verify your email address by clicking the link below:</p><p><a href="${verificationUrl}">Verify Email</a></p><p>If you did not create an account, ignore this message.</p>`,
+      },
+    ],
+  };
+
+  const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`SendGrid email send failed: ${response.status} ${errorText}`);
+  }
+
+  log.info('Verification email queued via SendGrid', { email });
 }
 
 export async function GET(req: NextRequest) {

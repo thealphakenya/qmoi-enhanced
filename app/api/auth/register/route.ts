@@ -81,16 +81,17 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Hash password using bcrypt for secure password storage
-    const hashedPassword = await bcrypt.hash(password, 10);
+    // Hash password using a central auth service for secure password storage
+    const hashedPassword = await authService.hashPassword(password);
 
-    // Create user
+    // Create user and store the password hash for authentication
     const user = await prisma.user.create({
       data: {
         email,
         username,
         name: name || username,
         role,
+        passwordHash: hashedPassword,
         permissions: JSON.stringify(['read']), // Default permissions
         accountStatus: 'active',
         trustScore: 0.5, // Start with neutral trust score

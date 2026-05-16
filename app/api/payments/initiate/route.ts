@@ -53,7 +53,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    logger.error('Payments GET error:', error);
+    log.error('Payments GET error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -135,10 +135,8 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // production_IMPLEMENTED, integrate with payment providers like:
-    // - Stripe for card payments
-    // - M-Pesa for mobile money
-    // - PayPal for international payments
+    // Integrate with production payment providers.
+    // Stripe is used for card payments; other payment methods may require provider integration.
 
     let paymentUrl = null;
     let paymentData = null;
@@ -146,21 +144,33 @@ export async function POST(req: NextRequest) {
     // Simulate payment provider integration
     if (paymentMethod === 'card') {
       // Stripe integration with production credentials
-      const stripePublishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
-      const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-      
-      if (!stripePublishableKey || !stripeSecretKey) {
-        return NextResponse.json(
-          { error: 'Stripe credentials not configured' },
-          { status: 500 }
-        );
-      }
-      
-      paymentUrl = `${process.env.FRONTEND_URL || process.env.API_URL || 'https://qmoi.ai'}/payment/${reference}`;
-      paymentData = {
-        clientSecret: `cs_${crypto.randomBytes(32).toString('hex')}`,
-        publishableKey: stripePublishableKey,
-      };
+        const stripePublishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
+        const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+
+        if (!stripePublishableKey || !stripeSecretKey) {
+          return NextResponse.json(
+            { error: 'Stripe credentials not configured' },
+            { status: 500 }
+          );
+        }
+
+        // Initialize Stripe with the secret key and create a PaymentIntent
+        const stripe = new Stripe(stripeSecretKey, { apiVersion: '2022-11-15' });
+        // Stripe expects amount in the smallest currency unit (e.g., cents).
+        const amountInMinor = Math.round((Number(amount) || 0) * 100);
+        const intent = await stripe.paymentIntents.create({
+          amount: amountInMinor,
+          currency: String(currency).toLowerCase(),
+          metadata: { paymentId: String(payment.id), reference },
+          description: description || 'Payment transaction',
+        });
+
+        paymentUrl = `${process.env.FRONTEND_URL || process.env.API_URL || 'https://qmoi.ai'}/payment/${reference}`;
+        paymentData = {
+          clientSecret: intent.client_secret,
+          publishableKey: stripePublishableKey,
+          paymentIntentId: intent.id,
+        };
     } else if (paymentMethod === 'mpesa') {
       // Simulate M-Pesa integration
       paymentData = {
@@ -212,7 +222,7 @@ export async function POST(req: NextRequest) {
     }, { status: 201 });
 
   } catch (error) {
-    logger.error('Payments POST error:', error);
+    log.error('Payments POST error:', error);
     return NextResponse.json(
       {
         success: false,

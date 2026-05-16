@@ -118,6 +118,7 @@ export const authService = {
       };
     }
 
+    // First try authProfile (newer schema)
     const profile = await prisma.authProfile.findFirst({
       where: {
         OR: [
@@ -128,31 +129,72 @@ export const authService = {
       include: { user: true },
     });
 
-    if (!profile || !profile.user || !profile.isActive || profile.user.accountStatus !== 'active') {
-      return { success: false, message: 'Invalid credentials', error: 'INVALID_CREDENTIALS' };
+    if (profile && profile.user && profile.isActive && profile.user.accountStatus === 'active') {
+      const passwordMatches = await authService.verifyPassword(password, profile.passwordHash);
+      if (!passwordMatches) {
+        return { success: false, message: 'Invalid credentials', error: 'INVALID_CREDENTIALS' };
+      }
+
+      const permissions = profile.user.permissions ? JSON.parse(profile.user.permissions) : [];
+      const tokens = await authService.generateTokens(profile.userId, profile.email, profile.user.role, permissions);
+
+      await prisma.authProfile.update({
+        where: { userId: profile.userId },
+        data: { lastLoginAt: new Date(), lastLoginMethod: 'password' },
+      });
+
+      return {
+        success: true,
+        user: {
+          id: profile.userId,
+          email: profile.email,
+          username: profile.username,
+          fullName: profile.fullName,
+          role: profile.user.role,
+          permissions,
+        },
+        tokens,
+      };
     }
 
-    const passwordMatches = await authService.verifyPassword(password, profile.passwordHash);
-    if (!passwordMatches) {
-      return { success: false, message: 'Invalid credentials', error: 'INVALID_CREDENTIALS' };
-    }
-
-    const permissions = profile.user.permissions ? JSON.parse(profile.user.permissions) : [];
-    const tokens = await authService.generateTokens(profile.userId, profile.email, profile.user.role, permissions);
-
-    await prisma.authProfile.update({
-      where: { userId: profile.userId },
-      data: { lastLoginAt: new Date(), lastLoginMethod: 'password' },
+    // Fallback: check legacy/alternate password stored on `user` record
+    const legacyUser = await prisma.user.findFirst({
+      where: {
+        OR: [
+          { email: identifier },
+          { username: identifier },
+        ],
+      },
     });
+
+    if (!legacyUser || legacyUser.accountStatus !== 'active') {
+      return { success: false, message: 'Invalid credentials', error: 'INVALID_CREDENTIALS' };
+    }
+
+    const legacyHash = (legacyUser as any).passwordHash || (legacyUser as any).password || '';
+    const legacyMatches = legacyHash ? await authService.verifyPassword(password, legacyHash) : false;
+    if (!legacyMatches) {
+      return { success: false, message: 'Invalid credentials', error: 'INVALID_CREDENTIALS' };
+    }
+
+    const permissions = legacyUser.permissions ? JSON.parse(legacyUser.permissions) : [];
+    const tokens = await authService.generateTokens(legacyUser.id, legacyUser.email, legacyUser.role, permissions);
+
+    // update last login on user
+    try {
+      await prisma.user.update({ where: { id: legacyUser.id }, data: { lastLogin: new Date() } });
+    } catch (e) {
+      // ignore
+    }
 
     return {
       success: true,
       user: {
-        id: profile.userId,
-        email: profile.email,
-        username: profile.username,
-        fullName: profile.fullName,
-        role: profile.user.role,
+        id: legacyUser.id,
+        email: legacyUser.email,
+        username: legacyUser.username,
+        fullName: `${legacyUser.firstName || ''} ${legacyUser.lastName || ''}`.trim(),
+        role: legacyUser.role,
         permissions,
       },
       tokens,

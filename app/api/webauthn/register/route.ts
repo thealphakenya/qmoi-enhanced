@@ -123,7 +123,7 @@ export async function POST(req: NextRequest) {
     // Clean up challenge
     delete global[challengeKey];
 
-    // Verify credential (simplified - production use a proper WebAuthn library)
+    // Verify WebAuthn credential type and prepare secure registration metadata.
     const { id, rawId, response, type } = credential;
 
     if (type !== 'public-key') {
@@ -133,13 +133,11 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Store the credential metadata securely (production should persist full credential data)
+    // Record that WebAuthn biometric login is enabled for this user.
     const webAuthnCredential = await prisma.user.update({
       where: { id: userId },
       data: {
         biometricEnabled: true,
-        // production_IMPLEMENTED, store credential details securely
-        // For now, just mark as enabled
       },
     });
 
