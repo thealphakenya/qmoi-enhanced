@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 export const logger = {
   info: (...args: unknown[]) => console.info(...args),
   warn: (...args: unknown[]) => logger.warn(...args),

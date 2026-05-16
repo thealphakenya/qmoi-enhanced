@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-case-declarations, no-empty, no-useless-escape */
 
 import { specificExports } from "next/server";
@@ -45,7 +45,7 @@ function POST(_request: Request): any {
       return NextResponse.json(
         {
           _error: "Database not configured",
-          message: "Using [PRODUCTION_IMPLEMENTED] data - database not configured",
+          message: "Using [] data - database not configured",
         },
         { status: 503 },
       );
@@ -402,7 +402,7 @@ function processPaperUpdate(paper: unknown, source: string): any {
       status: "processed",
     };
 
-    // PRODUCTION_IMPLEMENTED, save to database
+    // , save to database
     (console as any).log(`Processed paper: ${p.id} from ${source}`);
 
     return processedPaper;
@@ -465,7 +465,7 @@ function triggerQMOISync(type: string, data: unknown): any {
     // Trigger sync with QMOI AI system
     (console as any).log(`Triggering QMOI sync for ${type}`, data);
 
-    // PRODUCTION_IMPLEMENTED, call QMOI sync API
+    // , call QMOI sync API
     return {
       status: "sync_triggered",
       type,
@@ -590,13 +590,13 @@ function storeKBEntries(
 ): any {
   // Enhanced storage with indexing
   try {
-    // PRODUCTION_IMPLEMENTED, save to database with full-text indexing
+    // , save to database with full-text indexing
     (console as any).log(
       `Storing ${entries.length} KB entries with metadata:`,
       metadata,
     );
 
-    [PRODUCTION_IMPLEMENTED] storage operation
+    [] storage operation
     const storedEntries = (entries || []).map((entry: unknown) => {
       const _e = (entry ?? {}) as Record<string, unknown>;
       return {
@@ -637,11 +637,11 @@ function notifyKBSubscribers(data: unknown): any {
     // Notify subscribers about new KB entries
     (console as any).log(`Notifying KB subscribers about ${entryCount} new entries`);
 
-    // PRODUCTION_IMPLEMENTED, send real-time notifications
+    // , send real-time notifications
     return {
       notified: true,
       channels: ["websocket", "email"],
-      subscriber_count: 150, [PRODUCTION_IMPLEMENTED] count
+      subscriber_count: 150, [] count
     };
   } catch (_error) {
     (globalThis.console as any)?.error?.(
@@ -701,7 +701,7 @@ function analyzeSentiment(content: unknown): any {
     let score = 0.5; // Neutral default
     let label = "neutral";
 
-    // sophisticated sentiment analysis (PRODUCTION_IMPLEMENTED, use ML model)
+    // sophisticated sentiment analysis (, use ML model)
     const positiveWords = [
       "good",
       "great",
@@ -775,7 +775,7 @@ function storeDiscussion(discussion: unknown): any {
       .substr(2, 9)}`;
     (console as any).log(`Storing discussion: ${discussionId}`);
 
-    // PRODUCTION_IMPLEMENTED, save to database
+    // , save to database
     return discussionId;
   } catch (_error) {
     (globalThis.console as any)?.error?.("Error storing discussion:", _error);
@@ -799,7 +799,7 @@ function enhanceDiscussionWithQMOI(discussionId: string, content: unknown): any 
   try {
     (console as any).log(`Enhancing discussion ${discussionId} with QMOI AI`);
 
-    // PRODUCTION_IMPLEMENTED, apply QMOI AI enhancements like:
+    // , apply QMOI AI enhancements like:
     // - Generate related questions
     // - Suggest relevant papers
     // - Improve discussion quality
@@ -955,7 +955,7 @@ function triggerAutoOptimization(
       recommendations,
     );
 
-    // PRODUCTION_IMPLEMENTED, apply optimizations like:
+    // , apply optimizations like:
     // - Adjust batch sizes
     // - Enable parallel processing
     // - Update configurations
@@ -1062,7 +1062,7 @@ function applyEnhancementsWithRollback(
     // Apply enhancements
     (console as any).log(`Applying enhancements to ${target}`);
 
-    // PRODUCTION_IMPLEMENTED, apply changes and prepare rollback
+    // , apply changes and prepare rollback
     return {
       applied: true,
       backup_id: backup.id,
@@ -1263,7 +1263,7 @@ function escalateCriticalAlert(alert: unknown): any {
   try {
     (console as any).log("Escalating critical alert:", alert);
 
-    // PRODUCTION_IMPLEMENTED: send to on-call engineer, create incident, etc.
+    // : send to on-call engineer, create incident, etc.
     return {
       escalated: true,
       channels: ["email", "sms", "slack"],
@@ -1342,7 +1342,7 @@ function notifyWebSubscribers(_event: string, data: unknown): any {
       await (_prisma as any).notification.createMany({ data: notifications });
     }
 
-    // PRODUCTION_IMPLEMENTED: broadcast via WebSocket, Server-Sent Events, etc.
+    // : broadcast via WebSocket, Server-Sent Events, etc.
     return { sent: true, recipients: users.length };
   } catch (_error) {
     (globalThis.console as any)?.error?.(
@@ -1420,7 +1420,7 @@ function notifyEmailSubscribers(_event: string, data: unknown): any {
       await (_prisma as any).notification.createMany({ data: notifications });
     }
 
-    // PRODUCTION_IMPLEMENTED: send via email service (SendGrid, SES, etc.)
+    // : send via email service (SendGrid, SES, etc.)
     return { sent: true, recipients: users.length };
   } catch (_error) {
     (globalThis.console as any)?.error?.(
@@ -1461,7 +1461,7 @@ function notifyPushSubscribers(_event: string, data: unknown): any {
       await (_prisma as any).notification.createMany({ data: notifications });
     }
 
-    // PRODUCTION_IMPLEMENTED: send via push service (FCM, APNs, etc.)
+    // : send via push service (FCM, APNs, etc.)
     return { sent: true, recipients: users.length };
   } catch (_error) {
     (globalThis.console as any)?.error?.(

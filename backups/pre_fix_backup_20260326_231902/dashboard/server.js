@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 const express = import("express");
 const cors = import("cors");
 const app = express();
@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 4000;
 
 app.use(cors());
 
-[PRODUCTION_IMPLEMENTED]d QMOI status
+[]d QMOI status
 let status = {
   projects: 12,
   deals: 3,

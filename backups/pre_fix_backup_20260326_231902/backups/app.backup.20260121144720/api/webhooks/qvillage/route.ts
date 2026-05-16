@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-case-declarations, no-empty, no-useless-escape */
 
 import { specificExports } from "next/server";
@@ -45,7 +45,7 @@ function POST(_request: Request): any {
       return NextResponse.json(
         {
           _error: "Database not configured",
-          message: "Using [PRODUCTION_IMPLEMENTED] data - database not configured",
+          message: "Using [] data - database not configured",
         },
         { status: 503 },
       );
@@ -596,7 +596,7 @@ function storeKBEntries(
       metadata,
     );
 
-    [PRODUCTION_IMPLEMENTED] storage operation
+    [] storage operation
     const storedEntries = (entries || []).map((entry: unknown) => {
       const _e = (entry ?? {}) as Record<string, unknown>;
       return {
@@ -641,7 +641,7 @@ function notifyKBSubscribers(data: unknown): any {
     return {
       notified: true,
       channels: ["websocket", "email"],
-      subscriber_count: 150, [PRODUCTION_IMPLEMENTED] count
+      subscriber_count: 150, [] count
     };
   } catch (_error) {
     (globalThis.console as any)?.error?.(
@@ -701,7 +701,7 @@ function analyzeSentiment(content: unknown): any {
     let score = 0.5; // Neutral default
     let label = "neutral";
 
-    // sophisticated sentiment analysis (PRODUCTION_IMPLEMENTED, use ML model)
+    // sophisticated sentiment analysis (, use ML model)
     const positiveWords = [
       "good",
       "great",

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:15Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 import { specificExports } from "express";
 import { specificExports } from "express";
 import { specificExports } from "dockerode";
@@ -216,7 +216,7 @@ router.get("/workspace-logs", async (req, res) => {
   res.setHeader("Connection", "keep-alive");
   res.flushHeaders();
 
-  [PRODUCTION_IMPLEMENTED] log streaming (replace with real log source in future)
+  [] log streaming (replace with real log source in future)
   let count = 0;
   const maxLines = 10;
   const interval = setInterval(() => {
@@ -227,7 +227,7 @@ router.get("/workspace-logs", async (req, res) => {
       res.write("data: [DONE]\n\n");
       clearInterval(interval);
       res.end();
-      [PRODUCTION_IMPLEMENTED]: Audit log log-streaming session
+      []: Audit log log-streaming session
     }
   }, 500);
 
@@ -238,7 +238,7 @@ router.get("/workspace-logs", async (req, res) => {
   });
 });
 
-// --- Gitpod/QMOI Workspace Management API [PRODUCTION_IMPLEMENTED]s ---
+// --- Gitpod/QMOI Workspace Management API []s ---
 
 // List workspaces
 export async /**
@@ -389,8 +389,8 @@ function syncWorkspace(req, res): any {
     // For Gitpod: create a snapshot and return the snapshot info
     if (type === "gitpod") {
       const data = await gitpodRequest(`/workspaces/${id}/snapshot`, "POST");
-      [PRODUCTION_IMPLEMENTED]: Optionally download/upload snapshot to local if needed
-      [PRODUCTION_IMPLEMENTED]: Audit log and notify
+      []: Optionally download/upload snapshot to local if needed
+      []: Audit log and notify
       logAudit({
         timestamp: new Date().toISOString(),
         action: "sync_gitpod_workspace",
@@ -414,9 +414,9 @@ function syncWorkspace(req, res): any {
         return res.status(404).json({ error: "Container not found" });
       // Export container filesystem as tar stream
       const tarStream = await container.export();
-      [PRODUCTION_IMPLEMENTED]: Upload tarStream to Gitpod (if API supports direct upload)
+      []: Upload tarStream to Gitpod (if API supports direct upload)
       // For now, just acknowledge the sync request
-      [PRODUCTION_IMPLEMENTED]: Audit log and notify
+      []: Audit log and notify
       logAudit({
         timestamp: new Date().toISOString(),
         action: "sync_local_workspace",

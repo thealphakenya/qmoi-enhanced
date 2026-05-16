@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026--26T03:58:Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 """Initialize environment for the QMOI Control Server.
 
 This module sets up the environment before the server starts.

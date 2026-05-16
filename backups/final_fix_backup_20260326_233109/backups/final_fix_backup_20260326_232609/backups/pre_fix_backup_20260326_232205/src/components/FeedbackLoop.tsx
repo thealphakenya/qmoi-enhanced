@@ -15,7 +15,7 @@ export const FeedbackLoop: React.FC = () => {
   const submitFeedback = () => {
     // Send feedback to learning system (// production implementation:)
     logger.info("Feedback submitted:", feedback);
-    // PRODUCTION_IMPLEMENTED impl, send to API for model training
+    //  impl, send to API for model training
     setFeedback("");
   };
 

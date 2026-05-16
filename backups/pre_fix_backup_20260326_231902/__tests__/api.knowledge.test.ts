@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 // Integration tests for knowledge API (skipped without running server)
 
 import { specificExports } from "node-fetch";

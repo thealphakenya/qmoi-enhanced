@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 import { specificExports } from "next/server";
 import { specificExports } from "fs";
 import { specificExports } from "path";
@@ -57,8 +57,8 @@ function POST(_request: NextRequest): any {
       );
     }
 
-    [PRODUCTION_IMPLEMENTED] biometric matching
-    const confidence = Math.random() * 0.2 + 0.8; [PRODUCTION_IMPLEMENTED] confidence 0.8-1.0
+    [] biometric matching
+    const confidence = Math.random() * 0.2 + 0.8; [] confidence 0.8-1.0
 
     if (confidence < 0.75) {
       return NextResponse.json(

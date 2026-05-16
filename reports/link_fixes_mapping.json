@@ -85,12 +85,12 @@
       {
         "pattern": "https://production.qmoi.ai:3000",
         "replacement": "https://qmoi.ai",
-        "context": "production server reference production_IMPLEMENTED docs"
+        "context": "production server reference  docs"
       },
       {
         "pattern": "https://production.qmoi.ai:8080",
         "replacement": "https://qvillage.com",
-        "context": "production server reference production_IMPLEMENTED docs"
+        "context": "production server reference  docs"
       }
     ],
     "malformed_urls": [

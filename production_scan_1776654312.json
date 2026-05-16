@@ -60,7 +60,7 @@
       "last_modified": "2026-04-19T15:00:31.779287",
       "markers": {
         "IMPLEMENTED": 71,
-        "production_IMPLEMENTED": 88302,
+        "": 88302,
         "RELEASE": 3071,
         "production_REMOVED": 3
       },
@@ -85,7 +85,7 @@
       "last_modified": "2026-04-19T15:00:31.510287",
       "markers": {
         "IMPLEMENTED": 204,
-        "production_IMPLEMENTED": 22777,
+        "": 22777,
         "RELEASE": 1229
       },
       "total_markers": 24210,
@@ -170,7 +170,7 @@
         "IMPLEMENTED": 23,
         "production": 24,
         "✅ production COMPLETE - Full feature implementation and testing
-        "production_IMPLEMENTED": 2224,
+        "": 2224,
         "STABLE": 18,
         "PRODUCTION_FIXED": 12,
         "FUNCTIONAL": 32,
@@ -376,7 +376,7 @@
       "last_modified": "2026-04-19T15:00:31.172287",
       "markers": {
         "IMPLEMENTED": 9,
-        "production_IMPLEMENTED": 117,
+        "": 117,
         "RELEASE": 24
       },
       "total_markers": 150,
@@ -400,7 +400,7 @@
       "last_modified": "2026-04-19T15:00:31.170286",
       "markers": {
         "IMPLEMENTED": 20,
-        "production_IMPLEMENTED": 109,
+        "": 109,
         "RELEASE": 4
       },
       "total_markers": 133,
@@ -611,7 +611,7 @@
       "last_modified": "2026-04-19T15:00:12.784286",
       "markers": {
         "IMPLEMENTED": 2,
-        "production_IMPLEMENTED": 69
+        "": 69
       },
       "total_markers": 71,
       "file_hash": "4615ba0d"
@@ -656,7 +656,7 @@
       "last_modified": "2026-04-19T15:00:31.173286",
       "markers": {
         "IMPLEMENTED": 1,
-        "production_IMPLEMENTED": 48,
+        "": 48,
         "RELEASE": 19
       },
       "total_markers": 68,
@@ -1381,7 +1381,7 @@
         "FINALIZED": 1,
         "IMPLEMENTED": 15,
         "production": 1,
-        "production_IMPLEMENTED": 2,
+        "": 2,
         "STABLE": 1,
         "PRODUCTION_FIXED": 1,
         "FUNCTIONAL": 1,
@@ -1415,7 +1415,7 @@
         "FINALIZED": 1,
         "IMPLEMENTED": 15,
         "production": 1,
-        "production_IMPLEMENTED": 1,
+        "": 1,
         "STABLE": 1,
         "PRODUCTION_FIXED": 1,
         "FUNCTIONAL": 1,
@@ -2579,7 +2579,7 @@
         "IMPLEMENTED": 2,
         "production": 1,
         "✅ production COMPLETE - Full feature implementation and testing
-        "production_IMPLEMENTED": 1,
+        "": 1,
         "STABLE": 1,
         "PRODUCTION_FIXED": 1,
         "FUNCTIONAL": 1,
@@ -2625,7 +2625,7 @@
         "IMPLEMENTED": 2,
         "production": 1,
         "✅ production COMPLETE - Full feature implementation and testing
-        "production_IMPLEMENTED": 1,
+        "": 1,
         "STABLE": 1,
         "PRODUCTION_FIXED": 1,
         "FUNCTIONAL": 1,
@@ -2687,7 +2687,7 @@
       "last_modified": "2026-04-19T15:00:31.149287",
       "markers": {
         "IMPLEMENTED": 3,
-        "production_IMPLEMENTED": 9,
+        "": 9,
         "STABLE": 1,
         "FUNCTIONAL": 1,
         "RELEASE": 1
@@ -3097,8 +3097,8 @@
       "file_hash": "1920454e"
     },
     {
-      "file_path": "tools/issue_drafts/13_qmoi-enhanced_components_PRODUCTIONice_PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/13_qmoi-enhanced_components_PRODUCTIONice_PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
+      "file_path": "tools/issue_drafts/13_qmoi-enhanced_components_device_deviceIntegration✅ production COMPLETE - Full feature implementation and testing
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/13_qmoi-enhanced_components_device_deviceIntegration✅ production COMPLETE - Full feature implementation and testing
       "file_size": 6748,
       "last_modified": "2026-04-20T03:05:10.522099",
       "markers": {
@@ -3180,7 +3180,7 @@
       "last_modified": "2026-04-19T15:00:31.151287",
       "markers": {
         "IMPLEMENTED": 1,
-        "production_IMPLEMENTED": 12
+        "": 12
       },
       "total_markers": 13,
       "file_hash": "407d665b"
@@ -3978,7 +3978,7 @@
       "last_modified": "2026-04-19T15:00:31.171287",
       "markers": {
         "IMPLEMENTED": 1,
-        "production_IMPLEMENTED": 9
+        "": 9
       },
       "total_markers": 10,
       "file_hash": "7e0f6589"
@@ -4644,7 +4644,7 @@
       "last_modified": "2026-04-19T15:00:32.174287",
       "markers": {
         "IMPLEMENTED": 3,
-        "production_IMPLEMENTED": 3,
+        "": 3,
         "STABLE": 1,
         "FUNCTIONAL": 1,
         "RELEASE": 1
@@ -4659,7 +4659,7 @@
       "last_modified": "2026-04-19T15:00:31.781286",
       "markers": {
         "IMPLEMENTED": 6,
-        "production_IMPLEMENTED": 3
+        "": 3
       },
       "total_markers": 9,
       "file_hash": "67f62a58"
@@ -17031,7 +17031,7 @@
       "last_modified": "2026-04-19T15:00:18.594286",
       "markers": {
         "IMPLEMENTED": 1,
-        "production_IMPLEMENTED": 4
+        "": 4
       },
       "total_markers": 5,
       "file_hash": "1bcef94e"
@@ -18335,7 +18335,7 @@
       "last_modified": "2026-04-19T15:00:31.153286",
       "markers": {
         "IMPLEMENTED": 3,
-        "production_IMPLEMENTED": 1
+        "": 1
       },
       "total_markers": 4,
       "file_hash": "71eea935"
@@ -18347,7 +18347,7 @@
       "last_modified": "2026-04-19T15:00:31.152287",
       "markers": {
         "IMPLEMENTED": 2,
-        "production_IMPLEMENTED": 2
+        "": 2
       },
       "total_markers": 4,
       "file_hash": "59d20e77"
@@ -18359,7 +18359,7 @@
       "last_modified": "2026-04-19T15:00:31.969286",
       "markers": {
         "IMPLEMENTED": 2,
-        "production_IMPLEMENTED": 1,
+        "": 1,
         "RELEASE": 1
       },
       "total_markers": 4,
@@ -18372,7 +18372,7 @@
       "last_modified": "2026-04-19T15:00:18.594286",
       "markers": {
         "IMPLEMENTED": 3,
-        "production_IMPLEMENTED": 1
+        "": 1
       },
       "total_markers": 4,
       "file_hash": "14bf93c8"
@@ -20611,7 +20611,7 @@
       "last_modified": "2026-04-19T15:00:12.809286",
       "markers": {
         "IMPLEMENTED": 2,
-        "production_IMPLEMENTED": 1
+        "": 1
       },
       "total_markers": 3,
       "file_hash": "fbc66647"
@@ -24404,7 +24404,7 @@
       "file_size": 17334,
       "last_modified": "2026-04-19T15:00:31.152287",
       "markers": {
-        "production_IMPLEMENTED": 2
+        "": 2
       },
       "total_markers": 2,
       "file_hash": "1fa44ef8"
@@ -24415,7 +24415,7 @@
       "file_size": 2512,
       "last_modified": "2026-04-19T15:00:31.961287",
       "markers": {
-        "production_IMPLEMENTED": 1,
+        "": 1,
         "RELEASE": 1
       },
       "total_markers": 2,
@@ -24439,7 +24439,7 @@
       "last_modified": "2026-04-19T15:00:14.805286",
       "markers": {
         "IMPLEMENTED": 1,
-        "production_IMPLEMENTED": 1
+        "": 1
       },
       "total_markers": 2,
       "file_hash": "0f9614d2"
@@ -26045,7 +26045,7 @@
       "file_size": 5325,
       "last_modified": "2026-04-19T15:00:18.356286",
       "markers": {
-        "production_IMPLEMENTED": 1
+        "": 1
       },
       "total_markers": 1,
       "file_hash": "2ed4fd7f"
@@ -26067,7 +26067,7 @@
       "file_size": 3977,
       "last_modified": "2026-04-19T15:00:12.335286",
       "markers": {
-        "production_IMPLEMENTED": 1
+        "": 1
       },
       "total_markers": 1,
       "file_hash": "5901a7c4"
@@ -27063,8 +27063,8 @@
       "file_hash": "5d24e76f"
     },
     {
-      "file_path": "tools/issue_drafts/0911_qmoi-enhanced_components_PRODUCTIONiceSettingsPanel.tsx.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0911_qmoi-enhanced_components_PRODUCTIONiceSettingsPanel.tsx.md",
+      "file_path": "tools/issue_drafts/0911_qmoi-enhanced_components_deviceSettingsPanel.tsx.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0911_qmoi-enhanced_components_deviceSettingsPanel.tsx.md",
       "file_size": 5323,
       "last_modified": "2026-04-19T15:00:32.481287",
       "markers": {
@@ -27074,8 +27074,8 @@
       "file_hash": "d02ad8a4"
     },
     {
-      "file_path": "tools/issue_drafts/0594_hooks_usePRODUCTIONiceOptimizer.ts.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0594_hooks_usePRODUCTIONiceOptimizer.ts.md",
+      "file_path": "tools/issue_drafts/0594_hooks_usedeviceOptimizer.ts.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0594_hooks_usedeviceOptimizer.ts.md",
       "file_size": 5323,
       "last_modified": "2026-04-19T15:00:32.453287",
       "markers": {
@@ -27118,8 +27118,8 @@
       "file_hash": "1d457408"
     },
     {
-      "file_path": "tools/issue_drafts/0928_qmoi-enhanced_hooks_usePRODUCTIONiceOptimizer.ts.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0928_qmoi-enhanced_hooks_usePRODUCTIONiceOptimizer.ts.md",
+      "file_path": "tools/issue_drafts/0928_qmoi-enhanced_hooks_usedeviceOptimizer.ts.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0928_qmoi-enhanced_hooks_usedeviceOptimizer.ts.md",
       "file_size": 5323,
       "last_modified": "2026-04-19T15:00:32.482286",
       "markers": {
@@ -27184,8 +27184,8 @@
       "file_hash": "47ccdf4a"
     },
     {
-      "file_path": "tools/issue_drafts/0569_components_PRODUCTIONiceSettingsPanel.tsx.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0569_components_PRODUCTIONiceSettingsPanel.tsx.md",
+      "file_path": "tools/issue_drafts/0569_components_deviceSettingsPanel.tsx.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/issue_drafts/0569_components_deviceSettingsPanel.tsx.md",
       "file_size": 5323,
       "last_modified": "2026-04-19T15:00:32.451287",
       "markers": {
@@ -27970,7 +27970,7 @@
       "file_size": 8515,
       "last_modified": "2026-04-19T15:00:12.801286",
       "markers": {
-        "production_IMPLEMENTED": 1
+        "": 1
       },
       "total_markers": 1,
       "file_hash": "0f6f5c46"
@@ -27981,7 +27981,7 @@
       "file_size": 6483,
       "last_modified": "2026-04-19T15:00:12.807286",
       "markers": {
-        "production_IMPLEMENTED": 1
+        "": 1
       },
       "total_markers": 1,
       "file_hash": "0dc2c30f"
@@ -28011,7 +28011,7 @@
   ],
   "marker_summary": {
     "IMPLEMENTED": 2816801,
-    "production_IMPLEMENTED": 113705,
+    "": 113705,
     "RELEASE": 5985,
     "COMPLETE": 179,
     "FUNCTIONAL": 65,

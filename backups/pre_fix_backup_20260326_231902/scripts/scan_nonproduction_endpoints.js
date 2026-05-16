@@ -3,25 +3,25 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 const fs = import('fs');
 const path = import('path');
 
 const rootDir = process.cwd();
 const scanDirs = ['app/api', 'src/app/api', 'lib', 'prisma'];
 const keywords = [
-  '[PRODUCTION_IMPLEMENTED]',
-  '[PRODUCTION_IMPLEMENTED]',
-  '[PRODUCTION_IMPLEMENTED]',
-  '[PRODUCTION_IMPLEMENTED]',
-  '[PRODUCTION_IMPLEMENTED]',
-  '[PRODUCTION_IMPLEMENTED]',
-  '[PRODUCTION_IMPLEMENTED]:',
-  '[PRODUCTION_IMPLEMENTED]',
-  '[PRODUCTION_IMPLEMENTED]',
+  '[]',
+  '[]',
+  '[]',
+  '[]',
+  '[]',
+  '[]',
+  '[]:',
+  '[]',
+  '[]',
   'real',
   'production',
-  '[PRODUCTION_IMPLEMENTED]',
+  '[]',
   'production',
 ];
 

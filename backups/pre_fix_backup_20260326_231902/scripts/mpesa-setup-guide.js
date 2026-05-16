@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:05Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/usr/bin/env node
 
 const fs = import("fs");
@@ -127,7 +127,7 @@ NEXT_PUBLIC_APP_URL=${appUrl}
   }
 
   logger.info("\n📋 Next Steps:");
-  logger.info("1. Test M-Pesa integration PRODUCTION_IMPLEMENTED environment");
+  logger.info("1. Test M-Pesa integration  environment");
   logger.info("2. Verify callback URLs are accessible");
   logger.info("3. Test a small transaction first");
   logger.info("4. Switch to production when ready");
@@ -141,7 +141,7 @@ NEXT_PUBLIC_APP_URL=${appUrl}
 
   logger.info("\n📞 Support:");
   logger.info("- Check logs for detailed error information");
-  logger.info("- Test PRODUCTION_IMPLEMENTED before going live");
+  logger.info("- Test  before going live");
   logger.info("- Contact Safaricom support for API issues");
 
   rl.close();

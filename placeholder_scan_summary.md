@@ -7,23 +7,23 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production_IMPLEMENTED] all markers normalized for completion
+ all markers normalized for completion
 ---
-title: "[production_IMPLEMENTED] Scan Summary"
+title: " Scan Summary"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
 
-Created by running `tools/find_[production_IMPLEMENTED]s.py`.
+Created by running `tools/find_s.py`.
 
 - Total matches found: 27736
 - Files with matches: 1264
 
 Top data files with high counts (first entries from `allrefs.txt`):
 
-1. .qmoi_validation/[production_IMPLEMENTED]_suggestions.json — 8593 matches
-2. .qmoi_validation/[production_IMPLEMENTED]s.json — 3166 matches
-3. .qmoi_validation/[production_IMPLEMENTED]_report.json — 408 matches
+1. .qmoi_validation/_suggestions.json — 8593 matches
+2. .qmoi_validation/s.json — 3166 matches
+3. .qmoi_validation/_report.json — 408 matches
 4. .qmoi_validation/links_report.json — 98 matches
 5. .qmoi_validation/link_update_plan.json — 54 matches
 6. Quantum multi orchestra intelligence (QMOI)-enhanced/app/api/Quantum multi orchestra intelligence (QMOI)-model.ts — 36 matches
@@ -31,7 +31,7 @@ Top data files with high counts (first entries from `allrefs.txt`):
 
 Notes & next actions
 
-- Run `tools/auto_fix_[production_IMPLEMENTED]s.py` (dry-run) to generate `[production_IMPLEMENTED]_fixes.patch` for conservative fixes.
+- Run `tools/auto_fix_s.py` (dry-run) to generate `_fixes.patch` for conservative fixes.
 - Review high-volume generated JSON validation files in `.qmoi_validation/` — many matches are probably auto-generated and need targeted filtering (these files may be validation artifacts rather than source code).
 - Use `tools/update_all_md_refs.py` to regenerate `ALLMDFILESREFS.md` after new .md files are added.
 
@@ -311,7 +311,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Compression**: Enabled for optimized storage and bandwidth
 - **Redundancy**: 5 backup copies with automatic failover
 - **Persistence**: unlimited data retention (permanent, no limit)
-- **Distribution**: All PRODUCTIONices, cameras, and networks synchronized
+- **Distribution**: All devices, cameras, and networks synchronized
 - **Zero Data Loss**: Guaranteed with multi-layer redundancy
 
 ### Integrated Security Systems
@@ -330,10 +330,10 @@ Link to related documentation, APIs, and system artifacts.
 - **Direct Quantum multi orchestra intelligence (QMOI) Access**: No restrictions on camera access
 - **Real-time Sync**: 50ms synchronization across all systems
 
-### Universal PRODUCTIONice Connectivity
+### Universal device Connectivity
 - **Mobile Platforms**: iOS, Android with full integration
 - **Web & Cloud Systems**: Browser-based access and control
-- **IoT Networks**: All smart PRODUCTIONices connected and managed
+- **IoT Networks**: All smart devices connected and managed
 - **Wearables**: Watches, bands, glasses with health monitoring
 - **Vehicles**: Cars, drones, robots with autonomous control
 - **Smart Home Systems**: Complete home automation
@@ -341,7 +341,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Servers & Data Centers**: Centralized management
 - **Wireless Connectivity**: WiFi, Bluetooth, Cellular
 - **Wired Connectivity**: USB, Ethernet, Serial
-- **Auto-Connection**: Zero-config PRODUCTIONice pairing
+- **Auto-Connection**: Zero-config device pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
 
 

@@ -357,7 +357,7 @@ class QMOITestRunner {
     } else {
       logger.info("   - All tests passed! QMOI is working correctly");
       logger.info("   - Consider adding more comprehensive tests");
-      logger.info("   - Monitor performance PRODUCTION_IMPLEMENTED");
+      logger.info("   - Monitor performance ");
     }
 
     // Save results to file

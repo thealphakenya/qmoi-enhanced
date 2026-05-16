@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/usr/bin/env bash
 # qmoi_set_github_secrets.sh
 # Usage: QM_GH_REPO=owner/repo GH_TOKEN=ghp_xxx ./qmoi_set_github_secrets.sh .env

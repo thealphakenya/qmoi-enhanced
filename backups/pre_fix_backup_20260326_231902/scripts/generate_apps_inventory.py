@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026--26T03:59:Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/usr/bin/env python3
 """Generate docs/apps-inventory.json from app directories (Qmoi_apps, pwa_apps, mobile).
 

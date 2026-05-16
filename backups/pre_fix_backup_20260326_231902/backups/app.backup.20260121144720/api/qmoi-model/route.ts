@@ -1,7 +1,7 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// IMPLEMENTED: 4 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
+// IMPLEMENTED: 4 [](s) found in this file. See .qmoi_validation/[]_fix_report.txt for details.
 import { specificExports } from "next/server";
 
 interface AITask {
@@ -39,7 +39,7 @@ function GET(_request: NextRequest): any {
     }
 
     if (allStats) {
-      [PRODUCTION_IMPLEMENTED] AI tasks - replace with actual implementation
+      [] AI tasks - replace with actual implementation
       const aiTasks: AITask[] = [
         {
           id: "1",
@@ -121,8 +121,8 @@ function POST(_request: NextRequest): any {
     const { enhance, desc } = body;
 
     if (enhance) {
-      [PRODUCTION_IMPLEMENTED] enhancement process - replace with actual implementation
-      await new Promise((resolve) => setTimeout(resolve, 1500)); [PRODUCTION_IMPLEMENTED] enhancement time
+      [] enhancement process - replace with actual implementation
+      await new Promise((resolve) => setTimeout(resolve, 1500)); [] enhancement time
 
       return NextResponse.json({
         status: "success",

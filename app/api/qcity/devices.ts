@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../lib/db/prisma";
+import { log } from '@/lib/logger';
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 export async function GET(req: NextRequest) {
   try {
-    const PRODUCTIONices = await prisma.PRODUCTIONice.findMany({
+    const devices = await prisma.device.findMany({
       where: { isActive: true },
       select: {
         id: true,
@@ -28,41 +29,41 @@ export async function GET(req: NextRequest) {
     });
 
     // Transform for QCity-specific response format
-    const qcityPRODUCTIONices = PRODUCTIONices.map(PRODUCTIONice => ({
-      id: PRODUCTIONice.id,
-      name: PRODUCTIONice.name,
-      type: PRODUCTIONice.type,
-      platform: PRODUCTIONice.platform,
-      status: PRODUCTIONice.status,
-      lastSync: PRODUCTIONice.lastSync?.toISOString(),
-      location: PRODUCTIONice.location,
-      battery: PRODUCTIONice.battery,
-      ipAddress: PRODUCTIONice.ipAddress,
-      osVersion: PRODUCTIONice.osVersion,
-      model: PRODUCTIONice.model,
-      connected: PRODUCTIONice.status === 'online',
-      lastSeen: PRODUCTIONice.lastSync?.toISOString() || PRODUCTIONice.updatedAt.toISOString(),
+    const qcityDevices = devices.map(device => ({
+      id: device.id,
+      name: device.name,
+      type: device.type,
+      platform: device.platform,
+      status: device.status,
+      lastSync: device.lastSync?.toISOString(),
+      location: device.location,
+      battery: device.battery,
+      ipAddress: device.ipAddress,
+      osVersion: device.osVersion,
+      model: device.model,
+      connected: device.status === 'online',
+      lastSeen: device.lastSync?.toISOString() || device.updatedAt.toISOString(),
     }));
 
     return NextResponse.json({
       success: true,
-      endpoint: "qcity/PRODUCTIONices",
+      endpoint: "qcity/devices",
       method: "GET",
-      PRODUCTIONices: qcityPRODUCTIONices,
-      count: qcityPRODUCTIONices.length,
+      devices: qcityDevices,
+      count: qcityDevices.length,
       stats: {
-        total: qcityPRODUCTIONices.length,
-        online: qcityPRODUCTIONices.filter(d => d.connected).length,
-        offline: qcityPRODUCTIONices.filter(d => !d.connected).length,
+        total: qcityDevices.length,
+        online: qcityDevices.filter(d => d.connected).length,
+        offline: qcityDevices.filter(d => !d.connected).length,
       },
       timestamp: new Date().toISOString()
     });
   } catch (error) {
-    logger.error("QCity PRODUCTIONices fetch error:", error);
+    log.error("QCity devices fetch error:", error as Error);
     return NextResponse.json(
       {
         success: false,
-        error: "Failed to fetch PRODUCTIONices",
+        error: "Failed to fetch devices",
         message: error instanceof Error ? error.message : "Database error"
       },
       { status: 500 }
@@ -73,36 +74,36 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { PRODUCTIONiceId, action, parameters = {} } = body;
+    const { deviceId, action, parameters = {} } = body;
 
-    if (!PRODUCTIONiceId || !action) {
+    if (!deviceId || !action) {
       return NextResponse.json(
-        { success: false, error: "PRODUCTIONice ID and action are required" },
+        { success: false, error: "device ID and action are required" },
         { status: 400 }
       );
     }
 
-    // Validate PRODUCTIONice exists
-    const PRODUCTIONice = await prisma.PRODUCTIONice.findUnique({
-      where: { id: PRODUCTIONiceId },
+    // Validate device exists
+    const device = await prisma.device.findUnique({
+      where: { id: deviceId },
     });
 
-    if (!PRODUCTIONice) {
+    if (!device) {
       return NextResponse.json(
-        { success: false, error: "PRODUCTIONice not found" },
+        { success: false, error: "Device not found" },
         { status: 404 }
       );
     }
 
-    // Implement PRODUCTIONice control logic based on action
+    // Implement device control logic based on action
     let result;
     let status = "executed";
 
     switch (action) {
       case 'sync':
         // Update last sync time
-        result = await prisma.PRODUCTIONice.update({
-          where: { id: PRODUCTIONiceId },
+        result = await prisma.device.update({
+          where: { id: deviceId },
           data: {
             lastSync: new Date(),
             status: 'online',
@@ -112,39 +113,39 @@ export async function POST(req: NextRequest) {
 
       case 'restart':
         // Log restart action (in real implementation, this would trigger actual restart)
-        result = { action: 'restart', PRODUCTIONiceId, timestamp: new Date().toISOString() };
+        result = { action: 'restart', deviceId, timestamp: new Date().toISOString() };
         break;
 
       case 'backup':
         // Log backup action
-        result = { action: 'backup', PRODUCTIONiceId, timestamp: new Date().toISOString() };
+        result = { action: 'backup', deviceId, timestamp: new Date().toISOString() };
         break;
 
       case 'update':
         // Log update action
-        result = { action: 'update', PRODUCTIONiceId, parameters, timestamp: new Date().toISOString() };
+        result = { action: 'update', deviceId, parameters, timestamp: new Date().toISOString() };
         break;
 
       case 'lock':
-        // Update PRODUCTIONice status to locked
-        result = await prisma.PRODUCTIONice.update({
-          where: { id: PRODUCTIONiceId },
+        // Update device status to locked
+        result = await prisma.device.update({
+          where: { id: deviceId },
           data: { status: 'locked' },
         });
         break;
 
       case 'unlock':
-        // Update PRODUCTIONice status to online
-        result = await prisma.PRODUCTIONice.update({
-          where: { id: PRODUCTIONiceId },
+        // Update device status to online
+        result = await prisma.device.update({
+          where: { id: deviceId },
           data: { status: 'online' },
         });
         break;
 
       case 'wipe':
-        // Mark PRODUCTIONice as inactive (soft delete)
-        result = await prisma.PRODUCTIONice.update({
-          where: { id: PRODUCTIONiceId },
+        // Mark device as inactive (soft delete)
+        result = await prisma.device.update({
+          where: { id: deviceId },
           data: { isActive: false },
         });
         break;
@@ -158,7 +159,7 @@ export async function POST(req: NextRequest) {
 
     const response = {
       success: true,
-      PRODUCTIONiceId: PRODUCTIONiceId,
+      deviceId: deviceId,
       action: action,
       status: status,
       result: result,
@@ -167,11 +168,11 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(response);
   } catch (error) {
-    logger.error("QCity PRODUCTIONices control error:", error);
+    log.error("QCity devices control error:", error as Error);
     return NextResponse.json(
       {
         success: false,
-        error: "Failed to process PRODUCTIONice request",
+        error: "Failed to process device request",
         message: error instanceof Error ? error.message : "Unknown error"
       },
       { status: 500 }

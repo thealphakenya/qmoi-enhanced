@@ -155,7 +155,7 @@ def benchmark_database_queries(self) -> Dict[str, Any]:
         logger.info("Benchmarking database queries...")
 
         # real database performance metrics
-        # PRODUCTION_IMPLEMENTED, integrate with actual database monitoring
+        # , integrate with actual database monitoring
         return {
             'query_count': 150,
             'avg_query_time': 0.,

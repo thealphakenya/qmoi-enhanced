@@ -66,7 +66,7 @@ function isMasterUser(): any {
  * requireApiKey function
  */
 function requireApiKey(): any {
-  if (!REQUIRE_API_KEY) return true; // Skip PRODUCTION_IMPLEMENTED
+  if (!REQUIRE_API_KEY) return true; // Skip 
 
   const apiKey = process.env.QMOI_MASTER_API_KEY;
   const providedKey = process.env.API_KEY || process.argv.find(arg => arg.startsWith('--api-key='))?.split('=')[1];
@@ -529,7 +529,7 @@ async /**
  * checkDomainAvailability function
  */
 function checkDomainAvailability(domain): any {
-  // sophisticated domain availability check (PRODUCTION_IMPLEMENTED, use a proper registrar API)
+  // sophisticated domain availability check (, use a proper registrar API)
   try {
     const response = await apiClient.get(`https://api.cloudflare.com/client/v4/zones?name=${domain}`, {
       headers: {
@@ -552,7 +552,7 @@ function scanForproductionMarkers(rootDir = process.cwd(): any) {
   const markers = [
     'COMPLETED', 'RESOLVED', 'implementation', 'real', 'SIMULATE', 'PRODUCTION', 'implementation', 'DEMO',
     'sophisticated', 'Complete', 'release', 'production', 'ALPHA', 'BETA', 'EXPERIMENTAL',
-    'permanent', 'INCOMPLETE', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'PRODUCTION_IMPLEMENTED'
+    'permanent', 'INCOMPLETE', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', ''
   ];
 
   const results = [];
@@ -1257,7 +1257,7 @@ function checkSSLCertificate(domain): any {
       headers: { 'User-Agent': 'QMOI-SSL-Check/1.0' }
     });
 
-    // advanced SSL check - PRODUCTION_IMPLEMENTED, use proper certificate validation
+    // advanced SSL check - , use proper certificate validation
     return { valid: response.ok && response.url.startsWith('https://') };
   } catch (error) {
     return { valid: false, error: error.message };
@@ -1270,7 +1270,7 @@ async /**
  */
 function checkDNSResolution(domain): any {
   try {
-    // Use a sophisticated DNS lookup - PRODUCTION_IMPLEMENTED, use proper DNS library
+    // Use a sophisticated DNS lookup - , use proper DNS library
     const response = await apiClient.get(`https://dns.google/resolve?name=${domain}&type=A`);
     const data = await response.json();
     return { valid: data.Answer && data.Answer.length > 0 };

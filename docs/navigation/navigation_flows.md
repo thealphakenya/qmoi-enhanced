@@ -12,7 +12,7 @@ The QMOI Enhanced application uses a Next.js App Router-based navigation system 
 
 #### Navigation Destinations
 - **Admin Dashboard** → `/admin` (Master/Admin users)
-- **PRODUCTIONices** → `/PRODUCTIONices` (All authenticated users)
+- **devices** → `/devices` (All authenticated users)
 - **QMOI AI** → `/qmoi-ai` (All authenticated users)
 - **QCity** → `/qcity` (All authenticated users)
 - **QVillage** → `/qvillage` (All authenticated users)
@@ -45,23 +45,23 @@ The QMOI Enhanced application uses a Next.js App Router-based navigation system 
 
 #### Admin Dashboard (`/admin`)
 - **Role Access**: Admin/Master role
-- **Metrics Displayed**: System health, PRODUCTIONices, users, activities
+- **Metrics Displayed**: System health, devices, users, activities
 - **Actions Available**:
   - View system metrics
   - Monitor performance
   - Access master controls
 - **Previous Navigation**: Home screen, QMOI Space hub
-- **Next Navigation**: PRODUCTIONice Management, QCity, Master Email
+- **Next Navigation**: device Management, QCity, Master Email
 
-#### PRODUCTIONice Management (`/PRODUCTIONices`)
+#### device Management (`/devices`)
 - **Role Access**: All authenticated users
-- **Purpose**: Monitor and manage connected PRODUCTIONices
+- **Purpose**: Monitor and manage connected devices
 - **Features**:
-  - PRODUCTIONice filtering and search
+  - device filtering and search
   - Real-time status monitoring
-  - PRODUCTIONice-specific settings
+  - device-specific settings
 - **Previous Navigation**: Home, Admin Dashboard, QCity
-- **Next Navigation**: PRODUCTIONice settings, QCity
+- **Next Navigation**: device settings, QCity
 
 ### Ecosystem Hub Routes
 
@@ -156,7 +156,7 @@ Authenticated User
 Home Screen (full features)
     ↓
 Choose System:
-├─ PRODUCTIONices (/PRODUCTIONices) - Manage PRODUCTIONices
+├─ devices (/devices) - Manage devices
 ├─ QMOI AI (/qmoi-ai) - AI assistant
 ├─ QCity (/qcity) - City operations
 ├─ QVillage (/qvillage) - Community
@@ -177,7 +177,7 @@ Choose Admin Function:
 ├─ Master Tracks (/master/tracks)
 └─ System Management
     ↓
-PRODUCTIONice/User/System Management
+device/User/System Management
 ```
 
 ### System Operator Journey
@@ -205,7 +205,7 @@ Model Deployment
     ↓
 Training & Testing
     ↓
-Optional: PRODUCTIONice Management (/PRODUCTIONices)
+Optional: device Management (/devices)
 ```
 
 ## Role-Based Navigation Restrictions
@@ -222,7 +222,7 @@ Optional: PRODUCTIONice Management (/PRODUCTIONices)
 - ✅ All public routes
 - ✅ Dataset management (limited)
 - ✅ Model deployment
-- ✅ PRODUCTIONice access
+- ✅ device access
 - ✅ Friendship/AI companion
 - ❌ Admin functions
 - ❌ Master configuration
@@ -230,7 +230,7 @@ Optional: PRODUCTIONice Management (/PRODUCTIONices)
 ### User Role Permissions
 - ✅ All public routes
 - ✅ View-only dashboards
-- ✅ PRODUCTIONice monitoring
+- ✅ device monitoring
 - ✅ AI assistant access
 - ✅ Friendship/AI companion
 - ❌ Admin functions
@@ -243,7 +243,7 @@ Optional: PRODUCTIONice Management (/PRODUCTIONices)
 - ✅ Onboarding flows
 - ❌ Authenticated routes
 - ❌ System management
-- ❌ PRODUCTIONice access
+- ❌ device access
 
 ## Navigation Components & Patterns
 
@@ -307,8 +307,8 @@ Optional: PRODUCTIONice Management (/PRODUCTIONices)
 - Trigger: Card/button click on hub
 - Purpose: Central navigation distribution
 
-#### QMOI AI → PRODUCTIONice Management
-- Path: `/qmoi-ai` → `/PRODUCTIONices`
+#### QMOI AI → device Management
+- Path: `/qmoi-ai` → `/devices`
 - Trigger: AI suggestion or user command
 - Context: AI-mediated system navigation
 
@@ -323,7 +323,7 @@ Optional: PRODUCTIONice Management (/PRODUCTIONices)
 ```
 Routes by Access Level:
 ├─ Public: `/test`, `/` (guest view)
-├─ Authenticated: `/PRODUCTIONices`, `/qmoi-ai`, `/friendship`
+├─ Authenticated: `/devices`, `/qmoi-ai`, `/friendship`
 ├─ Admin: `/admin`, `/qcity`, `/qvillage`, `/qmoi-space`
 └─ Master: `/master/**` (all master routes)
 ```

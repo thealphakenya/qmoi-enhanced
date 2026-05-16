@@ -15,7 +15,7 @@ Repository: qmoi-enhanced (autosync-backup-20250926-232440)
    ├─ File: QMOI_APIS_WEBHOOKS_ENDPOINTS.md
    ├─ Size: 13KB
    ├─ Content:
-   │  ├─ Core API Endpoints (Health, Auth, Users, Wallets, PRODUCTIONices, Projects)
+   │  ├─ Core API Endpoints (Health, Auth, Users, Wallets, devices, Projects)
    │  ├─ Webhook System (35+ event types across 5 categories)
    │  ├─ GitHub Hooks (CI/CD integration)
    │  ├─ Internal Hooks (23+ hook types for QMOI event system)
@@ -379,10 +379,10 @@ QCity (Community Platform): ✅ OPERATIONAL
 
 Mobile (iOS & Android): ✅ OPERATIONAL
 ├─ Runners: Native runners (Swift & Kotlin)
-├─ Capacity: Unlimited (PRODUCTIONice-based)
+├─ Capacity: Unlimited (device-based)
 ├─ Sync: Real-time bidirectional
 ├─ Engine: Native + Sync processing
-├─ Validation: All 7 layers + PRODUCTIONice-specific
+├─ Validation: All 7 layers + device-specific
 └─ Health: 99.9% uptime
 
 Web (PWA): ✅ OPERATIONAL
@@ -395,7 +395,7 @@ Web (PWA): ✅ OPERATIONAL
 
 Desktop (Electron): ✅ OPERATIONAL
 ├─ Runtime: Multi-platform Electron
-├─ Capacity: Limited by PRODUCTIONice hardware
+├─ Capacity: Limited by device hardware
 ├─ Offline: Fully offline-first
 ├─ Engine: Multi-process architecture
 ├─ Validation: All 7 layers + signature verification
@@ -403,10 +403,10 @@ Desktop (Electron): ✅ OPERATIONAL
 
 SmartTV: ✅ OPERATIONAL
 ├─ Runtime: Android TV & WebOS
-├─ Capacity: PRODUCTIONice-dependent
+├─ Capacity: device-dependent
 ├─ Streaming: 30-60 FPS
 ├─ Engine: Streaming engine
-├─ Validation: All 7 layers + PRODUCTIONice-specific
+├─ Validation: All 7 layers + device-specific
 └─ Health: 99.85% uptime
 
 Bot Ecosystem: ✅ OPERATIONAL

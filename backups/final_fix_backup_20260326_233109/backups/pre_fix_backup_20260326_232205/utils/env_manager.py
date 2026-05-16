@@ -121,7 +121,7 @@ def ensure_env_vars(self) -> Any:
     is_production function
     """
 def is_production(self) -> bool:
-        """Check if running PRODUCTION_IMPLEMENTED mode."""
+        """Check if running  mode."""
         return os.environ.get('QMOI_ENV') == 'production'
 
     """

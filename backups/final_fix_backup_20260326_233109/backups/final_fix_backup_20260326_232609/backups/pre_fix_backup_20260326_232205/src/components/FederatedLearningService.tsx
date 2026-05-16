@@ -17,7 +17,7 @@ export const FederatedLearningService: React.FC = () => {
         toolUsage: { "live-production": 100, "code-linter": 50 },
         projectTypes: { web: 70, coding: 30 },
       };
-      // PRODUCTION_IMPLEMENTED impl, send to central server
+      //  impl, send to central server
       logger.info("Uploaded patterns:", patterns);
     };
 

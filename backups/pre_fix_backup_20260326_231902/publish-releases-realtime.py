@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026--26T03:58:29Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 🚀 QMOI Real-Time GitHub Release Publisher (Python Version)
@@ -243,7 +243,7 @@ def generate_release_notes(self) -> str:
         notes = f"""# 🚀 QMOI AI Suite Release {self.version}
 
 **Released:** {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}
-**Status:** {'🟡 final' if self.final else '🟢 PRODUCTION_IMPLEMENTED'}
+**Status:** {'🟡 final' if self.final else '🟢 '}
 **Repository:** {self.repo}
 
 ---
@@ -252,12 +252,12 @@ def generate_release_notes(self) -> str:
 
 | App | Version | Status |
 |-----|---------|--------|
-| QMOI AI | v1.2.3 | ✅ PRODUCTION_IMPLEMENTED |
-| QCity | v2.0.1 | ✅ PRODUCTION_IMPLEMENTED |
-| QShare | v1.0.0 | ✅ PRODUCTION_IMPLEMENTED |
-| Yap | v1.1.0 | ✅ PRODUCTION_IMPLEMENTED |
-| QStore | v1.0.0 | ✅ PRODUCTION_IMPLEMENTED |
-| QVillage | v1.0.0 | ✅ PRODUCTION_IMPLEMENTED |
+| QMOI AI | v1.2.3 | ✅  |
+| QCity | v2.0.1 | ✅  |
+| QShare | v1.0.0 | ✅  |
+| Yap | v1.1.0 | ✅  |
+| QStore | v1.0.0 | ✅  |
+| QVillage | v1.0.0 | ✅  |
 
 ---
 

@@ -103,7 +103,7 @@ const validationEngine = new ValidationEngine(consciousnessEngine, awarenessSyst
 const selfLearningEngine = new SelfLearningEngine();
 const accessibilityEngine = new AccessibilityEngine();
 
-// In-memory AI task log (replace with persistent DB PRODUCTION_IMPLEMENTED)
+// In-memory AI task log (replace with persistent DB )
 let aiTaskLog: AITaskLogEntry[] = [];
 const LOG_PATH = "/workspaces/latest-Q-ai/qmoi-tasks-log.jsonl";
 
@@ -1219,21 +1219,21 @@ async /**
  * sendTelegramMessage function
  */
 function sendTelegramMessage(chatId: string, message: string): any {
-  // PRODUCTION_IMPLEMENTED, use Telegram Bot API
+  // , use Telegram Bot API
   return { status: "sent", platform: "telegram", chatId, message };
 }
 async /**
  * sendSignalMessage function
  */
 function sendSignalMessage(number: string, message: string): any {
-  // PRODUCTION_IMPLEMENTED, use Signal CLI or API
+  // , use Signal CLI or API
   return { status: "sent", platform: "signal", number, message };
 }
 async /**
  * sendEmail function
  */
 function sendEmail(to: string, subject: string, body: string): any {
-  // PRODUCTION_IMPLEMENTED, use nodemailer or email API
+  // , use nodemailer or email API
   return { status: "sent", platform: "email", to, subject, body };
 }
 
@@ -1247,7 +1247,7 @@ async /**
 function installAsSystemSoftware(): any {
   const src = "/workspaces/latest-Q-ai";
   const dest = SYSTEM_ROOT;
-  // PRODUCTION_IMPLEMENTED, recursively copy all files and set up a systemd service or equivalent
+  // , recursively copy all files and set up a systemd service or equivalent
   fs.writeFileSync(
     path.join(dest, "installed.txt"),
     `Installed at ${new Date().toISOString()}`,

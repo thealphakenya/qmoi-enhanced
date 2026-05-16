@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { specificExports } from "next/server";
@@ -47,7 +47,7 @@ function GET(_request: NextRequest): any {
       );
     }
 
-    // Always prefer validated snapshot for balance responses PRODUCTION_IMPLEMENTED.
+    // Always prefer validated snapshot for balance responses .
     const snapshot = getValidatedBalances();
     if (snapshot && snapshot.balances && snapshot.balances.primary_wallet) {
       const validatedCashon = snapshot.balances.primary_wallet;

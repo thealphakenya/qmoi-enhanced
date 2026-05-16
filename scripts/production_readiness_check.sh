@@ -16,7 +16,7 @@ PATTERNS=(
   "QMOI_DEBUG_MODE"
   "STAGING"
   "STAGE_"
-  "production_IMPLEMENTED=false"
+  "=false"
   "TODO: non-prod"
   "PLACEHOLDER"
   "XXX"

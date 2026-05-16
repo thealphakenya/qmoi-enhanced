@@ -235,7 +235,7 @@
       "warnings": []
     },
     {
-      "path": "components/PRODUCTIONiceMap.tsx",
+      "path": "components/deviceMap.tsx",
       "exists": true,
       "size": 1662,
       "has_production_marker": false,
@@ -247,7 +247,7 @@
       "warnings": []
     },
     {
-      "path": "components/PRODUCTIONiceSettingsPanel.tsx",
+      "path": "components/deviceSettingsPanel.tsx",
       "exists": true,
       "size": 4120,
       "has_production_marker": false,
@@ -801,7 +801,7 @@
       "warnings": []
     },
     {
-      "path": "components/QMOIOwnPRODUCTIONice.tsx",
+      "path": "components/QMOIOwndevice.tsx",
       "exists": true,
       "size": 16757,
       "has_production_marker": false,
@@ -1281,7 +1281,7 @@
       "warnings": []
     },
     {
-      "path": "components/PRODUCTIONice/AWSCredentialsModal.tsx",
+      "path": "components/device/AWSCredentialsModal.tsx",
       "exists": true,
       "size": 2200,
       "has_production_marker": false,
@@ -1293,7 +1293,7 @@
       "warnings": []
     },
     {
-      "path": "components/PRODUCTIONice/AzureCredentialsModal.tsx",
+      "path": "components/device/AzureCredentialsModal.tsx",
       "exists": true,
       "size": 2509,
       "has_production_marker": false,
@@ -1305,7 +1305,7 @@
       "warnings": []
     },
     {
-      "path": "components/PRODUCTIONice/GCPCredentialsModal.tsx",
+      "path": "components/device/GCPCredentialsModal.tsx",
       "exists": true,
       "size": 1869,
       "has_production_marker": false,
@@ -1499,7 +1499,7 @@
       "warnings": []
     },
     {
-      "path": "components/q-city/QCityPRODUCTIONicePanel.tsx",
+      "path": "components/q-city/QCitydevicePanel.tsx",
       "exists": true,
       "size": 29339,
       "has_production_marker": false,
@@ -1535,7 +1535,7 @@
       "warnings": []
     },
     {
-      "path": "components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx",
+      "path": "components/q-city/QMOIOwndeviceLogs.tsx",
       "exists": true,
       "size": 25314,
       "has_production_marker": false,
@@ -3091,7 +3091,7 @@
       "warnings": []
     },
     {
-      "path": "src/components/q-city/PRODUCTIONicePanel.tsx",
+      "path": "src/components/q-city/devicePanel.tsx",
       "exists": true,
       "size": 6946,
       "has_production_marker": false,
@@ -3103,7 +3103,7 @@
       "warnings": []
     },
     {
-      "path": "src/components/q-city/PRODUCTIONicesHub.tsx",
+      "path": "src/components/q-city/devicesHub.tsx",
       "exists": true,
       "size": 4734,
       "has_production_marker": false,

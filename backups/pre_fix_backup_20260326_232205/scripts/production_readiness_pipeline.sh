@@ -19,7 +19,7 @@ python3 scripts/generate_endpoint_docs.py || true
 echo "4) update README + tree docs"
 python3 scripts/update_readme_tree_docs.py || true
 
-echo "5) finalize PRODUCTION_IMPLEMENTED"
+echo "5) finalize "
 python3 scripts/finalize_production_ready.py || true
 
 echo "6) run lints & type checks"

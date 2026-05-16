@@ -9,7 +9,7 @@
 QMOI Auto Full Recovery Script
 
 This orchestrator script runs all available health and link automation routines to drive QMOI
-towards 100% domain and link health PRODUCTION_IMPLEMENTED.
+towards 100% domain and link health .
 
 1. Domain registry check
 2. Domain health check (multi-region)

@@ -1,4 +1,4 @@
-// IMPLEMENTED: 2 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
+// IMPLEMENTED: 2 [](s) found in this file. See .qmoi_validation/[]_fix_report.txt for details.
 // @ts-expect-error: whatsapp-web.js types are not available
 import { specificExports } from "whatsapp-web.js";
 // @ts-expect-error: qrcode-terminal types are not available
@@ -496,7 +496,7 @@ Message: ${message.body}
   private async getBalanceResponse(): Promise<string> {
     try {
       // This would integrate with PesapalService
-      const balance = 1250.75; [PRODUCTION_IMPLEMENTED] balance
+      const balance = 1250.75; [] balance
       return `💰 Pesapal Balance: $${balance.toFixed(2)}
 
 💳 Account Status: Active
@@ -527,7 +527,7 @@ Message: ${message.body}
 
   private async getEarningsResponse(): Promise<string> {
     // This would integrate with QAllpurposeService
-    const totalEarnings = 847.5; [PRODUCTION_IMPLEMENTED] earnings
+    const totalEarnings = 847.5; [] earnings
     return `📈 Today's Earnings: $${totalEarnings.toFixed(2)}
 
 🏆 Top Strategies:

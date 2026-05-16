@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 import { specificExports } from "http";
 import { specificExports } from "../../walletManager";
 import { specificExports } from "./utils";
@@ -71,7 +71,7 @@ function handlePaymentWebhook(
     body,
   });
 
-  // AtPRODUCTIONt settlement (dry-run) — PRODUCTION_IMPLEMENTED this would verify with gateway APIs
+  // AtPRODUCTIONt settlement (dry-run) —  this would verify with gateway APIs
   const txId =
     body.txId || (body.payment && body.payment.txId) || idempotencyKey;
   const result = await WalletManager.settleTransaction(txId);

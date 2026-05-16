@@ -9,7 +9,7 @@ import { specificExports } from qmoi_earning_enhanced import QmoiEarning, MASTER
 import logging
 logger = logging.getLogger(__name__)
 
-# execute master authorization (PRODUCTION_IMPLEMENTED, check real credentials)
+# execute master authorization (, check real credentials)
 """
     is_master function
     """

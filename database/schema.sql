@@ -264,7 +264,7 @@ CREATE TRIGGER update_orders_updated_at BEFORE UPDATE ON orders FOR EACH ROW EXE
 CREATE TRIGGER update_risk_limits_updated_at BEFORE UPDATE ON risk_limits FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 CREATE TRIGGER update_cross_chain_transfers_updated_at BEFORE UPDATE ON cross_chain_transfers FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
--- Insert default admin user (password: admin123 - change PRODUCTION_IMPLEMENTED!)
+-- Insert default admin user (password: admin123 - change !)
 INSERT INTO users (email, password_hash, first_name, last_name, role, api_key)
 VALUES (
     'admin@qmoi.ai',

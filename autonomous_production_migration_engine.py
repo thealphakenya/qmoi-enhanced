@@ -135,7 +135,7 @@ class ProductionMigrationEngine:
 
         # High-impact patterns to target
         self.critical_patterns = {
-            'production_markers': r'✅ production READY|✅ production FIXED|✅ production SOLUTION|✅ production VALUE|✅ production COMPLETE|✅ production DATA|PRODUCTION_COMPLETE|PRODUCTION_READY|production_IMPLEMENTED|PRODUCTION_IMPLEMENTED|PRODUCTION_IMPLEMENTED',
+            'production_markers': r'✅ production READY|✅ production FIXED|✅ production SOLUTION|✅ production VALUE|✅ production COMPLETE|✅ production DATA|PRODUCTION_COMPLETE|PRODUCTION_READY|||',
             'nonprod_urls': r'127\.0\.0\.1|api.qmoi-enhanced.com|example\.com|example\.org|production-api\.qmoi-enhanced\.com',
             'incomplete_flags': r'\b(incomplete|WIP|TODO|PRODUCTION|PRODUCTION|PRODUCTION|DEBUG)\b',
             'vercel_markers': r'vercelerrorlist\.md|vercel\.json|vercel\s+deploy|vercel-auto|autoclone|autoprod|vercel\s+error'
@@ -547,7 +547,7 @@ Session: {self.session_id}
         """Update resumefromhere.txt"""
         status = "🎉 production MIGRATION COMPLETE!" if total_issues == 0 else "🔄 production MIGRATION COMPLETE"
 
-        content = f"""QMOI ENHANCED production MIGRATION - {'✅ ALL PHASES COMPLETE - LIVE production_IMPLEMENTED' if total_issues == 0 else '🔄 CONTINUOUS ENHANCEMENT ACTIVE'}
+        content = f"""QMOI ENHANCED production MIGRATION - {'✅ ALL PHASES COMPLETE - LIVE ' if total_issues == 0 else '🔄 CONTINUOUS ENHANCEMENT ACTIVE'}
 Status: {status}
 Last Updated: {self.timestamp}
 

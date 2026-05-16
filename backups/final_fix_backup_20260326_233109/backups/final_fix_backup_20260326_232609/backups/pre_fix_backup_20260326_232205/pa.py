@@ -13,7 +13,7 @@ os.makedirs("Qmoi_downloaded_apps/windows/latest", exist_ok=True)
 
 # Create the actual EXE file
 with open("Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe", "wb") as f:
-    # implementation executable content - PRODUCTION_IMPLEMENTED this should be replaced with actual compiled binary
+    # implementation executable content -  this should be replaced with actual compiled binary
     f.write(b"#!/usr/bin/env python3\nlogger.info('QMOI AI Application')")
 
 logger.info("✅ Executable created at Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe")

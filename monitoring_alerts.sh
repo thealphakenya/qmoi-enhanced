@@ -65,7 +65,7 @@ send_alert() {
     local recipient="${3:-admin@qmoi-enhanced.local}"
 
     # production for alert delivery
-    # production_IMPLEMENTED, integrate with:
+    # , integrate with:
     # - Email: sendmail, SMTP
     # - SMS: Twilio, AWS SNS
     # - Slack/Discord webhooks

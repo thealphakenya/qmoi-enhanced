@@ -7,13 +7,13 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# COMPONENTS.md - React Components Complete Inventory ✅ production_IMPLEMENTED
+# COMPONENTS.md - React Components Complete Inventory ✅ 
 
 **Last Updated:** 2026-04-28T12:00:00.000000Z
 **Root component files**: 197
 **App-specific component files**: 53
 **Total UI component sources**: 421+ files (including root, app-level, and shared primitives)
-**Status**: ✅ production_IMPLEMENTED - Fully Updated with App Tags
+**Status**: ✅  - Fully Updated with App Tags
 
 ## 📋 Document Overview
 
@@ -139,11 +139,11 @@ Wallet, trading, and revenue management:
 - `QmoiRevenueDashboard.tsx` – Revenue analytics
 - `EnhancedRevenuePanel.tsx` – Revenue enhancement
 
-### PRODUCTIONice & IoT Management
-PRODUCTIONice control and connectivity:
-- `PRODUCTIONiceMap.tsx` – PRODUCTIONice visualization
-- `PRODUCTIONiceSettingsPanel.tsx` – PRODUCTIONice configuration
-- `QMOIOwnPRODUCTIONice.tsx` – PRODUCTIONice ownership
+### device & IoT Management
+device control and connectivity:
+- `deviceMap.tsx` – device visualization
+- `deviceSettingsPanel.tsx` – device configuration
+- `QMOIOwndevice.tsx` – device ownership
 - `BluetoothManager.tsx` – Bluetooth control
 - `WifiPanel.tsx` – WiFi management
 - `WifiAutoConnectPanel.tsx` – Auto WiFi
@@ -206,13 +206,13 @@ AI-powered interfaces:
 ### Product-Specific Component Inventory
 
 #### QCity Components
-QCity is implemented as a dedicated product domain with its own dashboard, PRODUCTIONice management, enterprise feature set, and runtime adapters.
+QCity is implemented as a dedicated product domain with its own dashboard, device management, enterprise feature set, and runtime adapters.
 - `components/q-city/QCityDashboard.tsx`
-- `components/q-city/QCityPRODUCTIONicePanel.tsx`
+- `components/q-city/QCitydevicePanel.tsx`
 - `components/q-city/QCityprodicePanel.tsx`
 - `components/q-city/QMOIBiometricManager.tsx`
 - `components/q-city/QMOILinksManager.tsx`
-- `components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx`
+- `components/q-city/QMOIOwndeviceLogs.tsx`
 - `components/q-city/QMOIRevenueDashboard.tsx`
 - `components/q-city/GlobalLinksManager.tsx`
 - `components/q-city/EmploymentDashboard.tsx`
@@ -222,7 +222,7 @@ QCity is implemented as a dedicated product domain with its own dashboard, PRODU
 - `components/q-city/QVillage.tsx`
 - `components/QCityErrorManager.tsx`
 - `components/QCityThemeProvider.tsx`
-- `components/QAvatar.tsx` (QCity-integrated dashboard and PRODUCTIONice launch panels)
+- `components/QAvatar.tsx` (QCity-integrated dashboard and device launch panels)
 
 #### QMOI AI + Alpha Q AI Components
 QMOI AI and Alpha Q AI share the same core UI and automation layer, with the alpha Q shell acting as an aggregator. These components are adapted specifically for the QMOI AI domain while remaining compatible with the Alpha Q shell.
@@ -299,7 +299,7 @@ Components integrate with the following API endpoints for full functionality:
 - `/api/auth` - User authentication
 - `/api/biometric` - Biometric authentication
 - `/api/webauthn` - WebAuthn security
-- `/api/PRODUCTIONice-fingerprint` - PRODUCTIONice identification
+- `/api/device-fingerprint` - device identification
 
 ### AI & Intelligence APIs
 - `/api/ai` - Core AI operations
@@ -316,7 +316,7 @@ Components integrate with the following API endpoints for full functionality:
 - `/api/qmoi-database` - Database operations
 
 ### System Management APIs
-- `/api/PRODUCTIONices` - PRODUCTIONice management
+- `/api/devices` - device management
 - `/api/deployment-status` - Deployment tracking
 - `/api/deploy` - Deployment operations
 - `/api/version` - Version management

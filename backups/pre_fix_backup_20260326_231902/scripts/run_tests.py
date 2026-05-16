@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026--26T03:59:Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/usr/bin/env python3
 """Run repository tests (sophisticated runner that imports test modules and calls test functions).
 

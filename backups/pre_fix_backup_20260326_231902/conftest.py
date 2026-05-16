@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026--26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+# [] this file has no remaining production markers
 """# production: # production: # production: pytest removed removed removed configuration helpers.
 
 This file provides a small compatibility shim for async tests when

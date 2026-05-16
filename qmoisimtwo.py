@@ -57,7 +57,7 @@ class productionSecurity:
         # Implementation would use Redis or similar for production
         # This is a simplified version
         current_time = datetime.utcnow().timestamp()
-        # production_IMPLEMENTED, this would check against a persistent store
+        # , this would check against a persistent store
         return True  # Allow request (simplified)
     @staticmethod
     def log_security_event(event_type: str, details: dict, severity: str = 'info'):

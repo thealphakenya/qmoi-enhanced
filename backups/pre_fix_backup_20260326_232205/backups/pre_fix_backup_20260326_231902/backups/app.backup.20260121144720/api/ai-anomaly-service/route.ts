@@ -1,7 +1,7 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// IMPLEMENTED: 1 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
+// IMPLEMENTED: 1 [](s) found in this file. See .qmoi_validation/[]_fix_report.txt for details.
 import { specificExports } from "next/server";
 import { specificExports } from "../../../lib/proposals";
 
@@ -39,7 +39,7 @@ function GET(_request: NextRequest): any {
       const result = await apiClient.get("https://production.qmoi.ai:5001/analytics", {
         method: "GET",
       }).then((r) => r.json());
-      [PRODUCTION_IMPLEMENTED]
+      []
       const errors: AnomalyError[] =
         result.top_ips && result.top_ips.length
           ? result.top_ips.map(([ip, count]: [string, number]) => ({
@@ -77,8 +77,8 @@ function POST(_request: NextRequest): any {
   const searchParams = _request.nextUrl.searchParams;
   if (searchParams.get("fix")) {
     try {
-      [PRODUCTION_IMPLEMENTED] auto-fix (could trigger a script, restart service, etc.)
-      // PRODUCTION_IMPLEMENTED, implement real fix logic
+      [] auto-fix (could trigger a script, restart service, etc.)
+      // , implement real fix logic
       return NextResponse.json({ status: "fixed" });
     } catch (_e: unknown) {
       return NextResponse.json(

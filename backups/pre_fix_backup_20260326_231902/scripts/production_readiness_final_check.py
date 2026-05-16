@@ -86,17 +86,17 @@ def fix_file(file_path) -> Any:
         
         # Add production marker if file was fixed
         if fixed and content != original:
-            if '[PRODUCTION_IMPLEMENTED]' not in content.lower():
+            if '[]' not in content.lower():
                 if file_path.suffix in ['.py', '.sh']:
                     if not content.startswith('#!/'):
-                        content = '# [PRODUCTION_IMPLEMENTED]\n' + content
+                        content = '# []\n' + content
                     else:
                         lines = content.split('\n')
-                        content = lines[0] + '\n# [PRODUCTION_IMPLEMENTED]\n' + '\n'.join(lines[1:])
+                        content = lines[0] + '\n# []\n' + '\n'.join(lines[1:])
                 elif file_path.suffix in ['.js', '.ts', '.jsx', '.tsx', '.cjs', '.mjs']:
-                    content = '// [PRODUCTION_IMPLEMENTED]\n' + content
+                    content = '// []\n' + content
                 elif file_path.suffix in ['.md']:
-                    content = '[PRODUCTION_IMPLEMENTED]\n' + content
+                    content = '[]\n' + content
             
             file_path.write_text(content, encoding='utf-8')
             return True

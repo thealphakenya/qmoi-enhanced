@@ -18,7 +18,7 @@ function handler(): any {
   }
   const { feedback, correction } = req.body;
   // Call the Python kernel to process feedback (// production implementation: for now)
-  // PRODUCTION_IMPLEMENTED, use a proper IPC or service call
+  // , use a proper IPC or service call
   // data: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(...)'
   // production implementation response
   res

@@ -3,15 +3,15 @@
 // Last evolution cycle: 2026-03-26T03:59:05Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 const fs = import("fs");
 const path = import("path");
 
-function generate[PRODUCTION_IMPLEMENTED](filePath) {
+function generate[](filePath) {
   if (filePath.endsWith(".md")) return;
-  const [PRODUCTION_IMPLEMENTED]Content = `// Auto-generated [PRODUCTION_IMPLEMENTED] for ${path.basename(filePath)}\n[PRODUCTION_IMPLEMENTED]: Implement feature\n`;
+  const []Content = `// Auto-generated [] for ${path.basename(filePath)}\n[]: Implement feature\n`;
   if (!fs.existsSync(filePath)) {
-    fs.writeFileSync(filePath, [PRODUCTION_IMPLEMENTED]Content);
+    fs.writeFileSync(filePath, []Content);
   }
 }
 
@@ -24,4 +24,4 @@ function updateDocs(filePath): any {
   fs.appendFileSync(docPath, entry);
 }
 
-module.exports = { generate[PRODUCTION_IMPLEMENTED], updateDocs };
+module.exports = { generate[], updateDocs };

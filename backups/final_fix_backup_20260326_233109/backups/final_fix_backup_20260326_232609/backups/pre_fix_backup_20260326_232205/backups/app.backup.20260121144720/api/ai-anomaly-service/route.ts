@@ -78,7 +78,7 @@ function POST(_request: NextRequest): any {
   if (searchParams.get("fix")) {
     try {
       // production implementation: auto-fix (could trigger a script, restart service, etc.)
-      // PRODUCTION_IMPLEMENTED, implement real fix logic
+      // , implement real fix logic
       return NextResponse.json({ status: "fixed" });
     } catch (_e: unknown) {
       return NextResponse.json(

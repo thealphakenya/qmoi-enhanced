@@ -7,7 +7,7 @@ import { pool } from './database-connection';
 export class FinancialStatsProduction {
   /**
    * Get actual user transaction statistics from database
-   * production_IMPLEMENTED: queries real transaction history
+   * : queries real transaction history
    */
   async getUserTransactionStats(userId: string) {
     try {

@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/bin/bash
 # Health check script for QMOI Enhanced
 # Verifies application and dependencies are running correctly

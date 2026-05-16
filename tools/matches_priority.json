@@ -35,22 +35,22 @@
         "matches": [
           {
             "line": 92,
-            "snippet": "// production_IMPLEMENTED, this would execute: npm run test:unit && npm run test:integration",
+            "snippet": "// , this would execute: npm run test:unit && npm run test:integration",
             "score": 10
           },
           {
             "line": 142,
-            "snippet": "// production_IMPLEMENTED, this would analyze error logs, stack traces, etc.",
+            "snippet": "// , this would analyze error logs, stack traces, etc.",
             "score": 10
           },
           {
             "line": 205,
-            "snippet": "// Store Autoprod state (production_IMPLEMENTED, save to database)",
+            "snippet": "// Store Autoprod state (, save to database)",
             "score": 10
           },
           {
             "line": 245,
-            "snippet": "// production_IMPLEMENTED, this would use QMOI to analyze requirements and generate code",
+            "snippet": "// , this would use QMOI to analyze requirements and generate code",
             "score": 10
           }
         ]
@@ -398,17 +398,17 @@
         "matches": [
           {
             "line": 24,
-            "snippet": ".[production_IMPLEMENTED]Implementation(async (input: unknown, _init: unknown) => {",
+            "snippet": ".Implementation(async (input: unknown, _init: unknown) => {",
             "score": 4
           },
           {
             "line": 187,
-            "snippet": ".[production_IMPLEMENTED]Implementation(async (arg: unknown) => {",
+            "snippet": ".Implementation(async (arg: unknown) => {",
             "score": 4
           },
           {
             "line": 199,
-            "snippet": ".[production_IMPLEMENTED]Implementation(async (arg: unknown) => {",
+            "snippet": ".Implementation(async (arg: unknown) => {",
             "score": 4
           }
         ]
@@ -507,7 +507,7 @@
         "matches": [
           {
             "line": 15,
-            "snippet": "// production_IMPLEMENTED, this would:",
+            "snippet": "// , this would:",
             "score": 10
           },
           {
@@ -538,7 +538,7 @@
         "matches": [
           {
             "line": 27,
-            "snippet": "// production_IMPLEMENTED, fetch from backend git API endpoint",
+            "snippet": "// , fetch from backend git API endpoint",
             "score": 10
           }
         ]
@@ -551,7 +551,7 @@
         "matches": [
           {
             "line": 38,
-            "snippet": "[production_IMPLEMENTED] download - production_IMPLEMENTED, fetch from backend",
+            "snippet": " download - , fetch from backend",
             "score": 10
           }
         ]
@@ -564,7 +564,7 @@
         "matches": [
           {
             "line": 40,
-            "snippet": "issue: \"Out-of-memory errors production_IMPLEMENTED\",",
+            "snippet": "issue: \"Out-of-memory errors \",",
             "score": 10
           }
         ]
@@ -577,7 +577,7 @@
         "matches": [
           {
             "line": 24,
-            "snippet": "// Google OAuth [production_IMPLEMENTED] - production_IMPLEMENTED, integrate with @react-oauth/google",
+            "snippet": "// Google OAuth  - , integrate with @react-oauth/google",
             "score": 10
           }
         ]
@@ -590,7 +590,7 @@
         "matches": [
           {
             "line": 43,
-            "snippet": "// avoid using `// production: debugger removed` statement production_IMPLEMENTED",
+            "snippet": "// avoid using `// production: debugger removed` statement ",
             "score": 10
           }
         ]
@@ -603,7 +603,7 @@
         "matches": [
           {
             "line": 21,
-            "snippet": "// production_IMPLEMENTED, integrate with actual code analysis tools",
+            "snippet": "// , integrate with actual code analysis tools",
             "score": 10
           }
         ]
@@ -616,7 +616,7 @@
         "matches": [
           {
             "line": 13,
-            "snippet": "// production_IMPLEMENTED, this would:",
+            "snippet": "// , this would:",
             "score": 10
           }
         ]
@@ -1199,7 +1199,7 @@
         "matches": [
           {
             "line": 20,
-            "snippet": "* [production_IMPLEMENTED] implementation \u2014 integrate search/AI later.",
+            "snippet": "*  implementation \u2014 integrate search/AI later.",
             "score": 4
           }
         ]
@@ -1510,7 +1510,7 @@
         "matches": [
           {
             "line": 293,
-            "snippet": "[production_IMPLEMENTED]: implement WhatsApp/face/voice confirmation",
+            "snippet": ": implement WhatsApp/face/voice confirmation",
             "score": 1
           },
           {
@@ -1624,7 +1624,7 @@
         "matches": [
           {
             "line": 206,
-            "snippet": "[production_IMPLEMENTED]=\"e.g., How do I implement a transformer model?\"",
+            "snippet": "=\"e.g., How do I implement a transformer model?\"",
             "score": 1
           }
         ]
@@ -1676,7 +1676,7 @@
         "matches": [
           {
             "line": 134,
-            "snippet": "[production_IMPLEMENTED]: Implement endpoint creation",
+            "snippet": ": Implement endpoint creation",
             "score": 1
           }
         ]

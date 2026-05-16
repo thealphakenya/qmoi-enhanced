@@ -11,7 +11,7 @@ qmoi-enhanced/components/WifiPanel.tsx
 qmoi-enhanced/components/QmoiDialer.tsx
 qmoi-enhanced/components/SettingsPanel.tsx
 qmoi-enhanced/components/QmoiAutoDistribution.tsx
-qmoi-enhanced/components/QMOIOwnPRODUCTIONice.tsx
+qmoi-enhanced/components/QMOIOwndevice.tsx
 qmoi-enhanced/components/QMOIAutoFixDashboard.tsx
 qmoi-enhanced/components/theme-provider.tsx
 qmoi-enhanced/components/SystemHealthDashboard.tsx
@@ -20,8 +20,8 @@ qmoi-enhanced/components/DownloadAppButton.tsx
 qmoi-enhanced/components/q-city/QVillage.tsx
 qmoi-enhanced/components/q-city/EmploymentDashboard.tsx
 qmoi-enhanced/components/q-city/Onboarding.tsx
-qmoi-enhanced/components/q-city/QCityPRODUCTIONicePanel.tsx
-qmoi-enhanced/components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx
+qmoi-enhanced/components/q-city/QCitydevicePanel.tsx
+qmoi-enhanced/components/q-city/QMOIOwndeviceLogs.tsx
 qmoi-enhanced/components/q-city/QMOIBiometricManager.tsx
 qmoi-enhanced/components/q-city/QMOIRevenueDashboard.tsx
 qmoi-enhanced/components/q-city/QCityDashboard.tsx
@@ -40,7 +40,7 @@ qmoi-enhanced/components/PriceProductVerifier.tsx
 qmoi-enhanced/components/AIContext.tsx
 qmoi-enhanced/components/QmoiKeyboard.tsx
 qmoi-enhanced/components/TeamRoleManager.tsx
-qmoi-enhanced/components/PRODUCTIONiceSettingsPanel.tsx
+qmoi-enhanced/components/deviceSettingsPanel.tsx
 qmoi-enhanced/components/QmoiMemoryPanel.tsx
 qmoi-enhanced/components/ui/pagination.tsx
 qmoi-enhanced/components/ui/popover.tsx
@@ -129,14 +129,14 @@ qmoi-enhanced/components/real_time_status_dashboard_with_universal_language_supp
 qmoi-enhanced/components/AppManager.tsx
 qmoi-enhanced/components/BluetoothManager.tsx
 qmoi-enhanced/components/CashonTradingPanel.tsx
-qmoi-enhanced/components/PRODUCTIONiceMap.tsx
+qmoi-enhanced/components/deviceMap.tsx
 qmoi-enhanced/components/üõ°ô∏è_automated_build,_install,_and_error_fix_strategies.tsx
 qmoi-enhanced/components/EnhancedPreviewWindow.tsx
 qmoi-enhanced/components/DeploymentStatusDashboard.tsx
 qmoi-enhanced/components/GlobalFileTransfer.tsx
-qmoi-enhanced/components/PRODUCTIONice/AzureCredentialsModal.tsx
-qmoi-enhanced/components/PRODUCTIONice/AWSCredentialsModal.tsx
-qmoi-enhanced/components/PRODUCTIONice/GCPCredentialsModal.tsx
+qmoi-enhanced/components/device/AzureCredentialsModal.tsx
+qmoi-enhanced/components/device/AWSCredentialsModal.tsx
+qmoi-enhanced/components/device/GCPCredentialsModal.tsx
 qmoi-enhanced/components/MasterContext.tsx
 qmoi-enhanced/components/predeploy/OrchestratorStatusPanel.tsx
 qmoi-enhanced/components/QmoiRevenueDashboard.tsx

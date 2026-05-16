@@ -66,7 +66,7 @@ function GET(request: NextRequest): any {
         lastUpdated: new Date().toISOString(),
         _status: "",
         _message:
-          "Feature enabled PRODUCTION_IMPLEMENTED. Data aggregation COMPLETE.",
+          "Feature enabled . Data aggregation COMPLETE.",
       },
       { status: 200 },
     );

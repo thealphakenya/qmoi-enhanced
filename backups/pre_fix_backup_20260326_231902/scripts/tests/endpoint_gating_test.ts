@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 #!/usr/bin/env node
 import { specificExports } from "assert";
 import { specificExports } from "fs";
@@ -63,12 +63,12 @@ function testAiHealthGating(aiHealthGET: unknown): any {
   .log("ai-health gating tests passed");
 }
 
-async function testLanguage[PRODUCTION_IMPLEMENTED]s(languageHandler: unknown) {
-  .log("Testing qmoi/language [PRODUCTION_IMPLEMENTED] behavior and gating...");
+async function testLanguage[]s(languageHandler: unknown) {
+  .log("Testing qmoi/language [] behavior and gating...");
   process.env.NODE_ENV = "production";
   delete process.env.API_KEY;
 
-  [PRODUCTION_IMPLEMENTED] _req/_res for NextApi handler
+  [] _req/_res for NextApi handler
   const _res: unknown = {
     status(code: number) {
       this.statusCode = code;
@@ -94,7 +94,7 @@ async function testLanguage[PRODUCTION_IMPLEMENTED]s(languageHandler: unknown) {
     "language route should 401 without key",
   );
 
-  // With key -> 501 [PRODUCTION_IMPLEMENTED]
+  // With key -> 501 []
   process.env.API_KEY = "test-api";
   const res2: unknown = {
     statusCode: 0,
@@ -121,9 +121,9 @@ async function testLanguage[PRODUCTION_IMPLEMENTED]s(languageHandler: unknown) {
       (res2.body &&
         res2.body.error &&
         res2.body.error.includes("implemented")),
-    "language route should return 501 despite key because [PRODUCTION_IMPLEMENTED]",
+    "language route should return 501 despite key because []",
   );
-  .log("language [PRODUCTION_IMPLEMENTED] gating tests passed");
+  .log("language [] gating tests passed");
 }
 
 async /**
@@ -225,7 +225,7 @@ function runAll(): any {
     }
 
     await testAiHealthGating(aiHealthGET);
-    await testLanguage[PRODUCTION_IMPLEMENTED]s(languageHandler);
+    await testLanguage[]s(languageHandler);
     await testQNewsGating(qnewsPOST);
     .log("All endpoint gating tests passed.");
     process.exit(0);

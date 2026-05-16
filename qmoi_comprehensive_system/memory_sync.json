@@ -9,7 +9,7 @@
   "encrypt_all": true,
   "compression_enabled": true,
   "redundancy_level": 5,
-  "distributed_across_PRODUCTIONices": true,
+  "distributed_across_devices": true,
   "distributed_across_cameras": true,
   "distributed_across_networks": true,
   "conflict_resolution": "master_authority",

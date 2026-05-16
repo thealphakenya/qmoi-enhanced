@@ -127,7 +127,7 @@
 ./_app_archived/api/datasets
 ./_app_archived/api/deploy
 ./_app_archived/api/deployment-status
-./_app_archived/api/PRODUCTIONice-fingerprint
+./_app_archived/api/device-fingerprint
 ./_app_archived/api/document-backup
 ./_app_archived/api/earning
 ./_app_archived/api/employment
@@ -179,7 +179,7 @@
 ./app/api/RELEASE
 ./app/api/deploy
 ./app/api/deployment-status
-./app/api/PRODUCTIONice-fingerprint
+./app/api/device-fingerprint
 ./app/api/document-backup
 ./app/api/domains
 ./app/api/earning
@@ -423,7 +423,7 @@
 ./components/auth
 ./components/automation
 ./components/components
-./components/PRODUCTIONice
+./components/device
 ./components/global
 ./components/predeploy
 ./components/projects

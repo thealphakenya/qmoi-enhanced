@@ -19,7 +19,7 @@
     {
       "name": "Marker Elimination & Cleanup",
       "status": "passed",
-      "output": "Finalize production_IMPLEMENTED report:\n  Files scanned: 4815\n  Files modified: 0\n  production marker lines removed: 0\n  No explicit production marker comment lines were found or removed.\n"
+      "output": "Finalize  report:\n  Files scanned: 4815\n  Files modified: 0\n  production marker lines removed: 0\n  No explicit production marker comment lines were found or removed.\n"
     },
     {
       "name": "API Endpoint Validation",

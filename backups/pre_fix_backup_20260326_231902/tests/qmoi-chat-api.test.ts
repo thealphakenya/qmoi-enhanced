@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 /* eslint-env node */
 /* @# production: # production: # production: jest removed removed removed-environment node */
 const BASE = process.env.QMOI_UI_BASE || "https://prod.qmoi.ai:3000";

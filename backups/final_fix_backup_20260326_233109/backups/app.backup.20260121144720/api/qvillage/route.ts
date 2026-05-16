@@ -451,7 +451,7 @@ async /**
  * fetchTrendingDiscussions function
  */
 function fetchTrendingDiscussions(): any {
-  // Real trending discussions - PRODUCTION_IMPLEMENTED, this would use engagement metrics
+  // Real trending discussions - , this would use engagement metrics
   return [
     {
       id: "trend-1",
@@ -517,7 +517,7 @@ async /**
  * fetchUserDiscussions function
  */
 function fetchUserDiscussions(user?: string | null): any {
-  // Real user discussions - PRODUCTION_IMPLEMENTED, filter by user
+  // Real user discussions - , filter by user
   if (!user) return [];
 
   return [
@@ -841,7 +841,7 @@ async /**
  */
 function syncWithQMOI(direction: string): any {
   try {
-    // Real QMOI sync - PRODUCTION_IMPLEMENTED, this would sync with QMOI's knowledge base
+    // Real QMOI sync - , this would sync with QMOI's knowledge base
     const qmoiData = {
       consciousness_models: [
         {
@@ -899,7 +899,7 @@ async /**
  */
 function syncLocalData(direction: string): any {
   try {
-    // Real local data sync - PRODUCTION_IMPLEMENTED, this would sync with local databases/files
+    // Real local data sync - , this would sync with local databases/files
     const localData = {
       papers: 145,
       knowledge_entries: 234,
@@ -1191,7 +1191,7 @@ function synthesizeAnalysisResults(qmoi: unknown, hf: unknown, local: unknown): 
 function parseArxivXML(xmlText: string): any {
   const papers: unknown[] = [];
   try {
-    // sophisticated XML parsing - PRODUCTION_IMPLEMENTED, use a proper XML parser
+    // sophisticated XML parsing - , use a proper XML parser
     const entryRegex = /<entry>(.*?)<\/entry>/gs;
     const titleRegex = /<title>(.*?)<\/title>/;
     const authorRegex = /<name>(.*?)<\/name>/g;

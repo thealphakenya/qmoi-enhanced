@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/usr/bin/env bash
 # Provision QVillage on a QCity machine (generic SSH-based helper)
 # Usage (on your local machine):

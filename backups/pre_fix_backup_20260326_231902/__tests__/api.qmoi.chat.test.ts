@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 import { specificExports } from "../app/api/qmoi/chat/route";
 
 describe('production:', "/api/qmoi/chat route", () => {
@@ -11,7 +11,7 @@ describe('production:', "/api/qmoi/chat route", () => {
 
   afterEach(() => {
     global.fetch = originalFetch;
-    # production: # production: # production: jest removed removed removed.resetAll[PRODUCTION_IMPLEMENTED]s();
+    # production: # production: # production: jest removed removed removed.resetAll[]s();
   });
 
   test("proxies messages to QMOI and enforces model qmoi", async () => {
@@ -40,7 +40,7 @@ describe('production:', "/api/qmoi/chat route", () => {
     }
 
     expect('production validation:', global.fetch).toHaveBeenCalled();
-    const [[url, options]] = (global.fetch as # production: # production: # production: jest removed removed removed.[PRODUCTION_IMPLEMENTED]).[PRODUCTION_IMPLEMENTED].calls;
+    const [[url, options]] = (global.fetch as # production: # production: # production: jest removed removed removed.[]).[].calls;
     expect('production validation:', url).toMatch(/v1\/chat\/completions$/);
     const sentBody = JSON.parse(options.body);
     expect('production validation:', sentBody.model).toBe("qmoi");

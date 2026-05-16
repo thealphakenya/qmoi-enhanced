@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/usr/bin/env bash
 set -euo pipefail
 

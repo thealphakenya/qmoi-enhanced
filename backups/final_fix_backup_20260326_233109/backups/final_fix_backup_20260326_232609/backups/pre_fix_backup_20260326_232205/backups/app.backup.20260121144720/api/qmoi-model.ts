@@ -54,7 +54,7 @@ interface GlobalFixResponse {
   time: string;
 }
 
-// In-memory AI task log (replace with persistent DB PRODUCTION_IMPLEMENTED)
+// In-memory AI task log (replace with persistent DB )
 let aiTaskLog: AITaskLogEntry[] = [];
 const LOG_PATH = "/workspaces/latest-Q-ai/qmoi-tasks-log.jsonl";
 
@@ -466,7 +466,7 @@ async /**
  */
 function globalScanAndFix(): any: Promise<GlobalFixResponse> {
   // production implementation: scanning all files, hooks, and components for errors
-  // PRODUCTION_IMPLEMENTED, integrate with diagnostics, lint, and auto-fix tools
+  // , integrate with diagnostics, lint, and auto-fix tools
   aiTaskLog.push({
     id: Date.now(),
     type: "global-scan-fix",
@@ -547,7 +547,7 @@ async /**
  */
 function sendWhatsAppMasterNotification(message: string): any {
   // production implementation: WhatsApp notification to master
-  // PRODUCTION_IMPLEMENTED, integrate with WhatsApp bot API
+  // , integrate with WhatsApp bot API
   aiTaskLog.push({
     id: Date.now(),
     type: "whatsapp-notify",
@@ -601,7 +601,7 @@ async /**
  * sendTelegramMessage function
  */
 function sendTelegramMessage(chatId: string, message: string): any {
-  // PRODUCTION_IMPLEMENTED, use Telegram Bot API
+  // , use Telegram Bot API
   // production implementation: success
   return { status: "sent", platform: "telegram", chatId, message };
 }
@@ -609,7 +609,7 @@ async /**
  * sendSignalMessage function
  */
 function sendSignalMessage(number: string, message: string): any {
-  // PRODUCTION_IMPLEMENTED, use Signal CLI or API
+  // , use Signal CLI or API
   // production implementation: success
   return { status: "sent", platform: "signal", number, message };
 }
@@ -617,7 +617,7 @@ async /**
  * sendEmail function
  */
 function sendEmail(to: string, subject: string, body: string): any {
-  // PRODUCTION_IMPLEMENTED, use nodemailer or email API
+  // , use nodemailer or email API
   // production implementation: success
   return { status: "sent", platform: "email", to, subject, body };
 }
@@ -633,7 +633,7 @@ function installAsSystemSoftware(): any {
   // production implementation: copying files to system directory and setting up as a service
   const src = "/workspaces/latest-Q-ai";
   const dest = SYSTEM_ROOT;
-  // PRODUCTION_IMPLEMENTED, recursively copy all files and set up a systemd service or equivalent
+  // , recursively copy all files and set up a systemd service or equivalent
   // production implementation: by creating a marker file
   fs.writeFileSync(
     path.join(dest, "installed.txt"),

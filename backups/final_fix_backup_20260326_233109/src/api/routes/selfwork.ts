@@ -222,7 +222,7 @@ function toggleAutoprod(req: Request): any {
   try {
     const { enabled } = await req.json();
 
-    // Store Autoprod state (PRODUCTION_IMPLEMENTED, save to database)
+    // Store Autoprod state (, save to database)
     const result = {
       enabled,
       message: enabled

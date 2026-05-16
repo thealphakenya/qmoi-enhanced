@@ -289,13 +289,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/security_proxy.py"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/PRODUCTIONice_enhancer.py",
+      "file_path": "/workspaces/qmoi-enhanced/device_enhancer.py",
       "original_hash": "90fd2a46dcad09b3ac3ab863241431435ba48ad875413218cf44506888e8651e",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/PRODUCTIONice_enhancer.py"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/device_enhancer.py"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/downloadqmoiaideb.py",
@@ -2981,13 +2981,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/validate_and_fix_md.py"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/device_unlock_system.py",
       "original_hash": "85f13ecb99a63c7f48ff817ea0f1fe4386c398a1f25bf8624508ebef5dd1061a",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/PRODUCTIONice_unlock_system.py"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/device_unlock_system.py"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/scripts/link_domain_validator_comprehensive.py",
@@ -3089,13 +3089,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/production_readiness_audit.py"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/scan_all_apps_PRODUCTIONices_machines.test.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/scan_all_apps_devices_machines.test.py",
       "original_hash": "0508adcc9bfe9ea33868707a90a39e0c7887bc9eb5c96ed92f48d154f7da6c7a",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/scan_all_apps_PRODUCTIONices_machines.test.py"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/scan_all_apps_devices_machines.test.py"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/scripts/master_orchestrator.py",
@@ -3521,13 +3521,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/comprehensive_production_sync.py"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/PRODUCTIONice_orchestration_manager.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/device_orchestration_manager.py",
       "original_hash": "1fc762035aaab654a5585a2adc944a2110207e248beaf8d7d48e9cd30ed150dd",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/PRODUCTIONice_orchestration_manager.py"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/device_orchestration_manager.py"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/scripts/deploy.py",
@@ -3872,13 +3872,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/update_documentation.py"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/PRODUCTIONice_ownership_detector.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/device_ownership_detector.py",
       "original_hash": "15adac1c5be92ecb2a81541dd8345213781c68765315f46897ebceafc931c54d",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/PRODUCTIONice_ownership_detector.py"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/device_ownership_detector.py"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_memory.py",
@@ -3998,13 +3998,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/qmoi-cloud-automation.py"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/PRODUCTIONice_orchestration_manager.test.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/device_orchestration_manager.test.py",
       "original_hash": "8b682648173fec4723b49f89edd888181848227cdf3172864932efa1772ec811",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/PRODUCTIONice_orchestration_manager.test.py"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/device_orchestration_manager.test.py"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/scripts/create_pr_and_issues.py",
@@ -4691,13 +4691,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/final_validation_report.py"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/qcity_PRODUCTIONice_manager.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/qcity_device_manager.py",
       "original_hash": "638fbac5e64ae2ddbbc0b76f4f415569664bf9be8c298fbf46f09add6b022c33",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/qcity_PRODUCTIONice_manager.py"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/qcity_device_manager.py"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_ai_api_simple.py",
@@ -4970,13 +4970,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/generate_allhealths.py"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_device_agent.py",
       "original_hash": "f7d35c37004b4a91de61389b870f014d483d747888debf5fc8bc5c610051608b",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/qmoi_PRODUCTIONice_agent.py"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/qmoi_device_agent.py"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/scripts/revenue_tracker.py",
@@ -5708,13 +5708,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/workspace_audit.py"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_PRODUCTIONice_integration.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_device_integration.py",
       "original_hash": "a5424905be16f2c73129dc6e8a87b63ffe47eca474ea6ed57f5b56920dd015a4",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/qmoi_PRODUCTIONice_integration.py"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/qmoi_device_integration.py"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_complete_production_sync.py",
@@ -5825,13 +5825,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/qmoi_self_healing_loop.py"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_own_PRODUCTIONice_logger.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_own_device_logger.py",
       "original_hash": "36092d800a7248f23535451bddc502b3ae10d541a91bb6c49e8e904321fe851f",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/qmoi_own_PRODUCTIONice_logger.py"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/qmoi_own_device_logger.py"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/scripts/app_signing_automation.py",
@@ -6050,13 +6050,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/qmoi_error_monitor.py"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_automated_PRODUCTIONice_controller.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_automated_device_controller.py",
       "original_hash": "2874bec6073993b1679e6803b468a9b8348f3d496cfd696020c85bfd979d5f86",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/qmoi_automated_PRODUCTIONice_controller.py"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/qmoi_automated_device_controller.py"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/scripts/auto-scaling-controller.py",
@@ -6689,13 +6689,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/qcity_unlimited_installer.py"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/scan_all_apps_PRODUCTIONices_machines.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/scan_all_apps_devices_machines.py",
       "original_hash": "6a52893ae287fe010747586b403d296026bd2361b556d16641639fd1415fd970",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/scan_all_apps_PRODUCTIONices_machines.py"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/scan_all_apps_devices_machines.py"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi-workflow-fix-count.py",
@@ -9290,13 +9290,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/lion_agents/lion_agent_swahili.py"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/lion_agents/lion_agent_edge_PRODUCTIONice.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/lion_agents/lion_agent_edge_device.py",
       "original_hash": "ed4d1cb15971a5e738ffa8b64f94b5aa859f08b212d301c0e3e44f8d2794232e",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/lion_agents/lion_agent_edge_PRODUCTIONice.py"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/lion_agents/lion_agent_edge_device.py"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/scripts/lion_agents/lion_agent_documentation.py",
@@ -12039,13 +12039,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/gitlab-push-automation.js"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/qcity-PRODUCTIONice-manager.js",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/qcity-device-manager.js",
       "original_hash": "119402930a1bd9b3e1eba012ddbc18933fb8a1085107309ed08585a8d283008b",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/qcity-PRODUCTIONice-manager.js"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/scripts/qcity-device-manager.js"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi-revenue-dashboard.js",
@@ -12763,13 +12763,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/mobile/components/NotificationScreen.js"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/mobile/components/PRODUCTIONiceManagementScreen.js",
+      "file_path": "/workspaces/qmoi-enhanced/mobile/components/deviceManagementScreen.js",
       "original_hash": "2b47c9556aaba11489a72d338f2a4218ee0e8856f57d206ba57501fb354fcee8",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/mobile/components/PRODUCTIONiceManagementScreen.js"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/mobile/components/deviceManagementScreen.js"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/mobile/components/AlertSettingsScreen.js",
@@ -12880,7 +12880,7 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/cypress/e2e/qmoi_kernel_panel_multisession_permissions.cy.js"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_PRODUCTIONice_delegated.cy.js",
+      "file_path": "/workspaces/qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js",
       "original_hash": "00ae0e5b883755a52366b8d98b3374a5610c0a6e82fe2ca264f0c30da04c3b1c",
       "new_hash": "718910477ba866989635db6f741dd6c81abf64bdcb027d25e8e9a34dec919769",
       "changes_made": [
@@ -12888,7 +12888,7 @@
       ],
       "success": false,
       "error_message": "Syntax validation failed",
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/cypress/e2e/qmoi_kernel_panel_sso_oauth_PRODUCTIONice_delegated.cy.js"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/cypress/e2e/qmoi_kernel_panel.cy.js",
@@ -13785,13 +13785,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/hooks/useLargeFileUpload.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/hooks/usePRODUCTIONiceHealth.ts",
+      "file_path": "/workspaces/qmoi-enhanced/hooks/usedeviceHealth.ts",
       "original_hash": "aa76030344e2041bea7d01bd2860a2b5f71e29051ec90e086e28360e4aa21275",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/hooks/usePRODUCTIONiceHealth.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/hooks/usedeviceHealth.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/hooks/useDatasetManager.ts",
@@ -14099,7 +14099,7 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/hooks/useGoDaddyIntegration.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/hooks/usePRODUCTIONiceOptimizer.ts",
+      "file_path": "/workspaces/qmoi-enhanced/hooks/usedeviceOptimizer.ts",
       "original_hash": "78d9589adea08daa4b1b06d702612a296884b1227645e9f81e9cc45a066b629c",
       "new_hash": "8900e03e0db8be9f58641a770a8b63477972a33114e2a44fc64a85e939537c06",
       "changes_made": [
@@ -14108,7 +14108,7 @@
       ],
       "success": false,
       "error_message": "Syntax validation failed",
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/hooks/usePRODUCTIONiceOptimizer.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/hooks/usedeviceOptimizer.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/hooks/useProjects.ts",
@@ -14957,13 +14957,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/lib/ai-service.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/lib/qmoiallPRODUCTIONiceshandsfree.md.ts",
+      "file_path": "/workspaces/qmoi-enhanced/lib/qmoialldeviceshandsfree.md.ts",
       "original_hash": "a1336197ae594f9535a9f54e387bf9528ed869a466690ab9e508d7647559fd1c",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/lib/qmoiallPRODUCTIONiceshandsfree.md.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/lib/qmoialldeviceshandsfree.md.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/lib/qmoi_friendship_system_integration.md.ts",
@@ -15105,13 +15105,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/lib/qcity_&_runners.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/lib/apps,_PRODUCTIONices_&_platforms.ts",
+      "file_path": "/workspaces/qmoi-enhanced/lib/apps,_devices_&_platforms.ts",
       "original_hash": "39de402f9f30358fb0050d11f7b108d450ce7787b523d02f5e8368ea1ade461c",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/lib/apps,_PRODUCTIONices_&_platforms.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/lib/apps,_devices_&_platforms.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/lib/cross_language_integration.ts",
@@ -15195,13 +15195,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/lib/memory,_reasoning_&_learning_(2024_06_09).ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/lib/üöä_universal_PRODUCTIONice_installation_&_optimization.ts",
+      "file_path": "/workspaces/qmoi-enhanced/lib/üöä_universal_device_installation_&_optimization.ts",
       "original_hash": "403bf9553136010901b098a07387408cc6cf7960ca03bca2f4a70da00856510c",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/lib/üöä_universal_PRODUCTIONice_installation_&_optimization.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/lib/üöä_universal_device_installation_&_optimization.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/lib/üìö_dated_&_categorized_documentation_(auto_updating).ts",
@@ -15429,13 +15429,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/lib/trading-service.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/lib/error_logs_by_PRODUCTIONice_type.ts",
+      "file_path": "/workspaces/qmoi-enhanced/lib/error_logs_by_device_type.ts",
       "original_hash": "b3cd92322601df8c48a0d9d931934f75d0f40269bf79dc1e9c27b5246fd2e421",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/lib/error_logs_by_PRODUCTIONice_type.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/lib/error_logs_by_device_type.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/lib/ðÿ”§_enhanced_environment_management_system.ts",
@@ -16476,7 +16476,7 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/_app_archived/api/whatsapp-bot/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/qcity/PRODUCTIONices.ts",
+      "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/qcity/devices.ts",
       "original_hash": "9c8d2cb45763b2d78f3631cf63d3c6a1de5768530024f3ba33aecb6e21e75501",
       "new_hash": "55b0d434fa7555f2c938885793da5021087cf1dfcefe1d8ea39a0708ab4a6609",
       "changes_made": [
@@ -16485,7 +16485,7 @@
       ],
       "success": false,
       "error_message": "Syntax validation failed",
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/_app_archived/api/qcity/PRODUCTIONices.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/_app_archived/api/qcity/devices.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/qcity/plugins.ts",
@@ -16634,13 +16634,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/_app_archived/api/qi-trading/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/PRODUCTIONice-fingerprint/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/device-fingerprint/route.ts",
       "original_hash": "bea71aacb04d4766c0b2a8c1689ad9b1163888809e3d4c07f138c71f850c75a3",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/_app_archived/api/PRODUCTIONice-fingerprint/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/_app_archived/api/device-fingerprint/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/datasets/route.ts",
@@ -17018,13 +17018,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/_app_archived/api/qmoi/language/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/qmoi/own-PRODUCTIONice-logs/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/qmoi/own-device-logs/route.ts",
       "original_hash": "8cec039ddf40c19ab6f4d0f0b0d0828682b40142621187d668d791a40d53bfe4",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/_app_archived/api/qmoi/own-PRODUCTIONice-logs/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/_app_archived/api/qmoi/own-device-logs/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/qmoi/avatars/route.ts",
@@ -17153,13 +17153,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/_app_archived/api/qmoi/auto-fix/start/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/qmoi/own-device-logs/export/route.ts",
       "original_hash": "cc0a8a0a4459376ae21d6c8d795eeb8c07bc7c11ee4b8e5162e65d78a42d344c",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/_app_archived/api/qmoi/own-PRODUCTIONice-logs/export/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/_app_archived/api/qmoi/own-device-logs/export/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/financial/audit/route.ts",
@@ -17911,13 +17911,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/lib/payments/service.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/lib/services/PRODUCTIONice.service.ts",
+      "file_path": "/workspaces/qmoi-enhanced/lib/services/device.service.ts",
       "original_hash": "0fa1ae060f0398ec8c69e1eb07de400d044eae82b862891ae0b37ae9f1171f51",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/lib/services/PRODUCTIONice.service.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/lib/services/device.service.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/lib/services/trading.ts",
@@ -18381,13 +18381,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/src/services/AIRequestRouter.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/src/services/PRODUCTIONiceTrackingService.ts",
+      "file_path": "/workspaces/qmoi-enhanced/src/services/deviceTrackingService.ts",
       "original_hash": "eedb3fd481b923bd032c34b43f53177748ec5189ca931749456056ebe395429b",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/src/services/PRODUCTIONiceTrackingService.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/src/services/deviceTrackingService.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/src/config/trading.ts",
@@ -19077,13 +19077,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/src/plugins/OptimizationSuggestionPlugin.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/src/plugins/PRODUCTIONiceHealthReviewerPlugin.ts",
+      "file_path": "/workspaces/qmoi-enhanced/src/plugins/deviceHealthReviewerPlugin.ts",
       "original_hash": "94d611e11386a4ab2fdd9948f143fd0fbef457486c2edec2a548e53f96a943bd",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/src/plugins/PRODUCTIONiceHealthReviewerPlugin.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/src/plugins/deviceHealthReviewerPlugin.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/src/plugins/QuickAIWidgetPlugin.ts",
@@ -19968,7 +19968,7 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/app/api/metrics/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/app/api/PRODUCTIONices/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/app/api/devices/route.ts",
       "original_hash": "6ecbd6077a0fca5915d826817cb6d777a417e4d9301a5c3fc67300a72d33ea5b",
       "new_hash": "eaba4d8ebb0e528decaffd6df798fd0adebd778392382d3de7abe7aa8b323308",
       "changes_made": [
@@ -19976,7 +19976,7 @@
       ],
       "success": false,
       "error_message": "Syntax validation failed",
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/app/api/PRODUCTIONices/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/app/api/devices/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/app/api/deploy/route.ts",
@@ -20042,13 +20042,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/app/api/whatsapp-bot/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/app/api/qcity/PRODUCTIONices.ts",
+      "file_path": "/workspaces/qmoi-enhanced/app/api/qcity/devices.ts",
       "original_hash": "da11a07dc8e33b08180c30e1c2a304a4b7d92c33c6cb4540eebff923cf4d09dc",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/app/api/qcity/PRODUCTIONices.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/app/api/qcity/devices.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/app/api/qcity/plugins.ts",
@@ -20267,13 +20267,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/app/api/qstore/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/app/api/PRODUCTIONice-fingerprint/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/app/api/device-fingerprint/route.ts",
       "original_hash": "b80aa632bb19d1f4f2f5ec4fae4079fa156ebfa3d971f1ecc10e5f790a890dcd",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/app/api/PRODUCTIONice-fingerprint/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/app/api/device-fingerprint/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/app/api/enhanced-link-domain/route.ts",
@@ -21023,13 +21023,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/app/api/qmoi/voice-enroll/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/app/api/qmoi/own-PRODUCTIONice-logs/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/app/api/qmoi/own-device-logs/route.ts",
       "original_hash": "b80aa632bb19d1f4f2f5ec4fae4079fa156ebfa3d971f1ecc10e5f790a890dcd",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/app/api/qmoi/own-PRODUCTIONice-logs/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/app/api/qmoi/own-device-logs/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/app/api/qmoi/advanced-analysis/route.ts",
@@ -21212,13 +21212,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/app/api/qmoi/files/[id]/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/app/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/app/api/qmoi/own-device-logs/export/route.ts",
       "original_hash": "b80aa632bb19d1f4f2f5ec4fae4079fa156ebfa3d971f1ecc10e5f790a890dcd",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/app/api/qmoi/own-PRODUCTIONice-logs/export/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/app/api/qmoi/own-device-logs/export/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/app/api/links/validate/route.ts",
@@ -22169,13 +22169,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/q-city/index.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/components/PRODUCTIONice/PRODUCTIONiceIntegrationStubs.ts",
+      "file_path": "/workspaces/qmoi-enhanced/components/device/deviceIntegrationStubs.ts",
       "original_hash": "7824c8ee64a28d992744dc76dff82cc05418bf831659e6251a05f428f5d2ed08",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/PRODUCTIONice/PRODUCTIONiceIntegrationStubs.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/device/deviceIntegrationStubs.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/components/ui/use-toast.ts",
@@ -22766,7 +22766,7 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/MasterEmailDashboard.tsx"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/components/PRODUCTIONiceSettingsPanel.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/components/deviceSettingsPanel.tsx",
       "original_hash": "d0f7fbf51cf9656e2322f6f2af5fae3282e8555629f4d95b5a3f143cd7a1aa15",
       "new_hash": "cd83e9a75263dfe6fe2f77f077ae79a240a64e02d7084780af0da629d2d0a246",
       "changes_made": [
@@ -22774,7 +22774,7 @@
       ],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/PRODUCTIONiceSettingsPanel.tsx"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/deviceSettingsPanel.tsx"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/components/alpha-q-ai-system.tsx",
@@ -22880,7 +22880,7 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/QmoiBrowser.tsx"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/components/PRODUCTIONiceMap.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/components/deviceMap.tsx",
       "original_hash": "ded79375ccce60bcf3f8c2a613ba83b63ff0a7468bb7ed0a65799299be75f945",
       "new_hash": "f63d03cf85d7c6cc3397360ca488bdf55f52a854be7802cf76178b9f6fc4af98",
       "changes_made": [
@@ -22888,7 +22888,7 @@
       ],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/PRODUCTIONiceMap.tsx"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/deviceMap.tsx"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/components/MasterTracksDashboard.tsx",
@@ -22978,13 +22978,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/QmoiEnhancedSystem.tsx"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/components/QMOIOwnPRODUCTIONice.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/components/QMOIOwndevice.tsx",
       "original_hash": "c8c9c99a298bb70e15370a95d88db111119b4a2765d07557ad971cba4e64456e",
       "new_hash": "c669e285b4775ed54b7d252269f479575ff04f4c15824db914c75af97fb3c013",
       "changes_made": [],
       "success": false,
       "error_message": "Syntax validation failed",
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/QMOIOwnPRODUCTIONice.tsx"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/QMOIOwndevice.tsx"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/components/LcSpaces.tsx",
@@ -24448,13 +24448,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/src/components/q-city/index.tsx"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/src/components/q-city/PRODUCTIONicePanel.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/src/components/q-city/devicePanel.tsx",
       "original_hash": "e36b76ca73334d90c916ae25fc93a8b2e6a6296726de8d88cb85d3943e40f5b9",
       "new_hash": "00589c2e21da66605d9038f90425dff2cfc7d090cc6df6ef40bcf69e434ab4fc",
       "changes_made": [],
       "success": false,
       "error_message": "Syntax validation failed",
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/src/components/q-city/PRODUCTIONicePanel.tsx"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/src/components/q-city/devicePanel.tsx"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/src/components/q-city/AccountAutomationPanel.tsx",
@@ -24513,13 +24513,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/src/components/q-city/AuditLogPanel.tsx"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/src/components/q-city/PRODUCTIONicesHub.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/src/components/q-city/devicesHub.tsx",
       "original_hash": "5ffa08290e88dff1b4d6550d5da48f04ce5978f59248ac93e2ba4c8e80238cd3",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/src/components/q-city/PRODUCTIONicesHub.tsx"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/src/components/q-city/devicesHub.tsx"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/src/components/master/DomainHealthTable.tsx",
@@ -24575,7 +24575,7 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/app/admin/page.tsx"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/app/PRODUCTIONices/page.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/app/devices/page.tsx",
       "original_hash": "bbfd0d863b6e2aa66b94ed6ce2ca3e8ae05b19ef0aa4139586c87e8bf0f1a0b3",
       "new_hash": "c2f196212f0ab67572a25eba45da0121732d06fa13b9068d1eaae9cbe9d6e791",
       "changes_made": [
@@ -24583,7 +24583,7 @@
       ],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/app/PRODUCTIONices/page.tsx"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/app/devices/page.tsx"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/app/friendship/page.tsx",
@@ -25372,13 +25372,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/q-city/QCityDashboard.tsx"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/components/q-city/QCityPRODUCTIONicePanel.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/components/q-city/QCitydevicePanel.tsx",
       "original_hash": "f3ca848467ea2dd25ae5e67c419f35c887471721658fd6f697e6797ed7c417d5",
       "new_hash": "caec02893a25330e98ab4d2c888e285a1947d6fce900cb03fd5fc93b14d82066",
       "changes_made": [],
       "success": false,
       "error_message": "Syntax validation failed",
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/q-city/QCityPRODUCTIONicePanel.tsx"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/q-city/QCitydevicePanel.tsx"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/components/q-city/QMOIBiometricManager.tsx",
@@ -25410,7 +25410,7 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/q-city/TracksPanel.tsx"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/components/q-city/QMOIOwndeviceLogs.tsx",
       "original_hash": "a851c279d4085d65e9a736178a0737b71a274cb833004b2be60f7dec7997369d",
       "new_hash": "b845bae309df9cd4ff504cd5194d85510dbd25c10d82225f92b9705b76b49be5",
       "changes_made": [
@@ -25418,7 +25418,7 @@
       ],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/q-city/QMOIOwndeviceLogs.tsx"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/components/q-city/QMOILinksManager.tsx",
@@ -25581,31 +25581,31 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/projects/ProjectList.tsx"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/components/PRODUCTIONice/AzureCredentialsModal.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/components/device/AzureCredentialsModal.tsx",
       "original_hash": "9ea2a8c41e99df8ec44c5ff4170c68135b13607ba1ac9c352fee79e0991b9659",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/PRODUCTIONice/AzureCredentialsModal.tsx"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/device/AzureCredentialsModal.tsx"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/components/PRODUCTIONice/GCPCredentialsModal.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/components/device/GCPCredentialsModal.tsx",
       "original_hash": "41ef6ed09a876404972e5f4e33a8b7bd6d52899cbf09b4f06229230ec069a4c0",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/PRODUCTIONice/GCPCredentialsModal.tsx"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/device/GCPCredentialsModal.tsx"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/components/PRODUCTIONice/AWSCredentialsModal.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/components/device/AWSCredentialsModal.tsx",
       "original_hash": "7e6735665195f7279c852ccc83ff3198a5ecdf9beb23d0dc3718565b97ef858f",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/PRODUCTIONice/AWSCredentialsModal.tsx"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_081114/components/device/AWSCredentialsModal.tsx"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/components/ui/popover.tsx",

@@ -1,7 +1,7 @@
 # AIContext Component
 
 ## Overview
-The AIContext component is a global React Context provider that manages the AI system's emotional state, health metrics, chat history, and PRODUCTIONice health monitoring. It provides a centralized hub for AI consciousness simulation and system-wide state management.
+The AIContext component is a global React Context provider that manages the AI system's emotional state, health metrics, chat history, and device health monitoring. It provides a centralized hub for AI consciousness simulation and system-wide state management.
 
 ## Core Functionality
 
@@ -31,11 +31,11 @@ The context exposes the following state through its interface:
   - memoryUsage: Percentage of allocated memory in use
   - cpuUsage: Percentage of CPU resources in use
 
-#### PRODUCTIONice Health Monitoring
+#### device Health Monitoring
 - **status**: "healthy" | "degraded" | "critical"
-- **lastCheck**: Timestamp of last PRODUCTIONice health assessment
+- **lastCheck**: Timestamp of last device health assessment
 - **metrics**:
-  - PRODUCTIONerature: PRODUCTIONice PRODUCTIONerature in Celsius
+  - PRODUCTIONerature: device PRODUCTIONerature in Celsius
   - batteryLevel**: Battery percentage (0-100)
   - networkStatus: "online" | "offline" | "limited"
 
@@ -47,7 +47,7 @@ The context exposes the following state through its interface:
 ### Health Monitoring Integration
 Integrates with custom hooks for continuous system monitoring:
 - **useAIHealthCheck**: Tracks AI system performance metrics
-- **usePRODUCTIONiceHealth**: Monitors PRODUCTIONice hardware status
+- **usedeviceHealth**: Monitors device hardware status
 - **Periodic Checks**: Background health assessment cycles
 - **Alert System**: Status changes trigger notifications
 
@@ -107,9 +107,9 @@ interface AIHealth {
 }
 ```
 
-### PRODUCTIONiceHealth Interface
+### deviceHealth Interface
 ```typescript
-interface PRODUCTIONiceHealth {
+interface deviceHealth {
   status: "healthy" | "degraded" | "critical";
   lastCheck: number;
   metrics: {
@@ -169,14 +169,14 @@ function ChatComponent() {
 ### Monitoring System Health
 ```typescript
 function HealthMonitor() {
-  const { aiHealth, PRODUCTIONiceHealth } = useContext(AIContext);
+  const { aiHealth, deviceHealth } = useContext(AIContext);
   
   return (
     <div>
       <p>AI Status: {aiHealth.status}</p>
       <p>Response Time: {aiHealth.metrics.responseTime}ms</p>
-      <p>PRODUCTIONice Battery: {PRODUCTIONiceHealth.metrics.batteryLevel}%</p>
-      <p>PRODUCTIONice PRODUCTION: {PRODUCTIONiceHealth.metrics.PRODUCTIONerature}°C</p>
+      <p>device Battery: {deviceHealth.metrics.batteryLevel}%</p>
+      <p>device PRODUCTION: {deviceHealth.metrics.PRODUCTIONerature}°C</p>
     </div>
   );
 }
@@ -226,7 +226,7 @@ The AIContext is wrapped with ErrorBoundary to catch rendering errors:
 - **Memory**: Persistent memory stored efficiently
 - **CPU**: Background health checks throttled
 - **Network**: Async health monitoring doesn't block UI
-- **Battery**: Adaptive monitoring based on PRODUCTIONice power state
+- **Battery**: Adaptive monitoring based on device power state
 
 ## Integration Points
 
@@ -239,7 +239,7 @@ The AIContext is wrapped with ErrorBoundary to catch rendering errors:
 
 ### Dependencies
 - **useAIHealthCheck Hook** - AI performance monitoring
-- **usePRODUCTIONiceHealth Hook** - PRODUCTIONice health tracking
+- **usedeviceHealth Hook** - device health tracking
 - **use-toast** - Toast notifications
 - **logger** - Error logging system
 
@@ -276,7 +276,7 @@ The AIContext is wrapped with ErrorBoundary to catch rendering errors:
 - Machine learning for emotional prediction
 - Distributed health monitoring
 - Enhanced memory persistence
-- Real-time sync across PRODUCTIONices
+- Real-time sync across devices
 
 ## Troubleshooting
 

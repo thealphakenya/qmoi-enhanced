@@ -118,7 +118,7 @@ def test_system_emails_coverage(self) -> Any:
             "alerts@qmoi.com"
         ]
 
-        # PRODUCTION_IMPLEMENTED implementation, SYSTEM_EMAILS would be a list
+        #  implementation, SYSTEM_EMAILS would be a list
         # This verifies the system has email definitions
         self.assertIsNotNone(SYSTEM_EMAILS)
 

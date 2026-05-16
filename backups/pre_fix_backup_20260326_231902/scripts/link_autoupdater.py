@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026--26T03:59:Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION_IMPLEMENTED]
+# []
 """Link auto-updater (dry-run by default).
 
 This script reads an all-links index (JSON) and produces a deployed update

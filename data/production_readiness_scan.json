@@ -105,7 +105,7 @@
     "/workspaces/qmoi-enhanced/components/QmoiBrowser.tsx": [
       "REPLACE (1)"
     ],
-    "/workspaces/qmoi-enhanced/components/QMOIOwnPRODUCTIONice.tsx": [
+    "/workspaces/qmoi-enhanced/components/QMOIOwndevice.tsx": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/components/enhanced-system-dashboard.tsx": [
@@ -152,13 +152,13 @@
     "/workspaces/qmoi-enhanced/components/predeploy/OrchestratorStatusPanel.tsx": [
       "WARNING (4)"
     ],
-    "/workspaces/qmoi-enhanced/components/PRODUCTIONice/AWSCredentialsModal.tsx": [
+    "/workspaces/qmoi-enhanced/components/device/AWSCredentialsModal.tsx": [
       "fixed (1)"
     ],
-    "/workspaces/qmoi-enhanced/components/PRODUCTIONice/AzureCredentialsModal.tsx": [
+    "/workspaces/qmoi-enhanced/components/device/AzureCredentialsModal.tsx": [
       "fixed (1)"
     ],
-    "/workspaces/qmoi-enhanced/components/PRODUCTIONice/GCPCredentialsModal.tsx": [
+    "/workspaces/qmoi-enhanced/components/device/GCPCredentialsModal.tsx": [
       "fixed (1)"
     ],
     "/workspaces/qmoi-enhanced/components/ui/complete.tsx": [
@@ -176,14 +176,14 @@
     "/workspaces/qmoi-enhanced/components/q-city/QMOIBiometricManager.tsx": [
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/components/q-city/QCityPRODUCTIONicePanel.tsx": [
+    "/workspaces/qmoi-enhanced/components/q-city/QCitydevicePanel.tsx": [
       "fixed (3)"
     ],
     "/workspaces/qmoi-enhanced/mobile/components/AnalyticsScreen.js": [
       "fixed (3)",
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/mobile/components/PRODUCTIONiceManagementScreen.js": [
+    "/workspaces/qmoi-enhanced/mobile/components/deviceManagementScreen.js": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/lib/qmoi-auto-config.ts": [
@@ -366,7 +366,7 @@
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/QmoiBrowser.tsx": [
       "REPLACE (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/QMOIOwnPRODUCTIONice.tsx": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/QMOIOwndevice.tsx": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/enhanced-system-dashboard.tsx": [
@@ -394,13 +394,13 @@
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/predeploy/OrchestratorStatusPanel.tsx": [
       "WARNING (4)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/PRODUCTIONice/AWSCredentialsModal.tsx": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/device/AWSCredentialsModal.tsx": [
       "fixed (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/PRODUCTIONice/AzureCredentialsModal.tsx": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/device/AzureCredentialsModal.tsx": [
       "fixed (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/PRODUCTIONice/GCPCredentialsModal.tsx": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/device/GCPCredentialsModal.tsx": [
       "fixed (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/ui/complete.tsx": [
@@ -418,7 +418,7 @@
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/q-city/QMOIBiometricManager.tsx": [
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/q-city/QCityPRODUCTIONicePanel.tsx": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/q-city/QCitydevicePanel.tsx": [
       "fixed (3)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/q-city/QVillage.tsx": [
@@ -465,7 +465,7 @@
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/QmoiBrowser.tsx": [
       "REPLACE (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/QMOIOwnPRODUCTIONice.tsx": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/QMOIOwndevice.tsx": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/enhanced-system-dashboard.tsx": [
@@ -502,13 +502,13 @@
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/predeploy/OrchestratorStatusPanel.tsx": [
       "WARNING (4)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/PRODUCTIONice/AWSCredentialsModal.tsx": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/device/AWSCredentialsModal.tsx": [
       "fixed (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/PRODUCTIONice/AzureCredentialsModal.tsx": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/device/AzureCredentialsModal.tsx": [
       "fixed (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/PRODUCTIONice/GCPCredentialsModal.tsx": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/device/GCPCredentialsModal.tsx": [
       "fixed (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/ui/complete.tsx": [
@@ -526,7 +526,7 @@
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/q-city/QMOIBiometricManager.tsx": [
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/q-city/QCityPRODUCTIONicePanel.tsx": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/q-city/QCitydevicePanel.tsx": [
       "fixed (3)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/dashboard/src/App.jsx": [
@@ -738,7 +738,7 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/components/NotificationPanel.tsx": [
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/components/QMOIOwnPRODUCTIONice.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/components/QMOIOwndevice.tsx": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/components/QMOIAutoFixDashboard.tsx": [
@@ -778,7 +778,7 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/LcSpaces.tsx": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/QMOIOwnPRODUCTIONice.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/QMOIOwndevice.tsx": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/EmergencyPanel.tsx": [
@@ -997,14 +997,14 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi-hf-test.py": [
       "IMPLEMENTED (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qcity_PRODUCTIONice_manager.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qcity_device_manager.py": [
       "WARNING (10)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_own_PRODUCTIONice_logger.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_own_device_logger.py": [
       "real (2)",
       "real (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_integration.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_device_integration.py": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi-unified-push-enhanced.py": [
@@ -1147,10 +1147,10 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi-app-releaser.py": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_automated_PRODUCTIONice_controller.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_automated_device_controller.py": [
       "WARNING (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_device_agent.py": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_intelligent_scheduler.py": [
@@ -1180,7 +1180,7 @@
       "fixed (3)",
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/PRODUCTIONice_ownership_detector.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/device_ownership_detector.py": [
       "complete (1)",
       "REPLACE (1)",
       "WARNING (2)",
@@ -1768,7 +1768,7 @@
       "fixed (3)",
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/PRODUCTIONice_ownership_detector.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/device_ownership_detector.py": [
       "complete (1)",
       "REPLACE (1)",
       "WARNING (2)",
@@ -1987,7 +1987,7 @@
       "fixed (1)",
       "REPLACE (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/PRODUCTIONice_orchestration_manager.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/device_orchestration_manager.py": [
       "REPLACE (1)",
       "WARNING (2)"
     ],
@@ -2296,7 +2296,7 @@
       "fixed (3)",
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/PRODUCTIONice_ownership_detector.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/device_ownership_detector.py": [
       "complete (1)",
       "REPLACE (1)",
       "WARNING (2)",
@@ -2944,7 +2944,7 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/qmoi-hf-test.py": [
       "IMPLEMENTED (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/qcity_PRODUCTIONice_manager.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/qcity_device_manager.py": [
       "WARNING (10)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/patch_api_headers.js": [
@@ -2953,11 +2953,11 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/test_api_ai_integration.sh": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/qmoi_own_PRODUCTIONice_logger.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/qmoi_own_device_logger.py": [
       "real (2)",
       "real (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/qmoi_PRODUCTIONice_integration.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/qmoi_device_integration.py": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/qmoi-unified-push-enhanced.py": [
@@ -3196,10 +3196,10 @@
       "production (2)",
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/qmoi_automated_PRODUCTIONice_controller.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/qmoi_automated_device_controller.py": [
       "WARNING (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/qmoi_PRODUCTIONice_agent.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/qmoi_device_agent.py": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/fix_common_ts_issues.js": [
@@ -3255,7 +3255,7 @@
       "production (4)",
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/PRODUCTIONice_ownership_detector.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/device_ownership_detector.py": [
       "complete (1)",
       "REPLACE (1)",
       "WARNING (2)",
@@ -3995,7 +3995,7 @@
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/components/NotificationPanel.tsx": [
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/components/QMOIOwnPRODUCTIONice.tsx": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/components/QMOIOwndevice.tsx": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/components/QMOIAutoFixDashboard.tsx": [
@@ -4035,7 +4035,7 @@
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/LcSpaces.tsx": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/QMOIOwnPRODUCTIONice.tsx": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/QMOIOwndevice.tsx": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/EmergencyPanel.tsx": [
@@ -4273,17 +4273,17 @@
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi-hf-test.py": [
       "IMPLEMENTED (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qcity_PRODUCTIONice_manager.py": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qcity_device_manager.py": [
       "WARNING (10)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/error_tracker.py": [
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_own_PRODUCTIONice_logger.py": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_own_device_logger.py": [
       "real (2)",
       "real (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_integration.py": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_device_integration.py": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi-unified-push-enhanced.py": [
@@ -4453,10 +4453,10 @@
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi-app-releaser.py": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_automated_PRODUCTIONice_controller.py": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_automated_device_controller.py": [
       "WARNING (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_device_agent.py": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_intelligent_scheduler.py": [
@@ -4491,7 +4491,7 @@
       "fixed (3)",
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/PRODUCTIONice_ownership_detector.py": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/device_ownership_detector.py": [
       "complete (1)",
       "REPLACE (1)",
       "WARNING (2)",
@@ -5159,7 +5159,7 @@
       "latest (1)",
       "complete (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/PRODUCTIONice_orchestration_manager.py": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/device_orchestration_manager.py": [
       "REPLACE (1)",
       "WARNING (2)"
     ],
@@ -5428,7 +5428,7 @@
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/qmoi-hf-test.py": [
       "IMPLEMENTED (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/qcity_PRODUCTIONice_manager.py": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/qcity_device_manager.py": [
       "WARNING (10)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/test_pay_flow.py": [
@@ -5457,11 +5457,11 @@
       "production (2)",
       "production (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/qmoi_own_PRODUCTIONice_logger.py": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/qmoi_own_device_logger.py": [
       "real (2)",
       "real (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/qmoi_PRODUCTIONice_integration.py": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/qmoi_device_integration.py": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/qmoi-unified-push-enhanced.py": [
@@ -5797,10 +5797,10 @@
       "production (2)",
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/qmoi_automated_PRODUCTIONice_controller.py": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/qmoi_automated_device_controller.py": [
       "WARNING (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/qmoi_PRODUCTIONice_agent.py": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/qmoi_device_agent.py": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/fix_common_ts_issues.js": [
@@ -5873,7 +5873,7 @@
       "production (4)",
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/PRODUCTIONice_ownership_detector.py": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/device_ownership_detector.py": [
       "complete (1)",
       "REPLACE (1)",
       "WARNING (2)",
@@ -6860,16 +6860,16 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/components/predeploy/OrchestratorStatusPanel.tsx": [
       "WARNING (4)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/components/PRODUCTIONice/AWSCredentialsModal.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/components/device/AWSCredentialsModal.tsx": [
       "fixed (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/components/PRODUCTIONice/AzureCredentialsModal.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/components/device/AzureCredentialsModal.tsx": [
       "fixed (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/components/PRODUCTIONice/GCPCredentialsModal.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/components/device/GCPCredentialsModal.tsx": [
       "fixed (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/components/PRODUCTIONice/PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/components/device/deviceIntegration✅ production COMPLETE - Full feature implementation and testing
       "real (4)",
       "production (3)",
       "real (4)",
@@ -6878,7 +6878,7 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/components/q-city/QMOIBiometricManager.tsx": [
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/components/q-city/QCityPRODUCTIONicePanel.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/components/q-city/QCitydevicePanel.tsx": [
       "fixed (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/components/q-city/QVillage.tsx": [
@@ -6892,7 +6892,7 @@
       "WARNING (1)",
       "IMPLEMENTED (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/mobile/components/PRODUCTIONiceManagementScreen.js": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/mobile/components/deviceManagementScreen.js": [
       "WARNING (2)",
       "IMPLEMENTED (1)"
     ],
@@ -6938,22 +6938,22 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/predeploy/OrchestratorStatusPanel.tsx": [
       "WARNING (4)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/PRODUCTIONice/AWSCredentialsModal.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/device/AWSCredentialsModal.tsx": [
       "fixed (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/PRODUCTIONice/AzureCredentialsModal.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/device/AzureCredentialsModal.tsx": [
       "fixed (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/PRODUCTIONice/GCPCredentialsModal.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/device/GCPCredentialsModal.tsx": [
       "fixed (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/PRODUCTIONice/PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/device/deviceIntegration✅ production COMPLETE - Full feature implementation and testing
       "IMPLEMENTED (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/q-city/QMOIBiometricManager.tsx": [
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/q-city/QCityPRODUCTIONicePanel.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/components/q-city/QCitydevicePanel.tsx": [
       "fixed (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/mobile/components/AlertSettingsScreen.js": [
@@ -6964,7 +6964,7 @@
       "WARNING (1)",
       "IMPLEMENTED (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/mobile/components/PRODUCTIONiceManagementScreen.js": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/mobile/components/deviceManagementScreen.js": [
       "WARNING (2)",
       "IMPLEMENTED (1)"
     ],
@@ -7059,7 +7059,7 @@
       "production (2)",
       "production (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/scripts/qcity-PRODUCTIONice-manager.js": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/scripts/qcity-device-manager.js": [
       "IMPLEMENTED (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/scripts/qmoi-enhanced-avatar-system.js": [
@@ -7223,7 +7223,7 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/plugins/OptimizationSuggestionPlugin.ts": [
       "IMPLEMENTED (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/plugins/PRODUCTIONiceHealthReviewerPlugin.ts": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/plugins/deviceHealthReviewerPlugin.ts": [
       "IMPLEMENTED (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/plugins/AIReviewPlugin.ts": [
@@ -7337,7 +7337,7 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/components/NotificationPanel.tsx": [
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/components/QMOIOwnPRODUCTIONice.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/components/QMOIOwndevice.tsx": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/components/QMOIAutoFixDashboard.tsx": [
@@ -7377,7 +7377,7 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/LcSpaces.tsx": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/QMOIOwnPRODUCTIONice.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/QMOIOwndevice.tsx": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/EmergencyPanel.tsx": [
@@ -7596,14 +7596,14 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi-hf-test.py": [
       "IMPLEMENTED (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qcity_PRODUCTIONice_manager.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qcity_device_manager.py": [
       "WARNING (10)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_own_PRODUCTIONice_logger.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_own_device_logger.py": [
       "real (2)",
       "real (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_integration.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_device_integration.py": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi-unified-push-enhanced.py": [
@@ -7746,10 +7746,10 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi-app-releaser.py": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_automated_PRODUCTIONice_controller.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_automated_device_controller.py": [
       "WARNING (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_device_agent.py": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_intelligent_scheduler.py": [
@@ -7779,7 +7779,7 @@
       "fixed (3)",
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/PRODUCTIONice_ownership_detector.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/device_ownership_detector.py": [
       "complete (1)",
       "REPLACE (1)",
       "WARNING (2)",
@@ -8363,7 +8363,7 @@
       "fixed (3)",
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/PRODUCTIONice_ownership_detector.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/device_ownership_detector.py": [
       "complete (1)",
       "REPLACE (1)",
       "WARNING (2)",
@@ -8571,7 +8571,7 @@
       "fixed (1)",
       "REPLACE (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/PRODUCTIONice_orchestration_manager.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/device_orchestration_manager.py": [
       "REPLACE (1)",
       "WARNING (2)"
     ],
@@ -8864,7 +8864,7 @@
       "fixed (3)",
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/PRODUCTIONice_ownership_detector.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/device_ownership_detector.py": [
       "complete (1)",
       "REPLACE (1)",
       "WARNING (2)",
@@ -9490,7 +9490,7 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi-hf-test.py": [
       "IMPLEMENTED (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qcity_PRODUCTIONice_manager.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qcity_device_manager.py": [
       "WARNING (10)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/patch_api_headers.js": [
@@ -9499,11 +9499,11 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/test_api_ai_integration.sh": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_own_PRODUCTIONice_logger.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_own_device_logger.py": [
       "real (2)",
       "real (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_PRODUCTIONice_integration.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_device_integration.py": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi-unified-push-enhanced.py": [
@@ -9742,10 +9742,10 @@
       "production (2)",
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_automated_PRODUCTIONice_controller.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_automated_device_controller.py": [
       "WARNING (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_PRODUCTIONice_agent.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_device_agent.py": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/fix_common_ts_issues.js": [
@@ -9801,7 +9801,7 @@
       "production (4)",
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/PRODUCTIONice_ownership_detector.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/device_ownership_detector.py": [
       "complete (1)",
       "REPLACE (1)",
       "WARNING (2)",
@@ -10541,7 +10541,7 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/components/NotificationPanel.tsx": [
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/components/QMOIOwnPRODUCTIONice.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/components/QMOIOwndevice.tsx": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/components/QMOIAutoFixDashboard.tsx": [
@@ -10581,7 +10581,7 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/LcSpaces.tsx": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/QMOIOwnPRODUCTIONice.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/QMOIOwndevice.tsx": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/EmergencyPanel.tsx": [
@@ -10788,14 +10788,14 @@
       "complete (1)",
       "WARNING (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qcity_PRODUCTIONice_manager.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qcity_device_manager.py": [
       "WARNING (10)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_own_PRODUCTIONice_logger.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_own_device_logger.py": [
       "real (2)",
       "real (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_integration.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_device_integration.py": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi-unified-push-enhanced.py": [
@@ -10901,10 +10901,10 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi-app-releaser.py": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_automated_PRODUCTIONice_controller.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_automated_device_controller.py": [
       "WARNING (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_device_agent.py": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_secret_manager.py": [
@@ -11457,7 +11457,7 @@
       "latest (1)",
       "complete (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/PRODUCTIONice_orchestration_manager.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/device_orchestration_manager.py": [
       "REPLACE (1)",
       "WARNING (2)"
     ],
@@ -11662,7 +11662,7 @@
       "real (1)",
       "real (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qcity_PRODUCTIONice_manager.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qcity_device_manager.py": [
       "WARNING (10)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/validate_links.py": [
@@ -11678,11 +11678,11 @@
       "production (2)",
       "production (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_own_PRODUCTIONice_logger.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_own_device_logger.py": [
       "real (2)",
       "real (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_PRODUCTIONice_integration.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_device_integration.py": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi-unified-push-enhanced.py": [
@@ -11887,10 +11887,10 @@
       "production (2)",
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_automated_PRODUCTIONice_controller.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_automated_device_controller.py": [
       "WARNING (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_PRODUCTIONice_agent.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_device_agent.py": [
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/fix_common_ts_issues.js": [
@@ -12709,7 +12709,7 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/plugins/OptimizationSuggestionPlugin.ts": [
       "IMPLEMENTED (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/plugins/PRODUCTIONiceHealthReviewerPlugin.ts": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/plugins/deviceHealthReviewerPlugin.ts": [
       "IMPLEMENTED (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/plugins/AIReviewPlugin.ts": [
@@ -12855,7 +12855,7 @@
       "production (2)",
       "production (2)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/scripts/qcity-PRODUCTIONice-manager.js": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/scripts/qcity-device-manager.js": [
       "IMPLEMENTED (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/scripts/master_orchestrator.py": [
@@ -13240,7 +13240,7 @@
       "production (1)",
       "complete (2)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/PRODUCTIONice_orchestration_manager.py": [
+    "/workspaces/qmoi-enhanced/scripts/device_orchestration_manager.py": [
       "REPLACE (1)",
       "WARNING (2)"
     ],

@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION_IMPLEMENTED]
+# []
 """robust control server for QMOI to control Q latest PWA.
 
 This accepts JSON commands at /control and logs them. production:, QMOI would
@@ -1533,7 +1533,7 @@ def admin_update_ngrok() -> Any:
     This endpoint runs the local script in a subprocess. It's intentionally conservative:
     - Only accepts requests authenticated with CONTROL_TOKEN
     - Runs the script without network calls; the update script reads `live_qmoi_ngrok_url.txt`.
-    - Returns the script output. Do NOT enable unauthenticated access PRODUCTION_IMPLEMENTED.
+    - Returns the script output. Do NOT enable unauthenticated access .
     """
     # Auth with control token header
     auth = request.headers.get('Authorization') or request.headers.get('X-API-KEY')
@@ -1726,7 +1726,7 @@ def payments_webhook() -> Any:
     """Handle Stripe webhook events with idempotency and comprehensive error handling.
 
     This endpoint:
-    1. Verifies webhook signatures PRODUCTION_IMPLEMENTED
+    1. Verifies webhook signatures 
     2. Processes events idempotently using event IDs
     3. Updates transaction states and user balances
     4. Handles all relevant Stripe event types
@@ -1929,5 +1929,5 @@ if __name__ == '__main__':
             app.logger.error('required required secrets for production: %s', required)
             raise SystemExit(1)
 
-    # Start the Flask prod server (use a WSGI server PRODUCTION_IMPLEMENTED)
+    # Start the Flask prod server (use a WSGI server )
     app.run(host='0.0.0.0', port=8000)

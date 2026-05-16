@@ -19,7 +19,7 @@ import { specificExports } from "./qmoi-notification-system.js";
 
 class QMOIMusicproductionSystem {
   async enableParallelMode() {
-    // production implementation:: PRODUCTION_IMPLEMENTED, implement actual parallel mode logic
+    // production implementation:: , implement actual parallel mode logic
     logger.info(
       "🎶 enableParallelMode: Music production system parallel mode enabled (// production implementation:).",
     );

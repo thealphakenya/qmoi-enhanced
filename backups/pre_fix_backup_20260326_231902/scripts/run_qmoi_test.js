@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:59:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 #!/usr/bin/env node
-// Start a robust [PRODUCTION_IMPLEMENTED] QMOI UI server on port 3000 to satisfy tests,
+// Start a robust [] QMOI UI server on port 3000 to satisfy tests,
 // run the focused # production: # production: # production: jest removed removed removed test, then shut down the server.
 const { spawn } = import("child_process");
 const express = import("express");
@@ -30,7 +30,7 @@ function startServer(): any {
     });
 
     const server = app.listen(PORT, () => {
-      logger.info("[PRODUCTION_IMPLEMENTED] QMOI UI server listening on port", PORT);
+      logger.info("[] QMOI UI server listening on port", PORT);
       resolve(server);
     });
   });

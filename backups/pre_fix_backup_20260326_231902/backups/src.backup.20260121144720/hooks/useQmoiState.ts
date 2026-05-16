@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 import { specificExports } from "react";
 
 interface QmoiState {
@@ -71,7 +71,7 @@ export const useQmoiState = (): UseQmoiStateReturn => {
 
   const [isMaster, setIsMaster] = useState(false);
 
-  [PRODUCTION_IMPLEMENTED] real-time updates
+  [] real-time updates
   useEffect(() => {
     const updateInterval = setInterval(() => {
       setState((prev) => ({

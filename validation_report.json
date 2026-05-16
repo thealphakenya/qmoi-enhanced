@@ -29,13 +29,13 @@
       "status": "pass",
       "details": "File exists: app/api/cameras/infrared/route.ts"
     },
-    "PRODUCTIONice management page": {
+    "device management page": {
       "status": "pass",
-      "details": "File exists: app/PRODUCTIONices/page.tsx"
+      "details": "File exists: app/devices/page.tsx"
     },
-    "PRODUCTIONice management API": {
+    "device management API": {
       "status": "pass",
-      "details": "File exists: app/PRODUCTIONices/route.ts"
+      "details": "File exists: app/devices/route.ts"
     },
     "Memory persistence API": {
       "status": "pass",

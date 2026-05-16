@@ -478,7 +478,7 @@ For production monitoring:
 | k8s/deployment.yaml | Kubernetes manifest | [k8s/deployment.yaml](k8s/deployment.yaml) |
 | k8s/ingress.yaml | Kubernetes ingress | [k8s/ingress.yaml](k8s/ingress.yaml) |
 
-- No `production_IMPLEMENTED` markers remain in active source
+- No `` markers remain in active source
 - No PRODUCTIONelopment-only `console.RELEASE` logging remains
 - No hardcoded `api.qmoi-enhanced.com` references exist in production code
 - No `DEBUG_MODE` variables remain

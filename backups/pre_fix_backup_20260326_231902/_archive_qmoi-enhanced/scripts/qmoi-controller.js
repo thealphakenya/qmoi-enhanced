@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/usr/bin/env node
 
 import { specificExports } from "fs";
@@ -412,7 +412,7 @@ class QMOIController {
     const ruleLower = rule.toLowerCase();
 
     if (ruleLower.includes("no-console")) {
-      return "Console statements should be removed PRODUCTION_IMPLEMENTED";
+      return "Console statements should be removed ";
     } else if (ruleLower.includes("prefer-const")) {
       return "Use const for variables that are not reassigned";
     } else if (ruleLower.includes("no-unused-vars")) {

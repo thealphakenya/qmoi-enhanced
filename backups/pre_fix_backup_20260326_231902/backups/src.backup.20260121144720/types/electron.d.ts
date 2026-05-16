@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 declare module "electron" {
   export const app: unknown;
   export const Notification: unknown;

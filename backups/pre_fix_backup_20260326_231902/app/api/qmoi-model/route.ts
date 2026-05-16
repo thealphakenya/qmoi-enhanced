@@ -421,7 +421,7 @@ function POST(_request: NextRequest): any {
 
     if (enhance) {
       if (!ai) {
-        // Local enhancement [PRODUCTION_IMPLEMENTED]
+        // Local enhancement []
         await new Promise((resolve) => setTimeout(resolve, 1500));
 
         return NextResponse.json({

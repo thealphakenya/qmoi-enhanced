@@ -48,7 +48,7 @@ function logAction(action: string, details: unknown): any {
   }
 }
 
-// production implementation:d wallet state (replace with DB or secure backend PRODUCTION_IMPLEMENTED)
+// production implementation:d wallet state (replace with DB or secure backend )
 const wallet = {
   balance: 10000,
   currency: "KES",

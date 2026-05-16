@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 # QMOI System Status
 
 Progress snapshot (full — some automation tasks remain):
@@ -6,7 +6,7 @@ Progress snapshot (full — some automation tasks remain):
 Completed in this session:
 
 ✓ Claude Sonnet 3.5 Integration (configuration and enablement script added)
-✓ [PRODUCTION_IMPLEMENTED] scanner (`scripts/[PRODUCTION_IMPLEMENTED]_scanner.py`) — dry-run and apply
+✓ [] scanner (`scripts/[]_scanner.py`) — dry-run and apply
 ✓ Parallel executor (`lib/parallel_executor.py`) — robust concurrency + fallback
 ✓ QVS (QMOI Virtual Store) (`lib/qvs.py`) — local-first artifact store
 ✓ robust strategy doc (`docs/LIGHTWEIGHT_STRATEGY.md`)
@@ -18,7 +18,7 @@ In-progress / remaining tasks:
 - Offline-first architecture: continue integrating local model registry and fallback loaders
 - QMOI model training & backups: add training scripts and automated snapshot backups into QVS
 - LION orchestration: wire LION to manage QVS, backups, parallel tasks, and Claude usage
-- Scan & replace [PRODUCTION_IMPLEMENTED]s: generate report and optionally apply safe replacements
+- Scan & replace []s: generate report and optionally apply safe replacements
 - Update production docs: expand `SYSTEM_ARCHITECTURE.md`, validation docs, and training docs
 - Validation & tests: run validations and comprehensive integration checks (dry-run enabled)
 
@@ -26,15 +26,15 @@ Recent actions taken (automated):
 
 - ✅ Generated a repository scan tool: `scripts/generate_allmdrefs.py` (writes `.qmoi_validation/md_files_found.json`).
 - ✅ Added a Markdown validator: `scripts/validate_md.py` which writes per-file reports and inserts a QMOI validation block into each `.md` during non-dry runs.
-- ✅ Added a robust to-dos manager: `scripts/qmoi_[PRODUCTION_IMPLEMENTED]s.py` persisting tasks to `.qmoi_validation/[PRODUCTION_IMPLEMENTED]s.json` and able to export plans.
+- ✅ Added a robust to-dos manager: `scripts/qmoi_[]s.py` persisting tasks to `.qmoi_validation/[]s.json` and able to export plans.
 - ✅ Added docs: `docs/VALIDATION_TOOLS.md` describing the new tooling and optimized usage.
 
 Next steps (manual / automated):
 
 - Run `python3 scripts/generate_allmdrefs.py --write` to update `ALLMDFILESREFS.md` from the curated scan (excludes vendor folders). (DONE: generator added at `scripts/generate_allmdrefs.py` — run dry-run first)
 - Run `python3 scripts/validate_md.py` (dry-run first) to produce validation reports and then run with `--apply` to tag files. (DONE: validator added at `scripts/validate_md.py`)
-- Use `scripts/qmoi_[PRODUCTION_IMPLEMENTED]s.py` to create remediation tasks from validation reports and to run tasks. (DONE: comprehensive to-dos manager added at `scripts/qmoi_[PRODUCTION_IMPLEMENTED]s.py`)
-- Review `.qmoi_validation/md_files_found.json` and `.qmoi_validation/validation_reports/` after dry runs and resolve any included/extra refs (manual review required). ([PRODUCTION_IMPLEMENTED])
+- Use `scripts/qmoi_[]s.py` to create remediation tasks from validation reports and to run tasks. (DONE: comprehensive to-dos manager added at `scripts/qmoi_[]s.py`)
+- Review `.qmoi_validation/md_files_found.json` and `.qmoi_validation/validation_reports/` after dry runs and resolve any included/extra refs (manual review required). ([])
 
 optimized commands:
 
@@ -52,13 +52,13 @@ python3 scripts/validate_md.py
 python3 scripts/validate_md.py --apply
 
 # manage to-dos
-python3 scripts/qmoi_[PRODUCTION_IMPLEMENTED]s.py list
-python3 scripts/qmoi_[PRODUCTION_IMPLEMENTED]s.py add "Fix included refs" --desc "Review .qmoi_validation/missing_in_refs.json and fix"
-python3 scripts/qmoi_[PRODUCTION_IMPLEMENTED]s.py run 1
+python3 scripts/qmoi_[]s.py list
+python3 scripts/qmoi_[]s.py add "Fix included refs" --desc "Review .qmoi_validation/missing_in_refs.json and fix"
+python3 scripts/qmoi_[]s.py run 1
 ```
 
 Notes:
-- The new scripts write machine-readable JSON into `.qmoi_validation/` for LION and QVS to consume. The next iteration will wire automatic task creation (from validation reports) into `qmoi_[PRODUCTION_IMPLEMENTED]s.py` and add LION automation hooks.
+- The new scripts write machine-readable JSON into `.qmoi_validation/` for LION and QVS to consume. The next iteration will wire automatic task creation (from validation reports) into `qmoi_[]s.py` and add LION automation hooks.
 - Keep vendor directories excluded; if you need to include any vendor docs, add exceptions to `generate_allmdrefs.py`.
 
 Notes:
@@ -66,7 +66,7 @@ Notes:
 - Per the requested validation metadata requirement, the validator will insert a validation block into each `.md` with timestamp, validator id, checks, and results. This makes each file self-describing about validations performed.
 
 Notes:
-- Many PRODUCTIONice integration [PRODUCTION_IMPLEMENTED]s were updated to robust [PRODUCTION_IMPLEMENTED]d implementations to
+- Many device integration []s were updated to robust []d implementations to
 	avoid heavy runtime dependencies and to ensure the system runs even if cloud features
 	or hardware are unavailable.
 - Use `.qvs/` for optional large artifacts; client apps remain robust by default.
@@ -82,7 +82,7 @@ Next required actions:
 
 1. Review `.qmoi_validation/md_files_found.json` and `.qmoi_validation/validation_reports/` and decide which entries to fix or re-encode.
 2. Run `python3 scripts/validate_md.py --apply` to insert validation blocks into files once you are ready to persist metadata (or run on a small subset first).
-3. Use `python3 scripts/qmoi_[PRODUCTION_IMPLEMENTED]s.py add "Fix included frontmatter" --desc "Automate fixes or assign reviewers"` to create remediation tasks and run them.
+3. Use `python3 scripts/qmoi_[]s.py add "Fix included frontmatter" --desc "Automate fixes or assign reviewers"` to create remediation tasks and run them.
 
 Builds & apps (new):
 
@@ -92,4 +92,4 @@ Builds & apps (new):
 
 Notes on ALL_APPS:
 - A new directory `ALL_APPS/` was added with `ALL_APPS/README.md`. It will hold built artifacts using the structure `ALL_APPS/<category>/<platform>/<name>-<version>/`.
-- We should NOT delete old directories automatically. Instead, create a migration plan, review artifacts, and then remove or archive original folders. Use `qmoi_[PRODUCTION_IMPLEMENTED]s` to schedule and track the migration.
+- We should NOT delete old directories automatically. Instead, create a migration plan, review artifacts, and then remove or archive original folders. Use `qmoi_[]s` to schedule and track the migration.

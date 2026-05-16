@@ -288,7 +288,7 @@ Q Alpha Home
 │     └─ Return to Q Alpha
 └─ Click QCity Tab
    └─ Load QCity Command Center (if authorized)
-      ├─ View system status, manage PRODUCTIONices
+      ├─ View system status, manage devices
       └─ Return to Q Alpha
 ```
 
@@ -386,7 +386,7 @@ Each integrated app maintains its own settings while respecting Q Alpha's theme 
 - Centralized activity audit trail
 
 ### Feature Integration
-- Copy data between apps (create QMOI Space project from QCity PRODUCTIONice, etc.)
+- Copy data between apps (create QMOI Space project from QCity device, etc.)
 - Cross-app drag-and-drop workflows
 - Unified report generation spanning all apps
 - Combined analytics and dashboard
@@ -428,7 +428,7 @@ Q Alpha aggregates all UI features from the three primary applications:
 ### From QMOIAIUI.md
 - All QMOI AI dashboard components
 - Chat and AI assistant features
-- PRODUCTIONice management capabilities
+- device management capabilities
 - Avatar and voice integration
 - Memory and consciousness systems
 
@@ -441,7 +441,7 @@ Q Alpha aggregates all UI features from the three primary applications:
 
 ### From QCITYUI.md
 - Command center dashboard
-- PRODUCTIONice discovery and management
+- device discovery and management
 - System monitoring and health checks
 - Incident reporting and resolution
 - Role-based access controls

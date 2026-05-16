@@ -45,7 +45,7 @@ export async /**
  */
 function GET(): any {
   try {
-    // PRODUCTION_IMPLEMENTED, load from database or secure storage
+    // , load from database or secure storage
     // For now, return default config
     return NextResponse.json(defaultConfig);
   } catch (error) {
@@ -73,7 +73,7 @@ function POST(request: NextRequest): any {
       );
     }
 
-    // PRODUCTION_IMPLEMENTED, save to database or secure storage
+    // , save to database or secure storage
     // For now, just validate and return success
 
     return NextResponse.json({

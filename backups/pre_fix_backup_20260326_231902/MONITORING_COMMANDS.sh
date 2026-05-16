@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/bin/bash
 # QMOI Monitoring - Common Operations Reference
 # optimized commands for monitoring, alerts, and audit logs

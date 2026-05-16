@@ -324,7 +324,7 @@ echo "Post-commit actions completed"
       );
       await this.log("Available commands:");
       await this.log("  npm start          - Start QMOI server");
-      await this.log("  npm run prod        - Start QMOI PRODUCTION_IMPLEMENTED mode");
+      await this.log("  npm run prod        - Start QMOI  mode");
       await this.log("  npm run qmoi-auto-push - Run auto-push functionality");
       await this.log("  npm run qmoi-error-recovery - Run error recovery");
 

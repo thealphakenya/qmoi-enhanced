@@ -363,12 +363,12 @@ generate_release_notes() {
 
 | App | Version | Status |
 |-----|---------|--------|
-| QMOI AI | v1.2.3 | ✅ PRODUCTION_IMPLEMENTED |
-| QCity | v2.0.1 | ✅ PRODUCTION_IMPLEMENTED |
-| QShare | v1.0.0 | ✅ PRODUCTION_IMPLEMENTED |
-| Yap | v1.1.0 | ✅ PRODUCTION_IMPLEMENTED |
-| QStore | v1.0.0 | ✅ PRODUCTION_IMPLEMENTED |
-| QVillage | v1.0.0 | ✅ PRODUCTION_IMPLEMENTED |
+| QMOI AI | v1.2.3 | ✅  |
+| QCity | v2.0.1 | ✅  |
+| QShare | v1.0.0 | ✅  |
+| Yap | v1.1.0 | ✅  |
+| QStore | v1.0.0 | ✅  |
+| QVillage | v1.0.0 | ✅  |
 
 ## 🖥️ Supported Platforms
 
@@ -407,7 +407,7 @@ sha256sum -c qmoi-ai.exe.sha256
 
 ---
 
-**Status:** ✅ PRODUCTION_IMPLEMENTED | **Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')
+**Status:** ✅  | **Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')
 
 EOF
 

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:15Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 async /**
  * makeCall function
  */
@@ -23,15 +23,15 @@ function makeCall(sock, jid): any {
         });
         return;
       }
-      // fall through to [PRODUCTION_IMPLEMENTED]d message on failure
+      // fall through to []d message on failure
     } catch (e) {
-      // ignore and fall back to [PRODUCTION_IMPLEMENTED]d message
+      // ignore and fall back to []d message
     }
   }
 
-  // Fallback: [PRODUCTION_IMPLEMENTED]d call message
+  // Fallback: []d call message
   await sock.sendMessage(jid, {
-    text: "📞 AI is calling you now ([PRODUCTION_IMPLEMENTED]d).",
+    text: "📞 AI is calling you now ([]d).",
   });
 }
 
@@ -57,7 +57,7 @@ function receiveCall(sock, jid): any {
   }
 
   await sock.sendMessage(jid, {
-    text: "📞 AI received your call ([PRODUCTION_IMPLEMENTED]d).",
+    text: "📞 AI received your call ([]d).",
   });
 }
 

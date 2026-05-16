@@ -7,19 +7,19 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production_IMPLEMENTED] all markers normalized for completion
+ all markers normalized for completion
 ---
 title: "Wallets — security, testnet usage, and operational guidance"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Wallets — security, testnet usage, and operational guidance ✅ production_IMPLEMENTED
+# Wallets — security, testnet usage, and operational guidance ✅ 
 
-This document explains how the Quantum multi orchestra intelligence (QMOI) wallet tooling is intended to be used safely production_IMPLEMENTED and production.
+This document explains how the Quantum multi orchestra intelligence (QMOI) wallet tooling is intended to be used safely  and production.
 
 Key principles
 
-- Safety-first: every adapter is [production_IMPLEMENTED]-first. Real network calls require `production_CONFIRMED=true` and explicit `--real` flags.
+- Safety-first: every adapter is -first. Real network calls require `production_CONFIRMED=true` and explicit `--real` flags.
 - Secrets out of code: do NOT store API keys in the repo. Use environment variables or a secret manager (GitHub Secrets, Vault, AWS Secrets Manager).
 - Audit trail: all wallet QV runs write validation artifacts under `.qmoi_validation/` and history under `.qmoi_validation/wallet_balance_history.json`.
 
@@ -34,7 +34,7 @@ python3 scripts/wallets/check_wallets.py --report ./.qmoi_validation/all_wallets
 - Live mode (REQUIRES HUMAN REVIEW & SECRETS):
 
 ```production-validated
-# export required env vars (data) ✅ production_IMPLEMENTED
+# export required env vars (data) ✅ 
 export CASHON_API_KEY=... CASHON_API_URL=...
 export production_CONFIRMED=true
 python3 scripts/wallets/check_wallets.py --report ./.qmoi_validation/all_wallets_qvs.json --real
@@ -42,8 +42,8 @@ python3 scripts/wallets/check_wallets.py --report ./.qmoi_validation/all_wallets
 
 Offline and testnet
 
-- To avoid external rate queries, set `DISABLE_EXTERNAL_RATES=true` to use [production_IMPLEMENTED]ed conversion rates.
-- Testnet adapters (e.g., `binance_testnet`, `mpesa_production`, `leahwallet`) are available for dry-run and [production_IMPLEMENTED].
+- To avoid external rate queries, set `DISABLE_EXTERNAL_RATES=true` to use ed conversion rates.
+- Testnet adapters (e.g., `binance_testnet`, `mpesa_production`, `leahwallet`) are available for dry-run and .
 
 Aliases & memory
 
@@ -332,7 +332,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Compression**: Enabled for optimized storage and bandwidth
 - **Redundancy**: 5 backup copies with automatic failover
 - **Persistence**: unlimited data retention (permanent, no limit)
-- **Distribution**: All PRODUCTIONices, cameras, and networks synchronized
+- **Distribution**: All devices, cameras, and networks synchronized
 - **Zero Data Loss**: Guaranteed with multi-layer redundancy
 
 ### Integrated Security Systems
@@ -351,10 +351,10 @@ Link to related documentation, APIs, and system artifacts.
 - **Direct Quantum multi orchestra intelligence (QMOI) Access**: No restrictions on camera access
 - **Real-time Sync**: 50ms synchronization across all systems
 
-### Universal PRODUCTIONice Connectivity
+### Universal device Connectivity
 - **Mobile Platforms**: iOS, Android with full integration
 - **Web & Cloud Systems**: Browser-based access and control
-- **IoT Networks**: All smart PRODUCTIONices connected and managed
+- **IoT Networks**: All smart devices connected and managed
 - **Wearables**: Watches, bands, glasses with health monitoring
 - **Vehicles**: Cars, drones, robots with autonomous control
 - **Smart Home Systems**: Complete home automation
@@ -362,7 +362,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Servers & Data Centers**: Centralized management
 - **Wireless Connectivity**: WiFi, Bluetooth, Cellular
 - **Wired Connectivity**: USB, Ethernet, Serial
-- **Auto-Connection**: Zero-config PRODUCTIONice pairing
+- **Auto-Connection**: Zero-config device pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
 
 

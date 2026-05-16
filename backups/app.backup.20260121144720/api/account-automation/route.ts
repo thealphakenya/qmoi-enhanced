@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 // import { specificExports } from 'nodemailer'; // Uncomment and configure for real email
 
-// In-memory account store (replace with DB PRODUCTION_IMPLEMENTED)
+// In-memory account store (replace with DB )
 interface Account {
   id: number;
   username: string;

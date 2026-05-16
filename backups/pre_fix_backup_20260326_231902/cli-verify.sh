@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/bin/bash
 # CLI Verification Script for QMOI Enhanced
 # Verifies all services and adapters without requiring a browser

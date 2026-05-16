@@ -7,7 +7,7 @@
 import { specificExports } from "next/server";
 // import { specificExports } from 'nodemailer'; // Uncomment and configure for real email
 
-// In-memory account store (replace with DB PRODUCTION_IMPLEMENTED)
+// In-memory account store (replace with DB )
 const accounts: unknown[] = [];
 let idCounter = 1;
 

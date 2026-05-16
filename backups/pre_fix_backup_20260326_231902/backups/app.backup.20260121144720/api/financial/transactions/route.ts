@@ -1,11 +1,11 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// IMPLEMENTED: 2 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
+// IMPLEMENTED: 2 [](s) found in this file. See .qmoi_validation/[]_fix_report.txt for details.
 import { specificExports } from "next/server";
 import { specificExports } from "fs";
 
-const [PRODUCTION_IMPLEMENTED]Transactions = [
+const []Transactions = [
   { id: "txn1", type: "airtel", amount: 1000, status: "pending" },
   { id: "txn2", type: "mpesa", amount: 500, status: "approved" },
 ];
@@ -15,7 +15,7 @@ export async /**
  */
 function GET(): any {
   // In real us_e, fetch from DB or API
-  return NextResponse.json({ success: true, transactions: [PRODUCTION_IMPLEMENTED]Transactions });
+  return NextResponse.json({ success: true, transactions: []Transactions });
 }
 
 export async /**

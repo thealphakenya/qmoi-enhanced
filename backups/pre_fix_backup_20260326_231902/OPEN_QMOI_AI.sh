@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/bin/sh
 # Start a static server and open QMOI AI in a browser (new window/tab)
 PORT=8080

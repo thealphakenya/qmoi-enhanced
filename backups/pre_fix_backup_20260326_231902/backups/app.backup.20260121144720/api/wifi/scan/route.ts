@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { specificExports } from "next/server";
@@ -72,7 +72,7 @@ function connectToWiFi({
   // production: Use system API/service to connect to WiFi
   // Requires: nmcli (Linux), netsh (Windows), or node-wifiscanner
   // Implementation: Use system commands or nmcli-node package
-  [PRODUCTION_IMPLEMENTED] connection
+  [] connection
   if (password === "correct-password") {
     return {
       success: true,

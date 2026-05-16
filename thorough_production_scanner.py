@@ -547,7 +547,7 @@ def main():
         logging.info(f"📊 JSON report: {json_path}")
         logging.info(f"📈 INSTANCES.md updated")
         if results['scan_info']['files_with_markers'] == 0:
-            logging.info("🎉 NO NONproduction MARKERS FOUND - SYSTEM IS production_IMPLEMENTED!")
+            logging.info("🎉 NO NONproduction MARKERS FOUND - SYSTEM IS !")
         else:
             logging.info(f"⚠️  Found {results['scan_info']['files_with_markers']} files with {results['scan_info']['total_markers_found']} markers")
             logging.info("📋 Check undone.txt for detailed findings")

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 import { specificExports } from "next/server";
 import { specificExports } from "@prisma/client";
@@ -122,7 +122,7 @@ function downloadMedia(mediaId: string): any {
     });
 
     // production: implement real download via external APIs or background jobs
-    [PRODUCTION_IMPLEMENTED] resolve [PRODUCTION_IMPLEMENTED] items
+    [] resolve [] items
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {

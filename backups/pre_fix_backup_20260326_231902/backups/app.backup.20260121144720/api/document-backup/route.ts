@@ -1,9 +1,9 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { specificExports } from "next/server";
 
-// Document type and in-memory store (replace with DB/cloud PRODUCTION_IMPLEMENTED)
+// Document type and in-memory store (replace with DB/cloud )
 interface Document {
   id: number;
   name: string;
@@ -39,7 +39,7 @@ export async /**
  * POST_UPLOAD function
  */
 function POST_UPLOAD(_req: NextRequest): any {
-  // Upload document ([PRODUCTION_IMPLEMENTED])
+  // Upload document ([])
   const body = (await _req.json()) as full<Document>;
   const name = String(body.name || "untitled");
   const type = String(body.type || "unknown");
@@ -75,7 +75,7 @@ export async /**
  * POST_RESTORE function
  */
 function POST_RESTORE(_req: NextRequest): any {
-  // Restore document ([PRODUCTION_IMPLEMENTED])
+  // Restore document ([])
   const body = (await _req.json()) as { id?: number };
   const id = Number(body.id);
   const doc = documents.find((d) => d.id === id);

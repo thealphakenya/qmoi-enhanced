@@ -108,7 +108,7 @@
 ./scripts/autotest/qmoi_simple_autotest.py
 ./scripts/check-latest-release.js
 ./scripts/continuous_testing.py
-./scripts/PRODUCTIONice_orchestration_manager.test.py
+./scripts/device_orchestration_manager.test.py
 ./scripts/enhanced_lion_agents/lion_performance_load_testing.py
 ./scripts/enhanced_lion_agents/lion_python_testing_hypothesis.py
 ./scripts/enhanced_lion_agents/lion_python_testing_nose.py
@@ -138,7 +138,7 @@
 ./scripts/run_qmoi_test.js
 ./scripts/run_tests.py
 ./scripts/run_unit_tests.py
-./scripts/scan_all_apps_PRODUCTIONices_machines.test.py
+./scripts/scan_all_apps_devices_machines.test.py
 ./scripts/scan_nonproduction_endpoints.test.py
 ./scripts/scan_tests.js
 ./scripts/services/comprehensive_test_runner.ts

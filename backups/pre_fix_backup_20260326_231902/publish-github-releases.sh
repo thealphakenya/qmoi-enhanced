@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/bin/bash
 #
 # GitHub Releases Publisher for QMOI Apps
@@ -101,7 +101,7 @@ sha256sum -c qmoi-ai.exe.sha256
 
 **Version:** v1.2.3  
 **Released:** 2025-11-12  
-**Status:** PRODUCTION_IMPLEMENTED
+**Status:** 
 
 RELEASE_NOTES
 

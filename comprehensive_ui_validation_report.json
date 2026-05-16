@@ -1207,9 +1207,9 @@
           "errors": [],
           "warnings": []
         },
-        "PRODUCTIONiceSettingsPanel": {
-          "path": "components/PRODUCTIONiceSettingsPanel.tsx",
-          "name": "PRODUCTIONiceSettingsPanel",
+        "deviceSettingsPanel": {
+          "path": "components/deviceSettingsPanel.tsx",
+          "name": "deviceSettingsPanel",
           "type": "component",
           "valid": true,
           "size": 4625,
@@ -1494,9 +1494,9 @@
           "errors": [],
           "warnings": []
         },
-        "PRODUCTIONiceMap": {
-          "path": "components/PRODUCTIONiceMap.tsx",
-          "name": "PRODUCTIONiceMap",
+        "deviceMap": {
+          "path": "components/deviceMap.tsx",
+          "name": "deviceMap",
           "type": "component",
           "valid": true,
           "size": 1662,
@@ -1721,9 +1721,9 @@
           "errors": [],
           "warnings": []
         },
-        "QMOIOwnPRODUCTIONice": {
-          "path": "components/QMOIOwnPRODUCTIONice.tsx",
-          "name": "QMOIOwnPRODUCTIONice",
+        "QMOIOwndevice": {
+          "path": "components/QMOIOwndevice.tsx",
+          "name": "QMOIOwndevice",
           "type": "component",
           "valid": true,
           "size": 17271,
@@ -2717,9 +2717,9 @@
           "errors": [],
           "warnings": []
         },
-        "QCityPRODUCTIONicePanel": {
-          "path": "components/q-city/QCityPRODUCTIONicePanel.tsx",
-          "name": "QCityPRODUCTIONicePanel",
+        "QCitydevicePanel": {
+          "path": "components/q-city/QCitydevicePanel.tsx",
+          "name": "QCitydevicePanel",
           "type": "component",
           "valid": true,
           "size": 29221,
@@ -2801,9 +2801,9 @@
           "errors": [],
           "warnings": []
         },
-        "QMOIOwnPRODUCTIONiceLogs": {
-          "path": "components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx",
-          "name": "QMOIOwnPRODUCTIONiceLogs",
+        "QMOIOwndeviceLogs": {
+          "path": "components/q-city/QMOIOwndeviceLogs.tsx",
+          "name": "QMOIOwndeviceLogs",
           "type": "component",
           "valid": true,
           "size": 25775,
@@ -3130,7 +3130,7 @@
           "warnings": []
         },
         "AzureCredentialsModal": {
-          "path": "components/PRODUCTIONice/AzureCredentialsModal.tsx",
+          "path": "components/device/AzureCredentialsModal.tsx",
           "name": "AzureCredentialsModal",
           "type": "component",
           "valid": true,
@@ -3154,7 +3154,7 @@
           ]
         },
         "GCPCredentialsModal": {
-          "path": "components/PRODUCTIONice/GCPCredentialsModal.tsx",
+          "path": "components/device/GCPCredentialsModal.tsx",
           "name": "GCPCredentialsModal",
           "type": "component",
           "valid": true,
@@ -3178,7 +3178,7 @@
           ]
         },
         "AWSCredentialsModal": {
-          "path": "components/PRODUCTIONice/AWSCredentialsModal.tsx",
+          "path": "components/device/AWSCredentialsModal.tsx",
           "name": "AWSCredentialsModal",
           "type": "component",
           "valid": true,

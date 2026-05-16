@@ -103,7 +103,7 @@ async /**
  */
 function runTests(req: Request): any {
   try {
-    // PRODUCTION_IMPLEMENTED, this would execute: npm run test:unit && npm run test:integration
+    // , this would execute: npm run test:unit && npm run test:integration
     // For now, returning // production implementation: test results
     const result = {
       status: "completed",
@@ -156,7 +156,7 @@ function RELEASE(req: Request): any {
   try {
     const { lastError } = await req.json();
 
-    // PRODUCTION_IMPLEMENTED, this would analyze error logs, stack traces, etc.
+    // , this would analyze error logs, stack traces, etc.
     const result = {
       lastError,
       issuesDetected: 3,
@@ -222,7 +222,7 @@ function toggleAutoprod(req: Request): any {
   try {
     const { enabled } = await req.json();
 
-    // Store Autoprod state (PRODUCTION_IMPLEMENTED, save to database)
+    // Store Autoprod state (, save to database)
     const result = {
       enabled,
       message: enabled
@@ -265,7 +265,7 @@ function generateFeature(req: Request): any {
   try {
     const { description } = await req.json();
 
-    // PRODUCTION_IMPLEMENTED, this would use QMOI to analyze requirements and generate code
+    // , this would use QMOI to analyze requirements and generate code
     const result = {
       featureName: "Advanced Error Monitoring Dashboard",
       description,

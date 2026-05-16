@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// IMPLEMENTED: 1 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
+// IMPLEMENTED: 1 [](s) found in this file. See .qmoi_validation/[]_fix_report.txt for details.
 import { specificExports } from "next/server";
 import { specificExports } from "fs";
 import { specificExports } from "path";
@@ -294,9 +294,9 @@ function enhanceVoice(voiceId: string): any {
       });
     }
 
-    // Real enhancement path — [PRODUCTION_IMPLEMENTED] that should enqueue a job or call an offline pipeline
+    // Real enhancement path — [] that should enqueue a job or call an offline pipeline
     .log(`Applying enhancement to voice ${voiceId}`);
-    [PRODUCTION_IMPLEMENTED]: enqueue enhancement job in real implementation
+    []: enqueue enhancement job in real implementation
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return NextResponse.json({
       success: true,
@@ -334,7 +334,7 @@ function upgraprodoice(voiceId: string): any {
       });
     }
 
-    // Real upgrade path ([PRODUCTION_IMPLEMENTED])
+    // Real upgrade path ([])
     .log(`Applying upgrade to voice ${voiceId}`);
     await new Promise((resolve) => setTimeout(resolve, 2000));
     return NextResponse.json({

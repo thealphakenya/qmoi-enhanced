@@ -37,7 +37,7 @@ RESUME_FILE="$WORKDIR/resumefromhere.txt"
 echo "DRY_RUN=$DRY_RUN APPLY=$APPLY FIX_SW=$FIX_SW FIX_PWA=$FIX_PWA RUN_LINT=$RUN_LINT RUN_TESTS=$RUN_TESTS"
 
 echo "1) Scanning repo for non-production markers..."
-GREP_PATTERN='DEBUG|DEBUG_MODE|STAGING|STAGE_|production_IMPLEMENTED=false|TODO: non-prod|PLACEHOLDER|XXX|REPLACE_ME|adPRODUCTIONentListener'
+GREP_PATTERN='DEBUG|DEBUG_MODE|STAGING|STAGE_|=false|TODO: non-prod|PLACEHOLDER|XXX|REPLACE_ME|adPRODUCTIONentListener'
 GREP_CMD="grep -RIn --line-number --hidden --exclude-dir=.git --exclude-dir=node_modules -E \"$GREP_PATTERN\" \"$WORKDIR\" || true"
 
 if [[ $DRY_RUN -eq 1 ]]; then

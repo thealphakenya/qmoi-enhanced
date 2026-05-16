@@ -66,44 +66,44 @@ Browser displays: Component UI
 
 ---
 
-### Example 2: PRODUCTIONice Management Components
+### Example 2: device Management Components
 
 **Components:** 
 - `WifiPanel.tsx`
 - `BluetoothManager.tsx`
-- `PRODUCTIONiceSettingsPanel.tsx`
+- `deviceSettingsPanel.tsx`
 
-**Serving File:** `app/PRODUCTIONices/page.tsx`
+**Serving File:** `app/devices/page.tsx`
 
 ```typescript
-// app/PRODUCTIONices/page.tsx
+// app/devices/page.tsx
 import { useState } from "react";
 import WifiPanel from "@/components/WifiPanel";
 import BluetoothManager from "@/components/BluetoothManager";
-import PRODUCTIONiceSettingsPanel from "@/components/PRODUCTIONiceSettingsPanel";
-import QMOIOwnPRODUCTIONice from "@/components/QMOIOwnPRODUCTIONice";
+import deviceSettingsPanel from "@/components/deviceSettingsPanel";
+import QMOIOwndevice from "@/components/QMOIOwndevice";
 
-export default function PRODUCTIONicesPage() {
-  const [selectedPRODUCTIONice, setSelectedPRODUCTIONice] = useState(null);
+export default function devicesPage() {
+  const [selecteddevice, setSelecteddevice] = useState(null);
 
   return (
-    <div className="PRODUCTIONices-container p-8">
-      <h1>PRODUCTIONice Management</h1>
+    <div className="devices-container p-8">
+      <h1>device Management</h1>
       
-      <section className="PRODUCTIONice-controls">
+      <section className="device-controls">
         <WifiPanel 
-          onConnect={(PRODUCTIONice) => setSelectedPRODUCTIONice(PRODUCTIONice)} 
+          onConnect={(device) => setSelecteddevice(device)} 
         />
         <BluetoothManager 
-          selectedPRODUCTIONice={selectedPRODUCTIONice}
+          selecteddevice={selecteddevice}
         />
       </section>
 
-      <section className="PRODUCTIONice-settings">
-        <PRODUCTIONiceSettingsPanel 
-          PRODUCTIONice={selectedPRODUCTIONice}
+      <section className="device-settings">
+        <deviceSettingsPanel 
+          device={selecteddevice}
         />
-        <QMOIOwnPRODUCTIONice />
+        <QMOIOwndevice />
       </section>
     </div>
   );
@@ -112,13 +112,13 @@ export default function PRODUCTIONicesPage() {
 
 **Serving Diagram:**
 ```
-app/PRODUCTIONices/page.tsx
+app/devices/page.tsx
 ├─ Imports: WifiPanel
 ├─ Imports: BluetoothManager
-├─ Imports: PRODUCTIONiceSettingsPanel
-└─ Imports: QMOIOwnPRODUCTIONice
+├─ Imports: deviceSettingsPanel
+└─ Imports: QMOIOwndevice
      ↓
-     Renders all on /PRODUCTIONices route
+     Renders all on /devices route
 ```
 
 ---
@@ -317,7 +317,7 @@ export default function RootLayout({ children }) {
 
 **Availability:**
 ```
-Any route (/, /admin, /PRODUCTIONices, /master/email, etc.)
+Any route (/, /admin, /devices, /master/email, etc.)
   ↓
 Renders: root layout.tsx
   ↓
@@ -504,11 +504,11 @@ app/admin/page.tsx
 ### Example 1: Single Component Route
 
 ```
-User navigates to: https://app.com/PRODUCTIONices
+User navigates to: https://app.com/devices
   ↓
-Next.js router matches: app/PRODUCTIONices/page.tsx
+Next.js router matches: app/devices/page.tsx
   ↓
-app/PRODUCTIONices/page.tsx contains:
+app/devices/page.tsx contains:
   import WifiPanel from "@/components/WifiPanel";
   export default function Page() {
     return <WifiPanel />;

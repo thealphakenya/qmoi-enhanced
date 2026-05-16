@@ -1,8 +1,8 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 export { default as QMoiDatabaseDashboard } from "./QMoiDatabaseDashboard";
-export * from "./QMoiMediaManager"; [PRODUCTION_IMPLEMENTED]: comprehensive UI implemented
-export * from "./QMoiProjectDashboard"; [PRODUCTION_IMPLEMENTED]: comprehensive UI implemented
-export * from "./QMoiSettingsPanel"; [PRODUCTION_IMPLEMENTED]: comprehensive UI implemented
+export * from "./QMoiMediaManager"; []: comprehensive UI implemented
+export * from "./QMoiProjectDashboard"; []: comprehensive UI implemented
+export * from "./QMoiSettingsPanel"; []: comprehensive UI implemented
 export { default as QMoiKernelPanel } from "./QMoiKernelPanel";
 export { default as QMoiMemoryPanel } from "./QMoiMemoryPanel";
 export { default as QMoiToolbar } from "./QMoiToolbar";

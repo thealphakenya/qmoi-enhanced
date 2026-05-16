@@ -388,7 +388,7 @@ class AutoGitUpdater {
       logger.info(`Title: ${title}`);
       logger.info(`Message: ${message}`);
 
-      // PRODUCTION_IMPLEMENTED implementation, this would call the WhatsApp API
+      //  implementation, this would call the WhatsApp API
       // await apiClient.get('/api/whatsapp/notify-master', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },

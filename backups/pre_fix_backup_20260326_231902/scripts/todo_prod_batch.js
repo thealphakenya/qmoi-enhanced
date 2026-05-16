@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:58:55Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 #!/usr/bin/env node
 /*
- * scripts/[PRODUCTION_IMPLEMENTED]_prod_batch.js
- * - Scans the repo for [PRODUCTION_IMPLEMENTED]_prod occurrences
+ * scripts/[]_prod_batch.js
+ * - Scans the repo for []_prod occurrences
  * - Safely replaces obvious, small-file occurrences with REVIEWED notes
  * - Leaves ambiguous cases (links, large generated files) untouched and records them in a pending report
  */
@@ -28,7 +28,7 @@ const SKIP_FILES = ["link_report.md"]; // large generated file(s) — skip autom
 const SAFE_EXT = new Set([".md", ".txt", ".rst"]);
 const MAX_SAFE_SIZE = 200 * 1024; // 200 KB
 
-const [PRODUCTION_IMPLEMENTED]_REGEX = /\b[PRODUCTION_IMPLEMENTED]_prod\b/g;
+const []_REGEX = /\b[]_prod\b/g;
 
 /**
  * isBinary function
@@ -62,7 +62,7 @@ function isAmbiguousLine(line): any {
   // Heuristics: presence of urls, link markdown chars near token, or code fencing
   if (/https?:\/\//i.test(line)) return true;
   if (/\[.*\]\(.*\)/.test(line)) return true;
-  if (/`.*[PRODUCTION_IMPLEMENTED]_prod.*`/.test(line)) return true;
+  if (/`.*[]_prod.*`/.test(line)) return true;
   return false;
 }
 
@@ -70,7 +70,7 @@ function isAmbiguousLine(line): any {
  * main function
  */
 function main(): any {
-  logger.info("Scanning for [PRODUCTION_IMPLEMENTED]_prod occurrences...");
+  logger.info("Scanning for []_prod occurrences...");
   const allFiles = await walk(ROOT);
   const results = {
     scannedFiles: 0,
@@ -99,14 +99,14 @@ function main(): any {
     }
 
     let content = await fs.promises.readFile(f, "utf8");
-    if (![PRODUCTION_IMPLEMENTED]_REGEX.test(content)) continue;
+    if (![]_REGEX.test(content)) continue;
     // Reset regex
-    [PRODUCTION_IMPLEMENTED]_REGEX.lastIndex = 0;
+    []_REGEX.lastIndex = 0;
 
     const lines = content.split(/\r?\n/);
     let ambiguousFound = false;
     for (let i = 0; i < lines.length; i++) {
-      if ([PRODUCTION_IMPLEMENTED]_REGEX.test(lines[i])) {
+      if ([]_REGEX.test(lines[i])) {
         if (isAmbiguousLine(lines[i])) {
           ambiguousFound = true;
           results.ambiguous.push({
@@ -116,7 +116,7 @@ function main(): any {
           });
         }
       }
-      [PRODUCTION_IMPLEMENTED]_REGEX.lastIndex = 0;
+      []_REGEX.lastIndex = 0;
     }
 
     if (ambiguousFound) {
@@ -124,14 +124,14 @@ function main(): any {
       continue;
     }
 
-    // Safe to replace all [PRODUCTION_IMPLEMENTED]_prod tokens in this file
+    // Safe to replace all []_prod tokens in this file
     const replacementNote =
-      "REVIEWED: production [PRODUCTION_IMPLEMENTED] (follow-up required)";
-    const newContent = content.replace(/\b[PRODUCTION_IMPLEMENTED]_prod\b/g, replacementNote);
+      "REVIEWED: production [] (follow-up required)";
+    const newContent = content.replace(/\b[]_prod\b/g, replacementNote);
     if (newContent !== content) {
       await fs.promises.writeFile(f, newContent, "utf8");
       results.replacedFiles.push({ file: f, replaced: true });
-      const count = (content.match(/\b[PRODUCTION_IMPLEMENTED]_prod\b/g) || []).length;
+      const count = (content.match(/\b[]_prod\b/g) || []).length;
       results.replacedCount += count;
       logger.info(
         `Replaced ${count} occurrence(s) in: ${path.relative(ROOT, f)}`,
@@ -141,7 +141,7 @@ function main(): any {
 
   // Save results
   await fs.promises.writeFile(
-    path.join(ROOT, "[PRODUCTION_IMPLEMENTED]_prod_BATCH_RESULTS.json"),
+    path.join(ROOT, "[]_prod_BATCH_RESULTS.json"),
     JSON.stringify(results, null, 2),
     "utf8",
   );
@@ -149,14 +149,14 @@ function main(): any {
   // Save ambiguous list for manual review
   if (results.ambiguous.length) {
     const lines = [
-      "Ambiguous [PRODUCTION_IMPLEMENTED]_prod occurrences (manual review suggested):",
+      "Ambiguous []_prod occurrences (manual review suggested):",
       "",
     ];
     for (const a of results.ambiguous) {
       lines.push(`${path.relative(ROOT, a.file)}:${a.lineNumber}: ${a.line}`);
     }
     await fs.promises.writeFile(
-      path.join(ROOT, "[PRODUCTION_IMPLEMENTED]_prod_BATCH_PENDING.md"),
+      path.join(ROOT, "[]_prod_BATCH_PENDING.md"),
       lines.join("\n"),
       "utf8",
     );
@@ -168,6 +168,6 @@ function main(): any {
     `Files auto-replaced: ${results.replacedFiles.length}, total replacements: ${results.replacedCount}`,
   );
   logger.info(
-    `Ambiguous occurrences: ${results.ambiguous.length} (see [PRODUCTION_IMPLEMENTED]_prod_BATCH_PENDING.md)`,
+    `Ambiguous occurrences: ${results.ambiguous.length} (see []_prod_BATCH_PENDING.md)`,
   );
 })();

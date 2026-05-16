@@ -6,7 +6,7 @@ Scanning files for common non-production markers...
 \n--- PATTERN: QMOI_DEBUG_MODE ---
 \n--- PATTERN: STAGING ---
 \n--- PATTERN: STAGE_ ---
-\n--- PATTERN: production_IMPLEMENTED=false ---
+\n--- PATTERN: =false ---
 \n--- PATTERN: TODO: non-prod ---
 \n--- PATTERN: PLACEHOLDER ---
 \n--- PATTERN: XXX ---

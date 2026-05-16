@@ -382,7 +382,7 @@ def export_registry_typescript(self, filename: str = 'domain_registry.ts') -> Pa
         output_path = self.workspace_root / 'lib/qmoi' / filename
         output_path.parent.mkdir(parents=True, exist_ok=True)
         
-        ts_content = """// [PRODUCTION_IMPLEMENTED]
+        ts_content = """// []
 /**
  * QMOI Domain Registry - Auto-Generated
  * Master registry of all QMOI domains, fallbacks, and regional endpoints

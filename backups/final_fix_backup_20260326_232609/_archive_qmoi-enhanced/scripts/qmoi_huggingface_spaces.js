@@ -837,7 +837,7 @@ class QMOIManager {
                 this.logger.warn(`Restarting QMOI (atPRODUCTIONt ${this.restartAtPRODUCTIONts}/${this.maxRestarts})...`);
                 await this.startQMOI();
             } else {
-                this.logger.error('Max restart atPRODUCTIONts reached or PRODUCTION_IMPLEMENTED. Not restarting.');
+                this.logger.error('Max restart atPRODUCTIONts reached or . Not restarting.');
             }
             return false;
         }

@@ -67,18 +67,18 @@
 - **Purpose**: Global system configuration panel
 - **Type**: Settings/Admin page
 
-### PRODUCTIONice Routes (`/PRODUCTIONices`)
+### device Routes (`/devices`)
 
-#### 9. `/PRODUCTIONices` - PRODUCTIONice Management Dashboard
-- **File**: [app/PRODUCTIONices/page.tsx](app/PRODUCTIONices/page.tsx)
-- **Purpose**: PRODUCTIONice monitoring, filtering, and management interface
+#### 9. `/devices` - device Management Dashboard
+- **File**: [app/devices/page.tsx](app/devices/page.tsx)
+- **Purpose**: device monitoring, filtering, and management interface
 - **Type**: Client Component (uses client-side state)
-- **Status**: Documented in screens/PRODUCTIONice-management-dashboard-screen.md
+- **Status**: Documented in screens/device-management-dashboard-screen.md
 - **Features**:
-  - Real-time PRODUCTIONice tracking
+  - Real-time device tracking
   - Filter and search functionality
-  - PRODUCTIONice status indicators
-  - PRODUCTIONice configuration access
+  - device status indicators
+  - device configuration access
 
 ### Friendship Routes (`/friendship`)
 
@@ -374,15 +374,15 @@ These are feature-specific, business logic components used throughout the applic
 - **AvatarGalleryPanel.tsx** - Avatar gallery display
 - **AvatarSelectionPanel.tsx** - Avatar selection UI
 
-### 4.3. PRODUCTIONice & Hardware Management (20 files)
+### 4.3. device & Hardware Management (20 files)
 
-#### PRODUCTIONice Control
-- **QMOIOwnPRODUCTIONice.tsx** - Personal PRODUCTIONice management
-- **QCityPRODUCTIONicePanel.tsx** (in q-city/) - Q-City PRODUCTIONice panel
-- **PRODUCTIONiceSettingsPanel.tsx** - PRODUCTIONice settings interface
-- **PRODUCTIONiceMap.tsx** - PRODUCTIONice location mapping
+#### device Control
+- **QMOIOwndevice.tsx** - Personal device management
+- **QCitydevicePanel.tsx** (in q-city/) - Q-City device panel
+- **deviceSettingsPanel.tsx** - device settings interface
+- **deviceMap.tsx** - device location mapping
 - **EmergencyPanel.tsx** - Emergency controls
-- **BluetoothManager.tsx** - Bluetooth PRODUCTIONice management
+- **BluetoothManager.tsx** - Bluetooth device management
 - **WifiPanel.tsx** - WiFi connectivity management
 - **WifiAutoConnectPanel.tsx** - Automatic WiFi connection
 - **QmoiDialer.tsx** - Phone dialer interface
@@ -391,12 +391,12 @@ These are feature-specific, business logic components used throughout the applic
 - **GlobalMail.tsx** - Global mail system
 - **GlobalFileTransfer.tsx** - File transfer system
 
-#### PRODUCTIONice Monitoring & Logs
-- **QMOIOwnPRODUCTIONiceLogs.tsx** (in q-city/) - PRODUCTIONice activity logs
+#### device Monitoring & Logs
+- **QMOIOwndeviceLogs.tsx** (in q-city/) - device activity logs
 - **AuditLogPanel.tsx** (in archives) - Audit log display
 - **QmoiAccessibility.tsx** - Accessibility features
 
-#### PRODUCTIONice Settings
+#### device Settings
 - **VoiceSelectionPanel.tsx** - Voice option selection
 - **VoiceLibraryPanel.tsx** - Voice library management
 - **QmoiKeyboard.tsx** - Custom keyboard interface
@@ -528,7 +528,7 @@ These are feature-specific, business logic components used throughout the applic
 - **TaskList.tsx** - Task listing component
 - **ProjectDashboard.tsx** - Main project interface
 
-### 4.10. Cloud Provider Credentials (3 files in `/components/PRODUCTIONice/`)
+### 4.10. Cloud Provider Credentials (3 files in `/components/device/`)
 
 #### Cloud Integration
 - **AWSCredentialsModal.tsx** - AWS credential input
@@ -539,9 +539,9 @@ These are feature-specific, business logic components used throughout the applic
 
 #### Q-City Admin
 - **QCityDashboard.tsx** - Q-City main dashboard
-- **QCityPRODUCTIONicePanel.tsx** - PRODUCTIONice management for Q-City
+- **QCitydevicePanel.tsx** - device management for Q-City
 - **QMOIBiometricManager.tsx** - Biometric operations
-- **QMOIOwnPRODUCTIONiceLogs.tsx** - PRODUCTIONice activity logs
+- **QMOIOwndeviceLogs.tsx** - device activity logs
 - **QMOILinksManager.tsx** - Link management system
 - **QMOIRevenueDashboard.tsx** - Revenue tracking
 - **TracksPanel.tsx** - Track operations
@@ -550,7 +550,7 @@ These are feature-specific, business logic components used throughout the applic
 - **ZeroRatedSitesManager.tsx** - Zero-rated content management
 - **Onboarding.tsx** - User onboarding flow
 - **QVillage.tsx** - Q-Village interface
-- **QCityPRODUCTIONicePanel.tsx** - Additional PRODUCTIONice panel
+- **QCitydevicePanel.tsx** - Additional device panel
 
 ### 4.12. GitLab Clone Component (1 file in `/components/qmoi-gitlab-clone/`)
 
@@ -576,7 +576,7 @@ These are feature-specific, business logic components used throughout the applic
   ├── Renders static dashboard content
   └── No explicit component imports
 
-/app/PRODUCTIONices/page.tsx (PRODUCTIONice Management)
+/app/devices/page.tsx (device Management)
   ├── Client-side rendering
   └── Uses React hooks for state management
 ```
@@ -591,7 +591,7 @@ These are feature-specific, business logic components used throughout the applic
   └── Used in friendship interface
 
 /app/components/FileUploadDownload.tsx
-  └── Used in PRODUCTIONice management and file operations
+  └── Used in device management and file operations
 ```
 
 ### Pattern 3: Shared Component Architecture
@@ -621,11 +621,11 @@ These are feature-specific, business logic components used throughout the applic
 
 /components/q-city/ (Q-City Feature Set)
   ├── QCityDashboard.tsx (main interface)
-  ├── QCityPRODUCTIONicePanel.tsx (PRODUCTIONice control)
+  ├── QCitydevicePanel.tsx (device control)
   ├── QMOIBiometricManager.tsx (biometrics)
   └── ... (10 additional components)
 
-/components/PRODUCTIONice/ (Cloud Credentials)
+/components/device/ (Cloud Credentials)
   ├── AWSCredentialsModal.tsx
   ├── AzureCredentialsModal.tsx
   └── GCPCredentialsModal.tsx
@@ -664,7 +664,7 @@ app/page.tsx (Home)
 ├── No direct component imports
 └── Self-contained content
 
-app/PRODUCTIONices/page.tsx (PRODUCTIONice Management)
+app/devices/page.tsx (device Management)
 ├── Possible imports from /app/components/
 ├── Uses React hooks locally
 └── May use /components/ services
@@ -705,8 +705,8 @@ app/PRODUCTIONices/page.tsx (PRODUCTIONice Management)
 16. DealsList.tsx - Deals listing
 17. DealsPopup.tsx - Deals popup
 18. DeploymentStatusDashboard.tsx - Deployment status
-19. PRODUCTIONiceMap.tsx - PRODUCTIONice mapping
-20. PRODUCTIONiceSettingsPanel.tsx - PRODUCTIONice settings
+19. deviceMap.tsx - device mapping
+20. deviceSettingsPanel.tsx - device settings
 21. DownloadAppButton.tsx - Download button
 22. DownloadManager.tsx - Download management
 23. DownloadQApp.tsx - QMOI app download
@@ -757,7 +757,7 @@ app/PRODUCTIONices/page.tsx (PRODUCTIONice Management)
 64. QIStateWindow.tsx - QI state display
 65. QMOIAutoFixDashboard.tsx - Auto-fix dashboard
 66. QMOIDashboard.tsx - QMOI dashboard
-67. QMOIOwnPRODUCTIONice.tsx - Own PRODUCTIONice management
+67. QMOIOwndevice.tsx - Own device management
 68. QMediaPlayer.tsx - Media player
 69. QVillage.tsx - QVillage interface
 70. QVillageDatasetsPanel.tsx - Datasets panel
@@ -804,7 +804,7 @@ app/PRODUCTIONices/page.tsx (PRODUCTIONice Management)
 - `/components/q-city/` - QCity-specific components
 
 **Cloud Integration** (3 files)
-- `/components/PRODUCTIONice/` - AWS, Azure, GCP credentials
+- `/components/device/` - AWS, Azure, GCP credentials
 
 **Security Features** (2 files)
 - `/components/security/` - EncryptedAuditLog, RoleContext
@@ -894,7 +894,7 @@ export default function QVillage() {
 2. **SystemHealthDashboard.tsx** - Appears in multiple monitoring pages
 3. **NotificationCenter.tsx** - System-wide notifications
 4. **SettingsPanel.tsx** - Used in settings across all apps
-5. **QFileManager.tsx** - Used in PRODUCTIONice and file management pages
+5. **QFileManager.tsx** - Used in device and file management pages
 
 #### Authentication & Security Flow
 ```
@@ -917,7 +917,7 @@ export default function QVillage() {
 │   ├── /admin/master/activity (Activity Logs)
 │   ├── /admin/master/security (Security Settings)
 │   └── /admin/master/settings (System Settings)
-├── /PRODUCTIONices (PRODUCTIONice Management)
+├── /devices (device Management)
 ├── /friendship (AI Friendship Interface)
 ├── /master (Master Configuration)
 │   ├── /master/email (Email Configuration)
@@ -940,7 +940,7 @@ export default function QVillage() {
 
 | Component Filename | Location | Type | Used By | Purpose | Status |
 |-------------------|----------|------|---------|---------|--------|
-| QFileManager.tsx | /components | Feature | /PRODUCTIONices, /qcity | File system operations | Core |
+| QFileManager.tsx | /components | Feature | /devices, /qcity | File system operations | Core |
 | QMOIDashboard.tsx | /components | Feature | Admin routes | Main dashboard | Core |
 | ChatMessaging.tsx | /app/components | App | /friendship | Chat interface | Active |
 | AdminDashboard.tsx | /app/components | App | /admin | Admin board | Active |

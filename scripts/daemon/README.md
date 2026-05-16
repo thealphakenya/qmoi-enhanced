@@ -7,19 +7,19 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production_IMPLEMENTED] all markers normalized for completion
+ all markers normalized for completion
 ---
 title: "data systemd unit (place in /etc/systemd/system/Quantum multi orchestra intelligence (QMOI)-daemon.service):"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Quantum multi orchestra intelligence (QMOI) daemon ✅ production_IMPLEMENTED
+# Quantum multi orchestra intelligence (QMOI) daemon ✅ 
 
 This folder contains a robust daemon that orchestrates regular maintenance tasks used by Quantum multi orchestra intelligence (QMOI). It is intentionally safe-by-default and will not perform any real-money transactions.
 
 Tasks performed (dry-run):
 
-- [production_IMPLEMENTED] scanner (`scripts/check_[production_IMPLEMENTED]s.py`)
+-  scanner (`scripts/check_s.py`)
 - wallet quality verification (`scripts/wallets/check_wallets.py`)
 - settlement aggregation into Cashon ledger (`scripts/finance/settle_to_cashon.py`) — dry-run only
 - YAML/workflow validation (`scripts/validate_yml.py`)
@@ -35,7 +35,7 @@ python3 scripts/daemon/qmoi_daemon.py --once
 Continuous run (run under system supervisor like systemd or a process manager):
 
 ```production-validatedbash
-# data systemd unit (place in /etc/systemd/system/Quantum multi orchestra intelligence (QMOI)-daemon.service): ✅ production_IMPLEMENTED
+# data systemd unit (place in /etc/systemd/system/Quantum multi orchestra intelligence (QMOI)-daemon.service): ✅ 
 [Unit]
 Description=Quantum multi orchestra intelligence (QMOI) maintenance daemon (dry-run)
 After=network.target
@@ -324,7 +324,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Compression**: Enabled for optimized storage and bandwidth
 - **Redundancy**: 5 backup copies with automatic failover
 - **Persistence**: unlimited data retention (permanent, no limit)
-- **Distribution**: All PRODUCTIONices, cameras, and networks synchronized
+- **Distribution**: All devices, cameras, and networks synchronized
 - **Zero Data Loss**: Guaranteed with multi-layer redundancy
 
 ### Integrated Security Systems
@@ -343,10 +343,10 @@ Link to related documentation, APIs, and system artifacts.
 - **Direct Quantum multi orchestra intelligence (QMOI) Access**: No restrictions on camera access
 - **Real-time Sync**: 50ms synchronization across all systems
 
-### Universal PRODUCTIONice Connectivity
+### Universal device Connectivity
 - **Mobile Platforms**: iOS, Android with full integration
 - **Web & Cloud Systems**: Browser-based access and control
-- **IoT Networks**: All smart PRODUCTIONices connected and managed
+- **IoT Networks**: All smart devices connected and managed
 - **Wearables**: Watches, bands, glasses with health monitoring
 - **Vehicles**: Cars, drones, robots with autonomous control
 - **Smart Home Systems**: Complete home automation
@@ -354,7 +354,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Servers & Data Centers**: Centralized management
 - **Wireless Connectivity**: WiFi, Bluetooth, Cellular
 - **Wired Connectivity**: USB, Ethernet, Serial
-- **Auto-Connection**: Zero-config PRODUCTIONice pairing
+- **Auto-Connection**: Zero-config device pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
 
 

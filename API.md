@@ -5282,7 +5282,7 @@ Note: run integration tests against a running dev server to validate connectivit
 5195. `initialize_consciousness_system()`
 5196. `initialize_databases()`
 5197. `initialize_detection_models()`
-5198. `initialize_PRODUCTIONice_connectivity()`
+5198. `initialize_device_connectivity()`
 5199. `initialize_email_settings()`
 5200. `initialize_enhanced_qvillage()`
 5201. `initialize_enhanced_system()`
@@ -8720,7 +8720,7 @@ Note: run integration tests against a running dev server to validate connectivit
 8633. `update_account_settings()`
 8634. `update_agent_status()`
 8635. `update_all_auto_md()`
-8636. `update_all_PRODUCTIONices_install()`
+8636. `update_all_devices_install()`
 8637. `update_all_docs()`
 8638. `update_all_documentation()`
 8639. `update_all_files()`
@@ -8767,7 +8767,7 @@ Note: run integration tests against a running dev server to validate connectivit
 8680. `update_dataset()`
 8681. `update_dependencies()`
 8682. `update_deployment_status()`
-8683. `update_PRODUCTIONices_handsfree()`
+8683. `update_devices_handsfree()`
 8684. `update_dns_records()`
 8685. `update_docs()`
 8686. `update_documentation()`
@@ -8825,7 +8825,7 @@ Note: run integration tests against a running dev server to validate connectivit
 8738. `update_project()`
 8739. `update_python_scripts()`
 8740. `update_q1_markdown()`
-8741. `update_qmoi_PRODUCTIONices()`
+8741. `update_qmoi_devices()`
 8742. `update_qmoi_model()`
 8743. `update_qmoimodel_md()`
 8744. `update_qvs_tracks()`
@@ -9512,7 +9512,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### GET /PRODUCTIONices
+### GET /devices
 
 Endpoint automatically detected but not documented.
 
@@ -10042,7 +10042,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### GET /qmoi/own-PRODUCTIONice-logs
+### GET /qmoi/own-device-logs
 
 Endpoint automatically detected but not documented.
 
@@ -10052,7 +10052,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### GET /qmoi/own-PRODUCTIONice-logs/export
+### GET /qmoi/own-device-logs/export
 
 Endpoint automatically detected but not documented.
 
@@ -10612,7 +10612,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### POST /PRODUCTIONices
+### POST /devices
 
 Endpoint automatically detected but not documented.
 
@@ -11132,7 +11132,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### POST /qmoi/own-PRODUCTIONice-logs
+### POST /qmoi/own-device-logs
 
 Endpoint automatically detected but not documented.
 
@@ -11142,7 +11142,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### POST /qmoi/own-PRODUCTIONice-logs/export
+### POST /qmoi/own-device-logs/export
 
 Endpoint automatically detected but not documented.
 

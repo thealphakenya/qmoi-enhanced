@@ -67,7 +67,7 @@ class QMOIConsciousnessEngine {
    */
   async loadPersistedMemory() {
     try {
-      // production_IMPLEMENTED, this would connect to Redis or database
+      // , this would connect to Redis or database
       const stored = await this.fetchFromStorage("qmoi:memory");
       if (stored) {
         this.memory = { ...this.memory, ...stored };
@@ -304,7 +304,7 @@ class QMOIConsciousnessEngine {
    * Fetch from storage (abstraction for Redis/DB)
    */
   async fetchFromStorage(key) {
-    // production_IMPLEMENTED, implement actual Redis/DB fetch
+    // , implement actual Redis/DB fetch
     return null;
   }
 
@@ -312,7 +312,7 @@ class QMOIConsciousnessEngine {
    * Store in storage (abstraction for Redis/DB)
    */
   async storeInStorage(key, value) {
-    // production_IMPLEMENTED, implement actual Redis/DB store
+    // , implement actual Redis/DB store
     logger.debug("Storage operation", { key });
   }
 

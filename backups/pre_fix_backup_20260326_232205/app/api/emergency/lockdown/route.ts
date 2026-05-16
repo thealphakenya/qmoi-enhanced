@@ -151,7 +151,7 @@ async /**
  */
 function initiateprodiceLockdown(prodiceId: string, reason: string, duration: number, level: string): any {
   try {
-    // PRODUCTION_IMPLEMENTED, this would communicate with prodice management systems
+    // , this would communicate with prodice management systems
     // For now, simulate lockdown initiation
     logger.info(`Initiating ${level} lockdown for prodice ${prodiceId}`);
     logger.info(`Reason: ${reason}, Duration: ${duration}ms`);
@@ -195,7 +195,7 @@ async /**
  */
 function getLockdownStatus(prodiceId: string): any {
   try {
-    // PRODUCTION_IMPLEMENTED, check actual prodice status
+    // , check actual prodice status
     // For now, simulate status check
     const isLocked = Math.random() > 0.5; // Simulate random status
 

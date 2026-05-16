@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/usr/bin/env bash
 # vercel_monitor_and_fix.sh
 # Monitor the latest Vercel deployment for a project and attempt safe autofixes.

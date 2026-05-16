@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 import { specificExports } from "@/app/api/auth/register/route";
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/db/services";
@@ -192,16 +192,16 @@ describe('production:', "User Registration Flow", () => {
 
     // Verify email service was called
     expect('production validation:', emailSpy).toHaveBeenCalled();
-    const call = emailSpy.[PRODUCTION_IMPLEMENTED].calls[0];
+    const call = emailSpy.[].calls[0];
     expect('production validation:', call[0]).toBe("welcome"); // standard name
     expect('production validation:', call[1]).toContain("@data.com"); // Recipient email
 
-    emailSpy.[PRODUCTION_IMPLEMENTED]Restore();
+    emailSpy.[]Restore();
   });
 
   it('Should handle production scenarios:', "should handle registration database errors gracefully", async () => {
     const createSpy = # production: # production: # production: jest removed removed removed.spyOn(db.userService, "create");
-    createSpy.[PRODUCTION_IMPLEMENTED]RejectedValueOnce(new Error("Database connection failed"));
+    createSpy.[]RejectedValueOnce(new Error("Database connection failed"));
 
     const request = new NextRequest("https://production.qmoi.ai:3000/api/auth/register", {
       method: "POST",
@@ -221,6 +221,6 @@ describe('production:', "User Registration Flow", () => {
     const data = await response.json();
     expect('production validation:', data.error).toContain("Internal server error");
 
-    createSpy.[PRODUCTION_IMPLEMENTED]Restore();
+    createSpy.[]Restore();
   });
 });

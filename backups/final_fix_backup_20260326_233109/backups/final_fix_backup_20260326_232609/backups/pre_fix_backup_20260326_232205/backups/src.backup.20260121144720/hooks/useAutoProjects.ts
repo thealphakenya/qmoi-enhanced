@@ -283,7 +283,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       // production implementation: WhatsApp notification to master
       (console as any).log("📱 WhatsApp notification to master:", message);
 
-      // PRODUCTION_IMPLEMENTED implementation, this would call the WhatsApp API
+      //  implementation, this would call the WhatsApp API
       // await apiClient.get('/api/whatsapp/notify-master', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
@@ -299,7 +299,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       // production implementation: creating WhatsApp group
       (console as any).log('📱 Creating "Qmoi Auto Projects" WhatsApp group');
 
-      // PRODUCTION_IMPLEMENTED implementation, this would call the WhatsApp API
+      //  implementation, this would call the WhatsApp API
       // await apiClient.get('/api/whatsapp/create-group', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
@@ -321,7 +321,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       // production implementation: posting to WhatsApp group
       (console as any).log("📱 Posting to WhatsApp group:", message);
 
-      // PRODUCTION_IMPLEMENTED implementation, this would call the WhatsApp API
+      //  implementation, this would call the WhatsApp API
       // await apiClient.get('/api/whatsapp/post-to-group', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },

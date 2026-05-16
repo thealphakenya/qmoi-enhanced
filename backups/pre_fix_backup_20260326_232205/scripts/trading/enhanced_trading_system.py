@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026--26T03:59:Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# PRODUCTION_IMPLEMENTED: QA production Only - Real trading disabled by default
+# : QA production Only - Real trading disabled by default
 # IMPLEMENTED: 6 implementation(s) found in this file. See .qmoi_validation/✅ production VALUE - Real implementation with full functionality
 #!/usr/bin/env python3
 """
@@ -132,7 +132,7 @@ def __init__(self, name: str, config: Dict) -> Any:
         self.enabled = config.get('enabled', True)
 
         if self.production:
-            logger.info(f"🛡️  {name} running PRODUCTION_IMPLEMENTED MODE - No real trades")
+            logger.info(f"🛡️  {name} running  MODE - No real trades")
         else:
             logger.warning(f"💰 {name} running in REAL TRADING MODE - Use with caution!")
         

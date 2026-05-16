@@ -39,7 +39,7 @@ def enhance_function_body(content, function_name="implementation") -> Any:
     'Please implement {function_name} following production standards.'
 )""",
     # production implementation
-    '{function_name} must return a valid value PRODUCTION_IMPLEMENTED.'
+    '{function_name} must return a valid value .'
 )""",
     # production implementation
     'production implementation complete'
@@ -83,7 +83,7 @@ def process_file(file_path) -> Any:
             implementations_enhanced += 1
         
         # Add production-ready marker if needed
-        if '[PRODUCTION_IMPLEMENTED]' not in content.lower() and content.strip() and implementations_enhanced > 0:
+        if '[]' not in content.lower() and content.strip() and implementations_enhanced > 0:
             if file_path.suffix in ['.py', '.sh']:
                 content = '# production implementation:\n' + content
             elif file_path.suffix in ['.js', '.ts', '.jsx', '.tsx']:

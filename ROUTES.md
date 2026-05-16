@@ -7,11 +7,11 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# ROUTES.md - Application Route File Structure ✅ production_IMPLEMENTED
+# ROUTES.md - Application Route File Structure ✅ 
 
 **Last Updated:** 2026-04-28T12:00:00.000000Z
 **Total Route Source Files:** 267
-**Status:** ✅ production_IMPLEMENTED
+**Status:** ✅ 
 
 ## Document Purpose
 
@@ -157,7 +157,7 @@ The following standalone route handler source files are defined directly under `
 
 ### `qcity/`
 - `audit-log/route.ts`
-- `PRODUCTIONices.ts`
+- `devices.ts`
 - `status/route.ts`
 - `plugins.ts`
 - `remote-command/route.ts`

@@ -24,8 +24,8 @@ components/
 ├── DealsList.tsx
 ├── DealsPopup.tsx
 ├── DeploymentStatusDashboard.tsx
-├── PRODUCTIONiceMap.tsx
-├── PRODUCTIONiceSettingsPanel.tsx
+├── deviceMap.tsx
+├── deviceSettingsPanel.tsx
 ├── DownloadAppButton.tsx
 ├── DownloadManager.tsx
 ├── DownloadQApp.tsx
@@ -73,7 +73,7 @@ components/
 ├── QIStateWindow.tsx
 ├── QMOIAutoFixDashboard.tsx
 ├── QMOIDashboard.tsx
-├── QMOIOwnPRODUCTIONice.tsx
+├── QMOIOwndevice.tsx
 ├── QVillage.tsx
 ├── QVillageDatasetsPanel.tsx
 ├── QiSpaces.tsx
@@ -118,10 +118,10 @@ components/
 │   └── AutomationRulesPanel.tsx
 ├── components
 │   └── qmedia_player.md.tsx
-├── PRODUCTIONice
+├── device
 │   ├── AWSCredentialsModal.tsx
 │   ├── AzureCredentialsModal.tsx
-│   ├── PRODUCTIONiceIntegrationreals.ts
+│   ├── deviceIntegrationreals.ts
 │   └── GCPCredentialsModal.tsx
 ├── enhanced-system-dashboard.tsx
 ├── enhanced_build_tools.tsx
@@ -139,10 +139,10 @@ components/
 │   ├── GlobalLinksManager.tsx
 │   ├── Onboarding.tsx
 │   ├── QCityDashboard.tsx
-│   ├── QCityPRODUCTIONicePanel.tsx
+│   ├── QCitydevicePanel.tsx
 │   ├── QMOIBiometricManager.tsx
 │   ├── QMOILinksManager.tsx
-│   ├── QMOIOwnPRODUCTIONiceLogs.tsx
+│   ├── QMOIOwndeviceLogs.tsx
 │   ├── QMOIRevenueDashboard.tsx
 │   ├── QVillage.tsx
 │   ├── TracksPanel.tsx

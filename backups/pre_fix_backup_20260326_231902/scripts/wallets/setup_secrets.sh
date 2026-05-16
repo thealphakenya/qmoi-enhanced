@@ -68,7 +68,7 @@ report_metrics() {{
     fi
 }}
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/usr/bin/env bash
 # Dry-run helper to produce commands for setting secrets in GitHub or Vault.
 # This script does NOT send secrets — it prints the commands for manual review.

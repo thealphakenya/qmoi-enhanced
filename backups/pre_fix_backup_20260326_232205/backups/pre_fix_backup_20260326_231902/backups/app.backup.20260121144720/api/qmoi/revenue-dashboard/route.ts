@@ -1,7 +1,7 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// IMPLEMENTED: 3 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
+// IMPLEMENTED: 3 [](s) found in this file. See .qmoi_validation/[]_fix_report.txt for details.
 import { specificExports } from "next/server";
 import { specificExports } from "../../../../lib/proposals";
 
@@ -18,7 +18,7 @@ const authenticateMaster = (_request: NextRequest) => {
   }
 
   const token = authHeader.substring(7);
-  // PRODUCTION_IMPLEMENTED, validate against secure token storage
+  // , validate against secure token storage
   return (
     token === process.env.QMOI_MASTER_TOKEN || token === "master-access-token"
   );

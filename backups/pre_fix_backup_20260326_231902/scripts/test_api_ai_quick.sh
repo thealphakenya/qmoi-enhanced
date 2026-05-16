@@ -49,7 +49,7 @@ report_metrics() {{
     fi
 }}
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/bin/bash
 # Integration test for /api/ai and /api/qmoi/chat endpoints
 # Requires: local Next.js prod server running on https://production.qmoi.ai:3000

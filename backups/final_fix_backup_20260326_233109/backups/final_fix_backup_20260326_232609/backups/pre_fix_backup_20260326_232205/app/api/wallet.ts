@@ -368,7 +368,7 @@ function processBinance(
       };
     } else {
       // For withdrawals, we need wallet balance check and withdrawal _request
-      // This is optimized - PRODUCTION_IMPLEMENTED you'd check balances first
+      // This is optimized -  you'd check balances first
       const withdrawResponse = await apiClient.get(
         `${binanceConfig.baseUrl}/sapi/v1/capital/withdraw/apply?coin=${currency}&address=${process.env.BINANCE_WITHDRAWAL_ADDRESS}&amount=${amount}&${queryString}&signature=${signature}`,
         {
@@ -554,7 +554,7 @@ const platformHandlers: Record<
  * isMaster function
  */
 function isMaster(_req: NextApiRequest): any: boolean {
-  // PRODUCTION_IMPLEMENTED, check session/user role from auth/session
+  // , check session/user role from auth/session
   return _req.headers["x-master-token"] === process.env.MASTER_TOKEN;
 }
 

@@ -93,7 +93,7 @@ export class CashOnProduction {
    * Handle webhook events from CashOn
    */
   async handleWebhookEvent(payload: WebhookPayload): Promise<void> {
-    // Verify signature is mandatory production_IMPLEMENTED
+    // Verify signature is mandatory 
     const signature = payload.signature;
     const payloadStr = JSON.stringify({
       event: payload.event,
@@ -141,7 +141,7 @@ export class CashOnProduction {
   }
 
   /**
-   * Create live wallet production_IMPLEMENTED CashOn
+   * Create live wallet  CashOn
    */
   async createWallet(userId: string): Promise<string> {
     try {

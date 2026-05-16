@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 // App Service Initialization
 // Bootstraps background services, health monitoring, and recovery mechanisms
 

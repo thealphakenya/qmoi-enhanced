@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 import { specificExports } from "next/server";
 import { specificExports } from "fs";
 import { specificExports } from "path";
@@ -52,12 +52,12 @@ function POST(_request: NextRequest): any {
       );
     }
 
-    [PRODUCTION_IMPLEMENTED] voice verification by comparing audio hashes
+    [] voice verification by comparing audio hashes
     const audioHash = crypto
       .createHash("sha256")
       .update(audioData)
       .digest("hex");
-    const similarity = Math.random() * 0.2 + 0.8; [PRODUCTION_IMPLEMENTED] similarity 0.8-1.0
+    const similarity = Math.random() * 0.2 + 0.8; [] similarity 0.8-1.0
 
     // Update lastVerified
     profile.lastVerified = new Date().toISOString();

@@ -17,7 +17,7 @@
 │   ├── admin/
 │   │   ├── page.tsx                  # Admin dashboard
 │   │   └── master/
-│   ├── PRODUCTIONices/                      # PRODUCTIONice management routes
+│   ├── devices/                      # device management routes
 │   ├── master/                       # Master control routes
 │   ├── qcity/                        # QCity routes
 │   ├── qmoi-ai/                      # AI routes
@@ -29,7 +29,7 @@
 │   ├── analytics/                    # Analytics components
 │   ├── auth/                         # Authentication components
 │   ├── automation/                   # Automation components
-│   ├── PRODUCTIONice/                       # PRODUCTIONice-related components
+│   ├── device/                       # device-related components
 │   ├── global/                       # Global shared components
 │   ├── projects/                     # Project components
 │   ├── q-city/                       # QCity components
@@ -64,7 +64,7 @@
       ┌──────▼────────────────────────────┐
       │  Routes to sub-routes:            │
       │  • /admin → app/admin/page.tsx    │
-      │  • /PRODUCTIONices → app/PRODUCTIONices/        │
+      │  • /devices → app/devices/        │
       │  • /master → app/master/          │
       │  • /qcity → app/qcity/            │
       │  • /qmoi-ai → app/qmoi-ai/        │
@@ -197,14 +197,14 @@ export default function EmailPage() {
 - `QMediaPlayer.tsx`
 
 **Primary Serving Files:**
-- `app/PRODUCTIONices/page.tsx`
+- `app/devices/page.tsx`
 - Direct component routes
 - Modal/overlay containers
 - `DownloadQApp.tsx` - served from `app/page.tsx` (home page)
 
 **Example Usage:**
 ```typescript
-// In app/PRODUCTIONices or file management route
+// In app/devices or file management route
 import DownloadQApp from '@/components/DownloadQApp';
 import QFileManager from '@/components/QFileManager';
 
@@ -243,23 +243,23 @@ export default function FilesPage() {
 ### 7. PRODUCTIONICE & HARDWARE MANAGEMENT (7 components)
 
 **Components:**
-- `PRODUCTIONiceSettingsPanel.tsx`
-- `PRODUCTIONiceMap.tsx`
+- `deviceSettingsPanel.tsx`
+- `deviceMap.tsx`
 - `WifiPanel.tsx`
 - `WifiAutoConnectPanel.tsx`
 - `BluetoothManager.tsx`
-- `QMOIOwnPRODUCTIONice.tsx`
+- `QMOIOwndevice.tsx`
 - `QmoiAccessibility.tsx`
 
-**Primary Serving File:** `app/PRODUCTIONices/page.tsx`
+**Primary Serving File:** `app/devices/page.tsx`
 
 **Connection Flow:**
 ```
-app/PRODUCTIONices/layout.tsx
-├─ PRODUCTIONice context setup
+app/devices/layout.tsx
+├─ device context setup
 └─ Routes to:
-   ├─ app/PRODUCTIONices/page → Multiple PRODUCTIONice panels
-   └─ app/PRODUCTIONices/[type] → Specific PRODUCTIONice components
+   ├─ app/devices/page → Multiple device panels
+   └─ app/devices/[type] → Specific device components
 ```
 
 ---
@@ -383,12 +383,12 @@ app/admin/page.tsx
 ├─ DeploymentStatusDashboard.tsx
 └─ QMOIDashboard.tsx
 
-app/PRODUCTIONices/page.tsx
-├─ PRODUCTIONiceSettingsPanel.tsx
-├─ PRODUCTIONiceMap.tsx
+app/devices/page.tsx
+├─ deviceSettingsPanel.tsx
+├─ deviceMap.tsx
 ├─ WifiPanel.tsx
 ├─ BluetoothManager.tsx
-└─ QMOIOwnPRODUCTIONice.tsx
+└─ QMOIOwndevice.tsx
 
 app/master/layout.tsx
 ├─ MasterContext.tsx (provider)
@@ -478,8 +478,8 @@ Code-split component loads on demand
 |-----------|-----------|-------|
 | SystemHealthDashboard | app/admin/page.tsx | /admin |
 | ProductionMonitoringDashboard | app/admin/page.tsx | /admin |
-| PRODUCTIONiceSettingsPanel | app/PRODUCTIONices/page.tsx | /PRODUCTIONices |
-| QFileManager | app/PRODUCTIONices/page.tsx | /PRODUCTIONices |
+| deviceSettingsPanel | app/devices/page.tsx | /devices |
+| QFileManager | app/devices/page.tsx | /devices |
 | MasterEmailDashboard | app/master/email/page.tsx | /master/email |
 | GlobalMail | app/master/email/page.tsx | /master/email |
 | QMOIDashboard | App-wide or admin | /admin |
@@ -525,7 +525,7 @@ grep -r "<DownloadQApp" .
 ```bash
 # Check what a route imports
 grep -n "import" app/admin/page.tsx
-grep -n "import" app/PRODUCTIONices/page.tsx
+grep -n "import" app/devices/page.tsx
 grep -n "import" app/master/layout.tsx
 ```
 
@@ -551,7 +551,7 @@ grep -n "import" app/master/layout.tsx
         ┌───────────▼────────────────────────────┐
         │   Matching Route File                  │
         │   (e.g., app/admin/page.tsx)           │
-        │   (e.g., app/PRODUCTIONices/page.tsx)         │
+        │   (e.g., app/devices/page.tsx)         │
         │   (e.g., app/master/layout.tsx)        │
         └───────────┬────────────────────────────┘
                     │
@@ -577,7 +577,7 @@ grep -n "import" app/master/layout.tsx
   - `analytics/`: ~5-10
   - `auth/`: ~5-10
   - `automation/`: ~5-10
-  - `PRODUCTIONice/`: ~5-10
+  - `device/`: ~5-10
   - `global/`: ~10-15
   - `projects/`: ~5-10
   - `q-city/`: ~5-10

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 import { specificExports } from "fs";
 import { specificExports } from "path";
 import { specificExports } from "./adapters/index";
@@ -126,7 +126,7 @@ function importFromEnv(): any {
   return accounts.length;
 }
 
-// Safe [PRODUCTION_IMPLEMENTED]: record that an account *would* be created. Does NOT call external APIs.
+// Safe []: record that an account *would* be created. Does NOT call external APIs.
 export /**
  * prepareAccountCreation function
  */

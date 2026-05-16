@@ -2239,7 +2239,7 @@
 ./tools/issue_drafts/0566_WIRKFLOWSTRACKS.md.md
 ./tools/issue_drafts/0567_WORKSPACE_LIGHT_MODE.md.md
 ./tools/issue_drafts/0568_app_api_deploy_auto-redeploy_route.ts.md
-./tools/issue_drafts/0569_components_PRODUCTIONiceSettingsPanel.tsx.md
+./tools/issue_drafts/0569_components_deviceSettingsPanel.tsx.md
 ./tools/issue_drafts/0570_components_DownloadManager.tsx.md
 ./tools/issue_drafts/0571_components_HelpGuide.tsx.md
 ./tools/issue_drafts/0572_components_qmedia-player.md.md
@@ -2260,7 +2260,7 @@
 ./tools/issue_drafts/0591_error-fix-summary.md.md
 ./tools/issue_drafts/0592_git-smart-sync.ps1.md
 ./tools/issue_drafts/0593_git.txt.md
-./tools/issue_drafts/0594_hooks_usePRODUCTIONiceOptimizer.ts.md
+./tools/issue_drafts/0594_hooks_usedeviceOptimizer.ts.md
 ./tools/issue_drafts/0595_hooks_useTTCVoice.ts.md
 ./tools/issue_drafts/0596_hooks_useTrading.ts.md
 ./tools/issue_drafts/0597_hooks_useWhatsApp.ts.md
@@ -2571,7 +2571,7 @@
 ./tools/issue_drafts/0906_qmoi-enhanced_WATCHDEBUG.md.md
 ./tools/issue_drafts/0909_qmoi-enhanced_app_api_deploy_auto-redeploy_route.ts.md
 ./tools/issue_drafts/0910_qmoi-enhanced_app_api_qmoi_auto-fix_start_route.ts.md
-./tools/issue_drafts/0911_qmoi-enhanced_components_PRODUCTIONiceSettingsPanel.tsx.md
+./tools/issue_drafts/0911_qmoi-enhanced_components_deviceSettingsPanel.tsx.md
 ./tools/issue_drafts/0912_qmoi-enhanced_components_DownloadManager.tsx.md
 ./tools/issue_drafts/0913_qmoi-enhanced_components_HelpGuide.tsx.md
 ./tools/issue_drafts/0914_qmoi-enhanced_components_qmedia-player.md.md
@@ -2584,7 +2584,7 @@
 ./tools/issue_drafts/0925_qmoi-enhanced_error-fix-summary.md.md
 ./tools/issue_drafts/0926_qmoi-enhanced_git-smart-sync.ps1.md
 ./tools/issue_drafts/0927_qmoi-enhanced_git.txt.md
-./tools/issue_drafts/0928_qmoi-enhanced_hooks_usePRODUCTIONiceOptimizer.ts.md
+./tools/issue_drafts/0928_qmoi-enhanced_hooks_usedeviceOptimizer.ts.md
 ./tools/issue_drafts/0929_qmoi-enhanced_hooks_useTTCVoice.ts.md
 ./tools/issue_drafts/0930_qmoi-enhanced_hooks_useTrading.ts.md
 ./tools/issue_drafts/0931_qmoi-enhanced_hooks_useWhatsApp.ts.md
@@ -2735,7 +2735,7 @@
 ./tools/issue_drafts/10_qmoi-enhanced_scripts_auto_lint_fix_py.md
 ./tools/issue_drafts/11_qmoi-enhanced_scripts_qmoi_auto_evolution_system_py.md
 ./tools/issue_drafts/12_qmoi-enhanced_scripts_enhance_ai_py.md
-./tools/issue_drafts/13_qmoi-enhanced_components_PRODUCTIONice_PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
+./tools/issue_drafts/13_qmoi-enhanced_components_device_deviceIntegration✅ production COMPLETE - Full feature implementation and testing
 ./tools/issue_drafts/14_qmoi-enhanced_app_api_qi-trading_route_ts.md
 ./tools/issue_drafts/15_qmoi-enhanced_ai_self_update_py.md
 ./tools/issue_drafts/16_qmoi-enhanced_scripts_qmoi-package-installer_py.md

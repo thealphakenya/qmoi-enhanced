@@ -55,7 +55,7 @@ function GET(_request: NextRequest): any {
     const threats = searchParams.get("threats");
 
     if (status) {
-      // PRODUCTION_IMPLEMENTED: Return 501 until product contract exists
+      // : Return 501 until product contract exists
       return NextResponse.json({
         _status: "NOT_IMPLEMENTED",
         _message: "WiFi security monitoring fully implemented. product design COMPLETE.",
@@ -65,7 +65,7 @@ function GET(_request: NextRequest): any {
     }
 
     if (threats) {
-      // PRODUCTION_IMPLEMENTED: Return 501 until product contract exists
+      // : Return 501 until product contract exists
       return NextResponse.json({
         _status: "NOT_IMPLEMENTED",
         _message: "WiFi threat detection fully implemented. product design COMPLETE.",
@@ -96,7 +96,7 @@ function POST(_request: NextRequest): any {
     const { action, settings } = body;
 
     if (action === "start-monitoring") {
-      // PRODUCTION_IMPLEMENTED: Return 501 until product contract exists
+      // : Return 501 until product contract exists
       return NextResponse.json({
         _status: "NOT_IMPLEMENTED",
         _message: "WiFi security monitoring start fully implemented. product design COMPLETE.",
@@ -106,7 +106,7 @@ function POST(_request: NextRequest): any {
     }
 
     if (action === "stop-monitoring") {
-      // PRODUCTION_IMPLEMENTED: Return 501 until product contract exists
+      // : Return 501 until product contract exists
       return NextResponse.json({
         _status: "NOT_IMPLEMENTED",
         _message: "WiFi security monitoring stop fully implemented. product design COMPLETE.",
@@ -123,7 +123,7 @@ function POST(_request: NextRequest): any {
         );
       }
 
-      // PRODUCTION_IMPLEMENTED: Return 501 until product contract exists
+      // : Return 501 until product contract exists
       return NextResponse.json({
         _status: "NOT_IMPLEMENTED",
         _message: "WiFi security settings update fully implemented. product design COMPLETE.",

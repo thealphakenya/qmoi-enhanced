@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026--26T03:59:Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 """sophisticated persistent in-repo link cache with TTL and LRU behavior.
 
 This cache persists to .qmoi_validation/link_cache.json by default and is

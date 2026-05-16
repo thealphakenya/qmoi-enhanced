@@ -153,7 +153,7 @@ SLACK_WEBHOOK_URL=https://hooks.slack.com/services/YOUR/WEBHOOK
 ALERT_EMAIL=admin@qmoi.com
 
 # Monitoring (Optional)
-SENTRY_DSN=https:// Implementation details to be added production_IMPLEMENTED version
+SENTRY_DSN=https:// Implementation details to be added  version
 DATADOG_API_KEY=...
 
 # QMOI Settings

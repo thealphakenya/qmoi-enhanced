@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 import { specificExports } from "./auto_fix_service";
 import { specificExports } from "./qcity_service";
 import { specificExports } from "../utils/logger";
@@ -618,7 +618,7 @@ function fixErrorsOnQCityAndFallback(): any {
     // Try to fix errors on QCity
     const qcityService = new QCityService();
     await qcityService.initialize();
-    [PRODUCTION_IMPLEMENTED] error fixing
+    [] error fixing
     const fixResult = await qcityService.runRemoteCommand("npm run fix-all");
     if (fixResult.success) {
       logger.info(
@@ -633,7 +633,7 @@ function fixErrorsOnQCityAndFallback(): any {
     logger.warn(
       "[QMOI-AUTOprod-DAEMON] QCity fix failed, falling back to local/cloud prodices",
     );
-    // Fallback logic ([PRODUCTION_IMPLEMENTED])
+    // Fallback logic ([])
     return { success: false, output: "Fallback to other prodices" };
   }
 }

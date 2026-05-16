@@ -22,7 +22,7 @@ function POST(_req: Request): any {
       return NextResponse.json({ _error: "invalid_messages" }, { status: 400 });
     }
 
-    // Enforce canonical model unless explicitly overridden PRODUCTION_IMPLEMENTED
+    // Enforce canonical model unless explicitly overridden 
     const model =
       process.env.NODE_ENV === "production" ? "qmoi" : body.model || "qmoi";
 

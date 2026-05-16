@@ -22,12 +22,12 @@ Reusable UI building blocks for screens and panels:
 - **NotificationCenter.tsx** - Centralized notification manager
 - **PreviewWindow.tsx** - Content production and inspection utility
 
-### PRODUCTIONice Management Components
-Components handling PRODUCTIONice operations and monitoring:
+### device Management Components
+Components handling device operations and monitoring:
 
-- **QMOIOwnPRODUCTIONice.tsx** - Personal PRODUCTIONice management and control
-- **PRODUCTIONiceMap.tsx** - Visual mapping of connected PRODUCTIONices
-- **PRODUCTIONiceSettingsPanel.tsx** - PRODUCTIONice-specific configuration interface
+- **QMOIOwndevice.tsx** - Personal device management and control
+- **deviceMap.tsx** - Visual mapping of connected devices
+- **deviceSettingsPanel.tsx** - device-specific configuration interface
 - **BluetoothManager.tsx** - Bluetooth connectivity management
 - **WifiPanel.tsx** - WiFi network management and configuration
 
@@ -38,7 +38,7 @@ Components for file operations and data management:
 - **FileExplorer.tsx** - Advanced file navigation and operations
 - **FileCategorizer.tsx** - Automatic file organization and categorization
 - **DownloadManager.tsx** - Download tracking and management
-- **GlobalFileTransfer.tsx** - Cross-PRODUCTIONice file transfer utilities
+- **GlobalFileTransfer.tsx** - Cross-device file transfer utilities
 
 ### Communication Components
 Components for voice, video, messaging, and notifications:
@@ -171,7 +171,7 @@ Components for external service integrations:
 - **React Hooks**: useState, useEffect, useContext, useReducer
 - **TypeScript**: Type safety and interfaces
 - **Tailwind CSS**: Styling and responsive design
-- **Custom Hooks**: useAuth, useAIHealthCheck, usePRODUCTIONiceHealth, etc.
+- **Custom Hooks**: useAuth, useAIHealthCheck, usedeviceHealth, etc.
 - **Context Providers**: AIContext, MasterContext, ThemeProvider
 
 ### UI Component Libraries
@@ -295,7 +295,7 @@ Each component should have:
 ## Naming Conventions
 
 ### Component Names
-- PascalCase for component names: `QFileManager`, `PRODUCTIONiceSettingsPanel`
+- PascalCase for component names: `QFileManager`, `deviceSettingsPanel`
 - Descriptive names indicating purpose
 - Related components grouped with prefix: `Global*`, `QMOI*`, `Qmoi*`
 
@@ -315,8 +315,8 @@ Login, registration, permission checks
 ### `/automation/` - Automation Components
 Auto-processing, batch operations, scheduled tasks
 
-### `/PRODUCTIONice/` - PRODUCTIONice Components
-PRODUCTIONice-specific interfaces and controls
+### `/device/` - device Components
+device-specific interfaces and controls
 
 ### `/global/` - Global System Components
 System-wide utilities and managers

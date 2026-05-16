@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 QMOI Automation, Release, and Error-Fix Report
 Date: 2025-10-13
 
@@ -15,7 +15,7 @@ Summary of QMOI Actions (Past 12 Hours)
 - All platforms released and validated:
   - Windows, Android, macOS, Linux, iOS, Raspberry Pi, QCity, Smart TV, Chromebook
   - QMOI AI v2.5.1 released and validated for all platforms
-  - All binaries are actual, validated builds—no [PRODUCTION_IMPLEMENTED]s
+  - All binaries are actual, validated builds—no []s
 - All releases are autotested, validated, and logged in TRACKS.md and RELEASETRACKS.md
 
 3. Error & Workflow Fixes

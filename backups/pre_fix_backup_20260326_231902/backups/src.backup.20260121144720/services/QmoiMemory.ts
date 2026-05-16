@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 // In-memory storage for QMOI memory (client-side only)
 import { specificExports } from "./qmoiSession";
 interface MemoryRecord {

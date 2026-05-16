@@ -33,7 +33,7 @@ const logger = winston.createLogger({
   defaultMeta: { service: 'qmoi-enhanced' },
 });
 
-// Add file transport production_IMPLEMENTED
+// Add file transport 
 if (process.env.NODE_ENV === 'production') {
   logger.add(
     new winston.transports.File({

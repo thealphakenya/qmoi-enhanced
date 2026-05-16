@@ -22,10 +22,10 @@ The QMOI Enhanced application provides comprehensive settings for customization,
    - Inline with related functionality
    - Quick adjustment without full settings panel
 
-4. **PRODUCTIONice Settings** (`/admin` or PRODUCTIONice-specific panel)
-   - Per-PRODUCTIONice configuration
-   - Accessible from PRODUCTIONices screen
-   - PRODUCTIONice permissions and preferences
+4. **device Settings** (`/admin` or device-specific panel)
+   - Per-device configuration
+   - Accessible from devices screen
+   - device permissions and preferences
 
 ## Settings Categories
 
@@ -60,8 +60,8 @@ The QMOI Enhanced application provides comprehensive settings for customization,
 - **Biometric Fallback**: Set alternative auth method
 
 #### Session Management
-- **Active Sessions**: View logged-in PRODUCTIONices
-- **Logout Remote Sessions**: Sign out on other PRODUCTIONices
+- **Active Sessions**: View logged-in devices
+- **Logout Remote Sessions**: Sign out on other devices
 - **Login Alerts**: Notifications for new logins
 - **Session Timeout**: Auto-logout duration
 
@@ -69,12 +69,12 @@ The QMOI Enhanced application provides comprehensive settings for customization,
 - **Enable 2FA**: Activate two-factor auth
 - **Authentication Method**: SMS, email, or authenticator app
 - **Backup Codes**: Recovery codes for account access
-- **Trusted PRODUCTIONices**: Mark PRODUCTIONice as trusted
+- **Trusted devices**: Mark device as trusted
 
 ### 3. Notification Settings
 
 #### Notification Types
-- **PRODUCTIONice Alerts**: Notifications from PRODUCTIONices
+- **device Alerts**: Notifications from devices
 - **System Notifications**: Application-level alerts
 - **AI Suggestions**: Recommendations from AI
 - **Community Updates**: QVillage announcements
@@ -95,7 +95,7 @@ The QMOI Enhanced application provides comprehensive settings for customization,
 - **Pause Notifications**: PRODUCTIONorarily mute
 
 #### Notification Preferences
-- Alert on PRODUCTIONice Status Changes
+- Alert on device Status Changes
 - Alert on Incident Reports
 - Alert on Message Arrival
 - Alert on Task Completion
@@ -137,7 +137,7 @@ The QMOI Enhanced application provides comprehensive settings for customization,
 - **Color Blind Mode**: Adjust color schemes
 - **Focus Indicators**: Highlight focusable elements
 
-### 5. PRODUCTIONice & Connectivity
+### 5. device & Connectivity
 
 #### WiFi Settings
 - **WiFi Panel**: Manage network connections
@@ -148,12 +148,12 @@ The QMOI Enhanced application provides comprehensive settings for customization,
 - **Forget Network**: Remove saved network
 
 #### Bluetooth Settings
-- **Bluetooth Manager**: Bluetooth PRODUCTIONice control
-- **Paired PRODUCTIONices**: List of connected PRODUCTIONices
-- **Scan for PRODUCTIONices**: Discover new Bluetooth PRODUCTIONices
-- **Connect PRODUCTIONice**: Pair new Bluetooth PRODUCTIONice
-- **Rename PRODUCTIONice**: Custom PRODUCTIONice naming
-- **Unpair PRODUCTIONice**: Remove paired PRODUCTIONice
+- **Bluetooth Manager**: Bluetooth device control
+- **Paired devices**: List of connected devices
+- **Scan for devices**: Discover new Bluetooth devices
+- **Connect device**: Pair new Bluetooth device
+- **Rename device**: Custom device naming
+- **Unpair device**: Remove paired device
 
 #### WiFi Auto-Connect
 - **Enable Auto-Connect**: Automatic WiFi joining
@@ -161,12 +161,12 @@ The QMOI Enhanced application provides comprehensive settings for customization,
 - **Connect to Weakest Signal**: Prefer stronger signal
 - **Avoid Cellular Fallback**: Sticky WiFi connections
 
-#### PRODUCTIONice Settings Panel
-- **PRODUCTIONice Name**: Rename PRODUCTIONice
-- **PRODUCTIONice Type**: Display PRODUCTIONice classification
-- **Location**: PRODUCTIONice location/zone
-- **Notifications**: Per-PRODUCTIONice notification settings
-- **Storage**: PRODUCTIONice storage quota
+#### device Settings Panel
+- **device Name**: Rename device
+- **device Type**: Display device classification
+- **Location**: device location/zone
+- **Notifications**: Per-device notification settings
+- **Storage**: device storage quota
 - **Permissions**: App-specific permissions
 
 ### 6. Privacy & Data
@@ -360,7 +360,7 @@ The QMOI Enhanced application provides comprehensive settings for customization,
 - **Export Settings**: Download as file
 
 ### Syncing Settings
-- **Cloud Sync**: Sync across PRODUCTIONices
+- **Cloud Sync**: Sync across devices
 - **Sync Status**: Show sync progress
 - **Sync Schedule**: When to synchronize
 - **Sync Manually**: Force immediate sync
@@ -447,7 +447,7 @@ The QMOI Enhanced application provides comprehensive settings for customization,
 
 ### Optimize Application Performance
 1. Enable caching for faster access
-2. Reduce animations on slower PRODUCTIONices
+2. Reduce animations on slower devices
 3. Enable power-saving mode on battery
 4. Limit background sync frequency
 5. Disable unused notifications

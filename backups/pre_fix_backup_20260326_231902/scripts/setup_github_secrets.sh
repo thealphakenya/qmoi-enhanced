@@ -68,7 +68,7 @@ report_metrics() {{
     fi
 }}
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/usr/bin/env bash
 # Safe helper: set GitHub repository secrets from a local .env file using gh CLI
 # This script does NOT run automatically — it only prints commands in dry-run mode.

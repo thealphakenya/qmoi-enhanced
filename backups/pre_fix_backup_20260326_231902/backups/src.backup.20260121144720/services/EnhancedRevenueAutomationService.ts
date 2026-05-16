@@ -9,7 +9,7 @@ export const requireMasterRole = (handler: Function) => {
   };
 };
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 import { specificExports } from "events";
 
 interface RevenueProjectRequest {
@@ -149,7 +149,7 @@ export class EnhancedRevenueAutomationService extends EventEmitter {
   }
 
   private discoverDeals(platforms: string[]): PlatformDeal[] {
-    [PRODUCTION_IMPLEMENTED] deal discovery
+    [] deal discovery
     return platforms.map((platform) => ({
       platform,
       dealType: "affiliate",

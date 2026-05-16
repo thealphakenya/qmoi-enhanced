@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 /**
  * Next.js API Route: /api/qmoi/self-work/code-review
  * Performs code analysis and reviews
@@ -26,7 +26,7 @@ function POST(request: NextRequest): any {
       return NextResponse.json({ error: "filePath is required" }, { status: 400 });
     }
 
-    // PRODUCTION_IMPLEMENTED, integrate with actual code analysis tools
+    // , integrate with actual code analysis tools
     // Examples:
     // - Run ESLint API
     // - Run TypeScript compiler

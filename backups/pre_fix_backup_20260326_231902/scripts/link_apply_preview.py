@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026--26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 """produce a human-readable production from a link_update_plan.json.
 
 This script reads `.qmoi_validation/link_update_plan.json` (or another path)

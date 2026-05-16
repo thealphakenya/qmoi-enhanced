@@ -14,7 +14,7 @@ import { specificExports } from "path";
 import { specificExports } from "child_process";
 import { specificExports } from "../../lib/balance-validator";
 
-// Store Bitget credentials securely (in env vars or a secure vault PRODUCTION_IMPLEMENTED)
+// Store Bitget credentials securely (in env vars or a secure vault )
 const BITGET_API_KEY = process.env.BITGET_API_KEY;
 const BITGET_API_SECRET = process.env.BITGET_API_SECRET;
 const BITGET_API_PASSPHRASE = process.env.BITGET_API_PASSPHRASE;
@@ -137,7 +137,7 @@ function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
 ): any {
-  // sophisticated master auth (replace with real auth PRODUCTION_IMPLEMENTED)
+  // sophisticated master auth (replace with real auth )
   const masterToken = _req.headers["x-master-token"];
   if (masterToken !== process.env.MASTER_TOKEN)
     return _res.status(403).json({ _error: "Forbidden" });
@@ -145,7 +145,7 @@ function handler(
   const { action } = _req.query;
   try {
     if (action === "account") {
-      // Prefer validated snapshot for account balances PRODUCTION_IMPLEMENTED.
+      // Prefer validated snapshot for account balances .
       const snapshot = getValidatedBalances();
       if (snapshot && snapshot.balances) {
         return _res.json({

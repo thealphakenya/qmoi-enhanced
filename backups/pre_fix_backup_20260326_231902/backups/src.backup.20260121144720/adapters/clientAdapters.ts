@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 // Client-side adapters for production integrations with parallel execution support
 // Features: Caching, retry logic, background operations, _request queuing, error recovery
 // These call backend API endpoints (preferred) which should implement real third-party integrations.

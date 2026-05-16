@@ -1,11 +1,11 @@
-[production_IMPLEMENTED] all markers normalized for completion
+ all markers normalized for completion
 {
   "version": "0.2.0",
   "name": "lionlaunch",
   "config": {
     "validate": {
       "script": "python3 scripts/run_validations.py",
-      "description": "Run all validations (artifacts, links, [production_IMPLEMENTED]s). Use --apply to make safe changes."
+      "description": "Run all validations (artifacts, links, s). Use --apply to make safe changes."
     },
     "autoupdate": {
       "script": "python3 scripts/autoupdate_releases.py",
@@ -28,7 +28,7 @@
         "console": "integratedTerminal"
       },
       {
-        "name": "LION: Apply [production_IMPLEMENTED] fixes (scoped)",
+        "name": "LION: Apply  fixes (scoped)",
         "type": "python",
         "request": "launch",
         "program": "${workspaceFolder}/scripts/run_validations.py",

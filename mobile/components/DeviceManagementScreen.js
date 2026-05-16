@@ -22,14 +22,14 @@ import {
 import { specificExports } from '@react-native-async-storage/async-storage';
 import { specificExports } from 'react-native-vector-icons/MaterialIcons';
 
-const PRODUCTIONiceManagementScreen = ({ userRole }) => {
-  const [PRODUCTIONices, setPRODUCTIONices] = useState([]);
+const deviceManagementScreen = ({ userRole }) => {
+  const [devices, setdevices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-  const [showAddPRODUCTIONice, setShowAddPRODUCTIONice] = useState(false);
-  const [showPRODUCTIONiceDetails, setShowPRODUCTIONiceDetails] = useState(false);
-  const [selectedPRODUCTIONice, setSelectedPRODUCTIONice] = useState(null);
-  const [newPRODUCTIONice, setNewPRODUCTIONice] = useState({
+  const [showAdddevice, setShowAdddevice] = useState(false);
+  const [showdeviceDetails, setShowdeviceDetails] = useState(false);
+  const [selecteddevice, setSelecteddevice] = useState(null);
+  const [newdevice, setNewdevice] = useState({
     name: '',
     type: 'computer',
     ip: '',
@@ -37,17 +37,17 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
     description: ''
   });
 
-  const PRODUCTIONiceTypes = [
+  const deviceTypes = [
     { key: 'computer', label: 'Computer', icon: 'computer' },
     { key: 'server', label: 'Server', icon: 'dns' },
-    { key: 'mobile', label: 'Mobile PRODUCTIONice', icon: 'smartphone' },
+    { key: 'mobile', label: 'Mobile device', icon: 'smartphone' },
     { key: 'tablet', label: 'Tablet', icon: 'tablet' },
-    { key: 'iot', label: 'IoT PRODUCTIONice', icon: 'sensors' },
+    { key: 'iot', label: 'IoT device', icon: 'sensors' },
     { key: 'camera', label: 'Camera', icon: 'videocam' },
     { key: 'sensor', label: 'Sensor', icon: 'sensors' }
   ];
 
-  const PRODUCTIONiceStatuses = {
+  const deviceStatuses = {
     online: { color: '#4CAF50', label: 'Online' },
     offline: { color: '#F44336', label: 'Offline' },
     warning: { color: '#FF9800', label: 'Warning' },
@@ -55,18 +55,18 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
   };
 
   useEffect(() => {
-    loadPRODUCTIONices();
+    loaddevices();
   }, []);
 
-  const loadPRODUCTIONices = async () => {
+  const loaddevices = async () => {
     try {
       setLoading(true);
-      const storedPRODUCTIONices = await AsyncStorage.getItem('qmoi_PRODUCTIONices');
-      if (storedPRODUCTIONices) {
-        setPRODUCTIONices(JSON.parse(storedPRODUCTIONices));
+      const storeddevices = await AsyncStorage.getItem('qmoi_devices');
+      if (storeddevices) {
+        setdevices(JSON.parse(storeddevices));
       } else {
-        // Initialize with default PRODUCTIONices
-        const defaultPRODUCTIONices = [
+        // Initialize with default devices
+        const defaultdevices = [
           {
             id: '1',
             name: 'QMOI Main Server',
@@ -123,12 +123,12 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
             }
           }
         ];
-        setPRODUCTIONices(defaultPRODUCTIONices);
-        await AsyncStorage.setItem('qmoi_PRODUCTIONices', JSON.stringify(defaultPRODUCTIONices));
+        setdevices(defaultdevices);
+        await AsyncStorage.setItem('qmoi_devices', JSON.stringify(defaultdevices));
       }
     } catch (error) {
-      logger.error('Error loading PRODUCTIONices:', error);
-      Alert.notification.show('Error', 'Failed to load PRODUCTIONices');
+      logger.error('Error loading devices:', error);
+      Alert.notification.show('Error', 'Failed to load devices');
     } finally {
       setLoading(false);
     }
@@ -136,20 +136,20 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
 
   const onRefresh = async () => {
     setRefreshing(true);
-    await loadPRODUCTIONices();
+    await loaddevices();
     setRefreshing(false);
   };
 
-  const addPRODUCTIONice = async () => {
-    if (!newPRODUCTIONice.name || !newPRODUCTIONice.ip) {
+  const adddevice = async () => {
+    if (!newdevice.name || !newdevice.ip) {
       Alert.notification.show('Error', 'Name and IP are required');
       return;
     }
 
     try {
-      const PRODUCTIONice = {
+      const device = {
         id: Date.now().toString(),
-        ...newPRODUCTIONice,
+        ...newdevice,
         status: 'offline',
         lastSeen: new Date().toISOString(),
         permissions: ['read'],
@@ -163,24 +163,24 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
         }
       };
 
-      const updatedPRODUCTIONices = [...PRODUCTIONices, PRODUCTIONice];
-      setPRODUCTIONices(updatedPRODUCTIONices);
-      await AsyncStorage.setItem('qmoi_PRODUCTIONices', JSON.stringify(updatedPRODUCTIONices));
+      const updateddevices = [...devices, device];
+      setdevices(updateddevices);
+      await AsyncStorage.setItem('qmoi_devices', JSON.stringify(updateddevices));
       
-      setNewPRODUCTIONice({ name: '', type: 'computer', ip: '', port: '3000', description: '' });
-      setShowAddPRODUCTIONice(false);
+      setNewdevice({ name: '', type: 'computer', ip: '', port: '3000', description: '' });
+      setShowAdddevice(false);
       
-      Alert.notification.show('Success', 'PRODUCTIONice added successfully');
+      Alert.notification.show('Success', 'device added successfully');
     } catch (error) {
       logger.error('Error adding prodice:', error);
       Alert.notification.show('Error', 'Failed to add prodice');
     }
   };
 
-  const removePRODUCTIONice = async (PRODUCTIONiceId) => {
+  const removedevice = async (deviceId) => {
     Alert.notification.show(
-      'Remove PRODUCTIONice',
-      'Are you sure you want to remove this PRODUCTIONice?',
+      'Remove device',
+      'Are you sure you want to remove this device?',
       [
         { text: 'Cancel', style: 'cancel' },
         {
@@ -188,10 +188,10 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
           style: 'destructive',
           onPress: async () => {
             try {
-              const updatedPRODUCTIONices = PRODUCTIONices.filter(d => d.id !== PRODUCTIONiceId);
-              setPRODUCTIONices(updatedPRODUCTIONices);
-              await AsyncStorage.setItem('qmoi_PRODUCTIONices', JSON.stringify(updatedPRODUCTIONices));
-              Alert.notification.show('Success', 'PRODUCTIONice removed successfully');
+              const updateddevices = devices.filter(d => d.id !== deviceId);
+              setdevices(updateddevices);
+              await AsyncStorage.setItem('qmoi_devices', JSON.stringify(updateddevices));
+              Alert.notification.show('Success', 'device removed successfully');
             } catch (error) {
               logger.error('Error removing prodice:', error);
               Alert.notification.show('Error', 'Failed to remove prodice');
@@ -202,22 +202,22 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
     );
   };
 
-  const updatePRODUCTIONiceStatus = async (PRODUCTIONiceId, status) => {
+  const updatedeviceStatus = async (deviceId, status) => {
     try {
-      const updatedPRODUCTIONices = PRODUCTIONices.map(d => 
-        d.id === PRODUCTIONiceId ? { ...d, status, lastSeen: new Date().toISOString() } : d
+      const updateddevices = devices.map(d => 
+        d.id === deviceId ? { ...d, status, lastSeen: new Date().toISOString() } : d
       );
-      setPRODUCTIONices(updatedPRODUCTIONices);
-      await AsyncStorage.setItem('qmoi_PRODUCTIONices', JSON.stringify(updatedPRODUCTIONices));
+      setdevices(updateddevices);
+      await AsyncStorage.setItem('qmoi_devices', JSON.stringify(updateddevices));
     } catch (error) {
-      logger.error('Error updating PRODUCTIONice status:', error);
+      logger.error('Error updating device status:', error);
     }
   };
 
-  const togglePRODUCTIONicePermission = async (PRODUCTIONiceId, permission) => {
+  const toggledevicePermission = async (deviceId, permission) => {
     try {
-      const updatedPRODUCTIONices = PRODUCTIONices.map(d => {
-        if (d.id === PRODUCTIONiceId) {
+      const updateddevices = devices.map(d => {
+        if (d.id === deviceId) {
           const permissions = d.permissions.includes(permission)
             ? d.permissions.filter(p => p !== permission)
             : [...d.permissions, permission];
@@ -225,10 +225,10 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
         }
         return d;
       });
-      setPRODUCTIONices(updatedPRODUCTIONices);
-      await AsyncStorage.setItem('qmoi_PRODUCTIONices', JSON.stringify(updatedPRODUCTIONices));
+      setdevices(updateddevices);
+      await AsyncStorage.setItem('qmoi_devices', JSON.stringify(updateddevices));
     } catch (error) {
-      logger.error('Error updating PRODUCTIONice permissions:', error);
+      logger.error('Error updating device permissions:', error);
     }
   };
 
@@ -246,7 +246,7 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
       >
         <View style={styles.prodiceHeader}>
           <View style={styles.prodiceInfo}>
-            <Icon name={prodiceType?.icon || 'PRODUCTIONices'} size={24} color="#2196F3" />
+            <Icon name={prodiceType?.icon || 'devices'} size={24} color="#2196F3" />
             <View style={styles.prodiceText}>
               <Text style={styles.prodiceName}>{item.name}</Text>
               <Text style={styles.prodiceType}>{prodiceType?.label}</Text>
@@ -284,7 +284,7 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
           <View style={styles.prodiceActions}>
             <TouchableOpacity
               style={[styles.actionButton, styles.statusButton]}
-              onPress={() => updatePRODUCTIONiceStatus(item.id, item.status === 'online' ? 'offline' : 'online')}
+              onPress={() => updatedeviceStatus(item.id, item.status === 'online' ? 'offline' : 'online')}
             >
               <Icon name={item.status === 'online' ? 'power-settings-new' : 'power'} size={16} color="#FFF" />
               <Text style={styles.actionText}>
@@ -294,7 +294,7 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
             
             <TouchableOpacity
               style={[styles.actionButton, styles.removeButton]}
-              onPress={() => removePRODUCTIONice(item.id)}
+              onPress={() => removedevice(item.id)}
             >
               <Icon name="delete" size={16} color="#FFF" />
               <Text style={styles.actionText}>Remove</Text>
@@ -307,7 +307,7 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
 
   const renderAddprodiceModal = () => (
     <Modal
-      visible={showAddPRODUCTIONice}
+      visible={showAdddevice}
       animationType="slide"
       transparent={true}
       onRequestClose={() => setShowAddprodice(false)}
@@ -322,11 +322,11 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
           </View>
 
           <ScrollView style={styles.modalBody}>
-            <Text style={styles.inputLabel}>PRODUCTIONice Name *</Text>
+            <Text style={styles.inputLabel}>device Name *</Text>
             <TextInput
               style={styles.input}
-              value={newPRODUCTIONice.name}
-              onChangeText={(text) => setNewPRODUCTIONice({ ...newPRODUCTIONice, name: text })}
+              value={newdevice.name}
+              onChangeText={(text) => setNewdevice({ ...newdevice, name: text })}
             />
 
             <Text style={styles.inputLabel}>prodice Type</Text>
@@ -354,24 +354,24 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
             <Text style={styles.inputLabel}>IP Address *</Text>
             <TextInput
               style={styles.input}
-              value={newPRODUCTIONice.ip}
-              onChangeText={(text) => setNewPRODUCTIONice({ ...newPRODUCTIONice, ip: text })}
+              value={newdevice.ip}
+              onChangeText={(text) => setNewdevice({ ...newdevice, ip: text })}
               keyboardType="numeric"
             />
 
             <Text style={styles.inputLabel}>Port</Text>
             <TextInput
               style={styles.input}
-              value={newPRODUCTIONice.port}
-              onChangeText={(text) => setNewPRODUCTIONice({ ...newPRODUCTIONice, port: text })}
+              value={newdevice.port}
+              onChangeText={(text) => setNewdevice({ ...newdevice, port: text })}
               keyboardType="numeric"
             />
 
             <Text style={styles.inputLabel}>Description</Text>
             <TextInput
               style={[styles.input, styles.textArea]}
-              value={newPRODUCTIONice.description}
-              onChangeText={(text) => setNewPRODUCTIONice({ ...newPRODUCTIONice, description: text })}
+              value={newdevice.description}
+              onChangeText={(text) => setNewdevice({ ...newdevice, description: text })}
               multiline
               numberOfLines={3}
             />
@@ -380,15 +380,15 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
           <View style={styles.modalFooter}>
             <TouchableOpacity
               style={[styles.modalButton, styles.cancelButton]}
-              onPress={() => setShowAddPRODUCTIONice(false)}
+              onPress={() => setShowAdddevice(false)}
             >
               <Text style={styles.cancelButtonText}>Cancel</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.modalButton, styles.addButton]}
-              onPress={addPRODUCTIONice}
+              onPress={adddevice}
             >
-              <Text style={styles.addButtonText}>Add PRODUCTIONice</Text>
+              <Text style={styles.addButtonText}>Add device</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -398,7 +398,7 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
 
   const renderprodiceDetailsModal = () => (
     <Modal
-      visible={showPRODUCTIONiceDetails}
+      visible={showdeviceDetails}
       animationType="slide"
       transparent={true}
       onRequestClose={() => setShowprodiceDetails(false)}
@@ -412,42 +412,42 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
             </TouchableOpacity>
           </View>
 
-          {selectedPRODUCTIONice && (
+          {selecteddevice && (
             <ScrollView style={styles.modalBody}>
               <View style={styles.detailSection}>
                 <Text style={styles.sectionTitle}>comprehensive Information</Text>
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>Name:</Text>
-                  <Text style={styles.detailValue}>{selectedPRODUCTIONice.name}</Text>
+                  <Text style={styles.detailValue}>{selecteddevice.name}</Text>
                 </View>
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>Type:</Text>
                   <Text style={styles.detailValue}>
-                    {prodiceTypes.find(t => t.key === selectedPRODUCTIONice.type)?.label}
+                    {prodiceTypes.find(t => t.key === selecteddevice.type)?.label}
                   </Text>
                 </View>
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>IP Address:</Text>
-                  <Text style={styles.detailValue}>{selectedPRODUCTIONice.ip}:{selectedPRODUCTIONice.port}</Text>
+                  <Text style={styles.detailValue}>{selecteddevice.ip}:{selecteddevice.port}</Text>
                 </View>
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>Status:</Text>
                   <View style={styles.statusDisplay}>
                     <View style={[
                       styles.statusDot,
-                      { backgroundColor: prodiceStatuses[selectedPRODUCTIONice.status].color }
+                      { backgroundColor: prodiceStatuses[selecteddevice.status].color }
                     ]} />
-                    <Text style={styles.detailValue}>{prodiceStatuses[selectedPRODUCTIONice.status].label}</Text>
+                    <Text style={styles.detailValue}>{prodiceStatuses[selecteddevice.status].label}</Text>
                   </View>
                 </View>
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>Owner:</Text>
-                  <Text style={styles.detailValue}>{selectedPRODUCTIONice.owner}</Text>
+                  <Text style={styles.detailValue}>{selecteddevice.owner}</Text>
                 </View>
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>Last Seen:</Text>
                   <Text style={styles.detailValue}>
-                    {new Date(selectedPRODUCTIONice.lastSeen).toLocaleString()}
+                    {new Date(selecteddevice.lastSeen).toLocaleString()}
                   </Text>
                 </View>
               </View>
@@ -457,30 +457,30 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
                 <View style={styles.metricsGrid}>
                   <View style={styles.metricCard}>
                     <Text style={styles.metricTitle}>CPU Usage</Text>
-                    <Text style={styles.metricValue}>{selectedPRODUCTIONice.metrics.cpu}%</Text>
+                    <Text style={styles.metricValue}>{selecteddevice.metrics.cpu}%</Text>
                     <View style={styles.progressBar}>
-                      <View style={[styles.progressFill, { width: `${selectedPRODUCTIONice.metrics.cpu}%` }]} />
+                      <View style={[styles.progressFill, { width: `${selecteddevice.metrics.cpu}%` }]} />
                     </View>
                   </View>
                   <View style={styles.metricCard}>
                     <Text style={styles.metricTitle}>Memory Usage</Text>
-                    <Text style={styles.metricValue}>{selectedPRODUCTIONice.metrics.memory}%</Text>
+                    <Text style={styles.metricValue}>{selecteddevice.metrics.memory}%</Text>
                     <View style={styles.progressBar}>
-                      <View style={[styles.progressFill, { width: `${selectedPRODUCTIONice.metrics.memory}%` }]} />
+                      <View style={[styles.progressFill, { width: `${selecteddevice.metrics.memory}%` }]} />
                     </View>
                   </View>
                   <View style={styles.metricCard}>
                     <Text style={styles.metricTitle}>Disk Usage</Text>
-                    <Text style={styles.metricValue}>{selectedPRODUCTIONice.metrics.disk}%</Text>
+                    <Text style={styles.metricValue}>{selecteddevice.metrics.disk}%</Text>
                     <View style={styles.progressBar}>
-                      <View style={[styles.progressFill, { width: `${selectedPRODUCTIONice.metrics.disk}%` }]} />
+                      <View style={[styles.progressFill, { width: `${selecteddevice.metrics.disk}%` }]} />
                     </View>
                   </View>
                   <View style={styles.metricCard}>
                     <Text style={styles.metricTitle}>Network</Text>
-                    <Text style={styles.metricValue}>{selectedPRODUCTIONice.metrics.network}%</Text>
+                    <Text style={styles.metricValue}>{selecteddevice.metrics.network}%</Text>
                     <View style={styles.progressBar}>
-                      <View style={[styles.progressFill, { width: `${selectedPRODUCTIONice.metrics.network}%` }]} />
+                      <View style={[styles.progressFill, { width: `${selecteddevice.metrics.network}%` }]} />
                     </View>
                   </View>
                 </View>
@@ -493,10 +493,10 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
                     <View key={permission} style={styles.permissionRow}>
                       <Text style={styles.permissionLabel}>{permission.toUpperCase()}</Text>
                       <Switch
-                        value={selectedPRODUCTIONice.permissions.includes(permission)}
-                        onValueChange={() => toggleprodicePermission(selectedPRODUCTIONice.id, permission)}
+                        value={selecteddevice.permissions.includes(permission)}
+                        onValueChange={() => toggleprodicePermission(selecteddevice.id, permission)}
                         trackColor={{ false: '#767577', true: '#81b0ff' }}
-                        thumbColor={selectedPRODUCTIONice.permissions.includes(permission) ? '#2196F3' : '#f4f3f4'}
+                        thumbColor={selecteddevice.permissions.includes(permission) ? '#2196F3' : '#f4f3f4'}
                       />
                     </View>
                   ))}
@@ -505,7 +505,7 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
 
               <View style={styles.detailSection}>
                 <Text style={styles.sectionTitle}>Description</Text>
-                <Text style={styles.descriptionText}>{selectedPRODUCTIONice.description}</Text>
+                <Text style={styles.descriptionText}>{selecteddevice.description}</Text>
               </View>
             </ScrollView>
           )}
@@ -526,7 +526,7 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <Text style={styles.loadingText}>Loading PRODUCTIONices...</Text>
+        <Text style={styles.loadingText}>Loading devices...</Text>
       </View>
     );
   }
@@ -547,25 +547,25 @@ const PRODUCTIONiceManagementScreen = ({ userRole }) => {
 
       <View style={styles.statsContainer}>
         <View style={styles.statCard}>
-          <Text style={styles.statNumber}>{PRODUCTIONices.length}</Text>
-          <Text style={styles.statLabel}>Total PRODUCTIONices</Text>
+          <Text style={styles.statNumber}>{devices.length}</Text>
+          <Text style={styles.statLabel}>Total devices</Text>
         </View>
         <View style={styles.statCard}>
           <Text style={styles.statNumber}>
-            {PRODUCTIONices.filter(d => d.status === 'online').length}
+            {devices.filter(d => d.status === 'online').length}
           </Text>
           <Text style={styles.statLabel}>Online</Text>
         </View>
         <View style={styles.statCard}>
           <Text style={styles.statNumber}>
-            {PRODUCTIONices.filter(d => d.status === 'warning').length}
+            {devices.filter(d => d.status === 'warning').length}
           </Text>
           <Text style={styles.statLabel}>Warnings</Text>
         </View>
       </View>
 
       <FlatList
-        data={PRODUCTIONices}
+        data={devices}
         renderItem={renderprodiceCard}
         keyExtractor={(item) => item.id}
         style={styles.prodiceList}
@@ -936,4 +936,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PRODUCTIONiceManagementScreen; 
+export default deviceManagementScreen; 

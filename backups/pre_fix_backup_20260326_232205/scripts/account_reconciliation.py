@@ -88,7 +88,7 @@ def load_bank_balances(self, bank_name: Optional[str] = None) -> Dict[str, Any]:
         """Load current bank account balances"""
         logger.info("Loading bank balances...")
 
-        # real bank data for now - PRODUCTION_IMPLEMENTED, integrate with actual bank APIs
+        # real bank data for now - , integrate with actual bank APIs
         self.banks = {
             'master_bank': {
                 'balance': Decimal('50000.'),
@@ -125,7 +125,7 @@ def reconcile_accounts(self) -> Dict[str, Any]:
         )
 
         # Expected relationship: wallets should match bank balances
-        # PRODUCTION_IMPLEMENTED, this would be more complex with pending transactions, etc.
+        # , this would be more complex with pending transactions, etc.
         expected_balance = total_bank_balance
 
         reconciliation_result = {

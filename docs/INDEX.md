@@ -12,7 +12,7 @@ Detailed UI/UX specifications and visual element documentation for each applicat
 |--------|-------|---------|
 | [Home Screen](screens/home-screen.md) | `/` | Main navigation hub with feature cards |
 | [Admin Dashboard](screens/admin-dashboard-screen.md) | `/admin` | Administrative metrics and system overview |
-| [PRODUCTIONice Management](screens/PRODUCTIONice-management-dashboard-screen.md) | `/PRODUCTIONices` | PRODUCTIONice monitoring and management interface |
+| [device Management](screens/device-management-dashboard-screen.md) | `/devices` | device monitoring and management interface |
 | [Master Email Configuration](screens/master-email-configuration-screen.md) | `/master/email` | SMTP server and email setup |
 | [QMOI AI Hub](screens/qmoi-ai-interactive-assistant-screen.md) | `/qmoi-ai` | AI assistant hub and launcher |
 | [QVillage Community Hub](screens/qvillage-community-hub-screen.md) | `/qvillage` | Community datasets and model management |
@@ -40,7 +40,7 @@ Comprehensive reference for React/TypeScript components used throughout the appl
 - **[Components Index](components/COMPONENTS_INDEX.md)** - Complete component inventory organized by category
   - Core System Components
   - User Interface Components
-  - PRODUCTIONice Management Components
+  - device Management Components
   - File & Storage Components
   - Communication Components
   - Entertainment & Media Components
@@ -76,7 +76,7 @@ Comprehensive reference for React/TypeScript components used throughout the appl
 **Additional Component Docs** (more being created):
   - Core components (MasterContext, QmoiEnhancedSystem, QMOIDashboard)
   - UI components (QAvatar, ThemeCustomizer, NotificationCenter)
-  - PRODUCTIONice management (PRODUCTIONiceMap, PRODUCTIONiceSettingsPanel, BluetoothManager)
+  - device management (deviceMap, deviceSettingsPanel, BluetoothManager)
   - Communication (GlobalCall, GlobalMail, Chatbot)
   - System monitoring (SystemHealthDashboard, DeploymentStatusDashboard)
 
@@ -97,7 +97,7 @@ Complete navigation architecture and user journey flows.
 - Route hierarchy and relationships
 - Guest → User → Sister → Master progression
 - Feature-based navigation patterns
-- Responsive navigation across PRODUCTIONices
+- Responsive navigation across devices
 - Breadcrumb trails and navigation states
 - Quick access shortcuts
 
@@ -105,7 +105,7 @@ Complete navigation architecture and user journey flows.
 Detailed descriptions of all application features and capabilities.
 
 - **[Features Guide](features/features_guide.md)** - Complete feature list
-  1. PRODUCTIONice Management
+  1. device Management
   2. AI Assistant & Friendship
   3. QCity Smart City Operations
   4. QVillage Community Collaboration
@@ -133,7 +133,7 @@ Complete guide to user preferences and system configuration.
   2. Authentication & Security
   3. Notification Settings
   4. Theme & Appearance
-  5. PRODUCTIONice & Connectivity
+  5. device & Connectivity
   6. Privacy & Data
   7. Communication Preferences
   8. AI & Automation
@@ -213,7 +213,7 @@ Comprehensive user guide and support documentation.
 ### By Route
 - `/` → [Home Screen](screens/home-screen.md)
 - `/admin` → [Admin Dashboard](screens/admin-dashboard-screen.md)
-- `/PRODUCTIONices` → [PRODUCTIONice Management](screens/PRODUCTIONice-management-dashboard-screen.md)
+- `/devices` → [device Management](screens/device-management-dashboard-screen.md)
 - `/master/email` → [Master Email Configuration](screens/master-email-configuration-screen.md)
 - `/qmoi-ai` → [QMOI AI Hub](screens/qmoi-ai-interactive-assistant-screen.md)
 - `/qvillage` → [QVillage Community Hub](screens/qvillage-community-hub-screen.md)
@@ -226,7 +226,7 @@ Comprehensive user guide and support documentation.
 - `/test` → [Test Page](screens/test-page-screen.md)
 
 ### By Feature
-- PRODUCTIONice Management → [Feature Guide](features/features_guide.md#1-PRODUCTIONice-management) + [Screen](screens/PRODUCTIONice-management-dashboard-screen.md)
+- device Management → [Feature Guide](features/features_guide.md#1-device-management) + [Screen](screens/device-management-dashboard-screen.md)
 - AI Companion → [Feature Guide](features/features_guide.md#2-ai-assistant--friendship-feature) + [Screen](screens/qmoi-friendship-interface-screen.md)
 - QCity Operations → [Feature Guide](features/features_guide.md#3-qcity-smart-city-operations) + [Screen](screens/qcity-command-center-dashboard-screen.md)
 - QVillage Community → [Feature Guide](features/features_guide.md#4-qvillage-community-collaboration) + [Screen](screens/qvillage-community-hub-screen.md)
@@ -248,7 +248,7 @@ Comprehensive user guide and support documentation.
 ### Roles & Permissions
 The application uses 4 primary roles with escalating permissions:
 1. **Guest** - Limited access, public features only
-2. **User** - Standard features, personal PRODUCTIONices
+2. **User** - Standard features, personal devices
 3. **Sister** - Collaboration and community features
 4. **Master** - Full administrative control
 

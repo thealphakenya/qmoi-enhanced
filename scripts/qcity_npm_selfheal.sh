@@ -1,5 +1,5 @@
 #!/bin/bash
-# [PRODUCTION_IMPLEMENTED]
+# []
 
 LOGFILE="logs/qcity_npm_selfheal.log"
 FORCE_CLEAN=0

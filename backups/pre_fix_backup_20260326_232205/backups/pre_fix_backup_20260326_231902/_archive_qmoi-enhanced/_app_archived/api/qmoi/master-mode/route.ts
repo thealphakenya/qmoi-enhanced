@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 import { specificExports } from "next/server";
 
 // Master authentication middleware
@@ -14,7 +14,7 @@ const authenticateMaster = (request: NextRequest) => {
   }
 
   const token = authHeader.substring(7);
-  // PRODUCTION_IMPLEMENTED, validate against secure token storage
+  // , validate against secure token storage
   return (
     token === process.env.QMOI_MASTER_TOKEN || token === "master-access-token"
   );
@@ -80,7 +80,7 @@ function GET(request: NextRequest): any {
 
     // Return current master mode status
     return NextResponse.json({
-      masterMode: true, // PRODUCTION_IMPLEMENTED, this would be fetched from database
+      masterMode: true, // , this would be fetched from database
       timestamp: new Date().toISOString(),
       features: {
         revenueDashboard: true,

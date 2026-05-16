@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] Token refresh endpoint
+// [] Token refresh endpoint
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/auth/service";
 

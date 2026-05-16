@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 
 # UI Missing Paths
 
@@ -23,8 +23,8 @@ The following UI files were detected in repository scan but are not currently re
 ./components/DealsList.tsx
 ./components/DealsPopup.tsx
 ./components/DeploymentStatusDashboard.tsx
-./components/PRODUCTIONiceMap.tsx
-./components/PRODUCTIONiceSettingsPanel.tsx
+./components/deviceMap.tsx
+./components/deviceSettingsPanel.tsx
 ./components/DownloadAppButton.tsx
 ./components/DownloadManager.tsx
 ./components/DownloadQApp.tsx
@@ -70,7 +70,7 @@ The following UI files were detected in repository scan but are not currently re
 ./components/QIStateWindow.tsx
 ./components/QMOIAutoFixDashboard.tsx
 ./components/QMOIDashboard.tsx
-./components/QMOIOwnPRODUCTIONice.tsx
+./components/QMOIOwndevice.tsx
 ./components/QMediaPlayer.tsx
 ./components/QVillage.tsx
 ./components/QVillageDatasetsPanel.tsx
@@ -110,10 +110,10 @@ The following UI files were detected in repository scan but are not currently re
 ./components/auth/BiometricAuth.tsx
 ./components/automation/AutomationRulesPanel.tsx
 ./components/components/qmedia_player.md.tsx
-./components/PRODUCTIONice/AWSCredentialsModal.tsx
-./components/PRODUCTIONice/AzureCredentialsModal.tsx
-./components/PRODUCTIONice/PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
-./components/PRODUCTIONice/GCPCredentialsModal.tsx
+./components/device/AWSCredentialsModal.tsx
+./components/device/AzureCredentialsModal.tsx
+./components/device/deviceIntegration✅ production COMPLETE - Full feature implementation and testing
+./components/device/GCPCredentialsModal.tsx
 ./components/enhanced-system-dashboard.tsx
 ./components/enhanced_build_tools.tsx
 ./components/global/GlobalOperationsDashboard.tsx
@@ -129,10 +129,10 @@ The following UI files were detected in repository scan but are not currently re
 ./components/q-city/GlobalLinksManager.tsx
 ./components/q-city/Onboarding.tsx
 ./components/q-city/QCityDashboard.tsx
-./components/q-city/QCityPRODUCTIONicePanel.tsx
+./components/q-city/QCitydevicePanel.tsx
 ./components/q-city/QMOIBiometricManager.tsx
 ./components/q-city/QMOILinksManager.tsx
-./components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx
+./components/q-city/QMOIOwndeviceLogs.tsx
 ./components/q-city/QMOIRevenueDashboard.tsx
 ./components/q-city/QVillage.tsx
 ./components/q-city/TracksPanel.tsx
@@ -265,8 +265,8 @@ The following UI files were detected in repository scan but are not currently re
 ./src/components/q-city/AviatorGalleryPanel.tsx
 ./src/components/q-city/CommandPanel.tsx
 ./src/components/q-city/Dashboard.tsx
-./src/components/q-city/PRODUCTIONicePanel.tsx
-./src/components/q-city/PRODUCTIONicesHub.tsx
+./src/components/q-city/devicePanel.tsx
+./src/components/q-city/devicesHub.tsx
 ./src/components/q-city/DistributedCompute.tsx
 ./src/components/q-city/DocumentManagerPanel.tsx
 ./src/components/q-city/EarningDashboard.tsx

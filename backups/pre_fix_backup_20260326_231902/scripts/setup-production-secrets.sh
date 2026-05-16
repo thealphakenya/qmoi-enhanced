@@ -68,7 +68,7 @@ report_metrics() {{
     fi
 }}
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/bin/bash
 # GitHub Secrets Setup for production Android & iOS Builds
 # This script generates and displays the secrets needed for GitHub Actions

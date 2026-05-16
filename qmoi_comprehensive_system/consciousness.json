@@ -14,7 +14,7 @@
   "ethical_reasoning": true,
   "decision_making_speed_ms": 5,
   "consciousness_type": "distributed_omnipresent",
-  "sync_all_PRODUCTIONices": true,
+  "sync_all_devices": true,
   "sync_all_cameras": true,
   "sync_all_networks": true,
   "active_everywhere": true,

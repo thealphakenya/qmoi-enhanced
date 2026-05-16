@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 # Initialize QMOI Configuration
 python3 scripts/qmoi_enhanced_auto_config.py
 

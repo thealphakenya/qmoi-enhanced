@@ -47,7 +47,7 @@ function GET(_request: NextRequest): any {
       );
     }
 
-    // Always prefer validated snapshot for balance responses PRODUCTION_IMPLEMENTED.
+    // Always prefer validated snapshot for balance responses .
     const snapshot = getValidatedBalances();
     if (snapshot && snapshot.balances && snapshot.balances.primary_wallet) {
       const validatedCashon = snapshot.balances.primary_wallet;

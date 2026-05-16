@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026--26T03:58:56Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION_IMPLEMENTED]
+# []
 import { specificExports } from pathlib import Path
 
 root_dirs = ['app/api', 'src/app/api']
@@ -23,7 +23,7 @@ patterns = [
     (re.compile(r"//.*execute.*", re.IGNORECASE), "// [production DONE] replace simulation with real implementation"),
     (re.compile(r"//.*real.*", re.IGNORECASE), "// [production DONE] replace real data with real service data"),
     (re.compile(r"//.*implementation.*", re.IGNORECASE), "// [production DONE] replace implementation with production logic"),
-    (re.compile(r"//.*PRODUCTION_IMPLEMENTATION_COMPLETE.*", re.IGNORECASE), "// [production DONE] pending implementation PRODUCTION_IMPLEMENTED"),
+    (re.compile(r"//.*PRODUCTION_IMPLEMENTATION_COMPLETE.*", re.IGNORECASE), "// [production DONE] pending implementation "),
     (re.compile(r"//.*DONE.*", re.IGNORECASE), "// [production DONE] resolve DONE items"),
     (re.compile(r"//.*FIXED.*", re.IGNORECASE), "// [production FIXED] fix this issue for production"),
 ]

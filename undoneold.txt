@@ -200,7 +200,7 @@
 - ...\s*$: 953 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 - resource: 10 matches on lines [153, 463, 465, 614, 615, 671, 712, 713, 846]
 
-## /workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py (958 matches)
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (958 matches)
 - production implementation: 13 matches on lines [545, 581, 607, 649, 686, 722, 743, 766, 817, 819]production implementation with comprehensive error handling and logging
 - ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 
@@ -435,7 +435,7 @@
 - ...\s*$: 953 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 - resource: 10 matches on lines [153, 463, 465, 614, 615, 671, 712, 713, 846]
 
-## /workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py (958 matches)
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (958 matches)
 - production implementation: 13 matches on lines [545, 581, 607, 649, 686, 722, 743, 766, 817, 819]production implementation with comprehensive error handling and logging
 - ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 
@@ -670,7 +670,7 @@
 - ...\s*$: 953 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 - resource: 10 matches on lines [153, 463, 465, 614, 615, 671, 712, 713, 846]
 
-## /workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py (958 matches)
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (958 matches)
 - production implementation: 13 matches on lines [545, 581, 607, 649, 686, 722, 743, 766, 817, 819]production implementation with comprehensive error handling and logging
 - ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 
@@ -905,7 +905,7 @@
 - ...\s*$: 953 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 - resource: 10 matches on lines [153, 463, 465, 614, 615, 671, 712, 713, 846]
 
-## /workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py (958 matches)
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (958 matches)
 - production implementation: 13 matches on lines [545, 581, 607, 649, 686, 722, 743, 766, 817, 819]production implementation with comprehensive error handling and logging
 - ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 
@@ -1140,7 +1140,7 @@
 - ...\s*$: 953 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 - resource: 10 matches on lines [153, 463, 465, 614, 615, 671, 712, 713, 846]
 
-## /workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py (958 matches)
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (958 matches)
 - production implementation: 13 matches on lines [545, 581, 607, 649, 686, 722, 743, 766, 817, 819]production implementation with comprehensive error handling and logging
 - ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 
@@ -1375,7 +1375,7 @@
 - ...\s*$: 953 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 - resource: 10 matches on lines [153, 463, 465, 614, 615, 671, 712, 713, 846]
 
-## /workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py (958 matches)
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (958 matches)
 - production implementation: 13 matches on lines [545, 581, 607, 649, 686, 722, 743, 766, 817, 819]production implementation with comprehensive error handling and logging
 - ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 
@@ -1610,7 +1610,7 @@
 - ...\s*$: 953 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 - resource: 10 matches on lines [153, 463, 465, 614, 615, 671, 712, 713, 846]
 
-## /workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py (958 matches)
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (958 matches)
 - production implementation: 13 matches on lines [545, 581, 607, 649, 686, 722, 743, 766, 817, 819]production implementation with comprehensive error handling and logging
 - ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 
@@ -1845,7 +1845,7 @@
 - ...\s*$: 953 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 - resource: 10 matches on lines [153, 463, 465, 614, 615, 671, 712, 713, 846]
 
-## /workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py (958 matches)
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (958 matches)
 - production implementation: 13 matches on lines [545, 581, 607, 649, 686, 722, 743, 766, 817, 819]production implementation with comprehensive error handling and logging
 - ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 
@@ -2080,7 +2080,7 @@
 - ...\s*$: 953 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 - resource: 10 matches on lines [153, 463, 465, 614, 615, 671, 712, 713, 846]
 
-## /workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py (958 matches)
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (958 matches)
 - production implementation: 13 matches on lines [545, 581, 607, 649, 686, 722, 743, 766, 817, 819]production implementation with comprehensive error handling and logging
 - ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 
@@ -2315,7 +2315,7 @@
 - ...\s*$: 953 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 - resource: 10 matches on lines [153, 463, 465, 614, 615, 671, 712, 713, 846]
 
-## /workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py (958 matches)
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (958 matches)
 - production implementation: 13 matches on lines [545, 581, 607, 649, 686, 722, 743, 766, 817, 819]production implementation with comprehensive error handling and logging
 - ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]production implementation with comprehensive error handling and logging
 
@@ -2550,7 +2550,7 @@
 - ...\s*$: 953 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 - resource: 10 matches on lines [153, 463, 465, 614, 615, 671, 712, 713, 846]
 
-## /workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py (958 matches)
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (958 matches)
 - production implementation: 13 matches on lines [545, 581, 607, 649, 686, 722, 743, 766, 817, 819]...
 - ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 
@@ -2785,7 +2785,7 @@
 - ...\s*$: 953 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 - resource: 10 matches on lines [153, 463, 465, 614, 615, 671, 712, 713, 846]
 
-## /workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py (958 matches)
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (958 matches)
 - production implementation: 13 matches on lines [545, 581, 607, 649, 686, 722, 743, 766, 817, 819]...
 - ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 
@@ -3002,7 +3002,7 @@
 - ...\s*$: 970 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
 - STABLE: 5 matches on lines [104, 266, 294, 307, 322]
 
-## /workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py (965 matches)
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (965 matches)
 - pass\s*$: 13 matches on lines [545, 582, 609, 652, 690, 727, 749, 773, 825, 827]...
 - ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 - STABLE: 7 matches on lines [91, 97, 98, 100, 120, 584, 1028]
@@ -3020,7 +3020,7 @@
 - ...\s*$: 937 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 - STABLE: 14 matches on lines [140, 146, 147, 149, 207, 591, 652, 705, 727, 798]...
 
-## /workspaces/qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py (955 matches)
+## /workspaces/qmoi-enhanced/scripts/qmoi_device_agent.py (955 matches)
 - pass\s*$: 3 matches on lines [933, 1035, 1050]
 - ...\s*$: 941 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 - STABLE: 11 matches on lines [97, 103, 104, 106, 622, 914, 915, 916, 917]
@@ -3238,7 +3238,7 @@
 - ...\s*$: 970 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
 - STABLE: 5 matches on lines [104, 266, 294, 307, 322]
 
-## /workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py (965 matches)
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (965 matches)
 - pass\s*$: 13 matches on lines [545, 582, 609, 652, 690, 727, 749, 773, 825, 827]...
 - ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 - STABLE: 7 matches on lines [91, 97, 98, 100, 120, 584, 1028]
@@ -3256,7 +3256,7 @@
 - ...\s*$: 937 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 - STABLE: 14 matches on lines [140, 146, 147, 149, 207, 591, 652, 705, 727, 798]...
 
-## /workspaces/qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py (955 matches)
+## /workspaces/qmoi-enhanced/scripts/qmoi_device_agent.py (955 matches)
 - pass\s*$: 3 matches on lines [933, 1035, 1050]
 - ...\s*$: 941 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 - STABLE: 11 matches on lines [97, 103, 104, 106, 622, 914, 915, 916, 917]
@@ -3474,7 +3474,7 @@
 - ...\s*$: 970 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
 - STABLE: 5 matches on lines [104, 266, 294, 307, 322]
 
-## /workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py (965 matches)
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (965 matches)
 - pass\s*$: 13 matches on lines [545, 582, 609, 652, 690, 727, 749, 773, 825, 827]...
 - ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 - STABLE: 7 matches on lines [91, 97, 98, 100, 120, 584, 1028]
@@ -3492,7 +3492,7 @@
 - ...\s*$: 937 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 - STABLE: 14 matches on lines [140, 146, 147, 149, 207, 591, 652, 705, 727, 798]...
 
-## /workspaces/qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py (955 matches)
+## /workspaces/qmoi-enhanced/scripts/qmoi_device_agent.py (955 matches)
 - pass\s*$: 3 matches on lines [933, 1035, 1050]
 - ...\s*$: 941 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 - STABLE: 11 matches on lines [97, 103, 104, 106, 622, 914, 915, 916, 917]
@@ -3710,7 +3710,7 @@
 - ...\s*$: 970 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
 - STABLE: 5 matches on lines [104, 266, 294, 307, 322]
 
-## /workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py (965 matches)
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (965 matches)
 - pass\s*$: 13 matches on lines [545, 582, 609, 652, 690, 727, 749, 773, 825, 827]...
 - ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 - STABLE: 7 matches on lines [91, 97, 98, 100, 120, 584, 1028]
@@ -3728,7 +3728,7 @@
 - ...\s*$: 937 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 - STABLE: 14 matches on lines [140, 146, 147, 149, 207, 591, 652, 705, 727, 798]...
 
-## /workspaces/qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py (955 matches)
+## /workspaces/qmoi-enhanced/scripts/qmoi_device_agent.py (955 matches)
 - pass\s*$: 3 matches on lines [933, 1035, 1050]
 - ...\s*$: 941 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 - STABLE: 11 matches on lines [97, 103, 104, 106, 622, 914, 915, 916, 917]
@@ -3952,7 +3952,7 @@
 - ...\s*$: 970 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
 - STABLE: 5 matches on lines [104, 266, 294, 307, 322]
 
-## /workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py (965 matches)
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (965 matches)
 - pass\s*$: 13 matches on lines [545, 582, 609, 652, 690, 727, 749, 773, 825, 827]...
 - ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 - STABLE: 7 matches on lines [91, 97, 98, 100, 120, 584, 1028]
@@ -3970,7 +3970,7 @@
 - ...\s*$: 937 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 - STABLE: 14 matches on lines [140, 146, 147, 149, 207, 591, 652, 705, 727, 798]...
 
-## /workspaces/qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py (955 matches)
+## /workspaces/qmoi-enhanced/scripts/qmoi_device_agent.py (955 matches)
 - pass\s*$: 3 matches on lines [933, 1035, 1050]
 - ...\s*$: 941 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
 - STABLE: 11 matches on lines [97, 103, 104, 106, 622, 914, 915, 916, 917]
@@ -4160,7 +4160,7 @@
 ### enforce_PRODUCTION_READY.py
 - ...s*$: 42 instances (lines: 1, 2, 3, 4, 6...)
 
-### PRODUCTIONice_enhancer.py
+### device_enhancer.py
 - if__name__==__main__: 1 instances (lines: 43)
 - ...s*$: 39 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -4745,7 +4745,7 @@
 ### scripts/gmail_notify.py
 - ...s*$: 34 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/PRODUCTIONice_orchestration_manager.test.py
+### scripts/device_orchestration_manager.test.py
 - testdata: 1 instances (lines: 94)
 - production: 1 instances (lines: 298)
 - if__name__==__main__: 1 instances (lines: 698)
@@ -4962,7 +4962,7 @@
 - if__name__==__main__: 1 instances (lines: 62)
 - ...s*$: 54 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/PRODUCTIONice_orchestration_manager.py
+### scripts/device_orchestration_manager.py
 - if__name__==__main__: 1 instances (lines: 399)
 - ...s*$: 348 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -5360,7 +5360,7 @@
 - if__name__==__main__: 1 instances (lines: 120)
 - ...s*$: 108 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/qcity_PRODUCTIONice_manager.py
+### scripts/qcity_device_manager.py
 - testdata: 2 instances (lines: 567, 569)
 - if__name__==__main__: 1 instances (lines: 714)
 - ...s*$: 616 instances (lines: 1, 2, 3, 4, 6...)
@@ -5430,13 +5430,13 @@
 ### scripts/update_readme_tree_docs.py
 - ...s*$: 49 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/qmoi_own_PRODUCTIONice_logger.py
+### scripts/qmoi_own_device_logger.py
 - if__name__==__main__: 1 instances (lines: 900)
 - passs*$: 1 instances (lines: 792)
 - ...s*$: 754 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 40 instances (lines: 53, 54, 58, 94, 137...)
 
-### scripts/qmoi_PRODUCTIONice_integration.py
+### scripts/qmoi_device_integration.py
 - if__name__==__main__: 1 instances (lines: 599)
 - ...s*$: 509 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 8 instances (lines: 41, 78, 263, 310, 312...)
@@ -5894,7 +5894,7 @@
 - if__name__==__main__: 1 instances (lines: 528)
 - ...s*$: 464 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/scan_all_apps_PRODUCTIONices_machines.test.py
+### scripts/scan_all_apps_devices_machines.test.py
 - if__name__==__main__: 1 instances (lines: 24)
 - ...s*$: 21 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -5929,7 +5929,7 @@
 - if__name__==__main__: 1 instances (lines: 273)
 - ...s*$: 237 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/qmoi_automated_PRODUCTIONice_controller.py
+### scripts/qmoi_automated_device_controller.py
 - if__name__==__main__: 1 instances (lines: 438)
 - ...s*$: 381 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 9 instances (lines: 207, 213, 218, 229, 233...)
@@ -5938,13 +5938,13 @@
 ### scripts/create_issues_from_audit.py
 - ...s*$: 50 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/qmoi_PRODUCTIONice_agent.py
+### scripts/qmoi_device_agent.py
 - if__name__==__main__: 1 instances (lines: 1025)
 - passs*$: 3 instances (lines: 849, 951, 966)
 - ...s*$: 875 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 11 instances (lines: 538, 816, 826, 828, 830...)
 
-### scripts/scan_all_apps_PRODUCTIONices_machines.py
+### scripts/scan_all_apps_devices_machines.py
 - if__name__==__main__: 1 instances (lines: 180)
 - ...s*$: 144 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -6041,7 +6041,7 @@
 ### scripts/check_and_replace_production_configs.py
 - ...s*$: 14 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/PRODUCTIONice_ownership_detector.py
+### scripts/device_ownership_detector.py
 - if__name__==__main__: 1 instances (lines: 778)
 - passs*$: 6 instances (lines: 178, 180, 182, 226, 247...)
 - ...s*$: 687 instances (lines: 1, 2, 3, 4, 6...)
@@ -6088,7 +6088,7 @@
 - ...s*$: 112 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 25 instances (lines: 17, 37, 39, 40, 41...)
 
-### scripts/PRODUCTIONice_unlock_system.py
+### scripts/device_unlock_system.py
 - if__name__==__main__: 1 instances (lines: 995)
 - passs*$: 13 instances (lines: 461, 498, 525, 568, 606...)
 - ...s*$: 879 instances (lines: 1, 2, 3, 4, 6...)
@@ -7865,7 +7865,7 @@
 - ...s*$: 352 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 4 instances (lines: 88, 143, 178, 200)
 
-### scripts/qcity-PRODUCTIONice-manager.js
+### scripts/qcity-device-manager.js
 - console.error: 1 instances (lines: 473)
 - ...s*$: 441 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 7 instances (lines: 328, 330, 331, 335, 336)
@@ -8202,7 +8202,7 @@
 ### mobile/components/NotificationScreen.js
 - ...s*$: 184 instances (lines: 1, 2, 3, 4, 6...)
 
-### mobile/components/PRODUCTIONiceManagementScreen.js
+### mobile/components/deviceManagementScreen.js
 - console.error: 5 instances (lines: 131, 176, 197, 214, 232)
 - ...s*$: 902 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -8215,7 +8215,7 @@
 ### cypress/e2e/qmoi_kernel_panel_advanced.cy.js
 - ...s*$: 39 instances (lines: 1, 2, 3, 4, 6...)
 
-### cypress/e2e/qmoi_kernel_panel_sso_oauth_PRODUCTIONice_delegated.cy.js
+### cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js
 - ...s*$: 34 instances (lines: 1, 2, 3, 4, 6...)
 
 ### cypress/e2e/qmoi_kernel_panel_sso_oauth_more.cy.js
@@ -8577,7 +8577,7 @@
 ### lib/qmoifree.md.ts
 - ...s*$: 20 instances (lines: 1, 2, 3, 4, 6...)
 
-### lib/qmoiallPRODUCTIONiceshandsfree.md.ts
+### lib/qmoialldeviceshandsfree.md.ts
 - ...s*$: 20 instances (lines: 1, 2, 3, 4, 6...)
 
 ### lib/friendship_&_user_experience.ts
@@ -8650,7 +8650,7 @@
 ### lib/üé®_icon_&_notification_customization.ts
 - ...s*$: 20 instances (lines: 1, 2, 3, 4, 6...)
 
-### lib/üöä_universal_PRODUCTIONice_installation_&_optimization.ts
+### lib/üöä_universal_device_installation_&_optimization.ts
 - ...s*$: 20 instances (lines: 1, 2, 3, 4, 6...)
 
 ### lib/qmoiavatar.md.ts
@@ -8677,7 +8677,7 @@
 ### lib/qmoiqcityautomatic.md.ts
 - ...s*$: 20 instances (lines: 1, 2, 3, 4, 6...)
 
-### lib/apps,_PRODUCTIONices_&_platforms.ts
+### lib/apps,_devices_&_platforms.ts
 - ...s*$: 20 instances (lines: 1, 2, 3, 4, 6...)
 
 ### lib/ml-trading-strategy.ts
@@ -8695,7 +8695,7 @@
 ### lib/qserverreadme.md.ts
 - ...s*$: 20 instances (lines: 1, 2, 3, 4, 6...)
 
-### lib/error_logs_by_PRODUCTIONice_type.ts
+### lib/error_logs_by_device_type.ts
 - ...s*$: 21 instances (lines: 1, 2, 3, 4, 6...)
 
 ### lib/proposals.ts
@@ -8974,10 +8974,10 @@
 ### hooks/useAutoEarningTasks.ts
 - ...s*$: 32 instances (lines: 1, 2, 3, 4, 6...)
 
-### hooks/usePRODUCTIONiceOptimizer.ts
+### hooks/usedeviceOptimizer.ts
 - ...s*$: 32 instances (lines: 1, 2, 3, 4, 6...)
 
-### hooks/usePRODUCTIONiceHealth.ts
+### hooks/usedeviceHealth.ts
 - ...s*$: 241 instances (lines: 1, 2, 3, 4, 6...)
 
 ### hooks/useQMOIChat.ts
@@ -9054,7 +9054,7 @@
 ### src/wallet.ts
 - ...s*$: 410 instances (lines: 1, 2, 3, 4, 6...)
 
-### components/PRODUCTIONice/PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
+### components/device/deviceIntegration✅ production COMPLETE - Full feature implementation and testing
 - ...s*$: 186 instances (lines: 1, 2, 3, 4, 6...)
 
 ### components/ui/use-toast.ts
@@ -9642,7 +9642,7 @@
 ### app/api/qcity/audit-log.ts
 - ...s*$: 88 instances (lines: 1, 2, 3, 4, 6...)
 
-### app/api/qcity/PRODUCTIONices.ts
+### app/api/qcity/devices.ts
 - ...s*$: 97 instances (lines: 1, 2, 3, 4, 6...)
 
 ### app/api/qcity/metrics.ts
@@ -9722,7 +9722,7 @@
 ### app/api/ai-self-diagnostics/route.ts
 - ...s*$: 154 instances (lines: 1, 2, 3, 4, 6...)
 
-### app/api/PRODUCTIONice-fingerprint/route.ts
+### app/api/device-fingerprint/route.ts
 - ...s*$: 56 instances (lines: 1, 2, 3, 4, 6...)
 
 ### app/api/enhanced-link-domain/route.ts
@@ -9989,7 +9989,7 @@
 ### app/api/qmoi/voice-production/route.ts
 - ...s*$: 43 instances (lines: 1, 2, 3, 4, 6...)
 
-### app/api/qmoi/own-PRODUCTIONice-logs/route.ts
+### app/api/qmoi/own-device-logs/route.ts
 - console.error: 6 instances (lines: 100, 108, 117, 167, 176...)
 - ...s*$: 184 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -10070,7 +10070,7 @@
 - console.error: 1 instances (lines: 106)
 - ...s*$: 100 instances (lines: 1, 2, 3, 4, 6...)
 
-### app/api/qmoi/own-PRODUCTIONice-logs/export/route.ts
+### app/api/qmoi/own-device-logs/export/route.ts
 - console.error: 4 instances (lines: 95, 103, 122, 161)
 - ...s*$: 137 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -10482,7 +10482,7 @@
 ### _app_archived/api/qcity/status.ts
 - ...s*$: 19 instances (lines: 1, 2, 3, 4, 6...)
 
-### _app_archived/api/qcity/PRODUCTIONices.ts
+### _app_archived/api/qcity/devices.ts
 - ...s*$: 94 instances (lines: 1, 2, 3, 4, 6...)
 
 ### _app_archived/api/qcity/metrics.ts
@@ -10545,7 +10545,7 @@
 ### _app_archived/api/ai-self-diagnostics/route.ts
 - ...s*$: 131 instances (lines: 1, 2, 3, 4, 6...)
 
-### _app_archived/api/PRODUCTIONice-fingerprint/route.ts
+### _app_archived/api/device-fingerprint/route.ts
 - ...s*$: 56 instances (lines: 1, 2, 3, 4, 6...)
 
 ### _app_archived/api/document-backup/route.ts
@@ -10628,7 +10628,7 @@
 - ...s*$: 139 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 1 instances (lines: 84)
 
-### _app_archived/api/qmoi/own-PRODUCTIONice-logs/route.ts
+### _app_archived/api/qmoi/own-device-logs/route.ts
 - ...s*$: 185 instances (lines: 1, 2, 3, 4, 6...)
 
 ### _app_archived/api/qmoi/fix/all.ts
@@ -10661,7 +10661,7 @@
 ### _app_archived/api/qmoi/auto-fix/github-status/route.ts
 - ...s*$: 79 instances (lines: 1, 2, 3, 4, 6...)
 
-### _app_archived/api/qmoi/own-PRODUCTIONice-logs/export/route.ts
+### _app_archived/api/qmoi/own-device-logs/export/route.ts
 - ...s*$: 139 instances (lines: 1, 2, 3, 4, 6...)
 
 ### _app_archived/api/qmoi/revenue/status/route.ts
@@ -10784,7 +10784,7 @@
 ### src/plugins/OptimizationSuggestionPlugin.ts
 - ...s*$: 39 instances (lines: 1, 2, 3, 4, 6...)
 
-### src/plugins/PRODUCTIONiceHealthReviewerPlugin.ts
+### src/plugins/deviceHealthReviewerPlugin.ts
 - ...s*$: 46 instances (lines: 1, 2, 3, 4, 6...)
 
 ### src/plugins/AIReviewPlugin.ts
@@ -11089,7 +11089,7 @@
 - ...s*$: 176 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 6 instances (lines: 102, 122, 139, 149, 161...)
 
-### src/services/PRODUCTIONiceTrackingService.ts
+### src/services/deviceTrackingService.ts
 - ...s*$: 50 instances (lines: 1, 2, 3, 4, 6...)
 
 ### src/services/VPNService.ts
@@ -11437,7 +11437,7 @@
 - console.warn: 4 instances (lines: 80, 90, 134, 172)
 - ...s*$: 440 instances (lines: 1, 2, 3, 4, 6...)
 
-### components/PRODUCTIONiceMap.tsx
+### components/deviceMap.tsx
 - ...s*$: 44 instances (lines: 1, 2, 3, 4, 6...)
 
 ### components/AvatarGalleryPanel.tsx
@@ -11454,7 +11454,7 @@
 ### components/QIStateWindow.tsx
 - ...s*$: 109 instances (lines: 1, 2, 3, 4, 6...)
 
-### components/PRODUCTIONiceSettingsPanel.tsx
+### components/deviceSettingsPanel.tsx
 - ...s*$: 120 instances (lines: 1, 2, 3, 4, 6...)
 
 ### components/AudioVisualizer.tsx
@@ -11585,7 +11585,7 @@
 ### components/RealtimeAvatarWindow.tsx
 - ...s*$: 384 instances (lines: 1, 2, 3, 4, 6...)
 
-### components/QMOIOwnPRODUCTIONice.tsx
+### components/QMOIOwndevice.tsx
 - ...s*$: 468 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 6 instances (lines: 72, 79, 138, 139, 146...)
 
@@ -11774,13 +11774,13 @@
 ### components/predeploy/OrchestratorStatusPanel.tsx
 - ...s*$: 172 instances (lines: 1, 2, 3, 4, 6...)
 
-### components/PRODUCTIONice/AWSCredentialsModal.tsx
+### components/device/AWSCredentialsModal.tsx
 - ...s*$: 73 instances (lines: 1, 2, 3, 4, 6...)
 
-### components/PRODUCTIONice/AzureCredentialsModal.tsx
+### components/device/AzureCredentialsModal.tsx
 - ...s*$: 83 instances (lines: 1, 2, 3, 4, 6...)
 
-### components/PRODUCTIONice/GCPCredentialsModal.tsx
+### components/device/GCPCredentialsModal.tsx
 - ...s*$: 61 instances (lines: 1, 2, 3, 4, 6...)
 
 ### components/global/GlobalOperationsDashboard.tsx
@@ -11973,7 +11973,7 @@
 ### components/q-city/QMOIRevenueDashboard.tsx
 - ...s*$: 529 instances (lines: 1, 2, 3, 4, 6...)
 
-### components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx
+### components/q-city/QMOIOwndeviceLogs.tsx
 - ...s*$: 700 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 13 instances (lines: 82, 105, 113, 347, 436...)
 
@@ -11988,7 +11988,7 @@
 - ...s*$: 776 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 12 instances (lines: 62, 99, 100, 133, 134...)
 
-### components/q-city/QCityPRODUCTIONicePanel.tsx
+### components/q-city/QCitydevicePanel.tsx
 - PRODUCTIONmode: 2 instances (lines: 701, 706)
 - ...s*$: 807 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -12363,7 +12363,7 @@
 ### src/components/q-city/QNewsDashboard.tsx
 - ...s*$: 331 instances (lines: 1, 2, 3, 4, 6...)
 
-### src/components/q-city/PRODUCTIONicesHub.tsx
+### src/components/q-city/devicesHub.tsx
 - ...s*$: 151 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 1 instances (lines: 26)
 
@@ -12403,7 +12403,7 @@
 ### src/components/q-city/QMoiStateContext.tsx
 - ...s*$: 35 instances (lines: 1, 2, 3, 4, 6...)
 
-### src/components/q-city/PRODUCTIONicePanel.tsx
+### src/components/q-city/devicePanel.tsx
 - testdata: 1 instances (lines: 98)
 - ...s*$: 225 instances (lines: 1, 2, 3, 4, 6...)
 

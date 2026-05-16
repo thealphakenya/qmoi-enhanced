@@ -239,7 +239,7 @@ class QMOIHealthValidator:
                 content = file_path.read_text().lower()
                 for pattern in sensitive_patterns:
                     if pattern in content and ('placeholder' not in content or 'example' not in content):
-                        # This is a very basic check - production_IMPLEMENTED, use proper secret scanning
+                        # This is a very basic check - , use proper secret scanning
                         pass
             except:
                 pass

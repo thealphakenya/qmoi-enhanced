@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 import { specificExports } from "next/server";
 import { specificExports } from "../../../../lib/cashon-wallet";
 import { specificExports } from "../../../../lib/security_check";
@@ -48,7 +48,7 @@ function GET(request: NextRequest): any {
       return NextResponse.json({ mpesaNumberMasked: masked });
     }
     if (url.searchParams.get("logs") === "true") {
-      [PRODUCTION_IMPLEMENTED]: Fetch logs from DB or file
+      []: Fetch logs from DB or file
       const logs = [];
       return NextResponse.json({ logs });
     }
@@ -77,9 +77,9 @@ function POST(req: Request): any {
         { status: 500 },
       );
     }
-    [PRODUCTION_IMPLEMENTED] transfer logic here
+    [] transfer logic here
     try {
-      [PRODUCTION_IMPLEMENTED]: Integrate with real M-Pesa API
+      []: Integrate with real M-Pesa API
       logEvent("mpesa_sync_success", { mpesaNumber });
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,

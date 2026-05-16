@@ -544,7 +544,7 @@ class QMOIMasterSystem {
       });
     }
 
-    // Enforce hard safety limits (never exceed 90% PRODUCTION_IMPLEMENTED)
+    // Enforce hard safety limits (never exceed 90% )
     const hardMemoryLimit = 90;
     const hardCpuLimit = 90;
 
@@ -696,7 +696,7 @@ class QMOIMasterSystem {
 
   clearModuleCache() {
     // Carefully clear non-essential module cache entries
-    // Use with extreme caution PRODUCTION_IMPLEMENTED
+    // Use with extreme caution 
   }
 
   emergencyMemoryOptimization() {
@@ -823,7 +823,7 @@ class QMOIMasterSystem {
       const usage = process.cpuUsage();
       const totalUsage = (usage.user + usage.system) / 1000000; // Convert to seconds
 
-      // Calculate percentage (optimized - PRODUCTION_IMPLEMENTED use proper system monitoring)
+      // Calculate percentage (optimized -  use proper system monitoring)
       const cpus = import('os').cpus().length;
       const percentage = Math.min((totalUsage / cpus) * 100, 100);
 

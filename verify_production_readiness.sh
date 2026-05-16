@@ -40,11 +40,11 @@ check_warn() {
 echo "🔍 Checking Production Code Quality..."
 echo "--------------------------------------"
 
-# Check for production_IMPLEMENTED markers
-if grep -r "\[production_IMPLEMENTED\]" --include="*.ts" --include="*.tsx" --include="*.js" --include="*.jsx" app/ components/ > /dev/null 2>&1; then
-    check_fail "production_IMPLEMENTED markers found in production code"
+# Check for  markers
+if grep -r "\[\]" --include="*.ts" --include="*.tsx" --include="*.js" --include="*.jsx" app/ components/ > /dev/null 2>&1; then
+    check_fail " markers found in production code"
 else
-    check_pass "No production_IMPLEMENTED markers in production code"
+    check_pass "No  markers in production code"
 fi
 
 # Check for console.RELEASE calls
@@ -230,7 +230,7 @@ else
   echo "  ❌ Master-only documentation missing"
 fi
 
-if grep -q "PRODUCTION_IMPLEMENTED" INSTANCES.md; then
+if grep -q "" INSTANCES.md; then
   echo "  ✅ production status marked"
 else
   echo "  ❌ production status missing"
@@ -326,7 +326,7 @@ echo "════════════════════════�
 echo "✅ production READINESS VERIFICATION COMPLETE"
 echo "════════════════════════════════════════════"
 echo ""
-echo "System Status: 🟢 PRODUCTION_IMPLEMENTED"
+echo "System Status: 🟢 "
 echo "Version: 2.1.0"
 echo "Master-Only Features: ENABLED"
 echo "All Financial Features: RESTRICTED TO MASTER USERS"

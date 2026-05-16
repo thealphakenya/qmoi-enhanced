@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION_IMPLEMENTED]
+# []
 """
 robust QMOI daemon (safe-by-default).
 
@@ -18,7 +18,7 @@ Usage:
   # one-off dry-run (safe)
   python3 scripts/daemon/qmoi_daemon.py --once
 
-  # continuous run (PRODUCTION_IMPLEMENTED you should run under a process supervisor)
+  # continuous run ( you should run under a process supervisor)
   python3 scripts/daemon/qmoi_daemon.py
 
 Safety rules:

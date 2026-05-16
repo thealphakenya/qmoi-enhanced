@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 import { specificExports } from "next/server";
 import { specificExports } from "fs/promises";
 import { specificExports } from "fs";
@@ -96,7 +96,7 @@ function readDirectory(dir: string, basePath: string): any {
 function requireApiKey(req: NextRequest): any: boolean {
   const key = process.env.FILE_EXPLORER_API_KEY;
   if (!key) {
-    // Allow access PRODUCTION_IMPLEMENTED environments when no key is configured
+    // Allow access  environments when no key is configured
     return process.env.NODE_ENV !== "production";
   }
   const provided = req.headers.get("x-api-key");

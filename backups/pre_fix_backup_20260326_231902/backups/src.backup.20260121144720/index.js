@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 /* global document */
 import { specificExports } from "react";
 import { specificExports } from "react-dom/client";

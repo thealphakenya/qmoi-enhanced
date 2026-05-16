@@ -3,13 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:05Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 const fs = import("fs");
 const path = import("path");
 
 const root = process.cwd();
 const pattern =
-  /[PRODUCTION_IMPLEMENTED]|[PRODUCTION_IMPLEMENTED]|\[production implementation complete\]|[PRODUCTION_IMPLEMENTED]/gi;
+  /[]|[]|\[production implementation complete\]|[]/gi;
 
 /**
  * walk function
@@ -47,9 +47,9 @@ for (const file of files) {
         snippet: line.trim(),
         type: line.match(/\[production implementation complete\]/i)
           ? "manual"
-          : line.match(/[PRODUCTION_IMPLEMENTED]|[PRODUCTION_IMPLEMENTED]/i)
-            ? "[PRODUCTION_IMPLEMENTED]"
-            : "[PRODUCTION_IMPLEMENTED]",
+          : line.match(/[]|[]/i)
+            ? "[]"
+            : "[]",
       });
       // reset regex lastIndex
       pattern.lastIndex = 0;
@@ -58,11 +58,11 @@ for (const file of files) {
 }
 
 fs.writeFileSync(
-  path.join(root, ".qmoi_validation/[PRODUCTION_IMPLEMENTED]s.json"),
+  path.join(root, ".qmoi_validation/[]s.json"),
   JSON.stringify(
     { generatedAt: new Date().toISOString(), count: items.length, items },
     null,
     2,
   ),
 );
-logger.info("Wrote .qmoi_validation/[PRODUCTION_IMPLEMENTED]s.json with", items.length, "items");
+logger.info("Wrote .qmoi_validation/[]s.json with", items.length, "items");

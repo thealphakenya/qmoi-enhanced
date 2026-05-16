@@ -1,10 +1,10 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 // @ts-nocheck
 import { specificExports } from "next/server";
 
-// In-memory stores (replace with DB/integration PRODUCTION_IMPLEMENTED)
+// In-memory stores (replace with DB/integration )
 const posts: unknown[] = [];
 const contacts: unknown[] = [
   { id: 1, name: "Alice", platform: "WhatsApp", tags: ["friend"] },
@@ -57,7 +57,7 @@ export async /**
  * GET_INFO function
  */
 function GET_INFO(_req: NextRequest): any {
-  // Gather info ([PRODUCTION_IMPLEMENTED])
+  // Gather info ([])
   // production: Implement info gathering from platforms
   // Requires: Platform APIs (WhatsApp, Telegram, LinkedIn) and authentication tokens
   // Use respective SDK methods to fetch platform data

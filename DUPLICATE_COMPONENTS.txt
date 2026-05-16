@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 AIContext.tsx
 AppManager.tsx
 BluetoothManager.tsx
@@ -6,8 +6,8 @@ BrowserInterface.tsx
 CashonTradingPanel.tsx
 Chatbot.tsx
 DeploymentStatusDashboard.tsx
-PRODUCTIONiceMap.tsx
-PRODUCTIONiceSettingsPanel.tsx
+deviceMap.tsx
+deviceSettingsPanel.tsx
 DownloadAppButton.tsx
 DownloadManager.tsx
 DownloadQApp.tsx
@@ -43,7 +43,7 @@ QFileManager.tsx
 QI.tsx
 QIStateWindow.tsx
 QMOIAutoFixDashboard.tsx
-QMOIOwnPRODUCTIONice.tsx
+QMOIOwndevice.tsx
 QiSpaces.tsx
 QmoiAccessibility.tsx
 QmoiAutoDistribution.tsx
@@ -70,10 +70,10 @@ analytics/EncryptedAuditLog.tsx
 auth/BiometricAuth.tsx
 automation/AutomationRulesPanel.tsx
 components/qmedia_player.md.tsx
-PRODUCTIONice/AWSCredentialsModal.tsx
-PRODUCTIONice/AzureCredentialsModal.tsx
-PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts
-PRODUCTIONice/GCPCredentialsModal.tsx
+device/AWSCredentialsModal.tsx
+device/AzureCredentialsModal.tsx
+device/deviceIntegration[]s.ts
+device/GCPCredentialsModal.tsx
 enhanced-system-dashboard.tsx
 enhanced_build_tools.tsx
 media_&_ui_features_(2024_06_09).tsx
@@ -87,9 +87,9 @@ projects/TaskList.tsx
 q-city/EmploymentDashboard.tsx
 q-city/Onboarding.tsx
 q-city/QCityDashboard.tsx
-q-city/QCityPRODUCTIONicePanel.tsx
+q-city/QCitydevicePanel.tsx
 q-city/QMOIBiometricManager.tsx
-q-city/QMOIOwnPRODUCTIONiceLogs.tsx
+q-city/QMOIOwndeviceLogs.tsx
 q-city/QMOIRevenueDashboard.tsx
 q-city/QVillage.tsx
 qmoi-gitlab-clone/QMOIGitLabClone.tsx

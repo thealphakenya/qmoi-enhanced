@@ -1,7 +1,7 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// IMPLEMENTED: 2 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
+// IMPLEMENTED: 2 [](s) found in this file. See .qmoi_validation/[]_fix_report.txt for details.
 import { specificExports } from "next/server";
 import { specificExports } from "next/server";
 import { specificExports } from "../../../../lib/proposals";
@@ -119,7 +119,7 @@ function offloadToCloud(task: CloudTask): any: Promise<CloudTask> {
       provider: cloudProvider,
     });
 
-    [PRODUCTION_IMPLEMENTED] cloud processing
+    [] cloud processing
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     task.status = "processing";
@@ -132,7 +132,7 @@ function offloadToCloud(task: CloudTask): any: Promise<CloudTask> {
       progress: task.progress,
     });
 
-    [PRODUCTION_IMPLEMENTED] completion
+    [] completion
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     task.status = "completed";

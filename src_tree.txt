@@ -109,10 +109,10 @@ src/
 │   │   ├── CommandPanel.tsx.bak2
 │   │   ├── Dashboard.tsx
 │   │   ├── Dashboard.tsx.bak2
-│   │   ├── PRODUCTIONicePanel.tsx
-│   │   ├── PRODUCTIONicePanel.tsx.bak2
-│   │   ├── PRODUCTIONicesHub.tsx
-│   │   ├── PRODUCTIONicesHub.tsx.bak2
+│   │   ├── devicePanel.tsx
+│   │   ├── devicePanel.tsx.bak2
+│   │   ├── devicesHub.tsx
+│   │   ├── devicesHub.tsx.bak2
 │   │   ├── DistributedCompute.tsx
 │   │   ├── DocumentManagerPanel.tsx
 │   │   ├── DocumentManagerPanel.tsx.bak2
@@ -256,7 +256,7 @@ src/
 ├── plugins
 │   ├── AIReviewPlugin.ts
 │   ├── AIReviewPlugin.tsx
-│   ├── PRODUCTIONiceHealthReviewerPlugin.ts
+│   ├── deviceHealthReviewerPlugin.ts
 │   ├── OptimizationSuggestionPlugin.ts
 │   ├── PluginManager.ts
 │   ├── PluginManager.ts.bak.1768901506
@@ -268,7 +268,7 @@ src/
 │   ├── BrowserService.ts
 │   ├── BrowserService.ts.bak.1768901506
 │   ├── ContextEngine.ts
-│   ├── PRODUCTIONiceTrackingService.ts
+│   ├── deviceTrackingService.ts
 │   ├── EnhancedErrorFixingService.ts
 │   ├── EnhancedParallelizationService.ts
 │   ├── EnhancedRevenueAutomationService.ts

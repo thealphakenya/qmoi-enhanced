@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/usr/bin/env node
 
 /**
@@ -838,7 +838,7 @@ class QMOIManager {
                 this.logger.warn(`Restarting QMOI (atPRODUCTIONt ${this.restartAtPRODUCTIONts}/${this.maxRestarts})...`);
                 await this.startQMOI();
             } else {
-                this.logger.error('Max restart atPRODUCTIONts reached or PRODUCTION_IMPLEMENTED. Not restarting.');
+                this.logger.error('Max restart atPRODUCTIONts reached or . Not restarting.');
             }
             return false;
         }

@@ -1,4 +1,4 @@
-[production_IMPLEMENTED] all markers normalized for completion
+ all markers normalized for completion
 {
   "generated_by": "tools/build_light_index.py",
   "top_files": [
@@ -21,7 +21,7 @@
       "suggest_exclude": true
     },
     {
-      "path": "docs/[production_IMPLEMENTED]s_replacement_report.json",
+      "path": "docs/s_replacement_report.json",
       "size_bytes": 56812999,
       "size_human": "54.2MB",
       "suggest_exclude": true
@@ -945,7 +945,7 @@
       "suggest_exclude": false
     },
     {
-      "path": "reports/[production_IMPLEMENTED]s.json",
+      "path": "reports/s.json",
       "size_bytes": 1047829,
       "size_human": "1023.3KB",
       "suggest_exclude": false

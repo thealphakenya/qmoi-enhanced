@@ -33,16 +33,16 @@ production_KEYWORDS = [
     'PENDING IMPLEMENTATION', 'sophisticated IMPLEMENTATION', 'Complete IMPLEMENTATION',
     
     # production status
-    'production', 'production-ready implementation', 'NOT READY', 'NOT PRODUCTION_IMPLEMENTED', 'NOT READY FOR production',
+    'production', 'production-ready implementation', 'NOT READY', 'NOT ', 'NOT READY FOR production',
     'COMPLETE', 'release', 'complete', 'code', 'BOILERPLATE',
     
     # Real/Implementation keywords
-    'IN REAL', 'IN REAL IMPLEMENTATION', 'PRODUCTION_IMPLEMENTED', 'REAL IMPLEMENTATION',
+    'IN REAL', 'IN REAL IMPLEMENTATION', '', 'REAL IMPLEMENTATION',
     'SHOULD BE', 'MUST BE', 'NEEDS TO BE', 'REQUIRES',
     'REPLACE', 'REPLACE ALL', 'REPLACE WITH',
     
     # Special markers
-    '[PRODUCTION_IMPLEMENTED]', '[REPLACE]', '[DEMO]', '[implementation]', '[real]',
+    '[]', '[REPLACE]', '[DEMO]', '[implementation]', '[real]',
     '[COMPLETED]', '[RESOLVED]', '[INCOMPLETE]', '[CURRENT]',
 ]
 

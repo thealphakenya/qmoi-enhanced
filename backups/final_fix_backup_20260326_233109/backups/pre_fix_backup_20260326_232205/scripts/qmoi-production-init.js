@@ -392,7 +392,7 @@ QMOI_HEALTH_CHECK_INTERVAL=30000
       "╔════════════════════════════════════════════════════════════╗",
     );
     logger.info(
-      "║              QMOI PRODUCTION_IMPLEMENTED - Next Steps            ║",
+      "║              QMOI  - Next Steps            ║",
     );
     logger.info(
       "╚════════════════════════════════════════════════════════════╝",

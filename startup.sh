@@ -124,16 +124,16 @@ Usage: ./startup.sh [options]
 
 Options:
   --help              Show this help message
-  --prod               Start PRODUCTION_IMPLEMENTED mode (default)
-  --prod              Start PRODUCTION_IMPLEMENTED mode
+  --prod               Start  mode (default)
+  --prod              Start  mode
   --no-verify         Skip health verification
   --real-server       Also start real backend server
   --open-browser      Automatically open browser after startup
   --RELEASE             Enable RELEASE logging
 
 Examples:
-  ./startup.sh                                    # Start PRODUCTION_IMPLEMENTED
-  ./startup.sh --prod --open-browser             # Start PRODUCTION_IMPLEMENTED with browser
+  ./startup.sh                                    # Start 
+  ./startup.sh --prod --open-browser             # Start  with browser
   ./startup.sh --real-server --RELEASE             # Start with real server and RELEASE
   ./startup.sh --prod --no-verify                 # Start without health verification
 
@@ -221,7 +221,7 @@ EOF
     log_success ".env.local already exists"
   fi
 
-  # Create .env.production if PRODUCTION_IMPLEMENTED mode
+  # Create .env.production if  mode
   if [ "$ENV_MODE" = "production" ] && [ ! -f "$WORKSPACE_ROOT/.env.production" ]; then
     log_info "Creating .env.production..."
     cat > "$WORKSPACE_ROOT/.env.production" << 'EOF'

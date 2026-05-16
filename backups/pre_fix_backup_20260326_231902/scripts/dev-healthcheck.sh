@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/usr/bin/env bash
 # sophisticated prod server healthcheck. Exits 0 on http 200, non-zero otherwise.
 set -euo pipefail

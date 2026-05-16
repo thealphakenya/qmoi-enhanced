@@ -2,7 +2,7 @@
 
 ## Welcome to QMOI Enhanced
 
-The QMOI Enhanced application is a comprehensive system for PRODUCTIONice management, AI-assisted control, community collaboration, and smart infrastructure monitoring. This guide will help you get started and make the most of all available features.
+The QMOI Enhanced application is a comprehensive system for device management, AI-assisted control, community collaboration, and smart infrastructure monitoring. This guide will help you get started and make the most of all available features.
 
 ## Getting Started
 
@@ -38,27 +38,27 @@ The QMOI Enhanced application is a comprehensive system for PRODUCTIONice manage
 - [ ] Configure notification preferences
 - [ ] Set up security (password, biometric, 2FA)
 - [ ] Add backup email address
-- [ ] Configure connected PRODUCTIONices
+- [ ] Configure connected devices
 - [ ] Join communities (optional)
 - [ ] Enable cloud sync (optional)
 
 ## Main Features Overview
 
-### 1. PRODUCTIONice Management
-**What It Is**: Central hub for monitoring and controlling all connected PRODUCTIONices
-**How to Access**: Home → PRODUCTIONices or `/PRODUCTIONices`
+### 1. device Management
+**What It Is**: Central hub for monitoring and controlling all connected devices
+**How to Access**: Home → devices or `/devices`
 **What You Can Do**:
-- See all connected PRODUCTIONices
-- Check PRODUCTIONice status (online, offline, error)
-- Filter PRODUCTIONices by type or status
-- View PRODUCTIONice details and health
-- Configure PRODUCTIONice settings
-- Manage PRODUCTIONice permissions
+- See all connected devices
+- Check device status (online, offline, error)
+- Filter devices by type or status
+- View device details and health
+- Configure device settings
+- Manage device permissions
 
 **Quick Start**:
-1. Go to PRODUCTIONices page
-2. View connected PRODUCTIONices in grid
-3. Click a PRODUCTIONice for details
+1. Go to devices page
+2. View connected devices in grid
+3. Click a device for details
 4. Adjust settings as needed
 5. Enable notifications for alerts
 
@@ -71,7 +71,7 @@ The QMOI Enhanced application is a comprehensive system for PRODUCTIONice manage
 - Receive AI recommendations
 - Monitor AI mood and bonding level
 - Use quick action buttons
-- Control PRODUCTIONices via chat
+- Control devices via chat
 
 **Quick Start**:
 1. Go to Friendship screen
@@ -81,11 +81,11 @@ The QMOI Enhanced application is a comprehensive system for PRODUCTIONice manage
 5. Use quick buttons for common tasks
 
 **Tips for Better Interaction**:
-- Be specific with requests (e.g., "Show me bathroom PRODUCTIONices")
+- Be specific with requests (e.g., "Show me bathroom devices")
 - Use complete sentences for clarity
 - Ask follow-up questions
 - Build relationship over time (bonding matters)
-- Try: "Check Status", "PRODUCTIONice Status", "Security Check", "Environment"
+- Try: "Check Status", "device Status", "Security Check", "Environment"
 
 ### 3. QCity Smart City Operations
 **What It Is**: Command center for urban infrastructure and operations
@@ -189,16 +189,16 @@ The QMOI Enhanced application is a comprehensive system for PRODUCTIONice manage
 
 ## Common Tasks & Workflows
 
-### Task: Monitor Home PRODUCTIONices
+### Task: Monitor Home devices
 **Steps**:
-1. Home → PRODUCTIONices
-2. View PRODUCTIONice grid
-3. Check each PRODUCTIONice status
-4. Click any offline PRODUCTIONice for details
+1. Home → devices
+2. View device grid
+3. Check each device status
+4. Click any offline device for details
 5. Take corrective action if needed
 
 **Time**: 2-5 minutes
-**Related**: PRODUCTIONice notifications can automate this
+**Related**: device notifications can automate this
 
 ### Task: Get System Status Through Chat
 **Steps**:
@@ -246,16 +246,16 @@ The QMOI Enhanced application is a comprehensive system for PRODUCTIONice manage
 **Time**: 5-15 minutes
 **Related**: Datasets visible in community catalog
 
-### Task: Configure PRODUCTIONice Settings
+### Task: Configure device Settings
 **Steps**:
-1. Home → PRODUCTIONices
-2. Click on specific PRODUCTIONice
-3. Access PRODUCTIONice settings
+1. Home → devices
+2. Click on specific device
+3. Access device settings
 4. Modify preferences (name, permissions, etc.)
 5. Save configuration
-6. Settings sync to PRODUCTIONice
+6. Settings sync to device
 
-**Time**: 3-5 minutes per PRODUCTIONice
+**Time**: 3-5 minutes per device
 **Related**: Settings apply immediately
 
 ### Task: Enable Notifications
@@ -275,7 +275,7 @@ The QMOI Enhanced application is a comprehensive system for PRODUCTIONice manage
 ### Master Role
 **Capabilities**:
 - Full system control and administration
-- User and PRODUCTIONice management
+- User and device management
 - Email server configuration
 - System monitoring and diagnostics
 - Access to all features
@@ -314,7 +314,7 @@ The QMOI Enhanced application is a comprehensive system for PRODUCTIONice manage
 ### User Role
 **Capabilities**:
 - View dashboards (read-only)
-- Access personal PRODUCTIONices
+- Access personal devices
 - Use AI assistant
 - Browse community resources
 - Chat and messaging
@@ -325,7 +325,7 @@ The QMOI Enhanced application is a comprehensive system for PRODUCTIONice manage
 - Report issues
 - Follow guidelines
 - Secure account
-- Manage personal PRODUCTIONices
+- Manage personal devices
 
 **When to Use**: Daily personal use, most common role
 
@@ -337,7 +337,7 @@ The QMOI Enhanced application is a comprehensive system for PRODUCTIONice manage
 - Onboarding and training
 
 **Restrictions**:
-- No PRODUCTIONice management
+- No device management
 - No personal data storage
 - No administrative access
 - Limited session duration
@@ -357,16 +357,16 @@ The QMOI Enhanced application is a comprehensive system for PRODUCTIONice manage
 
 **Prevention**: Save credentials (securely), use password manager
 
-### Problem: PRODUCTIONice Not Appearing
+### Problem: device Not Appearing
 **Solutions**:
-1. Verify PRODUCTIONice is powered on
-2. Check PRODUCTIONice has internet connection
-3. Restart PRODUCTIONice if needed
+1. Verify device is powered on
+2. Check device has internet connection
+3. Restart device if needed
 4. Check WiFi/Bluetooth status
-5. Refresh PRODUCTIONices page (F5)
-6. Manually add PRODUCTIONice if option available
+5. Refresh devices page (F5)
+6. Manually add device if option available
 
-**Prevention**: Keep PRODUCTIONices updated, maintain network connection
+**Prevention**: Keep devices updated, maintain network connection
 
 ### Problem: AI Not Responding
 **Solutions**:
@@ -415,7 +415,7 @@ The QMOI Enhanced application is a comprehensive system for PRODUCTIONice manage
 **Solutions**:
 1. Check internet connection stability
 2. Verify file size is within limits
-3. Check PRODUCTIONice storage space
+3. Check device storage space
 4. Restart transfer
 5. Try smaller files first
 6. Use different transfer method
@@ -428,12 +428,12 @@ The QMOI Enhanced application is a comprehensive system for PRODUCTIONice manage
 - ✅ Use strong, unique password
 - ✅ Enable biometric authentication
 - ✅ Enable two-factor authentication
-- ✅ Review connected PRODUCTIONices regularly
+- ✅ Review connected devices regularly
 - ✅ Log out on shared computers
 - ✅ Report suspicious activity immediately
 - ❌ Don't share passwords
 - ❌ Don't use public WiFi without VPN
-- ❌ Don't enable auto-login on shared PRODUCTIONices
+- ❌ Don't enable auto-login on shared devices
 
 ### Performance Best Practices
 - ✅ Keep application updated
@@ -470,7 +470,7 @@ The QMOI Enhanced application is a comprehensive system for PRODUCTIONice manage
 
 ### Navigation
 - `Home` - Go to home screen
-- `Alt + 1` - PRODUCTIONices
+- `Alt + 1` - devices
 - `Alt + 2` - QCity
 - `Alt + 3` - QVillage
 - `Alt + 4` - QMOI AI
@@ -525,7 +525,7 @@ The QMOI Enhanced application is a comprehensive system for PRODUCTIONice manage
 ## Advanced Features
 
 ### Automation & Scheduled Tasks
-- Set PRODUCTIONice schedules
+- Set device schedules
 - Auto-responses in chat
 - Scheduled reports
 - Automated workflows
@@ -576,7 +576,7 @@ The QMOI Enhanced application is a comprehensive system for PRODUCTIONice manage
 1. Describe the problem clearly
 2. Note exact steps to reproduce
 3. Include error messages
-4. Mention your PRODUCTIONice/browser
+4. Mention your device/browser
 5. Send to support with screenshot
 
 ### Feature Requests
@@ -631,7 +631,7 @@ The QMOI Enhanced application is a comprehensive system for PRODUCTIONice manage
 
 | Need This | Go Here | Shortcut |
 |-----------|---------|----------|
-| Check PRODUCTIONices | Home → PRODUCTIONices | Alt + 1 |
+| Check devices | Home → devices | Alt + 1 |
 | Chat with AI | Home → Friendship | - |
 | City Dashboard | Home → QCity | Alt + 2 |
 | Community Hub | Home → QVillage | Alt + 3 |
@@ -644,7 +644,7 @@ The QMOI Enhanced application is a comprehensive system for PRODUCTIONice manage
 
 1. **Explore**: Visit each major system to familiarize yourself
 2. **Configure**: Set up preferences in Settings
-3. **Connect**: Add your PRODUCTIONices
+3. **Connect**: Add your devices
 4. **Learn**: Try features in guided mode
 5. **Enjoy**: Start using QMOI Enhanced!
 

@@ -148,10 +148,10 @@ scripts/
 ├── deployment-monitor.sh
 ├── PRODUCTION-healthcheck.sh
 ├── PRODUCTION-value.js
-├── PRODUCTIONice_orchestration_manager.py
-├── PRODUCTIONice_orchestration_manager.test.py
-├── PRODUCTIONice_ownership_detector.py
-├── PRODUCTIONice_unlock_system.py
+├── device_orchestration_manager.py
+├── device_orchestration_manager.test.py
+├── device_ownership_detector.py
+├── device_unlock_system.py
 ├── diagnostics
 │   ├── README.md
 │   ├── parse_next_trace.cjs
@@ -384,11 +384,11 @@ scripts/
 ├── q.py
 ├── qcity-automation.cjs
 ├── qcity-automation.js
-├── qcity-PRODUCTIONice-manager.js
+├── qcity-device-manager.js
 ├── qcity-ui-server.js
 ├── qcity-ui-server.js.bak.1768901506
 ├── qcity_advanced_installer.py
-├── qcity_PRODUCTIONice_manager.py
+├── qcity_device_manager.py
 ├── qcity_enhancer.py
 ├── qcity_manager.py
 ├── qcity_npm_selfheal.ps1
@@ -535,7 +535,7 @@ scripts/
 ├── qmoi_auto_startup.py
 ├── qmoi_auto_watcher.js
 ├── qmoi_automated_betting_system.py
-├── qmoi_automated_PRODUCTIONice_controller.py
+├── qmoi_automated_device_controller.py
 ├── qmoi_build_api.py
 ├── qmoi_build_ci.py
 ├── qmoi_chat_server.py
@@ -548,8 +548,8 @@ scripts/
 ├── qmoi_dashboard.cjs
 ├── qmoi_dashboard.py
 ├── qmoi_data_optimization_system.py
-├── qmoi_PRODUCTIONice_agent.py
-├── qmoi_PRODUCTIONice_integration.py
+├── qmoi_device_agent.py
+├── qmoi_device_integration.py
 ├── qmoi_doc_verifier.js
 ├── qmoi_doc_verifier.js.bak.1768901506
 ├── qmoi_earning_daemon.py
@@ -587,7 +587,7 @@ scripts/
 ├── qmoi_model_enhancer.py
 ├── qmoi_notification_manager.py
 ├── qmoi_notifier.cjs
-├── qmoi_own_PRODUCTIONice_logger.py
+├── qmoi_own_device_logger.py
 ├── qmoi_parallel_error_fixer.py
 ├── qmoi_payment_fix.js
 ├── qmoi_performance_monitor.py
@@ -657,8 +657,8 @@ scripts/
 ├── run_validations.py
 ├── rust_lint_fix.js
 ├── rust_lint_fix.rs
-├── scan_all_apps_PRODUCTIONices_machines.py
-├── scan_all_apps_PRODUCTIONices_machines.test.py
+├── scan_all_apps_devices_machines.py
+├── scan_all_apps_devices_machines.test.py
 ├── scan_and_index.py
 ├── scan_lion_usage.py
 ├── scan_production_endpoints.js

@@ -7,13 +7,13 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production_IMPLEMENTED] all markers normalized for completion
+ all markers normalized for completion
 ---
 title: "Copilot Instructions for Quantum multi orchestra intelligence (QMOI)-Enhanced"
 description: "Rules and automation guidelines for Copilot in this repo"
 ---
 
-# Copilot Custom Instructions for Quantum multi orchestra intelligence (QMOI)-Enhanced ✅ production_IMPLEMENTED
+# Copilot Custom Instructions for Quantum multi orchestra intelligence (QMOI)-Enhanced ✅ 
 
 This file provides guidance to GitHub Copilot when interacting with the `Quantum multi orchestra intelligence (QMOI)-enhanced` repository. It is intended to help the assistant maintain consistency, enforce project conventions, and rapidly navigate large code changes.
 
@@ -25,13 +25,13 @@ This file provides guidance to GitHub Copilot when interacting with the `Quantum
    - Update `COMPONENTS.md` with a description, props, and access tier.
    - Update `COMPONENT_USAGE_PLAN.md` with the target surface and roles.
 3. **Documentation first.** Any code change must be reflected in the appropriate `.md` file(s) before marking work done.
-4. **Real‑world readiness.** Replace [production_IMPLEMENTED]s, [production_IMPLEMENTED]s, and [production_IMPLEMENTED] comments with production‑quality implementations. Test cases should use real data where possible.
+4. **Real‑world readiness.** Replace s, s, and  comments with production‑quality implementations. Test cases should use real data where possible.
 5. **Build and tests.** Run `npm run build` and ensure it completes without errors before closing a task. Fix any included modules and update the build instructions accordingly.
 6. **Environment management.** Use `lib/env-manager.js` for config; do not read `process.env` directly in other modules unless absolutely necessary.
 7. **Role separation.** Enforce Master/Sister/User/Guest checks via `RoleContext` or similar wrappers.
 8. **Use patterns.** Prefer `WrappedComponent`, `lazyWrap`, and other helpers for cross‑cutting concerns.
 9. **Automation files.** When adding new features or endpoints, update `API.md`, `APIs_v1.md`, `ENDPOINTS.md`, and any feature‑specific docs.
-10. **Iterative progress.** After each batch of changes, run `grep [production_IMPLEMENTED] [production_IMPLEMENTED] [production_IMPLEMENTED] [production_IMPLEMENTED]` to ensure nothing remains.
+10. **Iterative progress.** After each batch of changes, run `grep    ` to ensure nothing remains.
 
 ## Performance Optimization for Large Projects
 
@@ -367,7 +367,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Compression**: Enabled for optimized storage and bandwidth
 - **Redundancy**: 5 backup copies with automatic failover
 - **Persistence**: unlimited data retention (permanent, no limit)
-- **Distribution**: All PRODUCTIONices, cameras, and networks synchronized
+- **Distribution**: All devices, cameras, and networks synchronized
 - **Zero Data Loss**: Guaranteed with multi-layer redundancy
 
 ### Integrated Security Systems
@@ -386,10 +386,10 @@ Link to related documentation, APIs, and system artifacts.
 - **Direct Quantum multi orchestra intelligence (QMOI) Access**: No restrictions on camera access
 - **Real-time Sync**: 50ms synchronization across all systems
 
-### Universal PRODUCTIONice Connectivity
+### Universal device Connectivity
 - **Mobile Platforms**: iOS, Android with full integration
 - **Web & Cloud Systems**: Browser-based access and control
-- **IoT Networks**: All smart PRODUCTIONices connected and managed
+- **IoT Networks**: All smart devices connected and managed
 - **Wearables**: Watches, bands, glasses with health monitoring
 - **Vehicles**: Cars, drones, robots with autonomous control
 - **Smart Home Systems**: Complete home automation
@@ -397,7 +397,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Servers & Data Centers**: Centralized management
 - **Wireless Connectivity**: WiFi, Bluetooth, Cellular
 - **Wired Connectivity**: USB, Ethernet, Serial
-- **Auto-Connection**: Zero-config PRODUCTIONice pairing
+- **Auto-Connection**: Zero-config device pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
 
 

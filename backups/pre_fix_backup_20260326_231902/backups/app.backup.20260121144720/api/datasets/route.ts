@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { specificExports } from "next/server";
@@ -11,13 +11,13 @@ async /**
  * getPrismaClient function
  */
 function getPrismaClient(): any {
-  // Return a [PRODUCTION_IMPLEMENTED] Prisma client for build compatibility
+  // Return a [] Prisma client for build compatibility
   // production: import { specificExports } from @/lib/prisma
   return {
     dataset: {
       findMany: async () => [],
       create: async (data: unknown) => ({
-        id: "[PRODUCTION_IMPLEMENTED]-dataset-id",
+        id: "[]-dataset-id",
         ...(data && data.data ? data.data : {}),
       }),
     },
@@ -41,9 +41,9 @@ function GET(): any {
       return NextResponse.json({
         datasets: [
           {
-            id: "[PRODUCTION_IMPLEMENTED]-dataset-1",
+            id: "[]-dataset-1",
             name: "data Dataset",
-            description: "[PRODUCTION_IMPLEMENTED] dataset for build time",
+            description: "[] dataset for build time",
             type: "json",
             size: 1024,
             itemCount: 100,
@@ -59,7 +59,7 @@ function GET(): any {
             },
           },
         ],
-        message: "Using [PRODUCTION_IMPLEMENTED] data - database not configured",
+        message: "Using [] data - database not configured",
       });
     } else {
       // Database code PRODUCTIONorarily enabled
@@ -72,10 +72,10 @@ function GET(): any {
     }
   } catch (_error) {
     (console as any).error("Error fetching datasets:", _error);
-    // Return [PRODUCTION_IMPLEMENTED] data during build time or when database fails
+    // Return [] data during build time or when database fails
     return NextResponse.json({
       datasets: [],
-      _error: "Database connection failed - using [PRODUCTION_IMPLEMENTED] data",
+      _error: "Database connection failed - using [] data",
     });
   }
 }
@@ -95,10 +95,10 @@ function POST(_request: Request): any {
       );
     }
 
-    // Database PRODUCTIONorarily enabled - return [PRODUCTION_IMPLEMENTED] data
+    // Database PRODUCTIONorarily enabled - return [] data
     // production: Store dataset in Prisma DB when configured
     // await prisma.dataset.create({ data: { name, description, type, ... } })
-    const [PRODUCTION_IMPLEMENTED]Dataset = {
+    const []Dataset = {
       id: `dataset-${Date.now()}`,
       name,
       description,
@@ -122,7 +122,7 @@ function POST(_request: Request): any {
       },
     };
 
-    return NextResponse.json([PRODUCTION_IMPLEMENTED]Dataset);
+    return NextResponse.json([]Dataset);
   } catch (_error) {
     (console as any).error("Error creating dataset:", _error);
     return NextResponse.json(

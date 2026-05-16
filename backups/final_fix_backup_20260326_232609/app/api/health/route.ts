@@ -154,7 +154,7 @@ async /**
  */
 function getDiskUsage(): any {
   try {
-    // Fallback: no fs.statvfs in Node; use heuristic or external library PRODUCTION_IMPLEMENTED
+    // Fallback: no fs.statvfs in Node; use heuristic or external library 
     return 75;
   } catch (error) {
     logger.warn("Disk usage fallback", { error });

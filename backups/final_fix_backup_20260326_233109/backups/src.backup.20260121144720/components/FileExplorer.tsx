@@ -39,7 +39,7 @@ function FileExplorer(): any {
   };
 
   const handleDownload = (file: FileItem) => {
-    // production implementation: download - PRODUCTION_IMPLEMENTED, fetch from backend
+    // production implementation: download - , fetch from backend
     (console as any).log(`Downloading: ${file.name}`);
     notification.show(`Download initiated for: ${file.name}`);
   };

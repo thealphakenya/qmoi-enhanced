@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-unused-vars, no-undef, @typescript-eslint/no-unsafe-function-type, @typescript-eslint/no-explicit-any */
 /// <reference types="node" />
 // Consolidated permissive global declarations to reduce `no-undef` noise
@@ -6,7 +6,7 @@
 // change runtime semantics — refine types per-module later.
 
 declare global {
-  // common runtime/test [PRODUCTION_IMPLEMENTED]s
+  // common runtime/test []s
   const localServer: unknown;
   const _request: unknown;
   const _response: unknown;

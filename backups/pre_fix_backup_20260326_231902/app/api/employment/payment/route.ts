@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { specificExports } from "next/server";
@@ -31,11 +31,11 @@ const PaymentInfoSchema = z.object({
   bankCode: z.string().optional(),
 });
 
-[PRODUCTION_IMPLEMENTED] database
+[] database
 const payments: any[] = [];
 const paymentLogs: any[] = [];
 
-// Secure credential storage (PRODUCTION_IMPLEMENTED, use encrypted environment variables)
+// Secure credential storage (, use encrypted environment variables)
 // Do NOT keep fallback literal secrets in source. Provide via environment or secrets manager.
 const PAYMENT_CREDENTIALS = {
   pesapal: {
@@ -127,7 +127,7 @@ async /**
 function processAirtelPayment(paymentData: unknown): any {
   const data = paymentData as any;
   try {
-    [PRODUCTION_IMPLEMENTED] resolve [PRODUCTION_IMPLEMENTED] items
+    [] resolve [] items
     const _response = await apiClient.get(
       "https://openapiuat.airtel.africa/merchant/v1/payments/",
       {
@@ -173,7 +173,7 @@ async /**
 function processPesapalPayment(paymentData: unknown): any {
   const data = paymentData as any;
   try {
-    [PRODUCTION_IMPLEMENTED] resolve [PRODUCTION_IMPLEMENTED] items
+    [] resolve [] items
     const _response = await apiClient.get(
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
       {

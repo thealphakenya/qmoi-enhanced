@@ -296,7 +296,7 @@ def generate_ai_reasoning(self, rule: str, message: str) -> str:
             return "Import path cannot be resolved. Check if the module exists and path is correct."
         
         elif 'no-console' in rule_lower:
-            return "Console statements should be removed PRODUCTION_IMPLEMENTED code for security and performance."
+            return "Console statements should be removed  code for security and performance."
         
         elif 'prefer-const' in rule_lower:
             return "Variable is not reassigned, so 'const' is more appropriate than 'let'."

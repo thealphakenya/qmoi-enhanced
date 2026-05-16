@@ -9727,8 +9727,8 @@
       "file_hash": "4869f198"
     },
     {
-      "file_path": "scripts/PRODUCTIONice_orchestration_manager.test.py",
-      "absolute_path": "/workspaces/qmoi-enhanced/scripts/PRODUCTIONice_orchestration_manager.test.py",
+      "file_path": "scripts/device_orchestration_manager.test.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/device_orchestration_manager.test.py",
       "file_size": 24001,
       "last_modified": "2026-05-08T10:18:05.933420",
       "markers": {
@@ -10310,8 +10310,8 @@
       "file_hash": "71dede64"
     },
     {
-      "file_path": "scripts/PRODUCTIONice_unlock_system.py",
-      "absolute_path": "/workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py",
+      "file_path": "scripts/device_unlock_system.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/device_unlock_system.py",
       "file_size": 42953,
       "last_modified": "2026-05-08T10:18:05.933420",
       "markers": {
@@ -10825,8 +10825,8 @@
       "file_hash": "59623c0a"
     },
     {
-      "file_path": "hooks/usePRODUCTIONiceOptimizer.ts",
-      "absolute_path": "/workspaces/qmoi-enhanced/hooks/usePRODUCTIONiceOptimizer.ts",
+      "file_path": "hooks/usedeviceOptimizer.ts",
+      "absolute_path": "/workspaces/qmoi-enhanced/hooks/usedeviceOptimizer.ts",
       "file_size": 2283,
       "last_modified": "2026-05-08T10:17:37.047420",
       "markers": {
@@ -11089,8 +11089,8 @@
       "file_hash": "2ef8b80e"
     },
     {
-      "file_path": "_app_archived/api/qcity/PRODUCTIONices.ts",
-      "absolute_path": "/workspaces/qmoi-enhanced/_app_archived/api/qcity/PRODUCTIONices.ts",
+      "file_path": "_app_archived/api/qcity/devices.ts",
+      "absolute_path": "/workspaces/qmoi-enhanced/_app_archived/api/qcity/devices.ts",
       "file_size": 4091,
       "last_modified": "2026-05-08T10:17:33.229420",
       "markers": {
@@ -14219,8 +14219,8 @@
       "file_hash": "8b6eab57"
     },
     {
-      "file_path": "scripts/qmoi_PRODUCTIONice_agent.py",
-      "absolute_path": "/workspaces/qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py",
+      "file_path": "scripts/qmoi_device_agent.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/qmoi_device_agent.py",
       "file_size": 34740,
       "last_modified": "2026-05-08T10:18:06.149420",
       "markers": {
@@ -15594,8 +15594,8 @@
       "file_hash": "e58a9d60"
     },
     {
-      "file_path": "scripts/PRODUCTIONice_ownership_detector.py",
-      "absolute_path": "/workspaces/qmoi-enhanced/scripts/PRODUCTIONice_ownership_detector.py",
+      "file_path": "scripts/device_ownership_detector.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/device_ownership_detector.py",
       "file_size": 33769,
       "last_modified": "2026-05-08T10:18:05.933420",
       "markers": {
@@ -17598,8 +17598,8 @@
       "file_hash": "b306fdcf"
     },
     {
-      "file_path": "scripts/qmoi_own_PRODUCTIONice_logger.py",
-      "absolute_path": "/workspaces/qmoi-enhanced/scripts/qmoi_own_PRODUCTIONice_logger.py",
+      "file_path": "scripts/qmoi_own_device_logger.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/qmoi_own_device_logger.py",
       "file_size": 38060,
       "last_modified": "2026-05-08T10:18:06.156420",
       "markers": {
@@ -21527,8 +21527,8 @@
       "file_hash": "2e770ed6"
     },
     {
-      "file_path": "scripts/qcity_PRODUCTIONice_manager.py",
-      "absolute_path": "/workspaces/qmoi-enhanced/scripts/qcity_PRODUCTIONice_manager.py",
+      "file_path": "scripts/qcity_device_manager.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/qcity_device_manager.py",
       "file_size": 29554,
       "last_modified": "2026-05-08T10:18:06.127420",
       "markers": {
@@ -23972,8 +23972,8 @@
       "file_hash": "9409b31f"
     },
     {
-      "file_path": "scripts/qmoi_PRODUCTIONice_integration.py",
-      "absolute_path": "/workspaces/qmoi-enhanced/scripts/qmoi_PRODUCTIONice_integration.py",
+      "file_path": "scripts/qmoi_device_integration.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/qmoi_device_integration.py",
       "file_size": 25886,
       "last_modified": "2026-05-08T10:18:06.149420",
       "markers": {
@@ -24215,8 +24215,8 @@
       "file_hash": "018e5005"
     },
     {
-      "file_path": "scripts/lion_agents/lion_agent_edge_PRODUCTIONice.py",
-      "absolute_path": "/workspaces/qmoi-enhanced/scripts/lion_agents/lion_agent_edge_PRODUCTIONice.py",
+      "file_path": "scripts/lion_agents/lion_agent_edge_device.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/lion_agents/lion_agent_edge_device.py",
       "file_size": 2933,
       "last_modified": "2026-05-08T10:18:06.112420",
       "markers": {
@@ -27429,8 +27429,8 @@
       "file_hash": "797a3f75"
     },
     {
-      "file_path": "scripts/qcity-PRODUCTIONice-manager.js",
-      "absolute_path": "/workspaces/qmoi-enhanced/scripts/qcity-PRODUCTIONice-manager.js",
+      "file_path": "scripts/qcity-device-manager.js",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/qcity-device-manager.js",
       "file_size": 15619,
       "last_modified": "2026-05-08T10:18:06.127420",
       "markers": {
@@ -29510,8 +29510,8 @@
       "file_hash": "3843fee8"
     },
     {
-      "file_path": "components/q-city/QCityPRODUCTIONicePanel.tsx",
-      "absolute_path": "/workspaces/qmoi-enhanced/components/q-city/QCityPRODUCTIONicePanel.tsx",
+      "file_path": "components/q-city/QCitydevicePanel.tsx",
+      "absolute_path": "/workspaces/qmoi-enhanced/components/q-city/QCitydevicePanel.tsx",
       "file_size": 29221,
       "last_modified": "2026-05-08T10:17:35.325420",
       "markers": {
@@ -30494,8 +30494,8 @@
       "file_hash": "337fe1c7"
     },
     {
-      "file_path": "docs/screens/PRODUCTIONice-management-dashboard-screen.md",
-      "absolute_path": "/workspaces/qmoi-enhanced/docs/screens/PRODUCTIONice-management-dashboard-screen.md",
+      "file_path": "docs/screens/device-management-dashboard-screen.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/docs/screens/device-management-dashboard-screen.md",
       "file_size": 8157,
       "last_modified": "2026-05-08T10:17:35.565420",
       "markers": {
@@ -30914,8 +30914,8 @@
       "file_hash": "d7f37bb6"
     },
     {
-      "file_path": "scripts/PRODUCTIONice_orchestration_manager.py",
-      "absolute_path": "/workspaces/qmoi-enhanced/scripts/PRODUCTIONice_orchestration_manager.py",
+      "file_path": "scripts/device_orchestration_manager.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/device_orchestration_manager.py",
       "file_size": 19831,
       "last_modified": "2026-05-08T10:18:05.933420",
       "markers": {
@@ -31292,8 +31292,8 @@
       "file_hash": "4ff6f731"
     },
     {
-      "file_path": "scripts/qmoi_automated_PRODUCTIONice_controller.py",
-      "absolute_path": "/workspaces/qmoi-enhanced/scripts/qmoi_automated_PRODUCTIONice_controller.py",
+      "file_path": "scripts/qmoi_automated_device_controller.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/qmoi_automated_device_controller.py",
       "file_size": 19563,
       "last_modified": "2026-05-08T10:18:06.145420",
       "markers": {
@@ -33570,8 +33570,8 @@
       "file_hash": "24484eeb"
     },
     {
-      "file_path": "mobile/components/PRODUCTIONiceManagementScreen.js",
-      "absolute_path": "/workspaces/qmoi-enhanced/mobile/components/PRODUCTIONiceManagementScreen.js",
+      "file_path": "mobile/components/deviceManagementScreen.js",
+      "absolute_path": "/workspaces/qmoi-enhanced/mobile/components/deviceManagementScreen.js",
       "file_size": 27866,
       "last_modified": "2026-05-08T10:17:37.374420",
       "markers": {
@@ -33658,8 +33658,8 @@
       "file_hash": "393500a9"
     },
     {
-      "file_path": "hooks/usePRODUCTIONiceHealth.ts",
-      "absolute_path": "/workspaces/qmoi-enhanced/hooks/usePRODUCTIONiceHealth.ts",
+      "file_path": "hooks/usedeviceHealth.ts",
+      "absolute_path": "/workspaces/qmoi-enhanced/hooks/usedeviceHealth.ts",
       "file_size": 7381,
       "last_modified": "2026-05-08T10:17:37.047420",
       "markers": {
@@ -34142,8 +34142,8 @@
       "file_hash": "9969124a"
     },
     {
-      "file_path": "cypress/e2e/qmoi_kernel_panel_sso_oauth_PRODUCTIONice_delegated.cy.js",
-      "absolute_path": "/workspaces/qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_PRODUCTIONice_delegated.cy.js",
+      "file_path": "cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js",
+      "absolute_path": "/workspaces/qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js",
       "file_size": 941,
       "last_modified": "2026-05-08T10:17:35.364420",
       "markers": {
@@ -34846,8 +34846,8 @@
       "file_hash": "859cf2d8"
     },
     {
-      "file_path": "config/qcity-PRODUCTIONice-config.json",
-      "absolute_path": "/workspaces/qmoi-enhanced/config/qcity-PRODUCTIONice-config.json",
+      "file_path": "config/qcity-device-config.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/config/qcity-device-config.json",
       "file_size": 4002,
       "last_modified": "2026-05-08T10:17:35.359420",
       "markers": {
@@ -35385,8 +35385,8 @@
       "file_hash": "eeb99f83"
     },
     {
-      "file_path": "_app_archived/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
-      "absolute_path": "/workspaces/qmoi-enhanced/_app_archived/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
+      "file_path": "_app_archived/api/qmoi/own-device-logs/export/route.ts",
+      "absolute_path": "/workspaces/qmoi-enhanced/_app_archived/api/qmoi/own-device-logs/export/route.ts",
       "file_size": 4421,
       "last_modified": "2026-05-08T10:17:33.234420",
       "markers": {
@@ -35396,8 +35396,8 @@
       "file_hash": "e7fdc437"
     },
     {
-      "file_path": "_app_archived/api/qmoi/own-PRODUCTIONice-logs/route.ts",
-      "absolute_path": "/workspaces/qmoi-enhanced/_app_archived/api/qmoi/own-PRODUCTIONice-logs/route.ts",
+      "file_path": "_app_archived/api/qmoi/own-device-logs/route.ts",
+      "absolute_path": "/workspaces/qmoi-enhanced/_app_archived/api/qmoi/own-device-logs/route.ts",
       "file_size": 5335,
       "last_modified": "2026-05-08T10:17:33.234420",
       "markers": {
@@ -35660,8 +35660,8 @@
       "file_hash": "678659aa"
     },
     {
-      "file_path": "_app_archived/api/PRODUCTIONice-fingerprint/route.ts",
-      "absolute_path": "/workspaces/qmoi-enhanced/_app_archived/api/PRODUCTIONice-fingerprint/route.ts",
+      "file_path": "_app_archived/api/device-fingerprint/route.ts",
+      "absolute_path": "/workspaces/qmoi-enhanced/_app_archived/api/device-fingerprint/route.ts",
       "file_size": 2134,
       "last_modified": "2026-05-08T10:17:33.226420",
       "markers": {
@@ -36144,8 +36144,8 @@
       "file_hash": "044b8434"
     },
     {
-      "file_path": "data/PRODUCTIONice_registry.json",
-      "absolute_path": "/workspaces/qmoi-enhanced/data/PRODUCTIONice_registry.json",
+      "file_path": "data/device_registry.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/data/device_registry.json",
       "file_size": 535,
       "last_modified": "2026-05-08T10:17:35.464420",
       "markers": {
@@ -37860,8 +37860,8 @@
       "file_hash": "8f23911c"
     },
     {
-      "file_path": "scripts/scan_all_apps_PRODUCTIONices_machines.py",
-      "absolute_path": "/workspaces/qmoi-enhanced/scripts/scan_all_apps_PRODUCTIONices_machines.py",
+      "file_path": "scripts/scan_all_apps_devices_machines.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/scan_all_apps_devices_machines.py",
       "file_size": 6623,
       "last_modified": "2026-05-08T10:18:06.166420",
       "markers": {
@@ -38223,8 +38223,8 @@
       "file_hash": "c2769d63"
     },
     {
-      "file_path": "lib/services/PRODUCTIONice.service.ts",
-      "absolute_path": "/workspaces/qmoi-enhanced/lib/services/PRODUCTIONice.service.ts",
+      "file_path": "lib/services/device.service.ts",
+      "absolute_path": "/workspaces/qmoi-enhanced/lib/services/device.service.ts",
       "file_size": 2934,
       "last_modified": "2026-05-08T10:17:37.133420",
       "markers": {
@@ -39708,8 +39708,8 @@
       "file_hash": "5a659811"
     },
     {
-      "file_path": "components/PRODUCTIONice/PRODUCTIONiceIntegrationStubs.ts",
-      "absolute_path": "/workspaces/qmoi-enhanced/components/PRODUCTIONice/PRODUCTIONiceIntegrationStubs.ts",
+      "file_path": "components/device/deviceIntegrationStubs.ts",
+      "absolute_path": "/workspaces/qmoi-enhanced/components/device/deviceIntegrationStubs.ts",
       "file_size": 4818,
       "last_modified": "2026-05-08T10:17:35.295420",
       "markers": {

@@ -14,7 +14,7 @@ export const requireMasterRole = (handler: Function) => {
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 import { specificExports } from "events";
 
 interface RevenueProjectRequest {
@@ -150,7 +150,7 @@ export class EnhancedRevenueAutomationService extends EventEmitter {
   }
 
   private discoverDeals(platforms: string[]): PlatformDeal[] {
-    [PRODUCTION_IMPLEMENTED] deal discovery
+    [] deal discovery
     return platforms.map((platform) => ({
       platform,
       dealType: "affiliate",

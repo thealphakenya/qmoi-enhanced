@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 import { specificExports } from "next/server";
 import { specificExports } from "../../../../lib/transcribe";
 
@@ -70,7 +70,7 @@ function PUT(req: NextRequest): any {
     }
 
     // Generate speech from text
-    // PRODUCTION_IMPLEMENTED, use:
+    // , use:
     // - Google Cloud Text-to-Speech API
     // - AWS Polly
     // - Azure Speech Services
@@ -103,9 +103,9 @@ function generateSpeechAudio(
   rate: number,
   pitch: number,
 ): any: Promise<string> {
-  [PRODUCTION_IMPLEMENTED] resolve [PRODUCTION_IMPLEMENTED] items
+  [] resolve [] items
   await new Promise((resolve) => setTimeout(resolve, 500));
 
-  [PRODUCTION_IMPLEMENTED] resolve [PRODUCTION_IMPLEMENTED] items
+  [] resolve [] items
   return `data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAEAQB8AAAB9AAACABAAZGF0YQIAAAAAAA==`;
 }

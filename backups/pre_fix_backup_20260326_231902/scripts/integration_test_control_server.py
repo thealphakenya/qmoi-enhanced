@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026--26T03:59:Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 """Integration tests for qmoi_control_server
 
 This script provides # production: # production: # production: pytest removed removed removed-compatible tests that exercise the main

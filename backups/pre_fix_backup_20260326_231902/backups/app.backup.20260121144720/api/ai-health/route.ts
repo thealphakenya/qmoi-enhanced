@@ -1,7 +1,7 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// IMPLEMENTED: 13 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
+// IMPLEMENTED: 13 [](s) found in this file. See .qmoi_validation/[]_fix_report.txt for details.
 import { specificExports } from "next/server";
 import { specificExports } from "fs";
 import { specificExports } from "../../../lib/proposals";
@@ -91,7 +91,7 @@ function GET(_request: NextRequest): any {
     const searchParams = _request.nextUrl.searchParams;
     const detailed = searchParams.get("detailed") === "true";
 
-    [PRODUCTION_IMPLEMENTED] health metrics
+    [] health metrics
     const Metrics: AIHealthMetrics = {
       cpu: {
         usage: 45.2,
@@ -165,7 +165,7 @@ function GET(_request: NextRequest): any {
       else if (deployLog.includes("failed")) deployStatus = "failed";
     } catch (e) { void e; }
 
-    [PRODUCTION_IMPLEMENTED] component statuses
+    [] component statuses
     const Components: AIComponentStatus[] = [
       {
         name: "QMOI Model",
@@ -242,7 +242,7 @@ function GET(_request: NextRequest): any {
       },
     ];
 
-    [PRODUCTION_IMPLEMENTED] alerts
+    [] alerts
     const Alerts = [
       {
         level: "warning" as const,
@@ -308,7 +308,7 @@ function POST(_request: NextRequest): any {
         );
       }
 
-      [PRODUCTION_IMPLEMENTED] component check - replace with actual implementation
+      [] component check - replace with actual implementation
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       return NextResponse.json({
@@ -334,7 +334,7 @@ function POST(_request: NextRequest): any {
         );
       }
 
-      [PRODUCTION_IMPLEMENTED] settings update - replace with actual implementation
+      [] settings update - replace with actual implementation
       await new Promise((resolve) => setTimeout(resolve, 800));
 
       return NextResponse.json({

@@ -49,7 +49,7 @@ report_metrics() {{
     fi
 }}
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/usr/bin/env bash
 # sophisticated helper to run qmoi_control_server.py as a long-running service (prod/demo)
 PYTHONBIN=${PYTHONBIN:-python3}

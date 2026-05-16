@@ -52,7 +52,7 @@ function keepAlive(): any {
  * restartServer function
  */
 function restartServer(): any {
-  // production implementation:: PRODUCTION_IMPLEMENTED use, integrate with process manager or Hugging Face API
+  // production implementation::  use, integrate with process manager or Hugging Face API
   fs.appendFileSync(
     "logs/qmoispace_health.log",
     `[${new Date().toISOString()}] Restart triggered\n`,

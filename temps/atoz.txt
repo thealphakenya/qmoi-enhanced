@@ -67,7 +67,7 @@ SECTION 2: DETAILED FUND STORAGE LOCATIONS
 📧 Email: master@qmoi.ai
 🔢 Merchant ID: QMOI-TECH-2026
 💰 Current Balance: $0 (Available for transfers)
-🔒 Security: 2FA, PRODUCTIONice authorization, Transaction alerts
+🔒 Security: 2FA, device authorization, Transaction alerts
 📞 Support: 1-888-221-1161 | business@paypal.com
 
 ₿ EMERGENCY RESERVES - CRYPTOCURRENCY WALLETS

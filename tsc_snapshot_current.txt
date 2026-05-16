@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 app/api/account-automation/route.ts(17,20): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/account-automation/route.ts(31,15): error TS2304: Cannot find name 'fals_e'.
 app/api/account-automation/route.ts(41,20): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
@@ -97,7 +97,7 @@ app/api/datasets/route.ts(15,69): error TS18046: 'data' is of type 'unknown'.
 app/api/deploy/auto-redeploy/route.ts(31,23): error TS2304: Cannot find name 'fals_e'.
 app/api/deploy/auto-redeploy/route.ts(38,63): error TS18046: '_error' is of type 'unknown'.
 app/api/deploy/route.ts(44,46): error TS18046: '_error' is of type 'unknown'.
-app/api/PRODUCTIONice-fingerprint/route.ts(44,5): error TS18046: 'fingerprints' is of type 'unknown'.
+app/api/device-fingerprint/route.ts(44,5): error TS18046: 'fingerprints' is of type 'unknown'.
 app/api/document-backup/route.ts(42,41): error TS18046: 'd' is of type 'unknown'.
 app/api/document-backup/route.ts(43,45): error TS18046: 'd' is of type 'unknown'.
 app/api/document-backup/route.ts(51,37): error TS18046: 'd' is of type 'unknown'.
@@ -288,39 +288,39 @@ app/api/qcity/audit-log/route.ts(34,39): error TS18046: 'l' is of type 'unknown'
 app/api/qcity/audit-log/route.ts(35,43): error TS18046: 'l' is of type 'unknown'.
 app/api/qcity/audit-log/route.ts(36,41): error TS18046: 'l' is of type 'unknown'.
 app/api/qcity/audit-log/route.ts(43,40): error TS18046: 'l' is of type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(19,38): error TS2304: Cannot find name 'NextApiResponse'.
-app/api/qcity/PRODUCTIONices.ts(20,27): error TS2339: Property '_query' does not exist on type 'NextApiRequest'.
-app/api/qcity/PRODUCTIONices.ts(26,15): error TS2339: Property 'name' does not exist on type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(26,21): error TS2339: Property 'host' does not exist on type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(26,27): error TS2339: Property 'port' does not exist on type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(26,33): error TS2339: Property 'username' does not exist on type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(26,43): error TS2339: Property 'password' does not exist on type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(26,53): error TS2339: Property 'privateKey' does not exist on type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(40,7): error TS18046: 'PRODUCTIONices' is of type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(41,19): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
-app/api/qcity/PRODUCTIONices.ts(45,15): error TS2339: Property 'id' does not exist on type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(45,22): error TS2700: Rest types may only be created from object types.
-app/api/qcity/PRODUCTIONices.ts(46,19): error TS18046: 'PRODUCTIONices' is of type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(46,53): error TS18046: 'd' is of type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(48,7): error TS18046: 'PRODUCTIONices' is of type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(49,12): error TS18046: 'PRODUCTIONices' is of type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(53,19): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
-app/api/qcity/PRODUCTIONices.ts(54,46): error TS18046: 'PRODUCTIONices' is of type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(57,15): error TS2339: Property 'id' does not exist on type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(58,17): error TS18046: 'PRODUCTIONices' is of type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(58,48): error TS18046: 'd' is of type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(59,19): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
-app/api/qcity/PRODUCTIONices.ts(63,15): error TS2339: Property 'id' does not exist on type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(64,22): error TS18046: 'PRODUCTIONices' is of type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(64,51): error TS18046: 'd' is of type 'unknown'.
-app/api/qcity/PRODUCTIONices.ts(74,50): error TS18046: '_err' is of type 'unknown'.
+app/api/qcity/devices.ts(19,38): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qcity/devices.ts(20,27): error TS2339: Property '_query' does not exist on type 'NextApiRequest'.
+app/api/qcity/devices.ts(26,15): error TS2339: Property 'name' does not exist on type 'unknown'.
+app/api/qcity/devices.ts(26,21): error TS2339: Property 'host' does not exist on type 'unknown'.
+app/api/qcity/devices.ts(26,27): error TS2339: Property 'port' does not exist on type 'unknown'.
+app/api/qcity/devices.ts(26,33): error TS2339: Property 'username' does not exist on type 'unknown'.
+app/api/qcity/devices.ts(26,43): error TS2339: Property 'password' does not exist on type 'unknown'.
+app/api/qcity/devices.ts(26,53): error TS2339: Property 'privateKey' does not exist on type 'unknown'.
+app/api/qcity/devices.ts(40,7): error TS18046: 'devices' is of type 'unknown'.
+app/api/qcity/devices.ts(41,19): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
+app/api/qcity/devices.ts(45,15): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/qcity/devices.ts(45,22): error TS2700: Rest types may only be created from object types.
+app/api/qcity/devices.ts(46,19): error TS18046: 'devices' is of type 'unknown'.
+app/api/qcity/devices.ts(46,53): error TS18046: 'd' is of type 'unknown'.
+app/api/qcity/devices.ts(48,7): error TS18046: 'devices' is of type 'unknown'.
+app/api/qcity/devices.ts(49,12): error TS18046: 'devices' is of type 'unknown'.
+app/api/qcity/devices.ts(53,19): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
+app/api/qcity/devices.ts(54,46): error TS18046: 'devices' is of type 'unknown'.
+app/api/qcity/devices.ts(57,15): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/qcity/devices.ts(58,17): error TS18046: 'devices' is of type 'unknown'.
+app/api/qcity/devices.ts(58,48): error TS18046: 'd' is of type 'unknown'.
+app/api/qcity/devices.ts(59,19): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
+app/api/qcity/devices.ts(63,15): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/qcity/devices.ts(64,22): error TS18046: 'devices' is of type 'unknown'.
+app/api/qcity/devices.ts(64,51): error TS18046: 'd' is of type 'unknown'.
+app/api/qcity/devices.ts(74,50): error TS18046: '_err' is of type 'unknown'.
 app/api/qcity/metrics.ts(8,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qcity/plugins.ts(11,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qcity/remote-command.ts(13,22): error TS2698: Spread types may only be created from object types.
 app/api/qcity/remote-command/route.ts(14,22): error TS2698: Spread types may only be created from object types.
 app/api/qcity/remote-command/route.ts(30,23): error TS2339: Property 'cmd' does not exist on type '{}'.
 app/api/qcity/remote-command/route.ts(36,11): error TS2339: Property 'cmd' does not exist on type 'unknown'.
-app/api/qcity/remote-command/route.ts(36,16): error TS2339: Property 'PRODUCTIONiceId' does not exist on type 'unknown'.
+app/api/qcity/remote-command/route.ts(36,16): error TS2339: Property 'deviceId' does not exist on type 'unknown'.
 app/api/qcity/remote-command/route.ts(36,36): error TS2339: Property 'stream' does not exist on type 'unknown'.
 app/api/qcity/remote-command/route.ts(52,59): error TS18046: 'data' is of type 'unknown'.
 app/api/qcity/remote-command/route.ts(53,59): error TS18046: 'data' is of type 'unknown'.
@@ -331,7 +331,7 @@ app/api/qcity/schedule.ts(20,25): error TS2339: Property '_query' does not exist
 app/api/qcity/schedule.ts(26,13): error TS2339: Property 'name' does not exist on type 'unknown'.
 app/api/qcity/schedule.ts(26,19): error TS2339: Property 'command' does not exist on type 'unknown'.
 app/api/qcity/schedule.ts(26,28): error TS2339: Property 'cron' does not exist on type 'unknown'.
-app/api/qcity/schedule.ts(26,34): error TS2339: Property 'PRODUCTIONiceId' does not exist on type 'unknown'.
+app/api/qcity/schedule.ts(26,34): error TS2339: Property 'deviceId' does not exist on type 'unknown'.
 app/api/qcity/schedule.ts(26,44): error TS2339: Property 'notify' does not exist on type 'unknown'.
 app/api/qcity/schedule.ts(39,5): error TS18046: 'schedules' is of type 'unknown'.
 app/api/qcity/schedule.ts(40,19): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
@@ -459,12 +459,12 @@ app/api/qmoi/language/route.ts(17,20): error TS2551: Property '_response' does n
 app/api/qmoi/language/route.ts(18,18): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/language/route.ts(22,25): error TS2339: Property '_query' does not exist on type 'NextApiRequest'.
 app/api/qmoi/language/route.ts(26,15): error TS2339: Property 'action' does not exist on type 'unknown'.
-app/api/qmoi/own-PRODUCTIONice-logs/export/route.ts(34,21): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
-app/api/qmoi/own-PRODUCTIONice-logs/export/route.ts(35,46): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
-app/api/qmoi/own-PRODUCTIONice-logs/route.ts(48,21): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
-app/api/qmoi/own-PRODUCTIONice-logs/route.ts(49,46): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
-app/api/qmoi/own-PRODUCTIONice-logs/route.ts(125,21): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
-app/api/qmoi/own-PRODUCTIONice-logs/route.ts(126,46): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
+app/api/qmoi/own-device-logs/export/route.ts(34,21): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
+app/api/qmoi/own-device-logs/export/route.ts(35,46): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
+app/api/qmoi/own-device-logs/route.ts(48,21): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
+app/api/qmoi/own-device-logs/route.ts(49,46): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
+app/api/qmoi/own-device-logs/route.ts(125,21): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
+app/api/qmoi/own-device-logs/route.ts(126,46): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/research/route.ts(9,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qmoi/research/route.ts(16,15): error TS2339: Property 'action' does not exist on type 'unknown'.
 app/api/qmoi/revenue/reset/route.ts(20,17): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
@@ -951,26 +951,26 @@ components/analytics/AnalyticsCharts.tsx(32,9): error TS18046: 'e' is of type 'u
 components/analytics/AnalyticsCharts.tsx(32,40): error TS18046: 'e' is of type 'unknown'.
 components/analytics/AnalyticsCharts.tsx(33,20): error TS18046: 'e' is of type 'unknown'.
 components/analytics/AnalyticsCharts.tsx(42,21): error TS18046: 'e' is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(84,11): error TS18046: 'port' is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(85,11): error TS18046: 'port' is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(141,11): error TS18046: 'port' is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(142,11): error TS18046: 'port' is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(336,13): error TS18046: 'command' is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(339,34): error TS18046: 'command' is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(342,20): error TS18046: 'command' is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(348,14): error TS2571: Object is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(348,30): error TS18046: 'command' is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(428,15): error TS18046: 'command' is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(483,15): error TS18046: 'command' is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(541,15): error TS18046: 'command' is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(572,7): error TS2571: Object is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(573,7): error TS2571: Object is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(590,10): error TS2571: Object is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(590,27): error TS18046: 'command' is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(591,33): error TS18046: 'command' is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(597,17): error TS18046: 'command' is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(645,17): error TS2571: Object is of type 'unknown'.
-components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts(646,16): error TS18046: 'command' is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(84,11): error TS18046: 'port' is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(85,11): error TS18046: 'port' is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(141,11): error TS18046: 'port' is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(142,11): error TS18046: 'port' is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(336,13): error TS18046: 'command' is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(339,34): error TS18046: 'command' is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(342,20): error TS18046: 'command' is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(348,14): error TS2571: Object is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(348,30): error TS18046: 'command' is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(428,15): error TS18046: 'command' is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(483,15): error TS18046: 'command' is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(541,15): error TS18046: 'command' is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(572,7): error TS2571: Object is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(573,7): error TS2571: Object is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(590,10): error TS2571: Object is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(590,27): error TS18046: 'command' is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(591,33): error TS18046: 'command' is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(597,17): error TS18046: 'command' is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(645,17): error TS2571: Object is of type 'unknown'.
+components/device/deviceIntegration[]s.ts(646,16): error TS18046: 'command' is of type 'unknown'.
 components/enhanced-system-dashboard.tsx(179,29): error TS18046: 'AWSIntegration.listBuckets' is of type 'unknown'.
 components/enhanced-system-dashboard.tsx(236,29): error TS18046: 'p' is of type 'unknown'.
 components/enhanced-system-dashboard.tsx(282,40): error TS18046: 'event' is of type 'unknown'.
@@ -1023,10 +1023,10 @@ components/q-city/EmploymentDashboard.tsx(819,57): error TS18046: 'tx' is of typ
 components/q-city/EmploymentDashboard.tsx(821,41): error TS18046: 'tx' is of type 'unknown'.
 components/q-city/EmploymentDashboard.tsx(826,31): error TS18046: 'tx' is of type 'unknown'.
 components/q-city/EmploymentDashboard.tsx(829,31): error TS18046: 'tx' is of type 'unknown'.
-components/q-city/QCityPRODUCTIONicePanel.tsx(178,53): error TS18046: 'res' is of type 'unknown'.
-components/q-city/QCityPRODUCTIONicePanel.tsx(182,52): error TS18046: 'res' is of type 'unknown'.
-components/q-city/QCityPRODUCTIONicePanel.tsx(214,35): error TS18046: 'res' is of type 'unknown'.
-components/q-city/QCityPRODUCTIONicePanel.tsx(217,35): error TS18046: 'res' is of type 'unknown'.
+components/q-city/QCitydevicePanel.tsx(178,53): error TS18046: 'res' is of type 'unknown'.
+components/q-city/QCitydevicePanel.tsx(182,52): error TS18046: 'res' is of type 'unknown'.
+components/q-city/QCitydevicePanel.tsx(214,35): error TS18046: 'res' is of type 'unknown'.
+components/q-city/QCitydevicePanel.tsx(217,35): error TS18046: 'res' is of type 'unknown'.
 components/q-city/QMOIBiometricManager.tsx(361,51): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<number>'.
 components/ui/alert.tsx(24,55): error TS2344: Type '(props?: (ConfigVariants<{ variant: { default: string; destructive: string; }; }> & ClassProp) | undefined) => string' does not satisfy the constraint '(...args: unknown) => any'.
   Types of parameters 'props' and 'args' are incompatible.
@@ -1087,7 +1087,7 @@ components/ui/use-toast.ts(56,50): error TS2344: Type 'typeof setTimeout' does n
 hooks/use-toast.ts(56,50): error TS2344: Type 'typeof setTimeout' does not satisfy the constraint '(...args: unknown) => any'.
   Types of parameters 'handler' and 'args' are incompatible.
     Type 'unknown' is not assignable to type '[handler: TimerHandler, timeout?: number | undefined, ...arguments: unknown[]]'.
-hooks/usePRODUCTIONiceHealth.ts(105,19): error TS18046: 'battery' is of type 'unknown'.
+hooks/usedeviceHealth.ts(105,19): error TS18046: 'battery' is of type 'unknown'.
 hooks/useProjects.ts(89,43): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<Error | null>'.
 hooks/useProjects.ts(104,43): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<Error | null>'.
 hooks/useProjects.ts(151,43): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<Error | null>'.
@@ -1232,19 +1232,19 @@ src/components/q-city/CommandPanel.tsx(136,13): error TS2322: Type 'unknown' is 
 src/components/q-city/CommandPanel.tsx(142,10): error TS18046: 'history' is of type 'unknown'.
 src/components/q-city/CommandPanel.tsx(145,35): error TS18046: 'h' is of type 'unknown'.
 src/components/q-city/CommandPanel.tsx(148,14): error TS18046: 'h' is of type 'unknown'.
-src/components/q-city/PRODUCTIONicePanel.tsx(28,31): error TS18046: '_e' is of type 'unknown'.
-src/components/q-city/PRODUCTIONicePanel.tsx(44,61): error TS2339: Property 'id' does not exist on type '{}'.
-src/components/q-city/PRODUCTIONicePanel.tsx(58,31): error TS18046: '_e' is of type 'unknown'.
-src/components/q-city/PRODUCTIONicePanel.tsx(73,31): error TS18046: '_e' is of type 'unknown'.
-src/components/q-city/PRODUCTIONicePanel.tsx(91,36): error TS18046: '_e' is of type 'unknown'.
-src/components/q-city/PRODUCTIONicePanel.tsx(153,9): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
-src/components/q-city/PRODUCTIONicePanel.tsx(192,22): error TS18046: 'PRODUCTION' is of type 'unknown'.
-src/components/q-city/PRODUCTIONicePanel.tsx(193,22): error TS18046: 'PRODUCTION' is of type 'unknown'.
-src/components/q-city/PRODUCTIONicePanel.tsx(194,22): error TS18046: 'PRODUCTION' is of type 'unknown'.
-src/components/q-city/PRODUCTIONicePanel.tsx(195,22): error TS18046: 'PRODUCTION' is of type 'unknown'.
-src/components/q-city/PRODUCTIONicePanel.tsx(200,31): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<{ name: string; host: string; port: number; username: string; password: string; privateKey: string; }>'.
-src/components/q-city/PRODUCTIONicePanel.tsx(207,40): error TS18046: 'PRODUCTION' is of type 'unknown'.
-src/components/q-city/PRODUCTIONicePanel.tsx(213,41): error TS18046: 'PRODUCTION' is of type 'unknown'.
+src/components/q-city/devicePanel.tsx(28,31): error TS18046: '_e' is of type 'unknown'.
+src/components/q-city/devicePanel.tsx(44,61): error TS2339: Property 'id' does not exist on type '{}'.
+src/components/q-city/devicePanel.tsx(58,31): error TS18046: '_e' is of type 'unknown'.
+src/components/q-city/devicePanel.tsx(73,31): error TS18046: '_e' is of type 'unknown'.
+src/components/q-city/devicePanel.tsx(91,36): error TS18046: '_e' is of type 'unknown'.
+src/components/q-city/devicePanel.tsx(153,9): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
+src/components/q-city/devicePanel.tsx(192,22): error TS18046: 'PRODUCTION' is of type 'unknown'.
+src/components/q-city/devicePanel.tsx(193,22): error TS18046: 'PRODUCTION' is of type 'unknown'.
+src/components/q-city/devicePanel.tsx(194,22): error TS18046: 'PRODUCTION' is of type 'unknown'.
+src/components/q-city/devicePanel.tsx(195,22): error TS18046: 'PRODUCTION' is of type 'unknown'.
+src/components/q-city/devicePanel.tsx(200,31): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<{ name: string; host: string; port: number; username: string; password: string; privateKey: string; }>'.
+src/components/q-city/devicePanel.tsx(207,40): error TS18046: 'PRODUCTION' is of type 'unknown'.
+src/components/q-city/devicePanel.tsx(213,41): error TS18046: 'PRODUCTION' is of type 'unknown'.
 src/components/q-city/EnhancedQMOIDashboard.tsx(169,14): error TS18046: 'dashboardData.errorFixing.queueStatus' is of type 'unknown'.
 src/components/q-city/EnhancedQMOIDashboard.tsx(173,14): error TS18046: 'dashboardData.errorFixing.queueStatus' is of type 'unknown'.
 src/components/q-city/EnhancedQMOIDashboard.tsx(178,15): error TS18046: 'dashboardData.errorFixing.systemHealth' is of type 'unknown'.
@@ -1407,7 +1407,7 @@ src/components/q-city/SchedulePanel.tsx(168,22): error TS18046: 'job' is of type
 src/components/q-city/SchedulePanel.tsx(169,22): error TS18046: 'job' is of type 'unknown'.
 src/components/q-city/SchedulePanel.tsx(170,22): error TS18046: 'job' is of type 'unknown'.
 src/components/q-city/SchedulePanel.tsx(171,22): error TS18046: 'job' is of type 'unknown'.
-src/components/q-city/SchedulePanel.tsx(176,31): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<{ name: string; command: string; cron: string; PRODUCTIONiceId: string; notify: string; }>'.
+src/components/q-city/SchedulePanel.tsx(176,31): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<{ name: string; command: string; cron: string; deviceId: string; notify: string; }>'.
 src/components/q-city/SchedulePanel.tsx(183,40): error TS18046: 'job' is of type 'unknown'.
 src/components/q-city/SchedulePanel.tsx(189,43): error TS18046: 'job' is of type 'unknown'.
 src/components/q-city/SelfHealPanel.tsx(22,53): error TS2345: Argument of type '() => unknown' is not assignable to parameter of type 'unknown[] | (() => unknown[])'.
@@ -1453,31 +1453,31 @@ src/lib/security_check.ts(72,5): error TS18046: 'logs' is of type 'unknown'.
 src/lib/security_check.ts(75,9): error TS18046: 'logs' is of type 'unknown'.
 src/lib/security_check.ts(76,7): error TS18046: 'logs' is of type 'unknown'.
 src/lib/security_check.ts(76,22): error TS18046: 'logs' is of type 'unknown'.
-src/[PRODUCTION_IMPLEMENTED]s/handlers.test.ts(15,22): error TS2345: Argument of type '(...args: unknown[]) => { type: string; args: unknown[]; }' is not assignable to parameter of type 'FunctionLike'.
+src/[]s/handlers.test.ts(15,22): error TS2345: Argument of type '(...args: unknown[]) => { type: string; args: unknown[]; }' is not assignable to parameter of type 'FunctionLike'.
   Types of parameters 'args' and 'args' are incompatible.
     Type 'unknown' is not assignable to type 'unknown[]'.
-src/[PRODUCTION_IMPLEMENTED]s/handlers.test.ts(16,23): error TS2345: Argument of type '(...args: unknown[]) => { type: string; args: unknown[]; }' is not assignable to parameter of type 'FunctionLike'.
+src/[]s/handlers.test.ts(16,23): error TS2345: Argument of type '(...args: unknown[]) => { type: string; args: unknown[]; }' is not assignable to parameter of type 'FunctionLike'.
   Types of parameters 'args' and 'args' are incompatible.
     Type 'unknown' is not assignable to type 'unknown[]'.
-src/[PRODUCTION_IMPLEMENTED]s/handlers.test.ts(31,22): error TS2345: Argument of type '(...args: unknown[]) => { type: string; args: unknown[]; }' is not assignable to parameter of type 'FunctionLike'.
+src/[]s/handlers.test.ts(31,22): error TS2345: Argument of type '(...args: unknown[]) => { type: string; args: unknown[]; }' is not assignable to parameter of type 'FunctionLike'.
   Types of parameters 'args' and 'args' are incompatible.
     Type 'unknown' is not assignable to type 'unknown[]'.
-src/[PRODUCTION_IMPLEMENTED]s/handlers.test.ts(32,23): error TS2345: Argument of type '(...args: unknown[]) => { type: string; args: unknown[]; }' is not assignable to parameter of type 'FunctionLike'.
+src/[]s/handlers.test.ts(32,23): error TS2345: Argument of type '(...args: unknown[]) => { type: string; args: unknown[]; }' is not assignable to parameter of type 'FunctionLike'.
   Types of parameters 'args' and 'args' are incompatible.
     Type 'unknown' is not assignable to type 'unknown[]'.
-src/[PRODUCTION_IMPLEMENTED]s/handlers.ts(28,25): error TS2769: No overload matches this call.
+src/[]s/handlers.ts(28,25): error TS2769: No overload matches this call.
   Overload 1 of 2, '(o: {}): string[]', gave the following error.
     Argument of type 'unknown' is not assignable to parameter of type '{}'.
   Overload 2 of 2, '(o: object): string[]', gave the following error.
     Argument of type 'unknown' is not assignable to parameter of type 'object'.
-src/[PRODUCTION_IMPLEMENTED]s/handlers.ts(122,25): error TS2769: No overload matches this call.
+src/[]s/handlers.ts(122,25): error TS2769: No overload matches this call.
   Overload 1 of 2, '(o: {}): string[]', gave the following error.
     Argument of type 'unknown' is not assignable to parameter of type '{}'.
   Overload 2 of 2, '(o: object): string[]', gave the following error.
     Argument of type 'unknown' is not assignable to parameter of type 'object'.
-src/[PRODUCTION_IMPLEMENTED]s/handlers.ts(152,25): error TS2339: Property 'url' does not exist on type '{}'.
-src/[PRODUCTION_IMPLEMENTED]s/handlers.ts(153,25): error TS2339: Property '_request' does not exist on type '{}'.
-src/[PRODUCTION_IMPLEMENTED]s/handlers.ts(153,43): error TS2339: Property '_request' does not exist on type '{}'.
+src/[]s/handlers.ts(152,25): error TS2339: Property 'url' does not exist on type '{}'.
+src/[]s/handlers.ts(153,25): error TS2339: Property '_request' does not exist on type '{}'.
+src/[]s/handlers.ts(153,43): error TS2339: Property '_request' does not exist on type '{}'.
 src/plugins/PluginManager.ts(94,56): error TS2769: No overload matches this call.
   Overload 1 of 2, '(timeout: string | number | Timeout | undefined): void', gave the following error.
     Argument of type 'unknown' is not assignable to parameter of type 'string | number | Timeout | undefined'.

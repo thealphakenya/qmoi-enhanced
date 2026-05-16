@@ -32,7 +32,7 @@ This index provides a comprehensive reference to all API documentation files in 
 - User authentication endpoints
 - Biometric authentication systems
 - WebAuthn security protocols
-- PRODUCTIONice fingerprinting
+- device fingerprinting
 
 ### AI & Intelligence
 - Core AI processing endpoints
@@ -47,7 +47,7 @@ This index provides a comprehensive reference to all API documentation files in 
 - Database interaction endpoints
 
 ### System Management
-- PRODUCTIONice management and control
+- device management and control
 - Deployment and monitoring
 - Version control and updates
 - Health checks and metrics
@@ -84,7 +84,7 @@ All API endpoints are organized under `/api/` with the following structure:
 /api/
 ├── auth/           # Authentication endpoints
 ├── ai/            # AI and intelligence
-├── PRODUCTIONices/       # PRODUCTIONice management
+├── devices/       # device management
 ├── datasets/      # Data management
 ├── files/         # File operations
 ├── wallets/       # Financial services

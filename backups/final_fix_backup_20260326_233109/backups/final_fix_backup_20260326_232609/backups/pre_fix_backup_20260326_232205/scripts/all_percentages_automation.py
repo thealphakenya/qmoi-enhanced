@@ -329,11 +329,11 @@ def generate_report(self) -> Any:
         report.append('## Health Indicators')
         readiness = self.percentages.get('production_readiness_overall', {}).get('value', 0)
         if readiness >= 90:
-            report.append('✅ **PRODUCTION_IMPLEMENTED**: System demonstrates >90% readiness')
+            report.append('✅ ****: System demonstrates >90% readiness')
         elif readiness >= 70:
-            report.append('⚠️ **PRODUCTION_IMPLEMENTED WITH CAUTION**: System at 70-89% readiness')
+            report.append('⚠️ ** WITH CAUTION**: System at 70-89% readiness')
         else:
-            report.append('❌ **NOT PRODUCTION_IMPLEMENTED**: System below 70% readiness')
+            report.append('❌ **NOT **: System below 70% readiness')
         
         report.append('')
 

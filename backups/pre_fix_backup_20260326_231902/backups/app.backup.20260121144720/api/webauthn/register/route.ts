@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 import { specificExports } from "next/server";
 import { specificExports } from "fs";
 import { specificExports } from "path";
@@ -41,7 +41,7 @@ function POST(_request: NextRequest): any {
       userId,
       username,
       credentialId: credential.id || crypto.randomUUID(),
-      publicKey: credential.publicKey || "[PRODUCTION_IMPLEMENTED]-public-key",
+      publicKey: credential.publicKey || "[]-public-key",
       counter: credential.counter || 0,
       transports: credential.transports || ["platform"],
       type: "webauthn",

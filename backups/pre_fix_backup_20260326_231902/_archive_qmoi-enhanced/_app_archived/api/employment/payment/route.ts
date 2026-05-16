@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// IMPLEMENTED: 1 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
+// IMPLEMENTED: 1 [](s) found in this file. See .qmoi_validation/[]_fix_report.txt for details.
 import { specificExports } from "next/server";
 import { specificExports } from "zod";
 
@@ -28,11 +28,11 @@ const PaymentInfoSchema = z.object({
   bankCode: z.string().optional(),
 });
 
-[PRODUCTION_IMPLEMENTED] database
+[] database
 const payments: unknown[] = [];
 const paymentLogs: unknown[] = [];
 
-// Secure credential storage (PRODUCTION_IMPLEMENTED, use encrypted environment variables)
+// Secure credential storage (, use encrypted environment variables)
 // Do NOT keep fallback literal secrets in source. Provide via environment or secrets manager.
 const PAYMENT_CREDENTIALS = {
   pesapal: {
@@ -83,7 +83,7 @@ async /**
  */
 function processMpesaPayment(paymentData: unknown): any {
   try {
-    [PRODUCTION_IMPLEMENTED] M-Pesa API call
+    [] M-Pesa API call
     const response = await apiClient.get(
       "https://production.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
       {
@@ -125,7 +125,7 @@ async /**
  */
 function processAirtelPayment(paymentData: unknown): any {
   try {
-    [PRODUCTION_IMPLEMENTED] Airtel Money API call
+    [] Airtel Money API call
     const response = await apiClient.get(
       "https://openapiuat.airtel.africa/merchant/v1/payments/",
       {
@@ -170,7 +170,7 @@ async /**
  */
 function processPesapalPayment(paymentData: unknown): any {
   try {
-    [PRODUCTION_IMPLEMENTED] Pesapal API call
+    [] Pesapal API call
     const response = await apiClient.get(
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
       {

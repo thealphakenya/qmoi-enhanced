@@ -129,6 +129,10 @@ junit.xml
 *.backup
 *~
 
+# Repository backup folders
+.backups/
+backups/
+
 # Cache directories
 .cache/
 .parcel-cache/

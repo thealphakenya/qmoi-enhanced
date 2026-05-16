@@ -1,7 +1,7 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// IMPLEMENTED: 14 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
+// IMPLEMENTED: 14 [](s) found in this file. See .qmoi_validation/[]_fix_report.txt for details.
 import { specificExports } from "next";
 import { specificExports } from "../../../../lib/proposals";
 export const dynamic = "force-dynamic";
@@ -31,37 +31,37 @@ function handler(
       const { action } = body;
       switch (action) {
         case "translate":
-          [PRODUCTION_IMPLEMENTED]: handle translation
+          []: handle translation
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "speech-to-text":
-          [PRODUCTION_IMPLEMENTED]: handle STT
+          []: handle STT
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "text-to-speech":
-          [PRODUCTION_IMPLEMENTED]: handle TTS
+          []: handle TTS
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "language-detect":
-          [PRODUCTION_IMPLEMENTED]: handle language detection
+          []: handle language detection
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "lesson":
-          [PRODUCTION_IMPLEMENTED]: handle language lesson
+          []: handle language lesson
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "quiz":
-          [PRODUCTION_IMPLEMENTED]: handle language quiz
+          []: handle language quiz
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "pronunciation-check":
-          [PRODUCTION_IMPLEMENTED]: handle pronunciation check
+          []: handle pronunciation check
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });

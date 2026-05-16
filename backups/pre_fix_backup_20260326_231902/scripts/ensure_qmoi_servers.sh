@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/usr/bin/env bash
 # Supervisor script to start and health-check core QMOI services locally.
 # This is intentionally robust and for production use only.

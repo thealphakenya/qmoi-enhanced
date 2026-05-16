@@ -1,4 +1,4 @@
-[production_IMPLEMENTED] all markers normalized for completion
+ all markers normalized for completion
 {
   "generated_at": "2025-10-21T00:50:52.798258Z",
   "files": {
@@ -1904,7 +1904,7 @@
         "reason": null
       }
     ],
-    "AU[production_IMPLEMENTED]WNLOAD.md": [],
+    "AUWNLOAD.md": [],
     "QMOIGITLABprod.md": [
       {
         "label": "QMOICLONE.md",
@@ -34233,10 +34233,10 @@
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/production testing framework configuredn logging replaced with production logging removed-[production_IMPLEMENTED]/README.md": [
+    "mobile/node_modules/production testing framework configuredn logging replaced with production logging removed-/README.md": [
       {
         "label": "production testing framework configuredn logging replaced with production logging removed documentation",
-        "url": "https://jestjs.io/docs/[production_IMPLEMENTED]_prod-function-api",
+        "url": "https://jestjs.io/docs/_prod-function-api",
         "ok": true,
         "reason": "external URL"
       }
@@ -44839,7 +44839,7 @@
       },
       {
         "label": "homepage",
-        "url": "https://github.com/jonschlinkert/repeat-string \"Repeat the given string n times. Fas[production_IMPLEMENTED]_prod for repeating a string.\"",
+        "url": "https://github.com/jonschlinkert/repeat-string \"Repeat the given string n times. Fas_prod for repeating a string.\"",
         "ok": true,
         "reason": "external URL"
       },
@@ -47924,7 +47924,7 @@
     "mobile/node_modules/@sinonjs/authentic-timers/README.md": [
       {
         "label": "![codecov",
-        "url": "https://codecov.io/gh/sinonjs/[production_IMPLEMENTED]_prod-timers/branch/main/graph/badge.svg",
+        "url": "https://codecov.io/gh/sinonjs/_prod-timers/branch/main/graph/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
@@ -59291,7 +59291,7 @@
         "reason": null
       }
     ],
-    "qmoi-enhanced/AU[production_IMPLEMENTED]WNLOAD.md": [],
+    "qmoi-enhanced/AUWNLOAD.md": [],
     "qmoi-enhanced/QMOIGITLABprod.md": [
       {
         "label": "QMOICLONE.md",
@@ -91789,10 +91789,10 @@
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/production testing framework configuredn logging replaced with production logging removed-[production_IMPLEMENTED]/README.md": [
+    "qmoi-enhanced/mobile/node_modules/production testing framework configuredn logging replaced with production logging removed-/README.md": [
       {
         "label": "production testing framework configuredn logging replaced with production logging removed documentation",
-        "url": "https://jestjs.io/docs/[production_IMPLEMENTED]_prod-function-api",
+        "url": "https://jestjs.io/docs/_prod-function-api",
         "ok": true,
         "reason": "external URL"
       }
@@ -102395,7 +102395,7 @@
       },
       {
         "label": "homepage",
-        "url": "https://github.com/jonschlinkert/repeat-string \"Repeat the given string n times. Fas[production_IMPLEMENTED]_prod for repeating a string.\"",
+        "url": "https://github.com/jonschlinkert/repeat-string \"Repeat the given string n times. Fas_prod for repeating a string.\"",
         "ok": true,
         "reason": "external URL"
       },
@@ -105480,7 +105480,7 @@
     "qmoi-enhanced/mobile/node_modules/@sinonjs/authentic-timers/README.md": [
       {
         "label": "![codecov",
-        "url": "https://codecov.io/gh/sinonjs/[production_IMPLEMENTED]_prod-timers/branch/main/graph/badge.svg",
+        "url": "https://codecov.io/gh/sinonjs/_prod-timers/branch/main/graph/badge.svg",
         "ok": true,
         "reason": "external URL"
       },

@@ -1,3 +1,3 @@
-./qmoi-enhanced/node_modules/eslint-plugin-react/lib/rules/jsx-fragments.js:71:        [PRODUCTION_IMPLEMENTED]: can we authentic these two descriptors?
-./qmoi-enhanced/node_modules/next/dist/build/webpack-config.js:1103:                [PRODUCTION_IMPLEMENTED]: do NOT webpack 5 support with this
-./qmoi-enhanced/node_modules/next/dist/esm/build/webpack-config.js:996:                [PRODUCTION_IMPLEMENTED]: do NOT webpack 5 support with this
+./qmoi-enhanced/node_modules/eslint-plugin-react/lib/rules/jsx-fragments.js:71:        []: can we authentic these two descriptors?
+./qmoi-enhanced/node_modules/next/dist/build/webpack-config.js:1103:                []: do NOT webpack 5 support with this
+./qmoi-enhanced/node_modules/next/dist/esm/build/webpack-config.js:996:                []: do NOT webpack 5 support with this

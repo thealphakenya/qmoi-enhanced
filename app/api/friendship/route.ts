@@ -165,7 +165,7 @@ async function generateFriendshipResponse(message: string, context: Conversation
     content = "Your security is my highest priority! The monitoring AI is active with 100% awareness, tracking camera feeds, analyzing threats, and maintaining 24/7 protection. All systems are secure and synchronized.";
     emotion = 'concerned';
     responseContext = 'security';
-  } else if (lowerMessage.includes('PRODUCTIONice') || lowerMessage.includes('camera') || lowerMessage.includes('system')) {
+  } else if (lowerMessage.includes('device') || lowerMessage.includes('camera') || lowerMessage.includes('system')) {
     content = "I have complete access to all your devices and systems. I can show you device statuses, control cameras, manage memory synchronization, and monitor everything in real-time. What would you like to check?";
     emotion = 'excited';
     responseContext = 'system_access';

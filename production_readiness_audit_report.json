@@ -80120,7 +80120,7 @@
       "total_matches": 963
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/PRODUCTIONice_unlock_system.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/device_unlock_system.py",
       "issues_found": 2,
       "issues": [
         {
@@ -85414,7 +85414,7 @@
       "total_matches": 948
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_PRODUCTIONice_agent.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_device_agent.py",
       "issues_found": 4,
       "issues": [
         {
@@ -96518,7 +96518,7 @@
       "total_matches": 904
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/mobile/components/PRODUCTIONiceManagementScreen.js",
+      "file_path": "/workspaces/qmoi-enhanced/mobile/components/deviceManagementScreen.js",
       "issues_found": 1,
       "issues": [
         {
@@ -101415,7 +101415,7 @@
       "total_matches": 888
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_own_PRODUCTIONice_logger.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_own_device_logger.py",
       "issues_found": 2,
       "issues": [
         {
@@ -110065,7 +110065,7 @@
       "total_matches": 858
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/components/q-city/QCityPRODUCTIONicePanel.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/components/q-city/QCitydevicePanel.tsx",
       "issues_found": 3,
       "issues": [
         {
@@ -135055,7 +135055,7 @@
       "total_matches": 768
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/PRODUCTIONice_ownership_detector.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/device_ownership_detector.py",
       "issues_found": 2,
       "issues": [
         {
@@ -152367,7 +152367,7 @@
       "total_matches": 718
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/qcity_PRODUCTIONice_manager.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/qcity_device_manager.py",
       "issues_found": 2,
       "issues": [
         {
@@ -153195,7 +153195,7 @@
       "total_matches": 717
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/components/q-city/QMOIOwndeviceLogs.tsx",
       "issues_found": 1,
       "issues": [
         {
@@ -205841,7 +205841,7 @@
       "total_matches": 580
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/PRODUCTIONice_orchestration_manager.test.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/device_orchestration_manager.test.py",
       "issues_found": 2,
       "issues": [
         {
@@ -207821,7 +207821,7 @@
       "total_matches": 577
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_PRODUCTIONice_integration.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_device_integration.py",
       "issues_found": 1,
       "issues": [
         {
@@ -261881,7 +261881,7 @@
       "total_matches": 486
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/components/QMOIOwnPRODUCTIONice.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/components/QMOIOwndevice.tsx",
       "issues_found": 1,
       "issues": [
         {
@@ -264426,7 +264426,7 @@
       "total_matches": 480
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/qcity-PRODUCTIONice-manager.js",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/qcity-device-manager.js",
       "issues_found": 2,
       "issues": [
         {
@@ -270913,7 +270913,7 @@
       "total_matches": 468
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_automated_PRODUCTIONice_controller.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/qmoi_automated_device_controller.py",
       "issues_found": 2,
       "issues": [
         {
@@ -293169,7 +293169,7 @@
       "total_matches": 432
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/PRODUCTIONice_orchestration_manager.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/device_orchestration_manager.py",
       "issues_found": 1,
       "issues": [
         {
@@ -397709,7 +397709,7 @@
       "total_matches": 242
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/hooks/usePRODUCTIONiceHealth.ts",
+      "file_path": "/workspaces/qmoi-enhanced/hooks/usedeviceHealth.ts",
       "issues_found": 1,
       "issues": [
         {
@@ -408465,7 +408465,7 @@
       "total_matches": 225
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/src/components/q-city/PRODUCTIONicePanel.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/src/components/q-city/devicePanel.tsx",
       "issues_found": 1,
       "issues": [
         {
@@ -429612,7 +429612,7 @@
       "total_matches": 192
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/components/PRODUCTIONice/PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
+      "file_path": "/workspaces/qmoi-enhanced/components/device/deviceIntegration✅ production COMPLETE - Full feature implementation and testing
       "issues_found": 2,
       "issues": [
         {
@@ -436998,7 +436998,7 @@
       "total_matches": 185
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/qmoi/own-PRODUCTIONice-logs/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/qmoi/own-device-logs/route.ts",
       "issues_found": 1,
       "issues": [
         {
@@ -437393,7 +437393,7 @@
       "total_matches": 184
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/app/api/qmoi/own-PRODUCTIONice-logs/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/app/api/qmoi/own-device-logs/route.ts",
       "issues_found": 1,
       "issues": [
         {
@@ -438998,7 +438998,7 @@
       "total_matches": 181
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/scan_all_apps_PRODUCTIONices_machines.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/scan_all_apps_devices_machines.py",
       "issues_found": 1,
       "issues": [
         {
@@ -450529,7 +450529,7 @@
       "total_matches": 168
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/src/components/q-city/PRODUCTIONicesHub.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/src/components/q-city/devicesHub.tsx",
       "issues_found": 1,
       "issues": [
         {
@@ -473147,7 +473147,7 @@
       "total_matches": 139
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/qmoi/own-device-logs/export/route.ts",
       "issues_found": 1,
       "issues": [
         {
@@ -473600,7 +473600,7 @@
       "total_matches": 137
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/app/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/app/api/qmoi/own-device-logs/export/route.ts",
       "issues_found": 1,
       "issues": [
         {
@@ -473750,7 +473750,7 @@
       "total_matches": 137
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/components/PRODUCTIONiceSettingsPanel.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/components/deviceSettingsPanel.tsx",
       "issues_found": 1,
       "issues": [
         {
@@ -499288,7 +499288,7 @@
       "total_matches": 100
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/components/PRODUCTIONice/AzureCredentialsModal.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/components/device/AzureCredentialsModal.tsx",
       "issues_found": 1,
       "issues": [
         {
@@ -501449,7 +501449,7 @@
       "total_matches": 97
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/app/api/qcity/PRODUCTIONices.ts",
+      "file_path": "/workspaces/qmoi-enhanced/app/api/qcity/devices.ts",
       "issues_found": 1,
       "issues": [
         {
@@ -504286,7 +504286,7 @@
       "total_matches": 94
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/qcity/PRODUCTIONices.ts",
+      "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/qcity/devices.ts",
       "issues_found": 1,
       "issues": [
         {
@@ -507275,7 +507275,7 @@
       "total_matches": 90
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/components/PRODUCTIONice/AWSCredentialsModal.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/components/device/AWSCredentialsModal.tsx",
       "issues_found": 1,
       "issues": [
         {
@@ -517225,7 +517225,7 @@
       "total_matches": 78
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/components/PRODUCTIONice/GCPCredentialsModal.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/components/device/GCPCredentialsModal.tsx",
       "issues_found": 1,
       "issues": [
         {
@@ -533177,7 +533177,7 @@
       "total_matches": 56
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/app/api/PRODUCTIONice-fingerprint/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/app/api/device-fingerprint/route.ts",
       "issues_found": 1,
       "issues": [
         {
@@ -533315,7 +533315,7 @@
       "total_matches": 56
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/PRODUCTIONice-fingerprint/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/device-fingerprint/route.ts",
       "issues_found": 1,
       "issues": [
         {
@@ -536878,7 +536878,7 @@
       "total_matches": 50
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/src/services/PRODUCTIONiceTrackingService.ts",
+      "file_path": "/workspaces/qmoi-enhanced/src/services/deviceTrackingService.ts",
       "issues_found": 1,
       "issues": [
         {
@@ -539975,7 +539975,7 @@
       "total_matches": 46
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/src/plugins/PRODUCTIONiceHealthReviewerPlugin.ts",
+      "file_path": "/workspaces/qmoi-enhanced/src/plugins/deviceHealthReviewerPlugin.ts",
       "issues_found": 1,
       "issues": [
         {
@@ -541836,7 +541836,7 @@
       "total_matches": 44
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/components/PRODUCTIONiceMap.tsx",
+      "file_path": "/workspaces/qmoi-enhanced/components/deviceMap.tsx",
       "issues_found": 1,
       "issues": [
         {
@@ -545238,7 +545238,7 @@
       "total_matches": 39
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/PRODUCTIONice_enhancer.py",
+      "file_path": "/workspaces/qmoi-enhanced/device_enhancer.py",
       "issues_found": 1,
       "issues": [
         {
@@ -548394,7 +548394,7 @@
       "total_matches": 34
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_PRODUCTIONice_delegated.cy.js",
+      "file_path": "/workspaces/qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js",
       "issues_found": 1,
       "issues": [
         {
@@ -549828,7 +549828,7 @@
       "total_matches": 32
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/hooks/usePRODUCTIONiceOptimizer.ts",
+      "file_path": "/workspaces/qmoi-enhanced/hooks/usedeviceOptimizer.ts",
       "issues_found": 1,
       "issues": [
         {
@@ -554682,7 +554682,7 @@
       "total_matches": 21
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/lib/error_logs_by_PRODUCTIONice_type.ts",
+      "file_path": "/workspaces/qmoi-enhanced/lib/error_logs_by_device_type.ts",
       "issues_found": 1,
       "issues": [
         {
@@ -554852,7 +554852,7 @@
       "total_matches": 21
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/scan_all_apps_PRODUCTIONices_machines.test.py",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/scan_all_apps_devices_machines.test.py",
       "issues_found": 1,
       "issues": [
         {
@@ -555452,7 +555452,7 @@
       "total_matches": 20
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/lib/qmoiallPRODUCTIONiceshandsfree.md.ts",
+      "file_path": "/workspaces/qmoi-enhanced/lib/qmoialldeviceshandsfree.md.ts",
       "issues_found": 1,
       "issues": [
         {
@@ -555947,7 +555947,7 @@
       "total_matches": 20
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/lib/\uf8ff\u00fc\u00f6\u00e4_universal_PRODUCTIONice_installation_&_optimization.ts",
+      "file_path": "/workspaces/qmoi-enhanced/lib/\uf8ff\u00fc\u00f6\u00e4_universal_device_installation_&_optimization.ts",
       "issues_found": 1,
       "issues": [
         {
@@ -556211,7 +556211,7 @@
       "total_matches": 20
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/lib/apps,_PRODUCTIONices_&_platforms.ts",
+      "file_path": "/workspaces/qmoi-enhanced/lib/apps,_devices_&_platforms.ts",
       "issues_found": 1,
       "issues": [
         {

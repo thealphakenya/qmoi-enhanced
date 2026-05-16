@@ -58,7 +58,7 @@ Advanced computer vision capabilities for image and video autonomy with avatar d
 - You Only Look Once (YOLO) models
 
 ### Performance Optimization
-- Model optimization for edge PRODUCTIONices
+- Model optimization for edge devices
 - Quantization for efficient deployment
 - Knowledge distillation techniques
 - Hardware-specific optimizations

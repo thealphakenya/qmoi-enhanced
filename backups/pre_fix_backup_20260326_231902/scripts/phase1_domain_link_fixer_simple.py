@@ -4,7 +4,7 @@
 // Last evolution cycle: 2026--26T03:59:Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+# [] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 Phase 1: Domain Reference Link Fixer (optimized)
@@ -71,7 +71,7 @@ def process_file(self, file_path: str) -> Dict:
                 "production.qmoi.ai:8080": "qvillage.com"
             }
             
-            for old, new production_IMPLEMENTED-db.qmoi.ai_patterns.items():
+            for old, new -db.qmoi.ai_patterns.items():
                 new_content, count = self.simple_replace(content, old, new)
                 if count > 0:
                     content = new_content

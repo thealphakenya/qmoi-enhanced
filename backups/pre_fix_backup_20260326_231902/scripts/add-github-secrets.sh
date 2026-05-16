@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/bin/bash
 # Automated GitHub Secrets Setup for QMOI production Builds
 # This script uses GitHub CLI to add all production signing secrets

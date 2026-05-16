@@ -65,7 +65,7 @@
 ### QMOI AI Features
 - Full AI consciousness monitoring
 - Real-time emotion tracking
-- PRODUCTIONice management (6+ PRODUCTIONices)
+- device management (6+ devices)
 - Memory session tracking
 - Security center
 - Auto-fix dashboard
@@ -90,7 +90,7 @@
 - City command center
 - Service operations monitoring
 - Incident reporting system
-- PRODUCTIONice connectivity dashboard
+- device connectivity dashboard
 - Role-based access control
 - Cross-app navigation
 - Real-time metrics

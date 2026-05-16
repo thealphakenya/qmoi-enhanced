@@ -46,10 +46,10 @@ Each card contains:
 - **Description:** Feature purpose (slate-400 color)
 - **Action Indicator:** "Open page →" text with arrow (blue-300 color)
 
-#### Card 1: PRODUCTIONice Management
-- **Link:** `/PRODUCTIONices`
-- **Title:** "PRODUCTIONice Management"
-- **Description:** "Monitor and manage connected PRODUCTIONices across the QMOI ecosystem."
+#### Card 1: device Management
+- **Link:** `/devices`
+- **Title:** "device Management"
+- **Description:** "Monitor and manage connected devices across the QMOI ecosystem."
 
 #### Card 2: Admin Dashboard
 - **Link:** `/admin`

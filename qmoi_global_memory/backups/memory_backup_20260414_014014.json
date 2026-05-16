@@ -48,11 +48,11 @@
     "expires_at": null,
     "hash": "89a174b4d9e4c94e26fa0173e4a5dcc341b1bb0d61171aa7de275eaa68ce6176"
   },
-  "PRODUCTIONice.battery": {
+  "device.battery": {
     "value": 85,
     "timestamp": "2026-04-14T01:40:11.137443",
     "tags": [
-      "PRODUCTIONice",
+      "device",
       "battery"
     ],
     "expires_at": "2026-04-15T01:40:11.137429",

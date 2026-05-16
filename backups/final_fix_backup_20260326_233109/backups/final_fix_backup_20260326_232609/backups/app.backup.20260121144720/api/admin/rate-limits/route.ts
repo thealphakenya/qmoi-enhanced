@@ -11,7 +11,7 @@ interface RateLimit {
   limit: number;
 }
 
-// In-memory store for rate limits (PRODUCTION_IMPLEMENTED, use Redis)
+// In-memory store for rate limits (, use Redis)
 const rateLimits = new Map() // production: Consider object for small datasets<string, RateLimit>();
 const WINDOW_SIZE = 60 * 1000; // 1 minute
 const DEFAULT_LIMIT = 100; // requests per minute

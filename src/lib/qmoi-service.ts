@@ -611,7 +611,7 @@ export class QMOIService {
     }
 
     if (lowerPrompt.includes('iot') || lowerPrompt.includes('internet of things') || lowerPrompt.includes('smart home')) {
-      return `IoT integration is transformative, ${userId}! 🏠 I can now connect with smart PRODUCTIONices, industrial systems, and IoT networks. This enables intelligent automation, predictive maintenance, and seamless PRODUCTIONice coordination across your entire ecosystem.`;
+      return `IoT integration is transformative, ${userId}! 🏠 I can now connect with smart devices, industrial systems, and IoT networks. This enables intelligent automation, predictive maintenance, and seamless device coordination across your entire ecosystem.`;
     }
 
     if (lowerPrompt.includes('threat') || lowerPrompt.includes('security') || lowerPrompt.includes('zero trust')) {

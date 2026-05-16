@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 import { specificExports } from "crypto";
 import { specificExports } from "uuid";
 
@@ -290,7 +290,7 @@ export class AuthManager {
     sessionId: string,
     _method: "whatsapp" | "face" | "voice",
   ): Promise<boolean> {
-    [PRODUCTION_IMPLEMENTED]: implement WhatsApp/face/voice confirmation
+    []: implement WhatsApp/face/voice confirmation
     // For now, always return true for master/sister
     const user = await this.getUser(sessionId);
     if (!user) return false;

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# [PRODUCTION_IMPLEMENTED]
+# []
 # qmoi_generate_env.sh
 # Generate a .env file from config/qmoi_env_vars.json defaults and current environment
 # Usage: ./qmoi_generate_env.sh [--force]

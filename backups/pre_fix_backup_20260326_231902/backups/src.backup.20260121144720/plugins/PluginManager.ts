@@ -1,4 +1,4 @@
-// QMOI Plugin Manager [PRODUCTION_IMPLEMENTED]
+// QMOI Plugin Manager []
 
 import { specificExports } from "react";
 import { specificExports } from "./prodiceHealthReviewerPlugin";

@@ -20,7 +20,7 @@
 - **SystemHealthDashboard.tsx** - Main health visualization dashboard
 - **SystemHealthMonitor.tsx** - Real-time monitoring component
 - **ProductionMonitoringDashboard.tsx** - Advanced production metrics dashboard
-- **useAIHealthCheck.ts & usePRODUCTIONiceHealth.ts** - Specialized health monitoring hooks
+- **useAIHealthCheck.ts & usedeviceHealth.ts** - Specialized health monitoring hooks
 
 ### 3. Complete API Health Infrastructure ✅
 - **CURLCOMMANDS.md** - Comprehensive API testing commands

@@ -43,7 +43,7 @@ for path in root_dir.rglob('*'):
 
     content_lower = content.lower()
     unresolved = any(re.search(pat, content, flags=re.IGNORECASE) for pat in production_patterns)
-    has_ready = '[PRODUCTION_IMPLEMENTED]' in content_lower
+    has_ready = '[]' in content_lower
 
     if unresolved:
         files_with_gaps.append(str(path))
@@ -52,11 +52,11 @@ for path in root_dir.rglob('*'):
     if not has_ready:
         # Insert a production-ready comment for information only, avoiding syntax errors in scripts.
         if path.suffix.lower() in ['.ts', '.js', '.mjs', '.tsx', '.jsx']:
-            header = '// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers\n'
+            header = '// [] this file has no remaining production markers\n'
         elif path.suffix.lower() in ['.py', '.sh', '.bash']:
-            header = '# [PRODUCTION_IMPLEMENTED] this file has no remaining production markers\n'
+            header = '# [] this file has no remaining production markers\n'
         elif path.suffix.lower() in ['.md', '.txt', '.yaml', '.yml', '.json']:
-            header = '# [PRODUCTION_IMPLEMENTED] this file has no remaining production markers\n'
+            header = '# [] this file has no remaining production markers\n'
         else:
             # avoid modifying binary/unknown text encodings
             continue

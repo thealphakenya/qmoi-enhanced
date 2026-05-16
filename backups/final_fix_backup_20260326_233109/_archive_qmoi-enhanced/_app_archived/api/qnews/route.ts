@@ -6,7 +6,7 @@
 // production implementation: all markers normalized for completion
 import { specificExports } from "next/server";
 
-// In-memory news store (replace with DB PRODUCTION_IMPLEMENTED)
+// In-memory news store (replace with DB )
 const newsStore: unknown[] = [];
 let idCounter = 1;
 

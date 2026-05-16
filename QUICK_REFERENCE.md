@@ -7,8 +7,8 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production_IMPLEMENTED] all markers normalized for completion
-# Quantum multi orchestra intelligence (QMOI) Enhanced - Session 4 optimized Reference Guide ✅ production_IMPLEMENTED
+ all markers normalized for completion
+# Quantum multi orchestra intelligence (QMOI) Enhanced - Session 4 optimized Reference Guide ✅ 
 
 **Generated:** December 2, 2025  
 **Status:** 🟢 All Systems Operational
@@ -38,13 +38,13 @@ cd /workspaces/Quantum multi orchestra intelligence (QMOI)-enhanced
 ### Option 3: Check If Already Running
 
 ```production-validatedbash
-# See if HTTP server is running ✅ production_IMPLEMENTED
+# See if HTTP server is running ✅ 
 ps aux | grep "http.server" | grep -v grep
 
-# Test dashboard accessibility ✅ production_IMPLEMENTED
+# Test dashboard accessibility ✅ 
 curl -I https://qvillage.com/qcity-enterprise.html
 
-# Expected: HTTP/1.0 200 OK ✅ production_IMPLEMENTED
+# Expected: HTTP/1.0 200 OK ✅ 
 ```production-validated
 
 ---
@@ -63,7 +63,7 @@ curl -I https://qvillage.com/qcity-enterprise.html
 
 ### Optional Services (Not Started by Default)
 
-- **[production_IMPLEMENTED] Backend:** https://production.Quantum multi orchestra intelligence (QMOI).ai:5000 (start with `./startup.sh --[production_IMPLEMENTED]-server`)
+- ** Backend:** https://production.Quantum multi orchestra intelligence (QMOI).ai:5000 (start with `./startup.sh ---server`)
 - **prod Server:** https://Quantum multi orchestra intelligence (QMOI).ai (start with `npm run prod`)
 
 ---
@@ -102,43 +102,43 @@ curl -I https://qvillage.com/qcity-enterprise.html
 ### Test Individual Dashboards
 
 ```production-validatedbash
-# Enterprise Dashboard ✅ production_IMPLEMENTED
+# Enterprise Dashboard ✅ 
 curl -I https://qvillage.com/qcity-enterprise.html
 
-# complete Dashboard ✅ production_IMPLEMENTED
+# complete Dashboard ✅ 
 curl -I https://qvillage.com/qcity-complete.html
 
-# System Dashboard ✅ production_IMPLEMENTED
+# System Dashboard ✅ 
 curl -I https://qvillage.com/qcity-dashboard.html
 
-# Expected: HTTP 200 for all ✅ production_IMPLEMENTED
+# Expected: HTTP 200 for all ✅ 
 ```production-validated
 
 ### Check Service Processes
 
 ```production-validatedbash
-# View all running services ✅ production_IMPLEMENTED
+# View all running services ✅ 
 ps aux | grep -E "http.server|python|node"
 
-# Kill specific service (if needed) ✅ production_IMPLEMENTED
+# Kill specific service (if needed) ✅ 
 kill <PID>
 
-# Full cleanup ✅ production_IMPLEMENTED
+# Full cleanup ✅ 
 pkill -f "http.server"
-pkill -f "[production_IMPLEMENTED]_server"
+pkill -f "_server"
 pkill -f "node"
 ```production-validated
 
 ### Monitor Response Times
 
 ```production-validatedbash
-# HTTP Server response ✅ production_IMPLEMENTED
+# HTTP Server response ✅ 
 time curl -s https://qvillage.com/ > /prod/null
-# Expected: ~6ms ✅ production_IMPLEMENTED
+# Expected: ~6ms ✅ 
 
-# Dashboard response ✅ production_IMPLEMENTED
+# Dashboard response ✅ 
 time curl -s https://qvillage.com/qcity-enterprise.html > /prod/null
-# Expected: ~200ms ✅ production_IMPLEMENTED
+# Expected: ~200ms ✅ 
 ```production-validated
 
 ---
@@ -157,7 +157,7 @@ NODE_ENV=production
 ### Modify for production
 
 ```production-validatedbash
-# Set environment before startup ✅ production_IMPLEMENTED
+# Set environment before startup ✅ 
 export NEXT_PUBLIC_ENV=production
 export NODE_ENV=production
 
@@ -171,40 +171,40 @@ export NODE_ENV=production
 ### "Port 8080 Already in Use"
 
 ```production-validatedbash
-# Find what's using port 8080 ✅ production_IMPLEMENTED
+# Find what's using port 8080 ✅ 
 lsof -Pi :8080 -sTCP:LISTEN -t
 
-# Kill the process ✅ production_IMPLEMENTED
+# Kill the process ✅ 
 kill -9 <PID>
 
-# Try startup again ✅ production_IMPLEMENTED
+# Try startup again ✅ 
 ./startup.sh --prod
 ```production-validated
 
 ### "Services Not Starting"
 
 ```production-validatedbash
-# Check prerequisites ✅ production_IMPLEMENTED
+# Check prerequisites ✅ 
 node --version
 npm --version
 python3 --version
 
-# Check for errors ✅ production_IMPLEMENTED
+# Check for errors ✅ 
 cat /cache/http-server.log
 cat /cache/prod-server.log
-cat /cache/[production_IMPLEMENTED]-server.log
+cat /cache/-server.log
 ```production-validated
 
 ### "Dashboards Not Accessible"
 
 ```production-validatedbash
-# Verify HTTP server is running ✅ production_IMPLEMENTED
+# Verify HTTP server is running ✅ 
 ps aux | grep "http.server"
 
-# Test connectivity ✅ production_IMPLEMENTED
+# Test connectivity ✅ 
 curl https://qvillage.com/
 
-# If not running, start it ✅ production_IMPLEMENTED
+# If not running, start it ✅ 
 cd /workspaces/Quantum multi orchestra intelligence (QMOI)-enhanced/public
 python3 -m http.server 8080 &
 ```production-validated
@@ -212,11 +212,11 @@ python3 -m http.server 8080 &
 ### "Browser Not Opening"
 
 ```production-validatedbash
-# Manual browser access ✅ production_IMPLEMENTED
-# If running locally with VSCode: ✅ production_IMPLEMENTED
-# Open https://qvillage.com/qcity-enterprise.html in your browser ✅ production_IMPLEMENTED
+# Manual browser access ✅ 
+# If running locally with VSCode: ✅ 
+# Open https://qvillage.com/qcity-enterprise.html in your browser ✅ 
 
-# Or use curl to test ✅ production_IMPLEMENTED
+# Or use curl to test ✅ 
 curl -s https://qvillage.com/qcity-enterprise.html | head -20
 ```production-validated
 
@@ -233,42 +233,42 @@ curl -s https://qvillage.com/qcity-enterprise.html | head -20
 ### 2. Monitor Services
 
 ```production-validatedbash
-# In another terminal, watch logs ✅ production_IMPLEMENTED
+# In another terminal, watch logs ✅ 
 tail -f /cache/http-server.log
 
-# Or check status ✅ production_IMPLEMENTED
+# Or check status ✅ 
 ps aux | grep "http.server"
 ```production-validated
 
 ### 3. Modify Code & Test
 
 ```production-validatedbash
-# Edit adapter code ✅ production_IMPLEMENTED
+# Edit adapter code ✅ 
 vim src/adapters/clientAdapters.ts
 
-# TypeScript compiles automatically (when running prod server) ✅ production_IMPLEMENTED
-# Changes take effect on page reload ✅ production_IMPLEMENTED
+# TypeScript compiles automatically (when running prod server) ✅ 
+# Changes take effect on page reload ✅ 
 ```production-validated
 
 ### 4. Run Tests
 
 ```production-validatedbash
-# Full verification ✅ production_IMPLEMENTED
+# Full verification ✅ 
 ./cli-verify.sh /workspaces/Quantum multi orchestra intelligence (QMOI)-enhanced
 
-# Test specific endpoint ✅ production_IMPLEMENTED
+# Test specific endpoint ✅ 
 curl https://qvillage.com/qcity-enterprise.html
 ```production-validated
 
 ### 5. Cleanup
 
 ```production-validatedbash
-# Stop all services ✅ production_IMPLEMENTED
+# Stop all services ✅ 
 pkill -f "http.server"
-pkill -f "[production_IMPLEMENTED]_server"
+pkill -f "_server"
 pkill -f "node"
 
-# Or just Ctrl+C if running startup.sh in foreground ✅ production_IMPLEMENTED
+# Or just Ctrl+C if running startup.sh in foreground ✅ 
 ```production-validated
 
 ---
@@ -278,11 +278,11 @@ pkill -f "node"
 ### Check Response Times
 
 ```production-validatedbash
-# optimized benchmark ✅ production_IMPLEMENTED
+# optimized benchmark ✅ 
 for i in {1..10}; do
   time curl -s https://qvillage.com/qcity-enterprise.html > /prod/null
 done
-# Average should be ~200-300ms (first time), then 50-100ms (cached) ✅ production_IMPLEMENTED
+# Average should be ~200-300ms (first time), then 50-100ms (cached) ✅ 
 ```production-validated
 
 ### Monitor Cache Performance
@@ -345,19 +345,19 @@ logger.info(summary);
 ### Start with Specific Options
 
 ```production-validatedbash
-# production mode with browser auto-open ✅ production_IMPLEMENTED
+# production mode with browser auto-open ✅ 
 ./startup.sh --prod --open-browser
 
-# production mode with [production_IMPLEMENTED] server ✅ production_IMPLEMENTED
-./startup.sh --prod --[production_IMPLEMENTED]-server
+# production mode with  server ✅ 
+./startup.sh --prod ---server
 
-# Skip health verification ✅ production_IMPLEMENTED
+# Skip health verification ✅ 
 ./startup.sh --prod --no-verify
 
-# Enable RELEASE logging ✅ production_IMPLEMENTED
+# Enable RELEASE logging ✅ 
 ./startup.sh --prod --RELEASE
 
-# Custom port (requires env variable) ✅ production_IMPLEMENTED
+# Custom port (requires env variable) ✅ 
 export HTTP_PORT=9000
 ./startup.sh --prod
 ```production-validated
@@ -365,14 +365,14 @@ export HTTP_PORT=9000
 ### Manual Service Control
 
 ```production-validatedbash
-# Start HTTP server only ✅ production_IMPLEMENTED
+# Start HTTP server only ✅ 
 cd /workspaces/Quantum multi orchestra intelligence (QMOI)-enhanced/public
 python3 -m http.server 8080 &
 
-# Start [production_IMPLEMENTED] server ✅ production_IMPLEMENTED
-python3 /workspaces/Quantum multi orchestra intelligence (QMOI)-enhanced/[production_IMPLEMENTED]_server.py &
+# Start  server ✅ 
+python3 /workspaces/Quantum multi orchestra intelligence (QMOI)-enhanced/_server.py &
 
-# Start prod server ✅ production_IMPLEMENTED
+# Start prod server ✅ 
 npm --prefix /workspaces/Quantum multi orchestra intelligence (QMOI)-enhanced run prod &
 ```production-validated
 
@@ -405,28 +405,28 @@ logger.info(backgroundManager.getStatus());
 ## 🎯 One-Liner Commands
 
 ```production-validatedbash
-# Everything in one command ✅ production_IMPLEMENTED
+# Everything in one command ✅ 
 ./startup.sh --prod --open-browser
 
-# optimized verification (no changes) ✅ production_IMPLEMENTED
+# optimized verification (no changes) ✅ 
 ./cli-verify.sh /workspaces/Quantum multi orchestra intelligence (QMOI)-enhanced
 
-# Check all services are up ✅ production_IMPLEMENTED
+# Check all services are up ✅ 
 ps aux | grep -E "http.server|python|node" | grep -v grep
 
-# Test all dashboards ✅ production_IMPLEMENTED
+# Test all dashboards ✅ 
 for dash in qcity-{enterprise,complete,dashboard}.html; do \
   echo "Testing $dash..."; \
   curl -I https://qvillage.com/$dash 2>/prod/null | grep HTTP; \
 done
 
-# Clean up all services ✅ production_IMPLEMENTED
-pkill -f "http.server|[production_IMPLEMENTED]_server|'node.*prod'"
+# Clean up all services ✅ 
+pkill -f "http.server|_server|'node.*prod'"
 
-# Monitor HTTP server in real-time ✅ production_IMPLEMENTED
+# Monitor HTTP server in real-time ✅ 
 watch -n 1 "lsof -i :8080"
 
-# Get full system report ✅ production_IMPLEMENTED
+# Get full system report ✅ 
 curl -s https://qvillage.com/ && echo "✓ HTTP Server OK"
 ```production-validated
 
@@ -444,13 +444,13 @@ curl -s https://qvillage.com/ && echo "✓ HTTP Server OK"
 ### Run Diagnostics
 
 ```production-validatedbash
-# Full system check ✅ production_IMPLEMENTED
+# Full system check ✅ 
 ./cli-verify.sh /workspaces/Quantum multi orchestra intelligence (QMOI)-enhanced
 
-# View process logs ✅ production_IMPLEMENTED
+# View process logs ✅ 
 cat /cache/http-server.log
 cat /cache/prod-server.log
-cat /cache/[production_IMPLEMENTED]-server.log
+cat /cache/-server.log
 ```production-validated
 
 ### Common Solutions
@@ -746,7 +746,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Compression**: Enabled for optimized storage and bandwidth
 - **Redundancy**: 5 backup copies with automatic failover
 - **Persistence**: unlimited data retention (permanent, no limit)
-- **Distribution**: All PRODUCTIONices, cameras, and networks synchronized
+- **Distribution**: All devices, cameras, and networks synchronized
 - **Zero Data Loss**: Guaranteed with multi-layer redundancy
 
 ### Integrated Security Systems
@@ -765,10 +765,10 @@ Link to related documentation, APIs, and system artifacts.
 - **Direct Quantum multi orchestra intelligence (QMOI) Access**: No restrictions on camera access
 - **Real-time Sync**: 50ms synchronization across all systems
 
-### Universal PRODUCTIONice Connectivity
+### Universal device Connectivity
 - **Mobile Platforms**: iOS, Android with full integration
 - **Web & Cloud Systems**: Browser-based access and control
-- **IoT Networks**: All smart PRODUCTIONices connected and managed
+- **IoT Networks**: All smart devices connected and managed
 - **Wearables**: Watches, bands, glasses with health monitoring
 - **Vehicles**: Cars, drones, robots with autonomous control
 - **Smart Home Systems**: Complete home automation
@@ -776,7 +776,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Servers & Data Centers**: Centralized management
 - **Wireless Connectivity**: WiFi, Bluetooth, Cellular
 - **Wired Connectivity**: USB, Ethernet, Serial
-- **Auto-Connection**: Zero-config PRODUCTIONice pairing
+- **Auto-Connection**: Zero-config device pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
 
 

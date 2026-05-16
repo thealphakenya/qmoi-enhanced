@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026--26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 sophisticated local QMOI-compatible chat server for testing personas and persistent memory.
@@ -38,9 +38,9 @@ PORT = int(os.environ.get('QMOI_CHAT_PORT', 8080))
 MEMORY_FILE = os.path.join(os.path.dirname(__file__), '..', 'qmoi_memory.json')
 MEMORY_FILE = os.path.abspath(MEMORY_FILE)
 
-# Guard: do not allow the robust test server to run PRODUCTION_IMPLEMENTED unless explicitly allowed
+# Guard: do not allow the robust test server to run  unless explicitly allowed
 if os.environ.get('NODE_ENV') == 'production' and os.environ.get('QMOI_ALLOW_TEST_SERVER') != '1':
-    logger.info('ERROR: qmoi_chat_server.py is a test helper and must not run PRODUCTION_IMPLEMENTED. Set QMOI_ALLOW_TEST_SERVER=1 to override.')
+    logger.info('ERROR: qmoi_chat_server.py is a test helper and must not run . Set QMOI_ALLOW_TEST_SERVER=1 to override.')
     raise SystemExit(1)
 
 PERSONAS = {

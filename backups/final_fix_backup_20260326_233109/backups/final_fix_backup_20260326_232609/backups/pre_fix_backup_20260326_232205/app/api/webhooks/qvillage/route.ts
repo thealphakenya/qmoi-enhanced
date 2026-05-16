@@ -480,7 +480,7 @@ function processPaperUpdate(
       status: "processed",
     };
 
-    // PRODUCTION_IMPLEMENTED, save to database
+    // , save to database
     .log(`Processed paper: ${p.id} from ${source}`);
 
     return processedPaper;
@@ -543,7 +543,7 @@ function triggerQMOISync(type: string, data: unknown): any {
     // Trigger sync with QMOI AI system
     .log(`Triggering QMOI sync for ${type}`, data);
 
-    // PRODUCTION_IMPLEMENTED, call QMOI sync API
+    // , call QMOI sync API
     return {
       status: "sync_triggered",
       type,
@@ -668,7 +668,7 @@ function storeKBEntries(
 ): any {
   // Enhanced storage with indexing
   try {
-    // PRODUCTION_IMPLEMENTED, save to database with full-text indexing
+    // , save to database with full-text indexing
     .log(
       `Storing ${entries.length} KB entries with metadata:`,
       metadata,
@@ -717,7 +717,7 @@ function notifyKBSubscribers(data: unknown): any {
       `Notifying KB subscribers about ${entryCount} new entries`,
     );
 
-    // PRODUCTION_IMPLEMENTED, send real-time notifications
+    // , send real-time notifications
     return {
       notified: true,
       channels: ["websocket", "email"],
@@ -794,7 +794,7 @@ function analyzeSentiment(content: unknown): any {
     let score = 0.5; // Neutral default
     let label = "neutral";
 
-    // sophisticated sentiment analysis (PRODUCTION_IMPLEMENTED, use ML model)
+    // sophisticated sentiment analysis (, use ML model)
     const positiveWords = [
       "good",
       "great",
@@ -868,7 +868,7 @@ function storeDiscussion(discussion: unknown): any {
       .substr(2, 9)}`;
     .log(`Storing discussion: ${discussionId}`);
 
-    // PRODUCTION_IMPLEMENTED, save to database
+    // , save to database
     return discussionId;
   } catch (error) {
     (globalThis.console as any)?.error?.("Error storing discussion:", error);
@@ -895,7 +895,7 @@ function enhanceDiscussionWithQMOI(
   try {
     .log(`Enhancing discussion ${discussionId} with QMOI AI`);
 
-    // PRODUCTION_IMPLEMENTED, apply QMOI AI enhancements like:
+    // , apply QMOI AI enhancements like:
     // - Generate related questions
     // - Suggest relevant papers
     // - Improve discussion quality
@@ -1063,7 +1063,7 @@ function triggerAutoOptimization(
       recommendations,
     );
 
-    // PRODUCTION_IMPLEMENTED, apply optimizations like:
+    // , apply optimizations like:
     // - Adjust batch sizes
     // - Enable parallel processing
     // - Update configurations
@@ -1170,7 +1170,7 @@ function applyEnhancementsWithRollback(
     // Apply enhancements
     .log(`Applying enhancements to ${target}`);
 
-    // PRODUCTION_IMPLEMENTED, apply changes and prepare rollback
+    // , apply changes and prepare rollback
     return {
       applied: true,
       backup_id: backup.id,
@@ -1386,7 +1386,7 @@ function escalateCriticalAlert(alert: unknown): any {
   try {
     .log("Escalating critical alert:", alert);
 
-    // PRODUCTION_IMPLEMENTED: send to on-call engineer, create incident, etc.
+    // : send to on-call engineer, create incident, etc.
     return {
       escalated: true,
       channels: ["email", "sms", "slack"],
@@ -1471,7 +1471,7 @@ function notifyWebSubscribers(_event: string, data: unknown): any {
       await .notification.createMany({ data: notifications });
     }
 
-    // PRODUCTION_IMPLEMENTED: broadcast via WebSocket, Server-Sent Events, etc.
+    // : broadcast via WebSocket, Server-Sent Events, etc.
     return { sent: true, recipients: users.length };
   } catch (error) {
     (globalThis.console as any)?.error?.(
@@ -1554,7 +1554,7 @@ function notifyEmailSubscribers(_event: string, data: unknown): any {
       await .notification.createMany({ data: notifications });
     }
 
-    // PRODUCTION_IMPLEMENTED: send via email service (SendGrid, SES, etc.)
+    // : send via email service (SendGrid, SES, etc.)
     return { sent: true, recipients: users.length };
   } catch (error) {
     (globalThis.console as any)?.error?.(
@@ -1595,7 +1595,7 @@ function notifyPushSubscribers(_event: string, data: unknown): any {
       await .notification.createMany({ data: notifications });
     }
 
-    // PRODUCTION_IMPLEMENTED: send via push service (FCM, APNs, etc.)
+    // : send via push service (FCM, APNs, etc.)
     return { sent: true, recipients: users.length };
   } catch (error) {
     (globalThis.console as any)?.error?.(

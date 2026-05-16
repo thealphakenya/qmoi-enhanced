@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 // complete # production: # production: # production: jest removed removed removed setup for QMOI tests.
 // Keep this file small and tolerant if optional testing libs are not installed.
 
@@ -18,10 +18,10 @@ try {
 // Mark environment variable for tests
 global.__QMOI_TEST__ = true;
 
-// Provide a small [PRODUCTION_IMPLEMENTED] for 'next/server' so route handlers that import
+// Provide a small [] for 'next/server' so route handlers that import
 // NextRequest/NextResponse behave consistently when invoked directly in tests.
 try {
-  const [PRODUCTION_IMPLEMENTED]NextServer = {
+  const []NextServer = {
     NextRequest: class NextRequest {
       constructor(url, init = {}) {
         this.url =
@@ -88,17 +88,17 @@ try {
       },
     },
   };
-  // Use # production: # production: # production: jest removed removed removed to [PRODUCTION_IMPLEMENTED] the module so imports resolve to our shims. If # production: # production: # production: jest removed removed removed's
-  // module [PRODUCTION_IMPLEMENTED]ing is not available, set a fallback on require.cache so
+  // Use # production: # production: # production: jest removed removed removed to [] the module so imports resolve to our shims. If # production: # production: # production: jest removed removed removed's
+  // module []ing is not available, set a fallback on require.cache so
   // a optimized require will still pick it up.
   try {
-    # production: # production: # production: jest removed removed removed.[PRODUCTION_IMPLEMENTED]("next/server", () => [PRODUCTION_IMPLEMENTED]NextServer);
+    # production: # production: # production: jest removed removed removed.[]("next/server", () => []NextServer);
   } catch (e) {
-    // If auto-[PRODUCTION_IMPLEMENTED]ing isn't available in this environment, provide a shallow
+    // If auto-[]ing isn't available in this environment, provide a shallow
     // require cache entry for convenience (best-effort).
     try {
       const resolved = require.resolve("next/server");
-      require.cache[resolved] = { exports: [PRODUCTION_IMPLEMENTED]NextServer };
+      require.cache[resolved] = { exports: []NextServer };
     } catch (_e) {
       // ignore
     }
@@ -112,12 +112,12 @@ try {
 try {
   if (typeof globalThis.speechSynthesis === "undefined") {
     // eslint-disable-next-line no-undef
-    globalThis.__SpeechSynthesisUtterance[PRODUCTION_IMPLEMENTED] = # production: # production: # production: jest removed removed removed.fn();
+    globalThis.__SpeechSynthesisUtterance[] = # production: # production: # production: jest removed removed removed.fn();
     // eslint-disable-next-line no-undef
     globalThis.SpeechSynthesisUtterance = function (text) {
       // record construction
       // @ts-ignore
-      globalThis.__SpeechSynthesisUtterance[PRODUCTION_IMPLEMENTED](text);
+      globalThis.__SpeechSynthesisUtterance[](text);
       this.text = text;
     };
     // Provide a robust `speechSynthesis` shim that records utterances.

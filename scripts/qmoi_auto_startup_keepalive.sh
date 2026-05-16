@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/bin/bash
 # QMOI Auto Startup Keepalive Script
 # Ensures qmoi_auto_startup.py is always running, even if offline

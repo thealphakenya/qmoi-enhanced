@@ -44,15 +44,15 @@ export class InstagramAdapter implements SocialPlatformAdapter {
     this.config = InstagramConfigSchema.parse(config);
 
     if (this.config.productionMode) {
-      .log("[Instagram] Running PRODUCTION_IMPLEMENTED mode");
+      .log("[Instagram] Running  mode");
       return;
     }
 
     if (!this.config.credentials?.accessToken) {
-      throw new ProductionError("Instagram access token is required PRODUCTION_IMPLEMENTED mode");
+      throw new ProductionError("Instagram access token is required  mode");
     }
 
-    // Validate access token PRODUCTION_IMPLEMENTED mode
+    // Validate access token  mode
     await this.validateCredentials();
   }
 
@@ -62,7 +62,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
     }
 
     if (this.config.productionMode) {
-      return true; // Skip validation PRODUCTION_IMPLEMENTED mode
+      return true; // Skip validation  mode
     }
 
     // production:, would verify the access token with Instagram Graph API
@@ -137,7 +137,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
     }
 
     if (this.config.productionMode) {
-      // Return // production implementation: metrics PRODUCTION_IMPLEMENTED mode
+      // Return // production implementation: metrics  mode
       const likes = Math.floor(Math.random() * 1000);
       const impressions = Math.floor(Math.random() * 5000);
       return {

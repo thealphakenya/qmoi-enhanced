@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 // @ts-nocheck
@@ -124,10 +124,10 @@ function handler(
         return _res.json({ result: "IoT scan complete", risks });
       }
       case "ai-agents": {
-        [PRODUCTION_IMPLEMENTED] agent action
+        [] agent action
         return _res.json({
           result:
-            "AI agent [PRODUCTION_IMPLEMENTED]d action: would patch or isolate prodice if threat detected.",
+            "AI agent []d action: would patch or isolate prodice if threat detected.",
         });
       }
       default:

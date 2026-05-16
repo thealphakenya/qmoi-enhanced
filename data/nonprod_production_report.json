@@ -8708,7 +8708,7 @@
       "ast": []
     },
     {
-      "file": "scripts/scan_all_apps_PRODUCTIONices_machines.py",
+      "file": "scripts/scan_all_apps_devices_machines.py",
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
@@ -8826,7 +8826,7 @@
       "ast": []
     },
     {
-      "file": "scripts/PRODUCTIONice_ownership_detector.py",
+      "file": "scripts/device_ownership_detector.py",
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
@@ -10061,7 +10061,7 @@
       "ast": []
     },
     {
-      "file": "components/PRODUCTIONice/PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
+      "file": "components/device/deviceIntegration✅ production COMPLETE - Full feature implementation and testing
       "keywords": [
         "real",
         "implementation"
@@ -10128,7 +10128,7 @@
       "ast": []
     },
     {
-      "file": "mobile/components/PRODUCTIONiceManagementScreen.js",
+      "file": "mobile/components/deviceManagementScreen.js",
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
@@ -10835,7 +10835,7 @@
       "ast": []
     },
     {
-      "file": ".next/types/app/api/PRODUCTIONice-fingerprint/route.ts",
+      "file": ".next/types/app/api/device-fingerprint/route.ts",
       "keywords": [
         "experimental"
       ],
@@ -11419,7 +11419,7 @@
       "ast": []
     },
     {
-      "file": ".next/types/app/api/qmoi/own-PRODUCTIONice-logs/route.ts",
+      "file": ".next/types/app/api/qmoi/own-device-logs/route.ts",
       "keywords": [
         "experimental"
       ],
@@ -11571,7 +11571,7 @@
       "ast": []
     },
     {
-      "file": ".next/types/app/api/qmoi/own-PRODUCTIONice-logs/export/route.ts",
+      "file": ".next/types/app/api/qmoi/own-device-logs/export/route.ts",
       "keywords": [
         "experimental"
       ],
@@ -12824,7 +12824,7 @@
       "ast": []
     },
     {
-      "file": ".next/server/app/api/PRODUCTIONice-fingerprint/route.js",
+      "file": ".next/server/app/api/device-fingerprint/route.js",
       "keywords": [
         "experimental"
       ],
@@ -13412,7 +13412,7 @@
       "ast": []
     },
     {
-      "file": ".next/server/app/api/qmoi/own-PRODUCTIONice-logs/route.js",
+      "file": ".next/server/app/api/qmoi/own-device-logs/route.js",
       "keywords": [
         "experimental"
       ],
@@ -13566,7 +13566,7 @@
       "ast": []
     },
     {
-      "file": ".next/server/app/api/qmoi/own-PRODUCTIONice-logs/export/route.js",
+      "file": ".next/server/app/api/qmoi/own-device-logs/export/route.js",
       "keywords": [
         "experimental"
       ],
@@ -15445,7 +15445,7 @@
       "ast": []
     },
     {
-      "file": "src/services/PRODUCTIONiceTrackingService.ts",
+      "file": "src/services/deviceTrackingService.ts",
       "keywords": [
         "COMPLETE"
       ],
@@ -15477,7 +15477,7 @@
       "ast": []
     },
     {
-      "file": "src/components/q-city/PRODUCTIONicesHub.tsx",
+      "file": "src/components/q-city/devicesHub.tsx",
       "keywords": [
         "COMPLETE"
       ],

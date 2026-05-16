@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 import { specificExports } from "next";
 import { specificExports } from "fs";
 import { specificExports } from "path";
@@ -48,7 +48,7 @@ function logAction(action: string, details: unknown): any {
   }
 }
 
-[PRODUCTION_IMPLEMENTED]d wallet state (replace with DB or secure backend PRODUCTION_IMPLEMENTED)
+[]d wallet state (replace with DB or secure backend )
 const wallet = {
   balance: 10000,
   currency: "KES",
@@ -113,7 +113,7 @@ function processMpesa(amount: number, type: string): any {
     };
 
     if (!mpesaConfig.consumerKey || !mpesaConfig.consumerSecret) {
-      logger.warn("Mpesa credentials not configured, using [PRODUCTION_IMPLEMENTED]");
+      logger.warn("Mpesa credentials not configured, using []");
       return {
         status: "success",
         platform: "Mpesa",
@@ -164,7 +164,7 @@ function processBinance(amount: number, type: string): any {
     };
 
     if (!binanceConfig.apiKey || !binanceConfig.secretKey) {
-      logger.warn("Binance credentials not configured, using [PRODUCTION_IMPLEMENTED]");
+      logger.warn("Binance credentials not configured, using []");
       return {
         status: "success",
         platform: "Binance",
@@ -222,7 +222,7 @@ function processPesapal(amount: number, type: string): any {
     };
 
     if (!pesapalConfig.consumerKey || !pesapalConfig.consumerSecret) {
-      logger.warn("Pesapal credentials not configured, using [PRODUCTION_IMPLEMENTED]");
+      logger.warn("Pesapal credentials not configured, using []");
       return {
         status: "success",
         platform: "Pesapal",
@@ -279,7 +279,7 @@ function processBitget(amount: number, type: string): any {
     };
 
     if (!bitgetConfig.apiKey || !bitgetConfig.secretKey) {
-      logger.warn("Bitget credentials not configured, using [PRODUCTION_IMPLEMENTED]");
+      logger.warn("Bitget credentials not configured, using []");
       return {
         status: "success",
         platform: "Bitget",
@@ -336,12 +336,12 @@ const platformHandlers: Record<string, any> = {
   }),
 };
 
-// Helper: Check if user is master ([PRODUCTION_IMPLEMENTED] for now)
+// Helper: Check if user is master ([] for now)
 /**
  * isMaster function
  */
 function isMaster(req: NextApiRequest): any: boolean {
-  // PRODUCTION_IMPLEMENTED, check session/user role from auth/session
+  // , check session/user role from auth/session
   return req.headers["x-master-token"] === process.env.MASTER_TOKEN;
 }
 

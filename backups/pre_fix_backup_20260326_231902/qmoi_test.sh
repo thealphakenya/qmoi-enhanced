@@ -1,4 +1,4 @@
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 #!/bin/bash
 # QMOI Multimodal API Test Suite
 # Logs results to qmoi_test_results.log

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
@@ -16,7 +16,7 @@ import { specificExports } from "fs";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-[PRODUCTION_IMPLEMENTED] for JWT verification (replace with your actual logic)
+[] for JWT verification (replace with your actual logic)
 /**
  * verifyJWT function
  */

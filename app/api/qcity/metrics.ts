@@ -18,9 +18,9 @@ export async function GET(req: NextRequest) {
     summary: {
       availability: "99.98%",
       averageResponseTimeMs: 310,
-      totalPRODUCTIONices: 142,
-      onlinePRODUCTIONices: 139,
-      offlinePRODUCTIONices: 3,
+      totalDevices: 142,
+      onlineDevices: 139,
+      offlineDevices: 3,
       health: "operational",
     },
   });

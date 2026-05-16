@@ -7236,7 +7236,7 @@
    - Markers found:
      * production-ready: 13
 
-### 838. scripts/PRODUCTIONice_orchestration_manager.test.py
+### 838. scripts/device_orchestration_manager.test.py
    - Size: 24001 bytes
    - Last modified: 2026-05-08T10:18:05.933420
    - Total markers: 13
@@ -7663,7 +7663,7 @@
      * production-ready: 3
      * vercel: 9
 
-### 890. scripts/PRODUCTIONice_unlock_system.py
+### 890. scripts/device_unlock_system.py
    - Size: 42953 bytes
    - Last modified: 2026-05-08T10:18:05.933420
    - Total markers: 12
@@ -8040,7 +8040,7 @@
    - Markers found:
      * production-ready: 11
 
-### 936. hooks/usePRODUCTIONiceOptimizer.ts
+### 936. hooks/usedeviceOptimizer.ts
    - Size: 2283 bytes
    - Last modified: 2026-05-08T10:17:37.047420
    - Total markers: 11
@@ -8232,7 +8232,7 @@
    - Markers found:
      * production-ready: 11
 
-### 960. _app_archived/api/qcity/PRODUCTIONices.ts
+### 960. _app_archived/api/qcity/devices.ts
    - Size: 4091 bytes
    - Last modified: 2026-05-08T10:17:33.229420
    - Total markers: 11
@@ -10516,7 +10516,7 @@
    - Markers found:
      * production-ready: 9
 
-### 1242. scripts/qmoi_PRODUCTIONice_agent.py
+### 1242. scripts/qmoi_device_agent.py
    - Size: 34740 bytes
    - Last modified: 2026-05-08T10:18:06.149420
    - Total markers: 9
@@ -11519,7 +11519,7 @@
    - Markers found:
      * production-ready: 8
 
-### 1366. scripts/PRODUCTIONice_ownership_detector.py
+### 1366. scripts/device_ownership_detector.py
    - Size: 33769 bytes
    - Last modified: 2026-05-08T10:18:05.933420
    - Total markers: 8
@@ -12983,7 +12983,7 @@
    - Markers found:
      * production-ready: 7
 
-### 1546. scripts/qmoi_own_PRODUCTIONice_logger.py
+### 1546. scripts/qmoi_own_device_logger.py
    - Size: 38060 bytes
    - Last modified: 2026-05-08T10:18:06.156420
    - Total markers: 7
@@ -15853,7 +15853,7 @@
      * production-ready: 4
      * vercel: 1
 
-### 1899. scripts/qcity_PRODUCTIONice_manager.py
+### 1899. scripts/qcity_device_manager.py
    - Size: 29554 bytes
    - Last modified: 2026-05-08T10:18:06.127420
    - Total markers: 5
@@ -17638,7 +17638,7 @@
      * production-ready: 3
      * vercel: 1
 
-### 2119. scripts/qmoi_PRODUCTIONice_integration.py
+### 2119. scripts/qmoi_device_integration.py
    - Size: 25886 bytes
    - Last modified: 2026-05-08T10:18:06.149420
    - Total markers: 4
@@ -17815,7 +17815,7 @@
    - Markers found:
      * production-ready: 4
 
-### 2141. scripts/lion_agents/lion_agent_edge_PRODUCTIONice.py
+### 2141. scripts/lion_agents/lion_agent_edge_device.py
    - Size: 2933 bytes
    - Last modified: 2026-05-08T10:18:06.112420
    - Total markers: 4
@@ -20156,7 +20156,7 @@
    - Markers found:
      * production-ready: 3
 
-### 2432. scripts/qcity-PRODUCTIONice-manager.js
+### 2432. scripts/qcity-device-manager.js
    - Size: 15619 bytes
    - Last modified: 2026-05-08T10:18:06.127420
    - Total markers: 3
@@ -21670,7 +21670,7 @@
    - Markers found:
      * production-ready: 3
 
-### 2621. components/q-city/QCityPRODUCTIONicePanel.tsx
+### 2621. components/q-city/QCitydevicePanel.tsx
    - Size: 29221 bytes
    - Last modified: 2026-05-08T10:17:35.325420
    - Total markers: 3
@@ -22387,7 +22387,7 @@
      * production_logging: 1
      * production-ready: 1
 
-### 2710. docs/screens/PRODUCTIONice-management-dashboard-screen.md
+### 2710. docs/screens/device-management-dashboard-screen.md
    - Size: 8157 bytes
    - Last modified: 2026-05-08T10:17:35.565420
    - Total markers: 2
@@ -22693,7 +22693,7 @@
    - Markers found:
      * production-ready: 2
 
-### 2748. scripts/PRODUCTIONice_orchestration_manager.py
+### 2748. scripts/device_orchestration_manager.py
    - Size: 19831 bytes
    - Last modified: 2026-05-08T10:18:05.933420
    - Total markers: 2
@@ -22969,7 +22969,7 @@
    - Markers found:
      * production-ready: 2
 
-### 2782. scripts/qmoi_automated_PRODUCTIONice_controller.py
+### 2782. scripts/qmoi_automated_device_controller.py
    - Size: 19563 bytes
    - Last modified: 2026-05-08T10:18:06.145420
    - Total markers: 2
@@ -24626,7 +24626,7 @@
    - Markers found:
      * production-ready: 1
 
-### 2989. mobile/components/PRODUCTIONiceManagementScreen.js
+### 2989. mobile/components/deviceManagementScreen.js
    - Size: 27866 bytes
    - Last modified: 2026-05-08T10:17:37.374420
    - Total markers: 1
@@ -24690,7 +24690,7 @@
    - Markers found:
      * production-ready: 1
 
-### 2997. hooks/usePRODUCTIONiceHealth.ts
+### 2997. hooks/usedeviceHealth.ts
    - Size: 7381 bytes
    - Last modified: 2026-05-08T10:17:37.047420
    - Total markers: 1
@@ -25042,7 +25042,7 @@
    - Markers found:
      * production-ready: 1
 
-### 3041. cypress/e2e/qmoi_kernel_panel_sso_oauth_PRODUCTIONice_delegated.cy.js
+### 3041. cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js
    - Size: 941 bytes
    - Last modified: 2026-05-08T10:17:35.364420
    - Total markers: 1
@@ -25554,7 +25554,7 @@
    - Markers found:
      * production-ready: 1
 
-### 3105. config/qcity-PRODUCTIONice-config.json
+### 3105. config/qcity-device-config.json
    - Size: 4002 bytes
    - Last modified: 2026-05-08T10:17:35.359420
    - Total markers: 1
@@ -25946,7 +25946,7 @@
    - Markers found:
      * production-ready: 1
 
-### 3154. _app_archived/api/qmoi/own-PRODUCTIONice-logs/export/route.ts
+### 3154. _app_archived/api/qmoi/own-device-logs/export/route.ts
    - Size: 4421 bytes
    - Last modified: 2026-05-08T10:17:33.234420
    - Total markers: 1
@@ -25954,7 +25954,7 @@
    - Markers found:
      * production-ready: 1
 
-### 3155. _app_archived/api/qmoi/own-PRODUCTIONice-logs/route.ts
+### 3155. _app_archived/api/qmoi/own-device-logs/route.ts
    - Size: 5335 bytes
    - Last modified: 2026-05-08T10:17:33.234420
    - Total markers: 1
@@ -26146,7 +26146,7 @@
    - Markers found:
      * production-ready: 1
 
-### 3179. _app_archived/api/PRODUCTIONice-fingerprint/route.ts
+### 3179. _app_archived/api/device-fingerprint/route.ts
    - Size: 2134 bytes
    - Last modified: 2026-05-08T10:17:33.226420
    - Total markers: 1
@@ -26498,7 +26498,7 @@
    - Markers found:
      * production-ready: 1
 
-### 3223. data/PRODUCTIONice_registry.json
+### 3223. data/device_registry.json
    - Size: 535 bytes
    - Last modified: 2026-05-08T10:17:35.464420
    - Total markers: 1
@@ -27746,7 +27746,7 @@
    - Markers found:
      * production-ready: 1
 
-### 3379. scripts/scan_all_apps_PRODUCTIONices_machines.py
+### 3379. scripts/scan_all_apps_devices_machines.py
    - Size: 6623 bytes
    - Last modified: 2026-05-08T10:18:06.166420
    - Total markers: 1
@@ -28010,7 +28010,7 @@
    - Markers found:
      * production-ready: 1
 
-### 3412. lib/services/PRODUCTIONice.service.ts
+### 3412. lib/services/device.service.ts
    - Size: 2934 bytes
    - Last modified: 2026-05-08T10:17:37.133420
    - Total markers: 1
@@ -29090,7 +29090,7 @@
    - Markers found:
      * production-ready: 1
 
-### 3547. components/PRODUCTIONice/PRODUCTIONiceIntegrationStubs.ts
+### 3547. components/device/deviceIntegrationStubs.ts
    - Size: 4818 bytes
    - Last modified: 2026-05-08T10:17:35.295420
    - Total markers: 1

@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 // Main Components
 "../components/AccountabilitySystem.tsx",
 "../components/AIContext.tsx", 
@@ -18,8 +18,8 @@
 "../components/DealsList.tsx",
 "../components/DealsPopup.tsx",
 "../components/DeploymentStatusDashboard.tsx",
-"../components/PRODUCTIONiceMap.tsx",
-"../components/PRODUCTIONiceSettingsPanel.tsx",
+"../components/deviceMap.tsx",
+"../components/deviceSettingsPanel.tsx",
 "../components/DownloadAppButton.tsx",
 "../components/DownloadManager.tsx",
 "../components/DownloadQApp.tsx",
@@ -71,7 +71,7 @@
 "../components/QmoiKeyboard.tsx",
 "../components/QmoiMediaManager.tsx",
 "../components/QmoiMemoryPanel.tsx",
-"../components/QMOIOwnPRODUCTIONice.tsx",
+"../components/QMOIOwndevice.tsx",
 "../components/QmoiRevenueDashboard.tsx",
 "../components/QVillage.tsx",
 "../components/QVillageDatasetsPanel.tsx",
@@ -107,11 +107,11 @@
 // Automation Components
 "../components/automation/AutomationRulesPanel.tsx",
 
-// PRODUCTIONice Components
-"../components/PRODUCTIONice/AWSCredentialsModal.tsx",
-"../components/PRODUCTIONice/AzureCredentialsModal.tsx",
-"../components/PRODUCTIONice/PRODUCTIONiceIntegration[PRODUCTION_IMPLEMENTED]s.ts",
-"../components/PRODUCTIONice/GCPCredentialsModal.tsx",
+// device Components
+"../components/device/AWSCredentialsModal.tsx",
+"../components/device/AzureCredentialsModal.tsx",
+"../components/device/deviceIntegration[]s.ts",
+"../components/device/GCPCredentialsModal.tsx",
 
 // Predeploy Components
 "../components/predeploy/OrchestratorStatusPanel.tsx",
@@ -132,9 +132,9 @@
 "../components/q-city/EmploymentDashboard.tsx",
 "../components/q-city/Onboarding.tsx",
 "../components/q-city/QCityDashboard.tsx",
-"../components/q-city/QCityPRODUCTIONicePanel.tsx",
+"../components/q-city/QCitydevicePanel.tsx",
 "../components/q-city/QMOIBiometricManager.tsx",
-"../components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx",
+"../components/q-city/QMOIOwndeviceLogs.tsx",
 "../components/q-city/QMOIRevenueDashboard.tsx",
 "../components/q-city/QVillage.tsx",
 "../components/q-city/ModelRegistry.tsx",
@@ -256,8 +256,8 @@
 "../../src/components/q-city/BackupRestorePanel.tsx",
 "../../src/components/q-city/CommandPanel.tsx",
 "../../src/components/q-city/Dashboard.tsx",
-"../../src/components/q-city/PRODUCTIONicePanel.tsx",
-"../../src/components/q-city/PRODUCTIONicesHub.tsx",
+"../../src/components/q-city/devicePanel.tsx",
+"../../src/components/q-city/devicesHub.tsx",
 "../../src/components/q-city/DistributedCompute.tsx",
 "../../src/components/q-city/DocumentManagerPanel.tsx",
 "../../src/components/q-city/EarningDashboard.tsx",

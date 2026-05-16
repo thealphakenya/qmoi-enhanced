@@ -10,12 +10,12 @@ fully implemented
 
 
 
-# ENDPOINTS.md - API Endpoint Inventory ✅ production_IMPLEMENTED
+# ENDPOINTS.md - API Endpoint Inventory ✅ 
 
 **Last Updated:** 2026-05-07T12:00:00.000000Z
 **Total Route Source Files:** 312
 **Actual endpoint handler files:** 312
-**Status:** ✅ production_IMPLEMENTED
+**Status:** ✅ 
 
 ## Document Purpose
 
@@ -163,9 +163,9 @@ The endpoint inventory is derived from live route handler source files under `ap
 - `/api/emails`
 - `/api/notifications/test`
 
-### PRODUCTIONice & Platform API
-- `/api/PRODUCTIONices`
-- `/api/PRODUCTIONice-fingerprint`
+### device & Platform API
+- `/api/devices`
+- `/api/device-fingerprint`
 - `/api/domains`
 - `/api/domains/health`
 - `/api/platforms`
@@ -442,7 +442,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### GET /PRODUCTIONices
+### GET /devices
 
 Endpoint automatically detected but not documented.
 
@@ -972,7 +972,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### GET /qmoi/own-PRODUCTIONice-logs
+### GET /qmoi/own-device-logs
 
 Endpoint automatically detected but not documented.
 
@@ -982,7 +982,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### GET /qmoi/own-PRODUCTIONice-logs/export
+### GET /qmoi/own-device-logs/export
 
 Endpoint automatically detected but not documented.
 
@@ -1542,7 +1542,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### POST /PRODUCTIONices
+### POST /devices
 
 Endpoint automatically detected but not documented.
 
@@ -2062,7 +2062,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### POST /qmoi/own-PRODUCTIONice-logs
+### POST /qmoi/own-device-logs
 
 Endpoint automatically detected but not documented.
 
@@ -2072,7 +2072,7 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
-### POST /qmoi/own-PRODUCTIONice-logs/export
+### POST /qmoi/own-device-logs/export
 
 Endpoint automatically detected but not documented.
 

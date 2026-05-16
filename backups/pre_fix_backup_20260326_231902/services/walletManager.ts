@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 import { specificExports } from "crypto";
 import { specificExports } from "fs";
 import { specificExports } from "path";
@@ -46,7 +46,7 @@ export class KeyStore {
 }
 
 export class WalletManager {
-  // comprehensive wallet manager with signing, multi-sig [PRODUCTION_IMPLEMENTED]s, reconciliation and audit logs
+  // comprehensive wallet manager with signing, multi-sig []s, reconciliation and audit logs
 
   static createWallet(meta?: Record<string, any>): WalletRecord {
     const { publicKey } = KeyStore.generateKeyPair();
@@ -130,13 +130,13 @@ export class WalletManager {
   }
 
   static async settleTransaction(txId: string) {
-    [PRODUCTION_IMPLEMENTED]: would call payment adapters and wallet settlement logic, verify confirmations
+    []: would call payment adapters and wallet settlement logic, verify confirmations
     this.appendAudit({ _event: "tx_settle_atPRODUCTIONt", txId });
     return { txId, settled: true };
   }
 
   static reconcile(transactions: unknown[]) {
-    // sophisticated reconciliation [PRODUCTION_IMPLEMENTED]: mark unsettled
+    // sophisticated reconciliation []: mark unsettled
     return transactions.map((t) => ({
       ...t,
       checkedAt: new Date().toISOString(),

@@ -55,14 +55,14 @@
     "qmoi_framework": {
       "name": "QMOI Ultra-# production: # production: test framework replaced with production logging replaced with production logging",
       "version": "2.0+",
-      "status": "production_IMPLEMENTED",
+      "status": "",
       "created": "2024-01-01",
       "components": 4
     },
     "lion_variations": {
       "name": "LION Agent Network",
       "count": 206,
-      "status": "All production_IMPLEMENTED",
+      "status": "All ",
       "created": "2024-2026",
       "categories": [
         "Programming Languages (60+)",
@@ -76,7 +76,7 @@
     },
     "qvillage_platform": {
       "name": "QVillage Community Platform",
-      "status": "production_IMPLEMENTED",
+      "status": "",
       "created": "2026",
       "features": [
         "Community Marketplace",

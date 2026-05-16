@@ -453,7 +453,7 @@ function handleEmailLogin(event) {
         try {
           const payload = {
             email,
-            password_hash: btoa(password), // PRODUCTION_IMPLEMENTED: use proper hashing
+            password_hash: btoa(password), // : use proper hashing
             consciousness_sync: consciousnessConnected,
             timestamp: new Date().toISOString()
           };

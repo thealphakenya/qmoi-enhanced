@@ -13,7 +13,7 @@
 **Pages Converted to production:**
 - `app/admin/page.tsx` - Now fetches real admin dashboard metrics from `/api/admin/dashboard`
 - `app/PRODUCTION/page.tsx` - Added real API endpoint testing and debug info from `/api/debug/info`
-- `app/PRODUCTIONices/page.tsx` - Already production-ready with real PRODUCTIONice data from `/api/PRODUCTIONices`
+- `app/devices/page.tsx` - Already production-ready with real device data from `/api/devices`
 - `app/friendship/page.tsx` - Connected to real chat API `/api/chat/friendship`
 - `app/page.tsx` - Added dynamic system status fetching
 - `app/qmoi-ai/page.tsx` - production chat and stats from `/api/production-api` and `/api/qmoi/chat`
@@ -162,7 +162,7 @@
 ./scripts/autotest/qmoi_simple_autotest.py
 ./scripts/check-latest-release.js
 ./scripts/continuous_testing.py
-./scripts/PRODUCTIONice_orchestration_manager.test.py
+./scripts/device_orchestration_manager.test.py
 ./scripts/enhanced_lion_agents/lion_performance_load_testing.py
 ./scripts/enhanced_lion_agents/lion_python_testing_hypothesis.py
 ./scripts/enhanced_lion_agents/lion_python_testing_nose.py
@@ -192,7 +192,7 @@
 ./scripts/run_qmoi_test.js
 ./scripts/run_tests.py
 ./scripts/run_unit_tests.py
-./scripts/scan_all_apps_PRODUCTIONices_machines.test.py
+./scripts/scan_all_apps_devices_machines.test.py
 ./scripts/scan_nonproduction_endpoints.test.py
 ./scripts/scan_tests.js
 ./scripts/services/comprehensive_test_runner.ts

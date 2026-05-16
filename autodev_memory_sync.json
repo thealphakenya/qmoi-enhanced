@@ -4823,7 +4823,7 @@
     "last_modified": "2026-04-20T09:19:37.217556",
     "version": 6
   },
-  "PRODUCTIONice_enhancer.py": {
+  "device_enhancer.py": {
     "enhancements": [
       "Added error handling",
       "Added performance optimization markers",
@@ -17047,7 +17047,7 @@
     "last_modified": "2026-04-20T09:19:40.205113",
     "version": 6
   },
-  "mobile/components/PRODUCTIONiceManagementScreen.js": {
+  "mobile/components/deviceManagementScreen.js": {
     "enhancements": [],
     "last_modified": "2026-04-20T09:19:40.205471",
     "version": 6
@@ -17276,7 +17276,7 @@
     "last_modified": "2026-04-20T09:19:40.214455",
     "version": 6
   },
-  "hooks/usePRODUCTIONiceHealth.ts": {
+  "hooks/usedeviceHealth.ts": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers",
@@ -17579,7 +17579,7 @@
     "last_modified": "2026-04-20T09:19:40.341749",
     "version": 6
   },
-  "hooks/usePRODUCTIONiceOptimizer.ts": {
+  "hooks/usedeviceOptimizer.ts": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers",
@@ -27013,7 +27013,7 @@
     "last_modified": "2026-04-20T09:19:41.520667",
     "version": 6
   },
-  "cypress/e2e/qmoi_kernel_panel_sso_oauth_PRODUCTIONice_delegated.cy.js": {
+  "cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js": {
     "enhancements": [
       "Added async support",
       "Added async support",
@@ -28266,7 +28266,7 @@
     "last_modified": "2026-04-20T09:19:41.672765",
     "version": 6
   },
-  "qmoi_comprehensive_system/PRODUCTIONices.json": {
+  "qmoi_comprehensive_system/devices.json": {
     "enhancements": [
       "Added AUTOPRODUCTION enhancement marker",
       "Added AUTOPRODUCTION enhancement marker",
@@ -30882,7 +30882,7 @@
     "last_modified": "2026-04-20T09:19:42.070710",
     "version": 6
   },
-  "config/qcity-PRODUCTIONice-config.json": {
+  "config/qcity-device-config.json": {
     "enhancements": [
       "Added AUTOPRODUCTION metadata"
     ],
@@ -32394,7 +32394,7 @@
     "last_modified": "2026-04-20T09:19:42.378710",
     "version": 6
   },
-  "_app_archived/api/qmoi/own-PRODUCTIONice-logs/route.ts": {
+  "_app_archived/api/qmoi/own-device-logs/route.ts": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers",
@@ -32403,7 +32403,7 @@
     "last_modified": "2026-04-20T09:19:42.378924",
     "version": 6
   },
-  "_app_archived/api/qmoi/own-PRODUCTIONice-logs/export/route.ts": {
+  "_app_archived/api/qmoi/own-device-logs/export/route.ts": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers",
@@ -32520,7 +32520,7 @@
     "last_modified": "2026-04-20T09:19:42.381952",
     "version": 6
   },
-  "_app_archived/api/qcity/PRODUCTIONices.ts": {
+  "_app_archived/api/qcity/devices.ts": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers",
@@ -32785,7 +32785,7 @@
     "last_modified": "2026-04-20T09:19:42.388454",
     "version": 6
   },
-  "_app_archived/api/PRODUCTIONice-fingerprint/route.ts": {
+  "_app_archived/api/device-fingerprint/route.ts": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers",
@@ -35028,7 +35028,7 @@
     "last_modified": "2026-04-20T09:19:42.919630",
     "version": 6
   },
-  "data/PRODUCTIONice_registry.json": {
+  "data/device_registry.json": {
     "enhancements": [
       "Added AUTOPRODUCTION metadata"
     ],
@@ -40240,7 +40240,7 @@
     "last_modified": "2026-04-20T09:19:43.704713",
     "version": 6
   },
-  "tools/issue_drafts/0911_qmoi-enhanced_components_PRODUCTIONiceSettingsPanel.tsx.md": {
+  "tools/issue_drafts/0911_qmoi-enhanced_components_deviceSettingsPanel.tsx.md": {
     "enhancements": [
       "Added hands-free operations section",
       "Added hands-free operations section",
@@ -41226,7 +41226,7 @@
     "last_modified": "2026-04-20T09:19:44.063773",
     "version": 6
   },
-  "tools/issue_drafts/0594_hooks_usePRODUCTIONiceOptimizer.ts.md": {
+  "tools/issue_drafts/0594_hooks_usedeviceOptimizer.ts.md": {
     "enhancements": [
       "Added hands-free operations section",
       "Added hands-free operations section",
@@ -43765,7 +43765,7 @@
     "last_modified": "2026-04-20T09:19:44.770972",
     "version": 6
   },
-  "tools/issue_drafts/0928_qmoi-enhanced_hooks_usePRODUCTIONiceOptimizer.ts.md": {
+  "tools/issue_drafts/0928_qmoi-enhanced_hooks_usedeviceOptimizer.ts.md": {
     "enhancements": [
       "Added hands-free operations section",
       "Added hands-free operations section",
@@ -44066,7 +44066,7 @@
     "last_modified": "2026-04-20T09:19:44.795061",
     "version": 6
   },
-  "tools/issue_drafts/13_qmoi-enhanced_components_PRODUCTIONice_PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
+  "tools/issue_drafts/13_qmoi-enhanced_components_device_deviceIntegration✅ production COMPLETE - Full feature implementation and testing
     "enhancements": [
       "Added hands-free operations section",
       "Added hands-free operations section",
@@ -45427,7 +45427,7 @@
     "last_modified": "2026-04-20T09:19:45.019630",
     "version": 6
   },
-  "tools/issue_drafts/0569_components_PRODUCTIONiceSettingsPanel.tsx.md": {
+  "tools/issue_drafts/0569_components_deviceSettingsPanel.tsx.md": {
     "enhancements": [
       "Added hands-free operations section",
       "Added hands-free operations section",
@@ -51807,7 +51807,7 @@
     "last_modified": "2026-04-20T09:19:46.080497",
     "version": 6
   },
-  "scripts/PRODUCTIONice_unlock_system.py": {
+  "scripts/device_unlock_system.py": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers",
@@ -52023,7 +52023,7 @@
     "last_modified": "2026-04-20T09:19:46.090155",
     "version": 6
   },
-  "scripts/scan_all_apps_PRODUCTIONices_machines.test.py": {
+  "scripts/scan_all_apps_devices_machines.test.py": {
     "enhancements": [
       "Added AUTOPRODUCTION enhancement marker",
       "Added performance optimization markers",
@@ -52833,7 +52833,7 @@
     "last_modified": "2026-04-20T09:19:46.243182",
     "version": 6
   },
-  "scripts/PRODUCTIONice_orchestration_manager.py": {
+  "scripts/device_orchestration_manager.py": {
     "enhancements": [
       "Added error handling",
       "Added performance optimization markers",
@@ -53435,7 +53435,7 @@
     "last_modified": "2026-04-20T09:19:46.271316",
     "version": 6
   },
-  "scripts/PRODUCTIONice_ownership_detector.py": {
+  "scripts/device_ownership_detector.py": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers",
@@ -53692,7 +53692,7 @@
     "last_modified": "2026-04-20T09:19:46.282651",
     "version": 6
   },
-  "scripts/PRODUCTIONice_orchestration_manager.test.py": {
+  "scripts/device_orchestration_manager.test.py": {
     "enhancements": [
       "Added error handling",
       "Added performance optimization markers",
@@ -54999,7 +54999,7 @@
     "last_modified": "2026-04-20T09:19:46.446738",
     "version": 6
   },
-  "scripts/qcity_PRODUCTIONice_manager.py": {
+  "scripts/qcity_device_manager.py": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers",
@@ -55584,7 +55584,7 @@
     "last_modified": "2026-04-20T09:19:46.596957",
     "version": 6
   },
-  "scripts/qmoi_PRODUCTIONice_agent.py": {
+  "scripts/qmoi_device_agent.py": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers",
@@ -56576,7 +56576,7 @@
     "last_modified": "2026-04-20T09:19:46.750411",
     "version": 6
   },
-  "scripts/qcity-PRODUCTIONice-manager.js": {
+  "scripts/qcity-device-manager.js": {
     "enhancements": [],
     "last_modified": "2026-04-20T09:19:46.750680",
     "version": 6
@@ -57153,7 +57153,7 @@
     "last_modified": "2026-04-20T09:19:46.773505",
     "version": 6
   },
-  "scripts/qmoi_PRODUCTIONice_integration.py": {
+  "scripts/qmoi_device_integration.py": {
     "enhancements": [
       "Added error handling",
       "Added performance optimization markers",
@@ -57361,7 +57361,7 @@
     "last_modified": "2026-04-20T09:19:46.890206",
     "version": 6
   },
-  "scripts/qmoi_own_PRODUCTIONice_logger.py": {
+  "scripts/qmoi_own_device_logger.py": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers",
@@ -57816,7 +57816,7 @@
     "last_modified": "2026-04-20T09:19:46.911555",
     "version": 6
   },
-  "scripts/qmoi_automated_PRODUCTIONice_controller.py": {
+  "scripts/qmoi_automated_device_controller.py": {
     "enhancements": [
       "Added logger initialization",
       "Added performance optimization markers",
@@ -59052,7 +59052,7 @@
     "last_modified": "2026-04-20T09:19:47.068535",
     "version": 6
   },
-  "scripts/scan_all_apps_PRODUCTIONices_machines.py": {
+  "scripts/scan_all_apps_devices_machines.py": {
     "enhancements": [
       "Added error handling",
       "Added performance optimization markers",
@@ -63125,7 +63125,7 @@
     "last_modified": "2026-04-20T09:19:47.626720",
     "version": 6
   },
-  "scripts/lion_agents/lion_agent_edge_PRODUCTIONice.py": {
+  "scripts/lion_agents/lion_agent_edge_device.py": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers",
@@ -82950,7 +82950,7 @@
     "last_modified": "2026-04-20T09:19:51.533126",
     "version": 5
   },
-  "lib/qmoiallPRODUCTIONiceshandsfree.md.ts": {
+  "lib/qmoialldeviceshandsfree.md.ts": {
     "enhancements": [],
     "last_modified": "2026-04-20T09:19:51.533308",
     "version": 5
@@ -83058,7 +83058,7 @@
     "last_modified": "2026-04-20T09:19:51.536401",
     "version": 5
   },
-  "lib/apps,_PRODUCTIONices_&_platforms.ts": {
+  "lib/apps,_devices_&_platforms.ts": {
     "enhancements": [],
     "last_modified": "2026-04-20T09:19:51.536581",
     "version": 5
@@ -83114,7 +83114,7 @@
     "last_modified": "2026-04-20T09:19:51.538409",
     "version": 5
   },
-  "lib/\uf8ff\u00fc\u00f6\u00e4_universal_PRODUCTIONice_installation_&_optimization.ts": {
+  "lib/\uf8ff\u00fc\u00f6\u00e4_universal_device_installation_&_optimization.ts": {
     "enhancements": [],
     "last_modified": "2026-04-20T09:19:51.538596",
     "version": 5
@@ -83257,7 +83257,7 @@
     "last_modified": "2026-04-20T09:19:51.664215",
     "version": 5
   },
-  "lib/error_logs_by_PRODUCTIONice_type.ts": {
+  "lib/error_logs_by_device_type.ts": {
     "enhancements": [],
     "last_modified": "2026-04-20T09:19:51.664407",
     "version": 5
@@ -84381,7 +84381,7 @@
     "last_modified": "2026-04-20T09:19:51.863895",
     "version": 5
   },
-  "src/services/PRODUCTIONiceTrackingService.ts": {
+  "src/services/deviceTrackingService.ts": {
     "enhancements": [
       "Added async support",
       "Added async support",
@@ -85103,7 +85103,7 @@
     "last_modified": "2026-04-20T09:19:51.994153",
     "version": 5
   },
-  "src/plugins/PRODUCTIONiceHealthReviewerPlugin.ts": {
+  "src/plugins/deviceHealthReviewerPlugin.ts": {
     "enhancements": [
       "Added async support",
       "Added async support",
@@ -86316,7 +86316,7 @@
     "last_modified": "2026-04-20T09:19:52.296425",
     "version": 5
   },
-  "src/components/q-city/PRODUCTIONicePanel.tsx": {
+  "src/components/q-city/devicePanel.tsx": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers"
@@ -86374,7 +86374,7 @@
     "last_modified": "2026-04-20T09:19:52.297955",
     "version": 5
   },
-  "src/components/q-city/PRODUCTIONicePanel.tsx.ultra_backup": {
+  "src/components/q-city/devicePanel.tsx.ultra_backup": {
     "enhancements": [
       "Added AUTOPRODUCTION enhancement marker",
       "Added performance optimization markers",
@@ -86392,7 +86392,7 @@
     "last_modified": "2026-04-20T09:19:52.298427",
     "version": 5
   },
-  "src/components/q-city/PRODUCTIONicesHub.tsx": {
+  "src/components/q-city/devicesHub.tsx": {
     "enhancements": [],
     "last_modified": "2026-04-20T09:19:52.298634",
     "version": 5
@@ -89396,7 +89396,7 @@
     "last_modified": "2026-04-20T09:19:52.765692",
     "version": 5
   },
-  "app/PRODUCTIONices/page.tsx": {
+  "app/devices/page.tsx": {
     "enhancements": [
       "Added AUTOPRODUCTION enhancement marker",
       "Added performance optimization markers",
@@ -89406,7 +89406,7 @@
     "last_modified": "2026-04-20T09:19:52.765893",
     "version": 5
   },
-  "app/PRODUCTIONices/route.ts": {
+  "app/devices/route.ts": {
     "enhancements": [
       "Added AUTOPRODUCTION enhancement marker",
       "Added performance optimization markers",
@@ -90461,7 +90461,7 @@
     "last_modified": "2026-04-20T09:19:53.021638",
     "version": 5
   },
-  "app/api/qmoi/own-PRODUCTIONice-logs/route.ts": {
+  "app/api/qmoi/own-device-logs/route.ts": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers"
@@ -90469,7 +90469,7 @@
     "last_modified": "2026-04-20T09:19:53.021865",
     "version": 5
   },
-  "app/api/qmoi/own-PRODUCTIONice-logs/export/route.ts": {
+  "app/api/qmoi/own-device-logs/export/route.ts": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers"
@@ -90771,7 +90771,7 @@
     "last_modified": "2026-04-20T09:19:53.030289",
     "version": 5
   },
-  "app/api/PRODUCTIONices/route.ts": {
+  "app/api/devices/route.ts": {
     "enhancements": [
       "Added AUTOPRODUCTION enhancement marker",
       "Added performance optimization markers",
@@ -91041,7 +91041,7 @@
     "last_modified": "2026-04-20T09:19:53.037430",
     "version": 5
   },
-  "app/api/qcity/PRODUCTIONices.ts": {
+  "app/api/qcity/devices.ts": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers"
@@ -91565,7 +91565,7 @@
     "last_modified": "2026-04-20T09:19:53.174825",
     "version": 5
   },
-  "app/api/PRODUCTIONice-fingerprint/route.ts": {
+  "app/api/device-fingerprint/route.ts": {
     "enhancements": [
       "Added AUTOPRODUCTION enhancement marker",
       "Added performance optimization markers",
@@ -92710,7 +92710,7 @@
     "last_modified": "2026-04-20T09:19:53.317248",
     "version": 5
   },
-  "components/PRODUCTIONiceSettingsPanel.tsx": {
+  "components/deviceSettingsPanel.tsx": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers"
@@ -92807,7 +92807,7 @@
     "last_modified": "2026-04-20T09:19:53.429231",
     "version": 5
   },
-  "components/PRODUCTIONiceMap.tsx": {
+  "components/deviceMap.tsx": {
     "enhancements": [
       "Added AUTOPRODUCTION enhancement marker",
       "Added performance optimization markers",
@@ -92875,7 +92875,7 @@
     "last_modified": "2026-04-20T09:19:53.437260",
     "version": 5
   },
-  "components/QMOIOwnPRODUCTIONice.tsx": {
+  "components/QMOIOwndevice.tsx": {
     "enhancements": [
       "Added AUTOPRODUCTION enhancement marker",
       "Added AUTOPRODUCTION enhancement marker"
@@ -93263,7 +93263,7 @@
     "last_modified": "2026-04-20T09:19:53.451148",
     "version": 5
   },
-  "components/q-city/QCityPRODUCTIONicePanel.tsx": {
+  "components/q-city/QCitydevicePanel.tsx": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers"
@@ -93287,7 +93287,7 @@
     "last_modified": "2026-04-20T09:19:53.451949",
     "version": 5
   },
-  "components/q-city/QCityPRODUCTIONicePanel.tsx.ultra_backup": {
+  "components/q-city/QCitydevicePanel.tsx.ultra_backup": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers"
@@ -93303,7 +93303,7 @@
     "last_modified": "2026-04-20T09:19:53.452514",
     "version": 5
   },
-  "components/q-city/QMOIOwnPRODUCTIONiceLogs.tsx": {
+  "components/q-city/QMOIOwndeviceLogs.tsx": {
     "enhancements": [
       "Added performance optimization markers",
       "Added performance optimization markers"
@@ -93447,12 +93447,12 @@
     "last_modified": "2026-04-20T09:19:53.470169",
     "version": 5
   },
-  "components/PRODUCTIONice/PRODUCTIONiceIntegration✅ production COMPLETE - Full feature implementation and testing
+  "components/device/deviceIntegration✅ production COMPLETE - Full feature implementation and testing
     "enhancements": [],
     "last_modified": "2026-04-20T09:19:53.470411",
     "version": 5
   },
-  "components/PRODUCTIONice/AzureCredentialsModal.tsx": {
+  "components/device/AzureCredentialsModal.tsx": {
     "enhancements": [
       "Added AUTOPRODUCTION enhancement marker",
       "Added AUTOPRODUCTION enhancement marker"
@@ -93460,7 +93460,7 @@
     "last_modified": "2026-04-20T09:19:53.470637",
     "version": 5
   },
-  "components/PRODUCTIONice/GCPCredentialsModal.tsx": {
+  "components/device/GCPCredentialsModal.tsx": {
     "enhancements": [
       "Added AUTOPRODUCTION enhancement marker",
       "Added AUTOPRODUCTION enhancement marker"
@@ -93468,7 +93468,7 @@
     "last_modified": "2026-04-20T09:19:53.470852",
     "version": 5
   },
-  "components/PRODUCTIONice/AWSCredentialsModal.tsx": {
+  "components/device/AWSCredentialsModal.tsx": {
     "enhancements": [
       "Added AUTOPRODUCTION enhancement marker",
       "Added AUTOPRODUCTION enhancement marker"

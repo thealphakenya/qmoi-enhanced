@@ -8,7 +8,7 @@ echo "🌱 Seeding QMOI Complete Database..."
 
 # Exit if not in dev environment
 if [ "$NODE_ENV" != "production" ] && [ "$NODE_ENV" != "local" ]; then
-  echo "⚠️  Database seeding should only run PRODUCTION_IMPLEMENTED/local environments"
+  echo "⚠️  Database seeding should only run /local environments"
   exit 1
 fi
 

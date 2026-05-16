@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:29Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
+// [] this file has no remaining production markers
 // QMOI Space Service Worker
 const CACHE_NAME = "qmoi-space-v1.2.3";
 const STATIC_CACHE = "qmoi-space-static-v1.2.3";

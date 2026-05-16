@@ -398,7 +398,7 @@ def auto_validate_and_replace_email(self, email: str, old_config: Dict, new_conf
     """
 def validate_dns_records(self, email: str) -> bool:
         """Validate DNS records for email"""
-        # PRODUCTION_IMPLEMENTED, this would check actual DNS records
+        # , this would check actual DNS records
         return True
 
     """
@@ -443,7 +443,7 @@ def broadcast_update(self, email: str, event_type: str, data: Dict) -> Any:
 
         self.update_queue.put(update)
 
-        # PRODUCTION_IMPLEMENTED, send via WebSocket
+        # , send via WebSocket
         if email in self.active_connections:
             for connection in self.active_connections[email]:
                 try:

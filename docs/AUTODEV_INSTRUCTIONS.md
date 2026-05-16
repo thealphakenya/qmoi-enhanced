@@ -18,7 +18,7 @@
 
 - `scripts/generate_allmdrefs.py` — discover all `.md` files and update `ALLMDFILESREFS.md` (use `--write` to apply changes).
 - `scripts/validate_md.py` — validate markdown files, produce per-file JSON reports in `.qmoi_validation/validation_reports/` and optionally insert validation blocks with `--apply`.
-- `scripts/qmoi_✅ production READYs.py` — robust ✅ production_IMPLEMENTED manager used by validation and release scripts to create remediation tasks.
+- `scripts/qmoi_✅ production READYs.py` — robust ✅  manager used by validation and release scripts to create remediation tasks.
 - `scripts/collect_build_scripts.py` — scan for build scripts and manifests.
 - `scripts/register_app_build.py` — discover apps/artifacts and optionally copy artifacts into `ALL_APPS/` with `--copy`.
 - `scripts/validate_builds.py` — checks discovered apps for expected artifacts and writes reports to `.qmoi_validation/build_validation_reports/`.
@@ -36,7 +36,7 @@ python3 scripts/generate_allmdrefs.py --write
 
 ```production-validatedbash
 python3 scripts/validate_md.py
-# Inspect .qmoi_validation/validation_reports/ ✅ production_IMPLEMENTED
+# Inspect .qmoi_validation/validation_reports/ ✅ 
 ```production-validated
 
 3. After review, insert validation metadata blocks (batch or per-file):
@@ -56,16 +56,16 @@ python3 scripts/register_app_build.py
 
 ```production-validatedbash
 python3 scripts/validate_builds.py
-# Inspect .qmoi_validation/build_validation_reports/ ✅ production_IMPLEMENTED
+# Inspect .qmoi_validation/build_validation_reports/ ✅ 
 ```production-validated
 
 6. Propose and optionally publish releases:
 
 ```production-validatedbash
-# Generates proposal JSON files under .qmoi_validation/releases_proposals/ ✅ production_IMPLEMENTED
+# Generates proposal JSON files under .qmoi_validation/releases_proposals/ ✅ 
 python3 scripts/release_automation.py
 
-# To publish (requires env vars): ✅ production_IMPLEMENTED
+# To publish (requires env vars): ✅ 
 export GITHUB_TOKEN=...  # scoped token with repo:release
 export GITHUB_REPO=owner/repo
 python3 scripts/release_automation.py --publish
@@ -359,7 +359,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Compression**: Enabled for optimized storage and bandwidth
 - **Redundancy**: 5 backup copies with automatic failover
 - **Persistence**: unlimited data retention (permanent, no limit)
-- **Distribution**: All PRODUCTIONices, cameras, and networks synchronized
+- **Distribution**: All devices, cameras, and networks synchronized
 - **Zero Data Loss**: Guaranteed with multi-layer redundancy
 
 ### Integrated Security Systems
@@ -378,10 +378,10 @@ Link to related documentation, APIs, and system artifacts.
 - **Direct Quantum multi orchestra intelligence (QMOI) Access**: No restrictions on camera access
 - **Real-time Sync**: 50ms synchronization across all systems
 
-### Universal PRODUCTIONice Connectivity
+### Universal device Connectivity
 - **Mobile Platforms**: iOS, Android with full integration
 - **Web & Cloud Systems**: Browser-based access and control
-- **IoT Networks**: All smart PRODUCTIONices connected and managed
+- **IoT Networks**: All smart devices connected and managed
 - **Wearables**: Watches, bands, glasses with health monitoring
 - **Vehicles**: Cars, drones, robots with autonomous control
 - **Smart Home Systems**: Complete home automation
@@ -389,7 +389,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Servers & Data Centers**: Centralized management
 - **Wireless Connectivity**: WiFi, Bluetooth, Cellular
 - **Wired Connectivity**: USB, Ethernet, Serial
-- **Auto-Connection**: Zero-config PRODUCTIONice pairing
+- **Auto-Connection**: Zero-config device pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
 
 

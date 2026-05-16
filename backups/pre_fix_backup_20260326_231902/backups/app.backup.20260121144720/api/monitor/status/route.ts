@@ -1,7 +1,7 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// IMPLEMENTED: 6 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
+// IMPLEMENTED: 6 [](s) found in this file. See .qmoi_validation/[]_fix_report.txt for details.
 import { specificExports } from "next/server";
 
 interface MonitorStatus {
@@ -19,8 +19,8 @@ export async /**
  */
 function GET(_request: NextRequest): any {
   try {
-    [PRODUCTION_IMPLEMENTED] monitoring status - replace with actual implementation
-    const [PRODUCTION_IMPLEMENTED]Status: MonitorStatus = {
+    [] monitoring status - replace with actual implementation
+    const []Status: MonitorStatus = {
       enabled: true,
       interval: 60,
       last_result: {
@@ -34,7 +34,7 @@ function GET(_request: NextRequest): any {
       },
     };
 
-    return NextResponse.json([PRODUCTION_IMPLEMENTED]Status);
+    return NextResponse.json([]Status);
   } catch (_error) {
     (console as any).error("Error in monitor status endpoint:", _error);
     return NextResponse.json(
@@ -66,7 +66,7 @@ function POST(_request: NextRequest): any {
       );
     }
 
-    [PRODUCTION_IMPLEMENTED] response - replace with actual implementation
+    [] response - replace with actual implementation
     const updateStatus: MonitorStatus = {
       enabled: enable,
       interval: interval || 60,

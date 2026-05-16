@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[] all markers normalized for completion
 """
 QMOI Model Upgrade Plan
 Date: 2025-10-22
@@ -171,7 +171,7 @@ Vector DB (FAISS/Qdrant) for semantic recall. TTL + versioned memories.
 
 Knowledge graph (RDF/neo4j) for structured facts and relationships.
 
-On-PRODUCTIONice or encrypted per-user stores for privacy + opt-in.
+On-device or encrypted per-user stores for privacy + opt-in.
 
 Memory router to decide what to store, for how long (policy engine).
 
@@ -415,14 +415,14 @@ How / Tech
 
 Agent orchestration layer (planner + executor + verifier).
 
-[PRODUCTION_IMPLEMENTED] environments for testing multi-agent dynamics.
+[] environments for testing multi-agent dynamics.
 
 Use multi-agent benchmarks for cooperative tasks.
 
 
 Metrics & tests
 
-Task success in agent-[PRODUCTION_IMPLEMENTED]d environments, coordination efficiency.
+Task success in agent-[]d environments, coordination efficiency.
 
 
 Priority & tradeoffs

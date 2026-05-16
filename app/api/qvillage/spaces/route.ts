@@ -19,8 +19,8 @@ export async function GET(req: NextRequest) {
       },
       {
         id: "DS-1002",
-        name: "PRODUCTIONice Performance Metrics",
-        description: "500K PRODUCTIONice logs across production and field environments.",
+        name: "Device Performance Metrics",
+        description: "500K device logs across production and field environments.",
         access: "paid",
         price: "$24.99",
         size: "120GB",

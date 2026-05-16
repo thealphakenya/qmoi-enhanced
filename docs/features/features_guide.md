@@ -2,58 +2,58 @@
 
 ## Core Features Overview
 
-The QMOI Enhanced application provides a comprehensive suite of features for PRODUCTIONice management, AI assistance, community collaboration, and smart city operations.
+The QMOI Enhanced application provides a comprehensive suite of features for device management, AI assistance, community collaboration, and smart city operations.
 
-## 1. PRODUCTIONice Management
+## 1. device Management
 
 ### Overview
-Centralized PRODUCTIONice monitoring, management, and control interface for all connected PRODUCTIONices.
+Centralized device monitoring, management, and control interface for all connected devices.
 
 ### Key Capabilities
-- **PRODUCTIONice Discovery**: Automatic detection and registration of connected PRODUCTIONices
+- **device Discovery**: Automatic detection and registration of connected devices
 - **Real-time Monitoring**: Live status monitoring with health indicators
-- **PRODUCTIONice Filtering**: Filter PRODUCTIONices by type, status, location, or custom criteria
-- **Settings Configuration**: Per-PRODUCTIONice customization and preferences
-- **Responsive Grid**: Mobile-friendly PRODUCTIONice card layouts
+- **device Filtering**: Filter devices by type, status, location, or custom criteria
+- **Settings Configuration**: Per-device customization and preferences
+- **Responsive Grid**: Mobile-friendly device card layouts
 
-### Accessing PRODUCTIONice Management
-- **Route**: `/PRODUCTIONices`
-- **Navigation**: Home → PRODUCTIONices or Admin Dashboard → PRODUCTIONices
+### Accessing device Management
+- **Route**: `/devices`
+- **Navigation**: Home → devices or Admin Dashboard → devices
 - **Roles**: All authenticated users
 
 ### Features in Detail
 
-#### PRODUCTIONice Browsing
-- Grid or list view of connected PRODUCTIONices
-- PRODUCTIONice name, type, and status display
-- PRODUCTIONice icon or image representation
+#### device Browsing
+- Grid or list view of connected devices
+- device name, type, and status display
+- device icon or image representation
 - Quick status indicator (online/offline/error)
 
-#### PRODUCTIONice Filtering
-- Filter by PRODUCTIONice type (phone, tablet, laptop, IoT)
+#### device Filtering
+- Filter by device type (phone, tablet, laptop, IoT)
 - Filter by connectivity status
 - Filter by location or network
 - Custom tag-based filtering
-- Search by PRODUCTIONice name
+- Search by device name
 
-#### PRODUCTIONice Monitoring
+#### device Monitoring
 - Real-time status updates
 - Battery/power status
 - Connectivity indicators
 - Performance metrics
 - Health/diagnostics information
 
-#### PRODUCTIONice Configuration
-- Access PRODUCTIONice settings panel
-- Configure PRODUCTIONice permissions
-- Set PRODUCTIONice-specific preferences
-- Manage PRODUCTIONice notifications
-- Update PRODUCTIONice firmware
+#### device Configuration
+- Access device settings panel
+- Configure device permissions
+- Set device-specific preferences
+- Manage device notifications
+- Update device firmware
 
 ### Use Cases
-- Monitor home automation PRODUCTIONices
+- Monitor home automation devices
 - Check smartphone and tablet status
-- Manage IoT sensors and smart PRODUCTIONices
+- Manage IoT sensors and smart devices
 - Track connected car systems
 - Control smart home infrastructure
 
@@ -67,7 +67,7 @@ Interactive AI companion with emotional intelligence, offering chat-based assist
 - **Emotional State**: AI maintains and displays emotions
 - **Context Awareness**: Understands system state and user preferences
 - **Multi-modal Responses**: Handles various conversation topics
-- **System Integration**: Control PRODUCTIONices and features through chat
+- **System Integration**: Control devices and features through chat
 
 ### Accessing AI Features
 - **Routes**: `/friendship` (chat interface), `/qmoi-ai` (hub/launcher)
@@ -95,7 +95,7 @@ Interactive AI companion with emotional intelligence, offering chat-based assist
 #### Chat Features
 - **Quick Action Buttons**:
   - "Check Status" - System health check
-  - "PRODUCTIONice Status" - Connected PRODUCTIONices overview
+  - "device Status" - Connected devices overview
   - "Security Check" - Security status verification
   - "Environment" - Surrounding information
 - **Custom Message Input**: Full keyboard support
@@ -103,7 +103,7 @@ Interactive AI companion with emotional intelligence, offering chat-based assist
 - **Auto-scrolling**: Messages auto-scroll into view
 
 #### System Integration
-- Control PRODUCTIONices through chat
+- Control devices through chat
 - Query system status
 - Receive notifications
 - Get AI recommendations
@@ -111,7 +111,7 @@ Interactive AI companion with emotional intelligence, offering chat-based assist
 
 ### Use Cases
 - Get AI assistance anytime
-- Control PRODUCTIONices via voice/chat
+- Control devices via voice/chat
 - Receive system alerts
 - Get personalized recommendations
 - Learn application features through interaction
@@ -291,7 +291,7 @@ Administrative control center for system management, configuration, and operatio
 #### Admin Dashboard (`/admin`)
 - System overview metrics
 - User management
-- PRODUCTIONice statistics
+- device statistics
 - Activity logs
 - Performance monitoring
 
@@ -399,7 +399,7 @@ System-wide communication tools including calls, messaging, email, and file tran
 - **Large File Support**: Transfer large files
 - **Resumable Transfers**: Resume interrupted transfers
 - **Progress Tracking**: Monitor transfer progress
-- **Cross-PRODUCTIONice**: Transfer between PRODUCTIONices
+- **Cross-device**: Transfer between devices
 - **Bandwidth Control**: Throttle transfer speed
 
 ### Use Cases
@@ -437,7 +437,7 @@ Security features including biometric authentication and personnel verification.
 - **Storage Confirmation**: Verify data saved
 
 ### Use Cases
-- Secure PRODUCTIONice unlocking
+- Secure device unlocking
 - Verify user identity
 - Access restricted areas
 - Approve transactions
@@ -476,13 +476,13 @@ Integrated wallet and financial management capabilities.
 - **Notification System**: Alert distribution
 
 ### Inter-Feature Communication
-- **From PRODUCTIONices**: Trigger alerts and notifications
+- **From devices**: Trigger alerts and notifications
 - **From QCity**: Route incidents to response teams
 - **From QVillage**: Notify of dataset updates
 - **From AI**: Suggest next steps based on context
 
 ### Data Flow
-- Sensors → PRODUCTIONice Management → QCity Dashboard
+- Sensors → device Management → QCity Dashboard
 - User Interaction → AI Context → Friendship Interface
 - Models → QVillage → Model Deployment
 - System Health → Admin Dashboard → Alerts
