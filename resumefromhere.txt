@@ -49,6 +49,7 @@ NEXT STEPS (short):
 RECENT ACTIONS:
 - Added `.backups/` and `backups/` to `.gitignore` to reduce scan noise from backup artifacts.
 - Verified that remaining `PRODUCTIONice` / `production_IMPLEMENTED` occurrences are present primarily in `.bak` and `.backups` files (backups preserved).
+- Archived backups to `backup_archives/backups_20260516.tar.gz` and removed original `.bak`/`.backups` files to reduce repo noise.
 
 RESUME POINT (this file):
 - Next immediate action: perform automated replacements in live `app/api` files to remove remaining placeholders, create PR with changes, and run CI for verification. I will proceed to patch the live `app/api` markers now unless you instruct otherwise.
