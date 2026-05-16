@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 export type UserRole = "master" | "sister" | "user" | "guest";
 
@@ -83,10 +83,9 @@ export function useAuth() {
   }));
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
+  const loadUser = useCallback(async () => {
     if (typeof window === "undefined") return;
 
-    const controller = new AbortController();
     const queryRole = readRoleFromUrl();
     const storedRole = window.localStorage.getItem("qmoi_user_role") as UserRole | null;
     const storedName = window.localStorage.getItem("qmoi_user_name");
@@ -102,53 +101,78 @@ export function useAuth() {
       accessLevel: profile.accessLevel,
     };
     setUser(fallbackUser);
+    setIsLoading(true);
 
-    async function loadUser() {
-      try {
-        const response = await fetch("/api/auth/me", {
-          cache: "no-store",
-          signal: controller.signal,
-        });
+    try {
+      const response = await fetch("/api/auth/me", {
+        cache: "no-store",
+      });
 
-        if (!response.ok) {
-          throw new Error(`Auth fetch failed with status ${response.status}`);
-        }
-
-        const data = await response.json();
-        if (data?.success && data.user) {
-          const serverUser = data.user;
-          const resolvedRole = (serverUser.role as UserRole) || profile.role;
-          const serverProfile = roleProfiles[resolvedRole] || roleProfiles.guest;
-          const displayName =
-            serverUser.fullName || serverUser.username || serverUser.email || serverProfile.displayName;
-          const permissions =
-            Array.isArray(serverUser.permissions) && serverUser.permissions.length > 0
-              ? serverUser.permissions
-              : serverProfile.permissions;
-
-          const updatedUser: QmoiUser = {
-            id: serverUser.id || id,
-            displayName,
-            role: resolvedRole,
-            permissions,
-            accessLevel: serverUser.accessLevel ?? serverProfile.accessLevel,
-          };
-
-          setUser(updatedUser);
-          window.localStorage.setItem("qmoi_user_role", updatedUser.role);
-          window.localStorage.setItem("qmoi_user_id", updatedUser.id);
-          window.localStorage.setItem("qmoi_user_name", updatedUser.displayName);
-        }
-      } catch (_error) {
-        // Use fallback local profile when auth service is unavailable
-      } finally {
-        setIsLoading(false);
+      if (!response.ok) {
+        throw new Error(`Auth fetch failed with status ${response.status}`);
       }
+
+      const data = await response.json();
+      if (data?.success && data.user) {
+        const serverUser = data.user;
+        const resolvedRole = (serverUser.role as UserRole) || profile.role;
+        const serverProfile = roleProfiles[resolvedRole] || roleProfiles.guest;
+        const displayName =
+          serverUser.fullName || serverUser.username || serverUser.email || serverProfile.displayName;
+        const permissions =
+          Array.isArray(serverUser.permissions) && serverUser.permissions.length > 0
+            ? serverUser.permissions
+            : serverProfile.permissions;
+
+        const updatedUser: QmoiUser = {
+          id: serverUser.id || id,
+          displayName,
+          role: resolvedRole,
+          permissions,
+          accessLevel: serverUser.accessLevel ?? serverProfile.accessLevel,
+        };
+
+        setUser(updatedUser);
+        window.localStorage.setItem("qmoi_user_role", updatedUser.role);
+        window.localStorage.setItem("qmoi_user_id", updatedUser.id);
+        window.localStorage.setItem("qmoi_user_name", updatedUser.displayName);
+      }
+    } catch (_error) {
+      // Use fallback local profile when auth service is unavailable
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadUser();
+  }, [loadUser]);
+
+  const refreshUser = useCallback(async () => {
+    await loadUser();
+  }, [loadUser]);
+
+  const logout = useCallback(async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+    } catch (_error) {
+      // Ignore logout errors
     }
 
-    loadUser();
+    window.localStorage.removeItem("qmoi_user_role");
+    window.localStorage.removeItem("qmoi_user_id");
+    window.localStorage.removeItem("qmoi_user_name");
 
-    return () => controller.abort();
+    const profile = roleProfiles.guest;
+    const fallbackUser: QmoiUser = {
+      id: `qmoi-guest-${Date.now()}`,
+      displayName: profile.displayName,
+      role: profile.role,
+      permissions: profile.permissions,
+      accessLevel: profile.accessLevel,
+    };
+    setUser(fallbackUser);
+    setIsLoading(false);
   }, []);
 
   const hasAccess = useMemo(
@@ -179,5 +203,7 @@ export function useAuth() {
     isLoading,
     hasAccess,
     login,
+    refreshUser,
+    logout,
   };
 }

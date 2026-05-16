@@ -148,6 +148,16 @@ docker-compose -f docker-compose.yml up -d app nginx
 "$BROWSER" http://localhost/qmoi-ai
 ```
 
+- Static server fallback inside a restricted devcontainer or when docker is unavailable:
+
+```bash
+cd /workspaces/qmoi-enhanced
+python3 -m http.server 8000 --bind 0.0.0.0
+# Open the QMOI AI launcher at: http://localhost:8000/qmoi-ai.html
+# Or open the PWA shell directly at: http://localhost:8000/pwa_apps/qmoi-ai/index.html
+"$BROWSER" http://localhost:8000/qmoi-ai.html
+```
+
 - Troubleshooting: If `npm` returns `command not found` inside the container, either install Node.js inside the container or run the commands on the host. This repository's automated setup script (`scripts/setup-production.sh`) assumes Node.js and npm are available on the machine where it runs.
 
 **Note:** The application now requires database connectivity and proper environment variables for authentication to function.

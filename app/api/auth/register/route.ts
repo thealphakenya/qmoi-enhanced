@@ -138,7 +138,7 @@ export async function POST(req: NextRequest) {
       } as any,
     });
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       success: true,
       message: "Account created successfully",
       user: {
@@ -158,6 +158,26 @@ export async function POST(req: NextRequest) {
       },
       timestamp: new Date().toISOString()
     }, { status: 201 });
+
+    response.cookies.set('accessToken', tokens.accessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 60 * 60,
+      path: '/',
+    });
+
+    if (tokens.refreshToken) {
+      response.cookies.set('refreshToken', tokens.refreshToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict',
+        maxAge: 7 * 24 * 60 * 60,
+        path: '/',
+      });
+    }
+
+    return response;
 
   } catch (error) {
     logApiError('POST', '/api/auth/register', error as Error, {

@@ -1,22 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../lib/db/prisma";
 import { authService } from "../../../lib/auth/service";
+import { logger } from "../../../lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 export async function GET(req: NextRequest) {
   try {
-    // Get user from auth token
+    // Get user from auth token or secure cookie
     const authHeader = req.headers.get('authorization');
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    const token = authHeader?.startsWith('Bearer ')
+      ? authHeader.substring(7)
+      : req.cookies.get('accessToken')?.value;
+
+    if (!token) {
       return NextResponse.json(
         { success: false, error: "Authentication required" },
         { status: 401 }
       );
     }
 
-    const token = authHeader.substring(7);
     const decoded = authService.decodeToken(token);
 
     if (!decoded) {
@@ -178,16 +182,19 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { action, ...updateData } = body;
 
-    // Get user from auth token
+    // Get user from auth token or secure cookie
     const authHeader = req.headers.get('authorization');
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    const token = authHeader?.startsWith('Bearer ')
+      ? authHeader.substring(7)
+      : req.cookies.get('accessToken')?.value;
+
+    if (!token) {
       return NextResponse.json(
         { success: false, error: "Authentication required" },
         { status: 401 }
       );
     }
 
-    const token = authHeader.substring(7);
     const decoded = authService.decodeToken(token);
 
     if (!decoded) {

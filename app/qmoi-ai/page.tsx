@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useCallback } from 'react';
 import Link from "next/link";
+import { useAuth } from "../hooks/useAuth";
 import AdminDashboard from "../components/AdminDashboard";
 import ChatMessaging from "../components/ChatMessaging";
 import QMOIAutoFixDashboard from "../components/QMOIAutoFixDashboard";
@@ -15,6 +16,7 @@ import SponsoredUsersManager from "../components/SponsoredUsersManager";
 import UserProfile from "../components/user/UserProfile";
 import WalletList from "../components/wallet/WalletList";
 import LoginForm from "../components/auth/LoginForm";
+import RegisterForm from "../components/auth/RegisterForm";
 import QI from "../components/QI";
 import QIStateWindow from "../components/QIStateWindow";
 import NotificationCenter from "../components/NotificationCenter";
@@ -53,8 +55,7 @@ export default function QMoiAIPage() {
   const [chatHistory, setChatHistory] = useState([]);
   const [isChatLoading, setIsChatLoading] = useState(false);
   const [statusInfo, setStatusInfo] = useState(fallbackStatus);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
+  const { user, isAuthenticated, isLoading, refreshUser, logout } = useAuth();
 
   useEffect(() => {
     let active = true;
@@ -101,14 +102,12 @@ export default function QMoiAIPage() {
       }
     : fallbackStatus;
 
-  const handleLogin = (userData) => {
-    setUser(userData);
-    setIsLoggedIn(true);
+  const handleLogin = async () => {
+    await refreshUser();
   };
 
-  const handleLogout = () => {
-    setUser(null);
-    setIsLoggedIn(false);
+  const handleLogout = async () => {
+    await logout();
   };
 
   const handleChatSend = async () => {
@@ -128,7 +127,7 @@ export default function QMoiAIPage() {
       // Store conversation in QMOI memory
       const memoryPayload = {
         action: 'store_memory',
-        userId: user?.userId || 'anonymous-user',
+        userId: user?.id || user?.userId || 'anonymous-user',
         key: `chat-${Date.now()}`,
         value: input,
         category: 'conversation',
@@ -175,14 +174,29 @@ export default function QMoiAIPage() {
     }
   };
 
-  return (
-    <main className="min-h-screen bg-slate-950 p-8 text-white">
-      {!isLoggedIn ? (
+  if (isLoading) {
+    return (
+      <main className="min-h-screen bg-slate-950 p-8 text-white">
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="text-slate-300">Loading authentication...</div>
+        </div>
+      </main>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <main className="min-h-screen bg-slate-950 p-8 text-white">
         <div className="flex items-center justify-center min-h-screen">
           <LoginForm onLogin={handleLogin} />
         </div>
-      ) : (
-        <div className="max-w-6xl mx-auto space-y-10">
+      </main>
+    );
+  }
+
+  return (
+    <main className="min-h-screen bg-slate-950 p-8 text-white">
+      <div className="max-w-6xl mx-auto space-y-10">
           <section className="rounded-3xl bg-slate-900 p-8 border border-slate-700 shadow-xl">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
               <div>
@@ -503,7 +517,6 @@ export default function QMoiAIPage() {
           )}
         </section>
       </div>
-      )}
     </main>
   );
 }
