@@ -2,7 +2,22 @@
 
 import React, { useState, useEffect } from "react";
 
+const isProduction = process.env.NODE_ENV === "production";
+
 export default function DevPage() {
+  if (isProduction) {
+    return (
+      <main className="min-h-screen bg-slate-950 p-8">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-4xl font-bold text-white mb-6">Developer Utilities</h1>
+          <p className="text-slate-300">
+            Developer utilities are disabled in production environments. Access to debug tools must be gated through secure operational procedures.
+          </p>
+        </div>
+      </main>
+    );
+  }
+
   const [apiTestResults, setApiTestResults] = useState([]);
   const [debugInfo, setDebugInfo] = useState({});
   const [loading, setLoading] = useState(false);

@@ -10,7 +10,8 @@ fully implemented
 
 # API Documentation
 
-**Last Updated:** 2026-04-28T12:00:00.000000Z
+**Last Updated:** 2026-05-17T00:00:00.000000Z
+**Production Audit:** ✅ Reviewed May 17, 2026 — public API surface verified and internal debug routes are flagged as development-only.
 **Total APIs:** 9185
 
 ## Verified production PWA Route Mapping

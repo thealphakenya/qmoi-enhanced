@@ -557,13 +557,26 @@ async function getDataRetentionPolicies(): Promise<Array<{
   unit: string;
   autoDelete: boolean;
 }>> {
-  // Return sample retention policies
-  return [
-    { type: 'audit_logs', retentionPeriod: 365, unit: 'days', autoDelete: true },
-    { type: 'session_data', retentionPeriod: 30, unit: 'days', autoDelete: true },
-    { type: 'system_logs', retentionPeriod: 90, unit: 'days', autoDelete: true },
-    { type: 'user_data', retentionPeriod: 2555, unit: 'days', autoDelete: false },
-  ];
+  try {
+    const policies = await prisma.systemMetric.findMany({
+      where: { metricType: 'data_retention_policy' },
+      orderBy: { createdAt: 'desc' },
+      take: 50,
+    });
+
+    if (!policies || policies.length === 0) {
+      return [];
+    }
+
+    return policies.map((policy) => ({
+      type: policy.metricName || 'unknown',
+      retentionPeriod: Number(policy.metricValue) || 0,
+      unit: 'days',
+      autoDelete: policy.active === true,
+    }));
+  } catch {
+    return [];
+  }
 }
 
 async function testWipeSystem(): Promise<{

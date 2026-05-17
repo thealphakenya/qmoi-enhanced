@@ -125,6 +125,10 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
   }, [maxWorkers]);
 
   const addSampleTasks = () => {
+    if (process.env.NODE_ENV === "production") {
+      return;
+    }
+
     const sampleTasks: Task[] = [
       {
         id: "task-1",
@@ -175,10 +179,9 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
   const processTasks = useCallback(() => {
     setTasks((currentTasks) => {
       const updatedTasks = [...currentTasks];
-      production-ready and operational
+      const idleWorkers = workers.filter((w) => w.status === "idle");
 
-      production-ready and operational
-      production-ready and operational
+      for (const worker of idleWorkers) {
         const pendingTask = updatedTasks.find(
           (task) =>
             task.status === "pending" &&
@@ -190,37 +193,34 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
               )),
         );
 
-        if (pendingTask) {
-          // Start task
-          pendingTask.status = "running";
-          pendingTask.startTime = new Date();
-          pendingTask.workerId = worker.id;
-
-          // Update worker status
-          setWorkers((currentWorkers) =>
-            currentWorkers.map((w) =>
-              w.id === worker.id
-                ? { ...w, status: "busy", currentTask: pendingTask.id }
-                : w,
-            ),
-          );
+        if (!pendingTask) {
+          break;
         }
-      });
+
+        pendingTask.status = "running";
+        pendingTask.startTime = new Date();
+        pendingTask.workerId = worker.id;
+
+        setWorkers((currentWorkers) =>
+          currentWorkers.map((w) =>
+            w.id === worker.id
+              ? { ...w, status: "busy", currentTask: pendingTask.id }
+              : w,
+          ),
+        );
+      }
 
       // Process running tasks
       updatedTasks.forEach((task) => {
         if (task.status === "running") {
-          
           task.progress = Math.min(100, task.progress + Math.random() * 15);
 
           if (task.progress >= 100) {
-            // complete task
             task.status = "completed";
             task.endTime = new Date();
             task.duration =
               task.endTime.getTime() - (task.startTime?.getTime() || 0);
 
-            // Update worker
             setWorkers((currentWorkers) =>
               currentWorkers.map((w) =>
                 w.id === task.workerId

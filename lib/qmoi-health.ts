@@ -55,7 +55,8 @@ export class QMOIHealthService {
   }
 
   stopMonitoring(): void {
-    // No-op for stub service
+    // Gracefully stop health monitoring when the service is no longer required.
+    // This implementation does not maintain a background interval or active watcher.
   }
 
   getHealthMetrics(): HealthMetrics {

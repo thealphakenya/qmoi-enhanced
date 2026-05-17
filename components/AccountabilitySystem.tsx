@@ -156,18 +156,25 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
         setFilteredLogs(parsedLogs);
         calculateMetrics(parsedLogs);
       } else {
-        // Fallback to data logs if API fails
-        generateSampleLogs();
+        // Fallback to production-safe empty log set if API data is not available
+        await generateSampleLogs();
       }
     } catch (error) {
       (globalThis.console as any)?.error?.("Failed to load audit logs:", error);
-      generateSampleLogs();
+      await generateSampleLogs();
     }
   }, []);
 
   const generateSampleLogs = async () => {
-    const sampleLogs: Omit<AuditLog, "id" | "timestamp">[] = [];
-    const actions = [
+    setAuditLogs([]);
+    setFilteredLogs([]);
+    calculateMetrics([]);
+    toast({
+      title: "Audit logs unavailable",
+      description: "Real audit log data could not be loaded. No sample data is used in production.",
+      variant: "warning",
+    });
+  };
       "login",
       "logout",
       "file_access",
@@ -241,7 +248,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
       }
     }
 
-    // Reload logs after generating samples
+    // Reload logs after audit changes
     setTimeout(() => loadAuditLogs(), 1000);
   };
 

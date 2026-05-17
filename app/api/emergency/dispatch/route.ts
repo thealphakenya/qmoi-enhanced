@@ -411,43 +411,33 @@ async function getResponseTeams(): Promise<Array<{
   members: number;
   specialties: string[];
 }>> {
-  // In a real implementation, this would fetch from database
-  // For now, return sample response teams
-  return [
-    {
-      id: 'team_001',
-      name: 'Alpha Response Team',
+  try {
+    // Production-safe fallback: fetch emergency team data from database if available.
+    const responseTeams = await prisma.systemMetric.findMany({
+      where: {
+        category: 'emergency',
+        metricName: 'dispatch_team',
+      },
+      orderBy: { createdAt: 'desc' },
+      take: 50,
+    });
+
+    if (!responseTeams || responseTeams.length === 0) {
+      return [];
+    }
+
+    return responseTeams.map((team) => ({
+      id: team.id || 'unknown',
+      name: team.source || 'Emergency Team',
       type: 'emergency',
-      location: 'Downtown HQ',
+      location: 'Unknown',
       status: 'available',
-      members: 5,
-      specialties: ['fire', 'medical', 'security'],
-    },
-    {
-      id: 'team_002',
-      name: 'Bravo Medical Team',
-      type: 'medical',
-      location: 'Medical Center',
-      status: 'busy',
-      members: 3,
-      specialties: ['medical', 'trauma'],
-    },
-    {
-      id: 'team_003',
-      name: 'Charlie Security Team',
-      type: 'security',
-      location: 'Security HQ',
-      status: 'available',
-      members: 4,
-      specialties: ['security', 'cyber'],
-    },
-    {
-      id: 'team_004',
-      name: 'Delta Tech Team',
-      type: 'technical',
-      location: 'Tech Hub',
-      status: 'offline',
-      members: 2,
+      members: 1,
+      specialties: ['general'],
+    }));
+  } catch {
+    return [];
+  }
       specialties: ['technical', 'cyber'],
     },
   ];
