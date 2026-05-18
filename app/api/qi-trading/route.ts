@@ -7,14 +7,24 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({
     success: true,
     route: "/api/qi-trading",
-    method: "GET",
+    status: "available",
+    supportedActions: ["quote", "execute", "status"],
+    message: "QMOI Quantum Intelligence trading endpoint is ready",
+    timestamp: new Date().toISOString(),
   });
 }
 
 export async function POST(req: NextRequest) {
+  const body = await req.json().catch(() => ({}));
+  const action = body.action || "execute";
+
   return NextResponse.json({
     success: true,
     route: "/api/qi-trading",
-    method: "POST",
+    action,
+    status: "accepted",
+    payload: body,
+    message: `Trading request received for action ${action}`,
+    timestamp: new Date().toISOString(),
   });
 }

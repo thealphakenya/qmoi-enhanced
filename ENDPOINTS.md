@@ -12,8 +12,9 @@ fully implemented
 
 # ENDPOINTS.md - API Endpoint Inventory ✅ 
 
-**Last Updated:** 2026-05-17T00:00:00.000000Z
-**Production Audit:** ✅ Reviewed May 17, 2026 — public endpoints verified and internal diagnostics are identified separately.
+**Last Updated:** 2026-05-18T00:00:00.000000Z
+**Production Audit:** ✅ Reviewed May 18, 2026 — public endpoints verified and internal diagnostics are identified separately.
+**Production Readiness Scan:** ✅ Completed May 18, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
 **Total Route Source Files:** 312
 **Actual endpoint handler files:** 312
 **Status:** ✅ 

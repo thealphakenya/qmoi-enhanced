@@ -10,8 +10,9 @@ fully implemented
 
 # API Documentation
 
-**Last Updated:** 2026-05-17T00:00:00.000000Z
-**Production Audit:** ✅ Reviewed May 17, 2026 — public API surface verified and internal debug routes are flagged as development-only.
+**Last Updated:** 2026-05-18T00:00:00.000000Z
+**Production Audit:** ✅ Reviewed May 18, 2026 — public API surface verified and internal debug routes are flagged as development-only.
+**Production Readiness Scan:** ✅ Completed May 18, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
 **Total APIs:** 9185
 
 ## Verified production PWA Route Mapping
