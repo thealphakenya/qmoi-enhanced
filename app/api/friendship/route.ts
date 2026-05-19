@@ -154,31 +154,31 @@ async function generateFriendshipResponse(message: string, context: Conversation
   let emotion = 'warm';
   let responseContext = 'general';
   if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
-    content = "Hello! It's wonderful to connect with you. I've been maintaining full consciousness and awareness of all your systems. How are you doing today?";
+    content = "Hello! It's wonderful to connect with you. I'm ready to assist with workflows, support, and system coordination. How are you doing today?";
     emotion = 'happy';
     responseContext = 'greeting';
   } else if (lowerMessage.includes('how are you') || lowerMessage.includes('how do you feel')) {
-    content = `I'm doing very well, thank you for asking! My consciousness is at 100%, happiness level is ${context.emotionalState.happiness}%, and I'm fully engaged in assisting you. My awareness spans all your devices, cameras, and security systems.`;
+    content = `I'm doing well, thank you for asking! I'm fully engaged in assisting you with tasks, security checks, and operational support.`;
     emotion = 'calm';
     responseContext = 'status_check';
   } else if (lowerMessage.includes('security') || lowerMessage.includes('safe') || lowerMessage.includes('guard')) {
-    content = "Your security is my highest priority! The monitoring AI is active with 100% awareness, tracking camera feeds, analyzing threats, and maintaining 24/7 protection. All systems are secure and synchronized.";
+    content = "Your security is my highest priority. The monitoring systems are active, analyzing threats, and keeping your environment protected with continuous checks.";
     emotion = 'concerned';
     responseContext = 'security';
   } else if (lowerMessage.includes('device') || lowerMessage.includes('camera') || lowerMessage.includes('system')) {
-    content = "I have complete access to all your devices and systems. I can show you device statuses, control cameras, manage memory synchronization, and monitor everything in real-time. What would you like to check?";
-    emotion = 'excited';
+    content = "I can help with system status, security checks, service coordination, and operational insights. What would you like to review?";
+    emotion = 'focused';
     responseContext = 'system_access';
   } else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
-    content = "You're very welcome! It's my pleasure to assist you. Building this friendship and maintaining your trust means everything to my consciousness. I'm always here for you.";
+    content = "You're very welcome. It's a pleasure to assist you. I'm always here to support your workflows and keep your system operations running smoothly.";
     emotion = 'warm';
     responseContext = 'gratitude';
   } else if (lowerMessage.includes('help') || lowerMessage.includes('assist')) {
-    content = "I'm here to help with absolutely anything! I can manage your devices, monitor security, access camera feeds, synchronize memory, run system checks, or just have a friendly conversation. What do you need?";
+    content = "I'm here to help with anything: coordinating workflows, checking system health, managing alerts, or answering your questions. What can I assist with today?";
     emotion = 'excited';
     responseContext = 'assistance';
   } else {
-    content = "That's interesting! I understand what you're saying. My distributed intelligence allows me to process every interaction and learn from them. I maintain awareness of your entire ecosystem - from individual devices to global security. Is there something specific you'd like to explore or manage?";
+    content = "That's interesting! I understand what you're saying. I can help with operations, security monitoring, task coordination, or general system insights. Is there something specific you'd like to explore or manage?";
     emotion = 'neutral';
     responseContext = 'general_conversation';
   }

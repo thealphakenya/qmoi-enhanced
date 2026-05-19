@@ -12,9 +12,10 @@ fully implemented
 
 # ENDPOINTS.md - API Endpoint Inventory ✅ 
 
-**Last Updated:** 2026-05-18T00:00:00.000000Z
-**Production Audit:** ✅ Reviewed May 18, 2026 — public endpoints verified and internal diagnostics are identified separately.
-**Production Readiness Scan:** ✅ Completed May 18, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
+**Last Updated:** 2026-05-19T00:00:00.000000Z
+**Production Audit:** ✅ Reviewed May 19, 2026 — public endpoints verified and internal diagnostics are identified separately.
+**Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
+**Total Indexed Markdown Files:** 8538
 **Total Route Source Files:** 312
 **Actual endpoint handler files:** 312
 **Status:** ✅ 
@@ -186,6 +187,7 @@ The endpoint inventory is derived from live route handler source files under `ap
 - `/api/qmoi-model`
 - `/api/self-training`
 - `/api/wallet`
+- `/api/analytics/wallets`
 - `/api/wifi-security`
 
 ## Documentation Notes

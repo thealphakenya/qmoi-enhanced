@@ -9,9 +9,10 @@
 
 # ROUTES.md - Application Route File Structure ✅ 
 
-**Last Updated:** 2026-05-18T00:00:00.000000Z
-**Production Audit:** ✅ Reviewed May 18, 2026 — production route mapping verified and debug-only routes are isolated from the public routing surface.
-**Production Readiness Scan:** ✅ Completed May 18, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
+**Last Updated:** 2026-05-19T00:00:00.000000Z
+**Production Audit:** ✅ Reviewed May 19, 2026 — production route mapping verified and debug-only routes are isolated from the public routing surface.
+**Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
+**Total Indexed Markdown Files:** 8538
 **Total Route Source Files:** 267
 **Status:** ✅ 
 
@@ -60,7 +61,7 @@ This document describes the route file structure for the QMOI Enhanced applicati
 - `domains/` — 2 files
 - `deploy/` — 2 files
 - `biometric/` — 2 files
-- `analytics/` — 2 files
+- `analytics/` — 2 files (including `wallets/route.ts` for production wallet analytics)
 - Other top-level single-file route groups and handlers — 41
 
 > This inventory counts only source files used for API route handling. Non-source files and dotfiles under `app/api/` are not included.

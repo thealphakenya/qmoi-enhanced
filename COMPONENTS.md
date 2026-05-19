@@ -11,7 +11,8 @@
 
 **Last Updated:** 2026-05-18T00:00:00.000000Z
 **Production Audit:** ✅ Reviewed May 18, 2026 — component inventory confirmed, shared UI primitives and app-specific components are production-ready.
-**Production Readiness Scan:** ✅ Completed May 18, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
+**Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
+**Total Indexed Markdown Files:** 8538
 **Root component files**: 197
 **App-specific component files**: 53
 **Total UI component sources**: 421+ files (including root, app-level, and shared primitives)
@@ -74,7 +75,7 @@ These components are used across QMOI AI, QMOI Space, QCity, and QVillage:
 - **QiSpaces.tsx** (qmoi space) - Spatial workspace interfaces
 - **LcSpaces.tsx** (qmoi space) - Learning/collaboration community spaces
 - **FloatingPreviewWindow.tsx** (qmoi space) - Floating production panels
-- **WalletPanel.tsx** (qmoi space) - Advanced wallet and finance controls
+- **WalletPanel.tsx** (qmoi space) - Advanced wallet analytics, live balances, and finance controls
 - **CollaborationHub.tsx** (qmoi space) - Team collaboration tools
 - **IntegrationManager.tsx** (qmoi space) - Third-party integrations
 - **WorkflowAutomationEngine.tsx** (qmoi space) - Workflow automation and orchestration
@@ -329,6 +330,7 @@ Components integrate with the following API endpoints for full functionality:
 
 ### Financial & Commerce APIs
 - `/api/wallets` - Wallet management
+- `/api/analytics/wallets` - Wallet analytics and production balance reporting
 - `/api/payments` - Payment processing
 - `/api/transactions` - Transaction tracking
 - `/api/trading` - Trading operations

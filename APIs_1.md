@@ -1,7 +1,8 @@
 # API Documentation
-Generated: 2026-05-18T00:00:00.000000Z
-**Production Audit:** ✅ Reviewed May 18, 2026 — internal developer-only API routes are excluded from the documented production surface.
-**Production Readiness Scan:** ✅ Completed May 18, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
+Generated: 2026-05-19T00:00:00.000000Z
+**Production Audit:** ✅ Reviewed May 19, 2026 — internal developer-only API routes are excluded from the documented production surface.
+**Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
+**Total Indexed Markdown Files:** 8538
 Total API Route Handlers: 249
 Route source files in `app/api/`: 277 (249 active endpoint handlers, 12 top-level route files, 237 nested route directories)
 

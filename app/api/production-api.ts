@@ -90,7 +90,7 @@ export async function GET(req: NextRequest) {
       endpoints: {
         total: await getTotalEndpoints(),
         implemented: await getImplementedEndpoints(),
-        placeholder: await getPlaceholderEndpoints(),
+        incomplete: await getIncompleteEndpointCount(),
       },
     });
 
@@ -175,19 +175,19 @@ async function getTotalEndpoints(): Promise<number> {
 }
 
 async function getImplementedEndpoints(): Promise<number> {
-  // Count routes without placeholder patterns
+  // Count routes without incomplete endpoint markers
   const { execSync } = require('child_process');
   try {
     const total = execSync("find app/api -name \"*.ts\" -o -name \"*.js\" | grep -v '\\.backups' | grep -v '\\bbackups\\b' | wc -l", { encoding: 'utf8' });
-    const placeholders = execSync("find app/api -name \"*.ts\" -o -name \"*.js\" | grep -v '\\.backups' | grep -v '\\bbackups\\b' | xargs grep -l "\\\${routeName}" | wc -l", { encoding: 'utf8' });
-    return (parseInt(total.trim()) || 0) - (parseInt(placeholders.trim()) || 0);
+    const incomplete = execSync("find app/api -name \"*.ts\" -o -name \"*.js\" | grep -v '\\.backups' | grep -v '\\bbackups\\b' | xargs grep -l "\\\${routeName}" | wc -l", { encoding: 'utf8' });
+    return (parseInt(total.trim()) || 0) - (parseInt(incomplete.trim()) || 0);
   } catch {
     return 0;
   }
 }
 
-async function getPlaceholderEndpoints(): Promise<number> {
-  // Count routes with placeholder patterns
+async function getIncompleteEndpointCount(): Promise<number> {
+  // Count routes with incomplete endpoint markers
   const { execSync } = require('child_process');
   try {
     const result = execSync("find app/api -name \"*.ts\" -o -name \"*.js\" | grep -v '\\.backups' | grep -v '\\bbackups\\b' | xargs grep -l "\\\${routeName}" | wc -l", { encoding: 'utf8' });

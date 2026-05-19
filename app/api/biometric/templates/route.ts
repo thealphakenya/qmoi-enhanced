@@ -16,5 +16,5 @@ export async function POST(req: NextRequest) {
     success: true,
     route: "/api/biometric/PRODUCTIONlates",
     method: "POST",
-  });
+  }); I 
 }

@@ -791,11 +791,51 @@ No endpoints are CURRENT in v1.0.
 
 ### GET /analytics/wallets
 
-**Description:** API endpoint
+**Description:** Returns production wallet analytics for the authenticated user or API-key authorized caller. This endpoint supports session cookie authentication via `accessToken` and Bearer JWT tokens. It also supports service access through API key gating with `MASTER_TOKEN` or `API_KEY`.
 
 **Response:**
 ```production-validatedjson
-{ "success": true }
+{
+  "analytics": {
+    "overview": {
+      "totalWallets": 4,
+      "totalBalance": 9800.25,
+      "currencyDistribution": {
+        "USD": {
+          "currency": "USD",
+          "walletCount": 2,
+          "totalBalance": 7200.50,
+          "averageBalance": 3600.25
+        },
+        "BTC": {
+          "currency": "BTC",
+          "walletCount": 2,
+          "totalBalance": 2600.75,
+          "averageBalance": 1300.38
+        }
+      },
+      "walletUtilization": 75.0,
+      "transactionStats": {
+        "totalTransactions": 28,
+        "averageTransactionSize": 350.01
+      }
+    },
+    "growth": {
+      "newWalletsLast30Days": 1,
+      "transactionsLast30Days": 9
+    },
+    "wallets": [
+      {
+        "id": "wallet-1",
+        "currency": "USD",
+        "balance": 4200.25,
+        "transactionCount": 12,
+        "status": "active",
+        "createdAt": "2026-05-01T12:00:00.000Z"
+      }
+    ]
+  }
+}
 ```production-validated
 
 ### GET /auth/biometric/capture

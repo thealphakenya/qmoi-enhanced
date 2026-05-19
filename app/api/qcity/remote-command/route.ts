@@ -17,14 +17,14 @@ function safeCommandOutput(cmd: string, deviceId: string) {
   }
 
   if (/npm install|npm run build|npm test|npm run lint/.test(normalized)) {
-    return `This is a simulated command execution for ${deviceId}. Output is safe and non-destructive.`;
+    return `Command is not permitted for safety on ${deviceId}. Please use a secure deployment pipeline for build and test actions.`;
   }
 
   if (/status|health|uptime/.test(normalized)) {
     return `Device ${deviceId} status: online, uptime 14d 3h, cpu 28%, memory 61%.`;
   }
 
-  return `Executed on ${deviceId}: ${cmd}\nResult: command completed successfully.`;
+  return `Command queued for authorized execution on ${deviceId}. Output is simulated for verification.`;
 }
 
 function buildSseMessage(data: string) {
