@@ -49,7 +49,7 @@ export default function CommunicationHub() {
               <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-xs font-semibold">MB</div>
               <div className="flex-1">
                 <div className="text-slate-300 text-sm">#qcity-updates</div>
-                <div className="text-slate-400 text-xs">Mike: New QCity features deployed to staging</div>
+                <div className="text-slate-400 text-xs">Mike: New QCity features deployed to production</div>
               </div>
               <div className="text-slate-500 text-xs">1h</div>
             </div>

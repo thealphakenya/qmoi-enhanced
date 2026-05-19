@@ -192,7 +192,7 @@ export default function QMoiSpacePage() {
 
         {/* Model Deployment Interface */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700">
-          <h2 className="text-2xl font-semibold mb-4">AI Model Staging</h2>
+          <h2 className="text-2xl font-semibold mb-4">AI Model Deployment</h2>
           <p className="text-slate-400 mb-4">Collaborative AI model development with production sync and inference.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-slate-800 p-4 rounded-lg">

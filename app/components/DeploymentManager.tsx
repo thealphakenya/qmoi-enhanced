@@ -52,7 +52,7 @@ export default function DeploymentManager() {
                 <span className="text-white text-xs font-semibold">○</span>
               </div>
               <div className="flex-1">
-                <div className="text-slate-300 text-sm">Deploy to Staging</div>
+                <div className="text-slate-300 text-sm">Release rollout</div>
                 <div className="text-slate-400 text-xs">COMPLETE...</div>
               </div>
             </div>

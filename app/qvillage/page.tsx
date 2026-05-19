@@ -37,13 +37,13 @@ const defaultModels = [
   {
     id: "MDL-311",
     name: "Image Recognition Enterprise",
-    status: "Staging",
+    status: "Ready",
     pricing: "$19.99/month",
   },
   {
     id: "MDL-415",
     name: "Predictive Analytics Engine",
-    status: "Trial",
+    status: "Available",
     pricing: "$7.99/use",
   },
 ];
@@ -129,7 +129,7 @@ export default function QVillagePage() {
             <h2 className="text-2xl font-semibold mb-3">Model Deployment</h2>
             <p className="text-slate-400 mb-4">Collaborative AI model development with production sync and inference.</p>
             <ul className="space-y-3 text-slate-300">
-              <li>• Model discovery and staging</li>
+              <li>• Model discovery and deployment</li>
               <li>• Continuous training pipelines</li>
               <li>• Community research notebooks</li>
               <li>• Deployment history & status</li>

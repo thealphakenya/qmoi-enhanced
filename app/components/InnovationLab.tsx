@@ -22,7 +22,7 @@ export default function InnovationLab() {
             </div>
             <div>
               <div className="text-lg font-bold text-blue-400">3</div>
-              <div className="text-xs text-slate-400">In Development</div>
+              <div className="text-xs text-slate-400">In Progress</div>
             </div>
           </div>
         </div>
@@ -34,7 +34,7 @@ export default function InnovationLab() {
                 <div className="text-slate-300 text-sm">Quantum AI Processor</div>
                 <div className="text-slate-400 text-xs">Next-gen AI processing • 85% complete</div>
               </div>
-              <div className="text-blue-400 text-xs">Beta</div>
+              <div className="text-green-400 text-xs">Available</div>
             </div>
             <div className="flex items-center justify-between p-2 bg-slate-700 rounded">
               <div className="flex-1">

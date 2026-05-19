@@ -50,7 +50,7 @@ export async function GET(req: NextRequest) {
       {
         id: "MDL-415",
         name: "Predictive Analytics Engine",
-        status: "trial",
+        status: "available",
         pricing: "$7.99/use",
       },
     ],
