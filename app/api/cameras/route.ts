@@ -136,7 +136,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       data: response
-    });
+    }); 
   } catch (error){
     log.error('Camera control error:', error);
     return NextResponse.json(
