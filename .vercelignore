@@ -1,0 +1,27 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:06:57.474334 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:06.896051 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:02.580771 -->
+# Ignore unnecessary files for Vercel deployment
+
+node_modules
+.git
+.gitignore
+_.log
+.env
+.env.local
+.env._.local
+coverage
+logs/_.log
+scripts/_.log
+_.backup
+.DS_Store
+**pycache**
+_.pyc
+.venv
+.idea
+.vscode/settings.json
+mobile/node_modules
+mobile/ios
+mobile/android
+.github/workflows
+.circleci

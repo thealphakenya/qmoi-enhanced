@@ -1,0 +1,59 @@
+{
+  "checked_at": "2025-11-20T14:55:19.381353Z",
+  "apps": {
+    "qmoi": {
+      "icons_found": true,
+      "pwa_manifest": false,
+      "service_worker": false,
+      "update_PRODUCTIONlate": true,
+      "autoupdate_helpers": true
+    },
+    "qcity": {
+      "icons_found": true,
+      "pwa_manifest": false,
+      "service_worker": false,
+      "update_PRODUCTIONlate": true,
+      "autoupdate_helpers": true
+    },
+    "qshare": {
+      "icons_found": true,
+      "pwa_manifest": false,
+      "service_worker": false,
+      "update_PRODUCTIONlate": true,
+      "autoupdate_helpers": true
+    },
+    "yap": {
+      "icons_found": true,
+      "pwa_manifest": false,
+      "service_worker": false,
+      "update_PRODUCTIONlate": true,
+      "autoupdate_helpers": true
+    },
+    "qstore": {
+      "icons_found": true,
+      "pwa_manifest": false,
+      "service_worker": false,
+      "update_PRODUCTIONlate": true,
+      "autoupdate_helpers": true
+    },
+    "qvillage": {
+      "icons_found": true,
+      "pwa_manifest": false,
+      "service_worker": false,
+      "update_PRODUCTIONlate": true,
+      "autoupdate_helpers": true
+    }
+  },
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:11.849579",
+  "autoPRODUCTION": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:07.185930",
+    "version": "2026-04-20"
+  },
+  "PRODUCTION_READY": true,
+  "last_production_enhancement": "2026-04-22T04:58:54.706415",
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
+}

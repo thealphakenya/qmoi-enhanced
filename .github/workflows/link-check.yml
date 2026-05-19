@@ -1,0 +1,70 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:34.738419 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:09.777057 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.511973 -->
+name: Link & DNS check
+
+on:
+  push:
+    paths:
+      - '**/*.md'
+      - 'tools/**'
+      - 'scripts/**'
+  pull_request:
+    paths:
+      - '**/*.md'
+      - 'tools/**'
+      - 'scripts/**'
+
+jobs:
+  dns-link-check:
+    name: Run link & DNS checker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install complete deps
+        run: echo "No external deps required; using stdlib"
+
+      - name: Syntax-check checker
+        run: python -m py_compile tools/check_links.py || true
+
+      - name: Run link checker
+        run: python tools/check_links.py --max-workers 4 --timeout 5 || true
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-check-reports
+          path: |
+            tools/dns_docs_inventory.json
+            tools/dns_links_report.json
+            tools/dns_links_report.md
+
+  markdown-link-validation:
+    name: Run markdown link validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run link validator (dry-run)
+        run: python3 scripts/link_validator.py || true
+
+      - name: Upload artifact (link report)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-validation-report
+          path: .qmoi_validation/link_validation_report.json

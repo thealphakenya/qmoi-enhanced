@@ -1,0 +1,4684 @@
+{
+  "timestamp": "2026-05-04T16:38:23.978583",
+  "validation_type": "COMPREHENSIVE_UI_VALIDATION",
+  "components": {
+    "app_components": {
+      "directory": "app/components",
+      "total_components": 13,
+      "valid_components": 13,
+      "components": {
+        "QMOIMasterDashboard": {
+          "path": "app/components/QMOIMasterDashboard.tsx",
+          "name": "QMOIMasterDashboard",
+          "type": "component",
+          "valid": true,
+          "size": 82736,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": false,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "AdminDashboard": {
+          "path": "app/components/AdminDashboard.tsx",
+          "name": "AdminDashboard",
+          "type": "component",
+          "valid": true,
+          "size": 505,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "QMOIAutoSetup": {
+          "path": "app/components/QMOIAutoSetup.tsx",
+          "name": "QMOIAutoSetup",
+          "type": "component",
+          "valid": true,
+          "size": 501,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "SponsoredUsersManager": {
+          "path": "app/components/SponsoredUsersManager.tsx",
+          "name": "SponsoredUsersManager",
+          "type": "component",
+          "valid": true,
+          "size": 503,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "QMOIAutoFixDashboard": {
+          "path": "app/components/QMOIAutoFixDashboard.tsx",
+          "name": "QMOIAutoFixDashboard",
+          "type": "component",
+          "valid": true,
+          "size": 501,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "ClientUISettings": {
+          "path": "app/components/ClientUISettings.tsx",
+          "name": "ClientUISettings",
+          "type": "component",
+          "valid": true,
+          "size": 599,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "AudibleConversation": {
+          "path": "app/components/AudibleConversation.tsx",
+          "name": "AudibleConversation",
+          "type": "component",
+          "valid": true,
+          "size": 543,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "ChatMessaging": {
+          "path": "app/components/ChatMessaging.tsx",
+          "name": "ChatMessaging",
+          "type": "component",
+          "valid": true,
+          "size": 492,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "FileUploadDownload": {
+          "path": "app/components/FileUploadDownload.tsx",
+          "name": "FileUploadDownload",
+          "type": "component",
+          "valid": true,
+          "size": 686,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "VisualEnhancement": {
+          "path": "app/components/VisualEnhancement.tsx",
+          "name": "VisualEnhancement",
+          "type": "component",
+          "valid": true,
+          "size": 659,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "WalletList": {
+          "path": "app/components/wallet/WalletList.tsx",
+          "name": "WalletList",
+          "type": "component",
+          "valid": true,
+          "size": 1374,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "UserProfile": {
+          "path": "app/components/user/UserProfile.tsx",
+          "name": "UserProfile",
+          "type": "component",
+          "valid": true,
+          "size": 601,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "RegisterForm": {
+          "path": "app/components/auth/RegisterForm.tsx",
+          "name": "RegisterForm",
+          "type": "component",
+          "valid": true,
+          "size": 937,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        }
+      },
+      "summary": {
+        "with_exports": 13,
+        "with_types": 3,
+        "PRODUCTION_READY": 0,
+        "issues": 0
+      }
+    },
+    "root_components": {
+      "directory": "components",
+      "total_components": 189,
+      "valid_components": 189,
+      "components": {
+        "MemoryAwareness": {
+          "path": "components/MemoryAwareness.tsx",
+          "name": "MemoryAwareness",
+          "type": "component",
+          "valid": true,
+          "size": 19202,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "FloatingPreviewWindow": {
+          "path": "components/FloatingPreviewWindow.tsx",
+          "name": "FloatingPreviewWindow",
+          "type": "component",
+          "valid": true,
+          "size": 9694,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "CashonTradingPanel": {
+          "path": "components/CashonTradingPanel.tsx",
+          "name": "CashonTradingPanel",
+          "type": "component",
+          "valid": true,
+          "size": 19919,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "FileExplorer": {
+          "path": "components/FileExplorer.tsx",
+          "name": "FileExplorer",
+          "type": "component",
+          "valid": true,
+          "size": 5013,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "AudioVisualizer": {
+          "path": "components/AudioVisualizer.tsx",
+          "name": "AudioVisualizer",
+          "type": "component",
+          "valid": true,
+          "size": 5460,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "WrappedComponent": {
+          "path": "components/WrappedComponent.tsx",
+          "name": "WrappedComponent",
+          "type": "component",
+          "valid": true,
+          "size": 1626,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "FarmBusinessManager": {
+          "path": "components/FarmBusinessManager.tsx",
+          "name": "FarmBusinessManager",
+          "type": "component",
+          "valid": true,
+          "size": 2650,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "DeploymentStatusDashboard": {
+          "path": "components/DeploymentStatusDashboard.tsx",
+          "name": "DeploymentStatusDashboard",
+          "type": "component",
+          "valid": true,
+          "size": 8155,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "WalletPanel": {
+          "path": "components/WalletPanel.tsx",
+          "name": "WalletPanel",
+          "type": "component",
+          "valid": true,
+          "size": 600358,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "theme-provider": {
+          "path": "components/theme-provider.tsx",
+          "name": "theme-provider",
+          "type": "component",
+          "valid": true,
+          "size": 667,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": false,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "NotificationPanel": {
+          "path": "components/NotificationPanel.tsx",
+          "name": "NotificationPanel",
+          "type": "component",
+          "valid": true,
+          "size": 2692,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "AskQMoi": {
+          "path": "components/AskQMoi.tsx",
+          "name": "AskQMoi",
+          "type": "component",
+          "valid": true,
+          "size": 5372,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "DownloadAppButton": {
+          "path": "components/DownloadAppButton.tsx",
+          "name": "DownloadAppButton",
+          "type": "component",
+          "valid": true,
+          "size": 2996,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "EnhancedLinkDomainManager": {
+          "path": "components/EnhancedLinkDomainManager.tsx",
+          "name": "EnhancedLinkDomainManager",
+          "type": "component",
+          "valid": true,
+          "size": 18318,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "UserAccessControl": {
+          "path": "components/UserAccessControl.tsx",
+          "name": "UserAccessControl",
+          "type": "component",
+          "valid": true,
+          "size": 16416,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "LeahWalletPanel": {
+          "path": "components/LeahWalletPanel.tsx",
+          "name": "LeahWalletPanel",
+          "type": "component",
+          "valid": true,
+          "size": 3530,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "GlobalMail": {
+          "path": "components/GlobalMail.tsx",
+          "name": "GlobalMail",
+          "type": "component",
+          "valid": true,
+          "size": 2462,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "MasterPortal": {
+          "path": "components/MasterPortal.tsx",
+          "name": "MasterPortal",
+          "type": "component",
+          "valid": true,
+          "size": 5444,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "DealsList": {
+          "path": "components/DealsList.tsx",
+          "name": "DealsList",
+          "type": "component",
+          "valid": true,
+          "size": 1368,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "ThemeCustomizer": {
+          "path": "components/ThemeCustomizer.tsx",
+          "name": "ThemeCustomizer",
+          "type": "component",
+          "valid": true,
+          "size": 16650,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "QmoiDialer": {
+          "path": "components/QmoiDialer.tsx",
+          "name": "QmoiDialer",
+          "type": "component",
+          "valid": true,
+          "size": 22005,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "EnhancedPreviewWindow": {
+          "path": "components/EnhancedPreviewWindow.tsx",
+          "name": "EnhancedPreviewWindow",
+          "type": "component",
+          "valid": true,
+          "size": 3896,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "BiometricAuth": {
+          "path": "components/auth/BiometricAuth.tsx",
+          "name": "BiometricAuth",
+          "type": "component",
+          "valid": true,
+          "size": 33751,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "enhanced_build_tools": {
+          "path": "components/enhanced_build_tools.tsx",
+          "name": "enhanced_build_tools",
+          "type": "component",
+          "valid": true,
+          "size": 1293,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "SystemHealthMonitor": {
+          "path": "components/SystemHealthMonitor.tsx",
+          "name": "SystemHealthMonitor",
+          "type": "component",
+          "valid": true,
+          "size": 25743,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "SettingsPanel": {
+          "path": "components/SettingsPanel.tsx",
+          "name": "SettingsPanel",
+          "type": "component",
+          "valid": true,
+          "size": 28985,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "media_&_ui_features_(2024_06_09)": {
+          "path": "components/media_&_ui_features_(2024_06_09).tsx",
+          "name": "media_&_ui_features_(2024_06_09)",
+          "type": "component",
+          "valid": true,
+          "size": 1349,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "GlobalCall": {
+          "path": "components/GlobalCall.tsx",
+          "name": "GlobalCall",
+          "type": "component",
+          "valid": true,
+          "size": 2746,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "QFileManager": {
+          "path": "components/QFileManager.tsx",
+          "name": "QFileManager",
+          "type": "component",
+          "valid": true,
+          "size": 2400,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "WifiPanel": {
+          "path": "components/WifiPanel.tsx",
+          "name": "WifiPanel",
+          "type": "component",
+          "valid": true,
+          "size": 26567,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "QiSpaces": {
+          "path": "components/QiSpaces.tsx",
+          "name": "QiSpaces",
+          "type": "component",
+          "valid": true,
+          "size": 3614,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "AvatarSelectionPanel": {
+          "path": "components/AvatarSelectionPanel.tsx",
+          "name": "AvatarSelectionPanel",
+          "type": "component",
+          "valid": true,
+          "size": 4716,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "DownloadManager": {
+          "path": "components/DownloadManager.tsx",
+          "name": "DownloadManager",
+          "type": "component",
+          "valid": true,
+          "size": 3078,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "AppManager": {
+          "path": "components/AppManager.tsx",
+          "name": "AppManager",
+          "type": "component",
+          "valid": true,
+          "size": 22098,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "BluetoothManager": {
+          "path": "components/BluetoothManager.tsx",
+          "name": "BluetoothManager",
+          "type": "component",
+          "valid": true,
+          "size": 3853,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "QmoiAccessibility": {
+          "path": "components/QmoiAccessibility.tsx",
+          "name": "QmoiAccessibility",
+          "type": "component",
+          "valid": true,
+          "size": 22930,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "VoiceSelectionPanel": {
+          "path": "components/VoiceSelectionPanel.tsx",
+          "name": "VoiceSelectionPanel",
+          "type": "component",
+          "valid": true,
+          "size": 10989,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "DealsPopup": {
+          "path": "components/DealsPopup.tsx",
+          "name": "DealsPopup",
+          "type": "component",
+          "valid": true,
+          "size": 1622,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "ComponentGallery": {
+          "path": "components/ComponentGallery.tsx",
+          "name": "ComponentGallery",
+          "type": "component",
+          "valid": true,
+          "size": 30785,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "MasterEmailDashboard": {
+          "path": "components/MasterEmailDashboard.tsx",
+          "name": "MasterEmailDashboard",
+          "type": "component",
+          "valid": true,
+          "size": 38259,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "deviceSettingsPanel": {
+          "path": "components/deviceSettingsPanel.tsx",
+          "name": "deviceSettingsPanel",
+          "type": "component",
+          "valid": true,
+          "size": 4625,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "alpha-q-ai-system": {
+          "path": "components/alpha-q-ai-system.tsx",
+          "name": "alpha-q-ai-system",
+          "type": "component",
+          "valid": true,
+          "size": 2776,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "QMOIAutoFixDashboard": {
+          "path": "components/QMOIAutoFixDashboard.tsx",
+          "name": "QMOIAutoFixDashboard",
+          "type": "component",
+          "valid": true,
+          "size": 22915,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "QmoiKeyboard": {
+          "path": "components/QmoiKeyboard.tsx",
+          "name": "QmoiKeyboard",
+          "type": "component",
+          "valid": true,
+          "size": 12025,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "AccountabilitySystem": {
+          "path": "components/AccountabilitySystem.tsx",
+          "name": "AccountabilitySystem",
+          "type": "component",
+          "valid": true,
+          "size": 28110,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "EmergencyPanel": {
+          "path": "components/EmergencyPanel.tsx",
+          "name": "EmergencyPanel",
+          "type": "component",
+          "valid": true,
+          "size": 3188,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "QVillageDatasetsPanel": {
+          "path": "components/QVillageDatasetsPanel.tsx",
+          "name": "QVillageDatasetsPanel",
+          "type": "component",
+          "valid": true,
+          "size": 3786,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "PriceProductVerifier": {
+          "path": "components/PriceProductVerifier.tsx",
+          "name": "PriceProductVerifier",
+          "type": "component",
+          "valid": true,
+          "size": 2016,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "VoiceLibraryPanel": {
+          "path": "components/VoiceLibraryPanel.tsx",
+          "name": "VoiceLibraryPanel",
+          "type": "component",
+          "valid": true,
+          "size": 21092,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "MediaPreviewWindow": {
+          "path": "components/MediaPreviewWindow.tsx",
+          "name": "MediaPreviewWindow",
+          "type": "component",
+          "valid": true,
+          "size": 2735,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "\uf8ff\u00fc\u00f5\u00b0\u00f4\u220f\u00e8_automated_build,_install,_and_error_fix_strategies": {
+          "path": "components/\uf8ff\u00fc\u00f5\u00b0\u00f4\u220f\u00e8_automated_build,_install,_and_error_fix_strategies.tsx",
+          "name": "\uf8ff\u00fc\u00f5\u00b0\u00f4\u220f\u00e8_automated_build,_install,_and_error_fix_strategies",
+          "type": "component",
+          "valid": true,
+          "size": 1475,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "BrowserInterface": {
+          "path": "components/BrowserInterface.tsx",
+          "name": "BrowserInterface",
+          "type": "component",
+          "valid": true,
+          "size": 10209,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "QmoiBrowser": {
+          "path": "components/QmoiBrowser.tsx",
+          "name": "QmoiBrowser",
+          "type": "component",
+          "valid": true,
+          "size": 17071,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "deviceMap": {
+          "path": "components/deviceMap.tsx",
+          "name": "deviceMap",
+          "type": "component",
+          "valid": true,
+          "size": 1662,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "MasterTracksDashboard": {
+          "path": "components/MasterTracksDashboard.tsx",
+          "name": "MasterTracksDashboard",
+          "type": "component",
+          "valid": true,
+          "size": 16385,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "QMOIDashboard": {
+          "path": "components/QMOIDashboard.tsx",
+          "name": "QMOIDashboard",
+          "type": "component",
+          "valid": true,
+          "size": 17373689,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": false,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": false,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "BiometricEnrollment": {
+          "path": "components/BiometricEnrollment.tsx",
+          "name": "BiometricEnrollment",
+          "type": "component",
+          "valid": true,
+          "size": 8283,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "SystemHealthDashboard": {
+          "path": "components/SystemHealthDashboard.tsx",
+          "name": "SystemHealthDashboard",
+          "type": "component",
+          "valid": true,
+          "size": 8719,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "WhatsAppBusinessPanel": {
+          "path": "components/WhatsAppBusinessPanel.tsx",
+          "name": "WhatsAppBusinessPanel",
+          "type": "component",
+          "valid": true,
+          "size": 2444,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "GitStatus": {
+          "path": "components/GitStatus.tsx",
+          "name": "GitStatus",
+          "type": "component",
+          "valid": true,
+          "size": 1925,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "QmoiRevenueDashboard": {
+          "path": "components/QmoiRevenueDashboard.tsx",
+          "name": "QmoiRevenueDashboard",
+          "type": "component",
+          "valid": true,
+          "size": 8195736,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": false,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": false,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "TeamRoleManager": {
+          "path": "components/TeamRoleManager.tsx",
+          "name": "TeamRoleManager",
+          "type": "component",
+          "valid": true,
+          "size": 8590,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "QmoiEnhancedSystem": {
+          "path": "components/QmoiEnhancedSystem.tsx",
+          "name": "QmoiEnhancedSystem",
+          "type": "component",
+          "valid": true,
+          "size": 34171,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "QMOIOwndevice": {
+          "path": "components/QMOIOwndevice.tsx",
+          "name": "QMOIOwndevice",
+          "type": "component",
+          "valid": true,
+          "size": 17271,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "LcSpaces": {
+          "path": "components/LcSpaces.tsx",
+          "name": "LcSpaces",
+          "type": "component",
+          "valid": true,
+          "size": 3660,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "AnimationControlPanel": {
+          "path": "components/AnimationControlPanel.tsx",
+          "name": "AnimationControlPanel",
+          "type": "component",
+          "valid": true,
+          "size": 19576,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "QConverse": {
+          "path": "components/QConverse.tsx",
+          "name": "QConverse",
+          "type": "component",
+          "valid": true,
+          "size": 7191,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "FileCategorizer": {
+          "path": "components/FileCategorizer.tsx",
+          "name": "FileCategorizer",
+          "type": "component",
+          "valid": true,
+          "size": 2866,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "QCityThemeProvider": {
+          "path": "components/QCityThemeProvider.tsx",
+          "name": "QCityThemeProvider",
+          "type": "component",
+          "valid": true,
+          "size": 2597,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "WifiAutoConnectPanel": {
+          "path": "components/WifiAutoConnectPanel.tsx",
+          "name": "WifiAutoConnectPanel",
+          "type": "component",
+          "valid": true,
+          "size": 5898,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "EnhancedRevenuePanel": {
+          "path": "components/EnhancedRevenuePanel.tsx",
+          "name": "EnhancedRevenuePanel",
+          "type": "component",
+          "valid": true,
+          "size": 22321,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "GlobalVideoCall": {
+          "path": "components/GlobalVideoCall.tsx",
+          "name": "GlobalVideoCall",
+          "type": "component",
+          "valid": true,
+          "size": 3026,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "QmoiAutoDistribution": {
+          "path": "components/QmoiAutoDistribution.tsx",
+          "name": "QmoiAutoDistribution",
+          "type": "component",
+          "valid": true,
+          "size": 32421,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "Chatbot": {
+          "path": "components/Chatbot.tsx",
+          "name": "Chatbot",
+          "type": "component",
+          "valid": true,
+          "size": 8881,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "AIContext": {
+          "path": "components/AIContext.tsx",
+          "name": "AIContext",
+          "type": "component",
+          "valid": true,
+          "size": 8288,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "HelpGuide": {
+          "path": "components/HelpGuide.tsx",
+          "name": "HelpGuide",
+          "type": "component",
+          "valid": true,
+          "size": 5462,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "NotificationCenter": {
+          "path": "components/NotificationCenter.tsx",
+          "name": "NotificationCenter",
+          "type": "component",
+          "valid": true,
+          "size": 2224,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "real_time_status_dashboard_with_universal_language_support": {
+          "path": "components/real_time_status_dashboard_with_universal_language_support.tsx",
+          "name": "real_time_status_dashboard_with_universal_language_support",
+          "type": "component",
+          "valid": true,
+          "size": 609,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "QI": {
+          "path": "components/QI.tsx",
+          "name": "QI",
+          "type": "component",
+          "valid": true,
+          "size": 65906,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "FloatingControlPanel": {
+          "path": "components/FloatingControlPanel.tsx",
+          "name": "FloatingControlPanel",
+          "type": "component",
+          "valid": true,
+          "size": 11415,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "ProductionMonitoringDashboard": {
+          "path": "components/ProductionMonitoringDashboard.tsx",
+          "name": "ProductionMonitoringDashboard",
+          "type": "component",
+          "valid": true,
+          "size": 12179,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "TradingPanel": {
+          "path": "components/TradingPanel.tsx",
+          "name": "TradingPanel",
+          "type": "component",
+          "valid": true,
+          "size": 1414768,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": false,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": false,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "AvatarGalleryPanel": {
+          "path": "components/AvatarGalleryPanel.tsx",
+          "name": "AvatarGalleryPanel",
+          "type": "component",
+          "valid": true,
+          "size": 18118,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "RealtimeAvatarWindow": {
+          "path": "components/RealtimeAvatarWindow.tsx",
+          "name": "RealtimeAvatarWindow",
+          "type": "component",
+          "valid": true,
+          "size": 14233,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "QAvatar": {
+          "path": "components/QAvatar.tsx",
+          "name": "QAvatar",
+          "type": "component",
+          "valid": true,
+          "size": 100391,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "QVillage": {
+          "path": "components/q-city/QVillage.tsx",
+          "name": "QVillage",
+          "type": "component",
+          "valid": true,
+          "size": 39265,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "SisterProjects": {
+          "path": "components/SisterProjects.tsx",
+          "name": "SisterProjects",
+          "type": "component",
+          "valid": true,
+          "size": 2610,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "QMediaPlayer": {
+          "path": "components/QMediaPlayer.tsx",
+          "name": "QMediaPlayer",
+          "type": "component",
+          "valid": true,
+          "size": 83244,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": true
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "enhanced-system-dashboard": {
+          "path": "components/enhanced-system-dashboard.tsx",
+          "name": "enhanced-system-dashboard",
+          "type": "component",
+          "valid": true,
+          "size": 41209,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "ParallelProcessing": {
+          "path": "components/ParallelProcessing.tsx",
+          "name": "ParallelProcessing",
+          "type": "component",
+          "valid": true,
+          "size": 18806,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "QCityErrorManager": {
+          "path": "components/QCityErrorManager.tsx",
+          "name": "QCityErrorManager",
+          "type": "component",
+          "valid": true,
+          "size": 3457,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "QIStateWindow": {
+          "path": "components/QIStateWindow.tsx",
+          "name": "QIStateWindow",
+          "type": "component",
+          "valid": true,
+          "size": 2965,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "SettingsSidebar": {
+          "path": "components/SettingsSidebar.tsx",
+          "name": "SettingsSidebar",
+          "type": "component",
+          "valid": true,
+          "size": 17437,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "QmoiMemoryPanel": {
+          "path": "components/QmoiMemoryPanel.tsx",
+          "name": "QmoiMemoryPanel",
+          "type": "component",
+          "valid": true,
+          "size": 2681,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "advanced_ui_&_parallel_processing_features_(2025_01_22)": {
+          "path": "components/advanced_ui_&_parallel_processing_features_(2025_01_22).tsx",
+          "name": "advanced_ui_&_parallel_processing_features_(2025_01_22)",
+          "type": "component",
+          "valid": true,
+          "size": 1460,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "DownloadQApp": {
+          "path": "components/DownloadQApp.tsx",
+          "name": "DownloadQApp",
+          "type": "component",
+          "valid": true,
+          "size": 16687,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "PreviewWindow": {
+          "path": "components/PreviewWindow.tsx",
+          "name": "PreviewWindow",
+          "type": "component",
+          "valid": true,
+          "size": 2859,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "MasterContext": {
+          "path": "components/MasterContext.tsx",
+          "name": "MasterContext",
+          "type": "component",
+          "valid": true,
+          "size": 2325,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "MapLocationPanel": {
+          "path": "components/MapLocationPanel.tsx",
+          "name": "MapLocationPanel",
+          "type": "component",
+          "valid": true,
+          "size": 2320,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "TransactionHistory": {
+          "path": "components/TransactionHistory.tsx",
+          "name": "TransactionHistory",
+          "type": "component",
+          "valid": true,
+          "size": 2302,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "LeahWallet": {
+          "path": "components/LeahWallet.tsx",
+          "name": "LeahWallet",
+          "type": "component",
+          "valid": true,
+          "size": 3439,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "GlobalFileTransfer": {
+          "path": "components/GlobalFileTransfer.tsx",
+          "name": "GlobalFileTransfer",
+          "type": "component",
+          "valid": true,
+          "size": 2536,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "FinancialManager": {
+          "path": "components/FinancialManager.tsx",
+          "name": "FinancialManager",
+          "type": "component",
+          "valid": true,
+          "size": 5340,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "QmoiMediaManager": {
+          "path": "components/QmoiMediaManager.tsx",
+          "name": "QmoiMediaManager",
+          "type": "component",
+          "valid": true,
+          "size": 14674,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "OrchestratorStatusPanel": {
+          "path": "components/predeploy/OrchestratorStatusPanel.tsx",
+          "name": "OrchestratorStatusPanel",
+          "type": "component",
+          "valid": true,
+          "size": 5754,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "EncryptedAuditLog": {
+          "path": "components/analytics/EncryptedAuditLog.tsx",
+          "name": "EncryptedAuditLog",
+          "type": "component",
+          "valid": true,
+          "size": 2041,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "RoleContext": {
+          "path": "components/security/RoleContext.tsx",
+          "name": "RoleContext",
+          "type": "component",
+          "valid": true,
+          "size": 1786,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "QCityDashboard": {
+          "path": "components/q-city/QCityDashboard.tsx",
+          "name": "QCityDashboard",
+          "type": "component",
+          "valid": true,
+          "size": 3778,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "QCitydevicePanel": {
+          "path": "components/q-city/QCitydevicePanel.tsx",
+          "name": "QCitydevicePanel",
+          "type": "component",
+          "valid": true,
+          "size": 29221,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "QMOIBiometricManager": {
+          "path": "components/q-city/QMOIBiometricManager.tsx",
+          "name": "QMOIBiometricManager",
+          "type": "component",
+          "valid": true,
+          "size": 25137,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "ZeroRatedSitesManager": {
+          "path": "components/q-city/ZeroRatedSitesManager.tsx",
+          "name": "ZeroRatedSitesManager",
+          "type": "component",
+          "valid": true,
+          "size": 34724,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "TracksPanel": {
+          "path": "components/q-city/TracksPanel.tsx",
+          "name": "TracksPanel",
+          "type": "component",
+          "valid": true,
+          "size": 18690,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "QMOIOwndeviceLogs": {
+          "path": "components/q-city/QMOIOwndeviceLogs.tsx",
+          "name": "QMOIOwndeviceLogs",
+          "type": "component",
+          "valid": true,
+          "size": 25775,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "QMOILinksManager": {
+          "path": "components/q-city/QMOILinksManager.tsx",
+          "name": "QMOILinksManager",
+          "type": "component",
+          "valid": true,
+          "size": 19055,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "QMOIRevenueDashboard": {
+          "path": "components/q-city/QMOIRevenueDashboard.tsx",
+          "name": "QMOIRevenueDashboard",
+          "type": "component",
+          "valid": true,
+          "size": 10002156,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": false,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": false,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "GlobalLinksManager": {
+          "path": "components/q-city/GlobalLinksManager.tsx",
+          "name": "GlobalLinksManager",
+          "type": "component",
+          "valid": true,
+          "size": 16644,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "Onboarding": {
+          "path": "components/q-city/Onboarding.tsx",
+          "name": "Onboarding",
+          "type": "component",
+          "valid": true,
+          "size": 677,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": false,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "EmploymentDashboard": {
+          "path": "components/q-city/EmploymentDashboard.tsx",
+          "name": "EmploymentDashboard",
+          "type": "component",
+          "valid": true,
+          "size": 16158365,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": false,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": false,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "AnalyticsCharts": {
+          "path": "components/analytics/AnalyticsCharts.tsx",
+          "name": "AnalyticsCharts",
+          "type": "component",
+          "valid": true,
+          "size": 2829,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "QMOIGitLabClone": {
+          "path": "components/qmoi-gitlab-clone/QMOIGitLabClone.tsx",
+          "name": "QMOIGitLabClone",
+          "type": "component",
+          "valid": true,
+          "size": 16740,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "AutomationRulesPanel": {
+          "path": "components/automation/AutomationRulesPanel.tsx",
+          "name": "AutomationRulesPanel",
+          "type": "component",
+          "valid": true,
+          "size": 2503,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "ResourceList": {
+          "path": "components/projects/ResourceList.tsx",
+          "name": "ResourceList",
+          "type": "component",
+          "valid": true,
+          "size": 5067,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "TaskForm": {
+          "path": "components/projects/TaskForm.tsx",
+          "name": "TaskForm",
+          "type": "component",
+          "valid": true,
+          "size": 8425,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "ProjectDashboard": {
+          "path": "components/projects/ProjectDashboard.tsx",
+          "name": "ProjectDashboard",
+          "type": "component",
+          "valid": true,
+          "size": 8608,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "ProjectForm": {
+          "path": "components/projects/ProjectForm.tsx",
+          "name": "ProjectForm",
+          "type": "component",
+          "valid": true,
+          "size": 8469,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "TaskList": {
+          "path": "components/projects/TaskList.tsx",
+          "name": "TaskList",
+          "type": "component",
+          "valid": true,
+          "size": 5030,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "ProjectList": {
+          "path": "components/projects/ProjectList.tsx",
+          "name": "ProjectList",
+          "type": "component",
+          "valid": true,
+          "size": 3586,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "AzureCredentialsModal": {
+          "path": "components/device/AzureCredentialsModal.tsx",
+          "name": "AzureCredentialsModal",
+          "type": "component",
+          "valid": true,
+          "size": 3023,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "GCPCredentialsModal": {
+          "path": "components/device/GCPCredentialsModal.tsx",
+          "name": "GCPCredentialsModal",
+          "type": "component",
+          "valid": true,
+          "size": 2383,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "AWSCredentialsModal": {
+          "path": "components/device/AWSCredentialsModal.tsx",
+          "name": "AWSCredentialsModal",
+          "type": "component",
+          "valid": true,
+          "size": 2714,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "enhanced_build.py": {
+          "path": "components/scripts/enhanced_build.py.tsx",
+          "name": "enhanced_build.py",
+          "type": "component",
+          "valid": true,
+          "size": 1322,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "popover": {
+          "path": "components/ui/popover.tsx",
+          "name": "popover",
+          "type": "component",
+          "valid": true,
+          "size": 2179,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "sidebar": {
+          "path": "components/ui/sidebar.tsx",
+          "name": "sidebar",
+          "type": "component",
+          "valid": true,
+          "size": 22059,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "form": {
+          "path": "components/ui/form.tsx",
+          "name": "form",
+          "type": "component",
+          "valid": true,
+          "size": 5031,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "card": {
+          "path": "components/ui/card.tsx",
+          "name": "card",
+          "type": "component",
+          "valid": true,
+          "size": 2834,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "pagination": {
+          "path": "components/ui/pagination.tsx",
+          "name": "pagination",
+          "type": "component",
+          "valid": true,
+          "size": 3557,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "radio-group": {
+          "path": "components/ui/radio-group.tsx",
+          "name": "radio-group",
+          "type": "component",
+          "valid": true,
+          "size": 2423,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "avatar": {
+          "path": "components/ui/avatar.tsx",
+          "name": "avatar",
+          "type": "component",
+          "valid": true,
+          "size": 2358,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "recharts-shim": {
+          "path": "components/ui/recharts-shim.tsx",
+          "name": "recharts-shim",
+          "type": "component",
+          "valid": true,
+          "size": 3356,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "carousel": {
+          "path": "components/ui/carousel.tsx",
+          "name": "carousel",
+          "type": "component",
+          "valid": true,
+          "size": 7139,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "AccessibilitySettingsPanel": {
+          "path": "components/ui/AccessibilitySettingsPanel.tsx",
+          "name": "AccessibilitySettingsPanel",
+          "type": "component",
+          "valid": true,
+          "size": 3310,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "navigation-menu": {
+          "path": "components/ui/navigation-menu.tsx",
+          "name": "navigation-menu",
+          "type": "component",
+          "valid": true,
+          "size": 6009,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "PluginNotifications": {
+          "path": "components/ui/PluginNotifications.tsx",
+          "name": "PluginNotifications",
+          "type": "component",
+          "valid": true,
+          "size": 3050,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "hover-card": {
+          "path": "components/ui/hover-card.tsx",
+          "name": "hover-card",
+          "type": "component",
+          "valid": true,
+          "size": 2131,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "input-otp": {
+          "path": "components/ui/input-otp.tsx",
+          "name": "input-otp",
+          "type": "component",
+          "valid": true,
+          "size": 3114,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "select": {
+          "path": "components/ui/select.tsx",
+          "name": "select",
+          "type": "component",
+          "valid": true,
+          "size": 6496,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "toggle-group": {
+          "path": "components/ui/toggle-group.tsx",
+          "name": "toggle-group",
+          "type": "component",
+          "valid": true,
+          "size": 2688,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "table": {
+          "path": "components/ui/table.tsx",
+          "name": "table",
+          "type": "component",
+          "valid": true,
+          "size": 3714,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "calendar": {
+          "path": "components/ui/calendar.tsx",
+          "name": "calendar",
+          "type": "component",
+          "valid": true,
+          "size": 3462,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "collapsible": {
+          "path": "components/ui/collapsible.tsx",
+          "name": "collapsible",
+          "type": "component",
+          "valid": true,
+          "size": 720,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": false,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "command": {
+          "path": "components/ui/command.tsx",
+          "name": "command",
+          "type": "component",
+          "valid": true,
+          "size": 5770,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "scroll-area": {
+          "path": "components/ui/scroll-area.tsx",
+          "name": "scroll-area",
+          "type": "component",
+          "valid": true,
+          "size": 1379,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "button": {
+          "path": "components/ui/button.tsx",
+          "name": "button",
+          "type": "component",
+          "valid": true,
+          "size": 2781,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "label": {
+          "path": "components/ui/label.tsx",
+          "name": "label",
+          "type": "component",
+          "valid": true,
+          "size": 1652,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "resizable": {
+          "path": "components/ui/resizable.tsx",
+          "name": "resizable",
+          "type": "component",
+          "valid": true,
+          "size": 2692,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "badge": {
+          "path": "components/ui/badge.tsx",
+          "name": "badge",
+          "type": "component",
+          "valid": true,
+          "size": 2084,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "accordion": {
+          "path": "components/ui/accordion.tsx",
+          "name": "accordion",
+          "type": "component",
+          "valid": true,
+          "size": 2932,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "switch": {
+          "path": "components/ui/switch.tsx",
+          "name": "switch",
+          "type": "component",
+          "valid": true,
+          "size": 2085,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "toaster": {
+          "path": "components/ui/toaster.tsx",
+          "name": "toaster",
+          "type": "component",
+          "valid": true,
+          "size": 1217,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": false,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "separator": {
+          "path": "components/ui/separator.tsx",
+          "name": "separator",
+          "type": "component",
+          "valid": true,
+          "size": 1525,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "input": {
+          "path": "components/ui/input.tsx",
+          "name": "input",
+          "type": "component",
+          "valid": true,
+          "size": 1667,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "dropdown-menu": {
+          "path": "components/ui/dropdown-menu.tsx",
+          "name": "dropdown-menu",
+          "type": "component",
+          "valid": true,
+          "size": 8376,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "toggle": {
+          "path": "components/ui/toggle.tsx",
+          "name": "toggle",
+          "type": "component",
+          "valid": true,
+          "size": 2468,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "slider": {
+          "path": "components/ui/slider.tsx",
+          "name": "slider",
+          "type": "component",
+          "valid": true,
+          "size": 2023,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "sonner": {
+          "path": "components/ui/sonner.tsx",
+          "name": "sonner",
+          "type": "component",
+          "valid": true,
+          "size": 1853,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "checkbox": {
+          "path": "components/ui/checkbox.tsx",
+          "name": "checkbox",
+          "type": "component",
+          "valid": true,
+          "size": 2011,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "alert": {
+          "path": "components/ui/alert.tsx",
+          "name": "alert",
+          "type": "component",
+          "valid": true,
+          "size": 2516,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "menubar": {
+          "path": "components/ui/menubar.tsx",
+          "name": "menubar",
+          "type": "component",
+          "valid": true,
+          "size": 8944,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "sheet": {
+          "path": "components/ui/sheet.tsx",
+          "name": "sheet",
+          "type": "component",
+          "valid": true,
+          "size": 5246,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "aspect-ratio": {
+          "path": "components/ui/aspect-ratio.tsx",
+          "name": "aspect-ratio",
+          "type": "component",
+          "valid": true,
+          "size": 543,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": false,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "drawer": {
+          "path": "components/ui/drawer.tsx",
+          "name": "drawer",
+          "type": "component",
+          "valid": true,
+          "size": 3962,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "progress": {
+          "path": "components/ui/progress.tsx",
+          "name": "progress",
+          "type": "component",
+          "valid": true,
+          "size": 1723,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "PluginHelpModal": {
+          "path": "components/ui/PluginHelpModal.tsx",
+          "name": "PluginHelpModal",
+          "type": "component",
+          "valid": true,
+          "size": 2779,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "tabs": {
+          "path": "components/ui/tabs.tsx",
+          "name": "tabs",
+          "type": "component",
+          "valid": true,
+          "size": 2838,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "toast": {
+          "path": "components/ui/toast.tsx",
+          "name": "toast",
+          "type": "component",
+          "valid": true,
+          "size": 5822,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "chart": {
+          "path": "components/ui/chart.tsx",
+          "name": "chart",
+          "type": "component",
+          "valid": true,
+          "size": 13813,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "breadcrumb": {
+          "path": "components/ui/breadcrumb.tsx",
+          "name": "breadcrumb",
+          "type": "component",
+          "valid": true,
+          "size": 3660,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "use-mobile": {
+          "path": "components/ui/use-mobile.tsx",
+          "name": "use-mobile",
+          "type": "component",
+          "valid": true,
+          "size": 961,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "tooltip": {
+          "path": "components/ui/tooltip.tsx",
+          "name": "tooltip",
+          "type": "component",
+          "valid": true,
+          "size": 2095,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "context-menu": {
+          "path": "components/ui/context-menu.tsx",
+          "name": "context-menu",
+          "type": "component",
+          "valid": true,
+          "size": 8205,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "dialog": {
+          "path": "components/ui/dialog.tsx",
+          "name": "dialog",
+          "type": "component",
+          "valid": true,
+          "size": 4815,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "textarea": {
+          "path": "components/ui/textarea.tsx",
+          "name": "textarea",
+          "type": "component",
+          "valid": true,
+          "size": 1615,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation"
+          ]
+        },
+        "alert-dialog": {
+          "path": "components/ui/alert-dialog.tsx",
+          "name": "alert-dialog",
+          "type": "component",
+          "valid": true,
+          "size": 5386,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": false,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "Large component lacks documentation",
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "skeleton": {
+          "path": "components/ui/skeleton.tsx",
+          "name": "skeleton",
+          "type": "component",
+          "valid": true,
+          "size": 1251,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        },
+        "GlobalOperationsDashboard": {
+          "path": "components/global/GlobalOperationsDashboard.tsx",
+          "name": "GlobalOperationsDashboard",
+          "type": "component",
+          "valid": true,
+          "size": 20784,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": true,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "qmedia_player.md": {
+          "path": "components/components/qmedia_player.md.tsx",
+          "name": "qmedia_player.md",
+          "type": "component",
+          "valid": true,
+          "size": 1332,
+          "checks": {
+            "exists": true,
+            "has_export": true,
+            "has_imports": true,
+            "has_prop_types": false,
+            "has_types": false,
+            "is_typescript": true,
+            "is_javascript": false,
+            "has_react_import": true,
+            "has_documentation": true,
+            "is_PRODUCTION_READY": false
+          },
+          "errors": [],
+          "warnings": [
+            "TypeScript component lacks type definitions"
+          ]
+        }
+      },
+      "summary": {
+        "with_exports": 189,
+        "with_types": 109,
+        "PRODUCTION_READY": 1,
+        "issues": 0
+      }
+    }
+  },
+  "pwas": {
+    "pwa_root": "pwa_apps",
+    "total_pwas": 6,
+    "valid_pwas": 6,
+    "pwas": {
+      "qmoi": {
+        "path": "pwa_apps/qmoi",
+        "name": "qmoi",
+        "type": "pwa_shell",
+        "valid": true,
+        "checks": {
+          "has_index_html": true,
+          "has_manifest": true,
+          "has_service_worker": true,
+          "manifest_valid": true,
+          "service_worker_valid": false,
+          "has_icons": true,
+          "has_offline_page": false,
+          "update_endpoint_reachable": false
+        },
+        "files": {
+          "index.html": "pwa_apps/qmoi/index.html",
+          "manifest": "pwa_apps/qmoi/manifest.webmanifest",
+          "service_worker": "pwa_apps/qmoi/sw.js"
+        },
+        "errors": [],
+        "warnings": []
+      },
+      "admin": {
+        "path": "pwa_apps/admin",
+        "name": "admin",
+        "type": "pwa_shell",
+        "valid": true,
+        "checks": {
+          "has_index_html": true,
+          "has_manifest": true,
+          "has_service_worker": true,
+          "manifest_valid": true,
+          "service_worker_valid": false,
+          "has_icons": true,
+          "has_offline_page": false,
+          "update_endpoint_reachable": false
+        },
+        "files": {
+          "index.html": "pwa_apps/admin/index.html",
+          "manifest": "pwa_apps/admin/manifest.webmanifest",
+          "service_worker": "pwa_apps/admin/sw.js"
+        },
+        "errors": [],
+        "warnings": []
+      },
+      "q-alpha": {
+        "path": "pwa_apps/q-alpha",
+        "name": "q-alpha",
+        "type": "pwa_shell",
+        "valid": true,
+        "checks": {
+          "has_index_html": true,
+          "has_manifest": true,
+          "has_service_worker": true,
+          "manifest_valid": true,
+          "service_worker_valid": false,
+          "has_icons": true,
+          "has_offline_page": false,
+          "update_endpoint_reachable": false
+        },
+        "files": {
+          "index.html": "pwa_apps/q-alpha/index.html",
+          "manifest": "pwa_apps/q-alpha/manifest.webmanifest",
+          "service_worker": "pwa_apps/q-alpha/sw.js"
+        },
+        "errors": [],
+        "warnings": []
+      },
+      "deals": {
+        "path": "pwa_apps/deals",
+        "name": "deals",
+        "type": "pwa_shell",
+        "valid": true,
+        "checks": {
+          "has_index_html": true,
+          "has_manifest": true,
+          "has_service_worker": true,
+          "manifest_valid": true,
+          "service_worker_valid": false,
+          "has_icons": true,
+          "has_offline_page": false,
+          "update_endpoint_reachable": false
+        },
+        "files": {
+          "index.html": "pwa_apps/deals/index.html",
+          "manifest": "pwa_apps/deals/manifest.webmanifest",
+          "service_worker": "pwa_apps/deals/sw.js"
+        },
+        "errors": [],
+        "warnings": []
+      },
+      "qmoi-ai": {
+        "path": "pwa_apps/qmoi-ai",
+        "name": "qmoi-ai",
+        "type": "pwa_shell",
+        "valid": true,
+        "checks": {
+          "has_index_html": true,
+          "has_manifest": true,
+          "has_service_worker": true,
+          "manifest_valid": true,
+          "service_worker_valid": true,
+          "has_icons": true,
+          "has_offline_page": false,
+          "update_endpoint_reachable": false
+        },
+        "files": {
+          "index.html": "pwa_apps/qmoi-ai/index.html",
+          "manifest": "pwa_apps/qmoi-ai/manifest.webmanifest",
+          "service_worker": "pwa_apps/qmoi-ai/sw.js"
+        },
+        "errors": [],
+        "warnings": []
+      },
+      "qmoi-space": {
+        "path": "pwa_apps/qmoi-space",
+        "name": "qmoi-space",
+        "type": "pwa_shell",
+        "valid": true,
+        "checks": {
+          "has_index_html": true,
+          "has_manifest": true,
+          "has_service_worker": true,
+          "manifest_valid": true,
+          "service_worker_valid": false,
+          "has_icons": false,
+          "has_offline_page": false,
+          "update_endpoint_reachable": false
+        },
+        "files": {
+          "index.html": "pwa_apps/qmoi-space/index.html",
+          "manifest": "pwa_apps/qmoi-space/manifest.webmanifest",
+          "service_worker": "pwa_apps/qmoi-space/sw.js"
+        },
+        "errors": [],
+        "warnings": [
+          "No app icons found"
+        ]
+      }
+    },
+    "summary": {
+      "with_manifest": 6,
+      "with_service_worker": 6,
+      "PRODUCTION_READY": 1,
+      "issues": 0
+    }
+  },
+  "integration": {},
+  "summary": {
+    "total_components": 202,
+    "valid_components": 202,
+    "total_pwas": 6,
+    "valid_pwas": 6,
+    "integration_issues": 0,
+    "overall_health_score": 100
+  }
+}

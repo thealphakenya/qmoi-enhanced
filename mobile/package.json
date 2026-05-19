@@ -1,0 +1,32 @@
+{
+  "name": "qmoiMobile",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.21.0",
+    "@react-navigation/native": "^6.1.6",
+    "@react-navigation/native-stack": "^6.9.12",
+    "axios": "^1.6.0",
+    "express-session": "^1.19.0",
+    "react": "19.1.0",
+    "react-native": "0.80.1",
+    "react-native-biometrics": "^3.0.1"
+  },
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:40.301017",
+  "autoPRODUCTION": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:03.540777",
+    "version": "2026-04-20"
+  },
+  "PRODUCTION_READY": true,
+  "last_production_enhancement": "2026-04-22T04:58:40.274552",
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
+}

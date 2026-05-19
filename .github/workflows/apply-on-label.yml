@@ -1,0 +1,57 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:35.187384 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:09.787522 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.523027 -->
+name: Apply ALLLINKS on label
+
+on:
+  pull_request:
+    types: [labeled]
+
+permissions:
+  contents: write
+
+jobs:
+  apply-on-label:
+    if: |
+      github.event.label.name == 'qmoi-apply'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Show gating envs
+        run: |
+          echo "QMOI_ALLOW_NETWORK=${{ env.QMOI_ALLOW_NETWORK }}"
+          echo "QMOI_PROVISION_DNS=${{ env.QMOI_PROVISION_DNS }}"
+          echo "QMOI_ENABLE_BILLING=${{ env.QMOI_ENABLE_BILLING }}"
+
+      - name: Fail if apply not enabled
+        if: ${{ env.QMOI_PROVISION_DNS != '1' || env.QMOI_ENABLE_BILLING != 'true' }}
+        run: |
+          echo "Apply blocked: QMOI_PROVISION_DNS and QMOI_ENABLE_BILLING must be set in the workflow environment." >&2
+          exit 1
+
+      - name: Install deps (if any)
+        run: |
+          python -V
+
+      - name: Run orchestrator in apply mode
+        env:
+          QMOI_ALLOW_NETWORK: ${{ env.QMOI_ALLOW_NETWORK }}
+          QMOI_PROVISION_DNS: ${{ env.QMOI_PROVISION_DNS }}
+          QMOI_ENABLE_BILLING: ${{ env.QMOI_ENABLE_BILLING }}
+        run: |
+          echo "Running orchestrator with --apply (this step must be run intentionally)"
+          python3 scripts/auto_enhance_pipeline.py --apply --steps link_update,providers_apply
+
+      - name: Upload audit artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: qmoi-audit-artifacts
+          path: |
+            .qmoi_validation/**

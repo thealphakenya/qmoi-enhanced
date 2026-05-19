@@ -1,0 +1,1225 @@
+{
+  "phase": 1,
+  "title": "Domain Reference Link Fixes",
+  "summary": {
+    "total_files_modified": 213,
+    "total_domain_reference_fixes": 82,
+    "total_production-db.qmoi.ai_fixes": 733,
+    "total_malformed_url_fixes": 0,
+    "total_all_fixes": 815
+  },
+  "files_processed": [
+    {
+      "file": "/workspaces/qmoi-enhanced/QVILLAGE.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/PHASE_6_EXTENDED_SUMMARY.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 3,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 3,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/README_DOCUMENTATION.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/UI_ENHANCEMENT_COMPREHENSIVE_PLAN.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/NETLIFYPAYED.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOIEMPLOYAUTOPAY.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/DEPLOYMENT_HEALTH_CHECKLIST.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOI_ARCHITECTURE.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOIAUTODISTRIBUTEMARKET.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/prodELOPER_QUICK_START.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/RELEASE_FINALIZATION_PLAN.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOI_AUTOMATED_SYSTEMS_README.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/SESSION_4_SUMMARY.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 5,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 5,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/BUILD_INSTRUCTIONS.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 1,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 1,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/ENHANCED_LINK_DOMAIN_SYSTEM.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOI_AUTO_TESTING_UI_production.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QUANTUMAUTOMARKET.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/LINKSTRACKS.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/SRC.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOIAPIKEYREADME.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/HUGGINGFACEHFPAYED.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/FINAL_VERIFICATION_REPORT.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 1,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 1,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/USER_RESPONSE_STAGES_F_G_H.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOI-CLOUD-ENHANCED.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/PROJECT_COMPLETE.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 5,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 5,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOISPACEprod.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/AUTOGIT.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/VERCELPAYED.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/MONITORING_API_DOCS.md",
+      "fixes": {
+        "domain_references": 1,
+        "production-db.qmoi.ai_references": 1,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 2,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/ALLMDGILES.md",
+      "fixes": {
+        "domain_references": 1,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 1,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/V1_2_3_QUICK_REFERENCE.md",
+      "fixes": {
+        "domain_references": 1,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 1,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOI_FEATURES_COMPLETE.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/MASTER_PROJECT_COMPLETION_INDEX.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 6,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 6,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOI_AUTOFIX_SYSTEM_INDEX.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 2,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 2,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOI-CLOUD-OFFLOAD.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOIREVENUEGENERATION.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/ALLVERSIONS.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/SERVEQCITYQMOIAIQMOISPACE.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/MASTER_README.md",
+      "fixes": {
+        "domain_references": 1,
+        "production-db.qmoi.ai_references": 3,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 4,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/PHASE_1_COMPLETION_REPORT.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/AUTOLINTREADME.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOI-ENHANCED-SUMMARY.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOI_production_AUTO_RECOVERY_COMPLETE.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 1,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 1,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/RELEASE_v1.2.5_VERIFICATION_GUIDE.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOI-CLOUD.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/NOTSPONSORED.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 3,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 3,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/STARTUP_NOTES.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/AUTOprod_SECRETS.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/RELEASE_MAINTENANCE.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/CONSOLIDATION_ANALYSIS.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOI_WALLET_FINANCIAL_SYSTEMS.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOIEMULATORS.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/RELEASE_NOTES_v1.2.4.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOIEMPLOYEES.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/USEEMPLOYEESUSERS.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/INSTALL.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/production_NEXT_STEPS_COMPLETE.md",
+      "fixes": {
+        "domain_references": 1,
+        "production-db.qmoi.ai_references": 1,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 2,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/SPONSORED.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/FILE_MANIFEST.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/AUTO_RECOVERY_PROCEDURES.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/production_READINESS_EXECUTION_STATUS.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 1,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 1,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOICLONEQUANTUM.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/IMPLEMENTATION_SUMMARY.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 2,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 2,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOICLONE.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/DOMAIN_MANAGEMENT.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOISERVERS.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/link_report.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 40,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 40,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/ALLERRORTYPESANDHEALTHCHECKS.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/COMPREHENSIVE_LINK_FIX_STRATEGY.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 4,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 4,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/EXECUTION_SUMMARY.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 11,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 11,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/COMPLETION_REPORT_REAL_IMPLEMENTATIONS.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/IMPLEMENTATION_ACTION_PLAN.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 5,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 5,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/MEGAVAULT.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/SECURITYREADME.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/production_COMPLETION_SUMMARY.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 1,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 1,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/PRODUCTIONLATES.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QUANTUMPAYED.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/CASHONTRADINGREADME.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/PHASE4_production_STRATEGY.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/production_DEPLOYMENT_PLAYBOOK.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/MASTER_QUICK_SETUP.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 5,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 5,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/RELEASE_VERIFICATION_V1_2_3.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/SERVICES.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOI_MASTER_TESTING_GUIDE.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 2,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 2,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/SCRIPTSREADME.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/production_API_REFERENCE.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/COMPLETE_SYSTEM_DOCUMENTATION_MASTER.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/ALLERRORSSTATSQMOI.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/README_MONITORING.md",
+      "fixes": {
+        "domain_references": 1,
+        "production-db.qmoi.ai_references": 13,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 14,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOIREADME.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOIALLPLATFORMS.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/MASTER_VERIFICATION_COMPLETE.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/VERCELLINKS.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 1,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 1,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/WIRKFLOWSTRACKS.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/ALLMDFILESREFS.md",
+      "fixes": {
+        "domain_references": 2,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 2,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/production_READINESS_CHECKLIST_FINAL.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 1,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 1,
+        "modified": true
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/VERCEL_AUTO_UPDATE_README.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/QMOICLONEVERCEL.md",
+      "fixes": {
+        "domain_references": 0,
+        "production-db.qmoi.ai_references": 0,
+        "malformed_urls": 0,
+        "internal_references": 0,
+        "file_references": 0,
+        "total_fixes": 0,
+        "modified": false
+      }
+    }
+  ],
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:31.186236",
+  "autoPRODUCTION": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:03.212614",
+    "version": "2026-04-20"
+  },
+  "PRODUCTION_READY": true,
+  "last_production_enhancement": "2026-04-22T04:58:38.658121",
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
+}

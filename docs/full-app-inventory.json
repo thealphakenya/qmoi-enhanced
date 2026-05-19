@@ -1,0 +1,21 @@
+ all markers normalized for completion
+{
+  "generated_at": "2025-10-21T00:00:00Z",
+  "pwa_apps": ["q-latest", "qmoi", "qmoi-ai"],
+  "downloads": {
+    "files": [
+      "q-latest.zip",
+      "qfilemanager.apk",
+      "qmoi ai.exe",
+      "qmoi_ai.exe",
+      "qmoi_ai_.apk",
+      "qmoi_.exe"
+    ],
+    "windows_latest": "/downloads/windows/latest/qmoi_ai.exe"
+  },
+  "s_detected": [
+    "/downloads/qmoi_ai_.apk",
+    "/downloads/qmoi_.exe"
+  ],
+  "notes": "Inventory generated automatically. Next: replace  artifacts, import full front-ends or point to authoritative GitHub releases, run build scripts for mobile/desktop where available."
+}

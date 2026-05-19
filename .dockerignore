@@ -1,0 +1,16 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:06:57.873495 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.076467 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:02.850684 -->
+node_modules
+.next
+.git
+.gitignore
+Dockerfile
+*.log
+.npm-cache
+.jest_cache
+.qmoi_state_test
+data/wallets/*.json
+dist
+build
+coverage

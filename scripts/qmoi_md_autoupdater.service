@@ -1,0 +1,15 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:55.396156 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:13.929774 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:09.533350 -->
+[Unit]
+Description=QMOI Markdown Auto-Updater
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/workspaces/qmoi-enhanced
+ExecStart=/usr/bin/env python3 /workspaces/qmoi-enhanced/scripts/qmoi_md_autoupdater.py
+StandardOutput=journal
+StandardError=journal
+PrivateTmp=true

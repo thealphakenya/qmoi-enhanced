@@ -1,0 +1,59 @@
+{
+  "timestamp": "2026-05-09T06:07:27.962064",
+  "validation_type": "PRODUCTION_DEPLOYMENT_VALIDATION",
+  "readiness_score": 87,
+  "validations_passed": 7,
+  "total_validations": 8,
+  "execution_time": 37.599693,
+  "deployment_ready": false,
+  "detailed_results": {
+    "build_validation": {
+      "passed": false,
+      "message": "Build system validation: 1 issues found",
+      "issues": [
+        "No build output directory found (checked: build, dist, .next)"
+      ]
+    },
+    "dependency_validation": {
+      "passed": true,
+      "message": "Dependency validation: 0 issues found",
+      "issues": []
+    },
+    "configuration_validation": {
+      "passed": true,
+      "message": "Configuration validation: 0 issues found",
+      "issues": []
+    },
+    "security_validation": {
+      "passed": true,
+      "message": "Security validation: 0 issues found",
+      "issues": []
+    },
+    "performance_validation": {
+      "passed": true,
+      "message": "Performance validation: 0 issues found",
+      "issues": []
+    },
+    "monitoring_validation": {
+      "passed": true,
+      "message": "Monitoring validation: 0 issues found",
+      "issues": []
+    },
+    "documentation_validation": {
+      "passed": true,
+      "message": "Documentation validation: 0 issues found",
+      "issues": []
+    },
+    "deployment_readiness": {
+      "passed": true,
+      "message": "Deployment readiness validation: 0 issues found",
+      "issues": []
+    }
+  },
+  "recommendations": [
+    "Address all validation failures before deployment",
+    "Review and fix configuration issues",
+    "Complete all documentation requirements",
+    "Fix issues in build validation"
+  ]
+}

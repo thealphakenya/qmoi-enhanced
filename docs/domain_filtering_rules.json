@@ -1,0 +1,53 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-04-03T03:09:46.779987",
+  "filtering_rules": {
+    "include_in_qmoi_enforcement": {
+      "patterns": [
+        "*.qmoi.com",
+        "*.qmoi.ai",
+        "*.qmoi.PRODUCTION",
+        "qmoi.com",
+        "qmoi.ai",
+        "qvillage.com",
+        "qvillage.org",
+        "qcity.ai",
+        "qcity.io"
+      ],
+      "action": "apply_100_percent_health_enforcement"
+    },
+    "exclude_from_enforcement": {
+      "patterns": [
+        "*.github.com",
+        "github.com/*",
+        "api.github.com/*",
+        "npm*.com/*",
+        "npmjs.com/*",
+        "registry.npmjs.org/*",
+        "*.badge.svg",
+        "*.icon.svg",
+        "*.png",
+        "*.jpg",
+        "*.jpeg",
+        "*.gif",
+        "*.webp",
+        "aws.amazon.com",
+        "azure.microsoft.com",
+        "cloud.google.com"
+      ],
+      "action": "monitor_only_no_enforcement"
+    }
+  },
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:35.734892",
+  "autoPRODUCTION": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:06.798955",
+    "version": "2026-04-20"
+  },
+  "PRODUCTION_READY": true,
+  "last_production_enhancement": "2026-04-22T04:58:53.617975",
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
+}

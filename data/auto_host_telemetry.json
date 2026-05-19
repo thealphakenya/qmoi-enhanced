@@ -1,0 +1,67 @@
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:07:39.017556 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:10.648826 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:06.902874 -->
+[
+  {
+    "timestamp": "2026-03-24T17:48:29.979426",
+    "system health": {
+      "timestamp": "2026-03-24T17:48:29.979131",
+      "memory_percent": 0.0,
+      "cpu_percent": 0.0,
+      "disk_free_gb": 0.0,
+      "load_average": [
+        1.75,
+        1.38,
+        0.96
+      ],
+      "status": "critical",
+      "issues": [
+        "psutil unavailable, metrics are synthetic",
+        "Disk space low (0.00 GB free)"
+      ]
+    },
+    "services health": {
+      "nextjs-app": {
+        "service": "nextjs-app",
+        "status": "stopped",
+        "pid": null,
+        "memory_mb": 0,
+        "cpu_percent": 0.0,
+        "uptime_seconds": 0,
+        "issues": [
+          "Not running"
+        ]
+      },
+      "api-server": {
+        "service": "api-server",
+        "status": "stopped",
+        "pid": null,
+        "memory_mb": 0,
+        "cpu_percent": 0.0,
+        "uptime_seconds": 0,
+        "issues": [
+          "Not running"
+        ]
+      },
+      "domain-monitor": {
+        "service": "domain-monitor",
+        "status": "stopped",
+        "pid": null,
+        "memory_mb": 0,
+        "cpu_percent": 0.0,
+        "uptime_seconds": 0,
+        "issues": [
+          "Not running"
+        ]
+      }
+    },
+    "domain health": {
+      "status": "degraded",
+      "domain_ratio": 0.667,
+      "healthy_domains": 4,
+      "total_domains": 6,
+      "detail": "Domain health computed from domain_health_history.json"
+    },
+    "emergency_mode": false
+  }
+]

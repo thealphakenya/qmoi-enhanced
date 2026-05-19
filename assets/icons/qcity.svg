@@ -1,0 +1,46 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.017127 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:15.850578 -->
+
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="cityGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#34d399;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="256" height="256" fill="url(#cityGradient)" rx="32"/>
+
+  <!-- City skyline -->
+  <rect x="40" y="120" width="16" height="80" fill="#ffffff" opacity="0.9"/>
+  <rect x="60" y="100" width="16" height="100" fill="#ffffff" opacity="0.9"/>
+  <rect x="80" y="80" width="16" height="120" fill="#ffffff" opacity="0.9"/>
+  <rect x="100" y="110" width="16" height="90" fill="#ffffff" opacity="0.9"/>
+  <rect x="120" y="90" width="16" height="110" fill="#ffffff" opacity="0.9"/>
+  <rect x="140" y="70" width="16" height="130" fill="#ffffff" opacity="0.9"/>
+  <rect x="160" y="100" width="16" height="100" fill="#ffffff" opacity="0.9"/>
+  <rect x="180" y="85" width="16" height="115" fill="#ffffff" opacity="0.9"/>
+  <rect x="200" y="95" width="16" height="105" fill="#ffffff" opacity="0.9"/>
+
+  <!-- IoT sensors -->
+  <circle cx="48" cy="110" r="3" fill="#ef4444"/>
+  <circle cx="88" cy="70" r="3" fill="#3b82f6"/>
+  <circle cx="148" cy="60" r="3" fill="#f59e0b"/>
+  <circle cx="188" cy="75" r="3" fill="#10b981"/>
+
+  <!-- Network connections -->
+  <line x1="48" y1="110" x2="88" y2="70" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
+  <line x1="88" y1="70" x2="148" y2="60" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
+  <line x1="148" y1="60" x2="188" y2="75" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
+
+  <!-- City icon -->
+  <g transform="translate(208, 40)">
+    <rect x="0" y="8" width="4" height="12" fill="#1f2937"/>
+    <rect x="6" y="4" width="4" height="16" fill="#1f2937"/>
+    <rect x="12" y="10" width="4" height="10" fill="#1f2937"/>
+    <rect x="2" y="6" width="8" height="2" fill="#fbbf24"/>
+    <rect x="8" y="2" width="8" height="2" fill="#fbbf24"/>
+  </g>
+</svg>

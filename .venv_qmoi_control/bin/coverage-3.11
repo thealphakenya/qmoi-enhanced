@@ -1,0 +1,9 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.494516 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.242708 -->
+#!/workspaces/qmoi-enhanced/.venv_qmoi_control/bin/python
+import sys
+from coverage.cmdline import main
+if __name__ == '__main__':
+    if sys.argv[0].endswith('.exe'):
+        sys.argv[0] = sys.argv[0][:-4]
+    sys.exit(main())

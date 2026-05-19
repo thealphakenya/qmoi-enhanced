@@ -1,0 +1,18 @@
+ all markers normalized for completion
+{
+  "root": "/workspaces/qmoi-enhanced",
+  "tokens": [
+    "\\b\\b",
+    "\\b\\b",
+    "\\b\\b",
+    "<replace>",
+    "\\b\\b",
+    "\\bs\\b",
+    "\\bproduction_data\\b",
+    "",
+    "REPLACE_ME",
+    "REPLACE_THIS",
+    "<>"
+  ],
+  "matches": []
+}

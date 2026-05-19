@@ -1,0 +1,71 @@
+{
+  "timestamp": "2026-05-19T11:58:29.892577",
+  "overall_health_score": 87,
+  "systems_checked": 8,
+  "systems_healthy": 5,
+  "issues_found": 3,
+  "execution_time": 42.01479697227478,
+  "detailed_results": {
+    "file_system": {
+      "healthy": true,
+      "score": 100,
+      "issues": [],
+      "details": "File system health: 0 issues found"
+    },
+    "code_quality": {
+      "healthy": false,
+      "score": 46,
+      "issues": [
+        "production migration not complete",
+        "High TODO count: 45"
+      ],
+      "details": "Code quality: 45 TODO items found"
+    },
+    "configuration": {
+      "healthy": true,
+      "score": 100,
+      "issues": [],
+      "details": "Configuration health: 0 configuration issues"
+    },
+    "dependencies": {
+      "healthy": false,
+      "score": 80,
+      "issues": [
+        "Missing critical dependency: typescript"
+      ],
+      "details": "Dependencies: 1 dependency issues"
+    },
+    "security": {
+      "healthy": true,
+      "score": 100,
+      "issues": [],
+      "details": "Security health: 0 security issues"
+    },
+    "performance": {
+      "healthy": false,
+      "score": 72,
+      "issues": [
+        "Large files detected: 9 files over 50MB",
+        "Missing performance file: PERFORMANCE.md"
+      ],
+      "details": "Performance: 9 large files, 2 issues"
+    },
+    "integration": {
+      "healthy": true,
+      "score": 100,
+      "issues": [],
+      "details": "Integration health: 0 integration issues"
+    },
+    "quantum_features": {
+      "healthy": true,
+      "score": 100,
+      "issues": [],
+      "details": "Quantum health: 8518 quantum references"
+    }
+  },
+  "recommendations": [
+    "Complete production migration: address remaining TODO/FIXME items",
+    "Check dependencies: verify all required packages are installed",
+    "Optimize performance: address large files and performance issues"
+  ]
+}

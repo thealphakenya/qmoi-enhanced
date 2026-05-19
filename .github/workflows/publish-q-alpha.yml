@@ -1,0 +1,39 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:35.181431 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:09.784126 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.519369 -->
+name: Publish Q App PWA
+
+on:
+  push:
+    branches: [main, autosync-backup-20250926-232440]
+    paths:
+      - "pwa_apps/q-app/**"
+  workflow_dispatch: {}
+  release:
+    types: [published]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Build Q App PWA
+        working-directory: ./pwa_apps/q-app
+        run: |
+          npm ci --no-audit --no-fund || true
+          npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./pwa_apps/q-app/dist

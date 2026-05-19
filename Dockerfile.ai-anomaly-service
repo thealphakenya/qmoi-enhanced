@@ -1,0 +1,10 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:06:49.786836 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:05.529038 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:00.430470 -->
+# Dockerfile for ai-anomaly-service.py
+FROM python:3.11-slim
+WORKDIR /app
+COPY ai-anomaly-service.py ./
+RUN pip install flask scikit-learn numpy
+EXPOSE 5001
+CMD ["python", "ai-anomaly-service.py"]

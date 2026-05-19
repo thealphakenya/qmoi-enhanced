@@ -1,0 +1,9 @@
+Integration tests run at Mon May 11 17:12:48 UTC 2026
+Testing http://localhost:3000/api/qmoi-model
+FAIL: http://localhost:3000/api/qmoi-model
+Testing http://localhost:3000/api/qmoi/chat (simple POST)
+FAIL: POST http://localhost:3000/api/qmoi/chat
+Testing http://127.0.0.1:3000/api/qmoi-model
+FAIL: http://127.0.0.1:3000/api/qmoi-model
+Testing http://127.0.0.1:3000/api/qmoi/chat (simple POST)
+FAIL: POST http://127.0.0.1:3000/api/qmoi/chat

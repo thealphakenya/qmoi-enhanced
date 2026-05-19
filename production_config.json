@@ -1,0 +1,70 @@
+{
+  "environment": "production",
+  "version": "1.0.0",
+  "deployment_timestamp": "2026-04-25T15:56:45.140390",
+  "services": {
+    "ai_api_server": {
+      "port": 8000,
+      "host": "0.0.0.0",
+      "workers": 4,
+      "timeout": 30
+    },
+    "ai_orchestrator": {
+      "max_concurrent_tasks": 100,
+      "task_timeout": 300,
+      "queue_size": 1000
+    },
+    "advanced_analytics_service": {
+      "analysis_interval": 60,
+      "prediction_horizon": 86400,
+      "max_recommendations": 10
+    },
+    "ai_anomaly_service": {
+      "confidence_threshold": 0.7,
+      "training_epochs": 100,
+      "model_update_interval": 3600
+    },
+    "advanced_performance_optimizer": {
+      "monitoring_interval": 30,
+      "alert_threshold": 0.8,
+      "optimization_interval": 300
+    }
+  },
+  "database": {
+    "type": "postgresql",
+    "host": "production-api.qmoi-enhanced.com",
+    "port": 5432,
+    "name": "qmoi_production",
+    "user": "qmoi_user",
+    "password": "",
+    "ssl_mode": "require"
+  },
+  "security": {
+    "jwt_secret": "change-in-production",
+    "api_key_required": true,
+    "rate_limiting": {
+      "enabled": true,
+      "requests_per_minute": 1000,
+      "burst_limit": 100
+    },
+    "cors_origins": [
+      "https://qmoi.ai",
+      "https://app.qmoi.ai"
+    ],
+    "ssl_required": true
+  },
+  "monitoring": {
+    "enabled": true,
+    "metrics_endpoint": "/metrics",
+    "health_check_endpoint": "/health",
+    "log_level": "INFO",
+    "alert_webhook": ""
+  },
+  "scaling": {
+    "auto_scaling": true,
+    "min_instances": 2,
+    "max_instances": 10,
+    "cpu_threshold": 70,
+    "memory_threshold": 80
+  }
+}

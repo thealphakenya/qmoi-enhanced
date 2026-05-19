@@ -1,0 +1,33 @@
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:19:38.600892 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:18:58.770359 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:06:55.760395 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:06.774470 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:02.439325 -->
+# version_info.txt
+VSVersionInfo(
+  ffi=FixedFileInfo(
+    filevers=(1, 0, 0, 0),
+    prodvers=(1, 0, 0, 0),
+    mask=0x3f,
+    flags=0x0,
+    OS=0x40004,
+    fileType=0x1,
+    subtype=0x0,
+    date=(0, 0)
+  ),
+  kids=[
+    StringFileInfo([
+      StringTable(
+        '040904B0',
+        [
+          StringStruct('CompanyName', 'stableQ'),
+          StringStruct('FileDescription', 'QMOI AI Launcher'),
+          StringStruct('FileVersion', '1.0.0'),
+          StringStruct('ProductVersion', '1.0.0'),
+          StringStruct('ProductName', 'QMOI AI'),
+        ]
+      )
+    ]),
+    VarFileInfo([VarStruct('Translation', [1033, 1200])])
+  ]
+)

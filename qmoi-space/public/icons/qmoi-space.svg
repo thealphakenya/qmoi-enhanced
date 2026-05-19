@@ -1,0 +1,20 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:22.801642 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:15.439128 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="20" fill="#1f2937"/>
+  <circle cx="34" cy="34" r="10" fill="#60a5fa" opacity="0.14"/>
+  <g fill="#fff" font-family="Inter, Arial, sans-serif" font-weight="600">
+    <text x="64" y="70" text-anchor="middle" font-size="22">QMOI</text>
+    <text x="64" y="92" text-anchor="middle" font-size="10">Space</text>
+  </g>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="512" height="512">
+  <rect width="64" height="64" rx="12" fill="#667eea"/>
+  <circle cx="32" cy="24" r="10" fill="#fff"/>
+  <path d="M16 44c4-6 12-8 16-8s12 2 16 8v6H16v-6z" fill="#fff" opacity="0.95"/>
+</svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 256 256">
+  <rect width="100%" height="100%" rx="32" fill="#4ecdc4" />
+  <text x="50%" y="58%" font-family="Inter, Arial" font-size="140" fill="#082032" text-anchor="middle" font-weight="800">Q</text>
+</svg>

@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "ci": false
+  },
+  "python": {
+    "flake8": {
+      "rc": null,
+      "output": "flake8 not installed"
+    },
+    "autoflake": {
+      "rc": null,
+      "output": "skipped (local run)"
+    }
+  },
+  "javascript": {
+    "eslint": {
+      "rc": null,
+      "output": "eslint not available locally; CI should run it"
+    }
+  },
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:21.181065",
+  "autoPRODUCTION": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:07.388606",
+    "version": "2026-04-20"
+  },
+  "PRODUCTION_READY": true,
+  "last_production_enhancement": "2026-04-22T04:59:00.537204",
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
+}

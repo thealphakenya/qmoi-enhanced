@@ -1,0 +1,11 @@
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:23.579160 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:17.592061 -->
+{
+  "windows": {
+    "status": "built",
+    "file": "Qmoi_apps/windows/qmoi ai.exe",
+    "size": "24.5 MB",
+    "download_link": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi_ai.exe"
+  },
+  ...
+}

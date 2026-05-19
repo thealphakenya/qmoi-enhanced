@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-05-19T11:57:47.800805Z",
+  "overall_status": "healthy",
+  "system_health": {
+    "cpu_percent": null,
+    "memory_percent": null,
+    "disk_usage_percent": 32.95,
+    "load_average": [
+      1.69091796875,
+      1.63623046875,
+      1.546875
+    ],
+    "timestamp": "2026-05-19T11:57:47.800664Z",
+    "note": "psutil not available; using safe fallback metrics"
+  },
+  "application_health": {
+    "status": "healthy",
+    "services": [
+      "configuration"
+    ],
+    "timestamp": "2026-05-19T11:57:47.800797Z"
+  }
+}

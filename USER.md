@@ -1,0 +1,34 @@
+# USER.md - Regular User Role and Access
+
+## Overview
+The `user` role is the default authenticated profile for standard QMOI interaction.
+This role provides access to general AI features, support tools, personal profiles, and marketplace browsing.
+
+## User Capabilities
+- Chat with QMOI AI
+- View wallet, profile, and status information
+- Access QMOI Space for marketplace browsing
+- Review QCity dashboards in a limited mode
+- Participate in QVillage community prompts and dataset previews
+
+## Permissions
+User permissions defined in `app/hooks/useAuth.ts`:
+- `general_chat`
+- `help_support`
+- `profile_view`
+- `wallet_view`
+- `qmoi_space_access`
+
+## Accessible Interfaces
+- `/qmoi-ai.html` for AI-driven workflows
+- `/qmoi-space.html` for marketplace access
+- `/qcity` for dashboard and status overview
+- `/qvillage` for community dataset insights
+
+## Expected Experience
+- Seamless AI chat and memory-aware responses
+- Guided marketplace access in QMOI Space
+- Access to news, models, and context-aware help
+- PWA install support for quick access and offline load
+
+---

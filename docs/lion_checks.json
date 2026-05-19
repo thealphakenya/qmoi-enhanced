@@ -1,0 +1,23 @@
+{
+  "timestamp": "2025-10-25T01:50:04.691337",
+  "tools": {
+    "docker": false,
+    "jq": true,
+    "curl": true,
+    "tar": true,
+    "unzip": true
+  },
+  "build_report_present": true,
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:05.185326",
+  "autoPRODUCTION": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:06.484923",
+    "version": "2026-04-20"
+  },
+  "PRODUCTION_READY": true,
+  "last_production_enhancement": "2026-04-22T04:58:51.512239",
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
+}

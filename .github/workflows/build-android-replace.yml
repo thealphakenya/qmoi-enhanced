@@ -1,0 +1,107 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:34.624034 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:09.775883 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.471962 -->
+name: Build Android & SmartTV and Replace Release Asset
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: v1.2.3
+      ASSET_NAME_APK: qmoi_ai.apk
+      ASSET_NAME_SMARTTV: qmoi_ai_smarttv.apk
+      REPO_OWNER: thestablekenya
+      REPO_NAME: qmoi-enhanced
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
+      - name: Install Android SDK prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y unzip wget zip lib32stdc++6 lib32z1
+
+      - name: Setup Android SDK (cmdline tools)
+        run: |
+          mkdir -p $HOME/android-sdk/cmdline-tools
+          cd $HOME/android-sdk
+          wget -q https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip -O cmdline-tools.zip
+          unzip -q cmdline-tools.zip -d cmdline-tools
+          mv cmdline-tools/cmdline-tools cmdline-tools/latest || true
+          export ANDROID_HOME=$HOME/android-sdk
+          export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools
+          yes | sdkmanager --sdk_root=$ANDROID_HOME "platform-tools" "platforms;android-33" "build-tools;33.0.2"
+
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle
+            ~/.m2
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/gradle-wrapper.properties') }}
+
+      - name: Build APK (Release)
+        run: |
+          cd mobile/android || exit 1
+          ./gradlew assembleRelease --no-daemon || true
+          # pick first release apk
+          find . -type f -name "*-release.apk" -print | head -n1
+          ls -la app/build/outputs/apk/release || true
+
+      - name: Prepare artifacts
+        run: |
+          mkdir -p artifacts
+          # copy built apks if present
+          A=$(find mobile -type f -name "*-release.apk" | head -n1 || true)
+          if [ -f "$A" ]; then cp "$A" artifacts/${ASSET_NAME_APK}; fi
+          # If there's a smarttv build variant, try to pick it
+          S=$(find mobile -type f -name "*smarttv*.apk" | head -n1 || true)
+          if [ -f "$S" ]; then cp "$S" artifacts/${ASSET_NAME_SMARTTV}; fi
+
+      - name: Verify APKs (unzip structure)
+        run: |
+          set -e
+          if [ -f artifacts/${ASSET_NAME_APK} ]; then
+            echo "Verifying ${ASSET_NAME_APK}"
+            unzip -l artifacts/${ASSET_NAME_APK} | head -n 20
+          else
+            echo "No APK built"
+          fi
+
+      - name: Upload APK artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: built-apks
+          path: artifacts/
+
+      - name: Replace release assets (if built)
+        if: always()
+        env:
+          GH_PAT: ${{ secrets.GH_PAT || github.token }}
+        run: |
+          set -e
+          if [ -f artifacts/${ASSET_NAME_APK} ]; then
+            echo "Replacing ${ASSET_NAME_APK} on release ${RELEASE_TAG}"
+            python3 scripts/replace_release_asset.py --owner "$REPO_OWNER" --repo "$REPO_NAME" --tag "$RELEASE_TAG" --asset "artifacts/${ASSET_NAME_APK}" --name "$ASSET_NAME_APK" --token "$GH_PAT"
+          fi
+          if [ -f artifacts/${ASSET_NAME_SMARTTV} ]; then
+            echo "Replacing ${ASSET_NAME_SMARTTV} on release ${RELEASE_TAG}"
+            python3 scripts/replace_release_asset.py --owner "$REPO_OWNER" --repo "$REPO_NAME" --tag "$RELEASE_TAG" --asset "artifacts/${ASSET_NAME_SMARTTV}" --name "$ASSET_NAME_SMARTTV" --token "$GH_PAT"
+          fi
+
+      - name: Run post-checks
+        run: |
+          python3 scripts/check_github_releases.py || true

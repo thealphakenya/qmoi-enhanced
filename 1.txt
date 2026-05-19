@@ -1,0 +1,16 @@
+Continue work based on resumefromhere.txt. Once all tasks there are finalized, PRODUCTIONelop and execute a robust Python or Node.js script designed for a total repository audit. The script must meet these specific requirements:
+Exhaustive Recursive Scan: Scan every single directory and file within the repository (root and all subdirectories), ensuring no file is skipped regardless of depth.
+Heuristic Detection: Distinguish between actual executable code and 'instructional comments' (e.g., DONEs, fixeds, implementation notes, or real-service real implementations).
+Instruction Manifest Generation: Output all findings into a new file named instructionmanifest.txt. The structure must include:
+File Origin: The exact file path where the instruction was found.
+Content: The raw text of the instruction/requirement.
+Frequency: The number of times that specific or similar instruction appears across the repo.
+production Alignment: Use the generated instructionmanifest.txt as a final master checklist. Cross-reference every entry to ensure all reals are replaced with real implementations and all logic is optimized for a 'real actual production' environment.
+Confirm when the scan is complete and the manifest is ready for review."
+Enhanced Script Logic Suggestions
+If you want to guide Copilot on how to make the script more thorough, you can suggest these technical parameters:
+Ignore Patterns: Ensure it respects .gitignore so it doesn't waste time scanning node_modules, .git, or build artifacts, focusing only on source code.
+Regex Pattern Matching: Use regex to catch various comment styles:
+// DONE:, /* Implementation details to be documented */, and # FIXED:
+Specific markers you’ve used like [real] or [PENDING IMPLEMENTATION].
+Hash Mapping: Suggest the script uses a hash map (dictionary) to track the "frequency" of instructions so it can identify recurring technical debt or repeated architectural requirements.

@@ -1,0 +1,322 @@
+{
+  "system_status": "operational",
+  "analysis_report": {
+    "user_id": "sample_user_001",
+    "report_type": "balance_prediction_analytics",
+    "generated_at": "2026-03-29 19:52:56.742834+00:00",
+    "balance_prediction": {
+      "user_id": "sample_user_001",
+      "current_balance": 125000.5,
+      "predicted_balance_30d": 139745.10301692612,
+      "predicted_change_percent": 11.795635230999972,
+      "trend_direction": "increasing",
+      "growth_rate_daily": 0.40740285781829655,
+      "confidence": 0.9481858312190268,
+      "model_used": "balance_forecasting",
+      "features_used": 8,
+      "prediction_timestamp": "2026-03-29 19:52:56.741900+00:00",
+      "risk_factors": [
+        "Balance significantly above average transactions"
+      ]
+    },
+    "risk_analysis": {
+      "portfolio_value": 123000.5,
+      "confidence_level": 0.95,
+      "value_at_risk_amount": 3899.4755094590773,
+      "value_at_risk_percent": 3.170292404875653,
+      "expected_shortfall_amount": 4993.883839621549,
+      "expected_shortfall_percent": 4.060051658018909,
+      "calculation_method": "Historical live",
+      "time_horizon": "1 day",
+      "calculation_timestamp": "2026-03-29 19:52:56.742653+00:00",
+      "risk_assessment": "MEDIUM"
+    },
+    "stress_tests": {
+      "market_crash": {
+        "scenario": "market_crash",
+        "scenario_parameters": {
+          "equity_drop": -0.5,
+          "crypto_drop": -0.7,
+          "correlation_increase": 0.8
+        },
+        "original_portfolio_value": 123000.5,
+        "stressed_portfolio_value": 81350.5,
+        "loss_amount": 41650.0,
+        "loss_percentage": 33.8616509688985,
+        "recovery_probability": 0.36311214841971245,
+        "time_to_recovery": "12 days",
+        "stress_test_timestamp": "2026-03-29 19:52:56.742681+00:00",
+        "recommendations": [
+          "Consider dollar-cost averaging strategy",
+          "Review portfolio allocation quarterly",
+          "Regular stress testing required",
+          "Consider hedging strategies for tail risk"
+        ]
+      },
+      "flash_crash": {
+        "scenario": "flash_crash",
+        "scenario_parameters": {
+          "equity_drop": -0.3,
+          "crypto_drop": -0.4,
+          "duration": "15_min"
+        },
+        "original_portfolio_value": 123000.5,
+        "stressed_portfolio_value": 136893.1070171497,
+        "loss_amount": 13892.607017149716,
+        "loss_percentage": 11.29475653932278,
+        "recovery_probability": 0.7821275590170043,
+        "time_to_recovery": "25 days",
+        "stress_test_timestamp": "2026-03-29 19:52:56.742691+00:00",
+        "recommendations": [
+          "Regular stress testing required",
+          "Consider hedging strategies for tail risk"
+        ]
+      },
+      "liquidity_crisis": {
+        "scenario": "liquidity_crisis",
+        "scenario_parameters": {
+          "spread_widening": 5.0,
+          "volume_drop": 0.8,
+          "recovery_time": "weeks"
+        },
+        "original_portfolio_value": 123000.5,
+        "stressed_portfolio_value": 165522.03380796884,
+        "loss_amount": 42521.53380796883,
+        "loss_percentage": 34.57021216008783,
+        "recovery_probability": 0.3174394322900031,
+        "time_to_recovery": "33 days",
+        "stress_test_timestamp": "2026-03-29 19:52:56.742697+00:00",
+        "recommendations": [
+          "Consider implementing stop-loss orders",
+          "Increase cash position to 30-50%",
+          "Diversify into uncorrelated assets",
+          "Maintain higher cash reserves",
+          "Focus on highly liquid assets",
+          "Regular stress testing required",
+          "Consider hedging strategies for tail risk"
+        ]
+      }
+    },
+    "portfolio_optimization": {
+      "current_portfolio_value": 123000.5,
+      "current_weights": {
+        "BTC": 0.20325120629590937,
+        "ETH": 0.14634086853305475,
+        "ADA": 0.042276250909549146,
+        "SOL": 0.06666639566505828,
+        "DOT": 0.025203149580692762,
+        "LINK": 0.0,
+        "AVAX": 0.0,
+        "MATIC": 0.0,
+        "USDC": 0.2845516888142731,
+        "USDT": 0.2317104402014626
+      },
+      "optimized_weights": {
+        "BTC": 0.13681917380393915,
+        "ETH": 0.16115512778263635,
+        "ADA": 0.0739456145728087,
+        "SOL": 0.05170011085174616,
+        "DOT": 0.05329013976563761,
+        "LINK": 0.07710788815967858,
+        "AVAX": 0.0667361682460995,
+        "MATIC": 0.07864299107047695,
+        "USDC": 0.13426083943512804,
+        "USDT": 0.16634194631184898
+      },
+      "expected_annual_return": 0.11999033262695141,
+      "portfolio_volatility": 0.3048272176424768,
+      "sharpe_ratio": 0.32802298101945493,
+      "rebalancing_trades": [
+        {
+          "asset": "BTC",
+          "current_weight": 0.20325120629590937,
+          "target_weight": 0.13681917380393915,
+          "weight_difference": -0.06643203249197022,
+          "trade_value": 8171.173212528583,
+          "trade_type": "SELL",
+          "value": -8171.173212528583
+        },
+        {
+          "asset": "USDC",
+          "current_weight": 0.2845516888142731,
+          "target_weight": 0.13426083943512804,
+          "weight_difference": -0.15029084937914508,
+          "trade_value": 18485.849619059536,
+          "trade_type": "SELL",
+          "value": -18485.849619059536
+        },
+        {
+          "asset": "MATIC",
+          "current_weight": 0.0,
+          "target_weight": 0.07864299107047695,
+          "weight_difference": 0.07864299107047695,
+          "trade_value": 9673.1272231642,
+          "trade_type": "BUY",
+          "value": 9673.1272231642
+        },
+        {
+          "asset": "DOT",
+          "current_weight": 0.025203149580692762,
+          "target_weight": 0.05329013976563761,
+          "weight_difference": 0.028086990184944847,
+          "trade_value": 3454.713836243309,
+          "trade_type": "BUY",
+          "value": 3454.713836243309
+        },
+        {
+          "asset": "LINK",
+          "current_weight": 0.0,
+          "target_weight": 0.07710788815967858,
+          "weight_difference": 0.07710788815967858,
+          "trade_value": 9484.308797584545,
+          "trade_type": "BUY",
+          "value": 9484.308797584545
+        },
+        {
+          "asset": "USDT",
+          "current_weight": 0.2317104402014626,
+          "target_weight": 0.16634194631184898,
+          "weight_difference": -0.0653684938896136,
+          "trade_value": 8040.357432669418,
+          "trade_type": "SELL",
+          "value": -8040.357432669418
+        },
+        {
+          "asset": "ADA",
+          "current_weight": 0.042276250909549146,
+          "target_weight": 0.0739456145728087,
+          "weight_difference": 0.03166936366325955,
+          "trade_value": 3895.3475652627562,
+          "trade_type": "BUY",
+          "value": 3895.3475652627562
+        },
+        {
+          "asset": "SOL",
+          "current_weight": 0.06666639566505828,
+          "target_weight": 0.05170011085174616,
+          "weight_difference": -0.014966284813312115,
+          "trade_value": 1840.860515179797,
+          "trade_type": "SELL",
+          "value": -1840.860515179797
+        },
+        {
+          "asset": "AVAX",
+          "current_weight": 0.0,
+          "target_weight": 0.0667361682460995,
+          "weight_difference": 0.0667361682460995,
+          "trade_value": 8208.582062354362,
+          "trade_type": "BUY",
+          "value": 8208.582062354362
+        },
+        {
+          "asset": "ETH",
+          "current_weight": 0.14634086853305475,
+          "target_weight": 0.16115512778263635,
+          "weight_difference": 0.014814259249581602,
+          "trade_value": 1822.1612948281618,
+          "trade_type": "BUY",
+          "value": 1822.1612948281618
+        }
+      ],
+      "estimated_cost": 73.07648155887468,
+      "risk_tolerance": "moderate",
+      "investment_horizon": "medium_term",
+      "model_used": "portfolio_optimization",
+      "optimization_timestamp": "2026-03-29 19:52:56.742832+00:00"
+    },
+    "recommendations": [
+      "Strong growth predicted - consider increasing investment allocation",
+      "Portfolio vulnerable to severe market events - increase hedging",
+      "Consider safe-haven assets allocation (30-50%)",
+      "Portfolio optimization opportunity identified - rebalancing required",
+      "Estimated improvement: 12.0% annual return",
+      "Regular portfolio rebalancing required (quarterly)",
+      "Maintain emergency fund (3-6 months expenses)",
+      "Consider tax-loss harvesting opportunities",
+      "Review insurance coverage adequacy"
+    ],
+    "confidence_metrics": {
+      "overall_confidence": 0.8540657739095847,
+      "prediction_accuracy": 91.4,
+      "risk_model_accuracy": 96.8
+    }
+  },
+  "transaction_risk_analysis": {
+    "transaction_id": "tx_001",
+    "ml_risk_assessment": {
+      "transaction_id": "tx_001",
+      "risk_score": 0.1332870456594918,
+      "risk_level": "LOW",
+      "recommended_action": "APPROVE",
+      "confidence": 0.9511546137172086,
+      "risk_factors": [],
+      "model_used": "risk_assessment",
+      "assessment_timestamp": "2026-03-29 19:52:56.743559+00:00",
+      "risk_breakdown": {
+        "base_risk": 0,
+        "behavioral_risk": 0,
+        "market_risk": 0.6664352282974589
+      }
+    },
+    "additional_checks": {
+      "risk_score": 0,
+      "confidence": 0.85,
+      "checks_performed": {
+        "amount_check": {
+          "risk_score": 0,
+          "amount": 2500,
+          "risk_factors": []
+        },
+        "velocity_check": {
+          "risk_score": 0,
+          "velocity_score": 0,
+          "time_window": "24 hours",
+          "risk_factors": []
+        },
+        "pattern_check": {
+          "risk_score": 0,
+          "patterns_checked": [
+            "amount_variation",
+            "time_clustering"
+          ],
+          "risk_factors": []
+        },
+        "compliance_check": {
+          "risk_score": 0,
+          "compliance_checks": [
+            "geographic",
+            "amount_threshold",
+            "industry_risk"
+          ],
+          "risk_factors": []
+        }
+      },
+      "risk_factors": [],
+      "check_timestamp": "2026-03-29 19:52:56.743621+00:00"
+    },
+    "combined_risk_score": 0.09330093196164424,
+    "final_risk_level": "LOW",
+    "recommended_action": "APPROVE",
+    "analysis_timestamp": "2026-03-29 19:52:56.743623+00:00",
+    "risk_factors": [],
+    "confidence": 0.9005773068586043
+  },
+  "generated_at": "2026-03-29 19:52:56.743715+00:00",
+  "system_metrics": {
+    "ml_models_active": 6,
+    "risk_models_active": 4,
+    "analysis_completed": true
+  },
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:09.760404",
+  "autoPRODUCTION": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:17.351010",
+    "version": "2026-04-20"
+  },
+  "PRODUCTION_READY": true,
+  "last_production_enhancement": "2026-04-22T04:59:11.455012",
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
+}

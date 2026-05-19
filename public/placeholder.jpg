@@ -1,0 +1,22 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:27.259366 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.259900 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.110994 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="phGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0f0f0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e0e0e0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#phGrad)"/>
+  <g stroke="#00d9ff" stroke-width="2" opacity="0.3">
+    <line x1="20" y1="20" x2="80" y2="20"/><line x1="20" y1="20" x2="20" y2="80"/>
+    <line x1="320" y1="20" x2="380" y2="20"/><line x1="380" y1="20" x2="380" y2="80"/>
+    <line x1="20" y1="320" x2="20" y2="380"/><line x1="20" y1="380" x2="80" y2="380"/>
+    <line x1="380" y1="320" x2="380" y2="380"/><line x1="320" y1="380" x2="380" y2="380"/>
+  </g>
+  <rect x="50" y="50" width="300" height="300" fill="none" stroke="#999999" stroke-width="1" stroke-dasharray="5,5" opacity="0.5"/>
+  <text x="200" y="190" font-family="Arial" font-size="24" fill="#666666" text-anchor="middle">Content Area</text>
+  <circle cx="350" cy="50" r="20" fill="#00d9ff" opacity="0.8"/>
+  <text x="350" y="55" font-family="Arial" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">PRD</text>
+</svg>

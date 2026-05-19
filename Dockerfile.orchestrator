@@ -1,0 +1,24 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y \
+    gcc \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY ai_orchestrator.py .
+COPY ai_anomaly_service.py .
+COPY ml_service.py .
+COPY nlp_service.py .
+COPY cv_service.py .
+COPY autonomous_service.py .
+
+RUN useradd --create-home --shell /bin/bash app \
+    && chown -R app:app /app
+USER app
+
+CMD ["python", "ai_orchestrator.py"]

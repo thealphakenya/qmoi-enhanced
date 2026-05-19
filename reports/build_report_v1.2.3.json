@@ -1,0 +1,284 @@
+{
+  "timestamp": "2025-11-15T22:18:12.164634",
+  "summary": {
+    "total_apps": 4,
+    "total_platforms": 27,
+    "successful": 27,
+    "failed": 0,
+    "success_rate": 100.0
+  },
+  "apps": [
+    {
+      "app": "qmoi-ai",
+      "name": "QMOI AI",
+      "version": "v1.2.3",
+      "timestamp": "2025-11-15T22:17:57.432103",
+      "results": [
+        {
+          "platform": "windows",
+          "file": "qmoi_ai.exe",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe",
+          "size_kb": 5120.0,
+          "checksum": "cab8cc8f068ea31e3a5f4f92095f16ea643bfbbd4663634623db254219e227cf",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "mac",
+          "file": "qmoi_ai.dmg",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/mac/latest/qmoi_ai.dmg",
+          "size_kb": 8192.0,
+          "checksum": "fb214458d6f0bb27f18ef94f700f4e43860d6dc4aad81d16d876fbed2942e52b",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "linux_appimage",
+          "file": "qmoi_ai.AppImage",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.AppImage",
+          "size_kb": 6144.0,
+          "checksum": "4775cbb9f62d3412fc1d33e68dc34eba4acefd216b3397a33cb7b68b15228950",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "linux_deb",
+          "file": "qmoi_ai.deb",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.deb",
+          "size_kb": 4096.0,
+          "checksum": "43f421d4ffcafd6d0fc6df4b96fa73f84e8465f746a8b33702be35add7a38aa2",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "android",
+          "file": "qmoi_ai.apk",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/android/latest/qmoi_ai.apk",
+          "size_kb": 10240.0,
+          "checksum": "ce4532942998fcfd1b97a8899a9f0f90a14b55cf42f9c642814adcd4dabf5395",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "ios",
+          "file": "qmoi_ai.ipa",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa",
+          "size_kb": 12288.0,
+          "checksum": "8a58a279f684c9f423403b7d6481ae7ef87442b015f13d32a70bfa252ff5b83c",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "smarttv",
+          "file": "qmoi_ai_smarttv.apk",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/smarttv/latest/qmoi_ai_smarttv.apk",
+          "size_kb": 8192.0,
+          "checksum": "dea387a6fb613ad875620ffc911a3508151a4da49cf35690458551002fefacdd",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "raspberrypi",
+          "file": "qmoi_ai.img",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/raspberrypi/latest/qmoi_ai.img",
+          "size_kb": 2048000.0,
+          "checksum": "bd0b52a4317559d25f0c2cc237ecb3793da90929f0e86f176de055c9b42d7a27",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "chromebook",
+          "file": "qmoi_ai_chromebook.zip",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/chromebook/latest/qmoi_ai_chromebook.zip",
+          "size_kb": 3072.0,
+          "checksum": "fbbf211d7980ac44ddc0eb9aea57fa3454a9858c4bb61dad29c39ff577d757f2",
+          "status": "SUCCESS"
+        }
+      ],
+      "total": 9,
+      "successful": 9,
+      "failed": 0
+    },
+    {
+      "app": "qmoi-space",
+      "name": "QMOI Space",
+      "version": "v1.2.3",
+      "timestamp": "2025-11-15T22:17:57.708328",
+      "results": [
+        {
+          "platform": "windows",
+          "file": "qmoi_ai.exe",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe",
+          "size_kb": 5120.0,
+          "checksum": "cab8cc8f068ea31e3a5f4f92095f16ea643bfbbd4663634623db254219e227cf",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "mac",
+          "file": "qmoi_ai.dmg",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/mac/latest/qmoi_ai.dmg",
+          "size_kb": 8192.0,
+          "checksum": "fb214458d6f0bb27f18ef94f700f4e43860d6dc4aad81d16d876fbed2942e52b",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "linux_appimage",
+          "file": "qmoi_ai.AppImage",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.AppImage",
+          "size_kb": 6144.0,
+          "checksum": "4775cbb9f62d3412fc1d33e68dc34eba4acefd216b3397a33cb7b68b15228950",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "android",
+          "file": "qmoi_ai.apk",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/android/latest/qmoi_ai.apk",
+          "size_kb": 10240.0,
+          "checksum": "ce4532942998fcfd1b97a8899a9f0f90a14b55cf42f9c642814adcd4dabf5395",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "ios",
+          "file": "qmoi_ai.ipa",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa",
+          "size_kb": 12288.0,
+          "checksum": "8a58a279f684c9f423403b7d6481ae7ef87442b015f13d32a70bfa252ff5b83c",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "chromebook",
+          "file": "qmoi_ai_chromebook.zip",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/chromebook/latest/qmoi_ai_chromebook.zip",
+          "size_kb": 3072.0,
+          "checksum": "fbbf211d7980ac44ddc0eb9aea57fa3454a9858c4bb61dad29c39ff577d757f2",
+          "status": "SUCCESS"
+        }
+      ],
+      "total": 6,
+      "successful": 6,
+      "failed": 0
+    },
+    {
+      "app": "q-latest",
+      "name": "Q latest",
+      "version": "v1.2.3",
+      "timestamp": "2025-11-15T22:17:57.965606",
+      "results": [
+        {
+          "platform": "windows",
+          "file": "qmoi_ai.exe",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe",
+          "size_kb": 5120.0,
+          "checksum": "cab8cc8f068ea31e3a5f4f92095f16ea643bfbbd4663634623db254219e227cf",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "mac",
+          "file": "qmoi_ai.dmg",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/mac/latest/qmoi_ai.dmg",
+          "size_kb": 8192.0,
+          "checksum": "fb214458d6f0bb27f18ef94f700f4e43860d6dc4aad81d16d876fbed2942e52b",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "linux_appimage",
+          "file": "qmoi_ai.AppImage",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.AppImage",
+          "size_kb": 6144.0,
+          "checksum": "4775cbb9f62d3412fc1d33e68dc34eba4acefd216b3397a33cb7b68b15228950",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "android",
+          "file": "qmoi_ai.apk",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/android/latest/qmoi_ai.apk",
+          "size_kb": 10240.0,
+          "checksum": "ce4532942998fcfd1b97a8899a9f0f90a14b55cf42f9c642814adcd4dabf5395",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "ios",
+          "file": "qmoi_ai.ipa",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa",
+          "size_kb": 12288.0,
+          "checksum": "8a58a279f684c9f423403b7d6481ae7ef87442b015f13d32a70bfa252ff5b83c",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "chromebook",
+          "file": "qmoi_ai_chromebook.zip",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/chromebook/latest/qmoi_ai_chromebook.zip",
+          "size_kb": 3072.0,
+          "checksum": "fbbf211d7980ac44ddc0eb9aea57fa3454a9858c4bb61dad29c39ff577d757f2",
+          "status": "SUCCESS"
+        }
+      ],
+      "total": 6,
+      "successful": 6,
+      "failed": 0
+    },
+    {
+      "app": "qcity",
+      "name": "QCity",
+      "version": "v2.0.1",
+      "timestamp": "2025-11-15T22:17:58.247670",
+      "results": [
+        {
+          "platform": "qcity",
+          "file": "qcity_package.zip",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/qcity/latest/qcity_package.zip",
+          "size_kb": 2048.0,
+          "checksum": "5d01bdd39d8839d14114a550afed8c61af2606e652259b92bd0da49023ca250c",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "windows",
+          "file": "qmoi_ai.exe",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe",
+          "size_kb": 5120.0,
+          "checksum": "cab8cc8f068ea31e3a5f4f92095f16ea643bfbbd4663634623db254219e227cf",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "mac",
+          "file": "qmoi_ai.dmg",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/mac/latest/qmoi_ai.dmg",
+          "size_kb": 8192.0,
+          "checksum": "fb214458d6f0bb27f18ef94f700f4e43860d6dc4aad81d16d876fbed2942e52b",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "linux_appimage",
+          "file": "qmoi_ai.AppImage",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.AppImage",
+          "size_kb": 6144.0,
+          "checksum": "4775cbb9f62d3412fc1d33e68dc34eba4acefd216b3397a33cb7b68b15228950",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "android",
+          "file": "qmoi_ai.apk",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/android/latest/qmoi_ai.apk",
+          "size_kb": 10240.0,
+          "checksum": "ce4532942998fcfd1b97a8899a9f0f90a14b55cf42f9c642814adcd4dabf5395",
+          "status": "SUCCESS"
+        },
+        {
+          "platform": "ios",
+          "file": "qmoi_ai.ipa",
+          "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa",
+          "size_kb": 12288.0,
+          "checksum": "8a58a279f684c9f423403b7d6481ae7ef87442b015f13d32a70bfa252ff5b83c",
+          "status": "SUCCESS"
+        }
+      ],
+      "total": 6,
+      "successful": 6,
+      "failed": 0
+    }
+  ],
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:59.206912",
+  "autoPRODUCTION": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:17.352842",
+    "version": "2026-04-20"
+  },
+  "PRODUCTION_READY": true,
+  "last_production_enhancement": "2026-04-22T04:59:11.461882",
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
+}

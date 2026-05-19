@@ -1,0 +1,552 @@
+{
+  "timestamp": "2026-05-03T17:46:49.793520",
+  "domains_validated": [
+    "qvillage.com",
+    "qmoi.ai",
+    "stableq.ai",
+    "qshare.qvillage.com",
+    "qstore.qvillage.com",
+    "qcity.qmoi.ai"
+  ],
+  "overall_status": "warning",
+  "summary": {
+    "total_domains": 6,
+    "domains_passed": 0,
+    "domains_failed": 0,
+    "domains_warning": 6
+  },
+  "details": {
+    "qvillage.com": {
+      "domain": "qvillage.com",
+      "type": "primary_hub",
+      "status": "warning",
+      "validations": {
+        "content_types": {
+          "status": "passed",
+          "expected_types": [
+            "html",
+            "css",
+            "js",
+            "images",
+            "fonts"
+          ],
+          "found_types": [],
+          "missing_types": [],
+          "issues": []
+        },
+        "ui_components": {
+          "status": "warning",
+          "expected_components": [
+            "navbar",
+            "hero_section",
+            "featured_links",
+            "search_bar",
+            "community_cards",
+            "footer"
+          ],
+          "found_components": [],
+          "missing_components": [
+            "navbar",
+            "hero_section",
+            "featured_links",
+            "search_bar",
+            "community_cards",
+            "footer"
+          ],
+          "issues": []
+        },
+        "endpoints": {
+          "status": "warning",
+          "expected_endpoints": [
+            "/",
+            "/community",
+            "/docs"
+          ],
+          "found_endpoints": [],
+          "missing_endpoints": [
+            "/",
+            "/community",
+            "/docs"
+          ],
+          "issues": []
+        },
+        "features": {
+          "status": "warning",
+          "expected_features": [
+            "community_dashboard",
+            "service_directory",
+            "search",
+            "marketplace",
+            "file_sharing",
+            "documentation_portal",
+            "responsive_design",
+            "ssl_certificate",
+            "footer",
+            "navigation",
+            "link_directory"
+          ],
+          "validated_features": [
+            "search",
+            "ssl_certificate",
+            "navigation"
+          ],
+          "issues": [
+            "Feature 'community_dashboard' not found in codebase",
+            "Feature 'service_directory' not found in codebase",
+            "Feature 'marketplace' not found in codebase",
+            "Feature 'file_sharing' not found in codebase",
+            "Feature 'documentation_portal' not found in codebase",
+            "Feature 'responsive_design' not found in codebase",
+            "Feature 'footer' not found in codebase",
+            "Feature 'link_directory' not found in codebase"
+          ]
+        },
+        "security": {
+          "status": "passed",
+          "checks": [
+            "SSL configuration files found",
+            "Security-related files found"
+          ],
+          "issues": []
+        }
+      },
+      "issues": [],
+      "recommendations": []
+    },
+    "qmoi.ai": {
+      "domain": "qmoi.ai",
+      "type": "main_app",
+      "status": "warning",
+      "validations": {
+        "content_types": {
+          "status": "passed",
+          "expected_types": [
+            "html",
+            "css",
+            "js",
+            "images",
+            "json"
+          ],
+          "found_types": [],
+          "missing_types": [],
+          "issues": []
+        },
+        "ui_components": {
+          "status": "warning",
+          "expected_components": [
+            "chat_window",
+            "model_cards",
+            "sidebar",
+            "toolbar",
+            "action_buttons",
+            "footer"
+          ],
+          "found_components": [],
+          "missing_components": [
+            "chat_window",
+            "model_cards",
+            "sidebar",
+            "toolbar",
+            "action_buttons",
+            "footer"
+          ],
+          "issues": []
+        },
+        "endpoints": {
+          "status": "warning",
+          "expected_endpoints": [
+            "/",
+            "/chat",
+            "/dashboard"
+          ],
+          "found_endpoints": [],
+          "missing_endpoints": [
+            "/",
+            "/chat",
+            "/dashboard"
+          ],
+          "issues": []
+        },
+        "features": {
+          "status": "warning",
+          "expected_features": [
+            "chat_interface",
+            "model_selection",
+            "dashboard",
+            "user_profile",
+            "api_access",
+            "responsive_design",
+            "ssl_certificate",
+            "analytics",
+            "help_center"
+          ],
+          "validated_features": [
+            "dashboard",
+            "ssl_certificate",
+            "analytics"
+          ],
+          "issues": [
+            "Feature 'chat_interface' not found in codebase",
+            "Feature 'model_selection' not found in codebase",
+            "Feature 'user_profile' not found in codebase",
+            "Feature 'api_access' not found in codebase",
+            "Feature 'responsive_design' not found in codebase",
+            "Feature 'help_center' not found in codebase"
+          ]
+        },
+        "security": {
+          "status": "passed",
+          "checks": [
+            "SSL configuration files found",
+            "Security-related files found"
+          ],
+          "issues": []
+        }
+      },
+      "issues": [],
+      "recommendations": []
+    },
+    "stableq.ai": {
+      "domain": "stableq.ai",
+      "type": "ai_platform",
+      "status": "warning",
+      "validations": {
+        "content_types": {
+          "status": "passed",
+          "expected_types": [
+            "html",
+            "css",
+            "js",
+            "json",
+            "images"
+          ],
+          "found_types": [],
+          "missing_types": [],
+          "issues": []
+        },
+        "ui_components": {
+          "status": "warning",
+          "expected_components": [
+            "model_selector",
+            "chat_input",
+            "results_panel",
+            "analytics_charts",
+            "navigation_menu"
+          ],
+          "found_components": [],
+          "missing_components": [
+            "model_selector",
+            "chat_input",
+            "results_panel",
+            "analytics_charts",
+            "navigation_menu"
+          ],
+          "issues": []
+        },
+        "endpoints": {
+          "status": "warning",
+          "expected_endpoints": [
+            "/",
+            "/chat",
+            "/models"
+          ],
+          "found_endpoints": [],
+          "missing_endpoints": [
+            "/",
+            "/chat",
+            "/models"
+          ],
+          "issues": []
+        },
+        "features": {
+          "status": "warning",
+          "expected_features": [
+            "ai_dashboard",
+            "model_gallery",
+            "chat_interface",
+            "api_documentation",
+            "analytics_panel",
+            "ssl_certificate",
+            "responsive_design"
+          ],
+          "validated_features": [
+            "api_documentation",
+            "ssl_certificate"
+          ],
+          "issues": [
+            "Feature 'ai_dashboard' not found in codebase",
+            "Feature 'model_gallery' not found in codebase",
+            "Feature 'chat_interface' not found in codebase",
+            "Feature 'analytics_panel' not found in codebase",
+            "Feature 'responsive_design' not found in codebase"
+          ]
+        },
+        "security": {
+          "status": "passed",
+          "checks": [
+            "SSL configuration files found",
+            "Security-related files found"
+          ],
+          "issues": []
+        }
+      },
+      "issues": [],
+      "recommendations": []
+    },
+    "qshare.qvillage.com": {
+      "domain": "qshare.qvillage.com",
+      "type": "file_sharing",
+      "status": "warning",
+      "validations": {
+        "content_types": {
+          "status": "passed",
+          "expected_types": [
+            "html",
+            "css",
+            "js",
+            "images"
+          ],
+          "found_types": [],
+          "missing_types": [],
+          "issues": []
+        },
+        "ui_components": {
+          "status": "warning",
+          "expected_components": [
+            "upload_form",
+            "file_list",
+            "share_button",
+            "progress_indicator",
+            "footer"
+          ],
+          "found_components": [],
+          "missing_components": [
+            "upload_form",
+            "file_list",
+            "share_button",
+            "progress_indicator",
+            "footer"
+          ],
+          "issues": []
+        },
+        "endpoints": {
+          "status": "warning",
+          "expected_endpoints": [
+            "/",
+            "/upload",
+            "/share"
+          ],
+          "found_endpoints": [],
+          "missing_endpoints": [
+            "/",
+            "/upload",
+            "/share"
+          ],
+          "issues": []
+        },
+        "features": {
+          "status": "warning",
+          "expected_features": [
+            "file_upload",
+            "file_sharing",
+            "download_links",
+            "share_permissions",
+            "ssl_certificate",
+            "responsive_design"
+          ],
+          "validated_features": [
+            "download_links",
+            "ssl_certificate"
+          ],
+          "issues": [
+            "Feature 'file_upload' not found in codebase",
+            "Feature 'file_sharing' not found in codebase",
+            "Feature 'share_permissions' not found in codebase",
+            "Feature 'responsive_design' not found in codebase"
+          ]
+        },
+        "security": {
+          "status": "passed",
+          "checks": [
+            "SSL configuration files found",
+            "Security-related files found"
+          ],
+          "issues": []
+        }
+      },
+      "issues": [],
+      "recommendations": []
+    },
+    "qstore.qvillage.com": {
+      "domain": "qstore.qvillage.com",
+      "type": "app_store",
+      "status": "warning",
+      "validations": {
+        "content_types": {
+          "status": "passed",
+          "expected_types": [
+            "html",
+            "css",
+            "js",
+            "images"
+          ],
+          "found_types": [],
+          "missing_types": [],
+          "issues": []
+        },
+        "ui_components": {
+          "status": "warning",
+          "expected_components": [
+            "app_cards",
+            "search_bar",
+            "filters",
+            "download_buttons",
+            "footer"
+          ],
+          "found_components": [],
+          "missing_components": [
+            "app_cards",
+            "search_bar",
+            "filters",
+            "download_buttons",
+            "footer"
+          ],
+          "issues": []
+        },
+        "endpoints": {
+          "status": "warning",
+          "expected_endpoints": [
+            "/",
+            "/apps"
+          ],
+          "found_endpoints": [],
+          "missing_endpoints": [
+            "/",
+            "/apps"
+          ],
+          "issues": []
+        },
+        "features": {
+          "status": "warning",
+          "expected_features": [
+            "app_catalog",
+            "app_search",
+            "download_buttons",
+            "ratings_reviews",
+            "ssl_certificate",
+            "responsive_design"
+          ],
+          "validated_features": [
+            "ssl_certificate"
+          ],
+          "issues": [
+            "Feature 'app_catalog' not found in codebase",
+            "Feature 'app_search' not found in codebase",
+            "Feature 'download_buttons' not found in codebase",
+            "Feature 'ratings_reviews' not found in codebase",
+            "Feature 'responsive_design' not found in codebase"
+          ]
+        },
+        "security": {
+          "status": "passed",
+          "checks": [
+            "SSL configuration files found",
+            "Security-related files found"
+          ],
+          "issues": []
+        }
+      },
+      "issues": [],
+      "recommendations": []
+    },
+    "qcity.qmoi.ai": {
+      "domain": "qcity.qmoi.ai",
+      "type": "city_service",
+      "status": "warning",
+      "validations": {
+        "content_types": {
+          "status": "passed",
+          "expected_types": [
+            "html",
+            "css",
+            "js",
+            "images",
+            "json"
+          ],
+          "found_types": [],
+          "missing_types": [],
+          "issues": []
+        },
+        "ui_components": {
+          "status": "warning",
+          "expected_components": [
+            "city_map",
+            "service_cards",
+            "status_indicators",
+            "navigation_menu",
+            "footer"
+          ],
+          "found_components": [],
+          "missing_components": [
+            "city_map",
+            "service_cards",
+            "status_indicators",
+            "navigation_menu",
+            "footer"
+          ],
+          "issues": []
+        },
+        "endpoints": {
+          "status": "warning",
+          "expected_endpoints": [
+            "/",
+            "/map",
+            "/services"
+          ],
+          "found_endpoints": [],
+          "missing_endpoints": [
+            "/",
+            "/map",
+            "/services"
+          ],
+          "issues": []
+        },
+        "features": {
+          "status": "warning",
+          "expected_features": [
+            "city_dashboard",
+            "map_view",
+            "service_directory",
+            "real_time_status",
+            "ssl_certificate",
+            "responsive_design",
+            "navigation",
+            "footer"
+          ],
+          "validated_features": [
+            "city_dashboard",
+            "real_time_status",
+            "ssl_certificate",
+            "navigation"
+          ],
+          "issues": [
+            "Feature 'map_view' not found in codebase",
+            "Feature 'service_directory' not found in codebase",
+            "Feature 'responsive_design' not found in codebase",
+            "Feature 'footer' not found in codebase"
+          ]
+        },
+        "security": {
+          "status": "passed",
+          "checks": [
+            "SSL configuration files found",
+            "Security-related files found"
+          ],
+          "issues": []
+        }
+      },
+      "issues": [],
+      "recommendations": []
+    }
+  }
+}

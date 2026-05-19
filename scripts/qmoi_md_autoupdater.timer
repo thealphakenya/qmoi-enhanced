@@ -1,0 +1,14 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:54.583648 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:13.867213 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:09.477219 -->
+[Unit]
+Description=Run QMOI Markdown Auto-Updater periodically
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=60min
+Persistent=true
+Unit=qmoi_md_autoupdater.service
+
+[Install]
+WantedBy=timers.target

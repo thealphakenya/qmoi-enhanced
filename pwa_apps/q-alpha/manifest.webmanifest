@@ -1,0 +1,32 @@
+{
+  "name": "Q-Alpha - Research Platform",
+  "short_name": "Q-Alpha",
+  "description": "Alpha-stage research and experimentation platform for quantum intelligence",
+  "start_url": "/pwa_apps/q-alpha/",
+  "scope": "/pwa_apps/q-alpha/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b1220",
+  "theme_color": "#0b5fff",
+  "dir": "ltr",
+  "lang": "en-US",
+  "categories": [
+    "productivity",
+    "business",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

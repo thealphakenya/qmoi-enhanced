@@ -1,0 +1,710 @@
+[
+  {
+    "component": "README_DOCUMENTATION",
+    "version": "98.5",
+    "source": "README_DOCUMENTATION.md",
+    "type": "doc"
+  },
+  {
+    "component": "version_info",
+    "version": "1.0.0",
+    "source": "version_info.txt",
+    "type": "doc"
+  },
+  {
+    "component": "RELEASE_FINALIZATION_PLAN",
+    "version": "v1.2.4",
+    "source": "RELEASE_FINALIZATION_PLAN.md",
+    "type": "doc"
+  },
+  {
+    "component": "GITHUB_RELEASES_CONFIG",
+    "version": "1.0.0",
+    "source": "GITHUB_RELEASES_CONFIG.json",
+    "type": "doc"
+  },
+  {
+    "component": "ALLVERSIONS",
+    "version": "v2.5.1",
+    "source": "ALLVERSIONS.md",
+    "type": "doc"
+  },
+  {
+    "component": "MASTER_README",
+    "version": "1.0.0",
+    "source": "MASTER_README.md",
+    "type": "doc"
+  },
+  {
+    "component": "RELEASE_v1.2.5_VERIFICATION_GUIDE",
+    "version": "v1.2.5",
+    "source": "RELEASE_v1.2.5_VERIFICATION_GUIDE.md",
+    "type": "doc"
+  },
+  {
+    "component": "RELEASE_NOTES_v1.2.4",
+    "version": "v1.2.4",
+    "source": "RELEASE_NOTES_v1.2.4.md",
+    "type": "doc"
+  },
+  {
+    "component": "CASHONTRADINGREADME",
+    "version": "0.10",
+    "source": "CASHONTRADINGREADME.md",
+    "type": "doc"
+  },
+  {
+    "component": "RELEASE_VERIFICATION_V1_2_3",
+    "version": "v1.2.3",
+    "source": "RELEASE_VERIFICATION_V1_2_3.md",
+    "type": "doc"
+  },
+  {
+    "component": "SCRIPTSREADME",
+    "version": "3.7",
+    "source": "SCRIPTSREADME.md",
+    "type": "doc"
+  },
+  {
+    "component": "README_MONITORING",
+    "version": "2.1.0",
+    "source": "README_MONITORING.md",
+    "type": "doc"
+  },
+  {
+    "component": "VERCEL_AUTO_UPDATE_README",
+    "version": "1.0.0",
+    "source": "VERCEL_AUTO_UPDATE_README.md",
+    "type": "doc"
+  },
+  {
+    "component": "QMOI_RELEASE_VERSION_SYSTEM",
+    "version": "v2.5.3",
+    "source": "QMOI_RELEASE_VERSION_SYSTEM.md",
+    "type": "doc"
+  },
+  {
+    "component": "README_ENHANCED",
+    "version": "5.2",
+    "source": "README_ENHANCED.md",
+    "type": "doc"
+  },
+  {
+    "component": "DEPLOYMENT-README",
+    "version": "v1.2.3",
+    "source": "DEPLOYMENT-README.md",
+    "type": "doc"
+  },
+  {
+    "component": "GITHUB_RELEASES_REALTIME_GUIDE",
+    "version": "v1.2.3",
+    "source": "GITHUB_RELEASES_REALTIME_GUIDE.md",
+    "type": "doc"
+  },
+  {
+    "component": "QCITYREADME",
+    "version": "99.99",
+    "source": "QCITYREADME.md",
+    "type": "doc"
+  },
+  {
+    "component": "production_DEPLOYMENT_README",
+    "version": "76.76.21",
+    "source": "production_DEPLOYMENT_README.md",
+    "type": "doc"
+  },
+  {
+    "component": "ERRORSREADME",
+    "version": "8.08",
+    "source": "ERRORSREADME.md",
+    "type": "doc"
+  },
+  {
+    "component": "README_production",
+    "version": "5.2.0-blue",
+    "source": "README_production.md",
+    "type": "doc"
+  },
+  {
+    "component": "qmoi-enhanced-system",
+    "version": "2.0.0",
+    "source": "package.json",
+    "type": "npm"
+  },
+  {
+    "component": "production_RELEASE_ACTION_PLAN",
+    "version": "v1.2.4",
+    "source": "production_RELEASE_ACTION_PLAN.md",
+    "type": "doc"
+  },
+  {
+    "component": "RELEASETRACKS",
+    "version": "v2.5.1",
+    "source": "RELEASETRACKS.md",
+    "type": "doc"
+  },
+  {
+    "component": "TESTREADME",
+    "version": "8.08",
+    "source": "TESTREADME.md",
+    "type": "doc"
+  },
+  {
+    "component": "ALLQMOIAIAPPSREALEASESVERSIONS",
+    "version": "v1.0.0",
+    "source": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
+    "type": "doc"
+  },
+  {
+    "component": "publish-releases-realtime",
+    "version": "v1.2.3",
+    "source": "publish-releases-realtime.py",
+    "type": "doc"
+  },
+  {
+    "component": "RELEASE_v1.2.5_COMPLETION_REPORT",
+    "version": "v1.2.5",
+    "source": "RELEASE_v1.2.5_COMPLETION_REPORT.md",
+    "type": "doc"
+  },
+  {
+    "component": "RELEASE_v1.2.5_INSPECTION",
+    "version": "v1.2.5",
+    "source": "RELEASE_v1.2.5_INSPECTION.md",
+    "type": "doc"
+  },
+  {
+    "component": "production_RELEASE_DOCS_INDEX",
+    "version": "v1.2.3",
+    "source": "production_RELEASE_DOCS_INDEX.md",
+    "type": "doc"
+  },
+  {
+    "component": "QMOI_RELEASE_VERIFICATION_SYSTEM",
+    "version": "v1.0.0",
+    "source": "QMOI_RELEASE_VERIFICATION_SYSTEM.md",
+    "type": "doc"
+  },
+  {
+    "component": "QMOI_V1_2_3_RELEASE_PLAN_SUMMARY",
+    "version": "v1.2.3",
+    "source": "QMOI_V1_2_3_RELEASE_PLAN_SUMMARY.md",
+    "type": "doc"
+  },
+  {
+    "component": "GITHUB_RELEASES_GUIDE",
+    "version": "v1.2.3",
+    "source": "GITHUB_RELEASES_GUIDE.md",
+    "type": "doc"
+  },
+  {
+    "component": "RELEASE_v1.2.5_PUBLISH_REPORT",
+    "version": "v1.2.5",
+    "source": "RELEASE_v1.2.5_PUBLISH_REPORT.md",
+    "type": "doc"
+  },
+  {
+    "component": "QSERVERREADME",
+    "version": "99.99",
+    "source": "QSERVERREADME.md",
+    "type": "doc"
+  },
+  {
+    "component": "GITHUB_RELEASES_QUICK_REFERENCE",
+    "version": "v1.2.3",
+    "source": "GITHUB_RELEASES_QUICK_REFERENCE.md",
+    "type": "doc"
+  },
+  {
+    "component": "publish-releases-realtime",
+    "version": "v1.2.3",
+    "source": "publish-releases-realtime.sh",
+    "type": "doc"
+  },
+  {
+    "component": "publish-github-releases",
+    "version": "v1.2.3",
+    "source": "publish-github-releases.sh",
+    "type": "doc"
+  },
+  {
+    "component": "GITHUB_RELEASES_RECENT",
+    "version": "v1.2.4",
+    "source": "GITHUB_RELEASES_RECENT.md",
+    "type": "doc"
+  },
+  {
+    "component": "GITHUB_RELEASES_INDEX",
+    "version": "v1.2.3",
+    "source": "GITHUB_RELEASES_INDEX.md",
+    "type": "doc"
+  },
+  {
+    "component": "PRE_RELEASE_DISTRIBUTION_PLAN",
+    "version": "v1.2.3",
+    "source": "PRE_RELEASE_DISTRIBUTION_PLAN.md",
+    "type": "doc"
+  },
+  {
+    "component": "RELEASE_v1.2.3_COMPLETE",
+    "version": "v1.2.3",
+    "source": "RELEASE_v1.2.3_COMPLETE.md",
+    "type": "doc"
+  },
+  {
+    "component": "GITHUB_RELEASES_VERIFICATION_REPORT",
+    "version": "v1.2.3",
+    "source": "GITHUB_RELEASES_VERIFICATION_REPORT.md",
+    "type": "doc"
+  },
+  {
+    "component": "README (1)",
+    "version": "v1.2.3",
+    "source": "README (1).md",
+    "type": "doc"
+  },
+  {
+    "component": "production_RELEASE_VALIDATION_CHECKLIST",
+    "version": "v1.2.3",
+    "source": "production_RELEASE_VALIDATION_CHECKLIST.md",
+    "type": "doc"
+  },
+  {
+    "component": "TRADINGREADME",
+    "version": "203.0.113",
+    "source": "TRADINGREADME.md",
+    "type": "doc"
+  },
+  {
+    "component": "RELEASE_v1.2.5_READY",
+    "version": "v1.2.5",
+    "source": "RELEASE_v1.2.5_READY.md",
+    "type": "doc"
+  },
+  {
+    "component": "release",
+    "version": "v1.0.1",
+    "source": "release.json",
+    "type": "doc"
+  },
+  {
+    "component": "README",
+    "version": "v1.2.3",
+    "source": "README.md",
+    "type": "doc"
+  },
+  {
+    "component": "QMOI_REALTIME_RELEASES_IMPLEMENTATION",
+    "version": "v1.2.3",
+    "source": "QMOI_REALTIME_RELEASES_IMPLEMENTATION.md",
+    "type": "doc"
+  },
+  {
+    "component": "GITHUB_RELEASES_QUICKSTART",
+    "version": "v1.2.3",
+    "source": "GITHUB_RELEASES_QUICKSTART.md",
+    "type": "doc"
+  },
+  {
+    "component": "GITHUB_RELEASES_COMPLETE_GUIDE",
+    "version": "v1.2.3",
+    "source": "GITHUB_RELEASES_COMPLETE_GUIDE.md",
+    "type": "doc"
+  },
+  {
+    "component": "QCITY-README",
+    "version": "1.1",
+    "source": "QCITY-README.md",
+    "type": "doc"
+  },
+  {
+    "component": "RELEASE_v1.2.5_STATUS_REPORT",
+    "version": "v1.2.5",
+    "source": "RELEASE_v1.2.5_STATUS_REPORT.md",
+    "type": "doc"
+  },
+  {
+    "component": "README",
+    "version": "1.0.0",
+    "source": "docs/README.md",
+    "type": "doc"
+  },
+  {
+    "component": "README",
+    "version": "3.8",
+    "source": "qvillage/README.md",
+    "type": "doc"
+  },
+  {
+    "component": "release-notes",
+    "version": "1.2.0",
+    "source": "components/release-notes.ts",
+    "type": "doc"
+  },
+  {
+    "component": "release.yml.backup",
+    "version": "3.11",
+    "source": ".github/workflows/release.yml.backup.1760307818153",
+    "type": "doc"
+  },
+  {
+    "component": "release-compliance-check",
+    "version": "3.11",
+    "source": ".github/workflows/release-compliance-check.yml",
+    "type": "doc"
+  },
+  {
+    "component": "publish-releases-realtime",
+    "version": "v1.2.3",
+    "source": ".github/workflows/publish-releases-realtime.yml",
+    "type": "doc"
+  },
+  {
+    "component": "rebuild-deb-verify-release",
+    "version": "v1.2.3",
+    "source": ".github/workflows/rebuild-deb-verify-release.yml",
+    "type": "doc"
+  },
+  {
+    "component": "release",
+    "version": "3.11",
+    "source": ".github/workflows/release.yml",
+    "type": "doc"
+  },
+  {
+    "component": "auto_release_variations",
+    "version": "v1.2.3",
+    "source": ".github/workflows/auto_release_variations.yml",
+    "type": "doc"
+  },
+  {
+    "component": "release.yml.backup",
+    "version": "3.11",
+    "source": ".github/workflows/release.yml.backup.1760308915811",
+    "type": "doc"
+  },
+  {
+    "component": "build-and-release",
+    "version": "33.0.2",
+    "source": ".github/workflows/build-and-release.yml",
+    "type": "doc"
+  },
+  {
+    "component": "sync-releases-from-manifest",
+    "version": "3.11",
+    "source": ".github/workflows/sync-releases-from-manifest.yml",
+    "type": "doc"
+  },
+  {
+    "component": "verify-release-assets",
+    "version": "3.11",
+    "source": ".github/workflows/verify-release-assets.yml",
+    "type": "doc"
+  },
+  {
+    "component": "test_release_helper",
+    "version": "0.0.0",
+    "source": "tests/test_release_helper.py",
+    "type": "doc"
+  },
+  {
+    "component": "version_info",
+    "version": "1.0.0",
+    "source": "_archive_qmoi-enhanced/version_info.txt",
+    "type": "doc"
+  },
+  {
+    "component": "CASHONTRADINGREADME",
+    "version": "0.10",
+    "source": "_archive_qmoi-enhanced/CASHONTRADINGREADME.md",
+    "type": "doc"
+  },
+  {
+    "component": "SCRIPTSREADME",
+    "version": "3.7",
+    "source": "_archive_qmoi-enhanced/SCRIPTSREADME.md",
+    "type": "doc"
+  },
+  {
+    "component": "DEPLOYMENT-README",
+    "version": "0.05",
+    "source": "_archive_qmoi-enhanced/DEPLOYMENT-README.md",
+    "type": "doc"
+  },
+  {
+    "component": "QCITYREADME",
+    "version": "99.99",
+    "source": "_archive_qmoi-enhanced/QCITYREADME.md",
+    "type": "doc"
+  },
+  {
+    "component": "ERRORSREADME",
+    "version": "8.08",
+    "source": "_archive_qmoi-enhanced/ERRORSREADME.md",
+    "type": "doc"
+  },
+  {
+    "component": "TESTREADME",
+    "version": "8.08",
+    "source": "_archive_qmoi-enhanced/TESTREADME.md",
+    "type": "doc"
+  },
+  {
+    "component": "ALLQMOIAIAPPSREALEASESVERSIONS",
+    "version": "v2.0.1",
+    "source": "_archive_qmoi-enhanced/ALLQMOIAIAPPSREALEASESVERSIONS.md",
+    "type": "doc"
+  },
+  {
+    "component": "QSERVERREADME",
+    "version": "99.99",
+    "source": "_archive_qmoi-enhanced/QSERVERREADME.md",
+    "type": "doc"
+  },
+  {
+    "component": "README (1)",
+    "version": "v1.2.3",
+    "source": "_archive_qmoi-enhanced/README (1).md",
+    "type": "doc"
+  },
+  {
+    "component": "TRADINGREADME",
+    "version": "203.0.113",
+    "source": "_archive_qmoi-enhanced/TRADINGREADME.md",
+    "type": "doc"
+  },
+  {
+    "component": "release",
+    "version": "v1.0.1",
+    "source": "_archive_qmoi-enhanced/release.json",
+    "type": "doc"
+  },
+  {
+    "component": "README",
+    "version": "00.000000",
+    "source": "_archive_qmoi-enhanced/README.md",
+    "type": "doc"
+  },
+  {
+    "component": "README",
+    "version": "1.0.0",
+    "source": "_archive_qmoi-enhanced/docs/README.md",
+    "type": "doc"
+  },
+  {
+    "component": "release-notes",
+    "version": "1.2.0",
+    "source": "_archive_qmoi-enhanced/components/release-notes.ts",
+    "type": "doc"
+  },
+  {
+    "component": "release",
+    "version": "3.11",
+    "source": "_archive_qmoi-enhanced/.github/workflows/release.yml",
+    "type": "doc"
+  },
+  {
+    "component": "release-notes",
+    "version": "v1.0",
+    "source": "_archive_qmoi-enhanced/src/components/release-notes.tsx",
+    "type": "doc"
+  },
+  {
+    "component": "releases_audit",
+    "version": "v1.2.5",
+    "source": "tools/releases_audit.md",
+    "type": "doc"
+  },
+  {
+    "component": "release_helper",
+    "version": "v1.2.3",
+    "source": "tools/release_helper.py",
+    "type": "doc"
+  },
+  {
+    "component": "release_remediation_guide",
+    "version": "v1.2.5",
+    "source": "tools/release_remediation_guide.md",
+    "type": "doc"
+  },
+  {
+    "component": "releases_audit",
+    "version": "v1.2.5",
+    "source": "tools/releases_audit.json",
+    "type": "doc"
+  },
+  {
+    "component": "releases_api",
+    "version": "v1.2.5",
+    "source": "tools/releases_api.json",
+    "type": "doc"
+  },
+  {
+    "component": "versions_summary",
+    "version": "1.0.0",
+    "source": "tools/versions_summary.json",
+    "type": "doc"
+  },
+  {
+    "component": "releases_assets_report",
+    "version": "v1.2.5",
+    "source": "tools/releases_assets_report.md",
+    "type": "doc"
+  },
+  {
+    "component": "releases_assets_report",
+    "version": "v1.2.5",
+    "source": "tools/releases_assets_report.json",
+    "type": "doc"
+  },
+  {
+    "component": "github_releases_publisher",
+    "version": "v1.2.3",
+    "source": "tools/github_releases_publisher.py",
+    "type": "doc"
+  },
+  {
+    "component": "update_v1.2.4",
+    "version": "v1.2.4",
+    "source": "tools/release_PRODUCTIONlates/update_v1.2.4.json",
+    "type": "doc"
+  },
+  {
+    "component": "update",
+    "version": "v1.2.3",
+    "source": "tools/release_PRODUCTIONlates/update.json",
+    "type": "doc"
+  },
+  {
+    "component": "update_v1.2.5",
+    "version": "v1.2.5",
+    "source": "tools/release_PRODUCTIONlates/update_v1.2.5.json",
+    "type": "doc"
+  },
+  {
+    "component": "qshare",
+    "version": "1.0",
+    "source": "tools/release_PRODUCTIONlates/icons/qshare.svg",
+    "type": "doc"
+  },
+  {
+    "component": "yap",
+    "version": "1.0",
+    "source": "tools/release_PRODUCTIONlates/icons/yap.svg",
+    "type": "doc"
+  },
+  {
+    "component": "qcity",
+    "version": "1.0",
+    "source": "tools/release_PRODUCTIONlates/icons/qcity.svg",
+    "type": "doc"
+  },
+  {
+    "component": "qvillage",
+    "version": "1.0",
+    "source": "tools/release_PRODUCTIONlates/icons/qvillage.svg",
+    "type": "doc"
+  },
+  {
+    "component": "qmoi-space",
+    "version": "0.12",
+    "source": "tools/release_PRODUCTIONlates/icons/qmoi-space.svg",
+    "type": "doc"
+  },
+  {
+    "component": "qstore",
+    "version": "1.0",
+    "source": "tools/release_PRODUCTIONlates/icons/qstore.svg",
+    "type": "doc"
+  },
+  {
+    "component": "qmoi",
+    "version": "1.0",
+    "source": "tools/release_PRODUCTIONlates/icons/qmoi.svg",
+    "type": "doc"
+  },
+  {
+    "component": "0940_qmoi-enhanced_release.json",
+    "version": "v1.0.1",
+    "source": "tools/issue_drafts/0940_qmoi-enhanced_release.json.md",
+    "type": "doc"
+  },
+  {
+    "component": "0936_qmoi-enhanced_models_latest_README.md",
+    "version": "8.08",
+    "source": "tools/issue_drafts/0936_qmoi-enhanced_models_latest_README.md.md",
+    "type": "doc"
+  },
+  {
+    "component": "0551_RELEASETRACKS.md",
+    "version": "v2.5.1",
+    "source": "tools/issue_drafts/0551_RELEASETRACKS.md.md",
+    "type": "doc"
+  },
+  {
+    "component": "0604_models_latest_README.md",
+    "version": "8.08",
+    "source": "tools/issue_drafts/0604_models_latest_README.md.md",
+    "type": "doc"
+  },
+  {
+    "component": "0552_RELEASETRACKS.md.dotfix.bak",
+    "version": "v2.5.1",
+    "source": "tools/issue_drafts/0552_RELEASETRACKS.md.dotfix.bak.md",
+    "type": "doc"
+  },
+  {
+    "component": "0553_RELEASETRACKS.md.linkfix.bak",
+    "version": "v2.5.1",
+    "source": "tools/issue_drafts/0553_RELEASETRACKS.md.linkfix.bak.md",
+    "type": "doc"
+  },
+  {
+    "component": "0853_qmoi-enhanced_ALLQMOIAIAPPSREALEASESVERSIONS.md",
+    "version": "v2.0.1",
+    "source": "tools/issue_drafts/0853_qmoi-enhanced_ALLQMOIAIAPPSREALEASESVERSIONS.md.md",
+    "type": "doc"
+  },
+  {
+    "component": "1014_release.json",
+    "version": "v1.0.1",
+    "source": "tools/issue_drafts/1014_release.json.md",
+    "type": "doc"
+  },
+  {
+    "component": "replace_all_release_assets",
+    "version": "v1.2.5",
+    "source": "scripts/replace_all_release_assets.py",
+    "type": "doc"
+  },
+  {
+    "component": "restore_release_assets",
+    "version": "v1.2.3",
+    "source": "scripts/restore_release_assets.py",
+    "type": "doc"
+  },
+  {
+    "component": "release_helper",
+    "version": "3.11",
+    "source": "scripts/release_helper.py",
+    "type": "doc"
+  },
+  {
+    "component": "update_readme_tree_docs",
+    "version": "8.08",
+    "source": "scripts/update_readme_tree_docs.py",
+    "type": "doc"
+  },
+  {
+    "component": "github_releases_check",
+    "version": "v1.2.5",
+    "source": "reports/github_releases_check.json",
+    "type": "doc"
+  },
+  {
+    "component": "final_release_verification",
+    "version": "26.995032",
+    "source": "reports/final_release_verification.json",
+    "type": "doc"
+  }
+]

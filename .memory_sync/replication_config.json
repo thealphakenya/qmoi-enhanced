@@ -1,0 +1,37 @@
+{
+  "timestamp": "2026-04-19T14:04:52.190205",
+  "replication_strategy": "multi_location_backup",
+  "primary_location": "/workspaces/qmoi-enhanced",
+  "replica_locations": [
+    "/workspaces/qmoi-enhanced/.memory_sync",
+    "/workspaces/qmoi-enhanced/.backups/memory_replicas",
+    "/workspaces/qmoi-enhanced/.evolution_backups"
+  ],
+  "replication_factor": 3,
+  "sync_protocol": "master_slave_with_quorum",
+  "consistency_model": "strong_consistency",
+  "failover_enabled": true,
+  "features": {
+    "automatic_failover": true,
+    "data_redundancy": true,
+    "location_diversity": true,
+    "recovery_capability": true
+  },
+  "replica_status": {
+    "replica_0": {
+      "location": "/workspaces/qmoi-enhanced/.memory_sync",
+      "status": "synchronized",
+      "last_sync": "2026-04-19T14:04:52.190321"
+    },
+    "replica_1": {
+      "location": "/workspaces/qmoi-enhanced/.backups/memory_replicas",
+      "status": "synchronized",
+      "last_sync": "2026-04-19T14:04:52.190367"
+    },
+    "replica_2": {
+      "location": "/workspaces/qmoi-enhanced/.evolution_backups",
+      "status": "synchronized",
+      "last_sync": "2026-04-19T14:04:52.190409"
+    }
+  }
+}

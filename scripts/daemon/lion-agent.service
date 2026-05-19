@@ -1,0 +1,18 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:08:06.195106 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:14.425233 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:10.358760 -->
+[Unit]
+Description=QMOI Lion Agent - Autonomous System Guardian
+After=network.target
+
+[Service]
+Type=simple
+User=runner
+WorkingDirectory=/workspaces/qmoi-enhanced
+ExecStart=/usr/bin/python3 scripts/lion_orchestrator.py --continuous --concurrency 2
+Restart=always
+RestartSec=10
+Environment=PYTHONPATH=/workspaces/qmoi-enhanced
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,45 @@
+<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" width="256" height="256">
+  <!-- QMOI Production Logo - Enhanced -->
+  <defs>
+    <linearGradient id="qmoiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d9ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0066ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6600ff;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="128" cy="128" r="125" fill="url(#qmoiGradient)" opacity="0.1"/>
+  
+  <!-- Main logo shape - Q with evolution rings -->
+  <g filter="url(#glow)">
+    <!-- Evolution rings -->
+    <circle cx="128" cy="128" r="110" fill="none" stroke="url(#qmoiGradient)" stroke-width="2" opacity="0.6"/>
+    <circle cx="128" cy="128" r="90" fill="none" stroke="url(#qmoiGradient)" stroke-width="1.5" opacity="0.4"/>
+    <circle cx="128" cy="128" r="70" fill="none" stroke="url(#qmoiGradient)" stroke-width="1" opacity="0.2"/>
+    
+    <!-- Main Q letter -->
+    <text x="128" y="160" font-family="Arial, sans-serif" font-size="120" font-weight="bold" 
+          fill="url(#qmoiGradient)" text-anchor="middle" dominant-baseline="middle">Q</text>
+    
+    <!-- AI indicator dots -->
+    <circle cx="170" cy="85" r="5" fill="#00d9ff"/>
+    <circle cx="180" cy="105" r="4" fill="#0066ff"/>
+    <circle cx="175" cy="125" r="3" fill="#6600ff"/>
+    
+    <!-- Consciousness indicator -->
+    <circle cx="128" cy="50" r="6" fill="#00d9ff" opacity="0.8"/>
+    <circle cx="128" cy="50" r="10" fill="none" stroke="#00d9ff" stroke-width="1" opacity="0.4"/>
+  </g>
+  
+  <!-- QMOI text label -->
+  <text x="128" y="220" font-family="Arial, sans-serif" font-size="16" font-weight="600"
+        fill="url(#qmoiGradient)" text-anchor="middle">QMOI ENHANCED</text>
+</svg>

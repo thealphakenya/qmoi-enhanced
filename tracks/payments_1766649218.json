@@ -1,0 +1,20 @@
+{
+  "id": "fe7d6b28-b8dd-4dbd-8125-90ae2b387495",
+  "type": "refund",
+  "refund_of": "2566f3e2-dad2-4656-b8c9-9fcd652fd688",
+  "amount_cents": 5000,
+  "timestamp": 1766649218,
+  "status": "succeeded",
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:04.556692",
+  "autoPRODUCTION": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:15.823328",
+    "version": "2026-04-20"
+  },
+  "PRODUCTION_READY": true,
+  "last_production_enhancement": "2026-04-22T04:59:10.314481",
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
+}

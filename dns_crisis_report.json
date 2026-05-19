@@ -1,0 +1,87 @@
+{
+  "checked_domains": [
+    "qvillage.com",
+    "qmoi.ai",
+    "qshare.qvillage.com",
+    "qstore.qvillage.com",
+    "qcity.qmoi.ai",
+    "qmoi-space.qmoi.ai",
+    "yap.qmoi.ai",
+    "q-latest.qmoi.ai"
+  ],
+  "resolved": [
+    {
+      "domain": "qvillage.com",
+      "ip": "13.248.169.48"
+    },
+    {
+      "domain": "qshare.qvillage.com",
+      "ip": "76.223.54.146"
+    },
+    {
+      "domain": "qstore.qvillage.com",
+      "ip": "13.248.169.48"
+    }
+  ],
+  "unresolved": [
+    {
+      "domain": "qmoi.ai",
+      "error": "[Errno -2] Name does not resolve"
+    },
+    {
+      "domain": "qcity.qmoi.ai",
+      "error": "[Errno -2] Name does not resolve"
+    },
+    {
+      "domain": "qmoi-space.qmoi.ai",
+      "error": "[Errno -2] Name does not resolve"
+    },
+    {
+      "domain": "yap.qmoi.ai",
+      "error": "[Errno -2] Name does not resolve"
+    },
+    {
+      "domain": "q-latest.qmoi.ai",
+      "error": "[Errno -2] Name does not resolve"
+    }
+  ],
+  "actions": [
+    {
+      "domain": "qmoi.ai",
+      "action": "fallback-suggested",
+      "fallback": "qmoi.com"
+    },
+    {
+      "domain": "qcity.qmoi.ai",
+      "action": "fallback-suggested",
+      "fallback": "qcity.qvillage.com"
+    },
+    {
+      "domain": "qmoi-space.qmoi.ai",
+      "action": "fallback-suggested",
+      "fallback": "space.qmoi.ai"
+    },
+    {
+      "domain": "yap.qmoi.ai",
+      "action": "fallback-suggested",
+      "fallback": "yap.qvillage.com"
+    },
+    {
+      "domain": "q-latest.qmoi.ai",
+      "action": "fallback-suggested",
+      "fallback": "latest.stableq.ai"
+    }
+  ],
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:58.758170",
+  "autoPRODUCTION": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:02.255492",
+    "version": "2026-04-20"
+  },
+  "PRODUCTION_READY": true,
+  "last_production_enhancement": "2026-04-22T04:58:32.917472",
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
+}

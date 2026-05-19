@@ -1,0 +1,85 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:06:57.639561 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:06.918445 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:02.622425 -->
+# Nginx Reverse Proxy Configuration for QMOI Enhanced
+# Install: sudo apt install nginx
+# Place in: /etc/nginx/sites-available/qmoi.app
+
+upstream qmoi_backend {
+    server localhost:3000;
+    keepalive 32;
+}
+
+# HTTP to HTTPS redirect
+server {
+    listen 80;
+    listen [::]:80;
+    server_name qmoi.app www.qmoi.app;
+    
+    return 301 https://$server_name$request_uri;
+}
+
+# HTTPS Configuration
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name qmoi.app www.qmoi.app;
+    
+    # SSL Certificate (Let's Encrypt)
+    ssl_certificate /etc/letsencrypt/live/qmoi.app/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/qmoi.app/privkey.pem;
+    
+    # SSL Configuration
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 10m;
+    
+    # Security Headers
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    
+    # Compression
+    gzip on;
+    gzip_vary on;
+    gzip_types text/plain text/css text/xml text/javascript 
+               application/x-javascript application/xml+rss 
+               application/javascript application/json;
+    
+    # Proxy Configuration
+    location / {
+        proxy_pass http://qmoi_backend;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+    
+    # Health Check Endpoint
+    location /api/health {
+        proxy_pass http://qmoi_backend;
+        access_log off;
+    }
+    
+    # Static Assets Caching
+    location ~* ^/(_next/|.well-known/) {
+        proxy_pass http://qmoi_backend;
+        expires 30d;
+        add_header Cache-Control "public, max-age=2592000";
+    }
+    
+    # Rate Limiting
+    limit_req_zone $binary_remote_addr zone=api:10m rate=100r/m;
+    location /api/ {
+        limit_req zone=api burst=20 nodelay;
+        proxy_pass http://qmoi_backend;
+    }
+}

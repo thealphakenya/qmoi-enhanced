@@ -1,0 +1,208 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: qmoi-config
+  namespace: qmoi
+data:
+  NODE_ENV: "production"
+  FRONTEND_URL: "https://qmoi.example.com"
+  APP_HOST: "0.0.0.0"
+  APP_PORT: "3000"
+  LOG_LEVEL: "info"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: qmoi-secrets
+  namespace: qmoi
+type: Opaque
+stringData:
+  DATABASE_URL: "postgresql://user:password@postgres:5432/qmoi_db"
+  REDIS_URL: "redis://redis:6379"
+  JWT_SECRET: "your-secure-jwt-secret-here-change-in-production"
+  ENCRYPTION_KEY: "your-256-bit-encryption-key-here-32-chars"
+  API_KEY_SECRET: "your-api-key-secret-here"
+  STRIPE_SECRET_KEY: "sk_live_..."
+  MPESA_CONSUMER_KEY: "your-mpesa-key"
+  MPESA_CONSUMER_SECRET: "your-mpesa-secret"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qmoi-app
+  namespace: qmoi
+  labels:
+    app: qmoi
+    component: backend
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: qmoi
+  template:
+    metadata:
+      labels:
+        app: qmoi
+        component: backend
+    spec:
+      serviceAccountName: qmoi-app
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        fsGroup: 1001
+      containers:
+      - name: qmoi-app
+        image: your-registry/qmoi-enhanced:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+          name: http
+          protocol: TCP
+        envFrom:
+        - configMapRef:
+            name: qmoi-config
+        - secretRef:
+            name: qmoi-secrets
+        resources:
+          requests:
+            cpu: 250m
+            memory: 512Mi
+          limits:
+            cpu: 1000m
+            memory: 2Gi
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 2
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+        volumeMounts:
+        - name: tmp
+          mountPath: /tmp
+        - name: logs
+          mountPath: /app/logs
+      volumes:
+      - name: tmp
+        emptyDir: {}
+      - name: logs
+        emptyDir: {}
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - qmoi
+              topologyKey: kubernetes.io/hostname
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qmoi-app
+  namespace: qmoi
+  labels:
+    app: qmoi
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  selector:
+    app: qmoi
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: qmoi-hpa
+  namespace: qmoi
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: qmoi-app
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: qmoi-pdb
+  namespace: qmoi
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: qmoi
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ServiceAccount
+metadata:
+  name: qmoi-app
+  namespace: qmoi
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: qmoi-app
+  namespace: qmoi
+rules:
+- apiGroups: [""]
+  resources: ["configmaps"]
+  verbs: ["get", "list"]
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: qmoi-app
+  namespace: qmoi
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: qmoi-app
+subjects:
+- kind: ServiceAccount
+  name: qmoi-app
+  namespace: qmoi

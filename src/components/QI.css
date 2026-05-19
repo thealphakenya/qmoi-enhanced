@@ -1,0 +1,441 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.144185 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:16.472531 -->
+/* QI Enhanced Component Styles */
+
+.qi-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.qi-header {
+  padding: 20px 30px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.qi-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.qi-status {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.qi-status-badge {
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.qi-status-badge.active {
+  background: #4ade80;
+  border-color: #22c55e;
+  color: #1e3a1f;
+  box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+}
+
+.qi-main {
+  display: flex;
+  flex: 1;
+  gap: 0;
+  overflow: hidden;
+}
+
+/* Navigation */
+.qi-nav {
+  width: 140px;
+  background: rgba(0, 0, 0, 0.15);
+  border-right: 2px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 15px 10px;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.qi-nav-button {
+  padding: 12px 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.qi-nav-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateX(2px);
+}
+
+.qi-nav-button.active {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  border-color: #fb923c;
+  box-shadow: 0 0 15px rgba(249, 115, 22, 0.4);
+}
+
+/* Content Area */
+.qi-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.qi-chat-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: radial-gradient(circle at top right, rgba(102, 126, 234, 0.1), transparent);
+}
+
+.qi-chat-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.qi-chat-area::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.qi-chat-area::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.qi-chat-area::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Messages */
+.qi-message {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.qi-message-user {
+  align-items: flex-end;
+}
+
+.qi-message-bot,
+.qi-message-system {
+  align-items: flex-start;
+}
+
+.qi-message-content {
+  max-width: 70%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  word-wrap: break-word;
+  line-height: 1.5;
+}
+
+.qi-message-user .qi-message-content {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
+}
+
+.qi-message-bot .qi-message-content {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.qi-message-system .qi-message-content {
+  background: rgba(100, 200, 255, 0.2);
+  border: 1px solid rgba(100, 200, 255, 0.3);
+}
+
+.qi-message-error .qi-message-content {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.qi-message-success .qi-message-content {
+  background: rgba(74, 222, 128, 0.2);
+  border: 1px solid rgba(74, 222, 128, 0.4);
+}
+
+.qi-message-info .qi-message-content {
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+}
+
+.qi-code-block {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 12px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 12px;
+  font-family: "Courier New", monospace;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.qi-code-block code {
+  color: #a0aec0;
+}
+
+.qi-message-time {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0 4px;
+}
+
+.qi-message-reactions {
+  font-size: 14px;
+  padding: 4px 8px;
+  display: flex;
+  gap: 4px;
+}
+
+/* Sidebar */
+.qi-sidebar {
+  width: 200px;
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  overflow-y: auto;
+  border-radius: 0;
+}
+
+.qi-sidebar h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.qi-sidebar-section {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 12px;
+}
+
+.qi-sidebar-section p {
+  margin: 8px 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Panel Views */
+.qi-panel {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.qi-panel h3 {
+  font-size: 24px;
+  margin: 0 0 20px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.qi-panel p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 20px 0;
+}
+
+/* Input Area */
+.qi-input-area {
+  padding: 20px 30px;
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 10px;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.qi-input {
+  flex: 1;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.qi-input::value {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.qi-input:focus {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.qi-input:enabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.qi-button-send,
+.qi-button-file {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.qi-button-send {
+  min-width: 120px;
+}
+
+.qi-button-file {
+  min-width: 44px;
+  padding: 12px;
+}
+
+.qi-button-send:hover,
+.qi-button-file:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(249, 115, 22, 0.4);
+}
+
+.qi-button-send:active,
+.qi-button-file:active {
+  transform: translateY(0);
+}
+
+.qi-button-send:enabled,
+.qi-button-file:enabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .qi-container {
+    height: calc(100vh - 60px);
+  }
+
+  .qi-main {
+    flex-direction: column;
+  }
+
+  .qi-nav {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    border-right: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    overflow-x: auto;
+  }
+
+  .qi-sidebar {
+    display: none;
+  }
+
+  .qi-message-content {
+    max-width: 90%;
+  }
+
+  .qi-message-time {
+    padding-left: 12px;
+  }
+
+  .qi-input-area {
+    flex-wrap: wrap;
+  }
+
+  .qi-chat-area {
+    padding: 15px;
+  }
+}
+
+/* Animations */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.qi-status-badge.active {
+  animation: pulse 2s infinite;
+}
+
+/* Scrollbar styling for entire container */
+.qi-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.qi-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.qi-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.qi-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}

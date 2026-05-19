@@ -1,0 +1,218 @@
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:19:39.888958 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:18:59.932541 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:07:05.412454 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:07.438585 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:03.302577 -->
+components/
+├── AIContext.tsx
+├── AccountabilitySystem.tsx
+├── AccountabilitySystem.tsx.bak.1768901506
+├── AnimationControlPanel.tsx
+├── AppManager.tsx
+├── AskQMoi.tsx
+├── AudioVisualizer.tsx
+├── AvatarGalleryPanel.tsx
+├── AvatarSelectionPanel.tsx
+├── BiometricAuth.tsx
+├── BiometricEnrollment.tsx
+├── BluetoothManager.tsx
+├── BrowserInterface.tsx
+├── CashonTradingPanel.tsx
+├── Chatbot.js
+├── Chatbot.tsx
+├── ComponentGallery.tsx
+├── DealsList.tsx
+├── DealsPopup.tsx
+├── DeploymentStatusDashboard.tsx
+├── deviceMap.tsx
+├── deviceSettingsPanel.tsx
+├── DownloadAppButton.tsx
+├── DownloadManager.tsx
+├── DownloadQApp.tsx
+├── EmergencyPanel.tsx
+├── EnhancedLinkDomainManager.tsx
+├── EnhancedPreviewWindow.tsx
+├── EnhancedRevenuePanel.tsx
+├── FarmBusinessManager.tsx
+├── FileCategorizer.tsx
+├── FileExplorer.js
+├── FileExplorer.tsx
+├── FinancialManager.tsx
+├── FloatingControlPanel.tsx
+├── FloatingPreviewWindow.tsx
+├── GitStatus.js
+├── GitStatus.tsx
+├── GlobalCall.tsx
+├── GlobalFileTransfer.tsx
+├── GlobalMail.tsx
+├── GlobalVideoCall.tsx
+├── HelpGuide.tsx
+├── LcSpaces.tsx
+├── LeahWallet.tsx
+├── LeahWalletPanel.tsx
+├── MapLocationPanel.tsx
+├── MasterContext.tsx
+├── MasterEmailDashboard.tsx
+├── MasterPortal.tsx
+├── MasterTracksDashboard.tsx
+├── MediaPreviewWindow.tsx
+├── MemoryAwareness.tsx
+├── NotificationCenter.tsx
+├── NotificationPanel.tsx
+├── ParallelProcessing.tsx
+├── PreviewWindow.tsx
+├── PriceProductVerifier.tsx
+├── QAvatar.accessibility.css
+├── QAvatar.tsx
+├── QAvatar.tsx.bak.1768901506
+├── QCityErrorManager.tsx
+├── QCityThemeProvider.tsx
+├── QConverse.tsx
+├── QFileManager.tsx
+├── QI.tsx
+├── QIStateWindow.tsx
+├── QMOIAutoFixDashboard.tsx
+├── QMOIDashboard.tsx
+├── QMOIOwndevice.tsx
+├── QVillage.tsx
+├── QVillageDatasetsPanel.tsx
+├── QiSpaces.tsx
+├── QmoiAccessibility.tsx
+├── QmoiAutoDistribution.tsx
+├── QmoiBrowser.tsx
+├── QmoiDialer.tsx
+├── QmoiEnhancedSystem.tsx
+├── QmoiKeyboard.tsx
+├── QmoiMediaManager.tsx
+├── QmoiMemoryPanel.tsx
+├── QmoiRevenueDashboard.tsx
+├── RealtimeAvatarWindow.tsx
+├── SettingsPanel.tsx
+├── SettingsSidebar.tsx
+├── SisterProjects.tsx
+├── SystemHealthDashboard.tsx
+├── SystemHealthDashboard.tsx.bak.1768901506
+├── SystemHealthMonitor.tsx
+├── TeamRoleManager.tsx
+├── ThemeCustomizer.tsx
+├── TradingPanel.tsx
+├── TransactionHistory.tsx
+├── UserAccessControl.tsx
+├── VoiceLibraryPanel.tsx
+├── VoiceSelectionPanel.tsx
+├── WalletPanel.tsx
+├── WhatsAppBusinessPanel.tsx
+├── WifiAutoConnectPanel.tsx
+├── WifiPanel.tsx
+├── WifiPanel.tsx.bak.1768901506
+├── WrappedComponent.tsx
+├── latest-q-ai-system.js
+├── latest-q-ai-system.tsx
+├── analytics
+│   ├── AnalyticsCharts.tsx
+│   ├── EncryptedAuditLog.tsx
+│   └── EncryptedAuditLog.tsx.bak.1768901506
+├── auth
+│   └── BiometricAuth.tsx
+├── automation
+│   └── AutomationRulesPanel.tsx
+├── components
+│   └── qmedia_player.md.tsx
+├── device
+│   ├── AWSCredentialsModal.tsx
+│   ├── AzureCredentialsModal.tsx
+│   ├── deviceIntegrationreals.ts
+│   └── GCPCredentialsModal.tsx
+├── enhanced-system-dashboard.tsx
+├── enhanced_build_tools.tsx
+├── predeploy
+│   └── OrchestratorStatusPanel.tsx
+├── projects
+│   ├── ProjectDashboard.tsx
+│   ├── ProjectForm.tsx
+│   ├── ProjectList.tsx
+│   ├── ResourceList.tsx
+│   ├── TaskForm.tsx
+│   └── TaskList.tsx
+├── q-city
+│   ├── EmploymentDashboard.tsx
+│   ├── GlobalLinksManager.tsx
+│   ├── Onboarding.tsx
+│   ├── QCityDashboard.tsx
+│   ├── QCitydevicePanel.tsx
+│   ├── QMOIBiometricManager.tsx
+│   ├── QMOILinksManager.tsx
+│   ├── QMOIOwndeviceLogs.tsx
+│   ├── QMOIRevenueDashboard.tsx
+│   ├── QVillage.tsx
+│   ├── TracksPanel.tsx
+│   └── ZeroRatedSitesManager.tsx
+├── qmedia-player.md
+├── qmoi-gitlab-clone
+│   └── QMOIGitLabClone.tsx
+├── real_time_status_dashboard_with_universal_language_support.tsx
+├── release-notes.ts
+├── scripts
+│   └── enhanced_build.py.tsx
+├── security
+│   ├── EncryptedAuditLog.tsx
+│   ├── EncryptedAuditLog.tsx.bak.1768901506
+│   └── RoleContext.tsx
+├── theme-provider.tsx
+└── ui
+    ├── AccessibilitySettingsPanel.tsx
+    ├── PluginHelpModal.tsx
+    ├── PluginNotifications.tsx
+    ├── accordion.tsx
+    ├── alert-dialog.tsx
+    ├── alert.tsx
+    ├── aspect-ratio.tsx
+    ├── avatar.tsx
+    ├── badge.tsx
+    ├── breadcrumb.tsx
+    ├── button.tsx
+    ├── calendar.tsx
+    ├── card.tsx
+    ├── carousel.tsx
+    ├── chart.tsx
+    ├── checkbox.tsx
+    ├── collapsible.tsx
+    ├── command.tsx
+    ├── context-menu.tsx
+    ├── dialog.tsx
+    ├── drawer.tsx
+    ├── dropdown-menu.tsx
+    ├── form.tsx
+    ├── hover-card.tsx
+    ├── input-otp.tsx
+    ├── input.tsx
+    ├── label.tsx
+    ├── menubar.tsx
+    ├── navigation-menu.tsx
+    ├── pagination.tsx
+    ├── popover.tsx
+    ├── progress.tsx
+    ├── radio-group.tsx
+    ├── recharts-shim.tsx
+    ├── resizable.tsx
+    ├── scroll-area.tsx
+    ├── select.tsx
+    ├── separator.tsx
+    ├── sheet.tsx
+    ├── sidebar.tsx
+    ├── complete.tsx
+    ├── slider.tsx
+    ├── sonner.tsx
+    ├── switch.tsx
+    ├── table.tsx
+    ├── tabs.tsx
+    ├── textarea.tsx
+    ├── toast.tsx
+    ├── toaster.tsx
+    ├── toggle-group.tsx
+    ├── toggle.tsx
+    ├── tooltip.tsx
+    ├── use-mobile.tsx
+    └── use-toast.ts
+
+12 directories, 198 files

@@ -1,0 +1,62 @@
+{
+  "timestamp": "2026-04-25T15:53:47.152955",
+  "results": {
+    "ai_anomaly": {
+      "total_time": 2.9880428314208984,
+      "iterations": 100,
+      "avg_response_time": 0.029879238605499268,
+      "min_response_time": 0.00012612342834472656,
+      "max_response_time": 2.972841262817383,
+      "throughput": 33.46672241389766,
+      "p95_response_time": 0.00017801523208618164
+    },
+    "advanced_analytics": {
+      "total_time": 0.5042259693145752,
+      "iterations": 50,
+      "avg_response_time": 0.01008298397064209,
+      "min_response_time": 0.010066986083984375,
+      "max_response_time": 0.01010894775390625,
+      "throughput": 99.161889793118,
+      "p95_response_time": 0.010107684135437011
+    },
+    "ai_orchestrator": {
+      "total_time": 0.008744001388549805,
+      "iterations": 30,
+      "avg_response_time": 0.0002900997797648112,
+      "min_response_time": 0.00023698806762695312,
+      "max_response_time": 0.0003612041473388672,
+      "throughput": 3430.923517382413,
+      "p95_response_time": 0.00035674571990966796
+    },
+    "performance_optimizer": {
+      "total_time": 5.2640540599823,
+      "iterations": 20,
+      "avg_response_time": 0.26319849491119385,
+      "min_response_time": 0.260465145111084,
+      "max_response_time": 0.2666807174682617,
+      "throughput": 3.7993530788449483,
+      "p95_response_time": 0.266603946685791
+    },
+    "concurrent_load": {
+      "total_time": 30.16884469985962,
+      "concurrent_users": 10,
+      "total_requests": 13562,
+      "successful_requests": 13562,
+      "failed_requests": 0,
+      "success_rate": 100.0,
+      "avg_response_time": 0.022141611518066658,
+      "throughput": 449.536604232747,
+      "p95_response_time": 0.1289098620414734
+    }
+  },
+  "summary": {
+    "overall_performance": "EXCELLENT",
+    "recommendations": [],
+    "key_metrics": {
+      "avg_response_time": 0.075862704316775,
+      "avg_throughput": 891.8378706670684,
+      "concurrent_success_rate": 100.0,
+      "concurrent_throughput": 449.536604232747
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:08:06.194146 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:14.424582 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:10.358135 -->
+[Unit]
+Description=QMOI Wallets API
+After=network.target
+
+[Service]
+Type=simple
+User=runner
+WorkingDirectory=/workspaces/qmoi-enhanced
+ExecStart=/usr/bin/env python3 scripts/wallets/wallets_api.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,32 @@
+{
+  "name": "QMOI Deals - Trading Intelligence",
+  "short_name": "Deals",
+  "description": "Advanced deal management and trading intelligence platform",
+  "start_url": "/pwa_apps/deals/",
+  "scope": "/pwa_apps/deals/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b1220",
+  "theme_color": "#0b5fff",
+  "dir": "ltr",
+  "lang": "en-US",
+  "categories": [
+    "productivity",
+    "business",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

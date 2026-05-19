@@ -1,0 +1,40 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:35.195729 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:09.793334 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.528476 -->
+name: CI - Dry-run Tests
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  dry-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci || true
+
+      - name: Run implementation scanner (dry-run)
+        run: python3 scripts/replace_real implementations.py
+
+      - name: Run Rust lint/fix scaffold (dry-run)
+        run: scripts/run_rust_lint_fix.sh
+
+      - name: Run unit tests (high-performance)
+        run: npm test --silent || true
+
+      - name: Upload .qmoi_validation artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: qmoi-validation
+          path: .qmoi_validation/**

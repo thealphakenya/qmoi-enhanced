@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-04-01T14:06:54.878581",
+  "found_endpoints": 326,
+  "documented_endpoints": 488,
+  "missing_endpoints": 0,
+  "endpoint_coverage": 100.0,
+  "miner": "validate_api_documentation",
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:04.990133",
+  "autoPRODUCTION": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:17.250126",
+    "version": "2026-04-20"
+  },
+  "PRODUCTION_READY": true,
+  "last_production_enhancement": "2026-04-22T04:59:11.441291",
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
+}

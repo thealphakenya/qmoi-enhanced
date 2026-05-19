@@ -1,0 +1,20 @@
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:19:52.589527 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:19:13.391198 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:23.480811 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:17.229341 -->
+gradio>=4.11.0
+# httpx>=0.25.0  # Not used, using built-in urllib
+# huggingface-hub>=0.19.0  # Not used in current implementation
+# asyncio-contextmanager>=1.0.0  # Not needed
+# pydantic>=2.0.0  # Not used
+# python-dotenv>=1.0.0  # Not used
+
+# Core dependencies (all built-in Python modules)
+# - asyncio (built-in)
+# - urllib (built-in)
+# - xml.etree.ElementTree (built-in)
+# - concurrent.futures (built-in)
+# - json (built-in)
+# - time (built-in)
+# - datetime (built-in)
+# - typing (built-in)

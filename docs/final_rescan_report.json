@@ -1,0 +1,32 @@
+{
+  "scan_timestamp": "2026-04-03T02:16:59.568901",
+  "files_scanned": 4230,
+  "total_patterns_found": 1514,
+  "patterns_by_type": {
+    "real-implementation": 351,
+    "implementation-word": 159,
+    "non-production": 158,
+    "not-implemented": 30,
+    "PRODUCTION_READY-marker": 669,
+    "OPTIMIZED-marker": 13,
+    "real-pattern": 7,
+    "in-a-real": 16,
+    "COMPLETED-marker": 22,
+    "RESOLVED-marker": 4,
+    "implementation-pattern": 19,
+    "production-pattern": 23
+  },
+  "status": "ISSUES_FOUND",
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:29.681303",
+  "autoPRODUCTION": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:06.801496",
+    "version": "2026-04-20"
+  },
+  "PRODUCTION_READY": true,
+  "last_production_enhancement": "2026-04-22T04:58:53.628895",
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
+}

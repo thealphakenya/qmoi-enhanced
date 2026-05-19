@@ -1,0 +1,38 @@
+{
+  "defaultAvatar": "qmoi-default",
+  "masterAvatars": [
+    "qmoi-master",
+    "qmoi-creative"
+  ],
+  "environments": [
+    "office",
+    "nature",
+    "space",
+    "cyberpunk",
+    "fantasy"
+  ],
+  "animations": [
+    "idle",
+    "wave",
+    "point",
+    "think",
+    "present"
+  ],
+  "voiceSettings": {
+    "quality": "high",
+    "speed": "normal",
+    "pitch": "medium"
+  },
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:45.822120",
+  "autoPRODUCTION": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:05.451935",
+    "version": "2026-04-20"
+  },
+  "PRODUCTION_READY": true,
+  "last_production_enhancement": "2026-04-22T04:58:43.911116",
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
+}

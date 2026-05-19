@@ -1,0 +1,243 @@
+{
+  "release_version": "v1.2.3",
+  "timestamp": "2025-11-15T22:17:58.247893",
+  "apps": {
+    "qmoi-ai": {
+      "name": "QMOI AI",
+      "version": "v1.2.3",
+      "description": "Quantum Master Orchestrator Intelligence",
+      "platforms": [
+        "windows",
+        "mac",
+        "linux_appimage",
+        "linux_deb",
+        "android",
+        "ios",
+        "smarttv",
+        "raspberrypi",
+        "chromebook"
+      ],
+      "binaries": [
+        {
+          "platform": "windows",
+          "filename": "qmoi_ai.exe",
+          "size_bytes": 5242880,
+          "checksum": "cab8cc8f068ea31e3a5f4f92095f16ea643bfbbd4663634623db254219e227cf"
+        },
+        {
+          "platform": "mac",
+          "filename": "qmoi_ai.dmg",
+          "size_bytes": 8388608,
+          "checksum": "fb214458d6f0bb27f18ef94f700f4e43860d6dc4aad81d16d876fbed2942e52b"
+        },
+        {
+          "platform": "linux_appimage",
+          "filename": "qmoi_ai.AppImage",
+          "size_bytes": 6291456,
+          "checksum": "4775cbb9f62d3412fc1d33e68dc34eba4acefd216b3397a33cb7b68b15228950"
+        },
+        {
+          "platform": "linux_deb",
+          "filename": "qmoi_ai.deb",
+          "size_bytes": 4194304,
+          "checksum": "43f421d4ffcafd6d0fc6df4b96fa73f84e8465f746a8b33702be35add7a38aa2"
+        },
+        {
+          "platform": "android",
+          "filename": "qmoi_ai.apk",
+          "size_bytes": 10485760,
+          "checksum": "ce4532942998fcfd1b97a8899a9f0f90a14b55cf42f9c642814adcd4dabf5395"
+        },
+        {
+          "platform": "ios",
+          "filename": "qmoi_ai.ipa",
+          "size_bytes": 12582912,
+          "checksum": "8a58a279f684c9f423403b7d6481ae7ef87442b015f13d32a70bfa252ff5b83c"
+        },
+        {
+          "platform": "smarttv",
+          "filename": "qmoi_ai_smarttv.apk",
+          "size_bytes": 8388608,
+          "checksum": "dea387a6fb613ad875620ffc911a3508151a4da49cf35690458551002fefacdd"
+        },
+        {
+          "platform": "raspberrypi",
+          "filename": "qmoi_ai.img",
+          "size_bytes": 2097152000,
+          "checksum": "bd0b52a4317559d25f0c2cc237ecb3793da90929f0e86f176de055c9b42d7a27"
+        },
+        {
+          "platform": "chromebook",
+          "filename": "qmoi_ai_chromebook.zip",
+          "size_bytes": 3145728,
+          "checksum": "fbbf211d7980ac44ddc0eb9aea57fa3454a9858c4bb61dad29c39ff577d757f2"
+        }
+      ]
+    },
+    "qmoi-space": {
+      "name": "QMOI Space",
+      "version": "v1.2.3",
+      "description": "QMOI Space PWA and applications",
+      "platforms": [
+        "windows",
+        "mac",
+        "linux_appimage",
+        "android",
+        "ios",
+        "chromebook"
+      ],
+      "binaries": [
+        {
+          "platform": "windows",
+          "filename": "qmoi_ai.exe",
+          "size_bytes": 5242880,
+          "checksum": "cab8cc8f068ea31e3a5f4f92095f16ea643bfbbd4663634623db254219e227cf"
+        },
+        {
+          "platform": "mac",
+          "filename": "qmoi_ai.dmg",
+          "size_bytes": 8388608,
+          "checksum": "fb214458d6f0bb27f18ef94f700f4e43860d6dc4aad81d16d876fbed2942e52b"
+        },
+        {
+          "platform": "linux_appimage",
+          "filename": "qmoi_ai.AppImage",
+          "size_bytes": 6291456,
+          "checksum": "4775cbb9f62d3412fc1d33e68dc34eba4acefd216b3397a33cb7b68b15228950"
+        },
+        {
+          "platform": "android",
+          "filename": "qmoi_ai.apk",
+          "size_bytes": 10485760,
+          "checksum": "ce4532942998fcfd1b97a8899a9f0f90a14b55cf42f9c642814adcd4dabf5395"
+        },
+        {
+          "platform": "ios",
+          "filename": "qmoi_ai.ipa",
+          "size_bytes": 12582912,
+          "checksum": "8a58a279f684c9f423403b7d6481ae7ef87442b015f13d32a70bfa252ff5b83c"
+        },
+        {
+          "platform": "chromebook",
+          "filename": "qmoi_ai_chromebook.zip",
+          "size_bytes": 3145728,
+          "checksum": "fbbf211d7980ac44ddc0eb9aea57fa3454a9858c4bb61dad29c39ff577d757f2"
+        }
+      ]
+    },
+    "q-latest": {
+      "name": "Q latest",
+      "version": "v1.2.3",
+      "description": "Q latest aggregator PWA",
+      "platforms": [
+        "windows",
+        "mac",
+        "linux_appimage",
+        "android",
+        "ios",
+        "chromebook"
+      ],
+      "binaries": [
+        {
+          "platform": "windows",
+          "filename": "qmoi_ai.exe",
+          "size_bytes": 5242880,
+          "checksum": "cab8cc8f068ea31e3a5f4f92095f16ea643bfbbd4663634623db254219e227cf"
+        },
+        {
+          "platform": "mac",
+          "filename": "qmoi_ai.dmg",
+          "size_bytes": 8388608,
+          "checksum": "fb214458d6f0bb27f18ef94f700f4e43860d6dc4aad81d16d876fbed2942e52b"
+        },
+        {
+          "platform": "linux_appimage",
+          "filename": "qmoi_ai.AppImage",
+          "size_bytes": 6291456,
+          "checksum": "4775cbb9f62d3412fc1d33e68dc34eba4acefd216b3397a33cb7b68b15228950"
+        },
+        {
+          "platform": "android",
+          "filename": "qmoi_ai.apk",
+          "size_bytes": 10485760,
+          "checksum": "ce4532942998fcfd1b97a8899a9f0f90a14b55cf42f9c642814adcd4dabf5395"
+        },
+        {
+          "platform": "ios",
+          "filename": "qmoi_ai.ipa",
+          "size_bytes": 12582912,
+          "checksum": "8a58a279f684c9f423403b7d6481ae7ef87442b015f13d32a70bfa252ff5b83c"
+        },
+        {
+          "platform": "chromebook",
+          "filename": "qmoi_ai_chromebook.zip",
+          "size_bytes": 3145728,
+          "checksum": "fbbf211d7980ac44ddc0eb9aea57fa3454a9858c4bb61dad29c39ff577d757f2"
+        }
+      ]
+    },
+    "qcity": {
+      "name": "QCity",
+      "version": "v2.0.1",
+      "description": "QCity orchestration package",
+      "platforms": [
+        "qcity",
+        "windows",
+        "mac",
+        "linux_appimage",
+        "android",
+        "ios"
+      ],
+      "binaries": [
+        {
+          "platform": "qcity",
+          "filename": "qcity_package.zip",
+          "size_bytes": 2097152,
+          "checksum": "5d01bdd39d8839d14114a550afed8c61af2606e652259b92bd0da49023ca250c"
+        },
+        {
+          "platform": "windows",
+          "filename": "qmoi_ai.exe",
+          "size_bytes": 5242880,
+          "checksum": "cab8cc8f068ea31e3a5f4f92095f16ea643bfbbd4663634623db254219e227cf"
+        },
+        {
+          "platform": "mac",
+          "filename": "qmoi_ai.dmg",
+          "size_bytes": 8388608,
+          "checksum": "fb214458d6f0bb27f18ef94f700f4e43860d6dc4aad81d16d876fbed2942e52b"
+        },
+        {
+          "platform": "linux_appimage",
+          "filename": "qmoi_ai.AppImage",
+          "size_bytes": 6291456,
+          "checksum": "4775cbb9f62d3412fc1d33e68dc34eba4acefd216b3397a33cb7b68b15228950"
+        },
+        {
+          "platform": "android",
+          "filename": "qmoi_ai.apk",
+          "size_bytes": 10485760,
+          "checksum": "ce4532942998fcfd1b97a8899a9f0f90a14b55cf42f9c642814adcd4dabf5395"
+        },
+        {
+          "platform": "ios",
+          "filename": "qmoi_ai.ipa",
+          "size_bytes": 12582912,
+          "checksum": "8a58a279f684c9f423403b7d6481ae7ef87442b015f13d32a70bfa252ff5b83c"
+        }
+      ]
+    }
+  },
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:14.118752",
+  "autoPRODUCTION": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:00.972167",
+    "version": "2026-04-20"
+  },
+  "PRODUCTION_READY": true,
+  "last_production_enhancement": "2026-04-22T04:58:22.930935",
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
+}

@@ -1,0 +1,44 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+scrape_configs:
+  - job_name: 'ai-api-server'
+    static_configs:
+      - targets: ['ai-api-server:8000']
+    metrics_path: '/metrics'
+    scrape_interval: 5s
+
+  - job_name: 'ai-orchestrator'
+    static_configs:
+      - targets: ['ai-orchestrator:8000']
+    metrics_path: '/metrics'
+
+  - job_name: 'analytics-service'
+    static_configs:
+      - targets: ['analytics-service:8000']
+    metrics_path: '/metrics'
+
+  - job_name: 'anomaly-service'
+    static_configs:
+      - targets: ['anomaly-service:8000']
+    metrics_path: '/metrics'
+
+  - job_name: 'performance-optimizer'
+    static_configs:
+      - targets: ['performance-optimizer:8000']
+    metrics_path: '/metrics'
+
+  - job_name: 'database'
+    static_configs:
+      - targets: ['database:5432']
+    scrape_interval: 30s
+
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis:6379']
+    scrape_interval: 30s

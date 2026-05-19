@@ -1,0 +1,31 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:35.185033 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:09.786173 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.521626 -->
+name: Link Cache Maintenance
+
+on:
+  schedule:
+    - cron: "0 3 * * *" # daily at 03:00 UTC
+  workflow_dispatch: {}
+
+jobs:
+  prune-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Run link cache maintenance (dry-run)
+        run: |
+          python3 scripts/link_cache_maintenance.py --ttl-days 30 --dry-run
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-cache-maintenance-dryrun
+          path: .qmoi_validation/**

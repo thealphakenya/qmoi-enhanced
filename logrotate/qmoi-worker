@@ -1,0 +1,11 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:06.745468 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.611157 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:03.581450 -->
+"/var/log/qmoi/*.log" {
+    daily
+    rotate 14
+    compress
+    missingok
+    notifempty
+    copytruncate
+}

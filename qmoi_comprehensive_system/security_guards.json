@@ -1,0 +1,104 @@
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:07:27.964375 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:08.302454 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:05.170317 -->
+[
+  {
+    "guard_id": "qmoi_master_guardian_001",
+    "role": "master_bodyguard",
+    "awareness_level": 100,
+    "threat_detection": true,
+    "physical_protection_capable": true,
+    "emergency_response": true,
+    "surveillance_active": true,
+    "friendship_enabled": true,
+    "assistant_mode": true,
+    "patrol_pattern": "intelligent_adaptive",
+    "response_time_ms": 50,
+    "equipped_with": [
+      "omnidirectional_sensors",
+      "threat_analysis_ai",
+      "emergency_response",
+      "physical_protection"
+    ],
+    "access_zones": [
+      "global",
+      "streets",
+      "roads",
+      "buildings",
+      "property",
+      "digital"
+    ],
+    "enabled": true
+  },
+  {
+    "guard_id": "qmoi_street_guard_001",
+    "role": "street_security",
+    "awareness_level": 95,
+    "threat_detection": true,
+    "physical_protection_capable": true,
+    "emergency_response": true,
+    "surveillance_active": true,
+    "friendship_enabled": true,
+    "assistant_mode": true,
+    "patrol_pattern": "intelligent_adaptive",
+    "response_time_ms": 50,
+    "equipped_with": [
+      "street_cameras",
+      "threat_detection",
+      "crowd_analysis",
+      "emergency_alert"
+    ],
+    "access_zones": [
+      "streets",
+      "public_spaces",
+      "buildings"
+    ],
+    "enabled": true
+  },
+  {
+    "guard_id": "qmoi_threat_detection_guard_001",
+    "role": "threat_detection",
+    "awareness_level": 99,
+    "threat_detection": true,
+    "physical_protection_capable": true,
+    "emergency_response": true,
+    "surveillance_active": true,
+    "friendship_enabled": true,
+    "assistant_mode": true,
+    "patrol_pattern": "intelligent_adaptive",
+    "response_time_ms": 50,
+    "equipped_with": [
+      "ai_threat_analysis",
+      "pattern_recognition",
+      "anomaly_detection",
+      "predictive_defense"
+    ],
+    "access_zones": [
+      "global"
+    ],
+    "enabled": true
+  },
+  {
+    "guard_id": "qmoi_friend_assistant_001",
+    "role": "friendship_assistant",
+    "awareness_level": 90,
+    "threat_detection": true,
+    "physical_protection_capable": true,
+    "emergency_response": true,
+    "surveillance_active": true,
+    "friendship_enabled": true,
+    "assistant_mode": true,
+    "patrol_pattern": "intelligent_adaptive",
+    "response_time_ms": 50,
+    "equipped_with": [
+      "emotional_intelligence",
+      "conversation_ai",
+      "assistance_framework",
+      "personality"
+    ],
+    "access_zones": [
+      "user_space"
+    ],
+    "enabled": true
+  }
+]

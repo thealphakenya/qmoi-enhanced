@@ -1,0 +1,17 @@
+{
+  "dashboard_title": "QMOI Health Dashboard",
+  "metrics": [
+    "system_cpu",
+    "system_memory",
+    "system_disk",
+    "application_status",
+    "security_alerts",
+    "performance_metrics"
+  ],
+  "alerts": {
+    "cpu_threshold": 90,
+    "memory_threshold": 85,
+    "disk_threshold": 95
+  },
+  "update_interval": 300
+}

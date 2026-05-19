@@ -1,0 +1,9 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:06:55.246776 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:06.548679 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:02.201298 -->
+FROM python:3.11-slim
+WORKDIR /app
+COPY . /app
+ENV PYTHONUNBUFFERED=1
+# Minimal runtime; no additional deps required for these scripts
+CMD ["python3", "scripts/queue_worker.py", "--concurrency", "2"]

@@ -1,0 +1,16 @@
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:07:39.019273 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:10.650446 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:06.905668 -->
+[
+  {
+    "id": "288ee0c5-dfcc-467d-b779-c543080728f9",
+    "userId": "1",
+    "username": "admin",
+    "role": "Administrator",
+    "biometricMethods": ["fingerprint"],
+    "active": true,
+    "createdAt": "2026-01-16T07:14:19.799Z",
+    "expiresAt": "2026-01-16T15:14:19.799Z",
+    "lastActivity": "2026-01-16T07:14:19.799Z"
+  }
+]

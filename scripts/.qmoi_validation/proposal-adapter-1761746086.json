@@ -1,0 +1,22 @@
+{
+  "title": "check-balance-megavault",
+  "description": "Dry-run: check Megavault real balance",
+  "payload": {
+    "adapter": "megavault",
+    "api_url": "",
+    "api_key_masked": ""
+  },
+  "createdAt": "2025-10-29T13:54:46Z",
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:20:11.280228",
+  "autoPRODUCTION": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:10.483634",
+    "version": "2026-04-20"
+  },
+  "PRODUCTION_READY": true,
+  "last_production_enhancement": "2026-04-22T04:59:09.791768",
+  "autoPRODUCTION_version": "2026-04-20-aggressive"
+}

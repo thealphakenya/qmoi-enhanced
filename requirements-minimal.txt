@@ -1,0 +1,18 @@
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:19:39.093234 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:18:59.185453 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:06:57.668465 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:06.943177 -->
+<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:02.736419 -->
+requests
+aiohttp
+boto3
+numpy
+pandas
+GitPython
+watchdog
+schedule
+PyYAML
+
+# complete set used for local verification. Keep heavy platform-specific packages (torch, transformers)
+# out of this file to allow install in complete CI/PRODUCTION containers. Install heavier deps in a
+# separate environment or CI that supports them.
