@@ -13,7 +13,7 @@ fully implemented
 **Last Updated:** 2026-05-19T00:00:00.000000Z
 **Production Audit:** ✅ Reviewed May 19, 2026 — public API surface verified and internal debug routes are flagged as development-only.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 8538
+**Total Indexed Markdown Files:** 1176
 **Total APIs:** 9185
 
 ## Verified production PWA Route Mapping
@@ -28,8 +28,8 @@ fully implemented
 
 - **Canonical model name:** `qmoi-prod` — all UI clients should default to this production model for inference and orchestration.
 - **Model status endpoint:** `GET /api/qmoi-model` — returns JSON with `{ success, message, status, model, metrics, timestamp }` and supports query params (`allStats`, `analytics`, `trainingStatus`, etc.) for richer responses.
-- **Model control endpoint:** `POST /api/qmoi-model?applyprodiceFeature=<feature>` etc. — supports targeted management actions as documented in the route handler `app/api/qmoi-model/route.ts`.
-- **Chat/inference endpoint:** `POST /api/qmoi/chat` — accepts `{ messages?, input?, sessionId?, userId?, context? }` and returns `{ success, message, response, confidence, metadata, choices }` (see `app/api/qmoi/chat/route.ts`).
+- **Model control endpoint:** `POST /api/qmoi-model?applyprodiceFeature=<feature>` etc. — supports targeted management actions as documented in the legacy compatibility handler `app/api/qmoi-model/route.ts`.
+- **Chat/inference endpoint:** `POST /api/qmoi/chat` — accepts `{ messages?, input?, sessionId?, userId?, context? }` and returns `{ success, message, response, confidence, metadata, choices }` (see the legacy compatibility handler `app/api/qmoi/chat/route.ts`).
 - **Client integration:** `app/qmoi-ai/page.tsx`, `app/qmoi-space/page.tsx`, `app/qcity/page.jsx`, and `app/components/ChatMessaging.tsx` now default to `qmoi-prod` and call the above endpoints.
 - **PWA shell:** `public/q-alpha.html` now probes `/api/qmoi-model` and uses `/api/qmoi/chat` for health checks.
 
@@ -46,8 +46,9 @@ Files touched for production integration:
 Note: run integration tests against a running dev server to validate connectivity and response shapes before enabling traffic to the production model.
 
 ## Route Source Inventory
-- `app/api/` contains 277 source files in the live project tree.
-- 249 of those files are active route handler endpoints; 28 files are supporting config/docs and helper files under `app/api/`.
+- Legacy route source files in `app/api/` number 261 in the repository tree.
+- 239 of those files are legacy route handler endpoints; 22 files are supporting config/docs and helper files under `app/api/`.
+- The current production app-router surface is served from `src/app/api/`; `app/api/` is maintained for compatibility and migration reference.
 - Key production route additions include `/api/analytics/wallets` for wallet analytics and `/api/qmoi-model` for production model health.
 - Route categories include auth, qmoi, qcity, qvillage, cashon, ai, media, deploy, and more.
 

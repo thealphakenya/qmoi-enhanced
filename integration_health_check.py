@@ -1,14 +1,25 @@
 #!/usr/bin/env python3
-"""Stub module for integration_health_check.py."""
+"""Integration health check utility for QMOI."""
 import logging
-from typing import Any, Dict
+import sys
+from pathlib import Path
+
+from health_validator import QMOIHealthValidator
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 
-def main() -> Any:
-    logger.info('Stubbed module: integration_health_check.py')
-    return None
+
+def main(workspace: str = '.') -> int:
+    validator = QMOIHealthValidator(workspace)
+    report = validator.run_comprehensive_health_check()
+    logger.info('Integration health check completed: overall score %s', report.get('overall_health_score'))
+    return 0
+
 
 if __name__ == '__main__':
-    main()
+    try:
+        sys.exit(main())
+    except Exception as exc:
+        logger.exception('Integration health check failed: %s', exc)
+        sys.exit(1)

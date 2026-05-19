@@ -2,16 +2,16 @@
 Generated: 2026-05-19T00:00:00.000000Z
 **Production Audit:** ✅ Reviewed May 19, 2026 — internal developer-only API routes are excluded from the documented production surface.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 8538
+**Total Indexed Markdown Files:** 1176
 Total API Route Handlers: 249
-Route source files in `app/api/`: 277 (249 active endpoint handlers, 12 top-level route files, 237 nested route directories)
+Legacy route source files in `app/api/`: 261 (239 legacy/compatibility endpoint handlers, 22 supporting helper/config files)
 
 ## Verified production PWA Route Mapping
 - `app/qmoi-ai/page.tsx` is a live QMOI AI Next.js page delivering the full interactive AI dashboard.
 - `app/qmoi-space/page.tsx` is a live QMOI Space Next.js page delivering marketplace and community collaboration features.
 - `public/qmoi-ai.html` and `public/qmoi-space.html` remain static PWA launcher assets for their respective shell apps.
 - `/q-alpha.html` and `/pwa_apps/q-alpha/` are the static Q Alpha aggregator shell entry points, consolidating QMOI AI, QMOI Space, and QCity.
-- `app/api/qmoi-model/route.ts` and `app/api/qmoi/chat/route.ts` provide the live QMOI model and chat backend used by QMOI AI, QCity, and QMOI Space.
+- `app/api/qmoi-model/route.ts` and `app/api/qmoi/chat/route.ts` provide legacy compatibility route references for the QMOI model and chat backend; active production implementations are maintained in `src/app/api/`.
 - `app/qcity/page.jsx` and `app/qvillage/page.tsx` are role-aware, page-level UI routes using `app/hooks/useAuth.ts`.
 - PWA update endpoints `/api/pwa/check-update` and `/api/pwa/auto-update` are available and documented.
 
@@ -49,11 +49,11 @@ Ensure the environment and model credentials are configured prior to routing pro
 - Reporting APIs
 - Analytics APIs
 
-## production Status
+## Production Status
 All 464 APIs are production-ready and fully documented.
 
 
-## production Checklist ✅
+## Production Checklist ✅
 
 - [x] Error handling implemented
 - [x] Logging configured

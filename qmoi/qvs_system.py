@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
-"""Stub module for qmoi/qvs_system.py."""
+"""Quality validation system for QMOI."""
 import logging
-from typing import Any, Dict
+from typing import Any, Dict, Optional
+
+from .validation_system import ValidationSystem
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
-def main() -> Any:
-    logger.info('Stubbed module: qvs_system.py')
-    return None
 
-if __name__ == '__main__':
-    main()
+class QvsSystem:
+    def __init__(self, config: Optional[Dict[str, Any]] = None) -> None:
+        self.config = config or {}
+        self.validator = ValidationSystem()
+
+    def validate(self, payload: Dict[str, Any], schema: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        logger.info("Running QVS validation")
+        return self.validator.validate(payload, schema)

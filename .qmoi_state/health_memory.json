@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-05-02T06:27:22.845761",
-  "overall_health_score": 93,
+  "timestamp": "2026-05-19T11:58:29.892577",
+  "overall_health_score": 87,
   "systems_checked": 8,
   "systems_healthy": 5,
   "issues_found": 3,
-  "execution_time": 28.700660705566406,
+  "execution_time": 42.01479697227478,
   "detailed_results": {
     "file_system": {
       "healthy": true,
@@ -14,11 +14,12 @@
     },
     "code_quality": {
       "healthy": false,
-      "score": 91,
+      "score": 46,
       "issues": [
-        "High TODO count: 90"
+        "production migration not complete",
+        "High TODO count: 45"
       ],
-      "details": "Code quality: 90 TODO items found"
+      "details": "Code quality: 45 TODO items found"
     },
     "configuration": {
       "healthy": true,
@@ -42,12 +43,12 @@
     },
     "performance": {
       "healthy": false,
-      "score": 74,
+      "score": 72,
       "issues": [
-        "Large files detected: 8 files over 50MB",
+        "Large files detected: 9 files over 50MB",
         "Missing performance file: PERFORMANCE.md"
       ],
-      "details": "Performance: 8 large files, 2 issues"
+      "details": "Performance: 9 large files, 2 issues"
     },
     "integration": {
       "healthy": true,
@@ -59,7 +60,7 @@
       "healthy": true,
       "score": 100,
       "issues": [],
-      "details": "Quantum health: 1716 quantum references"
+      "details": "Quantum health: 8518 quantum references"
     }
   },
   "recommendations": [

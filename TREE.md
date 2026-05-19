@@ -36,7 +36,7 @@
 **Last Updated:** 2026-05-19
 **Production Audit:** ✅ Reviewed May 19, 2026 — architecture and repository structure confirmed for production readiness.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 8538
+**Total Indexed Markdown Files:** 1176
 **Status:** ✅  - Complete May 2026 update
 **Total Directories:** 35+
 **Total Files:** 5,000+
@@ -77,7 +77,7 @@ The QMOI Enhanced repository is organized into distinct architectural zones supp
 /hooks/useQAlpha.ts    — Not present in this release; Q Alpha aggregation is handled by static PWA shell assets
 /api/qcity.ts          — QCity API surface
 /api/qalpha.ts         — Planned Q Alpha API surface for unified metrics and orchestration
-/scripts/qcity-ui-server.js — QCity PRODUCTIONelopment UI server helper
+/scripts/qcity-ui-server.js — QCity development UI server helper
 /scripts/qmoi-ai-server.js  — QMOI AI local server helper
 /scripts/qalpha-server.js  — Q Alpha orchestration server helper
 ```
@@ -94,14 +94,14 @@ The QMOI Enhanced repository is organized into distinct architectural zones supp
 ### Automation & Scripting
 ```
 /scripts/             — Automation and utility scripts (build, deploy, audit)
-/autoPRODUCTION/             — PRODUCTIONOps automation framework
-/tools/               — PRODUCTIONelopment and utility tools
+/auto-production/     — production operations automation framework
+/tools/               — Development and utility tools
 ```
 
 ### Configuration & Infrastructure
 ```
 /.github/             — GitHub Actions workflows and configuration
-/.PRODUCTIONcontainer/       — VS Code PRODUCTIONelopment container setup
+/.devcontainer/       — VS Code development container setup
 /config/              — Application configuration files
 ```
 
@@ -224,7 +224,7 @@ Library-level services:
 - **Script automation handles 5000+ files** with parallel processing
 - **Documentation system auto-indexes** all markdown files
 
-## 🛠️ PRODUCTIONeloper Guidance
+## 🛠️ Developer Guidance
 
 1. **Adding new components**: Place in `/components/` and register in `COMPONENTS.md`
 2. **Adding services**: Use `/services/adapters/` pattern for external integrations

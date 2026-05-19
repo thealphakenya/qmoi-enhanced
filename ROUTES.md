@@ -12,18 +12,18 @@
 **Last Updated:** 2026-05-19T00:00:00.000000Z
 **Production Audit:** ✅ Reviewed May 19, 2026 — production route mapping verified and debug-only routes are isolated from the public routing surface.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 8538
-**Total Route Source Files:** 267
+**Total Indexed Markdown Files:** 1176
+**Total Route Source Files:** 261
 **Status:** ✅ 
 
 ## Document Purpose
 
-This document describes the route file structure for the QMOI Enhanced application, mapping the `app/api/` source tree to the available endpoint route handlers.
+This document describes the route file structure for the QMOI Enhanced application, mapping the legacy compatibility `app/api/` source tree to endpoint route handlers. Active production app-router routes are served from `src/app/api/` and are documented in `ENDPOINTS.md`; `app/api/` remains a compatibility/migration reference.
 
 ## Route File Inventory Summary
 
 ### Total Route Files
-- `app/api/` route handler source files: 267
+- `app/api/` route handler source files: 261
 - Root-level standalone handlers: 12
 - Nested route directories and grouped route handlers: 255
 

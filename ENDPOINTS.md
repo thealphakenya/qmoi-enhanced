@@ -15,9 +15,9 @@ fully implemented
 **Last Updated:** 2026-05-19T00:00:00.000000Z
 **Production Audit:** ✅ Reviewed May 19, 2026 — public endpoints verified and internal diagnostics are identified separately.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 8538
-**Total Route Source Files:** 312
-**Actual endpoint handler files:** 312
+**Total Indexed Markdown Files:** 1176
+**Total Route Source Files:** 304
+**Actual endpoint handler files:** 304
 **Status:** ✅ 
 
 ## Document Purpose
@@ -26,17 +26,17 @@ This document captures the current API endpoint inventory for the QMOI Enhanced 
 
 ## API Coverage Summary
 
-The endpoint inventory is derived from live route handler source files under `app/api/`.
+The endpoint inventory is derived from live route handler source files under `src/app/api/`.
 
 | Endpoint Source | Route Files | Notes |
 |---|---|---|
 | `src/app/api/` | 43 | Active Next.js App Router production endpoints |
-| `app/api/` | 269 | Legacy route handler support and compatibility endpoints |
-| **Total** | **312** | Combined documented API source files in the repository |
+| `app/api/` | 261 | Legacy route handler support and compatibility endpoints |
+| **Total** | **304** | Combined documented API source files in the repository |
 
 ### Route Category Summary
 - `src/app/api/` contains 43 active production app-router endpoints.
-- `app/api/` contains 269 legacy and compatibility route handler sources, including backward compatibility handlers and ongoing migration routes.
+- `app/api/` contains 261 legacy and compatibility route handler sources, including backward compatibility handlers and ongoing migration routes.
 - The active production endpoint surface is maintained in `src/app/api/`; legacy `app/api/` handlers remain for compatibility and migration tracking.
 
 | Category | Combined Route Files | Notes |
@@ -50,7 +50,7 @@ The endpoint inventory is derived from live route handler source files under `ap
 | `cameras` | 6 | Camera feeds, thermal, panoramic, and road sensor APIs |
 | `emergency` | 6 | Emergency dispatch, email, SMS, lockdown and recovery endpoints |
 | `git` | 6 | Git operations, jobs, pipelines, and deployment integration |
-| `enhanced-email` | 5 | Email automation, analytics, PRODUCTIONlates and realtime messaging |
+| `enhanced-email` | 5 | Email automation, analytics, realtime messaging |
 | `qmoi-gitlab` | 5 | GitLab integration and CI/CD endpoints |
 | `qvillage` | 5 | Community workspace, collaboration, and dataset endpoints |
 | `financial` | 4 | Balance, transactions, payments, and revenue APIs |
@@ -62,7 +62,7 @@ The endpoint inventory is derived from live route handler source files under `ap
 | `media` | 3 | Media generation, search, and status APIs |
 | `ssh` | 3 | SSH remote operations and host management |
 | `analytics` | 2 | Analytics telemetry and reporting |
-| `biometric` | 2 | Biometric verification and security PRODUCTIONlates |
+| `biometric` | 2 | Biometric verification and security operations |
 | `consciousness` | 2 | Consciousness health and validation |
 | `debug` | 2 | Debug helpers and diagnostics |
 | `deploy` | 2 | Deployment lifecycle and status checking |
@@ -192,7 +192,7 @@ The endpoint inventory is derived from live route handler source files under `ap
 
 ## Documentation Notes
 
-- This inventory is based on route handler source files in `app/api/`.
+- This inventory is based on route handler source files in `src/app/api/`.
 - Endpoint behavior and HTTP methods are defined inside each route handler file.
 - When adding new API routes, update this file and `ROUTES.md`.
 
@@ -201,13 +201,13 @@ The endpoint inventory is derived from live route handler source files under `ap
 - `API.md` — API definitions and function inventory
 - `PRODUCTION_DEPLOYMENT_GUIDE.md` — Deployment and production notes
 
-## production Endpoint Inventory Notes
+## Production Endpoint Inventory Notes
 
 This file now reflects the active API route surface under `src/app/api/` as well as the legacy compatibility routes under `app/api/`.
 
 - The current production app-router API surface is served from `src/app/api/`.
 - Legacy and compatibility route handlers remain in `app/api/` for backward compatibility and migration tracking.
-- Any placeholder or undocumented routes in legacy sources should be migrated into the active `src/app/api/` route tree and documented here.
+- Legacy compatibility routes are archived as reference; active production endpoints are documented from `src/app/api/` and mirrored here when appropriate.
 - Use `ROUTES.md` for source-to-route mapping and `ENDPOINTS.md` for the current production endpoint inventory.
 
 ### How to Maintain This Inventory

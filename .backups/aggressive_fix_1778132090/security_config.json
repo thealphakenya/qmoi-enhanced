@@ -1,9 +1,0 @@
-{
-  "security_level": "production",
-  "encryption_enabled": true,
-  "audit_logging": true,
-  "rate_limiting": true,
-  "cors_policy": "strict",
-  "helmet_protection": true,
-  "content_security_policy": true
-}

@@ -12,7 +12,7 @@
 **Last Updated:** 2026-05-18T00:00:00.000000Z
 **Production Audit:** ✅ Reviewed May 18, 2026 — component inventory confirmed, shared UI primitives and app-specific components are production-ready.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 8538
+**Total Indexed Markdown Files:** 1176
 **Root component files**: 197
 **App-specific component files**: 53
 **Total UI component sources**: 421+ files (including root, app-level, and shared primitives)
@@ -259,7 +259,7 @@ QMOI Space is the marketplace and distributed production environment with spatia
 
 QMOI Space also includes static PWA shell assets in `/pwa_apps/qmoi-space/`.
 
-The QMOI AI feature set is supported by static PWA assets in `/pwa_apps/qmoi-ai/` and includes installable app behavior, online/offline status, production production, share actions, and a chat conversation interface. The actual PWA shell is implemented in `/pwa_apps/qmoi-ai/index.html`, `/pwa_apps/qmoi-ai/sw.js`, and `/pwa_apps/qmoi-ai/manifest.webmanifest`, while React support components such as `Chatbot.tsx`, `AskQMoi.tsx`, `QMOIDashboard.tsx`, and `QMOIAutoFixDashboard.tsx` provide the main internal user experience for the QMOI Enhanced web application.
+The QMOI AI feature set is supported by static PWA assets in `/pwa_apps/qmoi-ai/` and includes installable app behavior, online/offline status, production-ready share actions, and a chat conversation interface. The actual PWA shell is implemented in `/pwa_apps/qmoi-ai/index.html`, `/pwa_apps/qmoi-ai/sw.js`, and `/pwa_apps/qmoi-ai/manifest.webmanifest`, while React support components such as `Chatbot.tsx`, `AskQMoi.tsx`, `QMOIDashboard.tsx`, and `QMOIAutoFixDashboard.tsx` provide the main internal user experience for the QMOI Enhanced web application.
 
 ### Location & Spatial
 Location and space management:
@@ -275,8 +275,8 @@ Data visualization and analytics:
 - `DealsList.tsx` – Deals listing
 - `DealsPopup.tsx` – Deals popup
 
-### production & Window Management
-production windows and display systems:
+### Production & Window Management
+Production windows and display systems:
 - `EnhancedPreviewWindow.tsx` – Enhanced production
 - `FloatingPreviewWindow.tsx` – Floating production
 - `PreviewWindow.tsx` – Standard production
