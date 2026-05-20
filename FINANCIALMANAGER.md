@@ -904,3 +904,15 @@ Link to related documentation, APIs, and system artifacts.
 - [x] Performance optimized
 - [x] Monitoring enabled
 - [x] Documentation complete
+
+## 🧭 UI Real-time & Access Control
+
+- **Master-only Controls**: All fund-moving UI controls (transfer, withdraw, approve, emergency freeze) must only render for users with role `master`. Use the client `useAuth()` hook and `hasAccess('financial_management')` or `user.role === 'master'` checks before showing sensitive controls.
+- **Server Enforcement**: The server enforces master-only actions at `/api/wallet` and related endpoints; UI must treat server responses as authoritative and not expose sensitive functionality to non-master roles.
+- **Real-time Updates**: UI components should subscribe to a real-time feed (SSE or WebSocket) for wallet and balance updates. Recommended endpoints:
+  - `GET /api/wallet/stream` (SSE) — master-sent wallet balance updates and notifications.
+  - `GET /api/wallet?pending_wallets=1` — master-only pending requests overview.
+- **Graceful Degradation**: If real-time connection fails, UI must fallback to polling `GET /api/wallet` every 15s and show data staleness indicator.
+- **Audit & UI Actions**: Every UI action that affects funds must trigger an audit log entry and request a transfer/withdrawal record rather than performing immediate moves — require manual multi-sig approval in the admin dashboard.
+- **Testing**: Add automated UI tests to assert non-master users cannot see or perform master-only actions.
+
