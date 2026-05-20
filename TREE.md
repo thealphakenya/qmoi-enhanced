@@ -244,4 +244,4 @@ Library-level services:
 - `ROUTES.md` — Route definitions
 
 ## Production Build Notes
-This tree reflects the production-ready codebase after comprehensive non-production code cleanup.
+This tree reflects the production-ready codebase after comprehensive non-production code cleanup.\n\n> Production hardening: dev artifacts moved to dev_artifacts/ on Wed May 20 05:04:40 UTC 2026

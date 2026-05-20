@@ -2192,4 +2192,4 @@ fi
 
 **Last Updated:** May 5, 2026
 **Status:** ✅ Complete with comprehensive component listing and API references</content>
-<parameter name="filePath">/workspaces/qmoi-enhanced/QMOIAIUI.md
+<parameter name="filePath">/workspaces/qmoi-enhanced/QMOIAIUI.md\n\n> Production hardening: dev artifacts moved to dev_artifacts/ on Wed May 20 05:04:40 UTC 2026

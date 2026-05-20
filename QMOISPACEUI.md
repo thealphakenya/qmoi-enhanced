@@ -2098,3 +2098,4 @@ Link to related documentation, APIs, and system artifacts.
 
 **Last Updated:** May 5, 2026
 **Status:** ✅ Complete with comprehensive component listing and API references
+\n\n> Production hardening: dev artifacts moved to dev_artifacts/ on Wed May 20 05:04:40 UTC 2026

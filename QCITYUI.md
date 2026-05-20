@@ -972,4 +972,4 @@ QCity uses a professional dark theme optimized for monitoring and control:
 **Last Updated:** May 5, 2026
 **Status:** ✅ Complete with comprehensive component listing and API references
 
-The interface employs a grid-based layout with clear visual hierarchy. Metric cards use large numbers with trend indicators. Status badges provide immediate visual feedback. Panels are well-spaced with consistent typography and border treatments. The design supports extended monitoring sessions with comfortable contrast and readable text at all sizes.
+The interface employs a grid-based layout with clear visual hierarchy. Metric cards use large numbers with trend indicators. Status badges provide immediate visual feedback. Panels are well-spaced with consistent typography and border treatments. The design supports extended monitoring sessions with comfortable contrast and readable text at all sizes.\n\n> Production hardening: dev artifacts moved to dev_artifacts/ on Wed May 20 05:04:40 UTC 2026

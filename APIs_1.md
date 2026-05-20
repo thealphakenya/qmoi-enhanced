@@ -63,4 +63,4 @@ All 464 APIs are production-ready and fully documented.
 - [x] Documentation complete
 
 ## ⚛️ Quantum Integration
-This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.\n\n> Production hardening: dev artifacts moved to dev_artifacts/ on Wed May 20 05:04:40 UTC 2026

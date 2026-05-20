@@ -508,3 +508,4 @@ Q Alpha aggregates all UI features from the three primary applications:
 **Status:** ✅ PRODUCTION CERTIFIED - Complete with all app integrations
 **Last Updated:** May 7, 2026
 **Maintained by:** Quantum multi orchestra intelligence (QMOI) System
+\n\n> Production hardening: dev artifacts moved to dev_artifacts/ on Wed May 20 05:04:40 UTC 2026

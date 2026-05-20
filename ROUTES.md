@@ -184,3 +184,4 @@ The following standalone route handler source files are defined directly under `
 - `ENDPOINTS.md` — API endpoint inventory
 - `API.md` — API function and action inventory
 - `PRODUCTION_DEPLOYMENT_GUIDE.md` — Deployment procedures
+\n\n> Production hardening: dev artifacts moved to dev_artifacts/ on Wed May 20 05:04:40 UTC 2026

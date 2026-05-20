@@ -608,3 +608,4 @@ Ensure that on-call rotation and incident response procedures are ready before p
   - `/qmoi-space` (app/qmoi-space/page.tsx) — displays live model health fetched from `/api/qmoi-model`.
   - Q Alpha static shell (`/q-alpha.html`, `public/q-alpha.html`) — fetches `/api/qmoi-model` and can perform a lightweight chat-based health probe to `/api/qmoi/chat`.
 - **Operational note:** Ensure environment variables and any model service credentials are present in production before enabling live traffic. Run integration tests against `/api/qmoi-model` and `/api/qmoi/chat` as part of your deployment verification (see `QMOIMODELTESTS.md`).
+\n\n> Production hardening: dev artifacts moved to dev_artifacts/ on Wed May 20 05:04:40 UTC 2026

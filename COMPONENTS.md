@@ -485,4 +485,4 @@ The component library implements a comprehensive theme and style system that ens
 ### UI & Interface Documentation
 - `UI.md` — Overall UI architecture and inventory
 - `ALLUI.md` — Comprehensive UI features and validation
-- `DASHBOARD.md` — Dashboard application documentation
+- `DASHBOARD.md` — Dashboard application documentation\n\n> Production hardening: dev artifacts moved to dev_artifacts/ on Wed May 20 05:04:40 UTC 2026

@@ -2486,3 +2486,4 @@ Endpoint automatically detected but not documented.
 **Response:**
 - DECIDED
 
+\n\n> Production hardening: dev artifacts moved to dev_artifacts/ on Wed May 20 05:04:40 UTC 2026
