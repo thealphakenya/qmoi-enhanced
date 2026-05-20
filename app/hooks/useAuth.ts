@@ -104,9 +104,22 @@ export function useAuth() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/auth/me", {
+      let response = await fetch("/api/auth/me", {
         cache: "no-store",
+        credentials: "include",
       });
+
+      if (!response.ok) {
+        const fallbackToken = window.localStorage.getItem("qmoi_access_token");
+        if (fallbackToken) {
+          response = await fetch("/api/auth/me", {
+            cache: "no-store",
+            headers: {
+              Authorization: `Bearer ${fallbackToken}`,
+            },
+          });
+        }
+      }
 
       if (!response.ok) {
         throw new Error(`Auth fetch failed with status ${response.status}`);
@@ -154,7 +167,7 @@ export function useAuth() {
 
   const logout = useCallback(async () => {
     try {
-      await fetch("/api/auth/logout", { method: "POST" });
+      await fetch("/api/auth/logout", { method: "POST", credentials: "include" });
     } catch (_error) {
       // Ignore logout errors
     }
@@ -162,6 +175,7 @@ export function useAuth() {
     window.localStorage.removeItem("qmoi_user_role");
     window.localStorage.removeItem("qmoi_user_id");
     window.localStorage.removeItem("qmoi_user_name");
+    window.localStorage.removeItem("qmoi_access_token");
 
     const profile = roleProfiles.guest;
     const fallbackUser: QmoiUser = {

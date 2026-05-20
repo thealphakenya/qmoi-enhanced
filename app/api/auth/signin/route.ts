@@ -46,10 +46,16 @@ export async function POST(req: NextRequest) {
       message: authResult.message || "Signin successful",
     });
 
+    const isSecureCookie =
+      req.nextUrl?.protocol === 'https' ||
+      req.headers.get('x-forwarded-proto') === 'https' ||
+      process.env.NODE_ENV === 'production';
+    const sameSiteMode = isSecureCookie ? 'none' : 'lax';
+
     response.cookies.set('accessToken', authResult.tokens.accessToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      secure: isSecureCookie,
+      sameSite: sameSiteMode,
       maxAge: 60 * 60, // 1 hour
       path: '/',
     });
@@ -57,8 +63,8 @@ export async function POST(req: NextRequest) {
     if (authResult.tokens.refreshToken) {
       response.cookies.set('refreshToken', authResult.tokens.refreshToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
+        secure: isSecureCookie,
+        sameSite: sameSiteMode,
         maxAge: 7 * 24 * 60 * 60, // 7 days
         path: '/',
       });

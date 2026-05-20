@@ -14,6 +14,7 @@ export default function LoginForm({ onLogin }) {
     try {
       const response = await fetch("/api/auth/signin", {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -23,7 +24,7 @@ export default function LoginForm({ onLogin }) {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        onLogin(data.user);
+        onLogin(data.user, data.tokens?.accessToken);
       } else {
         setError(data.message || "Login failed");
       }

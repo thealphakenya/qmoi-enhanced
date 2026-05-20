@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "../../../lib/db/prisma";
-import { authService } from "../../../lib/auth/service";
-import { logger } from "../../../lib/logger";
+import { prisma } from "../../../../lib/db/prisma";
+import { authService } from "../../../../lib/auth/service";
+import logger from "../../../../lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -23,60 +23,53 @@ export async function GET(req: NextRequest) {
 
     const decoded = authService.decodeToken(token);
 
-    if (!decoded) {
+    if (!decoded || !decoded.userId) {
       return NextResponse.json(
         { success: false, error: "Invalid token" },
         { status: 401 }
       );
     }
 
-    // Get comprehensive user information
-    const user = await prisma.user.findUnique({
-      where: { id: decoded.userId },
-      select: {
-        id: true,
-        email: true,
-        username: true,
-        firstName: true,
-        lastName: true,
-        role: true,
-        isActive: true,
-        emailVerified: true,
-        twoFactorEnabled: true,
-        lastLoginAt: true,
-        createdAt: true,
-        updatedAt: true,
-        profile: {
-          select: {
-            avatar: true,
-            bio: true,
-            timezone: true,
-            language: true,
-            website: true,
-            location: true,
-            company: true,
-            jobTitle: true,
-            socialLinks: true,
+    const useDb = Boolean(process.env.DATABASE_URL);
+    let user = null;
+    if (useDb) {
+      user = await prisma.user.findUnique({ where: { id: String(decoded.userId) } });
+    }
+
+    if (!user && !useDb) {
+      const permissions = Array.isArray(decoded.permissions) ? decoded.permissions : [];
+      const fallbackUser = {
+        id: decoded.userId,
+        email: decoded.email || '',
+        username: decoded.userId === 'master' ? 'master' : decoded.email || decoded.userId,
+        name: decoded.email || decoded.username || decoded.userId,
+        avatar: null,
+        role: decoded.role || 'user',
+        permissions,
+        biometricEnabled: false,
+        accountStatus: 'active',
+        trustScore: 0.5,
+        lastLogin: null,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      };
+
+      return NextResponse.json({
+        success: true,
+        message: "User profile retrieved successfully",
+        user: {
+          ...fallbackUser,
+          fullName: fallbackUser.name,
+          stats: {
+            accountAge: 0,
+            lastActivity: null,
+            trustScore: fallbackUser.trustScore,
           },
+          recentActivity: [],
         },
-        wallets: {
-          select: {
-            id: true,
-            balance: true,
-            currency: true,
-            isPrimary: true,
-          },
-          orderBy: { isPrimary: 'desc' },
-        },
-        _count: {
-          select: {
-            transactions: true,
-            mediaTasks: true,
-            auditLogs: true,
-          },
-        },
-      },
-    });
+        timestamp: new Date().toISOString(),
+      });
+    }
 
     if (!user) {
       return NextResponse.json(
@@ -85,59 +78,57 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    if (!user.isActive) {
+    if (user.accountStatus !== 'active') {
       return NextResponse.json(
         { success: false, error: "Account is deactivated" },
         { status: 403 }
       );
     }
 
-    // Get recent activity (last 10 audit logs)
-    const recentActivity = await prisma.auditLog.findMany({
-      where: { userId: decoded.userId },
-      select: {
-        id: true,
-        action: true,
-        resource: true,
-        createdAt: true,
-        status: true,
-        riskLevel: true,
-      },
-      orderBy: { createdAt: 'desc' },
-      take: 10,
-    });
+    const recentActivity = useDb
+      ? await prisma.auditLog.findMany({
+          where: { userId: decoded.userId },
+          select: {
+            id: true,
+            action: true,
+            resource: true,
+            createdAt: true,
+            status: true,
+            riskLevel: true,
+          },
+          orderBy: { createdAt: 'desc' },
+          take: 10,
+        })
+      : [];
 
-    // Calculate account statistics
     const stats = {
-      totalTransactions: user._count.transactions,
-      totalMediaTasks: user._count.mediaTasks,
-      totalAuditLogs: user._count.auditLogs,
-      accountAge: Math.floor((Date.now() - user.createdAt.getTime()) / (1000 * 60 * 60 * 24)), // days
-      lastActivity: user.lastLoginAt,
+      accountAge: Math.floor((Date.now() - user.createdAt.getTime()) / (1000 * 60 * 60 * 24)),
+      lastActivity: user.lastLogin,
+      trustScore: user.trustScore,
     };
 
-    // Update last activity
-    await prisma.user.update({
-      where: { id: user.id },
-      data: { lastLoginAt: new Date() },
-    });
+    if (useDb) {
+      await prisma.user.update({
+        where: { id: user.id },
+        data: { lastLogin: new Date() },
+      });
 
-    // Create audit log for profile access
-    await prisma.auditLog.create({
-      data: {
-        userId: user.id,
-        username: user.email,
-        action: 'profile_access',
-        resource: 'auth',
-        details: JSON.stringify({
-          userAgent: req.headers.get('user-agent'),
+      await prisma.auditLog.create({
+        data: {
+          userId: user.id,
+          username: user.email,
+          action: 'profile_access',
+          resource: 'auth',
+          details: JSON.stringify({
+            userAgent: req.headers.get('user-agent'),
+            ipAddress: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip'),
+          }),
           ipAddress: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip'),
-        }),
-        ipAddress: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip'),
-        riskLevel: 'low',
-        status: 'success',
-      } as any,
-    });
+          riskLevel: 'low',
+          status: 'success',
+        } as any,
+      });
+    }
 
     return NextResponse.json({
       success: true,
@@ -146,22 +137,22 @@ export async function GET(req: NextRequest) {
         id: user.id,
         email: user.email,
         username: user.username,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        fullName: `${user.firstName || ''} ${user.lastName || ''}`.trim(),
+        name: user.name,
+        fullName: user.name || user.username || user.email,
+        avatar: user.avatar,
         role: user.role,
-        isActive: user.isActive,
-        emailVerified: user.emailVerified,
-        twoFactorEnabled: user.twoFactorEnabled,
-        lastLoginAt: user.lastLoginAt,
+        permissions: JSON.parse(user.permissions || '[]'),
+        biometricEnabled: user.biometricEnabled,
+        accountStatus: user.accountStatus,
+        trustScore: user.trustScore,
+        lastLogin: user.lastLogin,
         createdAt: user.createdAt,
         updatedAt: user.updatedAt,
-        profile: user.profile,
-        wallets: user.wallets,
+        devices: (user as any).devices || [],
         stats,
         recentActivity,
       },
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
 
   } catch (error) {

@@ -102,11 +102,17 @@ export default function QMoiAIPage() {
       }
     : fallbackStatus;
 
-  const handleLogin = async () => {
+  const handleLogin = async (user, accessToken) => {
+    if (typeof window !== 'undefined' && accessToken) {
+      window.localStorage.setItem('qmoi_access_token', accessToken);
+    }
     await refreshUser();
   };
 
   const handleLogout = async () => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.removeItem('qmoi_access_token');
+    }
     await logout();
   };
 
