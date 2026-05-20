@@ -2487,3 +2487,14 @@ Endpoint automatically detected but not documented.
 - DECIDED
 
 \n\n> Production hardening: dev artifacts moved to dev_artifacts/ on Wed May 20 05:04:40 UTC 2026
+
+## Wallet API Endpoints (Production-Ready)
+
+- `GET /api/wallet` — wallet listing with full balances only for `master`; non-master requests receive masked metadata.
+- `POST /api/wallet` — master-protected wallet action endpoint supporting `request_wallet`, `approve_wallet`, `transfer`, and `withdraw` actions.
+- `GET /api/wallets/[walletId]` — secure per-wallet details and transaction history with ownership verification.
+
+### Finance & Trading API Updates
+
+- `/api/wallet` and `/api/wallets/[walletId]` are now listed as production-ready finance endpoints with master-only fund control and audit logging.
+- Withdrawals and transfers create pending requests rather than immediate fund moves, enabling master approval workflows.

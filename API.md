@@ -11558,3 +11558,25 @@ Endpoint automatically detected but not documented.
 - DECIDED
 
 \n\n> Production hardening: dev artifacts moved to dev_artifacts/ on Wed May 20 05:04:40 UTC 2026
+
+## Wallet API Production Readiness
+
+- `GET /api/wallet` — production-ready wallet listing endpoint.
+  - Returns full wallet details and balances only for `master` role.
+  - Non-master requests receive limited wallet metadata for security and privacy.
+  - Supports `pending_wallets=1` for master-only pending wallet request review.
+- `POST /api/wallet` — wallet action endpoint with master-protected behavior.
+  - `action: request_wallet` creates a pending wallet request for review.
+  - `action: approve_wallet` is master-only and approves pending wallet requests.
+  - `action: transfer`, `action: withdraw` now create pending requests requiring master approval instead of executing immediate fund moves.
+  - All wallet actions are audited, logged, and require secure authorization.
+- `GET /api/wallets/[walletId]` — secure wallet detail endpoint with ownership verification.
+  - Validates the authenticated user owns the requested wallet.
+  - Returns transaction history and wallet statistics for authorized owners.
+
+## Production Ready UI Notes
+
+- `app/components/wallet/WalletList.tsx` now checks `useAuth()` and only shows balances to `master`.
+- Real-time wallet updates should use SSE/WebSocket feeds or fallback polling to `/api/wallet`.
+- UI controls for fund movement are hidden from non-master users and permissions are enforced server-side.
+- `FINANCIALMANAGER.md` and `QMOIAIUI.md` were updated with master-only access and real-time financial tracking requirements.

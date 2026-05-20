@@ -185,3 +185,14 @@ The following standalone route handler source files are defined directly under `
 - `API.md` — API function and action inventory
 - `PRODUCTION_DEPLOYMENT_GUIDE.md` — Deployment procedures
 \n\n> Production hardening: dev artifacts moved to dev_artifacts/ on Wed May 20 05:04:40 UTC 2026
+
+## Wallet Route Group (Production-Ready)
+
+### `wallet/`
+- `app/api/wallet.ts` — master-aware wallet action endpoint with production-ready request/approval semantics.
+- `app/api/wallets/[walletId]/route.ts` — secure wallet detail endpoint validating user ownership and returning wallet transactions/statistics.
+
+### Production Wallet Access Notes
+
+- Sensitive wallet operations are enforced server-side and only exposed to `master` where appropriate.
+- The route group supports pending withdrawal and transfer request workflows for secure fund controls.

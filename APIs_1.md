@@ -64,3 +64,10 @@ All 464 APIs are production-ready and fully documented.
 
 ## ⚛️ Quantum Integration
 This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.\n\n> Production hardening: dev artifacts moved to dev_artifacts/ on Wed May 20 05:04:40 UTC 2026
+
+## Wallet API Production Readiness
+
+- `GET /api/wallet` — master-aware wallet listing for production.
+- `POST /api/wallet` — wallet request, approval, transfer, and withdrawal actions with server-side master-only controls.
+- `GET /api/wallets/[walletId]` — secure wallet detail retrieval with user ownership verification.
+- Master-only wallet controls are enforced in the API and documented as production behavior.
