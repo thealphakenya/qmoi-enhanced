@@ -2193,3 +2193,10 @@ fi
 **Last Updated:** May 5, 2026
 **Status:** ✅ Complete with comprehensive component listing and API references</content>
 <parameter name="filePath">/workspaces/qmoi-enhanced/QMOIAIUI.md\n\n> Production hardening: dev artifacts moved to dev_artifacts/ on Wed May 20 05:04:40 UTC 2026
+
+## Real-time & Access Control (UI)
+
+- Master-only controls: financial controls and fund-moving features must only appear to `master` role. Use `useAuth()` and `hasAccess('financial_management')` checks.
+- Real-time updates: UI should subscribe to `/api/wallet/stream` (SSE) or a WebSocket to receive instant balance updates. Fallback to polling `/api/wallet` every 15s when connection fails.
+- Audit: All actions that affect funds create pending requests audited in the system and require master approval.
+
