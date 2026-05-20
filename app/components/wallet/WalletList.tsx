@@ -2,29 +2,42 @@
 
 import React from 'react';
 import { Wallet } from 'lucide-react';
+import { useAuth } from '../../hooks/useAuth';
 
 interface WalletData {
   id: string;
   name: string;
-  balance: number;
-  currency: string;
+  balance?: number | null;
+  currency?: string;
 }
 
 export function WalletList() {
-  const [wallets] = React.useState<WalletData[]>([]);
+  const { user } = useAuth();
+  const isMaster = user?.role === 'master';
+  const [wallets, setWallets] = React.useState<WalletData[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-    // Fetch wallets
+    // Fetch wallets from API; server will limit details for non-master
     const loadWallets = async () => {
       try {
-        setIsLoading(false);
-      } catch {
+        setIsLoading(true);
+        const res = await fetch('/api/wallet', { cache: 'no-store' });
+        if (!res.ok) {
+          setWallets([]);
+          setIsLoading(false);
+          return;
+        }
+        const data = await res.json();
+        setWallets(data.wallets || []);
+      } catch (e) {
+        setWallets([]);
+      } finally {
         setIsLoading(false);
       }
     };
     loadWallets();
-  }, []);
+  }, [isMaster]);
 
   if (isLoading) {
     return <div className="p-4">Loading wallets...</div>;
@@ -49,7 +62,7 @@ export function WalletList() {
           <div className="flex justify-between items-center">
             <span className="font-medium">{wallet.name}</span>
             <span className="text-lg font-semibold">
-              {wallet.balance} {wallet.currency}
+              {isMaster ? `${wallet.balance ?? '—'} ${wallet.currency ?? ''}` : '—'}
             </span>
           </div>
         </div>

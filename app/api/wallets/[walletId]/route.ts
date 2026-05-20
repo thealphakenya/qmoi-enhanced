@@ -162,9 +162,42 @@ export async function POST(req: NextRequest, { params }: { params: { walletId: s
           where: { id: walletId },
           data: { balance: newBalance },
         });
-        break;
+
+        // Create transaction record for deposit
+        const depositTx = await prisma.transaction.create({
+          data: {
+            walletId,
+            amount,
+            type: 'deposit',
+            status: 'completed',
+            description: description || 'Deposit transaction',
+            reference: reference || `TXN_${Date.now()}`,
+          },
+        });
+
+        await prisma.auditLog.create({
+          data: {
+            userId: decoded.userId,
+            username: decoded.email || 'unknown',
+            action: `wallet_deposit`,
+            resource: 'wallet',
+            details: JSON.stringify({ walletId, amount, newBalance, transactionId: depositTx.id }),
+            ipAddress: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip'),
+            riskLevel: 'low',
+            status: 'success',
+          } as any,
+        });
+
+        return NextResponse.json({
+          success: true,
+          message: `Wallet deposit completed successfully`,
+          wallet: { id: wallet.id, balance: newBalance, currency: wallet.currency },
+          transaction: depositTx,
+          timestamp: new Date().toISOString(),
+        });
 
       case 'withdraw':
+        // Withdrawals are converted to pending withdrawal requests and require master approval
         if (!amount || amount <= 0) {
           return NextResponse.json(
             { success: false, error: "Valid withdrawal amount required" },
@@ -177,19 +210,79 @@ export async function POST(req: NextRequest, { params }: { params: { walletId: s
             { status: 400 }
           );
         }
-        newBalance = wallet.balance - amount;
-        result = await prisma.wallet.update({
-          where: { id: walletId },
-          data: { balance: newBalance },
+
+        const withdrawalRequest = await prisma.withdrawalRequest.create({
+          data: {
+            walletId,
+            amount: Number(amount),
+            currency: wallet.currency,
+            requestedBy: decoded.userId,
+            status: 'pending',
+          },
         });
-        break;
+
+        await prisma.auditLog.create({
+          data: {
+            userId: decoded.userId,
+            username: decoded.email || 'unknown',
+            action: 'withdrawal_requested',
+            resource: 'wallet',
+            details: JSON.stringify({ walletId, amount, requestId: withdrawalRequest.id }),
+            ipAddress: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip'),
+            riskLevel: amount > 10000 ? 'medium' : 'low',
+            status: 'pending',
+          } as any,
+        });
+
+        return NextResponse.json({ success: true, status: 'pending', request: withdrawalRequest });
 
       case 'transfer':
-        // This would be implemented with transfer logic
-        return NextResponse.json(
-          { success: false, error: "Transfer action fully implemented" },
-          { status: 501 }
-        );
+        // Transfers are converted to pending transfer requests and require master approval
+        const { toWalletId } = body;
+        if (!toWalletId) {
+          return NextResponse.json(
+            { success: false, error: "toWalletId is required for transfer" },
+            { status: 400 }
+          );
+        }
+        if (!amount || amount <= 0) {
+          return NextResponse.json(
+            { success: false, error: "Valid transfer amount required" },
+            { status: 400 }
+          );
+        }
+        if (amount > wallet.balance) {
+          return NextResponse.json(
+            { success: false, error: "Insufficient balance" },
+            { status: 400 }
+          );
+        }
+
+        const transferRequest = await prisma.transferRequest.create({
+          data: {
+            fromWalletId: walletId,
+            toWalletId,
+            amount: Number(amount),
+            currency: wallet.currency,
+            requestedBy: decoded.userId,
+            status: 'pending',
+          },
+        });
+
+        await prisma.auditLog.create({
+          data: {
+            userId: decoded.userId,
+            username: decoded.email || 'unknown',
+            action: 'transfer_requested',
+            resource: 'wallet',
+            details: JSON.stringify({ fromWalletId: walletId, toWalletId, amount, requestId: transferRequest.id }),
+            ipAddress: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip'),
+            riskLevel: amount > 10000 ? 'medium' : 'low',
+            status: 'pending',
+          } as any,
+        });
+
+        return NextResponse.json({ success: true, status: 'pending', transferRequest });
 
       default:
         return NextResponse.json(
@@ -197,59 +290,6 @@ export async function POST(req: NextRequest, { params }: { params: { walletId: s
           { status: 400 }
         );
     }
-
-    // Create transaction record
-    const transaction = await prisma.transaction.create({
-      data: {
-        walletId,
-        amount,
-        type: action,
-        status: 'completed',
-        description: description || `${action.charAt(0).toUpperCase() + action.slice(1)} transaction`,
-        reference: reference || `TXN_${Date.now()}`,
-      },
-    });
-
-    // Create audit log
-    await prisma.auditLog.create({
-      data: {
-        userId: decoded.userId,
-        username: decoded.email || 'unknown',
-        action: `wallet_${action}`,
-        resource: 'wallet',
-        details: JSON.stringify({
-          walletId,
-          amount,
-          newBalance,
-          transactionId: transaction.id,
-          userAgent: req.headers.get('user-agent'),
-          ipAddress: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip'),
-        }),
-        ipAddress: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip'),
-        riskLevel: amount > 10000 ? 'medium' : 'low',
-        status: 'success',
-      } as any,
-    });
-
-    return NextResponse.json({
-      success: true,
-      message: `Wallet ${action} completed successfully`,
-      wallet: {
-        id: wallet.id,
-        balance: newBalance,
-        currency: wallet.currency,
-      },
-      transaction: {
-        id: transaction.id,
-        amount: transaction.amount,
-        type: transaction.type,
-        status: transaction.status,
-        description: transaction.description,
-        reference: transaction.reference,
-        createdAt: transaction.createdAt,
-      },
-      timestamp: new Date().toISOString()
-    });
 
   } catch (error) {
     logger.error('Wallet POST error:', error);
