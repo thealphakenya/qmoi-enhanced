@@ -48,7 +48,7 @@ Comprehensive financial management system overseeing $1M+ daily revenue generati
 - **Master-Only Access**: Exclusive access controls for all banking operations
 
 #### Master Login Vault
-- **Secure Credential Storage**: Encrypted storage under rovicviccy@gmail.com master account
+- **Secure Credential Storage**: Encrypted storage under example@example.com master account
 - **Platform Login Management**: Automated login credentials for all integrated platforms
 - **Master-Only Controls**: Exclusive access to all platform credentials
 - **Automated Login Handling**: Seamless authentication for autonomous operations
@@ -235,7 +235,7 @@ Describe the purpose of this document and its scope.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

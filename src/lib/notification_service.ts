@@ -60,7 +60,7 @@ export class NotificationService {
       email: {
         enabled: true,
         from: "qcity-ai@alphakenya.com",
-        to: ["rovicviccy@gmail.com", "thealphakenya@gmail.com"],
+        to: ["example@example.com", "thealphakenya@gmail.com"],
         smtp: {
           host: "smtp.gmail.com",
           port: 587,

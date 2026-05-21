@@ -11,7 +11,7 @@
 
 ## Overview
 
-The Quantum multi orchestra intelligence (QMOI) shell environment is production-grade and designed to support PRODUCTIONeloper workflows across Linux, macOS, and Windows shells. Shell enhancements include intelligent prompts, secure environment management, and Lion-assisted automation.
+The Quantum multi orchestra intelligence (QMOI) shell environment is production-grade and designed to support production developer workflows across Linux, macOS, and Windows shells. Shell enhancements include intelligent prompts, secure environment management, and Lion-assisted automation.
 
 ## Key Shell Enhancements
 
@@ -77,7 +77,7 @@ Describe the purpose of this document and its scope.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

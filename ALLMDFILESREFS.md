@@ -6,9 +6,6 @@
 .github/PULL_REQUEST_TEMPLATE.md
 .github/PULL_REQUEST_TEMPLATE/automated_fix.md
 .qmoi_state/RECOVERY_COMPLETE.md
-.venv/lib/python3.12/site-packages/idna-3.13.dist-info/licenses/LICENSE.md
-.venv/lib/python3.12/site-packages/pip-26.1.1.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md
-.venv/lib/python3.12/site-packages/pip/_vendor/idna/LICENSE.md
 1.md
 1a.md
 3.md

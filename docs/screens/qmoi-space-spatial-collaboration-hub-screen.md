@@ -1,7 +1,7 @@
 # QMOI Space Spatial Collaboration Hub Screen
 
 ## Overview
-The QMOI Space screen serves as a central navigation hub for the QMOI ecosystem, providing access to various system components including AI tools, city dashboards, community workspaces, and PRODUCTIONeloper utilities. It represents the active Next.js application interface replacing legacy static PWA launchers.
+The QMOI Space screen serves as a central navigation hub for the QMOI ecosystem, providing access to various system components including AI tools, city dashboards, community workspaces, and production developer utilities. It represents the active Next.js application interface replacing legacy static PWA launchers.
 
 ## Screen Layout Structure
 
@@ -65,10 +65,10 @@ The QMOI Space screen serves as a central navigation hub for the QMOI ecosystem,
   - **Hover Effect**: Background changes to cyan-500
   - **Link**: Next.js Link component to "/qmoi-ai"
 
-#### PRODUCTIONeloper Tools Card
+#### production developer Tools Card
 - **Container**: Same styling as Interactive Links card
-- **Title**: "PRODUCTIONeloper Tools" (text-2xl, font-semibold, white)
-- **Description**: "Use the PRODUCTIONeloper utilities for tracing, diagnostics, and internal tooling in this workspace." (slate-400)
+- **Title**: "production developer Tools" (text-2xl, font-semibold, white)
+- **Description**: "Use the production developer utilities for tracing, diagnostics, and internal tooling in this workspace." (slate-400)
 - **Interactive Element**: "Open PRODUCTION Tools" button
   - **Styling**: Inline-flex, rounded-xl, slate-700 background, padding-x-5 padding-y-3, text-sm font-semibold, white text
   - **Hover Effect**: Background changes to slate-600
@@ -131,7 +131,7 @@ The QMOI Space screen serves as a central navigation hub for the QMOI ecosystem,
   - `/qcity` - City command center
   - `/qvillage` - Community workspace
   - `/qmoi-ai` - AI assistant interface
-  - `/PRODUCTION` - PRODUCTIONeloper tools
+  - `/PRODUCTION` - production developer tools
 - **System Integration**: Central hub for QMOI ecosystem navigation
 
 ## Accessibility Features

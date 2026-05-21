@@ -74,7 +74,7 @@ Upon launching QCity, users see:
 - **Admin Panel:** Administrative dashboard with system metrics
 - **QMOI Space Integration:** Marketplace and dataset access
 - **QVillage Integration:** Community workspace and collaboration
-- **PRODUCTIONeloper Tools:** Internal utilities and diagnostics
+- **production developer Tools:** Internal utilities and diagnostics
 - **Testing Interface:** Quality assurance and validation tools
 - **Friendship Interface:** Emotion-aware AI companion
 - **Master Controls:** Advanced automation control (master access only)
@@ -577,7 +577,7 @@ export default function QCityCommandCenter() {
   - QVillage Access: Community workspace and collaboration
   - Admin Panel: Administrative dashboard and user management
   - device Management: Connected device monitoring and control
-  - PRODUCTIONeloper Tools: Internal utilities and diagnostics
+  - production developer Tools: Internal utilities and diagnostics
   - Testing Interface: Quality assurance and validation tools
   - Friendship Interface: Emotion-aware AI companion
   - Master Controls: Advanced system control (master access only)

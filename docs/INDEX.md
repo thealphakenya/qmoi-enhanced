@@ -19,7 +19,7 @@ Detailed UI/UX specifications and visual element documentation for each applicat
 | [QCity Command Center](screens/qcity-command-center-dashboard-screen.md) | `/qcity` | Smart city operations dashboard |
 | [QMOI Space Hub](screens/qmoi-space-spatial-collaboration-hub-screen.md) | `/qmoi-space` | Central ecosystem navigation |
 | [Friendship AI Interface](screens/qmoi-friendship-interface-screen.md) | `/friendship` | Interactive AI companion chat |
-| [PRODUCTIONeloper Utilities](screens/PRODUCTIONeloper-utilities-screen.md) | `/PRODUCTION` | PRODUCTIONelopment and testing tools |
+| [production developer Utilities](screens/production developer-utilities-screen.md) | `/PRODUCTION` | production and testing tools |
 | [Master Links Management](screens/master-links-management-screen.md) | `/master/links` | Global link configuration (Admin) |
 | [Master Tracks Management](screens/master-tracks-management-screen.md) | `/master/tracks` | System operations tracking (Admin) |
 | [Test Page](screens/test-page-screen.md) | `/test` | Application deployment verification |
@@ -52,7 +52,7 @@ Comprehensive reference for React/TypeScript components used throughout the appl
   - Advanced Features
   - Emergency & Safety
   - Administration & Management
-  - PRODUCTIONelopment & Testing
+  - production & Testing
   - Utility Components
   - Third-party Integrations
 
@@ -111,7 +111,7 @@ Detailed descriptions of all application features and capabilities.
   4. QVillage Community Collaboration
   5. Email Configuration & Management
   6. Master Administration
-  7. PRODUCTIONeloper Tools & Testing
+  7. production developer Tools & Testing
   8. Global Communication Features
   9. Security & Biometric Features
   10. Wallet & Financial Features
@@ -178,7 +178,7 @@ Comprehensive user guide and support documentation.
 4. Review specific **[Screens Documentation](screens/)** - Detailed UI walkthroughs
 5. Use **[Navigation Flows](navigation/navigation_flows.md)** - Understand how to move around
 
-### 👨‍💻 For PRODUCTIONelopers
+### 👨‍💻 For production developers
 1. Start with **[Components Index](components/COMPONENTS_INDEX.md)** - Understand architecture
 2. Review **[Component Documentation](components/)** - Details on specific components
 3. Study **[Navigation Flows](navigation/navigation_flows.md)** - Route and state patterns
@@ -220,7 +220,7 @@ Comprehensive user guide and support documentation.
 - `/qcity` → [QCity Command Center](screens/qcity-command-center-dashboard-screen.md)
 - `/qmoi-space` → [QMOI Space Hub](screens/qmoi-space-spatial-collaboration-hub-screen.md)
 - `/friendship` → [Friendship AI Interface](screens/qmoi-friendship-interface-screen.md)
-- `/PRODUCTION` → [PRODUCTIONeloper Utilities](screens/PRODUCTIONeloper-utilities-screen.md)
+- `/PRODUCTION` → [production developer Utilities](screens/production developer-utilities-screen.md)
 - `/master/links` → [Master Links Management](screens/master-links-management-screen.md)
 - `/master/tracks` → [Master Tracks Management](screens/master-tracks-management-screen.md)
 - `/test` → [Test Page](screens/test-page-screen.md)
@@ -337,7 +337,7 @@ The app uses Tailwind CSS with:
 ### COMPLETE
 - Component-level documentation for high-priority components
 - API endpoint documentation
-- PRODUCTIONelopment setup guide
+- production setup guide
 - Testing guidelines
 
 ### Planned
@@ -362,7 +362,7 @@ The app uses Tailwind CSS with:
 3. [All Screen Documentation](screens/) - learn every interface
 4. [Features Guide](features/features_guide.md) - master functionality
 
-### PRODUCTIONeloper Onboarding (1-2 hours)
+### production developer Onboarding (1-2 hours)
 1. [Components Index](components/COMPONENTS_INDEX.md)
 2. [Core Component Docs](components/AIContext_component.md)
 3. [Navigation System](navigation/navigation_flows.md)

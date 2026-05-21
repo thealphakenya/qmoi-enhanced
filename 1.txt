@@ -5,7 +5,7 @@ Instruction Manifest Generation: Output all findings into a new file named instr
 File Origin: The exact file path where the instruction was found.
 Content: The raw text of the instruction/requirement.
 Frequency: The number of times that specific or similar instruction appears across the repo.
-production Alignment: Use the generated instructionmanifest.txt as a final master checklist. Cross-reference every entry to ensure all reals are replaced with real implementations and all logic is optimized for a 'real actual production' environment.
+production Alignment: Use the generated instructionmanifest.txt as a final master checklist. Cross-reference every entry to ensure all reals are replaced with real implementations and all logic is optimized for a 'production-ready' environment.
 Confirm when the scan is complete and the manifest is ready for review."
 Enhanced Script Logic Suggestions
 If you want to guide Copilot on how to make the script more thorough, you can suggest these technical parameters:

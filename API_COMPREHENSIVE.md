@@ -433,11 +433,16 @@ Compare Quantum multi orchestra intelligence (QMOI) against GPT-5, Gemini, Claud
 
 ### 12. Deploy API
 **Endpoint**: `/api/deploy`  
-**Methods**: PUT, POST  
+**Methods**: GET, POST  
 **File**: `app/api/deploy/route.ts`
 
 #### Description
-Trigger deployment pipeline to PRODUCTION or production.
+Deployment endpoint currently serves a development stub and returns simulated route metadata.
+
+#### Notes
+- The deployment endpoint is disabled in production.
+- GET returns endpoint status and stub metadata.
+- POST triggers the deployment stub and returns a production-blocked response in production.
 
 #### Request
 ```json
@@ -463,11 +468,16 @@ Trigger deployment pipeline to PRODUCTION or production.
 
 ### 13. Auto-Redeploy API
 **Endpoint**: `/api/deploy/auto-redeploy`  
-**Methods**: PUT  
+**Methods**: GET, POST  
 **File**: `app/api/deploy/auto-redeploy/route.ts`
 
 #### Description
-Automatically redeploy if deployment fails (with backoff).
+Auto-redeploy endpoint currently serves a development stub and returns simulated route metadata.
+
+#### Notes
+- The auto-redeploy endpoint is disabled in production.
+- GET returns endpoint status and stub metadata.
+- POST triggers the auto-redeploy stub and returns a production-blocked response in production.
 
 #### Request
 ```json
@@ -716,7 +726,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

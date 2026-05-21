@@ -56,7 +56,7 @@ function optimally.
 
 ---
 
-For questions or support, contact the Q-team at rovicviccy@gmail.com.
+For questions or support, contact the Q-team at example@example.com.
 
 <!-- QMOI_VALIDATION_START -->
 
@@ -112,7 +112,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

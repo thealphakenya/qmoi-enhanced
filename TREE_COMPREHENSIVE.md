@@ -1,4 +1,4 @@
-# TREE.md - Comprehensive Repository Structure & PRODUCTIONeloper Guide
+# TREE.md - Comprehensive Repository Structure & production developer Guide
 
 **Last Updated**: 2026-04-13 23:45:00 UTC
 **Version**: 2.0.0
@@ -17,7 +17,7 @@
 6. [API & Routes Overview](#api--routes-overview)
 7. [Documentation Files Index](#documentation-files-index)
 8. [Configuration & Setup](#configuration--setup)
-9. [PRODUCTIONeloper Workflows](#PRODUCTIONeloper-workflows)
+9. [production developer Workflows](#production developer-workflows)
 10. [Continuous Integration & Deployment](#continuous-integration--deployment)
 
 ---
@@ -476,8 +476,8 @@ Validation, AutoPRODUCTION, Security, Performance, Testing, Documentation, PRODU
 #### Deployment APIs
 | Endpoint | Method | File | Purpose |
 |----------|--------|------|---------|
-| `/api/deploy` | PUT | app/api/deploy/route.ts | Deploy Quantum multi orchestra intelligence (QMOI) system |
-| `/api/deploy/auto-redeploy` | PUT | app/api/deploy/auto-redeploy/route.ts | Auto redeployment |
+| `/api/deploy` | GET, POST | app/api/deploy/route.ts | Deployment stub with production-disabled blocking |
+| `/api/deploy/auto-redeploy` | GET, POST | app/api/deploy/auto-redeploy/route.ts | Auto-redeploy stub with production-disabled blocking |
 
 #### Git Integration APIs
 | Endpoint | Method | File | Purpose |
@@ -530,7 +530,7 @@ Validation, AutoPRODUCTION, Security, Performance, Testing, Documentation, PRODU
 - **APIs_1.md** - API reference v1.0 (stable version)
 - **ROUTES.md** - Route directory & mapping
 - **ENDPOINTS.md** - Endpoint inventory & details
-- **TREE.md** (this file) - Repository structure & PRODUCTIONeloper guide
+- **TREE.md** (this file) - Repository structure & production developer guide
 
 ### System Documentation
 - **HOOKS.md** - Git hooks & webhook definitions
@@ -605,7 +605,7 @@ python3 scripts/qmoi_autorate_system.py
 
 ---
 
-## PRODUCTIONeloper Workflows
+## production developer Workflows
 
 ### Local production
 ```bash
@@ -764,7 +764,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

@@ -200,37 +200,33 @@
 
 ### Standard Deployment
 
-#### PUT /api/deploy
-- **Purpose**: Deploy to PRODUCTION or production
-- **Handler**: `app/api/deploy/route.ts`
-- **Targets**:
-  - `PRODUCTION`: Test deployment
-  - `production`: Live deployment
-- **Options**:
-  - `version`: Version to deploy
-  - `include_phases`: Phases to include
-  - `health_check`: Pre-deployment checks
-  - `rollback_on_failure`: Auto-rollback
-
 #### GET /api/deploy
-- **Purpose**: Get deployment status
+- **Purpose**: Get deployment stub status and route metadata
+- **Handler**: `app/api/deploy/route.ts`
+- **Notes**: This deployment endpoint is a development stub and is disabled in production.
 - **Info**:
-  - `status`: Current deployment state
-  - `progress`: Percentage complete
-  - `logs`: Real-time logs
-  - `eta`: Estimated time remaining
+  - `status`: Current deployment state or disabled notice
+  - `route`: Endpoint metadata
+  - `message`: Stub status information
+
+#### POST /api/deploy
+- **Purpose**: Trigger deployment workflow
+- **Handler**: `app/api/deploy/route.ts`
+- **Notes**: This deployment POST is a development stub and is disabled in production.
 
 ---
 
 ### Auto-Redeploy
 
-#### PUT /api/deploy/auto-redeploy
-- **Purpose**: Automatic redeploy on failure
+#### GET /api/deploy/auto-redeploy
+- **Purpose**: Get auto-redeploy stub status
 - **Handler**: `app/api/deploy/auto-redeploy/route.ts`
-- **Settings**:
-  - `max_atPRODUCTIONts`: Maximum retry atPRODUCTIONts
-  - `backoff_seconds`: Delay between atPRODUCTIONts
-  - `rollback_on_failure`: Automatic rollback option
+- **Notes**: This endpoint is a development stub and is disabled in production.
+
+#### POST /api/deploy/auto-redeploy
+- **Purpose**: Trigger automatic redeploy workflow
+- **Handler**: `app/api/deploy/auto-redeploy/route.ts`
+- **Notes**: Auto-redeploy requests are stubbed in development and disabled in production.
 
 ---
 
@@ -481,7 +477,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

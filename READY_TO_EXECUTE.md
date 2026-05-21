@@ -140,7 +140,7 @@ function bodies
 - **MATCHES.md** - Auto-regenerated from `tools/matches_priority.json`
 - **undone.txt** - Regenerated showing remaining (target <5%)
 - **ALLHEALTHS.md** - Complete health system inventory
-- **TREE.md** - Repository structure with PRODUCTIONeloper notes
+- **TREE.md** - Repository structure with production developer notes
 - **API.md, ENDPOINTS.md** - Auto-synced documentation
 - **Backups/** - All original files preserved in `.backups/PRODUCTION_FIXED_{timestamp}/`
 
@@ -302,7 +302,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

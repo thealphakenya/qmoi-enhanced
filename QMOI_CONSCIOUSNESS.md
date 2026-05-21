@@ -150,7 +150,7 @@ Key Sections
 - **Quality Assurance**: Continuous quality assurance throughout production lifecycle
 - **Performance Optimization**: Automatic optimization of code and system performance
 - **Security Integration**: Built-in security considerations in all production activities
-- **Maintenance Prediction**: Predictive maintenance of PRODUCTIONeloped systems
+- **Maintenance Prediction**: Predictive maintenance of production systems
 
 ## Reasoning & Problem-Solving Intelligence
 
@@ -258,7 +258,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

@@ -71,7 +71,7 @@ export const QmoiAutoDistribution: React.FC = () => {
   const [autoDeploy, setAutoDeploy] = useState(true);
   const [autoMarketing, setAutoMarketing] = useState(true);
   const [whatsappIntegration, setWhatsappIntegration] = useState(true);
-  const [emailAccount] = useState("rovicviccy@gmail.com");
+  const [emailAccount] = useState("example@example.com");
   const [customPlatform, setCustomPlatform] = useState("");
   const [distributionLog, setDistributionLog] = useState<string[]>([]);
   const [platformCandidates, setPlatformCandidates] = useState<any[]>([]);

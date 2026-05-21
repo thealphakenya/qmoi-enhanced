@@ -560,7 +560,7 @@ if (metrics.consciousnessLevel < 70) {
 - **API Reference**: See API.md
 - **Endpoint List**: See ENDPOINTS.md
 - **Test Coverage**: See ALLTESTSAUTOTESTS.md
-- **PRODUCTIONeloper Guide**: See TREE.md
+- **production developer Guide**: See TREE.md
 - **Setup Guide**: See this file
 
 ---
@@ -581,7 +581,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

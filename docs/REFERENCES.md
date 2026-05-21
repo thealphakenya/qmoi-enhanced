@@ -21,7 +21,7 @@ title: "REFERENCES"
 
 ## Quantum multi orchestra intelligence (QMOI) Gmail Notification Integration
 
-- All self-healing and autotest progress/result notifications are sent to rovicviccy@gmail.com via Gmail.
+- All self-healing and autotest progress/result notifications are sent to example@example.com via Gmail.
 - Environment variables for Gmail (QMOI_EMAIL_USER, QMOI_EMAIL_PASS, etc.) are managed automatically by scripts/Quantum multi orchestra intelligence (QMOI)-environment-setup.js.
 - Node.js self-healing: see scripts/ci-self-heal.js (uses Quantum multi orchestra intelligence (QMOI)-notification-system.js)
 - Python autotest: see scripts/autotest/advanced_autotest_system.py (uses notify_enhancement.py)
@@ -100,7 +100,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

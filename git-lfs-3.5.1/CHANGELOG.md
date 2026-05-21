@@ -1458,7 +1458,7 @@ not support it.
 
 ## 2.5.0 (26 July, 2018)
 
-This release adds three new migration modes, updated PRODUCTIONeloper ergonomics, and
+This release adds three new migration modes, updated production developer ergonomics, and
 a handful of bug fixes to Git LFS.
 
 We would like to extend a special thanks to the following open-source
@@ -2811,7 +2811,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

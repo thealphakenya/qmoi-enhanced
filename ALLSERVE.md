@@ -139,8 +139,8 @@ git clone <repo-url> && cd qmoi-enhanced
 nvm install --lts      # or install Node.js from nodejs.org
 npm install
 npm run dev
-# Open the UI at: http://localhost:3000/qmoi-ai
-"$BROWSER" http://localhost:3000/qmoi-ai
+# Open the UI in a new browser window:
+npm run open:qmoi-ai
 ```
 
 - Use Docker on host (if available):
@@ -482,7 +482,7 @@ For production monitoring:
 | k8s/ingress.yaml | Kubernetes ingress | [k8s/ingress.yaml](k8s/ingress.yaml) |
 
 - No `` markers remain in active source
-- No PRODUCTIONelopment-only `console.RELEASE` logging remains
+- No production-only `console.RELEASE` logging remains
 - No hardcoded `api.qmoi-enhanced.com` references exist in production code
 - No `DEBUG_MODE` variables remain
 - Required production documentation exists

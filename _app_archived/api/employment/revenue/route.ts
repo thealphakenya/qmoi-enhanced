@@ -84,7 +84,7 @@ function backupCredentialsToEmail(
 ): any {
   try {
     const emailData = {
-      to: "rovicviccy@gmail.com",
+      to: "example@example.com",
       subject: `QMOI Revenue Platform Credentials - ${platform}`,
       body: `Platform: ${platform}\nCredentials: ${JSON.stringify(credentials, null, 2)}\nTimestamp: ${new Date().toISOString()}`,
     };

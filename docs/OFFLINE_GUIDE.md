@@ -272,7 +272,7 @@ cd docs_site && python3 -m http.server 8080
 ## 🔗 Integration Points
 
 ### With Main Systems
-- **TREE.md**: Synchronized PRODUCTIONeloper structure
+- **TREE.md**: Synchronized production developer structure
 - **API.md**: Cached endpoint documentation
 - **README.md**: Offline access instructions
 - **Health Checks**: Cached domain status
@@ -319,7 +319,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

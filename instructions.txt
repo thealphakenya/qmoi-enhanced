@@ -27,7 +27,7 @@ Docs:
 Create QMOIAPIKEYREADME.md with setup and usage instructions
 3. Account Automation & Security
 Implement modular automation for account creation, login, and verification across major platforms
-Integrate with rovicviccy@gmail.com for email-based verifications
+Integrate with example@example.com for email-based verifications
 Enhance QMOI’s shelling, VPN, and security features
 4. WhatsApp & Social Automation
 Automate daily status/posts on WhatsApp, Telegram, and other platforms

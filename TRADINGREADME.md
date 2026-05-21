@@ -1129,7 +1129,7 @@ This software is proprietary and confidential. Unauthorized copying, distributio
 
 ---
 
-For help, contact the Q-team at rovicviccy@gmail.com.
+For help, contact the Q-team at example@example.com.
 
 # Bitget RSA API Integration (User-Generated Keys) ✅ 
 
@@ -1186,7 +1186,7 @@ Describe the purpose of this document and its scope.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

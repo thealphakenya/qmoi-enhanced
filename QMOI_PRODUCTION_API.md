@@ -865,7 +865,7 @@ Describe the purpose of this document and its scope.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash
@@ -1144,4 +1144,3 @@ Link to related documentation, APIs, and system artifacts.
 - **Wired Connectivity**: USB, Ethernet, Serial
 - **Auto-Connection**: Zero-config device pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
-

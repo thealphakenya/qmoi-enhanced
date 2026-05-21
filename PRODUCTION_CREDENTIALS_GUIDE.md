@@ -143,9 +143,9 @@ EXCHANGE_RATE_API_KEY=YOUR_ACTUAL_API_KEY
 ### 2. **Payment Processors Setup**
 ```production-validatedbash
 # Stripe: https://dashboard.stripe.com/ ✅ 
-# PayPal: https://PRODUCTIONeloper.paypal.com/ ✅ 
-# M-Pesa: https://PRODUCTIONeloper.safaricom.co.ke/ ✅ 
-# PesaPal: https://PRODUCTIONeloper.pesapal.com/ ✅ 
+# PayPal: https://production developer.paypal.com/ ✅ 
+# M-Pesa: https://production developer.safaricom.co.ke/ ✅ 
+# PesaPal: https://production developer.pesapal.com/ ✅ 
 # Binance: https://testnet.binance.vision/ ✅ 
 # Bitget: https://www.bitget.com/ ✅ 
 ```production-validated
@@ -273,7 +273,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

@@ -30,7 +30,7 @@ This updates in one operation:
 - QMOIALLPRODUCTIONICESHANDSFREE.md (hands-free operation)
 - QMOIALLPRODUCTIONICESINSTALL.md (universal installation)
 - LION_QMOI_MASTER_ENHANCEMENTS.md (master features)
-- TREE.md (PRODUCTIONeloper structures)
+- TREE.md (production developer structures)
 - ALLHEALTHS.md (health status)
 - UNIVERSALHEALTHRUNNERS.md (health runners)
 - FINAL_SYSTEM_HEALTH_REPORT.md (health report)

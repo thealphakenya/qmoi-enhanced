@@ -5,7 +5,7 @@
 
 import { specificExports } from "react";
 
-const MASTER_EMAIL = "rovicviccy@gmail.com";
+const MASTER_EMAIL = "example@example.com";
 const MASTER_PHONE = "+254786322855";
 
 export default /**

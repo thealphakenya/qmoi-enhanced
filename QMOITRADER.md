@@ -112,7 +112,7 @@ Quantum multi orchestra intelligence (QMOI) TRADER is a comprehensive automated 
 
 ### Rovicviccy Email Integration
 
-- **Email:** rovicviccy@gmail.com
+- **Email:** example@example.com
 - **Auto-Login:** Automated account access across platforms
 - **Email Reading:** Automatic email processing and responses
 - **Account Creation:** Automated account setup and verification
@@ -120,7 +120,7 @@ Quantum multi orchestra intelligence (QMOI) TRADER is a comprehensive automated 
 
 ### Betika & Odibets Integration
 
-- **Account Access:** Stored credentials in rovicviccy@gmail.com
+- **Account Access:** Stored credentials in example@example.com
 - **Auto-Login:** Automated betting platform access
 - **Betting Strategies:** AI-powered betting algorithms
 - **Odds Analysis:** Real-time odds comparison and optimization
@@ -252,7 +252,7 @@ class TradingPlatformManager:
 # Email and account automation ✅ 
 class AccountAutomation:
     def __init__(self):
-        self.email_client = EmailClient("rovicviccy@gmail.com")
+        self.email_client = EmailClient("example@example.com")
         self.account_manager = AccountManager()
 
     def auto_login_platforms(self):
@@ -466,7 +466,7 @@ Describe the purpose of this document and its scope.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

@@ -88,10 +88,10 @@ class QMOIEnvironmentSetup {
       'QMOI_EMAIL_HOST': 'smtp.gmail.com',
       'QMOI_EMAIL_PORT': '587',
       'QMOI_EMAIL_SECURE': 'false',
-      'QMOI_EMAIL_USER': 'rovicviccy@gmail.com',
+      'QMOI_EMAIL_USER': 'example@example.com',
       'QMOI_EMAIL_PASS': 'your-app-password', // <-- Set your Gmail App Password here
-      'QMOI_EMAIL_FROM': 'rovicviccy@gmail.com',
-      'QMOI_EMAIL_TO': 'rovicviccy@gmail.com',
+      'QMOI_EMAIL_FROM': 'example@example.com',
+      'QMOI_EMAIL_TO': 'example@example.com',
       'QMOI_SLACK_WEBHOOK': 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK',
       'QMOI_DISCORD_WEBHOOK': 'https://discord.com/api/webhooks/YOUR/DISCORD/WEBHOOK',
       'QMOI_TELEGRAM_BOT_TOKEN': 'YOUR_TELEGRAM_BOT_TOKEN',

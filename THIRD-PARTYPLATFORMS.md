@@ -234,7 +234,7 @@ Quantum multi orchestra intelligence (QMOI) is designed to interact with third-p
 ## Master Account & Login Automation
 
 - Quantum multi orchestra intelligence (QMOI) stores platform login credentials securely and uses the master account context to manage them.
-- A dedicated login vault is used for `rovicviccy@gmail.com` account credentials, ensuring a central identity store for all third-party access.
+- A dedicated login vault is used for `example@example.com` account credentials, ensuring a central identity store for all third-party access.
 - Platform sessions are refreshed automatically and passwords are rotated securely.
 - Quantum multi orchestra intelligence (QMOI) can discover and use existing saved logins from the master Gmail account when authorized.
 

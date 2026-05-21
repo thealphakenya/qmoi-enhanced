@@ -22,7 +22,7 @@ interface GitHubWebhookPayload {
 class GitHubIntegrationService {
   private readonly masterBranch = "refs/heads/master";
   private readonly emailAddresses = [
-    "rovicviccy@gmail.com",
+    "example@example.com",
     "thealphakenya@gmail.com",
   ];
 

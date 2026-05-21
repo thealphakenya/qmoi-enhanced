@@ -566,7 +566,7 @@ client.getStatus().then(logger.info);
 ## Account Verification & Linking
 
 - Automated verification for WhatsApp, Airtel Money, Mpesa, Facebook, Instagram, YouTube, Google.
-- Uses master email (rovicviccy@gmail.com) and WhatsApp (+254786322855).
+- Uses master email (example@example.com) and WhatsApp (+254786322855).
 - Sends WhatsApp notification to master on successful verification.
 
 ## Financial Integration (QMOIEARNING)
@@ -601,7 +601,7 @@ client.getStatus().then(logger.info);
 
 ## Gmail Notification Integration
 
-- All progress and result notifications for self-healing and autotest are sent to rovicviccy@gmail.com via Gmail.
+- All progress and result notifications for self-healing and autotest are sent to example@example.com via Gmail.
 - Environment variables are managed by scripts/Quantum multi orchestra intelligence (QMOI)-environment-setup.js.
 - See scripts/ci-self-heal.js and scripts/autotest/advanced_autotest_system.py for implementation details.
 
@@ -691,7 +691,7 @@ Describe the purpose of this document and its scope.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

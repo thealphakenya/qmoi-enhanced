@@ -72,8 +72,8 @@
 - **Button:** "Open QVillage" link to `/qvillage`
 - **Button Styling:** Emerald background (emerald-600), hover emerald-500, rounded-xl, padding 5x3, small text, semibold
 
-#### Card 2: PRODUCTIONeloper & Support
-- **Title:** "PRODUCTIONeloper & Support" (2xl font, semibold, white)
+#### Card 2: production developer & Support
+- **Title:** "production developer & Support" (2xl font, semibold, white)
 - **Description:** "If this page is reaching you from the Next.js app, the QMOI system is wired correctly and active routes are available."
 - **Button:** "Open PRODUCTION Tools" link to `/PRODUCTION`
 - **Button Styling:** Slate background (slate-700), hover slate-600, rounded-xl, padding 5x3, small text, semibold
@@ -169,7 +169,7 @@ export default function QMoiAIPage() {
         {/* Bottom Section - 2 cards */}
         <section className="grid gap-6 md:grid-cols-2">
           {/* QVillage access card */}
-          {/* PRODUCTIONeloper support card */}
+          {/* production developer support card */}
         </section>
 
       </div>

@@ -25,7 +25,7 @@
 | BrowserInterface | Navigation | Feature page | Route-specific |
 | CashonTradingPanel | Finance | Finance route | /trading |
 | Chatbot | Communication | Feature page | Route-specific |
-| ComponentGallery | PRODUCTIONeloper/UI | PRODUCTIONeloper pages | /PRODUCTION |
+| ComponentGallery | production developer/UI | production developer pages | /PRODUCTION |
 | DealsList | Commerce | Commerce route | Route-specific |
 | DealsPopup | Commerce | Modal overlay | All routes |
 | DeploymentStatusDashboard | Monitoring | app/admin/page.tsx | /admin |

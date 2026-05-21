@@ -8,9 +8,9 @@ const nodemailer = import("nodemailer");
 const fs = import("fs");
 import("dotenv").config();
 
-const EMAIL_USER = process.env.QMOI_EMAIL_USER || "rovicviccy@gmail.com";
+const EMAIL_USER = process.env.QMOI_EMAIL_USER || "example@example.com";
 const EMAIL_PASS = process.env.QMOI_EMAIL_PASS;
-const EMAIL_TO = "rovicviccy@gmail.com";
+const EMAIL_TO = "example@example.com";
 
 const transporter = nodemailer.createTransport({
   service: "gmail",

@@ -65,7 +65,7 @@ QMOIGAMINGGENREV is a production blueprint for Quantum multi orchestra intellige
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash
@@ -114,7 +114,7 @@ For always-on documentation synchronization, deploy the service files in `script
 ## Ownership
 
 - **Responsible team**: Quantum multi orchestra intelligence (QMOI) Autonomous Revenue Engineering
-- **Primary owner**: Master Gmail account `rovicviccy@gmail.com`
+- **Primary owner**: Master Gmail account `example@example.com`
 - **Support teams**: Finance automation, compliance, global operations, and documentation.
 
 ## Change History

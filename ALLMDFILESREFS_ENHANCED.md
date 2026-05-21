@@ -285,17 +285,17 @@ function GET(req: NextRequest) { }
 
 ---
 
-### User & PRODUCTIONeloper Documentation
+### User & production developer Documentation
 
 **Files to Maintain**:
 - README_DOCUMENTATION.md - Documentation overview
-- PRODUCTIONELOPER_QUICK_START.md - PRODUCTIONeloper onboarding
+- production.md - production developer onboarding
 - docs/USER_GUIDE.md - User documentation
 - docs/API_USE_CASES.md - Common API usage patterns
 - docs/FAQ.md - Frequently asked questions
 
 **Update Instructions**:
-1. Keep PRODUCTIONELOPER_QUICK_START.md current with setup changes
+1. Keep production.md current with setup changes
 2. Update user documentation with new features
 3. Add use case documentation for common workflows
 4. Update FAQ with new questions and answers
@@ -333,7 +333,7 @@ Files requiring manual updates:
 - Testing and QA documentation
 - Deployment procedures
 - Architecture and design documents
-- User and PRODUCTIONeloper guides
+- User and production developer guides
 - Security and compliance documentation
 
 **Update Responsibility**: Each feature owner must keep their documentation current
@@ -442,7 +442,7 @@ Code examples and technical details...
 For help with documentation:
 - Check this file (ALLMDFILESREFS.md) for directory mapping
 - Review README_DOCUMENTATION.md for general guidelines
-- Check PRODUCTIONELOPER_QUICK_START.md for setup help
+- Check production.md for setup help
 - File issues for documentation bugs or improvements
 
 ---
@@ -458,7 +458,7 @@ Describe the purpose of this document and its scope.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

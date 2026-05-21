@@ -51,12 +51,12 @@ A deployment, project, user, or team on Vercel can be blocked if it violates our
 
 Blocked deployments and projects will result in your website returning a 451 error. Blocked users and teams cannot create new deployments, and blocked users cannot be invited to a team. Please reach out to registration@vercel.com if you need help.
 
-Unused build and PRODUCTIONelopment settings
-A Project has several settings that can be found in the dashboard. One of those sections, Build & PRODUCTIONelopment Settings, is used to change the way a Project is built.
+Unused build and production settings
+A Project has several settings that can be found in the dashboard. One of those sections, Build & production Settings, is used to change the way a Project is built.
 
-However, the Build & PRODUCTIONelopment Settings are only applied to zero-configuration deployments.
+However, the Build & production Settings are only applied to zero-configuration deployments.
 
-If a deployment defines the builds configuration property, the Build & PRODUCTIONelopment Settings are ignored.
+If a deployment defines the builds configuration property, the Build & production Settings are ignored.
 
 Unused Vercel Function region setting
 A project has several settings that can be found in the dashboard. One of those settings, Vercel Function Region, is used to select the region where your Vercel functions execute.
@@ -310,13 +310,13 @@ Why this error occurred
 You have configured one of the following for your Project:
 
 The Build Command defined in the Project Settings invokes vercel build
-The PRODUCTIONelopment Command defined in the Project Settings invokes vercel PRODUCTION
+The production Command defined in the Project Settings invokes vercel PRODUCTION
 Because the Build Command is invoked by vercel build when deploying, it cannot invoke vercel build itself, as that would cause an infinite recursion.
 
-The same applies to the PRODUCTIONelopment Command: When PRODUCTIONeloping locally, vercel PRODUCTION invokes the PRODUCTIONelopment Command, so it cannot invoke vercel PRODUCTION itself.
+The same applies to the production Command: When production locally, vercel PRODUCTION invokes the production Command, so it cannot invoke vercel PRODUCTION itself.
 
 Possible ways to fix it
-Adjust the Build and PRODUCTIONelopment Commands defined for your Project to not invoke vercel build or vercel PRODUCTION.
+Adjust the Build and production Commands defined for your Project to not invoke vercel build or vercel PRODUCTION.
 
 Instead, they should invoke the Build Command provided by your framework.
 

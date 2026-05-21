@@ -450,7 +450,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash
@@ -915,4 +915,3 @@ Link to related documentation, APIs, and system artifacts.
 - **Graceful Degradation**: If real-time connection fails, UI must fallback to polling `GET /api/wallet` every 15s and show data staleness indicator.
 - **Audit & UI Actions**: Every UI action that affects funds must trigger an audit log entry and request a transfer/withdrawal record rather than performing immediate moves — require manual multi-sig approval in the admin dashboard.
 - **Testing**: Add automated UI tests to assert non-master users cannot see or perform master-only actions.
-

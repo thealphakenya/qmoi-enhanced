@@ -29,9 +29,9 @@
   - Padding: 6 units (24px)
   - Hover effects: lift animation, border color change to blue-500, background darkening
 
-### PRODUCTIONeloper Resources Section (Bottom)
+### production developer Resources Section (Bottom)
 - **Container:** Rounded corners (3xl), dark background, padding 8 units
-- **Title:** "PRODUCTIONeloper & UI Inventory" (3xl font, bold, white)
+- **Title:** "production developer & UI Inventory" (3xl font, bold, white)
 - **Description:** Text explaining the documentation structure
 - **Resource Cards:** 2-column grid on small screens and up
   - COMPONENTS.md card
@@ -81,15 +81,15 @@ Each card contains:
 - **Title:** "Master Links Dashboard"
 - **Description:** "Manage and monitor master-level link operations."
 
-#### Card 8: PRODUCTIONeloper Utilities
+#### Card 8: production developer Utilities
 - **Link:** `/PRODUCTION`
-- **Title:** "PRODUCTIONeloper Utilities"
-- **Description:** "PRODUCTIONeloper tools, self-service pages, and automation utilities."
+- **Title:** "production developer Utilities"
+- **Description:** "production developer tools, self-service pages, and automation utilities."
 
 ### Documentation Links (3 total)
 - **COMPONENTS.md:** "React component inventory and feature categorization."
 - **UI_COMPONENTS.md:** "Shared UI primitives inventory for the system."
-- **TREE.md:** "Repository structure and PRODUCTIONeloper architecture guide."
+- **TREE.md:** "Repository structure and production developer architecture guide."
 
 ## User Interactions
 
@@ -154,7 +154,7 @@ Each card contains:
       {/* Mapped feature cards */}
     </section>
 
-    {/* PRODUCTIONeloper resources */}
+    {/* production developer resources */}
     <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/90 p-8">
       {/* Documentation links */}
     </section>

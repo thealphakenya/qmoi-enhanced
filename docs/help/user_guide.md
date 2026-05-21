@@ -160,7 +160,7 @@ The QMOI Enhanced application is a comprehensive system for device management, A
 - QCity Dashboard (links to city dashboard)
 - QVillage (links to community)
 - QMOI AI (button to AI hub)
-- PRODUCTION Tools (button for PRODUCTIONelopment utilities)
+- PRODUCTION Tools (button for production utilities)
 
 **Quick Start**:
 1. Go to QMOI Space

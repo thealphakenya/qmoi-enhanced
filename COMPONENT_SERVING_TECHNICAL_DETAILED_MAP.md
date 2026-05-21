@@ -508,7 +508,7 @@ Code-split component loads on demand
 
 - `QmoiAccessibility.tsx` - Likely utility/context provider
 - `WrappedComponent.tsx` - Higher-order component wrapper
-- `ComponentGallery.tsx` - PRODUCTIONeloper/documentation component
+- `ComponentGallery.tsx` - production developer/documentation component
 - Many sub-components used within other components
 
 ---

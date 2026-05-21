@@ -28,7 +28,7 @@ lib/
 │   ├── avatar,_ai_core_&_server.ts
 │   ├── cashon-wallet.ts
 │   ├── cross_language_integration.ts
-│   ├── PRODUCTIONeloper_&_parallelization.ts
+│   ├── production developer_&_parallelization.ts
 │   ├── download_&_distribution.ts
 │   ├── error_logs_by_device_type.ts
 │   ├── free,_hands_free_&_accessibility.ts
@@ -149,7 +149,7 @@ lib/
 - [cross_language_integration.ts](lib/cross_language_integration.ts)
 - [prisma.ts](lib/db/prisma.ts)
 - [services.ts](lib/db/services.ts)
-- [PRODUCTIONeloper_&_parallelization.ts](lib/PRODUCTIONeloper_&_parallelization.ts)
+- [production developer_&_parallelization.ts](lib/production developer_&_parallelization.ts)
 - [download_&_distribution.ts](lib/download_&_distribution.ts)
 - [service.ts](lib/email/service.ts)
 - [error_logs_by_device_type.ts](lib/error_logs_by_device_type.ts)
@@ -234,7 +234,7 @@ Describe the purpose of this document and its scope.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

@@ -379,7 +379,7 @@ Each regional office has:
 **Engineering (3,500)**
 - Platform/Infrastructure
 - AI/ML specialists
-- Full-stack PRODUCTIONelopers
+- Full-stack production developers
 - PRODUCTIONOps
 
 **Sales & Revenue (2,000)**

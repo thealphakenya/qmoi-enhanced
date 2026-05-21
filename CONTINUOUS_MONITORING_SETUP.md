@@ -90,9 +90,9 @@ This document describes the automated continuous monitoring, health checking, an
 
 ### Documentation (100%)
 - API documentation coverage: 241/241 (100%)
-- PRODUCTIONeloper structure documentation: TREE.md ✅
+- production developer structure documentation: TREE.md ✅
 - Markdown file indexing: 1944/1944 (100%)
-- PRODUCTIONeloper guides: complete
+- production developer guides: complete
 
 ### Code Quality (100%)
 - Test coverage: 100%
@@ -317,7 +317,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

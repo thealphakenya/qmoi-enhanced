@@ -68,7 +68,7 @@ Modern models are "native multimodal," meaning they process different types of d
 MMMU (Massive Multi-discipline Multimodal Understanding): Tests how well a model understands images, charts, and diagrams in technical contexts.  
 Compositionality: For image generation models (like DALL-E 3 or Gemini’s Image generation), they are rated on Spatial Relations (e.g., "put the red ball inside the blue box") and Attribute Binding (e.g., "a yellow cat with purple spots").
 4. Operational & Performance Metrics
-For PRODUCTIONelopers and businesses, the "best" model is often the one that is fastest or cheapest. Feature Description
+For production developers and businesses, the "best" model is often the one that is fastest or cheapest. Feature Description
 Context Window How much data the model can "remember" in one go. (e.g., Gemini's 1M+ tokens vs. GPT-5's 400k-1M range).
 Throughput Speed, measured in Tokens per Second (TPS). Faster models feel more "live."
 TTFT Time to First Token. How long you wait after hitting "Enter" before the model starts typing.
@@ -88,7 +88,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

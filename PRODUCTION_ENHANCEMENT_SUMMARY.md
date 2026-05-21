@@ -64,12 +64,12 @@
 **Purpose**: Generate TREE.md with complete repository structure
 **Includes**:
 - Full directory tree structure
-- PRODUCTIONeloper structure & conventions documentation
+- production developer structure & conventions documentation
 - Key file descriptions
 - Quick start commands
 - Auto-generated files schedule
 - Performance notes
-**Output**: Updated TREE.md with comprehensive PRODUCTIONeloper guide
+**Output**: Updated TREE.md with comprehensive production developer guide
 
 ### 4. Key Features of Enhanced System
 
@@ -185,7 +185,7 @@ When all phases complete successfully:
 - [ ] undone.txt is empty or contains <5% remaining issues
 - [ ] ALLHEALTHS.md fully generated with health inventory
 - [ ] MATCHES.md reflects all prioritized implementation work
-- [ ] TREE.md includes complete PRODUCTIONeloper structure documentation
+- [ ] TREE.md includes complete production developer structure documentation
 - [ ] All "..." patterns replaced with meaningful code
 - [ ] All STABLE/tmp variables renamed to descriptive names
 - [ ] All console logging converted to structured logging
@@ -228,7 +228,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

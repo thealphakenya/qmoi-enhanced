@@ -1354,7 +1354,7 @@ Note: run integration tests against a running dev server to validate connectivit
 1261. `_update_cloud_endpoints()`
 1262. `_update_comprehensive_documentation()`
 1263. `_update_consciousness()`
-1264. `_update_PRODUCTIONeloper_structures()`
+1264. `_update_production developer_structures()`
 1265. `_update_doc_file()`
 1266. `_update_emotion()`
 1267. `_update_endpoint_files()`

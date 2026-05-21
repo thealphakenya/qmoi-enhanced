@@ -200,7 +200,7 @@ app/components/
 - `/api/accounts` - Account management
 - `/api/users` - User management
 
-#### PRODUCTIONelopment & Infrastructure
+#### production & Infrastructure
 - `/api/git` - Git operations
 - `/api/qmoi-gitlab` - GitLab integration
 - `/api/ssh` - SSH management
@@ -223,7 +223,7 @@ app/components/
 - `/api/automation` - Automation services
 - `/api/account-automation` - Account automation
 - `/api/qmoi-model` - AI model management
-- `/api/debug` - Debug endpoints
+- `/api/debug` - Debug endpoints (production disabled)
 - `/api/middleware` - Middleware operations
 - `/api/pwa` - PWA support
 - `/api/qapikey` - API key management

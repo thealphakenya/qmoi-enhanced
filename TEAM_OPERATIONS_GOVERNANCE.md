@@ -261,7 +261,7 @@ For Level 3+ decisions:
    - Descriptive name
    - Link to ticket
 
-2. **PRODUCTIONelop & Test**
+2. **production & Test**
    - Write tests (100% coverage)
    - Update documentation
    - Run linters & formatters
@@ -598,7 +598,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

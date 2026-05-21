@@ -5,7 +5,7 @@
 **Status:** ✅ PRODUCTION CERTIFIED - All UI components enhanced with real production implementations
 **Production Audit:** ✅ Reviewed May 19, 2026 — production readiness verified; `app/dev` and debug utilities are developer-only and must remain gated.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 1176
+**Total Indexed Markdown Files:** 1776
 **Scope:** All visible UI elements, screens, interactions, and user flows for QMOI AI
 **Production Verification:** ✅ PASSED - Zero non-production code remaining in published UI assets
 
@@ -43,6 +43,13 @@ QMOI AI is a Progressive Web App (PWA) that provides advanced AI-powered orchest
 - **Status:** Real-time online/offline indicators
 - **PWA Features:** Installable, offline-capable, service worker enabled
 
+### Role-Based Access
+QMOI AI uses role-based UI gating in `app/qmoi-ai/page.tsx` to show the appropriate feature set for each authenticated role.
+- **master:** full master dashboard, ownership summary, analytics, security controls, and cross-app routes.
+- **sister:** operational tools, memory manager, security center, device manager, and QMOI Space access.
+- **user:** chat interface, memory manager, device controls, and QMOI Space.
+- **guest:** limited access to the chat interface and help support, with login required to unlock the full platform.
+
 ### Theme & Style System
 - **Theme Customization:** Supports dark mode, accent variation, and visual personalization via `ThemeCustomizer` and `ClientUISettings`.
 - **Visual Style:** Gradient accents, glassmorphism cards, neon highlights, and consistent spacing across sections.
@@ -65,6 +72,7 @@ Upon launching the QMOI AI app, users are presented with:
 - **Component Integration:** All available UI components (Admin Dashboard, Chat Messaging, Auto-Fix Dashboard, etc.)
 - **Embedded Components Section:** Toggle and review shared UI modules directly within the QMOI AI page
 - **Optimized Actions:** Interactive buttons for key functions
+- **Master Ownership UI:** Master role sees a dedicated ownership summary panel aligned to `MASTEROWNS.md`.
 - **Latest Q AI System:** Status card showing system health
 - **QMOI Chatbot:** Interactive chat interface with model selection
 - **AI Assistant Features:** Avatar integration, emotion tracking, device management
@@ -74,7 +82,7 @@ Upon launching the QMOI AI app, users are presented with:
 - **Voice Integration:** Audible conversation with speech synthesis
 - **Visual Enhancements:** Theme controls and accessibility features
 - **Cross-App Navigation:** Links to QCity, QVillage, QMOI Space, admin panels, and device management
-- **PRODUCTIONeloper Tools:** Internal utilities and diagnostics (PRODUCTION access)
+- **Developer Tools:** Internal utilities and diagnostics (master-only access)
 - **Testing Interface:** Quality assurance and validation tools
 - **Friendship Interface:** Emotion-aware AI companion with mood tracking
 - **Extended Cross-App Modules:** QI intelligence, QIStateWindow, QiSpaces, LcSpaces, QVillage, QVillageDatasetsPanel, and QCity platform integration
@@ -82,6 +90,53 @@ Upon launching the QMOI AI app, users are presented with:
 - **Finance and Wallet UI:** WalletPanel, WalletList, LeahWallet, Cashon approvals, and transaction history
 - **File and Deployment UI:** FileUploadDownload, DownloadManager, QFileManager, GitHub controls, and Vercel deployment interfaces
 - **Voice & Media UI:** AudioVisualizer, QMediaPlayer, VoiceLibraryPanel, VoiceSelectionPanel, and AudibleConversation
+
+## Verified Implementation
+
+- **Live route:** `/qmoi-ai`
+- **Source file:** `app/qmoi-ai/page.tsx`
+- **Verified imported components:**
+  - `AdminDashboard`
+  - `ChatMessaging`
+  - `QMOIAutoFixDashboard`
+  - `QMOIAutoSetup`
+  - `AudibleConversation`
+  - `FileUploadDownload`
+  - `VisualEnhancement`
+  - `ClientUISettings`
+  - `UserProfile`
+  - `WalletList`
+  - `LoginForm` / `RegisterForm`
+  - `SponsoredUsersManager`
+  - `QMOIMasterDashboard`
+  - `QI`
+  - `QIStateWindow`
+  - `NotificationCenter`
+  - `HelpGuide`
+  - `PreviewWindow`
+  - `ThemeCustomizer`
+  - `DataVisualizationPanel`
+  - `AnalyticsDashboard`
+  - `SecurityMonitor`
+  - `PerformanceMonitor`
+  - `AnalyticsCenter`
+
+- **Verified UI feature coverage:**
+  - Master access controls and token unlock dashboard are included.
+  - Memory manager status and memory sync metrics are present.
+  - Security monitoring, device health, and revenue tracking cards are available.
+  - Chat interface includes model selection and proactive status shortcuts.
+  - Cross-app navigation links to QMOI Space, QCity, and QVillage are present.
+  - Action buttons include Chat with AI, Auto-Fix Tools, Memory Manager, Security Center, and Device Manager.
+  - Role-aware access is implemented so Master, Sister, User, and Guest views each render the correct feature set.
+  - Master users now see an ownership summary panel aligned to `MASTEROWNS.md` categories.
+  - Theme customization, preview overlays, and offline/PWA support are represented.
+  - Analytics, visualization, performance, and security dashboards are integrated.
+  - Voice/audio conversation support is included through AudibleConversation.
+
+- **Notes:**
+  - This document is aligned with the current `app/qmoi-ai/page.tsx` implementation.
+  - The UI feature list now reflects the actual page structure and imported UI modules.
 
 ---
 
@@ -97,6 +152,8 @@ npm install
 npm run dev
 # Then open: http://localhost:3000/qmoi-ai
 "$BROWSER" http://localhost:3000/qmoi-ai
+# Or use the local helper command (recommended)
+npm run open:qmoi-ai
 ```
 
 - Docker / Compose (host):
@@ -742,7 +799,7 @@ export default function ChatMessaging() {
 
 - **Admin Panel:** Administrative dashboard with system metrics and user management
 - **device Management:** Connected device monitoring, control, and synchronization
-- **PRODUCTIONeloper Tools:** Internal utilities, diagnostics, and PRODUCTIONelopment helpers
+- **Developer Tools:** Internal utilities, diagnostics, and master-only access controls
 - **Testing Interface:** Quality assurance tools and validation systems
 - **Friendship Interface:** Emotion-aware AI companion with mood tracking and personalized interactions
 - **Master Controls:** Advanced automation control and financial overview (master access only)
@@ -766,7 +823,7 @@ export default function ChatMessaging() {
   - "🏙️ QCity" button
   - "🏘️ QVillage" button
   - "⚙️ Admin Panel" button
-  - "🛠️ PRODUCTIONeloper Tools" button
+  - "🛠️ Developer Tools" button (master-only access)
   - "🧪 Testing Interface" button
   - "❤️ Friendship Mode" button
   - "👑 Master Controls" button (master access only)
@@ -983,7 +1040,7 @@ Main Dashboard
 - /q-alpha.html → Alpha Q aggregator
 - /admin → Administrative dashboard
 - /devices → device management interface
-- /PRODUCTION → PRODUCTIONeloper utilities
+- /dev → Developer utilities (master-only access)
 - /friendship → Emotion-aware AI companion
 - /master → Master control panels
 - /test → Testing and validation tools
@@ -1156,7 +1213,7 @@ Main Dashboard
 
 ### Security Operations
 1. **Monitor Threats:** View real-time security status
-2. **Access Logs:** Review audit logs and access atPRODUCTIONts
+2. **Access Logs:** Review audit logs and access attempts
 3. **Configure Alerts:** Set up security notifications
 4. **Biometric Setup:** Configure biometric authentication
 5. **Encryption:** Manage data encryption settings
@@ -2199,4 +2256,3 @@ fi
 - Master-only controls: financial controls and fund-moving features must only appear to `master` role. Use `useAuth()` and `hasAccess('financial_management')` checks.
 - Real-time updates: UI should subscribe to `/api/wallet/stream` (SSE) or a WebSocket to receive instant balance updates. Fallback to polling `/api/wallet` every 15s when connection fails.
 - Audit: All actions that affect funds create pending requests audited in the system and require master approval.
-

@@ -857,7 +857,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash
@@ -1190,10 +1190,10 @@ Link to related documentation, APIs, and system artifacts.
 - **[QMOI_AUTOFIX_SETUP_GUIDE.md](QMOI_AUTOFIX_SETUP_GUIDE.md)** - Auto-fix setup guide
 - **[AUTOPRODUCTION_PRODUCTION_READINESS_ENHANCEMENT_GUIDE.md](AUTOPRODUCTION_PRODUCTION_READINESS_ENHANCEMENT_GUIDE.md)** - production readiness guide
 
-### PRODUCTIONelopment & Testing UI
-- **[PRODUCTIONELOPER_QUICK_START.md](PRODUCTIONELOPER_QUICK_START.md)** - PRODUCTIONeloper quick start
+### production & Testing UI
+- **[production.md](production.md)** - production developer quick start
 - **[QUICK_START_TESTING.md](QUICK_START_TESTING.md)** - Testing quick start
-- **[QMOI_AUTO_TESTING_UI_PRODUCTIONELOPMENT.md](QMOI_AUTO_TESTING_UI_PRODUCTIONELOPMENT.md)** - UI PRODUCTIONelopment testing
+- **[QMOI_AUTO_TESTING_UI_production.md](QMOI_AUTO_TESTING_UI_production.md)** - UI production testing
 - **[QMOI_MASTER_TESTING_GUIDE.md](QMOI_MASTER_TESTING_GUIDE.md)** - Master testing guide
 
 ### Operations & Maintenance UI

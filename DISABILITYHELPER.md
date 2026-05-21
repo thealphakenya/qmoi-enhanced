@@ -286,7 +286,7 @@ curl -X GET "https://production.Quantum multi orchestra intelligence (QMOI).ai:8
 - **Documentation**: Extensive user guides and tutorials
 
 ### Technical Support
-- **PRODUCTIONeloper Portal**: API documentation and integration guides
+- **production developer Portal**: API documentation and integration guides
 - **SDK Downloads**: Software production kits for custom integrations
 - **Webinars**: Regular technical training and updates
 - **Bug Reports**: Dedicated channels for issue reporting and resolution
@@ -998,7 +998,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

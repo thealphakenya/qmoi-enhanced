@@ -11,7 +11,7 @@
 
 ## Overview
 
-Quantum multi orchestra intelligence (QMOI)'s terminal environment is designed to be production-ready, intelligent, and deeply integrated with Lion orchestration. The terminal is a PRODUCTIONeloper productivity control plane for executing commands, validating environments, deploying code, and managing production workflows.
+Quantum multi orchestra intelligence (QMOI)'s terminal environment is designed to be production-ready, intelligent, and deeply integrated with Lion orchestration. The terminal is a production developer productivity control plane for executing commands, validating environments, deploying code, and managing production workflows.
 
 ## Key Features
 
@@ -94,7 +94,7 @@ Describe the purpose of this document and its scope.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
+This document is maintained by the repository documentation system.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash

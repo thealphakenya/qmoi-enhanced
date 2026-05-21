@@ -91,7 +91,7 @@
 ### Sister Role (Limited Access)
 - ✅ Collaborative features
 - ✅ Dataset sharing
-- ✅ Model PRODUCTIONelopment
+- ✅ Model production
 - ✅ Personal workspace
 - ✅ Communication tools
 - ✅ View-only dashboards
