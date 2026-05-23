@@ -1,14 +1,14 @@
 # ALLMDFILESREFS.md
-Generated: 2026-05-19T00:00:00Z
-Total markdown files: 1176
+Generated: 2026-05-23T17:20:15.461808+00:00
+Total markdown files: 1182
 ./.devcontainer/README.md
 ./.evolution_logs/API_DOCUMENTATION.md
 ./.evolution_logs/DEPLOYMENT_GUIDE.md
 ./.evolution_logs/EVOLUTION_SUMMARY.md
+./.github/PR_AUTOTODOS.md
+./.github/PULL_REQUEST_TEMPLATE.md
+./.github/PULL_REQUEST_TEMPLATE/automated_fix.md
 ./.qmoi_state/RECOVERY_COMPLETE.md
-./.venv/lib/python3.12/site-packages/idna-3.13.dist-info/licenses/LICENSE.md
-./.venv/lib/python3.12/site-packages/pip-26.1.1.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md
-./.venv/lib/python3.12/site-packages/pip/_vendor/idna/LICENSE.md
 ./1.md
 ./1a.md
 ./3.md
@@ -491,6 +491,7 @@ Total markdown files: 1176
 ./Q.md
 ./QALLPURPOSE.md
 ./QALPHAUI.md
+./QAlLPURPOSE.MD
 ./QAvatar_User_Feedback_Kit.md
 ./QCITY-ARTIFACTS.md
 ./QCITY-COMPLETION-SUMMARY.md
@@ -564,6 +565,7 @@ Total markdown files: 1176
 ./QMOIAUTOAPPSDEV.md
 ./QMOIAUTOBET.md
 ./QMOIAUTODEV.md
+./QMOIAUTODEVDOCTESTS.MD
 ./QMOIAUTODISTRIBUTEMARKET.md
 ./QMOIAUTOEVOLVE.md
 ./QMOIAUTOFIXREADME.md
@@ -1139,7 +1141,11 @@ Total markdown files: 1176
 ./reports/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md
 ./reports/FINAL_100PERCENT_DOMAIN_HEALTH_ACHIEVEMENT.md
 ./reports/PRODUCTION_FULL_VALIDATION_REPORT.md
+./reports/archived_high_conf_nonprod_1779517012.md
+./reports/archived_mocks_1779516622.md
 ./reports/mock_and_stub_audit.md
+./reports/nonprod_fix_report_1779516805.md
+./reports/nonproduction_candidates.md
 ./reports/production_FULL_VALIDATION_REPORT.md
 ./reports/production_readiness_report.md
 ./scan_results/production_readiness_summary.md

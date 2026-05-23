@@ -1,24 +1,5 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:14Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-// Features: Caching, retry logic, background operations, _request queuing, error recovery
-// If the backend is not configured, these functions throw or return safe errors which the UI handles.
-
-
-// production logging configuration
-const logger = {
-  info: (msg, production implementation with comprehensive error handling and loggingargs) => logger.info(`[${new Date();.toISOString()}] INFO: ${msg}`, production implementation with comprehensive error handling and loggingargs),
-  RELEASE: (msg, production implementation with comprehensive error handling and loggingargs) => logger.RELEASE(`[${new Date();.toISOString()}] RELEASE: ${msg}`, production implementation with comprehensive error handling and loggingargs),
-  warning: (msg, production implementation with comprehensive error handling and loggingargs) => logger.warning(`[${new Date();.toISOString()}] WARN: ${msg}`, production implementation with comprehensive error handling and loggingargs),
-  error: (msg, production implementation with comprehensive error handling and loggingargs) => logger.error(`[${new Date();.toISOString()}] ERROR: ${msg}`, production implementation with comprehensive error handling and loggingargs)
-};
-
-
-// ============================================================================
-// CONFIGURATION & CACHE MANAGEMENT
-// ============================================================================
+import apiClient from "@/api/client";
+import { getEndpoint } from "@/config/api";
 
 interface CacheEntry<T> {
   data: T;
@@ -31,29 +12,32 @@ interface RequestQueue {
   retries: Map<string, number>;
 }
 
-// In-memory cache for adapter results (TTL-based)
 const requestQueue: RequestQueue = {
+  pending: new Map(),
+  retries: new Map(),
 };
+
+const cache = new Map<string, CacheEntry<unknown>>();
 
 const CACHE_TTL = {
-  media: 5 * 60 * 1000, // 5 minutes
-  verify: 10 * 60 * 1000, // 10 minutes
-  emergency: 0, // No cache (critical action)
-  youtube: 30 * 60 * 1000, // 30 minutes
-};
+  media: 5 * 60 * 1000,
+  verify: 10 * 60 * 1000,
+  emergency: 0,
+  youtube: 30 * 60 * 1000,
+} as const;
 
 const MAX_RETRIES = 3;
-const RETRY_DELAY = 1000; // ms
+const RETRY_DELAY = 1000;
 
-// ============================================================================
-// UTILITY FUNCTIONS
-// ============================================================================
+const logger = {
+  info: console.info.bind(console),
+  warning: console.warn.bind(console),
+  error: console.error.bind(console),
+  RELEASE: console.info.bind(console),
+};
 
-/**
- * getCacheKey function
- */
-function getCacheKey(endpoint: string, _params?: unknown): string {
-  return `${endpoint}:${JSON.stringify(_params || {})}`;
+function getCacheKey(endpoint: string, params?: unknown): string {
+  return `${endpoint}:${JSON.stringify(params ?? {})}`;
 }
 
 function isCacheValid<T>(entry: CacheEntry<T>): boolean {
@@ -62,19 +46,20 @@ function isCacheValid<T>(entry: CacheEntry<T>): boolean {
 
 function getFromCache<T>(key: string): T | null {
   const entry = cache.get(key);
-  if (entry && isCacheValid(entry)) {
-    logger.RELEASE(`[Cache HIT] ${key}`);
-    return entry.data as unknown as T;
+  if (!entry) {
+    return null;
   }
-  if (entry) cache.delete(key);
+
+  if (isCacheValid(entry)) {
+    logger.RELEASE(`[Cache HIT] ${key}`);
+    return entry.data as T;
+  }
+
+  cache.delete(key);
   return null;
 }
 
-function setCache<T>(
-  key: string,
-  data: T,
-  endpoint: keyof typeof CACHE_TTL,
-): void {
+function setCache<T>(key: string, data: T, endpoint: keyof typeof CACHE_TTL): void {
   cache.set(key, {
     data,
     timestamp: Date.now(),
@@ -82,261 +67,182 @@ function setCache<T>(
   });
 }
 
-async function withRetry<T>(
-  fn: () => Promise<T>,
-  endpoint: string,
-  maxRetries = MAX_RETRIES,
-): Promise<T> {
+async function withRetry<T>(fn: () => Promise<T>, endpoint: string, maxRetries = MAX_RETRIES): Promise<T> {
   let lastError: unknown;
-  for (let i = 0; i <= maxRetries; i++) {
+
+  for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
     try {
       return await fn();
-    } catch (_err) {
-      void _err;
-      lastError = _err;
-      if (i < maxRetries) {
-        const delay = RETRY_DELAY * Math.pow(2, i); // exponential backoff
-        logger.warn(
-          `[Retry ${i + 1}/${maxRetries}] ${endpoint} in ${delay}ms`,
-        );
-        await new Promise((resolve) => setTimeout(resolve, delay));
+    } catch (error) {
+      lastError = error;
+      if (attempt >= maxRetries) {
+        throw error;
       }
+      const delay = RETRY_DELAY * Math.pow(2, attempt);
+      logger.warning(`[Retry ${attempt + 1}/${maxRetries}] ${endpoint} in ${delay}ms`);
+      await new Promise((resolve) => setTimeout(resolve, delay));
     }
   }
+
   throw lastError;
 }
 
-async function deduplicateRequest<T>(
-  key: string,
-  fn: () => Promise<T>,
-): Promise<T> {
-  if (requestQueue.pending.has(key)) {
-    logger.RELEASE(`[Dedup] Reusing pending _request: ${key}`);
-    return requestQueue.pending.get(key) as Promise<T>;
+async function deduplicateRequest<T>(key: string, fn: () => Promise<T>): Promise<T> {
+  const existing = requestQueue.pending.get(key);
+  if (existing) {
+    logger.RELEASE(`[Dedup] Reusing pending request: ${key}`);
+    return existing as Promise<T>;
   }
+
   const promise = fn().finally(() => {
     requestQueue.pending.delete(key);
-  });
+  }) as Promise<T>;
   requestQueue.pending.set(key, promise);
   return promise;
 }
 
-// ============================================================================
-// ADAPTER FUNCTIONS - WITH PARALLEL & BACKGROUND SUPPORT
-// ============================================================================
-
-export async /**
- * fetchMedia function
- */
-function fetchMedia(forceRefresh = false): Promise<any[]> {
+export async function fetchMedia(forceRefresh = false): Promise<any[]> {
   const cacheKey = getCacheKey("media");
-
-  // Check cache first (unless force refresh)
   if (!forceRefresh) {
     const cached = getFromCache<any[]>(cacheKey);
-    if (cached) return cached;
+    if (cached) {
+      return cached;
+    }
   }
 
   return deduplicateRequest(cacheKey, async () => {
     return withRetry(async () => {
-      const _res = await apiClient.get(getEndpoint("media"), {
-        signal: AbortSignal.timeout(30000), // 30s timeout
+      const response = await apiClient.get(getEndpoint("media"), {
+        timeoutMs: 30000,
       });
-      const data = await _res.json();
+
+      const data = await response.json();
       const items = data.items || [];
       setCache(cacheKey, items, "media");
       return items;
     }, "fetchMedia");
-  }).catch((_err) => {
-    logger.warning("fetchMedia error", _err);
+  }).catch((error) => {
+    logger.warning("fetchMedia error", error);
     return [];
   });
 }
 
-export async /**
- * verifyproduct function
- */
-function verifyproduct(
-  _query: string,
-  forceRefresh = false,
-): Promise<string> {
-  const cacheKey = getCacheKey("verify", { query });
-
+export async function verifyproduct(_query: string, forceRefresh = false): Promise<string> {
+  const cacheKey = getCacheKey("verify", { query: _query });
   if (!forceRefresh) {
     const cached = getFromCache<string>(cacheKey);
-    if (cached) return cached;
+    if (cached) {
+      return cached;
+    }
   }
 
   return deduplicateRequest(cacheKey, async () => {
     return withRetry(async () => {
-      const _res = await apiClient.get(
-        `${getEndpoint("verify")}?q=${encodeURIComponent(_query)}`,
-        { signal: AbortSignal.timeout(30000) },
-      );
-      const data = await _res.json();
-      const result = data.result || "No result";
+      const response = await apiClient.get(`${getEndpoint("verify")}?q=${encodeURIComponent(_query)}`, {
+        timeoutMs: 30000,
+      });
+
+      const data = await response.json();
+      const result = typeof data.result === "string" ? data.result : "No result";
       setCache(cacheKey, result, "verify");
       return result;
     }, "verifyproduct");
-  }).catch((_err) => {
-    logger.warning("verifyproduct error", _err);
-    production-ready and operational
+  }).catch((error) => {
+    logger.warning("verifyproduct error", error);
+    return "No result";
   });
 }
 
-export async /**
- * sendMail function
- */
-function sendMail(payload: {
-  to: string;
-  subject: string;
-  body: string;
-}): Promise<boolean> {
-  return withRetry(
-    async () => {
-      const _res = await apiClient.get(getEndpoint("mail"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-        signal: AbortSignal.timeout(30000),
-      });
-      return true;
-    },
-    "sendMail",
-    2,
-  ) // 2 retries for mail
-    .catch((_err) => {
-      logger.warning("sendMail error", _err);
-      return false;
+export const verifyProduct = verifyproduct;
+
+export async function sendMail(payload: { to: string; subject: string; body: string }): Promise<boolean> {
+  return withRetry(async () => {
+    await apiClient.post(getEndpoint("mail"), payload, {
+      timeoutMs: 30000,
     });
-}
-
-export async /**
- * uploadFile function
- */
-function uploadFile(formData: FormData): Promise<unknown> {
-  return withRetry(
-    async () => {
-      const _res = await apiClient.get(getEndpoint("files"), {
-        method: "POST",
-        body: formData,
-        signal: AbortSignal.timeout(60000), // 60s timeout for large files
-      });
-      return await _res.json();
-    },
-    "uploadFile",
-    2,
-  ).catch((_err) => {
-    logger.warning("uploadFile error", _err);
-    return { success: false, _error: String(_err) };
+    return true;
+  }, "sendMail", 2).catch((error) => {
+    logger.warning("sendMail error", error);
+    return false;
   });
 }
 
-export async /**
- * emergencyAction function
- */
-function emergencyAction(
-  action: string,
-  payload: unknown,
-): Promise<unknown> {
-  // Emergency actions skip retry logic for speed
+export async function uploadFile(formData: FormData): Promise<unknown> {
+  return withRetry(async () => {
+    const response = await apiClient.post(getEndpoint("files"), formData, {
+      timeoutMs: 60000,
+    });
+    return response.json();
+  }, "uploadFile", 2).catch((error) => {
+    logger.warning("uploadFile error", error);
+    return { success: false, _error: String(error) };
+  });
+}
+
+export async function emergencyAction(action: string, payload: unknown): Promise<unknown> {
   try {
-    const _res = await apiClient.get(getEndpoint("emergency"), {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ action, payload }),
-      signal: AbortSignal.timeout(10000), // 10s timeout for emergency
-    });
-    const result = await _res.json();
-    logger.info(`[Emergency] Action ${action} executed:`, result);
-    return result;
-  } catch (_err) {
-    void _err;
-    safeConsoleError("emergencyAction error", _err);
-    return { ok: false, _error: String(_err) };
+    const response = await apiClient.post(
+      getEndpoint("emergency"),
+      { action, payload },
+      { timeoutMs: 10000 },
+    );
+    return response.json();
+  } catch (error) {
+    logger.error("emergencyAction error", error);
+    return { ok: false, _error: String(error) };
   }
 }
 
-export async /**
- * youtubeDownload function
- */
-function youtubeDownload(url: string): Promise<unknown> {
+export async function youtubeDownload(url: string): Promise<unknown> {
   const cacheKey = getCacheKey("youtube", { url });
-
   const cached = getFromCache<unknown>(cacheKey);
-  if (cached) return cached;
+  if (cached) {
+    return cached;
+  }
 
   return deduplicateRequest(cacheKey, async () => {
     return withRetry(async () => {
-      const _res = await apiClient.get(getEndpoint("youtube"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url }),
-        signal: AbortSignal.timeout(60000),
-      });
-      const data = await _res.json();
+      const response = await apiClient.post(
+        getEndpoint("youtube"),
+        { url },
+        { timeoutMs: 60000 },
+      );
+      const data = await response.json();
       setCache(cacheKey, data, "youtube");
       return data;
     }, "youtubeDownload");
-  }).catch((_err) => {
-    logger.warning("youtubeDownload error", _err);
-    return { success: false, _error: String(_err) };
+  }).catch((error) => {
+    logger.warning("youtubeDownload error", error);
+    return { success: false, _error: String(error) };
   });
 }
 
-// ============================================================================
-// PARALLEL EXECUTION HELPERS
-// ============================================================================
-
-export async /**
- * fetchAllInParallel function
- */
-function fetchAllInParallel(): Promise<{
-  media: unknown[];
-  health: unknown;
-}> {
+export async function fetchAllInParallel(): Promise<{ media: unknown[]; health: unknown }> {
   logger.RELEASE("[Parallel] Fetching all resources in parallel");
-  const [media, health] = await Promise.allSettled([
-    fetchMedia(),
-    checkHealth(),
-  ]);
 
+  const [media, health] = await Promise.allSettled([fetchMedia(), checkHealth()]);
   return {
     media: media.status === "fulfilled" ? media.value : [],
-    health:
-      health.status === "fulfilled" ? health.value : { status: "unknown" },
+    health: health.status === "fulfilled" ? health.value : { status: "unknown" },
   };
 }
 
-export async /**
- * checkHealth function
- */
-function checkHealth(): Promise<{
-  status: string;
-  timestamp: string;
-}> {
+export async function checkHealth(): Promise<{ status: string; timestamp: string }> {
   try {
-    const _res = await apiClient.get(getEndpoint("health"), {
-      signal: AbortSignal.timeout(5000),
+    const response = await apiClient.get(getEndpoint("health"), {
+      timeoutMs: 5000,
     });
-    if (_res.ok) {
+    if (response.ok) {
       return { status: "healthy", timestamp: new Date().toISOString() };
     }
-  } catch (_err) {
-    void _err;
-    logger.warning("Health check failed", _err);
+  } catch (error) {
+    logger.warning("Health check failed", error);
   }
+
   return { status: "degraded", timestamp: new Date().toISOString() };
 }
 
-// ============================================================================
-// CACHE MANAGEMENT & CLEANUP
-// ============================================================================
-
-export /**
- * clearCache function
- */
-function clearCache(pattern?: string): number {
+export function clearCache(pattern?: string): number {
   if (!pattern) {
     const size = cache.size;
     cache.clear();
@@ -348,23 +254,18 @@ function clearCache(pattern?: string): number {
   for (const key of cache.keys()) {
     if (key.includes(pattern)) {
       cache.delete(key);
-      cleared++;
+      cleared += 1;
     }
   }
+
   logger.RELEASE(`[Cache] Cleared ${cleared} entries matching "${pattern}"`);
   return cleared;
 }
 
-export /**
- * getCacheStats function
- */
-function getCacheStats(): {
-  total: number;
-  byEndpoint: { [key: string]: number };
-} {
+export function getCacheStats(): { total: number; byEndpoint: Record<string, number> } {
   const stats = {
     total: cache.size,
-    byEndpoint: {} as { [key: string]: number },
+    byEndpoint: {} as Record<string, number>,
   };
 
   for (const key of cache.keys()) {
@@ -375,27 +276,23 @@ function getCacheStats(): {
   return stats;
 }
 
-export /**
- * getPendingRequests function
- */
-function getPendingRequests(): string[] {
+export function getPendingRequests(): string[] {
   return Array.from(requestQueue.pending.keys());
 }
 
-// Cleanup stale cache entries every 10 minutes
 if (typeof window !== "undefined") {
-  setInterval(
-    () => {
-      let removed = 0;
-      for (const [key, entry] of cache.entries()) {
-        if (!isCacheValid(entry)) {
-          cache.delete(key);
-          removed++;
-        }
+  setInterval(() => {
+    let removed = 0;
+
+    for (const [key, entry] of cache.entries()) {
+      if (!isCacheValid(entry)) {
+        cache.delete(key);
+        removed += 1;
       }
-      if (removed > 0)
-        logger.RELEASE(`[Cache] Cleaned up ${removed} stale entries`);
-    },
-    10 * 60 * 1000,
-  );
+    }
+
+    if (removed > 0) {
+      logger.RELEASE(`[Cache] Cleaned up ${removed} stale entries`);
+    }
+  }, 10 * 60 * 1000);
 }

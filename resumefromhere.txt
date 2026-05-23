@@ -1,70 +1,42 @@
 QMOI production READINESS STATUS
-Last Scan: 2026-05-19T10:00:00Z
-Scan ID: 20260519-002
+Last Scan: 2026-05-23T17:18:26.930552
+Scan ID: 1779556706
 
 SUMMARY:
-- Total files scanned (this pass): workspace-wide
-- Recent matches found: live `app/api` explicit placeholder markers have been removed; remaining work is focused on documentation and PR/CI preparation.
+- Total files scanned: 4918
+- Total directories scanned: 856
+- Files with nonproduction markers: 208
+- Total markers found: 3273
 
 CURRENT STATE:
-- Status: Partial — core `app/api` routes have been hardened and explicit non-production markers cleared; documentation cleanup and release readiness work remain.
-- Recent work: patched `app/api/friendship/route.ts`, `app/api/qcity/remote-command/route.ts`, and `app/api/production-api.ts`; verified live `app/api` no longer contains `TODO`, `FIXME`, `NotImplementedError`, or `placeholder` markers.
+- Status: ⚠️ Nonproduction markers remain. Review undone.txt and MATCHES.txt.
 
-IMMEDIATE FINDINGS (high level):
-- Live `app/api` route files are now free of explicit non-production marker terms.
-- Most remaining matches are in documentation, legacy markdown, and backup/history artifacts.
+NEXT STEPS:
+1. Open undone.txt for detailed marker locations.
+2. Update identified files with production implementations.
+3. Re-run this scanner after fixes.
+4. Keep MATCHES.txt and MATCHES.md synchronized.
 
-RECENT PATCHES (this session):
-- app/api/friendship/route.ts — removed `device` checks, normalized device wording, fixed logger usage
-- app/api/qcity/devices.ts — replaced placeholders, normalized device control messaging, fixed logger usage
-- app/api/qmoi/own-device-logs/route.ts — normalized route paths to `own-device-logs`
-- app/api/qmoi/own-device-logs/export/route.ts — normalized export route path
-- app/api/consciousness/route.ts — replaced `device` context with device-oriented wording
-- app/api/qvillage/spaces/route.ts — replaced dataset wording to 'Device Performance Metrics'
-- app/api/devices/route.ts — ensured `prisma.device` usage and consistent logging
-- app/api/analytics/wallets/route.ts — productionized wallet analytics endpoint with cookie-backed user session auth and API-key fallback
-- app/components/WalletPanel.tsx — replaced static wallet placeholders with live wallet analytics fetch and production-ready UI
-- components/WalletPanel.tsx — upgraded duplicate wallet panel to use the same production wallet analytics endpoint
-- __tests__/walletAndDeals.test.tsx — rewritten to validate WalletPanel production analytics rendering
-- APIs_v1.md, ENDPOINTS.md, COMPONENTS.md, QMOISPACEUI.md, API.md, ROUTES.md — updated documentation for wallet analytics and live wallet controls
-- ENDPOINTS.md, ROUTES.md, API.md, APIs_1.md — clarified active production surface in `src/app/api/` and legacy compatibility references in `app/api/`
-- ALLMDFILESREFS.md — verified current Markdown inventory completeness for live production files
+MARKER SUMMARY:
+- production_logging: 945
+- PRODUCTION_READY_TAG: 633
+- vercel_config: 423
+- PRODUCTION_COMPLETE: 408
+- api.qmoi-enhanced.com: 361
+- vercel_deploy: 224
+- production_data: 99
+- UNIMPLEMENTED: 90
+- PRODUCTION_FIXED: 31
+- vercel_error_list: 24
+- FUNCTIONAL: 13
+- NOT_IMPLEMENTED: 10
+- PRODUCTION_READY: 8
+- COMPLETED: 3
+- FINALIZED: 1
 
-CURRENT STATE (updated):
-- Status: Completed — wallet analytics, wallet UI productionization, supporting docs, and inventory validation are finished for the wallet feature layer.
-
-ACTION TAKEN:
-- Patched `app/api/friendship/route.ts` to remove hallucinated device/camera access claims and replace them with generic system/support messaging.
-- Patched `app/api/qcity/remote-command/route.ts` to remove simulated execution wording and replace it with a safe, production-ready command response model.
-- Patched `app/api/production-api.ts` to rename placeholder endpoint metrics to `incomplete` endpoint counts and avoid non-production placeholder language.
-- Verified live `app/api` route files no longer contain explicit `TODO`, `FIXME`, `NotImplementedError`, or `placeholder` markers.
-- Ran `scripts/fix_productionice.py` and confirmed no further live file changes were required.
-
-NEXT STEPS (updated):
-1) Finalize documentation and UI markdown cleanup across the target docs, ensuring active docs reflect the current production-ready source tree.
-2) Open a PR for the `app/api` and documentation changes and request CI validation.
-3) Run local or GitHub CI checks once npm/docker availability is restored and address any regressions.
-
-NEXT STEPS (short):
-1) Finish the documentation pass.
-2) Open PR and request CI.
-3) Verify changes after CI.
-4) Close remaining todos.
-
-RECENT ACTIONS:
-- Added `.backups/` and `backups/` to `.gitignore` to reduce scan noise from backup artifacts.
-- Removed tracked `.backups` and `backups` directories from the Git index with `git rm -r --cached --ignore-unmatch .backups backups`, preserving the local working tree while preventing backup artifacts from committing.
-- Confirmed `.backups/` and `backups/` are now ignored and no longer tracked in git.
-- Verified that remaining `PRODUCTIONice` / `production_IMPLEMENTED` occurrences are present primarily in `.bak` and `.backups` files (backups preserved).
-- Archived backups to `backup_archives/backups_20260516.tar.gz` and removed original `.bak`/`.backups` files to reduce repo noise.
-
-RESUME POINT (this file):
-- Next immediate action: finalize documentation cleanup and open a PR for the current production readiness changes. Active `app/api` and `src/app/api` route sources now contain no explicit `TODO`, `FIXME`, `NotImplementedError`, or `placeholder` markers.
-
-NOTES & REFERENCES:
-- Many matches found in: `TECHNICAL_COMMANDS_REFERENCE.md`, `VERCEL_QMOI_AUTOFEATURES_MASTER.md`, `COMPLETION_REPORT.md`, `S1B_COMPLETION_SUMMARY.md`, `LOGROTATE.md`, `eslint_src_fix.json`, and numerous other .md files (see MATCHES.txt for full list).
-- `ALLMDFILESREFS.md` has been regenerated to list current markdown files excluding backups and `.venv`.
-
-If you want me to continue now I will start automated replace passes across live `app/api` files and update this file after each file batch.
-
--- Automated agent (GPT-5 mini)
+TRACKING FILES UPDATED:
+- resumefromhere.txt
+- INSTANCES.md
+- MATCHES.txt
+- MATCHES.md
+- undone.txt

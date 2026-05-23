@@ -1,17 +1,3 @@
-logger.info("production mode initialized");
-import { describe, it, expect } from 'vitest'
-
-describe('Political Access Control', () => {
-  it('should allow master and sister users to access political modules', () => {
-    const authorizedRoles = ['master', 'sister', 'sponsored']
-    expect(authorizedRoles).toContain('master')
-    expect(authorizedRoles).toContain('sister')
-  })
-
-  it('should block unauthorized roles from political project access', () => {
-    const role = 'guest'
-    expect(role).not.toBe('master')
-    expect(role).not.toBe('sister')
-    expect(role).not.toBe('sponsored')
-  })
-})
+# ARCHIVED NON-PRODUCTION FILE
+This file was identified as high-confidence non-production (mock/fixture/sample) and archived.
+Backup path: .backups/high_conf_nonprod_1779517012/__tests__/political/political_access_control.test.ts

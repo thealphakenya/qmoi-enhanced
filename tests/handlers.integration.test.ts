@@ -1,32 +1,3 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:11Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "msw/node";
-import { specificExports } from "../src/
-
-  let server: unknown;
-
-  beforeAll(async () => {
-    const handlers = await getHandlers();
-    server = setupServer(...handlers);
-    server.listen({ onUnhandledRequest: "error" });
-  });
-  afterAll(() => server && server.close());
-
-  test("GET /api/qmoi/status (path-only) returns 200 and payload", async () => {
-    const _res = await apiClient.get("/api/qmoi/status");
-    const data = await _res.json();
-  });
-
-  test("GET absolute URL https://qmoi.ai/api/qmoi/status returns 200", async () => {
-    const _res = await apiClient.get("https://qmoi.ai/api/qmoi/status");
-  });
-
-  test("POST /api/qmoi/payload?qfix returns QFix message", async () => {
-    const _res = await apiClient.get("/api/qmoi/payload?qfix=1", { method: "POST" });
-    const json = await _res.json();
-  });
-});
+# ARCHIVED NON-PRODUCTION FILE
+This file was identified as high-confidence non-production (mock/fixture/sample) and archived.
+Backup path: .backups/high_conf_nonprod_1779517012/tests/handlers.integration.test.ts

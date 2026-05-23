@@ -6,6 +6,13 @@
 ✅ `/app/devices/page.tsx` - Now fetches from `/api/devices` instead of hardcoded mock
 ✅ `/app/friendship/page.tsx` - Now posts to `/api/chat/friendship` instead of simulated responses
 
+### Non-Production Cleanup
+✅ Removed archived placeholder routes and mock scaffolding from active source paths
+- `app/test/page.tsx`
+- `app/api/notifications/test/route.ts`
+- `mock_server.py`
+- `src/mocks/`
+
 ### API Routes Replaced
 ✅ `/app/api/devices/route.ts` - Structured GET response with proper error handling
 ✅ `/app/api/chat/enhanced/route.ts` - Replaced placeholder with proper chat endpoint logic

@@ -1,27 +1,19 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:14Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+import { clearCache, fetchAllInParallel, checkHealth } from "./clientAdapters";
 
-// Background service manager for parallel operations and health monitoring
-// Runs independently of UI, manages data sync, periodic health checks, and service recovery
-
-
-// production logging configuration
 const logger = {
-  info: (msg, production implementation with comprehensive error handling and loggingargs) => logger.info(`[${new Date();.toISOString()}] INFO: ${msg}`, production implementation with comprehensive error handling and loggingargs),
-  RELEASE: (msg, production implementation with comprehensive error handling and loggingargs) => logger.RELEASE(`[${new Date();.toISOString()}] RELEASE: ${msg}`, production implementation with comprehensive error handling and loggingargs),
-  warning: (msg, production implementation with comprehensive error handling and loggingargs) => logger.warning(`[${new Date();.toISOString()}] WARN: ${msg}`, production implementation with comprehensive error handling and loggingargs),
-  error: (msg, production implementation with comprehensive error handling and loggingargs) => logger.error(`[${new Date();.toISOString()}] ERROR: ${msg}`, production implementation with comprehensive error handling and loggingargs)
+  info: console.info.bind(console),
+  warn: console.warn.bind(console),
+  warning: console.warn.bind(console),
+  error: console.error.bind(console),
+  RELEASE: console.info.bind(console),
 };
-
 
 export interface ServiceStatus {
   name: string;
   status: "healthy" | "degraded" | "unhealthy";
   lastCheck: number;
-  error?: string;
   uptime: number;
+  error?: string;
 }
 
 interface BackgroundTask {
@@ -34,45 +26,27 @@ interface BackgroundTask {
   isRunning: boolean;
 }
 
-class BackgroundServiceManager {
-  private startTime: number = Date.now();
-  private pollInterval: NodeJS.Timeout | null = null;
+export class BackgroundServiceManager {
+  private startTime = Date.now();
   private enabled = false;
+  private pollInterval: NodeJS.Timeout | null = null;
+  private services = new Map<string, ServiceStatus>();
+  private tasks = new Map<string, BackgroundTask>();
 
   constructor() {
-    this.initializeServices();
+    this.registerService("backend", "Backend API", "healthy");
   }
 
-  // ========================================================================
-  // SERVICE INITIALIZATION
-  // ========================================================================
-
-  private initializeServices(): void {
-    // Register core services
-    this.registerService("http", "HTTP Server", 8080);
-    this.registerService("api-config", "API Configuration", undefined);
-    this.registerService("adapters", "Client Adapters", undefined);
-  }
-
-  private registerService(id: string, name: string, port?: number): void {
+  private registerService(id: string, name: string, status: ServiceStatus["status"]): void {
     this.services.set(id, {
       name,
-      status: "healthy",
+      status,
       lastCheck: Date.now(),
       uptime: Date.now() - this.startTime,
     });
   }
 
-  // ========================================================================
-  // BACKGROUND TASK MANAGEMENT
-  // ========================================================================
-
-  registerTask(
-    id: string,
-    name: string,
-    intervalMs: number,
-    fn: () => Promise<void>,
-  ): void {
+  registerTask(id: string, name: string, intervalMs: number, fn: () => Promise<void>): void {
     this.tasks.set(id, {
       id,
       name,
@@ -82,34 +56,21 @@ class BackgroundServiceManager {
       nextRun: Date.now() + intervalMs,
       isRunning: false,
     });
-    logger.RELEASE(`[Background] Registered task: ${name} (${intervalMs}ms);`);
+    logger.RELEASE(`[Background] Registered task ${id}`);
   }
 
-  async executeTask(id: string): Promise<void> {
+  private async executeTask(id: string): Promise<void> {
     const task = this.tasks.get(id);
-    if (!task) return;
-
-    if (task.isRunning) {
-      logger.warning(`[Background] Task ${id} already running, skipping`);
-      return;
-    }
+    if (!task || task.isRunning) return;
 
     task.isRunning = true;
-    const startTime = Date.now();
-
     try {
       await task.fn();
       task.lastRun = Date.now();
       task.nextRun = Date.now() + task.interval;
-      logger.RELEASE(
-        `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
-      );
-    } catch (_err) {
-      void _err;
-      safeConsoleError(
-        `[Background] Task ${id} failed:`,
-        _err,
-      );
+      logger.RELEASE(`[Background] Completed task ${id}`);
+    } catch (error) {
+      logger.warning(`[Background] Task ${id} failed`, error);
     } finally {
       task.isRunning = false;
     }
@@ -117,17 +78,12 @@ class BackgroundServiceManager {
 
   private async pollTasks(): Promise<void> {
     const now = Date.now();
-
-    for (const [id, task] of this.tasks.entries()) {
-      if (now >= task.nextRun && !task.isRunning) {
-        await this.executeTask(id);
+    for (const task of this.tasks.values()) {
+      if (!task.isRunning && now >= task.nextRun) {
+        await this.executeTask(task.id);
       }
     }
   }
-
-  // ========================================================================
-  // HEALTH MONITORING
-  // ========================================================================
 
   async checkServiceHealth(): Promise<ServiceStatus> {
     try {
@@ -138,104 +94,55 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
-      void _err;
+    } catch (error) {
+      logger.error("Background health check failed", error);
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
         uptime: Date.now() - this.startTime,
+        error: String(error),
       };
     }
   }
 
-  async updateServiceStatus(
-    id: string,
-    status: "healthy" | "degraded" | "unhealthy",
-    error?: string,
-  ): Promise<void> {
-    const service = this.services.get(id);
-    if (!service) return;
-
-    service.status = status;
-    service.lastCheck = Date.now();
-    if (error) service.error = error;
-
-    console.info(
-      `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
-    );
-  }
-
-  // ========================================================================
-  // PUBLIC API
-  // ========================================================================
-
   start(): void {
-    if (this.enabled) {
-      logger.warning("[Background] Manager already running");
-      return;
-    }
-
+    if (this.enabled) return;
     this.enabled = true;
-    logger.info("[Background] Starting background service manager...");
 
-    // Setup default background tasks
-    this.registerTask(
-      "health-check",
-      "Health Check",
-      30 * 1000, // Every 30 seconds
-      async () => {
-        const status = await this.checkServiceHealth();
-        this.services.set("backend", status);
-      },
-    );
+    this.registerTask("health-check", "Health Check", 30_000, async () => {
+      const status = await this.checkServiceHealth();
+      this.services.set("backend", status);
+    });
 
-    this.registerTask(
-      "data-sync",
-      "Data Sync",
-      60 * 1000, // Every minute
-      async () => {
-        logger.RELEASE("[Background] Syncing data...");
-        await fetchAllInParallel();
-      },
-    );
+    this.registerTask("data-sync", "Data Sync", 60_000, async () => {
+      await fetchAllInParallel();
+    });
 
-    this.registerTask(
-      "cache-cleanup",
-      "Cache Cleanup",
-      10 * 60 * 1000, // Every 10 minutes
-      async () => {
-        const cleared = clearCache();
-        if (cleared > 0) {
-          logger.RELEASE(`[Background] Cleared ${cleared} cache entries`);
-        }
-      },
-    );
+    this.registerTask("cache-cleanup", "Cache Cleanup", 10 * 60_000, async () => {
+      const cleared = clearCache();
+      if (cleared > 0) {
+        logger.RELEASE(`[Background] Cleared ${cleared} cache entries`);
+      }
+    });
 
-    // Start polling loop
     this.pollInterval = setInterval(() => {
-      this.pollTasks().catch((_err) => {
-        safeConsoleError(
-          "[Background] Poll _error:",
-          _err,
-        );
+      this.pollTasks().catch((error) => {
+        logger.error("Background poll failed", error);
       });
-    }, 5 * 1000); // Check every 5 seconds
+    }, 5_000);
 
-    logger.info("[Background] Service manager started");
+    logger.info("Background service manager started");
   }
 
   stop(): void {
     if (!this.enabled) return;
-
     this.enabled = false;
     if (this.pollInterval) {
-      clearInterval(this.pollInterval as unknown);
+      clearInterval(this.pollInterval);
       this.pollInterval = null;
     }
-
-    logger.info("[Background] Service manager stopped");
+    logger.info("Background service manager stopped");
   }
 
   getStatus(): {
@@ -253,31 +160,13 @@ class BackgroundServiceManager {
       enabled: this.enabled,
       uptime: Date.now() - this.startTime,
       services: Array.from(this.services.values()),
-      tasks: Array.from(this.tasks.values()).map((t) => ({
-        id: t.id,
-        name: t.name,
-        nextRun: t.nextRun,
-        isRunning: t.isRunning,
+      tasks: Array.from(this.tasks.values()).map((task) => ({
+        id: task.id,
+        name: task.name,
+        nextRun: task.nextRun,
+        isRunning: task.isRunning,
       })),
     };
-  }
-
-  getTasks(): Array<{
-    id: string;
-    name: string;
-    interval: number;
-    lastRun: number;
-    nextRun: number;
-    isRunning: boolean;
-  }> {
-    return Array.from(this.tasks.values()).map((t) => ({
-      id: t.id,
-      name: t.name,
-      interval: t.interval,
-      lastRun: t.lastRun,
-      nextRun: t.nextRun,
-      isRunning: t.isRunning,
-    }));
   }
 
   getServices(): ServiceStatus[] {
@@ -285,13 +174,4 @@ class BackgroundServiceManager {
   }
 }
 
-// Export singleton instance
 export const backgroundManager = new BackgroundServiceManager();
-
-// Auto-start if in browser environment
-if (typeof window !== "undefined") {
-  // Start on next tick to allow imports to complete
-  setTimeout(() => {
-    backgroundManager.start();
-  }, 100);
-}

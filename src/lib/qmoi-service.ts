@@ -1,10 +1,10 @@
 
 // production logging configuration
 const logger = {
-  info: (msg, production implementation with comprehensive error handling and loggingargs) => logger.info(`[${new Date();.toISOString()}] INFO: ${msg}`, production implementation with comprehensive error handling and loggingargs),
-  RELEASE: (msg, production implementation with comprehensive error handling and loggingargs) => logger.RELEASE(`[${new Date();.toISOString()}] RELEASE: ${msg}`, production implementation with comprehensive error handling and loggingargs),
-  warning: (msg, production implementation with comprehensive error handling and loggingargs) => logger.warning(`[${new Date();.toISOString()}] WARN: ${msg}`, production implementation with comprehensive error handling and loggingargs),
-  error: (msg, production implementation with comprehensive error handling and loggingargs) => logger.error(`[${new Date();.toISOString()}] ERROR: ${msg}`, production implementation with comprehensive error handling and loggingargs)
+  info: (msg: string, ...args: unknown[]) => console.info(`[${new Date().toISOString()}] INFO: ${msg}`, ...args),
+  RELEASE: (msg: string, ...args: unknown[]) => console.info(`[${new Date().toISOString()}] RELEASE: ${msg}`, ...args),
+  warning: (msg: string, ...args: unknown[]) => console.warn(`[${new Date().toISOString()}] WARN: ${msg}`, ...args),
+  error: (msg: string, ...args: unknown[]) => console.error(`[${new Date().toISOString()}] ERROR: ${msg}`, ...args),
 };
 
 // QMOI EVOLUTION ENHANCED: QMOI Service with Singularity Integration

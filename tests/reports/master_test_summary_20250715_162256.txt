@@ -1,9 +1,3 @@
-<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:19:52.320322 -->
-<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:19:13.106785 -->
-<!-- AUTOPRODUCTION Enhanced: 2026-04-20T09:01:23.343354 -->
-<!-- AUTOPRODUCTION Enhanced: 2026-04-20T08:55:16.839182 -->
-latest-Q AI System - Master Test Report
-==================================================
-
-Generated: 2025-07-15T16:22:56.127582
-
+# ARCHIVED NON-PRODUCTION FILE
+This file was identified as high-confidence non-production (mock/fixture/sample) and archived.
+Backup path: .backups/high_conf_nonprod_1779517012/tests/reports/master_test_summary_20250715_162256.txt

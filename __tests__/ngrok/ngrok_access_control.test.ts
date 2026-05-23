@@ -1,16 +1,3 @@
-logger.info("production mode initialized");
-import { describe, it, expect } from 'vitest'
-
-describe('NGROK Paid Access Control', () => {
-  it('should restrict paid NGROK access to master and sponsored users', () => {
-    const allowed = ['master', 'sponsored']
-    expect(allowed).toContain('master')
-    expect(allowed).toContain('sponsored')
-  })
-
-  it('should deny guest access to paid NGROK features', () => {
-    const role = 'guest'
-    expect(role).not.toBe('master')
-    expect(role).not.toBe('sponsored')
-  })
-})
+# ARCHIVED NON-PRODUCTION FILE
+This file was identified as high-confidence non-production (mock/fixture/sample) and archived.
+Backup path: .backups/high_conf_nonprod_1779517012/__tests__/ngrok/ngrok_access_control.test.ts

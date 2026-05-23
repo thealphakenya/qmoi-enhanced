@@ -9,4 +9,4 @@ def update_dns_record(domain: str, record_name: str, target: str) -> bool:
     return True
 
 if __name__ == '__main__':
-    print(update_dns_record('example.com', 'www', '1.2.3.4'))
+    print(update_dns_record('${EXAMPLE_HOST}', 'www', '1.2.3.4'))

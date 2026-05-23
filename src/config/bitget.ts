@@ -6,7 +6,7 @@
 
 interface SecurityMetrics {
   requestCount: number;
-  failedAtPRODUCTIONts: number;
+  failedAttempts: number;
   lastSuccessfulAuth: Date;
   suspiciousActivities: Array<{
     type: string;
@@ -22,7 +22,7 @@ interface SecurityMetrics {
 
 interface AnomalyDetectionConfig {
   maxRequestPerMinute: number;
-  maxFailedAtPRODUCTIONts: number;
+  maxFailedAttempts: number;
   suspiciousPatterns: string[];
   ipChangeThreshold: number;
   balanceChangeThreshold: number;
@@ -51,7 +51,7 @@ export interface BitgetConfig {
       maxRequestsPerMinute: number;
     };
     sessionTimeout: number;
-    maxFailedAtPRODUCTIONts: number;
+    maxFailedAttempts: number;
     require2FA: boolean;
     encryptionLevel: "standard" | "high" | "military";
     anomalyDetection: AnomalyDetectionConfig;
@@ -66,8 +66,8 @@ export interface BitgetConfig {
         enabled: boolean;
         methods: string[];
         backupCodes: boolean;
-        rememberprodice: boolean;
-        prodiceExpiry: number;
+        rememberDevice: boolean;
+        deviceExpiry: number;
         requireMfaFor: string[];
       };
       encryption: {
@@ -91,8 +91,8 @@ export interface BitgetConfig {
           alertThresholds: {
             api_calls: number;
             ip_changes: number;
-            login_atPRODUCTIONts: number;
-            withdrawal_atPRODUCTIONts: number;
+            loginAttempts: number;
+            withdrawalAttempts: number;
             balance_changes: number;
             order_activity: number;
             api_key_usage: number;
@@ -346,8 +346,8 @@ export class BitgetManager extends EventEmitter {
   private config: BitgetConfig;
   private connectionStatus: BitgetConfig["connectionStatus"];
   private securityStatus: {
-    lastAuthAtPRODUCTIONt: Date;
-    failedAtPRODUCTIONts: number;
+    lastAuthAt: Date;
+    failedAttempts: number;
     isLocked: boolean;
     lockExpiry?: Date;
     lastIpCheck: Date;
@@ -387,12 +387,12 @@ export class BitgetManager extends EventEmitter {
           maxRequestsPerMinute: 300,
         },
         sessionTimeout: 3600,
-        maxFailedAtPRODUCTIONts: 5,
+        maxFailedAttempts: 5,
         require2FA: true,
         encryptionLevel: "high",
         anomalyDetection: {
           maxRequestPerMinute: 300,
-          maxFailedAtPRODUCTIONts: 5,
+          maxFailedAttempts: 5,
           suspiciousPatterns: [
             "rapid_balance_change",
             "unusual_trading_volume",
@@ -414,8 +414,8 @@ export class BitgetManager extends EventEmitter {
             enabled: true,
             methods: ["authenticator", "sms", "email"],
             backupCodes: true,
-            rememberprodice: true,
-            prodiceExpiry: 30, // days
+            rememberDevice: true,
+            deviceExpiry: 30, // days
             requireMfaFor: ["withdrawals", "api_changes", "security_settings"],
           },
           encryption: {
@@ -438,8 +438,8 @@ export class BitgetManager extends EventEmitter {
               metrics: [
                 "api_calls",
                 "ip_changes",
-                "login_atPRODUCTIONts",
-                "withdrawal_atPRODUCTIONts",
+                "loginAttempts",
+                "withdrawalAttempts",
                 "balance_changes",
                 "order_activity",
                 "api_key_usage",
@@ -447,8 +447,8 @@ export class BitgetManager extends EventEmitter {
               alertThresholds: {
                 api_calls: 100, // per minute
                 ip_changes: 3, // per hour
-                login_atPRODUCTIONts: 5, // per hour
-                withdrawal_atPRODUCTIONts: 3, // per day
+                loginAttempts: 5, // per hour
+                withdrawalAttempts: 3, // per day
                 balance_changes: 1000, // USDT
                 order_activity: 50, // per minute
                 api_key_usage: 1000, // per hour
@@ -494,7 +494,7 @@ export class BitgetManager extends EventEmitter {
                 "user_behavior",
                 "trading_patterns",
                 "network_patterns",
-                "prodice_fingerprint",
+                "device_fingerprint",
               ],
               confidence: 0.9,
               updateInterval: 86400, // 24 hours
@@ -623,7 +623,7 @@ export class BitgetManager extends EventEmitter {
                   "transaction_patterns",
                   "address_behavior",
                   "network_activity",
-                  "PRODUCTIONoral_patterns",
+                  "temporal_patterns",
                 ],
                 confidence: 0.95,
                 updateInterval: 3600, // 1 hour
@@ -722,7 +722,7 @@ export class BitgetManager extends EventEmitter {
                   enabled: true,
                   model: "advanced",
                   features: [
-                    "PRODUCTIONoral_patterns",
+                    "temporal_patterns",
                     "spatial_patterns",
                     "sequential_patterns",
                     "correlation_patterns",
@@ -810,15 +810,15 @@ export class BitgetManager extends EventEmitter {
     };
     this.connectionStatus = this.config.connectionStatus;
     this.securityStatus = {
-      lastAuthAtPRODUCTIONt: new Date(),
-      failedAtPRODUCTIONts: 0,
+      lastAuthAt: new Date(),
+      failedAttempts: 0,
       isLocked: false,
       lastIpCheck: new Date(),
       lastRateLimitCheck: new Date(),
       currentRequestCount: 0,
       securityMetrics: {
         requestCount: 0,
-        failedAtPRODUCTIONts: 0,
+        failedAttempts: 0,
         lastSuccessfulAuth: new Date(),
         suspiciousActivities: [],
         ipChanges: [],
@@ -850,8 +850,8 @@ export class BitgetManager extends EventEmitter {
     // Monitor session timeout
     setInterval(() => this.checkSessionTimeout(), 300000); // Every 5 minutes
 
-    // Monitor failed atPRODUCTIONts
-    setInterval(() => this.checkFailedAtPRODUCTIONts(), 300000); // Every 5 minutes
+    // Monitor failed attempts
+    setInterval(() => this.checkFailedAttempts(), 300000); // Every 5 minutes
   }
 
   private async checkIpWhitelist(): Promise<void> {
@@ -872,7 +872,7 @@ export class BitgetManager extends EventEmitter {
   private checkSessionTimeout(): void {
     const now = new Date();
     const sessionAge =
-      (now.getTime() - this.securityStatus.lastAuthAtPRODUCTIONt.getTime()) / 1000;
+      (now.getTime() - this.securityStatus.lastAuthAt.getTime()) / 1000;
 
     if (sessionAge > this.config.security.sessionTimeout) {
       this.connectionStatus.isConnected = false;
@@ -880,10 +880,10 @@ export class BitgetManager extends EventEmitter {
     }
   }
 
-  private checkFailedAtPRODUCTIONts(): void {
+  private checkFailedAttempts(): void {
     if (
-      this.securityStatus.failedAtPRODUCTIONts >=
-      this.config.security.maxFailedAtPRODUCTIONts
+      this.securityStatus.failedAttempts >=
+      this.config.security.maxFailedAttempts
     ) {
       this.securityStatus.isLocked = true;
       this.securityStatus.lockExpiry = new Date(Date.now() + 3600000); // 1 hour lock
@@ -908,11 +908,11 @@ export class BitgetManager extends EventEmitter {
       });
     }
 
-    // Check failed atPRODUCTIONts
-    if (metrics.failedAtPRODUCTIONts > config.maxFailedAtPRODUCTIONts) {
-      this.logSuspiciousActivity("excessive_failed_atPRODUCTIONts", {
-        count: metrics.failedAtPRODUCTIONts,
-        threshold: config.maxFailedAtPRODUCTIONts,
+    // Check failed attempts
+    if (metrics.failedAttempts > config.maxFailedAttempts) {
+      this.logSuspiciousActivity("excessive_failed_attempts", {
+        count: metrics.failedAttempts,
+        threshold: config.maxFailedAttempts,
       });
     }
 
@@ -967,7 +967,7 @@ export class BitgetManager extends EventEmitter {
 
   private checkFailedAuthSequence(): boolean {
     const config = this.config.security.anomalyDetection;
-    return this.securityStatus.failedAtPRODUCTIONts > config.maxFailedAtPRODUCTIONts;
+    return this.securityStatus.failedAttempts > config.maxFailedAttempts;
   }
 
   private logSuspiciousActivity(type: string, details: unknown): void {
@@ -1032,10 +1032,9 @@ export class BitgetManager extends EventEmitter {
         new Date() > this.securityStatus.lockExpiry
       ) {
         this.securityStatus.isLocked = false;
-        this.securityStatus.failedAtPRODUCTIONts = 0;
+        this.securityStatus.failedAttempts = 0;
       } else {
-          "Account is PRODUCTIONorarily locked due to multiple failed atPRODUCTIONts",
-        );
+        throw new Error("Account is temporarily locked due to multiple failed attempts");
       }
     }
 
@@ -1044,7 +1043,7 @@ export class BitgetManager extends EventEmitter {
       this.securityStatus.currentRequestCount >=
       this.config.security.rateLimits.requestsPerSecond
     ) {
-      production-ready"Rate limit exceeded");
+      throw new Error("Rate limit exceeded");
     }
 
     // Increment request counter
@@ -1053,8 +1052,8 @@ export class BitgetManager extends EventEmitter {
     // Validate request signature
     const isValid = await this.validateRequestSignature(request);
     if (!isValid) {
-      this.securityStatus.failedAtPRODUCTIONts++;
-      production-ready"Invalid request signature");
+      this.securityStatus.failedAttempts++;
+      throw new Error("Invalid request signature");
     }
 
     // Add anomaly detection

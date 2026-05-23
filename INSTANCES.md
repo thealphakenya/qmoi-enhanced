@@ -2,58 +2,56 @@
 This file tracks the remaining production readiness instances from `undone.txt`.
 ## Remaining Files
 ### SUMMARY
-- Total files scanned: 4983
-- Files with markers: 3547
-- Total markers found: 613018
-- Scan timestamp: 2026-05-08T10:41:24.999727
-- Scan ID: 1778236884
+- Total files scanned: 4918
+- Files with markers: 208
+- Total markers found: 3273
+- Scan timestamp: 2026-05-23T17:18:26.930552
+- Scan ID: 1779556706
 ### DETAILED FINDINGS
-- Scan Timestamp: 2026-05-08T10:41:24.999727
-- Total Files Scanned: 4983
-- Total Directories Scanned: 847
-- Files with Markers: 3547
-- Total Markers Found: 613018
+- Scan Timestamp: 2026-05-23T17:18:26.930552
+- Total Files Scanned: 4918
+- Total Directories Scanned: 856
+- Files with Markers: 208
+- Total Markers Found: 3273
 ### MARKER BREAKDOWN
-- production-ready: 597895
-- vercel: 8351
-- PRODUCTION_READY_TAG: 2964
-- PRODUCTION_COMPLETE: 2501
-- production_logging: 1006
-- api.qmoi-enhanced.com: 91
-- PRODUCTION_FIXED: 50
-- PRODUCTION: 49
-- PRODUCTION_READY: 46
-- FUNCTIONAL: 33
-- NOT_IMPLEMENTED: 9
-- UNIMPLEMENTED: 6
-- production_data: 6
-- vercel_error_list: 5
-- production_REMOVED: 3
-- production_GUARDED: 2
-- COMPLETED: 1
+- production_logging: 945
+- PRODUCTION_READY_TAG: 633
+- vercel_config: 423
+- PRODUCTION_COMPLETE: 408
+- api.qmoi-enhanced.com: 361
+- vercel_deploy: 224
+- production_data: 99
+- UNIMPLEMENTED: 90
+- PRODUCTION_FIXED: 31
+- vercel_error_list: 24
+- FUNCTIONAL: 13
+- NOT_IMPLEMENTED: 10
+- PRODUCTION_READY: 8
+- COMPLETED: 3
+- FINALIZED: 1
 
 ### FILES WITH MARKERS
-1. matches.json (156823 markers)
-2. reports/matches.json (156823 markers)
-3. NONPROD_REPORT_HEAD.txt (56605 markers)
-4. docs/nonproduction_comprehensive_report.json (43922 markers)
-5. non_production_implementations_report.json (34506 markers)
-6. archives/placeholders_replacement_report_20260426_102212.json (22785 markers)
-7. ultimate_PRODUCTION_FIXED_report.json (21074 markers)
-8. instructionmanifest.txt (14516 markers)
-9. reports/production_readiness_scan.txt (11846 markers)
-10. archives/placeholder_actions_20260426_102212.md (9420 markers)
-11. ALL_TODOS_SAMPLE.txt (3902 markers)
-12. docs/nonproduction_scan_report.json (2658 markers)
-13. scripts/enhancement_report_20260506_064821.json (2451 markers)
-14. scripts/enhancement_report_20260506_074210.json (2441 markers)
-15. scripts/enhancement_report_20260506_043941.json (2245 markers)
-16. eslint_report.json (1633 markers)
-17. eslint_fix_result.json (1633 markers)
-18. eslint_report_after_fix.json (1633 markers)
-19. docs/ui_validation_report.json (1597 markers)
-20. eslint_report_after_any_fix.json (1572 markers)
-... and 3527 more files
+1. docs/nonproduction_scan_report.json (120 markers)
+2. matches.json (102 markers)
+3. autodev_enhanced_production_results.json (92 markers)
+4. autodev_memory_sync.json (79 markers)
+5. production_scan_1776651512.json (78 markers)
+6. all_md_files_clean.txt (75 markers)
+7. docs/md_index.json (75 markers)
+8. production_scan_1776654312.json (70 markers)
+9. package-lock.json (69 markers)
+10. eslint_report.json (68 markers)
+11. eslint_fix_result.json (68 markers)
+12. eslint_report_after_fix.json (68 markers)
+13. scripts/enhancement_report_20260506_075840.json (68 markers)
+14. scripts/enhancement_report_20260506_074210.json (68 markers)
+15. scripts/enhancement_report_20260506_080033.json (68 markers)
+16. scripts/enhancement_report_20260506_064821.json (68 markers)
+17. production_scan_1779556461.json (67 markers)
+18. scripts/enhancement_report_20260506_080703.json (66 markers)
+19. scripts/enhancement_report_20260506_043941.json (66 markers)
+20. undone.txt (63 markers)
+... and 188 more files
 
 ### NEXT STEPS
 - Review undone.txt for detailed findings

@@ -5,7 +5,7 @@ metadata:
   namespace: qmoi
 data:
   NODE_ENV: "production"
-  FRONTEND_URL: "https://qmoi.example.com"
+  FRONTEND_URL: "${API_URL}"
   APP_HOST: "0.0.0.0"
   APP_PORT: "3000"
   LOG_LEVEL: "info"

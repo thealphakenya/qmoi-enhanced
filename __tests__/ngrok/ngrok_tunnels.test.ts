@@ -1,16 +1,3 @@
-logger.info("production mode initialized");
-import { describe, it, expect } from 'vitest'
-
-describe('NGROK Tunnel Management', () => {
-  it('should provision a paid NGROK tunnel configuration', () => {
-    const tunnel = {
-      plan: 'paid',
-      status: 'active',
-      domain: 'reserved-subdomain.ngrok.io',
-    }
-
-    expect(tunnel.plan).toBe('paid')
-    expect(tunnel.status).toBe('active')
-    expect(tunnel.domain).toContain('ngrok.io')
-  })
-})
+# ARCHIVED NON-PRODUCTION FILE
+This file was identified as high-confidence non-production (mock/fixture/sample) and archived.
+Backup path: .backups/high_conf_nonprod_1779517012/__tests__/ngrok/ngrok_tunnels.test.ts

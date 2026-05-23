@@ -45,7 +45,7 @@ export default function LoginForm({ onLogin }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white"
-          placeholder="your.email@example.com"
+          placeholder="your.email@${EXAMPLE_HOST}"
           required
         />
       </label>

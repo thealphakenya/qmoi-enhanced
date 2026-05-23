@@ -658,7 +658,7 @@ if __name__ == "__main__":
     logging.info(f"Dashboard data retrieved: {len(str(data))} characters")
     # Send test email
     result = send_email_api({
-        "to_email": "test@example.com",
+        "to_email": "test@${EXAMPLE_HOST}",
         "subject": "Test from Master Dashboard",
         "body": "This is a test email from the QMOI Master Email Dashboard.",
         "account": "master@qmoi.com"

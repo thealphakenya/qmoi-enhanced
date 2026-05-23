@@ -178,7 +178,7 @@ upstream qmoi_backend {
 
 server {
     listen 443 ssl http2;
-    server_name qmoi.example.com;
+    server_name ${API_HOST};
 
     ssl_certificate /etc/ssl/certs/qmoi.crt;
     ssl_certificate_key /etc/ssl/private/qmoi.key;
@@ -393,13 +393,13 @@ kubectl top nodes
 
 ```bash
 # 1. Verify application is responding
-curl https://qmoi.example.com/health
+curl ${API_URL}/health
 
 # 2. Check logs for errors
 kubectl logs -f deployment/qmoi-app -n qmoi | grep ERROR
 
 # 3. Test authentication
-curl -X POST https://qmoi.example.com/api/auth/signin \
+curl -X POST ${API_URL}/api/auth/signin \
   -d '{"email":"demo@qmo.ai","password":"demo"}'
 
 # 4. Verify database connectivity

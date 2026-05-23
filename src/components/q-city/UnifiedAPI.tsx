@@ -1,268 +1,218 @@
-import React from 'react';
+"use client";
 
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
+import React, { useEffect, useMemo, useState } from "react";
+import apiClient from "@/api/client";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('React Error Boundary caught an error:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-// QMOI EVOLUTION ENHANCED: Unified API management component
+const logger = {
+  info: console.info.bind(console),
+  warn: console.warn.bind(console),
+  error: console.error.bind(console),
+};
 
 interface APIEndpoint {
   id: string;
   name: string;
   path: string;
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE';
+  method: "GET" | "POST" | "PUT" | "DELETE";
   description: string;
-  status: 'active' | 'CURRENT' | 'maintenance';
+  status: "active" | "maintenance" | "deprecated";
   version: string;
-  category: 'models' | 'inference' | 'training' | 'data' | 'admin';
+  category: "models" | "inference" | "training" | "data" | "admin";
   rateLimit: number;
   lastUsed: string;
 }
 
 const SAMPLE_ENDPOINTS: APIEndpoint[] = [
   {
-    id: '1',
-    name: 'Generate Text',
-    path: '/api/v1/generate',
-    method: 'POST',
-    description: 'Generate text using QMOI language models',
-    status: 'active',
-    version: 'v1.2.0',
-    category: 'models',
+    id: "1",
+    name: "Generate Text",
+    path: "/api/v1/generate",
+    method: "POST",
+    description: "Generate text using QMOI language models",
+    status: "active",
+    version: "v1.2.0",
+    category: "models",
     rateLimit: 100,
-    lastUsed: '2026-03-12T10:30:00Z',
-  },
-  {
-    id: '2',
-    name: 'Run Inference',
-    path: '/api/v1/inference',
-    method: 'POST',
-    description: 'Run inference on uploaded models',
-    status: 'active',
-    version: 'v1.1.5',
-    category: 'inference',
-    rateLimit: 50,
-    lastUsed: '2026-03-12T09:45:00Z',
-  },
-  {
-    id: '3',
-    name: 'Start Training',
-    path: '/api/v1/train',
-    method: 'POST',
-    description: 'Start model training job',
-    status: 'maintenance',
-    version: 'v1.3.0',
-    category: 'training',
-    rateLimit: 5,
-    lastUsed: '2026-03-10T14:15:00Z',
+    lastUsed: "2026-03-12T10:30:00Z",
   },
 ];
 
-const getMethodColor = (method: APIEndpoint['method']) => {
+const getMethodColor = (method: APIEndpoint["method"]) => {
   switch (method) {
-    case 'GET':
-      return 'bg-green-500';
-    case 'POST':
-      return 'bg-blue-500';
-    case 'PUT':
-      return 'bg-yellow-500';
-    case 'DELETE':
-      return 'bg-red-500';
+    case "GET":
+      return "bg-green-500";
+    case "POST":
+      return "bg-blue-500";
+    case "PUT":
+      return "bg-yellow-500";
+    case "DELETE":
+      return "bg-red-500";
     default:
-      return 'bg-gray-500';
+      return "bg-gray-500";
   }
 };
 
-const getStatusColor = (status: APIEndpoint['status']) => {
+const getStatusColor = (status: APIEndpoint["status"]) => {
   switch (status) {
-    case 'active':
-      return 'bg-green-500';
-    case 'maintenance':
-      return 'bg-yellow-500';
-    case 'CURRENT':
-      return 'bg-red-500';
+    case "active":
+      return "bg-green-500";
+    case "maintenance":
+      return "bg-yellow-500";
     default:
-      return 'bg-gray-500';
+      return "bg-gray-500";
   }
 };
 
-const getCategoryIcon = (category: APIEndpoint['category']) => {
+const getCategoryIcon = (category: APIEndpoint["category"]) => {
   switch (category) {
-    case 'models':
-      return '🤖';
-    case 'inference':
-      return '⚡';
-    case 'training':
-      return '🎯';
-    case 'data':
-      return '📊';
-    case 'admin':
-      return '⚙️';
+    case "models":
+      return "🤖";
+    case "inference":
+      return "⚡";
+    case "training":
+      return "🎯";
+    case "data":
+      return "📊";
+    case "admin":
+      return "⚙️";
     default:
-      return '🔧';
+      return "🔧";
   }
 };
 
-export const UnifiedAPI: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<'all' | APIEndpoint['category']>('all');
-  const [showCreateForm, setShowCreateForm] = useState(false);
+const UnifiedAPI: React.FC = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<APIEndpoint["category"] | "all">("all");
+  const [endpoints, setEndpoints] = useState<APIEndpoint[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadEndpoints = async () => {
+      try {
+        setLoading(true);
+        const data = await apiClient.json<APIEndpoint[]>("/api/endpoints");
+        setEndpoints(Array.isArray(data) ? data : []);
+      } catch (err) {
+        logger.error("Failed to load endpoints", err);
+        setError("Unable to load API endpoints");
+        if (process.env.NODE_ENV !== "production") {
+          setEndpoints(SAMPLE_ENDPOINTS);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    void loadEndpoints();
+  }, []);
 
   const filteredEndpoints = useMemo(
     () =>
-      SAMPLE_ENDPOINTS.filter((endpoint) => {
-        const matchesCategory = selectedCategory === 'all' || endpoint.category === selectedCategory;
+      endpoints.filter((endpoint) => {
+        const matchesCategory = selectedCategory === "all" || endpoint.category === selectedCategory;
         const query = searchQuery.toLowerCase();
-        const matchesSearch =
-          endpoint.name.toLowerCase().includes(query) ||
-          endpoint.path.toLowerCase().includes(query) ||
-          endpoint.description.toLowerCase().includes(query);
-        return matchesCategory && matchesSearch;
+        return (
+          matchesCategory &&
+          (endpoint.name.toLowerCase().includes(query) ||
+            endpoint.path.toLowerCase().includes(query) ||
+            endpoint.description.toLowerCase().includes(query))
+        );
       }),
-    [searchQuery, selectedCategory],
+    [endpoints, searchQuery, selectedCategory],
   );
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="space-y-6 p-6">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-400">QVillage Unified API</h2>
+          <p className="text-sm text-gray-400">Production API endpoint management and status overview.</p>
         </div>
-        <Button onClick={() => setShowCreateForm((prev) => !prev)} className="bg-cyan-600 hover:bg-cyan-700">
-          {showCreateForm ? 'Cancel' : 'Add Endpoint'}
-        </Button>
-      </div>
-
-      {showCreateForm && (
-        <Card className="bg-gray-800 border-gray-700">
-          <CardHeader>
-            <CardTitle className="text-white">Create New API Endpoint</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            </div>
-            <div className="flex flex-wrap gap-3 justify-end">
-              <Button variant="outline" onClick={() => setShowCreateForm(false)}>
-                Close
-              </Button>
-              <Button className="bg-cyan-600 hover:bg-cyan-700">Create Endpoint</Button>
-            </div>
-          </CardContent>
-        </Card>
-      )}
-
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <Input
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="max-w-xs"
-        />
-        <Select value={selectedCategory} onValueChange={(value) => setSelectedCategory(value as any)}>
-          <SelectTrigger className="w-48">
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All Categories</SelectItem>
-            <SelectItem value="models">Models</SelectItem>
-            <SelectItem value="inference">Inference</SelectItem>
-            <SelectItem value="training">Training</SelectItem>
-            <SelectItem value="data">Data</SelectItem>
-            <SelectItem value="admin">Admin</SelectItem>
-          </SelectContent>
-        </Select>
+        <Button variant="secondary" onClick={() => setSelectedCategory("all")}>Reset Filters</Button>
       </div>
 
       <div className="grid gap-4 md:grid-cols-4">
-        <Card className="bg-gray-800 border-gray-700">
-          <CardContent className="p-4">
-            <div className="text-2xl font-bold text-cyan-400">{SAMPLE_ENDPOINTS.length}</div>
-            <p className="text-gray-400">Total Endpoints</p>
+        <Card>
+          <CardContent>
+            <div className="text-sm text-gray-500">Total Endpoints</div>
+            <div className="mt-2 text-3xl font-bold">{endpoints.length}</div>
           </CardContent>
         </Card>
-        <Card className="bg-gray-800 border-gray-700">
-          <CardContent className="p-4">
-            <div className="text-2xl font-bold text-green-400">{SAMPLE_ENDPOINTS.filter((e) => e.status === 'active').length}</div>
-            <p className="text-gray-400">Active Endpoints</p>
+        <Card>
+          <CardContent>
+            <div className="text-sm text-gray-500">Active</div>
+            <div className="mt-2 text-3xl font-bold">{endpoints.filter((e) => e.status === "active").length}</div>
           </CardContent>
         </Card>
-        <Card className="bg-gray-800 border-gray-700">
-          <CardContent className="p-4">
-            <div className="text-2xl font-bold text-yellow-400">{SAMPLE_ENDPOINTS.filter((e) => e.status === 'maintenance').length}</div>
-            <p className="text-gray-400">In Maintenance</p>
+        <Card>
+          <CardContent>
+            <div className="text-sm text-gray-500">Maintenance</div>
+            <div className="mt-2 text-3xl font-bold">{endpoints.filter((e) => e.status === "maintenance").length}</div>
           </CardContent>
         </Card>
-        <Card className="bg-gray-800 border-gray-700">
-          <CardContent className="p-4">
-            <div className="text-2xl font-bold text-blue-400">{new Set(SAMPLE_ENDPOINTS.map((e) => e.category)).size}</div>
-            <p className="text-gray-400">Categories</p>
+        <Card>
+          <CardContent>
+            <div className="text-sm text-gray-500">Categories</div>
+            <div className="mt-2 text-3xl font-bold">{new Set(endpoints.map((e) => e.category)).size}</div>
           </CardContent>
         </Card>
       </div>
 
-      {filteredEndpoints.length === 0 ? (
-        <div className="text-center py-12 text-gray-400">No endpoints found</div>
+      <div className="grid gap-4 md:grid-cols-3">
+        <div className="col-span-2">
+          <input
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search endpoints..."
+            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white"
+          />
+        </div>
+        <div>
+          <select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value as APIEndpoint["category"] | "all")}
+            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white"
+          >
+            <option value="all">All Categories</option>
+            <option value="models">Models</option>
+            <option value="inference">Inference</option>
+            <option value="training">Training</option>
+            <option value="data">Data</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+      </div>
+
+      {loading && <div className="text-gray-400">Loading endpoints...</div>}
+      {error && <div className="text-red-400">{error}</div>}
+
+      {filteredEndpoints.length === 0 && !loading ? (
+        <div className="rounded-xl border border-slate-700 bg-slate-950 p-8 text-center text-slate-400">
+          No API endpoints matched your filters.
+        </div>
       ) : (
         <div className="space-y-4">
           {filteredEndpoints.map((endpoint) => (
-            <Card key={endpoint.id} className="bg-gray-800 border-gray-700">
-              <CardContent className="p-6">
-                <div className="flex flex-col gap-4 lg:flex-row lg:justify-between lg:items-start">
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-3">
-                      <span className="text-2xl">{getCategoryIcon(endpoint.category)}</span>
-                      <div>
-                        <h3 className="text-lg font-semibold text-white">{endpoint.name}</h3>
-                        <p className="text-gray-400">{endpoint.description}</p>
-                      </div>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge className={`${getMethodColor(endpoint.method)} text-white`}>{endpoint.method}</Badge>
-                      <Badge className={`${getStatusColor(endpoint.status)} text-white`}>{endpoint.status}</Badge>
-                    </div>
-                  </div>
-
-                  <div className="grid gap-2 text-sm text-gray-300">
-                    <div>
-                      <p className="text-gray-500">Path</p>
-                      <code className="text-cyan-400 bg-gray-900 px-2 py-1 rounded">{endpoint.path}</code>
-                    </div>
-                    <div>
-                      <p className="text-gray-500">Version</p>
-                      <p className="text-white">{endpoint.version}</p>
-                    </div>
-                    <div>
-                      <p className="text-gray-500">Rate Limit</p>
-                      <p className="text-white">{endpoint.rateLimit}/min</p>
-                    </div>
-                    <div>
-                      <p className="text-gray-500">Last Used</p>
-                      <p className="text-white">{new Date(endpoint.lastUsed).toLocaleDateString()}</p>
-                    </div>
-                  </div>
+            <Card key={endpoint.id} className="border-slate-700 bg-slate-950">
+              <CardHeader>
+                <CardTitle>{endpoint.name}</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <Badge className={`${getMethodColor(endpoint.method)} text-white`}>{endpoint.method}</Badge>
+                  <Badge className={`${getStatusColor(endpoint.status)} text-white`}>{endpoint.status}</Badge>
+                  <span className="text-sm text-slate-400">{endpoint.version}</span>
                 </div>
-
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <Button variant="outline">Test Endpoint</Button>
-                  <Button variant="outline">Edit</Button>
-                  <Button variant="outline">Delete</Button>
+                <p className="text-sm text-slate-300">{endpoint.description}</p>
+                <div className="flex flex-wrap items-center gap-3 text-sm text-slate-400">
+                  <span>{getCategoryIcon(endpoint.category)} {endpoint.category}</span>
+                  <span>{endpoint.path}</span>
+                  <span>Rate limit: {endpoint.rateLimit}/min</span>
+                  <span>Last used: {new Date(endpoint.lastUsed).toLocaleString()}</span>
                 </div>
               </CardContent>
             </Card>

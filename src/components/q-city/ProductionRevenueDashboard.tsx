@@ -1,29 +1,40 @@
-import React, { useState, useEffect } from "react";
-// Master-only access control
-const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
-  const [isMaster, setIsMaster] = React.useState(false);
-  
-  React.useEffect(() => {
-    const user = sessionStorage.getItem("user");
-    if (user) {
-      const userData = JSON.parse(user);
-      setIsMaster(userData.role === "master");
-    }
-  }, []);
-  
-  if (!isMaster) {
-    return <div className="p-4 text-red-600">Access denied: Master users only</div>;
-  }
-  
-  return <>{children}</>;
-};
+"use client";
 
-import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import React, { useEffect, useState } from "react";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import apiClient from "@/api/client";
+
+const logger = {
+  error: (...args: unknown[]) => console.error(...args),
+  warn: (...args: unknown[]) => console.warn(...args),
+  info: (...args: unknown[]) => console.info(...args),
+};
+
+const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
+  const [isMaster, setIsMaster] = useState(false);
+
+  useEffect(() => {
+    const user = sessionStorage.getItem("user");
+    if (user) {
+      try {
+        const userData = JSON.parse(user);
+        setIsMaster(userData.role === "master");
+      } catch {
+        setIsMaster(false);
+      }
+    }
+  }, []);
+
+  if (!isMaster) {
+    return <div className="p-4 text-red-600">Access denied: Master users only</div>;
+  }
+
+  return <>{children}</>;
+};
 
 interface RevenueData {
   timestamp: string;
@@ -43,28 +54,23 @@ const ProductionRevenueDashboard: React.FC = () => {
   const [revenueData, setRevenueData] = useState<RevenueData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [chartData, setChartData] = useState<any[]>([]);
+  const [chartData, setChartData] = useState<{ name: string; value: number }[]>([]);
   const [isMonitoring, setIsMonitoring] = useState(false);
   const [lastUpdate, setLastUpdate] = useState<string>("");
 
-  // Fetch revenue data from production validator
   const fetchRevenueData = async () => {
     try {
       setLoading(true);
       setError(null);
-      
-      const res = await apiClient.get("/api/revenue/validate");
-      const data = await res.json();
-      
+
+      const data = await apiClient.json<RevenueData>("/api/revenue/validate");
       setRevenueData(data);
       setLastUpdate(new Date().toISOString());
-      
-      // Prepare chart data
+
       const sources = Object.entries(data.revenue_sources || {}).map(([name, value]) => ({
         name: name.replace(/_/g, " ").toUpperCase(),
-        value: Number(value) || 0
+        value: Number(value) || 0,
       }));
-      
       setChartData(sources);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to fetch revenue data");
@@ -74,37 +80,34 @@ const ProductionRevenueDashboard: React.FC = () => {
     }
   };
 
-  // Monitor revenue in real-time
   const toggleMonitoring = async () => {
     try {
-      const res = await apiClient.post("/api/revenue/monitor", {
-        enabled: !isMonitoring
-      });
-      const data = await res.json();
-      setIsMonitoring(data.monitoring);
+      const data = await apiClient.json<{ monitoring?: boolean }>(
+        "/api/revenue/monitor",
+        {
+          method: "POST",
+          body: { enabled: !isMonitoring },
+        },
+      );
+      setIsMonitoring(Boolean(data.monitoring));
     } catch (err) {
       setError("Failed to toggle monitoring");
+      logger.warn("Toggle monitoring failed:", err);
     }
   };
 
-  // Auto-refresh
   useEffect(() => {
     fetchRevenueData();
-    
-    const interval = setInterval(() => {
-      fetchRevenueData();
-    }, 30000); // Refresh every 30 seconds
-    
+    const interval = setInterval(fetchRevenueData, 30000);
     return () => clearInterval(interval);
   }, []);
 
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat("en-US", {
+  const formatCurrency = (value: number) =>
+    new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
-      notation: "compact"
+      notation: "compact",
     }).format(value);
-  };
 
   const getStatusColor = (status: string) => {
     switch (status?.toUpperCase()) {
@@ -131,70 +134,53 @@ const ProductionRevenueDashboard: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold">🚀 production Revenue Dashboard</h1>
+          <h1 className="text-3xl font-bold">🚀 Production Revenue Dashboard</h1>
           <p className="text-gray-600">Real-time revenue validation and monitoring</p>
         </div>
-        <div className="text-right text-sm text-gray-500">
-          Last updated: {new Date(lastUpdate).toLocaleTimeString()}
+        <div className="text-sm text-gray-500">
+          Last updated: {lastUpdate ? new Date(lastUpdate).toLocaleTimeString() : "Never"}
         </div>
       </div>
 
-      {/* Error Alert */}
       {error && (
         <Alert className="border-red-200 bg-red-50">
-          <AlertDescription className="text-red-800">
-            ⚠️ {error}
-          </AlertDescription>
+          <AlertDescription className="text-red-800">⚠️ {error}</AlertDescription>
         </Alert>
       )}
 
-      {/* Status Cards */}
       {revenueData && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Current Revenue */}
           <Card>
             <CardContent className="p-6">
               <div className="text-sm font-medium text-gray-600">Current Revenue</div>
-              <div className="text-3xl font-bold mt-2">
-                {formatCurrency(revenueData.current_revenue)}
-              </div>
+              <div className="text-3xl font-bold mt-2">{formatCurrency(revenueData.current_revenue)}</div>
               <div className="text-xs text-gray-500 mt-2">Validated in real-time</div>
             </CardContent>
           </Card>
 
-          {/* Daily Target */}
           <Card>
             <CardContent className="p-6">
               <div className="text-sm font-medium text-gray-600">Daily Target</div>
-              <div className="text-3xl font-bold mt-2">
-                {formatCurrency(revenueData.daily_target)}
-              </div>
+              <div className="text-3xl font-bold mt-2">{formatCurrency(revenueData.daily_target)}</div>
               <div className="text-xs text-gray-500 mt-2">Target amount</div>
             </CardContent>
           </Card>
 
-          {/* Achievement Rate */}
           <Card>
             <CardContent className="p-6">
               <div className="text-sm font-medium text-gray-600">Achievement Rate</div>
-              <div className="text-3xl font-bold text-green-600 mt-2">
-                {revenueData.achievement_rate.toFixed(1)}%
-              </div>
+              <div className="text-3xl font-bold text-green-600 mt-2">{revenueData.achievement_rate.toFixed(1)}%</div>
               <div className="text-xs text-gray-500 mt-2">Of daily target</div>
             </CardContent>
           </Card>
 
-          {/* Status */}
           <Card>
             <CardContent className="p-6">
               <div className="text-sm font-medium text-gray-600">Status</div>
               <div className="mt-2">
-                <Badge className={getStatusColor(revenueData.status)}>
-                  {revenueData.status}
-                </Badge>
+                <Badge className={getStatusColor(revenueData.status)}>{revenueData.status}</Badge>
               </div>
               <div className="text-xs text-gray-500 mt-2">Current state</div>
             </CardContent>
@@ -202,10 +188,8 @@ const ProductionRevenueDashboard: React.FC = () => {
         </div>
       )}
 
-      {/* Charts */}
       {revenueData && chartData.length > 0 && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Revenue Sources Bar Chart */}
           <Card>
             <CardHeader>
               <CardTitle>💰 Revenue Sources</CardTitle>
@@ -223,7 +207,6 @@ const ProductionRevenueDashboard: React.FC = () => {
             </CardContent>
           </Card>
 
-          {/* Predictions */}
           <Card>
             <CardHeader>
               <CardTitle>🎯 Predictions</CardTitle>
@@ -231,22 +214,18 @@ const ProductionRevenueDashboard: React.FC = () => {
             <CardContent className="space-y-4">
               <div>
                 <div className="text-sm text-gray-600">Predicted End of Day</div>
-                <div className="text-2xl font-bold mt-1">
-                  {formatCurrency(revenueData.predictions.predicted_end_of_day)}
-                </div>
+                <div className="text-2xl font-bold mt-1">{formatCurrency(revenueData.predictions.predicted_end_of_day)}</div>
               </div>
-              
               <div>
                 <div className="text-sm text-gray-600">Confidence Level</div>
-                <div className="text-2xl font-bold text-blue-600 mt-1">
-                  {(revenueData.predictions.confidence * 100).toFixed(0)}%
-                </div>
+                <div className="text-2xl font-bold text-blue-600 mt-1">{(revenueData.predictions.confidence * 100).toFixed(0)}%</div>
               </div>
-              
               <div>
                 <div className="text-sm text-gray-600">Trend</div>
                 <div className={`text-2xl font-bold mt-1 ${
-                  revenueData.predictions.trend === "increasing" ? "text-green-600" : "text-orange-600"
+                  revenueData.predictions.trend === "increasing"
+                    ? "text-green-600"
+                    : "text-orange-600"
                 }`}>
                   {revenueData.predictions.trend === "increasing" ? "📈 Increasing" : "📉 Stable"}
                 </div>
@@ -256,58 +235,29 @@ const ProductionRevenueDashboard: React.FC = () => {
         </div>
       )}
 
-      {/* Controls */}
       <Card>
         <CardContent className="p-6">
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             <Button onClick={fetchRevenueData} disabled={loading} variant="primary">
               🔄 Refresh Now
             </Button>
-            <Button 
-              onClick={toggleMonitoring} 
-              variant={isMonitoring ? "destructive" : "secondary"}
-            >
+            <Button onClick={toggleMonitoring} variant={isMonitoring ? "destructive" : "secondary"}>
               {isMonitoring ? "⏹️ Stop Monitoring" : "▶️ Start Monitoring"}
             </Button>
           </div>
         </CardContent>
       </Card>
 
-      {/* Status Indicator */}
-      <div className="text-center text-sm text-gray-600">
-        {isMonitoring && (
+      {isMonitoring && (
+        <div className="text-center text-sm text-gray-600">
           <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-lg">
-            <span className="inline-block w-2 h-2 bg-green-600 rounded-full animate-pulse"></span>
+            <span className="inline-block w-2 h-2 bg-green-600 rounded-full animate-pulse" />
             Monitoring active - Real-time updates
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default ProductionRevenueDashboard;
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}

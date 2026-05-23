@@ -37,12 +37,16 @@ interface ValidationReport {
 /**
  * Comprehensive Validation Engine
  */
+import logger from '../../../lib/logger';
+
 export class QMoiValidationEngine {
   private results: ValidationResult[] = [];
 
   constructor() {
     this.registerDefaultValidators();
-    this.registerAutoFixers();
+    if (process.env.ENABLE_AUTO_FIXERS === 'true') {
+      this.registerAutoFixers();
+    }
   }
 
   /**

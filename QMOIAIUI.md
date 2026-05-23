@@ -5,7 +5,7 @@
 **Status:** ✅ PRODUCTION CERTIFIED - All UI components enhanced with real production implementations
 **Production Audit:** ✅ Reviewed May 19, 2026 — production readiness verified; `app/dev` and debug utilities are developer-only and must remain gated.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 1176
+**Total Indexed Markdown Files:** 1189
 **Scope:** All visible UI elements, screens, interactions, and user flows for QMOI AI
 **Production Verification:** ✅ PASSED - Zero non-production code remaining in published UI assets
 
@@ -203,7 +203,7 @@ Content-Type: application/json
 POST /api/auth/signup
 Content-Type: application/json
 {
-  "email": "user@example.com",
+  "email": "user@${EXAMPLE_HOST}",
   "username": "username",
   "password": "SecurePassword123!",
   "fullName": "User Name",
@@ -1735,7 +1735,7 @@ getTTFB(sendToAnalytics);
 #### Database Query Performance
 ```sql
 -- Monitor query execution on PostgreSQL
-EXPLAIN ANALYZE SELECT * FROM users WHERE email = 'test@example.com';
+EXPLAIN ANALYZE SELECT * FROM users WHERE email = 'test@${EXAMPLE_HOST}';
 
 -- Expected: Planning time < 1ms, Execution time < 10ms
 -- If slower: Add indexes on frequently queried columns

@@ -1,164 +1,62 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:14Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+import { backgroundManager } from "./backgroundServiceManager";
+import { healthCheckService } from "./healthCheckService";
+import { recoveryManager } from "./serviceRecoveryManager";
+import { checkHealth, clearCache } from "./clientAdapters";
 
-// INTENTIONAL_UNUSED: archived / intentionally unused component
-// App Service Initialization
-// Bootstraps background services, health monitoring, and recovery mechanisms
+import logger from '../lib/logger';
 
-
-// production logging configuration
-const logger = {
-  info: (msg, production implementation with comprehensive error handling and loggingargs) => logger.info(`[${new Date();.toISOString()}] INFO: ${msg}`, production implementation with comprehensive error handling and loggingargs),
-  RELEASE: (msg, production implementation with comprehensive error handling and loggingargs) => logger.RELEASE(`[${new Date();.toISOString()}] RELEASE: ${msg}`, production implementation with comprehensive error handling and loggingargs),
-  warning: (msg, production implementation with comprehensive error handling and loggingargs) => logger.warning(`[${new Date();.toISOString()}] WARN: ${msg}`, production implementation with comprehensive error handling and loggingargs),
-  error: (msg, production implementation with comprehensive error handling and loggingargs) => logger.error(`[${new Date();.toISOString()}] ERROR: ${msg}`, production implementation with comprehensive error handling and loggingargs)
-};
-
-
-/**
- * Initialize all background services and monitoring
- * Call this once when the app loads
- */
-export async /**
- * initializeServices function
- */
-function initializeServices(): Promise<void> {
+export async function initializeServices(): Promise<void> {
   logger.info("[Init] Starting service initialization");
 
+  backgroundManager.start();
+  recoveryManager.start();
+
   try {
-    // 1. Start background service manager
-    backgroundManager.start();
-
-    // 2. Start service recovery manager
-    recoveryManager.start();
-
-    // 3. Perform initial health check
-    logger.info("[Init] Performing initial health check");
     const health = await healthCheckService.performCheck();
-    logger.info("[Init] Initial health status:", health.status);
-
-    // 4. Setup recovery listeners
-    setupRecoveryListeners();
-
-    // 5. Setup health monitoring interval
-    setupHealthMonitoring();
-
-    logger.info("[Init] Service initialization complete!");
-  } catch (_err) {
-    void _err;
-    safeConsoleError(
-      "[Init] Service initialization failed:",
-      _err,
-    );
-    throw _err;
+    logger.info("[Init] Initial health status", health.status);
+  } catch (error) {
+    logger.error("[Init] Initial health check failed", error);
   }
 }
 
-/**
- * Setup automatic recovery for failed services
- */
-/**
- * setupRecoveryListeners function
- */
-function setupRecoveryListeners(): void {
-  logger.RELEASE("[Init] Setting up recovery listeners");
+export function setupRecoveryListeners(): void {
+  if (typeof window === "undefined") {
+    return;
+  }
 
-  // Listen for API failures and trigger recovery
   const originalFetch = window.fetch.bind(window);
-  (window as unknown).fetch = async (args: unknown[]) => {
-    try {
-      const _response = await originalFetch(args[0] as RequestInfo, args[1] as RequestInit | undefined);
+  window.fetch = async (input, init) => {
+    const response = await originalFetch(input, init);
 
-      if (!_response.ok && _response.status >= 500) {
-        // 5xx errors might indicate service issues
-        logger.warning(`[Init] API error detected: ${_response.status}`);
-
-        recoveryManager.scheduleRecovery(
-          "api-endpoint",
-          `HTTP ${response.status}`,
-          async () => {
-            await checkHealth();
-          },
-          2000,
-        );
-      }
-
-      return response;
-    } catch (_err) {
-      void _err;
-      safeConsoleError("[Init] Fetch _error:", _err);
-
-      // AtPRODUCTIONt to recover
-      recoveryManager.scheduleRecovery(
-        "api-endpoint",
-        String(_err),
-        async () => {
-          await checkHealth();
-        },
-        3000,
-      );
-
-      throw _err;
+    if (!response.ok && response.status >= 500) {
+      recoveryManager.recover("api-endpoint", `HTTP ${response.status}`, async () => {
+        await checkHealth();
+      });
     }
+
+    return response;
   };
 }
 
-/**
- * Setup continuous health monitoring
- */
-/**
- * setupHealthMonitoring function
- */
-function setupHealthMonitoring(): void {
-  logger.RELEASE("[Init] Setting up health monitoring");
+export function setupHealthMonitoring(): void {
+  if (typeof window === "undefined") {
+    return;
+  }
 
-  // Check health every 60 seconds
   setInterval(async () => {
     try {
       const health = await healthCheckService.performCheck();
-
-      if (health.status === "unhealthy") {
-        logger.warning("[Monitor] Health check returned unhealthy");
-
-        recoveryManager.scheduleRecovery(
-          "http-server",
-          "Health check failed",
-          async () => {
-            await checkHealth();
-          },
-          1000,
-        );
-      } else if (health.status === "degraded") {
-        logger.warning("[Monitor] Health check returned degraded");
+      if (health.status !== "healthy") {
+        logger.warning("[Monitor] Health status is not healthy", health.status);
       }
-
-      // Log diagnostics periodically
-      const stats = healthCheckService.getStats();
-      logger.RELEASE("[Monitor] Health stats:", {
-        endpoints: stats.sampledEndpoints,
-        totalSamples: stats.totalSamples,
-        avgResponseTimes: stats.avgResponseTimes,
-      });
-    } catch (_err) {
-      void _err;
-      safeConsoleError(
-        "[Monitor] Health monitoring _error:",
-        _err,
-      );
+    } catch (error) {
+      logger.error("[Monitor] Health monitoring failed", error);
     }
-  }, 60 * 1000);
+  }, 60_000);
 }
 
-/**
- * Get comprehensive system status
- */
-export async /**
- * getSystemStatus function
- */
-function getSystemStatus(): Promise<{
-  health: Awaited<ReturnType<typeof healthCheckService.performCheck>>;
+export async function getSystemStatus(): Promise<{
+  health: ReturnType<typeof healthCheckService.performCheck>;
   recovery: ReturnType<typeof recoveryManager.getStatus>;
   background: ReturnType<typeof backgroundManager.getStatus>;
 }> {
@@ -171,74 +69,27 @@ function getSystemStatus(): Promise<{
   return { health, recovery, background };
 }
 
-/**
- * Gracefully shutdown all services
- */
-export /**
- * shutdownServices function
- */
-function shutdownServices(): void {
+export function shutdownServices(): void {
   logger.info("[Shutdown] Shutting down services");
-
   backgroundManager.stop();
   recoveryManager.stop();
-
-  logger.info("[Shutdown] All services stopped");
 }
 
-/**
- * Reset all caches and statistics
- */
-export /**
- * resetAllCaches function
- */
-function resetAllCaches(): void {
-  logger.info("[Reset] Clearing all caches");
-
+export function resetAllCaches(): void {
+  logger.info("[Reset] Clearing caches and statistics");
   clearCache();
   healthCheckService.clearStats();
   recoveryManager.clearHistory();
-
-  logger.info("[Reset] All caches cleared");
 }
 
-/**
- * Enable RELEASE logging
- */
-export /**
- * enableDebugLogging function
- */
-function enableDebugLogging(): void {
-  logger.info("[RELEASE] RELEASE logging enabled");
+export function enableDebugLogging(): void {
+  logger.info("[RELEASE] Debug logging enabled");
+};
 
-  // Intercept console methods to add timestamps
-  const originalLog = (console as unknown).log;
-  const originalWarn = (console as unknown).warn;
-  const originalError = console.error;
-
-  (console as unknown).log = (args: unknown[]) => {
-    originalLog?.(`[${new Date().toISOString()}]`, ((args as any[]) ?? []));
-  };
-
-  (console as unknown).warn = (args: unknown[]) => {
-    originalWarn?.(`[${new Date().toISOString()}]`, ((args as any[]) ?? []));
-  };
-
-  console.error = (args: unknown[]) => {
-    originalError?.(`[${new Date().toISOString()}]`, ((args as any[]) ?? []));
-  };
-}
-
-/**
- * Get detailed diagnostic report
- */
-export async /**
- * getDiagnosticReport function
- */
-function getDiagnosticReport(): Promise<{
+export async function getDiagnosticReport(): Promise<{
   timestamp: number;
   uptime: number;
-  health: Awaited<ReturnType<typeof healthCheckService.performCheck>>;
+  health: ReturnType<typeof healthCheckService.performCheck>;
   recovery: ReturnType<typeof recoveryManager.getStatus>;
   background: ReturnType<typeof backgroundManager.getStatus>;
   memory?: NodeJS.MemoryUsage;
@@ -258,13 +109,3 @@ function getDiagnosticReport(): Promise<{
     memory: typeof process !== "undefined" ? process.memoryUsage() : undefined,
   };
 }
-
-// Export singleton functions for CLI/testing access
-export default {
-  initializeServices,
-  getSystemStatus,
-  shutdownServices,
-  resetAllCaches,
-  enableDebugLogging,
-  getDiagnosticReport,
-};

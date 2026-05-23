@@ -12,7 +12,7 @@
 **Last Updated:** 2026-05-18T00:00:00.000000Z
 **Production Audit:** ✅ Reviewed May 18, 2026 — component inventory confirmed, shared UI primitives and app-specific components are production-ready.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 1176
+**Total Indexed Markdown Files:** 1189
 **Root component files**: 197
 **App-specific component files**: 53
 **Total UI component sources**: 421+ files (including root, app-level, and shared primitives)

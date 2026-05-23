@@ -2,7 +2,7 @@
 Generated: 2026-05-19T00:00:00.000000Z
 **Production Audit:** ✅ Reviewed May 19, 2026 — internal developer-only API routes are excluded from the documented production surface.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 1176
+**Total Indexed Markdown Files:** 1189
 Total API Route Handlers: 249
 Legacy route source files in `app/api/`: 261 (239 legacy/compatibility endpoint handlers, 22 supporting helper/config files)
 

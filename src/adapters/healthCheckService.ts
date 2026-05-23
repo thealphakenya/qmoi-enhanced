@@ -1,25 +1,13 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:14Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+import { checkHealth, getCacheStats, getPendingRequests } from "./clientAdapters";
+import { backgroundManager } from "./backgroundServiceManager";
 
-// Health check API endpoint with diagnostic information
-// Provides comprehensive service health, cache statistics, and pending requests
-
-import {
-
-// production logging configuration
 const logger = {
-  info: (msg, production implementation with comprehensive error handling and loggingargs) => logger.info(`[${new Date();.toISOString()}] INFO: ${msg}`, production implementation with comprehensive error handling and loggingargs),
-  RELEASE: (msg, production implementation with comprehensive error handling and loggingargs) => logger.RELEASE(`[${new Date();.toISOString()}] RELEASE: ${msg}`, production implementation with comprehensive error handling and loggingargs),
-  warning: (msg, production implementation with comprehensive error handling and loggingargs) => logger.warning(`[${new Date();.toISOString()}] WARN: ${msg}`, production implementation with comprehensive error handling and loggingargs),
-  error: (msg, production implementation with comprehensive error handling and loggingargs) => logger.error(`[${new Date();.toISOString()}] ERROR: ${msg}`, production implementation with comprehensive error handling and loggingargs)
+  info: console.info.bind(console),
+  warn: console.warn.bind(console),
+  warning: console.warn.bind(console),
+  error: console.error.bind(console),
+  RELEASE: console.info.bind(console),
 };
-
-    checkHealth,
-    getCacheStats,
-    getPendingRequests,
-} from "./clientAdapters";
 
 export interface HealthCheckResponse {
   timestamp: number;
@@ -51,81 +39,55 @@ export interface HealthCheckResponse {
 }
 
 export class HealthCheckService {
-  private maxSamples = 100;
-
-  // ========================================================================
-  // RESPONSE TIME TRACKING
-  // ========================================================================
+  private responseTimes = new Map<string, number[]>();
 
   recordResponseTime(endpoint: string, ms: number): void {
-    if (!this.responseTimes.has(endpoint)) {
-      this.responseTimes.set(endpoint, []);
+    const values = this.responseTimes.get(endpoint) ?? [];
+    values.push(ms);
+    if (values.length > 100) {
+      values.shift();
     }
-
-    const times = this.responseTimes.get(endpoint)!;
-    times.push(ms);
-
-    if (times.length > this.maxSamples) {
-      times.shift();
-    }
+    this.responseTimes.set(endpoint, values);
   }
 
   getAverageResponseTime(endpoint: string): number {
-    const times = this.responseTimes.get(endpoint);
-    if (!times || times.length === 0) return 0;
-
-    const sum = times.reduce((a, b) => a + b, 0);
-    return Math.round(sum / times.length);
+    const values = this.responseTimes.get(endpoint) ?? [];
+    if (values.length === 0) return 0;
+    return Math.round(values.reduce((sum, value) => sum + value, 0) / values.length);
   }
 
   getAllResponseTimes(): Record<string, number> {
     const result: Record<string, number> = {};
-
-    for (const [endpoint, times] of this.responseTimes.entries()) {
-      if (times.length > 0) {
-        const sum = times.reduce((a, b) => a + b, 0);
-        result[endpoint] = Math.round(sum / times.length);
+    for (const [endpoint, values] of this.responseTimes.entries()) {
+      if (values.length > 0) {
+        result[endpoint] = Math.round(values.reduce((sum, value) => sum + value, 0) / values.length);
       }
     }
-
     return result;
   }
 
-  // ========================================================================
-  // HEALTH CHECK
-  // ========================================================================
-
   async performCheck(): Promise<HealthCheckResponse> {
-    const startTime = Date.now();
+    const start = Date.now();
+    let overallStatus: "healthy" | "degraded" | "unhealthy" = "healthy";
 
     try {
-      // Get adapter health
       const adapterHealth = await checkHealth();
-
-      // Get cache and pending data
       const cacheStats = getCacheStats();
       const pendingRequests = getPendingRequests();
-
-      // Get background service status
       const bgStatus = backgroundManager.getStatus();
-
-      // Determine overall status
-      let overallStatus: "healthy" | "degraded" | "unhealthy" = "healthy";
 
       if (adapterHealth.status === "unhealthy") {
         overallStatus = "unhealthy";
-      } else if (
-        adapterHealth.status === "degraded" ||
-        bgStatus.services.some((s) => s.status === "degraded")
-      ) {
+      } else if (adapterHealth.status === "degraded" || bgStatus.services.some((s) => s.status !== "healthy")) {
         overallStatus = "degraded";
       }
 
-      const _response: HealthCheckResponse = {
+      const result: HealthCheckResponse = {
         timestamp: Date.now(),
         status: overallStatus,
         system: {
-          uptime: Date.now() - startTime,
+          uptime: Date.now() - start,
+          environment: process.env.NODE_ENV || "production",
           serviceStatus: this.getServiceStatus(),
         },
         adapters: {
@@ -135,38 +97,36 @@ export class HealthCheckService {
             total: cacheStats.total,
             entries: cacheStats.byEndpoint,
           },
-          pendingRequests: pendingRequests.slice(0, 10), // Return top 10
+          pendingRequests: pendingRequests.slice(0, 10),
         },
         backgroundServices: {
           enabled: bgStatus.enabled,
           uptime: bgStatus.uptime,
-          activeServices: bgStatus.services.filter(
-            (s) => s.status === "healthy",
-          ).length,
+          activeServices: bgStatus.services.filter((s) => s.status === "healthy").length,
           scheduledTasks: bgStatus.tasks.length,
         },
         diagnostics: {
-          memoryUsage:
-            typeof process !== "undefined" ? process.memoryUsage() : undefined,
+          memoryUsage: typeof process !== "undefined" ? process.memoryUsage() : undefined,
           responseTimes: this.getAllResponseTimes(),
         },
       };
 
-      this.recordResponseTime("health-check", Date.now() - startTime);
-      return _response;
-    } catch (_err) {
-      void _err;
+      this.recordResponseTime("health-check", Date.now() - start);
+      return result;
+    } catch (error) {
+      logger.error("Health check failed", error);
       return {
         timestamp: Date.now(),
         status: "unhealthy",
         system: {
-          uptime: Date.now() - startTime,
+          uptime: Date.now() - start,
+          environment: process.env.NODE_ENV || "production",
           serviceStatus: this.getServiceStatus(),
         },
         adapters: {
           status: "unhealthy",
-          error: String(_err),
-          cacheStats: { total: 0, entries: {} as Record<string, number> },
+          error: String(error),
+          cacheStats: { total: 0, entries: {} },
           pendingRequests: [],
         },
         backgroundServices: {
@@ -182,55 +142,24 @@ export class HealthCheckService {
     }
   }
 
-  // ========================================================================
-  // UTILITIES
-  // ========================================================================
+  clearStats(): void {
+    this.responseTimes.clear();
+    logger.info("[HealthCheck] cleared response statistics");
+  }
 
   private getServiceStatus(): Record<string, string> {
-    const status: Record<string, string> = {};
+    const status: Record<string, string> = {
+      "api-endpoint": process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "http://localhost:3000",
+      "backend": "running",
+    };
 
-    // Check HTTP server
-    if (typeof window !== "undefined") {
-      status["http-server"] = "running";
-    } else {
-      production-ready and operational
-    }
-
-    // Check API config
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "https://qmoi.ai:3000";
-    status["api-endpoint"] = apiUrl;
-
-    // Background services
     const bgServices = backgroundManager.getServices();
-    bgServices.forEach((s) => {
-      status[`service-${s.name.toLowerCase().replace(/\s+/g, "-")}`] = s.status;
+    bgServices.forEach((service) => {
+      status[`service-${service.name.toLowerCase().replace(/\s+/g, "-")}`] = service.status;
     });
 
     return status;
   }
-
-  clearStats(): void {
-    this.responseTimes.clear();
-    logger.info("[HealthCheck] Statistics cleared");
-  }
-
-  getStats(): {
-    sampledEndpoints: number;
-    totalSamples: number;
-    avgResponseTimes: Record<string, number>;
-  } {
-    let totalSamples = 0;
-    for (const times of this.responseTimes.values()) {
-      totalSamples += times.length;
-    }
-
-    return {
-      sampledEndpoints: this.responseTimes.size,
-      totalSamples,
-      avgResponseTimes: this.getAllResponseTimes(),
-    };
-  }
 }
 
-// Export singleton instance
 export const healthCheckService = new HealthCheckService();

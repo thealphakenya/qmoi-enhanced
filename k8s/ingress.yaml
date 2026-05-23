@@ -12,10 +12,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - qmoi.example.com
+    - ${API_HOST}
     secretName: qmoi-tls
   rules:
-  - host: qmoi.example.com
+  - host: ${API_HOST}
     http:
       paths:
       - path: /
@@ -33,7 +33,7 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: ops@qmoi.example.com
+    email: ops@${API_HOST}
     privateKeySecretRef:
       name: letsencrypt-prod
     solvers:

@@ -1,32 +1,32 @@
 # MATCHES.md
 
 ## Current Marker Matches
-- Generated: 2026-05-08T10:41:24.999727
-- Files with markers: 3547
-- Total markers found: 613018
+- Generated: 2026-05-23T17:18:26.930552
+- Files with markers: 208
+- Total markers found: 3273
 
 ### Top files with nonproduction markers
-- matches.json — 156823 markers
-- reports/matches.json — 156823 markers
-- NONPROD_REPORT_HEAD.txt — 56605 markers
-- docs/nonproduction_comprehensive_report.json — 43922 markers
-- non_production_implementations_report.json — 34506 markers
-- archives/placeholders_replacement_report_20260426_102212.json — 22785 markers
-- ultimate_PRODUCTION_FIXED_report.json — 21074 markers
-- instructionmanifest.txt — 14516 markers
-- reports/production_readiness_scan.txt — 11846 markers
-- archives/placeholder_actions_20260426_102212.md — 9420 markers
-- ALL_TODOS_SAMPLE.txt — 3902 markers
-- docs/nonproduction_scan_report.json — 2658 markers
-- scripts/enhancement_report_20260506_064821.json — 2451 markers
-- scripts/enhancement_report_20260506_074210.json — 2441 markers
-- scripts/enhancement_report_20260506_043941.json — 2245 markers
-- eslint_report.json — 1633 markers
-- eslint_fix_result.json — 1633 markers
-- eslint_report_after_fix.json — 1633 markers
-- docs/ui_validation_report.json — 1597 markers
-- eslint_report_after_any_fix.json — 1572 markers
-- ... and 3527 more files
+- docs/nonproduction_scan_report.json — 120 markers
+- matches.json — 102 markers
+- autodev_enhanced_production_results.json — 92 markers
+- autodev_memory_sync.json — 79 markers
+- production_scan_1776651512.json — 78 markers
+- all_md_files_clean.txt — 75 markers
+- docs/md_index.json — 75 markers
+- production_scan_1776654312.json — 70 markers
+- package-lock.json — 69 markers
+- eslint_report.json — 68 markers
+- eslint_fix_result.json — 68 markers
+- eslint_report_after_fix.json — 68 markers
+- scripts/enhancement_report_20260506_075840.json — 68 markers
+- scripts/enhancement_report_20260506_074210.json — 68 markers
+- scripts/enhancement_report_20260506_080033.json — 68 markers
+- scripts/enhancement_report_20260506_064821.json — 68 markers
+- production_scan_1779556461.json — 67 markers
+- scripts/enhancement_report_20260506_080703.json — 66 markers
+- scripts/enhancement_report_20260506_043941.json — 66 markers
+- undone.txt — 63 markers
+- ... and 188 more files
 
 ## production: NOTE ADDRESSED - s
 - MATCHES.md is regenerated from the latest production readiness scan.

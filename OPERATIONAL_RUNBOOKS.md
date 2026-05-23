@@ -250,7 +250,7 @@ kubctl get pods -o wide -n qmoi
 #### Post-Deployment Validation
 ```bash
 # 1. Check health endpoint
-curl https://qmoi.example.com/health
+curl ${API_URL}/health
 
 # 2. Check application logs for errors
 kubectl logs -l app=qmoi -n qmoi --since=5m | grep ERROR
@@ -259,7 +259,7 @@ kubectl logs -l app=qmoi -n qmoi --since=5m | grep ERROR
 npm run ci:smoke
 
 # 4. Verify metrics are being collected
-curl https://qmoi.example.com/metrics | head -20
+curl ${API_URL}/metrics | head -20
 ```
 
 #### Rollback Procedure
@@ -321,7 +321,7 @@ kubectl set env deployment/qmoi-app \
   -n qmoi
 
 # 6. Verify application is working
-curl https://qmoi.example.com/health
+curl ${API_URL}/health
 
 # 7. If successful, drop old database and rename
 # psql $DATABASE_URL -c "DROP DATABASE qmoi_db;"
@@ -407,7 +407,7 @@ kubectl patch secret qmoi-secrets -n qmoi -p \
 kubectl rollout restart deployment/qmoi-app -n qmoi
 
 # 5. Verify application is still working
-curl https://qmoi.example.com/health
+curl ${API_URL}/health
 
 # 6. Document rotation in audit log
 # Entry: "Secret rotation completed: JWT_SECRET, ENCRYPTION_KEY, API_KEY_SECRET"
@@ -483,9 +483,9 @@ find $BACKUP_DIR -mtime +7 -delete  # Delete old backups
 
 - **On-Call Engineer:** [Phone/Slack]
 - **Engineering Manager:** [Phone/Slack]
-- **Security Team:** security@qmoi.example.com
-- **Database Admin:** dba@qmoi.example.com
-- **Infrastructure Team:** infrastructure@qmoi.example.com
+- **Security Team:** security@${API_HOST}
+- **Database Admin:** dba@${API_HOST}
+- **Infrastructure Team:** infrastructure@${API_HOST}
 
 ---
 

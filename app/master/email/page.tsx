@@ -11,7 +11,7 @@ export default function MasterEmailPage() {
           <form className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-slate-300 mb-2">SMTP Server</label>
-              <input type="text" className="w-full bg-slate-700 text-white px-4 py-2 rounded border border-slate-600" placeholder="smtp.example.com" />
+              <input type="text" className="w-full bg-slate-700 text-white px-4 py-2 rounded border border-slate-600" placeholder="smtp.${EXAMPLE_HOST}" />
             </div>
             <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition">Save</button>
           </form>

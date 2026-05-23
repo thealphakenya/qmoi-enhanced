@@ -18,14 +18,14 @@ export default function AuditLogViewer() {
             <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
             <div className="flex-1">
               <div className="text-slate-300 text-sm">User login successful</div>
-              <div className="text-slate-400 text-xs">john.doe@example.com • 2 minutes ago</div>
+              <div className="text-slate-400 text-xs">john.doe@${EXAMPLE_HOST} • 2 minutes ago</div>
             </div>
           </div>
           <div className="flex gap-3 p-2 bg-slate-700 rounded">
             <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
             <div className="flex-1">
               <div className="text-slate-300 text-sm">Data export completed</div>
-              <div className="text-slate-400 text-xs">sarah.miller@example.com • 15 minutes ago</div>
+              <div className="text-slate-400 text-xs">sarah.miller@${EXAMPLE_HOST} • 15 minutes ago</div>
             </div>
           </div>
           <div className="flex gap-3 p-2 bg-slate-700 rounded">
@@ -46,7 +46,7 @@ export default function AuditLogViewer() {
             <div className="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
             <div className="flex-1">
               <div className="text-slate-300 text-sm">Configuration updated</div>
-              <div className="text-slate-400 text-xs">admin@example.com • 3 hours ago</div>
+              <div className="text-slate-400 text-xs">admin@${EXAMPLE_HOST} • 3 hours ago</div>
             </div>
           </div>
         </div>

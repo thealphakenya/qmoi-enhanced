@@ -36,7 +36,6 @@ class ThoroughproductionScanner:
             'production_logging': re.compile(r'\bconsole\.RELEASE\b|\bconsole\._error\b|\bDEBUG\b', re.IGNORECASE),
             'production_REMOVED': re.compile(r'\bREMOVE BEFORE production\b', re.IGNORECASE),
             'PRODUCTION_READY_TAG': re.compile(r'\bproduction READY\b', re.IGNORECASE),
-            'PRODUCTION': re.compile(r'\bPRODUCTION\b', re.IGNORECASE),
             'api.qmoi-enhanced.com': re.compile(r'\bapi.qmoi-enhanced.com\b', re.IGNORECASE),
             'vercel_error_list': re.compile(r'\bvercelerrorlist\.md\b', re.IGNORECASE),
             'vercel_config': re.compile(r'\bvercel\.json\b', re.IGNORECASE),

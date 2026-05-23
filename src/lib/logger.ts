@@ -66,7 +66,10 @@ export const log = {
     }
   },
   debug: (message: string, context?: Record<string, any>) => {
-    logger.debug(message, context);
+    const allowDebug = process.env.ENABLE_DEBUG_LOGS === 'true' || logger.level === 'debug' || process.env.NODE_ENV !== 'production';
+    if (allowDebug) {
+      logger.debug(message, context);
+    }
   },
 };
 
