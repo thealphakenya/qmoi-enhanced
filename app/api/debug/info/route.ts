@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
       memory: process.memoryUsage(),
       platform: process.platform,
       arch: process.arch,
-      noPRODUCTIONersion: process.version,
+      nodeVersion: process.version,
       cwd: process.cwd(),
       pid: process.pid
     };

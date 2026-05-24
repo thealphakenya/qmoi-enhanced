@@ -1,0 +1,2513 @@
+{
+  "scan_info": {
+    "timestamp": "2026-05-24T08:58:42.982485",
+    "scan_id": 1779613122,
+    "root_directory": "/workspaces/qmoi-enhanced",
+    "total_files_scanned": 4919,
+    "total_directories_scanned": 856,
+    "files_with_markers": 207,
+    "total_markers_found": 3329
+  },
+  "files_with_markers": [
+    {
+      "file_path": "docs/nonproduction_scan_report.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/docs/nonproduction_scan_report.json",
+      "file_size": 7212589,
+      "last_modified": "2026-05-22T17:04:22.323503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 48,
+        "PRODUCTION_READY_TAG": 60,
+        "vercel_deploy": 12
+      },
+      "total_markers": 120,
+      "file_hash": "c9ad3760"
+    },
+    {
+      "file_path": "matches.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/matches.json",
+      "file_size": 44539703,
+      "last_modified": "2026-05-22T17:04:23.435503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 1,
+        "PRODUCTION_FIXED": 1,
+        "production_logging": 42,
+        "PRODUCTION_READY_TAG": 1,
+        "api.qmoi-enhanced.com": 23,
+        "vercel_config": 32,
+        "vercel_deploy": 2
+      },
+      "total_markers": 102,
+      "file_hash": "624499cc"
+    },
+    {
+      "file_path": "autodev_enhanced_production_results.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/autodev_enhanced_production_results.json",
+      "file_size": 3234143,
+      "last_modified": "2026-05-22T17:04:22.051503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 20,
+        "production_logging": 28,
+        "PRODUCTION_READY_TAG": 31,
+        "api.qmoi-enhanced.com": 7,
+        "vercel_deploy": 6
+      },
+      "total_markers": 92,
+      "file_hash": "94bbda27"
+    },
+    {
+      "file_path": "autodev_memory_sync.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/autodev_memory_sync.json",
+      "file_size": 3356046,
+      "last_modified": "2026-05-22T17:04:22.061503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 23,
+        "FUNCTIONAL": 4,
+        "production_logging": 20,
+        "PRODUCTION_READY_TAG": 29,
+        "vercel_config": 2,
+        "vercel_deploy": 1
+      },
+      "total_markers": 79,
+      "file_hash": "13708b77"
+    },
+    {
+      "file_path": "production_scan_1776651512.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/production_scan_1776651512.json",
+      "file_size": 1181959,
+      "last_modified": "2026-05-22T17:04:25.633503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 32,
+        "PRODUCTION_READY_TAG": 42,
+        "vercel_config": 4
+      },
+      "total_markers": 78,
+      "file_hash": "017e32f3"
+    },
+    {
+      "file_path": "all_md_files_clean.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/all_md_files_clean.txt",
+      "file_size": 388720,
+      "last_modified": "2026-05-22T17:04:21.762503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 32,
+        "PRODUCTION_READY_TAG": 43
+      },
+      "total_markers": 75,
+      "file_hash": "cae5c279"
+    },
+    {
+      "file_path": "docs/md_index.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/docs/md_index.json",
+      "file_size": 749552,
+      "last_modified": "2026-05-22T17:04:22.289503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 32,
+        "PRODUCTION_READY_TAG": 43
+      },
+      "total_markers": 75,
+      "file_hash": "12d08da2"
+    },
+    {
+      "file_path": "production_scan_1779556706.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/production_scan_1779556706.json",
+      "file_size": 77755,
+      "last_modified": "2026-05-23T17:21:21.679406",
+      "markers": {
+        "UNIMPLEMENTED": 14,
+        "production_data": 15,
+        "production_logging": 4,
+        "api.qmoi-enhanced.com": 33,
+        "vercel_error_list": 2,
+        "vercel_deploy": 2
+      },
+      "total_markers": 70,
+      "file_hash": "85bb6599"
+    },
+    {
+      "file_path": "production_scan_1776654312.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/production_scan_1776654312.json",
+      "file_size": 1034218,
+      "last_modified": "2026-05-22T17:04:25.637503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 30,
+        "PRODUCTION_READY_TAG": 40
+      },
+      "total_markers": 70,
+      "file_hash": "54dd390c"
+    },
+    {
+      "file_path": "package-lock.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/package-lock.json",
+      "file_size": 505380,
+      "last_modified": "2026-05-22T17:04:24.661503",
+      "markers": {
+        "production_logging": 69
+      },
+      "total_markers": 69,
+      "file_hash": "e5a4678c"
+    },
+    {
+      "file_path": "eslint_report.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/eslint_report.json",
+      "file_size": 10979908,
+      "last_modified": "2026-05-22T17:04:22.475503",
+      "markers": {
+        "production_logging": 22,
+        "vercel_config": 38,
+        "vercel_deploy": 8
+      },
+      "total_markers": 68,
+      "file_hash": "e5e807af"
+    },
+    {
+      "file_path": "eslint_fix_result.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/eslint_fix_result.json",
+      "file_size": 10980022,
+      "last_modified": "2026-05-22T17:04:22.434503",
+      "markers": {
+        "production_logging": 22,
+        "vercel_config": 38,
+        "vercel_deploy": 8
+      },
+      "total_markers": 68,
+      "file_hash": "7e28f8eb"
+    },
+    {
+      "file_path": "eslint_report_after_fix.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/eslint_report_after_fix.json",
+      "file_size": 10979908,
+      "last_modified": "2026-05-22T17:04:22.595503",
+      "markers": {
+        "production_logging": 22,
+        "vercel_config": 38,
+        "vercel_deploy": 8
+      },
+      "total_markers": 68,
+      "file_hash": "e5e807af"
+    },
+    {
+      "file_path": "scripts/enhancement_report_20260506_075840.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/enhancement_report_20260506_075840.json",
+      "file_size": 8051758,
+      "last_modified": "2026-05-22T17:04:27.213503",
+      "markers": {
+        "production_logging": 56,
+        "vercel_deploy": 12
+      },
+      "total_markers": 68,
+      "file_hash": "8da75e93"
+    },
+    {
+      "file_path": "scripts/enhancement_report_20260506_074210.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/enhancement_report_20260506_074210.json",
+      "file_size": 8401694,
+      "last_modified": "2026-05-22T17:04:27.194503",
+      "markers": {
+        "production_logging": 56,
+        "vercel_deploy": 12
+      },
+      "total_markers": 68,
+      "file_hash": "e92b62ae"
+    },
+    {
+      "file_path": "scripts/enhancement_report_20260506_080033.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/enhancement_report_20260506_080033.json",
+      "file_size": 8046458,
+      "last_modified": "2026-05-22T17:04:27.226503",
+      "markers": {
+        "production_logging": 56,
+        "vercel_deploy": 12
+      },
+      "total_markers": 68,
+      "file_hash": "e4f9553a"
+    },
+    {
+      "file_path": "scripts/enhancement_report_20260506_064821.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/enhancement_report_20260506_064821.json",
+      "file_size": 8564476,
+      "last_modified": "2026-05-22T17:04:27.167503",
+      "markers": {
+        "production_logging": 56,
+        "vercel_deploy": 12
+      },
+      "total_markers": 68,
+      "file_hash": "d6ae67d2"
+    },
+    {
+      "file_path": "production_scan_1779556461.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/production_scan_1779556461.json",
+      "file_size": 77251,
+      "last_modified": "2026-05-23T17:18:27.907413",
+      "markers": {
+        "UNIMPLEMENTED": 13,
+        "production_data": 14,
+        "production_logging": 4,
+        "api.qmoi-enhanced.com": 32,
+        "vercel_error_list": 2,
+        "vercel_deploy": 2
+      },
+      "total_markers": 67,
+      "file_hash": "b4eb5ba2"
+    },
+    {
+      "file_path": "undone.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/undone.txt",
+      "file_size": 49500,
+      "last_modified": "2026-05-23T17:21:21.674406",
+      "markers": {
+        "UNIMPLEMENTED": 14,
+        "production_data": 15,
+        "production_logging": 2,
+        "api.qmoi-enhanced.com": 33,
+        "vercel_error_list": 1,
+        "vercel_deploy": 1
+      },
+      "total_markers": 66,
+      "file_hash": "1d5a7b1f"
+    },
+    {
+      "file_path": "scripts/enhancement_report_20260506_080703.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/enhancement_report_20260506_080703.json",
+      "file_size": 7818769,
+      "last_modified": "2026-05-22T17:04:27.244503",
+      "markers": {
+        "production_logging": 54,
+        "vercel_deploy": 12
+      },
+      "total_markers": 66,
+      "file_hash": "86f734e4"
+    },
+    {
+      "file_path": "scripts/enhancement_report_20260506_043941.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/enhancement_report_20260506_043941.json",
+      "file_size": 8197895,
+      "last_modified": "2026-05-22T17:04:27.147503",
+      "markers": {
+        "production_logging": 54,
+        "vercel_deploy": 12
+      },
+      "total_markers": 66,
+      "file_hash": "f95127d5"
+    },
+    {
+      "file_path": "eslint_report_after_any_fix.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/eslint_report_after_any_fix.json",
+      "file_size": 10704374,
+      "last_modified": "2026-05-22T17:04:22.512503",
+      "markers": {
+        "production_logging": 18,
+        "vercel_config": 38,
+        "vercel_deploy": 7
+      },
+      "total_markers": 63,
+      "file_hash": "513d61fd"
+    },
+    {
+      "file_path": "eslint_report_after_eslintignore.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/eslint_report_after_eslintignore.json",
+      "file_size": 10704488,
+      "last_modified": "2026-05-22T17:04:22.555503",
+      "markers": {
+        "production_logging": 18,
+        "vercel_config": 38,
+        "vercel_deploy": 7
+      },
+      "total_markers": 63,
+      "file_hash": "6a2080a3"
+    },
+    {
+      "file_path": "eslint_report_after_ignore.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/eslint_report_after_ignore.json",
+      "file_size": 10704374,
+      "last_modified": "2026-05-22T17:04:22.642503",
+      "markers": {
+        "production_logging": 18,
+        "vercel_config": 38,
+        "vercel_deploy": 7
+      },
+      "total_markers": 63,
+      "file_hash": "513d61fd"
+    },
+    {
+      "file_path": "production_scan_1779556215.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/production_scan_1779556215.json",
+      "file_size": 76242,
+      "last_modified": "2026-05-23T17:14:21.161424",
+      "markers": {
+        "UNIMPLEMENTED": 11,
+        "production_data": 12,
+        "production_logging": 4,
+        "api.qmoi-enhanced.com": 30,
+        "vercel_error_list": 2,
+        "vercel_deploy": 2
+      },
+      "total_markers": 61,
+      "file_hash": "f5fb8db1"
+    },
+    {
+      "file_path": "production_scan_1779556214.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/production_scan_1779556214.json",
+      "file_size": 76242,
+      "last_modified": "2026-05-23T17:14:21.918424",
+      "markers": {
+        "UNIMPLEMENTED": 11,
+        "production_data": 12,
+        "production_logging": 4,
+        "api.qmoi-enhanced.com": 30,
+        "vercel_error_list": 2,
+        "vercel_deploy": 2
+      },
+      "total_markers": 61,
+      "file_hash": "72f77bc6"
+    },
+    {
+      "file_path": "production_scan_1779555855.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/production_scan_1779555855.json",
+      "file_size": 840200,
+      "last_modified": "2026-05-23T17:08:22.045439",
+      "markers": {
+        "UNIMPLEMENTED": 9,
+        "production_data": 10,
+        "production_logging": 8,
+        "api.qmoi-enhanced.com": 28,
+        "vercel_error_list": 2,
+        "vercel_deploy": 2
+      },
+      "total_markers": 59,
+      "file_hash": "67321fc8"
+    },
+    {
+      "file_path": "production_scan_1779555694.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/production_scan_1779555694.json",
+      "file_size": 840090,
+      "last_modified": "2026-05-23T17:04:15.977450",
+      "markers": {
+        "UNIMPLEMENTED": 8,
+        "production_data": 9,
+        "production_logging": 8,
+        "api.qmoi-enhanced.com": 27,
+        "vercel_error_list": 2,
+        "vercel_deploy": 2
+      },
+      "total_markers": 56,
+      "file_hash": "4263d5b8"
+    },
+    {
+      "file_path": "production_scan_1779556030.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/production_scan_1779556030.json",
+      "file_size": 75236,
+      "last_modified": "2026-05-23T17:10:14.829435",
+      "markers": {
+        "UNIMPLEMENTED": 9,
+        "production_data": 10,
+        "production_logging": 4,
+        "api.qmoi-enhanced.com": 28,
+        "vercel_error_list": 2,
+        "vercel_deploy": 2
+      },
+      "total_markers": 55,
+      "file_hash": "f7e3933f"
+    },
+    {
+      "file_path": "non_production_implementations_report.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/non_production_implementations_report.json",
+      "file_size": 4720583,
+      "last_modified": "2026-05-22T17:04:24.659503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 18,
+        "PRODUCTION_FIXED": 2,
+        "PRODUCTION_READY_TAG": 26,
+        "vercel_deploy": 8
+      },
+      "total_markers": 54,
+      "file_hash": "8017beb3"
+    },
+    {
+      "file_path": "ROOT_production_STATUS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/ROOT_production_STATUS.md",
+      "file_size": 1457610,
+      "last_modified": "2026-05-22T17:04:21.651503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 21,
+        "PRODUCTION_READY_TAG": 25,
+        "vercel_deploy": 6
+      },
+      "total_markers": 52,
+      "file_hash": "017351c4"
+    },
+    {
+      "file_path": "production_scan_1778236884.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/production_scan_1778236884.json",
+      "file_size": 1238938,
+      "last_modified": "2026-05-22T17:04:25.645503",
+      "markers": {
+        "UNIMPLEMENTED": 5,
+        "production_data": 5,
+        "production_logging": 6,
+        "api.qmoi-enhanced.com": 26,
+        "vercel_error_list": 2,
+        "vercel_config": 4,
+        "vercel_deploy": 2
+      },
+      "total_markers": 50,
+      "file_hash": "745823d1"
+    },
+    {
+      "file_path": "production_scan_1779555539.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/production_scan_1779555539.json",
+      "file_size": 839493,
+      "last_modified": "2026-05-23T17:01:34.851457",
+      "markers": {
+        "UNIMPLEMENTED": 6,
+        "production_data": 7,
+        "production_logging": 8,
+        "api.qmoi-enhanced.com": 25,
+        "vercel_error_list": 2,
+        "vercel_deploy": 2
+      },
+      "total_markers": 50,
+      "file_hash": "0bfe459f"
+    },
+    {
+      "file_path": "documentation_audit_details.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/documentation_audit_details.json",
+      "file_size": 1218597,
+      "last_modified": "2026-05-22T17:04:22.337503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 18,
+        "PRODUCTION_FIXED": 4,
+        "PRODUCTION_READY_TAG": 24,
+        "vercel_config": 1
+      },
+      "total_markers": 47,
+      "file_hash": "bd85249c"
+    },
+    {
+      "file_path": "production_scan_1778236295.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/production_scan_1778236295.json",
+      "file_size": 1237992,
+      "last_modified": "2026-05-22T17:04:25.641503",
+      "markers": {
+        "UNIMPLEMENTED": 2,
+        "production_data": 2,
+        "production_logging": 6,
+        "api.qmoi-enhanced.com": 23,
+        "vercel_error_list": 2,
+        "vercel_config": 4,
+        "vercel_deploy": 2
+      },
+      "total_markers": 41,
+      "file_hash": "69d7173e"
+    },
+    {
+      "file_path": "instructionmanifest.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/instructionmanifest.txt",
+      "file_size": 15771281,
+      "last_modified": "2026-05-22T17:04:23.218503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 1,
+        "PRODUCTION_FIXED": 2,
+        "PRODUCTION_READY_TAG": 1,
+        "vercel_config": 36
+      },
+      "total_markers": 40,
+      "file_hash": "638c04e9"
+    },
+    {
+      "file_path": "ALLHEALTHS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/ALLHEALTHS.md",
+      "file_size": 310582,
+      "last_modified": "2026-05-22T17:04:21.477503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 16,
+        "PRODUCTION_READY_TAG": 20,
+        "vercel_config": 2,
+        "vercel_deploy": 2
+      },
+      "total_markers": 40,
+      "file_hash": "cea62fae"
+    },
+    {
+      "file_path": "all_md_files_current.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/all_md_files_current.txt",
+      "file_size": 195956,
+      "last_modified": "2026-05-22T17:04:21.763503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 11,
+        "PRODUCTION_READY_TAG": 15
+      },
+      "total_markers": 26,
+      "file_hash": "4db02fd0"
+    },
+    {
+      "file_path": "all_md_files.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/all_md_files.txt",
+      "file_size": 185114,
+      "last_modified": "2026-05-22T17:04:21.761503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 11,
+        "PRODUCTION_READY_TAG": 15
+      },
+      "total_markers": 26,
+      "file_hash": "8b1496c5"
+    },
+    {
+      "file_path": "API.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/API.md",
+      "file_size": 307684,
+      "last_modified": "2026-05-23T16:57:17.063468",
+      "markers": {
+        "PRODUCTION_READY": 1,
+        "PRODUCTION_COMPLETE": 11,
+        "production_logging": 3,
+        "PRODUCTION_READY_TAG": 11
+      },
+      "total_markers": 26,
+      "file_hash": "5c1d2b2a"
+    },
+    {
+      "file_path": "ALLAUTO.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/ALLAUTO.md",
+      "file_size": 23570,
+      "last_modified": "2026-05-22T17:04:21.474503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 12,
+        "PRODUCTION_READY_TAG": 12
+      },
+      "total_markers": 24,
+      "file_hash": "de5ec13e"
+    },
+    {
+      "file_path": "quality_gate_report.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/quality_gate_report.json",
+      "file_size": 1005722,
+      "last_modified": "2026-05-22T17:04:26.857503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 10,
+        "PRODUCTION_READY_TAG": 14
+      },
+      "total_markers": 24,
+      "file_hash": "c2f7cb45"
+    },
+    {
+      "file_path": "vercelerrorlist.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/vercelerrorlist.md",
+      "file_size": 20152,
+      "last_modified": "2026-05-22T17:04:27.580503",
+      "markers": {
+        "vercel_config": 19,
+        "vercel_deploy": 5
+      },
+      "total_markers": 24,
+      "file_hash": "b2ab9a50"
+    },
+    {
+      "file_path": "nonprod_files_list.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/nonprod_files_list.txt",
+      "file_size": 129587,
+      "last_modified": "2026-05-22T17:04:24.660503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 10,
+        "PRODUCTION_READY_TAG": 14
+      },
+      "total_markers": 24,
+      "file_hash": "ae9f5c42"
+    },
+    {
+      "file_path": "data/production_readiness_scan.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/data/production_readiness_scan.json",
+      "file_size": 647545,
+      "last_modified": "2026-05-22T17:04:22.251503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 8,
+        "PRODUCTION_READY_TAG": 10,
+        "vercel_deploy": 5
+      },
+      "total_markers": 23,
+      "file_hash": "f97e0d68"
+    },
+    {
+      "file_path": "allmdrefs_sorted.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/allmdrefs_sorted.txt",
+      "file_size": 475151,
+      "last_modified": "2026-05-22T17:04:21.766503",
+      "markers": {
+        "production_logging": 21,
+        "vercel_error_list": 1
+      },
+      "total_markers": 22,
+      "file_hash": "8fdacd4a"
+    },
+    {
+      "file_path": "missing_md_refs.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/missing_md_refs.txt",
+      "file_size": 492147,
+      "last_modified": "2026-05-22T17:04:23.443503",
+      "markers": {
+        "production_logging": 21,
+        "vercel_error_list": 1
+      },
+      "total_markers": 22,
+      "file_hash": "6ed8d80d"
+    },
+    {
+      "file_path": "all_md_files_list.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/all_md_files_list.txt",
+      "file_size": 492147,
+      "last_modified": "2026-05-22T17:04:21.765503",
+      "markers": {
+        "production_logging": 21,
+        "vercel_error_list": 1
+      },
+      "total_markers": 22,
+      "file_hash": "6ed8d80d"
+    },
+    {
+      "file_path": "eslint_src_fix.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/eslint_src_fix.json",
+      "file_size": 646537,
+      "last_modified": "2026-05-22T17:04:22.676503",
+      "markers": {
+        "production_logging": 20,
+        "vercel_deploy": 1
+      },
+      "total_markers": 21,
+      "file_hash": "0d9b4b65"
+    },
+    {
+      "file_path": "autonomous_production_migration_engine.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/autonomous_production_migration_engine.py",
+      "file_size": 42450,
+      "last_modified": "2026-05-22T17:04:22.062503",
+      "markers": {
+        "PRODUCTION_READY": 1,
+        "PRODUCTION_COMPLETE": 1,
+        "FINALIZED": 1,
+        "PRODUCTION_FIXED": 1,
+        "production_logging": 2,
+        "PRODUCTION_READY_TAG": 8,
+        "api.qmoi-enhanced.com": 7
+      },
+      "total_markers": 21,
+      "file_hash": "d0f45916"
+    },
+    {
+      "file_path": "eslint_src_after_fix.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/eslint_src_after_fix.json",
+      "file_size": 646700,
+      "last_modified": "2026-05-22T17:04:22.674503",
+      "markers": {
+        "production_logging": 20,
+        "vercel_deploy": 1
+      },
+      "total_markers": 21,
+      "file_hash": "83304cb2"
+    },
+    {
+      "file_path": "tools/dns_docs_inventory.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/dns_docs_inventory.json",
+      "file_size": 7366163,
+      "last_modified": "2026-05-22T17:04:27.479503",
+      "markers": {
+        "PRODUCTION_FIXED": 12,
+        "vercel_config": 6,
+        "vercel_deploy": 1
+      },
+      "total_markers": 19,
+      "file_hash": "3e81b64e"
+    },
+    {
+      "file_path": "undoneold.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/undoneold.txt",
+      "file_size": 518693,
+      "last_modified": "2026-05-22T17:04:27.531503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 4,
+        "production_logging": 8,
+        "PRODUCTION_READY_TAG": 5,
+        "vercel_deploy": 1
+      },
+      "total_markers": 18,
+      "file_hash": "75b27f6d"
+    },
+    {
+      "file_path": "eslint_report_after_fix2.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/eslint_report_after_fix2.json",
+      "file_size": 984028,
+      "last_modified": "2026-05-22T17:04:22.599503",
+      "markers": {
+        "production_logging": 16,
+        "vercel_config": 1
+      },
+      "total_markers": 17,
+      "file_hash": "d2e2fdea"
+    },
+    {
+      "file_path": "eslint_report_src_app.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/eslint_report_src_app.json",
+      "file_size": 984028,
+      "last_modified": "2026-05-22T17:04:22.647503",
+      "markers": {
+        "production_logging": 16,
+        "vercel_config": 1
+      },
+      "total_markers": 17,
+      "file_hash": "d2e2fdea"
+    },
+    {
+      "file_path": "current_nonprod_scan.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/current_nonprod_scan.txt",
+      "file_size": 127723,
+      "last_modified": "2026-05-22T17:04:22.183503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 7,
+        "PRODUCTION_READY_TAG": 10
+      },
+      "total_markers": 17,
+      "file_hash": "6a1cb322"
+    },
+    {
+      "file_path": "eslint_report_after_fix2_post.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/eslint_report_after_fix2_post.json",
+      "file_size": 984028,
+      "last_modified": "2026-05-22T17:04:22.602503",
+      "markers": {
+        "production_logging": 16,
+        "vercel_config": 1
+      },
+      "total_markers": 17,
+      "file_hash": "d2e2fdea"
+    },
+    {
+      "file_path": "eslint_report_src.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/eslint_report_src.json",
+      "file_size": 370935,
+      "last_modified": "2026-05-22T17:04:22.643503",
+      "markers": {
+        "production_logging": 16
+      },
+      "total_markers": 16,
+      "file_hash": "240d1452"
+    },
+    {
+      "file_path": "docs/ui_validation_report.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/docs/ui_validation_report.json",
+      "file_size": 414003,
+      "last_modified": "2026-05-22T17:04:22.327503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 6,
+        "PRODUCTION_READY_TAG": 8
+      },
+      "total_markers": 14,
+      "file_hash": "70842728"
+    },
+    {
+      "file_path": "FINAL_PRODUCTION_READINESS_REPORT.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/FINAL_PRODUCTION_READINESS_REPORT.md",
+      "file_size": 40700,
+      "last_modified": "2026-05-22T17:27:28.622489",
+      "markers": {
+        "production_logging": 5,
+        "PRODUCTION_READY_TAG": 4,
+        "api.qmoi-enhanced.com": 3
+      },
+      "total_markers": 12,
+      "file_hash": "0fd2f5e6"
+    },
+    {
+      "file_path": "data/nonprod_production_report.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/data/nonprod_production_report.json",
+      "file_size": 340174,
+      "last_modified": "2026-05-22T17:04:22.248503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 6,
+        "PRODUCTION_READY_TAG": 6
+      },
+      "total_markers": 12,
+      "file_hash": "f7ba3236"
+    },
+    {
+      "file_path": "qvillage/undone.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/qvillage/undone.txt",
+      "file_size": 2133,
+      "last_modified": "2026-05-22T17:04:26.862503",
+      "markers": {
+        "FUNCTIONAL": 1,
+        "production_logging": 1,
+        "PRODUCTION_READY_TAG": 9
+      },
+      "total_markers": 11,
+      "file_hash": "fdc6a276"
+    },
+    {
+      "file_path": "production_readiness_audit_report.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/production_readiness_audit_report.json",
+      "file_size": 9605446,
+      "last_modified": "2026-05-22T17:04:25.629503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 4,
+        "PRODUCTION_READY_TAG": 5,
+        "vercel_deploy": 1
+      },
+      "total_markers": 10,
+      "file_hash": "740972f1"
+    },
+    {
+      "file_path": "PRODUCTION_READINESS_CERTIFICATION.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTION_READINESS_CERTIFICATION.md",
+      "file_size": 8630,
+      "last_modified": "2026-05-22T17:04:21.582503",
+      "markers": {
+        "production_logging": 3,
+        "PRODUCTION_READY_TAG": 5,
+        "api.qmoi-enhanced.com": 1
+      },
+      "total_markers": 9,
+      "file_hash": "dd24451c"
+    },
+    {
+      "file_path": "AUTODEV_ENHANCEMENT_DELIVERY.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/AUTODEV_ENHANCEMENT_DELIVERY.md",
+      "file_size": 14025,
+      "last_modified": "2026-05-22T17:04:21.492503",
+      "markers": {
+        "production_logging": 1,
+        "PRODUCTION_READY_TAG": 8
+      },
+      "total_markers": 9,
+      "file_hash": "8ff2d91c"
+    },
+    {
+      "file_path": "DEPLOYMENT_VERIFICATION.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/DEPLOYMENT_VERIFICATION.md",
+      "file_size": 12570,
+      "last_modified": "2026-05-22T17:04:21.512503",
+      "markers": {
+        "vercel_config": 7,
+        "vercel_deploy": 2
+      },
+      "total_markers": 9,
+      "file_hash": "10478566"
+    },
+    {
+      "file_path": "docs/nonproduction_comprehensive_report.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/docs/nonproduction_comprehensive_report.json",
+      "file_size": 5021980,
+      "last_modified": "2026-05-22T17:04:22.302503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 1,
+        "PRODUCTION_READY_TAG": 8
+      },
+      "total_markers": 9,
+      "file_hash": "507b2d8d"
+    },
+    {
+      "file_path": "verify_production_readiness.sh",
+      "absolute_path": "/workspaces/qmoi-enhanced/verify_production_readiness.sh",
+      "file_size": 9273,
+      "last_modified": "2026-05-22T17:04:27.580503",
+      "markers": {
+        "production_logging": 3,
+        "PRODUCTION_READY_TAG": 1,
+        "vercel_error_list": 1,
+        "vercel_config": 3
+      },
+      "total_markers": 8,
+      "file_hash": "99cf3a29"
+    },
+    {
+      "file_path": "deploy_production.sh",
+      "absolute_path": "/workspaces/qmoi-enhanced/deploy_production.sh",
+      "file_size": 7431,
+      "last_modified": "2026-05-22T17:04:22.255503",
+      "markers": {
+        "api.qmoi-enhanced.com": 8
+      },
+      "total_markers": 8,
+      "file_hash": "8118e987"
+    },
+    {
+      "file_path": "scripts/enhancement_report_20260506_092406.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/enhancement_report_20260506_092406.json",
+      "file_size": 1174123,
+      "last_modified": "2026-05-22T17:04:27.260503",
+      "markers": {
+        "production_logging": 6,
+        "vercel_deploy": 2
+      },
+      "total_markers": 8,
+      "file_hash": "12fdda0e"
+    },
+    {
+      "file_path": "scripts/enhancement_report_20260506_081427.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/enhancement_report_20260506_081427.json",
+      "file_size": 1174123,
+      "last_modified": "2026-05-22T17:04:27.255503",
+      "markers": {
+        "production_logging": 6,
+        "vercel_deploy": 2
+      },
+      "total_markers": 8,
+      "file_hash": "f55a218e"
+    },
+    {
+      "file_path": "scripts/enhancement_report_20260506_081138.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/enhancement_report_20260506_081138.json",
+      "file_size": 1242105,
+      "last_modified": "2026-05-22T17:04:27.250503",
+      "markers": {
+        "production_logging": 6,
+        "vercel_deploy": 2
+      },
+      "total_markers": 8,
+      "file_hash": "809ae596"
+    },
+    {
+      "file_path": "scripts/deployment-error-handler.js",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/deployment-error-handler.js",
+      "file_size": 7775,
+      "last_modified": "2026-05-22T17:04:27.092503",
+      "markers": {
+        "vercel_config": 8
+      },
+      "total_markers": 8,
+      "file_hash": "f43194f8"
+    },
+    {
+      "file_path": "thorough_production_scanner.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/thorough_production_scanner.py",
+      "file_size": 31425,
+      "last_modified": "2026-05-23T17:07:15.358442",
+      "markers": {
+        "PRODUCTION_READY": 1,
+        "PRODUCTION_COMPLETE": 1,
+        "UNIMPLEMENTED": 1,
+        "production_data": 1,
+        "PRODUCTION_FIXED": 1,
+        "PRODUCTION_READY_TAG": 1,
+        "api.qmoi-enhanced.com": 1
+      },
+      "total_markers": 7,
+      "file_hash": "21d3dd7c"
+    },
+    {
+      "file_path": "AUTODEV_PRODUCTION_READINESS_ENHANCEMENT_GUIDE.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/AUTODEV_PRODUCTION_READINESS_ENHANCEMENT_GUIDE.md",
+      "file_size": 13639,
+      "last_modified": "2026-05-22T17:04:21.492503",
+      "markers": {
+        "production_logging": 1,
+        "PRODUCTION_READY_TAG": 6
+      },
+      "total_markers": 7,
+      "file_hash": "3830fb88"
+    },
+    {
+      "file_path": "nginx.production.conf",
+      "absolute_path": "/workspaces/qmoi-enhanced/nginx.production.conf",
+      "file_size": 5325,
+      "last_modified": "2026-05-22T17:04:24.644503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 1,
+        "api.qmoi-enhanced.com": 5
+      },
+      "total_markers": 6,
+      "file_hash": "2ed4fd7f"
+    },
+    {
+      "file_path": "VERCEL_AUTO_DEPLOY_GUIDE.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/VERCEL_AUTO_DEPLOY_GUIDE.md",
+      "file_size": 20174,
+      "last_modified": "2026-05-22T17:04:21.666503",
+      "markers": {
+        "vercel_config": 4,
+        "vercel_deploy": 2
+      },
+      "total_markers": 6,
+      "file_hash": "106684e9"
+    },
+    {
+      "file_path": "scripts/auto-fix-deployment.js",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/auto-fix-deployment.js",
+      "file_size": 11673,
+      "last_modified": "2026-05-22T17:04:27.081503",
+      "markers": {
+        "vercel_config": 6
+      },
+      "total_markers": 6,
+      "file_hash": "a88f529a"
+    },
+    {
+      "file_path": "lib/security_check.ts",
+      "absolute_path": "/workspaces/qmoi-enhanced/lib/security_check.ts",
+      "file_size": 3314,
+      "last_modified": "2026-05-22T17:04:23.229503",
+      "markers": {
+        "vercel_config": 6
+      },
+      "total_markers": 6,
+      "file_hash": "297b217d"
+    },
+    {
+      "file_path": "FINAL_DEPLOYMENT_REPORT.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/FINAL_DEPLOYMENT_REPORT.md",
+      "file_size": 8202,
+      "last_modified": "2026-05-22T17:04:21.524503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 3,
+        "api.qmoi-enhanced.com": 2
+      },
+      "total_markers": 5,
+      "file_hash": "1a00141d"
+    },
+    {
+      "file_path": "PRODUCTION_COMPLETION_SUMMARY_2026-04-23.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTION_COMPLETION_SUMMARY_2026-04-23.md",
+      "file_size": 7769,
+      "last_modified": "2026-05-22T17:04:21.579503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 5
+      },
+      "total_markers": 5,
+      "file_hash": "58405aa2"
+    },
+    {
+      "file_path": "PLATFORMS_UI_PRODUCTION_GUIDE.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PLATFORMS_UI_PRODUCTION_GUIDE.md",
+      "file_size": 8553,
+      "last_modified": "2026-05-22T17:04:21.577503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 5
+      },
+      "total_markers": 5,
+      "file_hash": "ed70226a"
+    },
+    {
+      "file_path": "ultimate_production_fix_report.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/ultimate_production_fix_report.json",
+      "file_size": 2907466,
+      "last_modified": "2026-05-22T17:04:27.524503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 5
+      },
+      "total_markers": 5,
+      "file_hash": "10060529"
+    },
+    {
+      "file_path": "production_launch_report.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/production_launch_report.json",
+      "file_size": 1651,
+      "last_modified": "2026-05-22T17:04:25.603503",
+      "markers": {
+        "api.qmoi-enhanced.com": 5
+      },
+      "total_markers": 5,
+      "file_hash": "1f578319"
+    },
+    {
+      "file_path": "local_production_validation.sh",
+      "absolute_path": "/workspaces/qmoi-enhanced/local_production_validation.sh",
+      "file_size": 6742,
+      "last_modified": "2026-05-22T17:04:23.235503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 2,
+        "vercel_config": 3
+      },
+      "total_markers": 5,
+      "file_hash": "ab8c98e8"
+    },
+    {
+      "file_path": "AUTODEV_SYNTAX_RECOVERY_REPORT.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/AUTODEV_SYNTAX_RECOVERY_REPORT.md",
+      "file_size": 7479,
+      "last_modified": "2026-05-22T17:04:21.492503",
+      "markers": {
+        "FUNCTIONAL": 4,
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 5,
+      "file_hash": "e0553ff7"
+    },
+    {
+      "file_path": "QMOIAIUI.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOIAIUI.md",
+      "file_size": 78113,
+      "last_modified": "2026-05-23T16:57:15.790468",
+      "markers": {
+        "COMPLETED": 1,
+        "production_logging": 1,
+        "PRODUCTION_READY_TAG": 3
+      },
+      "total_markers": 5,
+      "file_hash": "caa46e0d"
+    },
+    {
+      "file_path": "scripts/auto-vercel-fix.js",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/auto-vercel-fix.js",
+      "file_size": 9213,
+      "last_modified": "2026-05-22T17:04:27.082503",
+      "markers": {
+        "vercel_config": 5
+      },
+      "total_markers": 5,
+      "file_hash": "97f85b46"
+    },
+    {
+      "file_path": "scripts/undone.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/undone.txt",
+      "file_size": 2190,
+      "last_modified": "2026-05-22T17:04:27.326503",
+      "markers": {
+        "FUNCTIONAL": 1,
+        "production_logging": 1,
+        "PRODUCTION_READY_TAG": 3
+      },
+      "total_markers": 5,
+      "file_hash": "2e263afd"
+    },
+    {
+      "file_path": "app/dev/page.tsx",
+      "absolute_path": "/workspaces/qmoi-enhanced/app/dev/page.tsx",
+      "file_size": 6011,
+      "last_modified": "2026-05-23T17:38:44.973361",
+      "markers": {
+        "production_logging": 5
+      },
+      "total_markers": 5,
+      "file_hash": "d0185cab"
+    },
+    {
+      "file_path": "PRODUCTION_OPERATIONS_GUIDE.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTION_OPERATIONS_GUIDE.md",
+      "file_size": 7145,
+      "last_modified": "2026-05-22T17:04:21.582503",
+      "markers": {
+        "production_logging": 1,
+        "api.qmoi-enhanced.com": 3
+      },
+      "total_markers": 4,
+      "file_hash": "8f33e79e"
+    },
+    {
+      "file_path": "DEPLOYMENT_HEALTH_CHECKLIST.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/DEPLOYMENT_HEALTH_CHECKLIST.md",
+      "file_size": 16309,
+      "last_modified": "2026-05-22T17:04:21.510503",
+      "markers": {
+        "vercel_config": 3,
+        "vercel_deploy": 1
+      },
+      "total_markers": 4,
+      "file_hash": "2d2f57e3"
+    },
+    {
+      "file_path": "MONITORING_AND_HEALTH_CHECKS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/MONITORING_AND_HEALTH_CHECKS.md",
+      "file_size": 13694,
+      "last_modified": "2026-05-22T17:04:21.542503",
+      "markers": {
+        "COMPLETED": 1,
+        "production_logging": 3
+      },
+      "total_markers": 4,
+      "file_hash": "d3ebc2e1"
+    },
+    {
+      "file_path": "compulsories_nonproduction_tasks.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/compulsories_nonproduction_tasks.md",
+      "file_size": 32181,
+      "last_modified": "2026-05-22T17:04:22.180503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 2,
+        "PRODUCTION_READY_TAG": 2
+      },
+      "total_markers": 4,
+      "file_hash": "c3b33e27"
+    },
+    {
+      "file_path": "PRODUCTION_MIGRATION_SUMMARY.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTION_MIGRATION_SUMMARY.md",
+      "file_size": 11684,
+      "last_modified": "2026-05-22T17:04:21.582503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 4
+      },
+      "total_markers": 4,
+      "file_hash": "f5c8db4b"
+    },
+    {
+      "file_path": "TABLE_OF_CONTENTS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/TABLE_OF_CONTENTS.md",
+      "file_size": 34816,
+      "last_modified": "2026-05-22T17:04:21.658503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 2,
+        "PRODUCTION_READY_TAG": 2
+      },
+      "total_markers": 4,
+      "file_hash": "3e5a7c74"
+    },
+    {
+      "file_path": "VERCEL_DEPLOYMENT_READY.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/VERCEL_DEPLOYMENT_READY.md",
+      "file_size": 13397,
+      "last_modified": "2026-05-22T17:04:21.667503",
+      "markers": {
+        "vercel_config": 1,
+        "vercel_deploy": 3
+      },
+      "total_markers": 4,
+      "file_hash": "d2c5e7a5"
+    },
+    {
+      "file_path": "ENDPOINTS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/ENDPOINTS.md",
+      "file_size": 41109,
+      "last_modified": "2026-05-23T16:57:17.154468",
+      "markers": {
+        "production_logging": 4
+      },
+      "total_markers": 4,
+      "file_hash": "2600d5d7"
+    },
+    {
+      "file_path": "DEPLOYMENT_COMPLETION_CHECKLIST.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/DEPLOYMENT_COMPLETION_CHECKLIST.txt",
+      "file_size": 18270,
+      "last_modified": "2026-05-22T17:04:21.509503",
+      "markers": {
+        "FUNCTIONAL": 1,
+        "PRODUCTION_READY_TAG": 1,
+        "api.qmoi-enhanced.com": 2
+      },
+      "total_markers": 4,
+      "file_hash": "fe0ae444"
+    },
+    {
+      "file_path": "docs/link-validation-report.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/docs/link-validation-report.json",
+      "file_size": 3923434,
+      "last_modified": "2026-05-22T17:04:22.284503",
+      "markers": {
+        "PRODUCTION_FIXED": 4
+      },
+      "total_markers": 4,
+      "file_hash": "b79fe8e9"
+    },
+    {
+      "file_path": "NONPROD_REPORT_HEAD.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/NONPROD_REPORT_HEAD.txt",
+      "file_size": 9309725,
+      "last_modified": "2026-05-22T17:04:21.573503",
+      "markers": {
+        "PRODUCTION_FIXED": 3
+      },
+      "total_markers": 3,
+      "file_hash": "2556a402"
+    },
+    {
+      "file_path": "allrefs.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/allrefs.txt",
+      "file_size": 82100,
+      "last_modified": "2026-05-22T17:04:21.766503",
+      "markers": {
+        "PRODUCTION_COMPLETE": 1,
+        "PRODUCTION_READY_TAG": 1,
+        "vercel_deploy": 1
+      },
+      "total_markers": 3,
+      "file_hash": "c8ca96cd"
+    },
+    {
+      "file_path": "resumefromhere.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/resumefromhere.txt",
+      "file_size": 985,
+      "last_modified": "2026-05-23T17:21:21.679406",
+      "markers": {
+        "UNIMPLEMENTED": 1,
+        "production_data": 1,
+        "api.qmoi-enhanced.com": 1
+      },
+      "total_markers": 3,
+      "file_hash": "fe82ed9f"
+    },
+    {
+      "file_path": "DEPLOYMENT_GATEWAY.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/DEPLOYMENT_GATEWAY.md",
+      "file_size": 17647,
+      "last_modified": "2026-05-22T17:04:21.510503",
+      "markers": {
+        "vercel_config": 3
+      },
+      "total_markers": 3,
+      "file_hash": "acb3b6a9"
+    },
+    {
+      "file_path": "INSTANCES.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/INSTANCES.md",
+      "file_size": 2009,
+      "last_modified": "2026-05-23T17:21:21.679406",
+      "markers": {
+        "UNIMPLEMENTED": 1,
+        "production_data": 1,
+        "api.qmoi-enhanced.com": 1
+      },
+      "total_markers": 3,
+      "file_hash": "419213c7"
+    },
+    {
+      "file_path": "undo_needed_paths.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/undo_needed_paths.txt",
+      "file_size": 407315,
+      "last_modified": "2026-05-22T17:04:27.527503",
+      "markers": {
+        "vercel_config": 2,
+        "vercel_deploy": 1
+      },
+      "total_markers": 3,
+      "file_hash": "9d37584e"
+    },
+    {
+      "file_path": "FINAL_PRODUCTION_REPORT_2026-04-23.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/FINAL_PRODUCTION_REPORT_2026-04-23.md",
+      "file_size": 8212,
+      "last_modified": "2026-05-22T17:04:21.525503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 3
+      },
+      "total_markers": 3,
+      "file_hash": "b38ad96d"
+    },
+    {
+      "file_path": "PRODUCTION_COMPLETION_REPORT_FINAL.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTION_COMPLETION_REPORT_FINAL.md",
+      "file_size": 10543,
+      "last_modified": "2026-05-22T17:04:21.579503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 3
+      },
+      "total_markers": 3,
+      "file_hash": "dec9189f"
+    },
+    {
+      "file_path": "ALLTESTSAUTOTESTS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/ALLTESTSAUTOTESTS.md",
+      "file_size": 14858,
+      "last_modified": "2026-05-22T17:04:21.479503",
+      "markers": {
+        "production_logging": 3
+      },
+      "total_markers": 3,
+      "file_hash": "c56bfed4"
+    },
+    {
+      "file_path": "PRODUCTION_STATUS_2026-05-02.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTION_STATUS_2026-05-02.md",
+      "file_size": 5979,
+      "last_modified": "2026-05-22T17:04:21.585503",
+      "markers": {
+        "FUNCTIONAL": 1,
+        "PRODUCTION_READY_TAG": 1,
+        "api.qmoi-enhanced.com": 1
+      },
+      "total_markers": 3,
+      "file_hash": "9e506876"
+    },
+    {
+      "file_path": "AUTODEV.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/AUTODEV.md",
+      "file_size": 27949,
+      "last_modified": "2026-05-22T17:04:21.492503",
+      "markers": {
+        "production_logging": 2,
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 3,
+      "file_hash": "7e400c01"
+    },
+    {
+      "file_path": "whatsapp-qmoi-bot/index.js",
+      "absolute_path": "/workspaces/qmoi-enhanced/whatsapp-qmoi-bot/index.js",
+      "file_size": 8255,
+      "last_modified": "2026-05-22T17:04:27.582503",
+      "markers": {
+        "production_logging": 3
+      },
+      "total_markers": 3,
+      "file_hash": "792a9f3c"
+    },
+    {
+      "file_path": "whatsapp-qmoi-bot/services/consciousness.js",
+      "absolute_path": "/workspaces/qmoi-enhanced/whatsapp-qmoi-bot/services/consciousness.js",
+      "file_size": 9698,
+      "last_modified": "2026-05-22T17:04:27.583503",
+      "markers": {
+        "production_logging": 3
+      },
+      "total_markers": 3,
+      "file_hash": "056dc567"
+    },
+    {
+      "file_path": "docs/features/features_guide.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/docs/features/features_guide.md",
+      "file_size": 16454,
+      "last_modified": "2026-05-22T17:04:22.271503",
+      "markers": {
+        "production_logging": 3
+      },
+      "total_markers": 3,
+      "file_hash": "2a5196c8"
+    },
+    {
+      "file_path": "docs/screens/master-email-configuration-screen.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/docs/screens/master-email-configuration-screen.md",
+      "file_size": 6876,
+      "last_modified": "2026-05-22T17:04:22.324503",
+      "markers": {
+        "NOT_IMPLEMENTED": 3
+      },
+      "total_markers": 3,
+      "file_hash": "0f50d97d"
+    },
+    {
+      "file_path": "docs/screens/developer-utilities-screen.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/docs/screens/developer-utilities-screen.md",
+      "file_size": 4004,
+      "last_modified": "2026-05-22T17:04:22.324503",
+      "markers": {
+        "production_logging": 3
+      },
+      "total_markers": 3,
+      "file_hash": "0222752b"
+    },
+    {
+      "file_path": "pwa_apps/q-alpha/index.html",
+      "absolute_path": "/workspaces/qmoi-enhanced/pwa_apps/q-alpha/index.html",
+      "file_size": 19941,
+      "last_modified": "2026-05-22T17:04:25.652503",
+      "markers": {
+        "NOT_IMPLEMENTED": 3
+      },
+      "total_markers": 3,
+      "file_hash": "818ed04a"
+    },
+    {
+      "file_path": "scripts/auto-deploy-and-fix.sh",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/auto-deploy-and-fix.sh",
+      "file_size": 12472,
+      "last_modified": "2026-05-22T17:04:27.081503",
+      "markers": {
+        "vercel_config": 3
+      },
+      "total_markers": 3,
+      "file_hash": "088573d5"
+    },
+    {
+      "file_path": "scripts/enhanced-error-fix.js",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/enhanced-error-fix.js",
+      "file_size": 11989,
+      "last_modified": "2026-05-22T17:04:27.096503",
+      "markers": {
+        "vercel_config": 3
+      },
+      "total_markers": 3,
+      "file_hash": "d03d61cb"
+    },
+    {
+      "file_path": "scripts/verify-production.sh",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/verify-production.sh",
+      "file_size": 5780,
+      "last_modified": "2026-05-22T17:04:27.334503",
+      "markers": {
+        "vercel_config": 3
+      },
+      "total_markers": 3,
+      "file_hash": "503475cc"
+    },
+    {
+      "file_path": "scripts/test_qmoi_ai.js",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/test_qmoi_ai.js",
+      "file_size": 1818,
+      "last_modified": "2026-05-22T17:04:27.323503",
+      "markers": {
+        "production_logging": 3
+      },
+      "total_markers": 3,
+      "file_hash": "6ad8b004"
+    },
+    {
+      "file_path": "src/lib/logger.ts",
+      "absolute_path": "/workspaces/qmoi-enhanced/src/lib/logger.ts",
+      "file_size": 3100,
+      "last_modified": "2026-05-23T17:32:46.357377",
+      "markers": {
+        "production_logging": 3
+      },
+      "total_markers": 3,
+      "file_hash": "e7928f43"
+    },
+    {
+      "file_path": "app/api/debug/users/route.ts",
+      "absolute_path": "/workspaces/qmoi-enhanced/app/api/debug/users/route.ts",
+      "file_size": 710,
+      "last_modified": "2026-05-22T17:04:21.775503",
+      "markers": {
+        "production_logging": 3
+      },
+      "total_markers": 3,
+      "file_hash": "8f5e5db7"
+    },
+    {
+      "file_path": "components/QMediaPlayer.tsx",
+      "absolute_path": "/workspaces/qmoi-enhanced/components/QMediaPlayer.tsx",
+      "file_size": 83236,
+      "last_modified": "2026-05-22T17:04:22.113503",
+      "markers": {
+        "PRODUCTION_READY": 3
+      },
+      "total_markers": 3,
+      "file_hash": "173c34d1"
+    },
+    {
+      "file_path": "VERCEL_QMOI_AUTOFEATURES_MASTER.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/VERCEL_QMOI_AUTOFEATURES_MASTER.md",
+      "file_size": 27733,
+      "last_modified": "2026-05-22T17:04:21.667503",
+      "markers": {
+        "vercel_config": 1,
+        "vercel_deploy": 1
+      },
+      "total_markers": 2,
+      "file_hash": "543eebaa"
+    },
+    {
+      "file_path": "COMPLETION_REPORT.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/COMPLETION_REPORT.md",
+      "file_size": 14348,
+      "last_modified": "2026-05-22T17:27:28.620489",
+      "markers": {
+        "production_logging": 1,
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 2,
+      "file_hash": "b59ff78b"
+    },
+    {
+      "file_path": "resumetodos.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/resumetodos.txt",
+      "file_size": 6259,
+      "last_modified": "2026-05-22T17:04:27.072503",
+      "markers": {
+        "vercel_deploy": 2
+      },
+      "total_markers": 2,
+      "file_hash": "625bc381"
+    },
+    {
+      "file_path": "ENHANCEMENT_SUMMARY.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/ENHANCEMENT_SUMMARY.md",
+      "file_size": 11784,
+      "last_modified": "2026-05-22T17:27:28.621489",
+      "markers": {
+        "production_logging": 1,
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 2,
+      "file_hash": "af8959e8"
+    },
+    {
+      "file_path": "qmoi_production_server.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/qmoi_production_server.py",
+      "file_size": 8729,
+      "last_modified": "2026-05-22T17:04:26.852503",
+      "markers": {
+        "api.qmoi-enhanced.com": 2
+      },
+      "total_markers": 2,
+      "file_hash": "a34b37eb"
+    },
+    {
+      "file_path": "VERCEL_DEPLOYMENT_STATUS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/VERCEL_DEPLOYMENT_STATUS.md",
+      "file_size": 10192,
+      "last_modified": "2026-05-22T17:04:21.667503",
+      "markers": {
+        "vercel_config": 2
+      },
+      "total_markers": 2,
+      "file_hash": "6b3966db"
+    },
+    {
+      "file_path": "qmoiexe.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/qmoiexe.py",
+      "file_size": 2172,
+      "last_modified": "2026-05-22T17:04:26.853503",
+      "markers": {
+        "production_logging": 2
+      },
+      "total_markers": 2,
+      "file_hash": "077fc77e"
+    },
+    {
+      "file_path": "ALLMDFILESREFS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/ALLMDFILESREFS.md",
+      "file_size": 32484,
+      "last_modified": "2026-05-23T17:20:15.461409",
+      "markers": {
+        "production_logging": 1,
+        "vercel_error_list": 1
+      },
+      "total_markers": 2,
+      "file_hash": "a927effb"
+    },
+    {
+      "file_path": "PRODUCTION_READINESS_REPORT.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTION_READINESS_REPORT.md",
+      "file_size": 10396,
+      "last_modified": "2026-05-22T17:27:28.621489",
+      "markers": {
+        "production_logging": 1,
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 2,
+      "file_hash": "352380ed"
+    },
+    {
+      "file_path": "DEPLOYMENT_SUMMARY.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/DEPLOYMENT_SUMMARY.txt",
+      "file_size": 7331,
+      "last_modified": "2026-05-22T17:04:21.511503",
+      "markers": {
+        "vercel_config": 1,
+        "vercel_deploy": 1
+      },
+      "total_markers": 2,
+      "file_hash": "494bd2f2"
+    },
+    {
+      "file_path": "DEPLOY_TO_VERCEL.sh",
+      "absolute_path": "/workspaces/qmoi-enhanced/DEPLOY_TO_VERCEL.sh",
+      "file_size": 9630,
+      "last_modified": "2026-05-22T17:04:21.512503",
+      "markers": {
+        "vercel_deploy": 2
+      },
+      "total_markers": 2,
+      "file_hash": "f612a8fb"
+    },
+    {
+      "file_path": "AUTODEV_PRODUCTION_OPERATIONS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/AUTODEV_PRODUCTION_OPERATIONS.md",
+      "file_size": 9589,
+      "last_modified": "2026-05-22T17:04:21.492503",
+      "markers": {
+        "production_logging": 2
+      },
+      "total_markers": 2,
+      "file_hash": "9c1b4f5c"
+    },
+    {
+      "file_path": "README.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/README.md",
+      "file_size": 24766,
+      "last_modified": "2026-05-22T17:27:28.620489",
+      "markers": {
+        "production_logging": 1,
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 2,
+      "file_hash": "f0672c88"
+    },
+    {
+      "file_path": "PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
+      "file_size": 35273,
+      "last_modified": "2026-05-22T17:04:21.579503",
+      "markers": {
+        "vercel_config": 1,
+        "vercel_deploy": 1
+      },
+      "total_markers": 2,
+      "file_hash": "d11b67f7"
+    },
+    {
+      "file_path": "PRODUCTION_DEPLOYMENT_GUIDE.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTION_DEPLOYMENT_GUIDE.md",
+      "file_size": 24892,
+      "last_modified": "2026-05-22T17:04:21.580503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 2
+      },
+      "total_markers": 2,
+      "file_hash": "534d13b3"
+    },
+    {
+      "file_path": "COMPONENT_APP_MAPPING.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/COMPONENT_APP_MAPPING.md",
+      "file_size": 9740,
+      "last_modified": "2026-05-22T17:04:21.502503",
+      "markers": {
+        "production_logging": 2
+      },
+      "total_markers": 2,
+      "file_hash": "152cb130"
+    },
+    {
+      "file_path": "APIs_v1.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/APIs_v1.md",
+      "file_size": 103901,
+      "last_modified": "2026-05-22T17:04:21.490503",
+      "markers": {
+        "production_logging": 2
+      },
+      "total_markers": 2,
+      "file_hash": "e4f63a47"
+    },
+    {
+      "file_path": "ALLSERVE.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/ALLSERVE.md",
+      "file_size": 22615,
+      "last_modified": "2026-05-23T16:57:15.881468",
+      "markers": {
+        "production_logging": 1,
+        "api.qmoi-enhanced.com": 1
+      },
+      "total_markers": 2,
+      "file_hash": "2b66d9d1"
+    },
+    {
+      "file_path": "ALLLINKS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/ALLLINKS.md",
+      "file_size": 12586,
+      "last_modified": "2026-05-22T17:04:21.477503",
+      "markers": {
+        "vercel_config": 2
+      },
+      "total_markers": 2,
+      "file_hash": "ff6910b5"
+    },
+    {
+      "file_path": "SESSION_COMPLETION_SUMMARY.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/SESSION_COMPLETION_SUMMARY.txt",
+      "file_size": 14249,
+      "last_modified": "2026-05-22T17:04:21.654503",
+      "markers": {
+        "vercel_config": 1,
+        "vercel_deploy": 1
+      },
+      "total_markers": 2,
+      "file_hash": "b4782817"
+    },
+    {
+      "file_path": "docs/screens/device-management-dashboard-screen.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/docs/screens/device-management-dashboard-screen.md",
+      "file_size": 8157,
+      "last_modified": "2026-05-22T17:04:22.324503",
+      "markers": {
+        "NOT_IMPLEMENTED": 2
+      },
+      "total_markers": 2,
+      "file_hash": "820404a0"
+    },
+    {
+      "file_path": "scripts/qmoi_self_test_runner.js",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/qmoi_self_test_runner.js",
+      "file_size": 19136,
+      "last_modified": "2026-05-22T17:04:27.309503",
+      "markers": {
+        "vercel_config": 2
+      },
+      "total_markers": 2,
+      "file_hash": "2541d807"
+    },
+    {
+      "file_path": "scripts/production_readiness_check.sh",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/production_readiness_check.sh",
+      "file_size": 1265,
+      "last_modified": "2026-05-22T17:04:27.285503",
+      "markers": {
+        "production_logging": 2
+      },
+      "total_markers": 2,
+      "file_hash": "e8abf5ab"
+    },
+    {
+      "file_path": "lib/logger.ts",
+      "absolute_path": "/workspaces/qmoi-enhanced/lib/logger.ts",
+      "file_size": 2936,
+      "last_modified": "2026-05-22T17:04:23.223503",
+      "markers": {
+        "production_logging": 2
+      },
+      "total_markers": 2,
+      "file_hash": "6e261163"
+    },
+    {
+      "file_path": "src/qmoi/core/validation/validation-engine.ts",
+      "absolute_path": "/workspaces/qmoi-enhanced/src/qmoi/core/validation/validation-engine.ts",
+      "file_size": 36491,
+      "last_modified": "2026-05-23T17:33:23.173375",
+      "markers": {
+        "PRODUCTION_READY": 2
+      },
+      "total_markers": 2,
+      "file_hash": "78d4cdcf"
+    },
+    {
+      "file_path": "production_config.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/production_config.json",
+      "file_size": 1631,
+      "last_modified": "2026-05-22T17:04:25.601503",
+      "markers": {
+        "api.qmoi-enhanced.com": 1
+      },
+      "total_markers": 1,
+      "file_hash": "08e5a135"
+    },
+    {
+      "file_path": "PRODUCTION_READINESS_FINAL.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTION_READINESS_FINAL.md",
+      "file_size": 14364,
+      "last_modified": "2026-05-22T17:04:21.583503",
+      "markers": {
+        "vercel_config": 1
+      },
+      "total_markers": 1,
+      "file_hash": "9648ccd7"
+    },
+    {
+      "file_path": "comprehensive_nonprod_scanner.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/comprehensive_nonprod_scanner.py",
+      "file_size": 714,
+      "last_modified": "2026-05-22T17:04:22.179503",
+      "markers": {
+        "production_data": 1
+      },
+      "total_markers": 1,
+      "file_hash": "4d25fc4a"
+    },
+    {
+      "file_path": "DEPLOYMENT_COMPLETE.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/DEPLOYMENT_COMPLETE.md",
+      "file_size": 11842,
+      "last_modified": "2026-05-22T17:04:21.509503",
+      "markers": {
+        "vercel_config": 1
+      },
+      "total_markers": 1,
+      "file_hash": "37015525"
+    },
+    {
+      "file_path": "EXECUTIVE_SUMMARY.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/EXECUTIVE_SUMMARY.md",
+      "file_size": 12139,
+      "last_modified": "2026-05-22T17:04:21.522503",
+      "markers": {
+        "vercel_deploy": 1
+      },
+      "total_markers": 1,
+      "file_hash": "259e5de4"
+    },
+    {
+      "file_path": "COMPLETE_PRODUCTION_DEPLOYMENT_GUIDE.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/COMPLETE_PRODUCTION_DEPLOYMENT_GUIDE.md",
+      "file_size": 12659,
+      "last_modified": "2026-05-22T17:04:21.500503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 1,
+      "file_hash": "7e12fa23"
+    },
+    {
+      "file_path": "production_deployment_validator.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/production_deployment_validator.py",
+      "file_size": 19913,
+      "last_modified": "2026-05-22T17:04:25.602503",
+      "markers": {
+        "vercel_config": 1
+      },
+      "total_markers": 1,
+      "file_hash": "4b146218"
+    },
+    {
+      "file_path": "QCITYUI.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QCITYUI.md",
+      "file_size": 40253,
+      "last_modified": "2026-05-23T16:57:15.860468",
+      "markers": {
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 1,
+      "file_hash": "9e41dd30"
+    },
+    {
+      "file_path": "scripts_tree.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts_tree.txt",
+      "file_size": 29194,
+      "last_modified": "2026-05-22T17:04:27.337503",
+      "markers": {
+        "vercel_deploy": 1
+      },
+      "total_markers": 1,
+      "file_hash": "a8aaa53d"
+    },
+    {
+      "file_path": "push_all_chunks.ps1",
+      "absolute_path": "/workspaces/qmoi-enhanced/push_all_chunks.ps1",
+      "file_size": 9194,
+      "last_modified": "2026-05-22T17:04:25.650503",
+      "markers": {
+        "NOT_IMPLEMENTED": 1
+      },
+      "total_markers": 1,
+      "file_hash": "f5b5fe9f"
+    },
+    {
+      "file_path": "security_monitor.py",
+      "absolute_path": "/workspaces/qmoi-enhanced/security_monitor.py",
+      "file_size": 2741,
+      "last_modified": "2026-05-22T17:04:27.337503",
+      "markers": {
+        "production_logging": 1
+      },
+      "total_markers": 1,
+      "file_hash": "eff82e38"
+    },
+    {
+      "file_path": "PRODUCTION_STATUS_SUMMARY.sh",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTION_STATUS_SUMMARY.sh",
+      "file_size": 13009,
+      "last_modified": "2026-05-22T17:04:21.585503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 1,
+      "file_hash": "2a38953f"
+    },
+    {
+      "file_path": "PRODUCTION_READINESS_FINAL_COMPREHENSIVE.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTION_READINESS_FINAL_COMPREHENSIVE.md",
+      "file_size": 8262,
+      "last_modified": "2026-05-22T17:04:21.583503",
+      "markers": {
+        "vercel_deploy": 1
+      },
+      "total_markers": 1,
+      "file_hash": "a6a51735"
+    },
+    {
+      "file_path": "VERCELLINKS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/VERCELLINKS.md",
+      "file_size": 19468,
+      "last_modified": "2026-05-22T17:04:21.666503",
+      "markers": {
+        "vercel_config": 1
+      },
+      "total_markers": 1,
+      "file_hash": "e41cfcbd"
+    },
+    {
+      "file_path": "QMOIAUTOFIXREADME.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOIAUTOFIXREADME.md",
+      "file_size": 17027,
+      "last_modified": "2026-05-22T17:04:21.595503",
+      "markers": {
+        "vercel_deploy": 1
+      },
+      "total_markers": 1,
+      "file_hash": "02a00fbd"
+    },
+    {
+      "file_path": "QALPHAUI.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QALPHAUI.md",
+      "file_size": 16284,
+      "last_modified": "2026-05-23T16:57:15.881468",
+      "markers": {
+        "FUNCTIONAL": 1
+      },
+      "total_markers": 1,
+      "file_hash": "c9ac4f04"
+    },
+    {
+      "file_path": "QMOI_PERMANENT_RETENTION_ENHANCEMENT_PLAN.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOI_PERMANENT_RETENTION_ENHANCEMENT_PLAN.md",
+      "file_size": 10722,
+      "last_modified": "2026-05-22T17:04:21.612503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 1,
+      "file_hash": "f78b20f9"
+    },
+    {
+      "file_path": "ROUTES.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/ROUTES.md",
+      "file_size": 6490,
+      "last_modified": "2026-05-23T16:57:17.154468",
+      "markers": {
+        "production_logging": 1
+      },
+      "total_markers": 1,
+      "file_hash": "6e14f1fd"
+    },
+    {
+      "file_path": "DEPLOYMENT_FIX_QUICK_START.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/DEPLOYMENT_FIX_QUICK_START.md",
+      "file_size": 9850,
+      "last_modified": "2026-05-22T17:04:21.510503",
+      "markers": {
+        "vercel_config": 1
+      },
+      "total_markers": 1,
+      "file_hash": "3b14c22d"
+    },
+    {
+      "file_path": "ALLUI.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/ALLUI.md",
+      "file_size": 40380,
+      "last_modified": "2026-05-22T17:04:21.480503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 1,
+      "file_hash": "ad6b69c2"
+    },
+    {
+      "file_path": "DEPLOYMENT_IN_PROGRESS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/DEPLOYMENT_IN_PROGRESS.md",
+      "file_size": 9788,
+      "last_modified": "2026-05-22T17:04:21.510503",
+      "markers": {
+        "vercel_config": 1
+      },
+      "total_markers": 1,
+      "file_hash": "dfc33262"
+    },
+    {
+      "file_path": "VERCEL_DEPLOYMENT_GUIDE.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/VERCEL_DEPLOYMENT_GUIDE.md",
+      "file_size": 8425,
+      "last_modified": "2026-05-22T17:04:21.667503",
+      "markers": {
+        "vercel_config": 1
+      },
+      "total_markers": 1,
+      "file_hash": "b37a8833"
+    },
+    {
+      "file_path": "revenue_validator_config.yaml",
+      "absolute_path": "/workspaces/qmoi-enhanced/revenue_validator_config.yaml",
+      "file_size": 828,
+      "last_modified": "2026-05-22T17:04:27.072503",
+      "markers": {
+        "api.qmoi-enhanced.com": 1
+      },
+      "total_markers": 1,
+      "file_hash": "f5761b1c"
+    },
+    {
+      "file_path": "QVERCELAGENT.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QVERCELAGENT.md",
+      "file_size": 9172,
+      "last_modified": "2026-05-22T17:04:21.618503",
+      "markers": {
+        "vercel_deploy": 1
+      },
+      "total_markers": 1,
+      "file_hash": "b22e2046"
+    },
+    {
+      "file_path": "DOCUMENTATION_MASTER_INDEX.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/DOCUMENTATION_MASTER_INDEX.md",
+      "file_size": 19344,
+      "last_modified": "2026-05-22T17:04:21.515503",
+      "markers": {
+        "vercel_config": 1
+      },
+      "total_markers": 1,
+      "file_hash": "1d12bda1"
+    },
+    {
+      "file_path": "QMOIAUTODEV.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOIAUTODEV.md",
+      "file_size": 15696,
+      "last_modified": "2026-05-22T17:04:21.595503",
+      "markers": {
+        "vercel_deploy": 1
+      },
+      "total_markers": 1,
+      "file_hash": "530f21cb"
+    },
+    {
+      "file_path": "PRODUCTION_DEPLOYMENT_CHECKLIST.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTION_DEPLOYMENT_CHECKLIST.md",
+      "file_size": 1904,
+      "last_modified": "2026-05-22T17:04:21.579503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 1,
+      "file_hash": "c7764530"
+    },
+    {
+      "file_path": "MASTER_INTEGRATION_GUIDE.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/MASTER_INTEGRATION_GUIDE.md",
+      "file_size": 422,
+      "last_modified": "2026-05-22T17:04:21.540503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 1,
+      "file_hash": "65d32625"
+    },
+    {
+      "file_path": "docker-compose.production.yml",
+      "absolute_path": "/workspaces/qmoi-enhanced/docker-compose.production.yml",
+      "file_size": 3848,
+      "last_modified": "2026-05-22T17:04:22.256503",
+      "markers": {
+        "api.qmoi-enhanced.com": 1
+      },
+      "total_markers": 1,
+      "file_hash": "52a7f85e"
+    },
+    {
+      "file_path": "autodev_enhancement_report.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/autodev_enhancement_report.md",
+      "file_size": 3949,
+      "last_modified": "2026-05-22T17:04:22.051503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 1,
+      "file_hash": "44427242"
+    },
+    {
+      "file_path": "QMOISPACEUI.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOISPACEUI.md",
+      "file_size": 67405,
+      "last_modified": "2026-05-23T16:57:15.837468",
+      "markers": {
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 1,
+      "file_hash": "360b8974"
+    },
+    {
+      "file_path": "VERCEL_DEPLOYMENT_SETUP_CHECKLIST.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/VERCEL_DEPLOYMENT_SETUP_CHECKLIST.md",
+      "file_size": 12641,
+      "last_modified": "2026-05-22T17:04:21.667503",
+      "markers": {
+        "vercel_deploy": 1
+      },
+      "total_markers": 1,
+      "file_hash": "ee123e22"
+    },
+    {
+      "file_path": "ALLREGISTRIES.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/ALLREGISTRIES.md",
+      "file_size": 3272,
+      "last_modified": "2026-05-22T17:04:21.479503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 1,
+      "file_hash": "675ced02"
+    },
+    {
+      "file_path": "QMOIALLPLATFORMS.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/QMOIALLPLATFORMS.md",
+      "file_size": 28929,
+      "last_modified": "2026-05-22T17:04:21.594503",
+      "markers": {
+        "vercel_deploy": 1
+      },
+      "total_markers": 1,
+      "file_hash": "903f06d3"
+    },
+    {
+      "file_path": "eslint_app_api.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/eslint_app_api.json",
+      "file_size": 580248,
+      "last_modified": "2026-05-22T17:04:22.396503",
+      "markers": {
+        "vercel_config": 1
+      },
+      "total_markers": 1,
+      "file_hash": "cbc99ae8"
+    },
+    {
+      "file_path": "COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md",
+      "file_size": 8972,
+      "last_modified": "2026-05-22T17:04:21.503503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 1,
+      "file_hash": "d03d51f2"
+    },
+    {
+      "file_path": "FINAL_PRODUCTION_STATUS_2026-04-23.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/FINAL_PRODUCTION_STATUS_2026-04-23.json",
+      "file_size": 2119,
+      "last_modified": "2026-05-22T17:04:21.526503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 1,
+      "file_hash": "bdd6127e"
+    },
+    {
+      "file_path": "PRODUCTION_DEPLOYMENT_COMPLETE.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTION_DEPLOYMENT_COMPLETE.txt",
+      "file_size": 12675,
+      "last_modified": "2026-05-22T17:04:21.579503",
+      "markers": {
+        "vercel_config": 1
+      },
+      "total_markers": 1,
+      "file_hash": "aa91e924"
+    },
+    {
+      "file_path": "problemsanderrors.txt",
+      "absolute_path": "/workspaces/qmoi-enhanced/problemsanderrors.txt",
+      "file_size": 2096626,
+      "last_modified": "2026-05-22T17:04:25.601503",
+      "markers": {
+        "production_logging": 1
+      },
+      "total_markers": 1,
+      "file_hash": "0d053940"
+    },
+    {
+      "file_path": "PRODUCTION_QUICK_REFERENCE.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTION_QUICK_REFERENCE.md",
+      "file_size": 6463,
+      "last_modified": "2026-05-22T17:04:21.582503",
+      "markers": {
+        "api.qmoi-enhanced.com": 1
+      },
+      "total_markers": 1,
+      "file_hash": "37047845"
+    },
+    {
+      "file_path": "Dockerfile",
+      "absolute_path": "/workspaces/qmoi-enhanced/Dockerfile",
+      "file_size": 3977,
+      "last_modified": "2026-05-22T17:04:21.516503",
+      "markers": {
+        "PRODUCTION_READY_TAG": 1
+      },
+      "total_markers": 1,
+      "file_hash": "5901a7c4"
+    },
+    {
+      "file_path": "PRODUCTION_DEPLOYMENT_FINAL_REPORT.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/PRODUCTION_DEPLOYMENT_FINAL_REPORT.md",
+      "file_size": 1842,
+      "last_modified": "2026-05-22T17:04:21.579503",
+      "markers": {
+        "vercel_config": 1
+      },
+      "total_markers": 1,
+      "file_hash": "4b7d90e6"
+    },
+    {
+      "file_path": "mobile/android/app/src/main/java/com/tempinit/MainApplication.kt",
+      "absolute_path": "/workspaces/qmoi-enhanced/mobile/android/app/src/main/java/com/tempinit/MainApplication.kt",
+      "file_size": 1543,
+      "last_modified": "2026-05-22T17:04:23.449503",
+      "markers": {
+        "production_logging": 1
+      },
+      "total_markers": 1,
+      "file_hash": "fdabcaf5"
+    },
+    {
+      "file_path": "mobile/android/gradlew.bat",
+      "absolute_path": "/workspaces/qmoi-enhanced/mobile/android/gradlew.bat",
+      "file_size": 3197,
+      "last_modified": "2026-05-22T17:04:23.451503",
+      "markers": {
+        "production_logging": 1
+      },
+      "total_markers": 1,
+      "file_hash": "08a73401"
+    },
+    {
+      "file_path": "mobile/android/app/src/main/java/com/qmoi/app/MainApplication.kt",
+      "absolute_path": "/workspaces/qmoi-enhanced/mobile/android/app/src/main/java/com/qmoi/app/MainApplication.kt",
+      "file_size": 1543,
+      "last_modified": "2026-05-22T17:04:23.449503",
+      "markers": {
+        "production_logging": 1
+      },
+      "total_markers": 1,
+      "file_hash": "e062f392"
+    },
+    {
+      "file_path": "_app_archived/api/qmoi/auto-fix/status/route.ts",
+      "absolute_path": "/workspaces/qmoi-enhanced/_app_archived/api/qmoi/auto-fix/status/route.ts",
+      "file_size": 3335,
+      "last_modified": "2026-05-22T17:04:21.752503",
+      "markers": {
+        "vercel_config": 1
+      },
+      "total_markers": 1,
+      "file_hash": "1860588a"
+    },
+    {
+      "file_path": "docs/COMPONENT_ARCHITECTURE_MAPPING.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/docs/COMPONENT_ARCHITECTURE_MAPPING.md",
+      "file_size": 38348,
+      "last_modified": "2026-05-22T17:04:22.259503",
+      "markers": {
+        "production_logging": 1
+      },
+      "total_markers": 1,
+      "file_hash": "407a23f5"
+    },
+    {
+      "file_path": "docs/navigation/navigation_flows.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/docs/navigation/navigation_flows.md",
+      "file_size": 11690,
+      "last_modified": "2026-05-22T17:04:22.290503",
+      "markers": {
+        "production_logging": 1
+      },
+      "total_markers": 1,
+      "file_hash": "474f4849"
+    },
+    {
+      "file_path": "docs/screens/admin-dashboard-screen.md",
+      "absolute_path": "/workspaces/qmoi-enhanced/docs/screens/admin-dashboard-screen.md",
+      "file_size": 5710,
+      "last_modified": "2026-05-22T17:04:22.324503",
+      "markers": {
+        "NOT_IMPLEMENTED": 1
+      },
+      "total_markers": 1,
+      "file_hash": "4d087983"
+    },
+    {
+      "file_path": "tools/dns_links_report.json",
+      "absolute_path": "/workspaces/qmoi-enhanced/tools/dns_links_report.json",
+      "file_size": 572732,
+      "last_modified": "2026-05-22T17:04:27.481503",
+      "markers": {
+        "PRODUCTION_FIXED": 1
+      },
+      "total_markers": 1,
+      "file_hash": "bb46ab47"
+    },
+    {
+      "file_path": "scripts/run_bulk_workflow.sh",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/run_bulk_workflow.sh",
+      "file_size": 5575,
+      "last_modified": "2026-05-22T17:04:27.313503",
+      "markers": {
+        "production_logging": 1
+      },
+      "total_markers": 1,
+      "file_hash": "5a630578"
+    },
+    {
+      "file_path": "scripts/vercel-autoclone-autodev.js",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/vercel-autoclone-autodev.js",
+      "file_size": 10883,
+      "last_modified": "2026-05-22T17:04:27.333503",
+      "markers": {
+        "vercel_deploy": 1
+      },
+      "total_markers": 1,
+      "file_hash": "b3f84e27"
+    },
+    {
+      "file_path": "scripts/vercel_monitor_and_fix.sh",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/vercel_monitor_and_fix.sh",
+      "file_size": 2406,
+      "last_modified": "2026-05-22T17:04:27.334503",
+      "markers": {
+        "vercel_deploy": 1
+      },
+      "total_markers": 1,
+      "file_hash": "49f0a9a8"
+    },
+    {
+      "file_path": "scripts/services/qmoi_autodev_daemon.ts",
+      "absolute_path": "/workspaces/qmoi-enhanced/scripts/services/qmoi_autodev_daemon.ts",
+      "file_size": 17440,
+      "last_modified": "2026-05-22T17:04:27.318503",
+      "markers": {
+        "vercel_deploy": 1
+      },
+      "total_markers": 1,
+      "file_hash": "bbb9c367"
+    },
+    {
+      "file_path": "src/adapters/appServiceInit.ts",
+      "absolute_path": "/workspaces/qmoi-enhanced/src/adapters/appServiceInit.ts",
+      "file_size": 3237,
+      "last_modified": "2026-05-23T17:38:48.534361",
+      "markers": {
+        "production_logging": 1
+      },
+      "total_markers": 1,
+      "file_hash": "1d32d3fb"
+    },
+    {
+      "file_path": "src/components/q-city/QMOIAutoFixDashboard.tsx",
+      "absolute_path": "/workspaces/qmoi-enhanced/src/components/q-city/QMOIAutoFixDashboard.tsx",
+      "file_size": 10567,
+      "last_modified": "2026-05-23T17:37:58.504364",
+      "markers": {
+        "vercel_deploy": 1
+      },
+      "total_markers": 1,
+      "file_hash": "cba34b27"
+    },
+    {
+      "file_path": "app/api/debug/info/route.ts",
+      "absolute_path": "/workspaces/qmoi-enhanced/app/api/debug/info/route.ts",
+      "file_size": 1002,
+      "last_modified": "2026-05-24T08:57:03.575484",
+      "markers": {
+        "production_logging": 1
+      },
+      "total_markers": 1,
+      "file_hash": "28802970"
+    },
+    {
+      "file_path": "app/components/InnovationLab.tsx",
+      "absolute_path": "/workspaces/qmoi-enhanced/app/components/InnovationLab.tsx",
+      "file_size": 4693,
+      "last_modified": "2026-05-22T17:04:21.801503",
+      "markers": {
+        "COMPLETED": 1
+      },
+      "total_markers": 1,
+      "file_hash": "4306610c"
+    }
+  ],
+  "marker_summary": {
+    "production_logging": 951,
+    "PRODUCTION_READY_TAG": 625,
+    "vercel_config": 423,
+    "PRODUCTION_COMPLETE": 400,
+    "api.qmoi-enhanced.com": 392,
+    "vercel_deploy": 226,
+    "production_data": 115,
+    "UNIMPLEMENTED": 105,
+    "PRODUCTION_FIXED": 31,
+    "vercel_error_list": 26,
+    "FUNCTIONAL": 13,
+    "NOT_IMPLEMENTED": 10,
+    "PRODUCTION_READY": 8,
+    "COMPLETED": 3,
+    "FINALIZED": 1
+  },
+  "errors": []
+}

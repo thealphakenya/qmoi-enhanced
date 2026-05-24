@@ -31,16 +31,21 @@ class ThoroughproductionScanner:
             'NOT_IMPLEMENTED': re.compile(r'\bNOT IMPLEMENTED\b', re.IGNORECASE),
             'production_data': re.compile(r'\bproduction_data\b', re.IGNORECASE),
             'PRODUCTION_FIXED': re.compile(r'\b✅ production SOLUTION - Implemented robust, long-term solution\b', re.IGNORECASE),
-            'FUNCTIONAL': re.compile(r'\bBROKEN\b', re.IGNORECASE),
+            'FUNCTIONAL': re.compile(r'\bFUNCTIONAL\b', re.IGNORECASE),
             'production_GUARDED': re.compile(r'\bTEST ONLY\b', re.IGNORECASE),
-            'production_logging': re.compile(r'\bconsole\.RELEASE\b|\bconsole\._error\b|\bDEBUG\b', re.IGNORECASE),
+            'production_logging': re.compile(r'\b(?:console\.RELEASE|console\._error|DEBUG)\b'),
             'production_REMOVED': re.compile(r'\bREMOVE BEFORE production\b', re.IGNORECASE),
             'PRODUCTION_READY_TAG': re.compile(r'\bproduction READY\b', re.IGNORECASE),
-            'api.qmoi-enhanced.com': re.compile(r'\bapi.qmoi-enhanced.com\b', re.IGNORECASE),
+            'api.qmoi-enhanced.com': re.compile(r'\bapi\.qmoi-enhanced\.com\b', re.IGNORECASE),
             'vercel_error_list': re.compile(r'\bvercelerrorlist\.md\b', re.IGNORECASE),
             'vercel_config': re.compile(r'\bvercel\.json\b', re.IGNORECASE),
             'vercel_deploy': re.compile(r'\bvercel(?:\.|\s|-)?(?:deploy|auto[- ]?clone|build|error)\b', re.IGNORECASE),
         }
+        self.exclude_file_patterns = [
+            re.compile(r'(^|/)(docs|scripts)/.*\.json$', re.IGNORECASE),
+            re.compile(r'(^|/)(matches|MATCHES|undone|undoneold|resumefromhere|INSTANCES|production_scan_.*|autodev_.*|eslint_report.*|enhancement_report.*|validation_report.*|qmoi_memory|product.+_scan|nonprod_production_report|production_readiness_scan|nonproduction_scan_report|nonproduction_comprehensive_report|link-validation-report|verification-report|verification_report|ui_validation_report)\.(json|txt|md)$', re.IGNORECASE),
+            re.compile(r'(^|/)(package-lock|yarn\.lock|pnpm-lock\.yaml|pnpm-lock\.json)$', re.IGNORECASE),
+        ]
         # File extensions to scan (comprehensive list)
         self.extensions_to_scan = {
             # Code files
@@ -87,6 +92,14 @@ class ThoroughproductionScanner:
                 return False
         except Exception:
             return False
+        # Skip excluded output/report files and generated artifacts
+        try:
+            relative_path = str(file_path.relative_to(self.root_dir))
+            for pattern in self.exclude_file_patterns:
+                if pattern.search(relative_path):
+                    return False
+        except ValueError:
+            pass
         # Check file extension
         if file_path.suffix.lower() in self.extensions_to_scan or file_path.name in self.extensions_to_scan:
             return True

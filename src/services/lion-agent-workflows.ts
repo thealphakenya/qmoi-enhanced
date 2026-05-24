@@ -3078,6 +3078,8 @@ export class AutoDomainNamingSystem {
 
   constructor(domainIntelligence: DomainIntelligenceSystem) {
     this.domainIntelligence = domainIntelligence;
+    this.assignedDomains = new Map();
+    this.platformRegistry = new Map();
   }
 
   /**
@@ -3085,13 +3087,9 @@ export class AutoDomainNamingSystem {
    */
   async registerPlatform(platformType: string, platformId: string, region?: string): Promise<string> {
     const domain = this.domainIntelligence.generateDomainName(platformType, platformId, region);
-
-    // If the generated domain is unavailable, generate an alternative domain.
-    const altDomain = `${domain.split('.')[0]}-${Date.now().toString(36)}.qmoi.ai`;
-    this.assignedDomains.set(`${platformType}-${platformId}`, altDomain);
-    return altDomain;
-
-    this.assignedDomains.set(`${platformType}-${platformId}`, domain);
+    const available = await this.checkDomainAvailability(domain);
+    const assignedDomain = available ? domain : `${domain.split('.')[0]}-${Date.now().toString(36)}.qmoi.ai`;
+    this.assignedDomains.set(`${platformType}-${platformId}`, assignedDomain);
     this.platformRegistry.set(`${platformType}-${platformId}`, {
       domain,
       platformType,
@@ -3101,8 +3099,8 @@ export class AutoDomainNamingSystem {
       status: 'active'
     });
 
-    logger.info(`🏷️ Auto Domain Naming: Assigned ${domain} to ${platformType}-${platformId}`);
-    return domain;
+    logger.info(`🏷️ Auto Domain Naming: Assigned ${assignedDomain} to ${platformType}-${platformId}`);
+    return assignedDomain;
   }
 
   /**
@@ -3116,7 +3114,7 @@ export class AutoDomainNamingSystem {
    * List all assigned domains
    */
   getAllAssignedDomains(): Map<string, string> {
-  }
+    return this.assignedDomains;
 
   /**
    * Update domain for a platform

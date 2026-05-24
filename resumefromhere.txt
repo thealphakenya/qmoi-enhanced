@@ -1,12 +1,12 @@
 QMOI production READINESS STATUS
-Last Scan: 2026-05-23T17:18:26.930552
-Scan ID: 1779556706
+Last Scan: 2026-05-24T15:02:50.685923
+Scan ID: 1779634970
 
 SUMMARY:
-- Total files scanned: 4918
+- Total files scanned: 4812
 - Total directories scanned: 856
-- Files with nonproduction markers: 208
-- Total markers found: 3273
+- Files with nonproduction markers: 357
+- Total markers found: 31641
 
 CURRENT STATE:
 - Status: ⚠️ Nonproduction markers remain. Review undone.txt and MATCHES.txt.
@@ -18,21 +18,21 @@ NEXT STEPS:
 4. Keep MATCHES.txt and MATCHES.md synchronized.
 
 MARKER SUMMARY:
-- production_logging: 945
-- PRODUCTION_READY_TAG: 633
-- vercel_config: 423
-- PRODUCTION_COMPLETE: 408
-- api.qmoi-enhanced.com: 361
-- vercel_deploy: 224
-- production_data: 99
-- UNIMPLEMENTED: 90
-- PRODUCTION_FIXED: 31
-- vercel_error_list: 24
-- FUNCTIONAL: 13
+- FUNCTIONAL: 30687
+- PRODUCTION_READY_TAG: 314
+- PRODUCTION_COMPLETE: 189
+- vercel_config: 184
+- production_logging: 103
+- vercel_deploy: 63
+- api.qmoi-enhanced.com: 45
+- PRODUCTION_FIXED: 26
 - NOT_IMPLEMENTED: 10
 - PRODUCTION_READY: 8
+- vercel_error_list: 5
 - COMPLETED: 3
+- production_data: 2
 - FINALIZED: 1
+- UNIMPLEMENTED: 1
 
 TRACKING FILES UPDATED:
 - resumefromhere.txt

@@ -1,41 +1,41 @@
 QMOI production MARKER MATCHES
-Generated: 2026-05-23T17:18:26.930552
+Generated: 2026-05-24T15:02:50.685923
 
 SUMMARY:
-- Files with markers: 208
-- Total markers found: 3273
+- Files with markers: 357
+- Total markers found: 31641
 
 TOP MATCHES:
-- docs/nonproduction_scan_report.json: 120 marker(s)
-- matches.json: 102 marker(s)
-- autodev_enhanced_production_results.json: 92 marker(s)
-- autodev_memory_sync.json: 79 marker(s)
-- production_scan_1776651512.json: 78 marker(s)
+- error-reports/comprehensive-report-2026-03-12.json: 29680 marker(s)
+- instructionmanifest.txt: 206 marker(s)
+- ALL_TODOS_SAMPLE.txt: 147 marker(s)
+- eslint_fix_result.json: 86 marker(s)
 - all_md_files_clean.txt: 75 marker(s)
-- docs/md_index.json: 75 marker(s)
-- production_scan_1776654312.json: 70 marker(s)
-- package-lock.json: 69 marker(s)
-- eslint_report.json: 68 marker(s)
-- eslint_fix_result.json: 68 marker(s)
-- eslint_report_after_fix.json: 68 marker(s)
-- scripts/enhancement_report_20260506_075840.json: 68 marker(s)
-- scripts/enhancement_report_20260506_074210.json: 68 marker(s)
-- scripts/enhancement_report_20260506_080033.json: 68 marker(s)
-- scripts/enhancement_report_20260506_064821.json: 68 marker(s)
-- production_scan_1779556461.json: 67 marker(s)
-- scripts/enhancement_report_20260506_080703.json: 66 marker(s)
-- scripts/enhancement_report_20260506_043941.json: 66 marker(s)
-- undone.txt: 63 marker(s)
-- eslint_report_after_any_fix.json: 63 marker(s)
-- eslint_report_after_eslintignore.json: 63 marker(s)
-- eslint_report_after_ignore.json: 63 marker(s)
-- production_scan_1779556215.json: 61 marker(s)
-- production_scan_1779556214.json: 61 marker(s)
-- production_scan_1779555855.json: 59 marker(s)
-- production_scan_1779555694.json: 56 marker(s)
-- production_scan_1779556030.json: 55 marker(s)
-- non_production_implementations_report.json: 54 marker(s)
+- non_production_implementations_report.json: 67 marker(s)
+- QMOIDOWNLOADS.md: 61 marker(s)
+- documentation_audit_details.json: 58 marker(s)
 - ROOT_production_STATUS.md: 52 marker(s)
-- ... and 178 more files
+- tools/dns_docs_inventory.json: 42 marker(s)
+- ALLHEALTHS.md: 40 marker(s)
+- all_md_files_current.txt: 26 marker(s)
+- all_md_files.txt: 26 marker(s)
+- ALLAUTO.md: 24 marker(s)
+- quality_gate_report.json: 24 marker(s)
+- vercelerrorlist.md: 24 marker(s)
+- nonprod_files_list.txt: 24 marker(s)
+- API.md: 23 marker(s)
+- eslint_src_fix.json: 21 marker(s)
+- autonomous_production_migration_engine.py: 21 marker(s)
+- eslint_src_after_fix.json: 21 marker(s)
+- COMPREHENSIVE_LINK_FIX_STRATEGY.md: 17 marker(s)
+- current_nonprod_scan.txt: 17 marker(s)
+- CRITICAL_APP_AUDIT_REPORT.md: 16 marker(s)
+- ultimate_production_fix_report.json: 16 marker(s)
+- QUICK_REFERENCE_SPRINT_METRICS.md: 15 marker(s)
+- FINAL_PRODUCTION_READINESS_REPORT.md: 15 marker(s)
+- NONPROD_REPORT_HEAD.txt: 14 marker(s)
+- SESSION_LINKS_DOMAINS_ENHANCEMENT_SUMMARY.md: 13 marker(s)
+- production_readiness_audit_report.json: 10 marker(s)
+- ... and 327 more files
 
 For details, review undone.txt and INSTANCES.md.
