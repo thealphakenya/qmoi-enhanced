@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,26 +17,20 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-
 interface WalletManagerProps {
   isMaster?: boolean;
 }
-
 interface WalletRequest {
   email: string;
   username: string;
   requestedAt: string;
   status: "pending" | "approved" | "denied";
 }
-
 export const WalletManager: React.FC<WalletManagerProps> = ({
   isMaster = false,
 }) => {
@@ -50,13 +40,11 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
   const [walletRequested, setWalletRequested] = useState(false);
   const { getCurrentTime, currentTimezone } = useTimezone();
   const { toast } = useToast();
-
   useEffect(() => {
     if (isMaster) {
       fetchPendingRequests();
     }
   }, [isMaster]);
-
   const fetchPendingRequests = async () => {
     try {
       setLoading(true);
@@ -76,17 +64,14 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       setLoading(false);
     }
   };
-
   const handleRequestWallet = async () => {
     try {
       setLoading(true);
       setError(null);
       const email = localStorage.getItem("userEmail");
       const username = localStorage.getItem("username");
-
       if (!email || !username) {
       }
-
       const res = await apiClient.get("/api/wallet", {
         method: "POST",
         headers: {
@@ -99,9 +84,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
           username,
         }),
       });
-
       const data = await res.json();
-
       if (data.status === "pending") {
         setWalletRequested(true);
         toast({
@@ -121,7 +104,6 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       setLoading(false);
     }
   };
-
   const handleApproveWallet = async (email: string) => {
     try {
       setLoading(true);
@@ -138,9 +120,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
           email,
         }),
       });
-
       const data = await res.json();
-
       if (data.status === "approved") {
         setPendingRequests((prev) => prev.filter((r) => r.email !== email));
         toast({
@@ -161,7 +141,6 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       setLoading(false);
     }
   };
-
   return (
     <Card className="p-6 space-y-6">
       <div className="flex items-center justify-between">
@@ -172,7 +151,6 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
           </p>
         </div>
       </div>
-
       {error && (
         <div
           className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded relative"
@@ -181,7 +159,6 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
           <span className="block sm:inline">{error}</span>
         </div>
       )}
-
       {!isMaster && (
         <div className="space-y-4">
           <Button
@@ -202,7 +179,6 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
           </Button>
         </div>
       )}
-
       {isMaster && (
         <div className="space-y-4">
           <h3 className="text-lg font-semibold">Pending Wallet Requests</h3>

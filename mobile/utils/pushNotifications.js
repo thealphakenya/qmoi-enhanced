@@ -1,101 +1,46 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:09Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+import messaging from '@react-native-firebase/messaging';
+import { Platform } from 'react-native';
+import axios from 'axios';
 
-import { specificExports } from "react-native";
-import { specificExports } from "@react-native-firebase/messaging";
-import { specificExports } from "axios";
+const API_BASE = typeof process !== 'undefined' && process.env.API_URL ? process.env.API_URL : 'https://qmoi.ai';
 
-// Pushover registration (requires userKey and apiToken)
-export async /**
- * registerPushover function
- */
-function registerPushover(userKey, apiToken): any {
-  // Register prodice with your backend for Pushover notifications
-  await axios.post("process.env.API_URL || "https://qmoi.ai:\1"/api/register-pushover", {
-    userKey,
-    apiToken,
-  });
+export async function registerPushover(userKey, apiToken) {
+  if (!userKey || !apiToken) {
+    throw new Error('Missing Pushover credentials');
+  }
+
+  const payload = { userKey, apiToken };
+  await axios.post(`${API_BASE}/api/register-pushover`, payload);
 }
 
-// Firebase registration
-export async /**
- * registerFCM function
- */
-function registerFCM(onToken): any {
+export async function registerFCM(onToken) {
   const authStatus = await messaging().requestPermission();
   const enabled =
     authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
     authStatus === messaging.AuthorizationStatus.PROVISIONAL;
-  if (enabled) {
-    const fcmToken = await messaging().getToken();
-    if (onToken) onToken(fcmToken);
-    // Register prodice with your backend for FCM notifications
-    await axios.post("process.env.API_URL || "https://qmoi.ai:\1"/api/register-fcm", {
-      token: fcmToken,
-      platform: Platform.OS,
-    });
-  }
-}
 
-export /**
- * onNotificationReceived function
- */
-function onNotificationReceived(callback): any {
-  messaging().onMessage(async (remoteMessage) => {
-    callback(remoteMessage);
+  if (!enabled) {
+    throw new Error('FCM permission denied');
+  }
+
+  const fcmToken = await messaging().getToken();
+
+  if (onToken) {
+    onToken(fcmToken);
+  }
+
+  await axios.post(`${API_BASE}/api/register-fcm`, {
+    token: fcmToken,
+    platform: Platform.OS,
   });
 }
 
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
+export function onNotificationReceived(callback) {
+  if (typeof callback !== 'function') {
+    throw new Error('Callback must be a function');
   }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
+
+  return messaging().onMessage(async (remoteMessage) => {
+    callback(remoteMessage);
+  });
 }

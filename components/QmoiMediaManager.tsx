@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,26 +17,12 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
 "use client";
-import { specificExports } from "react";
-import { specificExports } from "@/components/ui/input";
-import { specificExports } from "@mui/material/Button";
-import { specificExports } from "@mui/material/Card";
-import { specificExports } from "@mui/material/CardContent";
-import { specificExports } from "@mui/material/CardHeader";
-import { specificExports } from "@mui/material/Typography";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/progress";
-import { specificExports } from "@/components/ui/tabs";
 import {
   Search,
   Download,
@@ -59,9 +41,6 @@ import {
   Video,
   Image,
 } from "lucide-react";
-import { specificExports } from "@/components/ui/scroll-area";
-import { specificExports } from "@/adapters/clientAdapters";
-
 interface MediaItem {
   id: string;
   name: string;
@@ -71,7 +50,6 @@ interface MediaItem {
   createdAt: string;
   tags: string[];
 }
-
 interface MediaLog {
   id: number;
   action: string;
@@ -80,11 +58,9 @@ interface MediaLog {
   user_id?: string;
   timestamp: number;
 }
-
 interface MediaManagerProps {
   className?: string;
 }
-
 const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   const [mediaItems, setMediaItems] = useState<MediaItem[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -99,11 +75,9 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   const [healthStatus, setHealthStatus] = useState("");
   const [uploadProgress, setUploadProgress] = useState(0);
   const [tagFilter, setTagFilter] = useState("");
-
   // QMOI Media Manager
   // For upload support, add an upload button and handler to POST files to your media API endpoint.
   // See README for more integration details.
-
   useEffect(() => {
     let mounted = true;
     const load = async () => {
@@ -123,7 +97,6 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
       mounted = false;
     };
   }, []);
-
   const searchMedia = async (query: string) => {
     setIsLoading(true);
     try {
@@ -145,12 +118,9 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
           }
         }),
       });
-
       if (!response.ok) {
       }
-
       const searchResults = await response.json();
-
       // Transform API response to component format
       const transformedResults = searchResults.items.map((item: any) => ({
         id: item.id,
@@ -165,13 +135,10 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
         createdAt: item.createdAt,
         quality: item.quality || 'standard'
       }));
-
       setMediaItems(transformedResults);
       setSearchResults(transformedResults);
-
     } catch (error) {
       (globalThis.console as any)?.error?.("Media search failed:", error);
-
       // Fallback to local search if API fails
       const filtered = mediaItems.filter(
         (item) =>
@@ -186,16 +153,13 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
       setIsLoading(false);
     }
   };
-
   const downloadMedia = async (item: MediaItem) => {
     setDownloadProgress((prev) => ({ ...prev, [item.id]: 0 }));
-
     try {
       for (let i = 0; i <= 100; i += 10) {
         await new Promise((resolve) => setTimeout(resolve, 100));
         setDownloadProgress((prev) => ({ ...prev, [item.id]: i }));
       }
-
       // Create download link
       const link = document.createElement("a");
       link.href = item.url;
@@ -203,7 +167,6 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-
       logger.info(`Downloaded: ${item.name}`);
     } catch (error) {
       (globalThis.console as any)?.error?.("Download failed:", error);
@@ -211,7 +174,6 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
       setDownloadProgress((prev) => ({ ...prev, [item.id]: 0 }));
     }
   };
-
   const getMediaIcon = (type: string) => {
     switch (type) {
       case "image":
@@ -226,7 +188,6 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
         return <FileText className="w-4 h-4" />;
     }
   };
-
   const getTypeColor = (type: string) => {
     switch (type) {
       case "image":
@@ -241,7 +202,6 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
         return "bg-gray-100 text-gray-800";
     }
   };
-
   const filteredMedia = mediaItems.filter((item) => {
     const matchesSearch =
       item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -252,7 +212,6 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
     const matchesTag = !tagFilter || item.tags.includes(tagFilter);
     return matchesSearch && matchesType && matchesTag;
   });
-
   // Fetch logs
   const fetchLogs = async () => {
     try {
@@ -261,7 +220,6 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
           "x-qmoi-master": "true",
         },
       });
-
       if (response.ok) {
         const data = await response.json();
         setLogs(data.logs || []);
@@ -270,18 +228,15 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
       (globalThis.console as any)?.error?.("Failed to fetch logs:", error);
     }
   };
-
   useEffect(() => {
     fetchLogs();
   }, []);
-
   useEffect(() => {
     apiClient.get("/api/health")
       .then((res) => res.json())
       .then((data) => setHealthStatus(data.status))
       .catch(() => setHealthStatus("offline"));
   }, []);
-
   const handleDelete = async (id: string) => {
     if (!window.confirm("Delete this media file?")) return;
     await apiClient.get(`/api/media/${id}`, {
@@ -290,9 +245,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
     });
     setMediaItems((items) => items.filter((item) => item.id !== id));
   };
-
   const handleTagFilter = (tag: string) => setTagFilter(tag);
-
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.length) return;
     setUploading(true);
@@ -326,7 +279,6 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
       setUploadProgress(0);
     }
   };
-
   return (
     <div className={`space-y-4 ${className}`}>
       <Card>
@@ -362,7 +314,6 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
               {isLoading ? "Searching..." : "Search"}
             </Button>
           </div>
-
           {/* Upload Button () */}
           <div className="mb-2 flex items-center gap-2">
             <span
@@ -382,7 +333,6 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
             className="mb-2"
           />
           {uploading && <Progress value={uploadProgress} className="mb-2" />}
-
           {/* Tag Filter */}
           <div className="mb-2 flex gap-1">
             {Array.from(new Set(mediaItems.flatMap((item) => item.tags))).map(
@@ -403,7 +353,6 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
               </Button>
             )}
           </div>
-
           {/* Media List */}
           <ScrollArea className="h-96">
             <div className="space-y-2">
@@ -461,7 +410,6 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
               ))}
             </div>
           </ScrollArea>
-
           {filteredMedia.length === 0 && (
             <div className="text-center py-8 text-gray-500">
               No media files found
@@ -472,5 +420,4 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
     </div>
   );
 };
-
 export default QmoiMediaManager;

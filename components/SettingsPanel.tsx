@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,19 +17,10 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "react";
-import { specificExports } from "./ui/card";
-import { specificExports } from "./ui/button";
-import { specificExports } from "./ui/switch";
-import { specificExports } from "./ui/label";
-import { specificExports } from "./ui/input";
 import {
   Select,
   SelectContent,
@@ -41,9 +28,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { specificExports } from "./ui/tabs";
-import { specificExports } from "./ui/badge";
-import { specificExports } from "./MasterContext";
 import {
   FaCog,
   FaLanguage,
@@ -59,19 +43,15 @@ import {
   FaCheckCircle,
   FaExclamationTriangle,
 } from "react-icons/fa";
-import { specificExports } from "react-icons";
-
 interface SettingsPanelProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
 interface FontSettings {
   family: string;
   size: number;
   weight: string;
 }
-
 interface NetworkSettings {
   autoConnect: boolean;
   zeroRatedSites: boolean;
@@ -79,7 +59,6 @@ interface NetworkSettings {
   maxConnections: number;
   preferredNetworks: string[];
 }
-
 interface AISettings {
   autoTheme: boolean;
   autoWallpaper: boolean;
@@ -89,7 +68,6 @@ interface AISettings {
   language: "en" | "sw";
   swahiliSupport: boolean;
 }
-
 interface QmoiAppSettings {
   browser: boolean;
   dialer: boolean;
@@ -98,19 +76,16 @@ interface QmoiAppSettings {
   keyboard: boolean;
   settings: boolean;
 }
-
 export const SettingsPanel: React.FC<SettingsPanelProps> = ({
   isOpen,
   onClose,
 }) => {
   const { isMaster } = useMaster();
-
   const [fontSettings, setFontSettings] = useState<FontSettings>({
     family: "Inter",
     size: 14,
     weight: "normal",
   });
-
   const [networkSettings, setNetworkSettings] = useState<NetworkSettings>({
     autoConnect: true,
     zeroRatedSites: true,
@@ -118,7 +93,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
     maxConnections: 5,
     preferredNetworks: [],
   });
-
   const [aiSettings, setAISettings] = useState<AISettings>({
     autoTheme: true,
     autoWallpaper: true,
@@ -128,7 +102,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
     language: "en",
     swahiliSupport: true,
   });
-
   const [qmoiApps, setQmoiApps] = useState<QmoiAppSettings>({
     browser: true,
     dialer: true,
@@ -137,7 +110,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
     keyboard: true,
     settings: true,
   });
-
   // Automation settings (for master mode)
   const [automation, setAutomation] = useState({
     autoBackup: true,
@@ -145,7 +117,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
     autoDeploy: true,
     autoNotify: true,
   });
-
   // Apply font settings globally
   useEffect(() => {
     document.documentElement.style.setProperty(
@@ -161,52 +132,42 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
       fontSettings.weight,
     );
   }, [fontSettings]);
-
   // Apply language settings
   useEffect(() => {
     document.documentElement.lang = aiSettings.language;
     localStorage.setItem("qmoi-language", aiSettings.language);
   }, [aiSettings.language]);
-
   const handleFontChange = (
     key: keyof FontSettings,
     value: string | number,
   ) => {
     setFontSettings((prev) => ({ ...prev, [key]: value }));
   };
-
   const handleNetworkChange = (key: keyof NetworkSettings, value: unknown) => {
     setNetworkSettings((prev) => ({ ...prev, [key]: value }));
   };
-
   const handleAIChange = (key: keyof AISettings, value: unknown) => {
     setAISettings((prev) => ({ ...prev, [key]: value }));
   };
-
   const handleQmoiAppToggle = (app: keyof QmoiAppSettings) => {
     setQmoiApps((prev) => ({ ...prev, [app]: !prev[app] }));
   };
-
   const handleAutomationChange = (
     key: keyof typeof automation,
     value: boolean,
   ) => {
     setAutomation((prev) => ({ ...prev, [key]: value }));
   };
-
   const updateQmoiApp = async () => {
      update process
     for (let i = 0; i <= 100; i += 10) {
       await new Promise((resolve) => setTimeout(resolve, 100));
     }
   };
-
   const downloadQmoiApp = async (appName: string) => {
     .log(`Downloading ${appName}...`);
   };
-
   if (!isOpen) return null;
-
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg w-full max-w-4xl h-[90vh] overflow-hidden">
@@ -237,7 +198,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
             ✕
           </Button>
         </div>
-
         {/* Automation summary for master */}
         {isMaster && (
           <div className="flex items-center gap-4 p-4 border-b bg-gray-50">
@@ -259,7 +219,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
             ))}
           </div>
         )}
-
         <div className="flex h-full">
           <Tabs defaultValue="general" className="w-full">
             <TabsList className="grid w-full grid-cols-6">
@@ -322,7 +281,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 </TabsTrigger>
               )}
             </TabsList>
-
             <div className="p-4 overflow-y-auto h-full">
               <TabsContent value="general" className="space-y-4">
                 <Card>
@@ -358,7 +316,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                         </SelectContent>
                       </Select>
                     </div>
-
                     <div className="flex items-center justify-between">
                       <Label>
                         {aiSettings.language === "sw"
@@ -375,7 +332,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   </CardContent>
                 </Card>
               </TabsContent>
-
               <TabsContent value="appearance" className="space-y-4">
                 <Card>
                   <CardHeader>
@@ -415,7 +371,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                           </SelectContent>
                         </Select>
                       </div>
-
                       <div>
                         <Label>
                           {aiSettings.language === "sw"
@@ -433,7 +388,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                         />
                       </div>
                     </div>
-
                     <div className="flex items-center justify-between">
                       <Label>
                         {aiSettings.language === "sw"
@@ -450,7 +404,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   </CardContent>
                 </Card>
               </TabsContent>
-
               <TabsContent value="network" className="space-y-4">
                 <Card>
                   <CardHeader>
@@ -480,7 +433,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                         }
                       />
                     </div>
-
                     <div className="flex items-center justify-between">
                       <Label>
                         {aiSettings.language === "sw"
@@ -494,7 +446,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                         }
                       />
                     </div>
-
                     <div className="flex items-center justify-between">
                       <Label>
                         {aiSettings.language === "sw"
@@ -511,7 +462,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   </CardContent>
                 </Card>
               </TabsContent>
-
               <TabsContent value="ai" className="space-y-4">
                 <Card>
                   <CardHeader>
@@ -540,7 +490,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                         }
                       />
                     </div>
-
                     <div className="flex items-center justify-between">
                       <Label>
                         {aiSettings.language === "sw"
@@ -554,7 +503,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                         }
                       />
                     </div>
-
                     <div className="flex items-center justify-between">
                       <Label>
                         {aiSettings.language === "sw"
@@ -568,7 +516,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                         }
                       />
                     </div>
-
                     <div className="flex items-center justify-between">
                       <Label>
                         {aiSettings.language === "sw"
@@ -582,7 +529,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                         }
                       />
                     </div>
-
                     <div className="flex items-center justify-between">
                       <Label>
                         {aiSettings.language === "sw"
@@ -599,7 +545,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   </CardContent>
                 </Card>
               </TabsContent>
-
               <TabsContent value="qmoi-apps" className="space-y-4">
                 <Card>
                   <CardHeader>
@@ -695,7 +640,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   </CardContent>
                 </Card>
               </TabsContent>
-
               {isMaster && (
                 <TabsContent value="master" className="space-y-4">
                   <Card>
@@ -773,5 +717,4 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
     </div>
   );
 };
-
 export default SettingsPanel;

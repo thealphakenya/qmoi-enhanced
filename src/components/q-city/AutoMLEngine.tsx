@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,16 +17,11 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 'use client';
-
-
 interface TrainingJob {
   id: string;
   name: string;
@@ -41,7 +32,6 @@ interface TrainingJob {
   loss: number;
   estimatedTime: string;
 }
-
 interface ModelSuggestion {
   id: string;
   name: string;
@@ -50,7 +40,6 @@ interface ModelSuggestion {
   trainingTime: string;
   recommendation: string;
 }
-
 export const AutoMLEngine: React.FC = () => {
   const [jobs, setJobs] = useState<TrainingJob[]>([
     {
@@ -74,7 +63,6 @@ export const AutoMLEngine: React.FC = () => {
       estimatedTime: 'Completed'
     }
   ]);
-
   const [suggestions, setSuggestions] = useState<ModelSuggestion[]>([
     {
       id: '1',
@@ -93,7 +81,6 @@ export const AutoMLEngine: React.FC = () => {
       recommendation: 'Best for NLP tasks'
     }
   ]);
-
   const startNewTraining = () => {
     const newJob: TrainingJob = {
       id: String(jobs.length + 1),
@@ -107,7 +94,6 @@ export const AutoMLEngine: React.FC = () => {
     };
     setJobs([...jobs, newJob]);
   };
-
   return (
     <div className="space-y-6">
       <Card>
@@ -127,10 +113,8 @@ export const AutoMLEngine: React.FC = () => {
               <TabsTrigger value="suggestions">Model Suggestions</TabsTrigger>
               <TabsTrigger value="hyperparams">Hyperparameters</TabsTrigger>
             </TabsList>
-
             <TabsContent value="jobs" className="space-y-4">
               <Button onClick={startNewTraining} className="w-full">Start New Training Job</Button>
-              
               <div className="space-y-4">
                 {jobs.map((job) => (
                   <Card key={job.id} className="bg-slate-900/50 border-slate-700">
@@ -148,7 +132,6 @@ export const AutoMLEngine: React.FC = () => {
                             {job.status}
                           </Badge>
                         </div>
-
                         <div className="space-y-2">
                           <div className="flex justify-between text-sm">
                             <span className="text-gray-400">Progress</span>
@@ -156,7 +139,6 @@ export const AutoMLEngine: React.FC = () => {
                           </div>
                           <Progress value={job.progress} className="h-2" />
                         </div>
-
                         <div className="grid grid-cols-2 gap-4">
                           <div>
                             <p className="text-sm text-gray-400">Accuracy</p>
@@ -171,7 +153,6 @@ export const AutoMLEngine: React.FC = () => {
                             </p>
                           </div>
                         </div>
-
                         <div className="flex justify-between text-sm pt-2 border-t border-slate-700">
                           <span className="text-gray-400">Estimated Time Remaining</span>
                           <span className="text-cyan-300">{job.estimatedTime}</span>
@@ -182,7 +163,6 @@ export const AutoMLEngine: React.FC = () => {
                 ))}
               </div>
             </TabsContent>
-
             <TabsContent value="suggestions" className="space-y-4">
               <p className="text-sm text-gray-400">Based on your dataset analysis, these models are required:</p>
               <div className="space-y-3">
@@ -214,7 +194,6 @@ export const AutoMLEngine: React.FC = () => {
                 ))}
               </div>
             </TabsContent>
-
             <TabsContent value="hyperparams" className="space-y-4">
               <div className="bg-slate-900/50 border border-slate-700 rounded-lg p-4 space-y-3">
                 <p className="text-sm text-gray-400">AutoML is automatically optimizing these hyperparameters:</p>
@@ -244,5 +223,4 @@ export const AutoMLEngine: React.FC = () => {
     </div>
   );
 };
-
 export default AutoMLEngine;

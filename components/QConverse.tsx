@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,21 +17,12 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
 "use client";
-import { specificExports } from "react";
-import { specificExports } from "./ui/button";
-import { specificExports } from "./ui/card";
-import { specificExports } from "./ui/badge";
-import { specificExports } from "./ui/switch";
-import { specificExports } from "./ui/label";
 import {
   Mic,
   MicOff,
@@ -46,13 +33,11 @@ import {
   Users,
   Child,
 } from "lucide-react";
-
 interface QConverseProps {
   isEnabled: boolean;
   onToggle: (enabled: boolean) => void;
   userId: string;
 }
-
 export const QConverse: React.FC<QConverseProps> = ({
   isEnabled,
   onToggle,
@@ -63,14 +48,11 @@ export const QConverse: React.FC<QConverseProps> = ({
   const [currentText, setCurrentText] = useState("");
   const [language, setLanguage] = useState<"en" | "sw">("en");
   const [recognizedUsers, setRecognizedUsers] = useState<any[]>([]);
-
   const recognitionRef = useRef<any>(null);
   const synthesisRef = useRef<SpeechSynthesis | null>(null);
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       synthesisRef.current = window.speechSynthesis;
-
       const SpeechRecognition =
         window.SpeechRecognition || window.webkitSpeechRecognition;
       if (SpeechRecognition) {
@@ -79,14 +61,11 @@ export const QConverse: React.FC<QConverseProps> = ({
       }
     }
   }, []);
-
   const setupSpeechRecognition = () => {
     if (!recognitionRef.current) return;
-
     recognitionRef.current.continuous = true;
     recognitionRef.current.interimResults = true;
     recognitionRef.current.lang = language === "sw" ? "sw-KE" : "en-US";
-
     recognitionRef.current.onstart = () => setIsListening(true);
     recognitionRef.current.onresult = (event: unknown) => {
       let finalTranscript = "";
@@ -106,33 +85,27 @@ export const QConverse: React.FC<QConverseProps> = ({
       if (isEnabled) setTimeout(() => startListening(), 100);
     };
   };
-
   const processVoiceInput = (transcript: string) => {
     const isChild = detectChildVoice(transcript);
     const response = generateResponse(transcript, isChild);
     speak(response);
   };
-
   const detectChildVoice = (transcript: string): boolean => {
     const childWords = ["mommy", "daddy", "toy", "play", "story", "song"];
     return childWords.some((word) => transcript.toLowerCase().includes(word));
   };
-
   const generateResponse = (transcript: string, isChild: boolean): string => {
     if (isChild) {
       return language === "sw"
         ? "Jambo mtoto! Una nini kusema?"
         : "Hello little one! What would you like to talk about?";
     }
-
     return language === "sw"
       ? "Asante kwa kuzungumza nami. Ninawezaje kukusaidia?"
       : "Thank you for talking with me. How can I help you?";
   };
-
   const speak = (text: string) => {
     if (!synthesisRef.current) return;
-
     synthesisRef.current.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = language === "sw" ? "sw-KE" : "en-US";
@@ -140,25 +113,21 @@ export const QConverse: React.FC<QConverseProps> = ({
     utterance.onend = () => setIsSpeaking(false);
     synthesisRef.current.speak(utterance);
   };
-
   const startListening = () => {
     if (recognitionRef.current && !isListening) {
       recognitionRef.current.start();
     }
   };
-
   const stopListening = () => {
     if (recognitionRef.current && isListening) {
       recognitionRef.current.stop();
     }
   };
-
   const toggleLanguage = () => {
     const newLanguage = language === "en" ? "sw" : "en";
     setLanguage(newLanguage);
     speak(newLanguage === "sw" ? "Lugha imebadilishwa" : "Language changed");
   };
-
   useEffect(() => {
     if (isEnabled) {
       startListening();
@@ -166,7 +135,6 @@ export const QConverse: React.FC<QConverseProps> = ({
       stopListening();
     }
   }, [isEnabled]);
-
   return (
     <Card className="w-full">
       <CardHeader>
@@ -183,7 +151,6 @@ export const QConverse: React.FC<QConverseProps> = ({
           <Label>Enable Q-Converse</Label>
           <Switch checked={isEnabled} onCheckedChange={onToggle} />
         </div>
-
         <div className="grid grid-cols-2 gap-4">
           <div className="flex items-center gap-2">
             <Mic
@@ -206,13 +173,11 @@ export const QConverse: React.FC<QConverseProps> = ({
             </span>
           </div>
         </div>
-
         {currentText && (
           <div className="p-3 bg-gray-50 rounded-lg">
             <p className="text-sm text-gray-700">{currentText}</p>
           </div>
         )}
-
         <div className="flex gap-2">
           <Button
             onClick={toggleLanguage}
@@ -223,7 +188,6 @@ export const QConverse: React.FC<QConverseProps> = ({
             <Languages className="h-4 w-4" />
             {language === "sw" ? "Kiswahili" : "English"}
           </Button>
-
           <Button
             onClick={() => speak("Hello! How can I help you today?")}
             variant="outline"

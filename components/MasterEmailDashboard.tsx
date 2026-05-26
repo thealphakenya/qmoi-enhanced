@@ -2,7 +2,6 @@
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10,22 +9,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
-import { specificExports } from "react";
-
 interface EmailMessage {
   id: string;
   from: string;
@@ -46,7 +38,6 @@ interface EmailMessage {
   read: boolean;
   labels: string[];
 }
-
 interface AutoReplyRule {
   id: string;
   name: string;
@@ -70,7 +61,6 @@ interface AutoReplyRule {
   lastUsed?: Date;
   usageCount: number;
 }
-
 interface EmailTemplate {
   id: string;
   name: string;
@@ -85,7 +75,6 @@ interface EmailTemplate {
   lastUsed?: Date;
   usageCount: number;
 }
-
 interface EmailAnalytics {
   account: string;
   period: {
@@ -110,7 +99,6 @@ interface EmailAnalytics {
     max: number;
   };
 }
-
 interface EmailEvent {
   type: "email-received" | "email-processed" | "auto-reply-sent" | "integration-triggered";
   email: EmailMessage;
@@ -118,7 +106,6 @@ interface EmailEvent {
   integration?: any;
   timestamp: Date;
 }
-
 export default /**
  * MasterEmailDashboard function
  */
@@ -137,7 +124,6 @@ function MasterEmailDashboard(): any {
   const [showComposeModal, setShowComposeModal] = useState(false);
   const [showRuleModal, setShowRuleModal] = useState(false);
   const [showTemplateModal, setShowTemplateModal] = useState(false);
-
   // Compose form state
   const [composeForm, setComposeForm] = useState({
     to: "",
@@ -149,7 +135,6 @@ function MasterEmailDashboard(): any {
     selectedTemplate: "",
     templateVariables: {} as Record<string, string>
   });
-
   // Auto-reply rule form state
   const [ruleForm, setRuleForm] = useState({
     name: "",
@@ -161,7 +146,6 @@ function MasterEmailDashboard(): any {
     priority: 1,
     enabled: true
   });
-
   // standard form state
   const [templateForm, setTemplateForm] = useState({
     name: "",
@@ -170,23 +154,19 @@ function MasterEmailDashboard(): any {
     body: "",
     variables: ""
   });
-
   const eventSourceRef = useRef<EventSource | null>(null);
-
   useEffect(() => {
     loadEmails();
     loadAutoReplyRules();
     loadEmailTemplates();
     loadAnalytics();
     setupRealtimeUpdates();
-
     return () => {
       if (eventSourceRef.current) {
         eventSourceRef.current.close();
       }
     };
   }, [selectedAccount]);
-
   const loadEmails = async () => {
     setIsLoading(true);
     try {
@@ -201,7 +181,6 @@ function MasterEmailDashboard(): any {
       setIsLoading(false);
     }
   };
-
   const loadAutoReplyRules = async () => {
     try {
       const response = await apiClient.get(`/api/enhanced-email/rules?account=${encodeURIComponent(selectedAccount)}`);
@@ -213,7 +192,6 @@ function MasterEmailDashboard(): any {
       logger.error("Failed to load auto-reply rules:", error);
     }
   };
-
   const loadEmailTemplates = async () => {
     try {
       const response = await apiClient.get("/api/enhanced-email/templates");
@@ -225,7 +203,6 @@ function MasterEmailDashboard(): any {
       logger.error("Failed to load email templates:", error);
     }
   };
-
   const loadAnalytics = async () => {
     try {
       const response = await apiClient.get(`/api/enhanced-email/analytics?account=${encodeURIComponent(selectedAccount)}&days=30`);
@@ -237,29 +214,23 @@ function MasterEmailDashboard(): any {
       logger.error("Failed to load email analytics:", error);
     }
   };
-
   const setupRealtimeUpdates = () => {
     if (eventSourceRef.current) {
       eventSourceRef.current.close();
     }
-
     eventSourceRef.current = new EventSource(`/api/enhanced-email/realtime?account=${encodeURIComponent(selectedAccount)}`);
-
     eventSourceRef.current.onmessage = (event) => {
       const emailEvent: EmailEvent = JSON.parse(event.data);
       setRealtimeEvents(prev => [emailEvent, prev.slice(0, 49)]); // Keep last 50 events
-
       // Refresh emails if new email received
       if (emailEvent.type === "email-received") {
         loadEmails();
       }
     };
-
     eventSourceRef.current.onerror = (error) => {
       logger.error("Realtime connection error:", error);
     };
   };
-
   const handleSendEmail = async () => {
     try {
       const response = await apiClient.get("/api/enhanced-email/send", {
@@ -277,7 +248,6 @@ function MasterEmailDashboard(): any {
           templateVariables: composeForm.templateVariables
         })
       });
-
       const data = await response.json();
       if (data.success) {
         setShowComposeModal(false);
@@ -294,7 +264,6 @@ function MasterEmailDashboard(): any {
       notification.show("Failed to send email");
     }
   };
-
   const handleCreateAutoReplyRule = async () => {
     try {
       const response = await apiClient.get("/api/enhanced-email/rules", {
@@ -316,7 +285,6 @@ function MasterEmailDashboard(): any {
           enabled: ruleForm.enabled
         })
       });
-
       const data = await response.json();
       if (data.success) {
         setShowRuleModal(false);
@@ -334,7 +302,6 @@ function MasterEmailDashboard(): any {
       notification.show("Failed to create auto-reply rule");
     }
   };
-
   const handleCreateTemplate = async () => {
     try {
       const response = await apiClient.get("/api/enhanced-email/templates", {
@@ -348,7 +315,6 @@ function MasterEmailDashboard(): any {
           variables: templateForm.variables.split(",").map(v => v.trim())
         })
       });
-
       const data = await response.json();
       if (data.success) {
         setShowTemplateModal(false);
@@ -363,7 +329,6 @@ function MasterEmailDashboard(): any {
       notification.show("Failed to create email standard");
     }
   };
-
   const handleMarkAsRead = async (emailId: string) => {
     try {
       await apiClient.get("/api/emails/mark-read", {
@@ -376,11 +341,9 @@ function MasterEmailDashboard(): any {
       logger.error("Failed to mark email as read:", error);
     }
   };
-
   const formatDate = (date: Date) => {
     return new Date(date).toLocaleString();
   };
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case "email-received": return "bg-blue-100 text-blue-800";
@@ -390,7 +353,6 @@ function MasterEmailDashboard(): any {
       default: return "bg-gray-100 text-gray-800";
     }
   };
-
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-7xl mx-auto">
@@ -419,7 +381,6 @@ function MasterEmailDashboard(): any {
             </div>
           </div>
         </div>
-
         {/* Navigation Tabs */}
         <div className="bg-white rounded-lg shadow-sm mb-6">
           <div className="border-b border-gray-200">
@@ -451,7 +412,6 @@ function MasterEmailDashboard(): any {
             </nav>
           </div>
         </div>
-
         {/* Tab Content */}
         <div className="bg-white rounded-lg shadow-sm">
           {activeTab === "inbox" && (
@@ -466,7 +426,6 @@ function MasterEmailDashboard(): any {
                   {isLoading ? "Loading" : "Refresh"}
                 </button>
               </div>
-
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Email List */}
                 <div className="lg:col-span-1 border-r border-gray-200 pr-6">
@@ -501,7 +460,6 @@ function MasterEmailDashboard(): any {
                     ))}
                   </div>
                 </div>
-
                 {/* Email Viewer */}
                 <div className="lg:col-span-2">
                   {selectedEmail ? (
@@ -527,7 +485,6 @@ function MasterEmailDashboard(): any {
                           )}
                         </div>
                       </div>
-
                       <div className="prose max-w-none">
                         {selectedEmail.body.html ? (
                           <div dangerouslySetInnerHTML={{ __html: selectedEmail.body.html }} />
@@ -535,7 +492,6 @@ function MasterEmailDashboard(): any {
                           <pre className="whitespace-pre-wrap text-gray-800">{selectedEmail.body.text}</pre>
                         )}
                       </div>
-
                       {selectedEmail.attachments && selectedEmail.attachments.length > 0 && (
                         <div className="mt-6">
                           <h4 className="text-sm font-medium text-gray-900 mb-2">Attachments</h4>
@@ -561,7 +517,6 @@ function MasterEmailDashboard(): any {
               </div>
             </div>
           )}
-
           {activeTab === "rules" && (
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
@@ -573,7 +528,6 @@ function MasterEmailDashboard(): any {
                   Create Rule
                 </button>
               </div>
-
               <div className="space-y-4">
                 {autoReplyRules.map(rule => (
                   <div key={rule.id} className="border border-gray-200 rounded-lg p-4">
@@ -606,7 +560,6 @@ function MasterEmailDashboard(): any {
               </div>
             </div>
           )}
-
           {activeTab === "templates" && (
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
@@ -618,7 +571,6 @@ function MasterEmailDashboard(): any {
                   Create standard
                 </button>
               </div>
-
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {emailTemplates.map(standard => (
                   <div key={standard.id} className="border border-gray-200 rounded-lg p-4">
@@ -637,11 +589,9 @@ function MasterEmailDashboard(): any {
               </div>
             </div>
           )}
-
           {activeTab === "analytics" && analytics && (
             <div className="p-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-6">Email Analytics</h2>
-
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <div className="bg-blue-50 p-4 rounded-lg">
                   <h3 className="text-sm font-medium text-blue-800">Sent</h3>
@@ -662,7 +612,6 @@ function MasterEmailDashboard(): any {
                   </p>
                 </div>
               </div>
-
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
                   <h3 className="text-lg font-medium text-gray-900 mb-4">Top Senders</h3>
@@ -675,7 +624,6 @@ function MasterEmailDashboard(): any {
                     ))}
                   </div>
                 </div>
-
                 <div>
                   <h3 className="text-lg font-medium text-gray-900 mb-4">Top Subjects</h3>
                   <div className="space-y-2">
@@ -691,7 +639,6 @@ function MasterEmailDashboard(): any {
             </div>
           )}
         </div>
-
         <div className="mt-6 bg-white rounded-lg shadow-sm p-6">
           <div className="space-y-2 max-h-64 overflow-y-auto">
             {realtimeEvents.map((event, index) => (
@@ -709,7 +656,6 @@ function MasterEmailDashboard(): any {
             ))}
           </div>
         </div>
-
         {/* Compose Modal */}
         {showComposeModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -723,7 +669,6 @@ function MasterEmailDashboard(): any {
                   ✕
                 </button>
               </div>
-
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">To</label>
@@ -732,10 +677,8 @@ function MasterEmailDashboard(): any {
                     value={composeForm.to}
                     onChange={(e) => setComposeForm(prev => ({ prev, to: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    
                   />
                 </div>
-
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
                   <input
@@ -745,7 +688,6 @@ function MasterEmailDashboard(): any {
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
-
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
                   <textarea
@@ -755,7 +697,6 @@ function MasterEmailDashboard(): any {
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
-
                 <div className="flex justify-end space-x-3">
                   <button
                     onClick={() => setShowComposeModal(false)}
@@ -774,7 +715,6 @@ function MasterEmailDashboard(): any {
             </div>
           </div>
         )}
-
         {/* Auto-Reply Rule Modal */}
         {showRuleModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -788,7 +728,6 @@ function MasterEmailDashboard(): any {
                   ✕
                 </button>
               </div>
-
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Rule Name</label>
@@ -799,7 +738,6 @@ function MasterEmailDashboard(): any {
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
-
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">From (comma-separated)</label>
                   <input
@@ -807,10 +745,8 @@ function MasterEmailDashboard(): any {
                     value={ruleForm.from}
                     onChange={(e) => setRuleForm(prev => ({ prev, from: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    
                   />
                 </div>
-
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Subject Keywords (comma-separated)</label>
                   <input
@@ -818,10 +754,8 @@ function MasterEmailDashboard(): any {
                     value={ruleForm.subject}
                     onChange={(e) => setRuleForm(prev => ({ prev, subject: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    
                   />
                 </div>
-
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Reply Subject</label>
                   <input
@@ -829,10 +763,8 @@ function MasterEmailDashboard(): any {
                     value={ruleForm.replySubject}
                     onChange={(e) => setRuleForm(prev => ({ prev, replySubject: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    
                   />
                 </div>
-
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Reply Message</label>
                   <textarea
@@ -842,7 +774,6 @@ function MasterEmailDashboard(): any {
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
-
                 <div className="flex justify-end space-x-3">
                   <button
                     onClick={() => setShowRuleModal(false)}
@@ -861,7 +792,6 @@ function MasterEmailDashboard(): any {
             </div>
           </div>
         )}
-
         {/* standard Modal */}
         {showTemplateModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -875,7 +805,6 @@ function MasterEmailDashboard(): any {
                   ✕
                 </button>
               </div>
-
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">standard Name</label>
@@ -886,7 +815,6 @@ function MasterEmailDashboard(): any {
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
-
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
                   <input
@@ -894,10 +822,8 @@ function MasterEmailDashboard(): any {
                     value={templateForm.category}
                     onChange={(e) => setTemplateForm(prev => ({ prev, category: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    
                   />
                 </div>
-
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
                   <input
@@ -905,10 +831,8 @@ function MasterEmailDashboard(): any {
                     value={templateForm.subject}
                     onChange={(e) => setTemplateForm(prev => ({ prev, subject: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    
                   />
                 </div>
-
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Message Body</label>
                   <textarea
@@ -916,10 +840,8 @@ function MasterEmailDashboard(): any {
                     onChange={(e) => setTemplateForm(prev => ({ prev, body: e.target.value }))}
                     rows={8}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    
                   />
                 </div>
-
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Variables (comma-separated)</label>
                   <input
@@ -927,10 +849,8 @@ function MasterEmailDashboard(): any {
                     value={templateForm.variables}
                     onChange={(e) => setTemplateForm(prev => ({ prev, variables: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    
                   />
                 </div>
-
                 <div className="flex justify-end space-x-3">
                   <button
                     onClick={() => setShowTemplateModal(false)}

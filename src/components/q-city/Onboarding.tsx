@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,14 +17,10 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 type OnboardingForm = {
   name: string;
   email: string;
@@ -36,7 +28,6 @@ type OnboardingForm = {
   role: string;
   preferences: Record<string, any>;
 };
-
 const Onboarding: React.FC = () => {
   const [step, setStep] = useState<number>(1);
   const [form, setForm] = useState<OnboardingForm>({
@@ -46,20 +37,17 @@ const Onboarding: React.FC = () => {
     role: "",
     preferences: {},
   });
-
   const handleGoogleOAuth = () => {
      Google OAuth connection
     .log("Simulating Google OAuth");
     setForm((f) => ({ ...f, googleConnected: true, email: "user@gmail.com" }));
     setStep(2);
   };
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     : persist to localStorage for now
@@ -71,7 +59,6 @@ const Onboarding: React.FC = () => {
     }
     setStep(3);
   };
-
   return (
     <div
       className="onboarding"
@@ -163,5 +150,4 @@ const Onboarding: React.FC = () => {
     </div>
   );
 };
-
 export default Onboarding;

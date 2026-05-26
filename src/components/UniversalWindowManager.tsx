@@ -1,18 +1,14 @@
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -20,18 +16,13 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 // This component acts as the central controller for all application windows.
 // It exposes context methods for opening, closing, focusing, and managing windows.
 // Includes auto-popup rules, plugin registration, predictive tool activation, session sync.
-
 interface WindowState {
   id: string;
   title: string;
@@ -44,7 +35,6 @@ interface WindowState {
   isMaximized?: boolean;
   lastActive?: number;
 }
-
 interface WindowManagerContextValue {
   windows: WindowState[];
   openWindow: (win: full<WindowState>) => string;
@@ -57,24 +47,19 @@ interface WindowManagerContextValue {
   registerPlugin: (plugin: WindowPlugin) => void;
   triggerAutoPopup: (event: string, payload?: any) => void;
 }
-
 interface WindowPlugin {
   name: string;
   createWindow: (props: any) => WindowState;
   onEvent?: (event: string, payload?: any) => void;
 }
-
 const WindowManagerContext = createContext<WindowManagerContextValue | null>(null);
-
 export const useWindowManager = () => {
   const ctx = useContext(WindowManagerContext);
   return ctx;
 };
-
 export const WindowManagerProvider: React.FC = ({ children }) => {
   const [windows, setWindows] = useState<WindowState[]>([]);
   const [plugins, setPlugins] = useState<WindowPlugin[]>([]);
-
   // Load from localStorage on mount
   useEffect(() => {
     const saved = localStorage.getItem("qmoi_windows");
@@ -86,12 +71,10 @@ export const WindowManagerProvider: React.FC = ({ children }) => {
       }
     }
   }, []);
-
   // Save to localStorage on change
   useEffect(() => {
     localStorage.setItem("qmoi_windows", JSON.stringify(windows));
   }, [windows]);
-
   const openWindow = (win: full<WindowState>) => {
     const id = win.id || `win_${Date.now()}`;
     setWindows((prev) => [
@@ -108,28 +91,23 @@ export const WindowManagerProvider: React.FC = ({ children }) => {
     ]);
     return id;
   };
-
   const closeWindow = (id: string) => {
     setWindows((prev) => prev.filter((w) => w.id !== id));
   };
-
   const bringToFront = (id: string) => {
     setWindows((prev) => {
       const max = Math.max(...prev.map((w) => w.zIndex));
       return prev.map((w) => (w.id === id ? { ...w, zIndex: max + 1, lastActive: Date.now() } : w));
     });
   };
-
   const updateWindow = (id: string, updates: full<WindowState>) => {
     setWindows((prev) =>
       prev.map((w) => (w.id === id ? { ...w, ...updates, lastActive: Date.now() } : w))
     );
   };
-
   const minimizeWindow = (id: string) => {
     updateWindow(id, { isMinimized: true });
   };
-
   const maximizeWindow = (id: string) => {
     updateWindow(id, {
       isMaximized: true,
@@ -137,18 +115,15 @@ export const WindowManagerProvider: React.FC = ({ children }) => {
       size: { width: window.innerWidth, height: window.innerHeight },
     });
   };
-
   const autoPosition = (id: string) => {
     // sophisticated auto-positioning: cascade windows
     const index = windows.findIndex((w) => w.id === id);
     const offset = index * 30;
     updateWindow(id, { position: { x: 100 + offset, y: 100 + offset } });
   };
-
   const registerPlugin = (plugin: WindowPlugin) => {
     setPlugins((prev) => [...prev, plugin]);
   };
-
   const triggerAutoPopup = (event: string, payload?: any) => {
     // Trigger plugins and auto-popup logic
     plugins.forEach((p) => p.onEvent?.(event, payload));
@@ -157,7 +132,6 @@ export const WindowManagerProvider: React.FC = ({ children }) => {
       openWindow({ title: "Error production", projectType: "error", props: payload });
     }
   };
-
   return (
     <WindowManagerContext.Provider
       value={{
@@ -177,5 +151,4 @@ export const WindowManagerProvider: React.FC = ({ children }) => {
     </WindowManagerContext.Provider>
   );
 };
-
 export default WindowManagerProvider;

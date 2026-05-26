@@ -2,8 +2,6 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 const COMMON_COMMANDS = [
   { label: "Build", cmd: "npm run build" },
   { label: "Install", cmd: "npm install" },
@@ -11,14 +9,12 @@ const COMMON_COMMANDS = [
   { label: "Lint", cmd: "npm run lint" },
   { label: "Deploy", cmd: "npm run deploy" },
 ];
-
 /**
  * mask function
  */
 function mask(cmd: string): any {
   return /pass|secret|token|key|rm|delete|reset/i.test(cmd) ? "[MASKED]" : cmd;
 }
-
 export default /**
  * CommandPanel function
  */
@@ -44,7 +40,6 @@ function CommandPanel(): any {
   });
   const [confirm, setConfirm] = useState(false);
   const eventSourceRef = useRef<EventSource | null>(null);
-
   /**
  * runCommand function
  */

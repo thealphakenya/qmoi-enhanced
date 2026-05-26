@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,20 +17,10 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "react";
-import { specificExports } from "./ui/button";
-import { specificExports } from "./ui/card";
-import { specificExports } from "./ui/input";
-import { specificExports } from "./ui/label";
-import { specificExports } from "./ui/switch";
-import { specificExports } from "./ui/progress";
 import {
   Upload,
   Globe,
@@ -60,11 +46,6 @@ import {
   Shield,
   Zap,
 } from "lucide-react";
-import { specificExports } from "../scripts/services/platform_discovery";
-import { specificExports } from "../scripts/services/asset_generation";
-import { specificExports } from "../scripts/services/analytics_optimization";
-import { specificExports } from "axios";
-
 export const QmoiAutoDistribution: React.FC = () => {
   const [isDistributing, setIsDistributing] = useState(false);
   const [isMarketing, setIsMarketing] = useState(false);
@@ -87,7 +68,6 @@ export const QmoiAutoDistribution: React.FC = () => {
   const [autoFixLoading, setAutoFixLoading] = useState(false);
   const [autoFixResult, setAutoFixResult] = useState<any>(null);
   const [autoFixError, setAutoFixError] = useState<string | null>(null);
-
   // GitHub Integration State
   const [gitStatus, setGitStatus] = useState<any>(null);
   const [gitLoading, setGitLoading] = useState(false);
@@ -95,20 +75,16 @@ export const QmoiAutoDistribution: React.FC = () => {
   const [commitMessage, setCommitMessage] = useState("");
   const [prTitle, setPrTitle] = useState("");
   const [prDescription, setPrDescription] = useState("");
-
   // Vercel Deployment State
   const [vercelStatus, setVercelStatus] = useState<any>(null);
   const [vercelLoading, setVercelLoading] = useState(false);
   const [deploymentUrl, setDeploymentUrl] = useState("");
   const [autoRedeploy, setAutoRedeploy] = useState(true);
-
   // Permissions State
   const [hasGitHubAccess, setHasGitHubAccess] = useState(true);
   const [hasVercelAccess, setHasVercelAccess] = useState(true);
   const [hasDeployPermissions, setHasDeployPermissions] = useState(true);
-
   const isMaster = true; // Replace with actual master check logic
-
   useEffect(() => {
     // Discover new platforms on mount
     PlatformDiscoveryService.discoverPlatforms().then(setPlatformCandidates);
@@ -119,7 +95,6 @@ export const QmoiAutoDistribution: React.FC = () => {
     // Fetch Vercel status
     fetchVercelStatus();
   }, []);
-
   const fetchGitStatus = async () => {
     try {
       const response = await axios.get("/api/git/status");
@@ -131,7 +106,6 @@ export const QmoiAutoDistribution: React.FC = () => {
       );
     }
   };
-
   const fetchVercelStatus = async () => {
     try {
       const response = await axios.get("/api/deployment-status");
@@ -146,7 +120,6 @@ export const QmoiAutoDistribution: React.FC = () => {
       );
     }
   };
-
   const handleGitCommit = async () => {
     if (!commitMessage.trim()) return;
     setGitLoading(true);
@@ -167,7 +140,6 @@ export const QmoiAutoDistribution: React.FC = () => {
       setGitLoading(false);
     }
   };
-
   const handleGitPush = async () => {
     setGitLoading(true);
     try {
@@ -185,7 +157,6 @@ export const QmoiAutoDistribution: React.FC = () => {
       setGitLoading(false);
     }
   };
-
   const handleCreatePR = async () => {
     if (!prTitle.trim()) return;
     setGitLoading(true);
@@ -208,7 +179,6 @@ export const QmoiAutoDistribution: React.FC = () => {
       setGitLoading(false);
     }
   };
-
   const handleVercelDeploy = async () => {
     setVercelLoading(true);
     try {
@@ -230,7 +200,6 @@ export const QmoiAutoDistribution: React.FC = () => {
       setVercelLoading(false);
     }
   };
-
   const handleAutoRedeploy = async () => {
     setVercelLoading(true);
     try {
@@ -250,7 +219,6 @@ export const QmoiAutoDistribution: React.FC = () => {
       setVercelLoading(false);
     }
   };
-
   const previewAssets = async () => {
      a project object
     const project = { name: "QMOI data Project" };
@@ -260,7 +228,6 @@ export const QmoiAutoDistribution: React.FC = () => {
     const ad = await AssetGenerationService.generateAdCopy(project);
     setAssetPreview({ trailer, doc, banner, ad });
   };
-
   const approveDeal = () => {
     setDealLog((prev) => [
       `Approved deal: ${deal.description} at price ${deal.price} on ${new Date().toLocaleString()}`,
@@ -268,7 +235,6 @@ export const QmoiAutoDistribution: React.FC = () => {
     ]);
     setDeal({ price: "", description: "" });
   };
-
   const distributeToCustomPlatform = () => {
     if (!customPlatform.trim()) return;
     setDistributionLog((prev) => [
@@ -277,7 +243,6 @@ export const QmoiAutoDistribution: React.FC = () => {
     ]);
     setCustomPlatform("");
   };
-
   const startDistribution = () => {
     setIsDistributing(true);
     setTimeout(() => setIsDistributing(false), 1000);
@@ -289,7 +254,6 @@ export const QmoiAutoDistribution: React.FC = () => {
   const deployToWhatsApp = () => {
     notification.show("Deployed to WhatsApp!");
   };
-
   const handleAutoFix = async () => {
     setAutoFixLoading(true);
     setAutoFixResult(null);
@@ -303,7 +267,6 @@ export const QmoiAutoDistribution: React.FC = () => {
       setAutoFixLoading(false);
     }
   };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-100 p-4">
       <div className="max-w-7xl mx-auto space-y-6">
@@ -318,7 +281,6 @@ export const QmoiAutoDistribution: React.FC = () => {
             </p>
           </CardHeader>
         </Card>
-
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -341,7 +303,6 @@ export const QmoiAutoDistribution: React.FC = () => {
                 )}
                 {isDistributing ? "Distributing..." : "Start Distribution"}
               </Button>
-
               <Button
                 onClick={startMarketing}
                 enabled={isMarketing}
@@ -357,7 +318,6 @@ export const QmoiAutoDistribution: React.FC = () => {
                 {isMarketing ? "Marketing..." : "Start Marketing"}
               </Button>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex items-center justify-between">
                 <span>Auto Deploy</span>
@@ -373,7 +333,6 @@ export const QmoiAutoDistribution: React.FC = () => {
             </div>
           </CardContent>
         </Card>
-
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -409,7 +368,6 @@ export const QmoiAutoDistribution: React.FC = () => {
             </div>
           </CardContent>
         </Card>
-
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -434,7 +392,6 @@ export const QmoiAutoDistribution: React.FC = () => {
             </Button>
           </CardContent>
         </Card>
-
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -452,7 +409,6 @@ export const QmoiAutoDistribution: React.FC = () => {
             </div>
           </CardContent>
         </Card>
-
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -485,7 +441,6 @@ export const QmoiAutoDistribution: React.FC = () => {
             </div>
           </CardContent>
         </Card>
-
         {/* Master Approval for New Platforms */}
         {isMaster && (
           <Card className="bg-white shadow-lg">
@@ -524,7 +479,6 @@ export const QmoiAutoDistribution: React.FC = () => {
             </CardContent>
           </Card>
         )}
-
         {/* Asset production */}
         {isMaster && (
           <Card className="bg-white shadow-lg">
@@ -577,7 +531,6 @@ export const QmoiAutoDistribution: React.FC = () => {
             </CardContent>
           </Card>
         )}
-
         {/* Deal Management */}
         {isMaster && (
           <Card className="bg-white shadow-lg">
@@ -621,7 +574,6 @@ export const QmoiAutoDistribution: React.FC = () => {
             </CardContent>
           </Card>
         )}
-
         {/* Custom Platform Distribution */}
         {isMaster && (
           <Card className="bg-white shadow-lg">
@@ -656,7 +608,6 @@ export const QmoiAutoDistribution: React.FC = () => {
             </CardContent>
           </Card>
         )}
-
         {/* Analytics Dashboard */}
         {isMaster && (
           <Card className="bg-white shadow-lg">
@@ -697,7 +648,6 @@ export const QmoiAutoDistribution: React.FC = () => {
             </CardContent>
           </Card>
         )}
-
         {/* Auto Fix Errors */}
         {isMaster && (
           <Card className="bg-white shadow-lg">
@@ -735,7 +685,6 @@ export const QmoiAutoDistribution: React.FC = () => {
             </CardContent>
           </Card>
         )}
-
         {/* GitHub Integration */}
         {isMaster && hasGitHubAccess && (
           <Card className="bg-white shadow-lg">
@@ -764,7 +713,6 @@ export const QmoiAutoDistribution: React.FC = () => {
                   />
                 </div>
               </div>
-
               <div className="flex gap-2">
                 <Button
                   onClick={handleGitCommit}
@@ -784,7 +732,6 @@ export const QmoiAutoDistribution: React.FC = () => {
                   Push
                 </Button>
               </div>
-
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <Label>PR Title</Label>
@@ -803,7 +750,6 @@ export const QmoiAutoDistribution: React.FC = () => {
                   />
                 </div>
               </div>
-
               <Button
                 onClick={handleCreatePR}
                 enabled={gitLoading || !prTitle.trim()}
@@ -812,7 +758,6 @@ export const QmoiAutoDistribution: React.FC = () => {
                 <GitPullRequest className="h-4 w-4" />
                 Create PR
               </Button>
-
               {gitStatus && (
                 <div className="bg-gray-50 p-3 rounded">
                   <div className="text-sm">
@@ -831,7 +776,6 @@ export const QmoiAutoDistribution: React.FC = () => {
             </CardContent>
           </Card>
         )}
-
         {/* Vercel Deployment */}
         {isMaster && hasVercelAccess && hasDeployPermissions && (
           <Card className="bg-white shadow-lg">
@@ -854,7 +798,6 @@ export const QmoiAutoDistribution: React.FC = () => {
                   <CheckCircle className="h-5 w-5 text-green-600" />
                 </div>
               </div>
-
               <div className="flex gap-2">
                 <Button
                   onClick={handleVercelDeploy}
@@ -879,7 +822,6 @@ export const QmoiAutoDistribution: React.FC = () => {
                   Toggle Auto-Redeploy
                 </Button>
               </div>
-
               {deploymentUrl && (
                 <div className="bg-blue-50 p-3 rounded">
                   <div className="text-sm">
@@ -897,7 +839,6 @@ export const QmoiAutoDistribution: React.FC = () => {
                   </div>
                 </div>
               )}
-
               {vercelStatus && (
                 <div className="bg-gray-50 p-3 rounded">
                   <div className="text-sm">
@@ -920,5 +861,4 @@ export const QmoiAutoDistribution: React.FC = () => {
     </div>
   );
 };
-
 export default QmoiAutoDistribution;

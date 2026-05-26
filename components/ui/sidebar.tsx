@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,36 +17,18 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
 "use client";
-
-import { specificExports } from "react";
-import { specificExports } from "@radix-ui/react-slot";
-import { specificExports } from "class-variance-authority";
-import { specificExports } from "lucide-react";
-
-import { specificExports } from "@/hooks/use-mobile";
-import { specificExports } from "@/lib/utils";
-import { specificExports } from "@mui/material/Button";
-import { specificExports } from "@/components/ui/input";
-import { specificExports } from "@/components/ui/separator";
-import { specificExports } from "@/components/ui/sheet";
-import { specificExports } from "@/components/ui/complete";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-
 const SIDEBAR_WIDTH_MOBILE = "260px";
-
 interface SidebarContextType {
   isOpen: boolean;
   toggle: () => void;
@@ -59,7 +37,6 @@ interface SidebarContextType {
   openMobile: boolean;
   setOpenMobile: (open: boolean) => void;
 }
-
 const SidebarContext = React.createContext<SidebarContextType>({
   isOpen: false,
   toggle: () => {},
@@ -68,7 +45,6 @@ const SidebarContext = React.createContext<SidebarContextType>({
   openMobile: false,
   setOpenMobile: () => {},
 });
-
 export /**
  * useSidebar function
  */
@@ -78,7 +54,6 @@ function useSidebar(): any {
   }
   return context;
 }
-
 const SidebarProvider = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
@@ -89,12 +64,10 @@ const SidebarProvider = React.forwardRef<
   const [state, setState] = useState<"expanded" | "collapsed">(
     "expanded",
   );
-
   const toggleSidebar = React.useCallback(() => {
     setOpen((prev) => !prev);
     setState((prev) => (prev === "expanded" ? "collapsed" : "expanded"));
   }, []);
-
   const contextValue = React.useMemo<SidebarContextType>(
     () => ({
       isOpen: open,
@@ -106,7 +79,6 @@ const SidebarProvider = React.forwardRef<
     }),
     [open, toggleSidebar, isMobile, state, openMobile, setOpenMobile],
   );
-
   return (
     <SidebarContext.Provider value={contextValue}>
       <div ref={ref} className={cn("relative", className)} {props}>
@@ -116,7 +88,6 @@ const SidebarProvider = React.forwardRef<
   );
 });
 SidebarProvider.displayName = "SidebarProvider";
-
 const Sidebar = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> & {
@@ -137,7 +108,6 @@ const Sidebar = React.forwardRef<
     ref,
   ) => {
     const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
-
     if (collapsible === "none") {
       return (
         <div
@@ -152,7 +122,6 @@ const Sidebar = React.forwardRef<
         </div>
       );
     }
-
     if (isMobile) {
       return (
         <Sheet open={openMobile} onOpenChange={setOpenMobile} {props}>
@@ -172,7 +141,6 @@ const Sidebar = React.forwardRef<
         </Sheet>
       );
     }
-
     return (
       <div
         ref={ref}
@@ -219,13 +187,11 @@ const Sidebar = React.forwardRef<
   },
 );
 Sidebar.displayName = "Sidebar";
-
 const SidebarTrigger = React.forwardRef<
   React.ElementRef<typeof Button>,
   React.ComponentProps<typeof Button>
 >(({ className, onClick, props }, ref) => {
   const { toggle } = useSidebar();
-
   return (
     <Button
       ref={ref}
@@ -245,13 +211,11 @@ const SidebarTrigger = React.forwardRef<
   );
 });
 SidebarTrigger.displayName = "SidebarTrigger";
-
 const SidebarRail = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<"button">
 >(({ className, props }, ref) => {
   const { toggle } = useSidebar();
-
   return (
     <button
       ref={ref}
@@ -274,7 +238,6 @@ const SidebarRail = React.forwardRef<
   );
 });
 SidebarRail.displayName = "SidebarRail";
-
 const SidebarInset = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"main">
@@ -292,7 +255,6 @@ const SidebarInset = React.forwardRef<
   );
 });
 SidebarInset.displayName = "SidebarInset";
-
 const SidebarInput = React.forwardRef<
   React.ElementRef<typeof Input>,
   React.ComponentProps<typeof Input>
@@ -310,7 +272,6 @@ const SidebarInput = React.forwardRef<
   );
 });
 SidebarInput.displayName = "SidebarInput";
-
 const SidebarHeader = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div">
@@ -325,7 +286,6 @@ const SidebarHeader = React.forwardRef<
   );
 });
 SidebarHeader.displayName = "SidebarHeader";
-
 const SidebarFooter = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div">
@@ -340,7 +300,6 @@ const SidebarFooter = React.forwardRef<
   );
 });
 SidebarFooter.displayName = "SidebarFooter";
-
 const SidebarSeparator = React.forwardRef<
   React.ElementRef<typeof Separator>,
   React.ComponentProps<typeof Separator>
@@ -355,7 +314,6 @@ const SidebarSeparator = React.forwardRef<
   );
 });
 SidebarSeparator.displayName = "SidebarSeparator";
-
 const SidebarContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div">
@@ -373,7 +331,6 @@ const SidebarContent = React.forwardRef<
   );
 });
 SidebarContent.displayName = "SidebarContent";
-
 const SidebarGroup = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div">
@@ -388,13 +345,11 @@ const SidebarGroup = React.forwardRef<
   );
 });
 SidebarGroup.displayName = "SidebarGroup";
-
 const SidebarGroupLabel = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> & { asChild?: boolean }
 >(({ className, asChild = false, props }, ref) => {
   const Comp = asChild ? Slot : "div";
-
   return (
     <Comp
       ref={ref}
@@ -409,13 +364,11 @@ const SidebarGroupLabel = React.forwardRef<
   );
 });
 SidebarGroupLabel.displayName = "SidebarGroupLabel";
-
 const SidebarGroupAction = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<"button"> & { asChild?: boolean }
 >(({ className, asChild = false, props }, ref) => {
   const Comp = asChild ? Slot : "button";
-
   return (
     <Comp
       ref={ref}
@@ -432,7 +385,6 @@ const SidebarGroupAction = React.forwardRef<
   );
 });
 SidebarGroupAction.displayName = "SidebarGroupAction";
-
 const SidebarGroupContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div">
@@ -445,7 +397,6 @@ const SidebarGroupContent = React.forwardRef<
   />
 ));
 SidebarGroupContent.displayName = "SidebarGroupContent";
-
 const SidebarMenu = React.forwardRef<
   HTMLUListElement,
   React.ComponentProps<"ul">
@@ -458,7 +409,6 @@ const SidebarMenu = React.forwardRef<
   />
 ));
 SidebarMenu.displayName = "SidebarMenu";
-
 const SidebarMenuItem = React.forwardRef<
   HTMLLIElement,
   React.ComponentProps<"li">
@@ -471,7 +421,6 @@ const SidebarMenuItem = React.forwardRef<
   />
 ));
 SidebarMenuItem.displayName = "SidebarMenuItem";
-
 const sidebarMenuButtonVariants = cva(
   "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground enabled:pointer-events-none enabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-enabled:pointer-events-none aria-enabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
   {
@@ -493,7 +442,6 @@ const sidebarMenuButtonVariants = cva(
     },
   },
 );
-
 const SidebarMenuButton = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<"button"> & {
@@ -516,7 +464,6 @@ const SidebarMenuButton = React.forwardRef<
   ) => {
     const Comp = asChild ? Slot : "button";
     const { isMobile, state } = useSidebar();
-
     const button = (
       <Comp
         ref={ref}
@@ -527,17 +474,14 @@ const SidebarMenuButton = React.forwardRef<
         {props}
       />
     );
-
     if (!tooltip) {
       return button;
     }
-
     if (typeof tooltip === "string") {
       tooltip = {
         children: tooltip,
       };
     }
-
     return (
       <Tooltip>
         <TooltipTrigger asChild>{button}</TooltipTrigger>
@@ -552,7 +496,6 @@ const SidebarMenuButton = React.forwardRef<
   },
 );
 SidebarMenuButton.displayName = "SidebarMenuButton";
-
 const SidebarMenuAction = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<"button"> & {
@@ -561,7 +504,6 @@ const SidebarMenuAction = React.forwardRef<
   }
 >(({ className, asChild = false, showOnHover = false, props }, ref) => {
   const Comp = asChild ? Slot : "button";
-
   return (
     <Comp
       ref={ref}
@@ -583,7 +525,6 @@ const SidebarMenuAction = React.forwardRef<
   );
 });
 SidebarMenuAction.displayName = "SidebarMenuAction";
-
 const SidebarMenuBadge = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div">
@@ -604,7 +545,6 @@ const SidebarMenuBadge = React.forwardRef<
   />
 ));
 SidebarMenuBadge.displayName = "SidebarMenuBadge";
-
 const SidebarMenuSkeleton = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> & {
@@ -615,7 +555,6 @@ const SidebarMenuSkeleton = React.forwardRef<
   const width = React.useMemo(() => {
     return `${Math.floor(Math.random() * 40) + 50}%`;
   }, []);
-
   return (
     <div
       ref={ref}
@@ -642,7 +581,6 @@ const SidebarMenuSkeleton = React.forwardRef<
   );
 });
 SidebarMenuSkeleton.displayName = "SidebarMenuSkeleton";
-
 const SidebarMenuSub = React.forwardRef<
   HTMLUListElement,
   React.ComponentProps<"ul">
@@ -659,13 +597,11 @@ const SidebarMenuSub = React.forwardRef<
   />
 ));
 SidebarMenuSub.displayName = "SidebarMenuSub";
-
 const SidebarMenuSubItem = React.forwardRef<
   HTMLLIElement,
   React.ComponentProps<"li">
 >(({ props }, ref) => <li ref={ref} {props} />);
 SidebarMenuSubItem.displayName = "SidebarMenuSubItem";
-
 const SidebarMenuSubButton = React.forwardRef<
   HTMLAnchorElement,
   React.ComponentProps<"a"> & {
@@ -675,7 +611,6 @@ const SidebarMenuSubButton = React.forwardRef<
   }
 >(({ asChild = false, size = "md", isActive, className, props }, ref) => {
   const Comp = asChild ? Slot : "a";
-
   return (
     <Comp
       ref={ref}
@@ -695,7 +630,6 @@ const SidebarMenuSubButton = React.forwardRef<
   );
 });
 SidebarMenuSubButton.displayName = "SidebarMenuSubButton";
-
 export {
   Sidebar,
   SidebarContent,
@@ -721,23 +655,17 @@ export {
   SidebarSeparator,
   SidebarTrigger,
 };
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -745,23 +673,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -769,23 +691,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -793,23 +709,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -817,23 +727,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -841,23 +745,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -865,23 +763,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -889,23 +781,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -913,23 +799,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

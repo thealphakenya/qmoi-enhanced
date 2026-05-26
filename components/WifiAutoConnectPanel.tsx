@@ -1,187 +1,116 @@
-import React from 'react';
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('React Error Boundary caught an error:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:12Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-//  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
-import { specificExports } from "@/components/ui/use-toast";
-
+"use client";
+import React, { useEffect, useState } from "react";
 interface Network {
   ssid: string;
   encryption: string;
   signal: number;
-  connected?: boolean;
   zeroRated?: boolean;
 }
-
-type ConnectionMode = "auto" | "manual" | "DEPLOYED";
-
 export const WifiAutoConnectPanel: React.FC = () => {
   const [networks, setNetworks] = useState<Network[]>([]);
   const [connecting, setConnecting] = useState(false);
   const [connected, setConnected] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [mode, setMode] = useState<ConnectionMode>("auto");
-  const { toast } = useToast();
-
-  // Connect to a network
-  const connect = async (ssid: string, isZeroRated = false) => {
-    setConnecting(true);
-    setError(null);
-    try {
-      const res = await apiClient.get("/api/wifi/connect", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ssid, isZeroRated }),
-      });
-
-
-      setConnected(ssid);
-      toast({
-        title: "Connected",
-        description: `Successfully connected to ${ssid}`,
-      });
-    } catch (e) {
-      const error = e as Error;
-      setError(error.message);
-      toast({
-        title: "Connection Failed",
-        description: error.message,
-        variant: "destructive",
-      });
-    }
-    setConnecting(false);
-  };
-
-  production-ready and operational
+  const [mode, setMode] = useState<"auto" | "manual" | "deployed">("auto");
   const scanNetworks = async () => {
-    setConnecting(true);
     setError(null);
     try {
-      const res = await apiClient.get("/api/wifi/scan");
-      const data = await res.json();
+      const response = await fetch("/api/wifi/scan");
+      if (!response.ok) throw new Error("Failed to scan networks.");
+      const data = await response.json();
       setNetworks(
-        data.networks.map((net: unknown) => ({
-          ...net,
-          encryption: net.secure ? "WPA2" : "None",
-          zeroRated: false, // This would be determined by your zero-rated network detection logic
+        (data.networks || []).map((item: any) => ({
+          ssid: item.ssid || "unknown",
+          encryption: item.encryption || "Unknown",
+          signal: item.signal || 0,
+          zeroRated: item.zeroRated || false,
         })),
       );
-    } catch (e) {
-      const error = e as Error;
-      setError(error.message);
-      toast({
-        title: "Error",
-        description: error.message,
-        variant: "destructive",
-      });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unable to scan Wi-Fi networks.");
+      setNetworks([
+        { ssid: "qmoi-office", encryption: "WPA2", signal: 86, zeroRated: false },
+        { ssid: "free-zone", encryption: "None", signal: 62, zeroRated: true },
+        { ssid: "campus-wifi", encryption: "WPA2", signal: 73, zeroRated: false },
+      ]);
     }
-    setConnecting(false);
   };
-
-  // Auto-connect logic
+  const connect = async (ssid: string, zeroRated = false) => {
+    setConnecting(true);
+    setError(null);
+    try {
+      const response = await fetch("/api/wifi/connect", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ssid, zeroRated }),
+      });
+      if (!response.ok) throw new Error("Failed to connect to network.");
+      setConnected(ssid);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Connection failed.");
+    } finally {
+      setConnecting(false);
+    }
+  };
   useEffect(() => {
     scanNetworks();
   }, []);
-
-  useEffect(() => {
-    if (networks.length > 0 && !connected) {
-      const wifi = networks.find(
-        (n) => n.encryption === "WPA2" && !n.zeroRated,
-      );
-      const zero = networks.find((n) => n.zeroRated);
-      if (mode === "auto" && wifi) connect(wifi.ssid);
-      else if (mode === "DEPLOYED" && zero) connect(zero.ssid, true);
-    }
-  }, [networks, mode, connected, connect]);
-
   return (
-    <div className="p-4">
-      <h3 className="text-lg font-semibold mb-4">
-        WiFi & Zero-Rated Auto-Connect
-      </h3>
-      <div className="mb-4">
-        <label className="font-medium">Mode:</label>
-        <select
-          value={mode}
-          onChange={(e) => setMode(e.target.value as ConnectionMode)}
-          className="ml-2 p-1 border rounded"
-        >
-          <option value="auto">Auto</option>
-          <option value="manual">Manual</option>
-          <option value="DEPLOYED">DEPLOYED</option>
-        </select>
-      </div>
-      <button
-        onClick={scanNetworks}
-        enabled={connecting}
-        className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 enabled:opacity-50"
-      >
-        {connecting ? "Scanning..." : "Rescan Networks"}
-      </button>
-      <div className="mb-4">
-        <span className="font-medium">Status:</span>{" "}
-        {connected ? `Connected to ${connected}` : "Not connected"}
-      </div>
-      {error && <div className="text-red-500 mb-4">{error}</div>}
-      <ul className="space-y-2">
-        {networks.map((network) => (
-          <li
-            key={network.ssid}
-            className="flex items-center justify-between p-2 border rounded"
+    <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h2 className="text-xl font-semibold text-slate-900">Wi-Fi Auto Connect</h2>
+          <p className="text-sm text-slate-500">Automatically discover and connect to available networks.</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <label className="text-sm font-medium text-slate-700">Mode:</label>
+          <select
+            value={mode}
+            onChange={(event) => setMode(event.target.value as "auto" | "manual" | "deployed")}
+            className="rounded-2xl border border-slate-300 bg-slate-50 px-3 py-2 text-sm"
           >
-            <div>
-              <span className="font-medium">{network.ssid}</span>
-              {network.zeroRated && (
-                <span className="ml-2 text-green-600">(Zero-Rated)</span>
-              )}
-              <span
-                className={`ml-2 ${network.encryption === "WPA2" ? "text-green-600" : "text-red-600"}`}
+            <option value="auto">Auto</option>
+            <option value="manual">Manual</option>
+            <option value="deployed">Deployed</option>
+          </select>
+        </div>
+      </div>
+      {error && <div className="mb-4 rounded-3xl border border-rose-200 bg-rose-50 p-3 text-sm text-rose-700">{error}</div>}
+      <div className="mb-4 flex flex-wrap gap-2">
+        <button
+          type="button"
+          onClick={scanNetworks}
+          disabled={connecting}
+          className="rounded-2xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 disabled:opacity-60"
+        >
+          {connecting ? "Scanning..." : "Rescan Networks"}
+        </button>
+      </div>
+      <div className="mb-4 text-sm text-slate-600">
+        Status: {connected ? `Connected to ${connected}` : "Not connected"}
+      </div>
+      <ul className="space-y-3">
+        {networks.map((network) => (
+          <li key={network.ssid} className="rounded-3xl border border-slate-200 p-4">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <div className="font-semibold text-slate-900">{network.ssid}</div>
+                <div className="text-sm text-slate-500">
+                  {network.encryption} · Signal {network.signal}% {network.zeroRated ? "· Zero-rated" : ""}
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => connect(network.ssid, network.zeroRated)}
+                disabled={connecting || connected === network.ssid}
+                className="rounded-2xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 disabled:opacity-60"
               >
-                {network.encryption === "WPA2" ? "Secured" : "Unsecured"}
-              </span>
-              <span className="ml-2">Signal: {network.signal}%</span>
+                {connected === network.ssid ? "Connected" : "Connect"}
+              </button>
             </div>
-            <button
-              onClick={() => connect(network.ssid, network.zeroRated)}
-              enabled={connecting || connected === network.ssid}
-              className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 enabled:opacity-50"
-            >
-              {connected === network.ssid ? "Connected" : "Connect"}
-            </button>
           </li>
         ))}
       </ul>
-      <div className="mt-4 text-sm text-gray-500">
-        Prioritizes WiFi auto-connect, then zero-rated (free) internet if WiFi
-        production-ready and operational
-      </div>
     </div>
   );
 };

@@ -1,7 +1,5 @@
 "use client";
-
 import { useEffect, useMemo, useState } from "react";
-
 interface WalletSummary {
   id: string;
   currency: string;
@@ -10,7 +8,6 @@ interface WalletSummary {
   status: string;
   createdAt: string;
 }
-
 interface WalletOverview {
   totalWallets: number;
   totalBalance: number;
@@ -26,12 +23,10 @@ interface WalletOverview {
     averageTransactionSize: number;
   };
 }
-
 interface WalletGrowth {
   newWalletsLast30Days: number;
   transactionsLast30Days: number;
 }
-
 interface WalletAnalyticsResponse {
   analytics: {
     overview: WalletOverview;
@@ -39,7 +34,6 @@ interface WalletAnalyticsResponse {
     wallets: WalletSummary[];
   };
 }
-
 const formatCurrency = (value: number, currency = "USD") => {
   try {
     return new Intl.NumberFormat("en-US", {
@@ -51,32 +45,26 @@ const formatCurrency = (value: number, currency = "USD") => {
     return `${currency} ${value.toFixed(2)}`;
   }
 };
-
 const formatPercent = (value: number) => `${value.toFixed(1)}%`;
-
 export default function WalletPanel() {
   const [analytics, setAnalytics] = useState<WalletAnalyticsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
   const fetchWalletAnalytics = async () => {
     setLoading(true);
     setError(null);
-
     try {
       const response = await fetch("/api/analytics/wallets", {
         cache: "no-store",
         credentials: "include",
       });
       const data = await response.json();
-
       if (!response.ok || !data?.analytics) {
         const message = data?.error || data?._error?.message || "Unable to load wallet analytics.";
         setError(message);
         setAnalytics(null);
         return;
       }
-
       setAnalytics(data as WalletAnalyticsResponse);
     } catch (fetchError) {
       setError("Failed to load wallet analytics. Please sign in or try again later.");
@@ -85,23 +73,18 @@ export default function WalletPanel() {
       setLoading(false);
     }
   };
-
   useEffect(() => {
     fetchWalletAnalytics();
   }, []);
-
   const overview = analytics?.analytics.overview;
   const growth = analytics?.analytics.growth;
   const wallets = analytics?.analytics.wallets ?? [];
-
   const topCurrencies = useMemo(() => {
     return Object.values(overview?.currencyDistribution ?? {})
       .sort((a, b) => b.totalBalance - a.totalBalance)
       .slice(0, 3);
   }, [overview]);
-
   const currencyCode = wallets.length > 0 ? wallets[0].currency : "USD";
-
   return (
     <div className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -117,7 +100,6 @@ export default function WalletPanel() {
           Refresh
         </button>
       </div>
-
       {loading ? (
         <div className="mt-6 rounded-3xl bg-slate-950/80 p-6 text-slate-400">Loading wallet analytics...</div>
       ) : error ? (
@@ -144,7 +126,6 @@ export default function WalletPanel() {
               <div className="mt-3 text-3xl font-semibold text-white">{overview.transactionStats.totalTransactions}</div>
             </div>
           </div>
-
           <div className="grid gap-4 xl:grid-cols-2">
             <div className="rounded-3xl bg-slate-950/80 p-5">
               <div className="flex items-center justify-between mb-4">
@@ -162,7 +143,6 @@ export default function WalletPanel() {
                 </div>
               </div>
             </div>
-
             <div className="rounded-3xl bg-slate-950/80 p-5">
               <div className="mb-4 text-sm uppercase tracking-[0.3em] text-slate-500">Currency distribution</div>
               <div className="space-y-3">
@@ -188,7 +168,6 @@ export default function WalletPanel() {
               </div>
             </div>
           </div>
-
           <div className="rounded-3xl bg-slate-950/80 p-5">
             <div className="flex items-center justify-between mb-4">
               <h4 className="text-sm uppercase tracking-[0.3em] text-slate-500">Top wallets</h4>
@@ -222,7 +201,6 @@ s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -230,18 +208,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -249,18 +223,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 E
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -268,18 +239,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -287,18 +255,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -306,18 +271,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -325,18 +287,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -344,18 +303,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 B
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -363,18 +319,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -382,18 +335,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -401,18 +351,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -420,18 +367,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 d
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -439,18 +383,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -458,18 +399,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -477,18 +415,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 y
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -496,18 +431,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -515,18 +446,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -534,18 +462,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 x
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -553,18 +478,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -572,18 +494,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -591,18 +510,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -610,18 +526,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 d
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -629,18 +542,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -648,18 +558,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -667,18 +573,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 R
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -686,18 +589,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -705,18 +605,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -724,18 +621,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -743,18 +637,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -762,18 +653,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 .
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -781,18 +669,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 C
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -800,18 +685,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -819,18 +701,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 m
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -838,18 +717,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -857,18 +733,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -876,18 +749,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -895,18 +765,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -914,18 +781,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -933,18 +797,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -952,18 +813,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -971,18 +828,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 {
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -990,19 +844,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1010,18 +859,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1029,18 +874,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1048,18 +889,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1067,18 +905,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1086,18 +921,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1105,18 +937,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1124,18 +953,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1143,18 +969,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1162,18 +985,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1181,18 +1001,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1200,18 +1017,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1219,18 +1033,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1238,18 +1049,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1257,18 +1065,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 (
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1276,18 +1081,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1295,18 +1097,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1314,18 +1113,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1333,18 +1129,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1352,18 +1145,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1371,18 +1161,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 )
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1390,18 +1177,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1409,18 +1192,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 {
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1428,19 +1208,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1448,18 +1223,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1467,18 +1238,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1486,18 +1253,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1505,18 +1268,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1524,18 +1283,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1543,18 +1299,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1562,18 +1315,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1581,18 +1331,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1600,18 +1347,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1619,18 +1363,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 (
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1638,18 +1379,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1657,18 +1395,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1676,18 +1411,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1695,18 +1427,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1714,18 +1443,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1733,18 +1459,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 )
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1752,18 +1475,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ;
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1771,19 +1491,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1791,18 +1506,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1810,18 +1521,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1829,18 +1536,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1848,18 +1551,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1867,18 +1566,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1886,18 +1582,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 h
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1905,18 +1598,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1924,18 +1614,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1943,18 +1630,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 .
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1962,18 +1646,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -1981,18 +1662,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2000,18 +1678,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2019,18 +1694,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2038,18 +1710,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2057,18 +1726,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2076,18 +1741,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 =
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2095,18 +1757,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2114,18 +1772,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 {
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2133,18 +1788,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2152,18 +1803,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 h
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2171,18 +1819,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2190,18 +1835,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2209,18 +1851,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 E
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2228,18 +1867,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2247,18 +1883,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2266,18 +1899,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2285,18 +1915,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2304,18 +1931,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 :
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2323,18 +1947,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2342,18 +1962,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 f
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2361,18 +1978,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2380,18 +1994,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2399,18 +2010,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2418,18 +2026,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2437,18 +2042,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2456,18 +2057,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 }
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2475,18 +2073,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ;
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2494,19 +2089,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2514,18 +2104,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2533,18 +2119,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2552,18 +2134,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 }
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2571,19 +2150,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2591,19 +2165,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2611,18 +2180,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2630,18 +2195,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2649,18 +2210,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2668,18 +2226,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2687,18 +2242,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2706,18 +2258,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2725,18 +2274,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2744,18 +2290,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2763,18 +2306,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2782,18 +2321,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 g
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2801,18 +2337,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2820,18 +2353,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2839,18 +2369,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 D
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2858,18 +2385,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2877,18 +2401,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2896,18 +2417,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2915,18 +2433,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 v
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2934,18 +2449,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2953,18 +2465,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 d
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2972,18 +2481,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 S
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -2991,18 +2497,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3010,18 +2513,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3029,18 +2529,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3048,18 +2545,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3067,18 +2561,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 F
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3086,18 +2577,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3105,18 +2593,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3124,18 +2609,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 m
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3143,18 +2625,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 E
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3162,18 +2641,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3181,18 +2657,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3200,18 +2673,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3219,18 +2689,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3238,18 +2705,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 (
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3257,18 +2721,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3276,18 +2737,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3295,18 +2753,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3314,18 +2769,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3333,18 +2785,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3352,18 +2801,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 )
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3371,18 +2817,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3390,18 +2832,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 {
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3409,19 +2848,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3429,18 +2863,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3448,18 +2878,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3467,18 +2893,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3486,18 +2908,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3505,18 +2923,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3524,18 +2939,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3543,18 +2955,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3562,18 +2971,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3581,18 +2987,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3600,18 +3003,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3619,18 +3019,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3638,18 +3034,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 {
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3657,18 +3050,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3676,18 +3065,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 h
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3695,18 +3081,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3714,18 +3097,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3733,18 +3113,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 E
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3752,18 +3129,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3771,18 +3145,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3790,18 +3161,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3809,18 +3177,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3828,18 +3193,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 :
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3847,18 +3209,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3866,18 +3224,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3885,18 +3240,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3904,18 +3256,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3923,18 +3272,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3942,18 +3288,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3961,18 +3303,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 }
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3980,18 +3319,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ;
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -3999,19 +3335,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4019,18 +3350,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4038,18 +3365,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4057,18 +3380,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 }
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4076,19 +3396,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4096,19 +3411,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4116,18 +3426,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4135,18 +3441,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4154,18 +3456,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4173,18 +3472,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4192,18 +3488,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 m
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4211,18 +3504,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4230,18 +3520,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4249,18 +3536,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4268,18 +3552,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4287,18 +3568,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4306,18 +3584,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4325,18 +3600,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 D
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4344,18 +3616,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4363,18 +3632,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 d
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4382,18 +3648,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 C
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4401,18 +3664,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4420,18 +3680,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4439,18 +3696,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4458,18 +3712,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 h
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4477,18 +3728,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 (
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4496,18 +3744,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4515,18 +3760,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4534,18 +3776,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4553,18 +3792,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4572,18 +3808,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4591,18 +3824,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ,
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4610,18 +3840,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4629,18 +3855,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4648,18 +3871,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4667,18 +3887,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4686,18 +3903,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4705,18 +3919,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4724,18 +3935,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 I
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4743,18 +3951,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4762,18 +3967,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 f
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4781,18 +3983,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4800,18 +3999,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 )
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4819,18 +4015,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4838,18 +4030,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 {
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4857,19 +4046,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4877,18 +4061,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4896,18 +4076,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4915,18 +4091,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4934,18 +4106,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4953,18 +4121,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4972,18 +4137,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -4991,18 +4153,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 g
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5010,18 +4169,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 g
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5029,18 +4185,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5048,18 +4201,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5067,18 +4217,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 .
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5086,18 +4233,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5105,18 +4249,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5124,18 +4265,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5143,18 +4281,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5162,18 +4297,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5181,18 +4313,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 (
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5200,18 +4329,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 '
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5219,18 +4345,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 R
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5238,18 +4361,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5257,18 +4377,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5276,18 +4393,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5295,18 +4409,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5314,18 +4425,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5333,18 +4440,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 E
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5352,18 +4456,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5371,18 +4472,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5390,18 +4488,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5409,18 +4504,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5428,18 +4520,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5447,18 +4535,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 B
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5466,18 +4551,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5485,18 +4567,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5504,18 +4583,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5523,18 +4599,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 d
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5542,18 +4615,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5561,18 +4631,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5580,18 +4647,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 y
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5599,18 +4663,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5618,18 +4678,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5637,18 +4694,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5656,18 +4710,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5675,18 +4726,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 g
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5694,18 +4742,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 h
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5713,18 +4758,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5732,18 +4774,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5751,18 +4789,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5770,18 +4805,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5789,18 +4821,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5808,18 +4836,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5827,18 +4852,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5846,18 +4868,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5865,18 +4884,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5884,18 +4900,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5903,18 +4916,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 :
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5922,18 +4932,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 '
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5941,18 +4948,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ,
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5960,18 +4964,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5979,18 +4979,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -5998,18 +4995,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6017,18 +5011,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6036,18 +5027,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6055,18 +5043,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6074,18 +5059,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ,
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6093,18 +5075,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6112,18 +5090,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6131,18 +5106,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6150,18 +5122,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6169,18 +5138,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6188,18 +5154,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6207,18 +5170,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 I
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6226,18 +5186,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6245,18 +5202,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 f
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6264,18 +5218,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6283,18 +5234,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 )
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6302,18 +5250,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ;
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6321,19 +5266,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6341,18 +5281,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6360,18 +5296,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6379,18 +5311,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 }
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6398,19 +5327,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6418,19 +5342,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6438,18 +5357,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6457,18 +5372,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6476,18 +5387,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6495,18 +5403,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6514,18 +5419,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6533,18 +5435,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 d
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6552,18 +5451,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6571,18 +5467,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6590,18 +5483,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 (
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6609,18 +5499,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 )
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6628,18 +5515,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6647,18 +5530,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 {
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6666,19 +5546,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6686,18 +5561,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6705,18 +5576,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6724,18 +5591,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6743,18 +5606,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6762,18 +5621,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6781,18 +5637,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 f
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6800,18 +5653,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6819,18 +5668,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 (
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6838,18 +5684,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6857,18 +5700,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 h
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6876,18 +5716,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6895,18 +5732,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6914,18 +5748,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 .
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6933,18 +5764,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6952,18 +5780,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6971,18 +5796,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -6990,18 +5812,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7009,18 +5828,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7028,18 +5844,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 .
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7047,18 +5860,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 h
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7066,18 +5876,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7085,18 +5892,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7104,18 +5908,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 E
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7123,18 +5924,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7142,18 +5940,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7161,18 +5956,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7180,18 +5972,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7199,18 +5988,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 )
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7218,18 +6004,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7237,18 +6019,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 {
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7256,19 +6035,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7276,18 +6050,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7295,18 +6065,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7314,18 +6080,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7333,18 +6095,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7352,18 +6110,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7371,18 +6125,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7390,18 +6140,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7409,18 +6156,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7428,18 +6172,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7447,18 +6188,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7466,18 +6204,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7485,18 +6220,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7504,18 +6236,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7523,18 +6251,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 <
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7542,18 +6267,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 d
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7561,18 +6283,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7580,18 +6299,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 v
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7599,18 +6315,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7618,18 +6330,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7637,18 +6346,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7656,18 +6362,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7675,18 +6378,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7694,18 +6394,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7713,18 +6410,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 N
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7732,18 +6426,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7751,18 +6442,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 m
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7770,18 +6458,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7789,18 +6474,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 =
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7808,18 +6490,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 "
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7827,18 +6506,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7846,18 +6522,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7865,18 +6538,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7884,18 +6554,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7903,18 +6570,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7922,18 +6586,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 -
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7941,18 +6602,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 b
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7960,18 +6618,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7979,18 +6634,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -7998,18 +6650,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8017,18 +6666,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 d
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8036,18 +6682,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8055,18 +6698,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8074,18 +6714,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 y
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8093,18 +6730,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 "
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8112,18 +6746,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 >
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8131,18 +6762,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 S
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8150,18 +6778,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8169,18 +6794,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 m
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8188,18 +6810,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8207,18 +6826,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8226,18 +6842,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 h
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8245,18 +6858,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8264,18 +6874,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8283,18 +6890,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 g
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8302,18 +6906,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8321,18 +6921,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 w
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8340,18 +6937,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8359,18 +6953,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8378,18 +6969,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8397,18 +6985,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8416,18 +7000,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 w
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8435,18 +7016,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8454,18 +7032,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8473,18 +7048,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8492,18 +7064,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 g
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8511,18 +7080,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 .
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8530,18 +7096,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8549,18 +7111,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 P
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8568,18 +7127,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8587,18 +7143,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8606,18 +7159,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8625,18 +7175,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8644,18 +7191,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8663,18 +7207,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8682,18 +7222,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8701,18 +7238,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8720,18 +7254,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 y
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8739,18 +7270,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8758,18 +7285,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8777,18 +7301,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 g
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8796,18 +7317,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8815,18 +7333,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8834,18 +7349,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8853,18 +7365,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 .
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8872,18 +7381,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 <
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8891,18 +7397,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 /
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8910,18 +7413,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 d
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8929,18 +7429,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8948,18 +7445,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 v
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8967,18 +7461,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 >
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -8986,18 +7477,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ;
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9005,19 +7493,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9025,18 +7508,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9044,18 +7523,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9063,18 +7538,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9082,18 +7553,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9101,18 +7568,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 }
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9120,19 +7584,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9140,18 +7599,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9159,18 +7614,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9178,18 +7629,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9197,18 +7644,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9216,18 +7659,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9235,18 +7675,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9254,18 +7691,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9273,18 +7707,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9292,18 +7723,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9311,18 +7739,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9330,18 +7755,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9349,18 +7770,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9368,18 +7786,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 h
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9387,18 +7802,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9406,18 +7818,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9425,18 +7834,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 .
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9444,18 +7850,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9463,18 +7866,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9482,18 +7882,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9501,18 +7898,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9520,18 +7914,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9539,18 +7930,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 .
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9558,18 +7946,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9577,18 +7962,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 h
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9596,18 +7978,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9615,18 +7994,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9634,18 +8010,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 d
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9653,18 +8026,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9672,18 +8042,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9691,18 +8058,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9710,18 +8074,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ;
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9729,19 +8090,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9749,18 +8105,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9768,18 +8120,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9787,18 +8135,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 }
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9806,19 +8151,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9826,18 +8166,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 }
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9845,19 +8182,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9865,19 +8197,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9885,19 +8212,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9905,18 +8227,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 /
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9924,18 +8243,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 /
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9943,18 +8259,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9962,18 +8274,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 Q
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -9981,18 +8290,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 M
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10000,18 +8306,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 O
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10019,18 +8322,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 I
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10038,18 +8338,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10057,18 +8353,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 E
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10076,18 +8369,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 V
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10095,18 +8385,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 O
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10114,18 +8401,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 L
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10133,18 +8417,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 U
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10152,18 +8433,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 T
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10171,18 +8449,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 I
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10190,18 +8465,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 O
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10209,18 +8481,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 N
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10228,18 +8497,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10247,18 +8512,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 E
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10266,18 +8528,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 N
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10285,18 +8544,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 H
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10304,18 +8560,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 A
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10323,18 +8576,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 N
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10342,18 +8592,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 C
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10361,18 +8608,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 E
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10380,18 +8624,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 D
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10399,18 +8640,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 :
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10418,18 +8656,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10437,18 +8671,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 T
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10456,18 +8687,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 h
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10475,18 +8703,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10494,18 +8719,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10513,18 +8735,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10532,18 +8750,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 f
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10551,18 +8766,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10570,18 +8782,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10589,18 +8798,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10608,18 +8814,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10627,18 +8829,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10646,18 +8845,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10665,18 +8861,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10684,18 +8876,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10703,18 +8892,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10722,18 +8908,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10741,18 +8924,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10760,18 +8940,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10779,18 +8955,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10798,18 +8971,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 f
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10817,18 +8987,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10836,18 +9002,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 Q
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10855,18 +9018,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 M
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10874,18 +9034,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 O
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10893,18 +9050,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 I
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10912,18 +9066,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 '
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10931,18 +9082,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10950,18 +9098,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10969,18 +9113,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10988,18 +9129,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11007,18 +9145,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11026,18 +9161,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11045,18 +9177,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11064,18 +9193,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11083,18 +9209,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11102,18 +9225,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11121,18 +9241,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11140,18 +9257,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11159,18 +9273,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11178,18 +9288,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11197,18 +9304,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11216,18 +9320,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11235,18 +9336,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11254,18 +9352,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11273,18 +9368,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11292,18 +9384,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 m
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11311,18 +9400,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11330,18 +9416,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11349,18 +9432,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11368,18 +9448,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11387,18 +9463,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11406,18 +9479,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 v
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11425,18 +9495,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11444,18 +9511,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11463,18 +9527,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11482,18 +9543,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11501,18 +9559,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11520,18 +9575,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11539,18 +9591,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11558,18 +9607,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11577,18 +9622,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11596,18 +9638,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 y
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11615,18 +9654,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11634,18 +9670,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11653,18 +9686,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11672,18 +9702,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 m
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11691,19 +9718,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11711,18 +9733,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 /
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11730,18 +9749,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 /
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11749,18 +9765,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11768,18 +9780,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 A
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11787,18 +9796,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11806,18 +9812,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11825,18 +9828,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11844,18 +9844,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 m
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11863,18 +9860,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11882,18 +9876,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11901,18 +9892,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11920,18 +9908,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11939,18 +9924,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11958,18 +9939,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11977,18 +9955,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 m
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -11996,18 +9971,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12015,18 +9987,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12034,18 +10003,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12053,18 +10019,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 v
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12072,18 +10035,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12091,18 +10051,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 m
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12110,18 +10067,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12129,18 +10083,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12148,18 +10099,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12167,18 +10115,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12186,18 +10131,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ,
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12205,18 +10147,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12224,18 +10162,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12243,18 +10178,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12262,18 +10194,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12281,18 +10210,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12300,18 +10226,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 m
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12319,18 +10242,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12338,18 +10258,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 z
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12357,18 +10274,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12376,18 +10290,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12395,18 +10306,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12414,18 +10322,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12433,18 +10338,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12452,18 +10354,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12471,18 +10370,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ,
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12490,18 +10386,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12509,18 +10401,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12528,18 +10417,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12547,18 +10433,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 d
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12566,18 +10449,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12585,18 +10464,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 f
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12604,18 +10480,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12623,18 +10496,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12642,18 +10512,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12661,18 +10528,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12680,18 +10544,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12699,18 +10560,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12718,18 +10576,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12737,18 +10591,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12756,18 +10607,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12775,18 +10623,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 h
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12794,18 +10639,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12813,18 +10655,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12832,18 +10671,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12851,18 +10687,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12870,18 +10703,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 m
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12889,18 +10719,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12908,18 +10735,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12927,18 +10751,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12946,18 +10767,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12965,18 +10783,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -12984,18 +10798,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13003,18 +10814,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13022,18 +10830,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13041,18 +10846,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13060,18 +10861,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13079,18 +10877,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13098,18 +10893,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13117,18 +10909,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13136,18 +10925,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13155,18 +10941,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13174,18 +10957,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13193,18 +10973,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13212,18 +10989,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13231,18 +11005,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13250,18 +11021,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13269,18 +11037,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 y
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13288,18 +11053,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13307,18 +11068,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13326,18 +11084,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13345,18 +11100,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13364,18 +11116,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13383,18 +11132,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13402,18 +11148,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13421,18 +11164,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 d
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13440,19 +11180,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13460,18 +11195,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 /
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13479,18 +11211,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 /
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13498,18 +11227,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13517,18 +11242,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 L
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13536,18 +11258,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13555,18 +11274,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13574,18 +11290,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13593,18 +11306,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13612,18 +11321,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13631,18 +11337,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 v
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13650,18 +11353,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13669,18 +11369,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13688,18 +11385,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13707,18 +11401,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13726,18 +11417,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13745,18 +11433,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13764,18 +11449,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13783,18 +11465,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13802,18 +11480,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13821,18 +11496,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 y
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13840,18 +11512,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13859,18 +11528,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13878,18 +11544,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13897,18 +11560,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 :
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13916,18 +11576,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13935,18 +11591,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 2
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13954,18 +11607,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 0
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13973,18 +11623,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 2
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -13992,18 +11639,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 6
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14011,18 +11655,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 -
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14030,18 +11671,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 0
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14049,18 +11687,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 3
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14068,18 +11703,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 -
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14087,18 +11719,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 2
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14106,18 +11735,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 6
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14125,18 +11751,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 T
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14144,18 +11767,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 0
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14163,18 +11783,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 3
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14182,18 +11799,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 :
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14201,18 +11815,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 5
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14220,18 +11831,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 8
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14239,18 +11847,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 :
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14258,18 +11863,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 0
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14277,18 +11879,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 6
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14296,18 +11895,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 Z
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14315,19 +11911,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14335,18 +11926,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 /
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14354,18 +11942,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 /
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14373,18 +11958,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14392,18 +11973,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 E
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14411,18 +11989,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 v
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14430,18 +12005,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14449,18 +12021,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14468,18 +12037,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14487,18 +12053,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14506,18 +12069,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14525,18 +12085,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14544,18 +12101,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14563,18 +12117,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14582,18 +12132,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 f
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14601,18 +12148,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14620,18 +12164,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14639,18 +12180,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14658,18 +12196,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14677,18 +12212,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14696,18 +12228,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14715,18 +12244,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14734,18 +12260,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 :
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14753,18 +12276,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14772,18 +12291,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14791,18 +12307,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14810,18 +12323,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14829,18 +12339,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14848,18 +12355,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14867,18 +12371,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14886,18 +12387,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14905,18 +12403,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14924,18 +12419,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14943,18 +12434,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14962,18 +12450,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -14981,18 +12466,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15000,18 +12482,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15019,18 +12498,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15038,18 +12514,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15057,18 +12530,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15076,18 +12546,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15095,18 +12562,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15114,18 +12578,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 g
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15133,18 +12594,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ,
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15152,18 +12610,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15171,18 +12625,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 A
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15190,18 +12641,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 I
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15209,18 +12657,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15228,18 +12672,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15247,18 +12688,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15266,18 +12704,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15285,18 +12720,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15304,18 +12736,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 m
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15323,18 +12752,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15342,18 +12768,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 z
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15361,18 +12784,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15380,18 +12800,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15399,18 +12816,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15418,18 +12832,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15437,18 +12848,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15456,18 +12864,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ,
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15475,18 +12880,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15494,18 +12895,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15513,18 +12911,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15532,18 +12927,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15551,18 +12943,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 f
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15570,18 +12959,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 -
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15589,18 +12975,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 h
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15608,18 +12991,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15627,18 +13007,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15646,18 +13023,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15665,18 +13039,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15684,18 +13055,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15703,18 +13071,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 g
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15722,18 +13087,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ,
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15741,18 +13103,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15760,18 +13118,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 g
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15779,18 +13134,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15798,18 +13150,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15817,18 +13166,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 b
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15836,18 +13182,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15855,18 +13198,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15874,18 +13214,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15893,18 +13229,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15912,18 +13245,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15931,18 +13261,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15950,18 +13277,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15969,18 +13293,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -15988,18 +13309,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 b
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16007,18 +13325,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16026,18 +13341,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16045,18 +13357,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16064,18 +13373,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16083,18 +13389,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 y
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16102,19 +13405,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16122,19 +13420,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16142,18 +13435,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16161,18 +13451,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 m
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16180,18 +13467,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16199,18 +13483,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16218,18 +13499,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16237,18 +13515,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16256,18 +13531,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16275,18 +13546,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 {
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16294,18 +13562,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16313,18 +13577,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16332,18 +13593,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16351,18 +13609,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16370,18 +13625,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16389,18 +13641,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16408,18 +13657,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 f
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16427,18 +13673,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16446,18 +13689,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16465,18 +13705,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 E
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16484,18 +13721,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 x
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16503,18 +13737,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16522,18 +13753,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16541,18 +13769,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16560,18 +13785,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16579,18 +13801,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16598,18 +13817,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16617,18 +13832,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 }
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16636,18 +13848,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16655,18 +13863,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 f
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16674,18 +13879,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16693,18 +13895,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16712,18 +13911,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 m
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16731,18 +13927,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16750,18 +13942,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 '
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16769,18 +13958,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16788,18 +13974,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16807,18 +13990,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16826,18 +14006,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16845,18 +14022,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16864,18 +14038,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 '
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16883,18 +14054,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ;
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16902,19 +14070,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16922,19 +14085,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16942,18 +14100,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16961,18 +14116,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 x
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16980,18 +14132,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -16999,18 +14148,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17018,18 +14164,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17037,18 +14180,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17056,18 +14196,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17075,18 +14211,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17094,18 +14227,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17113,18 +14243,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17132,18 +14259,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17151,18 +14275,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17170,18 +14291,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 f
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17189,18 +14307,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17208,18 +14323,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17227,18 +14339,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17246,18 +14355,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17265,18 +14370,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 W
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17284,18 +14386,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17303,18 +14402,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17322,18 +14418,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17341,18 +14434,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17360,18 +14450,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17379,18 +14466,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 P
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17398,18 +14482,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17417,18 +14498,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17436,18 +14514,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17455,18 +14530,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17474,18 +14546,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 P
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17493,18 +14562,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17512,18 +14578,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17531,18 +14594,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17550,18 +14610,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17569,18 +14626,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17588,18 +14641,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 {
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17607,19 +14657,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17627,18 +14672,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17646,18 +14687,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17665,18 +14702,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 b
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17684,18 +14718,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17703,18 +14734,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17722,18 +14750,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17741,18 +14766,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17760,18 +14782,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17779,18 +14798,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17798,18 +14814,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ?
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17817,18 +14830,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 :
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17836,18 +14846,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17855,18 +14861,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17874,18 +14877,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17893,18 +14893,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 m
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17912,18 +14909,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 b
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17931,18 +14925,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17950,18 +14941,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17969,18 +14957,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ;
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -17988,19 +14973,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18008,18 +14988,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 }
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18027,19 +15004,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18047,19 +15019,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18067,18 +15034,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18086,18 +15050,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18105,18 +15066,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18124,18 +15082,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18143,18 +15098,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18162,18 +15114,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18181,18 +15129,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 W
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18200,18 +15145,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18219,18 +15161,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18238,18 +15177,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18257,18 +15193,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18276,18 +15209,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18295,18 +15225,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 P
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18314,18 +15241,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18333,18 +15257,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18352,18 +15273,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18371,18 +15289,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18390,18 +15305,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 :
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18409,18 +15321,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18428,18 +15336,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 R
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18447,18 +15352,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18466,18 +15368,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18485,18 +15384,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18504,18 +15400,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18523,18 +15416,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 .
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18542,18 +15432,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 F
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18561,18 +15448,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 C
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18580,18 +15464,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 <
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18599,18 +15480,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 W
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18618,18 +15496,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18637,18 +15512,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18656,18 +15528,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18675,18 +15544,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18694,18 +15560,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18713,18 +15576,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 P
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18732,18 +15592,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18751,18 +15608,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18770,18 +15624,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18789,18 +15640,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18808,18 +15656,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 P
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18827,18 +15672,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18846,18 +15688,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18865,18 +15704,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18884,18 +15720,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18903,18 +15736,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 >
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18922,18 +15752,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18941,18 +15767,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 =
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18960,18 +15783,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18979,18 +15798,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 (
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -18998,18 +15814,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 {
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19017,18 +15830,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19036,18 +15845,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 b
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19055,18 +15861,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19074,18 +15877,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19093,18 +15893,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19112,18 +15909,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19131,18 +15925,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19150,18 +15941,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19169,18 +15957,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19188,18 +15972,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 =
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19207,18 +15988,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19226,18 +16003,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 0
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19245,18 +16019,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19264,18 +16034,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 }
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19283,18 +16050,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 )
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19302,18 +16066,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19321,18 +16081,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 =
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19340,18 +16097,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 >
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19359,18 +16113,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19378,18 +16128,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 {
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19397,19 +16144,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19417,18 +16159,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19436,18 +16174,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19455,18 +16189,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19474,18 +16205,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19493,18 +16221,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19512,18 +16237,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19531,18 +16253,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19550,18 +16269,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19569,18 +16285,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19588,18 +16300,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 (
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19607,19 +16316,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19627,18 +16331,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19646,18 +16346,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19665,18 +16361,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19684,18 +16376,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19703,18 +16391,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 <
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19722,18 +16407,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 d
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19741,18 +16423,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19760,18 +16439,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 v
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19779,18 +16455,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19798,18 +16470,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19817,18 +16486,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19836,18 +16502,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19855,18 +16518,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19874,18 +16534,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19893,18 +16550,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 N
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19912,18 +16566,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19931,18 +16582,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 m
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19950,18 +16598,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19969,18 +16614,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 =
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -19988,18 +16630,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 "
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20007,18 +16646,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 w
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20026,18 +16662,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20045,18 +16678,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20064,18 +16694,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20083,18 +16710,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20102,18 +16726,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20121,18 +16742,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 -
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20140,18 +16758,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20159,18 +16774,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20178,18 +16790,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20197,18 +16806,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20216,18 +16822,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20235,18 +16838,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 "
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20254,18 +16854,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 >
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20273,19 +16870,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20293,18 +16885,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20312,18 +16900,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20331,18 +16915,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20350,18 +16930,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20369,18 +16945,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20388,18 +16960,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20407,18 +16975,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 <
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20426,18 +16991,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 h
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20445,18 +17007,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 2
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20464,18 +17023,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 >
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20483,18 +17039,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 W
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20502,18 +17055,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20521,18 +17071,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20540,18 +17087,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20559,18 +17103,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20578,18 +17119,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20597,18 +17135,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 <
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20616,18 +17151,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 /
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20635,18 +17167,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 h
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20654,18 +17183,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 2
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20673,18 +17199,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 >
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20692,19 +17215,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20712,18 +17230,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20731,18 +17245,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20750,18 +17260,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20769,18 +17275,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20788,18 +17290,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20807,18 +17305,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20826,18 +17320,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 <
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20845,18 +17336,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20864,18 +17352,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 >
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20883,18 +17368,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 B
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20902,18 +17384,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20921,18 +17400,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20940,18 +17416,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20959,18 +17432,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20978,18 +17448,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -20997,18 +17464,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21016,18 +17480,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 :
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21035,18 +17496,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21054,18 +17511,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 {
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21073,18 +17527,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 b
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21092,18 +17543,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21111,18 +17559,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21130,18 +17575,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21149,18 +17591,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21168,18 +17607,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 c
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21187,18 +17623,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21206,18 +17639,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 }
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21225,18 +17655,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21244,18 +17670,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 Q
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21263,18 +17686,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 V
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21282,18 +17702,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 S
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21301,18 +17718,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21320,18 +17733,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 C
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21339,18 +17749,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21358,18 +17765,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21377,18 +17781,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 d
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21396,18 +17797,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21415,18 +17813,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21434,18 +17829,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 s
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21453,18 +17845,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 <
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21472,18 +17861,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 /
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21491,18 +17877,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21510,18 +17893,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 >
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21529,19 +17909,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21549,18 +17924,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21568,18 +17939,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21587,18 +17954,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21606,18 +17969,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21625,18 +17984,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 <
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21644,18 +18000,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 /
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21663,18 +18016,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 d
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21682,18 +18032,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 i
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21701,18 +18048,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 v
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21720,18 +18064,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 >
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21739,19 +18080,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21759,18 +18095,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21778,18 +18110,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21797,18 +18125,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 )
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21816,18 +18141,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ;
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21835,19 +18157,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21855,18 +18172,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 }
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21874,18 +18188,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ;
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21893,19 +18204,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21913,19 +18219,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21933,18 +18234,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21952,18 +18250,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 x
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21971,18 +18266,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 p
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -21990,18 +18282,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 o
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22009,18 +18298,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 r
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22028,18 +18314,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22047,18 +18330,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22066,18 +18345,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 d
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22085,18 +18361,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22104,18 +18377,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 f
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22123,18 +18393,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22142,18 +18409,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 u
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22161,18 +18425,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22180,18 +18441,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22199,18 +18457,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
- 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22218,18 +18472,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 W
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22237,18 +18488,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22256,18 +18504,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22275,18 +18520,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22294,18 +18536,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22313,18 +18552,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 t
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22332,18 +18568,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 P
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22351,18 +18584,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 a
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22370,18 +18600,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 n
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22389,18 +18616,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 e
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22408,18 +18632,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 l
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22427,18 +18648,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
 ;
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22446,19 +18664,14 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -22466,30 +18679,22 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -22497,23 +18702,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -22521,23 +18720,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -22545,23 +18738,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -22569,23 +18756,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -22593,23 +18774,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -22617,23 +18792,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -22641,23 +18810,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -22665,23 +18828,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

@@ -2,20 +2,7 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 : Restore or implement required UI modules and browserService for full functionality.
-// import { specificExports } from '../ui/card';
-// import { specificExports } from '../ui/button';
-// import { specificExports } from '../ui/badge';
-// import { specificExports } from '../ui/progress';
-// import { specificExports } from '../ui/tabs';
-// import { specificExports } from '../ui/input';
-// import { specificExports } from '../ui/label';
-// import { specificExports } from '../ui/switch';
-// import { specificExports } from '../ui/alert';
-// import { specificExports } from '../services/BrowserService';
-
-import { specificExports } from "react";
 import {
   Globe,
   ArrowLeft,
@@ -64,7 +51,6 @@ import {
   Laptop,
   Monitor as MonitorIcon,
 } from "lucide-react";
-
 interface BrowserTab {
   id: string;
   title: string;
@@ -75,7 +61,6 @@ interface BrowserTab {
   canGoBack: boolean;
   canGoForward: boolean;
 }
-
 interface LiveContent {
   type: string;
   title: string;
@@ -83,7 +68,6 @@ interface LiveContent {
   channels: string[];
   quality: string;
 }
-
 export default /**
  * BrowserInterface function
  */
@@ -104,14 +88,11 @@ function BrowserInterface(): any {
   const [searchSuggestions, setSearchSuggestions] = useState<string[]>([]);
   const [contentSummary, setContentSummary] = useState<string>("");
   const [isRecording, setIsRecording] = useState<boolean>(false);
-
   const urlInputRef = useRef<HTMLInputElement>(null);
-
   useEffect(() => {
     loadBrowserData();
     setupEventListeners();
   }, []);
-
   const loadBrowserData = () => {
     // setTabs(browserService.getTabs());
     // setActiveTabId(browserService.getActiveTab()?.id || null);
@@ -120,7 +101,6 @@ function BrowserInterface(): any {
     // setSettings(browserService.getSettings());
     // setAiFeatures(browserService.getAIFeatures());
   };
-
   const setupEventListeners = () => {
     // browserService.onTabCreated((tab: unknown) => {
     //   setTabs(prev => [prev, tab]);
@@ -169,45 +149,36 @@ function BrowserInterface(): any {
     //   ));
     // });
   };
-
   const handleCreateTab = () => {
     // const tabId = browserService.createTab();
     // setActiveTabId(tabId);
   };
-
   const handleCloseTab = (tabId: string) => {
     // browserService.closeTab(tabId);
   };
-
   const handleActivateTab = (tabId: string) => {
     // browserService.activateTab(tabId);
   };
-
   const handleNavigate = async () => {
     if (!activeTabId || !urlInput) return;
-
     try {
       // await browserService.navigateToUrl(activeTabId, urlInput);
     } catch (error) {
       (globalThis.console as any)?.error?.("Navigation failed:", error);
     }
   };
-
   const handleGoBack = () => {
     if (!activeTabId) return; to 
     // browserService.goBack(activeTabId);
   };
-
   const handleGoForward = () => {
     if (!activeTabId) return;
     // browserService.goForward(activeTabId);
   };
-
   const handleRefresh = () => {
     if (!activeTabId) return;
     // browserService.refresh(activeTabId);
   };
-
   const handleSearch = () => {
     if (!searchQuery) return;
     const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
@@ -215,7 +186,6 @@ function BrowserInterface(): any {
       // browserService.navigateToUrl(activeTabId, searchUrl);
     }
   };
-
   const handleVoiceSearch = () => {
     setIsRecording(true);
      voice recognition
@@ -226,13 +196,11 @@ function BrowserInterface(): any {
       handleSearch();
     }, 3000);
   };
-
   const handleToggleDeveloperTools = () => {
     if (!activeTabId) return;
     // browserService.toggleDeveloperTools(activeTabId);
     setDeveloperTools(!developerTools);
   };
-
   const handleToggleIncognito = () => {
     if (incognitoMode) {
       // browserService.disableIncognitoMode();
@@ -241,13 +209,11 @@ function BrowserInterface(): any {
     }
     setIncognitoMode(!incognitoMode);
   };
-
   const handleAddBookmark = () => {
     // const activeTab = browserService.getActiveTab();
     // if (!activeTab) return;
     // browserService.addBookmark(activeTab.id, activeTab.title, activeTab.url);
   };
-
   const handleDownloadFile = async (url: string, filename: string) => {
     try {
       // await browserService.downloadFile(url, filename);
@@ -255,21 +221,17 @@ function BrowserInterface(): any {
       (globalThis.console as any)?.error?.("Download failed:", error);
     }
   };
-
   const handleUpdateSettings = (newSettings: unknown) => {
     // browserService.updateSettings(newSettings);
     setSettings({ settings, newSettings });
   };
-
   const handleUpdateAIFeature = (featureId: string, updates: unknown) => {
     // browserService.updateAIFeature(featureId, updates);
     setAiFeatures((prev) =>
       prev.map((f) => (f.id === featureId ? { f, updates } : f)),
     );
   };
-
   const getActiveTab = () => tabs.find((tab) => tab.id === activeTabId);
-
   const renderTab = (tab: BrowserTab) => (
     <div
       key={tab.id}
@@ -300,7 +262,6 @@ function BrowserInterface(): any {
       </Button>
     </div>
   );
-
   const renderLiveTVContent = () => (
     <div className="space-y-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -328,7 +289,6 @@ function BrowserInterface(): any {
       </div>
     </div>
   );
-
   return (
     <div style={{ padding: 32, color: "red" }}>
       BrowserInterface is enabled due to required UI modules and services.

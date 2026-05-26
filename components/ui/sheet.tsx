@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,31 +17,16 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
 "use client";
-
-import { specificExports } from "react";
-import { specificExports } from "@radix-ui/react-dialog";
-import { specificExports } from "class-variance-authority";
-import { specificExports } from "lucide-react";
-
-import { specificExports } from "@/lib/utils";
-
 const Sheet = SheetPrimitive.Root;
-
 const SheetTrigger = SheetPrimitive.Trigger;
-
 const SheetClose = SheetPrimitive.Close;
-
 const SheetPortal = SheetPrimitive.Portal;
-
 const SheetOverlay = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Overlay>
@@ -60,7 +41,6 @@ const SheetOverlay = React.forwardRef<
   />
 ));
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
-
 const sheetVariants = cva(
   "fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
   {
@@ -79,12 +59,10 @@ const sheetVariants = cva(
     },
   },
 );
-
 interface SheetContentProps
   extends
     React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
     VariantProps<typeof sheetVariants> {}
-
 const SheetContent = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Content>,
   SheetContentProps
@@ -105,7 +83,6 @@ const SheetContent = React.forwardRef<
   </SheetPortal>
 ));
 SheetContent.displayName = SheetPrimitive.Content.displayName;
-
 const SheetHeader = ({
   className,
   ...props
@@ -119,7 +96,6 @@ const SheetHeader = ({
   />
 );
 SheetHeader.displayName = "SheetHeader";
-
 const SheetFooter = ({
   className,
   ...props
@@ -133,7 +109,6 @@ const SheetFooter = ({
   />
 );
 SheetFooter.displayName = "SheetFooter";
-
 const SheetTitle = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>
@@ -145,7 +120,6 @@ const SheetTitle = React.forwardRef<
   />
 ));
 SheetTitle.displayName = SheetPrimitive.Title.displayName;
-
 const SheetDescription = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description>
@@ -157,7 +131,6 @@ const SheetDescription = React.forwardRef<
   />
 ));
 SheetDescription.displayName = SheetPrimitive.Description.displayName;
-
 export {
   Sheet,
   SheetPortal,

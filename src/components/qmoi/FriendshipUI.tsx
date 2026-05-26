@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,17 +17,12 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-
 interface Friend {
   id: string;
   userId: string;
@@ -47,19 +38,16 @@ interface Friend {
   notes?: string;
   tags?: string[];
 }
-
 interface FriendshipStats {
   totalFriends: number;
   pendingRequests: number;
   blockedUsers: number;
   recentActivities: number;
 }
-
 interface FriendshipUIProps {
   userId?: string;
   onFriendSelect?: (friend: Friend) => void;
 }
-
 export /**
  * FriendshipUI function
  */
@@ -74,7 +62,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
   );
   const [newFriendEmail, setNewFriendEmail] = useState("");
   const [selectedFriend, setSelectedFriend] = useState<Friend | null>(null);
-
   // Fetch friends and stats on mount
   useEffect(() => {
     if (userId) {
@@ -83,7 +70,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
       fetchStats();
     }
   }, [userId]);
-
   const fetchFriends = async () => {
     try {
       setIsLoading(true);
@@ -91,7 +77,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
         `/api/qmoi/friendship?action=list&userId=${userId}`,
       );
       const data = await response.json();
-
       if (data.success && data.friends) {
         setFriends(data.friends);
       }
@@ -101,14 +86,12 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
       setIsLoading(false);
     }
   };
-
   const fetchPendingRequests = async () => {
     try {
       const response = await apiClient.get(
         `/api/qmoi/friendship?action=pending&userId=${userId}`,
       );
       const data = await response.json();
-
       if (data.success && data.pending) {
         setPendingRequests(data.pending);
       }
@@ -116,14 +99,12 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
       logger.error("Failed to fetch pending requests:", error);
     }
   };
-
   const fetchStats = async () => {
     try {
       const response = await apiClient.get(
         `/api/qmoi/friendship?action=stats&userId=${userId}`,
       );
       const data = await response.json();
-
       if (data.success && data.stats) {
         setStats(data.stats);
       }
@@ -131,10 +112,8 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
       logger.error("Failed to fetch stats:", error);
     }
   };
-
   const handleSendRequest = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!newFriendEmail) {
       toast({
         title: "Error",
@@ -143,7 +122,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
       });
       return;
     }
-
     try {
       const response = await apiClient.get("/api/qmoi/friendship", {
         method: "POST",
@@ -154,7 +132,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
           targetUserId: newFriendEmail,
         }),
       });
-
       const data = await response.json();
       if (data.success) {
         toast({
@@ -172,7 +149,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
       });
     }
   };
-
   const handleAcceptRequest = async (friendId: string) => {
     try {
       const response = await apiClient.get("/api/qmoi/friendship", {
@@ -184,7 +160,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
           friendId,
         }),
       });
-
       const data = await response.json();
       if (data.success) {
         toast({
@@ -202,10 +177,8 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
       });
     }
   };
-
   const handleRemoveFriend = async (friendId: string) => {
     if (!confirm("Remove this friend?")) return;
-
     try {
       const response = await apiClient.get("/api/qmoi/friendship", {
         method: "POST",
@@ -216,7 +189,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
           friendId,
         }),
       });
-
       const data = await response.json();
       if (data.success) {
         toast({
@@ -233,10 +205,8 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
       });
     }
   };
-
   const handleBlockUser = async (friendId: string) => {
     if (!confirm("Block this user?")) return;
-
     try {
       const response = await apiClient.get("/api/qmoi/friendship", {
         method: "POST",
@@ -247,7 +217,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
           friendId,
         }),
       });
-
       const data = await response.json();
       if (data.success) {
         toast({
@@ -264,7 +233,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
       });
     }
   };
-
   return (
     <div className="w-full max-w-4xl space-y-4 p-4">
       {/* Header */}
@@ -273,7 +241,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
           👥 Friendships & Community
         </h2>
       </div>
-
       {/* optimized Stats */}
       {stats && (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -311,7 +278,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
           </div>
         </div>
       )}
-
       {/* Tabs */}
       <div className="flex space-x-2 border-b border-gray-200 dark:border-gray-700">
         <button
@@ -345,13 +311,11 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
           Stats
         </button>
       </div>
-
       {/* Send Friend Request Form */}
       <form onSubmit={handleSendRequest} className="space-y-3">
         <div className="flex gap-2">
           <input
             type="email"
-            
             value={newFriendEmail}
             onChange={(e) => setNewFriendEmail(e.target.value)}
             className="flex-1 px-3 py-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600"
@@ -364,7 +328,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
           </button>
         </div>
       </form>
-
       {/* Tab Content */}
       {activeTab === "friends" && (
         <div className="space-y-2">
@@ -415,13 +378,11 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
                     {friend.status}
                   </span>
                 </div>
-
                 {friend.notes && (
                   <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">
                     📝 {friend.notes}
                   </p>
                 )}
-
                 {friend.tags && friend.tags.length > 0 && (
                   <div className="flex flex-wrap gap-1 mb-3">
                     {friend.tags.map((tag) => (
@@ -434,13 +395,11 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
                     ))}
                   </div>
                 )}
-
                 {friend.since && (
                   <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
                     Friends since {new Date(friend.since).toLocaleDateString()}
                   </p>
                 )}
-
                 <div className="flex gap-2 pt-2 border-t border-gray-200 dark:border-gray-600">
                   <button
                     onClick={(e) => {
@@ -466,7 +425,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
           )}
         </div>
       )}
-
       {activeTab === "pending" && (
         <div className="space-y-2">
           {pendingRequests.length === 0 ? (
@@ -491,7 +449,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
                     )}
                   </div>
                 </div>
-
                 <div className="flex gap-2">
                   <button
                     onClick={() => handleAcceptRequest(request.id)}
@@ -511,7 +468,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
           )}
         </div>
       )}
-
       {activeTab === "stats" && (
         <div className="space-y-4">
           {stats ? (
@@ -539,7 +495,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
                   </p>
                 </div>
               </div>
-
               <div className="p-4 bg-blue-50 dark:bg-blue-900 rounded-lg">
                 <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">
                   💡 QVillage Tips
@@ -559,7 +514,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
           )}
         </div>
       )}
-
       {/* Selected Friend Details */}
       {selectedFriend && selectedFriend.status === "accepted" && (
         <div className="p-4 bg-purple-50 dark:bg-purple-900 rounded-lg border-2 border-purple-300">
@@ -597,25 +551,18 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
     </div>
   );
 }
-
 export default FriendshipUI;
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -623,23 +570,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -647,23 +588,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -671,23 +606,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -695,23 +624,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -719,23 +642,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -743,23 +660,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -767,23 +678,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -791,23 +696,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

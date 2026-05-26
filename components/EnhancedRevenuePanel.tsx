@@ -2,23 +2,7 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
-import { specificExports } from "react";
-import { specificExports } from "@mui/material/Card";
-import { specificExports } from "@mui/material/CardContent";
-import { specificExports } from "@mui/material/CardHeader";
-import { specificExports } from "@mui/material/Typography";
-import { specificExports } from "@mui/material/Button";
-import { specificExports } from "@/components/ui/input";
-import { specificExports } from "@/components/ui/label";
-import { specificExports } from "@/components/ui/switch";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/progress";
-import { specificExports } from "@/components/ui/tabs";
-import { specificExports } from "@/components/ui/alert";
-import { specificExports } from "@/components/ui/separator";
 import {
   DollarSign,
   TrendingUp,
@@ -34,7 +18,6 @@ import {
   Clock,
   BarChart3,
 } from "lucide-react";
-
 interface RevenueData {
   mpesa: number;
   airtel: number;
@@ -58,7 +41,6 @@ interface RevenueData {
   };
   status: string;
 }
-
 interface Transaction {
   id: string;
   type: string;
@@ -67,7 +49,6 @@ interface Transaction {
   timestamp: string;
   status: string;
 }
-
 export default /**
  * EnhancedRevenuePanel function
  */
@@ -88,7 +69,6 @@ function EnhancedRevenuePanel(): any {
     email: true,
     sms: true,
   });
-
   useEffect(() => {
     checkMasterStatus();
     if (isMaster) {
@@ -97,7 +77,6 @@ function EnhancedRevenuePanel(): any {
       return () => clearInterval(interval);
     }
   }, [isMaster]);
-
   const checkMasterStatus = async () => {
     try {
       const response = await apiClient.get("/api/qmoi/master/verify", {
@@ -105,7 +84,6 @@ function EnhancedRevenuePanel(): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ key: masterKey }),
       });
-
       if (response.ok) {
         setIsMaster(true);
         loadRevenueData();
@@ -117,7 +95,6 @@ function EnhancedRevenuePanel(): any {
       );
     }
   };
-
   const loadRevenueData = async () => {
     try {
       const response = await apiClient.get("/api/qmoi/revenue/status");
@@ -126,7 +103,6 @@ function EnhancedRevenuePanel(): any {
         setRevenueData(data);
         setEngineStatus(data.status);
       }
-
       const txResponse = await apiClient.get("/api/qmoi/revenue/transactions");
       if (txResponse.ok) {
         const txData = await txResponse.json();
@@ -139,7 +115,6 @@ function EnhancedRevenuePanel(): any {
       );
     }
   };
-
   const handleMasterLogin = async () => {
     setLoading(true);
     try {
@@ -148,7 +123,6 @@ function EnhancedRevenuePanel(): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ key: masterKey }),
       });
-
       if (response.ok) {
         setIsMaster(true);
         await loadRevenueData();
@@ -162,7 +136,6 @@ function EnhancedRevenuePanel(): any {
       setLoading(false);
     }
   };
-
   const startEngine = async () => {
     setLoading(true);
     try {
@@ -170,7 +143,6 @@ function EnhancedRevenuePanel(): any {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });
-
       if (response.ok) {
         setEngineStatus("running");
         await loadRevenueData();
@@ -181,7 +153,6 @@ function EnhancedRevenuePanel(): any {
       setLoading(false);
     }
   };
-
   const stopEngine = async () => {
     setLoading(true);
     try {
@@ -189,7 +160,6 @@ function EnhancedRevenuePanel(): any {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });
-
       if (response.ok) {
         setEngineStatus("stopped");
         await loadRevenueData();
@@ -200,10 +170,8 @@ function EnhancedRevenuePanel(): any {
       setLoading(false);
     }
   };
-
   const setTarget = async () => {
     if (!targetAmount || !selectedType) return;
-
     setLoading(true);
     try {
       const response = await apiClient.get("/api/qmoi/revenue/target", {
@@ -214,7 +182,6 @@ function EnhancedRevenuePanel(): any {
           amount: parseInt(targetAmount),
         }),
       });
-
       if (response.ok) {
         setTargetAmount("");
         await loadRevenueData();
@@ -225,10 +192,8 @@ function EnhancedRevenuePanel(): any {
       setLoading(false);
     }
   };
-
   const manualTransfer = async () => {
     if (!transferAmount || !selectedType) return;
-
     setLoading(true);
     try {
       const response = await apiClient.get("/api/qmoi/revenue/transfer", {
@@ -239,7 +204,6 @@ function EnhancedRevenuePanel(): any {
           amount: parseInt(transferAmount),
         }),
       });
-
       if (response.ok) {
         setTransferAmount("");
         await loadRevenueData();
@@ -250,17 +214,14 @@ function EnhancedRevenuePanel(): any {
       setLoading(false);
     }
   };
-
   const resetDaily = async () => {
     if (!confirm("Are you sure you want to reset daily earnings?")) return;
-
     setLoading(true);
     try {
       const response = await apiClient.get("/api/qmoi/revenue/reset", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });
-
       if (response.ok) {
         await loadRevenueData();
       }
@@ -273,7 +234,6 @@ function EnhancedRevenuePanel(): any {
       setLoading(false);
     }
   };
-
   if (!isMaster) {
     return (
       <Card className="w-full max-w-md mx-auto">
@@ -316,7 +276,6 @@ function EnhancedRevenuePanel(): any {
       </Card>
     );
   }
-
   if (!revenueData) {
     return (
       <Card className="w-full">
@@ -326,10 +285,8 @@ function EnhancedRevenuePanel(): any {
       </Card>
     );
   }
-
   const today = revenueData.today;
   const targets = revenueData.targets.daily;
-
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -349,7 +306,6 @@ function EnhancedRevenuePanel(): any {
           {engineStatus}
         </Badge>
       </div>
-
       {/* Engine Controls */}
       <Card>
         <CardHeader>
@@ -387,7 +343,6 @@ function EnhancedRevenuePanel(): any {
           </div>
         </CardContent>
       </Card>
-
       {/* Revenue Overview */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card>
@@ -410,7 +365,6 @@ function EnhancedRevenuePanel(): any {
             />
           </CardContent>
         </Card>
-
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
@@ -431,7 +385,6 @@ function EnhancedRevenuePanel(): any {
             />
           </CardContent>
         </Card>
-
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
@@ -453,7 +406,6 @@ function EnhancedRevenuePanel(): any {
           </CardContent>
         </Card>
       </div>
-
       {/* Master Controls */}
       <Tabs defaultValue="targets" className="space-y-4">
         <TabsList>
@@ -462,7 +414,6 @@ function EnhancedRevenuePanel(): any {
           <TabsTrigger value="transactions">Transactions</TabsTrigger>
           <TabsTrigger value="settings">Settings</TabsTrigger>
         </TabsList>
-
         <TabsContent value="targets" className="space-y-4">
           <Card>
             <CardHeader>
@@ -498,7 +449,6 @@ function EnhancedRevenuePanel(): any {
             </CardContent>
           </Card>
         </TabsContent>
-
         <TabsContent value="transfers" className="space-y-4">
           <Card>
             <CardHeader>
@@ -535,7 +485,6 @@ function EnhancedRevenuePanel(): any {
               </Button>
             </CardContent>
           </Card>
-
           <Card>
             <CardHeader>
               <CardTitle>Auto-Transfer Settings</CardTitle>
@@ -570,7 +519,6 @@ function EnhancedRevenuePanel(): any {
             </CardContent>
           </Card>
         </TabsContent>
-
         <TabsContent value="transactions" className="space-y-4">
           <Card>
             <CardHeader>
@@ -614,7 +562,6 @@ function EnhancedRevenuePanel(): any {
             </CardContent>
           </Card>
         </TabsContent>
-
         <TabsContent value="settings" className="space-y-4">
           <Card>
             <CardHeader>
@@ -664,7 +611,6 @@ function EnhancedRevenuePanel(): any {
           </Card>
         </TabsContent>
       </Tabs>
-
       {/* Total Earnings */}
       <Card>
         <CardHeader>

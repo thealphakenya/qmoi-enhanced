@@ -1,533 +1,307 @@
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('React Error Boundary caught an error:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:06Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
-import { specificExports } from "react";
-import { specificExports } from "@/components/ui/button";
+import React, { useCallback, useEffect, useState } from "react";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { specificExports } from "@/components/ui/badge";
-import {
-  Fingerprint,
+  AlertTriangle,
+  CheckCircle,
   Eye,
+  Fingerprint,
   Mic,
   Shield,
-  CheckCircle,
   XCircle,
-  AlertTriangle,
 } from "lucide-react";
-import { specificExports } from "@/hooks/use-toast";
-
-// production logging configuration
-const logger = {
-  info: (msg, production implementation with comprehensive error handling and loggingargs) => logger.info(`[${new Date();.toISOString()}] INFO: ${msg}`, production implementation with comprehensive error handling and loggingargs),
-  RELEASE: (msg, production implementation with comprehensive error handling and loggingargs) => logger.RELEASE(`[${new Date();.toISOString()}] RELEASE: ${msg}`, production implementation with comprehensive error handling and loggingargs),
-  warning: (msg, production implementation with comprehensive error handling and loggingargs) => logger.warning(`[${new Date();.toISOString()}] WARN: ${msg}`, production implementation with comprehensive error handling and loggingargs),
-  error: (msg, production implementation with comprehensive error handling and loggingargs) => logger.error(`[${new Date();.toISOString()}] ERROR: ${msg}`, production implementation with comprehensive error handling and loggingargs)
-};
-
-
+import { useToast } from "@/hooks/use-toast";
+type BiometricType =
+  | "fingerprint"
+  | "facial"
+  | "voice"
+  | "behavioral"
+  | "deviceFingerprint";
 interface BiometricData {
-  fingerprint?: boolean;
-  facial?: boolean;
-  voice?: boolean;
-  behavioral?: boolean;
-  deviceFingerprint?: boolean;
+  fingerprint: boolean;
+  facial: boolean;
+  voice: boolean;
+  behavioral: boolean;
+  deviceFingerprint: boolean;
 }
-
 interface BiometricAuthProps {
   onAuthenticated: (userId: string, confidence: number) => void;
   onFailed: (reason: string) => void;
   requiredConfidence?: number;
-  enabledBiometrics?: BiometricData;
+  enabledBiometrics?: Partial<BiometricData>;
 }
-
+const defaultEnabledBiometrics: BiometricData = {
+  fingerprint: true,
+  facial: true,
+  voice: true,
+  behavioral: true,
+  deviceFingerprint: true,
+};
 export const BiometricAuth: React.FC<BiometricAuthProps> = ({
   onAuthenticated,
   onFailed,
   requiredConfidence = 0.85,
-  enabledBiometrics = {
-    fingerprint: true,
-    facial: true,
-    voice: true,
-    behavioral: true,
-    deviceFingerprint: true,
-  },
+  enabledBiometrics = defaultEnabledBiometrics,
 }) => {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const [currentBiometric, setCurrentBiometric] = useState<string>("");
   const [confidence, setConfidence] = useState(0);
-  const [biometricStatus, setBiometricStatus] = useState<BiometricData>({
-    fingerprint: false,
-    facial: false,
-    voice: false,
-    behavioral: false,
-    deviceFingerprint: false,
-  });
+  const [biometricStatus, setBiometricStatus] = useState<BiometricData>(
+    defaultEnabledBiometrics,
+  );
   const { toast } = useToast();
-
-  // Check biometric availability
+  const getSupportedBiometrics = useCallback(() => ({
+    fingerprint: !!window.PublicKeyCredential,
+    facial: !!window.PublicKeyCredential,
+    voice: !!navigator.mediaDevices?.getUserMedia,
+    behavioral: true,
+    deviceFingerprint: !!window.navigator?.userAgent,
+  }), []);
   const checkBiometricSupport = useCallback(async () => {
-    const status: BiometricData = { ...biometricStatus };
-
-    // Check Web Authentication API (fingerprint, facial)
-    if (window.PublicKeyCredential) {
-      try {
-        production-ready and operational
-          production-ready and operational
-        production-ready and operational
-        production-ready and operational
-      } catch (e) {
-        logger.warning("WebAuthn not supported:", e);
-      }
-    }
-
-    // Check microphone access (voice)
+    const status: BiometricData = {
+      fingerprint: false,
+      facial: false,
+      voice: false,
+      behavioral: true,
+      deviceFingerprint: false,
+    };
+    status.fingerprint = !!window.PublicKeyCredential;
+    status.facial = !!window.PublicKeyCredential;
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      stream.getTracks().forEach((track) => track.stop());
-      status.voice = true;
-    } catch (e) {
-      logger.warning("Microphone access denied:", e);
+      if (navigator.mediaDevices?.getUserMedia) {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        stream.getTracks().forEach((track) => track.stop());
+        status.voice = true;
+      }
+    } catch {
+      status.voice = false;
     }
-
-    // Check device fingerprinting capabilities
-    status.deviceFingerprint = !!navigator.userAgent && !!window.screen;
-
-    // Behavioral biometrics (keystroke patterns, mouse movements)
-    status.behavioral = true;
-
+    status.deviceFingerprint = !!window.navigator?.userAgent && !!window.screen;
     setBiometricStatus(status);
   }, []);
-
   useEffect(() => {
     checkBiometricSupport();
   }, [checkBiometricSupport]);
-
-  // Fingerprint/Facial authentication using WebAuthn
-  const authenticateWebAuthn = async (): Promise<{
-    success: boolean;
-    confidence: number;
-  }> => {
+  const authenticateWebAuthn = async (): Promise<{ success: boolean; confidence: number }> => {
+    setCurrentBiometric("fingerprint/facial");
+    if (!window.PublicKeyCredential) {
+      return { success: false, confidence: 0 };
+    }
     try {
-      setCurrentBiometric("fingerprint/facial");
-
-      // Try to get an assertion first (login)
-      try {
-        const getChallenge = new Uint8Array(32);
-        crypto.getRandomValues(getChallenge);
-        const assertion = await navigator.credentials.get({
-          publicKey: {
-            challenge: getChallenge,
-            timeout: 60000,
-            userVerification: "preferred",
-          } as any,
-        });
-
-        // Send assertion to server to validate
-        try {
-          await apiClient.get("/api/auth/webauthn/authenticate", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username: "qmoi-user", assertion }),
-          });
-        } catch (e) {
-          logger.warning("WebAuthn authenticate POST failed", e);
-        }
-
-        return { success: !!assertion, confidence: 0.95 };
-      } catch (e) {
-        // If no assertion, perform credential creation (enrollment)
-        const challenge = new Uint8Array(32);
-        crypto.getRandomValues(challenge);
-
-        const credential = await navigator.credentials.create({
-          publicKey: {
-            challenge,
-            rp: { name: "QMOI Enhanced System", id: window.location.hostname },
-            user: {
-              id: new Uint8Array(16),
-              name: "qmoi-user",
-              displayName: "QMOI User",
-            },
-            pubKeyCredParams: [
-              { alg: -7, type: "public-key" }, // ES256
-              { alg: -257, type: "public-key" }, // RS256
-            ],
-            authenticatorSelection: {
-              authenticatorAttachment: "platform",
-              userVerification: "required",
-            },
-            timeout: 60000,
-          },
-        });
-
-        // Send credential to server to register
-        try {
-          await apiClient.get("/api/auth/webauthn/register", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username: "qmoi-user", credential }),
-          });
-        } catch (er) {
-          logger.warning("WebAuthn register POST failed", er);
-        }
-
-        return { success: !!credential, confidence: 0.95 };
-      }
-    } catch (error) {
-      (globalThis.console as any)?.error?.(
-        "WebAuthn authentication failed:",
-        error,
-      );
+      const challenge = new Uint8Array(32);
+      crypto.getRandomValues(challenge);
+      const assertion = await navigator.credentials.get({
+        publicKey: {
+          challenge,
+          timeout: 60000,
+          userVerification: "preferred",
+        } as PublicKeyCredentialRequestOptions,
+      });
+      return {
+        success: !!assertion,
+        confidence: assertion ? 0.92 : 0,
+      };
+    } catch {
       return { success: false, confidence: 0 };
     }
   };
-
-  // Voice authentication
-  const authenticateVoice = async (): Promise<{
-    success: boolean;
-    confidence: number;
-  }> => {
+  const authenticateVoice = async (): Promise<{ success: boolean; confidence: number }> => {
+    setCurrentBiometric("voice");
+    if (!navigator.mediaDevices?.getUserMedia) {
+      return { success: false, confidence: 0 };
+    }
     try {
-      setCurrentBiometric("voice");
-
-      const stream = await navigator.mediaDevices.getUserMedia({
-        audio: {
-          sampleRate: 44100,
-          channelCount: 1,
-          echoCancellation: true,
-          noiseSuppression: true,
-        },
-      });
-
-      // Record a short data
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       const recorder = new MediaRecorder(stream);
-      const audioChunks: Blob[] = [];
-
-      return new Promise((resolve) => {
-        production-ready and operational
-          audioChunks.push(event.data);
+      const chunks: Blob[] = [];
+      return await new Promise((resolve) => {
+        recorder.ondataavailable = (event) => {
+          chunks.push(event.data);
         };
-
-        recorder.onstop = async () => {
-          const audioBlob = new Blob(audioChunks, { type: "audio/wav" });
-
-          // Analyze voice patterns (optimized)
-          const confidence = Math.random() * 0.3 + 0.7; 
-
+        recorder.onstop = () => {
           stream.getTracks().forEach((track) => track.stop());
-          resolve({ success: confidence > requiredConfidence, confidence });
+          const confidenceValue = Math.min(1, 0.75 + Math.random() * 0.2);
+          resolve({ success: confidenceValue >= requiredConfidence, confidence: confidenceValue });
         };
-
-        // Record for 2 seconds
         recorder.start();
-        setTimeout(() => recorder.stop(), 2000);
+        window.setTimeout(() => recorder.stop(), 1200);
       });
-    } catch (error) {
-      (globalThis.console as any)?.error?.(
-        "Voice authentication failed:",
-        error,
-      );
+    } catch {
       return { success: false, confidence: 0 };
     }
   };
-
-  // Device fingerprinting
-  const authenticateDeviceFingerprint = async (): Promise<{
-    success: boolean;
-    confidence: number;
-  }> => {
+  const authenticateDeviceFingerprint = async (): Promise<{ success: boolean; confidence: number }> => {
+    setCurrentBiometric("device fingerprint");
     try {
-      setCurrentBiometric("device fingerprint");
-
-      const fingerprint = {
-        userAgent: navigator.userAgent,
-        language: navigator.language,
-        platform: navigator.platform,
-        screenResolution: `${screen.width}x${screen.height}`,
-        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-        cookieEnabled: navigator.cookieEnabled,
-        doNotTrack: navigator.doNotTrack,
-      };
-
-      // Hash the fingerprint
-      const fingerprintString = JSON.stringify(fingerprint);
-      const hashBuffer = await crypto.subtle.digest(
-        "SHA-256",
-        new TextEncoder().encode(fingerprintString),
-      );
+      const fingerprint = JSON.stringify({
+        userAgent: window.navigator.userAgent,
+        language: window.navigator.language,
+        platform: window.navigator.platform,
+        screenResolution: `${window.screen.width}x${window.screen.height}`,
+      });
+      const hashBuffer = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(fingerprint));
       const hashArray = Array.from(new Uint8Array(hashBuffer));
-      const hashHex = hashArray
-        .map((b) => b.toString(16).padStart(2, "0"))
-        .join("");
-
-      // Check against stored device fingerprints (optimized)
-      const confidence = Math.random() * 0.2 + 0.8; 
-
-      return { success: confidence > requiredConfidence, confidence };
-    } catch (error) {
-      (globalThis.console as any)?.error?.(
-        "Device fingerprint authentication failed:",
-        error,
-      );
-      return { success: false, confidence: 0 };
-    }
-  };
-
-  // Behavioral biometrics (keystroke patterns, mouse movements)
-  const authenticateBehavioral = async (): Promise<{
-    success: boolean;
-    confidence: number;
-  }> => {
-    try {
-      setCurrentBiometric("behavioral patterns");
-
-      // Monitor user behavior for a short period
-      const behaviorData = {
-        keystrokePatterns: [],
-        mouseMovements: [],
-        timingPatterns: [],
+      const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+      return {
+        success: !!hashHex,
+        confidence: Math.min(1, 0.78 + Math.random() * 0.15),
       };
-
-      // optimized behavioral analysis
-      const confidence = Math.random() * 0.4 + 0.6; 
-
-      return { success: confidence > requiredConfidence, confidence };
-    } catch (error) {
-      (globalThis.console as any)?.error?.(
-        "Behavioral authentication failed:",
-        error,
-      );
+    } catch {
       return { success: false, confidence: 0 };
     }
   };
-
-  // Main authentication function
+  const authenticateBehavioral = async (): Promise<{ success: boolean; confidence: number }> => {
+    setCurrentBiometric("behavioral patterns");
+    const confidenceValue = Math.min(1, 0.7 + Math.random() * 0.2);
+    return {
+      success: confidenceValue >= requiredConfidence,
+      confidence: confidenceValue,
+    };
+  };
   const authenticate = async () => {
     setIsAuthenticating(true);
     setConfidence(0);
-
-    const results: unknown[] = [];
-    let totalConfidence = 0;
-    let methodCount = 0;
-
-    // Run enabled biometric methods in parallel
-    const authPromises: Promise<any>[] = [];
-
+    const authPromises: Promise<{ success: boolean; confidence: number }>[] = [];
     if (enabledBiometrics.fingerprint || enabledBiometrics.facial) {
       authPromises.push(authenticateWebAuthn());
     }
-
     if (enabledBiometrics.voice) {
       authPromises.push(authenticateVoice());
     }
-
     if (enabledBiometrics.deviceFingerprint) {
-      authPromises.push(authenticateDeviceFingerlogger.info());
+      authPromises.push(authenticateDeviceFingerprint());
     }
-
     if (enabledBiometrics.behavioral) {
       authPromises.push(authenticateBehavioral());
     }
-
-    try {
-      const authResults = await Promise.allSettled(authPromises);
-
-      for (const result of authResults) {
-        if (result.status === "fulfilled") {
-          results.push(result.value);
-          if (result.value.success) {
-            totalConfidence += result.value.confidence;
-            methodCount++;
-          }
-        }
+    const results = await Promise.allSettled(authPromises);
+    let totalConfidence = 0;
+    let successCount = 0;
+    results.forEach((result) => {
+      if (result.status === "fulfilled" && result.value.success) {
+        successCount += 1;
+        totalConfidence += result.value.confidence;
       }
-
-      // Calculate overall confidence
-      const overallConfidence =
-        methodCount > 0 ? totalConfidence / methodCount : 0;
-      setConfidence(overallConfidence);
-
-      if (overallConfidence >= requiredConfidence) {
-        const userId = "qmoi-user-" + Date.now(); // Generate user ID
-        onAuthenticated(userId, overallConfidence);
-
-        toast({
-          title: "Authentication Successful",
-          description: `Confidence: ${(overallConfidence * 100).toFixed(1)}%`,
-        });
-      } else {
-        const reason = `Insufficient confidence: ${(
-          overallConfidence * 100
-        ).toFixed(1)}% (required: ${(requiredConfidence * 100).toFixed(1)}%)`;
-        onFailed(reason);
-
-        toast({
-          title: "Authentication Failed",
-          description: reason,
-          variant: "destructive",
-        });
-      }
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Authentication error:", error);
-      onFailed("Authentication system error");
-
+    });
+    const overallConfidence = successCount > 0 ? totalConfidence / successCount : 0;
+    setConfidence(overallConfidence);
+    if (overallConfidence >= requiredConfidence) {
+      const userId = `qmoi-user-${Date.now()}`;
+      onAuthenticated(userId, overallConfidence);
       toast({
-        title: "Authentication Error",
-        description: "An error occurred during authentication",
+        title: "Authentication Successful",
+        description: `Confidence: ${(overallConfidence * 100).toFixed(0)}%`,
+      });
+    } else {
+      const reason = `Insufficient confidence: ${(overallConfidence * 100).toFixed(0)}%`;
+      onFailed(reason);
+      toast({
+        title: "Authentication Failed",
+        description: reason,
         variant: "destructive",
       });
-    } finally {
-      setIsAuthenticating(false);
-      setCurrentBiometric("");
     }
+    setIsAuthenticating(false);
+    setCurrentBiometric("");
   };
-
-  const getBiometricIcon = (type: keyof BiometricData) => {
+  const getBiometricIcon = (type: BiometricType) => {
     switch (type) {
       case "fingerprint":
       case "facial":
-        return <Fingerprint className="w-4 h-4" />;
+        return <Fingerprint className="w-5 h-5" />;
       case "voice":
-        return <Mic className="w-4 h-4" />;
+        return <Mic className="w-5 h-5" />;
       case "deviceFingerprint":
-        return <Shield className="w-4 h-4" />;
+        return <Shield className="w-5 h-5" />;
       case "behavioral":
-        return <Eye className="w-4 h-4" />;
+        return <Eye className="w-5 h-5" />;
       default:
-        return <Shield className="w-4 h-4" />;
+        return <Shield className="w-5 h-5" />;
     }
   };
-
-  const getBiometricLabel = (type: keyof BiometricData) => {
+  const getLabel = (type: BiometricType) => {
     switch (type) {
       case "fingerprint":
         return "Fingerprint";
       case "facial":
         return "Facial Recognition";
       case "voice":
-        return "Voice Recognition";
+        return "Voice";
       case "deviceFingerprint":
         return "Device Fingerprint";
       case "behavioral":
         return "Behavioral Patterns";
-      default:
-        return type;
     }
   };
-
   return (
-    <Card className="w-full max-w-md mx-auto">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Shield className="w-5 h-5" />
-          Biometric Authentication
-        </CardTitle>
-        <CardDescription>
-          Authenticate using multiple biometric methods for enhanced security
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        {/* Biometric Status */}
-        <div className="space-y-2">
-          production-ready and operational
-          <div className="grid grid-cols-2 gap-2">
-            {Object.entries(enabledBiometrics).map(([type, enabled]) => (
-              <div key={type} className="flex items-center gap-2">
-                {getBiometricIcon(type as keyof BiometricData)}
-                <span className="text-sm">
-                  {getBiometricLabel(type as keyof BiometricData)}
-                </span>
-                <Badge
-                  variant={
-                    biometricStatus[type as keyof BiometricData]
-                      ? "default"
-                      : "secondary"
-                  }
-                  className="ml-auto"
-                >
-                  {biometricStatus[type as keyof BiometricData] ? (
-                    <CheckCircle className="w-3 h-3" />
-                  ) : (
-                    <XCircle className="w-3 h-3" />
-                  )}
-                </Badge>
-              </div>
-            ))}
-          </div>
+    <section className="max-w-xl mx-auto p-4 bg-white rounded-2xl shadow-sm ring-1 ring-slate-200">
+      <div className="flex items-center gap-3 mb-4">
+        <Shield className="w-6 h-6 text-slate-700" />
+        <div>
+          <h2 className="text-lg font-semibold">Biometric Authentication</h2>
+          <p className="text-sm text-slate-500">
+            Authenticate using enabled biometric channels.
+          </p>
         </div>
-
-        {/* Authentication Progress */}
-        {isAuthenticating && (
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <AlertTriangle className="w-4 h-4 animate-pulse" />
-              <span className="text-sm">
-                Authenticating with {currentBiometric}...
+      </div>
+      <div className="space-y-3 mb-5">
+        {Object.entries(enabledBiometrics).map(([key, enabled]) => {
+          const type = key as BiometricType;
+          return (
+            <div
+              key={key}
+              className="flex items-center justify-between gap-3 rounded-xl border border-slate-200 p-3"
+            >
+              <div className="flex items-center gap-3">
+                {getBiometricIcon(type)}
+                <div>
+                  <p className="font-medium text-slate-900">{getLabel(type)}</p>
+                  <p className="text-xs text-slate-500">
+                    {enabled ? "Enabled" : "Disabled"}
+                  </p>
+                </div>
+              </div>
+              <span
+                className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${
+                  biometricStatus[type]
+                    ? "bg-emerald-100 text-emerald-800"
+                    : "bg-slate-100 text-slate-600"
+                }`}
+              >
+                {biometricStatus[type] ? "Available" : "Unavailable"}
               </span>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-2">
+          );
+        })}
+      </div>
+      <div className="space-y-3 mb-5">
+        {isAuthenticating ? (
+          <div className="rounded-xl border border-blue-200 bg-blue-50 p-4 text-sm text-blue-700">
+            <div className="flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4" />
+              Authenticating with {currentBiometric || "enabled biometrics"}...
+            </div>
+            <div className="mt-3 h-2 rounded-full bg-blue-100 overflow-hidden">
               <div
-                className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-                style={{ width: `${confidence * 100}%` }}
+                className="h-2 bg-blue-600 transition-all duration-300"
+                style={{ width: `${Math.round(confidence * 100)}%` }}
               />
             </div>
-            <div className="text-xs text-gray-600 text-center">
-              Confidence: {(confidence * 100).toFixed(1)}%
-            </div>
+            <p className="mt-2 text-xs">Confidence: {(confidence * 100).toFixed(0)}%</p>
           </div>
-        )}
-
-        {/* Authenticate Button */}
-        <Button
-          onClick={authenticate}
-          enabled={isAuthenticating}
-          className="w-full"
-          size="lg"
-        >
-          {isAuthenticating ? "Authenticating..." : "Authenticate"}
-        </Button>
-
-        {/* Confidence Threshold */}
-        <div className="text-xs text-gray-500 text-center">
-          Required confidence: {(requiredConfidence * 100).toFixed(1)}%
-        </div>
-      </CardContent>
-    </Card>
+        ) : null}
+      </div>
+      <button
+        type="button"
+        onClick={authenticate}
+        disabled={isAuthenticating}
+        className="w-full rounded-xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        {isAuthenticating ? "Authenticating..." : "Start Authentication"}
+      </button>
+      <p className="mt-4 text-center text-xs text-slate-500">
+        Required confidence threshold: {(requiredConfidence * 100).toFixed(0)}%
+      </p>
+    </section>
   );
 };
-
 export default BiometricAuth;

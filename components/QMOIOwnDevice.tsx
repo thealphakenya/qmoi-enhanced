@@ -1,18 +1,14 @@
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -20,15 +16,11 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -36,10 +28,6 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { specificExports } from "./ui/button";
-import { specificExports } from "./ui/progress";
-import { specificExports } from "./ui/badge";
-import { specificExports } from "./ui/alert";
 import {
   Shield,
   Unlock,
@@ -63,7 +51,6 @@ import {
   Stop,
   RotateCcw,
 } from "lucide-react";
-
 interface DeviceRestriction {
   type:
     | "mkopa"
@@ -81,7 +68,6 @@ interface DeviceRestriction {
   restrictions: string[];
   unlockMethods: string[];
 }
-
 interface UnlockResult {
   success: boolean;
   message: string;
@@ -90,14 +76,12 @@ interface UnlockResult {
   errors: string[];
   warnings: string[];
 }
-
 interface QMOIOwnDeviceProps {
   detectedRestrictions: DeviceRestriction[];
   onUnlockAttempt: (restriction: DeviceRestriction) => Promise<UnlockResult>;
   onMasterMode: () => Promise<UnlockResult>;
   onRefreshDetection: () => Promise<DeviceRestriction[]>;
 }
-
 const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
   detectedRestrictions,
   onUnlockAttempt,
@@ -113,7 +97,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
   const [autoDetection, setAutoDetection] = useState(true);
   const [detectionInterval, setDetectionInterval] =
     useState<NodeJS.Timeout | null>(null);
-
   // Auto-detection effect
   useEffect(() => {
     if (autoDetection) {
@@ -127,9 +110,7 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
           setIsDetecting(false);
         }
       }, 300000); // Check every 5 minutes
-
       setDetectionInterval(interval);
-
       return () => {
         if (interval) clearInterval(interval);
       };
@@ -140,13 +121,11 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
       }
     }
   }, [autoDetection, onRefreshDetection]);
-
   const handleQMOIOwnDevice = async () => {
     setIsUnlocking(true);
     setUnlockProgress(0);
     setCurrentStep("🔍 Analyzing device restrictions...");
     setUnlockResults([]);
-
     try {
       // Step 1: Analyze restrictions
       setCurrentStep("📋 Detected restrictions:");
@@ -158,11 +137,9 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
         );
       });
       setUnlockProgress(10);
-
       // Step 2: Attempt automatic unlock for each restriction
       setCurrentStep("🔓 Attempting automatic unlock...");
       const results: UnlockResult[] = [];
-
       for (const restriction of detectedRestrictions) {
         setCurrentStep(
           `🔓 Unlocking ${restriction.organization} restrictions...`,
@@ -171,22 +148,17 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
         results.push(result);
         setUnlockProgress((prev) => prev + 40 / detectedRestrictions.length);
       }
-
       setUnlockResults(results);
-
       // Step 3: Enable master mode
       setCurrentStep("👑 Enabling QMOI master mode...");
       const masterResult = await onMasterMode();
       results.push(masterResult);
       setUnlockProgress(90);
-
       // Step 4: Final verification
       setCurrentStep("✅ Verifying device freedom...");
       setUnlockProgress(100);
-
       const successCount = results.filter((r) => r.success).length;
       const totalCount = results.length;
-
       if (successCount === totalCount) {
         setCurrentStep(
           "🎉 Device successfully liberated! QMOI now has full control.",
@@ -204,7 +176,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
       setIsUnlocking(false);
     }
   };
-
   const handleRefreshDetection = async () => {
     setIsDetecting(true);
     try {
@@ -215,7 +186,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
       setIsDetecting(false);
     }
   };
-
   const getSeverityColor = (severity: string) => {
     switch (severity) {
       case "critical":
@@ -230,7 +200,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
         return "bg-gray-500 text-white";
     }
   };
-
   const getRestrictionIcon = (type: string) => {
     switch (type) {
       case "mkopa":
@@ -253,7 +222,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
         return <Shield className="w-4 h-4" />;
     }
   };
-
   const getUnlockMethodIcon = (method: string) => {
     switch (method) {
       case "remove_device_admin":
@@ -274,7 +242,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
         return <Zap className="w-4 h-4" />;
     }
   };
-
   return (
     <div className="qmoi-own-device-panel space-y-6">
       <Card>
@@ -302,7 +269,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
               {autoDetection ? "Enabled" : "enabled"}
             </Button>
           </div>
-
           {/* Detection status */}
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
@@ -325,7 +291,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
               Refresh
             </Button>
           </div>
-
           {/* Restrictions detected */}
           {detectedRestrictions.length > 0 && (
             <Alert className="mb-4">
@@ -336,7 +301,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
               </AlertDescription>
             </Alert>
           )}
-
           {/* Restrictions list */}
           {detectedRestrictions.length > 0 && (
             <div className="space-y-3 mb-4">
@@ -371,7 +335,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
               ))}
             </div>
           )}
-
           {/* QMOI Own Device button */}
           {detectedRestrictions.length > 0 && (
             <Button
@@ -393,7 +356,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
               )}
             </Button>
           )}
-
           {/* No restrictions detected */}
           {detectedRestrictions.length === 0 && (
             <Alert>
@@ -403,7 +365,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
               </AlertDescription>
             </Alert>
           )}
-
           {/* Unlock progress */}
           {isUnlocking && (
             <div className="space-y-3">
@@ -415,7 +376,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
               <p className="text-sm text-gray-600">{currentStep}</p>
             </div>
           )}
-
           {/* Unlock results */}
           {unlockResults.length > 0 && (
             <div className="space-y-3">
@@ -429,7 +389,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
                   {showDetails ? "Hide Details" : "Show Details"}
                 </Button>
               </div>
-
               {showDetails && (
                 <div className="space-y-2">
                   {unlockResults.map((result, index) => (
@@ -448,7 +407,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
                       <p className="text-sm text-gray-600 mb-2">
                         {result.message}
                       </p>
-
                       {result.errors.length > 0 && (
                         <div className="mb-2">
                           <p className="text-xs font-medium text-red-600">
@@ -461,7 +419,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
                           </ul>
                         </div>
                       )}
-
                       {result.warnings.length > 0 && (
                         <div>
                           <p className="text-xs font-medium text-yellow-600">
@@ -478,7 +435,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
                   ))}
                 </div>
               )}
-
               {/* Summary */}
               <div className="flex items-center gap-2">
                 <span className="text-sm font-medium">Summary:</span>
@@ -491,7 +447,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
           )}
         </CardContent>
       </Card>
-
       {/* Advanced features */}
       <Card>
         <CardHeader>
@@ -527,5 +482,4 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
     </div>
   );
 };
-
 export default QMOIOwnDevice;

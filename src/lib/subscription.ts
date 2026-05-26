@@ -16,7 +16,7 @@ export interface SubscriptionRecord {
   renewsAt: string;
 }
 
-production-ready and operational
+
   free: {
     tier: 'free',
     pricePerMonth: 0,
@@ -51,10 +51,10 @@ function futureRenewal(days: number): any {
 }
 
 export /**
- production-ready and operational
+ 
  */
-production-ready and operational
-  production-ready and operational
+
+  
 }
 
 export /**
@@ -82,7 +82,7 @@ export async /**
  * updateSubscription function
  */
 function updateSubscription(userId: string, tier: SubscriptionTier): any {
-  production-ready and operational
+  
   const record: SubscriptionRecord = {
     userId,
     tier: plan.tier,

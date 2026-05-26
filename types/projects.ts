@@ -42,7 +42,7 @@ export interface Resource {
   projectId: string;
   name: string;
   type: "human" | "equipment" | "software" | "other";
-  production-ready and operational
+  
   cost: number;
   allocation: number;
   startDate: number;

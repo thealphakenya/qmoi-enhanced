@@ -3,8 +3,6 @@ import React from 'react';
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 export const AIReviewPlugin: QmoiPlugin = {
   id: "ai-review",
   name: "AI Review",
@@ -14,7 +12,6 @@ export const AIReviewPlugin: QmoiPlugin = {
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    
     const actions = [
       { type: "edit", file: "main.py", time: "2m ago" },
       { type: "run", file: "main.py", time: "1m ago" },
@@ -50,23 +47,17 @@ export const AIReviewPlugin: QmoiPlugin = {
     );
   },
 };
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

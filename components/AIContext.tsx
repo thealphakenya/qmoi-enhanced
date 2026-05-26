@@ -1,18 +1,14 @@
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -20,13 +16,10 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
 import React, {
   createContext,
@@ -35,10 +28,6 @@ import React, {
   useEffect,
   ReactNode,
 } from "react";
-import { specificExports } from "../hooks/useAIHealthCheck";
-import { specificExports } from "../hooks/useDeviceHealth";
-import { specificExports } from "@/components/ui/use-toast";
-
 // Types for context
 interface EmotionalState {
   mood: "cheerful" | "neutral" | "focused";
@@ -47,13 +36,11 @@ interface EmotionalState {
   preferredUsers: string[];
   persona: string;
 }
-
 interface ChatMessage {
   type: "user" | "ai" | "system";
   content: string;
   timestamp?: number;
 }
-
 interface AIHealth {
   status: "healthy" | "degraded" | "critical";
   lastCheck: number;
@@ -63,7 +50,6 @@ interface AIHealth {
     cpuUsage: number;
   };
 }
-
 interface DeviceHealth {
   status: "healthy" | "degraded" | "critical";
   lastCheck: number;
@@ -73,11 +59,9 @@ interface DeviceHealth {
     networkStatus: string;
   };
 }
-
 interface PersistentMemory {
   [key: string]: unknown;
 }
-
 interface AIContextType {
   chatHistory: ChatMessage[];
   setChatHistory: (h: ChatMessage[]) => void;
@@ -91,9 +75,7 @@ interface AIContextType {
   emotionalState: EmotionalState;
   setEmotionalState: (e: EmotionalState) => void;
 }
-
 const AIContext = createContext<AIContextType | undefined>(undefined);
-
 export /**
  * useAIContext function
  */
@@ -101,13 +83,11 @@ function useAIContext(): any {
   const ctx = useContext(AIContext);
   return ctx;
 }
-
 export /**
  * AIProvider function
  */
 function AIProvider({ children }: { children: ReactNode }): any {
   const { toast } = useToast();
-
   // Shared chat history with error handling
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>(() => {
     try {
@@ -124,7 +104,6 @@ function AIProvider({ children }: { children: ReactNode }): any {
       return [];
     }
   });
-
   useEffect(() => {
     try {
       if (typeof window !== "undefined") {
@@ -145,7 +124,6 @@ function AIProvider({ children }: { children: ReactNode }): any {
       });
     }
   }, [chatHistory, toast]);
-
   // Persistent memory with error handling
   const [persistentMemory, setPersistentMemory] = useState<PersistentMemory>(
     () => {
@@ -164,7 +142,6 @@ function AIProvider({ children }: { children: ReactNode }): any {
       }
     },
   );
-
   useEffect(() => {
     try {
       if (typeof window !== "undefined") {
@@ -185,7 +162,6 @@ function AIProvider({ children }: { children: ReactNode }): any {
       });
     }
   }, [persistentMemory, toast]);
-
   // Emotional state with error handling
   const [emotionalState, setEmotionalState] = useState<EmotionalState>(() => {
     try {
@@ -214,7 +190,6 @@ function AIProvider({ children }: { children: ReactNode }): any {
       };
     }
   });
-
   useEffect(() => {
     try {
       if (typeof window !== "undefined") {
@@ -235,11 +210,9 @@ function AIProvider({ children }: { children: ReactNode }): any {
       });
     }
   }, [emotionalState, toast]);
-
   // Device/AI health hooks
   const aiHealth = useAIHealthCheck();
   const deviceHealth = useDeviceHealth();
-
   // Device optimization with proper error handling
   const optimizeDevice = async () => {
     try {
@@ -257,7 +230,6 @@ function AIProvider({ children }: { children: ReactNode }): any {
       });
     }
   };
-
   // Error/virus scan with proper error handling
   const scanForErrors = async () => {
     try {
@@ -277,7 +249,6 @@ function AIProvider({ children }: { children: ReactNode }): any {
       return ["Scan failed"];
     }
   };
-
   // Self-healing with proper error handling
   const selfHeal = async () => {
     try {
@@ -297,7 +268,6 @@ function AIProvider({ children }: { children: ReactNode }): any {
       return "Self-healing failed";
     }
   };
-
   return (
     <AIContext.Provider
       value={{
@@ -318,23 +288,17 @@ function AIProvider({ children }: { children: ReactNode }): any {
     </AIContext.Provider>
   );
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -342,23 +306,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -366,23 +324,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -390,23 +342,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -414,23 +360,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -438,23 +378,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -462,23 +396,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -486,23 +414,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -510,23 +432,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

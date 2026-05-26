@@ -1,63 +1,42 @@
+const inMemoryStore = new Map<string, { value: string; expiresAt: number | null }>();
 let redisClient: any = null;
-production-ready and operational
 
-/**
- * escapeRegExp function
- */
 function escapeRegExp(value: string): string {
-  return value.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+  return value.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
 }
 
-/**
- * patternToRegExp function
- */
 function patternToRegExp(pattern: string): RegExp {
   const regex = pattern
-    .split('*')
+    .split("*")
     .map(escapeRegExp)
-    .join('.*');
+    .join(".*");
   return new RegExp(`^${regex}$`);
 }
 
-/**
- * getExpiration function
- */
 function getExpiration(ttlSeconds: number): number | null {
   return ttlSeconds > 0 ? Date.now() + ttlSeconds * 1000 : null;
 }
 
-async /**
- * connectRedis function
- */
-function connectRedis(): Promise<any | null> {
+async function connectRedis(): Promise<any | null> {
   if (redisClient) {
     return redisClient;
   }
 
-  production-ready and operational
-    return null;
-  }
-
   try {
-    const redisModuleName = 'redis';
-    const redis = await import(redisModuleName);
+    const redis = await import("redis");
     const createClient = redis.createClient;
-    const env = typeof globalThis !== 'undefined' && (globalThis as any).process ? (globalThis as any).process.env : {};
-    const url = env.REDIS_URL || 'redis://prod.qmoi.ai:6379';
+    const env = typeof process !== "undefined" ? process.env : {};
+    const url = env.REDIS_URL || "redis://localhost:6379";
     redisClient = createClient({ url });
-    if (typeof redisClient.connect === 'function') {
+    if (typeof redisClient.connect === "function") {
       await redisClient.connect();
     }
     return redisClient;
   } catch (error) {
-    production-ready and operational
     return null;
   }
 }
 
-/**
- * serializeValue function
- */
 function serializeValue(value: unknown): string {
   return JSON.stringify(value);
 }
@@ -66,18 +45,14 @@ function deserializeValue<T>(stored: string): T {
   return JSON.parse(stored) as T;
 }
 
-export async function setCache<T>(
-  key: string,
-  value: T,
-  ttlSeconds: number = 3600,
-): Promise<void> {
+export async function setCache<T>(key: string, value: T, ttlSeconds = 3600): Promise<void> {
   const payload = serializeValue(value);
   const client = await connectRedis();
   const expiresAt = getExpiration(ttlSeconds);
 
   if (client) {
     try {
-      if (typeof client.set === 'function') {
+      if (typeof client.set === "function") {
         if (ttlSeconds > 0) {
           await client.set(key, payload, { EX: ttlSeconds });
         } else {
@@ -86,7 +61,7 @@ export async function setCache<T>(
         return;
       }
     } catch (error) {
-      production-ready and operational
+      // fall back to in-memory cache
     }
   }
 
@@ -105,14 +80,14 @@ export async function getCache<T>(key: string): Promise<T | null> {
   const client = await connectRedis();
   if (client) {
     try {
-      if (typeof client.get === 'function') {
+      if (typeof client.get === "function") {
         const result = await client.get(key);
-        if (typeof result === 'string') {
+        if (typeof result === "string") {
           return deserializeValue<T>(result);
         }
       }
     } catch (error) {
-      production-ready and operational
+      // fall back to in-memory cache
     }
   }
 
@@ -133,37 +108,31 @@ export async function getCache<T>(key: string): Promise<T | null> {
   }
 }
 
-export async /**
- * deleteCache function
- */
-function deleteCache(key: string): Promise<void> {
+export async function deleteCache(key: string): Promise<void> {
   const client = await connectRedis();
   if (client) {
     try {
-      if (typeof client.del === 'function') {
+      if (typeof client.del === "function") {
         await client.del(key);
         return;
       }
     } catch (error) {
-      production-ready and operational
+      // fall back to in-memory delete
     }
   }
 
   inMemoryStore.delete(key);
 }
 
-async /**
- * listKeys function
- */
-function listKeys(pattern: string): Promise<string[]> {
+export async function listKeys(pattern: string): Promise<string[]> {
   const client = await connectRedis();
   if (client) {
     try {
-      if (typeof client.keys === 'function') {
+      if (typeof client.keys === "function") {
         return await client.keys(pattern);
       }
 
-      if (typeof client.scanIterator === 'function') {
+      if (typeof client.scanIterator === "function") {
         const keys: string[] = [];
         for await (const key of client.scanIterator({ MATCH: pattern, COUNT: 100 })) {
           keys.push(key);
@@ -171,7 +140,7 @@ function listKeys(pattern: string): Promise<string[]> {
         return keys;
       }
     } catch (error) {
-      production-ready and operational
+      // fall back to in-memory key listing
     }
   }
 
@@ -179,10 +148,7 @@ function listKeys(pattern: string): Promise<string[]> {
   return Array.from(inMemoryStore.keys()).filter((key) => matcher.test(key));
 }
 
-export async /**
- * deletePattern function
- */
-function deletePattern(pattern: string): Promise<number> {
+export async function deletePattern(pattern: string): Promise<number> {
   const keys = await listKeys(pattern);
   if (keys.length === 0) {
     return 0;
@@ -191,11 +157,11 @@ function deletePattern(pattern: string): Promise<number> {
   const client = await connectRedis();
   if (client) {
     try {
-      if (typeof client.del === 'function') {
+      if (typeof client.del === "function") {
         await client.del(keys);
       }
     } catch (error) {
-      production-ready and operational
+      // fall back to in-memory deletes
     }
   }
 
@@ -203,23 +169,20 @@ function deletePattern(pattern: string): Promise<number> {
   return keys.length;
 }
 
-export async /**
- * clearCache function
- */
-function clearCache(): Promise<boolean> {
+export async function clearCache(): Promise<boolean> {
   const client = await connectRedis();
   if (client) {
     try {
-      if (typeof client.flushDb === 'function') {
+      if (typeof client.flushDb === "function") {
         await client.flushDb();
         return true;
       }
-      if (typeof client.flushAll === 'function') {
+      if (typeof client.flushAll === "function") {
         await client.flushAll();
         return true;
       }
     } catch (error) {
-      production-ready and operational
+      // fall back to clearing in-memory cache
     }
   }
 
@@ -227,26 +190,23 @@ function clearCache(): Promise<boolean> {
   return true;
 }
 
-export async /**
- * getStats function
- */
-function getStats(): Promise<{ connected: boolean; keyCount: number; memoryUsage: string }> {
+export async function getStats(): Promise<{ connected: boolean; keyCount: number; memoryUsage: string }> {
   const client = await connectRedis();
   let connected = false;
-  let keyCount = 0;
-  let memoryUsage = 'in-memory';
+  let keyCount = inMemoryStore.size;
+  let memoryUsage = "in-memory";
 
   if (client) {
     connected = true;
     try {
-      if (typeof client.dbSize === 'function') {
+      if (typeof client.dbSize === "function") {
         keyCount = Number(await client.dbSize());
-      } else if (typeof client.sendCommand === 'function') {
-        const dbSize = await client.sendCommand(['DBSIZE']);
+      } else if (typeof client.sendCommand === "function") {
+        const dbSize = await client.sendCommand(["DBSIZE"]);
         keyCount = Number(dbSize) || 0;
       }
 
-      if (typeof client.info === 'function') {
+      if (typeof client.info === "function") {
         const info = await client.info();
         const memoryMatch = String(info).match(/used_memory:(\d+)/);
         if (memoryMatch) {
@@ -255,10 +215,7 @@ function getStats(): Promise<{ connected: boolean; keyCount: number; memoryUsage
       }
     } catch (error) {
       connected = false;
-      production-ready and operational
     }
-  } else {
-    keyCount = inMemoryStore.size;
   }
 
   return {
@@ -268,27 +225,22 @@ function getStats(): Promise<{ connected: boolean; keyCount: number; memoryUsage
   };
 }
 
-export async /**
- * healthcheck function
- */
-function healthcheck(): Promise<boolean> {
+export async function healthcheck(): Promise<boolean> {
   const client = await connectRedis();
   if (client) {
     try {
-      if (typeof client.ping === 'function') {
+      if (typeof client.ping === "function") {
         const pong = await client.ping();
-        return String(pong).toUpperCase() === 'PONG';
+        return String(pong).toUpperCase() === "PONG";
       }
-      if (typeof client.sendCommand === 'function') {
-        await client.sendCommand(['PING']);
+      if (typeof client.sendCommand === "function") {
+        await client.sendCommand(["PING"]);
         return true;
       }
     } catch (error) {
-      production-ready and operational
       return false;
     }
   }
-
   return true;
 }
 
@@ -308,24 +260,18 @@ export const cacheKeys = {
   userTransactions: (userId: string) => `user:transactions:${userId}`,
   walletBalance: (walletId: string) => `wallet:balance:${walletId}`,
   walletMetrics: (walletId: string) => `wallet:metrics:${walletId}`,
-  systemMetrics: () => 'monitoring:metrics:system',
-  healthStatus: () => 'monitoring:health:status',
-  activeAlerts: () => 'monitoring:alerts:active',
+  systemMetrics: () => "monitoring:metrics:system",
+  healthStatus: () => "monitoring:health:status",
+  activeAlerts: () => "monitoring:alerts:active",
   analyticsDaily: (date: string) => `analytics:daily:${date}`,
   analyticsMonthly: (month: string) => `analytics:monthly:${month}`,
   analyticsUser: (userId: string) => `analytics:user:${userId}`,
 };
 
-export async /**
- * invalidateUserCache function
- */
-function invalidateUserCache(userId: string): Promise<void> {
+export async function invalidateUserCache(userId: string): Promise<void> {
   await deletePattern(`user:${userId}:*`);
 }
 
-export async /**
- * invalidateWalletCache function
- */
-function invalidateWalletCache(walletId: string): Promise<void> {
+export async function invalidateWalletCache(walletId: string): Promise<void> {
   await deletePattern(`wallet:${walletId}:*`);
 }

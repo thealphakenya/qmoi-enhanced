@@ -2,12 +2,8 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import { specificExports } from "react";
-
 interface MasterOverview {
   master: {
     name: string;
@@ -25,7 +21,6 @@ interface MasterOverview {
   };
   lastUpdated: string;
 }
-
 export default /**
  * MasterPortal function
  */
@@ -39,27 +34,22 @@ function MasterPortal(): any {
   const [overview, setOverview] = useState<MasterOverview | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
   useEffect(() => {
     if (!token) return;
     void fetchOverview();
   }, [token]);
-
   const fetchOverview = async () => {
     setLoading(true);
     setError(null);
-
     try {
       const res = await apiClient.get(`/api/qvillage?endpoint=master`, {
         headers: {
           "x-qmoi-master-token": token,
         },
       });
-
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
       }
-
       const data = (await res.json()) as MasterOverview;
       setOverview(data);
     } catch (err) {
@@ -68,12 +58,10 @@ function MasterPortal(): any {
       setLoading(false);
     }
   };
-
   const handleTokenSave = () => {
     localStorage.setItem("QM_MASTER_TOKEN", token);
     void fetchOverview();
   };
-
   return (
     <div className="space-y-4">
       <div className="p-4 bg-white rounded-lg shadow">
@@ -84,7 +72,6 @@ function MasterPortal(): any {
         <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-2">
           <input
             className="col-span-2 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            
             value={token}
             onChange={(e) => setToken(e.target.value)}
           />
@@ -97,19 +84,16 @@ function MasterPortal(): any {
           </button>
         </div>
       </div>
-
       {loading && (
         <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
           Loading master overview
         </div>
       )}
-
       {error && (
         <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
           {error}
         </div>
       )}
-
       {overview && (
         <div className="space-y-4">
           <div className="p-4 bg-white rounded-lg shadow">
@@ -130,7 +114,6 @@ function MasterPortal(): any {
               </a>
             </p>
           </div>
-
           <div className="p-4 bg-white rounded-lg shadow">
             <h3 className="text-lg font-semibold">Platform Status</h3>
             <p className="text-sm text-gray-600 mt-1">
@@ -143,7 +126,6 @@ function MasterPortal(): any {
               Features: {overview.platform.features.join(", ")}
             </p>
           </div>
-
           <div className="p-4 bg-white rounded-lg shadow">
             <h3 className="text-lg font-semibold">Dataset Counts</h3>
             <p className="text-sm text-gray-600 mt-1">
@@ -160,7 +142,6 @@ function MasterPortal(): any {
               )}
             </div>
           </div>
-
           <div className="p-4 bg-white rounded-lg shadow">
             <h3 className="text-lg font-semibold">Last Updated</h3>
             <p className="text-sm text-gray-600 mt-1">{overview.lastUpdated}</p>

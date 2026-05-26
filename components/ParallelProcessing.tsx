@@ -1,18 +1,14 @@
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -20,16 +16,11 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
-import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -37,10 +28,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { specificExports } from "@/components/ui/button";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/progress";
-import { specificExports } from "@/components/ui/tabs";
 import {
   Cpu,
   Zap,
@@ -55,8 +42,6 @@ import {
   Activity,
   Layers,
 } from "lucide-react";
-import { specificExports } from "@/hooks/use-toast";
-
 interface Task {
   id: string;
   name: string;
@@ -72,7 +57,6 @@ interface Task {
   result?: unknown;
   error?: string;
 }
-
 interface Worker {
   id: string;
   name: string;
@@ -82,13 +66,11 @@ interface Worker {
   averageTaskTime: number;
   efficiency: number;
 }
-
 interface ParallelProcessingProps {
   maxWorkers?: number;
   onTaskCompleted?: (task: Task) => void;
   onTaskFailed?: (task: Task) => void;
 }
-
 export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
   maxWorkers = 4,
   onTaskCompleted,
@@ -107,7 +89,6 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
   });
   const processingIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const { toast } = useToast();
-
   // Initialize workers
   const initializeWorkers = useCallback(() => {
     const newWorkers: Worker[] = [];
@@ -123,12 +104,10 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
     }
     setWorkers(newWorkers);
   }, [maxWorkers]);
-
   const addSampleTasks = () => {
     if (process.env.NODE_ENV === "production") {
       return;
     }
-
     const sampleTasks: Task[] = [
       {
         id: "task-1",
@@ -171,16 +150,13 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
         progress: 0,
       },
     ];
-
     setTasks(sampleTasks);
     setProcessingStats((prev) => ({ ...prev, totalTasks: sampleTasks.length }));
   };
-
   const processTasks = useCallback(() => {
     setTasks((currentTasks) => {
       const updatedTasks = [...currentTasks];
       const idleWorkers = workers.filter((w) => w.status === "idle");
-
       for (const worker of idleWorkers) {
         const pendingTask = updatedTasks.find(
           (task) =>
@@ -192,15 +168,12 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
                   "completed",
               )),
         );
-
         if (!pendingTask) {
           break;
         }
-
         pendingTask.status = "running";
         pendingTask.startTime = new Date();
         pendingTask.workerId = worker.id;
-
         setWorkers((currentWorkers) =>
           currentWorkers.map((w) =>
             w.id === worker.id
@@ -209,18 +182,15 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
           ),
         );
       }
-
       // Process running tasks
       updatedTasks.forEach((task) => {
         if (task.status === "running") {
           task.progress = Math.min(100, task.progress + Math.random() * 15);
-
           if (task.progress >= 100) {
             task.status = "completed";
             task.endTime = new Date();
             task.duration =
               task.endTime.getTime() - (task.startTime?.getTime() || 0);
-
             setWorkers((currentWorkers) =>
               currentWorkers.map((w) =>
                 w.id === task.workerId
@@ -237,16 +207,13 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
                   : w,
               ),
             );
-
             onTaskCompleted?.(task);
           }
         }
       });
-
       return updatedTasks;
     });
   }, [workers, onTaskCompleted]);
-
   // Start processing
   const startProcessing = () => {
     setIsProcessing(true);
@@ -256,34 +223,29 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
       description: `Started parallel processing with ${maxWorkers} workers`,
     });
   };
-
   // Pause processing
   const pauseProcessing = () => {
     setIsProcessing(false);
     if (processingIntervalRef.current) {
       clearInterval(processingIntervalRef.current);
     }
-
     // Pause all running tasks
     setTasks((currentTasks) =>
       currentTasks.map((task) =>
         task.status === "running" ? { ...task, status: "paused" } : task,
       ),
     );
-
     toast({
       title: "Processing Paused",
       description: "All tasks have been paused",
     });
   };
-
   // Stop processing
   const stopProcessing = () => {
     setIsProcessing(false);
     if (processingIntervalRef.current) {
       clearInterval(processingIntervalRef.current);
     }
-
     // Reset all tasks
     setTasks((currentTasks) =>
       currentTasks.map((task) => ({
@@ -296,7 +258,6 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
         workerId: undefined,
       })),
     );
-
     // Reset workers
     setWorkers((currentWorkers) =>
       currentWorkers.map((w) => ({
@@ -305,13 +266,11 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
         currentTask: undefined,
       })),
     );
-
     toast({
       title: "Processing Stopped",
       description: "All tasks and workers have been reset",
     });
   };
-
   // Update processing stats
   useEffect(() => {
     const completedTasks = tasks.filter((t) => t.status === "completed").length;
@@ -319,7 +278,6 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
     const totalDuration = tasks
       .filter((t) => t.duration)
       .reduce((sum, t) => sum + (t.duration || 0), 0);
-
     const averageProcessingTime =
       completedTasks > 0 ? totalDuration / completedTasks : 0;
     const throughput =
@@ -333,7 +291,6 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
       workers.length > 0
         ? workers.reduce((sum, w) => sum + w.efficiency, 0) / workers.length
         : 0;
-
     setProcessingStats({
       totalTasks: tasks.length,
       completedTasks,
@@ -343,12 +300,10 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
       efficiency,
     });
   }, [tasks, workers]);
-
   useEffect(() => {
     initializeWorkers();
     addSampleTasks();
   }, [initializeWorkers]);
-
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case "critical":
@@ -363,7 +318,6 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
         return "bg-gray-100 text-gray-800";
     }
   };
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case "completed":
@@ -380,7 +334,6 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
         return "bg-gray-100 text-gray-800";
     }
   };
-
   const getWorkerStatusColor = (status: string) => {
     switch (status) {
       case "idle":
@@ -393,7 +346,6 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
         return "bg-gray-100 text-gray-800";
     }
   };
-
   return (
     <div className="w-full max-w-6xl mx-auto space-y-6">
       {/* Processing Overview */}
@@ -434,7 +386,6 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
               <div className="text-sm text-gray-600">Efficiency</div>
             </div>
           </div>
-
           {/* Control Buttons */}
           <div className="flex gap-2 justify-center">
             {!isProcessing ? (
@@ -459,7 +410,6 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
           </div>
         </CardContent>
       </Card>
-
       {/* Workers and Tasks */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Workers */}
@@ -510,7 +460,6 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
             </div>
           </CardContent>
         </Card>
-
         {/* Tasks */}
         <Card>
           <CardHeader>
@@ -560,7 +509,6 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
           </CardContent>
         </Card>
       </div>
-
       {/* Performance Metrics */}
       <Card>
         <CardHeader>
@@ -605,5 +553,4 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
     </div>
   );
 };
-
 export default ParallelProcessing;

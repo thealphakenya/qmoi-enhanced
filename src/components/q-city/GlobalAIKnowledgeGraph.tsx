@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,23 +17,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 'use client';
-
-
 interface Entity {
   type: string;
   name: string;
   count: number;
   connections: number;
 }
-
 interface Relationship {
   id: string;
   source: string;
@@ -45,7 +35,6 @@ interface Relationship {
   type: string;
   strength: number;
 }
-
 export const GlobalAIKnowledgeGraph: React.FC = () => {
   const [entities] = useState<Entity[]>([
     { type: 'Models', name: 'Deep Learning Models', count: 4250, connections: 12840 },
@@ -54,7 +43,6 @@ export const GlobalAIKnowledgeGraph: React.FC = () => {
     { type: 'Tools', name: 'Open Source Tools', count: 1560, connections: 6240 },
     { type: 'Authors', name: 'Researchers/Authors', count: 5890, connections: 22450 }
   ]);
-
   const [relationships] = useState<Relationship[]>([
     {
       id: '1',
@@ -85,7 +73,6 @@ export const GlobalAIKnowledgeGraph: React.FC = () => {
       strength: 0.92
     }
   ]);
-
   return (
     <div className="space-y-6">
       <Card>
@@ -112,7 +99,6 @@ export const GlobalAIKnowledgeGraph: React.FC = () => {
                 </Card>
               ))}
             </div>
-
             {/* Graph Statistics */}
             <Card className="bg-slate-900/50 border-slate-700">
               <CardContent className="pt-6">
@@ -136,7 +122,6 @@ export const GlobalAIKnowledgeGraph: React.FC = () => {
                 </div>
               </CardContent>
             </Card>
-
             {/* Top Relationships */}
             <div>
               <p className="text-sm text-gray-400 mb-3">Strongest Relationships in Graph:</p>
@@ -167,7 +152,6 @@ export const GlobalAIKnowledgeGraph: React.FC = () => {
                 ))}
               </div>
             </div>
-
             {/* Actions */}
             <div className="flex gap-2">
               <Button className="flex-1 bg-indigo-600 hover:bg-indigo-700">
@@ -183,5 +167,4 @@ export const GlobalAIKnowledgeGraph: React.FC = () => {
     </div>
   );
 };
-
 export default GlobalAIKnowledgeGraph;

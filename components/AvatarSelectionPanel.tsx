@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,20 +17,11 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-import { specificExports } from "react";
-import { specificExports } from "./ui/card";
-import { specificExports } from "./ui/button";
-import { specificExports } from "./ui/badge";
-import { specificExports } from "../src/components/q-city/avatarsConfig";
-
 interface AvatarInfo {
   id: string;
   name: string;
@@ -45,13 +32,11 @@ interface AvatarInfo {
   environment?: string;
   props?: string[];
 }
-
 interface AvatarSelectionPanelProps {
   isOpen: boolean;
   onClose: () => void;
   onAvatarSelected: (avatar: AvatarInfo) => void;
 }
-
 export const AvatarSelectionPanel: React.FC<AvatarSelectionPanelProps> = ({
   isOpen,
   onClose,
@@ -59,7 +44,6 @@ export const AvatarSelectionPanel: React.FC<AvatarSelectionPanelProps> = ({
 }) => {
   const [avatars, setAvatars] = useState<AvatarInfo[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-
   useEffect(() => {
     if (isOpen) {
       // load avatars from configuration (could also hit an API endpoint)
@@ -76,7 +60,6 @@ export const AvatarSelectionPanel: React.FC<AvatarSelectionPanelProps> = ({
       setAvatars(list);
     }
   }, [isOpen]);
-
   const handleSelect = (id: string) => {
     setSelectedId(id);
     const avatar = avatars.find((a) => a.id === id);
@@ -84,9 +67,7 @@ export const AvatarSelectionPanel: React.FC<AvatarSelectionPanelProps> = ({
       onAvatarSelected(avatar);
     }
   };
-
   if (!isOpen) return null;
-
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <Card className="w-full max-w-4xl max-h-[90vh] overflow-y-auto">

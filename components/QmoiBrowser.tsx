@@ -1,18 +1,14 @@
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -20,16 +16,11 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-import { specificExports } from "react";
-import { specificExports } from "./MasterContext";
 import {
   FaArrowLeft,
   FaArrowRight,
@@ -38,14 +29,11 @@ import {
   FaDownload,
   FaShieldAlt,
 } from "react-icons/fa";
-import { specificExports } from "react-icons";
-
 interface QmoiBrowserProps {
   isVisible: boolean;
   onClose: () => void;
   language?: "en" | "sw";
 }
-
 interface Tab {
   id: string;
   title: string;
@@ -53,7 +41,6 @@ interface Tab {
   favicon?: string;
   isActive: boolean;
 }
-
 interface Bookmark {
   id: string;
   title: string;
@@ -61,14 +48,12 @@ interface Bookmark {
   favicon?: string;
   category: string;
 }
-
 export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
   isVisible,
   onClose,
   language = "en",
 }) => {
   const { isMaster } = useMaster();
-
   const [tabs, setTabs] = useState<Tab[]>([
     {
       id: "1",
@@ -84,10 +69,8 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
   const [isAIFilteringEnabled, setIsAIFilteringEnabled] = useState(true);
   const [isIncognitoMode, setIsIncognitoMode] = useState(false);
   const [searchSuggestions, setSearchSuggestions] = useState<string[]>([]);
-
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
-
   const popularSites = [
     { name: "Google", url: "https://www.google.com", icon: "🔍" },
     { name: "YouTube", url: "https://www.youtube.com", icon: "📺" },
@@ -96,33 +79,27 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
     { name: "Wikipedia", url: "https://www.wikipedia.org", icon: "📚" },
     { name: "GitHub", url: "https://www.github.com", icon: "💻" },
   ];
-
   const swahiliSites = [
     { name: "BBC Swahili", url: "https://www.bbc.com/swahili", icon: "📻" },
     { name: "DW Swahili", url: "https://www.dw.com/sw/swahili", icon: "🌍" },
     { name: "VOA Swahili", url: "https://www.voaswahili.com", icon: "📡" },
   ];
-
   useEffect(() => {
     // Load saved bookmarks and history
     const savedBookmarks = localStorage.getItem("qmoi-browser-bookmarks");
     const savedHistory = localStorage.getItem("qmoi-browser-history");
-
     if (savedBookmarks) {
       setBookmarks(JSON.parse(savedBookmarks));
     }
-
     if (savedHistory) {
       setHistory(JSON.parse(savedHistory));
     }
   }, []);
-
   const addToHistory = (url: string) => {
     const newHistory = [url, ...history.filter((h) => h !== url)].slice(0, 100);
     setHistory(newHistory);
     localStorage.setItem("qmoi-browser-history", JSON.stringify(newHistory));
   };
-
   const addBookmark = (title: string, url: string) => {
     const newBookmark: Bookmark = {
       id: Date.now().toString(),
@@ -131,7 +108,6 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
       favicon: `https://www.google.com/s2/favicons?domain=${url}`,
       category: "General",
     };
-
     const newBookmarks = [...bookmarks, newBookmark];
     setBookmarks(newBookmarks);
     localStorage.setItem(
@@ -139,7 +115,6 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
       JSON.stringify(newBookmarks),
     );
   };
-
   const removeBookmark = (id: string) => {
     const newBookmarks = bookmarks.filter((b) => b.id !== id);
     setBookmarks(newBookmarks);
@@ -148,18 +123,14 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
       JSON.stringify(newBookmarks),
     );
   };
-
   const navigateToUrl = (url: string) => {
     let processedUrl = url;
-
     // Add protocol if required
     if (!url.startsWith("https://") && !url.startsWith("https://")) {
       processedUrl = "https://" + url;
     }
-
     setCurrentUrl(processedUrl);
     addToHistory(processedUrl);
-
     // Update active tab
     setTabs((prev) =>
       prev.map((tab) => ({
@@ -169,14 +140,12 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
       })),
     );
   };
-
   const handleSearch = (query: string) => {
     const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(
       query,
     )}`;
     navigateToUrl(searchUrl);
   };
-
   const createNewTab = () => {
     const newTab: Tab = {
       id: Date.now().toString(),
@@ -184,13 +153,11 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
       url: "https://www.google.com",
       isActive: true,
     };
-
     setTabs((prev) =>
       prev.map((t) => ({ ...t, isActive: false })).concat(newTab),
     );
     setCurrentUrl(newTab.url);
   };
-
   const closeTab = (tabId: string) => {
     if (tabs.length === 1) {
       createNewTab();
@@ -201,7 +168,6 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
       setCurrentUrl(activeTab.url);
     }
   };
-
   const switchTab = (tabId: string) => {
     setTabs((prev) =>
       prev.map((tab) => ({
@@ -209,19 +175,15 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
         isActive: tab.id === tabId,
       })),
     );
-
     const activeTab = tabs.find((t) => t.id === tabId);
     if (activeTab) {
       setCurrentUrl(activeTab.url);
     }
   };
-
   const removeAds = (content: string) => {
     if (!isAdRemovalEnabled) return content;
-
     // AI-powered ad removal
     let cleanedContent = content;
-
     // Remove common ad selectors
     const adSelectors = [
       /<div[^>]*class="[^"]*ad[^"]*"[^>]*>.*?<\/div>/gi,
@@ -229,20 +191,16 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
       /<iframe[^>]*src="[^"]*ads[^"]*"[^>]*>.*?<\/iframe>/gi,
       /<script[^>]*src="[^"]*ads[^"]*"[^>]*>.*?<\/script>/gi,
     ];
-
     adSelectors.forEach((selector) => {
       cleanedContent = cleanedContent.replace(selector, "");
     });
-
     return cleanedContent;
   };
-
   const generateSearchSuggestions = (query: string) => {
     if (query.length < 2) {
       setSearchSuggestions([]);
       return;
     }
-
     const suggestions = [
       `${query} news`,
       `${query} tutorial`,
@@ -250,10 +208,8 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
       `${query} review`,
       `${query} price`,
     ];
-
     setSearchSuggestions(suggestions);
   };
-
   const downloadFile = (url: string, filename: string) => {
     const download = {
       id: Date.now().toString(),
@@ -262,18 +218,14 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
       status: "downloading",
       progress: 0,
     };
-
      download
     const interval = setInterval(() => {
     }, 200);
-
     setTimeout(() => {
       clearInterval(interval);
     }, 2000);
   };
-
   if (!isVisible) return null;
-
   return (
     <div className="fixed inset-0 bg-white z-50 flex flex-col">
       {/* Header */}
@@ -308,7 +260,6 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
               +
             </button>
           </div>
-
           <button
             onClick={onClose}
             className="text-gray-500 hover:text-gray-700"
@@ -316,7 +267,6 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
             ✕
           </button>
         </div>
-
         {/* Navigation Bar */}
         <div className="flex items-center gap-2">
           <button
@@ -326,7 +276,6 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
             {FaArrowLeft &&
               React.createElement(FaArrowLeft as React.ElementType)}
           </button>
-
           <button
             onClick={() => iframeRef.current?.contentWindow?.history.forward()}
             className="p-2 text-gray-500 hover:text-gray-700"
@@ -334,14 +283,12 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
             {FaArrowRight &&
               React.createElement(FaArrowRight as React.ElementType)}
           </button>
-
           <button
             onClick={() => navigateToUrl("https://www.google.com")}
             className="p-2 text-gray-500 hover:text-gray-700"
           >
             {FaHome && React.createElement(FaHome as React.ElementType)}
           </button>
-
           <div className="flex-1 relative">
             <input
               ref={searchInputRef}
@@ -357,7 +304,6 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
               }
               className="w-full px-4 py-2 border rounded-lg"
             />
-
             {searchSuggestions.length > 0 && (
               <div className="absolute top-full left-0 right-0 bg-white border rounded-lg shadow-lg z-10">
                 {searchSuggestions.map((suggestion, index) => (
@@ -372,14 +318,12 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
               </div>
             )}
           </div>
-
           <button
             onClick={() => addBookmark("Current Page", currentUrl)}
             className="p-2 text-gray-500 hover:text-yellow-500"
           >
             {FaStar && React.createElement(FaStar as React.ElementType)}
           </button>
-
           <button
             onClick={() => downloadFile(currentUrl, "page.html")}
             className="p-2 text-gray-500 hover:text-gray-700"
@@ -388,7 +332,6 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
           </button>
         </div>
       </div>
-
       {/* Main Content */}
       <div className="flex-1 flex">
         {/* Sidebar */}
@@ -396,7 +339,6 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
           <h3 className="font-semibold mb-4">
             {language === "sw" ? "Tovuti Maarufu" : "Popular Sites"}
           </h3>
-
           <div className="space-y-2 mb-6">
             {popularSites.map((site) => (
               <button
@@ -409,7 +351,6 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
               </button>
             ))}
           </div>
-
           {language === "sw" && (
             <>
               <h3 className="font-semibold mb-4">Tovuti za Kiswahili</h3>
@@ -427,11 +368,9 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
               </div>
             </>
           )}
-
           <h3 className="font-semibold mb-4">
             {language === "sw" ? "Alama za Ukumbusho" : "Bookmarks"}
           </h3>
-
           <div className="space-y-2">
             {bookmarks.map((bookmark) => (
               <div
@@ -455,7 +394,6 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
             ))}
           </div>
         </div>
-
         {/* Browser Content */}
         <div className="flex-1 relative">
           <iframe
@@ -483,7 +421,6 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
           />
         </div>
       </div>
-
       {/* Status Bar */}
       <div className="bg-gray-100 border-t p-2 text-xs text-gray-600 flex items-center justify-between">
         <div className="flex items-center gap-4">
@@ -496,7 +433,6 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
             />
             {language === "sw" ? "Ondoa Matangazo" : "Ad Removal"}
           </label>
-
           <label className="flex items-center gap-1">
             <input
               type="checkbox"
@@ -506,7 +442,6 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
             />
             {language === "sw" ? "Uchambuzi wa AI" : "AI Filtering"}
           </label>
-
           <label className="flex items-center gap-1">
             <input
               type="checkbox"
@@ -517,7 +452,6 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
             {language === "sw" ? "Hali ya Siri" : "Incognito"}
           </label>
         </div>
-
         <div className="flex items-center gap-2">
           {FaShieldAlt &&
             React.createElement(FaShieldAlt as React.ElementType, {
@@ -526,7 +460,6 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
           <span>{language === "sw" ? "Salama" : "Secure"}</span>
         </div>
       </div>
-
       {/* Master Controls */}
       {isMaster && (
         <div className="bg-yellow-50 border-t p-2">

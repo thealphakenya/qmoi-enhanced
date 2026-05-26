@@ -452,7 +452,7 @@ class ComprehensiveTestRunner {
 // Export singleton instance
 export const comprehensiveTestRunner = new ComprehensiveTestRunner();
 
-production-ready and operational
+
 const logger = {
   info: (message: string, ...args: unknown[]) => {
     .log(`[INFO] ${message}`, ...args);

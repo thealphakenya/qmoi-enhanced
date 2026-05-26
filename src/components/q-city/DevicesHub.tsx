@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,20 +17,15 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import {
   DeviceTrackingService,
   Device,
 } from "../../services/DeviceTrackingService";
-
 const isMaster = true;
-
 const WhatsAppService = {
   client: {},
   config: {},
@@ -62,24 +53,19 @@ const WhatsAppService = {
   updateConfig: () => {},
   requestApproval: async () => true,
 };
-
 const deviceService = new DeviceTrackingService(WhatsAppService as any);
-
 export const DevicesHub: React.FC = () => {
   const [devices, setDevices] = useState<Device[]>([]);
   const [selectedDevice, setSelectedDevice] = useState<Device | null>(null);
-
   useEffect(() => {
     setDevices(deviceService.listDevices());
   }, []);
-
   const handleAction = (action: "find" | "lock" | "wipe", deviceId: string) => {
     if (action === "find") deviceService.findDevice(deviceId);
     if (action === "lock") deviceService.lockDevice(deviceId);
     if (action === "wipe") deviceService.wipeDevice(deviceId);
     setSelectedDevice(devices.find((d: Device) => d.id === deviceId) || null);
   };
-
   return (
     <div
       className="devices-hub"
@@ -178,5 +164,4 @@ export const DevicesHub: React.FC = () => {
     </div>
   );
 };
-
 export default DevicesHub;

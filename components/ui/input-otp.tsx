@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,22 +17,12 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
 "use client";
-
-import { specificExports } from "react";
-import { specificExports } from "input-otp";
-import { specificExports } from "lucide-react";
-
-import { specificExports } from "@/lib/utils";
-
 const InputOTP = React.forwardRef<
   React.ElementRef<typeof OTPInput>,
   React.ComponentPropsWithoutRef<typeof OTPInput>
@@ -52,7 +38,6 @@ const InputOTP = React.forwardRef<
   />
 ));
 InputOTP.displayName = "InputOTP";
-
 const InputOTPGroup = React.forwardRef<
   React.ElementRef<"div">,
   React.ComponentPropsWithoutRef<"div">
@@ -60,14 +45,12 @@ const InputOTPGroup = React.forwardRef<
   <div ref={ref} className={cn("flex items-center", className)} {...props} />
 ));
 InputOTPGroup.displayName = "InputOTPGroup";
-
 const InputOTPSlot = React.forwardRef<
   React.ElementRef<"div">,
   React.ComponentPropsWithoutRef<"div"> & { index: number }
 >(({ index, className, ...props }, ref) => {
   const inputOTPContext = React.useContext(OTPInputContext);
   const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index];
-
   return (
     <div
       ref={ref}
@@ -88,7 +71,6 @@ const InputOTPSlot = React.forwardRef<
   );
 });
 InputOTPSlot.displayName = "InputOTPSlot";
-
 const InputOTPSeparator = React.forwardRef<
   React.ElementRef<"div">,
   React.ComponentPropsWithoutRef<"div">
@@ -98,5 +80,4 @@ const InputOTPSeparator = React.forwardRef<
   </div>
 ));
 InputOTPSeparator.displayName = "InputOTPSeparator";
-
 export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator };

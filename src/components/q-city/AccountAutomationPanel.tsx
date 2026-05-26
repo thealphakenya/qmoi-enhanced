@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,14 +17,10 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 interface Account {
   id: number;
   username: string;
@@ -38,13 +30,11 @@ interface Account {
   verified: boolean;
   createdAt: string;
 }
-
 const AccountAutomationPanel: React.FC = () => {
   const [accounts, setAccounts] = useState<Account[]>([]);
   const [form, setForm] = useState({ username: "", email: "", platform: "" });
   const [status, setStatus] = useState<string>("");
   const [idToCheck, setIdToCheck] = useState("");
-
   const createAccount = async () => {
     const res = await apiClient.get("/api/account-automation/create", {
       method: "POST",
@@ -55,7 +45,6 @@ const AccountAutomationPanel: React.FC = () => {
     if (data.account) setAccounts((a) => [...a, data.account]);
     setStatus(data.success ? "Account created" : "Error creating account");
   };
-
   const login = async () => {
     const res = await apiClient.get("/api/account-automation/login", {
       method: "POST",
@@ -68,7 +57,6 @@ const AccountAutomationPanel: React.FC = () => {
     const data = await res.json();
     setStatus(data.success ? "Login successful" : "Login failed");
   };
-
   const verify = async (id: number, email: string) => {
     const res = await apiClient.get("/api/account-automation/verify", {
       method: "POST",
@@ -80,7 +68,6 @@ const AccountAutomationPanel: React.FC = () => {
     if (data.account)
       setAccounts((accs) => accs.map((a) => (a.id === id ? data.account : a)));
   };
-
   const checkStatus = async () => {
     const res = await apiClient.get(`/api/account-automation/status?id=${idToCheck}`);
     const data = await res.json();
@@ -90,7 +77,6 @@ const AccountAutomationPanel: React.FC = () => {
         : "Status check failed",
     );
   };
-
   return (
     <Card className="space-y-4 mt-4">
       <CardHeader>
@@ -199,5 +185,4 @@ const AccountAutomationPanel: React.FC = () => {
     </Card>
   );
 };
-
 export default AccountAutomationPanel;

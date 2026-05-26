@@ -1,5 +1,4 @@
 import React from "react";
-
 export default function LCHub() {
   return (
     <main className="min-h-screen bg-slate-950 p-8">

@@ -1,38 +1,31 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:08Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
 
-import { specificExports } from "react";
+import { useState } from "react";
 
-export default /**
- * stableQAI function
- */
-function stableQAI(): any {
-  try {() {
+export default function StableQAI() {
   const [prompt, setPrompt] = useState("");
-  const [response, setResponse] = useState<string | null>(null);
+  const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
 
   const sendPrompt = async () => {
-    if (!prompt.trim()) return;
+    const trimmedPrompt = prompt.trim();
+    if (!trimmedPrompt) return;
+
     setLoading(true);
     setError(null);
 
     try {
-      const res = await apiClient.get("/api/ai", {
+      const res = await fetch("/api/ai", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ input: prompt, userId: "latest-q" }),
+        body: JSON.stringify({ input: trimmedPrompt, userId: "latest-q" }),
       });
+
       const data = await res.json();
       setResponse(data?.response ?? "(no response)");
-    } catch (e) {
-      setError((e as Error).message);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Request failed");
     } finally {
       setLoading(false);
     }
@@ -49,15 +42,14 @@ function stableQAI(): any {
       <textarea
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
-        
         className="w-full bg-[#111] border border-green-700 text-white p-2 rounded mb-2"
         rows={4}
       />
       <div className="flex items-center gap-2">
         <button
-          enabled={loading || !prompt.trim()}
+          disabled={loading || !prompt.trim()}
           onClick={sendPrompt}
-          className="bg-green-600 hover:bg-green-700 enabled:bg-gray-600 text-white px-4 py-2 rounded"
+          className="bg-green-600 hover:bg-green-700 disabled:bg-gray-600 text-white px-4 py-2 rounded"
         >
           {loading ? "Sending" : "Send"}
         </button>

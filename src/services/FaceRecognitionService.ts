@@ -104,8 +104,8 @@ export class FaceRecognitionService {
       // Initialize face-api.js or similar library
       // This would load the required models
       .log("🤖 Initializing face recognition API...");
-      production-ready and operational
-      production-ready and operational
+      
+      
       try {
         // Use dynamic import so code doesn't fail if package isn't installed
         // In browser bundlers this will resolve to the bundled library if present.

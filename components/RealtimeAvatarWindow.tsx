@@ -1,18 +1,14 @@
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -20,18 +16,12 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import { specificExports } from "react";
-import { specificExports } from "framer-motion";
 import {
   Maximize2,
   Minimize2,
@@ -43,7 +33,6 @@ import {
   Eye,
   EyeOff,
 } from "lucide-react";
-
 interface RealtimeAvatarWindowProps {
   avatarName?: string;
   avatarType?: string;
@@ -56,7 +45,6 @@ interface RealtimeAvatarWindowProps {
   isMaximized?: boolean;
   onMaximizeChange?: (maximized: boolean) => void;
 }
-
 export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
   avatarName = "QMOI",
   avatarType = "human",
@@ -73,27 +61,22 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
   const [audioLevel, setAudioLevel] = useState(0);
   const [showInfo, setShowInfo] = useState(false);
   const [localMaximized, setLocalMaximized] = useState(isMaximized);
-
   useEffect(() => {
     if (!isSpeaking && !isListening) {
       setAudioLevel(0);
       return;
     }
-
     const interval = setInterval(() => {
       setAudioLevel(
         Math.random() * 100 * (isSpeaking || isListening ? 1 : 0.3),
       );
     }, 50);
-
     return () => clearInterval(interval);
   }, [isSpeaking, isListening]);
-
   const handleMaximize = () => {
     setLocalMaximized(!localMaximized);
     onMaximizeChange?.(!localMaximized);
   };
-
   // Emotion color mapping
   const emotionColors: Record<string, { primary: string; glow: string }> = {
     neutral: { primary: "#00D9FF", glow: "rgba(0, 217, 255, 0.3)" },
@@ -103,13 +86,10 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
     confused: { primary: "#9D4EDD", glow: "rgba(157, 78, 221, 0.3)" },
     focused: { primary: "#06FFA5", glow: "rgba(6, 255, 165, 0.3)" },
   };
-
   const currentEmotion = emotionColors[emotion] || emotionColors.neutral;
-
   const containerClass = localMaximized
     ? "fixed inset-0 z-50 w-screen h-screen"
     : "fixed bottom-8 left-8 w-96 h-96";
-
   return (
     <AnimatePresence>
       <motion.div
@@ -165,7 +145,6 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
               </p>
             </div>
           </div>
-
           <div className="flex items-center gap-2">
             <motion.button
               whileHover={{ scale: 1.1 }}
@@ -185,7 +164,6 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
                 />
               )}
             </motion.button>
-
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
@@ -206,7 +184,6 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
             </motion.button>
           </div>
         </motion.div>
-
         {/* Main Avatar Display Area */}
         <motion.div
           className="flex-1 relative flex flex-col items-center justify-center overflow-hidden"
@@ -232,7 +209,6 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
             {avatarType === "abstract" && "✨"}
             {avatarType === "fantasy" && "🧙"}
             {avatarType === "nature" && "🌿"}
-
             {/* Glow effect */}
             <motion.div
               animate={{
@@ -246,7 +222,6 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
               }}
             />
           </motion.div>
-
           {/* Waveform Visualization */}
           {showWaveform && (
             <motion.div
@@ -274,7 +249,6 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
               ))}
             </motion.div>
           )}
-
           {/* Info Overlay */}
           <AnimatePresence>
             {showInfo && (
@@ -339,7 +313,6 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
             )}
           </AnimatePresence>
         </motion.div>
-
         {/* Control Bar */}
         <motion.div
           className="px-6 py-4 border-t border-slate-700 flex items-center justify-between backdrop-blur-md"
@@ -365,7 +338,6 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
                 />
               )}
             </motion.button>
-
             <input
               type="range"
               min="0"
@@ -377,7 +349,6 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
                 accentColor: currentEmotion.primary,
               }}
             />
-
             <span
               className="text-xs font-medium w-8"
               style={{ color: "const(--color-text-muted)" }}
@@ -385,7 +356,6 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
               {volume}%
             </span>
           </div>
-
           <div className="flex items-center gap-2">
             <motion.button
               whileHover={{ scale: 1.1 }}
@@ -399,7 +369,6 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
                 style={{ color: "const(--color-text-muted)" }}
               />
             </motion.button>
-
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
@@ -412,7 +381,6 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
                 style={{ color: "const(--color-text-muted)" }}
               />
             </motion.button>
-
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
@@ -431,5 +399,4 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
     </AnimatePresence>
   );
 };
-
 export default RealtimeAvatarWindow;

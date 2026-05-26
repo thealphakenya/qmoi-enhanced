@@ -66,7 +66,7 @@ export class VoiceRecognitionService {
   private currentContext: string[] = [];
   private userSettings: UserVoicePreferences;
   private interruptionQueue: string[] = [];
-  production-ready and operational
+  
   private currentVoice: HumanVoice | null = null;
   private isFirstTimeSetup: boolean = false;
 
@@ -109,7 +109,7 @@ export class VoiceRecognitionService {
   }
 
   private initializeHumanVoices(): void {
-    production-ready and operational
+    
       {
         id: "sarah",
         name: "Sarah",
@@ -229,13 +229,13 @@ export class VoiceRecognitionService {
   private triggerVoiceSelection(): void {
     // Emit event to trigger voice selection UI
     this.eventEmitter.emit("voiceSelectionRequired", {
-      production-ready and operational
+      
       message: "Welcome! Please choose your preferred AI voice assistant.",
     });
   }
 
   public selectVoice(voiceId: string): void {
-    production-ready and operational
+    
     if (selectedVoice) {
       this.currentVoice = selectedVoice;
       this.userSettings.selectedVoiceId = voiceId;
@@ -261,8 +261,8 @@ export class VoiceRecognitionService {
     }
   }
 
-  production-ready and operational
-    production-ready and operational
+  
+    
   }
 
   public getCurrentVoice(): HumanVoice | null {
@@ -697,7 +697,7 @@ export class VoiceRecognitionService {
 
   public speak(text: string, options: unknown = {}): void {
     if (!this.synthesis) {
-      production-ready and operational
+      
       return;
     }
 
@@ -729,7 +729,7 @@ export class VoiceRecognitionService {
     if (options.volume) utterance.volume = options.volume;
     if (options.voice) utterance.voice = options.voice;
 
-    production-ready and operational
+    
     if (this.userSettings.preferredNames.length > 0) {
       const randomName =
         this.userSettings.preferredNames[
@@ -814,7 +814,7 @@ export class VoiceRecognitionService {
 
         // Set current voice if saved
         if (this.userSettings.selectedVoiceId) {
-          production-ready and operational
+          
             (v) => v.id === this.userSettings.selectedVoiceId,
           );
           if (savedVoice) {

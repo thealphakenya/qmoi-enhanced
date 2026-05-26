@@ -1,17 +1,14 @@
 "use client";
-
 import React, { useEffect, useMemo, useState } from "react";
 import apiClient from "@/api/client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
 const logger = {
   info: console.info.bind(console),
   warn: console.warn.bind(console),
   error: console.error.bind(console),
 };
-
 interface APIEndpoint {
   id: string;
   name: string;
@@ -24,7 +21,6 @@ interface APIEndpoint {
   rateLimit: number;
   lastUsed: string;
 }
-
 const SAMPLE_ENDPOINTS: APIEndpoint[] = [
   {
     id: "1",
@@ -39,7 +35,6 @@ const SAMPLE_ENDPOINTS: APIEndpoint[] = [
     lastUsed: "2026-03-12T10:30:00Z",
   },
 ];
-
 const getMethodColor = (method: APIEndpoint["method"]) => {
   switch (method) {
     case "GET":
@@ -54,7 +49,6 @@ const getMethodColor = (method: APIEndpoint["method"]) => {
       return "bg-gray-500";
   }
 };
-
 const getStatusColor = (status: APIEndpoint["status"]) => {
   switch (status) {
     case "active":
@@ -65,7 +59,6 @@ const getStatusColor = (status: APIEndpoint["status"]) => {
       return "bg-gray-500";
   }
 };
-
 const getCategoryIcon = (category: APIEndpoint["category"]) => {
   switch (category) {
     case "models":
@@ -82,14 +75,12 @@ const getCategoryIcon = (category: APIEndpoint["category"]) => {
       return "🔧";
   }
 };
-
 const UnifiedAPI: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<APIEndpoint["category"] | "all">("all");
   const [endpoints, setEndpoints] = useState<APIEndpoint[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
   useEffect(() => {
     const loadEndpoints = async () => {
       try {
@@ -106,10 +97,8 @@ const UnifiedAPI: React.FC = () => {
         setLoading(false);
       }
     };
-
     void loadEndpoints();
   }, []);
-
   const filteredEndpoints = useMemo(
     () =>
       endpoints.filter((endpoint) => {
@@ -124,7 +113,6 @@ const UnifiedAPI: React.FC = () => {
       }),
     [endpoints, searchQuery, selectedCategory],
   );
-
   return (
     <div className="space-y-6 p-6">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -134,7 +122,6 @@ const UnifiedAPI: React.FC = () => {
         </div>
         <Button variant="secondary" onClick={() => setSelectedCategory("all")}>Reset Filters</Button>
       </div>
-
       <div className="grid gap-4 md:grid-cols-4">
         <Card>
           <CardContent>
@@ -161,7 +148,6 @@ const UnifiedAPI: React.FC = () => {
           </CardContent>
         </Card>
       </div>
-
       <div className="grid gap-4 md:grid-cols-3">
         <div className="col-span-2">
           <input
@@ -186,10 +172,8 @@ const UnifiedAPI: React.FC = () => {
           </select>
         </div>
       </div>
-
       {loading && <div className="text-gray-400">Loading endpoints...</div>}
       {error && <div className="text-red-400">{error}</div>}
-
       {filteredEndpoints.length === 0 && !loading ? (
         <div className="rounded-xl border border-slate-700 bg-slate-950 p-8 text-center text-slate-400">
           No API endpoints matched your filters.
@@ -222,5 +206,4 @@ const UnifiedAPI: React.FC = () => {
     </div>
   );
 };
-
 export default UnifiedAPI;

@@ -1,39 +1,46 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:08Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "../types";
+import type { PlatformConfig, SocialPlatformAdapter } from "../types";
+import { ApprovalFlow } from "../types";
 
 export class TwitterAdapter implements SocialPlatformAdapter {
-  platformId = "twitter";
-  private config?: PlatformConfig;
+  readonly platformId = "twitter";
+  private config: PlatformConfig | null = null;
 
-  async initialize(config: PlatformConfig) {
+  async initialize(config: PlatformConfig): Promise<void> {
     this.config = config;
   }
-  async validateCredentials() {
-    return !!this.config?.credentials?.accessToken;
+
+  async validateCredentials(): Promise<boolean> {
+    return Boolean(this.config?.credentials?.accessToken);
   }
+
   async requestApproval(action: string, payload: unknown) {
     return ApprovalFlow.requestApproval(this.platformId, action, payload);
   }
-  async isApproved(requestId: string) {
+
+  async isApproved(requestId: string): Promise<boolean> {
     return ApprovalFlow.checkApproval(requestId);
   }
-  async getAnalytics() {
-    return { impressions: 0 };
+
+  async createPost(content: unknown, approval = true): Promise<string> {
+    if (approval) {
+      const request = await this.requestApproval("create_tweet", content);
+      if (!(await this.isApproved(request.id))) {
+        throw new Error("Approval required");
+      }
+    }
+    return `twitter-post-${Date.now()}`;
   }
-  async createPost(content: unknown, approval = true) {
-    const r = await this.requestApproval("createTweet", content);
-    return `approval:${r.id}`;
-  }
-  async deletePost(postId: string) {
+
+  async deletePost(postId: string): Promise<boolean> {
     return true;
   }
-  async getEngagementMetrics(postId: string) {
-    return { retweets: 0, likes: 0 };
+
+  async getEngagementMetrics(postId: string): Promise<Record<string, number>> {
+    return { likes: 0, retweets: 0, replies: 0 };
+  }
+
+  async getAnalytics(): Promise<Record<string, number>> {
+    return { totalTweets: 0, totalImpressions: 0 };
   }
 }
 

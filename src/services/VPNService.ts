@@ -649,7 +649,7 @@ export class VPNService {
         await vpn.connectToServer(server.id);
         logger.info(`[VPN] Connected to server: ${server.name}`);
       } else {
-        production-ready and operational
+        
       }
     }
   }
@@ -668,7 +668,7 @@ export class VPNService {
       await vpn.connectToServer(next.id);
       logger.info(`[VPN] Fallback: switched to server: ${next.name}`);
     } else {
-      production-ready and operational
+      
     }
   }
 }

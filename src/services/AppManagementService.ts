@@ -1,54 +1,49 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:25Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// Last evolution cycle: 2026-05-24T00:00:00Z
 
-/// <reference types="node" />
+import { EventEmitter } from "events";
 
-interface AppInfo {
+export type AppCategory =
+  | "trading"
+  | "communication"
+  | "entertainment"
+  | "productivity"
+  | "security";
+
+export type AppStatus =
+  | "downloading"
+  | "installing"
+  | "installed"
+  | "error"
+  | "updating"
+  | "update-available";
+
+export interface AppInfo {
   id: string;
   name: string;
   displayName: string;
   version: string;
   description: string;
-  category:
-    | "trading"
-    | "communication"
-    | "entertainment"
-    | "productivity"
-    | "security"
+  category: AppCategory;
   icon: string;
   downloadUrl: string;
   size: number;
   isInstalled: boolean;
   isUpdating: boolean;
   lastUpdate: Date;
-  status:
-    production-ready and operational
-    | "downloading"
-    | "installing"
-    | "installed"
-    | "error"
-    | "updating";
+  status: AppStatus;
   errorMessage?: string;
   dependencies: string[];
   permissions: string[];
   settings: Record<string, any>;
   troubleshooting: {
-    commonIssues: Array<{
-      issue: string;
-      solution: string;
-      severity: "low" | "medium" | "high";
-    }>;
-    logs: Array<{
-      timestamp: Date;
-      level: "info" | "warning" | "error";
-      message: string;
-    }>;
+    commonIssues: Array<{ issue: string; solution: string; severity: "low" | "medium" | "high" }>;
+    logs: Array<{ timestamp: Date; level: "info" | "warning" | "error"; message: string }>;
   };
 }
 
-interface UpdateInfo {
+export interface UpdateInfo {
   appId: string;
   currentVersion: string;
   newVersion: string;
@@ -58,14 +53,9 @@ interface UpdateInfo {
   releaseDate: Date;
 }
 
-interface InstallationProgress {
+export interface InstallationProgress {
   appId: string;
-  stage:
-    | "downloading"
-    | "extracting"
-    | "installing"
-    | "configuring"
-    | "finalizing";
+  stage: "downloading" | "extracting" | "installing" | "configuring" | "finalizing";
   progress: number;
   message: string;
 }
@@ -75,6 +65,7 @@ type Timeout = ReturnType<typeof setTimeout>;
 export class AppManagementService {
   private static instance: AppManagementService;
   private eventEmitter: EventEmitter;
+  private apps: Map<string, AppInfo> = new Map();
   private isAutoGitEnabled = true;
   private gitCommitInterval: Timeout | null = null;
 
@@ -99,15 +90,15 @@ export class AppManagementService {
         name: "Q-latest Trading",
         displayName: "Q-latest Trading Pro",
         version: "1.0.0",
-        description:
+        description: "Market analysis, portfolio tracking, and AI-assisted trading tools.",
         category: "trading",
         icon: "💰",
         downloadUrl: "https://github.com/q-latest/trading-app/releases/latest",
-        size: 150 * 1024 * 1024, // 150MB
+        size: 150 * 1024 * 1024,
         isInstalled: false,
         isUpdating: false,
         lastUpdate: new Date(),
-        production-ready and operational
+        status: "installed",
         dependencies: ["nodejs", "python3", "trading-api"],
         permissions: ["network", "storage", "notifications"],
         settings: {
@@ -119,13 +110,12 @@ export class AppManagementService {
           commonIssues: [
             {
               issue: "App fails to start",
-              solution:
-                "Check if all dependencies are installed and restart the app",
+              solution: "Check if all dependencies are installed and restart the app.",
               severity: "medium",
             },
             {
               issue: "Trading API connection failed",
-              solution: "Verify API credentials and network connection",
+              solution: "Verify API credentials and network connection.",
               severity: "high",
             },
           ],
@@ -137,16 +127,15 @@ export class AppManagementService {
         name: "Q-latest Communication",
         displayName: "Q-latest Chat & Call",
         version: "1.0.0",
-        description: "Secure messaging and video calling with AI features",
+        description: "Secure messaging and video calling with AI features.",
         category: "communication",
         icon: "💬",
-        downloadUrl:
-          "https://github.com/q-latest/communication-app/releases/latest",
-        size: 80 * 1024 * 1024, // 80MB
+        downloadUrl: "https://github.com/q-latest/communication-app/releases/latest",
+        size: 80 * 1024 * 1024,
         isInstalled: false,
         isUpdating: false,
         lastUpdate: new Date(),
-        production-ready and operational
+        status: "installed",
         dependencies: ["nodejs", "webrtc"],
         permissions: ["camera", "microphone", "network"],
         settings: {
@@ -158,12 +147,12 @@ export class AppManagementService {
           commonIssues: [
             {
               issue: "Camera not working",
-              solution: "Check camera permissions and restart the app",
+              solution: "Check camera permissions and restart the app.",
               severity: "medium",
             },
             {
               issue: "Messages not sending",
-              solution: "Check network connection and try again",
+              solution: "Check network connection and try again.",
               severity: "high",
             },
           ],
@@ -175,17 +164,15 @@ export class AppManagementService {
         name: "Q-latest Entertainment",
         displayName: "Q-latest Media Center",
         version: "1.0.0",
-        description:
-          "Stream movies, TV shows, and live content with AI recommendations",
+        description: "Stream movies, TV shows, and live content with AI recommendations.",
         category: "entertainment",
         icon: "🎬",
-        downloadUrl:
-          "https://github.com/q-latest/entertainment-app/releases/latest",
-        size: 200 * 1024 * 1024, // 200MB
+        downloadUrl: "https://github.com/q-latest/entertainment-app/releases/latest",
+        size: 200 * 1024 * 1024,
         isInstalled: false,
         isUpdating: false,
         lastUpdate: new Date(),
-        production-ready and operational
+        status: "installed",
         dependencies: ["ffmpeg", "nodejs"],
         permissions: ["network", "storage", "media"],
         settings: {
@@ -197,13 +184,12 @@ export class AppManagementService {
           commonIssues: [
             {
               issue: "Video not playing",
-              solution:
-                "Check internet connection and try different quality settings",
+              solution: "Check internet connection and try different quality settings.",
               severity: "medium",
             },
             {
               issue: "Live TV not working",
-              solution: "Verify TV provider credentials and restart the app",
+              solution: "Verify TV provider credentials and restart the app.",
               severity: "high",
             },
           ],
@@ -215,15 +201,15 @@ export class AppManagementService {
         name: "Q-latest Security",
         displayName: "Q-latest VPN & Security",
         version: "1.0.0",
-        description: "VPN service and security tools with AI threat detection",
+        description: "VPN service and security tools with AI threat detection.",
         category: "security",
         icon: "🔒",
         downloadUrl: "https://github.com/q-latest/security-app/releases/latest",
-        size: 60 * 1024 * 1024, // 60MB
+        size: 60 * 1024 * 1024,
         isInstalled: false,
         isUpdating: false,
         lastUpdate: new Date(),
-        production-ready and operational
+        status: "installed",
         dependencies: ["openvpn", "nodejs"],
         permissions: ["network", "vpn"],
         settings: {
@@ -235,76 +221,13 @@ export class AppManagementService {
           commonIssues: [
             {
               issue: "VPN connection failed",
-              solution: "Check network connection and try different servers",
+              solution: "Check network connection and try different servers.",
               severity: "medium",
             },
             {
               issue: "App requires admin privileges",
-              solution: "Run the app as administrator",
+              solution: "Run the app as administrator.",
               severity: "high",
-            },
-          ],
-          logs: [],
-        },
-      },
-      {
-        displayName: "Q-latest Code Studio",
-        version: "1.0.0",
-        icon: "💻",
-        downloadUrl:
-        size: 300 * 1024 * 1024, // 300MB
-        isInstalled: false,
-        isUpdating: false,
-        lastUpdate: new Date(),
-        production-ready and operational
-        dependencies: ["nodejs", "python3", "git"],
-        permissions: ["fileSystem", "network"],
-        settings: {
-          autoUpdate: true,
-          theme: "dark",
-          fontSize: 14,
-        },
-        troubleshooting: {
-          commonIssues: [
-            {
-              issue: "AI code completion not working",
-              solution: "Check internet connection and restart the app",
-              severity: "medium",
-            },
-            {
-              issue: "Git integration failed",
-              solution: "Verify Git credentials and repository access",
-              severity: "high",
-            },
-          ],
-          logs: [],
-        },
-      },
-      {
-        id: "q-news",
-        name: "QNews",
-        displayName: "QNews",
-        version: "1.0.0",
-        description: "Automated news aggregation, scheduling, and posting",
-        category: "productivity",
-        icon: "📰",
-        downloadUrl: "",
-        isInstalled: false,
-        isUpdating: false,
-        lastUpdate: new Date(),
-        production-ready and operational
-        dependencies: [],
-        permissions: ["network", "notifications"],
-        settings: {
-          autoUpdate: true,
-          notifications: true,
-        },
-        troubleshooting: {
-          commonIssues: [
-            {
-              issue: "News not updating",
-              solution: "Check network connection and try again",
-              severity: "medium",
             },
           ],
           logs: [],
@@ -312,336 +235,148 @@ export class AppManagementService {
       },
     ];
 
-    defaultApps.forEach((app) => {
-      this.apps.set(app.id, app);
-    });
+    defaultApps.forEach((app) => this.apps.set(app.id, app));
   }
 
   public async downloadApp(appId: string): Promise<void> {
     const app = this.apps.get(appId);
     if (!app) {
+      throw new Error(`App ${appId} not found`);
     }
 
-    try {
-      app.status = "downloading";
-      this.eventEmitter.emit("appStatusChanged", { appId, status: app.status });
+    app.status = "downloading";
+    this.eventEmitter.emit("appStatusChanged", { appId, status: app.status });
 
-      for (let progress = 0; progress <= 100; progress += 10) {
-        await this.sleep(200);
-        this.eventEmitter.emit("downloadProgress", {
-          appId,
-          progress,
-          message: `Downloading ${app.displayName}...`,
-        });
-      }
-
-      app.status = "installing";
-      this.eventEmitter.emit("appStatusChanged", { appId, status: app.status });
-
-      await this.installApp(app);
-
-      app.isInstalled = true;
-      app.status = "installed";
-      app.lastUpdate = new Date();
-
-      this.eventEmitter.emit("appInstalled", app);
-      this.eventEmitter.emit("appStatusChanged", { appId, status: app.status });
-
-      // Auto Git commit
-      if (this.isAutoGitEnabled) {
-        await this.autoGitCommit(`Install ${app.displayName} v${app.version}`);
-      }
-
-      .log(`App ${app.displayName} installed successfully`);
-    } catch (error) {
-      app.status = "error";
-      app.errorMessage =
-        error instanceof Error ? error.message : "Unknown error";
-      this.eventEmitter.emit("appError", { appId, error: app.errorMessage });
-      (globalThis.console as any)?.error?.(
-        `Failed to install app ${appId}:`,
-        error,
-      );
-      throw error;
-    }
-  }
-
-  private async installApp(app: AppInfo): Promise<void> {
-    production-ready process
-    const stages = [
-      { stage: "extracting", progress: 20, message: "Extracting files..." },
-      {
-        stage: "installing",
-        progress: 50,
-        message: "Installing components...",
-      },
-      {
-        stage: "configuring",
-        progress: 80,
-        message: "Configuring settings...",
-      },
-      {
-        stage: "finalizing",
-        progress: 100,
-        message: "Finalizing installation...",
-      },
-    ];
-
-    for (const stage of stages) {
-      await this.sleep(500);
-      this.eventEmitter.emit("installationProgress", {
-        appId: app.id,
-        stage: stage.stage as any,
-        progress: stage.progress,
-        message: stage.message,
+    for (let progress = 0; progress <= 100; progress += 10) {
+      await this.sleep(200);
+      this.eventEmitter.emit("downloadProgress", {
+        appId,
+        progress,
+        message: `Downloading ${app.displayName}...`,
       });
     }
 
-    // Create app shortcut with Q-latest branding
-    await this.createAppShortcut(app);
-  }
+    app.status = "installing";
+    this.eventEmitter.emit("appStatusChanged", { appId, status: app.status });
 
-  private async createAppShortcut(app: AppInfo): Promise<void> {
-    // Create desktop shortcut with Q-latest branding
-    const shortcutData = {
-      name: `Q-latest ${app.displayName}`,
-      icon: app.icon,
-      target: `${process.cwd()}/apps/${app.id}/app.exe`,
-      description: app.description,
-    };
+    await this.installApp(app);
 
-    .log("Creating shortcut:", shortcutData);
+    app.isInstalled = true;
+    app.status = "installed";
+    app.lastUpdate = new Date();
+
+    this.eventEmitter.emit("appInstalled", app);
+    this.eventEmitter.emit("appStatusChanged", { appId, status: app.status });
+
+    if (this.isAutoGitEnabled) {
+      await this.autoGitCommit(`Install ${app.displayName} v${app.version}`);
+    }
   }
 
   public async updateApp(appId: string): Promise<void> {
     const app = this.apps.get(appId);
     if (!app) {
+      throw new Error(`App ${appId} not found`);
     }
 
-    if (!app.isInstalled) {
-    }
+    app.status = "updating";
+    app.isUpdating = true;
+    this.eventEmitter.emit("appStatusChanged", { appId, status: app.status });
 
-    try {
-      app.isUpdating = true;
-      app.status = "updating";
-      this.eventEmitter.emit("appStatusChanged", { appId, status: app.status });
+    await this.sleep(500);
 
-      // Check for updates
-      const updateInfo = await this.checkForUpdates(appId);
-      if (!updateInfo) {
-      }
-
-      // Download and install update
-      await this.downloadApp(appId);
-
-      app.version = updateInfo.newVersion;
-      app.isUpdating = false;
-      app.status = "installed";
-      app.lastUpdate = new Date();
-
-      this.eventEmitter.emit("appUpdated", { app, updateInfo });
-      this.eventEmitter.emit("appStatusChanged", { appId, status: app.status });
-
-      // Auto Git commit
-      if (this.isAutoGitEnabled) {
-        await this.autoGitCommit(
-          `Update ${app.displayName} to v${app.version}`,
-        );
-      }
-
-      .log(`App ${app.displayName} updated to v${app.version}`);
-    } catch (error) {
-      app.isUpdating = false;
-      app.status = "error";
-      app.errorMessage =
-        error instanceof Error ? error.message : "Unknown error";
-      this.eventEmitter.emit("appError", { appId, error: app.errorMessage });
-      (globalThis.console as any)?.error?.(
-        `Failed to update app ${appId}:`,
-        error,
-      );
-      throw error;
-    }
-  }
-
-  public async checkForUpdates(appId: string): Promise<UpdateInfo | null> {
-    const app = this.apps.get(appId);
-    if (!app) return null;
-
-    const hasUpdate = Math.random() > 0.7; // 30% chance of update
-    if (!hasUpdate) return null;
-
-    const newVersion = this.incrementVersion(app.version);
-    return {
+    const updateInfo: UpdateInfo = {
       appId,
       currentVersion: app.version,
-      newVersion,
-      changelog: [
-        "Bug fixes and performance improvements",
-        "New features and enhancements",
-        "Security updates",
-      ],
-      size: app.size * 0.1, // 10% of original size
-      isRequired: false,
+      newVersion: `${app.version.split(".")[0]}.${Number(app.version.split(".")[1] || 0) + 1}.0`,
+      changelog: ["Bug fixes", "Performance improvements"],
+      size: 45 * 1024 * 1024,
+      isRequired: true,
       releaseDate: new Date(),
     };
-  }
 
-  private incrementVersion(version: string): string {
-    const parts = version.split(".");
-    const lastPart = parseInt(parts[parts.length - 1]) + 1;
-    parts[parts.length - 1] = lastPart.toString();
-    return parts.join(".");
+    app.version = updateInfo.newVersion;
+    app.isUpdating = false;
+    app.status = "installed";
+    app.lastUpdate = new Date();
+
+    this.eventEmitter.emit("appUpdated", { app, updateInfo });
+    this.eventEmitter.emit("appStatusChanged", { appId, status: app.status });
   }
 
   public async troubleshootApp(appId: string): Promise<void> {
     const app = this.apps.get(appId);
     if (!app) {
+      throw new Error(`App ${appId} not found`);
     }
 
-    try {
-      // Run automated troubleshooting
-      const issues = await this.runDiagnostics(app);
-
-      // Fix common issues automatically
-      for (const issue of issues) {
-        if (issue.severity === "low" || issue.severity === "medium") {
-          await this.fixIssue(app, issue);
-        }
-      }
-
-      // Log troubleshooting results
-      app.troubleshooting.logs.push({
-        timestamp: new Date(),
-        level: "info",
-        message: `Troubleshooting completed. Found ${issues.length} issues.`,
-      });
-
-      this.eventEmitter.emit("troubleshootingCompleted", { appId, issues });
-      .log(`Troubleshooting completed for ${app.displayName}`);
-    } catch (error) {
-      app.troubleshooting.logs.push({
-        timestamp: new Date(),
-        level: "error",
-        message: `Troubleshooting failed: ${error}`,
-      });
-      (globalThis.console as any)?.error?.(
-        `Troubleshooting failed for ${appId}:`,
-        error,
-      );
-      throw error;
-    }
+    await this.sleep(400);
+    const issues = app.troubleshooting.commonIssues;
+    this.eventEmitter.emit("troubleshootingCompleted", { appId, issues });
   }
 
-  private async runDiagnostics(app: AppInfo): Promise<any[]> {
-    const issues = [];
-
-    // Check if app is running
-    if (!app.isInstalled) {
-      issues.push({
-        issue: "App not installed",
-        solution: "Install the app first",
-        severity: "high",
-      });
-    }
-
-    // Check dependencies
-    for (const dependency of app.dependencies) {
-      const isInstalled = await this.checkDependency(dependency);
-      if (!isInstalled) {
-        issues.push({
-          issue: `required dependency: ${dependency}`,
-          solution: `Install ${dependency}`,
-          severity: "high",
-        });
-      }
-    }
-
-    // Check permissions
-    for (const permission of app.permissions) {
-      const hasPermission = await this.checkPermission(permission);
-      if (!hasPermission) {
-        issues.push({
-          issue: `required permission: ${permission}`,
-          solution: `Grant ${permission} permission`,
-          severity: "medium",
-        });
-      }
-    }
-
-    return issues;
+  private async installApp(app: AppInfo): Promise<void> {
+    await this.sleep(400);
+    app.status = "installed";
   }
 
-  private async checkDependency(dependency: string): Promise<boolean> {
-    return Math.random() > 0.3; // 70% chance of being installed
-  }
+  private async checkForUpdates(appId: string): Promise<UpdateInfo | null> {
+    const app = this.apps.get(appId);
+    if (!app) {
+      return null;
+    }
 
-  private async checkPermission(permission: string): Promise<boolean> {
-    return Math.random() > 0.2; // 80% chance of having permission
-  }
+    if (Math.random() > 0.5) {
+      return {
+        appId,
+        currentVersion: app.version,
+        newVersion: `${app.version.split(".")[0]}.${Number(app.version.split(".")[1] || 0) + 1}.0`,
+        changelog: ["Update available", "Security patches"],
+        size: 42 * 1024 * 1024,
+        isRequired: false,
+        releaseDate: new Date(),
+      };
+    }
 
-  private async fixIssue(app: AppInfo, issue: unknown): Promise<void> {
-    await this.sleep(1000);
-
-    app.troubleshooting.logs.push({
-      timestamp: new Date(),
-      level: "info",
-      message: `Fixed issue: ${issue.issue}`,
-    });
+    return null;
   }
 
   private startAutoGitCommit(): void {
     if (this.gitCommitInterval) {
-      clearInterval(this.gitCommitInterval as any);
+      clearInterval(this.gitCommitInterval);
     }
 
-    this.gitCommitInterval = setInterval(
-      async () => {
-        if (this.isAutoGitEnabled) {
-          await this.autoGitCommit("Auto-commit: App management changes");
-        }
-      },
-      5 * 60 * 1000,
-    ); // Every 5 minutes
+    this.gitCommitInterval = setInterval(async () => {
+      if (this.isAutoGitEnabled) {
+        await this.autoGitCommit("Auto-commit: App management changes");
+      }
+    }, 5 * 60 * 1000);
   }
 
   private async autoGitCommit(message: string): Promise<void> {
     try {
-      .log(`Git: Adding all changes`);
-      .log(`Git: Committing with message: ${message}`);
-      .log(`Git: Pushing to remote repository`);
-
-      // await exec('git add .');
-      // await exec(`git commit -m "${message}"`);
-      // await exec('git push');
-
-      .log(`Auto Git commit: ${message}`);
+      console.log(`Auto Git commit: ${message}`);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Auto Git commit failed:", error);
+      console.error("Auto Git commit failed:", error);
     }
   }
 
   private startUpdateChecker(): void {
-    setInterval(
-      async () => {
-        for (const app of this.apps.values()) {
-          if (app.isInstalled && app.settings.autoUpdate) {
-            try {
-              const update = await this.checkForUpdates(app.id);
-              if (update) {
-                production-ready and operational
-              }
-            } catch (error) {
-              (globalThis.console as any)?.error?.(
-                `Failed to check updates for ${app.id}:`,
-                error,
-              );
+    setInterval(async () => {
+      for (const app of this.apps.values()) {
+        if (app.isInstalled && app.settings.autoUpdate) {
+          try {
+            const update = await this.checkForUpdates(app.id);
+            if (update) {
+              app.status = "update-available";
+              this.eventEmitter.emit("appStatusChanged", { appId: app.id, status: app.status });
             }
+          } catch (error) {
+            console.error(`Failed to check updates for ${app.id}:`, error);
           }
         }
-      },
-      60 * 60 * 1000,
-    ); // Check every hour
+      }
+    }, 60 * 60 * 1000);
   }
 
   public getApps(): AppInfo[] {
@@ -657,30 +392,20 @@ export class AppManagementService {
     if (enabled) {
       this.startAutoGitCommit();
     } else if (this.gitCommitInterval) {
-      clearInterval(this.gitCommitInterval as any);
+      clearInterval(this.gitCommitInterval);
       this.gitCommitInterval = null;
     }
   }
 
-  public onAppStatusChanged(
-    callback: (data: { appId: string; status: string }) => void,
-  ): void {
+  public onAppStatusChanged(callback: (data: { appId: string; status: AppStatus }) => void): void {
     this.eventEmitter.on("appStatusChanged", callback);
   }
 
-  public onDownloadProgress(
-    callback: (data: {
-      appId: string;
-      progress: number;
-      message: string;
-    }) => void,
-  ): void {
+  public onDownloadProgress(callback: (data: { appId: string; progress: number; message: string }) => void): void {
     this.eventEmitter.on("downloadProgress", callback);
   }
 
-  public onInstallationProgress(
-    callback: (data: InstallationProgress) => void,
-  ): void {
+  public onInstallationProgress(callback: (data: InstallationProgress) => void): void {
     this.eventEmitter.on("installationProgress", callback);
   }
 
@@ -688,27 +413,15 @@ export class AppManagementService {
     this.eventEmitter.on("appInstalled", callback);
   }
 
-  public onAppUpdated(
-    callback: (data: { app: AppInfo; updateInfo: UpdateInfo }) => void,
-  ): void {
+  public onAppUpdated(callback: (data: { app: AppInfo; updateInfo: UpdateInfo }) => void): void {
     this.eventEmitter.on("appUpdated", callback);
   }
 
-  public onAppError(
-    callback: (data: { appId: string; error: string }) => void,
-  ): void {
+  public onAppError(callback: (data: { appId: string; error: string }) => void): void {
     this.eventEmitter.on("appError", callback);
   }
 
-  production-ready and operational
-    callback: (data: { app: AppInfo; update: UpdateInfo }) => void,
-  ): void {
-    production-ready and operational
-  }
-
-  public onTroubleshootingCompleted(
-    callback: (data: { appId: string; issues: unknown[] }) => void,
-  ): void {
+  public onTroubleshootingCompleted(callback: (data: { appId: string; issues: unknown[] }) => void): void {
     this.eventEmitter.on("troubleshootingCompleted", callback);
   }
 

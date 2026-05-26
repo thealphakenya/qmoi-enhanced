@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -7,16 +6,13 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import apiClient from "@/api/client";
-
 const logger = {
   error: (...args: unknown[]) => console.error(...args),
   warn: (...args: unknown[]) => console.warn(...args),
   info: (...args: unknown[]) => console.info(...args),
 };
-
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = useState(false);
-
   useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -28,14 +24,11 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       }
     }
   }, []);
-
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-
   return <>{children}</>;
 };
-
 interface RevenueData {
   timestamp: string;
   daily_target: number;
@@ -49,7 +42,6 @@ interface RevenueData {
     trend: string;
   };
 }
-
 const ProductionRevenueDashboard: React.FC = () => {
   const [revenueData, setRevenueData] = useState<RevenueData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -57,16 +49,13 @@ const ProductionRevenueDashboard: React.FC = () => {
   const [chartData, setChartData] = useState<{ name: string; value: number }[]>([]);
   const [isMonitoring, setIsMonitoring] = useState(false);
   const [lastUpdate, setLastUpdate] = useState<string>("");
-
   const fetchRevenueData = async () => {
     try {
       setLoading(true);
       setError(null);
-
       const data = await apiClient.json<RevenueData>("/api/revenue/validate");
       setRevenueData(data);
       setLastUpdate(new Date().toISOString());
-
       const sources = Object.entries(data.revenue_sources || {}).map(([name, value]) => ({
         name: name.replace(/_/g, " ").toUpperCase(),
         value: Number(value) || 0,
@@ -79,7 +68,6 @@ const ProductionRevenueDashboard: React.FC = () => {
       setLoading(false);
     }
   };
-
   const toggleMonitoring = async () => {
     try {
       const data = await apiClient.json<{ monitoring?: boolean }>(
@@ -95,20 +83,17 @@ const ProductionRevenueDashboard: React.FC = () => {
       logger.warn("Toggle monitoring failed:", err);
     }
   };
-
   useEffect(() => {
     fetchRevenueData();
     const interval = setInterval(fetchRevenueData, 30000);
     return () => clearInterval(interval);
   }, []);
-
   const formatCurrency = (value: number) =>
     new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
       notation: "compact",
     }).format(value);
-
   const getStatusColor = (status: string) => {
     switch (status?.toUpperCase()) {
       case "ACHIEVING":
@@ -121,7 +106,6 @@ const ProductionRevenueDashboard: React.FC = () => {
         return "bg-blue-100 text-blue-800";
     }
   };
-
   if (loading) {
     return (
       <Card>
@@ -131,7 +115,6 @@ const ProductionRevenueDashboard: React.FC = () => {
       </Card>
     );
   }
-
   return (
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -143,13 +126,11 @@ const ProductionRevenueDashboard: React.FC = () => {
           Last updated: {lastUpdate ? new Date(lastUpdate).toLocaleTimeString() : "Never"}
         </div>
       </div>
-
       {error && (
         <Alert className="border-red-200 bg-red-50">
           <AlertDescription className="text-red-800">⚠️ {error}</AlertDescription>
         </Alert>
       )}
-
       {revenueData && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <Card>
@@ -159,7 +140,6 @@ const ProductionRevenueDashboard: React.FC = () => {
               <div className="text-xs text-gray-500 mt-2">Validated in real-time</div>
             </CardContent>
           </Card>
-
           <Card>
             <CardContent className="p-6">
               <div className="text-sm font-medium text-gray-600">Daily Target</div>
@@ -167,7 +147,6 @@ const ProductionRevenueDashboard: React.FC = () => {
               <div className="text-xs text-gray-500 mt-2">Target amount</div>
             </CardContent>
           </Card>
-
           <Card>
             <CardContent className="p-6">
               <div className="text-sm font-medium text-gray-600">Achievement Rate</div>
@@ -175,7 +154,6 @@ const ProductionRevenueDashboard: React.FC = () => {
               <div className="text-xs text-gray-500 mt-2">Of daily target</div>
             </CardContent>
           </Card>
-
           <Card>
             <CardContent className="p-6">
               <div className="text-sm font-medium text-gray-600">Status</div>
@@ -187,7 +165,6 @@ const ProductionRevenueDashboard: React.FC = () => {
           </Card>
         </div>
       )}
-
       {revenueData && chartData.length > 0 && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <Card>
@@ -206,7 +183,6 @@ const ProductionRevenueDashboard: React.FC = () => {
               </ResponsiveContainer>
             </CardContent>
           </Card>
-
           <Card>
             <CardHeader>
               <CardTitle>🎯 Predictions</CardTitle>
@@ -234,7 +210,6 @@ const ProductionRevenueDashboard: React.FC = () => {
           </Card>
         </div>
       )}
-
       <Card>
         <CardContent className="p-6">
           <div className="flex flex-col sm:flex-row gap-4">
@@ -247,7 +222,6 @@ const ProductionRevenueDashboard: React.FC = () => {
           </div>
         </CardContent>
       </Card>
-
       {isMonitoring && (
         <div className="text-center text-sm text-gray-600">
           <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-lg">
@@ -259,5 +233,4 @@ const ProductionRevenueDashboard: React.FC = () => {
     </div>
   );
 };
-
 export default ProductionRevenueDashboard;

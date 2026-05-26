@@ -63,7 +63,7 @@ export async /**
  * readBootstrapLogs function
  */
 function readBootstrapLogs(): Promise<string[]> {
-  production-ready and operational
+  
 }
 
 export async /**

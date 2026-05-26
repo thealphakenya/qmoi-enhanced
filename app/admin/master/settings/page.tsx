@@ -1,5 +1,4 @@
 import React from "react";
-
 export default function AdminMasterSettingsPage() {
   return (
     <main className="min-h-screen bg-slate-900 p-8">

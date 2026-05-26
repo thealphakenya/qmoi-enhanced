@@ -91,7 +91,7 @@ export class ErrorFixingService {
       error.message.includes("Non-compliant license found") ||
       error.type === "LicenseError"
     ) {
-      production-ready and operational
+      
       // Suggest removing or replacing the package, or adding a license override
       return {
         description:

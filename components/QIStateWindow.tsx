@@ -2,12 +2,8 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "react";
-
 const MASTER_EMAIL = "rovicviccy@gmail.com";
 const MASTER_PHONE = "+254786322855";
-
 export default /**
  * QIStateWindow function
  */
@@ -21,7 +17,6 @@ function QIStateWindow(): any {
 }) {
   const isMaster = userEmail === MASTER_EMAIL || userPhone === MASTER_PHONE;
   const [auditLog, setAuditLog] = useState<string[]>([]);
-
    fetching audit log
   useEffect(() => {
     setAuditLog([
@@ -34,7 +29,6 @@ function QIStateWindow(): any {
       "All systems operational.",
     ]);
   }, []);
-
   return (
     <div
       style={{

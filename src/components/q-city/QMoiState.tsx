@@ -3,8 +3,6 @@ import React from 'react';
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 interface QMoiStateProps {
   session?: unknown;
   global?: unknown;
@@ -13,7 +11,6 @@ interface QMoiStateProps {
   isMaster?: boolean;
   isAdmin?: boolean;
 }
-
 export /**
  * QMoiState function
  */
@@ -44,13 +41,11 @@ function QMoiState({
   const [totalPages, setTotalPages] = useState(1);
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;
-
   // Update time every second
   useEffect(() => {
     const timer = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
-
   useEffect(() => {
     const emotions = [
       "focused",
@@ -68,23 +63,19 @@ function QMoiState({
       "optimizing",
       "planning",
     ];
-
     const emotionTimer = setInterval(() => {
       setCurrentEmotion(emotions[Math.floor(Math.random() * emotions.length)]);
     }, 8000);
-
     const activityTimer = setInterval(() => {
       setCurrentActivity(
         activities[Math.floor(Math.random() * activities.length)],
       );
     }, 5000);
-
     return () => {
       clearInterval(emotionTimer);
       clearInterval(activityTimer);
     };
   }, []);
-
   useEffect(() => {
     if (!isMaster && !isAdmin) return;
     setLoadingLogs(true);
@@ -108,7 +99,6 @@ function QMoiState({
         setLoadingLogs(false);
       });
   }, [logFilters, page, isMaster, isAdmin]);
-
   const getEmotionEmoji = (emotion: string) => {
     switch (emotion) {
       case "focused":
@@ -127,7 +117,6 @@ function QMoiState({
         return "🤖";
     }
   };
-
   const getActivityEmoji = (activity: string) => {
     switch (activity) {
       case "processing":
@@ -146,7 +135,6 @@ function QMoiState({
         return "🔄";
     }
   };
-
   const getHealthColor = (status: string) => {
     switch (status) {
       case "OK":
@@ -159,7 +147,6 @@ function QMoiState({
         return "text-gray-500";
     }
   };
-
   const exportToCSV = (logs: unknown[]) => {
     const header = "Timestamp,User,Action,Device,Status,Command";
     const rows = logs.map((log: unknown) =>
@@ -181,7 +168,6 @@ function QMoiState({
     a.download = "qmoi_audit_log.csv";
     a.click();
   };
-
   const exportToJSON = (logs: unknown[]) => {
     const blob = new Blob([JSON.stringify(logs, null, 2)], {
       type: "application/json",
@@ -191,7 +177,6 @@ function QMoiState({
     a.download = "qmoi_audit_log.json";
     a.click();
   };
-
   if (isMinimized) {
     return (
       <div className="fixed top-5 right-5 w-20 h-10 bg-gray-900 text-white rounded-lg p-2 shadow-2xl border border-gray-700 cursor-pointer z-50">
@@ -202,7 +187,6 @@ function QMoiState({
       </div>
     );
   }
-
   return (
     <div className="fixed top-5 right-5 w-80 h-96 bg-gray-900 text-white rounded-lg p-4 shadow-2xl border border-gray-700 z-50">
       {/* Header */}
@@ -223,7 +207,6 @@ function QMoiState({
           </button>
         </div>
       </div>
-
       {/* Current Time */}
       <div className="mb-3 p-2 bg-gray-800 rounded">
         <div className="text-sm text-gray-400">Current Time</div>
@@ -235,7 +218,6 @@ function QMoiState({
         </div>
         <div className="text-xs text-gray-500">Nairobi Time</div>
       </div>
-
       {/* Qmoi Status */}
       <div className="mb-3 p-2 bg-gray-800 rounded">
         <div className="flex items-center justify-between mb-2">
@@ -253,7 +235,6 @@ function QMoiState({
             : "N/A"}
         </div>
       </div>
-
       {/* Current Emotion & Activity */}
       <div className="mb-3 p-2 bg-gray-800 rounded">
         <div className="flex items-center justify-between mb-2">
@@ -269,7 +250,6 @@ function QMoiState({
           </span>
         </div>
       </div>
-
       {/* Session Memory */}
       {session && (
         <div className="mb-3 p-2 bg-gray-800 rounded">
@@ -280,7 +260,6 @@ function QMoiState({
           </div>
         </div>
       )}
-
       {/* Global Stats */}
       {global && (
         <div className="mb-3 p-2 bg-gray-800 rounded">
@@ -291,7 +270,6 @@ function QMoiState({
           </div>
         </div>
       )}
-
       {/* Master-only additional info */}
       {isMaster && (
         <div className="pt-2 border-t border-gray-700">
@@ -302,7 +280,6 @@ function QMoiState({
           </div>
         </div>
       )}
-
       {/* Add button for master to open Activity Log */}
       {isMaster && (
         <button
@@ -312,7 +289,6 @@ function QMoiState({
           QMOI Activity Log
         </button>
       )}
-
       {/* QMOI Activity Log Panel (master-only) */}
       {(isMaster || isAdmin) && showActivityLog && (
         <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center">
@@ -427,23 +403,17 @@ function QMoiState({
     </div>
   );
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -451,23 +421,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -475,23 +439,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -499,23 +457,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -523,23 +475,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -547,23 +493,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -571,23 +511,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -595,23 +529,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -619,23 +547,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

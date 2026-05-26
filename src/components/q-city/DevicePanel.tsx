@@ -2,8 +2,6 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 export default /**
  * DevicePanel function
  */
@@ -22,10 +20,8 @@ function DevicePanel(): any {
   });
   const [editing, setEditing] = useState<any>(null);
   const [testResult, setTestResult] = useState("");
-
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;
-
   const fetchDevices = () => {
     setLoading(true);
     apiClient.get("/api/qcity/devices", {
@@ -36,11 +32,9 @@ function DevicePanel(): any {
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   };
-
   useEffect(() => {
     fetchDevices();
   }, []);
-
   const save = () => {
     setLoading(true);
     apiClient.get("/api/qcity/devices", {
@@ -66,7 +60,6 @@ function DevicePanel(): any {
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   };
-
   const del = (id: string) => {
     setLoading(true);
     apiClient.get("/api/qcity/devices", {
@@ -81,7 +74,6 @@ function DevicePanel(): any {
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   };
-
   const test = (id: string) => {
     setTestResult("Testing");
     apiClient.get("/api/qcity/devices?action=test", {
@@ -98,7 +90,6 @@ function DevicePanel(): any {
       )
       .catch((e) => setTestResult(e.message));
   };
-
   return (
     <div className="p-4 bg-gray-900 rounded-lg shadow-lg">
       <h2 className="text-xl font-bold mb-4 text-cyan-400">Devices</h2>

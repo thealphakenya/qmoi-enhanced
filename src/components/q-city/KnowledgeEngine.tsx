@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,15 +17,11 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
 import {
   Card,
   CardContent,
@@ -37,7 +29,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 interface KnowledgeSource {
   id: string;
   name: string;
@@ -46,7 +37,6 @@ interface KnowledgeSource {
   indexed: boolean;
   lastUpdated: string;
 }
-
 interface SemanticResult {
   id: string;
   title: string;
@@ -54,19 +44,15 @@ interface SemanticResult {
   relevance: number;
   excerpt: string;
 }
-
 interface QAResult {
   question: string;
   answer: string;
   confidence: number;
   sources: string[];
 }
-
 export const KnowledgeEngine: React.FC = () => {
   const [sources, setSources] = useState<KnowledgeSource[]>([]);
-
   const [activeTab, setActiveTab] = useState<string>("search");
-
   useEffect(() => {
     // load sources initially or when the sources tab is activated
     if (activeTab === "sources" || activeTab === "search") {
@@ -85,21 +71,16 @@ export const KnowledgeEngine: React.FC = () => {
         .catch(() => {});
     }
   }, [activeTab]);
-
   const [semanticResults, setSemanticResults] = useState<SemanticResult[]>([]);
-
   const [qaResult, setQaResult] = useState<QAResult | null>(null);
-
   const [searchQuery, setSearchQuery] = useState("");
   const [questionQuery, setQuestionQuery] = useState("");
-
   const [graphStats, setGraphStats] = useState<{
     entities: number;
     relationships: number;
     topics: number;
     integration: number;
   } | null>(null);
-
   async /**
  * handleAddSource function
  */
@@ -117,7 +98,6 @@ function handleAddSource(): any {
     const data = await res.json();
     if (data.sources) setSources(data.sources as KnowledgeSource[]);
   }
-
   async /**
  * handleIndexSource function
  */
@@ -132,7 +112,6 @@ function handleIndexSource(id: string): any {
     const data = await res.json();
     if (data.sources) setSources(data.sources as KnowledgeSource[]);
   }
-
   return (
     <div className="space-y-6">
       <Card>
@@ -157,14 +136,12 @@ function handleIndexSource(id: string): any {
               <TabsTrigger value="sources">Knowledge Sources</TabsTrigger>
               <TabsTrigger value="index">Knowledge Graph</TabsTrigger>
             </TabsList>
-
             <TabsContent value="search" className="space-y-4">
               <div className="space-y-4">
                 <div>
                   <label className="text-sm text-gray-400">Search Query</label>
                   <div className="flex gap-2 mt-2">
                     <Input
-                      
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       className="flex-1"
@@ -188,7 +165,6 @@ function handleIndexSource(id: string): any {
                     </Button>
                   </div>
                 </div>
-
                 <div className="space-y-3">
                   <p className="text-sm text-gray-400">
                     Results for "machine learning best practices":
@@ -223,7 +199,6 @@ function handleIndexSource(id: string): any {
                 </div>
               </div>
             </TabsContent>
-
             <TabsContent value="qa" className="space-y-4">
               <div className="space-y-4">
                 <div>
@@ -231,7 +206,6 @@ function handleIndexSource(id: string): any {
                     Ask a Question
                   </label>
                   <Textarea
-                    
                     value={questionQuery}
                     onChange={(e) => setQuestionQuery(e.target.value)}
                     className="mt-2 min-h-20"
@@ -251,7 +225,6 @@ function handleIndexSource(id: string): any {
                     Get Answer
                   </Button>
                 </div>
-
                 {qaResult && (
                   <Card className="bg-slate-900/50 border-slate-700">
                     <CardContent className="pt-6">
@@ -264,7 +237,6 @@ function handleIndexSource(id: string): any {
                             {qaResult.question}
                           </p>
                         </div>
-
                         <div>
                           <div className="flex justify-between items-center mb-2">
                             <p className="text-sm text-gray-400">Answer:</p>
@@ -277,7 +249,6 @@ function handleIndexSource(id: string): any {
                             {qaResult.answer}
                           </p>
                         </div>
-
                         <div className="border-t border-slate-700 pt-4">
                           <p className="text-sm text-gray-400 mb-2">Sources:</p>
                           <div className="flex flex-wrap gap-2">
@@ -299,7 +270,6 @@ function handleIndexSource(id: string): any {
                 )}
               </div>
             </TabsContent>
-
             <TabsContent value="sources" className="space-y-4">
               <p className="text-sm text-gray-400">
                 Your knowledge sources are indexed and searchable:
@@ -345,7 +315,6 @@ function handleIndexSource(id: string): any {
                   </Card>
                 ))}
               </div>
-
               <Button
                 className="w-full"
                 variant="outline"
@@ -354,7 +323,6 @@ function handleIndexSource(id: string): any {
                 Add New Knowledge Source
               </Button>
             </TabsContent>
-
             <TabsContent value="index" className="space-y-4">
               <Card className="bg-slate-900/50 border-slate-700">
                 <CardContent className="pt-6">
@@ -394,12 +362,10 @@ function handleIndexSource(id: string): any {
                         </div>
                       </div>
                     </div>
-
                     <p className="text-sm text-gray-400">
                       The knowledge graph automatically connects related
                       documents, datasets, and research across all sources.
                     </p>
-
                     {sources.length > 0 && (
                       <div className="mt-4">
                         <p className="text-sm text-gray-400 mb-2">
@@ -450,25 +416,18 @@ function handleIndexSource(id: string): any {
     </div>
   );
 };
-
 export default KnowledgeEngine;
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -476,23 +435,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -500,23 +453,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -524,23 +471,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -548,23 +489,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -572,23 +507,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -596,23 +525,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -620,23 +543,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -644,23 +561,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

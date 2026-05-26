@@ -3,15 +3,9 @@ import React from 'react';
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "react";
-import { specificExports } from "../../hooks/useProjects";
-import { specificExports } from "../../types/projects";
-
 interface TaskListProps {
   projectId: string;
 }
-
 export /**
  * TaskList function
  */
@@ -19,7 +13,6 @@ function TaskList({ projectId }: TaskListProps): any {
   const { projects, updateTask } = useProjects();
   const project = projects.find((p) => p.id === projectId);
   const tasks = project?.tasks || [];
-
   const handleStatusChange = async (
     taskId: string,
     newStatus: Task["status"],
@@ -33,21 +26,18 @@ function TaskList({ projectId }: TaskListProps): any {
       );
     }
   };
-
   const statusColors = {
     : "bg-gray-100 text-gray-800",
     "in-progress": "bg-yellow-100 text-yellow-800",
     review: "bg-blue-100 text-blue-800",
     completed: "bg-green-100 text-green-800",
   };
-
   const priorityColors = {
     low: "bg-gray-100 text-gray-800",
     medium: "bg-blue-100 text-blue-800",
     high: "bg-yellow-100 text-yellow-800",
     critical: "bg-red-100 text-red-800",
   };
-
   return (
     <div className="space-y-4">
       <h3 className="text-lg font-semibold">Tasks</h3>
@@ -75,7 +65,6 @@ function TaskList({ projectId }: TaskListProps): any {
                 </span>
               </div>
             </div>
-
             <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
               <div>
                 <span className="text-gray-500">Assignee:</span>
@@ -96,7 +85,6 @@ function TaskList({ projectId }: TaskListProps): any {
                 <span className="ml-2">{task.actualHours}</span>
               </div>
             </div>
-
             <div className="mt-4">
               <label
                 htmlFor={`status-${task.id}`}
@@ -118,7 +106,6 @@ function TaskList({ projectId }: TaskListProps): any {
                 <option value="completed">Completed</option>
               </select>
             </div>
-
             {task.dependencies.length > 0 && (
               <div className="mt-4">
                 <span className="text-sm text-gray-500">Dependencies:</span>
@@ -143,23 +130,17 @@ function TaskList({ projectId }: TaskListProps): any {
     </div>
   );
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -167,23 +148,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -191,23 +166,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -215,23 +184,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -239,23 +202,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -263,23 +220,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -287,23 +238,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -311,23 +256,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -335,23 +274,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

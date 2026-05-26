@@ -1576,7 +1576,7 @@ export type PrismaAction =
   | 'groupBy'
 
 /**
- production-ready and operational
+ 
  */
 export type TransactionClient = Omit<DefaultPrismaClient, runtime.ITXClientDenyList>
 

@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,19 +17,11 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "react";
-import { specificExports } from "lucide-react";
-
-import { specificExports } from "@/lib/utils";
 : Refactor to use MUI Button if needed
-
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   <nav
     role="navigation"
@@ -43,7 +31,6 @@ const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   />
 );
 Pagination.displayName = "Pagination";
-
 const PaginationContent = React.forwardRef<
   HTMLUListElement,
   React.ComponentProps<"ul">
@@ -55,7 +42,6 @@ const PaginationContent = React.forwardRef<
   />
 ));
 PaginationContent.displayName = "PaginationContent";
-
 const PaginationItem = React.forwardRef<
   HTMLLIElement,
   React.ComponentProps<"li">
@@ -63,15 +49,12 @@ const PaginationItem = React.forwardRef<
   <li ref={ref} className={cn("", className)} {...props} />
 ));
 PaginationItem.displayName = "PaginationItem";
-
-import { specificExports } from "@mui/material/Button";
 type PaginationLinkProps = {
   isActive?: boolean;
   className?: string;
   children?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
-
 const PaginationLink = ({
   className,
   isActive,
@@ -88,7 +71,6 @@ const PaginationLink = ({
   </Button>
 );
 PaginationLink.displayName = "PaginationLink";
-
 const PaginationPrevious = ({ className, ...props }: PaginationLinkProps) => (
   <PaginationLink
     aria-label="Go to previous page"
@@ -100,7 +82,6 @@ const PaginationPrevious = ({ className, ...props }: PaginationLinkProps) => (
   </PaginationLink>
 );
 PaginationPrevious.displayName = "PaginationPrevious";
-
 const PaginationNext = ({ className, ...props }: PaginationLinkProps) => (
   <PaginationLink
     aria-label="Go to next page"
@@ -112,7 +93,6 @@ const PaginationNext = ({ className, ...props }: PaginationLinkProps) => (
   </PaginationLink>
 );
 PaginationNext.displayName = "PaginationNext";
-
 const PaginationEllipsis = ({
   className,
   ...props
@@ -127,7 +107,6 @@ const PaginationEllipsis = ({
   </span>
 );
 PaginationEllipsis.displayName = "PaginationEllipsis";
-
 export {
   Pagination,
   PaginationContent,

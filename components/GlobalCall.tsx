@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,15 +17,10 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "react";
-
 export const GlobalCall: React.FC = () => {
   const [callState, setCallState] = useState<
     "idle" | "calling" | "connected" | "ended"
@@ -37,7 +28,6 @@ export const GlobalCall: React.FC = () => {
   const [callee, setCallee] = useState("");
   const [platform, setPlatform] = useState("globals");
   const [log, setLog] = useState<string[]>([]);
-
   const handleCall = () => {
     setCallState("calling");
     setLog((l) => [...l, `Calling ${callee} via ${platform}...`]);
@@ -46,12 +36,10 @@ export const GlobalCall: React.FC = () => {
       setLog((l) => [...l, `Connected to ${callee} via ${platform}.`]);
     }, 2000);
   };
-
   const handleEnd = () => {
     setCallState("ended");
     setLog((l) => [...l, `Call with ${callee} ended.`]);
   };
-
   return (
     <div style={{ padding: 16 }}>
       <h3>Global Call</h3>

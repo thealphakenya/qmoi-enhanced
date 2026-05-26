@@ -1,63 +1,9 @@
+import { NextResponse } from "next/server";
 
-/**
- * GET function
- */
-export async function GET(): any {
+export async function GET(): Promise<NextResponse> {
   return NextResponse.json({
-    status: 'ok',
-    version: 'v1',
-    production-ready and operational
+    status: "ok",
+    version: "v1",
     timestamp: new Date().toISOString(),
   });
-}
-
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }

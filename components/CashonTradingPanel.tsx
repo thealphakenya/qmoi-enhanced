@@ -2,20 +2,18 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
 "use client";
-
-import { specificExports } from "react";
-import { specificExports } from "@mui/material/Card";
-import { specificExports } from "@mui/material/CardContent";
-import { specificExports } from "@mui/material/CardHeader";
-import { specificExports } from "@mui/material/Typography";
-import { specificExports } from "@mui/material/Button";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/progress";
-import { specificExports } from "@/components/ui/tabs";
-import { specificExports } from "@/components/ui/alert";
+import React, { useEffect, useState } from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
   Wallet,
   TrendingUp,
@@ -30,25 +28,21 @@ import {
   CheckCircle,
   Clock,
 } from "lucide-react";
-
 // Types
 interface CashonBalance {
   accountId: string;
-  production-ready and operational
   pendingBalance: number;
   lockedBalance: number;
   currency: string;
   lastUpdated: Date;
   transactionHistory: unknown[];
 }
-
 interface TradingStatus {
   enabled: boolean;
   activeTrades: number;
   totalProfit: number;
   lastTrade: Date | null;
 }
-
 interface TradingSignal {
   symbol: string;
   action: "buy" | "sell" | "hold";
@@ -59,12 +53,7 @@ interface TradingSignal {
   riskLevel: "low" | "medium" | "high";
   timestamp: Date;
 }
-
-export default /**
- * CashonTradingPanel function
- */
-function CashonTradingPanel(): any {
-  try {() {
+export default function CashonTradingPanel(): any {
   const [balance, setBalance] = useState<CashonBalance | null>(null);
   const [tradingStatus, setTradingStatus] = useState<TradingStatus | null>(
     null,
@@ -77,7 +66,6 @@ function CashonTradingPanel(): any {
   const [mpesaNumber, setMpesaNumber] = useState<string>("");
   const [syncStatus, setSyncStatus] = useState<string>("");
   const [logs, setLogs] = useState<any[]>([]);
-
   // Check if user is master
   useEffect(() => {
     const token =
@@ -86,54 +74,48 @@ function CashonTradingPanel(): any {
     setIsMaster(!!token);
     setMasterToken(token || "");
   }, []);
-
   // Load initial data
   useEffect(() => {
     if (isMaster) {
       loadData();
     }
   }, [isMaster]);
-
   useEffect(() => {
     // Fetch masked M-Pesa number from API
-    apiClient.get("/api/cashon/balance?mpesaInfo=true", {
+    fetch("/api/cashon/balance?mpesaInfo=true", {
       headers: { "x-qmoi-master": "true" },
     })
       .then((res) => res.json())
       .then((data) => setMpesaNumber(data.mpesaNumberMasked || ""));
     // Fetch transfer logs
-    apiClient.get("/api/cashon/balance?logs=true", {
+    fetch("/api/cashon/balance?logs=true", {
       headers: { "x-qmoi-master": "true" },
     })
       .then((res) => res.json())
       .then((data) => setLogs(data.logs || []));
   }, []);
-
   const loadData = async () => {
     try {
       setIsLoading(true);
       setError(null);
-
       // Load balance
-      const balanceResponse = await apiClient.get("/api/cashon/balance", {
+      const balanceResponse = await fetch("/api/cashon/balance", {
         headers: { Authorization: `Bearer ${masterToken}` },
       });
       if (balanceResponse.ok) {
         const balanceData = await balanceResponse.json();
         setBalance(balanceData);
       }
-
       // Load trading status
-      const statusResponse = await apiClient.get("/api/cashon/trading-status", {
+      const statusResponse = await fetch("/api/cashon/trading-status", {
         headers: { Authorization: `Bearer ${masterToken}` },
       });
       if (statusResponse.ok) {
         const statusData = await statusResponse.json();
         setTradingStatus(statusData);
       }
-
       // Load recent signals
-      const signalsResponse = await apiClient.get("/api/cashon/signals", {
+      const signalsResponse = await fetch("/api/cashon/signals", {
         headers: { Authorization: `Bearer ${masterToken}` },
       });
       if (signalsResponse.ok) {
@@ -147,15 +129,13 @@ function CashonTradingPanel(): any {
       setIsLoading(false);
     }
   };
-
   const startTrading = async () => {
     try {
       setIsLoading(true);
-      const response = await apiClient.get("/api/cashon/start-trading", {
+      const response = await fetch("/api/cashon/start-trading", {
         method: "POST",
         headers: { Authorization: `Bearer ${masterToken}` },
       });
-
       if (response.ok) {
         await loadData();
       } else {
@@ -168,15 +148,13 @@ function CashonTradingPanel(): any {
       setIsLoading(false);
     }
   };
-
   const stopTrading = async () => {
     try {
       setIsLoading(true);
-      const response = await apiClient.get("/api/cashon/stop-trading", {
+      const response = await fetch("/api/cashon/stop-trading", {
         method: "POST",
         headers: { Authorization: `Bearer ${masterToken}` },
       });
-
       if (response.ok) {
         await loadData();
       } else {
@@ -189,11 +167,10 @@ function CashonTradingPanel(): any {
       setIsLoading(false);
     }
   };
-
   const requestDeposit = async (amount: number) => {
     try {
       setIsLoading(true);
-      const response = await apiClient.get("/api/cashon/deposit", {
+      const response = await fetch("/api/cashon/deposit", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${masterToken}`,
@@ -201,7 +178,6 @@ function CashonTradingPanel(): any {
         },
         body: JSON.stringify({ amount }),
       });
-
       if (response.ok) {
         await loadData();
       } else {
@@ -214,10 +190,9 @@ function CashonTradingPanel(): any {
       setIsLoading(false);
     }
   };
-
   const handleSyncMpesa = async () => {
     setSyncStatus("Syncing");
-    const res = await apiClient.get("/api/cashon/balance", {
+    const res = await fetch("/api/cashon/balance", {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-qmoi-master": "true" },
       body: JSON.stringify({ action: "sync-mpesa" }),
@@ -226,7 +201,6 @@ function CashonTradingPanel(): any {
     if (data.success) setSyncStatus("Sync successful");
     else setSyncStatus("Sync failed: " + (data.error || "Unknown error"));
   };
-
   if (!isMaster) {
     return (
       <Card className="w-full">
@@ -248,7 +222,6 @@ function CashonTradingPanel(): any {
       </Card>
     );
   }
-
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -275,7 +248,6 @@ function CashonTradingPanel(): any {
           </Badge>
         </div>
       </div>
-
       {/* Error Alert */}
       {error && (
         <Alert variant="destructive">
@@ -283,19 +255,18 @@ function CashonTradingPanel(): any {
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
-
       {/* Balance Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              production-ready and operational
+              Available Balance
             </CardTitle>
             <Wallet className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              production-ready and operational
+              KES {balance?.pendingBalance?.toLocaleString() || "0"}
             </div>
             <p className="text-xs text-muted-foreground">
               Last updated:{" "}
@@ -305,7 +276,6 @@ function CashonTradingPanel(): any {
             </p>
           </CardContent>
         </Card>
-
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Profit</CardTitle>
@@ -320,7 +290,6 @@ function CashonTradingPanel(): any {
             </p>
           </CardContent>
         </Card>
-
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
@@ -336,7 +305,6 @@ function CashonTradingPanel(): any {
           </CardContent>
         </Card>
       </div>
-
       {/* Trading Controls */}
       <Card>
         <CardHeader>
@@ -365,7 +333,6 @@ function CashonTradingPanel(): any {
               Stop AI Trading
             </Button>
           </div>
-
           <div className="flex items-center gap-4">
             <Button
               onClick={() => requestDeposit(50)}
@@ -397,7 +364,6 @@ function CashonTradingPanel(): any {
           </div>
         </CardContent>
       </Card>
-
       {/* Trading Dashboard */}
       <Tabs defaultValue="signals" className="w-full">
         <TabsList>
@@ -405,7 +371,6 @@ function CashonTradingPanel(): any {
           <TabsTrigger value="performance">Performance</TabsTrigger>
           <TabsTrigger value="transactions">Transactions</TabsTrigger>
         </TabsList>
-
         <TabsContent value="signals" className="space-y-4">
           <Card>
             <CardHeader>
@@ -462,7 +427,6 @@ function CashonTradingPanel(): any {
             </CardContent>
           </Card>
         </TabsContent>
-
         <TabsContent value="performance" className="space-y-4">
           <Card>
             <CardHeader>
@@ -492,7 +456,6 @@ function CashonTradingPanel(): any {
             </CardContent>
           </Card>
         </TabsContent>
-
         <TabsContent value="transactions" className="space-y-4">
           <Card>
             <CardHeader>
@@ -557,7 +520,6 @@ function CashonTradingPanel(): any {
           </Card>
         </TabsContent>
       </Tabs>
-
       <div className="my-4 p-4 border rounded bg-gray-50">
         <div className="flex items-center gap-2">
           <span className="font-bold">M-Pesa Number:</span>

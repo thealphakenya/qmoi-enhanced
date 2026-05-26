@@ -3,14 +3,7 @@ import React from 'react';
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
-import { specificExports } from "react";
-import { specificExports } from "@/components/ui/card";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/button";
-import { specificExports } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -18,10 +11,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { specificExports } from "@/components/ui/switch";
-import { specificExports } from "@/components/ui/label";
-import { specificExports } from "@/components/ui/tabs";
-import { specificExports } from "@/components/ui/scroll-area";
 import {
   Dialog,
   DialogContent,
@@ -31,7 +20,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { specificExports } from "@/components/ui/textarea";
 import {
   RefreshCw,
   Link,
@@ -43,8 +31,6 @@ import {
   Zap,
   Shield,
 } from "lucide-react";
-import { specificExports } from "@/hooks/use-toast";
-
 interface Link {
   id: string;
   url: string;
@@ -63,7 +49,6 @@ interface Link {
   createdAt: string;
   updatedAt: string;
 }
-
 interface Domain {
   id: string;
   name: string;
@@ -77,7 +62,6 @@ interface Domain {
   createdAt: string;
   updatedAt: string;
 }
-
 interface Platform {
   id: string;
   name: string;
@@ -92,12 +76,10 @@ interface Platform {
   createdAt: string;
   updatedAt: string;
 }
-
 interface QMOILinksManagerProps {
   userRole?: string;
   isMaster?: boolean;
 }
-
 export /**
  * QMOILinksManager function
  */
@@ -123,7 +105,6 @@ function QMOILinksManager({
     isZeroRated: false,
   });
   const { toast } = useToast();
-
   const fetchData = async () => {
     try {
       const [linksRes, domainsRes, platformsRes] = await Promise.all([
@@ -131,17 +112,14 @@ function QMOILinksManager({
         apiClient.get("/api/domains"),
         apiClient.get("/api/platforms"),
       ]);
-
       if (linksRes.ok) {
         const linksData = await linksRes.json();
         setLinks(linksData.links || []);
       }
-
       if (domainsRes.ok) {
         const domainsData = await domainsRes.json();
         setDomains(domainsData.domains || []);
       }
-
       if (platformsRes.ok) {
         const platformsData = await platformsRes.json();
         setPlatforms(platformsData.platforms || []);
@@ -157,27 +135,22 @@ function QMOILinksManager({
       setLoading(false);
     }
   };
-
   useEffect(() => {
     fetchData();
   }, []);
-
   const filteredLinks = links.filter((link) => {
     const matchesSearch =
       link.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       link.url.toLowerCase().includes(searchTerm.toLowerCase()) ||
       link.domain.toLowerCase().includes(searchTerm.toLowerCase());
-
     const matchesCategory =
       categoryFilter === "all" || link.category === categoryFilter;
     const matchesZeroRated =
       zeroRatedFilter === "all" ||
       (zeroRatedFilter === "zero-rated" && link.isZeroRated) ||
       (zeroRatedFilter === "paid" && !link.isZeroRated);
-
     return matchesSearch && matchesCategory && matchesZeroRated;
   });
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case "active":
@@ -192,11 +165,9 @@ function QMOILinksManager({
         return "bg-gray-500";
     }
   };
-
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleString();
   };
-
   const handleAddLink = async () => {
     if (!newLink.url || !newLink.title) {
       toast({
@@ -206,7 +177,6 @@ function QMOILinksManager({
       });
       return;
     }
-
     try {
       const response = await apiClient.get("/api/links", {
         method: "POST",
@@ -221,7 +191,6 @@ function QMOILinksManager({
           lastChecked: new Date().toISOString(),
         }),
       });
-
       if (response.ok) {
         toast({
           title: "Success",
@@ -247,7 +216,6 @@ function QMOILinksManager({
       });
     }
   };
-
   const toggleZeroRated = async (linkId: string, isZeroRated: boolean) => {
     if (!isMaster) {
       toast({
@@ -257,14 +225,12 @@ function QMOILinksManager({
       });
       return;
     }
-
     try {
       const response = await apiClient.get(`/api/links/${linkId}/zero-rated`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ isZeroRated }),
       });
-
       if (response.ok) {
         toast({
           title: "Success",
@@ -280,9 +246,7 @@ function QMOILinksManager({
       });
     }
   };
-
   const uniqueCategories = [new Set(links.map((link) => link.category))];
-
   return (
     <Card className="w-full">
       <CardHeader>
@@ -319,13 +283,11 @@ function QMOILinksManager({
               Platforms ({platforms.length})
             </TabsTrigger>
           </TabsList>
-
           <TabsContent value="links" className="space-y-4">
             {/* Filters and Actions */}
             <div className="flex flex-col lg:flex-row gap-4">
               <div className="flex-1">
                 <Input
-                  
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -378,7 +340,6 @@ function QMOILinksManager({
                           onChange={(e) =>
                             setNewLink({ newLink, url: e.target.value })
                           }
-                          
                         />
                       </div>
                       <div>
@@ -389,7 +350,6 @@ function QMOILinksManager({
                           onChange={(e) =>
                             setNewLink({ newLink, title: e.target.value })
                           }
-                          
                         />
                       </div>
                       <div>
@@ -403,7 +363,6 @@ function QMOILinksManager({
                               description: e.target.value,
                             })
                           }
-                          
                         />
                       </div>
                       <div>
@@ -414,7 +373,6 @@ function QMOILinksManager({
                           onChange={(e) =>
                             setNewLink({ newLink, category: e.target.value })
                           }
-                          
                         />
                       </div>
                       <div>
@@ -425,7 +383,6 @@ function QMOILinksManager({
                           onChange={(e) =>
                             setNewLink({ newLink, tags: e.target.value })
                           }
-                          
                         />
                       </div>
                       <div className="flex items-center space-x-2">
@@ -446,7 +403,6 @@ function QMOILinksManager({
                 </Dialog>
               )}
             </div>
-
             {/* Links List */}
             <ScrollArea className="h-96">
               <div className="space-y-2">
@@ -533,7 +489,6 @@ function QMOILinksManager({
               </div>
             </ScrollArea>
           </TabsContent>
-
           <TabsContent value="domains" className="space-y-4">
             <div className="text-center py-8">
               <Globe className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
@@ -544,7 +499,6 @@ function QMOILinksManager({
               </p>
             </div>
           </TabsContent>
-
           <TabsContent value="platforms" className="space-y-4">
             <div className="text-center py-8">
               <Server className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
@@ -562,23 +516,17 @@ function QMOILinksManager({
     </Card>
   );
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -586,23 +534,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -610,23 +552,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -634,23 +570,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -658,23 +588,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -682,23 +606,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -706,23 +624,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -730,23 +642,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -754,23 +660,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

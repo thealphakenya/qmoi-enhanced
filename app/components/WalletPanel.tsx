@@ -1,7 +1,5 @@
 "use client";
-
 import { useEffect, useMemo, useState } from "react";
-
 interface WalletSummary {
   id: string;
   currency: string;
@@ -10,7 +8,6 @@ interface WalletSummary {
   status: string;
   createdAt: string;
 }
-
 interface WalletOverview {
   totalWallets: number;
   totalBalance: number;
@@ -26,12 +23,10 @@ interface WalletOverview {
     averageTransactionSize: number;
   };
 }
-
 interface WalletGrowth {
   newWalletsLast30Days: number;
   transactionsLast30Days: number;
 }
-
 interface WalletAnalyticsResponse {
   analytics: {
     overview: WalletOverview;
@@ -39,7 +34,6 @@ interface WalletAnalyticsResponse {
     wallets: WalletSummary[];
   };
 }
-
 const formatCurrency = (value: number, currency = "USD") => {
   try {
     return new Intl.NumberFormat("en-US", {
@@ -51,24 +45,19 @@ const formatCurrency = (value: number, currency = "USD") => {
     return `${currency} ${value.toFixed(2)}`;
   }
 };
-
 const formatPercent = (value: number) => `${value.toFixed(1)}%`;
-
 export default function WalletPanel() {
   const [analytics, setAnalytics] = useState<WalletAnalyticsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
   const fetchWalletAnalytics = async () => {
     setLoading(true);
     setError(null);
-
     try {
       const response = await fetch("/api/analytics/wallets", {
         cache: "no-store",
         credentials: "include",
       });
-
       const data = await response.json();
       if (!response.ok || !data?.analytics) {
         const message = data?.error || data?._error?.message || "Unable to load wallet analytics.";
@@ -76,7 +65,6 @@ export default function WalletPanel() {
         setAnalytics(null);
         return;
       }
-
       setAnalytics(data as WalletAnalyticsResponse);
     } catch (fetchError) {
       setError("Failed to load wallet analytics. Please sign in or try again later.");
@@ -85,23 +73,18 @@ export default function WalletPanel() {
       setLoading(false);
     }
   };
-
   useEffect(() => {
     fetchWalletAnalytics();
   }, []);
-
   const overview = analytics?.analytics.overview;
   const growth = analytics?.analytics.growth;
   const wallets = analytics?.analytics.wallets ?? [];
-
   const topCurrencies = useMemo(() => {
     return Object.values(overview?.currencyDistribution ?? {}).
       sort((a, b) => b.totalBalance - a.totalBalance)
       .slice(0, 3);
   }, [overview]);
-
   const currencyCode = wallets.length > 0 ? wallets[0].currency : "USD";
-
   return (
     <div className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -117,7 +100,6 @@ export default function WalletPanel() {
           Refresh
         </button>
       </div>
-
       {loading ? (
         <div className="mt-6 rounded-3xl bg-slate-950/80 p-6 text-slate-400">Loading wallet analytics...</div>
       ) : error ? (
@@ -144,7 +126,6 @@ export default function WalletPanel() {
               <div className="mt-3 text-3xl font-semibold text-white">{overview.transactionStats.totalTransactions}</div>
             </div>
           </div>
-
           <div className="grid gap-4 xl:grid-cols-2">
             <div className="rounded-3xl bg-slate-950/80 p-5">
               <div className="flex items-center justify-between mb-4">
@@ -162,7 +143,6 @@ export default function WalletPanel() {
                 </div>
               </div>
             </div>
-
             <div className="rounded-3xl bg-slate-950/80 p-5">
               <div className="mb-4 text-sm uppercase tracking-[0.3em] text-slate-500">Currency distribution</div>
               <div className="space-y-3">
@@ -188,7 +168,6 @@ export default function WalletPanel() {
               </div>
             </div>
           </div>
-
           <div className="rounded-3xl bg-slate-950/80 p-5">
             <div className="flex items-center justify-between mb-4">
               <h4 className="text-sm uppercase tracking-[0.3em] text-slate-500">Top wallets</h4>

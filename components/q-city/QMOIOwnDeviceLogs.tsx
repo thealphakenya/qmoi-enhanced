@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,21 +17,11 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-import { specificExports } from "react";
-import { specificExports } from "@mui/material/Card";
-import { specificExports } from "@mui/material/CardContent";
-import { specificExports } from "@mui/material/CardHeader";
-import { specificExports } from "@mui/material/Typography";
-import { specificExports } from "@mui/material/Button";
-import { specificExports } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -43,8 +29,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/tabs";
 import {
   Table,
   TableBody,
@@ -53,8 +37,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { specificExports } from "@/components/ui/progress";
-import { specificExports } from "@/components/ui/alert";
 import {
   Download,
   Filter,
@@ -69,17 +51,14 @@ import {
   Settings,
   RefreshCw,
 } from "lucide-react";
-
 // CardTitle component
 interface CardTitleProps {
   children: React.ReactNode;
   className?: string;
 }
-
 const CardTitle: React.FC<CardTitleProps> = ({ children, className = "" }) => (
   <h3 className={`text-lg font-semibold ${className}`}>{children}</h3>
 );
-
 interface DeviceOwnershipLog {
   id: number;
   timestamp: string;
@@ -98,7 +77,6 @@ interface DeviceOwnershipLog {
   user_agent: string;
   additional_data: unknown;
 }
-
 interface UnlockLog {
   id: number;
   timestamp: string;
@@ -111,7 +89,6 @@ interface UnlockLog {
   bypass_techniques: string[];
   verification_results: unknown;
 }
-
 interface MasterLog {
   id: number;
   timestamp: string;
@@ -122,7 +99,6 @@ interface MasterLog {
   details: unknown;
   session_id: string;
 }
-
 interface DeviceHistory {
   device_id: string;
   first_detected: string;
@@ -132,7 +108,6 @@ interface DeviceHistory {
   organizations_detected: string[];
   status: string;
 }
-
 interface Statistics {
   total_detections: number;
   total_unlock_attempts: number;
@@ -143,12 +118,10 @@ interface Statistics {
   organizations_detected: string[];
   success_rate: number;
 }
-
 interface QMOIOwnDeviceLogsProps {
   isMaster: boolean;
   onExport?: (data: unknown, type: string) => void;
 }
-
 export /**
  * QMOIOwnDeviceLogs function
  */
@@ -159,14 +132,12 @@ function QMOIOwnDeviceLogs({
   const [activeTab, setActiveTab] = useState("overview");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
   // Data states
   const [ownershipLogs, setOwnershipLogs] = useState<DeviceOwnershipLog[]>([]);
   const [unlockLogs, setUnlockLogs] = useState<UnlockLog[]>([]);
   const [masterLogs, setMasterLogs] = useState<MasterLog[]>([]);
   const [deviceHistory, setDeviceHistory] = useState<DeviceHistory[]>([]);
   const [statistics, setStatistics] = useState<Statistics | null>(null);
-
   // Filter states
   const [logType, setLogType] = useState("all");
   const [deviceFilter, setDeviceFilter] = useState("");
@@ -174,12 +145,10 @@ function QMOIOwnDeviceLogs({
   const [dateTo, setDateTo] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [limit, setLimit] = useState(100);
-
   // UI states
   const [showFilters, setShowFilters] = useState(false);
   const [autoRefresh, setAutoRefresh] = useState(true);
   const [refreshInterval, setRefreshInterval] = useState(30);
-
   useEffect(() => {
     if (isMaster) {
       loadLogs();
@@ -198,13 +167,10 @@ function QMOIOwnDeviceLogs({
     autoRefresh,
     refreshInterval,
   ]);
-
   const loadLogs = async () => {
     if (!isMaster) return;
-
     setLoading(true);
     setError(null);
-
     try {
       const response = await apiClient.get("/api/qmoi/own-device-logs", {
         method: "POST",
@@ -219,12 +185,9 @@ function QMOIOwnDeviceLogs({
           limit,
         }),
       });
-
       if (!response.ok) {
       }
-
       const data = await response.json();
-
       if (data.ownership_logs) setOwnershipLogs(data.ownership_logs);
       if (data.unlock_logs) setUnlockLogs(data.unlock_logs);
       if (data.master_logs) setMasterLogs(data.master_logs);
@@ -236,10 +199,8 @@ function QMOIOwnDeviceLogs({
       setLoading(false);
     }
   };
-
   const handleExport = async (type: string) => {
     if (!isMaster) return;
-
     try {
       const response = await apiClient.get("/api/qmoi/own-device-logs/export", {
         method: "POST",
@@ -253,10 +214,8 @@ function QMOIOwnDeviceLogs({
           date_to: dateTo || undefined,
         }),
       });
-
       if (!response.ok) {
       }
-
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -272,11 +231,9 @@ function QMOIOwnDeviceLogs({
       setError(err instanceof Error ? err.message : "Failed to export logs");
     }
   };
-
   const formatTimestamp = (timestamp: string) => {
     return new Date(timestamp).toLocaleString();
   };
-
   const getSeverityColor = (severity?: string) => {
     switch (severity?.toLowerCase()) {
       case "critical":
@@ -291,11 +248,9 @@ function QMOIOwnDeviceLogs({
         return "secondary";
     }
   };
-
   const getSuccessColor = (success: boolean) => {
     return success ? "bg-green-500" : "bg-red-500";
   };
-
   if (!isMaster) {
     return (
       <Card>
@@ -310,7 +265,6 @@ function QMOIOwnDeviceLogs({
       </Card>
     );
   }
-
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -350,7 +304,6 @@ function QMOIOwnDeviceLogs({
           </div>
         </CardHeader>
       </Card>
-
       {/* Filters */}
       {showFilters && (
         <Card>
@@ -372,7 +325,6 @@ function QMOIOwnDeviceLogs({
                   </SelectContent>
                 </Select>
               </div>
-
               <div>
                 <label className="text-sm font-medium">Device ID</label>
                 <Input
@@ -381,7 +333,6 @@ function QMOIOwnDeviceLogs({
                   onChange={(e) => setDeviceFilter(e.target.value)}
                 />
               </div>
-
               <div>
                 <label className="text-sm font-medium">Date From</label>
                 <Input
@@ -390,7 +341,6 @@ function QMOIOwnDeviceLogs({
                   onChange={(e) => setDateFrom(e.target.value)}
                 />
               </div>
-
               <div>
                 <label className="text-sm font-medium">Date To</label>
                 <Input
@@ -400,7 +350,6 @@ function QMOIOwnDeviceLogs({
                 />
               </div>
             </div>
-
             <div className="flex items-center gap-4 mt-4">
               <div className="flex items-center gap-2">
                 <input
@@ -413,7 +362,6 @@ function QMOIOwnDeviceLogs({
                   Auto-refresh
                 </label>
               </div>
-
               {autoRefresh && (
                 <Select
                   value={refreshInterval.toString()}
@@ -434,7 +382,6 @@ function QMOIOwnDeviceLogs({
           </CardContent>
         </Card>
       )}
-
       {/* Statistics Overview */}
       {statistics && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -451,7 +398,6 @@ function QMOIOwnDeviceLogs({
               </div>
             </CardContent>
           </Card>
-
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
@@ -465,7 +411,6 @@ function QMOIOwnDeviceLogs({
               </div>
             </CardContent>
           </Card>
-
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
@@ -479,7 +424,6 @@ function QMOIOwnDeviceLogs({
               </div>
             </CardContent>
           </Card>
-
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
@@ -495,7 +439,6 @@ function QMOIOwnDeviceLogs({
           </Card>
         </div>
       )}
-
       {/* Main Content */}
       <Tabs value={activeTab} onValueChange={setActiveTab}>
         <TabsList className="grid w-full grid-cols-4">
@@ -504,7 +447,6 @@ function QMOIOwnDeviceLogs({
           <TabsTrigger value="unlock">Unlock Logs</TabsTrigger>
           <TabsTrigger value="master">Master Logs</TabsTrigger>
         </TabsList>
-
         <TabsContent value="overview" className="space-y-4">
           <Card>
             <CardHeader>
@@ -536,7 +478,6 @@ function QMOIOwnDeviceLogs({
               </div>
             </CardContent>
           </Card>
-
           <Card>
             <CardHeader>
               <CardTitle>Device History</CardTitle>
@@ -597,7 +538,6 @@ function QMOIOwnDeviceLogs({
             </CardContent>
           </Card>
         </TabsContent>
-
         <TabsContent value="ownership" className="space-y-4">
           <Card>
             <CardHeader>
@@ -655,7 +595,6 @@ function QMOIOwnDeviceLogs({
             </CardContent>
           </Card>
         </TabsContent>
-
         <TabsContent value="unlock" className="space-y-4">
           <Card>
             <CardHeader>
@@ -713,7 +652,6 @@ function QMOIOwnDeviceLogs({
             </CardContent>
           </Card>
         </TabsContent>
-
         <TabsContent value="master" className="space-y-4">
           <Card>
             <CardHeader>
@@ -766,7 +704,6 @@ function QMOIOwnDeviceLogs({
           </Card>
         </TabsContent>
       </Tabs>
-
       {/* Error Display */}
       {error && (
         <Alert variant="destructive">
@@ -776,23 +713,17 @@ function QMOIOwnDeviceLogs({
     </div>
   );
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -800,23 +731,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -824,23 +749,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -848,23 +767,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -872,23 +785,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -896,23 +803,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -920,23 +821,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -944,23 +839,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -968,23 +857,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

@@ -1,141 +1,54 @@
-import React from 'react';
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:14Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-//  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
-import { specificExports } from "../../hooks/useProjects";
-import { specificExports } from "../../types/projects";
-
+"use client";
+import React, { useState } from "react";
+interface Resource {
+  id: string;
+  name: string;
+  type: "human" | "equipment" | "software" | "other";
+  status: "allocated" | "maintenance" | "available";
+  cost: number;
+}
+const sampleResources: Resource[] = [
+  { id: "resource-1", name: "Frontend Team", type: "human", status: "allocated", cost: 12000 },
+  { id: "resource-2", name: "GPU Cluster", type: "equipment", status: "available", cost: 8000 },
+  { id: "resource-3", name: "Model Training Pipeline", type: "software", status: "maintenance", cost: 5000 },
+];
 interface ResourceListProps {
   projectId: string;
 }
-
-export /**
- * ResourceList function
- */
-function ResourceList({ projectId }: ResourceListProps): any {
-  const { projects, updateProject } = useProjects();
-  const project = projects.find((p) => p.id === projectId);
-  const resources = project?.resources || [];
-
-  const handleStatusChange = async (
-    resourceId: string,
-    newStatus: Resource["status"],
-  ) => {
-    try {
-      const updatedResources = resources.map((resource) =>
-        resource.id === resourceId
-          ? { resource, status: newStatus }
-          : resource,
-      );
-      await updateProject(projectId, { resources: updatedResources });
-    } catch (error) {
-      (globalThis.console as any)?.error?.(
-        "Failed to update resource status:",
-        error,
-      );
-    }
+export default function ResourceList({ projectId }: ResourceListProps) {
+  const [resources, setResources] = useState<Resource[]>(sampleResources);
+  const handleStatusChange = (resourceId: string, newStatus: Resource["status"]) => {
+    setResources((prev) =>
+      prev.map((resource) =>
+        resource.id === resourceId ? { ...resource, status: newStatus } : resource,
+      ),
+    );
   };
-
-  const typeColors = {
-    human: "bg-blue-100 text-blue-800",
-    equipment: "bg-green-100 text-green-800",
-    software: "bg-purple-100 text-purple-800",
-    other: "bg-gray-100 text-gray-800",
-  };
-
-  const statusColors = {
-    production-ready and operational
-    allocated: "bg-yellow-100 text-yellow-800",
-    maintenance: "bg-red-100 text-red-800",
-  };
-
   return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-semibold">Resources</h3>
-      <div className="space-y-2">
+    <div className="space-y-4 p-6 rounded-3xl border border-slate-200 bg-white shadow-sm">
+      <div>
+        <h2 className="text-2xl font-semibold text-slate-900">Resource List</h2>
+        <p className="text-sm text-slate-500">Manage resource status for project {projectId}.</p>
+      </div>
+      <div className="space-y-3">
         {resources.map((resource) => (
-          <div
-            key={resource.id}
-            className="bg-white rounded-lg shadow-sm p-4 border border-gray-200"
-          >
-            <div className="flex justify-between items-start">
+          <div key={resource.id} className="rounded-3xl border border-slate-200 bg-slate-50 p-4">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h4 className="font-medium">{resource.name}</h4>
-                <div className="flex space-x-2 mt-1">
-                  <span
-                    className={`px-2 py-1 rounded-full text-sm ${typeColors[resource.type]}`}
-                  >
-                    {resource.type}
-                  </span>
-                  <span
-                    className={`px-2 py-1 rounded-full text-sm ${statusColors[resource.status]}`}
-                  >
-                    {resource.status}
-                  </span>
-                </div>
+                <div className="font-semibold text-slate-900">{resource.name}</div>
+                <div className="text-sm text-slate-500">{resource.type} • ${resource.cost.toLocaleString()}</div>
               </div>
-              <div className="text-right">
-                <div className="text-sm text-gray-500">Cost</div>
-                <div className="font-medium">
-                  ${resource.cost.toLocaleString()}
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
-              <div>
-                <span className="text-gray-500">Allocation:</span>
-                <span className="ml-2">{resource.allocation}%</span>
-              </div>
-              <div>
-                <span className="text-gray-500">Start Date:</span>
-                <span className="ml-2">
-                  {new Date(resource.startDate).toLocaleDateString()}
-                </span>
-              </div>
-              <div>
-                <span className="text-gray-500">End Date:</span>
-                <span className="ml-2">
-                  {new Date(resource.endDate).toLocaleDateString()}
-                </span>
-              </div>
-            </div>
-
-            <div className="mt-4">
-              <label
-                htmlFor={`status-${resource.id}`}
-                className="block text-sm font-medium text-gray-700"
-              >
-                Update Status
-              </label>
-              <select
-                id={`status-${resource.id}`}
-                value={resource.status}
-                onChange={(e) =>
-                  handleStatusChange(
-                    resource.id,
-                    e.target.value as Resource["status"],
-                  )
-                }
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-              >
-                production-ready and operational
-                <option value="allocated">Allocated</option>
-                <option value="maintenance">Maintenance</option>
-              </select>
-            </div>
-
-            <div className="mt-4">
-              <div className="text-sm text-gray-500">Allocation Progress</div>
-              <div className="mt-1 w-full bg-gray-200 rounded-full h-2">
-                <div
-                  className="bg-blue-600 h-2 rounded-full"
-                  style={{ width: `${resource.allocation}%` }}
-                />
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="rounded-full bg-slate-200 px-3 py-1 text-xs text-slate-700">{resource.status}</span>
+                <select
+                  value={resource.status}
+                  onChange={(event) => handleStatusChange(resource.id, event.target.value as Resource["status"])}
+                  className="rounded-2xl border border-slate-300 bg-white px-3 py-2 text-sm"
+                >
+                  <option value="allocated">allocated</option>
+                  <option value="maintenance">maintenance</option>
+                  <option value="available">available</option>
+                </select>
               </div>
             </div>
           </div>
@@ -143,220 +56,4 @@ function ResourceList({ projectId }: ResourceListProps): any {
       </div>
     </div>
   );
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
 }

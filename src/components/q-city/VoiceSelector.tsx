@@ -3,9 +3,7 @@ import React from 'react';
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
 import {
   Select,
   SelectContent,
@@ -23,20 +21,17 @@ import {
   Mic,
   Headphones,
 } from "lucide-react";
-
 interface VoiceProfile {
   id: string;
   name: string;
   type: string;
   quality: string;
 }
-
 interface VoiceSelectorProps {
   currentAvatarId?: string;
   onVoiceChange?: (voiceId: string) => void;
   className?: string;
 }
-
 export /**
  * VoiceSelector function
  */
@@ -58,37 +53,30 @@ function VoiceSelector({
   );
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
-
   // Get current avatar's default voice
   const currentAvatar = avatarsConfig.find(
     (avatar) => avatar.id === currentAvatarId,
   );
   const defaultVoice = currentAvatar?.voiceProfile || "professional-male";
-
   useEffect(() => {
     // Load saved voice preference or use avatar default
     const savedVoice = localStorage.getItem("qmoi-voice-preference");
     setSelectedVoice(savedVoice || defaultVoice);
   }, [defaultVoice]);
-
   const handleVoiceChange = async (voiceId: string) => {
     setIsLoading(true);
     try {
       // Save to localStorage
       localStorage.setItem("qmoi-voice-preference", voiceId);
       setSelectedVoice(voiceId);
-
       // Call API to switch voice
       const response = await apiClient.get("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "switch", voiceId }),
       });
-
-
       // Notify parent component
       onVoiceChange?.(voiceId);
-
       toast({
         title: "Voice Updated",
         description: `QMOI is now using the ${voiceProfiles.find((v) => v.id === voiceId)?.name} voice.`,
@@ -103,13 +91,11 @@ function VoiceSelector({
       setIsLoading(false);
     }
   };
-
   const handlePreview = async () => {
     if (isPlaying) {
       setIsPlaying(false);
       return;
     }
-
     setIsPlaying(true);
     try {
       const response = await apiClient.get("/api/qmoi/voice-production", {
@@ -122,8 +108,6 @@ function VoiceSelector({
           volume: volume[0],
         }),
       });
-
-
       const audio = new Audio(response.url || '');
       audio.volume = volume[0] / 100;
       audio.play();
@@ -137,12 +121,10 @@ function VoiceSelector({
       setIsPlaying(false);
     }
   };
-
   const getVoiceQuality = (voiceId: string) => {
     const profile = voiceProfiles.find((v) => v.id === voiceId);
     return profile?.quality || "standard";
   };
-
   const getQualityColor = (quality: string) => {
     switch (quality) {
       case "ai-enhanced":
@@ -155,32 +137,26 @@ function VoiceSelector({
         return "bg-gray-500";
     }
   };
-
   const determineAutoVoice = () => {
     const avatarCandidate = avatarsConfig.find((avatar) => avatar.id === currentAvatarId);
     if (avatarCandidate?.voiceProfile) {
       return avatarCandidate.voiceProfile;
     }
-
     const lionVoice = voiceProfiles.find((voice) => voice.id === "lion-roar");
     if (lionVoice) return lionVoice.id;
-
     return voiceProfiles[0]?.id || "";
   };
-
   const applyAutoVoice = async () => {
     const autoVoiceId = determineAutoVoice();
     if (!autoVoiceId) return;
     await handleVoiceChange(autoVoiceId);
   };
-
   useEffect(() => {
     localStorage.setItem("qmoi-voice-auto-mode", JSON.stringify(autoVoiceMode));
     if (autoVoiceMode) {
       applyAutoVoice();
     }
   }, [autoVoiceMode, currentAvatarId]);
-
   const filteredVoices = voiceProfiles.filter((voice) => {
     if (autoAdapt && currentAvatar) {
       // Auto-adapt: show voices that match avatar type
@@ -188,7 +164,6 @@ function VoiceSelector({
     }
     return true;
   });
-
   // Evolution state for voice enhancement
   const [evolutionState, setEvolutionState] = useState({
     creativityLevel: 0.8,
@@ -207,7 +182,6 @@ function VoiceSelector({
       pronunciationAccuracy: 0.88,
     },
   });
-
   // Auto-research and improvement system for voices
   const performVoiceResearch = useCallback(async () => {
     const topics = [
@@ -216,15 +190,12 @@ function VoiceSelector({
       "pronunciation_accuracy",
       "voice_modulation_optimization",
     ];
-
     const currentTopic = topics[Math.floor(Math.random() * topics.length)];
-
     setEvolutionState(prev => ({
       prev,
       currentResearch: currentTopic,
       researchProgress: Math.min(100, prev.researchProgress + Math.random() * 10),
     }));
-
     setTimeout(() => {
       const findings = [
         "Enhanced voice clarity by 15%",
@@ -232,7 +203,6 @@ function VoiceSelector({
         "Better pronunciation accuracy",
         "Advanced voice modulation",
       ];
-
       const newFinding = findings[Math.floor(Math.random() * findings.length)];
       setEvolutionState(prev => ({
         prev,
@@ -247,7 +217,6 @@ function VoiceSelector({
       }));
     }, 2000 + Math.random() * 3000);
   }, []);
-
   // Master communication for voice modifications
   const communicateWithMasterVoice = useCallback(async (message: string) => {
     setEvolutionState(prev => ({
@@ -258,7 +227,6 @@ function VoiceSelector({
         lastMessage: message,
       },
     }));
-
     setTimeout(() => {
       const modifications = [
         "Enhanced voice clarity",
@@ -267,9 +235,7 @@ function VoiceSelector({
         "Optimized voice performance",
         "Enhanced voice creativity",
       ];
-
       const appliedMod = modifications[Math.floor(Math.random() * modifications.length)];
-
       setEvolutionState(prev => ({
         prev,
         masterCommunication: {
@@ -280,13 +246,11 @@ function VoiceSelector({
       }));
     }, 1000 + Math.random() * 2000);
   }, []);
-
   // Auto-research cycle for voices
   useEffect(() => {
     const researchInterval = setInterval(performVoiceResearch, 15000 + Math.random() * 30000); // 15-45 seconds
     return () => clearInterval(researchInterval);
   }, [performVoiceResearch]);
-
   return (
     <Card className={className}>
       <CardHeader>
@@ -305,7 +269,6 @@ function VoiceSelector({
             <TabsTrigger value="production">production</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
-
           <TabsContent value="voices" className="space-y-4">
             <div className="flex items-center gap-2 mb-2">
               <Switch
@@ -317,7 +280,6 @@ function VoiceSelector({
                 Auto mode: choose best voice (Lion-aware, avatar-aligned)
               </label>
             </div>
-
             <div className="grid gap-3">
               {filteredVoices.map((voice) => (
                 <div
@@ -359,7 +321,6 @@ function VoiceSelector({
                 </div>
               ))}
             </div>
-
             <div className="flex items-center space-x-2">
               <Switch
                 id="auto-adapt"
@@ -371,7 +332,6 @@ function VoiceSelector({
               </label>
             </div>
           </TabsContent>
-
           <TabsContent value="production" className="space-y-4">
             <div className="space-y-3">
               <label className="text-sm font-medium">production Text</label>
@@ -382,7 +342,6 @@ function VoiceSelector({
                 rows={3}
               />
             </div>
-
             <div className="flex items-center gap-3">
               <Button
                 onClick={handlePreview}
@@ -396,7 +355,6 @@ function VoiceSelector({
                 )}
                 {isPlaying ? "Stop" : "production"}
               </Button>
-
               <div className="flex items-center gap-2 flex-1">
                 <Volume2 className="h-4 w-4" />
                 <Slider
@@ -409,7 +367,6 @@ function VoiceSelector({
                 <span className="text-sm w-8">{volume[0]}%</span>
               </div>
             </div>
-
             <div className="p-3 bg-muted rounded-lg">
               <div className="text-sm text-muted-foreground">
                 Current Voice:{" "}
@@ -425,7 +382,6 @@ function VoiceSelector({
               </div>
             </div>
           </TabsContent>
-
           <TabsContent value="settings" className="space-y-4">
             <div className="space-y-4">
               <div>
@@ -457,7 +413,6 @@ function VoiceSelector({
                   }
                 </p>
               </div>
-
               <div className="space-y-2">
                 <label className="text-sm font-medium">Advanced Settings</label>
                 <div className="space-y-3">
@@ -484,7 +439,6 @@ function VoiceSelector({
             </div>
           </TabsContent>
         </Tabs>
-
         {currentAvatar && (
           <div className="p-3 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
             <div className="flex items-center gap-2 text-sm">
@@ -497,7 +451,6 @@ function VoiceSelector({
             </p>
           </div>
         )}
-
         {/* Evolution Features */}
         <div className="p-3 bg-purple-50 dark:bg-purple-950/20 rounded-lg mt-4">
           <div className="flex items-center gap-2 text-sm mb-3">
@@ -558,24 +511,17 @@ function VoiceSelector({
     </Card>
   );
 }
-
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -583,23 +529,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -607,23 +547,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -631,23 +565,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -655,23 +583,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -679,23 +601,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -703,23 +619,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -727,23 +637,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -751,23 +655,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

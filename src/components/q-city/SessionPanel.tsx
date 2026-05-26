@@ -2,9 +2,7 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-
 export default /**
  * SessionPanel function
  */
@@ -15,7 +13,6 @@ function SessionPanel(): any {
   const [error, setError] = useState("");
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;
-
   const fetchSessions = () => {
     setLoading(true);
     apiClient.get("/api/auth/session", {
@@ -26,11 +23,9 @@ function SessionPanel(): any {
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   };
-
   useEffect(() => {
     fetchSessions();
   }, []);
-
   const revoke = (sid: string) => {
     setLoading(true);
     apiClient.get("/api/auth/session", {
@@ -45,7 +40,6 @@ function SessionPanel(): any {
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   };
-
   return (
     <div className="p-4 bg-gray-900 rounded-lg shadow-lg">
       <h2 className="text-xl font-bold mb-4 text-cyan-400">Sessions</h2>

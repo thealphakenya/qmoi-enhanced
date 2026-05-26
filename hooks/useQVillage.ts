@@ -28,7 +28,7 @@ class ErrorBoundary extends React.Component {
 // Last evolution cycle: 2026-03-26T03:58:32Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 // Enhanced QVillage React Hooks with superior performance and parallel processing
 
@@ -105,12 +105,12 @@ function useQVillage(): any {
     papers: QVillagePaper[];
     kbEntries: QVillageKBEntry[];
     discussions: QVillageDiscussion[];
-    metrics: full<QVillageMetrics>;
+    metrics: QVillageMetrics;
     tracks: QVillageTrackEvent[];
     status: string;
     lastSync: string | null;
     qmoiSuperiorityScore: number;
-    production-ready and operational
+    
     autoProjects: unknown[];
     deals: unknown[];
     totalRevenue: number;

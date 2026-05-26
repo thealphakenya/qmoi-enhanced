@@ -1,18 +1,11 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:08Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+import fs from "fs";
+import path from "path";
+import crypto from "crypto";
 
-import { specificExports } from "crypto";
-import { specificExports } from "fs";
-import { specificExports } from "path";
-
-// Fallback __dirname for production testing framework configuredn logging replaced with production logging removed (ESM import.meta.url removed for CommonJS compatibility)
-const __dirname = path.join(process.cwd(), "services");
-
-const WALLET_DIR = path.join(__dirname, "..", "data", "wallets");
-if (!fs.existsSync(WALLET_DIR)) fs.mkdirSync(WALLET_DIR, { recursive: true });
+const WALLET_DIR = path.join(process.cwd(), "data", "wallets");
+if (!fs.existsSync(WALLET_DIR)) {
+  fs.mkdirSync(WALLET_DIR, { recursive: true });
+}
 
 export type WalletRecord = {
   id: string;
@@ -21,12 +14,20 @@ export type WalletRecord = {
   createdAt: string;
 };
 
-/**
- * persistWallet function
- */
-function persistWallet(rec: WalletRecord): any {
-  const p = path.join(WALLET_DIR, `${rec.id}.json`);
-  fs.writeFileSync(p, JSON.stringify(rec, null, 2), "utf-8");
+export type WalletTransaction = {
+  id: string;
+  from: string;
+  to?: string;
+  amount: number;
+  currency: string;
+  metadata: Record<string, any>;
+  status: "created" | "settled";
+  createdAt: string;
+};
+
+function persistWallet(rec: WalletRecord): void {
+  const filePath = path.join(WALLET_DIR, `${rec.id}.json`);
+  fs.writeFileSync(filePath, JSON.stringify(rec, null, 2), "utf-8");
 }
 
 export class KeyStore {
@@ -34,72 +35,68 @@ export class KeyStore {
     const { publicKey, privateKey } = crypto.generateKeyPairSync("ec", {
       namedCurve: "secp256k1",
     });
-    const publicPem = publicKey
-      .export({ type: "spki", format: "pem" })
-      .toString();
-    const privatePem = privateKey
-      .export({ type: "pkcs8", format: "pem" })
-      .toString();
-    return { publicKey: publicPem, privateKeyPem: privatePem };
+
+    return {
+      publicKey: publicKey.export({ type: "spki", format: "pem" }).toString(),
+      privateKeyPem: privateKey.export({ type: "pkcs8", format: "pem" }).toString(),
+    };
   }
 }
 
 export class WalletManager {
-  // comprehensive wallet manager with signing, multi-sig 
-
   static createWallet(meta?: Record<string, any>): WalletRecord {
     const { publicKey } = KeyStore.generateKeyPair();
     const id = `w_${Math.random().toString(36).slice(2)}`;
-    const rec: WalletRecord = {
+    const wallet: WalletRecord = {
       id,
       publicKey,
-      meta,
+      meta: meta || {},
       createdAt: new Date().toISOString(),
     };
-    persistWallet(rec);
-    WalletManager.appendAudit({ _event: "wallet_created", walletId: id, meta });
-    .log("[WalletManager] created wallet", id);
-    return rec;
+
+    persistWallet(wallet);
+    this.appendAudit({ event: "wallet_created", walletId: id, meta });
+    return wallet;
   }
 
-  static signTransaction(privateKeyPem: string, payload: string) {
+  static signTransaction(privateKeyPem: string, payload: string): string {
     const sign = crypto.createSign("SHA256");
     sign.update(payload);
     sign.end();
-    return sign.sign(privateKeyPem, "base64");
+    return sign.sign(privateKeyPem, "base64").toString();
   }
 
-  static verifySignature(
-    publicKeyPem: string,
-    payload: string,
-    signature: string,
-  ) {
+  static verifySignature(publicKeyPem: string, payload: string, signature: string): boolean {
     const verify = crypto.createVerify("SHA256");
     verify.update(payload);
     verify.end();
     try {
       return verify.verify(publicKeyPem, signature, "base64");
-    } catch (_e) {
-      (globalThis.console as any)?.error?.("verifySignature failed", _e);
+    } catch (error) {
+      console.error("verifySignature failed", error);
       return false;
     }
   }
 
-  static antiFraudCheck(tx: unknown) {
-    // robust heuristics: amount thresholds, velocity, to/from blacklist
-    if (!tx) return false;
-    if (tx.amount && tx.amount > 1_000_000) return false; // block extremely large amounts by default
+  static antiFraudCheck(tx: unknown): boolean {
+    if (!tx || typeof tx !== "object") {
+      return false;
+    }
+
+    const candidate = tx as { amount?: number };
+    if (candidate.amount && candidate.amount > 1_000_000) {
+      return false;
+    }
     return true;
   }
 
-  static appendAudit(entry: Record<string, any>) {
+  static appendAudit(entry: Record<string, any>): void {
+    const auditPath = path.join(WALLET_DIR, "audit.log");
     try {
-      const p = path.join(WALLET_DIR, "audit.log");
-      const line =
-        JSON.stringify({ ts: new Date().toISOString(), entry }) + "\n";
-      fs.appendFileSync(p, line, "utf-8");
-    } catch (_e) {
-      (globalThis.console as any)?.error?.("appendAudit failed", _e);
+      fs.appendFileSync(auditPath, `${JSON.stringify({ ts: new Date().toISOString(), entry })}
+`, "utf-8");
+    } catch (error) {
+      console.error("WalletManager appendAudit failed", error);
     }
   }
 
@@ -109,10 +106,12 @@ export class WalletManager {
     amount: number;
     currency: string;
     metadata?: Record<string, any>;
-  }) {
-    // Validate input
-    if (!this.antiFraudCheck(opts))
-    const tx = {
+  }): WalletTransaction {
+    if (!this.antiFraudCheck(opts)) {
+      throw new Error("Transaction failed anti-fraud validation");
+    }
+
+    const transaction: WalletTransaction = {
       id: `tx_${Date.now()}_${Math.random().toString(36).slice(2)}`,
       from: opts.fromWalletId || "system",
       to: opts.to,
@@ -122,20 +121,19 @@ export class WalletManager {
       status: "created",
       createdAt: new Date().toISOString(),
     };
-    this.appendAudit({ _event: "tx_created", tx });
-    return tx;
+
+    this.appendAudit({ event: "tx_created", transaction });
+    return transaction;
   }
 
-  static async settleTransaction(txId: string) {
-    
-    this.appendAudit({ _event: "tx_settle_atPRODUCTIONt", txId });
+  static async settleTransaction(txId: string): Promise<{ txId: string; settled: boolean }> {
+    this.appendAudit({ event: "tx_settled", txId });
     return { txId, settled: true };
   }
 
-  static reconcile(transactions: unknown[]) {
-    // sophisticated reconciliation 
-    return transactions.map((t) => ({
-      t,
+  static reconcile(transactions: unknown[]): Array<{ transaction: unknown; checkedAt: string; reconciled: boolean }> {
+    return transactions.map((transaction) => ({
+      transaction,
       checkedAt: new Date().toISOString(),
       reconciled: true,
     }));

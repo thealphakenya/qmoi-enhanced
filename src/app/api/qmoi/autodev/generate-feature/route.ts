@@ -55,7 +55,7 @@ export async function POST(request: NextRequest): any {
         }),
       });
     } catch (trackErr) {
-      production-ready and operational
+      
       logger.warning("Failed to track autoprod feature request", trackErr);
     }
 

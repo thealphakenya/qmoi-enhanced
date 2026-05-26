@@ -1,7 +1,5 @@
 "use client";
-
 import { useState, useEffect } from 'react';
-
 interface Device {
   id: string;
   name: string;
@@ -12,16 +10,13 @@ interface Device {
   location?: string;
   battery?: number;
 }
-
 export default function DeviceManagementDashboard() {
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');
-
   useEffect(() => {
     fetchDevices();
   }, []);
-
   const fetchDevices = async () => {
     try {
       const response = await fetch('/api/devices', {
@@ -30,11 +25,9 @@ export default function DeviceManagementDashboard() {
           'Content-Type': 'application/json'
         }
       });
-
       if (!response.ok) {
         throw new Error(`Failed to fetch devices: ${response.statusText}`);
       }
-
       const data = await response.json();
       setDevices(data.devices || []);
     } catch (error) {
@@ -44,7 +37,6 @@ export default function DeviceManagementDashboard() {
       setLoading(false);
     }
   };
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'online': return 'text-green-600 bg-green-100';
@@ -53,13 +45,10 @@ export default function DeviceManagementDashboard() {
       default: return 'text-gray-600 bg-gray-100';
     }
   };
-
   const filteredDevices = devices.filter(device =>
     filter === 'all' || device.type === filter
   );
-
   const deviceTypes = ['all', ...Array.from(new Set(devices.map(d => d.type)))];
-
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -70,7 +59,6 @@ export default function DeviceManagementDashboard() {
       </div>
     );
   }
-
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -80,7 +68,6 @@ export default function DeviceManagementDashboard() {
             Monitor and manage all connected devices across your QMOI ecosystem
           </p>
         </div>
-
         {/* Filter Controls */}
         <div className="mb-6">
           <div className="flex flex-wrap gap-2">
@@ -99,7 +86,6 @@ export default function DeviceManagementDashboard() {
             ))}
           </div>
         </div>
-
         {/* Device Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-white rounded-lg shadow p-6">
@@ -125,7 +111,6 @@ export default function DeviceManagementDashboard() {
             <div className="text-gray-600">Offline</div>
           </div>
         </div>
-
         {/* Device Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredDevices.map(device => (
@@ -136,7 +121,6 @@ export default function DeviceManagementDashboard() {
                   {device.status}
                 </span>
               </div>
-
               <div className="space-y-2 text-sm text-gray-600">
                 <div><strong>Type:</strong> {device.type.replace('-', ' ')}</div>
                 <div><strong>Platform:</strong> {device.platform}</div>
@@ -155,7 +139,6 @@ export default function DeviceManagementDashboard() {
                   </div>
                 )}
               </div>
-
               <div className="mt-4 flex space-x-2">
                 <button className="flex-1 bg-blue-600 text-white px-3 py-2 rounded text-sm hover:bg-blue-700 transition-colors">
                   Manage
@@ -167,7 +150,6 @@ export default function DeviceManagementDashboard() {
             </div>
           ))}
         </div>
-
         {filteredDevices.length === 0 && (
           <div className="text-center py-12">
             <p className="text-gray-500">No devices found matching the selected filter.</p>

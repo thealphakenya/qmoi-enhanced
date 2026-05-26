@@ -15,7 +15,7 @@ export const requireMasterRole = (handler: Function) => {
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "react";
+import { useEffect, useState } from "react";
 
 export /**
  * useAnalyticsDashboard function

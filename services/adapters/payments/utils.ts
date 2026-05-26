@@ -1,114 +1,41 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:08Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "crypto";
-import { specificExports } from "fs";
-import { specificExports } from "path";
-import { specificExports } from "url";
+import { createHmac, timingSafeEqual } from 'crypto';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const IDEMPOTENCY_FILE = path.join(__dirname, '..', '..', 'data', 'payments_idempotency.json');
 
-const IDEMPOTENCY_FILE = path.join(
-  __dirname,
-  "..",
-  "..",
-  "data",
-  "payments_idempotency.json",
-);
-if (!fs.existsSync(IDEMPOTENCY_FILE))
-  fs.writeFileSync(IDEMPOTENCY_FILE, "[]", "utf-8");
-
-export /**
- * verifyWebhookSignature function
- */
-function verifyWebhookSignature(
-  payload: string | Buffer,
-  signatureHeader: string | undefined,
-  secret: string,
-): any {
-  if (!signatureHeader || !secret) return false;
-  const expected = crypto
-    .createHmac("sha256", secret)
-    .update(payload)
-    .digest("hex");
-  return crypto.timingSafeEqual(
-    Buffer.from(expected, "hex"),
-    Buffer.from(signatureHeader, "hex"),
-  );
+function ensureIdempotencyFile() {
+  const dir = path.dirname(IDEMPOTENCY_FILE);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+  if (!fs.existsSync(IDEMPOTENCY_FILE)) {
+    fs.writeFileSync(IDEMPOTENCY_FILE, '[]', 'utf-8');
+  }
 }
 
-export /**
- * markIdempotent function
- */
-function markIdempotent(key: string, record: unknown): any {
-  const raw = fs.readFileSync(IDEMPOTENCY_FILE, "utf-8");
-  const arr = JSON.parse(raw);
-  if (arr.find((r: unknown) => r.key === key)) return false; // already exists
+export function verifyWebhookSignature(payload: string | Buffer, signatureHeader: string | undefined, secret: string) {
+  if (!signatureHeader || !secret) return false;
+  const expected = createHmac('sha256', secret).update(payload).digest('hex');
+  return timingSafeEqual(Buffer.from(expected, 'hex'), Buffer.from(signatureHeader, 'hex'));
+}
+
+export function markIdempotent(key: string, record: unknown) {
+  ensureIdempotencyFile();
+  const raw = fs.readFileSync(IDEMPOTENCY_FILE, 'utf-8');
+  const arr = JSON.parse(raw) as Array<{ key: string; record: unknown; ts: string }>;
+  if (arr.find((item) => item.key === key)) return false;
   arr.push({ key, record, ts: new Date().toISOString() });
-  fs.writeFileSync(IDEMPOTENCY_FILE, JSON.stringify(arr, null, 2), "utf-8");
+  fs.writeFileSync(IDEMPOTENCY_FILE, JSON.stringify(arr, null, 2), 'utf-8');
   return true;
 }
 
-export /**
- * getIdempotent function
- */
-function getIdempotent(key: string): any {
-  const raw = fs.readFileSync(IDEMPOTENCY_FILE, "utf-8");
-  const arr = JSON.parse(raw);
-  return arr.find((r: unknown) => r.key === key);
-}
-
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
+export function getIdempotent(key: string) {
+  ensureIdempotencyFile();
+  const raw = fs.readFileSync(IDEMPOTENCY_FILE, 'utf-8');
+  const arr = JSON.parse(raw) as Array<{ key: string; record: unknown; ts: string }>;
+  return arr.find((item) => item.key === key);
 }

@@ -1,18 +1,14 @@
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -20,8 +16,6 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 /**
  * QVILLAGE - Master Workflow Health Dashboard Component
  * 
@@ -29,10 +23,7 @@ class ErrorBoundary extends React.Component {
  * 
  * Location: src/app/master/workflows-health/page.tsx
  */
-
 'use client';
-
-
 interface WorkflowHealth {
   workflowName: string;
   healthPercentage: number;
@@ -44,14 +35,12 @@ interface WorkflowHealth {
   trend: 'improving' | 'latest' | 'declining';
   lastChecked: string;
 }
-
 interface CategoryHealth {
   categoryName: string;
   workflowCount: number;
   healthPercentage: number;
   status: 'healthy' | 'caution' | 'warning' | 'critical';
 }
-
 interface APIValidation {
   endpoint: string;
   method: string;
@@ -61,7 +50,6 @@ interface APIValidation {
   lastValidated: string;
   health: number;
 }
-
 interface DomainValidation {
   domain: string;
   dnsResolution: boolean;
@@ -71,7 +59,6 @@ interface DomainValidation {
   lastValidated: string;
   health: number;
 }
-
 interface FileValidation {
   filePath: string;
   integrity: boolean;
@@ -80,7 +67,6 @@ interface FileValidation {
   lastValidated: string;
   health: number;
 }
-
 interface QMOIConsciousness {
   awareness: number;
   memorySync: boolean;
@@ -89,14 +75,12 @@ interface QMOIConsciousness {
   autodevIntegration: boolean;
   autoresearchIntegration: boolean;
 }
-
 interface ValidationSystems {
   apis: Record<string, APIValidation>;
   domains: Record<string, DomainValidation>;
   files: Record<string, FileValidation>;
   qmoiConsciousness: QMOIConsciousness | null;
 }
-
 export default /**
  * WorkflowsHealthDashboard function
  */
@@ -113,7 +97,6 @@ function WorkflowsHealthDashboard(): any {
   const [refreshInterval, setRefreshInterval] = useState(5000);
   const [isMasterAuthed, setIsMasterAuthed] = useState(false);
   const [showValidations, setShowValidations] = useState(false);
-
   /**
    * Verify master authentication on mount
    */
@@ -125,41 +108,32 @@ function WorkflowsHealthDashboard(): any {
     }
     setIsMasterAuthed(true);
   }, [router]);
-
   /**
    * Fetch workflow health data from Lion Agent
    */
   const fetchWorkflowHealth = useCallback(async () => {
     if (!isMasterAuthed) return;
-
     try {
       setError(null);
       const masterToken = localStorage.getItem('master_token');
-
       const response = await apiClient.get('/api/lion/workflows/health?validations=true', {
         headers: {
           'Authorization': `Bearer ${masterToken}`
         }
       });
-
       if (!response.ok) {
       }
-
       const data = await response.json();
-
       if (data.systemHealth) {
         setSystemHealth(data.systemHealth);
         setMasterHealthPercentage(data.systemHealth.masterHealthPercentage);
       }
-
       if (data.workflows) {
         setWorkflows(data.workflows);
       }
-
       if (data.validations) {
         setValidations(data.validations);
       }
-
       setLoading(false);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Unknown error';
@@ -167,26 +141,21 @@ function WorkflowsHealthDashboard(): any {
       logger.error('🦁 Error fetching workflow health:', err);
     }
   }, [isMasterAuthed]);
-
   /**
    * Set up automatic refresh
    */
   useEffect(() => {
     if (!isMasterAuthed) return;
-
     fetchWorkflowHealth();
-
     const interval = setInterval(fetchWorkflowHealth, refreshInterval);
     return () => clearInterval(interval);
   }, [isMasterAuthed, refreshInterval, fetchWorkflowHealth]);
-
   /**
    * Force validation refresh
    */
   const forceValidationRefresh = async () => {
     try {
       const masterToken = localStorage.getItem('master_token');
-
       const response = await apiClient.get('/api/lion/workflows/health', {
         method: 'PUT',
         headers: {
@@ -194,13 +163,10 @@ function WorkflowsHealthDashboard(): any {
           'Content-Type': 'application/json'
         }
       });
-
       if (!response.ok) {
       }
-
       const result = await response.json();
       notification.show(`✅ Validation refresh completed`);
-
       // Refresh health data
       setTimeout(fetchWorkflowHealth, 1000);
     } catch (error) {
@@ -208,7 +174,6 @@ function WorkflowsHealthDashboard(): any {
       notification.show(`❌ Error: ${errorMessage}`);
     }
   };
-
   /**
    * Get status color based on health percentage
    */
@@ -218,7 +183,6 @@ function WorkflowsHealthDashboard(): any {
     if (percentage >= 85 || status === 'warning') return '#ff6600'; // Dark Orange
     return '#ff0000'; // Red - Critical
   };
-
   /**
    * Get trend icon
    */
@@ -229,11 +193,9 @@ function WorkflowsHealthDashboard(): any {
       default: return '➡️';
     }
   };
-
   if (!isMasterAuthed) {
     return <div>Redirecting to master authentication</div>;
   }
-
   if (loading && !systemHealth) {
     return (
       <div style={styles.container}>
@@ -243,20 +205,17 @@ function WorkflowsHealthDashboard(): any {
       </div>
     );
   }
-
   return (
     <div style={styles.container}>
       <div style={styles.header}>
         <h1>🦁 Lion Agent - Workflow Health Dashboard</h1>
         <div style={styles.masterBadge}>👑 MASTER AUTHORIZED</div>
       </div>
-
       {error && (
         <div style={styles.error}>
           <strong>⚠️ Error:</strong> {error}
         </div>
       )}
-
       {/* Master Health Percentage */}
       {systemHealth && (
         <div style={styles.masterHealthSection}>
@@ -281,7 +240,6 @@ function WorkflowsHealthDashboard(): any {
           </div>
         </div>
       )}
-
       {/* Category Health */}
       {systemHealth && systemHealth.categoryHealth.length > 0 && (
         <div style={styles.categorySection}>
@@ -306,7 +264,6 @@ function WorkflowsHealthDashboard(): any {
           </div>
         </div>
       )}
-
       {/* Critical Issues */}
       {systemHealth && systemHealth.criticalIssues.length > 0 && (
         <div style={styles.criticalSection}>
@@ -318,7 +275,6 @@ function WorkflowsHealthDashboard(): any {
           </ul>
         </div>
       )}
-
       {/* Validation Systems */}
       <div style={styles.validationSection}>
         <div style={styles.validationHeader}>
@@ -338,7 +294,6 @@ function WorkflowsHealthDashboard(): any {
             </button>
           </div>
         </div>
-
         {validations && (
           <div style={styles.validationSummary}>
             <div style={styles.validationMetric}>
@@ -367,7 +322,6 @@ function WorkflowsHealthDashboard(): any {
             </div>
           </div>
         )}
-
         {showValidations && validations && (
           <div style={styles.validationDetails}>
             {/* API Validations */}
@@ -391,7 +345,6 @@ function WorkflowsHealthDashboard(): any {
                 ))}
               </div>
             </div>
-
             {/* Domain Validations */}
             <div style={styles.validationGroup}>
               <h4>Domain Validation</h4>
@@ -415,7 +368,6 @@ function WorkflowsHealthDashboard(): any {
                 ))}
               </div>
             </div>
-
             {/* File Validations */}
             <div style={styles.validationGroup}>
               <h4>File Integrity</h4>
@@ -439,7 +391,6 @@ function WorkflowsHealthDashboard(): any {
                 ))}
               </div>
             </div>
-
             {/* QMOI Consciousness */}
             {validations.qmoiConsciousness && (
               <div style={styles.validationGroup}>
@@ -471,7 +422,6 @@ function WorkflowsHealthDashboard(): any {
           </div>
         )}
       </div>
-
       {/* Workflow Health Details */}
       <div style={styles.workflowSection}>
         <h3>Workflow Health Details</h3>
@@ -489,7 +439,6 @@ function WorkflowsHealthDashboard(): any {
             🔄 Refresh Now
           </button>
         </div>
-
         <div style={styles.workflowList}>
           {workflows.map(workflow => (
             <div
@@ -510,7 +459,6 @@ function WorkflowsHealthDashboard(): any {
                   {workflow.healthPercentage}%
                 </div>
               </div>
-
               {selectedWorkflow === workflow.workflowName && (
                 <div style={styles.workflowDetails}>
                   <div style={styles.detailRow}>
@@ -529,7 +477,6 @@ function WorkflowsHealthDashboard(): any {
                     <span>Last Checked:</span>
                     <span>{new Date(workflow.lastChecked).toLocaleTimeString()}</span>
                   </div>
-                  
                   {workflow.status === 'critical' && (
                     <button
                       onClick={(e) => {
@@ -547,7 +494,6 @@ function WorkflowsHealthDashboard(): any {
           ))}
         </div>
       </div>
-
       <div style={styles.footer}>
         <p>🦁 Lion Agent v2.0.0 | Enhanced System Health Monitoring</p>
         <p>Auto-refreshing every {refreshInterval / 1000} seconds | Validation Systems Active</p>
@@ -555,7 +501,6 @@ function WorkflowsHealthDashboard(): any {
     </div>
   );
 }
-
 const styles: Record<string, React.CSSProperties> = {
   container: {
     maxWidth: '1400px',

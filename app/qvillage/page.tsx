@@ -1,8 +1,6 @@
 "use client";
-
 import React, { useEffect, useMemo, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
-
 const defaultDatasets = [
   {
     id: "DS-1001",
@@ -26,7 +24,6 @@ const defaultDatasets = [
     price: "$49.99",
   },
 ];
-
 const defaultModels = [
   {
     id: "MDL-210",
@@ -47,7 +44,6 @@ const defaultModels = [
     pricing: "$7.99/use",
   },
 ];
-
 export default function QVillagePage() {
   const { user, hasAccess } = useAuth();
   const [datasets, setDatasets] = useState(defaultDatasets);
@@ -55,17 +51,14 @@ export default function QVillagePage() {
   const [lastUpdated, setLastUpdated] = useState("");
   const canEditDatasets = hasAccess("qvillage_access") && user.role === "master";
   const canViewModels = hasAccess("qmoi_space_access");
-
   const roleCopy = useMemo(() => {
     if (user.role === "master") return "Full QVillage management and community coordination access.";
     if (user.role === "sister") return "Collaborative dataset sharing and marketplace access.";
     if (user.role === "user") return "Community dataset browsing and AI model access.";
     return "Guest access to public dataset summaries and onboarding.";
   }, [user.role]);
-
   useEffect(() => {
     let active = true;
-
     async function loadSpaces() {
       try {
         const res = await fetch("/api/qvillage/spaces", { cache: "no-store" });
@@ -80,13 +73,11 @@ export default function QVillagePage() {
         console.error("Failed to load QVillage spaces:", error);
       }
     }
-
     loadSpaces();
     return () => {
       active = false;
     };
   }, []);
-
   return (
     <main className="min-h-screen bg-slate-950 p-8 text-white">
       <div className="max-w-6xl mx-auto space-y-8">
@@ -103,7 +94,6 @@ export default function QVillagePage() {
             </div>
           </div>
         </section>
-
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
             <h2 className="text-2xl font-semibold mb-3">Datasets</h2>
@@ -124,7 +114,6 @@ export default function QVillagePage() {
               </div>
             )}
           </div>
-
           <div className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
             <h2 className="text-2xl font-semibold mb-3">Model Deployment</h2>
             <p className="text-slate-400 mb-4">Collaborative AI model development with production sync and inference.</p>
@@ -145,7 +134,6 @@ export default function QVillagePage() {
             )}
           </div>
         </section>
-
         {/* Dataset Catalog */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
           <div className="flex items-center justify-between gap-4">
@@ -176,7 +164,6 @@ export default function QVillagePage() {
             <button className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-sm transition-colors">Upload Dataset</button>
           </div>
         </section>
-
         {/* AI Model Marketplace */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
           <h2 className="text-2xl font-semibold mb-4">AI Model Marketplace</h2>
@@ -198,7 +185,6 @@ export default function QVillagePage() {
             <button className="bg-orange-600 hover:bg-orange-700 px-4 py-2 rounded text-sm transition-colors">Deploy Your Model</button>
           </div>
         </section>
-
         {/* Community Workspace */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
           <h2 className="text-2xl font-semibold mb-4">Community Workspace</h2>
@@ -228,7 +214,6 @@ export default function QVillagePage() {
             <button className="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded text-sm transition-colors">Create Project</button>
           </div>
         </section>
-
         {/* Revenue Tools */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
           <h2 className="text-2xl font-semibold mb-4">Revenue Analytics</h2>
@@ -260,7 +245,6 @@ export default function QVillagePage() {
             <button className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-sm transition-colors">Payout Settings</button>
           </div>
         </section>
-
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
           <h2 className="text-2xl font-semibold mb-4">QVillage Automation</h2>
           <p className="text-slate-400 mb-4">QVillage automates dataset sync, model updates, and community publishing across PWA and enterprise platforms.</p>
@@ -279,7 +263,6 @@ export default function QVillagePage() {
             </div>
           </div>
         </section>
-
         {/* production Sync & Enterprise Features */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
           <h2 className="text-2xl font-semibold mb-4">production Sync & Enterprise</h2>

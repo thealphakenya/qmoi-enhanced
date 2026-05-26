@@ -2,8 +2,6 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 const fetchZeroRatedStatus = async () => {
   : fetch status from backend or local state
   return {
@@ -18,7 +16,6 @@ const fetchZeroRatedStatus = async () => {
     ],
   };
 };
-
 export default /**
  * ZeroRatedPanel function
  */
@@ -31,16 +28,13 @@ function ZeroRatedPanel(): any {
     logs: [],
   });
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     fetchZeroRatedStatus().then((data) => {
       setStatus(data);
       setLoading(false);
     });
   }, []);
-
   if (!isMaster) return null;
-
   return (
     <div className="zero-rated-panel">
       <h2>ZeroRated QMOI (Master Only)</h2>

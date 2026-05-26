@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,21 +17,16 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 interface Contact {
   id: number;
   name: string;
   platform: string;
   tags: string[];
 }
-
 const SocialAutomationPanel: React.FC = () => {
   const [content, setContent] = useState("");
   const [platform, setPlatform] = useState("WhatsApp");
@@ -43,24 +34,20 @@ const SocialAutomationPanel: React.FC = () => {
   const [tag, setTag] = useState("");
   const [features, setFeatures] = useState<string[]>([]);
   const [status, setStatus] = useState("");
-
   const fetchContacts = async () => {
     const res = await apiClient.get("/api/social-automation/contacts");
     const data = await res.json();
     setContacts(data.contacts || []);
   };
-
   const fetchFeatures = async () => {
     const res = await apiClient.get("/api/social-automation/features");
     const data = await res.json();
     setFeatures(data.features || []);
   };
-
   useEffect(() => {
     fetchContacts();
     fetchFeatures();
   }, []);
-
   const postStatus = async () => {
     const res = await apiClient.get("/api/social-automation/post", {
       method: "POST",
@@ -70,7 +57,6 @@ const SocialAutomationPanel: React.FC = () => {
     const data = await res.json();
     setStatus(data.success ? "Posted!" : "Post failed");
   };
-
   const tagContact = async (id: number) => {
     const res = await apiClient.get("/api/social-automation/tag", {
       method: "POST",
@@ -81,7 +67,6 @@ const SocialAutomationPanel: React.FC = () => {
     setStatus(data.success ? "Tagged!" : "Tag failed");
     fetchContacts();
   };
-
   return (
     <Card className="space-y-4 mt-4">
       <CardHeader>
@@ -137,7 +122,7 @@ const SocialAutomationPanel: React.FC = () => {
           </table>
         </div>
         <div className="mb-4">
-          production-ready and operational
+          <p className="text-sm text-slate-500">Key features available for social automation include:</p>
           <ul>
             {features.map((f) => (
               <li key={f}>{f}</li>
@@ -171,5 +156,4 @@ const SocialAutomationPanel: React.FC = () => {
     </Card>
   );
 };
-
 export default SocialAutomationPanel;

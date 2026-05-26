@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,18 +17,12 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import { specificExports } from "react";
-import { specificExports } from "framer-motion";
 import {
   Settings,
   Bell,
@@ -45,19 +35,16 @@ import {
   ToggleRight,
   Sliders,
 } from "lucide-react";
-
 interface SettingSection {
   id: string;
   label: string;
   icon: React.ReactNode;
   description: string;
 }
-
 interface SettingsSidebarProps {
   isOpen?: boolean;
   onClose?: () => void;
 }
-
 const SETTINGS_SECTIONS: SettingSection[] = [
   {
     id: "general",
@@ -96,7 +83,6 @@ const SETTINGS_SECTIONS: SettingSection[] = [
     description: "Resolution, refresh rate",
   },
 ];
-
 export const SettingsSidebar: React.FC<SettingsSidebarProps> = ({
   isOpen = true,
   onClose,
@@ -109,7 +95,6 @@ export const SettingsSidebar: React.FC<SettingsSidebarProps> = ({
     notifications: true,
     animations: true,
   });
-
   const renderContent = () => {
     switch (selectedSection) {
       case "general":
@@ -176,7 +161,6 @@ export const SettingsSidebar: React.FC<SettingsSidebarProps> = ({
             </div>
           </div>
         );
-
       case "appearance":
         return (
           <div className="space-y-4">
@@ -232,7 +216,6 @@ export const SettingsSidebar: React.FC<SettingsSidebarProps> = ({
             </div>
           </div>
         );
-
       case "audio":
         return (
           <div className="space-y-4">
@@ -286,7 +269,6 @@ export const SettingsSidebar: React.FC<SettingsSidebarProps> = ({
             </div>
           </div>
         );
-
       case "notifications":
         return (
           <div className="space-y-4">
@@ -332,7 +314,6 @@ export const SettingsSidebar: React.FC<SettingsSidebarProps> = ({
             </div>
           </div>
         );
-
       case "privacy":
         return (
           <div className="space-y-4">
@@ -373,7 +354,6 @@ export const SettingsSidebar: React.FC<SettingsSidebarProps> = ({
             </div>
           </div>
         );
-
       case "display":
         return (
           <div className="space-y-4">
@@ -422,12 +402,10 @@ export const SettingsSidebar: React.FC<SettingsSidebarProps> = ({
             </div>
           </div>
         );
-
       default:
         return null;
     }
   };
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -463,7 +441,6 @@ export const SettingsSidebar: React.FC<SettingsSidebarProps> = ({
               </motion.button>
             )}
           </div>
-
           {/* Settings Sections List */}
           <div className="w-48 border-r border-slate-700 overflow-y-auto">
             {SETTINGS_SECTIONS.map((section, index) => (
@@ -521,7 +498,6 @@ export const SettingsSidebar: React.FC<SettingsSidebarProps> = ({
               </motion.button>
             ))}
           </div>
-
           {/* Content Area */}
           <motion.div
             className="flex-1 overflow-y-auto px-6 py-4"
@@ -537,5 +513,4 @@ export const SettingsSidebar: React.FC<SettingsSidebarProps> = ({
     </AnimatePresence>
   );
 };
-
 export default SettingsSidebar;

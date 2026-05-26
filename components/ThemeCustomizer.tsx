@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,18 +17,12 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import { specificExports } from "react";
-import { specificExports } from "framer-motion";
 import {
   ThemeManager,
   THEME_PRESETS,
@@ -48,13 +38,11 @@ import {
   Moon,
   Sparkles,
 } from "lucide-react";
-
 interface ThemeCustomizerProps {
   isOpen?: boolean;
   onClose?: () => void;
   position?: "floating" | "panel" | "modal";
 }
-
 export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
   isOpen = true,
   onClose,
@@ -74,7 +62,6 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
   );
   const [copiedColor, setCopiedColor] = useState<string | null>(null);
   const [showIsDark, setShowIsDark] = useState(currentTheme.isDark);
-
   useEffect(() => {
     const unsubscribe = themeManager.subscribe((theme) => {
       setCurrentTheme(theme);
@@ -83,16 +70,13 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
     });
     return unsubscribe;
   }, []);
-
   const handleSelectTheme = (themeId: string) => {
     themeManager.setTheme(themeId);
   };
-
   const handleColorChange = (colorKey: keyof ThemeColors, value: string) => {
     const newCustomColors = { ...customColors, [colorKey]: value };
     setCustomColors(newCustomColors);
   };
-
   const applyCustomTheme = () => {
     const customTheme = themeManager.createCustomTheme(
       `custom_${Date.now()}`,
@@ -102,18 +86,15 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
     );
     themeManager.setCustomTheme(customTheme);
   };
-
   const toggleDarkMode = () => {
     themeManager.toggleDarkMode();
     setShowIsDark(!showIsDark);
   };
-
   const copyToClipboard = (text: string, colorKey: string) => {
     navigator.clipboard.writeText(text);
     setCopiedColor(colorKey);
     setTimeout(() => setCopiedColor(null), 2000);
   };
-
   const exportThemeJSON = () => {
     const json = JSON.stringify(
       {
@@ -131,16 +112,13 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
     a.download = `${currentTheme.id}-theme.json`;
     a.click();
   };
-
   // Container styling based on position
   const containerClasses = {
     floating: "fixed bottom-8 right-8 w-96 max-h-96",
     panel: "w-full h-full overflow-y-auto",
     modal: "w-full max-w-2xl h-auto max-h-96",
   };
-
   const containerClass = containerClasses[position];
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -176,7 +154,6 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                 Theme Customizer
               </h3>
             </motion.div>
-
             <div className="flex items-center gap-2">
               <motion.button
                 whileHover={{ scale: 1.1 }}
@@ -196,7 +173,6 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                   />
                 )}
               </motion.button>
-
               {position === "floating" && (
                 <motion.button
                   whileHover={{ scale: 1.1 }}
@@ -210,7 +186,6 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                   />
                 </motion.button>
               )}
-
               {onClose && (
                 <motion.button
                   whileHover={{ scale: 1.1 }}
@@ -228,7 +203,6 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
               )}
             </div>
           </div>
-
           {/* Content */}
           {expanded && (
             <motion.div
@@ -268,7 +242,6 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                   </motion.button>
                 ))}
               </div>
-
               {/* Presets Tab */}
               {selectedTab === "presets" && (
                 <motion.div
@@ -316,7 +289,6 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                   </div>
                 </motion.div>
               )}
-
               {/* Customize Tab */}
               {selectedTab === "customize" && (
                 <motion.div
@@ -366,7 +338,6 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                       </div>
                     ))}
                   </div>
-
                   <motion.button
                     onClick={applyCustomTheme}
                     whileHover={{ scale: 1.05 }}
@@ -381,7 +352,6 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                   </motion.button>
                 </motion.div>
               )}
-
               {/* Export Tab */}
               {selectedTab === "export" && (
                 <motion.div
@@ -397,7 +367,6 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                     <div>ID: {currentTheme.id}</div>
                     <div>Colors: {Object.keys(currentTheme.colors).length}</div>
                   </div>
-
                   <div className="space-y-2">
                     {Object.entries(currentTheme.colors).map(([key, value]) => (
                       <motion.div
@@ -438,7 +407,6 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                       </motion.div>
                     ))}
                   </div>
-
                   <motion.button
                     onClick={exportThemeJSON}
                     whileHover={{ scale: 1.05 }}
@@ -460,5 +428,4 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
     </AnimatePresence>
   );
 };
-
 export default ThemeCustomizer;

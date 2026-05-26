@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,16 +17,11 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 'use client';
-
-
 interface Marketplace {
   id: string;
   type: 'model' | 'dataset' | 'service';
@@ -40,14 +31,12 @@ interface Marketplace {
   sales: number;
   rating: number;
 }
-
 interface Revenue {
   source: string;
   amount: number;
   percentage: number;
   trend: number;
 }
-
 export const AIEconomySystem: React.FC = () => {
   const [listings] = useState<Marketplace[]>([
     {
@@ -78,14 +67,12 @@ export const AIEconomySystem: React.FC = () => {
       rating: 4.7
     }
   ]);
-
   const [revenues] = useState<Revenue[]>([
     { source: 'Model Sales', amount: 48500, percentage: 45, trend: 12 },
     { source: 'Dataset Sales', amount: 32400, percentage: 30, trend: 8 },
     { source: 'Services', amount: 21300, percentage: 20, trend: 5 },
     { source: 'API Usage', amount: 5800, percentage: 5, trend: 15 }
   ]);
-
   return (
     <div className="space-y-6">
       <Card>
@@ -105,7 +92,6 @@ export const AIEconomySystem: React.FC = () => {
               <TabsTrigger value="revenue">Revenue Analytics</TabsTrigger>
               <TabsTrigger value="creator">Creator Dashboard</TabsTrigger>
             </TabsList>
-
             <TabsContent value="marketplace" className="space-y-4">
               <div className="space-y-3">
                 {listings.map((item) => (
@@ -125,7 +111,6 @@ export const AIEconomySystem: React.FC = () => {
                             <p className="text-xs text-gray-400">{item.sales} sales</p>
                           </div>
                         </div>
-
                         <div className="flex justify-between items-center">
                           <div className="flex gap-4 text-sm">
                             <span className="text-yellow-400">★ {item.rating}</span>
@@ -137,10 +122,8 @@ export const AIEconomySystem: React.FC = () => {
                   </Card>
                 ))}
               </div>
-
               <Button className="w-full" variant="outline">Upload Your Own Model/Dataset</Button>
             </TabsContent>
-
             <TabsContent value="revenue" className="space-y-4">
               <div className="space-y-3">
                 {revenues.map((rev, i) => (
@@ -162,7 +145,6 @@ export const AIEconomySystem: React.FC = () => {
                     </div>
                   </div>
                 ))}
-
                 <Card className="bg-green-900/20 border-green-700/30 mt-4">
                   <CardContent className="pt-4">
                     <p className="text-sm text-gray-400 mb-1">Total Monthly Revenue</p>
@@ -171,7 +153,6 @@ export const AIEconomySystem: React.FC = () => {
                 </Card>
               </div>
             </TabsContent>
-
             <TabsContent value="creator" className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <Card className="bg-slate-800/50">
@@ -199,7 +180,6 @@ export const AIEconomySystem: React.FC = () => {
                   </CardContent>
                 </Card>
               </div>
-
               <Button className="w-full bg-purple-600 hover:bg-purple-700">
                 Publish New Model
               </Button>
@@ -210,5 +190,4 @@ export const AIEconomySystem: React.FC = () => {
     </div>
   );
 };
-
 export default AIEconomySystem;

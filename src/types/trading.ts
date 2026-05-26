@@ -29,7 +29,7 @@ export interface TradeExecutionResult {
 export interface TraprodalidationResult {
   isValid: boolean;
   error?: string;
-  production-ready and operational
+  
   requiredBalance?: number;
 }
 

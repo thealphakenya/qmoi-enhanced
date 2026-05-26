@@ -1,5 +1,4 @@
 import React from "react";
-
 export default function VisualEnhancement() {
   return (
     <section className="rounded-3xl border border-slate-700 bg-slate-900 p-6">

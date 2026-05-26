@@ -2,7 +2,6 @@
  * Protected Financial Features React Component
  * Provides master-only UI components for all financial operations
  */
-
 import React, { useState, useEffect } from "react";
 import {
   isMasterUser,
@@ -11,7 +10,6 @@ import {
   executeFinancialOperation,
   MasterOnly,
 } from "@/utils/master-access-control";
-
 /**
  * Access denied fallback component
  */
@@ -27,7 +25,6 @@ export const AccessDeniedFallback: React.FC = () => (
     </p>
   </div>
 );
-
 /**
  * Loading state component
  */
@@ -39,7 +36,6 @@ export const LoadingState: React.FC = () => (
     <p className="mt-4 text-gray-600">Verifying master access...</p>
   </div>
 );
-
 /**
  * Protected revenue dashboard component
  */
@@ -47,10 +43,8 @@ export const ProtectedRevenueDashboard: React.FC = () => {
   const { isMaster, loading, user } = useMasterAccess();
   const [revenueData, setRevenueData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
-
   useEffect(() => {
     if (!isMaster || !user) return;
-
     const fetchRevenueData = async () => {
       try {
         const response = await fetch("/api/revenue/validate", {
@@ -58,14 +52,11 @@ export const ProtectedRevenueDashboard: React.FC = () => {
             "x-user": JSON.stringify(user),
           },
         });
-
         if (!response.ok) {
           throw new Error("Failed to fetch revenue data");
         }
-
         const data = await response.json();
         setRevenueData(data);
-
         // Log access
         await FinancialAuditLog.logRevenuOperation(
           user.id,
@@ -77,13 +68,10 @@ export const ProtectedRevenueDashboard: React.FC = () => {
         setError(err instanceof Error ? err.message : "Unknown error");
       }
     };
-
     fetchRevenueData();
   }, [isMaster, user]);
-
   if (loading) return <LoadingState />;
   if (!isMaster) return <AccessDeniedFallback />;
-
   return (
     <div className="space-y-6">
       <div className="bg-white p-6 rounded-lg shadow-lg border-l-4 border-blue-500">
@@ -93,7 +81,6 @@ export const ProtectedRevenueDashboard: React.FC = () => {
         <p className="text-sm text-gray-500 mb-4">
           Master-only access • Last updated: {new Date().toISOString()}
         </p>
-
         {error ? (
           <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded">
             Error: {error}
@@ -126,17 +113,14 @@ export const ProtectedRevenueDashboard: React.FC = () => {
     </div>
   );
 };
-
 /**
  * Protected wallet manager component
  */
 export const ProtectedWalletManager: React.FC = () => {
   const { isMaster, loading, user } = useMasterAccess();
   const [wallets, setWallets] = useState<any[]>([]);
-
   useEffect(() => {
     if (!isMaster || !user) return;
-
     const fetchWallets = async () => {
       try {
         const response = await fetch("/api/wallet/balance", {
@@ -144,10 +128,8 @@ export const ProtectedWalletManager: React.FC = () => {
             "x-user": JSON.stringify(user),
           },
         });
-
         const data = await response.json();
         setWallets(data.wallets || []);
-
         await FinancialAuditLog.logOperation(user.id, "wallet_view", {
           walletCount: data.wallets?.length || 0,
         });
@@ -155,20 +137,16 @@ export const ProtectedWalletManager: React.FC = () => {
         logger.error("Failed to fetch wallets:", err);
       }
     };
-
     fetchWallets();
   }, [isMaster, user]);
-
   if (loading) return <LoadingState />;
   if (!isMaster) return <AccessDeniedFallback />;
-
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg border-l-4 border-green-500">
       <h2 className="text-2xl font-bold mb-4 text-gray-800">💳 Wallet Manager</h2>
       <p className="text-sm text-gray-500 mb-4">
         Master-only access • Manage multi-currency wallets
       </p>
-
       <div className="space-y-3">
         {wallets.length > 0 ? (
           wallets.map((wallet) => (
@@ -193,17 +171,14 @@ export const ProtectedWalletManager: React.FC = () => {
     </div>
   );
 };
-
 /**
  * Protected transaction history component
  */
 export const ProtectedTransactionHistory: React.FC = () => {
   const { isMaster, loading, user } = useMasterAccess();
   const [transactions, setTransactions] = useState<any[]>([]);
-
   useEffect(() => {
     if (!isMaster || !user) return;
-
     const fetchTransactions = async () => {
       try {
         const response = await fetch("/api/transactions/all", {
@@ -211,20 +186,16 @@ export const ProtectedTransactionHistory: React.FC = () => {
             "x-user": JSON.stringify(user),
           },
         });
-
         const data = await response.json();
         setTransactions(data.transactions || []);
       } catch (err) {
         logger.error("Failed to fetch transactions:", err);
       }
     };
-
     fetchTransactions();
   }, [isMaster, user]);
-
   if (loading) return <LoadingState />;
   if (!isMaster) return <AccessDeniedFallback />;
-
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg border-l-4 border-purple-500">
       <h2 className="text-2xl font-bold mb-4 text-gray-800">
@@ -233,7 +204,6 @@ export const ProtectedTransactionHistory: React.FC = () => {
       <p className="text-sm text-gray-500 mb-4">
         Master-only access • Complete audit trail
       </p>
-
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead className="bg-gray-100 border-b">
@@ -277,16 +247,13 @@ export const ProtectedTransactionHistory: React.FC = () => {
     </div>
   );
 };
-
 /**
  * Master financial dashboard wrapper
  */
 export const MasterFinancialDashboard: React.FC = () => {
   const { isMaster, loading } = useMasterAccess();
-
   if (loading) return <LoadingState />;
   if (!isMaster) return <AccessDeniedFallback />;
-
   return (
     <div className="space-y-6 p-6 bg-gray-50 min-h-screen">
       <div className="mb-8">
@@ -295,7 +262,6 @@ export const MasterFinancialDashboard: React.FC = () => {
         </h1>
         <p className="text-gray-600">Master-only financial operations and monitoring</p>
       </div>
-
       <MasterOnly>
         <ProtectedRevenueDashboard />
         <ProtectedWalletManager />
@@ -304,7 +270,6 @@ export const MasterFinancialDashboard: React.FC = () => {
     </div>
   );
 };
-
 export default {
   ProtectedRevenueDashboard,
   ProtectedWalletManager,
@@ -313,23 +278,17 @@ export default {
   AccessDeniedFallback,
   LoadingState,
 };
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

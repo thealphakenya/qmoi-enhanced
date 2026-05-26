@@ -6,10 +6,7 @@
  *
  * Location: src/components/master/DomainStats.tsx
  */
-
 'use client';
-
-
 interface DomainStats {
   totalDomains: number;
   healthyDomains: number;
@@ -17,12 +14,10 @@ interface DomainStats {
   lastValidated: string;
   allHealthy: boolean;
 }
-
 interface DomainStatsProps {
   stats: DomainStats | null;
   loading?: boolean;
 }
-
 export default /**
  * DomainStats function
  */
@@ -40,14 +35,12 @@ function DomainStats(): any {
       </div>
     );
   }
-
   const getHealthColor = (percentage: number) => {
     if (percentage >= 80) return 'text-green-600 bg-green-50 border-green-200';
     if (percentage >= 60) return 'text-yellow-600 bg-yellow-50 border-yellow-200';
     if (percentage >= 40) return 'text-orange-600 bg-orange-50 border-orange-200';
     return 'text-red-600 bg-red-50 border-red-200';
   };
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
       {/* Total Domains */}
@@ -60,7 +53,6 @@ function DomainStats(): any {
           <div className="text-3xl">🌐</div>
         </div>
       </div>
-
       {/* Healthy Domains */}
       <div className="bg-white border border-gray-200 rounded-lg p-4">
         <div className="flex items-center justify-between">
@@ -72,7 +64,6 @@ function DomainStats(): any {
           <div className="text-3xl">✅</div>
         </div>
       </div>
-
       {/* Overall Health */}
       <div className={`border rounded-lg p-4 ${getHealthColor(stats.healthPercentage)}`}>
         <div className="flex items-center justify-between">
@@ -88,7 +79,6 @@ function DomainStats(): any {
           </div>
         </div>
       </div>
-
       {/* System Status */}
       <div className="bg-white border border-gray-200 rounded-lg p-4">
         <div className="flex items-center justify-between">

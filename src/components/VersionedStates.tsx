@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,37 +17,28 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 // Versioned window states for rollback or branching workflows.
-
 interface WindowSnapshot {
   id: string;
   timestamp: number;
   state: any;
 }
-
 export const VersionedStates: React.FC = () => {
   const wm = useWindowManager();
   const [snapshots, setSnapshots] = useState<WindowSnapshot[]>([]);
-
   const takeSnapshot = (windowId: string) => {
     const win = wm.windows.find((w) => w.id === windowId);
     if (win) {
       setSnapshots((prev) => [...prev, { id: windowId, timestamp: Date.now(), state: win }]);
     }
   };
-
   const restoreSnapshot = (snapshot: WindowSnapshot) => {
     wm.updateWindow(snapshot.id, snapshot.state);
   };
-
   return (
     <div style={{ padding: "10px", border: "1px solid #ccc", margin: "10px" }}>
       <h4>Window State Versions</h4>
@@ -67,5 +54,4 @@ export const VersionedStates: React.FC = () => {
     </div>
   );
 };
-
 export default VersionedStates;

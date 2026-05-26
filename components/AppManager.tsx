@@ -1,47 +1,37 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:12Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "react";
-import { specificExports } from "@mui/material/Card";
-import { specificExports } from "@mui/material/CardContent";
-import { specificExports } from "@mui/material/CardHeader";
-import { specificExports } from "@mui/material/Typography";
-import { specificExports } from "@mui/material/Button";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/progress";
-import { specificExports } from "@/components/ui/tabs";
-import { specificExports } from "@/components/ui/input";
-import { specificExports } from "@/components/ui/label";
-import { specificExports } from "@/components/ui/switch";
-import { specificExports } from "@/components/ui/alert";
-import { specificExports } from "@/components/ui/separator";
-import { specificExports } from "@/components/ui/scroll-area";
+"use client";
+import React, { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Separator } from "@/components/ui/separator";
+import { appManagementService } from "@/services/AppManagementService";
 import {
   Download,
   Update,
-  Settings,
   Wrench,
-  CheckCircle,
-  XCircle,
-  AlertTriangle,
-  Play,
-  Pause,
-  RefreshCw,
-  Trash2,
-  Star,
+  Info,
+  MoreVertical,
   Search,
-  Filter,
   Grid,
   List,
-  MoreVertical,
-  Info,
-  Shield,
-  Zap,
+  RefreshCw,
+  CheckCircle,
 } from "lucide-react";
-import { specificExports } from "@/services/AppManagementService";
-
 interface App {
   id: string;
   name: string;
@@ -54,32 +44,19 @@ interface App {
   isInstalled: boolean;
   isUpdating: boolean;
   status: string;
-  lastUpdate: Date;
+  lastUpdate: string;
+  hasUpdate?: boolean;
 }
-
-export default /**
- * AppManager function
- */
-function AppManager(): any {
-  try {() {
+const AppManager: React.FC = () => {
   const [apps, setApps] = useState<App[]>([]);
   const [filteredApps, setFilteredApps] = useState<App[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [autoUpdate, setAutoUpdate] = useState<boolean>(true);
-  const [autoGit, setAutoGit] = useState<boolean>(true);
-  const [downloadProgress, setDownloadProgress] = useState<
-    Record<string, number>
-  >({});
-  const [installationProgress, setInstallationProgress] = useState<
-    Record<string, any>
-  >({});
-  const [troubleshootingResults, setTroubleshootingResults] = useState<
-    Record<string, any>
-  >({});
+  const [downloadProgress, setDownloadProgress] = useState<Record<string, number>>({});
+  const [installationProgress, setInstallationProgress] = useState<Record<string, { progress: number; message: string }>>({});
+  const [troubleshootingResults, setTroubleshootingResults] = useState<Record<string, Array<{ issue: string; severity: string }>>>({});
   const [activeTab, setActiveTab] = useState<string>("apps");
-
   const categories = [
     { id: "all", name: "All Apps", icon: "📱" },
     { id: "trading", name: "Trading", icon: "💰" },
@@ -87,127 +64,99 @@ function AppManager(): any {
     { id: "entertainment", name: "Entertainment", icon: "🎬" },
     { id: "security", name: "Security", icon: "🔒" },
   ];
-
   useEffect(() => {
     loadApps();
-    setupEventListeners();
   }, []);
-
   useEffect(() => {
     filterApps();
   }, [apps, selectedCategory, searchQuery]);
-
   const loadApps = () => {
     const appList = appManagementService.getApps();
     setApps(appList);
   };
-
   const setupEventListeners = () => {
     appManagementService.onAppStatusChanged(({ appId, status }) => {
       setApps((prev) =>
-        prev.map((app) => (app.id === appId ? { app, status } : app)),
+        prev.map((app) =>
+          app.id === appId ? { ...app, status } : app,
+        ),
       );
     });
-
-    appManagementService.onDownloadProgress(({ appId, progress, message }) => {
-      setDownloadProgress((prev) => ({ prev, [appId]: progress }));
+    appManagementService.onDownloadProgress(({ appId, progress }) => {
+      setDownloadProgress((prev) => ({ ...prev, [appId]: progress }));
     });
-
     appManagementService.onInstallationProgress((data) => {
-      setInstallationProgress((prev) => ({ prev, [data.appId]: data }));
+      setInstallationProgress((prev) => ({ ...prev, [data.appId]: data }));
     });
-
     appManagementService.onAppInstalled((app) => {
       setApps((prev) =>
-        prev.map((a) =>
-          a.id === app.id
-            ? { a, isInstalled: true, status: "installed" }
-            : a,
+        prev.map((item) =>
+          item.id === app.id
+            ? { ...item, isInstalled: true, status: "installed" }
+            : item,
         ),
       );
     });
-
     appManagementService.onAppUpdated(({ app, updateInfo }) => {
       setApps((prev) =>
-        prev.map((a) =>
-          a.id === app.id
-            ? { a, version: updateInfo.newVersion, isUpdating: false }
-            : a,
+        prev.map((item) =>
+          item.id === app.id
+            ? {
+                ...item,
+                version: updateInfo.newVersion,
+                isUpdating: false,
+              }
+            : item,
         ),
       );
     });
-
-    appManagementService.onAppError(({ appId, error }) => {
-      (globalThis.console as any)?.error?.(`App error for ${appId}:`, error);
-    });
-
-    production-ready and operational
-      // Show update notification
-      .log(
-        production-ready and operational
-      );
-    });
-
     appManagementService.onTroubleshootingCompleted(({ appId, issues }) => {
-      setTroubleshootingResults((prev) => ({ prev, [appId]: issues }));
+      setTroubleshootingResults((prev) => ({ ...prev, [appId]: issues }));
     });
   };
-
   const filterApps = () => {
-    let filtered = apps;
-
+    let filtered = [...apps];
     if (selectedCategory !== "all") {
       filtered = filtered.filter((app) => app.category === selectedCategory);
     }
-
     if (searchQuery) {
+      const query = searchQuery.toLowerCase();
       filtered = filtered.filter(
         (app) =>
-          app.displayName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          app.description.toLowerCase().includes(searchQuery.toLowerCase()),
+          app.displayName.toLowerCase().includes(query) ||
+          app.description.toLowerCase().includes(query),
       );
     }
-
     setFilteredApps(filtered);
   };
-
   const handleDownload = async (appId: string) => {
     try {
       await appManagementService.downloadApp(appId);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Download failed:", error);
+      console.error("Download failed:", error);
     }
   };
-
   const handleUpdate = async (appId: string) => {
     try {
       await appManagementService.updateApp(appId);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Update failed:", error);
+      console.error("Update failed:", error);
     }
   };
-
   const handleTroubleshoot = async (appId: string) => {
     try {
       await appManagementService.troubleshootApp(appId);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Troubleshooting failed:", error);
+      console.error("Troubleshooting failed:", error);
     }
   };
-
-  const handleAutoGitToggle = (enabled: boolean) => {
-    setAutoGit(enabled);
-    appManagementService.setAutoGitEnabled(enabled);
-  };
-
   const formatFileSize = (bytes: number): string => {
     const sizes = ["B", "KB", "MB", "GB"];
     if (bytes === 0) return "0 B";
     const i = Math.floor(Math.log(bytes) / Math.log(1024));
-    return Math.round((bytes / Math.pow(1024, i)) * 100) / 100 + " " + sizes[i];
+    return `${Math.round((bytes / Math.pow(1024, i)) * 100) / 100} ${sizes[i]}`;
   };
-
-  const getStatusColor = (status: string): string => {
+  const getStatusColor = (status: string) => {
     switch (status) {
       case "installed":
         return "bg-green-500";
@@ -223,8 +172,7 @@ function AppManager(): any {
         return "bg-gray-500";
     }
   };
-
-  const getStatusText = (status: string): string => {
+  const getStatusText = (status: string) => {
     switch (status) {
       case "installed":
         return "Installed";
@@ -237,10 +185,9 @@ function AppManager(): any {
       case "error":
         return "Error";
       default:
-        production-ready and operational
+        return "Unknown";
     }
   };
-
   const renderAppCard = (app: App) => (
     <Card key={app.id} className="relative overflow-hidden">
       <CardHeader className="pb-3">
@@ -257,25 +204,19 @@ function AppManager(): any {
             </div>
           </div>
           <div className="flex items-center space-x-2">
-            <Badge className={getStatusColor(app.status)}>
+            <Badge className={`rounded-full px-2 py-1 text-xs ${getStatusColor(app.status)}`}>
               {getStatusText(app.status)}
             </Badge>
             {app.isInstalled && (
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => handleUpdate(app.id)}
-              >
+              <Button size="sm" variant="outline" onClick={() => handleUpdate(app.id)}>
                 <Update className="h-4 w-4" />
               </Button>
             )}
           </div>
         </div>
       </CardHeader>
-
       <CardContent className="space-y-4">
         <p className="text-sm text-muted-foreground">{app.description}</p>
-
         {downloadProgress[app.id] !== undefined && (
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
@@ -285,40 +226,26 @@ function AppManager(): any {
             <Progress value={downloadProgress[app.id]} className="h-2" />
           </div>
         )}
-
         {installationProgress[app.id] && (
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
               <span>{installationProgress[app.id].message}</span>
               <span>{installationProgress[app.id].progress}%</span>
             </div>
-            <Progress
-              value={installationProgress[app.id].progress}
-              className="h-2"
-            />
+            <Progress value={installationProgress[app.id].progress} className="h-2" />
           </div>
         )}
-
-        {troubleshootingResults[app.id] && (
+        {troubleshootingResults[app.id] && troubleshootingResults[app.id].length > 0 && (
           <Alert>
-            <Wrench className="h-4 w-4" />
             <AlertDescription>
               Found {troubleshootingResults[app.id].length} issues.
-              {troubleshootingResults[app.id].some(
-                (issue: unknown) => issue.severity === "high",
-              ) && " High priority issues detected."}
             </AlertDescription>
           </Alert>
         )}
-
         <div className="flex items-center justify-between pt-2">
           <div className="flex items-center space-x-2">
             {app.isInstalled ? (
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => handleTroubleshoot(app.id)}
-              >
+              <Button size="sm" variant="outline" onClick={() => handleTroubleshoot(app.id)}>
                 <Wrench className="h-4 w-4 mr-1" />
                 Troubleshoot
               </Button>
@@ -329,7 +256,6 @@ function AppManager(): any {
               </Button>
             )}
           </div>
-
           <div className="flex items-center space-x-1">
             <Button size="sm" variant="ghost">
               <Info className="h-4 w-4" />
@@ -342,12 +268,8 @@ function AppManager(): any {
       </CardContent>
     </Card>
   );
-
   const renderAppList = (app: App) => (
-    <div
-      key={app.id}
-      className="flex items-center justify-between p-4 border rounded-lg"
-    >
+    <div key={app.id} className="flex items-center justify-between p-4 border rounded-lg">
       <div className="flex items-center space-x-4">
         <div className="text-2xl">{app.icon}</div>
         <div>
@@ -366,23 +288,14 @@ function AppManager(): any {
           </div>
         </div>
       </div>
-
       <div className="flex items-center space-x-2">
         {app.isInstalled ? (
           <>
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={() => handleUpdate(app.id)}
-            >
+            <Button size="sm" variant="outline" onClick={() => handleUpdate(app.id)}>
               <Update className="h-4 w-4 mr-1" />
               Update
             </Button>
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={() => handleTroubleshoot(app.id)}
-            >
+            <Button size="sm" variant="outline" onClick={() => handleTroubleshoot(app.id)}>
               <Wrench className="h-4 w-4 mr-1" />
               Fix
             </Button>
@@ -396,7 +309,9 @@ function AppManager(): any {
       </div>
     </div>
   );
-
+  const updateApps = apps.filter(
+    (app) => app.isInstalled && (app.status === "update-available" || app.hasUpdate),
+  );
   return (
     <div className="container mx-auto p-6 space-y-6">
       <div className="flex items-center justify-between">
@@ -406,54 +321,43 @@ function AppManager(): any {
             Manage, install, and update Q-latest applications
           </p>
         </div>
-        <div className="flex items-center space-x-2">
-          <Button variant="outline" onClick={loadApps}>
-            <RefreshCw className="h-4 w-4 mr-1" />
-            Refresh
-          </Button>
-        </div>
+        <Button variant="outline" onClick={loadApps}>
+          <RefreshCw className="h-4 w-4 mr-1" />
+          Refresh
+        </Button>
       </div>
-
       <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <TabsList className="grid w-full grid-cols-4">
+        <TabsList className="grid w-full grid-cols-4 gap-2">
           <TabsTrigger value="apps">Apps</TabsTrigger>
           <TabsTrigger value="updates">Updates</TabsTrigger>
           <TabsTrigger value="troubleshooting">Troubleshooting</TabsTrigger>
           <TabsTrigger value="settings">Settings</TabsTrigger>
         </TabsList>
-
         <TabsContent value="apps" className="space-y-6">
-          {/* Search and Filters */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4 flex-1">
-              <div className="relative flex-1 max-w-md">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                <Input
-                  ="Search apps"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10"
-                />
-              </div>
-
-              <div className="flex items-center space-x-2">
-                {categories.map((category) => (
-                  <Button
-                    key={category.id}
-                    variant={
-                      selectedCategory === category.id ? "default" : "outline"
-                    }
-                    size="sm"
-                    onClick={() => setSelectedCategory(category.id)}
-                  >
-                    <span className="mr-1">{category.icon}</span>
-                    {category.name}
-                  </Button>
-                ))}
-              </div>
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div className="relative flex-1 max-w-xl">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                placeholder="Search apps"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10"
+              />
             </div>
-
-            <div className="flex items-center space-x-2">
+            <div className="flex flex-wrap gap-2">
+              {categories.map((category) => (
+                <Button
+                  key={category.id}
+                  variant={selectedCategory === category.id ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setSelectedCategory(category.id)}
+                >
+                  <span className="mr-1">{category.icon}</span>
+                  {category.name}
+                </Button>
+              ))}
+            </div>
+            <div className="flex items-center gap-2">
               <Button
                 variant={viewMode === "grid" ? "default" : "outline"}
                 size="sm"
@@ -470,17 +374,7 @@ function AppManager(): any {
               </Button>
             </div>
           </div>
-
-          {/* Apps Grid/List */}
-          {viewMode === "grid" ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredApps.map(renderAppCard)}
-            </div>
-          ) : (
-            <div className="space-y-4">{filteredApps.map(renderAppList)}</div>
-          )}
-
-          {filteredApps.length === 0 && (
+          {filteredApps.length === 0 ? (
             <div className="text-center py-12">
               <div className="text-4xl mb-4">📱</div>
               <h3 className="text-lg font-semibold mb-2">No apps found</h3>
@@ -488,27 +382,35 @@ function AppManager(): any {
                 Try adjusting your search or filter criteria
               </p>
             </div>
+          ) : viewMode === "grid" ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredApps.map(renderAppCard)}
+            </div>
+          ) : (
+            <div className="space-y-4">{filteredApps.map(renderAppList)}</div>
           )}
         </TabsContent>
-
         <TabsContent value="updates" className="space-y-6">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
                 <Update className="h-5 w-5" />
-                production-ready and operational
+                <span>App updates</span>
               </CardTitle>
-              <CardDescription>
-                production-ready and operational
-              </CardDescription>
+              <CardDescription>Review available updates for installed apps.</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {apps
-                  .filter(
-                    production-ready and operational
-                  )
-                  .map((app) => (
+                {updateApps.length === 0 ? (
+                  <div className="text-center py-8">
+                    <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold mb-2">All apps are up to date!</h3>
+                    <p className="text-muted-foreground">
+                      Your Q-latest apps are running the latest versions.
+                    </p>
+                  </div>
+                ) : (
+                  updateApps.map((app) => (
                     <div
                       key={app.id}
                       className="flex items-center justify-between p-4 border rounded-lg"
@@ -516,12 +418,8 @@ function AppManager(): any {
                       <div className="flex items-center space-x-3">
                         <div className="text-2xl">{app.icon}</div>
                         <div>
-                          <h3 className="font-semibold">
-                            Q-latest {app.displayName}
-                          </h3>
-                          <p className="text-sm text-muted-foreground">
-                            Current: v{app.version}
-                          </p>
+                          <h3 className="font-semibold">Q-latest {app.displayName}</h3>
+                          <p className="text-sm text-muted-foreground">Current: v{app.version}</p>
                         </div>
                       </div>
                       <Button onClick={() => handleUpdate(app.id)}>
@@ -529,125 +427,54 @@ function AppManager(): any {
                         Update
                       </Button>
                     </div>
-                  ))}
-
-                {apps.filter(
-                  production-ready and operational
-                ).length === 0 && (
-                  <div className="text-center py-8">
-                    <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold mb-2">
-                      All apps are up to date!
-                    </h3>
-                    <p className="text-muted-foreground">
-                      Your Q-latest apps are running the latest versions
-                    </p>
-                  </div>
+                  ))
                 )}
               </div>
             </CardContent>
           </Card>
         </TabsContent>
-
         <TabsContent value="troubleshooting" className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Wrench className="h-5 w-5" />
-                <span>App Troubleshooting</span>
-              </CardTitle>
-              <CardDescription>
-                Diagnose and fix issues with installed apps
-              </CardDescription>
+              <CardTitle>Troubleshooting</CardTitle>
+              <CardDescription>Inspect recent app issues and resolve them quickly.</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {apps
-                  .filter((app) => app.isInstalled)
-                  .map((app) => (
-                    <div
-                      key={app.id}
-                      className="flex items-center justify-between p-4 border rounded-lg"
-                    >
-                      <div className="flex items-center space-x-3">
-                        <div className="text-2xl">{app.icon}</div>
-                        <div>
-                          <h3 className="font-semibold">
-                            Q-latest {app.displayName}
-                          </h3>
-                          <p className="text-sm text-muted-foreground">
-                            v{app.version}
-                          </p>
-                        </div>
-                      </div>
-                      <Button
-                        variant="outline"
-                        onClick={() => handleTroubleshoot(app.id)}
-                      >
-                        <Wrench className="h-4 w-4 mr-1" />
-                        Troubleshoot
-                      </Button>
-                    </div>
-                  ))}
+                {apps.filter((app) => troubleshootingResults[app.id]?.length > 0).length === 0 ? (
+                  <div className="text-center py-8">
+                    <p className="text-muted-foreground">No troubleshooting issues detected.</p>
+                  </div>
+                ) : (
+                  apps
+                    .filter((app) => troubleshootingResults[app.id]?.length > 0)
+                    .map((app) => (
+                      <Alert key={app.id}>
+                        <AlertDescription>
+                          {app.displayName} has {troubleshootingResults[app.id]?.length ?? 0} open issues.
+                        </AlertDescription>
+                      </Alert>
+                    ))
+                )}
               </div>
             </CardContent>
           </Card>
         </TabsContent>
-
         <TabsContent value="settings" className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Settings className="h-5 w-5" />
-                <span>App Manager Settings</span>
-              </CardTitle>
-              <CardDescription>
-                Configure app management preferences
-              </CardDescription>
+              <CardTitle>Settings</CardTitle>
+              <CardDescription>Configure app manager behavior and auto-update preferences.</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="space-y-0.5">
-                    <Label>Auto-update apps</Label>
-                    <p className="text-sm text-muted-foreground">
-                      Automatically download and install app updates
-                    </p>
-                  </div>
-                  <Switch
-                    checked={autoUpdate}
-                    onCheckedChange={setAutoUpdate}
-                  />
+            <CardContent className="space-y-4">
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="rounded-lg border p-4">
+                  <h3 className="font-semibold">Auto update</h3>
+                  <p className="text-sm text-muted-foreground">Automatically download and install updates for installed apps.</p>
                 </div>
-
-                <Separator />
-
-                <div className="flex items-center justify-between">
-                  <div className="space-y-0.5">
-                    <Label>Auto Git commits</Label>
-                    <p className="text-sm text-muted-foreground">
-                      Automatically commit app changes to Git repository
-                    </p>
-                  </div>
-                  <Switch
-                    checked={autoGit}
-                    onCheckedChange={handleAutoGitToggle}
-                  />
-                </div>
-
-                <Separator />
-
-                <div className="flex items-center justify-between">
-                  <div className="space-y-0.5">
-                    <Label>Q-latest branding</Label>
-                    <p className="text-sm text-muted-foreground">
-                      All apps are branded as Q-latest applications
-                    </p>
-                  </div>
-                  <Badge variant="outline" className="text-green-600">
-                    <CheckCircle className="h-3 w-3 mr-1" />
-                    Enabled
-                  </Badge>
+                <div className="rounded-lg border p-4">
+                  <h3 className="font-semibold">Auto Git sync</h3>
+                  <p className="text-sm text-muted-foreground">Keep QMOI application configuration synced with Git.</p>
                 </div>
               </div>
             </CardContent>
@@ -656,4 +483,5 @@ function AppManager(): any {
       </Tabs>
     </div>
   );
-}
+};
+export default AppManager;

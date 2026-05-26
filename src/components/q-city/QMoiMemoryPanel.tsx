@@ -2,8 +2,6 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 export default /**
  * QMoiMemoryPanel function
  */
@@ -17,7 +15,6 @@ function QMoiMemoryPanel(): any {
   const [feedback, setFeedback] = useState("");
   const [correction, setCorrection] = useState("");
   const [message, setMessage] = useState("");
-
   async /**
  * fetchMemory function
  */
@@ -25,7 +22,6 @@ function fetchMemory(): any {
     const res = await apiClient.get("/api/qmoi/memory");
     if (res.ok) setMemory(await res.json());
   }
-
   async /**
  * submitFeedback function
  */
@@ -45,7 +41,6 @@ function submitFeedback(): any {
       setMessage("Error submitting feedback.");
     }
   }
-
   async /**
  * backupMemory function
  */
@@ -54,12 +49,10 @@ function backupMemory(): any {
     if (res.ok) setMessage("Memory backup created!");
     else setMessage("Backup failed.");
   }
-
   useEffect(() => {
     if (isMaster) fetchMemory();
   }, [isMaster]);
   if (!isMaster) return null;
-
   return (
     <div
       style={{

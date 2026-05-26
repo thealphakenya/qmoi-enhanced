@@ -1,18 +1,14 @@
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -20,45 +16,27 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
-import { specificExports } from "./QCityDevicePanel";
-import { specificExports } from "./QVillage";
-import { specificExports } from "@mui/material/Card";
-import { specificExports } from "@mui/material/CardContent";
-import { specificExports } from "@mui/material/CardHeader";
-import { specificExports } from "@mui/material/Typography";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/tabs";
-import { specificExports } from "lucide-react";
-
 interface CardTitleProps {
   children: React.ReactNode;
   className?: string;
 }
-
 const CardTitle: React.FC<CardTitleProps> = ({ children, className = "" }) => (
   <h3 className={`text-lg font-semibold ${className}`}>{children}</h3>
 );
-
 export default /**
  * QCityDashboard function
  */
 function QCityDashboard(): any {
   try {() {
   const [isMaster, setIsMaster] = useState(false);
-
   const handleMasterToggle = () => {
     setIsMaster(!isMaster);
   };
-
   return (
     <div className="space-y-6">
       <Card>
@@ -87,7 +65,6 @@ function QCityDashboard(): any {
           </button>
         </CardContent>
       </Card>
-
       <Tabs defaultValue="device" className="w-full">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="device" className="flex items-center gap-2">
@@ -99,11 +76,9 @@ function QCityDashboard(): any {
             QVillage (Master Only)
           </TabsTrigger>
         </TabsList>
-
         <TabsContent value="device" className="space-y-6">
           <QCityDevicePanel />
         </TabsContent>
-
         <TabsContent value="qvillage" className="space-y-6">
           <QVillage isMaster={isMaster} />
         </TabsContent>

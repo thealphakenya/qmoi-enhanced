@@ -4,9 +4,9 @@ logger.info("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "react";
-import { specificExports } from "react-query";
-import { specificExports } from "axios";
+import { useCallback, useEffect, useState } from "react";
+import { AxiosError, useMutation, useQuery } from "react-query";
+import axios from "axios";
 
 interface WhatsAppMessage {
   id: string;
@@ -95,7 +95,7 @@ function useWhatsApp(): any {
   const updateConfigMutation = useMutation<
     void,
     AxiosError,
-    full<WhatsAppConfig>
+    WhatsAppConfig
   >(
     async (newConfig) => {
       const response = await axios.post(
@@ -140,7 +140,7 @@ function useWhatsApp(): any {
 
   // Update config
   const updateConfig = useCallback(
-    (newConfig: full<WhatsAppConfig>) => {
+    (newConfig: WhatsAppConfig) => {
       updateConfigMutation.mutate(newConfig);
     },
     [updateConfigMutation],

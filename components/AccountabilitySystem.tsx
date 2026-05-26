@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,17 +17,12 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
 // @ts-nocheck
-
-import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -39,9 +30,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { specificExports } from "@/components/ui/button";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -49,7 +37,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { specificExports } from "@/components/ui/tabs";
 import {
   Shield,
   Eye,
@@ -64,8 +51,6 @@ import {
   Calendar,
   Activity,
 } from "lucide-react";
-import { specificExports } from "@/hooks/use-toast";
-
 interface AuditLog {
   id: string;
   timestamp: Date;
@@ -80,7 +65,6 @@ interface AuditLog {
   status: "success" | "failure" | "warning";
   sessionId?: string;
 }
-
 interface AccountabilityMetrics {
   totalActions: number;
   successfulActions: number;
@@ -90,13 +74,11 @@ interface AccountabilityMetrics {
   averageSessionDuration: number;
   complianceScore: number;
 }
-
 interface AccountabilitySystemProps {
   currentUserId?: string;
   onAnomalyDetected?: (anomaly: AuditLog) => void;
   enableRealTimeMonitoring?: boolean;
 }
-
 export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
   currentUserId,
   onAnomalyDetected,
@@ -120,7 +102,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
   const [filterStatus, setFilterStatus] = useState("");
   const [dateRange, setDateRange] = useState({ start: "", end: "" });
   const { toast } = useToast();
-
   const safeParse = (s: unknown) => {
     try {
       return typeof s === "string" ? JSON.parse(s || "{}") : s || {};
@@ -128,7 +109,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
       return {};
     }
   };
-
   // Load audit logs from API
   const loadAuditLogs = useCallback(async () => {
     try {
@@ -164,7 +144,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
       await generateSampleLogs();
     }
   }, []);
-
   const generateSampleLogs = async () => {
     setAuditLogs([]);
     setFilteredLogs([]);
@@ -206,13 +185,11 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
       "failure",
       "warning",
     ];
-
     // Generate data logs and save to database
     for (let i = 0; i < 20; i++) {
       const timestamp = new Date(
         Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000,
       ); // Last 30 days
-
       try {
         await apiClient.get("/api/qmoi-database", {
           method: "POST",
@@ -247,11 +224,9 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
         );
       }
     }
-
     // Reload logs after audit changes
     setTimeout(() => loadAuditLogs(), 1000);
   };
-
   // Calculate accountability metrics
   const calculateMetrics = (logs: AuditLog[]) => {
     const totalActions = logs.length;
@@ -263,14 +238,12 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
       (log) => log.riskLevel === "high" || log.riskLevel === "critical",
     ).length;
     const uniqueUsers = new Set(logs.map((log) => log.userId)).size;
-
     // Calculate compliance score (optimized)
     const complianceScore = Math.min(
       100,
       (successfulActions / totalActions) * 100 -
         (failedActions / totalActions) * 50,
     );
-
     setMetrics({
       totalActions,
       successfulActions,
@@ -281,7 +254,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
       complianceScore,
     });
   };
-
   // Log user action
   const logAction = async (
     action: string,
@@ -307,12 +279,10 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
           status: "success",
         }),
       });
-
       if (response.ok) {
         const result = await response.json();
         // Reload logs to get the new entry
         await loadAuditLogs();
-
         // Check for anomalies
         if (enableRealTimeMonitoring) {
           const newLogRaw = result.log as unknown;
@@ -379,7 +349,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
       setAuditLogs((prev) => [newLog, ...prev]);
     }
   };
-
   // Detect anomalies in user behavior
   const detectAnomalies = (log: AuditLog) => {
     // sophisticated anomaly detection (can be enhanced with ML)
@@ -388,7 +357,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
         l.userId === log.userId &&
         l.timestamp > new Date(Date.now() - 60 * 60 * 1000), // Last hour
     );
-
     // Check for unusual patterns
     const failedActions = recentLogs.filter(
       (l) => l.status === "failure",
@@ -396,7 +364,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
     const highRiskActions = recentLogs.filter(
       (l) => l.riskLevel === "high" || l.riskLevel === "critical",
     ).length;
-
     if (failedActions > 5 || highRiskActions > 3) {
       onAnomalyDetected?.(log);
       toast({
@@ -406,11 +373,9 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
       });
     }
   };
-
   // Apply filters to logs
   const applyFilters = (logs: AuditLog[] = auditLogs) => {
     let filtered = logs;
-
     if (searchQuery) {
       filtered = filtered.filter(
         (log) =>
@@ -419,36 +384,28 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
           log.username.toLowerCase().includes(searchQuery.toLowerCase()),
       );
     }
-
     if (filterUser) {
       filtered = filtered.filter((log) => log.username === filterUser);
     }
-
     if (filterAction) {
       filtered = filtered.filter((log) => log.action === filterAction);
     }
-
     if (filterRiskLevel) {
       filtered = filtered.filter((log) => log.riskLevel === filterRiskLevel);
     }
-
     if (filterStatus) {
       filtered = filtered.filter((log) => log.status === filterStatus);
     }
-
     if (dateRange.start) {
       const startDate = new Date(dateRange.start);
       filtered = filtered.filter((log) => log.timestamp >= startDate);
     }
-
     if (dateRange.end) {
       const endDate = new Date(dateRange.end);
       filtered = filtered.filter((log) => log.timestamp <= endDate);
     }
-
     setFilteredLogs(filtered);
   };
-
   // Export audit logs
   const exportLogs = () => {
     const data = {
@@ -464,7 +421,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
         dateRange,
       },
     };
-
     const blob = new Blob([JSON.stringify(data, null, 2)], {
       type: "application/json",
     });
@@ -476,22 +432,18 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
     }.json`;
     a.click();
     URL.revokeObjectURL(url);
-
     toast({
       title: "Audit Logs Exported",
       description: `Exported ${filteredLogs.length} audit log entries`,
     });
   };
-
   // Clear old logs (older than 90 days)
   const clearOldLogs = () => {
     const ninetyDaysAgo = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000);
     const filtered = auditLogs.filter((log) => log.timestamp > ninetyDaysAgo);
-
     setAuditLogs(filtered);
     localStorage.setItem("qmoi_audit_logs", JSON.stringify(filtered));
     applyFilters(filtered);
-
     toast({
       title: "Old Logs Cleared",
       description: `Removed ${
@@ -499,11 +451,9 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
       } old audit log entries`,
     });
   };
-
   useEffect(() => {
     loadAuditLogs();
   }, [loadAuditLogs]);
-
   useEffect(() => {
     applyFilters();
   }, [
@@ -514,7 +464,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
     filterStatus,
     dateRange,
   ]);
-
   const getRiskColor = (risk: string) => {
     switch (risk) {
       case "critical":
@@ -529,7 +478,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
         return "bg-gray-100 text-gray-800";
     }
   };
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case "success":
@@ -542,10 +490,8 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
         return "bg-gray-100 text-gray-800";
     }
   };
-
   const uniqueUsers = [...new Set(auditLogs.map((log) => log.username))];
   const uniqueActions = [...new Set(auditLogs.map((log) => log.action))];
-
   return (
     <div className="w-full max-w-6xl mx-auto space-y-6">
       {/* Accountability Overview */}
@@ -586,7 +532,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
               <div className="text-sm text-gray-600">Compliance Score</div>
             </div>
           </div>
-
           {/* optimized Actions */}
           <div className="flex gap-2 justify-center">
             <Button
@@ -613,7 +558,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
           </div>
         </CardContent>
       </Card>
-
       {/* Audit Logs */}
       <Card>
         <CardHeader>
@@ -628,13 +572,11 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
               <TabsTrigger value="logs">Audit Logs</TabsTrigger>
               <TabsTrigger value="filters">Filters</TabsTrigger>
             </TabsList>
-
             <TabsContent value="logs" className="space-y-4">
               <div className="text-sm text-gray-600 mb-4">
                 Showing {filteredLogs.length} of {auditLogs.length} audit log
                 entries
               </div>
-
               <div className="space-y-2 max-h-96 overflow-y-auto">
                 {filteredLogs.slice(0, 50).map((log) => (
                   <div
@@ -680,18 +622,15 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                 ))}
               </div>
             </TabsContent>
-
             <TabsContent value="filters" className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div>
                   <label className="text-sm font-medium">Search</label>
                   <Input
-                    
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
                 </div>
-
                 <div>
                   <label className="text-sm font-medium">User</label>
                   <Select value={filterUser} onValueChange={setFilterUser}>
@@ -707,7 +646,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                     </SelectContent>
                   </Select>
                 </div>
-
                 <div>
                   <label className="text-sm font-medium">Action</label>
                   <Select value={filterAction} onValueChange={setFilterAction}>
@@ -723,7 +661,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                     </SelectContent>
                   </Select>
                 </div>
-
                 <div>
                   <label className="text-sm font-medium">Risk Level</label>
                   <Select
@@ -741,7 +678,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                     </SelectContent>
                   </Select>
                 </div>
-
                 <div>
                   <label className="text-sm font-medium">Status</label>
                   <Select value={filterStatus} onValueChange={setFilterStatus}>
@@ -755,7 +691,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                     </SelectContent>
                   </Select>
                 </div>
-
                 <div className="md:col-span-2 lg:col-span-1">
                   <label className="text-sm font-medium">Date Range</label>
                   <div className="flex gap-2">
@@ -782,7 +717,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                   </div>
                 </div>
               </div>
-
               <div className="flex gap-2">
                 <Button onClick={() => applyFilters()} variant="outline">
                   <Filter className="w-4 h-4 mr-2" />
@@ -806,7 +740,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
           </Tabs>
         </CardContent>
       </Card>
-
       {/* Security Insights */}
       <Card>
         <CardHeader>
@@ -825,7 +758,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
               <div className="text-2xl font-bold">{metrics.uniqueUsers}</div>
               <div className="text-sm text-gray-600">Unique users today</div>
             </div>
-
             <div className="p-4 border rounded-lg">
               <div className="flex items-center gap-2 mb-2">
                 <Clock className="w-5 h-5 text-green-600" />
@@ -836,7 +768,6 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
               </div>
               <div className="text-sm text-gray-600">Average session time</div>
             </div>
-
             <div className="p-4 border rounded-lg">
               <div className="flex items-center gap-2 mb-2">
                 <Shield className="w-5 h-5 text-purple-600" />
@@ -855,25 +786,18 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
     </div>
   );
 };
-
 export default AccountabilitySystem;
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -881,23 +805,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -905,23 +823,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -929,23 +841,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -953,23 +859,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -977,23 +877,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -1001,23 +895,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -1025,23 +913,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -1049,23 +931,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

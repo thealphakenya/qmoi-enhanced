@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,28 +17,18 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
-import { specificExports } from "../hooks/useQCity";
-import { specificExports } from "fs";
-
 const ERRORS_FILE = "ERRORSREADME.md";
-
 export const QCityErrorManager: React.FC = () => {
   const { status, trackError, refetchStatus } = useQCity();
   const [errors, setErrors] = useState(status?.errors || []);
-
   useEffect(() => {
     if (status?.errors) setErrors(status.errors);
   }, [status]);
-
   useEffect(() => {
     // Save errors to ERRORSREADME.md
     if (errors.length > 0) {
@@ -57,7 +43,6 @@ export const QCityErrorManager: React.FC = () => {
       fs.writeFileSync(ERRORS_FILE, content);
     }
   }, [errors]);
-
   const handleFix = (id: string) => {
     // Mark error as resolved and remove from list
     setErrors((prev) =>
@@ -79,7 +64,6 @@ export const QCityErrorManager: React.FC = () => {
     }
     refetchStatus();
   };
-
   const handleRemove = (id: string) => {
     setErrors((prev) => prev.filter((e) => e.id !== id));
     // Update file
@@ -94,7 +78,6 @@ export const QCityErrorManager: React.FC = () => {
         .join("\n");
     fs.writeFileSync(ERRORS_FILE, content);
   };
-
   return (
     <div className="qcity-error-manager">
       <h2>Q-city Errors</h2>

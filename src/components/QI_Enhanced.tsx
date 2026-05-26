@@ -3,11 +3,8 @@ import React from 'react';
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
 import "./QI.css";
-
 // Type definitions for enhanced QI
 interface ChatMessage {
   id: string;
@@ -25,7 +22,6 @@ interface ChatMessage {
   reactions?: string[];
   editable?: boolean;
 }
-
 interface QMOISelfWorkResult {
   type: "code_review" | "test_run" | "RELEASE" | "optimization" | "feature_gen";
   status: "completed" | "running" | "failed";
@@ -33,7 +29,6 @@ interface QMOISelfWorkResult {
   duration: number;
   timestamp: Date;
 }
-
 interface AutoDevStatus {
   enabled: boolean;
   features_generated: number;
@@ -41,9 +36,7 @@ interface AutoDevStatus {
   bugs_fixed: number;
   last_improvement: Date | null;
 }
-
 type UIMode = "chat" | "code_review" | "RELEASE" | "test" | "autodev" | "qradio";
-
 export /**
  * QI function
  */
@@ -63,11 +56,9 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
   // Self-work state
   const [selfWorkResults, setSelfWorkResults] = useState<QMOISelfWorkResult[]>([]);
   const [currentlyAnalyzing, setCurrentlyAnalyzing] = useState<string | null>(null);
-
   // AutoDev state
   const [autoDevStatus, setAutoDevStatus] = useState<AutoDevStatus>({
     enabled: false,
@@ -76,23 +67,18 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
     bugs_fixed: 0,
     last_improvement: null,
   });
-
   // Context management
   const [contextWindow, setContextWindow] = useState<ChatMessage[]>([]);
   const [maxContextTokens, setMaxContextTokens] = useState(8000);
-
   // Side panel state
   const [showContextPanel, setShowContextPanel] = useState(true);
-
   // Scroll to bottom
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
-
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
-
   // Context management
   useEffect(() => {
     const estimatedTokens = messages.reduce((acc, msg) => acc + msg.text.length / 4, 0);
@@ -102,11 +88,9 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       setContextWindow(messages);
     }
   }, [messages, maxContextTokens]);
-
   /**
    * QMOI Self-Work Features
    */
-
   /** Analyze own code */
   const performCodeReview = useCallback(async (filePath: string) => {
     setCurrentlyAnalyzing(filePath);
@@ -116,7 +100,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ filePath }),
       });
-
       const result = await response.json();
       setSelfWorkResults((prev) => [
         prev,
@@ -128,7 +111,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
           timestamp: new Date(),
         },
       ]);
-
       // Add summary to chat
       const summaryMsg: ChatMessage = {
         id: Date.now().toString(),
@@ -151,7 +133,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       setCurrentlyAnalyzing(null);
     }
   }, []);
-
   /** Run tests and report */
   const runTests = useCallback(async () => {
     setCurrentlyAnalyzing("tests");
@@ -160,7 +141,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });
-
       const result = await response.json();
       setSelfWorkResults((prev) => [
         prev,
@@ -172,7 +152,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
           timestamp: new Date(),
         },
       ]);
-
       const testMsg: ChatMessage = {
         id: Date.now().toString(),
         text: `✅ Tests complete\n\nPassed: ${result.passed || 0}\nFailed: ${result.failed || 0}\nCoverage: ${result.coverage || "N/A"}%`,
@@ -194,7 +173,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       setCurrentlyAnalyzing(null);
     }
   }, []);
-
   /** Detect and fix bugs */
   const debugAndFix = useCallback(async () => {
     setCurrentlyAnalyzing("RELEASE");
@@ -204,7 +182,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ lastError: "auto-detect" }),
       });
-
       const result = await response.json();
       setSelfWorkResults((prev) => [
         prev,
@@ -216,7 +193,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
           timestamp: new Date(),
         },
       ]);
-
       const debugMsg: ChatMessage = {
         id: Date.now().toString(),
         text: `🔧 RELEASE Analysis\n\nIssues Found: ${result.issues?.length || 0}\nSuggested Fixes: ${result.suggestions?.length || 0}`,
@@ -239,16 +215,13 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       setCurrentlyAnalyzing(null);
     }
   }, []);
-
   /**
    * QMOI AutoDevelop Features
    */
-
   /** Toggle autoproduction_mode */
   const toggleAutoDev = useCallback(async () => {
     const newStatusValue = !autoDevStatus.enabled;
     setAutoDevStatus((prev) => ({ prev, enabled: newStatusValue }));
-
     const statusMsg: ChatMessage = {
       id: Date.now().toString(),
       text: newStatusValue
@@ -259,7 +232,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       type: newStatusValue ? "success" : "info",
     };
     setMessages((prev) => [prev, statusMsg]);
-
     // Notify backend
     await apiClient.get("/api/qmoi/autodev/toggle", {
       method: "POST",
@@ -267,7 +239,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       body: JSON.stringify({ enabled: newStatusValue }),
     }).catch(() => {});
   }, [autoDevStatus.enabled]);
-
   /** Generate feature */
   const generateFeature = useCallback(async (description: string) => {
     setCurrentlyAnalyzing("feature-gen");
@@ -277,7 +248,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ description }),
       });
-
       const result = await response.json();
       setSelfWorkResults((prev) => [
         prev,
@@ -289,12 +259,10 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
           timestamp: new Date(),
         },
       ]);
-
       setAutoDevStatus((prev) => ({
         prev,
         features_generated: prev.features_generated + 1,
       }));
-
       const featureMsg: ChatMessage = {
         id: Date.now().toString(),
         text: `✨ Feature Generated\n\n${result.featureName}\n\nImplementation started`,
@@ -317,14 +285,11 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       setCurrentlyAnalyzing(null);
     }
   }, []);
-
   /**
    * Chat Interface
    */
-
   const handleSendMessage = async () => {
     if (!input.trim()) return;
-
     const userMessage: ChatMessage = {
       id: Date.now().toString(),
       text: input,
@@ -332,12 +297,10 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       timestamp: new Date(),
       type: "text",
     };
-
     setMessages((prev) => [prev, userMessage]);
     const userInput = input;
     setInput("");
     setLoading(true);
-
     try {
       // Check for self-work commands
       if (
@@ -373,7 +336,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
           speak: wantSpeak,
           context: contextWindow,
         });
-
         const dataAny = data as unknown;
         let replyText = "";
         if (dataAny && (dataAny as Record<string, unknown>).reply)
@@ -394,7 +356,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         } else {
           replyText = "Sorry, I could not get a reply.";
         }
-
         const botMessage: ChatMessage = {
           id: (Date.now() + 1).toString(),
           text: replyText,
@@ -403,7 +364,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
           type: "text",
         };
         setMessages((prev) => [prev, botMessage]);
-
         // Update memory
         apiClient.get("/api/qmoi/memory", {
           method: "POST",
@@ -417,7 +377,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
             },
           }),
         }).catch(() => {});
-
         if (dataAny && (dataAny as Record<string, unknown>).ssml) {
           playSSML((dataAny as Record<string, unknown>).ssml as string);
         }
@@ -435,11 +394,9 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       setLoading(false);
     }
   };
-
   /**
    * Render Methods
    */
-
   const renderMessage = (msg: ChatMessage) => (
     <div key={msg.id} className={`qi-message qi-message-${msg.sender} qi-message-${msg.type}`}>
       <div className="qi-message-content">
@@ -459,12 +416,10 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       )}
     </div>
   );
-
   const renderModeContent = () => {
     switch (mode) {
       case "chat":
         return <div className="qi-chat-area">{messages.map(renderMessage)}</div>;
-
       case "code_review":
         return (
           <div className="qi-panel">
@@ -478,7 +433,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
             </button>
           </div>
         );
-
       case "test":
         return (
           <div className="qi-panel">
@@ -489,7 +443,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
             </button>
           </div>
         );
-
       case "RELEASE":
         return (
           <div className="qi-panel">
@@ -499,7 +452,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
             </button>
           </div>
         );
-
       case "autodev":
         return (
           <div className="qi-panel">
@@ -513,12 +465,10 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
             </button>
           </div>
         );
-
       default:
         return <div>Select a mode</div>;
     }
   };
-
   return (
     <div className="qi-container">
       {/* Header */}
@@ -530,7 +480,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
           </span>
         </div>
       </div>
-
       <div className="qi-main">
         {/* Navigation */}
         <div className="qi-nav">
@@ -556,10 +505,8 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
             </button>
           ))}
         </div>
-
         {/* Main Content */}
         <div className="qi-content">{renderModeContent()}</div>
-
         {/* Right Sidebar */}
         {showContextPanel && (
           <div className="qi-sidebar">
@@ -580,12 +527,10 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
           </div>
         )}
       </div>
-
       {/* Input Area */}
       <div className="qi-input-area">
         <input
           type="text"
-          
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
@@ -613,30 +558,22 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
           📎
         </button>
       </div>
-
       <div ref={messagesEndRef} />
     </div>
   );
 }
-
 export default QI;
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -644,23 +581,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -668,23 +599,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -692,23 +617,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -716,23 +635,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -740,23 +653,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -764,23 +671,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -788,23 +689,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -812,23 +707,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

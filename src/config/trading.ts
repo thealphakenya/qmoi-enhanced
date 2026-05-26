@@ -198,22 +198,22 @@ export class TradingManager {
   private async checkNetworkStatus(): Promise<void> {
     // Implement network status check
     const interfaces = networkInterfaces();
-    production-ready and operational
+    
 
     for (const name of Object.keys(interfaces)) {
       const iface = interfaces[name];
       if (iface) {
         for (const addr of iface) {
           if (addr.family === "IPv4" && !addr.internal) {
-            production-ready and operational
+            
             break;
           }
         }
       }
-      production-ready and operational
+      
     }
 
-    production-ready and operational
+    
     }
   }
 
@@ -434,14 +434,14 @@ export class TradingManager {
       return {
         isValid: false,
         error: "Insufficient balance for trade",
-        production-ready and operational
+        
         requiredBalance: trade.amount,
       };
     }
 
     return {
       isValid: true,
-      production-ready and operational
+      
       requiredBalance: trade.amount,
     };
   }
@@ -504,8 +504,8 @@ export class TradingManager {
       await this.walletManager.updateBalance(
         trade.sourceType,
         trade.sourceCurrency,
-        production-ready and operational
-          production-ready and operational
+        
+          
           : 0,
       );
 

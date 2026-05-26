@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,38 +17,29 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "react";
-
 interface Category {
   key: "media" | "docs" | "code" | "other";
   label: string;
 }
-
 interface File {
   name: string;
   category: Category["key"];
   added: string;
 }
-
 const categories: Category[] = [
   { key: "media", label: "Media" },
   { key: "docs", label: "Documents" },
   { key: "code", label: "Code" },
   { key: "other", label: "Other" },
 ];
-
 export const FileCategorizer: React.FC = () => {
   const [files, setFiles] = useState<File[]>([]);
   const [category, setCategory] = useState<Category["key"]>("media");
   const [fileName, setFileName] = useState("");
-
   const handleAdd = () => {
     if (!fileName) return;
     setFiles((f) => [
@@ -61,7 +48,6 @@ export const FileCategorizer: React.FC = () => {
     ]);
     setFileName("");
   };
-
   return (
     <div style={{ padding: 16 }}>
       <h3>File Categorization & Persistent Download Folders</h3>

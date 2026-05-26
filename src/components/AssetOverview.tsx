@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,13 +17,10 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
 import {
   Box,
@@ -41,11 +34,9 @@ import {
   CircularProgress,
   Alert,
 } from "@mui/material";
-
 interface AssetOverviewProps {
   className?: string;
 }
-
 export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
   const { user } = useAuth();
   const [assets, setAssets] = useState<Asset[]>([]);
@@ -60,19 +51,16 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
-
   const fetchData = async () => {
     try {
       setIsLoading(true);
       setError(null);
-
       const assetManager = AssetManagerImpl.getInstance();
       const [assetsData, opportunitiesData, total] = await Promise.all([
         assetManager.getAssets(),
         assetManager.getProfitOpportunities(),
         assetManager.getTotalBalance(),
       ]);
-
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
@@ -84,27 +72,23 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setIsLoading(false);
     }
   };
-
   useEffect(() => {
     fetchData();
     const interval = setInterval(fetchData, 30000); // Update every 30 seconds
     return () => clearInterval(interval);
   }, []);
-
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
     }).format(amount);
   };
-
   const formatBalance = (balance: number, currency: string) => {
     if (currency === "BTC") {
       return balance.toFixed(8);
     }
     return balance.toFixed(2);
   };
-
   const getAssetTypeColor = (type: Asset["type"]) => {
     switch (type) {
       case "spot":
@@ -117,7 +101,6 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
         return "default";
     }
   };
-
   const getRiskColor = (risk: string) => {
     switch (risk) {
       case "low":
@@ -130,11 +113,9 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
         return "default";
     }
   };
-
   if (!user || !["master", "sister"].includes(user.role)) {
     return null;
   }
-
   return (
     <Card className={className}>
       <CardContent>
@@ -158,13 +139,11 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
             </Tooltip>
           </Box>
         </Box>
-
         {error && (
           <Alert severity="error" sx={{ mb: 2 }}>
             {error}
           </Alert>
         )}
-
         {isLoading ? (
           <Box display="flex" justifyContent="center" p={2}>
             <CircularProgress size={24} />
@@ -199,7 +178,6 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
                 </Grid>
               ))}
             </Grid>
-
             <Typography variant="h6" gutterBottom>
               Profit Opportunities
             </Typography>
@@ -239,7 +217,6 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
             </Grid>
           </>
         )}
-
         <Box mt={2}>
           <Alert severity="info" icon={<Info />}>
             Asset balances are automatically updated every 30 seconds. Click the

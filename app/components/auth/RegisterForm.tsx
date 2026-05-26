@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 export default function RegisterForm({ onRegister }) {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -9,13 +8,11 @@ export default function RegisterForm({ onRegister }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     setSuccess("");
-
     try {
       const response = await fetch("/api/auth/register", {
         method: "POST",
@@ -30,7 +27,6 @@ export default function RegisterForm({ onRegister }) {
           acceptTerms,
         }),
       });
-
       const data = await response.json();
       if (response.ok && data.success) {
         setSuccess("Account created successfully. You are now logged in.");
@@ -50,7 +46,6 @@ export default function RegisterForm({ onRegister }) {
       setLoading(false);
     }
   };
-
   return (
     <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-5 bg-slate-900 p-6 rounded-3xl border border-slate-700">
       <h2 className="text-2xl font-semibold text-white">Create Account</h2>

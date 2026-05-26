@@ -33,7 +33,7 @@ export async function POST(request: NextRequest): any {
         create: { key, value },
       });
     } catch (e) {
-      production-ready and operational
+      
       safeConsoleError("Failed to persist autoprod state:", e);
     }
 

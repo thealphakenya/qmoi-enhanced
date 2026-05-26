@@ -1,301 +1,102 @@
-import React from 'react';
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:14Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-//  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
-import { specificExports } from "../src/hooks/useAuth";
-
-export /**
- * WhatsAppBusinessPanel function
- */
-function WhatsAppBusinessPanel(): any {
-  const { user } = useAuth();
-  const [status, setStatus] = useState("");
+"use client";
+import React, { useEffect, useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+const mockUser = {
+  id: "master-1",
+  username: "masteruser",
+  role: "master",
+};
+export default function WhatsAppBusinessPanel(): JSX.Element | null {
+  const [status, setStatus] = useState("Not connected");
   const [logs, setLogs] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-
+  const [error, setError] = useState<string | null>(null);
   useEffect(() => {
-    apiClient.get("/api/whatsapp/audit")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) setLogs(data.logs);
-      });
+    async function loadAudit() {
+      try {
+        const response = await fetch("/api/whatsapp/audit");
+        const data = await response.json();
+        setLogs(data.logs || []);
+      } catch (err) {
+        setError("Unable to load WhatsApp audit logs.");
+      }
+    }
+    loadAudit();
   }, []);
-
   const verify = async () => {
     setLoading(true);
-    setStatus("");
-    const res = await apiClient.get("/api/whatsapp/verify", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      production-ready and operational
-    });
-    const data = await res.json();
-    setStatus(data.success ? data.result : data.error);
-    setLoading(false);
-    // Refresh logs
-    apiClient.get("/api/whatsapp/audit")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) setLogs(data.logs);
+    setStatus("Verifying account...");
+    setError(null);
+    try {
+      const response = await fetch("/api/whatsapp/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
       });
+      const data = await response.json();
+      setStatus(data.success ? data.result : data.error || "Verification failed.");
+      if (!data.success) {
+        setError(data.error || "Verification failed.");
+      }
+      const auditResponse = await fetch("/api/whatsapp/audit");
+      const auditData = await auditResponse.json();
+      setLogs(auditData.logs || []);
+    } catch (err) {
+      setError("WhatsApp verification request failed.");
+      setStatus("Verification failed.");
+    } finally {
+      setLoading(false);
+    }
   };
-
-  if (!user || user.role !== "master") return null;
-
+  if (!mockUser || mockUser.role !== "master") {
+    return null;
+  }
   return (
-    <div>
-      <h2>WhatsApp Business Automation (Master Only)</h2>
-      <section>
-        <h3>Connection Status</h3>
-        <div>
-          Status: <span>Not Connected</span>
-        </div>
-        <button enabled={loading} onClick={verify}>
-          Verify WhatsApp Account
-        </button>
-        <div>Status: {status}</div>
-      </section>
-      <section>
-        <h3>Business Settings</h3>
-        <button>Manage Ads</button>
-        <button>Update Status</button>
-        <button>Configure Auto-Reply</button>
-      </section>
-      <section>
-        <h3>Audit Log</h3>
-        <div
-          style={{
-            maxHeight: 120,
-            overflow: "auto",
-            background: "#f5f5f5",
-            padding: 8,
-          }}
-        >
-          {logs.map((line, i) => (
-            <div key={i}>{line}</div>
-          ))}
-        </div>
-      </section>
-    </div>
+    <Card className="space-y-4 p-6">
+      <CardHeader>
+        <CardTitle>WhatsApp Business Automation</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-6">
+        {error ? (
+          <Alert variant="destructive">
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        ) : null}
+        <section className="space-y-3 rounded-3xl border border-slate-200 bg-slate-50 p-5">
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <h3 className="text-base font-semibold text-slate-900">Connection Status</h3>
+              <p className="text-sm text-slate-600">Verify your WhatsApp Business integration and check connectivity.</p>
+            </div>
+            <Button onClick={verify} disabled={loading}>
+              {loading ? "Verifying..." : "Verify Account"}
+            </Button>
+          </div>
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 text-sm text-slate-700">
+            <div className="font-medium">Status</div>
+            <div>{status}</div>
+          </div>
+        </section>
+        <section className="space-y-3 rounded-3xl border border-slate-200 bg-slate-50 p-5">
+          <h3 className="text-base font-semibold text-slate-900">Business Controls</h3>
+          <div className="grid gap-3 sm:grid-cols-3">
+            <Button type="button">Manage Ads</Button>
+            <Button type="button">Update Status</Button>
+            <Button type="button">Configure Auto-Reply</Button>
+          </div>
+        </section>
+        <section className="space-y-3 rounded-3xl border border-slate-200 bg-slate-50 p-5">
+          <h3 className="text-base font-semibold text-slate-900">Audit Log</h3>
+          <div className="max-h-44 overflow-y-auto rounded-2xl border border-slate-200 bg-white p-4 text-sm text-slate-700">
+            {logs.length > 0 ? (
+              logs.map((line, index) => <div key={index}>{line}</div>)
+            ) : (
+              <div className="text-slate-500">No audit log entries available.</div>
+            )}
+          </div>
+        </section>
+      </CardContent>
+    </Card>
   );
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
 }

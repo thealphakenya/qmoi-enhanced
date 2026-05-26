@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,20 +17,12 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import { specificExports } from "react";
-import { specificExports } from "framer-motion";
-import { specificExports } from "lucide-react";
-
 interface AnimationConfig {
   type: string;
   speed: number;
@@ -43,14 +31,12 @@ interface AnimationConfig {
   description: string;
   category: string;
 }
-
 interface AnimationControlPanelProps {
   currentAnimation?: string;
   onAnimationChange?: (animation: AnimationConfig) => void;
   isOpen?: boolean;
   position?: "floating" | "panel";
 }
-
 const ANIMATION_PRESETS: Record<string, AnimationConfig> = {
   // Idle animations
   idle_breathing: {
@@ -85,7 +71,6 @@ const ANIMATION_PRESETS: Record<string, AnimationConfig> = {
     description: "Weight shifting side to side",
     category: "Idle",
   },
-
   // Listening animations
   listening_focus: {
     type: "listening_focus",
@@ -111,7 +96,6 @@ const ANIMATION_PRESETS: Record<string, AnimationConfig> = {
     description: "Audio waveform response",
     category: "Listening",
   },
-
   // Speaking animations
   speaking_gesture: {
     type: "speaking_gesture",
@@ -137,7 +121,6 @@ const ANIMATION_PRESETS: Record<string, AnimationConfig> = {
     description: "Natural head movement",
     category: "Speaking",
   },
-
   // Thinking animations
   thinking_ponder: {
     type: "thinking_ponder",
@@ -163,7 +146,6 @@ const ANIMATION_PRESETS: Record<string, AnimationConfig> = {
     description: "Glowing thinking indicator",
     category: "Thinking",
   },
-
   // Emotion animations
   emotion_happy: {
     type: "emotion_happy",
@@ -197,7 +179,6 @@ const ANIMATION_PRESETS: Record<string, AnimationConfig> = {
     description: "Head tilting in confusion",
     category: "Emotion",
   },
-
   // Transition animations
   transition_fade: {
     type: "transition_fade",
@@ -224,7 +205,6 @@ const ANIMATION_PRESETS: Record<string, AnimationConfig> = {
     category: "Transition",
   },
 };
-
 export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
   currentAnimation = "idle_breathing",
   onAnimationChange,
@@ -243,11 +223,9 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
   const [expandedCategory, setExpandedCategory] = useState<string | null>(
     "Idle",
   );
-
   const categories = Array.from(
     new Set(Object.values(ANIMATION_PRESETS).map((a) => a.category)),
   ).sort();
-
   const animationsByCategory = categories.reduce(
     (acc, cat) => {
       acc[cat] = Object.values(ANIMATION_PRESETS).filter(
@@ -257,12 +235,10 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
     },
     {} as Record<string, AnimationConfig[]>,
   );
-
   const handleSelectAnimation = (animation: AnimationConfig) => {
     setSelectedAnimation(animation);
     onAnimationChange?.(animation);
   };
-
   const applyAnimationModifiers = () => {
     if (!selectedAnimation) return;
     const modified = {
@@ -272,17 +248,14 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
     };
     onAnimationChange?.(modified);
   };
-
   const resetToDefaults = () => {
     setSpeedMultiplier(1);
     setIntensityMultiplier(1);
     setIsAutoLoop(false);
     applyAnimationModifiers();
   };
-
   const containerClass =
     position === "floating" ? "fixed bottom-32 right-8 w-96" : "w-full";
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -317,7 +290,6 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                 Animation Control
               </h3>
             </div>
-
             {/* Current Animation Display */}
             {selectedAnimation && (
               <div
@@ -334,7 +306,6 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
               </div>
             )}
           </div>
-
           {/* Animation List */}
           <div className="max-h-80 overflow-y-auto px-6 py-4 space-y-3">
             {categories.map((category) => (
@@ -367,7 +338,6 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                     <Wind className="w-4 h-4" />
                   </motion.div>
                 </motion.button>
-
                 {/* Animation Items */}
                 <AnimatePresence>
                   {expandedCategory === category && (
@@ -436,7 +406,6 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
               </motion.div>
             ))}
           </div>
-
           {/* Modifier Controls */}
           <motion.div
             className="px-6 py-4 border-t border-slate-700 space-y-4"
@@ -472,7 +441,6 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                 }}
               />
             </div>
-
             {/* Intensity Multiplier */}
             <div>
               <div className="flex items-center justify-between mb-2">
@@ -504,7 +472,6 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                 }}
               />
             </div>
-
             {/* Auto-loop Settings */}
             <div className="border-t border-slate-700 pt-4">
               <label className="flex items-center gap-3 cursor-pointer mb-3">
@@ -521,7 +488,6 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                   Auto-loop Animations
                 </span>
               </label>
-
               {isAutoLoop && (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -549,7 +515,6 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                 </motion.div>
               )}
             </div>
-
             {/* Action Buttons */}
             <div className="flex gap-2 pt-2">
               <motion.button
@@ -587,7 +552,6 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                 <RotateCcw className="w-4 h-4" /> Reset
               </motion.button>
             </div>
-
             {/* Apply Button */}
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -607,5 +571,4 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
     </AnimatePresence>
   );
 };
-
 export default AnimationControlPanel;

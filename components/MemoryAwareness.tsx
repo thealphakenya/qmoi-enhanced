@@ -1,18 +1,14 @@
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -20,17 +16,12 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 // @ts-nocheck
 "use client";
-
-import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -38,10 +29,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { specificExports } from "@/components/ui/button";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/progress";
-import { specificExports } from "@/components/ui/tabs";
 import {
   Brain,
   Database,
@@ -56,8 +43,6 @@ import {
   Download,
   Upload,
 } from "lucide-react";
-import { specificExports } from "@/hooks/use-toast";
-
 interface MemoryStats {
   conversations: number;
   totalMessages: number;
@@ -66,7 +51,6 @@ interface MemoryStats {
   contextRetention: number;
   compressionRatio: number;
 }
-
 interface MemoryEntry {
   id: string;
   timestamp: Date;
@@ -76,13 +60,11 @@ interface MemoryEntry {
   accessCount: number;
   lastAccessed: Date;
 }
-
 interface MemoryAwarenessProps {
   onMemoryOptimized?: (stats: MemoryStats) => void;
   autoOptimize?: boolean;
   maxMemorySize?: number;
 }
-
 export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
   onMemoryOptimized,
   autoOptimize = true,
@@ -101,7 +83,6 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedEntries, setSelectedEntries] = useState<string[]>([]);
   const { toast } = useToast();
-
   // Load memory data
   const loadMemoryData = useCallback(async () => {
     try {
@@ -110,7 +91,6 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
       if (stored) {
         setMemoryStats(JSON.parse(stored));
       }
-
       // Load memory entries
       const entries = localStorage.getItem("qmoi_memory_entries");
       if (entries) {
@@ -121,7 +101,6 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
         }));
         setMemoryEntries(parsedEntries);
       }
-
       // Update stats
       updateMemoryStats();
     } catch (error) {
@@ -131,7 +110,6 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
       );
     }
   }, []);
-
   // Update memory statistics
   const updateMemoryStats = useCallback(() => {
     const stats: MemoryStats = {
@@ -143,15 +121,12 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
       contextRetention: 0.85 + Math.random() * 0.1, 
       compressionRatio: 0.7 + Math.random() * 0.2, 
     };
-
     setMemoryStats(stats);
     localStorage.setItem("qmoi_memory_stats", JSON.stringify(stats));
   }, [memoryEntries]);
-
   // Memory optimization
   const optimizeMemory = async () => {
     setIsOptimizing(true);
-
     try {
       // Remove old/low-importance entries
       const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
@@ -163,18 +138,14 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
           entry.accessCount > 5
         );
       });
-
       // Compress similar entries
       const compressedEntries = compressSimilarEntries(optimizedEntries);
-
       setMemoryEntries(compressedEntries);
       localStorage.setItem(
         "qmoi_memory_entries",
         JSON.stringify(compressedEntries),
       );
-
       updateMemoryStats();
-
       toast({
         title: "Memory Optimized",
         description: `Removed ${
@@ -184,7 +155,6 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
           1024
         } KB`,
       });
-
       onMemoryOptimized?.(memoryStats);
     } catch (error) {
       (globalThis.console as any)?.error?.(
@@ -200,19 +170,16 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
       setIsOptimizing(false);
     }
   };
-
   // Compress similar entries
   const compressSimilarEntries = (entries: MemoryEntry[]): MemoryEntry[] => {
     const compressed: MemoryEntry[] = [];
     const groups: { [key: string]: MemoryEntry[] } = {};
-
     // Group similar entries
     entries.forEach((entry) => {
       const key = `${entry.type}_${entry.content.substring(0, 50)}`;
       if (!groups[key]) groups[key] = [];
       groups[key].push(entry);
     });
-
     // Compress each group
     Object.values(groups).forEach((group) => {
       if (group.length === 1) {
@@ -231,21 +198,17 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
         compressed.push(merged);
       }
     });
-
     return compressed;
   };
-
   // Search memory
   const searchMemory = (query: string): MemoryEntry[] => {
     if (!query) return memoryEntries;
-
     return memoryEntries.filter(
       (entry) =>
         entry.content.toLowerCase().includes(query.toLowerCase()) ||
         entry.type.toLowerCase().includes(query.toLowerCase()),
     );
   };
-
   // Delete selected entries
   const deleteSelectedEntries = () => {
     const remaining = memoryEntries.filter(
@@ -255,13 +218,11 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
     localStorage.setItem("qmoi_memory_entries", JSON.stringify(remaining));
     setSelectedEntries([]);
     updateMemoryStats();
-
     toast({
       title: "Entries Deleted",
       description: `Deleted ${selectedEntries.length} memory entries`,
     });
   };
-
   // Export memory
   const exportMemory = () => {
     const data = {
@@ -269,7 +230,6 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
       entries: memoryEntries,
       exportDate: new Date().toISOString(),
     };
-
     const blob = new Blob([JSON.stringify(data, null, 2)], {
       type: "application/json",
     });
@@ -281,18 +241,15 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
     }.json`;
     a.click();
     URL.revokeObjectURL(url);
-
     toast({
       title: "Memory Exported",
       description: "Memory data exported successfully",
     });
   };
-
   // Import memory
   const importMemory = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
-
     const reader = new FileReader();
     reader.onload = (e) => {
       try {
@@ -319,21 +276,17 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
     };
     reader.readAsText(file);
   };
-
   // Auto-optimize memory
   useEffect(() => {
     if (autoOptimize && memoryStats.memoryUsage > maxMemorySize * 0.8) {
       optimizeMemory();
     }
   }, [memoryStats.memoryUsage, autoOptimize, maxMemorySize]);
-
   useEffect(() => {
     loadMemoryData();
   }, [loadMemoryData]);
-
   const filteredEntries = searchMemory(searchQuery);
   const memoryUsagePercent = (memoryStats.memoryUsage / maxMemorySize) * 100;
-
   return (
     <div className="w-full max-w-6xl mx-auto space-y-6">
       {/* Memory Overview */}
@@ -374,7 +327,6 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
               <div className="text-sm text-gray-600">Compression</div>
             </div>
           </div>
-
           {/* Memory Usage Bar */}
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
@@ -398,7 +350,6 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
           </div>
         </CardContent>
       </Card>
-
       {/* Memory Management */}
       <Card>
         <CardHeader>
@@ -414,7 +365,6 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
               <TabsTrigger value="search">Search</TabsTrigger>
               <TabsTrigger value="maintenance">Maintenance</TabsTrigger>
             </TabsList>
-
             <TabsContent value="entries" className="space-y-4">
               <div className="flex justify-between items-center">
                 <div className="text-sm text-gray-600">
@@ -441,7 +391,6 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
                   </label>
                 </div>
               </div>
-
               <div className="space-y-2 max-h-96 overflow-y-auto">
                 {filteredEntries.slice(0, 20).map((entry) => (
                   <div
@@ -483,7 +432,6 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
                   </div>
                 ))}
               </div>
-
               {selectedEntries.length > 0 && (
                 <div className="flex justify-between items-center pt-4 border-t">
                   <span className="text-sm text-gray-600">
@@ -500,13 +448,11 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
                 </div>
               )}
             </TabsContent>
-
             <TabsContent value="search" className="space-y-4">
               <div className="flex gap-2">
                 <div className="flex-1">
                   <input
                     type="text"
-                    
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full px-3 py-2 border rounded-md"
@@ -516,12 +462,10 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
                   <Search className="w-4 h-4" />
                 </Button>
               </div>
-
               <div className="text-sm text-gray-600">
                 Found {filteredEntries.length} matching entries
               </div>
             </TabsContent>
-
             <TabsContent value="maintenance" className="space-y-4">
               <div className="grid gap-4">
                 <div className="flex items-center justify-between p-4 border rounded-lg">
@@ -544,7 +488,6 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
                     {isOptimizing ? "Optimizing..." : "Optimize"}
                   </Button>
                 </div>
-
                 <div className="flex items-center justify-between p-4 border rounded-lg">
                   <div>
                     <h4 className="font-medium">Auto-Optimization</h4>
@@ -556,7 +499,6 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
                     {autoOptimize ? "Enabled" : "enabled"}
                   </Badge>
                 </div>
-
                 <div className="flex items-center justify-between p-4 border rounded-lg">
                   <div>
                     <h4 className="font-medium">Memory Stats</h4>
@@ -578,5 +520,4 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
     </div>
   );
 };
-
 export default MemoryAwareness;

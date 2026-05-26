@@ -2,8 +2,6 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 const AVATAR_TYPES = [
   "human",
   "animal",
@@ -25,7 +23,6 @@ const ENVIRONMENTS = [
   "City",
   "Home",
 ];
-
 export default /**
  * QAvatar function
  */
@@ -41,7 +38,6 @@ function QAvatar(): any {
   });
   const [drag, setDrag] = useState({ x: 100, y: 100 });
   const ref = useRef<HTMLDivElement>(null);
-
   /**
  * saveSettings function
  */
@@ -49,7 +45,6 @@ function saveSettings(newSettings: unknown): any {
     setSettings(newSettings);
     localStorage.setItem("qavatar-settings", JSON.stringify(newSettings));
   }
-
   return (
     <motion.div
       ref={ref}

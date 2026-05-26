@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,17 +17,12 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-
 type ProjectType =
   | "code"
   | "design"
@@ -44,9 +35,7 @@ type ProjectType =
   | "data-analysis"
   | "automation"
   | "gaming";
-
 type ProjectStatus = "planning" | "in-progress" | "completed" | "on-hold";
-
 interface ProjectTask {
   id: string;
   title: string;
@@ -55,7 +44,6 @@ interface ProjectTask {
   priority: "low" | "medium" | "high" | "urgent";
   dueDate?: string;
 }
-
 interface Project {
   id: string;
   name: string;
@@ -68,12 +56,10 @@ interface Project {
   createdAt: string;
   updatedAt: string;
 }
-
 interface ProjectManagementProps {
   userId?: string;
   onProjectSelect?: (project: Project) => void;
 }
-
 export /**
  * ProjectManagement function
  */
@@ -91,21 +77,18 @@ function ProjectManagement({
     "all",
   );
   const [searchQuery, setSearchQuery] = useState("");
-
   // Form states
   const [formData, setFormData] = useState({
     name: "",
     description: "",
     type: "code" as ProjectType,
   });
-
   // Fetch projects on mount
   useEffect(() => {
     if (userId) {
       fetchProjects();
     }
   }, [userId]);
-
   const fetchProjects = async () => {
     try {
       setIsLoading(true);
@@ -113,7 +96,6 @@ function ProjectManagement({
         `/api/qmoi/projects?action=list&userId=${userId}`,
       );
       const data = await response.json();
-
       if (data.success && data.projects) {
         setProjects(data.projects);
       }
@@ -127,10 +109,8 @@ function ProjectManagement({
       setIsLoading(false);
     }
   };
-
   const handleCreateProject = async (e: React.FormEvent) => {
     e.preventDefault();
-
     try {
       const response = await apiClient.get("/api/qmoi/projects", {
         method: "POST",
@@ -141,7 +121,6 @@ function ProjectManagement({
           formData,
         }),
       });
-
       const data = await response.json();
       if (data.success) {
         toast({
@@ -160,10 +139,8 @@ function ProjectManagement({
       });
     }
   };
-
   const handleDeleteProject = async (projectId: string) => {
     if (!confirm("Are you sure you want to delete this project?")) return;
-
     try {
       const response = await apiClient.get("/api/qmoi/projects", {
         method: "POST",
@@ -174,7 +151,6 @@ function ProjectManagement({
           userId,
         }),
       });
-
       const data = await response.json();
       if (data.success) {
         toast({
@@ -192,7 +168,6 @@ function ProjectManagement({
       });
     }
   };
-
   const handleAddTask = async (projectId: string, taskTitle: string) => {
     try {
       const response = await apiClient.get("/api/qmoi/projects", {
@@ -209,7 +184,6 @@ function ProjectManagement({
           },
         }),
       });
-
       const data = await response.json();
       if (data.success) {
         fetchProjects();
@@ -218,7 +192,6 @@ function ProjectManagement({
       logger.error("Failed to add task:", error);
     }
   };
-
   // Filter projects
   const filteredProjects = projects.filter((project) => {
     const typeMatch = filterType === "all" || project.type === filterType;
@@ -228,10 +201,8 @@ function ProjectManagement({
       searchQuery === "" ||
       project.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       project.description?.toLowerCase().includes(searchQuery.toLowerCase());
-
     return typeMatch && statusMatch && searchMatch;
   });
-
   const projectTypes: ProjectType[] = [
     "code",
     "design",
@@ -245,21 +216,18 @@ function ProjectManagement({
     "automation",
     "gaming",
   ];
-
   const statusBadges = {
     planning: "bg-blue-100 text-blue-800",
     "in-progress": "bg-yellow-100 text-yellow-800",
     completed: "bg-green-100 text-green-800",
     "on-hold": "bg-gray-100 text-gray-800",
   };
-
   const priorityBadges = {
     low: "bg-blue-50 text-blue-700",
     medium: "bg-yellow-50 text-yellow-700",
     high: "bg-orange-50 text-orange-700",
     urgent: "bg-red-50 text-red-700",
   };
-
   return (
     <div className="w-full max-w-6xl space-y-4 p-4">
       {/* Header */}
@@ -274,7 +242,6 @@ function ProjectManagement({
           {showCreateForm ? "Cancel" : "+ New Project"}
         </button>
       </div>
-
       {/* Create Form */}
       {showCreateForm && (
         <form
@@ -283,22 +250,18 @@ function ProjectManagement({
         >
           <input
             type="text"
-            
             value={formData.name}
             onChange={(e) => setFormData({ formData, name: e.target.value })}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600"
             required
           />
-
           <textarea
-            
             value={formData.description}
             onChange={(e) =>
               setFormData({ formData, description: e.target.value })
             }
             className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 h-20"
           />
-
           <select
             value={formData.type}
             onChange={(e) =>
@@ -315,7 +278,6 @@ function ProjectManagement({
               </option>
             ))}
           </select>
-
           <button
             type="submit"
             className="w-full px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded font-medium transition-colors"
@@ -324,17 +286,14 @@ function ProjectManagement({
           </button>
         </form>
       )}
-
       {/* Filters */}
       <div className="flex flex-wrap gap-2">
         <input
           type="text"
-          
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="flex-1 px-3 py-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600"
         />
-
         <select
           value={filterType}
           onChange={(e) => setFilterType(e.target.value as ProjectType | "all")}
@@ -347,7 +306,6 @@ function ProjectManagement({
             </option>
           ))}
         </select>
-
         <select
           value={filterStatus}
           onChange={(e) =>
@@ -362,7 +320,6 @@ function ProjectManagement({
           <option value="on-hold">On Hold</option>
         </select>
       </div>
-
       {/* Projects Grid */}
       {isLoading ? (
         <div className="text-center py-8 text-gray-500">
@@ -401,7 +358,6 @@ function ProjectManagement({
                   )}
                 </div>
               </div>
-
               {/* Status and Type Badges */}
               <div className="flex flex-wrap gap-2 mb-3">
                 <span
@@ -415,7 +371,6 @@ function ProjectManagement({
                   {project.type}
                 </span>
               </div>
-
               {/* Progress Bar */}
               <div className="mb-3">
                 <div className="flex items-center justify-between mb-1">
@@ -433,7 +388,6 @@ function ProjectManagement({
                   />
                 </div>
               </div>
-
               {/* Task Count */}
               {project.tasks && project.tasks.length > 0 && (
                 <div className="text-xs text-gray-600 dark:text-gray-400 mb-3">
@@ -442,7 +396,6 @@ function ProjectManagement({
                   /{project.tasks.length} tasks completed
                 </div>
               )}
-
               {/* Action Buttons */}
               <div className="flex gap-2 pt-2 border-t border-gray-200 dark:border-gray-600">
                 <button
@@ -469,14 +422,12 @@ function ProjectManagement({
           ))}
         </div>
       )}
-
       {/* Selected Project Details */}
       {selectedProject && (
         <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg space-y-3 border-2 border-blue-300">
           <h3 className="text-lg font-bold text-gray-900 dark:text-white">
             Project Details: {selectedProject.name}
           </h3>
-
           {/* Tasks Section */}
           {selectedProject.tasks && selectedProject.tasks.length > 0 && (
             <div>
@@ -505,7 +456,6 @@ function ProjectManagement({
               </div>
             </div>
           )}
-
           {/* optimized Stats */}
           <div className="grid grid-cols-3 gap-2 text-center">
             <div className="p-2 bg-white dark:bg-gray-700 rounded">
@@ -540,25 +490,18 @@ function ProjectManagement({
     </div>
   );
 }
-
 export default ProjectManagement;
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -566,23 +509,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -590,23 +527,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -614,23 +545,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -638,23 +563,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -662,23 +581,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -686,23 +599,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -710,23 +617,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -734,23 +635,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

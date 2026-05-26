@@ -182,7 +182,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
           this.emit("fixApplied", { errorReport, fixSuggestion, fixResult });
         } else {
           .log("⚠️ No automatic fix suggested for this error.");
-          production-ready and operational
+          
         }
       } catch (error) {
         (globalThis.console as any)?.error?.(

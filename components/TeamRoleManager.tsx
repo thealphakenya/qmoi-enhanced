@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,25 +17,16 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "react";
-import { specificExports } from "./ui/button";
-import { specificExports } from "./ui/card";
-import { specificExports } from "./ui/input";
-import { specificExports } from "./ui/label";
 import {
   RoleManagementService,
   User,
   UserRole,
   ApprovalRequest,
 } from "../scripts/services/role_management";
-
 const defaultRoles: UserRole[] = [
   "master",
   "admin",
@@ -49,13 +36,11 @@ const defaultRoles: UserRole[] = [
   "support",
   "user",
 ];
-
 const initialTeam: User[] = [
   { id: "1", name: "Master User", role: "master" },
   { id: "2", name: "Alice", role: "marketing" },
   { id: "3", name: "Bob", role: "analytics" },
 ];
-
 const initialApprovals: ApprovalRequest[] = [
   {
     id: "req1",
@@ -76,7 +61,6 @@ const initialApprovals: ApprovalRequest[] = [
     currentStep: 0,
   },
 ];
-
 const TeamRoleManager: React.FC = () => {
   const [team, setTeam] = useState<User[]>(initialTeam);
   const [newUser, setNewUser] = useState({
@@ -86,7 +70,6 @@ const TeamRoleManager: React.FC = () => {
   const [approvals, setApprovals] =
     useState<ApprovalRequest[]>(initialApprovals);
   const isMaster = team[0].role === "master";  master login
-
   const addUser = () => {
     if (!newUser.name.trim()) return;
     setTeam((prev) => [
@@ -95,12 +78,10 @@ const TeamRoleManager: React.FC = () => {
     ]);
     setNewUser({ name: "", role: "user" });
   };
-
   const assignRole = (userId: string, role: UserRole) => {
     setTeam((prev) => prev.map((u) => (u.id === userId ? { ...u, role } : u)));
     RoleManagementService.assignRole(userId, role);
   };
-
   const approveRequest = (req: ApprovalRequest, approver: User) => {
     setApprovals((prev) =>
       prev.map((r) =>
@@ -119,7 +100,6 @@ const TeamRoleManager: React.FC = () => {
     );
     RoleManagementService.approveRequest(req.id, approver);
   };
-
   const rejectRequest = (req: ApprovalRequest, approver: User) => {
     setApprovals((prev) =>
       prev.map((r) =>
@@ -130,7 +110,6 @@ const TeamRoleManager: React.FC = () => {
     );
     RoleManagementService.rejectRequest(req.id, approver);
   };
-
   return (
     <div className="my-8">
       <Card className="bg-white shadow-lg">
@@ -198,7 +177,6 @@ const TeamRoleManager: React.FC = () => {
           )}
         </CardContent>
       </Card>
-
       <Card className="bg-white shadow-lg mt-8">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
@@ -267,5 +245,4 @@ const TeamRoleManager: React.FC = () => {
     </div>
   );
 };
-
 export default TeamRoleManager;

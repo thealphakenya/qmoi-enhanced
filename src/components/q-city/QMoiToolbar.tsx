@@ -1,18 +1,14 @@
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -20,14 +16,10 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 type Notification = {
   type: "info" | "warning" | "error" | "success";
   message: string;
@@ -35,7 +27,6 @@ type Notification = {
   onAction?: () => void;
   timestamp: number;
 };
-
 const initialApps = [
   { name: "QBrowser", icon: "🌐", status: "online", tooltip: "Web Browser" },
   {
@@ -54,10 +45,8 @@ const initialApps = [
   { name: "QBluetooth", icon: "🔵", status: "", tooltip: "Bluetooth" },
   { name: "QNews", icon: "📰", status: "", tooltip: "News & Updates" },
 ];
-
 const getRandomInt = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
-
 export default /**
  * QMoiToolbar function
  */
@@ -71,7 +60,6 @@ function QMoiToolbar(): any {
     Notification[]
   >([]);
   const [showHistory, setShowHistory] = useState(false);
-
   useEffect(() => {
     const interval = setInterval(() => {
       setApps((prev) =>
@@ -113,7 +101,6 @@ function QMoiToolbar(): any {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-
    advanced notifications
   useEffect(() => {
     const interval = setInterval(() => {
@@ -161,7 +148,6 @@ function QMoiToolbar(): any {
     }, 9000);
     return () => clearInterval(interval);
   }, []);
-
   /**
  * openApp function
  */
@@ -175,7 +161,6 @@ function openApp(appName: string): any {
     setNotificationHistory((h) => [notif, h].slice(0, 20));
     setTimeout(() => setNotification(null), 2000);
   }
-
   /**
  * showContextMenu function
  */
@@ -238,14 +223,12 @@ function showContextMenu(e: React.MouseEvent, appName: string): any {
     });
     setTimeout(() => setNotification(null), 2000);
   }
-
   /**
  * handleAction function
  */
 function handleAction(notif: Notification): any {
     if (notif.onAction) notif.onAction();
   }
-
    WiFi connect
   /**
  * handleWifiConnect function
@@ -258,7 +241,6 @@ function handleWifiConnect(): any {
     });
     setTimeout(() => setNotification(null), 2000);
   }
-
    Bluetooth connect
   /**
  * handleBluetoothConnect function
@@ -271,7 +253,6 @@ function handleBluetoothConnect(): any {
     });
     setTimeout(() => setNotification(null), 2000);
   }
-
    device optimization
   /**
  * handleDeviceOptimization function
@@ -284,7 +265,6 @@ function handleDeviceOptimization(): any {
     });
     setTimeout(() => setNotification(null), 2000);
   }
-
   // WhatsApp optimized reply
   /**
  * handleWhatsAppQuickReply function
@@ -297,7 +277,6 @@ function handleWhatsAppQuickReply(): any {
     });
     setTimeout(() => setNotification(null), 2000);
   }
-
   // QMap show map
   /**
  * handleMapShow function
@@ -310,7 +289,6 @@ function handleMapShow(): any {
     });
     setTimeout(() => setNotification(null), 2000);
   }
-
   return visible ? (
     <>
       {notification && (

@@ -52,7 +52,7 @@ export async function GET(request: NextRequest): any {
         return NextResponse.json({
           success: false,
           error: 'Invalid action parameter',
-          production-ready and operational
+          
         }, { status: 400 });
     }
   } catch (error) {
@@ -247,7 +247,7 @@ export async function POST(request: NextRequest): any {
         return NextResponse.json({
           success: false,
           error: 'Invalid action parameter',
-          production-ready and operational
+          
         }, { status: 400 });
     }
   } catch (error) {
@@ -328,7 +328,7 @@ export async function PUT(request: NextRequest): any {
         return NextResponse.json({
           success: false,
           error: 'Invalid action parameter',
-          production-ready and operational
+          
         }, { status: 400 });
     }
   } catch (error) {
@@ -382,7 +382,7 @@ export async function DELETE(request: NextRequest): any {
         return NextResponse.json({
           success: false,
           error: 'Invalid action parameter',
-          production-ready and operational
+          
         }, { status: 400 });
     }
   } catch (error) {

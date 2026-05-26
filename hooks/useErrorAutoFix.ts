@@ -5,7 +5,7 @@ logger.info("production mode initialized");
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // --- Hook: useErrorAutoFix ---
-import { specificExports } from "react";
+import { useEffect } from "react";
 
 interface GlobalFixResponse {
   status: string;

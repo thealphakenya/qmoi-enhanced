@@ -2,24 +2,7 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-import { specificExports } from "react";
-import { specificExports } from "../src/components/FloatingAQ";
-import { specificExports } from "../src/components/latest-q-ai-system";
-import { specificExports } from "../src/components/Chatbot";
-import { specificExports } from "../src/components/FileExplorer";
-import { specificExports } from "../src/components/GitStatus";
-import { specificExports } from "../src/components/PreviewWindow";
-import { specificExports } from "../src/components/QIStateWindow";
-import { specificExports } from "../src/components/QiSpaces";
-import { specificExports } from "../src/components/LcSpaces";
-import { specificExports } from "../components/DeploymentStatusDashboard";
-import { specificExports } from "../components/MasterContext";
-import { specificExports } from "../components/QmoiMemoryPanel";
-import { specificExports } from "../components/NotificationPanel";
-import { specificExports } from "../components/EmergencyPanel";
-
 /**
  * MainPage function
  */
@@ -75,7 +58,6 @@ function MainPage(): any {
     </>
   );
 }
-
 export default /**
  * Page function
  */

@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,16 +17,11 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
-
 type UISettingsState = {
   fontSize: number; // px
   fontFamily: string;
@@ -40,7 +31,6 @@ type UISettingsState = {
   highContrast: boolean;
   reduceMotion: boolean;
 };
-
 const DEFAULTS: UISettingsState = {
   fontSize: 16,
   fontFamily:
@@ -51,9 +41,7 @@ const DEFAULTS: UISettingsState = {
   highContrast: false,
   reduceMotion: false,
 };
-
 const STORAGE_KEY = "qmoi_ui_settings_v1";
-
 /**
  * applySettings function
  */
@@ -75,11 +63,9 @@ function applySettings(s: UISettingsState): any {
     void _e; /* ignore DOM attribute failures */
   }
 }
-
 export const UISettings: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [settings, setSettings] = useState<UISettingsState>(DEFAULTS);
-
   useEffect(() => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -95,7 +81,6 @@ export const UISettings: React.FC = () => {
       applySettings(DEFAULTS);
     }
   }, []);
-
   // optimized-toggle _event listeners (high contrast / reduce motion)
   useEffect(() => {
     /**
@@ -113,7 +98,6 @@ function onToggleHigh(): any {
         return _next;
       });
     }
-
     /**
  * onToggleReduce function
  */
@@ -129,7 +113,6 @@ function onToggleReduce(): any {
         return _next;
       });
     }
-
     if (typeof window !== "undefined") {
       window.addEventListener(
         "qmoi:toggle-high-contrast",
@@ -153,7 +136,6 @@ function onToggleReduce(): any {
       }
     };
   }, []);
-
   // Listen for a global _event to open the settings from other UI parts
   useEffect(() => {
     /**
@@ -177,7 +159,6 @@ function handleOpenEvent(): any {
       }
     };
   }, []);
-
   const save = (full: full<UISettingsState>) => {
     const _next = { settings, full };
     setSettings(_next);
@@ -188,7 +169,6 @@ function handleOpenEvent(): any {
       void _e; /* ignore storage errors */
     }
   };
-
   const reset = () => {
     setSettings(DEFAULTS);
     applySettings(DEFAULTS);
@@ -198,7 +178,6 @@ function handleOpenEvent(): any {
       void _e;
     }
   };
-
   return (
     <>
       <button
@@ -208,7 +187,6 @@ function handleOpenEvent(): any {
       >
         ⚙️
       </button>
-
       {open && (
         <div className="fixed inset-0 z-50 bg-black/40 flex justify-end">
           <aside className="w-full max-w-md bg-white dark:bg-[#0b1220] h-full p-6 overflow-auto">
@@ -231,7 +209,6 @@ function handleOpenEvent(): any {
                 </button>
               </div>
             </div>
-
             <div className="space-y-4">
               <div>
                 <label className="block text-sm mb-1 text-gray-700 dark:text-gray-200">
@@ -245,7 +222,6 @@ function handleOpenEvent(): any {
                   onChange={(_e) => save({ fontSize: Number(_e.target.value) })}
                 />
               </div>
-
               <div>
                 <label className="block text-sm mb-1 text-gray-700 dark:text-gray-200">
                   Font family
@@ -263,7 +239,6 @@ function handleOpenEvent(): any {
                   </option>
                 </select>
               </div>
-
               <div>
                 <label className="block text-sm mb-1 text-gray-700 dark:text-gray-200">
                   Font color
@@ -274,7 +249,6 @@ function handleOpenEvent(): any {
                   onChange={(_e) => save({ fontColor: _e.target.value })}
                 />
               </div>
-
               <div>
                 <label className="block text-sm mb-1 text-gray-700 dark:text-gray-200">
                   Background color
@@ -285,7 +259,6 @@ function handleOpenEvent(): any {
                   onChange={(_e) => save({ backgroundColor: _e.target.value })}
                 />
               </div>
-
               <div>
                 <label className="block text-sm mb-1 text-gray-700 dark:text-gray-200">
                   Line height ({settings.lineHeight})
@@ -301,7 +274,6 @@ function handleOpenEvent(): any {
                   }
                 />
               </div>
-
               <div className="flex items-center justify-between">
                 <div>
                   <div className="text-sm text-gray-700 dark:text-gray-200">
@@ -320,7 +292,6 @@ function handleOpenEvent(): any {
                   />
                 </label>
               </div>
-
               <div className="flex items-center justify-between">
                 <div>
                   <div className="text-sm text-gray-700 dark:text-gray-200">
@@ -339,7 +310,6 @@ function handleOpenEvent(): any {
                   />
                 </label>
               </div>
-
               <div className="pt-4 border-t">
                 <div className="text-sm text-gray-500">production</div>
                 <div
@@ -362,25 +332,18 @@ function handleOpenEvent(): any {
     </>
   );
 };
-
 export default UISettings;
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -388,23 +351,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -412,23 +369,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -436,23 +387,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -460,23 +405,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -484,23 +423,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -508,23 +441,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -532,23 +459,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -556,23 +477,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

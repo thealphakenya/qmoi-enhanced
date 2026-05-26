@@ -1,17 +1,14 @@
 "use client";
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Master-only access control
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 // // production implementation:
 /**
  * QMOI Master Dashboard - Background Automation Control
  * Master-Only Access UI for Automation Control, Financial Overview, and Status Monitoring
  */
-
 import React, { useEffect, useState } from "react";
 import {
   AlertCircle,
@@ -29,7 +26,6 @@ import {
   Users,
   Zap,
 } from "lucide-react";
-
 const PWA_PLATFORMS = [
   { id: "alphaq", name: "latest Q AI", url: "https://alphaq.ai", logo: "🔷" },
   { id: "qmoi", name: "QMOI AI", url: "https://qmoi.ai", logo: "🤖" },
@@ -41,19 +37,16 @@ const PWA_PLATFORMS = [
   { id: "yap", name: "Yap", url: "https://yap.qmoi.ai", logo: "💬" },
   { id: "qvillage", name: "QVillage", url: "https://qvillage.qmoi.ai", logo: "🏘️" },
 ];
-
 type BeforeInstallPromptEvent = Event & {
   prompt: () => Promise<void>;
   userChoice: Promise<{ outcome: string; platform?: string }>;
 };
-
 type GlobalData = {
   autoProjectCount?: number;
   financial?: { totalRevenue?: number };
   global?: { autoProjectCount?: number };
   [key: string]: unknown;
 };
-
 interface AutomationStatus {
   running: boolean;
   lastScan: string;
@@ -63,7 +56,6 @@ interface AutomationStatus {
   fixCount: number;
   successRate: number;
 }
-
 interface LinkStatus {
   name: string;
   url: string;
@@ -72,7 +64,6 @@ interface LinkStatus {
   responseTime?: number;
   error?: string;
 }
-
 interface LinksData {
   totalLinks: number;
   onlineCount: number;
@@ -80,7 +71,6 @@ interface LinksData {
   lastUpdated: string;
   links: LinkStatus[];
 }
-
 interface DomainData {
   totalDomains: number;
   activeDomains: number;
@@ -88,7 +78,6 @@ interface DomainData {
   lastValidation: string;
   domains: DomainStatus[];
 }
-
 interface DomainStatus {
   domain: string;
   status: "active" | "fallback" | "offline";
@@ -97,12 +86,10 @@ interface DomainStatus {
   responseTime?: number;
   error?: string;
 }
-
 interface MasterDashboardProps {
   masterToken?: string;
   onUnauthorized?: () => void;
 }
-
 export function QMOIMasterDashboard({
   masterToken,
   onUnauthorized,
@@ -124,17 +111,13 @@ export function QMOIMasterDashboard({
   const [activeTab, setActiveTab] = useState<
     "automation" | "financial" | "logs" | "sponsored" | "links" | "avatar" | "permanence" | "global" | "domains" | "tracks" | "master_commands"
   >("automation");
-
   useEffect(() => {
     if (typeof window === "undefined") return;
-
     const handleBeforeInstallPrompt = (event: BeforeInstallPromptEvent) => {
       event.preventDefault();
       // Deferred prompt stored but not used
     };
-
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt as EventListener);
-
     const checkStandalone = () => {
       const isInstalled =
         window.matchMedia("(display-mode: standalone)").matches ||
@@ -146,18 +129,11 @@ export function QMOIMasterDashboard({
         }
       }
     };
-
     checkStandalone();
-
     return () => {
       window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt as EventListener);
     };
   }, []);
-
-  
-
-  
-
   // Verify master authentication
   const verifyMasterAccess = async (authToken: string) => {
     try {
@@ -167,13 +143,11 @@ export function QMOIMasterDashboard({
           Authorization: `Bearer ${authToken}`,
         },
       });
-
       if (response.status === 403) {
         setError("Unauthorized: Invalid master token");
         onUnauthorized?.();
         return false;
       }
-
       if (response.ok) {
         setIsAuthenticated(true);
         setToken(authToken);
@@ -187,18 +161,15 @@ export function QMOIMasterDashboard({
     }
     return false;
   };
-
   // Fetch automation status
   const fetchAutomationStatus = async () => {
     if (!isAuthenticated) return;
-
     try {
       const response = await apiClient.get("/api/admin/autofix/background-automation", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
       if (response.ok) {
         const data = await response.json();
         setAutomationStatus(data.status);
@@ -207,11 +178,9 @@ export function QMOIMasterDashboard({
       console.error("Failed to fetch automation status:", err);
     }
   };
-
   // Fetch financial data
   const fetchFinancialData = async () => {
     if (!isAuthenticated) return;
-
     try {
       // Fetch from backend financial endpoint
       const response = await apiClient.get("/api/admin/financial/summary", {
@@ -219,7 +188,6 @@ export function QMOIMasterDashboard({
           Authorization: `Bearer ${token}`,
         },
       });
-
       if (response.ok) {
         const data = await response.json();
         setFinancialData(data);
@@ -228,11 +196,9 @@ export function QMOIMasterDashboard({
       console.error("Failed to fetch financial data:", err);
     }
   };
-
   // Fetch links data
   const fetchLinksData = async () => {
     if (!isAuthenticated) return;
-
     try {
       // Fetch from master links endpoint
       const response = await apiClient.get("/api/master/links", {
@@ -240,7 +206,6 @@ export function QMOIMasterDashboard({
           Authorization: `Bearer ${token}`,
         },
       });
-
       if (response.ok) {
         const data = await response.json();
         setLinksData(data);
@@ -249,11 +214,9 @@ export function QMOIMasterDashboard({
       console.error("Failed to fetch links data:", err);
     }
   };
-
   // Fetch global data (realtime global operations and finance)
   const fetchGlobalData = async () => {
     if (!isAuthenticated) return;
-
     try {
       const response = await apiClient.get("/api/admin/financial/global", {
         method: "GET",
@@ -261,7 +224,6 @@ export function QMOIMasterDashboard({
           Authorization: `Bearer ${token}`,
         },
       });
-
       if (response.ok) {
         const data = await response.json();
         setGlobalData(data.data);
@@ -270,18 +232,15 @@ export function QMOIMasterDashboard({
       console.error("Failed to fetch global finance data:", err);
     }
   };
-
   // Fetch domain data
   const fetchDomainData = async () => {
     if (!isAuthenticated) return;
-
     try {
       const response = await apiClient.get("/api/master/domains/status", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
       if (response.ok) {
         const data = await response.json();
         setDomainData(data);
@@ -290,7 +249,6 @@ export function QMOIMasterDashboard({
       console.error("Failed to fetch domain data:", err);
     }
   };
-
   // Handle logout
   const handleLogout = async () => {
     try {
@@ -301,7 +259,6 @@ export function QMOIMasterDashboard({
           Authorization: `Bearer ${token}`,
         },
       });
-
       // Clear session and redirect
       sessionStorage.removeItem("masterToken");
       setIsAuthenticated(false);
@@ -314,7 +271,6 @@ export function QMOIMasterDashboard({
       setLoading(false);
     }
   };
-
   // Camera control functions
   const startCamera = async () => {
     try {
@@ -330,7 +286,6 @@ export function QMOIMasterDashboard({
       console.error("Camera access failed:", err);
     }
   };
-
   const stopCamera = () => {
     if (cameraStream) {
       cameraStream.getTracks().forEach((track) => track.stop());
@@ -338,11 +293,9 @@ export function QMOIMasterDashboard({
     }
     setCameraEnabled(false);
   };
-
   // Control automation
   const controlAutomation = async (action: "start" | "stop" | "restart") => {
     if (!isAuthenticated) return;
-
     try {
       setLoading(true);
       const response = await apiClient.get("/api/admin/autofix/background-automation", {
@@ -353,7 +306,6 @@ export function QMOIMasterDashboard({
         },
         body: JSON.stringify({ action }),
       });
-
       if (response.ok) {
         await fetchAutomationStatus();
         setError(null);
@@ -368,7 +320,6 @@ export function QMOIMasterDashboard({
       setLoading(false);
     }
   };
-
   // Handle login
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -380,7 +331,6 @@ export function QMOIMasterDashboard({
       fetchDomainData();
     }
   };
-
   // Cleanup camera on unmount
   useEffect(() => {
     return () => {
@@ -389,7 +339,6 @@ export function QMOIMasterDashboard({
       }
     };
   }, [cameraStream]);
-
   // Auto-refresh automation status
   useEffect(() => {
     if (isAuthenticated && activeTab === "automation") {
@@ -397,12 +346,10 @@ export function QMOIMasterDashboard({
       const interval = setInterval(fetchAutomationStatus, 10000); // Refresh every 10s
       return () => clearInterval(interval);
     }
-
     return () => {
       // cleanup handled when automation tab not active
     };
   }, [isAuthenticated, activeTab]);
-
   // Auto-refresh financial data
   useEffect(() => {
     if (isAuthenticated && activeTab === "financial") {
@@ -410,12 +357,10 @@ export function QMOIMasterDashboard({
       const interval = setInterval(fetchFinancialData, 30000); // Refresh every 30s
       return () => clearInterval(interval);
     }
-
     return () => {
       // cleanup handled when financial tab not active
     };
   }, [isAuthenticated, activeTab]);
-
   // Auto-refresh links data
   useEffect(() => {
     if (isAuthenticated && activeTab === "links") {
@@ -423,12 +368,10 @@ export function QMOIMasterDashboard({
       const interval = setInterval(fetchLinksData, 30000); // Refresh every 30s
       return () => clearInterval(interval);
     }
-
     return () => {
       // cleanup handled when links tab not active
     };
   }, [isAuthenticated, activeTab]);
-
   // Auto-refresh global data
   useEffect(() => {
     if (isAuthenticated && activeTab === "global") {
@@ -436,12 +379,10 @@ export function QMOIMasterDashboard({
       const interval = setInterval(fetchGlobalData, 20000); // refresh every 20s
       return () => clearInterval(interval);
     }
-
     return () => {
       // cleanup handled when global tab not active
     };
   }, [isAuthenticated, activeTab]);
-
   // Auto-refresh domain data
   useEffect(() => {
     if (isAuthenticated && activeTab === "domains") {
@@ -449,12 +390,10 @@ export function QMOIMasterDashboard({
       const interval = setInterval(fetchDomainData, 30000); // refresh every 30s
       return () => clearInterval(interval);
     }
-
     return () => {
       // cleanup handled when domains tab not active
     };
   }, [isAuthenticated, activeTab]);
-
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center p-4">
@@ -463,11 +402,9 @@ export function QMOIMasterDashboard({
             <ShieldAlert className="h-8 w-8 text-red-500 mr-2" />
             <h1 className="text-2xl font-bold text-white">Master Access</h1>
           </div>
-
           <p className="text-slate-300 text-center mb-6">
             Background Automation Control Panel
           </p>
-
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label className="block text-slate-300 text-sm font-medium mb-2">
@@ -481,14 +418,12 @@ export function QMOIMasterDashboard({
                 className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white implementation-slate-400 focus:outline-none focus:border-blue-500"
               />
             </div>
-
             {error && (
               <div className="flex items-center gap-2 p-3 bg-red-900/30 border border-red-700 rounded-lg">
                 <AlertCircle className="h-4 w-4 text-red-400" />
                 <p className="text-sm text-red-300">{error}</p>
               </div>
             )}
-
             <button
               type="submit"
               enabled={loading}
@@ -497,7 +432,6 @@ export function QMOIMasterDashboard({
               {loading ? "Verifying..." : "Unlock Dashboard"}
             </button>
           </form>
-
           <p className="text-slate-500 text-xs text-center mt-6">
             🔐 Master-Only Access | All actions logged
           </p>
@@ -505,7 +439,6 @@ export function QMOIMasterDashboard({
       </div>
     );
   }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-white">
       {/* Header */}
@@ -527,7 +460,6 @@ export function QMOIMasterDashboard({
           </button>
         </div>
       </div>
-
       {/* Content */}
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Tabs */}
@@ -581,7 +513,6 @@ export function QMOIMasterDashboard({
             ),
           )}
         </div>
-
         {/* Automation Tab */}
         {activeTab === "automation" && (
           <div className="space-y-6">
@@ -592,7 +523,6 @@ export function QMOIMasterDashboard({
                   <Zap className="h-5 w-5 text-yellow-400" />
                   Automation Status
                 </h2>
-
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                   <div className="bg-slate-700/50 p-4 rounded-lg">
                     <p className="text-slate-400 text-sm mb-1">Status</p>
@@ -604,7 +534,6 @@ export function QMOIMasterDashboard({
                       )}
                     </p>
                   </div>
-
                   <div className="bg-slate-700/50 p-4 rounded-lg">
                     <p className="text-slate-400 text-sm mb-1">
                       Errors Detected
@@ -613,14 +542,12 @@ export function QMOIMasterDashboard({
                       {automationStatus.errorCount}
                     </p>
                   </div>
-
                   <div className="bg-slate-700/50 p-4 rounded-lg">
                     <p className="text-slate-400 text-sm mb-1">Errors Fixed</p>
                     <p className="text-lg font-bold text-green-400">
                       {automationStatus.fixCount}
                     </p>
                   </div>
-
                   <div className="bg-slate-700/50 p-4 rounded-lg">
                     <p className="text-slate-400 text-sm mb-1">Success Rate</p>
                     <p className="text-lg font-bold text-blue-400">
@@ -628,7 +555,6 @@ export function QMOIMasterDashboard({
                     </p>
                   </div>
                 </div>
-
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div className="bg-slate-700/50 p-4 rounded-lg">
                     <p className="text-slate-400 text-sm mb-1 flex items-center gap-2">
@@ -639,7 +565,6 @@ export function QMOIMasterDashboard({
                       {new Date(automationStatus.lastScan).toLocaleString()}
                     </p>
                   </div>
-
                   <div className="bg-slate-700/50 p-4 rounded-lg">
                     <p className="text-slate-400 text-sm mb-1 flex items-center gap-2">
                       <Clock className="h-4 w-4" />
@@ -650,7 +575,6 @@ export function QMOIMasterDashboard({
                     </p>
                   </div>
                 </div>
-
                 {/* Control Buttons */}
                 <div className="flex gap-4">
                   <button
@@ -661,7 +585,6 @@ export function QMOIMasterDashboard({
                     <Zap className="h-4 w-4" />
                     Start
                   </button>
-
                   <button
                     onClick={() => controlAutomation("stop")}
                     enabled={loading || !automationStatus.running}
@@ -669,7 +592,6 @@ export function QMOIMasterDashboard({
                   >
                     Stop
                   </button>
-
                   <button
                     onClick={() => controlAutomation("restart")}
                     enabled={loading}
@@ -678,7 +600,6 @@ export function QMOIMasterDashboard({
                     <RefreshCw className="h-4 w-4" />
                     Restart
                   </button>
-
                   <button
                     onClick={() => {
                       fetchAutomationStatus();
@@ -694,7 +615,6 @@ export function QMOIMasterDashboard({
             )}
           </div>
         )}
-
         {/* Financial Tab */}
         {activeTab === "financial" && (
           <div className="space-y-6">
@@ -714,7 +634,6 @@ export function QMOIMasterDashboard({
                       Available for operations
                     </p>
                   </div>
-
                   <div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
                     <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
                       <BarChart3 className="h-5 w-5 text-blue-400" />
@@ -728,7 +647,6 @@ export function QMOIMasterDashboard({
                     </p>
                   </div>
                 </div>
-
                 {/* Storage Locations */}
                 <div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
                   <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
@@ -747,7 +665,6 @@ export function QMOIMasterDashboard({
                     ))}
                   </div>
                 </div>
-
                 {/* Last Updated */}
                 <div className="text-sm text-slate-400 text-right">
                   Last updated:{" "}
@@ -757,7 +674,6 @@ export function QMOIMasterDashboard({
             )}
           </div>
         )}
-
         {/* Logs Tab */}
         {activeTab === "logs" && (
           <div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
@@ -777,10 +693,8 @@ export function QMOIMasterDashboard({
             </div>
           </div>
         )}
-
         {/* Sponsored Users Tab */}
         {activeTab === "sponsored" && <SponsoredUsersManager />}
-
         {/* Links Tab */}
         {activeTab === "links" && (
           <div className="space-y-6">
@@ -800,7 +714,6 @@ export function QMOIMasterDashboard({
                       All QMOI platforms and services
                     </p>
                   </div>
-
                   <div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
                     <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
                       <Zap className="h-5 w-5 text-green-400" />
@@ -813,7 +726,6 @@ export function QMOIMasterDashboard({
                       Currently accessible
                     </p>
                   </div>
-
                   <div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
                     <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
                       <AlertCircle className="h-5 w-5 text-red-400" />
@@ -827,7 +739,6 @@ export function QMOIMasterDashboard({
                     </p>
                   </div>
                 </div>
-
                 {/* Links List */}
                 <div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
                   <div className="flex items-center justify-between mb-4">
@@ -846,7 +757,6 @@ export function QMOIMasterDashboard({
                       Refresh
                     </button>
                   </div>
-
                   <div className="space-y-3">
                     {linksData.links.map((link, idx) => (
                       <div
@@ -868,7 +778,6 @@ export function QMOIMasterDashboard({
                             <p className="text-sm text-slate-400">{link.url}</p>
                           </div>
                         </div>
-
                         <div className="text-right">
                           {link.responseTime && (
                             <p className="text-sm text-slate-400">
@@ -885,7 +794,6 @@ export function QMOIMasterDashboard({
                       </div>
                     ))}
                   </div>
-
                   <div className="text-sm text-slate-400 text-right mt-4">
                     Last updated: {new Date(linksData.lastUpdated).toLocaleString()}
                   </div>
@@ -894,7 +802,6 @@ export function QMOIMasterDashboard({
             )}
           </div>
         )}
-
         {/* Domains Tab */}
         {activeTab === "domains" && (
           <div className="space-y-6">
@@ -906,7 +813,6 @@ export function QMOIMasterDashboard({
               <p className="text-slate-300 mb-6">
                 Master control interface for domain validation, link monitoring, and emergency takeover systems.
               </p>
-
               {/* Domain Health Status */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <div className="bg-slate-700/50 p-4 rounded-lg">
@@ -919,7 +825,6 @@ export function QMOIMasterDashboard({
                   </p>
                   <p className="text-slate-400 text-sm">All domains validated</p>
                 </div>
-
                 <div className="bg-slate-700/50 p-4 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3 text-slate-200 flex items-center gap-2">
                     <AlertCircle className="h-5 w-5 text-yellow-400" />
@@ -930,7 +835,6 @@ export function QMOIMasterDashboard({
                   </p>
                   <p className="text-slate-400 text-sm">Fallback domains active</p>
                 </div>
-
                 <div className="bg-slate-700/50 p-4 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3 text-slate-200 flex items-center gap-2">
                     <RefreshCw className="h-5 w-5 text-blue-400" />
@@ -942,7 +846,6 @@ export function QMOIMasterDashboard({
                   <p className="text-slate-400 text-sm">Auto-refresh every 5min</p>
                 </div>
               </div>
-
               {/* Master Control Actions */}
               <div className="bg-slate-700/50 p-6 rounded-lg mb-6">
                 <h3 className="text-lg font-semibold mb-4 text-slate-200">Master Control Actions</h3>
@@ -987,7 +890,6 @@ export function QMOIMasterDashboard({
                     <RefreshCw className="h-4 w-4" />
                     Force Domain Validation
                   </button>
-
                   <button
                     onClick={async () => {
                       try {
@@ -1030,7 +932,6 @@ export function QMOIMasterDashboard({
                   </button>
                 </div>
               </div>
-
               {/* Domain Registry */}
               <div className="bg-slate-700/50 p-6 rounded-lg mb-6">
                 <h3 className="text-lg font-semibold mb-4 text-slate-200">Domain Registry</h3>
@@ -1125,7 +1026,6 @@ export function QMOIMasterDashboard({
                   )}
                 </div>
               </div>
-
               {/* Audit Trail */}
               <div className="bg-slate-700/50 p-6 rounded-lg">
                 <h3 className="text-lg font-semibold mb-4 text-slate-200">Recent Audit Actions</h3>
@@ -1170,7 +1070,6 @@ export function QMOIMasterDashboard({
             </div>
           </div>
         )}
-
         {/* Tracks Tab */}
         {activeTab === "tracks" && (
           <div className="space-y-6">
@@ -1182,7 +1081,6 @@ export function QMOIMasterDashboard({
               <p className="text-slate-300 mb-6">
                 Monitor and track all QMOI operations, domain health checks, link validations, and system activities in real-time.
               </p>
-
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                 <div className="bg-slate-700/50 p-4 rounded-lg">
                   <h3 className="text-sm font-medium text-slate-300 mb-2">Domain Health</h3>
@@ -1191,7 +1089,6 @@ export function QMOIMasterDashboard({
                   </div>
                   <p className="text-xs text-slate-400">Domains operational</p>
                 </div>
-
                 <div className="bg-slate-700/50 p-4 rounded-lg">
                   <h3 className="text-sm font-medium text-slate-300 mb-2">Link Validation</h3>
                   <div className="text-2xl font-bold text-blue-400">
@@ -1199,7 +1096,6 @@ export function QMOIMasterDashboard({
                   </div>
                   <p className="text-xs text-slate-400">Links validated</p>
                 </div>
-
                 <div className="bg-slate-700/50 p-4 rounded-lg">
                   <h3 className="text-sm font-medium text-slate-300 mb-2">Active Tracks</h3>
                   <div className="text-2xl font-bold text-yellow-400">
@@ -1207,7 +1103,6 @@ export function QMOIMasterDashboard({
                   </div>
                   <p className="text-xs text-slate-400">Operations tracked</p>
                 </div>
-
                 <div className="bg-slate-700/50 p-4 rounded-lg">
                   <h3 className="text-sm font-medium text-slate-300 mb-2">System Health</h3>
                   <div className="text-2xl font-bold text-purple-400">
@@ -1216,7 +1111,6 @@ export function QMOIMasterDashboard({
                   <p className="text-xs text-slate-400">Overall uptime</p>
                 </div>
               </div>
-
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-slate-200">Recent Tracks</h3>
                 <div className="space-y-2 max-h-96 overflow-y-auto">
@@ -1257,7 +1151,6 @@ export function QMOIMasterDashboard({
                   ))}
                 </div>
               </div>
-
               <div className="mt-6 flex gap-4">
                 <button
                   onClick={async () => {
@@ -1287,7 +1180,6 @@ export function QMOIMasterDashboard({
                   <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
                   {loading ? "Loading..." : "Refresh Tracks"}
                 </button>
-
                 <button
                   onClick={() => {
                     window.open("/QMOI_TRACKS_SYSTEM.md", "_blank");
@@ -1301,7 +1193,6 @@ export function QMOIMasterDashboard({
             </div>
           </div>
         )}
-
         {/* Avatar Tab */}
         {activeTab === "avatar" && (
           <div className="space-y-6">
@@ -1313,7 +1204,6 @@ export function QMOIMasterDashboard({
               <p className="text-slate-300 mb-6">
                 Select and customize QMOI's avatar and voice for enhanced user interaction and visual/auditory feedback.
               </p>
-
               <div className="space-y-8">
                 {/* Avatar Selection */}
                 <div>
@@ -1326,7 +1216,6 @@ export function QMOIMasterDashboard({
                     className="max-w-4xl"
                   />
                 </div>
-
                 {/* Voice Selection */}
                 <div>
                   <h3 className="text-lg font-semibold mb-4 text-slate-200">Voice Selection</h3>
@@ -1338,7 +1227,6 @@ export function QMOIMasterDashboard({
                     className="max-w-4xl"
                   />
                 </div>
-
                 {/* Camera Visualization */}
                 <div>
                   <h3 className="text-lg font-semibold mb-4 text-slate-200 flex items-center gap-2">
@@ -1348,7 +1236,6 @@ export function QMOIMasterDashboard({
                   <p className="text-slate-400 mb-4">
                     Enable camera access for QMOI's real-time environmental awareness and visualization.
                   </p>
-
                   <div className="flex items-center gap-4 mb-4">
                     <button
                       onClick={cameraEnabled ? stopCamera : startCamera}
@@ -1370,7 +1257,6 @@ export function QMOIMasterDashboard({
                         </>
                       )}
                     </button>
-
                     {cameraEnabled && (
                       <span className="text-green-400 flex items-center gap-2">
                         <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
@@ -1378,7 +1264,6 @@ export function QMOIMasterDashboard({
                       </span>
                     )}
                   </div>
-
                   {cameraEnabled && (
                     <div className="bg-slate-900 border border-slate-600 rounded-lg p-4">
                       <video
@@ -1402,7 +1287,6 @@ export function QMOIMasterDashboard({
             </div>
           </div>
         )}
-
         {/* Permanence Tab */}
         {activeTab === "permanence" && (
           <div className="space-y-6">
@@ -1414,7 +1298,6 @@ export function QMOIMasterDashboard({
               <p className="text-slate-300 mb-6">
                 Configure QMOI's autonomous operation, state persistence, and memory synchronization for continuous operation.
               </p>
-
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-slate-700/50 p-4 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3 text-slate-200">State Persistence</h3>
@@ -1426,7 +1309,6 @@ export function QMOIMasterDashboard({
                     <span className="text-green-400 text-sm">Active</span>
                   </div>
                 </div>
-
                 <div className="bg-slate-700/50 p-4 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3 text-slate-200">Autonomous Operation</h3>
                   <p className="text-slate-400 text-sm mb-4">
@@ -1437,7 +1319,6 @@ export function QMOIMasterDashboard({
                     <span className="text-green-400 text-sm">Enabled</span>
                   </div>
                 </div>
-
                 <div className="bg-slate-700/50 p-4 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3 text-slate-200">Memory Sync</h3>
                   <p className="text-slate-400 text-sm mb-4">
@@ -1448,7 +1329,6 @@ export function QMOIMasterDashboard({
                     <span className="text-blue-400 text-sm">Syncing</span>
                   </div>
                 </div>
-
                 <div className="bg-slate-700/50 p-4 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3 text-slate-200">Accountability</h3>
                   <p className="text-slate-400 text-sm mb-4">
@@ -1463,7 +1343,6 @@ export function QMOIMasterDashboard({
             </div>
           </div>
         )}
-
         {/* Global Operations Tab */}
         {activeTab === "global" && (
           <div className="space-y-6">
@@ -1475,7 +1354,6 @@ export function QMOIMasterDashboard({
               <p className="text-slate-300 mb-6">
                 Comprehensive global wallet creation, business management, and revenue tracking across all countries and continents.
               </p>
-
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <div className="bg-slate-700/50 p-4 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3 text-slate-200 flex items-center gap-2">
@@ -1497,7 +1375,6 @@ export function QMOIMasterDashboard({
                     Refresh Global Wallets
                   </button>
                 </div>
-
                 <div className="bg-slate-700/50 p-4 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3 text-slate-200 flex items-center gap-2">
                     <BarChart3 className="h-5 w-5 text-blue-400" />
@@ -1516,7 +1393,6 @@ export function QMOIMasterDashboard({
                     Refresh Revenue
                   </button>
                 </div>
-
                 <div className="bg-slate-700/50 p-4 rounded-lg">
                   <h3 className="text-lg font-semibold mb-3 text-slate-200 flex items-center gap-2">
                     <Users className="h-5 w-5 text-purple-400" />
@@ -1536,7 +1412,6 @@ export function QMOIMasterDashboard({
                   </button>
                 </div>
               </div>
-
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Wallet Creation Panel */}
                 <div className="bg-slate-700/50 p-6 rounded-lg">
@@ -1544,7 +1419,6 @@ export function QMOIMasterDashboard({
                   <p className="text-slate-400 text-sm mb-4">
                     Create wallets supporting all global payment methods and banking systems.
                   </p>
-
                   <div className="space-y-3">
                     <select className="w-full px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white">
                       <option>Select Country/Region</option>
@@ -1559,7 +1433,6 @@ export function QMOIMasterDashboard({
                       <option>🇦🇪 UAE</option>
                       <option>🌍 Global (Multi-region)</option>
                     </select>
-
                     <select className="w-full px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white">
                       <option>Select Payment Method</option>
                       <option>🏦 Bank Transfer</option>
@@ -1569,43 +1442,36 @@ export function QMOIMasterDashboard({
                       <option>💰 Cash/PayPal</option>
                       <option>🏪 Local Banking</option>
                     </select>
-
                     <button className="w-full px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors">
                       🚀 Create Global Wallet
                     </button>
                   </div>
                 </div>
-
                 {/* Revenue Enhancement Panel */}
                 <div className="bg-slate-700/50 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-4 text-slate-200">Revenue Enhancement</h3>
                   <p className="text-slate-400 text-sm mb-4">
                     Real-time revenue generation with QVS verification and global market adaptation.
                   </p>
-
                   <div className="space-y-4">
                     <div className="flex items-center justify-between p-3 bg-slate-600 rounded-lg">
                       <span className="text-slate-300">Daily Revenue Target</span>
                       <span className="text-green-400 font-bold">$50,000</span>
                     </div>
-
                     <div className="flex items-center justify-between p-3 bg-slate-600 rounded-lg">
                       <span className="text-slate-300">Current Progress</span>
                       <span className="text-blue-400 font-bold">$32,450</span>
                     </div>
-
                     <div className="flex items-center justify-between p-3 bg-slate-600 rounded-lg">
                       <span className="text-slate-300">QVS Verification</span>
                       <span className="text-yellow-400 font-bold">98.7%</span>
                     </div>
-
                     <button className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors">
                       ⚡ Enhance Revenue Streams
                     </button>
                   </div>
                 </div>
               </div>
-
               {/* Global Operations Status */}
               <div className="mt-6 bg-slate-700/50 p-6 rounded-lg">
                 <h3 className="text-lg font-semibold mb-4 text-slate-200">Global Operations Status</h3>
@@ -1631,7 +1497,6 @@ export function QMOIMasterDashboard({
             </div>
           </div>
         )}
-
         {/* Master Commands Tab */}
         {activeTab === "master_commands" && (
           <div className="space-y-6">
@@ -1643,7 +1508,6 @@ export function QMOIMasterDashboard({
               <p className="text-slate-300 mb-6">
                 Execute critical domain and link management commands. All actions are logged to QMOI_TRACKS for audit purposes.
               </p>
-
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Domain Management Commands */}
                 <div className="bg-slate-700/50 p-6 rounded-lg">
@@ -1651,7 +1515,6 @@ export function QMOIMasterDashboard({
                     <Globe className="h-5 w-5 text-blue-400" />
                     Domain Management
                   </h3>
-
                   <div className="space-y-4">
                     {/* Force Refresh Domain Validation */}
                     <div className="space-y-2">
@@ -1699,7 +1562,6 @@ export function QMOIMasterDashboard({
                         </button>
                       </div>
                     </div>
-
                     {/* Approve New Domain */}
                     <div className="space-y-2">
                       <label className="block text-slate-300 text-sm font-medium">
@@ -1748,14 +1610,12 @@ export function QMOIMasterDashboard({
                     </div>
                   </div>
                 </div>
-
                 {/* Link Management Commands */}
                 <div className="bg-slate-700/50 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold mb-4 text-slate-200 flex items-center gap-2">
                     <Settings className="h-5 w-5 text-purple-400" />
                     Link Management
                   </h3>
-
                   <div className="space-y-4">
                     {/* Add Monitored Link */}
                     <div className="space-y-2">
@@ -1803,7 +1663,6 @@ export function QMOIMasterDashboard({
                         </button>
                       </div>
                     </div>
-
                     {/* Remove Monitored Link */}
                     <div className="space-y-2">
                       <label className="block text-slate-300 text-sm font-medium">
@@ -1853,14 +1712,12 @@ export function QMOIMasterDashboard({
                   </div>
                 </div>
               </div>
-
               {/* Audit and Reports */}
               <div className="mt-6 bg-slate-700/50 p-6 rounded-lg">
                 <h3 className="text-lg font-semibold mb-4 text-slate-200 flex items-center gap-2">
                   <BarChart3 className="h-5 w-5 text-yellow-400" />
                   Audit & Reports
                 </h3>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <button
                     onClick={async () => {
@@ -1890,7 +1747,6 @@ export function QMOIMasterDashboard({
                     <BarChart3 className="h-4 w-4" />
                     {loading ? "Generating..." : "Generate Audit Report"}
                   </button>
-
                   <button
                     onClick={() => {
                       window.open("/TRACKS.md", "_blank");
@@ -1901,7 +1757,6 @@ export function QMOIMasterDashboard({
                     View TRACKS.md
                   </button>
                 </div>
-
                 <div className="mt-4 p-4 bg-slate-600 rounded-lg">
                   <p className="text-slate-300 text-sm">
                     <strong>📋 Audit Trail:</strong> All master commands are automatically logged to QMOI_TRACKS/master_actions.jsonl
@@ -1916,5 +1771,4 @@ export function QMOIMasterDashboard({
     </div>
   );
 }
-
 export default QMOIMasterDashboard;

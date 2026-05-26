@@ -409,7 +409,7 @@ function main(): any {
           break;
 
         default:
-          production-ready and operational
+          
       }
 
       await system.stop();

@@ -1,65 +1,12 @@
+import { NextResponse } from "next/server";
+import { getObservabilityOverview } from "@/lib/telemetry/observability";
 
-/**
- * GET function
- */
-export async function GET(): any {
+export async function GET(): Promise<NextResponse> {
   const overview = getObservabilityOverview();
   return NextResponse.json({
-    status: 'ok',
-    version: 'v2',
-    production-ready and operational
+    status: "ok",
+    version: "v2",
     overview,
     timestamp: new Date().toISOString(),
   });
-}
-
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }

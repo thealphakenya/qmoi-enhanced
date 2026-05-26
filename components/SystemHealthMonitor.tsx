@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,16 +17,11 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
-import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -38,10 +29,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { specificExports } from "@/components/ui/button";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/progress";
-import { specificExports } from "@/components/ui/tabs";
 import {
   Activity,
   Cpu,
@@ -60,8 +47,6 @@ import {
   Settings,
   BarChart3,
 } from "lucide-react";
-import { specificExports } from "@/hooks/use-toast";
-
 interface SystemMetrics {
   cpu: {
     usage: number;
@@ -87,7 +72,6 @@ interface SystemMetrics {
   uptime: number;
   lastUpdated: Date;
 }
-
 interface ServiceStatus {
   name: string;
   status: "healthy" | "warning" | "error" | "offline";
@@ -96,7 +80,6 @@ interface ServiceStatus {
   lastCheck: Date;
   description?: string;
 }
-
 interface HealthCheck {
   id: string;
   name: string;
@@ -106,13 +89,11 @@ interface HealthCheck {
   details?: string;
   error?: string;
 }
-
 interface SystemHealthMonitorProps {
   refreshInterval?: number;
   onHealthChange?: (status: "healthy" | "warning" | "critical") => void;
   enableAutoRefresh?: boolean;
 }
-
 export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
   refreshInterval = 30000, // 30 seconds
   onHealthChange,
@@ -125,9 +106,7 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
   >("healthy");
   const [isRefreshing, setIsRefreshing] = useState(false);
   const { toast } = useToast();
-
   const isRefreshingRef = useRef(false);
-
   // Generate system metrics
   const generateMetrics = (): SystemMetrics => {
     const now = new Date();
@@ -223,7 +202,6 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
       lastUpdated: now,
     };
   };
-
   const generaterealHealthChecks = () => {
     const checks = [
       "Database Connection",
@@ -237,7 +215,6 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
       "Background Jobs",
       "Cache Performance",
     ];
-
     return checks.map((check, index) => ({
       id: `check-${index + 1}`,
       name: check,
@@ -249,7 +226,6 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
       error: Math.random() > 0.9 ? `Error in ${check}` : undefined,
     }));
   };
-
   // Calculate overall system status
   const calculateOverallStatus = (
     metrics: SystemMetrics,
@@ -263,11 +239,9 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
     ).length;
     const failedChecks = checks.filter((c) => c.status === "fail").length;
     const warningChecks = checks.filter((c) => c.status === "warning").length;
-
     const highCpu = metrics.cpu.usage > 90;
     const highMemory = metrics.memory.percentage > 90;
     const highDisk = metrics.disk.percentage > 95;
-
     if (
       serviceErrors > 0 ||
       failedChecks > 0 ||
@@ -282,7 +256,6 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
       return "healthy";
     }
   };
-
   // Refresh system metrics
   const refreshMetrics = useCallback(async () => {
     if (isRefreshingRef.current) return; // Prevent multiple simultaneous refreshes
@@ -291,7 +264,6 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
     try {
       const response = await apiClient.get("/api/health");
       const healthData = await response.json();
-
       // Convert API response to component format
       const newMetrics: SystemMetrics = {
         cpu: {
@@ -318,16 +290,12 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
         uptime: healthData.uptime || 0,
         lastUpdated: new Date(),
       };
-
       const newChecks: HealthCheck[] = healthData.checks || [];
       const newStatus = healthData.overall_health || "healthy";
-
       setMetrics(newMetrics);
       setHealthChecks(newChecks);
       setOverallStatus(newStatus);
-
       onHealthChange?.(newStatus);
-
       // Show toast for critical issues
       if (newStatus === "critical") {
         toast({
@@ -348,14 +316,12 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
       isRefreshingRef.current = false;
     }
   }, [onHealthChange, toast]);
-
   // Run health check manually
   const runHealthCheck = async (checkName: string) => {
     toast({
       title: "Health Check Started",
       description: `Running health check for ${checkName}...`,
     });
-
     setTimeout(() => {
       const success = Math.random() > 0.3;
       toast({
@@ -367,24 +333,20 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
       });
     }, 2000);
   };
-
   // Auto-refresh effect
   useEffect(() => {
     if (enableAutoRefresh) {
       const interval = setInterval(refreshMetrics, refreshInterval);
       return () => clearInterval(interval);
     }
-
     return () => {
       // No cleanup required when auto-refresh is enabled.
     };
   }, [refreshMetrics, refreshInterval, enableAutoRefresh]);
-
   // Initial load
   useEffect(() => {
     refreshMetrics();
   }, [refreshMetrics]);
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case "healthy":
@@ -402,7 +364,6 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
         return "text-gray-600";
     }
   };
-
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "healthy":
@@ -420,25 +381,21 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
         return <Activity className="w-4 h-4" />;
     }
   };
-
   const formatUptime = (uptime: number) => {
     const seconds = Math.floor((Date.now() - uptime) / 1000);
     const days = Math.floor(seconds / 86400);
     const hours = Math.floor((seconds % 86400) / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
-
     if (days > 0) return `${days}d ${hours}h ${minutes}m`;
     if (hours > 0) return `${hours}h ${minutes}m`;
     return `${minutes}m`;
   };
-
   const formatBytes = (bytes: number) => {
     const sizes = ["B", "KB", "MB", "GB"];
     if (bytes === 0) return "0 B";
     const i = Math.floor(Math.log(bytes) / Math.log(1024));
     return `${(bytes / Math.pow(1024, i)).toFixed(1)} ${sizes[i]}`;
   };
-
   if (!metrics) {
     return (
       <div className="flex items-center justify-center p-8">
@@ -449,7 +406,6 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
       </div>
     );
   }
-
   return (
     <div className="w-full max-w-6xl mx-auto space-y-6">
       {/* Overall Status */}
@@ -486,7 +442,6 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
               Refresh
             </Button>
           </div>
-
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="text-center">
               <div className="text-2xl font-bold text-blue-600">
@@ -515,7 +470,6 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
           </div>
         </CardContent>
       </Card>
-
       {/* System Metrics */}
       <Card>
         <CardHeader>
@@ -532,7 +486,6 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
               <TabsTrigger value="services">Services</TabsTrigger>
               <TabsTrigger value="health">Health Checks</TabsTrigger>
             </TabsList>
-
             <TabsContent value="performance" className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* CPU */}
@@ -552,7 +505,6 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
                     {metrics.cpu.temperature.toFixed(1)}°C
                   </div>
                 </div>
-
                 {/* Memory */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
@@ -570,7 +522,6 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
                     {formatBytes(metrics.memory.total * 1024 * 1024 * 1024)}
                   </div>
                 </div>
-
                 {/* Disk */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
@@ -588,7 +539,6 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
                     {formatBytes(metrics.disk.total * 1024 * 1024 * 1024)}
                   </div>
                 </div>
-
                 {/* Network */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
@@ -607,7 +557,6 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
                 </div>
               </div>
             </TabsContent>
-
             <TabsContent value="resources" className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <Card>
@@ -625,7 +574,6 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
                     </div>
                   </CardContent>
                 </Card>
-
                 <Card>
                   <CardContent className="p-4">
                     <div className="flex items-center gap-2 mb-2">
@@ -653,7 +601,6 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
                     </div>
                   </CardContent>
                 </Card>
-
                 <Card>
                   <CardContent className="p-4">
                     <div className="flex items-center gap-2 mb-2">
@@ -683,7 +630,6 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
                 </Card>
               </div>
             </TabsContent>
-
             <TabsContent value="services" className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {metrics.services.map((service) => (
@@ -717,7 +663,6 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
                 ))}
               </div>
             </TabsContent>
-
             <TabsContent value="health" className="space-y-4">
               <div className="space-y-2">
                 {healthChecks.map((check) => (
@@ -764,5 +709,4 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
     </div>
   );
 };
-
 export default SystemHealthMonitor;

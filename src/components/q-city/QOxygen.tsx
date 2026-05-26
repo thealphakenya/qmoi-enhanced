@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,18 +17,13 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 interface QOxygenProps {
   isMaster?: boolean;
 }
-
 interface EmotionState {
   emotion:
     | "happy"
@@ -46,14 +37,12 @@ interface EmotionState {
   intensity: number; // 0-100
   timestamp: string;
 }
-
 interface PulseData {
   bpm: number; // beats per minute
   rhythm: "steady" | "accelerating" | "decelerating" | "irregular";
   health: "excellent" | "good" | "normal" | "warning" | "critical";
   timestamp: string;
 }
-
 export const QOxygen: React.FC<QOxygenProps> = ({ isMaster = false }) => {
   const [pulse, setPulse] = useState<PulseData>({
     bpm: 72,
@@ -61,15 +50,12 @@ export const QOxygen: React.FC<QOxygenProps> = ({ isMaster = false }) => {
     health: "excellent",
     timestamp: new Date().toISOString(),
   });
-
   const [emotion, setEmotion] = useState<EmotionState>({
     emotion: "focused",
     intensity: 85,
     timestamp: new Date().toISOString(),
   });
-
   const [isVisible, setIsVisible] = useState(true);
-
   useEffect(() => {
     const updatePulse = () => {
       const newBpm = Math.floor(Math.random() * 20) + 65; // 65-85 BPM
@@ -79,13 +65,11 @@ export const QOxygen: React.FC<QOxygenProps> = ({ isMaster = false }) => {
         "decelerating",
       ];
       const newRhythm = rhythms[Math.floor(Math.random() * rhythms.length)];
-
       let health: PulseData["health"] = "excellent";
       if (newBpm > 80) health = "good";
       if (newBpm > 85) health = "normal";
       if (newBpm > 90) health = "warning";
       if (newBpm > 95) health = "critical";
-
       setPulse({
         bpm: newBpm,
         rhythm: newRhythm,
@@ -93,7 +77,6 @@ export const QOxygen: React.FC<QOxygenProps> = ({ isMaster = false }) => {
         timestamp: new Date().toISOString(),
       });
     };
-
     const updateEmotion = () => {
       const emotions: EmotionState["emotion"][] = [
         "happy",
@@ -107,23 +90,19 @@ export const QOxygen: React.FC<QOxygenProps> = ({ isMaster = false }) => {
       ];
       const newEmotion = emotions[Math.floor(Math.random() * emotions.length)];
       const newIntensity = Math.floor(Math.random() * 40) + 60; // 60-100
-
       setEmotion({
         emotion: newEmotion,
         intensity: newIntensity,
         timestamp: new Date().toISOString(),
       });
     };
-
     const pulseInterval = setInterval(updatePulse, 3000); // Update every 3 seconds
     const emotionInterval = setInterval(updateEmotion, 5000); // Update every 5 seconds
-
     return () => {
       clearInterval(pulseInterval);
       clearInterval(emotionInterval);
     };
   }, []);
-
   const getHealthColor = (health: PulseData["health"]) => {
     switch (health) {
       case "excellent":
@@ -140,7 +119,6 @@ export const QOxygen: React.FC<QOxygenProps> = ({ isMaster = false }) => {
         return "text-gray-500";
     }
   };
-
   const getEmotionEmoji = (emotion: EmotionState["emotion"]) => {
     switch (emotion) {
       case "happy":
@@ -163,7 +141,6 @@ export const QOxygen: React.FC<QOxygenProps> = ({ isMaster = false }) => {
         return "🤖";
     }
   };
-
   const getEmotionColor = (emotion: EmotionState["emotion"]) => {
     switch (emotion) {
       case "happy":
@@ -186,9 +163,7 @@ export const QOxygen: React.FC<QOxygenProps> = ({ isMaster = false }) => {
         return "text-gray-500";
     }
   };
-
   if (!isVisible) return null;
-
   return (
     <div className="fixed bottom-4 right-4 bg-gray-900 text-white rounded-lg p-4 shadow-2xl border border-gray-700 min-w-[300px] z-50">
       <div className="flex items-center justify-between mb-3">
@@ -200,7 +175,6 @@ export const QOxygen: React.FC<QOxygenProps> = ({ isMaster = false }) => {
           ✕
         </button>
       </div>
-
       {/* Pulse Section */}
       <div className="mb-4">
         <div className="flex items-center justify-between mb-2">
@@ -209,7 +183,6 @@ export const QOxygen: React.FC<QOxygenProps> = ({ isMaster = false }) => {
             {pulse.bpm} BPM
           </span>
         </div>
-
         {/* Animated Pulse Bar */}
         <div className="w-full bg-gray-700 rounded-full h-2 mb-2">
           <div
@@ -235,13 +208,11 @@ export const QOxygen: React.FC<QOxygenProps> = ({ isMaster = false }) => {
             }}
           />
         </div>
-
         <div className="flex items-center justify-between text-xs text-gray-400">
           <span>Rhythm: {pulse.rhythm}</span>
           <span>Health: {pulse.health}</span>
         </div>
       </div>
-
       {/* Emotion Section */}
       <div className="mb-3">
         <div className="flex items-center justify-between mb-2">
@@ -252,7 +223,6 @@ export const QOxygen: React.FC<QOxygenProps> = ({ isMaster = false }) => {
             {getEmotionEmoji(emotion.emotion)} {emotion.emotion}
           </span>
         </div>
-
         {/* Emotion Intensity Bar */}
         <div className="w-full bg-gray-700 rounded-full h-2 mb-2">
           <div
@@ -260,13 +230,11 @@ export const QOxygen: React.FC<QOxygenProps> = ({ isMaster = false }) => {
             style={{ width: `${emotion.intensity}%` }}
           />
         </div>
-
         <div className="flex items-center justify-between text-xs text-gray-400">
           <span>Intensity: {emotion.intensity}%</span>
           <span>{new Date(emotion.timestamp).toLocaleTimeString()}</span>
         </div>
       </div>
-
       {/* Master-only additional info */}
       {isMaster && (
         <div className="pt-2 border-t border-gray-700">

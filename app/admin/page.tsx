@@ -1,7 +1,5 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
-
 export default function AdminPage() {
   const [metrics, setMetrics] = useState({
     totalUsers: 0,
@@ -11,16 +9,13 @@ export default function AdminPage() {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   useEffect(() => {
     fetchDashboardData();
   }, []);
-
   const fetchDashboardData = async () => {
     try {
       const response = await fetch('/api/admin/dashboard');
       const data = await response.json();
-
       if (data.success) {
         setMetrics({
           totalUsers: data.data.totalUsers,
@@ -38,7 +33,6 @@ export default function AdminPage() {
       setLoading(false);
     }
   };
-
   if (loading) {
     return (
       <main className="min-h-screen bg-slate-900 p-8">
@@ -49,7 +43,6 @@ export default function AdminPage() {
       </main>
     );
   }
-
   if (error) {
     return (
       <main className="min-h-screen bg-slate-900 p-8">
@@ -60,7 +53,6 @@ export default function AdminPage() {
       </main>
     );
   }
-
   return (
     <main className="min-h-screen bg-slate-900 p-8">
       <div className="max-w-6xl mx-auto">

@@ -1,26 +1,20 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
-
 interface ChatMessage {
   id: string;
   role: "user" | "assistant" | "system";
   content: string;
 }
-
 interface ChatMessagingProps {
   title?: string;
 }
-
 export default function ChatMessaging({ title = "Chat Messaging" }: ChatMessagingProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [chatMessage, setChatMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [modelStatus, setModelStatus] = useState<any>(null);
-
   useEffect(() => {
     let active = true;
-
     async function loadModelStatus() {
       try {
         const res = await fetch("/api/qmoi-model", { cache: "no-store" });
@@ -31,21 +25,17 @@ export default function ChatMessaging({ title = "Chat Messaging" }: ChatMessagin
         console.error("Failed to load QMOI model status:", error);
       }
     }
-
     loadModelStatus();
     return () => {
       active = false;
     };
   }, []);
-
   const handleSendMessage = async () => {
     const input = chatMessage.trim();
     if (!input) return;
-
     setMessages((current) => [...current, { id: `user-${Date.now()}`, role: "user", content: input }]);
     setChatMessage("");
     setIsLoading(true);
-
     try {
       const response = await fetch("/api/qmoi/chat", {
         method: "POST",
@@ -54,10 +44,8 @@ export default function ChatMessaging({ title = "Chat Messaging" }: ChatMessagin
         },
         body: JSON.stringify({ input, userId: "chat-messaging-component", model: "qmoi-prod" }),
       });
-
       const result = await response.json();
       const answer = result?.response || result?.message || "No response from QMOI AI.";
-
       setMessages((current) => [
         ...current,
         { id: `assistant-${Date.now()}`, role: "assistant", content: answer },
@@ -76,7 +64,6 @@ export default function ChatMessaging({ title = "Chat Messaging" }: ChatMessagin
       setIsLoading(false);
     }
   };
-
   return (
     <section className="rounded-3xl border border-slate-700 bg-slate-900 p-6">
       <div className="flex items-center justify-between gap-4">
@@ -92,7 +79,6 @@ export default function ChatMessaging({ title = "Chat Messaging" }: ChatMessagin
           </div>
         )}
       </div>
-
       <div className="mt-5 rounded-3xl bg-slate-950 p-4 text-slate-300">
         <div className="space-y-4">
           <div className="grid gap-4 md:grid-cols-[1.5fr_0.5fr]">

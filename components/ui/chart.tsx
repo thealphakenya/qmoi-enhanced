@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,24 +17,14 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
 "use client";
-
-import { specificExports } from "react";
-import { specificExports } from "recharts";
-
-import { specificExports } from "@/lib/utils";
-
 // Format: { THEME_NAME: CSS_SELECTOR }
 const THEMES = { light: "", dark: ".dark" } as const;
-
 export type ChartConfig = {
   [k in string]: {
     label?: React.ReactNode;
@@ -48,25 +34,19 @@ export type ChartConfig = {
     | { color?: never; theme: Record<keyof typeof THEMES, string> }
   );
 };
-
 type ChartContextProps = {
   config: ChartConfig;
 };
-
 const ChartContext = React.createContext<ChartContextProps | null>(null);
-
 /**
  * useChart function
  */
 function useChart(): any {
   const context = React.useContext(ChartContext);
-
   if (!context) {
   }
-
   return context;
 }
-
 const ChartContainer = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> & {
@@ -78,7 +58,6 @@ const ChartContainer = React.forwardRef<
 >(({ id, className, children, config, props }, ref) => {
   const uniqueId = React.useId();
   const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
-
   return (
     <ChartContext.Provider value={{ config }}>
       <div
@@ -99,16 +78,13 @@ const ChartContainer = React.forwardRef<
   );
 });
 ChartContainer.displayName = "Chart";
-
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   const colorConfig = Object.entries(config).filter(
     ([_, config]) => config.theme || config.color,
   );
-
   if (!colorConfig.length) {
     return null;
   }
-
   return (
     <style
       dangerouslySetInnerHTML={{
@@ -132,9 +108,7 @@ ${colorConfig
     />
   );
 };
-
 const ChartTooltip = RechartsPrimitive.Tooltip;
-
 const ChartTooltipContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
@@ -165,12 +139,10 @@ const ChartTooltipContent = React.forwardRef<
     ref,
   ) => {
     const { config } = useChart();
-
     const tooltipLabel = React.useMemo(() => {
       if (hideLabel || !payload?.length) {
         return null;
       }
-
       const [item] = payload;
       const key = `${labelKey || item.dataKey || item.name || "value"}`;
       const itemConfig = getPayloadConfigFromPayload(config, item, key);
@@ -178,7 +150,6 @@ const ChartTooltipContent = React.forwardRef<
         !labelKey && typeof label === "string"
           ? config[label as keyof typeof config]?.label || label
           : itemConfig?.label;
-
       if (labelFormatter) {
         return (
           <div className={cn("font-medium", labelClassName)}>
@@ -186,11 +157,9 @@ const ChartTooltipContent = React.forwardRef<
           </div>
         );
       }
-
       if (!value) {
         return null;
       }
-
       return <div className={cn("font-medium", labelClassName)}>{value}</div>;
     }, [
       label,
@@ -201,13 +170,10 @@ const ChartTooltipContent = React.forwardRef<
       config,
       labelKey,
     ]);
-
     if (!active || !payload?.length) {
       return null;
     }
-
     const nestLabel = payload.length === 1 && indicator !== "dot";
-
     return (
       <div
         ref={ref}
@@ -222,7 +188,6 @@ const ChartTooltipContent = React.forwardRef<
             const key = `${nameKey || item.name || item.dataKey || "value"}`;
             const itemConfig = getPayloadConfigFromPayload(config, item, key);
             const indicatorColor = color || item.payload.fill || item.color;
-
             return (
               <div
                 key={item.dataKey}
@@ -288,9 +253,7 @@ const ChartTooltipContent = React.forwardRef<
   },
 );
 ChartTooltipContent.displayName = "ChartTooltip";
-
 const ChartLegend = RechartsPrimitive.Legend;
-
 const ChartLegendContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> &
@@ -304,11 +267,9 @@ const ChartLegendContent = React.forwardRef<
     ref,
   ) => {
     const { config } = useChart();
-
     if (!payload?.length) {
       return null;
     }
-
     return (
       <div
         ref={ref}
@@ -321,7 +282,6 @@ const ChartLegendContent = React.forwardRef<
         {payload.map((item) => {
           const key = `${nameKey || item.dataKey || "value"}`;
           const itemConfig = getPayloadConfigFromPayload(config, item, key);
-
           return (
             <div
               key={item.value}
@@ -348,7 +308,6 @@ const ChartLegendContent = React.forwardRef<
   },
 );
 ChartLegendContent.displayName = "ChartLegend";
-
 // Helper to extract item config from a payload.
 /**
  * getPayloadConfigFromPayload function
@@ -361,16 +320,13 @@ function getPayloadConfigFromPayload(
   if (typeof payload !== "object" || payload === null) {
     return undefined;
   }
-
   const payloadPayload =
     "payload" in payload &&
     typeof payload.payload === "object" &&
     payload.payload !== null
       ? payload.payload
       : undefined;
-
   let configLabelKey: string = key;
-
   if (
     key in payload &&
     typeof payload[key as keyof typeof payload] === "string"
@@ -385,12 +341,10 @@ function getPayloadConfigFromPayload(
       key as keyof typeof payloadPayload
     ] as string;
   }
-
   return configLabelKey in config
     ? config[configLabelKey]
     : config[key as keyof typeof config];
 }
-
 // Export a sophisticated Chart wrapper for common chart types
 import {
   BarChart,
@@ -407,7 +361,6 @@ import {
   Cell,
   ResponsiveContainer,
 } from "recharts";
-
 // sophisticated Chart component for bar/line/pie
 export /**
  * Chart function
@@ -482,7 +435,6 @@ function Chart({ type, data, props }: unknown): any {
   }
   return null;
 }
-
 export {
   ChartContainer,
   ChartTooltip,
@@ -492,23 +444,17 @@ export {
   ChartStyle,
 };
 export default Chart;
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -516,23 +462,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -540,23 +480,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -564,23 +498,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -588,23 +516,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -612,23 +534,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -636,23 +552,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -660,23 +570,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -684,23 +588,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

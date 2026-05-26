@@ -1,10 +1,4 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:32Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "react";
+import { useCallback, useState } from "react";
 
 export interface ChatMessage {
   id: string;
@@ -23,10 +17,7 @@ export interface UseChatReturn {
   addMessage: (role: "user" | "assistant", content: string) => void;
 }
 
-export /**
- * useQMOIChat function
- */
-function useQMOIChat(userId?: string): UseChatReturn {
+export function useQMOIChat(userId?: string): UseChatReturn {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -39,7 +30,7 @@ function useQMOIChat(userId?: string): UseChatReturn {
         content,
         timestamp: Date.now(),
       };
-      setMessages((prev) => [prev, message]);
+      setMessages((prev) => [...prev, message]);
     },
     [],
   );
@@ -48,15 +39,13 @@ function useQMOIChat(userId?: string): UseChatReturn {
     async (userInput: string) => {
       if (!userInput.trim()) return;
 
+      setError(null);
+      setIsLoading(true);
+
+      addMessage("user", userInput);
+
       try {
-        setError(null);
-        setIsLoading(true);
-
-        // Add user message
-        addMessage("user", userInput);
-
-        // Call QMOI chat API
-        const response = await apiClient.get("/api/qmoi/chat", {
+        const response = await fetch("/api/qmoi/chat", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -72,37 +61,27 @@ function useQMOIChat(userId?: string): UseChatReturn {
         });
 
         if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}));
-            errorData.error ||
-              `HTTP ${response.status}: ${response.statusText}`,
-          );
+          const errorData = await response.json().catch(() => null);
+          const message = errorData?.error || `HTTP ${response.status}: ${response.statusText}`;
+          throw new Error(message);
         }
 
         const data = await response.json();
-
-        if (!data.success && !data.message) {
-          production-ready"Invalid response from server");
-        }
-
-        // Add assistant response
         const assistantMessage =
-          data.message ||
-          data.choices?.[0]?.message?.content ||
-          "Unable to process request";
-        addMessage("assistant", assistantMessage);
+          data.message || data.choices?.[0]?.message?.content || "Unable to process request";
 
+        addMessage("assistant", assistantMessage);
         return data;
       } catch (err) {
-        const errorMessage =
-          err instanceof Error ? err.message : "Unknown error occurred";
+        const errorMessage = err instanceof Error ? err.message : "Unknown error occurred";
         setError(errorMessage);
-        logger.error("Chat error:", err);
+        console.error("Chat error:", err);
         throw err;
       } finally {
         setIsLoading(false);
       }
     },
-    [userId, addMessage],
+    [addMessage, userId],
   );
 
   const clearMessages = useCallback(() => {

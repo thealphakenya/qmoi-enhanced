@@ -1,18 +1,14 @@
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -20,14 +16,10 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 // Add HelpLink component
 const HelpLink: React.FC<{ href: string; label: string }> = ({
   href,
@@ -73,7 +65,6 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
     </svg>
   </a>
 );
-
 export default /**
  * PluginPanel function
  */
@@ -90,11 +81,9 @@ function PluginPanel(): any {
     {},
   );
   const { toast } = useToast();
-
   useEffect(() => {
     fetchPlugins();
   }, []);
-
   /**
  * fetchPlugins function
  */
@@ -106,7 +95,6 @@ function fetchPlugins(): any {
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   }
-
   async /**
  * handleUpload function
  */
@@ -126,7 +114,6 @@ function handleUpload(e: React.FormEvent): any {
       setUploading(false);
     }, 1000);
   }
-
   async /**
  * handleRemove function
  */
@@ -143,7 +130,6 @@ function handleRemove(plugin: string): any {
       setRemoving(null);
     }, 1000);
   }
-
   async /**
  * handleConfig function
  */
@@ -159,7 +145,6 @@ function handleConfig(plugin: string): any {
       setConfiguring(null);
     }, 1000);
   }
-
   return (
     <div
       className="p-4 bg-gray-900 rounded-lg shadow-lg"

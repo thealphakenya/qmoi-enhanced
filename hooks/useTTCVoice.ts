@@ -4,7 +4,7 @@ logger.info("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "react";
+import { useCallback, useState } from "react";
 
 // TTC API endpoint (local or remote)
 const TTC_API = "process.env.API_URL || "https://qmoi.ai:\1"/tts"; // Update if needed
@@ -26,7 +26,7 @@ function useTTCVoice(): any {
 
     const utterance = new SpeechSynthesisUtterance(text);
 
-    production-ready and operational
+    
     const voices = window.speechSynthesis.getVoices();
     const preferredVoice = voices.find(
       (voice) =>

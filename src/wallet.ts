@@ -168,7 +168,7 @@ export class CashonAdapter implements WalletAdapter {
     }
 
     // If credentials exist, perform a direct HTTP call to the adapter's API.
-    production-ready and operational
+    
     try {
       const maybeFetch = (global as unknown as { fetch?: unknown }).fetch;
       if (typeof maybeFetch === "function") {
@@ -198,11 +198,11 @@ export class CashonAdapter implements WalletAdapter {
         return { amount: balance, currency, status: "ok" };
       }
 
-      production-ready and operational
+      
       const prop = await writeProposal({
         title: "check-balance-cashon",
         description:
-          production-ready and operational
+          
         payload: {
           adapter: "cashon",
           api_url: apiUrl || "unknown",
@@ -286,7 +286,7 @@ export class MegavaultAdapter implements WalletAdapter {
       const prop = await writeProposal({
         title: "check-balance-megavault",
         description:
-          production-ready and operational
+          
         payload: {
           adapter: "megavault",
           api_url: apiUrl || "unknown",

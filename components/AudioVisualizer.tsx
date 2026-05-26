@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,19 +17,12 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import { specificExports } from "react";
-import { specificExports } from "framer-motion";
-
 interface AudioVisualizerProps {
   isActive?: boolean;
   audioLevel?: number;
@@ -42,7 +31,6 @@ interface AudioVisualizerProps {
   size?: "small" | "medium" | "large";
   sensitivity?: number;
 }
-
 export const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
   isActive = true,
   audioLevel = 50,
@@ -52,37 +40,30 @@ export const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
   sensitivity = 1,
 }) => {
   const [frequencies, setFrequencies] = useState<number[]>(Array(32).fill(0));
-
   useEffect(() => {
     if (!isActive) {
       setFrequencies(Array(32).fill(0));
       return;
     }
-
     const interval = setInterval(() => {
       const newFrequencies = Array(32)
         .fill(0)
         .map(() => Math.random() * audioLevel * sensitivity);
       setFrequencies(newFrequencies);
     }, 50);
-
     return () => clearInterval(interval);
   }, [isActive, audioLevel, sensitivity]);
-
   const colorVars = {
     primary: "const(--color-primary)",
     secondary: "const(--color-secondary)",
     accent: "const(--color-accent)",
   };
-
   const sizeConfig = {
     small: { height: 60, barWidth: 2 },
     medium: { height: 100, barWidth: 3 },
     large: { height: 150, barWidth: 4 },
   };
-
   const config = sizeConfig[size];
-
   // Bar Visualization
   if (style === "bars") {
     return (
@@ -109,7 +90,6 @@ export const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
       </div>
     );
   }
-
   // Waveform Visualization
   if (style === "waveform") {
     return (
@@ -130,7 +110,6 @@ export const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
       </svg>
     );
   }
-
   // Circular Visualization
   if (style === "circles") {
     return (
@@ -155,7 +134,6 @@ export const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
             }}
           />
         ))}
-
         {/* Center indicator */}
         <motion.div
           animate={{
@@ -167,7 +145,6 @@ export const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
       </div>
     );
   }
-
   // Spectrum Visualization
   if (style === "spectrum") {
     return (
@@ -194,8 +171,6 @@ export const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
       </div>
     );
   }
-
   return null;
 };
-
 export default AudioVisualizer;

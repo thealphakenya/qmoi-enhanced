@@ -3,10 +3,8 @@ import React from 'react';
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
 import "./ChatbotEnhanced.css";
-
 interface ChatMessage {
   id: string;
   text: string;
@@ -23,7 +21,6 @@ interface ChatMessage {
     relatedFiles?: string[];
   };
 }
-
 interface ConversationContext {
   projectType?: string;
   currentFile?: string;
@@ -32,14 +29,12 @@ interface ConversationContext {
   suggestions?: string[];
   teamActivity?: Array<{ user: string; action: string; time: Date }>;
 }
-
 interface ConversationBranch {
   id: string;
   name: string;
   baseMessageId: string;
   messages: ChatMessage[];
 }
-
 interface ChatbotState {
   isAutomatic: boolean;
   personality: "helpful" | "creative" | "strict" | "beginner-friendly";
@@ -48,7 +43,6 @@ interface ChatbotState {
   showSuggestions: boolean;
   richFormatting: boolean;
 }
-
 export /**
  * ChatbotEnhanced function
  */
@@ -61,7 +55,6 @@ function ChatbotEnhanced(): any {
       metadata: { personality: "helpful" },
     },
   ]);
-
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [context, setContext] = useState<ConversationContext>({});
@@ -75,37 +68,30 @@ function ChatbotEnhanced(): any {
   });
   const [branches, setBranches] = useState<ConversationBranch[]>([]);
   const [currentBranch, setCurrentBranch] = useState<string | null>(null);
-
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-
   // Auto-scroll
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
-
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
-
   // Analyze context from message
   const analyzeContext = (text: string) => {
     const codeBlockMatch = text.match(/```(\w+)?\n([\s\S]*?)```/);
     const fileMatch = text.match(/(?:file|open|edit|view):\s*(?:["']?)([^"'\s]+)/i);
     const errorMatch = text.match(/error|issue|bug|fail/i);
-
     setContext((prev) => ({
       prev,
       currentFile: fileMatch?.[1] || prev.currentFile,
     }));
-
     return {
       hasCode: !!codeBlockMatch,
       hasFileRef: !!fileMatch,
       hasError: !!errorMatch,
     };
   };
-
   // Execute code in message
   const executeCode = async (code: string, language: string) => {
     try {
@@ -121,7 +107,6 @@ function ChatbotEnhanced(): any {
       return { error: "Code execution failed", output: "" };
     }
   };
-
   // Generate suggestions
   const generateSuggestions = async (text: string) => {
     try {
@@ -137,14 +122,11 @@ function ChatbotEnhanced(): any {
       return [];
     }
   };
-
   // Send message with enhanced processing
   const handleSendMessage = async () => {
     if (!input.trim()) return;
-
     // Analyze context first
     analyzeContext(input);
-
     // Create user message
     const userMessage: ChatMessage = {
       id: Date.now().toString(),
@@ -152,20 +134,16 @@ function ChatbotEnhanced(): any {
       sender: "user",
       timestamp: new Date(),
     };
-
     const currentMessages = currentBranch
       ? branches.find((b) => b.id === currentBranch)?.messages || messages
       : messages;
-
     setMessages((prev) => [prev, userMessage]);
     setInput("");
     setLoading(true);
-
     try {
       // Get QMOI response
       const wantSpeak = supportsSpeechSynthesis();
       const { postModel } = await import("../services/qmoiApi");
-
       const data = await postModel({
         user: "local",
         message: input,
@@ -173,21 +151,17 @@ function ChatbotEnhanced(): any {
         personality: chatState.personality,
         context: context,
       });
-
       const dataAny = data as any;
       let replyText = "";
-
       if (dataAny && dataAny.reply) replyText = dataAny.reply;
       else if (dataAny && dataAny.choices && Array.isArray(dataAny.choices) && dataAny.choices[0]) {
         replyText = dataAny.choices[0].message?.content || dataAny.choices[0]?.text || "";
       } else {
         replyText = "Sorry, I could not get a reply.";
       }
-
       // Check for code execution requests
       const codeMatch = replyText.match(/```(\w+)\n([\s\S]*?)```/);
       let executionResult = null;
-
       if (codeMatch && chatState.showPreview) {
         try {
           executionResult = await executeCode(codeMatch[2], codeMatch[1]);
@@ -195,13 +169,11 @@ function ChatbotEnhanced(): any {
           safeConsoleError("Execution error:", err);
         }
       }
-
       // Generate suggestions
       let suggestions: string[] = [];
       if (chatState.showSuggestions) {
         suggestions = await generateSuggestions(input);
       }
-
       // Create bot message
       const botMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
@@ -216,9 +188,7 @@ function ChatbotEnhanced(): any {
           isAutomatic: chatState.isAutomatic,
         },
       };
-
       setMessages((prev) => [prev, botMessage]);
-
       // Update conversation branch if needed
       if (currentBranch) {
         setBranches((prev) =>
@@ -229,7 +199,6 @@ function ChatbotEnhanced(): any {
           )
         );
       }
-
       // Play SSML if provided
       if (dataAny && dataAny.ssml) {
         playSSML(dataAny.ssml);
@@ -246,7 +215,6 @@ function ChatbotEnhanced(): any {
       setLoading(false);
     }
   };
-
   // Create new conversation branch
   const createBranch = (fromMessageId: string) => {
     const newBranch: ConversationBranch = {
@@ -258,16 +226,13 @@ function ChatbotEnhanced(): any {
     setBranches((prev) => [prev, newBranch]);
     setCurrentBranch(newBranch.id);
   };
-
   // Open production for a result
   const openPreview = (url: string) => {
     window.open(url, "_blank");
   };
-
   // Format message with markdown
   const formatMessage = (text: string) => {
     if (!chatState.richFormatting) return text;
-
     // sophisticated markdown parsing
     return text
       .replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre><code class="language-$1">$2</code></pre>')
@@ -275,10 +240,8 @@ function ChatbotEnhanced(): any {
       .replace(/\*(.*?)\*/g, "<em>$1</em>")
       .replace(/\n/g, "<br/>");
   };
-
   const hasMessages = messages.length > 1;
   const currentBranchData = branches.find((b) => b.id === currentBranch);
-
   return (
     <div className="chatbot-enhanced-container">
       {/* Header with controls */}
@@ -305,7 +268,6 @@ function ChatbotEnhanced(): any {
             <option value="strict">⚠️ Strict</option>
             <option value="beginner-friendly">🎓 Beginner-Friendly</option>
           </select>
-
           <button
             title="Toggle Automatic Mode"
             className={`control-button ${chatState.isAutomatic ? "active" : ""}`}
@@ -318,7 +280,6 @@ function ChatbotEnhanced(): any {
           >
             🔄
           </button>
-
           <button
             title="Toggle Suggestions"
             className={`control-button ${chatState.showSuggestions ? "active" : ""}`}
@@ -331,7 +292,6 @@ function ChatbotEnhanced(): any {
           >
             💡
           </button>
-
           <button
             title="Show History"
             className={`control-button ${chatState.showHistory ? "active" : ""}`}
@@ -346,7 +306,6 @@ function ChatbotEnhanced(): any {
           </button>
         </div>
       </div>
-
       {/* Main content area */}
       <div className="chatbot-main">
         {/* Branches sidebar */}
@@ -367,7 +326,6 @@ function ChatbotEnhanced(): any {
             </button>
           </div>
         )}
-
         {/* Messages area */}
         <div className="chatbot-messages">
           {(currentBranchData?.messages || messages).map((msg, idx) => (
@@ -388,7 +346,6 @@ function ChatbotEnhanced(): any {
                   <div dangerouslySetInnerHTML={{ __html: formatMessage(msg.text) }} />
                 )}
               </div>
-
               {msg.sender === "bot" && (
                 <div className="message-actions">
                   <button
@@ -403,11 +360,9 @@ function ChatbotEnhanced(): any {
                   )}
                 </div>
               )}
-
               <div className="message-time">{msg.timestamp.toLocaleTimeString()}</div>
             </div>
           ))}
-
           {loading && (
             <div className="message message-bot loading">
               <div className="typing-indicator">
@@ -419,7 +374,6 @@ function ChatbotEnhanced(): any {
           )}
           <div ref={messagesEndRef} />
         </div>
-
         {/* Context info */}
         {Object.keys(context).length > 0 && (
           <div className="context-info">
@@ -430,13 +384,11 @@ function ChatbotEnhanced(): any {
           </div>
         )}
       </div>
-
       {/* Input area */}
       <div className="chatbot-input">
         <input
           ref={inputRef}
           type="text"
-          
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => {
@@ -459,25 +411,18 @@ function ChatbotEnhanced(): any {
     </div>
   );
 }
-
 export default ChatbotEnhanced;
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -485,23 +430,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -509,23 +448,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -533,23 +466,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -557,23 +484,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -581,23 +502,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -605,23 +520,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -629,23 +538,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -653,23 +556,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

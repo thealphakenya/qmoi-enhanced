@@ -1,5 +1,4 @@
 import React from 'react';
-
 export default function NotificationCenter() {
   return (
     <div className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">

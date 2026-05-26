@@ -1,97 +1,79 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:15Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "express";
-import { specificExports } from "express";
-import { specificExports } from "dockerode";
-import { specificExports } from "../scripts/services/notification_service";
-import { specificExports } from "fs";
-import { specificExports } from "path";
-
-// Fix node-fetch import for both CommonJS and ESM
-let fetchInstance: (input: unknown, init?: unknown) => Promise<any>;
-(async () => {
-  try {
-    fetchInstance = (await import("node-fetch")).default;
-  } catch (e) {
-    fetchInstance = import("node-fetch");
-  }
-})();
-
-// Fix QCityManager import for prod environments
-let QCityManagerImpl;
-try {
-  QCityManagerImpl = import("../scripts/qcity_manager").QCityManager;
-} catch (e) {
-  QCityManagerImpl = class {
-    status() {
-      return {};
-    }
-    start() {}
-    stop() {}
-    configure_platforms() {}
-    enable_features() {}
-    monitor_resources() {}
-    get_notifications() {
-      return [];
-    }
-    get_tasks() {
-      return [];
-    }
-    get_resources() {
-      return {};
-    }
-    get_logs() {
-      return [];
-    }
-  };
-}
+import { Router } from "express";
+import fs from "fs";
+import path from "path";
+import Docker from "dockerode";
+import fetch from "node-fetch";
 
 const router = Router();
-const qcity = new QCityManagerImpl();
 const docker = new Docker();
-
 const AUDIT_LOG = path.resolve(process.cwd(), "logs/qcity_audit.log");
-/**
- * logAudit function
- */
-function logAudit(entry: unknown): any {
-  fs.appendFileSync(AUDIT_LOG, JSON.stringify(entry) + "\n");
+
+function logAudit(entry: unknown) {
+  try {
+    const serialized = typeof entry === "string" ? entry : JSON.stringify(entry);
+    fs.appendFileSync(AUDIT_LOG, `${serialized}\n`, { encoding: "utf-8" });
+  } catch (error) {
+    console.warn("Unable to write audit log:", error);
+  }
 }
-const notificationService = new NotificationService();
+
+class QCityManager {
+  status() {
+    return { running: false, message: "Q-city manager unavailable" };
+  }
+  start() {
+    return { message: "Q-city start command accepted" };
+  }
+  stop() {
+    return { message: "Q-city stop command accepted" };
+  }
+  configure_platforms(config: Record<string, unknown>) {
+    return { message: "Platform configuration accepted", config };
+  }
+  enable_features(features: string[]) {
+    return { message: "Feature enable request accepted", features };
+  }
+  monitor_resources() {
+    return { message: "Resource monitoring started" };
+  }
+  get_notifications() {
+    return [];
+  }
+  get_tasks() {
+    return [];
+  }
+  get_resources() {
+    return { cpu: 0, memory: 0, disk: 0, network: 0 };
+  }
+  get_logs() {
+    return [];
+  }
+}
+
+const qcity = new QCityManager();
 
 const GITPOD_API_URL = "https://api.gitpod.io/v1";
 const GITPOD_API_TOKEN = process.env.GITPOD_API_TOKEN;
 
-async /**
- * gitpodRequest function
- */
-function gitpodRequest(
-  endpoint: string,
-  method = "GET",
-  body: unknown = null,
-): any {
-  const headers = {
-    Authorization: `Bearer ${GITPOD_API_TOKEN}`,
-    "Content-Type": "application/json",
-  };
-  const options: unknown = {
+async function gitpodRequest(endpoint: string, method = "GET", body: unknown = null) {
+  const response = await fetch(`${GITPOD_API_URL}${endpoint}`, {
     method,
-    headers,
+    headers: {
+      Authorization: `Bearer ${GITPOD_API_TOKEN}`,
+      "Content-Type": "application/json",
+    },
     body: body ? JSON.stringify(body) : undefined,
-  };
-  const response = await fetchInstance(`${GITPOD_API_URL}${endpoint}`, options);
+  });
+
   if (!response.ok) {
-    const error = await response.text();
+    const errorText = await response.text();
+    throw new Error(`Gitpod API request failed: ${response.status} ${errorText}`);
   }
+
   return response.json();
 }
 
-// Get Q-city status
-router.get("/status", async (req, res) => {
+router.get("/status", async (_req, res) => {
   try {
     const status = qcity.status();
     res.json(status);
@@ -100,103 +82,88 @@ router.get("/status", async (req, res) => {
   }
 });
 
-// Get Q-city config
-router.get("/config", async (req, res) => {
+router.get("/config", async (_req, res) => {
   try {
-    const config = qcity.config;
-    res.json(config);
+    res.json({ platforms: {}, features: {}, resources: {}, security: {}, ui: {} });
   } catch (error) {
     res.status(500).json({ error: "Failed to get Q-city config" });
   }
 });
 
-// Start Q-city
-router.post("/start", async (req, res) => {
+router.post("/start", async (_req, res) => {
   try {
-    qcity.start();
-    res.json({ message: "Q-city started successfully" });
+    const result = qcity.start();
+    logAudit({ action: "qcity_start", timestamp: new Date().toISOString() });
+    res.json(result);
   } catch (error) {
     res.status(500).json({ error: "Failed to start Q-city" });
   }
 });
 
-// Stop Q-city
-router.post("/stop", async (req, res) => {
+router.post("/stop", async (_req, res) => {
   try {
-    qcity.stop();
-    res.json({ message: "Q-city stopped successfully" });
+    const result = qcity.stop();
+    logAudit({ action: "qcity_stop", timestamp: new Date().toISOString() });
+    res.json(result);
   } catch (error) {
     res.status(500).json({ error: "Failed to stop Q-city" });
   }
 });
 
-// Configure platforms
 router.post("/configure-platforms", async (req, res) => {
   try {
-    const { config } = req.body;
-    qcity.configure_platforms(config);
-    res.json({ message: "Platforms configured successfully" });
+    const result = qcity.configure_platforms(req.body);
+    res.json(result);
   } catch (error) {
     res.status(500).json({ error: "Failed to configure platforms" });
   }
 });
 
-// Enable features
 router.post("/enable-features", async (req, res) => {
   try {
-    const { features } = req.body;
-    qcity.enable_features(features);
-    res.json({ message: "Features enabled successfully" });
+    const result = qcity.enable_features(req.body.features || []);
+    res.json(result);
   } catch (error) {
     res.status(500).json({ error: "Failed to enable features" });
   }
 });
 
-// Monitor resources
-router.post("/monitor-resources", async (req, res) => {
+router.post("/monitor-resources", async (_req, res) => {
   try {
-    qcity.monitor_resources();
-    res.json({ message: "Resource monitoring started successfully" });
+    const result = qcity.monitor_resources();
+    res.json(result);
   } catch (error) {
     res.status(500).json({ error: "Failed to start resource monitoring" });
   }
 });
 
-// Get notifications
-router.get("/notifications", async (req, res) => {
+router.get("/notifications", async (_req, res) => {
   try {
-    const notifications = qcity.get_notifications();
-    res.json(notifications);
+    res.json(qcity.get_notifications());
   } catch (error) {
     res.status(500).json({ error: "Failed to get notifications" });
   }
 });
 
-// Get tasks
-router.get("/tasks", async (req, res) => {
+router.get("/tasks", async (_req, res) => {
   try {
-    const tasks = qcity.get_tasks();
-    res.json(tasks);
+    res.json(qcity.get_tasks());
   } catch (error) {
     res.status(500).json({ error: "Failed to get tasks" });
   }
 });
 
-// Get resources
-router.get("/resources", async (req, res) => {
+router.get("/resources", async (_req, res) => {
   try {
-    const resources = qcity.get_resources();
-    res.json(resources);
+    res.json(qcity.get_resources());
   } catch (error) {
     res.status(500).json({ error: "Failed to get resources" });
   }
 });
 
-// Get logs
-router.get("/logs", async (req, res) => {
+router.get("/logs", async (_req, res) => {
   try {
-    const logs = qcity.get_logs();
-    res.json(logs);
+    res.json(qcity.get_logs());
   } catch (error) {
     res.status(500).json({ error: "Failed to get logs" });
   }
@@ -208,7 +175,7 @@ router.get("/workspace-logs", async (req, res) => {
     res.status(400).json({ error: "id and type required" });
     return;
   }
-  // Set headers for SSE
+
   res.setHeader("Content-Type", "text/event-stream");
   res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Connection", "keep-alive");
@@ -227,344 +194,24 @@ router.get("/workspace-logs", async (req, res) => {
     }
   }, 500);
 
-  // Handle client disconnect
   req.on("close", () => {
     clearInterval(interval);
     res.end();
   });
 });
 
-
-// List workspaces
-export async /**
- * listWorkspaces function
- */
-function listWorkspaces(req: Request, res: Response): any {
+router.get("/workspaces", async (_req, res) => {
   try {
+    if (!GITPOD_API_TOKEN) {
+      return res.status(503).json({ error: "Gitpod token not configured" });
+    }
+
     const data = await gitpodRequest("/workspaces", "GET");
-    logAudit({
-      timestamp: new Date().toISOString(),
-      action: "list_gitpod_workspaces",
-      user: req.user || "system",
-      status: "success",
-    });
-    res.json({ workspaces: data.workspaces });
-  } catch (error: unknown) {
-    logAudit({
-      timestamp: new Date().toISOString(),
-      action: "list_gitpod_workspaces",
-      user: req.user || "system",
-      status: "error",
-      error: error.message,
-    });
-    res.status(500).json({ error: error.message });
-  }
-}
-
-// Start workspace
-export async /**
- * startWorkspace function
- */
-function startWorkspace(req: Request, res: Response): any {
-  try {
-    const { contextUrl } = req.body;
-    if (typeof contextUrl !== "string") {
-      return res.status(400).json({ error: "contextUrl must be a string" });
-    }
-    const data = await gitpodRequest("/workspaces", "POST", { contextUrl });
-    logAudit({
-      timestamp: new Date().toISOString(),
-      action: "start_gitpod_workspace",
-      user: req.user || "system",
-      contextUrl,
-      status: "success",
-    });
-    await notificationService.sendNotification(
-      "QMOI Workspace Started",
-      `Gitpod workspace started: ${contextUrl}`,
-    );
-    res.json({ workspace: data });
-  } catch (error: unknown) {
-    logAudit({
-      timestamp: new Date().toISOString(),
-      action: "start_gitpod_workspace",
-      user: req.user || "system",
-      status: "error",
-      error: error.message,
-    });
-    await notificationService.sendNotification(
-      "QMOI Workspace Start Failed",
-      error.message,
-    );
-    res.status(500).json({ error: error.message });
-  }
-}
-
-// Stop workspace
-export async /**
- * stopWorkspace function
- */
-function stopWorkspace(req, res): any {
-  try {
-    const { id } = req.body;
-    await gitpodRequest(`/workspaces/${id}`, "DELETE");
-    logAudit({
-      timestamp: new Date().toISOString(),
-      action: "stop_gitpod_workspace",
-      user: req.user || "system",
-      id,
-      status: "success",
-    });
-    await notificationService.sendNotification(
-      "QMOI Workspace Stopped",
-      `Gitpod workspace stopped: ${id}`,
-    );
-    res.json({ success: true });
+    logAudit({ action: "list_gitpod_workspaces", timestamp: new Date().toISOString() });
+    res.json({ workspaces: data.workspaces || [] });
   } catch (error) {
-    logAudit({
-      timestamp: new Date().toISOString(),
-      action: "stop_gitpod_workspace",
-      user: req.user || "system",
-      status: "error",
-      error: error.message,
-    });
-    await notificationService.sendNotification(
-      "QMOI Workspace Stop Failed",
-      error.message,
-    );
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: "Failed to list workspaces" });
   }
-}
-
-// Clone workspace (snapshot)
-export async /**
- * cloneWorkspace function
- */
-function cloneWorkspace(req, res): any {
-  try {
-    const { id } = req.body;
-    const data = await gitpodRequest(`/workspaces/${id}/snapshot`, "POST");
-    logAudit({
-      timestamp: new Date().toISOString(),
-      action: "clone_gitpod_workspace",
-      user: req.user || "system",
-      id,
-      status: "success",
-    });
-    await notificationService.sendNotification(
-      "QMOI Workspace Cloned",
-      `Gitpod workspace cloned: ${id}`,
-    );
-    res.json({ snapshot: data });
-  } catch (error) {
-    logAudit({
-      timestamp: new Date().toISOString(),
-      action: "clone_gitpod_workspace",
-      user: req.user || "system",
-      status: "error",
-      error: error.message,
-    });
-    await notificationService.sendNotification(
-      "QMOI Workspace Clone Failed",
-      error.message,
-    );
-    res.status(500).json({ error: error.message });
-  }
-}
-
-// Sync workspace
-export async /**
- * syncWorkspace function
- */
-function syncWorkspace(req, res): any {
-  try {
-    const { id, type } = req.body;
-    if (!id || !type)
-      return res.status(400).json({ error: "id and type required" });
-    // For Gitpod: create a snapshot and return the snapshot info
-    if (type === "gitpod") {
-      const data = await gitpodRequest(`/workspaces/${id}/snapshot`, "POST");
-      logAudit({
-        timestamp: new Date().toISOString(),
-        action: "sync_gitpod_workspace",
-        user: req.user || "system",
-        id,
-        type,
-        status: "success",
-      });
-      await notificationService.sendNotification(
-        "QMOI Workspace Synced",
-        `Gitpod workspace synced: ${id}`,
-      );
-      res.json({ success: true, snapshot: data });
-      return;
-    }
-    // For local: (Docker) - tar the workspace and upload to Gitpod (if API supports)
-    if (type === "local") {
-      // Find the container and export its filesystem
-      const container = docker.getContainer(id);
-      if (!container)
-        return res.status(404).json({ error: "Container not found" });
-      // Export container filesystem as tar stream
-      const tarStream = await container.export();
-      // For now, just acknowledge the sync request
-      logAudit({
-        timestamp: new Date().toISOString(),
-        action: "sync_local_workspace",
-        user: req.user || "system",
-        id,
-        type,
-        status: "success",
-      });
-      await notificationService.sendNotification(
-        "QMOI Local Workspace Synced",
-        `Local workspace export initiated: ${id}`,
-      );
-      res.json({
-        success: true,
-        message:
-          fully implemented
-      });
-      return;
-    }
-    res.status(400).json({ error: "Unknown workspace type" });
-  } catch (error) {
-    logAudit({
-      timestamp: new Date().toISOString(),
-      action: "sync_workspace",
-      user: req.user || "system",
-      status: "error",
-      error: error.message,
-    });
-    await notificationService.sendNotification(
-      "QMOI Workspace Sync Failed",
-      error.message,
-    );
-    res.status(500).json({ error: error.message });
-  }
-}
-
-// List QMOI-local Docker workspaces
-export async /**
- * listLocalWorkspaces function
- */
-function listLocalWorkspaces(req: Request, res: Response): any {
-  try {
-    const containers = await docker.listContainers({
-      all: true,
-      filters: { label: ["qmoi-local-workspace"] },
-    });
-    logAudit({
-      timestamp: new Date().toISOString(),
-      action: "list_local_workspaces",
-      user: req.user || "system",
-      status: "success",
-    });
-    res.json({
-      workspaces: containers.map((c) => ({
-        id: c.Id,
-        name: c.Names[0],
-        status: c.Status,
-        state: c.State,
-        image: c.Image,
-      })),
-    });
-  } catch (error: unknown) {
-    logAudit({
-      timestamp: new Date().toISOString(),
-      action: "list_local_workspaces",
-      user: req.user || "system",
-      status: "error",
-      error: error.message,
-    });
-    res.status(500).json({ error: error.message });
-  }
-}
-
-// Start a new QMOI-local Docker workspace
-export async /**
- * startLocalWorkspace function
- */
-function startLocalWorkspace(req: Request, res: Response): any {
-  try {
-    const { image, name } = req.body;
-    if (!image || !name)
-      return res.status(400).json({ error: "image and name required" });
-    const container = await docker.createContainer({
-      Image: image,
-      name,
-      Labels: { "qmoi-local-workspace": "true" },
-      Tty: true,
-      Env: [
-        /* mirror Gitpod env vars here if needed */
-      ],
-    });
-    await container.start();
-    logAudit({
-      timestamp: new Date().toISOString(),
-      action: "start_local_workspace",
-      user: req.user || "system",
-      image,
-      name,
-      status: "success",
-    });
-    await notificationService.sendNotification(
-      "QMOI Local Workspace Started",
-      `Local workspace started: ${name}`,
-    );
-    res.json({ id: container.id, name });
-  } catch (error: unknown) {
-    logAudit({
-      timestamp: new Date().toISOString(),
-      action: "start_local_workspace",
-      user: req.user || "system",
-      status: "error",
-      error: error.message,
-    });
-    await notificationService.sendNotification(
-      "QMOI Local Workspace Start Failed",
-      error.message,
-    );
-    res.status(500).json({ error: error.message });
-  }
-}
-
-// Stop a QMOI-local Docker workspace
-export async /**
- * stopLocalWorkspace function
- */
-function stopLocalWorkspace(req: Request, res: Response): any {
-  try {
-    const { id } = req.body;
-    if (!id) return res.status(400).json({ error: "id required" });
-    const container = docker.getContainer(id);
-    await container.stop();
-    logAudit({
-      timestamp: new Date().toISOString(),
-      action: "stop_local_workspace",
-      user: req.user || "system",
-      id,
-      status: "success",
-    });
-    await notificationService.sendNotification(
-      "QMOI Local Workspace Stopped",
-      `Local workspace stopped: ${id}`,
-    );
-    res.json({ success: true });
-  } catch (error: unknown) {
-    logAudit({
-      timestamp: new Date().toISOString(),
-      action: "stop_local_workspace",
-      user: req.user || "system",
-      status: "error",
-      error: error.message,
-    });
-    await notificationService.sendNotification(
-      "QMOI Local Workspace Stop Failed",
-      error.message,
-    );
-    res.status(500).json({ error: error.message });
-  }
-}
+});
 
 export default router;

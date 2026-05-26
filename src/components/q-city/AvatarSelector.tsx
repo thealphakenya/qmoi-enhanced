@@ -3,9 +3,7 @@ import React from 'react';
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
 import {
   Select,
   SelectContent,
@@ -32,13 +30,11 @@ import {
   qualityLevels,
   voiceProfiles,
 } from "./avatarsConfig";
-
 interface AvatarSelectorProps {
   currentVoiceId?: string;
   onAvatarChange?: (avatarId: string) => void;
   className?: string;
 }
-
 export /**
  * AvatarSelector function
  */
@@ -58,7 +54,6 @@ function AvatarSelector({
   const [isLoading, setIsLoading] = useState(false);
   const [previewMode, setPreviewMode] = useState(false);
   const { toast } = useToast();
-
   // Get current voice's default avatar
   const currentVoice = voiceProfiles.find(
     (voice) => voice.id === currentVoiceId,
@@ -66,31 +61,25 @@ function AvatarSelector({
   const defaultAvatar =
     avatarsConfig.find((avatar) => avatar.voiceProfile === currentVoiceId) ||
     avatarsConfig[0];
-
   useEffect(() => {
     // Load saved avatar preference or use voice default
     const savedAvatar = localStorage.getItem("qmoi-avatar-preference");
     setSelectedAvatar(savedAvatar || defaultAvatar.id);
   }, [defaultAvatar.id]);
-
   const handleAvatarChange = async (avatarId: string) => {
     setIsLoading(true);
     try {
       // Save to localStorage
       localStorage.setItem("qmoi-avatar-preference", avatarId);
       setSelectedAvatar(avatarId);
-
       // Call API to switch avatar
       const response = await apiClient.get("/api/qmoi/avatars", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "switch", avatarId }),
       });
-
-
       // Notify parent component
       onAvatarChange?.(avatarId);
-
       toast({
         title: "Avatar Updated",
         description: `QMOI is now using the ${avatarsConfig.find((a) => a.id === avatarId)?.name} avatar.`,
@@ -105,7 +94,6 @@ function AvatarSelector({
       setIsLoading(false);
     }
   };
-
   const handleUpgrade = async (avatarId: string) => {
     setIsLoading(true);
     try {
@@ -114,8 +102,6 @@ function AvatarSelector({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "upgrade", avatarId }),
       });
-
-
       toast({
         title: "Avatar Upgraded",
         description: "Avatar has been successfully upgraded with new features.",
@@ -130,7 +116,6 @@ function AvatarSelector({
       setIsLoading(false);
     }
   };
-
   const handleEnhance = async (avatarId: string) => {
     setIsLoading(true);
     try {
@@ -145,8 +130,6 @@ function AvatarSelector({
           engine: avatar?.animationEngine,
         }),
       });
-
-
       toast({
         title: "Avatar Enhanced",
         description:
@@ -162,7 +145,6 @@ function AvatarSelector({
       setIsLoading(false);
     }
   };
-
   const getQualityColor = (quality: string) => {
     switch (quality) {
       case "ai-enhanced":
@@ -175,7 +157,6 @@ function AvatarSelector({
         return "bg-gray-500";
     }
   };
-
   const getEngineColor = (engine: string) => {
     switch (engine) {
       case "eva3d-sadtalker":
@@ -192,33 +173,26 @@ function AvatarSelector({
         return "bg-gray-500";
     }
   };
-
   const determineAutoAvatar = () => {
     // Priority: current voice profile mapping -> lion fallback -> first active avatar
     const voiceAvatar = avatarsConfig.find((avatar) => avatar.voiceProfile === currentVoiceId);
     if (voiceAvatar && voiceAvatar.isActive) return voiceAvatar.id;
-
     const lionAvatar = avatarsConfig.find((avatar) => avatar.id === "lion" && avatar.isActive);
     if (lionAvatar) return lionAvatar.id;
-
     const defaultActive = avatarsConfig.find((avatar) => avatar.isActive);
     return defaultActive ? defaultActive.id : "";
   };
-
   const applyAutoAvatar = async () => {
     const autoId = determineAutoAvatar();
     if (!autoId) return;
-
     await handleAvatarChange(autoId);
   };
-
   useEffect(() => {
     localStorage.setItem("qmoi-avatar-auto-mode", JSON.stringify(autoAvatarMode));
     if (autoAvatarMode) {
       applyAutoAvatar();
     }
   }, [autoAvatarMode, currentVoiceId]);
-
   const filteredAvatars = avatarsConfig.filter((avatar) => {
     if (selectedCategory !== "all" && avatar.category !== selectedCategory)
       return false;
@@ -228,14 +202,12 @@ function AvatarSelector({
       return false;
     return true;
   });
-
   const categories = [
     "all",
     Array.from(new Set(avatarsConfig.map((a) => a.category))),
   ];
   const qualities = ["all", Object.keys(qualityLevels)];
   const engines = ["all", Object.keys(animationEngines)];
-
   return (
     <Card className={className}>
       <CardHeader>
@@ -254,7 +226,6 @@ function AvatarSelector({
             <TabsTrigger value="production">production</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
-
           <TabsContent value="avatars" className="space-y-4">
             {/* Filters */}
             <div className="grid grid-cols-3 gap-2">
@@ -272,7 +243,6 @@ function AvatarSelector({
                   ))}
                 </SelectContent>
               </Select>
-
               <Select
                 value={selectedQuality}
                 onValueChange={setSelectedQuality}
@@ -290,7 +260,6 @@ function AvatarSelector({
                   ))}
                 </SelectContent>
               </Select>
-
               <Select value={selectedEngine} onValueChange={setSelectedEngine}>
                 <SelectTrigger>
                 </SelectTrigger>
@@ -307,7 +276,6 @@ function AvatarSelector({
                 </SelectContent>
               </Select>
             </div>
-
             <div className="flex items-center gap-2">
               <Switch
                 id="auto-avatar-mode"
@@ -318,7 +286,6 @@ function AvatarSelector({
                 Auto mode: choose best avatar (Lion-aware, voice-aligned)
               </label>
             </div>
-
             {/* Avatar Grid */}
             <div className="grid gap-4">
               {filteredAvatars.map((avatar) => (
@@ -335,7 +302,6 @@ function AvatarSelector({
                     <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center">
                       <User className="h-8 w-8 text-white" />
                     </div>
-
                     <div className="flex flex-col">
                       <div className="flex items-center gap-2">
                         <span className="font-medium">{avatar.name}</span>
@@ -346,11 +312,9 @@ function AvatarSelector({
                           <RefreshCw className="h-4 w-4 text-blue-500" />
                         )}
                       </div>
-
                       <p className="text-sm text-muted-foreground">
                         {avatar.description}
                       </p>
-
                       <div className="flex items-center gap-2 mt-2">
                         <Badge
                           variant="secondary"
@@ -370,12 +334,10 @@ function AvatarSelector({
                       </div>
                     </div>
                   </div>
-
                   <div className="flex items-center gap-2">
                     {selectedAvatar === avatar.id && (
                       <div className="w-2 h-2 bg-primary rounded-full" />
                     )}
-
                     <Button
                       size="sm"
                       variant="outline"
@@ -387,7 +349,6 @@ function AvatarSelector({
                     >
                       <Download className="h-4 w-4" />
                     </Button>
-
                     <Button
                       size="sm"
                       variant="outline"
@@ -403,7 +364,6 @@ function AvatarSelector({
                 </div>
               ))}
             </div>
-
             <div className="flex items-center space-x-2">
               <Switch
                 id="auto-upgrade"
@@ -415,7 +375,6 @@ function AvatarSelector({
               </label>
             </div>
           </TabsContent>
-
           <TabsContent value="production" className="space-y-4">
             <div className="aspect-video bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center">
               <div className="text-center text-white">
@@ -428,7 +387,6 @@ function AvatarSelector({
                 </p>
               </div>
             </div>
-
             <div className="grid grid-cols-2 gap-4">
               <Button
                 onClick={() => setPreviewMode(!previewMode)}
@@ -437,13 +395,11 @@ function AvatarSelector({
                 <Eye className="h-4 w-4" />
                 {previewMode ? "Stop production" : "Start production"}
               </Button>
-
               <Button variant="outline" className="flex items-center gap-2">
                 <Play className="h-4 w-4" />
                 Demo Animation
               </Button>
             </div>
-
             <div className="p-3 bg-muted rounded-lg">
               <div className="text-sm text-muted-foreground">
                 Current Avatar:{" "}
@@ -473,7 +429,6 @@ function AvatarSelector({
               </div>
             </div>
           </TabsContent>
-
           <TabsContent value="settings" className="space-y-4">
             <div className="space-y-4">
               <div>
@@ -508,7 +463,6 @@ function AvatarSelector({
                   }
                 </p>
               </div>
-
               <div className="space-y-2">
                 <label className="text-sm font-medium">Advanced Settings</label>
                 <div className="space-y-3">
@@ -536,7 +490,6 @@ function AvatarSelector({
             </div>
           </TabsContent>
         </Tabs>
-
         {currentVoice && (
           <div className="p-3 bg-green-50 dark:bg-green-950/20 rounded-lg">
             <div className="flex items-center gap-2 text-sm">
@@ -548,7 +501,6 @@ function AvatarSelector({
             </p>
           </div>
         )}
-
         {/* Evolution Features */}
         <div className="p-3 bg-purple-50 dark:bg-purple-950/20 rounded-lg mt-4">
           <div className="flex items-center gap-2 text-sm mb-3">
@@ -608,24 +560,17 @@ function AvatarSelector({
     </Card>
   );
 }
-
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -633,23 +578,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -657,23 +596,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -681,23 +614,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -705,23 +632,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -729,23 +650,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -753,23 +668,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -777,23 +686,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -801,23 +704,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

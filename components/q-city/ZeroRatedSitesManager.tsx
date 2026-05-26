@@ -1,18 +1,14 @@
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -20,22 +16,14 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
-import { specificExports } from "react";
-import { specificExports } from "@/lib/zero-rated-sites-service";
-
 interface ZeroRatedSitesManagerProps {
   className?: string;
 }
-
 export default /**
  * ZeroRatedSitesManager function
  */
@@ -53,40 +41,32 @@ function ZeroRatedSitesManager(): any {
     activeOnly: false,
     globalOnly: false,
   });
-
   useEffect(() => {
     fetchSites();
   }, [filter]);
-
   const fetchSites = async () => {
     try {
       const params = new URLSearchParams();
       if (filter.globalOnly) params.set("globalOnly", "true");
-
       const response = await apiClient.get(`/api/zero-rated-sites?${params}`);
       const data = await response.json();
-
       if (data.success) {
         let filteredSites = data.data;
-
         if (filter.category) {
           filteredSites = filteredSites.filter((site: ZeroRatedSite) =>
             site.category.toLowerCase().includes(filter.category.toLowerCase()),
           );
         }
-
         if (filter.continent) {
           filteredSites = filteredSites.filter((site: ZeroRatedSite) =>
             site.continents.includes(filter.continent),
           );
         }
-
         if (filter.activeOnly) {
           filteredSites = filteredSites.filter(
             (site: ZeroRatedSite) => site.isActive,
           );
         }
-
         setSites(filteredSites);
       }
     } catch (error) {
@@ -95,7 +75,6 @@ function ZeroRatedSitesManager(): any {
       setLoading(false);
     }
   };
-
   const handleCreateSite = async (siteData: any) => {
     try {
       const response = await apiClient.get("/api/zero-rated-sites", {
@@ -103,9 +82,7 @@ function ZeroRatedSitesManager(): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(siteData),
       });
-
       const data = await response.json();
-
       if (data.success) {
         setSites((prev) => [data.data, prev]);
         setShowCreateForm(false);
@@ -117,7 +94,6 @@ function ZeroRatedSitesManager(): any {
       notification.show("Failed to create zero-rated site");
     }
   };
-
   const handleUpdateSite = async (siteId: string, updates: any) => {
     try {
       const response = await apiClient.get(`/api/zero-rated-sites/${siteId}`, {
@@ -125,9 +101,7 @@ function ZeroRatedSitesManager(): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updates),
       });
-
       const data = await response.json();
-
       if (data.success) {
         setSites((prev) =>
           prev.map((site) => (site.id === siteId ? data.data : site)),
@@ -141,18 +115,14 @@ function ZeroRatedSitesManager(): any {
       notification.show("Failed to update zero-rated site");
     }
   };
-
   const handleDeleteSite = async (siteId: string) => {
     if (!confirm("Are you sure you want to delete this zero-rated site?"))
       return;
-
     try {
       const response = await apiClient.get(`/api/zero-rated-sites/${siteId}`, {
         method: "DELETE",
       });
-
       const data = await response.json();
-
       if (data.success) {
         setSites((prev) => prev.filter((site) => site.id !== siteId));
       } else {
@@ -163,7 +133,6 @@ function ZeroRatedSitesManager(): any {
       notification.show("Failed to delete zero-rated site");
     }
   };
-
   const continents = [
     "Africa",
     "Asia",
@@ -173,7 +142,6 @@ function ZeroRatedSitesManager(): any {
     "Australia",
     "Antarctica",
   ];
-
   const categories = [
     "education",
     "healthcare",
@@ -184,7 +152,6 @@ function ZeroRatedSitesManager(): any {
     "news",
     "productivity",
   ];
-
   if (loading) {
     return (
       <div className={`flex items-center justify-center p-8 ${className}`}>
@@ -192,7 +159,6 @@ function ZeroRatedSitesManager(): any {
       </div>
     );
   }
-
   return (
     <div className={`space-y-6 ${className}`}>
       {/* Header */}
@@ -212,7 +178,6 @@ function ZeroRatedSitesManager(): any {
           Create Zero-Rated Site
         </button>
       </div>
-
       {/* Filters */}
       <div className="bg-white p-4 rounded-lg shadow-sm border">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -235,7 +200,6 @@ function ZeroRatedSitesManager(): any {
               ))}
             </select>
           </div>
-
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Continent
@@ -255,7 +219,6 @@ function ZeroRatedSitesManager(): any {
               ))}
             </select>
           </div>
-
           <div className="flex items-center space-x-2">
             <input
               type="checkbox"
@@ -273,7 +236,6 @@ function ZeroRatedSitesManager(): any {
               Active Only
             </label>
           </div>
-
           <div className="flex items-center space-x-2">
             <input
               type="checkbox"
@@ -293,7 +255,6 @@ function ZeroRatedSitesManager(): any {
           </div>
         </div>
       </div>
-
       {/* Sites Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {sites.map((site) => (
@@ -325,7 +286,6 @@ function ZeroRatedSitesManager(): any {
                 )}
               </div>
             </div>
-
             <div className="space-y-2 mb-4">
               <p className="text-sm text-gray-600">
                 <span className="font-medium">Category:</span> {site.category}
@@ -343,7 +303,6 @@ function ZeroRatedSitesManager(): any {
                 </p>
               )}
             </div>
-
             <div className="flex space-x-2">
               <button
                 onClick={() => setSelectedSite(site)}
@@ -373,7 +332,6 @@ function ZeroRatedSitesManager(): any {
           </div>
         ))}
       </div>
-
       {sites.length === 0 && (
         <div className="text-center py-12">
           <p className="text-gray-500">
@@ -381,7 +339,6 @@ function ZeroRatedSitesManager(): any {
           </p>
         </div>
       )}
-
       {/* Create Site Modal */}
       {showCreateForm && (
         <CreateSiteModal
@@ -391,7 +348,6 @@ function ZeroRatedSitesManager(): any {
           categories={categories}
         />
       )}
-
       {/* Site Details Modal */}
       {selectedSite && (
         <SiteDetailsModal
@@ -403,7 +359,6 @@ function ZeroRatedSitesManager(): any {
     </div>
   );
 }
-
 // Create Site Modal Component
 /**
  * CreateSiteModal function
@@ -423,30 +378,25 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
     bandwidthLimit: 10,
     concurrentUsers: 1000,
   });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(formData);
   };
-
   const addUrl = () => {
     setFormData((prev) => ({ prev, urls: [prev.urls, ""] }));
   };
-
   const updateUrl = (index: number, value: string) => {
     setFormData((prev) => ({
       prev,
       urls: prev.urls.map((url, i) => (i === index ? value : url)),
     }));
   };
-
   const removeUrl = (index: number) => {
     setFormData((prev) => ({
       prev,
       urls: prev.urls.filter((_, i) => i !== index),
     }));
   };
-
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
@@ -474,7 +424,6 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
               </svg>
             </button>
           </div>
-
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* comprehensive Info */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -490,10 +439,8 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
                     setFormData((prev) => ({ prev, name: e.target.value }))
                   }
                   className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  
                 />
               </div>
-
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Domain (optional)
@@ -505,11 +452,9 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
                     setFormData((prev) => ({ prev, domain: e.target.value }))
                   }
                   className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  
                 />
               </div>
             </div>
-
             {/* URLs */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -523,7 +468,6 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
                     value={url}
                     onChange={(e) => updateUrl(index, e.target.value)}
                     className="flex-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    
                   />
                   {formData.urls.length > 1 && (
                     <button
@@ -544,7 +488,6 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
                 Add URL
               </button>
             </div>
-
             {/* Category and Description */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -570,7 +513,6 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
                   ))}
                 </select>
               </div>
-
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Description
@@ -585,11 +527,9 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
                     }))
                   }
                   className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  
                 />
               </div>
             </div>
-
             {/* Continents */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -626,7 +566,6 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
                 ))}
               </div>
             </div>
-
             {/* Countries */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -645,10 +584,8 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
                   }))
                 }
                 className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                
               />
             </div>
-
             {/* Advanced Options */}
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
@@ -671,7 +608,6 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
                   Enable Global Access (all continents)
                 </label>
               </div>
-
               <div className="flex items-center space-x-2">
                 <input
                   type="checkbox"
@@ -692,7 +628,6 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
                   Enable Blockchain Features
                 </label>
               </div>
-
               <div className="flex items-center space-x-2">
                 <input
                   type="checkbox"
@@ -714,7 +649,6 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
                 </label>
               </div>
             </div>
-
             {/* Limits */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -735,7 +669,6 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
                   max="1000"
                 />
               </div>
-
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Concurrent Users
@@ -755,7 +688,6 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
                 />
               </div>
             </div>
-
             {/* Submit */}
             <div className="flex justify-end space-x-3 pt-6">
               <button
@@ -778,18 +710,15 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
     </div>
   );
 }
-
 // Site Details Modal Component
 /**
  * SiteDetailsModal function
  */
 function SiteDetailsModal({ site, onClose, onUpdate }: any): any {
   const [stats, setStats] = useState<any>(null);
-
   useEffect(() => {
     fetchStats();
   }, [site.id]);
-
   const fetchStats = async () => {
     try {
       const response = await apiClient.get(`/api/zero-rated-sites/${site.id}`);
@@ -801,7 +730,6 @@ function SiteDetailsModal({ site, onClose, onUpdate }: any): any {
       logger.error("Error fetching stats:", error);
     }
   };
-
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
@@ -830,7 +758,6 @@ function SiteDetailsModal({ site, onClose, onUpdate }: any): any {
               </svg>
             </button>
           </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Site Info */}
             <div className="space-y-4">
@@ -877,7 +804,6 @@ function SiteDetailsModal({ site, onClose, onUpdate }: any): any {
                   </p>
                 </div>
               </div>
-
               <div>
                 <h4 className="font-semibold text-gray-900 mb-2">Continents</h4>
                 <div className="flex flex-wrap gap-2">
@@ -891,7 +817,6 @@ function SiteDetailsModal({ site, onClose, onUpdate }: any): any {
                   ))}
                 </div>
               </div>
-
               <div>
                 <h4 className="font-semibold text-gray-900 mb-2">Countries</h4>
                 <div className="flex flex-wrap gap-2">
@@ -905,7 +830,6 @@ function SiteDetailsModal({ site, onClose, onUpdate }: any): any {
                   ))}
                 </div>
               </div>
-
               <div>
                 <h4 className="font-semibold text-gray-900 mb-2">
                   URLs ({site.urls.length})
@@ -919,7 +843,6 @@ function SiteDetailsModal({ site, onClose, onUpdate }: any): any {
                 </div>
               </div>
             </div>
-
             {/* Stats */}
             <div className="space-y-4">
               <h4 className="font-semibold text-gray-900">
@@ -941,7 +864,6 @@ function SiteDetailsModal({ site, onClose, onUpdate }: any): any {
                       <p className="text-sm text-green-800">Active Users</p>
                     </div>
                   </div>
-
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-purple-50 p-3 rounded-lg">
                       <p className="text-2xl font-bold text-purple-600">
@@ -958,7 +880,6 @@ function SiteDetailsModal({ site, onClose, onUpdate }: any): any {
                       </p>
                     </div>
                   </div>
-
                   <div className="bg-gray-50 p-3 rounded-lg">
                     <p className="text-lg font-bold text-gray-600">
                       {(stats.uptime * 100).toFixed(1)}% Uptime
@@ -967,7 +888,6 @@ function SiteDetailsModal({ site, onClose, onUpdate }: any): any {
                       Service Availability
                     </p>
                   </div>
-
                   <div>
                     <h5 className="font-medium text-gray-900 mb-2">
                       Top Countries
@@ -991,7 +911,6 @@ function SiteDetailsModal({ site, onClose, onUpdate }: any): any {
               )}
             </div>
           </div>
-
           {/* Actions */}
           <div className="flex justify-end space-x-3 pt-6 border-t">
             <button

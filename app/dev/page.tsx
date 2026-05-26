@@ -1,10 +1,7 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import logger from '../../src/lib/logger';
-
 const isProduction = process.env.NODE_ENV === "production";
-
 export default function DevPage() {
   if (isProduction) {
     return (
@@ -18,11 +15,9 @@ export default function DevPage() {
       </main>
     );
   }
-
   const [apiTestResults, setApiTestResults] = useState([]);
   const [debugInfo, setDebugInfo] = useState({});
   const [loading, setLoading] = useState(false);
-
   const testEndpoints = async () => {
     setLoading(true);
     const endpoints = [
@@ -33,16 +28,13 @@ export default function DevPage() {
       '/api/qcity/metrics',
       '/api/qvillage/spaces'
     ];
-
     const results = [];
-
     for (const endpoint of endpoints) {
       try {
         const start = Date.now();
         const response = await fetch(endpoint);
         const end = Date.now();
         const data = await response.json();
-
         results.push({
           endpoint,
           status: response.status,
@@ -60,11 +52,9 @@ export default function DevPage() {
         });
       }
     }
-
     setApiTestResults(results);
     setLoading(false);
   };
-
   const loadDebugInfo = async () => {
     try {
       const response = await fetch('/api/debug/info');
@@ -76,17 +66,14 @@ export default function DevPage() {
       try { logger.error('Failed to load debug info', error); } catch (e) { console.error('Failed to load debug info:', error); }
     }
   };
-
   useEffect(() => {
     loadDebugInfo();
   }, []);
-
   return (
     <main className="min-h-screen bg-slate-950 p-8">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold text-white mb-6">Developer Utilities</h1>
         <p className="text-slate-300 mb-8">Launch internal tools, diagnostics, and development helpers safely.</p>
-
         <div className="grid gap-6 md:grid-cols-2 mb-8">
           <div className="rounded-2xl bg-slate-900 p-6 border border-slate-700">
             <h2 className="text-lg font-semibold text-white mb-3">API Endpoint Tester</h2>
@@ -112,7 +99,6 @@ export default function DevPage() {
               </div>
             )}
           </div>
-
           <div className="rounded-2xl bg-slate-900 p-6 border border-slate-700">
             <h2 className="text-lg font-semibold text-white mb-3">Debug Console</h2>
             <p className="text-slate-400 mb-4">Review logs, diagnostics, and runtime health checks from this workspace.</p>
@@ -135,7 +121,6 @@ export default function DevPage() {
             )}
           </div>
         </div>
-
         <div className="rounded-2xl bg-slate-900 p-6 border border-slate-700">
           <h2 className="text-lg font-semibold text-white mb-3">System Health</h2>
           <p className="text-slate-400">Current system status and metrics.</p>

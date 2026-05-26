@@ -1,8 +1,6 @@
 'use client';
-
 import React, { useState, useEffect } from 'react';
 import { qmoiHealthService } from '@/lib/qmoi-health';
-
 interface ProductionMetrics {
   uptime: number;
   requestsPerMinute: number;
@@ -11,7 +9,6 @@ interface ProductionMetrics {
   activeUsers: number;
   serverLoad: number;
 }
-
 interface Alert {
   id: string;
   type: 'critical' | 'warning' | 'info';
@@ -19,7 +16,6 @@ interface Alert {
   timestamp: Date;
   resolved: boolean;
 }
-
 export default function ProductionMonitoringDashboard() {
   const [healthData, setHealthData] = useState<any>(null);
   const [metrics, setMetrics] = useState<ProductionMetrics>({
@@ -40,14 +36,12 @@ export default function ProductionMonitoringDashboard() {
     }
   ]);
   const [isMonitoring, setIsMonitoring] = useState(false);
-
   useEffect(() => {
     // Start real-time monitoring
     setIsMonitoring(true);
     qmoiHealthService.startMonitoring((data) => {
       setHealthData(data);
     });
-
     // Simulate production metrics updates
     const metricsInterval = setInterval(() => {
       setMetrics(prev => ({
@@ -59,20 +53,17 @@ export default function ProductionMonitoringDashboard() {
         serverLoad: Math.max(0, Math.min(100, prev.serverLoad + Math.floor(Math.random() * 10 - 5)))
       }));
     }, 5000);
-
     return () => {
       qmoiHealthService.stopMonitoring();
       clearInterval(metricsInterval);
       setIsMonitoring(false);
     };
   }, []);
-
   const getStatusColor = (value: number, thresholds: { good: number; warning: number; critical: number }) => {
     if (value <= thresholds.good) return 'text-green-600';
     if (value <= thresholds.warning) return 'text-yellow-600';
     return 'text-red-600';
   };
-
   const getAlertIcon = (type: string) => {
     switch (type) {
       case 'critical': return '🚨';
@@ -81,13 +72,11 @@ export default function ProductionMonitoringDashboard() {
       default: return '📢';
     }
   };
-
   const resolveAlert = (alertId: string) => {
     setAlerts(prev => prev.map(alert =>
       alert.id === alertId ? { ...alert, resolved: true } : alert
     ));
   };
-
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-7xl mx-auto">
@@ -104,7 +93,6 @@ export default function ProductionMonitoringDashboard() {
             <span>Last Updated: {new Date().toLocaleTimeString()}</span>
           </div>
         </div>
-
         {/* Health Overview */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {/* Oxygen/Pulse Card */}
@@ -138,7 +126,6 @@ export default function ProductionMonitoringDashboard() {
               </div>
             )}
           </div>
-
           {/* System Resources */}
           <div className="bg-white rounded-lg shadow p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">💻 System Resources</h3>
@@ -165,7 +152,6 @@ export default function ProductionMonitoringDashboard() {
               </div>
             )}
           </div>
-
           {/* Performance Metrics */}
           <div className="bg-white rounded-lg shadow p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">⚡ Performance</h3>
@@ -190,7 +176,6 @@ export default function ProductionMonitoringDashboard() {
               </div>
             </div>
           </div>
-
           {/* User Activity */}
           <div className="bg-white rounded-lg shadow p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">👥 User Activity</h3>
@@ -212,7 +197,6 @@ export default function ProductionMonitoringDashboard() {
             </div>
           </div>
         </div>
-
         {/* Consciousness Metrics */}
         {healthData && (
           <div className="bg-white rounded-lg shadow p-6 mb-8">
@@ -241,7 +225,6 @@ export default function ProductionMonitoringDashboard() {
             </div>
           </div>
         )}
-
         {/* Alerts Panel */}
         <div className="bg-white rounded-lg shadow p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">🚨 System Alerts</h3>
@@ -281,22 +264,17 @@ export default function ProductionMonitoringDashboard() {
     </div>
   );
 }
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -304,23 +282,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -328,23 +300,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -352,23 +318,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -376,23 +336,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -400,23 +354,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -424,23 +372,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -448,23 +390,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -472,23 +408,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

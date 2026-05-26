@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,17 +17,12 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-
 interface Friend {
   id: string;
   userId: string;
@@ -45,7 +36,6 @@ interface Friend {
   notes?: string;
   since?: string;
 }
-
 interface FriendshipStats {
   totalFriends: number;
   pendingRequests: number;
@@ -56,12 +46,10 @@ interface FriendshipStats {
     timestamp: string;
   }>;
 }
-
 interface FriendshipManagementProps {
   userId?: string;
   onFriendSelect?: (friend: Friend) => void;
 }
-
 export /**
  * FriendshipManagement function
  */
@@ -80,11 +68,9 @@ function FriendshipManagement({
   const [view, setView] = useState<"friends" | "pending" | "requests">(
     "friends",
   );
-
   // Form states
   const [friendInput, setFriendInput] = useState("");
   const [message, setMessage] = useState("");
-
   // Fetch data on mount
   useEffect(() => {
     if (userId) {
@@ -92,7 +78,6 @@ function FriendshipManagement({
       fetchStats();
     }
   }, [userId]);
-
   const fetchFriends = async () => {
     try {
       setIsLoading(true);
@@ -100,7 +85,6 @@ function FriendshipManagement({
         `/api/qmoi/friendship?action=list&userId=${userId}`,
       );
       const data = await response.json();
-
       if (data.success) {
         setFriends(data.friends || []);
         setPendingRequests(data.pending || []);
@@ -115,14 +99,12 @@ function FriendshipManagement({
       setIsLoading(false);
     }
   };
-
   const fetchStats = async () => {
     try {
       const response = await apiClient.get(
         `/api/qmoi/friendship?action=stats&userId=${userId}`,
       );
       const data = await response.json();
-
       if (data.success && data.stats) {
         setStats(data.stats);
       }
@@ -130,10 +112,8 @@ function FriendshipManagement({
       logger.error("Failed to fetch stats:", error);
     }
   };
-
   const handleSendRequest = async (e: React.FormEvent) => {
     e.preventDefault();
-
     try {
       const response = await apiClient.get("/api/qmoi/friendship", {
         method: "POST",
@@ -145,7 +125,6 @@ function FriendshipManagement({
           message,
         }),
       });
-
       const data = await response.json();
       if (data.success) {
         toast({
@@ -165,7 +144,6 @@ function FriendshipManagement({
       });
     }
   };
-
   const handleAcceptRequest = async (friendId: string) => {
     try {
       const response = await apiClient.get("/api/qmoi/friendship", {
@@ -177,7 +155,6 @@ function FriendshipManagement({
           friendId,
         }),
       });
-
       const data = await response.json();
       if (data.success) {
         toast({
@@ -195,10 +172,8 @@ function FriendshipManagement({
       });
     }
   };
-
   const handleRemoveFriend = async (friendId: string) => {
     if (!confirm("Remove this friend?")) return;
-
     try {
       const response = await apiClient.get("/api/qmoi/friendship", {
         method: "POST",
@@ -209,7 +184,6 @@ function FriendshipManagement({
           friendId,
         }),
       });
-
       const data = await response.json();
       if (data.success) {
         toast({
@@ -228,7 +202,6 @@ function FriendshipManagement({
       });
     }
   };
-
   const handleBlockUser = async (friendId: string) => {
     try {
       const response = await apiClient.get("/api/qmoi/friendship", {
@@ -240,7 +213,6 @@ function FriendshipManagement({
           friendId,
         }),
       });
-
       const data = await response.json();
       if (data.success) {
         toast({
@@ -259,7 +231,6 @@ function FriendshipManagement({
       });
     }
   };
-
   // Filter friends/requests
   const filteredFriends = friends.filter(
     (friend) =>
@@ -268,7 +239,6 @@ function FriendshipManagement({
         .includes(searchQuery.toLowerCase()) ||
       friend.nickname?.toLowerCase().includes(searchQuery.toLowerCase()),
   );
-
   const filteredRequests = pendingRequests.filter(
     (request) =>
       request.friendProfile?.name
@@ -276,13 +246,11 @@ function FriendshipManagement({
         .includes(searchQuery.toLowerCase()) ||
       request.id.toLowerCase().includes(searchQuery.toLowerCase()),
   );
-
   const statusColors = {
     accepted: "bg-green-100 text-green-800",
     pending: "bg-yellow-100 text-yellow-800",
     blocked: "bg-red-100 text-red-800",
   };
-
   return (
     <div className="w-full max-w-4xl space-y-4 p-4">
       {/* Header */}
@@ -297,7 +265,6 @@ function FriendshipManagement({
           {showAddForm ? "Cancel" : "+ Add Friend"}
         </button>
       </div>
-
       {/* Stats Overview */}
       {stats && (
         <div className="grid grid-cols-3 gap-3">
@@ -327,7 +294,6 @@ function FriendshipManagement({
           </div>
         </div>
       )}
-
       {/* Add Friend Form */}
       {showAddForm && (
         <form
@@ -336,20 +302,16 @@ function FriendshipManagement({
         >
           <input
             type="text"
-            
             value={friendInput}
             onChange={(e) => setFriendInput(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600"
             required
           />
-
           <textarea
-            
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 h-20"
           />
-
           <button
             type="submit"
             className="w-full px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded font-medium transition-colors"
@@ -358,7 +320,6 @@ function FriendshipManagement({
           </button>
         </form>
       )}
-
       {/* View Tabs */}
       <div className="flex gap-2 border-b border-gray-200 dark:border-gray-700">
         <button
@@ -392,16 +353,13 @@ function FriendshipManagement({
           Activity
         </button>
       </div>
-
       {/* Search */}
       <input
         type="text"
-        
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600"
       />
-
       {/* Content */}
       {isLoading ? (
         <div className="text-center py-8 text-gray-500">Loading</div>
@@ -486,7 +444,6 @@ function FriendshipManagement({
                     </div>
                   </div>
                 </div>
-
                 <div className="flex gap-2">
                   <button
                     onClick={() => handleAcceptRequest(request.friendId)}
@@ -536,14 +493,12 @@ function FriendshipManagement({
           )}
         </div>
       )}
-
       {/* Selected Friend Details */}
       {selectedFriend && selectedFriend.status === "accepted" && (
         <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg space-y-3 border-2 border-blue-300">
           <h3 className="text-lg font-bold text-gray-900 dark:text-white">
             Friend Details
           </h3>
-
           <div className="grid grid-cols-2 gap-3">
             <div>
               <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -564,7 +519,6 @@ function FriendshipManagement({
               </p>
             </div>
           </div>
-
           {selectedFriend.notes && (
             <div>
               <p className="text-sm text-gray-600 dark:text-gray-400">Notes</p>
@@ -573,7 +527,6 @@ function FriendshipManagement({
               </p>
             </div>
           )}
-
           <div className="flex gap-2">
             <button
               onClick={() => handleRemoveFriend(selectedFriend.friendId)}
@@ -593,25 +546,18 @@ function FriendshipManagement({
     </div>
   );
 }
-
 export default FriendshipManagement;
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -619,23 +565,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -643,23 +583,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -667,23 +601,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -691,23 +619,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -715,23 +637,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -739,23 +655,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -763,23 +673,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -787,23 +691,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

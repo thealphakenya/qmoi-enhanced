@@ -1,18 +1,14 @@
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -20,16 +16,11 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
-import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -37,10 +28,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { specificExports } from "@/components/ui/button";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/input";
-import { specificExports } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -48,7 +35,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { specificExports } from "@/components/ui/tabs";
 import {
   Shield,
   Users,
@@ -65,9 +51,6 @@ import {
   Settings,
   Fingerprint,
 } from "lucide-react";
-import { specificExports } from "@/hooks/use-toast";
-import { specificExports } from "./BiometricAuth";
-
 interface User {
   id: string;
   username: string;
@@ -78,7 +61,6 @@ interface User {
   accountStatus: "active" | "suspended" | "locked";
   trustScore: number;
 }
-
 interface AccessControlContextType {
   currentUser: User | null;
   isAuthenticated: boolean;
@@ -91,11 +73,9 @@ interface AccessControlContextType {
     permissions: string[],
   ) => Promise<void>;
 }
-
 const AccessControlContext = createContext<AccessControlContextType | null>(
   null,
 );
-
 export const useAccessControl = () => {
   const context = useContext(AccessControlContext);
   if (!context) {
@@ -104,11 +84,9 @@ export const useAccessControl = () => {
   }
   return context;
 };
-
 interface AccessControlProviderProps {
   children: React.ReactNode;
 }
-
 export const AccessControlProvider: React.FC<AccessControlProviderProps> = ({
   children,
 }) => {
@@ -134,7 +112,6 @@ export const AccessControlProvider: React.FC<AccessControlProviderProps> = ({
       trustScore: 0.78,
     },
   ]);
-
   const authenticate = async (
     userId: string,
     method: string,
@@ -143,23 +120,18 @@ export const AccessControlProvider: React.FC<AccessControlProviderProps> = ({
     if (!user || user.accountStatus !== "active") {
       return false;
     }
-
     // Update last login
     user.lastLogin = new Date();
     setCurrentUser(user);
     setIsAuthenticated(true);
-
     // Log authentication event
     logger.info(`User ${user.username} authenticated via ${method}`);
-
     return true;
   };
-
   const logout = () => {
     setCurrentUser(null);
     setIsAuthenticated(false);
   };
-
   const checkPermission = (permission: string): boolean => {
     if (!currentUser) return false;
     return (
@@ -168,22 +140,19 @@ export const AccessControlProvider: React.FC<AccessControlProviderProps> = ({
       currentUser.permissions.includes("system")
     );
   };
-
   const updateUserPermissions = async (
     userId: string,
     permissions: string[],
   ): Promise<void> => {
     if (!checkPermission("admin")) {
-      production-ready"Insufficient permissions");
+      throw new Error("Insufficient permissions");
     }
-
     setUsers((prevUsers) =>
       prevUsers.map((user) =>
         user.id === userId ? { ...user, permissions } : user,
       ),
     );
   };
-
   const contextValue: AccessControlContextType = {
     currentUser,
     isAuthenticated,
@@ -193,18 +162,15 @@ export const AccessControlProvider: React.FC<AccessControlProviderProps> = ({
     checkPermission,
     updateUserPermissions,
   };
-
   return (
     <AccessControlContext.Provider value={contextValue}>
       {children}
     </AccessControlContext.Provider>
   );
 };
-
 interface UserAccessControlProps {
   onUserAuthenticated?: (user: User) => void;
 }
-
 export const UserAccessControl: React.FC<UserAccessControlProps> = ({
   onUserAuthenticated,
 }) => {
@@ -221,7 +187,6 @@ export const UserAccessControl: React.FC<UserAccessControlProps> = ({
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [newPermissions, setNewPermissions] = useState<string[]>([]);
   const { toast } = useToast();
-
   const handleBiometricSuccess = async (userId: string, confidence: number) => {
     const success = await authenticate(userId, "biometric");
     if (success && currentUser) {
@@ -233,7 +198,6 @@ export const UserAccessControl: React.FC<UserAccessControlProps> = ({
     }
     setShowBiometricAuth(false);
   };
-
   const handleBiometricFailure = (reason: string) => {
     toast({
       title: "Authentication Failed",
@@ -241,10 +205,8 @@ export const UserAccessControl: React.FC<UserAccessControlProps> = ({
       variant: "destructive",
     });
   };
-
   const handlePermissionUpdate = async () => {
     if (!selectedUser) return;
-
     try {
       await updateUserPermissions(selectedUser.id, newPermissions);
       toast({
@@ -261,7 +223,6 @@ export const UserAccessControl: React.FC<UserAccessControlProps> = ({
       });
     }
   };
-
   const getRoleColor = (role: string) => {
     switch (role) {
       case "admin":
@@ -274,7 +235,6 @@ export const UserAccessControl: React.FC<UserAccessControlProps> = ({
         return "bg-gray-100 text-gray-800";
     }
   };
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case "active":
@@ -287,7 +247,6 @@ export const UserAccessControl: React.FC<UserAccessControlProps> = ({
         return "bg-gray-100 text-gray-800";
     }
   };
-
   if (showBiometricAuth) {
     return (
       <BiometricAuth
@@ -297,7 +256,6 @@ export const UserAccessControl: React.FC<UserAccessControlProps> = ({
       />
     );
   }
-
   return (
     <div className="w-full max-w-4xl mx-auto space-y-6">
       {/* Current User Status */}
@@ -345,7 +303,6 @@ export const UserAccessControl: React.FC<UserAccessControlProps> = ({
           )}
         </CardContent>
       </Card>
-
       {/* User Management (Admin Only) */}
       {isAuthenticated && checkPermission("admin") && (
         <Card>
@@ -364,7 +321,6 @@ export const UserAccessControl: React.FC<UserAccessControlProps> = ({
                 <TabsTrigger value="users">Users</TabsTrigger>
                 <TabsTrigger value="permissions">Permissions</TabsTrigger>
               </TabsList>
-
               <TabsContent value="users" className="space-y-4">
                 <div className="grid gap-4">
                   {users.map((user) => (
@@ -412,7 +368,6 @@ export const UserAccessControl: React.FC<UserAccessControlProps> = ({
                   ))}
                 </div>
               </TabsContent>
-
               <TabsContent value="permissions" className="space-y-4">
                 {selectedUser && (
                   <div className="space-y-4">
@@ -475,7 +430,6 @@ export const UserAccessControl: React.FC<UserAccessControlProps> = ({
           </CardContent>
         </Card>
       )}
-
       {/* Access Control Summary */}
       <Card>
         <CardHeader>
@@ -520,5 +474,4 @@ export const UserAccessControl: React.FC<UserAccessControlProps> = ({
     </div>
   );
 };
-
 export default UserAccessControl;

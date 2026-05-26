@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,23 +17,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 // Historical usage analytics for optimization.
-
 interface AnalyticsData {
   totalSessions: number;
   avgSessionTime: number;
   popularTools: Record<string, number>;
   errorRates: Record<string, number>;
 }
-
 export const UsageAnalytics: React.FC = () => {
   const [data, setData] = useState<AnalyticsData>({
     totalSessions: 0,
@@ -45,9 +35,7 @@ export const UsageAnalytics: React.FC = () => {
     popularTools: {},
     errorRates: {},
   });
-
   useEffect(() => {
-    
     setData({
       totalSessions: 150,
       avgSessionTime: 45, // minutes
@@ -55,7 +43,6 @@ export const UsageAnalytics: React.FC = () => {
       errorRates: { web: 0.05, coding: 0.03 },
     });
   }, []);
-
   return (
     <div style={{ padding: "10px", border: "1px solid #ccc", margin: "10px" }}>
       <h4>Usage Analytics</h4>
@@ -80,5 +67,4 @@ export const UsageAnalytics: React.FC = () => {
     </div>
   );
 };
-
 export default UsageAnalytics;

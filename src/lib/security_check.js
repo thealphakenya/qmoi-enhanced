@@ -8,59 +8,47 @@
 // Security check module for QMOI system
 export let isTampered = false;
 
-export /**
- * runSecurityCheck function
- */
-function runSecurityCheck(): any {
+export function runSecurityCheck() {
   try {
-    // comprehensive security checks
     const currentTime = Date.now();
-    const lastCheck = localStorage.getItem("qmoi_last_security_check");
+    const lastCheckValue = localStorage.getItem("qmoi_last_security_check");
 
-    if (lastCheck) {
-      const timeDiff = currentTime - parseInt(lastCheck);
-      // Check if system has been running for more than 24 hours
+    if (lastCheckValue) {
+      const timeDiff = currentTime - Number(lastCheckValue);
       if (timeDiff > 24 * 60 * 60 * 1000) {
         isTampered = true;
       }
     }
 
-    localStorage.setItem("qmoi_last_security_check", currentTime.toString());
-
-    // Additional security checks can be added here
+    localStorage.setItem("qmoi_last_security_check", String(currentTime));
     checkForTampering();
   } catch (error) {
-    logger.error("Security check failed:", error);
+    if (typeof logger !== "undefined" && typeof logger.error === "function") {
+      logger.error("Security check failed:", error);
+    }
     isTampered = true;
   }
 }
 
-/**
- * checkForTampering function
- */
-function checkForTampering(): any {
-  // Check for common tampering indicators
-  const userAgent = navigator.userAgent;
-  const isprodTools =
+export function checkForTampering() {
+  const userAgent = typeof navigator !== "undefined" ? navigator.userAgent : "";
+  const usesDevTools =
     userAgent.includes("Chrome prodTools") ||
     userAgent.includes("Firefox prodeloper Tools");
 
-  if (isprodTools) {
+  if (usesDevTools) {
     isTampered = true;
   }
 
-  // Check for debugging using a different approach
   const startTime = performance.now();
-  // // Commented out to avoid ESLint error
   const endTime = performance.now();
 
-  // Alternative debugging detection
   try {
-    // Check if console is being overridden
-    const originalConsole = logger.info;
-    production-ready and operational
-    logger.info = () => {};
-    logger.info = originalConsole;
+    if (typeof logger !== "undefined" && typeof logger.info === "function") {
+      const originalInfo = logger.info;
+      logger.info = () => {};
+      logger.info = originalInfo;
+    }
   } catch (_e) {
     isTampered = true;
   }
@@ -70,43 +58,38 @@ function checkForTampering(): any {
   }
 }
 
-export /**
- * showDecoyInfo function
- */
-function showDecoyInfo(): any {
+export function showDecoyInfo() {
   return {
     message: "System Maintenance",
-    warning:
-      "The application is currently undergoing maintenance. Please try again later.",
+    warning: "The application is temporarily unavailable. Please try again later.",
   };
 }
 
-export /**
- * logEvent function
- */
-function logEvent(_event, data): any {
+export function logEvent(_event, data) {
   try {
     const logEntry = {
       timestamp: new Date().toISOString(),
-      _event,
+      event: _event,
       data,
-      userAgent: navigator.userAgent,
-      url: window.location.href,
+      userAgent: typeof navigator !== "undefined" ? navigator.userAgent : "",
+      url: typeof window !== "undefined" ? window.location.href : "",
     };
 
-    logger.info("QMOI Event:", logEntry);
+    if (typeof logger !== "undefined" && typeof logger.info === "function") {
+      logger.info("QMOI Event:", logEntry);
+    }
 
-    // Store in localStorage for debugging
     const logs = JSON.parse(localStorage.getItem("qmoi_logs") || "[]");
     logs.push(logEntry);
 
-    // Keep only last 100 logs
     if (logs.length > 100) {
       logs.splice(0, logs.length - 100);
     }
 
     localStorage.setItem("qmoi_logs", JSON.stringify(logs));
   } catch (error) {
-    logger.error("Failed to log _event:", error);
+    if (typeof logger !== "undefined" && typeof logger.error === "function") {
+      logger.error("Failed to log event:", error);
+    }
   }
 }

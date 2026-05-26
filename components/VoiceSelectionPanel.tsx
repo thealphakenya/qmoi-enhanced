@@ -1,40 +1,10 @@
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('React Error Boundary caught an error:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:14Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "react";
-import { specificExports } from "./ui/card";
-import { specificExports } from "./ui/button";
-import { specificExports } from "./ui/badge";
-import { specificExports } from "./ui/slider";
-import { specificExports } from "./ui/label";
-import { specificExports } from "../src/services/VoiceRecognitionService";
-
+"use client";
+import React, { useEffect, useMemo, useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Slider } from "@/components/ui/slider";
+import { Label } from "@/components/ui/label";
 interface HumanVoice {
   id: string;
   name: string;
@@ -45,299 +15,146 @@ interface HumanVoice {
   pitch: number;
   rate: number;
   volume: number;
-  voiceURI: string;
   isDefault: boolean;
 }
-
 interface VoiceSelectionPanelProps {
   isOpen: boolean;
   onClose: () => void;
   onVoiceSelected: (voice: HumanVoice) => void;
 }
-
-export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
+const availableVoices: HumanVoice[] = [
+  {
+    id: "voice-mia",
+    name: "Mia",
+    gender: "female",
+    age: "adult",
+    accent: "British",
+    personality: "Warm and confident",
+    pitch: 1.0,
+    rate: 1.0,
+    volume: 0.9,
+    isDefault: true,
+  },
+  {
+    id: "voice-ace",
+    name: "Ace",
+    gender: "male",
+    age: "young",
+    accent: "American",
+    personality: "Energetic and fast-paced",
+    pitch: 1.1,
+    rate: 1.15,
+    volume: 0.85,
+    isDefault: false,
+  },
+  {
+    id: "voice-echo",
+    name: "Echo",
+    gender: "neutral",
+    age: "mature",
+    accent: "Australian",
+    personality: "Calm and measured",
+    pitch: 0.95,
+    rate: 0.95,
+    volume: 0.9,
+    isDefault: false,
+  },
+];
+export default function VoiceSelectionPanel({
   isOpen,
   onClose,
   onVoiceSelected,
-}) => {
-  const [voices, setVoices] = useState<HumanVoice[]>([]);
-  const [selectedVoice, setSelectedVoice] = useState<HumanVoice | null>(null);
-  const [voiceSettings, setVoiceSettings] = useState({
-    pitch: 1.0,
-    rate: 1.0,
-    volume: 1.0,
-  });
-  const [preferredNames, setPreferredNames] = useState<string[]>([]);
-  const [newName, setNewName] = useState("");
-  const [isFirstTime, setIsFirstTime] = useState(false);
-  const [voiceService] = useState(() => VoiceRecognitionService.getInstance());
-
+}: VoiceSelectionPanelProps): JSX.Element | null {
+  const [selectedVoiceId, setSelectedVoiceId] = useState<string>(availableVoices[0].id);
+  const [pitch, setPitch] = useState(1.0);
+  const [rate, setRate] = useState(1.0);
+  const [volume, setVolume] = useState(0.85);
+  const selectedVoice = useMemo(
+    () => availableVoices.find((voice) => voice.id === selectedVoiceId) || availableVoices[0],
+    [selectedVoiceId],
+  );
   useEffect(() => {
-    if (isOpen) {
-      loadVoices();
-      loadUserSettings();
-    }
-  }, [isOpen]);
-
-  const loadVoices = () => {
-    production-ready and operational
-    production-ready and operational
-
-    const currentVoice = voiceService.getCurrentVoice();
-    if (currentVoice) {
-      setSelectedVoice(currentVoice);
-      setVoiceSettings({
-        pitch: currentVoice.pitch,
-        rate: currentVoice.rate,
-        volume: currentVoice.volume,
-      });
-    }
+    setPitch(selectedVoice.pitch);
+    setRate(selectedVoice.rate);
+    setVolume(selectedVoice.volume);
+  }, [selectedVoice]);
+  const handleConfirm = () => {
+    onVoiceSelected({ ...selectedVoice, pitch, rate, volume });
+    onClose();
   };
-
-  const loadUserSettings = () => {
-    const names = voiceService.getPreferredNames();
-    setPreferredNames(names);
-
-    // Check if this is first time setup
-    const hasUsedVoice = localStorage.getItem("voiceFirstTimeSetup");
-    setIsFirstTime(!hasUsedVoice);
-  };
-
-  const handleVoiceSelect = (voice: HumanVoice) => {
-    setSelectedVoice(voice);
-    setVoiceSettings({
-      pitch: voice.pitch,
-      rate: voice.rate,
-      volume: voice.volume,
-    });
-
-    // Test the voice
-    voiceService.speak(`Hello! I'm ${voice.name}. How can I help you today?`);
-  };
-
-  const handleConfirmSelection = () => {
-    if (selectedVoice) {
-      voiceService.selectVoice(selectedVoice.id);
-      voiceService.updateVoiceSettings(voiceSettings);
-
-      // Add preferred names
-      preferredNames.forEach((name) => {
-        voiceService.addPreferredName(name);
-      });
-
-      onVoiceSelected(selectedVoice);
-      onClose();
-    }
-  };
-
-  const handleAddName = () => {
-    if (newName.trim() && !preferredNames.includes(newName.trim())) {
-      setPreferredNames([...preferredNames, newName.trim()]);
-      setNewName("");
-    }
-  };
-
-  const handleRemoveName = (name: string) => {
-    setPreferredNames(preferredNames.filter((n) => n !== name));
-  };
-
-  const getGenderIcon = (gender: string) => {
-    switch (gender) {
-      case "male":
-        return "👨";
-      case "female":
-        return "👩";
-      case "neutral":
-        return "👤";
-      default:
-        return "👤";
-    }
-  };
-
-  if (!isOpen) return null;
-
+  if (!isOpen) {
+    return null;
+  }
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <Card className="w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+      <Card className="w-full max-w-5xl overflow-hidden">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            🎤{" "}
-            {isFirstTime ? "Choose Your AI Voice Assistant" : "Voice Settings"}
+          <CardTitle className="flex flex-col gap-2">
+            <span className="text-xl">Voice Selection</span>
+            <span className="text-sm text-slate-500">Choose your preferred assistant voice and personalize playback settings.</span>
           </CardTitle>
-          {isFirstTime && (
-            <p className="text-muted-foreground">
-              Welcome! Please select your preferred AI voice assistant. You can
-              change this anytime in settings.
-            </p>
-          )}
         </CardHeader>
-
-        <CardContent className="space-y-6">
-          {/* Voice Selection */}
-          <div>
-            production-ready and operational
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {voices.map((voice) => (
-                <Card
+        <CardContent className="grid gap-6 lg:grid-cols-[1.3fr_0.7fr] p-6">
+          <section className="space-y-4">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {availableVoices.map((voice) => (
+                <button
                   key={voice.id}
-                  className={`cursor-pointer transition-all ${
-                    selectedVoice?.id === voice.id
-                      ? "ring-2 ring-primary bg-primary/5"
-                      : "hover:bg-muted/50"
+                  type="button"
+                  onClick={() => setSelectedVoiceId(voice.id)}
+                  className={`rounded-3xl border p-4 text-left transition ${
+                    selectedVoiceId === voice.id
+                      ? "border-slate-900 bg-slate-100"
+                      : "border-slate-200 bg-white hover:border-slate-300"
                   }`}
-                  onClick={() => handleVoiceSelect(voice)}
                 >
-                  <CardContent className="p-4">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="text-2xl">
-                        {getGenderIcon(voice.gender)}
-                      </div>
-                      <div>
-                        <h4 className="font-semibold">{voice.name}</h4>
-                        <p className="text-sm text-muted-foreground">
-                          {voice.accent}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-2 mb-2">
-                      <Badge variant="secondary">{voice.age}</Badge>
-                      <Badge variant="outline">{voice.gender}</Badge>
-                      {voice.isDefault && (
-                        <Badge variant="default">Default</Badge>
-                      )}
-                    </div>
-
-                    <p className="text-sm text-muted-foreground mb-3">
-                      {voice.personality}
-                    </p>
-
-                    <div className="space-y-2">
-                      <div className="flex justify-between text-xs">
-                        <span>Pitch: {voice.pitch}</span>
-                        <span>Rate: {voice.rate}</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                  <div className="mb-3 flex items-center gap-2 text-xl">
+                    <span>{voice.gender === "male" ? "👨" : voice.gender === "female" ? "👩" : "👤"}</span>
+                    <span className="font-semibold">{voice.name}</span>
+                  </div>
+                  <div className="text-sm text-slate-500">{voice.accent}</div>
+                  <div className="mt-3 flex flex-wrap gap-2 text-xs text-slate-600">
+                    <Badge variant="outline">{voice.age}</Badge>
+                    <Badge variant="outline">{voice.gender}</Badge>
+                    {voice.isDefault && <Badge variant="default">Default</Badge>}
+                  </div>
+                </button>
               ))}
             </div>
-          </div>
-
-          {/* Voice Settings */}
-          {selectedVoice && (
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Voice Settings</h3>
-              <div className="space-y-4">
-                <div>
-                  <Label>Pitch</Label>
-                  <Slider
-                    value={[voiceSettings.pitch]}
-                    onValueChange={([value]) =>
-                      setVoiceSettings({ ...voiceSettings, pitch: value })
-                    }
-                    min={0.5}
-                    max={2.0}
-                    step={0.1}
-                    className="mt-2"
-                  />
-                  <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                    <span>Lower</span>
-                    <span>Higher</span>
-                  </div>
-                </div>
-
-                <div>
-                  <Label>Speed</Label>
-                  <Slider
-                    value={[voiceSettings.rate]}
-                    onValueChange={([value]) =>
-                      setVoiceSettings({ ...voiceSettings, rate: value })
-                    }
-                    min={0.5}
-                    max={2.0}
-                    step={0.1}
-                    className="mt-2"
-                  />
-                  <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                    <span>Slower</span>
-                    <span>Faster</span>
-                  </div>
-                </div>
-
-                <div>
-                  <Label>Volume</Label>
-                  <Slider
-                    value={[voiceSettings.volume]}
-                    onValueChange={([value]) =>
-                      setVoiceSettings({ ...voiceSettings, volume: value })
-                    }
-                    min={0.0}
-                    max={1.0}
-                    step={0.1}
-                    className="mt-2"
-                  />
-                  <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                    <span>Quiet</span>
-                    <span>Loud</span>
-                  </div>
-                </div>
+            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4">
+              <h3 className="text-sm font-semibold text-slate-900">Selected voice</h3>
+              <p className="mt-2 text-sm text-slate-700">{selectedVoice.personality}</p>
+            </div>
+          </section>
+          <aside className="space-y-5">
+            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 space-y-4">
+              <div>
+                <Label htmlFor="pitch">Pitch</Label>
+                <Slider id="pitch" value={pitch} onValueChange={setPitch} min={0.7} max={1.3} step={0.05} />
+                <div className="mt-2 text-xs text-slate-500">{pitch.toFixed(2)}</div>
+              </div>
+              <div>
+                <Label htmlFor="rate">Rate</Label>
+                <Slider id="rate" value={rate} onValueChange={setRate} min={0.7} max={1.3} step={0.05} />
+                <div className="mt-2 text-xs text-slate-500">{rate.toFixed(2)}</div>
+              </div>
+              <div>
+                <Label htmlFor="volume">Volume</Label>
+                <Slider id="volume" value={volume} onValueChange={setVolume} min={0.4} max={1} step={0.05} />
+                <div className="mt-2 text-xs text-slate-500">{Math.round(volume * 100)}%</div>
               </div>
             </div>
-          )}
-
-          {/* Preferred Names */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Preferred Names</h3>
-            <p className="text-sm text-muted-foreground mb-3">
-              Add names you'd like the AI to call you by. The AI will randomly
-              use these names when addressing you.
-            </p>
-
-            <div className="flex gap-2 mb-3">
-              <input
-                type="text"
-                value={newName}
-                onChange={(e) => setNewName(e.target.value)}
-                ="Enter a name..."
-                className="flex-1 px-3 py-2 border rounded-md"
-                onKeyPress={(e) => e.key === "Enter" && handleAddName()}
-              />
-              <Button onClick={handleAddName} size="sm">
-                Add
+            <div className="space-y-3">
+              <Button onClick={handleConfirm} className="w-full">
+                Confirm Voice
+              </Button>
+              <Button variant="secondary" onClick={onClose} className="w-full">
+                Cancel
               </Button>
             </div>
-
-            <div className="flex flex-wrap gap-2">
-              {preferredNames.map((name) => (
-                <Badge
-                  key={name}
-                  variant="secondary"
-                  className="cursor-pointer"
-                >
-                  {name}
-                  <button
-                    onClick={() => handleRemoveName(name)}
-                    className="ml-2 text-xs hover:text-destructive"
-                  >
-                    ×
-                  </button>
-                </Badge>
-              ))}
-            </div>
-          </div>
-
-          {/* Actions */}
-          <div className="flex justify-end gap-3 pt-4 border-t">
-            <Button variant="outline" onClick={onClose}>
-              Cancel
-            </Button>
-            <Button onClick={handleConfirmSelection} enabled={!selectedVoice}>
-              {isFirstTime ? "Start Using Voice Assistant" : "Save Settings"}
-            </Button>
-          </div>
+          </aside>
         </CardContent>
       </Card>
     </div>
   );
-};
+}

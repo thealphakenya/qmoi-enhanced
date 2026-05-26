@@ -1,7 +1,5 @@
 "use client";
-
 import React, { useEffect, useRef, useState } from "react";
-
 export interface ChatMessage {
   id: string | number;
   content: string;
@@ -13,14 +11,12 @@ export interface ChatMessage {
     name: string;
   };
 }
-
 interface ChatbotProps {
   chatHistory: ChatMessage[];
   setChatHistory: React.Dispatch<React.SetStateAction<ChatMessage[]>>;
   selectedModel?: string;
   setSelectedModel?: (model: string) => void;
 }
-
 const Chatbot: React.FC<ChatbotProps> = ({
   chatHistory,
   setChatHistory,
@@ -41,11 +37,9 @@ const Chatbot: React.FC<ChatbotProps> = ({
   const [attachmentUrl, setAttachmentUrl] = useState<string | null>(null);
   const [attachmentType, setAttachmentType] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chatHistory]);
-
   useEffect(() => {
     try {
       if (typeof window !== "undefined") {
@@ -55,7 +49,6 @@ const Chatbot: React.FC<ChatbotProps> = ({
       // ignore storage failures
     }
   }, [speakResponses]);
-
   const getSessionId = () => {
     if (typeof window === "undefined") return `server-${Date.now()}`;
     try {
@@ -74,7 +67,6 @@ const Chatbot: React.FC<ChatbotProps> = ({
       return `s_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
     }
   };
-
   const speakText = (text: string) => {
     if (typeof window === "undefined" || !speakResponses) return;
     const synth = window.speechSynthesis;
@@ -85,7 +77,6 @@ const Chatbot: React.FC<ChatbotProps> = ({
     synth.cancel();
     synth.speak(utterancet);
   };
-
   const handleAttachmentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0] ?? null;
     if (!file) {
@@ -94,17 +85,14 @@ const Chatbot: React.FC<ChatbotProps> = ({
       setAttachmentType(null);
       return;
     }
-
     const url = URL.createObjectURL(file);
     setAttachmentFile(file);
     setAttachmentUrl(url);
     setAttachmentType(file.type || "application/octet-stream");
   };
-
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     if (!inputMessage.trim() && !attachmentUrl) return;
-
     const userMessage: ChatMessage = {
       id: `user-${Date.now()}`,
       content: inputMessage.trim() || "[Attachment]",
@@ -119,11 +107,9 @@ const Chatbot: React.FC<ChatbotProps> = ({
             }
           : undefined,
     };
-
     setChatHistory((prev) => [...prev, userMessage]);
     setInputMessage("");
     setIsLoading(true);
-
     try {
       const sessionId = getSessionId();
       const response = await fetch("/api/qmoi/chat", {
@@ -145,21 +131,18 @@ const Chatbot: React.FC<ChatbotProps> = ({
           },
         }),
       });
-
       const data = await response.json();
       const replyText =
         data?.response ||
         (Array.isArray(data?.choices) && data.choices[0]?.message?.content) ||
         data?.message ||
         "Sorry, QMOI could not generate a response.";
-
       const aiMessage: ChatMessage = {
         id: `ai-${Date.now()}`,
         content: replyText,
         sender: "ai",
         timestamp: new Date().toISOString(),
       };
-
       setChatHistory((prev) => [...prev, aiMessage]);
       speakText(replyText);
     } catch (error) {
@@ -178,7 +161,6 @@ const Chatbot: React.FC<ChatbotProps> = ({
       setAttachmentType(null);
     }
   };
-
   return (
     <div className="bg-[#1a1a1a] border border-green-600 rounded-lg p-4 mb-4">
       <div className="flex items-center justify-between mb-4 gap-3">
@@ -199,7 +181,6 @@ const Chatbot: React.FC<ChatbotProps> = ({
           </select>
         )}
       </div>
-
       <div className="h-64 overflow-y-auto mb-4 space-y-3 rounded-lg border border-slate-800 bg-slate-950 p-3">
         {chatHistory.map((message) => (
           <div
@@ -229,7 +210,6 @@ const Chatbot: React.FC<ChatbotProps> = ({
         )}
         <div ref={messagesEndRef} />
       </div>
-
       <form onSubmit={handleSubmit} className="space-y-3">
         <div className="flex items-center gap-2">
           <input
@@ -264,27 +244,19 @@ const Chatbot: React.FC<ChatbotProps> = ({
     </div>
   );
 };
-
 export default Chatbot;
-
 export { Chatbot };
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

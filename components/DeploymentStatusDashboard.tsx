@@ -2,11 +2,8 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
 // To use Chart.js, install with: npm install chart.js react-chartjs-2
-import { specificExports } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -17,8 +14,6 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-// data: import { specificExports } from '../context/MasterContext';
-
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -28,7 +23,6 @@ ChartJS.register(
   Tooltip,
   Legend,
 );
-
 export default /**
  * DeploymentStatusDashboard function
  */
@@ -48,7 +42,6 @@ function DeploymentStatusDashboard(): any {
   const [history, setHistory] = useState<any[]>([]); // Accepts extra fields
   const [envManagerStatus, setEnvManagerStatus] = useState<any>(null);
   const [huggingfaceStatus, setHuggingfaceStatus] = useState<any>(null);
-
   async /**
  * fetchStatus function
  */
@@ -71,15 +64,12 @@ function fetchStatus(): any {
       setLoading(false);
     }
   }
-
   useEffect(() => {
     fetchStatus();
     const interval = setInterval(fetchStatus, 30000);
     return () => clearInterval(interval);
   }, []);
-
   if (!isMaster) return null;
-
   // Prepare chart data
   const chartData = {
     labels: history.map((h) => h.timestamp),
@@ -107,7 +97,6 @@ function fetchStatus(): any {
       },
     ],
   };
-
   // New: Chart for deployment duration
   const durationChartData = {
     labels: history.map((h) => h.timestamp),
@@ -121,7 +110,6 @@ function fetchStatus(): any {
       },
     ],
   };
-
   const chartOptions = {
     responsive: true,
     plugins: {
@@ -135,7 +123,6 @@ function fetchStatus(): any {
       y: { beginAtZero: true, max: 1, ticks: { stepSize: 1 } },
     },
   };
-
   const durationChartOptions = {
     responsive: true,
     plugins: {
@@ -146,7 +133,6 @@ function fetchStatus(): any {
       y: { beginAtZero: true },
     },
   };
-
   return (
     <div
       style={{

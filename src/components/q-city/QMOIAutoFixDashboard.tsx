@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import logger from '../../lib/logger';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -22,14 +18,10 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 interface ErrorItem {
   id: number;
   type: string;
@@ -38,7 +30,6 @@ interface ErrorItem {
   timestamp: string;
   status: string;
 }
-
 interface FixItem {
   errorId: number;
   type: string;
@@ -47,7 +38,6 @@ interface FixItem {
   timestamp: string;
   duration: number;
 }
-
 interface GitHubActionStatus {
   preCheck: string;
   autoFix: string;
@@ -56,7 +46,6 @@ interface GitHubActionStatus {
   deploy: string;
   lastRun: string;
 }
-
 const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
   isMaster,
 }) => {
@@ -67,7 +56,6 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
   );
   const [isRunning, setIsRunning] = useState(false);
   const [lastUpdate, setLastUpdate] = useState<string>("");
-
   const fetchErrorLog = async () => {
     try {
       const Errors: ErrorItem[] = [
@@ -101,7 +89,6 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       (globalThis.console as any)?.error?.("Failed to fetch error log:", error);
     }
   };
-
   const fetchFixHistory = async () => {
     try {
       const Fixes: FixItem[] = [
@@ -138,7 +125,6 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       );
     }
   };
-
   const fetchGitHubStatus = async () => {
     try {
       const Status: GitHubActionStatus = {
@@ -157,7 +143,6 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       );
     }
   };
-
   useEffect(() => {
     if (isMaster) {
       fetchErrorLog();
@@ -166,7 +151,6 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       setLastUpdate(new Date().toISOString());
     }
   }, [isMaster]);
-
   const triggerAutoFix = async () => {
     setIsRunning(true);
     try {
@@ -181,7 +165,6 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       setIsRunning(false);
     }
   };
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case "success":
@@ -194,7 +177,6 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         return "bg-gray-100 text-gray-800";
     }
   };
-
   const getSeverityColor = (severity: string) => {
     switch (severity) {
       case "high":
@@ -207,16 +189,13 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         return "bg-gray-100 text-gray-800";
     }
   };
-
   if (!isMaster)
     return <div className="text-red-500">Access denied: Master only</div>;
-
   const totalErrors = errors.length;
   const fixedErrors = fixes.filter((f) => f.success).length;
   const remainingErrors = totalErrors - fixedErrors;
   const successRate =
     totalErrors > 0 ? Math.round((fixedErrors / totalErrors) * 100) : 100;
-
   return (
     <Card className="space-y-4 mt-4">
       <CardHeader>
@@ -261,7 +240,6 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
             <div className="text-sm text-gray-600">Success Rate</div>
           </div>
         </div>
-
         {githubStatus && (
           <div className="mb-6">
             <h4 className="font-semibold mb-2">GitHub Actions Status</h4>
@@ -285,7 +263,6 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
             </div>
           </div>
         )}
-
         <div className="mb-6">
           <h4 className="font-semibold mb-2">All Errors</h4>
           <div className="space-y-2 max-h-40 overflow-y-auto">
@@ -310,7 +287,6 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
             ))}
           </div>
         </div>
-
         <div className="mb-6">
           <h4 className="font-semibold mb-2">Fix History</h4>
           <div className="space-y-2 max-h-40 overflow-y-auto">
@@ -339,7 +315,6 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
             ))}
           </div>
         </div>
-
         <div className="text-xs text-gray-500 text-center">
           Last updated: {new Date(lastUpdate).toLocaleString()}
         </div>
@@ -347,5 +322,4 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
     </Card>
   );
 };
-
 export default QMOIAutoFixDashboard;

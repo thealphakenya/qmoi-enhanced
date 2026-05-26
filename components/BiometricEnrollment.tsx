@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,16 +17,11 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
-import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -38,8 +29,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { specificExports } from "@/components/ui/button";
-import { specificExports } from "@/components/ui/badge";
 import {
   Fingerprint,
   Eye,
@@ -48,13 +37,11 @@ import {
   AlertTriangle,
   Zap,
 } from "lucide-react";
-
 interface BiometricEnrollmentProps {
   userId: string;
   sessionId: string;
   onEnrollmentComplete?: (method: string, enrolled: boolean) => void;
 }
-
 export const BiometricEnrollment: React.FC<BiometricEnrollmentProps> = ({
   userId,
   sessionId,
@@ -72,30 +59,24 @@ export const BiometricEnrollment: React.FC<BiometricEnrollmentProps> = ({
     },
   );
   const [feedbackMessage, setFeedbackMessage] = useState("");
-
   const enrollBiometric = useCallback(
     async (method: "fingerprint" | "facial" | "voice") => {
       setEnrolling(true);
       setCurrentMethod(method);
       setFeedbackMessage(`Enrolling ${method}...`);
-
       try {
-        
         const steps = [
           { step: 1, message: `Position your ${method}...` },
           { step: 2, message: `Capturing ${method} data...` },
           { step: 3, message: `Processing...` },
           { step: 4, message: `Verifying quality...` },
         ];
-
         for (const step of steps) {
           await new Promise((resolve) => setTimeout(resolve, 800));
           setFeedbackMessage(`${step.message}`);
         }
-
         const confidence = 0.85 + Math.random() * 0.14; // 0.85-0.99
         const quality = Math.round((confidence + Math.random() * 0.05) * 100);
-
         const response = await apiClient.get("/api/auth/biometric/capture", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -111,19 +92,15 @@ export const BiometricEnrollment: React.FC<BiometricEnrollmentProps> = ({
             },
           }),
         });
-
         if (!response.ok) {
         }
-
         const data = await response.json();
-
         // Update status
         const newStatus = { ...enrollmentStatus };
         newStatus[method].quality = data.quality || quality;
         newStatus[method].captures = (newStatus[method].captures || 0) + 1;
         newStatus[method].enrolled = data.enrolled || false;
         setEnrollmentStatus(newStatus);
-
         if (data.enrolled) {
           setFeedbackMessage(`✅ ${method} successfully enrolled!`);
           if (onEnrollmentComplete) {
@@ -145,7 +122,6 @@ export const BiometricEnrollment: React.FC<BiometricEnrollmentProps> = ({
     },
     [userId, sessionId, enrollmentStatus, onEnrollmentComplete],
   );
-
   const BiometricMethod = ({
     method,
     label,
@@ -157,7 +133,6 @@ export const BiometricEnrollment: React.FC<BiometricEnrollmentProps> = ({
   }) => {
     const status = enrollmentStatus[method];
     const isEnrolled = status.enrolled;
-
     return (
       <Card className="mb-4">
         <CardHeader className="pb-3">
@@ -192,7 +167,6 @@ export const BiometricEnrollment: React.FC<BiometricEnrollmentProps> = ({
               />
             </div>
           </div>
-
           <Button
             onClick={() => enrollBiometric(method)}
             enabled={isEnrolled || enrolling}
@@ -218,7 +192,6 @@ export const BiometricEnrollment: React.FC<BiometricEnrollmentProps> = ({
       </Card>
     );
   };
-
   return (
     <div className="w-full max-w-md mx-auto">
       <div className="mb-6">
@@ -227,13 +200,11 @@ export const BiometricEnrollment: React.FC<BiometricEnrollmentProps> = ({
           Secure your account with biometric authentication
         </p>
       </div>
-
       {feedbackMessage && (
         <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-700">
           {feedbackMessage}
         </div>
       )}
-
       <div className="space-y-3">
         <BiometricMethod
           method="fingerprint"
@@ -247,14 +218,12 @@ export const BiometricEnrollment: React.FC<BiometricEnrollmentProps> = ({
         />
         <BiometricMethod method="voice" label="Voice Recognition" icon={Mic} />
       </div>
-
       <div className="mt-6 p-4 bg-gray-50 rounded-lg">
         <p className="text-xs text-gray-600">
           💡 Tip: Enroll at least one biometric method for faster login. Each
           method requires 3 successful captures.
         </p>
       </div>
-
       <div className="mt-6 flex gap-2">
         {Object.entries(enrollmentStatus).map(([method, status]) => (
           <Badge
@@ -269,5 +238,4 @@ export const BiometricEnrollment: React.FC<BiometricEnrollmentProps> = ({
     </div>
   );
 };
-
 export default BiometricEnrollment;

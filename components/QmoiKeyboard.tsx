@@ -1,18 +1,14 @@
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -20,17 +16,10 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "react";
-import { specificExports } from "./MasterContext";
-import { specificExports } from "react-icons/fa";
-
 interface QmoiKeyboardProps {
   isVisible: boolean;
   onTextChange: (text: string) => void;
@@ -38,18 +27,15 @@ interface QmoiKeyboardProps {
   language?: "en" | "sw";
   theme?: "light" | "dark" | "auto";
 }
-
 interface KeyboardLayout {
   en: string[][];
   sw: string[][];
 }
-
 interface Prediction {
   word: string;
   confidence: number;
   language: "en" | "sw";
 }
-
 export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
   isVisible,
   onTextChange,
@@ -58,7 +44,6 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
   theme = "auto",
 }) => {
   const { isMaster } = useMaster();
-
   const [currentText, setCurrentText] = useState("");
   const [predictions, setPredictions] = useState<Prediction[]>([]);
   const [isListening, setIsListening] = useState(false);
@@ -66,10 +51,8 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
   const [swahiliMode, setSwahiliMode] = useState(false);
   const [voiceEnabled, setVoiceEnabled] = useState(true);
   const [autoCorrect, setAutoCorrect] = useState(true);
-
   const recognitionRef = useRef<any>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
-
   const keyboardLayouts: KeyboardLayout = {
     en: [
       ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
@@ -84,7 +67,6 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
       ["123", "🌐", "🎤", "space", "↵"],
     ],
   };
-
   const swahiliWords = [
     "jambo",
     "asante",
@@ -120,7 +102,6 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
     "huyu",
     "hawa",
   ];
-
   const englishWords = [
     "hello",
     "world",
@@ -145,7 +126,6 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
     "wonderful",
     "amazing",
   ];
-
   useEffect(() => {
     // Initialize speech recognition
     if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
@@ -155,7 +135,6 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
       recognitionRef.current.continuous = true;
       recognitionRef.current.interimResults = true;
       recognitionRef.current.lang = language === "sw" ? "sw-KE" : "en-US";
-
       recognitionRef.current.onresult = (event: unknown) => {
         let finalTranscript = "";
         for (let i = event.resultIndex; i < event.results.length; i++) {
@@ -167,7 +146,6 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
           handleVoiceInput(finalTranscript);
         }
       };
-
       recognitionRef.current.onerror = (event: unknown) => {
         (globalThis.console as any)?.error?.(
           "Speech recognition error:",
@@ -177,23 +155,19 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
       };
     }
   }, [language]);
-
   useEffect(() => {
     // AI learning mode - analyze typing patterns
     if (isAILearning && currentText.length > 0) {
       analyzeTypingPattern(currentText);
     }
   }, [currentText, isAILearning]);
-
   const analyzeTypingPattern = (text: string) => {
     // AI analyzes typing patterns and learns user preferences
     const words = text.toLowerCase().split(/\s+/);
     const wordFrequency: Record<string, number> = {};
-
     words.forEach((word) => {
       wordFrequency[word] = (wordFrequency[word] || 0) + 1;
     });
-
     // Store learning data
     localStorage.setItem(
       "qmoi-keyboard-learning",
@@ -204,16 +178,13 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
       }),
     );
   };
-
   const generatePredictions = (input: string): Prediction[] => {
     const predictions: Prediction[] = [];
     const words = language === "sw" ? swahiliWords : englishWords;
-
     if (input.length > 0) {
       const matchingWords = words.filter((word) =>
         word.toLowerCase().startsWith(input.toLowerCase()),
       );
-
       matchingWords.slice(0, 5).forEach((word) => {
         predictions.push({
           word,
@@ -222,13 +193,10 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
         });
       });
     }
-
     return predictions.sort((a, b) => b.confidence - a.confidence);
   };
-
   const handleKeyPress = (key: string) => {
     let newText = currentText;
-
     switch (key) {
       case "⌫":
         newText = currentText.slice(0, -1);
@@ -251,25 +219,20 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
       default:
         newText = currentText + key;
     }
-
     setCurrentText(newText);
     onTextChange(newText);
-
     // Generate predictions
     const newPredictions = generatePredictions(newText.split(" ").pop() || "");
     setPredictions(newPredictions);
   };
-
   const handleVoiceInput = (transcript: string) => {
     const newText = currentText + " " + transcript;
     setCurrentText(newText);
     onTextChange(newText);
     setIsListening(false);
   };
-
   const toggleVoiceInput = () => {
     if (!recognitionRef.current) return;
-
     if (isListening) {
       recognitionRef.current.stop();
       setIsListening(false);
@@ -278,17 +241,14 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
       setIsListening(true);
     }
   };
-
   const selectPrediction = (prediction: Prediction) => {
     const words = currentText.split(" ");
     words[words.length - 1] = prediction.word;
     const newText = words.join(" ") + " ";
-
     setCurrentText(newText);
     onTextChange(newText);
     setPredictions([]);
   };
-
   const getThemeClass = () => {
     if (theme === "auto") {
       return "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100";
@@ -297,9 +257,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
       ? "bg-gray-800 text-gray-100"
       : "bg-gray-100 text-gray-900";
   };
-
   if (!isVisible) return null;
-
   return (
     <div
       className={`fixed bottom-0 left-0 right-0 z-50 ${getThemeClass()} border-t`}
@@ -318,7 +276,6 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
           ))}
         </div>
       )}
-
       {/* Text Input Area */}
       <div className="p-2">
         <textarea
@@ -333,7 +290,6 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
           rows={2}
         />
       </div>
-
       {/* Keyboard Layout */}
       <div className="p-2">
         {keyboardLayouts[language].map((row, rowIndex) => (
@@ -357,7 +313,6 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
           </div>
         ))}
       </div>
-
       {/* AI Status Bar */}
       <div className="flex items-center justify-between p-2 bg-gray-50 dark:bg-gray-900 text-xs">
         <div className="flex items-center gap-2">
@@ -366,14 +321,12 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
           })}
           <span>{isAILearning ? "AI Learning" : "AI Idle"}</span>
         </div>
-
         <div className="flex items-center gap-2">
           {React.createElement(FaLanguage as React.ElementType, {
             className: `${swahiliMode ? "text-blue-500" : "text-gray-400"}`,
           })}
           <span>{swahiliMode ? "Kiswahili" : "English"}</span>
         </div>
-
         <div className="flex items-center gap-2">
           {voiceEnabled
             ? React.createElement(FaVolumeUp as React.ElementType, {
@@ -385,7 +338,6 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
           <span>{isListening ? "Listening..." : "Voice"}</span>
         </div>
       </div>
-
       {/* Master Controls */}
       {isMaster && (
         <div className="p-2 bg-yellow-50 dark:bg-yellow-900 border-t">
@@ -399,7 +351,6 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
               />
               AI Learning
             </label>
-
             <label className="flex items-center gap-1">
               <input
                 type="checkbox"
@@ -409,7 +360,6 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
               />
               Auto Correct
             </label>
-
             <label className="flex items-center gap-1">
               <input
                 type="checkbox"

@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,14 +17,10 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 interface NewsItem {
   id: number;
   title: string;
@@ -41,11 +33,9 @@ interface NewsItem {
   media?: { type: string; url: string }[];
   analytics?: { views: number; shares: number; engagement: number };
 }
-
 interface QNewsDashboardProps {
   isMaster?: boolean;
 }
-
 const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
   const [news, setNews] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(false);
@@ -60,7 +50,6 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
   const [analytics, setAnalytics] = useState<any[]>([]);
   const [mediaUrl, setMediaUrl] = useState("");
   const [mediaType, setMediaType] = useState("image");
-
   const fetchNews = async () => {
     setLoading(true);
     const res = await apiClient.get("/api/qnews");
@@ -68,7 +57,6 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
     setNews(data.news || []);
     setLoading(false);
   };
-
   const fetchAnalytics = async () => {
     if (!isMaster) return;
     const res = await apiClient.get("/api/qnews/analytics", {
@@ -77,12 +65,10 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
     const data = await res.json();
     setAnalytics(data.analytics || []);
   };
-
   useEffect(() => {
     fetchNews();
     if (isMaster) fetchAnalytics();
   }, [isMaster]);
-
   const handleApprove = async (id: number) => {
     await apiClient.get("/api/qnews", {
       method: "PUT",
@@ -91,7 +77,6 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
     });
     fetchNews();
   };
-
   const handleEdit = (item: NewsItem) => {
     setEditingId(item.id);
     setForm({
@@ -102,7 +87,6 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
       media: item.media || [],
     });
   };
-
   const handleSave = async () => {
     if (editingId) {
       await apiClient.get("/api/qnews", {
@@ -134,7 +118,6 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
     fetchNews();
     if (isMaster) fetchAnalytics();
   };
-
   const handleSchedule = async (id: number, scheduledAt: string) => {
     await apiClient.get("/api/qnews/schedule", {
       method: "POST",
@@ -143,7 +126,6 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
     });
     fetchNews();
   };
-
   const handleAddMedia = async () => {
     if (!editingId) return;
     await apiClient.get("/api/qnews/media", {
@@ -157,13 +139,11 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
     setMediaUrl("");
     fetchNews();
   };
-
   // Small s for advanced features
   const exportEngagement = () =>
     notification.show("Export engagement analytics ()");
   const shareToChannels = () =>
     notification.show("Share to WhatsApp/Telegram ()");
-
   return (
     <Card className="space-y-4">
       <CardHeader>
@@ -363,5 +343,4 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
     </Card>
   );
 };
-
 export default QNewsDashboard;

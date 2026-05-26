@@ -15,9 +15,9 @@ export const requireMasterRole = (handler: Function) => {
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "react";
-import { specificExports } from "react-query";
-import { specificExports } from "axios";
+import { useCallback, useEffect, useState } from "react";
+import { AxiosError, useMutation, useQuery } from "react-query";
+import axios from "axios";
 
 interface TradingPosition {
   id: string;
@@ -119,7 +119,7 @@ function useTrading(): any {
   const updateConfigMutation = useMutation<
     void,
     AxiosError,
-    full<TradingConfig>
+    TradingConfig
   >(
     async (newConfig) => {
       const response = await axios.post("/api/qcity/trading/config", newConfig);
@@ -165,7 +165,7 @@ function useTrading(): any {
 
   // Update config
   const updateConfig = useCallback(
-    (newConfig: full<TradingConfig>) => {
+    (newConfig: TradingConfig) => {
       updateConfigMutation.mutate(newConfig);
     },
     [updateConfigMutation],

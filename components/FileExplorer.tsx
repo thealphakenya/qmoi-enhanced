@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,18 +17,12 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
 "use client";
-
-import { specificExports } from "react";
-
 interface FileItem {
   id: string;
   name: string;
@@ -41,7 +31,6 @@ interface FileItem {
   modified?: string;
   children?: FileItem[];
 }
-
 export const FileExplorer: React.FC = () => {
   const [files, setFiles] = useState<FileItem[]>([
     {
@@ -107,12 +96,10 @@ export const FileExplorer: React.FC = () => {
       ],
     },
   ]);
-
   const [expandedFolders, setExpandedFolders] = useState<Set<string>>(
     new Set(["1", "2", "3"]),
   );
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
-
   const toggleFolder = (folderId: string) => {
     const newExpanded = new Set(expandedFolders);
     if (newExpanded.has(folderId)) {
@@ -122,11 +109,9 @@ export const FileExplorer: React.FC = () => {
     }
     setExpandedFolders(newExpanded);
   };
-
   const renderFileItem = (item: FileItem, level = 0) => {
     const isExpanded = expandedFolders.has(item.id);
     const isSelected = selectedFile === item.id;
-
     return (
       <div key={item.id} style={{ marginLeft: `${level * 16}px` }}>
         <div
@@ -149,7 +134,6 @@ export const FileExplorer: React.FC = () => {
             <span className="ml-auto text-xs text-gray-500">{item.size}</span>
           )}
         </div>
-
         {item.type === "folder" && isExpanded && item.children && (
           <div>
             {item.children.map((child) => renderFileItem(child, level + 1))}
@@ -158,17 +142,14 @@ export const FileExplorer: React.FC = () => {
       </div>
     );
   };
-
   return (
     <div className="bg-[#1a1a1a] border border-green-600 rounded-lg p-4 mb-4">
       <h3 className="text-lg font-semibold text-green-400 mb-3">
         File Explorer
       </h3>
-
       <div className="space-y-1">
         {files.map((item) => renderFileItem(item))}
       </div>
-
       {selectedFile && (
         <div className="mt-4 pt-3 border-t border-green-700">
           <div className="text-xs text-gray-400">

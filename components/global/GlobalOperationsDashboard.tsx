@@ -2,7 +2,6 @@
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10,33 +9,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: unlimited global operations, 195 countries, 7 continents
-
 'use client';
-
-import { specificExports } from 'react';
-import { specificExports } from '@/components/ui/card';
-import { specificExports } from '@/components/ui/button';
-import { specificExports } from '@/components/ui/badge';
-import { specificExports } from '@/components/ui/progress';
-import { specificExports } from '@/components/ui/tabs';
-import { specificExports } from '@/components/ui/select';
-import { specificExports } from '@/components/ui/input';
-import { specificExports } from '@/components/ui/label';
-import { specificExports } from '@/components/ui/alert';
-import { specificExports } from 'lucide-react';
-import { specificExports } from '@/utils/console-logger';
-
 interface GlobalStats {
   timestamp: string;
   configuration: {
@@ -71,7 +52,6 @@ interface GlobalStats {
     countriesNonCompliant: number;
   };
 }
-
 interface CountryData {
   name: string;
   continent: string;
@@ -84,7 +64,6 @@ interface CountryData {
   revenueGenerated: number;
   complianceStatus: 'compliant' | 'pending' | 'non-compliant';
 }
-
 export default /**
  * GlobalOperationsDashboard function
  */
@@ -98,7 +77,6 @@ function GlobalOperationsDashboard(): any {
   const [bulkOperationCount, setBulkOperationCount] = useState(100);
   const [operationType, setOperationType] = useState('revenue');
   const [operationPriority, setOperationPriority] = useState('medium');
-
   const fetchGlobalStats = useCallback(async () => {
     try {
       const response = await apiClient.get('/api/global?action=stats');
@@ -113,7 +91,6 @@ function GlobalOperationsDashboard(): any {
       setError(err instanceof Error ? err.message : 'Unknown error');
     }
   }, []);
-
   const fetchCountries = useCallback(async () => {
     try {
       const response = await apiClient.get('/api/global?action=countries');
@@ -125,16 +102,13 @@ function GlobalOperationsDashboard(): any {
       consoleLog('❌ Error fetching countries', { error: err });
     }
   }, []);
-
   useEffect(() => {
     fetchGlobalStats();
     fetchCountries();
     setLoading(false);
-
     const interval = setInterval(fetchGlobalStats, 5000);
     return () => clearInterval(interval);
   }, [fetchGlobalStats, fetchCountries]);
-
   const handleBulkOperations = async () => {
     try {
       const response = await apiClient.get('/api/global', {
@@ -149,7 +123,6 @@ function GlobalOperationsDashboard(): any {
           },
         }),
       });
-
       const data = await response.json();
       if (data.success) {
         consoleLog('🌍 Bulk operations initiated', { count: data.data.count });
@@ -161,7 +134,6 @@ function GlobalOperationsDashboard(): any {
       setError(err instanceof Error ? err.message : 'Unknown error');
     }
   };
-
   const handleComplianceCheck = async () => {
     try {
       const response = await apiClient.get('/api/global', {
@@ -176,7 +148,6 @@ function GlobalOperationsDashboard(): any {
           },
         }),
       });
-
       const data = await response.json();
       if (data.success) {
         consoleLog('⚖️ Compliance checks initiated', { count: data.data.count });
@@ -188,7 +159,6 @@ function GlobalOperationsDashboard(): any {
       setError(err instanceof Error ? err.message : 'Unknown error');
     }
   };
-
   const handleExpansionInitiate = async () => {
     try {
       const response = await apiClient.get('/api/global', {
@@ -203,7 +173,6 @@ function GlobalOperationsDashboard(): any {
           },
         }),
       });
-
       const data = await response.json();
       if (data.success) {
         consoleLog('🚀 Expansion activities initiated', { count: data.data.count });
@@ -215,13 +184,10 @@ function GlobalOperationsDashboard(): any {
       setError(err instanceof Error ? err.message : 'Unknown error');
     }
   };
-
   const filteredCountries = selectedContinent === 'all'
     ? countries
     : countries.filter(c => c.continent === selectedContinent);
-
   const topCountries = stats?.revenue.topPerformingCountries || [];
-
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -229,7 +195,6 @@ function GlobalOperationsDashboard(): any {
       </div>
     );
   }
-
   if (error) {
     return (
       <Alert className="m-4">
@@ -237,7 +202,6 @@ function GlobalOperationsDashboard(): any {
       </Alert>
     );
   }
-
   return (
     <div className="space-y-6 p-6">
       <div className="flex items-center justify-between">
@@ -254,7 +218,6 @@ function GlobalOperationsDashboard(): any {
           {stats?.configuration.unlimitedMode ? "Unlimited Mode" : "Limited Mode"}
         </Badge>
       </div>
-
       {/* System Health Overview */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card>
@@ -278,7 +241,6 @@ function GlobalOperationsDashboard(): any {
             </div>
           </CardContent>
         </Card>
-
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Active Operations</CardTitle>
@@ -291,7 +253,6 @@ function GlobalOperationsDashboard(): any {
             </p>
           </CardContent>
         </Card>
-
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
@@ -304,7 +265,6 @@ function GlobalOperationsDashboard(): any {
             </p>
           </CardContent>
         </Card>
-
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Success Rate</CardTitle>
@@ -318,7 +278,6 @@ function GlobalOperationsDashboard(): any {
           </CardContent>
         </Card>
       </div>
-
       {/* Control Panel */}
       <Card>
         <CardHeader>
@@ -345,7 +304,6 @@ function GlobalOperationsDashboard(): any {
                 </SelectContent>
               </Select>
             </div>
-
             <div className="space-y-2">
               <Label htmlFor="operation-type">Operation Type</Label>
               <Select value={operationType} onValueChange={setOperationType}>
@@ -360,7 +318,6 @@ function GlobalOperationsDashboard(): any {
                 </SelectContent>
               </Select>
             </div>
-
             <div className="space-y-2">
               <Label htmlFor="bulk-count">Bulk Operation Count</Label>
               <Input
@@ -373,7 +330,6 @@ function GlobalOperationsDashboard(): any {
               />
             </div>
           </div>
-
           <div className="flex gap-2 mt-4">
             <Button onClick={handleBulkOperations} className="flex-1">
               <Zap className="h-4 w-4 mr-2" />
@@ -390,7 +346,6 @@ function GlobalOperationsDashboard(): any {
           </div>
         </CardContent>
       </Card>
-
       {/* Detailed Tabs */}
       <Tabs defaultValue="continents" className="space-y-4">
         <TabsList className="grid w-full grid-cols-4">
@@ -399,7 +354,6 @@ function GlobalOperationsDashboard(): any {
           <TabsTrigger value="compliance">Compliance</TabsTrigger>
           <TabsTrigger value="operations">Operations</TabsTrigger>
         </TabsList>
-
         <TabsContent value="continents" className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {stats?.continents.map((continent) => (
@@ -431,7 +385,6 @@ function GlobalOperationsDashboard(): any {
             ))}
           </div>
         </TabsContent>
-
         <TabsContent value="countries" className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {topCountries.map((country, index) => (
@@ -463,7 +416,6 @@ function GlobalOperationsDashboard(): any {
             ))}
           </div>
         </TabsContent>
-
         <TabsContent value="compliance" className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Card>
@@ -477,7 +429,6 @@ function GlobalOperationsDashboard(): any {
                 <p className="text-sm text-gray-600">Countries fully compliant</p>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <CardTitle className="text-yellow-600">Pending</CardTitle>
@@ -489,7 +440,6 @@ function GlobalOperationsDashboard(): any {
                 <p className="text-sm text-gray-600">Countries under review</p>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <CardTitle className="text-red-600">Non-Compliant</CardTitle>
@@ -502,7 +452,6 @@ function GlobalOperationsDashboard(): any {
               </CardContent>
             </Card>
           </div>
-
           <Card>
             <CardHeader>
               <CardTitle>Overall Compliance Status</CardTitle>
@@ -514,7 +463,6 @@ function GlobalOperationsDashboard(): any {
             </CardContent>
           </Card>
         </TabsContent>
-
         <TabsContent value="operations" className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <Card>
@@ -525,7 +473,6 @@ function GlobalOperationsDashboard(): any {
                 <div className="text-3xl font-bold">{stats?.operations.total.toLocaleString()}</div>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <CardTitle className="text-orange-600">Active</CardTitle>
@@ -534,7 +481,6 @@ function GlobalOperationsDashboard(): any {
                 <div className="text-3xl font-bold">{stats?.operations.active.toLocaleString()}</div>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <CardTitle className="text-green-600">Completed</CardTitle>
@@ -543,7 +489,6 @@ function GlobalOperationsDashboard(): any {
                 <div className="text-3xl font-bold">{stats?.operations.completed.toLocaleString()}</div>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <CardTitle className="text-purple-600">Queued</CardTitle>

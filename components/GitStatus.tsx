@@ -1,278 +1,78 @@
-import React from 'react';
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:12Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-//  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
-import { specificExports } from "@/components/ui/card";
-
-export /**
- * GitStatus function
- */
-function GitStatus(): any {
-  const [branch, setBranch] = useState<string>("");
-  const [status, setStatus] = useState<string>("");
-  const [remote, setRemote] = useState<string>("");
-
+"use client";
+import React, { useEffect, useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+const fetchGitInfo = async () => {
+  try {
+    const branchRes = await fetch("/api/git/branch");
+    const statusRes = await fetch("/api/git/status");
+    const remoteRes = await fetch("/api/git/remote");
+    return {
+      branch: (await branchRes.text()).trim(),
+      status: (await statusRes.text()).trim(),
+      remote: (await remoteRes.text()).trim(),
+    };
+  } catch (error) {
+    return {
+      branch: "unknown",
+      status: "Unable to fetch git status",
+      remote: "N/A",
+    };
+  }
+};
+export default function GitStatus(): JSX.Element {
+  const [branch, setBranch] = useState("-");
+  const [status, setStatus] = useState("Loading...");
+  const [remote, setRemote] = useState("-");
+  const [error, setError] = useState<string | null>(null);
   useEffect(() => {
-    async /**
- * fetchGitInfo function
- */
-function fetchGitInfo(): any {
-      try {
-        const branchRes = await apiClient.get("/api/git/branch");
-        const branchText = await branchRes.text();
-        setBranch(branchText.trim());
-        const statusRes = await apiClient.get("/api/git/status");
-        const statusText = await statusRes.text();
-        setStatus(statusText.trim());
-        const remoteRes = await apiClient.get("/api/git/remote");
-        const remoteText = await remoteRes.text();
-        setRemote(remoteText.trim());
-      } catch (e) {
-        production-ready and operational
-      }
-    }
-    fetchGitInfo();
+    let active = true;
+    fetchGitInfo().then((info) => {
+      if (!active) return;
+      setBranch(info.branch || "-");
+      setStatus(info.status || "-");
+      setRemote(info.remote || "-");
+    }).catch((err) => {
+      if (!active) return;
+      setError("Failed to fetch Git status.");
+      setStatus("Error");
+    });
+    return () => {
+      active = false;
+    };
   }, []);
-
   return (
     <Card className="mb-4">
       <CardHeader>
         <CardTitle>Git & SSH Status</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="text-green-200">
-          <div>
-            <b>Branch:</b> {branch || "-"}
+        {error ? (
+          <Alert variant="destructive">
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        ) : null}
+        <div className="space-y-3 text-slate-700">
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <div className="text-sm text-slate-500">Branch</div>
+            <div className="font-medium text-slate-900">{branch}</div>
           </div>
-          <div>
-            <b>Status:</b>{" "}
-            <pre className="inline whitespace-pre-wrap">{status || "-"}</pre>
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <div className="text-sm text-slate-500">Status</div>
+            <pre className="whitespace-pre-wrap font-medium text-slate-900">{status}</pre>
           </div>
-          <div>
-            <b>Remote:</b> {remote || "-"}
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <div className="text-sm text-slate-500">Remote</div>
+            <div className="font-medium text-slate-900">{remote}</div>
           </div>
+        </div>
+        <div className="mt-4">
+          <Button onClick={() => window.location.reload()} className="w-full">
+            Refresh Status
+          </Button>
         </div>
       </CardContent>
     </Card>
   );
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
 }

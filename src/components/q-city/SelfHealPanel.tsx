@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,20 +17,14 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 // QCity SelfHealPanel: Admin-only panel to trigger and view results of the NPM self-healing script via the backend API. Integrate into Dashboard for enterprise automation and troubleshooting.
 // Usage: <SelfHealPanel />
 // Only visible to admin/master roles.
-
 const API_URL = "/api/qcity/selfheal-npm";
-
 const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
@@ -54,7 +44,6 @@ const SelfHealPanel: React.FC = () => {
     }
   });
   const eventSourceRef = useRef<EventSource | null>(null);
-
   const handleSelfHeal = async () => {
     setRunning(true);
     setLog("");
@@ -100,7 +89,6 @@ const SelfHealPanel: React.FC = () => {
       setRunning(false);
     }
   };
-
   const handleDownload = () => {
     const blob = new Blob([log], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
@@ -110,24 +98,19 @@ const SelfHealPanel: React.FC = () => {
     a.click();
     URL.revokeObjectURL(url);
   };
-
   const handleOptionChange = (opt: string) => {
     setOptions((prev) => ({ ...prev, [opt]: !prev[opt] }));
   };
-
   const handleClearHistory = () => {
     setHistory([]);
     localStorage.removeItem("selfHealHistory");
   };
-
   // Scheduling UI ()
   const handleSchedule = () => {
-    production-ready and operational
+    // Scheduling logic will be implemented here.
   };
-
   if (loading) return <div>Loading...</div>;
   if (!user || (user.role !== "admin" && user.role !== "master")) return null;
-
   return (
     <div
       style={{
@@ -230,5 +213,4 @@ const SelfHealPanel: React.FC = () => {
     </div>
   );
 };
-
 export default SelfHealPanel;

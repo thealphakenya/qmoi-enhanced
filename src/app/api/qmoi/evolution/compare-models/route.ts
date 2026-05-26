@@ -125,7 +125,7 @@ export async function GET(request: NextRequest): any {
     return NextResponse.json(
       {
         status: 'active',
-        production-ready and operational
+        
           modelId: m.modelId,
           modelName: m.modelName,
           isQMOI: m.isQMOI,

@@ -556,7 +556,7 @@ export { QMOIRevenueEngine, type RevenueStream, type RevenueTransaction };
 // Provide a default export to improve interoperability with different import styles
 // Provide CommonJS-compatible exports for modules that `import()` the file
 try {
-  production-ready and operational
+  
   const cjs: any =
     (typeof module !== "undefined" ? module : .module) ||
     undefined;

@@ -2,7 +2,6 @@
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
-  
   React.useEffect(() => {
     const user = sessionStorage.getItem("user");
     if (user) {
@@ -10,20 +9,15 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       setIsMaster(userData.role === "master");
     }
   }, []);
-  
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;
   }
-  
   return <>{children}</>;
 };
-
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:15Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
  all markers normalized for completion
-import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -31,16 +25,6 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { specificExports } from "../ui/button";
-import { specificExports } from "../ui/badge";
-import { specificExports } from "../ui/progress";
-import { specificExports } from "../ui/tabs";
-import { specificExports } from "../ui/input";
-import { specificExports } from "../ui/label";
-import { specificExports } from "../ui/switch";
-import { specificExports } from "../ui/alert";
-import { specificExports } from "../ui/separator";
-import { specificExports } from "../ui/scroll-area";
 import {
   TrendingUp,
   TrendingDown,
@@ -104,8 +88,6 @@ import {
   Network as NetworkIcon,
   Globe as GlobeIcon,
 } from "lucide-react";
-import { specificExports } from "../services/EnhancedTradingService";
-
 interface TradingAccount {
   id: string;
   name: string;
@@ -120,7 +102,6 @@ interface TradingAccount {
   dailyPnL: number;
   totalPnL: number;
 }
-
 interface TradingPosition {
   id: string;
   symbol: string;
@@ -137,7 +118,6 @@ interface TradingPosition {
   timestamp: Date;
   status: string;
 }
-
 interface TradingSignal {
   id: string;
   symbol: string;
@@ -150,7 +130,6 @@ interface TradingSignal {
   timestamp: Date;
   strategy: string;
 }
-
 export default /**
  * EnhancedTradingPanel function
  */
@@ -176,12 +155,10 @@ function EnhancedTradingPanel(): any {
     stopLoss: 0,
     takeProfit: 0,
   });
-
   useEffect(() => {
     loadTradingData();
     setupEventListeners();
   }, []);
-
   const loadTradingData = () => {
     setAccounts(enhancedTradingService.getAccounts());
     setPositions(enhancedTradingService.getPositions());
@@ -193,20 +170,16 @@ function EnhancedTradingPanel(): any {
     setAutoTrading(enhancedTradingService.isAutoTradingEnabled());
     setAiEnabled(enhancedTradingService.isAIEnabled());
   };
-
   const setupEventListeners = () => {
     enhancedTradingService.onTradingStarted(() => {
       setIsTrading(true);
     });
-
     enhancedTradingService.onTradeExecuted(({ position, accountId }) => {
       setPositions((prev) => [prev, position]);
     });
-
     enhancedTradingService.onSignalGenerated((signal) => {
       setSignals((prev) => [signal, prev.slice(0, 9)]); // Keep last 10 signals
     });
-
     enhancedTradingService.onMarketDataUpdate((data) => {
       setMarketData((prev) => {
         const existing = prev.find((m) => m.symbol === data.symbol);
@@ -216,20 +189,16 @@ function EnhancedTradingPanel(): any {
         return [prev, data];
       });
     });
-
     enhancedTradingService.onAutoTradingToggled((enabled) => {
       setAutoTrading(enabled);
     });
-
     enhancedTradingService.onAIToggled((enabled) => {
       setAiEnabled(enabled);
     });
-
     enhancedTradingService.onRiskManagementUpdated((risk) => {
       setRiskManagement(risk);
     });
   };
-
   const handleStartTrading = async () => {
     try {
       await enhancedTradingService.startTrading();
@@ -237,10 +206,8 @@ function EnhancedTradingPanel(): any {
       (globalThis.console as any)?.error?.("Failed to start trading:", error);
     }
   };
-
   const handleExecuteTrade = async () => {
     if (!selectedAccount || !orderForm.symbol) return;
-
     try {
       const signal: TradingSignal = {
         id: `signal_${Date.now()}`,
@@ -254,9 +221,7 @@ function EnhancedTradingPanel(): any {
         timestamp: new Date(),
         strategy: "Manual",
       };
-
       await enhancedTradingService.executeTrade(signal, selectedAccount);
-
       // Reset form
       setOrderForm({
         symbol: "",
@@ -270,19 +235,15 @@ function EnhancedTradingPanel(): any {
       (globalThis.console as any)?.error?.("Trade execution failed:", error);
     }
   };
-
   const handleToggleAutoTrading = () => {
     enhancedTradingService.setAutoTrading(!autoTrading);
   };
-
   const handleToggleAI = () => {
     enhancedTradingService.setAIEnabled(!aiEnabled);
   };
-
   const handleUpdateRiskManagement = (updates: unknown) => {
     enhancedTradingService.updateRiskManagement(updates);
   };
-
   const formatCurrency = (amount: number, currency = "USDT"): string => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -291,15 +252,12 @@ function EnhancedTradingPanel(): any {
       maximumFractionDigits: 6,
     }).format(amount);
   };
-
   const formatPercentage = (value: number): string => {
     return `${(value * 100).toFixed(2)}%`;
   };
-
   const getPnLColor = (pnl: number): string => {
     return pnl >= 0 ? "text-green-600" : "text-red-600";
   };
-
   const getStatusColor = (status: string): string => {
     switch (status) {
       case "open":
@@ -312,10 +270,8 @@ function EnhancedTradingPanel(): any {
         return "bg-gray-500";
     }
   };
-
   const getActiveAccount = () =>
     accounts.find((acc) => acc.id === selectedAccount);
-
   const renderAccountCard = (account: TradingAccount) => (
     <Card
       key={account.id}
@@ -389,7 +345,6 @@ function EnhancedTradingPanel(): any {
       </CardContent>
     </Card>
   );
-
   const renderPositionCard = (position: TradingPosition) => (
     <Card key={position.id} className="border-l-4 border-l-blue-500">
       <CardContent className="p-4">
@@ -417,7 +372,6 @@ function EnhancedTradingPanel(): any {
             {position.status}
           </Badge>
         </div>
-
         <div className="grid grid-cols-2 gap-4 mb-3">
           <div>
             <p className="text-sm text-muted-foreground">Size</p>
@@ -440,7 +394,6 @@ function EnhancedTradingPanel(): any {
             </p>
           </div>
         </div>
-
         <div className="flex items-center justify-between">
           <div className="text-xs text-muted-foreground">
             {new Date(position.timestamp).toLocaleString()}
@@ -461,7 +414,6 @@ function EnhancedTradingPanel(): any {
       </CardContent>
     </Card>
   );
-
   const renderSignalCard = (signal: TradingSignal) => (
     <Card key={signal.id} className="border-l-4 border-l-purple-500">
       <CardContent className="p-4">
@@ -492,9 +444,7 @@ function EnhancedTradingPanel(): any {
             </p>
           </div>
         </div>
-
         <p className="text-sm text-muted-foreground mb-3">{signal.reason}</p>
-
         <div className="grid grid-cols-2 gap-4 mb-3">
           <div>
             <p className="text-sm text-muted-foreground">Stop Loss</p>
@@ -505,7 +455,6 @@ function EnhancedTradingPanel(): any {
             <p className="font-medium">{formatCurrency(signal.takeProfit)}</p>
           </div>
         </div>
-
         <div className="flex items-center justify-between">
           <div className="text-xs text-muted-foreground">
             {new Date(signal.timestamp).toLocaleString()}
@@ -517,7 +466,6 @@ function EnhancedTradingPanel(): any {
       </CardContent>
     </Card>
   );
-
   return (
     <div className="container mx-auto p-6 space-y-6">
       <div className="flex items-center justify-between">
@@ -551,7 +499,6 @@ function EnhancedTradingPanel(): any {
           </Button>
         </div>
       </div>
-
       <Tabs value={activeTab} onValueChange={setActiveTab}>
         <TabsList className="grid w-full grid-cols-6">
           <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
@@ -561,7 +508,6 @@ function EnhancedTradingPanel(): any {
           <TabsTrigger value="trade">Trade</TabsTrigger>
           <TabsTrigger value="settings">Settings</TabsTrigger>
         </TabsList>
-
         <TabsContent value="dashboard" className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card>
@@ -582,7 +528,6 @@ function EnhancedTradingPanel(): any {
                 </p>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Total P&L</CardTitle>
@@ -609,7 +554,6 @@ function EnhancedTradingPanel(): any {
                 </p>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
@@ -635,7 +579,6 @@ function EnhancedTradingPanel(): any {
                 </p>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
@@ -652,7 +595,6 @@ function EnhancedTradingPanel(): any {
               </CardContent>
             </Card>
           </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <Card>
               <CardHeader>
@@ -664,7 +606,6 @@ function EnhancedTradingPanel(): any {
                 </div>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <CardTitle>Active Positions</CardTitle>
@@ -680,13 +621,11 @@ function EnhancedTradingPanel(): any {
             </Card>
           </div>
         </TabsContent>
-
         <TabsContent value="accounts" className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {accounts.map(renderAccountCard)}
           </div>
         </TabsContent>
-
         <TabsContent value="positions" className="space-y-6">
           <div className="space-y-4">
             {positions.length > 0 ? (
@@ -702,7 +641,6 @@ function EnhancedTradingPanel(): any {
             )}
           </div>
         </TabsContent>
-
         <TabsContent value="signals" className="space-y-6">
           <div className="space-y-4">
             {signals.length > 0 ? (
@@ -718,7 +656,6 @@ function EnhancedTradingPanel(): any {
             )}
           </div>
         </TabsContent>
-
         <TabsContent value="trade" className="space-y-6">
           <div className="max-w-2xl mx-auto space-y-6">
             <Card>
@@ -760,7 +697,6 @@ function EnhancedTradingPanel(): any {
                     />
                   </div>
                 </div>
-
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <Label>Side</Label>
@@ -795,7 +731,6 @@ function EnhancedTradingPanel(): any {
                     />
                   </div>
                 </div>
-
                 <div className="grid grid-cols-3 gap-4">
                   <div>
                     <Label>Price</Label>
@@ -843,7 +778,6 @@ function EnhancedTradingPanel(): any {
                     />
                   </div>
                 </div>
-
                 <Button
                   className="w-full"
                   onClick={handleExecuteTrade}
@@ -855,7 +789,6 @@ function EnhancedTradingPanel(): any {
             </Card>
           </div>
         </TabsContent>
-
         <TabsContent value="settings" className="space-y-6">
           <div className="max-w-2xl mx-auto space-y-6">
             <Card>
@@ -875,7 +808,6 @@ function EnhancedTradingPanel(): any {
                     onCheckedChange={handleToggleAutoTrading}
                   />
                 </div>
-
                 <div className="flex items-center justify-between">
                   <div>
                     <Label>AI Trading</Label>
@@ -890,7 +822,6 @@ function EnhancedTradingPanel(): any {
                 </div>
               </CardContent>
             </Card>
-
             <Card>
               <CardHeader>
                 <CardTitle>Risk Management</CardTitle>
@@ -925,7 +856,6 @@ function EnhancedTradingPanel(): any {
                     />
                   </div>
                 </div>
-
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <Label>Stop Loss (%)</Label>

@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState } from 'react';
 import Link from "next/link";
 import AdminDashboard from "../components/AdminDashboard";
@@ -23,20 +22,17 @@ import CollaborationHub from "../components/CollaborationHub";
 import IntegrationManager from "../components/IntegrationManager";
 import WorkflowAutomationEngine from "../components/WorkflowAutomationEngine";
 import ContentManagementSystem from "../components/ContentManagementSystem";
-
 const defaultStats = {
   supportedPlatforms: '12+',
   totalBuilds: '40+',
   validationSuccess: '100%',
   packageSize: '2.5GB',
 };
-
 const defaultMarketplace = [
   { id: 'MKT-01', title: 'Premium Dataset Exchange', price: '$99', access: 'subscription' },
   { id: 'MKT-02', title: 'AI Model Hosting', price: '$149', access: 'monthly' },
   { id: 'MKT-03', title: 'Workflow Automation Pack', price: '$49', access: 'one-time' },
 ];
-
 export default function QMoiSpacePage() {
   const [showComponents, setShowComponents] = useState(true);
   const [stats, setStats] = useState(defaultStats);
@@ -45,10 +41,8 @@ export default function QMoiSpacePage() {
   const [lastUpdated, setLastUpdated] = useState('');
   const [qmoiStatus, setQmoiStatus] = useState<any>(null);
   const [qmoiStatusLoading, setQmoiStatusLoading] = useState(true);
-
   useEffect(() => {
     let active = true;
-
     async function fetchSpaceData() {
       try {
         const res = await fetch('/api/qi-spaces', { cache: 'no-store' });
@@ -64,7 +58,6 @@ export default function QMoiSpacePage() {
         console.error('Failed to load QMOI Space data:', error);
       }
     }
-
     async function fetchQmoiModelStatus() {
       try {
         const res = await fetch('/api/qmoi-model', { cache: 'no-store' });
@@ -81,14 +74,12 @@ export default function QMoiSpacePage() {
         }
       }
     }
-
     fetchSpaceData();
     fetchQmoiModelStatus();
     return () => {
       active = false;
     };
   }, []);
-
   return (
     <main className="min-h-screen bg-slate-950 p-8 text-white">
       <div className="max-w-6xl mx-auto space-y-10">
@@ -107,7 +98,6 @@ export default function QMoiSpacePage() {
             </div>
           </div>
         </section>
-
         {/* Welcome Card */}
         <section className="rounded-3xl bg-slate-900 p-8 border border-slate-700">
           <h2 className="text-2xl font-semibold mb-4">Welcome to QMOI Space</h2>
@@ -115,7 +105,6 @@ export default function QMoiSpacePage() {
             Advanced AI platform for production, gaming, and revenue generation with comprehensive dataset management and collaborative model deployment.
           </p>
         </section>
-
         {/* Platform Statistics */}
         <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="rounded-3xl bg-slate-900 p-6 border border-slate-700 text-center">
@@ -135,7 +124,6 @@ export default function QMoiSpacePage() {
             <div className="text-slate-400">Package Size</div>
           </div>
         </section>
-
         {/* Core Features */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="rounded-3xl bg-slate-900 p-6 border border-slate-700">
@@ -169,7 +157,6 @@ export default function QMoiSpacePage() {
             <p className="text-slate-400">Works everywhere with responsive design and progressive web app capabilities.</p>
           </div>
         </section>
-
         {/* Dataset Management Panel */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700">
           <h2 className="text-2xl font-semibold mb-4">Dataset Catalog</h2>
@@ -189,7 +176,6 @@ export default function QMoiSpacePage() {
             </div>
           </div>
         </section>
-
         {/* Model Deployment Interface */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700">
           <h2 className="text-2xl font-semibold mb-4">AI Model Deployment</h2>
@@ -237,7 +223,6 @@ export default function QMoiSpacePage() {
             </div>
           )}
         </section>
-
         {/* Marketplace Dashboard */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700">
           <div className="flex items-center justify-between gap-4">
@@ -262,7 +247,6 @@ export default function QMoiSpacePage() {
             ))}
           </div>
         </section>
-
         {/* Active Projects */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700">
           <h2 className="text-2xl font-semibold mb-4">Active Projects</h2>
@@ -281,7 +265,6 @@ export default function QMoiSpacePage() {
             )}
           </div>
         </section>
-
         {/* QVillage Integration */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700">
           <h2 className="text-2xl font-semibold mb-4">Community Workspace</h2>
@@ -301,7 +284,6 @@ export default function QMoiSpacePage() {
             </div>
           </div>
         </section>
-
         {/* Action Buttons */}
         <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <button className="rounded-3xl bg-violet-600 hover:bg-violet-700 p-4 text-center transition-colors">
@@ -337,7 +319,6 @@ export default function QMoiSpacePage() {
             <div className="font-semibold">QVillage</div>
           </Link>
         </section>
-
         {/* Navigation */}
         <section className="grid gap-6 md:grid-cols-2">
           <div className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
@@ -347,7 +328,6 @@ export default function QMoiSpacePage() {
               Open QMOI AI
             </Link>
           </div>
-
           <div className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
             <h2 className="text-2xl font-semibold text-white">Developer Tools</h2>
             <p className="mt-3 text-slate-400">Use the developer utilities for tracing, diagnostics, and internal tooling in this workspace.</p>
@@ -356,7 +336,6 @@ export default function QMoiSpacePage() {
             </Link>
           </div>
         </section>
-
         {/* Integrated UI Components */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
           <div className="flex items-center justify-between gap-4">

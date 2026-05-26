@@ -1,18 +1,14 @@
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -20,16 +16,11 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
-import { specificExports } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -41,7 +32,6 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -52,7 +42,6 @@ ChartJS.register(
   Tooltip,
   Legend,
 );
-
 export const AnalyticsCharts: React.FC<{
   analytics: { events: unknown[] };
 }> = ({ analytics }) => {
@@ -66,14 +55,12 @@ export const AnalyticsCharts: React.FC<{
   });
   const pluginLabels = Object.keys(pluginUsage);
   const pluginCounts = pluginLabels.map((l) => pluginUsage[l]);
-
   // Event frequency by time
   const eventTimes = analytics.events.map(
     (e) => new Date(e.timestamp || Date.now()),
   );
   const timeLabels = eventTimes.map((t) => t.toLocaleTimeString());
   const eventCounts = analytics.events.map((_, i) => i + 1);
-
   return (
     <div>
       <h4>Plugin Usage</h4>

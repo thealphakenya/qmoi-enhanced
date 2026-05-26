@@ -1,40 +1,39 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:08Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "../types";
+import type { ContentPlatformAdapter, PlatformConfig } from '../types';
+import { ApprovalFlow } from '../types';
 
 export class YouTubeAdapter implements ContentPlatformAdapter {
-  platformId = "youtube";
+  platformId = 'youtube';
   private config?: PlatformConfig;
 
   async initialize(config: PlatformConfig) {
     this.config = config;
   }
+
   async validateCredentials() {
-    return !!this.config?.credentials?.accessToken;
+    return Boolean(this.config?.credentials?.accessToken);
   }
+
   async requestApproval(action: string, payload: unknown) {
     return ApprovalFlow.requestApproval(this.platformId, action, payload);
   }
+
   async isApproved(requestId: string) {
     return ApprovalFlow.checkApproval(requestId);
   }
+
   async getAnalytics() {
     return { views: 0 };
   }
+
   async uploadContent(content: unknown, metadata: unknown) {
-    const r = await this.requestApproval("uploadContent", {
-      content,
-      metadata,
-    });
-    return `approval:${r.id}`;
+    const request = await this.requestApproval('uploadContent', { content, metadata });
+    return `approval:${request.id}`;
   }
+
   async updateContent(contentId: string, updates: unknown) {
     return true;
   }
+
   async getContentMetrics(contentId: string) {
     return { views: 0 };
   }

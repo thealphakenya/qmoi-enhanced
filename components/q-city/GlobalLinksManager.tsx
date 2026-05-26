@@ -1,12 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
-import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -14,11 +11,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { specificExports } from "@/components/ui/button";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/tabs";
-import { specificExports } from "@/components/ui/progress";
-import { specificExports } from "@/components/ui/alert";
 import {
   Globe,
   CheckCircle,
@@ -29,27 +21,23 @@ import {
   Zap,
   Server,
 } from "lucide-react";
-import { specificExports } from "sonner";
-
 interface GlobalHealthReport {
   region: string;
   continent: string;
   totalLinks: number;
   healthyLinks: number;
   degradedLinks: number;
-  production-ready and operational
+  offlineLinks: number;
   averageResponseTime: number;
   overallUptime: number;
   lastUpdated: string;
 }
-
 interface GlobalStats {
   totalLinks: number;
   globallyAccessibleLinks: number;
   averageGlobalUptime: number;
   continentsCoverage: Record<string, number>;
 }
-
 interface GlobalLink {
   id: string;
   url: string;
@@ -60,11 +48,11 @@ interface GlobalLink {
   isZeroRated: boolean;
   isGloballyAccessible: boolean;
   globalHealthStatus: {
-    production-ready and operational
-    production-ready and operational
-    production-ready and operational
-    production-ready and operational
-    production-ready and operational
+    healthy: number;
+    degraded: number;
+    offline: number;
+    averageResponseTime: number;
+    uptime: number;
   };
   cdnEndpoints: string[];
   mirrorSites: string[];
@@ -74,7 +62,6 @@ interface GlobalLink {
   createdAt: string;
   updatedAt: string;
 }
-
 export /**
  * GlobalLinksManager function
  */
@@ -85,18 +72,13 @@ function GlobalLinksManager(): any {
   const [loading, setLoading] = useState(true);
   const [performingCheck, setPerformingCheck] = useState(false);
   const [selectedContinent, setSelectedContinent] = useState<string>("");
-  const [selectedStatus, setSelectedStatus] = useState<
-    production-ready and operational
-  production-ready and operational
-
+  const [selectedStatus, setSelectedStatus] = useState<string>("healthy");
   useEffect(() => {
     loadGlobalData();
   }, []);
-
   const loadGlobalData = async () => {
     try {
       setLoading(true);
-
       // Load health reports
       const reportsResponse = await apiClient.get(
         "/api/global-links?action=health-reports",
@@ -105,7 +87,6 @@ function GlobalLinksManager(): any {
         const reportsData = await reportsResponse.json();
         setHealthReports(reportsData.reports);
       }
-
       // Load global stats
       const statsResponse = await apiClient.get("/api/global-links?action=stats");
       if (statsResponse.ok) {
@@ -119,7 +100,6 @@ function GlobalLinksManager(): any {
       setLoading(false);
     }
   };
-
   const performGlobalHealthCheck = async () => {
     try {
       setPerformingCheck(true);
@@ -128,7 +108,6 @@ function GlobalLinksManager(): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "perform-health-check" }),
       });
-
       if (response.ok) {
         toast.success("Global health check completed");
         await loadGlobalData(); // Refresh data
@@ -143,10 +122,9 @@ function GlobalLinksManager(): any {
       setPerformingCheck(false);
     }
   };
-
   const loadLinksByHealth = async (
     continent: string,
-    status: production-ready and operational,
+    status: string,
   ) => {
     try {
       const response = await apiClient.get(
@@ -161,33 +139,34 @@ function GlobalLinksManager(): any {
       toast.error("Failed to load links");
     }
   };
-
   const getHealthIcon = (status: string) => {
     switch (status) {
       case "healthy":
         return <CheckCircle className="h-4 w-4 text-green-500" />;
       case "degraded":
         return <AlertTriangle className="h-4 w-4 text-yellow-500" />;
-      production-ready and operational
+      case "offline":
+      case "unhealthy":
+      case "error":
         return <XCircle className="h-4 w-4 text-red-500" />;
       default:
         return <RefreshCw className="h-4 w-4 text-gray-500" />;
     }
   };
-
   const getHealthColor = (status: string) => {
     switch (status) {
       case "healthy":
         return "text-green-600 bg-green-50";
       case "degraded":
         return "text-yellow-600 bg-yellow-50";
-      production-ready and operational
+      case "offline":
+      case "unhealthy":
+      case "error":
         return "text-red-600 bg-red-50";
       default:
         return "text-gray-600 bg-gray-50";
     }
   };
-
   if (loading) {
     return (
       <div className="flex items-center justify-center p-8">
@@ -196,7 +175,6 @@ function GlobalLinksManager(): any {
       </div>
     );
   }
-
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -221,7 +199,6 @@ function GlobalLinksManager(): any {
           {performingCheck ? "Checking" : "Global Health Check"}
         </Button>
       </div>
-
       {/* Global Statistics */}
       {globalStats && (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -234,7 +211,6 @@ function GlobalLinksManager(): any {
               <div className="text-2xl font-bold">{globalStats.totalLinks}</div>
             </CardContent>
           </Card>
-
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
@@ -256,7 +232,6 @@ function GlobalLinksManager(): any {
               </p>
             </CardContent>
           </Card>
-
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
@@ -274,7 +249,6 @@ function GlobalLinksManager(): any {
               />
             </CardContent>
           </Card>
-
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
@@ -291,13 +265,11 @@ function GlobalLinksManager(): any {
           </Card>
         </div>
       )}
-
       <Tabs defaultValue="health-reports" className="space-y-4">
         <TabsList>
           <TabsTrigger value="health-reports">Health Reports</TabsTrigger>
           <TabsTrigger value="links-status">Links by Status</TabsTrigger>
         </TabsList>
-
         <TabsContent value="health-reports" className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {healthReports.map((report) => (
@@ -327,7 +299,6 @@ function GlobalLinksManager(): any {
                       </div>
                     </div>
                   </div>
-
                   <div className="space-y-2">
                     <div className="flex justify-between items-center">
                       <span className="text-sm flex items-center gap-1">
@@ -348,14 +319,13 @@ function GlobalLinksManager(): any {
                     <div className="flex justify-between items-center">
                       <span className="text-sm flex items-center gap-1">
                         <XCircle className="h-3 w-3 text-red-500" />
-                        production-ready and operational
+                        Offline
                       </span>
                       <span className="font-medium">
-                        {report.production-ready and operationalLinks}
+                        {report.offlineLinks}
                       </span>
                     </div>
                   </div>
-
                   <div>
                     <div className="flex justify-between items-center mb-1">
                       <span className="text-sm">Overall Uptime</span>
@@ -370,7 +340,6 @@ function GlobalLinksManager(): any {
             ))}
           </div>
         </TabsContent>
-
         <TabsContent value="links-status" className="space-y-4">
           <div className="flex gap-4 mb-4">
             <select
@@ -385,17 +354,15 @@ function GlobalLinksManager(): any {
               <option value="americas">Americas</option>
               <option value="oceania">Oceania</option>
             </select>
-
             <select
               value={selectedStatus}
-              onChange={(e) => setSelectedStatus(e.target.value as any)}
+              onChange={(e) => setSelectedStatus(e.target.value)}
               className="px-3 py-2 border rounded-md"
             >
               <option value="healthy">Healthy</option>
               <option value="degraded">Degraded</option>
-              <option value="production-ready and operational">production-ready and operational</option>
+              <option value="offline">Offline</option>
             </select>
-
             <Button
               onClick={() =>
                 selectedContinent &&
@@ -406,7 +373,6 @@ function GlobalLinksManager(): any {
               Load Links
             </Button>
           </div>
-
           {linksByHealth.length > 0 && (
             <div className="space-y-2">
               {linksByHealth.map((link) => (
@@ -455,7 +421,6 @@ function GlobalLinksManager(): any {
               ))}
             </div>
           )}
-
           {selectedContinent && linksByHealth.length === 0 && (
             <Alert>
               <AlertTriangle className="h-4 w-4" />
@@ -469,215 +434,17 @@ function GlobalLinksManager(): any {
     </div>
   );
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
-  }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

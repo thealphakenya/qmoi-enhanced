@@ -1,19 +1,15 @@
 'use client';
-
 import React from 'react';
 import { Wallet } from 'lucide-react';
-
 interface WalletData {
   id: string;
   name: string;
   balance: number;
   currency: string;
 }
-
 export function WalletList() {
   const [wallets] = React.useState<WalletData[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
-
   React.useEffect(() => {
     // Fetch wallets
     const loadWallets = async () => {
@@ -25,11 +21,9 @@ export function WalletList() {
     };
     loadWallets();
   }, []);
-
   if (isLoading) {
     return <div className="p-4">Loading wallets...</div>;
   }
-
   if (wallets.length === 0) {
     return (
       <div className="p-4 text-center">
@@ -38,7 +32,6 @@ export function WalletList() {
       </div>
     );
   }
-
   return (
     <div className="space-y-2">
       {wallets.map((wallet) => (
@@ -57,5 +50,4 @@ export function WalletList() {
     </div>
   );
 }
-
 export default WalletList;

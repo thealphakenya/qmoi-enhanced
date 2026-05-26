@@ -1,8 +1,6 @@
 "use client";
-
 import React, { useState, useEffect } from 'react';
 import Link from "next/link";
-
 const featureLinks = [
   {
     href: "/devices",
@@ -45,28 +43,23 @@ const featureLinks = [
     description: "Developer tools, self-service pages, and automation utilities.",
   },
 ];
-
 export default function HomePage() {
   const [systemStatus, setSystemStatus] = useState({
     totalUsers: 0,
     activeDevices: 0,
     systemHealth: 'Loading...'
   });
-
   useEffect(() => {
     fetchSystemStatus();
   }, []);
-
   const fetchSystemStatus = async () => {
     try {
       const [adminRes, devicesRes] = await Promise.all([
         fetch('/api/admin/dashboard'),
         fetch('/api/devices')
       ]);
-
       const adminData = adminRes.ok ? await adminRes.json() : null;
       const devicesData = devicesRes.ok ? await devicesRes.json() : null;
-
       setSystemStatus({
         totalUsers: adminData?.data?.totalUsers || 0,
         activeDevices: devicesData?.data?.devices?.filter(d => d.status === 'online').length || 0,
@@ -76,7 +69,6 @@ export default function HomePage() {
       console.error('Failed to fetch system status:', error);
     }
   };
-
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 p-8">
       <div className="max-w-7xl mx-auto">
@@ -86,7 +78,6 @@ export default function HomePage() {
           <p className="mt-4 max-w-3xl text-lg text-slate-300">
             This site is built from a large QMOI UI component inventory and application tree. Use the feature links below to access the actual dashboards, tools, and UI flows documented in `COMPONENTS.md`, `UI_COMPONENTS.md`, and `TREE.md`.
           </p>
-
           {/* System Status */}
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="rounded-2xl bg-slate-900/80 p-4 border border-slate-700 text-center">
@@ -103,7 +94,6 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
         <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {featureLinks.map((feature) => (
             <Link
@@ -122,7 +112,6 @@ export default function HomePage() {
             </Link>
           ))}
         </section>
-
         <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/90 p-8">
           <h2 className="text-3xl font-bold text-white">Developer & UI Inventory</h2>
           <p className="mt-4 text-slate-300">

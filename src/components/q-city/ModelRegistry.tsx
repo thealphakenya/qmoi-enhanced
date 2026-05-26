@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,14 +17,10 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-
 interface ModelRegistryEntry {
   id: string;
   name: string;
@@ -39,7 +31,6 @@ interface ModelRegistryEntry {
   createdAt: string;
   dataset: string;
 }
-
 export const ModelRegistry: React.FC = () => {
   const [models, setModels] = useState<ModelRegistryEntry[]>([]);
   const [loading, setLoading] = useState(true);
@@ -49,11 +40,9 @@ export const ModelRegistry: React.FC = () => {
     model1: ModelRegistryEntry | null;
     model2: ModelRegistryEntry | null;
   } | null>(null);
-
   useEffect(() => {
     fetchModels();
   }, []);
-
   const fetchModels = async () => {
     try {
       const res = await apiClient.get("/api/models");
@@ -65,7 +54,6 @@ export const ModelRegistry: React.FC = () => {
       setLoading(false);
     }
   };
-
   const doCompare = async () => {
     if (!compare1 || !compare2) return;
     const res = await apiClient.get(
@@ -74,7 +62,6 @@ export const ModelRegistry: React.FC = () => {
     const data = await res.json();
     setComparison(data);
   };
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case "active":
@@ -87,7 +74,6 @@ export const ModelRegistry: React.FC = () => {
         return "bg-gray-500";
     }
   };
-
   const getTypeIcon = (type: string) => {
     switch (type) {
       case "text":
@@ -104,7 +90,6 @@ export const ModelRegistry: React.FC = () => {
         return "🤖";
     }
   };
-
   if (loading) {
     return (
       <div className="p-6">
@@ -119,7 +104,6 @@ export const ModelRegistry: React.FC = () => {
       </div>
     );
   }
-
   return (
     <div className="p-6 space-y-6">
       <div className="flex justify-between items-center">
@@ -130,7 +114,6 @@ export const ModelRegistry: React.FC = () => {
           Register New Model
         </Button>
       </div>
-
       <div className="grid gap-4">
         {models.map((model) => (
           <Card key={model.id} className="bg-gray-800 border-gray-700">
@@ -209,7 +192,6 @@ export const ModelRegistry: React.FC = () => {
           </Card>
         ))}
       </div>
-
       {models.length === 0 && (
         <div className="text-center py-12">
           <p className="text-gray-400 text-lg">No models registered yet</p>
@@ -218,7 +200,6 @@ export const ModelRegistry: React.FC = () => {
           </p>
         </div>
       )}
-
       {/* comparison UI */}
       {models.length >= 2 && (
         <div className="mt-8 p-4 bg-gray-800 border border-gray-700 rounded">

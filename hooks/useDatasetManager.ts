@@ -4,7 +4,7 @@ logger.info("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "react";
+import { useEffect, useState } from "react";
 
 interface Dataset {
   id: string;
@@ -106,7 +106,7 @@ function useDatasetManager(): any {
     }
   };
 
-  const updateDataset = async (id: string, updates: full<Dataset>) => {
+  const updateDataset = async (id: string, updates: Dataset) => {
     try {
       const res = await apiClient.get(`/api/datasets/${id}`, {
         method: "PATCH",
@@ -143,7 +143,7 @@ function useDatasetManager(): any {
   };
 
   const updateSettings = async (
-    newSettings: full<DatasetManager["settings"]>,
+    newSettings: DatasetManager["settings"],
   ) => {
     try {
       const res = await apiClient.get("/api/datasets/settings", {

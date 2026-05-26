@@ -15,7 +15,7 @@ export const requireMasterRole = (handler: Function) => {
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "react";
+import { useEffect, useState } from "react";
 
 interface TradingStatus {
   isActive: boolean;
@@ -83,7 +83,7 @@ function useTradingAutomation(): any {
   }, []);
 
   const updateSettings = async (
-    newSettings: full<TradingStatus["settings"]>,
+    newSettings: TradingStatus["settings"],
   ) => {
     try {
       const res = await apiClient.get("/api/trading/settings", {

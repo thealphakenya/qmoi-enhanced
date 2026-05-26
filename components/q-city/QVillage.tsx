@@ -1,18 +1,14 @@
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -20,25 +16,10 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "react";
-import { specificExports } from "@mui/material/Card";
-import { specificExports } from "@mui/material/CardContent";
-import { specificExports } from "@mui/material/CardHeader";
-import { specificExports } from "@mui/material/Typography";
-import { specificExports } from "@mui/material/Button";
-import { specificExports } from "@/components/ui/input";
-import { specificExports } from "@/components/ui/label";
-import { specificExports } from "@/components/ui/tabs";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/progress";
-import { specificExports } from "@/components/ui/alert";
 import {
   Upload,
   Play,
@@ -65,21 +46,17 @@ import {
   Star,
   Download,
 } from "lucide-react";
-
 // CardTitle component for consistent styling
 interface CardTitleProps {
   children: React.ReactNode;
   className?: string;
 }
-
 const CardTitle: React.FC<CardTitleProps> = ({ children, className = "" }) => (
   <h3 className={`text-lg font-semibold ${className}`}>{children}</h3>
 );
-
 interface QVillageProps {
   isMaster: boolean;
 }
-
 interface Model {
   id: string;
   name: string;
@@ -90,7 +67,6 @@ interface Model {
   security: "secure" | "warning" | "vulnerable";
   lastUpdated: string;
 }
-
 interface Space {
   id: string;
   name: string;
@@ -125,7 +101,6 @@ interface Space {
   replica_count?: number;
   load_balancer_config?: any;
 }
-
 interface Dataset {
   id: string;
   name: string;
@@ -136,7 +111,6 @@ interface Dataset {
   security: "secure" | "warning" | "vulnerable";
   lastUpdated: string;
 }
-
 interface Inference {
   id: string;
   name: string;
@@ -148,7 +122,6 @@ interface Inference {
   security: "secure" | "warning" | "vulnerable";
   lastUpdated: string;
 }
-
 interface ModelCard {
   id: string;
   name: string;
@@ -159,7 +132,6 @@ interface ModelCard {
   status: "active" | "inactive" | "CURRENT";
   lastReviewed: string;
 }
-
 interface EnterpriseMetrics {
   security: {
     status: "secure" | "warning" | "vulnerable";
@@ -181,7 +153,6 @@ interface EnterpriseMetrics {
     lastUpdated: string;
   };
 }
-
 export default /**
  * QVillage function
  */
@@ -219,13 +190,11 @@ function QVillage(): any {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
   useEffect(() => {
     if (isMaster) {
       loadQVillageData();
     }
   }, [isMaster]);
-
   const loadQVillageData = async () => {
     setLoading(true);
     try {
@@ -251,7 +220,6 @@ function QVillage(): any {
           lastUpdated: new Date().toISOString(),
         },
       ];
-
       const Spaces: Space[] = [
         {
           id: "1",
@@ -338,7 +306,6 @@ function QVillage(): any {
           load_balancer_config: { enabled: false }
         },
       ];
-
       const Datasets: Dataset[] = [
         {
           id: "1",
@@ -361,7 +328,6 @@ function QVillage(): any {
           lastUpdated: new Date().toISOString(),
         },
       ];
-
       const Inference: Inference[] = [
         {
           id: "1",
@@ -386,7 +352,6 @@ function QVillage(): any {
           lastUpdated: new Date().toISOString(),
         },
       ];
-
       const ModelCards: ModelCard[] = Models.map((model) => ({
         id: `card-${model.id}`,
         name: `${model.name} Model Card`,
@@ -397,7 +362,6 @@ function QVillage(): any {
         status: model.status === "deployed" ? "active" : "inactive",
         lastReviewed: new Date().toISOString(),
       }));
-
       setModels(Models);
       setSpaces(Spaces);
       setDatasets(Datasets);
@@ -413,7 +377,6 @@ function QVillage(): any {
       setLoading(false);
     }
   };
-
   const syncMemoryNow = () => {
     setMemorySyncStatus("syncing");
     setTimeout(() => {
@@ -421,7 +384,6 @@ function QVillage(): any {
       setConsciousnessLevel((prev) => Math.min(100, prev + 1));
     }, 1400);
   };
-
   const triggerLionParallelEvaluation = () => {
     setLionParallelStatus("active");
     setTimeout(() => {
@@ -429,7 +391,6 @@ function QVillage(): any {
       setLionParallelScore((prev) => Math.min(100, prev + 2));
     }, 1800);
   };
-
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "active":
@@ -443,7 +404,6 @@ function QVillage(): any {
         return <Activity className="h-4 w-4 text-gray-500" />;
     }
   };
-
   const getSecurityBadge = (security: string) => {
     switch (security) {
       case "secure":
@@ -464,7 +424,6 @@ function QVillage(): any {
         return <Badge variant="outline">Unknown</Badge>;
     }
   };
-
   if (!isMaster) {
     return (
       <Card className="w-full">
@@ -486,7 +445,6 @@ function QVillage(): any {
       </Card>
     );
   }
-
   return (
     <div className="space-y-6">
       <Card>
@@ -535,14 +493,12 @@ function QVillage(): any {
               </span>
             </div>
           </div>
-
           {error && (
             <Alert variant="destructive" className="mb-4">
               <AlertTriangle className="h-4 w-4" />
               <AlertDescription>{error}</AlertDescription>
             </Alert>
           )}
-
           <Tabs defaultValue="models" className="w-full">
             <TabsList className="grid w-full grid-cols-7">
               <TabsTrigger value="models">Models</TabsTrigger>
@@ -553,7 +509,6 @@ function QVillage(): any {
               <TabsTrigger value="consciousness">Consciousness</TabsTrigger>
               <TabsTrigger value="enterprise">Enterprise</TabsTrigger>
             </TabsList>
-
             <TabsContent value="models" className="space-y-4">
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-semibold">Model Management</h3>
@@ -601,7 +556,6 @@ function QVillage(): any {
                 ))}
               </div>
             </TabsContent>
-
             <TabsContent value="spaces" className="space-y-4">
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-semibold">Space Management</h3>
@@ -652,7 +606,6 @@ function QVillage(): any {
                 ))}
               </div>
             </TabsContent>
-
             <TabsContent value="datasets" className="space-y-4">
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-semibold">Dataset Management</h3>
@@ -700,7 +653,6 @@ function QVillage(): any {
                 ))}
               </div>
             </TabsContent>
-
             <TabsContent value="inference" className="space-y-4">
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-semibold">Inference Management</h3>
@@ -756,7 +708,6 @@ function QVillage(): any {
                 ))}
               </div>
             </TabsContent>
-
             <TabsContent value="model-cards" className="space-y-4">
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-semibold">Model Cards & Provenance</h3>
@@ -796,7 +747,6 @@ function QVillage(): any {
                 ))}
               </div>
             </TabsContent>
-
             <TabsContent value="consciousness" className="space-y-4">
               <div className="grid gap-4 md:grid-cols-3">
                 <Card>
@@ -823,7 +773,6 @@ function QVillage(): any {
                     </div>
                   </CardContent>
                 </Card>
-
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
@@ -851,7 +800,6 @@ function QVillage(): any {
                     </div>
                   </CardContent>
                 </Card>
-
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
@@ -883,7 +831,6 @@ function QVillage(): any {
                 </Card>
               </div>
             </TabsContent>
-
             <TabsContent value="enterprise" className="space-y-4">
               <h3 className="text-lg font-semibold">Enterprise Management</h3>
               <div className="grid gap-4">
@@ -925,7 +872,6 @@ function QVillage(): any {
                     </div>
                   </CardContent>
                 </Card>
-
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
@@ -976,7 +922,6 @@ function QVillage(): any {
                     </div>
                   </CardContent>
                 </Card>
-
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">

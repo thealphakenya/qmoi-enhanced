@@ -4,9 +4,9 @@ logger.info("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "react";
-import { specificExports } from "react-query";
-import { specificExports } from "axios";
+import { useCallback, useEffect, useState } from "react";
+import { AxiosError, useMutation, useQuery } from "react-query";
+import axios from "axios";
 
 interface Project {
   id: string;
@@ -48,7 +48,7 @@ interface Resource {
   projectId: string;
   name: string;
   type: "human" | "equipment" | "software" | "other";
-  production-ready and operational
+  
   cost: number;
   allocation: number;
   startDate: number;
@@ -167,7 +167,7 @@ function useProjects(): any {
   const updateProjectMutation = useMutation<
     Project,
     AxiosError,
-    { id: string; updates: full<Project> }
+    { id: string; updates: Project }
   >(
     async ({ id, updates }) => {
       const response = await axios.put(`/api/qcity/projects/${id}`, updates);
@@ -205,7 +205,7 @@ function useProjects(): any {
   const updateTaskMutation = useMutation<
     Task,
     AxiosError,
-    { projectId: string; taskId: string; updates: full<Task> }
+    { projectId: string; taskId: string; updates: Task }
   >(
     async ({ projectId, taskId, updates }) => {
       const response = await axios.put(
@@ -224,7 +224,7 @@ function useProjects(): any {
   const updateConfigMutation = useMutation<
     void,
     AxiosError,
-    full<ProjectConfig>
+    ProjectConfig
   >(
     async (newConfig) => {
       const response = await axios.post(
@@ -265,7 +265,7 @@ function useProjects(): any {
 
   // Update project
   const updateProject = useCallback(
-    (id: string, updates: full<Project>) => {
+    (id: string, updates: Project) => {
       updateProjectMutation.mutate({ id, updates });
     },
     [updateProjectMutation],
@@ -284,7 +284,7 @@ function useProjects(): any {
 
   // Update task
   const updateTask = useCallback(
-    (projectId: string, taskId: string, updates: full<Task>) => {
+    (projectId: string, taskId: string, updates: Task) => {
       updateTaskMutation.mutate({ projectId, taskId, updates });
     },
     [updateTaskMutation],
@@ -292,7 +292,7 @@ function useProjects(): any {
 
   // Update config
   const updateConfig = useCallback(
-    (newConfig: full<ProjectConfig>) => {
+    (newConfig: ProjectConfig) => {
       updateConfigMutation.mutate(newConfig);
     },
     [updateConfigMutation],

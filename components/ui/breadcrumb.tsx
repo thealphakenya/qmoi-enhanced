@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,20 +17,11 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
-import { specificExports } from "@radix-ui/react-slot";
-import { specificExports } from "lucide-react";
-
-import { specificExports } from "@/lib/utils";
-
 const Breadcrumb = React.forwardRef<
   HTMLElement,
   React.ComponentPropsWithoutRef<"nav"> & {
@@ -42,7 +29,6 @@ const Breadcrumb = React.forwardRef<
   }
 >(({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />);
 Breadcrumb.displayName = "Breadcrumb";
-
 const BreadcrumbList = React.forwardRef<
   HTMLOListElement,
   React.ComponentPropsWithoutRef<"ol">
@@ -57,7 +43,6 @@ const BreadcrumbList = React.forwardRef<
   />
 ));
 BreadcrumbList.displayName = "BreadcrumbList";
-
 const BreadcrumbItem = React.forwardRef<
   HTMLLIElement,
   React.ComponentPropsWithoutRef<"li">
@@ -69,7 +54,6 @@ const BreadcrumbItem = React.forwardRef<
   />
 ));
 BreadcrumbItem.displayName = "BreadcrumbItem";
-
 const BreadcrumbLink = React.forwardRef<
   HTMLAnchorElement,
   React.ComponentPropsWithoutRef<"a"> & {
@@ -77,7 +61,6 @@ const BreadcrumbLink = React.forwardRef<
   }
 >(({ asChild, className, ...props }, ref) => {
   const Comp = asChild ? Slot : "a";
-
   return (
     <Comp
       ref={ref}
@@ -87,7 +70,6 @@ const BreadcrumbLink = React.forwardRef<
   );
 });
 BreadcrumbLink.displayName = "BreadcrumbLink";
-
 const BreadcrumbPage = React.forwardRef<
   HTMLSpanElement,
   React.ComponentPropsWithoutRef<"span">
@@ -102,7 +84,6 @@ const BreadcrumbPage = React.forwardRef<
   />
 ));
 BreadcrumbPage.displayName = "BreadcrumbPage";
-
 const BreadcrumbSeparator = ({
   children,
   className,
@@ -118,7 +99,6 @@ const BreadcrumbSeparator = ({
   </li>
 );
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
-
 const BreadcrumbEllipsis = ({
   className,
   ...props
@@ -134,7 +114,6 @@ const BreadcrumbEllipsis = ({
   </span>
 );
 BreadcrumbEllipsis.displayName = "BreadcrumbElipssis";
-
 export {
   Breadcrumb,
   BreadcrumbList,

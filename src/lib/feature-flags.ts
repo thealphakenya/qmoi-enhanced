@@ -284,7 +284,7 @@ class FeatureFlagsManager {
   }
 
   /**
-   production-ready and operational
+   
    */
   validateRequiredFeatures(flagNames: FeatureFlagName[]): boolean {
     return flagNames.every(name => this.isEnabled(name));

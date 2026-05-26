@@ -1,89 +1,35 @@
-import React from 'react';
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('React Error Boundary caught an error:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:13Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "react";
-
+"use client";
+import React, { memo, useCallback, useState } from "react";
 interface Download {
   url: string;
   status: string;
   time: string;
 }
-
 const DownloadList = memo(({ downloads }: { downloads: Download[] }) => (
-  <ul style={{ marginTop: 16, fontSize: 14 }}>
-    {downloads.map((dl, i) => (
-      <li key={i}>
-        {dl.url} - {dl.status}{" "}
-        <span style={{ color: "#aaa" }}>({dl.time})</span>
+  <ul className="mt-4 space-y-2 text-sm text-slate-700">
+    {downloads.map((download, index) => (
+      <li key={index} className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
+        <span className="font-medium">{download.url}</span>
+        <div className="text-xs text-slate-500">
+          {download.status} • {download.time}
+        </div>
       </li>
     ))}
   </ul>
 ));
-
 DownloadList.displayName = "DownloadList";
-
-interface RequestIdleCallbackOptions {
-  timeout?: number;
-}
-
-interface RequestIdleCallbackHandle {
-  didTimeout: boolean;
-  timeRemaining: () => number;
-}
-
-interface Window {
-  requestIdleCallback: (
-    callback: (deadline: RequestIdleCallbackHandle) => void,
-    options?: RequestIdleCallbackOptions,
-  ) => number;
-  cancelIdleCallback: (handle: number) => void;
-}
-
-export const DownloadManager: React.FC = () => {
+const DownloadManager: React.FC = () => {
   const [downloads, setDownloads] = useState<Download[]>([]);
   const [url, setUrl] = useState("");
   const [status, setStatus] = useState("");
-
-  production-ready and operational
   const addDownload = useCallback((download: Download) => {
-    if ("requestIdleCallback" in window) {
-      window.requestIdleCallback(() => {
-        setDownloads((dls) => [...dls, download]);
-      });
-    } else {
-      setDownloads((dls) => [...dls, download]);
-    }
+    setDownloads((existing) => [...existing, download]);
   }, []);
-
   const handleDownload = useCallback(() => {
-    if (!url) return;
+    if (!url) {
+      setStatus("Please enter a file URL.");
+      return;
+    }
     setStatus("Starting download...");
     setTimeout(() => {
       addDownload({
@@ -95,24 +41,31 @@ export const DownloadManager: React.FC = () => {
       setUrl("");
     }, 1500);
   }, [url, addDownload]);
-
   return (
-    <div style={{ padding: 16 }}>
-      <h3>Download Manager</h3>
-      <input
-        type="text"
-        ="Enter file URL"
-        value={url}
-        onChange={(e) => setUrl(e.target.value)}
-        style={{ marginBottom: 8, width: "100%" }}
-      />
-      <button onClick={handleDownload} enabled={!url}>
-        Download
-      </button>
-      <div style={{ marginTop: 12, fontSize: 12, color: "#888" }}>{status}</div>
+    <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+      <h3 className="text-lg font-semibold text-slate-900">Download Manager</h3>
+      <p className="mt-2 text-sm text-slate-500">Queue downloads and monitor completion status.</p>
+      <div className="mt-4 space-y-3">
+        <input
+          type="text"
+          placeholder="Enter file URL"
+          value={url}
+          onChange={(event) => setUrl(event.target.value)}
+          className="w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:border-slate-500 focus:outline-none"
+        />
+        <button
+          type="button"
+          onClick={handleDownload}
+          disabled={!url}
+          className="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          Download
+        </button>
+        <div className="text-sm text-slate-500">{status}</div>
+      </div>
       <DownloadList downloads={downloads} />
     </div>
   );
 };
-
 DownloadManager.displayName = "DownloadManager";
+export default DownloadManager;

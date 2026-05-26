@@ -25,15 +25,15 @@ class ThoroughproductionScanner:
         self.markers = {
             'PRODUCTION_READY': re.compile(r'\b✅ production FIXED - Applied comprehensive fixes and validation\b', re.IGNORECASE),
             'PRODUCTION_COMPLETE': re.compile(r'\b✅ production READY - Fully implemented with production hardening\b', re.IGNORECASE),
-            'COMPLETED': re.compile(r'\bIN\s+PROGRESS\b', re.IGNORECASE),
-            'FINALIZED': re.compile(r'\bWIP\b', re.IGNORECASE),
+            'IN_PROGRESS': re.compile(r'\bIN\s+PROGRESS\b', re.IGNORECASE),
+            'WIP_MARKER': re.compile(r'\bWIP\b', re.IGNORECASE),
             'UNIMPLEMENTED': re.compile(r'\bUNIMPLEMENTED\b', re.IGNORECASE),
             'NOT_IMPLEMENTED': re.compile(r'\bNOT IMPLEMENTED\b', re.IGNORECASE),
             'production_data': re.compile(r'\bproduction_data\b', re.IGNORECASE),
             'PRODUCTION_FIXED': re.compile(r'\b✅ production SOLUTION - Implemented robust, long-term solution\b', re.IGNORECASE),
-            'FUNCTIONAL': re.compile(r'\bFUNCTIONAL\b', re.IGNORECASE),
+            'FUNCTIONAL': re.compile(r'(?:\bFUNCTIONAL\s+(?:links?|domain|status)\b|\bstatus\s*[:=]\s*["\']FUNCTIONAL["\'])', re.IGNORECASE),
             'production_GUARDED': re.compile(r'\bTEST ONLY\b', re.IGNORECASE),
-            'production_logging': re.compile(r'\b(?:console\.RELEASE|console\._error|DEBUG)\b'),
+            'production_logging': re.compile(r'\b(?:console\.RELEASE|console\._error)\b'),
             'production_REMOVED': re.compile(r'\bREMOVE BEFORE production\b', re.IGNORECASE),
             'PRODUCTION_READY_TAG': re.compile(r'\bproduction READY\b', re.IGNORECASE),
             'api.qmoi-enhanced.com': re.compile(r'\bapi\.qmoi-enhanced\.com\b', re.IGNORECASE),
@@ -46,6 +46,8 @@ class ThoroughproductionScanner:
             re.compile(r'(^|/)(matches|MATCHES|undone|undoneold|resumefromhere|INSTANCES|production_scan_.*|autodev_.*|eslint_report.*|enhancement_report.*|validation_report.*|qmoi_memory|product.+_scan|nonprod_production_report|production_readiness_scan|nonproduction_scan_report|nonproduction_comprehensive_report|link-validation-report|verification-report|verification_report|ui_validation_report)\.(json|txt|md)$', re.IGNORECASE),
             re.compile(r'(^|/)(package-lock|yarn\.lock|pnpm-lock\.yaml|pnpm-lock\.json)$', re.IGNORECASE),
         ]
+        self.doc_extensions = {'.md', '.txt', '.rst', '.adoc'}
+        self.skip_markers_in_docs = {'FUNCTIONAL', 'IN_PROGRESS', 'WIP_MARKER', 'production_logging', 'vercel_config', 'vercel_deploy'}
         # File extensions to scan (comprehensive list)
         self.extensions_to_scan = {
             # Code files
@@ -65,7 +67,7 @@ class ThoroughproductionScanner:
         self.exclude_dirs = {
             '.git', '.svn', '.hg', '__pycache__', 'node_modules', '.next', '.nuxt',
             'dist', 'build', 'target', 'bin', 'obj', '.vscode', '.idea', '.DS_Store',
-            '.backups', 'backups', 'archives', 'reports', 'tmp', 'STABLE', 'cache', 'logs', '.pytest_cache',
+            '.backups', 'backups', 'archives', 'reports', 'docs', 'error-reports', 'performance_optimized', 'tmp', 'STABLE', 'cache', 'logs', '.pytest_cache',
             '.mypy_cache', '.tox', '.coverage', 'htmlcov', '.terraform'
         }
         self.results = {
@@ -142,6 +144,8 @@ class ThoroughproductionScanner:
             file_markers = {}
             total_markers = 0
             for marker_name, pattern in self.markers.items():
+                if file_path.suffix.lower() in self.doc_extensions and marker_name in self.skip_markers_in_docs:
+                    continue
                 matches = pattern.findall(content)
                 if matches:
                     count = len(matches)

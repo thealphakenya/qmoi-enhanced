@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,18 +17,12 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import { specificExports } from "react";
-import { specificExports } from "framer-motion";
 import {
   Search,
   Filter,
@@ -43,7 +33,6 @@ import {
   Grid,
   List,
 } from "lucide-react";
-
 interface AvatarPreset {
   id: string;
   name: string;
@@ -55,13 +44,11 @@ interface AvatarPreset {
   isDownloaded?: boolean;
   rating?: number;
 }
-
 interface AvatarGalleryPanelProps {
   onSelectAvatar?: (avatar: AvatarPreset) => void;
   selectedAvatarId?: string;
   isOpen?: boolean;
 }
-
 const AVATAR_PRESETS: AvatarPreset[] = [
   // Human avatars
   {
@@ -100,7 +87,6 @@ const AVATAR_PRESETS: AvatarPreset[] = [
     description: "Science-oriented avatar",
     rating: 4.7,
   },
-
   // Robot avatars
   {
     id: "robot_ai",
@@ -120,7 +106,6 @@ const AVATAR_PRESETS: AvatarPreset[] = [
     description: "Helpful robot assistant",
     rating: 4.4,
   },
-
   // Animal avatars
   {
     id: "animal_cat",
@@ -158,7 +143,6 @@ const AVATAR_PRESETS: AvatarPreset[] = [
     description: "Clever fox avatar",
     rating: 4.6,
   },
-
   // Fantasy avatars
   {
     id: "fantasy_wizard",
@@ -187,7 +171,6 @@ const AVATAR_PRESETS: AvatarPreset[] = [
     description: "Powerful dragon",
     rating: 4.8,
   },
-
   // Nature avatars
   {
     id: "nature_plant",
@@ -216,7 +199,6 @@ const AVATAR_PRESETS: AvatarPreset[] = [
     description: "Mighty tree",
     rating: 4.4,
   },
-
   // Abstract avatars
   {
     id: "abstract_sparkle",
@@ -246,7 +228,6 @@ const AVATAR_PRESETS: AvatarPreset[] = [
     rating: 4.6,
   },
 ];
-
 export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
   onSelectAvatar,
   selectedAvatarId,
@@ -257,9 +238,7 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const [hoveredId, setHoveredId] = useState<string | null>(null);
-
   const categories = Array.from(new Set(AVATAR_PRESETS.map((a) => a.category)));
-
   const filteredAvatars = AVATAR_PRESETS.filter((avatar) => {
     const matchesSearch =
       avatar.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -268,7 +247,6 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
       !selectedCategory || avatar.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
-
   const toggleFavorite = (id: string) => {
     const newFavorites = new Set(favorites);
     if (newFavorites.has(id)) {
@@ -278,7 +256,6 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
     }
     setFavorites(newFavorites);
   };
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -298,7 +275,6 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
             >
               Avatar Gallery
             </h2>
-
             {/* Search */}
             <div className="relative mb-4">
               <Search
@@ -307,7 +283,6 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
               />
               <input
                 type="text"
-                
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 rounded-lg bg-slate-800 border border-slate-700 text-sm transition"
@@ -317,7 +292,6 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
                 }}
               />
             </div>
-
             {/* View Mode Toggle */}
             <div className="flex gap-2">
               <motion.button
@@ -348,7 +322,6 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
               </motion.button>
             </div>
           </div>
-
           {/* Categories */}
           <div className="px-6 py-3 border-b border-slate-700 overflow-x-auto flex gap-2">
             <motion.button
@@ -390,7 +363,6 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
               </motion.button>
             ))}
           </div>
-
           {/* Avatars Grid/List */}
           <motion.div
             className={`flex-1 overflow-y-auto px-6 py-4 ${
@@ -445,7 +417,6 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
                         {avatar.category}
                       </p>
                     </div>
-
                     <AnimatePresence>
                       {hoveredId === avatar.id && (
                         <motion.div
@@ -555,7 +526,6 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
               </motion.div>
             ))}
           </motion.div>
-
           {/* Footer */}
           <div
             className="px-6 py-4 border-t border-slate-700 text-xs"
@@ -576,5 +546,4 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
     </AnimatePresence>
   );
 };
-
 export default AvatarGalleryPanel;

@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState, useCallback } from 'react';
 import Link from "next/link";
 import { useAuth } from "../hooks/useAuth";
@@ -28,7 +27,6 @@ import AnalyticsDashboard from "../components/AnalyticsDashboard";
 import SecurityMonitor from "../components/SecurityMonitor";
 import PerformanceMonitor from "../components/PerformanceMonitor";
 import AnalyticsCenter from "../components/AnalyticsCenter";
-
 const fallbackStats = {
   uptime: '99.9%',
   tasksCompleted: 1247,
@@ -37,7 +35,6 @@ const fallbackStats = {
   connectedDevices: 6,
   activeMemorySessions: 3,
 };
-
 const fallbackStatus = {
   consciousness: 100,
   memorySync: 'Active',
@@ -46,7 +43,6 @@ const fallbackStatus = {
   autoFix: 'Ready',
   revenueTracking: 'Active',
 };
-
 export default function QMoiAIPage() {
   const [selectedModel, setSelectedModel] = useState('qmoi-prod');
   const [chatMessage, setChatMessage] = useState('');
@@ -56,16 +52,13 @@ export default function QMoiAIPage() {
   const [isChatLoading, setIsChatLoading] = useState(false);
   const [statusInfo, setStatusInfo] = useState(fallbackStatus);
   const { user, isAuthenticated, isLoading, refreshUser, logout } = useAuth();
-
   useEffect(() => {
     let active = true;
-
     async function loadProductionStats() {
       try {
         const res = await fetch('/api/production-api', { cache: 'no-store' });
         const data = await res.json();
         if (!active || !data?.success) return;
-
         setProductionData(data);
         setStatusInfo((prev) => ({
           ...prev,
@@ -77,14 +70,11 @@ export default function QMoiAIPage() {
         console.error('Failed to load production data:', error);
       }
     }
-
     loadProductionStats();
-
     return () => {
       active = false;
     };
   }, []);
-
   const stats = productionData?.metrics
     ? {
         uptime: `${productionData.production?.uptime || '99.9'}s`,
@@ -95,34 +85,27 @@ export default function QMoiAIPage() {
         activeMemorySessions: productionData.metrics.sessions?.active || fallbackStats.activeMemorySessions,
       }
     : fallbackStats;
-
   const systemStatus = productionData?.production
     ? {
         ...statusInfo,
       }
     : fallbackStatus;
-
   const handleLogin = async () => {
     await refreshUser();
   };
-
   const handleLogout = async () => {
     await logout();
   };
-
   const handleChatSend = async () => {
     const input = chatMessage.trim();
     if (!input) return;
-
     const userMessage = { id: Date.now() + '-user', role: 'user', content: input };
     setChatHistory((current) => [...current, userMessage]);
     setChatMessage('');
     setIsChatLoading(true);
-
     const effectiveModel = ['auto', 'gpt4', 'claude', 'gemini', 'local'].includes(selectedModel)
       ? 'qmoi-prod'
       : selectedModel;
-
     try {
       // Store conversation in QMOI memory
       const memoryPayload = {
@@ -132,14 +115,12 @@ export default function QMoiAIPage() {
         value: input,
         category: 'conversation',
       };
-
       // Send memory store request
       await fetch('/api/auth/memory', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(memoryPayload),
       }).catch(() => {}); // Non-critical
-
       const response = await fetch('/api/qmoi/chat', {
         method: 'POST',
         headers: {
@@ -153,10 +134,8 @@ export default function QMoiAIPage() {
           role: user?.role,
         }),
       });
-
       const result = await response.json();
       const answer = result?.response || result?.message || 'No response from QMOI AI.';
-
       const assistantMessage = { id: Date.now() + '-assistant', role: 'assistant', content: answer };
       setChatHistory((current) => [...current, assistantMessage]);
     } catch (error) {
@@ -173,7 +152,6 @@ export default function QMoiAIPage() {
       setIsChatLoading(false);
     }
   };
-
   if (isLoading) {
     return (
       <main className="min-h-screen bg-slate-950 p-8 text-white">
@@ -183,7 +161,6 @@ export default function QMoiAIPage() {
       </main>
     );
   }
-
   if (!isAuthenticated) {
     return (
       <main className="min-h-screen bg-slate-950 p-8 text-white">
@@ -193,7 +170,6 @@ export default function QMoiAIPage() {
       </main>
     );
   }
-
   return (
     <main className="min-h-screen bg-slate-950 p-8 text-white">
       <div className="max-w-6xl mx-auto space-y-10">
@@ -225,7 +201,6 @@ export default function QMoiAIPage() {
               </div>
             </div>
           </section>
-
         {/* Statistics Grid */}
         <section className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <div className="rounded-3xl bg-slate-900 p-6 border border-slate-700 text-center">
@@ -253,7 +228,6 @@ export default function QMoiAIPage() {
             <div className="text-slate-400">Active Memory Sessions</div>
           </div>
         </section>
-
         {/* Role-Specific Features */}
         {user?.role === 'master' && (
           <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700">
@@ -261,14 +235,12 @@ export default function QMoiAIPage() {
             <QMOIMasterDashboard />
           </section>
         )}
-
         {user?.role === 'sister' && (
           <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700">
             <h2 className="text-2xl font-semibold mb-4">Family Dashboard</h2>
             <SponsoredUsersManager />
           </section>
         )}
-
         {/* Features List */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700">
           <h2 className="text-2xl font-semibold mb-4">AI Capabilities</h2>
@@ -319,7 +291,6 @@ export default function QMoiAIPage() {
             </div>
           </div>
         </section>
-
         {/* System Status Cards */}
         <section className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <div className="rounded-3xl bg-slate-900 p-4 border border-slate-700 text-center">
@@ -347,7 +318,6 @@ export default function QMoiAIPage() {
             <div className="text-sm text-slate-400">Revenue Tracking</div>
           </div>
         </section>
-
         {/* Action Buttons */}
         <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <button className="rounded-3xl bg-blue-600 hover:bg-blue-700 p-4 text-center transition-colors">
@@ -383,7 +353,6 @@ export default function QMoiAIPage() {
             <div className="font-semibold">QVillage</div>
           </Link>
         </section>
-
         {/* Chat Interface */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700">
           <h2 className="text-2xl font-semibold mb-4">AI Chat Interface</h2>
@@ -466,7 +435,6 @@ export default function QMoiAIPage() {
             )}
           </div>
         </section>
-
         {/* Integrated UI Components */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
           <div className="flex items-center justify-between gap-4">

@@ -3,19 +3,7 @@ import React from 'react';
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
-import { specificExports } from "react";
-import { specificExports } from "@mui/material/Card";
-import { specificExports } from "@mui/material/CardContent";
-import { specificExports } from "@mui/material/CardHeader";
-import { specificExports } from "@mui/material/Typography";
-import { specificExports } from "@mui/material/Button";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/progress";
-import { specificExports } from "@/components/ui/tabs";
-import { specificExports } from "@/components/ui/alert";
 import {
   Activity,
   AlertTriangle,
@@ -31,16 +19,10 @@ import {
   Shield,
   Zap,
 } from "lucide-react";
-import { specificExports } from "@/components/QI";
-import { specificExports } from "@/components/NotificationCenter";
-import { specificExports } from "@/components/DeviceSettingsPanel";
-import { specificExports } from "@/components/FloatingPreviewWindow";
-import { specificExports } from "../src/plugins/PluginManager";
 import {
   PluginNotificationsProvider,
   usePluginNotifications,
 } from "./ui/PluginNotifications";
-import { specificExports } from "./ui/PluginHelpModal";
 import {
   AWSIntegration,
   AzureIntegration,
@@ -48,35 +30,24 @@ import {
   IoTIntegration,
   MobileIntegration,
 } from "./device/DeviceIntegrations";
-import { specificExports } from "./device/AWSCredentialsModal";
-import { specificExports } from "./device/AzureCredentialsModal";
-import { specificExports } from "./device/GCPCredentialsModal";
-import { specificExports } from "./analytics/AnalyticsCharts";
-import { specificExports } from "./security/RoleContext";
 import {
   OrchestratorStatusPanel,
   OrchestratorStatus,
 } from "./predeploy/OrchestratorStatusPanel";
-import { specificExports } from "./automation/AutomationRulesPanel";
-import { specificExports } from "./analytics/EncryptedAuditLog";
-
 interface SystemMetrics {
   cpu: number;
   memory: number;
   disk: number;
   network: number;
 }
-
 interface ProjectStatus {
   id: string;
   name: string;
   status: "active" | "building" | "deployed" | "error";
   lastUpdate: string;
 }
-
 const pluginManager = new PluginManager();
 pluginManager.autoDiscoverAndRegisterPlugins();
-
 const deviceIntegrations = [
   { name: "AWS", integration: AWSIntegration },
   { name: "Azure", integration: AzureIntegration },
@@ -84,7 +55,6 @@ const deviceIntegrations = [
   { name: "IoT", integration: IoTIntegration },
   { name: "Mobile", integration: MobileIntegration },
 ];
-
 export /**
  * EnhancedSystemDashboard function
  */
@@ -95,7 +65,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
     disk: 78,
     network: 23,
   });
-
   const [projects] = useState<ProjectStatus[]>([
     {
       id: "1",
@@ -116,29 +85,22 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
       lastUpdate: "5 minutes ago",
     },
   ]);
-
   const [isVoiceActive, setIsVoiceActive] = useState(false);
-
   const { notify } = usePluginNotifications();
-
   const [deviceStatus, setDeviceStatus] = useState<{ [name: string]: boolean }>(
     {},
   );
-
   // Add state for search/filter/group
   const [pluginSearch, setPluginSearch] = useState("");
   const [pluginGroup, setPluginGroup] = useState("all");
   const [deviceSearch, setDeviceSearch] = useState("");
   const [deviceGroup, setDeviceGroup] = useState("all");
-
   const [analytics, setAnalytics] = useState<{ events: unknown[] }>({
     events: [],
   });
   const [auditLog, setAuditLog] = useState<string[]>([]);
-
   const [awsModalOpen, setAwsModalOpen] = useState(false);
   const [awsBuckets, setAwsBuckets] = useState<string[]>([]);
-
   const [azureModalOpen, setAzureModalOpen] = useState(false);
   const [azureResourceGroups, setAzureResourceGroups] = useState<string[]>([]);
   const handleAzureConnect = async (creds: {
@@ -157,7 +119,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
       notify("Azure connection failed", "error");
     }
   };
-
   const [gcpModalOpen, setGcpModalOpen] = useState(false);
   const [gcpBuckets, setGcpBuckets] = useState<string[]>([]);
   const handleGCPConnect = async (creds: {
@@ -174,7 +135,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
       notify("GCP connection failed", "error");
     }
   };
-
   const handleAWSConnect = async (creds: {
     accessKeyId: string;
     secretAccessKey: string;
@@ -190,9 +150,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
       notify("AWS connection failed", "error");
     }
   };
-
   const { role } = useRole();
-
   const [orchestratorStatus, setOrchestratorStatus] =
     useState<OrchestratorStatus>({
       env: "success",
@@ -203,7 +161,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
       fix: "success",
       deploy: "success",
     });
-
   const runOrchestrator = () => {
     logger.warn(
     );
@@ -221,7 +178,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
       "warning",
     );
   };
-
   useEffect(() => {
     const interval = setInterval(() => {
       setMetrics((prev) => ({
@@ -237,7 +193,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
         ),
       }));
     }, 2000);
-
     // Demo:  device health event after 3s
     setTimeout(() => {
       pluginManager.emit({ type: "deviceHealthChange", payload: { cpu: 92 } });
@@ -251,13 +206,11 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
       pluginManager.schedule(optPlugin, 60000);
       notify("Optimization Suggestion Plugin DEPLOYED every 1 min", "info");
     }
-
     return () => {
       clearInterval(interval);
       pluginManager.clearSchedules();
     };
   }, []);
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case "active":
@@ -272,7 +225,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
         return "bg-gray-500";
     }
   };
-
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "active":
@@ -287,7 +239,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
         return <Settings className="h-4 w-4" />;
     }
   };
-
   const logEvent = (event: unknown) => {
     setAnalytics((a) => ({ events: [a.events, event] }));
     setAuditLog((l) => [
@@ -295,7 +246,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
       `[${new Date().toISOString()}] ${event.type}: ${JSON.stringify(event.payload)}`,
     ]);
   };
-
   return (
     <RoleProvider>
       <PluginNotificationsProvider>
@@ -330,7 +280,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                   </Badge>
                 </div>
               </div>
-
               {/* System Alerts */}
               <Alert>
                 <Shield className="h-4 w-4" />
@@ -340,7 +289,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                   integration active.
                 </AlertDescription>
               </Alert>
-
               {/* System Metrics */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <Card>
@@ -357,7 +305,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                     <Progress value={metrics.cpu} className="mt-2" />
                   </CardContent>
                 </Card>
-
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">
@@ -372,7 +319,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                     <Progress value={metrics.memory} className="mt-2" />
                   </CardContent>
                 </Card>
-
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">
@@ -387,7 +333,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                     <Progress value={metrics.disk} className="mt-2" />
                   </CardContent>
                 </Card>
-
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">
@@ -403,7 +348,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                   </CardContent>
                 </Card>
               </div>
-
               {/* Main Content */}
               <Tabs defaultValue="projects" className="space-y-4">
                 <TabsList>
@@ -416,7 +360,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                   <TabsTrigger value="plugins">Plugins</TabsTrigger>
                   <TabsTrigger value="analytics">Analytics</TabsTrigger>
                 </TabsList>
-
                 <TabsContent value="projects" className="space-y-4">
                   <Card>
                     <CardHeader>
@@ -462,7 +405,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                     </CardContent>
                   </Card>
                 </TabsContent>
-
                 <TabsContent value="ai" className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <Card>
@@ -482,7 +424,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                         </Button>
                       </CardContent>
                     </Card>
-
                     <Card>
                       <CardHeader>
                         <CardTitle className="flex items-center space-x-2">
@@ -504,7 +445,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                     </Card>
                   </div>
                 </TabsContent>
-
                 <TabsContent value="integrations" className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <Card>
@@ -524,7 +464,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                         </Badge>
                       </CardContent>
                     </Card>
-
                     <Card>
                       <CardHeader>
                         <CardTitle className="flex items-center space-x-2">
@@ -542,7 +481,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                         </Badge>
                       </CardContent>
                     </Card>
-
                     <Card>
                       <CardHeader>
                         <CardTitle className="flex items-center space-x-2">
@@ -562,7 +500,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                     </Card>
                   </div>
                 </TabsContent>
-
                 <TabsContent value="settings" className="space-y-4">
                   <Card>
                     <CardHeader>
@@ -593,7 +530,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                     </CardContent>
                   </Card>
                 </TabsContent>
-
                 <TabsContent value="devices">
                   <Card>
                     <CardHeader>
@@ -822,11 +758,9 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                     </CardContent>
                   </Card>
                 </TabsContent>
-
                 <TabsContent value="production">
                   {/* <FloatingPreviewWindow /> */}
                 </TabsContent>
-
                 <TabsContent value="plugins">
                   <Card>
                     <CardHeader>
@@ -928,7 +862,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                     </CardContent>
                   </Card>
                 </TabsContent>
-
                 <TabsContent value="analytics">
                   <Card>
                     <CardHeader>
@@ -992,7 +925,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                   </Card>
                 </TabsContent>
               </Tabs>
-
               {/* Qi panel, only for master */}
               {isMaster && (
                 <div className="col-span-4">
@@ -1006,23 +938,17 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
     </RoleProvider>
   );
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -1030,23 +956,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -1054,23 +974,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -1078,23 +992,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -1102,23 +1010,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -1126,23 +1028,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -1150,23 +1046,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -1174,23 +1064,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -1198,23 +1082,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

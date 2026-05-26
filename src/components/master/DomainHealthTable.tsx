@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,8 +17,6 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 /**
  * Enhanced Domain Health Table Component
  *
@@ -30,10 +24,7 @@ class ErrorBoundary extends React.Component {
  *
  * Location: src/components/master/DomainHealthTable.tsx
  */
-
 'use client';
-
-
 interface DomainValidation {
   domain: string;
   dnsResolution: boolean;
@@ -55,7 +46,6 @@ interface DomainValidation {
     lastLinkCheck: string;
   };
 }
-
 interface GoDaddyStatus {
   registered: boolean;
   sslActive: boolean;
@@ -64,7 +54,6 @@ interface GoDaddyStatus {
   revenue: number;
   lastSync: string;
 }
-
 interface DomainHealthTableProps {
   validations: DomainValidation[];
   godaddyStatus: Record<string, GoDaddyStatus>;
@@ -73,7 +62,6 @@ interface DomainHealthTableProps {
   onAutoRepair?: (domain: string) => void;
   showLinkStats?: boolean;
 }
-
 export default /**
  * DomainHealthTable function
  */
@@ -90,7 +78,6 @@ function DomainHealthTable(): any {
   const [filterPriority, setFilterPriority] = useState<string>('all');
   const [filterCategory, setFilterCategory] = useState<string>('all');
   const [sortBy, setSortBy] = useState<'health' | 'responseTime' | 'priority'>('health');
-
   // Toggle expanded view for domain details
   const toggleExpanded = (domain: string) => {
     const newExpanded = new Set(expandedDomains);
@@ -101,7 +88,6 @@ function DomainHealthTable(): any {
     }
     setExpandedDomains(newExpanded);
   };
-
   // Get health color class with enhanced styling
   const getHealthColor = (health: number) => {
     if (health >= 95) return 'text-green-700 bg-green-50 border-green-200';
@@ -110,7 +96,6 @@ function DomainHealthTable(): any {
     if (health >= 40) return 'text-orange-600 bg-orange-100 border-orange-300';
     return 'text-red-600 bg-red-100 border-red-300';
   };
-
   // Get priority color
   const getPriorityColor = (priority: string) => {
     switch (priority) {
@@ -121,14 +106,12 @@ function DomainHealthTable(): any {
       default: return 'text-gray-600 bg-gray-50';
     }
   };
-
   // Get status icon with better visual indicators
   const getStatusIcon = (status: boolean) => {
     return status ?
       <span className="text-green-600 font-bold">✓</span> :
       <span className="text-red-600 font-bold">✗</span>;
   };
-
   // Filter and sort validations
   const filteredValidations = validations
     .filter(v => filterPriority === 'all' || v.priority === filterPriority)
@@ -143,7 +126,6 @@ function DomainHealthTable(): any {
         default: return 0;
       }
     });
-
   if (loading) {
     return (
       <div className="flex items-center justify-center p-8">
@@ -152,7 +134,6 @@ function DomainHealthTable(): any {
       </div>
     );
   }
-
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden">
       {/* Header with controls */}
@@ -175,7 +156,6 @@ function DomainHealthTable(): any {
                 <option value="low">Low</option>
               </select>
             </div>
-
             <div className="flex items-center space-x-2">
               <label className="text-sm text-gray-600">Category:</label>
               <select
@@ -190,7 +170,6 @@ function DomainHealthTable(): any {
                 <option value="application">Application</option>
               </select>
             </div>
-
             <div className="flex items-center space-x-2">
               <label className="text-sm text-gray-600">Sort:</label>
               <select
@@ -203,7 +182,6 @@ function DomainHealthTable(): any {
                 <option value="priority">Priority</option>
               </select>
             </div>
-
             {onRefresh && (
               <button
                 onClick={onRefresh}
@@ -215,7 +193,6 @@ function DomainHealthTable(): any {
           </div>
         </div>
       </div>
-
       {/* Table */}
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
@@ -330,7 +307,6 @@ function DomainHealthTable(): any {
                     </div>
                   </td>
                 </tr>
-
                 {/* Expanded details */}
                 {expandedDomains.has(validation.domain) && (
                   <tr>
@@ -359,7 +335,6 @@ function DomainHealthTable(): any {
                             </div>
                           </dl>
                         </div>
-
                         {validation.linkStatus && (
                           <div>
                             <h4 className="text-sm font-medium text-gray-900 mb-2">Link Health</h4>
@@ -385,7 +360,6 @@ function DomainHealthTable(): any {
                             </dl>
                           </div>
                         )}
-
                         {godaddyStatus[validation.domain] && (
                           <div>
                             <h4 className="text-sm font-medium text-gray-900 mb-2">GoDaddy Status</h4>
@@ -426,7 +400,6 @@ function DomainHealthTable(): any {
           </tbody>
         </table>
       </div>
-
       {/* Summary footer */}
       <div className="bg-gray-50 px-6 py-4 border-t border-gray-200">
         <div className="flex items-center justify-between text-sm text-gray-600">
@@ -450,12 +423,10 @@ function DomainHealthTable(): any {
   );
 }
   };
-
   // Get GoDaddy status display
   const getGoDaddyStatus = (domain: string) => {
     const status = godaddyStatus[domain];
     if (!status) return '⏳';
-
     if (status.registered && status.sslActive && status.dnsConfigured) {
       return '✅';
     } else if (status.registered) {
@@ -464,7 +435,6 @@ function DomainHealthTable(): any {
       return '❌';
     }
   };
-
   if (loading) {
     return (
       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
@@ -486,13 +456,11 @@ function DomainHealthTable(): any {
       </div>
     );
   }
-
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden">
       <div className="px-6 py-4 border-b border-gray-200">
         <h2 className="text-xl font-semibold text-gray-900">Domain Health Status</h2>
       </div>
-
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
@@ -571,7 +539,6 @@ function DomainHealthTable(): any {
           </tbody>
         </table>
       </div>
-
       {/* Table Footer */}
       <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
         <div className="flex justify-between items-center text-sm text-gray-600">
@@ -585,22 +552,17 @@ function DomainHealthTable(): any {
     </div>
   );
 }
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -608,23 +570,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -632,23 +588,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -656,23 +606,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -680,23 +624,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -704,23 +642,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -728,23 +660,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -752,23 +678,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -776,23 +696,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

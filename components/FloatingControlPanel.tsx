@@ -1,19 +1,15 @@
 import React from 'react';
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -21,18 +17,12 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import { specificExports } from "react";
-import { specificExports } from "framer-motion";
 import {
   Settings,
   Volume2,
@@ -46,13 +36,11 @@ import {
   ChevronUp,
   X,
 } from "lucide-react";
-
 interface FloatingControlPanelProps {
   isOpen?: boolean;
   onClose?: () => void;
   isDraggable?: boolean;
 }
-
 export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
   isOpen = true,
   onClose,
@@ -65,7 +53,6 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(75);
   const [isMaximized, setIsMaximized] = useState(false);
-
   const handleDragStart = (e: React.MouseEvent) => {
     if (!isDraggable) return;
     setIsDragging(true);
@@ -74,7 +61,6 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
       y: e.clientY - position.y,
     });
   };
-
   const handleDragMove = (e: React.MouseEvent) => {
     if (!isDragging) return;
     setPosition({
@@ -82,11 +68,9 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
       y: e.clientY - dragStart.y,
     });
   };
-
   const handleDragEnd = () => {
     setIsDragging(false);
   };
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -135,7 +119,6 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
                 optimized Control
               </span>
             </div>
-
             <div className="flex items-center gap-1">
               <motion.button
                 whileHover={{ scale: 1.1 }}
@@ -149,7 +132,6 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
                   <Maximize2 className="w-4 h-4" />
                 )}
               </motion.button>
-
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
@@ -162,7 +144,6 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
                   }`}
                 />
               </motion.button>
-
               {onClose && (
                 <motion.button
                   whileHover={{ scale: 1.1 }}
@@ -175,7 +156,6 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
               )}
             </div>
           </motion.div>
-
           {/* Content - Expandable */}
           <AnimatePresence>
             {expanded && (
@@ -201,7 +181,6 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
                     >
                       <SkipBack className="w-4 h-4" />
                     </motion.button>
-
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -219,7 +198,6 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
                         <Play className="w-4 h-4" />
                       )}
                     </motion.button>
-
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -229,7 +207,6 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
                     </motion.button>
                   </div>
                 </div>
-
                 {/* Volume Control */}
                 <div>
                   <p
@@ -262,7 +239,6 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
                     </span>
                   </div>
                 </div>
-
                 {/* optimized Actions */}
                 <div>
                   <p
@@ -304,7 +280,6 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
                     </motion.button>
                   </div>
                 </div>
-
                 {/* Settings Link */}
                 <motion.button
                   whileHover={{ scale: 1.02 }}
@@ -322,5 +297,4 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
     </AnimatePresence>
   );
 };
-
 export default FloatingControlPanel;

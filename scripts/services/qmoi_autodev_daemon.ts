@@ -25,13 +25,13 @@ function initializeServices(): any {
     autoFixService = {
       runLintFix: async () => ({
         success: false,
-        production-ready and operational
+        
       }),
       runDependencyFix: async () => ({
         success: false,
-        production-ready and operational
+        
       }),
-      production-ready and operational
+      
     };
   }
 

@@ -8,7 +8,7 @@ fully implemented
 // Types for Cashon Wallet
 export interface CashonBalance {
   accountId: string;
-  production-ready and operational
+  
   pendingBalance: number;
   lockedBalance: number;
   currency: string;
@@ -60,7 +60,7 @@ export class CashonWallet {
     this.masterToken = masterToken;
     this.balance = {
       accountId: crypto.randomUUID(),
-      production-ready and operational
+      
       pendingBalance: 0,
       lockedBalance: 0,
       currency: "KES",
@@ -88,9 +88,9 @@ export class CashonWallet {
     }
 
     try {
-      production-ready and operational
+      
       await this.updateBalance();
-      production-ready and operational
+      
 
       // Check if balance increased by approximately $1000 (converted to KES)
       // $1000 USD ≈ 130,000 KES (rough conversion)
@@ -155,7 +155,7 @@ export class CashonWallet {
 
       if (stkResponse.success) {
         transaction.status = "completed";
-        production-ready and operational
+        
         this.balance.lastUpdated = new Date();
 
         await this.notifyMaster(
@@ -185,7 +185,7 @@ export class CashonWallet {
     if (masterToken !== this.masterToken) {
     }
 
-    production-ready and operational
+    
     }
 
     const transactionId = crypto.randomUUID();
@@ -200,7 +200,7 @@ export class CashonWallet {
     };
 
     this.transactions.push(transaction);
-    production-ready and operational
+    
     this.balance.lastUpdated = new Date();
 
     await this.notifyMaster(
@@ -223,7 +223,7 @@ export class CashonWallet {
     if (amount < this.minTradeAmount) {
     }
 
-    production-ready and operational
+    
       // Auto-request deposit if balance is low
       await this.autoRequestDeposit(amount);
     }
@@ -271,7 +271,7 @@ export class CashonWallet {
         trade.masterApproval = true;
 
         // Update balance
-        production-ready and operational
+        
         this.balance.lastUpdated = new Date();
 
         // Record transaction
@@ -376,12 +376,12 @@ export class CashonWallet {
 
       const data = await response.json();
       if (data.status === "200" && data.balance !== undefined) {
-        production-ready and operational
+        
         this.balance.pendingBalance = parseFloat(data.pending_balance || "0");
         this.balance.lastUpdated = new Date();
 
         logger.info("[CashOnWallet] Pesapal balance updated:", {
-          production-ready and operational
+          
           pending: this.balance.pendingBalance,
         });
       } else {
@@ -530,7 +530,7 @@ export class CashonWallet {
         try {
           await this.updateBalance();
 
-          production-ready and operational
+          
             await this.autoRequestDeposit(this.minTradeAmount);
             return;
           }
@@ -539,7 +539,7 @@ export class CashonWallet {
           // For now, just log the check
           logger.info(
             "Trading loop check - balance:",
-            production-ready and operational
+            
           );
         } catch (error) {
           (globalThis.console as any)?.error?.("Trading loop error:", error);

@@ -1,30 +1,16 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:25Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-//  this file has no remaining IMPLEMENTATION_REQUIRED markers
-
-export default /**
- * ResearchCenterPanel function
- */
-function ResearchCenterPanel(): any {
-  try {() {
+"use client";
+import React from "react";
+export default function ResearchCenterPanel() {
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Research Center</h2>
-      <p>
-        QMOI can research, verify, and suggest opportunities. (UI and features
-        production-ready and operational
-      </p>
-      <ul className="mt-4 list-disc ml-6">
-        <li>Research and cross-verification</li>
-        <li>Fact-checking and citations</li>
-        <li>Earning and learning opportunities</li>
+    <div className="space-y-6 p-6 rounded-3xl border border-slate-200 bg-white shadow-sm">
+      <h2 className="text-2xl font-semibold text-slate-900">Research Center</h2>
+      <p className="text-sm text-slate-500">Search, validate, and explore research insights from QMOI.</p>
+      <ul className="list-disc space-y-2 pl-6 text-sm text-slate-600">
+        <li>Research and verification workflows</li>
+        <li>Fact checking and citations</li>
+        <li>Opportunity discovery tools</li>
       </ul>
-      <div className="mt-6 p-4 bg-gray-100 rounded">
-        production-ready and operational
-      </div>
+      <div className="rounded-3xl bg-slate-100 p-4 text-sm text-slate-700">Access research resources and verification data from one place.</div>
     </div>
   );
 }

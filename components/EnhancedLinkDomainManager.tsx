@@ -3,18 +3,26 @@ import React from 'react';
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
-import { specificExports } from "react";
-import { specificExports } from "@/components/ui/card";
-import { specificExports } from "@/components/ui/button";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/progress";
-import { specificExports } from "@/components/ui/alert";
-import { specificExports } from "@/components/ui/tabs";
-import { specificExports } from "@/components/ui/input";
-import { specificExports } from "@/components/ui/label";
+import React, { useEffect, useMemo, useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   CheckCircle,
   XCircle,
@@ -23,9 +31,8 @@ import {
   RefreshCw,
   AlertTriangle,
   Zap,
-  BarChart3
+  BarChart3,
 } from "lucide-react";
-
 interface LinkValidationResult {
   url: string;
   isValid: boolean;
@@ -37,7 +44,6 @@ interface LinkValidationResult {
   regions: string[];
   issues: string[];
 }
-
 interface DomainValidationResult {
   domain: string;
   isValid: boolean;
@@ -50,7 +56,6 @@ interface DomainValidationResult {
   regions: string[];
   issues: string[];
 }
-
 interface ValidationStats {
   totalLinksValidated: number;
   validLinks: number;
@@ -58,7 +63,6 @@ interface ValidationStats {
   domainsValidated: number;
   globalAccessRate: number;
 }
-
 interface Track {
   id: string;
   name: string;
@@ -70,7 +74,6 @@ interface Track {
   updatedAt: Date;
   metadata: Record<string, any>;
 }
-
 export /**
  * EnhancedLinkDomainManager function
  */
@@ -84,13 +87,11 @@ export default function EnhancedLinkDomainManager(): any {
   const [domainValidationResult, setDomainValidationResult] = useState<DomainValidationResult | null>(null);
   const [tracks, setTracks] = useState<Track[]>([]);
   const [activeTab, setActiveTab] = useState("overview");
-
   // Load initial stats
   useEffect(() => {
     loadStats();
     loadTracks();
   }, []);
-
   const loadStats = async () => {
     try {
       const response = await apiClient.get("/api/enhanced-link-domain?action=stats");
@@ -102,7 +103,6 @@ export default function EnhancedLinkDomainManager(): any {
       logger.error("Failed to load stats:", error);
     }
   };
-
   const loadTracks = async () => {
     try {
       const response = await apiClient.get("/api/qmoi-tracks?type=link-validation&type=domain-validation&type=link-maintenance");
@@ -114,7 +114,6 @@ export default function EnhancedLinkDomainManager(): any {
       logger.error("Failed to load tracks:", error);
     }
   };
-
   const scanAllMarkdown = async () => {
     setIsLoading(true);
     try {
@@ -133,7 +132,6 @@ export default function EnhancedLinkDomainManager(): any {
       setIsLoading(false);
     }
   };
-
   const autoReplaceBrokenLinks = async () => {
     setIsLoading(true);
     try {
@@ -153,10 +151,8 @@ export default function EnhancedLinkDomainManager(): any {
       setIsLoading(false);
     }
   };
-
   const validateUrl = async () => {
     if (!urlToValidate.trim()) return;
-
     try {
       const response = await apiClient.get(`/api/enhanced-link-domain?action=validate-link&url=${encodeURIComponent(urlToValidate)}`);
       const data = await response.json();
@@ -167,10 +163,8 @@ export default function EnhancedLinkDomainManager(): any {
       logger.error("URL validation failed:", error);
     }
   };
-
   const validateDomain = async () => {
     if (!domainToValidate.trim()) return;
-
     try {
       const response = await apiClient.get(`/api/enhanced-link-domain?action=validate-domain&domain=${encodeURIComponent(domainToValidate)}`);
       const data = await response.json();
@@ -181,7 +175,6 @@ export default function EnhancedLinkDomainManager(): any {
       logger.error("Domain validation failed:", error);
     }
   };
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case "completed": return "bg-green-500";
@@ -191,7 +184,6 @@ export default function EnhancedLinkDomainManager(): any {
       default: return "bg-gray-500";
     }
   };
-
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case "critical": return "text-red-600";
@@ -201,7 +193,6 @@ export default function EnhancedLinkDomainManager(): any {
       default: return "text-gray-600";
     }
   };
-
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -230,7 +221,6 @@ export default function EnhancedLinkDomainManager(): any {
           </Button>
         </div>
       </div>
-
       {lastScan && (
         <Alert>
           <AlertTriangle className="h-4 w-4" />
@@ -239,7 +229,6 @@ export default function EnhancedLinkDomainManager(): any {
           </AlertDescription>
         </Alert>
       )}
-
       <Tabs value={activeTab} onValueChange={setActiveTab}>
         <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -247,7 +236,6 @@ export default function EnhancedLinkDomainManager(): any {
           <TabsTrigger value="tracks">Tracks</TabsTrigger>
           <TabsTrigger value="analytics">Analytics</TabsTrigger>
         </TabsList>
-
         <TabsContent value="overview" className="space-y-4">
           {stats && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -263,7 +251,6 @@ export default function EnhancedLinkDomainManager(): any {
                   </p>
                 </CardContent>
               </Card>
-
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Domains Validated</CardTitle>
@@ -276,7 +263,6 @@ export default function EnhancedLinkDomainManager(): any {
                   </p>
                 </CardContent>
               </Card>
-
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Global Access Rate</CardTitle>
@@ -287,7 +273,6 @@ export default function EnhancedLinkDomainManager(): any {
                   <Progress value={stats.globalAccessRate} className="mt-2" />
                 </CardContent>
               </Card>
-
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Active Tracks</CardTitle>
@@ -305,7 +290,6 @@ export default function EnhancedLinkDomainManager(): any {
             </div>
           )}
         </TabsContent>
-
         <TabsContent value="validation" className="space-y-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* URL Validation */}
@@ -318,7 +302,6 @@ export default function EnhancedLinkDomainManager(): any {
                   <Label htmlFor="url">URL to Validate</Label>
                   <Input
                     id="url"
-                    
                     value={urlToValidate}
                     onChange={(e) => setUrlToValidate(e.target.value)}
                   />
@@ -326,7 +309,6 @@ export default function EnhancedLinkDomainManager(): any {
                 <Button onClick={validateUrl} className="w-full">
                   Validate URL Globally
                 </Button>
-
                 {validationResult && (
                   <div className="space-y-2 p-4 border rounded-lg">
                     <div className="flex items-center gap-2">
@@ -339,7 +321,6 @@ export default function EnhancedLinkDomainManager(): any {
                         {validationResult.isValid ? "Valid" : "Invalid"}
                       </span>
                     </div>
-
                     <div className="text-sm space-y-1">
                       <div>Global Access: {validationResult.globalAccess ? "✅" : "❌"}</div>
                       <div>Regions: {validationResult.regions.join(", ")}</div>
@@ -356,7 +337,6 @@ export default function EnhancedLinkDomainManager(): any {
                 )}
               </CardContent>
             </Card>
-
             {/* Domain Validation */}
             <Card>
               <CardHeader>
@@ -367,7 +347,6 @@ export default function EnhancedLinkDomainManager(): any {
                   <Label htmlFor="domain">Domain to Validate</Label>
                   <Input
                     id="domain"
-                    
                     value={domainToValidate}
                     onChange={(e) => setDomainToValidate(e.target.value)}
                   />
@@ -375,7 +354,6 @@ export default function EnhancedLinkDomainManager(): any {
                 <Button onClick={validateDomain} className="w-full">
                   Validate Domain
                 </Button>
-
                 {domainValidationResult && (
                   <div className="space-y-2 p-4 border rounded-lg">
                     <div className="flex items-center gap-2">
@@ -388,7 +366,6 @@ export default function EnhancedLinkDomainManager(): any {
                         {domainValidationResult.isValid ? "Valid" : "Invalid"}
                       </span>
                     </div>
-
                     <div className="text-sm space-y-1">
                       <div>DNS Resolves: {domainValidationResult.resolves ? "✅" : "❌"}</div>
                       <div>SSL Valid: {domainValidationResult.sslValid ? "✅" : "❌"}</div>
@@ -410,7 +387,6 @@ export default function EnhancedLinkDomainManager(): any {
             </Card>
           </div>
         </TabsContent>
-
         <TabsContent value="tracks" className="space-y-4">
           <div className="space-y-4">
             {tracks.map((track) => (
@@ -436,7 +412,6 @@ export default function EnhancedLinkDomainManager(): any {
                       <Progress value={track.progress} className="w-20 mt-1" />
                     </div>
                   </div>
-
                   {track.metadata && Object.keys(track.metadata).length > 0 && (
                     <div className="mt-4 p-3 bg-muted rounded-lg">
                       <h4 className="text-sm font-medium mb-2">Metadata</h4>
@@ -452,7 +427,6 @@ export default function EnhancedLinkDomainManager(): any {
                 </CardContent>
               </Card>
             ))}
-
             {tracks.length === 0 && (
               <div className="text-center py-8 text-muted-foreground">
                 No link or domain validation tracks found.
@@ -461,7 +435,6 @@ export default function EnhancedLinkDomainManager(): any {
             )}
           </div>
         </TabsContent>
-
         <TabsContent value="analytics" className="space-y-4">
           <Card>
             <CardHeader>
@@ -469,7 +442,10 @@ export default function EnhancedLinkDomainManager(): any {
             </CardHeader>
             <CardContent>
               <div className="text-center py-8 text-muted-foreground">
-                production-ready and operational
+                <p className="mb-4">
+                  Analytics for the current link/domain validation pipeline, including trends,
+                  regional health, and auto-remediation performance.
+                </p>
                 <ul className="mt-4 text-left space-y-2">
                   <li>• Global accessibility trends over time</li>
                   <li>• Most problematic domains and links</li>
@@ -485,22 +461,17 @@ export default function EnhancedLinkDomainManager(): any {
     </div>
   );
 }
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -508,23 +479,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -532,23 +497,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -556,23 +515,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -580,23 +533,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -604,23 +551,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -628,23 +569,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -652,23 +587,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     logger.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -676,23 +605,17 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
-
-
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError(error) {
     return { hasError: true };
   }
-
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
   }
-
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

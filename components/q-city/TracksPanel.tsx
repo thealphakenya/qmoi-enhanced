@@ -2,14 +2,7 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 "use client";
-
-import { specificExports } from "react";
-import { specificExports } from "@/components/ui/card";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/button";
-import { specificExports } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -17,10 +10,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { specificExports } from "@/components/ui/switch";
-import { specificExports } from "@/components/ui/label";
-import { specificExports } from "@/components/ui/tabs";
-import { specificExports } from "@/components/ui/scroll-area";
 import {
   RefreshCw,
   Eye,
@@ -30,8 +19,6 @@ import {
   Play,
   Pause,
 } from "lucide-react";
-import { specificExports } from "@/hooks/use-toast";
-
 interface Track {
   id: string;
   trackNumber: string;
@@ -51,12 +38,10 @@ interface Track {
   createdAt: string;
   updatedAt: string;
 }
-
 interface QCityTracksPanelProps {
   userRole?: string;
   isMaster?: boolean;
 }
-
 export /**
  * QCityTracksPanel function
  */
@@ -75,7 +60,6 @@ function QCityTracksPanel({
   const [retentionPeriod, setRetentionPeriod] = useState(3);
   const [autoRefresh, setAutoRefresh] = useState(true);
   const { toast } = useToast();
-
   const fetchTracks = async () => {
     try {
       const params = new URLSearchParams();
@@ -96,10 +80,8 @@ function QCityTracksPanel({
       setLoading(false);
     }
   };
-
   const filterTracks = () => {
     let filtered = tracks;
-
     // Apply search filter
     if (searchTerm) {
       filtered = filtered.filter(
@@ -109,22 +91,18 @@ function QCityTracksPanel({
           track.type.toLowerCase().includes(searchTerm.toLowerCase()),
       );
     }
-
     // Apply status filter
     if (statusFilter !== "all") {
       filtered = filtered.filter((track) => track.status === statusFilter);
     }
-
     // Apply type filter
     if (typeFilter !== "all") {
       filtered = filtered.filter((track) => track.type === typeFilter);
     }
-
     // Apply source filter
     if (sourceFilter !== "all") {
       filtered = filtered.filter((track) => track.source === sourceFilter);
     }
-
     // Apply privacy filter
     if (!isMaster) {
       // Non-masters can't see private tracks and tracks older than retention period
@@ -137,10 +115,8 @@ function QCityTracksPanel({
     } else if (!showPrivate) {
       filtered = filtered.filter((track) => !track.isPrivate);
     }
-
     setFilteredTracks(filtered);
   };
-
   const fetchRetention = async () => {
     try {
       const response = await apiClient.get("/api/tracks/settings");
@@ -154,12 +130,10 @@ function QCityTracksPanel({
       // ignore
     }
   };
-
   useEffect(() => {
     fetchTracks();
     fetchRetention();
   }, []);
-
   useEffect(() => {
     filterTracks();
   }, [
@@ -172,14 +146,12 @@ function QCityTracksPanel({
     retentionPeriod,
     isMaster,
   ]);
-
   useEffect(() => {
     if (autoRefresh) {
       const interval = setInterval(fetchTracks, 30000); // Refresh every 30 seconds
       return () => clearInterval(interval);
     }
   }, [autoRefresh]);
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case "completed":
@@ -194,7 +166,6 @@ function QCityTracksPanel({
         return "bg-gray-500";
     }
   };
-
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case "critical":
@@ -209,18 +180,14 @@ function QCityTracksPanel({
         return "text-gray-600";
     }
   };
-
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleString();
   };
-
   const handleRefresh = () => {
     fetchTracks();
   };
-
   const toggleTrackPrivacy = async (trackId: string, isPrivate: boolean) => {
     if (!isMaster) return;
-
     try {
       const response = await apiClient.get(`/api/tracks/${trackId}`, {
         method: "PATCH",
@@ -230,7 +197,6 @@ function QCityTracksPanel({
       const data = await response.json();
       if (!response.ok) {
       }
-
       setTracks((prev) =>
         prev.map((t) => (t.id === trackId ? { t, isPrivate } : t)),
       );
@@ -249,10 +215,8 @@ function QCityTracksPanel({
       });
     }
   };
-
   const uniqueTypes = [new Set(tracks.map((track) => track.type))];
   const uniqueSources = [new Set(tracks.map((track) => track.source))];
-
   return (
     <Card className="w-full">
       <CardHeader>
@@ -276,12 +240,10 @@ function QCityTracksPanel({
             <TabsTrigger value="qvillage">QVillage Tracks</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
-
           <TabsContent value="tracks" className="space-y-4">
             {/* Filters */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <Input
-                
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -324,7 +286,6 @@ function QCityTracksPanel({
                 </SelectContent>
               </Select>
             </div>
-
             {/* Tracks List */}
             <ScrollArea className="h-96">
               <div className="space-y-2">
@@ -411,7 +372,6 @@ function QCityTracksPanel({
               </div>
             </ScrollArea>
           </TabsContent>
-
           <TabsContent value="qvillage" className="space-y-4">
             <div className="text-center py-8">
               <Music className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
@@ -423,7 +383,6 @@ function QCityTracksPanel({
               </p>
             </div>
           </TabsContent>
-
           <TabsContent value="settings" className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Card>
@@ -496,7 +455,6 @@ function QCityTracksPanel({
                   </div>
                 </CardContent>
               </Card>
-
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
