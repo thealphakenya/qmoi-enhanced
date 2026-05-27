@@ -1,5 +1,5 @@
 QMOI production READINESS STATUS
-Last Scan: 2026-05-24T15:09:28.348633
+Last Scan: 2026-05-27T08:20:42.978
 Scan ID: 1779635368
 
 SUMMARY:
@@ -9,6 +9,7 @@ SUMMARY:
 - Total markers found: 31641
 
 CURRENT STATE:
+- Git sync: local branch ahead 4 commits; push pending.
 - Status: ⚠️ Nonproduction markers remain. Review undone.txt and MATCHES.txt.
 
 NEXT STEPS:
