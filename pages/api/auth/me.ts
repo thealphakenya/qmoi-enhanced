@@ -1,5 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { authManager } from "../../../src/auth/AuthManager";
+import { z } from "zod";
+
+const TokenSchema = z.string().min(1);
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "GET") return res.status(405).json({ error: "Method not allowed" });
@@ -8,7 +11,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const token = req.query.token || req.headers.authorization || null;
     if (!token) return res.status(400).json({ error: "Missing token" });
 
-    const sessionId = String(token);
+    const parse = TokenSchema.safeParse(String(token));
+    if (!parse.success) return res.status(422).json({ error: "Invalid token", issues: parse.error.errors });
+
+    const sessionId = parse.data;
     const valid = await authManager.validateSession(sessionId);
     if (!valid) return res.status(404).json({ error: "Session not found" });
 

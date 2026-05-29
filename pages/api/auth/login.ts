@@ -1,5 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { authManager } from "../../../src/auth/AuthManager";
+import { z } from "zod";
+
+const LoginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(1),
+});
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
@@ -7,8 +13,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const { email, password } = req.body || {};
-    if (!email || !password) return res.status(400).json({ error: "Missing fields" });
+    const parsed = LoginSchema.safeParse(req.body || {});
+    if (!parsed.success) return res.status(422).json({ error: "Invalid request", issues: parsed.error.errors });
+    const { email, password } = parsed.data;
 
     const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress || "";
     const userAgent = req.headers["user-agent"] || "";

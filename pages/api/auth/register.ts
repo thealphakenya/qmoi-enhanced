@@ -1,5 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { authManager } from "../../../src/auth/AuthManager";
+import { z } from "zod";
+
+const RegisterSchema = z.object({
+  username: z.string().min(1),
+  email: z.string().email(),
+  password: z.string().min(8),
+});
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
@@ -7,10 +14,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const { username, email, password } = req.body || {};
-    if (!username || !email || !password) {
-      return res.status(400).json({ error: "Missing fields" });
+    const parsed = RegisterSchema.safeParse(req.body || {});
+    if (!parsed.success) {
+      return res.status(422).json({ error: "Invalid request", issues: parsed.error.errors });
     }
+    const { username, email, password } = parsed.data;
 
     const user = await authManager.registerUser(username, email, password);
     const safe = { ...user };

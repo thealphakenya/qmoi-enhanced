@@ -184,6 +184,21 @@ python3 -m http.server 8000 --bind 0.0.0.0
 - `/api/auth/biometric` — Biometric capture and verification
 - `/api/auth/session` — Session management and validation
 
+Additional auth endpoints implemented in this repo (pages/api/auth/*):
+
+- `/api/auth/register` — User registration (POST: { username, email, password })
+- `/api/auth/login` — User login (POST: { email, password }) -> returns `session` and `user`
+- `/api/auth/session` — Session management (GET: ?token=SESSION_ID, POST: { action: 'logout'|'revoke', token })
+- `/api/auth/me` — Get current user for a session token (GET: ?token=SESSION_ID)
+- `/api/auth/preferences` — Update user preferences (POST: { token, preferences })
+- `/api/auth/change-password` — Change password (POST: { token, currentPassword, newPassword })
+- `/api/auth/change-email` — Change user email (POST: { token, newEmail })
+- `/api/auth/hasAccess` — Check feature access (POST: { token, feature })
+
+Notes:
+- The in-repo `AuthManager` currently provides an in-memory implementation with optional file-based persistence controlled by the `SESSION_STORE_FILE` environment variable. In production, replace this with a real DB-backed adapter (Postgres/Redis) and set `SESSION_STORE_FILE` only for lightweight persistence or debugging.
+- All endpoints validate input with `zod` and return `422` on invalid payloads.
+
 ## Testing the Production Auth System
 
 After setup, test the authentication system:

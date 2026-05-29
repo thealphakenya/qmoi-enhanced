@@ -1,12 +1,16 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { authManager } from "../../../src/auth/AuthManager";
+import { z } from "zod";
+
+const ChangeEmailSchema = z.object({ token: z.string().min(1), newEmail: z.string().email() });
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
 
   try {
-    const { token, newEmail } = req.body || {};
-    if (!token || !newEmail) return res.status(400).json({ error: "Missing fields" });
+    const parsed = ChangeEmailSchema.safeParse(req.body || {});
+    if (!parsed.success) return res.status(422).json({ error: "Invalid request", issues: parsed.error.errors });
+    const { token, newEmail } = parsed.data;
 
     const user = await authManager.changeEmail(String(token), String(newEmail));
     const safe = { ...user };

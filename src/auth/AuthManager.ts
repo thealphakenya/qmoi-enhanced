@@ -1,5 +1,7 @@
 import crypto from "crypto";
 import { v4 as uuidv4 } from "uuid";
+import fs from "fs/promises";
+import path from "path";
 
 const logger = {
   info: console.info.bind(console),
@@ -55,9 +57,30 @@ export class AuthManager {
   private static SISTER_PASSWORD = process.env.SISTER_PASSWORD || "";
   private static MASTER_USERNAME = process.env.MASTER_USERNAME || "master";
   private static SISTER_USERNAME = process.env.SISTER_USERNAME || "sister";
+  private static SESSION_STORE_FILE = process.env.SESSION_STORE_FILE || "";
+  private usePrisma = false;
+  private prismaAdapter: any = null;
 
   private constructor() {
     this.ensureMasterAndSisterAccounts();
+    void this.loadStoreFromFile();
+
+    // If DATABASE_URL is set, attempt to use the Prisma adapter if available.
+    if (process.env.DATABASE_URL) {
+      try {
+        // require at runtime to avoid hard dependency during dry edits
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        // @ts-ignore
+        const adapter = require("./prismaAdapter").default;
+        if (adapter) {
+          this.prismaAdapter = adapter;
+          this.usePrisma = true;
+        }
+      } catch (err) {
+        logger.warn("Prisma adapter not available; falling back to in-memory store.", err);
+        this.usePrisma = false;
+      }
+    }
   }
 
   public static getInstance(): AuthManager {
@@ -73,6 +96,10 @@ export class AuthManager {
     password: string,
     role: "master" | "sister" | "user" = "user",
   ): Promise<User> {
+    if (this.usePrisma && this.prismaAdapter) {
+      return await this.prismaAdapter.registerUser(username, email, password, role);
+    }
+
     if (this.findUserByEmail(email)) {
       throw new Error("User already exists");
     }
@@ -106,6 +133,10 @@ export class AuthManager {
     ip: string,
     userAgent: string,
   ): Promise<Session> {
+    if (this.usePrisma && this.prismaAdapter) {
+      return await this.prismaAdapter.login(email, password, ip, userAgent);
+    }
+
     const user = this.findUserByEmail(email);
     if (!user) {
       throw new Error("Invalid credentials");
@@ -129,14 +160,25 @@ export class AuthManager {
     this.sessions.set(session.id, session);
     user.lastLogin = Date.now();
     this.users.set(user.id, user);
+    void this.persistStoreToFile();
     return session;
   }
 
   public async logout(sessionId: string): Promise<void> {
+    if (this.usePrisma && this.prismaAdapter) {
+      await this.prismaAdapter.logout(sessionId);
+      return;
+    }
+
     this.sessions.delete(sessionId);
+    void this.persistStoreToFile();
   }
 
   public async validateSession(sessionId: string): Promise<boolean> {
+    if (this.usePrisma && this.prismaAdapter) {
+      return await this.prismaAdapter.validateSession(sessionId);
+    }
+
     const session = this.sessions.get(sessionId);
     if (!session) return false;
     if (session.expiresAt < Date.now()) {
@@ -147,12 +189,20 @@ export class AuthManager {
   }
 
   public async getUser(sessionId: string): Promise<User | null> {
+    if (this.usePrisma && this.prismaAdapter) {
+      return await this.prismaAdapter.getUser(sessionId);
+    }
+
     const session = this.sessions.get(sessionId);
     if (!session) return null;
     return this.users.get(session.userId) || null;
   }
 
   public async hasAccess(sessionId: string, feature: string): Promise<boolean> {
+    if (this.usePrisma && this.prismaAdapter) {
+      return await this.prismaAdapter.hasAccess(sessionId, feature);
+    }
+
     const user = await this.getUser(sessionId);
     if (!user) return false;
     if (user.role === "master") return true;
@@ -164,12 +214,17 @@ export class AuthManager {
     sessionId: string,
     preferences: Partial<User["preferences"]>,
   ): Promise<User> {
+    if (this.usePrisma && this.prismaAdapter) {
+      return await this.prismaAdapter.updateUserPreferences(sessionId, preferences);
+    }
+
     const user = await this.getUser(sessionId);
     if (!user) {
       throw new Error("Session not found");
     }
     user.preferences = { ...user.preferences, ...preferences };
     this.users.set(user.id, user);
+    void this.persistStoreToFile();
     return user;
   }
 
@@ -178,6 +233,10 @@ export class AuthManager {
     currentPassword: string,
     newPassword: string,
   ): Promise<void> {
+    if (this.usePrisma && this.prismaAdapter) {
+      return await this.prismaAdapter.changePassword(sessionId, currentPassword, newPassword);
+    }
+
     const user = await this.getUser(sessionId);
     if (!user) {
       throw new Error("Session not found");
@@ -190,14 +249,20 @@ export class AuthManager {
     user.passwordHash = this.hashPassword(newPassword, newSalt);
     user.salt = newSalt;
     this.users.set(user.id, user);
+    void this.persistStoreToFile();
   }
 
   public async changeEmail(sessionId: string, newEmail: string): Promise<User> {
+    if (this.usePrisma && this.prismaAdapter) {
+      return await this.prismaAdapter.changeEmail(sessionId, newEmail);
+    }
+
     const user = await this.getUser(sessionId);
     if (!user) throw new Error("Session not found");
     if (this.findUserByEmail(newEmail)) throw new Error("Email already in use");
     user.email = newEmail;
     this.users.set(user.id, user);
+    void this.persistStoreToFile();
     return user;
   }
 
@@ -261,6 +326,39 @@ export class AuthManager {
       }
     } catch (error) {
       logger.error("Failed to create default accounts", error);
+    }
+  }
+
+  private async persistStoreToFile(): Promise<void> {
+    try {
+      if (!AuthManager.SESSION_STORE_FILE) return;
+      const out = {
+        users: Array.from(this.users.values()),
+        sessions: Array.from(this.sessions.values()),
+      };
+      const dir = path.dirname(AuthManager.SESSION_STORE_FILE);
+      await fs.mkdir(dir, { recursive: true }).catch(() => {});
+      await fs.writeFile(AuthManager.SESSION_STORE_FILE, JSON.stringify(out, null, 2), { encoding: "utf8" });
+    } catch (err) {
+      logger.warn("Failed to persist session store", err);
+    }
+  }
+
+  private async loadStoreFromFile(): Promise<void> {
+    try {
+      if (!AuthManager.SESSION_STORE_FILE) return;
+      const file = AuthManager.SESSION_STORE_FILE;
+      const content = await fs.readFile(file, { encoding: "utf8" }).catch(() => null);
+      if (!content) return;
+      const parsed = JSON.parse(content);
+      if (parsed.users && Array.isArray(parsed.users)) {
+        parsed.users.forEach((u: any) => this.users.set(u.id, u));
+      }
+      if (parsed.sessions && Array.isArray(parsed.sessions)) {
+        parsed.sessions.forEach((s: any) => this.sessions.set(s.id, s));
+      }
+    } catch (err) {
+      logger.warn("Failed to load session store", err);
     }
   }
 }

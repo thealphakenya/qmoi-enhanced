@@ -350,3 +350,15 @@ Quantum multi orchestra intelligence (QMOI) integrates this automation with quan
 - **Quantum Tools**: `tools/quantum/` houses specialized quantum computing tools
 - **AI Quantum**: `ai/quantum/` enables quantum-enhanced AI processing
 - **Documentation**: All `.md` files include quantum feature references and integration guides
+
+## New Tests Added (Auth endpoints)
+
+- `__tests__/api/auth.test.ts` — smoke test for register/login/session/preferences/logout (added by assistant).
+- `__tests__/api/auth.integration.test.ts` — integration test covering `me`, `hasAccess`, and `change-email` flows (added by assistant).
+
+Run the new tests with:
+
+```bash
+npm ci
+npm test __tests__/api/auth.test.ts __tests__/api/auth.integration.test.ts
+```
