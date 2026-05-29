@@ -76,6 +76,10 @@
 ./__tests__/api.test.ts
 ./__tests__/api/admin.test.ts
 ./__tests__/api/auth.test.ts
+./__tests__/api/change-email.test.ts
+./__tests__/api/hasAccess.test.ts
+./__tests__/api/change-password.test.ts
+./__tests__/api/preferences.test.ts
 ./__tests__/api/monitoring.test.ts
 ./__tests__/api/payments.test.ts
 ./__tests__/api/Quantum multi orchestra intelligence (QMOI)-autoPRODUCTION-research.test.ts
