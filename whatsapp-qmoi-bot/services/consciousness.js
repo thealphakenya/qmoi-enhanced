@@ -1,9 +1,3 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: Cross-Platform Memory Sync & Consciousness Layer
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-04-20T03:56:02Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 const logger = require("../logger");
 const axios = require("axios");
 

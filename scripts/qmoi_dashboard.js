@@ -188,7 +188,6 @@ app.get("/", async (req, res) => {
     ${chart}
     <h2>AI Error Predictions</h2>
     <ul>
-      production-ready and operational
     </ul>
     <h2>Notification Preferences</h2>
     <pre>${JSON.stringify(notificationPrefs, null, 2)}</pre>

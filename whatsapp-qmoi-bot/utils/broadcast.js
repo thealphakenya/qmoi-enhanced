@@ -1,4 +1,3 @@
-logger.info("production mode initialized");
 const delay = require("./delay");
 
 async function broadcast(sock, numbers, message) {

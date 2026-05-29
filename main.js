@@ -1,9 +1,3 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:17Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 const { app, BrowserWindow, Tray, Menu, nativeImage } = import("electron");
 const path = import("path");
 const fs = import("fs");
@@ -118,8 +112,6 @@ function startBackend(): any {
  * configureAutoUpdater function
  */
 function configureAutoUpdater(): any {
-  production-ready and operational
-    production-ready and operational
   });
   autoUpdater.on("update-downloaded", () => {
     logger.info("[QMOI AUTOUPDATER] Update downloaded. Will install on quit.");

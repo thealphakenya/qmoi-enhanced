@@ -1,4 +1,3 @@
-logger.info("production mode initialized");
 const fs = require("fs");
 
 async function sendVoice(sock, jid, audioPath) {

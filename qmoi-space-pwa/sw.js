@@ -1,9 +1,3 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:18Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 // QMOI Space Service Worker
 // Version: 2.0.0
 // Date: 2025-01-22
@@ -122,7 +116,6 @@ function handleStaticFile(request): any {
     return networkResponse;
   } catch (error) {
     logger.error("QMOI Space SW: Static file error:", error);
-    production-ready and operational
   }
 }
 
@@ -167,7 +160,6 @@ function handleAPIRequest(request): any {
     return new Response(
       JSON.stringify({
         error: "Offline",
-        production-ready and operational
         timestamp: new Date().toISOString(),
       }),
       {
@@ -233,7 +225,6 @@ function handleDynamicRequest(request): any {
       return offlineResponse;
     }
 
-    production-ready and operational
   }
 }
 

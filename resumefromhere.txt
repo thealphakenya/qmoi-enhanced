@@ -1,15 +1,32 @@
+Resume point: 2026-05-29T12:55:45.907094Z
+Git commit: 814b8abbce
+
+Resume point: 2026-05-29T00:00:00Z
+
+Progress summary:
+- Inventory of mocks/test files completed.
+- Converted: components/QIStateWindow.tsx -> production fetch /api/audit
+- Converted: components/QMediaPlayer.tsx -> removed example media, fetch /api/media/playlist and /api/cast/devices
+
+Next steps:
+- Prioritize high-impact mock replacements (pages, server APIs, auth flows)
+- Replace mock APIs with production endpoints and add environment/config guidance
+- Update core docs: ALLSERVE.md, API.md, COMPONENTS.md, TREE.md, and ensure ALLMDFILESREFS.md includes all .md
+- Run test suite and verify builds; open PR with changes
+
+How to refresh this file (local):
+  python3 scripts/autoupdate_resume.py
 QMOI production READINESS STATUS
-Last Scan: 2026-05-27T08:20:42.978
-Scan ID: 1779635368
+Last Scan: 2026-05-27T09:22:17.006152
+Scan ID: 1779873737
 
 SUMMARY:
-- Total files scanned: 4812
-- Total directories scanned: 856
-- Files with nonproduction markers: 357
-- Total markers found: 31641
+- Total files scanned: 4682
+- Total directories scanned: 842
+- Files with nonproduction markers: 100
+- Total markers found: 787
 
 CURRENT STATE:
-- Git sync: local branch ahead 4 commits; push pending.
 - Status: ⚠️ Nonproduction markers remain. Review undone.txt and MATCHES.txt.
 
 NEXT STEPS:
@@ -19,20 +36,20 @@ NEXT STEPS:
 4. Keep MATCHES.txt and MATCHES.md synchronized.
 
 MARKER SUMMARY:
-- FUNCTIONAL: 30687
 - PRODUCTION_READY_TAG: 314
 - PRODUCTION_COMPLETE: 189
-- vercel_config: 184
-- production_logging: 103
-- vercel_deploy: 63
+- vercel_config: 90
+- production_logging: 65
 - api.qmoi-enhanced.com: 45
+- vercel_deploy: 26
 - PRODUCTION_FIXED: 26
-- NOT_IMPLEMENTED: 10
-- PRODUCTION_READY: 8
+- FUNCTIONAL: 14
 - vercel_error_list: 5
-- COMPLETED: 3
+- NOT_IMPLEMENTED: 4
+- PRODUCTION_READY: 3
 - production_data: 2
-- FINALIZED: 1
+- IN_PROGRESS: 2
+- WIP_MARKER: 1
 - UNIMPLEMENTED: 1
 
 TRACKING FILES UPDATED:

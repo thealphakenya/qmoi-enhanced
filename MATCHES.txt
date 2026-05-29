@@ -1,41 +1,41 @@
 QMOI production MARKER MATCHES
-Generated: 2026-05-24T15:09:28.348633
+Generated: 2026-05-27T09:22:17.006152
 
 SUMMARY:
-- Files with markers: 357
-- Total markers found: 31641
+- Files with markers: 100
+- Total markers found: 787
 
 TOP MATCHES:
-- error-reports/comprehensive-report-2026-03-12.json: 29680 marker(s)
-- instructionmanifest.txt: 206 marker(s)
-- ALL_TODOS_SAMPLE.txt: 147 marker(s)
-- eslint_fix_result.json: 86 marker(s)
 - all_md_files_clean.txt: 75 marker(s)
-- non_production_implementations_report.json: 67 marker(s)
-- QMOIDOWNLOADS.md: 61 marker(s)
-- documentation_audit_details.json: 58 marker(s)
-- ROOT_production_STATUS.md: 52 marker(s)
-- tools/dns_docs_inventory.json: 42 marker(s)
-- ALLHEALTHS.md: 40 marker(s)
+- eslint_fix_result.json: 68 marker(s)
+- non_production_implementations_report.json: 54 marker(s)
+- documentation_audit_details.json: 47 marker(s)
+- ROOT_production_STATUS.md: 46 marker(s)
+- ALLHEALTHS.md: 36 marker(s)
 - all_md_files_current.txt: 26 marker(s)
 - all_md_files.txt: 26 marker(s)
 - ALLAUTO.md: 24 marker(s)
 - quality_gate_report.json: 24 marker(s)
-- vercelerrorlist.md: 24 marker(s)
 - nonprod_files_list.txt: 24 marker(s)
 - API.md: 23 marker(s)
 - eslint_src_fix.json: 21 marker(s)
-- autonomous_production_migration_engine.py: 21 marker(s)
 - eslint_src_after_fix.json: 21 marker(s)
-- COMPREHENSIVE_LINK_FIX_STRATEGY.md: 17 marker(s)
+- autonomous_production_migration_engine.py: 19 marker(s)
+- tools/dns_docs_inventory.json: 19 marker(s)
 - current_nonprod_scan.txt: 17 marker(s)
-- CRITICAL_APP_AUDIT_REPORT.md: 16 marker(s)
-- ultimate_production_fix_report.json: 16 marker(s)
-- QUICK_REFERENCE_SPRINT_METRICS.md: 15 marker(s)
-- FINAL_PRODUCTION_READINESS_REPORT.md: 15 marker(s)
-- NONPROD_REPORT_HEAD.txt: 14 marker(s)
-- SESSION_LINKS_DOMAINS_ENHANCEMENT_SUMMARY.md: 13 marker(s)
 - production_readiness_audit_report.json: 10 marker(s)
-- ... and 327 more files
+- verify_production_readiness.sh: 8 marker(s)
+- deploy_production.sh: 8 marker(s)
+- scripts/deployment-error-handler.js: 8 marker(s)
+- thorough_production_scanner.py: 7 marker(s)
+- FINAL_PRODUCTION_READINESS_REPORT.md: 7 marker(s)
+- PRODUCTION_READINESS_CERTIFICATION.md: 6 marker(s)
+- nginx.production.conf: 6 marker(s)
+- scripts/auto-fix-deployment.js: 6 marker(s)
+- lib/security_check.ts: 6 marker(s)
+- FINAL_DEPLOYMENT_REPORT.md: 5 marker(s)
+- PRODUCTION_COMPLETION_SUMMARY_2026-04-23.md: 5 marker(s)
+- PLATFORMS_UI_PRODUCTION_GUIDE.md: 5 marker(s)
+- ... and 70 more files
 
 For details, review undone.txt and INSTANCES.md.

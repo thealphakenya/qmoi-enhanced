@@ -48,12 +48,13 @@ export class AuthManager {
     "download_qcity",
   ]);
 
-  private static MASTER_EMAIL = "victor@kwemoi.com";
-  private static MASTER_PASSWORD = "Victor9798!";
-  private static SISTER_EMAIL = "leah@chebet.com";
-  private static SISTER_PASSWORD = "Ashlehael";
-  private static MASTER_USERNAME = "Victor";
-  private static SISTER_USERNAME = "Leah";
+  // Move sensitive defaults to environment variables for production
+  private static MASTER_EMAIL = process.env.MASTER_EMAIL || "";
+  private static MASTER_PASSWORD = process.env.MASTER_PASSWORD || "";
+  private static SISTER_EMAIL = process.env.SISTER_EMAIL || "";
+  private static SISTER_PASSWORD = process.env.SISTER_PASSWORD || "";
+  private static MASTER_USERNAME = process.env.MASTER_USERNAME || "master";
+  private static SISTER_USERNAME = process.env.SISTER_USERNAME || "sister";
 
   private constructor() {
     this.ensureMasterAndSisterAccounts();
@@ -191,6 +192,15 @@ export class AuthManager {
     this.users.set(user.id, user);
   }
 
+  public async changeEmail(sessionId: string, newEmail: string): Promise<User> {
+    const user = await this.getUser(sessionId);
+    if (!user) throw new Error("Session not found");
+    if (this.findUserByEmail(newEmail)) throw new Error("Email already in use");
+    user.email = newEmail;
+    this.users.set(user.id, user);
+    return user;
+  }
+
   private findUserByEmail(email: string): User | undefined {
     return Array.from(this.users.values()).find((user) => user.email === email);
   }
@@ -223,21 +233,31 @@ export class AuthManager {
 
   private ensureMasterAndSisterAccounts(): void {
     try {
-      if (!this.findUserByEmail(AuthManager.MASTER_EMAIL)) {
-        void this.registerUser(
-          AuthManager.MASTER_USERNAME,
-          AuthManager.MASTER_EMAIL,
-          AuthManager.MASTER_PASSWORD,
-          "master",
-        );
+      // Only auto-create default accounts when environment variables are set.
+      if (AuthManager.MASTER_EMAIL && AuthManager.MASTER_PASSWORD) {
+        if (!this.findUserByEmail(AuthManager.MASTER_EMAIL)) {
+          void this.registerUser(
+            AuthManager.MASTER_USERNAME,
+            AuthManager.MASTER_EMAIL,
+            AuthManager.MASTER_PASSWORD,
+            "master",
+          );
+        }
+      } else {
+        logger.warn("MASTER_EMAIL or MASTER_PASSWORD not set; skipping master account creation.");
       }
-      if (!this.findUserByEmail(AuthManager.SISTER_EMAIL)) {
-        void this.registerUser(
-          AuthManager.SISTER_USERNAME,
-          AuthManager.SISTER_EMAIL,
-          AuthManager.SISTER_PASSWORD,
-          "sister",
-        );
+
+      if (AuthManager.SISTER_EMAIL && AuthManager.SISTER_PASSWORD) {
+        if (!this.findUserByEmail(AuthManager.SISTER_EMAIL)) {
+          void this.registerUser(
+            AuthManager.SISTER_USERNAME,
+            AuthManager.SISTER_EMAIL,
+            AuthManager.SISTER_PASSWORD,
+            "sister",
+          );
+        }
+      } else {
+        logger.warn("SISTER_EMAIL or SISTER_PASSWORD not set; skipping sister account creation.");
       }
     } catch (error) {
       logger.error("Failed to create default accounts", error);

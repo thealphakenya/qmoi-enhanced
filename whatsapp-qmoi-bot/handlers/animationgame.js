@@ -1,4 +1,3 @@
-logger.info("production mode initialized");
 const askQmoi = require("../services/qmoi");
 
 async function createGameFromAnimation(sock, jid, animationDetails) {

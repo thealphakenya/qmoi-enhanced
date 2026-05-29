@@ -1,9 +1,3 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-04-12T00:17:00Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 // Environment polyfills that must run before any modules are loaded
 const { TextEncoder, TextDecoder } = require("util");
 if (typeof global.TextEncoder === "undefined") global.TextEncoder = TextEncoder;

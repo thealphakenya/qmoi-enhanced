@@ -443,7 +443,6 @@ ${jobUrl}
       // Create GitLab issue
       const issue = await this.createGitLabIssue(title, description, labels);
       
-      production-ready and operational
       if (this.pipelineId) {
         await this.addGitLabComment(description, this.pipelineId);
       }
@@ -494,7 +493,6 @@ ${error.message}
 
 ### Error Stack:
 \`\`\`
-production-ready and operational
 \`\`\`
 
 ### Context:

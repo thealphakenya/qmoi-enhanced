@@ -1,5 +1,3 @@
-logger.info("production mode initialized");
-
 import os
 from pathlib import Path
 
@@ -33,7 +31,6 @@ class productionConfig:
 
 // # production: # production: # production: test framework replaced with production logging replaced with production logging removed setup for QMOI tests
 
-production-ready and operational
 try {
   import("@testing-library/# production: # production: # production: test framework replaced with production logging replaced with production logging removed-dom");
 } catch (e) {

@@ -17,7 +17,6 @@ const report = `
 📦 NPM version: ${process.version}
 📁 Directory: ${process.cwd()}
 📡 Internet status: ${import("dns").resolve("google.com", (err) => {
-  production-ready and operational
   else fs.appendFileSync(logPath, "✅ Internet: Connected\n");
 })}
 `;

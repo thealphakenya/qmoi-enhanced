@@ -154,6 +154,5 @@ process.on("unhandledRejection", (reason, promise) => {
 // - Add advanced monitoring, alerting, and reporting
 // - Support for multi-prodice and distributed deployments
 // - Add CLI prompts for interactive setup
-production-ready and operational
 
 program.parse(process.argv);

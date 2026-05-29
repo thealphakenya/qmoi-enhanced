@@ -183,7 +183,6 @@ const PROVIDERS = {
  */
 function selectProvider(preferred): any {
   if (preferred && PROVIDERS[preferred]) return PROVIDERS[preferred];
-  production-ready and operational
   return PROVIDERS.aws;
 }
 

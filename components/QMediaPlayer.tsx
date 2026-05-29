@@ -48,61 +48,9 @@ interface QMediaPlayerProps {
   floating?: boolean;
   className?: string;
 }
-const defaultPlaylist: PlaylistItem[] = [
-  {
-    id: "track-1",
-    title: "Aurora Pulse",
-    url: "https://example.com/media/aurora-pulse.mp3",
-    type: "audio",
-    duration: 218,
-    artist: "QMOI Synth",
-    album: "Nebula Sessions",
-    position: 0,
-  },
-  {
-    id: "track-2",
-    title: "Voyager Lights",
-    url: "https://example.com/media/voyager-lights.mp3",
-    type: "audio",
-    duration: 192,
-    artist: "QMOI Orchestra",
-    album: "Spaceflow",
-    position: 1,
-  },
-  {
-    id: "track-3",
-    title: "Horizon Drive",
-    url: "https://example.com/media/horizon-drive.mp4",
-    type: "video",
-    duration: 256,
-    artist: "QMOI Vision",
-    album: "Future Frames",
-    position: 2,
-  },
-];
-const defaultCastingDevices: CastingDevice[] = [
-  {
-    id: "device-1",
-    name: "Living Room Cast",
-    type: "chromecast",
-    volume: 0.8,
-    status: "ready",
-  },
-  {
-    id: "device-2",
-    name: "Conference AirPlay",
-    type: "airplay",
-    volume: 0.6,
-    status: "paused",
-  },
-  {
-    id: "device-3",
-    name: "QCity Display",
-    type: "qcity",
-    volume: 0.9,
-    status: "ready",
-  },
-];
+// In production the playlist and casting devices should be provided by APIs.
+const defaultPlaylist: PlaylistItem[] = [];
+const defaultCastingDevices: CastingDevice[] = [];
 const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
   initialMedia,
   playlist = defaultPlaylist,
@@ -112,8 +60,11 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
   floating = false,
   className = "",
 }) => {
+  const [playlistState, setPlaylistState] = useState<PlaylistItem[]>(
+    playlist && playlist.length ? playlist : defaultPlaylist,
+  );
   const [currentMedia, setCurrentMedia] = useState<MediaItem | null>(
-    initialMedia || playlist[0] || null,
+    initialMedia || playlistState[0] || null,
   );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -124,7 +75,9 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
   const [activeCastingDevices, setActiveCastingDevices] = useState<string[]>([]);
   const [syncEnabled, setSyncEnabled] = useState(true);
   const [selectedTab, setSelectedTab] = useState("playback");
-  const [castDevices] = useState<CastingDevice[]>(defaultCastingDevices);
+  const [castDevices, setCastDevices] = useState<CastingDevice[]>(defaultCastingDevices);
+  const [mediaLoading, setMediaLoading] = useState(true);
+  const [mediaError, setMediaError] = useState<string | null>(null);
   const animationFrame = useRef<number | null>(null);
   useEffect(() => {
     if (!currentMedia) return;
@@ -157,7 +110,48 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
       }
     };
   }, [isPlaying, duration]);
-  const currentPlaylist = useMemo(() => playlist, [playlist]);
+  const currentPlaylist = useMemo(() => (playlist && playlist.length ? playlist : playlistState), [playlist, playlistState]);
+  useEffect(() => {
+    let mounted = true;
+    const fetchPlaylist = async () => {
+      if (playlist && playlist.length) {
+        setMediaLoading(false);
+        return;
+      }
+      try {
+        const res = await fetch("/api/media/playlist");
+        if (!res.ok) throw new Error(`Failed to load playlist: ${res.status}`);
+        const data = await res.json();
+        const items: PlaylistItem[] = Array.isArray(data) ? data : data?.items || [];
+        if (mounted) {
+          setPlaylistState(items.map((it, idx) => ({ position: idx, ...it })));
+          if (!initialMedia && items.length) setCurrentMedia(items[0]);
+        }
+      } catch (err: any) {
+        if (mounted) setMediaError(String(err?.message || err));
+      } finally {
+        if (mounted) setMediaLoading(false);
+      }
+    };
+
+    const fetchCastDevices = async () => {
+      try {
+        const res = await fetch("/api/cast/devices");
+        if (!res.ok) return;
+        const data = await res.json();
+        const devices: CastingDevice[] = Array.isArray(data) ? data : data?.devices || [];
+        if (mounted) setCastDevices(devices);
+      } catch (e) {
+        // non-fatal; casting devices are optional
+      }
+    };
+
+    fetchPlaylist();
+    fetchCastDevices();
+    return () => {
+      mounted = false;
+    };
+  }, []);
   const togglePlay = () => {
     setIsPlaying((prev) => !prev);
   };

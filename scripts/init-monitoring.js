@@ -106,7 +106,6 @@ class MonitoringInitializer {
       },
       system: {
         total_memory_mb: 0,
-        production-ready and operational
         disk_usage_percent: 0,
         load_average: [0, 0, 0],
       },

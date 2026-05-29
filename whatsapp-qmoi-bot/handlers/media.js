@@ -1,9 +1,3 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-04-20T03:40:00Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 const fs = require("fs");
 const path = require("path");
 const logger = require("../logger");

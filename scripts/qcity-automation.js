@@ -432,7 +432,6 @@ def main():
   async checkAutomationStatus() {
     this.log("🤖 Checking automation status...");
 
-    production-ready and operational
     const scripts = [
       "qmoi-enhanced-automation.py",
       "qmoi-error-handler.py",
@@ -846,7 +845,6 @@ function main(): any {
         break;
       default:
         logger.info("QCity Automation System");
-        production-ready and operational
         logger.info("  --initialize      Initialize QCity system");
         logger.info("  --validate        Validate QCity system");
         logger.info("  --test-integration Test integration");

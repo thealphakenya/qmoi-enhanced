@@ -305,7 +305,6 @@ class QMOIUniversalErrorHandler {
       try {
         execSync("npx dns-cache-clear", { stdio: "inherit" });
       } catch (e) {
-        production-ready and operational
       }
 
       return { success: true, message: "Network fixed" };
@@ -436,7 +435,6 @@ class QMOIUniversalErrorHandler {
 
     if (!analysis.fixStrategy) {
       logger.info("❌ No fix strategy found for this error type");
-      production-ready and operational
     }
 
     let result = { success: false, message: "Fix failed" };

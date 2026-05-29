@@ -72,7 +72,6 @@ class DeploymentMonitor {
 
   async getVercelStatus() {
     try {
-      production-ready and operational
       execSync("npx vercel --version", { stdio: "pipe" });
 
       // Get deployment list

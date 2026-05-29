@@ -1,9 +1,3 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:12Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 // QMOI Space Service Worker - Advanced PWA Features
 const CACHE_NAME = "qmoi-space-v4.0.0";
 const STATIC_CACHE = "qmoi-static-v4.0.0";
@@ -128,12 +122,10 @@ function handleRequest(request): any {
         (await caches.match("/offline.html")) ||
         new Response("QMOI Space is offline. Please check your connection.", {
           status: 503,
-          production-ready and operational
         })
       );
     }
 
-    production-ready and operational
     const cachedResponse = await caches.match(request);
     if (cachedResponse) {
       return cachedResponse;

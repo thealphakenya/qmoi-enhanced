@@ -1,4 +1,3 @@
-logger.info("production mode initialized");
 #!/usr/bin/env node
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -10,7 +9,6 @@ logger.info("production mode initialized");
  * QMOI Revenue Query Script
  */
 
-import { specificExports } from "./lib/ai-service.ts";
 
 async /**
  * queryRevenue function

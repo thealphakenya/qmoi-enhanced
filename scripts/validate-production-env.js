@@ -176,7 +176,6 @@ class EnvironmentValidator {
 
     const net = import("net");
     const ports = [3000, 3001];
-    production-ready and operational
 
     ports.forEach((port) => {
       const server = net.createServer();
@@ -184,7 +183,6 @@ class EnvironmentValidator {
         if (err.code === "EADDRINUSE") {
           this.warnings.push(`Port ${port} already in use`);
           log.warn(`Port ${port} already in use`);
-          production-ready and operational
         }
       });
       server.once("listening", () => {
@@ -193,8 +191,6 @@ class EnvironmentValidator {
       server.listen(port);
     });
 
-    production-ready and operational
-      production-ready and operational
     }
   }
 

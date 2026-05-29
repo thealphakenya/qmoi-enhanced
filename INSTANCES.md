@@ -2,56 +2,56 @@
 This file tracks the remaining production readiness instances from `undone.txt`.
 ## Remaining Files
 ### SUMMARY
-- Total files scanned: 4812
-- Files with markers: 357
-- Total markers found: 31641
-- Scan timestamp: 2026-05-24T15:09:28.348633
-- Scan ID: 1779635368
+- Total files scanned: 4682
+- Files with markers: 100
+- Total markers found: 787
+- Scan timestamp: 2026-05-27T09:22:17.006152
+- Scan ID: 1779873737
 ### DETAILED FINDINGS
-- Scan Timestamp: 2026-05-24T15:09:28.348633
-- Total Files Scanned: 4812
-- Total Directories Scanned: 856
-- Files with Markers: 357
-- Total Markers Found: 31641
+- Scan Timestamp: 2026-05-27T09:22:17.006152
+- Total Files Scanned: 4682
+- Total Directories Scanned: 842
+- Files with Markers: 100
+- Total Markers Found: 787
 ### MARKER BREAKDOWN
-- FUNCTIONAL: 30687
 - PRODUCTION_READY_TAG: 314
 - PRODUCTION_COMPLETE: 189
-- vercel_config: 184
-- production_logging: 103
-- vercel_deploy: 63
+- vercel_config: 90
+- production_logging: 65
 - api.qmoi-enhanced.com: 45
+- vercel_deploy: 26
 - PRODUCTION_FIXED: 26
-- NOT_IMPLEMENTED: 10
-- PRODUCTION_READY: 8
+- FUNCTIONAL: 14
 - vercel_error_list: 5
-- COMPLETED: 3
+- NOT_IMPLEMENTED: 4
+- PRODUCTION_READY: 3
 - production_data: 2
-- FINALIZED: 1
+- IN_PROGRESS: 2
+- WIP_MARKER: 1
 - UNIMPLEMENTED: 1
 
 ### FILES WITH MARKERS
-1. error-reports/comprehensive-report-2026-03-12.json (29680 markers)
-2. instructionmanifest.txt (206 markers)
-3. ALL_TODOS_SAMPLE.txt (147 markers)
-4. eslint_fix_result.json (86 markers)
-5. all_md_files_clean.txt (75 markers)
-6. non_production_implementations_report.json (67 markers)
-7. QMOIDOWNLOADS.md (61 markers)
-8. documentation_audit_details.json (58 markers)
-9. ROOT_production_STATUS.md (52 markers)
-10. tools/dns_docs_inventory.json (42 markers)
-11. ALLHEALTHS.md (40 markers)
-12. all_md_files_current.txt (26 markers)
-13. all_md_files.txt (26 markers)
-14. ALLAUTO.md (24 markers)
-15. quality_gate_report.json (24 markers)
-16. vercelerrorlist.md (24 markers)
-17. nonprod_files_list.txt (24 markers)
-18. API.md (23 markers)
-19. eslint_src_fix.json (21 markers)
-20. autonomous_production_migration_engine.py (21 markers)
-... and 337 more files
+1. all_md_files_clean.txt (75 markers)
+2. eslint_fix_result.json (68 markers)
+3. non_production_implementations_report.json (54 markers)
+4. documentation_audit_details.json (47 markers)
+5. ROOT_production_STATUS.md (46 markers)
+6. ALLHEALTHS.md (36 markers)
+7. all_md_files_current.txt (26 markers)
+8. all_md_files.txt (26 markers)
+9. ALLAUTO.md (24 markers)
+10. quality_gate_report.json (24 markers)
+11. nonprod_files_list.txt (24 markers)
+12. API.md (23 markers)
+13. eslint_src_fix.json (21 markers)
+14. eslint_src_after_fix.json (21 markers)
+15. autonomous_production_migration_engine.py (19 markers)
+16. tools/dns_docs_inventory.json (19 markers)
+17. current_nonprod_scan.txt (17 markers)
+18. production_readiness_audit_report.json (10 markers)
+19. verify_production_readiness.sh (8 markers)
+20. deploy_production.sh (8 markers)
+... and 80 more files
 
 ### NEXT STEPS
 - Review undone.txt for detailed findings

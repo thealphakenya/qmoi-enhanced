@@ -159,7 +159,6 @@ ${gitpodUrl}
 
 ### Status:
 
-production-ready and operational
 - Integrated terminal
 - Code editor
 - Git integration
@@ -317,7 +316,6 @@ ${gitpodUrl}
 ### Workspace URL:
 ${gitpodUrl}
 
-production-ready and operational
 - Automated setup and configuration
 - Error detection and recovery
 - Health monitoring
@@ -364,7 +362,6 @@ ${gitpodUrl}
       // Create GitLab issue
       const issue = await this.createGitLabIssue(title, description, labels);
 
-      production-ready and operational
       if (data.workspaceId && this.gitpodToken) {
         try {
           await this.makeGitpodRequest(
@@ -401,7 +398,6 @@ ${gitpodUrl}
 
       if (!this.gitpodToken) {
         this.log(
-          production-ready and operational
           "WARN",
         );
         return [];

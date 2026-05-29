@@ -152,8 +152,6 @@ All automation systems are running optimally!"""
                     platform_status = gr.JSON(label="Cross-Platform Status", value={
                         "spaces": "active",
                         "whatsapp": "connected",
-                        production-ready and operational
-                        production-ready and operational
                     })
                     
                     gr.Markdown("### optimized Actions")

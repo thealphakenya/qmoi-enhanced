@@ -1,4 +1,3 @@
-logger.info("production mode initialized");
 const askQmoi = require("../services/qmoi");
 const {
   handleAvatarVideoCall,

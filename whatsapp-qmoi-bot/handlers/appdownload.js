@@ -1,4 +1,3 @@
-logger.info("production mode initialized");
 async function askprodiceTypeAndSendLink(sock, jid) {
   try {
   return sock.sendMessage(jid, {

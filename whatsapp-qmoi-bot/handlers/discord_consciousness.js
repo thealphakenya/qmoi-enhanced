@@ -1,4 +1,3 @@
-logger.info("production mode initialized");
 const fs = require("fs");
 const path = require("path");
 const { Client, GatewayIntentBits, Partials } = require("discord.js");

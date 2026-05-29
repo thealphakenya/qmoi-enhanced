@@ -28,7 +28,6 @@ class DeploymentHealthCheck {
     try {
       this.log("Checking Vercel deployment status...");
 
-      production-ready and operational
       try {
         execSync("npx vercel --version", { stdio: "pipe" });
       } catch (e) {

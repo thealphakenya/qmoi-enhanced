@@ -444,8 +444,6 @@ class QMOIAutoEnhancementSystem {
     logger.info('⬆️ Starting QMOI auto-upgrade...');
     
     try {
-      production-ready and operational
-      production-ready and operational
       
       // Validate upgrade compatibility
       const compatibleUpgrades = await this.validateUpgradeCompatibility(upgrades);
@@ -464,7 +462,6 @@ class QMOIAutoEnhancementSystem {
     }
   }
 
-  production-ready and operational
     // Check for various types of upgrades
     const upgrades = {
       dependencies: await this.checkDependencyUpgrades(),

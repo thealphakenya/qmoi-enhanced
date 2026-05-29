@@ -1,8 +1,6 @@
-logger.info("production mode initialized");
 // Auth utilities
 // Authentication helper functions
 
-import { specificExports } from "next/server";
 
 export interface AuthUser {
   id: string;

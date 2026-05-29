@@ -227,7 +227,6 @@ class QMOIAutoPush {
 
   async pushToGitHub() {
     if (!this.githubToken) {
-      production-ready and operational
       return false;
     }
 
@@ -368,7 +367,6 @@ class QMOIAutoPush {
 
   async createGitLabIssue(title, description) {
     if (!this.gitlabToken || !this.projectId) {
-      production-ready and operational
       return null;
     }
 

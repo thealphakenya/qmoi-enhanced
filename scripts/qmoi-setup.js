@@ -318,7 +318,6 @@ echo "Post-commit actions completed"
       await this.log("QMOI setup completed successfully!");
       await this.log(
       );
-      production-ready and operational
       await this.log("  npm start          - Start QMOI server");
       await this.log("  npm run qmoi-auto-push - Run auto-push functionality");
       await this.log("  npm run qmoi-error-recovery - Run error recovery");

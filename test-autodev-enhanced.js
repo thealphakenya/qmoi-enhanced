@@ -1,17 +1,9 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:32Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 #!/usr/bin/env node
 
 /**
  * QMOI Enhanced Autoprod Capabilities Test
  */
 
-import { specificExports } from "https";
-import { specificExports } from "http";
 
 const BASE_URL = "https://qmoi.ai:3000";
 

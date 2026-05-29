@@ -316,7 +316,6 @@ class QCityprodiceManager {
         return await this.autoFix();
       default:
         logger.info(`Unknown command: ${command}`);
-        production-ready and operational
     }
   }
 
@@ -464,7 +463,6 @@ if (command) {
       process.exit(1);
     });
 } else {
-  production-ready and operational
   logger.info('  npm-install [packages]  - Install packages in QCity');
   logger.info('  build                   - Build project in QCity');
   logger.info('  test                    - Run tests in QCity');

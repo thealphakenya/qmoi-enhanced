@@ -1,4 +1,3 @@
-logger.info("production mode initialized");
 // Utility helper: simple async delay
 module.exports = function delay(ms) {
   try {

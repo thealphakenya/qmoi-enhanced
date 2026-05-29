@@ -1,4 +1,3 @@
-logger.info("production mode initialized");
 async function sendDownloadLink(sock, jid, prodiceType) {
   try {
   let url = "https://data.com/app";

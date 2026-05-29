@@ -1,9 +1,3 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:06Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /**
  * camera-integration.js: Camera logic for QMOI Space
  * Integrates getUserMedia API with privacy and security considerations
@@ -90,7 +84,6 @@ class CameraIntegrationManager {
       this.mediaRecorder = new MediaRecorder(this.stream, options);
       this.recordedChunks = [];
 
-      production-ready and operational
         if (e.data.size > 0) {
           this.recordedChunks.push(e.data);
         }
@@ -208,7 +201,6 @@ class CameraIntegrationManager {
   }
 
   handleCameraError(error) {
-    production-ready and operational
 
     if (error.name === "NotAllowedError") {
       message =

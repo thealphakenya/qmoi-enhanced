@@ -1,4 +1,3 @@
-logger.info("production mode initialized");
 // Last Updated: April 5, 2026
 
 module.exports = {
@@ -7,7 +6,6 @@ module.exports = {
       name: 'qmoi-enhanced-api',
       script: 'npm',
       args: 'start',
-      production-ready and operational
       exec_mode: 'cluster', // Cluster mode for load balancing
       env: {
         PORT: 3000,

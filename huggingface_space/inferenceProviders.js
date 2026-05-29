@@ -1,9 +1,3 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:17Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 const fs = import("fs");
 const path = import("path");
 
@@ -39,7 +33,6 @@ let currentProvider = providers[0];
  * autoDetectProvider function
  */
 function autoDetectProvider(): any {
-  production-ready and operational
   const http = import("http");
   let best = null;
   let bestTime = Infinity;

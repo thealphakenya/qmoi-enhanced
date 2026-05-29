@@ -1,8 +1,4 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:25Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
+import { useCallback, useEffect, useState } from "react";
 
 interface User {
   id: string;
@@ -22,10 +18,7 @@ interface AuthState {
   error: string | null;
 }
 
-export /**
- * useAuth function
- */
-function useAuth(): any {
+export default function useAuth() {
   const [state, setState] = useState<AuthState>({
     user: null,
     loading: true,
@@ -33,65 +26,51 @@ function useAuth(): any {
   });
 
   useEffect(() => {
-    // Check for existing session
     const sessionId = localStorage.getItem("sessionId");
-    if (sessionId) {
-      validateSession(sessionId);
-    } else {
-      setState((prev) => ({ prev, loading: false }));
+    if (sessionId) validateSession(sessionId);
+    else setState({ user: null, loading: false, error: null });
+  }, []);
+
+  const validateSession = useCallback(async (sessionId: string) => {
+    try {
+      const res = await fetch(`/api/auth/session?token=${encodeURIComponent(sessionId)}`);
+      if (!res.ok) {
+        localStorage.removeItem("sessionId");
+        setState({ user: null, loading: false, error: null });
+        return false;
+      }
+      const data = await res.json();
+      const user: User | null = data.user || null;
+      if (user) {
+        setState({ user, loading: false, error: null });
+        return true;
+      }
+      setState({ user: null, loading: false, error: null });
+      return false;
+    } catch (err) {
+      setState({ user: null, loading: false, error: "Failed to validate session" });
+      return false;
     }
   }, []);
 
-  const validateSession = async (sessionId: string) => {
-    try {
-      const isValid = await authManager.validateSession(sessionId);
-      if (isValid) {
-        const user = await authManager.getUser(sessionId);
-        setState({
-          user,
-          loading: false,
-          error: null,
-        });
-      } else {
-        // Clear invalid session
-        localStorage.removeItem("sessionId");
-        setState({
-          user: null,
-          loading: false,
-          error: null,
-        });
-      }
-    } catch (error) {
-      setState({
-        user: null,
-        loading: false,
-        error: "Failed to validate session",
-      });
-    }
-  };
-
   const login = useCallback(async (email: string, password: string) => {
     try {
-      setState((prev) => ({ prev, loading: true, error: null }));
-      const session = await authManager.login(
-        email,
-        password,
-        window.location.hostname,
-        navigator.userAgent,
-      );
-      localStorage.setItem("sessionId", session.id);
-      const user = await authManager.getUser(session.id);
-      setState({
-        user,
-        loading: false,
-        error: null,
+      setState((s) => ({ ...s, loading: true, error: null }));
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
       });
-    } catch (error) {
-      setState({
-        user: null,
-        loading: false,
-        error: "Invalid credentials",
-      });
+      if (!res.ok) throw new Error("Invalid credentials");
+      const data = await res.json();
+      const sessionId = data.session?.id || null;
+      const user: User | null = data.user || null;
+      if (sessionId) localStorage.setItem("sessionId", sessionId);
+      setState({ user, loading: false, error: null });
+      return { user, sessionId };
+    } catch (err: any) {
+      setState({ user: null, loading: false, error: err?.message || "Invalid credentials" });
+      throw err;
     }
   }, []);
 
@@ -99,83 +78,71 @@ function useAuth(): any {
     try {
       const sessionId = localStorage.getItem("sessionId");
       if (sessionId) {
-        await authManager.logout(sessionId);
+        await fetch("/api/auth/session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "logout", token: sessionId }),
+        });
         localStorage.removeItem("sessionId");
       }
-      setState({
-        user: null,
-        loading: false,
-        error: null,
+      setState({ user: null, loading: false, error: null });
+    } catch (err) {
+      setState((s) => ({ ...s, error: "Failed to logout" }));
+    }
+  }, []);
+
+  const register = useCallback(async (username: string, email: string, password: string) => {
+    try {
+      setState((s) => ({ ...s, loading: true, error: null }));
+      const res = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email, password }),
       });
-    } catch (error) {
-      setState((prev) => ({
-        prev,
-        error: "Failed to logout",
-      }));
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || "Failed to register");
+      }
+      const data = await res.json();
+      setState((s) => ({ ...s, loading: false, error: null }));
+      return data.user;
+    } catch (err: any) {
+      setState({ user: null, loading: false, error: err?.message || "Failed to register" });
+      throw err;
     }
   }, []);
 
-  const register = useCallback(
-    async (username: string, email: string, password: string) => {
-      try {
-        setState((prev) => ({ prev, loading: true, error: null }));
-        const user = await authManager.registerUser(username, email, password);
-        setState((prev) => ({
-          prev,
-          loading: false,
-          error: null,
-        }));
-        return user;
-      } catch (error) {
-        setState({
-          user: null,
-          loading: false,
-          error: "Failed to register",
-        });
-        throw error;
-      }
+  const hasAccess = useCallback(
+    async (feature: string) => {
+      if (!state.user) return false;
+      if (state.user.role === "master") return true;
+      // fallback: deny master-only features
+      const masterOnly = ["trading", "invention_projects", "system_configuration", "user_management", "download_qcity"];
+      if (masterOnly.includes(feature)) return false;
+      return true;
     },
-    [],
+    [state.user],
   );
 
-  const hasAccess = useCallback(async (feature: string) => {
-    const sessionId = localStorage.getItem("sessionId");
-    if (!sessionId) {
-      return false;
+  const updatePreferences = useCallback(async (preferences: Partial<User["preferences"]>) => {
+    try {
+      const sessionId = localStorage.getItem("sessionId");
+      if (!sessionId) throw new Error("No session");
+      const res = await fetch("/api/auth/preferences", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: sessionId, preferences }),
+      });
+      if (!res.ok) throw new Error("Failed to update preferences");
+      const data = await res.json();
+      const user: User | null = data.user || null;
+      if (user) setState((s) => ({ ...s, user }));
+      return user;
+    } catch (err) {
+      setState((s) => ({ ...s, error: "Failed to update preferences" }));
+      throw err;
     }
-    return authManager.hasAccess(sessionId, feature);
   }, []);
 
-  const updatePreferences = useCallback(
-    async (preferences: full<User["preferences"]>) => {
-      try {
-        const sessionId = localStorage.getItem("sessionId");
-        if (!sessionId) {
-        }
-        const user = await authManager.updateUserPreferences(
-          sessionId,
-          preferences,
-        );
-        setState((prev) => ({
-          prev,
-          user,
-        }));
-      } catch (error) {
-        setState((prev) => ({
-          prev,
-          error: "Failed to update preferences",
-        }));
-      }
-    },
-    [],
-  );
-
-  return {
-    state,
-    login,
-    logout,
-    register,
-    hasAccess,
-    updatePreferences,
-  };
+  return { state, login, logout, register, hasAccess, updatePreferences, validateSession };
 }

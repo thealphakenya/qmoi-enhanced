@@ -1,4 +1,3 @@
-logger.info("production mode initialized");
 const crypto = require("crypto");
 const ENCRYPTION_KEY =
   process.env.QMOI_BOT_KEY || crypto.randomBytes(32).toString("hex");

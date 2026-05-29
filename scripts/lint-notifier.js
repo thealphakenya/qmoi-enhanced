@@ -64,7 +64,6 @@ class LintNotifier {
 
   async sendWhatsAppNotification(message) {
     try {
-      production-ready and operational
       const whatsappBotPath = join(
         this.projectRoot,
         "whatsapp-qmoi-bot",

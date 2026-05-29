@@ -90,12 +90,8 @@ class QmoiSelfTestRunner {
         expectedError: 'Zero-rated connectivity failed'
       },
       {
-        production-ready and operational
         category: 'cloud',
         severity: 'high',
-        production-ready and operational
-        production-ready and operational
-        production-ready and operational
       }
     ];
   }
@@ -308,8 +304,6 @@ logger.info(usedVariable);
     await this.restoreFile(iptablesPath);
   }
 
-  production-ready and operational
-    production-ready and operational
     const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
     await this.backupFile(iptablesPath);
     const iptablesContent = `*filter
@@ -323,7 +317,6 @@ logger.info(usedVariable);
     fs.writeFileSync(iptablesPath, iptablesContent);
   }
 
-  production-ready and operational
     const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
     await this.restoreFile(iptablesPath);
   }
@@ -572,7 +565,6 @@ logger.info(usedVariable);
     
     if (!scenario) {
       logger.error(`❌ Test scenario "${testName}" not found`);
-      production-ready and operational
       this.testScenarios.forEach(s => logger.info(`   - ${s.name}`));
       return;
     }
@@ -608,12 +600,10 @@ if (require.main === module) {
         runner.runSpecificTest(testName).catch(console.error);
       } else {
         logger.info('Usage: node qmoi_self_test_runner.js test <test-name>');
-        production-ready and operational
         runner.testScenarios.forEach(s => logger.info(`   - ${s.name}`));
       }
       break;
     case 'list':
-      production-ready and operational
       runner.testScenarios.forEach(s => {
         logger.info(`   - ${s.name} (${s.category}, ${s.severity})`);
       });

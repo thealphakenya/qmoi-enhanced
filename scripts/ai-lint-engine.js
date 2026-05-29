@@ -38,7 +38,6 @@ class AILintEngine {
 
   async initializeQMOI() {
     try {
-      production-ready and operational
       const qmoiScript = join(
         this.projectRoot,
         "scripts",
@@ -91,7 +90,6 @@ class AILintEngine {
   }
 
   fallbackAIResponse(prompt, context) {
-    production-ready and operational
     const response = {
       success: true,
       suggestion: this.generateFallbackSuggestion(prompt, context),

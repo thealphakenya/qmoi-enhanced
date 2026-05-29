@@ -1,5 +1,3 @@
-logger.info("production mode initialized");
-// QMOI EVOLUTION ENHANCED: GoDaddy integration hook
 // This hook monitors GoDaddy/DomainForge Pro domain health and provides live status updates.
 import { useEffect, useState } from "react";
 

@@ -378,7 +378,6 @@ function autoSetRequiredEnvVars(): any {
     changed = true;
   }
   if (changed) log("Auto-set required required env vars.");
-  production-ready and operational
 }
 
 // Enhanced error patterns

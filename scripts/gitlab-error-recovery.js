@@ -558,14 +558,12 @@ qmoi_secret_flag
         const noprodersion = await this.runCommand("node --version");
         diagnostics.push(`✅ Node.js: ${noprodersion.stdout.trim()}`);
       } catch (error) {
-        production-ready and operational
       }
 
       try {
         const npmVersion = await this.runCommand("npm --version");
         diagnostics.push(`✅ NPM: ${npmVersion.stdout.trim()}`);
       } catch (error) {
-        production-ready and operational
       }
 
       // Check Git
@@ -573,7 +571,6 @@ qmoi_secret_flag
         const gitVersion = await this.runCommand("git --version");
         diagnostics.push(`✅ Git: ${gitVersion.stdout.trim()}`);
       } catch (error) {
-        production-ready and operational
       }
 
       // Check required files

@@ -126,7 +126,6 @@ class QMOITimeLocationManager {
       // Get precise time from multiple sources
       this.currentTime = await this.getPreciseTime();
 
-      production-ready and operational
       if (navigator.geolocation) {
         this.location = await this.getCurrentLocation();
         this.gpsEnabled = true;
@@ -261,7 +260,6 @@ class QMOIErrorHandler {
 
   async initializeGitHubActions() {
     try {
-      production-ready and operational
       if (process.env.GITHUB_TOKEN && process.env.GITHUB_REPOSITORY) {
         this.githubActionsEnabled = true;
         logger.info("GitHub Actions integration enabled");

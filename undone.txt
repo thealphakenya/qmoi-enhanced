@@ -1,73 +1,34 @@
 # UNDONE.TXT - THOROUGH production READINESS SCAN
-# Generated: 2026-05-24T15:09:28.348633
-# Scan ID: 1779635368
+# Generated: 2026-05-27T09:22:17.006152
+# Scan ID: 1779873737
 # Root Directory: /workspaces/qmoi-enhanced
 
 ## SCAN SUMMARY
-- Total files scanned: 4812
-- Total directories scanned: 856
-- Files with markers: 357
-- Total markers found: 31641
+- Total files scanned: 4682
+- Total directories scanned: 842
+- Files with markers: 100
+- Total markers found: 787
 
 ## MARKER SUMMARY (Most Critical First)
-- FUNCTIONAL: 30687 instances
 - PRODUCTION_READY_TAG: 314 instances
 - PRODUCTION_COMPLETE: 189 instances
-- vercel_config: 184 instances
-- production_logging: 103 instances
-- vercel_deploy: 63 instances
+- vercel_config: 90 instances
+- production_logging: 65 instances
 - api.qmoi-enhanced.com: 45 instances
+- vercel_deploy: 26 instances
 - PRODUCTION_FIXED: 26 instances
-- NOT_IMPLEMENTED: 10 instances
-- PRODUCTION_READY: 8 instances
+- FUNCTIONAL: 14 instances
 - vercel_error_list: 5 instances
-- COMPLETED: 3 instances
+- NOT_IMPLEMENTED: 4 instances
+- PRODUCTION_READY: 3 instances
 - production_data: 2 instances
-- FINALIZED: 1 instances
+- IN_PROGRESS: 2 instances
+- WIP_MARKER: 1 instances
 - UNIMPLEMENTED: 1 instances
 
 ## FILES REQUIRING production IMPLEMENTATION
 
-### 1. error-reports/comprehensive-report-2026-03-12.json
-   - Size: 8690621 bytes
-   - Last modified: 2026-05-22T17:04:22.394503
-   - Total markers: 29680
-   - File hash: 8cebafa2
-   - Markers found:
-     * FUNCTIONAL: 29680
-
-### 2. instructionmanifest.txt
-   - Size: 15771281 bytes
-   - Last modified: 2026-05-22T17:04:23.218503
-   - Total markers: 206
-   - File hash: 638c04e9
-   - Markers found:
-     * PRODUCTION_COMPLETE: 1
-     * PRODUCTION_FIXED: 2
-     * FUNCTIONAL: 166
-     * PRODUCTION_READY_TAG: 1
-     * vercel_config: 36
-
-### 3. ALL_TODOS_SAMPLE.txt
-   - Size: 1610746 bytes
-   - Last modified: 2026-05-22T17:04:21.486503
-   - Total markers: 147
-   - File hash: f6ec16dd
-   - Markers found:
-     * FUNCTIONAL: 147
-
-### 4. eslint_fix_result.json
-   - Size: 10980022 bytes
-   - Last modified: 2026-05-22T17:04:22.434503
-   - Total markers: 86
-   - File hash: 7e28f8eb
-   - Markers found:
-     * FUNCTIONAL: 18
-     * production_logging: 22
-     * vercel_config: 38
-     * vercel_deploy: 8
-
-### 5. all_md_files_clean.txt
+### 1. all_md_files_clean.txt
    - Size: 388720 bytes
    - Last modified: 2026-05-22T17:04:21.762503
    - Total markers: 75
@@ -76,71 +37,57 @@
      * PRODUCTION_COMPLETE: 32
      * PRODUCTION_READY_TAG: 43
 
-### 6. non_production_implementations_report.json
+### 2. eslint_fix_result.json
+   - Size: 10980022 bytes
+   - Last modified: 2026-05-22T17:04:22.434503
+   - Total markers: 68
+   - File hash: 7e28f8eb
+   - Markers found:
+     * production_logging: 22
+     * vercel_config: 38
+     * vercel_deploy: 8
+
+### 3. non_production_implementations_report.json
    - Size: 4720583 bytes
    - Last modified: 2026-05-22T17:04:24.659503
-   - Total markers: 67
+   - Total markers: 54
    - File hash: 8017beb3
    - Markers found:
      * PRODUCTION_COMPLETE: 18
      * PRODUCTION_FIXED: 2
-     * FUNCTIONAL: 13
      * PRODUCTION_READY_TAG: 26
      * vercel_deploy: 8
 
-### 7. QMOIDOWNLOADS.md
-   - Size: 41305 bytes
-   - Last modified: 2026-05-22T17:04:21.598503
-   - Total markers: 61
-   - File hash: bc546aaa
-   - Markers found:
-     * FUNCTIONAL: 61
-
-### 8. documentation_audit_details.json
+### 4. documentation_audit_details.json
    - Size: 1218597 bytes
    - Last modified: 2026-05-22T17:04:22.337503
-   - Total markers: 58
+   - Total markers: 47
    - File hash: bd85249c
    - Markers found:
      * PRODUCTION_COMPLETE: 18
      * PRODUCTION_FIXED: 4
-     * FUNCTIONAL: 11
      * PRODUCTION_READY_TAG: 24
      * vercel_config: 1
 
-### 9. ROOT_production_STATUS.md
+### 5. ROOT_production_STATUS.md
    - Size: 1457610 bytes
    - Last modified: 2026-05-22T17:04:21.651503
-   - Total markers: 52
+   - Total markers: 46
    - File hash: 017351c4
    - Markers found:
      * PRODUCTION_COMPLETE: 21
      * PRODUCTION_READY_TAG: 25
-     * vercel_deploy: 6
 
-### 10. tools/dns_docs_inventory.json
-   - Size: 7366163 bytes
-   - Last modified: 2026-05-22T17:04:27.479503
-   - Total markers: 42
-   - File hash: 3e81b64e
-   - Markers found:
-     * PRODUCTION_FIXED: 12
-     * FUNCTIONAL: 23
-     * vercel_config: 6
-     * vercel_deploy: 1
-
-### 11. ALLHEALTHS.md
+### 6. ALLHEALTHS.md
    - Size: 310582 bytes
    - Last modified: 2026-05-22T17:04:21.477503
-   - Total markers: 40
+   - Total markers: 36
    - File hash: cea62fae
    - Markers found:
      * PRODUCTION_COMPLETE: 16
      * PRODUCTION_READY_TAG: 20
-     * vercel_config: 2
-     * vercel_deploy: 2
 
-### 12. all_md_files_current.txt
+### 7. all_md_files_current.txt
    - Size: 195956 bytes
    - Last modified: 2026-05-22T17:04:21.763503
    - Total markers: 26
@@ -149,7 +96,7 @@
      * PRODUCTION_COMPLETE: 11
      * PRODUCTION_READY_TAG: 15
 
-### 13. all_md_files.txt
+### 8. all_md_files.txt
    - Size: 185114 bytes
    - Last modified: 2026-05-22T17:04:21.761503
    - Total markers: 26
@@ -158,7 +105,7 @@
      * PRODUCTION_COMPLETE: 11
      * PRODUCTION_READY_TAG: 15
 
-### 14. ALLAUTO.md
+### 9. ALLAUTO.md
    - Size: 23570 bytes
    - Last modified: 2026-05-22T17:04:21.474503
    - Total markers: 24
@@ -167,7 +114,7 @@
      * PRODUCTION_COMPLETE: 12
      * PRODUCTION_READY_TAG: 12
 
-### 15. quality_gate_report.json
+### 10. quality_gate_report.json
    - Size: 1005722 bytes
    - Last modified: 2026-05-22T17:04:26.857503
    - Total markers: 24
@@ -176,16 +123,7 @@
      * PRODUCTION_COMPLETE: 10
      * PRODUCTION_READY_TAG: 14
 
-### 16. vercelerrorlist.md
-   - Size: 20152 bytes
-   - Last modified: 2026-05-22T17:04:27.580503
-   - Total markers: 24
-   - File hash: b2ab9a50
-   - Markers found:
-     * vercel_config: 19
-     * vercel_deploy: 5
-
-### 17. nonprod_files_list.txt
+### 11. nonprod_files_list.txt
    - Size: 129587 bytes
    - Last modified: 2026-05-22T17:04:24.660503
    - Total markers: 24
@@ -194,7 +132,7 @@
      * PRODUCTION_COMPLETE: 10
      * PRODUCTION_READY_TAG: 14
 
-### 18. API.md
+### 12. API.md
    - Size: 307684 bytes
    - Last modified: 2026-05-23T16:57:17.063468
    - Total markers: 23
@@ -204,7 +142,7 @@
      * PRODUCTION_COMPLETE: 11
      * PRODUCTION_READY_TAG: 11
 
-### 19. eslint_src_fix.json
+### 13. eslint_src_fix.json
    - Size: 646537 bytes
    - Last modified: 2026-05-22T17:04:22.676503
    - Total markers: 21
@@ -213,22 +151,7 @@
      * production_logging: 20
      * vercel_deploy: 1
 
-### 20. autonomous_production_migration_engine.py
-   - Size: 42450 bytes
-   - Last modified: 2026-05-22T17:04:22.062503
-   - Total markers: 21
-   - File hash: d0f45916
-   - Markers found:
-     * PRODUCTION_READY: 1
-     * PRODUCTION_COMPLETE: 1
-     * FINALIZED: 1
-     * PRODUCTION_FIXED: 1
-     * FUNCTIONAL: 1
-     * production_logging: 1
-     * PRODUCTION_READY_TAG: 8
-     * api.qmoi-enhanced.com: 7
-
-### 21. eslint_src_after_fix.json
+### 14. eslint_src_after_fix.json
    - Size: 646700 bytes
    - Last modified: 2026-05-22T17:04:22.674503
    - Total markers: 21
@@ -237,15 +160,30 @@
      * production_logging: 20
      * vercel_deploy: 1
 
-### 22. COMPREHENSIVE_LINK_FIX_STRATEGY.md
-   - Size: 19033 bytes
-   - Last modified: 2026-05-22T17:04:21.503503
-   - Total markers: 17
-   - File hash: 990581ca
+### 15. autonomous_production_migration_engine.py
+   - Size: 42450 bytes
+   - Last modified: 2026-05-22T17:04:22.062503
+   - Total markers: 19
+   - File hash: d0f45916
    - Markers found:
-     * FUNCTIONAL: 17
+     * PRODUCTION_READY: 1
+     * PRODUCTION_COMPLETE: 1
+     * WIP_MARKER: 1
+     * PRODUCTION_FIXED: 1
+     * PRODUCTION_READY_TAG: 8
+     * api.qmoi-enhanced.com: 7
 
-### 23. current_nonprod_scan.txt
+### 16. tools/dns_docs_inventory.json
+   - Size: 7366163 bytes
+   - Last modified: 2026-05-22T17:04:27.479503
+   - Total markers: 19
+   - File hash: 3e81b64e
+   - Markers found:
+     * PRODUCTION_FIXED: 12
+     * vercel_config: 6
+     * vercel_deploy: 1
+
+### 17. current_nonprod_scan.txt
    - Size: 127723 bytes
    - Last modified: 2026-05-22T17:04:22.183503
    - Total markers: 17
@@ -254,60 +192,7 @@
      * PRODUCTION_COMPLETE: 7
      * PRODUCTION_READY_TAG: 10
 
-### 24. CRITICAL_APP_AUDIT_REPORT.md
-   - Size: 20463 bytes
-   - Last modified: 2026-05-22T17:04:21.506503
-   - Total markers: 16
-   - File hash: c8b6d500
-   - Markers found:
-     * FUNCTIONAL: 16
-
-### 25. ultimate_production_fix_report.json
-   - Size: 2907466 bytes
-   - Last modified: 2026-05-22T17:04:27.524503
-   - Total markers: 16
-   - File hash: 10060529
-   - Markers found:
-     * FUNCTIONAL: 11
-     * PRODUCTION_READY_TAG: 5
-
-### 26. QUICK_REFERENCE_SPRINT_METRICS.md
-   - Size: 19492 bytes
-   - Last modified: 2026-05-22T17:04:21.617503
-   - Total markers: 15
-   - File hash: 0150f971
-   - Markers found:
-     * FUNCTIONAL: 15
-
-### 27. FINAL_PRODUCTION_READINESS_REPORT.md
-   - Size: 40700 bytes
-   - Last modified: 2026-05-22T17:27:28.622489
-   - Total markers: 15
-   - File hash: 0fd2f5e6
-   - Markers found:
-     * FUNCTIONAL: 5
-     * production_logging: 3
-     * PRODUCTION_READY_TAG: 4
-     * api.qmoi-enhanced.com: 3
-
-### 28. NONPROD_REPORT_HEAD.txt
-   - Size: 9309725 bytes
-   - Last modified: 2026-05-22T17:04:21.573503
-   - Total markers: 14
-   - File hash: 2556a402
-   - Markers found:
-     * PRODUCTION_FIXED: 3
-     * FUNCTIONAL: 11
-
-### 29. SESSION_LINKS_DOMAINS_ENHANCEMENT_SUMMARY.md
-   - Size: 20824 bytes
-   - Last modified: 2026-05-22T17:04:21.655503
-   - Total markers: 13
-   - File hash: fda7eea4
-   - Markers found:
-     * FUNCTIONAL: 13
-
-### 30. production_readiness_audit_report.json
+### 18. production_readiness_audit_report.json
    - Size: 9605446 bytes
    - Last modified: 2026-05-22T17:04:25.629503
    - Total markers: 10
@@ -317,106 +202,18 @@
      * PRODUCTION_READY_TAG: 5
      * vercel_deploy: 1
 
-### 31. DEPLOYMENT_VERIFICATION.md
-   - Size: 12570 bytes
-   - Last modified: 2026-05-22T17:04:21.512503
-   - Total markers: 10
-   - File hash: 10478566
-   - Markers found:
-     * FUNCTIONAL: 1
-     * vercel_config: 7
-     * vercel_deploy: 2
-
-### 32. verify_production_readiness.sh
+### 19. verify_production_readiness.sh
    - Size: 9273 bytes
    - Last modified: 2026-05-22T17:04:27.580503
-   - Total markers: 9
+   - Total markers: 8
    - File hash: 99cf3a29
    - Markers found:
-     * FUNCTIONAL: 1
      * production_logging: 3
      * PRODUCTION_READY_TAG: 1
      * vercel_error_list: 1
      * vercel_config: 3
 
-### 33. thorough_production_scanner.py
-   - Size: 32409 bytes
-   - Last modified: 2026-05-24T15:04:54.818568
-   - Total markers: 9
-   - File hash: a1c25ce7
-   - Markers found:
-     * PRODUCTION_READY: 1
-     * PRODUCTION_COMPLETE: 1
-     * UNIMPLEMENTED: 1
-     * production_data: 1
-     * PRODUCTION_FIXED: 1
-     * FUNCTIONAL: 1
-     * production_logging: 1
-     * PRODUCTION_READY_TAG: 1
-     * api.qmoi-enhanced.com: 1
-
-### 34. IMPLEMENTATION_ACTION_PLAN.md
-   - Size: 22368 bytes
-   - Last modified: 2026-05-22T17:04:21.533503
-   - Total markers: 9
-   - File hash: 8c607dc9
-   - Markers found:
-     * FUNCTIONAL: 9
-
-### 35. SESSION_COMPREHENSIVE_SUMMARY_20260321.md
-   - Size: 21189 bytes
-   - Last modified: 2026-05-22T17:04:21.655503
-   - Total markers: 9
-   - File hash: 31555f24
-   - Markers found:
-     * FUNCTIONAL: 9
-
-### 36. src/api/routes/links-validation.ts
-   - Size: 8570 bytes
-   - Last modified: 2026-05-22T17:04:27.342503
-   - Total markers: 9
-   - File hash: f2f2f96d
-   - Markers found:
-     * FUNCTIONAL: 9
-
-### 37. allmdrefs_sorted.txt
-   - Size: 475151 bytes
-   - Last modified: 2026-05-22T17:04:21.766503
-   - Total markers: 8
-   - File hash: 8fdacd4a
-   - Markers found:
-     * production_logging: 7
-     * vercel_error_list: 1
-
-### 38. PRODUCTION_READINESS_CERTIFICATION.md
-   - Size: 8630 bytes
-   - Last modified: 2026-05-22T17:04:21.582503
-   - Total markers: 8
-   - File hash: dd24451c
-   - Markers found:
-     * FUNCTIONAL: 1
-     * production_logging: 1
-     * PRODUCTION_READY_TAG: 5
-     * api.qmoi-enhanced.com: 1
-
-### 39. LINKS_DOMAINS_ENHANCEMENT_PLAN.md
-   - Size: 18034 bytes
-   - Last modified: 2026-05-22T17:04:21.536503
-   - Total markers: 8
-   - File hash: 397c35ea
-   - Markers found:
-     * FUNCTIONAL: 8
-
-### 40. missing_md_refs.txt
-   - Size: 492147 bytes
-   - Last modified: 2026-05-22T17:04:23.443503
-   - Total markers: 8
-   - File hash: 6ed8d80d
-   - Markers found:
-     * production_logging: 7
-     * vercel_error_list: 1
-
-### 41. deploy_production.sh
+### 20. deploy_production.sh
    - Size: 7431 bytes
    - Last modified: 2026-05-22T17:04:22.255503
    - Total markers: 8
@@ -424,16 +221,7 @@
    - Markers found:
      * api.qmoi-enhanced.com: 8
 
-### 42. all_md_files_list.txt
-   - Size: 492147 bytes
-   - Last modified: 2026-05-22T17:04:21.765503
-   - Total markers: 8
-   - File hash: 6ed8d80d
-   - Markers found:
-     * production_logging: 7
-     * vercel_error_list: 1
-
-### 43. scripts/deployment-error-handler.js
+### 21. scripts/deployment-error-handler.js
    - Size: 7775 bytes
    - Last modified: 2026-05-22T17:04:27.092503
    - Total markers: 8
@@ -441,83 +229,39 @@
    - Markers found:
      * vercel_config: 8
 
-### 44. QMOI_RELEASE_VERIFICATION_SYSTEM.md
-   - Size: 22724 bytes
-   - Last modified: 2026-05-22T17:04:21.613503
+### 22. thorough_production_scanner.py
+   - Size: 32867 bytes
+   - Last modified: 2026-05-24T15:22:25.302557
    - Total markers: 7
-   - File hash: 3ddfa09d
+   - File hash: e3b34fc2
    - Markers found:
-     * FUNCTIONAL: 7
+     * PRODUCTION_READY: 1
+     * PRODUCTION_COMPLETE: 1
+     * UNIMPLEMENTED: 1
+     * production_data: 1
+     * PRODUCTION_FIXED: 1
+     * PRODUCTION_READY_TAG: 1
+     * api.qmoi-enhanced.com: 1
 
-### 45. DEPLOYMENT_HEALTH_CHECKLIST.md
-   - Size: 16309 bytes
-   - Last modified: 2026-05-22T17:04:21.510503
+### 23. FINAL_PRODUCTION_READINESS_REPORT.md
+   - Size: 40700 bytes
+   - Last modified: 2026-05-22T17:27:28.622489
    - Total markers: 7
-   - File hash: 2d2f57e3
+   - File hash: 0fd2f5e6
    - Markers found:
-     * FUNCTIONAL: 3
-     * vercel_config: 3
-     * vercel_deploy: 1
+     * PRODUCTION_READY_TAG: 4
+     * api.qmoi-enhanced.com: 3
 
-### 46. FINAL_DEPLOYMENT_REPORT.md
-   - Size: 8202 bytes
-   - Last modified: 2026-05-22T17:04:21.524503
-   - Total markers: 7
-   - File hash: 1a00141d
-   - Markers found:
-     * FUNCTIONAL: 2
-     * PRODUCTION_READY_TAG: 3
-     * api.qmoi-enhanced.com: 2
-
-### 47. APP_FIX_CHECKLIST.md
-   - Size: 19020 bytes
-   - Last modified: 2026-05-22T17:04:21.491503
-   - Total markers: 7
-   - File hash: 12168181
-   - Markers found:
-     * FUNCTIONAL: 7
-
-### 48. VALIDATION_SYSTEM.md
-   - Size: 31171 bytes
-   - Last modified: 2026-05-22T17:04:21.666503
-   - Total markers: 7
-   - File hash: 713ae52f
-   - Markers found:
-     * FUNCTIONAL: 7
-
-### 49. APP_FIX_ACTION_PLAN.md
-   - Size: 18016 bytes
-   - Last modified: 2026-05-22T17:04:21.491503
-   - Total markers: 7
-   - File hash: 2404fa14
-   - Markers found:
-     * FUNCTIONAL: 7
-
-### 50. ENHANCED_LINK_DOMAIN_SYSTEM.md
-   - Size: 14710 bytes
-   - Last modified: 2026-05-22T17:04:21.518503
+### 24. PRODUCTION_READINESS_CERTIFICATION.md
+   - Size: 8630 bytes
+   - Last modified: 2026-05-22T17:04:21.582503
    - Total markers: 6
-   - File hash: 0093b8c5
+   - File hash: dd24451c
    - Markers found:
-     * FUNCTIONAL: 6
+     * PRODUCTION_READY_TAG: 5
+     * api.qmoi-enhanced.com: 1
 
-### 51. SESSION_COMPLETION_REPORT_TODOS_PRODUCTION_READY.md
-   - Size: 16259 bytes
-   - Last modified: 2026-05-22T17:04:21.654503
-   - Total markers: 6
-   - File hash: d4edf0cf
-   - Markers found:
-     * FUNCTIONAL: 6
-
-### 52. ALLQMOIAUTOEVOLVINGENVS.md
-   - Size: 54080 bytes
-   - Last modified: 2026-05-22T17:04:21.479503
-   - Total markers: 6
-   - File hash: f3260d9c
-   - Markers found:
-     * FUNCTIONAL: 6
-
-### 53. nginx.production.conf
+### 25. nginx.production.conf
    - Size: 5325 bytes
    - Last modified: 2026-05-22T17:04:24.644503
    - Total markers: 6
@@ -526,32 +270,7 @@
      * PRODUCTION_READY_TAG: 1
      * api.qmoi-enhanced.com: 5
 
-### 54. VERCEL_AUTO_DEPLOY_GUIDE.md
-   - Size: 20174 bytes
-   - Last modified: 2026-05-22T17:04:21.666503
-   - Total markers: 6
-   - File hash: 106684e9
-   - Markers found:
-     * vercel_config: 4
-     * vercel_deploy: 2
-
-### 55. tools/link_fix_actions_more.md
-   - Size: 138364 bytes
-   - Last modified: 2026-05-22T17:04:27.484503
-   - Total markers: 6
-   - File hash: 04f9992b
-   - Markers found:
-     * FUNCTIONAL: 6
-
-### 56. tools/link_fix_proposals_more.json
-   - Size: 141773 bytes
-   - Last modified: 2026-05-22T17:04:27.484503
-   - Total markers: 6
-   - File hash: 6045ae73
-   - Markers found:
-     * FUNCTIONAL: 6
-
-### 57. scripts/auto-fix-deployment.js
+### 26. scripts/auto-fix-deployment.js
    - Size: 11673 bytes
    - Last modified: 2026-05-22T17:04:27.081503
    - Total markers: 6
@@ -559,7 +278,7 @@
    - Markers found:
      * vercel_config: 6
 
-### 58. lib/security_check.ts
+### 27. lib/security_check.ts
    - Size: 3314 bytes
    - Last modified: 2026-05-22T17:04:23.229503
    - Total markers: 6
@@ -567,39 +286,16 @@
    - Markers found:
      * vercel_config: 6
 
-### 59. git-lfs-3.5.1/CHANGELOG.md
-   - Size: 129161 bytes
-   - Last modified: 2026-05-22T17:04:22.995503
-   - Total markers: 6
-   - File hash: 5035f5e8
-   - Markers found:
-     * FUNCTIONAL: 6
-
-### 60. git-lfs-3.5.1/git-lfs-3.5.1/CHANGELOG.md
-   - Size: 129161 bytes
-   - Last modified: 2026-05-22T17:04:23.064503
-   - Total markers: 6
-   - File hash: c597856d
-   - Markers found:
-     * FUNCTIONAL: 6
-
-### 61. LINK_DOMAIN_VALIDATION_PLAN.md
-   - Size: 19294 bytes
-   - Last modified: 2026-05-22T17:04:21.536503
+### 28. FINAL_DEPLOYMENT_REPORT.md
+   - Size: 8202 bytes
+   - Last modified: 2026-05-22T17:04:21.524503
    - Total markers: 5
-   - File hash: ef291273
+   - File hash: 1a00141d
    - Markers found:
-     * FUNCTIONAL: 5
+     * PRODUCTION_READY_TAG: 3
+     * api.qmoi-enhanced.com: 2
 
-### 62. PHASE_3_TEST_COMPLETION_REPORT.md
-   - Size: 20972 bytes
-   - Last modified: 2026-05-22T17:04:21.576503
-   - Total markers: 5
-   - File hash: 5f773f0d
-   - Markers found:
-     * FUNCTIONAL: 5
-
-### 63. PRODUCTION_COMPLETION_SUMMARY_2026-04-23.md
+### 29. PRODUCTION_COMPLETION_SUMMARY_2026-04-23.md
    - Size: 7769 bytes
    - Last modified: 2026-05-22T17:04:21.579503
    - Total markers: 5
@@ -607,7 +303,7 @@
    - Markers found:
      * PRODUCTION_READY_TAG: 5
 
-### 64. PLATFORMS_UI_PRODUCTION_GUIDE.md
+### 30. PLATFORMS_UI_PRODUCTION_GUIDE.md
    - Size: 8553 bytes
    - Last modified: 2026-05-22T17:04:21.577503
    - Total markers: 5
@@ -615,15 +311,15 @@
    - Markers found:
      * PRODUCTION_READY_TAG: 5
 
-### 65. QMOI_LINKS_DOMAINS_PROGRESS.md
-   - Size: 17541 bytes
-   - Last modified: 2026-05-22T17:04:21.611503
+### 31. ultimate_production_fix_report.json
+   - Size: 2907466 bytes
+   - Last modified: 2026-05-22T17:04:27.524503
    - Total markers: 5
-   - File hash: 2eb0a8ab
+   - File hash: 10060529
    - Markers found:
-     * FUNCTIONAL: 5
+     * PRODUCTION_READY_TAG: 5
 
-### 66. production_launch_report.json
+### 32. production_launch_report.json
    - Size: 1651 bytes
    - Last modified: 2026-05-22T17:04:25.603503
    - Total markers: 5
@@ -631,26 +327,7 @@
    - Markers found:
      * api.qmoi-enhanced.com: 5
 
-### 67. TABLE_OF_CONTENTS.md
-   - Size: 34816 bytes
-   - Last modified: 2026-05-22T17:04:21.658503
-   - Total markers: 5
-   - File hash: 3e5a7c74
-   - Markers found:
-     * PRODUCTION_COMPLETE: 2
-     * FUNCTIONAL: 1
-     * PRODUCTION_READY_TAG: 2
-
-### 68. PRODUCTION_DEPLOYMENT_GUIDE.md
-   - Size: 24892 bytes
-   - Last modified: 2026-05-22T17:04:21.580503
-   - Total markers: 5
-   - File hash: 534d13b3
-   - Markers found:
-     * FUNCTIONAL: 3
-     * PRODUCTION_READY_TAG: 2
-
-### 69. local_production_validation.sh
+### 33. local_production_validation.sh
    - Size: 6742 bytes
    - Last modified: 2026-05-22T17:04:23.235503
    - Total markers: 5
@@ -659,33 +336,7 @@
      * PRODUCTION_READY_TAG: 2
      * vercel_config: 3
 
-### 70. verify_undone.sh
-   - Size: 2318 bytes
-   - Last modified: 2026-05-22T17:04:27.580503
-   - Total markers: 5
-   - File hash: fa986e6d
-   - Markers found:
-     * FUNCTIONAL: 5
-
-### 71. QMOI_AUTO_SETUP_IMPLEMENTATION.md
-   - Size: 28610 bytes
-   - Last modified: 2026-05-22T17:04:21.607503
-   - Total markers: 5
-   - File hash: fe65e26c
-   - Markers found:
-     * FUNCTIONAL: 5
-
-### 72. QMOIAIUI.md
-   - Size: 78113 bytes
-   - Last modified: 2026-05-23T16:57:15.790468
-   - Total markers: 5
-   - File hash: caa46e0d
-   - Markers found:
-     * COMPLETED: 1
-     * FUNCTIONAL: 1
-     * PRODUCTION_READY_TAG: 3
-
-### 73. scripts/auto-vercel-fix.js
+### 34. scripts/auto-vercel-fix.js
    - Size: 9213 bytes
    - Last modified: 2026-05-22T17:04:27.082503
    - Total markers: 5
@@ -693,89 +344,17 @@
    - Markers found:
      * vercel_config: 5
 
-### 74. FINAL_STATUS_TODOS_COMPLETE.md
-   - Size: 10235 bytes
-   - Last modified: 2026-05-22T17:04:21.526503
+### 35. instructionmanifest.txt
+   - Size: 15771281 bytes
+   - Last modified: 2026-05-22T17:04:23.218503
    - Total markers: 4
-   - File hash: 4814e7cd
+   - File hash: 638c04e9
    - Markers found:
-     * FUNCTIONAL: 4
+     * PRODUCTION_COMPLETE: 1
+     * PRODUCTION_FIXED: 2
+     * PRODUCTION_READY_TAG: 1
 
-### 75. qmoi_auto_offload_and_link_check.sh
-   - Size: 1615 bytes
-   - Last modified: 2026-05-22T17:04:26.849503
-   - Total markers: 4
-   - File hash: 19983d04
-   - Markers found:
-     * FUNCTIONAL: 4
-
-### 76. QMOI_V1_2_3_RELEASE_PLAN_SUMMARY.md
-   - Size: 25220 bytes
-   - Last modified: 2026-05-22T17:04:21.615503
-   - Total markers: 4
-   - File hash: 352f32b7
-   - Markers found:
-     * FUNCTIONAL: 4
-
-### 77. scripts_tree.txt
-   - Size: 29194 bytes
-   - Last modified: 2026-05-22T17:04:27.337503
-   - Total markers: 4
-   - File hash: a8aaa53d
-   - Markers found:
-     * FUNCTIONAL: 3
-     * vercel_deploy: 1
-
-### 78. COMPREHENSIVE_VALIDATION_SYSTEM.md
-   - Size: 18116 bytes
-   - Last modified: 2026-05-22T17:04:21.504503
-   - Total markers: 4
-   - File hash: 5a8cdabe
-   - Markers found:
-     * FUNCTIONAL: 4
-
-### 79. LINKS_FIX_EXECUTION_GUIDE.md
-   - Size: 22097 bytes
-   - Last modified: 2026-05-22T17:04:21.536503
-   - Total markers: 4
-   - File hash: 078fbb7c
-   - Markers found:
-     * FUNCTIONAL: 4
-
-### 80. qmoi_link_autotest_and_fix.sh
-   - Size: 791 bytes
-   - Last modified: 2026-05-22T17:04:26.851503
-   - Total markers: 4
-   - File hash: 7deae5de
-   - Markers found:
-     * FUNCTIONAL: 4
-
-### 81. PRODUCTION_READINESS_EXECUTION_STATUS.md
-   - Size: 15028 bytes
-   - Last modified: 2026-05-22T17:04:21.583503
-   - Total markers: 4
-   - File hash: 45640f97
-   - Markers found:
-     * FUNCTIONAL: 4
-
-### 82. FEATURESREADME.md
-   - Size: 47188 bytes
-   - Last modified: 2026-05-22T17:04:21.523503
-   - Total markers: 4
-   - File hash: 0f510cf3
-   - Markers found:
-     * FUNCTIONAL: 4
-
-### 83. DEPLOYMENT_GATEWAY.md
-   - Size: 17647 bytes
-   - Last modified: 2026-05-22T17:04:21.510503
-   - Total markers: 4
-   - File hash: acb3b6a9
-   - Markers found:
-     * FUNCTIONAL: 1
-     * vercel_config: 3
-
-### 84. compulsories_nonproduction_tasks.md
+### 36. compulsories_nonproduction_tasks.md
    - Size: 32181 bytes
    - Last modified: 2026-05-22T17:04:22.180503
    - Total markers: 4
@@ -784,15 +363,7 @@
      * PRODUCTION_COMPLETE: 2
      * PRODUCTION_READY_TAG: 2
 
-### 85. QMOI_ENHANCEMENT_UPDATE_20260321.md
-   - Size: 16287 bytes
-   - Last modified: 2026-05-22T17:04:21.610503
-   - Total markers: 4
-   - File hash: 2072ff0c
-   - Markers found:
-     * FUNCTIONAL: 4
-
-### 86. PRODUCTION_MIGRATION_SUMMARY.md
+### 37. PRODUCTION_MIGRATION_SUMMARY.md
    - Size: 11684 bytes
    - Last modified: 2026-05-22T17:04:21.582503
    - Total markers: 4
@@ -800,56 +371,16 @@
    - Markers found:
      * PRODUCTION_READY_TAG: 4
 
-### 87. VERCEL_DEPLOYMENT_READY.md
-   - Size: 13397 bytes
-   - Last modified: 2026-05-22T17:04:21.667503
+### 38. TABLE_OF_CONTENTS.md
+   - Size: 34816 bytes
+   - Last modified: 2026-05-22T17:04:21.658503
    - Total markers: 4
-   - File hash: d2c5e7a5
+   - File hash: 3e5a7c74
    - Markers found:
-     * vercel_config: 1
-     * vercel_deploy: 3
+     * PRODUCTION_COMPLETE: 2
+     * PRODUCTION_READY_TAG: 2
 
-### 88. COMPLETE_SYSTEM_DOCUMENTATION_MASTER.md
-   - Size: 25442 bytes
-   - Last modified: 2026-05-22T17:04:21.500503
-   - Total markers: 4
-   - File hash: e13d0fff
-   - Markers found:
-     * FUNCTIONAL: 4
-
-### 89. DOMAIN_AUTO_VALIDATION_SYSTEM.md
-   - Size: 18111 bytes
-   - Last modified: 2026-05-22T17:04:21.515503
-   - Total markers: 4
-   - File hash: 19605974
-   - Markers found:
-     * FUNCTIONAL: 4
-
-### 90. scripts/test-qmoi-system.js
-   - Size: 22652 bytes
-   - Last modified: 2026-05-22T17:04:27.322503
-   - Total markers: 4
-   - File hash: 69b152e5
-   - Markers found:
-     * FUNCTIONAL: 4
-
-### 91. PHASE_4_QVILLAGE_HF_COMPLETE.md
-   - Size: 25280 bytes
-   - Last modified: 2026-05-22T17:04:21.576503
-   - Total markers: 3
-   - File hash: 738dace0
-   - Markers found:
-     * FUNCTIONAL: 3
-
-### 92. FINAL_HANDOFF.md
-   - Size: 18845 bytes
-   - Last modified: 2026-05-22T17:04:21.524503
-   - Total markers: 3
-   - File hash: fd607454
-   - Markers found:
-     * FUNCTIONAL: 3
-
-### 93. PRODUCTION_OPERATIONS_GUIDE.md
+### 39. PRODUCTION_OPERATIONS_GUIDE.md
    - Size: 7145 bytes
    - Last modified: 2026-05-22T17:04:21.582503
    - Total markers: 3
@@ -857,141 +388,15 @@
    - Markers found:
      * api.qmoi-enhanced.com: 3
 
-### 94. allrefs.txt
-   - Size: 82100 bytes
-   - Last modified: 2026-05-22T17:04:21.766503
+### 40. NONPROD_REPORT_HEAD.txt
+   - Size: 9309725 bytes
+   - Last modified: 2026-05-22T17:04:21.573503
    - Total markers: 3
-   - File hash: c8ca96cd
+   - File hash: 2556a402
    - Markers found:
-     * PRODUCTION_COMPLETE: 1
-     * PRODUCTION_READY_TAG: 1
-     * vercel_deploy: 1
+     * PRODUCTION_FIXED: 3
 
-### 95. QMOIENVWITHALLPROGRAMMINGLANGUAGES.md
-   - Size: 51187 bytes
-   - Last modified: 2026-05-22T17:04:21.599503
-   - Total markers: 3
-   - File hash: b970496a
-   - Markers found:
-     * FUNCTIONAL: 3
-
-### 96. FINAL_PRODUCTION_SUMMARY.md
-   - Size: 20535 bytes
-   - Last modified: 2026-05-22T17:04:21.526503
-   - Total markers: 3
-   - File hash: 86b65e88
-   - Markers found:
-     * FUNCTIONAL: 3
-
-### 97. FINAL_DEPLOYMENT_SUMMARY.md
-   - Size: 19798 bytes
-   - Last modified: 2026-05-22T17:04:21.524503
-   - Total markers: 3
-   - File hash: 8e64ffaf
-   - Markers found:
-     * FUNCTIONAL: 3
-
-### 98. PROJECT_COMPLETE.md
-   - Size: 51321 bytes
-   - Last modified: 2026-05-22T17:04:21.586503
-   - Total markers: 3
-   - File hash: 56b60619
-   - Markers found:
-     * FUNCTIONAL: 3
-
-### 99. QMOI_AUTOFIX_FILES_CREATED.md
-   - Size: 18282 bytes
-   - Last modified: 2026-05-22T17:04:21.606503
-   - Total markers: 3
-   - File hash: 51b40344
-   - Markers found:
-     * FUNCTIONAL: 3
-
-### 100. QCITY-DELIVERABLES-CHECKLIST.md
-   - Size: 21615 bytes
-   - Last modified: 2026-05-22T17:04:21.587503
-   - Total markers: 3
-   - File hash: 693478c5
-   - Markers found:
-     * FUNCTIONAL: 3
-
-### 101. MONITORING_AND_HEALTH_CHECKS.md
-   - Size: 13694 bytes
-   - Last modified: 2026-05-22T17:04:21.542503
-   - Total markers: 3
-   - File hash: d3ebc2e1
-   - Markers found:
-     * COMPLETED: 1
-     * production_logging: 2
-
-### 102. GITHUB_WORKFLOWS_VERIFICATION.md
-   - Size: 16703 bytes
-   - Last modified: 2026-05-22T17:04:21.530503
-   - Total markers: 3
-   - File hash: c5c99c3e
-   - Markers found:
-     * FUNCTIONAL: 3
-
-### 103. continues.txt
-   - Size: 40093 bytes
-   - Last modified: 2026-05-22T17:04:22.182503
-   - Total markers: 3
-   - File hash: 99521e20
-   - Markers found:
-     * FUNCTIONAL: 3
-
-### 104. MASTER_OPERATIONS_GUIDE.md
-   - Size: 20901 bytes
-   - Last modified: 2026-05-22T17:04:21.540503
-   - Total markers: 3
-   - File hash: 184fe23d
-   - Markers found:
-     * FUNCTIONAL: 3
-
-### 105. FINAL_AUDIT_COMPLETION.txt
-   - Size: 11211 bytes
-   - Last modified: 2026-05-22T17:04:21.523503
-   - Total markers: 3
-   - File hash: 2f7bb08b
-   - Markers found:
-     * FUNCTIONAL: 3
-
-### 106. PRODUCTION_DEPLOYMENT_ALL_STEPS.md
-   - Size: 35273 bytes
-   - Last modified: 2026-05-22T17:04:21.579503
-   - Total markers: 3
-   - File hash: d11b67f7
-   - Markers found:
-     * FUNCTIONAL: 1
-     * vercel_config: 1
-     * vercel_deploy: 1
-
-### 107. LION.md
-   - Size: 33770 bytes
-   - Last modified: 2026-05-22T17:04:21.536503
-   - Total markers: 3
-   - File hash: 1a29e014
-   - Markers found:
-     * FUNCTIONAL: 3
-
-### 108. QUICKSTART_LINKS_FIX.md
-   - Size: 7545 bytes
-   - Last modified: 2026-05-22T17:04:21.617503
-   - Total markers: 3
-   - File hash: 31ef1c39
-   - Markers found:
-     * FUNCTIONAL: 3
-
-### 109. undo_needed_paths.txt
-   - Size: 407315 bytes
-   - Last modified: 2026-05-22T17:04:27.527503
-   - Total markers: 3
-   - File hash: 9d37584e
-   - Markers found:
-     * vercel_config: 2
-     * vercel_deploy: 1
-
-### 110. FINAL_PRODUCTION_REPORT_2026-04-23.md
+### 41. FINAL_PRODUCTION_REPORT_2026-04-23.md
    - Size: 8212 bytes
    - Last modified: 2026-05-22T17:04:21.525503
    - Total markers: 3
@@ -999,16 +404,7 @@
    - Markers found:
      * PRODUCTION_READY_TAG: 3
 
-### 111. COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md
-   - Size: 8972 bytes
-   - Last modified: 2026-05-22T17:04:21.503503
-   - Total markers: 3
-   - File hash: d03d51f2
-   - Markers found:
-     * FUNCTIONAL: 2
-     * PRODUCTION_READY_TAG: 1
-
-### 112. PRODUCTION_COMPLETION_REPORT_FINAL.md
+### 42. PRODUCTION_COMPLETION_REPORT_FINAL.md
    - Size: 10543 bytes
    - Last modified: 2026-05-22T17:04:21.579503
    - Total markers: 3
@@ -1016,7 +412,15 @@
    - Markers found:
      * PRODUCTION_READY_TAG: 3
 
-### 113. DEPLOYMENT_COMPLETION_CHECKLIST.txt
+### 43. QMOIAIUI.md
+   - Size: 78113 bytes
+   - Last modified: 2026-05-23T16:57:15.790468
+   - Total markers: 3
+   - File hash: caa46e0d
+   - Markers found:
+     * PRODUCTION_READY_TAG: 3
+
+### 44. DEPLOYMENT_COMPLETION_CHECKLIST.txt
    - Size: 18270 bytes
    - Last modified: 2026-05-22T17:04:21.509503
    - Total markers: 3
@@ -1025,15 +429,7 @@
      * PRODUCTION_READY_TAG: 1
      * api.qmoi-enhanced.com: 2
 
-### 114. docs/screens/master-email-configuration-screen.md
-   - Size: 6876 bytes
-   - Last modified: 2026-05-22T17:04:22.324503
-   - Total markers: 3
-   - File hash: 0f50d97d
-   - Markers found:
-     * NOT_IMPLEMENTED: 3
-
-### 115. pwa_apps/q-alpha/index.html
+### 45. pwa_apps/q-alpha/index.html
    - Size: 19941 bytes
    - Last modified: 2026-05-22T17:04:25.652503
    - Total markers: 3
@@ -1041,16 +437,7 @@
    - Markers found:
      * NOT_IMPLEMENTED: 3
 
-### 116. tools/dns_links_report.json
-   - Size: 572732 bytes
-   - Last modified: 2026-05-22T17:04:27.481503
-   - Total markers: 3
-   - File hash: bb46ab47
-   - Markers found:
-     * PRODUCTION_FIXED: 1
-     * FUNCTIONAL: 2
-
-### 117. scripts/error-scanner-v2.js
+### 46. scripts/error-scanner-v2.js
    - Size: 26237 bytes
    - Last modified: 2026-05-22T17:04:27.262503
    - Total markers: 3
@@ -1058,7 +445,7 @@
    - Markers found:
      * FUNCTIONAL: 3
 
-### 118. scripts/auto-deploy-and-fix.sh
+### 47. scripts/auto-deploy-and-fix.sh
    - Size: 12472 bytes
    - Last modified: 2026-05-22T17:04:27.081503
    - Total markers: 3
@@ -1066,7 +453,7 @@
    - Markers found:
      * vercel_config: 3
 
-### 119. scripts/enhanced-error-fix.js
+### 48. scripts/enhanced-error-fix.js
    - Size: 11989 bytes
    - Last modified: 2026-05-22T17:04:27.096503
    - Total markers: 3
@@ -1074,7 +461,7 @@
    - Markers found:
      * vercel_config: 3
 
-### 120. scripts/verify-production.sh
+### 49. scripts/verify-production.sh
    - Size: 5780 bytes
    - Last modified: 2026-05-22T17:04:27.334503
    - Total markers: 3
@@ -1082,114 +469,23 @@
    - Markers found:
      * vercel_config: 3
 
-### 121. lib/5._functional_programming_languages.ts
-   - Size: 980 bytes
-   - Last modified: 2026-05-22T17:04:23.220503
+### 50. src/api/routes/links-validation.ts
+   - Size: 8570 bytes
+   - Last modified: 2026-05-22T17:04:27.342503
    - Total markers: 3
-   - File hash: 5772dfbb
+   - File hash: f2f2f96d
    - Markers found:
      * FUNCTIONAL: 3
 
-### 122. src/lib/enhanced-link-domain-service.ts
-   - Size: 2055 bytes
-   - Last modified: 2026-05-22T17:04:27.422503
-   - Total markers: 3
-   - File hash: bbad3da5
-   - Markers found:
-     * FUNCTIONAL: 3
-
-### 123. components/QMediaPlayer.tsx
-   - Size: 83236 bytes
-   - Last modified: 2026-05-22T17:04:22.113503
-   - Total markers: 3
-   - File hash: 173c34d1
-   - Markers found:
-     * PRODUCTION_READY: 3
-
-### 124. QMOIGITLABDEV.md
-   - Size: 13341 bytes
-   - Last modified: 2026-05-22T17:04:21.600503
+### 51. qmoi_auto_offload_and_link_check.sh
+   - Size: 1615 bytes
+   - Last modified: 2026-05-22T17:04:26.849503
    - Total markers: 2
-   - File hash: 905041bc
+   - File hash: 19983d04
    - Markers found:
      * FUNCTIONAL: 2
 
-### 125. VERCEL_QMOI_AUTOFEATURES_MASTER.md
-   - Size: 27733 bytes
-   - Last modified: 2026-05-22T17:04:21.667503
-   - Total markers: 2
-   - File hash: 543eebaa
-   - Markers found:
-     * vercel_config: 1
-     * vercel_deploy: 1
-
-### 126. PRODUCTION_READINESS_FINAL.md
-   - Size: 14364 bytes
-   - Last modified: 2026-05-22T17:04:21.583503
-   - Total markers: 2
-   - File hash: 9648ccd7
-   - Markers found:
-     * FUNCTIONAL: 1
-     * vercel_config: 1
-
-### 127. resumetodos.txt
-   - Size: 6259 bytes
-   - Last modified: 2026-05-22T17:04:27.072503
-   - Total markers: 2
-   - File hash: 625bc381
-   - Markers found:
-     * vercel_deploy: 2
-
-### 128. PRODUCTION_DEPLOYMENT_READY.md
-   - Size: 21656 bytes
-   - Last modified: 2026-05-22T17:04:21.580503
-   - Total markers: 2
-   - File hash: b6a2fc4c
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 129. ENHANCEMENT_SUMMARY.md
-   - Size: 11784 bytes
-   - Last modified: 2026-05-22T17:27:28.621489
-   - Total markers: 2
-   - File hash: af8959e8
-   - Markers found:
-     * FUNCTIONAL: 1
-     * PRODUCTION_READY_TAG: 1
-
-### 130. QMOIALWAYSPARALLEL.md
-   - Size: 31807 bytes
-   - Last modified: 2026-05-22T17:04:21.594503
-   - Total markers: 2
-   - File hash: edfd92d1
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 131. QVILLAGE_ENHANCEMENT_COMPLETE.md
-   - Size: 16753 bytes
-   - Last modified: 2026-05-22T17:04:21.619503
-   - Total markers: 2
-   - File hash: dc12b265
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 132. LIONS_COMPREHENSIVE.md
-   - Size: 35572 bytes
-   - Last modified: 2026-05-22T17:04:21.537503
-   - Total markers: 2
-   - File hash: ea7f5f7b
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 133. PRODUCTION_RELEASE_DOCS_INDEX.md
-   - Size: 23027 bytes
-   - Last modified: 2026-05-22T17:04:21.584503
-   - Total markers: 2
-   - File hash: e366d217
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 134. qmoi_production_server.py
+### 52. qmoi_production_server.py
    - Size: 8729 bytes
    - Last modified: 2026-05-22T17:04:26.852503
    - Total markers: 2
@@ -1197,138 +493,24 @@
    - Markers found:
      * api.qmoi-enhanced.com: 2
 
-### 135. PRE_RELEASE_DISTRIBUTION_PLAN.md
-   - Size: 36765 bytes
-   - Last modified: 2026-05-22T17:04:21.578503
+### 53. allrefs.txt
+   - Size: 82100 bytes
+   - Last modified: 2026-05-22T17:04:21.766503
    - Total markers: 2
-   - File hash: 6d5fd9c7
+   - File hash: c8ca96cd
    - Markers found:
-     * FUNCTIONAL: 2
-
-### 136. QMOIGITPODDEV.md
-   - Size: 10076 bytes
-   - Last modified: 2026-05-22T17:04:21.600503
-   - Total markers: 2
-   - File hash: 23810495
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 137. VERCEL_DEPLOYMENT_STATUS.md
-   - Size: 10192 bytes
-   - Last modified: 2026-05-22T17:04:21.667503
-   - Total markers: 2
-   - File hash: 6b3966db
-   - Markers found:
-     * vercel_config: 2
-
-### 138. teststoadd.txt
-   - Size: 7214 bytes
-   - Last modified: 2026-05-22T17:04:27.445503
-   - Total markers: 2
-   - File hash: 3543505d
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 139. QVILLAGEENHANCEMENTS.md
-   - Size: 20295 bytes
-   - Last modified: 2026-05-22T17:04:21.618503
-   - Total markers: 2
-   - File hash: 1424f472
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 140. UI_FEATURES_AUDIT_COMPREHENSIVE.md
-   - Size: 21896 bytes
-   - Last modified: 2026-05-22T17:04:21.663503
-   - Total markers: 2
-   - File hash: b88a07e1
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 141. APP_FIX_COMPLETE.md
-   - Size: 13764 bytes
-   - Last modified: 2026-05-22T17:04:21.491503
-   - Total markers: 2
-   - File hash: 00e5ef8b
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 142. QMOI_PROJECT_MANAGEMENT_SYSTEMS.md
-   - Size: 58316 bytes
-   - Last modified: 2026-05-22T17:04:21.613503
-   - Total markers: 2
-   - File hash: 4f30039c
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 143. ALLMDFILESREFS.md
-   - Size: 32484 bytes
-   - Last modified: 2026-05-23T17:20:15.461409
-   - Total markers: 2
-   - File hash: a927effb
-   - Markers found:
-     * production_logging: 1
-     * vercel_error_list: 1
-
-### 144. QMOIQCITYAUTOMATIC.md
-   - Size: 14915 bytes
-   - Last modified: 2026-05-22T17:04:21.602503
-   - Total markers: 2
-   - File hash: 30f07e9b
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 145. PROJECT_COMPLETION_CERTIFICATE.md
-   - Size: 51582 bytes
-   - Last modified: 2026-05-22T17:04:21.586503
-   - Total markers: 2
-   - File hash: bd778cf2
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 146. NEXT_STEPS_EXECUTIVE_SUMMARY.md
-   - Size: 15169 bytes
-   - Last modified: 2026-05-22T17:04:21.544503
-   - Total markers: 2
-   - File hash: f285d311
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 147. PRODUCTION_READINESS_REPORT.md
-   - Size: 10396 bytes
-   - Last modified: 2026-05-22T17:27:28.621489
-   - Total markers: 2
-   - File hash: 352380ed
-   - Markers found:
-     * FUNCTIONAL: 1
+     * PRODUCTION_COMPLETE: 1
      * PRODUCTION_READY_TAG: 1
 
-### 148. QMOI_SELF_UPDATE_SYSTEM.md
-   - Size: 28522 bytes
-   - Last modified: 2026-05-22T17:04:21.614503
+### 54. qmoi_link_autotest_and_fix.sh
+   - Size: 791 bytes
+   - Last modified: 2026-05-22T17:04:26.851503
    - Total markers: 2
-   - File hash: e2e51616
+   - File hash: 7deae5de
    - Markers found:
      * FUNCTIONAL: 2
 
-### 149. MASTER_COMPLETION_CERTIFICATE.txt
-   - Size: 13276 bytes
-   - Last modified: 2026-05-22T17:04:21.539503
-   - Total markers: 2
-   - File hash: 48622f31
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 150. DEPLOYMENT_SUMMARY.txt
-   - Size: 7331 bytes
-   - Last modified: 2026-05-22T17:04:21.511503
-   - Total markers: 2
-   - File hash: 494bd2f2
-   - Markers found:
-     * vercel_config: 1
-     * vercel_deploy: 1
-
-### 151. DEPLOY_TO_VERCEL.sh
+### 55. DEPLOY_TO_VERCEL.sh
    - Size: 9630 bytes
    - Last modified: 2026-05-22T17:04:21.512503
    - Total markers: 2
@@ -1336,244 +518,15 @@
    - Markers found:
      * vercel_deploy: 2
 
-### 152. QALPHAUI.md
-   - Size: 16284 bytes
-   - Last modified: 2026-05-23T16:57:15.881468
+### 56. PRODUCTION_DEPLOYMENT_GUIDE.md
+   - Size: 24892 bytes
+   - Last modified: 2026-05-22T17:04:21.580503
    - Total markers: 2
-   - File hash: c9ac4f04
+   - File hash: 534d13b3
    - Markers found:
-     * FUNCTIONAL: 2
+     * PRODUCTION_READY_TAG: 2
 
-### 153. COMPREHENSIVE_VALIDATION_REPORT.txt
-   - Size: 17414 bytes
-   - Last modified: 2026-05-22T17:04:21.504503
-   - Total markers: 2
-   - File hash: 4b0beb92
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 154. SESSION_HANDOFF_SUMMARY.txt
-   - Size: 10658 bytes
-   - Last modified: 2026-05-22T17:04:21.655503
-   - Total markers: 2
-   - File hash: 37a538a1
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 155. QMOI_BUILD_ENHANCEMENT_FINAL_REPORT.md
-   - Size: 4598 bytes
-   - Last modified: 2026-05-22T17:04:21.607503
-   - Total markers: 2
-   - File hash: 50980292
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 156. COMPLETION_REPORT.txt
-   - Size: 12123 bytes
-   - Last modified: 2026-05-22T17:04:21.501503
-   - Total markers: 2
-   - File hash: e2d670ee
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 157. ALLUI.md
-   - Size: 40380 bytes
-   - Last modified: 2026-05-22T17:04:21.480503
-   - Total markers: 2
-   - File hash: ad6b69c2
-   - Markers found:
-     * FUNCTIONAL: 1
-     * PRODUCTION_READY_TAG: 1
-
-### 158. validations.txt
-   - Size: 5293 bytes
-   - Last modified: 2026-05-22T17:04:27.580503
-   - Total markers: 2
-   - File hash: 1ae31841
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 159. OPTION_A_PRODUCTION_READY.md
-   - Size: 10525 bytes
-   - Last modified: 2026-05-22T17:04:21.574503
-   - Total markers: 2
-   - File hash: d4edb568
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 160. BALANCE_SYSTEM_VALIDATION_REPORT.md
-   - Size: 18095 bytes
-   - Last modified: 2026-05-22T17:04:21.496503
-   - Total markers: 2
-   - File hash: 654dfd65
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 161. STATUS.txt
-   - Size: 15427 bytes
-   - Last modified: 2026-05-22T17:04:21.657503
-   - Total markers: 2
-   - File hash: 8973a627
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 162. GITHUB_RELEASES_VERIFICATION_REPORT.md
-   - Size: 17541 bytes
-   - Last modified: 2026-05-22T17:04:21.530503
-   - Total markers: 2
-   - File hash: 0be263b1
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 163. QMOIDOMAINSLINKS.md
-   - Size: 17337 bytes
-   - Last modified: 2026-05-22T17:04:21.598503
-   - Total markers: 2
-   - File hash: 78325c03
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 164. README.md
-   - Size: 24766 bytes
-   - Last modified: 2026-05-22T17:27:28.620489
-   - Total markers: 2
-   - File hash: f0672c88
-   - Markers found:
-     * FUNCTIONAL: 1
-     * PRODUCTION_READY_TAG: 1
-
-### 165. QMOIALLDEVICESINSTALL.md
-   - Size: 16426 bytes
-   - Last modified: 2026-05-22T17:04:21.594503
-   - Total markers: 2
-   - File hash: 01dc4efd
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 166. QMOIAUTODEV.md
-   - Size: 15696 bytes
-   - Last modified: 2026-05-22T17:04:21.595503
-   - Total markers: 2
-   - File hash: 530f21cb
-   - Markers found:
-     * FUNCTIONAL: 1
-     * vercel_deploy: 1
-
-### 167. PRODUCTION_READINESS_ENHANCED_REPORT.md
-   - Size: 12134 bytes
-   - Last modified: 2026-05-22T17:04:21.583503
-   - Total markers: 2
-   - File hash: a4e05edc
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 168. COMPREHENSIVE_ACTION_PLAN.md
-   - Size: 18612 bytes
-   - Last modified: 2026-05-22T17:04:21.503503
-   - Total markers: 2
-   - File hash: 421f66be
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 169. QMOISPACEUI.md
-   - Size: 67405 bytes
-   - Last modified: 2026-05-23T16:57:15.837468
-   - Total markers: 2
-   - File hash: 360b8974
-   - Markers found:
-     * FUNCTIONAL: 1
-     * PRODUCTION_READY_TAG: 1
-
-### 170. FINAL_VERIFICATION.md
-   - Size: 16054 bytes
-   - Last modified: 2026-05-22T17:04:21.527503
-   - Total markers: 2
-   - File hash: 48fce174
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 171. qmoimasterresponses.txt
-   - Size: 21809 bytes
-   - Last modified: 2026-05-22T17:04:26.853503
-   - Total markers: 2
-   - File hash: caf57ce1
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 172. FINAL_DELIVERY_SUMMARY.md
-   - Size: 10589 bytes
-   - Last modified: 2026-05-22T17:04:21.524503
-   - Total markers: 2
-   - File hash: 1488ad2f
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 173. ALLSERVE.md
-   - Size: 22615 bytes
-   - Last modified: 2026-05-23T16:57:15.881468
-   - Total markers: 2
-   - File hash: 2b66d9d1
-   - Markers found:
-     * production_logging: 1
-     * api.qmoi-enhanced.com: 1
-
-### 174. API_AUTO_UPDATE_GUIDELINES.md
-   - Size: 31781 bytes
-   - Last modified: 2026-05-22T17:04:21.488503
-   - Total markers: 2
-   - File hash: 79156370
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 175. RELEASE_VERIFICATION_V1_2_3.md
-   - Size: 16654 bytes
-   - Last modified: 2026-05-22T17:04:21.643503
-   - Total markers: 2
-   - File hash: 93709344
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 176. DEPLOYMENT_SUMMARY.md
-   - Size: 14780 bytes
-   - Last modified: 2026-05-22T17:04:21.511503
-   - Total markers: 2
-   - File hash: 0adc5728
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 177. QMOI_MASTER_TESTING_SUMMARY.md
-   - Size: 22260 bytes
-   - Last modified: 2026-05-22T17:04:21.611503
-   - Total markers: 2
-   - File hash: 12469e8d
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 178. FINAL_DEPLOYMENT_EXECUTION_GUIDE.md
-   - Size: 12663 bytes
-   - Last modified: 2026-05-22T17:04:21.524503
-   - Total markers: 2
-   - File hash: 7a790d19
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 179. QMOI_PRODUCTION_DEPLOYMENT.md
-   - Size: 11771 bytes
-   - Last modified: 2026-05-22T17:04:21.612503
-   - Total markers: 2
-   - File hash: 5d36676d
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 180. UI_ENHANCEMENT_COMPREHENSIVE_PLAN.md
-   - Size: 42201 bytes
-   - Last modified: 2026-05-22T17:04:21.663503
-   - Total markers: 2
-   - File hash: 24cf6a05
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 181. PRODUCTION_STATUS_2026-05-02.md
+### 57. PRODUCTION_STATUS_2026-05-02.md
    - Size: 5979 bytes
    - Last modified: 2026-05-22T17:04:21.585503
    - Total markers: 2
@@ -1582,152 +535,15 @@
      * PRODUCTION_READY_TAG: 1
      * api.qmoi-enhanced.com: 1
 
-### 182. PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md
-   - Size: 42128 bytes
-   - Last modified: 2026-05-22T17:04:21.584503
+### 58. scripts/qmoi_self_test_runner.js
+   - Size: 18746 bytes
+   - Last modified: 2026-05-27T08:42:46.068474
    - Total markers: 2
-   - File hash: 0ee3c367
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 183. ALLLINKS.md
-   - Size: 12586 bytes
-   - Last modified: 2026-05-22T17:04:21.477503
-   - Total markers: 2
-   - File hash: ff6910b5
+   - File hash: 82c65c19
    - Markers found:
      * vercel_config: 2
 
-### 184. README_DOCUMENTATION.md
-   - Size: 13796 bytes
-   - Last modified: 2026-05-22T17:04:21.641503
-   - Total markers: 2
-   - File hash: a00042ee
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 185. QCITY-COMPLETION-SUMMARY.md
-   - Size: 26967 bytes
-   - Last modified: 2026-05-22T17:04:21.587503
-   - Total markers: 2
-   - File hash: 9ea65eaf
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 186. SESSION_COMPLETION_SUMMARY.txt
-   - Size: 14249 bytes
-   - Last modified: 2026-05-22T17:04:21.654503
-   - Total markers: 2
-   - File hash: b4782817
-   - Markers found:
-     * vercel_config: 1
-     * vercel_deploy: 1
-
-### 187. ADVANCED_PERFORMANCE_OPTIMIZATION_COMPLETION.md
-   - Size: 5855 bytes
-   - Last modified: 2026-05-22T17:04:21.473503
-   - Total markers: 2
-   - File hash: 63e62635
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 188. PRODUCTION_READINESS_FINAL.txt
-   - Size: 10382 bytes
-   - Last modified: 2026-05-22T17:04:21.583503
-   - Total markers: 2
-   - File hash: 479e85a2
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 189. FINAL_VERIFICATION_SUMMARY.md
-   - Size: 17847 bytes
-   - Last modified: 2026-05-22T17:04:21.527503
-   - Total markers: 2
-   - File hash: 8b88e28b
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 190. QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md
-   - Size: 27179 bytes
-   - Last modified: 2026-05-22T17:04:21.615503
-   - Total markers: 2
-   - File hash: 15d77d1d
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 191. docs/QMOI_LION_EVOLUTION_ENHANCEMENT_PLAN.md
-   - Size: 19260 bytes
-   - Last modified: 2026-05-22T17:04:22.264503
-   - Total markers: 2
-   - File hash: c587ab1e
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 192. docs/IMPLEMENTATION_CHECKLIST.md
-   - Size: 18018 bytes
-   - Last modified: 2026-05-22T17:04:22.260503
-   - Total markers: 2
-   - File hash: a2198dc2
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 193. docs/screens/test-page-screen.md
-   - Size: 1775 bytes
-   - Last modified: 2026-05-22T17:04:22.325503
-   - Total markers: 2
-   - File hash: c6ab81c5
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 194. docs/screens/device-management-dashboard-screen.md
-   - Size: 8157 bytes
-   - Last modified: 2026-05-22T17:04:22.324503
-   - Total markers: 2
-   - File hash: 820404a0
-   - Markers found:
-     * NOT_IMPLEMENTED: 2
-
-### 195. scripts/fast_nonprod_scanner.sh
-   - Size: 2662 bytes
-   - Last modified: 2026-05-22T17:04:27.263503
-   - Total markers: 2
-   - File hash: 43d4a63d
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 196. scripts/qmoi_self_test_runner.js
-   - Size: 19136 bytes
-   - Last modified: 2026-05-22T17:04:27.309503
-   - Total markers: 2
-   - File hash: 2541d807
-   - Markers found:
-     * vercel_config: 2
-
-### 197. src/qmoi/core/validation/validation-engine.ts
-   - Size: 36491 bytes
-   - Last modified: 2026-05-23T17:33:23.173375
-   - Total markers: 2
-   - File hash: 78d4cdcf
-   - Markers found:
-     * PRODUCTION_READY: 2
-
-### 198. src/services/lion-agent-workflows.ts
-   - Size: 97520 bytes
-   - Last modified: 2026-05-24T09:02:16.019472
-   - Total markers: 2
-   - File hash: da84ff31
-   - Markers found:
-     * FUNCTIONAL: 2
-
-### 199. PHASE_4_SESSION_COMPLETION.md
-   - Size: 21294 bytes
-   - Last modified: 2026-05-22T17:04:21.576503
-   - Total markers: 1
-   - File hash: 4853af97
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 200. production_config.json
+### 59. production_config.json
    - Size: 1631 bytes
    - Last modified: 2026-05-22T17:04:25.601503
    - Total markers: 1
@@ -1735,15 +551,7 @@
    - Markers found:
      * api.qmoi-enhanced.com: 1
 
-### 201. FINAL_CAMPAIGN_SUMMARY.txt
-   - Size: 11894 bytes
-   - Last modified: 2026-05-22T17:04:21.523503
-   - Total markers: 1
-   - File hash: 3c05f96a
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 202. COMPLETION_REPORT.md
+### 60. COMPLETION_REPORT.md
    - Size: 14348 bytes
    - Last modified: 2026-05-22T17:27:28.620489
    - Total markers: 1
@@ -1751,7 +559,7 @@
    - Markers found:
      * PRODUCTION_READY_TAG: 1
 
-### 203. comprehensive_nonprod_scanner.py
+### 61. comprehensive_nonprod_scanner.py
    - Size: 714 bytes
    - Last modified: 2026-05-22T17:04:22.179503
    - Total markers: 1
@@ -1759,95 +567,15 @@
    - Markers found:
      * production_data: 1
 
-### 204. QMOI_AUTOFIX_IMPLEMENTATION_SUMMARY.md
-   - Size: 19600 bytes
-   - Last modified: 2026-05-22T17:04:21.606503
+### 62. ENHANCEMENT_SUMMARY.md
+   - Size: 11784 bytes
+   - Last modified: 2026-05-22T17:27:28.621489
    - Total markers: 1
-   - File hash: 8299ff61
+   - File hash: af8959e8
    - Markers found:
-     * FUNCTIONAL: 1
+     * PRODUCTION_READY_TAG: 1
 
-### 205. SYSTEM_INTEGRATION_TEST_REPORT.json
-   - Size: 2481 bytes
-   - Last modified: 2026-05-22T17:04:21.657503
-   - Total markers: 1
-   - File hash: ebb657d4
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 206. HOSTLINKSDOMAINS.md
-   - Size: 18642 bytes
-   - Last modified: 2026-05-22T17:04:21.532503
-   - Total markers: 1
-   - File hash: 37e5b415
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 207. resumefromhereold.txt
-   - Size: 29543 bytes
-   - Last modified: 2026-05-22T17:04:27.071503
-   - Total markers: 1
-   - File hash: c1258782
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 208. ALLUITESTS.md
-   - Size: 51866 bytes
-   - Last modified: 2026-05-22T17:04:21.480503
-   - Total markers: 1
-   - File hash: 45ddd4e6
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 209. EXECUTION_SUMMARY.md
-   - Size: 8065 bytes
-   - Last modified: 2026-05-22T17:04:21.522503
-   - Total markers: 1
-   - File hash: a63150cc
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 210. DEPLOYMENT_COMPLETE.md
-   - Size: 11842 bytes
-   - Last modified: 2026-05-22T17:04:21.509503
-   - Total markers: 1
-   - File hash: 37015525
-   - Markers found:
-     * vercel_config: 1
-
-### 211. QMOIGITHUBDEV.md
-   - Size: 23368 bytes
-   - Last modified: 2026-05-22T17:04:21.600503
-   - Total markers: 1
-   - File hash: 0c5de81d
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 212. TODOS_COMPLETION_INDEX.md
-   - Size: 9262 bytes
-   - Last modified: 2026-05-22T17:04:21.660503
-   - Total markers: 1
-   - File hash: 89e60e22
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 213. QCITY-ENTERPRISE-COMPLETE.md
-   - Size: 30571 bytes
-   - Last modified: 2026-05-22T17:04:21.587503
-   - Total markers: 1
-   - File hash: a9cb5908
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 214. EXECUTIVE_SUMMARY.md
-   - Size: 12139 bytes
-   - Last modified: 2026-05-22T17:04:21.522503
-   - Total markers: 1
-   - File hash: 259e5de4
-   - Markers found:
-     * vercel_deploy: 1
-
-### 215. COMPLETE_PRODUCTION_DEPLOYMENT_GUIDE.md
+### 63. COMPLETE_PRODUCTION_DEPLOYMENT_GUIDE.md
    - Size: 12659 bytes
    - Last modified: 2026-05-22T17:04:21.500503
    - Total markers: 1
@@ -1855,23 +583,7 @@
    - Markers found:
      * PRODUCTION_READY_TAG: 1
 
-### 216. PRODUCTION_CHANGES.md
-   - Size: 7833 bytes
-   - Last modified: 2026-05-22T17:04:21.578503
-   - Total markers: 1
-   - File hash: a21910b5
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 217. DEPLOYMENT_READY.txt
-   - Size: 6637 bytes
-   - Last modified: 2026-05-22T17:04:21.511503
-   - Total markers: 1
-   - File hash: 164e9f42
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 218. production_deployment_validator.py
+### 64. production_deployment_validator.py
    - Size: 19913 bytes
    - Last modified: 2026-05-22T17:04:25.602503
    - Total markers: 1
@@ -1879,7 +591,7 @@
    - Markers found:
      * vercel_config: 1
 
-### 219. QCITYUI.md
+### 65. QCITYUI.md
    - Size: 40253 bytes
    - Last modified: 2026-05-23T16:57:15.860468
    - Total markers: 1
@@ -1887,63 +599,7 @@
    - Markers found:
      * PRODUCTION_READY_TAG: 1
 
-### 220. CASHON.md
-   - Size: 19282 bytes
-   - Last modified: 2026-05-22T17:04:21.498503
-   - Total markers: 1
-   - File hash: b4ffa97d
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 221. MASTER_COMPLETION_FINAL.md
-   - Size: 18828 bytes
-   - Last modified: 2026-05-22T17:04:21.539503
-   - Total markers: 1
-   - File hash: caed4bab
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 222. REVENUE_VALIDATOR_COMPLETION_REPORT.md
-   - Size: 7142 bytes
-   - Last modified: 2026-05-22T17:04:21.644503
-   - Total markers: 1
-   - File hash: 6f327046
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 223. USER_RESPONSE_TESTS_MASTER.txt
-   - Size: 31627 bytes
-   - Last modified: 2026-05-22T17:04:21.665503
-   - Total markers: 1
-   - File hash: cb8ae30d
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 224. PRODUCTION_SETUP_COMPLETE.md
-   - Size: 16131 bytes
-   - Last modified: 2026-05-22T17:04:21.585503
-   - Total markers: 1
-   - File hash: 91305ea9
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 225. QI_ENHANCEMENT_PLAN.md
-   - Size: 26599 bytes
-   - Last modified: 2026-05-22T17:04:21.589503
-   - Total markers: 1
-   - File hash: faa62c11
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 226. COMPONENTS.md
-   - Size: 23868 bytes
-   - Last modified: 2026-05-23T16:57:17.253468
-   - Total markers: 1
-   - File hash: c3cf1f7f
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 227. push_all_chunks.ps1
+### 66. push_all_chunks.ps1
    - Size: 9194 bytes
    - Last modified: 2026-05-22T17:04:25.650503
    - Total markers: 1
@@ -1951,23 +607,7 @@
    - Markers found:
      * NOT_IMPLEMENTED: 1
 
-### 228. QUICK_START_TESTING.md
-   - Size: 20585 bytes
-   - Last modified: 2026-05-22T17:04:21.618503
-   - Total markers: 1
-   - File hash: 337899b3
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 229. QMOI_COMPLETE_INTEGRATION_MASTER.md
-   - Size: 36131 bytes
-   - Last modified: 2026-05-22T17:04:21.608503
-   - Total markers: 1
-   - File hash: 87774590
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 230. PRODUCTION_STATUS_SUMMARY.sh
+### 67. PRODUCTION_STATUS_SUMMARY.sh
    - Size: 13009 bytes
    - Last modified: 2026-05-22T17:04:21.585503
    - Total markers: 1
@@ -1975,191 +615,31 @@
    - Markers found:
      * PRODUCTION_READY_TAG: 1
 
-### 231. BIOMETRIC_LOGIN_TEST_RESULTS.md
-   - Size: 24135 bytes
-   - Last modified: 2026-05-22T17:04:21.496503
+### 68. ALLMDFILESREFS.md
+   - Size: 32484 bytes
+   - Last modified: 2026-05-23T17:20:15.461409
    - Total markers: 1
-   - File hash: 94ebbec3
+   - File hash: a927effb
    - Markers found:
-     * FUNCTIONAL: 1
+     * vercel_error_list: 1
 
-### 232. LINKSTRACKS.md
-   - Size: 7957 bytes
-   - Last modified: 2026-05-22T17:04:21.536503
+### 69. PRODUCTION_READINESS_REPORT.md
+   - Size: 10396 bytes
+   - Last modified: 2026-05-22T17:27:28.621489
    - Total markers: 1
-   - File hash: 79cf05aa
+   - File hash: 352380ed
    - Markers found:
-     * FUNCTIONAL: 1
+     * PRODUCTION_READY_TAG: 1
 
-### 233. QMOISPACEDEV.md
-   - Size: 20630 bytes
-   - Last modified: 2026-05-22T17:04:21.603503
+### 70. allmdrefs_sorted.txt
+   - Size: 475151 bytes
+   - Last modified: 2026-05-22T17:04:21.766503
    - Total markers: 1
-   - File hash: ef9c6e24
+   - File hash: 8fdacd4a
    - Markers found:
-     * FUNCTIONAL: 1
+     * vercel_error_list: 1
 
-### 234. QVILLAGE_SYSTEM_STATUS_REPORT.json
-   - Size: 2778 bytes
-   - Last modified: 2026-05-22T17:04:21.620503
-   - Total markers: 1
-   - File hash: 73bc4c6f
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 235. QMOIBROWSER.md
-   - Size: 10410 bytes
-   - Last modified: 2026-05-22T17:04:21.596503
-   - Total markers: 1
-   - File hash: 4743ec0d
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 236. MONITORING_IMPLEMENTATION_GUIDE.md
-   - Size: 18679 bytes
-   - Last modified: 2026-05-22T17:04:21.543503
-   - Total markers: 1
-   - File hash: af98d52c
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 237. UI_FEATURES_VALIDATION_COMPLETE.md
-   - Size: 8306 bytes
-   - Last modified: 2026-05-22T17:04:21.663503
-   - Total markers: 1
-   - File hash: 75aa85fd
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 238. QMOI_TESTING_INDEX.md
-   - Size: 19392 bytes
-   - Last modified: 2026-05-22T17:04:21.614503
-   - Total markers: 1
-   - File hash: ab11957f
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 239. INCIDENT_RESPONSE_GUIDE.md
-   - Size: 20825 bytes
-   - Last modified: 2026-05-22T17:04:21.533503
-   - Total markers: 1
-   - File hash: 6c9eedc9
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 240. PHASE_1_COMPLETION_REPORT.md
-   - Size: 11048 bytes
-   - Last modified: 2026-05-22T17:04:21.575503
-   - Total markers: 1
-   - File hash: 746a4b60
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 241. PRODUCTION_READINESS_FINAL_COMPREHENSIVE.md
-   - Size: 8262 bytes
-   - Last modified: 2026-05-22T17:04:21.583503
-   - Total markers: 1
-   - File hash: a6a51735
-   - Markers found:
-     * vercel_deploy: 1
-
-### 242. RELEASE_NOTES_v1.2.4.md
-   - Size: 6251 bytes
-   - Last modified: 2026-05-22T17:04:21.642503
-   - Total markers: 1
-   - File hash: aac9f7a0
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 243. VERCELLINKS.md
-   - Size: 19468 bytes
-   - Last modified: 2026-05-22T17:04:21.666503
-   - Total markers: 1
-   - File hash: e41cfcbd
-   - Markers found:
-     * vercel_config: 1
-
-### 244. QMOIAUTOFIXREADME.md
-   - Size: 17027 bytes
-   - Last modified: 2026-05-22T17:04:21.595503
-   - Total markers: 1
-   - File hash: 02a00fbd
-   - Markers found:
-     * vercel_deploy: 1
-
-### 245. QVILLAGE.md
-   - Size: 62640 bytes
-   - Last modified: 2026-05-22T17:04:21.618503
-   - Total markers: 1
-   - File hash: fbc4647b
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 246. ALLQMOIAIAPPSREALEASESVERSIONS.md
-   - Size: 14585 bytes
-   - Last modified: 2026-05-22T17:04:21.479503
-   - Total markers: 1
-   - File hash: ea46fd65
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 247. QMOIDATASETS.md
-   - Size: 82963 bytes
-   - Last modified: 2026-05-22T17:04:21.598503
-   - Total markers: 1
-   - File hash: dd535db3
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 248. QTOOLS.md
-   - Size: 23995 bytes
-   - Last modified: 2026-05-22T17:04:21.616503
-   - Total markers: 1
-   - File hash: e379a408
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 249. QCITYRUNNERSENGINE.md
-   - Size: 16611 bytes
-   - Last modified: 2026-05-22T17:04:21.588503
-   - Total markers: 1
-   - File hash: b2039713
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 250. QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md
-   - Size: 44072 bytes
-   - Last modified: 2026-05-22T17:04:21.605503
-   - Total markers: 1
-   - File hash: 623180d4
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 251. DOCUMENTATION_COMPLETION_REPORT.md
-   - Size: 16896 bytes
-   - Last modified: 2026-05-22T17:04:21.514503
-   - Total markers: 1
-   - File hash: fbe2d456
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 252. SESSION_4_COMPLETION_SUMMARY.md
-   - Size: 16171 bytes
-   - Last modified: 2026-05-22T17:04:21.654503
-   - Total markers: 1
-   - File hash: df722530
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 253. ENHANCEMENT_COMPLETE_SUMMARY.md
-   - Size: 19280 bytes
-   - Last modified: 2026-05-22T17:04:21.519503
-   - Total markers: 1
-   - File hash: 09eb81c3
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 254. QMOI_PERMANENT_RETENTION_ENHANCEMENT_PLAN.md
+### 71. QMOI_PERMANENT_RETENTION_ENHANCEMENT_PLAN.md
    - Size: 10722 bytes
    - Last modified: 2026-05-22T17:04:21.612503
    - Total markers: 1
@@ -2167,95 +647,15 @@
    - Markers found:
      * PRODUCTION_READY_TAG: 1
 
-### 255. UI_COMPONENTS.md
-   - Size: 4502 bytes
-   - Last modified: 2026-05-22T17:04:21.662503
+### 72. ALLUI.md
+   - Size: 40380 bytes
+   - Last modified: 2026-05-22T17:04:21.480503
    - Total markers: 1
-   - File hash: c52654b2
+   - File hash: ad6b69c2
    - Markers found:
-     * FUNCTIONAL: 1
+     * PRODUCTION_READY_TAG: 1
 
-### 256. DEPLOYMENT_FIX_QUICK_START.md
-   - Size: 9850 bytes
-   - Last modified: 2026-05-22T17:04:21.510503
-   - Total markers: 1
-   - File hash: 3b14c22d
-   - Markers found:
-     * vercel_config: 1
-
-### 257. PRODUCTION_READINESS_AUDIT.md
-   - Size: 10057 bytes
-   - Last modified: 2026-05-22T17:04:21.582503
-   - Total markers: 1
-   - File hash: 60ca3e7c
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 258. QCITY-README.md
-   - Size: 13811 bytes
-   - Last modified: 2026-05-22T17:04:21.587503
-   - Total markers: 1
-   - File hash: fbe3eddf
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 259. compulsories.md
-   - Size: 14706 bytes
-   - Last modified: 2026-05-22T17:04:22.180503
-   - Total markers: 1
-   - File hash: 195f9eab
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 260. SCRIPTS.md
-   - Size: 12017 bytes
-   - Last modified: 2026-05-22T17:04:21.651503
-   - Total markers: 1
-   - File hash: e65aebdd
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 261. QUICK_ACTION_CHECKLIST.md
-   - Size: 11448 bytes
-   - Last modified: 2026-05-22T17:04:21.617503
-   - Total markers: 1
-   - File hash: ca304523
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 262. QMOI.md
-   - Size: 14811 bytes
-   - Last modified: 2026-05-22T17:04:21.593503
-   - Total markers: 1
-   - File hash: 55fb3caa
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 263. DEPLOYMENT_IN_PROGRESS.md
-   - Size: 9788 bytes
-   - Last modified: 2026-05-22T17:04:21.510503
-   - Total markers: 1
-   - File hash: dfc33262
-   - Markers found:
-     * vercel_config: 1
-
-### 264. VERCEL_DEPLOYMENT_GUIDE.md
-   - Size: 8425 bytes
-   - Last modified: 2026-05-22T17:04:21.667503
-   - Total markers: 1
-   - File hash: b37a8833
-   - Markers found:
-     * vercel_config: 1
-
-### 265. PHASE_4_7_CONTINUATION_MASTER.md
-   - Size: 14604 bytes
-   - Last modified: 2026-05-22T17:04:21.576503
-   - Total markers: 1
-   - File hash: 9b6fff5d
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 266. revenue_validator_config.yaml
+### 73. revenue_validator_config.yaml
    - Size: 828 bytes
    - Last modified: 2026-05-22T17:04:27.072503
    - Total markers: 1
@@ -2263,63 +663,23 @@
    - Markers found:
      * api.qmoi-enhanced.com: 1
 
-### 267. QVERCELAGENT.md
-   - Size: 9172 bytes
-   - Last modified: 2026-05-22T17:04:21.618503
+### 74. missing_md_refs.txt
+   - Size: 492147 bytes
+   - Last modified: 2026-05-22T17:04:23.443503
    - Total markers: 1
-   - File hash: b22e2046
+   - File hash: 6ed8d80d
    - Markers found:
-     * vercel_deploy: 1
+     * vercel_error_list: 1
 
-### 268. QMOITESTENVIRONMENT.md
-   - Size: 26055 bytes
-   - Last modified: 2026-05-22T17:04:21.604503
+### 75. README.md
+   - Size: 24766 bytes
+   - Last modified: 2026-05-22T17:27:28.620489
    - Total markers: 1
-   - File hash: fe294f76
+   - File hash: f0672c88
    - Markers found:
-     * FUNCTIONAL: 1
+     * PRODUCTION_READY_TAG: 1
 
-### 269. PR_FIX_SUMMARY.md
-   - Size: 9112 bytes
-   - Last modified: 2026-05-22T17:04:21.586503
-   - Total markers: 1
-   - File hash: 2f34bbc5
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 270. QUICK_START_SESSION_4.md
-   - Size: 11806 bytes
-   - Last modified: 2026-05-22T17:04:21.617503
-   - Total markers: 1
-   - File hash: a32ecad1
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 271. DOCUMENTATION_MASTER_INDEX.md
-   - Size: 19344 bytes
-   - Last modified: 2026-05-22T17:04:21.515503
-   - Total markers: 1
-   - File hash: 1d12bda1
-   - Markers found:
-     * vercel_config: 1
-
-### 272. VERIFICATION_COMPLETE_2026-01-15.md
-   - Size: 11247 bytes
-   - Last modified: 2026-05-22T17:04:21.667503
-   - Total markers: 1
-   - File hash: 71ae1aa3
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 273. QMOI_AUTOMATED_DEPLOYMENT_GUIDE.md
-   - Size: 21705 bytes
-   - Last modified: 2026-05-22T17:04:21.607503
-   - Total markers: 1
-   - File hash: e24c9142
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 274. PRODUCTION_DEPLOYMENT_CHECKLIST.md
+### 76. PRODUCTION_DEPLOYMENT_CHECKLIST.md
    - Size: 1904 bytes
    - Last modified: 2026-05-22T17:04:21.579503
    - Total markers: 1
@@ -2327,31 +687,7 @@
    - Markers found:
      * PRODUCTION_READY_TAG: 1
 
-### 275. responsesh.txt
-   - Size: 15776 bytes
-   - Last modified: 2026-05-22T17:04:26.978503
-   - Total markers: 1
-   - File hash: 38da5c53
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 276. LION_QMOI_MASTER_ENHANCEMENTS.md
-   - Size: 44157 bytes
-   - Last modified: 2026-05-22T17:04:21.537503
-   - Total markers: 1
-   - File hash: 0d4c850c
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 277. ALLERRORS.md
-   - Size: 80123 bytes
-   - Last modified: 2026-05-22T17:04:21.475503
-   - Total markers: 1
-   - File hash: c18deb64
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 278. MASTER_INTEGRATION_GUIDE.md
+### 77. MASTER_INTEGRATION_GUIDE.md
    - Size: 422 bytes
    - Last modified: 2026-05-22T17:04:21.540503
    - Total markers: 1
@@ -2359,15 +695,7 @@
    - Markers found:
      * PRODUCTION_READY_TAG: 1
 
-### 279. COMPREHENSIVE_TESTING_QA_STRATEGY.md
-   - Size: 7634 bytes
-   - Last modified: 2026-05-22T17:04:21.504503
-   - Total markers: 1
-   - File hash: e4c4e9aa
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 280. docker-compose.production.yml
+### 78. docker-compose.production.yml
    - Size: 3848 bytes
    - Last modified: 2026-05-22T17:04:22.256503
    - Total markers: 1
@@ -2375,55 +703,15 @@
    - Markers found:
      * api.qmoi-enhanced.com: 1
 
-### 281. INVENTIONS.md
-   - Size: 5936 bytes
-   - Last modified: 2026-05-22T17:04:21.534503
+### 79. QMOISPACEUI.md
+   - Size: 67405 bytes
+   - Last modified: 2026-05-23T16:57:15.837468
    - Total markers: 1
-   - File hash: c7885ad1
+   - File hash: 360b8974
    - Markers found:
-     * FUNCTIONAL: 1
+     * PRODUCTION_READY_TAG: 1
 
-### 282. VERCEL_DEPLOYMENT_SETUP_CHECKLIST.md
-   - Size: 12641 bytes
-   - Last modified: 2026-05-22T17:04:21.667503
-   - Total markers: 1
-   - File hash: ee123e22
-   - Markers found:
-     * vercel_deploy: 1
-
-### 283. MASTER_VERIFICATION_COMPLETE.md
-   - Size: 18761 bytes
-   - Last modified: 2026-05-22T17:04:21.541503
-   - Total markers: 1
-   - File hash: dfc4c29c
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 284. CAMPAIGN_COMPLETION_SUMMARY.md
-   - Size: 8976 bytes
-   - Last modified: 2026-05-22T17:04:21.498503
-   - Total markers: 1
-   - File hash: 35277d21
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 285. run-qmoi-tests.ts
-   - Size: 2758 bytes
-   - Last modified: 2026-05-22T17:04:27.074503
-   - Total markers: 1
-   - File hash: 35c16527
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 286. API_ENDPOINTS_REFERENCE.md
-   - Size: 36179 bytes
-   - Last modified: 2026-05-22T17:04:21.489503
-   - Total markers: 1
-   - File hash: e9b494b0
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 287. ALLREGISTRIES.md
+### 80. ALLREGISTRIES.md
    - Size: 3272 bytes
    - Last modified: 2026-05-22T17:04:21.479503
    - Total markers: 1
@@ -2431,71 +719,15 @@
    - Markers found:
      * PRODUCTION_READY_TAG: 1
 
-### 288. QMOIALLPLATFORMS.md
-   - Size: 28929 bytes
-   - Last modified: 2026-05-22T17:04:21.594503
+### 81. ALLSERVE.md
+   - Size: 22615 bytes
+   - Last modified: 2026-05-23T16:57:15.881468
    - Total markers: 1
-   - File hash: 903f06d3
+   - File hash: 2b66d9d1
    - Markers found:
-     * vercel_deploy: 1
+     * api.qmoi-enhanced.com: 1
 
-### 289. 1.md
-   - Size: 11006 bytes
-   - Last modified: 2026-05-22T17:04:21.471503
-   - Total markers: 1
-   - File hash: 86d22221
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 290. MASTER_READINESS_INDEX.md
-   - Size: 9615 bytes
-   - Last modified: 2026-05-22T17:04:21.540503
-   - Total markers: 1
-   - File hash: 186cbc94
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 291. QMOI_AUTOFIX_VISUAL_SUMMARY.txt
-   - Size: 15544 bytes
-   - Last modified: 2026-05-22T17:04:21.607503
-   - Total markers: 1
-   - File hash: 3560a511
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 292. QMOI_MASTER_TESTING_GUIDE.md
-   - Size: 8084 bytes
-   - Last modified: 2026-05-22T17:04:21.611503
-   - Total markers: 1
-   - File hash: cc588748
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 293. SESSION_SUMMARY.txt
-   - Size: 9685 bytes
-   - Last modified: 2026-05-22T17:04:21.655503
-   - Total markers: 1
-   - File hash: 5a5e4f87
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 294. EXTENDED_UI_COMPONENTS_INVENTORY.md
-   - Size: 7465 bytes
-   - Last modified: 2026-05-22T17:04:21.522503
-   - Total markers: 1
-   - File hash: 6e2ac35e
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 295. CREDENTIAL_ROTATION_PLAYBOOK.md
-   - Size: 27628 bytes
-   - Last modified: 2026-05-22T17:04:21.506503
-   - Total markers: 1
-   - File hash: c288dcc4
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 296. eslint_app_api.json
+### 82. eslint_app_api.json
    - Size: 580248 bytes
    - Last modified: 2026-05-22T17:04:22.396503
    - Total markers: 1
@@ -2503,31 +735,15 @@
    - Markers found:
      * vercel_config: 1
 
-### 297. TEST_COVERAGE_REPORT.md
-   - Size: 16540 bytes
-   - Last modified: 2026-05-22T17:04:21.660503
+### 83. COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md
+   - Size: 8972 bytes
+   - Last modified: 2026-05-22T17:04:21.503503
    - Total markers: 1
-   - File hash: 6b080d61
+   - File hash: d03d51f2
    - Markers found:
-     * FUNCTIONAL: 1
+     * PRODUCTION_READY_TAG: 1
 
-### 298. QMOI_MEMORY_AWARENESS_SYSTEM.md
-   - Size: 29346 bytes
-   - Last modified: 2026-05-22T17:04:21.611503
-   - Total markers: 1
-   - File hash: 4891c12f
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 299. QMOI_AUTOFIX_MASTER_GUIDE.md
-   - Size: 18778 bytes
-   - Last modified: 2026-05-22T17:04:21.606503
-   - Total markers: 1
-   - File hash: 53228944
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 300. FINAL_PRODUCTION_STATUS_2026-04-23.json
+### 84. FINAL_PRODUCTION_STATUS_2026-04-23.json
    - Size: 2119 bytes
    - Last modified: 2026-05-22T17:04:21.526503
    - Total markers: 1
@@ -2535,71 +751,7 @@
    - Markers found:
      * PRODUCTION_READY_TAG: 1
 
-### 301. PRODUCTION_DEPLOYMENT_COMPLETE.txt
-   - Size: 12675 bytes
-   - Last modified: 2026-05-22T17:04:21.579503
-   - Total markers: 1
-   - File hash: aa91e924
-   - Markers found:
-     * vercel_config: 1
-
-### 302. COMPLETION_INDEX.md
-   - Size: 14931 bytes
-   - Last modified: 2026-05-22T17:04:21.500503
-   - Total markers: 1
-   - File hash: 6a63abbd
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 303. PRODUCTION_ENHANCEMENT_SUMMARY.md
-   - Size: 13048 bytes
-   - Last modified: 2026-05-22T17:04:21.581503
-   - Total markers: 1
-   - File hash: fe7a4bde
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 304. QUICK_START.md
-   - Size: 9596 bytes
-   - Last modified: 2026-05-22T17:04:21.617503
-   - Total markers: 1
-   - File hash: 5c583021
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 305. QMOI_COMPLETE_STATUS.md
-   - Size: 19348 bytes
-   - Last modified: 2026-05-22T17:04:21.608503
-   - Total markers: 1
-   - File hash: c1125f42
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 306. DEPLOYMENT_READINESS_FINAL.md
-   - Size: 10625 bytes
-   - Last modified: 2026-05-22T17:04:21.511503
-   - Total markers: 1
-   - File hash: cb23a62f
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 307. QMOI_TRACKS_SYSTEM.md
-   - Size: 13745 bytes
-   - Last modified: 2026-05-22T17:04:21.614503
-   - Total markers: 1
-   - File hash: 6685e834
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 308. problemsanderrors.txt
-   - Size: 2096626 bytes
-   - Last modified: 2026-05-22T17:04:25.601503
-   - Total markers: 1
-   - File hash: 0d053940
-   - Markers found:
-     * production_logging: 1
-
-### 309. PRODUCTION_QUICK_REFERENCE.md
+### 85. PRODUCTION_QUICK_REFERENCE.md
    - Size: 6463 bytes
    - Last modified: 2026-05-22T17:04:21.582503
    - Total markers: 1
@@ -2607,15 +759,7 @@
    - Markers found:
      * api.qmoi-enhanced.com: 1
 
-### 310. THOROUGH_VERIFICATION_SUMMARY.txt
-   - Size: 12852 bytes
-   - Last modified: 2026-05-22T17:04:21.660503
-   - Total markers: 1
-   - File hash: ae5cf321
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 311. Dockerfile
+### 86. Dockerfile
    - Size: 3977 bytes
    - Last modified: 2026-05-22T17:04:21.516503
    - Total markers: 1
@@ -2623,39 +767,15 @@
    - Markers found:
      * PRODUCTION_READY_TAG: 1
 
-### 312. PRODUCTION_ENHANCEMENT_SUMMARY.sh
-   - Size: 16347 bytes
-   - Last modified: 2026-05-22T17:04:21.581503
+### 87. all_md_files_list.txt
+   - Size: 492147 bytes
+   - Last modified: 2026-05-22T17:04:21.765503
    - Total markers: 1
-   - File hash: cbdd33ae
+   - File hash: 6ed8d80d
    - Markers found:
-     * FUNCTIONAL: 1
+     * vercel_error_list: 1
 
-### 313. COMPREHENSIVE_QMOI_RESPONSE_TESTING_SUMMARY.txt
-   - Size: 17771 bytes
-   - Last modified: 2026-05-22T17:04:21.504503
-   - Total markers: 1
-   - File hash: 1d4f15ca
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 314. PRODUCTION_DEPLOYMENT_FINAL_REPORT.md
-   - Size: 1842 bytes
-   - Last modified: 2026-05-22T17:04:21.579503
-   - Total markers: 1
-   - File hash: 4b7d90e6
-   - Markers found:
-     * vercel_config: 1
-
-### 315. PHASE_6_EXTENDED_SUMMARY.md
-   - Size: 16168 bytes
-   - Last modified: 2026-05-22T17:04:21.576503
-   - Total markers: 1
-   - File hash: b1ec6fa8
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 316. AUTODEV.md
+### 88. AUTODEV.md
    - Size: 27949 bytes
    - Last modified: 2026-05-22T17:04:21.492503
    - Total markers: 1
@@ -2663,31 +783,7 @@
    - Markers found:
      * PRODUCTION_READY_TAG: 1
 
-### 317. mobile/android/gradlew.bat
-   - Size: 3197 bytes
-   - Last modified: 2026-05-22T17:04:23.451503
-   - Total markers: 1
-   - File hash: 08a73401
-   - Markers found:
-     * production_logging: 1
-
-### 318. mobile/android/app/src/main/java/com/qmoi/app/MainApplication.kt
-   - Size: 1543 bytes
-   - Last modified: 2026-05-22T17:04:23.449503
-   - Total markers: 1
-   - File hash: e062f392
-   - Markers found:
-     * production_logging: 1
-
-### 319. mobile/android/app/src/main/java/com/tempinit/MainApplication.kt
-   - Size: 1543 bytes
-   - Last modified: 2026-05-22T17:04:23.449503
-   - Total markers: 1
-   - File hash: fdabcaf5
-   - Markers found:
-     * production_logging: 1
-
-### 320. _app_archived/api/qmoi/auto-fix/status/route.ts
+### 89. _app_archived/api/qmoi/auto-fix/status/route.ts
    - Size: 3335 bytes
    - Last modified: 2026-05-22T17:04:21.752503
    - Total markers: 1
@@ -2695,159 +791,15 @@
    - Markers found:
      * vercel_config: 1
 
-### 321. docs/VALIDATION_TOOLS.md
-   - Size: 11900 bytes
-   - Last modified: 2026-05-22T17:04:22.267503
-   - Total markers: 1
-   - File hash: 755a1f51
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 322. docs/REVENUE_SPEC.md.generated.md
-   - Size: 66480 bytes
-   - Last modified: 2026-05-22T17:04:22.267503
-   - Total markers: 1
-   - File hash: e49a8821
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 323. docs/TROUBLESHOOTING_FAQ.md
-   - Size: 22020 bytes
-   - Last modified: 2026-05-22T17:04:22.267503
-   - Total markers: 1
-   - File hash: 036f84db
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 324. docs/INDEX.md
-   - Size: 17126 bytes
-   - Last modified: 2026-05-22T17:04:22.260503
-   - Total markers: 1
-   - File hash: a600cf8d
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 325. docs/LION-ENHANCEMENTS-PLAN.md
-   - Size: 12651 bytes
-   - Last modified: 2026-05-22T17:04:22.260503
-   - Total markers: 1
-   - File hash: b8a8e602
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 326. docs/QMOI_BACKGROUND_AUTOMATION_README.md
-   - Size: 22429 bytes
-   - Last modified: 2026-05-22T17:04:22.264503
-   - Total markers: 1
-   - File hash: ac7b4476
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 327. docs/features/features_guide.md
-   - Size: 16454 bytes
-   - Last modified: 2026-05-22T17:04:22.271503
-   - Total markers: 1
-   - File hash: 2a5196c8
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 328. docs/screens/master-links-management-screen.md
-   - Size: 3179 bytes
-   - Last modified: 2026-05-22T17:04:22.324503
-   - Total markers: 1
-   - File hash: f0cea2be
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 329. docs/screens/developer-utilities-screen.md
-   - Size: 4004 bytes
-   - Last modified: 2026-05-22T17:04:22.324503
-   - Total markers: 1
-   - File hash: 0222752b
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 330. docs/screens/qmoi-space-spatial-collaboration-hub-screen.md
-   - Size: 7404 bytes
-   - Last modified: 2026-05-22T17:04:22.325503
-   - Total markers: 1
-   - File hash: b1072564
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 331. docs/screens/master-tracks-management-screen.md
-   - Size: 3251 bytes
-   - Last modified: 2026-05-22T17:04:22.324503
-   - Total markers: 1
-   - File hash: f5812009
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 332. docs/screens/admin-dashboard-screen.md
-   - Size: 5710 bytes
-   - Last modified: 2026-05-22T17:04:22.324503
-   - Total markers: 1
-   - File hash: 4d087983
-   - Markers found:
-     * NOT_IMPLEMENTED: 1
-
-### 333. docs/components/COMPONENTS_INDEX.md
-   - Size: 12263 bytes
-   - Last modified: 2026-05-22T17:04:22.269503
-   - Total markers: 1
-   - File hash: f69546a2
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 334. docs_site/PRODUCTION_LINK_AUDIT.json
-   - Size: 14932 bytes
-   - Last modified: 2026-05-22T17:04:22.331503
-   - Total markers: 1
-   - File hash: c6f6cb46
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 335. tools/releases_audit.md
-   - Size: 9025 bytes
-   - Last modified: 2026-05-22T17:04:27.507503
-   - Total markers: 1
-   - File hash: 549a75e9
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 336. tools/releases_audit.json
-   - Size: 3883 bytes
-   - Last modified: 2026-05-22T17:04:27.507503
-   - Total markers: 1
-   - File hash: f2e4c892
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 337. tools/dns_links_report.md
-   - Size: 50717 bytes
+### 90. tools/dns_links_report.json
+   - Size: 572732 bytes
    - Last modified: 2026-05-22T17:04:27.481503
    - Total markers: 1
-   - File hash: 17b32256
+   - File hash: bb46ab47
    - Markers found:
-     * FUNCTIONAL: 1
+     * PRODUCTION_FIXED: 1
 
-### 338. tools/releases_api.json
-   - Size: 92904 bytes
-   - Last modified: 2026-05-22T17:04:27.507503
-   - Total markers: 1
-   - File hash: ab87c7e5
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 339. scripts/run_bulk_workflow.sh
-   - Size: 5575 bytes
-   - Last modified: 2026-05-22T17:04:27.313503
-   - Total markers: 1
-   - File hash: 5a630578
-   - Markers found:
-     * production_logging: 1
-
-### 340. scripts/vercel-autoclone-autodev.js
+### 91. scripts/vercel-autoclone-autodev.js
    - Size: 10883 bytes
    - Last modified: 2026-05-22T17:04:27.333503
    - Total markers: 1
@@ -2855,31 +807,7 @@
    - Markers found:
      * vercel_deploy: 1
 
-### 341. scripts/qmoi-enhanced-auto-fix.js
-   - Size: 16254 bytes
-   - Last modified: 2026-05-22T17:04:27.291503
-   - Total markers: 1
-   - File hash: e8f04ca7
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 342. scripts/test_qmoi_ai.js
-   - Size: 1818 bytes
-   - Last modified: 2026-05-22T17:04:27.323503
-   - Total markers: 1
-   - File hash: 6ad8b004
-   - Markers found:
-     * production_logging: 1
-
-### 343. scripts/production_readiness_check.sh
-   - Size: 1265 bytes
-   - Last modified: 2026-05-22T17:04:27.285503
-   - Total markers: 1
-   - File hash: e8abf5ab
-   - Markers found:
-     * production_logging: 1
-
-### 344. scripts/vercel_monitor_and_fix.sh
+### 92. scripts/vercel_monitor_and_fix.sh
    - Size: 2406 bytes
    - Last modified: 2026-05-22T17:04:27.334503
    - Total markers: 1
@@ -2887,79 +815,39 @@
    - Markers found:
      * vercel_deploy: 1
 
-### 345. scripts/services/qmoi_autodev_daemon.ts
-   - Size: 17440 bytes
-   - Last modified: 2026-05-22T17:04:27.318503
+### 93. scripts/services/qmoi_autodev_daemon.ts
+   - Size: 17344 bytes
+   - Last modified: 2026-05-26T06:02:17.186332
    - Total markers: 1
-   - File hash: bbb9c367
+   - File hash: e7c3bb91
    - Markers found:
      * vercel_deploy: 1
 
-### 346. src/components/q-city/AutoHealingPlatform.tsx
-   - Size: 5885 bytes
-   - Last modified: 2026-05-22T17:04:27.380503
+### 94. src/services/lion-agent-workflows.ts
+   - Size: 97520 bytes
+   - Last modified: 2026-05-24T09:02:16.019472
    - Total markers: 1
-   - File hash: 6a6f4a90
+   - File hash: da84ff31
    - Markers found:
      * FUNCTIONAL: 1
 
-### 347. src/components/q-city/QMOIAutoFixDashboard.tsx
-   - Size: 10567 bytes
-   - Last modified: 2026-05-23T17:37:58.504364
+### 95. src/lib/enhanced-link-domain-service.ts
+   - Size: 2055 bytes
+   - Last modified: 2026-05-22T17:04:27.422503
    - Total markers: 1
-   - File hash: cba34b27
+   - File hash: bbad3da5
+   - Markers found:
+     * FUNCTIONAL: 1
+
+### 96. src/components/q-city/QMOIAutoFixDashboard.tsx
+   - Size: 10541 bytes
+   - Last modified: 2026-05-25T07:06:48.698813
+   - Total markers: 1
+   - File hash: 639fc264
    - Markers found:
      * vercel_deploy: 1
 
-### 348. src/components/master/DomainHealthTable.tsx
-   - Size: 29529 bytes
-   - Last modified: 2026-05-22T17:04:27.380503
-   - Total markers: 1
-   - File hash: e4d8ce90
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 349. git-lfs-3.5.1/man/html/git-lfs-locks.1.html
-   - Size: 32875 bytes
-   - Last modified: 2026-05-22T17:04:23.142503
-   - Total markers: 1
-   - File hash: dc3a69e1
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 350. git-lfs-3.5.1/man/html/git-lfs-faq.7.html
-   - Size: 46972 bytes
-   - Last modified: 2026-05-22T17:04:23.141503
-   - Total markers: 1
-   - File hash: 1005796a
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 351. git-lfs-3.5.1/git-lfs-3.5.1/man/html/git-lfs-locks.1.html
-   - Size: 32875 bytes
-   - Last modified: 2026-05-22T17:04:23.134503
-   - Total markers: 1
-   - File hash: 73059ab4
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 352. git-lfs-3.5.1/git-lfs-3.5.1/man/html/git-lfs-faq.7.html
-   - Size: 46972 bytes
-   - Last modified: 2026-05-22T17:04:23.133503
-   - Total markers: 1
-   - File hash: e01d08a8
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 353. results/link_validation_report.json
-   - Size: 638730 bytes
-   - Last modified: 2026-05-22T17:04:27.071503
-   - Total markers: 1
-   - File hash: ad29366b
-   - Markers found:
-     * FUNCTIONAL: 1
-
-### 354. app/api/enhanced-link-domain/route.ts
+### 97. app/api/enhanced-link-domain/route.ts
    - Size: 5653 bytes
    - Last modified: 2026-05-22T17:04:21.778503
    - Total markers: 1
@@ -2967,29 +855,29 @@
    - Markers found:
      * FUNCTIONAL: 1
 
-### 355. app/components/InnovationLab.tsx
-   - Size: 4693 bytes
-   - Last modified: 2026-05-22T17:04:21.801503
+### 98. app/components/InnovationLab.tsx
+   - Size: 4692 bytes
+   - Last modified: 2026-05-25T07:06:49.016813
    - Total markers: 1
-   - File hash: 4306610c
+   - File hash: 2a183ca1
    - Markers found:
-     * COMPLETED: 1
+     * IN_PROGRESS: 1
 
-### 356. components/EnhancedLinkDomainManager.tsx
-   - Size: 22896 bytes
-   - Last modified: 2026-05-22T17:04:22.068503
+### 99. components/EnhancedLinkDomainManager.tsx
+   - Size: 22990 bytes
+   - Last modified: 2026-05-25T07:06:44.770813
    - Total markers: 1
-   - File hash: c50d5c78
+   - File hash: 0551784e
    - Markers found:
      * FUNCTIONAL: 1
 
-### 357. q/AI_ENHANCED_INTELLIGENT_VALIDATION_ARCHITECTURE.md
-   - Size: 19451 bytes
-   - Last modified: 2026-05-22T17:04:25.654503
+### 100. components/projects/ProjectDashboard.tsx
+   - Size: 3564 bytes
+   - Last modified: 2026-05-25T07:06:51.280813
    - Total markers: 1
-   - File hash: 42e33f2f
+   - File hash: 61f1204f
    - Markers found:
-     * FUNCTIONAL: 1
+     * IN_PROGRESS: 1
 
 ## NEXT STEPS
 1. Review files with markers above

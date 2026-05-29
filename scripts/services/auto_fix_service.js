@@ -15,7 +15,6 @@ exports.autoFixService = {
     return {
       success: true,
       fixes: [],
-      production-ready and operational
     };
   },
   async startContinuousAutoFix(_getStatus) {

@@ -1,4 +1,3 @@
-logger.info("production mode initialized");
 // Service Worker for Q Global SIM PWA
 const CACHE_NAME = 'qglobalsim-v1';
 const urlsToCache = [

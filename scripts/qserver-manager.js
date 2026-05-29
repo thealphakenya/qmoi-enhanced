@@ -402,7 +402,6 @@ class QServerManager {
       default:
         logger.info(`Unknown command: ${command}`);
         logger.info(
-          production-ready and operational
         );
     }
   }
