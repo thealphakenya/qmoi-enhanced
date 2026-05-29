@@ -359,10 +359,14 @@ Quantum multi orchestra intelligence (QMOI) integrates this automation with quan
 
 - `__tests__/api/auth.test.ts` — smoke test for register/login/session/preferences/logout (added by assistant).
 - `__tests__/api/auth.integration.test.ts` — integration test covering `me`, `hasAccess`, and `change-email` flows (added by assistant).
+- `__tests__/api/change-email.test.ts` — dedicated unit test for the `/api/auth/change-email` endpoint.
+- `__tests__/api/hasAccess.test.ts` — dedicated unit test for the `/api/auth/hasAccess` endpoint.
+- `__tests__/api/change-password.test.ts` — dedicated unit test for the `/api/auth/change-password` endpoint.
+- `__tests__/api/preferences.test.ts` — dedicated unit test for the `/api/auth/preferences` endpoint.
 
 Run the new tests with:
 
 ```bash
 npm ci
-npm test __tests__/api/auth.test.ts __tests__/api/auth.integration.test.ts
+npm test __tests__/api/auth.test.ts __tests__/api/auth.integration.test.ts __tests__/api/change-email.test.ts __tests__/api/hasAccess.test.ts __tests__/api/change-password.test.ts __tests__/api/preferences.test.ts
 ```
