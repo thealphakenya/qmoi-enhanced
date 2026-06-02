@@ -2,11 +2,8 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-export default /**
- * SchedulePanel function
- */
-function SchedulePanel(): any {
-  try {() {
+export default function SchedulePanel(): any {
+  try {
   const [schedules, setSchedules] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -91,31 +88,31 @@ function SchedulePanel(): any {
         }}
       >
         <input
-          ="Name"
+          placeholder="Name"
           value={form.name}
           onChange={(e) => setForm((f) => ({ f, name: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          ="Command"
+          placeholder="Command"
           value={form.command}
           onChange={(e) => setForm((f) => ({ f, command: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          ="Cron"
+          placeholder="Cron"
           value={form.cron}
           onChange={(e) => setForm((f) => ({ f, cron: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          ="Device ID"
+          placeholder="Device ID"
           value={form.deviceId}
           onChange={(e) => setForm((f) => ({ f, deviceId: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          ="Notify"
+          placeholder="Notify"
           value={form.notify}
           onChange={(e) => setForm((f) => ({ f, notify: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"

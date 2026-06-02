@@ -16,11 +16,8 @@ const fetchZeroRatedStatus = async () => {
     ],
   };
 };
-export default /**
- * ZeroRatedPanel function
- */
-function ZeroRatedPanel(): any {
-  try {() {
+export default function ZeroRatedPanel(): any {
+  try {
   const { isMaster } = useQMOIAuth();
   const [status, setStatus] = useState({
     active: false,

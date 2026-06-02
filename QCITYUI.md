@@ -5,7 +5,8 @@
 **Status:** ✅ PRODUCTION CERTIFIED - All UI components enhanced with real production implementations
 **Production Audit:** ✅ Reviewed May 19, 2026 — production readiness verified; diagnostic utilities are isolated from the production UI surface.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 1189
+**Total Indexed Markdown Files:** 3530
+**Page Inventory:** See `ALLPAGES.md` for all live page routes.
 **Scope:** All visible UI elements, screens, interactions, and user flows for QCity
 **Production Verification:** ✅ PASSED - Zero non-production code remaining
 
@@ -42,6 +43,7 @@ QCity is a React-based dashboard application providing command center functional
 - **Layout:** Grid-based responsive design with card components
 - **Access:** Role-based permissions (Master, Sister, User, Guest)
 - **Features:** Real-time metrics, service monitoring, incident management
+- **Biometric Authentication:** QCity leverages shared `BiometricAuth` flows for command center access, session logging, and audit-aware identity verification
 
 ### Theme & Style System
 - **Theme Customization:** QCity includes role-aware theme accents and system-level visual controls through `QCityThemeProvider` and `VisualEnhancement`.

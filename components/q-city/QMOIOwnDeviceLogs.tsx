@@ -328,7 +328,7 @@ function QMOIOwnDeviceLogs({
               <div>
                 <label className="text-sm font-medium">Device ID</label>
                 <Input
-                  ="Filter by device ID"
+                  placeholder="Filter by device ID"
                   value={deviceFilter}
                   onChange={(e) => setDeviceFilter(e.target.value)}
                 />

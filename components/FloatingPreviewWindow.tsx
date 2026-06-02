@@ -165,10 +165,7 @@ function handleTextEdit(e: React.ChangeEvent<HTMLTextAreaElement>): any {
     setMediaType("other");
   }
   // Download logic
-  async /**
- * handleDownload function
- */
-function handleDownload(): any {
+  async function handleDownload(): any {
     if (mediaUrl && mediaType) {
       const ext =
         mediaType === "video"

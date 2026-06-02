@@ -1,4 +1,8 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Declared environment shims for triage
+declare const path: any;
+declare const app: any;
+declare const Notification: any;
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
@@ -63,19 +67,19 @@ export class TaskbarManager {
 
   private registerNotificationHandlers(): void {
     // Handle different types of notifications
-    app.on(
+      app.on(
       "notification-click",
       (event: NotificationEvent, notification: NotificationData) => {
         // Handle notification clicks
-        .log("Notification clicked:", notification);
+        console.log("Notification clicked:", notification);
       },
     );
 
-    app.on(
+      app.on(
       "notification-close",
       (event: NotificationEvent, notification: NotificationData) => {
         // Handle notification closes
-        .log("Notification closed:", notification);
+        console.log("Notification closed:", notification);
       },
     );
   }
@@ -122,60 +126,7 @@ export class TaskbarManager {
 }
 
 // Export a function to create the taskbar manager
-export /**
- * createTaskbarManager function
- */
-function createTaskbarManager(options: TaskbarOptions): TaskbarManager {
+export function createTaskbarManager(options: TaskbarOptions): TaskbarManager {
   return TaskbarManager.getInstance(options);
 }
-
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
+ 

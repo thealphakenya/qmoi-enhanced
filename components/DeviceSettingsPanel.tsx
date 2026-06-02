@@ -77,7 +77,7 @@ function handleAppRemove(app: string): any {
             value={wallpaper}
             onChange={handleWallpaperChange}
             className="w-full p-1 rounded bg-gray-900 text-green-200"
-            ="/path/to/wallpaper.jpg"
+            placeholder="/path/to/wallpaper.jpg"
           />
         </div>
         <div className="mb-2">

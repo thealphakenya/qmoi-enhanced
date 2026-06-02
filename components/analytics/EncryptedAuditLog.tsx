@@ -31,7 +31,7 @@ export const EncryptedAuditLog: React.FC<{ logs: string[] }> = ({ logs }) => {
     <div>
       <h4>Encrypted Audit Log</h4>
       <input
-        ="Decryption Key"
+        placeholder="Decryption Key"
         value={key}
         onChange={(e) => setKey(e.target.value)}
         style={{ marginBottom: 8 }}

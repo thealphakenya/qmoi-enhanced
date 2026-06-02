@@ -54,13 +54,13 @@ export const GCPCredentialsModal: React.FC<{
       >
         <h2>GCP Credentials</h2>
         <input
-          ="Project ID"
+          placeholder="Project ID"
           value={projectId}
           onChange={(e) => setProjectId(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}
         />
         <input
-          ="Key Filename"
+          placeholder="Key Filename"
           value={keyFilename}
           onChange={(e) => setKeyFilename(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}

@@ -15,11 +15,8 @@ const COMMON_COMMANDS = [
 function mask(cmd: string): any {
   return /pass|secret|token|key|rm|delete|reset/i.test(cmd) ? "[MASKED]" : cmd;
 }
-export default /**
- * CommandPanel function
- */
-function CommandPanel(): any {
-  try {() {
+export default function CommandPanel(): any {
+  try {
   const [cmd, setCmd] = useState("");
   const [deviceId, setDeviceId] = useState("qcity");
   const [output, setOutput] = useState("");
@@ -111,7 +108,7 @@ function clearHistory(): any {
           value={cmd}
           onChange={(e) => setCmd(e.target.value)}
           className="flex-1 bg-gray-800 p-2 rounded"
-          ="Enter command"
+          placeholder="Enter command"
         />
         <select
           value={deviceId}

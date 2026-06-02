@@ -28,11 +28,8 @@ interface CardTitleProps {
 const CardTitle: React.FC<CardTitleProps> = ({ children, className = "" }) => (
   <h3 className={`text-lg font-semibold ${className}`}>{children}</h3>
 );
-export default /**
- * QCityDashboard function
- */
-function QCityDashboard(): any {
-  try {() {
+export default function QCityDashboard(): any {
+  try {
   const [isMaster, setIsMaster] = useState(false);
   const handleMasterToggle = () => {
     setIsMaster(!isMaster);

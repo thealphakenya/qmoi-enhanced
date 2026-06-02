@@ -62,14 +62,14 @@ function handleSpendFunds(): any {
         <div className="mb-2">
           <input
             type="number"
-            ="Amount"
+            placeholder="Amount"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             className="border p-1 rounded w-1/3 mr-2"
           />
           <input
             type="text"
-            ="Description"
+            placeholder="Description"
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
             className="border p-1 rounded w-1/3 mr-2"

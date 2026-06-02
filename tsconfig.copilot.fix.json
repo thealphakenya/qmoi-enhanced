@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "allowJs": true,
+    "strict": true,
+    "noEmit": true,
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "src/utils/service-wrappers/ServiceWrapper.ts",
+    "src/utils/taskbar.ts",
+    "src/utils/master-access-control.ts",
+    "src/types/globals.d.ts",
+    "src/components/OfflineCacheService.tsx"
+  ]
+}

@@ -3,11 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-export default /**
- * SystemHealthPanel function
- */
-function SystemHealthPanel(): any {
-  try {() {
+export default function SystemHealthPanel(): any {
+  try {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -15,10 +12,7 @@ function SystemHealthPanel(): any {
   const [uiHealth, setUiHealth] = useState<string>("Unknown");
   const [uiTestTime, setUiTestTime] = useState<string>("Never");
   const [uiTestRunning, setUiTestRunning] = useState(false);
-  async /**
- * fetchStatus function
- */
-function fetchStatus(): any {
+  async function fetchStatus(): any {
     setLoading(true);
     setError(null);
     try {
@@ -31,28 +25,19 @@ function fetchStatus(): any {
       setLoading(false);
     }
   }
-  async /**
- * runAllFixes function
- */
-function runAllFixes(): any {
+  async function runAllFixes(): any {
     setActionMsg("Running all fixes");
     await apiClient.get("/api/qmoi/fix/all", { method: "POST" });
     setActionMsg("All fixes triggered. Refreshing status");
     setTimeout(fetchStatus, 3000);
   }
-  async /**
- * repairConnectivity function
- */
-function repairConnectivity(): any {
+  async function repairConnectivity(): any {
     setActionMsg("Repairing connectivity");
     await apiClient.get("/api/qmoi/fix/connectivity", { method: "POST" });
     setActionMsg("Connectivity repair triggered. Refreshing status");
     setTimeout(fetchStatus, 3000);
   }
-  async /**
- * runUiHealthCheck function
- */
-function runUiHealthCheck(): any {
+  async function runUiHealthCheck(): any {
     setUiTestRunning(true);
     setActionMsg("Running UI health check");
     try {
@@ -68,10 +53,7 @@ function runUiHealthCheck(): any {
       setUiTestRunning(false);
     }
   }
-  async /**
- * triggerUiSelfHealing function
- */
-function triggerUiSelfHealing(): any {
+  async function triggerUiSelfHealing(): any {
     setActionMsg("Triggering UI self-healing");
     await apiClient.get("/api/qmoi/fix/ui", { method: "POST" });
     setActionMsg("UI self-healing triggered.");

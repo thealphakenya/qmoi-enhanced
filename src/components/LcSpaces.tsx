@@ -33,7 +33,7 @@ function LcSpaces(): any {
         size="small"
         value={newSpace}
         onChange={(e) => setNewSpace(e.target.value)}
-        ="Add new LC space"
+        placeholder="Add new LC space"
         sx={{ mb: 1 }}
         onKeyDown={(e) => {
           if (e.key === "Enter") addSpace();

@@ -53,7 +53,7 @@ export const FileCategorizer: React.FC = () => {
       <h3>File Categorization & Persistent Download Folders</h3>
       <input
         type="text"
-        ="File name"
+        placeholder="File name"
         value={fileName}
         onChange={(e) => setFileName(e.target.value)}
         style={{ marginBottom: 8, width: "100%" }}

@@ -5,7 +5,8 @@
 **Status:** ✅ BASIC PRODUCTION SHELL - Core PWA functionality implemented with real API integration
 **Production Audit:** ✅ Reviewed May 19, 2026 — static shell confirmed production-ready; unified aggregation dashboard remains future scope.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 1189
+**Total Indexed Markdown Files:** 3530
+**Page Inventory:** See `ALLPAGES.md` for all live page routes.
 **Scope:** Basic PWA shell with authentication, memory sync, app launching, and voice control
 **Production Verification:** ✅ PARTIALLY IMPLEMENTED - Uses real auth APIs, basic app aggregation via iframe
 

@@ -65,11 +65,8 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
     </svg>
   </a>
 );
-export default /**
- * PluginPanel function
- */
-function PluginPanel(): any {
-  try {() {
+export default function PluginPanel(): any {
+  try {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -95,10 +92,7 @@ function fetchPlugins(): any {
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   }
-  async /**
- * handleUpload function
- */
-function handleUpload(e: React.FormEvent): any {
+  async function handleUpload(e: React.FormEvent): any {
     e.preventDefault();
     if (!pluginFile) return;
     setUploading(true);
@@ -114,10 +108,7 @@ function handleUpload(e: React.FormEvent): any {
       setUploading(false);
     }, 1000);
   }
-  async /**
- * handleRemove function
- */
-function handleRemove(plugin: string): any {
+  async function handleRemove(plugin: string): any {
     setRemoving(plugin);
     bed remove
     setTimeout(() => {
@@ -130,10 +121,7 @@ function handleRemove(plugin: string): any {
       setRemoving(null);
     }, 1000);
   }
-  async /**
- * handleConfig function
- */
-function handleConfig(plugin: string): any {
+  async function handleConfig(plugin: string): any {
     setConfiguring(plugin);
     bed config save
     setTimeout(() => {

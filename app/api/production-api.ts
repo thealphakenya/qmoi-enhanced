@@ -179,7 +179,7 @@ async function getImplementedEndpoints(): Promise<number> {
   const { execSync } = require('child_process');
   try {
     const total = execSync("find app/api -name \"*.ts\" -o -name \"*.js\" | grep -v '\\.backups' | grep -v '\\bbackups\\b' | wc -l", { encoding: 'utf8' });
-    const incomplete = execSync("find app/api -name \"*.ts\" -o -name \"*.js\" | grep -v '\\.backups' | grep -v '\\bbackups\\b' | xargs grep -l "\\\${routeName}" | wc -l", { encoding: 'utf8' });
+    const incomplete = execSync('find app/api -name "*.ts" -o -name "*.js" | grep -v ".backups" | grep -v "\\bbackups\\b" | xargs grep -l "\\${routeName}" | wc -l', { encoding: 'utf8' });
     return (parseInt(total.trim()) || 0) - (parseInt(incomplete.trim()) || 0);
   } catch {
     return 0;
@@ -190,7 +190,7 @@ async function getIncompleteEndpointCount(): Promise<number> {
   // Count routes with incomplete endpoint markers
   const { execSync } = require('child_process');
   try {
-    const result = execSync("find app/api -name \"*.ts\" -o -name \"*.js\" | grep -v '\\.backups' | grep -v '\\bbackups\\b' | xargs grep -l "\\\${routeName}" | wc -l", { encoding: 'utf8' });
+    const result = execSync('find app/api -name "*.ts" -o -name "*.js" | grep -v ".backups" | grep -v "\\bbackups\\b" | xargs grep -l "\\${routeName}" | wc -l', { encoding: 'utf8' });
     return parseInt(result.trim()) || 0;
   } catch {
     return 0;

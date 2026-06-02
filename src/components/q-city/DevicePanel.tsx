@@ -2,11 +2,8 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-export default /**
- * DevicePanel function
- */
-function DevicePanel(): any {
-  try {() {
+export default function DevicePanel(): any {
+  try {
   const [devices, setDevices] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -102,19 +99,19 @@ function DevicePanel(): any {
         }}
       >
         <input
-          ="Name"
+          placeholder="Name"
           value={form.name}
           onChange={(e) => setForm((f) => ({ f, name: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          ="Host"
+          placeholder="Host"
           value={form.host}
           onChange={(e) => setForm((f) => ({ f, host: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          ="Port"
+          placeholder="Port"
           type="number"
           value={form.port}
           onChange={(e) =>
@@ -123,20 +120,20 @@ function DevicePanel(): any {
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          ="Username"
+          placeholder="Username"
           value={form.username}
           onChange={(e) => setForm((f) => ({ f, username: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          ="Password"
+          placeholder="Password"
           type="password"
           value={form.password}
           onChange={(e) => setForm((f) => ({ f, password: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          ="Private Key"
+          placeholder="Private Key"
           value={form.privateKey}
           onChange={(e) =>
             setForm((f) => ({ f, privateKey: e.target.value }))

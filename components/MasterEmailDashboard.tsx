@@ -106,11 +106,7 @@ interface EmailEvent {
   integration?: any;
   timestamp: Date;
 }
-export default /**
- * MasterEmailDashboard function
- */
-function MasterEmailDashboard(): any {
-  try {() {
+export default function MasterEmailDashboard(): any {
   const [emails, setEmails] = useState<EmailMessage[]>([]);
   const [selectedEmail, setSelectedEmail] = useState<EmailMessage | null>(null);
   const [autoReplyRules, setAutoReplyRules] = useState<AutoReplyRule[]>([]);

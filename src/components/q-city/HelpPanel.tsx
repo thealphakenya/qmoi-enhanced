@@ -3,11 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-export default /**
- * HelpPanel function
- */
-function HelpPanel(): any {
-  try {() {
+export default function HelpPanel(): any {
+  try {
   return (
     <div className="p-4 bg-gray-900 rounded-lg shadow-lg">
       <h2 className="text-xl font-bold mb-4 text-cyan-400">

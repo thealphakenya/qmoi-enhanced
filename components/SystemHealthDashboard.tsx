@@ -69,10 +69,7 @@ const SystemHealthDashboard: React.FC<{ isMaster: boolean }> = ({
     setErrors((prev) => prev.filter((e) => e.id !== error.id));
   };
   useEffect(() => {
-    async /**
- * fetchStats function
- */
-function fetchStats(): any {
+    async function fetchStats(): any {
       try {
         const res = await apiClient.get("/qmoi_health_status.json");
         if (res.ok) {

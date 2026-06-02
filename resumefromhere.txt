@@ -7,15 +7,32 @@ Progress summary:
 - Inventory of mocks/test files completed.
 - Converted: components/QIStateWindow.tsx -> production fetch /api/audit
 - Converted: components/QMediaPlayer.tsx -> removed example media, fetch /api/media/playlist and /api/cast/devices
+- Created `ALLPAGES.md` with 30 live page entries.
+- Rebuilt `ALLMDFILESREFS.md` to include 3530 markdown files.
+- Updated core docs: ALLSERVE.md, API.md, APIs_1.md, COMPONENTS.md, TREE.md.
+- Replaced `/api/qmoi/memory` stub with production memory service implementation.
 
 Next steps:
-- Prioritize high-impact mock replacements (pages, server APIs, auth flows)
-- Replace mock APIs with production endpoints and add environment/config guidance
-- Update core docs: ALLSERVE.md, API.md, COMPONENTS.md, TREE.md, and ensure ALLMDFILESREFS.md includes all .md
-- Run test suite and verify builds; open PR with changes
+- Run `npm run ci:build` or `npm run type-check` to validate the production build and types.
+- Run the configured test scripts: `npm run test:all` and `npm run validate:ui` once the environment is available.
+- Review `app/api/debug/*` endpoints to ensure `ENABLE_DEBUG_ROUTES` gating remains strict in production.
+- Keep `ALLMDFILESREFS.md` and `ALLPAGES.md` synchronized with repository changes.
 
 How to refresh this file (local):
   python3 scripts/autoupdate_resume.py
+
+---
+Resume update: 2026-06-02T00:00:00Z
+Action: Started biometric authentication integration and repository-wide audit.
+Details:
+- Created tracked plan for BiometricAuth integration (see todo list).
+- Beginning audit of `components/auth/BiometricAuth.tsx` usage across apps.
+- Will integrate biometric login/logout flows, improve UI, add centralized user-identifying logging,
+  and update related docs (`sister`, `master`, `user` .md files).
+Next steps:
+- Audit and list all places referencing `BiometricAuth.tsx` and related components.
+- Implement integration changes incrementally and run verification.
+Recorder: automation-agent
 QMOI production READINESS STATUS
 Last Scan: 2026-05-29T13:21:02Z
 Scan ID: 1779873737
@@ -58,3 +75,25 @@ TRACKING FILES UPDATED:
 - MATCHES.txt
 - MATCHES.md
 - undone.txt
+
+Resume point: 2026-05-29T14:00:00Z
+
+Resume update: 2026-06-02T21:00:00Z
+Action: Repaired biometric auth integration and updated UI/docs inventory.
+Details:
+- Fixed corrupted `components/auth/BiometricAuth.tsx` by re-exporting the verified shared biometric auth component.
+- Updated `QMOIAIUI.md`, `QCITYUI.md`, and `ALLUI.md` with biometric authentication and role-aware session logging details.
+- Confirmed `ALLPAGES.md` remains authoritative for all current app and PWA page entrypoints.
+Next steps:
+- Validate app builds and types using the repository tooling.
+- Review `UserAccessControl.tsx` and other biometric auth consumers for missing imports or integration gaps.
+- Continue integrating QMOI memory-aware biometric audit logging across apps.
+
+Resume point: 2026-05-29T14:00:00Z
+
+Recent changes:
+- Cleaned and fixed `src/components/OfflineCacheService.tsx` (removed duplicate ErrorBoundary, improved IndexedDB helpers)
+- Installed Node.js/npm in the development container (or attempted; see logs)
+
+How to refresh this file (local):
+  python3 scripts/autoupdate_resume.py

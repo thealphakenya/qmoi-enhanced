@@ -23,11 +23,8 @@ const ENVIRONMENTS = [
   "City",
   "Home",
 ];
-export default /**
- * QAvatar function
- */
-function QAvatar(): any {
-  try {() {
+export default function QAvatar(): any {
+  try {
   const [open, setOpen] = useState(true);
   const [settings, setSettings] = useState(() => {
     try {
