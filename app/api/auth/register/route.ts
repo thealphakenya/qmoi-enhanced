@@ -3,6 +3,7 @@ import { prisma } from "@/lib/db/prisma";
 import { authService } from "@/lib/auth/service";
 import bcrypt from 'bcryptjs';
 import { log, logApiError } from "@/lib/logger";
+import { logAuthEvent } from "@/app/lib/auth/memory";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -177,6 +178,11 @@ export async function POST(req: NextRequest) {
         path: '/',
       });
     }
+
+    // Log registration event to QMOI memory
+    try {
+      await logAuthEvent({ userId: user.id, role: user.role, displayName: user.username, event: 'register', details: { ip: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') } });
+    } catch (e) {}
 
     return response;
 

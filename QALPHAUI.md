@@ -12,6 +12,15 @@
 
 ---
 
+## Recent Updates (2026-06-02)
+
+- Centralized authentication persistence added: `app/lib/auth/persistence.ts` now standardizes how user id/role/name are stored and cleared.
+- `useAuth` refactored to use the centralized persistence helper, improving cross-app consistency and removing duplicated localStorage logic.
+- Biometric sign-in integrated into the login flow for QMOI AI; biometric success now persists user identity via the central helper.
+- Registration forms on QMOI AI and QMOI Space now persist new user info and refresh the shared auth state.
+- Documentation and UI wiring updated to ensure single-source-of-truth for user state and to reduce double-login risks across apps.
+
+
 ## 🎯 Production Certification Summary
 
 **✅ UI Components:** Basic PWA shell with functional components

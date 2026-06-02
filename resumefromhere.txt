@@ -97,3 +97,39 @@ Recent changes:
 
 How to refresh this file (local):
   python3 scripts/autoupdate_resume.py
+Resume update: 2026-06-02T02:10:00Z
+Action: Fixed login form JSX and enabled biometric sign-in toggle in QMOI AI login flow.
+Details:
+- Rewrote `app/components/auth/LoginForm.tsx` to restore valid JSX and include a biometric mode switch.
+- Preserved role/user state in localStorage on biometric success.
+- Verified `app/qmoi-ai/page.tsx` already persists login data and refreshes auth state.
+Next steps:
+- Run `npm run type-check` or platform equivalent when npm is available.
+- Verify biometric login through end-to-end UI testing once the container supports the build toolchain.
+Recorder: automation-agent
+
+Resume update: 2026-06-02T03:30:00Z
+Action: Cross-app auth hardening and master-control skeleton added.
+Details:
+- Added `app/lib/auth/persistence.ts` for centralized identity persistence.
+- Added `app/lib/auth/memory.ts` to record auth events to `/api/auth/memory`.
+- Hooked biometric signin/registration/login flows to use the persistence helper and logAuthEvent where applicable.
+- Implemented master command API endpoints: `/api/master/command` and `/api/master/last` plus client hook `app/lib/ui/master.ts` for polling-based instructions.
+- Updated `useAuth` to listen for cross-window auth changes and storage events to avoid double-login situations.
+- Hiding `RegisterForm` when user is authenticated in app pages to remove duplicate login UI.
+Next steps:
+- Replace remaining legacy localStorage identity keys across the codebase to the central persistence helper.
+- Extend master command delivery to SSE/WebSocket for real realtime updates if required.
+- Run type-checks and full test suite when build toolchain is available.
+Recorder: automation-agent
+
+Resume update: 2026-06-02T22:30:00Z
+Action: Added local auth flow test script for master/sister credentials.
+Details:
+- Created `scripts/test-auth-flows.js` to exercise `/api/auth/register`, `/api/auth/signin`, and `/api/auth/forgot` (best-effort) for master and sister test accounts.
+- Added npm script `test:auth-local` to run the tester: `npm run test:auth-local`.
+- This script calls the local Next.js dev server at `http://localhost:3000`; start the app (`npm run dev`) before running.
+Next steps:
+- Run the script locally to verify register/signin/reset-password/forgot/confirm-reset endpoints and review server responses (cookies, JSON payloads).
+- If endpoints require alternate payload shapes, update the script to match and re-run.
+Recorder: automation-agent

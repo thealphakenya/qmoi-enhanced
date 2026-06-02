@@ -78,6 +78,14 @@ Upon launching the QMOI AI app, users are presented with:
 - **Cross-App Navigation:** Links to QCity, QVillage, QMOI Space, admin panels, and device management
 - **PRODUCTIONeloper Tools:** Internal utilities and diagnostics (PRODUCTION access)
 - **Testing Interface:** Quality assurance and validation tools
+
+## Recent Updates (2026-06-02)
+
+- Authentication persistence centralized: `app/lib/auth/persistence.ts` now standardizes storing/clearing user identity across apps.
+- `useAuth` updated to listen for cross-window auth changes and to read from the centralized persistence layer.
+- Biometric signin flows now record events to QMOI memory via `/api/auth/memory` (see `app/lib/auth/memory.ts`).
+- Login and registration flows persist identity using the central helper and refresh shared auth state to avoid duplicated login flows.
+
 - **Friendship Interface:** Emotion-aware AI companion with mood tracking
 - **Extended Cross-App Modules:** QI intelligence, QIStateWindow, QiSpaces, LcSpaces, QVillage, QVillageDatasetsPanel, and QCity platform integration
 - **Global UI Overlays:** NotificationCenter, HelpGuide, PreviewWindow, FloatingPreviewWindow, and ThemeCustomizer

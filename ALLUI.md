@@ -84,6 +84,10 @@
 - `app/qcity/page.jsx` → QCity dashboard page with role-aware control panel, incident reporting, and cross-app navigation
 - `app/qvillage/page.tsx` → QVillage community workspace page with dataset and model deployment summaries
 - `app/hooks/useAuth.ts` → live auth hook implementing `master`, `sister`, `user`, and `guest` roles plus role-based permission gating
+- `app/hooks/useAuth.ts` → live auth hook implementing `master`, `sister`, `user`, and `guest` roles plus role-based permission gating
+- `app/lib/auth/persistence.ts` → centralized persistence for user identity across apps
+- `app/lib/auth/memory.ts` → memory logger for recording auth events to `/api/auth/memory`
+- `app/api/master/*` → master command endpoints for secure master-controlled UI instructions (poll-based client hook at `app/lib/ui/master.ts`)
 - `public/qmoi-pwa-manager.js` → unified PWA install/update manager for QMOI AI and QMOI Space with service worker orchestration
 - `public/manifest-qmoi-ai.json` and `public/manifest-qmoi-space.json` → production-ready PWA manifests with launch shortcuts and update metadata
 
@@ -98,6 +102,13 @@
 - ✅ **Accessibility Compliance** - WCAG 2.1 AA standard
 - ✅ **Cross-Platform Support** - Desktop, mobile, tablet optimized
 - ✅ **Offline Functionality** - Service worker integration
+
+## Recent Updates (2026-06-02)
+
+- Centralized auth persistence added and integrated across login/registration/biometric flows to prevent double-login scenarios and ensure a single source of truth for user identity.
+- QMOI memory logging added for auth events so the system knows who is using it and can audit actions across apps.
+- Master command API and client polling hook added to enable secure master-driven realtime UI updates (skeleton endpoints implemented; secure secret gating via `MASTER_UI_SECRET`).
+
 
 ---
 

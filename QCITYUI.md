@@ -93,6 +93,13 @@ Upon launching QCity, users see:
 - **Model Use:** QMOI is the primary chat assistant and operational intelligence engine inside QCity for alert triage and incident response.
 - **Quick Reference Coverage:** Mapped components from `COMPONENT_SERVING_QUICK_REFERENCE_INDEX.md` and related documentation
 
+## Recent Updates (2026-06-02)
+
+- Centralized auth persistence implemented (see `app/lib/auth/persistence.ts`) to ensure consistent identity across QCity and other apps.
+- Biometric authentication events are logged to QMOI memory (`/api/auth/memory`) to provide audit-aware identity verification and session tracing.
+- Master command endpoints added (`/api/master/command` and `/api/master/last`) to allow secure master-controlled UI instructions (poll-based client hook available at `app/lib/ui/master.ts`).
+
+
 ## Actual QCity Page Features
 `app/qcity/page.jsx` currently renders the QCity command center with these real app sections:
 - Header section with title, current user name, role display, and role-specific summary text
