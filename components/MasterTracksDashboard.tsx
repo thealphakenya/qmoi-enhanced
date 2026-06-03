@@ -1,13 +1,11 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Master-only access control
+import { readPersistedUser } from '@/app/lib/auth/persistence';
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);
   React.useEffect(() => {
-    const user = sessionStorage.getItem("user");
-    if (user) {
-      const userData = JSON.parse(user);
-      setIsMaster(userData.role === "master");
-    }
+    const user = readPersistedUser();
+    setIsMaster(user?.role === 'master');
   }, []);
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;

@@ -136,8 +136,36 @@ Next steps:
 Recorder: automation-agent
 
 
+Resume update: 2026-06-03T05:00:00Z
+Action: Replaced selected legacy auth session checks with centralized persistence.
+Details:
+- Patched `components/FinancialManager.tsx` and `components/TransactionHistory.tsx` to use `readPersistedUser()` and avoid direct `sessionStorage` reads.
+- Continued audit for legacy `sessionStorage`-based auth checks in the UI component tree.
+Next steps:
 - Replace remaining legacy localStorage identity keys across the codebase to the central persistence helper.
 - Extend master command delivery to SSE/WebSocket for real realtime updates if required.
+Recorder: automation-agent
+
+
+Resume update: 2026-06-03T05:30:00Z
+Action: Hardened four additional auth-gated components to use centralized persistence.
+Details:
+- Patched `components/LeahWalletPanel.tsx`, `components/MasterEmailDashboard.tsx`, `components/MasterTracksDashboard.tsx`, and `components/global/GlobalOperationsDashboard.tsx` to use `readPersistedUser()`.
+- Removed direct `sessionStorage.getItem("user")` reads from these master-access wrappers.
+Next steps:
+- Audit and repair the remaining large legacy auth files: `components/TradingPanel.tsx`, `components/q-city/EmploymentDashboard.tsx`, and `components/q-city/QMOIRevenueDashboard.tsx`.
+Recorder: automation-agent
+
+
+Resume update: 2026-06-03T05:45:00Z
+Action: Restored WalletPanel and removed its duplicate corrupted footer block.
+Details:
+- Trimmed `components/WalletPanel.tsx` after the valid component implementation.
+- Confirmed `WalletPanel.tsx` no longer contains legacy `sessionStorage.getItem("user")` access.
+- `WalletPanel.tsx` now passes editor error validation.
+Next steps:
+- Repair the remaining legacy files that still contain direct storage checks: `components/TradingPanel.tsx`, `components/q-city/EmploymentDashboard.tsx`, and `components/q-city/QMOIRevenueDashboard.tsx`.
+Recorder: automation-agent
 - Run type-checks and full test suite when build toolchain is available.
 Recorder: automation-agent
 

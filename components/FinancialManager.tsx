@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useAuth } from '@/hooks/useAuth';
+import { readPersistedUser } from '@/app/lib/auth/persistence';
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
-  const [isMaster, setIsMaster] = React.useState(false);
-  React.useEffect(() => {
-    const user = sessionStorage.getItem("user");
-    if (user) {
-      const userData = JSON.parse(user);
-      setIsMaster(userData.role === "master");
-    }
+  const [isMaster, setIsMaster] = useState(false);
+  useEffect(() => {
+    const persistedUser = readPersistedUser();
+    setIsMaster(persistedUser?.role === 'master');
   }, []);
   if (!isMaster) {
     return <div className="p-4 text-red-600">Access denied: Master users only</div>;

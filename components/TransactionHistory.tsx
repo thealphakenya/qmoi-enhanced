@@ -1,4 +1,5 @@
 import React from 'react';
+import { readPersistedUser } from '@/app/lib/auth/persistence';
 // Master-only access control
 const requireMasterAccess = (WrappedComponent: any) => {
   return (props: any) => {
@@ -7,8 +8,8 @@ const requireMasterAccess = (WrappedComponent: any) => {
     React.useEffect(() => {
       const checkMasterRole = async () => {
         try {
-          const user = JSON.parse(sessionStorage.getItem("user") || "{}");
-          setIsMaster(user.role === "master");
+          const user = readPersistedUser();
+          setIsMaster(user?.role === 'master');
         } catch {
           setIsMaster(false);
         }
