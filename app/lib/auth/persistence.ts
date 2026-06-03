@@ -4,36 +4,83 @@ const PERSIST_KEYS = {
   NAME: "qmoi_user_name",
 };
 
-export function persistUserToStorage(user: { id?: string; role?: string; displayName?: string }) {
+function getStorage(): Storage | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const storage = window.localStorage;
+    storage.setItem("__qmoi_probe__", "1");
+    storage.removeItem("__qmoi_probe__");
+    return storage;
+  } catch {
+    try {
+      const storage = window.sessionStorage;
+      storage.setItem("__qmoi_probe__", "1");
+      storage.removeItem("__qmoi_probe__");
+      return storage;
+    } catch {
+      return null;
+    }
+  }
+}
+
+function dispatchAuthChangeEvent() {
   if (typeof window === "undefined") return;
   try {
-    if (user.role) window.localStorage.setItem(PERSIST_KEYS.ROLE, user.role);
-    if (user.id) window.localStorage.setItem(PERSIST_KEYS.ID, user.id);
-    if (user.displayName) window.localStorage.setItem(PERSIST_KEYS.NAME, user.displayName);
-  } catch (e) {
+    window.dispatchEvent(new Event("qmoi:auth:changed"));
+  } catch {
+    // Best effort only
+  }
+}
+
+export function persistUserToStorage(user: { id?: string; role?: string; displayName?: string }) {
+  const storage = getStorage();
+  if (!storage) return;
+  try {
+    if (user.role) storage.setItem(PERSIST_KEYS.ROLE, user.role);
+    if (user.id) storage.setItem(PERSIST_KEYS.ID, user.id);
+    if (user.displayName) storage.setItem(PERSIST_KEYS.NAME, user.displayName);
+    dispatchAuthChangeEvent();
+  } catch {
     // ignore storage errors in restricted environments
   }
 }
 
 export function clearUserFromStorage() {
   if (typeof window === "undefined") return;
+  const storageTypes = [window.localStorage, window.sessionStorage];
   try {
-    window.localStorage.removeItem(PERSIST_KEYS.ROLE);
-    window.localStorage.removeItem(PERSIST_KEYS.ID);
-    window.localStorage.removeItem(PERSIST_KEYS.NAME);
-  } catch (e) {
+    storageTypes.forEach((storage) => {
+      try {
+        storage.removeItem(PERSIST_KEYS.ROLE);
+        storage.removeItem(PERSIST_KEYS.ID);
+        storage.removeItem(PERSIST_KEYS.NAME);
+      } catch {
+        // ignore individual storage failures
+      }
+    });
+  } catch {
     // ignore
+  } finally {
+    dispatchAuthChangeEvent();
+  }
+}
+
+function readFromStorage(storage: Storage, key: string): string | null {
+  try {
+    return storage.getItem(key);
+  } catch {
+    return null;
   }
 }
 
 export function readPersistedUser(): { id?: string | null; role?: string | null; displayName?: string | null } | null {
   if (typeof window === "undefined") return null;
   try {
-    const role = window.localStorage.getItem(PERSIST_KEYS.ROLE);
-    const id = window.localStorage.getItem(PERSIST_KEYS.ID);
-    const displayName = window.localStorage.getItem(PERSIST_KEYS.NAME);
+    const role = readFromStorage(window.localStorage, PERSIST_KEYS.ROLE) ?? readFromStorage(window.sessionStorage, PERSIST_KEYS.ROLE);
+    const id = readFromStorage(window.localStorage, PERSIST_KEYS.ID) ?? readFromStorage(window.sessionStorage, PERSIST_KEYS.ID);
+    const displayName = readFromStorage(window.localStorage, PERSIST_KEYS.NAME) ?? readFromStorage(window.sessionStorage, PERSIST_KEYS.NAME);
     return { id: id || null, role: role || null, displayName: displayName || null };
-  } catch (e) {
+  } catch {
     return null;
   }
 }

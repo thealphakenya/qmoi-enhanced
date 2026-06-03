@@ -29,7 +29,29 @@ export default function LoginForm({ onLogin }) {
       });
       const data = await response.json();
       if (response.ok && data.success) {
-        onLogin(data.user);
+        const persistedUser = {
+          id: data?.user?.id || `qmoi-user-${Date.now()}`,
+          role: data?.user?.role || "user",
+          displayName:
+            data?.user?.displayName || data?.user?.username || data?.user?.email || email || "QMOI User",
+          permissions: data?.user?.permissions || ["general_chat", "help_support", "wallet_view"],
+          accessLevel: data?.user?.accessLevel ?? 30,
+        };
+
+        persistUserToStorage({
+          id: persistedUser.id,
+          role: persistedUser.role,
+          displayName: persistedUser.displayName,
+        });
+        logAuthEvent({
+          userId: persistedUser.id,
+          role: persistedUser.role,
+          displayName: persistedUser.displayName,
+          event: "signin",
+          details: { source: "LoginForm", identifier: email || username },
+        });
+
+        onLogin(persistedUser);
       } else {
         setError(data.message || "Login failed");
       }

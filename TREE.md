@@ -88,6 +88,7 @@ The QMOI Enhanced repository is organized into distinct architectural zones supp
 ```
 /services/            — Service adapters and business logic
 /lib/                 — Library functions and utilities
+/app/lib/auth/        — Centralized authentication persistence and runtime event logging
 /src/services/        — Application services and AI engines
 /api/                 — API handlers and route definitions
 /db/                  — Database migrations and models

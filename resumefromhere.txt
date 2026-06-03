@@ -118,6 +118,24 @@ Details:
 - Updated `useAuth` to listen for cross-window auth changes and storage events to avoid double-login situations.
 - Hiding `RegisterForm` when user is authenticated in app pages to remove duplicate login UI.
 Next steps:
+- Continue auditing auth/session storage usage across the codebase.
+- Keep the centralized persistence helper as the canonical auth state source.
+- Update API and route docs for auth endpoints after runtime verification.
+Recorder: automation-agent
+
+Resume update: 2026-06-03T02:00:00Z
+Action: Hardened auth persistence with event notification and centralized login state.
+Details:
+- Extended `app/lib/auth/persistence.ts` to tolerate localStorage restrictions, fallback to sessionStorage, and dispatch `qmoi:auth:changed` events.
+- Updated `app/components/auth/LoginForm.tsx` to persist API login results locally and log signin events automatically.
+- Added architecture notes in `TREE.md` for centralized auth persistence and runtime event logging.
+Next steps:
+- Search remaining direct auth/session storage usages and convert auth sessions to the shared persistence helper.
+- Validate `app/hooks/useAuth.ts` and `app/api/auth/me.ts` integration with end-to-end auth flows.
+- Continue updating `API.md`, `ENDPOINTS.md`, and `ROUTES.md` to document the full auth route set.
+Recorder: automation-agent
+
+
 - Replace remaining legacy localStorage identity keys across the codebase to the central persistence helper.
 - Extend master command delivery to SSE/WebSocket for real realtime updates if required.
 - Run type-checks and full test suite when build toolchain is available.
