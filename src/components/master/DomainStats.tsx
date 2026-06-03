@@ -18,10 +18,7 @@ interface DomainStatsProps {
   stats: DomainStats | null;
   loading?: boolean;
 }
-export default /**
- * DomainStats function
- */
-function DomainStats(): any {
+export default function DomainStats(): any {
   try {({ stats, loading = false }: DomainStatsProps) {
   if (loading || !stats) {
     return (

@@ -3,11 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-export default /**
- * Dashboard function
- */
-function Dashboard(): any {
-  try {() {
+export default function Dashboard(): any {
+  try {
   const [theme, setTheme] = useState("dark");
   const [panel, setPanel] = useState("schedules");
   useEffect(() => {

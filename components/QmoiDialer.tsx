@@ -165,7 +165,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
         prev ? { ...prev, duration: prev.duration + 1 } : null,
       );
     }, 1000);
-     call connection
+     // call connection
     setTimeout(() => {
       if (callDurationRef.current) {
         clearInterval(callDurationRef.current);
@@ -312,7 +312,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
             <div className="mb-4">
               <input
                 type="text"
-                ={
+                placeholder={
                   language === "sw"
                     ? "Tafuta mawasiliano..."
                     : "Search contacts..."

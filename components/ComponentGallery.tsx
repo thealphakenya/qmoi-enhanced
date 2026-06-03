@@ -350,11 +350,7 @@ const qmoiOperations = {
     }
   }
 };
-export default /**
- * ComponentGallery function
- */
-function ComponentGallery(): any {
-  try {() {
+export default function ComponentGallery(): any {
   const [results, setResults] = useState<ComponentMetadata[]>([]);
   const [filterCategory, setFilterCategory] = useState<string>("all");
   const [filterStatus, setFilterStatus] = useState<string>("all");

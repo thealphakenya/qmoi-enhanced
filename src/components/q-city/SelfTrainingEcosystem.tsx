@@ -102,10 +102,7 @@ export const SelfTrainingEcosystem: React.FC = () => {
   ]);
   // new task list state and API
   const [tasks, setTasks] = useState<TrainingTask[]>([]);
-  async /**
- * fetchTasks function
- */
-function fetchTasks(): any {
+  async function fetchTasks(): any {
     try {
       const res = await apiClient.get("/api/self-training?action=list");
       const data = await res.json();
@@ -114,10 +111,7 @@ function fetchTasks(): any {
       // ignore
     }
   }
-  async /**
- * handleStart function
- */
-function handleStart(): any {
+  async function handleStart(): any {
     const model = prompt("Enter model name to train:");
     if (!model) return;
     const res = await apiClient.get("/api/self-training?action=start", {

@@ -59,20 +59,20 @@ export const AWSCredentialsModal: React.FC<{
       >
         <h2>AWS Credentials</h2>
         <input
-          ="Access Key ID"
+          placeholder="Access Key ID"
           value={accessKeyId}
           onChange={(e) => setAccessKeyId(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}
         />
         <input
-          ="Secret Access Key"
+          placeholder="Secret Access Key"
           value={secretAccessKey}
           onChange={(e) => setSecretAccessKey(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}
           type="password"
         />
         <input
-          ="Region"
+          placeholder="Region"
           value={region}
           onChange={(e) => setRegion(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}

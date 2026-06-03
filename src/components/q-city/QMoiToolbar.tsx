@@ -47,11 +47,8 @@ const initialApps = [
 ];
 const getRandomInt = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
-export default /**
- * QMoiToolbar function
- */
-function QMoiToolbar(): any {
-  try {() {
+export default function QMoiToolbar(): any {
+  try {
   const [visible, setVisible] = useState(true);
   const [theme, setTheme] = useState("dark");
   const [apps, setApps] = useState(initialApps);

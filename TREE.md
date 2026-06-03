@@ -36,7 +36,7 @@
 **Last Updated:** 2026-05-19
 **Production Audit:** ✅ Reviewed May 19, 2026 — architecture and repository structure confirmed for production readiness.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 1189
+**Total Indexed Markdown Files:** 3530
 **Status:** ✅  - Complete May 2026 update
 **Total Directories:** 35+
 **Total Files:** 5,000+
@@ -45,6 +45,8 @@
 ## 📁 Repository Structure Overview
 
 The QMOI Enhanced repository is organized into distinct architectural zones supporting frontend, backend, services, automation, and tooling layers.
+
+> Source tree verified for QMOI AI integration. See `src_tree.txt` for the live `src/` directory snapshot and `SRC.md` for the current source inventory.
 
 ## 🏗️ Core Directory Layers
 
@@ -86,6 +88,7 @@ The QMOI Enhanced repository is organized into distinct architectural zones supp
 ```
 /services/            — Service adapters and business logic
 /lib/                 — Library functions and utilities
+/app/lib/auth/        — Centralized authentication persistence and runtime event logging
 /src/services/        — Application services and AI engines
 /api/                 — API handlers and route definitions
 /db/                  — Database migrations and models

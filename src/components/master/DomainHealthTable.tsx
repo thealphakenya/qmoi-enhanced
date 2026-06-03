@@ -62,10 +62,7 @@ interface DomainHealthTableProps {
   onAutoRepair?: (domain: string) => void;
   showLinkStats?: boolean;
 }
-export default /**
- * DomainHealthTable function
- */
-function DomainHealthTable(): any {
+export default function DomainHealthTable(): any {
   try {({
   validations,
   godaddyStatus,

@@ -43,7 +43,7 @@ export const PriceProductVerifier: React.FC = () => {
       <h3>Price & Product Verification</h3>
       <input
         type="text"
-        ="Enter product name or barcode"
+        placeholder="Enter product name or barcode"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         style={{ marginBottom: 8, width: "100%" }}

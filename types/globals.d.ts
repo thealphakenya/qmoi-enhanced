@@ -37,86 +37,15 @@ declare global {
   const console: Console;
   const NodeJS: unknown;
 
-  // production testing framework configuredn logging replaced with production logging removed test globals
-  const production testing framework configuredn logging replaced with production logging removed: unknown;
-  /**
- * describe function
- */
-  /**
- * it function
- */
-  /**
- * test function
- */
-function test(name: string, fn: (...args: unknown[]): any => any): void;
-  /**
- * beforeAll function
- */
-function beforeAll(fn: (...args: unknown[]): any => any): void;
-  /**
- * afterAll function
- */
-function afterAll(fn: (...args: unknown[]): any => any): void;
-  /**
- * beforeEach function
- */
-function beforeEach(fn: (...args: unknown[]): any => any): void;
-  /**
- * afterEach function
- */
-function afterEach(fn: (...args: unknown[]): any => any): void;
+  // Test globals (permissive)
+  const describe: any;
+  const it: any;
+  function test(name: string, fn: (...args: unknown[]) => any): void;
+  function beforeAll(fn: (...args: unknown[]) => any): void;
+  function afterAll(fn: (...args: unknown[]) => any): void;
+  function beforeEach(fn: (...args: unknown[]) => any): void;
+  function afterEach(fn: (...args: unknown[]) => any): void;
   const expect: unknown;
 }
 
 export {};
-
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}

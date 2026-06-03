@@ -1,19 +1,46 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 interface APIKey {
   key: string;
   createdAt: string;
   revoked: boolean;
   usage: string;
 }
-const sampleKeys: APIKey[] = [
-  { key: "api_12345", createdAt: "2026-04-12", revoked: false, usage: "320 requests" },
-  { key: "api_67890", createdAt: "2026-03-29", revoked: true, usage: "0 requests" },
-];
 export default function QApiKeyManager() {
-  const [keys, setKeys] = useState<APIKey[]>(sampleKeys);
-  const revokeKey = (key: string) => {
+  const [keys, setKeys] = useState<APIKey[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+    async function fetchKeys() {
+      try {
+        const res = await fetch('/api/qcity/api-keys');
+        if (!res.ok) throw new Error(`Failed to fetch API keys: ${res.status}`);
+        const json = await res.json();
+        if (mounted) setKeys(json.keys || json || []);
+      } catch (err) {
+        if (mounted) setError(err instanceof Error ? err.message : 'Unknown error');
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    }
+    fetchKeys();
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const revokeKey = async (key: string) => {
+    // Optimistic UI update with server call
     setKeys((prev) => prev.map((item) => (item.key === key ? { ...item, revoked: true } : item)));
+    try {
+      await fetch('/api/qcity/api-keys/revoke', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ key }) });
+    } catch (err) {
+      // Revert on error
+      setKeys((prev) => prev.map((item) => (item.key === key ? { ...item, revoked: false } : item)));
+      setError(err instanceof Error ? err.message : 'Failed to revoke key');
+    }
   };
   return (
     <div className="space-y-6 p-6 rounded-3xl border border-slate-200 bg-white shadow-sm">

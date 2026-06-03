@@ -2,10 +2,7 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-export default /**
- * QMoiMemoryPanel function
- */
-function QMoiMemoryPanel(): any {
+export default function QMoiMemoryPanel(): any {
   try {({
   isMaster = false,
 }: {
@@ -15,17 +12,11 @@ function QMoiMemoryPanel(): any {
   const [feedback, setFeedback] = useState("");
   const [correction, setCorrection] = useState("");
   const [message, setMessage] = useState("");
-  async /**
- * fetchMemory function
- */
-function fetchMemory(): any {
+  async function fetchMemory(): any {
     const res = await apiClient.get("/api/qmoi/memory");
     if (res.ok) setMemory(await res.json());
   }
-  async /**
- * submitFeedback function
- */
-function submitFeedback(): any {
+  async function submitFeedback(): any {
     const res = await apiClient.get("/api/qmoi/feedback", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -41,10 +32,7 @@ function submitFeedback(): any {
       setMessage("Error submitting feedback.");
     }
   }
-  async /**
- * backupMemory function
- */
-function backupMemory(): any {
+  async function backupMemory(): any {
     const res = await apiClient.get("/api/qmoi/memory-backup");
     if (res.ok) setMessage("Memory backup created!");
     else setMessage("Backup failed.");
@@ -98,13 +86,13 @@ function backupMemory(): any {
         <input
           value={feedback}
           onChange={(e) => setFeedback(e.target.value)}
-          ="Feedback (praise/correction)"
+          placeholder="Feedback (praise/correction)"
           style={{ marginRight: 8 }}
         />
         <input
           value={correction}
           onChange={(e) => setCorrection(e.target.value)}
-          ="Correction (optional)"
+          placeholder="Correction (optional)"
           style={{ marginRight: 8 }}
         />
         <button onClick={submitFeedback}>Submit Feedback</button>

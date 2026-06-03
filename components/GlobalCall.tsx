@@ -45,7 +45,7 @@ export const GlobalCall: React.FC = () => {
       <h3>Global Call</h3>
       <input
         type="text"
-        ="Who do you want to call?"
+        placeholder="Who do you want to call?"
         value={callee}
         onChange={(e) => setCallee(e.target.value)}
         style={{ marginBottom: 8, width: "100%" }}

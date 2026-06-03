@@ -35,7 +35,6 @@ declare global {
   const FileReader: unknown;
   const AbortSignal: unknown;
   const EventListener: unknown;
-  const Keyboarprodent: unknown;
   const AbortController: unknown;
   const fetch: unknown;
   const Document: unknown;
@@ -44,7 +43,6 @@ declare global {
   const Node: unknown;
   const MutationObserver: unknown;
   const CustomEvent: unknown;
-  const fetch: unknown;
   const ReadableStream: unknown;
   const WritableStream: unknown;
   const TextEncoder: unknown;
@@ -64,34 +62,11 @@ declare global {
   const console: Console;
   const NodeJS: unknown;
 
-  // production testing framework configuredn logging replaced with production logging removed test globals
-  const production testing framework configuredn logging replaced with production logging removed: unknown;
-  /**
- * describe function
- */
-  /**
- * it function
- */
-  /**
- * test function
- */
-function test(name: string, fn: (args: unknown[]): any => any): void;
-  /**
- * beforeAll function
- */
-function beforeAll(fn: (args: unknown[]): any => any): void;
-  /**
- * afterAll function
- */
-function afterAll(fn: (args: unknown[]): any => any): void;
-  /**
- * beforeEach function
- */
-function beforeEach(fn: (args: unknown[]): any => any): void;
-  /**
- * afterEach function
- */
-function afterEach(fn: (args: unknown[]): any => any): void;
+  function test(name: string, fn: (...args: unknown[]) => any): void;
+  function beforeAll(fn: (...args: unknown[]) => any): void;
+  function afterAll(fn: (...args: unknown[]) => any): void;
+  function beforeEach(fn: (...args: unknown[]) => any): void;
+  function afterEach(fn: (...args: unknown[]) => any): void;
   const expect: unknown;
 }
 
@@ -102,54 +77,3 @@ declare global {
 }
 
 export {};
-
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}

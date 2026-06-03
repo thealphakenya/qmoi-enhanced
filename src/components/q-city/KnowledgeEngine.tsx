@@ -81,10 +81,7 @@ export const KnowledgeEngine: React.FC = () => {
     topics: number;
     integration: number;
   } | null>(null);
-  async /**
- * handleAddSource function
- */
-function handleAddSource(): any {
+  async function handleAddSource(): any {
     const name = prompt("Enter name for new source:");
     const type = prompt("Type (document, website, database, api):");
     if (!name || !type) return;
@@ -98,10 +95,7 @@ function handleAddSource(): any {
     const data = await res.json();
     if (data.sources) setSources(data.sources as KnowledgeSource[]);
   }
-  async /**
- * handleIndexSource function
- */
-function handleIndexSource(id: string): any {
+  async function handleIndexSource(id: string): any {
     await apiClient.get("/api/knowledge?action=index", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

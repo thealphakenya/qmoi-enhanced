@@ -61,26 +61,26 @@ export const AzureCredentialsModal: React.FC<{
       >
         <h2>Azure Credentials</h2>
         <input
-          ="Tenant ID"
+          placeholder="Tenant ID"
           value={tenantId}
           onChange={(e) => setTenantId(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}
         />
         <input
-          ="Client ID"
+          placeholder="Client ID"
           value={clientId}
           onChange={(e) => setClientId(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}
         />
         <input
-          ="Client Secret"
+          placeholder="Client Secret"
           value={clientSecret}
           onChange={(e) => setClientSecret(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}
           type="password"
         />
         <input
-          ="Subscription ID"
+          placeholder="Subscription ID"
           value={subscriptionId}
           onChange={(e) => setSubscriptionId(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}

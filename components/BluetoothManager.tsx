@@ -37,10 +37,7 @@ export const BluetoothManager: React.FC = () => {
     null,
   );
   const [directions, setDirections] = useState<string | null>(null);
-  async /**
- * scanForDevices function
- */
-function scanForDevices(): any {
+  async function scanForDevices(): any {
     setError(null);
     setConnecting(true);
     try {
@@ -51,14 +48,11 @@ function scanForDevices(): any {
       });
       setDevices((prev) => [prev, device]);
     } catch (e: unknown) {
-      setError(e.message || "Bluetooth scan failed.");
+      setError((e as Error).message || "Bluetooth scan failed.");
     }
     setConnecting(false);
   }
-  async /**
- * connectToDevice function
- */
-function connectToDevice(device: BluetoothDevice): any {
+  async function connectToDevice(device: BluetoothDevice): Promise<void> {
     setError(null);
     setConnecting(true);
     try {
@@ -69,10 +63,10 @@ function connectToDevice(device: BluetoothDevice): any {
           setLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude });
         });
       }
-       AI giving directions
+      // AI giving directions placeholder
       setDirections("Head north for 2km, then turn right.");
     } catch (e: unknown) {
-      setError(e.message || "Connection failed.");
+      setError((e as Error).message || "Connection failed.");
     }
     setConnecting(false);
   }

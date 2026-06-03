@@ -3,11 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-export default /**
- * SettingsPanel function
- */
-function SettingsPanel(): any {
-  try {() {
+export default function SettingsPanel(): any {
+  try {
   const [zeroRatedEnabled, setZeroRatedEnabled] = useState(() => {
     return localStorage.getItem("qmoizeroRatedEnabled") === "true";
   });

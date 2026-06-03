@@ -199,6 +199,175 @@ Logout user and invalidate tokens.
 
 ---
 
+### GET /auth/me
+
+Retrieve the current authenticated user's profile using a valid session token.
+
+**Request:**
+
+```production-validatedbash
+GET /auth/me?token={sessionToken}
+```production-validated
+
+**Response:** `200 OK`
+
+```production-validatedjson
+{
+  "user": {
+    "id": "uuid",
+    "email": "user@data.com",
+    "username": "johndoe",
+    "role": "user",
+    "preferences": {
+      "theme": "light",
+      "notifications": true,
+      "tradingEnabled": false
+    }
+  }
+}
+```production-validated
+
+**Error Codes:**
+
+- `INVALID_TOKEN` - Token is invalid or missing
+- `SESSION_EXPIRED` - Session token has expired
+- `USER_NOT_FOUND` - User for the session no longer exists
+
+---
+
+### POST /auth/preferences
+
+Update authenticated user preferences.
+
+**Request:**
+
+```production-validatedjson
+{
+  "token": "session-token-value",
+  "preferences": {
+    "theme": "dark",
+    "notifications": false,
+    "tradingEnabled": true
+  }
+}
+```production-validated
+
+**Response:** `200 OK`
+
+```production-validatedjson
+{
+  "user": {
+    "id": "uuid",
+    "email": "user@data.com",
+    "username": "johndoe",
+    "preferences": {
+      "theme": "dark",
+      "notifications": false,
+      "tradingEnabled": true
+    }
+  }
+}
+```production-validated
+
+**Error Codes:**
+
+- `INVALID_TOKEN` - Session token is invalid or missing
+- `INVALID_REQUEST` - Preferences shape is invalid
+
+---
+
+### POST /auth/change-password
+
+Change the password for the authenticated user.
+
+**Request:**
+
+```production-validatedjson
+{
+  "token": "session-token-value",
+  "currentPassword": "OldPass123!",
+  "newPassword": "NewPass456!"
+}
+```production-validated
+
+**Response:** `200 OK`
+
+```production-validatedjson
+{
+  "success": true
+}
+```production-validated
+
+**Error Codes:**
+
+- `INVALID_TOKEN` - Session token is invalid or missing
+- `INVALID_CURRENT_PASSWORD` - Current password does not match
+- `WEAK_PASSWORD` - New password does not meet policy
+
+---
+
+### POST /auth/change-email
+
+Update the authenticated user's email address.
+
+**Request:**
+
+```production-validatedjson
+{
+  "token": "session-token-value",
+  "newEmail": "newemail@example.com"
+}
+```production-validated
+
+**Response:** `200 OK`
+
+```production-validatedjson
+{
+  "user": {
+    "id": "uuid",
+    "email": "newemail@example.com",
+    "username": "johndoe"
+  }
+}
+```production-validated
+
+**Error Codes:**
+
+- `INVALID_TOKEN` - Session token is invalid or missing
+- `INVALID_EMAIL` - New email format is invalid
+- `EMAIL_ALREADY_EXISTS` - Email is already registered
+
+---
+
+### POST /auth/hasAccess
+
+Check whether the authenticated session has access to a feature.
+
+**Request:**
+
+```production-validatedjson
+{
+  "token": "session-token-value",
+  "feature": "trading"
+}
+```production-validated
+
+**Response:** `200 OK`
+
+```production-validatedjson
+{
+  "success": true,
+  "allowed": false
+}
+```production-validated
+
+**Error Codes:**
+
+- `INVALID_TOKEN` - Session token is invalid or missing
+- `INVALID_REQUEST` - Feature name is missing or invalid
+
+---
+
 ## User Endpoints
 
 ### GET /users/profile

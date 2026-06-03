@@ -117,7 +117,7 @@ function importSettings(e: React.ChangeEvent<HTMLInputElement>): any {
               saveSettings({ settings, allowedActions: e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
-            ="e.g. build,deploy,test"
+            placeholder="e.g. build,deploy,test"
           />
         </label>
         <label className="block mb-2">
@@ -129,7 +129,7 @@ function importSettings(e: React.ChangeEvent<HTMLInputElement>): any {
               saveSettings({ settings, mediaPerms: e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
-            ="e.g. images,docs,code"
+            placeholder="e.g. images,docs,code"
           />
         </label>
       </div>

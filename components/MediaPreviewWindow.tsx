@@ -25,7 +25,7 @@ function handlePreview(url: string, type: "movie" | "youtube" | "audio"): any {
         <div className="mb-2">
           <input
             type="text"
-            ="Paste movie/YouTube/audio URL"
+            placeholder="Paste movie/YouTube/audio URL"
             className="border p-1 rounded w-2/3 mr-2"
             id="media-url"
           />

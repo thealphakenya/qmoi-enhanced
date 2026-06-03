@@ -13,8 +13,9 @@ fully implemented
 **Last Updated:** 2026-05-19T00:00:00.000000Z
 **Production Audit:** ✅ Reviewed May 19, 2026 — public API surface verified and internal debug routes are flagged as development-only.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 1189
+**Total Indexed Markdown Files:** 3530
 **Total APIs:** 9185
+**Page Inventory:** See `ALLPAGES.md` for all live app entry points and shell launch routes.
 
 ## Verified production PWA Route Mapping
 - `app/qmoi-ai/page.tsx` is a live QMOI AI Next.js page with a full interactive dashboard experience.

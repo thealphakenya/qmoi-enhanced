@@ -152,7 +152,7 @@ const TeamRoleManager: React.FC = () => {
                 onChange={(e) =>
                   setNewUser((n) => ({ ...n, name: e.target.value }))
                 }
-                ="New user name"
+                placeholder="New user name"
               />
               <select
                 value={newUser.role}

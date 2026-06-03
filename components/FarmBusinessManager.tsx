@@ -57,7 +57,7 @@ export const FarmBusinessManager: React.FC = () => {
       </select>
       <input
         type="text"
-        ="Name/Type"
+        placeholder="Name/Type"
         value={name}
         onChange={(e) => setName(e.target.value)}
         style={{ marginBottom: 8, width: "100%" }}

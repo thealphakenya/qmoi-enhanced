@@ -1,3 +1,8 @@
+import React, { createContext, useContext, useState, useEffect } from "react";
+import BiometricAuth from "@/components/auth/BiometricAuth";
+import { persistUserToStorage } from "@/lib/auth/persistence";
+import { logAuthEvent } from "@/lib/auth/memory";
+
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -190,6 +195,13 @@ export const UserAccessControl: React.FC<UserAccessControlProps> = ({
   const handleBiometricSuccess = async (userId: string, confidence: number) => {
     const success = await authenticate(userId, "biometric");
     if (success && currentUser) {
+      // Persist identity for cross-app awareness and log to memory
+      persistUserToStorage({ id: currentUser.id, role: currentUser.role, displayName: currentUser.username });
+      logAuthEvent({ userId: currentUser.id, role: currentUser.role, displayName: currentUser.username, event: 'biometric_auth', details: { confidence } });
+      // Broadcast a cross-window auth change event so other parts of the app can refresh
+      try {
+        window.dispatchEvent(new CustomEvent('qmoi:auth:changed', { detail: { id: currentUser.id, role: currentUser.role } }));
+      } catch (e) {}
       onUserAuthenticated?.(currentUser);
       toast({
         title: "Authentication Successful",

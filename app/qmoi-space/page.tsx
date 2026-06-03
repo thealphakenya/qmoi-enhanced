@@ -2,6 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import Link from "next/link";
 import AdminDashboard from "../components/AdminDashboard";
+import { useAuth } from "../hooks/useAuth";
+import { persistUserToStorage } from "../lib/auth/persistence";
+import { logAuthEvent } from "../lib/auth/memory";
 import ChatMessaging from "../components/ChatMessaging";
 import QMOIAutoFixDashboard from "../components/QMOIAutoFixDashboard";
 import QMOIAutoSetup from "../components/QMOIAutoSetup";
@@ -34,6 +37,7 @@ const defaultMarketplace = [
   { id: 'MKT-03', title: 'Workflow Automation Pack', price: '$49', access: 'one-time' },
 ];
 export default function QMoiSpacePage() {
+  const { refreshUser, isAuthenticated } = useAuth();
   const [showComponents, setShowComponents] = useState(true);
   const [stats, setStats] = useState(defaultStats);
   const [marketplace, setMarketplace] = useState(defaultMarketplace);
@@ -364,7 +368,7 @@ export default function QMoiSpacePage() {
                 <UserProfile />
                 <WalletList />
               </div>
-              <RegisterForm />
+              {!isAuthenticated && <RegisterForm onRegister={async (user) => { persistUserToStorage({ id: user?.id, role: user?.role || 'user', displayName: user?.displayName }); logAuthEvent({ userId: user?.id, role: user?.role || 'user', displayName: user?.displayName, event: 'register', details: { source: 'qmoi-space' } }); await refreshUser(); }} />}
               <SponsoredUsersManager />
               <QMOIMasterDashboard />
               <QiSpaces />

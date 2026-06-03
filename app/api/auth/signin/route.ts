@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { authService } from "../../../../lib/auth/service";
+import { logAuthEvent } from "@/app/lib/auth/memory";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -62,6 +63,13 @@ export async function POST(req: NextRequest) {
         maxAge: 7 * 24 * 60 * 60, // 7 days
         path: '/',
       });
+    }
+
+    // Log signin event to QMOI memory for audit and session awareness
+    try {
+      await logAuthEvent({ userId: authResult.user?.id, role: authResult.user?.role, displayName: authResult.user?.displayName, event: 'signin', details: { ipAddress, userAgent } });
+    } catch (e) {
+      // best-effort
     }
 
     return response;

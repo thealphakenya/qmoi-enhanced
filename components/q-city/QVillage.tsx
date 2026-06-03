@@ -153,10 +153,7 @@ interface EnterpriseMetrics {
     lastUpdated: string;
   };
 }
-export default /**
- * QVillage function
- */
-function QVillage(): any {
+export default function QVillage(): any {
   try {({ isMaster }: QVillageProps) {
   const [models, setModels] = useState<Model[]>([]);
   const [spaces, setSpaces] = useState<Space[]>([]);

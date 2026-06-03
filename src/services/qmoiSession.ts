@@ -4,6 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Manage a persistent `qmoi_session_id` and headers for requests
+import { readPersistedUser, persistUserToStorage } from "../../app/lib/auth/persistence";
 export /**
  * getSessionId function
  */
@@ -46,16 +47,11 @@ function getSessionHeaders(): Record<string, string> {
   try {
     const sid = getSessionId();
     if (sid) headers["X-QMOI-SESSION"] = sid;
-    const role =
-      typeof window !== "undefined"
-        ? localStorage.getItem("qmoi_role")
-        : undefined;
-    if (role) headers["X-QMOI-ROLE"] = role;
-    const user =
-      typeof window !== "undefined"
-        ? localStorage.getItem("qmoi_user")
-        : undefined;
-    if (user) headers["X-QMOI-USER"] = user;
+    if (typeof window !== "undefined") {
+      const persisted = readPersistedUser();
+      if (persisted && persisted.role) headers["X-QMOI-ROLE"] = persisted.role;
+      if (persisted && persisted.displayName) headers["X-QMOI-USER"] = persisted.displayName;
+    }
   } catch (_e) {
     void _e;
   }
@@ -71,9 +67,7 @@ function setProfile(profile: {
   userId?: string;
 }): any {
   try {
-    if (profile.role) localStorage.setItem("qmoi_role", profile.role);
-    if (profile.name) localStorage.setItem("qmoi_user", profile.name);
-    if (profile.userId) localStorage.setItem("qmoi_userid", profile.userId);
+    persistUserToStorage({ id: profile.userId, role: profile.role, displayName: profile.name });
   } catch (_e) {
     void _e;
   }

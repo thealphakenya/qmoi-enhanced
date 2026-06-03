@@ -24,10 +24,7 @@ class ErrorBoundary extends React.Component {
 interface ZeroRatedSitesManagerProps {
   className?: string;
 }
-export default /**
- * ZeroRatedSitesManager function
- */
-function ZeroRatedSitesManager(): any {
+export default function ZeroRatedSitesManager(): any {
   try {({
   className = "",
 }: ZeroRatedSitesManagerProps) {

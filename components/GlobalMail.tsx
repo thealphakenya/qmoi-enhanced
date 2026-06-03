@@ -46,20 +46,20 @@ export const GlobalMail: React.FC = () => {
       <h3>Global Mail</h3>
       <input
         type="email"
-        ="Recipient Email"
+        placeholder="Recipient Email"
         value={to}
         onChange={(e) => setTo(e.target.value)}
         style={{ marginBottom: 8, width: "100%" }}
       />
       <input
         type="text"
-        ="Subject"
+        placeholder="Subject"
         value={subject}
         onChange={(e) => setSubject(e.target.value)}
         style={{ marginBottom: 8, width: "100%" }}
       />
       <textarea
-        ="Message Body"
+        placeholder="Message Body"
         value={body}
         onChange={(e) => setBody(e.target.value)}
         style={{ marginBottom: 8, width: "100%" }}

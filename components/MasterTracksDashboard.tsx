@@ -60,11 +60,7 @@ interface TracksStats {
   completedTracks: number;
   failedTracks: number;
 }
-export default /**
- * MasterTracksDashboard function
- */
-function MasterTracksDashboard(): any {
-  try {() {
+export default function MasterTracksDashboard(): any {
   const [tracks, setTracks] = useState<Track[]>([]);
   const [stats, setStats] = useState<TracksStats | null>(null);
   const [loading, setLoading] = useState(true);

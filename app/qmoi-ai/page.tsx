@@ -2,6 +2,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import Link from "next/link";
 import { useAuth } from "../hooks/useAuth";
+import { persistUserToStorage } from "../lib/auth/persistence";
+import { logAuthEvent } from "../lib/auth/memory";
 import AdminDashboard from "../components/AdminDashboard";
 import ChatMessaging from "../components/ChatMessaging";
 import QMOIAutoFixDashboard from "../components/QMOIAutoFixDashboard";
@@ -90,7 +92,11 @@ export default function QMoiAIPage() {
         ...statusInfo,
       }
     : fallbackStatus;
-  const handleLogin = async () => {
+  const handleLogin = async (loginData) => {
+    if (loginData) {
+      persistUserToStorage({ id: loginData.id, role: loginData.role, displayName: loginData.displayName });
+      logAuthEvent({ userId: loginData.id, role: loginData.role, displayName: loginData.displayName, event: 'login', details: { source: 'qmoi-ai' } });
+    }
     await refreshUser();
   };
   const handleLogout = async () => {
@@ -463,7 +469,7 @@ export default function QMoiAIPage() {
                 <UserProfile />
                 <WalletList />
               </div>
-              <RegisterForm />
+              {!isAuthenticated && <RegisterForm onRegister={handleLogin} />}
               <SponsoredUsersManager />
               <QMOIMasterDashboard />
               <QI />

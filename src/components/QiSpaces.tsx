@@ -33,7 +33,7 @@ function QiSpaces(): any {
         size="small"
         value={newSpace}
         onChange={(e) => setNewSpace(e.target.value)}
-        ="Add new space"
+        placeholder="Add new space"
         sx={{ mb: 1 }}
         onKeyDown={(e) => {
           if (e.key === "Enter") addSpace();

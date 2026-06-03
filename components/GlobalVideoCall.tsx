@@ -44,7 +44,7 @@ export const GlobalVideoCall: React.FC = () => {
       <h3>Global Video Call</h3>
       <input
         type="text"
-        ="Who do you want to video call?"
+        placeholder="Who do you want to video call?"
         value={callee}
         onChange={(e) => setCallee(e.target.value)}
         style={{ marginBottom: 8, width: "100%" }}

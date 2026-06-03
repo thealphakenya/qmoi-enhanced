@@ -1,4 +1,8 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+import * as fs from 'fs';
+import * as path from 'path';
+
+declare const apiClient: any;
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
@@ -118,10 +122,7 @@ function _maskSecret(s: string | null | undefined): any {
   return s.slice(0, 4) + "*".repeat(Math.max(4, s.length - 8)) + s.slice(-4);
 }
 
-async /**
- * writeProposal function
- */
-function writeProposal(proposal: {
+async function writeProposal(proposal: {
   title: string;
   description: string;
   payload: Record<string, unknown>;
@@ -201,8 +202,7 @@ export class CashonAdapter implements WalletAdapter {
       
       const prop = await writeProposal({
         title: "check-balance-cashon",
-        description:
-          
+        description: "Automated balance check proposal for Cashon adapter",
         payload: {
           adapter: "cashon",
           api_url: apiUrl || "unknown",
@@ -285,8 +285,7 @@ export class MegavaultAdapter implements WalletAdapter {
 
       const prop = await writeProposal({
         title: "check-balance-megavault",
-        description:
-          
+        description: "Automated balance check proposal for Megavault adapter",
         payload: {
           adapter: "megavault",
           api_url: apiUrl || "unknown",
@@ -314,6 +313,7 @@ export class MegavaultAdapter implements WalletAdapter {
 export class WalletService {
   stateDir: string;
   stateFile: string;
+  adapters: Map<string, WalletAdapter> = new Map();
 
   constructor(stateDir = ".qmoi_state") {
     this.stateDir = stateDir;
@@ -361,6 +361,7 @@ export class WalletService {
       USDT: 1,
       EUR: 1.1,
       KES: 0.007,
+    };
     const rate = rates[currency] || 1;
     return { amount: amount * rate, currency: "USD" };
   }

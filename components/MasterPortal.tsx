@@ -21,11 +21,7 @@ interface MasterOverview {
   };
   lastUpdated: string;
 }
-export default /**
- * MasterPortal function
- */
-function MasterPortal(): any {
-  try {() {
+export default function MasterPortal(): any {
   const [token, setToken] = useState<string>(
     typeof window !== "undefined"
       ? localStorage.getItem("QM_MASTER_TOKEN") || ""

@@ -297,7 +297,7 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
               onChange={(e) => setCurrentUrl(e.target.value)}
               onKeyPress={(e) => e.key === "Enter" && navigateToUrl(currentUrl)}
               onInput={(e) => generateSearchSuggestions(e.currentTarget.value)}
-              ={
+              placeholder={
                 language === "sw"
                   ? "Tafuta au weka URL..."
                   : "Search or enter URL..."
@@ -414,7 +414,7 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
                     );
                   }
                 } catch (error) {
-                  .log("Cannot access iframe content due to CORS");
+                  console.log("Cannot access iframe content due to CORS");
                 }
               }
             }}

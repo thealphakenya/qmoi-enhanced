@@ -64,7 +64,7 @@ function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>): any {
         <div className="my-2">
           <input
             type="text"
-            ="Paste YouTube/video URL here"
+            placeholder="Paste YouTube/video URL here"
             value={youtubeUrl}
             onChange={handleYoutubeChange}
             className="w-full p-1 rounded bg-gray-900 text-green-200"

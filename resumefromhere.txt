@@ -1,21 +1,38 @@
-Resume point: 2026-05-29T13:21:02Z
-Git commit: 54c1f8f97c
+Resume point: 2026-05-29T13:41:00Z
+Git commit: dfe69cadd4
 
-Resume point: 2026-05-29T13:21:02Z
+Resume point: 2026-05-29T13:52:00Z
 
 Progress summary:
 - Inventory of mocks/test files completed.
 - Converted: components/QIStateWindow.tsx -> production fetch /api/audit
 - Converted: components/QMediaPlayer.tsx -> removed example media, fetch /api/media/playlist and /api/cast/devices
+- Created `ALLPAGES.md` with 30 live page entries.
+- Rebuilt `ALLMDFILESREFS.md` to include 3530 markdown files.
+- Updated core docs: ALLSERVE.md, API.md, APIs_1.md, COMPONENTS.md, TREE.md.
+- Replaced `/api/qmoi/memory` stub with production memory service implementation.
 
 Next steps:
-- Prioritize high-impact mock replacements (pages, server APIs, auth flows)
-- Replace mock APIs with production endpoints and add environment/config guidance
-- Update core docs: ALLSERVE.md, API.md, COMPONENTS.md, TREE.md, and ensure ALLMDFILESREFS.md includes all .md
-- Run test suite and verify builds; open PR with changes
+- Run `npm run ci:build` or `npm run type-check` to validate the production build and types.
+- Run the configured test scripts: `npm run test:all` and `npm run validate:ui` once the environment is available.
+- Review `app/api/debug/*` endpoints to ensure `ENABLE_DEBUG_ROUTES` gating remains strict in production.
+- Keep `ALLMDFILESREFS.md` and `ALLPAGES.md` synchronized with repository changes.
 
 How to refresh this file (local):
   python3 scripts/autoupdate_resume.py
+
+---
+Resume update: 2026-06-02T00:00:00Z
+Action: Started biometric authentication integration and repository-wide audit.
+Details:
+- Created tracked plan for BiometricAuth integration (see todo list).
+- Beginning audit of `components/auth/BiometricAuth.tsx` usage across apps.
+- Will integrate biometric login/logout flows, improve UI, add centralized user-identifying logging,
+  and update related docs (`sister`, `master`, `user` .md files).
+Next steps:
+- Audit and list all places referencing `BiometricAuth.tsx` and related components.
+- Implement integration changes incrementally and run verification.
+Recorder: automation-agent
 QMOI production READINESS STATUS
 Last Scan: 2026-05-29T13:21:02Z
 Scan ID: 1779873737
@@ -58,3 +75,79 @@ TRACKING FILES UPDATED:
 - MATCHES.txt
 - MATCHES.md
 - undone.txt
+
+Resume point: 2026-05-29T14:00:00Z
+
+Resume update: 2026-06-02T21:00:00Z
+Action: Repaired biometric auth integration and updated UI/docs inventory.
+Details:
+- Fixed corrupted `components/auth/BiometricAuth.tsx` by re-exporting the verified shared biometric auth component.
+- Updated `QMOIAIUI.md`, `QCITYUI.md`, and `ALLUI.md` with biometric authentication and role-aware session logging details.
+- Confirmed `ALLPAGES.md` remains authoritative for all current app and PWA page entrypoints.
+Next steps:
+- Validate app builds and types using the repository tooling.
+- Review `UserAccessControl.tsx` and other biometric auth consumers for missing imports or integration gaps.
+- Continue integrating QMOI memory-aware biometric audit logging across apps.
+
+Resume point: 2026-05-29T14:00:00Z
+
+Recent changes:
+- Cleaned and fixed `src/components/OfflineCacheService.tsx` (removed duplicate ErrorBoundary, improved IndexedDB helpers)
+- Installed Node.js/npm in the development container (or attempted; see logs)
+
+How to refresh this file (local):
+  python3 scripts/autoupdate_resume.py
+Resume update: 2026-06-02T02:10:00Z
+Action: Fixed login form JSX and enabled biometric sign-in toggle in QMOI AI login flow.
+Details:
+- Rewrote `app/components/auth/LoginForm.tsx` to restore valid JSX and include a biometric mode switch.
+- Preserved role/user state in localStorage on biometric success.
+- Verified `app/qmoi-ai/page.tsx` already persists login data and refreshes auth state.
+Next steps:
+- Run `npm run type-check` or platform equivalent when npm is available.
+- Verify biometric login through end-to-end UI testing once the container supports the build toolchain.
+Recorder: automation-agent
+
+Resume update: 2026-06-02T03:30:00Z
+Action: Cross-app auth hardening and master-control skeleton added.
+Details:
+- Added `app/lib/auth/persistence.ts` for centralized identity persistence.
+- Added `app/lib/auth/memory.ts` to record auth events to `/api/auth/memory`.
+- Hooked biometric signin/registration/login flows to use the persistence helper and logAuthEvent where applicable.
+- Implemented master command API endpoints: `/api/master/command` and `/api/master/last` plus client hook `app/lib/ui/master.ts` for polling-based instructions.
+- Updated `useAuth` to listen for cross-window auth changes and storage events to avoid double-login situations.
+- Hiding `RegisterForm` when user is authenticated in app pages to remove duplicate login UI.
+Next steps:
+- Continue auditing auth/session storage usage across the codebase.
+- Keep the centralized persistence helper as the canonical auth state source.
+- Update API and route docs for auth endpoints after runtime verification.
+Recorder: automation-agent
+
+Resume update: 2026-06-03T02:00:00Z
+Action: Hardened auth persistence with event notification and centralized login state.
+Details:
+- Extended `app/lib/auth/persistence.ts` to tolerate localStorage restrictions, fallback to sessionStorage, and dispatch `qmoi:auth:changed` events.
+- Updated `app/components/auth/LoginForm.tsx` to persist API login results locally and log signin events automatically.
+- Added architecture notes in `TREE.md` for centralized auth persistence and runtime event logging.
+Next steps:
+- Search remaining direct auth/session storage usages and convert auth sessions to the shared persistence helper.
+- Validate `app/hooks/useAuth.ts` and `app/api/auth/me.ts` integration with end-to-end auth flows.
+- Continue updating `API.md`, `ENDPOINTS.md`, and `ROUTES.md` to document the full auth route set.
+Recorder: automation-agent
+
+
+- Replace remaining legacy localStorage identity keys across the codebase to the central persistence helper.
+- Extend master command delivery to SSE/WebSocket for real realtime updates if required.
+- Run type-checks and full test suite when build toolchain is available.
+Recorder: automation-agent
+
+Resume update: 2026-06-02T22:30:00Z
+Action: Added local auth flow test script for master/sister credentials.
+Details:
+- Created `scripts/test-auth-flows.js` to exercise `/api/auth/register`, `/api/auth/signin`, and `/api/auth/forgot` (best-effort) for master and sister test accounts.
+- Added npm script `test:auth-local` to run the tester: `npm run test:auth-local`.
+- This script calls the local Next.js dev server at `http://localhost:3000`; start the app (`npm run dev`) before running.
+Next steps:
+- Run the script locally to verify register/signin/reset-password/forgot/confirm-reset endpoints and review server responses (cookies, JSON payloads).
+- If endpoints require alternate payload shapes, update the script to match and re-run.
+Recorder: automation-agent

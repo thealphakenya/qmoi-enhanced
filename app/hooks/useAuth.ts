@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { persistUserToStorage, readPersistedUser, clearUserFromStorage } from "../lib/auth/persistence";
 
 export type UserRole = "master" | "sister" | "user" | "guest";
 
@@ -87,11 +88,12 @@ export function useAuth() {
     if (typeof window === "undefined") return;
 
     const queryRole = readRoleFromUrl();
-    const storedRole = window.localStorage.getItem("qmoi_user_role") as UserRole | null;
-    const storedName = window.localStorage.getItem("qmoi_user_name");
+    const persisted = readPersistedUser();
+    const storedRole = persisted?.role as UserRole | null;
+    const storedName = persisted?.displayName || null;
     const role = queryRole || storedRole || "guest";
     const profile = roleProfiles[role] || roleProfiles.guest;
-    const id = window.localStorage.getItem("qmoi_user_id") || `qmoi-${role}-${Date.now()}`;
+    const id = persisted?.id || `qmoi-${role}-${Date.now()}`;
 
     const fallbackUser: QmoiUser = {
       id,
@@ -133,9 +135,7 @@ export function useAuth() {
         };
 
         setUser(updatedUser);
-        window.localStorage.setItem("qmoi_user_role", updatedUser.role);
-        window.localStorage.setItem("qmoi_user_id", updatedUser.id);
-        window.localStorage.setItem("qmoi_user_name", updatedUser.displayName);
+        persistUserToStorage({ id: updatedUser.id, role: updatedUser.role, displayName: updatedUser.displayName });
       }
     } catch (_error) {
       // Use fallback local profile when auth service is unavailable
@@ -146,6 +146,28 @@ export function useAuth() {
 
   useEffect(() => {
     loadUser();
+  }, [loadUser]);
+
+  // Listen for cross-window auth changes and storage updates
+  useEffect(() => {
+    const onAuthChanged = () => {
+      loadUser();
+    };
+    const onStorage = (ev: StorageEvent) => {
+      if (ev.key && (ev.key.includes('qmoi_user') || ev.key === 'qmoi_user_role' || ev.key === 'qmoi_user_id')) {
+        loadUser();
+      }
+    };
+    try {
+      window.addEventListener('qmoi:auth:changed', onAuthChanged as EventListener);
+      window.addEventListener('storage', onStorage as EventListener);
+    } catch (e) {}
+    return () => {
+      try {
+        window.removeEventListener('qmoi:auth:changed', onAuthChanged as EventListener);
+        window.removeEventListener('storage', onStorage as EventListener);
+      } catch (e) {}
+    };
   }, [loadUser]);
 
   const refreshUser = useCallback(async () => {
@@ -159,9 +181,7 @@ export function useAuth() {
       // Ignore logout errors
     }
 
-    window.localStorage.removeItem("qmoi_user_role");
-    window.localStorage.removeItem("qmoi_user_id");
-    window.localStorage.removeItem("qmoi_user_name");
+    clearUserFromStorage();
 
     const profile = roleProfiles.guest;
     const fallbackUser: QmoiUser = {
@@ -191,9 +211,7 @@ export function useAuth() {
       accessLevel: profile.accessLevel,
     };
 
-    window.localStorage.setItem("qmoi_user_role", role);
-    window.localStorage.setItem("qmoi_user_id", id);
-    window.localStorage.setItem("qmoi_user_name", profile.displayName);
+    persistUserToStorage({ id, role: profile.role, displayName: profile.displayName });
     setUser(updatedUser);
   };
 

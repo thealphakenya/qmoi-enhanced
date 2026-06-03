@@ -438,9 +438,6 @@ async function getResponseTeams(): Promise<Array<{
   } catch {
     return [];
   }
-      specialties: ['technical', 'cyber'],
-    },
-  ];
 }
 
 async function getAvailableTeams(count: number): Promise<Array<{ id: string; name: string }>> {

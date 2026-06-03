@@ -5,11 +5,21 @@
 **Status:** ✅ BASIC PRODUCTION SHELL - Core PWA functionality implemented with real API integration
 **Production Audit:** ✅ Reviewed May 19, 2026 — static shell confirmed production-ready; unified aggregation dashboard remains future scope.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 1189
+**Total Indexed Markdown Files:** 3530
+**Page Inventory:** See `ALLPAGES.md` for all live page routes.
 **Scope:** Basic PWA shell with authentication, memory sync, app launching, and voice control
 **Production Verification:** ✅ PARTIALLY IMPLEMENTED - Uses real auth APIs, basic app aggregation via iframe
 
 ---
+
+## Recent Updates (2026-06-02)
+
+- Centralized authentication persistence added: `app/lib/auth/persistence.ts` now standardizes how user id/role/name are stored and cleared.
+- `useAuth` refactored to use the centralized persistence helper, improving cross-app consistency and removing duplicated localStorage logic.
+- Biometric sign-in integrated into the login flow for QMOI AI; biometric success now persists user identity via the central helper.
+- Registration forms on QMOI AI and QMOI Space now persist new user info and refresh the shared auth state.
+- Documentation and UI wiring updated to ensure single-source-of-truth for user state and to reduce double-login risks across apps.
+
 
 ## 🎯 Production Certification Summary
 

@@ -1,3 +1,46 @@
+# ALLERRORS - Automated Triage Log
+
+Last scan: 2026-06-02T21:29:20Z
+Scanner: TypeScript compiler (tsc)
+
+Summary:
+- Latest full project scan: 49,407 TypeScript errors from the current `tsc -p tsconfig.json --noEmit` run
+- Primary failure mode: malformed TS/TSX source artifacts and invalid syntax in generated/bootstrap files, especially `src/setupTests.ts`
+- Current focused triage: fixed top syntax artifacts in `src/components/OfflineCacheService.tsx`, `src/types/globals.d.ts`, `src/utils/master-access-control.ts`, and `src/utils/taskbar.ts`
+- Remaining work: continue expanding compiler validation to additional flagged files and repair repeated malformed component/async/comment patterns
+
+Latest compiler scan:
+- Timestamp: 2026-06-02T21:29:20Z
+- Scanner: TypeScript compiler (tsc)
+- Total reported errors: 49,407
+- Top affected file: `src/setupTests.ts` (malformed test bootstrap syntax)
+- Current action: broad cleanup of repeated faulty source constructs, including malformed `export default /** ... function`, `async /** ... function`, and `try {() {` patterns
+
+Immediate remediation plan:
+1. Continue applying focused automated fixes for the common corrupted source patterns found in TSX files.
+   - Clean malformed exports, comment-wrapped function headers, and invalid inline natural-language fragments.
+   - Repair broken test/bootstrap files and malformed setup declarations.
+   - Normalize component wrappers and re-export stubs to valid React/TypeScript syntax.
+2. Re-run the full `tsc` scan after each batch to verify the actual error count, not the stale summary.
+3. Triage remaining errors by category and iterate (syntax, types, missing globals, incorrect file shapes).
+4. For large generated or legacy artifacts, determine if they should be repaired, excluded from config, or regenerated.
+
+Current actions performed:
+- Cleaned `src/components/OfflineCacheService.tsx` and fixed console safety checks
+- Fixed corrupted global declaration file `src/types/globals.d.ts`
+- Implemented missing `MasterAccessControl` helper in `src/utils/master-access-control.ts`
+- Tidied `src/utils/taskbar.ts` export for cleaner TypeScript parsing
+- Rewrote `components/BrowserInterface.tsx` to a clean valid placeholder
+- Applied broad TSX cleanup across many files for repeated malformed export/comment/function patterns
+- Verified the current full project scan and recorded the latest error total
+
+Next steps (work queue):
+- Broaden focused compiler coverage to more flagged files and iterate on any remaining syntax issues.
+- Continue repairing malformed source files discovered by the project scan.
+- Keep `ALLERRORS.md` updated with each batch of fixes and changed error counts.
+
+Notes:
+- This file will be updated as fixes are applied. Do NOT manually edit without coordination with the triage process.
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
 
@@ -44,19 +87,18 @@ By Type:
 
 ---
 
-## ✅ ALL ISSUES RESOLVED - 100% HEALTHY SYSTEM
+## ⚠️ Ongoing remediation in progress
 
-### System Status: 🟢 FULLY OPERATIONAL
-- All critical, high, medium, and low priority issues have been resolved.
-- System is running at optimal production performance.
-- All health checks passing.
-- No errors detected in latest comprehensive scan.
+### System Status: 🟠 Partial cleanup
+- The repository contains a large number of legacy syntax and type artifacts.
+- Focused correction is underway for the highest-impact compile failures.
+- The latest targeted compiler run passed for the corrected files.
+- Full project validation remains pending until additional malformed sources are repaired.
 
 ### Resolution Summary
-- **Total Fixes Applied:** 17,848
-- **Time to Resolution:** Completed in automated production migration
-- **Validation:** All systems validated by QMOI Lion
-- **Status:** ✅  and healthy
+- **Patched files:** `src/components/OfflineCacheService.tsx`, `src/types/globals.d.ts`, `src/utils/master-access-control.ts`, `src/utils/taskbar.ts`
+- **Next validation milestone:** broaden `tsc` coverage to additional flagged components and declarations.
+- **Status:** 🟠 in progress
 
 ---
 

@@ -49,11 +49,7 @@ interface Transaction {
   timestamp: string;
   status: string;
 }
-export default /**
- * EnhancedRevenuePanel function
- */
-function EnhancedRevenuePanel(): any {
-  try {() {
+export default function EnhancedRevenuePanel(): any {
   const [isMaster, setIsMaster] = useState(false);
   const [masterKey, setMasterKey] = useState("");
   const [revenueData, setRevenueData] = useState<RevenueData | null>(null);
@@ -249,7 +245,7 @@ function EnhancedRevenuePanel(): any {
             <Input
               id="master-key"
               type="password"
-              ="Enter master key"
+              placeholder="Enter master key"
               value={masterKey}
               onChange={(e) => setMasterKey(e.target.value)}
             />
@@ -437,7 +433,7 @@ function EnhancedRevenuePanel(): any {
                   <Label>Daily Target (KES)</Label>
                   <Input
                     type="number"
-                    ="Enter target amount"
+                    placeholder="Enter target amount"
                     value={targetAmount}
                     onChange={(e) => setTargetAmount(e.target.value)}
                   />
@@ -471,7 +467,7 @@ function EnhancedRevenuePanel(): any {
                   <Label>Amount (KES)</Label>
                   <Input
                     type="number"
-                    ="Enter amount"
+                    placeholder="Enter amount"
                     value={transferAmount}
                     onChange={(e) => setTransferAmount(e.target.value)}
                   />

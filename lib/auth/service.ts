@@ -63,6 +63,22 @@ export const authService = {
     return bcrypt.compare(password, hash);
   },
 
+  generatePasswordResetToken: (userId: string, email: string) => {
+    return jwt.sign({ userId, email, type: 'password_reset' }, JWT_SECRET, { expiresIn: '24h' });
+  },
+
+  verifyPasswordResetToken: (token: string) => {
+    try {
+      const payload = jwt.verify(token, JWT_SECRET) as any;
+      if (payload?.type !== 'password_reset') {
+        return { ok: false, error: 'INVALID_RESET_TOKEN' };
+      }
+      return { ok: true, payload };
+    } catch (e) {
+      return { ok: false, error: String(e) };
+    }
+  },
+
   authenticatePassword: async (
     identifier: string,
     password: string
@@ -258,7 +274,7 @@ export const authService = {
     };
   },
 
-  decodeToken: (token: string) => {
+  verifyJwt: (token: string) => {
     try {
       const payload = jwt.verify(token, JWT_SECRET) as any;
       return { ok: true, payload };
@@ -268,8 +284,11 @@ export const authService = {
   },
 
   verifyToken: (token: string) => {
-    const r = authService.verifyJwt(token);
-    return r.payload;
+    try {
+      return jwt.verify(token, JWT_SECRET) as any;
+    } catch {
+      return null;
+    }
   },
 
   validateToken: async (token: string) => {

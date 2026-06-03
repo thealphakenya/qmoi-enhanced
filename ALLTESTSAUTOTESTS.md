@@ -1,10 +1,12 @@
 # All Tests & Auto-Tests
 
-**Last Updated:** 2026-05-06T12:00:00+00:00
+**Last Updated:** 2026-06-02T00:00:00+00:00
 **Total Tests:** 250
 **Test Files:** 250
 **production Implementation Status:** ✅ COMPLETED
-**Test Suite Status:** ⚠️ CONFIGURATION ISSUES RESOLVED
+**Test Suite Status:** ✅ CONFIGURATION ISSUES RESOLVED AND PROD DOCS UPDATED
+
+**Note:** `ALLTESTSAUTOTESTS.md` is the canonical inventory of test files and autotests; it should be reviewed after any new test addition or automation update.
 
 ## production Implementation Summary
 
@@ -76,6 +78,10 @@
 ./__tests__/api.test.ts
 ./__tests__/api/admin.test.ts
 ./__tests__/api/auth.test.ts
+./__tests__/api/change-email.test.ts
+./__tests__/api/hasAccess.test.ts
+./__tests__/api/change-password.test.ts
+./__tests__/api/preferences.test.ts
 ./__tests__/api/monitoring.test.ts
 ./__tests__/api/payments.test.ts
 ./__tests__/api/Quantum multi orchestra intelligence (QMOI)-autoPRODUCTION-research.test.ts
@@ -355,10 +361,14 @@ Quantum multi orchestra intelligence (QMOI) integrates this automation with quan
 
 - `__tests__/api/auth.test.ts` — smoke test for register/login/session/preferences/logout (added by assistant).
 - `__tests__/api/auth.integration.test.ts` — integration test covering `me`, `hasAccess`, and `change-email` flows (added by assistant).
+- `__tests__/api/change-email.test.ts` — dedicated unit test for the `/api/auth/change-email` endpoint.
+- `__tests__/api/hasAccess.test.ts` — dedicated unit test for the `/api/auth/hasAccess` endpoint.
+- `__tests__/api/change-password.test.ts` — dedicated unit test for the `/api/auth/change-password` endpoint.
+- `__tests__/api/preferences.test.ts` — dedicated unit test for the `/api/auth/preferences` endpoint.
 
 Run the new tests with:
 
 ```bash
 npm ci
-npm test __tests__/api/auth.test.ts __tests__/api/auth.integration.test.ts
+npm test __tests__/api/auth.test.ts __tests__/api/auth.integration.test.ts __tests__/api/change-email.test.ts __tests__/api/hasAccess.test.ts __tests__/api/change-password.test.ts __tests__/api/preferences.test.ts
 ```

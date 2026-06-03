@@ -64,11 +64,8 @@ interface CountryData {
   revenueGenerated: number;
   complianceStatus: 'compliant' | 'pending' | 'non-compliant';
 }
-export default /**
- * GlobalOperationsDashboard function
- */
-function GlobalOperationsDashboard(): any {
-  try {() {
+export default function GlobalOperationsDashboard(): any {
+  try {
   const [stats, setStats] = useState<GlobalStats | null>(null);
   const [countries, setCountries] = useState<CountryData[]>([]);
   const [loading, setLoading] = useState(true);

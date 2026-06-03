@@ -27,10 +27,7 @@ interface DashboardData {
     performanceMetrics: unknown;
   };
 }
-export default /**
- * EnhancedQMOIDashboard function
- */
-function EnhancedQMOIDashboard(): any {
+export default function EnhancedQMOIDashboard(): any {
   try {({
   isMaster = false,
 }: {
