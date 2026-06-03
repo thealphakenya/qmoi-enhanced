@@ -16,6 +16,8 @@
 **Rate Limiting:** ❌ enabled for Sponsored Users
 **Access Control:** 🔒 Master Only UI Access
 
+> See `SPONSORED_FEATURES_SUMMARY.md` for a consolidated listing of sponsored docs, UI features, routes, and access controls.
+
 ---
 
 ## Table of Contents

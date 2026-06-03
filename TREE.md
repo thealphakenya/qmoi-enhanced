@@ -46,6 +46,8 @@
 
 The QMOI Enhanced repository is organized into distinct architectural zones supporting frontend, backend, services, automation, and tooling layers.
 
+> Source tree verified for QMOI AI integration. See `src_tree.txt` for the live `src/` directory snapshot and `SRC.md` for the current source inventory.
+
 ## 🏗️ Core Directory Layers
 
 ### Frontend & UI Layer
