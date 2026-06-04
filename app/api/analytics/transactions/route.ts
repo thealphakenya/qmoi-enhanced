@@ -5,11 +5,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma as db } from "@/lib/db/prisma";
 
-import { logger } from '@/lib/logger';
+import logger from '@/lib/logger';
+import { requireApiKey } from '@/lib/proposals';
+import authService from '@/lib/auth/service';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
-export async function GET(req: NextRequest): any {
+export async function GET(req: NextRequest): Promise<any> {
   try {
     const apiCheck = requireApiKey(req.headers);
     if (!apiCheck.ok) {

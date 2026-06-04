@@ -52,7 +52,8 @@ The production app uses the following live page entrypoints under `app/`:
 ## Legacy Page Artifacts
 
 - The repository also contains legacy static page artifacts and archived page directories.
-- These artifacts are not part of the current production app router and are being cleaned in the current maintenance pass.
+- Active PWA launcher shells live under `public/` and remain part of the deployed static asset set.
+- These legacy root-level HTML duplicates are being cleaned so the repository relies on the official `public/` shell entrypoints for static page routes.
 
 ## Directory Structure
 

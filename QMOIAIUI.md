@@ -108,7 +108,7 @@ docker-compose -f docker-compose.yml up -d app nginx
 - Static server fallback inside a restricted devcontainer:
 
 ```bash
-cd /workspaces/qmoi-enhanced
+cd /workspaces/qmoi-enhanced/public
 python3 -m http.server 8000 --bind 0.0.0.0
 # Then open: http://localhost:8000/qmoi-ai.html
 "$BROWSER" http://localhost:8000/qmoi-ai.html
@@ -963,9 +963,9 @@ Main Dashboard
 ├── Open Dashboard → External dashboard interface
 ├── Settings → Settings panel (opens popup)
 ├── production → production production (opens popup)
-├── Open QMOI Space → Redirects to /qmoi-space.html
-├── Open QCity → Redirects to /qcity-dashboard.html
-├── Open Alpha Q → Redirects to /q-alpha.html
+├── Open QMOI Space → Navigate to /qmoi-space (primary live page at `/qmoi-space` served by `app/qmoi-space/page.tsx`; static shell `/qmoi-space.html` available as fallback)
+├── Open QCity → Navigate to /qcity (primary live page at `/qcity` served by `app/qcity/page.jsx`; static shells `/qcity-dashboard.html`, `/qcity-enterprise.html`, `/qcity-complete.html` available as fallback)
+├── Open Alpha Q → Navigate to /q-alpha.html (static PWA shell — Q Alpha is a lightweight aggregator/fallback; primary apps are served by live Next.js routes)
 └── Share → Native share API or fallback
 ```
 
@@ -975,12 +975,15 @@ Main Dashboard
 - Popups can be closed with external close buttons
 
 ### Deep Links
-- /qmoi-ai.html → Main QMOI AI dashboard
-- /qmoi-space.html → QMOI Space marketplace
-- /qcity-dashboard.html → QCity dashboard
-- /q-alpha.html → Alpha Q aggregator
+- /qmoi-ai → Main QMOI AI dashboard (served by `app/qmoi-ai/page.tsx`)
+- /qmoi-ai.html → Static shell fallback for QMOI AI (served from `public/qmoi-ai.html`)
+- /qmoi-space → QMOI Space marketplace (served by `app/qmoi-space/page.tsx`)
+- /qmoi-space.html → Static shell fallback for QMOI Space (served from `public/qmoi-space.html`)
+- /qcity → QCity dashboard route (served by `app/qcity/page.jsx`)
+- /qcity-dashboard.html → Static QCity shell entrypoint (fallback)
+- /q-alpha.html → Alpha Q static aggregator shell (fallback; primary aggregated experiences are delivered by individual live app routes)
 - /admin → Administrative dashboard
-- /devices → device management interface
+- /devices → Device management interface
 - /PRODUCTION → PRODUCTIONeloper utilities
 - /friendship → Emotion-aware AI companion
 - /master → Master control panels

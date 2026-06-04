@@ -28,7 +28,6 @@ const ENVIRONMENTS = [
   "Home",
 ];
 export default function QAvatar(): any {
-  try {
   const [open, setOpen] = useState(true);
   const [settings, setSettings] = useState(() => {
     try {

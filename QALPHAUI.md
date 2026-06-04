@@ -50,6 +50,15 @@ Q Alpha is a basic Progressive Web App (PWA) shell that provides authentication,
 
 > Note: Q Alpha is implemented as a static PWA shell at `/q-alpha.html` and `/pwa_apps/q-alpha/`. It provides basic authentication and app launching functionality but does not include the comprehensive unified dashboard described in aspirational documentation.
 
+Primary application experiences are served by live Next.js routes and not by the Q Alpha static shell. Use the following live routes for the canonical, production UI surfaces:
+
+- `/qmoi-ai` — `app/qmoi-ai/page.tsx`
+- `/qmoi-space` — `app/qmoi-space/page.tsx`
+- `/qcity` — `app/qcity/page.jsx`
+- `/qvillage` — `app/qvillage/page.tsx`
+
+Q Alpha remains a lightweight aggregator and fallback for environments where the full Next.js build cannot be served.
+
 ### Key UI Characteristics
 - **Theme:** Basic dark theme with minimal styling
 - **Layout:** Simple card-based layout with basic navigation

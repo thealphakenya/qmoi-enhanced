@@ -1,10 +1,8 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:24Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-//  this file has no remaining IMPLEMENTATION_REQUIRED markers
+"use client";
+import React, { useEffect, useState } from "react";
+import apiClient from "@/api/client";
+
 export default function SystemHealthPanel(): any {
-  try {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -12,7 +10,8 @@ export default function SystemHealthPanel(): any {
   const [uiHealth, setUiHealth] = useState<string>("Unknown");
   const [uiTestTime, setUiTestTime] = useState<string>("Never");
   const [uiTestRunning, setUiTestRunning] = useState(false);
-  async function fetchStatus(): any {
+
+  const fetchStatus = async (): Promise<void> => {
     setLoading(true);
     setError(null);
     try {
@@ -20,52 +19,59 @@ export default function SystemHealthPanel(): any {
       const json = await res.json();
       setData(json);
     } catch (err: unknown) {
-      setError(err.message || "Unknown error");
+      setError((err as Error)?.message || "Unknown error");
     } finally {
       setLoading(false);
     }
-  }
-  async function runAllFixes(): any {
+  };
+
+  const runAllFixes = async (): Promise<void> => {
     setActionMsg("Running all fixes");
-    await apiClient.get("/api/qmoi/fix/all", { method: "POST" });
+    await apiClient.post("/api/qmoi/fix/all", undefined, { headers: { "Content-Type": "application/json" } });
     setActionMsg("All fixes triggered. Refreshing status");
     setTimeout(fetchStatus, 3000);
-  }
-  async function repairConnectivity(): any {
+  };
+
+  const repairConnectivity = async (): Promise<void> => {
     setActionMsg("Repairing connectivity");
-    await apiClient.get("/api/qmoi/fix/connectivity", { method: "POST" });
+    await apiClient.post("/api/qmoi/fix/connectivity", undefined, { headers: { "Content-Type": "application/json" } });
     setActionMsg("Connectivity repair triggered. Refreshing status");
     setTimeout(fetchStatus, 3000);
-  }
-  async function runUiHealthCheck(): any {
+  };
+
+  const runUiHealthCheck = async (): Promise<void> => {
     setUiTestRunning(true);
     setActionMsg("Running UI health check");
     try {
-      const res = await apiClient.get("/api/qmoi/ui-health-check", { method: "POST" });
+      const res = await apiClient.post("/api/qmoi/ui-health-check", undefined, { headers: { "Content-Type": "application/json" } });
       const json = await res.json();
       setUiHealth(json.status || "Unknown");
       setUiTestTime(new Date().toLocaleString());
       setActionMsg("UI health check complete.");
-    } catch (err) {
+    } catch (err: unknown) {
       setUiHealth("Error");
       setActionMsg("UI health check failed.");
     } finally {
       setUiTestRunning(false);
     }
-  }
-  async function triggerUiSelfHealing(): any {
+  };
+
+  const triggerUiSelfHealing = async (): Promise<void> => {
     setActionMsg("Triggering UI self-healing");
-    await apiClient.get("/api/qmoi/fix/ui", { method: "POST" });
+    await apiClient.post("/api/qmoi/fix/ui", undefined, { headers: { "Content-Type": "application/json" } });
     setActionMsg("UI self-healing triggered.");
     setTimeout(runUiHealthCheck, 3000);
-  }
+  };
+
   useEffect(() => {
     fetchStatus();
     const interval = setInterval(fetchStatus, 20000);
     return () => clearInterval(interval);
   }, []);
+
   if (loading) return <div>Loading system health</div>;
   if (error) return <div style={{ color: "red" }}>Error: {error}</div>;
+
   return (
     <div
       style={{
@@ -78,90 +84,48 @@ export default function SystemHealthPanel(): any {
     >
       <h2>QMOI System Health</h2>
       <p>
-        <b>Status:</b> {data.status}
+        <b>Status:</b> {data?.status}
       </p>
       <p>
-        <b>Last Check:</b> {data.last_check}
+        <b>Last Check:</b> {data?.last_check}
       </p>
       <div style={{ margin: "12px 0" }}>
         <button
           onClick={runAllFixes}
-          style={{
-            marginRight: 8,
-            background: "#0af",
-            color: "#fff",
-            padding: "6px 16px",
-            borderRadius: 4,
-          }}
+          style={{ marginRight: 8, background: "#0af", color: "#fff", padding: "6px 16px", borderRadius: 4 }}
         >
           Run All Fixes
         </button>
         <button
           onClick={repairConnectivity}
-          style={{
-            background: "#0fa",
-            color: "#222",
-            padding: "6px 16px",
-            borderRadius: 4,
-          }}
+          style={{ background: "#0fa", color: "#222", padding: "6px 16px", borderRadius: 4 }}
         >
           Repair Connectivity
         </button>
-        {actionMsg && (
-          <span style={{ marginLeft: 16, color: "#ff0" }}>{actionMsg}</span>
-        )}
+        {actionMsg && <span style={{ marginLeft: 16, color: "#ff0" }}>{actionMsg}</span>}
       </div>
-      <h3>Pre-Activity Check</h3>
-      <pre
-        style={{
-          background: "#222",
-          color: "#fff",
-          padding: 8,
-          borderRadius: 4,
-          maxHeight: 200,
-          overflowY: "auto",
-        }}
-      >
-        {JSON.stringify(data.preActivity, null, 2)}
-      </pre>
-      <h3>Connectivity Status</h3>
-      <pre
-        style={{
-          background: "#222",
-          color: "#fff",
-          padding: 8,
-          borderRadius: 4,
-          maxHeight: 200,
-          overflowY: "auto",
-        }}
-      >
-        {JSON.stringify(data.connectivity, null, 2)}
-      </pre>
-      <h3>Cloud Status</h3>
-      <pre
-        style={{
-          background: "#222",
-          color: "#fff",
-          padding: 8,
-          borderRadius: 4,
-          maxHeight: 200,
-          overflowY: "auto",
-        }}
-      >
-        {JSON.stringify(data.cloud, null, 2)}
-      </pre>
       <div>
-        <h3 className="font-semibold mb-2">UI Health Status</h3>
-        <div>Status: {uiHealth}</div>
-        <div>Last Test: {uiTestTime}</div>
-        <button
-          onClick={runUiHealthCheck}
-          enabled={uiTestRunning}
-          style={{ marginRight: 8 }}
-        >
-          {uiTestRunning ? "Running" : "Run UI Health Check"}
-        </button>
-        <button onClick={triggerUiSelfHealing}>Trigger UI Self-Healing</button>
+        <h3>Pre-Activity</h3>
+        <pre style={{ background: "#222", color: "#fff", padding: 8, borderRadius: 4, maxHeight: 200, overflowY: "auto" }}>
+          {JSON.stringify(data?.preActivity, null, 2)}
+        </pre>
+        <h3>Connectivity Status</h3>
+        <pre style={{ background: "#222", color: "#fff", padding: 8, borderRadius: 4, maxHeight: 200, overflowY: "auto" }}>
+          {JSON.stringify(data?.connectivity, null, 2)}
+        </pre>
+        <h3>Cloud Status</h3>
+        <pre style={{ background: "#222", color: "#fff", padding: 8, borderRadius: 4, maxHeight: 200, overflowY: "auto" }}>
+          {JSON.stringify(data?.cloud, null, 2)}
+        </pre>
+        <div>
+          <h3 className="font-semibold mb-2">UI Health Status</h3>
+          <div>Status: {uiHealth}</div>
+          <div>Last Test: {uiTestTime}</div>
+          <button onClick={runUiHealthCheck} disabled={uiTestRunning} style={{ marginRight: 8 }}>
+            {uiTestRunning ? "Running" : "Run UI Health Check"}
+          </button>
+          <button onClick={triggerUiSelfHealing}>Trigger UI Self-Healing</button>
+        </div>
       </div>
     </div>
   );

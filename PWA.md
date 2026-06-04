@@ -43,6 +43,15 @@ This file documents all PWAs available for each platform and app type. Each PWA 
 - `.webmanifest` for manifest
 - `.json` for config/data
 
+## Build Scripts
+- `npm run build` — build the Next.js production app.
+- `npm run build:all` — build all platforms and PWA artifacts via `scripts/build-all.sh`.
+- `npm run build:qmoi` — build the QMOI web app and static PWA assets via `scripts/build-qmoi.sh`.
+- `npm run build:pwa` — build platform-specific PWA artifacts via `scripts/build-all-platforms.sh`.
+- `npm run docs:update` — sync all markdown docs using `scripts/autoupdate_docs.sh`.
+- `npm run docs:validate` — validate documentation with `python3 scripts/comprehensive_md_validator.py`.
+- `npm run serve:public` — locally serve public assets from the `public/` directory.
+
 ## Build & Validation
 
 - All PWAs are built and validated for each platform and app type.
@@ -50,11 +59,11 @@ This file documents all PWAs available for each platform and app type. Each PWA 
 
 ## PWA Serving and UI Convergence
 
-- PWAs are served from `pwa_apps/` and the browser host can deliver all app shells from one root origin.
-- `app/qmoi-ai/page.tsx`, `app/qmoi-space/page.tsx`, and `app/qcity/page.jsx` are live Next.js UI pages, while `public/qmoi-ai.html` and `public/qmoi-space.html` remain static PWA launcher assets.
-- `q-alpha.html` and `/pwa_apps/q-alpha/` are the Q Alpha aggregator shell entry points, providing a unified installable hub that consolidates QMOI AI, QMOI Space, and QCity.
-- The repository supports both interactive page routes and installable shell entry points for consistent QMOI AI, QMOI Space, and Q Alpha experiences.
-- Runtime update checks, service worker lifecycle handling, and offline fallbacks are all part of the documented PWA build and validation flow.
+- Canonical production UI surfaces are live Next.js pages served from the `app/` directory: `/qmoi-ai` (`app/qmoi-ai/page.tsx`), `/qmoi-space` (`app/qmoi-space/page.tsx`), `/qcity` (`app/qcity/page.jsx`), and `/qvillage` (`app/qvillage/page.tsx`). These live routes are the primary delivery surfaces for their respective applications.
+- Static PWA launcher shells under `public/` and `pwa_apps/` (for example `public/qmoi-ai.html`, `public/qmoi-space.html`, `public/q-alpha.html`, and `pwa_apps/q-alpha/`) are compatibility/fallback entrypoints intended for installs, constrained environments, or when the full Next.js app cannot be served. They are not the canonical runtime UI for production traffic.
+- `public/qcity-dashboard.html`, `public/qcity-enterprise.html`, and `public/qcity-complete.html` provide static QCity shell fallbacks when needed.
+- The repository supports both interactive page routes and installable shell entry points; prefer live Next.js routes for production deployments and use static shells only as documented fallbacks.
+- Runtime update checks, service worker lifecycle handling, and offline fallbacks are part of the documented PWA build and validation flow.
 
 ---
 

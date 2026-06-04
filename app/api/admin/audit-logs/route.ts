@@ -13,7 +13,7 @@ const inMemoryAuditLogs: any[] = [];
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
-export async function GET(req: NextRequest): any {
+export async function GET(req: NextRequest): Promise<any> {
   try {
     const apiCheck = requireApiKey(req.headers);
     if (!apiCheck.ok) {
@@ -115,7 +115,7 @@ export async function GET(req: NextRequest): any {
       { status: 200 },
     );
   } catch (_error){
-    log.error("Audit logs error", { error });
+    log.error("Audit logs error", { error: _error instanceof Error ? _error.message : String(_error) });
     return NextResponse.json(
       { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
       { status: 500 },
@@ -138,7 +138,7 @@ export async function createAuditLog({
   changes?: Record<string, unknown>;
   ipAddress?: string;
   userAgent?: string;
-}): any {
+}): Promise<any> {
   try {
     return await db.auditLog.create({
       data: {
@@ -153,11 +153,11 @@ export async function createAuditLog({
       },
     });
   } catch (error){
-    log.error('Error creating audit log', error);
+    log.error('Error creating audit log', { error: error instanceof Error ? error.message : String(error) });
     // Don't throw - audit logging should not break main flow
   }
 }
-export async function POST(req: NextRequest): any {
+export async function POST(req: NextRequest): Promise<any> {
   try {
     const token = req.headers.get("Authorization")?.replace("Bearer ", "");
     if (!token) {
@@ -193,7 +193,7 @@ export async function POST(req: NextRequest): any {
     try {
       user = await db.userService.findById(String(decoded.userId));
     } catch (error){
-      log.error('Audit logs admin fallback role check failed', error);
+      log.error('Audit logs admin fallback role check failed', { error: error instanceof Error ? error.message : String(error) });
       user = { role: "admin" }; // Assume admin only in local/test fallback mode
     }
     if (!user || user.role !== "admin") {
@@ -226,7 +226,7 @@ export async function POST(req: NextRequest): any {
         take: 10000,
       });
     } catch (error){
-      log.error('Database error retrieving audit logs', error);
+      log.error('Database error retrieving audit logs', { error: error instanceof Error ? error.message : String(error) });
       logs = inMemoryAuditLogs.slice(0, 10000);
     }
     let content: string;
@@ -237,7 +237,7 @@ export async function POST(req: NextRequest): any {
       filename = `audit-logs-${new Date().toISOString()}.json`;
       contentType = "application/json";
     } else if (format === "csv") {
-      content = convertLogsToCSV;
+      content = convertLogsToCSV(logs);
       filename = `audit-logs-${new Date().toISOString()}.csv`;
       contentType = "text/csv";
     } else {
@@ -257,7 +257,7 @@ export async function POST(req: NextRequest): any {
       },
     });
   } catch (_error){
-    (globalThis.console as any)?._error?.("Audit log export _error:", _error);
+    log.error("Audit log export _error:", { error: _error instanceof Error ? _error.message : String(_error) });
     return NextResponse.json(
       { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
       { status: 500 },

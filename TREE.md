@@ -57,32 +57,34 @@ The QMOI Enhanced repository is organized into distinct architectural zones supp
 /components/ui/       — Shared UI primitives (54 shadcn/ui components)
 /components/q-city/    — QCity product-specific dashboard and device management components (14 files)
 /dashboard/           — Lightweight dashboard application package
-/pwa_apps/qmoi-ai/     — QMOI AI static PWA assets and service worker
-/pwa_apps/qmoi-space/  — QMOI Space static PWA assets and installable shell
-/pwa_apps/q-alpha/     — Q Alpha aggregator shell for QMOI AI, QMOI Space, QCity, and QVillage
-/pwa_apps/qvillage/    — QVillage static PWA assets and community workspace shell
-/qmoi-ai.html          — Static PWA launcher for QMOI AI
-/qmoi-ai-live.html     — Live launcher for QMOI AI PWA
-/qmoi-space.html       — Static PWA launcher for QMOI Space
-/q-alpha.html          — Root redirect to Q Alpha aggregator
-/qcity-enterprise.html  — QCity Enterprise entrypoint
-/qcity-complete.html    — QCity Complete entrypoint
-/qcity-dashboard.html   — QCity Dashboard entrypoint
-/qvillage.html         — QVillage community portal entrypoint
+/public/              — Static manifest and app entrypoint assets for installable PWA shells
+/public/q-alpha.html  — Q Alpha aggregator shell entry point
+/public/qmoi-ai.html  — QMOI AI static launcher shell entry point
+/public/qmoi-space.html — QMOI Space static launcher shell entry point
+/public/qcity-dashboard.html — QCity dashboard shell entry point
+/public/qcity-enterprise.html — QCity enterprise shell entry point
+/public/qcity-complete.html — QCity complete shell entry point
+/public/qcity/index.html — QCity shell and redirect host asset
+/public/qmoi-pwa-manager.js — QMOI PWA install/update helper
+/public/service-worker.js — Shared service worker for offline caching and update handling
 /app/qmoi-ai/page.tsx  — Live QMOI AI Next.js page with full interactive dashboard components
 /app/qmoi-space/page.tsx — Live QMOI Space Next.js page with collaboration and marketplace UI
 /app/qcity/page.jsx    — Live QCity dashboard page with role-aware controls
 /app/qvillage/page.tsx — Live QVillage community workspace page with dataset and model summaries
-/app/qalpha/page.tsx   — Not present in this release; Q Alpha is served as a static PWA shell via /q-alpha.html and /pwa_apps/q-alpha/
-/public/              — Static manifest and app entrypoint assets for installable PWA shells
-/hooks/useQCity.ts     — QCity integration hook
-/hooks/useQAlpha.ts    — Not present in this release; Q Alpha aggregation is handled by static PWA shell assets
-/api/qcity.ts          — QCity API surface
-/api/qalpha.ts         — Planned Q Alpha API surface for unified metrics and orchestration
-/scripts/qcity-ui-server.js — QCity development UI server helper
-/scripts/qmoi-ai-server.js  — QMOI AI local server helper
-/scripts/qalpha-server.js  — Q Alpha orchestration server helper
+/hooks/useAuth.ts      — Shared authentication hook used by app pages
+/scripts/build-all.sh  — Build all app assets and production artifacts
+/scripts/build-qmoi.sh — Build QMOI web app and PWA assets
+/scripts/autoupdate_docs.sh — Documentation auto-sync script
+/scripts/serve-static.js — Local static asset server helper
 ```
+
+### Developer Instructions
+- Use `app/qmoi-ai/page.tsx`, `app/qmoi-space/page.tsx`, `app/qcity/page.jsx`, and `app/qvillage/page.tsx` for live app routes.
+- Static PWA shells are served from `public/` and exposed at `/q-alpha.html`, `/qmoi-ai.html`, `/qmoi-space.html`, `/qcity-dashboard.html`, `/qcity-enterprise.html`, and `/qcity-complete.html`.
+- To add a new app route, create a page under `app/`, update `ALLPAGES.md`, and add the source-to-route mapping in `ROUTES.md`.
+- To add a new static shell, create the launcher file under `public/` and verify it with `npm run serve:public` or `node scripts/serve-static.js`.
+- Build and production automation is managed through `scripts/build-all.sh`, `scripts/build-qmoi.sh`, and `scripts/autoupdate_docs.sh`.
+- Q Alpha aggregation is currently delivered as a static shell; there is no `app/qalpha/page.tsx` implementation in this release.
 
 ### Backend & Services Layer
 ```

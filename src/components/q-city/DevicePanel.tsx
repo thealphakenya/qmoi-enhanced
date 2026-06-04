@@ -37,14 +37,22 @@ export default function DevicePanel(): any {
   }, []);
   const save = () => {
     setLoading(true);
-    apiClient.get("/api/qcity/devices", {
-      method: editing ? "PUT" : "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token ? `Bearer ${token}` : "",
-      },
-      body: JSON.stringify(editing ? { form, id: editing.id } : form),
-    })
+    const requestBody = editing ? { ...form, id: editing.id } : form;
+    const request = editing
+      ? apiClient.put("/api/qcity/devices", requestBody, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token ? `Bearer ${token}` : "",
+          },
+        })
+      : apiClient.post("/api/qcity/devices", requestBody, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token ? `Bearer ${token}` : "",
+          },
+        });
+
+    request
       .then(fetchDevices)
       .then(() => {
         setForm({
@@ -62,8 +70,7 @@ export default function DevicePanel(): any {
   };
   const del = (id: string) => {
     setLoading(true);
-    apiClient.get("/api/qcity/devices", {
-      method: "DELETE",
+    apiClient.del("/api/qcity/devices", {
       headers: {
         "Content-Type": "application/json",
         Authorization: token ? `Bearer ${token}` : "",
@@ -71,24 +78,24 @@ export default function DevicePanel(): any {
       body: JSON.stringify({ id }),
     })
       .then(fetchDevices)
-      .catch((e) => setError(e.message))
+      .catch((e) => setError((e as Error).message || "Failed to delete device"))
       .finally(() => setLoading(false));
   };
   const test = (id: string) => {
     setTestResult("Testing");
-    apiClient.get("/api/qcity/devices?action=test", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token ? `Bearer ${token}` : "",
-      },
-      body: JSON.stringify({ id }),
-    })
+    apiClient.post(
+      "/api/qcity/devices?action=test",
+      { id },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token ? `Bearer ${token}` : "",
+        },
+      }
+    )
       .then((r) => r.json())
-      .then((data) =>
-        setoperational_data.error || "Failed"),
-      )
-      .catch((e) => setTestResult(e.message));
+      .then((data) => setTestResult(data.operational_data?.error || data.error || "Failed"))
+      .catch((e) => setTestResult((e as Error).message || "Test failed"));
   };
   return (
     <div className="p-4 bg-gray-900 rounded-lg shadow-lg">
@@ -104,13 +111,13 @@ export default function DevicePanel(): any {
         <input
           placeholder="Name"
           value={form.name}
-          onChange={(e) => setForm((f) => ({ f, name: e.target.value }))}
+          onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
           placeholder="Host"
           value={form.host}
-          onChange={(e) => setForm((f) => ({ f, host: e.target.value }))}
+          onChange={(e) => setForm((prev) => ({ ...prev, host: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
@@ -118,21 +125,21 @@ export default function DevicePanel(): any {
           type="number"
           value={form.port}
           onChange={(e) =>
-            setForm((f) => ({ f, port: Number(e.target.value) }))
+            setForm((prev) => ({ ...prev, port: Number(e.target.value) }))
           }
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
           placeholder="Username"
           value={form.username}
-          onChange={(e) => setForm((f) => ({ f, username: e.target.value }))}
+          onChange={(e) => setForm((prev) => ({ ...prev, username: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
           placeholder="Password"
           type="password"
           value={form.password}
-          onChange={(e) => setForm((f) => ({ f, password: e.target.value }))}
+          onChange={(e) => setForm((prev) => ({ ...prev, password: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input

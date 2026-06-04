@@ -16,8 +16,8 @@ fully implemented
 **Production Audit:** ✅ Reviewed May 19, 2026 — public endpoints verified and internal diagnostics are identified separately.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
 **Total Indexed Markdown Files:** 1189
-**Total Route Source Files:** 304
-**Actual endpoint handler files:** 304
+**Total Route Source Files:** 309
+**Actual endpoint handler files:** 309
 **Status:** ✅ 
 
 ## Document Purpose
@@ -31,12 +31,12 @@ The endpoint inventory is derived from live route handler source files under `sr
 | Endpoint Source | Route Files | Notes |
 |---|---|---|
 | `src/app/api/` | 43 | Active Next.js App Router production endpoints |
-| `app/api/` | 261 | Legacy route handler support and compatibility endpoints |
-| **Total** | **304** | Combined documented API source files in the repository |
+| `app/api/` | 266 | Legacy route handler support and compatibility endpoints |
+| **Total** | **309** | Combined documented API source files in the repository |
 
 ### Route Category Summary
 - `src/app/api/` contains 43 active production app-router endpoints.
-- `app/api/` contains 261 legacy and compatibility route handler sources, including backward compatibility handlers and ongoing migration routes.
+- `app/api/` contains 266 legacy and compatibility route handler sources, including backward compatibility handlers and ongoing migration routes.
 - The active production endpoint surface is maintained in `src/app/api/`; legacy `app/api/` handlers remain for compatibility and migration tracking.
 
 | Category | Combined Route Files | Notes |

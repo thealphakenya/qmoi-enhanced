@@ -68,7 +68,9 @@ export const ProtectedRevenueDashboard: React.FC = () => {
           "success"
         );
       } catch (err) {
+        const errorDetails = err instanceof Error ? err : { message: String(err) };
         setError(err instanceof Error ? err.message : "Unknown error");
+        log.error("Failed to fetch revenue data:", errorDetails);
       }
     };
     fetchRevenueData();
@@ -137,7 +139,8 @@ export const ProtectedWalletManager: React.FC = () => {
           walletCount: data.wallets?.length || 0,
         });
       } catch (err) {
-        log.error("Failed to fetch wallets:", err);
+        const errorDetails = err instanceof Error ? err : { message: String(err) };
+        log.error("Failed to fetch wallets:", errorDetails);
       }
     };
     fetchWallets();
@@ -192,7 +195,8 @@ export const ProtectedTransactionHistory: React.FC = () => {
         const data = await response.json();
         setTransactions(data.transactions || []);
       } catch (err) {
-        log.error("Failed to fetch transactions:", err);
+        const errorDetails = err instanceof Error ? err : { message: String(err) };
+        log.error("Failed to fetch transactions:", errorDetails);
       }
     };
     fetchTransactions();
@@ -281,21 +285,35 @@ export default {
   AccessDeniedFallback,
   LoadingState,
 };
-class ErrorBoundary extends React.Component {
-  constructor(props: any) {
+
+type ErrorBoundaryProps = {
+  children?: React.ReactNode;
+};
+
+type ErrorBoundaryState = {
+  hasError: boolean;
+};
+
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false };
   }
+
   static getDerivedStateFromError(_error: unknown) {
     return { hasError: true };
   }
+
   componentDidCatch(error: unknown, errorInfo: unknown) {
-    log.error('Error caught by boundary:', error as Error, { errorInfo });
+    const errorDetails = error instanceof Error ? error : { message: String(error) };
+    log.error('Error caught by boundary:', errorDetails, { errorInfo });
   }
+
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
     }
+
     return this.props.children;
   }
 }

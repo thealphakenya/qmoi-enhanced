@@ -18,11 +18,9 @@ fully implemented
 **Page Inventory:** See `ALLPAGES.md` for all live app entry points and shell launch routes.
 
 ## Verified production PWA Route Mapping
-- `app/qmoi-ai/page.tsx` is a live QMOI AI Next.js page with a full interactive dashboard experience.
-- `app/qmoi-space/page.tsx` is a live QMOI Space Next.js page with a marketplace and collaborative dashboard.
-- `public/qmoi-ai.html` and `public/qmoi-space.html` provide static PWA launcher entry points for their respective shell assets.
-- `app/qcity/page.jsx` and `app/qvillage/page.tsx` are active role-aware UI pages using `app/hooks/useAuth.ts`.
-- `public/q-alpha.html` is the Q Alpha static aggregator shell providing live QMOI model health checks and aggregator launch controls.
+- Canonical production UI surfaces are live Next.js pages served from the `app/` directory: `app/qmoi-ai/page.tsx` (`/qmoi-ai`), `app/qmoi-space/page.tsx` (`/qmoi-space`), `app/qcity/page.jsx` (`/qcity`), and `app/qvillage/page.tsx` (`/qvillage`). These live routes deliver the full interactive dashboard experiences and are the primary delivery surfaces for production traffic.
+- Static PWA launcher shells such as `public/qmoi-ai.html`, `public/qmoi-space.html`, and `public/q-alpha.html` are compatibility/fallback entry points and are intended for installers or constrained hosting scenarios; they are not the canonical runtime UI for production deployments.
+- `app/qcity/page.jsx` and `app/qvillage/page.tsx` are active role-aware UI pages using `app/hooks/useAuth.ts` and should be used as the authoritative UI routes.
 - Runtime update support is available via `/api/pwa/check-update` and `/api/pwa/auto-update`.
 
 ## QMOI Production Model Integration
@@ -47,9 +45,9 @@ Files touched for production integration:
 Note: run integration tests against a running dev server to validate connectivity and response shapes before enabling traffic to the production model.
 
 ## Route Source Inventory
-- Legacy route source files in `app/api/` number 261 in the repository tree.
-- 239 of those files are legacy route handler endpoints; 22 files are supporting config/docs and helper files under `app/api/`.
-- The current production app-router surface is served from `src/app/api/`; `app/api/` is maintained for compatibility and migration reference.
+- Legacy route source files in `app/api/` number 266 in the repository tree.
+- These include legacy compatibility endpoints and helper/config files maintained for migration and compatibility reference.
+- The current production app-router surface is served from `src/app/api/`; `app/api/` remains a compatibility/migration reference.
 - Key production route additions include `/api/analytics/wallets` for wallet analytics and `/api/qmoi-model` for production model health.
 - Route categories include auth, qmoi, qcity, qvillage, cashon, ai, media, deploy, and more.
 

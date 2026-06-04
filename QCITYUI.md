@@ -716,7 +716,7 @@ export default function QCityCommandCenter() {
 QCity Dashboard
 ├── Switch to Master Role → Reload with master permissions
 ├── Open QVillage → Navigate to /qvillage
-├── Open QMOI Space → Navigate to /qmoi-space.html
+├── Open QMOI Space → Navigate to /qmoi-space (primary live page at `/qmoi-space` served by `app/qmoi-space/page.tsx`; static shell `/qmoi-space.html` available as fallback)
 └── Role-based feature access
 ```
 
@@ -728,7 +728,9 @@ QCity Dashboard
 ### Deep Links
 - /qcity → Main command center
 - /qvillage → Community workspace
-- /qmoi-space.html → Marketplace PWA
+- /qmoi-space → Marketplace app route (served by `app/qmoi-space/page.tsx`)
+- /qmoi-space.html → Static shell fallback for QMOI Space (served from `public/qmoi-space.html`)
+- /qcity-enterprise.html, /qcity-complete.html, /qcity-dashboard.html → Static QCity launcher shells served from the `public/` directory (fallbacks)
 
 ---
 

@@ -9,6 +9,8 @@
 **Page Inventory:** `ALLPAGES.md` includes all 30 live page routes and shell entry points.
 **Production Readiness:** ✅ Fully implemented production server orchestration, security, monitoring, autoscaling, and authentication
 
+> All actual application experiences are served by real production-ready routes. Static shells in `public/` and `pwa_apps/` provide compatibility launch points, PWA install wrappers, and fallback entrypoints.
+
 ## 🚀 START HERE
 
 **New to this setup?** Start with [SETUP_SESSION_SUMMARY.md](SETUP_SESSION_SUMMARY.md) for a quick overview and then follow this guide.
@@ -19,11 +21,13 @@
 
 ## Production Architecture
 
-- **Unified Aggregator:** Q Alpha Aggregator serves as the primary entry point and orchestrator for all QMOI applications. It is currently supplied as a static PWA shell under `/pwa_apps/q-alpha/` and accessible via `/q-alpha.html`, instead of a live Next.js route.
+- **Unified Aggregator:** Q Alpha Aggregator is provided as a static PWA shell entry point for the aggregator experience, served from `public/q-alpha.html` and `/pwa_apps/q-alpha/`.
+- **Actual App Delivery:** The real production applications are served by live Next.js routes: `/qmoi-ai`, `/qmoi-space`, `/qcity`, and `/qvillage`.
 - **Service Mesh:** All apps run behind a secure load balancer with API gateway routing and JWT/API key validation.
 - **Containerized Deployment:** Docker-based deployment with production-ready runtime containers.
 - **Infrastructure:** AWS/EKS-ready with auto-scaling groups, security groups, private subnets, and managed databases.
-- **Live Page Routing:** Production web UI routes include `/qcity`, `/qmoi-space`, and `/qmoi-ai`, while the Q Alpha aggregator shell is served from `/q-alpha.html` and `/pwa_apps/q-alpha/`.
+- **Live Page Routing:** Production web UI routes include `/qmoi-ai`, `/qmoi-space`, `/qcity`, and `/qvillage`. These are served from real Next.js app routes (`app/qmoi-ai/page.tsx`, `app/qmoi-space/page.tsx`, `app/qcity/page.jsx`, `app/qvillage/page.tsx`).
+- **Compatibility Shells:** Static PWA launchers in `public/` are available as fallback shells: `/qmoi-ai.html`, `/qmoi-space.html`, `/qcity-dashboard.html`, `/qcity-enterprise.html`, `/qcity-complete.html`, and `/q-alpha.html`. They are compatibility wrappers, not primary delivery surfaces.
 - **Monitoring:** CloudWatch/Datadog monitoring, log aggregation, alerting, and health checks.
 - **Security:** TLS, API authentication, environment-based secrets management, and rate limiting.
 
@@ -160,10 +164,16 @@ docker-compose -f docker-compose.yml up -d app nginx
 - Static server fallback inside a restricted devcontainer or when docker is unavailable:
 
 ```bash
-cd /workspaces/qmoi-enhanced
+cd /workspaces/qmoi-enhanced/public
 python3 -m http.server 8000 --bind 0.0.0.0
-# Open the QMOI AI launcher at: http://localhost:8000/qmoi-ai.html
-# Or open the PWA shell directly at: http://localhost:8000/pwa_apps/qmoi-ai/index.html
+# The actual app routes remain live at /qmoi-ai, /qmoi-space, /qcity, and /qvillage.
+# The static HTML files below are compatibility shells only:
+# - http://localhost:8000/qmoi-ai.html
+# - http://localhost:8000/qmoi-space.html
+# - http://localhost:8000/q-alpha.html
+# - http://localhost:8000/qcity-dashboard.html
+# - http://localhost:8000/qcity-enterprise.html
+# - http://localhost:8000/qcity-complete.html
 "$BROWSER" http://localhost:8000/qmoi-ai.html
 ```
 
@@ -178,10 +188,10 @@ python3 -m http.server 8000 --bind 0.0.0.0
 - `/api/qmoi-space` — QMOI Space API
 - `/api/qcity` — QCity service endpoints
 - `/api/qvillage` — QVillage integrations
-- `/qmoi-space` — QMOI Space live UI route
-- `/qcity` — QCity live UI route
-- `/qvillage` — QVillage live UI route
-- `/qmoi-ai` — QMOI AI live UI route
+- `/qmoi-space` — QMOI Space live UI route (`app/qmoi-space/page.tsx`)
+- `/qcity` — QCity live UI route (`app/qcity/page.jsx`)
+- `/qvillage` — QVillage live UI route (`app/qvillage/page.tsx`)
+- `/qmoi-ai` — QMOI AI live UI route (`app/qmoi-ai/page.tsx`)
 - `/q-alpha.html` — Q Alpha static aggregator shell entry point (redirects into the Q Alpha PWA experience)
 - `/api/payments` — Production payment gateway
 - `/api/emergency` — Emergency and lockdown orchestration

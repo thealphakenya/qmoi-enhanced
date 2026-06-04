@@ -8,14 +8,14 @@ export default function AdminPage() {
     uptime: "99.9%"
   });
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     fetchDashboardData();
   }, []);
   const fetchDashboardData = async () => {
     try {
       const response = await fetch('/api/admin/dashboard');
-      const data = await response.json();
+      const data = await (response.json?.() ?? Promise.resolve({}));
       if (data.success) {
         setMetrics({
           totalUsers: data.data.totalUsers,
@@ -28,7 +28,7 @@ export default function AdminPage() {
       }
     } catch (err) {
       setError("Network error loading dashboard");
-      console.error(err);
+      console?.error?.(err);
     } finally {
       setLoading(false);
     }

@@ -38,6 +38,7 @@
 
 ## Notes
 - This inventory includes all live page routes and static shell entrypoints currently present in the repository.
+- Root-level duplicate HTML shell assets are not included here; all canonical static shell entrypoints now live under `public/`.
 - Verified June 2026: Includes all current QMOI AI, QMOI Space, QCity, QVillage, admin, master, and PWA entrypoints.
 - Use `ALLSERVE.md` and `ALLMDFILESREFS.md` for broader service and documentation indexes.
 

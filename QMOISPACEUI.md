@@ -1074,7 +1074,8 @@ Main Marketplace
 - No traditional navigation stack
 
 ### Deep Links
-- /qmoi-space.html → Main marketplace
+- /qmoi-space → Main marketplace
+- /qmoi-space.html → Static shell redirect for QMOI Space (served from `public/qmoi-space.html`)
 - Integrated with QMOI AI and QCity navigation
 
 ---

@@ -1,3 +1,5 @@
+export * from "./master-access-control.tsx";
+
 export class MasterAccessControl {
   static async validateMasterAccess(userId: string | number): Promise<void> {
     const id = String(userId);

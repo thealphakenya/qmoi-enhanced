@@ -3,8 +3,8 @@ Generated: 2026-05-19T00:00:00.000000Z
 **Production Audit:** ✅ Reviewed May 19, 2026 — internal developer-only API routes are excluded from the documented production surface.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
 **Total Indexed Markdown Files:** 3530
-Total API Route Handlers: 249
-Legacy route source files in `app/api/`: 261 (239 legacy/compatibility endpoint handlers, 22 supporting helper/config files)
+Total API Route Handlers: 266
+Legacy route source files in `app/api/`: 266 (legacy compatibility endpoint handlers and helper/config files)
 
 ## Verified production PWA Route Mapping
 - `app/qmoi-ai/page.tsx` is a live QMOI AI Next.js page delivering the full interactive AI dashboard.

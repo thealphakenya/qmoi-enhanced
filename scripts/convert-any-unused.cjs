@@ -1,9 +1,6 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:58.163405 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:13.989389 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:09.669866 -->
 #!/usr/bin/env node
-const fs = import("fs");
-const path = import("path");
+import fs from "fs";
+import path from "path";
 
 const ROOT = process.cwd();
 const APPLY = process.argv.includes("--apply");
@@ -21,16 +18,10 @@ const EXTS = new Set([".ts", ".tsx", ".js", ".jsx"]);
 let filesChanged = 0;
 let filesScanned = 0;
 
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function shouldIgnore(entry) {
   return IGNORES.includes(entry);
 }
 
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function walk(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   for (const e of entries) {
@@ -44,46 +35,31 @@ function walk(dir) {
   }
 }
 
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function tryProcessFile(filePath) {
-  let content = fs.readFileSync(filePath, "utf8");
-  let original = content;
+  const content = fs.readFileSync(filePath, "utf8");
+  let updated = content;
 
-  // 1) Convert explicit any type annotations to unknown
-  content = content.replace(/:\s*any\b/g, ": unknown");
+  // Convert explicit any type annotations to unknown where safe
+  updated = updated.replace(/:\s*any\b/g, ": unknown");
 
-  // 2) Prefix declared vars named unused* with an underscore (const/let/const)
-  content = content.replace(
-    /\b([cC]onst|let|const)\s+(unused[A-Za-z0-9_]*)/g,
-    (m, decl, name) => `${decl} _${name}`,
-  );
+  // Prefix unused variable names with underscore so TS treats them as intentionally unused.
+  updated = updated.replace(/\b(unused[A-Za-z0-9_]*)\b/g, "_$1");
 
-  // 3) Prefix // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-function parameters named unused* (comprehensive pattern: (, or start)
-  content = content.replace(
-    /([,(\s])\b(unused[A-Za-z0-9_]*)\b/g,
-    (m, before, name) => `${before}_${name}`,
-  );
-
-  if (content !== original) {
+  if (updated !== content) {
     filesChanged++;
-    logger.info((APPLY ? "Updating" : "Would update") + `: ${filePath}`);
-    if (APPLY) fs.writeFileSync(filePath, content, "utf8");
+    console.log(`${APPLY ? "Updating" : "Would update"}: ${filePath}`);
+    if (APPLY) fs.writeFileSync(filePath, updated, "utf8");
   }
 }
 
-logger.info(`Starting codemod (dry run=${!APPLY}). Scanning from ${ROOT}`);
+console.log(`Starting codemod (dry run=${!APPLY}). Scanning from ${ROOT}`);
 walk(ROOT);
-logger.info(
+console.log(
   `Scanned ${filesScanned} files. ${filesChanged} files ${
     APPLY ? "modified" : "would be modified"
   }.`,
 );
 if (!APPLY)
-  logger.info(
+  console.log(
     "Run with --apply to write changes. Review diffs before committing.",
   );

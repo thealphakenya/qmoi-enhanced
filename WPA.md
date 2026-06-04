@@ -42,8 +42,20 @@ Quantum multi orchestra intelligence (QMOI) Web Progressive App is a comprehensi
 
 ### PWA Serving and UI Convergence
 - PWAs are served from `pwa_apps/` and the browser host can deliver all app shells from one root origin.
-- This structure supports universal navigation for QMOI AI, QMOI Space, and shared UI experience across the QMOI ecosystem.
+- Live page routes in the app are `/qmoi-ai`, `/qmoi-space`, `/qcity`, and `/qvillage`; QVillage is served from `app/qvillage/page.tsx`.
+- Static shell landing pages are exposed from `public/` and served at `/q-alpha.html`, `/qmoi-ai.html`, `/qmoi-space.html`, `/qcity-dashboard.html`, `/qcity-enterprise.html`, and `/qcity-complete.html`.
+- `public/qmoi-pwa-manager.js` and `public/service-worker.js` support install/update flows, offline caching, and background sync.
+- This structure supports universal navigation for QMOI AI, QMOI Space, QCity, QVillage, and shared UI experience across the QMOI ecosystem.
 - When the app is deployed, the same host also services runtime UI validation, update checks, and platform-specific install behavior.
+
+### Build & Automation Scripts
+- `npm run build` — build the Next.js app for production.
+- `npm run build:all` — run `scripts/build-all.sh` to build all app artifacts and PWA assets.
+- `npm run build:qmoi` — run `scripts/build-qmoi.sh` to build the QMOI web app and PWA assets.
+- `npm run build:pwa` — run `scripts/build-all-platforms.sh` for platform-specific PWA builds.
+- `npm run docs:update` — sync markdown documentation using `scripts/autoupdate_docs.sh`.
+- `npm run docs:validate` — validate markdown docs with `python3 scripts/comprehensive_md_validator.py`.
+- `npm run serve:public` — serve the `public/` directory locally for shell and PWA verification.
 
 ### Push Notifications
 - **Real-Time Alerts**: Instant notifications for all Quantum multi orchestra intelligence (QMOI) activities

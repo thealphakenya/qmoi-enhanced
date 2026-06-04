@@ -13,7 +13,7 @@
 **Production Audit:** ✅ Reviewed May 19, 2026 — production route mapping verified and debug-only routes are isolated from the public routing surface.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
 **Total Indexed Markdown Files:** 1189
-**Total Route Source Files:** 261
+**Total Route Source Files:** 266
 **Status:** ✅ 
 
 ## Document Purpose
@@ -23,7 +23,7 @@ This document describes the route file structure for the QMOI Enhanced applicati
 ## Route File Inventory Summary
 
 ### Total Route Files
-- `app/api/` route handler source files: 261
+- `app/api/` route handler source files: 266
 - Root-level standalone handlers: 12
 - Nested route directories and grouped route handlers: 255
 
@@ -112,10 +112,13 @@ The following standalone route handler source files are defined directly under `
 - `wifi-security.ts`
 
 ## PWA and Public Route Mapping
-- `app/qmoi-ai/page.tsx` redirects to the actual PWA asset at `/pwa_apps/qmoi-ai/index.html`.
-- `app/qmoi-space/page.tsx` redirects to the actual PWA asset at `/pwa_apps/qmoi-space/index.html`.
-- `public/qmoi-ai.html` and `public/qmoi-space.html` are redirect landing pages for the real PWA apps.
-- `app/qcity/page.jsx` and `app/qvillage/page.tsx` are served as active role-aware UI pages using `app/hooks/useAuth.ts`.
+- `app/qmoi-ai/page.tsx` is a live Next.js page serving the QMOI AI dashboard experience.
+- `app/qmoi-space/page.tsx` is a live Next.js page serving the QMOI Space marketplace and collaboration UI.
+- `app/qcity/page.jsx` is a live Next.js page serving the QCity dashboard.
+- `app/qvillage/page.tsx` is a live Next.js page serving the QVillage community workspace.
+-- `public/qmoi-ai.html` and `public/qmoi-space.html` are static compatibility/fallback shells in `public/` and not the canonical production UI surfaces; prefer the live pages under `app/` for production routing.
+-- `public/q-alpha.html` and `/pwa_apps/q-alpha/` are static Q Alpha aggregator shell entry points (fallback/launcher only).
+-- `public/qcity-dashboard.html`, `public/qcity-enterprise.html`, and `public/qcity-complete.html` are static QCity shell entry points (fallbacks).
 
 ## Key Nested Route Groups
 ### `admin/`

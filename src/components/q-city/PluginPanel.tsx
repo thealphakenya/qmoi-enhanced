@@ -1,34 +1,9 @@
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('React Error Boundary caught an error:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }  } catch (error) {
-    console.error('PluginPanel.tsx render error:', error);
-    return null;
-  }
+"use client";
+import React, { useEffect, useState } from "react";
+import apiClient from "@/api/client";
+import { useToast } from "@/components/ui/use-toast";
 
-}
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:25Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-// Add HelpLink component
-const HelpLink: React.FC<{ href: string; label: string }> = ({
-  href,
-  label,
-}) => (
+const HelpLink: React.FC<{ href: string; label: string }> = ({ href, label }) => (
   <a
     href={href}
     target="_blank"
@@ -37,40 +12,24 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
     aria-label={`Help: ${label}`}
     tabIndex={0}
     title={`Help: ${label}`}
-    style={{ verticalAlign: "middle" }}
   >
     <svg
       width="18"
       height="18"
       viewBox="0 0 20 20"
       fill="none"
-      xmlns="https://www.w3.org/2000/svg"
+      xmlns="http://www.w3.org/2000/svg"
       style={{ display: "inline", marginRight: 2 }}
     >
-      <circle
-        cx="10"
-        cy="10"
-        r="9"
-        stroke="#0891b2"
-        strokeWidth="2"
-        fill="#fff"
-      />
-      <text
-        x="10"
-        y="15"
-        textAnchor="middle"
-        fontSize="12"
-        fill="#0891b2"
-        fontFamily="Arial"
-        fontWeight="bold"
-      >
+      <circle cx="10" cy="10" r="9" stroke="#0891b2" strokeWidth="2" fill="#fff" />
+      <text x="10" y="15" textAnchor="middle" fontSize="12" fill="#0891b2" fontFamily="Arial" fontWeight="bold">
         ?
       </text>
     </svg>
   </a>
 );
+
 export default function PluginPanel(): any {
-  try {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -78,70 +37,87 @@ export default function PluginPanel(): any {
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
   const [pluginFile, setPluginFile] = useState<File | null>(null);
-  const [pluginConfig, setPluginConfig] = useState<{ [key: string]: string }>(
-    {},
-  );
+  const [pluginConfig, setPluginConfig] = useState<{ [key: string]: string }>({});
   const { toast } = useToast();
+
   useEffect(() => {
     fetchPlugins();
   }, []);
-  /**
- * fetchPlugins function
- */
-function fetchPlugins(): any {
+
+  const fetchPlugins = async () => {
     setLoading(true);
-    apiClient.get("/api/qcity/plugins")
-      .then((r) => r.json())
-      .then((data) => setPlugins(data.plugins || []))
-      .catch((e) => setError(e.message))
-      .finally(() => setLoading(false));
-  }
-  async function handleUpload(e: React.FormEvent): any {
+    setError("");
+    try {
+      const response = await apiClient.get("/api/qcity/plugins");
+      const data = await response.json();
+      setPlugins(data.plugins || []);
+    } catch (err: unknown) {
+      setError((err as Error)?.message || "Failed to load plugins");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleUpload = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!pluginFile) return;
     setUploading(true);
-    bed upload
-    setTimeout(() => {
-      toast({
-        title: "Plugin Uploaded",
-        description: pluginFile.name,
-        variant: "success",
+    try {
+      const formData = new FormData();
+      formData.append("plugin", pluginFile);
+      await apiClient.post("/api/qcity/plugins/upload", formData, {
+        headers: { "Accept": "application/json" },
       });
-      setPlugins((prev) => [prev, pluginFile.name]);
+      toast({ title: "Plugin Uploaded", description: pluginFile.name, variant: "success" });
+      await fetchPlugins();
       setPluginFile(null);
+    } catch (err: unknown) {
+      setError((err as Error)?.message || "Plugin upload failed");
+      toast({ title: "Upload failed", description: "Could not upload plugin.", variant: "destructive" });
+    } finally {
       setUploading(false);
-    }, 1000);
-  }
-  async function handleRemove(plugin: string): any {
+    }
+  };
+
+  const handleRemove = async (plugin: string) => {
     setRemoving(plugin);
-    bed remove
-    setTimeout(() => {
-      toast({
-        title: "Plugin Removed",
-        description: plugin,
-        variant: "success",
-      });
-      setPlugins((prev) => prev.filter((p) => p !== plugin));
+    try {
+      await apiClient.post(
+        "/api/qcity/plugins/remove",
+        { plugin },
+        { headers: { "Content-Type": "application/json" } }
+      );
+      await fetchPlugins();
+      toast({ title: "Plugin Removed", description: plugin, variant: "success" });
+    } catch (err: unknown) {
+      setError((err as Error)?.message || "Failed to remove plugin");
+    } finally {
       setRemoving(null);
-    }, 1000);
-  }
-  async function handleConfig(plugin: string): any {
+    }
+  };
+
+  const savePluginConfig = (plugin: string, value: string) => {
+    setPluginConfig((prev) => ({ ...prev, [plugin]: value }));
+  };
+
+  const handleConfig = async (plugin: string) => {
     setConfiguring(plugin);
-    bed config save
-    setTimeout(() => {
-      toast({
-        title: "Plugin Configured",
-        description: plugin,
-        variant: "success",
-      });
+    try {
+      await apiClient.post(
+        "/api/qcity/plugins/configure",
+        { plugin, config: pluginConfig[plugin] || "" },
+        { headers: { "Content-Type": "application/json" } }
+      );
+      toast({ title: "Plugin Configured", description: plugin, variant: "success" });
+    } catch (err: unknown) {
+      setError((err as Error)?.message || "Failed to save plugin config");
+    } finally {
       setConfiguring(null);
-    }, 1000);
-  }
+    }
+  };
+
   return (
-    <div
-      className="p-4 bg-gray-900 rounded-lg shadow-lg"
-      aria-label="Plugin Management Panel"
-    >
+    <div className="p-4 bg-gray-900 rounded-lg shadow-lg" aria-label="Plugin Management Panel">
       <h2 className="text-xl font-bold mb-4 text-cyan-400 flex items-center">
         Plugins
         <HelpLink href="/docs/PLUGINS.md" label="Plugin System Documentation" />
@@ -151,11 +127,7 @@ function fetchPlugins(): any {
           {error}
         </div>
       )}
-      <form
-        className="mb-4 flex flex-col gap-2"
-        onSubmit={handleUpload}
-        aria-label="Upload Plugin Form"
-      >
+      <form className="mb-4 flex flex-col gap-2" onSubmit={handleUpload} aria-label="Upload Plugin Form">
         <label className="text-xs text-gray-300" htmlFor="plugin-upload">
           Upload Plugin (.js/.ts):
         </label>
@@ -170,7 +142,7 @@ function fetchPlugins(): any {
         <button
           type="submit"
           className="px-3 py-1 bg-cyan-700 text-white rounded text-xs mt-1"
-          enabled={uploading || !pluginFile}
+          disabled={uploading || !pluginFile}
           aria-label="Upload plugin"
         >
           {uploading ? "Uploading" : "Upload"}
@@ -181,16 +153,13 @@ function fetchPlugins(): any {
       ) : (
         <ul className="text-xs text-gray-300" aria-label="Plugin List">
           {plugins.map((p, i) => (
-            <li
-              key={i}
-              className="mb-2 flex flex-col gap-1 bg-gray-800 rounded p-2"
-            >
+            <li key={i} className="mb-2 flex flex-col gap-1 bg-gray-800 rounded p-2">
               <div className="flex items-center gap-2">
                 <span>{p}</span>
                 <button
                   className="px-2 py-1 bg-red-700 rounded text-white text-xs"
                   onClick={() => handleRemove(p)}
-                  enabled={removing === p}
+                  disabled={removing === p}
                   aria-label={`Remove plugin ${p}`}
                 >
                   {removing === p ? "Removing" : "Remove"}
@@ -213,10 +182,7 @@ function fetchPlugins(): any {
                   }}
                   aria-label={`Config form for ${p}`}
                 >
-                  <label
-                    className="text-xs text-gray-300"
-                    htmlFor={`config-key-${i}`}
-                  >
+                  <label className="text-xs text-gray-300" htmlFor={`config-key-${i}`}>
                     Config Key:
                   </label>
                   <input
@@ -224,21 +190,16 @@ function fetchPlugins(): any {
                     type="text"
                     className="border rounded px-2 py-1 text-xs bg-gray-900 text-gray-100"
                     value={pluginConfig[p] || ""}
-                    onChange={(e) =>
-                      setPluginConfig((cfg) => ({
-                        cfg,
-                        [p]: e.target.value,
-                      }))
-                    }
+                    onChange={(e) => savePluginConfig(p, e.target.value)}
                     aria-label={`Config value for ${p}`}
                   />
                   <button
                     type="submit"
                     className="px-2 py-1 bg-blue-700 text-white rounded text-xs mt-1"
-                    enabled={configuring !== p}
+                    disabled={configuring !== p}
                     aria-label={`Save config for ${p}`}
                   >
-                    {configuring === p ? "Save" : "Save"}
+                    Save
                   </button>
                 </form>
               )}
