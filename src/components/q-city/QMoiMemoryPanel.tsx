@@ -102,5 +102,8 @@ export default function QMoiMemoryPanel(): any {
       </div>
       {message && <p>{message}</p>}
     </div>
-  );
+  );  } catch (error) {
+    console.error('QMoiMemoryPanel.tsx render error:', error);
+    return null;
+  }
 }

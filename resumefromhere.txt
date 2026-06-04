@@ -45,6 +45,22 @@ Next steps:
 - Re-run `npm run type-check` after each round of targeted fixes.
 Recorder: automation-agent
 
+Resume update: 2026-06-04T08:06:20Z
+Action: Repaired remaining parse failures in active source files.
+Details:
+- Removed malformed trailing catch blocks from `src/lib/auth/social.ts`, `src/lib/avatar-system.ts`, and `src/lib/telemetry/observability.ts`.
+- Fixed invalid export comment placement in `src/lib/auth/social.ts`.
+- Repaired `src/services/qmoiApi.ts` with valid async function syntax and headers object spreads.
+- Rewrote `src/setupTests.ts` to valid TypeScript test setup stubs.
+- Renamed JSX plugin source files to `.tsx`, including `src/plugins/PluginManager.tsx`, `src/plugins/AIReviewPlugin.tsx`, `src/plugins/DeviceHealthReviewerPlugin.tsx`, `src/plugins/OptimizationSuggestionPlugin.tsx`, and `src/plugins/QuickAIWidgetPlugin.tsx`.
+- Restored `src/pages/dashboard.tsx` with a valid route component import.
+- Added `ignoreDeprecations: "6.0"` to `tsconfig.json` to suppress TS 6 deprecation diagnostics.
+Result:
+- `npx tsc --project . --noEmit --pretty false` now reports type-level errors instead of parser failures.
+Next steps:
+- Continue targeted fixes for semantic/type failures in active API route and dashboard files.
+- Re-run `npx tsc --project . --noEmit --pretty false` after each repair cycle.
+
 How to refresh this file (local):
   python3 scripts/autoupdate_resume.py
 

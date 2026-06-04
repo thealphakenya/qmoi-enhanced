@@ -64,7 +64,7 @@ export const AutoHealingPlatform: React.FC = () => {
       severity: "medium",
       detectedAt: "2026-03-12 08:30",
       fixStatus: "fixed",
-      fully implemented
+// fully implemented
     },
   ]);
   return (

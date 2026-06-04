@@ -34,5 +34,8 @@ export default function HelpPanel(): any {
         .
       </div>
     </div>
-  );
+  );  } catch (error) {
+    console.error('HelpPanel.tsx render error:', error);
+    return null;
+  }
 }

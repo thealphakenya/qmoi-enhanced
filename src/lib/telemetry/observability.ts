@@ -1,4 +1,5 @@
 const startTime = Date.now();
+const traceStore = new Map<string, TraceRecord>();
 
 export interface TraceRecord {
   id: string;
@@ -107,53 +108,3 @@ function getObservabilityOverview(): any {
   };
 }
 
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}

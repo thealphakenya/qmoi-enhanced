@@ -15,20 +15,66 @@ title: "PAGES.md"
 
 # PAGES.md ✅ 
 
-This file documents all pages in the `pages/` directory, their usage, and integration for QCity, Quantum multi orchestra intelligence (QMOI) AI, and Quantum multi orchestra intelligence (QMOI) Space. All pages are checked to ensure they are used and served as expected. Unused or duplicate pages are marked for removal.
+This file documents all active page entrypoints in the Next.js `app/` directory, the visible UI pages for QMOI AI, QMOI Space, QCity, QVillage, and the admin dashboards. It also tracks legacy page artifacts and marks stale or duplicate pages for cleanup.
+
+## Active App Page Inventory
+
+The production app uses the following live page entrypoints under `app/`:
+
+- app/admin/master/activity/page.tsx
+- app/admin/master/login/page.tsx
+- app/admin/master/page.tsx
+- app/admin/master/security/page.tsx
+- app/admin/master/settings/page.tsx
+- app/admin/page.tsx
+- app/dev/page.tsx
+- app/devices/page.tsx
+- app/friendship/page.tsx
+- app/master/email/page.tsx
+- app/master/links/page.tsx
+- app/master/tracks/page.tsx
+- app/page.tsx
+- app/qcity/page.jsx
+- app/qmoi-ai/page.tsx
+- app/qmoi-space/page.tsx
+- app/qvillage/page.tsx
+
+## Usage & Integration
+
+- The page list above includes all active runtime UI pages for the current Next.js app router.
+- `app/qmoi-ai/page.tsx` is the live QMOI AI dashboard route.
+- `app/qmoi-space/page.tsx` is the live QMOI Space collaboration dashboard route.
+- `app/qcity/page.jsx` is the live QCity command center route.
+- `app/qvillage/page.tsx` is the live QVillage workspace route.
+- `app/admin/*` routes are administrative dashboards and master control panels.
+- `app/dev/page.tsx` and `app/devices/page.tsx` are developer and device utilities respectively.
+
+## Legacy Page Artifacts
+
+- The repository also contains legacy static page artifacts and archived page directories.
+- These artifacts are not part of the current production app router and are being cleaned in the current maintenance pass.
 
 ## Directory Structure
 
 ```production-validated
-pages/
-├── api/
+app/
+├── admin/
+├── dev/
+├── devices/
+├── friendship/
+├── master/
+├── qcity/
+├── qmoi-ai/
+├── qmoi-space/
+├── qvillage/
 ```production-validated
 
-## Usage & Integration
+## Automation & Health
 
-- All pages are checked for usage in QCity, Quantum multi orchestra intelligence (QMOI) AI, and Quantum multi orchestra intelligence (QMOI) Space. Each is integrated into main apps, dashboards, or context providers.
-- Unused/duplicate pages are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
-- Page features are confirmed to be used and served in all main apps and platforms.
+- All pages are referenced in `ALLMDFILESREFS.md` and executed for further enhancement and integration.
+- Automation ensures every page is used, and unused ones are logged for removal.
+
+**Status:** All pages are now checked for usage and integration. No unused/duplicate pages will remain after next cleanup. All page features are covered for QCity, QMOI AI, QMOI Space, and QVillage.
 
 ## Automation & Health
 

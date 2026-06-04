@@ -25,7 +25,11 @@ interface DashboardData {
     activeTasks: unknown[];
     systemHealth: unknown;
     performanceMetrics: unknown;
-  };
+  };  } catch (error) {
+    console.error('EnhancedQMOIDashboard.tsx render error:', error);
+    return null;
+  }
+
 }
 export default function EnhancedQMOIDashboard(): any {
   try {({

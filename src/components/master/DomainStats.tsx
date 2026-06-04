@@ -18,8 +18,8 @@ interface DomainStatsProps {
   stats: DomainStats | null;
   loading?: boolean;
 }
-export default function DomainStats(): any {
-  try {({ stats, loading = false }: DomainStatsProps) {
+export default function DomainStats({ stats, loading = false }: DomainStatsProps): any {
+  try {
   if (loading || !stats) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -38,7 +38,7 @@ export default function DomainStats(): any {
     if (percentage >= 40) return 'text-orange-600 bg-orange-50 border-orange-200';
     return 'text-red-600 bg-red-50 border-red-200';
   };
-  return (
+    return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
       {/* Total Domains */}
       <div className="bg-white border border-gray-200 rounded-lg p-4">
@@ -92,5 +92,9 @@ export default function DomainStats(): any {
         </div>
       </div>
     </div>
-  );
+    );
+  } catch (error) {
+    console.error('DomainStats render error:', error);
+    return null;
+  }
 }

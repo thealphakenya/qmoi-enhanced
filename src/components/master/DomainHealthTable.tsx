@@ -62,15 +62,15 @@ interface DomainHealthTableProps {
   onAutoRepair?: (domain: string) => void;
   showLinkStats?: boolean;
 }
-export default function DomainHealthTable(): any {
-  try {({
+export default function DomainHealthTable({
   validations,
   godaddyStatus,
   loading = false,
   onRefresh,
   onAutoRepair,
-  showLinkStats = true
-}: DomainHealthTableProps) {
+  showLinkStats = true,
+}: DomainHealthTableProps): any {
+  try {
   const [expandedDomains, setExpandedDomains] = useState<Set<string>>(new Set());
   const [filterPriority, setFilterPriority] = useState<string>('all');
   const [filterCategory, setFilterCategory] = useState<string>('all');
@@ -453,8 +453,8 @@ export default function DomainHealthTable(): any {
       </div>
     );
   }
-  return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+    return (
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
       <div className="px-6 py-4 border-b border-gray-200">
         <h2 className="text-xl font-semibold text-gray-900">Domain Health Status</h2>
       </div>
@@ -547,7 +547,11 @@ export default function DomainHealthTable(): any {
         </div>
       </div>
     </div>
-  );
+    );
+  } catch (error) {
+    console.error('DomainHealthTable render error:', error);
+    return null;
+  }
 }
 class ErrorBoundary extends React.Component {
   constructor(props) {

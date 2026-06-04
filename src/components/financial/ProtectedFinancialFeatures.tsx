@@ -7,9 +7,9 @@ import {
   isMasterUser,
   useMasterAccess,
   FinancialAuditLog,
-  executeFinancialOperation,
   MasterOnly,
 } from "@/utils/master-access-control";
+import { log } from "@/lib/logger";
 /**
  * Access denied fallback component
  */
@@ -58,11 +58,14 @@ export const ProtectedRevenueDashboard: React.FC = () => {
         const data = await response.json();
         setRevenueData(data);
         // Log access
-        await FinancialAuditLog.logRevenuOperation(
+        await FinancialAuditLog.logOperation(
           user.id,
           "validate",
-          data.current_revenue || 0,
-          Object.keys(data.revenue_sources || {})
+          {
+            revenue: data.current_revenue || 0,
+            sources: Object.keys(data.revenue_sources || {}),
+          },
+          "success"
         );
       } catch (err) {
         setError(err instanceof Error ? err.message : "Unknown error");
@@ -134,7 +137,7 @@ export const ProtectedWalletManager: React.FC = () => {
           walletCount: data.wallets?.length || 0,
         });
       } catch (err) {
-        logger.error("Failed to fetch wallets:", err);
+        log.error("Failed to fetch wallets:", err);
       }
     };
     fetchWallets();
@@ -189,7 +192,7 @@ export const ProtectedTransactionHistory: React.FC = () => {
         const data = await response.json();
         setTransactions(data.transactions || []);
       } catch (err) {
-        logger.error("Failed to fetch transactions:", err);
+        log.error("Failed to fetch transactions:", err);
       }
     };
     fetchTransactions();
@@ -279,15 +282,15 @@ export default {
   LoadingState,
 };
 class ErrorBoundary extends React.Component {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = { hasError: false };
   }
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(_error: unknown) {
     return { hasError: true };
   }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
+  componentDidCatch(error: unknown, errorInfo: unknown) {
+    log.error('Error caught by boundary:', error as Error, { errorInfo });
   }
   render() {
     if (this.state.hasError) {

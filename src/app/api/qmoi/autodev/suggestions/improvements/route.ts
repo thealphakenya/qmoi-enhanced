@@ -8,6 +8,8 @@
  * Generates AI-powered suggestions for system improvements
  */
 
+import { NextRequest, NextResponse } from "next/server";
+
 
 export const runtime = 'nodejs';
 
@@ -132,32 +134,38 @@ function generateImprovementSuggestions(category: string, limit: number): Sugges
           description: 'Add Redis caching layer for frequently accessed API endpoints',
           estimatedImpact: '40% latency reduction',
           effort: 'medium',
+          actions: [
             'Add Redis to infrastructure',
             'Implement cache decorator on API handlers',
             'Set up cache invalidation strategy',
             'Monitor cache hit rates',
           ],
+
         },
         {
           title: 'Optimize Database Queries',
           description: 'Add indexes and optimize slow queries in consciousness and memory systems',
           estimatedImpact: '35% query time reduction',
           effort: 'high',
+          actions: [
             'Run EXPLAIN ANALYZE on slow queries',
             'Add composite indexes on frequently filtered columns',
             'Implement query batching',
             'Add database connection pooling',
           ],
+
         },
         {
           title: 'Enable HTTP/2 Push',
           description: 'Implement HTTP/2 server push for critical assets',
           estimatedImpact: '20% page load improvement',
           effort: 'low',
+          actions: [
             'Configure server HTTP/2 settings',
             'Identify critical assets for pushing',
             'Implement push manifest strategy',
           ],
+
         },
       ],
     },
@@ -170,22 +178,26 @@ function generateImprovementSuggestions(category: string, limit: number): Sugges
           description: 'Add circuit breakers to external service integrations',
           estimatedImpact: '99.5% uptime improvement',
           effort: 'high',
+          actions: [
             'Implement circuit breaker library',
             'Configure fallback strategies',
             'Set up monitoring and alerts',
             'Test failure scenarios',
           ],
+
         },
         {
           title: 'Add Health Check Endpoints',
           description: 'Comprehensive health checks for all critical systems',
           estimatedImpact: 'Faster failure detection',
           effort: 'medium',
+          actions: [
             'Create /health/detailed endpoint',
             'Check database connectivity',
             'Check memory sync status',
             'Check external service availability',
           ],
+
         },
       ],
     },
@@ -198,33 +210,39 @@ function generateImprovementSuggestions(category: string, limit: number): Sugges
           description: 'Add intelligent rate limiting to prevent abuse',
           estimatedImpact: 'Protection against DDoS attacks',
           effort: 'medium',
+          actions: [
             'Implement rate limiter middleware',
             'Configure per-endpoint limits',
             'Add exponential backoff for clients',
             'Set up abuse monitoring',
           ],
+
         },
         {
           title: 'Enable Security Headers',
           description: 'Add comprehensive security headers to all responses',
           estimatedImpact: '100% protection against common attacks',
           effort: 'low',
+          actions: [
             'Add HSTS header',
             'Add CSP policy',
             'Add X-Frame-Options',
             'Add X-Content-Type-Options',
           ],
+
         },
         {
           title: 'Implement API Key Rotation',
           description: 'Automated rotation of API keys and secrets',
           estimatedImpact: 'Reduced impact of key compromise',
           effort: 'high',
+          actions: [
             'Create key rotation scheduler',
             'Implement versioned API keys',
             'Set up gradual key migration',
             'Update documentation',
           ],
+
         },
       ],
     },
@@ -237,22 +255,26 @@ function generateImprovementSuggestions(category: string, limit: number): Sugges
           description: 'Break monolith into smaller, independently scalable services',
           estimatedImpact: '10x horizontal scaling capability',
           effort: 'high',
+          actions: [
             'Identify service boundaries',
             'Implement API gateway',
             'Set up service discovery',
             'Configure inter-service communication',
           ],
+
         },
         {
           title: 'Add Message Queuing',
           description: 'Implement async processing with message queues',
           estimatedImpact: '5x request throughput improvement',
           effort: 'high',
+          actions: [
             'Set up RabbitMQ or Kafka',
             'Convert long-running operations to async',
             'Implement worker processes',
             'Set up monitoring and alerting',
           ],
+
         },
       ],
     },
@@ -265,22 +287,26 @@ function generateImprovementSuggestions(category: string, limit: number): Sugges
           description: 'Add trace collection across all services',
           estimatedImpact: 'complete request visibility',
           effort: 'high',
+          actions: [
             'Set up OpenTelemetry',
             'Configure trace collection',
             'Set up Jaeger or similar',
             'Create trace visualization dashboards',
           ],
+
         },
         {
           title: 'Add Custom Metrics',
           description: 'Implement application-specific metrics',
           estimatedImpact: 'Better business insights',
           effort: 'medium',
+          actions: [
             'Identify key business metrics',
             'Implement metric collectors',
             'Set up aggregation pipeline',
             'Create metric visualizations',
           ],
+
         },
       ],
     },
@@ -293,7 +319,7 @@ function generateImprovementSuggestions(category: string, limit: number): Sugges
   return allSuggestions.filter(s => s.category === category).slice(0, limit);
 }
 
-async
+/**
  * processSuggestionAction function
  */
 function processSuggestionAction(
@@ -304,7 +330,7 @@ function processSuggestionAction(
   switch (action) {
     case 'implement':
       return {
-        fully implemented
+        status: 'implemented',
         priority: 'high',
         assignedTo: 'autoprod-system',
         estimatedCompletion: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),

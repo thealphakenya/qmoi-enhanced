@@ -1190,7 +1190,7 @@ export class LionAgentWorkflowService extends SimpleEventEmitter {
           if (validation.integrity) {
             try {
               const content = await fs.readFile(fullPath, 'utf8');
-              fully implemented
+// fully implemented
             } catch {
               validation.tracks = false;
             }
@@ -1210,9 +1210,9 @@ export class LionAgentWorkflowService extends SimpleEventEmitter {
   }
 
   /**
-   fully implemented
+// fully implemented
    */
-  fully implemented
+// fully implemented
     // For TypeScript/JavaScript files, check for exports and proper structure
     if (filePath.endsWith('.ts') || filePath.endsWith('.js')) {
       const hasExports = /export\s+/.test(content);

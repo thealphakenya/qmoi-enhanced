@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 const fetchZeroRatedStatus = async () => {
-  : fetch status from backend or local state
+  // fetch status from backend or local state
   return {
     active: true,
     lastUsed: new Date().toLocaleString(),
@@ -44,11 +44,11 @@ export default function ZeroRatedPanel(): any {
           </div>
           <div>Last Used: {status.lastUsed}</div>
           <button
-            fully implemented
+// fully implemented
           >
             Force ZeroRated Mode
           </button>
-          fully implemented
+// fully implemented
             Test Endpoints
           </button>
           <h4>Logs</h4>
@@ -62,5 +62,8 @@ export default function ZeroRatedPanel(): any {
         </>
       )}
     </div>
-  );
+  );  } catch (error) {
+    console.error('ZeroRatedPanel.tsx render error:', error);
+    return null;
+  }
 }

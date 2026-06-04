@@ -489,7 +489,11 @@ class ErrorBoundary extends React.Component {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
     }
     return this.props.children;
+  }  } catch (error) {
+    console.error('SelfTrainingEcosystem.tsx render error:', error);
+    return null;
   }
+
 }
 class ErrorBoundary extends React.Component {
   constructor(props) {

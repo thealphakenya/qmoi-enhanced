@@ -97,15 +97,9 @@ export const VoiceGestureHooks: React.FC = () => {
       const diffX = startX - endX;
       const diffY = startY - endY;
       if (Math.abs(diffX) > Math.abs(diffY)) {
-          if (diffX > 0) {
-          } else {
-          }
-        }
+        handleGesture(diffX > 0 ? 'left' : 'right');
       } else {
-          if (diffY > 0) {
-          } else {
-          }
-        }
+        handleGesture(diffY > 0 ? 'up' : 'down');
       }
       startX = 0;
       startY = 0;

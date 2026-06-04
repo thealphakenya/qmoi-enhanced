@@ -14,7 +14,11 @@ class ErrorBoundary extends React.Component {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
     }
     return this.props.children;
+  }  } catch (error) {
+    console.error('QMoiToolbar.tsx render error:', error);
+    return null;
   }
+
 }
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied

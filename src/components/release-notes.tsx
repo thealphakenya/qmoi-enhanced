@@ -29,10 +29,10 @@ export const RELEASES = [
 export const ReleaseNotes: React.FC = () => (
   <Box sx={{ p: 2, border: "1px solid #ccc", borderRadius: 2, maxWidth: 400 }}>
     <Typography variant="h6">Release Notes</Typography>
-    fully implemented
+    {RELEASES.map((release, idx) => (
       <Box key={idx} sx={{ mb: 2 }}>
-        fully implemented
-        fully implemented
+        <Typography variant="subtitle1">{release.version}</Typography>
+        <Typography variant="body2">{release.desc}</Typography>
       </Box>
     ))}
   </Box>

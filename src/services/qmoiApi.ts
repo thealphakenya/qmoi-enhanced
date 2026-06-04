@@ -3,11 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-
-async /**
- * safeJson function
- */
-function safeJson(resp: Response): any {
+async function safeJson(resp: Response): Promise<any> {
   const txt = await resp.text();
   try {
     return JSON.parse(txt);
@@ -16,13 +12,10 @@ function safeJson(resp: Response): any {
   }
 }
 
-export async /**
- * postChat function
- */
-function postChat(payload: unknown): any {
+export async function postChat(payload: unknown): Promise<any> {
   const headers = {
     "Content-Type": "application/json",
-    getSessionHeaders(),
+    ...getSessionHeaders(),
   };
   const resp = await apiClient.get("/api/qmoi/chat", {
     method: "POST",
@@ -32,13 +25,10 @@ function postChat(payload: unknown): any {
   return safeJson(resp);
 }
 
-export async /**
- * postModel function
- */
-function postModel(payload: unknown): any {
+export async function postModel(payload: unknown): Promise<any> {
   const headers = {
     "Content-Type": "application/json",
-    getSessionHeaders(),
+    ...getSessionHeaders(),
   };
   const resp = await apiClient.get("/api/qmoi-model", {
     method: "POST",
@@ -48,22 +38,18 @@ function postModel(payload: unknown): any {
   return safeJson(resp);
 }
 
-export async /**
- * fetchMemory function
- */
-function fetchMemory(): any {
-  const headers = { getSessionHeaders() };
+export async function fetchMemory(): Promise<any> {
+  const headers = {
+    ...getSessionHeaders(),
+  };
   const resp = await apiClient.get("/api/qmoi/memory", { method: "GET", headers });
   return safeJson(resp);
 }
 
-export async /**
- * syncMemory function
- */
-function syncMemory(body: unknown): any {
+export async function syncMemory(body: unknown): Promise<any> {
   const headers = {
     "Content-Type": "application/json",
-    getSessionHeaders(),
+    ...getSessionHeaders(),
   };
   const resp = await apiClient.get("/api/qmoi/memory", {
     method: "POST",

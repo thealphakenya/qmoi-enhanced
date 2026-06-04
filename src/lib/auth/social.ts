@@ -85,10 +85,10 @@ function getOAuthRedirectUrl(provider: SocialProvider, state = ''): string {
   )}&response_type=code&scope=${scope}&state=${encodedState}`;
 }
 
-export async /**
+/**
  * exchangeOAuthCode function
  */
-function exchangeOAuthCode(provider: SocialProvider, code: string): any {
+export async function exchangeOAuthCode(provider: SocialProvider, code: string): any {
   const accessToken = createRandomToken(64);
   const refreshToken = createRandomToken(64);
   const providerUserId = `${provider}-${hashString(code).slice(0, 16)}`;
@@ -104,55 +104,4 @@ function exchangeOAuthCode(provider: SocialProvider, code: string): any {
       provider,
     },
   };
-}
-
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }

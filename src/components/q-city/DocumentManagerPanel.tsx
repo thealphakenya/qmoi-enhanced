@@ -4,7 +4,11 @@ interface DocumentEntry {
   id: string;
   name: string;
   type: string;
-  createdAt: string;
+  createdAt: string;  } catch (error) {
+    console.error('DocumentManagerPanel.tsx render error:', error);
+    return null;
+  }
+
 }
 const documents: DocumentEntry[] = [
   { id: "doc-1", name: "Project Brief.pdf", type: "PDF", createdAt: "2026-05-01" },

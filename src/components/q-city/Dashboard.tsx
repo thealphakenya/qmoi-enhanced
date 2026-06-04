@@ -3,6 +3,26 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
+"use client";
+import React, { useEffect, useState } from "react";
+import SchedulePanel from "./SchedulePanel";
+import DevicePanel from "./DevicePanel";
+import PluginPanel from "./PluginPanel";
+import MetricsPanel from "./MetricsPanel";
+import SessionPanel from "./SessionPanel";
+import CommandPanel from "./CommandPanel";
+import AuditLogPanel from "./AuditLogPanel";
+import HelpPanel from "./HelpPanel";
+import SelfHealPanel from "./SelfHealPanel";
+import LanguageLabPanel from "./LanguageLabPanel";
+import ResearchCenterPanel from "./ResearchCenterPanel";
+import BackupRestorePanel from "./BackupRestorePanel";
+import AviatorGalleryPanel from "./AviatorGalleryPanel";
+import RelationshipInsightsPanel from "./RelationshipInsightsPanel";
+import SystemHealthPanel from "./SystemHealthPanel";
+import { QMoiState } from "./QMoiState";
+import QAvatar from "./QAvatar";
+
 export default function Dashboard(): any {
   try {
   const [theme, setTheme] = useState("dark");
@@ -157,5 +177,8 @@ export default function Dashboard(): any {
       </div>
       <QAvatar />
     </div>
-  );
+  );  } catch (error) {
+    console.error('Dashboard.tsx render error:', error);
+    return null;
+  }
 }

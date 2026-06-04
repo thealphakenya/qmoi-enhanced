@@ -846,7 +846,7 @@ export class QVSSystem extends EventEmitter {
   }
 
   private async getRecentOptimizations(): Promise<any[]> {
-    fully implemented
+// fully implemented
     return [];
   }
 

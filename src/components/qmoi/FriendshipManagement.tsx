@@ -1,14 +1,27 @@
-import React from 'react';
-class ErrorBoundary extends React.Component {
-  constructor(props) {
+"use client";
+import React, { useEffect, useState } from "react";
+import apiClient from "@/api/client";
+import { useToast } from "@/components/ui/use-toast";
+import { log } from "@/lib/logger";
+
+interface ErrorBoundaryProps {
+  children: React.ReactNode;
+}
+
+interface ErrorBoundaryState {
+  hasError: boolean;
+}
+
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false };
   }
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(_error: unknown) {
     return { hasError: true };
   }
-  componentDidCatch(error, errorInfo) {
-    logger.error('React Error Boundary caught an error:', error, errorInfo);
+  componentDidCatch(error: unknown, errorInfo: React.ErrorInfo) {
+    log.error('React Error Boundary caught an error:', error as Error, { errorInfo });
   }
   render() {
     if (this.state.hasError) {
@@ -21,7 +34,6 @@ class ErrorBoundary extends React.Component {
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-"use client";
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 interface Friend {
   id: string;
@@ -115,16 +127,18 @@ function FriendshipManagement({
   const handleSendRequest = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await apiClient.get("/api/qmoi/friendship", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      const response = await apiClient.post(
+        "/api/qmoi/friendship",
+        {
           action: "send-request",
           userId,
           targetUserId: friendInput,
           message,
-        }),
-      });
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       const data = await response.json();
       if (data.success) {
         toast({
@@ -146,15 +160,17 @@ function FriendshipManagement({
   };
   const handleAcceptRequest = async (friendId: string) => {
     try {
-      const response = await apiClient.get("/api/qmoi/friendship", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      const response = await apiClient.post(
+        "/api/qmoi/friendship",
+        {
           action: "accept",
           userId,
           friendId,
-        }),
-      });
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       const data = await response.json();
       if (data.success) {
         toast({
@@ -175,15 +191,17 @@ function FriendshipManagement({
   const handleRemoveFriend = async (friendId: string) => {
     if (!confirm("Remove this friend?")) return;
     try {
-      const response = await apiClient.get("/api/qmoi/friendship", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      const response = await apiClient.post(
+        "/api/qmoi/friendship",
+        {
           action: "remove",
           userId,
           friendId,
-        }),
-      });
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       const data = await response.json();
       if (data.success) {
         toast({
@@ -204,15 +222,17 @@ function FriendshipManagement({
   };
   const handleBlockUser = async (friendId: string) => {
     try {
-      const response = await apiClient.get("/api/qmoi/friendship", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      const response = await apiClient.post(
+        "/api/qmoi/friendship",
+        {
           action: "block",
           userId,
           friendId,
-        }),
-      });
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       const data = await response.json();
       if (data.success) {
         toast({
@@ -547,165 +567,3 @@ function FriendshipManagement({
   );
 }
 export default FriendshipManagement;
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
