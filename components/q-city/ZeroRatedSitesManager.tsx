@@ -24,10 +24,10 @@ class ErrorBoundary extends React.Component {
 interface ZeroRatedSitesManagerProps {
   className?: string;
 }
-export default function ZeroRatedSitesManager(): any {
-  try {({
+export default function ZeroRatedSitesManager({
   className = "",
-}: ZeroRatedSitesManagerProps) {
+}: ZeroRatedSitesManagerProps): any {
+
   const [sites, setSites] = useState<ZeroRatedSite[]>([]);
   const [loading, setLoading] = useState(true);
   const [showCreateForm, setShowCreateForm] = useState(false);

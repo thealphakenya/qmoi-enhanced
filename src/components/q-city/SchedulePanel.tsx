@@ -2,6 +2,8 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
+import { readPersistedStorageValue } from '@/app/lib/auth/persistence';
+
 export default function SchedulePanel(): any {
   try {
   const [schedules, setSchedules] = useState<any[]>([]);
@@ -15,8 +17,7 @@ export default function SchedulePanel(): any {
     notify: "",
   });
   const [editing, setEditing] = useState<any>(null);
-  const token =
-    typeof window !== "undefined" ? localStorage.getItem("token") : null;
+  const token = readPersistedStorageValue("token");
   const fetchSchedules = () => {
     setLoading(true);
     apiClient.get("/api/qcity/schedule", {

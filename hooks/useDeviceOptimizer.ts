@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { readPersistedStorageValue } from "@/app/lib/auth/persistence";
 
 export /**
  * useprodiceOptimizer function
@@ -8,7 +9,7 @@ function useprodiceOptimizer(): any {
     // Poll backend for prodice optimization suggestions and apply automatically
     const interval = setInterval(async () => {
       const res = await apiClient.get("/api/qmoi-model?prodiceOptimize=1", {
-        headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
+        headers: { "x-admin-token": readPersistedStorageValue("adminToken") || "" },
       });
       const data = await res.json();
       if (data.suggestions && data.suggestions.length) {
@@ -17,7 +18,7 @@ function useprodiceOptimizer(): any {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "x-admin-token": localStorage.getItem("adminToken") || "",
+              "x-admin-token": readPersistedStorageValue("adminToken") || "",
             },
             body: JSON.stringify({ feature: suggestion }),
           });

@@ -9,10 +9,10 @@
  */
 
 // API Handler for Self-Work Routes
-export async /**
+/**
  * handleSelfWorkRequest function
  */
-function handleSelfWorkRequest(req: Request, endpoint: string): any {
+export async function handleSelfWorkRequest(req: Request, endpoint: string): Promise<any> {
   const { method } = req;
 
   switch (endpoint) {
@@ -51,10 +51,10 @@ function handleSelfWorkRequest(req: Request, endpoint: string): any {
  * Code Review Analysis
  * Analyzes QMOI codebase for quality issues
  */
-async /**
+/**
  * performCodeReview function
  */
-function performCodeReview(req: Request): any {
+async function performCodeReview(req: Request): any {
   try {
     const { filePath } = await req.json();
 
@@ -97,10 +97,10 @@ function performCodeReview(req: Request): any {
  * Test Runner
  * Runs test suite and reports results
  */
-async /**
+/**
  * runTests function
  */
-function runTests(req: Request): any {
+async function runTests(req: Request): any {
   try {
     // For now, returning 
     const result = {
@@ -146,10 +146,10 @@ function runTests(req: Request): any {
  * RELEASE & Fix
  * Detects bugs and suggests/applies fixes
  */
-async /**
+/**
  * RELEASE function
  */
-function RELEASE(req: Request): any {
+async function RELEASE(req: Request): any {
   try {
     const { lastError } = await req.json();
 
@@ -210,10 +210,10 @@ function RELEASE(req: Request): any {
 /**
  * Autoprod Toggle
  */
-async /**
+/**
  * toggleAutoprod function
  */
-function toggleAutoprod(req: Request): any {
+async function toggleAutoprod(req: Request): any {
   try {
     const { enabled } = await req.json();
 

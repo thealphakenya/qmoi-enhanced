@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { readPersistedStorageValue } from "@/app/lib/auth/persistence";
 
 export /**
  * useAIFeatureEnhancer function
@@ -8,7 +9,7 @@ function useAIFeatureEnhancer(): any {
     // Poll backend for new features and auto-suggest improvements
     const interval = setInterval(async () => {
       const res = await apiClient.get("/api/qmoi-model?featureEnhance=1", {
-        headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
+        headers: { "x-admin-token": readPersistedStorageValue("adminToken") || "" },
       });
       const data = await res.json();
       if (data.instructions && data.instructions.length) {

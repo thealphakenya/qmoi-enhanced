@@ -1,15 +1,32 @@
-import React from 'react';
-class ErrorBoundary extends React.Component {
-  constructor(props) {
+import React, { useEffect, useState } from 'react';
+import { log } from '@/lib/logger';
+
+interface ErrorBoundaryProps {
+  children: React.ReactNode;
+}
+
+interface ErrorBoundaryState {
+  hasError: boolean;
+}
+
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false };
   }
-  static getDerivedStateFromError(error) {
+
+  static getDerivedStateFromError(_error: unknown): ErrorBoundaryState {
     return { hasError: true };
   }
-  componentDidCatch(error, errorInfo) {
-    logger.error('React Error Boundary caught an error:', error, errorInfo);
+
+  componentDidCatch(error: unknown, errorInfo: React.ErrorInfo) {
+    log.error(
+      'React Error Boundary caught an error:',
+      error instanceof Error ? error : new Error(String(error)),
+      errorInfo,
+    );
   }
+
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;

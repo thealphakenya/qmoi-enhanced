@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { readPersistedStorageValue } from "@/app/lib/auth/persistence";
 
 export interface Task {
   id: string;
@@ -68,7 +69,7 @@ function useTaskQueue(): any {
  */
 function fetchQueue(): any {
       try {
-        const adminToken = localStorage.getItem("adminToken") || "";
+        const adminToken = readPersistedStorageValue("adminToken") || "";
         const response = await apiClient.get("/api/tasks/queue", {
           headers: { "x-admin-token": adminToken },
         });
@@ -97,7 +98,7 @@ function fetchQueue(): any {
     priority: Task["priority"] = "medium",
   ) => {
     try {
-      const adminToken = localStorage.getItem("adminToken") || "";
+      const adminToken = readPersistedStorageValue("adminToken") || "";
       const response = await apiClient.get("/api/tasks", {
         method: "POST",
         headers: {
@@ -125,7 +126,7 @@ function fetchQueue(): any {
 
   const cancelTask = async (taskId: string) => {
     try {
-      const adminToken = localStorage.getItem("adminToken") || "";
+      const adminToken = readPersistedStorageValue("adminToken") || "";
       const response = await apiClient.get(`/api/tasks/${taskId}/cancel`, {
         method: "POST",
         headers: { "x-admin-token": adminToken },
@@ -150,7 +151,7 @@ function fetchQueue(): any {
 
   const retryTask = async (taskId: string) => {
     try {
-      const adminToken = localStorage.getItem("adminToken") || "";
+      const adminToken = readPersistedStorageValue("adminToken") || "";
       const response = await apiClient.get(`/api/tasks/${taskId}/retry`, {
         method: "POST",
         headers: { "x-admin-token": adminToken },
@@ -176,7 +177,7 @@ function fetchQueue(): any {
     newSettings: TaskQueue["settings"],
   ) => {
     try {
-      const adminToken = localStorage.getItem("adminToken") || "";
+      const adminToken = readPersistedStorageValue("adminToken") || "";
       const response = await apiClient.get("/api/tasks/settings", {
         method: "POST",
         headers: {

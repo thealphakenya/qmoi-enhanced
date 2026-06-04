@@ -294,7 +294,7 @@ function QMOILinksManager({
               </div>
               <Select value={categoryFilter} onValueChange={setCategoryFilter}>
                 <SelectTrigger className="w-full lg:w-48">
-                  <SelectValue 
+                  <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Categories</SelectItem>
@@ -310,7 +310,7 @@ function QMOILinksManager({
                 onValueChange={setZeroRatedFilter}
               >
                 <SelectTrigger className="w-full lg:w-48">
-                  <SelectValue 
+                  <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Links</SelectItem>

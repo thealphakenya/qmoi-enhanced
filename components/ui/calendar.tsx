@@ -22,7 +22,7 @@ class ErrorBoundary extends React.Component {
 // Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 "use client";
-: Refactor nav_button to use MUI Button or a sophisticated class
+// Refactor nav_button to use MUI Button or a sophisticated class
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 /**
  * Calendar function
@@ -75,7 +75,7 @@ function Calendar({
           // IconRight: ({ props }) => <ChevronRight className="h-4 w-4" />,
         }
       }
-      {props}
+      {...props}
     />
   );
 }

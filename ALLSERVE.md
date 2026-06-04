@@ -76,6 +76,11 @@ The QMOI suite now implements a comprehensive production-grade authentication sy
 - **Multi-Factor Authentication:** Password + biometric verification
 - **Security Monitoring:** IP tracking, User-Agent logging, and threat detection
 
+## Recent Client Improvements
+
+- [2026-06-03] The `UniversalWindowManager` has been updated to fetch window state from `/api/windows` (server) with a `localStorage` fallback on the client. This improves cross-tab sync and prepares the client for a server-backed persistence store.
+- [2026-06-03] `/api/windows` is now implemented to prefer Redis for window-state persistence, with a safe file-backed fallback when Redis is not configured.
+
 ## Production Service Implementation
 
 The production server is implemented as a real service, not a development stub. It includes:

@@ -48,7 +48,7 @@ export default function LoginForm({ onLogin }) {
           role: persistedUser.role,
           displayName: persistedUser.displayName,
           event: "signin",
-          details: { source: "LoginForm", identifier: email || username },
+          details: { source: "LoginForm", identifier: data?.user?.username || email },
         });
 
         onLogin(persistedUser);

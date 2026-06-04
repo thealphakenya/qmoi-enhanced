@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import { readPersistedStorageValue, writePersistedStorageValue } from "@/app/lib/auth/persistence";
 export interface ChatMessage {
   id: string | number;
   content: string;
@@ -28,7 +29,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
   const [speakResponses, setSpeakResponses] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
     try {
-      return localStorage.getItem("speakResponses") === "true";
+      return readPersistedStorageValue("speakResponses") === "true";
     } catch {
       return false;
     }
@@ -42,9 +43,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
   }, [chatHistory]);
   useEffect(() => {
     try {
-      if (typeof window !== "undefined") {
-        localStorage.setItem("speakResponses", String(speakResponses));
-      }
+      writePersistedStorageValue("speakResponses", String(speakResponses));
     } catch {
       // ignore storage failures
     }
@@ -52,14 +51,14 @@ const Chatbot: React.FC<ChatbotProps> = ({
   const getSessionId = () => {
     if (typeof window === "undefined") return `server-${Date.now()}`;
     try {
-      let sid = localStorage.getItem("qmoi_session_id");
+      let sid = readPersistedStorageValue("qmoi_session_id");
       if (!sid) {
         const match = document.cookie.match(/(?:^|; )qmoi_session_id=([^;]+)/);
         sid = match ? decodeURIComponent(match[1]) : null;
       }
       if (!sid) {
         sid = `s_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
-        localStorage.setItem("qmoi_session_id", sid);
+        writePersistedStorageValue("qmoi_session_id", sid);
         document.cookie = `qmoi_session_id=${encodeURIComponent(sid)}; Path=/; Max-Age=${60 * 60 * 24 * 365}; SameSite=Lax`;
       }
       return sid;

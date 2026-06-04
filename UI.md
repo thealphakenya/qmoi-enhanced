@@ -159,6 +159,10 @@ QMOI AI is the intelligent assistant layer, including chat, auto-fix workflows, 
 - Shared UI primitives for theme control, notifications, dialogs, and offline detection
 - Root entrypoints: `/qmoi-ai.html`, `/qmoi-ai-live.html`, `/public/manifest-qmoi-ai.json`
 
+## Note (2026-06-03)
+
+- The `UniversalWindowManager` component now attempts to fetch window state from `/api/windows` during client mount and will gracefully fall back to `localStorage` when the endpoint is not available. See `src/components/UniversalWindowManager.tsx`.
+
 #### Alpha Q AI UI
 Alpha Q AI is the aggregator shell that reuses the QMOI AI component stack while exposing multi-app navigation for QCity and QMOI Space.
 - Hub navigation between QMOI AI, QMOI Space, and QCity

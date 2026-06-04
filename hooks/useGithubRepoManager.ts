@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { readPersistedStorageValue } from "@/app/lib/auth/persistence";
 
 export /**
  * useGithubRepoManager function
@@ -8,7 +9,7 @@ function useGithubRepoManager(): any {
     // Poll backend for GitHub repo tasks (clone, view, modify, fix)
     const interval = setInterval(async () => {
       const res = await apiClient.get("/api/qmoi-model?githubTasks=1", {
-        headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
+        headers: { "x-admin-token": readPersistedStorageValue("adminToken") || "" },
       });
       const data = await res.json();
       if (data.repos && data.repos.length) {
@@ -17,7 +18,7 @@ function useGithubRepoManager(): any {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "x-admin-token": localStorage.getItem("adminToken") || "",
+              "x-admin-token": readPersistedStorageValue("adminToken") || "",
             },
             body: JSON.stringify({ repo }),
           });

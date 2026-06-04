@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { authService } from "../../../../lib/auth/service";
+import { authFallback, authService } from "../../../../lib/auth/service";
 import { prisma } from "@/lib/db/prisma";
 import { logApiError } from "@/lib/logger";
 
@@ -55,8 +55,10 @@ export async function POST(req: NextRequest) {
         await prisma.user.update({ where: { id: userId }, data: { passwordHash: hashedPassword } });
       }
     } else {
-      // In development without a backing database, password reset is acknowledged but not persisted.
-      // The fallback static users are hardcoded in authService, so persistence is unavailable.
+      const updated = authFallback.updatePassword(userId, newPassword);
+      if (!updated) {
+        return NextResponse.json({ success: false, message: "User not found" }, { status: 404 });
+      }
     }
 
     return NextResponse.json({ success: true, message: "Password has been reset successfully" });

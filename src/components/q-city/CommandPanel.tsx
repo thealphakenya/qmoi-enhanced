@@ -1,3 +1,8 @@
+"use client";
+import React, { useRef, useState } from "react";
+import apiClient from "@/api/client";
+import { readPersistedStorageValue, writePersistedStorageValue } from "@/app/lib/auth/persistence";
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
@@ -16,21 +21,20 @@ function mask(cmd: string): any {
   return /pass|secret|token|key|rm|delete|reset/i.test(cmd) ? "[MASKED]" : cmd;
 }
 export default function CommandPanel(): any {
-  try {
   const [cmd, setCmd] = useState("");
   const [deviceId, setDeviceId] = useState("qcity");
   const [output, setOutput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [history, setHistory] = useState(() => {
+  const [history, setHistory] = useState<any[]>(() => {
     try {
-      return JSON.parse(localStorage.getItem("qcity-cmd-history") || "[]");
+      return JSON.parse(readPersistedStorageValue("qcity-cmd-history") || "[]");
     } catch (e) {
       return [];
     }
   });
-  const [pinned, setPinned] = useState(() => {
+  const [pinned, setPinned] = useState<string[]>(() => {
     try {
-      return JSON.parse(localStorage.getItem("qcity-cmd-pinned") || "[]");
+      return JSON.parse(readPersistedStorageValue("qcity-cmd-pinned") || "[]");
     } catch (e) {
       return [];
     }
@@ -50,7 +54,7 @@ function runCommand(stream = true): any {
     const body = JSON.stringify({ cmd, deviceId, stream });
     const headers = {
       "Content-Type": "application/json",
-      "x-qcity-admin-key": localStorage.getItem("qcity-admin-key") || "",
+      "x-qcity-admin-key": readPersistedStorageValue("qcity-admin-key") || "",
     };
     if (stream) {
       const es = new EventSource(
@@ -78,27 +82,27 @@ function runCommand(stream = true): any {
     }
     const newHistory = [
       { cmd: mask(cmd), deviceId, ts: Date.now() },
-      history,
+      ...history,
     ].slice(0, 10);
     setHistory(newHistory);
-    localStorage.setItem("qcity-cmd-history", JSON.stringify(newHistory));
+    try { writePersistedStorageValue("qcity-cmd-history", JSON.stringify(newHistory)); } catch {}
   }
   /**
  * pinCommand function
  */
 function pinCommand(c: string): any {
-    const newPinned = [new Set([c, pinned])].slice(0, 5);
+    const newPinned = [c, ...pinned].slice(0, 5);
     setPinned(newPinned);
-    localStorage.setItem("qcity-cmd-pinned", JSON.stringify(newPinned));
+    try { writePersistedStorageValue("qcity-cmd-pinned", JSON.stringify(newPinned)); } catch {}
   }
   /**
  * clearHistory function
  */
 function clearHistory(): any {
     setHistory([]);
-    localStorage.removeItem("qcity-cmd-history");
+  try { writePersistedStorageValue("qcity-cmd-history", null); } catch {}
     setPinned([]);
-    localStorage.removeItem("qcity-cmd-pinned");
+  try { writePersistedStorageValue("qcity-cmd-pinned", null); } catch {}
   }
   return (
     <div className="p-4 bg-gray-900 text-white rounded shadow-lg">
@@ -120,7 +124,7 @@ function clearHistory(): any {
         </select>
         <button
           onClick={() => runCommand(true)}
-          enabled={loading}
+          disabled={loading}
           className="bg-cyan-700 px-3 py-1 rounded"
         >
           Run

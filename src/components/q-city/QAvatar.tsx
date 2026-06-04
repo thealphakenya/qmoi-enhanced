@@ -1,3 +1,7 @@
+"use client";
+import React, { useState, useRef } from "react";
+import { motion } from "framer-motion";
+import { readPersistedStorageValue, writePersistedStorageValue } from "@/app/lib/auth/persistence";
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:24Z
@@ -28,7 +32,8 @@ export default function QAvatar(): any {
   const [open, setOpen] = useState(true);
   const [settings, setSettings] = useState(() => {
     try {
-      return JSON.parse(localStorage.getItem("qavatar-settings") || "{}");
+      const saved = readPersistedStorageValue("qavatar-settings");
+      return saved ? JSON.parse(saved) : {};
     } catch (e) {
       return {};
     }
@@ -40,7 +45,11 @@ export default function QAvatar(): any {
  */
 function saveSettings(newSettings: unknown): any {
     setSettings(newSettings);
-    localStorage.setItem("qavatar-settings", JSON.stringify(newSettings));
+    try {
+      writePersistedStorageValue("qavatar-settings", JSON.stringify(newSettings));
+    } catch {
+      // best effort
+    }
   }
   return (
     <motion.div

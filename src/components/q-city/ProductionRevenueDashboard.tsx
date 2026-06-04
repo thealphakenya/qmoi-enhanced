@@ -6,22 +6,18 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import apiClient from "@/api/client";
-const logger = {
-  error: (...args: unknown[]) => console.error(...args),
-  warn: (...args: unknown[]) => console.warn(...args),
-  info: (...args: unknown[]) => console.info(...args),
-};
+import { readPersistedUser } from "@/app/lib/auth/persistence";
+import { log } from "@/lib/logger";
+
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = useState(false);
   useEffect(() => {
-    const user = sessionStorage.getItem("user");
-    if (user) {
-      try {
-        const userData = JSON.parse(user);
-        setIsMaster(userData.role === "master");
-      } catch {
-        setIsMaster(false);
-      }
+    try {
+      const persistedUser = readPersistedUser();
+      setIsMaster(Boolean(persistedUser?.role === "master"));
+    } catch (error) {
+      log.warn("MasterAccessRequired failed to read persisted user", error instanceof Error ? error : { error: String(error) });
+      setIsMaster(false);
     }
   }, []);
   if (!isMaster) {
@@ -63,7 +59,7 @@ const ProductionRevenueDashboard: React.FC = () => {
       setChartData(sources);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to fetch revenue data");
-      logger.error("Revenue fetch error:", err);
+      log.error("Revenue fetch error", err instanceof Error ? err : { error: String(err) });
     } finally {
       setLoading(false);
     }
@@ -74,13 +70,14 @@ const ProductionRevenueDashboard: React.FC = () => {
         "/api/revenue/monitor",
         {
           method: "POST",
-          body: { enabled: !isMonitoring },
+          body: JSON.stringify({ enabled: !isMonitoring }),
+          headers: { "Content-Type": "application/json" },
         },
       );
       setIsMonitoring(Boolean(data.monitoring));
     } catch (err) {
       setError("Failed to toggle monitoring");
-      logger.warn("Toggle monitoring failed:", err);
+      log.warn("Toggle monitoring failed", err instanceof Error ? err : { error: String(err) });
     }
   };
   useEffect(() => {
@@ -177,7 +174,7 @@ const ProductionRevenueDashboard: React.FC = () => {
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="name" angle={-45} textAnchor="end" height={80} />
                   <YAxis />
-                  <Tooltip formatter={(value) => formatCurrency(Number(value))} />
+                  <Tooltip formatter={(value: number | string | null) => formatCurrency(Number(value))} />
                   <Bar dataKey="value" fill="#3b82f6" />
                 </BarChart>
               </ResponsiveContainer>
@@ -213,10 +210,10 @@ const ProductionRevenueDashboard: React.FC = () => {
       <Card>
         <CardContent className="p-6">
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button onClick={fetchRevenueData} disabled={loading} variant="primary">
+            <Button onClick={fetchRevenueData} disabled={loading} {...({ variant: "primary" } as any)}>
               🔄 Refresh Now
             </Button>
-            <Button onClick={toggleMonitoring} variant={isMonitoring ? "destructive" : "secondary"}>
+            <Button onClick={toggleMonitoring} {...({ variant: isMonitoring ? "destructive" : "secondary" } as any)}>
               {isMonitoring ? "⏹️ Stop Monitoring" : "▶️ Start Monitoring"}
             </Button>
           </div>

@@ -40,3 +40,7 @@
 - This inventory includes all live page routes and static shell entrypoints currently present in the repository.
 - Verified June 2026: Includes all current QMOI AI, QMOI Space, QCity, QVillage, admin, master, and PWA entrypoints.
 - Use `ALLSERVE.md` and `ALLMDFILESREFS.md` for broader service and documentation indexes.
+
+## Recent Updates
+
+- [2026-06-03] Universal window management now queries `/api/windows` in client environments and falls back to `localStorage` when the endpoint is unavailable. See `src/components/UniversalWindowManager.tsx` for details.

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
+import { readPersistedStorageValue, writePersistedStorageValue } from '@/app/lib/auth/persistence';
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +26,8 @@ export const QMoiSettingsPanel: React.FC = () => {
   // Settings state (bed for now)
   const [settings, setSettings] = useState(() => {
     try {
-      return JSON.parse(localStorage.getItem("qmoi-settings") || "{}");
+      const v = readPersistedStorageValue("qmoi-settings");
+      return v ? JSON.parse(v) : {};
     } catch (e) {
       return {};
     }
@@ -36,7 +38,7 @@ export const QMoiSettingsPanel: React.FC = () => {
  */
 function saveSettings(newSettings: unknown): any {
     setSettings(newSettings);
-    localStorage.setItem("qmoi-settings", JSON.stringify(newSettings));
+    try { writePersistedStorageValue("qmoi-settings", JSON.stringify(newSettings)); } catch {}
   }
   /**
  * exportSettings function
@@ -44,9 +46,9 @@ function saveSettings(newSettings: unknown): any {
 function exportSettings(): any {
     const data = {
       settings,
-      cmdHistory: JSON.parse(localStorage.getItem("qcity-cmd-history") || "[]"),
-      pinned: JSON.parse(localStorage.getItem("qcity-cmd-pinned") || "[]"),
-      qavatar: JSON.parse(localStorage.getItem("qavatar-settings") || "{}"),
+      cmdHistory: JSON.parse(readPersistedStorageValue("qcity-cmd-history") || "[]"),
+      pinned: JSON.parse(readPersistedStorageValue("qcity-cmd-pinned") || "[]"),
+      qavatar: JSON.parse(readPersistedStorageValue("qavatar-settings") || "{}"),
     };
     const blob = new Blob([JSON.stringify(data, null, 2)], {
       type: "application/json",
@@ -69,18 +71,9 @@ function importSettings(e: React.ChangeEvent<HTMLInputElement>): any {
       try {
         const data = JSON.parse(ev.target?.result as string);
         if (data.settings) saveSettings(data.settings);
-        if (data.cmdHistory)
-          localStorage.setItem(
-            "qcity-cmd-history",
-            JSON.stringify(data.cmdHistory),
-          );
-        if (data.pinned)
-          localStorage.setItem("qcity-cmd-pinned", JSON.stringify(data.pinned));
-        if (data.qavatar)
-          localStorage.setItem(
-            "qavatar-settings",
-            JSON.stringify(data.qavatar),
-          );
+        if (data.cmdHistory) try { writePersistedStorageValue("qcity-cmd-history", JSON.stringify(data.cmdHistory)); } catch {}
+        if (data.pinned) try { writePersistedStorageValue("qcity-cmd-pinned", JSON.stringify(data.pinned)); } catch {}
+        if (data.qavatar) try { writePersistedStorageValue("qavatar-settings", JSON.stringify(data.qavatar)); } catch {}
         notification.show("Settings imported!");
       } catch (e) {
         notification.show("Invalid settings file.");

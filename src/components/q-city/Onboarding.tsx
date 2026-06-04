@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { writePersistedStorageValue } from '@/app/lib/auth/persistence';
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -50,12 +51,12 @@ const Onboarding: React.FC = () => {
   };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    : persist to localStorage for now
+    // persist to storage
     try {
-      localStorage.setItem("qmoi_onboarding", JSON.stringify(form));
-      .log("Saved onboarding form to localStorage");
+      writePersistedStorageValue("qmoi_onboarding", JSON.stringify(form));
+      // Saved
     } catch (err) {
-      logger.warning("Unable to persist form", err);
+      // ignore persistence failure
     }
     setStep(3);
   };

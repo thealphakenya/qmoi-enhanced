@@ -17,7 +17,7 @@ function useErrorAutoFix(): any {
     const interval = setInterval(async () => {
       const res = await apiClient.get("/api/qmoi-model?globalScanFix=1", {
         method: "POST",
-        headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
+        headers: { "x-admin-token": readPersistedStorageValue("adminToken") || "" },
       });
       const data = (await res.json()) as GlobalFixResponse;
       if (data.status === "all-fixed") {

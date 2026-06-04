@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
+import { readPersistedStorageValue, writePersistedStorageValue } from '@/app/lib/auth/persistence';
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -38,7 +39,8 @@ const SelfHealPanel: React.FC = () => {
   });
   const [history, setHistory] = useState<any[]>(() => {
     try {
-      return JSON.parse(localStorage.getItem("selfHealHistory") || "[]");
+      const v = readPersistedStorageValue("selfHealHistory");
+      return v ? JSON.parse(v) : [];
     } catch (e) {
       return [];
     }
@@ -50,7 +52,7 @@ const SelfHealPanel: React.FC = () => {
     setError(null);
     setSuccess(null);
     try {
-      const token = localStorage.getItem("jwtToken");
+      const token = readPersistedStorageValue("jwtToken");
       const es = new EventSource(
         API_URL +
           "?token=" +
@@ -72,7 +74,7 @@ const SelfHealPanel: React.FC = () => {
           };
           const newHistory = [entry, ...history].slice(0, 10);
           setHistory(newHistory);
-          localStorage.setItem("selfHealHistory", JSON.stringify(newHistory));
+          try { writePersistedStorageValue("selfHealHistory", JSON.stringify(newHistory)); } catch {}
         } else {
           logBuffer += event.data + "\n";
           setLog(logBuffer);
@@ -103,7 +105,7 @@ const SelfHealPanel: React.FC = () => {
   };
   const handleClearHistory = () => {
     setHistory([]);
-    localStorage.removeItem("selfHealHistory");
+    try { writePersistedStorageValue("selfHealHistory", null); } catch {}
   };
   // Scheduling UI ()
   const handleSchedule = () => {

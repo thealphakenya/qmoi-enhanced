@@ -285,7 +285,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
             setCurrentText(e.target.value);
             onTextChange(e.target.value);
           }}
-          ={language === "sw" ? "Andika hapa..." : "Type here..."}
+          placeholder={language === "sw" ? "Andika hapa..." : "Type here..."}
           className="w-full p-2 border rounded resize-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           rows={2}
         />

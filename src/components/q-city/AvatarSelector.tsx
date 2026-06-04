@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 "use client";
+import { readPersistedStorageValue, writePersistedStorageValue } from "@/app/lib/auth/persistence";
 import {
   Select,
   SelectContent,
@@ -48,7 +49,14 @@ function AvatarSelector({
   const [selectedQuality, setSelectedQuality] = useState<string>("all");
   const [selectedEngine, setSelectedEngine] = useState<string>("all");
   const [autoAvatarMode, setAutoAvatarMode] = useState<boolean>(
-    () => JSON.parse(localStorage.getItem("qmoi-avatar-auto-mode") || "false"),
+    () => {
+      try {
+        const v = readPersistedStorageValue("qmoi-avatar-auto-mode");
+        return v ? JSON.parse(v) : false;
+      } catch {
+        return false;
+      }
+    },
   );
   const [autoUpgrade, setAutoUpgrade] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -63,14 +71,13 @@ function AvatarSelector({
     avatarsConfig[0];
   useEffect(() => {
     // Load saved avatar preference or use voice default
-    const savedAvatar = localStorage.getItem("qmoi-avatar-preference");
+    const savedAvatar = readPersistedStorageValue("qmoi-avatar-preference");
     setSelectedAvatar(savedAvatar || defaultAvatar.id);
   }, [defaultAvatar.id]);
   const handleAvatarChange = async (avatarId: string) => {
     setIsLoading(true);
     try {
-      // Save to localStorage
-      localStorage.setItem("qmoi-avatar-preference", avatarId);
+      try { writePersistedStorageValue("qmoi-avatar-preference", avatarId); } catch {}
       setSelectedAvatar(avatarId);
       // Call API to switch avatar
       const response = await apiClient.get("/api/qmoi/avatars", {
@@ -188,7 +195,7 @@ function AvatarSelector({
     await handleAvatarChange(autoId);
   };
   useEffect(() => {
-    localStorage.setItem("qmoi-avatar-auto-mode", JSON.stringify(autoAvatarMode));
+    try { writePersistedStorageValue("qmoi-avatar-auto-mode", JSON.stringify(autoAvatarMode)); } catch {}
     if (autoAvatarMode) {
       applyAutoAvatar();
     }

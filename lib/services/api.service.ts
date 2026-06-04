@@ -3,6 +3,8 @@
  * Provides centralized API communication with error handling, retry logic, and caching
  */
 
+import { readPersistedStorageValue } from '@/app/lib/auth/persistence';
+
 type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
 interface ApiResponse<T> {
@@ -130,11 +132,9 @@ class ApiService {
    */
   private getAuthToken(): string {
     try {
-      if (typeof window !== 'undefined') {
-        return localStorage.getItem('auth_token') || '';
-      }
+      return readPersistedStorageValue('auth_token') || '';
     } catch {
-      // Server-side rendering
+      // Server-side rendering or storage unavailable
     }
     return '';
   }

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { readPersistedStorageValue } from "@/app/lib/auth/persistence";
 
 export /**
  * useAutoEarningTasks function
@@ -8,7 +9,7 @@ function useAutoEarningTasks(): any {
     // Poll backend for background earning tasks and trigger them
     const interval = setInterval(async () => {
       const res = await apiClient.get("/api/qmoi-model?autoEarning=1", {
-        headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
+        headers: { "x-admin-token": readPersistedStorageValue("adminToken") || "" },
       });
       const data = await res.json();
       if (data.tasks && data.tasks.length) {
@@ -17,7 +18,7 @@ function useAutoEarningTasks(): any {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "x-admin-token": localStorage.getItem("adminToken") || "",
+              "x-admin-token": readPersistedStorageValue("adminToken") || "",
             },
             body: JSON.stringify({ task }),
           });

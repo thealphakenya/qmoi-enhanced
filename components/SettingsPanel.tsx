@@ -159,13 +159,13 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
     setAutomation((prev) => ({ ...prev, [key]: value }));
   };
   const updateQmoiApp = async () => {
-     update process
+    // simulate update process
     for (let i = 0; i <= 100; i += 10) {
       await new Promise((resolve) => setTimeout(resolve, 100));
     }
   };
   const downloadQmoiApp = async (appName: string) => {
-    .log(`Downloading ${appName}...`);
+    console.log(`Downloading ${appName}...`);
   };
   if (!isOpen) return null;
   return (

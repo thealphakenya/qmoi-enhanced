@@ -3,6 +3,7 @@
 // Last evolution cycle: 2026-05-24T00:00:00Z
 
 import { EventEmitter } from "events";
+import { log } from "../lib/logger";
 
 export type AppCategory =
   | "trading"
@@ -355,9 +356,9 @@ export class AppManagementService {
 
   private async autoGitCommit(message: string): Promise<void> {
     try {
-      console.log(`Auto Git commit: ${message}`);
+      log.debug(`Auto Git commit: ${message}`);
     } catch (error) {
-      console.error("Auto Git commit failed:", error);
+      log.error("Auto Git commit failed:", error as Error);
     }
   }
 
@@ -372,7 +373,7 @@ export class AppManagementService {
               this.eventEmitter.emit("appStatusChanged", { appId: app.id, status: app.status });
             }
           } catch (error) {
-            console.error(`Failed to check updates for ${app.id}:`, error);
+            log.error(`Failed to check updates for ${app.id}:`, error as Error);
           }
         }
       }

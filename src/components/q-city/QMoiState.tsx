@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { readPersistedStorageValue } from '@/app/lib/auth/persistence';
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:24Z
@@ -39,8 +40,7 @@ function QMoiState({
   const [page, setPage] = useState(1);
   const [pageSize] = useState(20);
   const [totalPages, setTotalPages] = useState(1);
-  const token =
-    typeof window !== "undefined" ? localStorage.getItem("token") : null;
+  const token = readPersistedStorageValue("token");
   // Update time every second
   useEffect(() => {
     const timer = setInterval(() => setNow(new Date()), 1000);

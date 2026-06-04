@@ -69,7 +69,7 @@ const TeamRoleManager: React.FC = () => {
   });
   const [approvals, setApprovals] =
     useState<ApprovalRequest[]>(initialApprovals);
-  const isMaster = team[0].role === "master";  master login
+  const isMaster = team[0].role === "master";
   const addUser = () => {
     if (!newUser.name.trim()) return;
     setTeam((prev) => [

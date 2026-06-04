@@ -24,6 +24,10 @@ class ErrorBoundary extends React.Component {
  * Location: src/app/master/workflows-health/page.tsx
  */
 'use client';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { readPersistedStorageValue } from '@/app/lib/auth/persistence';
+
 interface WorkflowHealth {
   workflowName: string;
   healthPercentage: number;
@@ -101,7 +105,7 @@ function WorkflowsHealthDashboard(): any {
    * Verify master authentication on mount
    */
   useEffect(() => {
-    const masterToken = localStorage.getItem('master_token');
+    const masterToken = readPersistedStorageValue('master_token');
     if (!masterToken) {
       router.push('/app/master/auth');
       return;
@@ -115,7 +119,7 @@ function WorkflowsHealthDashboard(): any {
     if (!isMasterAuthed) return;
     try {
       setError(null);
-      const masterToken = localStorage.getItem('master_token');
+      const masterToken = readPersistedStorageValue('master_token');
       const response = await apiClient.get('/api/lion/workflows/health?validations=true', {
         headers: {
           'Authorization': `Bearer ${masterToken}`
@@ -155,7 +159,7 @@ function WorkflowsHealthDashboard(): any {
    */
   const forceValidationRefresh = async () => {
     try {
-      const masterToken = localStorage.getItem('master_token');
+      const masterToken = readPersistedStorageValue('master_token');
       const response = await apiClient.get('/api/lion/workflows/health', {
         method: 'PUT',
         headers: {

@@ -1,10 +1,14 @@
+"use client";
+import React, { useEffect, useState } from "react";
+import apiClient from "@/api/client";
+import { readPersistedStorageValue } from "@/app/lib/auth/persistence";
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Automatic improvements, optimizations, feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 export default function AuditLogPanel(): any {
-  try {
-  const [logs, setLogs] = useState([]);
+  const [logs, setLogs] = useState<any[]>([]);
   const [filter, setFilter] = useState({
     action: "",
     user: "",
@@ -21,17 +25,23 @@ export default function AuditLogPanel(): any {
  */
 function fetchLogs(): any {
     setLoading(true);
-    const params = new URLSearchParams({ filter, format });
+    const params = new URLSearchParams({
+      action: filter.action,
+      user: filter.user,
+      deviceId: filter.deviceId,
+      status: filter.status,
+      format,
+    });
     apiClient.get(`/api/qcity/audit-log?${params.toString()}`, {
       headers: {
-        "x-qcity-admin-key": localStorage.getItem("qcity-admin-key") || "",
+        "x-qcity-admin-key": readPersistedStorageValue("qcity-admin-key") || "",
       },
     })
       .then((r) => (format === "csv" ? r.text() : r.json()))
       .then((data) => {
         setLogs(
           format === "csv"
-            ? data.split("\n").map((l) => l.split(","))
+            ? data.split("\n").map((l: string) => l.split(","))
             : data.logs || [],
         );
         setLoading(false);
@@ -51,27 +61,27 @@ function exportLogs(fmt: string): any {
         <input
           placeholder="Action"
           value={filter.action}
-          onChange={(e) => setFilter((f) => ({ f, action: e.target.value }))}
+          onChange={(e) => setFilter((f) => ({ ...f, action: e.target.value }))}
           className="bg-gray-800 p-1 rounded"
         />
         <input
           placeholder="User"
           value={filter.user}
-          onChange={(e) => setFilter((f) => ({ f, user: e.target.value }))}
+          onChange={(e) => setFilter((f) => ({ ...f, user: e.target.value }))}
           className="bg-gray-800 p-1 rounded"
         />
         <input
           placeholder="Device"
           value={filter.deviceId}
           onChange={(e) =>
-            setFilter((f) => ({ f, deviceId: e.target.value }))
+            setFilter((f) => ({ ...f, deviceId: e.target.value }))
           }
           className="bg-gray-800 p-1 rounded"
         />
         <input
           placeholder="Status"
           value={filter.status}
-          onChange={(e) => setFilter((f) => ({ f, status: e.target.value }))}
+          onChange={(e) => setFilter((f) => ({ ...f, status: e.target.value }))}
           className="bg-gray-800 p-1 rounded"
         />
         <button
@@ -103,7 +113,7 @@ function exportLogs(fmt: string): any {
               </tr>
             </thead>
             <tbody>
-              {logs.map((l: unknown, i) => (
+              {logs.map((l: any, i) => (
                 <tr key={i}>
                   <td>{l.timestamp || ""}</td>
                   <td>{l.action || ""}</td>

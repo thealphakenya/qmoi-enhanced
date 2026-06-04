@@ -111,7 +111,7 @@ class EmailService {
     return this.imapClient;
   };
 
-  fully implemented
+  // fully implemented
 
   /**
    * Connect to IMAP server

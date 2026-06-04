@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db/prisma";
-import { authService } from "@/lib/auth/service";
+import { authFallback, authService } from "@/lib/auth/service";
 import bcrypt from 'bcryptjs';
 import { log, logApiError } from "@/lib/logger";
 import { logAuthEvent } from "@/app/lib/auth/memory";
+
+const USE_DB = Boolean(process.env.DATABASE_URL);
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -61,58 +63,89 @@ export async function POST(req: NextRequest) {
     }
 
     // Check if user already exists
-    const existingUser = await prisma.user.findFirst({
-      where: {
-        OR: [
-          { email },
-          { username }
-        ]
-      },
-    });
-
-    if (existingUser) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: existingUser.email === email
-            ? "Email already registered"
-            : "Username already taken",
+    if (USE_DB) {
+      const existingUser = await prisma.user.findFirst({
+        where: {
+          OR: [
+            { email },
+            { username }
+          ]
         },
-        { status: 409 }
-      );
+      });
+
+      if (existingUser) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: existingUser.email === email
+              ? "Email already registered"
+              : "Username already taken",
+          },
+          { status: 409 }
+        );
+      }
+    } else {
+      const existingUser = authFallback.findUserByIdentifier(email) || authFallback.findUserByUsername(username);
+      if (existingUser) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: existingUser.email === email
+              ? "Email already registered"
+              : "Username already taken",
+          },
+          { status: 409 }
+        );
+      }
     }
 
     // Hash password using a central auth service for secure password storage
     const hashedPassword = await authService.hashPassword(password);
 
-    // Create user and store the password hash for authentication
-    const user = await prisma.user.create({
-      data: {
+    let user;
+    if (USE_DB) {
+      // Create user and store the password hash for authentication
+      user = await prisma.user.create({
+        data: {
+          email,
+          username,
+          name: name || username,
+          role,
+          passwordHash: hashedPassword,
+          permissions: JSON.stringify(['read']), // Default permissions
+          accountStatus: 'active',
+          trustScore: 0.5, // Start with neutral trust score
+          biometricEnabled: false,
+        },
+        select: {
+          id: true,
+          email: true,
+          username: true,
+          name: true,
+          role: true,
+          permissions: true,
+          accountStatus: true,
+          trustScore: true,
+          createdAt: true,
+        },
+      });
+    } else {
+      user = authFallback.createUser({
         email,
         username,
-        name: name || username,
+        fullName: name || username,
         role,
-        passwordHash: hashedPassword,
-        permissions: JSON.stringify(['read']), // Default permissions
-        accountStatus: 'active',
-        trustScore: 0.5, // Start with neutral trust score
-        biometricEnabled: false,
-      },
-      select: {
-        id: true,
-        email: true,
-        username: true,
-        name: true,
-        role: true,
-        permissions: true,
-        accountStatus: true,
-        trustScore: true,
-        createdAt: true,
-      },
-    });
+        permissions: ['read'],
+        password,
+      });
+    }
 
     // Generate tokens for immediate login
-    const permissions = user.permissions ? JSON.parse(user.permissions) : [];
+    const permissions = Array.isArray(user.permissions)
+      ? user.permissions
+      : user.permissions
+      ? JSON.parse(user.permissions)
+      : [];
     const tokens = await authService.generateTokens(
       user.id,
       user.email,
@@ -120,25 +153,26 @@ export async function POST(req: NextRequest) {
       permissions
     );
 
-    // Create audit log
-    await prisma.auditLog.create({
-      data: {
-        userId: user.id,
-        username: user.username,
-        action: 'register',
-        resource: 'auth',
-        details: JSON.stringify({
-          method: 'password',
-          role: user.role,
-          userAgent: req.headers.get('user-agent'),
+    if (USE_DB) {
+      await prisma.auditLog.create({
+        data: {
+          userId: user.id,
+          username: user.username,
+          action: 'register',
+          resource: 'auth',
+          details: JSON.stringify({
+            method: 'password',
+            role: user.role,
+            userAgent: req.headers.get('user-agent'),
+            ipAddress: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip'),
+          }),
           ipAddress: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip'),
-        }),
-        ipAddress: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip'),
-        riskLevel: 'low',
-        status: 'success',
-        sessionId: tokens.sessionId,
-      } as any,
-    });
+          riskLevel: 'low',
+          status: 'success',
+          sessionId: tokens.sessionId,
+        } as any,
+      });
+    }
 
     const response = NextResponse.json({
       success: true,
@@ -147,11 +181,11 @@ export async function POST(req: NextRequest) {
         id: user.id,
         email: user.email,
         username: user.username,
-        name: user.name,
+        name: (user as any).name || (user as any).fullName || username,
         role: user.role,
         permissions: permissions,
-        trustScore: user.trustScore,
-        createdAt: user.createdAt,
+        trustScore: (user as any).trustScore || 0.5,
+        createdAt: (user as any).createdAt || new Date().toISOString(),
       },
       tokens: {
         accessToken: tokens.accessToken,

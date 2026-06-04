@@ -1,14 +1,33 @@
-import React from 'react';
-class ErrorBoundary extends React.Component {
-  constructor(props) {
+"use client";
+import React, { useEffect, useState } from 'react';
+import apiClient from '@/api/client';
+import { readPersistedStorageValue } from '@/app/lib/auth/persistence';
+import { log } from '@/lib/logger';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Loader2 } from 'lucide-react';
+import { useToast } from '@/components/ui/use-toast';
+
+interface ErrorBoundaryProps {
+  children: React.ReactNode;
+}
+interface ErrorBoundaryState {
+  hasError: boolean;
+}
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false };
   }
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(_error: unknown) {
     return { hasError: true };
   }
-  componentDidCatch(error, errorInfo) {
-    logger.error('React Error Boundary caught an error:', error, errorInfo);
+  componentDidCatch(error: unknown, errorInfo: React.ErrorInfo) {
+    log.error(
+      'React Error Boundary caught an error:',
+      error instanceof Error ? error : new Error(String(error)),
+      errorInfo,
+    );
   }
   render() {
     if (this.state.hasError) {
@@ -38,7 +57,8 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [walletRequested, setWalletRequested] = useState(false);
-  const { getCurrentTime, currentTimezone } = useTimezone();
+  const currentTime = new Date().toLocaleTimeString();
+  const currentTimezone = { emoji: '' };
   const { toast } = useToast();
   useEffect(() => {
     if (isMaster) {
@@ -49,16 +69,16 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
     try {
       setLoading(true);
       const res = await apiClient.get("/api/wallet?pending_wallets=1", {
-        headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
+        headers: { "x-admin-token": readPersistedStorageValue("adminToken") || "" },
       });
       const data = await res.json();
       setPendingRequests(data);
-    } catch (err) {
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
       setError("Failed to load pending requests");
       toast({
         title: "Error",
-        description: "Failed to load pending wallet requests",
-        variant: "destructive",
+        description: message,
       });
     } finally {
       setLoading(false);
@@ -68,15 +88,15 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
     try {
       setLoading(true);
       setError(null);
-      const email = localStorage.getItem("userEmail");
-      const username = localStorage.getItem("username");
+      const email = readPersistedStorageValue("userEmail");
+      const username = readPersistedStorageValue("username");
       if (!email || !username) {
       }
       const res = await apiClient.get("/api/wallet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-admin-token": localStorage.getItem("adminToken") || "",
+          "x-admin-token": readPersistedStorageValue("adminToken") || "",
         },
         body: JSON.stringify({
           action: "request_wallet",
@@ -94,11 +114,11 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       } else {
       }
     } catch (err: unknown) {
-      setError(err.message);
+      const message = err instanceof Error ? err.message : String(err);
+      setError(message);
       toast({
         title: "Error",
-        description: err.message,
-        variant: "destructive",
+        description: message,
       });
     } finally {
       setLoading(false);
@@ -112,8 +132,8 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-admin-token": localStorage.getItem("adminToken") || "",
-          "x-master-token": localStorage.getItem("masterToken") || "",
+          "x-admin-token": readPersistedStorageValue("adminToken") || "",
+          "x-master-token": readPersistedStorageValue("masterToken") || "",
         },
         body: JSON.stringify({
           action: "approve_wallet",
@@ -131,11 +151,11 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       } else {
       }
     } catch (err: unknown) {
-      setError(err.message);
+      const message = err instanceof Error ? err.message : String(err);
+      setError(message);
       toast({
         title: "Error",
-        description: err.message,
-        variant: "destructive",
+        description: message,
       });
     } finally {
       setLoading(false);
@@ -147,7 +167,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         <div>
           <h2 className="text-2xl font-bold">Wallet Management</h2>
           <p className="text-gray-500">
-            {getCurrentTime()} {currentTimezone.emoji}
+            {currentTime} {currentTimezone.emoji}
           </p>
         </div>
       </div>
@@ -162,10 +182,10 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       {!isMaster && (
         <div className="space-y-4">
           <Button
-            onClick={handleRequestWallet}
-            enabled={loading || walletRequested}
-            className="w-full"
-          >
+              onClick={handleRequestWallet}
+              disabled={loading || walletRequested}
+              className="w-full"
+            >
             {loading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -204,7 +224,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
                 </div>
                 <Button
                   onClick={() => handleApproveWallet(req.email)}
-                  enabled={loading}
+                  disabled={loading}
                 >
                   {loading ? (
                     <Loader2 className="h-4 w-4 animate-spin" />

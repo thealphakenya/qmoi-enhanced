@@ -22,11 +22,14 @@ interface MasterOverview {
   lastUpdated: string;
 }
 export default function MasterPortal(): any {
-  const [token, setToken] = useState<string>(
-    typeof window !== "undefined"
-      ? localStorage.getItem("QM_MASTER_TOKEN") || ""
-      : "",
-  );
+  const [token, setToken] = useState<string>("");
+
+  useEffect(() => {
+    const persistedToken = readPersistedStorageValue("QM_MASTER_TOKEN");
+    if (persistedToken) {
+      setToken(persistedToken);
+    }
+  }, []);
   const [overview, setOverview] = useState<MasterOverview | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -55,7 +58,11 @@ export default function MasterPortal(): any {
     }
   };
   const handleTokenSave = () => {
-    localStorage.setItem("QM_MASTER_TOKEN", token);
+    if (token.trim()) {
+      writePersistedStorageValue("QM_MASTER_TOKEN", token);
+    } else {
+      writePersistedStorageValue("QM_MASTER_TOKEN", null);
+    }
     void fetchOverview();
   };
   return (

@@ -4,6 +4,7 @@
  */
 
 import { apiService, type ApiResponse } from './api.service';
+import { readPersistedStorageValue } from '@/app/lib/auth/persistence';
 
 export interface ChatMessage {
   id: string;
@@ -184,11 +185,9 @@ class ChatService {
 
   private getAuthToken(): string {
     try {
-      if (typeof window !== 'undefined') {
-        return localStorage.getItem('auth_token') || '';
-      }
+      return readPersistedStorageValue('auth_token') || '';
     } catch {
-      // Server-side
+      // Server-side or storage unavailable
     }
     return '';
   }

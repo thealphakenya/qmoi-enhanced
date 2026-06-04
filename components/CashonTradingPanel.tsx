@@ -5,6 +5,7 @@
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
 "use client";
 import React, { useEffect, useState } from "react";
+import { readPersistedStorageValue } from "@/app/lib/auth/persistence";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
@@ -69,7 +70,7 @@ export default function CashonTradingPanel(): any {
   // Check if user is master
   useEffect(() => {
     const token =
-      localStorage.getItem("master_token") ||
+      readPersistedStorageValue("master_token") ||
       process.env.NEXT_PUBLIC_MASTER_TOKEN;
     setIsMaster(!!token);
     setMasterToken(token || "");

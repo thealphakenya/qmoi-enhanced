@@ -113,7 +113,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
     const result = await AzureIntegration.connect(creds);
     if (result) {
       notify("Azure connected", "success");
-      const rgs = await .listResourceGroups();
+      const rgs = await AzureIntegration.listResourceGroups();
       setAzureResourceGroups(rgs);
     } else {
       notify("Azure connection failed", "error");
@@ -129,7 +129,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
     const result = await GCPIntegration.connect(creds);
     if (result) {
       notify("GCP connected", "success");
-      const buckets = await .listBuckets();
+      const buckets = await GCPIntegration.listBuckets();
       setGcpBuckets(buckets);
     } else {
       notify("GCP connection failed", "error");
@@ -627,10 +627,9 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                                         return;
                                       }
                                       if (
-                                        typeof 
-                                          .listBuckets === "function"
+                                        typeof d.integration.listBuckets === "function"
                                       ) {
-                                        const buckets = await .listBuckets();
+                                        const buckets = await d.integration.listBuckets();
                                         setAwsBuckets(buckets);
                                         notify("Buckets refreshed", "info");
                                       }
@@ -667,10 +666,9 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                                         return;
                                       }
                                       if (
-                                        typeof 
-                                          .listResourceGroups === "function"
+                                        typeof d.integration.listResourceGroups === "function"
                                       ) {
-                                        const rgs = await .listResourceGroups();
+                                        const rgs = await d.integration.listResourceGroups();
                                         setAzureResourceGroups(rgs);
                                         notify(
                                           "Resource groups refreshed",
@@ -715,10 +713,9 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                                         return;
                                       }
                                       if (
-                                        typeof 
-                                          .listBuckets === "function"
+                                        typeof d.integration.listBuckets === "function"
                                       ) {
-                                        const buckets = await .listBuckets();
+                                        const buckets = await d.integration.listBuckets();
                                         setGcpBuckets(buckets);
                                         notify("Buckets refreshed", "info");
                                       }

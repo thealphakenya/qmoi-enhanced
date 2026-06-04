@@ -15,6 +15,7 @@ export const requireMasterRole = (handler: Function) => {
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 import { useEffect, useState } from "react";
+import { readPersistedStorageValue } from "@/app/lib/auth/persistence";
 
 export /**
  * useAnalyticsDashboard function
@@ -24,7 +25,7 @@ function useAnalyticsDashboard(): any {
   useEffect(() => {
     const fetchAnalytics = async () => {
       const res = await apiClient.get("/api/qmoi-model?analytics=1", {
-        headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
+        headers: { "x-admin-token": readPersistedStorageValue("adminToken") || "" },
       });
       const data = await res.json();
       setAnalytics(data);

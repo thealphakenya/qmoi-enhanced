@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { readPersistedStorageValue } from "@/app/lib/auth/persistence";
 
 export /**
  * useModelTrainer function
@@ -10,7 +11,7 @@ function useModelTrainer(): any {
     // Poll backend for model training status
     const interval = setInterval(async () => {
       const res = await apiClient.get("/api/qmoi-model?trainingStatus=1", {
-        headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
+        headers: { "x-admin-token": readPersistedStorageValue("adminToken") || "" },
       });
       const data = await res.json();
       setTrainingStatus(data.status || "idle");

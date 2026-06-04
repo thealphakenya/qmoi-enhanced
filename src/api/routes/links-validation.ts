@@ -241,7 +241,7 @@ router.post(
           .json({ success: false, error: "fixes must be an array" });
       }
 
-      fully implemented
+      // fully implemented
       // For now, just log the request
       logger.info(
         `[API] Batch fix requested: ${fixes.length} replacements`

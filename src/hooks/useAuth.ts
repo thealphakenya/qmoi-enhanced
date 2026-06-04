@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { readPersistedStorageValue, writePersistedStorageValue } from "@/app/lib/auth/persistence";
 
 interface User {
   id: string;
@@ -26,7 +27,7 @@ export default function useAuth() {
   });
 
   useEffect(() => {
-    const sessionId = localStorage.getItem("sessionId");
+    const sessionId = readPersistedStorageValue("sessionId");
     if (sessionId) validateSession(sessionId);
     else setState({ user: null, loading: false, error: null });
   }, []);
@@ -35,7 +36,7 @@ export default function useAuth() {
     try {
       const res = await fetch(`/api/auth/session?token=${encodeURIComponent(sessionId)}`);
       if (!res.ok) {
-        localStorage.removeItem("sessionId");
+        writePersistedStorageValue("sessionId", null);
         setState({ user: null, loading: false, error: null });
         return false;
       }
@@ -65,7 +66,7 @@ export default function useAuth() {
       const data = await res.json();
       const sessionId = data.session?.id || null;
       const user: User | null = data.user || null;
-      if (sessionId) localStorage.setItem("sessionId", sessionId);
+      if (sessionId) writePersistedStorageValue("sessionId", sessionId);
       setState({ user, loading: false, error: null });
       return { user, sessionId };
     } catch (err: any) {
@@ -76,14 +77,14 @@ export default function useAuth() {
 
   const logout = useCallback(async () => {
     try {
-      const sessionId = localStorage.getItem("sessionId");
+      const sessionId = readPersistedStorageValue("sessionId");
       if (sessionId) {
         await fetch("/api/auth/session", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ action: "logout", token: sessionId }),
         });
-        localStorage.removeItem("sessionId");
+        writePersistedStorageValue("sessionId", null);
       }
       setState({ user: null, loading: false, error: null });
     } catch (err) {
@@ -126,7 +127,7 @@ export default function useAuth() {
 
   const updatePreferences = useCallback(async (preferences: Partial<User["preferences"]>) => {
     try {
-      const sessionId = localStorage.getItem("sessionId");
+      const sessionId = readPersistedStorageValue("sessionId");
       if (!sessionId) throw new Error("No session");
       const res = await fetch("/api/auth/preferences", {
         method: "POST",

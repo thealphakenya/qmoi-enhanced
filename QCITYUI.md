@@ -99,6 +99,8 @@ Upon launching QCity, users see:
 - Biometric authentication events are logged to QMOI memory (`/api/auth/memory`) to provide audit-aware identity verification and session tracing.
 - Master command endpoints added (`/api/master/command` and `/api/master/last`) to allow secure master-controlled UI instructions (poll-based client hook available at `app/lib/ui/master.ts`).
 
+- [2026-06-03] Client window state: `UniversalWindowManager` now prefers `/api/windows` for authoritative window state and falls back to `localStorage` when the API is unavailable. See `src/components/UniversalWindowManager.tsx` for details.
+
 
 ## Actual QCity Page Features
 `app/qcity/page.jsx` currently renders the QCity command center with these real app sections:

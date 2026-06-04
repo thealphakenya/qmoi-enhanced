@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { readPersistedStorageValue } from "@/app/lib/auth/persistence";
 interface Workspace {
   id: string;
   name: string;
@@ -14,7 +15,7 @@ export default function QCityDevicePanel() {
   const [logs, setLogs] = useState<Record<string, string>>({});
   const [isMaster, setIsMaster] = useState(true);
   useEffect(() => {
-    const stored = localStorage.getItem("qcityMaster");
+    const stored = readPersistedStorageValue("qcityMaster");
     if (stored === "false") setIsMaster(false);
   }, []);
   const handleAction = (workspaceId: string, action: string) => {

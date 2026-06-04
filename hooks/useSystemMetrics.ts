@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { readPersistedStorageValue } from "@/app/lib/auth/persistence";
 
 export interface SystemMetrics {
   cpu: {
@@ -65,7 +66,7 @@ function useSystemMetrics(): any {
  */
 function fetchMetrics(): any {
       try {
-        const adminToken = localStorage.getItem("adminToken") || "";
+        const adminToken = readPersistedStorageValue("adminToken") || "";
         const response = await apiClient.get("/api/system/metrics", {
           headers: { "x-admin-token": adminToken },
         });
@@ -97,7 +98,7 @@ function fetchMetrics(): any {
     duration: "1h" | "6h" | "24h" | "7d",
   ) => {
     try {
-      const adminToken = localStorage.getItem("adminToken") || "";
+      const adminToken = readPersistedStorageValue("adminToken") || "";
       const response = await apiClient.get(
         `/api/system/metrics/history?metric=${metric}&duration=${duration}`,
         {
@@ -120,7 +121,7 @@ function fetchMetrics(): any {
 
   const getProcessDetails = async (pid: number) => {
     try {
-      const adminToken = localStorage.getItem("adminToken") || "";
+      const adminToken = readPersistedStorageValue("adminToken") || "";
       const response = await apiClient.get(`/api/system/processes/${pid}`, {
         headers: { "x-admin-token": adminToken },
       });

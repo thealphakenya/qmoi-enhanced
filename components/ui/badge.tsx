@@ -50,7 +50,7 @@ export interface BadgeProps
  */
 function Badge({ className, variant, props }: BadgeProps): any {
   return (
-    <div className={cn(badgeVariants({ variant }), className)} {props} />
+    <div className={cn(badgeVariants({ variant }), className)} {...props} />
   );
 }
 export { Badge, badgeVariants };

@@ -1,6 +1,8 @@
-import React from 'react';
+"use client";
+
+import React from "react";
+import { readPersistedUser } from "../../app/lib/auth/persistence";
 import type { NextRequest } from "next/server";
-import { headers } from "next/headers";
 
 declare const logger: any;
 
@@ -55,18 +57,18 @@ export function hasFinancialAccess(user: User | null | undefined): boolean {
  */
 export async function requireMasterRole(request: NextRequest) {
   try {
-    const headersList = headers();
-    const userJson = headersList.get("x-user");
+    const userJson = request.headers.get("x-user");
 
     if (!userJson) {
       throw new UserNotFoundError("No user in request headers");
     }
 
-    const user: User = JSON.parse(userJson);
+    const user = JSON.parse(userJson) as User;
 
     if (!isMasterUser(user)) {
+      const email = (user as User).email || "unknown";
       throw new AccessDeniedError(
-        `User ${user.email} does not have master access. Only master users can access financial features.`
+        `User ${email} does not have master access. Only master users can access financial features.`
       );
     }
 
@@ -95,7 +97,6 @@ export function withMasterAccess(handler: Function) {
         });
       }
 
-      // Audit log
       logger?.info?.(`[AUDIT] Master access: ${user.email} on ${new Date().toISOString()}`);
 
       return handler(req, res, next);
@@ -115,25 +116,34 @@ export function useMasterAccess() {
   const [user, setUser] = React.useState<User | null>(null);
 
   React.useEffect(() => {
-    const checkMasterRole = async () => {
+    const checkMasterRole = () => {
       try {
-        const userJson = sessionStorage.getItem("user");
-        if (!userJson) {
+        const persisted = readPersistedUser();
+
+        if (!persisted?.role) {
+          setUser(null);
           setIsMaster(false);
           return;
         }
 
-        const userData: User = JSON.parse(userJson);
+        const userData: User = {
+          id: persisted.id || "",
+          role: persisted.role,
+          email: persisted.displayName || "unknown@qmoi.local",
+          createdAt: new Date(),
+          lastLogin: new Date(),
+        };
+
         const isMasterRole = isMasterUser(userData);
         setUser(userData);
         setIsMaster(isMasterRole);
 
-        // Log access
         if (isMasterRole) {
           logger?.info?.(`[AUDIT] Master user ${userData.email} accessed protected area`);
         }
       } catch (error) {
         logger?.error?.("Failed to check master role:", error);
+        setUser(null);
         setIsMaster(false);
       } finally {
         setLoading(false);
@@ -141,6 +151,12 @@ export function useMasterAccess() {
     };
 
     checkMasterRole();
+    const handleAuthChanged = () => checkMasterRole();
+
+    window.addEventListener("qmoi:auth:changed", handleAuthChanged);
+    return () => {
+      window.removeEventListener("qmoi:auth:changed", handleAuthChanged);
+    };
   }, []);
 
   return { isMaster, loading, user };
@@ -218,105 +234,6 @@ export class FinancialAuditLog {
       status,
     };
 
-    logger?.info?.(`[FINANCIAL_AUDIT] ${JSON.stringify(logEntry)}`);
-
-    // , send to audit database
-    try {
-      await fetch("/api/audit-log", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(logEntry),
-      });
-    } catch (error) {
-      logger?.error?.("Failed to log operation:", error);
-    }
-  }
-
-  static async logRevenuOperation(
-    userId: string,
-    operation: "validate" | "collect" | "aggregate",
-    amount: number,
-    sources: string[]
-  ) {
-    await this.logOperation(userId, `revenue_${operation}`, {
-      amount,
-      sources,
-      timestamp: new Date().toISOString(),
-    }, "success");
-  }
-
-  static async logWalletOperation(
-    userId: string,
-    operation: "transfer" | "deposit" | "withdraw",
-    walletId: string,
-    amount: number
-  ) {
-    await this.logOperation(userId, `wallet_${operation}`, {
-      walletId,
-      amount,
-      timestamp: new Date().toISOString(),
-    }, "success");
+    logger?.info?.(`[FINANCIAL AUDIT]`, logEntry);
   }
 }
-
-/**
- * GraphQL directive for master-only fields
- */
-export const masterOnlyDirective = `
-  directive @masterOnly on FIELD_DEFINITION
-  
-  type Query {
-    # Financial queries - master only
-    revenueAnalytics: RevenueData @masterOnly
-    walletBalance: BalanceData @masterOnly
-    transactionHistory: [Transaction!]! @masterOnly
-    tradingMetrics: TradingData @masterOnly
-    
-    # Public queries
-    publicData: String
-  }
-`;
-
-/**
- * Type-safe financial operation wrapper
- */
-export async function executeFinancialOperation<T>(
-  operation: () => Promise<T>,
-  userId: string,
-  operationName: string
-): Promise<T> {
-  try {
-    const result = await operation();
-    await FinancialAuditLog.logOperation(
-      userId,
-      operationName,
-      { status: "success" },
-      "success"
-    );
-    return result;
-  } catch (error) {
-    await FinancialAuditLog.logOperation(
-      userId,
-      operationName,
-      { error: error instanceof Error ? error.message : String(error) },
-      "failed"
-    );
-    throw error;
-  }
-}
-
-export default {
-  isMasterUser,
-  hasFinancialAccess,
-  requireMasterRole,
-  withMasterAccess,
-  useMasterAccess,
-  MasterOnly,
-  ProtectedFinancialFeature,
-  FinancialAuditLog,
-  executeFinancialOperation,
-  MASTER_ROLE,
-  FINANCIAL_ROLES,
-  AccessDeniedError,
-  UserNotFoundError,
-};

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { readPersistedStorageValue } from "@/app/lib/auth/persistence";
 
 export interface AIHealth {
   status: "healthy" | "degraded" | "critical";
@@ -59,7 +60,7 @@ function useAIHealthCheck(): any {
  */
 function checkHealth(): any {
       try {
-        const adminToken = localStorage.getItem("adminToken") || "";
+        const adminToken = readPersistedStorageValue("adminToken") || "";
         const response = await apiClient.get("/api/ai-health", {
           headers: { "x-admin-token": adminToken },
         });

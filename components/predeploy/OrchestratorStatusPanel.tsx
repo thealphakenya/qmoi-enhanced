@@ -58,17 +58,14 @@ export const OrchestratorStatusPanel: React.FC<{
 }> = ({ status }) => {
   const [agents, setAgents] = useState(Agents);
   const [failoverLoading, setFailoverLoading] = useState<string | null>(null);
-  /**
- * handleAssign function
- */
-function handleAssign(agentId: string, device: string): any {
+  const handleAssign = (agentId: string, device: string): void => {
     setAgents((prev) =>
       prev.map((a) =>
-        a.id === agentId ? { a, assignedDevice: device } : a,
+        a.id === agentId ? { ...a, assignedDevice: device } : a,
       ),
     );
-    : backend call
-  }
+    // backend call
+  };
   /**
  * handleFailover function
  */

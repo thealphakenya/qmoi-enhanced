@@ -191,7 +191,7 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
             background: "linear-gradient(135deg, #0A0E27 0%, #1A1F3A 100%)",
           }}
         >
-          {/* Avatar 
+          {/* Avatar */}
           <motion.div
             animate={{
               scale: isSpeaking ? [1, 1.05, 1] : isListening ? [1, 1.02, 1] : 1,

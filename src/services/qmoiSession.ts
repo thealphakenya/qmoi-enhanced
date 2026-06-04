@@ -4,38 +4,33 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Manage a persistent `qmoi_session_id` and headers for requests
-import { readPersistedUser, persistUserToStorage } from "../../app/lib/auth/persistence";
+import { readPersistedStorageValue, writePersistedStorageValue, readPersistedUser, persistUserToStorage } from "@/app/lib/auth/persistence";
+import { log } from "@/lib/logger";
+
 export /**
  * getSessionId function
  */
 function getSessionId(): string {
   if (typeof window === "undefined") return "server";
   try {
-    let sid = localStorage.getItem("qmoi_session_id");
+    let sid = readPersistedStorageValue("qmoi_session_id");
     if (!sid) {
-      // try cookie
       const m = document.cookie.match(/(?:^|; )qmoi_session_id=([^;]+)/);
       if (m) sid = decodeURIComponent(m[1]);
     }
     if (!sid) {
-      sid = `s_${Date.now().toString(36)}_${Math.random()
-        .toString(36)
-        .slice(2, 8)}`;
-      localStorage.setItem("qmoi_session_id", sid);
-      // set cookie for client too
+      sid = `s_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
+      writePersistedStorageValue("qmoi_session_id", sid);
       try {
-        document.cookie = `qmoi_session_id=${encodeURIComponent(
-          sid,
-        )}; Path=/; Max-Age=${60 * 60 * 24 * 365}; SameSite=Lax`;
+        document.cookie = `qmoi_session_id=${encodeURIComponent(sid)}; Path=/; Max-Age=${60 * 60 * 24 * 365}; SameSite=Lax`;
       } catch (_e) {
         void _e;
       }
     }
     return sid;
   } catch (e) {
-    safeConsoleError("getSessionId error:", e);
-    const fallback = `s_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
-    return fallback;
+    log.error("getSessionId error:", e instanceof Error ? e : new Error(String(e)));
+    return `s_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
   }
 }
 

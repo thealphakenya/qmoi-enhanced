@@ -21,7 +21,7 @@ function useColabJob(): any {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-admin-token": localStorage.getItem("adminToken") || "",
+          "x-admin-token": readPersistedStorageValue("adminToken") || "",
         },
         body: JSON.stringify(jobDetails),
       });

@@ -109,6 +109,10 @@
 - QMOI memory logging added for auth events so the system knows who is using it and can audit actions across apps.
 - Master command API and client polling hook added to enable secure master-driven realtime UI updates (skeleton endpoints implemented; secure secret gating via `MASTER_UI_SECRET`).
 
+## Additional Client Update (2026-06-03)
+
+- `UniversalWindowManager` now attempts to load window state from `/api/windows` on mount and will fall back to `localStorage` when the endpoint is not reachable. The API now prefers Redis for persistence and falls back to a local JSON file when Redis is unavailable.
+
 
 ---
 

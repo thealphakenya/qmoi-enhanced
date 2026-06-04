@@ -83,7 +83,7 @@
     "@mui/icons-material": "^7.3.6",
     "@mui/material": "^7.3.6",
     "@prisma/adapter-pg": "^7.8.0",
-    "@prisma/client": "^7.8.0",
+    "@prisma/client": "^6.19.1",
     "@radix-ui/react-avatar": "^1.1.11",
     "@radix-ui/react-context-menu": "^2.2.16",
     "@radix-ui/react-dialog": "^1.1.15",
@@ -128,6 +128,7 @@
     "lucide-react": "^0.555.0",
     "next": "^16.2.4",
     "next-themes": "^0.2.1",
+    "node-fetch": "^3.3.2",
     "nodemailer": "^8.0.7",
     "openai": "^6.16.0",
     "otplib": "^12.0.1",
@@ -140,6 +141,7 @@
     "react-icons": "^5.5.0",
     "react-query": "^3.39.3",
     "react-resizable-panels": "^3.0.6",
+    "redis": "^6.0.0",
     "sonner": "^2.0.7",
     "stripe": "^20.2.0",
     "tailwind-merge": "^3.4.0",
@@ -208,6 +210,7 @@
     "@typescript-eslint/parser": "^8.59.1",
     "eslint": "^8.48.0",
     "jest": "^30.3.0",
+    "prisma": "^6.19.1",
     "typescript": "6.0.3"
   }
 }

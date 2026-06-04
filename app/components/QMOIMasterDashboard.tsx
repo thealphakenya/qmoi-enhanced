@@ -10,6 +10,7 @@
  * Master-Only Access UI for Automation Control, Financial Overview, and Status Monitoring
  */
 import React, { useEffect, useState } from "react";
+import { readPersistedStorageValue, writePersistedStorageValue } from '@/app/lib/auth/persistence';
 import {
   AlertCircle,
   BarChart3,
@@ -135,7 +136,7 @@ export function QMOIMasterDashboard({
     };
   }, []);
   // Verify master authentication
-  const verifyMasterAccess = async (authToken: string) => {
+  async function verifyMasterAccess(authToken: string) {
     try {
       setLoading(true);
       const response = await apiClient.get("/api/admin/autofix/background-automation", {
@@ -160,7 +161,16 @@ export function QMOIMasterDashboard({
       setLoading(false);
     }
     return false;
-  };
+  }
+
+  useEffect(() => {
+    if (token) return;
+    const persistedToken = readPersistedStorageValue("masterToken");
+    if (persistedToken) {
+      void verifyMasterAccess(persistedToken);
+    }
+  }, [token]);
+
   // Fetch automation status
   const fetchAutomationStatus = async () => {
     if (!isAuthenticated) return;
@@ -260,7 +270,7 @@ export function QMOIMasterDashboard({
         },
       });
       // Clear session and redirect
-      sessionStorage.removeItem("masterToken");
+      writePersistedStorageValue("masterToken", null);
       setIsAuthenticated(false);
       setToken("");
       onUnauthorized?.();

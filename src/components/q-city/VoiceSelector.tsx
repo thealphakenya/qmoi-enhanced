@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 "use client";
+import { readPersistedStorageValue, writePersistedStorageValue } from "@/app/lib/auth/persistence";
 import {
   Select,
   SelectContent,
@@ -45,7 +46,14 @@ function VoiceSelector({
   const [volume, setVolume] = useState([80]);
   const [quality, setQuality] = useState("enhanced");
   const [autoVoiceMode, setAutoVoiceMode] = useState<boolean>(
-    () => JSON.parse(localStorage.getItem("qmoi-voice-auto-mode") || "false"),
+    () => {
+      try {
+        const v = readPersistedStorageValue("qmoi-voice-auto-mode");
+        return v ? JSON.parse(v) : false;
+      } catch {
+        return false;
+      }
+    },
   );
   const [autoAdapt, setAutoAdapt] = useState(true);
   const [previewText, setPreviewText] = useState(
@@ -60,14 +68,14 @@ function VoiceSelector({
   const defaultVoice = currentAvatar?.voiceProfile || "professional-male";
   useEffect(() => {
     // Load saved voice preference or use avatar default
-    const savedVoice = localStorage.getItem("qmoi-voice-preference");
+    const savedVoice = readPersistedStorageValue("qmoi-voice-preference");
     setSelectedVoice(savedVoice || defaultVoice);
   }, [defaultVoice]);
   const handleVoiceChange = async (voiceId: string) => {
     setIsLoading(true);
     try {
-      // Save to localStorage
-      localStorage.setItem("qmoi-voice-preference", voiceId);
+      // Save preference
+      try { writePersistedStorageValue("qmoi-voice-preference", voiceId); } catch {}
       setSelectedVoice(voiceId);
       // Call API to switch voice
       const response = await apiClient.get("/api/qmoi/voice-profiles", {
@@ -152,7 +160,7 @@ function VoiceSelector({
     await handleVoiceChange(autoVoiceId);
   };
   useEffect(() => {
-    localStorage.setItem("qmoi-voice-auto-mode", JSON.stringify(autoVoiceMode));
+    try { writePersistedStorageValue("qmoi-voice-auto-mode", JSON.stringify(autoVoiceMode)); } catch {}
     if (autoVoiceMode) {
       applyAutoVoice();
     }

@@ -33,6 +33,6 @@ export class SelfHealingService {
     diagnosis: string,
     fixResult: boolean,
   ): Promise<void> {
-    .log("Reporting to master:", { error, diagnosis, fixResult });
+    console.log("Reporting to master:", { error, diagnosis, fixResult });
   }
 }

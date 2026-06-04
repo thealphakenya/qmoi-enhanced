@@ -22,7 +22,7 @@ function useVSCodeProblems(): any {
     const interval = setInterval(async () => {
       const res = await apiClient.get("/api/qmoi-model?hookDiagnostics=1", {
         method: "POST",
-        headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
+        headers: { "x-admin-token": readPersistedStorageValue("adminToken") || "" },
       });
       const data = (await res.json()) as HookDiagnosticsResponse;
       if (data.status === "hooks-enhanced") {

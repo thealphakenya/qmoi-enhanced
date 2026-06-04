@@ -249,7 +249,7 @@ function QCityTracksPanel({
               />
               <Select value={statusFilter} onValueChange={setStatusFilter}>
                 <SelectTrigger>
-                  <SelectValue 
+                  <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Status</SelectItem>
@@ -261,7 +261,7 @@ function QCityTracksPanel({
               </Select>
               <Select value={typeFilter} onValueChange={setTypeFilter}>
                 <SelectTrigger>
-                  <SelectValue 
+                  <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Types</SelectItem>
@@ -274,7 +274,7 @@ function QCityTracksPanel({
               </Select>
               <Select value={sourceFilter} onValueChange={setSourceFilter}>
                 <SelectTrigger>
-                  <SelectValue 
+                  <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Sources</SelectItem>
@@ -426,10 +426,15 @@ function QCityTracksPanel({
                               retentionMonths: retentionPeriod,
                             }),
                           });
-                          const data = await response.json();
+                              const data = await response.json();
                           if (!response.ok) {
-                              data.error || "Failed to update retention period",
-                            );
+                            toast({
+                              title: "Error",
+                              description:
+                                data?.error || "Failed to update retention period",
+                              variant: "destructive",
+                            });
+                            return;
                           }
                           toast({
                             title: "Retention Updated",

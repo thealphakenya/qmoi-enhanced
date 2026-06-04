@@ -72,12 +72,8 @@ The `app/qmoi-ai/page.tsx` route presents a production QMOI AI dashboard with:
 
 ## Recent Updates (2026-06-03)
 
-- `app/qmoi-ai/page.tsx` is confirmed as the active QMOI AI route with direct imports of real production components.
-- Auth persistence is standardized through `app/lib/auth/persistence.ts` and session state is refreshed via `app/hooks/useAuth.ts`.
-- Login event handling now calls `persistUserToStorage(...)` and `logAuthEvent(...)` to maintain consistent identity across open tabs.
-- Role-specific dashboards are now live and conditionally rendered for `master` and `sister` roles.
-- QMOI AI chat is produced through the `qmoi-prod` model and logs conversation context to QMOI memory for session awareness.
-- Production dashboard metrics are loaded from `/api/production-api` and reflected in the UI cards.
+
+- [2026-06-03] Window state load: `UniversalWindowManager` consults `/api/windows` and falls back to `localStorage` if the endpoint is not available. `/api/windows` now prefers Redis for storage with a safe local file fallback.
 
 - **Shared UI Modules:** NotificationCenter, HelpGuide, PreviewWindow, ThemeCustomizer, ClientUISettings
 - **Role-aware Controls:** QMOIMasterDashboard, SponsoredUsersManager, UserProfile, WalletList

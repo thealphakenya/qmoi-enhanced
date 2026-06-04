@@ -30,7 +30,7 @@ const AlphaQAISystem: React.FC<AlphaQAISystemProps> = ({ className = "" }) => {
   const [aiVersion, setAiVersion] = useState("latest-Q-1.0.0");
   const [lastUpdate, setLastUpdate] = useState(new Date().toLocaleString());
   useEffect(() => {
-     system status updates
+    // system status updates
     const interval = setInterval(() => {
       setLastUpdate(new Date().toLocaleString());
     }, 30000); // Update every 30 seconds

@@ -13,6 +13,61 @@ const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'qmoi_default_refre
 const SESSION_TIMEOUT = parseInt(process.env.SESSION_TIMEOUT || '3600000');
 const USE_DB = Boolean(process.env.DATABASE_URL);
 
+type FallbackUser = {
+  userId: string;
+  email: string;
+  username: string;
+  fullName: string;
+  role: string;
+  permissions: string[];
+  password: string;
+};
+
+const fallbackUsers: FallbackUser[] = [
+  {
+    email: 'victor@kwemoi.com',
+    username: 'master',
+    fullName: 'Victor',
+    role: 'master',
+    permissions: ['*'],
+    password: 'Victor9798!',
+    userId: 'master',
+  },
+  {
+    email: 'leah@chebet.com',
+    username: 'sister',
+    fullName: 'Leah',
+    role: 'sister',
+    permissions: ['family', 'chat'],
+    password: 'Ashlehael',
+    userId: 'sister',
+  },
+];
+
+export const authFallback = {
+  findUserByIdentifier(identifier: string): FallbackUser | undefined {
+    return fallbackUsers.find((user) => user.email === identifier || user.username === identifier);
+  },
+  findUserByEmail(email: string): FallbackUser | undefined {
+    return fallbackUsers.find((user) => user.email === email);
+  },
+  findUserByUsername(username: string): FallbackUser | undefined {
+    return fallbackUsers.find((user) => user.username === username);
+  },
+  createUser(userData: Omit<FallbackUser, 'userId'>) {
+    const userId = userData.username;
+    const newUser: FallbackUser = { ...userData, userId };
+    fallbackUsers.push(newUser);
+    return newUser;
+  },
+  updatePassword(userId: string, newPassword: string) {
+    const user = fallbackUsers.find((u) => u.userId === userId);
+    if (!user) return false;
+    user.password = newPassword;
+    return true;
+  },
+};
+
 export type DecodedToken = {
   userId: string;
   email?: string;
@@ -84,30 +139,7 @@ export const authService = {
     password: string
   ) => {
     if (!USE_DB) {
-      const fallbackUsers = [
-        {
-          email: 'victor@kwemoi.com',
-          username: 'master',
-          fullName: 'Victor',
-          role: 'master',
-          permissions: ['*'],
-          password: 'Victor9798!',
-          userId: 'master',
-        },
-        {
-          email: 'leah@chebet.com',
-          username: 'sister',
-          fullName: 'Leah',
-          role: 'sister',
-          permissions: ['family', 'chat'],
-          password: 'Ashlehael',
-          userId: 'sister',
-        },
-      ];
-
-      const fallbackUser = fallbackUsers.find(
-        (u) => u.email === identifier || u.username === identifier,
-      );
+      const fallbackUser = authFallback.findUserByIdentifier(identifier);
 
       if (!fallbackUser || fallbackUser.password !== password) {
         return { success: false, message: 'Invalid credentials', error: 'INVALID_CREDENTIALS' };

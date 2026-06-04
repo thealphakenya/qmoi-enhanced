@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { readPersistedUser } from "../../app/lib/auth/persistence";
 interface BiometricOption {
   id: string;
   name: string;
@@ -12,12 +13,17 @@ const defaultOptions: BiometricOption[] = [
   { id: "iris", name: "Iris Scan", enabled: false },
 ];
 export default function QMOIBiometricManager() {
-  const [isMaster, setIsMaster] = useState(true);
+  const [isMaster, setIsMaster] = useState(false);
   const [biometricOptions, setBiometricOptions] = useState<BiometricOption[]>(defaultOptions);
   const [activeTab, setActiveTab] = useState("overview");
   useEffect(() => {
-    const stored = localStorage.getItem("qmoiBiometricMaster");
-    if (stored === "false") setIsMaster(false);
+    const resolveMasterAccess = () => {
+      const persisted = readPersistedUser();
+      setIsMaster(persisted?.role === "master");
+    };
+    resolveMasterAccess();
+    window.addEventListener("qmoi:auth:changed", resolveMasterAccess);
+    return () => window.removeEventListener("qmoi:auth:changed", resolveMasterAccess);
   }, []);
   const toggleOption = (id: string) => {
     setBiometricOptions((prev) =>

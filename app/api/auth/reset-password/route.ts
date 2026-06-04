@@ -1,30 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { authService } from "../../../../lib/auth/service";
+import { authFallback, authService } from "../../../../lib/auth/service";
 import { emailService } from "@/lib/email/service";
 import { prisma } from "@/lib/db/prisma";
 import { logApiError } from "@/lib/logger";
 
 const USE_DB = Boolean(process.env.DATABASE_URL);
-const fallbackUsers = [
-  {
-    email: 'victor@kwemoi.com',
-    username: 'master',
-    fullName: 'Victor',
-    role: 'master',
-    permissions: ['*'],
-    password: 'Victor9798!',
-    userId: 'master',
-  },
-  {
-    email: 'leah@chebet.com',
-    username: 'sister',
-    fullName: 'Leah',
-    role: 'sister',
-    permissions: ['family', 'chat'],
-    password: 'Ashlehael',
-    userId: 'sister',
-  },
-];
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -67,7 +47,10 @@ export async function POST(req: NextRequest) {
         }
       }
     } else {
-      user = fallbackUsers.find((u) => u.email === identifier || u.username === identifier) || null;
+      const fallbackUser = authFallback.findUserByIdentifier(identifier);
+      if (fallbackUser) {
+        user = { id: fallbackUser.userId, email: fallbackUser.email, username: fallbackUser.username };
+      }
     }
 
     const resetToken = user

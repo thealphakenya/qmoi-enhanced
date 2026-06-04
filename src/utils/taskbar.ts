@@ -7,6 +7,8 @@ declare const Notification: any;
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+import { log } from "../lib/logger";
+
 
 interface TaskbarOptions {
   icon: string;
@@ -71,7 +73,7 @@ export class TaskbarManager {
       "notification-click",
       (event: NotificationEvent, notification: NotificationData) => {
         // Handle notification clicks
-        console.log("Notification clicked:", notification);
+        log.debug("Notification clicked:", { notification });
       },
     );
 
@@ -79,7 +81,7 @@ export class TaskbarManager {
       "notification-close",
       (event: NotificationEvent, notification: NotificationData) => {
         // Handle notification closes
-        console.log("Notification closed:", notification);
+        log.debug("Notification closed:", { notification });
       },
     );
   }

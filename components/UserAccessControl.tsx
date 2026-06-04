@@ -84,8 +84,7 @@ const AccessControlContext = createContext<AccessControlContextType | null>(
 export const useAccessControl = () => {
   const context = useContext(AccessControlContext);
   if (!context) {
-      "useAccessControl must be used within an AccessControlProvider",
-    );
+    throw new Error("useAccessControl must be used within an AccessControlProvider");
   }
   return context;
 };

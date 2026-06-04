@@ -323,3 +323,25 @@ export const qmoiMemoryService = {
     );
   },
 };
+
+export async function logAuthEvent(event: {
+  userId: string;
+  role: string;
+  displayName: string;
+  event: string;
+  details?: Record<string, any>;
+}) {
+  return qmoiMemoryService.storeMemory(
+    event.userId,
+    `auth-event-${Date.now()}`,
+    {
+      event: event.event,
+      role: event.role,
+      displayName: event.displayName,
+      details: event.details || {},
+      timestamp: new Date().toISOString(),
+    },
+    'behavior',
+    new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+  );
+}

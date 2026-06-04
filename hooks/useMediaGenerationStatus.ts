@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { readPersistedStorageValue } from "@/app/lib/auth/persistence";
 
 export interface MediaStatus {
   status: "idle" | "generating" | "completed" | "error";
@@ -38,7 +39,7 @@ function useMediaGenerationStatus(): any {
     prompt: string,
   ) => {
     try {
-      const adminToken = localStorage.getItem("adminToken") || "";
+      const adminToken = readPersistedStorageValue("adminToken") || "";
       const response = await apiClient.get("/api/media/generate", {
         method: "POST",
         headers: {
@@ -78,7 +79,7 @@ function useMediaGenerationStatus(): any {
     newSettings: MediaStatus["settings"],
   ) => {
     try {
-      const adminToken = localStorage.getItem("adminToken") || "";
+      const adminToken = readPersistedStorageValue("adminToken") || "";
       const response = await apiClient.get("/api/media/settings", {
         method: "POST",
         headers: {
@@ -108,7 +109,7 @@ function useMediaGenerationStatus(): any {
 
   const cancelTask = async (taskId: string) => {
     try {
-      const adminToken = localStorage.getItem("adminToken") || "";
+      const adminToken = readPersistedStorageValue("adminToken") || "";
       const response = await apiClient.get(`/api/media/cancel/${taskId}`, {
         method: "POST",
         headers: {
@@ -137,7 +138,7 @@ function useMediaGenerationStatus(): any {
  */
 function fetchStatus(): any {
       try {
-        const adminToken = localStorage.getItem("adminToken") || "";
+        const adminToken = readPersistedStorageValue("adminToken") || "";
         const response = await apiClient.get("/api/media/status", {
           headers: { "x-admin-token": adminToken },
         });

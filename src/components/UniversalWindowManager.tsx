@@ -1,14 +1,28 @@
-class ErrorBoundary extends React.Component {
-  constructor(props) {
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { log } from '@/lib/logger';
+
+interface ErrorBoundaryProps {
+  children: React.ReactNode;
+}
+
+interface ErrorBoundaryState {
+  hasError: boolean;
+}
+
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false };
   }
-  static getDerivedStateFromError(error) {
+
+  static getDerivedStateFromError(_error: Error): ErrorBoundaryState {
     return { hasError: true };
   }
-  componentDidCatch(error, errorInfo) {
-    logger.error('React Error Boundary caught an error:', error, errorInfo);
+
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    log.error('React Error Boundary caught an error:', error, { errorInfo });
   }
+
   render() {
     if (this.state.hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
@@ -35,12 +49,14 @@ interface WindowState {
   isMaximized?: boolean;
   lastActive?: number;
 }
+type WindowUpdate = Partial<WindowState>;
+
 interface WindowManagerContextValue {
   windows: WindowState[];
-  openWindow: (win: full<WindowState>) => string;
+  openWindow: (win: WindowUpdate) => string;
   closeWindow: (id: string) => void;
   bringToFront: (id: string) => void;
-  updateWindow: (id: string, updates: full<WindowState>) => void;
+  updateWindow: (id: string, updates: WindowUpdate) => void;
   minimizeWindow: (id: string) => void;
   maximizeWindow: (id: string) => void;
   autoPosition: (id: string) => void;
@@ -57,25 +73,80 @@ export const useWindowManager = () => {
   const ctx = useContext(WindowManagerContext);
   return ctx;
 };
-export const WindowManagerProvider: React.FC = ({ children }) => {
+export const WindowManagerProvider = ({ children }: { children: React.ReactNode }) => {
   const [windows, setWindows] = useState<WindowState[]>([]);
   const [plugins, setPlugins] = useState<WindowPlugin[]>([]);
-  // Load from localStorage on mount
+  // Load window state from API, fallback to localStorage on mount
   useEffect(() => {
-    const saved = localStorage.getItem("qmoi_windows");
-    if (saved) {
+    let mounted = true;
+
+    async function loadWindows() {
       try {
-        setWindows(JSON.parse(saved));
+        const res = await fetch("/api/windows");
+        if (res.ok) {
+          const data = await res.json();
+          if (mounted && Array.isArray(data)) {
+            setWindows(data as WindowState[]);
+            return;
+          }
+        }
+      } catch (_err) {
+        // ignore network errors and fallback to localStorage
+      }
+
+      // Fallback to localStorage for environments without the API
+      try {
+        const saved = typeof window !== "undefined" ? localStorage.getItem("qmoi_windows") : null;
+        if (saved) {
+          setWindows(JSON.parse(saved));
+        }
       } catch (e) {
-        safeConsoleError("Failed to load window state:", e);
+        if (e instanceof Error) {
+          log.error("Failed to load window state:", e);
+        } else {
+          log.error("Failed to load window state:", { error: String(e) });
+        }
       }
     }
+
+    loadWindows();
+    return () => {
+      mounted = false;
+    };
   }, []);
-  // Save to localStorage on change
+  // Persist window state locally and push it to the API when available
   useEffect(() => {
-    localStorage.setItem("qmoi_windows", JSON.stringify(windows));
+    if (typeof window === "undefined") return;
+
+    try {
+      localStorage.setItem("qmoi_windows", JSON.stringify(windows));
+    } catch (e) {
+      if (e instanceof Error) {
+        log.error("Failed to persist window state locally:", e);
+      } else {
+        log.error("Failed to persist window state locally:", { error: String(e) });
+      }
+    }
+
+    const saveWindowState = async () => {
+      try {
+        await fetch("/api/windows", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(windows),
+        });
+      } catch (e) {
+        if (e instanceof Error) {
+          log.error("Failed to persist window state to API:", e);
+        } else {
+          log.error("Failed to persist window state to API:", { error: String(e) });
+        }
+      }
+    };
+
+    saveWindowState();
   }, [windows]);
-  const openWindow = (win: full<WindowState>) => {
+  const openWindow = (win: WindowUpdate) => {
     const id = win.id || `win_${Date.now()}`;
     setWindows((prev) => [
       ...prev,
@@ -100,7 +171,7 @@ export const WindowManagerProvider: React.FC = ({ children }) => {
       return prev.map((w) => (w.id === id ? { ...w, zIndex: max + 1, lastActive: Date.now() } : w));
     });
   };
-  const updateWindow = (id: string, updates: full<WindowState>) => {
+  const updateWindow = (id: string, updates: WindowUpdate) => {
     setWindows((prev) =>
       prev.map((w) => (w.id === id ? { ...w, ...updates, lastActive: Date.now() } : w))
     );
