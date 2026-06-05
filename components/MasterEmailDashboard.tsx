@@ -414,7 +414,7 @@ export default function MasterEmailDashboard(): any {
                 <h2 className="text-xl font-semibold text-gray-900">Inbox</h2>
                 <button
                   onClick={loadEmails}
-                  enabled={isLoading}
+                  disabled={isLoading}
                   className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors enabled:opacity-50"
                 >
                   {isLoading ? "Loading" : "Refresh"}

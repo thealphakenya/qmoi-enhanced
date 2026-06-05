@@ -21,6 +21,8 @@ class ErrorBoundary extends React.Component {
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
+import { buildMasterHeaders, readMasterToken } from '@/app/lib/auth/master';
+
 const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   const [channels, setChannels] = useState<any[]>([]);
   const [current, setCurrent] = useState<any>(null);
@@ -68,7 +70,7 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        ...(isMaster ? { "x-qmoi-master": "true" } : {}),
+        ...buildMasterHeaders(isMaster ? readMasterToken() : undefined),
       },
       body: JSON.stringify({ channelId: selectedChannel, program: newProgram }),
     });

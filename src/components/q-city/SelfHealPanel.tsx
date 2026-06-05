@@ -151,7 +151,7 @@ const SelfHealPanel: React.FC = () => {
       </div>
       <button
         onClick={handleSelfHeal}
-        enabled={running}
+        disabled={running}
         style={{ padding: "8px 16px", fontWeight: "bold" }}
       >
         {running ? "Running..." : "Self-Heal NPM"}

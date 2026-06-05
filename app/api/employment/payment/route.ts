@@ -7,6 +7,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import apiClient from "@/api/client";
 import { log } from "@/lib/logger";
+import {
+  validateMasterAuth,
+  requireMasterAuth,
+} from "@/lib/auth/validate-master";
 // Payment schemas
 const PaymentSchema = z.object({
   recipientId: z.string(),
@@ -196,13 +200,19 @@ export async function GET(req: NextRequest): any {
     } else if (type === "logs") {
       return NextResponse.json({ success: true, data: paymentLogs });
     } else if (type === "credentials") {
+      // Guard credentials with Master auth
+      const auth = await validateMasterAuth(req);
+      if (!auth.authenticated) {
+        log.warn("Unauthorized credentials access attempt", { ip: req.ip ?? "unknown", reason: auth.error });
+        return NextResponse.json({ success: false, _error: "Unauthorized" }, { status: 401 });
+      }
       // Only return non-sensitive info
       return NextResponse.json({
         success: true,
         data: {
-          pesapal: { consumerKey: "***" },
-          mpesa: { consumerKey: "***" },
-          airtel: { clientId: "***" },
+          pesapal: { consumerKey: maskSecret(PAYMENT_CREDENTIALS.pesapal.consumerKey) },
+          mpesa: { passkey: maskSecret(PAYMENT_CREDENTIALS.mpesa.passkey) },
+          airtel: { clientId: maskSecret(PAYMENT_CREDENTIALS.airtel.clientId) },
         },
       });
     } else {
@@ -226,6 +236,12 @@ export async function POST(req: NextRequest): any {
     const body = await req.json();
     const { action, data } = body;
     if (action === "process_payment") {
+      // Require master auth to initiate payments
+      const auth = await validateMasterAuth(req);
+      if (!auth.authenticated) {
+        log.warn("Unauthorized payment attempt", { action, ip: req.ip ?? "unknown", reason: auth.error });
+        return NextResponse.json({ success: false, _error: "Unauthorized" }, { status: 401 });
+      }
       const validatedData = PaymentSchema.parse(data);
       const payment = {
         id: `pay_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -283,6 +299,12 @@ export async function POST(req: NextRequest): any {
           : "Payment failed",
       });
     } else if (action === "update_payment_info") {
+      // Require master auth to update payment info
+      const auth = await validateMasterAuth(req);
+      if (!auth.authenticated) {
+        log.warn("Unauthorized payment info update attempt", { action, ip: req.ip ?? "unknown", reason: auth.error });
+        return NextResponse.json({ success: false, _error: "Unauthorized" }, { status: 401 });
+      }
       const validatedData = PaymentInfoSchema.parse(data);
       // Update recipient payment info
       // This would update the employee/user record with new payment info
@@ -300,6 +322,12 @@ export async function POST(req: NextRequest): any {
         message: "Payment information updated successfully",
       });
     } else if (action === "backup_credentials") {
+      // Only master may request credential backups
+      const auth = await validateMasterAuth(req);
+      if (!auth.authenticated) {
+        log.warn("Unauthorized credentials backup attempt", { action, ip: req.ip ?? "unknown", reason: auth.error });
+        return NextResponse.json({ success: false, _error: "Unauthorized" }, { status: 401 });
+      }
       // Create a safe masked backup for operations visibility only
       await backupCredentialsSafe(PAYMENT_CREDENTIALS, "all_platforms");
       return NextResponse.json({
@@ -327,6 +355,12 @@ export async function POST(req: NextRequest): any {
 }
 export async function PUT(req: NextRequest): any {
   try {
+    // Require master auth for updates
+    const auth = await validateMasterAuth(req);
+    if (!auth.authenticated) {
+      log.warn("Unauthorized payment update attempt", { ip: req.ip ?? "unknown", reason: auth.error });
+      return NextResponse.json({ success: false, _error: "Unauthorized" }, { status: 401 });
+    }
     const body = await req.json();
     const { id, updates } = body;
     const index = payments.findIndex((p) => p.id === id);

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import apiClient from '@/api/client';
 import { readPersistedStorageValue } from '@/app/lib/auth/persistence';
+import { buildMasterHeaders } from '@/app/lib/auth/master';
 import { log } from '@/lib/logger';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -133,7 +134,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         headers: {
           "Content-Type": "application/json",
           "x-admin-token": readPersistedStorageValue("adminToken") || "",
-          "x-master-token": readPersistedStorageValue("masterToken") || "",
+          ...buildMasterHeaders(),
         },
         body: JSON.stringify({
           action: "approve_wallet",

@@ -174,3 +174,38 @@ model Transaction {
   
   @@index([userId])
 }
+
+// QMOI: Global operations models
+model RevenueStream {
+  id          String   @id @default(cuid())
+  code        String   @unique
+  name        String
+  description String?
+  category    String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+model RegionalHub {
+  id        String   @id @default(cuid())
+  name      String
+  region    String
+  country   String?
+  currency  String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model Payment {
+  id            String   @id @default(cuid())
+  recipientId   String
+  recipientType String
+  amount        Float
+  method        String
+  description   String?
+  status        String   @default("pending")
+  providerRef   String?
+  details       Json?
+  createdAt     DateTime @default(now())
+  processedAt   DateTime?
+}

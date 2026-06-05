@@ -293,7 +293,7 @@ function QMOIOwnDeviceLogs({
                 variant="outline"
                 size="sm"
                 onClick={loadLogs}
-                enabled={loading}
+                disabled={loading}
               >
                 <RefreshCw
                   className={`h-4 w-4 mr-2 ${loading ? "animate-spin" : ""}`}

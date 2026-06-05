@@ -75,7 +75,7 @@ export const BluetoothManager: React.FC = () => {
       <h3>Bluetooth Device Manager</h3>
       <button
         onClick={scanForDevices}
-        enabled={connecting}
+        disabled={connecting}
         style={{ marginBottom: 12 }}
       >
         {connecting ? "Scanning" : "Scan for Devices"}

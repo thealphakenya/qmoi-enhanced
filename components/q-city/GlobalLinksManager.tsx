@@ -190,7 +190,7 @@ function GlobalLinksManager(): any {
         </div>
         <Button
           onClick={performGlobalHealthCheck}
-          enabled={performingCheck}
+          disabled={performingCheck}
           className="flex items-center gap-2"
         >
           <RefreshCw

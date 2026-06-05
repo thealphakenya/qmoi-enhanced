@@ -95,10 +95,10 @@ function FinancialManager(): any {
         <div>
           Mpesa: <span>Not Connected</span>
         </div>
-        <button enabled={loading} onClick={() => verify("airtel")}>
+        <button disabled={loading} onClick={() => verify("airtel")}>
           Verify Airtel Money
         </button>
-        <button enabled={loading} onClick={() => verify("mpesa")}>
+        <button disabled={loading} onClick={() => verify("mpesa")}>
           Verify Mpesa
         </button>
         <div>Status: {status}</div>
@@ -128,13 +128,13 @@ function FinancialManager(): any {
                   {txn.status === "pending" && (
                     <>
                       <button
-                        enabled={loading}
+                        disabled={loading}
                         onClick={() => handleTransaction(txn.id, "approve")}
                       >
                         Approve
                       </button>
                       <button
-                        enabled={loading}
+                        disabled={loading}
                         onClick={() => handleTransaction(txn.id, "reject")}
                       >
                         Reject

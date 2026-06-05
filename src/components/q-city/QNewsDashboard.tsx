@@ -21,6 +21,8 @@ class ErrorBoundary extends React.Component {
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
+import { buildMasterHeaders, readMasterToken } from '@/app/lib/auth/master';
+
 interface NewsItem {
   id: number;
   title: string;
@@ -60,7 +62,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
   const fetchAnalytics = async () => {
     if (!isMaster) return;
     const res = await apiClient.get("/api/qnews/analytics", {
-      headers: { "x-qmoi-master": "true" },
+      headers: buildMasterHeaders(readMasterToken() || undefined),
     });
     const data = await res.json();
     setAnalytics(data.analytics || []);
@@ -72,7 +74,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
   const handleApprove = async (id: number) => {
     await apiClient.get("/api/qnews", {
       method: "PUT",
-      headers: { "Content-Type": "application/json", "x-qmoi-master": "true" },
+      headers: { "Content-Type": "application/json", ...buildMasterHeaders(readMasterToken() || undefined) },
       body: JSON.stringify({ id, status: "approved" }),
     });
     fetchNews();
@@ -93,7 +95,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "x-qmoi-master": "true",
+          ...buildMasterHeaders(readMasterToken() || undefined),
         },
         body: JSON.stringify({ id: editingId, ...form }),
       });
@@ -103,7 +105,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          ...(isMaster ? { "x-qmoi-master": "true" } : {}),
+          ...buildMasterHeaders(isMaster ? (readMasterToken() || undefined) : undefined),
         },
         body: JSON.stringify(form),
       });
@@ -121,7 +123,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
   const handleSchedule = async (id: number, scheduledAt: string) => {
     await apiClient.get("/api/qnews/schedule", {
       method: "POST",
-      headers: { "Content-Type": "application/json", "x-qmoi-master": "true" },
+      headers: { "Content-Type": "application/json", ...buildMasterHeaders(readMasterToken() || undefined) },
       body: JSON.stringify({ id, scheduledAt }),
     });
     fetchNews();
@@ -130,7 +132,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
     if (!editingId) return;
     await apiClient.get("/api/qnews/media", {
       method: "POST",
-      headers: { "Content-Type": "application/json", "x-qmoi-master": "true" },
+      headers: { "Content-Type": "application/json", ...buildMasterHeaders(readMasterToken() || undefined) },
       body: JSON.stringify({
         id: editingId,
         media: [{ type: mediaType, url: mediaUrl }],
@@ -208,7 +210,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
                   variant="outlined"
                   color="primary"
                   onClick={handleAddMedia}
-                  enabled={!editingId || !mediaUrl}
+                  disabled={!editingId || !mediaUrl}
                 >
                   Add Media
                 </Button>

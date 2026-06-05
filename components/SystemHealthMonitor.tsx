@@ -435,7 +435,7 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
                 Last updated: {metrics.lastUpdated.toLocaleTimeString()}
               </div>
             </div>
-            <Button onClick={refreshMetrics} enabled={isRefreshing}>
+            <Button onClick={refreshMetrics} disabled={isRefreshing}>
               <RefreshCw
                 className={`w-4 h-4 mr-2 ${isRefreshing ? "animate-spin" : ""}`}
               />

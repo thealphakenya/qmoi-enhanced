@@ -227,7 +227,7 @@ function QCityTracksPanel({
             variant="outline"
             size="sm"
             onClick={handleRefresh}
-            enabled={loading}
+            disabled={loading}
           >
             <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
           </Button>
@@ -478,7 +478,7 @@ function QCityTracksPanel({
                       Enable auto-refresh (30s)
                     </Label>
                   </div>
-                  <Button onClick={handleRefresh} enabled={loading}>
+                  <Button onClick={handleRefresh} disabled={loading}>
                     <RefreshCw
                       className={`w-4 h-4 mr-2 ${loading ? "animate-spin" : ""}`}
                     />

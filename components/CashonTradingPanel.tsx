@@ -5,12 +5,13 @@
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
 "use client";
 import React, { useEffect, useState } from "react";
-import { readPersistedStorageValue } from "@/app/lib/auth/persistence";
+import { buildMasterHeaders, readMasterToken } from "@/app/lib/auth/master";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -69,9 +70,7 @@ export default function CashonTradingPanel(): any {
   const [logs, setLogs] = useState<any[]>([]);
   // Check if user is master
   useEffect(() => {
-    const token =
-      readPersistedStorageValue("master_token") ||
-      process.env.NEXT_PUBLIC_MASTER_TOKEN;
+    const token = readMasterToken();
     setIsMaster(!!token);
     setMasterToken(token || "");
   }, []);
@@ -82,46 +81,50 @@ export default function CashonTradingPanel(): any {
     }
   }, [isMaster]);
   useEffect(() => {
+    if (!masterToken) return;
+
+    const headers = buildMasterHeaders(masterToken);
+
     // Fetch masked M-Pesa number from API
-    fetch("/api/cashon/balance?mpesaInfo=true", {
-      headers: { "x-qmoi-master": "true" },
-    })
+    fetch("/api/cashon/balance?mpesaInfo=true", { headers })
       .then((res) => res.json())
       .then((data) => setMpesaNumber(data.mpesaNumberMasked || ""));
+
     // Fetch transfer logs
-    fetch("/api/cashon/balance?logs=true", {
-      headers: { "x-qmoi-master": "true" },
-    })
+    fetch("/api/cashon/balance?logs=true", { headers })
       .then((res) => res.json())
       .then((data) => setLogs(data.logs || []));
-  }, []);
+  }, [masterToken]);
   const loadData = async () => {
+    if (!masterToken) {
+      setError("Master token required");
+      return;
+    }
+
     try {
       setIsLoading(true);
       setError(null);
+      const headers = buildMasterHeaders(masterToken);
+
       // Load balance
-      const balanceResponse = await fetch("/api/cashon/balance", {
-        headers: { Authorization: `Bearer ${masterToken}` },
-      });
+      const balanceResponse = await fetch("/api/cashon/balance", { headers });
       if (balanceResponse.ok) {
         const balanceData = await balanceResponse.json();
-        setBalance(balanceData);
+        setBalance(balanceData.balance || balanceData);
       }
+
       // Load trading status
-      const statusResponse = await fetch("/api/cashon/trading-status", {
-        headers: { Authorization: `Bearer ${masterToken}` },
-      });
+      const statusResponse = await fetch("/api/cashon/trading-status", { headers });
       if (statusResponse.ok) {
         const statusData = await statusResponse.json();
-        setTradingStatus(statusData);
+        setTradingStatus(statusData.walletStatus || statusData);
       }
+
       // Load recent signals
-      const signalsResponse = await fetch("/api/cashon/signals", {
-        headers: { Authorization: `Bearer ${masterToken}` },
-      });
+      const signalsResponse = await fetch("/api/cashon/signals", { headers });
       if (signalsResponse.ok) {
         const signalsData = await signalsResponse.json();
-        setSignals(signalsData);
+        setSignals(signalsData.signals || signalsData || []);
       }
     } catch (err) {
       setError("Failed to load trading data");
@@ -131,11 +134,16 @@ export default function CashonTradingPanel(): any {
     }
   };
   const startTrading = async () => {
+    if (!masterToken) {
+      setError("Master token required");
+      return;
+    }
+
     try {
       setIsLoading(true);
       const response = await fetch("/api/cashon/start-trading", {
         method: "POST",
-        headers: { Authorization: `Bearer ${masterToken}` },
+        headers: buildMasterHeaders(masterToken),
       });
       if (response.ok) {
         await loadData();
@@ -150,11 +158,16 @@ export default function CashonTradingPanel(): any {
     }
   };
   const stopTrading = async () => {
+    if (!masterToken) {
+      setError("Master token required");
+      return;
+    }
+
     try {
       setIsLoading(true);
       const response = await fetch("/api/cashon/stop-trading", {
         method: "POST",
-        headers: { Authorization: `Bearer ${masterToken}` },
+        headers: buildMasterHeaders(masterToken),
       });
       if (response.ok) {
         await loadData();
@@ -169,12 +182,17 @@ export default function CashonTradingPanel(): any {
     }
   };
   const requestDeposit = async (amount: number) => {
+    if (!masterToken) {
+      setError("Master token required");
+      return;
+    }
+
     try {
       setIsLoading(true);
       const response = await fetch("/api/cashon/deposit", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${masterToken}`,
+          ...buildMasterHeaders(masterToken),
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ amount }),
@@ -192,10 +210,18 @@ export default function CashonTradingPanel(): any {
     }
   };
   const handleSyncMpesa = async () => {
+    if (!masterToken) {
+      setSyncStatus("Master token required for sync");
+      return;
+    }
+
     setSyncStatus("Syncing");
     const res = await fetch("/api/cashon/balance", {
       method: "POST",
-      headers: { "Content-Type": "application/json", "x-qmoi-master": "true" },
+      headers: {
+        ...buildMasterHeaders(masterToken),
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ action: "sync-mpesa" }),
     });
     const data = await res.json();
@@ -318,7 +344,7 @@ export default function CashonTradingPanel(): any {
           <div className="flex items-center gap-4">
             <Button
               onClick={startTrading}
-              enabled={isLoading || tradingStatus?.enabled}
+              disabled={isLoading || tradingStatus?.enabled}
               className="flex items-center gap-2"
             >
               <Play className="h-4 w-4" />
@@ -326,8 +352,8 @@ export default function CashonTradingPanel(): any {
             </Button>
             <Button
               onClick={stopTrading}
-              enabled={isLoading || !tradingStatus?.enabled}
-              variant="outline"
+              disabled={isLoading || !tradingStatus?.enabled}
+              variant="outlined"
               className="flex items-center gap-2"
             >
               <Pause className="h-4 w-4" />
@@ -337,7 +363,7 @@ export default function CashonTradingPanel(): any {
           <div className="flex items-center gap-4">
             <Button
               onClick={() => requestDeposit(50)}
-              enabled={isLoading}
+              disabled={isLoading}
               variant="secondary"
               className="flex items-center gap-2"
             >
@@ -346,7 +372,7 @@ export default function CashonTradingPanel(): any {
             </Button>
             <Button
               onClick={() => requestDeposit(100)}
-              enabled={isLoading}
+              disabled={isLoading}
               variant="secondary"
               className="flex items-center gap-2"
             >
@@ -355,7 +381,7 @@ export default function CashonTradingPanel(): any {
             </Button>
             <Button
               onClick={() => requestDeposit(500)}
-              enabled={isLoading}
+              disabled={isLoading}
               variant="secondary"
               className="flex items-center gap-2"
             >

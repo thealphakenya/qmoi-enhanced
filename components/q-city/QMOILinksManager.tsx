@@ -257,7 +257,7 @@ function QMOILinksManager({
             variant="outline"
             size="sm"
             onClick={fetchData}
-            enabled={loading}
+            disabled={loading}
           >
             <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
           </Button>

@@ -65,7 +65,7 @@ export const GlobalMail: React.FC = () => {
         style={{ marginBottom: 8, width: "100%" }}
         rows={4}
       />
-      <button onClick={handleSend} enabled={!to || !subject || !body || sent}>
+      <button onClick={handleSend} disabled={!to || !subject || !body || sent}>
         {sent ? "Sent!" : "Send Mail"}
       </button>
       <div style={{ marginTop: 12, fontSize: 12, color: "#888" }}>

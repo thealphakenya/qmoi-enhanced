@@ -118,7 +118,7 @@ export const AvatarSelectionPanel: React.FC<AvatarSelectionPanelProps> = ({
               Cancel
             </Button>
             <Button
-              enabled={!selectedId}
+              disabled={!selectedId}
               onClick={() => {
                 const avatar = avatars.find((a) => a.id === selectedId);
                 if (avatar) onAvatarSelected(avatar);

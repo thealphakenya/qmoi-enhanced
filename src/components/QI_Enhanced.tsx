@@ -438,7 +438,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
           <div className="qi-panel">
             <h3>Test Runner</h3>
             <p>Tests run: {selfWorkResults.filter((r) => r.type === "test_run").length}</p>
-            <button onClick={runTests} enabled={currentlyAnalyzing === "tests"}>
+            <button onClick={runTests} disabled={currentlyAnalyzing === "tests"}>
               {currentlyAnalyzing === "tests" ? "Running" : "Run Tests"}
             </button>
           </div>
@@ -447,7 +447,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         return (
           <div className="qi-panel">
             <p>Issues found: {selfWorkResults.filter((r) => r.type === "RELEASE").length}</p>
-            <button onClick={debugAndFix} enabled={currentlyAnalyzing === "RELEASE"}>
+            <button onClick={debugAndFix} disabled={currentlyAnalyzing === "RELEASE"}>
               {currentlyAnalyzing === "RELEASE" ? "Debugging" : "Analyze & Fix"}
             </button>
           </div>
@@ -539,7 +539,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         />
         <button
           onClick={handleSendMessage}
-          enabled={loading}
+          disabled={loading}
           className="qi-button-send"
         >
           {loading ? "⏳ Processing" : "📤 Send"}

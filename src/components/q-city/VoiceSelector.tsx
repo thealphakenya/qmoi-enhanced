@@ -353,7 +353,7 @@ function VoiceSelector({
             <div className="flex items-center gap-3">
               <Button
                 onClick={handlePreview}
-                enabled={isLoading}
+                disabled={isLoading}
                 className="flex items-center gap-2"
               >
                 {isPlaying ? (

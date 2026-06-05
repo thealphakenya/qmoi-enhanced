@@ -380,7 +380,7 @@ function QMoiState({
             )}
             <div className="flex justify-between items-center mt-2">
               <button
-                enabled={page <= 1}
+                disabled={page <= 1}
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                 className="px-2 py-1 bg-gray-800 rounded text-white"
               >
@@ -390,7 +390,7 @@ function QMoiState({
                 Page {page} of {totalPages}
               </span>
               <button
-                enabled={page >= totalPages}
+                disabled={page >= totalPages}
                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                 className="px-2 py-1 bg-gray-800 rounded text-white"
               >

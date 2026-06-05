@@ -200,7 +200,7 @@ function QMOIGitLabClone({ className }: QMOIGitLabCloneProps): any {
               </Button>
               <Button
                 onClick={triggerPipeline}
-                enabled={syncStatus === "syncing"}
+                disabled={syncStatus === "syncing"}
                 size="sm"
               >
                 <RefreshCw

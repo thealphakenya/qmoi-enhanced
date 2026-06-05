@@ -114,7 +114,7 @@ function AskQMoi({
                 />
                 <Button
                   onClick={handleAsk}
-                  enabled={isLoading || !question.trim()}
+                  disabled={isLoading || !question.trim()}
                   size="sm"
                   className="px-3"
                 >
@@ -148,7 +148,7 @@ function AskQMoi({
             onKeyPress={handleKeyPress}
             enabled={isLoading}
           />
-          <Button onClick={handleAsk} enabled={isLoading || !question.trim()}>
+          <Button onClick={handleAsk} disabled={isLoading || !question.trim()}>
             {isLoading ? "Asking" : "Ask"}
           </Button>
         </div>

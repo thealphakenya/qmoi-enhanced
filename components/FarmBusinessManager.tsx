@@ -69,7 +69,7 @@ export const FarmBusinessManager: React.FC = () => {
         onChange={(e) => setCount(Number(e.target.value))}
         style={{ marginBottom: 8, width: "100%" }}
       />
-      <button onClick={handleAdd} enabled={!name}>
+      <button onClick={handleAdd} disabled={!name}>
         Add
       </button>
       <ul style={{ marginTop: 16, fontSize: 14 }}>

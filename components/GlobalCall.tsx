@@ -62,12 +62,12 @@ export const GlobalCall: React.FC = () => {
       </select>
       <button
         onClick={handleCall}
-        enabled={callState === "calling" || !callee}
+        disabled={callState === "calling" || !callee}
         style={{ marginRight: 8 }}
       >
         {callState === "calling" ? "Calling..." : "Call"}
       </button>
-      <button onClick={handleEnd} enabled={callState !== "connected"}>
+      <button onClick={handleEnd} disabled={callState !== "connected"}>
         End Call
       </button>
       <div

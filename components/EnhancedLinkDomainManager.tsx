@@ -205,7 +205,7 @@ export default function EnhancedLinkDomainManager(): any {
         <div className="flex gap-2">
           <Button
             onClick={scanAllMarkdown}
-            enabled={isLoading}
+            disabled={isLoading}
             variant="outline"
           >
             <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
@@ -213,7 +213,7 @@ export default function EnhancedLinkDomainManager(): any {
           </Button>
           <Button
             onClick={autoReplaceBrokenLinks}
-            enabled={isLoading}
+            disabled={isLoading}
             variant="outline"
           >
             <Zap className="w-4 h-4 mr-2" />

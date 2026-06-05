@@ -48,7 +48,7 @@ export const PriceProductVerifier: React.FC = () => {
         onChange={(e) => setQuery(e.target.value)}
         style={{ marginBottom: 8, width: "100%" }}
       />
-      <button onClick={handleCheck} enabled={!query || loading}>
+      <button onClick={handleCheck} disabled={!query || loading}>
         {loading ? "Checking..." : "Verify"}
       </button>
       <div style={{ marginTop: 12, fontSize: 12, color: "#888" }}>{result}</div>

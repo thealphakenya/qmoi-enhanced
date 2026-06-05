@@ -292,7 +292,7 @@ export const QmoiAutoDistribution: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Button
                 onClick={startDistribution}
-                enabled={isDistributing}
+                disabled={isDistributing}
                 className="flex items-center gap-2"
                 size="lg"
               >
@@ -305,7 +305,7 @@ export const QmoiAutoDistribution: React.FC = () => {
               </Button>
               <Button
                 onClick={startMarketing}
-                enabled={isMarketing}
+                disabled={isMarketing}
                 variant="outline"
                 className="flex items-center gap-2"
                 size="lg"
@@ -558,7 +558,7 @@ export const QmoiAutoDistribution: React.FC = () => {
                 />
                 <Button
                   onClick={approveDeal}
-                  enabled={!deal.price || !deal.description}
+                  disabled={!deal.price || !deal.description}
                 >
                   Approve Deal
                 </Button>
@@ -592,7 +592,7 @@ export const QmoiAutoDistribution: React.FC = () => {
                 />
                 <Button
                   onClick={distributeToCustomPlatform}
-                  enabled={!customPlatform.trim()}
+                  disabled={!customPlatform.trim()}
                 >
                   Distribute
                 </Button>
@@ -660,7 +660,7 @@ export const QmoiAutoDistribution: React.FC = () => {
             <CardContent className="space-y-4">
               <Button
                 onClick={handleAutoFix}
-                enabled={autoFixLoading}
+                disabled={autoFixLoading}
                 className="mb-2"
               >
                 {autoFixLoading ? "Auto-fixing..." : "Auto Fix Errors"}
@@ -716,7 +716,7 @@ export const QmoiAutoDistribution: React.FC = () => {
               <div className="flex gap-2">
                 <Button
                   onClick={handleGitCommit}
-                  enabled={gitLoading || !commitMessage.trim()}
+                  disabled={gitLoading || !commitMessage.trim()}
                   className="flex items-center gap-2"
                 >
                   <GitCommit className="h-4 w-4" />
@@ -724,7 +724,7 @@ export const QmoiAutoDistribution: React.FC = () => {
                 </Button>
                 <Button
                   onClick={handleGitPush}
-                  enabled={gitLoading}
+                  disabled={gitLoading}
                   variant="outline"
                   className="flex items-center gap-2"
                 >
@@ -752,7 +752,7 @@ export const QmoiAutoDistribution: React.FC = () => {
               </div>
               <Button
                 onClick={handleCreatePR}
-                enabled={gitLoading || !prTitle.trim()}
+                disabled={gitLoading || !prTitle.trim()}
                 className="flex items-center gap-2"
               >
                 <GitPullRequest className="h-4 w-4" />
@@ -801,7 +801,7 @@ export const QmoiAutoDistribution: React.FC = () => {
               <div className="flex gap-2">
                 <Button
                   onClick={handleVercelDeploy}
-                  enabled={vercelLoading}
+                  disabled={vercelLoading}
                   className="flex items-center gap-2"
                   size="lg"
                 >
@@ -814,7 +814,7 @@ export const QmoiAutoDistribution: React.FC = () => {
                 </Button>
                 <Button
                   onClick={handleAutoRedeploy}
-                  enabled={vercelLoading}
+                  disabled={vercelLoading}
                   variant="outline"
                   className="flex items-center gap-2"
                 >

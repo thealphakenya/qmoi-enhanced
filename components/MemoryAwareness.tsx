@@ -477,7 +477,7 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
                   </div>
                   <Button
                     onClick={optimizeMemory}
-                    enabled={isOptimizing}
+                    disabled={isOptimizing}
                     variant="outline"
                   >
                     {isOptimizing ? (

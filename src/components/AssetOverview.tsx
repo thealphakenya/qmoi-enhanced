@@ -133,7 +133,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
               {formatCurrency(totalBalance)}
             </Typography>
             <Tooltip title="Refresh Assets">
-              <IconButton size="small" onClick={fetchData} enabled={isLoading}>
+              <IconButton size="small" onClick={fetchData} disabled={isLoading}>
                 <Refresh />
               </IconButton>
             </Tooltip>

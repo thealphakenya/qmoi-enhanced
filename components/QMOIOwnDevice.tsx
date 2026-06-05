@@ -285,7 +285,7 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
               variant="outline"
               size="sm"
               onClick={handleRefreshDetection}
-              enabled={isDetecting}
+              disabled={isDetecting}
             >
               <RefreshCw className="w-4 h-4 mr-2" />
               Refresh
@@ -339,7 +339,7 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
           {detectedRestrictions.length > 0 && (
             <Button
               onClick={handleQMOIOwnDevice}
-              enabled={isUnlocking}
+              disabled={isUnlocking}
               className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
               size="lg"
             >

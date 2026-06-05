@@ -4,6 +4,11 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 "use client";
 // INTENTIONAL_UNUSED: archived / intentionally unused component
+import React, { useEffect, useState } from "react";
+import apiClient from "@/api/client";
+import { writePersistedStorageValue } from "@/app/lib/auth/persistence";
+import { buildMasterHeaders, readMasterToken } from "@/app/lib/auth/master";
+
 interface MasterOverview {
   master: {
     name: string;
@@ -25,7 +30,7 @@ export default function MasterPortal(): any {
   const [token, setToken] = useState<string>("");
 
   useEffect(() => {
-    const persistedToken = readPersistedStorageValue("QM_MASTER_TOKEN");
+    const persistedToken = readMasterToken();
     if (persistedToken) {
       setToken(persistedToken);
     }
@@ -42,15 +47,17 @@ export default function MasterPortal(): any {
     setError(null);
     try {
       const res = await apiClient.get(`/api/qvillage?endpoint=master`, {
-        headers: {
-          "x-qmoi-master-token": token,
-        },
+        headers: buildMasterHeaders(token),
       });
+
+      const data = await res.json();
       if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
+        throw new Error(
+          data?.error || data?.message || "Failed to load master overview",
+        );
       }
-      const data = (await res.json()) as MasterOverview;
-      setOverview(data);
+
+      setOverview(data as MasterOverview);
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
     } finally {
@@ -81,7 +88,7 @@ export default function MasterPortal(): any {
           <button
             className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 enabled:opacity-50"
             onClick={handleTokenSave}
-            enabled={!token || loading}
+            disabled={!token || loading}
           >
             Load Overview
           </button>

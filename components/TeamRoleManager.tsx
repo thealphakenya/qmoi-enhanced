@@ -170,7 +170,7 @@ const TeamRoleManager: React.FC = () => {
                   </option>
                 ))}
               </select>
-              <Button onClick={addUser} enabled={!newUser.name.trim()}>
+              <Button onClick={addUser} disabled={!newUser.name.trim()}>
                 Add User
               </Button>
             </div>

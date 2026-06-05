@@ -252,7 +252,7 @@ export default function EnhancedRevenuePanel(): any {
           </div>
           <Button
             onClick={handleMasterLogin}
-            enabled={loading || !masterKey}
+            disabled={loading || !masterKey}
             className="w-full"
           >
             {loading ? (
@@ -314,7 +314,7 @@ export default function EnhancedRevenuePanel(): any {
           <div className="flex gap-4">
             <Button
               onClick={startEngine}
-              enabled={loading || engineStatus === "running"}
+              disabled={loading || engineStatus === "running"}
               className="flex-1"
             >
               <Play className="h-4 w-4 mr-2" />
@@ -322,7 +322,7 @@ export default function EnhancedRevenuePanel(): any {
             </Button>
             <Button
               onClick={stopEngine}
-              enabled={loading || engineStatus === "stopped"}
+              disabled={loading || engineStatus === "stopped"}
               variant="destructive"
               className="flex-1"
             >
@@ -331,7 +331,7 @@ export default function EnhancedRevenuePanel(): any {
             </Button>
             <Button
               onClick={loadRevenueData}
-              enabled={loading}
+              disabled={loading}
               variant="outline"
             >
               <RefreshCw className="h-4 w-4" />
@@ -439,7 +439,7 @@ export default function EnhancedRevenuePanel(): any {
                   />
                 </div>
               </div>
-              <Button onClick={setTarget} enabled={loading || !targetAmount}>
+              <Button onClick={setTarget} disabled={loading || !targetAmount}>
                 Set Target
               </Button>
             </CardContent>
@@ -475,7 +475,7 @@ export default function EnhancedRevenuePanel(): any {
               </div>
               <Button
                 onClick={manualTransfer}
-                enabled={loading || !transferAmount}
+                disabled={loading || !transferAmount}
               >
                 Transfer Now
               </Button>
@@ -590,14 +590,14 @@ export default function EnhancedRevenuePanel(): any {
                   <Button
                     onClick={resetDaily}
                     variant="outline"
-                    enabled={loading}
+                    disabled={loading}
                   >
                     Reset Daily Earnings
                   </Button>
                   <Button
                     onClick={loadRevenueData}
                     variant="outline"
-                    enabled={loading}
+                    disabled={loading}
                   >
                     Refresh Data
                   </Button>

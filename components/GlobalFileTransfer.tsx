@@ -63,7 +63,7 @@ export const GlobalFileTransfer: React.FC = () => {
         onChange={handleFileChange}
         style={{ marginBottom: 8, width: "100%" }}
       />
-      <button onClick={handleSend} enabled={!file || !recipient}>
+      <button onClick={handleSend} disabled={!file || !recipient}>
         Send File
       </button>
       <div style={{ marginTop: 12, fontSize: 12, color: "#888" }}>{status}</div>

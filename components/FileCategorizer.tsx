@@ -69,7 +69,7 @@ export const FileCategorizer: React.FC = () => {
           </option>
         ))}
       </select>
-      <button onClick={handleAdd} enabled={!fileName}>
+      <button onClick={handleAdd} disabled={!fileName}>
         Add File
       </button>
       <ul style={{ marginTop: 16, fontSize: 14 }}>

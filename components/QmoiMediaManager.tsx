@@ -41,6 +41,7 @@ import {
   Video,
   Image,
 } from "lucide-react";
+import { buildMasterHeaders } from "@/app/lib/auth/master";
 interface MediaItem {
   id: string;
   name: string;
@@ -216,9 +217,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   const fetchLogs = async () => {
     try {
       const response = await apiClient.get("/api/qmoi-database?logs=true&limit=50", {
-        headers: {
-          "x-qmoi-master": "true",
-        },
+        headers: buildMasterHeaders(),
       });
       if (response.ok) {
         const data = await response.json();

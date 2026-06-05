@@ -402,7 +402,7 @@ function ChatbotEnhanced(): any {
         />
         <button
           onClick={handleSendMessage}
-          enabled={loading || !input.trim()}
+          disabled={loading || !input.trim()}
           className="send-button"
         >
           {loading ? "" : "Send"}

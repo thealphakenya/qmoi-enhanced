@@ -10,7 +10,7 @@
  * Master-Only Access UI for Automation Control, Financial Overview, and Status Monitoring
  */
 import React, { useEffect, useState } from "react";
-import { readPersistedStorageValue, writePersistedStorageValue } from '@/app/lib/auth/persistence';
+import { buildMasterHeaders, readMasterToken, writeMasterToken } from '@/app/lib/auth/master';
 import {
   AlertCircle,
   BarChart3,
@@ -152,6 +152,7 @@ export function QMOIMasterDashboard({
       if (response.ok) {
         setIsAuthenticated(true);
         setToken(authToken);
+        writeMasterToken(authToken);
         setError(null);
         return true;
       }
@@ -165,7 +166,7 @@ export function QMOIMasterDashboard({
 
   useEffect(() => {
     if (token) return;
-    const persistedToken = readPersistedStorageValue("masterToken");
+    const persistedToken = readMasterToken();
     if (persistedToken) {
       void verifyMasterAccess(persistedToken);
     }
@@ -270,7 +271,7 @@ export function QMOIMasterDashboard({
         },
       });
       // Clear session and redirect
-      writePersistedStorageValue("masterToken", null);
+      writeMasterToken(null);
       setIsAuthenticated(false);
       setToken("");
       onUnauthorized?.();
@@ -436,7 +437,7 @@ export function QMOIMasterDashboard({
             )}
             <button
               type="submit"
-              enabled={loading}
+              disabled={loading}
               className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 enabled:opacity-50 text-white font-medium rounded-lg transition-colors"
             >
               {loading ? "Verifying..." : "Unlock Dashboard"}
@@ -1548,9 +1549,7 @@ export function QMOIMasterDashboard({
                             try {
                               setLoading(true);
                               const response = await apiClient.get(`/api/qvillage?endpoint=master_commands&command=force_refresh_domain_validation&domain=${encodeURIComponent(domain)}`, {
-                                headers: {
-                                  "x-qmoi-master-token": token,
-                                },
+                                headers: buildMasterHeaders(token),
                               });
                               const result = await response.json();
                               if (result.success) {
@@ -1594,9 +1593,7 @@ export function QMOIMasterDashboard({
                             try {
                               setLoading(true);
                               const response = await apiClient.get(`/api/qvillage?endpoint=master_commands&command=approve_new_domain&domain=${encodeURIComponent(domain)}`, {
-                                headers: {
-                                  "x-qmoi-master-token": token,
-                                },
+                                headers: buildMasterHeaders(token),
                               });
                               const result = await response.json();
                               if (result.success) {
@@ -1649,9 +1646,7 @@ export function QMOIMasterDashboard({
                             try {
                               setLoading(true);
                               const response = await apiClient.get(`/api/qvillage?endpoint=master_commands&command=add_monitored_link&link=${encodeURIComponent(link)}`, {
-                                headers: {
-                                  "x-qmoi-master-token": token,
-                                },
+                                headers: buildMasterHeaders(token),
                               });
                               const result = await response.json();
                               if (result.success) {
@@ -1695,9 +1690,7 @@ export function QMOIMasterDashboard({
                             try {
                               setLoading(true);
                               const response = await apiClient.get(`/api/qvillage?endpoint=master_commands&command=remove_monitored_link&link=${encodeURIComponent(link)}`, {
-                                headers: {
-                                  "x-qmoi-master-token": token,
-                                },
+                                headers: buildMasterHeaders(token),
                               });
                               const result = await response.json();
                               if (result.success) {
@@ -1734,9 +1727,7 @@ export function QMOIMasterDashboard({
                       try {
                         setLoading(true);
                         const response = await apiClient.get(`/api/qvillage?endpoint=master_commands&command=audit_all_actions`, {
-                          headers: {
-                            "x-qmoi-master-token": token,
-                          },
+                          headers: buildMasterHeaders(token),
                         });
                         const result = await response.json();
                         if (result.success) {

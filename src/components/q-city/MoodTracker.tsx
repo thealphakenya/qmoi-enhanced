@@ -66,7 +66,7 @@ export const MoodTracker: React.FC = () => {
             </option>
           ))}
         </select>
-        <button enabled={!selectedMood} onClick={() => logMood(selectedMood)}>
+        <button disabled={!selectedMood} onClick={() => logMood(selectedMood)}>
           Log Mood
         </button>
       </div>

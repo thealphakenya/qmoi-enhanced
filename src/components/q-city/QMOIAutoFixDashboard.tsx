@@ -207,7 +207,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
             >
               {isRunning ? "Running" : "Ready"}
             </Badge>
-            <Button onClick={triggerAutoFix} enabled={isRunning} size="sm">
+            <Button onClick={triggerAutoFix} disabled={isRunning} size="sm">
               {isRunning ? "Fixing..." : "Trigger Auto-Fix"}
             </Button>
           </div>

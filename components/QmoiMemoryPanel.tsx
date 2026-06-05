@@ -54,7 +54,7 @@ export const QmoiMemoryPanel: React.FC = () => {
         size="sm"
         variant="outline"
         onClick={handleEvolve}
-        enabled={evolving}
+        disabled={evolving}
       >
         {evolving ? "Evolving..." : "Trigger Evolution Cycle"}
       </Button>
