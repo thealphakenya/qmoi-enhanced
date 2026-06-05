@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import logger from '../../lib/logger';
+import { log as logger } from "@/lib/logger";
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);

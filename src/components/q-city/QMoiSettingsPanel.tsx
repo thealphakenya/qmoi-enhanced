@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { readPersistedStorageValue, writePersistedStorageValue } from '@/app/lib/auth/persistence';
+import { log as logger } from "@/lib/logger";
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -307,7 +308,7 @@ class ErrorBoundary extends React.Component {
     return { hasError: true };
   }
   componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
+    console.error?.('Error caught by boundary:', error, errorInfo);
   }
   render() {
     if (this.state.hasError) {

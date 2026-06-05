@@ -2,7 +2,7 @@
 /**
  * GET function
  */
-export async function GET(): any {
+export async function GET(): Promise<any> {
   const traces = getTraceStatus();
   return new Response(
     JSON.stringify({

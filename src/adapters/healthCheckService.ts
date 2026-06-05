@@ -1,5 +1,6 @@
 import { checkHealth, getCacheStats, getPendingRequests } from "./clientAdapters";
 import { backgroundManager } from "./backgroundServiceManager";
+import { log as logger } from "@/lib/logger";
 
 const logger = {
   info: console.info.bind(console),

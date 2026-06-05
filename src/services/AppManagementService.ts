@@ -4,6 +4,7 @@
 
 import { EventEmitter } from "events";
 import { log } from "../lib/logger";
+import { log as logger } from "@/lib/logger";
 
 export type AppCategory =
   | "trading"

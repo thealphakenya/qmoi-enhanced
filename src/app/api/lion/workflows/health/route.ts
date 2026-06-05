@@ -70,7 +70,7 @@ function isMasterAuthorized(request: NextRequest): boolean {
 /**
  * GET function
  */
-export async function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): Promise<any> {
   try {
     const lionAgent = initializeLionAgent();
     const searchParams = request.nextUrl.searchParams;
@@ -133,7 +133,7 @@ export async function GET(request: NextRequest): any {
 /**
  * PUT function
  */
-export async function PUT(request: NextRequest): any {
+export async function PUT(request: NextRequest): Promise<any> {
   try {
     // Check master authorization
     if (!isMasterAuthorized(request)) {

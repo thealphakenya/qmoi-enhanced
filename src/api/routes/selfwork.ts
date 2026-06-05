@@ -54,7 +54,7 @@ export async function handleSelfWorkRequest(req: Request, endpoint: string): Pro
 /**
  * performCodeReview function
  */
-async function performCodeReview(req: Request): any {
+async function performCodeReview(req: Request): Promise<any> {
   try {
     const { filePath } = await req.json();
 
@@ -100,7 +100,7 @@ async function performCodeReview(req: Request): any {
 /**
  * runTests function
  */
-async function runTests(req: Request): any {
+async function runTests(req: Request): Promise<any> {
   try {
     // For now, returning 
     const result = {
@@ -149,7 +149,7 @@ async function runTests(req: Request): any {
 /**
  * RELEASE function
  */
-async function RELEASE(req: Request): any {
+async function RELEASE(req: Request): Promise<any> {
   try {
     const { lastError } = await req.json();
 
@@ -213,7 +213,7 @@ async function RELEASE(req: Request): any {
 /**
  * toggleAutoprod function
  */
-async function toggleAutoprod(req: Request): any {
+async function toggleAutoprod(req: Request): Promise<any> {
   try {
     const { enabled } = await req.json();
 

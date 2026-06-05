@@ -59,7 +59,7 @@ export default function QMoiSpacePage() {
           setLastUpdated(data.lastUpdated || '');
         }
       } catch (error) {
-        console.error('Failed to load QMOI Space data:', error);
+        console.error?.('Failed to load QMOI Space data:', error);
       }
     }
     async function fetchQmoiModelStatus() {
@@ -71,7 +71,7 @@ export default function QMoiSpacePage() {
           setQmoiStatus(data);
         }
       } catch (error) {
-        console.error('Failed to load QMOI model status:', error);
+        console.error?.('Failed to load QMOI model status:', error);
       } finally {
         if (active) {
           setQmoiStatusLoading(false);

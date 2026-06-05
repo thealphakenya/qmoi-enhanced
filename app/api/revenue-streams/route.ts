@@ -145,7 +145,7 @@ export async function GET(request: NextRequest) {
     const sortBy = searchParams.get('sortBy') || 'dailyRevenue';
 
     // Filter streams
-    let streams = Object.values(REVENUE_STREAMS).filter(stream => {
+    const streams = Object.values(REVENUE_STREAMS).filter(stream => {
       if (status !== 'all' && stream.status !== status) return false;
       if (tier && stream.tier !== parseInt(tier)) return false;
       return true;
@@ -170,7 +170,7 @@ export async function GET(request: NextRequest) {
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
-    console.error('[Revenue Streams Error]', error);
+    console.error?.('[Revenue Streams Error]', error);
     return NextResponse.json(
       { 
         success: false, 
@@ -220,7 +220,7 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString(),
     }, { status: 201 });
   } catch (error) {
-    console.error('[Create Revenue Stream Error]', error);
+    console.error?.('[Create Revenue Stream Error]', error);
     return NextResponse.json(
       { 
         success: false, 

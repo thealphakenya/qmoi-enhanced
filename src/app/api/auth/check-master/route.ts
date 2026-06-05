@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { log } from '@/lib/logger';
+import { log as logger } from "@/lib/logger";
 
 /**
  * Master Authentication Check API Route
@@ -29,7 +30,7 @@ function isMasterAuthorized(request: NextRequest): boolean {
 /**
  * GET function
  */
-export async function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): Promise<any> {
   try {
     const isMaster = isMasterAuthorized(request);
 

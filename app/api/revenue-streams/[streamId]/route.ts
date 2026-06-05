@@ -78,7 +78,7 @@ export async function GET(
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
-    console.error('[Get Revenue Stream Error]', error);
+    console.error?.('[Get Revenue Stream Error]', error);
     return NextResponse.json(
       { 
         success: false, 
@@ -136,7 +136,7 @@ export async function PUT(
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
-    console.error('[Update Revenue Stream Error]', error);
+    console.error?.('[Update Revenue Stream Error]', error);
     return NextResponse.json(
       { 
         success: false, 
@@ -189,7 +189,7 @@ export async function DELETE(
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
-    console.error('[Delete Revenue Stream Error]', error);
+    console.error?.('[Delete Revenue Stream Error]', error);
     return NextResponse.json(
       { 
         success: false, 

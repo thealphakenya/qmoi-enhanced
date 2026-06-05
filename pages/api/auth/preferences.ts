@@ -19,16 +19,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!parsed.success) return res.status(422).json({ error: "Invalid request", issues: parsed.error.errors });
     const { token, preferences } = parsed.data;
 
-    const updated = await authManager.updateUserPreferences(String(token), preferences as any);
-    const safe = { ...updated };
-    // @ts-ignore
+    const updated = await authManager.updateUserPreferences(String(token), preferences as Record<string, unknown>);
+    const safe = { ...updated } as Record<string, unknown>;
     delete safe.passwordHash;
-    // @ts-ignore
     delete safe.salt;
-
     return res.status(200).json({ success: true, user: safe });
-  } catch (err: any) {
-    const message = err && err.message ? err.message : String(err);
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err);
     return res.status(500).json({ error: message });
   }
 }

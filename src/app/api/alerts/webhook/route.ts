@@ -14,7 +14,7 @@ function jsonResponse(body: unknown, status = 200): any {
 /**
  * POST function
  */
-export async function POST(request: Request): any {
+export async function POST(request: Request): Promise<any> {
   try {
     const body = await request.json();
     const payload = body as AlertPayload;

@@ -38,6 +38,7 @@ interface ValidationReport {
  * Comprehensive Validation Engine
  */
 import logger from '../../../lib/logger';
+import { log as logger } from "@/lib/logger";
 
 export class QMoiValidationEngine {
   private results: ValidationResult[] = [];

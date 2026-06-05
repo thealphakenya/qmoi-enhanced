@@ -100,52 +100,52 @@ function enforceRateLimitForLegacy(request: Request, limit: number = 100): Promi
   return rateLimiter.checkLimit(ip);
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }

@@ -12,7 +12,7 @@
 /**
  * POST function
  */
-export async function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): Promise<any> {
   try {
     const body = await request.json();
     const { description } = body;

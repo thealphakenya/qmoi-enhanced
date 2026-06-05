@@ -14,7 +14,7 @@ export const runtime = 'nodejs';
 /**
  * POST function
  */
-export async function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): Promise<any> {
   try {
     // Verify master-only access for autonomous replacements
     const user = await withAuthentication(request);
@@ -101,7 +101,7 @@ export async function POST(request: NextRequest): any {
 /**
  * GET function
  */
-export async function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): Promise<any> {
   try {
     const user = await withAuthentication(request);
     

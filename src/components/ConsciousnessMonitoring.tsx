@@ -101,7 +101,7 @@ export function ConsciousnessMonitoring() {
         setHubStatuses(hubs || generateHubData());
         setInsights(memoryInsights?.insights || []);
       } catch (err) {
-        console.error('Failed to load consciousness data:', err);
+        console.error?.('Failed to load consciousness data:', err);
         setHubStatuses(generateHubData());
       }
     };
@@ -123,7 +123,7 @@ export function ConsciousnessMonitoring() {
       const status = await getConsciousnessStatus();
       setConsciousnessStatus(status);
     } catch (err) {
-      console.error('Failed to trigger sync:', err);
+      console.error?.('Failed to trigger sync:', err);
     } finally {
       setSyncInProgress(false);
     }

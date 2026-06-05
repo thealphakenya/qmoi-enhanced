@@ -12,11 +12,11 @@ export default function QMoiMemoryPanel(): any {
   const [feedback, setFeedback] = useState("");
   const [correction, setCorrection] = useState("");
   const [message, setMessage] = useState("");
-  async function fetchMemory(): any {
+  async function fetchMemory(): Promise<any> {
     const res = await apiClient.get("/api/qmoi/memory");
     if (res.ok) setMemory(await res.json());
   }
-  async function submitFeedback(): any {
+  async function submitFeedback(): Promise<any> {
     const res = await apiClient.get("/api/qmoi/feedback", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -32,7 +32,7 @@ export default function QMoiMemoryPanel(): any {
       setMessage("Error submitting feedback.");
     }
   }
-  async function backupMemory(): any {
+  async function backupMemory(): Promise<any> {
     const res = await apiClient.get("/api/qmoi/memory-backup");
     if (res.ok) setMessage("Memory backup created!");
     else setMessage("Backup failed.");
@@ -103,7 +103,7 @@ export default function QMoiMemoryPanel(): any {
       {message && <p>{message}</p>}
     </div>
   );  } catch (error) {
-    console.error('QMoiMemoryPanel.tsx render error:', error);
+    console.error?.('QMoiMemoryPanel.tsx render error:', error);
     return null;
   }
 }

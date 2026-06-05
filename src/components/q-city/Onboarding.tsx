@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { writePersistedStorageValue } from '@/app/lib/auth/persistence';
+import { log as logger } from "@/lib/logger";
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);

@@ -31,7 +31,7 @@ export default function DeviceManagementDashboard() {
       const data = await response.json();
       setDevices(data.devices || []);
     } catch (error) {
-      console.error('Failed to fetch devices:', error);
+      console.error?.('Failed to fetch devices:', error);
       setDevices([]);
     } finally {
       setLoading(false);

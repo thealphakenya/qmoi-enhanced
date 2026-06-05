@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db/prisma';
 import { log } from '@/lib/logger';
+import { log as logger } from "@/lib/logger";
 
 export async function GET(request: NextRequest) {
   try {

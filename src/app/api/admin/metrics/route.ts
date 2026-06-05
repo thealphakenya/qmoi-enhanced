@@ -2,7 +2,7 @@
 /**
  * GET function
  */
-export async function GET(request: Request): any {
+export async function GET(request: Request): Promise<any> {
   const acceptHeader = request.headers.get('accept') || '';
   if (acceptHeader.includes('text/plain')) {
     return new Response(exportPrometheusMetrics(), {

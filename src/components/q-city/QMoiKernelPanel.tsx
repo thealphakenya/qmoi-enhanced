@@ -2,6 +2,7 @@
 
 import React, { memo, useCallback, useEffect, useState } from "react";
 import { useQmoiKernel } from "@/hooks/useQmoiKernel";
+import { log as logger } from "@/lib/logger";
 
 export default memo(function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
   const { status, loading, error, lastAction, fetchStatus, runAction } = useQmoiKernel();
@@ -156,7 +157,7 @@ class ErrorBoundary extends React.Component {
     return { hasError: true };
   }
   componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
+    console.error?.('Error caught by boundary:', error, errorInfo);
   }
   render() {
     if (this.state.hasError) {

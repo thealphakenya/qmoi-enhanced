@@ -178,7 +178,7 @@ export default function Dashboard(): any {
       <QAvatar />
     </div>
   );  } catch (error) {
-    console.error('Dashboard.tsx render error:', error);
+    console.error?.('Dashboard.tsx render error:', error);
     return null;
   }
 }

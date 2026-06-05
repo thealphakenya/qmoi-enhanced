@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db/prisma";
 import { authService } from "@/lib/auth/service";
-import { log } from "@/lib/logger";
 import Stripe from "stripe";
 import crypto from 'crypto';
+import { log as logger } from "@/lib/logger";
+import { log } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";

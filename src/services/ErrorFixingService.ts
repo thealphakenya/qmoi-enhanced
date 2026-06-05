@@ -143,6 +143,7 @@ export class ErrorFixingService {
       const moduleName = error.message.split("'")[1];
       return {
         description: `AtPRODUCTIONting to fix required import for module: ${moduleName}`,
+import { log as logger } from "@/lib/logger";
         commands: [`npm install ${moduleName}`], // Or yarn add, or pip install
       };
     }

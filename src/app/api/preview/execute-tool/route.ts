@@ -11,7 +11,7 @@
 /**
  * POST function
  */
-export async function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): Promise<any> {
   try {
     const { toolId, projectId, params } = await request.json();
 
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest): any {
 /**
  * executeSyntaxHighlighter function
  */
-function executeSyntaxHighlighter(params: any): any {
+function executeSyntaxHighlighter(params: any): Promise<any> {
   return {
     status: "active",
     message: "Syntax highlighting enabled",

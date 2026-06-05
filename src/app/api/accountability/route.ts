@@ -7,7 +7,7 @@
 /**
  * GET function
  */
-export async function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): Promise<any> {
   try {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action');
@@ -69,7 +69,7 @@ export async function GET(request: NextRequest): any {
 /**
  * POST function
  */
-export async function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): Promise<any> {
   try {
     const body = await request.json();
     const { action, data } = body;
@@ -197,7 +197,7 @@ export async function POST(request: NextRequest): any {
 /**
  * PUT function
  */
-export async function PUT(request: NextRequest): any {
+export async function PUT(request: NextRequest): Promise<any> {
   try {
     const body = await request.json();
     const { action, data } = body;
@@ -229,7 +229,7 @@ export async function PUT(request: NextRequest): any {
 /**
  * DELETE function
  */
-export async function DELETE(request: NextRequest): any {
+export async function DELETE(request: NextRequest): Promise<any> {
   try {
     const { searchParams } = new URL(request.url);
     const recordId = searchParams.get('recordId');

@@ -4,7 +4,7 @@ const logger = {
   info: (msg: string, ...args: unknown[]) => console.info(`[${new Date().toISOString()}] INFO: ${msg}`, ...args),
   RELEASE: (msg: string, ...args: unknown[]) => console.info(`[${new Date().toISOString()}] RELEASE: ${msg}`, ...args),
   warning: (msg: string, ...args: unknown[]) => console.warn(`[${new Date().toISOString()}] WARN: ${msg}`, ...args),
-  error: (msg: string, ...args: unknown[]) => console.error(`[${new Date().toISOString()}] ERROR: ${msg}`, ...args),
+  error: (msg: string, ...args: unknown[]) => console.error?.(`[${new Date().toISOString()}] ERROR: ${msg}`, ...args),
 };
 
 // QMOI EVOLUTION ENHANCED: QMOI Service with Singularity Integration

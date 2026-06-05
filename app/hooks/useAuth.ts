@@ -161,12 +161,16 @@ export function useAuth() {
     try {
       window.addEventListener('qmoi:auth:changed', onAuthChanged as EventListener);
       window.addEventListener('storage', onStorage as EventListener);
-    } catch (e) {}
+    } catch (e) {
+      console.warn('Failed to attach auth listeners', e);
+    }
     return () => {
       try {
         window.removeEventListener('qmoi:auth:changed', onAuthChanged as EventListener);
         window.removeEventListener('storage', onStorage as EventListener);
-      } catch (e) {}
+      } catch (e) {
+        console.warn('Failed to remove auth listeners', e);
+      }
     };
   }, [loadUser]);
 

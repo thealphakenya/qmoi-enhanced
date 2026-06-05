@@ -14,7 +14,7 @@ const logger = getLogger("api/qmoi/autoprod/research");
 /**
  * POST function
  */
-export async function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): Promise<any> {
   try {
     const authHeader = request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {

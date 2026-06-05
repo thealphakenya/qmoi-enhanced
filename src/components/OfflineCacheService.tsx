@@ -12,7 +12,7 @@ export class ErrorBoundary extends React.Component<Props, { hasError: boolean }>
   }
   componentDidCatch(error: unknown, errorInfo: unknown) {
     if (typeof console !== 'undefined' && typeof console.error === 'function') {
-      console.error('Error caught by boundary:', error, errorInfo);
+      console.error?.('Error caught by boundary:', error, errorInfo);
     }
   }
   render() {
@@ -38,7 +38,7 @@ export const OfflineCacheService: React.FC = () => {
     };
     request.onerror = () => {
       if (typeof console !== 'undefined' && typeof console.error === 'function') {
-        console.error('IndexedDB open error', request.error);
+        console.error?.('IndexedDB open error', request.error);
       }
     };
   }, []);

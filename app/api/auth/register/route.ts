@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db/prisma";
 import { authFallback, authService } from "@/lib/auth/service";
-import bcrypt from 'bcryptjs';
-import { log, logApiError } from "@/lib/logger";
+import { logApiError } from "@/lib/logger";
 import { logAuthEvent } from "@/app/lib/auth/memory";
+import { log as logger } from "@/lib/logger";
 
 const USE_DB = Boolean(process.env.DATABASE_URL);
 
@@ -216,7 +216,9 @@ export async function POST(req: NextRequest) {
     // Log registration event to QMOI memory
     try {
       await logAuthEvent({ userId: user.id, role: user.role, displayName: user.username, event: 'register', details: { ip: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') } });
-    } catch (e) {}
+    } catch (e) {
+      console.warn('Registration audit event failed', e);
+    }
 
     return response;
 

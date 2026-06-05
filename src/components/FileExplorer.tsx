@@ -1,4 +1,5 @@
 import React from 'react';
+import { log as logger } from "@/lib/logger";
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:24Z
@@ -187,7 +188,7 @@ class ErrorBoundary extends React.Component {
     return { hasError: true };
   }
   componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
+    console.error?.('Error caught by boundary:', error, errorInfo);
   }
   render() {
     if (this.state.hasError) {

@@ -3,6 +3,7 @@ import { authFallback, authService } from "../../../../lib/auth/service";
 import { emailService } from "@/lib/email/service";
 import { prisma } from "@/lib/db/prisma";
 import { logApiError } from "@/lib/logger";
+import { log as logger } from "@/lib/logger";
 
 const USE_DB = Boolean(process.env.DATABASE_URL);
 

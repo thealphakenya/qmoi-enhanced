@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { readPersistedUser } from "@/app/lib/auth/persistence";
-import { log } from "@/lib/logger";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { log } from "@/lib/logger";
 
 type DashboardState = {
   emotion: string;

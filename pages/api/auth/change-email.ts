@@ -13,15 +13,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { token, newEmail } = parsed.data;
 
     const user = await authManager.changeEmail(String(token), String(newEmail));
-    const safe = { ...user };
-    // @ts-ignore
+    const safe = { ...user } as Record<string, unknown>;
     delete safe.passwordHash;
-    // @ts-ignore
     delete safe.salt;
-
     return res.status(200).json({ success: true, user: safe });
-  } catch (err: any) {
-    const message = err && err.message ? err.message : String(err);
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err);
     return res.status(400).json({ error: message });
   }
 }

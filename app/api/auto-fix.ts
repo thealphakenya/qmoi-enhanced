@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../lib/db/prisma";
+import { log as logger } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -398,8 +399,8 @@ async function applySpecificFix(issueType: string, component: string, parameters
   // This implementation uses a best-effort issue handler and retains audit logging.
 
   try {
-    let action = `fix_${issueType}_${component}`;
-    let result = `Applied fix for ${issueType} in ${component}`;
+    const action = `fix_${issueType}_${component}`;
+    const result = `Applied fix for ${issueType} in ${component}`;
 
     // Log the specific fix
     await prisma.systemMetric.create({

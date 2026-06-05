@@ -13,7 +13,7 @@ const logger = getLogger("api/qmoi/health");
 /**
  * GET function
  */
-export async function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): Promise<any> {
   try {
     // Check authentication
     const authHeader = request.headers.get("authorization");
@@ -67,7 +67,7 @@ export async function GET(request: NextRequest): any {
 /**
  * POST function
  */
-export async function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): Promise<any> {
   try {
     // Check authentication
     const authHeader = request.headers.get("authorization");

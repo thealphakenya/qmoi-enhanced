@@ -126,7 +126,7 @@ async function writeProposal(proposal: {
   title: string;
   description: string;
   payload: Record<string, unknown>;
-}): any {
+}): Promise<any> {
   const validationDir = path.join(process.cwd(), ".qmoi_validation");
   if (!fs.existsSync(validationDir)) {
     fs.mkdirSync(validationDir, { recursive: true });

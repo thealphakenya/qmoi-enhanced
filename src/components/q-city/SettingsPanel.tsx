@@ -37,7 +37,7 @@ export default function SettingsPanel(): any {
       </div>
     </div>
   );  } catch (error) {
-    console.error('SettingsPanel.tsx render error:', error);
+    console.error?.('SettingsPanel.tsx render error:', error);
     return null;
   }
 }

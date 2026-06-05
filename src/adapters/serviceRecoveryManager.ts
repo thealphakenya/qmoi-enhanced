@@ -1,4 +1,5 @@
 import { checkHealth } from "./clientAdapters";
+import { log as logger } from "@/lib/logger";
 
 const logger = {
   info: console.info.bind(console),

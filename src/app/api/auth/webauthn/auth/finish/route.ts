@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
 import { log } from '@/lib/logger';
 import { getCredentialByEmail, updateWebAuthnCredentialLastUsed, verifyWebAuthnAssertion, consumeWebAuthnChallenge } from '@/lib/webauthn';
+import { log as logger } from "@/lib/logger";
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';

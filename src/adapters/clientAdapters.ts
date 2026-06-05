@@ -1,5 +1,6 @@
 import apiClient from "@/api/client";
 import { getEndpoint } from "@/config/api";
+import { log as logger } from "@/lib/logger";
 
 interface CacheEntry<T> {
   data: T;

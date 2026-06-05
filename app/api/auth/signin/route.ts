@@ -8,7 +8,7 @@ export const runtime = "nodejs";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { email, username, password, biometricMethod, biometricData, rememberMe } = body;
+    const { email, username, password, biometricMethod, biometricData } = body;
 
     if ((!email && !username) || (!password && !biometricData)) {
       return NextResponse.json(
@@ -69,12 +69,12 @@ export async function POST(req: NextRequest) {
     try {
       await logAuthEvent({ userId: authResult.user?.id, role: authResult.user?.role, displayName: authResult.user?.displayName, event: 'signin', details: { ipAddress, userAgent } });
     } catch (e) {
-      // best-effort
+      console.warn('Signin audit event failed', e);
     }
 
     return response;
   } catch (error) {
-    console.error("Signin error:", error);
+    console.error?.("Signin error:", error);
     return NextResponse.json(
       { success: false, message: "Internal server error", error: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }

@@ -56,52 +56,52 @@ function stkPush(payload: any): Promise<{ success: boolean }> {
   return response;
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }

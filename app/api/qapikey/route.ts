@@ -30,7 +30,7 @@ if (apiKeys.length === 0) {
   // Keys should be stored encrypted using NODE_CRYPTO or similar
 }
 
-export async function GET(req: NextRequest): any {
+export async function GET(req: NextRequest): Promise<any> {
   // List all keys (hide revoked by default)
   const url = new URL(req.url);
   const showRevoked = url.searchParams.get("showRevoked") === "true";
@@ -38,7 +38,7 @@ export async function GET(req: NextRequest): any {
   return NextResponse.json({ keys });
 }
 
-export async function POST(req: NextRequest): any {
+export async function POST(req: NextRequest): Promise<any> {
   // Create a new key
   const key = generateKey();
   apiKeys.push({
@@ -50,7 +50,7 @@ export async function POST(req: NextRequest): any {
   return NextResponse.json({ key });
 }
 
-export async function DELETE(req: NextRequest): any {
+export async function DELETE(req: NextRequest): Promise<any> {
   // Revoke a key
   const body = (await req.json()) as any;
   const { key } = body;
@@ -63,7 +63,7 @@ export async function DELETE(req: NextRequest): any {
 }
 
 // GET /api/qapikey/usage - Usage stats
-export async function GET_USAGE(req: NextRequest): any {
+export async function GET_USAGE(req: NextRequest): Promise<any> {
   // Return usage stats for all keys
   return NextResponse.json({
     usage: apiKeys.map((k) => ({ key: k.key, usage: k.usage })),

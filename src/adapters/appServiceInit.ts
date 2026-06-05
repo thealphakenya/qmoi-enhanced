@@ -2,6 +2,7 @@ import { backgroundManager } from "./backgroundServiceManager";
 import { healthCheckService } from "./healthCheckService";
 import { recoveryManager } from "./serviceRecoveryManager";
 import { checkHealth, clearCache } from "./clientAdapters";
+import { log as logger } from "@/lib/logger";
 
 import logger from '../lib/logger';
 
@@ -84,7 +85,7 @@ export function resetAllCaches(): void {
 
 export function enableDebugLogging(): void {
   logger.info("[RELEASE] Debug logging enabled");
-};
+}
 
 export async function getDiagnosticReport(): Promise<{
   timestamp: number;

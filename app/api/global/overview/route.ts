@@ -85,7 +85,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(globalOverview);
   } catch (error) {
-    console.error('[Global Overview Error]', error);
+    console.error?.('[Global Overview Error]', error);
     return NextResponse.json(
       { 
         success: false, 

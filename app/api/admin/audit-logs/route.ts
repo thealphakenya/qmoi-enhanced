@@ -7,6 +7,7 @@ import { authService } from '@/lib/auth/service';
 import { log } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
 import { requireApiKey } from '@/lib/proposals';
+import { log as logger } from "@/lib/logger";
 const db = prisma;
 // In-memory audit log cache for fallback/test scenarios
 const inMemoryAuditLogs: any[] = [];

@@ -4,6 +4,7 @@ import apiClient from "@/api/client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { log as logger } from "@/lib/logger";
 const logger = {
   info: console.info.bind(console),
   warn: console.warn.bind(console),

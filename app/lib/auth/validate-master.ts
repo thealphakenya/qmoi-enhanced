@@ -24,7 +24,7 @@ export async function validateMasterAuth(request: NextRequest) {
                        process.env.QM_MASTER_TOKEN;
 
     if (!masterToken) {
-      console.error('[Auth] No master token configured');
+      console.error?.('[Auth] No master token configured');
       return {
         authenticated: false,
         error: 'Server configuration error',
@@ -52,7 +52,7 @@ export async function validateMasterAuth(request: NextRequest) {
       timestamp: new Date().toISOString(),
     };
   } catch (error) {
-    console.error('[Auth] Validation error:', error);
+    console.error?.('[Auth] Validation error:', error);
     return {
       authenticated: false,
       error: 'Authentication validation failed',

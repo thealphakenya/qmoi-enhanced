@@ -66,7 +66,7 @@ export default function HomePage() {
         systemHealth: adminData?.data?.systemHealth ? `${adminData.data.systemHealth}%` : 'Unknown'
       });
     } catch (error) {
-      console.error('Failed to fetch system status:', error);
+      console.error?.('Failed to fetch system status:', error);
     }
   };
   return (

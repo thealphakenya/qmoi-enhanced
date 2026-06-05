@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { log, logApiError } from '../../../src/lib/logger';
+import { log as logger } from "@/lib/logger";
 
 const REDIS_KEY = 'qmoi:windows';
 const DATA_FILE = path.join(process.cwd(), 'data', 'windows.json');

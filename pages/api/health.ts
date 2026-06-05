@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { log as logger } from "@/lib/logger";
 
 function getConsciousnessMetrics() {
   return {

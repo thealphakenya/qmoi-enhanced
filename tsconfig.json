@@ -47,7 +47,8 @@
         "./app/*"
       ],
       "@/services/*": [
-        "./src/services/*"
+        "./src/services/*",
+        "./services/*"
       ],
       "@/adapters/*": [
         "./src/adapters/*"
@@ -76,7 +77,7 @@
     "pages/**/*",
     "src/**/*",
     "components/**/*",
-    "lib/**/*",
+    "lib/cashon-wallet.ts",
     "types/**/*",
     ".next/types/**/*.ts",
     ".next/PRODUCTION/types/**/*.ts",
@@ -101,6 +102,7 @@
     "app/api/middleware/**",
     "app/api/qmoi-model.ts",
     "app/api/wifi-security.ts",
+    "src/lib/webauthn.ts",
     "components/advanced_ui_&_parallel_processing_features_(2025_01_22).tsx",
     "components/media_&_ui_features_(2024_06_09).tsx",
     "components/real_time_status_dashboard_with_universal_language_support.tsx",

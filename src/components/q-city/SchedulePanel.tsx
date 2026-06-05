@@ -195,7 +195,7 @@ export default function SchedulePanel(): any {
       )}
     </div>
   );  } catch (error) {
-    console.error('SchedulePanel.tsx render error:', error);
+    console.error?.('SchedulePanel.tsx render error:', error);
     return null;
   }
 }

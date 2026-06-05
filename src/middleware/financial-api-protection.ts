@@ -4,6 +4,7 @@
  */
 
 import { NextRequest, NextResponse } from "next/server";
+import { log as logger } from "@/lib/logger";
 
 export interface ProtectedRequest extends NextRequest {
   user?: {

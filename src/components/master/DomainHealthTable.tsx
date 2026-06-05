@@ -1,4 +1,5 @@
 import React from 'react';
+import { log as logger } from "@/lib/logger";
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -549,7 +550,7 @@ export default function DomainHealthTable({
     </div>
     );
   } catch (error) {
-    console.error('DomainHealthTable render error:', error);
+    console.error?.('DomainHealthTable render error:', error);
     return null;
   }
 }
@@ -706,7 +707,7 @@ class ErrorBoundary extends React.Component {
     return { hasError: true };
   }
   componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
+    console.error?.('Error caught by boundary:', error, errorInfo);
   }
   render() {
     if (this.state.hasError) {

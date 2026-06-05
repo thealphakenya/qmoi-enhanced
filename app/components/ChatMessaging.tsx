@@ -22,7 +22,7 @@ export default function ChatMessaging({ title = "Chat Messaging" }: ChatMessagin
         if (!active) return;
         setModelStatus(data);
       } catch (error) {
-        console.error("Failed to load QMOI model status:", error);
+        console.error?.("Failed to load QMOI model status:", error);
       }
     }
     loadModelStatus();
@@ -51,7 +51,7 @@ export default function ChatMessaging({ title = "Chat Messaging" }: ChatMessagin
         { id: `assistant-${Date.now()}`, role: "assistant", content: answer },
       ]);
     } catch (error) {
-      console.error("QMOI messaging failed:", error);
+      console.error?.("QMOI messaging failed:", error);
       setMessages((current) => [
         ...current,
         {

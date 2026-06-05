@@ -108,6 +108,7 @@ export class FaceRecognitionService {
       
       try {
         // Use dynamic import so code doesn't fail if package isn't installed
+import { log as logger } from "@/lib/logger";
         // In browser bundlers this will resolve to the bundled library if present.
         // eslint-disable-next-line @typescript-eslint/no-const-requires
         // @ts-ignore - face-api.js is optional and may not be installed in every environment

@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
         );
     }
   } catch (error) {
-    console.error("Memory service error:", error);
+    console.error?.("Memory service error:", error);
     return NextResponse.json(
       {
         error: "Internal server error",
@@ -135,7 +135,7 @@ export async function GET(request: NextRequest) {
       { status: 400 }
     );
   } catch (error) {
-    console.error("Memory service error:", error);
+    console.error?.("Memory service error:", error);
     return NextResponse.json(
       {
         error: "Internal server error",

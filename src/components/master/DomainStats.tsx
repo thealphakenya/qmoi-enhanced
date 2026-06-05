@@ -94,7 +94,7 @@ export default function DomainStats({ stats, loading = false }: DomainStatsProps
     </div>
     );
   } catch (error) {
-    console.error('DomainStats render error:', error);
+    console.error?.('DomainStats render error:', error);
     return null;
   }
 }

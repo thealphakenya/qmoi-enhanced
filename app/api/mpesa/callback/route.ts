@@ -5,6 +5,7 @@ import { processMpesaCallback } from "@/lib/payments/service";
 import { notifyPaymentSuccess, notifyPaymentFailure } from "@/lib/notifier";
 import { getPrismaClient } from "@/lib/prisma";
 import { requireApiKey } from "@/lib/proposals";
+import { log as logger } from "@/lib/logger";
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -23,7 +24,7 @@ function verifyWebhook(raw: string, signatureHeader: string | undefined): boolea
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-async function updaPRODUCTIONesaTransaction(details: any): any {
+async function updaPRODUCTIONesaTransaction(details: any): Promise<any> {
   try {
     const prisma = await getPrismaClient();
     if (prisma && prisma.transaction) {
@@ -46,7 +47,7 @@ async function updaPRODUCTIONesaTransaction(details: any): any {
     return false;
   }
 }
-async function triggerPostPaymentActions(details: any): any {
+async function triggerPostPaymentActions(details: any): Promise<any> {
   // Send notifications via Email, Slack, WhatsApp
   try {
     const {
@@ -66,7 +67,7 @@ async function triggerPostPaymentActions(details: any): any {
   }
   return true;
 }
-export async function POST(req: NextRequest): any {
+export async function POST(req: NextRequest): Promise<any> {
   try {
     const apiCheck = requireApiKey(req.headers);
     if (!apiCheck.ok) {

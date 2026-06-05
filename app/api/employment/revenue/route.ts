@@ -5,6 +5,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import { log as logger } from "@/lib/logger";
 const logger = {
   info: console.info.bind(console),
   warn: console.warn.bind(console),
@@ -88,7 +89,7 @@ function getMpesaCredentials(): any {
   };
 }
 // Platform account creation functions
-async function createPlatformAccount(platform: string, accountData: unknown): any {
+async function createPlatformAccount(platform: string, accountData: unknown): Promise<any> {
   try {
     const account = {
       id: `acc_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -118,7 +119,7 @@ async function createPlatformAccount(platform: string, accountData: unknown): an
 // and transaction tracking with actual payment APIs (Stripe, PayPal, M-Pesa, etc.)
 async function generateMicrotaskRevenue(
   taskData: z.infer<typeof MicrotaskSchema>,
-): any {
+): Promise<any> {
   try {
     const clientPayment = (taskData.reward || 0) * 1.5; // QMOI takes 33% cut
     const userPayment = taskData.reward || 0;
@@ -142,7 +143,7 @@ async function generateMicrotaskRevenue(
 }
 async function generateAffiliateRevenue(
   campaignData: z.infer<typeof AffiliateCampaignSchema>,
-): any {
+): Promise<any> {
   try {
     const sales = Math.floor(Math.random() * 10) + 1; // Random sales 1-10
     const totalRevenue = sales * 100; // Assume $100 per sale
@@ -170,7 +171,7 @@ async function generateAffiliateRevenue(
 }
 async function generateContentRevenue(
   projectData: z.infer<typeof ContentProjectSchema>,
-): any {
+): Promise<any> {
   try {
     const salePrice = (projectData.reward || 0) * 3; // Content sold for 3x reward
     const userPayment = projectData.reward || 0;
@@ -194,7 +195,7 @@ async function generateContentRevenue(
 }
 async function generateReferralRevenue(
   referralData: z.infer<typeof ReferralProgramSchema>,
-): any {
+): Promise<any> {
   try {
     const referrals = Math.floor(Math.random() * 5) + 1; // Random referrals 1-5
     const totalBonus = referrals * (referralData.bonus || 0);
@@ -219,7 +220,7 @@ async function generateReferralRevenue(
   }
 }
 // Additional revenue streams
-async function generateSurveyRevenue(surveyData: { title?: string }): any {
+async function generateSurveyRevenue(surveyData: { title?: string }): Promise<any> {
   try {
     const participants = Math.floor(Math.random() * 20) + 5; 
     const rewardPerParticipant = 5; // $5 per survey
@@ -243,7 +244,7 @@ async function generateSurveyRevenue(surveyData: { title?: string }): any {
     return { success: false, _error: "Survey revenue failed" };
   }
 }
-async function generateDataLabelingRevenue(labelingData: { project?: string }): any {
+async function generateDataLabelingRevenue(labelingData: { project?: string }): Promise<any> {
   try {
     const dataPoints = Math.floor(Math.random() * 1000) + 100; 
     const rewardPerPoint = 0.1; // $0.10 per data point
@@ -267,7 +268,7 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }): 
     return { success: false, _error: "Data labeling revenue failed" };
   }
 }
-async function generateSaaSResellingRevenue(saasData: { service?: string }): any {
+async function generateSaaSResellingRevenue(saasData: { service?: string }): Promise<any> {
   try {
     const subscriptions = Math.floor(Math.random() * 50) + 10; 
     const monthlyFee = 29; // $29/month per subscription
@@ -292,7 +293,7 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }): any
     return { success: false, _error: "SaaS reselling revenue failed" };
   }
 }
-export async function GET(req: NextRequest): any {
+export async function GET(req: NextRequest): Promise<any> {
   const { searchParams } = new URL(req.url);
   const type = searchParams.get("type"); // 'microtasks', 'affiliate', 'content', 'referral', 'platforms', 'revenue'
   const status = searchParams.get("status");
@@ -358,7 +359,7 @@ export async function GET(req: NextRequest): any {
     );
   }
 }
-export async function POST(req: NextRequest): any {
+export async function POST(req: NextRequest): Promise<any> {
   try {
     const body = await req.json();
     const { action, data } = body;
@@ -530,7 +531,7 @@ export async function POST(req: NextRequest): any {
     );
   }
 }
-export async function PUT(req: NextRequest): any {
+export async function PUT(req: NextRequest): Promise<any> {
   try {
     const body = await req.json();
     const { id, type, updates } = body;

@@ -3,6 +3,7 @@
 import React from "react";
 import { readPersistedUser } from "../../app/lib/auth/persistence";
 import type { NextRequest } from "next/server";
+import { log as logger } from "@/lib/logger";
 
 declare const logger: any;
 

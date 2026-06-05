@@ -131,7 +131,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
       setChatHistory((prev) => [...prev, aiMessage]);
       speakText(aiMessage.content);
     } catch (error) {
-      console.error("Chatbot submit error:", error);
+      console.error?.("Chatbot submit error:", error);
     } finally {
       setIsLoading(false);
     }

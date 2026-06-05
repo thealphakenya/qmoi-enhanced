@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { log } from '@/lib/logger';
+import { log as logger } from "@/lib/logger";
 // Camera types configuration
 const CAMERA_TYPES = {
   street: {

@@ -8,6 +8,7 @@ import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 import winston from 'winston';
 import { PrismaClient } from '@prisma/client';
+import { log as logger } from "@/lib/logger";
 
 const JWT_SECRET = process.env.JWT_SECRET || 'qmoi_default_jwt_secret';
 const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'qmoi_default_jwt_refresh_secret';

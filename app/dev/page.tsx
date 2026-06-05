@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import logger from '../../src/lib/logger';
+import { log as logger } from "@/lib/logger";
 const isProduction = process.env.NODE_ENV === "production";
 export default function DevPage() {
   if (isProduction) {
@@ -63,7 +64,7 @@ export default function DevPage() {
         setDebugInfo(data);
       }
     } catch (error) {
-      try { logger.error('Failed to load debug info', error); } catch (e) { console.error('Failed to load debug info:', error); }
+      try { logger.error('Failed to load debug info', error); } catch (e) { console.error?.('Failed to load debug info:', error); }
     }
   };
   useEffect(() => {

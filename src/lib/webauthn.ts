@@ -2,6 +2,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import { log } from '@/lib/logger';
+import { log as logger } from "@/lib/logger";
 
 export type WebAuthnFlow = 'register' | 'authenticate';
 
@@ -30,7 +31,7 @@ const CREDENTIALS_FILE = path.resolve(process.cwd(), 'data', 'webauthn-credentia
 const CHALLENGE_TTL_MS = 5 * 60 * 1000; // 5 minutes
 
 declare global {
-  var __webauthnChallengeStore?: Record<string, WebAuthnChallenge>;
+  var __webauthnChallengeStore: Record<string, WebAuthnChallenge> | undefined;
 }
 
 function getChallengeStore(): Record<string, WebAuthnChallenge> {
@@ -85,9 +86,10 @@ async function ensureCredentialsFile(): Promise<void> {
     await fs.access(CREDENTIALS_FILE).catch(async () => {
       await fs.writeFile(CREDENTIALS_FILE, '[]', { encoding: 'utf8' });
     });
-  } catch (error) {
-    log.error('Failed to ensure WebAuthn credential store', error);
-    throw error;
+  } catch (error: unknown) {
+    const safeError: Error = error instanceof Error ? error : new Error(String(error));
+    log.error('Failed to ensure WebAuthn credential store', safeError as Error);
+    throw safeError;
   }
 }
 
@@ -96,8 +98,9 @@ export async function loadWebAuthnCredentials(): Promise<WebAuthnCredentialRecor
   const raw = await fs.readFile(CREDENTIALS_FILE, 'utf8');
   try {
     return JSON.parse(raw) as WebAuthnCredentialRecord[];
-  } catch (error) {
-    log.error('Failed to parse WebAuthn credential store', error);
+  } catch (error: unknown) {
+    const safeError: Error = error instanceof Error ? error : new Error(String(error));
+    log.error('Failed to parse WebAuthn credential store', safeError as Error);
     return [];
   }
 }

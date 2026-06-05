@@ -52,7 +52,7 @@ function maskSecret(s: string | undefined | null): any {
   if (!s) return "";
   return s.replace(/.(?=.{4})/g, "*");
 }
-async function backupCredentialsSafe(credentials: any, platform: string): any {
+async function backupCredentialsSafe(credentials: any, platform: string): Promise<any> {
   try {
     const masked = {
       pesapal: { consumerKey: maskSecret(credentials?.pesapal?.consumerKey) },
@@ -76,7 +76,7 @@ async function stkPush(payload: any): Promise<any> {
   };
 }
 
-async function processMpesaPayment(paymentData: unknown): any {
+async function processMpesaPayment(paymentData: unknown): Promise<any> {
   try {
     const amount = (paymentData as any)?.amount;
     const phone =
@@ -111,7 +111,7 @@ async function processMpesaPayment(paymentData: unknown): any {
     return { success: false, _error: "M-Pesa payment failed" };
   }
 }
-async function processAirtelPayment(paymentData: unknown): any {
+async function processAirtelPayment(paymentData: unknown): Promise<any> {
   const data = paymentData as any;
   try {
     const _response = await apiClient.get(
@@ -151,7 +151,7 @@ async function processAirtelPayment(paymentData: unknown): any {
     return { success: false, _error: "Airtel payment failed" };
   }
 }
-async function processPesapalPayment(paymentData: unknown): any {
+async function processPesapalPayment(paymentData: unknown): Promise<any> {
   const data = paymentData as any;
   try {
     const _response = await apiClient.get(
@@ -186,7 +186,7 @@ async function processPesapalPayment(paymentData: unknown): any {
     return { success: false, _error: "Pesapal payment failed" };
   }
 }
-export async function GET(req: NextRequest): any {
+export async function GET(req: NextRequest): Promise<any> {
   const { searchParams } = new URL(req.url);
   const type = searchParams.get("type"); // 'payments', 'logs', 'credentials'
   const status = searchParams.get("status");
@@ -231,7 +231,7 @@ export async function GET(req: NextRequest): any {
     );
   }
 }
-export async function POST(req: NextRequest): any {
+export async function POST(req: NextRequest): Promise<any> {
   try {
     const body = await req.json();
     const { action, data } = body;
@@ -353,7 +353,7 @@ export async function POST(req: NextRequest): any {
     );
   }
 }
-export async function PUT(req: NextRequest): any {
+export async function PUT(req: NextRequest): Promise<any> {
   try {
     // Require master auth for updates
     const auth = await validateMasterAuth(req);

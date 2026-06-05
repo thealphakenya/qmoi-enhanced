@@ -5,7 +5,7 @@ interface DocumentEntry {
   name: string;
   type: string;
   createdAt: string;  } catch (error) {
-    console.error('DocumentManagerPanel.tsx render error:', error);
+    console.error?.('DocumentManagerPanel.tsx render error:', error);
     return null;
   }
 

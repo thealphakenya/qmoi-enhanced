@@ -14,7 +14,7 @@ export const runtime = 'nodejs';
 /**
  * GET function
  */
-export async function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): Promise<any> {
   try {
     const user = await withAuthentication(request);
     
@@ -58,7 +58,7 @@ export async function GET(request: NextRequest): any {
 /**
  * generateOptimizationSuggestions function
  */
-function generateOptimizationSuggestions(type: string, limit: number): any[] {
+function generateOptimizationSuggestions(type: string, limit: number): Promise<any>[] {
   const optimizations = [
     {
       id: 'opt-001',

@@ -20,7 +20,7 @@ interface DiagnosticResponse {
   status: string;
   problems: DiagnosticProblem[];
 }
-export async function GET(req: NextRequest): any {
+export async function GET(req: NextRequest): Promise<any> {
   const apiAuth = requireApiKey(req.headers);
   const adminToken = req.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
@@ -80,7 +80,7 @@ export async function GET(req: NextRequest): any {
   }
   return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
 }
-export async function POST(req: NextRequest): any {
+export async function POST(req: NextRequest): Promise<any> {
   const apiAuth = requireApiKey(req.headers);
   const adminToken = req.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {

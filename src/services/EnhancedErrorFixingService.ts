@@ -205,6 +205,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
       {
         pattern: /Cannot find module/,
         cause: "required dependency or incorrect import path",
+import { log as logger } from "@/lib/logger";
       },
       { pattern: /Unexpected token/, cause: "Syntax error in code" },
       {

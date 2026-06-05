@@ -1,4 +1,5 @@
 import React from 'react';
+import { log as logger } from "@/lib/logger";
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -81,7 +82,7 @@ export const KnowledgeEngine: React.FC = () => {
     topics: number;
     integration: number;
   } | null>(null);
-  async function handleAddSource(): any {
+  async function handleAddSource(): Promise<any> {
     const name = prompt("Enter name for new source:");
     const type = prompt("Type (document, website, database, api):");
     if (!name || !type) return;
@@ -95,7 +96,7 @@ export const KnowledgeEngine: React.FC = () => {
     const data = await res.json();
     if (data.sources) setSources(data.sources as KnowledgeSource[]);
   }
-  async function handleIndexSource(id: string): any {
+  async function handleIndexSource(id: string): Promise<any> {
     await apiClient.get("/api/knowledge?action=index", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -564,7 +565,7 @@ class ErrorBoundary extends React.Component {
     return { hasError: true };
   }
   componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
+    console.error?.('Error caught by boundary:', error, errorInfo);
   }
   render() {
     if (this.state.hasError) {

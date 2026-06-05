@@ -29,7 +29,7 @@ function getQueryParam(request: Request, key: string): string | null {
 /**
  * GET function
  */
-export async function GET(request: Request): any {
+export async function GET(request: Request): Promise<any> {
   const userId = getQueryParam(request, 'userId') || 'guest';
   const subscription = getSubscription(userId);
 
@@ -45,7 +45,7 @@ export async function GET(request: Request): any {
 /**
  * POST function
  */
-export async function POST(request: Request): any {
+export async function POST(request: Request): Promise<any> {
   const body = await request.json();
   const userId = (body as any).userId || 'guest';
   const tier = (body as any).tier as SubscriptionTier;
@@ -65,7 +65,7 @@ export async function POST(request: Request): any {
 /**
  * DELETE function
  */
-export async function DELETE(request: Request): any {
+export async function DELETE(request: Request): Promise<any> {
   const userId = getQueryParam(request, 'userId') || 'guest';
   const result = await cancelSubscription(userId);
 
@@ -81,52 +81,52 @@ export async function DELETE(request: Request): any {
 }
 
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }

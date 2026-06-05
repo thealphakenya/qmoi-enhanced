@@ -70,7 +70,7 @@ export default function QVillagePage() {
           setLastUpdated(data.lastUpdated || "");
         }
       } catch (error) {
-        console.error("Failed to load QVillage spaces:", error);
+        console.error?.("Failed to load QVillage spaces:", error);
       }
     }
     loadSpaces();

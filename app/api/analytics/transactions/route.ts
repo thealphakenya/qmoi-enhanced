@@ -4,6 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 import { NextRequest, NextResponse } from "next/server";
 import { prisma as db } from "@/lib/db/prisma";
+import { log as logger } from "@/lib/logger";
 
 import logger from '@/lib/logger';
 import { requireApiKey } from '@/lib/proposals';
@@ -124,7 +125,7 @@ function groupTransactions(
   }
   return grouped;
 }
-function calculateStats(transactions: unknown[]): any {
+function calculateStats(transactions: unknown[]): Promise<any> {
   const stats = {
     totalTransactions: transactions.length,
     totalAmount: 0,

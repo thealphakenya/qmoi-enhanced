@@ -74,7 +74,7 @@ export function GlobalOperationsDashboard() {
         setPerformance(perf);
         setCompliance(comp);
       } catch (err) {
-        console.error('Failed to load global operations data:', err);
+        console.error?.('Failed to load global operations data:', err);
       }
     };
 

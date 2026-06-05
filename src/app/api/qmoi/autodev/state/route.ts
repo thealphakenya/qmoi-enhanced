@@ -7,7 +7,7 @@
 /**
  * GET function
  */
-export async function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): Promise<any> {
   try {
     const record = await prisma.setting.findUnique({
       where: { key: "autoprod.state" },

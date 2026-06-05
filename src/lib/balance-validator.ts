@@ -75,52 +75,52 @@ function isSnapshotRealFunds(snapshotId: string): Promise<boolean> {
   return Math.random() > 0.5; // Random for demo
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }

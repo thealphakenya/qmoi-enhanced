@@ -1,3 +1,4 @@
+import { log as logger } from "@/lib/logger";
 "use client";
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Master-only access control
@@ -186,7 +187,7 @@ export function QMOIMasterDashboard({
         setAutomationStatus(data.status);
       }
     } catch (_err) {
-      console.error("Failed to fetch automation status:", err);
+      console.error?.("Failed to fetch automation status:", err);
     }
   };
   // Fetch financial data
@@ -204,7 +205,7 @@ export function QMOIMasterDashboard({
         setFinancialData(data);
       }
     } catch (_err) {
-      console.error("Failed to fetch financial data:", err);
+      console.error?.("Failed to fetch financial data:", err);
     }
   };
   // Fetch links data
@@ -222,7 +223,7 @@ export function QMOIMasterDashboard({
         setLinksData(data);
       }
     } catch (_err) {
-      console.error("Failed to fetch links data:", err);
+      console.error?.("Failed to fetch links data:", err);
     }
   };
   // Fetch global data (realtime global operations and finance)
@@ -240,7 +241,7 @@ export function QMOIMasterDashboard({
         setGlobalData(data.data);
       }
     } catch (_err) {
-      console.error("Failed to fetch global finance data:", err);
+      console.error?.("Failed to fetch global finance data:", err);
     }
   };
   // Fetch domain data
@@ -257,7 +258,7 @@ export function QMOIMasterDashboard({
         setDomainData(data);
       }
     } catch (_err) {
-      console.error("Failed to fetch domain data:", err);
+      console.error?.("Failed to fetch domain data:", err);
     }
   };
   // Handle logout
@@ -276,7 +277,7 @@ export function QMOIMasterDashboard({
       setToken("");
       onUnauthorized?.();
     } catch (_err) {
-      console.error("Logout failed:", err);
+      console.error?.("Logout failed:", err);
       setError("Failed to logout properly");
     } finally {
       setLoading(false);
@@ -294,7 +295,7 @@ export function QMOIMasterDashboard({
       setError(null);
     } catch (_err) {
       setError("Failed to access camera. Please check permissions.");
-      console.error("Camera access failed:", err);
+      console.error?.("Camera access failed:", err);
     }
   };
   const stopCamera = () => {

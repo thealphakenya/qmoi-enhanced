@@ -11,7 +11,7 @@
 /**
  * POST function
  */
-export async function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): Promise<any> {
   try {
     const { context, userInput } = await request.json();
 

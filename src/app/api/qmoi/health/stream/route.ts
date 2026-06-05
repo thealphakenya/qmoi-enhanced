@@ -12,7 +12,7 @@ const logger = getLogger("api/qmoi/health/stream");
 /**
  * GET function
  */
-export async function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): Promise<any> {
   try {
     // Check authentication
     const authHeader = request.headers.get("authorization");

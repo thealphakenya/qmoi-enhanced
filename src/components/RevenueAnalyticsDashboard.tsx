@@ -78,11 +78,11 @@ export function RevenueAnalyticsDashboard() {
             setForecastData(forecast);
             setSelectedStream(streams[0].id);
           } catch (err) {
-            console.error('Failed to load forecast:', err);
+            console.error?.('Failed to load forecast:', err);
           }
         }
       } catch (err) {
-        console.error('Failed to load revenue analytics:', err);
+        console.error?.('Failed to load revenue analytics:', err);
       }
     };
 

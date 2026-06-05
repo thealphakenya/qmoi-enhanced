@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { aiService } from '@/lib/ai-service';
 import { log, logApiError } from '@/lib/logger';
+import { log as logger } from "@/lib/logger";
 
 interface ConversationMessage {
   id: string;

@@ -95,7 +95,7 @@ export default function FriendshipInterface() {
       };
       setMessages(prev => [...prev, assistantMessage]);
     } catch (error) {
-      console.error('Failed to get response:', error);
+      console.error?.('Failed to get response:', error);
       const errorMessage: Message = {
         id: Date.now().toString(),
         content: "Sorry, I'm having trouble processing that right now. Please try again.",
@@ -106,7 +106,7 @@ export default function FriendshipInterface() {
       setMessages(prev => [...prev, errorMessage]);
     } finally {
       setIsTyping(false);
-  };
+  }
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;
     const userMessage: Message = {

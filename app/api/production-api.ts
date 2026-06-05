@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { execSync } from "child_process";
 import { prisma } from "../../lib/db/prisma";
 import { log } from "@/lib/logger";
 
@@ -165,34 +166,34 @@ export async function POST(req: NextRequest) {
 
 async function getTotalEndpoints(): Promise<number> {
   // Count all API route files
-  const { execSync } = require('child_process');
   try {
     const result = execSync("find app/api -name \"*.ts\" -o -name \"*.js\" | grep -v '\\.backups' | grep -v '\\bbackups\\b' | wc -l", { encoding: 'utf8' });
     return parseInt(result.trim()) || 0;
-  } catch {
+  } catch (error) {
+    log.warn('Failed to count endpoints', error);
     return 0;
   }
 }
 
 async function getImplementedEndpoints(): Promise<number> {
   // Count routes without incomplete endpoint markers
-  const { execSync } = require('child_process');
   try {
     const total = execSync("find app/api -name \"*.ts\" -o -name \"*.js\" | grep -v '\\.backups' | grep -v '\\bbackups\\b' | wc -l", { encoding: 'utf8' });
     const incomplete = execSync('find app/api -name "*.ts" -o -name "*.js" | grep -v ".backups" | grep -v "\\bbackups\\b" | xargs grep -l "\\${routeName}" | wc -l', { encoding: 'utf8' });
     return (parseInt(total.trim()) || 0) - (parseInt(incomplete.trim()) || 0);
-  } catch {
+  } catch (error) {
+    log.warn('Failed to count implemented endpoints', error);
     return 0;
   }
 }
 
 async function getIncompleteEndpointCount(): Promise<number> {
   // Count routes with incomplete endpoint markers
-  const { execSync } = require('child_process');
   try {
     const result = execSync('find app/api -name "*.ts" -o -name "*.js" | grep -v ".backups" | grep -v "\\bbackups\\b" | xargs grep -l "\\${routeName}" | wc -l', { encoding: 'utf8' });
     return parseInt(result.trim()) || 0;
-  } catch {
+  } catch (error) {
+    log.warn('Failed to count incomplete endpoints', error);
     return 0;
   }
 }

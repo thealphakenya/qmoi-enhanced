@@ -69,7 +69,7 @@ export default function QMoiAIPage() {
           memorySync: 'Active',
         }));
       } catch (error) {
-        console.error('Failed to load production data:', error);
+        console.error?.('Failed to load production data:', error);
       }
     }
     loadProductionStats();
@@ -145,7 +145,7 @@ export default function QMoiAIPage() {
       const assistantMessage = { id: Date.now() + '-assistant', role: 'assistant', content: answer };
       setChatHistory((current) => [...current, assistantMessage]);
     } catch (error) {
-      console.error('QMOI chat failed:', error);
+      console.error?.('QMOI chat failed:', error);
       setChatHistory((current) => [
         ...current,
         {

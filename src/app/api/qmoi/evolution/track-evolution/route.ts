@@ -14,7 +14,7 @@ export const runtime = 'nodejs';
 /**
  * GET function
  */
-export async function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): Promise<any> {
   try {
     const user = await withAuthentication(request);
     
@@ -103,7 +103,7 @@ export async function GET(request: NextRequest): any {
 /**
  * POST function
  */
-export async function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): Promise<any> {
   try {
     const user = await withAuthentication(request);
     
@@ -172,7 +172,7 @@ export async function POST(request: NextRequest): any {
 /**
  * generateTimeline function
  */
-function generateTimeline(history: any[]): any[] {
+function generateTimeline(history: any[]): Promise<any>[] {
   return history
     .filter(t => t.status === 'completed')
     .slice(-10) // Last 10 completed replacements

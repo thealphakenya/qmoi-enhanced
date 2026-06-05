@@ -5,7 +5,7 @@
 import { NextRequest, NextResponse } from "next/server";
 declare const enhancedLinkDomainService: any;
 declare const qmoiTracksService: any;
-export async function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): Promise<any> {
   try {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get("action");
@@ -93,7 +93,7 @@ export async function GET(request: NextRequest): any {
     );
   }
 }
-export async function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): Promise<any> {
   try {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get("action");

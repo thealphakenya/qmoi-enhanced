@@ -1,4 +1,5 @@
 import React from 'react';
+import { log as logger } from "@/lib/logger";
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);

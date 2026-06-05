@@ -62,52 +62,52 @@ function updateAutomationConfig(newConfig: full<AutomationConfig>): void {
 }
 
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }
   } catch (error) {
-    console.error("production error:", error);
+    console.error?.("production error:", error);
     throw error;
   }
 }

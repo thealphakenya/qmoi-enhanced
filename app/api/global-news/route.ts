@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 import { NextRequest, NextResponse } from 'next/server';
 import { globalNewsService } from '@/lib/global-news-service';
-export async function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): Promise<any> {
   const { searchParams } = new URL(request.url);
   const action = searchParams.get('action');
   try {
@@ -31,7 +31,7 @@ export async function GET(request: NextRequest): any {
     }, { status: 500 });
   }
 }
-export async function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): Promise<any> {
   const { searchParams } = new URL(request.url);
   const action = searchParams.get('action');
   try {

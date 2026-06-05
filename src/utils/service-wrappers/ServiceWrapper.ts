@@ -7,6 +7,7 @@
 
 import { CircuitBreaker, HealthMonitor, AuditLogger } from '../production-helpers';
 import { MasterAccessControl } from '../master-access-control';
+import { log as logger } from "@/lib/logger";
 
 export class EnhancedServiceWrapper {
     private service: any;

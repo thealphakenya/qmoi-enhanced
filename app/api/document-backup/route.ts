@@ -45,7 +45,7 @@ function requireApiKey(request: NextRequest): boolean {
   const provided = request.headers.get("x-api-key");
   return provided === key;
 }
-export async function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): Promise<any> {
   if (!requireApiKey(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }

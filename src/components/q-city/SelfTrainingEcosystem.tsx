@@ -1,4 +1,5 @@
 import React from 'react';
+import { log as logger } from "@/lib/logger";
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -102,7 +103,7 @@ export const SelfTrainingEcosystem: React.FC = () => {
   ]);
   // new task list state and API
   const [tasks, setTasks] = useState<TrainingTask[]>([]);
-  async function fetchTasks(): any {
+  async function fetchTasks(): Promise<any> {
     try {
       const res = await apiClient.get("/api/self-training?action=list");
       const data = await res.json();
@@ -111,7 +112,7 @@ export const SelfTrainingEcosystem: React.FC = () => {
       // ignore
     }
   }
-  async function handleStart(): any {
+  async function handleStart(): Promise<any> {
     const model = prompt("Enter model name to train:");
     if (!model) return;
     const res = await apiClient.get("/api/self-training?action=start", {
@@ -490,7 +491,7 @@ class ErrorBoundary extends React.Component {
     }
     return this.props.children;
   }  } catch (error) {
-    console.error('SelfTrainingEcosystem.tsx render error:', error);
+    console.error?.('SelfTrainingEcosystem.tsx render error:', error);
     return null;
   }
 
@@ -504,7 +505,7 @@ class ErrorBoundary extends React.Component {
     return { hasError: true };
   }
   componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
+    console.error?.('Error caught by boundary:', error, errorInfo);
   }
   render() {
     if (this.state.hasError) {

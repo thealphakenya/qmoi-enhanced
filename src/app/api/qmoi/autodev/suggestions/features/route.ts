@@ -14,7 +14,7 @@ export const runtime = 'nodejs';
 /**
  * GET function
  */
-export async function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): Promise<any> {
   try {
     const user = await withAuthentication(request);
     
@@ -58,7 +58,7 @@ export async function GET(request: NextRequest): any {
 /**
  * generateFeatureSuggestions function
  */
-function generateFeatureSuggestions(category: string, limit: number): any[] {
+function generateFeatureSuggestions(category: string, limit: number): Promise<any>[] {
   const features = [
     {
       id: 'feat-001',

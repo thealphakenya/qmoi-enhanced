@@ -52,7 +52,7 @@ const UserSchema = z.object({
 const employees: unknown[] = [];
 const users: unknown[] = [];
 const employmentLogs: unknown[] = [];
-export async function GET(req: NextRequest): any {
+export async function GET(req: NextRequest): Promise<any> {
   const { searchParams } = new URL(req.url);
   const type = searchParams.get("type"); // 'employees' or 'users'
   const status = searchParams.get("status");
@@ -89,7 +89,7 @@ export async function GET(req: NextRequest): any {
     );
   }
 }
-export async function POST(req: NextRequest): any {
+export async function POST(req: NextRequest): Promise<any> {
   try {
     const body: any = await req.json();
     const { type, data } = body;
@@ -152,7 +152,7 @@ export async function POST(req: NextRequest): any {
     );
   }
 }
-export async function PUT(req: NextRequest): any {
+export async function PUT(req: NextRequest): Promise<any> {
   try {
     const body: any = await req.json();
     const { id, type, updates } = body;
@@ -225,7 +225,7 @@ export async function PUT(req: NextRequest): any {
     );
   }
 }
-export async function DELETE(req: NextRequest): any {
+export async function DELETE(req: NextRequest): Promise<any> {
   try {
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");

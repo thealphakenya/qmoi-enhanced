@@ -55,7 +55,7 @@ export default function LoginForm({ onLogin }) {
       } else {
         setError(data.message || "Login failed");
       }
-    } catch (err) {
+    } catch (_err) {
       setError("Network error. Please try again.");
     } finally {
       setLoading(false);
@@ -63,9 +63,6 @@ export default function LoginForm({ onLogin }) {
   };
 
   const handleBiometricSuccess = async (userId, confidence) => {
-    if (typeof window !== "undefined") {
-    }
-
     setShowBiometric(false);
     persistUserToStorage({ id: userId, role: "user", displayName: "Biometric User" });
     logAuthEvent({ userId, role: "user", displayName: "Biometric User", event: 'biometric_signin', details: { confidence } });
@@ -98,7 +95,7 @@ export default function LoginForm({ onLogin }) {
       } else {
         setForgotError(data.error || data.message || "Unable to request password reset.");
       }
-    } catch (err) {
+    } catch (_err) {
       setForgotError("Network error. Please try again.");
     } finally {
       setForgotLoading(false);

@@ -1,5 +1,6 @@
 
 import os
+import { log as logger } from "@/lib/logger";
 from pathlib import Path
 
 class productionConfig:
@@ -111,7 +112,7 @@ const production_data_GODADDY_STATUS: Record<string, any> = {
 /**
  * GET function
  */
-export async function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): Promise<any> {
   try {
     // Check master authorization
     if (!isMasterAuthorized(request)) {

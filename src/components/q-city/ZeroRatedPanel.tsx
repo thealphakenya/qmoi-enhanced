@@ -63,7 +63,7 @@ export default function ZeroRatedPanel(): any {
       )}
     </div>
   );  } catch (error) {
-    console.error('ZeroRatedPanel.tsx render error:', error);
+    console.error?.('ZeroRatedPanel.tsx render error:', error);
     return null;
   }
 }

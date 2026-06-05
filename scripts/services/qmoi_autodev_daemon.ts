@@ -313,7 +313,7 @@ function daemonLoop(): Promise<void> {
 
     logger.info(`[QMOI-AUTOprod-DAEMON] Detected ${errors.length} errors.`);
 
-    let fixResults = [];
+    const fixResults = [];
     if (errors.length > 0) {
       for (const error of errors) {
         try {

@@ -8,6 +8,7 @@ declare const Notification: any;
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 import { log } from "../lib/logger";
+import { log as logger } from "@/lib/logger";
 
 
 interface TaskbarOptions {

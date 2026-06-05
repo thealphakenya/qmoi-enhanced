@@ -1,3 +1,4 @@
+import { log as logger } from "@/lib/logger";
 /**
  * Avatar Management API Endpoint
  * Handles avatar generation, retrieval, and customization
@@ -32,7 +33,7 @@ export const config = {
 export async function GET(
   request: NextRequest,
   { params }: { params: { userId: string } }
-): any {
+): Promise<any> {
   try {
     const { userId } = params;
     const size = request.nextUrl.searchParams.get('size') || '128';
@@ -80,7 +81,7 @@ export async function GET(
 /**
  * POST function
  */
-export async function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): Promise<any> {
   try {
     const body = await request.json();
     const config: AvatarConfig = {
@@ -127,7 +128,7 @@ export async function POST(request: NextRequest): any {
 export async function PUT(
   request: NextRequest,
   { params }: { params: { userId: string } }
-): any {
+): Promise<any> {
   try {
     const { userId } = params;
     const body = await request.json();
@@ -174,7 +175,7 @@ export async function PUT(
 export async function DELETE(
   request: NextRequest,
   { params }: { params: { userId: string } }
-): any {
+): Promise<any> {
   try {
     const { userId } = params;
 
@@ -211,7 +212,7 @@ export async function DELETE(
 export async function HEAD(
   request: NextRequest,
   { params }: { params: { userId: string } }
-): any {
+): Promise<any> {
   const { userId } = params;
 
   const headers = new Headers({
@@ -233,7 +234,7 @@ export async function HEAD(
 /**
  * OPTIONS function
  */
-export async function OPTIONS(request: NextRequest): any {
+export async function OPTIONS(request: NextRequest): Promise<any> {
   return new NextResponse(null, {
     status: 200,
     headers: {

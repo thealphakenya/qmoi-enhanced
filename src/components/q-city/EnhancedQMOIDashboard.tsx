@@ -26,7 +26,7 @@ interface DashboardData {
     systemHealth: unknown;
     performanceMetrics: unknown;
   };  } catch (error) {
-    console.error('EnhancedQMOIDashboard.tsx render error:', error);
+    console.error?.('EnhancedQMOIDashboard.tsx render error:', error);
     return null;
   }
 

@@ -15,7 +15,7 @@ class ErrorBoundary extends React.Component {
     }
     return this.props.children;
   }  } catch (error) {
-    console.error('QMoiToolbar.tsx render error:', error);
+    console.error?.('QMoiToolbar.tsx render error:', error);
     return null;
   }
 

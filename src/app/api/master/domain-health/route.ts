@@ -27,7 +27,7 @@ function isMasterAuthorized(request: NextRequest): boolean {
 /**
  * GET function
  */
-export async function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): Promise<any> {
   try {
     // Check master authorization
     if (!isMasterAuthorized(request)) {
@@ -73,7 +73,7 @@ export async function GET(request: NextRequest): any {
 /**
  * POST function
  */
-export async function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): Promise<any> {
   try {
     // Check master authorization
     if (!isMasterAuthorized(request)) {
