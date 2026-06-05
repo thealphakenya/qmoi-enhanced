@@ -107,7 +107,7 @@ async function createPlatformAccount(platform: string, accountData: unknown): an
     });
     return { success: true, account };
   } catch (_error){
-    logger._error(`Failed to create ${platform} account`, {
+    logger.error(`Failed to create ${platform} account`, {
       _error: _error instanceof Error ? _error.message : String(_error),
       platform,
     });
@@ -136,7 +136,7 @@ async function generateMicrotaskRevenue(
       dataType: "microtask",
     };
   } catch (_error){
-    logger._error("Microtask revenue generation failed", { _error: _error });
+    logger.error("Microtask revenue generation failed", { _error: _error });
     return { success: false, _error: "Microtask revenue failed" };
   }
 }
@@ -164,7 +164,7 @@ async function generateAffiliateRevenue(
       dataType: "affiliate",
     };
   } catch (_error){
-    logger._error("Affiliate revenue generation failed", { _error: _error });
+    logger.error("Affiliate revenue generation failed", { _error: _error });
     return { success: false, _error: "Affiliate revenue failed" };
   }
 }
@@ -188,7 +188,7 @@ async function generateContentRevenue(
       dataType: "content",
     };
   } catch (_error){
-    logger._error("Content revenue generation failed", { _error: _error });
+    logger.error("Content revenue generation failed", { _error: _error });
     return { success: false, _error: "Content revenue failed" };
   }
 }
@@ -214,7 +214,7 @@ async function generateReferralRevenue(
       dataType: "referral_bonus"
     };
   } catch (_error){
-    logger._error("Referral revenue generation failed", { _error: _error });
+    logger.error("Referral revenue generation failed", { _error: _error });
     return { success: false, _error: "Referral revenue failed" };
   }
 }

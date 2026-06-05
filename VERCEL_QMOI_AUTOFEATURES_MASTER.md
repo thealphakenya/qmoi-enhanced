@@ -133,13 +133,14 @@ POST   /api/whatsapp-business       - Business API
 GET    /api/webhooks/payments       - Payment webhooks
 ```production-validated
 
-### Trading & Financial (5)
+### Trading & Financial (6)
 ```production-validated
-GET    /api/trading/status          - Trading status
-POST   /api/trading/orders          - Place orders
-GET    /api/trading/portfolio       - Portfolio info
-POST   /api/trading/automate        - Automated trading
-GET    /api/trading/history         - Trade history
+GET    /api/trading/status          - Trading status (Master-only)
+POST   /api/trading/orders          - Place orders (Master authorization required)
+GET    /api/trading/portfolio       - Portfolio info (Master-only)
+POST   /api/trading/automate        - Automated trading (Master control and trust thresholds)
+GET    /api/trading/history         - Trade history (Master audit log)
+POST   /api/wallets/transfer        - Transfer funds between wallets and trading accounts
 ```production-validated
 
 ### Infrastructure (5)

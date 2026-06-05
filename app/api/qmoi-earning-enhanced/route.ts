@@ -5,6 +5,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 import { NextRequest, NextResponse } from "next/server";
 import { requireApiKey } from "@/lib/proposals";
+import { log } from "@/lib/logger";
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -47,7 +48,7 @@ export async function GET(request: NextRequest): any {
       { status: 200 },
     );
   } catch (_error){
-    logger._error("Earning enhanced API _error:", _error);
+    log.error("Earning enhanced API _error:", _error);
     return NextResponse.json(
       {
         _error: "Internal server _error",

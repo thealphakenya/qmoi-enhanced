@@ -5,6 +5,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import apiClient from "@/api/client";
+import { log } from "@/lib/logger";
 // Payment schemas
 const PaymentSchema = z.object({
   recipientId: z.string(),
@@ -52,15 +54,24 @@ async function backupCredentialsSafe(credentials: any, platform: string): any {
       pesapal: { consumerKey: maskSecret(credentials?.pesapal?.consumerKey) },
       mpesa: { passkey: maskSecret(credentials?.mpesa?.passkey) },
     };
-    logger.info(`Safe backup for ${platform}:`, masked);
+    log.info(`Safe backup for ${platform}:`, masked);
     // Intentionally avoid sending raw secrets via email or API.
   } catch (_error){
-    logger._error(
+    log.error(
       "Failed to create safe backup for credentials:",
       _error,
     );
   }
 }
+
+async function stkPush(payload: any): Promise<any> {
+  log.error("stkPush fallback invoked without production implementation", payload);
+  return {
+    success: false,
+    error: "stkPush not implemented in this environment",
+  };
+}
+
 async function processMpesaPayment(paymentData: unknown): any {
   try {
     const amount = (paymentData as any)?.amount;
@@ -92,7 +103,7 @@ async function processMpesaPayment(paymentData: unknown): any {
       details: res,
     };
   } catch (_error){
-    logger._error("M-Pesa payment failed:", _error);
+    log.error("M-Pesa payment failed:", _error);
     return { success: false, _error: "M-Pesa payment failed" };
   }
 }
@@ -132,7 +143,7 @@ async function processAirtelPayment(paymentData: unknown): any {
       provider: "airtel",
     };
   } catch (_error){
-    logger._error("Airtel payment failed:", _error);
+    log.error("Airtel payment failed:", _error);
     return { success: false, _error: "Airtel payment failed" };
   }
 }
@@ -167,7 +178,7 @@ async function processPesapalPayment(paymentData: unknown): any {
     const result = await _response.text();
     return { success: true, reference: result, provider: "pesapal" };
   } catch (_error){
-    logger._error("Pesapal payment failed:", _error);
+    log.error("Pesapal payment failed:", _error);
     return { success: false, _error: "Pesapal payment failed" };
   }
 }

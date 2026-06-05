@@ -1,35 +1,70 @@
 export type SocialProvider = 'google' | 'github' | 'facebook';
 
-const PROVIDER_CONFIG: Record<SocialProvider, { authorizeUrl: string; clientIdEnv: string; scopes: string[] }> = {
+interface ProviderConfig {
+  authorizeUrl: string;
+  tokenUrl: string;
+  profileUrl: string;
+  clientIdEnv: string;
+  clientSecretEnv: string;
+  scopes: string[];
+  extraAuthParams?: Record<string, string>;
+}
+
+const PROVIDER_CONFIG: Record<SocialProvider, ProviderConfig> = {
   google: {
     authorizeUrl: 'https://accounts.google.com/o/oauth2/v2/auth',
+    tokenUrl: 'https://oauth2.googleapis.com/token',
+    profileUrl: 'https://openidconnect.googleapis.com/v1/userinfo',
     clientIdEnv: 'GOOGLE_OAUTH_CLIENT_ID',
+    clientSecretEnv: 'GOOGLE_OAUTH_CLIENT_SECRET',
     scopes: ['openid', 'email', 'profile'],
+    extraAuthParams: {
+      access_type: 'offline',
+      prompt: 'consent',
+    },
   },
   github: {
     authorizeUrl: 'https://github.com/login/oauth/authorize',
+    tokenUrl: 'https://github.com/login/oauth/access_token',
+    profileUrl: 'https://api.github.com/user',
     clientIdEnv: 'GITHUB_OAUTH_CLIENT_ID',
+    clientSecretEnv: 'GITHUB_OAUTH_CLIENT_SECRET',
     scopes: ['read:user', 'user:email'],
+    extraAuthParams: {
+      allow_signup: 'true',
+    },
   },
   facebook: {
     authorizeUrl: 'https://www.facebook.com/v13.0/dialog/oauth',
+    tokenUrl: 'https://graph.facebook.com/v13.0/oauth/access_token',
+    profileUrl: 'https://graph.facebook.com/me',
     clientIdEnv: 'FACEBOOK_OAUTH_CLIENT_ID',
+    clientSecretEnv: 'FACEBOOK_OAUTH_CLIENT_SECRET',
     scopes: ['email', 'public_profile'],
+    extraAuthParams: {
+      auth_type: 'rerequest',
+    },
   },
 };
 
-/**
- * getEnvValue function
- */
 function getEnvValue(key: string): string | undefined {
+  if (typeof process !== 'undefined' && process.env) {
+    return process.env[key];
+  }
+
   return typeof globalThis !== 'undefined' && (globalThis as any).process?.env
     ? String((globalThis as any).process.env[key])
     : undefined;
 }
 
-/**
- * generateRandomId function
- */
+function requireEnv(key: string): string {
+  const value = getEnvValue(key);
+  if (!value) {
+    throw new Error(`Missing required environment variable ${key}`);
+  }
+  return value;
+}
+
 function generateRandomId(): string {
   if (typeof globalThis !== 'undefined' && (globalThis as any).crypto?.randomUUID) {
     return String((globalThis as any).crypto.randomUUID());
@@ -38,70 +73,139 @@ function generateRandomId(): string {
   return `qmoi-${Math.floor(Math.random() * 1e16).toString(16)}`;
 }
 
-/**
- * hashString function
- */
-function hashString(value: string): string {
-  let hash = 0;
-  for (let i = 0; i < value.length; i += 1) {
-    hash = (hash << 5) - hash + value.charCodeAt(i);
-    hash |= 0;
-  }
-  return Math.abs(hash).toString(16).padStart(16, '0');
+function isValidProvider(provider: string): provider is SocialProvider {
+  return provider in PROVIDER_CONFIG;
 }
 
-/**
- * createRandomToken function
- */
-function createRandomToken(length = 64): string {
-  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let token = '';
-  for (let i = 0; i < length; i += 1) {
-    token += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-  return token;
+export function isSocialProvider(provider: string): provider is SocialProvider {
+  return isValidProvider(provider);
 }
 
-export /**
- * isSocialProvider function
- */
-function isSocialProvider(provider: string): provider is SocialProvider {
-  return Object.keys(PROVIDER_CONFIG).includes(provider);
-}
-
-export /**
- * getOAuthRedirectUrl function
- */
-function getOAuthRedirectUrl(provider: SocialProvider, state = ''): string {
+export function getOAuthRedirectUrl(provider: SocialProvider, state = ''): string {
   const config = PROVIDER_CONFIG[provider];
-  const clientId = getEnvValue(config.clientIdEnv) || `default-${provider}-client-id`;
+  const clientId = requireEnv(config.clientIdEnv);
   const baseUrl = getEnvValue('BASE_URL') || 'https://qmoi.ai';
   const redirectUri = `${baseUrl}/api/auth/oauth/${provider}/callback`;
-  const scope = encodeURIComponent(config.scopes.join(' '));
-  const encodedState = encodeURIComponent(state || generateRandomId());
+  const scope = config.scopes.join(' ');
+  const normalizedState = state || generateRandomId();
 
-  return `${config.authorizeUrl}?client_id=${encodeURIComponent(clientId)}&redirect_uri=${encodeURIComponent(
-    redirectUri,
-  )}&response_type=code&scope=${scope}&state=${encodedState}`;
+  const authParams = new URLSearchParams({
+    client_id: clientId,
+    redirect_uri: redirectUri,
+    response_type: 'code',
+    scope,
+    state: normalizedState,
+    ...config.extraAuthParams,
+  } as Record<string, string>);
+
+  return `${config.authorizeUrl}?${authParams.toString()}`;
 }
 
-/**
- * exchangeOAuthCode function
- */
-export async function exchangeOAuthCode(provider: SocialProvider, code: string): any {
-  const accessToken = createRandomToken(64);
-  const refreshToken = createRandomToken(64);
-  const providerUserId = `${provider}-${hashString(code).slice(0, 16)}`;
+interface OAuthTokenResult {
+  accessToken: string;
+  refreshToken?: string | null;
+  expiresIn?: number;
+  idToken?: string | null;
+}
+
+interface OAuthProfile {
+  id: string;
+  name: string;
+  email?: string;
+  provider: SocialProvider;
+  raw: Record<string, unknown>;
+}
+
+async function fetchJson(url: string, init: RequestInit): Promise<any> {
+  const response = await fetch(url, init);
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(`OAuth provider responded with ${response.status}: ${JSON.stringify(data)}`);
+  }
+  return data;
+}
+
+async function fetchProfile(provider: SocialProvider, accessToken: string): Promise<OAuthProfile> {
+  const config = PROVIDER_CONFIG[provider];
+  const headers: HeadersInit = {
+    Authorization: `Bearer ${accessToken}`,
+    Accept: 'application/json',
+  };
+
+  if (provider === 'github') {
+    headers['User-Agent'] = 'qmoi-enhanced';
+  }
+
+  const url = new URL(config.profileUrl);
+  if (provider === 'facebook') {
+    url.searchParams.set('fields', 'id,name,email');
+  }
+
+  const profileData = await fetchJson(url.toString(), { headers });
+  let email = (profileData.email as string) || undefined;
+
+  if (provider === 'github' && !email) {
+    const emails = await fetchJson('https://api.github.com/user/emails', { headers });
+    if (Array.isArray(emails)) {
+      const primaryEmail = emails.find((item: any) => item.primary && item.verified);
+      email = primaryEmail?.email || emails[0]?.email;
+    }
+  }
+
+  return {
+    id: String(profileData.id || profileData.sub || profileData.node_id),
+    name: String(profileData.name || profileData.login || profileData.email || 'Unknown User'),
+    email,
+    provider,
+    raw: profileData,
+  };
+}
+
+export async function exchangeOAuthCode(provider: SocialProvider, code: string): Promise<any> {
+  if (!code) {
+    throw new Error('OAuth code is required');
+  }
+
+  const config = PROVIDER_CONFIG[provider];
+  const clientId = requireEnv(config.clientIdEnv);
+  const clientSecret = requireEnv(config.clientSecretEnv);
+  const baseUrl = getEnvValue('BASE_URL') || 'https://qmoi.ai';
+  const redirectUri = `${baseUrl}/api/auth/oauth/${provider}/callback`;
+
+  const tokenParams = new URLSearchParams({
+    client_id: clientId,
+    client_secret: clientSecret,
+    code,
+    redirect_uri: redirectUri,
+  });
+
+  if (provider === 'google') {
+    tokenParams.set('grant_type', 'authorization_code');
+  }
+
+  const tokenUrl = config.tokenUrl;
+  const tokenResponse = await fetchJson(tokenUrl, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: tokenParams.toString(),
+  });
+
+  const accessToken = tokenResponse.access_token as string;
+  const refreshToken = (tokenResponse.refresh_token as string) || null;
+  const expiresIn = typeof tokenResponse.expires_in === 'number' ? tokenResponse.expires_in : undefined;
+  const idToken = (tokenResponse.id_token as string) || null;
+
+  const profile = await fetchProfile(provider, accessToken);
 
   return {
     accessToken,
     refreshToken,
-    providerUserId,
-    profile: {
-      id: providerUserId,
-      name: `${provider.charAt(0).toUpperCase() + provider.slice(1)} User`,
-      email: `${providerUserId}@qmoi-ai.io`,
-      provider,
-    },
+    expiresIn,
+    idToken,
+    providerUserId: profile.id,
+    profile,
   };
 }

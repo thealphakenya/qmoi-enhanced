@@ -6,6 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma as db } from "@/lib/db/prisma";
 import { authService } from "@/lib/auth/service";
 import { requireApiKey } from "@/lib/proposals";
+import logger from "@/lib/logger";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -163,7 +164,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
       { status: 200 },
     );
   } catch (error) {
-    (globalThis.console as any)?._error?.("Wallet analytics _error:", error);
+    logger.error("Wallet analytics _error:", error);
     return NextResponse.json(
       { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },

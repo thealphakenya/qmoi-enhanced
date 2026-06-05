@@ -93,7 +93,7 @@ export async function GET(req: NextRequest): Promise<any> {
       { status: 200 },
     );
   } catch (_error){
-    (globalThis.console as any)?._error?.("Analytics _error:", _error);
+    logger.error("Analytics _error:", _error);
     return NextResponse.json(
       { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
       { status: 500 },

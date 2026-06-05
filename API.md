@@ -49,6 +49,7 @@ Note: run integration tests against a running dev server to validate connectivit
 - These include legacy compatibility endpoints and helper/config files maintained for migration and compatibility reference.
 - The current production app-router surface is served from `src/app/api/`; `app/api/` remains a compatibility/migration reference.
 - Key production route additions include `/api/analytics/wallets` for wallet analytics and `/api/qmoi-model` for production model health.
+- Trading and finance endpoints are designed with Master-only UI and automation gating for all high-risk trading operations, account setup, and fund transfers.
 - Route categories include auth, qmoi, qcity, qvillage, cashon, ai, media, deploy, and more.
 
 ## Production Authentication System

@@ -1,58 +1,83 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { log } from '@/lib/logger';
+import { consumeWebAuthnChallenge, registerWebAuthnCredential } from '@/lib/webauthn';
+
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 /**
  * WebAuthn Registration Finish Endpoint
- * Completes biometric registration after client creates credential
- * Stores the public key for future authentication
+ * Completes biometric registration after client creates credential.
  */
-/**
- * POST function
- */
-export async function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const body = await request.json();
-    const { email, attestation } = body;
+    const { email, credential, challenge } = body;
 
-    if (!email || !attestation) {
-      return NextResponse.json({
-        success: false,
-        error: 'Email and attestation are required'
-      }, { status: 400 });
+    if (!email || !credential || !challenge) {
+      return NextResponse.json(
+        { success: false, error: 'Email, credential, and challenge are required' },
+        { status: 400 },
+      );
     }
 
-    // 1. Verify attestation signature
-    // 2. Check certificate chain
-    // 3. Store public key in database linked to user email
-    // 4. Create credential entry with timestamps
+    if (!consumeWebAuthnChallenge(email, 'register', challenge)) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid or expired challenge' },
+        { status: 400 },
+      );
+    }
+
+    const { id, publicKey, transports } = credential;
+
+    if (!id || !publicKey) {
+      return NextResponse.json(
+        { success: false, error: 'Credential id and publicKey are required' },
+        { status: 400 },
+      );
+    }
+
+    const record = await registerWebAuthnCredential({
+      email,
+      credentialId: id,
+      publicKey,
+      transports,
+      counter: credential.counter ?? 0,
+    });
 
     return NextResponse.json(
       {
         success: true,
-        message: 'Biometric credential registered successfully',
+        message: 'WebAuthn credential registered successfully',
         credential: {
-          id: attestation.id,
-          type: attestation.type,
-          email,
-          registered_at: new Date().toISOString(),
-          prodice_type: 'platform_authenticator'
+          id: record.id,
+          credentialId: record.credentialId,
+          email: record.email,
+          enrolledAt: record.enrolledAt,
+          deviceType: 'platform_authenticator',
+          transports: record.transports,
         },
         verification: {
-          signature_valid: true,
-          certificate_valid: true,
-          security_level: 'high'
+          stored: true,
+          securityLevel: 'high',
         },
-        next_steps: [
-          'You can now sign in using your biometric',
-          'Your biometric is securely stored on your prodice',
-          'No biometric data is ever sent to our servers'
+        nextSteps: [
+          'You can now sign in using WebAuthn biometric authentication',
+          'Your device handles biometric data and private keys securely',
+          'Challenge and credential data are stored only for verification',
         ],
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
-    return NextResponse.json({
-      success: false,
-      error: error instanceof Error ? error.message : 'Registration failed'
-    }, { status: 500 });
+    log.error('WebAuthn registration finish error', error);
+    return NextResponse.json(
+      {
+        success: false,
+        error: error instanceof Error ? error.message : 'Registration failed',
+      },
+      { status: 500 },
+    );
   }
 }

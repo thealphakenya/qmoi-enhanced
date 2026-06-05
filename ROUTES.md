@@ -170,12 +170,16 @@ The following standalone route handler source files are defined directly under `
 - `selfheal-npm/route.ts`
 
 ### `cashon/`
-- `balance/route.ts`
-- `deposit/route.ts`
-- `signals/route.ts`
-- `start-trading/route.ts`
-- `stop-trading/route.ts`
-- `trading-status/route.ts`
+- `balance/route.ts` — Cash and exchange balance queries
+- `deposit/route.ts` — Deposit and funding operations
+- `signals/route.ts` — Trading signal ingestion and alert rules
+- `start-trading/route.ts` — Master-only trading start control
+- `stop-trading/route.ts` — Master-only trading halt control
+- `trading-status/route.ts` — Trading status feed for master dashboards
+
+### `financial/`
+- `balances/route.ts` — Global wallet and trading balance statuses
+- `transactions/route.ts` — Wallet, exchange, and bank transfer transactions
 
 ## Route Management Notes
 

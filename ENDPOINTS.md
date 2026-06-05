@@ -144,13 +144,18 @@ The endpoint inventory is derived from live route handler source files under `sr
 - `/api/qcity/metrics`
 
 ### Finance & Trading API
-- `/api/cashon/start-trading`
-- `/api/cashon/stop-trading`
-- `/api/cashon/balance`
-- `/api/financial/balances`
-- `/api/financial/transactions`
-- `/api/payments/initiate`
-- `/api/earning`
+- `/api/cashon/start-trading` — Master-only trading start/stop control for cash trading and exchange workflows
+- `/api/cashon/stop-trading` — Master-only trading shutdown and emergency halt
+- `/api/cashon/balance` — Exchange and cash-on trading balance query
+- `/api/financial/balances` — Global wallet and trading asset balances
+- `/api/financial/transactions` — Transaction ledger for wallet and exchange fund flows
+- `/api/payments/initiate` — Payment and settlement initiation across wallets and processors
+- `/api/earning` — Revenue capture and profit reporting
+- `/api/trading/status` — Real-time trading status and master trading dashboard feed
+- `/api/trading/orders` — Trading order placement and management with Master authorization
+- `/api/trading/portfolio` — Portfolio holdings and exposure report for Master review
+- `/api/trading/automate` — Automated trading engine control, subject to Master access and trust thresholds
+- `/api/trading/history` — Trade history and audit log for Master review
 
 ### Health & Monitoring API
 - `/api/ai-health`

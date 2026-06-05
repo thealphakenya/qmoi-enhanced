@@ -2,7 +2,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { logEvent } from "../../../../lib/security_check";
 import { processMpesaCallback } from "@/lib/payments/service";
-import { notifyPaymentSuccess } from "@/lib/notifier";
+import { notifyPaymentSuccess, notifyPaymentFailure } from "@/lib/notifier";
 import { getPrismaClient } from "@/lib/prisma";
 import { requireApiKey } from "@/lib/proposals";
 
@@ -52,21 +52,14 @@ async function triggerPostPaymentActions(details: any): any {
     const {
       checkoutRequestId,
       amount,
-      receiptNumber,
       phoneNumber,
-      transactionDate,
-      userEmail,
     } = details;
-    await notifyPaymentSuccess({
-      checkoutRequestId,
-      amount: Number(amount) || 0,
-      receiptNumber: String(receiptNumber || ""),
-      phoneNumber: String(phoneNumber || ""),
-      transactionDate: String(transactionDate || ""),
-      userEmail,
-    });
+    await notifyPaymentSuccess(
+      String(phoneNumber || checkoutRequestId || "unknown"),
+      Number(amount) || 0,
+    );
   } catch (_error){
-    logger._error(
+    logger.error(
       "Failed to send payment success notifications:",
       _error,
     );
@@ -107,12 +100,14 @@ export async function POST(req: NextRequest): any {
     logger.info("M-Pesa Callback received:", body);
     // Extract transaction details safely
     const CheckoutRequestID = body?.Body?.stkCallback?.CheckoutRequestID;
+    let amount = 0;
+    let phoneNumber = "unknown";
     const ResultCode = body?.Body?.stkCallback?.ResultCode;
     const ResultDesc = body?.Body?.stkCallback?.ResultDesc;
     const CallbackMetadata = body?.Body?.stkCallback?.CallbackMetadata;
     if (ResultCode === 0 || ResultCode === "0") {
       const metadata: any[] = CallbackMetadata?.Item || [];
-      const amount =
+      amount =
         metadata.find((item: any) => item.Name === "Amount")?.Value || 0;
       const mpesaReceiptNumber =
         metadata.find((item: any) => item.Name === "MpesaReceiptNumber")
@@ -120,8 +115,8 @@ export async function POST(req: NextRequest): any {
       const transactionDate =
         metadata.find((item: any) => item.Name === "TransactionDate")?.Value ||
         "";
-      const phoneNumber =
-        metadata.find((item: any) => item.Name === "PhoneNumber")?.Value || "";
+      phoneNumber =
+        metadata.find((item: any) => item.Name === "PhoneNumber")?.Value || "unknown";
       logEvent("mpesa_payment_success", {
         checkoutRequestId: CheckoutRequestID,
         amount,
@@ -156,13 +151,13 @@ export async function POST(req: NextRequest): any {
     });
     // Send failure notification
     try {
-      await notifyPaymentFailure({
-        checkoutRequestId: CheckoutRequestID || "unknown",
-        resultCode: ResultCode || "unknown",
-        resultDesc: ResultDesc,
-      });
+      await notifyPaymentFailure(
+        phoneNumber || CheckoutRequestID || "unknown",
+        amount,
+        String(ResultDesc || "payment_failed"),
+      );
     } catch (_error){
-      logger._error(
+      logger.error(
         "Failed to send payment failure notifications:",
         _error,
       );
@@ -172,10 +167,7 @@ export async function POST(req: NextRequest): any {
       message: ResultDesc || "payment_failed",
     });
   } catch (_error){
-    (globalThis.console as any)?._error?.(
-      "M-Pesa callback processing failed:",
-      _error,
-    );
+    logger.error("M-Pesa callback processing failed:", _error);
     const errorMessage = _error instanceof Error ? _error.message : String(_error);
     logEvent("mpesa_callback_error", { _error: errorMessage });
     return NextResponse.json(

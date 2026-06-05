@@ -1,3 +1,4 @@
+import logger from '@/lib/logger';
 import {
   exchangeOAuthCode,
   getOAuthRedirectUrl,
@@ -5,10 +6,10 @@ import {
   type SocialProvider,
 } from '@/lib/auth/social';
 
-/**
- * jsonResponse function
- */
-function jsonResponse(body: unknown, status = 200): any {
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
+function jsonResponse(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
     status,
     headers: {
@@ -17,51 +18,56 @@ function jsonResponse(body: unknown, status = 200): any {
   });
 }
 
-/**
- * GET function
- */
 export async function GET(
   request: Request,
   { params }: { params: { provider: string } },
-): any {
+): Promise<Response> {
   const provider = params.provider as string;
   if (!isSocialProvider(provider)) {
     return jsonResponse({ error: 'Unsupported social provider' }, 400);
   }
 
-  const url = new URL(request.url);
-  const state = url.searchParams.get('state') || '';
-  const redirectUrl = getOAuthRedirectUrl(provider as SocialProvider, state);
+  try {
+    const url = new URL(request.url);
+    const state = url.searchParams.get('state') || '';
+    const redirectUrl = getOAuthRedirectUrl(provider as SocialProvider, state);
 
-  return Response.redirect(redirectUrl);
+    logger.info(`Redirecting OAuth request for ${provider}`);
+    return Response.redirect(redirectUrl);
+  } catch (error) {
+    logger.error('OAuth redirect failure', error instanceof Error ? error : String(error));
+    return jsonResponse({ error: 'Failed to initiate OAuth redirect' }, 500);
+  }
 }
 
-/**
- * POST function
- */
 export async function POST(
   request: Request,
   { params }: { params: { provider: string } },
-): any {
+): Promise<Response> {
   const provider = params.provider as string;
   if (!isSocialProvider(provider)) {
     return jsonResponse({ error: 'Unsupported social provider' }, 400);
   }
 
-  const body = await request.json();
-  const code = (body as any).code;
-  if (!code) {
-    return jsonResponse({ error: 'OAuth code is required' }, 400);
-  }
+  try {
+    const body = await request.json();
+    const code = typeof body?.code === 'string' ? body.code.trim() : '';
+    if (!code) {
+      return jsonResponse({ error: 'OAuth code is required' }, 400);
+    }
 
-  const tokenResponse = await exchangeOAuthCode(provider as SocialProvider, code);
-  return jsonResponse({
-    success: true,
-    provider,
-    token: tokenResponse.accessToken,
-    refreshToken: tokenResponse.refreshToken,
-    profile: tokenResponse.profile,
-    timestamp: new Date().toISOString(),
-  });
+    const tokenResponse = await exchangeOAuthCode(provider as SocialProvider, code);
+    return jsonResponse({
+      success: true,
+      provider,
+      token: tokenResponse.accessToken,
+      refreshToken: tokenResponse.refreshToken,
+      profile: tokenResponse.profile,
+      timestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    logger.error('OAuth token exchange failed', error instanceof Error ? error : String(error));
+    return jsonResponse({ error: 'OAuth token exchange failed', details: error instanceof Error ? error.message : String(error) }, 500);
+  }
 }
 

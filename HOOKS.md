@@ -46,7 +46,109 @@ This document catalogs all React hooks and custom hooks across the QMOI Enhanced
 - `useId` - Unique ID generation
 - `useImperativeHandle` - Custom ref handling
 
-## 🔧 Custom Hooks (`/hooks/`)
+## 🔧 Custom Hooks (`/hooks/`) — PRODUCTION TRADING & AUTONOMOUS SYSTEMS
+
+### Trading & Financial Hooks ✅ PRODUCTION
+- **`useCashonTrading`** (Production) - Master-only trading control
+  - Purpose: Control autonomous trading via Cashon wallet integration
+  - Methods: `startTrading()`, `stopTrading()`, `getStatus()`, `deposit(amount)`
+  - Auth: Requires Master token via Bearer header
+  - Status: ✅ PRODUCTION READY
+  - Location: `hooks/useCashonTrading.ts`
+  - Usage: Client-side Master token validation and trade execution
+
+- **`useTradingSignals`** - Real-time ML trading signals
+  - Purpose: Fetch and subscribe to AI-generated trading signals
+  - Methods: `getSignals(symbols)`, `subscribeSignals(callback)`
+  - Data: Returns signal strength, confidence, direction (buy/sell/hold)
+  - Status: ✅ PRODUCTION
+  
+- **`useWalletBalance`** - Wallet balance synchronization
+  - Purpose: Track wallet balance and transaction history
+  - Methods: `getBalance()`, `onBalanceChange(callback)`
+  - Polling: Auto-updates every 30s
+  - Status: ✅ PRODUCTION
+
+- **`useExchangeAccounts`** - Multi-exchange account management
+  - Purpose: Manage connected exchange accounts (Binance, Bitget, Bybit)
+  - Methods: `addExchange()`, `removeExchange()`, `syncBalances()`
+  - Status: ✅ PRODUCTION READY
+
+- **`usePortfolioMetrics`** - Portfolio performance analytics
+  - Purpose: Calculate returns, drawdown, Sharpe ratio
+  - Methods: `getMetrics()`, `onMetricsChange(callback)`
+  - Frequency: Updates every 60s
+  - Status: ✅ PRODUCTION
+
+### Authentication Hooks ✅ PRODUCTION
+- **`useMasterAuth`** - Master token management
+  - Purpose: Store, validate, and refresh Master token
+  - Methods: `getToken()`, `setToken(token)`, `validateToken()`
+  - Storage: Secure HTTP-only cookie + session storage
+  - Status: ✅ PRODUCTION
+
+- **`useWebAuthn`** - WebAuthn/Passkey authentication
+  - Purpose: Biometric and hardware key support
+  - Methods: `register()`, `authenticate()`, `isAvailable()`
+  - Biometric: Fingerprint, Face, Voice (3+ captures, 0.85+ confidence)
+  - Status: ✅ PRODUCTION
+
+- **`useSessionAuth`** - Session-based authentication
+  - Purpose: Manage authenticated session lifecycle
+  - Methods: `login()`, `logout()`, `isAuthenticated()`, `getUser()`
+  - Status: ✅ PRODUCTION
+
+### Automation & AI Hooks ✅ PRODUCTION
+- **`useQMOIAutomation`** - QMOI autonomous execution
+  - Purpose: Trigger QMOI system automation workflows
+  - Methods: `executeWorkflow(type, params)`, `getWorkflowStatus()`
+  - Workflows: Trade execution, account provisioning, analytics updates
+  - Status: ✅ PRODUCTION
+
+- **`useMLPredictions`** - Machine learning model predictions
+  - Purpose: Get ML-generated trading signals and forecasts
+  - Methods: `getPredictions(symbols, horizon)`, `updateModel()`
+  - Confidence: 70-95% based on strategy
+  - Status: ✅ PRODUCTION
+
+- **`useIntelligenceService`** - AI intelligence analysis
+  - Purpose: Analyze trading data and generate insights
+  - Methods: `analyze(data)`, `generateSignals()`
+  - Providers: TensorFlow.js, OpenAI API (with fallback)
+  - Status: ✅ PRODUCTION
+
+### Notification Hooks ✅ PRODUCTION
+- **`useWebhookNotifications`** - Real-time webhook events
+  - Purpose: Subscribe to payment, trade, and system webhooks
+  - Methods: `subscribe(event, callback)`, `unsubscribe(event)`
+  - Events: transactions, trades, alerts, health checks
+  - Status: ✅ PRODUCTION
+
+- **`useSlackNotifications`** - Slack message integration
+  - Purpose: Send trading alerts and system notifications to Slack
+  - Methods: `notify(message, channel)`, `alert(title, description)`
+  - Status: ✅ PRODUCTION
+
+- **`useDiscordNotifications`** - Discord webhook integration
+  - Purpose: Community alerts and trading signals via Discord
+  - Methods: `postMessage(embed)`, `updateStatus()`
+  - Status: ✅ PRODUCTION
+
+- **`useWhatsAppNotifications`** - WhatsApp alerts
+  - Purpose: Send critical alerts via WhatsApp
+  - Methods: `sendAlert(message, recipients)`
+  - Status: ✅ PRODUCTION
+
+### Data & Analytics Hooks ✅ PRODUCTION
+- **`useAnalytics`** - Event tracking and analytics
+  - Purpose: Track user actions and system metrics
+  - Methods: `track(event, properties)`, `identify(userId, traits)`
+  - Status: ✅ PRODUCTION
+
+- **`usePerformanceMonitor`** - Performance metrics
+  - Purpose: Monitor API response times, error rates
+  - Methods: `logMetric(name, value)`, `getMetrics()`
+  - Status: ✅ PRODUCTION
 
 ### AI & Intelligence Hooks
 - [`useAIFeatureEnhancer.ts`](hooks/useAIFeatureEnhancer.ts) - AI feature enhancement and optimization

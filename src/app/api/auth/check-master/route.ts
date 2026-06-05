@@ -1,3 +1,6 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { log } from '@/lib/logger';
+
 /**
  * Master Authentication Check API Route
  *
@@ -38,7 +41,7 @@ export async function GET(request: NextRequest): any {
     });
 
   } catch (error) {
-    logger.error('Master auth check API error:', error);
+    log.error('Master auth check API error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
