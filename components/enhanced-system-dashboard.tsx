@@ -36,7 +36,27 @@ import {
 } from "./predeploy/OrchestratorStatusPanel";
 import { PluginManager } from '@/plugins/PluginManager';
 import { log as logger } from '@/lib/logger';
-import { useRole } from './security/RoleContext';
+import { useRole, RoleProvider } from './security/RoleContext';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardTitle,
+  CardDescription,
+} from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+
+import NotificationCenter from '@/components/NotificationCenter';
+import DeviceSettingsPanel from '@/components/DeviceSettingsPanel';
+import AzureCredentialsModal from '@/components/AzureCredentialsModal';
+import GCPCredentialsModal from '@/components/GCPCredentialsModal';
+import PluginHelpModal from '@/components/PluginHelpModal';
+import AnalyticsCharts from '@/components/AnalyticsCharts';
+import EncryptedAuditLog from '@/components/EncryptedAuditLog';
+import QI from '@/components/QI';
 interface SystemMetrics {
   cpu: number;
   memory: number;
@@ -58,153 +78,33 @@ const deviceIntegrations = [
   { name: "IoT", integration: IoTIntegration },
   { name: "Mobile", integration: MobileIntegration },
 ];
-export /**
- * EnhancedSystemDashboard function
- */
-function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
-  const [metrics, setMetrics] = useState<SystemMetrics>({
-    cpu: 45,
-    memory: 62,
-    disk: 78,
-    network: 23,
-  });
-  const [projects] = useState<ProjectStatus[]>([
-    {
-      id: "1",
-      name: "latest-Q AI",
-      status: "active",
-      lastUpdate: "2 minutes ago",
-    },
-    {
-      id: "2",
-      name: "Trading Bot",
-      status: "deployed",
-      lastUpdate: "1 hour ago",
-    },
-    {
-      id: "3",
-      name: "Voice Interface",
-      status: "building",
-      lastUpdate: "5 minutes ago",
-    },
-  ]);
-  const [isVoiceActive, setIsVoiceActive] = useState(false);
-  const { notify } = usePluginNotifications();
-  const [deviceStatus, setDeviceStatus] = useState<{ [name: string]: boolean }>(
-    {},
+    </RoleProvider>
   );
-  // Add state for search/filter/group
-  const [pluginSearch, setPluginSearch] = useState("");
-  const [pluginGroup, setPluginGroup] = useState("all");
-  const [deviceSearch, setDeviceSearch] = useState("");
-  const [deviceGroup, setDeviceGroup] = useState("all");
-  const [analytics, setAnalytics] = useState<{ events: unknown[] }>({
-    events: [],
-  });
-  const [auditLog, setAuditLog] = useState<string[]>([]);
-  const [awsModalOpen, setAwsModalOpen] = useState(false);
-  const [awsBuckets, setAwsBuckets] = useState<string[]>([]);
-  const [azureModalOpen, setAzureModalOpen] = useState(false);
-  const [azureResourceGroups, setAzureResourceGroups] = useState<string[]>([]);
-  const handleAzureConnect = async (creds: {
-    tenantId: string;
-    clientId: string;
-    clientSecret: string;
-    subscriptionId: string;
-  }) => {
-    setAzureModalOpen(false);
-    const result = await AzureIntegration.connect(creds);
-    if (result) {
-      notify("Azure connected", "success");
-      const rgs = await AzureIntegration.listResourceGroups();
-      setAzureResourceGroups(rgs);
-    } else {
-      notify("Azure connection failed", "error");
+}
+
+class ErrorBoundary extends React.Component {
+  constructor(props: any) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(_: unknown) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: unknown, errorInfo: unknown) {
+    logger.error('Error caught by boundary:', error, errorInfo);
+  }
+
+  render() {
+    // eslint-disable-next-line react/prop-types
+    if ((this.state as any).hasError) {
+      return <div className="error-boundary">Something went wrong. Please try again.</div>;
     }
-  };
-  const [gcpModalOpen, setGcpModalOpen] = useState(false);
-  const [gcpBuckets, setGcpBuckets] = useState<string[]>([]);
-  const handleGCPConnect = async (creds: {
-    projectId: string;
-    keyFilename: string;
-  }) => {
-    setGcpModalOpen(false);
-    const result = await GCPIntegration.connect(creds);
-    if (result) {
-      notify("GCP connected", "success");
-      const buckets = await GCPIntegration.listBuckets();
-      setGcpBuckets(buckets);
-    } else {
-      notify("GCP connection failed", "error");
-    }
-  };
-  const handleAWSConnect = async (creds: {
-    accessKeyId: string;
-    secretAccessKey: string;
-    region: string;
-  }) => {
-    setAwsModalOpen(false);
-    const result = await AWSIntegration.connect(creds);
-    if (result) {
-      notify("AWS connected", "success");
-      const buckets = await AWSIntegration.listBuckets();
-      setAwsBuckets(buckets);
-    } else {
-      notify("AWS connection failed", "error");
-    }
-  };
-  const { role } = useRole();
-  const [orchestratorStatus, setOrchestratorStatus] =
-    useState<OrchestratorStatus>({
-      env: "success",
-      lint: "success",
-      test: "success",
-      build: "success",
-      audit: "success",
-      fix: "success",
-      deploy: "success",
-    });
-  const runOrchestrator = () => {
-    logger.warn(
-    );
-    setOrchestratorStatus({
-      env: "success",
-      lint: "warning",
-      test: "error",
-      build: "success",
-      audit: "warning",
-      fix: "success",
-      deploy: "success",
-    });
-    notify(
-      "_PROD: Orchestrator service not yet integrated. Status shown is  only.",
-      "warning",
-    );
-  };
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setMetrics((prev) => ({
-        cpu: Math.max(0, Math.min(100, prev.cpu + (Math.random() - 0.5) * 10)),
-        memory: Math.max(
-          0,
-          Math.min(100, prev.memory + (Math.random() - 0.5) * 5),
-        ),
-        disk: Math.max(0, Math.min(100, prev.disk + (Math.random() - 0.5) * 2)),
-        network: Math.max(
-          0,
-          Math.min(100, prev.network + (Math.random() - 0.5) * 15),
-        ),
-      }));
-    }, 2000);
-    // Demo:  device health event after 3s
-    setTimeout(() => {
-      pluginManager.emit({ type: "deviceHealthChange", payload: { cpu: 92 } });
-      notify("Device health event: CPU 92%", "info");
-    }, 3000);
-    // Schedule Optimization Suggestion Plugin every minute
-    const optPlugin = pluginManager
-      .getPlugins()
-      .find((p: unknown) => p.id === "optimization-suggestion");
+    // eslint-disable-next-line react/prop-types
+    return (this.props as any).children;
+  }
+}
     if (optPlugin) {
       pluginManager.schedule(optPlugin, 60000);
       notify("Optimization Suggestion Plugin DEPLOYED every 1 min", "info");
