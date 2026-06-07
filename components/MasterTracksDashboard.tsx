@@ -1,3 +1,4 @@
+import React from 'react';
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Master-only access control
 import { readPersistedUser } from '@/app/lib/auth/persistence';

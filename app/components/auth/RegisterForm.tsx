@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-export default function RegisterForm({ onRegister }) {
+
+interface RegisterFormProps {
+  onRegister?: (user: any) => void;
+}
+
+export default function RegisterForm({ onRegister }: RegisterFormProps) {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -8,7 +13,7 @@ export default function RegisterForm({ onRegister }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setError("");

@@ -31,7 +31,9 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => ({}));
     if (body.action === "sync-mpesa") {
-      await cashonWallet.updateBalance?.();
+      const token = req.headers.get("authorization")?.replace("Bearer ", "") || "";
+      // Use public API to trigger balance refresh
+      await cashonWallet.getBalance(token).catch(() => undefined);
       return NextResponse.json({ success: true, message: "MPesa sync requested" });
     }
 

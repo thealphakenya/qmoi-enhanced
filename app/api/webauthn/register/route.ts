@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../../lib/db/prisma";
 import { log } from '@/lib/logger';
 import crypto from 'crypto';
-import { log as logger } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -41,13 +40,14 @@ export async function GET(req: NextRequest) {
     // Generate challenge
     const challenge = crypto.randomBytes(32).toString('base64url');
 
-    // Store challenge PRODUCTIONorarily using memory cache for short-lived session. In production use Redis or secure store.
+    // Store challenge temporarily using memory cache for short-lived session. In production use Redis or secure store.
+    const globalAny = globalThis as Record<string, unknown>;
     const challengeKey = `webauthn_challenge_${userId}`;
-    (global as any)[challengeKey] = challenge;
+    globalAny[challengeKey] = challenge;
 
     // Set expiry for challenge (5 minutes)
     setTimeout(() => {
-      delete (global as any)[challengeKey];
+      delete globalAny[challengeKey];
     }, 5 * 60 * 1000);
 
     // Create credential creation options
@@ -82,8 +82,10 @@ export async function GET(req: NextRequest) {
       timestamp: new Date().toISOString()
     });
 
-  } catch (error) {
-    log.error('WebAuthn registration GET error', error);
+  } catch (error: unknown) {
+    log.error('WebAuthn registration GET error', {
+      error: error instanceof Error ? error.message : String(error),
+    });
     return NextResponse.json(
       {
         success: false,
@@ -111,8 +113,9 @@ export async function POST(req: NextRequest) {
     }
 
     // Verify challenge
+    const globalAny = globalThis as Record<string, unknown>;
     const challengeKey = `webauthn_challenge_${userId}`;
-    const storedChallenge = global[challengeKey];
+    const storedChallenge = globalAny[challengeKey];
 
     if (!storedChallenge || storedChallenge !== challenge) {
       return NextResponse.json(
@@ -122,7 +125,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Clean up challenge
-    delete global[challengeKey];
+    delete globalAny[challengeKey];
 
     // Verify WebAuthn credential type and prepare secure registration metadata.
     const { id, rawId, response, type } = credential;
@@ -168,8 +171,10 @@ export async function POST(req: NextRequest) {
       timestamp: new Date().toISOString()
     });
 
-  } catch (error) {
-    log.error('WebAuthn registration POST error', error);
+  } catch (error: unknown) {
+    log.error('WebAuthn registration POST error', {
+      error: error instanceof Error ? error.message : String(error),
+    });
     return NextResponse.json(
       {
         success: false,

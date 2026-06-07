@@ -1,43 +1,65 @@
 # ALLERRORS - Automated Triage Log
 
-Last scan: 2026-06-02T21:29:20Z
+Last scan: 2026-06-07T18:12:44Z
 Scanner: TypeScript compiler (tsc)
 
 Summary:
-- Latest full project scan: 49,407 TypeScript errors from the current `tsc -p tsconfig.json --noEmit` run
-- Primary failure mode: malformed TS/TSX source artifacts and invalid syntax in generated/bootstrap files, especially `src/setupTests.ts`
-- Current focused triage: fixed top syntax artifacts in `src/components/OfflineCacheService.tsx`, `src/types/globals.d.ts`, `src/utils/master-access-control.ts`, and `src/utils/taskbar.ts`
-- Remaining work: continue expanding compiler validation to additional flagged files and repair repeated malformed component/async/comment patterns
+- Latest focused project scan: approximately 4,547 TypeScript errors (see latest `tsc` run saved to `/tmp/current_tsc_output.txt`)
+- Primary failure modes: shared UI component typing issues (missing React hook imports, implicit anys, bad `motion`/`AnimatePresence` names), duplicate component declarations, and inconsistent adapter/`logger` references.
+- Recent focused triage: fixed missing React hook imports and framer-motion helpers in `components/AudioVisualizer.tsx` and `components/AvatarGalleryPanel.tsx`; error total decreased by 46.
+- Remaining work: continue repairing the highest-impact UI components, centralize helpers (`ErrorBoundary`, `logger`, `apiClient`), and resolve shared type mismatches before consumers.
 
 Latest compiler scan:
-- Timestamp: 2026-06-02T21:29:20Z
+- Timestamp: 2026-06-07T18:12:44Z
 - Scanner: TypeScript compiler (tsc)
-- Total reported errors: 49,407
-- Top affected file: `src/setupTests.ts` (malformed test bootstrap syntax)
-- Current action: broad cleanup of repeated faulty source constructs, including malformed `export default /** ... function`, `async /** ... function`, and `try {() {` patterns
+- Total reported errors (approx): 4,547
+- Top affected files (representative):
+   - app/qmoi-ai/page.tsx
+   - app/qmoi-space/page.tsx
+   - components/AppManager.tsx
+   - components/AudioVisualizer.tsx
+   - components/AvatarGalleryPanel.tsx
+   - components/AvatarSelectionPanel.tsx
+   - components/BiometricEnrollment.tsx
+   - components/BluetoothManager.tsx
+   - components/BrowserInterface.tsx
+   - components/CashonTradingPanel.tsx
+- Current action: iterative cleanup of UI components and shared utilities, targeting missing React imports, invalid component declarations, and runtime-safe type narrowing. See current diagnostics in `/tmp/current_tsc_output.txt`.
 
-Immediate remediation plan:
-1. Continue applying focused automated fixes for the common corrupted source patterns found in TSX files.
-   - Clean malformed exports, comment-wrapped function headers, and invalid inline natural-language fragments.
-   - Repair broken test/bootstrap files and malformed setup declarations.
-   - Normalize component wrappers and re-export stubs to valid React/TypeScript syntax.
-2. Re-run the full `tsc` scan after each batch to verify the actual error count, not the stale summary.
-3. Triage remaining errors by category and iterate (syntax, types, missing globals, incorrect file shapes).
-4. For large generated or legacy artifacts, determine if they should be repaired, excluded from config, or regenerated.
+Immediate remediation plan (Advanced Mode — prioritized):
+1. Search for root-cause files generating cascading errors and repair them first (shared interfaces, malformed generated artifacts).
+2. Fix shared interfaces and type definitions before touching consumers (e.g., `QmoiUser`, shared `App`/`AppInfo` types).
+3. Standardize `logger` imports to `import { log as logger } from "@/lib/logger"` or use the adapter in `adapters/clientAdapters.ts`.
+4. Deduplicate and centralize `ErrorBoundary` (remove duplicated class declarations and provide a single export in `components/QCityErrorManager.tsx` or similar).
+5. Fix component-level typing issues: add `useState<T>` generics, type event handlers, and import React hooks where missing.
+6. Resolve UI prop mismatches (Badge/Toast variants), icon import mismatches (lucide-react `Update` vs `RefreshCw`), and ensure component props align with implementations.
+7. Fix tsconfig and path alias issues if module resolution errors appear (verify `paths` in `tsconfig.json` and `next.config.mjs`).
+8. Re-run `npx tsc --noEmit` and `npm run lint -- --fix` after each focused batch; record results in this file.
 
-Current actions performed:
-- Cleaned `src/components/OfflineCacheService.tsx` and fixed console safety checks
-- Fixed corrupted global declaration file `src/types/globals.d.ts`
-- Implemented missing `MasterAccessControl` helper in `src/utils/master-access-control.ts`
-- Tidied `src/utils/taskbar.ts` export for cleaner TypeScript parsing
-- Rewrote `components/BrowserInterface.tsx` to a clean valid placeholder
-- Applied broad TSX cleanup across many files for repeated malformed export/comment/function patterns
-- Verified the current full project scan and recorded the latest error total
+Current actions performed (since last snapshot):
+- Updated `resumefromhere.txt` with absolute path and reminder to update after edits.
+- Fixed `hooks/useDeviceHealth.ts` (syntax issues, memory/network/battery helpers).
+- Replaced a corrupted/duplicated `components/AskQMoi.tsx` with a clean, typed implementation and single `ErrorBoundary`.
+- Re-ran `npm run type-check` and captured the current diagnostics (`/tmp/tsc_output.txt`).
+ - Updated `resumefromhere.txt` with absolute path and reminder to update after edits.
+ - Fixed `hooks/useDeviceHealth.ts` (syntax issues, memory/network/battery helpers).
+ - Replaced a corrupted/duplicated `components/AskQMoi.tsx` with a clean, typed implementation and single `ErrorBoundary`.
+ - Patched `components/AppManager.tsx` to replace undefined `Update` icon with `RefreshCw` and stabilize status Badge usage.
+ - Cleaned `components/ui/badge.tsx`: added missing imports (`cva`, `VariantProps`, `cn`, `logger`), removed duplicate `ErrorBoundary` declarations, and exported typed `Badge` so `variant` prop is available.
+ - Re-ran `npm run type-check` and captured the current diagnostics (`/tmp/tsc_output.txt`).
+ - Patched `components/AppManager.tsx` to replace undefined `Update` icon with `RefreshCw` and stabilize status Badge usage.
+ - Cleaned `components/ui/badge.tsx`: added missing imports (`cva`, `VariantProps`, `cn`, `logger`), removed duplicate `ErrorBoundary` declarations, and exported typed `Badge` so `variant` prop is available.
+ - Cleaned `components/AskQMoi.tsx`: removed duplicated implementations and duplicate default exports; consolidated to a single typed component and a single `ErrorBoundary`.
+ - Re-ran `npm run type-check` and captured the current diagnostics (`/tmp/tsc_output.txt`).
 
-Next steps (work queue):
-- Broaden focused compiler coverage to more flagged files and iterate on any remaining syntax issues.
-- Continue repairing malformed source files discovered by the project scan.
-- Keep `ALLERRORS.md` updated with each batch of fixes and changed error counts.
+Next steps (work queue — immediate):
+- Patch `components/AppManager.tsx`: fix icon import (`Update`), align `App` vs `AppInfo` types (convert `lastUpdate: Date` → `string` or update `App` type), and remove unsafe optional invocations.
+- Patch `components/AIContext.tsx`: remove invalid `variant` props from `toast()` calls and ensure `ToastInput` usage matches `components/ui/use-toast.ts` types; ensure `AIContext` children typing is `React.ReactNode`.
+- Sweep `components/*` for duplicated `ErrorBoundary` declarations and replace with a single shared export; add `eslint-disable` where appropriate temporarily.
+- Add type declarations for `apiClient` and ensure `adapters/clientAdapters.ts` provides a typed adapter for client code.
+- After changes: run `npx tsc --noEmit` and `npm run lint -- --fix`, then update this file with the new counts and findings.
+
+This file will be updated after each batch of edits. Automated steps performed so far are saved as commits in the working tree; continue the iterative fix cycle until 0 TypeScript errors, 0 build errors, and 0 lint errors are achieved.
 
 Notes:
 - This file will be updated as fixes are applied. Do NOT manually edit without coordination with the triage process.
@@ -1391,3 +1413,123 @@ Link to related documentation, APIs, and system artifacts.
 - [x] Performance optimized
 - [x] Monitoring enabled
 - [x] Documentation complete
+
+You are acting as a senior production TypeScript engineer.
+
+Your task is to completely eliminate all TypeScript errors reported by:
+
+npm run typecheck
+
+Requirements:
+
+1. Run a full project analysis before making changes.
+2. Identify every TypeScript error, warning, incompatible type, missing import, incorrect export, nullability issue, generic mismatch, interface mismatch, module resolution issue, and build-blocking issue.
+3. Fix errors in batches to maximize speed.
+4. Never use:
+   - any
+      - @ts-ignore
+         - @ts-nocheck
+            - disabling TypeScript rules
+               - deleting functionality unless absolutely necessary
+
+               5. Prefer production-grade fixes:
+                  - Proper interfaces
+                     - Correct generics
+                        - Strong typing
+                           - Safe null handling
+                              - Type guards
+                                 - Schema validation
+                                    - Dependency injection where appropriate
+                                       - Correct async typing
+
+                                       6. After each fix:
+                                          - Re-run type checking
+                                             - Verify no new errors were introduced
+                                                - Verify build integrity
+
+                                                7. Continue automatically until:
+                                                   - TypeScript error count reaches zero
+                                                      - Build succeeds
+                                                         - No hidden type issues remain
+
+                                                         8. For every file changed:
+                                                            - Explain root cause
+                                                               - Explain fix
+                                                                  - Explain why fix is production safe
+
+                                                                  9. When encountering:
+                                                                     - React errors
+                                                                        - Next.js errors
+                                                                           - Node.js errors
+                                                                              - Express errors
+                                                                                 - Prisma errors
+                                                                                    - Firebase errors
+                                                                                       - MongoDB errors
+                                                                                          - PostgreSQL errors
+                                                                                             - API typing issues
+                                                                                                - Redux typing issues
+                                                                                                   - Zustand typing issues
+                                                                                                      - Tailwind configuration issues
+
+                                                                                                         implement the industry-standard production solution.
+
+                                                                                                         10. Before stopping:
+                                                                                                             Execute a final verification phase.
+
+                                                                                                             Final Verification Checklist:
+
+                                                                                                             □ npm run typecheck passes
+                                                                                                             □ npm run build passes
+                                                                                                             □ npm run lint passes
+                                                                                                             □ No implicit any types
+                                                                                                             □ No unsafe casts
+                                                                                                             □ No unresolved imports
+                                                                                                             □ No circular type dependencies
+                                                                                                             □ No duplicate type declarations
+                                                                                                             □ No incompatible interfaces
+                                                                                                             □ No nullable runtime risks
+                                                                                                             □ No unused exports affecting type resolution
+                                                                                                             □ No broken generic constraints
+
+                                                                                                             11. If more than 100 errors exist:
+                                                                                                                 - Group by root cause.
+                                                                                                                     - Fix highest-impact source files first.
+                                                                                                                         - Resolve shared type definitions before individual errors.
+                                                                                                                             - Prioritize fixes that eliminate the largest number of downstream errors.
+
+                                                                                                                             12. If error count exceeds 1000:
+                                                                                                                                 - Create a dependency graph.
+                                                                                                                                     - Identify source type definitions causing cascades.
+                                                                                                                                         - Fix foundational types first.
+                                                                                                                                             - Continue until all cascading errors disappear.
+
+                                                                                                                                             13. Never stop because of large error counts.
+                                                                                                                                                 Continue until:
+                                                                                                                                                     TypeScript Errors = 0
+
+                                                                                                                                                     14. Before reporting completion:
+                                                                                                                                                         Perform two independent validation passes.
+                                                                                                                                                             Compare results.
+                                                                                                                                                                 Confirm zero remaining type errors.
+
+                                                                                                                                                                 15. Only report success after:
+                                                                                                                                                                     npm run typecheck returns zero errors.  Advanced Mode:
+
+                                                                                                                                                                     - Search for root-cause files generating cascading errors.
+                                                                                                                                                                     - Fix shared interfaces before consumers.
+                                                                                                                                                                     - Fix tsconfig issues.
+                                                                                                                                                                     - Fix path alias issues.
+                                                                                                                                                                     - Fix module resolution issues.
+                                                                                                                                                                     - Fix package version incompatibilities.
+                                                                                                                                                                     - Fix generated type definitions.
+                                                                                                                                                                     - Fix API contract mismatches.
+                                                                                                                                                                     - Fix database schema typing mismatches.
+                                                                                                                                                                     - Fix React prop typing mismatches.
+
+                                                                                                                                                                     Use parallel analysis where possible.
+
+                                                                                                                                                                     Target:
+                                                                                                                                                                     0 TypeScript errors.
+                                                                                                                                                                     0 build errors.
+                                                                                                                                                                     0 lint errors.
+                                                                                                                                                                     Production-ready codebase.

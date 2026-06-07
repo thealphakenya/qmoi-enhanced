@@ -3,7 +3,17 @@ import BiometricAuth from "@/components/auth/BiometricAuth";
 import { persistUserToStorage } from "@/lib/auth/persistence";
 import { logAuthEvent } from "@/lib/auth/memory";
 
-export default function LoginForm({ onLogin }) {
+interface LoginFormProps {
+  onLogin: (user: {
+    id: string;
+    displayName: string;
+    role: string;
+    permissions: string[];
+    accessLevel: number;
+  }) => void;
+}
+
+export default function LoginForm({ onLogin }: LoginFormProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -15,7 +25,7 @@ export default function LoginForm({ onLogin }) {
   const [forgotMessage, setForgotMessage] = useState("");
   const [forgotError, setForgotError] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setError("");
@@ -62,18 +72,18 @@ export default function LoginForm({ onLogin }) {
     }
   };
 
-  const handleBiometricSuccess = async (userId, confidence) => {
+  const handleBiometricSuccess = async (userId: string, confidence: number) => {
     setShowBiometric(false);
     persistUserToStorage({ id: userId, role: "user", displayName: "Biometric User" });
     logAuthEvent({ userId, role: "user", displayName: "Biometric User", event: 'biometric_signin', details: { confidence } });
     onLogin({ id: userId, displayName: "Biometric User", role: "user", permissions: ["general_chat", "help_support", "wallet_view"], accessLevel: 30 });
   };
 
-  const handleBiometricFailure = (reason) => {
+  const handleBiometricFailure = (reason: string) => {
     setError(reason);
   };
 
-  const handleForgotSubmit = async (e) => {
+  const handleForgotSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setForgotError("");
     setForgotMessage("");

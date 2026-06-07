@@ -66,15 +66,13 @@ function getMpesaCredentials(): any {
   if (
     (!consumerKey || !consumerSecret || !shortcode)
   ) {
-    logger.error(
-      {
-        required: {
-          consumerKey: !consumerKey,
-          consumerSecret: !consumerSecret,
-          shortcode: !shortcode,
-        },
+    logger.error("Missing M-Pesa credentials", {
+      required: {
+        consumerKey: !consumerKey,
+        consumerSecret: !consumerSecret,
+        shortcode: !shortcode,
       },
-    );
+    });
   }
   return {
     consumerKey: consumerKey || null,
@@ -371,8 +369,8 @@ export async function POST(req: NextRequest): Promise<any> {
           revenue: null as number | null,
         };
         microtasks.push(task);
-        // Generate revenue
-        const taskRevenue = await generateMicrotaskRevenue(task);
+        // Generate revenue (pass the validated task data)
+        const taskRevenue = await generateMicrotaskRevenue(task.taskData as z.infer<typeof MicrotaskSchema>);
         if (taskRevenue.success && typeof taskRevenue.revenue === "number") {
           task.revenue = taskRevenue.revenue;
         }
@@ -393,8 +391,8 @@ export async function POST(req: NextRequest): Promise<any> {
           totalRevenue: 0,
         };
         affiliateCampaigns.push(campaign);
-        // Generate revenue
-        const campaignRevenue = await generateAffiliateRevenue(campaign);
+        // Generate revenue (pass the validated campaign data)
+        const campaignRevenue = await generateAffiliateRevenue(campaign.campaignData as z.infer<typeof AffiliateCampaignSchema>);
         if (
           campaignRevenue.success &&
           typeof campaignRevenue.revenue === "number"
@@ -418,8 +416,8 @@ export async function POST(req: NextRequest): Promise<any> {
           revenue: null as number | null,
         };
         contentProjects.push(project);
-        // Generate revenue
-        const projectRevenue = await generateContentRevenue(project);
+        // Generate revenue (pass the validated project data)
+        const projectRevenue = await generateContentRevenue(project.projectData as z.infer<typeof ContentProjectSchema>);
         if (
           projectRevenue.success &&
           typeof projectRevenue.revenue === "number"
@@ -443,8 +441,8 @@ export async function POST(req: NextRequest): Promise<any> {
           totalBonus: 0,
         };
         referralPrograms.push(referral);
-        // Generate revenue
-        const referralRevenue = await generateReferralRevenue(referral);
+        // Generate revenue (pass the validated referral data)
+        const referralRevenue = await generateReferralRevenue(referral.referralData as z.infer<typeof ReferralProgramSchema>);
         if (
           referralRevenue.success &&
           typeof referralRevenue.revenue === "number"

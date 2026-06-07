@@ -3,7 +3,6 @@ import { prisma } from "../../../../lib/db/prisma";
 import { authService } from "../../../../lib/auth/service";
 import { log } from '@/lib/logger';
 import crypto from 'crypto';
-import { log as logger } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -46,13 +45,14 @@ export async function GET(req: NextRequest) {
     // Generate challenge
     const challenge = crypto.randomBytes(32).toString('base64url');
 
-    // Store challenge PRODUCTIONorarily
+    // Store challenge temporarily
+    const globalAny = globalThis as Record<string, unknown>;
     const challengeKey = `webauthn_auth_challenge_${userId}`;
-    global[challengeKey] = challenge;
+    globalAny[challengeKey] = challenge;
 
     // Set expiry for challenge (5 minutes)
     setTimeout(() => {
-      delete global[challengeKey];
+      delete globalAny[challengeKey];
     }, 5 * 60 * 1000);
 
     // Create credential request options
@@ -70,8 +70,10 @@ export async function GET(req: NextRequest) {
       timestamp: new Date().toISOString()
     });
 
-  } catch (error) {
-    log.error('WebAuthn authentication GET error:', error);
+  } catch (error: unknown) {
+    log.error('WebAuthn authentication GET error:', {
+      error: error instanceof Error ? error.message : String(error),
+    });
     return NextResponse.json(
       {
         success: false,
@@ -99,8 +101,9 @@ export async function POST(req: NextRequest) {
     }
 
     // Verify challenge
+    const globalAny = globalThis as Record<string, unknown>;
     const challengeKey = `webauthn_auth_challenge_${userId}`;
-    const storedChallenge = global[challengeKey];
+    const storedChallenge = globalAny[challengeKey];
 
     if (!storedChallenge || storedChallenge !== challenge) {
       return NextResponse.json(
@@ -110,7 +113,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Clean up challenge
-    delete global[challengeKey];
+    delete globalAny[challengeKey];
 
     // Get user
     const user = await prisma.user.findUnique({
@@ -195,8 +198,10 @@ export async function POST(req: NextRequest) {
       timestamp: new Date().toISOString()
     });
 
-  } catch (error) {
-    log.error('WebAuthn authentication POST error:', error);
+  } catch (error: unknown) {
+    log.error('WebAuthn authentication POST error:', {
+      error: error instanceof Error ? error.message : String(error),
+    });
     return NextResponse.json(
       {
         success: false,

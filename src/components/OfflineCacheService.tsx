@@ -1,27 +1,9 @@
+import ErrorBoundary from '@/components/ErrorBoundary';
 import React, { useEffect } from 'react';
 
 type Props = { children?: React.ReactNode };
 
-export class ErrorBoundary extends React.Component<Props, { hasError: boolean }> {
-  constructor(props: Props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(): { hasError: boolean } {
-    return { hasError: true };
-  }
-  componentDidCatch(error: unknown, errorInfo: unknown) {
-    if (typeof console !== 'undefined' && typeof console.error === 'function') {
-      console.error?.('Error caught by boundary:', error, errorInfo);
-    }
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children || null;
-  }
-}
+export 
 
 // Offline-first caching service using IndexedDB for window states, tool results, etc.
 const DB_NAME = 'QMOICache';

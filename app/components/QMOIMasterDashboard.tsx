@@ -11,6 +11,10 @@ import { log as logger } from "@/lib/logger";
  * Master-Only Access UI for Automation Control, Financial Overview, and Status Monitoring
  */
 import React, { useEffect, useState } from "react";
+import apiClient from "@/api/client";
+import SponsoredUsersManager from "./SponsoredUsersManager";
+import { AvatarSelector } from "@/components/q-city/AvatarSelector";
+import { VoiceSelector } from "@/components/q-city/VoiceSelector";
 import { buildMasterHeaders, readMasterToken, writeMasterToken } from '@/app/lib/auth/master';
 import {
   AlertCircle,
@@ -27,6 +31,9 @@ import {
   User,
   Users,
   Zap,
+  Camera,
+  Eye,
+  EyeOff,
 } from "lucide-react";
 const PWA_PLATFORMS = [
   { id: "alphaq", name: "latest Q AI", url: "https://alphaq.ai", logo: "🔷" },
@@ -49,6 +56,13 @@ type GlobalData = {
   global?: { autoProjectCount?: number };
   [key: string]: unknown;
 };
+interface FinancialData {
+  liquid: number;
+  revenue: number;
+  storageLocations: string[];
+  lastUpdated: string;
+  [key: string]: unknown;
+}
 interface AutomationStatus {
   running: boolean;
   lastScan: string;
@@ -71,7 +85,9 @@ interface LinksData {
   onlineCount: number;
   offlineCount: number;
   lastUpdated: string;
+  valid?: number;
   links: LinkStatus[];
+  [key: string]: unknown;
 }
 interface DomainData {
   totalDomains: number;
@@ -79,6 +95,9 @@ interface DomainData {
   fallbackDomains: number;
   lastValidation: string;
   domains: DomainStatus[];
+  healthy?: number;
+  total?: number;
+  [key: string]: unknown;
 }
 interface DomainStatus {
   domain: string;
@@ -95,7 +114,7 @@ interface MasterDashboardProps {
 export function QMOIMasterDashboard({
   masterToken,
   onUnauthorized,
-}: MasterDashboardProps): JSX.Element {
+}: MasterDashboardProps) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [token, setToken] = useState(masterToken || "");
   const [automationStatus, setAutomationStatus] =
@@ -157,7 +176,7 @@ export function QMOIMasterDashboard({
         setError(null);
         return true;
       }
-    } catch (_err) {
+    } catch (err: unknown) {
       setError("Failed to verify master access");
     } finally {
       setLoading(false);
@@ -186,7 +205,7 @@ export function QMOIMasterDashboard({
         const data = await response.json();
         setAutomationStatus(data.status);
       }
-    } catch (_err) {
+    } catch (err: unknown) {
       console.error?.("Failed to fetch automation status:", err);
     }
   };
@@ -204,7 +223,7 @@ export function QMOIMasterDashboard({
         const data = await response.json();
         setFinancialData(data);
       }
-    } catch (_err) {
+    } catch (err: unknown) {
       console.error?.("Failed to fetch financial data:", err);
     }
   };
@@ -222,7 +241,7 @@ export function QMOIMasterDashboard({
         const data = await response.json();
         setLinksData(data);
       }
-    } catch (_err) {
+    } catch (err: unknown) {
       console.error?.("Failed to fetch links data:", err);
     }
   };
@@ -237,10 +256,10 @@ export function QMOIMasterDashboard({
         },
       });
       if (response.ok) {
-        const data = await response.json();
-        setGlobalData(data.data);
+        const globalPayload = (await response.json()) as { data: GlobalData };
+        setGlobalData(globalPayload.data);
       }
-    } catch (_err) {
+    } catch (err: unknown) {
       console.error?.("Failed to fetch global finance data:", err);
     }
   };
@@ -257,7 +276,7 @@ export function QMOIMasterDashboard({
         const data = await response.json();
         setDomainData(data);
       }
-    } catch (_err) {
+    } catch (err: unknown) {
       console.error?.("Failed to fetch domain data:", err);
     }
   };
@@ -276,7 +295,7 @@ export function QMOIMasterDashboard({
       setIsAuthenticated(false);
       setToken("");
       onUnauthorized?.();
-    } catch (_err) {
+    } catch (err: unknown) {
       console.error?.("Logout failed:", err);
       setError("Failed to logout properly");
     } finally {
@@ -293,7 +312,7 @@ export function QMOIMasterDashboard({
       setCameraStream(stream);
       setCameraEnabled(true);
       setError(null);
-    } catch (_err) {
+    } catch (err: unknown) {
       setError("Failed to access camera. Please check permissions.");
       console.error?.("Camera access failed:", err);
     }
@@ -324,7 +343,7 @@ export function QMOIMasterDashboard({
       } else {
         setError(`Failed to ${action} automation`);
       }
-    } catch (_err) {
+    } catch (err: unknown) {
       setError(
         `Error: ${err instanceof Error ? err.message : "Unknown error"}`,
       );
@@ -426,7 +445,7 @@ export function QMOIMasterDashboard({
                 type="password"
                 value={token}
                 onChange={(e) => setToken(e.target.value)}
-                implementation="Enter master token"
+                placeholder="Enter master token"
                 className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white implementation-slate-400 focus:outline-none focus:border-blue-500"
               />
             </div>
@@ -591,7 +610,7 @@ export function QMOIMasterDashboard({
                 <div className="flex gap-4">
                   <button
                     onClick={() => controlAutomation("start")}
-                    enabled={loading || automationStatus.running}
+                    disabled={loading || automationStatus.running}
                     className="flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 enabled:opacity-50 rounded-lg font-medium transition-colors"
                   >
                     <Zap className="h-4 w-4" />
@@ -599,14 +618,14 @@ export function QMOIMasterDashboard({
                   </button>
                   <button
                     onClick={() => controlAutomation("stop")}
-                    enabled={loading || !automationStatus.running}
+                    disabled={loading || !automationStatus.running}
                     className="flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 enabled:opacity-50 rounded-lg font-medium transition-colors"
                   >
                     Stop
                   </button>
                   <button
                     onClick={() => controlAutomation("restart")}
-                    enabled={loading}
+                    disabled={loading}
                     className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 enabled:opacity-50 rounded-lg font-medium transition-colors"
                   >
                     <RefreshCw className="h-4 w-4" />
@@ -890,7 +909,7 @@ export function QMOIMasterDashboard({
                         } else {
                           setError("Failed to force domain refresh");
                         }
-                      } catch (_err) {
+                      } catch (err: unknown) {
                         setError("Error forcing domain refresh");
                       } finally {
                         setLoading(false);
@@ -930,7 +949,7 @@ export function QMOIMasterDashboard({
                         } else {
                           setError("Failed to activate emergency takeover");
                         }
-                      } catch (_err) {
+                      } catch (err: unknown) {
                         setError("Error activating emergency takeover");
                       } finally {
                         setLoading(false);
@@ -988,7 +1007,7 @@ export function QMOIMasterDashboard({
                                   }),
                                 });
                               }
-                            } catch (_err) {
+                            } catch (err: unknown) {
                               setError("Failed to approve domain");
                             }
                           }}
@@ -1021,7 +1040,7 @@ export function QMOIMasterDashboard({
                                   }),
                                 });
                               }
-                            } catch (_err) {
+                            } catch (err: unknown) {
                               setError("Failed to remove domain");
                             }
                           }}
@@ -1066,11 +1085,11 @@ export function QMOIMasterDashboard({
                         },
                       });
                       if (response.ok) {
-                        const report = await response.text();
-                        // In a real implementation, this would download or display the report
-                        logger.info("Audit report generated:", report);
+                          const report = await response.text();
+                          // In a real implementation, this would download or display the report
+                          logger.info("Audit report generated", { report });
                       }
-                    } catch (_err) {
+                    } catch (err: unknown) {
                       setError("Failed to generate audit report");
                     }
                   }}
@@ -1151,9 +1170,9 @@ export function QMOIMasterDashboard({
                         </div>
                       </div>
                       <button
-                        onClick={() => {
-                          // In a real implementation, this would open track details
-                          logger.info("View track details:", track.id);
+                            onClick={() => {
+                              // In a real implementation, this would open track details
+                              logger.info("View track details", { trackId: track.id });
                         }}
                         className="px-3 py-1 bg-slate-600 hover:bg-slate-500 text-slate-300 text-sm rounded transition-colors"
                       >
@@ -1180,7 +1199,7 @@ export function QMOIMasterDashboard({
                       } else {
                         setError("Failed to fetch tracks data");
                       }
-                    } catch (_err) {
+                    } catch (err: unknown) {
                       setError("Failed to load tracks");
                     } finally {
                       setLoading(false);
@@ -1221,7 +1240,7 @@ export function QMOIMasterDashboard({
                 <div>
                   <h3 className="text-lg font-semibold mb-4 text-slate-200">Avatar Selection</h3>
                   <AvatarSelector
-                    onAvatarChange={(avatarId) => {
+                    onAvatarChange={(avatarId: string) => {
                       // Handle avatar change - could add logging or additional actions here
                       logger.info(`Avatar changed to: ${avatarId}`);
                     }}
@@ -1232,7 +1251,7 @@ export function QMOIMasterDashboard({
                 <div>
                   <h3 className="text-lg font-semibold mb-4 text-slate-200">Voice Selection</h3>
                   <VoiceSelector
-                    onVoiceChange={(voiceId) => {
+                    onVoiceChange={(voiceId: string) => {
                       // Handle voice change - could add logging or additional actions here
                       logger.info(`Voice changed to: ${voiceId}`);
                     }}
@@ -1536,7 +1555,7 @@ export function QMOIMasterDashboard({
                       <div className="flex gap-2">
                         <input
                           type="text"
-                          implementation="Enter domain (e.g., qvillage.com)"
+                          placeholder="Enter domain (e.g., qvillage.com)"
                           className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white implementation-slate-400 focus:outline-none focus:border-blue-500"
                           id="domain-refresh"
                         />
@@ -1555,11 +1574,11 @@ export function QMOIMasterDashboard({
                               const result = await response.json();
                               if (result.success) {
                                 setError(null);
-                                notification.show(`✅ Domain validation refreshed for ${domain}`);
+                                console.info(`✅ Domain validation refreshed for ${domain}`);
                               } else {
                                 setError(result.error || "Failed to refresh domain validation");
                               }
-                            } catch (_err) {
+                            } catch (err: unknown) {
                               setError("Failed to execute command");
                             } finally {
                               setLoading(false);
@@ -1580,7 +1599,7 @@ export function QMOIMasterDashboard({
                       <div className="flex gap-2">
                         <input
                           type="text"
-                          implementation="Enter new domain to approve"
+                          placeholder="Enter new domain to approve"
                           className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white implementation-slate-400 focus:outline-none focus:border-green-500"
                           id="domain-approve"
                         />
@@ -1599,11 +1618,11 @@ export function QMOIMasterDashboard({
                               const result = await response.json();
                               if (result.success) {
                                 setError(null);
-                                notification.show(`✅ Domain ${domain} approved and added to registry`);
+                                console.info(`✅ Domain ${domain} approved and added to registry`);
                               } else {
                                 setError(result.error || "Failed to approve domain");
                               }
-                            } catch (_err) {
+                            } catch (err: unknown) {
                               setError("Failed to execute command");
                             } finally {
                               setLoading(false);
@@ -1633,7 +1652,7 @@ export function QMOIMasterDashboard({
                       <div className="flex gap-2">
                         <input
                           type="url"
-                          implementation="Enter link URL to monitor"
+                          placeholder="Enter link URL to monitor"
                           className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white implementation-slate-400 focus:outline-none focus:border-purple-500"
                           id="link-add"
                         />
@@ -1652,11 +1671,11 @@ export function QMOIMasterDashboard({
                               const result = await response.json();
                               if (result.success) {
                                 setError(null);
-                                notification.show(`✅ Link ${link} added to monitoring`);
+                                console.info(`✅ Link ${link} added to monitoring`);
                               } else {
                                 setError(result.error || "Failed to add monitored link");
                               }
-                            } catch (_err) {
+                            } catch (err: unknown) {
                               setError("Failed to execute command");
                             } finally {
                               setLoading(false);
@@ -1677,7 +1696,7 @@ export function QMOIMasterDashboard({
                       <div className="flex gap-2">
                         <input
                           type="url"
-                          implementation="Enter link URL to remove"
+                          placeholder="Enter link URL to remove"
                           className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white implementation-slate-400 focus:outline-none focus:border-red-500"
                           id="link-remove"
                         />
@@ -1696,11 +1715,11 @@ export function QMOIMasterDashboard({
                               const result = await response.json();
                               if (result.success) {
                                 setError(null);
-                                notification.show(`✅ Link ${link} removed from monitoring`);
+                                console.info(`✅ Link ${link} removed from monitoring`);
                               } else {
                                 setError(result.error || "Failed to remove monitored link");
                               }
-                            } catch (_err) {
+                            } catch (err: unknown) {
                               setError("Failed to execute command");
                             } finally {
                               setLoading(false);
@@ -1733,11 +1752,11 @@ export function QMOIMasterDashboard({
                         const result = await response.json();
                         if (result.success) {
                           setError(null);
-                          notification.show(`✅ Audit report generated. Check TRACKS.md for details.`);
+                          console.info(`✅ Audit report generated. Check TRACKS.md for details.`);
                         } else {
                           setError(result.error || "Failed to generate audit report");
                         }
-                      } catch (_err) {
+                      } catch (err: unknown) {
                         setError("Failed to execute audit command");
                       } finally {
                         setLoading(false);

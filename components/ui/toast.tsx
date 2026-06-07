@@ -11,6 +11,7 @@ type ToastProps = React.ComponentPropsWithoutRef<"div"> & {
   title?: React.ReactNode;
   description?: React.ReactNode;
   action?: React.ReactNode;
+  variant?: "default" | "destructive";
 };
 
 type ToastActionElement = React.ReactElement<typeof ToastAction>;

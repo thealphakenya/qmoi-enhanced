@@ -196,7 +196,7 @@ async function processPayPalPayment(paymentData: unknown): Promise<any> {
     const result = await _response.json();
     return { success: true, reference: result.id, provider: "paypal", approval_url: result.links?.find((l: any) => l.rel === "approval_url")?.href };
   } catch (_error){
-    logger.error("PayPal payment failed:", _error);
+    log.error("PayPal payment failed:", _error);
     return { success: false, _error: "PayPal payment failed" };
   }
 }

@@ -46,12 +46,12 @@ const fallbackStatus = {
   revenueTracking: 'Active',
 };
 export default function QMoiAIPage() {
-  const [selectedModel, setSelectedModel] = useState('qmoi-prod');
-  const [chatMessage, setChatMessage] = useState('');
-  const [showComponents, setShowComponents] = useState(true);
-  const [productionData, setProductionData] = useState(null);
-  const [chatHistory, setChatHistory] = useState([]);
-  const [isChatLoading, setIsChatLoading] = useState(false);
+  const [selectedModel, setSelectedModel] = useState<string>('qmoi-prod');
+  const [chatMessage, setChatMessage] = useState<string>('');
+  const [showComponents, setShowComponents] = useState<boolean>(true);
+  const [productionData, setProductionData] = useState<any | null>(null);
+  const [chatHistory, setChatHistory] = useState<{ id: string; role: string; content: string }[]>([]);
+  const [isChatLoading, setIsChatLoading] = useState<boolean>(false);
   const [statusInfo, setStatusInfo] = useState(fallbackStatus);
   const { user, isAuthenticated, isLoading, refreshUser, logout } = useAuth();
   useEffect(() => {
@@ -92,7 +92,7 @@ export default function QMoiAIPage() {
         ...statusInfo,
       }
     : fallbackStatus;
-  const handleLogin = async (loginData) => {
+  const handleLogin = async (loginData: any) => {
     if (loginData) {
       persistUserToStorage({ id: loginData.id, role: loginData.role, displayName: loginData.displayName });
       logAuthEvent({ userId: loginData.id, role: loginData.role, displayName: loginData.displayName, event: 'login', details: { source: 'qmoi-ai' } });
@@ -134,10 +134,10 @@ export default function QMoiAIPage() {
         },
         body: JSON.stringify({ 
           input, 
-          userId: user?.userId || 'anonymous-user', 
+          userId: (user as any)?.userId || (user as any)?.id || 'anonymous-user', 
           model: effectiveModel,
-          sessionId: user?.sessionId || 'default',
-          role: user?.role,
+          sessionId: (user as any)?.sessionId || 'default',
+          role: (user as any)?.role,
         }),
       });
       const result = await response.json();

@@ -1,23 +1,7 @@
+import ErrorBoundary from '@/components/ErrorBoundary';
 import React from 'react';
 import { log as logger } from "@/lib/logger";
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('React Error Boundary caught an error:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
+
 // QMOI EVOLUTION ENHANCED: Global News & Intelligence Notification System
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-04-07T00:00:00Z

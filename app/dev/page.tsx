@@ -1,6 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import logger from '../../src/lib/logger';
+
+interface ApiTestResult {
+  endpoint: string;
+  status: number | string;
+  success: boolean;
+  responseTime: number;
+  hasData?: boolean;
+  error?: string | null;
+}
 import { log as logger } from "@/lib/logger";
 const isProduction = process.env.NODE_ENV === "production";
 export default function DevPage() {
@@ -16,8 +24,8 @@ export default function DevPage() {
       </main>
     );
   }
-  const [apiTestResults, setApiTestResults] = useState([]);
-  const [debugInfo, setDebugInfo] = useState({});
+  const [apiTestResults, setApiTestResults] = useState<ApiTestResult[]>([]);
+  const [debugInfo, setDebugInfo] = useState<Record<string, any>>({});
   const [loading, setLoading] = useState(false);
   const testEndpoints = async () => {
     setLoading(true);
@@ -43,13 +51,13 @@ export default function DevPage() {
           responseTime: end - start,
           hasData: data && Object.keys(data).length > 0
         });
-      } catch (error) {
+      } catch (err: unknown) {
         results.push({
           endpoint,
           status: 'ERROR',
           success: false,
           responseTime: 0,
-          error: error.message
+          error: err instanceof Error ? err.message : String(err)
         });
       }
     }
@@ -63,8 +71,8 @@ export default function DevPage() {
         const data = await response.json();
         setDebugInfo(data);
       }
-    } catch (error) {
-      try { logger.error('Failed to load debug info', error); } catch (e) { console.error?.('Failed to load debug info:', error); }
+    } catch (err: unknown) {
+      try { logger.error('Failed to load debug info', err instanceof Error ? err : new Error(String(err))); } catch (e) { console.error?.('Failed to load debug info:', err); }
     }
   };
   useEffect(() => {

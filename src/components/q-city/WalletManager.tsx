@@ -1,3 +1,4 @@
+import ErrorBoundary from '@/components/ErrorBoundary';
 "use client";
 import React, { useEffect, useState } from 'react';
 import apiClient from '@/api/client';
@@ -16,28 +17,7 @@ interface ErrorBoundaryProps {
 interface ErrorBoundaryState {
   hasError: boolean;
 }
-class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  constructor(props: ErrorBoundaryProps) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(_error: unknown) {
-    return { hasError: true };
-  }
-  componentDidCatch(error: unknown, errorInfo: React.ErrorInfo) {
-    log.error(
-      'React Error Boundary caught an error:',
-      error instanceof Error ? error : new Error(String(error)),
-      errorInfo,
-    );
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z

@@ -169,8 +169,10 @@ async function getTotalEndpoints(): Promise<number> {
   try {
     const result = execSync("find app/api -name \"*.ts\" -o -name \"*.js\" | grep -v '\\.backups' | grep -v '\\bbackups\\b' | wc -l", { encoding: 'utf8' });
     return parseInt(result.trim()) || 0;
-  } catch (error) {
-    log.warn('Failed to count endpoints', error);
+  } catch (error: unknown) {
+    log.warn('Failed to count endpoints', {
+      error: error instanceof Error ? error.message : String(error),
+    });
     return 0;
   }
 }
@@ -181,8 +183,10 @@ async function getImplementedEndpoints(): Promise<number> {
     const total = execSync("find app/api -name \"*.ts\" -o -name \"*.js\" | grep -v '\\.backups' | grep -v '\\bbackups\\b' | wc -l", { encoding: 'utf8' });
     const incomplete = execSync('find app/api -name "*.ts" -o -name "*.js" | grep -v ".backups" | grep -v "\\bbackups\\b" | xargs grep -l "\\${routeName}" | wc -l', { encoding: 'utf8' });
     return (parseInt(total.trim()) || 0) - (parseInt(incomplete.trim()) || 0);
-  } catch (error) {
-    log.warn('Failed to count implemented endpoints', error);
+  } catch (error: unknown) {
+    log.warn('Failed to count implemented endpoints', {
+      error: error instanceof Error ? error.message : String(error),
+    });
     return 0;
   }
 }
@@ -192,8 +196,10 @@ async function getIncompleteEndpointCount(): Promise<number> {
   try {
     const result = execSync('find app/api -name "*.ts" -o -name "*.js" | grep -v ".backups" | grep -v "\\bbackups\\b" | xargs grep -l "\\${routeName}" | wc -l', { encoding: 'utf8' });
     return parseInt(result.trim()) || 0;
-  } catch (error) {
-    log.warn('Failed to count incomplete endpoints', error);
+  } catch (error: unknown) {
+    log.warn('Failed to count incomplete endpoints', {
+      error: error instanceof Error ? error.message : String(error),
+    });
     return 0;
   }
 }

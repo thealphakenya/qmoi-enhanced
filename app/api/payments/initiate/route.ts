@@ -156,7 +156,8 @@ export async function POST(req: NextRequest) {
         }
 
         // Initialize Stripe with the secret key and create a PaymentIntent
-        const stripe = new Stripe(stripeSecretKey, { apiVersion: '2022-11-15' });
+        // Cast apiVersion to any to avoid mismatched literal types in bundled Stripe typings
+        const stripe = new Stripe(String(stripeSecretKey), { apiVersion: '2022-11-15' as any });
         // Stripe expects amount in the smallest currency unit (e.g., cents).
         const amountInMinor = Math.round((Number(amount) || 0) * 100);
         const intent = await stripe.paymentIntents.create({

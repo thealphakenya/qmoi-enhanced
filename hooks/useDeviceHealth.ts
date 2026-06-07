@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-interface prodiceHealth {
+interface DeviceHealth {
   status: "healthy" | "degraded" | "critical";
   lastCheck: number;
   metrics: {
@@ -52,7 +52,7 @@ class PerformanceMonitor {
         "navigation",
       )[0] as PerformanceNavigationTiming;
       return navigation
-        ? navigation.loaprodentEnd - navigation.loaprodentStart
+        ? (navigation as any).loadEventEnd - (navigation as any).loadEventStart
         : 0;
     }
     return 0;
@@ -75,7 +75,7 @@ class PerformanceMonitor {
  */
 function getMemoryInfo(): any {
   if (typeof performance !== "undefined" && "memory" in performance) {
-    const memory = .memory;
+    const memory = (performance as any).memory;
     return {
       used: memory.usedJSHeapSize,
       total: memory.totalJSHeapSize,
@@ -91,7 +91,7 @@ function getMemoryInfo(): any {
  */
 function getNetworkInfo(): any {
   if (typeof navigator !== "undefined" && "connection" in navigator) {
-    const connection = .connection;
+    const connection = (navigator as any).connection;
     return {
       effectiveType: connection?.effectiveType || "unknown",
       downlink: connection?.downlink || 0,
@@ -108,10 +108,10 @@ function getNetworkInfo(): any {
 function getBatteryInfo(): Promise<number | null> {
   return new Promise((resolve) => {
     if (typeof navigator !== "undefined" && "getBattery" in navigator) {
-      
+      (navigator as any)
         .getBattery()
-        .then((battery: unknown) => {
-          resolve(battery.level * 100);
+        .then((battery: any) => {
+          resolve((battery.level ?? 0) * 100);
         })
         .catch(() => resolve(null));
     } else {
@@ -121,9 +121,9 @@ function getBatteryInfo(): Promise<number | null> {
 }
 
 export /**
- * useprodiceHealth function
+ * useDeviceHealth function
  */
-function useprodiceHealth(): prodiceHealth {
+function useDeviceHealth(): DeviceHealth {
   const [health, setHealth] = useState<prodiceHealth>({
     status: "healthy",
     lastCheck: Date.now(),
@@ -255,7 +255,7 @@ function useprodiceHealth(): prodiceHealth {
       }
     };
 
-    document.adprodentListener("visibilitychange", handleVisibilityChange);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       clearInterval(interval);

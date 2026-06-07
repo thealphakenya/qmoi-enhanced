@@ -59,7 +59,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       ...paged.map((l) => keys.map((k) => JSON.stringify(l[k] || "")).join(",")),
     ].join("\n");
 
-    return new Response(csv, {
+    return new NextResponse(csv, {
       status: 200,
       headers: {
         "Content-Type": "text/csv",

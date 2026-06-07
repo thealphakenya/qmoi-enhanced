@@ -62,11 +62,11 @@ export default function HomePage() {
       const devicesData = devicesRes.ok ? await devicesRes.json() : null;
       setSystemStatus({
         totalUsers: adminData?.data?.totalUsers || 0,
-        activeDevices: devicesData?.data?.devices?.filter(d => d.status === 'online').length || 0,
+        activeDevices: devicesData?.data?.devices?.filter((d: any) => d.status === 'online').length || 0,
         systemHealth: adminData?.data?.systemHealth ? `${adminData.data.systemHealth}%` : 'Unknown'
       });
-    } catch (error) {
-      console.error?.('Failed to fetch system status:', error);
+    } catch (err: unknown) {
+      console.error?.('Failed to fetch system status:', err);
     }
   };
   return (

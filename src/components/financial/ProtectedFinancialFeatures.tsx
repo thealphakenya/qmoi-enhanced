@@ -1,3 +1,4 @@
+import ErrorBoundary from '@/components/ErrorBoundary';
 /**
  * Protected Financial Features React Component
  * Provides master-only UI components for all financial operations
@@ -294,26 +295,4 @@ type ErrorBoundaryState = {
   hasError: boolean;
 };
 
-class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  constructor(props: ErrorBoundaryProps) {
-    super(props);
-    this.state = { hasError: false };
-  }
 
-  static getDerivedStateFromError(_error: unknown) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error: unknown, errorInfo: unknown) {
-    const errorDetails = error instanceof Error ? error : { message: String(error) };
-    log.error('Error caught by boundary:', errorDetails, { errorInfo });
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-
-    return this.props.children;
-  }
-}

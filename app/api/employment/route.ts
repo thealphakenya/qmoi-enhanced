@@ -49,9 +49,9 @@ const UserSchema = z.object({
   skills: z.array(z.string()).default([]),
   createdAt: z.number().default(() => Date.now()),
 });
-const employees: unknown[] = [];
-const users: unknown[] = [];
-const employmentLogs: unknown[] = [];
+const employees: any[] = [];
+const users: any[] = [];
+const employmentLogs: any[] = [];
 export async function GET(req: NextRequest): Promise<any> {
   const { searchParams } = new URL(req.url);
   const type = searchParams.get("type"); // 'employees' or 'users'
@@ -167,13 +167,18 @@ export async function PUT(req: NextRequest): Promise<any> {
           { status: 404 },
         );
       }
-      employees[index] = { ...employees[index], ...updates };
+      const existingEmployee = employees[index] as Record<string, unknown>;
+      const updatedEmployee = {
+        ...existingEmployee,
+        ...(updates as Record<string, unknown>),
+      };
+      employees[index] = updatedEmployee as any;
       // Log the update
       employmentLogs.push({
         id: Date.now(),
         action: "employee_updated",
         employeeId: id,
-        details: `Employee ${employees[index].name} updated`,
+        details: `Employee ${String(updatedEmployee.name ?? "unknown")} updated`,
         timestamp: Date.now(),
       });
       return NextResponse.json({
@@ -192,13 +197,18 @@ export async function PUT(req: NextRequest): Promise<any> {
           { status: 404 },
         );
       }
-      users[index] = { ...users[index], ...updates };
+      const existingUser = users[index] as Record<string, unknown>;
+      const updatedUser = {
+        ...existingUser,
+        ...(updates as Record<string, unknown>),
+      };
+      users[index] = updatedUser as any;
       // Log the update
       employmentLogs.push({
         id: Date.now(),
         action: "user_updated",
         userId: id,
-        details: `User ${users[index].name} updated`,
+        details: `User ${String(updatedUser.name ?? "unknown")} updated`,
         timestamp: Date.now(),
       });
       return NextResponse.json({
@@ -250,14 +260,14 @@ export async function DELETE(req: NextRequest): Promise<any> {
           { status: 404 },
         );
       }
-      const employee = employees[index];
+      const employee = employees[index] as Record<string, unknown>;
       employees.splice(index, 1);
       // Log the removal
       employmentLogs.push({
         id: Date.now(),
         action: "employee_removed",
         employeeId: id,
-        details: `Employee ${employee.name} removed`,
+        details: `Employee ${String(employee.name ?? "unknown")} removed`,
         timestamp: Date.now(),
       });
       return NextResponse.json({
@@ -275,14 +285,14 @@ export async function DELETE(req: NextRequest): Promise<any> {
           { status: 404 },
         );
       }
-      const user = users[index];
+      const user = users[index] as Record<string, unknown>;
       users.splice(index, 1);
       // Log the removal
       employmentLogs.push({
         id: Date.now(),
         action: "user_removed",
         userId: id,
-        details: `User ${user.name} removed`,
+        details: `User ${String(user.name ?? "unknown")} removed`,
         timestamp: Date.now(),
       });
       return NextResponse.json({

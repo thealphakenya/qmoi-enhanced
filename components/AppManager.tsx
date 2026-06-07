@@ -22,14 +22,13 @@ import { Separator } from "@/components/ui/separator";
 import { appManagementService } from "@/services/AppManagementService";
 import {
   Download,
-  Update,
+  RefreshCw,
   Wrench,
   Info,
   MoreVertical,
   Search,
   Grid,
   List,
-  RefreshCw,
   CheckCircle,
 } from "lucide-react";
 interface App {
@@ -44,7 +43,7 @@ interface App {
   isInstalled: boolean;
   isUpdating: boolean;
   status: string;
-  lastUpdate: string;
+  lastUpdate: string | Date;
   hasUpdate?: boolean;
 }
 const AppManager: React.FC = () => {
@@ -75,44 +74,65 @@ const AppManager: React.FC = () => {
     setApps(appList);
   };
   const setupEventListeners = () => {
-    appManagementService.onAppStatusChanged(({ appId, status }) => {
-      setApps((prev) =>
-        prev.map((app) =>
-          app.id === appId ? { ...app, status } : app,
-        ),
-      );
-    });
-    appManagementService.onDownloadProgress(({ appId, progress }) => {
-      setDownloadProgress((prev) => ({ ...prev, [appId]: progress }));
-    });
-    appManagementService.onInstallationProgress((data) => {
-      setInstallationProgress((prev) => ({ ...prev, [data.appId]: data }));
-    });
-    appManagementService.onAppInstalled((app) => {
-      setApps((prev) =>
-        prev.map((item) =>
-          item.id === app.id
-            ? { ...item, isInstalled: true, status: "installed" }
-            : item,
-        ),
-      );
-    });
-    appManagementService.onAppUpdated(({ app, updateInfo }) => {
-      setApps((prev) =>
-        prev.map((item) =>
-          item.id === app.id
-            ? {
-                ...item,
-                version: updateInfo.newVersion,
-                isUpdating: false,
-              }
-            : item,
-        ),
-      );
-    });
-    appManagementService.onTroubleshootingCompleted(({ appId, issues }) => {
-      setTroubleshootingResults((prev) => ({ ...prev, [appId]: issues }));
-    });
+    if (typeof appManagementService.onAppStatusChanged === "function") {
+      appManagementService.onAppStatusChanged(({ appId, status }) => {
+        setApps((prev) =>
+          prev.map((app) =>
+            app.id === appId ? { ...app, status } : app,
+          ),
+        );
+      });
+    }
+    if (typeof appManagementService.onDownloadProgress === "function") {
+      appManagementService.onDownloadProgress(({ appId, progress }) => {
+        setDownloadProgress((prev) => ({ ...prev, [appId]: progress }));
+      });
+    }
+    if (typeof appManagementService.onInstallationProgress === "function") {
+      appManagementService.onInstallationProgress((data) => {
+        setInstallationProgress((prev) => ({ ...prev, [data.appId]: data }));
+      });
+    }
+    if (typeof appManagementService.onAppInstalled === "function") {
+      appManagementService.onAppInstalled((app) => {
+        setApps((prev) =>
+          prev.map((item) =>
+            item.id === app.id
+              ? { ...item, isInstalled: true, status: "installed" }
+              : item,
+          ),
+        );
+      });
+    }
+    if (typeof appManagementService.onAppUpdated === "function") {
+      appManagementService.onAppUpdated(({ app, updateInfo }) => {
+        setApps((prev) =>
+          prev.map((item) =>
+            item.id === app.id
+              ? {
+                  ...item,
+                  version: updateInfo.newVersion,
+                  isUpdating: false,
+                }
+              : item,
+          ),
+        );
+      });
+    }
+    if (typeof appManagementService.onTroubleshootingCompleted === "function") {
+      appManagementService.onTroubleshootingCompleted(({ appId, issues }) => {
+        const normalizedIssues: Array<{ issue: string; severity: string }> = Array.isArray(issues)
+          ? issues.filter(
+              (item): item is { issue: string; severity: string } =>
+                typeof item === "object" &&
+                item !== null &&
+                typeof (item as any).issue === "string" &&
+                typeof (item as any).severity === "string",
+            )
+          : [];
+        setTroubleshootingResults((prev) => ({ ...prev, [appId]: normalizedIssues }));
+      });
+    }
   };
   const filterApps = () => {
     let filtered = [...apps];
@@ -209,7 +229,7 @@ const AppManager: React.FC = () => {
             </Badge>
             {app.isInstalled && (
               <Button size="sm" variant="outline" onClick={() => handleUpdate(app.id)}>
-                <Update className="h-4 w-4" />
+                <RefreshCw className="h-4 w-4" />
               </Button>
             )}
           </div>
@@ -292,7 +312,7 @@ const AppManager: React.FC = () => {
         {app.isInstalled ? (
           <>
             <Button size="sm" variant="outline" onClick={() => handleUpdate(app.id)}>
-              <Update className="h-4 w-4 mr-1" />
+              <RefreshCw className="h-4 w-4 mr-1" />
               Update
             </Button>
             <Button size="sm" variant="outline" onClick={() => handleTroubleshoot(app.id)}>
@@ -394,7 +414,7 @@ const AppManager: React.FC = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
-                <Update className="h-5 w-5" />
+                <RefreshCw className="h-5 w-5" />
                 <span>App updates</span>
               </CardTitle>
               <CardDescription>Review available updates for installed apps.</CardDescription>
@@ -423,7 +443,7 @@ const AppManager: React.FC = () => {
                         </div>
                       </div>
                       <Button onClick={() => handleUpdate(app.id)}>
-                        <Update className="h-4 w-4 mr-1" />
+                      <RefreshCw className="h-4 w-4 mr-1" />
                         Update
                       </Button>
                     </div>
