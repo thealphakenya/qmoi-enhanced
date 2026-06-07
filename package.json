@@ -216,7 +216,7 @@
     "@typescript-eslint/parser": "^8.59.1",
     "eslint": "^8.48.0",
     "jest": "^30.3.0",
-    "prisma": "^6.19.1",
+    "prisma": "^6.19.3",
     "typescript": "6.0.3"
   }
 }
