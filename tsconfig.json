@@ -84,10 +84,9 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules",
-    ".next",
-    "dist",
-    "lib/**",
+  "node_modules",
+  ".next",
+  "dist",
     "mobile/**",
     "scripts/**",
     "qmoi-enhanced/scripts/**",
