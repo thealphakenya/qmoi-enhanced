@@ -32,7 +32,7 @@ export interface TradeRequest {
   aiConfidence: number;
 }
 
-export interface PesapalConfig {
+export interface PayPalConfig {
   environment?: "live" | "sandbox" | "qa";
   consumerKey?: string;
   consumerSecret?: string;
@@ -44,15 +44,15 @@ class CashonWalletImpl extends EventEmitter {
   private balance: CashonBalance;
   private transactions: CashonTransaction[] = [];
   private tradeRequests: TradeRequest[] = [];
-  private pesapalConfig: PesapalConfig;
+  private paypalConfig: PayPalConfig;
   private masterToken: string;
   private isTradingEnabled = false;
   private tradingLoopId: NodeJS.Timeout | null = null;
   private minTradeAmount = 10; // KES
 
-  constructor(pesapalConfig?: PesapalConfig, masterToken?: string) {
+  constructor(paypalConfig?: PayPalConfig, masterToken?: string) {
     super();
-    this.pesapalConfig = pesapalConfig || { environment: "qa" };
+    this.paypalConfig = paypalConfig || { environment: "qa" };
     this.masterToken = masterToken || process.env.MASTER_TOKEN || "";
     this.balance = {
       accountId: (globalThis.crypto?.randomUUID?.() as string) || String(Date.now()),
@@ -113,7 +113,7 @@ class CashonWalletImpl extends EventEmitter {
     if (!tx) throw new Error("Transaction not found");
 
     try {
-      const res = await this.initiatePesapalSTK(tx.amount);
+      const res = await this.initiatePayPalPayment(tx.amount);
       if (res.success) {
         tx.status = "completed";
         this.balance.pendingBalance += tx.amount;
@@ -262,12 +262,12 @@ class CashonWalletImpl extends EventEmitter {
 
   // Helpers
   private async updateBalance(): Promise<void> {
-    // In production, call Pesapal API; here we simulate a safe no-op update if network is unavailable.
+    // In production, call PayPal API; here we simulate a safe no-op update if network is unavailable.
     try {
       // Simulate reading external balance - placeholder for real integration
-      // const baseUrl = this.pesapalConfig.environment === "live" ? "https://api.pesapal.com" : "https://cybqa.pesapal.com";
-      // const token = await this.getPesapalToken();
-      // const response = await fetch(`${baseUrl}/api/Account/Balance`, { headers: { Authorization: `Bearer ${token}` } });
+      // const baseUrl = this.paypalConfig.environment === "live" ? "https://api.paypal.com" : "https://api.sandbox.paypal.com";
+      // const token = await this.getPayPalToken();
+      // const response = await fetch(`${baseUrl}/v1/reporting/balances`, { headers: { Authorization: `Bearer ${token}` } });
       // if (response.ok) { const data = await response.json(); ... }
       // For now, keep current balances.
       this.balance.lastUpdated = new Date();
@@ -276,10 +276,10 @@ class CashonWalletImpl extends EventEmitter {
     }
   }
 
-  private async initiatePesapalSTK(amount: number): Promise<{ success: boolean; reference?: string }> {
-    // Production should integrate with Pesapal SDK/API.
-    // Here we simulate a successful STK push initiation with a synthetic reference.
-    return { success: true, reference: `pesapal-${Date.now()}` };
+  private async initiatePayPalPayment(amount: number): Promise<{ success: boolean; reference?: string }> {
+    // Production should integrate with PayPal SDK/API.
+    // Here we simulate a successful PayPal payment initiation with a synthetic reference.
+    return { success: true, reference: `paypal-${Date.now()}` };
   }
 
   private async executeTrade(trade: TradeRequest): Promise<{ success: boolean; details?: any }> {

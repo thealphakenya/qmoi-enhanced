@@ -824,9 +824,10 @@ export class QMOIService {
     return { success: true, userId, recipientWalletId, amount, memo, transferred: true };
   }
 
-  async processPesapalPayment(amount: number, currency: string, payerName: string, payerEmail: string, callbackUrl: string) {
+  async processPayPalPayment(amount: number, currency: string, payerName: string, payerEmail: string, callbackUrl: string) {
     return {
       success: true,
+      provider: 'PayPal',
       amount,
       currency,
       payerName,

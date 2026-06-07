@@ -62,7 +62,7 @@ export class AIRequestRouter {
       return this.handleProjectRequest(user, request);
     }
     if (
-      /wallet|fund|mpesa|airtel|pesapal|finance|transaction/i.test(
+      /wallet|fund|mpesa|airtel|paypal|finance|transaction/i.test(
         request.message,
       )
     ) {

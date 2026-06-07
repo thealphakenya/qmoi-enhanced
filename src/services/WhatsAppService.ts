@@ -310,7 +310,7 @@ Time: ${new Date().toLocaleString()}`;
     const body = message.body.toLowerCase();
 
     // Balance query
-    if (body.includes("balance") || body.includes("pesapal")) {
+    if (body.includes("balance") || body.includes("paypal")) {
       return await this.getBalanceResponse();
     }
 

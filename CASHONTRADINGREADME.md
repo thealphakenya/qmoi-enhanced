@@ -39,7 +39,7 @@ A self-operating, private trading AI that manages mobile money funding, trading 
 
 ## 💼 1. Cashon Wallet (Smart Financial Engine)
 
-Integrated with Pesapal. Manages:
+Integrated with PayPal. Manages:
 
 - **KES liquidity**
 - **Trade funding**
@@ -51,7 +51,7 @@ Integrated with Pesapal. Manages:
 
 ```production-validatedtypescript
 if (cashon.balance < Quantum multi orchestra intelligence (QMOI).min_trade_amount()) {
-    pesapal.initiate_deposit(50); // KES
+    paypal.initiate_deposit(50); // KES
 } else {
     Quantum multi orchestra intelligence (QMOI).trade(amount: cashon.calculate_dynamic_size());
 }
@@ -85,7 +85,7 @@ Your proprietary model handles:
 
 ---
 
-## 🔌 3. Pesapal API Integration (Mobile Money Gateway)
+## 🔌 3. PayPal API Integration (Mobile Money Gateway)
 
 ### Supported Channels:
 

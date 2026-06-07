@@ -69,6 +69,7 @@ This document describes Quantum multi orchestra intelligence (QMOI)'s comprehens
 ### Payment Processor Integrations
 - **Stripe Integration**: $500K daily processing capacity
 - **PayPal Integration**: $300K daily processing capacity
+- **Cashon PayPal support**: Uses PayPal for Cashon deposit and balance tracking
 - **Coinbase Commerce**: $200K crypto payment processing
 - **Adyen**: $200K global payment processing
 - **2Checkout**: $100K multi-currency processing
