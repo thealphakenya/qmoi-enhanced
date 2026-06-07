@@ -1,4 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { log as logger } from '@/lib/logger';
+import axios from 'axios';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress';
+import { Switch } from '@/components/ui/switch';
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -252,7 +258,7 @@ export const QmoiAutoDistribution: React.FC = () => {
     setTimeout(() => setIsMarketing(false), 1000);
   };
   const deployToWhatsApp = () => {
-    notification.show("Deployed to WhatsApp!");
+    (globalThis as any).notification?.show("Deployed to WhatsApp!");
   };
   const handleAutoFix = async () => {
     setAutoFixLoading(true);
