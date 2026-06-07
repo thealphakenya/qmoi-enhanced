@@ -48,17 +48,17 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({
       success: true,
       message: "Emergency email history retrieved",
-      history: emergencyEmails.map(log => ({
-        id: log.id,
-        status: log.status,
-        details: JSON.parse(log.details),
-        sentAt: log.createdAt,
+      history: emergencyEmails.map((entry: any) => ({
+        id: entry.id,
+        status: entry.status,
+        details: JSON.parse(entry.details),
+        sentAt: entry.createdAt,
       })),
       timestamp: new Date().toISOString()
     });
 
   } catch (error) {
-    logger.error('Emergency email GET error:', error);
+    log.error('Emergency email GET error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -183,7 +183,7 @@ export async function POST(req: NextRequest) {
     });
 
   } catch (error) {
-    logger.error('Emergency email POST error:', error);
+    log.error('Emergency email POST error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -259,7 +259,7 @@ if (!sendGridKey || !sendGridFrom) {
       };
 
   } catch (error) {
-    logger.error('Email sending failed:', error);
+    log.error('Email sending failed:', error);
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Unknown email error',

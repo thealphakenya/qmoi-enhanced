@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import apiClient from "@/api/client";
+import { useToast } from "@/components/ui/use-toast";
 import { log as logger } from "@/lib/logger";
-class ErrorBoundary extends React.Component {
-  constructor(props) {
+interface ErrorBoundaryProps extends React.PropsWithChildren<{}> {}
+interface ErrorBoundaryState {
+  hasError: boolean;
+}
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false };
   }
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(_: Error) {
     return { hasError: true };
   }
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
   render() {
@@ -104,7 +110,6 @@ function ProjectManagement({
       toast({
         title: "Error",
         description: "Failed to load projects",
-        variant: "destructive",
       });
     } finally {
       setIsLoading(false);
@@ -136,7 +141,6 @@ function ProjectManagement({
       toast({
         title: "Error",
         description: "Failed to create project",
-        variant: "destructive",
       });
     }
   };
@@ -165,7 +169,6 @@ function ProjectManagement({
       toast({
         title: "Error",
         description: "Failed to delete project",
-        variant: "destructive",
       });
     }
   };
@@ -189,8 +192,8 @@ function ProjectManagement({
       if (data.success) {
         fetchProjects();
       }
-    } catch (error) {
-      logger.error("Failed to add task:", error);
+    } catch (error: unknown) {
+      logger.error("Failed to add task:", error as Error | Record<string, any>);
     }
   };
   // Filter projects
@@ -252,14 +255,14 @@ function ProjectManagement({
           <input
             type="text"
             value={formData.name}
-            onChange={(e) => setFormData({ formData, name: e.target.value })}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600"
             required
           />
           <textarea
             value={formData.description}
             onChange={(e) =>
-              setFormData({ formData, description: e.target.value })
+              setFormData({ ...formData, description: e.target.value })
             }
             className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 h-20"
           />
@@ -267,7 +270,7 @@ function ProjectManagement({
             value={formData.type}
             onChange={(e) =>
               setFormData({
-                formData,
+                ...formData,
                 type: e.target.value as ProjectType,
               })
             }
@@ -492,165 +495,3 @@ function ProjectManagement({
   );
 }
 export default ProjectManagement;
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    console.error?.('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}

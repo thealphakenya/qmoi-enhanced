@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db/prisma';
 import { log } from '@/lib/logger';
-import { log as logger } from "@/lib/logger";
 
 export async function GET(request: NextRequest) {
   try {
@@ -20,7 +19,7 @@ export async function GET(request: NextRequest) {
     });
 
     // Transform to match the expected API response format
-    const transformedDevices = devices.map(device => ({
+    const transformedDevices = devices.map((device: any) => ({
       id: device.id,
       name: device.name,
       type: device.type,
@@ -49,9 +48,9 @@ export async function GET(request: NextRequest) {
         devices: transformedDevices,
         stats: {
           total: transformedDevices.length,
-          online: transformedDevices.filter(d => d.status === 'online').length,
-          offline: transformedDevices.filter(d => d.status === 'offline').length,
-          syncing: transformedDevices.filter(d => d.status === 'syncing').length
+          online: transformedDevices.filter((d: any) => d.status === 'online').length,
+          offline: transformedDevices.filter((d: any) => d.status === 'offline').length,
+          syncing: transformedDevices.filter((d: any) => d.status === 'syncing').length
         },
         lastUpdated: new Date().toISOString()
       },

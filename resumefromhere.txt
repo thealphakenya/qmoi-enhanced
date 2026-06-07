@@ -1,11 +1,12 @@
 Resume point: 2026-06-07T12:30:00.000000Z
 Git branch: feature/auth-prod-1780061287
 Repository status: Production readiness in progress — prioritized checklist
-Current focus: fixing `QmoiAutoDistribution.tsx` imports, types, and lint issues.
+Current focus: cleaning legacy `qmoi` components and stabilizing route/type issues.
+`FriendshipUI.tsx`, `ProjectManagement.tsx`, `QmoiAutoDistribution.tsx`, `components/ui/button.tsx`, and `app/api/deployment-status/route.ts` now compile cleanly for the changed files; broader repo type-check failures remain pending in legacy components.
 
 === PRODUCTION READINESS CHECKLIST ===
 
-Last update: 2026-06-07T12:50:00Z
+Last update: 2026-06-07T13:05:00Z
 Author: automation / dev
 
 Goal: Ensure repository is fully production-ready with verified implementations,

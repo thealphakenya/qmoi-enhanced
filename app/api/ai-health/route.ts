@@ -7,6 +7,12 @@ import { log as logger } from "@/lib/logger";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
+interface AIHealthMetric {
+  metricName: string;
+  value: number;
+  createdAt: Date;
+}
+
 export async function GET(req: NextRequest) {
   const startTime = Date.now();
   try {
@@ -26,10 +32,10 @@ export async function GET(req: NextRequest) {
     });
 
     // Calculate AI health metrics
-    const totalRequests = recentMetrics.filter(m => m.metricName === 'ai_requests_total').reduce((sum, m) => sum + m.value, 0);
-    const successfulRequests = recentMetrics.filter(m => m.metricName === 'ai_requests_success').reduce((sum, m) => sum + m.value, 0);
-    const failedRequests = recentMetrics.filter(m => m.metricName === 'ai_requests_failed').reduce((sum, m) => sum + m.value, 0);
-    const averageResponseTime = recentMetrics.filter(m => m.metricName === 'ai_response_time').reduce((sum, m) => sum + m.value, 0) / Math.max(recentMetrics.filter(m => m.metricName === 'ai_response_time').length, 1);
+    const totalRequests = recentMetrics.filter((m: AIHealthMetric) => m.metricName === 'ai_requests_total').reduce((sum: number, m: AIHealthMetric) => sum + m.value, 0);
+    const successfulRequests = recentMetrics.filter((m: AIHealthMetric) => m.metricName === 'ai_requests_success').reduce((sum: number, m: AIHealthMetric) => sum + m.value, 0);
+    const failedRequests = recentMetrics.filter((m: AIHealthMetric) => m.metricName === 'ai_requests_failed').reduce((sum: number, m: AIHealthMetric) => sum + m.value, 0);
+    const averageResponseTime = recentMetrics.filter((m: AIHealthMetric) => m.metricName === 'ai_response_time').reduce((sum: number, m: AIHealthMetric) => sum + m.value, 0) / Math.max(recentMetrics.filter((m: AIHealthMetric) => m.metricName === 'ai_response_time').length, 1);
 
     const successRate = totalRequests > 0 ? (successfulRequests / totalRequests) * 100 : 100;
 
@@ -56,7 +62,7 @@ export async function GET(req: NextRequest) {
         averageResponseTime: Math.round(averageResponseTime * 100) / 100,
         uptime: healthChecks.uptime,
       },
-      recentActivity: recentMetrics.slice(0, 5).map(metric => ({
+      recentActivity: recentMetrics.slice(0, 5).map((metric: AIHealthMetric) => ({
         metric: metric.metricName,
         value: metric.value,
         timestamp: metric.createdAt.toISOString(),

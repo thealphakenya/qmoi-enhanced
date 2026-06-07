@@ -123,7 +123,7 @@ function groupTransactions(
   }
   return grouped;
 }
-function calculateStats(transactions: unknown[]): Promise<any> {
+function calculateStats(transactions: unknown[]): any {
   const stats = {
     totalTransactions: transactions.length,
     totalAmount: 0,

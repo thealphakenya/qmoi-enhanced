@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db/prisma';
+import { log } from '@/lib/logger';
 interface ConsciousnessMetrics {
   awarenessLevel: number; // 0-100
   selfAwareness: number; // 0-100
@@ -102,7 +103,7 @@ export async function GET(request: NextRequest) {
     });
 
     if (recentSystemMetrics.length > 0) {
-      const failureRate = recentSystemMetrics.filter(m => 
+      const failureRate = recentSystemMetrics.filter((m: any) => 
         m.metricName.includes('error') || m.metricName.includes('failed')
       ).length / recentSystemMetrics.length;
       

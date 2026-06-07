@@ -27,10 +27,10 @@ export async function GET(req: NextRequest) {
       success: true,
       data: debugInfo
     });
-  } catch (error) {
+  } catch (error: unknown) {
     return NextResponse.json({
       success: false,
-      error: error.message
+      error: error instanceof Error ? error.message : String(error)
     }, { status: 500 });
   }
 }

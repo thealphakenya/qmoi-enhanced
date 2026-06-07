@@ -11,6 +11,14 @@ import logger from "@/lib/logger";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+interface WalletAnalyticsRecord {
+  id: string;
+  currency: string | null;
+  balance?: number | null;
+  status?: string | null;
+  createdAt: string;
+}
+
 function extractToken(req: NextRequest) {
   const authHeader = req.headers.get("Authorization");
   const bearerToken = authHeader?.startsWith("Bearer ")
@@ -118,7 +126,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
       distribution.averageBalance = distribution.walletCount > 0 ? distribution.totalBalance / distribution.walletCount : 0;
     }
 
-    const activeWallets = wallets.filter((wallet) => {
+    const activeWallets = wallets.filter((wallet: WalletAnalyticsRecord) => {
       const walletTxns = transactionsByWallet[String(wallet.id)] || [];
       return walletTxns.length > 0;
     }).length;

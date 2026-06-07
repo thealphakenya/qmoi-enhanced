@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../../lib/db/prisma";
-import { log as logger } from "@/lib/logger";
+import { log } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -50,15 +50,15 @@ export async function GET(req: NextRequest) {
     ]);
 
     // Calculate dispatch statistics
-    const totalDispatches = dispatchMetrics.filter(d => d.metricName === 'dispatch_created').length;
-    const completedDispatches = dispatchMetrics.filter(d => d.metricName === 'dispatch_completed').length;
-    const failedDispatches = dispatchMetrics.filter(d => d.metricName === 'dispatch_failed').length;
+    const totalDispatches = dispatchMetrics.filter((d: any) => d.metricName === 'dispatch_created').length;
+    const completedDispatches = dispatchMetrics.filter((d: any) => d.metricName === 'dispatch_completed').length;
+    const failedDispatches = dispatchMetrics.filter((d: any) => d.metricName === 'dispatch_failed').length;
     const successRate = totalDispatches > 0 ? (completedDispatches / totalDispatches) * 100 : 0;
 
     // Filter by status if specified
     let filteredHistory = dispatchHistory;
     if (status !== 'all') {
-      filteredHistory = dispatchHistory.filter(d => {
+      filteredHistory = dispatchHistory.filter((d: any) => {
         const dimensions = JSON.parse(d.dimensions || '{}');
         return dimensions.status === status;
       });
@@ -71,7 +71,7 @@ export async function GET(req: NextRequest) {
           status: 'operational',
           activeDispatches: activeDispatches.length,
           totalTeams: responseTeams.length,
-          availableTeams: responseTeams.filter(t => t.status === 'available').length,
+          availableTeams: responseTeams.filter((t: any) => t.status === 'available').length,
         },
         metrics: {
           totalDispatches,
@@ -80,7 +80,7 @@ export async function GET(req: NextRequest) {
           successRate: Math.round(successRate * 100) / 100,
           avgResponseTime: calculateAvgDispatchTime(dispatchHistory),
         },
-        activeDispatches: activeDispatches.map(d => ({
+        activeDispatches: activeDispatches.map((d: any) => ({
           id: d.dimensions?.dispatchId || 'unknown',
           type: d.dimensions?.incidentType || 'general',
           location: d.dimensions?.location || 'Unknown',
@@ -88,7 +88,7 @@ export async function GET(req: NextRequest) {
           teamsAssigned: d.dimensions?.teamsAssigned || 0,
           createdAt: d.createdAt.toISOString(),
         })),
-        recentDispatches: filteredHistory.slice(0, 20).map(d => ({
+        recentDispatches: filteredHistory.slice(0, 20).map((d: any) => ({
           id: d.dimensions?.dispatchId || 'unknown',
           type: d.dimensions?.incidentType || 'general',
           status: d.dimensions?.status || 'unknown',
@@ -105,7 +105,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    logger.error('Emergency dispatch status error:', error);
+  log.error('Emergency dispatch status error:', error);
     return NextResponse.json(
       {
         success: false,

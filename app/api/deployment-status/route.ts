@@ -2,12 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../lib/db/prisma";
 import { log } from "@/lib/logger";
 
+type SystemHealthRecord = Awaited<ReturnType<typeof prisma.systemHealth.findMany>>[number];
+
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 export async function GET(req: NextRequest) {
   try {
-    const deployments = await prisma.systemHealth.findMany({
+    const deployments: SystemHealthRecord[] = await prisma.systemHealth.findMany({
       where: {
         category: 'deployment',
         createdAt: {
@@ -18,7 +20,7 @@ export async function GET(req: NextRequest) {
       take: 10,
     });
 
-    const systemHealth = await prisma.systemHealth.findFirst({
+    const systemHealth: SystemHealthRecord | null = await prisma.systemHealth.findFirst({
       where: { name: 'overall_system' },
       orderBy: { createdAt: 'desc' },
     });

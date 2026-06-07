@@ -105,7 +105,6 @@ function FriendshipManagement({
       toast({
         title: "Error",
         description: "Failed to load friends",
-        variant: "destructive",
       });
     } finally {
       setIsLoading(false);
@@ -121,7 +120,7 @@ function FriendshipManagement({
         setStats(data.stats);
       }
     } catch (error) {
-      logger.error("Failed to fetch stats:", error);
+      log.error("Failed to fetch stats:", error as Error | Record<string, any>);
     }
   };
   const handleSendRequest = async (e: React.FormEvent) => {
@@ -154,7 +153,6 @@ function FriendshipManagement({
       toast({
         title: "Error",
         description: "Failed to send friend request",
-        variant: "destructive",
       });
     }
   };
@@ -184,7 +182,6 @@ function FriendshipManagement({
       toast({
         title: "Error",
         description: "Failed to accept request",
-        variant: "destructive",
       });
     }
   };
@@ -216,7 +213,6 @@ function FriendshipManagement({
       toast({
         title: "Error",
         description: "Failed to remove friend",
-        variant: "destructive",
       });
     }
   };
@@ -247,7 +243,6 @@ function FriendshipManagement({
       toast({
         title: "Error",
         description: "Failed to block user",
-        variant: "destructive",
       });
     }
   };

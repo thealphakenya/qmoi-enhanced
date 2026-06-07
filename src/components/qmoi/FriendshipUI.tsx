@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import apiClient from "@/api/client";
+import { useToast } from "@/components/ui/use-toast";
 import { log as logger } from "@/lib/logger";
-class ErrorBoundary extends React.Component {
-  constructor(props) {
+interface ErrorBoundaryProps extends React.PropsWithChildren<{}> {}
+interface ErrorBoundaryState {
+  hasError: boolean;
+}
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false };
   }
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(_: Error) {
     return { hasError: true };
   }
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
   render() {
@@ -81,8 +87,8 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
       if (data.success && data.friends) {
         setFriends(data.friends);
       }
-    } catch (error) {
-      logger.error("Failed to fetch friends:", error);
+    } catch (error: unknown) {
+      logger.error("Failed to fetch friends:", error as Error | Record<string, any>);
     } finally {
       setIsLoading(false);
     }
@@ -96,8 +102,8 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
       if (data.success && data.pending) {
         setPendingRequests(data.pending);
       }
-    } catch (error) {
-      logger.error("Failed to fetch pending requests:", error);
+    } catch (error: unknown) {
+      logger.error("Failed to fetch pending requests:", error as Error | Record<string, any>);
     }
   };
   const fetchStats = async () => {
@@ -109,8 +115,8 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
       if (data.success && data.stats) {
         setStats(data.stats);
       }
-    } catch (error) {
-      logger.error("Failed to fetch stats:", error);
+    } catch (error: unknown) {
+      logger.error("Failed to fetch stats:", error as Error | Record<string, any>);
     }
   };
   const handleSendRequest = async (e: React.FormEvent) => {
@@ -119,7 +125,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
       toast({
         title: "Error",
         description: "Please enter an email address",
-        variant: "destructive",
       });
       return;
     }
@@ -146,7 +151,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
       toast({
         title: "Error",
         description: "Failed to send friend request",
-        variant: "destructive",
       });
     }
   };
@@ -174,7 +178,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
       toast({
         title: "Error",
         description: "Failed to accept request",
-        variant: "destructive",
       });
     }
   };
@@ -202,7 +205,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
       toast({
         title: "Error",
         description: "Failed to remove friend",
-        variant: "destructive",
       });
     }
   };
@@ -230,7 +232,6 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
       toast({
         title: "Error",
         description: "Failed to block user",
-        variant: "destructive",
       });
     }
   };
@@ -553,165 +554,3 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
   );
 }
 export default FriendshipUI;
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    console.error?.('Error caught by boundary:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}

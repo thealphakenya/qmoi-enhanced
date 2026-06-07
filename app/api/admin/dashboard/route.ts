@@ -30,7 +30,7 @@ export async function GET(req: NextRequest) {
 
         if (recentMetrics.length === 0) return 100;
 
-        const errorMetrics = recentMetrics.filter(m => 
+        const errorMetrics = recentMetrics.filter((m: { metricName: string }) => 
           m.metricName.includes('error') || m.metricName.includes('failed')
         ).length;
 
