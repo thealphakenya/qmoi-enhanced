@@ -4,8 +4,6 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 import { NextRequest, NextResponse } from "next/server";
 import { prisma as db } from "@/lib/db/prisma";
-import { log as logger } from "@/lib/logger";
-
 import logger from '@/lib/logger';
 import { requireApiKey } from '@/lib/proposals';
 import authService from '@/lib/auth/service';

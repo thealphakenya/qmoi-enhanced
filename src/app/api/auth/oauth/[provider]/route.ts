@@ -1,6 +1,5 @@
 import logger from '@/lib/logger';
 import {
-import { log as logger } from "@/lib/logger";
   exchangeOAuthCode,
   getOAuthRedirectUrl,
   isSocialProvider,

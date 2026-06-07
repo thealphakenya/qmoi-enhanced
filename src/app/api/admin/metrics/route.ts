@@ -2,7 +2,9 @@
 /**
  * GET function
  */
-export async function GET(request: Request): Promise<any> {
+import { exportPrometheusMetrics, getDashboardMetrics } from '@/lib/telemetry/observability';
+
+export async function GET(request: Request): Promise<Response> {
   const acceptHeader = request.headers.get('accept') || '';
   if (acceptHeader.includes('text/plain')) {
     return new Response(exportPrometheusMetrics(), {

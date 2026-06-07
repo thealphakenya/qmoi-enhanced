@@ -3,61 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
-export /**
- * cn function
- */
-function cn(...inputs: ClassValue[]): any {
-  return twMerge(clsx(inputs))
-}
-
-  } catch (error) {
-    console.error?.("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error?.("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error?.("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error?.("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error?.("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error?.("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error?.("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error?.("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error?.("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error?.("production error:", error);
-    throw error;
-  }
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
 }

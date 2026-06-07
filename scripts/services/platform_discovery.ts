@@ -29,6 +29,6 @@ export class PlatformDiscoveryService {
   }
 
   static async proposeToMaster(platforms: PlatformCandidate[]): Promise<void> {
-    .log("Proposing new platforms to master:", platforms);
+    console.log("Proposing new platforms to master:", platforms);
   }
 }

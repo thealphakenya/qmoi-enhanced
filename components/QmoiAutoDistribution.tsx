@@ -1,27 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import { log as logger } from '@/lib/logger';
 import axios from 'axios';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Switch } from '@/components/ui/switch';
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    logger.error('React Error Boundary caught an error:', error, errorInfo);
-  }
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { PlatformCandidate, PlatformDiscoveryService } from '../scripts/services/platform_discovery';
+import { AnalyticsData, AnalyticsOptimizationService } from '../scripts/services/analytics_optimization';
+import { AssetGenerationService } from '../scripts/services/asset_generation';
+
+interface DistributionPlatformCandidate extends PlatformCandidate {
+  id: string;
+  icon: React.ReactNode;
+  status: string;
+  progress: number;
+}
+
+interface AutoFixResult {
+  fixedIssues?: number;
+  remainingIssues?: number;
+  logs?: string;
+}
+
+interface GitStatus {
+  status?: string;
+  lastCommit?: string;
+  currentBranch?: string;
+}
+
+interface VercelStatus {
+  status?: string;
+  lastDeploy?: string;
+  environment?: string;
+  url?: string;
+  deploymentId?: string;
 }
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
@@ -47,9 +60,6 @@ import {
   GitPullRequest,
   Cloud,
   Rocket,
-  Code,
-  Terminal,
-  Shield,
   Zap,
 } from "lucide-react";
 export const QmoiAutoDistribution: React.FC = () => {
@@ -61,39 +71,49 @@ export const QmoiAutoDistribution: React.FC = () => {
   const [emailAccount] = useState("rovicviccy@gmail.com");
   const [customPlatform, setCustomPlatform] = useState("");
   const [distributionLog, setDistributionLog] = useState<string[]>([]);
-  const [platformCandidates, setPlatformCandidates] = useState<any[]>([]);
+  const [platformCandidates, setPlatformCandidates] = useState<DistributionPlatformCandidate[]>([]);
   const [assetPreview, setAssetPreview] = useState<{
     trailer?: string;
     doc?: string;
     banner?: string;
     ad?: string;
   }>({});
-  const [analytics, setAnalytics] = useState<any[]>([]);
+  const [analytics, setAnalytics] = useState<AnalyticsData[]>([]);
   const [deal, setDeal] = useState({ price: "", description: "" });
   const [dealLog, setDealLog] = useState<string[]>([]);
   const [autoFixLoading, setAutoFixLoading] = useState(false);
-  const [autoFixResult, setAutoFixResult] = useState<any>(null);
+  const [autoFixResult, setAutoFixResult] = useState<AutoFixResult | null>(null);
   const [autoFixError, setAutoFixError] = useState<string | null>(null);
   // GitHub Integration State
-  const [gitStatus, setGitStatus] = useState<any>(null);
+  const [gitStatus, setGitStatus] = useState<GitStatus | null>(null);
   const [gitLoading, setGitLoading] = useState(false);
   const [gitBranch, setGitBranch] = useState("main");
   const [commitMessage, setCommitMessage] = useState("");
   const [prTitle, setPrTitle] = useState("");
   const [prDescription, setPrDescription] = useState("");
   // Vercel Deployment State
-  const [vercelStatus, setVercelStatus] = useState<any>(null);
+  const [vercelStatus, setVercelStatus] = useState<VercelStatus | null>(null);
   const [vercelLoading, setVercelLoading] = useState(false);
   const [deploymentUrl, setDeploymentUrl] = useState("");
   const [autoRedeploy, setAutoRedeploy] = useState(true);
   // Permissions State
-  const [hasGitHubAccess, setHasGitHubAccess] = useState(true);
-  const [hasVercelAccess, setHasVercelAccess] = useState(true);
-  const [hasDeployPermissions, setHasDeployPermissions] = useState(true);
+  const [hasGitHubAccess] = useState(true);
+  const [hasVercelAccess] = useState(true);
+  const [hasDeployPermissions] = useState(true);
   const isMaster = true; // Replace with actual master check logic
   useEffect(() => {
     // Discover new platforms on mount
-    PlatformDiscoveryService.discoverPlatforms().then(setPlatformCandidates);
+    PlatformDiscoveryService.discoverPlatforms().then((platforms) =>
+      setPlatformCandidates(
+        platforms.map((platform) => ({
+          ...platform,
+          id: platform.url,
+          icon: <Globe className="h-5 w-5 text-blue-600" />,
+          status: "Discovering",
+          progress: 70,
+        })),
+      ),
+    );
     // Fetch analytics
     AnalyticsOptimizationService.trackAnalytics().then(setAnalytics);
     // Fetch Git status
@@ -105,11 +125,9 @@ export const QmoiAutoDistribution: React.FC = () => {
     try {
       const response = await axios.get("/api/git/status");
       setGitStatus(response.data);
-    } catch (error) {
-      (globalThis.console as any)?.error?.(
-        "Failed to fetch Git status:",
-        error,
-      );
+    } catch (error: unknown) {
+      const err = error instanceof Error ? error : new Error(String(error));
+      globalThis.console?.error?.("Failed to fetch Git status:", err);
     }
   };
   const fetchVercelStatus = async () => {
@@ -119,11 +137,9 @@ export const QmoiAutoDistribution: React.FC = () => {
       if (response.data.url) {
         setDeploymentUrl(response.data.url);
       }
-    } catch (error) {
-      (globalThis.console as any)?.error?.(
-        "Failed to fetch Vercel status:",
-        error,
-      );
+    } catch (error: unknown) {
+      const err = error instanceof Error ? error : new Error(String(error));
+      globalThis.console?.error?.("Failed to fetch Vercel status:", err);
     }
   };
   const handleGitCommit = async () => {
@@ -141,7 +157,8 @@ export const QmoiAutoDistribution: React.FC = () => {
         ...prev,
       ]);
     } catch (error: unknown) {
-      (globalThis.console as any)?.error?.("Git commit failed:", error);
+      const err = error instanceof Error ? error : new Error(String(error));
+      globalThis.console?.error?.("Git commit failed:", err);
     } finally {
       setGitLoading(false);
     }
@@ -149,7 +166,7 @@ export const QmoiAutoDistribution: React.FC = () => {
   const handleGitPush = async () => {
     setGitLoading(true);
     try {
-      const response = await axios.post("/api/git/push", {
+      await axios.post("/api/git/push", {
         branch: gitBranch,
       });
       await fetchGitStatus();
@@ -158,7 +175,8 @@ export const QmoiAutoDistribution: React.FC = () => {
         ...prev,
       ]);
     } catch (error: unknown) {
-      (globalThis.console as any)?.error?.("Git push failed:", error);
+      const err = error instanceof Error ? error : new Error(String(error));
+      globalThis.console?.error?.("Git push failed:", err);
     } finally {
       setGitLoading(false);
     }
@@ -180,7 +198,8 @@ export const QmoiAutoDistribution: React.FC = () => {
         ...prev,
       ]);
     } catch (error: unknown) {
-      (globalThis.console as any)?.error?.("PR creation failed:", error);
+      const err = error instanceof Error ? error : new Error(String(error));
+      globalThis.console?.error?.("PR creation failed:", err);
     } finally {
       setGitLoading(false);
     }
@@ -201,26 +220,27 @@ export const QmoiAutoDistribution: React.FC = () => {
         ...prev,
       ]);
     } catch (error: unknown) {
-      (globalThis.console as any)?.error?.("Vercel deployment failed:", error);
+      const err = error instanceof Error ? error : new Error(String(error));
+      globalThis.console?.error?.("Vercel deployment failed:", err);
     } finally {
       setVercelLoading(false);
     }
   };
   const handleAutoRedeploy = async () => {
+    const nextState = !autoRedeploy;
+    setAutoRedeploy(nextState);
     setVercelLoading(true);
     try {
-      const response = await axios.post("/api/deploy/auto-redeploy", {
-        enabled: autoRedeploy,
+      await axios.post("/api/deploy/auto-redeploy", {
+        enabled: nextState,
       });
       setDistributionLog((prev) => [
-        `Auto-redeploy ${autoRedeploy ? "enabled" : "enabled"} at ${new Date().toLocaleString()}`,
+        `Auto-redeploy ${nextState ? "enabled" : "disabled"} at ${new Date().toLocaleString()}`,
         ...prev,
       ]);
     } catch (error: unknown) {
-      (globalThis.console as any)?.error?.(
-        "Auto-redeploy toggle failed:",
-        error,
-      );
+      const err = error instanceof Error ? error : new Error(String(error));
+      globalThis.console?.error?.("Auto-redeploy toggle failed:", err);
     } finally {
       setVercelLoading(false);
     }
@@ -258,7 +278,10 @@ export const QmoiAutoDistribution: React.FC = () => {
     setTimeout(() => setIsMarketing(false), 1000);
   };
   const deployToWhatsApp = () => {
-    (globalThis as any).notification?.show("Deployed to WhatsApp!");
+    const notification = (globalThis as unknown as {
+      notification?: { show(message: string): void };
+    }).notification;
+    notification?.show("Deployed to WhatsApp!");
   };
   const handleAutoFix = async () => {
     setAutoFixLoading(true);
@@ -268,7 +291,8 @@ export const QmoiAutoDistribution: React.FC = () => {
       const res = await axios.post("/api/auto-fix");
       setAutoFixResult(res.data);
     } catch (err: unknown) {
-      setAutoFixError(err.message || "Auto-fix failed");
+      const message = err instanceof Error ? err.message : "Auto-fix failed";
+      setAutoFixError(message);
     } finally {
       setAutoFixLoading(false);
     }
@@ -299,8 +323,7 @@ export const QmoiAutoDistribution: React.FC = () => {
               <Button
                 onClick={startDistribution}
                 disabled={isDistributing}
-                className="flex items-center gap-2"
-                size="lg"
+                className="flex items-center gap-2 px-5 py-3"
               >
                 {isDistributing ? (
                   <RefreshCw className="h-4 w-4 animate-spin" />
@@ -312,9 +335,7 @@ export const QmoiAutoDistribution: React.FC = () => {
               <Button
                 onClick={startMarketing}
                 disabled={isMarketing}
-                variant="outline"
-                className="flex items-center gap-2"
-                size="lg"
+                className="flex items-center gap-2 border border-slate-200 px-5 py-3"
               >
                 {isMarketing ? (
                   <RefreshCw className="h-4 w-4 animate-spin" />
@@ -363,7 +384,7 @@ export const QmoiAutoDistribution: React.FC = () => {
                         <CheckCircle className="h-4 w-4 text-green-600" />
                       </div>
                       <Progress value={platform.progress} className="h-2" />
-                      <Button variant="outline" size="sm" className="w-full">
+                      <Button className="w-full border border-slate-200 px-3 py-2">
                         <ExternalLink className="h-3 w-3 mr-1" />
                         View
                       </Button>
@@ -474,10 +495,10 @@ export const QmoiAutoDistribution: React.FC = () => {
                       {platform.description}
                     </div>
                   </div>
-                  <Button size="sm" className="bg-green-100 text-green-700">
+                  <Button className="bg-green-100 text-green-700 px-3 py-1 rounded">
                     Approve
                   </Button>
-                  <Button size="sm" variant="destructive">
+                  <Button className="bg-red-100 text-red-700 px-3 py-1 rounded">
                     Reject
                   </Button>
                 </div>
@@ -550,14 +571,14 @@ export const QmoiAutoDistribution: React.FC = () => {
               <div className="flex gap-2">
                 <Input
                   value={deal.price}
-                  onChange={(e) =>
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setDeal((d) => ({ ...d, price: e.target.value }))
                   }
                   placeholder="Price (e.g. $9.99)"
                 />
                 <Input
                   value={deal.description}
-                  onChange={(e) =>
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setDeal((d) => ({ ...d, description: e.target.value }))
                   }
                   placeholder="Deal Description"
@@ -593,7 +614,7 @@ export const QmoiAutoDistribution: React.FC = () => {
               <div className="flex gap-2">
                 <Input
                   value={customPlatform}
-                  onChange={(e) => setCustomPlatform(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCustomPlatform(e.target.value)}
                   placeholder="Enter platform name or URL"
                 />
                 <Button
@@ -706,7 +727,7 @@ export const QmoiAutoDistribution: React.FC = () => {
                   <Label>Current Branch</Label>
                   <Input
                     value={gitBranch}
-                    onChange={(e) => setGitBranch(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setGitBranch(e.target.value)}
                     placeholder="main"
                   />
                 </div>
@@ -714,7 +735,7 @@ export const QmoiAutoDistribution: React.FC = () => {
                   <Label>Commit Message</Label>
                   <Input
                     value={commitMessage}
-                    onChange={(e) => setCommitMessage(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCommitMessage(e.target.value)}
                     placeholder="feat: auto-deploy updates"
                   />
                 </div>
@@ -743,7 +764,7 @@ export const QmoiAutoDistribution: React.FC = () => {
                   <Label>PR Title</Label>
                   <Input
                     value={prTitle}
-                    onChange={(e) => setPrTitle(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPrTitle(e.target.value)}
                     placeholder="Auto-deploy feature"
                   />
                 </div>
@@ -751,7 +772,7 @@ export const QmoiAutoDistribution: React.FC = () => {
                   <Label>PR Description</Label>
                   <Input
                     value={prDescription}
-                    onChange={(e) => setPrDescription(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPrDescription(e.target.value)}
                     placeholder="Automated deployment updates"
                   />
                 </div>
@@ -808,8 +829,7 @@ export const QmoiAutoDistribution: React.FC = () => {
                 <Button
                   onClick={handleVercelDeploy}
                   disabled={vercelLoading}
-                  className="flex items-center gap-2"
-                  size="lg"
+                  className="flex items-center gap-2 px-5 py-3"
                 >
                   {vercelLoading ? (
                     <RefreshCw className="h-4 w-4 animate-spin" />
@@ -821,8 +841,7 @@ export const QmoiAutoDistribution: React.FC = () => {
                 <Button
                   onClick={handleAutoRedeploy}
                   disabled={vercelLoading}
-                  variant="outline"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 border border-slate-200 px-4 py-3"
                 >
                   <Zap className="h-4 w-4" />
                   Toggle Auto-Redeploy

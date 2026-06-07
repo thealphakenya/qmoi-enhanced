@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
 import { log } from '@/lib/logger';
 import { getCredentialByEmail, updateWebAuthnCredentialLastUsed, verifyWebAuthnAssertion, consumeWebAuthnChallenge } from '@/lib/webauthn';
-import { log as logger } from "@/lib/logger";
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -93,11 +92,12 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       },
     );
   } catch (error) {
-    log.error('WebAuthn authentication finish error', error);
+    const authError = error instanceof Error ? error : new Error(String(error));
+    log.error('WebAuthn authentication finish error', authError);
     return NextResponse.json(
       {
         success: false,
-        error: error instanceof Error ? error.message : 'Authentication verification failed',
+        error: authError.message,
       },
       { status: 500 },
     );

@@ -3,6 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+import crypto from 'crypto';
+import { EventEmitter } from 'events';
 
 interface SecurityMetrics {
   requestCount: number;
@@ -947,12 +949,12 @@ export class BitgetManager extends EventEmitter {
     }
   }
 
-  private checkRapidBalanceChange(_request: unknown): boolean {
+  private checkRapidBalanceChange(_: unknown): boolean {
     // Implement balance change detection logic
     return false;
   }
 
-  private checkUnusualTradingVolume(_request: unknown): boolean {
+  private checkUnusualTradingVolume(_: unknown): boolean {
     // Implement trading volume detection logic
     return false;
   }
@@ -1065,12 +1067,12 @@ export class BitgetManager extends EventEmitter {
     return true;
   }
 
-  private async validateRequestSignature(_request: unknown): Promise<boolean> {
+  private async validateRequestSignature(_: unknown): Promise<boolean> {
     try {
       // Implement request signature validation logic
       return true;
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console?.error?.(
         "Error validating request signature:",
         error,
       );
@@ -1116,7 +1118,7 @@ export class BitgetManager extends EventEmitter {
   }
 
   public async updateSecurityConfig(
-    config: full<BitgetConfig["security"]>,
+    config: Partial<BitgetConfig["security"]>,
   ): Promise<void> {
     this.config.security = {
       ...this.config.security,
@@ -1144,7 +1146,7 @@ export class BitgetManager extends EventEmitter {
   }
 
   public async updateConnectionStatus(
-    status: full<BitgetConfig["connectionStatus"]>,
+    status: Partial<BitgetConfig["connectionStatus"]>,
   ): Promise<void> {
     this.connectionStatus = {
       ...this.connectionStatus,
@@ -1163,7 +1165,7 @@ export class BitgetManager extends EventEmitter {
       // Implement API credential validation logic here
       return true;
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console?.error?.(
         "Error validating Bitget API credentials:",
         error,
       );
@@ -1176,7 +1178,7 @@ export class BitgetManager extends EventEmitter {
   }
 
   public async updateAnomalyDetectionConfig(
-    config: full<AnomalyDetectionConfig>,
+    config: Partial<AnomalyDetectionConfig>,
   ): Promise<void> {
     this.config.security.anomalyDetection = {
       ...this.config.security.anomalyDetection,

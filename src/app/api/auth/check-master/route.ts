@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { log } from '@/lib/logger';
-import { log as logger } from "@/lib/logger";
 
 /**
  * Master Authentication Check API Route
@@ -30,7 +29,7 @@ function isMasterAuthorized(request: NextRequest): boolean {
 /**
  * GET function
  */
-export async function GET(request: NextRequest): Promise<any> {
+export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
     const isMaster = isMasterAuthorized(request);
 
@@ -42,7 +41,8 @@ export async function GET(request: NextRequest): Promise<any> {
     });
 
   } catch (error) {
-    log.error('Master auth check API error:', error);
+    const authError = error instanceof Error ? error : new Error(String(error));
+    log.error('Master auth check API error:', authError);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

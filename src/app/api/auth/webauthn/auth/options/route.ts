@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getCredentialByEmail, makeWebAuthnOptions } from '@/lib/webauthn';
 import { log } from '@/lib/logger';
-import { log as logger } from "@/lib/logger";
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -41,11 +40,12 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       { status: 200 },
     );
   } catch (error) {
-    log.error('WebAuthn authentication options error', error);
+    const authError = error instanceof Error ? error : new Error(String(error));
+    log.error('WebAuthn authentication options error', authError);
     return NextResponse.json(
       {
         success: false,
-        error: error instanceof Error ? error.message : 'Failed to generate assertion options',
+        error: authError.message,
       },
       { status: 500 },
     );

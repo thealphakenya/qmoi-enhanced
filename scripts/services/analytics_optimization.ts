@@ -30,7 +30,7 @@ export class AnalyticsOptimizationService {
   }
 
   static async reportToMaster(data: AnalyticsData[]): Promise<void> {
-    .log("Reporting analytics to master:", data);
+    console.log("Reporting analytics to master:", data);
   }
 
   static async suggestOptimizations(data: AnalyticsData[]): Promise<string[]> {
