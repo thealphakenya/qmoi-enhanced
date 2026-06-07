@@ -173,7 +173,7 @@ export async function PUT(req: NextRequest): Promise<any> {
         id: Date.now(),
         action: "employee_updated",
         employeeId: id,
-        details: `Employee ${[index].name} updated`,
+        details: `Employee ${employees[index].name} updated`,
         timestamp: Date.now(),
       });
       return NextResponse.json({
@@ -198,7 +198,7 @@ export async function PUT(req: NextRequest): Promise<any> {
         id: Date.now(),
         action: "user_updated",
         userId: id,
-        details: `User ${[index].name} updated`,
+        details: `User ${users[index].name} updated`,
         timestamp: Date.now(),
       });
       return NextResponse.json({
