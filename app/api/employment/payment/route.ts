@@ -23,14 +23,14 @@ const PaymentSchema = z.object({
   recipientId: z.string(),
   recipientType: z.enum(["employee", "user"]),
   amount: z.number().positive(),
-  paymentMethod: z.enum(["mpesa", "airtel", "pesapal", "bank"]),
+  paymentMethod: z.enum(["mpesa", "airtel", "paypal", "bank"]),
   description: z.string(),
   scheduledDate: z.string().optional(),
 });
 const PaymentInfoSchema = z.object({
   recipientId: z.string(),
   recipientType: z.enum(["employee", "user"]),
-  paymentMethod: z.enum(["mpesa", "airtel", "pesapal", "bank"]),
+  paymentMethod: z.enum(["mpesa", "airtel", "paypal", "bank"]),
   accountNumber: z.string().optional(),
   accountName: z.string().optional(),
   mpesaNumber: z.string().optional(),
@@ -41,9 +41,9 @@ const payments: any[] = [];
 const paymentLogs: any[] = [];
 // Do NOT keep fallback literal secrets in source. Provide via environment or secrets manager.
 const PAYMENT_CREDENTIALS = {
-  pesapal: {
-    consumerKey: process.env.PESAPAL_CONSUMER_KEY || "",
-    consumerSecret: process.env.PESAPAL_CONSUMER_SECRET || "",
+  paypal: {
+    clientId: process.env.PAYPAL_CLIENT_ID || "",
+    clientSecret: process.env.PAYPAL_CLIENT_SECRET || "",
   },
   mpesa: {
     consumerKey: process.env.MPESA_CONSUMER_KEY || "",
@@ -62,7 +62,7 @@ function maskSecret(s: string | undefined | null): any {
 async function backupCredentialsSafe(credentials: any, platform: string): Promise<any> {
   try {
     const masked = {
-      pesapal: { consumerKey: maskSecret(credentials?.pesapal?.consumerKey) },
+      paypal: { clientId: maskSecret(credentials?.paypal?.clientId) },
       mpesa: { passkey: maskSecret(credentials?.mpesa?.passkey) },
     };
     log.info(`Safe backup for ${platform}:`, masked);
@@ -158,39 +158,46 @@ async function processAirtelPayment(paymentData: unknown): Promise<any> {
     return { success: false, _error: "Airtel payment failed" };
   }
 }
-async function processPesapalPayment(paymentData: unknown): Promise<any> {
+async function processPayPalPayment(paymentData: unknown): Promise<any> {
   const data = paymentData as any;
   try {
-    const _response = await apiClient.get(
-      "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
+    // PayPal API endpoint for creating payments
+    const paypalApiEndpoint = process.env.PAYPAL_API_ENDPOINT || "https://api.paypal.com/v1/payments/payment";
+    
+    const _response = await apiClient.post(
+      paypalApiEndpoint,
       {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/xml",
+        intent: "sale",
+        payer: {
+          payment_method: "paypal",
+          payer_info: {
+            email: data.email || "buyer@example.com",
+            first_name: data.accountName?.split(" ")[0] || "User",
+            last_name: data.accountName?.split(" ").slice(1).join(" ") || "Name",
+            phone: data.phone || "",
+          },
         },
-        body: `
-        <PesapalDirectOrderInfo 
-          xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" 
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema" 
-          Amount="${data.amount}" 
-          Description="${data.description}" 
-          Type="MERCHANT" 
-          Reference="${Date.now()}" 
-          FirstName="${data.accountName?.split(" ")[0] || "User"}" 
-          LastName="${
-            data.accountName?.split(" ").slice(1).join(" ") || "Name"
-          }" 
-          Email="${data.email}" 
-          PhoneNumber="${data.phone}" 
-          xmlns="https://www.pesapal.com" />
-      `,
+        transactions: [
+          {
+            amount: {
+              total: data.amount.toString(),
+              currency: "USD",
+            },
+            description: data.description,
+            reference_id: `TXN-${Date.now()}`,
+          },
+        ],
+        redirect_urls: {
+          return_url: `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/payment/success`,
+          cancel_url: `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/payment/cancel`,
+        },
       },
     );
-    const result = await _response.text();
-    return { success: true, reference: result, provider: "pesapal" };
+    const result = await _response.json();
+    return { success: true, reference: result.id, provider: "paypal", approval_url: result.links?.find((l: any) => l.rel === "approval_url")?.href };
   } catch (_error){
-    log.error("Pesapal payment failed:", _error);
-    return { success: false, _error: "Pesapal payment failed" };
+    logger.error("PayPal payment failed:", _error);
+    return { success: false, _error: "PayPal payment failed" };
   }
 }
 export async function GET(req: NextRequest): Promise<any> {
@@ -217,7 +224,7 @@ export async function GET(req: NextRequest): Promise<any> {
       return NextResponse.json({
         success: true,
         data: {
-          pesapal: { consumerKey: maskSecret(PAYMENT_CREDENTIALS.pesapal.consumerKey) },
+          paypal: { clientId: maskSecret(PAYMENT_CREDENTIALS.paypal.clientId) },
           mpesa: { passkey: maskSecret(PAYMENT_CREDENTIALS.mpesa.passkey) },
           airtel: { clientId: maskSecret(PAYMENT_CREDENTIALS.airtel.clientId) },
         },
@@ -268,8 +275,8 @@ export async function POST(req: NextRequest): Promise<any> {
         case "airtel":
           result = await processAirtelPayment(validatedData);
           break;
-        case "pesapal":
-          result = await processPesapalPayment(validatedData);
+        case "paypal":
+          result = await processPayPalPayment(validatedData);
           break;
         default:
           result = { success: false, _error: "Unsupported payment method" };

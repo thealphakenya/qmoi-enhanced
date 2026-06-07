@@ -165,7 +165,7 @@ export async function POST(req: NextRequest) {
     });
 
     // Calculate progress for each task
-    const tasksWithProgress = mediaTasks.map(task => {
+    const tasksWithProgress = mediaTasks.map((task: any) => {
       let progress = 0;
       let estimatedTimeRemaining = null;
 

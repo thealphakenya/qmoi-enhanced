@@ -5,8 +5,6 @@ import { readPersistedUser } from "../../app/lib/auth/persistence";
 import type { NextRequest } from "next/server";
 import { log as logger } from "@/lib/logger";
 
-declare const logger: any;
-
 // Master-only role constant
 export const MASTER_ROLE = "master";
 export const FINANCIAL_ROLES = [MASTER_ROLE];

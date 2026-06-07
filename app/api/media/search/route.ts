@@ -91,7 +91,7 @@ export async function GET(req: NextRequest) {
     });
 
     // Parse result data for each task
-    const tasksWithParsedData = mediaTasks.map(task => ({
+    const tasksWithParsedData = mediaTasks.map((task: any) => ({
       id: task.id,
       type: task.type,
       prompt: task.prompt,
@@ -243,7 +243,7 @@ export async function POST(req: NextRequest) {
     });
 
     // Parse result data and add metadata
-    const tasksWithMetadata = mediaTasks.map(task => {
+    const tasksWithMetadata = mediaTasks.map((task: any) => {
       const resultData = task.resultData ? JSON.parse(task.resultData) : null;
       const parameters = task.parameters ? JSON.parse(task.parameters) : null;
 

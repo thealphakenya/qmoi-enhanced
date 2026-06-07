@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 import { NextRequest, NextResponse } from "next/server";
 import { logEvent } from "../../../../lib/security_check";
-import { processMpesaCallback } from "@/lib/payments/service";
 import { notifyPaymentSuccess, notifyPaymentFailure } from "@/lib/notifier";
 import { getPrismaClient } from "@/lib/prisma";
 import { requireApiKey } from "@/lib/proposals";
@@ -10,11 +9,6 @@ import { log as logger } from "@/lib/logger";
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-const logger = {
-  info: console.info.bind(console),
-  warn: console.warn.bind(console),
-  error: console.error.bind(console),
-};
 function verifyWebhook(raw: string, signatureHeader: string | undefined): boolean {
   // Implement webhook signature verification using the configured secret.
   // This function should return true only when the signature and payload are valid.

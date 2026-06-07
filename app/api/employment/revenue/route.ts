@@ -6,11 +6,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { log as logger } from "@/lib/logger";
-const logger = {
-  info: console.info.bind(console),
-  warn: console.warn.bind(console),
-  error: console.error.bind(console),
-};
+
 // Revenue generation schemas
 const MicrotaskSchema = z.object({
   title: z.string(),

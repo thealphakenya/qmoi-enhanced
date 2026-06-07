@@ -46,17 +46,17 @@ export async function GET(req: NextRequest) {
     });
 
     const totalRequests = apiMetrics
-      .filter(m => m.metricName === 'api_requests_total')
-      .reduce((sum, m) => sum + m.value, 0);
+      .filter((m: any) => m.metricName === 'api_requests_total')
+      .reduce((sum: any, m: any) => sum + m.value, 0);
 
     const errorRate = totalRequests > 0
-      ? (apiMetrics.filter(m => m.metricName === 'api_requests_error').reduce((sum, m) => sum + m.value, 0) / totalRequests) * 100
+      ? (apiMetrics.filter((m: any) => m.metricName === 'api_requests_error').reduce((sum: any, m: any) => sum + m.value, 0) / totalRequests) * 100
       : 0;
 
     const avgResponseTime = apiMetrics
-      .filter(m => m.metricName === 'api_response_time')
-      .reduce((sum, m) => sum + m.value, 0) /
-      Math.max(apiMetrics.filter(m => m.metricName === 'api_response_time').length, 1);
+      .filter((m: any) => m.metricName === 'api_response_time')
+      .reduce((sum: any, m: any) => sum + m.value, 0) /
+      Math.max(apiMetrics.filter((m: any) => m.metricName === 'api_response_time').length, 1);
 
     return NextResponse.json({
       success: true,
