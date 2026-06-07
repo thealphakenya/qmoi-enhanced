@@ -1,6 +1,8 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
-import React from 'react';
-
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import Typography from '@mui/material/Typography';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:12Z
@@ -27,20 +29,20 @@ function handleWallpaperChange(e: React.ChangeEvent<HTMLInputElement>): any {
  * handleThemeChange function
  */
 function handleThemeChange(e: React.ChangeEvent<HTMLSelectElement>): any {
-    setAppearance((prev) => ({ prev, theme: e.target.value }));
+    setAppearance((prev) => ({ theme: e.target.value, font: prev.font }));
   }
   /**
  * handleFontChange function
  */
 function handleFontChange(e: React.ChangeEvent<HTMLSelectElement>): any {
-    setAppearance((prev) => ({ prev, font: e.target.value }));
+    setAppearance((prev) => ({ theme: prev.theme, font: e.target.value }));
   }
   /**
  * handleAppAdd function
  */
 function handleAppAdd(): any {
     const app = prompt("Enter app package or name:");
-    if (app) setApps((prev) => [prev, app]);
+    if (app) setApps((prev) => [...prev, app]);
   }
   /**
  * handleAppRemove function

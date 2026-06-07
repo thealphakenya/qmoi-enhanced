@@ -13,6 +13,16 @@ export interface QmoiUser {
   accessLevel: number;
 }
 
+export interface UseAuthReturn {
+  user: QmoiUser;
+  isAuthenticated: boolean;
+  isLoading: boolean;
+  hasAccess: (permission: string) => boolean;
+  login: (role: UserRole) => void;
+  refreshUser: () => Promise<void>;
+  logout: () => Promise<void>;
+}
+
 const roleProfiles: Record<UserRole, Omit<QmoiUser, "id">> = {
   master: {
     displayName: "Master QMOI",
@@ -74,7 +84,7 @@ function readRoleFromUrl(): UserRole | null {
   return null;
 }
 
-export function useAuth() {
+export function useAuth(): UseAuthReturn {
   const [user, setUser] = useState<QmoiUser>(() => ({
     id: "guest",
     displayName: "Guest",

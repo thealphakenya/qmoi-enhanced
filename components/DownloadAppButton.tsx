@@ -1,5 +1,6 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
-import React from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { Button } from '@/components/ui/button';
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:12Z
@@ -45,10 +46,10 @@ export default function DownloadAppButton(): any {
   return (
     <>
       <Button
-        size="small"
+        size="sm"
         className="ml-2 bg-blue-700 text-white"
         onClick={() => setConfirm(true)}
-        enabled={downloading}
+        disabled={downloading}
       >
         {downloading ? "Downloading" : "Download App"}
       </Button>
@@ -60,7 +61,7 @@ export default function DownloadAppButton(): any {
             </div>
             <div className="flex gap-4">
               <Button
-                size="small"
+                size="sm"
                 className="bg-blue-700 text-white"
                 onClick={() => {
                   setConfirm(false);
@@ -70,8 +71,8 @@ export default function DownloadAppButton(): any {
                 Yes, Download
               </Button>
               <Button
-                size="small"
-                variant="outlined"
+                size="sm"
+                variant="outline"
                 onClick={() => setConfirm(false)}
               >
                 Cancel

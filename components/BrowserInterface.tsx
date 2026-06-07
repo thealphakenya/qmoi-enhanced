@@ -1,6 +1,6 @@
 import React from "react";
 
-const BrowserInterface = (): JSX.Element => {
+const BrowserInterface = (): React.ReactElement => {
   return (
     <div style={{ padding: 32, color: "red" }}>
       BrowserInterface is disabled.

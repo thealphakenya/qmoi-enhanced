@@ -364,7 +364,7 @@ export default function CashonTradingPanel(): any {
             <Button
               onClick={() => requestDeposit(50)}
               disabled={isLoading}
-              variant="secondary"
+              variant="contained"
               className="flex items-center gap-2"
             >
               <DollarSign className="h-4 w-4" />
@@ -373,7 +373,7 @@ export default function CashonTradingPanel(): any {
             <Button
               onClick={() => requestDeposit(100)}
               disabled={isLoading}
-              variant="secondary"
+              variant="contained"
               className="flex items-center gap-2"
             >
               <DollarSign className="h-4 w-4" />
@@ -382,7 +382,7 @@ export default function CashonTradingPanel(): any {
             <Button
               onClick={() => requestDeposit(500)}
               disabled={isLoading}
-              variant="secondary"
+              variant="contained"
               className="flex items-center gap-2"
             >
               <DollarSign className="h-4 w-4" />
@@ -495,7 +495,7 @@ export default function CashonTradingPanel(): any {
                 <div className="space-y-3">
                   {balance?.transactionHistory
                     ?.slice(-5)
-                    .map((tx: unknown, index: number) => (
+                    .map((tx: any, index: number) => (
                       <div
                         key={index}
                         className="flex items-center justify-between p-3 border rounded-lg"

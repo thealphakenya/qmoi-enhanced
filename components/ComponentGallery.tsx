@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { log as logger } from '@/lib/logger';
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:07Z
@@ -38,6 +39,10 @@ interface ComponentMetadata {
   qvsAccessed?: boolean;
   autoresearched?: boolean;
   datasetAccessed?: boolean;
+  intelligence?: boolean;
+  accuracy?: number;
+  optimizations?: string[];
+  problemSolution?: string | null;
 }
 // Autonomous QMOI capabilities
 interface QMOICapabilities {
@@ -407,7 +412,7 @@ export default function ComponentGallery(): any {
             const problemSolution = component.status === "error" ?
               await qmoiOperations.solveProblems(component) : null;
             return {
-              component,
+              ...component,
               qmoiScore: qvsScore,
               memorySynced,
               parallelProcessed: true,
@@ -495,7 +500,7 @@ export default function ComponentGallery(): any {
     return filtered;
   }, [results, filterCategory, filterStatus, searchQuery, sortBy]);
   const categories = useMemo(() => {
-    return ["all", new Set(results.map((r) => r.category))];
+    return ["all", ...Array.from(new Set(results.map((r) => r.category)))];
   }, [results]);
   const stats = useMemo(() => {
     const qmoiMetrics = {
@@ -602,7 +607,7 @@ export default function ComponentGallery(): any {
             </label>
             <input
               type="text"
-              value="Search by name or path"
+              placeholder="Search by name or path"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"

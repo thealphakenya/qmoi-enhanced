@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { readPersistedUser } from "@/app/lib/auth/persistence";
 
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {

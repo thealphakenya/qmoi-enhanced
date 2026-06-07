@@ -2,6 +2,8 @@ import ErrorBoundary from '@/components/ErrorBoundary';
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { readPersistedUser } from '@/app/lib/auth/persistence';
+import apiClient from '@/api/client';
+import { log as logger } from '@/lib/logger';
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {

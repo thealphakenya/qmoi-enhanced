@@ -1,5 +1,5 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
-import React from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { readPersistedUser } from '@/app/lib/auth/persistence';
 // Master-only access control
 const requireMasterAccess = (WrappedComponent: any) => {

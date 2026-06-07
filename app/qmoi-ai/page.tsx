@@ -116,7 +116,7 @@ export default function QMoiAIPage() {
       // Store conversation in QMOI memory
       const memoryPayload = {
         action: 'store_memory',
-        userId: user?.id || user?.userId || 'anonymous-user',
+        userId: user?.id || 'anonymous-user',
         key: `chat-${Date.now()}`,
         value: input,
         category: 'conversation',

@@ -1,5 +1,7 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
-import React from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { readPersistedUser } from '@/app/lib/auth/persistence';
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Master-only access control

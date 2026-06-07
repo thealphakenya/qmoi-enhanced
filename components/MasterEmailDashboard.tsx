@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import apiClient from '@/api/client';
+import { log as logger } from '@/lib/logger';
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Master-only access control
 import { readPersistedUser } from '@/app/lib/auth/persistence';

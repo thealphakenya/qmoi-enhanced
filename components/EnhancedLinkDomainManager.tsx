@@ -1,5 +1,14 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
-import React from 'react';
+import apiClient from '@/api/client';
+import { log as logger } from '@/lib/logger';
+
+const notification = {
+  show: (message: string) => {
+    if (typeof window !== 'undefined') {
+      window.alert(message);
+    }
+  },
+};
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:07Z
@@ -75,7 +84,7 @@ interface Track {
   updatedAt: Date;
   metadata: Record<string, any>;
 }
-export /**
+/**
  * EnhancedLinkDomainManager function
  */
 export default function EnhancedLinkDomainManager(): any {

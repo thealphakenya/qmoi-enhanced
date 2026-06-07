@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useCallback } from "react";
 import Link from "next/link";
 import { useAuth } from "../hooks/useAuth";
 import AdminDashboard from "../components/AdminDashboard";
@@ -25,26 +25,51 @@ import TestingAutomationSuite from "../components/TestingAutomationSuite";
 import MonitoringDashboard from "../components/MonitoringDashboard";
 import ComplianceManager from "../components/ComplianceManager";
 
-const defaultMetrics = [
+interface Metric {
+  label: string;
+  value: number | string;
+  delta: string;
+  status: "good" | "warning";
+}
+
+interface Service {
+  name: string;
+  status: "operational" | "degraded" | "offline";
+}
+
+interface Incident {
+  id: string;
+  category: string;
+  summary: string;
+  severity: "low" | "medium" | "high";
+}
+
+interface StatusSummary {
+  overallHealth: string;
+  uptime: string;
+  activeAlerts: number;
+}
+
+const defaultMetrics: Metric[] = [
   { label: "Connected Nodes", value: 128, delta: "+4%", status: "good" },
   { label: "Active Services", value: 34, delta: "+1%", status: "good" },
   { label: "Open Alerts", value: 3, delta: "-18%", status: "warning" },
   { label: "Incident Response", value: "2m 30s", delta: "-12%", status: "good" },
 ];
 
-const defaultServices = [
+const defaultServices: Service[] = [
   { name: "Water Supply Control", status: "operational" },
   { name: "Transit Management", status: "operational" },
   { name: "Energy Grid Monitoring", status: "degraded" },
   { name: "Public Safety Sensors", status: "operational" },
 ];
 
-const defaultIncidents = [
+const defaultIncidents: Incident[] = [
   { id: "IQ-921", category: "Grid Load", summary: "Power surge detected in sector 7", severity: "high" },
   { id: "IQ-913", category: "Traffic", summary: "Signal sync disruption on 5th Avenue", severity: "medium" },
 ];
 
-const getBadgeClass = (status) => {
+const getBadgeClass = (status: string): string => {
   switch (status) {
     case "operational":
       return "bg-emerald-600/15 text-emerald-300 border-emerald-500/40";
@@ -57,13 +82,13 @@ const getBadgeClass = (status) => {
   }
 };
 
-export default function QCityDashboardPage() {
-  const { user, hasAccess, login } = useAuth();
-  const [metrics, setMetrics] = useState(defaultMetrics);
-  const [services, setServices] = useState(defaultServices);
-  const [incidentReports, setIncidentReports] = useState(defaultIncidents);
-  const [lastUpdated, setLastUpdated] = useState("");
-  const [statusSummary, setStatusSummary] = useState({
+export default function QCityDashboardPage(): React.ReactElement {
+  const { user, hasAccess: checkAccess, login } = useAuth();
+  const [metrics, setMetrics] = useState<Metric[]>(defaultMetrics);
+  const [services, setServices] = useState<Service[]>(defaultServices);
+  const [incidentReports, setIncidentReports] = useState<Incident[]>(defaultIncidents);
+  const [lastUpdated, setLastUpdated] = useState<string>("");
+  const [statusSummary, setStatusSummary] = useState<StatusSummary>({
     overallHealth: "operational",
     uptime: "99.98%",
     activeAlerts: 2,
@@ -72,7 +97,7 @@ export default function QCityDashboardPage() {
   useEffect(() => {
     let active = true;
 
-    async function loadStatus() {
+    const loadStatus = async (): Promise<void> => {
       try {
         const [metricsRes, statusRes] = await Promise.all([
           fetch("/api/qcity/metrics", { cache: "no-store" }),
@@ -101,23 +126,23 @@ export default function QCityDashboardPage() {
           }
         }
       } catch (error) {
-        console.error("Failed to load QCity status:", error);
+        console.error("Failed to load QCity status:", error as Error);
       }
-    }
+    };
 
     loadStatus();
 
     return () => {
       active = false;
     };
-  }, []);
+  }, [lastUpdated]);
 
-  const roleSummary = useMemo(() => {
-    if (user.role === "master") return "Full enterprise control, deployment, and monitoring access.";
-    if (user.role === "sister") return "Personal insights, collaboration, and creative workspace access.";
-    if (user.role === "user") return "General QMOI features, chat, help, and view-only dashboards.";
+  const roleSummary = useMemo<string>(() => {
+    if (user?.role === "master") return "Full enterprise control, deployment, and monitoring access.";
+    if (user?.role === "sister") return "Personal insights, collaboration, and creative workspace access.";
+    if (user?.role === "user") return "General QMOI features, chat, help, and view-only dashboards.";
     return "Guest access with limited AI and help support.";
-  }, [user.role]);
+  }, [user?.role]);
 
   return (
     <main className="min-h-screen bg-slate-950 p-8 text-white">
@@ -130,12 +155,12 @@ export default function QCityDashboardPage() {
             </div>
             <div className="rounded-3xl bg-slate-950/80 px-5 py-4 border border-slate-700">
               <p className="text-sm uppercase tracking-[0.24em] text-slate-400">Current user</p>
-              <p className="mt-2 text-3xl font-semibold text-emerald-300">{user.displayName}</p>
-              <p className="text-slate-400">Role: {user.role}</p>
+              <p className="mt-2 text-3xl font-semibold text-emerald-300">{user?.displayName || "Guest"}</p>
+              <p className="text-slate-400">Role: {user?.role || "guest"}</p>
             </div>
           </div>
           <div className="mt-6 flex flex-wrap gap-3">
-            {user.role !== "master" && (
+            {user?.role !== "master" && (
               <button
                 className="rounded-xl bg-cyan-600 px-5 py-3 text-sm font-semibold text-white hover:bg-cyan-500"
                 onClick={() => login("master")}
@@ -143,7 +168,7 @@ export default function QCityDashboardPage() {
                 Switch to Master Role
               </button>
             )}
-            {hasAccess("qvillage_access") && (
+            {checkAccess("qvillage_access") && (
               <Link
                 className="rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-500"
                 href="/qvillage"
@@ -151,7 +176,7 @@ export default function QCityDashboardPage() {
                 Open QVillage
               </Link>
             )}
-            {hasAccess("qmoi_space_access") && (
+            {hasAccess?.("qmoi_space_access") && (
               <Link
                 className="rounded-xl bg-violet-600 px-5 py-3 text-sm font-semibold text-white hover:bg-violet-500"
                 href="/qmoi-space"

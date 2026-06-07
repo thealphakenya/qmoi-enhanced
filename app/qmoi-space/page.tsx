@@ -41,7 +41,7 @@ export default function QMoiSpacePage() {
   const [showComponents, setShowComponents] = useState(true);
   const [stats, setStats] = useState(defaultStats);
   const [marketplace, setMarketplace] = useState(defaultMarketplace);
-  const [activeProjects, setActiveProjects] = useState([]);
+  const [activeProjects, setActiveProjects] = useState<Array<{ id: string; name: string; status: string }>>([]);
   const [lastUpdated, setLastUpdated] = useState('');
   const [qmoiStatus, setQmoiStatus] = useState<any>(null);
   const [qmoiStatusLoading, setQmoiStatusLoading] = useState(true);

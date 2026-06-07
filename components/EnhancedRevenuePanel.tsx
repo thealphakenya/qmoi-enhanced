@@ -1,9 +1,22 @@
-import React from 'react';
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:12Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 "use client";
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import apiClient from '@/api/client';
+import { log as logger } from '@/lib/logger';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Progress } from '@/components/ui/progress';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Switch } from '@/components/ui/switch';
+import { Separator } from '@/components/ui/separator';
 import {
   DollarSign,
   TrendingUp,
@@ -19,6 +32,19 @@ import {
   Clock,
   BarChart3,
 } from "lucide-react";
+
+const notification = {
+  show: (message: string) => {
+    if (typeof window !== 'undefined') {
+      window.alert(message);
+    }
+  },
+};
+
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:12Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 interface RevenueData {
   mpesa: number;
   airtel: number;
@@ -74,7 +100,7 @@ export default function EnhancedRevenuePanel(): any {
       return () => clearInterval(interval);
     }
   }, [isMaster]);
-  const checkMasterStatus = async () => {
+  const checkMasterStatus = async (): Promise<void> => {
     try {
       const response = await apiClient.get("/api/qmoi/master/verify", {
         method: "POST",

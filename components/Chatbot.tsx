@@ -1,6 +1,7 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import { log as logger } from "@/lib/logger";
 import { readPersistedStorageValue, writePersistedStorageValue } from "@/app/lib/auth/persistence";
 export interface ChatMessage {
   id: string | number;

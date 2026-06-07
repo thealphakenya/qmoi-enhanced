@@ -153,21 +153,21 @@ const AppManager: React.FC = () => {
     try {
       await appManagementService.downloadApp(appId);
     } catch (error) {
-      console.error("Download failed:", error);
+      console?.error?.("Download failed:", error);
     }
   };
   const handleUpdate = async (appId: string) => {
     try {
       await appManagementService.updateApp(appId);
     } catch (error) {
-      console.error("Update failed:", error);
+      console?.error?.("Update failed:", error);
     }
   };
   const handleTroubleshoot = async (appId: string) => {
     try {
       await appManagementService.troubleshootApp(appId);
     } catch (error) {
-      console.error("Troubleshooting failed:", error);
+      console?.error?.("Troubleshooting failed:", error);
     }
   };
   const formatFileSize = (bytes: number): string => {

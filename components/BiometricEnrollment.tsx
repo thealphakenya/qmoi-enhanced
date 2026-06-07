@@ -14,6 +14,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Fingerprint,
   Eye,
@@ -154,7 +156,7 @@ export const BiometricEnrollment: React.FC<BiometricEnrollmentProps> = ({
           </div>
           <Button
             onClick={() => enrollBiometric(method)}
-            enabled={isEnrolled || enrolling}
+            disabled={isEnrolled || enrolling}
             variant={isEnrolled ? "outline" : "default"}
             size="sm"
             className="w-full"

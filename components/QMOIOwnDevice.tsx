@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import ErrorBoundary from '@/components/ErrorBoundary';
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system

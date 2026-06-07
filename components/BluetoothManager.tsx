@@ -21,7 +21,7 @@ export const BluetoothManager: React.FC = () => {
     null,
   );
   const [directions, setDirections] = useState<string | null>(null);
-  async function scanForDevices(): any {
+  async function scanForDevices(): Promise<void> {
     setError(null);
     setConnecting(true);
     try {
