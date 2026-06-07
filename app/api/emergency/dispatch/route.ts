@@ -105,7 +105,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-  log.error('Emergency dispatch status error:', error);
+  logger.error('Emergency dispatch status error:', error);
     return NextResponse.json(
       {
         success: false,

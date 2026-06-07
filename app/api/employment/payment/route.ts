@@ -10,7 +10,14 @@ import { log } from "@/lib/logger";
 import {
   validateMasterAuth,
   requireMasterAuth,
-} from "@/lib/auth/validate-master";
+} from "@/app/lib/auth/validate-master";
+
+// Helper to get client IP from request
+const getClientIp = (req: NextRequest): string => {
+  const forwarded = req.headers.get('x-forwarded-for');
+  return (forwarded ? forwarded.split(',')[0].trim() : req.headers.get('x-real-ip')) ?? 'unknown';
+};
+
 // Payment schemas
 const PaymentSchema = z.object({
   recipientId: z.string(),
@@ -203,7 +210,7 @@ export async function GET(req: NextRequest): Promise<any> {
       // Guard credentials with Master auth
       const auth = await validateMasterAuth(req);
       if (!auth.authenticated) {
-        log.warn("Unauthorized credentials access attempt", { ip: req.ip ?? "unknown", reason: auth.error });
+        log.warn("Unauthorized credentials access attempt", { ip: getClientIp(req), reason: auth.error });
         return NextResponse.json({ success: false, _error: "Unauthorized" }, { status: 401 });
       }
       // Only return non-sensitive info
@@ -239,7 +246,7 @@ export async function POST(req: NextRequest): Promise<any> {
       // Require master auth to initiate payments
       const auth = await validateMasterAuth(req);
       if (!auth.authenticated) {
-        log.warn("Unauthorized payment attempt", { action, ip: req.ip ?? "unknown", reason: auth.error });
+        log.warn("Unauthorized payment attempt", { action, ip: getClientIp(req), reason: auth.error });
         return NextResponse.json({ success: false, _error: "Unauthorized" }, { status: 401 });
       }
       const validatedData = PaymentSchema.parse(data);
@@ -302,7 +309,7 @@ export async function POST(req: NextRequest): Promise<any> {
       // Require master auth to update payment info
       const auth = await validateMasterAuth(req);
       if (!auth.authenticated) {
-        log.warn("Unauthorized payment info update attempt", { action, ip: req.ip ?? "unknown", reason: auth.error });
+        log.warn("Unauthorized payment info update attempt", { action, ip: getClientIp(req), reason: auth.error });
         return NextResponse.json({ success: false, _error: "Unauthorized" }, { status: 401 });
       }
       const validatedData = PaymentInfoSchema.parse(data);
@@ -325,7 +332,7 @@ export async function POST(req: NextRequest): Promise<any> {
       // Only master may request credential backups
       const auth = await validateMasterAuth(req);
       if (!auth.authenticated) {
-        log.warn("Unauthorized credentials backup attempt", { action, ip: req.ip ?? "unknown", reason: auth.error });
+        log.warn("Unauthorized credentials backup attempt", { action, ip: getClientIp(req), reason: auth.error });
         return NextResponse.json({ success: false, _error: "Unauthorized" }, { status: 401 });
       }
       // Create a safe masked backup for operations visibility only
@@ -358,7 +365,7 @@ export async function PUT(req: NextRequest): Promise<any> {
     // Require master auth for updates
     const auth = await validateMasterAuth(req);
     if (!auth.authenticated) {
-      log.warn("Unauthorized payment update attempt", { ip: req.ip ?? "unknown", reason: auth.error });
+      log.warn("Unauthorized payment update attempt", { ip: getClientIp(req), reason: auth.error });
       return NextResponse.json({ success: false, _error: "Unauthorized" }, { status: 401 });
     }
     const body = await req.json();

@@ -7,7 +7,7 @@ export const runtime = "nodejs";
 
 export async function GET(req: NextRequest) {
   try {
-    log.info('Emergency lockdown status requested', {
+    logger.info('Emergency lockdown status requested', {
       endpoint: '/api/emergency/lockdown',
       method: 'GET',
       timestamp: new Date().toISOString(),
@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { action, reason, activatedBy, duration } = body;
 
-    log.info('Emergency lockdown action requested', {
+    logger.info('Emergency lockdown action requested', {
       endpoint: '/api/emergency/lockdown',
       method: 'POST',
       action,
