@@ -46,9 +46,9 @@ export async function GET(req: NextRequest) {
     ]);
 
     // Calculate wipe statistics
-    const totalWipes = wipeMetrics.filter(w => w.metricName === 'wipe_completed').length;
-    const failedWipes = wipeMetrics.filter(w => w.metricName === 'wipe_failed').length;
-    const cancelledWipes = wipeMetrics.filter(w => w.metricName === 'wipe_cancelled').length;
+    const totalWipes = wipeMetrics.filter((w: any) => w.metricName === 'wipe_completed').length;
+    const failedWipes = wipeMetrics.filter((w: any) => w.metricName === 'wipe_failed').length;
+    const cancelledWipes = wipeMetrics.filter((w: any) => w.metricName === 'wipe_cancelled').length;
     const successRate = totalWipes > 0 ? ((totalWipes) / (totalWipes + failedWipes)) * 100 : 0;
 
     return NextResponse.json({
@@ -66,7 +66,7 @@ export async function GET(req: NextRequest) {
           successRate: Math.round(successRate * 100) / 100,
           avgWipeTime: calculateAvgWipeTime(wipeHistory),
         },
-        activeWipes: activeWipes.map(w => ({
+        activeWipes: activeWipes.map((w: any) => ({
           id: w.dimensions?.wipeId || 'unknown',
           type: w.dimensions?.wipeType || 'general',
           scope: w.dimensions?.scope || 'Unknown',
@@ -74,7 +74,7 @@ export async function GET(req: NextRequest) {
           estimatedCompletion: w.dimensions?.estimatedCompletion || null,
           createdAt: w.createdAt.toISOString(),
         })),
-        recentWipes: wipeHistory.slice(0, 20).map(w => ({
+        recentWipes: wipeHistory.slice(0, 20).map((w: any) => ({
           id: w.dimensions?.wipeId || 'unknown',
           type: w.dimensions?.wipeType || 'general',
           scope: w.dimensions?.scope || 'Unknown',
@@ -569,7 +569,7 @@ async function getDataRetentionPolicies(): Promise<Array<{
       return [];
     }
 
-    return policies.map((policy) => ({
+    return policies.map((policy: any) => ({
       type: policy.metricName || 'unknown',
       retentionPeriod: Number(policy.metricValue) || 0,
       unit: 'days',

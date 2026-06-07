@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db/prisma";
-import { log } from "@/lib/logger";
+import { log as logger } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -50,7 +50,7 @@ export async function GET(req: NextRequest) {
           affected: affectedSystems.length,
           details: affectedSystems,
         },
-        history: lockdownHistory.map(entry => ({
+        history: lockdownHistory.map((entry: any) => ({
           action: entry.metricName,
           timestamp: entry.createdAt.toISOString(),
           reason: entry.dimensions?.reason || 'No reason specified',
@@ -311,7 +311,7 @@ async function getAffectedSystems(): Promise<Array<{ name: string; status: strin
     // Aggregate system statuses
     const systemStatuses: { [key: string]: { status: string; action: string } } = {};
 
-    systemMetrics.forEach((metric) => {
+    systemMetrics.forEach((metric: any) => {
       const systemName = metric.dimensions?.system || 'Unknown';
       const health = metric.value;
 

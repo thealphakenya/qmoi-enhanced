@@ -45,9 +45,9 @@ export async function GET(req: NextRequest) {
     ]);
 
     // Calculate SMS statistics
-    const totalSent = smsHistory.filter(s => s.metricName === 'sms_sent').length;
-    const totalDelivered = smsHistory.filter(s => s.metricName === 'sms_delivered').length;
-    const totalFailed = smsHistory.filter(s => s.metricName === 'sms_failed').length;
+    const totalSent = smsHistory.filter((s: any) => s.metricName === 'sms_sent').length;
+    const totalDelivered = smsHistory.filter((s: any) => s.metricName === 'sms_delivered').length;
+    const totalFailed = smsHistory.filter((s: any) => s.metricName === 'sms_failed').length;
     const deliveryRate = totalSent > 0 ? (totalDelivered / totalSent) * 100 : 0;
 
     return NextResponse.json({
@@ -65,7 +65,7 @@ export async function GET(req: NextRequest) {
           deliveryRate: Math.round(deliveryRate * 100) / 100,
           avgResponseTime: calculateAvgSmsTime(smsHistory),
         },
-        recentMessages: smsHistory.slice(0, 10).map(sms => ({
+        recentMessages: smsHistory.slice(0, 10).map((sms: any) => ({
           type: sms.metricName.replace('sms_', ''),
           recipient: sms.dimensions?.recipient || 'Unknown',
           message: sms.dimensions?.message

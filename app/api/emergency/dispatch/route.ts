@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../../lib/db/prisma";
-import { log } from "@/lib/logger";
+import { log as logger } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -427,7 +427,7 @@ async function getResponseTeams(): Promise<Array<{
       return [];
     }
 
-    return responseTeams.map((team) => ({
+    return responseTeams.map((team: any) => ({
       id: team.id || 'unknown',
       name: team.source || 'Emergency Team',
       type: 'emergency',
