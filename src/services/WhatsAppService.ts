@@ -489,8 +489,9 @@ Message: ${message.body}
 
   private async getBalanceResponse(): Promise<string> {
     try {
-      // This would integrate with PesapalService
-      return `💰 Pesapal Balance: $${balance.toFixed(2)}
+      const balance = 0;
+      // This would integrate with PayPalService
+      return `💰 PayPal Balance: $${balance.toFixed(2)}
 
 💳 Account Status: Active
 📊 Last Updated: ${new Date().toLocaleString()}
@@ -506,7 +507,7 @@ Message: ${message.body}
 ✅ WhatsApp: Connected
 ✅ Trading: Active
 ✅ Earning: Running
-✅ Pesapal: Connected
+✅ PayPal: Connected
 ✅ AI: Operational
 
 📊 Performance:
@@ -518,6 +519,7 @@ Message: ${message.body}
   }
 
   private async getEarningsResponse(): Promise<string> {
+    const totalEarnings = 0;
     // This would integrate with QAllpurposeService
     return `📈 Today's Earnings: $${totalEarnings.toFixed(2)}
 
@@ -543,7 +545,7 @@ General Commands:
 /start - Initialize the bot
 /help - Show this help message
 /status - Check system status
-/balance - Check Pesapal balance
+/balance - Check PayPal balance
 /earnings - View recent earnings
 
 Master Commands:
@@ -564,15 +566,11 @@ Master Commands:
 
 🤖 I'm your AI assistant for the QMOI earning system.
 💰 I can help you with:
-• Checking your Pesapal balance
+• Checking your PayPal balance
 • Viewing earnings reports
 • System status updates
 • Trading information
-• Emergency controls
-
-
-
-  }
+• Emergency controls`;
 
   private async getDetailedSystemStatus(): Promise<string> {
     return `🔍 Detailed System Status
@@ -584,7 +582,7 @@ Master Commands:
 • Decision Engine: Online
 
 💰 Financial Systems:
-• Pesapal Integration: Connected
+• PayPal Integration: Connected
 • Auto-trading: Enabled
 • Risk Limits: 5% daily loss
 • Profit Targets: 4% per trade
@@ -606,7 +604,7 @@ Master Commands:
 
   public async start(): Promise<void> {
     try {
-      .log("🚀 Starting WhatsApp service...");
+      globalThis.console?.log("🚀 Starting WhatsApp service...");
       await this.client.initialize();
     } catch (error) {
       (globalThis.console as any)?.error?.(
@@ -619,7 +617,7 @@ Master Commands:
 
   public async stop(): Promise<void> {
     try {
-      .log("🛑 Stopping WhatsApp service...");
+      globalThis.console?.log("🛑 Stopping WhatsApp service...");
       await this.client.destroy();
       this.isConnected = false;
     } catch (error) {
@@ -637,7 +635,7 @@ Master Commands:
 
       const chatId = to.includes("@c.us") ? to : `${to}@c.us`;
       await this.client.sendMessage(chatId, message);
-      .log(`📤 Message sent to ${to}`);
+      globalThis.console?.log(`📤 Message sent to ${to}`);
     } catch (error) {
       (globalThis.console as any)?.error?.(
         "Error sending WhatsApp message:",
