@@ -30,7 +30,7 @@ export async function GET(req: NextRequest) {
     });
 
     // Transform for QCity-specific response format
-    const qcityDevices = devices.map(device => ({
+    const qcityDevices = devices.map((device: any) => ({
       id: device.id,
       name: device.name,
       type: device.type,
@@ -54,8 +54,8 @@ export async function GET(req: NextRequest) {
       count: qcityDevices.length,
       stats: {
         total: qcityDevices.length,
-        online: qcityDevices.filter(d => d.connected).length,
-        offline: qcityDevices.filter(d => !d.connected).length,
+        online: qcityDevices.filter((d: any) => d.connected).length,
+        offline: qcityDevices.filter((d: any) => !d.connected).length,
       },
       timestamp: new Date().toISOString()
     });

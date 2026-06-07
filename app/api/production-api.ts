@@ -82,7 +82,7 @@ export async function GET(req: NextRequest) {
           avgResponseTime: Math.round(avgResponseTime * 100) / 100,
         },
       },
-      recentActivity: recentLogs.map(log => ({
+      recentActivity: recentLogs.map((log: any) => ({
         action: log.action,
         resource: log.resource,
         riskLevel: log.riskLevel,

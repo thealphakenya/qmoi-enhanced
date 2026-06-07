@@ -55,13 +55,13 @@ export async function GET(req: NextRequest) {
     ]);
 
     // Calculate training metrics
-    const totalSessions = trainingSessions.filter(m => m.metricName === 'training_session').length;
+    const totalSessions = trainingSessions.filter((m: any) => m.metricName === 'training_session').length;
     const avgAccuracy = modelMetrics
-      .filter(m => m.metricName === 'accuracy')
-      .reduce((sum, m) => sum + m.value, 0) /
-      Math.max(modelMetrics.filter(m => m.metricName === 'accuracy').length, 1);
+      .filter((m: any) => m.metricName === 'accuracy')
+      .reduce((sum: number, m: any) => sum + m.value, 0) /
+      Math.max(modelMetrics.filter((m: any) => m.metricName === 'accuracy').length, 1);
 
-    const positiveFeedback = recentFeedback.filter(f => f.value >= 4).length;
+    const positiveFeedback = recentFeedback.filter((f: any) => f.value >= 4).length;
     const totalFeedback = recentFeedback.length;
     const feedbackScore = totalFeedback > 0 ? (positiveFeedback / totalFeedback) * 100 : 0;
 
@@ -84,12 +84,12 @@ export async function GET(req: NextRequest) {
         },
         performance: {
           accuracy: Math.round(avgAccuracy * 100) / 100,
-          quality: modelMetrics.filter(m => m.metricName === 'response_quality')
-            .reduce((sum, m) => sum + m.value, 0) /
-            Math.max(modelMetrics.filter(m => m.metricName === 'response_quality').length, 1),
+          quality: modelMetrics.filter((m: any) => m.metricName === 'response_quality')
+            .reduce((sum: number, m: any) => sum + m.value, 0) /
+            Math.max(modelMetrics.filter((m: any) => m.metricName === 'response_quality').length, 1),
         },
       },
-      recentActivity: recentFeedback.slice(0, 5).map(f => ({
+      recentActivity: recentFeedback.slice(0, 5).map((f: any) => ({
         type: 'feedback',
         value: f.value,
         timestamp: f.createdAt.toISOString(),

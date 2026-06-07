@@ -54,10 +54,10 @@ export async function GET(req: NextRequest) {
     });
 
     // Calculate total balance across all wallets
-    const totalBalance = wallets.reduce((sum, wallet) => sum + wallet.balance, 0);
+    const totalBalance = wallets.reduce((sum: number, wallet: any) => sum + wallet.balance, 0);
 
     // Transform response
-    const walletData = wallets.map(wallet => ({
+    const walletData = wallets.map((wallet: any) => ({
       id: wallet.id,
       balance: wallet.balance,
       currency: wallet.currency,
@@ -73,7 +73,7 @@ export async function GET(req: NextRequest) {
       summary: {
         totalWallets: wallets.length,
         totalBalance,
-        currencies: [...new Set(wallets.map(w => w.currency))],
+        currencies: [...new Set(wallets.map((w: any) => w.currency))],
       },
       timestamp: new Date().toISOString()
     });
