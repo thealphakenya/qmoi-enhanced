@@ -1,5 +1,6 @@
 import React from 'react';
-import { log as logger } from "@/lib/logger";
+import type { QmoiPlugin } from './PluginManager';
+import { log as logger } from '@/lib/logger';
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
@@ -48,8 +49,8 @@ export const AIReviewPlugin: QmoiPlugin = {
     );
   },
 };
-class ErrorBoundary extends React.Component {
-  constructor(props) {
+class ErrorBoundary extends React.Component<React.PropsWithChildren<{}>, { hasError: boolean }> {
+  constructor(props: React.PropsWithChildren<{}>) {
     super(props);
     this.state = { hasError: false };
   }

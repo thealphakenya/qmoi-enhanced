@@ -1,3 +1,4 @@
+import { NextRequest, NextResponse } from 'next/server';
 import { log as logger } from "@/lib/logger";
 /**
  * Avatar Management API Endpoint

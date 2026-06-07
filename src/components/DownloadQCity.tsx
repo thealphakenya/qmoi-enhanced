@@ -1,5 +1,12 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
-import React from 'react';
+import React, { useState } from 'react';
+import { useAuth } from '@/app/hooks/useAuth';
+import apiClient from '@/api/client';
+import { Button } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
+import DownloadIcon from '@mui/icons-material/Download';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 import { log as logger } from "@/lib/logger";
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -64,7 +71,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
           )
         }
         onClick={handleDownload}
-        enabled={downloading}
+        disabled={downloading}
       >
         {downloading ? "Downloading..." : "Download Q-city"}
       </Button>

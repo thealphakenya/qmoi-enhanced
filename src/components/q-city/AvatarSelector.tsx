@@ -1,5 +1,7 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
 import React, { useState, useEffect } from 'react';
+import apiClient from '@/api/client';
+import { useToast } from '@/components/ui/use-toast';
 import { log as logger } from "@/lib/logger";
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
@@ -27,6 +29,11 @@ import {
   Volume2,
   Sparkles,
 } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Switch } from "@/components/ui/switch";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   avatarsConfig,
   animationEngines,
@@ -97,7 +104,6 @@ function AvatarSelector({
       toast({
         title: "Error",
         description: "Failed to switch avatar. Please try again.",
-        variant: "destructive",
       });
     } finally {
       setIsLoading(false);
@@ -119,7 +125,6 @@ function AvatarSelector({
       toast({
         title: "Upgrade Error",
         description: "Failed to upgrade avatar. Please try again.",
-        variant: "destructive",
       });
     } finally {
       setIsLoading(false);
@@ -148,7 +153,6 @@ function AvatarSelector({
       toast({
         title: "Enhancement Error",
         description: "Failed to enhance avatar. Please try again.",
-        variant: "destructive",
       });
     } finally {
       setIsLoading(false);
@@ -289,7 +293,7 @@ function AvatarSelector({
               <Switch
                 id="auto-avatar-mode"
                 checked={autoAvatarMode}
-                onCheckedChange={(value) => setAutoAvatarMode(value)}
+                onCheckedChange={(value: boolean) => setAutoAvatarMode(value)}
               />
               <label htmlFor="auto-avatar-mode" className="text-sm">
                 Auto mode: choose best avatar (Lion-aware, voice-aligned)
@@ -354,7 +358,7 @@ function AvatarSelector({
                         e.stopPropagation();
                         handleUpgrade(avatar.id);
                       }}
-                      enabled={isLoading}
+                      disabled={isLoading}
                     >
                       <Download className="h-4 w-4" />
                     </Button>
@@ -365,7 +369,7 @@ function AvatarSelector({
                         e.stopPropagation();
                         handleEnhance(avatar.id);
                       }}
-                      enabled={isLoading}
+                      disabled={isLoading}
                     >
                       <Sparkles className="h-4 w-4" />
                     </Button>
@@ -531,7 +535,7 @@ function AvatarSelector({
                     toast({ title: "Avatar Evolved", description: "Avatar has been enhanced with AI improvements." });
                   }
                 } catch (error) {
-                  toast({ title: "Evolution Failed", variant: "destructive" });
+                  toast({ title: "Evolution Failed" });
                 }
               }}
               className="text-xs"
@@ -553,7 +557,7 @@ function AvatarSelector({
                     toast({ title: "Research complete", description: data.message });
                   }
                 } catch (error) {
-                  toast({ title: "Research Failed", variant: "destructive" });
+                  toast({ title: "Research Failed" });
                 }
               }}
               className="text-xs"

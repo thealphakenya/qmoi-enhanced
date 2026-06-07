@@ -1,6 +1,9 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { log as logger } from "@/lib/logger";
+import Refresh from '@mui/icons-material/Refresh';
+import Info from '@mui/icons-material/Info';
+import AccountBalance from '@mui/icons-material/AccountBalance';
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
@@ -19,9 +22,28 @@ import {
   CircularProgress,
   Alert,
 } from "@mui/material";
+interface Asset {
+  type: 'spot' | 'futures' | 'otc';
+  currency: string;
+  balance: number;
+  usdValue: number;
+}
+interface Opportunity {
+  type: string;
+  opportunity: string;
+  potentialProfit: number;
+  risk: 'low' | 'medium' | 'high';
+}
 interface AssetOverviewProps {
   className?: string;
 }
+const AssetManagerImpl = {
+  getInstance: () => ({
+    getAssets: async (): Promise<Asset[]> => [],
+    getProfitOpportunities: async (): Promise<Opportunity[]> => [],
+    getTotalBalance: async (): Promise<number> => 0,
+  }),
+};
 export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
   const { user } = useAuth();
   const [assets, setAssets] = useState<Asset[]>([]);
@@ -50,9 +72,9 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
     } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Failed to fetch asset data",
-      );
+      const message = err instanceof Error ? err.message : "Failed to fetch asset data";
+      logger.error(message, err);
+      setError(message);
     } finally {
       setIsLoading(false);
     }
@@ -137,7 +159,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
           <>
             <Grid container spacing={2} mb={3}>
               {assets.map((asset) => (
-                <Grid size={4} key={`${asset.type}_${asset.currency}`}>
+                <Grid item xs={4} key={`${asset.type}_${asset.currency}`}>
                   <Card variant="outlined">
                     <CardContent>
                       <Box display="flex" alignItems="center" gap={1} mb={1}>
@@ -168,7 +190,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
             </Typography>
             <Grid container spacing={2}>
               {opportunities.map((opp, index) => (
-                <Grid size={6} key={index}>
+                <Grid item xs={6} key={index}>
                   <Card variant="outlined">
                     <CardContent>
                       <Box

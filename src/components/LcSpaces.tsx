@@ -1,5 +1,6 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
-import React from 'react';
+import React, { useState } from 'react';
+import { Box, Typography, TextField, Button } from '@mui/material';
 import { log as logger } from "@/lib/logger";
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
@@ -13,7 +14,7 @@ function LcSpaces(): any {
   const [newSpace, setNewSpace] = useState("");
   const addSpace = () => {
     if (newSpace.trim()) {
-      setSpaces([spaces, newSpace.trim()]);
+      setSpaces([...spaces, newSpace.trim()]);
       setNewSpace("");
     }
   };

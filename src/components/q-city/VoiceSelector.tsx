@@ -9,7 +9,24 @@ import { log as logger } from "@/lib/logger";
 import { readPersistedStorageValue, writePersistedStorageValue } from "@/app/lib/auth/persistence";
 import apiClient from "@/api/client";
 import { useToast } from "@/hooks/use-toast";
-import { avatarsConfig, voiceProfiles } from "./avatarsConfig";
+import { avatarsConfig, voiceProfiles, qualityLevels } from "./avatarsConfig";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@/components/ui/tabs';
+import { Switch } from '@/components/ui/switch';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Slider } from '@/components/ui/slider';
 import {
   Select,
   SelectContent,
@@ -204,8 +221,8 @@ function VoiceSelector({
       "voice_modulation_optimization",
     ];
     const currentTopic = topics[Math.floor(Math.random() * topics.length)];
-    setEvolutionState(prev => ({
-      prev,
+    setEvolutionState((prev) => ({
+      ...prev,
       currentResearch: currentTopic,
       researchProgress: Math.min(100, prev.researchProgress + Math.random() * 10),
     }));
@@ -217,11 +234,11 @@ function VoiceSelector({
         "Advanced voice modulation",
       ];
       const newFinding = findings[Math.floor(Math.random() * findings.length)];
-      setEvolutionState(prev => ({
-        prev,
+      setEvolutionState((prev) => ({
+        ...prev,
         creativityLevel: Math.min(1.0, prev.creativityLevel + 0.01),
         intelligenceLevel: Math.min(1.0, prev.intelligenceLevel + 0.005),
-        autoImprovements: [prev.autoImprovements.slice(-9), newFinding],
+        autoImprovements: [...prev.autoImprovements.slice(-9), newFinding],
         realTimeVoice: {
           clarity: Math.min(1.0, prev.realTimeVoice.clarity + 0.002),
           emotionalRange: Math.min(1.0, prev.realTimeVoice.emotionalRange + 0.001),
@@ -290,7 +307,7 @@ function VoiceSelector({
               <Switch
                 id="auto-voice-mode"
                 checked={autoVoiceMode}
-                onCheckedChange={(value) => setAutoVoiceMode(value)}
+                onCheckedChange={(value: boolean) => setAutoVoiceMode(value)}
               />
               <label htmlFor="auto-voice-mode" className="text-sm">
                 Auto mode: choose best voice (Lion-aware, avatar-aligned)

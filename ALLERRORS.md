@@ -4,10 +4,10 @@ Last scan: 2026-06-07T18:12:44Z
 Scanner: TypeScript compiler (tsc)
 
 Summary:
-- Latest focused project scan: approximately 4,547 TypeScript errors (see latest `tsc` run saved to `/tmp/current_tsc_output.txt`)
-- Primary failure modes: shared UI component typing issues (missing React hook imports, implicit anys, bad `motion`/`AnimatePresence` names), duplicate component declarations, and inconsistent adapter/`logger` references.
-- Recent focused triage: fixed missing React hook imports and framer-motion helpers in `components/AudioVisualizer.tsx` and `components/AvatarGalleryPanel.tsx`; error total decreased by 46.
-- Remaining work: continue repairing the highest-impact UI components, centralize helpers (`ErrorBoundary`, `logger`, `apiClient`), and resolve shared type mismatches before consumers.
+- Documentation update completed for live app routes and actual feature pages.
+- Inventory aligned with current source: `app/qmoi-ai/page.tsx`, `app/qmoi-space/page.tsx`, `app/qcity/page.tsx`, `app/qalpha/page.tsx`, `app/qvillage/page.tsx`.
+- Pending work remains on TypeScript remediation for shared UI component types and adapter imports.
+- Current focus: preserve actual route documentation and continue root-cause error repair.
 
 Latest compiler scan:
 - Timestamp: 2026-06-07T18:12:44Z

@@ -7,6 +7,7 @@
 /**
  * GET function
  */
+import { NextRequest, NextResponse } from 'next/server';
 export async function GET(request: NextRequest): Promise<any> {
   try {
     const timestamp = new Date().toISOString();

@@ -26,6 +26,9 @@
 
 
 // Global Lion Agent instance
+import { NextRequest, NextResponse } from 'next/server';
+import { LionAgentWorkflowMonitor } from '@/services/lion-agent-workflows';
+import { log as logger } from '@/lib/logger';
 let lionAgent: LionAgentWorkflowMonitor | null = null;
 
 /**

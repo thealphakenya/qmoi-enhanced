@@ -9,15 +9,19 @@
 
 declare const require: any;
 declare const process: any;
+declare const apiClient: any;
 
 export type TimeoutHandle = ReturnType<typeof setTimeout>;
 
 const safeLog = {
   log: (...args: any[]) => globalThis.console?.log?.(...args),
   warn: (...args: any[]) => globalThis.console?.warn?.(...args),
+  warning: (...args: any[]) => globalThis.console?.warn?.(...args),
   error: (...args: any[]) => globalThis.console?.error?.(...args),
   info: (...args: any[]) => globalThis.console?.info?.(...args)
 };
+
+const logger = (globalThis as any).logger ?? safeLog;
 
 const getErrorMessage = (error: unknown): string => {
   if (error instanceof Error) return error.message;
@@ -25,10 +29,10 @@ const getErrorMessage = (error: unknown): string => {
   try { return JSON.stringify(error); } catch { return String(error); }
 };
 
-export async /**
+/**
  * fetchWithTimeout function
  */
-function fetchWithTimeout(input: RequestInfo, init: RequestInit & { timeoutMs?: number } = {}): Promise<Response> {
+export async function fetchWithTimeout(input: RequestInfo, init: RequestInit & { timeoutMs?: number } = {}): Promise<Response> {
   const { timeoutMs, rest } = init;
   const controller = new AbortController();
   const signal = controller.signal;
@@ -42,6 +46,7 @@ function fetchWithTimeout(input: RequestInfo, init: RequestInit & { timeoutMs?: 
 }
 
 export class SimpleEventEmitter {
+  private listeners: Map<string, Array<(args: any[]) => void>> = new Map();
 
   on(event: string, listener: (args: any[]) => void): void {
     const existing = this.listeners.get(event) || [];
@@ -309,6 +314,13 @@ export class DomainOwnershipClassifier {
     }
 
     // Infrastructure - high priority
+    if (
+      domain.includes('infra') ||
+      domain.includes('internal') ||
+      domain.includes('backend') ||
+      domain.includes('network') ||
+      domain.includes('.net')
+    ) {
       return {
         ownership: 'qmoi',
         category: 'infrastructure',
@@ -454,6 +466,11 @@ export class LionAgentWorkflowService extends SimpleEventEmitter {
   private fallbackSystems: boolean = true;
   private monitoringStartTime: Date | null = null;
 
+  private workflowHealthCache: Map<string, WorkflowHealth> = new Map();
+  private apiValidations: Map<string, APIValidation> = new Map();
+  private domainValidations: Map<string, DomainValidation> = new Map();
+  private fileValidations: Map<string, FileValidation> = new Map();
+
   // Workflow categories for health calculation
   private workflowCategories = {
     main_cicd: [
@@ -591,7 +608,13 @@ export class LionAgentWorkflowService extends SimpleEventEmitter {
       lastSync: new Date(),
       consciousnessLevel: 95,
       autoProductionIntegration: true,
-      autoresearchIntegration: true
+      autoresearchIntegration: true,
+      qGlobalSimIntegration: true,
+      globalFeaturesAwareness: true,
+      parallelProcessingEnhanced: true,
+      telecomIntelligence: true,
+      globalSyncActive: true,
+      crossBorderCommunication: true
     };
 
     logger.info('🦁 Lion Agent: QMOI consciousness integration initialized');
@@ -913,6 +936,7 @@ export class LionAgentWorkflowService extends SimpleEventEmitter {
    * Calculate overall system health including validation systems
    */
   private async calculateSystemHealth(): Promise<void> {
+    const categoryHealthMap = new Map<string, CategoryHealth>();
 
     // Calculate category health
     for (const [category, workflows] of Object.entries(this.workflowCategories)) {
@@ -1210,9 +1234,9 @@ export class LionAgentWorkflowService extends SimpleEventEmitter {
   }
 
   /**
-// fully implemented
+   * Validate file content structure
    */
-// fully implemented
+  private isValidFile(filePath: string, content: string): boolean {
     // For TypeScript/JavaScript files, check for exports and proper structure
     if (filePath.endsWith('.ts') || filePath.endsWith('.js')) {
       const hasExports = /export\s+/.test(content);
@@ -1754,10 +1778,11 @@ export class LinkAutoReplacementEngine {
 
   private async getAllQMOIFiles(): Promise<string[]> {
     const globModule: any = await import('glob');
+    const glob: any = globModule.default || globModule;
     const cwd = process?.cwd?.() || '.';
 
     return new Promise((resolve) => {
-      globModule('**/*.{md,ts,js,json,txt}', { cwd }, (err: any, files: string[]) => {
+      glob('**/*.{md,ts,js,json,txt}', { cwd }, (err: any, files: string[]) => {
         if (err) {
           safeLog.error('Error scanning files:', getErrorMessage(err));
           resolve([]);
@@ -1779,17 +1804,18 @@ export class LinkAutoReplacementEngine {
         const urlRegex = /https?:\/\/[^\s<>"']+/g;
         const matches = content.match(urlRegex);
         if (matches) {
-          links.push(matches);
+          links.push(...matches);
         }
       } catch (error) {
         safeLog.warn(`Warning: Could not read file ${file}:`, getErrorMessage(error));
       }
     }
 
-    return [new Set(links)]; // Remove duplicates
+    return Array.from(new Set(links)); // Remove duplicates
   }
 
   private async validateAllLinks(links: string[]): Promise<Map<string, boolean>> {
+    const results = new Map<string, boolean>();
 
     for (const link of links) {
       try {
@@ -1804,10 +1830,9 @@ export class LinkAutoReplacementEngine {
   }
 
   private async replaceInvalidLinks(validationResults: Map<string, boolean>): Promise<void> {
-    const fs = import('fs');
     const invalidLinks = Array.from(validationResults.entries()).filter(([_, valid]) => !valid);
 
-    for (const [invalidLink, _] of invalidLinks) {
+    for (const [invalidLink] of invalidLinks) {
       // Find replacement or fallback
       const replacement = await this.findReplacementLink(invalidLink);
       if (replacement) {
@@ -1900,18 +1925,23 @@ export class LinkAutoReplacementEngine {
   }
 
   private async replaceLinkInFiles(oldLink: string, newLink: string): Promise<void> {
-    const fs = import('fs');
-    const glob = import('glob');
+    const fsModule = await import('fs');
+    const fs = fsModule.promises;
+    const globModule = await import('glob');
+    const glob: any = (globModule as any).default || globModule;
 
     glob('**/*.{md,ts,js,json,txt}', { cwd: process.cwd() }, (err: any, files: string[]) => {
       if (err) return;
 
       for (const file of files) {
         try {
-          const content = fs.readFileSync(file, 'utf8');
+          const content = fsModule.readFileSync(file, 'utf8');
           if (content.includes(oldLink)) {
-            const updatedContent = content.replace(new RegExp(oldLink.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), newLink);
-            fs.writeFileSync(file, updatedContent);
+            const updatedContent = content.replace(
+              new RegExp(oldLink.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&'), 'g'),
+              newLink
+            );
+            fsModule.writeFileSync(file, updatedContent);
             logger.info(`🔗 Replaced link in ${file}: ${oldLink} → ${newLink}`);
           }
         } catch (error) {
@@ -2086,7 +2116,7 @@ export class LinkValidationSystem {
     logger.info('🔍 Validation Report:', JSON.stringify(report, null, 2));
 
     // Save report to file
-    const fs = import('fs');
+    const fs = await import('fs');
     fs.writeFileSync('DOMAIN_VALIDATION_REPORT.json', JSON.stringify(report, null, 2));
   }
 
@@ -2326,6 +2356,10 @@ export class LionAgentWorkflowMonitor {
   getAutoDomainNamingSystem(): AutoDomainNamingSystem {
     return this.autoDomainNamingSystem;
   }
+
+  // Close LionAgentWorkflowMonitor class
+}
+
 // =====================================================================================
 // DOMAIN INTELLIGENCE & AUTO-NAMING SYSTEM
 // =====================================================================================
@@ -2357,6 +2391,7 @@ export class DomainIntelligenceSystem {
       /^cdn\.qmoi\./
     ];
     this.externalDomains = new Set(['huggingface.co', 'ngrok.io', 'github.com', 'gitlab.com', 'vercel.app']);
+    this.domainNamingRules = new Map<string, string>([
       ['domainforgepro', 'qvs.qmoi.ai'],
       ['websphereelite', 'websphere.qmoi.ai'],
       ['hostmasternexus', 'hostmaster.qmoi.ai'],
@@ -2682,7 +2717,7 @@ export class DomainIntelligenceSystem {
       // Check availability
         const available = await this.checkDomainAvailability(domain);
         if (!available) {
-          logger.warning(`⚠️ Domain ${domain} is not available`);
+          logger.warn(`⚠️ Domain ${domain} is not available`);
           return false;
         }
       await this.configureDNS(domain);
@@ -2820,11 +2855,11 @@ export class DomainIntelligenceSystem {
     const acquiredDomains: string[] = [];
 
     for (let i = 0; i < count; i++) {
-        const domain = this.domainIntelligence.generateDomainName(platformType, platformId);
-
-        const success = await this.acquireDomain(domain);
-        if (success) {
-          acquiredDomains.push(domain);
+      const domain = this.generateDomainName(platformType, platformId);
+      const success = await this.acquireDomain(domain);
+      if (success) {
+        acquiredDomains.push(domain);
+      }
     }
 
     logger.info(`✅ Acquired ${acquiredDomains.length} domains for ${platformType}-${platformId}`);
@@ -3040,9 +3075,8 @@ export class DomainIntelligenceSystem {
   }
 
   private async getAllSystemFiles(): Promise<string[]> {
-    const fs = import('fs');
-    const path = import('path');
-    const glob = import('glob');
+    const globModule: any = await import('glob');
+    const glob: any = globModule.default || globModule;
 
     return new Promise((resolve) => {
       glob('**/*.{md,ts,js,json,txt,yml,yaml}', { cwd: process.cwd() }, (err: any, files: string[]) => {
@@ -3057,12 +3091,12 @@ export class DomainIntelligenceSystem {
   }
 
   private async readFile(filePath: string): Promise<string> {
-    const fs = import('fs');
+    const fs = await import('fs');
     return fs.readFileSync(filePath, 'utf8');
   }
 
   private async writeFile(filePath: string, content: string): Promise<void> {
-    const fs = import('fs');
+    const fs = await import('fs');
     fs.writeFileSync(filePath, content);
   }
 }
@@ -3115,6 +3149,7 @@ export class AutoDomainNamingSystem {
    */
   getAllAssignedDomains(): Map<string, string> {
     return this.assignedDomains;
+  }
 
   /**
    * Update domain for a platform

@@ -1,6 +1,39 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
-import React from 'react';
+import React, { useMemo, useState } from 'react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Eye, Code, Search, Grid, List } from 'lucide-react';
 import { log as logger } from "@/lib/logger";
+import OfflineCacheService from '@/components/OfflineCacheService';
+import PrivacyModeToggle from '@/components/PrivacyModeToggle';
+import AccessibilityAdjuster from '@/components/AccessibilityAdjuster';
+import FeedbackLoop from '@/components/FeedbackLoop';
+import PluginRegistry from '@/components/PluginRegistry';
+import CollaborationLayer from '@/components/CollaborationLayer';
+import PredictiveToolRecommender from '@/components/PredictiveToolRecommender';
+import FederatedLearningService from '@/components/FederatedLearningService';
+import SelfHealingWindows from '@/components/SelfHealingWindows';
+import AdaptiveTheming from '@/components/AdaptiveTheming';
+import VersionedStates from '@/components/VersionedStates';
+import UsageAnalytics from '@/components/UsageAnalytics';
+import ChatbotEnhanced from '@/components/ChatbotEnhanced';
+import PreviewWindow from '@/components/PreviewWindow';
+import QI from '@/components/QI';
+import QIStateWindow from '@/components/QIStateWindow';
+import QI_Enhanced from '@/components/QI_Enhanced';
+import UISettings from '@/components/UISettings';
+import TradingHistory from '@/components/TradingHistory';
+import TradingStatus from '@/components/TradingStatus';
+import FileExplorer from '@/components/FileExplorer';
+import GitStatus from '@/components/GitStatus';
+import AssetOverview from '@/components/AssetOverview';
+import DownloadQCity from '@/components/DownloadQCity';
+import FloatingAQ from '@/components/FloatingAQ';
+import LcSpaces from '@/components/LcSpaces';
+import QiSpaces from '@/components/QiSpaces';
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied

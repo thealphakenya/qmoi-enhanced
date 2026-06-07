@@ -1,6 +1,13 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
-import React from 'react';
-import { log as logger } from "@/lib/logger";
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import apiClient from '@/api/client';
+import { log as logger } from '@/lib/logger';
+import { useToast } from '@/components/ui/use-toast';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Select, SelectTrigger, SelectContent, SelectItem } from '@/components/ui/select';
+import { Input } from '@/components/ui/input';
 
 // QMOI EVOLUTION ENHANCED: Global News & Intelligence Notification System
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
@@ -48,6 +55,22 @@ interface DailyReport {
   summary: string;
   generatedAt: string;
 }
+interface FinancialNotification {
+  id: string;
+  timestamp: string;
+  type: string;
+  title: string;
+  message: string;
+  status?: 'pending' | 'completed' | 'failed' | 'in_progress';
+  priority?: 'low' | 'medium' | 'high' | 'critical';
+  read?: boolean;
+  location?: {
+    country?: string;
+    region?: string;
+    continent?: string;
+  };
+  metadata?: Record<string, unknown>;
+}
 interface EnhancedNotification extends FinancialNotification {
   newsItems?: GlobalNewsItem[];
   dailyReports?: DailyReport[];
@@ -62,10 +85,10 @@ interface GlobalNotificationContextValue {
   isLoading: boolean;
   globalNews: GlobalNewsItem[];
   dailyReports: DailyReport[];
-  markAsRead: (id: string) => void;
-  markAllAsRead: () => void;
-  deleteNotification: (id: string) => void;
-  sendNotification: (notification: Omit<EnhancedNotification, 'id' | 'timestamp'>) => void;
+  markAsRead: (id: string) => Promise<void>;
+  markAllAsRead: () => Promise<void>;
+  deleteNotification: (id: string) => Promise<void>;
+  sendNotification: (notification: Omit<EnhancedNotification, 'id' | 'timestamp'>) => Promise<void>;
   getNotificationsByType: (type: EnhancedNotification['type']) => EnhancedNotification[];
   getCriticalNotifications: () => EnhancedNotification[];
   getGlobalNews: (filters?: { category?: string; importance?: string; country?: string }) => GlobalNewsItem[];
@@ -77,6 +100,9 @@ interface GlobalNotificationContextValue {
 const GlobalNotificationContext = createContext<GlobalNotificationContextValue | null>(null);
 export const useGlobalNotifications = () => {
   const ctx = useContext(GlobalNotificationContext);
+  if (!ctx) {
+    throw new Error('useGlobalNotifications must be used within GlobalNotificationProvider');
+  }
   return ctx;
 };
 interface GlobalNotificationProviderProps {
@@ -97,9 +123,11 @@ export const GlobalNotificationProvider: React.FC<GlobalNotificationProviderProp
     loadGlobalNews();
     loadDailyReports();
     const unsubscribe = subscribeToRealTimeUpdates();
-    // Set up daily report generation
-    setupDailyReportSchedule();
-    return unsubscribe;
+    const cleanupSchedule = setupDailyReportSchedule();
+    return () => {
+      unsubscribe();
+      cleanupSchedule();
+    };
   }, [masterId]);
   const loadNotifications = async () => {
     try {
@@ -450,6 +478,43 @@ export const DailyReportCard: React.FC<DailyReportCardProps> = ({ report, onView
     </Card>
   );
 };
+interface NotificationItemProps {
+  notification: EnhancedNotification;
+  onMarkAsRead: (id: string) => Promise<void>;
+  onDelete: (id: string) => Promise<void>;
+}
+const NotificationItem: React.FC<NotificationItemProps> = ({
+  notification,
+  onMarkAsRead,
+  onDelete,
+}) => {
+  return (
+    <Card className="p-4 border border-slate-700">
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-sm font-semibold">{notification.title}</span>
+            <Badge variant={notification.priority === 'critical' ? 'destructive' : 'outline'}>
+              {notification.priority?.toUpperCase() || 'INFO'}
+            </Badge>
+          </div>
+          <p className="text-sm text-slate-600 mb-2">{notification.message}</p>
+          <div className="text-xs text-slate-500">
+            {notification.type} · {new Date(notification.timestamp).toLocaleString()}
+          </div>
+        </div>
+        <div className="flex flex-col gap-2">
+          <Button size="sm" variant="outline" onClick={() => onMarkAsRead(notification.id)}>
+            Mark read
+          </Button>
+          <Button size="sm" variant="destructive" onClick={() => onDelete(notification.id)}>
+            Delete
+          </Button>
+        </div>
+      </div>
+    </Card>
+  );
+};
 interface GlobalNotificationCenterProps {
   masterId: string;
 }
@@ -468,7 +533,7 @@ export const GlobalNotificationCenter: React.FC<GlobalNotificationCenterProps> =
     generateDailyReport
   } = useGlobalNotifications();
   const [activeTab, setActiveTab] = useState<'notifications' | 'news' | 'reports'>('notifications');
-  const [newsFilters, setNewsFilters] = useState({
+  const [newsFilters, setNewsFilters] = useState<{ category: string; importance: string; country: string }>({
     category: '',
     importance: '',
     country: ''
@@ -555,7 +620,7 @@ export const GlobalNotificationCenter: React.FC<GlobalNotificationCenterProps> =
       {activeTab === 'news' && (
         <div>
           <div className="flex flex-wrap gap-4 mb-6">
-            <Select value={newsFilters.category} onValueChange={(value) => setNewsFilters(prev => ({ ...prev, category: value }))}>
+            <Select value={newsFilters.category} onValueChange={(value: string) => setNewsFilters(prev => ({ ...prev, category: value }))}>
               <SelectTrigger className="w-40">
               </SelectTrigger>
               <SelectContent>
@@ -567,7 +632,7 @@ export const GlobalNotificationCenter: React.FC<GlobalNotificationCenterProps> =
                 <SelectItem value="breaking">Breaking</SelectItem>
               </SelectContent>
             </Select>
-            <Select value={newsFilters.importance} onValueChange={(value) => setNewsFilters(prev => ({ ...prev, importance: value }))}>
+            <Select value={newsFilters.importance} onValueChange={(value: string) => setNewsFilters(prev => ({ ...prev, importance: value }))}>
               <SelectTrigger className="w-40">
               </SelectTrigger>
               <SelectContent>

@@ -7,6 +7,7 @@
  */
 
 
+import { NextRequest, NextResponse } from 'next/server';
 const logger = getLogger("api/qmoi/health/stream");
 
 /**

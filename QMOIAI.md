@@ -1,13 +1,41 @@
-# QMOIAI.md - QMOI AI Documentation Alias
+# QMOI AI - Live Application Documentation
 
-This file is an alias for `QMOIAIUI.md`, the main QMOI AI UI and integration documentation file.
+## Route
+- `app/qmoi-ai/page.tsx`
+- Live URL: `/qmoi-ai`
 
-For complete QMOI AI UI documentation, system behavior, and cross-route mappings, see:
+## Purpose
+QMOI AI is the main intelligent assistant dashboard for the QMOI enhanced suite. It is implemented as a real Next.js page route and serves as the primary AI workflow for chat, system monitoring, and production orchestration.
 
-- [QMOIAIUI.md](QMOIAIUI.md)
+## Key Features
+- Interactive AI chat and analysis
+- Real-time system and production metrics
+- Access control via `app/hooks/useAuth`
+- Model status and health panels
+- Navigation to QMOI Space, QCity, and QVillage
 
-This alias ensures the expected documentation reference exists for tools and documentation generators.
+## Actual UI Components
+- `AdminDashboard`
+- `ChatMessaging`
+- `QMOIAutoFixDashboard`
+- `QMOIAutoSetup`
+- `FileUploadDownload`
+- `VisualEnhancement`
+- `AudibleConversation`
+- `ClientUISettings`
+- `QMOIMasterDashboard`
+- `SponsoredUsersManager`
+- `UserProfile`
+- `WalletList`
+- `RegisterForm`
+- `QVillage`
+- `QVillageDatasetsPanel`
+- `PreviewWindow`
+- `ThemeCustomizer`
+- `DataVisualizationPanel`
+- `AnalyticsDashboard`
+- `SecurityMonitor`
+- `PerformanceMonitor`
 
 ## Notes
-- `UniversalWindowManager` now uses a server-first strategy to load window state from `/api/windows` with a `localStorage` fallback.
-- `app/api/windows/route.ts` is implemented to use Redis when available, with a safe file-based fallback for environments without Redis.
+This page is a real feature entrypoint, and its documentation is aligned with the current implementation in `app/qmoi-ai/page.tsx`. The app is not a placeholder; it loads actual status endpoints, uses shared hooks, and renders live feature panels.

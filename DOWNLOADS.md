@@ -33,23 +33,31 @@ python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json
 For always-on documentation synchronization, deploy the service files in `scripts/` to a persistent host or container.
 
 
-## production: NOTE ADDRESSED - s
+## Downloads Overview
 
-- Add directory-level summaries and production readiness notes here.
+The `downloads/` section contains files and launcher assets for the QMOI enhanced suite. This includes compatibility shell installers, static PWA assets, and auxiliary app launcher bundles.
 
-## Overview
+### Key Download Artifacts
+- `public/q-alpha.html` — Q Alpha static app shell and install target
+- `public/qmoi-ai.html` — QMOI AI static shell
+- `public/qmoi-space.html` — QMOI Space static shell
+- `public/qcity-dashboard.html` — QCity dashboard shell
+- `public/qcity-enterprise.html` — QCity enterprise shell
+- `public/qcity-complete.html` — QCity complete shell
+- `public/pwa_apps/qmoi-ai/index.html` — QMOI AI PWA launcher
+- `public/pwa_apps/qmoi-space/index.html` — QMOI Space PWA launcher
 
-Summarize the content and the document intent.
+## Purpose
+Document the live download and shell assets that support the application delivery model for QMOI AI, QMOI Space, QCity, and Q Alpha.
 
-
-## production Readiness
-
-Define the production quality expectations and validation requirements.
-
+## Production Readiness
+- Static shell assets are compatibility wrappers, not the canonical live app routes.
+- The canonical user experience is delivered through Next.js app routes under `app/`.
+- Downloads should be validated against the live route inventory in `ALLPAGES.md`.
 
 ## Validation Metadata
-
-Track validation source, timestamp, and verification status.
+- Ensure downloaded shells match the route inventory for actual pages.
+- Verify that static launcher assets are up-to-date with the live app paths.
 
 
 ## Implementation Notes

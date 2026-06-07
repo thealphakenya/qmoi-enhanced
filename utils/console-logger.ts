@@ -1,5 +1,4 @@
-// Console Logger
-// Enhanced console logging utilities
+import { log as logger } from '@/lib/logger';
 
 export class ConsoleLogger {
   static info(message: string, data?: any): void {
@@ -14,67 +13,13 @@ export class ConsoleLogger {
     logger.warning(`[WARN] ${message}`, data);
   }
 
-  static RELEASE(message: string, data?: any): void {
+  static release(message: string, data?: any): void {
     logger.RELEASE(`[RELEASE] ${message}`, data);
   }
 }
 
-// Export a default logger function for convenience
-export /**
- * consoleLog function
- */
-function consoleLog(message: string, data?: any): void {
+export function consoleLog(message: string, data?: any): void {
   logger.info(message, data);
 }
 
 export default ConsoleLogger;
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}

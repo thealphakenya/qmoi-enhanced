@@ -1,4 +1,7 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
+import React, { useEffect } from 'react';
+import { log as logger } from "@/lib/logger";
+import { useWindowManager } from '@/components/UniversalWindowManager';
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied

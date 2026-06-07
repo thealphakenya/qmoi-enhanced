@@ -1,6 +1,7 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
 import React, { useState, useRef } from 'react';
 import { readPersistedStorageValue, writePersistedStorageValue } from '@/app/lib/auth/persistence';
+import useAuth from '@/hooks/useAuth';
 import { log as logger } from "@/lib/logger";
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -12,12 +13,18 @@ import { log as logger } from "@/lib/logger";
 // Only visible to admin/master roles.
 const API_URL = "/api/qcity/selfheal-npm";
 const SelfHealPanel: React.FC = () => {
-  const { user, loading } = useAuth();
+  const { state } = useAuth();
+  const user = state?.user;
+  const loading = state?.loading;
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
-  const [options, setOptions] = useState({
+  const [options, setOptions] = useState<{
+    forceClean: boolean;
+    essentialsOnly: boolean;
+    diagnosticsOnly: boolean;
+  }>({
     forceClean: false,
     essentialsOnly: false,
     diagnosticsOnly: false,
@@ -41,7 +48,7 @@ const SelfHealPanel: React.FC = () => {
       const es = new EventSource(
         API_URL +
           "?token=" +
-          encodeURIComponent(token) +
+          encodeURIComponent(String(token)) +
           "&opts=" +
           encodeURIComponent(JSON.stringify(options)),
       );
@@ -71,7 +78,7 @@ const SelfHealPanel: React.FC = () => {
         es.close();
       };
     } catch (err: unknown) {
-      setError(err.message || "Request failed");
+      setError(err instanceof Error ? err.message : String(err) || "Request failed");
       setSuccess(false);
       setRunning(false);
     }
@@ -85,7 +92,7 @@ const SelfHealPanel: React.FC = () => {
     a.click();
     URL.revokeObjectURL(url);
   };
-  const handleOptionChange = (opt: string) => {
+  const handleOptionChange = (opt: keyof typeof options) => {
     setOptions((prev) => ({ ...prev, [opt]: !prev[opt] }));
   };
   const handleClearHistory = () => {
@@ -97,7 +104,7 @@ const SelfHealPanel: React.FC = () => {
     // Scheduling logic will be implemented here.
   };
   if (loading) return <div>Loading...</div>;
-  if (!user || (user.role !== "admin" && user.role !== "master")) return null;
+  if (!user || user.role !== "master") return null;
   return (
     <div
       style={{

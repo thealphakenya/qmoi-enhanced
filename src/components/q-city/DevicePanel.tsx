@@ -29,7 +29,7 @@ export default function DevicePanel(): any {
     })
       .then((r) => r.json())
       .then((data) => setDevices(data.items || []))
-      .catch((e) => setError(e.message))
+      .catch((e: unknown) => setError((e as Error)?.message || "Failed to load devices"))
       .finally(() => setLoading(false));
   };
   useEffect(() => {
@@ -65,12 +65,12 @@ export default function DevicePanel(): any {
         });
         setEditing(null);
       })
-      .catch((e) => setError(e.message))
+      .catch((e: unknown) => setError((e as Error)?.message || "Failed to save device"))
       .finally(() => setLoading(false));
   };
   const del = (id: string) => {
     setLoading(true);
-    apiClient.del("/api/qcity/devices", {
+    apiClient.delete("/api/qcity/devices", {
       headers: {
         "Content-Type": "application/json",
         Authorization: token ? `Bearer ${token}` : "",
@@ -78,7 +78,7 @@ export default function DevicePanel(): any {
       body: JSON.stringify({ id }),
     })
       .then(fetchDevices)
-      .catch((e) => setError((e as Error).message || "Failed to delete device"))
+      .catch((e: unknown) => setError((e as Error)?.message || "Failed to delete device"))
       .finally(() => setLoading(false));
   };
   const test = (id: string) => {
@@ -146,7 +146,7 @@ export default function DevicePanel(): any {
           placeholder="Private Key"
           value={form.privateKey}
           onChange={(e) =>
-            setForm((f) => ({ f, privateKey: e.target.value }))
+            setForm((prev) => ({ ...prev, privateKey: e.target.value }))
           }
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />

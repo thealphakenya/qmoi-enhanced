@@ -7,6 +7,9 @@
 /**
  * GET function
  */
+import { NextRequest, NextResponse } from 'next/server';
+import { consoleLog } from '@/utils/console-logger';
+import { accountabilityService } from '@/lib/accountability-service';
 export async function GET(request: NextRequest): Promise<any> {
   try {
     const { searchParams } = new URL(request.url);

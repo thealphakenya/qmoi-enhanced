@@ -1,6 +1,7 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
-import React from 'react';
-import { log as logger } from "@/lib/logger";
+import React, { useEffect, useRef, useState } from 'react';
+import apiClient from '@/api/client';
+import { safeConsoleError } from '@/utils/safeConsole';
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
@@ -54,6 +55,7 @@ function ChatbotEnhanced(): any {
       id: "1",
       sender: "bot",
       timestamp: new Date(),
+      text: "Welcome to QMOI Enhanced Chat",
       metadata: { personality: "helpful" },
     },
   ]);
@@ -79,13 +81,24 @@ function ChatbotEnhanced(): any {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  const supportsSpeechSynthesis = () =>
+    typeof window !== "undefined" &&
+    "speechSynthesis" in window &&
+    typeof window.speechSynthesis?.speak === "function";
+
+  const playSSML = (ssml: string) => {
+    if (typeof window === "undefined" || !supportsSpeechSynthesis()) return;
+    const utterance = new SpeechSynthesisUtterance(ssml);
+    window.speechSynthesis.speak(utterance);
+  };
   // Analyze context from message
   const analyzeContext = (text: string) => {
     const codeBlockMatch = text.match(/```(\w+)?\n([\s\S]*?)```/);
     const fileMatch = text.match(/(?:file|open|edit|view):\s*(?:["']?)([^"'\s]+)/i);
     const errorMatch = text.match(/error|issue|bug|fail/i);
     setContext((prev) => ({
-      prev,
+      ...prev,
       currentFile: fileMatch?.[1] || prev.currentFile,
     }));
     return {
@@ -136,10 +149,7 @@ function ChatbotEnhanced(): any {
       sender: "user",
       timestamp: new Date(),
     };
-    const currentMessages = currentBranch
-      ? branches.find((b) => b.id === currentBranch)?.messages || messages
-      : messages;
-    setMessages((prev) => [prev, userMessage]);
+    setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setLoading(true);
     try {
@@ -190,13 +200,13 @@ function ChatbotEnhanced(): any {
           isAutomatic: chatState.isAutomatic,
         },
       };
-      setMessages((prev) => [prev, botMessage]);
+      setMessages((prev) => [...prev, botMessage]);
       // Update conversation branch if needed
       if (currentBranch) {
         setBranches((prev) =>
           prev.map((b) =>
             b.id === currentBranch
-              ? { b, messages: [b.messages, userMessage, botMessage] }
+              ? { ...b, messages: [...b.messages, userMessage, botMessage] }
               : b
           )
         );
@@ -212,7 +222,7 @@ function ChatbotEnhanced(): any {
         sender: "bot",
         timestamp: new Date(),
       };
-      setMessages((prev) => [prev, botMessage]);
+      setMessages((prev) => [...prev, botMessage]);
     } finally {
       setLoading(false);
     }
@@ -230,7 +240,7 @@ function ChatbotEnhanced(): any {
   };
   // Open production for a result
   const openPreview = (url: string) => {
-    window.open(url, "_blank");
+    window.open(url, "_blank", "noopener,noreferrer");
   };
   // Format message with markdown
   const formatMessage = (text: string) => {

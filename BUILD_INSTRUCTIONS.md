@@ -63,6 +63,7 @@ Route (kind)                    Size     First Load JS
 ┌ ○ /                          ...  ✅ 
 ├ ○ /qcity                      ...  ✅ 
 ├ ○ /qmoi-space                 ...  ✅ 
+├ ○ /qalpha                     ...  ✅ 
 ├ ○ /qvillage                   ...  ✅ 
 └  # Production-ready route listing complete
 ```production-validated

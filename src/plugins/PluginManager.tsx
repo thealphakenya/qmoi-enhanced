@@ -1,7 +1,13 @@
+import React from 'react';
+import { log as logger } from '@/lib/logger';
+import { prodiceHealthReviewerPlugin } from './DeviceHealthReviewerPlugin';
+import { OptimizationSuggestionPlugin } from './OptimizationSuggestionPlugin';
+import { AIReviewPlugin } from './AIReviewPlugin';
+import { QuickAIWidgetPlugin } from './QuickAIWidgetPlugin';
 
 class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props: unknown) {
+    super(props as Readonly<{}>);
     this.state = { hasError: false };
   }
 
@@ -9,7 +15,7 @@ class ErrorBoundary extends React.Component {
     return { hasError: true };
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: unknown, errorInfo: Record<string, unknown>) {
     logger.error('React Error Boundary caught an error:', error, errorInfo);
   }
 
@@ -58,7 +64,7 @@ export class PluginManager {
   private scheduledPlugins: {
     plugin: QmoiPlugin;
     interval: number;
-    timer?: unknown;
+    timer?: number;
   }[] = [];
   private automationRules: AutomationRule[] = [];
 

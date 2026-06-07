@@ -2,6 +2,8 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
+import React, { useEffect, useState } from 'react';
+import apiClient from '@/api/client';
 import { readPersistedStorageValue } from '@/app/lib/auth/persistence';
 
 export default function SchedulePanel(): any {
@@ -25,7 +27,7 @@ export default function SchedulePanel(): any {
     })
       .then((r) => r.json())
       .then((data) => setSchedules(data.items || []))
-      .catch((e) => setError(e.message))
+      .catch((e: unknown) => setError((e as Error)?.message || "Failed to load schedules"))
       .finally(() => setLoading(false));
   };
   useEffect(() => {
@@ -46,7 +48,7 @@ export default function SchedulePanel(): any {
         setForm({ name: "", command: "", cron: "", deviceId: "", notify: "" });
         setEditing(null);
       })
-      .catch((e) => setError(e.message))
+      .catch((e: unknown) => setError((e as Error)?.message || "Failed to save schedule"))
       .finally(() => setLoading(false));
   };
   const del = (id: string) => {
@@ -60,7 +62,7 @@ export default function SchedulePanel(): any {
       body: JSON.stringify({ id }),
     })
       .then(fetchSchedules)
-      .catch((e) => setError(e.message))
+      .catch((e: unknown) => setError((e as Error)?.message || "Failed to delete schedule"))
       .finally(() => setLoading(false));
   };
   const runNow = (id: string) => {
@@ -74,7 +76,7 @@ export default function SchedulePanel(): any {
       body: JSON.stringify({ id }),
     })
       .then(fetchSchedules)
-      .catch((e) => setError(e.message))
+      .catch((e: unknown) => setError((e as Error)?.message || "Failed to run schedule"))
       .finally(() => setLoading(false));
   };
   return (
@@ -91,31 +93,31 @@ export default function SchedulePanel(): any {
         <input
           placeholder="Name"
           value={form.name}
-          onChange={(e) => setForm((f) => ({ f, name: e.target.value }))}
+          onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
           placeholder="Command"
           value={form.command}
-          onChange={(e) => setForm((f) => ({ f, command: e.target.value }))}
+          onChange={(e) => setForm((prev) => ({ ...prev, command: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
           placeholder="Cron"
           value={form.cron}
-          onChange={(e) => setForm((f) => ({ f, cron: e.target.value }))}
+          onChange={(e) => setForm((prev) => ({ ...prev, cron: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
           placeholder="Device ID"
           value={form.deviceId}
-          onChange={(e) => setForm((f) => ({ f, deviceId: e.target.value }))}
+          onChange={(e) => setForm((prev) => ({ ...prev, deviceId: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
           placeholder="Notify"
           value={form.notify}
-          onChange={(e) => setForm((f) => ({ f, notify: e.target.value }))}
+          onChange={(e) => setForm((prev) => ({ ...prev, notify: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <button
@@ -169,7 +171,13 @@ export default function SchedulePanel(): any {
                   <button
                     onClick={() => {
                       setEditing(job);
-                      setForm(job);
+                      setForm({
+                        name: job.name,
+                        command: job.command,
+                        cron: job.cron,
+                        deviceId: job.deviceId,
+                        notify: job.notify,
+                      });
                     }}
                     className="px-2 py-1 bg-gray-700 rounded text-white mr-1"
                   >

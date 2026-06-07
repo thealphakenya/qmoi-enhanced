@@ -68,12 +68,12 @@ export default function PluginPanel(): any {
       await apiClient.post("/api/qcity/plugins/upload", formData, {
         headers: { "Accept": "application/json" },
       });
-      toast({ title: "Plugin Uploaded", description: pluginFile.name, variant: "success" });
+      toast({ title: "Plugin Uploaded", description: pluginFile.name });
       await fetchPlugins();
       setPluginFile(null);
     } catch (err: unknown) {
       setError((err as Error)?.message || "Plugin upload failed");
-      toast({ title: "Upload failed", description: "Could not upload plugin.", variant: "destructive" });
+      toast({ title: "Upload failed", description: "Could not upload plugin." });
     } finally {
       setUploading(false);
     }
@@ -88,7 +88,7 @@ export default function PluginPanel(): any {
         { headers: { "Content-Type": "application/json" } }
       );
       await fetchPlugins();
-      toast({ title: "Plugin Removed", description: plugin, variant: "success" });
+      toast({ title: "Plugin Removed", description: plugin });
     } catch (err: unknown) {
       setError((err as Error)?.message || "Failed to remove plugin");
     } finally {
@@ -108,7 +108,7 @@ export default function PluginPanel(): any {
         { plugin, config: pluginConfig[plugin] || "" },
         { headers: { "Content-Type": "application/json" } }
       );
-      toast({ title: "Plugin Configured", description: plugin, variant: "success" });
+      toast({ title: "Plugin Configured", description: plugin });
     } catch (err: unknown) {
       setError((err as Error)?.message || "Failed to save plugin config");
     } finally {

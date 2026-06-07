@@ -12,6 +12,9 @@
 /**
  * isMasterAuthorized function
  */
+import { NextRequest, NextResponse } from 'next/server';
+import { LionAgentWorkflowMonitor } from '@/services/lion-agent-workflows';
+import { log as logger } from '@/lib/logger';
 function isMasterAuthorized(request: NextRequest): boolean {
   const authHeader = request.headers.get('authorization');
   const masterToken = process.env.MASTER_TOKEN || '';

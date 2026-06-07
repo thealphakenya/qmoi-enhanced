@@ -1,5 +1,6 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
-import React from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import apiClient from '@/api/client';
 import { log as logger } from "@/lib/logger";
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
@@ -49,6 +50,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
     {
       id: "1",
       sender: "bot",
+      text: "Welcome to QI — the intelligent assistance hub.",
       timestamp: new Date(),
       type: "info",
     },
@@ -78,12 +80,23 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const supportsSpeechSynthesis = () =>
+    typeof window !== "undefined" &&
+    "speechSynthesis" in window &&
+    typeof window.speechSynthesis?.speak === "function";
+
+  const playSSML = (ssml: string) => {
+    if (typeof window === "undefined" || !supportsSpeechSynthesis()) return;
+    const utterance = new SpeechSynthesisUtterance(ssml);
+    window.speechSynthesis.speak(utterance);
+  };
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
   // Context management
   useEffect(() => {
-    const estimatedTokens = messages.reduce((acc, msg) => acc + msg.text.length / 4, 0);
+    const estimatedTokens = messages.reduce((acc: number, msg: ChatMessage) => acc + msg.text.length / 4, 0);
     if (estimatedTokens > maxContextTokens) {
       setContextWindow(messages.slice(-Math.floor(maxContextTokens / 50)));
     } else {
@@ -104,7 +117,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       });
       const result = await response.json();
       setSelfWorkResults((prev) => [
-        prev,
+        ...prev,
         {
           type: "code_review",
           status: "completed",
@@ -121,7 +134,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         timestamp: new Date(),
         type: "success",
       };
-      setMessages((prev) => [prev, summaryMsg]);
+      setMessages((prev) => [...prev, summaryMsg]);
     } catch (error) {
       const errorMsg: ChatMessage = {
         id: Date.now().toString(),
@@ -130,7 +143,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         timestamp: new Date(),
         type: "error",
       };
-      setMessages((prev) => [prev, errorMsg]);
+      setMessages((prev) => [...prev, errorMsg]);
     } finally {
       setCurrentlyAnalyzing(null);
     }
@@ -145,7 +158,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       });
       const result = await response.json();
       setSelfWorkResults((prev) => [
-        prev,
+        ...prev,
         {
           type: "test_run",
           status: "completed",
@@ -161,7 +174,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         timestamp: new Date(),
         type: result.failed === 0 ? "success" : "error",
       };
-      setMessages((prev) => [prev, testMsg]);
+      setMessages((prev) => [...prev, testMsg]);
     } catch (error) {
       const errorMsg: ChatMessage = {
         id: Date.now().toString(),
@@ -170,7 +183,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         timestamp: new Date(),
         type: "error",
       };
-      setMessages((prev) => [prev, errorMsg]);
+      setMessages((prev) => [...prev, errorMsg]);
     } finally {
       setCurrentlyAnalyzing(null);
     }
@@ -186,7 +199,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       });
       const result = await response.json();
       setSelfWorkResults((prev) => [
-        prev,
+        ...prev,
         {
           type: "RELEASE",
           status: "completed",
@@ -203,7 +216,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         type: "info",
         metadata: { language: "markdown" },
       };
-      setMessages((prev) => [prev, debugMsg]);
+      setMessages((prev) => [...prev, debugMsg]);
     } catch (error) {
       const errorMsg: ChatMessage = {
         id: Date.now().toString(),
@@ -212,7 +225,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         timestamp: new Date(),
         type: "error",
       };
-      setMessages((prev) => [prev, errorMsg]);
+      setMessages((prev) => [...prev, errorMsg]);
     } finally {
       setCurrentlyAnalyzing(null);
     }
@@ -223,7 +236,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
   /** Toggle autoproduction_mode */
   const toggleAutoDev = useCallback(async () => {
     const newStatusValue = !autoDevStatus.enabled;
-    setAutoDevStatus((prev) => ({ prev, enabled: newStatusValue }));
+    setAutoDevStatus((prev) => ({ ...prev, enabled: newStatusValue }));
     const statusMsg: ChatMessage = {
       id: Date.now().toString(),
       text: newStatusValue
@@ -233,7 +246,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       timestamp: new Date(),
       type: newStatusValue ? "success" : "info",
     };
-    setMessages((prev) => [prev, statusMsg]);
+    setMessages((prev) => [...prev, statusMsg]);
     // Notify backend
     await apiClient.get("/api/qmoi/autodev/toggle", {
       method: "POST",
@@ -252,7 +265,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       });
       const result = await response.json();
       setSelfWorkResults((prev) => [
-        prev,
+        ...prev,
         {
           type: "feature_gen",
           status: "completed",
@@ -262,7 +275,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         },
       ]);
       setAutoDevStatus((prev) => ({
-        prev,
+        ...prev,
         features_generated: prev.features_generated + 1,
       }));
       const featureMsg: ChatMessage = {
@@ -273,7 +286,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         type: "success",
         metadata: { language: "typescript", executable: true },
       };
-      setMessages((prev) => [prev, featureMsg]);
+      setMessages((prev) => [...prev, featureMsg]);
     } catch (error) {
       const errorMsg: ChatMessage = {
         id: Date.now().toString(),
@@ -282,7 +295,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         timestamp: new Date(),
         type: "error",
       };
-      setMessages((prev) => [prev, errorMsg]);
+      setMessages((prev) => [...prev, errorMsg]);
     } finally {
       setCurrentlyAnalyzing(null);
     }
@@ -299,7 +312,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       timestamp: new Date(),
       type: "text",
     };
-    setMessages((prev) => [prev, userMessage]);
+    setMessages((prev) => [...prev, userMessage]);
     const userInput = input;
     setInput("");
     setLoading(true);
@@ -365,7 +378,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
           timestamp: new Date(),
           type: "text",
         };
-        setMessages((prev) => [prev, botMessage]);
+        setMessages((prev) => [...prev, botMessage]);
         // Update memory
         apiClient.get("/api/qmoi/memory", {
           method: "POST",
@@ -391,7 +404,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         timestamp: new Date(),
         type: "error",
       };
-      setMessages((prev) => [prev, botMessage]);
+      setMessages((prev) => [...prev, botMessage]);
     } finally {
       setLoading(false);
     }
@@ -536,7 +549,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
-          enabled={loading}
+          disabled={loading}
           className="qi-input"
         />
         <button

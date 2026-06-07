@@ -1,4 +1,5 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
+import apiClient from '@/api/client';
 import React, { useEffect, useState } from 'react';
 import { readPersistedStorageValue } from '@/app/lib/auth/persistence';
 import { log as logger } from "@/lib/logger";
@@ -7,8 +8,8 @@ import { log as logger } from "@/lib/logger";
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 interface QMoiStateProps {
-  session?: unknown;
-  global?: unknown;
+  session?: any;
+  global?: any;
   minimized?: boolean;
   aiHealth?: { status: string; lastCheck: string; error?: string };
   isMaster?: boolean;
@@ -78,12 +79,19 @@ function QMoiState({
       clearInterval(activityTimer);
     };
   }, []);
+  const getErrorMessage = (error: unknown) => {
+    if (error instanceof Error) {
+      return error.message;
+    }
+    return String(error);
+  };
+
   useEffect(() => {
     if (!isMaster && !isAdmin) return;
     setLoadingLogs(true);
     setLogError(null);
     const params = new URLSearchParams({
-      logFilters,
+      ...logFilters,
       page: String(page),
       pageSize: String(pageSize),
     });
@@ -96,8 +104,8 @@ function QMoiState({
         setTotalPages(data.totalPages || 1);
         setLoadingLogs(false);
       })
-      .catch((e) => {
-        setLogError(e.message || "Failed to load logs");
+      .catch((e: unknown) => {
+        setLogError(getErrorMessage(e) || "Failed to load logs");
         setLoadingLogs(false);
       });
   }, [logFilters, page, isMaster, isAdmin]);
@@ -151,19 +159,20 @@ function QMoiState({
   };
   const exportToCSV = (logs: unknown[]) => {
     const header = "Timestamp,User,Action,Device,Status,Command";
-    const rows = logs.map((log: unknown) =>
-      [
-        log.timestamp,
-        log.user,
-        log.action,
-        log.deviceId,
-        log.status,
-        log.command.replace(/"/g, '""'),
+    const rows = logs.map((log: unknown) => {
+      const entry = log as Record<string, any>;
+      return [
+        entry.timestamp,
+        entry.user,
+        entry.action,
+        entry.deviceId,
+        entry.status,
+        String(entry.command || "").replace(/"/g, '""'),
       ]
         .map((x) => `"${x || ""}"`)
-        .join(","),
-    );
-    const csv = [header, rows].join("\n");
+        .join(",");
+    });
+    const csv = [header, ...rows].join("\n");
     const blob = new Blob([csv], { type: "text/csv" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
@@ -309,7 +318,7 @@ function QMoiState({
                 placeholder="User"
                 value={logFilters.user}
                 onChange={(e) =>
-                  setLogFilters((f) => ({ f, user: e.target.value }))
+                  setLogFilters((prev) => ({ ...prev, user: e.target.value }))
                 }
                 className="px-2 py-1 rounded bg-gray-800 text-white"
               />
@@ -317,7 +326,7 @@ function QMoiState({
                 placeholder="Action"
                 value={logFilters.action}
                 onChange={(e) =>
-                  setLogFilters((f) => ({ f, action: e.target.value }))
+                  setLogFilters((prev) => ({ ...prev, action: e.target.value }))
                 }
                 className="px-2 py-1 rounded bg-gray-800 text-white"
               />
@@ -325,7 +334,7 @@ function QMoiState({
                 placeholder="Status"
                 value={logFilters.status}
                 onChange={(e) =>
-                  setLogFilters((f) => ({ f, status: e.target.value }))
+                  setLogFilters((prev) => ({ ...prev, status: e.target.value }))
                 }
                 className="px-2 py-1 rounded bg-gray-800 text-white"
               />
@@ -333,7 +342,7 @@ function QMoiState({
                 type="date"
                 value={logFilters.date}
                 onChange={(e) =>
-                  setLogFilters((f) => ({ f, date: e.target.value }))
+                  setLogFilters((prev) => ({ ...prev, date: e.target.value }))
                 }
                 className="px-2 py-1 rounded bg-gray-800 text-white"
               />

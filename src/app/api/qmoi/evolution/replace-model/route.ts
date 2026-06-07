@@ -9,6 +9,8 @@
  */
 
 
+import { NextRequest, NextResponse } from 'next/server';
+import { log as logger } from '@/lib/logger';
 export const runtime = 'nodejs';
 
 /**

@@ -3,6 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+import { log as logger } from '@/lib/logger';
+import { safeConsoleError } from '@/utils/safeConsole';
+
 /* eslint-env browser,node */
 // Security check module for QMOI system
 export let isTampered = false;
