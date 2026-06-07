@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:14Z
@@ -34,6 +34,9 @@ import {
   OrchestratorStatusPanel,
   OrchestratorStatus,
 } from "./predeploy/OrchestratorStatusPanel";
+import { PluginManager } from '@/plugins/PluginManager';
+import { log as logger } from '@/lib/logger';
+import { useRole } from './security/RoleContext';
 interface SystemMetrics {
   cpu: number;
   memory: number;
