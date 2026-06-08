@@ -35,7 +35,7 @@ function handleAddFunds(): any {
     setBalance((b) => b + parseFloat(amount));
     setTransactions((t) => [
       { type: "credit", amount: parseFloat(amount), desc },
-      t,
+      ...t,
     ]);
     setAmount("");
     setDesc("");
@@ -48,7 +48,7 @@ function handleSpendFunds(): any {
     setBalance((b) => b - parseFloat(amount));
     setTransactions((t) => [
       { type: "debit", amount: parseFloat(amount), desc },
-      t,
+      ...t,
     ]);
     setAmount("");
     setDesc("");
@@ -75,12 +75,12 @@ function handleSpendFunds(): any {
             onChange={(e) => setDesc(e.target.value)}
             className="border p-1 rounded w-1/3 mr-2"
           />
-          <Button size="small" onClick={handleAddFunds}>
+          <Button size="sm" onClick={handleAddFunds}>
             Add Funds
           </Button>
           <Button
-            size="small"
-            variant="outlined"
+            size="sm"
+            variant="outline"
             onClick={handleSpendFunds}
             className="ml-2"
           >

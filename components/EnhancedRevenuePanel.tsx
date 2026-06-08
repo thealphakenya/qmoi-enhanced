@@ -598,9 +598,9 @@ export default function EnhancedRevenuePanel(): any {
                     <div key={key} className="flex items-center space-x-2">
                       <Switch
                         checked={enabled}
-                        onCheckedChange={(checked) =>
+                        onCheckedChange={(checked: boolean) =>
                           setNotifications((prev) => ({
-                            prev,
+                            ...prev,
                             [key]: checked,
                           }))
                         }

@@ -14,6 +14,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useToast } from "@/components/ui/use-toast";
 import {
   Brain,
   Database,
@@ -79,11 +84,11 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
       // Load memory entries
       const entries = localStorage.getItem("qmoi_memory_entries");
       if (entries) {
-        const parsedEntries = JSON.parse(entries).map((entry: unknown) => ({
+        const parsedEntries = (JSON.parse(entries) as Array<Record<string, any>>).map((entry) => ({
           ...entry,
           timestamp: new Date(entry.timestamp),
           lastAccessed: new Date(entry.lastAccessed),
-        }));
+        })) as MemoryEntry[];
         setMemoryEntries(parsedEntries);
       }
       // Update stats

@@ -1,5 +1,7 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:14Z

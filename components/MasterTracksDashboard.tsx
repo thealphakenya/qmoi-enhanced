@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import apiClient from '@/api/client';
+import { log as logger } from '@/lib/logger';
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Master-only access control
 import { readPersistedUser } from '@/app/lib/auth/persistence';
@@ -184,7 +186,7 @@ export default function MasterTracksDashboard(): any {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <select
             value={filter.type}
-            onChange={(e) => setFilter({filter, type: e.target.value})}
+            onChange={(e) => setFilter({ ...filter, type: e.target.value })}
             className="border border-gray-300 rounded-md px-3 py-2"
           >
             <option value="">All Types</option>
@@ -197,7 +199,7 @@ export default function MasterTracksDashboard(): any {
           </select>
           <select
             value={filter.status}
-            onChange={(e) => setFilter({filter, status: e.target.value})}
+            onChange={(e) => setFilter({ ...filter, status: e.target.value })}
             className="border border-gray-300 rounded-md px-3 py-2"
           >
             <option value="">All Statuses</option>
@@ -209,7 +211,7 @@ export default function MasterTracksDashboard(): any {
           </select>
           <select
             value={filter.priority}
-            onChange={(e) => setFilter({filter, priority: e.target.value})}
+            onChange={(e) => setFilter({ ...filter, priority: e.target.value })}
             className="border border-gray-300 rounded-md px-3 py-2"
           >
             <option value="">All Priorities</option>

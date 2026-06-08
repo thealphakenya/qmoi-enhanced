@@ -1,6 +1,15 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import apiClient from '@/api/client';
 import { log as logger } from '@/lib/logger';
+const notification = {
+  show: (message: string) => {
+    if (typeof window !== 'undefined') {
+      window.alert(message);
+    } else {
+      console.log(message);
+    }
+  },
+};
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Master-only access control
 import { readPersistedUser } from '@/app/lib/auth/persistence';
@@ -218,7 +227,7 @@ export default function MasterEmailDashboard(): any {
     eventSourceRef.current = new EventSource(`/api/enhanced-email/realtime?account=${encodeURIComponent(selectedAccount)}`);
     eventSourceRef.current.onmessage = (event) => {
       const emailEvent: EmailEvent = JSON.parse(event.data);
-      setRealtimeEvents(prev => [emailEvent, prev.slice(0, 49)]); // Keep last 50 events
+      setRealtimeEvents((prev) => [emailEvent, ...prev.slice(0, 49)]); // Keep last 50 events
       // Refresh emails if new email received
       if (emailEvent.type === "email-received") {
         loadEmails();
@@ -672,7 +681,7 @@ export default function MasterEmailDashboard(): any {
                   <input
                     type="email"
                     value={composeForm.to}
-                    onChange={(e) => setComposeForm(prev => ({ prev, to: e.target.value }))}
+                    onChange={(e) => setComposeForm((prev) => ({ ...prev, to: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
@@ -681,7 +690,7 @@ export default function MasterEmailDashboard(): any {
                   <input
                     type="text"
                     value={composeForm.subject}
-                    onChange={(e) => setComposeForm(prev => ({ prev, subject: e.target.value }))}
+                    onChange={(e) => setComposeForm((prev) => ({ ...prev, subject: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
@@ -689,7 +698,7 @@ export default function MasterEmailDashboard(): any {
                   <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
                   <textarea
                     value={composeForm.body}
-                    onChange={(e) => setComposeForm(prev => ({ prev, body: e.target.value }))}
+                    onChange={(e) => setComposeForm((prev) => ({ ...prev, body: e.target.value }))}
                     rows={10}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
@@ -731,7 +740,7 @@ export default function MasterEmailDashboard(): any {
                   <input
                     type="text"
                     value={ruleForm.name}
-                    onChange={(e) => setRuleForm(prev => ({ prev, name: e.target.value }))}
+                    onChange={(e) => setRuleForm((prev) => ({ ...prev, name: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
@@ -740,7 +749,7 @@ export default function MasterEmailDashboard(): any {
                   <input
                     type="text"
                     value={ruleForm.from}
-                    onChange={(e) => setRuleForm(prev => ({ prev, from: e.target.value }))}
+                    onChange={(e) => setRuleForm((prev) => ({ ...prev, from: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
@@ -749,7 +758,7 @@ export default function MasterEmailDashboard(): any {
                   <input
                     type="text"
                     value={ruleForm.subject}
-                    onChange={(e) => setRuleForm(prev => ({ prev, subject: e.target.value }))}
+                    onChange={(e) => setRuleForm((prev) => ({ ...prev, subject: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
@@ -758,7 +767,7 @@ export default function MasterEmailDashboard(): any {
                   <input
                     type="text"
                     value={ruleForm.replySubject}
-                    onChange={(e) => setRuleForm(prev => ({ prev, replySubject: e.target.value }))}
+                    onChange={(e) => setRuleForm((prev) => ({ ...prev, replySubject: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
@@ -766,7 +775,7 @@ export default function MasterEmailDashboard(): any {
                   <label className="block text-sm font-medium text-gray-700 mb-1">Reply Message</label>
                   <textarea
                     value={ruleForm.replyBody}
-                    onChange={(e) => setRuleForm(prev => ({ prev, replyBody: e.target.value }))}
+                    onChange={(e) => setRuleForm((prev) => ({ ...prev, replyBody: e.target.value }))}
                     rows={6}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
@@ -808,7 +817,7 @@ export default function MasterEmailDashboard(): any {
                   <input
                     type="text"
                     value={templateForm.name}
-                    onChange={(e) => setTemplateForm(prev => ({ prev, name: e.target.value }))}
+                    onChange={(e) => setTemplateForm((prev) => ({ ...prev, name: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
@@ -817,7 +826,7 @@ export default function MasterEmailDashboard(): any {
                   <input
                     type="text"
                     value={templateForm.category}
-                    onChange={(e) => setTemplateForm(prev => ({ prev, category: e.target.value }))}
+                    onChange={(e) => setTemplateForm((prev) => ({ ...prev, category: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
@@ -826,7 +835,7 @@ export default function MasterEmailDashboard(): any {
                   <input
                     type="text"
                     value={templateForm.subject}
-                    onChange={(e) => setTemplateForm(prev => ({ prev, subject: e.target.value }))}
+                    onChange={(e) => setTemplateForm((prev) => ({ ...prev, subject: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
@@ -834,7 +843,7 @@ export default function MasterEmailDashboard(): any {
                   <label className="block text-sm font-medium text-gray-700 mb-1">Message Body</label>
                   <textarea
                     value={templateForm.body}
-                    onChange={(e) => setTemplateForm(prev => ({ prev, body: e.target.value }))}
+                    onChange={(e) => setTemplateForm((prev) => ({ ...prev, body: e.target.value }))}
                     rows={8}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
@@ -844,7 +853,7 @@ export default function MasterEmailDashboard(): any {
                   <input
                     type="text"
                     value={templateForm.variables}
-                    onChange={(e) => setTemplateForm(prev => ({ prev, variables: e.target.value }))}
+                    onChange={(e) => setTemplateForm((prev) => ({ ...prev, variables: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>

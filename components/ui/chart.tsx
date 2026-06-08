@@ -1,5 +1,7 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
 import React from 'react';
+import { cn } from '@/lib/utils';
+import * as RechartsPrimitive from 'recharts';
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied

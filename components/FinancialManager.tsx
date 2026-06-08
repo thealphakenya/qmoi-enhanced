@@ -1,6 +1,6 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
 import React, { useEffect, useState } from 'react';
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth } from '@/app/hooks/useAuth';
 import { readPersistedUser } from '@/app/lib/auth/persistence';
 import apiClient from '@/api/client';
 import { log as logger } from '@/lib/logger';

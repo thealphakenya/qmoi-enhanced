@@ -7,6 +7,7 @@ import React from 'react';
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
 "use client";
+import { cn } from '@/lib/utils';
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react";

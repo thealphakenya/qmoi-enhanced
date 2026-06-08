@@ -19,7 +19,7 @@ export /**
  * MasterProvider function
  */
 function MasterProvider({ children }: { children: ReactNode }): any {
-  const [currentRole, setRole] = useState<UserRole>("guest");
+  const [currentRole, setRole] = useState<UserRole>("guest" as UserRole);
   const isMaster = currentRole === "master";
   /**
  * hasPermission function

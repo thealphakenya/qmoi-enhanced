@@ -1,5 +1,6 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { uploadFile } from '@/src/adapters/clientAdapters';
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:14Z

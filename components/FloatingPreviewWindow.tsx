@@ -4,6 +4,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { youtubeDownload } from '@/src/adapters/clientAdapters';
+const notification = {
+  show: (message: string) => {
+    if (typeof window !== 'undefined') {
+      window.alert(message);
+    } else {
+      console.log(message);
+    }
+  },
+};
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:12Z
@@ -152,7 +162,7 @@ function handleTextEdit(e: React.ChangeEvent<HTMLTextAreaElement>): any {
     setMediaType("other");
   }
   // Download logic
-  async function handleDownload(): any {
+  async function handleDownload(): Promise<void> {
     if (mediaUrl && mediaType) {
       const ext =
         mediaType === "video"

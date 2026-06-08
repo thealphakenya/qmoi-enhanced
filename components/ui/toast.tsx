@@ -2,6 +2,8 @@
 
 import * as React from "react";
 import { X } from "lucide-react";
+import { cn } from '@/lib/utils';
+
 
 function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
