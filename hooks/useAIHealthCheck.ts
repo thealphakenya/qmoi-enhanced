@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { readPersistedStorageValue } from "@/app/lib/auth/persistence";
+import apiClient from "@/api/client";
 
 export interface AIHealth {
   status: "healthy" | "degraded" | "critical";
@@ -55,10 +56,7 @@ function useAIHealthCheck(): any {
   });
 
   useEffect(() => {
-    async /**
- * checkHealth function
- */
-function checkHealth(): any {
+    async function checkHealth(): Promise<void> {
       try {
         const adminToken = readPersistedStorageValue("adminToken") || "";
         const response = await apiClient.get("/api/ai-health", {

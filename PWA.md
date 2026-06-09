@@ -59,7 +59,7 @@ This file documents all PWAs available for each platform and app type. Each PWA 
 
 ## PWA Serving and UI Convergence
 
-- Canonical production UI surfaces are live Next.js pages served from the `app/` directory: `/qmoi-ai` (`app/qmoi-ai/page.tsx`), `/qmoi-space` (`app/qmoi-space/page.tsx`), `/qcity` (`app/qcity/page.jsx`), and `/qvillage` (`app/qvillage/page.tsx`). These live routes are the primary delivery surfaces for their respective applications.
+- Canonical production UI surfaces are live Next.js pages served from the `app/` directory: `/qmoi-ai` (`app/qmoi-ai/page.tsx`), `/qmoi-space` (`app/qmoi-space/page.tsx`), `/qcity` (`app/qcity/page.tsx`), and `/qvillage` (`app/qvillage/page.tsx`). These live routes are the primary delivery surfaces for their respective applications.
 - Static PWA launcher shells under `public/` and `pwa_apps/` (for example `public/qmoi-ai.html`, `public/qmoi-space.html`, `public/q-alpha.html`, and `pwa_apps/q-alpha/`) are compatibility/fallback entrypoints intended for installs, constrained environments, or when the full Next.js app cannot be served. They are not the canonical runtime UI for production traffic.
 - `public/qcity-dashboard.html`, `public/qcity-enterprise.html`, and `public/qcity-complete.html` provide static QCity shell fallbacks when needed.
 - The repository supports both interactive page routes and installable shell entry points; prefer live Next.js routes for production deployments and use static shells only as documented fallbacks.

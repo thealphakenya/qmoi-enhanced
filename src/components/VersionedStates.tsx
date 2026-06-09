@@ -16,6 +16,7 @@ interface WindowSnapshot {
 export const VersionedStates: React.FC = () => {
   const wm = useWindowManager();
   const [snapshots, setSnapshots] = useState<WindowSnapshot[]>([]);
+  if (!wm) return null;
   const takeSnapshot = (windowId: string) => {
     const win = wm.windows.find((w) => w.id === windowId);
     if (win) {

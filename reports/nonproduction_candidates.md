@@ -7819,7 +7819,7 @@ Found 1366325 matches across 1692 files
 - Line 127: <h2 className="text-3xl font-bold text-white">Developer & UI Inventory</h2>
 - Line 151: <p className="mt-2 text-slate-400">Repository structure and developer architecture guide.</p>
 
-## app/qcity/page.jsx (4)
+## app/qcity/page.tsx (4)
 
 - Line 224: <h2 className="text-2xl font-semibold mb-4">Device Connectivity</h2>
 - Line 225: <p className="text-slate-400 mb-6">Monitor and control all connected devices across your QMOI ecosystem.</p>

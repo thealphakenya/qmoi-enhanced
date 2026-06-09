@@ -399,7 +399,7 @@ app/master/email/page.tsx
 ├─ MasterEmailDashboard.tsx
 └─ GlobalMail.tsx
 
-app/qcity/page.jsx
+app/qcity/page.tsx
 ├─ Multiple QCity-specific components
 
 app/qmoi-ai/page.tsx

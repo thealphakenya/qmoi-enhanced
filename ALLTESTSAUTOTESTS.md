@@ -31,7 +31,7 @@
 - `app/page.tsx` - Added dynamic system status fetching
 - `app/qmoi-ai/page.tsx` - production chat and stats from `/api/production-api` and `/api/qmoi/chat`
 - `app/qmoi-space/page.tsx` - Real space data from `/api/qi-spaces`
-- `app/qcity/page.jsx` - production metrics and status from QCity APIs
+- `app/qcity/page.tsx` - production metrics and status from QCity APIs
 - `app/qvillage/page.tsx` - Live catalog data from `/api/qvillage/spaces`
 
 **APIs Enhanced:**

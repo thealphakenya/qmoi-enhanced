@@ -5,10 +5,6 @@ import { X } from "lucide-react";
 import { cn } from '@/lib/utils';
 
 
-function cn(...classes: Array<string | false | null | undefined>) {
-  return classes.filter(Boolean).join(" ");
-}
-
 type ToastProps = React.ComponentPropsWithoutRef<"div"> & {
   title?: React.ReactNode;
   description?: React.ReactNode;
@@ -107,4 +103,3 @@ export const ToastClose = React.forwardRef<
 ToastClose.displayName = "ToastClose";
 
 export type { ToastProps, ToastActionElement };
-export { Toast, ToastAction, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport };

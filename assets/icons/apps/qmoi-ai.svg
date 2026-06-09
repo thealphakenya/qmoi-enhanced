@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="aiBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#02030d" />
+      <stop offset="100%" stop-color="#081b38" />
+    </linearGradient>
+    <radialGradient id="aiCore" cx="50%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#dbeafe" />
+      <stop offset="100%" stop-color="#2563eb" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="aiGlow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#7dd3fc" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0" />
+    </radialGradient>
+    <filter id="coreGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="256" height="256" rx="44" fill="url(#aiBg)" />
+  <circle cx="128" cy="128" r="86" fill="url(#aiGlow)" />
+  <circle cx="128" cy="128" r="56" fill="url(#aiCore)" opacity="0.92" />
+  <g filter="url(#coreGlow)">
+    <path d="M128 90c-16 0-28 12-28 28v12a28 28 0 0 0 56 0v-12c0-16-12-28-28-28z" fill="#ffffff" opacity="0.95" />
+  </g>
+  <g stroke="#93c5fd" stroke-width="3" fill="none" opacity="0.9">
+    <path d="M128 70v-18" stroke-linecap="round" />
+    <path d="M128 186v18" stroke-linecap="round" />
+    <path d="M62 128h-18" stroke-linecap="round" />
+    <path d="M212 128h18" stroke-linecap="round" />
+    <path d="M92 92l20 20" />
+    <path d="M164 92l-20 20" />
+    <path d="M92 164l20-20" />
+    <path d="M164 164l-20-20" />
+  </g>
+  <g fill="#38bdf8" opacity="0.95">
+    <circle cx="128" cy="112" r="6" />
+    <circle cx="108" cy="144" r="5" />
+    <circle cx="148" cy="144" r="5" />
+    <circle cx="80" cy="108" r="4" />
+    <circle cx="176" cy="108" r="4" />
+  </g>
+  <path d="M76 188c22-16 60-26 102-18" fill="none" stroke="#60a5fa" stroke-width="2" opacity="0.35" />
+  <path d="M98 70c20-16 60-16 80 0" fill="none" stroke="#93c5fd" stroke-width="2" opacity="0.5" />
+  <circle cx="128" cy="128" r="32" fill="none" stroke="#fff" stroke-width="2" opacity="0.8" />
+  <g opacity="0.7" transform="translate(20,20)">
+    <path d="M58 98c22-22 58-22 80 0" fill="none" stroke="#38bdf8" stroke-width="2" />
+    <path d="M58 138c22 22 58 22 80 0" fill="none" stroke="#38bdf8" stroke-width="2" />
+  </g>
+  <text x="50%" y="222" text-anchor="middle" font-family="Inter, Roboto, Arial" font-size="18" fill="#dbeafe" font-weight="700">QMOI AI</text>
+</svg>

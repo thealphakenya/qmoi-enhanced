@@ -3,14 +3,20 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Core Dashboards
-export { default as QMOIDashboard } from "./QMOIDashboard";
-export { default as EnhancedQMOIDashboard } from "./EnhancedQMOIDashboard";
-export { default as QMoiDatabaseDashboard } from "./QMoiDatabaseDashboard";
-export { default as QMoiProjectDashboard } from "./QMoiProjectDashboard";
-export { default as EarningDashboard } from "./EarningDashboard";
-export { default as ProductionRevenueDashboard } from "./ProductionRevenueDashboard";
-export { default as QNewsDashboard } from "./QNewsDashboard";
+// Core Dashboards (consolidated into dashboards/ subdirectory)
+export {
+  QMOIDashboard,
+  EnhancedQMOIDashboard,
+  QMoiDatabaseDashboard,
+  QMoiProjectDashboard,
+  EarningDashboard,
+  ProductionRevenueDashboard,
+  QNewsDashboard,
+  DashboardRegistry,
+  getDashboardComponent,
+  getAvailableDashboards,
+  type DashboardVariant,
+} from "./dashboards";
 export { default as RoleBasedDashboard } from "./RoleBasedDashboard";
 
 // Control Panels
@@ -52,7 +58,7 @@ export { default as AutonomousDevelopmentPipeline } from "./AutonomousDevelopmen
 
 // UI & Experience
 export { default as AvatarSelector } from "./AvatarSelector";
-export { default as VoiceSelector } from "./VoiceSelector";
+export { VoiceSelector } from "../shared/voice";
 export { default as MoodTracker } from "./MoodTracker";
 export { default as CommandPanel } from "./CommandPanel";
 export { default as Onboarding } from "./Onboarding";

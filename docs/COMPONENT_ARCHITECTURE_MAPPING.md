@@ -152,7 +152,7 @@
 ### QCity Routes (`/qcity`)
 
 #### 17. `/qcity` - QCity Command Center (Note: JSX file)
-- **File**: [app/qcity/page.jsx](app/qcity/page.jsx)
+- **File**: [app/qcity/page.tsx](app/qcity/page.tsx)
 - **Purpose**: Smart city operations dashboard
 - **Type**: Client Component (interactive dashboard)
 - **Status**: Documented in screens/qcity-command-center-dashboard-screen.md

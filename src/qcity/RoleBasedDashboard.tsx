@@ -1,23 +1,36 @@
-import ErrorBoundary from '@/components/ErrorBoundary';
 import React from 'react';
-import { log as logger } from "@/lib/logger";
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
+// Dashboard components - consolidated from dashboards/
 import {
   QMoiDatabaseDashboard,
+  QNewsDashboard,
+  EarningDashboard,
+} from "./dashboards";
+
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/ui/tabs";
+
+import DeploymentStatusDashboard from "@/components/DeploymentStatusDashboard";
+import QmoiRevenueDashboard from "@/components/QmoiRevenueDashboard";
+
+// Other Q-City components
+import {
   QMoiMemoryPanel,
   QMoiToolbar,
   QMoiAutoDevPanel,
   QMoiFileEditorChat,
-  QNewsDashboard,
   QApiKeyManager,
   AccountAutomationPanel,
   SocialAutomationPanel,
-  EarningDashboard,
   DocumentManagerPanel,
 } from "./index";
 interface RoleBasedDashboardProps {
@@ -48,11 +61,15 @@ const RoleBasedDashboard: React.FC<RoleBasedDashboardProps> = ({
       {isMaster && <SocialAutomationPanel />}
       {isMaster && <EarningDashboard />}
       {isMaster && <DocumentManagerPanel />}
-      {isMaster && <TabsTrigger value="revenue">Revenue Engine</TabsTrigger>}
       {isMaster && (
-        <TabsContent value="revenue" className="space-y-4">
-          <QmoiRevenueDashboard />
-        </TabsContent>
+        <Tabs defaultValue="revenue" className="space-y-4">
+          <TabsList>
+            <TabsTrigger value="revenue">Revenue Engine</TabsTrigger>
+          </TabsList>
+          <TabsContent value="revenue" className="space-y-4">
+            <QmoiRevenueDashboard />
+          </TabsContent>
+        </Tabs>
       )}
       {/* Render role-specific features */}
       {role === "student" && (

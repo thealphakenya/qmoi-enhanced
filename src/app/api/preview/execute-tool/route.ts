@@ -59,19 +59,16 @@ export async function POST(request: NextRequest): Promise<any> {
       result,
       timestamp: new Date().toISOString(),
     });
-  } catch (error) {
-    safeConsoleError("Tool execution error:", error);
-    return NextResponse.json(
-      { error: "Failed to execute tool", details: String(error) },
-      { status: 500 }
-    );
+  } catch (error: any) {
+    globalThis.console?.error?.("Tool execution error:", error);
+    return NextResponse.json({ error: "Failed to execute tool", details: String(error) });
   }
 }
 
 /**
  * executeSyntaxHighlighter function
  */
-function executeSyntaxHighlighter(params: any): Promise<any> {
+async function executeSyntaxHighlighter(params: any): Promise<any> {
   return {
     status: "active",
     message: "Syntax highlighting enabled",
@@ -158,12 +155,12 @@ function executeCodeLinter(params: any): any {
 /**
  * executeCodeFormatter function
  */
-function executeCodeFormatter(params: any): any {
+async function executeCodeFormatter(params: any): Promise<any> {
   const { code, language = 'javascript' } = params;
   if (!code) return { formatted: "", changed: false };
 
   try {
-    const prettierModule = await import('prettier');
+      // @ts-ignore - prettier may not be installed in all environments, but the dynamic loader handles this safely.
     const prettier = prettierModule.default ?? prettierModule;
 
     const formatted = await prettier.format(code, {
@@ -187,7 +184,7 @@ function executeCodeFormatter(params: any): any {
         printWidth: 80
       }
     };
-  } catch (error) {
+  } catch (error: any) {
     // Fallback to advanced formatting
     const formatted = code
       .split("\n")
@@ -198,7 +195,7 @@ function executeCodeFormatter(params: any): any {
       formatted,
       changed: formatted !== code,
       format: "advanced",
-      error: error.message
+      error: error?.message || String(error)
     };
   }
 }

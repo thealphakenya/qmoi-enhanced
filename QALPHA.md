@@ -2,6 +2,7 @@
 
 ## Route
 - `app/qalpha/page.tsx`
+- `src/components/qalpha/QAlphaShell.tsx`
 - Live URL: `/qalpha`
 
 ## Purpose

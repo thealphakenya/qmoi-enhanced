@@ -2,6 +2,7 @@
 
 ## Route
 - `app/qmoi-ai/page.tsx`
+- `src/components/qmoi/QMOIAIShell.tsx`
 - Live URL: `/qmoi-ai`
 
 ## Purpose

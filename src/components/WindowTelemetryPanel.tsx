@@ -8,7 +8,8 @@ import { useWindowManager } from '@/components/UniversalWindowManager';
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 export const WindowTelemetryPanel: React.FC = () => {
-  const { windows } = useWindowManager();
+  const windowManager = useWindowManager();
+  const windows = windowManager?.windows ?? [];
   const [metrics, setMetrics] = useState({
     totalWindows: 0,
     avgZIndex: 0,
@@ -21,7 +22,9 @@ export const WindowTelemetryPanel: React.FC = () => {
       setMetrics({
         totalWindows: windows.length,
         avgZIndex:
-          windows.length > 0 ? windows.reduce((sum, w) => sum + w.zIndex, 0) / windows.length : 0,
+          windows.length > 0
+            ? windows.reduce<number>((sum, w) => sum + w.zIndex, 0) / windows.length
+            : 0,
         memoryUsage: Math.random() * 100, 
         renderTime: Math.random() * 50, 
         eventsProcessed: Math.floor(Math.random() * 1000),

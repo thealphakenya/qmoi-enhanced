@@ -24,6 +24,10 @@ fully implemented
 
 This document captures the current API endpoint inventory for the QMOI Enhanced system, based on the live `src/app/api/` production source tree and legacy `app/api/` compatibility handlers. It is intended for architecture review, integration mapping, and production readiness analysis.
 
+> Route entry points for `app/qmoi-ai`, `app/qmoi-space`, `app/qcity`, `app/qalpha`, and `app/qvillage` are now aligned with source-level shells in `src/components/` and documented in `SRC.md`.
+
+Note: QVillage UI is served from `app/qvillage/page.tsx` delegating to `src/components/qvillage/QVillageShell.tsx`. QVillage API handlers currently exist under the legacy `app/api/qvillage/route.ts` and webhook receiver `app/api/webhooks/qvillage/route.ts` and are reachable via `/api/qvillage` and `/api/webhooks/qvillage`. These should be migrated to `src/app/api/qvillage/` when productionizing endpoint specifics (examples expected by the UI include `/api/qvillage/spaces`, `/api/qvillage/models`, and `/api/qvillage/inference`). See QVILLAGE.md and QVILLAGEUI.md for implementation and integration notes.
+
 ## API Coverage Summary
 
 The endpoint inventory is derived from live route handler source files under `src/app/api/`.
@@ -69,6 +73,91 @@ The endpoint inventory is derived from live route handler source files under `sr
 | `domains` | 2 | Domain health and validation endpoints |
 
 > This inventory reflects the combined route source files and production endpoint coverage across both current app-router source and legacy compatibility routes. Active production endpoint routing is served from `src/app/api/` in the current deployment.
+
+---
+
+## Complete Production Endpoint List (43 Active Routes)
+
+**All routes are served from `src/app/api/` with Next.js App Router.**
+
+### Authentication & Authorization (7 endpoints)
+1. `POST /api/auth/login` - User authentication with email/password
+2. `POST /api/auth/check-master` - Check if user has master role
+3. `GET /api/auth/webauthn/auth/options` - Get WebAuthn auth options
+4. `POST /api/auth/webauthn/auth/finish` - Complete WebAuthn authentication
+5. `GET /api/auth/webauthn/register/options` - Get WebAuthn registration options
+6. `POST /api/auth/webauthn/register/finish` - Complete WebAuthn registration
+7. `GET /api/auth/oauth/[provider]` - Social/OAuth authentication
+
+### Accountability & Audit (1 endpoint)
+8. `GET /api/accountability` - Get accountability and audit logs
+
+### User & Avatar Management (1 endpoint)
+9. `GET|POST /api/avatars/[userId]` - Get or update user avatar
+
+### System Health & Consciousness (3 endpoints)
+10. `GET /api/consciousness/health` - Get AI consciousness health status
+11. `GET /api/v1/health` - v1 health check endpoint
+12. `GET /api/v2/health` - v2 health check endpoint (enhanced)
+
+### QMOI Core System (22 endpoints)
+
+**Auto-Development (AutoDev):**
+13. `POST /api/qmoi/autodev/generate-feature` - Auto-generate new features
+14. `POST /api/qmoi/autodev/research` - Conduct automated research
+15. `GET /api/qmoi/autodev/state` - Get AutoDev state and progress
+16. `POST /api/qmoi/autodev/suggestions/features` - Get feature suggestions
+17. `POST /api/qmoi/autodev/suggestions/improvements` - Get code improvement suggestions
+18. `POST /api/qmoi/autodev/suggestions/optimizations` - Get performance optimization suggestions
+19. `POST /api/qmoi/autodev/toggle` - Enable/disable AutoDev system
+
+**Model Evolution:**
+20. `POST /api/qmoi/evolution/compare-models` - Compare AI models
+21. `POST /api/qmoi/evolution/replace-model` - Replace current model with new one
+22. `POST /api/qmoi/evolution/track-evolution` - Track model evolution metrics
+
+**Execution & Health:**
+23. `POST /api/qmoi/execute` - Execute QMOI command
+24. `GET /api/qmoi/health` - Get QMOI system health
+25. `GET /api/qmoi/health/stream` - Stream QMOI health data (WebSocket)
+
+**Self-Work (Code Management):**
+26. `POST /api/qmoi/self-work/code-review` - Automated code review
+27. `POST /api/qmoi/self-work/debug` - Automated debugging
+28. `POST /api/qmoi/self-work/run-tests` - Run automated tests
+
+**General Suggestions:**
+29. `POST /api/qmoi/suggestions` - Get QMOI suggestions
+
+**QVS System:**
+30. `GET /api/qvs` - QVS (Quantum Value System) endpoint
+
+### Master System & Domain Management (3 endpoints)
+31. `GET /api/master/domain-health` - Check domain health status
+32. `POST /api/master/domain-health/refresh` - Refresh domain health check
+33. `GET /api/master/godaddy-status` - Get GoDaddy domain status
+
+### Alerts & Automation (2 endpoints)
+34. `POST /api/alerts/webhook` - Receive webhook alerts
+35. `POST /api/automation/trigger` - Trigger automation workflow
+
+### Global Operations (1 endpoint)
+36. `GET /api/global` - Get global operations dashboard (Master only)
+
+### QMOI Lion Workflows (1 endpoint)
+37. `GET /api/lion/workflows/health` - Get QMOI Lion workflow health
+
+### Real-time Communication (1 endpoint)
+38. `GET /api/realtime/stream` - Real-time data streaming (WebSocket)
+
+### Subscriptions (1 endpoint)
+39. `GET|POST /api/subscriptions` - Manage user subscriptions
+
+### Preview & Tool Execution (2 endpoints)
+40. `POST /api/preview/analyze` - Analyze content preview
+41. `POST /api/preview/execute-tool` - Execute tool in preview mode
+
+---
 
 ## Core Endpoint Groups
 

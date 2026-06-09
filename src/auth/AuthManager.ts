@@ -4,14 +4,6 @@ import fs from "fs/promises";
 import path from "path";
 import { log as logger } from "@/lib/logger";
 
-const logger = {
-  info: console.info.bind(console),
-  warn: console.warn.bind(console),
-  warning: console.warn.bind(console),
-  error: console.error.bind(console),
-  RELEASE: console.info.bind(console),
-};
-
 export interface User {
   id: string;
   username: string;
@@ -77,7 +69,7 @@ export class AuthManager {
           this.prismaAdapter = adapter;
           this.usePrisma = true;
         }
-      } catch (err) {
+      } catch (err: any) {
         logger.warn("Prisma adapter not available; falling back to in-memory store.", err);
         this.usePrisma = false;
       }
@@ -340,7 +332,7 @@ export class AuthManager {
       const dir = path.dirname(AuthManager.SESSION_STORE_FILE);
       await fs.mkdir(dir, { recursive: true }).catch(() => {});
       await fs.writeFile(AuthManager.SESSION_STORE_FILE, JSON.stringify(out, null, 2), { encoding: "utf8" });
-    } catch (err) {
+    } catch (err: any) {
       logger.warn("Failed to persist session store", err);
     }
   }
@@ -358,7 +350,7 @@ export class AuthManager {
       if (parsed.sessions && Array.isArray(parsed.sessions)) {
         parsed.sessions.forEach((s: any) => this.sessions.set(s.id, s));
       }
-    } catch (err) {
+    } catch (err: any) {
       logger.warn("Failed to load session store", err);
     }
   }

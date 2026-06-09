@@ -142,7 +142,7 @@
 - ✅ Cross-platform support confirmed
 
 ### QCity App
-- ✅ Page file: `app/qcity/page.jsx`
+- ✅ Page file: `app/qcity/page.tsx`
 - ✅ Command center dashboard active
 - ✅ Incident reporting working
 - ✅ device monitoring operational

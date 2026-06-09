@@ -7,33 +7,43 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Eye, Code, Search, Grid, List } from 'lucide-react';
 import { log as logger } from "@/lib/logger";
+import UniversalWindowManager from '@/components/UniversalWindowManager';
+import AutomationEngine from '@/components/shared/ai/AutomationEngine';
+import GlobalHotkeyService from '@/components/shared/system/GlobalHotkeyService';
+import WindowTelemetryPanel from '@/components/WindowTelemetryPanel';
+import VoiceGestureHooks from '@/components/VoiceGestureHooks';
 import OfflineCacheService from '@/components/OfflineCacheService';
-import PrivacyModeToggle from '@/components/PrivacyModeToggle';
-import AccessibilityAdjuster from '@/components/AccessibilityAdjuster';
+import PrivacyModeToggle from '@/components/shared/ui/PrivacyModeToggle';
+import AccessibilityAdjuster from '@/components/shared/ui/AccessibilityAdjuster';
 import FeedbackLoop from '@/components/FeedbackLoop';
 import PluginRegistry from '@/components/PluginRegistry';
 import CollaborationLayer from '@/components/CollaborationLayer';
-import PredictiveToolRecommender from '@/components/PredictiveToolRecommender';
-import FederatedLearningService from '@/components/FederatedLearningService';
+import PredictiveToolRecommender from '@/components/shared/ai/PredictiveToolRecommender';
+import FederatedLearningService from '@/components/shared/ai/FederatedLearningService';
 import SelfHealingWindows from '@/components/SelfHealingWindows';
-import AdaptiveTheming from '@/components/AdaptiveTheming';
+import AdaptiveTheming from '@/components/shared/ui/AdaptiveTheming';
 import VersionedStates from '@/components/VersionedStates';
 import UsageAnalytics from '@/components/UsageAnalytics';
-import ChatbotEnhanced from '@/components/ChatbotEnhanced';
-import PreviewWindow from '@/components/PreviewWindow';
+import ChatbotEnhanced from '@/components/shared/ai/ChatbotEnhanced';
+import { PreviewWindow } from '@/components/PreviewWindow';
 import QI from '@/components/QI';
 import QIStateWindow from '@/components/QIStateWindow';
 import QI_Enhanced from '@/components/QI_Enhanced';
 import UISettings from '@/components/UISettings';
 import TradingHistory from '@/components/TradingHistory';
 import TradingStatus from '@/components/TradingStatus';
-import FileExplorer from '@/components/FileExplorer';
+import { FileExplorer } from '@/components/FileExplorer';
 import GitStatus from '@/components/GitStatus';
 import AssetOverview from '@/components/AssetOverview';
 import DownloadQCity from '@/components/DownloadQCity';
-import FloatingAQ from '@/components/FloatingAQ';
-import LcSpaces from '@/components/LcSpaces';
-import QiSpaces from '@/components/QiSpaces';
+import { FloatingAQ } from '@/components/FloatingAQ';
+import { LcSpaces } from '@/components/LcSpaces';
+import { QiSpaces } from '@/components/QiSpaces';
+import QCityShell from '@/qcity/QCityShell';
+import QVillageShell from '@/components/qvillage/QVillageShell';
+import QMOIAIShell from '@/components/qmoi/QMOIAIShell';
+import QMOISpaceShell from '@/components/qmoi/QMOISpaceShell';
+import QAlphaShell from '@/components/qalpha/QAlphaShell';
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
@@ -79,6 +89,7 @@ const ComponentGallery: React.FC = () => {
     {
       name: 'WindowTelemetryPanel',
       category: 'core',
+      description: 'Telemetry dashboard for window and system metrics',
       status: 'completed',
       component: WindowTelemetryPanel
     },
@@ -283,6 +294,41 @@ const ComponentGallery: React.FC = () => {
       description: 'QI Spaces component',
       status: 'completed',
       component: QiSpaces
+    },
+    {
+      name: 'QCityShell',
+      category: 'app-shell',
+      description: 'Main QCity application shell and entry point for the city control center',
+      status: 'completed',
+      component: QCityShell
+    },
+    {
+      name: 'QVillageShell',
+      category: 'app-shell',
+      description: 'Main QVillage application shell and community dataset marketplace interface',
+      status: 'completed',
+      component: QVillageShell
+    },
+    {
+      name: 'QMOIAIShell',
+      category: 'app-shell',
+      description: 'Primary QMOI AI workspace shell for interactive chat and avatar workflows',
+      status: 'completed',
+      component: QMOIAIShell
+    },
+    {
+      name: 'QMOISpaceShell',
+      category: 'app-shell',
+      description: 'QMOI Space workspace shell for collaboration, project, and social tools',
+      status: 'completed',
+      component: QMOISpaceShell
+    },
+    {
+      name: 'QAlphaShell',
+      category: 'app-shell',
+      description: 'QAlpha research and learning shell for advanced AI training and modeling',
+      status: 'completed',
+      component: QAlphaShell
     }
   ];
   const categories = [
@@ -293,7 +339,8 @@ const ComponentGallery: React.FC = () => {
     { id: 'ui', label: 'UI & Interface', count: components.filter(c => c.category === 'ui').length },
     { id: 'trading', label: 'Trading & Financial', count: components.filter(c => c.category === 'trading').length },
     { id: 'system', label: 'File & System', count: components.filter(c => c.category === 'system').length },
-    { id: 'qmoi', label: 'QMOI Specific', count: components.filter(c => c.category === 'qmoi').length }
+    { id: 'qmoi', label: 'QMOI Specific', count: components.filter(c => c.category === 'qmoi').length },
+    { id: 'app-shell', label: 'Application Shells', count: components.filter(c => c.category === 'app-shell').length }
   ];
   const filteredComponents = components.filter(component => {
     const matchesSearch = component.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

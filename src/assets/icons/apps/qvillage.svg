@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="vBg" x1="0" x2="1">
+      <stop offset="0" stop-color="#032012" />
+      <stop offset="1" stop-color="#0b3b2f" />
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="44" fill="url(#vBg)" />
+  <g transform="translate(28,28)">
+    <g fill="#fff">
+      <path d="M40 120l22-34 22 34z" fill="#f8fafc" opacity="0.98" />
+      <rect x="88" y="88" width="40" height="72" rx="8" fill="#e6fff4" opacity="0.96" />
+      <path d="M156 120l-18-26-18 26z" fill="#fff" opacity="0.98" />
+    </g>
+    <g fill="#fde68a" opacity="0.95">
+      <circle cx="12" cy="12" r="6" />
+    </g>
+    <path d="M8 156c20-12 44-18 72-18s52 6 72 18" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.12" />
+  </g>
+  <text x="50%" y="220" text-anchor="middle" font-family="Inter, Roboto, Arial" font-size="18" fill="#dff8ec">QVillage</text>
+</svg>
+    <rect x="164" y="132" width="38" height="44" rx="8" fill="url(#villageHouse)" />
+    <polygon points="164,132 183,112 202,132" fill="#4ade80" />
+  </g>
+  <path d="M92 140h14" stroke="#16a34a" stroke-width="4" stroke-linecap="round" />
+  <path d="M126 158h14" stroke="#16a34a" stroke-width="4" stroke-linecap="round" />
+  <path d="M176 164h14" stroke="#16a34a" stroke-width="4" stroke-linecap="round" />
+  <circle cx="70" cy="94" r="14" fill="#fdf2f8" opacity="0.85" />
+  <circle cx="186" cy="90" r="10" fill="#38bdf8" opacity="0.9" />
+  <path d="M68 88l20-10" stroke="#22c55e" stroke-width="4" stroke-linecap="round" />
+  <path d="M190 86l-22-8" stroke="#22c55e" stroke-width="4" stroke-linecap="round" />
+  <path d="M128 42c42 8 58 28 58 48" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.25" />
+</svg>

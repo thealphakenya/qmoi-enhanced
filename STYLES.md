@@ -1,80 +1,95 @@
-<!-- LION_VALIDATION_START -->
-## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+# STYLES ✅
 
-- validated: yes
-- validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-04-12T03:00:51.472633Z
-fully implemented
-<!-- LION_VALIDATION_END -->
-
-# STYLES ✅ 
-
-This document provides an overview and maintenance instructions for the `styles/` directory.
+This document describes the application-wide styling strategy for QMOI Enhanced, including the canonical UI shells, shared theme layers, and the Markdown files that document UI style implementation across all apps.
 
 ## Purpose
 
-Document the purpose of the `styles` directory and the key files it contains.
+- Define the shared style architecture used by QMOI UI shells.
+- Track the Markdown sources that document styles for each app.
+- Ensure style documentation remains aligned with actual production routes.
 
-## Auto-Update Instructions
+## Style Architecture
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
-Run the following command to regenerate documentation and apply Lion validation metadata:
+QMOI uses a shared theme and design system with the following implementation points:
 
-```bash
-python3 scripts/qmoi_md_autoupdater.py
-```
+- `styles/theme.css` and related CSS variables for global theme management.
+- `src/components/theme-provider.tsx` for theme hydration, persistence, and runtime switching.
+- `src/components/shared/ui/AdaptiveTheming.tsx` for adaptive app styling, contrast modes, and layout responsiveness.
+- `src/components/shared/ui/AppShellHeader.tsx` for consistent app shell branding, iconography, and global page headers.
+- Shared app shell wrappers in `app/components` and `src/components/*` that provide consistent card, button, and panel styling.
 
-Then run:
+## Style Files and App UI Documentation
 
-```bash
-python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json
-```
+The following Markdown files document styles and UI feature expectations for QMOI apps:
 
-For always-on documentation synchronization, deploy the service files in `scripts/` to a persistent host or container.
+- `QMOIAIUI.md` — QMOI AI UI shell styling, theme modes, auth parity, and app branding.
+- `QMOISPACEUI.md` — QMOI Space styling, collaboration mode palettes, and theme documentation.
+- `QCITYUI.md` — QCity command center style system, dark mode accents, and dashboard aesthetics.
+- `QVILLAGEUI.md` — QVillage community marketplace UI, dataset panel styling, and role-aware themes.
+- `QALPHAUI.md` — Q Alpha research dashboard styling and theme guidance.
+- `ALLSERVE.md` — Service delivery model documentation, canonical routes, and app shell design context.
+- `UNIVERSAL.md` — Universal authentication, navigation, privacy mask, and auto-channel documentation.
+- `QMOIMASKS.md` — Privacy mask design and secure overlay behavior.
+- `QMOIALWAYSPARALLEL.md` — Parallel session and multitasking UI style guidance.
+- `independent.md` — Independent mode UI and offline styling considerations.
+- `TREE.md` — Application tree, UI shell structure, and component-to-route mapping.
 
+## App Style and Theme Coverage
 
-## production: NOTE ADDRESSED - s
+The UI shells share a common style baseline across these apps:
 
-- Add directory-level summaries and production readiness notes here.
+- QMOI AI: neon cyan / violet highlights, glassmorphism cards, production telemetry panels.
+- QMOI Space: collaborative marketplace layout, dataset cards, community palette and interactive project tiles.
+- QCity: command center grids, incident alerts, high-contrast monitoring, and master role controls.
+- QVillage: dataset catalogs, model registry cards, community commerce panels, accessibility theme selectors.
+- Q Alpha: research dashboards, progress cards, model metrics, learning path visuals.
 
-## Overview
+Each app must support at least the following theme modes:
 
-Summarize the content and the document intent.
+- `dark`
+- `light`
+- `high-contrast`
 
+And should preserve theme preference across sessions using the shared theme provider.
 
-## production Readiness
+## Universal Styling and Auth Integration
 
-Define the production quality expectations and validation requirements.
+Universal auth and navigation are now part of the style system:
 
+- `app/page.tsx` now routes to the universal auth portal by default.
+- All canonical app shells (`/qmoi-ai`, `/qmoi-space`, `/qcity`, `/qvillage`, `/qalpha`) now use a universal route guard to redirect unauthenticated users to `/universal`.
+- `UNIVERSAL.md` documents the universal auth portal UI, privacy mask controls, and parallel session states.
+- Auth-related UI components such as `LoginForm`, `RegisterForm`, `AuthStatusCard`, `ForgotEmailForm`, and `ResetPasswordForm` are styled to match the shared QMOI shell theme.
 
-## Validation Metadata
+## Style Documentation Maintenance
 
-Track validation source, timestamp, and verification status.
+Use this document as the primary style inventory reference. When new app shells or auth flows are added, update the corresponding Markdown file and add the entry here.
 
+### Recommended maintenance workflow
 
-## Implementation Notes
-
-Document implementation details, dependencies, and limitations.
-
-
-## Testing Notes
-
-Reference relevant tests, verification commands, and validation scope.
-
-
-## Ownership
-
-Record the responsible owner or team for this document.
-
+1. Implement or update UI styles in the source component.
+2. Update the relevant app UI Markdown file (e.g. `QMOIAIUI.md`).
+3. Add a cross-reference in this file under the "Style Files and App UI Documentation" section.
+4. If the feature controls auth, universal navigation, or privacy state, also update `UNIVERSAL.md`.
 
 ## Change History
 
-Log significant changes and version notes.
-
+- 2026-06-09: Added universal auth and auto-channel documentation for all app shells.
+- 2026-06-09: Added `UNIVERSAL.md` reference and explicit style docs list.
 
 ## Cross-References
 
-Link to related documentation, APIs, and system artifacts.
+- `QMOIAIUI.md`
+- `QMOISPACEUI.md`
+- `QCITYUI.md`
+- `QVILLAGEUI.md`
+- `QALPHAUI.md`
+- `ALLSERVE.md`
+- `UNIVERSAL.md`
+- `QMOIMASKS.md`
+- `QMOIALWAYSPARALLEL.md`
+- `independent.md`
+- `TREE.md`
 
 
 

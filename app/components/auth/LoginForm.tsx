@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import BiometricAuth from "@/components/auth/BiometricAuth";
-import { persistUserToStorage } from "@/lib/auth/persistence";
+import { persistUserToStorage, persistAuthTokens } from "@/lib/auth/persistence";
 import { logAuthEvent } from "@/lib/auth/memory";
 
 interface LoginFormProps {
@@ -16,6 +16,8 @@ interface LoginFormProps {
 export default function LoginForm({ onLogin }: LoginFormProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [showBiometric, setShowBiometric] = useState(false);
@@ -35,7 +37,7 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password, rememberMe }),
       });
       const data = await response.json();
       if (response.ok && data.success) {
@@ -43,7 +45,7 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
           id: data?.user?.id || `qmoi-user-${Date.now()}`,
           role: data?.user?.role || "user",
           displayName:
-            data?.user?.displayName || data?.user?.username || data?.user?.email || email || "QMOI User",
+            data?.user?.displayName || data?.user?.fullName || data?.user?.username || data?.user?.email || email || "QMOI User",
           permissions: data?.user?.permissions || ["general_chat", "help_support", "wallet_view"],
           accessLevel: data?.user?.accessLevel ?? 30,
         };
@@ -53,12 +55,16 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
           role: persistedUser.role,
           displayName: persistedUser.displayName,
         });
+        persistAuthTokens({
+          accessToken: data?.tokens?.accessToken ?? null,
+          refreshToken: data?.tokens?.refreshToken ?? null,
+        });
         logAuthEvent({
           userId: persistedUser.id,
           role: persistedUser.role,
           displayName: persistedUser.displayName,
           event: "signin",
-          details: { source: "LoginForm", identifier: data?.user?.username || email },
+          details: { source: "LoginForm", identifier: data?.user?.username || email, rememberMe },
         });
 
         onLogin(persistedUser);
@@ -73,10 +79,60 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
   };
 
   const handleBiometricSuccess = async (userId: string, confidence: number) => {
+    if (!email.trim()) {
+      setError("Please enter your email or username before biometric sign-in.");
+      setShowBiometric(false);
+      return;
+    }
+
     setShowBiometric(false);
-    persistUserToStorage({ id: userId, role: "user", displayName: "Biometric User" });
-    logAuthEvent({ userId, role: "user", displayName: "Biometric User", event: 'biometric_signin', details: { confidence } });
-    onLogin({ id: userId, displayName: "Biometric User", role: "user", permissions: ["general_chat", "help_support", "wallet_view"], accessLevel: 30 });
+    try {
+      const response = await fetch("/api/auth/signin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: email.trim(),
+          biometricMethod: "behavioral",
+          biometricData: { confidence, verified: true },
+        }),
+      });
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        const message = data.message || data.error || "Biometric login failed.";
+        setError(message);
+        return;
+      }
+
+      const persistedUser = {
+        id: data?.user?.id || userId,
+        role: data?.user?.role || "user",
+        displayName:
+          data?.user?.displayName || data?.user?.fullName || data?.user?.username || email || "Biometric User",
+        permissions: data?.user?.permissions || ["general_chat", "help_support", "wallet_view"],
+        accessLevel: data?.user?.accessLevel ?? 30,
+      };
+
+      persistUserToStorage({
+        id: persistedUser.id,
+        role: persistedUser.role,
+        displayName: persistedUser.displayName,
+      });
+      persistAuthTokens({
+        accessToken: data?.tokens?.accessToken ?? null,
+        refreshToken: data?.tokens?.refreshToken ?? null,
+      });
+      logAuthEvent({
+        userId: persistedUser.id,
+        role: persistedUser.role,
+        displayName: persistedUser.displayName,
+        event: "biometric_signin",
+        details: { confidence },
+      });
+      onLogin(persistedUser);
+    } catch (_err) {
+      setError("Biometric authentication network error. Please try again.");
+    }
   };
 
   const handleBiometricFailure = (reason: string) => {
@@ -188,21 +244,39 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
           </label>
           <label className="block">
             <span className="text-slate-300">Password</span>
+            <div className="mt-2 flex items-center gap-3 rounded-xl border border-slate-700 bg-slate-950 px-4 py-3">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full bg-transparent text-white outline-none"
+                placeholder="••••••••••"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((visible) => !visible)}
+                className="rounded-xl bg-slate-800 px-3 py-2 text-sm text-slate-300 hover:bg-slate-700"
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </div>
+          </label>
+          <label className="flex items-center gap-3 text-slate-300">
             <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white"
-              placeholder="••••••••••"
-              required
+              type="checkbox"
+              checked={rememberMe}
+              onChange={(e) => setRememberMe(e.target.checked)}
+              className="h-4 w-4 rounded border-slate-700 bg-slate-950 text-blue-500"
             />
+            <span>Remember this device</span>
           </label>
           <button
             type="submit"
             disabled={loading}
             className="w-full rounded-xl bg-blue-600 px-4 py-3 text-white font-semibold hover:bg-blue-500 disabled:opacity-50"
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ? "Logging in..." : "Universal Login"}
           </button>
           <div className="grid gap-3 sm:grid-cols-2">
             <button

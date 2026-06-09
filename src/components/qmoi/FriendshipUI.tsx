@@ -1,19 +1,11 @@
+// INTENTIONAL_UNUSED: archived / intentionally unused component
+"use client";
+
 import ErrorBoundary from '@/components/ErrorBoundary';
 import React, { useEffect, useState } from 'react';
 import apiClient from "@/api/client";
 import { useToast } from "@/components/ui/use-toast";
 import { log as logger } from "@/lib/logger";
-interface ErrorBoundaryProps extends React.PropsWithChildren<{}> {}
-interface ErrorBoundaryState {
-  hasError: boolean;
-}
-
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:12Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-"use client";
-// INTENTIONAL_UNUSED: archived / intentionally unused component
 interface Friend {
   id: string;
   userId: string;

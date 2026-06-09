@@ -1,7 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { persistUserToStorage, readPersistedUser, clearUserFromStorage } from "../lib/auth/persistence";
+import {
+  persistUserToStorage,
+  readPersistedUser,
+  clearUserFromStorage,
+  persistAuthTokens,
+  clearAuthTokens,
+} from "../lib/auth/persistence";
 
 export type UserRole = "master" | "sister" | "user" | "guest";
 
@@ -18,7 +24,17 @@ export interface UseAuthReturn {
   isAuthenticated: boolean;
   isLoading: boolean;
   hasAccess: (permission: string) => boolean;
-  login: (role: UserRole) => void;
+  login: (
+    payload:
+      | UserRole
+      | {
+          email?: string;
+          username?: string;
+          password?: string;
+          biometricMethod?: string;
+          biometricData?: any;
+        }
+  ) => Promise<QmoiUser>;
   refreshUser: () => Promise<void>;
   logout: () => Promise<void>;
 }
@@ -84,14 +100,19 @@ function readRoleFromUrl(): UserRole | null {
   return null;
 }
 
+function createFallbackUser(role: UserRole, persisted?: { id?: string | null; displayName?: string | null }): QmoiUser {
+  const profile = roleProfiles[role] || roleProfiles.guest;
+  return {
+    id: persisted?.id || `qmoi-${role}-${Date.now()}`,
+    displayName: persisted?.displayName || profile.displayName,
+    role: profile.role,
+    permissions: profile.permissions,
+    accessLevel: profile.accessLevel,
+  };
+}
+
 export function useAuth(): UseAuthReturn {
-  const [user, setUser] = useState<QmoiUser>(() => ({
-    id: "guest",
-    displayName: "Guest",
-    role: "guest",
-    permissions: roleProfiles.guest.permissions,
-    accessLevel: roleProfiles.guest.accessLevel,
-  }));
+  const [user, setUser] = useState<QmoiUser>(() => createFallbackUser("guest"));
   const [isLoading, setIsLoading] = useState(true);
 
   const loadUser = useCallback(async () => {
@@ -100,19 +121,9 @@ export function useAuth(): UseAuthReturn {
     const queryRole = readRoleFromUrl();
     const persisted = readPersistedUser();
     const storedRole = persisted?.role as UserRole | null;
-    const storedName = persisted?.displayName || null;
     const role = queryRole || storedRole || "guest";
-    const profile = roleProfiles[role] || roleProfiles.guest;
-    const id = persisted?.id || `qmoi-${role}-${Date.now()}`;
 
-    const fallbackUser: QmoiUser = {
-      id,
-      displayName: storedName || profile.displayName,
-      role: profile.role,
-      permissions: profile.permissions,
-      accessLevel: profile.accessLevel,
-    };
-    setUser(fallbackUser);
+    setUser(createFallbackUser(role, persisted ?? undefined));
     setIsLoading(true);
 
     try {
@@ -121,31 +132,38 @@ export function useAuth(): UseAuthReturn {
       });
 
       if (!response.ok) {
-        throw new Error(`Auth fetch failed with status ${response.status}`);
+        clearUserFromStorage();
+        clearAuthTokens();
+        setUser(createFallbackUser("guest"));
+        return;
       }
 
       const data = await response.json();
       if (data?.success && data.user) {
         const serverUser = data.user;
-        const resolvedRole = (serverUser.role as UserRole) || profile.role;
-        const serverProfile = roleProfiles[resolvedRole] || roleProfiles.guest;
+        const resolvedRole = (serverUser.role as UserRole) || role;
+        const resolvedProfile = roleProfiles[resolvedRole] || roleProfiles.guest;
         const displayName =
-          serverUser.fullName || serverUser.username || serverUser.email || serverProfile.displayName;
+          serverUser.fullName || serverUser.username || serverUser.email || resolvedProfile.displayName;
         const permissions =
           Array.isArray(serverUser.permissions) && serverUser.permissions.length > 0
             ? serverUser.permissions
-            : serverProfile.permissions;
+            : resolvedProfile.permissions;
 
         const updatedUser: QmoiUser = {
-          id: serverUser.id || id,
+          id: serverUser.id || persisted?.id || `qmoi-${resolvedRole}-${Date.now()}`,
           displayName,
           role: resolvedRole,
           permissions,
-          accessLevel: serverUser.accessLevel ?? serverProfile.accessLevel,
+          accessLevel: serverUser.accessLevel ?? resolvedProfile.accessLevel,
         };
 
         setUser(updatedUser);
         persistUserToStorage({ id: updatedUser.id, role: updatedUser.role, displayName: updatedUser.displayName });
+      } else {
+        clearUserFromStorage();
+        clearAuthTokens();
+        setUser(createFallbackUser("guest"));
       }
     } catch (_error) {
       // Use fallback local profile when auth service is unavailable
@@ -158,28 +176,27 @@ export function useAuth(): UseAuthReturn {
     loadUser();
   }, [loadUser]);
 
-  // Listen for cross-window auth changes and storage updates
   useEffect(() => {
     const onAuthChanged = () => {
       loadUser();
     };
     const onStorage = (ev: StorageEvent) => {
-      if (ev.key && (ev.key.includes('qmoi_user') || ev.key === 'qmoi_user_role' || ev.key === 'qmoi_user_id')) {
+      if (ev.key && (ev.key.includes("qmoi_user") || ev.key === "qmoi_user_role" || ev.key === "qmoi_user_id")) {
         loadUser();
       }
     };
     try {
-      window.addEventListener('qmoi:auth:changed', onAuthChanged as EventListener);
-      window.addEventListener('storage', onStorage as EventListener);
+      window.addEventListener("qmoi:auth:changed", onAuthChanged as EventListener);
+      window.addEventListener("storage", onStorage as EventListener);
     } catch (e) {
-      console.warn('Failed to attach auth listeners', e);
+      console.warn("Failed to attach auth listeners", e);
     }
     return () => {
       try {
-        window.removeEventListener('qmoi:auth:changed', onAuthChanged as EventListener);
-        window.removeEventListener('storage', onStorage as EventListener);
+        window.removeEventListener("qmoi:auth:changed", onAuthChanged as EventListener);
+        window.removeEventListener("storage", onStorage as EventListener);
       } catch (e) {
-        console.warn('Failed to remove auth listeners', e);
+        console.warn("Failed to remove auth listeners", e);
       }
     };
   }, [loadUser]);
@@ -190,22 +207,16 @@ export function useAuth(): UseAuthReturn {
 
   const logout = useCallback(async () => {
     try {
-      await fetch("/api/auth/logout", { method: "POST" });
+      await fetch("/api/auth/logout", {
+        method: "POST",
+      });
     } catch (_error) {
       // Ignore logout errors
     }
 
     clearUserFromStorage();
-
-    const profile = roleProfiles.guest;
-    const fallbackUser: QmoiUser = {
-      id: `qmoi-guest-${Date.now()}`,
-      displayName: profile.displayName,
-      role: profile.role,
-      permissions: profile.permissions,
-      accessLevel: profile.accessLevel,
-    };
-    setUser(fallbackUser);
+    clearAuthTokens();
+    setUser(createFallbackUser("guest"));
     setIsLoading(false);
   }, []);
 
@@ -214,20 +225,82 @@ export function useAuth(): UseAuthReturn {
     [user],
   );
 
-  const login = (role: UserRole) => {
-    const profile = roleProfiles[role] || roleProfiles.guest;
-    const id = `qmoi-${role}-${Date.now()}`;
-    const updatedUser: QmoiUser = {
-      id,
-      displayName: profile.displayName,
-      role: profile.role,
-      permissions: profile.permissions,
-      accessLevel: profile.accessLevel,
-    };
+  const login = useCallback(
+    async (
+      payload:
+        | UserRole
+        | {
+            email?: string;
+            username?: string;
+            password?: string;
+            biometricMethod?: string;
+            biometricData?: any;
+          }
+    ) => {
+      setIsLoading(true);
+      try {
+        if (typeof payload === "string") {
+          const profile = roleProfiles[payload] || roleProfiles.guest;
+          const fallbackUser: QmoiUser = {
+            id: `qmoi-${payload}-${Date.now()}`,
+            displayName: profile.displayName,
+            role: profile.role,
+            permissions: profile.permissions,
+            accessLevel: profile.accessLevel,
+          };
+          persistUserToStorage({ id: fallbackUser.id, role: fallbackUser.role, displayName: fallbackUser.displayName });
+          setUser(fallbackUser);
+          return fallbackUser;
+        }
 
-    persistUserToStorage({ id, role: profile.role, displayName: profile.displayName });
-    setUser(updatedUser);
-  };
+        const payloadBody: Record<string, any> = {};
+        if (payload.email) payloadBody.email = payload.email;
+        if (payload.username) payloadBody.username = payload.username;
+        if (payload.password) payloadBody.password = payload.password;
+        if (payload.biometricMethod) payloadBody.biometricMethod = payload.biometricMethod;
+        if (payload.biometricData) payloadBody.biometricData = payload.biometricData;
+
+        const response = await fetch("/api/auth/signin", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payloadBody),
+        });
+
+        const data = await response.json();
+        if (!response.ok || !data?.success) {
+          throw new Error(data?.message || "Unable to sign in");
+        }
+
+        const serverUser = data.user || {};
+        const resolvedRole = (serverUser.role as UserRole) || "user";
+        const resolvedProfile = roleProfiles[resolvedRole] || roleProfiles.user;
+        const displayName =
+          serverUser.fullName || serverUser.username || serverUser.email || resolvedProfile.displayName;
+        const permissions =
+          Array.isArray(serverUser.permissions) && serverUser.permissions.length > 0
+            ? serverUser.permissions
+            : resolvedProfile.permissions;
+
+        const authenticatedUser: QmoiUser = {
+          id: serverUser.id || `qmoi-${resolvedRole}-${Date.now()}`,
+          displayName,
+          role: resolvedRole,
+          permissions,
+          accessLevel: serverUser.accessLevel ?? resolvedProfile.accessLevel,
+        };
+
+        persistUserToStorage({ id: authenticatedUser.id, role: authenticatedUser.role, displayName: authenticatedUser.displayName });
+        persistAuthTokens({ accessToken: data.tokens?.accessToken ?? null, refreshToken: data.tokens?.refreshToken ?? null });
+        setUser(authenticatedUser);
+        return authenticatedUser;
+      } catch (error: any) {
+        throw new Error(error?.message || "Authentication failed");
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [],
+  );
 
   return {
     user,

@@ -27,9 +27,9 @@
 
 // Global Lion Agent instance
 import { NextRequest, NextResponse } from 'next/server';
-import { LionAgentWorkflowMonitor } from '@/services/lion-agent-workflows';
+import { LionAgentWorkflowService } from '@/services/lion-agent-workflows';
 import { log as logger } from '@/lib/logger';
-let lionAgent: LionAgentWorkflowMonitor | null = null;
+let lionAgent: LionAgentWorkflowService | null = null;
 
 /**
  * Initialize Lion Agent if not already initialized
@@ -37,11 +37,11 @@ let lionAgent: LionAgentWorkflowMonitor | null = null;
 /**
  * initializeLionAgent function
  */
-function initializeLionAgent(): LionAgentWorkflowMonitor {
+function initializeLionAgent(): LionAgentWorkflowService {
   if (!lionAgent) {
     const token = process.env.GITHUB_TOKEN || '';
-    lionAgent = new LionAgentWorkflowMonitor(token);
-    lionAgent.startMonitoring().catch(err => {
+    lionAgent = new LionAgentWorkflowService(token);
+    lionAgent.startMonitoring().catch((err: any) => {
       logger.error('🦁 Failed to start Lion Agent monitoring:', err);
     });
   }
@@ -192,4 +192,6 @@ function getLionAgentStatus(): object {
   return lionAgent.getAgentStatus();
 }
 
-export default { GET, POST };
+export async function POST(request: NextRequest): Promise<any> {
+  return PUT(request);
+}

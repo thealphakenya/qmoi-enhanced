@@ -56,8 +56,8 @@ export const UISettings: React.FC = () => {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) {
         const parsed = JSON.parse(raw) as UISettingsState;
-        setSettings((prev) => ({ prev, parsed }));
-        applySettings({ DEFAULTS, parsed });
+        setSettings(parsed);
+        applySettings(parsed);
       } else {
         applySettings(DEFAULTS);
       }
@@ -73,7 +73,7 @@ export const UISettings: React.FC = () => {
  */
 function onToggleHigh(): any {
       setSettings((prev) => {
-        const _next = { prev, highContrast: !prev.highContrast };
+        const _next = { ...prev, highContrast: !prev.highContrast };
         applySettings(_next);
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(_next));
@@ -88,7 +88,7 @@ function onToggleHigh(): any {
  */
 function onToggleReduce(): any {
       setSettings((prev) => {
-        const _next = { prev, reduceMotion: !prev.reduceMotion };
+        const _next = { ...prev, reduceMotion: !prev.reduceMotion };
         applySettings(_next);
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(_next));
@@ -144,8 +144,8 @@ function handleOpenEvent(): any {
       }
     };
   }, []);
-  const save = (full: full<UISettingsState>) => {
-    const _next = { settings, full };
+  const save = (partial: Partial<UISettingsState>) => {
+    const _next = { ...settings, ...partial };
     setSettings(_next);
     applySettings(_next);
     try {

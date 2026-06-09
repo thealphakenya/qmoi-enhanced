@@ -1,5 +1,6 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
 import React from 'react';
+import { Toaster as Sonner } from 'sonner';
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
@@ -9,10 +10,9 @@ import React from 'react';
 "use client";
 type ToasterProps = React.ComponentProps<typeof Sonner>;
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme();
   return (
     <Sonner
-      theme={theme as ToasterProps["theme"]}
+      theme="system"
       className="toaster group"
       toastOptions={{
         classNames: {

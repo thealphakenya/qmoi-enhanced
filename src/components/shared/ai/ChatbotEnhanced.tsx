@@ -155,7 +155,7 @@ function ChatbotEnhanced(): any {
     try {
       // Get QMOI response
       const wantSpeak = supportsSpeechSynthesis();
-      const { postModel } = await import("../services/qmoiApi");
+      const { postModel } = await import("../../../services/qmoiApi");
       const data = await postModel({
         user: "local",
         message: input,
@@ -269,8 +269,8 @@ function ChatbotEnhanced(): any {
             value={chatState.personality}
             onChange={(e) =>
               setChatState((prev) => ({
-                prev,
-                personality: e.target.value as any,
+                ...prev,
+                personality: e.target.value as ChatbotState['personality'],
               }))
             }
             className="personality-selector"
@@ -285,7 +285,7 @@ function ChatbotEnhanced(): any {
             className={`control-button ${chatState.isAutomatic ? "active" : ""}`}
             onClick={() =>
               setChatState((prev) => ({
-                prev,
+                ...prev,
                 isAutomatic: !prev.isAutomatic,
               }))
             }
@@ -297,7 +297,7 @@ function ChatbotEnhanced(): any {
             className={`control-button ${chatState.showSuggestions ? "active" : ""}`}
             onClick={() =>
               setChatState((prev) => ({
-                prev,
+                ...prev,
                 showSuggestions: !prev.showSuggestions,
               }))
             }
@@ -309,7 +309,7 @@ function ChatbotEnhanced(): any {
             className={`control-button ${chatState.showHistory ? "active" : ""}`}
             onClick={() =>
               setChatState((prev) => ({
-                prev,
+                ...prev,
                 showHistory: !prev.showHistory,
               }))
             }
@@ -409,7 +409,7 @@ function ChatbotEnhanced(): any {
               handleSendMessage();
             }
           }}
-          enabled={loading}
+          disabled={loading}
           className="chat-input-field"
         />
         <button

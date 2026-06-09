@@ -13,8 +13,8 @@ import { log as logger } from "@/lib/logger";
 import React, { useEffect, useState } from "react";
 import apiClient from "@/api/client";
 import SponsoredUsersManager from "./SponsoredUsersManager";
-import { AvatarSelector } from "@/components/q-city/AvatarSelector";
-import { VoiceSelector } from "@/components/q-city/VoiceSelector";
+import { AvatarSelector } from "@/qcity/AvatarSelector";
+import { VoiceSelector } from "@/qcity/VoiceSelector";
 import { buildMasterHeaders, readMasterToken, writeMasterToken } from '@/app/lib/auth/master';
 import {
   AlertCircle,

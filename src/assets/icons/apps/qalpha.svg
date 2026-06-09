@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="aBg" x1="0" x2="1">
+      <stop offset="0" stop-color="#071422" />
+      <stop offset="1" stop-color="#032f2d" />
+    </linearGradient>
+    <linearGradient id="aAccent" x1="0" x2="1">
+      <stop offset="0" stop-color="#06b6d4" />
+      <stop offset="1" stop-color="#10b981" />
+    </linearGradient>
+    <radialGradient id="aGlow" cx="50%" cy="40%" r="40%">
+      <stop offset="0%" stop-color="#e6fffb" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="256" height="256" rx="44" fill="url(#aBg)" />
+  <g transform="translate(28,28)">
+    <circle cx="100" cy="100" r="44" fill="url(#aGlow)" opacity="0.08" />
+    <path d="M44 92c12-20 40-26 64-8 18 14 28 46 14 70" fill="none" stroke="url(#aAccent)" stroke-width="8" stroke-linecap="round" opacity="0.98" />
+    <circle cx="100" cy="100" r="26" fill="#ffffff" opacity="0.96" />
+    <path d="M72 72l56 72" stroke="#10b981" stroke-width="6" stroke-linecap="round" opacity="0.92" />
+  </g>
+  <text x="50%" y="220" text-anchor="middle" font-family="Inter, Roboto, Arial" font-size="18" fill="#aefcf0">QAlpha</text>
+</svg>

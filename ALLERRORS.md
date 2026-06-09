@@ -24,7 +24,7 @@ Latest compiler scan:
    - components/BluetoothManager.tsx
    - components/BrowserInterface.tsx
    - components/CashonTradingPanel.tsx
-- Current action: iterative cleanup of UI components and shared utilities, targeting missing React imports, invalid component declarations, and runtime-safe type narrowing. See current diagnostics in `/tmp/current_tsc_output.txt`.
+- Current action: iterative cleanup of UI components and shared utilities, targeting missing React imports, invalid component declarations, runtime-safe type narrowing, and path alias/component wrapper mismatches. See current diagnostics in `/tmp/current_tsc_output.txt`.
 
 Immediate remediation plan (Advanced Mode — prioritized):
 1. Search for root-cause files generating cascading errors and repair them first (shared interfaces, malformed generated artifacts).
@@ -50,7 +50,12 @@ Current actions performed (since last snapshot):
  - Patched `components/AppManager.tsx` to replace undefined `Update` icon with `RefreshCw` and stabilize status Badge usage.
  - Cleaned `components/ui/badge.tsx`: added missing imports (`cva`, `VariantProps`, `cn`, `logger`), removed duplicate `ErrorBoundary` declarations, and exported typed `Badge` so `variant` prop is available.
  - Cleaned `components/AskQMoi.tsx`: removed duplicated implementations and duplicate default exports; consolidated to a single typed component and a single `ErrorBoundary`.
- - Re-ran `npm run type-check` and captured the current diagnostics (`/tmp/tsc_output.txt`).
+ - Restored `src/components/DownloadQCity.tsx` as a root alias component wrapper and corrected the shared tool default export so `@/components/DownloadQCity` resolves properly.
+ - Created root alias wrappers for shared tool components: `AssetOverview`, `FileExplorer`, `GitStatus`, and `PluginRegistry`.
+ - Fixed `src/components/shared/tools/AssetOverview.tsx` by importing `useAuth` and adding a default export.
+ - Added missing shared root component `src/components/ErrorBoundary.tsx` to satisfy widespread `@/components/ErrorBoundary` imports.
+ - Verified `@/components/*`, `@/components/ui/*`, and `@/components/shared/*` imports resolve to existing files after current fixes.
+ - Attempted `npm run type-check` validation, but the current container lacks Node/npm/tsc tooling.
 
 Next steps (work queue — immediate):
 - Patch `components/AppManager.tsx`: fix icon import (`Update`), align `App` vs `AppInfo` types (convert `lastUpdate: Date` → `string` or update `App` type), and remove unsafe optional invocations.

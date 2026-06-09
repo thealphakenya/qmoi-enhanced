@@ -1,27 +1,148 @@
-Resume point: 2026-06-07T21:20:00.000000Z
+Resume point: 2026-06-09T02:30:00.000000Z
 Absolute path: /workspaces/qmoi-enhanced/resumefromhere.txt
-NOTE: Updated before bulk type remediation for QMOI AI, QMOI Space, QAlpha, QCity, and shared UI features.
-Git branch: feature/auth-prod-1780061287
-Repository status: Type remediation in progress; documentation and route inventory updated.
+NOTE: Updated after applying new shared shell branding, app documentation sync, and targeted route consolidation work.
+Git branch: autosync-backup-20250926-232440
+Repository status: Active consolidation mode - actual Next.js app shell routes verified; shared branding and docs alignment completed for core apps.
+
+User instructions to preserve and execute:
+- Follow the bulk repair loop: run typecheck once, fix root causes in bulk, rerun, fix newly exposed errors, rerun, repeat until zero.
+- Consolidate all `qmoi ai`, `qmoi space`, `qcity`, `qvillage`, and `qalpha` implementations into `src`.
+- Preserve intended implementations before deleting duplicates.
+- Ensure `ComponentGallery.tsx` includes all components, usage metadata, and covers every component directory.
+- Update documentation: `API.md`, `APIs_1.md`, `ENDPOINTS.md`, `ROUTES.md`, `ALLMDFILESREFS.md`, `SRC.md`, `COMPONENTS.md`, `TREE.md`, `ALLSERVE.md`, plus `QVILLAGEUI.md`, `QMOIAIUI.md`, `QMOISPACEUI.md`, `QALPHAUI.md`, `QCITYUI.md`, and any relevant validation docs.
+- Prioritize disability accessibility, master/sister/user auth, and app entry points for the five apps.
+- Ensure each app has three different styles/themes as described in style-related files and enhance style support across all apps.
+- Ensure each app has custom-built icons, centralize app icons in one directory, and create missing icons to match naming and features.
+- Identify and preserve shared `components/ui` features used by multiple apps.
+- Identify all `app` directories and all directories inside `app`, plus all directories in the repo.
+- Identify all `.md` files related to `app`, `build`, `download`, `qcity`, `qmoiai`, `qmoispace`, `auto`, `dev`, `parallel`.
+- Identify all build scripts across the repo, including `scripts/` directory and any build entrypoints.
+- Delete old, duplicate, or unused files and directories only after ensuring their implementations are adopted in the surviving `src` structure.
+- Enhance features, components, arrangements, and UI appearance for all apps.
+ - Ensure QVillage has three selectable themes and login/register/logout parity with other apps (added 2026-06-09).
+- Ensure apps are production ready and that a central QMIO validation system covers all UI feature validation.
+- Update all relevant validation documentation.
+- Note how QCity handles these apps and enhance that integration.
+
+Discovery, merge, and validation strategy:
+- Inventory every `app/` route and verify the actual page entrypoints for `qmoi ai`, `qmoi space`, `qcity`, `qvillage`, and `qalpha`.
+- Search repo-wide for `qmoiai`, `qmoi-space`, `qcity`, `qvillage`, and `qalpha` in filenames, directories, imports, and route metadata.
+- Identify canonical `src/components` shells and map them to active route pages.
+- Search for legacy duplicate implementations outside `src`, including top-level `components/`, `qcity/`, `qvillage/`, `qmoi-space/`, `qalpha/`, and root app directories.
+- Build a merge matrix showing which features and components are shared, duplicated, or app-specific.
+- Preserve shared UI features used by more than one app and centralize them under `src/components/shared/ui` or equivalent.
+- Create or confirm root alias barrel exports for shared components and app shells.
+- Centralize app icons in `src/assets/icons/apps` or similar and generate missing icons for each app.
+- Search style-related files and ensure each app supports three themes, with theme names, visual adjustments, and style metadata aligned across docs.
+- Identify QMIO validation services in code and docs, ensure they cover all UI validation flows, and update validation-related `.md` files.
+- Discover build scripts in all directories by scanning `package.json` scripts and shell/JS/TS build files under `scripts/`, `build/`, and app directories.
+- For each legacy candidate, confirm equivalent implementation in canonical `src` before deleting.
+- Update UIs and docs to reflect actual, intended feature sets rather than stale legacy artifacts.
+- Make production readiness improvements for accessibility, auth flows, performance, and theme polish.
+
 Current focus:
-- Bulk cleanup of shared React hook imports and UI component imports across `src/components`.
-- Stabilize `npm run type-check` for all core app routes and UI panels.
-- Ensure QMOI AI, QMOI Space, QAlpha, and QCity UI features are production-ready and properly typed.
+- Confirm the active shell entrypoints for the five major apps and verify they use canonical `src/components/*Shell.tsx` implementations.
+- Centralize app shell branding and iconography into shared UI primitives.
+- Synchronize doc artifacts for route mapping, app UI docs, and service inventories.
+- Keep `resumefromhere.txt` as the authoritative progress tracker for ongoing bulk enhancements.
 
-Progress Summary:
-- ✅ Documentation and route alignment work completed for the main app routes.
-- ✅ Shared root causes identified in UI and component import usage.
-- ✅ Current bulk target is `src/components/*` root UI and hook import failures.
-- ⚠️ Current type-check baseline shows top failures in `src/components/ComponentGallery.tsx`, `src/components/DownloadQCity.tsx`, `src/components/FileExplorer.tsx`, `src/components/FloatingAQ.tsx`, `src/components/GitStatus.tsx`, `src/components/LcSpaces.tsx`, `src/components/PreviewWindow.tsx`, `src/components/QI.tsx`, and related UI panel files.
+Work completed so far:
+- Verified the canonical shell mappings for all five major app routes:
+  - `app/qmoi-ai/page.tsx` → `src/components/qmoi/QMOIAIShell.tsx`
+  - `app/qmoi-space/page.tsx` → `src/components/qmoi/QMOISpaceShell.tsx`
+  - `app/qcity/page.tsx` → `src/components/q-city/QCityShell.tsx`
+  - `app/qalpha/page.tsx` → `src/components/qalpha/QAlphaShell.tsx`
+  - `app/qvillage/page.tsx` → `src/components/qvillage/QVillageShell.tsx`
+- Added `src/components/shared/ui/AppShellHeader.tsx` and wired it into all five app shells to standardize branding and app icon presentation.
+- Extended shared UI exports to include `AppShellHeader` in `src/components/shared/ui/index.ts`.
+- Updated app UI documentation files with actual route and centralized icon paths: `QMOIAIUI.md`, `QMOISPACEUI.md`, `QCITYUI.md`, `QALPHAUI.md`, `QVILLAGE.md`.
+- Updated production docs to reflect centralized shell branding and icon assets: `API.md`, `APIs_1.md`, `SRC.md`, `ALLSERVE.md`.
+- Confirmed active app shell routes are now documented consistently across the source inventory and service notes.
+- Verified the application shell pages all compile conceptually with shared imports; the broader repo still requires typecheck resolution.
 
-Next Actions:
-1. Run `npm run type-check` from repo root for a fresh baseline.
-2. Fix shared root causes in bulk: React hook imports, `apiClient`, `useAuth`, UI component imports, and `enabled`/`disabled` prop normalization.
-3. Re-run `npm run type-check` and capture the new failure list.
-4. Resolve newly exposed errors and repeat until the full TypeScript pass is green.
-5. Once green, validate page route docs for `app/qmoi-ai`, `app/qmoi-space`, `app/qcity`, `app/qalpha`, and `app/qvillage`.
-6. Final sweep: build readiness, docs, and `ALLERRORS.md` alignment.
+Pending tasks:
+1. Run `npm run type-check` again after targeted root fixes and catch residual compile issues.
+2. Inspect the deeper repository type errors in shared UI and production API endpoints.
+3. Expand the validation doc updates to include `VALIDATION_SYSTEM.md`, `ALLMDFILESREFS.md`, and any qvillage/qmoi/space validation docs.
+4. Audit `app/components` legacy sources and confirm no live references remain before cleanup.
+5. Confirm theme metadata support for three theme variants in actual style sources and document the mapping.
+6. Continue consolidating `components/ui` features used by multiple apps into `src/components/shared/ui`.
+7. Keep `resumefromhere.txt`, docs, and the app shell routes synchronized after each pass.
 
-Last update: 2026-06-07T21:20:00Z
-Auto-update: 2026-06-07T21:20:00Z
+Next action:
+- Address the remaining type errors in the broader repo and refocus on shared UI and API route hygiene.
+- Enhance and document theme support so each app has distinct `dark`, `light`, and `high-contrast` variants.
+- Confirm the centralized app icon path is used by route shells and update any legacy icon references in docs or UI.
+- Continue updating validation documentation and connect it to the actual production route surface.
+- Prepare for safe legacy cleanup once canonical `src` equivalents are confirmed and all live routes are verified.
+
+Work completed so far:
+- Confirmed active `app` pages lead to canonical `src/components` app shells.
+- Added the five major app shells to `ComponentGallery.tsx` as `app-shell` entries.
+- Established that many unrelated old `components/*.tsx` errors exist, so the immediate consolidation should focus on canonical `src` paths.
+- Confirmed the next pass must inventory repo directories and documentation artifacts before safe cleanup.
+- Discovered concrete repository inventory counts for the consolidation plan.
+- Identified the active app page endpoints for the major apps.
+- Confirmed 249 relevant markdown docs and 1,343 build-related script sources outside `node_modules`.
+- Updated `QMOIAIUI.md`, `QMOISPACEUI.md`, `QCITYUI.md`, and `QALPHAUI.md` with actual theme/style guidance.
+- Located the main app icon library in `assets/icons` and existing PWA icon folders for QMOI AI, QMOI Space, QCity, and QVillage.
+- Located the main theme/style assets in `styles/theme.css`, `styles/globals.css`, `src/components/theme-provider.tsx`, and `src/components/shared/ui/AdaptiveTheming.tsx`.
+- Replaced placeholder icon assets with production-grade SVG implementations in `assets/icons/apps/`, including a real QAlpha icon and enhanced central app icon artwork.
+
+Discovery data collected:
+- Top-level repo directories include: `ALL_APPS`, `DOCS`, `QVS`, `Qmoi_downloaded_apps`, `_BACKUPS_corrupted_20251115_222941`, `__mocks__`, `__tests__`, `adapters`, `ai`, `api`, `app`, `archives`, `assets`, `autodev`, `backend`, `ci-debug-outputs`, `cloud_config`, `components`, `config`, `cypress`, `dashboard`, `data`, `database`, `datasets`, `db`, `deploy`, `docker`, `docs`, `docs_site`, `domain-management`, `downloads`, `earnvault`, `error-reports`, `examples`, `gh_2.89.0_linux_amd64`, `git-lfs-3.5.1`, `github`, `hf_space_qvillage`, `hooks`, `huggingface_space`, `installer`, `issues`, `k6`, `k8s`, `lib`, `logrotate`, `logs`, `migrations`, `ml`, `mobile`, `models`, `monitoring`, `nginx`, `node_modules`, `notebooks`, `pages`, `payments`, `performance_optimized`, `pgdata`, `prisma`, `production`, `production_deployment`, `public`, `pwa_apps`, `q`, `qcity-artifacts`, `qcity`, `qglobalsim`, `qmoi-space-pwa`, `qmoi-space`, `qmoi`, `qmoi_comprehensive_system`, `qmoi_global_memory`, `qmoi_master_memory`, `qvillage`, `reports`, `requirements`, `results`, `routes`, `scan_results`, `scripts`, `server`, `services`, `src`, `ssh-backend`, `styles`, `templates`, `temps`, `test-results`, `tests`, `tools`, `tracks`, `types`, `ui_samples`, `utils`, `v1.2.5_release`, `whatsapp-qmoi-bot`
+- `app/` directories count: 327
+- Repository directories count excluding `node_modules`: 7,833
+- Relevant markdown files count: 249
+- Build script sources count (excluding `node_modules`): 1,343
+- Active app page entrypoints discovered:
+  - `app/page.tsx`
+  - `app/qalpha/page.tsx`
+  - `app/qcity/page.tsx`
+  - `app/qmoi-ai/page.tsx`
+  - `app/qmoi-space/page.tsx`
+  - `app/qvillage/page.tsx`
+  - plus admin and dev app pages under `app/admin` and `app/dev`
+- Relevant app docs discovered, including `QMOIAIUI.md`, `QMOISPACEUI.md`, `QCITYUI.md`, `QALPHAUI.md`, `QVILLAGE.md`, `QMOIAI.md`, `QMOISPACE.md`, `QCITY.md`, and validation docs like `VALIDATION_SYSTEM.md`.
+- Inventory output files for reference:
+  - `/tmp/app_dirs.txt`
+  - `/tmp/all_dirs_no_node.txt`
+  - `/tmp/all_mds_no_node.txt`
+  - `/tmp/relevant_mds_no_node.txt`
+  - `/tmp/build_scripts_no_node.txt`
+
+Pending tasks:
+1. Inspect `app/qalpha/page.tsx`, `app/qcity/page.tsx`, `app/qmoi-ai/page.tsx`, `app/qmoi-space/page.tsx`, and `app/qvillage/page.tsx` for direct shell imports and route usage.
+2. Identify and document style/theme sources that support three themes per app.
+3. Locate current icon asset locations and centralize app icons under a single shared directory.
+4. Review `components/ui` features used by multiple apps and ensure they are preserved in shared source.
+5. Map the QMIO validation system in code and docs, then update validation documentation.
+6. Update `QMOIAIUI.md`, `QMOISPACEUI.md`, `QCITYUI.md`, and `QALPHAUI.md` with actual intended style and app feature details.
+7. Plan safe deletion of duplicate legacy files after confirming canonical `src` adoption.
+8. Update documentation for all identified relevant markdown files, especially the ones tied to app/build/download/qcity/qmoiai/qmoispace/auto/dev/parallel/validation.
+
+Next action:
+- Inspect the active app page files and their imported shell components, then update the consolidation plan with concrete source mappings and style/theme direction.
+
+Last update: 2026-06-09T01:00:00.000000Z
+Auto-update: 2026-06-09T01:00:00.000000Z
 Author: automation / dev
+
+Additional pending instructions and work items:
+- Continue the open work on download UI features for QCity, QVillage, QMOI AI, QMOI Space, and QAlpha.
+- Ensure all app download pages and components use actual app-specific icons from the centralized `src/assets/icons/apps` directory.
+- Clarify branding so `Q` is explicitly represented as `QMOI AI` in UI labels, page titles, and download messaging.
+- Keep the earlier bulk repair loop instruction: run typecheck once, fix root causes in bulk, rerun, fix newly exposed errors, rerun, repeat until zero.
+- Maintain consolidation of `qmoi ai`, `qmoi space`, `qcity`, `qvillage`, and `qalpha` implementations into `src` while preserving intended implementations before deleting duplicates.
+- Preserve and extend shared `components/ui` features used across apps, centralizing them wherever possible.
+- Continue auditing and updating the documentation artifacts listed earlier, including app-specific UI docs and validation docs.
+- Keep accessibility, master/sister/user auth, app entry points, and production readiness as top priorities for all app pages.
+
+Continue work items:
+1. Confirm active app page route imports for `app/qalpha/page.tsx`, `app/qcity/page.tsx`, `app/qmoi-ai/page.tsx`, `app/qmoi-space/page.tsx`, and `app/qvillage/page.tsx`.
+2. Validate that each app supports three themes/styles and document the source of theme metadata.
+3. Centralize app icons in `src/assets/icons/apps` and update download UI components to use those actual icons.
+4. Review existing shared UI components and ensure `ComponentGallery.tsx` covers the active app shells and shared metadata.
+5. Locate the QMIO validation system in code and docs and update the validation documentation to cover UI feature validation.
+6. Plan safe cleanup of legacy duplicate files only after canonical `src` equivalents are confirmed and documented.
+7. Update the summary and pending-status notes as work progresses so `resumefromhere.txt` remains the authoritative handoff point.

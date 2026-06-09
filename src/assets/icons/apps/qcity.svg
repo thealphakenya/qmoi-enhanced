@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="cBg" x1="0" x2="1">
+      <stop offset="0" stop-color="#071029" />
+      <stop offset="1" stop-color="#043a5e" />
+    </linearGradient>
+    <linearGradient id="cAccent" x1="0" x2="1">
+      <stop offset="0" stop-color="#06b6d4" />
+      <stop offset="1" stop-color="#34d399" />
+    </linearGradient>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="b" />
+      <feMerge>
+        <feMergeNode in="b" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="256" height="256" rx="40" fill="url(#cBg)" />
+  <g transform="translate(18,36)">
+    <g filter="url(#soft)">
+      <rect x="8" y="80" width="28" height="96" rx="6" fill="#ffffff" opacity="0.95" />
+      <rect x="52" y="56" width="34" height="120" rx="8" fill="#f8fafc" opacity="0.95" />
+      <rect x="100" y="40" width="44" height="136" rx="10" fill="#e6eefc" opacity="0.98" />
+      <rect x="156" y="72" width="30" height="104" rx="8" fill="#ffffff" opacity="0.93" />
+    </g>
+    <path d="M0 188c36-22 80-36 120-36s84 14 120 36" fill="none" stroke="url(#cAccent)" stroke-width="8" stroke-linecap="round" opacity="0.9" />
+    <g fill="#fff" opacity="0.9">
+      <circle cx="36" cy="40" r="6" fill="#22d3ee" />
+      <circle cx="120" cy="48" r="6" fill="#a7f3d0" />
+      <circle cx="172" cy="96" r="6" fill="#facc15" />
+    </g>
+    <g stroke="#ffffff" stroke-width="1.6" opacity="0.6">
+      <line x1="36" y1="40" x2="120" y2="48" />
+      <line x1="120" y1="48" x2="172" y2="96" />
+    </g>
+    <circle cx="128" cy="100" r="82" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.06" />
+  </g>
+  <text x="50%" y="220" text-anchor="middle" font-family="Inter, Roboto, Arial" font-size="18" fill="#cfeefe" opacity="0.95">QCity</text>
+</svg>

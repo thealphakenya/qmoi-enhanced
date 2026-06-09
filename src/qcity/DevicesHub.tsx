@@ -1,5 +1,5 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { log as logger } from "@/lib/logger";
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -23,7 +23,7 @@ const WhatsAppService = {
   },
   messageTemplates: [],
   sendMessageToMaster: async (msg: string) => {
-    notification.show(msg);
+    console.log("WhatsAppService message to master:", msg);
   },
   sendMessage: async () => {},
   sendMessageToLeah: async () => {},

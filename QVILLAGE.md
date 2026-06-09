@@ -9,8 +9,17 @@
 
 # QVILLAGE.md - QVillage: Comprehensive AI Platform Surpassing Hugging Face ✅ 
 
-**Last Updated**: 2024
-**Status**: ✅ FULLY OPERATIONAL - 
+## Route
+- `app/qvillage/page.tsx`
+- `src/components/qvillage/QVillageShell.tsx`
+- Live UI route: `/qvillage`
+
+## App Branding
+- Centralized icons are sourced from `src/assets/icons/apps/qvillage.svg`.
+- The live QVillage shell now uses a shared `AppShellHeader` wrapper for consistent UI branding across the QMOI suite.
+
+**Last Updated**: 2026-06-09
+**Status**: ✅ FULLY OPERATIONAL - Updated UI and Model Registry
 **Version**: 1.0.0 Enhanced with all QVILLAGEENHANCEMENTS.md features
 **API Endpoints**: 138 comprehensive endpoints
 **Features**: 10 major categories with enterprise security
@@ -89,6 +98,11 @@ QVillage serves as the central hub for the Quantum multi orchestra intelligence 
 - **Autonomous System Health**: Self-monitoring and self-healing status
 - **Parallel Processing Metrics**: Multi-threaded operation performance
 - **Consciousness Sync Status**: Global awareness synchronization state
+
+## UI Improvements (2026-06-09)
+
+- Added `Model Registry` section to the canonical shell: `src/components/qvillage/QVillageShell.tsx` to display deployed models, status and pricing.
+- Ensured `app/qvillage/page.tsx` and `src/components/qvillage/index.ts` delegate to the canonical shell for consistent routing.
 
 ---
 

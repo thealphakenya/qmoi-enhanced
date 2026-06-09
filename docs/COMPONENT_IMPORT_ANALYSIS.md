@@ -638,7 +638,7 @@ app/qvillage/page.tsx
 
 **Connection Pattern**:
 ```
-app/qcity/page.jsx (Note: JSX file!)
+app/qcity/page.tsx (Note: JSX file!)
   ├── Static metrics display
   ├── Service operations list
   ├── Incident reports display

@@ -36,6 +36,19 @@ declare global {
   const process: unknown;
   const console: Console;
   const NodeJS: unknown;
+  type full<T> = T;
+  function consoleLog(message: string, data?: any): void;
+  function safeConsoleError(...args: any[]): void;
+  const logger: {
+    info: (...args: any[]) => void;
+    warn: (...args: any[]) => void;
+    error: (...args: any[]) => void;
+    debug: (...args: any[]) => void;
+  };
+  const apiClient: any;
+  const requireMaster: any;
+  const prettier: any;
+  const MasterLinkValidator: any;
 
   // Test globals (permissive)
   const describe: any;
@@ -46,6 +59,12 @@ declare global {
   function beforeEach(fn: (...args: unknown[]) => any): void;
   function afterEach(fn: (...args: unknown[]) => any): void;
   const expect: unknown;
+}
+
+declare module 'prettier' {
+  const prettier: any;
+  export default prettier;
+  export function format(source: string, options: any): string;
 }
 
 export {};

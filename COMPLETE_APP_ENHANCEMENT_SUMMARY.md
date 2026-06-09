@@ -73,7 +73,7 @@
 - Backup/restore management
 - Memory: All workspace state saved to user memory
 
-#### QCity App (`app/qcity/page.jsx`)
+#### QCity App (`app/qcity/page.tsx`)
 **Features:**
 - Command center dashboard
 - Service operations monitoring

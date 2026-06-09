@@ -18,9 +18,14 @@ fully implemented
 **Page Inventory:** See `ALLPAGES.md` for all live app entry points and shell launch routes.
 
 ## Verified production PWA Route Mapping
-- Canonical production UI surfaces are live Next.js pages served from the `app/` directory: `app/qmoi-ai/page.tsx` (`/qmoi-ai`), `app/qmoi-space/page.tsx` (`/qmoi-space`), `app/qcity/page.jsx` (`/qcity`), and `app/qvillage/page.tsx` (`/qvillage`). These live routes deliver the full interactive dashboard experiences and are the primary delivery surfaces for production traffic.
+- Canonical production UI surfaces are live Next.js pages served from the `app/` directory: `app/qmoi-ai/page.tsx` (`/qmoi-ai`), `app/qmoi-space/page.tsx` (`/qmoi-space`), `app/qcity/page.tsx` (`/qcity`), and `app/qvillage/page.tsx` (`/qvillage`). These live routes deliver the full interactive dashboard experiences and are the primary delivery surfaces for production traffic.
 - Static PWA launcher shells such as `public/qmoi-ai.html`, `public/qmoi-space.html`, and `public/q-alpha.html` are compatibility/fallback entry points and are intended for installers or constrained hosting scenarios; they are not the canonical runtime UI for production deployments.
-- `app/qcity/page.jsx` and `app/qvillage/page.tsx` are active role-aware UI pages using `app/hooks/useAuth.ts` and should be used as the authoritative UI routes.
+- `app/qalpha/page.tsx` now delegates to `src/components/qalpha/QAlphaShell.tsx` for the alpha dashboard shell.
+- `app/qvillage/page.tsx` now delegates to `src/components/qvillage/QVillageShell.tsx` for the community workspace experience.
+ - Documentation: See QVILLAGE.md and QVILLAGEUI.md for UI integration and admin notes.
+ - QVillage API endpoints: the QVillage UI talks to `/api/qvillage/*` (examples: `/api/qvillage/spaces`, `/api/qvillage/models`, `/api/qvillage/inference`) and webhook receivers under `/api/webhooks/qvillage`.
+- All app shells now use the shared `AppShellHeader` wrapper and centralized icons from `src/assets/icons/apps/` for consistent branding.
+- `app/qcity/page.tsx` and `app/qvillage/page.tsx` are active role-aware UI pages using `app/hooks/useAuth.ts` and should be used as the authoritative UI routes.
 - Runtime update support is available via `/api/pwa/check-update` and `/api/pwa/auto-update`.
 
 ## QMOI Production Model Integration
@@ -29,13 +34,13 @@ fully implemented
 - **Model status endpoint:** `GET /api/qmoi-model` — returns JSON with `{ success, message, status, model, metrics, timestamp }` and supports query params (`allStats`, `analytics`, `trainingStatus`, etc.) for richer responses.
 - **Model control endpoint:** `POST /api/qmoi-model?applyprodiceFeature=<feature>` etc. — supports targeted management actions as documented in the legacy compatibility handler `app/api/qmoi-model/route.ts`.
 - **Chat/inference endpoint:** `POST /api/qmoi/chat` — accepts `{ messages?, input?, sessionId?, userId?, context? }` and returns `{ success, message, response, confidence, metadata, choices }` (see the legacy compatibility handler `app/api/qmoi/chat/route.ts`).
-- **Client integration:** `app/qmoi-ai/page.tsx`, `app/qmoi-space/page.tsx`, `app/qcity/page.jsx`, and `app/components/ChatMessaging.tsx` now default to `qmoi-prod` and call the above endpoints.
+- **Client integration:** `app/qmoi-ai/page.tsx`, `app/qmoi-space/page.tsx`, `app/qcity/page.tsx`, and `app/qvillage/page.tsx` now default to `qmoi-prod` and call the above endpoints.
+- **Legacy compatibility:** `app/components/ChatMessaging.tsx` remains present for historical and static shell reference, but it is not part of the current live `app/` page route shells.
 - **PWA shell:** `public/q-alpha.html` now probes `/api/qmoi-model` and uses `/api/qmoi/chat` for health checks.
 
 Files touched for production integration:
 - `app/qmoi-ai/page.tsx`
 - `app/qmoi-space/page.tsx`
-- `app/components/ChatMessaging.tsx`
 - `public/q-alpha.html`
 - `app/api/qmoi-model/route.ts`
 - `app/api/qmoi/chat/route.ts`

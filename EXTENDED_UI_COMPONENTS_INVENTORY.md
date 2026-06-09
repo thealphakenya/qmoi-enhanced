@@ -117,7 +117,7 @@ All components are located in `/app/components/` directory with proper TypeScrip
 - WorkflowAutomationEngine
 - ContentManagementSystem
 
-### QCity Page (`app/qcity/page.jsx`)
+### QCity Page (`app/qcity/page.tsx`)
 **New Components Added**: 8
 - QVillage
 - QVillageDatasetsPanel

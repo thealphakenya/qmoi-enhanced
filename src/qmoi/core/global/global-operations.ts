@@ -1,3 +1,6 @@
+import { EventEmitter } from 'events';
+import { consoleLog } from '@/utils/console-logger';
+
 // QMOI EVOLUTION ENHANCED: This file supports unlimited global activities across all nations
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:14Z
@@ -51,7 +54,7 @@ export interface GlobalConfig {
   healthCheckIntervalMs: number;
 }
 
-export class GlobalOperationsSystem {
+export class GlobalOperationsSystem extends EventEmitter {
   private config: GlobalConfig = {
     enableUnlimitedGlobal: true,
     maxConcurrentGlobal: -1, // unlimited
@@ -65,6 +68,8 @@ export class GlobalOperationsSystem {
 
   private operationQueue: string[] = [];
   private activeOperations: Set<string> = new Set();
+  private operations: Map<string, GlobalOperation> = new Map();
+  private countries: Map<string, CountryData> = new Map();
   private systemHealth = {
     globalCpuUsage: 0,
     globalMemoryUsage: 0,
@@ -75,7 +80,7 @@ export class GlobalOperationsSystem {
   private healthCheckRunning = false;
   private unlimitedMode = true;
 
-  constructor(config?: full<GlobalConfig>) {
+  constructor(config?: Partial<GlobalConfig>) {
     super();
     if (config) {
       this.config = { ...this.config, ...config };
@@ -536,6 +541,7 @@ export class GlobalOperationsSystem {
   }
 
   private getContinentStats(): any {
+    const continentMap = new Map<string, { countries: number; revenue: number; operations: number }>();
 
     for (const country of this.countries.values()) {
       if (!continentMap.has(country.continent)) {

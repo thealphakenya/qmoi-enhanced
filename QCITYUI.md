@@ -1,5 +1,10 @@
 # QCITYUI.md - QCity User Interface Documentation ✅ PRODUCTION CERTIFIED
 
+## Route
+- `app/qcity/page.tsx`
+- `src/components/q-city/QCityShell.tsx`
+- Live UI route: `/qcity`
+
 **Version:** 2.0.0 - Production Ready
 **Date:** May 19, 2026
 **Status:** ✅ PRODUCTION CERTIFIED - All UI components enhanced with real production implementations
@@ -46,8 +51,11 @@ QCity is a React-based dashboard application providing command center functional
 - **Biometric Authentication:** QCity leverages shared `BiometricAuth` flows for command center access, session logging, and audit-aware identity verification
 
 ### Theme & Style System
-- **Theme Customization:** QCity includes role-aware theme accents and system-level visual controls through `QCityThemeProvider` and `VisualEnhancement`.
+- **Theme Customization:** QCity includes role-aware theme accents and system-level visual controls through `QCityThemeProvider`, `ThemeProvider`, and `VisualEnhancement`.
+- **Theme Modes:** The app should support at least three theme modes: `dark command`, `light operations`, and `high-contrast monitoring`.
 - **Visual Style:** Clean command center aesthetic with neon cyan highlights, card-based metrics panels, and high-contrast alert states.
+- **Iconography:** QCity should use centralized app icons from `src/assets/icons/apps/` for QCity, QMOI AI, QMOI Space, QVillage, and QAlpha.
+- **Shell Branding:** The production route now includes a shared `AppShellHeader` component for consistent shell identity and icon display.
 - **Accessibility:** Clear status labels, button contrast, and support for keyboard navigation in form controls and action buttons.
 - **Responsive UI:** Wide command center layout gracefully collapses for mobile usage while preserving key operational panels.
 
@@ -59,7 +67,7 @@ QCity is a React-based dashboard application providing command center functional
 
 Upon launching QCity, users see:
 
-- **Live Route:** `/qcity` via `app/qcity/page.jsx`
+- **Live Route:** `/qcity` via `app/qcity/page.tsx`
 - **Header Section:** "QCity Command Center" title with user info and role display
 - **Role Summary:** Access level description based on user role
 - **Metrics Grid:** Real-time system statistics (Connected Nodes, Active Services, Open Alerts, Incident Response)
@@ -103,7 +111,7 @@ Upon launching QCity, users see:
 
 
 ## Actual QCity Page Features
-`app/qcity/page.jsx` currently renders the QCity command center with these real app sections:
+`app/qcity/page.tsx` currently renders the QCity command center with these real app sections:
 - Header section with title, current user name, role display, and role-specific summary text
 - Cross-app navigation buttons for QVillage and QMOI Space when access is granted
 - Metrics grid showing connected nodes, active services, open alerts, and incident response
@@ -886,7 +894,7 @@ QCity uses a professional dark theme optimized for monitoring and control:
     - User account and role administration
     - Access control workflows
 
-**Note:** The `app/qcity/page.jsx` route imports `QVillage.tsx`, `QVillageDatasetsPanel.tsx`, `QCityErrorManager.tsx`, `QCityThemeProvider.tsx`, `DeploymentManager.tsx`, `TestingAutomationSuite.tsx`, `MonitoringDashboard.tsx`, `ComplianceManager.tsx`, plus shared app components for authentication, chat, auto-fix, file transfer, visual enhancements, voice interaction, and master dashboard support.
+**Note:** The `app/qcity/page.tsx` route imports `QVillage.tsx`, `QVillageDatasetsPanel.tsx`, `QCityErrorManager.tsx`, `QCityThemeProvider.tsx`, `DeploymentManager.tsx`, `TestingAutomationSuite.tsx`, `MonitoringDashboard.tsx`, `ComplianceManager.tsx`, plus shared app components for authentication, chat, auto-fix, file transfer, visual enhancements, voice interaction, and master dashboard support.
 
 ---
 
@@ -986,3 +994,6 @@ QCity uses a professional dark theme optimized for monitoring and control:
 **Status:** ✅ Complete with comprehensive component listing and API references
 
 The interface employs a grid-based layout with clear visual hierarchy. Metric cards use large numbers with trend indicators. Status badges provide immediate visual feedback. Panels are well-spaced with consistent typography and border treatments. The design supports extended monitoring sessions with comfortable contrast and readable text at all sizes.
+
+## Universal Auth & App Guard
+QCity is now part of the universal authentication layer. When a visitor opens `/qcity` without an active validated session, the app redirects to `/universal?redirect=/qcity` and automatically returns the user to QCity once authentication is complete. This ensures the universal auth portal is always the first access point for secure QCity entry.

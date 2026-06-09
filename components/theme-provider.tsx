@@ -9,5 +9,16 @@ interface ThemeProviderProps {
 }
 
 export default function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
+  return (
+    <NextThemesProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      storageKey="qmoi_theme"
+      themes={["light", "dark", "high-contrast"]}
+      {...props}
+    >
+      {children}
+    </NextThemesProvider>
+  );
 }

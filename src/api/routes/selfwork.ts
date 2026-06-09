@@ -252,10 +252,7 @@ async function toggleAutoprod(req: Request): Promise<any> {
  * Feature Generation
  * Generate new features autonomously
  */
-async /**
- * generateFeature function
- */
-function generateFeature(req: Request): any {
+export async function generateFeature(req: Request): Promise<any> {
   try {
     const { description } = await req.json();
 

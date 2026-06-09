@@ -9,6 +9,11 @@ fully implemented
 
 # QCITY ✅ 
 
+## Route
+- `app/qcity/page.tsx`
+- `src/components/q-city/QCityShell.tsx`
+- Live UI route: `/qcity`
+
 This document provides an overview of the `qcity/` directory and its role in Quantum multi orchestra intelligence (QMOI) Enhanced.
 
 ## Purpose

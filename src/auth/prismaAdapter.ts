@@ -22,9 +22,9 @@ export class PrismaAuthAdapter {
 
     const session = await prisma.session.create({ data: {
       userId: user.id,
-      token: crypto.randomBytes(32).toString('hex'),
+      sessionId: crypto.randomBytes(32).toString('hex'),
       expiresAt: new Date(Date.now() + 24*60*60*1000),
-      ip,
+      ipAddress: ip,
       userAgent,
     }});
 

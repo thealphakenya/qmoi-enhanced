@@ -12,6 +12,7 @@
  * POST function
  */
 import { NextRequest, NextResponse } from 'next/server';
+import path from 'path';
 export async function POST(request: NextRequest): Promise<any> {
   try {
     const { projectId, files } = await request.json();
@@ -176,8 +177,8 @@ export async function POST(request: NextRequest): Promise<any> {
       recommendedTools,
       autoActivateTools: recommendedTools.slice(0, 2), // Auto-activate first 2 tools
     });
-  } catch (error) {
-    safeConsoleError("production analysis error:", error);
-    return NextResponse.json({ error: "Failed to analyze project" }, { status: 500 });
+  } catch (error: any) {
+    globalThis.console?.error?.("production analysis error:", error);
+    return NextResponse.json({ error: "Failed to analyze project" });
   }
 }

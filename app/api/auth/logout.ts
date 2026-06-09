@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { AuthService } from "../../../../lib/auth-service";
 import { prisma } from "../../../../lib/db/prisma";
-import { logger } from "../../../../lib/logger";
-import { log as logger } from "@/lib/logger";
+import { logger } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -11,23 +10,29 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => ({}));
     const revokeAllSessions = Boolean(body.revokeAllSessions);
-    const authHeader = req.headers.get('authorization');
-    const sessionId = req.cookies.get('sessionId')?.value ||
-      (authHeader?.startsWith('Bearer ') ? authHeader.substring(7) : undefined);
+    const authHeader = req.headers.get("authorization");
+    const sessionId = req.cookies.get("sessionId")?.value ||
+      (authHeader?.startsWith("Bearer ") ? authHeader.substring(7) : undefined);
 
     if (!sessionId) {
-      return NextResponse.json(
+      const response = NextResponse.json(
         { success: false, message: "No active session found" },
         { status: 401 }
       );
+      response.cookies.delete("accessToken", { path: "/" });
+      response.cookies.delete("refreshToken", { path: "/" });
+      return response;
     }
 
     const session = await AuthService.verifySession(sessionId);
     if (!session) {
-      return NextResponse.json(
+      const response = NextResponse.json(
         { success: false, message: "Session is invalid or expired" },
         { status: 401 }
       );
+      response.cookies.delete("accessToken", { path: "/" });
+      response.cookies.delete("refreshToken", { path: "/" });
+      return response;
     }
 
     const user = await prisma.user.findUnique({
@@ -36,10 +41,13 @@ export async function POST(req: NextRequest) {
     });
 
     if (!user) {
-      return NextResponse.json(
+      const response = NextResponse.json(
         { success: false, error: "User not found" },
         { status: 404 }
       );
+      response.cookies.delete("accessToken", { path: "/" });
+      response.cookies.delete("refreshToken", { path: "/" });
+      return response;
     }
 
     if (revokeAllSessions) {
@@ -93,22 +101,29 @@ export async function POST(req: NextRequest) {
       data: { lastLoginAt: new Date() },
     });
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       success: true,
       message: revokeAllSessions ? "Logged out from all sessions" : "Logged out successfully",
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
+
+    response.cookies.delete("accessToken", { path: "/" });
+    response.cookies.delete("refreshToken", { path: "/" });
+    return response;
 
   } catch (error) {
     logger.error('Logout error:', error);
-    return NextResponse.json(
+    const response = NextResponse.json(
       {
         success: false,
         error: "Logout failed",
-        message: error instanceof Error ? error.message : "Unknown error"
+        message: error instanceof Error ? error.message : "Unknown error",
       },
       { status: 500 }
     );
+    response.cookies.delete("accessToken", { path: "/" });
+    response.cookies.delete("refreshToken", { path: "/" });
+    return response;
   }
 }
 

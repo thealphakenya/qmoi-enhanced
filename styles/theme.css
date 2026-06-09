@@ -414,6 +414,30 @@ body {
   }
 }
 
+html.light {
+  --color-text: #111827;
+  --color-text-muted: #4b5563;
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-border: #e5e7eb;
+  --gradient-background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --color-primary: #0ea5e9;
+  --color-secondary: #9333ea;
+  --color-accent: #0f766e;
+}
+
+html.high-contrast {
+  --color-background: #000000;
+  --color-text: #ffffff;
+  --color-text-muted: #d1d5db;
+  --color-surface: #000000;
+  --color-border: #ffffff;
+  --gradient-background: linear-gradient(135deg, #000000 0%, #111111 100%);
+  --color-primary: #00ff00;
+  --color-secondary: #ffea00;
+  --color-accent: #ffffff;
+}
+
 /* ============================================================================
    PRINT STYLES
    ============================================================================ */

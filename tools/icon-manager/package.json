@@ -1,0 +1,13 @@
+{
+  "name": "qmoi-icon-manager",
+  "version": "0.1.0",
+  "description": "Tool to optimize SVG icons and generate PNG/maskable sizes for QMOI apps",
+  "main": "index.js",
+  "scripts": {
+    "build": "node index.js"
+  },
+  "dependencies": {
+    "sharp": "^0.32.1",
+    "svgo": "^3.0.0"
+  }
+}

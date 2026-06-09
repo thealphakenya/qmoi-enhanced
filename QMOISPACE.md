@@ -2,6 +2,7 @@
 
 ## Route
 - `app/qmoi-space/page.tsx`
+- `src/components/qmoi/QMOISpaceShell.tsx`
 - Live URL: `/qmoi-space`
 
 ## Purpose

@@ -11,8 +11,11 @@ Legacy route source files in `app/api/`: 266 (legacy compatibility endpoint hand
 - `app/qmoi-space/page.tsx` is a live QMOI Space Next.js page delivering marketplace and community collaboration features.
 - `public/qmoi-ai.html` and `public/qmoi-space.html` remain static PWA launcher assets for their respective shell apps.
 - `/q-alpha.html` and `/pwa_apps/q-alpha/` are the static Q Alpha aggregator shell entry points, consolidating QMOI AI, QMOI Space, and QCity.
+- `app/qalpha/page.tsx` now delegates to `src/components/qalpha/QAlphaShell.tsx` for the alpha dashboard shell.
+- `app/qvillage/page.tsx` now delegates to `src/components/qvillage/QVillageShell.tsx` for the community workspace experience.
+- All app shells now use the shared `AppShellHeader` wrapper and centralized icons from `src/assets/icons/apps/` for consistent branding.
 - `app/api/qmoi-model/route.ts` and `app/api/qmoi/chat/route.ts` provide legacy compatibility route references for the QMOI model and chat backend; active production implementations are maintained in `src/app/api/`.
-- `app/qcity/page.jsx` and `app/qvillage/page.tsx` are role-aware, page-level UI routes using `app/hooks/useAuth.ts`.
+- `app/qcity/page.tsx` and `app/qvillage/page.tsx` are role-aware, page-level UI routes using `app/hooks/useAuth.ts`.
 - PWA update endpoints `/api/pwa/check-update` and `/api/pwa/auto-update` are available and documented.
 
 ### QMOI Production Integration (Added)
@@ -22,7 +25,8 @@ Legacy route source files in `app/api/`: 266 (legacy compatibility endpoint hand
 	- `GET /api/qmoi-model` — model health/status and metrics (accuracy, latency, uptime); supports query params for analytics and feature actions.
 	- `POST /api/qmoi-model` — management actions (feature apply, earning task, repo management) via query params or action body.
 	- `POST /api/qmoi/chat` — chat/inference endpoint used by UI components and the Q Alpha shell.
-- Files updated: `app/qmoi-ai/page.tsx`, `app/qmoi-space/page.tsx`, `app/components/ChatMessaging.tsx`, `public/q-alpha.html`, and the PWA/service-worker fixes under `public/`.
+- Files updated: `app/qmoi-ai/page.tsx`, `app/qmoi-space/page.tsx`, `public/q-alpha.html`, and the PWA/service-worker fixes under `public/`.
+- Legacy compatibility note: `app/components/ChatMessaging.tsx` remains available for historical reference and static shell compatibility, but it is not used by the current live `app/` page routes.
 
 Ensure the environment and model credentials are configured prior to routing production traffic to `qmoi-prod`.
 

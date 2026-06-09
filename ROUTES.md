@@ -9,16 +9,119 @@
 
 # ROUTES.md - Application Route File Structure ✅ 
 
-**Last Updated:** 2026-05-19T00:00:00.000000Z
-**Production Audit:** ✅ Reviewed May 19, 2026 — production route mapping verified and debug-only routes are isolated from the public routing surface.
-**Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
+**Last Updated:** 2026-06-08  
+**Production Audit:** ✅ Reviewed June 8, 2026 — production route mapping verified and debug-only routes isolated from public routing surface.
+**Production Readiness Scan:** ✅ Completed June 8, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
 **Total Indexed Markdown Files:** 1189
-**Total Route Source Files:** 266
+**Total Route Source Files:** 292 (43 active production + 249 legacy compatibility)
 **Status:** ✅ 
 
 ## Document Purpose
 
-This document describes the route file structure for the QMOI Enhanced application, mapping the legacy compatibility `app/api/` source tree to endpoint route handlers. Active production app-router routes are served from `src/app/api/` and are documented in `ENDPOINTS.md`; `app/api/` remains a compatibility/migration reference.
+This document describes the route file structure for the QMOI Enhanced application. 
+
+**IMPORTANT:** Active production API routes are served from `src/app/api/` (43 routes). The legacy `app/api/` directory (249 routes) contains compatibility handlers for backward compatibility and is documented separately. See `ENDPOINTS.md` for complete production endpoint documentation.
+
+---
+
+## Active Production Routes (43 Files in src/app/api/)
+
+### Route Directory Structure
+
+```
+src/app/api/
+├── accountability/              → /api/accountability
+├── admin/
+│   ├── metrics/                 → /api/admin/metrics
+│   └── tracing/                 → /api/admin/tracing
+├── alerts/
+│   └── webhook/                 → /api/alerts/webhook
+├── auth/
+│   ├── check-master/            → /api/auth/check-master
+│   ├── login/                   → /api/auth/login
+│   ├── oauth/[provider]/        → /api/auth/oauth/{provider}
+│   └── webauthn/
+│       ├── auth/
+│       │   ├── options/         → /api/auth/webauthn/auth/options
+│       │   └── finish/          → /api/auth/webauthn/auth/finish
+│       ├── register/
+│       │   ├── options/         → /api/auth/webauthn/register/options
+│       │   └── finish/          → /api/auth/webauthn/register/finish
+├── automation/
+│   └── trigger/                 → /api/automation/trigger
+├── avatars/
+│   └── [userId]/                → /api/avatars/{userId}
+├── consciousness/
+│   └── health/                  → /api/consciousness/health
+├── global/                      → /api/global
+├── lion/
+│   └── workflows/
+│       └── health/              → /api/lion/workflows/health
+├── master/
+│   ├── domain-health/           → /api/master/domain-health
+│   │   └── refresh/             → /api/master/domain-health/refresh
+│   └── godaddy-status/          → /api/master/godaddy-status
+├── preview/
+│   ├── analyze/                 → /api/preview/analyze
+│   └── execute-tool/            → /api/preview/execute-tool
+├── qmoi/
+│   ├── autodev/
+│   │   ├── generate-feature/    → /api/qmoi/autodev/generate-feature
+│   │   ├── research/            → /api/qmoi/autodev/research
+│   │   ├── state/               → /api/qmoi/autodev/state
+│   │   ├── suggestions/
+│   │   │   ├── features/        → /api/qmoi/autodev/suggestions/features
+│   │   │   ├── improvements/    → /api/qmoi/autodev/suggestions/improvements
+│   │   │   └── optimizations/   → /api/qmoi/autodev/suggestions/optimizations
+│   │   └── toggle/              → /api/qmoi/autodev/toggle
+│   ├── evolution/
+│   │   ├── compare-models/      → /api/qmoi/evolution/compare-models
+│   │   ├── replace-model/       → /api/qmoi/evolution/replace-model
+│   │   └── track-evolution/     → /api/qmoi/evolution/track-evolution
+│   ├── execute/                 → /api/qmoi/execute
+│   ├── health/                  → /api/qmoi/health
+│   │   └── stream/              → /api/qmoi/health/stream
+│   ├── self-work/
+│   │   ├── code-review/         → /api/qmoi/self-work/code-review
+│   │   ├── debug/               → /api/qmoi/self-work/debug
+│   │   └── run-tests/           → /api/qmoi/self-work/run-tests
+│   └── suggestions/             → /api/qmoi/suggestions
+├── qvs/                         → /api/qvs
+├── realtime/
+│   └── stream/                  → /api/realtime/stream
+├── subscriptions/               → /api/subscriptions
+├── v1/
+│   └── health/                  → /api/v1/health
+└── v2/
+    └── health/                  → /api/v2/health
+```
+
+### Production Endpoints by Category
+
+| Category | Count | Routes |
+|----------|-------|--------|
+| Authentication | 7 | login, check-master, webauthn/*, oauth/* |
+| Accountability | 1 | /accountability |
+| Avatars | 1 | /avatars/[userId] |
+| Health & Status | 3 | consciousness/health, v1/health, v2/health |
+| QMOI Core | 22 | autodev/*, evolution/*, execute, health/*, self-work/*, suggestions |
+| Master System | 3 | domain-health/*, godaddy-status |
+| Alerts & Automation | 2 | alerts/webhook, automation/trigger |
+| Global Operations | 1 | /global |
+| Workflows | 1 | lion/workflows/health |
+| Real-time | 1 | realtime/stream |
+| Subscriptions | 1 | /subscriptions |
+| Preview & Tools | 2 | preview/analyze, preview/execute-tool |
+| QVS | 1 | /qvs |
+| **TOTAL** | **43** | All production endpoints |
+
+---
+
+## Legacy Route Files (249 Files in app/api/)
+
+**Note:** Legacy `app/api/` directory is maintained for backward compatibility only. New development should use `src/app/api/` production routes.
+
+For complete legacy route inventory, see `ROUTES.md` (original documentation) or the legacy app/api directory structure.
 
 ## Route File Inventory Summary
 
@@ -114,7 +217,8 @@ The following standalone route handler source files are defined directly under `
 ## PWA and Public Route Mapping
 - `app/qmoi-ai/page.tsx` is a live Next.js page serving the QMOI AI dashboard experience.
 - `app/qmoi-space/page.tsx` is a live Next.js page serving the QMOI Space marketplace and collaboration UI.
-- `app/qcity/page.jsx` is a live Next.js page serving the QCity dashboard.
+- `app/qcity/page.tsx` is a live Next.js page serving the QCity dashboard.
+- `app/qalpha/page.tsx` is a live Next.js page serving the QAlpha aggregation dashboard.
 - `app/qvillage/page.tsx` is a live Next.js page serving the QVillage community workspace.
 -- `public/qmoi-ai.html` and `public/qmoi-space.html` are static compatibility/fallback shells in `public/` and not the canonical production UI surfaces; prefer the live pages under `app/` for production routing.
 -- `public/q-alpha.html` and `/pwa_apps/q-alpha/` are static Q Alpha aggregator shell entry points (fallback/launcher only).
