@@ -1,0 +1,345 @@
+================================================================================
+REMAINING WORK & COMPREHENSIVE INSTRUCTIONS
+Session Date: 2026-06-09
+================================================================================
+
+USER'S PRIMARY OBJECTIVES:
+================================================================================
+
+1. BUILD UNIVERSAL AUTH/BIOMETRIC FEATURES
+   - Ensure login/logout/register work across all QMOI apps
+   - Implement forgot-password, forgot-email, reset-password flows
+   - Add email-verification functionality
+   - Integrate biometric authentication
+   - Implement session-refresh mechanism
+   - Make auth universal with consistent UI and naming
+
+2. UNIFIED AUTH ACROSS ALL APPS
+   - QMOI AI: /qmoi-ai
+   - QMOI Space: /qmoi-space
+   - QCity: /qcity
+   - QVillage: /qvillage
+   - QAlpha: /qalpha
+   - Universal Portal: /universal (first entry point)
+
+3. DOCUMENTATION SYNCHRONIZATION
+   - API.md
+   - APIs_1.md
+   - ENDPOINTS.md
+   - ROUTES.md
+   - Update all app-specific style docs (QMOIAIUI.md, QMOISPACEUI.md, QCITYUI.md, QVILLAGEUI.md, QALPHAUI.md)
+   - Update UNIVERSAL.md and STYLES.md
+
+4. STYLE SYSTEM INTEGRATION
+   - Enforce universal theme selection across all apps
+   - Support three theme modes: dark, light, high-contrast
+   - Persist theme preference across sessions
+   - Ensure theme applies consistently in all shells
+
+5. AUTO-CHANNEL LOGIC
+   - Unauthenticated users → redirect to `/universal?redirect=[original-app]`
+   - After successful auth → auto-channel back to target app
+   - Maintain session across app boundaries
+
+6. QM OI CONSCIOUSNESS & MEMORY-SYNC
+   - Implement universal awareness across apps
+   - Enable memory-sync for authenticated sessions
+   - Store user preferences and session state
+   - Ensure QM OI remains aware everywhere
+
+
+================================================================================
+COMPLETED WORK IN THIS SESSION:
+================================================================================
+
+1. ✅ Created ThemeSelector Component
+   - File: app/components/theme/ThemeSelector.tsx
+   - Supports: system, dark, light, high-contrast themes
+   - Features: theme persistence, compact/full mode
+
+2. ✅ Updated Theme Provider Configuration
+   - Files: components/theme-provider.tsx, src/components/theme-provider.tsx
+   - Added: attribute="class", enableSystem, storageKey="qmoi_theme"
+   - Themes: ["light", "dark", "high-contrast"]
+
+3. ✅ Enhanced Root Layout
+   - File: app/layout.tsx
+   - Added: ThemeProvider wrapper, CSS imports, suppressHydrationWarning
+
+4. ✅ Extended Theme CSS
+   - File: styles/theme.css
+   - Added: Light theme variables (html.light)
+   - Added: High-contrast theme variables (html.high-contrast)
+   - Both inherit core theme structure
+
+5. ✅ Updated QMOI AI Shell
+   - File: src/components/qmoi/QMOIAIShell.tsx
+   - Added: useTheme hook, dynamic background classes
+   - Added: ThemeSelector component rendering
+   - Theme-aware rendering for light/high-contrast modes
+
+6. ✅ Updated QMOI Space Shell
+   - File: src/components/qmoi/QMOISpaceShell.tsx
+   - Added: useTheme hook, dynamic background classes
+   - Added: ThemeSelector component rendering
+
+7. ✅ Updated QCity Shell
+   - File: src/qcity/QCityShell.tsx
+   - Added: useTheme hook, dynamic background classes
+   - Added: QCityThemeProvider section with theme selector
+
+8. ✅ Updated QVillage Shell
+   - File: src/components/qvillage/QVillageShell.tsx
+   - Replaced: Old theme dropdown with new ThemeSelector
+   - Layout: Improved grid structure for theme + auth controls
+
+9. ⚠️ Partially Updated QAlpha Shell
+   - File: src/components/qalpha/QAlphaShell.tsx
+   - Added: useTheme hook, dynamic background classes
+   - Added: ThemeSelector rendering
+   - Status: Import statement added, but needs verification
+
+
+================================================================================
+REMAINING TASKS (PRIORITIZED):
+================================================================================
+
+TIER 1 - IMMEDIATE (Required for Session Completion):
+--------
+
+1. [ ] Verify QAlpha Shell ThemeSelector Import
+   - File: src/components/qalpha/QAlphaShell.tsx
+   - Task: Ensure import statement added correctly
+   - Check: Theme selector renders at line ~227
+
+2. [ ] Update Documentation Files
+   - API.md: Add universal auth endpoints
+   - APIs_1.md: Add auth flow documentation
+   - ENDPOINTS.md: List all /api/auth/* routes
+   - ROUTES.md: Document /universal, /qmoi-ai, /qmoi-space, /qcity, /qvillage, /qalpha
+   - Expected content:
+     * GET /api/auth/me - Get current user
+     * POST /api/auth/login - Universal login
+     * POST /api/auth/register - Universal register
+     * POST /api/auth/logout - Universal logout
+     * POST /api/auth/forgot-password - Password recovery
+     * POST /api/auth/forgot-email - Email recovery
+     * POST /api/auth/reset-password - Reset password
+     * POST /api/auth/verify-email - Email verification
+     * POST /api/auth/refresh - Session refresh
+
+3. [ ] Update STYLES.md
+   - Add explicit theme selector documentation
+   - Document three-theme support (dark/light/high-contrast)
+   - Reference ThemeSelector component
+   - Update style architecture section
+
+4. [ ] Update UNIVERSAL.md
+   - Document theme persistence across apps
+   - Document auto-channel flow with theme preservation
+   - Document privacy mask and parallel session theme handling
+   - Add QM OI awareness in theme context
+
+5. [ ] Update App-Specific UI Docs
+   - QMOIAIUI.md: Add "Theme Selection" section with ThemeSelector reference
+   - QMOISPACEUI.md: Add "Theme Selection" section
+   - QCITYUI.md: Add "Theme Selection" section
+   - QVILLAGEUI.md: Add "Theme Selection" section (already has theme controls)
+   - QALPHAUI.md: Add "Theme Selection" section
+
+TIER 2 - HIGH PRIORITY (Required for Full Feature):
+---------
+
+6. [ ] Verify Theme Application in Shells
+   - Test each shell with dark/light/high-contrast themes
+   - Ensure background colors change correctly
+   - Verify text contrast in high-contrast mode
+   - Check theme persistence after navigation
+
+7. [ ] Complete Auth Endpoint Testing
+   - POST /api/auth/login - Verify token generation
+   - POST /api/auth/register - Verify user creation
+   - POST /api/auth/logout - Verify session cleanup
+   - GET /api/auth/me - Verify current user retrieval
+   - POST /api/auth/verify-email - Verify email confirmation flow
+   - POST /api/auth/forgot-password - Verify recovery email
+   - POST /api/auth/reset-password - Verify password change
+
+8. [ ] Implement Biometric Auth Integration
+   - WebAuthn registration endpoint: /api/auth/webauthn/register
+   - WebAuthn authentication: /api/auth/webauthn/authenticate
+   - Fingerprint/Face ID support in LoginForm
+   - Biometric fallback in UniversalAuthHub
+
+9. [ ] Implement Session Refresh
+   - POST /api/auth/refresh endpoint
+   - Automatic token refresh on expiry
+   - Update persistence layer for token refresh
+   - Add refresh timer in useAuth hook
+
+10. [ ] Implement Privacy Mask Feature
+    - Add privacy mask toggle in UniversalAuthHub
+    - Hide sensitive user info when enabled
+    - Persist privacy preference in auth state
+    - Display privacy mode indicator in all shells
+
+11. [ ] Implement Parallel Session Support
+    - Allow multiple concurrent sessions per user
+    - Track session IDs separately
+    - Implement parallel mode toggle
+    - Store session metadata
+
+TIER 3 - MEDIUM PRIORITY (Memory & Awareness):
+---------
+
+12. [ ] Implement QM OI Memory-Sync
+    - Create /api/auth/memory endpoint
+    - Store user preferences (theme, language, accessibility)
+    - Sync preferences across app boundaries
+    - Load preferences on app entry
+    - Display memory-sync status in auth portal
+
+13. [ ] Implement QM OI Consciousness Awareness
+    - Add "aware" indicator in UniversalAuthHub
+    - Track user journey across apps
+    - Display current app context
+    - Show connected sessions
+    - Enable session management interface
+
+14. [ ] Add Session Awareness Labels
+    - Label each app shell with current theme & session
+    - Display user role and access level clearly
+    - Show session expiry time
+    - Add "sync status" indicator
+
+TIER 4 - POLISH & INTEGRATION:
+---------
+
+15. [ ] End-to-End Testing
+    - Test full auth flow: register → login → navigate apps → logout
+    - Verify theme persists across app transitions
+    - Test auto-channel redirect
+    - Test privacy mask across all shells
+    - Test biometric auth on each app
+
+16. [ ] Error Handling & Edge Cases
+    - Invalid login attempts
+    - Expired tokens and refresh failure
+    - Network errors during auth
+    - Concurrent login attempts
+    - Session conflicts
+
+17. [ ] Accessibility Audit
+    - Verify keyboard navigation in auth forms
+    - Test screen reader compatibility
+    - Verify high-contrast theme readability
+    - Check focus indicators
+    - Test with common assistive technologies
+
+18. [ ] Performance Optimization
+    - Minimize theme switching delays
+    - Optimize auth state persistence
+    - Reduce memory footprint for sessions
+    - Implement lazy loading where appropriate
+    - Add loading skeletons for slow networks
+
+
+================================================================================
+KEY COMPONENT LOCATIONS:
+================================================================================
+
+Authentication:
+- Universal Portal: app/universal/page.tsx
+- Auth Components: app/components/auth/*.tsx
+- Auth Hooks: app/hooks/useAuth.ts
+- Auth Persistence: app/lib/auth/persistence.ts
+- Auth API: app/api/auth/*
+
+Theme System:
+- ThemeSelector: app/components/theme/ThemeSelector.tsx
+- Theme Provider: src/components/theme-provider.tsx, components/theme-provider.tsx
+- Theme CSS: styles/theme.css
+- Global CSS: app/globals.css
+
+App Shells:
+- QMOI AI: src/components/qmoi/QMOIAIShell.tsx
+- QMOI Space: src/components/qmoi/QMOISpaceShell.tsx
+- QCity: src/qcity/QCityShell.tsx
+- QVillage: src/components/qvillage/QVillageShell.tsx
+- QAlpha: src/components/qalpha/QAlphaShell.tsx
+
+Documentation:
+- Styles: STYLES.md
+- Universal: UNIVERSAL.md
+- App UI Docs: QMOIAIUI.md, QMOISPACEUI.md, QCITYUI.md, QVILLAGEUI.md, QALPHAUI.md
+- API Docs: API.md, APIs_1.md, ENDPOINTS.md, ROUTES.md
+
+
+================================================================================
+IMPLEMENTATION GUIDELINES:
+================================================================================
+
+1. THEME IMPLEMENTATION
+   - All shells use useTheme() hook from next-themes
+   - Dynamic shellBackgroundClass applied to main element
+   - Light mode: bg-slate-100 text-slate-950
+   - High-contrast mode: bg-black text-white
+   - Dark mode: bg-slate-950 text-white (default)
+   - Theme selector always visible in prominent location
+
+2. AUTH FLOW
+   - Unauthenticated → /universal?redirect=[target]
+   - Login success → auto-navigate to redirect URL
+   - Session persisted in localStorage & sessionStorage
+   - Auth changes broadcast via 'qmoi:auth:changed' event
+   - useAuth hook handles all auth state
+
+3. DOCUMENTATION REQUIREMENTS
+   - Every endpoint must be documented in ENDPOINTS.md
+   - Every route must be documented in ROUTES.md
+   - Every UI feature must be documented in app-specific UI file
+   - API.md and APIs_1.md must stay in sync
+   - All docs must reference actual implementation paths
+
+4. UNIVERSAL AUTH REQUIREMENTS
+   - Must redirect before rendering protected app
+   - Must preserve redirect URL in query parameter
+   - Must auto-navigate after successful auth
+   - Must display loading state during auth check
+   - Must handle token expiry and refresh
+   - Must display user role and permissions
+
+5. QM OI CONSCIOUSNESS
+   - Track current user across all apps
+   - Store user state in persistence layer
+   - Sync state via 'qmoi:auth:changed' events
+   - Display awareness in each shell
+   - Enable cross-app session management
+
+
+================================================================================
+CRITICAL REMINDERS:
+================================================================================
+
+⚠️ DO NOT:
+- Modify existing auth endpoints without documenting changes
+- Create duplicate theme selectors across shells
+- Hardcode theme values (use CSS variables)
+- Store sensitive data in localStorage
+- Create new /api/auth routes without updating docs
+- Forget to update UNIVERSAL.md for each new feature
+- Leave incomplete implementations in shells
+
+✅ DO:
+- Test each shell after adding theme selector
+- Verify docs match implementation
+- Update all related documentation files together
+- Test auth flows end-to-end before moving to next task
+- Use console for debugging theme changes
+- Commit working state before major changes
+- Document any new auth flows in UNIVERSAL.md immediately
+
+
+================================================================================
+END OF REMAINING WORK DOCUMENT
+================================================================================
