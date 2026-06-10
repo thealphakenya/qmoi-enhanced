@@ -168,6 +168,25 @@ class ThoroughproductionScanner:
                 'timestamp': datetime.now().isoformat()
             })
         return None
+
+    def extract_tasks_from_text(self, content):
+        tasks = []
+        for line in content.splitlines():
+            stripped = line.strip()
+            if re.match(r'^[-•*]\s+', stripped):
+                tasks.append(re.sub(r'^[-•*]\s+', '', stripped))
+            elif re.match(r'^\d+\.\s+', stripped):
+                tasks.append(re.sub(r'^\d+\.\s+', '', stripped))
+        return [task for task in dict.fromkeys(tasks) if task]
+
+    def load_tasks_from_file(self, path):
+        if not path.exists():
+            return []
+        try:
+            return self.extract_tasks_from_text(path.read_text(encoding='utf-8', errors='ignore'))
+        except Exception:
+            return []
+
     def scan_directory(self, dir_path):
         """Scan all files in a directory"""
         files_scanned = 0
@@ -464,7 +483,7 @@ This file tracks the remaining production readiness instances from `undone.txt`.
             f.write(new_content)
         logging.info(f"✅ Updated: {instances_path}")
     def update_resumefromhere_txt(self):
-        """Update resumefromhere.txt with current scan status"""
+        """Update resumefromhere.txt with current scan status and bulk workflow instructions."""
         resumefile = self.root_dir / 'resumefromhere.txt'
         lines = [
             "QMOI production READINESS STATUS",
@@ -489,6 +508,31 @@ This file tracks the remaining production readiness instances from `undone.txt`.
         lines.append("2. Update identified files with production implementations.")
         lines.append("3. Re-run this scanner after fixes.")
         lines.append("4. Keep MATCHES.txt and MATCHES.md synchronized.")
+        lines.append("")
+        lines.append("BULK WORKFLOW:")
+        lines.append("- Run `npm run resume:continue` or `python3 scripts/auto_continue_resumefromhere.py` to execute the bulk fixer and refresh the resume tracker.")
+        lines.append("- Run `python3 scripts/auto_continue_resumefromhere_loop.py --until-clean` or `npm run resume:watch` to keep working in bulk automatically until the scan is clean.")
+        lines.append("- Run `python3 thorough_production_scanner.py` or `python3 scripts/thorough_production_scanner.py` to scan every file, refresh undone.txt, and regenerate MATCHES files.")
+        lines.append("- Only pause when the scan reports zero nonproduction markers.")
+        lines.append("- Address high-priority files from undone.txt first, then re-run the scanner.")
+        lines.append("- Preserve theme, auth, and universal app consistency during bulk production fixes.")
+
+        fourteen_tasks = self.load_tasks_from_file(self.root_dir / '14.txt')
+        resume_tasks = self.load_tasks_from_file(self.root_dir / 'resumefromhere.txt')
+        if fourteen_tasks:
+            lines.append("")
+            lines.append("TASKS FROM 14.txt:")
+            for task in fourteen_tasks[:20]:
+                lines.append(f"- {task}")
+            if len(fourteen_tasks) > 20:
+                lines.append(f"- ... and {len(fourteen_tasks) - 20} more tasks from 14.txt")
+        if resume_tasks:
+            lines.append("")
+            lines.append("TASKS FROM resumefromhere.txt:")
+            for task in resume_tasks[:20]:
+                lines.append(f"- {task}")
+            if len(resume_tasks) > 20:
+                lines.append(f"- ... and {len(resume_tasks) - 20} more tasks from resumefromhere.txt")
         if self.results['marker_summary']:
             lines.append("")
             lines.append("MARKER SUMMARY:")
@@ -582,111 +626,10 @@ if __name__ == '__main__':
     )
 
     try:
-
-
-        result = None
-
-
-    except Exception as e:
-
-
-        logger.error(f"Error: {e}")
-
-
-        result = None
-        app = QApplication(sys.argv) if 'QApplication' in globals() else None
-        if app:
-            main_window = MainWindow()
-            main_window.show()
-            sys.exit(app.exec_())
-        else:
-            main()
+        main()
     except KeyboardInterrupt:
         logger.info('Application shutdown requested by user')
         sys.exit(0)
     except Exception as exc:
         logger.error(f'Application failed to start: {exc}')
         sys.exit(1)
-
-    import sys
-    import logging
-
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    )
-
-    try:
-        app = QApplication(sys.argv) if 'QApplication' in globals() else None
-        if app:
-            main_window = MainWindow()
-            main_window.show()
-            sys.exit(app.exec_())
-        else:
-            main()
-    except KeyboardInterrupt:
-        logger.info('Application shutdown requested by user')
-        sys.exit(0)
-    except Exception as exc:
-        logger.error(f'Application failed to start: {exc}')
-        sys.exit(1)
-
-    import sys
-    import logging
-
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    )
-
-    try:
-
-
-        result = None
-
-
-    except Exception as e:
-
-
-        logger.error(f"Error: {e}")
-
-
-        result = None
-        app = QApplication(sys.argv) if 'QApplication' in globals() else None
-        if app:
-            main_window = MainWindow()
-            main_window.show()
-            sys.exit(app.exec_())
-        else:
-            main()
-    except KeyboardInterrupt:
-        logger.info('Application shutdown requested by user')
-        sys.exit(0)
-    except Exception as exc:
-        logger.error(f'Application failed to start: {exc}')
-        sys.exit(1)
-
-    import sys
-    import logging
-
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    )
-
-    try:
-        app = QApplication(sys.argv) if 'QApplication' in globals() else None
-        if app:
-            main_window = MainWindow()
-            main_window.show()
-            sys.exit(app.exec_())
-        else:
-            main()
-    except KeyboardInterrupt:
-        logger.info('Application shutdown requested by user')
-        sys.exit(0)
-    except Exception as exc:
-        logger.error(f'Application failed to start: {exc}')
-        sys.exit(1)
-
-    main()

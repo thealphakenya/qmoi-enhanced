@@ -6,6 +6,14 @@
 ## ⚛️ Quantum Automation Coverage
 This file tracks all markdown files whose file names contain the word `auto`. It also ensures every auto-related doc includes a standard quantum automation enhancement section with comprehensive quantum feature integration.
 
+## Always-on Resume Automation
+- Run `python3 scripts/always_auto_resume.py` or `npm run resume:auto` to start a continuous automation loop that:
+  - refreshes `resumefromhere.txt` in realtime with git metadata,
+  - merges tasks from `14.txt` and `resumefromhere.txt`,
+  - executes the bulk production fixer,
+  - re-runs the resume tracker until the repo is clean.
+- Run `python3 autonomous_production_migration_engine.py` or `npm run resume:migrate` to execute the production migration engine, which scans the repo for nonproduction implementations and applies production-ready replacements automatically.
+
 ## Automation Inventory
 
 - `.backups/aggressive_fix_1775873225/API_AUTO_UPDATE_GUIDELINES.md`

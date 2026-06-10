@@ -6,6 +6,7 @@ Runs the bulk production fixer, refreshes the resume tracker, and prints a produ
 
 import re
 import subprocess
+import sys
 from datetime import datetime
 from pathlib import Path
 from typing import List, Optional
@@ -70,13 +71,77 @@ def extract_pending_tasks(block: str) -> List[str]:
     return tasks
 
 
+def load_text_file(path: Path) -> str:
+    if not path.exists():
+        return ""
+    try:
+        return path.read_text(encoding="utf-8", errors="ignore")
+    except Exception:
+        return ""
+
+
+def extract_tasks_from_markdown(content: str) -> List[str]:
+    tasks: List[str] = []
+    for line in content.splitlines():
+        stripped = line.strip()
+        if re.match(r'^[-•*]\s+', stripped):
+            tasks.append(re.sub(r'^[-•*]\s+', '', stripped))
+        elif re.match(r'^\d+\.\s+', stripped):
+            tasks.append(re.sub(r'^\d+\.\s+', '', stripped))
+    return [task for task in dict.fromkeys(tasks) if task]
+
+
+def update_resume_tasks_block() -> None:
+    resume_content = load_text_file(RESUME_FILE)
+    fourteen_content = load_text_file(ROOT / '14.txt')
+    resume_tasks = extract_tasks_from_markdown(resume_content)
+    fourteen_tasks = extract_tasks_from_markdown(fourteen_content)
+    merged_tasks = []
+    for source_task in fourteen_tasks + resume_tasks:
+        if source_task not in merged_tasks:
+            merged_tasks.append(source_task)
+
+    if not merged_tasks:
+        return
+
+    task_block_lines = [
+        'WORKFLOW TASKS:',
+        '- Address all items in 14.txt and resumefromhere.txt with production implementations.',
+        '- Keep the system synchronized with the universal auth, theme, and QM OI memory flow.',
+        '- Update all docs, endpoints, and app shell UI documentation while fixing production markers.',
+    ]
+    task_block_lines += [f'- {task}' for task in merged_tasks[:50]]
+    if len(merged_tasks) > 50:
+        task_block_lines.append(f'- ... and {len(merged_tasks) - 50} more tasks from 14.txt/resumefromhere.txt.')
+    task_block_lines.append('')
+
+    if 'WORKFLOW TASKS:' in resume_content:
+        resume_content = re.sub(
+            r'WORKFLOW TASKS:[\s\S]*?(?=\n\n|\Z)',
+            '\n'.join(task_block_lines),
+            resume_content,
+            flags=re.MULTILINE,
+        )
+    else:
+        if 'Resume point:' in resume_content:
+            parts = resume_content.split('\n\n', 1)
+            if len(parts) == 2:
+                resume_content = parts[0] + '\n\n' + '\n'.join(task_block_lines) + parts[1]
+            else:
+                resume_content += '\n\n' + '\n'.join(task_block_lines)
+        else:
+            resume_content = '\n'.join(task_block_lines) + '\n' + resume_content
+
+    RESUME_FILE.write_text(resume_content, encoding='utf-8')
+
+
 def run_bulk_fixer() -> None:
     if not BULK_FIXER_SCRIPT.exists():
         print(f"Warning: {BULK_FIXER_SCRIPT} not found; bulk production fixer cannot be executed.")
         return
 
     try:
-        subprocess.run(["python3", str(BULK_FIXER_SCRIPT)], cwd=ROOT, check=True)
+        subprocess.run([sys.executable, str(BULK_FIXER_SCRIPT)], cwd=ROOT, check=True)
         print("Bulk production fixer completed successfully.")
     except subprocess.CalledProcessError as exc:
         print(f"Bulk production fixer failed: {exc}")
@@ -116,6 +181,7 @@ def load_resume_content() -> Optional[str]:
 
 
 def main() -> None:
+    update_resume_tasks_block()
     run_bulk_fixer()
     refresh_resume_file()
 

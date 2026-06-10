@@ -1,8 +1,8 @@
 # MATCHES.md
 
 ## Current Marker Matches
-- Generated: 2026-05-27T09:22:17.006152
-- Files with markers: 100
+- Generated: 2026-06-10T10:20:15.954800
+- Files with markers: 99
 - Total markers found: 787
 
 ### Top files with nonproduction markers
@@ -26,7 +26,7 @@
 - production_readiness_audit_report.json — 10 markers
 - verify_production_readiness.sh — 8 markers
 - deploy_production.sh — 8 markers
-- ... and 80 more files
+- ... and 79 more files
 
 ## production: NOTE ADDRESSED - s
 - MATCHES.md is regenerated from the latest production readiness scan.

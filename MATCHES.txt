@@ -1,8 +1,8 @@
 QMOI production MARKER MATCHES
-Generated: 2026-05-27T09:22:17.006152
+Generated: 2026-06-10T10:20:15.954800
 
 SUMMARY:
-- Files with markers: 100
+- Files with markers: 99
 - Total markers found: 787
 
 TOP MATCHES:
@@ -36,6 +36,6 @@ TOP MATCHES:
 - FINAL_DEPLOYMENT_REPORT.md: 5 marker(s)
 - PRODUCTION_COMPLETION_SUMMARY_2026-04-23.md: 5 marker(s)
 - PLATFORMS_UI_PRODUCTION_GUIDE.md: 5 marker(s)
-- ... and 70 more files
+- ... and 69 more files
 
 For details, review undone.txt and INSTANCES.md.
