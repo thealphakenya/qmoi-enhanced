@@ -5,6 +5,8 @@ const PERSIST_KEYS = {
   ACCESS_TOKEN: "qmoi_access_token",
   REFRESH_TOKEN: "qmoi_refresh_token",
   SESSION_ID: "qmoi_session_id",
+  PRIVACY_MASK: "qmoi_privacy_mask",
+  PARALLEL_SESSIONS: "qmoi_parallel_sessions",
 };
 
 function getAvailableStorage(): Storage[] {
@@ -160,6 +162,24 @@ export function writePersistedStorageValue(key: string, value: string | null) {
   } catch {
     // ignore
   }
+}
+
+export function persistPrivacyMask(enabled: boolean) {
+  writePersistedStorageValue(PERSIST_KEYS.PRIVACY_MASK, enabled ? "1" : "0");
+}
+
+export function readPersistedPrivacyMask(): boolean {
+  const value = readPersistedStorageValue(PERSIST_KEYS.PRIVACY_MASK);
+  return value === "1";
+}
+
+export function persistParallelSessions(enabled: boolean) {
+  writePersistedStorageValue(PERSIST_KEYS.PARALLEL_SESSIONS, enabled ? "1" : "0");
+}
+
+export function readPersistedParallelSessions(): boolean {
+  const value = readPersistedStorageValue(PERSIST_KEYS.PARALLEL_SESSIONS);
+  return value === "1";
 }
 
 export { PERSIST_KEYS };

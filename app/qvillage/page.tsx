@@ -1,7 +1,7 @@
 "use client";
 
 import QVillageShell from "@/components/qvillage/QVillageShell";
-import UniversalRouteGuard from "@/components/auth/UniversalRouteGuard";
+import UniversalRouteGuard from "@/app/components/auth/UniversalRouteGuard";
 
 export default function Page() {
   return (

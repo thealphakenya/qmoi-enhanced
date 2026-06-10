@@ -2,6 +2,8 @@
 
 import React, { useEffect, useMemo, useState, useCallback } from "react";
 import Link from "next/link";
+import { useTheme } from "next-themes";
+import ThemeSelector from "@/components/theme/ThemeSelector";
 import { useAuth } from "@/app/hooks/useAuth";
 import { AppShellHeader } from "@/components/shared/ui";
 
@@ -107,6 +109,7 @@ export default function QAlphaShell(): React.ReactElement {
   const { theme, resolvedTheme } = useTheme();
   const { user, isLoading, refreshUser } = useAuth();
   const [showComponents, setShowComponents] = useState<boolean>(true);
+  const isAuthenticated = Boolean(user);
 
   const effectiveTheme = theme === "system" ? resolvedTheme || "dark" : theme || "dark";
   const shellBackgroundClass =
@@ -192,6 +195,7 @@ export default function QAlphaShell(): React.ReactElement {
           tagline="Advanced AI learning, research collaboration, and model development platform."
           iconKey="qalpha"
           accentColor="#9333ea"
+          statusMessage={`Session status: ${isAuthenticated ? "Authenticated" : "Guest"} • Role: ${user?.role || "guest"}`}
         />
         <section className="rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 p-8 border border-slate-700 shadow-xl">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">

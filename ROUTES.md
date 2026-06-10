@@ -12,14 +12,25 @@
 **Last Updated:** 2026-06-08  
 **Production Audit:** ✅ Reviewed June 8, 2026 — production route mapping verified and debug-only routes isolated from public routing surface.
 **Production Readiness Scan:** ✅ Completed June 8, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 1189
+**Total Indexed Markdown Files:** 3559
 **Total Route Source Files:** 292 (43 active production + 249 legacy compatibility)
 **Status:** ✅ 
 
 ## Document Purpose
 
-This document describes the route file structure for the QMOI Enhanced application. 
+### Route-focused Markdown Files Included
+- ROUTES.md
+- ROUTES_COMPREHENSIVE.md
 
+
+This document describes the route file structure for the QMOI Enhanced application. 
+**App Page Mapping**
+- `/universal` → `app/universal/page.tsx`
+- `/qmoi-ai` → `app/qmoi-ai/page.tsx`
+- `/qmoi-space` → `app/qmoi-space/page.tsx`
+- `/qcity` → `app/qcity/page.tsx`
+- `/qvillage` → `app/qvillage/page.tsx`
+- `/qalpha` → `app/qalpha/page.tsx`
 **IMPORTANT:** Active production API routes are served from `src/app/api/` (43 routes). The legacy `app/api/` directory (249 routes) contains compatibility handlers for backward compatibility and is documented separately. See `ENDPOINTS.md` for complete production endpoint documentation.
 
 ---

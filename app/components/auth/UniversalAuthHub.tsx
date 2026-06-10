@@ -2,7 +2,13 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/app/hooks/useAuth";
+import {
+  persistPrivacyMask,
+  persistParallelSessions,
+  readPersistedPrivacyMask,
+  readPersistedParallelSessions,
+} from "@/app/lib/auth/persistence";
 import AuthStatusCard from "./AuthStatusCard";
 import ForgotEmailForm from "./ForgotEmailForm";
 import LoginForm from "./LoginForm";
@@ -27,13 +33,25 @@ export default function UniversalAuthHub() {
   const [message, setMessage] = useState<string | null>(null);
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirectPath = searchParams.get("redirect")?.trim() || "";
+  const redirectPath = searchParams ? searchParams.get("redirect")?.trim() || "" : "";
+  const queryMode = searchParams ? (searchParams.get("mode") as AuthMode | null) : null;
+
+  useEffect(() => {
+    if (queryMode && authModes.some((item) => item.key === queryMode)) {
+      setMode(queryMode);
+    }
+  }, [queryMode]);
 
   useEffect(() => {
     if (isAuthenticated && redirectPath) {
       router.replace(redirectPath);
     }
   }, [isAuthenticated, redirectPath, router]);
+
+  useEffect(() => {
+    setPrivacyMask(readPersistedPrivacyMask());
+    setParallelMode(readPersistedParallelSessions());
+  }, []);
 
   const activePanel = useMemo(() => {
     switch (mode) {
@@ -138,14 +156,26 @@ export default function UniversalAuthHub() {
             <div className="mt-5 space-y-4">
               <button
                 type="button"
-                onClick={() => setPrivacyMask((current) => !current)}
+                onClick={() => {
+                  setPrivacyMask((current) => {
+                    const next = !current;
+                    persistPrivacyMask(next);
+                    return next;
+                  });
+                }}
                 className="w-full rounded-2xl border border-slate-700 bg-slate-900 px-4 py-3 text-sm text-white transition hover:bg-slate-800"
               >
                 {privacyMask ? "Disable Privacy Mask" : "Enable Privacy Mask"}
               </button>
               <button
                 type="button"
-                onClick={() => setParallelMode((current) => !current)}
+                onClick={() => {
+                  setParallelMode((current) => {
+                    const next = !current;
+                    persistParallelSessions(next);
+                    return next;
+                  });
+                }}
                 className="w-full rounded-2xl border border-slate-700 bg-slate-900 px-4 py-3 text-sm text-white transition hover:bg-slate-800"
               >
                 {parallelMode ? "Disable Parallel Sessions" : "Enable Parallel Sessions"}

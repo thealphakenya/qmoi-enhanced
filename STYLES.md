@@ -50,6 +50,11 @@ Each app must support at least the following theme modes:
 - `light`
 - `high-contrast`
 
+The shared `ThemeSelector` component in `app/components/theme/ThemeSelector.tsx` is the canonical theme picker, and it should be present in each shell to allow theme changes across apps.
+
+- Theme selection must persist across sessions and shell navigation via the shared theme provider.
+- The `ThemeSelector` should update `qmoi_theme` storage and preserve the selected theme when redirecting between `/qmoi-ai`, `/qmoi-space`, `/qcity`, `/qvillage`, and `/qalpha`.
+
 And should preserve theme preference across sessions using the shared theme provider.
 
 ## Universal Styling and Auth Integration

@@ -30,6 +30,12 @@ Theme states should map to `styles/theme.css` variables and the shared `ThemePro
 - Ensure accessible labels, keyboard focus states, and contrast ratios across all theme variations.
 - QAlpha participates in the universal auth flow: if a user is not validated, `/qalpha` redirects to `/universal?redirect=/qalpha` and returns them after verification.
 
+## Theme Selection
+- QAlpha must expose the shared `ThemeSelector` component in the shell so users can select `dark`, `light`, or `high-contrast` themes.
+- Theme preference should persist across sessions, browser reloads, and app boundary navigation.
+- Theme changes should be preserved by the universal auth portal when redirecting back to `/qalpha`.
+- The theme selector should apply to all research visuals, progress panels, and model metric cards.
+
 ## Active UI Components
 - `AdminDashboard`
 - `ChatMessaging`

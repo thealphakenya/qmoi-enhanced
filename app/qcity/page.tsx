@@ -1,7 +1,7 @@
 "use client";
 
-import QCityShell from "@/qcity/QCityShell";
-import UniversalRouteGuard from "@/components/auth/UniversalRouteGuard";
+import QCityShell from "@/src/qcity/QCityShell";
+import UniversalRouteGuard from "@/app/components/auth/UniversalRouteGuard";
 
 export default function Page() {
   return (

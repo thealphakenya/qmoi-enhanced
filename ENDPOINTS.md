@@ -15,12 +15,22 @@ fully implemented
 **Last Updated:** 2026-05-19T00:00:00.000000Z
 **Production Audit:** ✅ Reviewed May 19, 2026 — public endpoints verified and internal diagnostics are identified separately.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 1189
+**Total Indexed Markdown Files:** 3559
 **Total Route Source Files:** 309
 **Actual endpoint handler files:** 309
 **Status:** ✅ 
 
 ## Document Purpose
+
+### Endpoint-focused Markdown Files Included
+- API_ENDPOINTS_COMPLETE_AUDIT.md
+- API_ENDPOINTS_REFERENCE.md
+- ENDPOINTS.md
+- ENDPOINTS_CONSCIOUSNESS.md
+- QMOI_APIS_WEBHOOKS_ENDPOINTS.md
+- UNUSED_API_ENDPOINTS.md
+- docs/implemented_endpoints.md
+
 
 This document captures the current API endpoint inventory for the QMOI Enhanced system, based on the live `src/app/api/` production source tree and legacy `app/api/` compatibility handlers. It is intended for architecture review, integration mapping, and production readiness analysis.
 
@@ -88,6 +98,19 @@ The endpoint inventory is derived from live route handler source files under `sr
 5. `GET /api/auth/webauthn/register/options` - Get WebAuthn registration options
 6. `POST /api/auth/webauthn/register/finish` - Complete WebAuthn registration
 7. `GET /api/auth/oauth/[provider]` - Social/OAuth authentication
+
+### Universal Authentication & Legacy Auth Compatibility
+The QMOI auth surface includes additional universal auth routes served via legacy compatibility handlers under `app/api/auth/`. These routes support universal login, registration, recovery, verification, and refresh flows across shell apps.
+- `GET /api/auth/me` - Get current authenticated user profile
+- `POST /api/auth/register` - Universal registration endpoint
+- `POST /api/auth/logout` - End session and clear auth state
+- `POST /api/auth/forgot-password` - Initiate password recovery
+- `POST /api/auth/forgot-email` - Initiate email recovery
+- `POST /api/auth/reset-password` - Complete password reset
+- `POST /api/auth/verify-email` - Confirm email verification
+- `POST /api/auth/refresh` - Refresh session/token expiration
+- `POST /api/auth/webauthn/register` - Register biometric credential
+- `POST /api/auth/webauthn/authenticate` - Authenticate with biometrics
 
 ### Accountability & Audit (1 endpoint)
 8. `GET /api/accountability` - Get accountability and audit logs

@@ -13,8 +13,38 @@ fully implemented
 **Last Updated:** 2026-05-19T00:00:00.000000Z
 **Production Audit:** ✅ Reviewed May 19, 2026 — public API surface verified and internal debug routes are flagged as development-only.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 3530
+**Total Indexed Markdown Files:** 3559
 **Total APIs:** 9185
+**Local API Markdown Files Included:**
+- .evolution_logs/API_DOCUMENTATION.md
+- AI_API_AUTHENTICATION_GUIDE.md
+- API.md
+- API_1.md
+- API_AUTO_UPDATE_GUIDELINES.md
+- API_COMPREHENSIVE.md
+- API_DOCUMENTATION_COMPLETENESS.md
+- API_DOCUMENTATION_INDEX.md
+- API_ENDPOINTS_COMPLETE_AUDIT.md
+- API_ENDPOINTS_REFERENCE.md
+- API_IMPLEMENTATION_EXAMPLES.md
+- API_INTEGRATION_GUIDE.md
+- API_REFERENCE.md
+- APIs_1.md
+- APIs_v1.md
+- BACKEND_API_TEMPLATES.md
+- MONITORING_API_DOCS.md
+- PRODUCTION_API_REFERENCE.md
+- QMOIAPIKEYREADME.md
+- QMOI_APIS_WEBHOOKS_ENDPOINTS.md
+- QMOI_PRODUCTION_API.md
+- Q_API_KEY_COMPREHENSIVE.md
+- RSAAPIREADME.md
+- UNUSED_API_ENDPOINTS.md
+- docs/API.md
+- docs/API_AUDIT.md
+- docs/API_ENHANCEMENTS_PLAN.md
+- docs/API_REFERENCE.md
+- docs/APIs_v1.md
 **Page Inventory:** See `ALLPAGES.md` for all live app entry points and shell launch routes.
 
 ## Verified production PWA Route Mapping
@@ -82,6 +112,19 @@ Note: run integration tests against a running dev server to validate connectivit
 4. Session created in database with expiration timestamp
 5. Session ID returned in HTTP-only cookie and response body
 6. Winston logs signin event with IP, result, duration
+
+### Universal Authentication Endpoints
+- `GET /api/auth/me` - Get current user profile and session status
+- `POST /api/auth/login` - Universal login endpoint for email/password access
+- `POST /api/auth/register` - Universal registration endpoint for new users
+- `POST /api/auth/logout` - Universal logout and session cleanup
+- `POST /api/auth/forgot-password` - Password recovery initiation
+- `POST /api/auth/forgot-email` - Email recovery initiation
+- `POST /api/auth/reset-password` - Password reset confirmation
+- `POST /api/auth/verify-email` - Email verification confirmation
+- `POST /api/auth/refresh` - Session refresh and token renewal
+- `POST /api/auth/webauthn/register` - WebAuthn registration flow
+- `POST /api/auth/webauthn/authenticate` - WebAuthn authentication flow
 
 ### Biometric Enrollment Flow
 1. User provides fingerprint/facial/voice sample

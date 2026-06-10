@@ -1,10 +1,10 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { City, Cpu, Globe2, Sparkles, Users } from "lucide-react";
+import { Building, Cpu, Globe2, Sparkles, Users } from "lucide-react";
 
 const iconMap = {
-  qcity: City,
+  qcity: Building,
   "qmoi-ai": Cpu,
   "qmoi-space": Globe2,
   qvillage: Users,
@@ -18,6 +18,7 @@ interface AppShellHeaderProps {
   tagline: string;
   iconKey: AppIconKey;
   accentColor?: string;
+  statusMessage?: string;
   children?: ReactNode;
 }
 
@@ -26,6 +27,7 @@ export default function AppShellHeader({
   tagline,
   iconKey,
   accentColor = "#0ea5e9",
+  statusMessage,
   children,
 }: AppShellHeaderProps) {
   const Icon = iconMap[iconKey];
@@ -52,6 +54,11 @@ export default function AppShellHeader({
           <p className="text-sm text-slate-400">Uses centralized assets and app metadata for consistent shell rendering.</p>
         </div>
       </div>
+      {statusMessage ? (
+        <div className="mt-6 rounded-3xl bg-slate-950/80 px-5 py-4 text-sm text-slate-300">
+          {statusMessage}
+        </div>
+      ) : null}
       {children ? <div className="mt-8">{children}</div> : null}
     </section>
   );

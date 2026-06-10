@@ -28,6 +28,12 @@ Styling should leverage `styles/theme.css` and `src/components/theme-provider.ts
 - The active page uses a shared `AppShellHeader` wrapper to centralize shell iconography and app metadata across the QMOI suite.
 - Accessible typography and sufficient contrast are required for all theme options.
 
+## Theme Selection
+- QMOI Space must surface the shared `ThemeSelector` for all users.
+- Theme selection should persist across reloads, login state changes, and redirection through `/universal`.
+- Selected themes should apply consistently to dashboards, cards, tables, and data visualizations.
+- Theme colors and contrast levels must remain readable in all shell components.
+
 ## Authentication & Parity
 QMOI Space shares authentication and session flows with other canonical shells (QMOI AI, QCity, QVillage). Ensure `/api/auth/me`, `/api/auth/login`, `/api/auth/register`, and `/api/auth/logout` are available and that UI shells expose login/register/logout actions consistently. Theme and auth preferences should be persisted via the shared theme provider and auth persistence utilities.
 

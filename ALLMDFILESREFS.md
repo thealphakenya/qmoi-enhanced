@@ -1,14 +1,11 @@
-# ALLMDFILESREFS.md
-Generated: 2026-06-02T21:37:58Z
-Total markdown files: 3531
+# ALLMDFILESREFS.md - Complete Markdown Inventory
 
-./.backups/archive_mocks_1779516622/__MOCKS__.md
-./.backups/high_conf_nonprod_1779517012/__MOCKS__.md
-./.backups/high_conf_nonprod_1779517012/reports/mock_and_stub_audit.md
-./.backups/nonprod_fix_1779516785/DEPLOYMENT_GUIDE.md
-./.backups/nonprod_fix_1779516785/OPERATIONAL_RUNBOOKS.md
-./.backups/nonprod_fix_1779516785/QMOIAIUI.md
-./.backups/nonprod_fix_1779516785/reports/nonproduction_candidates.md
+**Generated:** 2026-06-10T08:40:38Z
+**Total Markdown Files:** 3559
+
+This file contains a complete sorted inventory of every Markdown file found in the repository tree, including hidden directories and vendor files.
+
+## Markdown Files
 ./.devcontainer/README.md
 ./.evolution_logs/API_DOCUMENTATION.md
 ./.evolution_logs/DEPLOYMENT_GUIDE.md
@@ -59,14 +56,17 @@ Total markdown files: 3531
 ./ALLTESTSAUTOTESTS.md
 ./ALLUI.md
 ./ALLUITESTS.md
+./ALLVALIDATIONS.md
 ./ALLVERSIONS.md
 ./ALLWALLETSQVS.md
 ./ALL_APPS.md
 ./ALL_APPS/README.md
 ./ALPHAQMOIENGINE.md
 ./API.md
+./API_1.md
 ./API_AUTO_UPDATE_GUIDELINES.md
 ./API_COMPREHENSIVE.md
+./API_DOCUMENTATION_COMPLETENESS.md
 ./API_DOCUMENTATION_INDEX.md
 ./API_ENDPOINTS_COMPLETE_AUDIT.md
 ./API_ENDPOINTS_REFERENCE.md
@@ -155,6 +155,7 @@ Total markdown files: 3531
 ./COMPONENT_USAGE_PLAN.md
 ./COMPREHENSIVE_ACTION_PLAN.md
 ./COMPREHENSIVE_ERROR_ANALYSIS.md
+./COMPREHENSIVE_IMPLEMENTATION_PLAN.md
 ./COMPREHENSIVE_LINK_FIX_STRATEGY.md
 ./COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md
 ./COMPREHENSIVE_TESTING_QA_STRATEGY.md
@@ -186,6 +187,8 @@ Total markdown files: 3531
 ./DEALS.md
 ./DELIVERABLES_CHECKLIST.md
 ./DELIVERABLES_FINAL_INVENTORY.md
+./DEPENDENCY_ANALYSIS.md
+./DEPENDENCY_TRACE.md
 ./DEPLOY.md
 ./DEPLOYMENT-README.md
 ./DEPLOYMENT.md
@@ -224,6 +227,7 @@ Total markdown files: 3531
 ./DOCUMENTATION_INDEX.md
 ./DOCUMENTATION_MASTER_INDEX.md
 ./DOCUMENTATION_PHASE_COMPLETION_REPORT.md
+./DOCUMENTATION_STATUS.md
 ./DOMAIN-MANAGEMENT.md
 ./DOMAINSANDLINKS.md
 ./DOMAIN_AUTO_VALIDATION_SYSTEM.md
@@ -309,6 +313,8 @@ Total markdown files: 3531
 ./GLOBALMANAGER.md
 ./GLOBALTIME.md
 ./GLOBAL_ASSET_MANAGEMENT.md
+./GLOBAL_OPERATIONS_DEVELOPER_GUIDE.md
+./GLOBAL_OPERATIONS_PHASE_2_COMPLETION.md
 ./GLOBAL_STRUCTURE_ENHANCED.md
 ./GODADDY.md
 ./GODADDYPAYED.md
@@ -502,6 +508,7 @@ Total markdown files: 3531
 ./PWA_APPS.md
 ./Q.md
 ./QALLPURPOSE.md
+./QALPHA.md
 ./QALPHAUI.md
 ./QAvatar_User_Feedback_Kit.md
 ./QCITY-ARTIFACTS.md
@@ -519,6 +526,7 @@ Total markdown files: 3531
 ./QCITYRUNNERSENGINE.md
 ./QCITYUI.md
 ./QCITY_DEVICE_MANAGEMENT.md
+./QCITY_SETUP.md
 ./QGAMINGCLOUD.md
 ./QGLOBAL.md
 ./QGLOBALSIM.md
@@ -562,6 +570,7 @@ Total markdown files: 3531
 ./QMOI.md
 ./QMOIACCOUNTS.md
 ./QMOIACCOUNTSPLATFORMS.md
+./QMOIAI.md
 ./QMOIAICORE.md
 ./QMOIAIUI.md
 ./QMOIALLDEVICESHANDSFREE.md
@@ -706,6 +715,7 @@ Total markdown files: 3531
 ./QMOI_FRIENDSHIP_ENHANCEMENT.md
 ./QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md
 ./QMOI_GITLAB_AUTOMATION.md
+./QMOI_GLOBAL_ENHANCEMENT_MASTER_PLAN_2026.md
 ./QMOI_HYBRID_JAVA_WORKFLOW.md
 ./QMOI_ITERATIVE_IMPROVEMENT_COMPLETE.md
 ./QMOI_ITERATIVE_INDEX.md
@@ -740,6 +750,7 @@ Total markdown files: 3531
 ./QMOI_TESTING_INDEX.md
 ./QMOI_TEST_DASHBOARD.md
 ./QMOI_TRACKS_SYSTEM.md
+./QMOI_TYPESCRIPT_REMEDIATION_PLAN.md
 ./QMOI_USER_IDENTIFICATION_IMPLEMENTATION_SUMMARY.md
 ./QMOI_USER_IDENTIFICATION_INDEX.md
 ./QMOI_USER_IDENTIFICATION_SYSTEM.md
@@ -778,6 +789,7 @@ Total markdown files: 3531
 ./QVILLAGEEVOLUTION.md
 ./QVILLAGESPACES.md
 ./QVILLAGETESTS.md
+./QVILLAGEUI.md
 ./QVILLAGE_ADVANCED_AUTOMATION_PLAN.md
 ./QVILLAGE_ENHANCED_AUTO_EVOLUTION.md
 ./QVILLAGE_ENHANCED_COMPLETE.md
@@ -873,6 +885,7 @@ Total markdown files: 3531
 ./SISTER.md
 ./SISTERREADME.md
 ./SPONSORED.md
+./SPONSORED_FEATURES_SUMMARY.md
 ./SPONSORED_USERS.md
 ./SRC.md
 ./SSH-BACKEND.md
@@ -923,6 +936,7 @@ Total markdown files: 3531
 ./UI_FEATURES_AUDIT_COMPREHENSIVE.md
 ./UI_FEATURES_VALIDATION_COMPLETE.md
 ./UI_SAMPLES.md
+./UNIVERSAL.md
 ./UNIVERSALHEALTHRUNNERS.md
 ./UNLIMITED_RESOURCES.md
 ./UNUSED_API_ENDPOINTS.md
@@ -955,6 +969,7 @@ Total markdown files: 3531
 ./WALLET_FINANCIAL_VALIDATION.md
 ./WATCHDEBUG.md
 ./WEBHOOKS.md
+./WEBHOOKS_OLD.md
 ./WHATSAPP-QMOI-BOT.md
 ./WIRKFLOWSTRACKS.md
 ./WORKFLOWS.md
@@ -962,6 +977,7 @@ Total markdown files: 3531
 ./WORKSPACECODESPACEQCITYMINBUNDLESENHANCED.md
 ./WORKSPACEGENERAL.md
 ./WORKSPACE_LIGHT_MODE.md
+./WORK_COMPLETED_SUMMARY.md
 ./WPA.md
 ./ZERORATEDQMOI.md
 ./_APP_ARCHIVED.md
@@ -977,6 +993,7 @@ Total markdown files: 3531
 ./assets/changelogs/qstore-changelog.md
 ./assets/changelogs/qvillage-changelog.md
 ./assets/changelogs/yap-changelog.md
+./assets/icons/apps/README.md
 ./autoPRODUCTIONtracks.md
 ./autodev_enhancement_report.md
 ./autodevtracks.md
@@ -1874,7 +1891,9 @@ Total markdown files: 3531
 ./node_modules/@humanwhocodes/object-schema/README.md
 ./node_modules/@img/colour/LICENSE.md
 ./node_modules/@img/colour/README.md
+./node_modules/@img/sharp-libvips-linux-x64/README.md
 ./node_modules/@img/sharp-libvips-linuxmusl-x64/README.md
+./node_modules/@img/sharp-linux-x64/README.md
 ./node_modules/@img/sharp-linuxmusl-x64/README.md
 ./node_modules/@isaacs/cliui/README.md
 ./node_modules/@isaacs/cliui/node_modules/ansi-regex/readme.md
@@ -1928,6 +1947,7 @@ Total markdown files: 3531
 ./node_modules/@mui/utils/CHANGELOG.md
 ./node_modules/@mui/utils/README.md
 ./node_modules/@next/env/README.md
+./node_modules/@next/swc-linux-x64-gnu/README.md
 ./node_modules/@next/swc-linux-x64-musl/README.md
 ./node_modules/@nodelib/fs.scandir/README.md
 ./node_modules/@nodelib/fs.stat/README.md
@@ -1940,42 +1960,27 @@ Total markdown files: 3531
 ./node_modules/@pinojs/redact/README.md
 ./node_modules/@pkgjs/parseargs/CHANGELOG.md
 ./node_modules/@pkgjs/parseargs/README.md
-./node_modules/@pm2/agent/README.md
-./node_modules/@pm2/agent/node_modules/chalk/readme.md
-./node_modules/@pm2/agent/node_modules/dayjs/CHANGELOG.md
-./node_modules/@pm2/agent/node_modules/dayjs/README.md
-./node_modules/@pm2/agent/node_modules/debug/README.md
-./node_modules/@pm2/agent/node_modules/lru-cache/README.md
-./node_modules/@pm2/agent/node_modules/semver/README.md
-./node_modules/@pm2/agent/node_modules/yallist/README.md
 ./node_modules/@pm2/blessed/CHANGELOG.md
 ./node_modules/@pm2/blessed/README.md
 ./node_modules/@pm2/blessed/example/ansi-viewer/README.md
-./node_modules/@pm2/io/LICENSE.md
-./node_modules/@pm2/io/README.md
-./node_modules/@pm2/io/node_modules/async/CHANGELOG.md
-./node_modules/@pm2/io/node_modules/async/README.md
-./node_modules/@pm2/io/node_modules/debug/README.md
-./node_modules/@pm2/io/node_modules/eventemitter2/README.md
-./node_modules/@pm2/io/node_modules/lru-cache/README.md
-./node_modules/@pm2/io/node_modules/semver/README.md
-./node_modules/@pm2/io/node_modules/signal-exit/README.md
-./node_modules/@pm2/io/node_modules/tslib/README.md
-./node_modules/@pm2/io/node_modules/tslib/docs/generator.md
-./node_modules/@pm2/io/node_modules/yallist/README.md
 ./node_modules/@pm2/js-api/README.md
 ./node_modules/@pm2/js-api/node_modules/async/CHANGELOG.md
 ./node_modules/@pm2/js-api/node_modules/async/README.md
 ./node_modules/@pm2/js-api/node_modules/debug/README.md
-./node_modules/@pm2/js-api/node_modules/eventemitter2/README.md
 ./node_modules/@pm2/pm2-version-check/README.md
 ./node_modules/@popperjs/core/LICENSE.md
 ./node_modules/@popperjs/core/README.md
 ./node_modules/@prisma/adapter-pg/README.md
-./node_modules/@prisma/client-runtime-utils/README.md
 ./node_modules/@prisma/client/README.md
 ./node_modules/@prisma/debug/README.md
 ./node_modules/@prisma/driver-adapter-utils/README.md
+./node_modules/@prisma/engines-version/README.md
+./node_modules/@prisma/engines/README.md
+./node_modules/@prisma/engines/node_modules/@prisma/debug/README.md
+./node_modules/@prisma/fetch-engine/README.md
+./node_modules/@prisma/fetch-engine/node_modules/@prisma/debug/README.md
+./node_modules/@prisma/get-platform/README.md
+./node_modules/@prisma/get-platform/node_modules/@prisma/debug/README.md
 ./node_modules/@radix-ui/number/README.md
 ./node_modules/@radix-ui/primitive/README.md
 ./node_modules/@radix-ui/react-arrow/README.md
@@ -2084,6 +2089,11 @@ Total markdown files: 3531
 ./node_modules/@radix-ui/react-use-size/README.md
 ./node_modules/@radix-ui/react-visually-hidden/README.md
 ./node_modules/@radix-ui/rect/README.md
+./node_modules/@redis/bloom/README.md
+./node_modules/@redis/client/README.md
+./node_modules/@redis/json/README.md
+./node_modules/@redis/search/README.md
+./node_modules/@redis/time-series/README.md
 ./node_modules/@sendgrid/client/README.md
 ./node_modules/@sendgrid/client/USAGE.md
 ./node_modules/@sendgrid/client/USE_CASES.md
@@ -2098,6 +2108,7 @@ Total markdown files: 3531
 ./node_modules/@so-ric/colorspace/CHANGELOG.md
 ./node_modules/@so-ric/colorspace/LICENSE.md
 ./node_modules/@so-ric/colorspace/README.md
+./node_modules/@standard-schema/spec/README.md
 ./node_modules/@tootallnate/quickjs-emscripten/README.md
 ./node_modules/@types/babel__core/README.md
 ./node_modules/@types/babel__generator/README.md
@@ -2130,6 +2141,7 @@ Total markdown files: 3531
 ./node_modules/@typescript-eslint/visitor-keys/README.md
 ./node_modules/@typescript-eslint/visitor-keys/node_modules/eslint-visitor-keys/README.md
 ./node_modules/@ungap/structured-clone/README.md
+./node_modules/@unrs/resolver-binding-linux-x64-gnu/README.md
 ./node_modules/@unrs/resolver-binding-linux-x64-musl/README.md
 ./node_modules/@vercel/analytics/README.md
 ./node_modules/@zone-eu/mailsplit/README.md
@@ -2145,7 +2157,6 @@ Total markdown files: 3531
 ./node_modules/ajv/lib/dotjs/README.md
 ./node_modules/amp-message/Readme.md
 ./node_modules/amp/Readme.md
-./node_modules/ansi-colors/README.md
 ./node_modules/ansi-escapes/node_modules/type-fest/readme.md
 ./node_modules/ansi-escapes/readme.md
 ./node_modules/ansi-regex/readme.md
@@ -2196,11 +2207,6 @@ Total markdown files: 3531
 ./node_modules/body-parser/node_modules/debug/README.md
 ./node_modules/body-parser/node_modules/ms/license.md
 ./node_modules/body-parser/node_modules/ms/readme.md
-./node_modules/body-parser/node_modules/qs/.github/SECURITY.md
-./node_modules/body-parser/node_modules/qs/.github/THREAT_MODEL.md
-./node_modules/body-parser/node_modules/qs/CHANGELOG.md
-./node_modules/body-parser/node_modules/qs/LICENSE.md
-./node_modules/body-parser/node_modules/qs/README.md
 ./node_modules/brace-expansion/README.md
 ./node_modules/braces/README.md
 ./node_modules/broadcast-channel/.github/README.md
@@ -2213,6 +2219,9 @@ Total markdown files: 3531
 ./node_modules/buffer-from/readme.md
 ./node_modules/bytes/History.md
 ./node_modules/bytes/Readme.md
+./node_modules/c12/README.md
+./node_modules/c12/node_modules/chokidar/README.md
+./node_modules/c12/node_modules/readdirp/README.md
 ./node_modules/call-bind-apply-helpers/CHANGELOG.md
 ./node_modules/call-bind-apply-helpers/README.md
 ./node_modules/call-bound/CHANGELOG.md
@@ -2229,6 +2238,7 @@ Total markdown files: 3531
 ./node_modules/chokidar/node_modules/glob-parent/README.md
 ./node_modules/ci-info/CHANGELOG.md
 ./node_modules/ci-info/README.md
+./node_modules/citty/README.md
 ./node_modules/cjs-module-lexer/README.md
 ./node_modules/class-variance-authority/README.md
 ./node_modules/cli-tableau/CHANGELOG.md
@@ -2240,6 +2250,7 @@ Total markdown files: 3531
 ./node_modules/cliui/node_modules/string-width/readme.md
 ./node_modules/cliui/node_modules/wrap-ansi/readme.md
 ./node_modules/clsx/readme.md
+./node_modules/cluster-key-slot/README.md
 ./node_modules/cmdk/LICENSE.md
 ./node_modules/cmdk/README.md
 ./node_modules/co/History.md
@@ -2257,6 +2268,9 @@ Total markdown files: 3531
 ./node_modules/combined-stream/Readme.md
 ./node_modules/commander/CHANGELOG.md
 ./node_modules/commander/Readme.md
+./node_modules/confbox/README.md
+./node_modules/confbox/dist/THIRD-PARTY-LICENSES.md
+./node_modules/consola/README.md
 ./node_modules/content-disposition/HISTORY.md
 ./node_modules/content-disposition/README.md
 ./node_modules/content-type/HISTORY.md
@@ -2293,12 +2307,16 @@ Total markdown files: 3531
 ./node_modules/debug/README.md
 ./node_modules/dedent/LICENSE.md
 ./node_modules/dedent/README.md
+./node_modules/deepmerge-ts/CHANGELOG.md
+./node_modules/deepmerge-ts/README.md
 ./node_modules/deepmerge/changelog.md
 ./node_modules/deepmerge/readme.md
+./node_modules/defu/README.md
 ./node_modules/degenerator/README.md
 ./node_modules/delayed-stream/Readme.md
 ./node_modules/depd/History.md
 ./node_modules/depd/Readme.md
+./node_modules/destr/README.md
 ./node_modules/destroy/README.md
 ./node_modules/detect-libc/README.md
 ./node_modules/detect-newline/readme.md
@@ -2317,14 +2335,14 @@ Total markdown files: 3531
 ./node_modules/eastasianwidth/README.md
 ./node_modules/ecdsa-sig-formatter/README.md
 ./node_modules/ee-first/README.md
+./node_modules/effect/README.md
 ./node_modules/electron-to-chromium/README.md
 ./node_modules/emittery/readme.md
 ./node_modules/emoji-regex/README.md
+./node_modules/empathic/readme.md
 ./node_modules/enabled/README.md
 ./node_modules/encodeurl/README.md
 ./node_modules/encoding-japanese/README.md
-./node_modules/enquirer/CHANGELOG.md
-./node_modules/enquirer/README.md
 ./node_modules/error-ex/README.md
 ./node_modules/es-define-property/CHANGELOG.md
 ./node_modules/es-define-property/README.md
@@ -2356,7 +2374,6 @@ Total markdown files: 3531
 ./node_modules/esutils/README.md
 ./node_modules/etag/HISTORY.md
 ./node_modules/etag/README.md
-./node_modules/eventemitter2/CHANGELOG.md
 ./node_modules/eventemitter2/README.md
 ./node_modules/eventemitter3/README.md
 ./node_modules/execa/node_modules/signal-exit/README.md
@@ -2374,6 +2391,7 @@ Total markdown files: 3531
 ./node_modules/express/node_modules/debug/README.md
 ./node_modules/express/node_modules/ms/license.md
 ./node_modules/express/node_modules/ms/readme.md
+./node_modules/exsolve/README.md
 ./node_modules/extrareqp2/CHANGELOG.md
 ./node_modules/extrareqp2/README.md
 ./node_modules/extrareqp2/SECURITY.md
@@ -2381,6 +2399,10 @@ Total markdown files: 3531
 ./node_modules/extrareqp2/lib/adapters/README.md
 ./node_modules/extrareqp2/lib/core/README.md
 ./node_modules/extrareqp2/lib/helpers/README.md
+./node_modules/fast-check/CHANGELOG.md
+./node_modules/fast-check/README.md
+./node_modules/fast-check/node_modules/pure-rand/CHANGELOG.md
+./node_modules/fast-check/node_modules/pure-rand/README.md
 ./node_modules/fast-deep-equal/README.md
 ./node_modules/fast-glob/README.md
 ./node_modules/fast-glob/node_modules/glob-parent/CHANGELOG.md
@@ -2392,9 +2414,9 @@ Total markdown files: 3531
 ./node_modules/fastq/README.md
 ./node_modules/fastq/SECURITY.md
 ./node_modules/fb-watchman/README.md
-./node_modules/fclone/README.md
 ./node_modules/fdir/README.md
 ./node_modules/fecha/README.md
+./node_modules/fetch-blob/README.md
 ./node_modules/file-entry-cache/README.md
 ./node_modules/file-entry-cache/changelog.md
 ./node_modules/fill-range/README.md
@@ -2417,6 +2439,7 @@ Total markdown files: 3531
 ./node_modules/foreground-child/README.md
 ./node_modules/form-data/CHANGELOG.md
 ./node_modules/form-data/README.md
+./node_modules/formdata-polyfill/README.md
 ./node_modules/forwarded/HISTORY.md
 ./node_modules/forwarded/README.md
 ./node_modules/framer-motion/LICENSE.md
@@ -2442,6 +2465,7 @@ Total markdown files: 3531
 ./node_modules/get-proto/README.md
 ./node_modules/get-stream/readme.md
 ./node_modules/get-uri/README.md
+./node_modules/giget/README.md
 ./node_modules/git-node-fs/README.md
 ./node_modules/git-sha1/README.md
 ./node_modules/glob-parent/README.md
@@ -2542,6 +2566,7 @@ Total markdown files: 3531
 ./node_modules/jest-worker/README.md
 ./node_modules/jest-worker/node_modules/supports-color/readme.md
 ./node_modules/jest/README.md
+./node_modules/jiti/README.md
 ./node_modules/jose/LICENSE.md
 ./node_modules/jose/README.md
 ./node_modules/js-git/BACKERS-2.md
@@ -2631,20 +2656,14 @@ Total markdown files: 3531
 ./node_modules/minimatch/README.md
 ./node_modules/minipass/LICENSE.md
 ./node_modules/minipass/README.md
-./node_modules/mkdirp/CHANGELOG.md
-./node_modules/module-details-from-path/README.md
 ./node_modules/motion-dom/LICENSE.md
 ./node_modules/motion-utils/LICENSE.md
 ./node_modules/ms/license.md
 ./node_modules/ms/readme.md
-./node_modules/mute-stream/README.md
 ./node_modules/nano-time/README.md
 ./node_modules/nanoid/README.md
 ./node_modules/napi-postinstall/README.md
 ./node_modules/natural-compare/README.md
-./node_modules/needle/README.md
-./node_modules/needle/node_modules/debug/CHANGELOG.md
-./node_modules/needle/node_modules/debug/README.md
 ./node_modules/negotiator/HISTORY.md
 ./node_modules/negotiator/README.md
 ./node_modules/netmask/CHANGELOG.md
@@ -3082,6 +3101,18 @@ Total markdown files: 3531
 ./node_modules/node-addon-api/LICENSE.md
 ./node_modules/node-addon-api/README.md
 ./node_modules/node-addon-api/tools/README.md
+./node_modules/node-domexception/.history/README_20210527203617.md
+./node_modules/node-domexception/.history/README_20210527212714.md
+./node_modules/node-domexception/.history/README_20210527213345.md
+./node_modules/node-domexception/.history/README_20210527213411.md
+./node_modules/node-domexception/.history/README_20210527213803.md
+./node_modules/node-domexception/.history/README_20210527214323.md
+./node_modules/node-domexception/.history/README_20210527214408.md
+./node_modules/node-domexception/README.md
+./node_modules/node-fetch-native/README.md
+./node_modules/node-fetch/LICENSE.md
+./node_modules/node-fetch/README.md
+./node_modules/node-fetch/node_modules/data-uri-to-buffer/README.md
 ./node_modules/node-gyp-build/README.md
 ./node_modules/node-gyp-build/SECURITY.md
 ./node_modules/node-int64/README.md
@@ -3092,9 +3123,13 @@ Total markdown files: 3531
 ./node_modules/nodemailer/README.md
 ./node_modules/normalize-path/README.md
 ./node_modules/npm-run-path/readme.md
+./node_modules/nypm/README.md
+./node_modules/nypm/node_modules/citty/README.md
+./node_modules/nypm/node_modules/citty/dist/THIRD-PARTY-LICENSES.md
 ./node_modules/object-assign/readme.md
 ./node_modules/object-inspect/CHANGELOG.md
 ./node_modules/oblivious-set/README.md
+./node_modules/ohash/README.md
 ./node_modules/on-exit-leak-free/README.md
 ./node_modules/on-finished/HISTORY.md
 ./node_modules/on-finished/README.md
@@ -3140,10 +3175,12 @@ Total markdown files: 3531
 ./node_modules/path-scurry/node_modules/lru-cache/README.md
 ./node_modules/path-to-regexp/Readme.md
 ./node_modules/path-type/readme.md
+./node_modules/pathe/README.md
 ./node_modules/paypal-rest-sdk/CHANGELOG.md
 ./node_modules/paypal-rest-sdk/CONTRIBUTING.md
 ./node_modules/paypal-rest-sdk/README.md
 ./node_modules/paypal-rest-sdk/node_modules/semver/README.md
+./node_modules/perfect-debounce/README.md
 ./node_modules/pg-cloudflare/README.md
 ./node_modules/pg-connection-string/README.md
 ./node_modules/pg-int8/README.md
@@ -3181,12 +3218,7 @@ Total markdown files: 3531
 ./node_modules/pkg-dir/node_modules/p-limit/readme.md
 ./node_modules/pkg-dir/node_modules/p-locate/readme.md
 ./node_modules/pkg-dir/readme.md
-./node_modules/pm2-axon-rpc/History.md
-./node_modules/pm2-axon-rpc/Readme.md
-./node_modules/pm2-axon/History.md
-./node_modules/pm2-axon/Readme.md
-./node_modules/pm2-axon/lib/configurable/History.md
-./node_modules/pm2-axon/lib/configurable/Readme.md
+./node_modules/pkg-types/README.md
 ./node_modules/pm2-deploy/README.md
 ./node_modules/pm2-sysmonit/README.md
 ./node_modules/pm2-sysmonit/node_modules/pidusage/CHANGELOG.md
@@ -3197,11 +3229,11 @@ Total markdown files: 3531
 ./node_modules/pm2/lib/templates/sample-apps/http-server/README.md
 ./node_modules/pm2/lib/templates/sample-apps/pm2-plus-metrics-actions/README.md
 ./node_modules/pm2/lib/templates/sample-apps/python-app/README.md
+./node_modules/pm2/modules/pm2-axon/lib/configurable/History.md
+./node_modules/pm2/modules/pm2-axon/lib/configurable/Readme.md
+./node_modules/pm2/modules/pm2-io-agent/README.md
 ./node_modules/pm2/node_modules/semver/README.md
-./node_modules/pm2/node_modules/source-map-support/LICENSE.md
-./node_modules/pm2/node_modules/source-map-support/README.md
-./node_modules/pm2/node_modules/source-map/CHANGELOG.md
-./node_modules/pm2/node_modules/source-map/README.md
+./node_modules/pm2/node_modules/ws/README.md
 ./node_modules/postcss/README.md
 ./node_modules/postgres-array/readme.md
 ./node_modules/postgres-bytea/readme.md
@@ -3211,8 +3243,9 @@ Total markdown files: 3531
 ./node_modules/prelude-ls/README.md
 ./node_modules/pretty-format/README.md
 ./node_modules/pretty-format/node_modules/ansi-styles/readme.md
+./node_modules/prisma/README.md
+./node_modules/prisma/prisma-client/README.md
 ./node_modules/process-warning/README.md
-./node_modules/promptly/README.md
 ./node_modules/prop-types/README.md
 ./node_modules/prop-types/node_modules/react-is/README.md
 ./node_modules/proxy-addr/HISTORY.md
@@ -3236,6 +3269,7 @@ Total markdown files: 3531
 ./node_modules/range-parser/HISTORY.md
 ./node_modules/range-parser/README.md
 ./node_modules/raw-body/README.md
+./node_modules/rc9/README.md
 ./node_modules/react-chartjs-2/LICENSE.md
 ./node_modules/react-chartjs-2/README.md
 ./node_modules/react-dom/README.md
@@ -3251,7 +3285,6 @@ Total markdown files: 3531
 ./node_modules/react-style-singleton/README.md
 ./node_modules/react-transition-group/README.md
 ./node_modules/react/README.md
-./node_modules/read/README.md
 ./node_modules/readable-stream/CONTRIBUTING.md
 ./node_modules/readable-stream/GOVERNANCE.md
 ./node_modules/readable-stream/README.md
@@ -3259,8 +3292,8 @@ Total markdown files: 3531
 ./node_modules/readdirp/node_modules/picomatch/README.md
 ./node_modules/real-require/LICENSE.md
 ./node_modules/real-require/README.md
+./node_modules/redis/README.md
 ./node_modules/remove-accents/README.md
-./node_modules/require-in-the-middle/README.md
 ./node_modules/resolve-cwd/node_modules/resolve-from/readme.md
 ./node_modules/resolve-cwd/readme.md
 ./node_modules/resolve-from/readme.md
@@ -3283,8 +3316,6 @@ Total markdown files: 3531
 ./node_modules/safe-stable-stringify/readme.md
 ./node_modules/safer-buffer/Porting-Buffer.md
 ./node_modules/safer-buffer/Readme.md
-./node_modules/sax/LICENSE.md
-./node_modules/sax/README.md
 ./node_modules/scheduler/README.md
 ./node_modules/scmp/HISTORY.md
 ./node_modules/scmp/README.md
@@ -3302,7 +3333,6 @@ Total markdown files: 3531
 ./node_modules/sharp/README.md
 ./node_modules/shebang-command/readme.md
 ./node_modules/shebang-regex/readme.md
-./node_modules/shimmer/README.md
 ./node_modules/side-channel-list/CHANGELOG.md
 ./node_modules/side-channel-list/README.md
 ./node_modules/side-channel-map/CHANGELOG.md
@@ -3339,9 +3369,6 @@ Total markdown files: 3531
 ./node_modules/source-map/CHANGELOG.md
 ./node_modules/source-map/README.md
 ./node_modules/split2/README.md
-./node_modules/sprintf-js/CHANGELOG.md
-./node_modules/sprintf-js/CONTRIBUTORS.md
-./node_modules/sprintf-js/README.md
 ./node_modules/stack-trace/Readme.md
 ./node_modules/stack-utils/LICENSE.md
 ./node_modules/stack-utils/node_modules/escape-string-regexp/readme.md
@@ -3384,6 +3411,7 @@ Total markdown files: 3531
 ./node_modules/thirty-two/README.md
 ./node_modules/thread-stream/CLAUDE.md
 ./node_modules/thread-stream/README.md
+./node_modules/tinyexec/README.md
 ./node_modules/tinyglobby/README.md
 ./node_modules/tmpl/readme.md
 ./node_modules/to-regex-range/README.md
@@ -3442,6 +3470,7 @@ Total markdown files: 3531
 ./node_modules/vm2/LICENSE.md
 ./node_modules/vm2/README.md
 ./node_modules/walker/readme.md
+./node_modules/web-streams-polyfill/README.md
 ./node_modules/which/CHANGELOG.md
 ./node_modules/which/README.md
 ./node_modules/winston-transport/CHANGELOG.md
@@ -3493,6 +3522,7 @@ Total markdown files: 3531
 ./reports/PRODUCTION_FULL_VALIDATION_REPORT.md
 ./reports/archived_high_conf_nonprod_1779517012.md
 ./reports/archived_mocks_1779516622.md
+./reports/biometric_audit.md
 ./reports/mock_and_stub_audit.md
 ./reports/nonprod_fix_report_1779516805.md
 ./reports/nonproduction_candidates.md
@@ -3509,13 +3539,15 @@ Total markdown files: 3531
 ./scripts/templates/README_template.sw.md
 ./scripts/wallets/PRODUCTION_RUNBOOK.md
 ./scripts/wallets/README.md
-./src/components/q-city/PRODUCTION_STATUS.md
-./src/components/q-city/production_STATUS.md
+./src/app/api/qmoi/self-work/code-review/tradingandothers.md
+./src/assets/icons/apps/README.md
+./src/qcity/PRODUCTION_STATUS.md
 ./tools/WORKSPACEGENERAL.updates.md
 ./tools/allrefs_summary.md
 ./tools/autotest_report.md
 ./tools/dns_fix_summary.md
 ./tools/dns_links_report.md
+./tools/icon-manager/README.md
 ./tools/light_index.md
 ./tools/link_check_ci.md
 ./tools/link_fix_actions.md

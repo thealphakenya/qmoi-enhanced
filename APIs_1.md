@@ -2,9 +2,39 @@
 Generated: 2026-05-19T00:00:00.000000Z
 **Production Audit:** ✅ Reviewed May 19, 2026 — internal developer-only API routes are excluded from the documented production surface.
 **Production Readiness Scan:** ✅ Completed May 19, 2026 — all actual Markdown files now indexed in ALLMDFILESREFS.md.
-**Total Indexed Markdown Files:** 3530
+**Total Indexed Markdown Files:** 3559
 Total API Route Handlers: 266
 Legacy route source files in `app/api/`: 266 (legacy compatibility endpoint handlers and helper/config files)
+**Local API Markdown Files Included:**
+- .evolution_logs/API_DOCUMENTATION.md
+- AI_API_AUTHENTICATION_GUIDE.md
+- API.md
+- API_1.md
+- API_AUTO_UPDATE_GUIDELINES.md
+- API_COMPREHENSIVE.md
+- API_DOCUMENTATION_COMPLETENESS.md
+- API_DOCUMENTATION_INDEX.md
+- API_ENDPOINTS_COMPLETE_AUDIT.md
+- API_ENDPOINTS_REFERENCE.md
+- API_IMPLEMENTATION_EXAMPLES.md
+- API_INTEGRATION_GUIDE.md
+- API_REFERENCE.md
+- APIs_1.md
+- APIs_v1.md
+- BACKEND_API_TEMPLATES.md
+- MONITORING_API_DOCS.md
+- PRODUCTION_API_REFERENCE.md
+- QMOIAPIKEYREADME.md
+- QMOI_APIS_WEBHOOKS_ENDPOINTS.md
+- QMOI_PRODUCTION_API.md
+- Q_API_KEY_COMPREHENSIVE.md
+- RSAAPIREADME.md
+- UNUSED_API_ENDPOINTS.md
+- docs/API.md
+- docs/API_AUDIT.md
+- docs/API_ENHANCEMENTS_PLAN.md
+- docs/API_REFERENCE.md
+- docs/APIs_v1.md
 
 ## Verified production PWA Route Mapping
 - `app/qmoi-ai/page.tsx` is a live QMOI AI Next.js page delivering the full interactive AI dashboard.
@@ -13,6 +43,8 @@ Legacy route source files in `app/api/`: 266 (legacy compatibility endpoint hand
 - `/q-alpha.html` and `/pwa_apps/q-alpha/` are the static Q Alpha aggregator shell entry points, consolidating QMOI AI, QMOI Space, and QCity.
 - `app/qalpha/page.tsx` now delegates to `src/components/qalpha/QAlphaShell.tsx` for the alpha dashboard shell.
 - `app/qvillage/page.tsx` now delegates to `src/components/qvillage/QVillageShell.tsx` for the community workspace experience.
+- A universal auth portal is implemented at `/universal` with auto-channel redirect support for `/qmoi-ai`, `/qmoi-space`, `/qcity`, `/qvillage`, and `/qalpha`.
+- Universal auth endpoints are documented in `ENDPOINTS.md` and include `/api/auth/me`, `/api/auth/login`, `/api/auth/register`, `/api/auth/logout`, `/api/auth/forgot-password`, `/api/auth/forgot-email`, `/api/auth/reset-password`, `/api/auth/verify-email`, `/api/auth/refresh`, `/api/auth/webauthn/register`, and `/api/auth/webauthn/authenticate`.
 - All app shells now use the shared `AppShellHeader` wrapper and centralized icons from `src/assets/icons/apps/` for consistent branding.
 - `app/api/qmoi-model/route.ts` and `app/api/qmoi/chat/route.ts` provide legacy compatibility route references for the QMOI model and chat backend; active production implementations are maintained in `src/app/api/`.
 - `app/qcity/page.tsx` and `app/qvillage/page.tsx` are role-aware, page-level UI routes using `app/hooks/useAuth.ts`.

@@ -1,12 +1,16 @@
 "use client";
 
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useMemo } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useAuth } from "@/app/hooks/useAuth";
+import { persistUserToStorage } from "@/app/lib/auth/persistence";
 import { log as logger } from "@/lib/logger";
 import { AppShellHeader } from "@/components/shared/ui";
-import QCityThemeProvider from "@/components/QCityThemeProvider";
+import QCityThemeProvider from "@/app/components/QCityThemeProvider";
+import { RoleGate } from "@/src/components/auth/RoleGate";
+import { getRoleStyles, getRoleGreeting, getRoleButtonStyle } from "@/lib/rbac/roleStyles";
+import { getAccessibleFeatures } from "@/lib/rbac/roleFeatures";
 import QMOIDashboard from "./dashboards/QMOIDashboard";
 import DevicesHub from "./DevicesHub";
 import MetricsPanel from "./MetricsPanel";
@@ -26,14 +30,21 @@ export default function QCityShell() {
       ? "min-h-screen bg-black text-white"
       : "min-h-screen bg-slate-950 text-white";
 
+  const roleStyles = useMemo(() => getRoleStyles(user.role), [user.role]);
+  const accessibleFeatures = useMemo(
+    () => getAccessibleFeatures("qcity", user.role),
+    [user.role],
+  );
+
   const handleLoginAsMaster = useCallback(async () => {
     try {
       await login?.("master");
-      logger.info("QCity master upgrade requested");
+      persistUserToStorage(user);
+      logger.info("QCity master upgrade requested", { userId: user?.id });
     } catch (error) {
       logger.error("QCity master upgrade failed", error as any);
     }
-  }, [login]);
+  }, [login, user]);
 
   const handleLogout = useCallback(async () => {
     try {
@@ -86,6 +97,7 @@ export default function QCityShell() {
           tagline="Unified command center for QMOI operations with live role-aware dashboards and secure enterprise controls."
           iconKey="qcity"
           accentColor="#06b6d4"
+          statusMessage={`Session status: ${isAuthenticated ? "Authenticated" : "Guest"} • Role: ${user?.role || "guest"}`}
         />
         <section className="rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 p-8 border border-slate-700 shadow-xl">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">

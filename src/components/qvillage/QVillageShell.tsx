@@ -108,6 +108,7 @@ export default function QVillageShell() {
           tagline="Community datasets and collaborative AI model deployment hub with role-aware access."
           iconKey="qvillage"
           accentColor="#22c55e"
+          statusMessage={`Session status: ${isAuthenticated ? "Authenticated" : "Guest"} • Role: ${user?.role || "guest"}`}
         />
         <section className="rounded-3xl bg-slate-900 p-8 border border-slate-700 shadow-xl">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -129,13 +130,13 @@ export default function QVillageShell() {
             {!isAuthenticated ? (
               <>
                 <button
-                  onClick={() => window.location.assign('/admin/master/login')}
+                  onClick={() => window.location.assign('/universal?redirect=/qvillage&mode=signin')}
                   className="rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-500"
                 >
                   Log in
                 </button>
                 <button
-                  onClick={() => window.location.assign('/register')}
+                  onClick={() => window.location.assign('/universal?redirect=/qvillage&mode=register')}
                   className="rounded-xl border border-slate-700 px-4 py-2 text-sm font-semibold text-white/90"
                 >
                   Register

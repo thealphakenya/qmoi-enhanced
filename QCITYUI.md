@@ -59,6 +59,12 @@ QCity is a React-based dashboard application providing command center functional
 - **Accessibility:** Clear status labels, button contrast, and support for keyboard navigation in form controls and action buttons.
 - **Responsive UI:** Wide command center layout gracefully collapses for mobile usage while preserving key operational panels.
 
+## Theme Selection
+- QCity must expose the shared `ThemeSelector` component so users can choose `dark`, `light`, or `high-contrast` themes.
+- Theme changes must persist across user session state and auto-channel redirects through `/universal`.
+- Theme state should be applied uniformly to status cards, incident panels, and command center overlays.
+- High-contrast mode must preserve readability for alerts and operational dashboards.
+
 ---
 
 ## App Overview

@@ -27,5 +27,11 @@
 - Authentication: QVillage uses the shared auth system (`app/hooks/useAuth.ts`) and provides login/register/logout entry points. For production the UI expects `/api/auth/me`, `/api/auth/logout`, `/api/auth/login`, and `/api/auth/register` endpoints.
 - QVillage is now part of the universal auth guard flow. Unauthenticated visitors to `/qvillage` are redirected to `/universal?redirect=/qvillage`, and validated users are auto-channeled back to the community shell.
 
+## Theme Selection
+- QVillage must expose the shared `ThemeSelector` so users can choose `dark`, `light`, or `high-contrast` modes.
+- Theme selection should persist between sessions and across page transitions.
+- The selected theme should be applied to dataset cards, model registry panels, and marketplace controls.
+- Theme changes should persist even when the user is redirected through the universal auth portal.
+
 ## Next work
 - Ensure legacy `components/QVillage.tsx` and `components/q-city/QVillage.tsx` are either delegated to the canonical shell or their unique logic is migrated into `src/components/qvillage`.

@@ -263,7 +263,7 @@ export const authService = {
       return { success: false, message: 'Biometric profile not found', error: 'PROFILE_NOT_FOUND' };
     }
 
-    const captureRecords = profile.biometricProfile.captures.filter((capture) => capture.method === method && capture.verified === true);
+    const captureRecords = profile.biometricProfile.captures.filter((capture: any) => capture.method === method && capture.verified === true);
     if (captureRecords.length < 1) {
       return { success: false, message: 'No enrolled biometric captures found', error: 'BIOMETRIC_NOT_ENROLLED' };
     }
@@ -313,6 +313,86 @@ export const authService = {
     } catch (e) {
       return { ok: false, error: String(e) };
     }
+  },
+
+  verifyRefreshToken: (token: string) => {
+    try {
+      const payload = jwt.verify(token, JWT_REFRESH_SECRET) as any;
+      if (payload?.type !== 'refresh') {
+        return { ok: false, error: 'INVALID_REFRESH_TOKEN' };
+      }
+      return { ok: true, payload };
+    } catch (e) {
+      return { ok: false, error: String(e) };
+    }
+  },
+
+  refreshTokens: async (refreshToken: string) => {
+    const verified = authService.verifyRefreshToken(refreshToken);
+    if (!verified.ok) {
+      return { success: false, message: 'Invalid refresh token', error: verified.error };
+    }
+
+    const payload = verified.payload;
+    const userId = payload?.userId;
+    const sessionId = payload?.sessionId;
+
+    if (!userId || !sessionId) {
+      return { success: false, message: 'Invalid refresh payload', error: 'MISSING_REFRESH_PAYLOAD' };
+    }
+
+    if (USE_DB) {
+      const session = await prisma.session.findUnique({
+        where: { id: sessionId } as any,
+      });
+
+      if (!session || !session.isActive || session.expiresAt <= new Date()) {
+        return { success: false, message: 'Refresh session is expired or invalid', error: 'SESSION_EXPIRED' };
+      }
+
+      const user = await prisma.user.findUnique({
+        where: { id: userId },
+      });
+
+      if (!user) {
+        return { success: false, message: 'User not found for refresh', error: 'USER_NOT_FOUND' };
+      }
+
+      const permissions = user.permissions ? JSON.parse(user.permissions) : [];
+      const tokens = await authService.generateTokens(user.id, user.email, user.role, permissions);
+
+      return {
+        success: true,
+        tokens,
+        user: {
+          id: user.id,
+          email: user.email,
+          username: user.username,
+          fullName: `${user.firstName || ''} ${user.lastName || ''}`.trim(),
+          role: user.role,
+          permissions,
+        },
+      };
+    }
+
+    const fallback = authFallback.findUserByIdentifier(userId) || authFallback.findUserByUsername(userId);
+    if (!fallback) {
+      return { success: false, message: 'Fallback user not found for refresh', error: 'USER_NOT_FOUND' };
+    }
+
+    const tokens = await authService.generateTokens(fallback.userId, fallback.email, fallback.role, fallback.permissions);
+    return {
+      success: true,
+      tokens,
+      user: {
+        id: fallback.userId,
+        email: fallback.email,
+        username: fallback.username,
+        fullName: fallback.fullName,
+        role: fallback.role,
+        permissions: fallback.permissions,
+      },
+    };
   },
 
   verifyToken: (token: string) => {

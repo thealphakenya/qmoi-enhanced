@@ -115,6 +115,18 @@ export function useAuth(): UseAuthReturn {
   const [user, setUser] = useState<QmoiUser>(() => createFallbackUser("guest"));
   const [isLoading, setIsLoading] = useState(true);
 
+  const refreshAuthSession = useCallback(async () => {
+    try {
+      const refreshResponse = await fetch("/api/auth/refresh", {
+        method: "POST",
+        cache: "no-store",
+      });
+      return refreshResponse.ok;
+    } catch {
+      return false;
+    }
+  }, []);
+
   const loadUser = useCallback(async () => {
     if (typeof window === "undefined") return;
 
@@ -126,21 +138,30 @@ export function useAuth(): UseAuthReturn {
     setUser(createFallbackUser(role, persisted ?? undefined));
     setIsLoading(true);
 
-    try {
-      const response = await fetch("/api/auth/me", {
-        cache: "no-store",
-      });
+    const fetchUser = async () => {
+      try {
+        const response = await fetch("/api/auth/me", {
+          cache: "no-store",
+        });
+        if (!response.ok) return null;
+        const data = await response.json();
+        if (data?.success && data.user) return data.user;
+      } catch {
+        return null;
+      }
+      return null;
+    };
 
-      if (!response.ok) {
-        clearUserFromStorage();
-        clearAuthTokens();
-        setUser(createFallbackUser("guest"));
-        return;
+    try {
+      let serverUser = await fetchUser();
+      if (!serverUser) {
+        const refreshed = await refreshAuthSession();
+        if (refreshed) {
+          serverUser = await fetchUser();
+        }
       }
 
-      const data = await response.json();
-      if (data?.success && data.user) {
-        const serverUser = data.user;
+      if (serverUser) {
         const resolvedRole = (serverUser.role as UserRole) || role;
         const resolvedProfile = roleProfiles[resolvedRole] || roleProfiles.guest;
         const displayName =
@@ -170,7 +191,7 @@ export function useAuth(): UseAuthReturn {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [refreshAuthSession]);
 
   useEffect(() => {
     loadUser();
