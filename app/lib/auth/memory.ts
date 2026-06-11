@@ -18,4 +18,5 @@ export async function logAuthEvent(payload: { userId?: string; role?: string; di
   }
 }
 
+export { qmoiMemoryService } from "../../../lib/auth/memory";
 export default logAuthEvent;

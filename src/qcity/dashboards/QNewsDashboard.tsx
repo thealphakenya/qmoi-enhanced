@@ -1,5 +1,5 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { log as logger } from "@/lib/logger";
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -7,6 +7,54 @@ import { log as logger } from "@/lib/logger";
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 import { buildMasterHeaders, readMasterToken } from '@/app/lib/auth/master';
+
+// UI Components - placeholder type definitions
+interface Card { }
+interface CardHeader { }
+interface CardContent { }
+interface Typography { }
+interface TextField { }
+interface Button { }
+interface Notification { }
+
+const Card = ({ children }: { children: React.ReactNode }) => (
+  <div style={{ border: '1px solid #ddd', borderRadius: 4, padding: 12, margin: 8 }}>{children}</div>
+);
+const CardHeader = ({ children }: { children: React.ReactNode }) => (
+  <div style={{ borderBottom: '1px solid #eee', paddingBottom: 8, marginBottom: 8 }}>{children}</div>
+);
+const CardContent = ({ children }: { children: React.ReactNode }) => (
+  <div>{children}</div>
+);
+const Typography = ({ children, variant }: { children: React.ReactNode; variant?: string }) => {
+  const style = variant === 'h6' ? { fontSize: 18, fontWeight: 600 } : { fontSize: 14 };
+  return <div style={style}>{children}</div>;
+};
+const TextField = ({ value, onChange, placeholder }: any) => (
+  <input
+    type="text"
+    value={value}
+    onChange={(e) => onChange(e.target.value)}
+    placeholder={placeholder}
+    style={{ padding: 8, border: '1px solid #ccc', borderRadius: 4, width: '100%', marginBottom: 8 }}
+  />
+);
+const Button = ({ children, onClick }: any) => (
+  <button
+    onClick={onClick}
+    style={{
+      padding: '8px 16px',
+      background: '#1976d2',
+      color: '#fff',
+      border: 'none',
+      borderRadius: 4,
+      cursor: 'pointer',
+      margin: '4px 4px 4px 0',
+    }}
+  >
+    {children}
+  </button>
+);
 
 interface NewsItem {
   id: number;

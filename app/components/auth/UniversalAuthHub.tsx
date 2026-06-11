@@ -8,7 +8,7 @@ import {
   persistParallelSessions,
   readPersistedPrivacyMask,
   readPersistedParallelSessions,
-} from "@/app/lib/auth/persistence";
+} from "../../lib/auth/persistence";
 import AuthStatusCard from "./AuthStatusCard";
 import ForgotEmailForm from "./ForgotEmailForm";
 import LoginForm from "./LoginForm";
@@ -33,7 +33,11 @@ export default function UniversalAuthHub() {
   const [message, setMessage] = useState<string | null>(null);
   const router = useRouter();
   const searchParams = useSearchParams();
+  const queryApp = searchParams ? searchParams.get("app")?.trim() || "" : "";
   const redirectPath = searchParams ? searchParams.get("redirect")?.trim() || "" : "";
+  const effectiveRedirect =
+    redirectPath ||
+    (queryApp ? `/${queryApp.replace(/^\/+/, "")}` : "/qcity");
   const queryMode = searchParams ? (searchParams.get("mode") as AuthMode | null) : null;
 
   useEffect(() => {
@@ -43,10 +47,10 @@ export default function UniversalAuthHub() {
   }, [queryMode]);
 
   useEffect(() => {
-    if (isAuthenticated && redirectPath) {
-      router.replace(redirectPath);
+    if (isAuthenticated && effectiveRedirect) {
+      router.replace(effectiveRedirect);
     }
-  }, [isAuthenticated, redirectPath, router]);
+  }, [isAuthenticated, effectiveRedirect, router]);
 
   useEffect(() => {
     setPrivacyMask(readPersistedPrivacyMask());

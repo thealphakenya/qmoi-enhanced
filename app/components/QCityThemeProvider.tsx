@@ -1,23 +1,30 @@
-import React from 'react';
+"use client";
+
+import { useMemo } from "react";
+import { useTheme } from "next-themes";
+import ThemeSelector from "@/components/theme/ThemeSelector";
+
 export default function QCityThemeProvider() {
+  const { theme, resolvedTheme } = useTheme();
+  const activeTheme = useMemo(
+    () => (theme === "system" ? resolvedTheme || "dark" : theme || "dark"),
+    [theme, resolvedTheme]
+  );
+
   return (
     <div className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
-      <h3 className="text-xl font-semibold mb-3">QCity Theme Provider</h3>
-      <p className="text-slate-400 mb-4">QCity-specific theme control and visual customization.</p>
-      <div className="space-y-3">
-        <div className="flex justify-between items-center">
-          <span className="text-slate-300">Theme Mode</span>
-          <span className="text-cyan-400">Dark</span>
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h3 className="text-xl font-semibold">QCity Theme Control</h3>
+          <p className="text-slate-400 mt-2">Universal theme control used by QCity and all registered QMOI shells.</p>
         </div>
-        <div className="flex justify-between items-center">
-          <span className="text-slate-300">Accent Color</span>
-          <span className="text-cyan-400">Cyan</span>
-        </div>
-        <div className="flex justify-between items-center">
-          <span className="text-slate-300">Layout Density</span>
-          <span className="text-slate-300">Comfortable</span>
+        <div className="rounded-3xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-slate-200">
+          <p className="font-semibold">Active Theme</p>
+          <p className="mt-1 text-slate-300">{activeTheme}</p>
         </div>
       </div>
+
+      <ThemeSelector />
     </div>
   );
 }

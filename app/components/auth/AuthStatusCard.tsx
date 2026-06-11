@@ -1,6 +1,6 @@
 "use client";
 
-import type { QmoiUser } from "@/hooks/useAuth";
+import type { QmoiUser } from "@/app/hooks/useAuth";
 
 interface AuthStatusCardProps {
   user: QmoiUser;

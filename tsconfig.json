@@ -33,21 +33,25 @@
     "ignoreDeprecations": "6.0",
     "paths": {
       "@/*": [
-        "./*",
-        "./src/*"
+        "./app/*",
+        "./src/*",
+        "./*"
       ],
       "@/utils/*": [
+        "./app/utils/*",
         "./src/utils/*",
         "./utils/*"
       ],
       "@/components/*": [
-        "./components/*",
-        "./src/components/*"
+        "./app/components/*",
+        "./src/components/*",
+        "./components/*"
       ],
       "@/app/*": [
         "./app/*"
       ],
       "@/services/*": [
+        "./app/services/*",
         "./src/services/*",
         "./services/*"
       ],
@@ -55,10 +59,12 @@
         "./src/adapters/*"
       ],
       "@/hooks/*": [
-        "./hooks/*",
-        "./src/hooks/*"
+        "./app/hooks/*",
+        "./src/hooks/*",
+        "./hooks/*"
       ],
       "@/lib/*": [
+        "./app/lib/*",
         "./src/lib/*",
         "./lib/*"
       ]

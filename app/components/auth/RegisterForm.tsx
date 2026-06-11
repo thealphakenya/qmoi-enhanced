@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { persistUserToStorage, persistAuthTokens } from "@/lib/auth/persistence";
+import { persistUserToStorage, persistAuthTokens } from "../../lib/auth/persistence";
 
 interface RegisterFormProps {
   onRegister?: (user: any) => void;

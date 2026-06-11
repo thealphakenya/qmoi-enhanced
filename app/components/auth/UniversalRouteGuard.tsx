@@ -13,7 +13,7 @@ export default function UniversalRouteGuard({ children }: UniversalRouteGuardPro
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  const redirectPath = searchParams.get("redirect") || pathname || "/";
+  const redirectPath = searchParams?.get("redirect") || pathname || "/";
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {

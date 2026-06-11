@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ErrorBoundary from '@/components/ErrorBoundary';
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -33,7 +33,6 @@ const initialApps = [
 const getRandomInt = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 export default function QMoiToolbar(): any {
-  try {
   const [visible, setVisible] = useState(true);
   const [theme, setTheme] = useState("dark");
   const [apps, setApps] = useState(initialApps);
@@ -50,28 +49,28 @@ export default function QMoiToolbar(): any {
             return { app, status: new Date().toLocaleTimeString() };
           }
           if (app.name === "QWhatsApp") {
-             unread count
+            // unread count
             return { app, status: `${getRandomInt(0, 5)} unread` };
           }
           if (app.name === "QAutoDev") {
-             health status
+            // health status
             const health = ["healthy", "warning", "error"][getRandomInt(0, 2)];
             return { app, status: health };
           }
           if (app.name === "QWifi") {
-             WiFi status
+            // WiFi status
             const wifi = ["connected", "disconnected", "connecting"][
               getRandomInt(0, 2)
             ];
             return { app, status: wifi };
           }
           if (app.name === "QBluetooth") {
-             Bluetooth status
+            // Bluetooth status
             const bt = ["on", "off", "pairing"][getRandomInt(0, 2)];
             return { app, status: bt };
           }
           if (app.name === "QDevice") {
-             device health
+            // device health
             const health = ["optimized", "needs attention", "updating"][
               getRandomInt(0, 2)
             ];
@@ -83,7 +82,7 @@ export default function QMoiToolbar(): any {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-   advanced notifications
+  // advanced notifications
   useEffect(() => {
     const interval = setInterval(() => {
       const n = getRandomInt(0, 10);
@@ -130,9 +129,10 @@ export default function QMoiToolbar(): any {
     }, 9000);
     return () => clearInterval(interval);
   }, []);
+
   /**
- * openApp function
- */
+   * openApp function
+   */
 function openApp(appName: string): any {
     const notif: Notification = {
       type: "info",
@@ -143,10 +143,11 @@ function openApp(appName: string): any {
     setNotificationHistory((h) => [notif, h].slice(0, 20));
     setTimeout(() => setNotification(null), 2000);
   }
+
   /**
- * showContextMenu function
- */
-function showContextMenu(e: React.MouseEvent, appName: string): any {
+   * showContextMenu function
+   */
+  function showContextMenu(e: React.MouseEvent, appName: string): any {
     e.preventDefault();
     if (appName === "QWifi") {
       setNotification({
@@ -205,17 +206,19 @@ function showContextMenu(e: React.MouseEvent, appName: string): any {
     });
     setTimeout(() => setNotification(null), 2000);
   }
+
   /**
- * handleAction function
- */
-function handleAction(notif: Notification): any {
+   * handleAction function
+   */
+  function handleAction(notif: Notification): any {
     if (notif.onAction) notif.onAction();
   }
-   WiFi connect
+
+  // WiFi connect
   /**
- * handleWifiConnect function
- */
-function handleWifiConnect(): any {
+   * handleWifiConnect function
+   */
+  function handleWifiConnect(): any {
     setNotification({
       type: "success",
       message: "WiFi connected!",
@@ -223,11 +226,12 @@ function handleWifiConnect(): any {
     });
     setTimeout(() => setNotification(null), 2000);
   }
-   Bluetooth connect
+
+  // Bluetooth connect
   /**
- * handleBluetoothConnect function
- */
-function handleBluetoothConnect(): any {
+   * handleBluetoothConnect function
+   */
+  function handleBluetoothConnect(): any {
     setNotification({
       type: "success",
       message: "Bluetooth connected!",
@@ -235,11 +239,12 @@ function handleBluetoothConnect(): any {
     });
     setTimeout(() => setNotification(null), 2000);
   }
-   device optimization
+
+  // device optimization
   /**
- * handleDeviceOptimization function
- */
-function handleDeviceOptimization(): any {
+   * handleDeviceOptimization function
+   */
+  function handleDeviceOptimization(): any {
     setNotification({
       type: "success",
       message: "Device optimized!",
@@ -247,11 +252,12 @@ function handleDeviceOptimization(): any {
     });
     setTimeout(() => setNotification(null), 2000);
   }
+
   // WhatsApp optimized reply
   /**
- * handleWhatsAppQuickReply function
- */
-function handleWhatsAppQuickReply(): any {
+   * handleWhatsAppQuickReply function
+   */
+  function handleWhatsAppQuickReply(): any {
     setNotification({
       type: "success",
       message: 'Smart reply sent: "On my way!" (Meta AI)',
@@ -259,11 +265,12 @@ function handleWhatsAppQuickReply(): any {
     });
     setTimeout(() => setNotification(null), 2000);
   }
+
   // QMap show map
   /**
- * handleMapShow function
- */
-function handleMapShow(): any {
+   * handleMapShow function
+   */
+  function handleMapShow(): any {
     setNotification({
       type: "success",
       message: "QMap opened: Showing live location and traffic.",
@@ -445,7 +452,7 @@ function handleMapShow(): any {
           onClick={() => setVisible(false)}
           style={{
             marginLeft: 12,
-            background: "none",
+            background: "none", 
             border: "none",
             color: "inherit",
             fontSize: 18,

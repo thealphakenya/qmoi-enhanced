@@ -4,7 +4,6 @@
  */
 
 import winston from 'winston';
-import { log as logger } from "@/lib/logger";
 
 // Initialize Winston logger with production settings
 const logger = winston.createLogger({
@@ -104,3 +103,4 @@ export const logApiError = (
 };
 
 export default logger;
+export { logger };

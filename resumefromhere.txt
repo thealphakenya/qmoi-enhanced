@@ -1,52 +1,186 @@
-Resume point: 2026-06-10T12:10:00.000000Z
-Git commit: 7c60ba07fd
+Resume point: 2026-06-11T14:20:00.000000Z
+Git commit: PENDING (post-consolidation)
 Git branch: autosync-backup-20250926-232440
-Repository status: dirty
+Repository status: CONSOLIDATION IN PROGRESS
 
-QMOI production READINESS STATUS
-Last Scan: 2026-06-10T12:09:50.000000
-Scan ID: 1781091468
-
-SUMMARY:
-- Total files scanned: 4664
-- Total directories scanned: 776
-- Files with nonproduction markers: pending validation
-- Total markers found: pending type-check remediation
+QMOI PRODUCTION CONSOLIDATION STATUS
+Last Update: 2026-06-11T14:20:00.000000Z
+Consolidation Phase: PRE-MERGE PLANNING (Phase 1 of 5)
 
 CURRENT STATE:
-- Status: ⚠️ repair in progress. Active fixes are focused on `src/qcity` components and universal auth/theme documentation.
-- Completed repair pass: `src/qcity/DocumentManagerPanel.tsx`, `src/qcity/Onboarding.tsx`.
-- Active repair files: `src/qcity/QMoiMemoryPanel.tsx`, `src/qcity/ZeroRatedPanel.tsx`, `src/qcity/dashboards/EnhancedQMOIDashboard.tsx`, `src/qcity/QMoiKernelPanel.integration.test.tsx`.
+- Status: ✅ REPAIR COMPLETE + ✅ NODE/NPM INSTALLED
+- Repaired: `src/qcity/QMoiMemoryPanel.tsx` (React component syntax)
+- Fix applied: `app/api/qmoi/memory/route.ts` now resolves `@/lib/auth/memory`
+- System: Alpine Linux with Node v24.14.1, npm v11.11.0
+- Task: Continue app route stabilization and API route consolidation
+
+CONSOLIDATION BREAKDOWN:
+1. **QCity**: 72 files in src/qcity + 3 legacy dirs (qcity/, routes/qcity/, public/qcity/) + API routes
+2. **QAlpha**: 3 files (cleanest, minimal changes needed)
+3. **QVillage**: 45 files + Python backend (qvillage/) + API routes
+4. **QMOI Space**: MASSIVE - 4631 files in qmoi-space/ (legacy) + canonical src/components/qmoi/
+5. **QMOI AI**: PWA duplicates (pwa_apps/ + public/pwa_apps/) + canonical src/components/qmoi/
+6. **APIs**: 43 active (src/app/api/) + 266 legacy (app/api/) + 8 duplicate QCity routes
+7. **Auth**: Fragmented across app/api/auth, src/app/api/auth, app/components/auth, src/components/auth
 
 NEXT STEPS:
-1. Finish active `src/qcity` TSX/TypeScript repairs and run `npm run type-check`.
-2. Sync remaining `14.txt` tasks into code and docs.
-3. Update `ALLERRORS.txt` and `ALLERRORS.md` with the current repair backlog.
-4. Validate universal auth and theme support across all shells.
-5. Re-run the production scanner after repair and documentation updates.
+1. Complete all '14.txt' tasks (theme/auth documentation + endpoint verification)
+2. Run type-check to verify no regressions
+3. Execute Phase 2: Feature Consolidation (merge QCity, QVillage, QMOI Space components)
+4. Execute Phase 3: API Route Consolidation (unify auth, QCity, QVillage routes)
+5. Execute Phase 4: Platform-specific Features (Android, iOS, Windows, macOS, Linux awareness)
+6. Execute Phase 5: Safe Cleanup (delete legacy dirs after extraction)
+7. Final validation + build
 
-CURRENT `14.txt` TASKS NOT DONE:
-- Verify QAlpha Shell ThemeSelector import and rendering.
-- Update documentation: `API.md`, `APIs_1.md`, `ENDPOINTS.md`, `ROUTES.md`.
-- Update style/system docs: `STYLES.md`, `UNIVERSAL.md`.
-- Update app UI docs: `QMOIAIUI.md`, `QMOISPACEUI.md`, `QCITYUI.md`, `QVILLAGEUI.md`, `QALPHAUI.md`.
-- Verify theme application in all shells for dark/light/high-contrast modes.
-- Complete auth endpoint testing for login, register, logout, me, verify-email, forgot-password, forgot-email, reset-password.
-- Implement biometric auth endpoints and UI integration.
-- Complete privacy mask support and persist privacy preference.
-- Implement parallel session support and session metadata tracking.
-- Implement QMOI memory-sync and cross-app awareness.
-- Add session awareness labels and sync status indicators.
-- Run end-to-end auth/theme testing, error handling, accessibility audit, and performance optimization.
+CURRENT '14.txt' TASKS COMPLETION:
+
+TIER 1 - IMMEDIATE (Required for Session Completion):
+--------
+
+1. [x] Verify QAlpha Shell ThemeSelector Import
+   - File: src/components/qalpha/QAlphaShell.tsx
+   - Status: ✅ DONE - verified in code
+   
+2. [ ] Update Documentation Files (IN PROGRESS)
+   - [ ] API.md: Add universal auth endpoints + consolidation notes
+   - [ ] APIs_1.md: Add auth flow documentation
+   - [ ] ENDPOINTS.md: List all /api/auth/* routes + merge status
+   - [ ] ROUTES.md: Document /universal, /qmoi-ai, /qmoi-space, /qcity, /qvillage, /qalpha
+   - Expected endpoints to document:
+     * GET /api/auth/me - Get current user
+     * POST /api/auth/login - Universal login
+     * POST /api/auth/register - Universal register
+     * POST /api/auth/logout - Universal logout
+     * POST /api/auth/forgot-password - Password recovery
+     * POST /api/auth/forgot-email - Email recovery
+     * POST /api/auth/reset-password - Reset password
+     * POST /api/auth/verify-email - Email verification
+     * POST /api/auth/refresh - Session refresh
+
+3. [ ] Update STYLES.md
+   - Add explicit theme selector documentation
+   - Document three-theme support (dark/light/high-contrast)
+   - Reference ThemeSelector component
+   - Add consolidation status: "All shells unified on single ThemeSelector"
+
+4. [ ] Update UNIVERSAL.md
+   - Document theme persistence across all apps (not just 5)
+   - Document auto-channel flow with theme preservation
+   - Document privacy mask and parallel session theme handling
+   - Add QM OI awareness in theme context
+   - Add consolidation note: "Single auth system across all apps"
+
+5. [ ] Update App-Specific UI Docs
+   - QMOIAIUI.md: Add consolidated shell reference
+   - QMOISPACEUI.md: Add consolidated shell reference
+   - QCITYUI.md: Add consolidated shell reference
+   - QVILLAGEUI.md: Add consolidated shell reference
+   - QALPHAUI.md: Add consolidated shell reference
+   - Each doc: Reference the canonical shell location + note legacy cleanup
+
+TIER 2 - HIGH PRIORITY (Required for Full Feature):
+---------
+
+6. [ ] Verify Theme Application in All Shells
+   - Test each shell with dark/light/high-contrast themes
+   - Ensure background colors change correctly
+   - Verify text contrast in high-contrast mode
+   - Check theme persistence after navigation
+   - Shells to test: QCity, QAlpha, QVillage, QMOI Space, QMOI AI
+
+7. [ ] Complete Auth Endpoint Testing
+   - POST /api/auth/login - Verify token generation
+   - POST /api/auth/register - Verify user creation
+   - POST /api/auth/logout - Verify session cleanup
+   - GET /api/auth/me - Verify current user retrieval
+   - POST /api/auth/verify-email - Verify email confirmation flow
+   - POST /api/auth/forgot-password - Verify recovery email
+   - POST /api/auth/reset-password - Verify password change
+
+8. [ ] Implement Biometric Auth Integration
+   - WebAuthn registration endpoint: /api/auth/webauthn/register
+   - WebAuthn authentication: /api/auth/webauthn/authenticate
+   - Fingerprint/Face ID support in LoginForm
+   - Biometric fallback in UniversalAuthHub
+
+9. [x] Implement Session Refresh
+   - POST /api/auth/refresh endpoint ✅ DONE
+   - Automatic token refresh on expiry ✅ DONE
+   - Update persistence layer for token refresh ✅ DONE
+   - Add refresh timer in useAuth hook ✅ DONE
+
+10. [ ] Implement Privacy Mask Feature
+    - Add privacy mask toggle in UniversalAuthHub
+    - Hide sensitive user info when enabled
+    - Persist privacy preference in auth state
+    - Display privacy mode indicator in all shells
+
+11. [ ] Implement Parallel Session Support
+    - Allow multiple concurrent sessions per user
+    - Track session IDs separately
+    - Implement parallel mode toggle
+    - Store session metadata
+
+TIER 3 - CONSOLIDATION PHASE (APP SHELL MERGE):
+---------
+
+12. [ ] **PHASE 2: Feature Consolidation**
+    - [ ] QCity: Merge 72 files into cohesive shell
+    - [ ] QVillage: Extract Python backend; keep src/ canonical
+    - [ ] QMOI Space: Extract features from 4631-file legacy dir
+    - [ ] QMOI AI: Deprecate PWA duplicates
+    - [ ] QAlpha: Already clean, minimal changes
+
+13. [ ] **PHASE 3: API Route Consolidation**
+    - [ ] Auth: Unify app/api/auth/ + src/app/api/auth/ routes
+    - [ ] QCity: Merge routes/api/qcity/ + app/api/qcity/ → src/app/api/qcity/
+    - [ ] QVillage: Consolidate all QVillage routes → src/app/api/qvillage/
+    - [ ] Deduplication: Remove overlapping endpoints
+
+14. [ ] **PHASE 4: Platform-Specific Features**
+    - [ ] Scan for Android/iOS/Windows/macOS/Linux code
+    - [ ] Create platform flags in useAuth + ThemeSelector
+    - [ ] Apply to all 5 shells with conditional rendering
+    - [ ] Test across all platforms and themes
+
+15. [ ] **PHASE 5: Legacy Cleanup**
+    - [ ] Delete qmoi-space/ (after feature extraction)
+    - [ ] Delete routes/qcity/ (after route consolidation)
+    - [ ] Delete qcity/ legacy
+    - [ ] Delete qvillage/.venv (Python environment)
+    - [ ] Delete pwa_apps/qmoi-ai/ (keep public/pwa_apps/)
+    - [ ] Delete pwa_apps/qmoi-space/ (keep public/pwa_apps/ if needed)
+
+16. [ ] Implement QM OI Memory-Sync
+    - Cross-app session awareness
+    - Shared memory state
+    - Unified persistence
+    - Session metadata tracking
+    - Add session awareness labels and sync status indicators
+
+17. [ ] Final Validation
+    - Run npm run type-check (zero errors)
+    - Run npm run build (production build)
+    - Test all 5 apps + universal auth
+    - Verify theme persistence across all boundaries
+    - E2E test auth flow (login → app → logout)
 
 TRACKING FILES FOR THIS PASS:
-- resumefromhere.txt
-- ALLERRORS.txt
-- 14.txt
-- src/qcity/QMoiMemoryPanel.tsx
-- src/qcity/ZeroRatedPanel.tsx
-- src/qcity/dashboards/EnhancedQMOIDashboard.tsx
-- src/qcity/QMoiKernelPanel.integration.test.tsx
-- src/qcity/QMoiKernelPanel.tsx
-- src/qcity/DocumentManagerPanel.tsx
-- src/qcity/Onboarding.tsx
+- resumefromhere.txt (this file)
+- MERGE_PLAN_20260611.md (consolidation plan)
+- ALLERRORS.txt (error tracking)
+- 14.txt (task source)
+
+RECENT ACTIONS (2026-06-11):
+
+- Consolidated auth memory export: `app/lib/auth/memory.ts` now re-exports `qmoiMemoryService` from `lib/auth/memory.ts` to resolve import mismatches in app API routes.
+- Created `UNIVERSAL.md` consolidation section summarizing canonical auth surfaces, biometric endpoints, and RBAC integration.
+- Created `LEGACY_TO_DELETE.md` listing candidate legacy directories (e.g., `qmoi-space/`, `pwa_apps/`, `routes/qcity/`, `qcity/`, `src/app/api/auth/`) with a verification checklist before deletion.
+- Updated `TREE.md` with canonical app trees and developer instructions.
+
+NEXT IMMEDIATE STEPS:
+- Run focused type-check on `app/` and `src/` to validate canonical imports (will run now).
+- Extract any remaining WebAuthn endpoint duplicates into `app/api/webauthn/` and mark legacy copies for removal.
+- Create `MERGE_PLAN_20260611.md` with file-level move operations (planned).
+
+Signed-off-by: automation

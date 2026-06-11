@@ -241,3 +241,44 @@ API endpoints and UI components respond contextually to the user's role:
 - 2026-06-10: Added implementation details for RoleGate component and RBAC system.
 - 2026-06-09: Created universal auth and auto-channel reference.
 - 2026-06-09: Added cross-shell route guard and redirect behavior documentation.
+
+## Consolidation & Merge Status (automated inventory)
+
+Summary: auth-related code has been consolidated so the universal portal (`/universal`) is the primary surface for all authentication, biometric registration, and session management. The following files and endpoints are part of the canonical universal auth surface (or adapters/re-exports pointing to canonical implementations):
+
+- Client-side components and hooks:
+  - `app/components/auth/UniversalAuthHub.tsx`
+  - `app/components/auth/UniversalRouteGuard.tsx`
+  - `app/components/auth/LoginForm.tsx`
+  - `app/components/auth/RegisterForm.tsx`
+  - `app/components/auth/ForgotEmailForm.tsx`
+  - `app/components/auth/ResetPasswordForm.tsx`
+  - `app/components/auth/AuthStatusCard.tsx`
+  - `app/hooks/useAuth.ts` (session handling, refresh, persistence, `hasAccess()`)
+  - `app/lib/auth/persistence.ts` (storage helpers)
+
+- Server-side memory & logging:
+  - `lib/auth/memory.ts` — canonical `qmoiMemoryService` and `logAuthEvent`
+  - `app/lib/auth/memory.ts` — client re-export + browser `logAuthEvent` adapter (posts to `/api/auth/memory`)
+
+- API routes (canonical targets):
+  - `app/api/auth/*` — primary auth endpoints (login, register, logout, refresh, verify-email, reset-password)
+  - `app/api/qmoi/memory/route.ts` — memory endpoints using `qmoiMemoryService`
+  - WebAuthn endpoints referenced in docs: `/api/webauthn/register`, `/api/webauthn/authenticate` (check `src/lib/webauthn.ts` and `app/api/webauthn/*` for implementations)
+
+- Role + RBAC:
+  - `lib/rbac/roleFeatures.ts`
+  - `lib/rbac/roleStyles.ts`
+  - `src/components/auth/RoleGate.tsx`
+
+Consolidation notes:
+- `qmoiMemoryService` now has a clear canonical source at `lib/auth/memory.ts` and is re-exported for app routes via `app/lib/auth/memory.ts` to avoid import resolution conflicts while we migrate duplicate code.
+- The universal portal is the single source for biometric enrollment and fallback flows; biometric endpoints are documented and should be routed through `app/api/auth/webauthn/*` or `app/api/webauthn/*` as the canonical API surface.
+- Client-side `useAuth` is the canonical hook; shells should import `useAuth` from `app/hooks/useAuth.ts` and not maintain independent session implementations.
+
+Next steps (recommended):
+- Review and confirm WebAuthn endpoint implementations under `app/api/` or `src/lib/webauthn.ts` and mark any legacy copies for removal.
+- Replace legacy `src/components/auth/*` imports with `app/components/auth/*` or canonical `src/components/...` that forward to the universal flow.
+- Run focused type-check on `app/` and `src/` to catch unresolved duplicates before deleting legacy directories.
+
+This section will be updated after the cleanup phase and E2E verification.

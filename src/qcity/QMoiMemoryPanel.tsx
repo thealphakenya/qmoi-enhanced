@@ -1,46 +1,81 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:25Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-export default function QMoiMemoryPanel(): any {
-  try {({
-  isMaster = false,
-}: {
+"use client";
+
+import React, { useEffect, useState } from "react";
+import apiClient from "@/api/client";
+
+interface QMoiMemoryPanelProps {
   isMaster?: boolean;
-}) {
-  const [memory, setMemory] = useState<any>(null);
+}
+
+interface MemoryData {
+  personality?: Record<string, unknown>;
+  master_feedback?: Array<unknown>;
+  history?: Array<{ input?: string; emotion?: string }>;
+}
+
+export default function QMoiMemoryPanel({ isMaster = false }: QMoiMemoryPanelProps): React.ReactElement | null {
+  const [memory, setMemory] = useState<MemoryData | null>(null);
   const [feedback, setFeedback] = useState("");
   const [correction, setCorrection] = useState("");
   const [message, setMessage] = useState("");
-  async function fetchMemory(): Promise<any> {
-    const res = await apiClient.get("/api/qmoi/memory");
-    if (res.ok) setMemory(await res.json());
+  const [loading, setLoading] = useState(true);
+
+  async function fetchMemory(): Promise<void> {
+    try {
+      const res = await apiClient.get("/api/qmoi/memory");
+      if (res.ok) {
+        setMemory(await res.json());
+      }
+    } catch (error) {
+      console.error("Failed to fetch memory:", error);
+    } finally {
+      setLoading(false);
+    }
   }
-  async function submitFeedback(): Promise<any> {
-    const res = await apiClient.get("/api/qmoi/feedback", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        feedback,
-        correction: correction ? { custom: correction } : undefined,
-      }),
-    });
-    if (res.ok) {
-      setMessage("Feedback submitted!");
-      fetchMemory();
-    } else {
+
+  async function submitFeedback(): Promise<void> {
+    try {
+      const res = await apiClient.post("/api/qmoi/feedback", {
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          feedback,
+          correction: correction ? { custom: correction } : undefined,
+        }),
+      });
+      if (res.ok) {
+        setMessage("Feedback submitted!");
+        fetchMemory();
+      } else {
+        setMessage("Error submitting feedback.");
+      }
+    } catch (error) {
+      console.error("Feedback submission failed:", error);
       setMessage("Error submitting feedback.");
     }
   }
-  async function backupMemory(): Promise<any> {
-    const res = await apiClient.get("/api/qmoi/memory-backup");
-    if (res.ok) setMessage("Memory backup created!");
-    else setMessage("Backup failed.");
+
+  async function backupMemory(): Promise<void> {
+    try {
+      const res = await apiClient.get("/api/qmoi/memory-backup");
+      if (res.ok) {
+        setMessage("Memory backup created!");
+      } else {
+        setMessage("Backup failed.");
+      }
+    } catch (error) {
+      console.error("Backup failed:", error);
+      setMessage("Backup failed.");
+    }
   }
+
   useEffect(() => {
-    if (isMaster) fetchMemory();
+    if (isMaster) {
+      fetchMemory();
+    }
   }, [isMaster]);
+
   if (!isMaster) return null;
+
   return (
     <div
       style={{
@@ -53,7 +88,9 @@ export default function QMoiMemoryPanel(): any {
       }}
     >
       <h3>QMOI Memory & Personality</h3>
-      {memory ? (
+      {loading ? (
+        <p>Loading...</p>
+      ) : memory ? (
         <>
           <p>
             <b>Personality:</b> {JSON.stringify(memory.personality)}
@@ -72,15 +109,15 @@ export default function QMoiMemoryPanel(): any {
             <b>Recent Interactions:</b>
           </p>
           <ul>
-            {(memory.history || []).slice(-5).map((h: unknown, i: number) => (
+            {(memory.history || []).slice(-5).map((h, i) => (
               <li key={i}>
-                {h.input} ({h.emotion})
+                {h.input || "No input"} ({h.emotion || "unknown"})
               </li>
             ))}
           </ul>
         </>
       ) : (
-        <p>Loading</p>
+        <p>No memory data available.</p>
       )}
       <div style={{ marginTop: 12 }}>
         <input
@@ -102,8 +139,5 @@ export default function QMoiMemoryPanel(): any {
       </div>
       {message && <p>{message}</p>}
     </div>
-  );  } catch (error) {
-    console.error?.('QMoiMemoryPanel.tsx render error:', error);
-    return null;
-  }
+  );
 }
