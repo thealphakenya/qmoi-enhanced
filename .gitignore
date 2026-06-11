@@ -51,6 +51,7 @@ __pycache__/
 
 # Large generated reports
 comprehensive_production_scan_report.json
+production_scan_*.json
 .Python
 build/
 develop-eggs/

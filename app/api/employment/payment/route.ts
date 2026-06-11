@@ -76,35 +76,91 @@ async function backupCredentialsSafe(credentials: any, platform: string): Promis
 }
 
 async function stkPush(payload: any): Promise<any> {
-  log.error("stkPush fallback invoked without production implementation", payload);
-  return {
-    success: false,
-    error: "stkPush not implemented in this environment",
-  };
+  log.info("stkPush invoked", payload);
+  if (
+    !PAYMENT_CREDENTIALS.mpesa.consumerKey ||
+    !PAYMENT_CREDENTIALS.mpesa.consumerSecret ||
+    !PAYMENT_CREDENTIALS.mpesa.passkey
+  ) {
+    log.error("M-Pesa credentials missing for stkPush", {
+      payload,
+      credentials: {
+        consumerKey: !!PAYMENT_CREDENTIALS.mpesa.consumerKey,
+        consumerSecret: !!PAYMENT_CREDENTIALS.mpesa.consumerSecret,
+        passkey: !!PAYMENT_CREDENTIALS.mpesa.passkey,
+      },
+    });
+    return {
+      success: false,
+      error: "stkPush unavailable in this environment",
+    };
+  }
+
+  try {
+    const response = await apiClient.post(
+      "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
+      {
+        BusinessShortCode: process.env.MPESA_SHORTCODE || "",
+        Password: process.env.MPESA_PASSKEY || "",
+        Timestamp: new Date().toISOString(),
+        TransactionType: "CustomerPayBillOnline",
+        Amount: payload.amount,
+        PartyA: payload.phoneNumber,
+        PartyB: process.env.MPESA_SHORTCODE || "",
+        PhoneNumber: payload.phoneNumber,
+        CallBackURL: `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/api/mpesa/callback`,
+        AccountReference: payload.accountReference || "",
+        TransactionDesc: payload.transactionDesc || "QMOI payment",
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.MPESA_ACCESS_TOKEN || ""}`,
+          "Content-Type": "application/json",
+        },
+      },
+    );
+    const result = await response.json().catch(() => ({}));
+    return result;
+  } catch (_error) {
+    log.error("stkPush request failed", _error);
+    return {
+      success: false,
+      error: "stkPush request failed",
+      details: _error,
+    };
+  }
 }
 
 async function processMpesaPayment(paymentData: unknown): Promise<any> {
+  const data = paymentData as any;
   try {
-    const amount = (paymentData as any)?.amount;
-    const phone =
-      (paymentData as any)?.mpesaNumber || (paymentData as any)?.phone;
+    const amount = data.amount;
+    const phone = data.mpesaNumber || data.phone;
+
     const res = await stkPush({
       phoneNumber: phone,
       amount,
-      accountReference: (paymentData as any)?.recipientId || "",
-      transactionDesc: (paymentData as any)?.description || "",
+      accountReference: data.recipientId || "",
+      transactionDesc: data.description || "M-Pesa payment",
     });
-    const ok = ((res as any)?.success ?? (res as any)?.ok) || false;
+
+    const ok =
+      (res as any)?.success === true ||
+      (res as any)?.status === "success" ||
+      (res as any)?.CheckoutRequestID != null;
+
     if (ok) {
       const payload = (res as any)?.payload || res;
       return {
         success: true,
         reference:
-          payload?.checkoutRequestId || payload?.responseDescription || null,
+          payload?.checkoutRequestId || payload?.CheckoutRequestID ||
+          payload?.MerchantRequestID || null,
         provider: "mpesa",
         details: res,
       };
     }
+
     return {
       success: false,
       error:
@@ -113,11 +169,12 @@ async function processMpesaPayment(paymentData: unknown): Promise<any> {
         "mpesa_initiation_failed",
       details: res,
     };
-  } catch (_error){
+  } catch (_error) {
     log.error("M-Pesa payment failed:", _error);
     return { success: false, _error: "M-Pesa payment failed" };
   }
 }
+
 async function processAirtelPayment(paymentData: unknown): Promise<any> {
   const data = paymentData as any;
   try {

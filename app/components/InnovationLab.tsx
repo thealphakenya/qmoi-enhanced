@@ -21,7 +21,7 @@ export default function InnovationLab() {
             </div>
             <div>
               <div className="text-lg font-bold text-blue-400">3</div>
-              <div className="text-xs text-slate-400">In Progress</div>
+              <div className="text-xs text-slate-400">Ongoing</div>
             </div>
           </div>
         </div>

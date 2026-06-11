@@ -1,9 +1,6 @@
-import ErrorBoundary from '@/components/ErrorBoundary';
 "use client";
-
 import React, { memo, useCallback, useEffect, useState } from "react";
 import { useQmoiKernel } from "@/hooks/useQmoiKernel";
-import { log as logger } from "@/lib/logger";
 
 export default memo(function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
   const { status, loading, error, lastAction, fetchStatus, runAction } = useQmoiKernel();
@@ -110,9 +107,6 @@ export default memo(function QMoiKernelPanel({ isMaster = false }: { isMaster?: 
     </div>
   );
 });
-
-  }
-}
 
 
 

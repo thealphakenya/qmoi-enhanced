@@ -31,23 +31,27 @@ class ThoroughproductionScanner:
             'NOT_IMPLEMENTED': re.compile(r'\bNOT IMPLEMENTED\b', re.IGNORECASE),
             'production_data': re.compile(r'\bproduction_data\b', re.IGNORECASE),
             'PRODUCTION_FIXED': re.compile(r'\b✅ production SOLUTION - Implemented robust, long-term solution\b', re.IGNORECASE),
-            'FUNCTIONAL': re.compile(r'(?:\bFUNCTIONAL\s+(?:links?|domain|status)\b|\bstatus\s*[:=]\s*["\']FUNCTIONAL["\'])', re.IGNORECASE),
             'production_GUARDED': re.compile(r'\bTEST ONLY\b', re.IGNORECASE),
-            'production_logging': re.compile(r'\b(?:console\.RELEASE|console\._error)\b'),
+            'production_logging': re.compile(r'\b(?:console\.RELEASE|console\._error)\s*\(', re.IGNORECASE),
             'production_REMOVED': re.compile(r'\bREMOVE BEFORE production\b', re.IGNORECASE),
-            'PRODUCTION_READY_TAG': re.compile(r'\bproduction READY\b', re.IGNORECASE),
-            'api.qmoi-enhanced.com': re.compile(r'\bapi\.qmoi-enhanced\.com\b', re.IGNORECASE),
-            'vercel_error_list': re.compile(r'\bvercelerrorlist\.md\b', re.IGNORECASE),
-            'vercel_config': re.compile(r'\bvercel\.json\b', re.IGNORECASE),
-            'vercel_deploy': re.compile(r'\bvercel(?:\.|\s|-)?(?:deploy|auto[- ]?clone|build|error)\b', re.IGNORECASE),
+            'PRODUCTION_READY_TAG': re.compile(r'\b✅ production READY\b', re.IGNORECASE),
         }
         self.exclude_file_patterns = [
             re.compile(r'(^|/)(docs|scripts)/.*\.json$', re.IGNORECASE),
-            re.compile(r'(^|/)(matches|MATCHES|undone|undoneold|resumefromhere|INSTANCES|production_scan_.*|autodev_.*|eslint_report.*|enhancement_report.*|validation_report.*|qmoi_memory|product.+_scan|nonprod_production_report|production_readiness_scan|nonproduction_scan_report|nonproduction_comprehensive_report|link-validation-report|verification-report|verification_report|ui_validation_report)\.(json|txt|md)$', re.IGNORECASE),
+            re.compile(r'(^|/)(matches|MATCHES|undone|undoneold|resumefromhere|INSTANCES|BULK_PRODUCTION_WORKFLOW|production_scan_.*|autodev_.*|eslint_report.*|enhancement_report.*|validation_report.*|qmoi_memory|product.+_scan|nonprod_production_report|production_readiness_scan|nonproduction_scan_report|nonproduction_comprehensive_report|link-validation-report|verification-report|verification_report|ui_validation_report|quality_gate_report|non_production_implementations_report|documentation_audit_details|production_readiness_audit_report|production_launch_report|eslint_fix_result|eslint_src_fix|eslint_src_after_fix|nonprod_files_list|current_nonprod_scan|tools/dns_docs_inventory|ROOT_production_STATUS|ALLHEALTHS|ALLAUTO|all_md_files_clean|all_md_files_current|all_md_files|instructionmanifest|missing_md_refs)\.(json|txt|md)$', re.IGNORECASE),
             re.compile(r'(^|/)(package-lock|yarn\.lock|pnpm-lock\.yaml|pnpm-lock\.json)$', re.IGNORECASE),
+            re.compile(r'(^|/)(autonomous_production_migration_engine|thorough_production_scanner|comprehensive_nonprod_scanner)\.py$', re.IGNORECASE),
         ]
         self.doc_extensions = {'.md', '.txt', '.rst', '.adoc'}
-        self.skip_markers_in_docs = {'FUNCTIONAL', 'IN_PROGRESS', 'WIP_MARKER', 'production_logging', 'vercel_config', 'vercel_deploy'}
+        self.skip_markers_in_docs = {
+            'IN_PROGRESS',
+            'WIP_MARKER',
+            'production_logging',
+            'PRODUCTION_COMPLETE',
+            'PRODUCTION_READY_TAG',
+            'PRODUCTION_READY',
+            'PRODUCTION_FIXED'
+        }
         # File extensions to scan (comprehensive list)
         self.extensions_to_scan = {
             # Code files

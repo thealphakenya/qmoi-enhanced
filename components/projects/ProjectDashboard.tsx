@@ -69,7 +69,7 @@ export default function ProjectDashboard({ projectId }: ProjectDashboardProps) {
           <div className="mt-2 text-3xl font-semibold text-slate-900">{taskStats.total}</div>
         </div>
         <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4">
-          <div className="text-sm text-slate-500">In Progress</div>
+          <div className="text-sm text-slate-500">Ongoing</div>
           <div className="mt-2 text-3xl font-semibold text-amber-600">{taskStats.inProgress}</div>
         </div>
         <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4">

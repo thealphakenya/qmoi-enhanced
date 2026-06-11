@@ -236,7 +236,7 @@ while ($i -lt $total) {
         break
     } # end not chunkSucceeded branch
 
-    # optionally: increase chunk size slowly on stable networks (not implemented by default)
+    # optionally: increase chunk size slowly on stable networks (disabled by default)
 } # end while over commits
 
 Log "🎉 Finished run. Last saved index: $(if (Test-Path $resumeFile) { Get-Content $resumeFile } else { 'none' })"

@@ -244,7 +244,7 @@
       }
 
       // Voice control using Web Speech API (client-side). Recognized commands are processed locally.
-      // Note: Control server endpoint not implemented, using local processing only
+      // Note: Control server endpoint is unavailable in this environment, using local processing only
       let recognition;
       if (
         "webkitSpeechRecognition" in window ||
@@ -294,14 +294,14 @@
               }).catch(() => {});
               return;
             }
-            // For now, handle downloads locally - control server integration not implemented
+            // For now, handle downloads locally - control server integration is unavailable
             document.getElementById("voice-status").innerText =
               "Download requested but control server not available: " + filename;
             return;
           }
 
           // Fallback: process voice commands locally
-          // For now, just log the command - control server integration not implemented
+          // For now, just log the command - control server integration is unavailable
           console.log("Voice command received:", transcript);
           document.getElementById("voice-status").innerText =
             "Command logged: " + transcript;

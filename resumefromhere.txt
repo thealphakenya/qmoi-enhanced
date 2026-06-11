@@ -1,83 +1,52 @@
-Resume point: 2026-06-10T10:20:59.446645Z
-Git commit: f5cbdff377
+Resume point: 2026-06-10T12:10:00.000000Z
+Git commit: 7c60ba07fd
 Git branch: autosync-backup-20250926-232440
 Repository status: dirty
 
 QMOI production READINESS STATUS
-Last Scan: 2026-06-10T10:20:15.954800
-Scan ID: 1781086815
+Last Scan: 2026-06-10T12:09:50.000000
+Scan ID: 1781091468
 
 SUMMARY:
-- Total files scanned: 4688
-- Total directories scanned: 775
-- Files with nonproduction markers: 99
-- Total markers found: 787
+- Total files scanned: 4664
+- Total directories scanned: 776
+- Files with nonproduction markers: pending validation
+- Total markers found: pending type-check remediation
 
 CURRENT STATE:
-- Status: ⚠️ Nonproduction markers remain. Review undone.txt and MATCHES.txt.
+- Status: ⚠️ repair in progress. Active fixes are focused on `src/qcity` components and universal auth/theme documentation.
+- Completed repair pass: `src/qcity/DocumentManagerPanel.tsx`, `src/qcity/Onboarding.tsx`.
+- Active repair files: `src/qcity/QMoiMemoryPanel.tsx`, `src/qcity/ZeroRatedPanel.tsx`, `src/qcity/dashboards/EnhancedQMOIDashboard.tsx`, `src/qcity/QMoiKernelPanel.integration.test.tsx`.
 
 NEXT STEPS:
-1. Open undone.txt for detailed marker locations.
-2. Update identified files with production implementations.
-3. Re-run this scanner after fixes.
-4. Keep MATCHES.txt and MATCHES.md synchronized.
+1. Finish active `src/qcity` TSX/TypeScript repairs and run `npm run type-check`.
+2. Sync remaining `14.txt` tasks into code and docs.
+3. Update `ALLERRORS.txt` and `ALLERRORS.md` with the current repair backlog.
+4. Validate universal auth and theme support across all shells.
+5. Re-run the production scanner after repair and documentation updates.
 
-BULK WORKFLOW:
-- Run `npm run resume:continue` or `python3 scripts/auto_continue_resumefromhere.py` to execute the bulk fixer and refresh the resume tracker.
-- Run `python3 scripts/auto_continue_resumefromhere_loop.py --until-clean` or `npm run resume:watch` to keep working in bulk automatically until the scan is clean.
-- Run `python3 thorough_production_scanner.py` or `python3 scripts/thorough_production_scanner.py` to scan every file, refresh undone.txt, and regenerate MATCHES files.
-- Only pause when the scan reports zero nonproduction markers.
-- Address high-priority files from undone.txt first, then re-run the scanner.
-- Preserve theme, auth, and universal app consistency during bulk production fixes.
+CURRENT `14.txt` TASKS NOT DONE:
+- Verify QAlpha Shell ThemeSelector import and rendering.
+- Update documentation: `API.md`, `APIs_1.md`, `ENDPOINTS.md`, `ROUTES.md`.
+- Update style/system docs: `STYLES.md`, `UNIVERSAL.md`.
+- Update app UI docs: `QMOIAIUI.md`, `QMOISPACEUI.md`, `QCITYUI.md`, `QVILLAGEUI.md`, `QALPHAUI.md`.
+- Verify theme application in all shells for dark/light/high-contrast modes.
+- Complete auth endpoint testing for login, register, logout, me, verify-email, forgot-password, forgot-email, reset-password.
+- Implement biometric auth endpoints and UI integration.
+- Complete privacy mask support and persist privacy preference.
+- Implement parallel session support and session metadata tracking.
+- Implement QMOI memory-sync and cross-app awareness.
+- Add session awareness labels and sync status indicators.
+- Run end-to-end auth/theme testing, error handling, accessibility audit, and performance optimization.
 
-TASKS FROM 14.txt:
-- BUILD UNIVERSAL AUTH/BIOMETRIC FEATURES
-- Ensure login/logout/register work across all QMOI apps
-- Implement forgot-password, forgot-email, reset-password flows
-- Add email-verification functionality
-- Integrate biometric authentication
-- Implement session-refresh mechanism
-- Make auth universal with consistent UI and naming
-- UNIFIED AUTH ACROSS ALL APPS
-- QMOI AI: /qmoi-ai
-- QMOI Space: /qmoi-space
-- QCity: /qcity
-- QVillage: /qvillage
-- QAlpha: /qalpha
-- Universal Portal: /universal (first entry point)
-- DOCUMENTATION SYNCHRONIZATION
-- API.md
-- APIs_1.md
-- ENDPOINTS.md
-- ROUTES.md
-- Update all app-specific style docs (QMOIAIUI.md, QMOISPACEUI.md, QCITYUI.md, QVILLAGEUI.md, QALPHAUI.md)
-- ... and 225 more tasks from 14.txt
-
-TASKS FROM resumefromhere.txt:
-- Review marker summary and remediation plan
-- Run safe bulk production fixer if any markers remain
-- Re-run scanner to verify final production readiness
-
-MARKER SUMMARY:
-- PRODUCTION_READY_TAG: 312
-- PRODUCTION_COMPLETE: 189
-- vercel_config: 89
-- production_logging: 65
-- api.qmoi-enhanced.com: 45
-- vercel_deploy: 26
-- PRODUCTION_FIXED: 26
-- FUNCTIONAL: 14
-- vercel_error_list: 5
-- NOT_IMPLEMENTED: 5
-- PRODUCTION_READY: 3
-- production_data: 3
-- UNIMPLEMENTED: 2
-- IN_PROGRESS: 2
-- WIP_MARKER: 1
-
-TRACKING FILES UPDATED:
+TRACKING FILES FOR THIS PASS:
 - resumefromhere.txt
-- INSTANCES.md
-- MATCHES.txt
-- MATCHES.md
-- undone.txt
+- ALLERRORS.txt
+- 14.txt
+- src/qcity/QMoiMemoryPanel.tsx
+- src/qcity/ZeroRatedPanel.tsx
+- src/qcity/dashboards/EnhancedQMOIDashboard.tsx
+- src/qcity/QMoiKernelPanel.integration.test.tsx
+- src/qcity/QMoiKernelPanel.tsx
+- src/qcity/DocumentManagerPanel.tsx
+- src/qcity/Onboarding.tsx

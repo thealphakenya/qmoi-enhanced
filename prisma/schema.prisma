@@ -209,3 +209,17 @@ model Payment {
   createdAt     DateTime @default(now())
   processedAt   DateTime?
 }
+
+model ProfileQuestionResponse {
+  id           String   @id @default(cuid())
+  userId       String   @unique
+  questionSet  String   @default("default")
+  answers      Json
+  insights     Json?
+  source       String?  @default("qmoi")
+  submittedAt  DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}

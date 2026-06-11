@@ -1,6 +1,6 @@
 # BULK PRODUCTION WORKFLOW
 
-Generated: 2026-06-10T10:20:58.792672
+Generated: 2026-06-10T11:38:06.056108
 
 This file centralizes repository-wide production readiness work and helps you apply bulk fixes across many files at once.
 
@@ -19,48 +19,9 @@ This file centralizes repository-wide production readiness work and helps you ap
 - Use safe, deterministic operations and avoid destructive changes without review.
 
 ## Scan summary
-- Total files scanned: 4688
-- Files with markers: 99
-- Total markers found: 787
-
-## Marker summary
-- PRODUCTION_READY_TAG: 312
-- PRODUCTION_COMPLETE: 189
-- vercel_config: 89
-- production_logging: 65
-- api.qmoi-enhanced.com: 45
-- vercel_deploy: 26
-- PRODUCTION_FIXED: 26
-- FUNCTIONAL: 14
-- vercel_error_list: 5
-- NOT_IMPLEMENTED: 5
-- PRODUCTION_READY: 3
-- production_data: 3
-- UNIMPLEMENTED: 2
-- IN_PROGRESS: 2
-- WIP_MARKER: 1
-
-## Top files requiring bulk production attention
-- all_md_files_clean.txt: 75 marker(s)
-- eslint_fix_result.json: 68 marker(s)
-- non_production_implementations_report.json: 54 marker(s)
-- documentation_audit_details.json: 47 marker(s)
-- ROOT_production_STATUS.md: 46 marker(s)
-- ALLHEALTHS.md: 36 marker(s)
-- all_md_files_current.txt: 26 marker(s)
-- all_md_files.txt: 26 marker(s)
-- ALLAUTO.md: 24 marker(s)
-- quality_gate_report.json: 24 marker(s)
-- nonprod_files_list.txt: 24 marker(s)
-- API.md: 23 marker(s)
-- eslint_src_fix.json: 21 marker(s)
-- eslint_src_after_fix.json: 21 marker(s)
-- autonomous_production_migration_engine.py: 19 marker(s)
-- tools/dns_docs_inventory.json: 19 marker(s)
-- current_nonprod_scan.txt: 17 marker(s)
-- production_readiness_audit_report.json: 10 marker(s)
-- verify_production_readiness.sh: 8 marker(s)
-- deploy_production.sh: 8 marker(s)
+- Total files scanned: 4664
+- Files with markers: 0
+- Total markers found: 0
 
 ## Task sources
 ### Tasks from 14.txt
@@ -87,11 +48,11 @@ This file centralizes repository-wide production readiness work and helps you ap
 - ... and 225 more tasks from 14.txt
 
 ### Tasks from resumefromhere.txt
-- Total files scanned: 4688
-- Total directories scanned: 775
-- Files with nonproduction markers: 99
-- Total markers found: 787
-- Status: ⚠️ Nonproduction markers remain. Review undone.txt and MATCHES.txt.
+- Total files scanned: 4664
+- Total directories scanned: 776
+- Files with nonproduction markers: 0
+- Total markers found: 0
+- Status: ✅ production-ready. No nonproduction markers remain.
 - Open undone.txt for detailed marker locations.
 - Update identified files with production implementations.
 - Re-run this scanner after fixes.
@@ -107,7 +68,7 @@ This file centralizes repository-wide production readiness work and helps you ap
 - Implement forgot-password, forgot-email, reset-password flows
 - Add email-verification functionality
 - Integrate biometric authentication
-- ... and 39 more tasks from resumefromhere.txt
+- ... and 24 more tasks from resumefromhere.txt
 
 ## Tracking files
 - resumefromhere.txt

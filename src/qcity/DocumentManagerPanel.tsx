@@ -1,24 +1,25 @@
 "use client";
 import React, { useState } from "react";
+
 interface DocumentEntry {
   id: string;
   name: string;
   type: string;
-  createdAt: string;  } catch (error) {
-    console.error?.('DocumentManagerPanel.tsx render error:', error);
-    return null;
-  }
-
+  createdAt: string;
 }
+
 const documents: DocumentEntry[] = [
   { id: "doc-1", name: "Project Brief.pdf", type: "PDF", createdAt: "2026-05-01" },
   { id: "doc-2", name: "Design Notes.md", type: "Markdown", createdAt: "2026-05-08" },
 ];
+
 export default function DocumentManagerPanel() {
   const [status, setStatus] = useState("All systems operational.");
+
   const restore = (id: string) => {
     setStatus(`Restored document ${id}`);
   };
+
   return (
     <div className="space-y-6 p-6 rounded-3xl border border-slate-200 bg-white shadow-sm">
       <h2 className="text-2xl font-semibold text-slate-900">Document Manager</h2>
