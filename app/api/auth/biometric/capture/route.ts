@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { authService } from "../../../../lib/auth/service";
+import { AuthService } from "@/lib/auth-service";
 import { logger } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const result = await authService.captureBiometric(userId, biometricMethod, {
+    const result = await AuthService.captureBiometric(userId, biometricMethod, {
       confidence,
       verified,
       metadata,

@@ -182,5 +182,36 @@ NEXT IMMEDIATE STEPS:
 - Run focused type-check on `app/` and `src/` to validate canonical imports (will run now).
 - Extract any remaining WebAuthn endpoint duplicates into `app/api/webauthn/` and mark legacy copies for removal.
 - Create `MERGE_PLAN_20260611.md` with file-level move operations (planned).
+ 
+REMAINING ACTIONS (NOT DONE YET):
+
+- Finish adapter/re-export coverage
+   - Ensure `app/lib/auth/service.ts` exposes the same API shape expected by `app/api/*` (default vs named exports).
+   - Verify `app/lib/auth-service.ts` adapter presence for files importing `auth-service`.
+
+- Complete import path fixes in `app/api/*`
+   - Replace any remaining four-level relative imports (`../../../../lib/...`) with three-level (`../../../lib/...`) or `@/lib/...` where appropriate.
+
+- Fix NextResponse cookies usage
+   - Update calls to `response.cookies.delete/set` to match the runtime typings or add minimal wrapper helpers to normalize usage.
+
+- Resolve logger export/import inconsistencies
+   - Ensure `log`, `logApiError`, and `logger` are available under `@/lib/logger` and adapters.
+
+- Add missing type declarations
+   - Install or add `@types/jsonwebtoken`, `@types/nodemailer` or declare modules where types are unavailable.
+
+- Prisma and globals typing
+   - Fix `global.prisma` typing in `lib/db/prisma.ts` to avoid `Property 'prisma' does not exist on type 'typeof globalThis'` errors.
+
+- Consolidate WebAuthn endpoints
+   - Ensure canonical implementations exist under `app/api/webauthn/` and remove legacy copies after verification.
+
+- Update documentation and merge plan
+   - Finalize `API.md`, `UNIVERSAL.md`, `MERGE_PLAN_20260611.md`, and `TREE.md` with any missing references.
+
+- Run iterative type-check and fix remaining errors until `app/` type-checks cleanly.
+
+Signed-off-by: automation
 
 Signed-off-by: automation

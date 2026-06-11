@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { authFallback, authService } from "../../../../lib/auth/service";
+import { authFallback, authService } from "@/lib/auth/service";
 import { prisma } from "@/lib/db/prisma";
 import { logApiError } from "@/lib/logger";
 import { log as logger } from "@/lib/logger";

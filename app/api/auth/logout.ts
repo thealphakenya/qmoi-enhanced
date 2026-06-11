@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { AuthService } from "../../../../lib/auth-service";
-import { prisma } from "../../../../lib/db/prisma";
+import { AuthService } from "../../../lib/auth-service";
+import { prisma } from "../../../lib/db/prisma";
 import { logger } from "@/lib/logger";
+import { deleteCookie } from "@/lib/cookies";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -19,8 +20,8 @@ export async function POST(req: NextRequest) {
         { success: false, message: "No active session found" },
         { status: 401 }
       );
-      response.cookies.delete("accessToken", { path: "/" });
-      response.cookies.delete("refreshToken", { path: "/" });
+      deleteCookie(response, "accessToken", { path: "/" });
+      deleteCookie(response, "refreshToken", { path: "/" });
       return response;
     }
 
@@ -30,8 +31,8 @@ export async function POST(req: NextRequest) {
         { success: false, message: "Session is invalid or expired" },
         { status: 401 }
       );
-      response.cookies.delete("accessToken", { path: "/" });
-      response.cookies.delete("refreshToken", { path: "/" });
+      deleteCookie(response, "accessToken", { path: "/" });
+      deleteCookie(response, "refreshToken", { path: "/" });
       return response;
     }
 
@@ -45,8 +46,8 @@ export async function POST(req: NextRequest) {
         { success: false, error: "User not found" },
         { status: 404 }
       );
-      response.cookies.delete("accessToken", { path: "/" });
-      response.cookies.delete("refreshToken", { path: "/" });
+      deleteCookie(response, "accessToken", { path: "/" });
+      deleteCookie(response, "refreshToken", { path: "/" });
       return response;
     }
 
@@ -107,8 +108,8 @@ export async function POST(req: NextRequest) {
       timestamp: new Date().toISOString(),
     });
 
-    response.cookies.delete("accessToken", { path: "/" });
-    response.cookies.delete("refreshToken", { path: "/" });
+    deleteCookie(response, "accessToken", { path: "/" });
+    deleteCookie(response, "refreshToken", { path: "/" });
     return response;
 
   } catch (error) {
@@ -121,8 +122,8 @@ export async function POST(req: NextRequest) {
       },
       { status: 500 }
     );
-    response.cookies.delete("accessToken", { path: "/" });
-    response.cookies.delete("refreshToken", { path: "/" });
+    deleteCookie(response, "accessToken", { path: "/" });
+    deleteCookie(response, "refreshToken", { path: "/" });
     return response;
   }
 }

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../lib/db/prisma";
-import { authService } from "../../../lib/auth/service";
+import { authService } from "@/lib/auth/service";
 import crypto from 'crypto';
 import logger from "@/lib/logger";
 

@@ -58,11 +58,15 @@ export const log = {
   warn: (message: string, context?: Record<string, any>) => {
     logger.warn(message, context);
   },
-  error: (message: string, error?: Error | Record<string, any>, context?: Record<string, any>) => {
+  error: (message: string, error?: unknown, context?: Record<string, any>) => {
     if (error instanceof Error) {
       logger.error(message, { error: error.message, stack: error.stack, ...context });
+    } else if (typeof error === 'string') {
+      logger.error(message, { error, ...context });
+    } else if (error && typeof error === 'object') {
+      logger.error(message, { ...(error as Record<string, any>), ...context });
     } else {
-      logger.error(message, { ...error, ...context });
+      logger.error(message, { ...context });
     }
   },
   debug: (message: string, context?: Record<string, any>) => {
@@ -91,10 +95,10 @@ export const logApiRequest = (
 export const logApiError = (
   method: string,
   endpoint: string,
-  error: Error | string,
+  error: unknown,
   context?: Record<string, any>
 ) => {
-  const message = error instanceof Error ? error.message : error;
+  const message = error instanceof Error ? error.message : String(error);
   log.error(`API ${method} ${endpoint} - Error`, error, {
     method,
     endpoint,
