@@ -126,6 +126,8 @@ Note: run integration tests against a running dev server to validate connectivit
 - `POST /api/auth/webauthn/register` - WebAuthn registration flow
 - `POST /api/auth/webauthn/authenticate` - WebAuthn authentication flow
 
+> Note: `/universal` is the application-level auth entry route, not an API endpoint. It is the central portal used by all QMOI shells to capture redirect state, enforce route guard access, and preserve theme/session preferences across `/qmoi-ai`, `/qmoi-space`, `/qcity`, `/qvillage`, and `/qalpha`.
+
 ### Biometric Enrollment Flow
 1. User provides fingerprint/facial/voice sample
 2. Service stores capture with confidence score and metadata

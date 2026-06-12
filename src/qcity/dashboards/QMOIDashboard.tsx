@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { readPersistedUser } from "@/app/lib/auth/persistence";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { log } from "@/lib/logger";
+import { log as logger } from "@/lib/logger";
 
 type DashboardState = {
   emotion: string;
@@ -36,7 +36,7 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       const persistedUser = readPersistedUser();
       setIsMaster(Boolean(persistedUser?.role === "master"));
     } catch (error) {
-      log.warn("MasterAccessRequired failed to read persisted user", {
+      logger.warn("MasterAccessRequired failed to read persisted user", {
         error: error instanceof Error ? error.message : String(error),
       });
       setIsMaster(false);

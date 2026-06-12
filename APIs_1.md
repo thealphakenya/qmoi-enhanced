@@ -45,6 +45,7 @@ Legacy route source files in `app/api/`: 266 (legacy compatibility endpoint hand
 - `app/qvillage/page.tsx` now delegates to `src/components/qvillage/QVillageShell.tsx` for the community workspace experience.
 - A universal auth portal is implemented at `/universal` with auto-channel redirect support for `/qmoi-ai`, `/qmoi-space`, `/qcity`, `/qvillage`, and `/qalpha`.
 - Universal auth endpoints are documented in `ENDPOINTS.md` and include `/api/auth/me`, `/api/auth/login`, `/api/auth/register`, `/api/auth/logout`, `/api/auth/forgot-password`, `/api/auth/forgot-email`, `/api/auth/reset-password`, `/api/auth/verify-email`, `/api/auth/refresh`, `/api/auth/webauthn/register`, and `/api/auth/webauthn/authenticate`.
+- The universal portal preserves theme preferences and user role context when redirecting between apps. Theme choice is shared through `ThemeSelector` and persisted in `qmoi_theme` storage.
 - All app shells now use the shared `AppShellHeader` wrapper and centralized icons from `src/assets/icons/apps/` for consistent branding.
 - `app/api/qmoi-model/route.ts` and `app/api/qmoi/chat/route.ts` provide legacy compatibility route references for the QMOI model and chat backend; active production implementations are maintained in `src/app/api/`.
 - `app/qcity/page.tsx` and `app/qvillage/page.tsx` are role-aware, page-level UI routes using `app/hooks/useAuth.ts`.

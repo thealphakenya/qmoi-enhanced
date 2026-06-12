@@ -2,11 +2,20 @@ QMOI ERROR TRACKER - Current remediation backlog
 ===============================================
 
 CURRENT STATUS:
-- Active repair focus: src/qcity UI and control-panel components.
-- Type-check status: pending; current code repair pass is incomplete.
+- Active repair focus: `app/api/auth` route cleanup and `src/qcity` UI/control-panel components.
+- Type-check status: blocked due missing local `node` runtime; `./node_modules/.bin/tsc --project tsconfig.app.json` cannot execute.
 - Documentation sync status: pending for API.md, APIs_1.md, ENDPOINTS.md, ROUTES.md, STYLES.md, UNIVERSAL.md, and app UI docs.
+- Recent auth route cleanup: completed logger import standardization across `app/api/auth`, verified `app/lib/auth-service.ts` adapter path, and confirmed cookie helper fallback handling.
+- Current QCity cleanup: removed unused `@/lib/logger` imports from `src/qcity/AvatarSelector.tsx` and `src/qcity/UnifiedAPI.tsx`; standardized active dashboard imports to `import { log as logger } from "@/lib/logger"` and retained shell logging.
 
 ACTIVE FILES UNDER REPAIR:
+- app/api/auth/signin/route.ts
+- app/api/auth/register/route.ts
+- app/api/auth/refresh/route.ts
+- app/api/auth/logout.ts
+- app/api/auth/session.ts
+- app/api/auth/confirm-reset/route.ts
+- app/api/auth/reset-password/route.ts
 - src/qcity/QMoiMemoryPanel.tsx
 - src/qcity/ZeroRatedPanel.tsx
 - src/qcity/dashboards/EnhancedQMOIDashboard.tsx

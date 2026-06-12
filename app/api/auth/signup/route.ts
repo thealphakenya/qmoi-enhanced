@@ -3,7 +3,6 @@ import { prisma } from "@/lib/db/prisma";
 import { authService } from "@/lib/auth/service";
 import crypto from 'crypto';
 import { log as logger } from "@/lib/logger";
-import { log } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -254,7 +253,7 @@ export async function POST(req: NextRequest) {
 
       await sendVerificationEmail(user.email, emailVerificationToken, user.username);
     } catch (emailError) {
-      log.error('Failed to send verification email:', emailError as Error);
+      logger.error('Failed to send verification email:', emailError as Error);
     }
 
     return NextResponse.json({
@@ -280,7 +279,7 @@ export async function POST(req: NextRequest) {
     }, { status: 201 });
 
   } catch (error) {
-    log.error('Signup error:', error);
+    logger.error('Signup error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -298,7 +297,7 @@ async function sendVerificationEmail(email: string, token: string, username: str
   const verificationUrl = `${process.env.APP_BASE_URL || 'https://qmoi-enhanced.com'}/api/auth/verify-email?token=${encodeURIComponent(token)}`;
 
   if (!apiKey || !fromAddress) {
-    log.warn('Verification email not sent because SendGrid is not configured', {
+    logger.warn('Verification email not sent because SendGrid is not configured', {
       email,
       sendGridConfigured: Boolean(apiKey && fromAddress),
     });
@@ -333,7 +332,7 @@ async function sendVerificationEmail(email: string, token: string, username: str
     throw new Error(`SendGrid email send failed: ${response.status} ${errorText}`);
   }
 
-  log.info('Verification email queued via SendGrid', { email });
+  logger.info('Verification email queued via SendGrid', { email });
 }
 
 export async function GET(req: NextRequest) {

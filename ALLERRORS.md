@@ -1,30 +1,29 @@
 # ALLERRORS - Automated Triage Log
 
-Last scan: 2026-06-07T18:12:44Z
-Scanner: TypeScript compiler (tsc)
+Last scan: 2026-06-12T12:00:00Z
+Scanner: targeted workspace diagnostics
+Scope: auth and QCity focused validation
 
 Summary:
 - Documentation update completed for live app routes and actual feature pages.
 - Inventory aligned with current source: `app/qmoi-ai/page.tsx`, `app/qmoi-space/page.tsx`, `app/qcity/page.tsx`, `app/qalpha/page.tsx`, `app/qvillage/page.tsx`.
-- Pending work remains on TypeScript remediation for shared UI component types and adapter imports.
+- Targeted auth and QCity diagnostics passed without reporter errors; full project scan remains pending due to missing local Node runtime.
 - Current focus: preserve actual route documentation and continue root-cause error repair.
 
-Latest compiler scan:
-- Timestamp: 2026-06-07T18:12:44Z
-- Scanner: TypeScript compiler (tsc)
-- Total reported errors (approx): 4,547
-- Top affected files (representative):
-   - app/qmoi-ai/page.tsx
-   - app/qmoi-space/page.tsx
-   - components/AppManager.tsx
-   - components/AudioVisualizer.tsx
-   - components/AvatarGalleryPanel.tsx
-   - components/AvatarSelectionPanel.tsx
-   - components/BiometricEnrollment.tsx
-   - components/BluetoothManager.tsx
-   - components/BrowserInterface.tsx
-   - components/CashonTradingPanel.tsx
-- Current action: iterative cleanup of UI components and shared utilities, targeting missing React imports, invalid component declarations, runtime-safe type narrowing, and path alias/component wrapper mismatches. See current diagnostics in `/tmp/current_tsc_output.txt`.
+Latest diagnostics scan:
+- Timestamp: 2026-06-12T12:00:00Z
+- Scanner: targeted workspace diagnostics
+- Total reported errors (approx): 0 in audited subset, full project scan pending
+- Top affected files (targeted audit):
+   - app/api/auth/signup/route.ts
+   - app/api/auth/forgot-email/route.ts
+   - app/api/auth/verify-email/route.ts
+   - app/api/auth/reset-password/route.ts
+   - app/api/auth/logout.ts
+   - src/qcity/QMoiMemoryPanel.tsx
+   - src/qcity/ZeroRatedPanel.tsx
+   - src/qcity/dashboards/EnhancedQMOIDashboard.tsx
+- Current action: iterative cleanup of auth routes and QCity UI components, targeting logger imports, cookie handling, and component type issues. See current diagnostics in the project workspace.
 
 Immediate remediation plan (Advanced Mode — prioritized):
 1. Search for root-cause files generating cascading errors and repair them first (shared interfaces, malformed generated artifacts).
@@ -87,13 +86,13 @@ Notes:
 ## 📋 ERROR SUMMARY
 
 ```production-validated
-Total Issues Found: 0
+Total Issues Found: 0 (targeted audit subset)
 
 By Severity:
-  🔴 CRITICAL:  0 (0%)    - All resolved
-  🟠 HIGH:      0 (0%)   - All resolved
-  🟡 MEDIUM:    0 (0%)   - All resolved
-  🟢 LOW:       0 (0%)   - All resolved
+  🔴 CRITICAL:  0 (0%)    - No critical findings in the audited subset
+  🟠 HIGH:      0 (0%)   - No high-severity findings in the audited subset
+  🟡 MEDIUM:    0 (0%)   - No medium-severity findings in the audited subset
+  🟢 LOW:       0 (0%)   - No low-severity findings in the audited subset
 
 By Type:
   Documentation Errors:  0  (0%)  
@@ -120,6 +119,8 @@ By Type:
 - The repository contains a large number of legacy syntax and type artifacts.
 - Focused correction is underway for the highest-impact compile failures.
 - The latest targeted compiler run passed for the corrected files.
+- Auth route cleanup is complete: logger imports normalized across `app/api/auth`, `app/lib/auth-service.ts` adapter path corrected, and `app/lib/cookies.ts` fallback handling verified.
+- QCity logger import standardization completed for audited modules: active dashboard imports now use `import { log as logger } from "@/lib/logger"`, unused imports removed from `src/qcity/AvatarSelector.tsx` and `src/qcity/UnifiedAPI.tsx`, and `QCityShell` logging retained.
 - Full project validation remains pending until additional malformed sources are repaired.
 
 ### Resolution Summary
@@ -160,9 +161,9 @@ By Type:
 
 ---
 
-**Last Scanned:** 2026-04-28T12:00:00.000000Z
-**Scanner**: error-scanner-v2.js v2.0  
-**Next Full Scan**: After Phase 1 fixes completed
+**Last Scanned:** 2026-06-12T12:00:00.000000Z
+**Scanner**: targeted workspace diagnostics v1.0  
+**Next Full Scan**: After Node runtime is restored and full `npx tsc --noEmit` can be executed
 - ALLERRORS.md:23: - ALLMDFILESREFS.md:16: - [AUWNLOAD.md] - **AUWNLOAD.md** -- # AUWNLOAD.md
 - ALLERRORS.md:24: - ALLMDFILESREFS.md:38: - [ERRORSREADME.md] - **latest-Q AI Error Tracking & Diagnostics** -- # latest-Q AI Error Tracking & Diagnostics
 - ALLERRORS.md:25: - ALLMDFILESREFS.md:39: - [ERRORSTRACKS.md] - **Quantum multi orchestra intelligence (QMOI) Error Tracks** -- # Quantum multi orchestra intelligence (QMOI) Error Tracks

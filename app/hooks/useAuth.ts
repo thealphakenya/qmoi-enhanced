@@ -258,43 +258,38 @@ export function useAuth(): UseAuthReturn {
             biometricData?: any;
           }
     ) => {
-      setIsLoading(true);
+      if (typeof window === "undefined") {
+        throw new Error("Login must be called in the browser");
+      }
+
+      const requestBody: Record<string, any> = {};
+      if (typeof payload === "string") {
+        requestBody.role = payload;
+      } else {
+        Object.assign(requestBody, payload);
+      }
+
       try {
-        if (typeof payload === "string") {
-          const profile = roleProfiles[payload] || roleProfiles.guest;
-          const fallbackUser: QmoiUser = {
-            id: `qmoi-${payload}-${Date.now()}`,
-            displayName: profile.displayName,
-            role: profile.role,
-            permissions: profile.permissions,
-            accessLevel: profile.accessLevel,
-          };
-          persistUserToStorage({ id: fallbackUser.id, role: fallbackUser.role, displayName: fallbackUser.displayName });
-          setUser(fallbackUser);
-          return fallbackUser;
-        }
-
-        const payloadBody: Record<string, any> = {};
-        if (payload.email) payloadBody.email = payload.email;
-        if (payload.username) payloadBody.username = payload.username;
-        if (payload.password) payloadBody.password = payload.password;
-        if (payload.biometricMethod) payloadBody.biometricMethod = payload.biometricMethod;
-        if (payload.biometricData) payloadBody.biometricData = payload.biometricData;
-
-        const response = await fetch("/api/auth/signin", {
+        const response = await fetch("/api/auth/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payloadBody),
+          body: JSON.stringify(requestBody),
+          cache: "no-store",
         });
 
-        const data = await response.json();
-        if (!response.ok || !data?.success) {
-          throw new Error(data?.message || "Unable to sign in");
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => null);
+          throw new Error(errorData?.message || "Login failed");
         }
 
-        const serverUser = data.user || {};
-        const resolvedRole = (serverUser.role as UserRole) || "user";
-        const resolvedProfile = roleProfiles[resolvedRole] || roleProfiles.user;
+        const result = await response.json();
+        const serverUser = result?.user;
+        if (!serverUser) {
+          throw new Error("Login succeeded but no user data returned");
+        }
+
+        const resolvedRole = (serverUser.role as UserRole) || "guest";
+        const resolvedProfile = roleProfiles[resolvedRole] || roleProfiles.guest;
         const displayName =
           serverUser.fullName || serverUser.username || serverUser.email || resolvedProfile.displayName;
         const permissions =
@@ -302,7 +297,7 @@ export function useAuth(): UseAuthReturn {
             ? serverUser.permissions
             : resolvedProfile.permissions;
 
-        const authenticatedUser: QmoiUser = {
+        const updatedUser: QmoiUser = {
           id: serverUser.id || `qmoi-${resolvedRole}-${Date.now()}`,
           displayName,
           role: resolvedRole,
@@ -310,22 +305,22 @@ export function useAuth(): UseAuthReturn {
           accessLevel: serverUser.accessLevel ?? resolvedProfile.accessLevel,
         };
 
-        persistUserToStorage({ id: authenticatedUser.id, role: authenticatedUser.role, displayName: authenticatedUser.displayName });
-        persistAuthTokens({ accessToken: data.tokens?.accessToken ?? null, refreshToken: data.tokens?.refreshToken ?? null });
-        setUser(authenticatedUser);
-        return authenticatedUser;
-      } catch (error: any) {
-        throw new Error(error?.message || "Authentication failed");
-      } finally {
-        setIsLoading(false);
+        setUser(updatedUser);
+        persistUserToStorage({ id: updatedUser.id, role: updatedUser.role, displayName: updatedUser.displayName });
+        window.dispatchEvent(new Event("qmoi:auth:changed"));
+        return updatedUser;
+      } catch (error) {
+        throw error;
       }
     },
-    [],
+    []
   );
+
+  const isAuthenticated = useMemo(() => user.role !== "guest" && !isLoading, [user, isLoading]);
 
   return {
     user,
-    isAuthenticated: user.role !== "guest",
+    isAuthenticated,
     isLoading,
     hasAccess,
     login,

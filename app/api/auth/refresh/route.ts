@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { authService } from "@/lib/auth/service";
+import { setCookie } from "@/lib/cookies";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -33,7 +34,7 @@ export async function POST(req: NextRequest) {
     tokens,
   });
 
-  response.cookies.set("accessToken", tokens.accessToken, {
+  setCookie(response, "accessToken", tokens.accessToken, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "strict",
@@ -41,7 +42,7 @@ export async function POST(req: NextRequest) {
     path: "/",
   });
 
-  response.cookies.set("refreshToken", tokens.refreshToken, {
+  setCookie(response, "refreshToken", tokens.refreshToken, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "strict",

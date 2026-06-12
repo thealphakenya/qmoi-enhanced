@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { AuthService } from "@/lib/auth-service";
-import { logger } from "@/lib/logger";
+import { log as logger } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";

@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { authService } from "@/lib/auth/service";
 import { logAuthEvent } from "@/app/lib/auth/memory";
+import { setCookie } from "@/lib/cookies";
+import { log as logger } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -33,7 +35,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (!authResult || !authResult.success) {
+    if (!authResult || !authResult.success || !authResult.tokens?.accessToken) {
       return NextResponse.json(
         { success: false, message: authResult?.message || "Authentication failed", error: authResult?.error },
         { status: 401 }
@@ -47,7 +49,7 @@ export async function POST(req: NextRequest) {
       message: authResult.message || "Signin successful",
     });
 
-    response.cookies.set('accessToken', authResult.tokens.accessToken, {
+    setCookie(response, 'accessToken', authResult.tokens.accessToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
@@ -56,7 +58,7 @@ export async function POST(req: NextRequest) {
     });
 
     if (authResult.tokens.refreshToken) {
-      response.cookies.set('refreshToken', authResult.tokens.refreshToken, {
+      setCookie(response, 'refreshToken', authResult.tokens.refreshToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',
@@ -67,9 +69,15 @@ export async function POST(req: NextRequest) {
 
     // Log signin event to QMOI memory for audit and session awareness
     try {
-      await logAuthEvent({ userId: authResult.user?.id, role: authResult.user?.role, displayName: authResult.user?.displayName, event: 'signin', details: { ipAddress, userAgent } });
+      await logAuthEvent({
+        userId: authResult.user?.id,
+        role: authResult.user?.role,
+        displayName: authResult.user?.fullName || authResult.user?.username || authResult.user?.email || 'unknown',
+        event: 'signin',
+        details: { ipAddress, userAgent },
+      });
     } catch (e) {
-      console.warn('Signin audit event failed', e);
+      logger.error('Signin audit event failed', e);
     }
 
     return response;

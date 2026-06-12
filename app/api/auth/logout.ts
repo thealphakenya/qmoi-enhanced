@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { AuthService } from "../../../lib/auth-service";
-import { prisma } from "../../../lib/db/prisma";
-import { logger } from "@/lib/logger";
+import { AuthService } from "@/lib/auth-service";
+import { prisma } from "@/lib/db/prisma";
+import { log as logger } from "@/lib/logger";
 import { deleteCookie } from "@/lib/cookies";
 
 export const dynamic = "force-dynamic";

@@ -1,100 +1,133 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "../../../lib/db/prisma";
+import { prisma } from "@/lib/db/prisma";
 import { authService } from "@/lib/auth/service";
 import { log as logger } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
+type AuthenticatedUser = {
+  id: string;
+  email: string;
+  username: string;
+  firstName: string | null;
+  lastName: string | null;
+  role: string;
+  isActive: boolean;
+  emailVerified: boolean;
+  twoFactorEnabled: boolean;
+  lastLoginAt: Date | null;
+  createdAt: Date;
+  updatedAt: Date;
+  profile: {
+    avatar?: string | null;
+    bio?: string | null;
+    timezone?: string | null;
+    language?: string | null;
+    website?: string | null;
+    location?: string | null;
+    company?: string | null;
+    jobTitle?: string | null;
+    socialLinks?: string | null;
+    stylePreferences?: any;
+  } | null;
+  wallets: Array<{
+    id: string;
+    balance: number;
+    currency: string;
+    isPrimary: boolean;
+  }>;
+  _count: {
+    transactions: number;
+    mediaTasks: number;
+    auditLogs: number;
+  };
+};
+
+function parseToken(req: NextRequest) {
+  const authHeader = req.headers.get('authorization');
+  return authHeader?.startsWith('Bearer ')
+    ? authHeader.substring(7)
+    : req.cookies.get('accessToken')?.value;
+}
+
+async function requireAuthenticatedUser(req: NextRequest): Promise<AuthenticatedUser | null> {
+  const token = parseToken(req);
+  if (!token) return null;
+
+  const isValid = await authService.validateToken(token);
+  if (!isValid) return null;
+
+  const decoded = authService.verifyToken(token);
+  if (!decoded?.userId) return null;
+
+  const user = await prisma.user.findUnique({
+    where: { id: decoded.userId },
+    select: {
+      id: true,
+      email: true,
+      username: true,
+      firstName: true,
+      lastName: true,
+      role: true,
+      isActive: true,
+      emailVerified: true,
+      twoFactorEnabled: true,
+      lastLoginAt: true,
+      createdAt: true,
+      updatedAt: true,
+      profile: {
+        select: {
+          avatar: true,
+          bio: true,
+          timezone: true,
+          language: true,
+          website: true,
+          location: true,
+          company: true,
+          jobTitle: true,
+          socialLinks: true,
+          stylePreferences: true,
+        },
+      },
+      wallets: {
+        select: {
+          id: true,
+          balance: true,
+          currency: true,
+          isPrimary: true,
+        },
+        orderBy: { isPrimary: 'desc' },
+      },
+      _count: {
+        select: {
+          transactions: true,
+          mediaTasks: true,
+          auditLogs: true,
+        },
+      },
+    },
+  });
+
+  if (!user || !user.isActive) {
+    return null;
+  }
+
+  return user;
+}
+
 export async function GET(req: NextRequest) {
   try {
-    // Get user from auth token or secure cookie
-    const authHeader = req.headers.get('authorization');
-    const token = authHeader?.startsWith('Bearer ')
-      ? authHeader.substring(7)
-      : req.cookies.get('accessToken')?.value;
-
-    if (!token) {
+    const user = await requireAuthenticatedUser(req);
+    if (!user) {
       return NextResponse.json(
         { success: false, error: "Authentication required" },
         { status: 401 }
       );
     }
 
-    const decoded = authService.decodeToken(token);
-
-    if (!decoded) {
-      return NextResponse.json(
-        { success: false, error: "Invalid token" },
-        { status: 401 }
-      );
-    }
-
-    // Get comprehensive user information
-    const user = await prisma.user.findUnique({
-      where: { id: decoded.userId },
-      select: {
-        id: true,
-        email: true,
-        username: true,
-        firstName: true,
-        lastName: true,
-        role: true,
-        isActive: true,
-        emailVerified: true,
-        twoFactorEnabled: true,
-        lastLoginAt: true,
-        createdAt: true,
-        updatedAt: true,
-        profile: {
-          select: {
-            avatar: true,
-            bio: true,
-            timezone: true,
-            language: true,
-            website: true,
-            location: true,
-            company: true,
-            jobTitle: true,
-            socialLinks: true,
-          },
-        },
-        wallets: {
-          select: {
-            id: true,
-            balance: true,
-            currency: true,
-            isPrimary: true,
-          },
-          orderBy: { isPrimary: 'desc' },
-        },
-        _count: {
-          select: {
-            transactions: true,
-            mediaTasks: true,
-            auditLogs: true,
-          },
-        },
-      },
-    });
-
-    if (!user) {
-      return NextResponse.json(
-        { success: false, error: "User not found" },
-        { status: 404 }
-      );
-    }
-
-    if (!user.isActive) {
-      return NextResponse.json(
-        { success: false, error: "Account is deactivated" },
-        { status: 403 }
-      );
-    }
-
-    // Get recent activity (last 10 audit logs)
     const recentActivity = await prisma.auditLog.findMany({
-      where: { userId: decoded.userId },
+      where: { userId: user.id },
       select: {
         id: true,
         action: true,
@@ -107,22 +140,19 @@ export async function GET(req: NextRequest) {
       take: 10,
     });
 
-    // Calculate account statistics
     const stats = {
       totalTransactions: user._count.transactions,
       totalMediaTasks: user._count.mediaTasks,
       totalAuditLogs: user._count.auditLogs,
-      accountAge: Math.floor((Date.now() - user.createdAt.getTime()) / (1000 * 60 * 60 * 24)), // days
+      accountAge: Math.floor((Date.now() - user.createdAt.getTime()) / (1000 * 60 * 60 * 24)),
       lastActivity: user.lastLoginAt,
     };
 
-    // Update last activity
     await prisma.user.update({
       where: { id: user.id },
       data: { lastLoginAt: new Date() },
     });
 
-    // Create audit log for profile access
     await prisma.auditLog.create({
       data: {
         userId: user.id,
@@ -161,9 +191,8 @@ export async function GET(req: NextRequest) {
         stats,
         recentActivity,
       },
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
-
   } catch (error) {
     logger.error('Auth me GET error:', error);
     return NextResponse.json(
@@ -181,38 +210,12 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { action, ...updateData } = body;
-
-    // Get user from auth token or secure cookie
-    const authHeader = req.headers.get('authorization');
-    const token = authHeader?.startsWith('Bearer ')
-      ? authHeader.substring(7)
-      : req.cookies.get('accessToken')?.value;
-
-    if (!token) {
-      return NextResponse.json(
-        { success: false, error: "Authentication required" },
-        { status: 401 }
-      );
-    }
-
-    const decoded = authService.decodeToken(token);
-
-    if (!decoded) {
-      return NextResponse.json(
-        { success: false, error: "Invalid token" },
-        { status: 401 }
-      );
-    }
-
-    const user = await prisma.user.findUnique({
-      where: { id: decoded.userId },
-      select: { id: true, email: true, role: true },
-    });
+    const user = await requireAuthenticatedUser(req);
 
     if (!user) {
       return NextResponse.json(
-        { success: false, error: "User not found" },
-        { status: 404 }
+        { success: false, error: "Authentication required" },
+        { status: 401 }
       );
     }
 
@@ -231,7 +234,6 @@ export async function POST(req: NextRequest) {
         socialLinks,
       } = updateData;
 
-      // Validate username uniqueness if provided
       if (username) {
         const existingUser = await prisma.user.findFirst({
           where: {
@@ -248,7 +250,6 @@ export async function POST(req: NextRequest) {
         }
       }
 
-      // Update user basic info
       const updateUserData: any = {};
       if (firstName !== undefined) updateUserData.firstName = firstName;
       if (lastName !== undefined) updateUserData.lastName = lastName;
@@ -261,7 +262,6 @@ export async function POST(req: NextRequest) {
         });
       }
 
-      // Update or create profile
       const profileData: any = {};
       if (bio !== undefined) profileData.bio = bio;
       if (timezone !== undefined) profileData.timezone = timezone;
@@ -271,6 +271,7 @@ export async function POST(req: NextRequest) {
       if (company !== undefined) profileData.company = company;
       if (jobTitle !== undefined) profileData.jobTitle = jobTitle;
       if (socialLinks !== undefined) profileData.socialLinks = JSON.stringify(socialLinks);
+      if (updateData.stylePreferences !== undefined) profileData.stylePreferences = updateData.stylePreferences;
 
       if (Object.keys(profileData).length > 0) {
         await prisma.profile.upsert({
@@ -283,7 +284,6 @@ export async function POST(req: NextRequest) {
         });
       }
 
-      // Create audit log
       await prisma.auditLog.create({
         data: {
           userId: user.id,
@@ -304,10 +304,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({
         success: true,
         message: "Profile updated successfully",
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
+    }
 
-    } else if (action === 'change-password') {
+    if (action === 'change-password') {
       const { currentPassword, newPassword } = updateData;
 
       if (!currentPassword || !newPassword) {
@@ -317,21 +318,19 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      // Verify current password using stored hash from authProfile or legacy user record
       const authProfile = await prisma.authProfile.findUnique({
         where: { userId: user.id },
         select: { passwordHash: true },
       });
 
-      const userRecord = await prisma.user.findUnique({
-        where: { id: user.id },
-        select: { passwordHash: true, password: true },
-      });
+      if (!authProfile?.passwordHash) {
+        return NextResponse.json(
+          { success: false, error: "Unable to verify current password" },
+          { status: 400 }
+        );
+      }
 
-      const currentHash = authProfile?.passwordHash || userRecord?.passwordHash || userRecord?.password || '';
-      const isValidCurrentPassword = currentHash
-        ? await authService.verifyPassword(currentPassword, currentHash)
-        : false;
+      const isValidCurrentPassword = await authService.verifyPassword(currentPassword, authProfile.passwordHash);
 
       if (!isValidCurrentPassword) {
         await prisma.auditLog.create({
@@ -357,14 +356,12 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      // Update password
       const hashedPassword = await authService.hashPassword(newPassword);
       await prisma.user.update({
         where: { id: user.id },
         data: { passwordHash: hashedPassword },
       });
 
-      // Create audit log
       await prisma.auditLog.create({
         data: {
           userId: user.id,
@@ -384,16 +381,14 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({
         success: true,
         message: "Password changed successfully",
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
-
-    } else {
-      return NextResponse.json(
-        { success: false, error: "Invalid action. Supported: update-profile, change-password" },
-        { status: 400 }
-      );
     }
 
+    return NextResponse.json(
+      { success: false, error: "Invalid action. Supported: update-profile, change-password" },
+      { status: 400 }
+    );
   } catch (error) {
     logger.error('Auth me POST error:', error);
     return NextResponse.json(

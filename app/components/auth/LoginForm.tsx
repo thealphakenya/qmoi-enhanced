@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import BiometricAuth from "@/components/auth/BiometricAuth";
 import { persistUserToStorage, persistAuthTokens } from "../../lib/auth/persistence";
-import { logAuthEvent } from "@/lib/auth/memory";
+import { logAuthEvent } from "@/app/lib/auth";
 
 interface LoginFormProps {
   onLogin: (user: {

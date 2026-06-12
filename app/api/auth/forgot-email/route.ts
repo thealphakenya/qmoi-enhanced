@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { emailService } from "@/lib/email/service";
 import { prisma } from "@/lib/db/prisma";
-import { logger } from "@/lib/logger";
+import { log as logger } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";

@@ -1,11 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import type { ToastProps, ToastActionElement } from "@/components/ui/toast";
+import type * as React from "react";
+import type { ToastActionElement } from "@/components/ui/toast";
 
-export type ToastInput = Omit<ToastProps, "id"> & {
+export type ToastInput = React.ComponentPropsWithoutRef<"div"> & {
   title?: React.ReactNode;
   description?: React.ReactNode;
   action?: ToastActionElement;
+  variant?: "default" | "destructive";
 };
 
 type ToastState = ToastInput & {

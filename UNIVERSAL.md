@@ -166,12 +166,40 @@ API endpoints and UI components respond contextually to the user's role:
 - After successful authentication, the universal portal automatically redirects the user back to the original target route with their role-appropriate UI.
 - Theme preference is preserved during this redirect flow.
 
+### Post-signin Style Personalization Flow
+
+- The universal portal supports a dedicated personalization redirect before entering an app. If the incoming universal link contains `?goto=styles` (for example: `/universal?app=qcity&mode=signin&goto=styles`) the portal will:
+  1. Complete authentication.
+  2. Apply the persisted `qmoi_theme` (or the profile-specified default) to the session.
+  3. Redirect the user to the app-specific styles page at `/[app]/styles` (e.g. `/qcity/styles`) so the user can preview and adjust presets, accessibility settings, and audio/video overlay preferences prior to entering the app root.
+
+- First-run behavior: a new user's profile may include `firstRun=true`. In that case, after signin the universal portal will default to `?goto=styles` to encourage immediate personalization.
+
+- Quick developer notes:
+  - `UniversalAuthHub` sets and reads `qmoi_theme` and `qmoi_theme_overrides.<app>` before final navigation.
+  - `UniversalRouteGuard` honors the `goto` query param and preserves `redirect` when navigating to styles pages so the user returns to their original target after personalization.
+
 ## Theme Persistence and App Awareness
 
 - Theme state is shared across apps through the universal theme provider and persisted in `qmoi_theme` storage.
 - Each role can have their own theme preference that persists across sessions.
 - Theme switching updates the selected theme for the universal portal and all other shells in the same session.
 - Privacy mask and parallel session state preserve the selected theme without exposing sensitive metadata.
+- The universal portal also preserves real-time visualization preferences, speaker and camera overlays, and workflow context when moving between `/qmoi-ai`, `/qmoi-space`, `/qcity`, `/qvillage`, and `/qalpha`.
+- All shells now support QMOI real-time audio and camera visualization features where available, including live audio waveform status, speech recognition confidence, camera feed presence, and active model diagnostics on the same authorized page.
+
+## Language & Globalization
+
+- The universal portal surfaces a primary `LanguageSelector` and each shell exposes language settings in `/<app>/styles` to let users pick interface and communication language.
+- `qmoi_lang` is the client storage key and the authenticated profile `language` field must reflect the user's choice when persisted (`PUT /api/auth/profile`).
+- The universal redirect flow preserves the selected language during `redirect` and `goto=styles` so personalization occurs in the user-chosen locale.
+- Apps should subscribe to the `qmoi:lang-changed` event and reconfigure:
+  - UI translation layers (i18n dictionaries)
+  - STT language model for live speech recognition
+  - TTS voice selection and synthesis parameters
+  - Date/time/number formatters, pluralization, and RTL layout when required
+- Handsfree and accessibility flows must respect language settings: voice commands should be language-aware and the system should attempt to auto-detect spoken language during voice input and suggest switching if mismatch confidence is high.
+- Localized preview assets should be used where present for style previews. If a localized preview doesn't exist, fall back to default preview.
 
 ## Privacy and Security Features
 

@@ -1,8 +1,8 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
 import React, { createContext, useContext, useState, useEffect } from "react";
 import BiometricAuth from "@/components/auth/BiometricAuth";
-import { persistUserToStorage } from "@/lib/auth/persistence";
-import { logAuthEvent } from "@/lib/auth/memory";
+import { persistUserToStorage } from "@/app/lib/auth";
+import { logAuthEvent } from "@/app/lib/auth";
 
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system

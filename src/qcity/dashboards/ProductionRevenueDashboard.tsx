@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import apiClient from "@/api/client";
 import { readPersistedUser } from "@/app/lib/auth/persistence";
-import { log } from "@/lib/logger";
+import { log as logger } from "@/lib/logger";
 
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = useState(false);
@@ -16,7 +16,7 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
       const persistedUser = readPersistedUser();
       setIsMaster(Boolean(persistedUser?.role === "master"));
     } catch (error) {
-      log.warn("MasterAccessRequired failed to read persisted user", error instanceof Error ? error : { error: String(error) });
+      logger.warn("MasterAccessRequired failed to read persisted user", error instanceof Error ? error : { error: String(error) });
       setIsMaster(false);
     }
   }, []);
@@ -59,7 +59,7 @@ const ProductionRevenueDashboard: React.FC = () => {
       setChartData(sources);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to fetch revenue data");
-      log.error("Revenue fetch error", err instanceof Error ? err : { error: String(err) });
+      logger.error("Revenue fetch error", err instanceof Error ? err : { error: String(err) });
     } finally {
       setLoading(false);
     }
@@ -77,7 +77,7 @@ const ProductionRevenueDashboard: React.FC = () => {
       setIsMonitoring(Boolean(data.monitoring));
     } catch (err) {
       setError("Failed to toggle monitoring");
-      log.warn("Toggle monitoring failed", err instanceof Error ? err : { error: String(err) });
+      logger.warn("Toggle monitoring failed", err instanceof Error ? err : { error: String(err) });
     }
   };
   useEffect(() => {

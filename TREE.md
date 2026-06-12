@@ -13,6 +13,7 @@ Top-level apps (App Router entry pages)
 - `app/qmoi-ai/page.tsx`            → wraps `QMOIAIShell` (UniversalRouteGuard)
 - `app/qmoi-space/page.tsx`         → wraps `QMOISpaceShell` (UniversalRouteGuard)
 - `app/universal/page.tsx`          → Universal authentication hub and landing
+- `app/<app>/styles`               → Per-app styles and theme personalization pages (e.g. `app/qcity/styles/page.tsx`)
 - `app/reset-password/page.tsx`     → Reset flow UI
 - `app/verify-email/page.tsx`       → Email verification UI
 

@@ -3,7 +3,7 @@ import { prisma } from "@/lib/db/prisma";
 import { authFallback, authService } from "@/lib/auth/service";
 import { logApiError } from "@/lib/logger";
 import { logAuthEvent } from "@/app/lib/auth/memory";
-import { log as logger } from "@/lib/logger";
+import { setCookie } from "@/lib/cookies";
 
 const USE_DB = Boolean(process.env.DATABASE_URL);
 
@@ -195,7 +195,7 @@ export async function POST(req: NextRequest) {
       timestamp: new Date().toISOString()
     }, { status: 201 });
 
-    response.cookies.set('accessToken', tokens.accessToken, {
+    setCookie(response, 'accessToken', tokens.accessToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
@@ -204,7 +204,7 @@ export async function POST(req: NextRequest) {
     });
 
     if (tokens.refreshToken) {
-      response.cookies.set('refreshToken', tokens.refreshToken, {
+      setCookie(response, 'refreshToken', tokens.refreshToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',

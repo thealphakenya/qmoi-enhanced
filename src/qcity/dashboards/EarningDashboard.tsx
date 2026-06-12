@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { readPersistedUser } from "@/app/lib/auth/persistence";
-import { log } from "@/lib/logger";
+import { log as logger } from "@/lib/logger";
 
 interface RevenueMetric {
   label: string;
@@ -27,7 +27,7 @@ const EarningDashboard: React.FC = () => {
       setIsMaster(persistedUser?.role === "master");
       setUserName(persistedUser?.displayName ?? "Guest");
     } catch (error) {
-      log.warn(
+      logger.warn(
         "EarningDashboard failed to read persisted auth state",
         error instanceof Error ? { message: error.message, stack: error.stack } : { error: String(error) }
       );

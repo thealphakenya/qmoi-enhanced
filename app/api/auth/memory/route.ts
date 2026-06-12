@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { qmoiMemoryService } from "@/lib/auth/memory";
+import { qmoiMemoryService } from "@/app/lib/auth";
 
 export const dynamic = "force-dynamic";
 

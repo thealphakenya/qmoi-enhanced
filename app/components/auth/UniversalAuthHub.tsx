@@ -35,9 +35,12 @@ export default function UniversalAuthHub() {
   const searchParams = useSearchParams();
   const queryApp = searchParams ? searchParams.get("app")?.trim() || "" : "";
   const redirectPath = searchParams ? searchParams.get("redirect")?.trim() || "" : "";
-  const effectiveRedirect =
-    redirectPath ||
-    (queryApp ? `/${queryApp.replace(/^\/+/, "")}` : "/qcity");
+  const queryGoto = searchParams ? searchParams.get("goto")?.trim() || "" : "";
+  const appPath = queryApp ? `/${queryApp.replace(/^\/+/, "")}` : "/qcity";
+  const targetPath = redirectPath || appPath;
+  const effectiveRedirect = queryGoto === "styles" && !targetPath.endsWith("/styles")
+    ? `${targetPath.replace(/\/+$/, "")}/styles`
+    : targetPath;
   const queryMode = searchParams ? (searchParams.get("mode") as AuthMode | null) : null;
 
   useEffect(() => {

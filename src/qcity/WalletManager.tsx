@@ -9,7 +9,6 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Loader2 } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
-import { log as logger } from "@/lib/logger";
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;

@@ -1,10 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
+import type * as React from "react";
 
 type ToastState = {
   id: string;
   title?: React.ReactNode;
   description?: React.ReactNode;
+  action?: React.ReactNode;
+  variant?: "default" | "destructive";
   open: boolean;
 };
 

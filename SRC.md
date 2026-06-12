@@ -44,12 +44,16 @@
 - **Auth**: Role-based access (master, user, sister); master role required for full features
 
 ### QAlpha (`/qalpha`)
-- **Route File**: `app/qalpha/page.tsx`
-- **Entry Component**: `src/components/qalpha/QAlphaShell.tsx` - QAlpha route shell
-- **Alias Import**: `@/components/qalpha/QAlphaShell`
-- **Aggregate Status**: QAlpha shell is self-contained and no longer imports live modules from `app/components/`.
-- **Features**: Advanced learning, research, model development, analytics
-- **Status**: Source-level entry shell added; active route dependency surface has been minimized
+
+### Universal Portal (`/universal`)
+- **Route File**: `app/universal/page.tsx`
+- **Entry Component**: `app/components/auth/UniversalAuthHub.tsx`
+- **Purpose**: Central authentication gateway, auto-channel redirects, privacy/parallel session controls, and cross-shell user awareness.
+- **Post-signin Style Redirect**: After a successful universal signin, the portal preserves requested `app` and `mode` query params and will either:
+  - Redirect directly to the targeted app root (e.g. `/qcity`) with the `qmoi_theme` applied, or
+  - Redirect to the app-specific styles page (if `?goto=styles` is present) such as `/qcity/styles` to allow users to preview or adjust theme, accessibility and UI settings before continuing.
+- **Features**: Universal login/register, password/email recovery, session refresh, biometric support, theme persistence, realtime visual preferences (audio/camera overlays), and app boundary redirect preservation.
+- **Integration**: All canonical app shells use `app/components/auth/UniversalRouteGuard.tsx` to ensure secure access and safe redirection. The `useAuth` hook and `ThemeSelector` are used during the redirect flow to apply the persisted `qmoi_theme` and user-specific UI preferences before hydration completes.
 
 ### QVillage (`/qvillage`)
 - **Route File**: `app/qvillage/page.tsx`

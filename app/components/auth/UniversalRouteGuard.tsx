@@ -14,12 +14,15 @@ export default function UniversalRouteGuard({ children }: UniversalRouteGuardPro
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const redirectPath = searchParams?.get("redirect") || pathname || "/";
+  const goto = searchParams?.get("goto") || "";
+  const redirectQueryString = new URLSearchParams({ redirect: redirectPath });
+  if (goto) redirectQueryString.set("goto", goto);
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
-      router.replace(`/universal?redirect=${encodeURIComponent(redirectPath)}`);
+      router.replace(`/universal?${redirectQueryString.toString()}`);
     }
-  }, [isAuthenticated, isLoading, redirectPath, router]);
+  }, [isAuthenticated, isLoading, redirectPath, goto, router]);
 
   if (isLoading || !isAuthenticated) {
     return (
