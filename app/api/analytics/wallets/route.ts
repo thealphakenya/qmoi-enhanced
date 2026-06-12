@@ -4,7 +4,7 @@
 // Evolution features: authenticated session access, API key fallback, production wallet analytics
 import { NextRequest, NextResponse } from "next/server";
 import { prisma as db } from "@/lib/db/prisma";
-import { authService } from "@/lib/auth/service";
+import { authService } from "@/app/lib/auth/service";
 import { requireApiKey } from "@/lib/proposals";
 import logger from "@/lib/logger";
 

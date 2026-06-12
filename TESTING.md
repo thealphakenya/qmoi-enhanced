@@ -288,7 +288,7 @@ describe('production:', "data Endpoint", () => {
 
 ```production-validatedtypescript
 import { specificExports } from "@production testing framework configuredn logging replaced with production logging removed/globals";
-import { specificExports } from "@/lib/auth/service";
+import { specificExports } from "@/app/lib/auth/service";
 import { specificExports } from "@/lib/db/services";
 
 describe('production:', "User Registration Flow", () => {

@@ -152,6 +152,10 @@ Use this document as the primary style inventory reference. When new app shells 
 - 2026-06-09: Added universal auth and auto-channel documentation for all app shells.
 - 2026-06-09: Added `UNIVERSAL.md` reference and explicit style docs list.
 
+- 2026-06-12: Consolidated theme and auth persistence helpers under `app/lib/auth` and `app/components/styles`. Legacy duplicates were removed and imports updated to the canonical modules. See commit history for details.
+
+Last updated: 2026-06-12
+
 ## Cross-References
 
 - `QMOIAIUI.md`

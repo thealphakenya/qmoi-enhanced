@@ -76639,7 +76639,7 @@ function W"
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// production implementation: this file has no remaining production markers import { specificExports } from \"@/lib/auth/service\";  /**  * GET /api/metrics  * Get application metrics and statistics  */ export async"
+      "snippet": "// production implementation: this file has no remaining production markers import { specificExports } from \"@/app/lib/auth/service\";  /**  * GET /api/metrics  * Get application metrics and statistics  */ export async"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/deploy/route.ts",
@@ -76982,7 +76982,7 @@ function W"
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// production implementation: this file has no remaining production markers import { specificExports } from \"@/lib/auth/service\";  // GET /api/wallets/:walletId - Get wallet details export async // AUTOPRODUCTION: Performance optimized
+      "snippet": "// production implementation: this file has no remaining production markers import { specificExports } from \"@/app/lib/auth/service\";  // GET /api/wallets/:walletId - Get wallet details export async // AUTOPRODUCTION: Performance optimized
 // AUTOPRODUCTION: Performance optimized
 // AUTOPRODUCTION: Performance optimized
 function GET(   _req"
@@ -76996,7 +76996,7 @@ function GET(   _req"
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// production implementation: this file has no remaining production markers import { specificExports } from \"@/lib/auth/service\";  /**  * GET /api/analytics/wallets  * Get wallet analytics and performance metrics "
+      "snippet": "// production implementation: this file has no remaining production markers import { specificExports } from \"@/app/lib/auth/service\";  /**  * GET /api/analytics/wallets  * Get wallet analytics and performance metrics "
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/analytics/transactions/route.ts",
@@ -77007,7 +77007,7 @@ function GET(   _req"
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// production implementation: this file has no remaining production markers import { specificExports } from \"@/lib/auth/service\";  /**  * GET /api/analytics/transactions  * Get transaction analytics with filters  "
+      "snippet": "// production implementation: this file has no remaining production markers import { specificExports } from \"@/app/lib/auth/service\";  /**  * GET /api/analytics/transactions  * Get transaction analytics with filters  "
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/qmoi-gitlab/jobs/route.ts",
@@ -77685,7 +77685,7 @@ function GET() {   try {     const data = fs.exis"
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// production implementation: this file has no remaining production markers import { specificExports } from \"@/lib/auth/service\";  /**  * GET /api/admin/users  * List all users with filtering and pagination  * Adm"
+      "snippet": "// production implementation: this file has no remaining production markers import { specificExports } from \"@/app/lib/auth/service\";  /**  * GET /api/admin/users  * List all users with filtering and pagination  * Adm"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/admin/audit-logs/route.ts",
@@ -77707,7 +77707,7 @@ function GET() {   try {     const data = fs.exis"
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// production implementation: this file has no remaining production markers import { specificExports } from \"@/lib/auth/service\";  /**  * GET /api/admin/dashboard  * Get admin dashboard statistics  * Requires auth"
+      "snippet": "// production implementation: this file has no remaining production markers import { specificExports } from \"@/app/lib/auth/service\";  /**  * GET /api/admin/dashboard  * Get admin dashboard statistics  * Requires auth"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/types/uuid.d.ts",
@@ -100721,7 +100721,7 @@ function AdminPage() {   co"
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// // production implementation: this file has no remaining production markers import { specificExports } from \"@/lib/auth/service\";  /**  * GET /api/metrics  * Get application metrics and statistics  */ export as"
+      "snippet": "// // production implementation: this file has no remaining production markers import { specificExports } from \"@/app/lib/auth/service\";  /**  * GET /api/metrics  * Get application metrics and statistics  */ export as"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qnews/route.ts",
@@ -101101,7 +101101,7 @@ function AdminPage() {   co"
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// // production implementation: this file has no remaining production markers import { specificExports } from \"@/lib/auth/service\";  // GET /api/wallets/:walletId - Get wallet details export async // AUTOPRODUCTION: Performance optimized
+      "snippet": "// // production implementation: this file has no remaining production markers import { specificExports } from \"@/app/lib/auth/service\";  // GET /api/wallets/:walletId - Get wallet details export async // AUTOPRODUCTION: Performance optimized
 // AUTOPRODUCTION: Performance optimized
 // AUTOPRODUCTION: Performance optimized
 function GET(   _"
@@ -101115,7 +101115,7 @@ function GET(   _"
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// // production implementation: this file has no remaining production markers import { specificExports } from \"@/lib/auth/service\";  /**  * GET /api/analytics/wallets  * Get wallet analytics and performance metri"
+      "snippet": "// // production implementation: this file has no remaining production markers import { specificExports } from \"@/app/lib/auth/service\";  /**  * GET /api/analytics/wallets  * Get wallet analytics and performance metri"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/analytics/transactions/route.ts",
@@ -101126,7 +101126,7 @@ function GET(   _"
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// // production implementation: this file has no remaining production markers import { specificExports } from \"@/lib/auth/service\";  /**  * GET /api/analytics/transactions  * Get transaction analytics with filter"
+      "snippet": "// // production implementation: this file has no remaining production markers import { specificExports } from \"@/app/lib/auth/service\";  /**  * GET /api/analytics/transactions  * Get transaction analytics with filter"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi-gitlab/jobs/route.ts",
@@ -101862,7 +101862,7 @@ function GET() {   try {     const data = fs.e"
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// // production implementation: this file has no remaining production markers import { specificExports } from \"@/lib/auth/service\";  /**  * GET /api/admin/users  * List all users with filtering and pagination  * "
+      "snippet": "// // production implementation: this file has no remaining production markers import { specificExports } from \"@/app/lib/auth/service\";  /**  * GET /api/admin/users  * List all users with filtering and pagination  * "
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/admin/audit-logs/route.ts",
@@ -101884,7 +101884,7 @@ function GET() {   try {     const data = fs.e"
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// // production implementation: this file has no remaining production markers import { specificExports } from \"@/lib/auth/service\";  /**  * GET /api/admin/dashboard  * Get admin dashboard statistics  * Requires a"
+      "snippet": "// // production implementation: this file has no remaining production markers import { specificExports } from \"@/app/lib/auth/service\";  /**  * GET /api/admin/dashboard  * Get admin dashboard statistics  * Requires a"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/types/uuid.d.ts",

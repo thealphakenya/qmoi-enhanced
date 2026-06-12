@@ -2,7 +2,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/db/prisma";
-import { authService } from "@/lib/auth/service";
+import { authService } from "@/app/lib/auth/service";
 
 const USE_DB = Boolean(process.env.DATABASE_URL);
 const QMOI_DATA_DIR = process.env.QMOI_DATA_DIR || path.join(process.cwd(), "data");

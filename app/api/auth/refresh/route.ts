@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { authService } from "@/lib/auth/service";
+import { authService } from "@/app/lib/auth/service";
 import { setCookie } from "@/lib/cookies";
 
 export const dynamic = "force-dynamic";

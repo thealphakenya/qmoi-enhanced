@@ -1,3 +1,38 @@
+Resume From Here — QMOI Enhanced Consolidation
+Generated: 2026-06-12
+
+Purpose
+ - Single source-of-truth for the agent's consolidation plan and progress.
+ - Auto-updated by the agent after each major step.
+
+Completed
+ - Inventory of auth and style files (initial pass).
+ - Refactor `app/api/auth/me.ts` to DB-backed implementation.
+ - Cleaned `app/hooks/useAuth.ts` and consolidated login/load flows.
+ - Consolidated client persistence to `app/lib/auth` adapter.
+ - Removed legacy duplicates: `lib/auth/persistence.ts`, `lib/auth/memory.ts`.
+ - Updated many imports to use canonical `app/lib/auth` and committed changes.
+ - Partially updated `UNIVERSAL.md` and `STYLES.md` with consolidation notes.
+
+In-Progress
+ - Map entry points and usages (search and replace remaining legacy imports).
+
+Planned Next Steps (full list)
+ 1) Map entry points and usage (imports/calls) — find remaining references and update to canonical adapters.
+ 2) Merge auth features into universal handlers (`/universal` surface): unify signin, register, reset, biometric flows, and session handling.
+ 3) Merge theme/color features into a single `styles` module under `app/components/styles` and canonical `/<app>/styles` routes.
+ 4) Replace all consumers/import sites to use the unified universals and `styles` components.
+ 5) Delete legacy auth/theme files and directories once imports are replaced.
+ 6) Update `UNIVERSAL.md` and `STYLES.md` to reflect final consolidated architecture and APIs (final edits and examples).
+ 7) Run static checks (TypeScript/ESLint) and fix any issues introduced by refactors.
+ 8) Perform end-to-end runtime validation of auth/profile flows (login, profile persist, theme/language persistence, `?goto=styles` redirect).
+ 9) Prepare cleanup commit(s) and open a PR with changelog and migration notes.
+
+Notes
+ - The agent will auto-update this file at each major step and keep the todo list synchronized.
+ - Current branch: autosync-backup-20250926-232440
+
+Auto-update: true
 Resume point: 2026-06-12T10:00:00.000000Z
 Git commit: PENDING (post-consolidation)
 Git branch: autosync-backup-20250926-232440

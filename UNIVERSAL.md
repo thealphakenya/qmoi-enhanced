@@ -198,6 +198,10 @@ API endpoints and UI components respond contextually to the user's role:
   - STT language model for live speech recognition
   - TTS voice selection and synthesis parameters
   - Date/time/number formatters, pluralization, and RTL layout when required
+
+---
+
+Consolidation note: Auth and client-side persistence utilities have been consolidated to `app/lib/auth` and the universal portal (`/universal`) is the canonical auth surface. Legacy duplicate helpers under `lib/auth/` were removed to avoid import confusion. Last updated: 2026-06-12
 - Handsfree and accessibility flows must respect language settings: voice commands should be language-aware and the system should attempt to auto-detect spoken language during voice input and suggest switching if mismatch confidence is high.
 - Localized preview assets should be used where present for style previews. If a localized preview doesn't exist, fall back to default preview.
 

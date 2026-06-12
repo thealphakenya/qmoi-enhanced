@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db/prisma";
-import { authFallback, authService } from "@/lib/auth/service";
+import { authFallback, authService } from "@/app/lib/auth/service";
 import { logApiError } from "@/lib/logger";
 import { logAuthEvent } from "@/app/lib/auth/memory";
 import { setCookie } from "@/lib/cookies";
