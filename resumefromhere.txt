@@ -14,8 +14,14 @@ Completed
  - Updated many imports to use canonical `app/lib/auth` and committed changes.
  - Partially updated `UNIVERSAL.md` and `STYLES.md` with consolidation notes.
 
-In-Progress
+Completed
  - Map entry points and usages (search and replace remaining legacy imports).
+
+Next (in-progress)
+ - Merge auth features into universal handlers (`/universal` surface): unify signin, register, reset, biometric, and session handling. Started 2026-06-12.
+Updates performed (2026-06-12):
+ - Added `app/api/auth/universal/route.ts` as a safe proxy for common auth actions (`signin`, `register`, `refresh`, `logout`).
+ - This endpoint forwards requests to existing handlers to centralize the universal entrypoint without changing handler logic.
 
 Planned Next Steps (full list)
  1) Map entry points and usage (imports/calls) — find remaining references and update to canonical adapters.
