@@ -20,8 +20,16 @@ Completed
 Next (in-progress)
  - Merge auth features into universal handlers (`/universal` surface): unify signin, register, reset, biometric, and session handling. Started 2026-06-12.
 Updates performed (2026-06-12):
+Updates (2026-06-12):
+ - Redirected legacy `ThemeSelector` imports in `src` to the canonical `app/components/theme/ThemeSelector`.
+ - Added `app/components/styles/index.ts` to re-export `StylePreviewCard` and `ThemeSelector` for centralized imports.
+ - Committed changes under branch autosync-backup-20250926-232440.
  - Added `app/api/auth/universal/route.ts` as a safe proxy for common auth actions (`signin`, `register`, `refresh`, `logout`).
  - This endpoint forwards requests to existing handlers to centralize the universal entrypoint without changing handler logic.
+
+Styles & Audio updates (2026-06-12):
+ - Implemented a production-grade styles manager at `app/components/styles/index.ts` (presets, local + server persistence, retry/backoff).
+ - Added `app/components/audio/AudioMonitor.tsx`: a client-side QMOI Audio Intelligence Monitor implementing live waveform, spectrogram, browser STT, TTS demo, and analytics panels. Further enhancements (emotion detection, speaker ID, model-backed STT) can be integrated.
 
 Planned Next Steps (full list)
  1) Map entry points and usage (imports/calls) — find remaining references and update to canonical adapters.
