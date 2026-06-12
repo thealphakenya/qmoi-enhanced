@@ -3,7 +3,7 @@
 import React, { useEffect, useMemo, useState, useCallback } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import ThemeSelector from "@/components/theme/ThemeSelector";
+import ThemeSelector from "@/app/components/theme/ThemeSelector";
 import { useAuth } from "@/app/hooks/useAuth";
 import { AppShellHeader } from "@/components/shared/ui";
 

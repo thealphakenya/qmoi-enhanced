@@ -6,7 +6,7 @@ import { useAuth } from "@/app/hooks/useAuth";
 import { persistUserToStorage } from "@/app/lib/auth/persistence";
 import { log as logger } from "@/lib/logger";
 import { AppShellHeader } from "@/components/shared/ui";
-import ThemeSelector from "@/components/theme/ThemeSelector";
+import ThemeSelector from "@/app/components/theme/ThemeSelector";
 import { RoleGate } from "@/src/components/auth/RoleGate";
 import { getRoleStyles, getRoleGreeting, getRoleButtonStyle } from "@/lib/rbac/roleStyles";
 import { getAccessibleFeatures } from "@/lib/rbac/roleFeatures";

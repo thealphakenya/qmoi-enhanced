@@ -3,7 +3,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useAuth } from "@/app/hooks/useAuth";
 import { AppShellHeader } from "@/components/shared/ui";
-import ThemeSelector from "@/components/theme/ThemeSelector";
+import ThemeSelector from "@/app/components/theme/ThemeSelector";
 import { useTheme } from "next-themes";
 
 const defaultDatasets = [

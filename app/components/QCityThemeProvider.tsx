@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { useTheme } from "next-themes";
-import ThemeSelector from "@/components/theme/ThemeSelector";
+import ThemeSelector from "@/app/components/theme/ThemeSelector";
 
 export default function QCityThemeProvider() {
   const { theme, resolvedTheme } = useTheme();
