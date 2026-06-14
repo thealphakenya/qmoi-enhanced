@@ -1,5 +1,5 @@
 import React from "react";
-import ThemeProvider from "@/components/theme-provider";
+import ThemeProvider from "@/app/components/theme/ThemeProvider";
 import "./globals.css";
 import "@/styles/theme.css";
 

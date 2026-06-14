@@ -43,10 +43,10 @@ Key directories and files used by each app
 	- `src/components/qmoi/`               → QMOI AI & QMOI Space shells and shared components
 	- `src/components/shared/`             → shared UI (AppShellHeader, AvatarDisplay, UISettings, etc.)
 
-- `components/`
-	- `components/theme-provider.tsx`      → shared `ThemeProvider` (next-themes)
-	- `components/theme/ThemeSelector.tsx` → theme selector UI used inside shells
-	- `components/QCityThemeProvider.tsx`  → QCity-specific theme control (now unified to use ThemeSelector)
+- `app/components/theme/`
+	- `ThemeProvider.tsx`                   → canonical `ThemeProvider` wrapping next-themes (active)
+	- `ThemeSelector.tsx`                   → canonical theme selector UI used inside shells (active)
+	- `QCityThemeProvider.tsx` (re-export)  → backward compatibility wrapper
 
 - `lib/`
 	- `lib/auth/memory.ts`                 → `qmoiMemoryService` (in-memory memory API used by routes)
@@ -58,8 +58,8 @@ Key directories and files used by each app
 
 Shared resources and cross-app dependencies
 -------------------------------------------
-- `ThemeProvider` (`components/theme-provider.tsx`) is used by `app/layout.tsx` to provide `next-themes` across all shells.
-- `ThemeSelector` is present in each shell to let users pick shared themes (`light`, `dark`, `high-contrast`). The theme is persisted via `next-themes` with storageKey `qmoi_theme`.
+- `ThemeProvider` (`app/components/theme/ThemeProvider.tsx`) is used by `app/layout.tsx` to provide `next-themes` across all shells.
+- `ThemeSelector` (`app/components/theme/ThemeSelector.tsx`) is present in each shell and style pages to let users pick shared themes (`light`, `dark`, `high-contrast`). The theme is persisted via `next-themes` with storageKey `qmoi_theme`.
 - `useAuth` (`app/hooks/useAuth.ts`) is the canonical client-side auth hook used by `UniversalRouteGuard` and all shells.
 - `app/components/auth/*` contains universal auth UI and persistence helpers used across shells.
 - `lib/auth/memory.ts` and `app/lib/auth/memory.ts` provide memory / logging helpers; `qmoiMemoryService` is exported from `lib/auth/memory` and re-exported where needed.
@@ -84,9 +84,10 @@ Developer instructions
 		 - Complete login; the portal should redirect to `/qvillage` and the shell should apply the theme selected in `ThemeSelector`.
 
 3) Theme handling notes
-	 - `components/theme-provider.tsx` wraps the app via `app/layout.tsx`; it uses `next-themes` with storageKey `qmoi_theme` and supports `light`, `dark`, `high-contrast`.
+	 - `app/components/theme/ThemeProvider.tsx` wraps the app via `app/layout.tsx`; it uses `next-themes` with storageKey `qmoi_theme` and supports `light`, `dark`, `high-contrast`.
 	 - Shells use `useTheme()` to get `theme` and `resolvedTheme`, then compute `shellBackgroundClass` (e.g., 'min-h-screen bg-slate-100 text-slate-950' for light).
-	 - To change default theme in code, update `components/theme-provider.tsx` defaultTheme or set from the UI via `ThemeSelector`.
+	 - To change default theme in code, update the `themes` array in `app/components/theme/ThemeProvider.tsx` or set from the UI via `ThemeSelector`.
+	 - Style presets are managed via `app/components/styles/index.ts` with type-safe theme mapping (always normalized to {light, dark, high-contrast}).
 
 4) Fixing import / path issues
 	 - `tsconfig.json` defines alias `@/*` mapped to `./app/*`, `./src/*`, `./*`. When adding or fixing imports prefer `@/qcity/QCityShell` to target `src/qcity/QCityShell.tsx` or `app/qcity/...` depending on priority.
@@ -105,19 +106,22 @@ Developer instructions
 
 7) Quick troubleshooting
 	 - If a shell shows an empty page or 404, check `app/<shell>/page.tsx` imports and ensure they use `UniversalRouteGuard` and canonical shell components.
-	 - If theme changes do not apply, verify `components/theme-provider.tsx` is used in `app/layout.tsx` and that `ThemeSelector` calls `setTheme()` from `useTheme()`.
+	 - If theme changes do not apply, verify `app/components/theme/ThemeProvider.tsx` is used in `app/layout.tsx` and that `ThemeSelector` calls `setTheme()` from `useTheme()`.
 
 References (key files)
 ---------------------
 - `app/layout.tsx`
-- `components/theme-provider.tsx`
-- `components/theme/ThemeSelector.tsx`
+- `app/components/theme/ThemeProvider.tsx`
+- `app/components/theme/ThemeSelector.tsx`
+- `app/components/styles/index.ts`
+- `app/components/language/LanguageSelector.tsx`
 - `app/hooks/useAuth.ts`
 - `app/components/auth/UniversalAuthHub.tsx`
 - `app/components/auth/UniversalRouteGuard.tsx`
 - `lib/auth/memory.ts`
 - `app/lib/auth/memory.ts` (re-export + client logger)
 - `app/api/qmoi/memory/route.ts`
+- `app/api/auth/profile/route.ts`
 - `app/api/auth/memory/route.ts`
 - `src/qcity/QCityShell.tsx`
 - `src/components/qmoi/QMOIAIShell.tsx`

@@ -27,7 +27,7 @@ This document reflects the complete inventory of React components across the QMO
 ### QMOI AI Components (24 total)
 **Core Shared (All Apps)**:  AdminDashboard, ChatMessaging, QMOIAutoFixDashboard, QMOIAutoSetup, FileUploadDownload, VisualEnhancement, AudibleConversation, ClientUISettings, QMOIMasterDashboard, SponsoredUsersManager, UserProfile, WalletList, RegisterForm
 
-**AI-Exclusive (11)**: QI, QIStateWindow, NotificationCenter, HelpGuide, PreviewWindow, ThemeCustomizer, DataVisualizationPanel, AnalyticsDashboard, SecurityMonitor, PerformanceMonitor, AnalyticsCenter
+**AI-Exclusive (11)**: QI, QIStateWindow, NotificationCenter, HelpGuide, PreviewWindow, ThemeSelector, DataVisualizationPanel, AnalyticsDashboard, SecurityMonitor, PerformanceMonitor, AnalyticsCenter
 
 ### QMOI Space Components (24 total)
 **Shared Components**: Same 13 shared components as QMOI AI
@@ -171,7 +171,7 @@ File operations and media streaming:
 
 ### UI & Theming
 Design and theme components:
-- `ThemeCustomizer.tsx` – Theme customization
+- `ThemeSelector.tsx` – Theme customization
 - `QCityThemeProvider.tsx` – QCity theming
 - `AnimationControlPanel.tsx` – Animation controls
 - `FloatingControlPanel.tsx` – Floating UI

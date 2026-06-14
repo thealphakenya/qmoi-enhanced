@@ -13,7 +13,7 @@ This document describes the application-wide styling strategy for QMOI Enhanced,
 QMOI uses a shared theme and design system with the following implementation points:
 
 - `styles/theme.css` and related CSS variables for global theme management.
-- `src/components/theme-provider.tsx` for theme hydration, persistence, and runtime switching.
+- `app/components/theme/ThemeProvider.tsx` for theme hydration, persistence, and runtime switching.
 - `src/components/shared/ui/AdaptiveTheming.tsx` for adaptive app styling, contrast modes, and layout responsiveness.
 - `src/components/shared/ui/AppShellHeader.tsx` for consistent app shell branding, iconography, and global page headers.
 - Shared app shell wrappers in `app/components` and `src/components/*` that provide consistent card, button, and panel styling.

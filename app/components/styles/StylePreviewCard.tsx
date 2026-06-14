@@ -1,35 +1,38 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import { useTheme } from "next-themes";
+import { applyPreset } from "@/app/components/styles";
 
 interface Props {
   app: string;
   name: string;
   slug: string;
+  theme?: string;
   tags?: string[];
   preview?: string; // path to preview image
-  defaultTheme?: string;
 }
 
-export const StylePreviewCard: React.FC<Props> = ({ app, name, slug, tags = [], preview, defaultTheme }) => {
-  const apply = async () => {
-    try {
-      // persist locally
-      localStorage.setItem('qmoi_theme', slug);
-      localStorage.setItem(`qmoi_theme_overrides.${app}`, JSON.stringify({ preset: slug }));
+export const StylePreviewCard: React.FC<Props> = ({ app, name, slug, theme, tags = [], preview }) => {
+  const [isSaving, setIsSaving] = useState(false);
+  const { setTheme } = useTheme();
 
-      // attempt to persist to server profile (best-effort)
-      await fetch('/api/auth/profile', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ stylePreferences: { theme: slug, app } }),
-      });
-    } catch (e) {
-      // ignore errors; local change still applied
-      console.warn('Could not persist style to server', e);
+  const handleApply = async () => {
+    setIsSaving(true);
+
+    try {
+      const result = await applyPreset(slug, app, { persist: true });
+      if (result.theme) {
+        setTheme(result.theme);
+      }
+      if (!result.local) {
+        console.warn("Style preset apply did not persist locally", result);
+      }
+    } catch (error) {
+      console.warn("Could not apply style preset", error);
+    } finally {
+      setIsSaving(false);
     }
-    // trigger simple page reload to apply theme (shell should pick up qmoi_theme)
-    try { window.location.reload(); } catch (e) {}
   };
 
   return (
@@ -46,8 +49,14 @@ export const StylePreviewCard: React.FC<Props> = ({ app, name, slug, tags = [], 
         <div className="text-xs opacity-60">{tags.join(' • ')}</div>
       </div>
       <div className="flex items-center justify-between gap-2">
-        <button onClick={apply} className="px-3 py-2 rounded bg-blue-600 text-white font-semibold hover:opacity-90">Apply & Save</button>
-        <div className="text-xs opacity-60">{defaultTheme || slug}</div>
+        <button
+          disabled={isSaving}
+          onClick={handleApply}
+          className="rounded px-3 py-2 bg-blue-600 text-white font-semibold hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {isSaving ? "Applying…" : "Apply & Save"}
+        </button>
+        <div className="text-xs opacity-60">{theme || slug}</div>
       </div>
     </div>
   );

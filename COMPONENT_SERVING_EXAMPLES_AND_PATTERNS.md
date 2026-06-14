@@ -244,18 +244,18 @@ Child can access: useContext(MasterContext)
 ```typescript
 // app/layout.tsx
 import AIContext from "@/components/AIContext";
-import theme-provider from "@/components/theme-provider";
+import ThemeProvider from "@/app/components/theme/ThemeProvider";
 
 export default function RootLayout({ children }) {
   return (
     <html>
       <body>
-        <theme-provider>
+        <ThemeProvider>
           <AIContext>
             {/* All routes have access to AIContext */}
             {children}
           </AIContext>
-        </theme-provider>
+        </ThemeProvider>
       </body>
     </html>
   );

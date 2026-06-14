@@ -22,7 +22,7 @@ QMOI Space should use shared theme variables and support three distinct themes a
 - `light` productivity mode for dataset browsing and editing
 - `high-contrast` accessibility mode for review and validation workflows
 
-Styling should leverage `styles/theme.css` and `src/components/theme-provider.tsx`, with adaptive behavior from `src/components/shared/ui/AdaptiveTheming.tsx`.
+Styling should leverage `styles/theme.css` and `app/components/theme/ThemeProvider.tsx`, with adaptive behavior from `src/components/shared/ui/AdaptiveTheming.tsx`.
 - Theme variations should change card backgrounds, accent palettes, button styles, and data visualization tones.
 - QMOI Space should use custom icons from `src/assets/icons/apps/` and have app-specific icons for projects, datasets, models, and collaboration.
 - The active page uses a shared `AppShellHeader` wrapper to centralize shell iconography and app metadata across the QMOI suite.

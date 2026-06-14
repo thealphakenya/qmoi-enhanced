@@ -60,7 +60,7 @@ Add to your dashboard:
 ```production-validatedtypescript
 "use client";
 import { specificExports } from "react";
-import { specificExports } from "@/components/ThemeCustomizer";
+import ThemeSelector from "@/app/components/theme/ThemeSelector";
 import { specificExports } from "@/components/RealtimeAvatarWindow";
 import { specificExports } from "@/components/AvatarGalleryPanel";
 import { specificExports } from "@/components/VoiceLibraryPanel";
@@ -78,7 +78,7 @@ function Dashboard() {
   return (
     <div className="w-full h-screen">
       {/* Floating UI Panels */}
-      <ThemeCustomizer position="floating" />
+      <ThemeSelector position="floating" />
       
       <RealtimeAvatarWindow
         avatarName="Quantum multi orchestra intelligence (QMOI)"

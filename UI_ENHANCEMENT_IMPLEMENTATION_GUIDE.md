@@ -58,7 +58,7 @@ function App() {
 
 ```production-validatedtypescript
 // components/QMOIDashboard.tsx
-import { specificExports } from "@/components/ThemeCustomizer";
+import ThemeSelector from "@/app/components/theme/ThemeSelector";
 import { specificExports } from "@/components/RealtimeAvatarWindow";
 import { specificExports } from "@/components/AvatarGalleryPanel";
 import { specificExports } from "@/components/VoiceLibraryPanel";
@@ -76,7 +76,7 @@ function QMOIDashboard() {
   return (
     <div className="relative w-full h-screen">
       {/* Floating Panels */}
-      <ThemeCustomizer position="floating" />
+      <ThemeSelector position="floating" />
       <RealtimeAvatarWindow
         avatarName="Quantum multi orchestra intelligence (QMOI)"
         avatarType="human"
