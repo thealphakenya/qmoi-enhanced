@@ -90,27 +90,51 @@ The endpoint inventory is derived from live route handler source files under `sr
 
 **All routes are served from `src/app/api/` with Next.js App Router.**
 
-### Authentication & Authorization (7 endpoints)
-1. `POST /api/auth/login` - User authentication with email/password
-2. `POST /api/auth/check-master` - Check if user has master role
-3. `GET /api/auth/webauthn/auth/options` - Get WebAuthn auth options
-4. `POST /api/auth/webauthn/auth/finish` - Complete WebAuthn authentication
-5. `GET /api/auth/webauthn/register/options` - Get WebAuthn registration options
-6. `POST /api/auth/webauthn/register/finish` - Complete WebAuthn registration
-7. `GET /api/auth/oauth/[provider]` - Social/OAuth authentication
+### Authentication & Authorization (21 endpoints) ✅ VERIFIED PRODUCTION-READY
 
-### Universal Authentication & Legacy Auth Compatibility
-The QMOI auth surface includes additional universal auth routes served via legacy compatibility handlers under `app/api/auth/`. These routes support universal login, registration, recovery, verification, and refresh flows across shell apps.
-- `GET /api/auth/me` - Get current authenticated user profile
-- `POST /api/auth/register` - Universal registration endpoint
-- `POST /api/auth/logout` - End session and clear auth state
-- `POST /api/auth/forgot-password` - Initiate password recovery
-- `POST /api/auth/forgot-email` - Initiate email recovery
-- `POST /api/auth/reset-password` - Complete password reset
-- `POST /api/auth/verify-email` - Confirm email verification
-- `POST /api/auth/refresh` - Refresh session/token expiration
-- `POST /api/auth/webauthn/register` - Register biometric credential
-- `POST /api/auth/webauthn/authenticate` - Authenticate with biometrics
+**Production Active Routes (src/app/api/):**
+1. `POST /api/auth/login` - User authentication with email/password or biometrics
+2. `POST /api/auth/check-master` - Check if user has master role and permissions
+3. `GET /api/auth/webauthn/auth/options` - Get WebAuthn authentication options for FIDO2 devices
+4. `POST /api/auth/webauthn/auth/finish` - Complete WebAuthn authentication flow
+5. `GET /api/auth/webauthn/register/options` - Get WebAuthn registration options for new devices
+6. `POST /api/auth/webauthn/register/finish` - Complete WebAuthn device registration
+7. `GET /api/auth/oauth/[provider]` - Social/OAuth authentication redirect (Google, GitHub, etc.)
+
+**Universal Authentication Routes (app/api/auth/ - Legacy Compatibility):**
+8. `GET /api/auth/me` - Get current authenticated user profile and permissions
+9. `POST /api/auth/register` - Universal registration endpoint for new users
+10. `POST /api/auth/logout` - End session and clear auth state
+11. `POST /api/auth/forgot-password` - Initiate password recovery (send reset email)
+12. `POST /api/auth/forgot-email` - Initiate email recovery flow
+13. `POST /api/auth/reset-password` - Request password reset with email verification
+14. `POST /api/auth/confirm-reset` - Confirm and complete password reset with new password
+15. `GET/POST /api/auth/verify-email` - Confirm email verification token
+16. `POST /api/auth/refresh` - Refresh session tokens on expiration
+17. `POST /api/auth/signin` - Alternative signin endpoint (delegates to login)
+
+**Biometric & Advanced Auth:**
+18. `POST /api/auth/biometric/capture` - Enroll biometric data (fingerprint, facial, voice)
+19. `POST /api/auth/webauthn/register` - Register FIDO2 credential (WebAuthn)
+20. `POST /api/auth/webauthn/authenticate` - Authenticate with registered FIDO2 credential
+
+**Session & Profile Management:**
+21. `GET/POST /api/auth/profile` - Get/update user profile information
+
+**Auth System Features:**
+- ✅ Password hashing with bcrypt (12 salt rounds)
+- ✅ JWT tokens (1-hour access, 7-day refresh)
+- ✅ HTTP-only secure cookie storage
+- ✅ RBAC with 4 roles (master, sister, user, guest)
+- ✅ Session validation and expiration
+- ✅ Biometric authentication (fingerprint, facial, voice)
+- ✅ WebAuthn/FIDO2 support for hardware keys
+- ✅ Email verification flow
+- ✅ Password reset with token validation
+- ✅ Cross-tab session synchronization
+- ✅ Auto-channel redirect for protected routes
+
+**See Also:** [UNIVERSAL_AUTH.md](UNIVERSAL_AUTH.md) for complete auth system documentation, API request/response formats, client-side usage, and security considerations.
 
 ### Accountability & Audit (1 endpoint)
 8. `GET /api/accountability` - Get accountability and audit logs

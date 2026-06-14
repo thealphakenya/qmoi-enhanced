@@ -33,5 +33,37 @@
 - The selected theme should be applied to dataset cards, model registry panels, and marketplace controls.
 - Theme changes should persist even when the user is redirected through the universal auth portal.
 
+## Authentication & Route Protection ✅
+
+**Protection Method:** `UniversalRouteGuard` component in `app/qvillage/page.tsx`
+
+**Authentication Flow:**
+1. Unauthenticated user visits `/qvillage`
+2. `UniversalRouteGuard` checks `useAuth()` hook status
+3. If not authenticated → redirect to `/universal?redirect=/qvillage`
+4. User logs in at universal portal
+5. System auto-redirects to `/qvillage` with active session
+6. QVillage shell renders with user role and permissions
+
+**User Session Management:**
+- Current user info accessed via `useAuth()` hook
+- User role determines marketplace features and access level
+- Master/sister can publish datasets and models
+- User/guest can browse and download
+- Session tokens stored in HTTP-only cookies
+- Cross-tab session sync via storage events
+
+**Required Auth Endpoints:**
+- `GET /api/auth/me` - Get current user profile
+- `POST /api/auth/login` - User authentication
+- `POST /api/auth/logout` - End session
+- `POST /api/auth/refresh` - Refresh tokens
+
+**Role-Based Features:**
+- Master: Publish/manage datasets, full pricing control
+- Sister: Publish datasets, limited pricing
+- User: Browse, download, limited publishing
+- Guest: Browse and view only
+
 ## Next work
 - Ensure legacy `components/QVillage.tsx` and `components/q-city/QVillage.tsx` are either delegated to the canonical shell or their unique logic is migrated into `src/components/qvillage`.

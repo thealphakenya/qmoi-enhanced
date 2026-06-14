@@ -34,6 +34,31 @@ Styling should leverage `styles/theme.css` and `app/components/theme/ThemeProvid
 - Selected themes should apply consistently to dashboards, cards, tables, and data visualizations.
 - Theme colors and contrast levels must remain readable in all shell components.
 
+## Authentication & Route Protection ✅
+
+**Protection Method:** `UniversalRouteGuard` component in `app/qmoi-space/page.tsx`
+
+**Authentication Flow:**
+1. Unauthenticated user visits `/qmoi-space`
+2. `UniversalRouteGuard` checks `useAuth()` hook status
+3. If not authenticated → redirect to `/universal?redirect=/qmoi-space`
+4. User logs in at universal portal
+5. System auto-redirects to `/qmoi-space` with active session
+6. QMOI Space shell renders with user role and permissions
+
+**User Session Management:**
+- Current user info accessed via `useAuth()` hook
+- User role determines feature availability (master/sister/user/guest)
+- Session tokens stored in HTTP-only cookies
+- Tokens auto-refresh on expiration
+- Cross-tab session sync via storage events
+
+**Required Auth Endpoints:**
+- `GET /api/auth/me` - Get current user profile
+- `POST /api/auth/login` - User authentication
+- `POST /api/auth/logout` - End session
+- `POST /api/auth/refresh` - Refresh tokens
+
 ## Authentication & Parity
 QMOI Space shares authentication and session flows with other canonical shells (QMOI AI, QCity, QVillage). Ensure `/api/auth/me`, `/api/auth/login`, `/api/auth/register`, and `/api/auth/logout` are available and that UI shells expose login/register/logout actions consistently. Theme and auth preferences should be persisted via the shared theme provider and auth persistence utilities.
 

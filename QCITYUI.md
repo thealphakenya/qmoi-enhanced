@@ -65,6 +65,38 @@ QCity is a React-based dashboard application providing command center functional
 - Theme state should be applied uniformly to status cards, incident panels, and command center overlays.
 - High-contrast mode must preserve readability for alerts and operational dashboards.
 
+## Authentication & Route Protection ✅
+
+**Protection Method:** `UniversalRouteGuard` component in `app/qcity/page.tsx`
+
+**Authentication Flow:**
+1. Unauthenticated user visits `/qcity`
+2. `UniversalRouteGuard` checks `useAuth()` hook status
+3. If not authenticated → redirect to `/universal?redirect=/qcity`
+4. User logs in at universal portal
+5. System auto-redirects to `/qcity` with active session
+6. QCity shell renders with user role and permissions
+
+**User Session Management:**
+- Current user info accessed via `useAuth()` hook
+- User role determines feature availability and access level
+- Master role has full command center access
+- Session tokens stored in HTTP-only cookies
+- Tokens auto-refresh on expiration
+- Cross-tab session sync via storage events
+
+**Required Auth Endpoints:**
+- `GET /api/auth/me` - Get current user profile
+- `POST /api/auth/login` - User authentication
+- `POST /api/auth/logout` - End session
+- `POST /api/auth/refresh` - Refresh tokens
+
+**Role-Based Access:**
+- Master: Full command center, all controls
+- Sister: Limited command access
+- User: Monitoring only, no controls
+- Guest: Read-only access
+
 ---
 
 ## App Overview

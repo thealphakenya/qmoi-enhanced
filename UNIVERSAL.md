@@ -49,6 +49,130 @@ Guest Access:
 - Public content only
 ```
 
+## Universal Authentication Portal (`/universal`)
+
+The universal auth portal is the central entry point for user authentication and app access. It is implemented in `app/universal/page.tsx` and provides a unified interface for all authentication flows.
+
+### Portal Features
+
+**Authentication Modes:**
+- `?mode=signin` (default) - Sign in with email/password or biometric
+- `?mode=register` - Create new account
+- `?mode=forgotPassword` - Initiate password recovery
+- `?mode=forgotEmail` - Email account recovery
+- `?mode=resetPassword` - Complete password reset with token
+
+**Portal UI Elements:**
+- 📧 **Email/Username Input** - Accept email or username identifier
+- 🔐 **Password Input** - Secure password entry (no echo)
+- 👆 **Biometric Option** - Fingerprint/facial/voice authentication (if enrolled)
+- 🔗 **App Quick Links** - Navigate directly to protected apps after auth
+- 🌙 **Theme Selector** - Dark/light/high-contrast theme choice
+- 🌐 **Language Selector** - Interface language selection
+- ℹ️ **Auth Status Card** - Display current user info or login prompt
+- 🔄 **Tab Sync Indicator** - Show if logged in elsewhere
+
+### Authentication Endpoints
+
+All auth operations are served via `/api/auth/*` endpoints (documented in ENDPOINTS.md):
+
+**Sign In / Register:**
+- `POST /api/auth/signin` - Authenticate with email/password or biometric
+- `POST /api/auth/register` - Create new user account
+- `POST /api/auth/logout` - End session
+
+**Account Recovery:**
+- `POST /api/auth/reset-password` - Request password reset email
+- `POST /api/auth/confirm-reset` - Confirm reset with token
+- `POST /api/auth/forgot-email` - Recover email address
+- `GET|POST /api/auth/verify-email` - Verify email token
+
+**Session Management:**
+- `GET /api/auth/me` - Get current user profile
+- `POST /api/auth/refresh` - Refresh expiring tokens
+- `POST /api/auth/biometric/capture` - Enroll biometric
+
+**Advanced:**
+- `POST /api/auth/webauthn/register` - Register hardware key (FIDO2)
+- `POST /api/auth/webauthn/authenticate` - Authenticate with hardware key
+
+### Portal URL Parameters
+
+- `?app=<app>` - Auto-link to specific app (qcity, qmoi-ai, qmoi-space, qvillage, qalpha)
+- `?redirect=<path>` - Post-login redirect path (preserved through auth)
+- `?mode=<mode>` - Auth portal mode (signin, register, forgotPassword, resetPassword)
+- `?goto=<target>` - Post-login goto parameter (e.g., /qmoi-ai/styles)
+
+**Examples:**
+```
+# Sign into QCity
+/universal?app=qcity&mode=signin
+
+# Register and redirect to QMOI Space
+/universal?app=qmoi-space&mode=register&redirect=/qmoi-space
+
+# Password recovery
+/universal?mode=forgotPassword
+
+# Reset password with token
+/universal?mode=resetPassword&token=<reset-token>
+```
+
+### Session Persistence & Sync
+
+**Storage Locations:**
+- `accessToken` - HTTP-only cookie (1-hour expiry)
+- `refreshToken` - HTTP-only cookie (7-day expiry)
+- `qmoi_user` - localStorage (user ID, role, name)
+- `qmoi_theme` - localStorage (dark/light/high-contrast)
+- `qmoi_lang` - localStorage (language code)
+
+**Cross-Tab Synchronization:**
+- `storage` event listener syncs auth changes across tabs
+- `qmoi:auth:changed` custom event broadcasts auth state updates
+- Auto-logout in all tabs when logging out in one tab
+
+**Token Refresh Mechanism:**
+- Access token (1 hour) → auto-refresh on expiration
+- Refresh token (7 days) → request new tokens before expiry
+- Fallback refresh on `useAuth` hook mount if tokens stale
+
+### Universal Route Guard
+
+All app shells are protected by `UniversalRouteGuard` component:
+
+```tsx
+// app/qcity/page.tsx
+export default function Page() {
+  return (
+    <UniversalRouteGuard>
+      <QCityShell />
+    </UniversalRouteGuard>
+  );
+}
+```
+
+**Guard Behavior:**
+1. Check authentication status via `useAuth()` hook
+2. If authenticated → render protected content
+3. If not authenticated → redirect to `/universal?redirect=<current-path>`
+4. Show loading state while checking auth
+5. Preserve original path in `redirect` param for post-login redirect
+
+### Theme & Language Selection
+
+**Theme Selection:**
+- Available in `/universal` portal
+- Persisted via `ThemeSelector` component
+- Applies to all app shells
+- Three options: dark, light, high-contrast
+
+**Language Selection:**
+- Available in `/universal` portal  
+- Persisted via `LanguageSelector` component
+- Sets `qmoi_lang` localStorage key
+- Updates user profile via `PUT /api/auth/profile` when authenticated
+
 ## Universal Entry Behavior
 
 - The root route `/` now opens the universal auth portal by default via `app/page.tsx`.
@@ -65,11 +189,11 @@ Guest Access:
 
 The universal auth portal provides:
 
-- `Universal Sign In`
-- `Universal Register`
-- `Forgot Password`
-- `Forgot Email`
-- `Reset Password`
+- `Universal Sign In` - Email/password with optional biometric
+- `Universal Register` - Create new account
+- `Forgot Password` - Initiate password recovery
+- `Forgot Email` - Email recovery  
+- `Reset Password` - Confirm password reset
 - Biometric login and registration support (master & sister)
 - Session refresh and persistent state across shell transitions
 - Privacy mask and parallel session controls (role-gated)

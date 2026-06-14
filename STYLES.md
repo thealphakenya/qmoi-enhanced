@@ -46,11 +46,69 @@ The UI shells share a common style baseline across these apps:
 
 Each app must support at least the following theme modes:
 
-- `dark`
-- `light`
-- `high-contrast`
+- `dark` (default) - Slate-950 background with slate-100 text
+- `light` - Slate-100 background with slate-950 text
+- `high-contrast` - Pure black background with white text
+
+## Theme Selector Component
 
 The shared `ThemeSelector` component in `app/components/theme/ThemeSelector.tsx` is the canonical theme picker, and it should be present in each shell to allow theme changes across apps.
+
+**Component Location:** `app/components/theme/ThemeSelector.tsx`
+
+**Features:**
+- Three theme options: dark, light, high-contrast
+- Compact mode (select dropdown) and full mode (button group)
+- Icon representation for each theme
+- Real-time theme switching without page reload
+- Theme persistence via `qmoi_theme` localStorage key
+- Accessible keyboard navigation
+
+**Usage Example:**
+```tsx
+import ThemeSelector from '@/app/components/theme/ThemeSelector';
+
+export default function MyApp() {
+  return (
+    <div>
+      <ThemeSelector mode="compact" /> {/* or mode="full" */}
+    </div>
+  );
+}
+```
+
+**Theme CSS Variables:**
+All theme colors are defined in `styles/theme.css` using CSS custom properties that respond to the `[data-theme]` attribute:
+
+```css
+/* Light Theme */
+html[data-theme="light"] {
+  --bg-primary: rgb(241 245 250);
+  --text-primary: rgb(2 6 23);
+  /* ... */
+}
+
+/* Dark Theme (default) */
+html[data-theme="dark"] {
+  --bg-primary: rgb(3 7 18);
+  --text-primary: rgb(226 232 240);
+  /* ... */
+}
+
+/* High-Contrast Theme */
+html[data-theme="high-contrast"] {
+  --bg-primary: #000000;
+  --text-primary: #ffffff;
+  /* ... */
+}
+```
+
+**Implementation Guidelines:**
+1. `ThemeSelector` should be included in app header or settings
+2. Theme change dispatches `qmoi:theme-changed` event for app hydration
+3. Theme persists across page navigation via provider wrapper
+4. Each shell receives theme preference from authenticated user profile
+5. First-time users default to `dark` theme (customizable per role)
 - Theme selection must auto-customize the UI based on the active user role, accessibility requirements, and app intent so that each shell renders a personalized experience for master, sister, user, or guest users.
 - The theme system also supports real-time visual features such as speech and camera overlay panels, enabling QMOI to show audio/video diagnostics and live model output on the same authorized page when cameras or microphones are available.
 

@@ -225,6 +225,71 @@ The following standalone route handler source files are defined directly under `
 - `wallet.ts`
 - `wifi-security.ts`
 
+## App Shell Page Routes (Protected by UniversalRouteGuard)
+
+All app shell pages are protected with `UniversalRouteGuard` which enforces authentication and redirects unauthenticated users to `/universal` with redirect parameters.
+
+### Application Routes
+| Route | File | Purpose | Protection |
+|-------|------|---------|-----------|
+| `/universal` | `app/universal/page.tsx` | **Universal auth portal** - central login/register/recovery hub | None (public) |
+| `/qmoi-ai` | `app/qmoi-ai/page.tsx` | QMOI AI intelligent assistant dashboard | ✅ UniversalRouteGuard |
+| `/qmoi-space` | `app/qmoi-space/page.tsx` | QMOI Space collaboration and marketplace | ✅ UniversalRouteGuard |
+| `/qcity` | `app/qcity/page.tsx` | QCity command center for monitoring | ✅ UniversalRouteGuard |
+| `/qvillage` | `app/qvillage/page.tsx` | QVillage community workspace | ✅ UniversalRouteGuard |
+| `/qalpha` | `app/qalpha/page.tsx` | QAlpha research dashboard | ✅ UniversalRouteGuard |
+
+### Universal Auth Portal Features
+The `/universal` route provides:
+- **Sign In** (`?mode=signin`) - Email/password authentication with biometric support
+- **Register** (`?mode=register`) - New user account creation
+- **Forgot Password** (`?mode=forgotPassword`) - Password recovery initiation
+- **Forgot Email** (`?mode=forgotEmail`) - Email recovery
+- **Reset Password** (`?mode=resetPassword`) - Password reset confirmation
+- **Language Selection** - User language preference
+- **Theme Selector** - Dark/light/high-contrast theme selection
+- **App Links** - Quick navigation to all protected apps
+
+**URL Parameters:**
+- `?app=qcity` - Auto-link to specific app (qcity, qmoi-ai, qmoi-space, qvillage, qalpha)
+- `?redirect=/target/path` - Post-login redirect path (preserved through auth)
+- `?mode=signin|register|forgotPassword|resetPassword` - Portal mode
+- `?goto=styles` - Post-login goto parameter (e.g., redirect to styles page)
+
+### App Route Guard Behavior
+1. User accesses `/qcity` (or any protected app)
+2. `UniversalRouteGuard` checks authentication status
+3. If unauthenticated → redirect to `/universal?redirect=/qcity`
+4. User authenticates successfully
+5. System redirects to original path (`/qcity`)
+6. App content renders with active session
+
+### Authentication Flow
+```
+Unauthenticated User
+       ↓
+Visits: /qmoi-ai
+       ↓
+Captured by UniversalRouteGuard
+       ↓
+Redirected to: /universal?redirect=/qmoi-ai
+       ↓
+User authenticates
+       ↓
+Redirected to: /qmoi-ai
+       ↓
+App renders with active session
+```
+
+### Session Persistence
+- Sessions stored in HTTP-only cookies (secure, sameSite)
+- Additional state in localStorage (user, role, theme)
+- Cross-tab synchronization via storage events
+- Auto-refresh tokens on expiration
+- Clear on logout
+
+---
+
 ## PWA and Public Route Mapping
 - `app/qmoi-ai/page.tsx` is a live Next.js page serving the QMOI AI dashboard experience.
 - `app/qmoi-space/page.tsx` is a live Next.js page serving the QMOI Space marketplace and collaboration UI.

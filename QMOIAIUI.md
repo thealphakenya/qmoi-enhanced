@@ -33,6 +33,59 @@ QMOI AI supports theme-based styling and should be driven by the shared `styles/
 - Custom icons should be centrally referenced from `src/assets/icons/apps/` and should include `qmoi-ai.svg` plus app-specific icons for AI chat, avatar, model, and workspace states.
 - The live page now uses the shared `AppShellHeader` wrapper for consistent app-brand presentation and centralized shell metadata.
 
+## Authentication & Route Protection ✅
+
+**Protection Method:** `UniversalRouteGuard` component in `app/qmoi-ai/page.tsx`
+
+**Authentication Flow:**
+1. Unauthenticated user visits `/qmoi-ai`
+2. `UniversalRouteGuard` checks `useAuth()` hook status
+3. If not authenticated → redirect to `/universal?redirect=/qmoi-ai`
+4. User logs in at universal portal
+5. System auto-redirects to `/qmoi-ai` with active session
+6. QMOI AI shell renders with user role and permissions
+
+**User Session Management:**
+- Current user info accessed via `useAuth()` hook
+- User role determines feature availability (master/sister/user/guest)
+- Session tokens stored in HTTP-only cookies
+- Tokens auto-refresh on expiration
+- Cross-tab session sync via storage events
+
+**Required Auth Endpoints:**
+- `GET /api/auth/me` - Get current user profile
+- `POST /api/auth/login` - User authentication
+- `POST /api/auth/logout` - End session
+- `POST /api/auth/refresh` - Refresh tokens
+
+**Role-Based Features:**
+- Master: All features, system controls, financial management
+- Sister: Collaboration, personal content, shared features
+- User: Chat, basic features, limited controls
+- Guest: Read-only access, limited features
+
+**Implementation:**
+```tsx
+// app/qmoi-ai/page.tsx
+import UniversalRouteGuard from "@/app/components/auth/UniversalRouteGuard";
+
+export default function Page() {
+  return (
+    <UniversalRouteGuard>
+      <QMOIAIShell />
+    </UniversalRouteGuard>
+  );
+}
+```
+
+## Theme Selection
+- The QMOI AI shell must expose the shared `ThemeSelector` component so users can choose `dark`, `light`, or `high-contrast` modes.
+- The theme choice should persist across page reloads and app boundary transitions.
+- The theme selector must live in an accessible location near the app header or settings controls.
+- When the user changes themes, the updated state should be available to the entire universal auth and app flow.
+- Custom icons should be centrally referenced from `src/assets/icons/apps/` and should include `qmoi-ai.svg` plus app-specific icons for AI chat, avatar, model, and workspace states.
+- The live page now uses the shared `AppShellHeader` wrapper for consistent app-brand presentation and centralized shell metadata.
+
 ## UI Components in Use
 - `AdminDashboard`
 - `ChatMessaging`

@@ -36,6 +36,39 @@ Theme states should map to `styles/theme.css` variables and the shared `ThemePro
 - Theme changes should be preserved by the universal auth portal when redirecting back to `/qalpha`.
 - The theme selector should apply to all research visuals, progress panels, and model metric cards.
 
+## Authentication & Route Protection ✅
+
+**Protection Method:** `UniversalRouteGuard` component in `app/qalpha/page.tsx`
+
+**Authentication Flow:**
+1. Unauthenticated user visits `/qalpha`
+2. `UniversalRouteGuard` checks `useAuth()` hook status
+3. If not authenticated → redirect to `/universal?redirect=/qalpha`
+4. User logs in at universal portal
+5. System auto-redirects to `/qalpha` with active session
+6. QAlpha shell renders with user role and permissions
+
+**User Session Management:**
+- Current user info accessed via `useAuth()` hook
+- User role determines research path access and feature availability
+- Master has full research controls and data export
+- Sister/user have exploration and learning access
+- Guest has read-only access to public paths
+- Session tokens stored in HTTP-only cookies
+- Cross-tab session sync via storage events
+
+**Required Auth Endpoints:**
+- `GET /api/auth/me` - Get current user profile
+- `POST /api/auth/login` - User authentication
+- `POST /api/auth/logout` - End session
+- `POST /api/auth/refresh` - Refresh tokens
+
+**Role-Based Features:**
+- Master: All research paths, data export, advanced analytics
+- Sister: Research exploration, data collaboration
+- User: Learning paths, public research access
+- Guest: Public research only
+
 ## Active UI Components
 - `AdminDashboard`
 - `ChatMessaging`
