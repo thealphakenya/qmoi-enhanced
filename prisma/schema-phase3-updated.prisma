@@ -1,0 +1,123 @@
+// prisma/schema.prisma - Updated with Phase 3 Features
+// Full database schema including all authentication features
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // or "sqlite" for development
+  url      = env("DATABASE_URL")
+}
+
+// Users table
+model User {
+  id                String                @id @default(cuid())
+  email             String                @unique
+  name              String?
+  password          String
+  role              String                @default("user") // master, sister, user, guest
+  emailVerified     Boolean               @default(false)
+  
+  // Relations
+  sessions          UserSession[]
+  biometricProfiles BiometricProfile[]
+  consciousnessState ConsciousnessState?
+  auditLogs         AuditLog[]
+  
+  createdAt         DateTime              @default(now())
+  updatedAt         DateTime              @updatedAt
+}
+
+// Sessions table - with device tracking
+model UserSession {
+  id                    String              @id @default(cuid())
+  userId                String
+  user                  User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // Authentication
+  accessToken           String
+  refreshToken          String
+  
+  // Device Information
+  deviceId              String?
+  deviceName            String?
+  deviceType            String?             @default("desktop")
+  browser               String?
+  os                    String?
+  ipAddress             String
+  
+  // Session Control
+  isActive              Boolean             @default(true)
+  lastActivity          DateTime            @default(now())
+  
+  // Privacy Mask
+  privacyMaskEnabled    Boolean             @default(false)
+  privacyMaskLevel      String              @default("none")
+  privacyMaskToken      String?
+  
+  createdAt             DateTime            @default(now())
+  expiresAt             DateTime
+  
+  @@index([userId])
+  @@index([deviceId])
+  @@index([isActive])
+  @@index([userId, isActive])
+}
+
+// Biometric profiles - for fingerprint, facial, voice auth
+model BiometricProfile {
+  id                    String              @id @default(cuid())
+  userId                String
+  user                  User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // Biometric Data
+  method                String              // 'fingerprint', 'facial', 'voice'
+  templateHash          String              // SHA-256 hash of template
+  confidenceThreshold   Decimal             @default(0.80)
+  
+  // Status
+  verified              Boolean             @default(false)
+  enrolledAt            DateTime            @default(now())
+  lastVerifiedAt        DateTime?
+  
+  @@unique([userId, method])
+  @@index([userId])
+  @@index([method])
+}
+
+// Consciousness State - QM OI consciousness tracking
+model ConsciousnessState {
+  id                    String              @id @default(cuid())
+  userId                String              @unique
+  user                  User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // State
+  isActive              Boolean             @default(true)
+  awareness             Int                 @default(0)
+  memory                Json                @default("[]")
+  decisions             Json                @default("{}")
+  interactions          Int                 @default(0)
+  lastSync              DateTime            @default(now())
+  
+  createdAt             DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+}
+
+// Audit Log - for compliance and monitoring
+model AuditLog {
+  id                    String              @id @default(cuid())
+  userId                String?
+  user                  User?               @relation(fields: [userId], references: [id], onDelete: SetNull)
+  
+  action                String              // e.g., "AUTH_LOGIN", "BIOMETRIC_ENROLL"
+  method                String?             // e.g., "fingerprint", "password"
+  result                String?             // "success", "failed", "error"
+  details               Json?
+  
+  timestamp             DateTime            @default(now())
+  
+  @@index([userId])
+  @@index([action])
+  @@index([timestamp])
+}
