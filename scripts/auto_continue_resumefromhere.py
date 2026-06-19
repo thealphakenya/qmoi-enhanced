@@ -15,6 +15,13 @@ ROOT = Path(__file__).resolve().parents[1]
 RESUME_FILE = ROOT / "resumefromhere.txt"
 AUTUPDATE_SCRIPT = ROOT / "scripts" / "autoupdate_resume.py"
 BULK_FIXER_SCRIPT = ROOT / "scripts" / "bulk_production_fixer.py"
+DUPLICATE_CLEANUP_SCRIPT = ROOT / "scripts" / "duplicate_cleanup.py"
+UPDATE_API_DOCS_SCRIPT = ROOT / "scripts" / "update_api_docs.js"
+AUTODOC_SCRIPT = ROOT / "scripts" / "autoupdate_docs.sh"
+LION_METADATA_SCRIPT = ROOT / "scripts" / "autotag_md_with_lion.py"
+LION_SCAN_SCRIPT = ROOT / "scripts" / "scan_lion_usage.py"
+LION_ORCHESTRATOR_SCRIPT = ROOT / "scripts" / "lion_orchestrator.py"
+LION_INTEGRATOR_SCRIPT = ROOT / "scripts" / "qmoi_bulk_lion_security_integrator.py"
 
 
 def git_summary() -> tuple[str, str, str]:
@@ -135,7 +142,66 @@ def update_resume_tasks_block() -> None:
     RESUME_FILE.write_text(resume_content, encoding='utf-8')
 
 
+def run_command(command: list[str], description: str) -> bool:
+    print(f"Executing: {description} -> {' '.join(command)}")
+    try:
+        subprocess.run(command, cwd=ROOT, check=True)
+        return True
+    except subprocess.CalledProcessError as exc:
+        print(f"{description} failed: {exc}")
+        return False
+
+
+DUPLICATE_FILE_AUDIT_SCRIPT = ROOT / "scripts" / "duplicate_file_audit.py"
+
+
 def run_bulk_fixer() -> None:
+    if DUPLICATE_CLEANUP_SCRIPT.exists():
+        run_command([sys.executable, str(DUPLICATE_CLEANUP_SCRIPT)], 'duplicate cleanup')
+    else:
+        print(f"Warning: {DUPLICATE_CLEANUP_SCRIPT} not found; skipping duplicate cleanup.")
+
+    if DUPLICATE_FILE_AUDIT_SCRIPT.exists():
+        run_command([sys.executable, str(DUPLICATE_FILE_AUDIT_SCRIPT)], 'duplicate file audit')
+    else:
+        print(f"Warning: {DUPLICATE_FILE_AUDIT_SCRIPT} not found; skipping duplicate file audit.")
+
+    if UPDATE_API_DOCS_SCRIPT.exists():
+        run_command(["node", str(UPDATE_API_DOCS_SCRIPT)], 'update API docs')
+    else:
+        print(f"Warning: {UPDATE_API_DOCS_SCRIPT} not found; skipping API docs update.")
+
+    if AUTODOC_SCRIPT.exists():
+        run_command(["bash", str(AUTODOC_SCRIPT)], 'autoupdate markdown docs')
+    else:
+        print(f"Warning: {AUTODOC_SCRIPT} not found; skipping markdown docs autoupdate.")
+
+    qmoi_md_autoupdater = ROOT / "scripts" / "qmoi_md_autoupdater.py"
+    if qmoi_md_autoupdater.exists():
+        run_command([sys.executable, str(qmoi_md_autoupdater)], 'sync root documentation files')
+    else:
+        print(f"Warning: {qmoi_md_autoupdater} not found; skipping root documentation sync.")
+
+    if LION_METADATA_SCRIPT.exists():
+        run_command([sys.executable, str(LION_METADATA_SCRIPT), "--apply", "--out", str(ROOT / "docs" / "md_index.json")], 'apply Lion markdown validation metadata')
+    else:
+        print(f"Warning: {LION_METADATA_SCRIPT} not found; skipping Lion metadata tagging.")
+
+    if LION_SCAN_SCRIPT.exists():
+        run_command([sys.executable, str(LION_SCAN_SCRIPT), "--report"], 'scan Lion usage and extension docs')
+    else:
+        print(f"Warning: {LION_SCAN_SCRIPT} not found; skipping Lion usage scan.")
+
+    if LION_ORCHESTRATOR_SCRIPT.exists():
+        run_command([sys.executable, str(LION_ORCHESTRATOR_SCRIPT), "--work", "bulk"], 'run Lion orchestrator bulk integration')
+    else:
+        print(f"Warning: {LION_ORCHESTRATOR_SCRIPT} not found; skipping Lion orchestrator integration.")
+
+    if LION_INTEGRATOR_SCRIPT.exists():
+        run_command([sys.executable, str(LION_INTEGRATOR_SCRIPT)], 'run QM OI Lion bulk security integrator')
+    else:
+        print(f"Warning: {LION_INTEGRATOR_SCRIPT} not found; skipping QM OI Lion bulk security integration.")
+
     if not BULK_FIXER_SCRIPT.exists():
         print(f"Warning: {BULK_FIXER_SCRIPT} not found; bulk production fixer cannot be executed.")
         return
@@ -153,7 +219,7 @@ def refresh_resume_file() -> None:
         return
 
     try:
-        subprocess.run(["python3", str(AUTUPDATE_SCRIPT)], cwd=ROOT, check=True)
+        subprocess.run([sys.executable, str(AUTUPDATE_SCRIPT)], cwd=ROOT, check=True)
         print("resumefromhere.txt refreshed with current git metadata.")
     except subprocess.CalledProcessError as exc:
         print(f"Failed to refresh resumefromhere.txt: {exc}")
@@ -181,6 +247,7 @@ def load_resume_content() -> Optional[str]:
 
 
 def main() -> None:
+    refresh_resume_file()
     update_resume_tasks_block()
     run_bulk_fixer()
     refresh_resume_file()

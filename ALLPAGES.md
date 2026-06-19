@@ -1,37 +1,45 @@
 # ALLPAGES.md - Complete Page Route Inventory
 
 ## Page Entrypoints
-- app/admin/master/activity/page.tsx
-- app/admin/master/login/page.tsx
-- app/admin/master/page.tsx
-- app/admin/master/security/page.tsx
-- app/admin/master/settings/page.tsx
-- app/admin/page.tsx
-- app/dev/page.tsx
-- app/devices/page.tsx
-- app/friendship/page.tsx
-- app/master/email/page.tsx
-- app/master/links/page.tsx
-- app/master/tracks/page.tsx
-- app/page.tsx
-- app/qcity/page.tsx
-- app/qmoi-ai/page.tsx
-- app/qmoi-space/page.tsx
-- app/qalpha/page.tsx
-- app/qvillage/page.tsx
-- public/index.html
-- public/pwa_apps/qmoi-ai/index.html
-- public/pwa_apps/qmoi-ai/preview.html
-- public/pwa_apps/qmoi-space/index.html
-- public/q-alpha.html
-- public/qcity-complete.html
-- public/qcity-dashboard.html
-- public/qcity-enterprise.html
-- public/qcity/index.html
-- public/qmoi-ai.html
-- public/qmoi-space.html
-- src/app/master/domain-health/page.tsx
-- src/app/master/workflows-health/page.tsx
+
+- `app/page.tsx` → `/`
+- `app/admin/page.tsx` → `/admin`
+- `app/admin/master/page.tsx` → `/admin/master`
+- `app/admin/master/activity/page.tsx` → `/admin/master/activity`
+- `app/admin/master/login/page.tsx` → `/admin/master/login`
+- `app/admin/master/security/page.tsx` → `/admin/master/security`
+- `app/admin/master/settings/page.tsx` → `/admin/master/settings`
+- `app/dev/page.tsx` → `/dev`
+- `app/devices/page.tsx` → `/devices`
+- `app/friendship/page.tsx` → `/friendship`
+- `public/index.html` → `/index.html`
+- `src/app/master/domain-health/page.tsx` → `/master/domain-health`
+- `app/master/email/page.tsx` → `/master/email`
+- `app/master/links/page.tsx` → `/master/links`
+- `app/master/tracks/page.tsx` → `/master/tracks`
+- `public/pwa_apps/qmoi-ai/index.html` → `/pwa_apps/qmoi-ai/index.html`
+- `public/pwa_apps/qmoi-ai/preview.html` → `/pwa_apps/qmoi-ai/preview.html`
+- `public/pwa_apps/qmoi-space/index.html` → `/pwa_apps/qmoi-space/index.html`
+- `public/q-alpha.html` → `/q-alpha.html`
+- `app/qalpha/page.tsx` → `/qalpha`
+- `app/qalpha/styles/page.tsx` → `/qalpha/styles`
+- `app/qcity/page.tsx` → `/qcity`
+- `public/qcity-complete.html` → `/qcity-complete.html`
+- `public/qcity-dashboard.html` → `/qcity-dashboard.html`
+- `public/qcity-enterprise.html` → `/qcity-enterprise.html`
+- `public/qcity/index.html` → `/qcity/index.html`
+- `app/qcity/styles/page.tsx` → `/qcity/styles`
+- `app/qmoi-ai/page.tsx` → `/qmoi-ai`
+- `public/qmoi-ai.html` → `/qmoi-ai.html`
+- `app/qmoi-ai/styles/page.tsx` → `/qmoi-ai/styles`
+- `app/qmoi-space/page.tsx` → `/qmoi-space`
+- `public/qmoi-space.html` → `/qmoi-space.html`
+- `app/qmoi-space/styles/page.tsx` → `/qmoi-space/styles`
+- `app/qvillage/page.tsx` → `/qvillage`
+- `app/qvillage/styles/page.tsx` → `/qvillage/styles`
+- `app/reset-password/page.tsx` → `/reset-password`
+- `app/universal/page.tsx` → `/universal`
+- `app/verify-email/page.tsx` → `/verify-email`
 
 ## Notes
-This inventory includes all live page routes in the repository and the current static shell launchers used for app compatibility.
+This inventory includes all live application page entrypoints and static HTML shells present in the repository. It is generated from the current filesystem layout of `app/`, `src/app/`, and `public/`.

@@ -198,7 +198,7 @@ SA-504: Session timeout enforced
 - [ ] Account lockout after 5 failed attempts
 - [ ] Credential reset requires email verification
 - [ ] MFA (biometric) available for master/sister
-- [ ] "Remember me" not implemented (security risk)
+- [x] "Remember me" intentionally disabled for security and session integrity
 - [ ] No hardcoded credentials anywhere
 
 ### 1.6 A06:2021 – Sensitive Data Exposure

@@ -1,0 +1,1261 @@
+{
+  "generated": "2026-06-19T22:44:20.602597+00:00",
+  "total_files_scanned": 845,
+  "duplicate_groups": {
+    "link_fixes_mapping.json": [
+      "link_fixes_mapping.json",
+      "reports/link_fixes_mapping.json"
+    ],
+    "deployment_guide.md": [
+      ".evolution_logs/DEPLOYMENT_GUIDE.md",
+      "DEPLOYMENT_GUIDE.md"
+    ],
+    "qmoigitlabdev.md": [
+      "QMOIGITLABDEV.md",
+      "docs/QMOIGITLABDEV.md"
+    ],
+    "autotest_report.md": [
+      "autotest_report.md",
+      "tools/autotest_report.md"
+    ],
+    "5.md": [
+      "5.md",
+      "hf_space_qvillage/5.md"
+    ],
+    "validation_report.json": [
+      "scripts/validation_report.json",
+      "tools/validation_report.json",
+      "validation_report.json"
+    ],
+    "advanced_analytics_dashboard_summary.json": [
+      "ADVANCED_ANALYTICS_DASHBOARD_SUMMARY.json",
+      "reports/ADVANCED_ANALYTICS_DASHBOARD_SUMMARY.json",
+      "scripts/ADVANCED_ANALYTICS_DASHBOARD_SUMMARY.json"
+    ],
+    "phase1_simplified_report.json": [
+      "phase1_simplified_report.json",
+      "reports/phase1_simplified_report.json"
+    ],
+    "dns_providers_config.json": [
+      "dns_providers_config.json",
+      "reports/dns_providers_config.json"
+    ],
+    "system_integration_test_report.json": [
+      "SYSTEM_INTEGRATION_TEST_REPORT.json",
+      "reports/SYSTEM_INTEGRATION_TEST_REPORT.json"
+    ],
+    "replacement_apps_manifest.json": [
+      "REPLACEMENT_APPS_MANIFEST.json",
+      "reports/REPLACEMENT_APPS_MANIFEST.json"
+    ],
+    "release_assets_manifest.json": [
+      "release_assets_manifest.json",
+      "reports/release_assets_manifest.json"
+    ],
+    "qmoi_adaptation_state.json": [
+      "qmoi_adaptation_state.json",
+      "reports/qmoi_adaptation_state.json"
+    ],
+    "metrics.json": [
+      "metrics.json",
+      "reports/metrics.json"
+    ],
+    "qmoigithubdev.md": [
+      "QMOIGITHUBDEV.md",
+      "docs/QMOIGITHUBDEV.md"
+    ],
+    "advanced_ml_analytics_report.json": [
+      "ADVANCED_ML_ANALYTICS_REPORT.json",
+      "reports/ADVANCED_ML_ANALYTICS_REPORT.json"
+    ],
+    "build_report_v1.2.3.json": [
+      "build_report_v1.2.3.json",
+      "reports/build_report_v1.2.3.json"
+    ],
+    "advanced_performance_optimization_report.json": [
+      "ADVANCED_PERFORMANCE_OPTIMIZATION_REPORT.json",
+      "reports/ADVANCED_PERFORMANCE_OPTIMIZATION_REPORT.json"
+    ],
+    "vercel.json": [
+      "reports/vercel.json",
+      "vercel.json"
+    ],
+    "qmoi_memory.json": [
+      "qmoi_memory.json",
+      "reports/qmoi_memory.json",
+      "scripts/qmoi_memory.json"
+    ],
+    "parsing_restore_report.json": [
+      "parsing_restore_report.json",
+      "reports/parsing_restore_report.json"
+    ],
+    "audit-report.json": [
+      "audit-report.json",
+      "reports/audit-report.json"
+    ],
+    "build_manifest_v1.2.3.json": [
+      "build_manifest_v1.2.3.json",
+      "reports/build_manifest_v1.2.3.json"
+    ],
+    "advanced_analytics_dashboard_system_report.json": [
+      "ADVANCED_ANALYTICS_DASHBOARD_SYSTEM_REPORT.json",
+      "reports/ADVANCED_ANALYTICS_DASHBOARD_SYSTEM_REPORT.json",
+      "scripts/ADVANCED_ANALYTICS_DASHBOARD_SYSTEM_REPORT.json"
+    ],
+    "enhanced-error-fix.js": [
+      "enhanced-error-fix.js",
+      "scripts/enhanced-error-fix.js"
+    ],
+    "required_secrets.json": [
+      "reports/required_secrets.json",
+      "required_secrets.json"
+    ],
+    "package.json": [
+      "dashboard/package.json",
+      "mobile/package.json",
+      "package.json",
+      "pwa_apps/admin/package.json",
+      "pwa_apps/deals/package.json",
+      "pwa_apps/q-alpha/package.json",
+      "tools/icon-manager/package.json"
+    ],
+    "qallpurpose.md": [
+      "QALLPURPOSE.md",
+      "QAlLPURPOSE.MD"
+    ],
+    "q.md": [
+      "Q.md",
+      "q.md"
+    ],
+    "launch.json": [
+      "launch.json",
+      "reports/launch.json"
+    ],
+    "memories.json": [
+      "memories.json",
+      "reports/memories.json"
+    ],
+    "qmoi-release-status.json": [
+      "qmoi-release-status.json",
+      "reports/qmoi-release-status.json"
+    ],
+    "production_dns_records.json": [
+      "production_dns_records.json",
+      "reports/production_dns_records.json"
+    ],
+    "api_reference.md": [
+      "API_REFERENCE.md",
+      "docs/API_REFERENCE.md"
+    ],
+    "references.md": [
+      "REFERENCES.md",
+      "docs/REFERENCES.md"
+    ],
+    "deploy.md": [
+      "DEPLOY.md",
+      "docs/DEPLOY.md"
+    ],
+    "ui_validation_report.json": [
+      "docs/ui_validation_report.json",
+      "ui_validation_report.json"
+    ],
+    "remediation_plan.json": [
+      "remediation_plan.json",
+      "reports/remediation_plan.json"
+    ],
+    "production_readiness_report.md": [
+      "PRODUCTION_READINESS_REPORT.md",
+      "reports/production_readiness_report.md"
+    ],
+    "license-report.json": [
+      "license-report.json",
+      "reports/license-report.json"
+    ],
+    "domain_health_report.json": [
+      "docs/domain_health_report.json",
+      "domain_health_report.json",
+      "reports/domain_health_report.json"
+    ],
+    "revoked_tokens.json": [
+      "reports/revoked_tokens.json",
+      "revoked_tokens.json"
+    ],
+    "qtools.md": [
+      "QTOOLS.md",
+      "docs/QTOOLS.md"
+    ],
+    "config.json": [
+      "config.json",
+      "reports/config.json"
+    ],
+    "production_checklist.md": [
+      "PRODUCTION_CHECKLIST.md",
+      "docs/PRODUCTION_CHECKLIST.md"
+    ],
+    "package-lock.json": [
+      "mobile/package-lock.json",
+      "package-lock.json",
+      "reports/package-lock.json"
+    ],
+    "matches.json": [
+      "matches.json",
+      "reports/matches.json"
+    ],
+    "package-watchdebug.json": [
+      "package-watchdebug.json",
+      "reports/package-watchdebug.json"
+    ],
+    "implementation_summary.md": [
+      "IMPLEMENTATION_SUMMARY.md",
+      "docs/IMPLEMENTATION_SUMMARY.md"
+    ],
+    "postman-collection.json": [
+      "postman-collection.json",
+      "reports/postman-collection.json"
+    ],
+    "troubleshooting.md": [
+      "TROUBLESHOOTING.md",
+      "docs/TROUBLESHOOTING.md"
+    ],
+    "documentation_audit_report.json": [
+      "documentation_audit_report.json",
+      "reports/documentation_audit_report.json"
+    ],
+    "comprehensive_fixes_report.json": [
+      "comprehensive_fixes_report.json",
+      "reports/comprehensive_fixes_report.json"
+    ],
+    "phase1_results.json": [
+      "phase1_results.json",
+      "reports/phase1_results.json"
+    ],
+    "dns_crisis_report.json": [
+      "dns_crisis_report.json",
+      "reports/dns_crisis_report.json"
+    ],
+    "jsconfig.json": [
+      "jsconfig.json",
+      "reports/jsconfig.json"
+    ],
+    "cross_chain_interoperability_report.json": [
+      "CROSS_CHAIN_INTEROPERABILITY_REPORT.json",
+      "reports/CROSS_CHAIN_INTEROPERABILITY_REPORT.json"
+    ],
+    "link_validation_report.json": [
+      "link_validation_report.json",
+      "reports/link_validation_report.json",
+      "results/link_validation_report.json"
+    ],
+    "root_production_status.md": [
+      "ROOT_PRODUCTION_STATUS.md",
+      "ROOT_production_STATUS.md"
+    ],
+    "deployment_report.json": [
+      "deployment_report.json",
+      "reports/deployment_report.json"
+    ],
+    "deployment_checklist.md": [
+      "DEPLOYMENT_CHECKLIST.md",
+      "production_deployment/DEPLOYMENT_CHECKLIST.md"
+    ],
+    "middleware.ts": [
+      "src/lib/cache/middleware.ts",
+      "lib/auth/middleware.ts",
+      "middleware.ts"
+    ],
+    "global.d.ts": [
+      "global.d.ts",
+      "types/global.d.ts"
+    ],
+    "links_domains_report_synthetic.json": [
+      "links_domains_report_synthetic.json",
+      "reports/links_domains_report_synthetic.json"
+    ],
+    "dns_suggestions.json": [
+      "dns_suggestions.json",
+      "reports/dns_suggestions.json"
+    ],
+    "domain_fallback_chains.json": [
+      "domain_fallback_chains.json",
+      "reports/domain_fallback_chains.json"
+    ],
+    "evolution.md": [
+      "EVOLUTION.md",
+      "docs/EVOLUTION.md"
+    ],
+    "test_config.json": [
+      "config/test_config.json",
+      "reports/test_config.json",
+      "test_config.json"
+    ],
+    "readme.md": [
+      "src/assets/icons/apps/README.md",
+      ".devcontainer/README.md",
+      "ALL_APPS/README.md",
+      "README.md",
+      "assets/icons/apps/README.md",
+      "deploy/README.md",
+      "deploy/static-nginx/README.md",
+      "docs/README.md",
+      "git-lfs-3.5.1/README.md",
+      "git-lfs-3.5.1/git-lfs-3.5.1/README.md",
+      "hf_space_qvillage/README.md",
+      "mobile/README.md",
+      "models/latest/README.md",
+      "pwa_apps/README.md",
+      "pwa_apps/q-alpha/README.md",
+      "qcity/README.md",
+      "qvillage/README.md",
+      "scripts/README.md",
+      "scripts/daemon/README.md",
+      "scripts/diagnostics/README.md",
+      "scripts/finance/README.md",
+      "scripts/wallets/README.md",
+      "tools/icon-manager/README.md",
+      "tools/placeholder_artifacts/README.md",
+      "tools/rust_lint_fix/README.md",
+      "whatsapp-qmoi-bot/README.md"
+    ],
+    "eslint_changed.json": [
+      "eslint_changed.json",
+      "reports/eslint_changed.json"
+    ],
+    "openapi.json": [
+      "openapi.json",
+      "reports/openapi.json"
+    ],
+    "release.json": [
+      "release.json",
+      "reports/release.json"
+    ],
+    "performance_optimization_report.json": [
+      "PERFORMANCE_OPTIMIZATION_REPORT.json",
+      "reports/PERFORMANCE_OPTIMIZATION_REPORT.json"
+    ],
+    "app_manifest_v1.2.3.json": [
+      "APP_MANIFEST_v1.2.3.json",
+      "reports/APP_MANIFEST_v1.2.3.json"
+    ],
+    "enhancedqvs.md": [
+      "ENHANCEDQVS.md",
+      "QVS/ENHANCEDQVS.md",
+      "docs/ENHANCEDQVS.md"
+    ],
+    "ai_powered_trading_report.json": [
+      "AI_POWERED_TRADING_REPORT.json",
+      "reports/AI_POWERED_TRADING_REPORT.json"
+    ],
+    "production_health_check.json": [
+      "production_health_check.json",
+      "reports/production_health_check.json"
+    ],
+    "electron-builder.json": [
+      "electron-builder.json",
+      "reports/electron-builder.json"
+    ],
+    "quick_reference.md": [
+      "QUICK_REFERENCE.md",
+      "docs/QUICK_REFERENCE.md"
+    ],
+    "apis_v1.md": [
+      "APIs_v1.md",
+      "docs/APIs_v1.md"
+    ],
+    "parallel.md": [
+      "docs/PARALLEL.md",
+      "parallel.md"
+    ],
+    "domain_registry.json": [
+      "domain_registry.json",
+      "reports/domain_registry.json"
+    ],
+    "qmoi-enhanced-autotests.md": [
+      "QMOI-ENHANCED-AUTOTESTS.md",
+      "docs/QMOI-ENHANCED-AUTOTESTS.md"
+    ],
+    "documentation_audit_details.json": [
+      "documentation_audit_details.json",
+      "reports/documentation_audit_details.json"
+    ],
+    "main.js": [
+      "main.js",
+      "qmoi-space/public/js/main.js"
+    ],
+    "eslint_app_api.json": [
+      "eslint_app_api.json",
+      "reports/eslint_app_api.json"
+    ],
+    "credential_rotation_playbook.md": [
+      "CREDENTIAL_ROTATION_PLAYBOOK.md",
+      "docs/CREDENTIAL_ROTATION_PLAYBOOK.md"
+    ],
+    "qmoiclone.md": [
+      "QMOICLONE.md",
+      "docs/QMOICLONE.md"
+    ],
+    "comprehensive_production_readiness_report.md": [
+      "COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md",
+      "reports/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md"
+    ],
+    "alltestsautotests.md": [
+      "ALLTESTSAUTOTESTS.md",
+      "docs/ALLTESTSAUTOTESTS.md"
+    ],
+    "production_domain_health.json": [
+      "production_domain_health.json",
+      "reports/production_domain_health.json"
+    ],
+    "balances.md": [
+      "BALANCES.md",
+      "q/BALANCES.md",
+      "scripts/q/BALANCES.md"
+    ],
+    "api.md": [
+      "API.md",
+      "docs/API.md"
+    ],
+    "vercel-fix-report.json": [
+      "reports/vercel-fix-report.json",
+      "vercel-fix-report.json"
+    ],
+    "local_release_verification.json": [
+      "local_release_verification.json",
+      "reports/local_release_verification.json"
+    ],
+    "parsing_clean_report.json": [
+      "parsing_clean_report.json",
+      "reports/parsing_clean_report.json"
+    ],
+    "components.json": [
+      "components.json",
+      "reports/components.json"
+    ],
+    "qmoi_memory.md": [
+      "QMOI_MEMORY.md",
+      "docs/QMOI_MEMORY.md"
+    ],
+    "phase1_fixes_report.json": [
+      "phase1_fixes_report.json",
+      "reports/phase1_fixes_report.json"
+    ],
+    "users.json": [
+      "data/users.json",
+      "reports/users.json",
+      "users.json"
+    ],
+    "qmoi_release_report.json": [
+      "qcity-artifacts/qmoi_release_report.json",
+      "qmoi_release_report.json",
+      "reports/qmoi_release_report.json",
+      "scripts/qmoi_release_report.json"
+    ],
+    "dns_deployment_results.json": [
+      "dns_deployment_results.json",
+      "reports/dns_deployment_results.json"
+    ],
+    "eslint_report_src.json": [
+      "eslint_report_src.json",
+      "reports/eslint_report_src.json"
+    ],
+    "qmoi-apps-summary.json": [
+      "qmoi-apps-summary.json",
+      "reports/qmoi-apps-summary.json"
+    ],
+    "github_releases_config.json": [
+      "GITHUB_RELEASES_CONFIG.json",
+      "reports/GITHUB_RELEASES_CONFIG.json"
+    ],
+    "app_validation_report_v1.2.3.json": [
+      "app_validation_report_v1.2.3.json",
+      "reports/app_validation_report_v1.2.3.json"
+    ],
+    "qmoiverceldev.md": [
+      "QMOIVERCELDEV.md",
+      "docs/QMOIVERCELDEV.md"
+    ],
+    "tsconfig.json": [
+      "reports/tsconfig.json",
+      "tsconfig.json"
+    ],
+    "openapi-v2.1.json": [
+      "openapi-v2.1.json",
+      "reports/openapi-v2.1.json"
+    ],
+    "links_domains_comprehensive_report.json": [
+      "links_domains_comprehensive_report.json",
+      "reports/links_domains_comprehensive_report.json"
+    ],
+    "qmoi_health_status.json": [
+      "qmoi_health_status.json",
+      "reports/qmoi_health_status.json"
+    ],
+    "eslint_report_after_fix2_post.json": [
+      "eslint_report_after_fix2_post.json",
+      "reports/eslint_report_after_fix2_post.json"
+    ],
+    "app.js": [
+      "src/App.js",
+      "huggingface_space/app.js",
+      "mobile/App.js",
+      "qmoi-space-pwa/js/app.js"
+    ],
+    "settings.json": [
+      ".vscode/settings.json",
+      ".vscodes/settings.json"
+    ],
+    "clientadapters.ts": [
+      "src/adapters/clientAdapters.ts",
+      "adapters/clientAdapters.ts"
+    ],
+    "use-toast.ts": [
+      "components/ui/use-toast.ts",
+      "hooks/use-toast.ts"
+    ],
+    "useqmoichat.ts": [
+      "src/hooks/useQMOIChat.ts",
+      "hooks/useQMOIChat.ts"
+    ],
+    "use-mobile.tsx": [
+      "components/ui/use-mobile.tsx",
+      "hooks/use-mobile.tsx"
+    ],
+    "sw.js": [
+      "public/pwa_apps/qmoi-ai/sw.js",
+      "public/pwa_apps/qmoi-space/sw.js",
+      "pwa_apps/admin/sw.js",
+      "pwa_apps/deals/sw.js",
+      "pwa_apps/q-alpha/sw.js",
+      "pwa_apps/qmoi-ai/sw.js",
+      "pwa_apps/qmoi-space/sw.js",
+      "pwa_apps/qmoi/sw.js",
+      "qglobalsim/sw.js",
+      "qmoi-space-pwa/sw.js",
+      "qmoi-space/public/sw.js"
+    ],
+    "manifest.json": [
+      "qglobalsim/manifest.json",
+      "qmoi-space-pwa/manifest.json",
+      "qmoi-space/public/manifest.json"
+    ],
+    "wallet.test.ts": [
+      "__tests__/wallet.test.ts",
+      "tests/wallet.test.ts"
+    ],
+    "index.js": [
+      "dashboard/src/index.js",
+      "src/index.js",
+      "tools/icon-manager/index.js",
+      "whatsapp-qmoi-bot/index.js"
+    ],
+    "trading-engine.ts": [
+      "lib/services/trading-engine.ts",
+      "backend/trading-engine.ts"
+    ],
+    "trading.ts": [
+      "src/config/trading.ts",
+      "src/types/trading.ts",
+      "lib/services/trading.ts",
+      "types/trading.ts"
+    ],
+    "qcity.ts": [
+      "api/qcity.ts",
+      "types/qcity.ts"
+    ],
+    "globals.d.ts": [
+      "src/types/globals.d.ts",
+      "types/globals.d.ts"
+    ],
+    "index.ts": [
+      "app/components/styles/index.ts",
+      "app/lib/auth/index.ts",
+      "src/components/qalpha/index.ts",
+      "src/components/qmoi/index.ts",
+      "src/components/qvillage/index.ts",
+      "src/components/shared/ai/index.ts",
+      "src/components/shared/dashboards/index.ts",
+      "src/components/shared/index.ts",
+      "src/components/shared/system/index.ts",
+      "src/components/shared/tools/index.ts",
+      "src/components/shared/ui/index.ts",
+      "src/components/shared/voice/index.ts",
+      "components/q-city/index.ts",
+      "src/qcity/dashboards/index.ts",
+      "src/qcity/index.ts",
+      "pages/api/zero-rated-sites/index.ts",
+      "routes/api/qcity/projects/index.ts",
+      "services/adapters/index.ts",
+      "types/index.ts"
+    ],
+    "server.js": [
+      "dashboard/server.js",
+      "huggingface_space/server.js"
+    ],
+    "link_report.json": [
+      "docs/link_report.json",
+      "tools/link_report.json"
+    ],
+    "seed.ts": [
+      "prisma/seed.ts",
+      "scripts/seed.ts"
+    ],
+    "autoheal.js": [
+      "scripts/autoheal.js",
+      "tools/autoheal.js"
+    ],
+    "update-docs.js": [
+      "scripts/update-docs.js",
+      "tools/update-docs.js"
+    ],
+    "qmoi-auto-config.js": [
+      "lib/qmoi-auto-config.js",
+      "scripts/qmoi-auto-config.js"
+    ],
+    "dashboard.js": [
+      "huggingface_space/dashboard.js",
+      "public/qcity/dashboard.js"
+    ],
+    "security_check.ts": [
+      "src/lib/security_check.ts",
+      "lib/security_check.ts"
+    ],
+    "logger.ts": [
+      "app/lib/logger.ts",
+      "src/lib/logger.ts",
+      "lib/logger.ts",
+      "scripts/utils/logger.ts"
+    ],
+    "prisma.ts": [
+      "app/lib/db/prisma.ts",
+      "lib/db/prisma.ts",
+      "lib/prisma.ts"
+    ],
+    "utils.ts": [
+      "lib/utils.ts",
+      "services/adapters/payments/utils.ts"
+    ],
+    "rbac.ts": [
+      "app/api/auth/rbac.ts",
+      "lib/rbac.ts"
+    ],
+    "auth-service.ts": [
+      "app/lib/auth-service.ts",
+      "lib/auth-service.ts"
+    ],
+    "wallet.ts": [
+      "app/api/wallet.ts",
+      "src/config/wallet.ts",
+      "src/wallet.ts",
+      "prisma/generated/prisma/models/Wallet.ts"
+    ],
+    "auth.ts": [
+      "src/lib/auth.ts",
+      "utils/auth.ts"
+    ],
+    "changelog.md": [
+      "git-lfs-3.5.1/CHANGELOG.md",
+      "git-lfs-3.5.1/git-lfs-3.5.1/CHANGELOG.md"
+    ],
+    "production_full_validation_report.md": [
+      "reports/PRODUCTION_FULL_VALIDATION_REPORT.md",
+      "reports/production_FULL_VALIDATION_REPORT.md"
+    ],
+    "layout.tsx": [
+      "app/admin/master/layout.tsx",
+      "app/layout.tsx"
+    ],
+    "page.tsx": [
+      "app/admin/master/activity/page.tsx",
+      "app/admin/master/login/page.tsx",
+      "app/admin/master/page.tsx",
+      "app/admin/master/security/page.tsx",
+      "app/admin/master/settings/page.tsx",
+      "app/admin/page.tsx",
+      "app/dev/page.tsx",
+      "app/devices/page.tsx",
+      "app/friendship/page.tsx",
+      "app/master/email/page.tsx",
+      "app/master/links/page.tsx",
+      "app/master/tracks/page.tsx",
+      "app/page.tsx",
+      "app/qalpha/page.tsx",
+      "app/qalpha/styles/page.tsx",
+      "app/qcity/page.tsx",
+      "app/qcity/styles/page.tsx",
+      "app/qmoi-ai/page.tsx",
+      "app/qmoi-ai/styles/page.tsx",
+      "app/qmoi-space/page.tsx",
+      "app/qmoi-space/styles/page.tsx",
+      "app/qvillage/page.tsx",
+      "app/qvillage/styles/page.tsx",
+      "app/reset-password/page.tsx",
+      "app/universal/page.tsx",
+      "app/verify-email/page.tsx",
+      "src/app/master/domain-health/page.tsx"
+    ],
+    "floatingpreviewwindow.tsx": [
+      "app/components/FloatingPreviewWindow.tsx",
+      "components/FloatingPreviewWindow.tsx"
+    ],
+    "fileexplorer.tsx": [
+      "src/components/FileExplorer.tsx",
+      "src/components/shared/tools/FileExplorer.tsx",
+      "components/FileExplorer.tsx"
+    ],
+    "walletpanel.tsx": [
+      "app/components/WalletPanel.tsx",
+      "components/WalletPanel.tsx"
+    ],
+    "themecustomizer.tsx": [
+      "app/components/ThemeCustomizer.tsx",
+      "components/ThemeCustomizer.tsx"
+    ],
+    "biometricauth.tsx": [
+      "components/BiometricAuth.tsx",
+      "components/auth/BiometricAuth.tsx"
+    ],
+    "settingspanel.tsx": [
+      "app/components/SettingsPanel.tsx",
+      "components/SettingsPanel.tsx",
+      "src/qcity/SettingsPanel.tsx"
+    ],
+    "qfilemanager.tsx": [
+      "components/QFileManager.tsx",
+      "src/qcity/QFileManager.tsx"
+    ],
+    "qispaces.tsx": [
+      "app/components/QiSpaces.tsx",
+      "src/components/QiSpaces.tsx",
+      "components/QiSpaces.tsx"
+    ],
+    "componentgallery.tsx": [
+      "src/components/ComponentGallery.tsx",
+      "components/ComponentGallery.tsx"
+    ],
+    "alpha-q-ai-system.tsx": [
+      "src/components/alpha-q-ai-system.tsx",
+      "components/alpha-q-ai-system.tsx"
+    ],
+    "qmoiautofixdashboard.tsx": [
+      "app/components/QMOIAutoFixDashboard.tsx",
+      "components/QMOIAutoFixDashboard.tsx",
+      "src/qcity/QMOIAutoFixDashboard.tsx"
+    ],
+    "qvillagedatasetspanel.tsx": [
+      "app/components/QVillageDatasetsPanel.tsx",
+      "components/QVillageDatasetsPanel.tsx"
+    ],
+    "qmoidashboard.tsx": [
+      "components/QMOIDashboard.tsx",
+      "src/qcity/dashboards/QMOIDashboard.tsx"
+    ],
+    "biometricenrollment.tsx": [
+      "app/components/auth/BiometricEnrollment.tsx",
+      "components/BiometricEnrollment.tsx"
+    ],
+    "gitstatus.tsx": [
+      "src/components/GitStatus.tsx",
+      "src/components/shared/tools/GitStatus.tsx",
+      "components/GitStatus.tsx"
+    ],
+    "qmoirevenuedashboard.tsx": [
+      "components/QmoiRevenueDashboard.tsx",
+      "components/q-city/QMOIRevenueDashboard.tsx"
+    ],
+    "lcspaces.tsx": [
+      "app/components/LcSpaces.tsx",
+      "src/components/LcSpaces.tsx",
+      "components/LcSpaces.tsx"
+    ],
+    "chatbot.tsx": [
+      "src/components/shared/ai/Chatbot.tsx",
+      "components/Chatbot.tsx"
+    ],
+    "helpguide.tsx": [
+      "app/components/HelpGuide.tsx",
+      "components/HelpGuide.tsx"
+    ],
+    "notificationcenter.tsx": [
+      "app/components/NotificationCenter.tsx",
+      "components/NotificationCenter.tsx"
+    ],
+    "qi.tsx": [
+      "app/components/QI.tsx",
+      "src/components/QI.tsx",
+      "components/QI.tsx"
+    ],
+    "qavatar.tsx": [
+      "components/QAvatar.tsx",
+      "src/qcity/QAvatar.tsx"
+    ],
+    "qvillage.tsx": [
+      "app/components/QVillage.tsx",
+      "components/QVillage.tsx",
+      "components/q-city/QVillage.tsx"
+    ],
+    "qcityerrormanager.tsx": [
+      "app/components/QCityErrorManager.tsx",
+      "components/QCityErrorManager.tsx"
+    ],
+    "qistatewindow.tsx": [
+      "app/components/QIStateWindow.tsx",
+      "src/components/QIStateWindow.tsx",
+      "components/QIStateWindow.tsx"
+    ],
+    "errorboundary.tsx": [
+      "src/components/ErrorBoundary.tsx",
+      "components/ErrorBoundary.tsx"
+    ],
+    "qmoimemorypanel.tsx": [
+      "components/QmoiMemoryPanel.tsx",
+      "src/qcity/QMoiMemoryPanel.tsx"
+    ],
+    "previewwindow.tsx": [
+      "app/components/PreviewWindow.tsx",
+      "src/components/PreviewWindow.tsx",
+      "components/PreviewWindow.tsx"
+    ],
+    "financialmanager.tsx": [
+      "components/FinancialManager.tsx",
+      "earnvault/ui/FinancialManager.tsx"
+    ],
+    "qmoimediamanager.tsx": [
+      "components/QmoiMediaManager.tsx",
+      "src/qcity/QMoiMediaManager.tsx"
+    ],
+    "engine.ts": [
+      "qmoi/core/accessibility/engine.ts",
+      "qmoi/core/consciousness/engine.ts",
+      "qmoi/core/execution/engine.ts",
+      "qmoi/core/intent/engine.ts",
+      "qmoi/core/orchestration/engine.ts",
+      "qmoi/core/perception/engine.ts",
+      "qmoi/core/self_learning/engine.ts",
+      "qmoi/core/validation/engine.ts"
+    ],
+    "system-production.ts": [
+      "qmoi/core/emotional-intelligence/system-production.ts",
+      "qmoi/core/memory/system-production.ts"
+    ],
+    "index.tsx": [
+      "src/qcity/index.tsx",
+      "routes/qcity/projects/index.tsx"
+    ],
+    "memory.ts": [
+      "app/lib/auth/memory.ts",
+      "pages/api/memory.ts",
+      "routes/api/qmoi/memory.ts"
+    ],
+    "status.ts": [
+      "app/api/qmoi/status.ts",
+      "routes/api/qcity/status.ts",
+      "routes/api/qmoi/status.ts"
+    ],
+    "config.ts": [
+      "routes/api/qcity/config.ts",
+      "routes/api/qcity/trading/config.ts",
+      "routes/api/qcity/whatsapp/config.ts"
+    ],
+    "[id].ts": [
+      "pages/api/zero-rated-sites/[id].ts",
+      "routes/api/qcity/projects/[id].ts"
+    ],
+    "bitget.ts": [
+      "src/config/bitget.ts",
+      "services/adapters/bitget.ts"
+    ],
+    "types.ts": [
+      "src/qmoi/core/hosting/types.ts",
+      "services/adapters/types.ts"
+    ],
+    "floatingaq.tsx": [
+      "src/components/FloatingAQ.tsx",
+      "earnvault/ui/FloatingAQ.tsx"
+    ],
+    "health.ts": [
+      "pages/api/dashboard/health.ts",
+      "pages/api/health.ts"
+    ],
+    "client.ts": [
+      "src/api/client.ts",
+      "prisma/generated/prisma/client.ts"
+    ],
+    "models.ts": [
+      "app/api/models.ts",
+      "prisma/generated/prisma/models.ts"
+    ],
+    "notification_service.ts": [
+      "src/lib/notification_service.ts",
+      "scripts/services/notification_service.ts"
+    ],
+    "services.ts": [
+      "src/lib/services.ts",
+      "lib/db/services.ts"
+    ],
+    "service.ts": [
+      "app/lib/auth/service.ts",
+      "lib/auth/service.ts",
+      "lib/email/service.ts",
+      "lib/notifications/service.ts",
+      "lib/payments/service.ts"
+    ],
+    "persistence.ts": [
+      "app/lib/auth/persistence.ts",
+      "lib/qmoi/persistence.ts"
+    ],
+    "app-icons.json": [
+      "src/assets/icons/apps/app-icons.json",
+      "assets/icons/apps/app-icons.json"
+    ],
+    "useauth.ts": [
+      "app/hooks/useAuth.ts",
+      "src/hooks/useAuth.ts"
+    ],
+    "production_status.md": [
+      "app/api/PRODUCTION_STATUS.md",
+      "app/api/production_STATUS.md",
+      "src/qcity/PRODUCTION_STATUS.md"
+    ],
+    "voiceselector.tsx": [
+      "src/components/qmoi/VoiceSelector.tsx",
+      "src/components/shared/voice/VoiceSelector.tsx",
+      "src/qcity/VoiceSelector.tsx"
+    ],
+    "onboarding.tsx": [
+      "components/q-city/Onboarding.tsx",
+      "src/qcity/Onboarding.tsx"
+    ],
+    "pluginregistry.tsx": [
+      "src/components/PluginRegistry.tsx",
+      "src/components/shared/tools/PluginRegistry.tsx"
+    ],
+    "downloadqcity.tsx": [
+      "src/components/DownloadQCity.tsx",
+      "src/components/shared/tools/DownloadQCity.tsx"
+    ],
+    "assetoverview.tsx": [
+      "src/components/AssetOverview.tsx",
+      "src/components/shared/tools/AssetOverview.tsx"
+    ],
+    "route.ts": [
+      "app/api/account-automation/route.ts",
+      "app/api/accountability/route.ts",
+      "app/api/admin/alerts/route.ts",
+      "app/api/admin/audit-logs/route.ts",
+      "app/api/admin/autofix/automation/route.ts",
+      "app/api/admin/autofix/autoscan/route.ts",
+      "app/api/admin/autofix/background-automation/route.ts",
+      "app/api/admin/autofix/bootstrap/route.ts",
+      "app/api/admin/autofix/config/route.ts",
+      "app/api/admin/autofix/errors/route.ts",
+      "app/api/admin/autofix/fix-all/route.ts",
+      "app/api/admin/autofix/fix/[errorId]/route.ts",
+      "app/api/admin/autofix/health/route.ts",
+      "app/api/admin/autofix/healthmonitor/route.ts",
+      "app/api/admin/autofix/scan/route.ts",
+      "app/api/admin/autofix/stream/route.ts",
+      "app/api/admin/dashboard/route.ts",
+      "app/api/admin/endpoints-discover/route.ts",
+      "app/api/admin/financial/global/route.ts",
+      "app/api/admin/financial/summary/route.ts",
+      "app/api/admin/master/auth/route.ts",
+      "app/api/admin/master/logout/route.ts",
+      "app/api/admin/monitoring/route.ts",
+      "app/api/admin/rate-limits/route.ts",
+      "app/api/admin/users/route.ts",
+      "app/api/ai-anomaly-service/route.ts",
+      "app/api/ai-health/route.ts",
+      "app/api/ai-self-diagnostics/route.ts",
+      "app/api/ai/route.ts",
+      "app/api/ai/scan/route.ts",
+      "app/api/analytics/transactions/route.ts",
+      "app/api/analytics/wallets/route.ts",
+      "app/api/auth/biometric/capture/route.ts",
+      "app/api/auth/biometric/delete/[method]/route.ts",
+      "app/api/auth/biometric/status/route.ts",
+      "app/api/auth/biometric/verify/route.ts",
+      "app/api/auth/confirm-reset/route.ts",
+      "app/api/auth/forgot-email/route.ts",
+      "app/api/auth/forgot-password/route.ts",
+      "app/api/auth/forgot/route.ts",
+      "app/api/auth/login/route.ts",
+      "app/api/auth/me/route.ts",
+      "app/api/auth/memory/route.ts",
+      "app/api/auth/privacy-mask/disable/route.ts",
+      "app/api/auth/privacy-mask/enable/route.ts",
+      "app/api/auth/privacy-mask/status/route.ts",
+      "app/api/auth/profile/route.ts",
+      "app/api/auth/refresh/route.ts",
+      "app/api/auth/register/route.ts",
+      "app/api/auth/reset-password/route.ts",
+      "app/api/auth/sessions/[id]/rename/route.ts",
+      "app/api/auth/sessions/get-sessions/route.ts",
+      "app/api/auth/sessions/terminate-others/route.ts",
+      "app/api/auth/sessions/terminate/[id]/route.ts",
+      "app/api/auth/settings/route.ts",
+      "app/api/auth/signin/route.ts",
+      "app/api/auth/signup/route.ts",
+      "app/api/auth/universal/route.ts",
+      "app/api/auth/verify-email/route.ts",
+      "app/api/auth/verify/route.ts",
+      "app/api/auth/webauthn/authenticate/route.ts",
+      "app/api/auth/webauthn/register/route.ts",
+      "app/api/automation/status/route.ts",
+      "app/api/biometric/templates/route.ts",
+      "app/api/biometric/verify/route.ts",
+      "app/api/cameras/infrared/route.ts",
+      "app/api/cameras/panoramic/route.ts",
+      "app/api/cameras/road/route.ts",
+      "app/api/cameras/route.ts",
+      "app/api/cameras/street/route.ts",
+      "app/api/cameras/thermal/route.ts",
+      "app/api/cashon/balance/route.ts",
+      "app/api/cashon/deposit/route.ts",
+      "app/api/cashon/route.ts",
+      "app/api/cashon/signals/route.ts",
+      "app/api/cashon/start-trading/route.ts",
+      "app/api/cashon/stop-trading/route.ts",
+      "app/api/cashon/trading-status/route.ts",
+      "app/api/chat/enhanced/route.ts",
+      "app/api/chat/friendship/route.ts",
+      "app/api/consciousness/metrics/route.ts",
+      "app/api/consciousness/route.ts",
+      "app/api/consciousness/state/route.ts",
+      "app/api/datasets/[id]/route.ts",
+      "app/api/datasets/route.ts",
+      "app/api/datasets/settings/route.ts",
+      "app/api/debug/info/route.ts",
+      "app/api/debug/users/route.ts",
+      "app/api/deploy/auto-redeploy/route.ts",
+      "app/api/deploy/route.ts",
+      "app/api/deployment-status/route.ts",
+      "app/api/device-fingerprint/route.ts",
+      "app/api/devices/route.ts",
+      "app/api/document-backup/route.ts",
+      "app/api/domains/health/route.ts",
+      "app/api/domains/route.ts",
+      "app/api/earning/route.ts",
+      "app/api/emails/route.ts",
+      "app/api/emergency/config/route.ts",
+      "app/api/emergency/dispatch/route.ts",
+      "app/api/emergency/email/route.ts",
+      "app/api/emergency/lockdown/route.ts",
+      "app/api/emergency/sms/route.ts",
+      "app/api/emergency/wipe/route.ts",
+      "app/api/employment/megavault/route.ts",
+      "app/api/employment/payment/route.ts",
+      "app/api/employment/revenue/route.ts",
+      "app/api/employment/route.ts",
+      "app/api/enhanced-email/analytics/route.ts",
+      "app/api/enhanced-email/realtime/route.ts",
+      "app/api/enhanced-email/rules/route.ts",
+      "app/api/enhanced-email/send/route.ts",
+      "app/api/enhanced-email/templates/route.ts",
+      "app/api/enhanced-link-domain/route.ts",
+      "app/api/evolution/autoclone-evolution/route.ts",
+      "app/api/evolution/platform-evolution/route.ts",
+      "app/api/files/route.ts",
+      "app/api/financial/audit/route.ts",
+      "app/api/financial/balances/route.ts",
+      "app/api/financial/transactions/route.ts",
+      "app/api/financial/verify/route.ts",
+      "app/api/friendship/route.ts",
+      "app/api/git/branch/route.ts",
+      "app/api/git/commit/route.ts",
+      "app/api/git/pr/route.ts",
+      "app/api/git/push/route.ts",
+      "app/api/git/remote/route.ts",
+      "app/api/git/status/route.ts",
+      "app/api/global-links/route.ts",
+      "app/api/global-news/route.ts",
+      "app/api/global/overview/route.ts",
+      "app/api/health/data/route.ts",
+      "app/api/links/[id]/zero-rated/route.ts",
+      "app/api/links/route.ts",
+      "app/api/links/validate/route.ts",
+      "app/api/master/command/route.ts",
+      "app/api/master/domains/approve/[domain]/route.ts",
+      "app/api/master/domains/emergency-takeover/route.ts",
+      "app/api/master/domains/force-refresh/route.ts",
+      "app/api/master/domains/remove/[domain]/route.ts",
+      "app/api/master/domains/route.ts",
+      "app/api/master/domains/status/route.ts",
+      "app/api/master/last/route.ts",
+      "app/api/master/links/route.ts",
+      "app/api/master/sponsored/add/route.ts",
+      "app/api/master/sponsored/analytics/route.ts",
+      "app/api/master/sponsored/list/route.ts",
+      "app/api/master/sponsored/remove/[userId]/route.ts",
+      "app/api/master/sponsored/sync/route.ts",
+      "app/api/master/tracks/route.ts",
+      "app/api/media/generate/route.ts",
+      "app/api/media/search/route.ts",
+      "app/api/media/status/route.ts",
+      "app/api/metrics/route.ts",
+      "app/api/monitor/status/route.ts",
+      "app/api/monitoring/health/route.ts",
+      "app/api/mpesa/callback/route.ts",
+      "app/api/payments/initiate/route.ts",
+      "app/api/platforms/route.ts",
+      "app/api/pwa/auto-update/route.ts",
+      "app/api/pwa/check-update/route.ts",
+      "app/api/qapikey/route.ts",
+      "app/api/qcity/audit-log/route.ts",
+      "app/api/qcity/remote-command/route.ts",
+      "app/api/qcity/selfheal-npm/route.ts",
+      "app/api/qcity/status/route.ts",
+      "app/api/qi-spaces/route.ts",
+      "app/api/qi-trading/route.ts",
+      "app/api/qmoi-database/route.ts",
+      "app/api/qmoi-earning-enhanced/route.ts",
+      "app/api/qmoi-gitlab/deployments/route.ts",
+      "app/api/qmoi-gitlab/errors/route.ts",
+      "app/api/qmoi-gitlab/jobs/route.ts",
+      "app/api/qmoi-gitlab/pipelines/route.ts",
+      "app/api/qmoi-gitlab/trigger/route.ts",
+      "app/api/qmoi-model/route.ts",
+      "app/api/qmoi-tracks/route.ts",
+      "app/api/qmoi/advanced-analysis/route.ts",
+      "app/api/qmoi/audio/route.ts",
+      "app/api/qmoi/auto-fix/download-report/route.ts",
+      "app/api/qmoi/auto-fix/github-status/route.ts",
+      "app/api/qmoi/auto-fix/start/route.ts",
+      "app/api/qmoi/auto-fix/status/route.ts",
+      "app/api/qmoi/auto-fix/stop/route.ts",
+      "app/api/qmoi/auto-setup/route.ts",
+      "app/api/qmoi/autodev/generate-feature/route.ts",
+      "app/api/qmoi/autodev/research/route.ts",
+      "app/api/qmoi/autodev/toggle/route.ts",
+      "app/api/qmoi/avatars/route.ts",
+      "app/api/qmoi/backup/route.ts",
+      "app/api/qmoi/chat-enhanced/route.ts",
+      "app/api/qmoi/chat/route.ts",
+      "app/api/qmoi/files/[id]/route.ts",
+      "app/api/qmoi/friendship/route.ts",
+      "app/api/qmoi/language/route.ts",
+      "app/api/qmoi/master-mode/route.ts",
+      "app/api/qmoi/memory/route.ts",
+      "app/api/qmoi/own-device-logs/export/route.ts",
+      "app/api/qmoi/own-device-logs/route.ts",
+      "app/api/qmoi/profile-questions/route.ts",
+      "app/api/qmoi/projects/route.ts",
+      "app/api/qmoi/research/route.ts",
+      "app/api/qmoi/revenue-dashboard/route.ts",
+      "app/api/qmoi/revenue/reset/route.ts",
+      "app/api/qmoi/revenue/route.ts",
+      "app/api/qmoi/revenue/start/route.ts",
+      "app/api/qmoi/revenue/status/route.ts",
+      "app/api/qmoi/revenue/stop/route.ts",
+      "app/api/qmoi/revenue/target/route.ts",
+      "app/api/qmoi/revenue/transactions/route.ts",
+      "app/api/qmoi/revenue/transfer/route.ts",
+      "app/api/qmoi/session/route.ts",
+      "app/api/qmoi/transcribe/route.ts",
+      "app/api/qmoi/upload/route.ts",
+      "app/api/qmoi/user/route.ts",
+      "app/api/qmoi/visuals/route.ts",
+      "app/api/qmoi/voice-enroll/route.ts",
+      "app/api/qmoi/voice-preview/route.ts",
+      "app/api/qmoi/voice-profiles/route.ts",
+      "app/api/qmoi/voice/route.ts",
+      "app/api/qnews/route.ts",
+      "app/api/qradio/route.ts",
+      "app/api/qstore/route.ts",
+      "app/api/qvillage/inference/route.ts",
+      "app/api/qvillage/model-card/route.ts",
+      "app/api/qvillage/models/route.ts",
+      "app/api/qvillage/route.ts",
+      "app/api/qvillage/spaces/route.ts",
+      "app/api/revenue-streams/[streamId]/route.ts",
+      "app/api/revenue-streams/route.ts",
+      "app/api/social-automation/route.ts",
+      "app/api/ssh/list/route.ts",
+      "app/api/ssh/read/route.ts",
+      "app/api/ssh/write/route.ts",
+      "app/api/tracks/[id]/route.ts",
+      "app/api/tracks/route.ts",
+      "app/api/tracks/settings/route.ts",
+      "app/api/tracks/stream/route.ts",
+      "app/api/trading/status/route.ts",
+      "app/api/transactions/route.ts",
+      "app/api/tts/generate/route.ts",
+      "app/api/tts/stream/route.ts",
+      "app/api/users/profile/route.ts",
+      "app/api/version/route.ts",
+      "app/api/voice/enroll/route.ts",
+      "app/api/voice/verify/route.ts",
+      "app/api/wallets/[walletId]/route.ts",
+      "app/api/wallets/route.ts",
+      "app/api/webauthn/authenticate/route.ts",
+      "app/api/webauthn/register/route.ts",
+      "app/api/webhooks/godaddy-domain/route.ts",
+      "app/api/webhooks/godaddy-health/route.ts",
+      "app/api/webhooks/payments/route.ts",
+      "app/api/webhooks/qvillage/route.ts",
+      "app/api/whatsapp-bot/route.ts",
+      "app/api/whatsapp-business/route.ts",
+      "app/api/whatsapp/audit/route.ts",
+      "app/api/whatsapp/verify/route.ts",
+      "app/api/wifi-security/route.ts",
+      "app/api/wifi/route.ts",
+      "app/api/wifi/scan/route.ts",
+      "app/api/windows/route.ts",
+      "app/api/workflow/route.ts",
+      "app/api/youtube/download/route.ts",
+      "src/app/api/accountability/route.ts",
+      "src/app/api/admin/metrics/route.ts",
+      "src/app/api/admin/tracing/route.ts",
+      "src/app/api/alerts/webhook/route.ts",
+      "src/app/api/auth/check-master/route.ts",
+      "src/app/api/auth/login/route.ts",
+      "src/app/api/auth/oauth/[provider]/route.ts",
+      "src/app/api/auth/webauthn/auth/finish/route.ts",
+      "src/app/api/auth/webauthn/auth/options/route.ts",
+      "src/app/api/auth/webauthn/register/finish/route.ts",
+      "src/app/api/auth/webauthn/register/options/route.ts",
+      "src/app/api/automation/trigger/route.ts",
+      "src/app/api/avatars/[userId]/route.ts",
+      "src/app/api/consciousness/health/route.ts",
+      "src/app/api/global/route.ts",
+      "src/app/api/lion/workflows/health/route.ts",
+      "src/app/api/master/domain-health/refresh/route.ts",
+      "src/app/api/master/domain-health/route.ts",
+      "src/app/api/master/godaddy-status/route.ts",
+      "src/app/api/preview/analyze/route.ts",
+      "src/app/api/preview/execute-tool/route.ts",
+      "src/app/api/qmoi/autodev/generate-feature/route.ts",
+      "src/app/api/qmoi/autodev/research/route.ts",
+      "src/app/api/qmoi/autodev/state/route.ts",
+      "src/app/api/qmoi/autodev/suggestions/features/route.ts",
+      "src/app/api/qmoi/autodev/suggestions/improvements/route.ts",
+      "src/app/api/qmoi/autodev/suggestions/optimizations/route.ts",
+      "src/app/api/qmoi/autodev/toggle/route.ts",
+      "src/app/api/qmoi/evolution/compare-models/route.ts",
+      "src/app/api/qmoi/evolution/replace-model/route.ts",
+      "src/app/api/qmoi/evolution/track-evolution/route.ts",
+      "src/app/api/qmoi/execute/route.ts",
+      "src/app/api/qmoi/health/route.ts",
+      "src/app/api/qmoi/health/stream/route.ts",
+      "src/app/api/qmoi/self-work/code-review/route.ts",
+      "src/app/api/qmoi/self-work/debug/route.ts",
+      "src/app/api/qmoi/self-work/run-tests/route.ts",
+      "src/app/api/qmoi/suggestions/route.ts",
+      "src/app/api/qvs/route.ts",
+      "src/app/api/realtime/stream/route.ts",
+      "src/app/api/subscriptions/route.ts",
+      "src/app/api/v1/health/route.ts",
+      "src/app/api/v2/health/route.ts"
+    ],
+    "globaloperationsdashboard.tsx": [
+      "src/components/shared/dashboards/GlobalOperationsDashboard.tsx",
+      "components/global/GlobalOperationsDashboard.tsx"
+    ],
+    "master.ts": [
+      "app/lib/auth/master.ts",
+      "app/lib/ui/master.ts"
+    ],
+    "encryptedauditlog.tsx": [
+      "components/analytics/EncryptedAuditLog.tsx",
+      "components/security/EncryptedAuditLog.tsx"
+    ]
+  }
+}

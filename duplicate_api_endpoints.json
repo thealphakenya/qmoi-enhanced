@@ -1,0 +1,27 @@
+{
+  "generated": "2026-06-19T22:44:17.289426Z",
+  "route_count": 307,
+  "unique_endpoints": 302,
+  "duplicate_groups": {
+    "/api/accountability": [
+      "app/api/accountability/route.ts",
+      "src/app/api/accountability/route.ts"
+    ],
+    "/api/auth/login": [
+      "app/api/auth/login/route.ts",
+      "src/app/api/auth/login/route.ts"
+    ],
+    "/api/qmoi/autodev/generate-feature": [
+      "app/api/qmoi/autodev/generate-feature/route.ts",
+      "src/app/api/qmoi/autodev/generate-feature/route.ts"
+    ],
+    "/api/qmoi/autodev/research": [
+      "app/api/qmoi/autodev/research/route.ts",
+      "src/app/api/qmoi/autodev/research/route.ts"
+    ],
+    "/api/qmoi/autodev/toggle": [
+      "app/api/qmoi/autodev/toggle/route.ts",
+      "src/app/api/qmoi/autodev/toggle/route.ts"
+    ]
+  }
+}

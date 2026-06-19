@@ -2,15 +2,15 @@
 This file tracks the remaining production readiness instances from `undone.txt`.
 ## Remaining Files
 ### SUMMARY
-- Total files scanned: 4680
+- Total files scanned: 4729
 - Files with markers: 0
 - Total markers found: 0
-- Scan timestamp: 2026-06-14T13:25:08.043361
-- Scan ID: 1781443508
+- Scan timestamp: 2026-06-19T22:44:38.314258
+- Scan ID: 1781909078
 ### DETAILED FINDINGS
-- Scan Timestamp: 2026-06-14T13:25:08.043361
-- Total Files Scanned: 4680
-- Total Directories Scanned: 785
+- Scan Timestamp: 2026-06-19T22:44:38.314258
+- Total Files Scanned: 4729
+- Total Directories Scanned: 803
 - Files with Markers: 0
 - Total Markers Found: 0
 ### MARKER BREAKDOWN

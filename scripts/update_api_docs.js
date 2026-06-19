@@ -1,18 +1,13 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:05Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
+import fs from "fs/promises";
+import path from "path";
 
 const ROOT = path.resolve(process.cwd());
 const API_MD = path.join(ROOT, "API.md");
 const API_V1_MD = path.join(ROOT, "APIs_v1.md");
+const APIs_1_MD = path.join(ROOT, "APIs_1.md");
 const ENDPOINTS_MD = path.join(ROOT, "ENDPOINTS.md");
 
-async /**
- * getRouteFiles function
- */
-function getRouteFiles(baseDirs): any {
+async function getRouteFiles(baseDirs) {
   const routeFiles = [];
   for (const base of baseDirs) {
     const dir = path.join(ROOT, base);
@@ -26,10 +21,7 @@ function getRouteFiles(baseDirs): any {
   return routeFiles;
 }
 
-async /**
- * exists function
- */
-function exists(p): any {
+async function exists(p) {
   try {
     await fs.access(p);
     return true;
@@ -38,10 +30,7 @@ function exists(p): any {
   }
 }
 
-async /**
- * walk function
- */
-function walk(dir, cb): any {
+async function walk(dir, cb) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
   for (const e of entries) {
     const full = path.join(dir, e.name);
@@ -53,10 +42,7 @@ function walk(dir, cb): any {
   }
 }
 
-/**
- * toEndpoint function
- */
-function toEndpoint(routeFile, base): any {
+function toEndpoint(routeFile, base) {
   const rel = path.relative(path.join(ROOT, base), routeFile);
   let routePath = path.dirname(rel);
   if (routePath === ".") {
@@ -75,19 +61,13 @@ function toEndpoint(routeFile, base): any {
   return "/api/" + normalized;
 }
 
-/**
- * formatList function
- */
-function formatList(entries): any {
+function formatList(entries) {
   return entries
     .map((e) => `- \`${e.endpoint}\` -> ${e.file}`)
     .join("\n");
 }
 
-/**
- * replaceSection function
- */
-function replaceSection(content, markerStart, markerEnd, newSection): any {
+function replaceSection(content, markerStart, markerEnd, newSection) {
   const startIndex = content.indexOf(markerStart);
   const endIndex = content.indexOf(markerEnd);
   if (startIndex !== -1 && endIndex !== -1 && endIndex > startIndex) {
@@ -100,20 +80,15 @@ function replaceSection(content, markerStart, markerEnd, newSection): any {
   return null;
 }
 
-async /**
- * injectInFile function
- */
-function injectInFile(filePath, header, markerStart, markerEnd, newSection): any {
+async function injectInFile(filePath, header, markerStart, markerEnd, newSection) {
   const data = await fs.readFile(filePath, "utf-8");
-  // First try existing marker replacement.
   const replaced = replaceSection(data, markerStart, markerEnd, newSection);
   if (replaced !== null) {
     await fs.writeFile(filePath, replaced, "utf-8");
     return;
   }
 
-  // Next, insert after header if found.
-  const idx = data.indexOf(header);
+  const idx = header ? data.indexOf(header) : -1;
   if (idx >= 0) {
     const afterHeaderIdx = data.indexOf("\n", idx);
     const updated =
@@ -126,18 +101,17 @@ function injectInFile(filePath, header, markerStart, markerEnd, newSection): any
     return;
   }
 
-  // Fallback: append at end.
   await fs.writeFile(filePath, data + "\n" + markerStart + "\n" + newSection + "\n" + markerEnd + "\n", "utf-8");
 }
 
-async /**
- * main function
- */
-function main(): any {
+async function main() {
   const routeFiles = await getRouteFiles(["app/api", "src/app/api"]);
   const entries = routeFiles
     .map((file) => {
-      const endpoint = toEndpoint(file, file.includes(path.join("src", "app", "api")) ? "src/app/api" : "app/api");
+      const endpoint = toEndpoint(
+        file,
+        file.includes(path.join("src", "app", "api")) ? "src/app/api" : "app/api"
+      );
       const cleanedEndpoint = endpoint.replace(/\/\/+/g, "/").replace(/\/$/, "");
       return {
         endpoint: cleanedEndpoint === "/api" ? "/api/" : cleanedEndpoint,
@@ -152,10 +126,10 @@ function main(): any {
 
   await injectInFile(
     API_MD,
-    fully implemented
+    "## API Coverage Summary",
     "<!-- API_ENDPOINTS_AUTOGEN_START -->",
     "<!-- API_ENDPOINTS_AUTOGEN_END -->",
-    section,
+    section
   );
 
   await injectInFile(
@@ -163,22 +137,31 @@ function main(): any {
     "## Core System Endpoints",
     "<!-- ENDPOINTS_AUTOGEN_START -->",
     "<!-- ENDPOINTS_AUTOGEN_END -->",
-    section,
+    section
   );
 
   await injectInFile(
     API_V1_MD,
     "<!-- APIV1_ENDPOINTS_AUTOGEN_START -->",
     "<!-- APIV1_ENDPOINTS_AUTOGEN_END -->",
-    section,
+    section
   );
+
+  if (await exists(APIs_1_MD)) {
+    await injectInFile(
+      APIs_1_MD,
+      "<!-- APIS1_ENDPOINTS_AUTOGEN_START -->",
+      "<!-- APIS1_ENDPOINTS_AUTOGEN_END -->",
+      section
+    );
+  }
 
   const outPath = path.join(ROOT, "all_api_endpoints_found.txt");
   await fs.writeFile(outPath, list + "\n", "utf-8");
-  logger.info(`Wrote ${entries.length} routes to ${outPath}`);
+  console.log(`Wrote ${entries.length} routes to ${outPath}`);
 }
 
 main().catch((err) => {
-  logger.error(err);
+  console.error(err);
   process.exit(1);
 });
