@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # 🚀 QMOI Enhanced - production Migration Complete
 
 **Completion Date:** 2026-04-24T12:00:00Z  

@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Home Screen (Landing Page)
 
 ## Screen Information

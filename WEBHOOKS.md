@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Webhooks & Webhook Endpoints ✅
 
 **Last Updated:** 2026-06-05T19:30:00.000000Z

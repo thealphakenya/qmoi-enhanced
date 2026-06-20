@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Quantum multi orchestra intelligence (QMOI) Enhanced - Unified Build System Guide
 ## Q1.MD-Based Build Script Enhancements
 

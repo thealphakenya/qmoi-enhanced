@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # device Management Dashboard Screen
 
 ## Screen Information

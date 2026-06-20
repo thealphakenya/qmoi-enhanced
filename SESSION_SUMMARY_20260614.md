@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Session Summary: Phase 3 Tier 1 & 2 Completion
 
 **Date:** 2026-06-14  

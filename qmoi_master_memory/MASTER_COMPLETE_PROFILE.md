@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # 👑 Quantum multi orchestra intelligence (QMOI) Master Complete Profile
 
 **Version**: 3.0.0  

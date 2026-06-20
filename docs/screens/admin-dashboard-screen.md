@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Admin Dashboard Screen
 
 ## Screen Information

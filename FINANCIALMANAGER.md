@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # FINANCIALMANAGER.md - Quantum multi orchestra intelligence (QMOI) Global Financial Manager System
 
 **Auto-generated on:** 2026-04-18 12:00:00 UTC

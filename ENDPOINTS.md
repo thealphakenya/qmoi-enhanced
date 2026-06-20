@@ -1,9 +1,13 @@
+---
+quantum-enabled: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-19T22:44:33.750813Z
+- timestamp: 2026-06-20T00:00:21.812699Z
 fully implemented
 <!-- LION_VALIDATION_END -->
 
@@ -178,6 +182,18 @@ The endpoint inventory is derived from live route handler source files under `sr
 
 **QVS System:**
 30. `GET /api/qvs` - QVS (Quantum Value System) endpoint
+
+### Quantum Orchestration & Devices (4 endpoints) ✅
+
+1. `GET /api/quantum/devices` - List configured quantum devices and capabilities (simulator/hardware)
+2. `POST /api/quantum/submit` - Submit a quantum job payload (requires auth and RBAC)
+3. `GET /api/quantum/status/:job_id` - Fetch job status and results
+4. `POST /api/qmoi/quantum-run` - Run a predefined quantum routine and return processed features
+
+Notes:
+- Hardware access is gated to master/service roles; simulator fallback is used by default in dev and staging.
+- Quantum job results are stored under `var/quantum_jobs/results` and are visible via the `GET /api/quantum/status/:job_id` endpoint.
+
 
 ### Master System & Domain Management (3 endpoints)
 31. `GET /api/master/domain-health` - Check domain health status
@@ -3055,7 +3071,7 @@ Response (200): {
 **Performance**: ✅ Optimized
 
 <!-- ENDPOINTS_AUTOGEN_START -->
-Updated at 2026-06-19T22:44:24.341Z
+Updated at 2026-06-20T00:00:16.958Z
 
 - `/api/account-automation` -> app/api/account-automation/route.ts
 - `/api/accountability` -> app/api/accountability/route.ts

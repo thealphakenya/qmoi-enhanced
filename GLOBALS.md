@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # GLOBALS.md — Global Settings & Internationalization Registry
 
 This file lists canonical global settings and how they are represented in the system.

@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Enhanced Production Readiness Report
 
 **Date**: 2026-05-07  

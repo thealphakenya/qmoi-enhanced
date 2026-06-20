@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 Skip to content
 Vercel
 

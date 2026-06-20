@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Quantum multi orchestra intelligence (QMOI) Model Completeness Verification
 
 **Verification Date**: 2026-04-14T02:01:18.270395

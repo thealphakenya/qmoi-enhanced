@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 ROLE
 
 Act as a senior UI/UX auditor and technical documentation expert.

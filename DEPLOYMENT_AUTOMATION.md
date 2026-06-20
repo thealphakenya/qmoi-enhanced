@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # DEPLOYMENT AUTOMATION
 
 ## Overview

@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # QMOI Enhanced - AutoPRODUCTION production Operations Guide
 
 **Version:** 2.0 - production Enhanced

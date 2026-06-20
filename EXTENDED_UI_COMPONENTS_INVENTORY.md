@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Extended UI Components Inventory
 
 **Date Created**: [Current Session]

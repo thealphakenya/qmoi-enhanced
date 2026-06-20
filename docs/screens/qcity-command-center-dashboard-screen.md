@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QCity Command Center Dashboard Screen
 
 ## Overview

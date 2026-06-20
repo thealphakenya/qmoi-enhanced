@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Enhanced - Complete production Migration Summary
 # ✅ ALL DELIVERABLES COMPLETE - Ready for Phase 2
 

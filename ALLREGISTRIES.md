@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # ALLREGISTRIES.md - Quantum multi orchestra intelligence (QMOI) Registry & Orchestrator Documentation Index
 
 **Last Updated:** 2026-04-28T12:00:00.000000Z

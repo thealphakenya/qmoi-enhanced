@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Quantum multi orchestra intelligence (QMOI) Enhanced Revenue Generation Strategy 2026
 
 ## Executive Summary

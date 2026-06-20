@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # REPORTING DASHBOARDS
 
 ## Overview

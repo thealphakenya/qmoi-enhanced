@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Enhanced Application Features
 
 ## Core Features Overview

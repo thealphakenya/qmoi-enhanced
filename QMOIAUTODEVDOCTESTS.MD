@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
  all markers normalized for completion
 <!-- LION_VALIDATION_START -->
 

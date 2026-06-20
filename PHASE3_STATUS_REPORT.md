@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Phase 3 Tier 3 Implementation Status Report
 
 **Report Date:** 2026-06-14  

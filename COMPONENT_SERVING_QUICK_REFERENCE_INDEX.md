@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # 📑 COMPONENT SERVING QUICK REFERENCE INDEX
 
 **Total Components Analyzed:** 189 files  

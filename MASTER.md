@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # MASTER.md - Master Role and Access Reference
 
 ## Overview

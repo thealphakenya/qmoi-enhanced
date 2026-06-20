@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Quantum multi orchestra intelligence (QMOI) Model - All Performance Percentages & Metrics (April 13, 2026)
 
 ## Core Capability Percentages

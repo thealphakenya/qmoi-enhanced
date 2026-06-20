@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # ALLAUTO.md - Quantum multi orchestra intelligence (QMOI) Full Automation Inventory
 
 **Last Updated:** 2026-04-23T07:44:33.431213Z
@@ -5,6 +9,12 @@
 
 ## ⚛️ Quantum Automation Coverage
 This file tracks all markdown files whose file names contain the word `auto`. It also ensures every auto-related doc includes a standard quantum automation enhancement section with comprehensive quantum feature integration.
+
+## Quantum Metadata Propagation
+
+- All automation-related markdown files have been annotated with a `quantum-enabled` metadata flag where applicable.
+- Inventories updated: `ALLMDFILESREFS.md`, `ALLMDFILESREFS_ENHANCED.md`, `TREE.md`, `API.md`, `ENDPOINTS.md`, and `ROUTES.md` now include references or sections for quantum-enabled features.
+- Operational artifacts: `config/quantum_devices.json`, `var/quantum_jobs/`, and `reports/quantum_integration_report.md` store device config, queued jobs, and integration summaries respectively.
 
 ## Always-on Resume Automation
 - Run `python3 scripts/always_auto_resume.py` or `npm run resume:auto` to start a continuous automation loop that:

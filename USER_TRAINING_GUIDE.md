@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Quantum multi orchestra intelligence (QMOI) Enhanced - User Training Guide
 
 ## 🎓 **Getting Started with Quantum multi orchestra intelligence (QMOI) Enhanced AI System**

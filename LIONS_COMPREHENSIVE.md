@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Quantum multi orchestra intelligence (QMOI) Enhanced Lion Comprehensive Documentation
 **Version**: 2.1.0  
 **Last Updated**: April 13, 2026  

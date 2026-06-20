@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Enhanced User Guide & Help System
 
 ## Welcome to QMOI Enhanced

@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # USER.md - Regular User Role and Access
 
 ## Overview

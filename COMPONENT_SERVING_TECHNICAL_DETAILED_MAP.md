@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # 🗂️ COMPREHENSIVE .TSX COMPONENT-TO-SERVING FILE MAPPING
 ## Detailed Technical Reference Guide
 

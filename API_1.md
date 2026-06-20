@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # API_1.md - API v1 Reference & Legacy Documentation
 
 **Last Updated:** 2026-06-08  

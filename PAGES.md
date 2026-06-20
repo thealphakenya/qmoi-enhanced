@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # PAGES.md
 
 ## Active App Page Inventory

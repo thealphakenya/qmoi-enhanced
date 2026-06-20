@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Enhanced - production Status Report
 **Date:** May 2, 2026, 12:13 UTC  
 **Status:** ✅ FULLY OPERATIONAL 

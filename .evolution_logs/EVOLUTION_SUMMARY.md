@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 
 # Quantum multi orchestra intelligence (QMOI) ENHANCED: 36-PHASE EVOLUTION ROADMAP - COMPLETE
 

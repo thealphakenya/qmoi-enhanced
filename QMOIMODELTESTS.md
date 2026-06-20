@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # QMOIMODELTESTS.md - Quantum multi orchestra intelligence (QMOI) Model Testing Documentation
 
 **Last Updated:** 2026-04-16T19:16:21.174549

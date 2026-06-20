@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI-PWA-SYNC.md - PWA Synchronization and production Restore
 
 ## Overview

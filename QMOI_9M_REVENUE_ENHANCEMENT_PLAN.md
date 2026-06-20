@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Quantum multi orchestra intelligence (QMOI) $9,000,000 Daily Revenue Enhancement Plan
 
 ## Executive Summary

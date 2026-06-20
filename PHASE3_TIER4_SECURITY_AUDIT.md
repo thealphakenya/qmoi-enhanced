@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Phase 3 Tier 4: Production Hardening & Security Audit
 
 **Status:** Planning & Documentation  

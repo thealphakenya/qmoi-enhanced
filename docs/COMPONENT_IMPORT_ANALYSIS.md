@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Component Connection & Import Analysis
 
 **Date**: May 4, 2026  

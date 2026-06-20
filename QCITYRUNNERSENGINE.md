@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 <!-- PRODUCTION_READY: True -->
 ---
 title: "1. Navigate to GitHub > Settings > Actions > Runners > New Self-Hosted Runner"
@@ -9,7 +13,7 @@ title: "1. Navigate to GitHub > Settings > Actions > Runners > New Self-Hosted R
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-19T22:44:34.039077Z
+- timestamp: 2026-06-20T00:00:22.168577Z
 fully implemented
 <!-- LION_VALIDATION_END -->
 

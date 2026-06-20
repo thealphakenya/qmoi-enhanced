@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # AUTOPRODUCTION - Quantum multi orchestra intelligence (QMOI) Autonomous production Framework ✅ 
 
 ## Overview

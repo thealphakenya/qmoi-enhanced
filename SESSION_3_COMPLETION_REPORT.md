@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Session 3 Completion Report: Phase 3 Tier 3 & 4 Documentation & Planning
 
 **Session Duration:** ~2 hours  

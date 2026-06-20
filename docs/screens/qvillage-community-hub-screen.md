@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QVillage Community Hub Screen
 
 ## Overview

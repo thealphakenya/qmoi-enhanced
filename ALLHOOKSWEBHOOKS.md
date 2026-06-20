@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # All Hooks & Webhooks
 
 **Last Updated:** 2026-04-17T02:34:09.173229

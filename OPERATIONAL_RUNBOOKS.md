@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Enhanced - Operational Runbooks
 
 **Last Updated:** May 10, 2026  

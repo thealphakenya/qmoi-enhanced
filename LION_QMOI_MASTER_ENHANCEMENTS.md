@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # 🦁 LION × Quantum multi orchestra intelligence (QMOI) Master Enhancement System
 **Version**: 3.0.0  
 **Status**:   

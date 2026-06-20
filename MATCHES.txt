@@ -1,10 +1,11 @@
 QMOI production MARKER MATCHES
-Generated: 2026-06-19T22:44:38.314258
+Generated: 2026-06-20T00:00:05.819282
 
 SUMMARY:
-- Files with markers: 0
-- Total markers found: 0
+- Files with markers: 1
+- Total markers found: 3
 
 TOP MATCHES:
+- scripts/generate_allmdrefs.py: 3 marker(s)
 
 For details, review undone.txt and INSTANCES.md.

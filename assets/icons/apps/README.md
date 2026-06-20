@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # App Icons
 
 This directory centralizes application icon assets for the QMOI ecosystem.

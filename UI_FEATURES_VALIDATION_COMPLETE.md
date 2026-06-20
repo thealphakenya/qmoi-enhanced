@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # UI Features Validation & Setup Completion - May 6, 2026
 
 **Status**: ✅ COMPLETE

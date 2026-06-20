@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # QMOI-ENHANCED Repository App Tree
 =================================
 
@@ -63,6 +67,15 @@ Shared resources and cross-app dependencies
 - `useAuth` (`app/hooks/useAuth.ts`) is the canonical client-side auth hook used by `UniversalRouteGuard` and all shells.
 - `app/components/auth/*` contains universal auth UI and persistence helpers used across shells.
 - `lib/auth/memory.ts` and `app/lib/auth/memory.ts` provide memory / logging helpers; `qmoiMemoryService` is exported from `lib/auth/memory` and re-exported where needed.
+
+### Quantum Components
+
+- `scripts/qmoi_quantum_integrator.py` — quantum job queue, processing, and result persistence (var/quantum_jobs).
+- `config/quantum_devices.json` — device definitions and `auto_run` flags.
+- `var/quantum_jobs/queue` — queued job JSON files; `var/quantum_jobs/results` — result artifacts.
+- Add `scripts/quantum_adapters/` for hardware SDK adapters (Qiskit, Cirq, Braket) when integrating real devices.
+
+Operational note: quantum features are annotated in inventories (`ALLMDFILESREFS.md`, `ALLAUTO.md`, `API.md`, `ENDPOINTS.md`, `ROUTES.md`) with `quantum-enabled` flags to help discoverability and gating.
 - API routes for auth and memory live under `app/api/*` (preferred) and legacy duplicates may exist under `src/app/api/*` or `app/api/*` elsewhere.
 
 Developer instructions

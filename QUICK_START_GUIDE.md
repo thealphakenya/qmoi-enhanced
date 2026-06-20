@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Quick Start Guide: Phase 3 Implementation
 
 **Status:** 🚀 READY TO EXECUTE  

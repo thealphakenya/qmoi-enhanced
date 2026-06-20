@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 ✅  all markers normalized for completion
 ---
 title: "LION Features (detailed)"
@@ -9,7 +13,7 @@ title: "LION Features (detailed)"
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-19T22:44:36.864692Z
+- timestamp: 2026-06-20T00:00:24.597740Z
 fully implemented
 <!-- LION_VALIDATION_END -->
 

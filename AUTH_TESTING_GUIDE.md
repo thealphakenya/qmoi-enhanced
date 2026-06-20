@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Authentication Testing Guide for QMOI Enhanced
 
 ## Overview

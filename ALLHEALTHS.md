@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # ALLHEALTHS.md - Comprehensive Health Systems Inventory
 
 ## Executive Summary

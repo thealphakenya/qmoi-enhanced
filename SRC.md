@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # SRC.md - Source Inventory & App Integration
 
 ## Live Source Pages & Entry Points

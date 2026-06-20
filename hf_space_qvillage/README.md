@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # HF Space QVillage
 
 A production-ready Hugging Face Space implementation for the QVillage research platform. This directory contains a Gradio app, core business logic, and a runnable test suite.

@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Quantum multi orchestra intelligence (QMOI) Global Structure 2026
 
 ## 🛡️ Global Legal Protection Network - AUTOJCA Integration

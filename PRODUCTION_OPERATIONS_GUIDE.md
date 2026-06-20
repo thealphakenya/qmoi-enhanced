@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Enhanced - production Operations Guide
 
 **Status:** ✅ FULLY OPERATIONAL  

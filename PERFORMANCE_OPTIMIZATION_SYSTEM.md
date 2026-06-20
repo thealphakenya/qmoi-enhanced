@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # PERFORMANCE OPTIMIZATION SYSTEM
 
 ## Overview

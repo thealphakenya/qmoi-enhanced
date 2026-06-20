@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # API Reference: Advanced Authentication Features
 
 **Status:** Ready for Implementation  

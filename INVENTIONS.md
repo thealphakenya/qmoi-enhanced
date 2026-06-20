@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # INVENTIONS.md - Quantum multi orchestra intelligence (QMOI) Invention Projects Management
 
 **Auto-generated on:** 2026-04-16 22:20:00 UTC

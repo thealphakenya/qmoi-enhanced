@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Space - Live Marketplace & Collaboration Platform
 
 ## Route

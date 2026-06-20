@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # AUTOJCA - Automated Justice Compliance & Arbitration System
 
 **Quantum multi orchestra intelligence (QMOI) Enhanced - QVS Module**

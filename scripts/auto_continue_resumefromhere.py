@@ -22,6 +22,8 @@ LION_METADATA_SCRIPT = ROOT / "scripts" / "autotag_md_with_lion.py"
 LION_SCAN_SCRIPT = ROOT / "scripts" / "scan_lion_usage.py"
 LION_ORCHESTRATOR_SCRIPT = ROOT / "scripts" / "lion_orchestrator.py"
 LION_INTEGRATOR_SCRIPT = ROOT / "scripts" / "qmoi_bulk_lion_security_integrator.py"
+MD_STATUS_SCRIPT = ROOT / "scripts" / "generate_allmdrefs.py"
+LEGACY_MD_GENERATOR = ROOT / "tools" / "regenerate_allmdrefs.py"
 
 
 def git_summary() -> tuple[str, str, str]:
@@ -116,6 +118,8 @@ def update_resume_tasks_block() -> None:
         '- Address all items in 14.txt and resumefromhere.txt with production implementations.',
         '- Keep the system synchronized with the universal auth, theme, and QM OI memory flow.',
         '- Update all docs, endpoints, and app shell UI documentation while fixing production markers.',
+        '- Generate and refresh ALLMDFILESREFS.md with per-file markdown production status annotations.',
+        '- Ensure every markdown file in ALLMDFILESREFS.md is reviewed and marked production-ready, or tagged for follow-up fixes.',
     ]
     task_block_lines += [f'- {task}' for task in merged_tasks[:50]]
     if len(merged_tasks) > 50:
@@ -182,6 +186,13 @@ def run_bulk_fixer() -> None:
     else:
         print(f"Warning: {qmoi_md_autoupdater} not found; skipping root documentation sync.")
 
+    if MD_STATUS_SCRIPT.exists():
+        run_command([sys.executable, str(MD_STATUS_SCRIPT), "--write"], 'generate ALLMDFILESREFS.md with markdown production status')
+    elif LEGACY_MD_GENERATOR.exists():
+        run_command([sys.executable, str(LEGACY_MD_GENERATOR)], 'regenerate ALLMDFILESREFS.md inventory')
+    else:
+        print(f"Warning: No markdown inventory generator found; skipping ALLMDFILESREFS.md refresh.")
+
     if LION_METADATA_SCRIPT.exists():
         run_command([sys.executable, str(LION_METADATA_SCRIPT), "--apply", "--out", str(ROOT / "docs" / "md_index.json")], 'apply Lion markdown validation metadata')
     else:
@@ -201,6 +212,26 @@ def run_bulk_fixer() -> None:
         run_command([sys.executable, str(LION_INTEGRATOR_SCRIPT)], 'run QM OI Lion bulk security integrator')
     else:
         print(f"Warning: {LION_INTEGRATOR_SCRIPT} not found; skipping QM OI Lion bulk security integration.")
+
+    # Attempt to run the QM OI quantum integrator if present.
+    QMOINTEGRATOR = ROOT / 'scripts' / 'qmoi_quantum_integrator.py'
+    QM_CONFIG = ROOT / 'config' / 'quantum_devices.json'
+    if QMOINTEGRATOR.exists():
+        # If a config requests auto_run, process the queued jobs; otherwise run a safe dry-run status check.
+        try:
+            if QM_CONFIG.exists():
+                import json
+                cfg = json.loads(QM_CONFIG.read_text(encoding='utf-8'))
+                if cfg.get('auto_run'):
+                    run_command([sys.executable, str(QMOINTEGRATOR), '--process-queue'], 'run QM OI quantum integrator (process-queue)')
+                else:
+                    run_command([sys.executable, str(QMOINTEGRATOR), '--dry-run'], 'run QM OI quantum integrator (dry-run)')
+            else:
+                run_command([sys.executable, str(QMOINTEGRATOR), '--dry-run'], 'run QM OI quantum integrator (dry-run)')
+        except Exception:
+            run_command([sys.executable, str(QMOINTEGRATOR), '--dry-run'], 'run QM OI quantum integrator (dry-run)')
+    else:
+        print(f"Info: {QMOINTEGRATOR} not found; skipping quantum integrator run.")
 
     if not BULK_FIXER_SCRIPT.exists():
         print(f"Warning: {BULK_FIXER_SCRIPT} not found; bulk production fixer cannot be executed.")

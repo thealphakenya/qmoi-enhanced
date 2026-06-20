@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Complete QMOI AI & Apps Enhancement Summary
 **Date:** May 12, 2026
 **Status:** ✅ PRODUCTION IMPLEMENTATION COMPLETE

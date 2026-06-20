@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Enhanced - Complete Deployment Guide
 
 **Last Updated:** May 10, 2026  

@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # ALLERRORS - Automated Triage Log
 
 Last scan: 2026-06-12T12:00:00Z
@@ -72,7 +76,7 @@ Notes:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-19T22:44:33.486285Z
+- timestamp: 2026-06-20T00:00:21.454703Z
 fully implemented
 <!-- LION_VALIDATION_END -->
 

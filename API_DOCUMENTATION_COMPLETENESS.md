@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # API DOCUMENTATION COMPLETENESS VERIFICATION
 **Generated:** 2026-06-08  
 **Status:** ✅ COMPLETE & VERIFIED

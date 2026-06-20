@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Master Links Management Screen
 
 ## Overview

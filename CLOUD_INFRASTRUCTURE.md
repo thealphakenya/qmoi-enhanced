@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # CLOUD INFRASTRUCTURE
 
 ## Overview

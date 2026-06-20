@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Documentation Status Report
 **Generated:** 2026-06-08  
 **Status:** COMPREHENSIVE AUDIT & CONSOLIDATION COMPLETE

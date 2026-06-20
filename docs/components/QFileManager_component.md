@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QFileManager Component
 
 ## Overview

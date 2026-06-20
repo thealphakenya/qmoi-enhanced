@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # 🚀 QMOI ENHANCED - production DEPLOYMENT COMPLETION REPORT
 
 ## 📊 Final Status: DEPLOYMENT READY (100%)

@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI TypeScript Error Remediation Plan
 
 **Generated**: 2026-06-07  

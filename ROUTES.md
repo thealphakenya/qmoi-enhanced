@@ -1,9 +1,13 @@
+---
+quantum-enabled: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-19T22:44:35.052021Z
+- timestamp: 2026-06-20T00:00:22.600943Z
 fully implemented
 <!-- LION_VALIDATION_END -->
 
@@ -34,6 +38,19 @@ This document describes the route file structure for the QMOI Enhanced applicati
 **IMPORTANT:** Active production API routes are served from `src/app/api/` (43 routes). The legacy `app/api/` directory (249 routes) contains compatibility handlers for backward compatibility and is documented separately. See `ENDPOINTS.md` for complete production endpoint documentation.
 
 ---
+
+## Quantum Routes
+
+The repository exposes quantum-related route handlers and convenience endpoints under `/api/quantum` and `/api/qmoi`:
+
+- `src/app/api/quantum/devices/route.ts` -> `GET /api/quantum/devices`
+- `src/app/api/quantum/submit/route.ts` -> `POST /api/quantum/submit`
+- `src/app/api/quantum/status/[job_id]/route.ts` -> `GET /api/quantum/status/:job_id`
+- `src/app/api/qmoi/quantum-run/route.ts` -> `POST /api/qmoi/quantum-run`
+
+Notes:
+- In production, quantum hardware endpoints should be registered behind RBAC firewall checks and master-only controls.
+- For development and CI, these routes use simulator adapters unless a hardware adapter is configured in `config/quantum_devices.json`.
 
 ## Active Production Routes (43 Files in src/app/api/)
 
@@ -502,7 +519,7 @@ All webhook routes include:
 <!-- AUTO_ROUTE_INVENTORY_START -->
 ## Auto-generated route inventory
 
-- Generated: 2026-06-19T22:44:32.468607+00:00
+- Generated: 2026-06-20T00:00:26.746362+00:00
 - Active route files in `src/app/api`: 43
 - Legacy route files in `app/api`: 264
 

@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
  all markers normalized for completion
 ---
 title: "Quantum multi orchestra intelligence (QMOI) script continues to update download links with tunnel.public_url"
@@ -9,7 +13,7 @@ title: "Quantum multi orchestra intelligence (QMOI) script continues to update d
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-19T22:44:34.205042Z
+- timestamp: 2026-06-20T00:00:22.349799Z
 fully implemented
 <!-- LION_VALIDATION_END -->
 

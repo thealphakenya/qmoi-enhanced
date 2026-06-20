@@ -1,0 +1,11 @@
+{
+  "auto_run": false,
+  "devices": [
+    {
+      "name": "local_simulator",
+      "type": "simulator",
+      "max_qubits": 20,
+      "auto_run": true
+    }
+  ]
+}

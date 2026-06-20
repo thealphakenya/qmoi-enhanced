@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Phase 3 Tier 2 Test Results & Implementation Status
 
 **Execution Date:** 2026-06-19  

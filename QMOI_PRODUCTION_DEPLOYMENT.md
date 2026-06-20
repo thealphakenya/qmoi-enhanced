@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Quantum multi orchestra intelligence (QMOI) production Deployment & Operations Guide
 
 **Last Updated**: 2026-04-14 02:50:00 UTC
@@ -8,7 +12,7 @@
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-19T22:44:34.297389Z
+- timestamp: 2026-06-20T00:00:22.450492Z
 fully implemented
 <!-- LION_VALIDATION_END -->
 

@@ -2,24 +2,27 @@
 This file tracks the remaining production readiness instances from `undone.txt`.
 ## Remaining Files
 ### SUMMARY
-- Total files scanned: 4729
-- Files with markers: 0
-- Total markers found: 0
-- Scan timestamp: 2026-06-19T22:44:38.314258
-- Scan ID: 1781909078
+- Total files scanned: 4740
+- Files with markers: 1
+- Total markers found: 3
+- Scan timestamp: 2026-06-20T00:00:05.819282
+- Scan ID: 1781913605
 ### DETAILED FINDINGS
-- Scan Timestamp: 2026-06-19T22:44:38.314258
-- Total Files Scanned: 4729
-- Total Directories Scanned: 803
-- Files with Markers: 0
-- Total Markers Found: 0
+- Scan Timestamp: 2026-06-20T00:00:05.819282
+- Total Files Scanned: 4740
+- Total Directories Scanned: 809
+- Files with Markers: 1
+- Total Markers Found: 3
 ### MARKER BREAKDOWN
-- No markers found - System appears production-ready!
+- UNIMPLEMENTED: 1
+- NOT_IMPLEMENTED: 1
+- production_REMOVED: 1
 
 ### FILES WITH MARKERS
-No files with markers found!
+1. scripts/generate_allmdrefs.py (3 markers)
 
 ### NEXT STEPS
-- System appears fully production-ready!
-- Run final verification tests
-- Prepare for production deployment
+- Review undone.txt for detailed findings
+- Replace all nonproduction markers with production implementations
+- Run comprehensive testing
+- Update documentation

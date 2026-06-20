@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Phase 3 Tier 3: Implementation Code Templates & Integration Guide
 
 **Status:** Ready for Development  

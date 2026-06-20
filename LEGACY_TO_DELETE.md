@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 Legacy directories/files identified as candidates for removal after feature extraction and verification
 =================================================================================
 

@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # QCITYUI.md - QCity User Interface Documentation ✅ PRODUCTION CERTIFIED
 
 ## Route

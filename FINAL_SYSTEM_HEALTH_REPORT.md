@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 
 # Quantum multi orchestra intelligence (QMOI) System Final Health Report
 

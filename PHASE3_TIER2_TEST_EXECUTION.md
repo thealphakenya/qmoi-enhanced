@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Phase 3 Tier 2: Testing & Verification - Execution Guide
 
 **Status:** Ready for Execution

@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI AI Platform - UI Production Guide
 
 **Version**: 2.0.0 - Production Ready  

@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Component & App Mapping Reference
 **Generated:** May 5, 2026
 **Status:** Comprehensive mapping of all components to their apps

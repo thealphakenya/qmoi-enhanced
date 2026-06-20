@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # PROJECTS.md - Quantum multi orchestra intelligence (QMOI) Project Management and Types
 
 **Auto-generated on:** 2026-04-16 22:10:00 UTC

@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # QMOIMODEL.md - Quantum multi orchestra intelligence (QMOI) Model Card & Comparison
 
 **Last Updated:** 2026-04-16T19:16:21.174549
@@ -169,6 +173,43 @@ Autonomous Operations   95%+   <10%
 - Chat and assistant interactions are routed through `/api/qmoi/chat` using the canonical `qmoi-prod` model.
 - QMOI AI, QMOI Space, QCity, and Q Alpha all consume this service for model health, inference, and production workflow validation.
 - Backend integration ensures consistent QMOI model behavior for chat, messaging, analytics, and automation.
+
+## ⚛️ Quantum Integration Enhancement Plan
+
+This project-level plan describes how Quantum capabilities are integrated into QMOI across intelligence, reasoning, learning, memory, autoresearch, and automation.
+
+Goals
+- Extend QMOI's reasoning and learning pipelines with quantum-accelerated components where beneficial (search, optimization, sampling).
+- Provide a production quantum orchestration layer to submit jobs, collect results, and integrate results into model training, retrieval, and decision pipelines.
+- Ensure documentation, endpoints, and route inventories reflect quantum capabilities and provide safe fallbacks to classical simulators.
+
+Architecture (high-level)
+- Quantum Orchestrator Service: `scripts/qmoi_quantum_integrator.py` (already installed) — handles device discovery, job queue, retries, and result persistence.
+- Device Adapters: pluggable handler interfaces for simulators and SDKs (Qiskit, Cirq, Braket). Add adapters under `scripts/quantum_adapters/` when integrating real hardware.
+- Model Bridge: transforms quantum results into features/metrics consumable by QMOI (e.g., enhanced samplers, improved optimizers).
+- Metadata & Inventory: annotate `ALLMDFILESREFS.md`, `TREE.md`, `ALLAUTO.md`, `API.md`, `ENDPOINTS.md`, and `ROUTES.md` with `quantum-enabled` capability flags.
+
+Implementation Steps
+1. Device config and simulation: maintain `config/quantum_devices.json` and simulator fallback.
+2. Integrator service: job enqueue/processing, result storage, retry/backoff, concurrency controls, and run reports (reports/quantum_integration_report.md).
+3. Model integration: add a `qmoi.quantum` module for consuming results during training/online updates and a simple feature extractor to feed the model.
+4. API & Endpoints: expose `/api/quantum/devices`, `/api/quantum/submit`, `/api/quantum/status`, `/api/qmoi/quantum-run` and documentation examples.
+5. Documentation: update `QMOIMODEL.md`, `QMOIMIDEL.md` (implementation guide), `API.md`, `ENDPOINTS.md`, and `ROUTES.md` to include quantum capability descriptions and usage examples.
+6. Testing & Validation: add deterministic simulator-based unit tests and end-to-end smoke tests in `ALLTESTSAUTOTESTS.md` and `reports/`.
+
+Safety & Governance
+- Provide clear gating for hardware access: require master role to run on real devices.
+- Ensure job payload sanitization and quota enforcement to prevent overuse of resources.
+- Record provenance and audit logs for all quantum jobs (job id, device, requester, timestamp, result hash).
+
+Autonomy & Memory Enhancements
+- Integrate quantum-derived features into QMOI's memory and reasoning modules: store result artifacts in the model memory store and index them for retrieval in autoresearch tasks.
+- Use quantum samplers to diversify candidate solutions during autoresearch and planning tasks, with classical verification and ranking steps.
+
+Operational Notes
+- Default behaviour: simulator-only in dev; `auto_run` in `config/quantum_devices.json` controls background processing.
+- Run `python3 scripts/qmoi_quantum_integrator.py --process-queue` to process queued quantum jobs; the bulk workflow will call this automatically when configured.
+
 
 ## 🔗 Integration Guide (Quick)
 

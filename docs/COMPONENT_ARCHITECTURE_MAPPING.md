@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Enhanced: Complete Component Architecture & Connection Mapping
 
 **Last Updated**: May 4, 2026  

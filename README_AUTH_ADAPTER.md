@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 Auth Adapter & Production Migration Notes
 ======================================
 

@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # PROJECT COMPLETION REPORT: QMOI-Enhanced Phase 3 Implementation Ready
 
 **Report Date:** 2026-06-19  

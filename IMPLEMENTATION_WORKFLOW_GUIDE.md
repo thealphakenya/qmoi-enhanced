@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Implementation Workflow: Phase 3 Tier 3 Features
 
 **Status:** Ready for Implementation  

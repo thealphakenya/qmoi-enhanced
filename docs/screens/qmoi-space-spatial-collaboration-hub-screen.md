@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Space Spatial Collaboration Hub Screen
 
 ## Overview

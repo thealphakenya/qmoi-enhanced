@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Master Email Configuration Screen
 
 ## Screen Information

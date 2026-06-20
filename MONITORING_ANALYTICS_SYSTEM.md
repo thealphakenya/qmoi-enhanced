@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # MONITORING ANALYTICS SYSTEM
 
 ## Overview

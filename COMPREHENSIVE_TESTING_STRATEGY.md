@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Comprehensive Testing Strategy: Phase 3 Complete
 
 **Status:** Ready for Execution  

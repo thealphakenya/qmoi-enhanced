@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # PREDICTIVE ANALYTICS
 
 ## Overview

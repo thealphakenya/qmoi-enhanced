@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Q Alpha UI Documentation
 
 ## Route

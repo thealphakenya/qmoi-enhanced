@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Enhanced - Complete Production Deployment Guide
 
 **Version**: 2.0.0 - Production Certified  

@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 A fully automated AI trading system connected to exchanges such as Binance, Coinbase, Kraken, Bybit, Bitget, Alpaca, Interactive Brokers, eToro, OKX, KuCoin, TradingView, MetaTrader 5, and other global venues is designed to perform continuous quantitative trading, portfolio management, and fund orchestration across multiple markets. In production, QMOI is responsible for provisioning platform accounts, managing credentials, securing funds, and coordinating trading execution while maintaining master-only control of all trading UI and automation workflows. Whether QMOI actually makes money in any given period depends on strategy quality, risk management, market conditions, fees, and competition, but the system is built to support a diversified target of at least $1,000,000 daily from trading operations across platforms.
 
 Master-Only Trading UI and Autonomous Trading Operations

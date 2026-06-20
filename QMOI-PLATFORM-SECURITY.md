@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
  all markers normalized for completion
 ---
 title: "Quantum multi orchestra intelligence (QMOI) Platform Security"
@@ -9,7 +13,7 @@ title: "Quantum multi orchestra intelligence (QMOI) Platform Security"
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-19T22:44:34.078156Z
+- timestamp: 2026-06-20T00:00:22.218378Z
 fully implemented
 <!-- LION_VALIDATION_END -->
 

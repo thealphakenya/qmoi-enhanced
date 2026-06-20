@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-06-19T22:44:37.458817Z",
+  "timestamp": "2026-06-20T00:00:26.435839Z",
   "root": "/workspaces/qmoi-enhanced",
   "apply": true,
-  "total_files_scanned": 3587,
+  "total_files_scanned": 3588,
   "updated_files": 1562,
   "results": [
     {
@@ -3767,6 +3767,11 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/QMOIMEMORY.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/QMOIMIDEL.md",
+      "updated": false,
+      "reason": "no validation markers found"
     },
     {
       "path": "/workspaces/qmoi-enhanced/QMOIMODEL.md",

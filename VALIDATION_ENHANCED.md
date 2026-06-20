@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Quantum multi orchestra intelligence (QMOI) Enhanced Validation System
 **Status:** 
 **Last Updated:** 2026-04-15 21:52:00 UTC

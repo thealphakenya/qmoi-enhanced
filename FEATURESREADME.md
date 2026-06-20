@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
  all markers normalized for completion
 ---
 title: "latest-Q AI Features"
@@ -9,7 +13,7 @@ title: "latest-Q AI Features"
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-19T22:44:33.817517Z
+- timestamp: 2026-06-20T00:00:21.849147Z
 fully implemented
 <!-- LION_VALIDATION_END -->
 

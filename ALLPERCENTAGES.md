@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # ALL PERCENTAGES - Quantum multi orchestra intelligence (QMOI) Enhanced System
 
 ## Overview

@@ -6,12 +6,15 @@ import logging
 import os
 import re
 import sys
+import subprocess
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Optional
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+MD_STATUS_SCRIPT = ROOT / 'scripts' / 'generate_allmdrefs.py'
+LEGACY_MD_GENERATOR = ROOT / 'tools' / 'regenerate_allmdrefs.py'
 
 try:
     from thorough_production_scanner import ThoroughproductionScanner
@@ -43,13 +46,25 @@ class ProductionImpl:
             if not no_write:
                 scanner.save_results()
 
+        self.update_markdown_inventory()
         self.write_bulk_workflow(scan_results)
 
-        return {
-            'status': 'success',
-            'timestamp': datetime.now().isoformat(),
-            'scan_results': scan_results,
-        }
+    def update_markdown_inventory(self) -> None:
+        if MD_STATUS_SCRIPT.exists():
+            logger.info('Updating ALLMDFILESREFS.md with markdown production status')
+            try:
+                subprocess.run([sys.executable, str(MD_STATUS_SCRIPT), '--write'], cwd=self.root, check=True)
+            except subprocess.CalledProcessError as exc:
+                logger.warning('Failed to update ALLMDFILESREFS.md: %s', exc)
+        elif LEGACY_MD_GENERATOR.exists():
+            logger.info('Regenerating ALLMDFILESREFS.md inventory via legacy tool')
+            try:
+                subprocess.run([sys.executable, str(LEGACY_MD_GENERATOR)], cwd=self.root, check=True)
+            except subprocess.CalledProcessError as exc:
+                logger.warning('Failed to regenerate ALLMDFILESREFS.md: %s', exc)
+        else:
+            logger.warning('No markdown inventory generator found; skipping ALLMDFILESREFS.md refresh.')
+
 
     def extract_tasks_from_text(self, content: str) -> list[str]:
         tasks: list[str] = []

@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 <!-- PRODUCTION_READY: True -->
 # Quantum multi orchestra intelligence (QMOI) Enhanced - Quick Reference Guide
 

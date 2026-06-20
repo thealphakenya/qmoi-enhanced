@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI AI - Live Application Documentation
 
 ## Route

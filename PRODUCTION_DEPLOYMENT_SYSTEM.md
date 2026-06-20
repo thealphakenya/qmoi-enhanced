@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # production DEPLOYMENT SYSTEM
 
 ## Overview

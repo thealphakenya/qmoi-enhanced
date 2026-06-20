@@ -1,4 +1,8 @@
 ---
+quantum-enabled: false
+---
+
+---
 # QMOI Enhanced - production Deployment Checklist
 
 ## Pre-Deployment

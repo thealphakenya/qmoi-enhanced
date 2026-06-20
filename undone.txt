@@ -1,13 +1,30 @@
 # UNDONE.TXT - THOROUGH production READINESS SCAN
-# Generated: 2026-06-19T22:44:38.314258
-# Scan ID: 1781909078
+# Generated: 2026-06-20T00:00:05.819282
+# Scan ID: 1781913605
 # Root Directory: /workspaces/qmoi-enhanced
 
 ## SCAN SUMMARY
-- Total files scanned: 4729
-- Total directories scanned: 803
-- Files with markers: 0
-- Total markers found: 0
+- Total files scanned: 4740
+- Total directories scanned: 809
+- Files with markers: 1
+- Total markers found: 3
+
+## MARKER SUMMARY (Most Critical First)
+- UNIMPLEMENTED: 1 instances
+- NOT_IMPLEMENTED: 1 instances
+- production_REMOVED: 1 instances
+
+## FILES REQUIRING production IMPLEMENTATION
+
+### 1. scripts/generate_allmdrefs.py
+   - Size: 5677 bytes
+   - Last modified: 2026-06-19T23:29:39.594034
+   - Total markers: 3
+   - File hash: a1798c29
+   - Markers found:
+     * UNIMPLEMENTED: 1
+     * NOT_IMPLEMENTED: 1
+     * production_REMOVED: 1
 
 ## NEXT STEPS
 1. Review files with markers above

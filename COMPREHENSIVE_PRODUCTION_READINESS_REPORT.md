@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # 🚀 QMOI ENHANCED - COMPREHENSIVE production READINESS REPORT
 
 ## 📊 Executive Summary

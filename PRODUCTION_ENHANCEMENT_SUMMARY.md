@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # production ENHANCEMENT SUMMARY - 2026-04-12 07:00 UTC
 
 ## ✅ COMPLETED IN THIS SESSION

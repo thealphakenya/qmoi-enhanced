@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 ✅ production Implementation Progress - May 5, 2026
 
 ## Completed Conversions (mock → production-ready)

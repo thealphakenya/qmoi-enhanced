@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Quantum multi orchestra intelligence (QMOI) Comprehensive Security & Personal Enhancement Plan 2026
 
 **Version:** 3.0.0

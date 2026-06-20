@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Global Operations Enhancement - Phase 2 Complete
 
 **Completion Date:** 2026-06-05T22:15:00.000000Z  

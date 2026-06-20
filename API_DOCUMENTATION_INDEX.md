@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # API Documentation Index - QMOI Enhanced
 
 **Last Updated:** May 5, 2026

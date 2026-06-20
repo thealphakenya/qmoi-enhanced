@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # QMOI Global Enhancement Master Plan 2026
 
 ## Executive Summary

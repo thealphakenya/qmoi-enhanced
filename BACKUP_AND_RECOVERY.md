@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Enhanced Backup and Recovery Guide
 
 **Last Updated:** May 10, 2026  

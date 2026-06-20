@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # ROUTES.md - Complete Route Directory
 
 **Last Updated**: 2026-04-13 23:45:00 UTC  

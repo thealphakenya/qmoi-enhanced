@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Enhanced Settings & User Preferences
 
 ## Settings Overview

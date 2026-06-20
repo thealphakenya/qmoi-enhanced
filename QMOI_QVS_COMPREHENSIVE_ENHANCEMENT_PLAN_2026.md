@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Quantum multi orchestra intelligence (QMOI)-QVS Comprehensive Enhancement Plan 2026
 
 **Version:** 2.0.0

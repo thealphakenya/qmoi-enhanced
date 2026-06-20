@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Enhanced Production Monitoring & Health Checks
 
 **Last Updated:** May 10, 2026  

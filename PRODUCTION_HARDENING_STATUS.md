@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # production HARDENING REAL-TIME STATUS DASHBOARD
 
 **Last Updated**: 2026-04-12 07:05:30 UTC  

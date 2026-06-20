@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # 🎯 COMPREHENSIVE .TSX COMPONENT CONNECTION MAPPING
 
 **Analysis Date:** May 4, 2026  

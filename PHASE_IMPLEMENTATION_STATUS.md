@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 
 # Quantum multi orchestra intelligence (QMOI) Phase Implementation Report
 Generated: 2026-04-15T21:52:06.349722

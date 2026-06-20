@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # 🚀 QMOI ENHANCED - production DEPLOYMENT EXECUTION REPORT
 
 ## 📊 Deployment Status: READY FOR LAUNCH

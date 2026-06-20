@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Enhanced - Final Deployment Report
 **Generated:** May 2, 2026, 12:15 UTC  
 **Status:** ✅ **production READY & FULLY OPERATIONAL**

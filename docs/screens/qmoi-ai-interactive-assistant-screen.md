@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI AI Interactive Assistant Screen
 
 ## Screen Information

@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # QMOI-Enhanced Production Readiness: Complete Project Roadmap
 
 **Project:** QMOI Enhanced (Quantum Multi-Orchestra Intelligence)  

@@ -1,9 +1,13 @@
+---
+quantum-enabled: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-19T22:44:33.528107Z
+- timestamp: 2026-06-20T00:00:21.511528Z
 fully implemented
 <!-- LION_VALIDATION_END -->
 
@@ -67,6 +71,25 @@ fully implemented
 - **Client integration:** `app/qmoi-ai/page.tsx`, `app/qmoi-space/page.tsx`, `app/qcity/page.tsx`, and `app/qvillage/page.tsx` now default to `qmoi-prod` and call the above endpoints.
 - **Legacy compatibility:** `app/components/ChatMessaging.tsx` remains present for historical and static shell reference, but it is not part of the current live `app/` page route shells.
 - **PWA shell:** `public/q-alpha.html` now probes `/api/qmoi-model` and uses `/api/qmoi/chat` for health checks.
+
+## Quantum Capabilities & Endpoints
+
+This section documents the quantum orchestration endpoints and integration patterns exposed by the QMOI platform. Quantum features are opt-in and default to simulator-only in development environments.
+
+Endpoints (examples)
+- `GET /api/quantum/devices` — List configured quantum devices and capabilities (simulator or hardware).
+- `POST /api/quantum/submit` — Submit a quantum job payload. Requires authentication and RBAC; in production, master role required for hardware submits.
+- `GET /api/quantum/status/:job_id` — Retrieve status and results for a previously submitted job.
+- `POST /api/qmoi/quantum-run` — Convenience endpoint to run a named quantum routine and return processed features for model consumption.
+
+Security & Usage
+- Hardware access is gated by role: only `master` and authorized service accounts may submit to real devices. Simulator submissions are allowed for `developer` and `sister` roles.
+- Job payloads are sanitized and size-limited. Quotas and billing hooks are applied on real-device submissions.
+
+Operational Notes
+- Queue processing is handled by `scripts/qmoi_quantum_integrator.py` (local queue under `var/quantum_jobs`). The bulk workflow will call the integrator automatically when `config/quantum_devices.json` enables `auto_run`.
+- Results are persisted in `var/quantum_jobs/results` and summarized under `reports/quantum_integration_report.md`.
+
 
 Files touched for production integration:
 - `app/qmoi-ai/page.tsx`
@@ -12117,7 +12140,7 @@ npm test -- --testPathPattern="cashon|auth|webhook"
 **Status**: 🟢 **READY FOR PRODUCTION DEPLOYMENT**
 
 <!-- API_ENDPOINTS_AUTOGEN_START -->
-Updated at 2026-06-19T22:44:24.341Z
+Updated at 2026-06-20T00:00:16.958Z
 
 - `/api/account-automation` -> app/api/account-automation/route.ts
 - `/api/accountability` -> app/api/accountability/route.ts

@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Universal Auth Integration Tests
 
 ## Test Suite Overview

@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOIUI.md - QMOI User Interface Documentation Alias
 
 This file is an alias for `QMOIAIUI.md`, the main QMOI AI UI documentation file.

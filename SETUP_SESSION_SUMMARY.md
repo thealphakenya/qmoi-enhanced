@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Enhanced - Production Auth Setup Summary (May 10, 2026)
 
 **Status:** ✅ PRODUCTION IMPLEMENTATION COMPLETE  

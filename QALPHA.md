@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Q Alpha - Live Aggregator and Learning Shell
 
 ## Route

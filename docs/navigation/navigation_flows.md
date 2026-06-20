@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Enhanced Navigation & User Flows
 
 ## Application Navigation Architecture

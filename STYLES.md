@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # STYLES ✅
 
 This document describes the application-wide styling strategy for QMOI Enhanced, including the canonical UI shells, shared theme layers, and the Markdown files that document UI style implementation across all apps.

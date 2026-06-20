@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # HF_SPACE_QVILLAGE — QVillage Hugging Face Space Integration
 
 This document describes the `hf_space_qvillage/` directory and its connection to QVillage, Quantum multi orchestra intelligence (QMOI) Space, and the wider QVillage research ecosystem.

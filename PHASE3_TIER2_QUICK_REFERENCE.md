@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Phase 3 Tier 2 Quick Reference - Testing Checklist
 
 **Status:** Ready to Execute

@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Q API Key - Comprehensive Documentation
 **Version**: 2.0.0  
 **Last Updated**: April 13, 2026  

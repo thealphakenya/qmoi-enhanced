@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # LOAD BALANCING SYSTEM
 
 ## Overview

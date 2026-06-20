@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Universal Authentication System
 
 ## Overview

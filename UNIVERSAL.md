@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # UNIVERSAL.md — Universal Auth, Navigation, Role-Based Features, and App Flow Reference
 
 ## Purpose

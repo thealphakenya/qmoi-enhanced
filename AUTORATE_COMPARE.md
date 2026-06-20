@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Autorate & Compare Feature Integration
 **Generated**: 2026-04-14T02:01:18.270161
 

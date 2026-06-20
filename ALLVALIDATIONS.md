@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # ALLVALIDATIONS.md - Validation Documentation Inventory
 
 ## Purpose

@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # 🔗 COMPONENT SERVING EXAMPLES & IMPORT PATTERNS
 
 **Purpose:** Specific code examples showing HOW each component category is served  

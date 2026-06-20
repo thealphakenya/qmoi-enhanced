@@ -3,7 +3,7 @@ import os
 from datetime import datetime, timezone
 root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 md_files = []
-EXCLUDE_DIR_KEYWORDS = ['/.venv/', '/node_modules/', '/.git/', '/.backups/', '/__pycache__/', '/.venv_qmoi_control/']
+EXCLUDE_DIR_KEYWORDS = ['/.venv/', '/node_modules/', '/.git/', '/.backups/', '/backups/', '/__pycache__/', '/.pytest_cache/', '/.venv_qmoi_control/']
 
 for dirpath, dirnames, filenames in os.walk(root):
     # normalize path for comparison

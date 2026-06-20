@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Enhanced - production Quick Reference
 
 **Version:** 1.0  

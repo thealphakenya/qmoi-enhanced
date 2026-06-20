@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # GLOBAL.md — Globalization & i18n Guidelines
 
 This document captures the globalization strategy for QMOI Enhanced: how the system supports multiple languages, localized assets, STT/TTS mapping, and developer guidelines for adding locale support.

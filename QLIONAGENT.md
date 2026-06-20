@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Q LION AGENT
 
 ## Overview

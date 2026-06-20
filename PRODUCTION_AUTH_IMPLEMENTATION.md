@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # 🔐 Production Authentication System - Bulk Implementation Complete
 
 **Date:** May 9, 2026  

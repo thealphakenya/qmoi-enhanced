@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # TREE.md - Comprehensive Repository Structure & PRODUCTIONeloper Guide
 
 **Last Updated**: 2026-04-13 23:45:00 UTC

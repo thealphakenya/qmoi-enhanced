@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Master Tracks Management Screen
 
 ## Overview

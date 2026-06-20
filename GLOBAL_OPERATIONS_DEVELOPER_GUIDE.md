@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Global Operations Quick Reference Guide
 
 **For:** Developers integrating with global operations infrastructure  

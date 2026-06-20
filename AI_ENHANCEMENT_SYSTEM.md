@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Quantum multi orchestra intelligence (QMOI) ADVANCED AI ENHANCEMENT SYSTEM
 
 ## Overview

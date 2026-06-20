@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Sponsored Features Summary
 
 This document collects the sponsored feature documentation, routes, UI components, and access controls currently present in the repository.

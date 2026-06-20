@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # AUTOPRODUCTION TRACKS - Live Execution Journal
 
 **Created:** 2026-05-27T09:29:08.697406

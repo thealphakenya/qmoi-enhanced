@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI Friendship Interface Screen
 
 ## Overview

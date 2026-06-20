@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # API.md - Quantum multi orchestra intelligence (QMOI) Complete API Documentation
 
 **Last Updated**: 2026-04-13 23:45:00 UTC  

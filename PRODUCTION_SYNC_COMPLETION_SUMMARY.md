@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Quantum multi orchestra intelligence (QMOI) ENHANCED - production SYNC COMPLETION SUMMARY
 
 Generated: 2026-04-17T02:04:30.554797

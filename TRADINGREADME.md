@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 ni---
 title: "Q-city Trading System"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -8,7 +12,7 @@ title: "Q-city Trading System"
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-19T22:44:35.130491Z
+- timestamp: 2026-06-20T00:00:22.669697Z
 fully implemented
 <!-- LION_VALIDATION_END -->
 

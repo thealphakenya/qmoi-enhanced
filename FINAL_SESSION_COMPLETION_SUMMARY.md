@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Quantum multi orchestra intelligence (QMOI) Enhanced - Session Completion Summary
 **Date**: 2026-04-14  
 **Status**: ✅ 

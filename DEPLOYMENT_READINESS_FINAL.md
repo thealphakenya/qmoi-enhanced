@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # 🚀 Quantum multi orchestra intelligence (QMOI) ENHANCED - FINAL DEPLOYMENT READINESS GUIDE
 
 **Generated:** 2025-09-26

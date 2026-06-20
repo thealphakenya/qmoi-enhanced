@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # RBAC.md — Role-Based Access Control System Reference
 
 ## Purpose

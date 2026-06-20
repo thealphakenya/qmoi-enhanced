@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # THIRD-PARTYPLATFORMS.md - Third-Party Platform Automation & Revenue Coverage
 
 **Auto-generated on:** 2026-04-16 22:00:58 UTC

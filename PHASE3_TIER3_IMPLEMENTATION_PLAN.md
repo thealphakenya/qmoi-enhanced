@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # Phase 3 Tier 3: Advanced Features Implementation Plan
 
 **Status:** Planning & Documentation  

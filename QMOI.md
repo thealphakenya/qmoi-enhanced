@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Quantum multi orchestra intelligence (QMOI).md - Complete Quantum multi orchestra intelligence (QMOI) Model Specification
 
 **Last Updated:** 2026-04-16T19:16:21.174549

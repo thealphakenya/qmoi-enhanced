@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # Quantum multi orchestra intelligence (QMOI) Bulk Enhancement Status Report
 **Generated:** 2026-04-15T22:09:56.702675 UTC
 

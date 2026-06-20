@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 === DEPENDENCY TREE ANALYSIS FOR QMOI ENTRY COMPONENTS ===
 
 Generated: Mon Jun  8 00:41:47 UTC 2026

@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QMOI App Consolidation Merge Plan - 2026-06-11
 
 ## Executive Summary

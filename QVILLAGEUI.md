@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # QVILLAGEUI.md — QVillage User Interface Reference
 
 ## Route

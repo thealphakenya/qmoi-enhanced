@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # LANGUAGE IMPLEMENTATION PLAN
 
 Goal: Ensure QMOI supports UI/communication in all languages, provide universal language settings in the Universal portal and per-app styles pages, and wire STT/TTS to use the selected language.

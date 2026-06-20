@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # COMPREHENSIVE IMPLEMENTATION PLAN - QMOI Enhanced
 ## Component & Architecture Consolidation Strategy
 

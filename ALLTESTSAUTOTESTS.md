@@ -1,3 +1,7 @@
+---
+quantum-enabled: true
+---
+
 # All Tests & Auto-Tests
 
 **Last Updated:** 2026-06-02T00:00:00+00:00

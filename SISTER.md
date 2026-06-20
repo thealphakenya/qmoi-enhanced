@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # SISTER.md - Sister Role and Access Guide
 
 ## Overview

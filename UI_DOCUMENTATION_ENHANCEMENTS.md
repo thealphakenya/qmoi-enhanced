@@ -1,3 +1,7 @@
+---
+quantum-enabled: false
+---
+
 # UI Documentation Enhancement Summary - May 2026
 
 **Status**: COMPLETE
