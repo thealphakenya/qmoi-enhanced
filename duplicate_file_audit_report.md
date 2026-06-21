@@ -1,8 +1,8 @@
 # Duplicate File Audit Report
 
-Generated: 2026-06-20T00:02:17.267833Z
+Generated: 2026-06-20T00:34:50.785636Z
 
-Total files scanned: 3408
+Total files scanned: 3438
 Total duplicate file titles found: 205
 
 ## Duplicate Files by Filename
