@@ -1,12 +1,11 @@
 # MATCHES.md
 
 ## Current Marker Matches
-- Generated: 2026-06-20T00:34:51.387915
-- Files with markers: 1
-- Total markers found: 3
+- Generated: 2026-06-21T14:59:27.960983
+- Files with markers: 0
+- Total markers found: 0
 
 ### Top files with nonproduction markers
-- scripts/generate_allmdrefs.py — 3 markers
 
 ## production: NOTE ADDRESSED - s
 - MATCHES.md is regenerated from the latest production readiness scan.

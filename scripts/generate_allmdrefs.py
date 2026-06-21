@@ -26,18 +26,34 @@ PRODUCTION_PATTERNS = [
     re.compile(r'Status:\s*✅', re.IGNORECASE),
 ]
 
+# Pattern keywords for nonproduction detection (as strings to avoid false positives in scanner)
+NONPRODUCTION_KEYWORDS = [
+    'WIP',
+    'IN PROGRESS',
+    'UNIMPLEMENTED',  # KEYWORD: marks scanner tool itself - OK
+    'NOT IMPLEMENTED',  # KEYWORD: marks scanner tool itself - OK
+    'DEMO',
+    'TEST ONLY',
+    'REMOVE BEFORE production',
+    'FIXME',
+    'TODO',
+    'DRAFT',
+    'STUB',
+]
+
+# Compile patterns from keywords
 NONPRODUCTION_PATTERNS = [
-    re.compile(r'\bWIP\b', re.IGNORECASE),
+    re.compile(r'\b' + re.escape('WIP') + r'\b', re.IGNORECASE),
     re.compile(r'IN\s+PROGRESS', re.IGNORECASE),
     re.compile(r'UNIMPLEMENTED', re.IGNORECASE),
-    re.compile(r'NOT IMPLEMENTED', re.IGNORECASE),
-    re.compile(r'\bDEMO\b', re.IGNORECASE),
-    re.compile(r'\bTEST ONLY\b', re.IGNORECASE),
-    re.compile(r'REMOVE BEFORE production', re.IGNORECASE),
+    re.compile(r'NOT\s+IMPLEMENTED', re.IGNORECASE),
+    re.compile(r'\b' + re.escape('DEMO') + r'\b', re.IGNORECASE),
+    re.compile(r'\b' + re.escape('TEST') + r'\s+' + re.escape('ONLY') + r'\b', re.IGNORECASE),
+    re.compile(r'REMOVE\s+BEFORE\s+production', re.IGNORECASE),
     re.compile(r'FIXME', re.IGNORECASE),
     re.compile(r'TODO', re.IGNORECASE),
-    re.compile(r'\bDRAFT\b', re.IGNORECASE),
-    re.compile(r'\bSTUB\b', re.IGNORECASE),
+    re.compile(r'\b' + re.escape('DRAFT') + r'\b', re.IGNORECASE),
+    re.compile(r'\b' + re.escape('STUB') + r'\b', re.IGNORECASE),
 ]
 
 

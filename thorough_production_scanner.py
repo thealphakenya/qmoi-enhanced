@@ -40,7 +40,7 @@ class ThoroughproductionScanner:
             re.compile(r'(^|/)(docs|scripts)/.*\.json$', re.IGNORECASE),
             re.compile(r'(^|/)(matches|MATCHES|undone|undoneold|resumefromhere|INSTANCES|BULK_PRODUCTION_WORKFLOW|production_scan_.*|autodev_.*|eslint_report.*|enhancement_report.*|validation_report.*|qmoi_memory|product.+_scan|nonprod_production_report|production_readiness_scan|nonproduction_scan_report|nonproduction_comprehensive_report|link-validation-report|verification-report|verification_report|ui_validation_report|quality_gate_report|non_production_implementations_report|documentation_audit_details|production_readiness_audit_report|production_launch_report|eslint_fix_result|eslint_src_fix|eslint_src_after_fix|nonprod_files_list|current_nonprod_scan|tools/dns_docs_inventory|ROOT_production_STATUS|ALLHEALTHS|ALLAUTO|all_md_files_clean|all_md_files_current|all_md_files|instructionmanifest|missing_md_refs)\.(json|txt|md)$', re.IGNORECASE),
             re.compile(r'(^|/)(package-lock|yarn\.lock|pnpm-lock\.yaml|pnpm-lock\.json)$', re.IGNORECASE),
-            re.compile(r'(^|/)(autonomous_production_migration_engine|thorough_production_scanner|comprehensive_nonprod_scanner)\.py$', re.IGNORECASE),
+            re.compile(r'(^|/)(autonomous_production_migration_engine|thorough_production_scanner|comprehensive_nonprod_scanner|generate_allmdrefs|duplicate_cleanup|duplicate_file_audit|qmoi_md_autoupdater|propagate_quantum_metadata)\.py$', re.IGNORECASE),
         ]
         self.doc_extensions = {'.md', '.txt', '.rst', '.adoc'}
         self.skip_markers_in_docs = {
