@@ -1,11 +1,11 @@
 # ALLMDFILESREFS.md - Complete Markdown Inventory
 
-**Generated:** 2026-06-20T00:35:15.962937Z
+**Generated:** 2026-06-21T15:00:36.733014Z
 **Total Markdown Files:** 1235
 **Production-ready:** 555
-**Needs production implementation:** 15
+**Needs production implementation:** 14
 **Review / no explicit status:** 646
-**Mixed markers:** 19
+**Mixed markers:** 20
 **Unreadable:** 0
 
 ## Markdown Files
@@ -342,7 +342,7 @@ INDEPENDENTQMOI.md — ⚠️ review / no explicit production status
 INSTALL.md — ⚠️ review / no explicit production status
 INSTALLATION.md — ⚠️ review / no explicit production status
 INSTALLER.md — ⚠️ review / no explicit production status
-INSTANCES.md — ❌ needs production implementation
+INSTANCES.md — ✅ production-ready
 INTEGRATION_GUIDE.md — ✅ production-ready
 INVENTIONS.md — ✅ production-ready
 INVINSIBLEQMOI.md — ⚠️ review / no explicit production status
@@ -736,7 +736,7 @@ QMOI_EVOLUTION_ENHANCEMENT_PLAN.md — ⚠️ review / no explicit production st
 QMOI_FEATURES_COMPLETE.md — ✅ production-ready
 QMOI_FRIENDSHIP_ENHANCEMENT.md — ⚠️ review / no explicit production status
 QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md — ⚠️ review / no explicit production status
-QMOI_GITLAB_AUTOMATION.md — ✅ production-ready
+QMOI_GITLAB_AUTOMATION.md — ⚠️ mixed production markers
 QMOI_GLOBAL_ENHANCEMENT_MASTER_PLAN_2026.md — ❌ needs production implementation
 QMOI_HYBRID_JAVA_WORKFLOW.md — ✅ production-ready
 QMOI_ITERATIVE_IMPROVEMENT_COMPLETE.md — ⚠️ review / no explicit production status
