@@ -435,15 +435,15 @@ import React, { JSX } from 'react';
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:57.900310Z
+- timestamp: 2026-06-22T19:07:30.964644Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 431
-- words: 1741
-- characters: 13197
-- headings: 33
+- lines: 449
+- words: 1813
+- characters: 13665
+- headings: 34
 - links: 0
 - images: 0
 - tables: 7
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

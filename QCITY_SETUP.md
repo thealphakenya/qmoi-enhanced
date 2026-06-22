@@ -291,15 +291,15 @@ For issues or questions about QCity setup, refer to:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:56.402008Z
+- timestamp: 2026-06-22T19:07:29.266793Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 287
-- words: 1078
-- characters: 8235
-- headings: 43
+- lines: 305
+- words: 1150
+- characters: 8702
+- headings: 44
 - links: 6
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

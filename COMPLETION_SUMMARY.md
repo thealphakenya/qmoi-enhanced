@@ -273,15 +273,15 @@ For updates, see `resumefromhere.txt` or run `python scripts/production_readines
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:54.303471Z
+- timestamp: 2026-06-22T19:07:26.851319Z
 - production status: ✅ production-ready
 - status tags: production, production-ready
-- lines: 269
-- words: 1213
-- characters: 8763
-- headings: 33
+- lines: 287
+- words: 1281
+- characters: 9230
+- headings: 34
 - links: 0
 - images: 0
 - tables: 28
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

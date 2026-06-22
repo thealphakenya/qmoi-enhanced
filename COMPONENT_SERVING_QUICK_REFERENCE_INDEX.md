@@ -410,15 +410,15 @@ These components may have unclear serving patterns:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:54.341538Z
+- timestamp: 2026-06-22T19:07:26.881637Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 406
-- words: 1824
-- characters: 13395
-- headings: 36
+- lines: 424
+- words: 1896
+- characters: 13865
+- headings: 37
 - links: 0
 - images: 0
 - tables: 104
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

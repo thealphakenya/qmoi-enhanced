@@ -1058,15 +1058,15 @@ export default function QVillage() {
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:04:11.201999Z
+- timestamp: 2026-06-22T19:07:45.549962Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 1054
-- words: 4473
-- characters: 37949
-- headings: 132
+- lines: 1072
+- words: 4545
+- characters: 38421
+- headings: 133
 - links: 69
 - images: 0
 - tables: 65
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

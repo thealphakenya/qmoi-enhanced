@@ -2,42 +2,29 @@
 This file tracks the remaining production readiness instances from `undone.txt`.
 ## Remaining Files
 ### SUMMARY
-- Total files scanned: 4736
-- Files with markers: 0
-- Total markers found: 0
-- Scan timestamp: 2026-06-22T15:53:41.121672
-- Scan ID: 1782143621
+- Total files scanned: 4743
+- Files with markers: 5
+- Total markers found: 6
+- Scan timestamp: 2026-06-22T19:08:15.004143
+- Scan ID: 1782155295
 ### DETAILED FINDINGS
-- Scan Timestamp: 2026-06-22T15:53:41.121672
-- Total Files Scanned: 4736
+- Scan Timestamp: 2026-06-22T19:08:15.004143
+- Total Files Scanned: 4743
 - Total Directories Scanned: 809
-- Files with Markers: 0
-- Total Markers Found: 0
+- Files with Markers: 5
+- Total Markers Found: 6
 ### MARKER BREAKDOWN
-- No markers found - System appears production-ready!
+- UNIMPLEMENTED: 6
 
 ### FILES WITH MARKERS
-No files with markers found!
+1. scripts/generate_allmdfilesrefs_enhanced.py (2 markers)
+2. scripts/scan_lion_usage.py (1 markers)
+3. scripts/validate_md.py (1 markers)
+4. scripts/autotag_md_with_lion.py (1 markers)
+5. scripts/enforce_production_ready.py (1 markers)
 
 ### NEXT STEPS
-- System appears fully production-ready!
-- Run final verification tests
-- Prepare for production deployment
-
-<!-- LION_VALIDATION_START -->
-## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
-
-- validated: yes
-- validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:55.486410Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
-- lines: 25
-- words: 105
-- characters: 700
-- headings: 7
-- links: 0
-- images: 0
-- tables: 0
-- lion validation block: inserted
-<!-- LION_VALIDATION_END -->
+- Review undone.txt for detailed findings
+- Replace all nonproduction markers with production implementations
+- Run comprehensive testing
+- Update documentation

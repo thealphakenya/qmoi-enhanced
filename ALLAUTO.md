@@ -1,409 +1,1205 @@
----
-quantum-enabled: true
----
+# ALLAUTO.md - Automation references inventory
 
-# ALLAUTO.md - Quantum multi orchestra intelligence (QMOI) Full Automation Inventory
+**Generated:** 2026-06-22T19:01:56.313607Z
+**Total entries:** 1182
 
-**Last Updated:** 2026-04-23T07:44:33.431213Z
-**Total automation-related items:** 284
-
-## ⚛️ Quantum Automation Coverage
-This file tracks all markdown files whose file names contain the word `auto`. It also ensures every auto-related doc includes a standard quantum automation enhancement section with comprehensive quantum feature integration.
-
-## Quantum Metadata Propagation
-
-- All automation-related markdown files have been annotated with a `quantum-enabled` metadata flag where applicable.
-- Inventories updated: `ALLMDFILESREFS.md`, `ALLMDFILESREFS_ENHANCED.md`, `TREE.md`, `API.md`, `ENDPOINTS.md`, and `ROUTES.md` now include references or sections for quantum-enabled features.
-- Operational artifacts: `config/quantum_devices.json`, `var/quantum_jobs/`, and `reports/quantum_integration_report.md` store device config, queued jobs, and integration summaries respectively.
-
-## Always-on Resume Automation
-- Run `python3 scripts/always_auto_resume.py` or `npm run resume:auto` to start a continuous automation loop that:
-  - refreshes `resumefromhere.txt` in realtime with git metadata,
-  - merges tasks from `14.txt` and `resumefromhere.txt`,
-  - executes the bulk production fixer,
-  - re-runs the resume tracker until the repo is clean.
-- Run `python3 autonomous_production_migration_engine.py` or `npm run resume:migrate` to execute the production migration engine, which scans the repo for nonproduction implementations and applies production-ready replacements automatically.
-
-## Automation Inventory
-
-- `.backups/aggressive_fix_1775873225/API_AUTO_UPDATE_GUIDELINES.md`
-- `.backups/aggressive_fix_1775873225/QMOIAUTODISTRIBUTEMARKET.md`
-- `.backups/aggressive_fix_1775873225/Q_BALANCES_AUTO_UPDATE_README.md`
-- `.backups/aggressive_fix_1775873225/VERCEL_AUTO_DEPLOY_GUIDE.md`
-- `.backups/aggressive_fix_1775873225/VERCEL_AUTO_UPDATE_README.md`
-- `.backups/aggressive_fix_1775873225/VERCEL_QMOI_AUTOFEATURES_MASTER.md`
-- `.backups/aggressive_fix_1775873435/API_AUTO_UPDATE_GUIDELINES.md`
-- `.backups/aggressive_fix_1775873435/AUTO_SETUP_COMPLETION_SUMMARY.md`
-- `.backups/aggressive_fix_1775873435/QMOIAUTOMAKESMONEY.md`
-- `.backups/aggressive_fix_1775873435/QMOI_AUTOFIX_SETUP_GUIDE.md`
-- `.backups/aggressive_fix_1775873435/QMOI_AUTO_SETUP_IMPLEMENTATION.md`
-- `.backups/aggressive_fix_1775873435/Q_BALANCES_AUTO_UPDATE_README.md`
-- `.backups/aggressive_fix_1775873435/docs/AUTO_SETUP_GUIDE.md`
-- `.backups/aggressive_fix_1775873435/docs/PLATFORM_AUTOMATION.md`
-- `.backups/aggressive_fix_1775873435/docs/QMOI_BACKGROUND_AUTOMATION_README.md`
-- `.backups/aggressive_fix_1775957216/QMOIAUTOPROJECTS.md`
-- `.backups/aggressive_fix_1776477221/QMOIAUTOPROJECTS.md`
-- `.backups/aggressive_fix_1776477221/QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md`
-- `.backups/aggressive_fix_1776477221/QMOIAUTOREVENUEEARN.md`
-- `.backups/aggressive_fix_1776477221/QMOI_AUTO_EVOLVING_STRATEGY.md`
-- `.backups/aggressive_fix_1776477221/QVILLAGE_ENHANCED_AUTO_EVOLUTION.md`
-- `.backups/aggressive_fix_1776477221/docs/ALLTESTSAUTOTESTS.md`
-- `.backups/aggressive_fix_1776477221/docs/QMOI_LION_QVILLAGE_AUTOMATION_PLAN.md`
-- `.backups/comprehensive_fix_1775690673/.github_PR_AUTO✅ production READY - Fully implemented with production hardening
-- `.backups/comprehensive_fix_1775690673/AU✅ production READY - Fully implemented with production hardening
-- `.backups/comprehensive_fix_1775690673/QMOI-ENHANCED-AUTOTESTS.md`
-- `.backups/comprehensive_fix_1775690673/autotest_report.md`
-- `.backups/PRODUCTION_FIXED_1775686366/.github/PR_AUTO✅ production READY - Fully implemented with production hardening
-- `.backups/PRODUCTION_FIXED_1775686366/.github/PULL_REQUEST_PRODUCTIONLATE/automated_fix.md`
-- `.backups/PRODUCTION_FIXED_1775686366/ALLQMOIAUTOEVOLVINGENVS.md`
-- `.backups/PRODUCTION_FIXED_1775686366/ALLTESTSAUTOTESTS.md`
-- `.backups/PRODUCTION_FIXED_1775686366/API_AUTO_UPDATE_GUIDELINES.md`
-- `.backups/PRODUCTION_FIXED_1775686366/AUTOCLONE_STANDALONE.md`
-- `.backups/PRODUCTION_FIXED_1775686366/AUTOPRODUCTION_SECRETS.md`
-- `.backups/PRODUCTION_FIXED_1775686366/AUTOPRODUCTION_VALIDATION_SYSTEM.md`
-- `.backups/PRODUCTION_FIXED_1775686366/AU✅ production READY - Fully implemented with production hardening
-- `.backups/PRODUCTION_FIXED_1775686366/AUTOGIT.md`
-- `.backups/PRODUCTION_FIXED_1775686366/AUTOLINTREADME.md`
-- `.backups/PRODUCTION_FIXED_1775686366/AUTOMATION-SUMMARY.md`
-- `.backups/PRODUCTION_FIXED_1775686366/AUTOOPTIMIZEALPHAQMOIENGINE.md`
-- `.backups/PRODUCTION_FIXED_1775686366/AUTO_CLONE_SYSTEM.md`
-- `.backups/PRODUCTION_FIXED_1775686366/AUTO_RECOVERY_PROCEDURES.md`
-- `.backups/PRODUCTION_FIXED_1775686366/AUTO_SETUP_COMPLETION_SUMMARY.md`
-- `.backups/PRODUCTION_FIXED_1775686366/BACKGROUND_AUTOMATION_COMPLETE.md`
-- `.backups/PRODUCTION_FIXED_1775686366/DOMAIN_AUTO_VALIDATION_SYSTEM.md`
-- `.backups/PRODUCTION_FIXED_1775686366/DOMAIN_HEALTH_AUTOMATION_GUIDE.md`
-- `.backups/PRODUCTION_FIXED_1775686366/ENHANCED_AUTOMATION_SUMMARY.md`
-- `.backups/PRODUCTION_FIXED_1775686366/GITHUB_ACTIONS_AUTOFIX.md`
-- `.backups/PRODUCTION_FIXED_1775686366/MARKETING_AUTOMATION.md`
-- `.backups/PRODUCTION_FIXED_1775686366/PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QCITYPRODUCTIONICEAUTOUPGRADE.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QCITYQMOIAUTOSTART.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QGLOBAL_SIM_AUTO_UPDATE_SYSTEM.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI-AUTOMATION-COMPLETE.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI-AUTOUPDATE.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI-ENHANCED-AUTOMATION.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI-ENHANCED-AUTOTESTS.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI-PLATFORM-AUTOMATION.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOIAUTOAPPSPRODUCTION.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOIAUTOBET.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOIAUTOPRODUCTION.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOIAUTODISTRIBUTEMARKET.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOIAUTOEVOLVE.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOIAUTOFIXREADME.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOIAUTOGMAIL.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOIAUTOMAKENEW.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOIAUTOMAKESMONEY.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOIAUTOMATIONMONITORING.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOIAUTOOPPORTUNITIES.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOIAUTOPROJECTS.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOIAUTOREVENUEEARN.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOIEMPLOYAUTOPAY.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOIQCITYAUTOMATIC.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOISYSTEMAUTO.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI_ADVANCED_VALIDATION_AUTOPRODUCTIONELOPMENT.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI_AUTOPRODUCTION.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI_AUTOFIX_FILES_CREATED.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI_AUTOFIX_IMPLEMENTATION_SUMMARY.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI_AUTOFIX_MASTER_GUIDE.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI_AUTOFIX_QUICK_REFERENCE.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI_AUTOFIX_SETUP_GUIDE.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI_AUTOFIX_SYSTEM_INDEX.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI_AUTOMATED_DEPLOYMENT_GUIDE.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI_AUTOMATED_SYSTEMS_README.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI_AUTONOMOUS_FEATURES.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI_AUTO_SETUP_IMPLEMENTATION.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI_AUTO_TESTING_UI_PRODUCTIONELOPMENT.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI_GITLAB_AUTOMATION.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI_MARKDOWN_AUTO_UPDATE.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QUANTUMAUTOMARKET.md`
-- `.backups/PRODUCTION_FIXED_1775686366/QVILLAGE_ADVANCED_AUTOMATION_PLAN.md`
-- `.backups/PRODUCTION_FIXED_1775686366/Q_BALANCES_AUTO_UPDATE_README.md`
-- `.backups/PRODUCTION_FIXED_1775686366/SECURITY_AUTOMATION.md`
-- `.backups/PRODUCTION_FIXED_1775686366/VERCEL_AUTO_DEPLOY_GUIDE.md`
-- `.backups/PRODUCTION_FIXED_1775686366/VERCEL_AUTO_UPDATE_README.md`
-- `.backups/PRODUCTION_FIXED_1775686366/VERCEL_QMOI_AUTOFEATURES_MASTER.md`
-- `.backups/PRODUCTION_FIXED_1775686366/autotest_report.md`
-- `.backups/PRODUCTION_FIXED_1775686366/docs/ALLTESTSAUTOTESTS.md`
-- `.backups/PRODUCTION_FIXED_1775686366/docs/AUTOPRODUCTION_INSTRUCTIONS.md`
-- `.backups/PRODUCTION_FIXED_1775686366/docs/AUTOEVOLVE.md`
-- `.backups/PRODUCTION_FIXED_1775686366/docs/AUTO_SETUP_GUIDE.md`
-- `.backups/PRODUCTION_FIXED_1775686366/docs/PLATFORM_AUTOMATION.md`
-- `.backups/PRODUCTION_FIXED_1775686366/docs/QMOI-ENHANCED-AUTOTESTS.md`
-- `.backups/PRODUCTION_FIXED_1775686366/docs/QMOI_BACKGROUND_AUTOMATION_GUIDE.md`
-- `.backups/PRODUCTION_FIXED_1775686366/docs/QMOI_BACKGROUND_AUTOMATION_README.md`
-- `.backups/PRODUCTION_FIXED_1775686366/docs/RELEASE_AUTOMATION.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/autotest_report.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/01_qmoi-enhanced_scripts_qmoi_master_website_automation_js.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0483_AU✅ production READY - Fully implemented with production hardening
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0484_AUTOGIT.md.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0485_AUTOLINTREADME.md.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/04_qmoi-enhanced_scripts_demo-automation_js.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0507_QCITYQMOIAUTOSTART.md.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0515_QMOI-PLATFORM-AUTOMATION.md.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0518_QMOIAUTOPRODUCTION.md.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0546_QUANTUMAUTOMARKET.md.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0568_app_api_deploy_auto-redeploy_route.ts.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0854_qmoi-enhanced_AU✅ production READY - Fully implemented with production hardening
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0855_qmoi-enhanced_AUTOGIT.md.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0856_qmoi-enhanced_AUTOLINTREADME.md.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0869_qmoi-enhanced_QCITYQMOIAUTOSTART.md.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0876_qmoi-enhanced_QMOIAUTOPRODUCTION.md.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0901_qmoi-enhanced_QUANTUMAUTOMARKET.md.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0909_qmoi-enhanced_app_api_deploy_auto-redeploy_route.ts.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0910_qmoi-enhanced_app_api_qmoi_auto-fix_start_route.ts.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0941_qmoi-enhanced_scripts_auto-vercel-fix.js.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0943_qmoi-enhanced_scripts_colab-automation.py.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0944_qmoi-enhanced_scripts_dagshub-automation.py.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0954_qmoi-enhanced_scripts_qmoi-gitlab-ci-automation.py.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0955_qmoi-enhanced_scripts_qmoi-qcity-automatic.py.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/0957_qmoi-enhanced_scripts_qmoi_auto_startup.py.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/1012_qmoi_autogen_unused_api_tests.sh.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/1016_scripts_auto-vercel-fix.js.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/1018_scripts_colab-automation.py.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/1019_scripts_dagshub-automation.py.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/1035_scripts_qmoi-gitlab-ci-automation.py.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/1037_scripts_qmoi-qcity-automatic.py.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/1039_scripts_qmoi_auto_startup.py.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/1074_tools_autotest_runner.py.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/10_qmoi-enhanced_scripts_auto_lint_fix_py.md`
-- `.backups/PRODUCTION_FIXED_1775686366/tools/issue_drafts/11_qmoi-enhanced_scripts_qmoi_auto_evolution_system_py.md`
-- `.backups/PRODUCTION_FIXED_1775977879/AU✅ production READY - Fully implemented with production hardening
-- `.backups/PRODUCTION_FIXED_1775977879/AUTO_CLONE_SYSTEM.md`
-- `.backups/PRODUCTION_FIXED_1775977879/QMOIAUTOBET.md`
-- `.backups/PRODUCTION_FIXED_1775977879/QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md`
-- `.backups/PRODUCTION_FIXED_1775977879/QMOI_AUTOFIX_SETUP_GUIDE.md`
-- `.backups/PRODUCTION_FIXED_1775977879/QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md`
-- `.backups/PRODUCTION_FIXED_1775977879/Q_BALANCES_AUTO_UPDATE_README.md`
-- `.backups/PRODUCTION_FIXED_1775977879/VERCEL_AUTO_UPDATE_README.md`
-- `.backups/PRODUCTION_FIXED_1776031253/AU✅ production READY - Fully implemented with production hardening
-- `.github/PR_AUTO✅ production READY - Fully implemented with production hardening
-- `.github/PULL_REQUEST_PRODUCTIONLATE/automated_fix.md`
-- `ALLAUTO.md`
-- `ALLQMOIAUTOEVOLVINGENVS.md`
-- `ALLTESTSAUTOTESTS.md`
-- `API_AUTO_UPDATE_GUIDELINES.md`
-- `AUTOCLONE_STANDALONE.md`
-- `AUTOPRODUCTION.md`
-- `AUTOPRODUCTION_ENHANCEMENT_DELIVERY.md`
-- `AUTOPRODUCTION_PRODUCTION_READINESS_ENHANCEMENT_GUIDE.md`
-- `AUTOPRODUCTION_SECRETS.md`
-- `AUTOPRODUCTION_SYNTAX_RECOVERY_REPORT.md`
-- `AUTOPRODUCTION_VALIDATION_SYSTEM.md`
-- `AU✅ production READY - Fully implemented with production hardening
-- `AUTOGIT.md`
-- `AUTOLINTREADME.md`
-- `AUTOMATION-SUMMARY.md`
-- `AUTONOMOUS_LEARNING_SYSTEM.md`
-- `AUTOOPTIMIZEALPHAQMOIENGINE.md`
-- `AUTORATE_COMPARE.md`
-- `AUTO_CLONE_SYSTEM.md`
-- `AUTO_RECOVERY_PROCEDURES.md`
-- `AUTO_SETUP_COMPLETION_SUMMARY.md`
-- `BACKGROUND_AUTOMATION_COMPLETE.md`
-- `DEPLOYMENT_AUTOMATION.md`
-- `DOMAIN_AUTO_VALIDATION_SYSTEM.md`
-- `DOMAIN_HEALTH_AUTOMATION_GUIDE.md`
-- `ENHANCED_AUTOMATION_SUMMARY.md`
-- `GITHUB_ACTIONS_AUTOFIX.md`
-- `MARKETING_AUTOMATION.md`
-- `PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md`
-- `QCITYPRODUCTIONICEAUTOUPGRADE.md`
-- `QCITYQMOIAUTOSTART.md`
-- `QGLOBAL_SIM_AUTO_UPDATE_SYSTEM.md`
-- `QMOI-AUTOMATION-COMPLETE.md`
-- `QMOI-AUTOUPDATE.md`
-- `QMOI-ENHANCED-AUTOMATION.md`
-- `QMOI-ENHANCED-AUTOTESTS.md`
-- `QMOI-PLATFORM-AUTOMATION.md`
-- `QMOIAUTOAPPSPRODUCTION.md`
-- `QMOIAUTOBET.md`
-- `QMOIAUTOPRODUCTION.md`
-- `QMOIAUTODISTRIBUTEMARKET.md`
-- `QMOIAUTOEVOLVE.md`
-- `QMOIAUTOFIXREADME.md`
-- `QMOIAUTOGMAIL.md`
-- `QMOIAUTOMAKENEW.md`
-- `QMOIAUTOMAKESMONEY.md`
-- `QMOIAUTOMATIONMONITORING.md`
-- `QMOIAUTOOPPORTUNITIES.md`
-- `QMOIAUTOPROJECTS.md`
-- `QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md`
-- `QMOIAUTOREVENUEEARN.md`
-- `QMOIEMPLOYAUTOPAY.md`
-- `QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md`
-- `QMOIQCITYAUTOMATIC.md`
-- `QMOISYSTEMAUTO.md`
-- `QMOI_ADVANCED_VALIDATION_AUTOPRODUCTIONELOPMENT.md`
-- `QMOI_AUTOPRODUCTION.md`
-- `QMOI_AUTOFIX_FILES_CREATED.md`
-- `QMOI_AUTOFIX_IMPLEMENTATION_SUMMARY.md`
-- `QMOI_AUTOFIX_MASTER_GUIDE.md`
-- `QMOI_AUTOFIX_QUICK_REFERENCE.md`
-- `QMOI_AUTOFIX_SETUP_GUIDE.md`
-- `QMOI_AUTOFIX_SYSTEM_INDEX.md`
-- `QMOI_AUTOMATED_DEPLOYMENT_GUIDE.md`
-- `QMOI_AUTOMATED_SYSTEMS_README.md`
-- `QMOI_AUTONOMOUS_FEATURES.md`
-- `QMOI_AUTO_EVOLVING_STRATEGY.md`
-- `QMOI_AUTO_SETUP_IMPLEMENTATION.md`
-- `QMOI_AUTO_TESTING_UI_PRODUCTIONELOPMENT.md`
-- `QMOI_GITLAB_AUTOMATION.md`
-- `QMOI_MARKDOWN_AUTO_UPDATE.md`
-- `QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md`
-- `QUANTUMAUTOMARKET.md`
-- `QVILLAGE_ADVANCED_AUTOMATION_PLAN.md`
-- `QVILLAGE_ENHANCED_AUTO_EVOLUTION.md`
-- `QVS/AUTOJCA.md`
-- `Q_BALANCES_AUTO_UPDATE_README.md`
-- `SECURITY_AUTOMATION.md`
-- `VERCEL_AUTO_DEPLOY_GUIDE.md`
-- `VERCEL_AUTO_UPDATE_README.md`
-- `VERCEL_QMOI_AUTOFEATURES_MASTER.md`
-- `autoPRODUCTION_enhancement_report.md`
-- `autoPRODUCTIONtracks.md`
-- `autotest_report.md`
-- `docs/ALLTESTSAUTOTESTS.md`
-- `docs/AUTOPRODUCTION_INSTRUCTIONS.md`
-- `docs/AUTOEVOLVE.md`
-- `docs/AUTO_SETUP_GUIDE.md`
-- `docs/PLATFORM_AUTOMATION.md`
-- `docs/QMOI-ENHANCED-AUTOTESTS.md`
-- `docs/QMOI_BACKGROUND_AUTOMATION_GUIDE.md`
-- `docs/QMOI_BACKGROUND_AUTOMATION_README.md`
-- `docs/QMOI_LION_QVILLAGE_AUTOMATION_PLAN.md`
-- `docs/RELEASE_AUTOMATION.md`
-- `tools/autotest_report.md`
-- `tools/issue_drafts/01_qmoi-enhanced_scripts_qmoi_master_website_automation_js.md`
-- `tools/issue_drafts/0483_AU✅ production READY - Fully implemented with production hardening
-- `tools/issue_drafts/0484_AUTOGIT.md.md`
-- `tools/issue_drafts/0485_AUTOLINTREADME.md.md`
-- `tools/issue_drafts/04_qmoi-enhanced_scripts_demo-automation_js.md`
-- `tools/issue_drafts/0507_QCITYQMOIAUTOSTART.md.md`
-- `tools/issue_drafts/0515_QMOI-PLATFORM-AUTOMATION.md.md`
-- `tools/issue_drafts/0518_QMOIAUTOPRODUCTION.md.md`
-- `tools/issue_drafts/0546_QUANTUMAUTOMARKET.md.md`
-- `tools/issue_drafts/0568_app_api_deploy_auto-redeploy_route.ts.md`
-- `tools/issue_drafts/0854_qmoi-enhanced_AU✅ production READY - Fully implemented with production hardening
-- `tools/issue_drafts/0855_qmoi-enhanced_AUTOGIT.md.md`
-- `tools/issue_drafts/0856_qmoi-enhanced_AUTOLINTREADME.md.md`
-- `tools/issue_drafts/0869_qmoi-enhanced_QCITYQMOIAUTOSTART.md.md`
-- `tools/issue_drafts/0876_qmoi-enhanced_QMOIAUTOPRODUCTION.md.md`
-- `tools/issue_drafts/0901_qmoi-enhanced_QUANTUMAUTOMARKET.md.md`
-- `tools/issue_drafts/0909_qmoi-enhanced_app_api_deploy_auto-redeploy_route.ts.md`
-- `tools/issue_drafts/0910_qmoi-enhanced_app_api_qmoi_auto-fix_start_route.ts.md`
-- `tools/issue_drafts/0941_qmoi-enhanced_scripts_auto-vercel-fix.js.md`
-- `tools/issue_drafts/0943_qmoi-enhanced_scripts_colab-automation.py.md`
-- `tools/issue_drafts/0944_qmoi-enhanced_scripts_dagshub-automation.py.md`
-- `tools/issue_drafts/0954_qmoi-enhanced_scripts_qmoi-gitlab-ci-automation.py.md`
-- `tools/issue_drafts/0955_qmoi-enhanced_scripts_qmoi-qcity-automatic.py.md`
-- `tools/issue_drafts/0957_qmoi-enhanced_scripts_qmoi_auto_startup.py.md`
-- `tools/issue_drafts/1012_qmoi_autogen_unused_api_tests.sh.md`
-- `tools/issue_drafts/1016_scripts_auto-vercel-fix.js.md`
-- `tools/issue_drafts/1018_scripts_colab-automation.py.md`
-- `tools/issue_drafts/1019_scripts_dagshub-automation.py.md`
-- `tools/issue_drafts/1035_scripts_qmoi-gitlab-ci-automation.py.md`
-- `tools/issue_drafts/1037_scripts_qmoi-qcity-automatic.py.md`
-- `tools/issue_drafts/1039_scripts_qmoi_auto_startup.py.md`
-- `tools/issue_drafts/1074_tools_autotest_runner.py.md`
-- `tools/issue_drafts/10_qmoi-enhanced_scripts_auto_lint_fix_py.md`
-- `tools/issue_drafts/11_qmoi-enhanced_scripts_qmoi_auto_evolution_system_py.md`
-
-## ⚛️ Quantum Automation Integration
-### Core Quantum Automation Systems
-- `scripts/qmoi_bulk_doc_enhancer.py` — Bulk documentation and production-ready automation updater with quantum integration.
-- `scripts/autonomous_quantum_tool_adder.py` — Autonomous quantum tool addition and evolution system.
-- `tools/quantum/` — Complete quantum tools ecosystem with 16+ specialized tools.
-- `ai/quantum/` — Quantum-enhanced AI processing and automation capabilities.
-- `autoPRODUCTION/` — Quantum-aware PRODUCTIONelopment automation and code generation.
-
-### Quantum Feature Integration
-- **Quantum Research Engine**: Autonomous quantum algorithm discovery and implementation
-- **Quantum Circuit Designer**: AI-driven quantum circuit generation and optimization
-- **Quantum Simulator**: Multi-qubit simulation with high accuracy and performance
-- **Quantum Security Suite**: Post-quantum cryptography and quantum-resistant security
-- **Quantum Optimization Solver**: QAOA, VQE, and advanced optimization algorithms
-- **Quantum Sensing & Metrology**: Ultra-precise quantum measurements and calibration
-- **Quantum Communication Network**: Quantum teleportation and secure networking
-- **Quantum AI Research Lab**: Quantum-enhanced AI and machine learning algorithms
-- **Quantum Hardware Interface**: Qubit control and quantum error correction
-- **Quantum Research Dashboard**: Real-time quantum research metrics and controls
-
-### PRODUCTIONeloper Structure Requirements
-- All automation scripts must include quantum feature integration points
-- Quantum tools must be accessible via `tools/quantum/` directory structure
-- AI components must support quantum-enhanced processing via `ai/quantum/` modules
-- Documentation must reference quantum capabilities and integration guides
-- Testing must include quantum algorithm validation and performance benchmarks
-
-### System-Wide Quantum Integration
-- **Scripts Directory**: `scripts/` contains quantum automation tools and bulk enhancers
-- **AutoPRODUCTION Systems**: `autoPRODUCTION/` provides quantum-aware PRODUCTIONelopment automation
-- **Quantum Tools**: `tools/quantum/` houses specialized quantum computing tools
-- **AI Quantum**: `ai/quantum/` enables quantum-enhanced AI processing
-- **Documentation**: All `.md` files include quantum feature references and integration guides
-
-
-## ⚛️ Quantum Automation Enhancements
-
-**Quantum multi orchestra intelligence (QMOI) Integration**: ✅ FULLY AUTONOMOUS
-**Quantum Features**: ✅ COMPREHENSIVE INTEGRATION
-**PRODUCTIONeloper Structures**: ✅ QUANTUM-AWARE PRODUCTIONELOPMENT
-
-Quantum multi orchestra intelligence (QMOI) integrates this automation with quantum-aware execution, PRODUCTIONeloper structures, and system-wide quantum feature usage. This section ensures quantum capabilities are referenced and auto-update systems are aligned with the repository's quantum automation architecture.
-
-### Quantum Feature Integration
-- **Quantum Research Engine**: Autonomous discovery and implementation of quantum algorithms
-- **Quantum Circuit Designer**: AI-driven quantum circuit generation and optimization
-- **Quantum Simulator**: Multi-qubit simulation with high accuracy
-- **Quantum Security Suite**: Post-quantum cryptography and quantum-resistant security
-- **Quantum Optimization Solver**: QAOA and VQE implementations
-- **Quantum Sensing & Metrology**: Ultra-precise quantum measurements
-- **Quantum Communication Network**: Quantum teleportation and entanglement distribution
-- **Quantum AI Research Lab**: Quantum-enhanced AI and ML algorithms
-- **Quantum Hardware Interface**: Qubit control and quantum error correction
-- **Quantum Research Dashboard**: Real-time quantum research metrics and controls
-
-### PRODUCTIONeloper Structure Requirements
-- All automation scripts must include quantum feature integration
-- Quantum tools must be accessible via `tools/quantum/` directory structure
-- AI components must support quantum-enhanced processing via `ai/quantum/` modules
-- Documentation must reference quantum capabilities and integration points
-- Testing must include quantum algorithm validation and performance benchmarks
-
-### System-Wide Quantum Integration
-- **Scripts Directory**: `scripts/` contains quantum automation tools and bulk enhancers
-- **AutoPRODUCTION Systems**: `autoPRODUCTION/` provides quantum-aware PRODUCTIONelopment automation
-- **Quantum Tools**: `tools/quantum/` houses specialized quantum computing tools
-- **AI Quantum**: `ai/quantum/` enables quantum-enhanced AI processing
-- **Documentation**: All `.md` files include quantum feature references and integration guides
-
-<!-- QMOI_BULK_DOC_ENHANCER_START: Bulk Automation Script Integration -->
-## Bulk Automation Script Integration
-
-- Adds `scripts/qmoi_bulk_doc_enhancer.py` as the canonical bulk documentation and production readiness updater.
-- This script updates core markdown files, automation inventories, and project structure metadata in bulk.
-- The enhancer supports self-updating behavior, meaning it can upgrade its own documentation and section structure as QMOI evolves.
-- It is designed to work from QVillage, offline caches, and online sync modes, so documentation and production plans stay current.
-- Includes guidance for `ALLAUTO.md`, `QMOI_AUTOPRODUCTION.md`, `QMOIAUTOPRODUCTION.md`, and all automation-related docs to remain synchronized.
-<!-- QMOI_BULK_DOC_ENHANCER_END: Bulk Automation Script Integration -->
+- .devcontainer/README.md — automation_mentions: 5 — script_links: 4
+- .evolution_logs/EVOLUTION_SUMMARY.md — automation_mentions: 1 — script_links: 0
+- .github/PR_AUTOTODOS.md — automation_mentions: 21 — script_links: 0
+- .github/PULL_REQUEST_TEMPLATE.md — automation_mentions: 7 — script_links: 1
+- .github/PULL_REQUEST_TEMPLATE/automated_fix.md — automation_mentions: 15 — script_links: 0
+- .qmoi_state/RECOVERY_COMPLETE.md — automation_mentions: 6 — script_links: 3
+- 1.md — automation_mentions: 18 — script_links: 3
+- 1a.md — automation_mentions: 5 — script_links: 3
+- 3.md — automation_mentions: 8 — script_links: 3
+- 4.md — automation_mentions: 9 — script_links: 3
+- 44.md — automation_mentions: 10 — script_links: 3
+- 5.md — automation_mentions: 7 — script_links: 3
+- @ALLMDFILESREFS.md — automation_mentions: 5 — script_links: 3
+- ACCOUNTABILITY.md — automation_mentions: 15 — script_links: 3
+- ADAPTERS.md — automation_mentions: 6 — script_links: 3
+- ADVANCED_USER_IDENTIFICATION_SYSTEM.md — automation_mentions: 9 — script_links: 3
+- AI_ENHANCEMENT_SYSTEM.md — automation_mentions: 11 — script_links: 3
+- ALL PERCENTAGES.md — automation_mentions: 5 — script_links: 3
+- ALLAUTO.md — automation_mentions: 6 — script_links: 11
+- ALLCLONEDRELEASES.md — automation_mentions: 8 — script_links: 3
+- ALLCOMPONENTSTESTS.md — automation_mentions: 9 — script_links: 12
+- ALLDEVICESSETTINGS.md — automation_mentions: 14 — script_links: 4
+- ALLDIRECTORIESMD.md — automation_mentions: 6 — script_links: 10
+- ALLERRORS.md — automation_mentions: 61 — script_links: 41
+- ALLERRORSSTATSQMOI.md — automation_mentions: 7 — script_links: 3
+- ALLERRORSTYPESFILES.md — automation_mentions: 6 — script_links: 4
+- ALLERRORTYPESANDHEALTHCHECKS.md — automation_mentions: 11 — script_links: 4
+- ALLHEALTHS.md — automation_mentions: 150 — script_links: 1317
+- ALLLINKS.md — automation_mentions: 5 — script_links: 24
+- ALLMDFILESREFS.md — automation_mentions: 5 — script_links: 11
+- ALLMDFILESREFS_ENHANCED.md — automation_mentions: 28 — script_links: 16
+- ALLMDGILES.md — automation_mentions: 5 — script_links: 3
+- ALLPERCENTAGES.md — automation_mentions: 5 — script_links: 10
+- ALLPLATFORMSVERSIONS.md — automation_mentions: 38 — script_links: 3
+- ALLQMOIAIAPPSREALEASESVERSIONS.md — automation_mentions: 12 — script_links: 3
+- ALLQMOIAUTOEVOLVINGENVS.md — automation_mentions: 56 — script_links: 36
+- ALLREGISTRIES.md — automation_mentions: 22 — script_links: 0
+- ALLSYSTEMSSTRUCTURESREFERENCES.md — automation_mentions: 18 — script_links: 3
+- ALLTESTSAUTOTESTS.md — automation_mentions: 18 — script_links: 74
+- ALLUITESTS.md — automation_mentions: 34 — script_links: 3
+- ALLVERSIONS.md — automation_mentions: 5 — script_links: 11
+- ALLWALLETSQVS.md — automation_mentions: 8 — script_links: 5
+- ALL_APPS.md — automation_mentions: 5 — script_links: 3
+- ALL_APPS/README.md — automation_mentions: 5 — script_links: 4
+- ALPHAQMOIENGINE.md — automation_mentions: 17 — script_links: 3
+- API.md — automation_mentions: 1 — script_links: 2
+- API_1.md — automation_mentions: 8 — script_links: 0
+- API_AUTO_UPDATE_GUIDELINES.md — automation_mentions: 35 — script_links: 3
+- API_COMPREHENSIVE.md — automation_mentions: 14 — script_links: 3
+- API_DOCUMENTATION_COMPLETENESS.md — automation_mentions: 1 — script_links: 0
+- API_DOCUMENTATION_INDEX.md — automation_mentions: 1 — script_links: 0
+- API_ENDPOINTS_COMPLETE_AUDIT.md — automation_mentions: 17 — script_links: 4
+- API_ENDPOINTS_REFERENCE.md — automation_mentions: 20 — script_links: 3
+- API_IMPLEMENTATION_EXAMPLES.md — automation_mentions: 5 — script_links: 3
+- API_INTEGRATION_GUIDE.md — automation_mentions: 7 — script_links: 3
+- API_REFERENCE.md — automation_mentions: 16 — script_links: 3
+- API_REFERENCE_ADVANCED_FEATURES.md — automation_mentions: 1 — script_links: 0
+- APIs_1.md — automation_mentions: 3933 — script_links: 0
+- APIs_v1.md — automation_mentions: 4087 — script_links: 3
+- APP.md — automation_mentions: 6 — script_links: 4
+- APPS_PLATFORMS_DOCUMENTATION_UPDATE.md — automation_mentions: 10 — script_links: 3
+- APP_BUILD_MATRIX.md — automation_mentions: 11 — script_links: 3
+- APP_FIX_ACTION_PLAN.md — automation_mentions: 11 — script_links: 4
+- APP_FIX_CHECKLIST.md — automation_mentions: 15 — script_links: 4
+- APP_FIX_COMPLETE.md — automation_mentions: 6 — script_links: 5
+- ASSETS.md — automation_mentions: 5 — script_links: 3
+- AUTHENTICATION_AUTHORIZATION.md — automation_mentions: 5 — script_links: 3
+- AUTH_INTEGRATION_TESTS.md — automation_mentions: 2 — script_links: 0
+- AUTH_SYSTEM_IMPLEMENTATION.md — automation_mentions: 6 — script_links: 3
+- AUTH_TESTING_GUIDE.md — automation_mentions: 0 — script_links: 2
+- AUTOCLONE_STANDALONE.md — automation_mentions: 21 — script_links: 4
+- AUTODEV.md — automation_mentions: 20 — script_links: 4
+- AUTODEV_ENHANCEMENT_DELIVERY.md — automation_mentions: 17 — script_links: 0
+- AUTODEV_PRODUCTION_OPERATIONS.md — automation_mentions: 4 — script_links: 16
+- AUTODEV_PRODUCTION_READINESS_ENHANCEMENT_GUIDE.md — automation_mentions: 15 — script_links: 0
+- AUTODEV_SECRETS.md — automation_mentions: 16 — script_links: 5
+- AUTODEV_SYNTAX_RECOVERY_REPORT.md — automation_mentions: 11 — script_links: 0
+- AUTODEV_VALIDATION_SYSTEM.md — automation_mentions: 20 — script_links: 3
+- AUTODOWNLOAD.md — automation_mentions: 28 — script_links: 3
+- AUTOGIT.md — automation_mentions: 22 — script_links: 9
+- AUTOLINTREADME.md — automation_mentions: 41 — script_links: 11
+- AUTOMATION-SUMMARY.md — automation_mentions: 45 — script_links: 14
+- AUTONOMOUS_LEARNING_SYSTEM.md — automation_mentions: 14 — script_links: 3
+- AUTOOPTIMIZEALPHAQMOIENGINE.md — automation_mentions: 24 — script_links: 4
+- AUTORATE_COMPARE.md — automation_mentions: 15 — script_links: 3
+- AUTO_CLONE_SYSTEM.md — automation_mentions: 41 — script_links: 3
+- AUTO_RECOVERY_PROCEDURES.md — automation_mentions: 33 — script_links: 3
+- AUTO_SETUP_COMPLETION_SUMMARY.md — automation_mentions: 55 — script_links: 3
+- AVATAR_SYSTEM.md — automation_mentions: 5 — script_links: 3
+- BACKEND.md — automation_mentions: 6 — script_links: 4
+- BACKEND_API_TEMPLATES.md — automation_mentions: 7 — script_links: 3
+- BACKGROUND_AUTOMATION_COMPLETE.md — automation_mentions: 39 — script_links: 7
+- BALANCES.md — automation_mentions: 44 — script_links: 4
+- BALANCE_SYSTEM_README.md — automation_mentions: 16 — script_links: 3
+- BALANCE_SYSTEM_VALIDATION_REPORT.md — automation_mentions: 18 — script_links: 5
+- BIOMETRIC_LOGIN_TEST_RESULTS.md — automation_mentions: 5 — script_links: 3
+- BUILDAPPSFORALLPLATFORMS.md — automation_mentions: 7 — script_links: 3
+- BUILD_COMPLETION_REPORT_v2.md — automation_mentions: 15 — script_links: 3
+- BUILD_COMPLETION_SUMMARY.md — automation_mentions: 8 — script_links: 3
+- BUILD_INSTRUCTIONS.md — automation_mentions: 9 — script_links: 3
+- BUILD_INSTRUCTIONS_PRODUCTION.md — automation_mentions: 11 — script_links: 4
+- BUILD_REAL_APPS.md — automation_mentions: 7 — script_links: 4
+- BUILD_SCRIPTS_Q1_INTEGRATION.md — automation_mentions: 11 — script_links: 9
+- BUILD_TRIGGER.md — automation_mentions: 5 — script_links: 3
+- BULK_ENHANCEMENT_STATUS.md — automation_mentions: 3 — script_links: 3
+- BULK_PRODUCTION_WORKFLOW.md — automation_mentions: 3 — script_links: 10
+- BUSINESS_INTELLIGENCE.md — automation_mentions: 4 — script_links: 3
+- CACHING_GUIDE.md — automation_mentions: 5 — script_links: 3
+- CACHING_STRATEGIES.md — automation_mentions: 5 — script_links: 3
+- CAMPAIGN_COMPLETION_SUMMARY.md — automation_mentions: 6 — script_links: 3
+- CASHON.md — automation_mentions: 20 — script_links: 3
+- CASHONTRADINGREADME.md — automation_mentions: 11 — script_links: 3
+- CHANGES.md — automation_mentions: 5 — script_links: 5
+- CHATBOT.md — automation_mentions: 18 — script_links: 3
+- CI-DEBUG-OUTPUTS.md — automation_mentions: 5 — script_links: 3
+- CI_CD_PIPELINE.md — automation_mentions: 5 — script_links: 3
+- CLOUD_CONFIG.md — automation_mentions: 5 — script_links: 3
+- CLOUD_INFRASTRUCTURE.md — automation_mentions: 5 — script_links: 3
+- CMDCOMMANDS.md — automation_mentions: 35 — script_links: 9
+- CODE_OPTIMIZATION.md — automation_mentions: 5 — script_links: 3
+- COLAB_DAGSHUB_DEPLOY_CHECKLIST.md — automation_mentions: 7 — script_links: 4
+- COMPLETE_APP_ENHANCEMENT_SUMMARY.md — automation_mentions: 6 — script_links: 0
+- COMPLETE_PRODUCTION_DEPLOYMENT_GUIDE.md — automation_mentions: 3 — script_links: 0
+- COMPLETE_SYSTEM_DOCUMENTATION_MASTER.md — automation_mentions: 43 — script_links: 3
+- COMPLETION_INDEX.md — automation_mentions: 5 — script_links: 3
+- COMPLETION_REPORT.md — automation_mentions: 5 — script_links: 3
+- COMPLETION_REPORT_REAL_IMPLEMENTATIONS.md — automation_mentions: 5 — script_links: 3
+- COMPLETION_SUMMARY.md — automation_mentions: 0 — script_links: 1
+- COMPLIANCE_AUDITING.md — automation_mentions: 5 — script_links: 3
+- COMPONENTS.md — automation_mentions: 14 — script_links: 0
+- COMPONENTS_enhanced.md — automation_mentions: 9 — script_links: 4
+- COMPONENT_APP_MAPPING.md — automation_mentions: 12 — script_links: 0
+- COMPONENT_CONNECTION_MAP.md — automation_mentions: 4 — script_links: 0
+- COMPONENT_SERVING_EXAMPLES_AND_PATTERNS.md — automation_mentions: 1 — script_links: 0
+- COMPONENT_SERVING_QUICK_REFERENCE_INDEX.md — automation_mentions: 4 — script_links: 0
+- COMPONENT_SERVING_TECHNICAL_DETAILED_MAP.md — automation_mentions: 5 — script_links: 0
+- COMPONENT_USAGE_PLAN.md — automation_mentions: 6 — script_links: 3
+- COMPREHENSIVE_ACTION_PLAN.md — automation_mentions: 20 — script_links: 21
+- COMPREHENSIVE_ERROR_ANALYSIS.md — automation_mentions: 6 — script_links: 3
+- COMPREHENSIVE_IMPLEMENTATION_PLAN.md — automation_mentions: 12 — script_links: 0
+- COMPREHENSIVE_LINK_FIX_STRATEGY.md — automation_mentions: 14 — script_links: 7
+- COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md — automation_mentions: 4 — script_links: 2
+- COMPREHENSIVE_TESTING_QA_STRATEGY.md — automation_mentions: 5 — script_links: 3
+- COMPREHENSIVE_TESTING_STRATEGY.md — automation_mentions: 2 — script_links: 0
+- COMPREHENSIVE_VALIDATION_SYSTEM.md — automation_mentions: 9 — script_links: 11
+- COMPUTER_VISION_SYSTEM.md — automation_mentions: 4 — script_links: 3
+- CONFIGURATION.md — automation_mentions: 6 — script_links: 4
+- CONFIGURATION_GUIDE.md — automation_mentions: 5 — script_links: 6
+- CONSCIOUSNESS.md — automation_mentions: 1 — script_links: 0
+- CONSCIOUSNESS_QUICKSTART.md — automation_mentions: 9 — script_links: 3
+- CONSOLIDATION_ANALYSIS.md — automation_mentions: 5 — script_links: 3
+- CONTAINER_ORCHESTRATION.md — automation_mentions: 5 — script_links: 3
+- CONTINUOUS_IMPROVEMENT.md — automation_mentions: 11 — script_links: 4
+- CONTINUOUS_MONITORING_SETUP.md — automation_mentions: 12 — script_links: 11
+- CONTRIBUTING.md — automation_mentions: 9 — script_links: 3
+- CREDENTIAL_ROTATION_PLAYBOOK.md — automation_mentions: 25 — script_links: 8
+- CRITICAL_APP_AUDIT_REPORT.md — automation_mentions: 9 — script_links: 4
+- CURLCOMMANDS.md — automation_mentions: 7 — script_links: 4
+- CURLQMOIMASTERSISTERUSER.md — automation_mentions: 6 — script_links: 4
+- CYPRESS.md — automation_mentions: 5 — script_links: 3
+- DASHBOARDTRACKS.md — automation_mentions: 29 — script_links: 3
+- DATA.md — automation_mentions: 5 — script_links: 3
+- DATABASE.md — automation_mentions: 6 — script_links: 4
+- DATABASE_OPTIMIZATION.md — automation_mentions: 5 — script_links: 3
+- DATABASE_PRODUCTION_SETUP.md — automation_mentions: 5 — script_links: 3
+- DATASETS.md — automation_mentions: 5 — script_links: 3
+- DATASET_SYSTEM_IMPLEMENTATION.md — automation_mentions: 14 — script_links: 3
+- DATA_ENCRYPTION.md — automation_mentions: 5 — script_links: 3
+- DB.md — automation_mentions: 5 — script_links: 3
+- DEALS.md — automation_mentions: 12 — script_links: 3
+- DELIVERABLES_CHECKLIST.md — automation_mentions: 5 — script_links: 3
+- DELIVERABLES_FINAL_INVENTORY.md — automation_mentions: 18 — script_links: 3
+- DEPENDENCY_ANALYSIS.md — automation_mentions: 1 — script_links: 0
+- DEPLOY.md — automation_mentions: 6 — script_links: 4
+- DEPLOYMENT-README.md — automation_mentions: 14 — script_links: 8
+- DEPLOYMENT.md — automation_mentions: 10 — script_links: 8
+- DEPLOYMENT_AUTOMATION.md — automation_mentions: 17 — script_links: 3
+- DEPLOYMENT_CHECKLIST.md — automation_mentions: 8 — script_links: 13
+- DEPLOYMENT_COMPLETE.md — automation_mentions: 5 — script_links: 3
+- DEPLOYMENT_COMPLETE_EXECUTIVE_SUMMARY.md — automation_mentions: 8 — script_links: 3
+- DEPLOYMENT_CONFIGURATION_GUIDE.md — automation_mentions: 2 — script_links: 4
+- DEPLOYMENT_FIX_QUICK_START.md — automation_mentions: 8 — script_links: 3
+- DEPLOYMENT_GATEWAY.md — automation_mentions: 36 — script_links: 9
+- DEPLOYMENT_GUIDE.md — automation_mentions: 0 — script_links: 1
+- DEPLOYMENT_HEALTH_CHECKLIST.md — automation_mentions: 36 — script_links: 7
+- DEPLOYMENT_IN_PROGRESS.md — automation_mentions: 22 — script_links: 3
+- DEPLOYMENT_LOG.md — automation_mentions: 5 — script_links: 3
+- DEPLOYMENT_QUICK_START.md — automation_mentions: 6 — script_links: 3
+- DEPLOYMENT_READINESS_FINAL.md — automation_mentions: 26 — script_links: 20
+- DEPLOYMENT_READY_FINAL.md — automation_mentions: 5 — script_links: 3
+- DEPLOYMENT_STATUS_V1_2_3.md — automation_mentions: 17 — script_links: 3
+- DEPLOYMENT_SUMMARY.md — automation_mentions: 6 — script_links: 3
+- DEPLOYMENT_VERIFICATION.md — automation_mentions: 7 — script_links: 7
+- DEVCOMMANDS.md — automation_mentions: 10 — script_links: 10
+- DEVCONTAINER_RECOVERY_GUIDE.md — automation_mentions: 11 — script_links: 11
+- DEVELOPER_QUICK_START.md — automation_mentions: 6 — script_links: 3
+- DEVELOPER_STRUCTURE_COMPLETE.md — automation_mentions: 6 — script_links: 3
+- DEVICERESOURCEOPTIMIZATION.md — automation_mentions: 11 — script_links: 4
+- DISABILITYHELPER.md — automation_mentions: 10 — script_links: 3
+- DISASTER_RECOVERY_INCIDENT_RESPONSE.md — automation_mentions: 8 — script_links: 3
+- DISASTER_RECOVERY_PLAN.md — automation_mentions: 9 — script_links: 7
+- DOCKER.md — automation_mentions: 5 — script_links: 3
+- DOCKER_DEPLOYMENT_GUIDE.md — automation_mentions: 9 — script_links: 4
+- DOCS.md — automation_mentions: 6 — script_links: 4
+- DOCS/CI_SIGNING_SETUP.md — automation_mentions: 7 — script_links: 4
+- DOCS/GITHUB_SECRETS_SETUP.md — automation_mentions: 10 — script_links: 4
+- DOCS/GITHUB_WORKFLOW_DISPATCH.md — automation_mentions: 12 — script_links: 6
+- DOCS_SITE.md — automation_mentions: 5 — script_links: 3
+- DOCUMENTATION_COMPLETION_REPORT.md — automation_mentions: 10 — script_links: 6
+- DOCUMENTATION_INDEX.md — automation_mentions: 12 — script_links: 3
+- DOCUMENTATION_MASTER_INDEX.md — automation_mentions: 25 — script_links: 8
+- DOCUMENTATION_PHASE_COMPLETION_REPORT.md — automation_mentions: 12 — script_links: 5
+- DOCUMENTATION_STATUS.md — automation_mentions: 2 — script_links: 0
+- DOMAIN-MANAGEMENT.md — automation_mentions: 5 — script_links: 3
+- DOMAINSANDLINKS.md — automation_mentions: 27 — script_links: 9
+- DOMAIN_AUTO_VALIDATION_SYSTEM.md — automation_mentions: 26 — script_links: 3
+- DOMAIN_HEALTH_AUTOMATION_GUIDE.md — automation_mentions: 28 — script_links: 24
+- DOMAIN_MANAGEMENT.md — automation_mentions: 13 — script_links: 3
+- DOWNLOADQMOIAIAPPALLDEVICES.md — automation_mentions: 18 — script_links: 4
+- DOWNLOADS.md — automation_mentions: 5 — script_links: 3
+- EARNVAULT.md — automation_mentions: 6 — script_links: 4
+- EMAILSSYSTEM.md — automation_mentions: 12 — script_links: 3
+- EMAIL_SERVICE.md — automation_mentions: 17 — script_links: 3
+- EMPLOYEESUSERSENROLLED.md — automation_mentions: 6 — script_links: 3
+- EMPLOYMENT.md — automation_mentions: 8 — script_links: 3
+- ENDPOINTS_CONSCIOUSNESS.md — automation_mentions: 5 — script_links: 3
+- ENHANCEDQVS.md — automation_mentions: 21 — script_links: 3
+- ENHANCED_AUTOMATION_SUMMARY.md — automation_mentions: 55 — script_links: 8
+- ENHANCED_GLOBAL_NOTIFICATION_SYSTEM.md — automation_mentions: 5 — script_links: 3
+- ENHANCED_LINK_DOMAIN_SYSTEM.md — automation_mentions: 18 — script_links: 3
+- ENHANCED_NOTIFICATION_SYSTEM.md — automation_mentions: 6 — script_links: 3
+- ENHANCEMENT_COMPLETE_SUMMARY.md — automation_mentions: 5 — script_links: 3
+- ENHANCEMENT_SUMMARY.md — automation_mentions: 1 — script_links: 0
+- ENVIRONMENTS.md — automation_mentions: 5 — script_links: 3
+- ENVIRONMENT_CONFIG.md — automation_mentions: 5 — script_links: 3
+- ERROR-REPORTS.md — automation_mentions: 5 — script_links: 3
+- ERRORSREADME.md — automation_mentions: 6 — script_links: 1553
+- ERRORSTRACKS.md — automation_mentions: 10 — script_links: 4
+- ERROR_TYPES_GUIDE.md — automation_mentions: 5 — script_links: 3
+- EVOLUTION.md — automation_mentions: 19 — script_links: 4
+- EXAMPLES.md — automation_mentions: 5 — script_links: 3
+- EXECUTION_LIVE_PROGRESS.md — automation_mentions: 7 — script_links: 3
+- EXECUTION_SUMMARY.md — automation_mentions: 5 — script_links: 3
+- EXECUTIVE_SUMMARY.md — automation_mentions: 5 — script_links: 3
+- EXTENDED_UI_COMPONENTS_INVENTORY.md — automation_mentions: 2 — script_links: 0
+- FAMILY_FEATURES_GUIDE.md — automation_mentions: 5 — script_links: 3
+- FAST-BOOTSTRAP-README.md — automation_mentions: 9 — script_links: 4
+- FEATURESREADME.md — automation_mentions: 65 — script_links: 4
+- FILES_INDEX_CONSCIOUSNESS.md — automation_mentions: 12 — script_links: 3
+- FILE_MANIFEST.md — automation_mentions: 6 — script_links: 3
+- FINAL_COMPLETION_REPORT.md — automation_mentions: 24 — script_links: 3
+- FINAL_DELIVERY_SUMMARY.md — automation_mentions: 15 — script_links: 12
+- FINAL_DEPLOYMENT_EXECUTION_GUIDE.md — automation_mentions: 5 — script_links: 3
+- FINAL_DEPLOYMENT_REPORT.md — automation_mentions: 1 — script_links: 4
+- FINAL_DEPLOYMENT_SUMMARY.md — automation_mentions: 20 — script_links: 7
+- FINAL_EXECUTION_SUMMARY.md — automation_mentions: 5 — script_links: 8
+- FINAL_HANDOFF.md — automation_mentions: 22 — script_links: 3
+- FINAL_IMPLEMENTATION_CONFIRMATION.md — automation_mentions: 5 — script_links: 3
+- FINAL_PRODUCTION_READINESS.md — automation_mentions: 10 — script_links: 4
+- FINAL_PRODUCTION_READINESS_REPORT.md — automation_mentions: 26 — script_links: 4
+- FINAL_PRODUCTION_READINESS_REPORT_V2.md — automation_mentions: 6 — script_links: 4
+- FINAL_PRODUCTION_READINESS_SUMMARY.md — automation_mentions: 8 — script_links: 3
+- FINAL_PRODUCTION_REPORT_2026-04-23.md — automation_mentions: 2 — script_links: 0
+- FINAL_PRODUCTION_STATUS.md — automation_mentions: 17 — script_links: 14
+- FINAL_PRODUCTION_SUMMARY.md — automation_mentions: 11 — script_links: 4
+- FINAL_SESSION_COMPLETION_SUMMARY.md — automation_mentions: 10 — script_links: 3
+- FINAL_SESSION_COMPREHENSIVE_REPORT.md — automation_mentions: 14 — script_links: 4
+- FINAL_SESSION_SUMMARY.md — automation_mentions: 6 — script_links: 3
+- FINAL_STATUS_TODOS_COMPLETE.md — automation_mentions: 5 — script_links: 3
+- FINAL_SYSTEM_HEALTH_REPORT.md — automation_mentions: 5 — script_links: 3
+- FINAL_VERIFICATION.md — automation_mentions: 16 — script_links: 5
+- FINAL_VERIFICATION_REPORT.md — automation_mentions: 5 — script_links: 3
+- FINAL_VERIFICATION_SUMMARY.md — automation_mentions: 8 — script_links: 3
+- FINANCIALMANAGER.md — automation_mentions: 59 — script_links: 4
+- FINANCIALMANAGER_ENHANCED.md — automation_mentions: 1 — script_links: 0
+- FINANCIAL_MANAGER.md — automation_mentions: 6 — script_links: 3
+- GH_2.89.0_LINUX_AMD64.md — automation_mentions: 5 — script_links: 3
+- GIT-LFS-3.5.1.md — automation_mentions: 5 — script_links: 3
+- GITHUB-ACTIONS-COMPLETE.md — automation_mentions: 46 — script_links: 8
+- GITHUB.md — automation_mentions: 5 — script_links: 3
+- GITHUBPAYED.md — automation_mentions: 27 — script_links: 3
+- GITHUB_ACTIONS_AUTOFIX.md — automation_mentions: 31 — script_links: 5
+- GITHUB_RELEASES_COMPLETE_GUIDE.md — automation_mentions: 6 — script_links: 3
+- GITHUB_RELEASES_GUIDE.md — automation_mentions: 5 — script_links: 3
+- GITHUB_RELEASES_INDEX.md — automation_mentions: 16 — script_links: 3
+- GITHUB_RELEASES_QUICKSTART.md — automation_mentions: 18 — script_links: 3
+- GITHUB_RELEASES_QUICK_REFERENCE.md — automation_mentions: 5 — script_links: 3
+- GITHUB_RELEASES_REALTIME_GUIDE.md — automation_mentions: 35 — script_links: 3
+- GITHUB_RELEASES_RECENT.md — automation_mentions: 8 — script_links: 3
+- GITHUB_RELEASES_VERIFICATION_REPORT.md — automation_mentions: 5 — script_links: 3
+- GITHUB_WORKFLOWS_VERIFICATION.md — automation_mentions: 67 — script_links: 3
+- GITPODPAYED.md — automation_mentions: 9 — script_links: 3
+- GIT_COMMIT_INSTRUCTIONS.md — automation_mentions: 12 — script_links: 3
+- GIT_INTEGRATION.md — automation_mentions: 8 — script_links: 3
+- GLOBALMANAGER.md — automation_mentions: 6 — script_links: 3
+- GLOBALTIME.md — automation_mentions: 30 — script_links: 3
+- GLOBAL_ASSET_MANAGEMENT.md — automation_mentions: 10 — script_links: 3
+- GLOBAL_OPERATIONS_DEVELOPER_GUIDE.md — automation_mentions: 2 — script_links: 0
+- GLOBAL_OPERATIONS_PHASE_2_COMPLETION.md — automation_mentions: 5 — script_links: 0
+- GODADDY.md — automation_mentions: 18 — script_links: 3
+- GODADDYPAYED.md — automation_mentions: 13 — script_links: 3
+- HFPAYED.md — automation_mentions: 5 — script_links: 3
+- HF_SPACE_QVILLAGE.md — automation_mentions: 4 — script_links: 5
+- HOOKS.md — automation_mentions: 8 — script_links: 0
+- HOSTLINKSDOMAINS.md — automation_mentions: 23 — script_links: 13
+- HUGGINGFACEHFPAYED.md — automation_mentions: 5 — script_links: 3
+- HUGGINGFACEPAYED.md — automation_mentions: 16 — script_links: 3
+- HUGGINGFACE_SPACE.md — automation_mentions: 5 — script_links: 3
+- IMPLEMENTATION_ACTION_PLAN.md — automation_mentions: 21 — script_links: 11
+- IMPLEMENTATION_COMPLETE.md — automation_mentions: 25 — script_links: 10
+- IMPLEMENTATION_SUMMARY.md — automation_mentions: 15 — script_links: 3
+- IMPLEMENTATION_WORKFLOW_GUIDE.md — automation_mentions: 6 — script_links: 0
+- INCIDENT_RESPONSE_GUIDE.md — automation_mentions: 8 — script_links: 3
+- INDEPENDENTQMOI.md — automation_mentions: 14 — script_links: 21
+- INSTALL.md — automation_mentions: 5 — script_links: 3
+- INSTALLATION.md — automation_mentions: 5 — script_links: 3
+- INSTALLER.md — automation_mentions: 5 — script_links: 3
+- INSTANCES.md — automation_mentions: 0 — script_links: 5
+- INTEGRATION_GUIDE.md — automation_mentions: 9 — script_links: 3
+- INVENTIONS.md — automation_mentions: 7 — script_links: 3
+- INVINSIBLEQMOI.md — automation_mentions: 22 — script_links: 3
+- ISSUES.md — automation_mentions: 5 — script_links: 3
+- ITERATIVE_IMPROVEMENT_ANALYSIS.md — automation_mentions: 5 — script_links: 3
+- K6.md — automation_mentions: 5 — script_links: 3
+- K8S.md — automation_mentions: 5 — script_links: 3
+- LANGUAGES.md — automation_mentions: 9 — script_links: 3
+- LEAHWALLET.md — automation_mentions: 5 — script_links: 5
+- LIB.md — automation_mentions: 15 — script_links: 4
+- LINKSTRACKS.md — automation_mentions: 11 — script_links: 3
+- LINKS_DOMAINS_ENHANCEMENT_PLAN.md — automation_mentions: 24 — script_links: 17
+- LINKS_FIX_EXECUTION_GUIDE.md — automation_mentions: 6 — script_links: 5
+- LINK_DOMAIN_VALIDATION_PLAN.md — automation_mentions: 15 — script_links: 22
+- LION.md — automation_mentions: 22 — script_links: 21
+- LIONS_COMPREHENSIVE.md — automation_mentions: 20 — script_links: 3
+- LION_AGENT_ENHANCEMENT_SUMMARY.md — automation_mentions: 7 — script_links: 3
+- LION_AGENT_VALIDATION_ENHANCEMENT.md — automation_mentions: 12 — script_links: 3
+- LION_EVOLUTION_COMPREHENSIVE_FRAMEWORK_V2.md — automation_mentions: 7 — script_links: 3
+- LION_QMOI_MASTER_ENHANCEMENTS.md — automation_mentions: 39 — script_links: 6
+- LION_VARIATIONS.md — automation_mentions: 3 — script_links: 3
+- LOAD_BALANCING_SYSTEM.md — automation_mentions: 5 — script_links: 3
+- LOGROTATE.md — automation_mentions: 5 — script_links: 3
+- MANIFEST_AND_DEPLOYMENT_GUIDE.md — automation_mentions: 18 — script_links: 3
+- MANUAL_TODOS_COMPLETION_REPORT.md — automation_mentions: 5 — script_links: 9
+- MARKETING_AUTOMATION.md — automation_mentions: 27 — script_links: 3
+- MASK.md — automation_mentions: 3 — script_links: 3
+- MASTER.md — automation_mentions: 1 — script_links: 0
+- MASTERGUIDE.md — automation_mentions: 28 — script_links: 18
+- MASTEROWNS.md — automation_mentions: 25 — script_links: 3
+- MASTERREADME.md — automation_mentions: 40 — script_links: 6
+- MASTER_COMPLETION_FINAL.md — automation_mentions: 36 — script_links: 3
+- MASTER_CONTROL_SYSTEM.md — automation_mentions: 31 — script_links: 3
+- MASTER_IDENTITY_COMPLETE.md — automation_mentions: 6 — script_links: 3
+- MASTER_ONLY_FEATURES.md — automation_mentions: 17 — script_links: 3
+- MASTER_OPERATIONS_GUIDE.md — automation_mentions: 13 — script_links: 3
+- MASTER_PROJECT_COMPLETION_INDEX.md — automation_mentions: 105 — script_links: 3
+- MASTER_PROJECT_ROADMAP.md — automation_mentions: 1 — script_links: 1
+- MASTER_QUICK_SETUP.md — automation_mentions: 23 — script_links: 3
+- MASTER_READINESS_INDEX.md — automation_mentions: 9 — script_links: 3
+- MASTER_README.md — automation_mentions: 24 — script_links: 3
+- MASTER_SYSTEM_DEPLOYMENT_REPORT.md — automation_mentions: 21 — script_links: 3
+- MASTER_VERIFICATION_COMPLETE.md — automation_mentions: 22 — script_links: 3
+- MATCHES.md — automation_mentions: 0 — script_links: 5
+- MEGAVAULT.md — automation_mentions: 9 — script_links: 3
+- MERGE_PLAN_20260611.md — automation_mentions: 1 — script_links: 0
+- ML.md — automation_mentions: 5 — script_links: 3
+- ML_OPTIMIZATION_SYSTEM.md — automation_mentions: 4 — script_links: 3
+- MOBILE.md — automation_mentions: 5 — script_links: 3
+- MODELS.md — automation_mentions: 5 — script_links: 3
+- MONITORING.md — automation_mentions: 16 — script_links: 5
+- MONITORING_ANALYTICS_SYSTEM.md — automation_mentions: 4 — script_links: 3
+- MONITORING_API_DOCS.md — automation_mentions: 17 — script_links: 3
+- MONITORING_IMPLEMENTATION_GUIDE.md — automation_mentions: 11 — script_links: 3
+- MULTI_PLATFORM_BUILD_GUIDE.md — automation_mentions: 19 — script_links: 12
+- NETLIFYPAYED.md — automation_mentions: 5 — script_links: 3
+- NETWORKS.md — automation_mentions: 7 — script_links: 3
+- NETWORK_OPTIMIZATION.md — automation_mentions: 5 — script_links: 3
+- NETWORK_SECURITY.md — automation_mentions: 5 — script_links: 3
+- NEURAL_NETWORK_INTEGRATION.md — automation_mentions: 3 — script_links: 3
+- NEW_USER_SYSTEM_IMPLEMENTATION.md — automation_mentions: 7 — script_links: 3
+- NEXT_STEPS_EXECUTIVE_SUMMARY.md — automation_mentions: 25 — script_links: 3
+- NEXT_STEPS_INDEX.md — automation_mentions: 7 — script_links: 3
+- NEXT_STEPS_ROADMAP.md — automation_mentions: 19 — script_links: 8
+- NGROKPAYED.md — automation_mentions: 11 — script_links: 3
+- NLP_SYSTEM.md — automation_mentions: 4 — script_links: 3
+- NOTEBOOKS.md — automation_mentions: 5 — script_links: 3
+- NOTSPONSORED.md — automation_mentions: 20 — script_links: 3
+- OPERATIONAL_RUNBOOKS.md — automation_mentions: 1 — script_links: 3
+- OPTION_A_PRODUCTION_READY.md — automation_mentions: 7 — script_links: 4
+- ORCHESTRATOR.md — automation_mentions: 16 — script_links: 8
+- PAYEDGITLAB.md — automation_mentions: 5 — script_links: 3
+- PAYMENTS.md — automation_mentions: 6 — script_links: 4
+- PERFORMANCE_ANALYTICS.md — automation_mentions: 4 — script_links: 3
+- PERFORMANCE_GUIDE.md — automation_mentions: 5 — script_links: 3
+- PERFORMANCE_OPTIMIZATION_SYSTEM.md — automation_mentions: 8 — script_links: 3
+- PHASE3_IMPLEMENTATION_COMPLETE.md — automation_mentions: 2 — script_links: 7
+- PHASE3_STATUS_REPORT.md — automation_mentions: 1 — script_links: 1
+- PHASE3_TIER2_QUICK_REFERENCE.md — automation_mentions: 0 — script_links: 2
+- PHASE3_TIER2_TEST_EXECUTION.md — automation_mentions: 4 — script_links: 0
+- PHASE3_TIER3_CODE_TEMPLATES.md — automation_mentions: 5 — script_links: 0
+- PHASE3_TIER3_IMPLEMENTATION_PLAN.md — automation_mentions: 3 — script_links: 0
+- PHASE3_TIER4_SECURITY_AUDIT.md — automation_mentions: 4 — script_links: 0
+- PHASE4_PRODUCTION_STRATEGY.md — automation_mentions: 6 — script_links: 4
+- PHASE5_COMPLETION_SUMMARY.md — automation_mentions: 5 — script_links: 3
+- PHASES_24_26_IMPLEMENTATION.md — automation_mentions: 36 — script_links: 3
+- PHASE_1_COMPLETION_REPORT.md — automation_mentions: 7 — script_links: 3
+- PHASE_3_TEST_COMPLETION_REPORT.md — automation_mentions: 19 — script_links: 7
+- PHASE_4_7_CONTINUATION_MASTER.md — automation_mentions: 12 — script_links: 7
+- PHASE_4_QVILLAGE_HF_COMPLETE.md — automation_mentions: 24 — script_links: 4
+- PHASE_4_SESSION_COMPLETION.md — automation_mentions: 36 — script_links: 3
+- PHASE_5_COMPLETION.md — automation_mentions: 10 — script_links: 7
+- PHASE_6_EXTENDED_SUMMARY.md — automation_mentions: 8 — script_links: 3
+- PHASE_7_SUMMARY.md — automation_mentions: 6 — script_links: 3
+- PHASE_COMPLETION_REPORT.md — automation_mentions: 6 — script_links: 8
+- PHASE_IMPLEMENTATION_STATUS.md — automation_mentions: 4 — script_links: 3
+- PLATFORMS_UI_PRODUCTION_GUIDE.md — automation_mentions: 6 — script_links: 0
+- POLITICALQMOI.md — automation_mentions: 6 — script_links: 3
+- POSTPRODUCTIONCHECKLIST.md — automation_mentions: 6 — script_links: 4
+- PREDICTIVE_ANALYTICS.md — automation_mentions: 4 — script_links: 3
+- PREVIEWWINDOW.md — automation_mentions: 104 — script_links: 3
+- PREVIEW_ENHANCEMENTS.md — automation_mentions: 37 — script_links: 3
+- PRE_RELEASE_DISTRIBUTION_PLAN.md — automation_mentions: 11 — script_links: 3
+- PRISMA.md — automation_mentions: 5 — script_links: 3
+- PRODUCTION.md — automation_mentions: 5 — script_links: 3
+- PRODUCTIONCHECKLIST.md — automation_mentions: 7 — script_links: 3
+- PRODUCTION_ALWAYS_ON_DEPLOYMENT.md — automation_mentions: 36 — script_links: 5
+- PRODUCTION_API_REFERENCE.md — automation_mentions: 6 — script_links: 4
+- PRODUCTION_BUILD_SETUP.md — automation_mentions: 22 — script_links: 10
+- PRODUCTION_CHANGES.md — automation_mentions: 6 — script_links: 4
+- PRODUCTION_CHECKLIST.md — automation_mentions: 6 — script_links: 5
+- PRODUCTION_COMPLETION_REPORT_FINAL.md — automation_mentions: 4 — script_links: 8
+- PRODUCTION_COMPLETION_SUMMARY.md — automation_mentions: 12 — script_links: 8
+- PRODUCTION_COMPLETION_SUMMARY_2026-04-23.md — automation_mentions: 1 — script_links: 0
+- PRODUCTION_CREDENTIALS_GUIDE.md — automation_mentions: 5 — script_links: 4
+- PRODUCTION_DEPLOYMENT.md — automation_mentions: 5 — script_links: 3
+- PRODUCTION_DEPLOYMENT_ALL_STEPS.md — automation_mentions: 13 — script_links: 4
+- PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md — automation_mentions: 28 — script_links: 8
+- PRODUCTION_DEPLOYMENT_COMPLETE.md — automation_mentions: 31 — script_links: 12
+- PRODUCTION_DEPLOYMENT_GUIDE.md — automation_mentions: 6 — script_links: 5
+- PRODUCTION_DEPLOYMENT_MANUAL.md — automation_mentions: 0 — script_links: 6
+- PRODUCTION_DEPLOYMENT_PLAYBOOK.md — automation_mentions: 7 — script_links: 4
+- PRODUCTION_DEPLOYMENT_README.md — automation_mentions: 8 — script_links: 12
+- PRODUCTION_DEPLOYMENT_READY.md — automation_mentions: 25 — script_links: 4
+- PRODUCTION_DEPLOYMENT_SUCCESS.md — automation_mentions: 12 — script_links: 9
+- PRODUCTION_DEPLOYMENT_SYSTEM.md — automation_mentions: 9 — script_links: 3
+- PRODUCTION_DEPLOYMENT_VALIDATION.md — automation_mentions: 5 — script_links: 3
+- PRODUCTION_ENHANCEMENT_PLAN_15PLUS.md — automation_mentions: 15 — script_links: 7
+- PRODUCTION_ENHANCEMENT_SUMMARY.md — automation_mentions: 22 — script_links: 21
+- PRODUCTION_HARDENING_STATUS.md — automation_mentions: 8 — script_links: 8
+- PRODUCTION_IMPLEMENTATION.md — automation_mentions: 9 — script_links: 4
+- PRODUCTION_IMPLEMENTATION_GUIDES.md — automation_mentions: 11 — script_links: 4
+- PRODUCTION_MAINTENANCE_GUIDE.md — automation_mentions: 5 — script_links: 3
+- PRODUCTION_MIGRATION_SUMMARY.md — automation_mentions: 0 — script_links: 2
+- PRODUCTION_MONITORING_SETUP.md — automation_mentions: 5 — script_links: 5
+- PRODUCTION_NEXT_STEPS_COMPLETE.md — automation_mentions: 16 — script_links: 38
+- PRODUCTION_OPERATIONS_GUIDE.md — automation_mentions: 1 — script_links: 13
+- PRODUCTION_OPERATIONS_HANDBOOK.md — automation_mentions: 5 — script_links: 0
+- PRODUCTION_QUICK_REFERENCE.md — automation_mentions: 1 — script_links: 8
+- PRODUCTION_READINESS_AUDIT.md — automation_mentions: 9 — script_links: 4
+- PRODUCTION_READINESS_CERTIFICATION.md — automation_mentions: 1 — script_links: 0
+- PRODUCTION_READINESS_CHECKLIST.md — automation_mentions: 7 — script_links: 4
+- PRODUCTION_READINESS_CHECKLIST_FINAL.md — automation_mentions: 7 — script_links: 4
+- PRODUCTION_READINESS_ENHANCED_REPORT.md — automation_mentions: 6 — script_links: 7
+- PRODUCTION_READINESS_EXECUTION_STATUS.md — automation_mentions: 11 — script_links: 23
+- PRODUCTION_READINESS_FINAL.md — automation_mentions: 14 — script_links: 4
+- PRODUCTION_READINESS_FINAL_AUDIT.md — automation_mentions: 14 — script_links: 4
+- PRODUCTION_READINESS_FINAL_COMPREHENSIVE.md — automation_mentions: 6 — script_links: 4
+- PRODUCTION_READINESS_REPORT.md — automation_mentions: 6 — script_links: 4
+- PRODUCTION_README.md — automation_mentions: 1 — script_links: 3
+- PRODUCTION_READY_SUMMARY.md — automation_mentions: 6 — script_links: 4
+- PRODUCTION_RELEASE_ACTION_PLAN.md — automation_mentions: 8 — script_links: 4
+- PRODUCTION_RELEASE_DOCS_INDEX.md — automation_mentions: 5 — script_links: 3
+- PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md — automation_mentions: 8 — script_links: 3
+- PRODUCTION_REMEDIATION_FINAL_REPORT.md — automation_mentions: 7 — script_links: 8
+- PRODUCTION_SETUP.md — automation_mentions: 6 — script_links: 4
+- PRODUCTION_SETUP_COMPLETE.md — automation_mentions: 9 — script_links: 4
+- PRODUCTION_STATUS_2026-05-02.md — automation_mentions: 2 — script_links: 1
+- PRODUCTION_SYNC_COMPLETION_SUMMARY.md — automation_mentions: 1 — script_links: 0
+- PRODUCTION_VALIDATION_SYSTEM.md — automation_mentions: 13 — script_links: 4
+- PROD_PLACEHOLDERS_INVENTORY.md — automation_mentions: 7 — script_links: 4
+- PROJECTS.md — automation_mentions: 115 — script_links: 3
+- PROJECT_COMPLETE.md — automation_mentions: 89 — script_links: 3
+- PROJECT_COMPLETION_CERTIFICATE.md — automation_mentions: 69 — script_links: 3
+- PROJECT_COMPLETION_REPORT.md — automation_mentions: 1 — script_links: 1
+- PROJECT_COMPLETION_SUMMARY.md — automation_mentions: 2 — script_links: 0
+- PROJECT_FILE_INDEX.md — automation_mentions: 68 — script_links: 3
+- PR_FIX_SUMMARY.md — automation_mentions: 5 — script_links: 3
+- PUBLIC.md — automation_mentions: 17 — script_links: 3
+- PWA.md — automation_mentions: 7 — script_links: 8
+- PWA_APPS.md — automation_mentions: 5 — script_links: 3
+- Q.md — automation_mentions: 5 — script_links: 3
+- QALLPURPOSE.md — automation_mentions: 5 — script_links: 3
+- QALPHAUI.md — automation_mentions: 1 — script_links: 0
+- QAvatar_User_Feedback_Kit.md — automation_mentions: 5 — script_links: 3
+- QCITY-ARTIFACTS.md — automation_mentions: 5 — script_links: 3
+- QCITY-COMPLETION-SUMMARY.md — automation_mentions: 5 — script_links: 3
+- QCITY-DELIVERABLES-CHECKLIST.md — automation_mentions: 10 — script_links: 3
+- QCITY-ENTERPRISE-COMPLETE.md — automation_mentions: 10 — script_links: 3
+- QCITY-PROJECT-COMPLETE.md — automation_mentions: 69 — script_links: 3
+- QCITY-README.md — automation_mentions: 7 — script_links: 3
+- QCITY.md — automation_mentions: 6 — script_links: 4
+- QCITYDEVICEAUTOUPGRADE.md — automation_mentions: 23 — script_links: 4
+- QCITYMAINDEVICE.md — automation_mentions: 19 — script_links: 4
+- QCITYQMOIAUTOSTART.md — automation_mentions: 16 — script_links: 3
+- QCITYREADME.md — automation_mentions: 33 — script_links: 6
+- QCITYRESOURCES.md — automation_mentions: 12 — script_links: 3
+- QCITYRUNNERSENGINE.md — automation_mentions: 32 — script_links: 3
+- QCITYUI.md — automation_mentions: 19 — script_links: 0
+- QCITY_DEVICE_MANAGEMENT.md — automation_mentions: 12 — script_links: 7
+- QCITY_SETUP.md — automation_mentions: 8 — script_links: 0
+- QGAMINGCLOUD.md — automation_mentions: 8 — script_links: 3
+- QGLOBAL.md — automation_mentions: 14 — script_links: 3
+- QGLOBALSIM.md — automation_mentions: 9 — script_links: 3
+- QGLOBAL_SIM_AUTO_UPDATE_SYSTEM.md — automation_mentions: 19 — script_links: 3
+- QI_ENHANCEMENT_PLAN.md — automation_mentions: 8 — script_links: 3
+- QLIONAGENT.md — automation_mentions: 9 — script_links: 3
+- QMOI-AI-ENHANCEMENT.md — automation_mentions: 19 — script_links: 8
+- QMOI-AIRTEL-INTEGRATION.md — automation_mentions: 12 — script_links: 3
+- QMOI-ANIMATION-ENHANCEMENT.md — automation_mentions: 6 — script_links: 3
+- QMOI-AUTOMATION-COMPLETE.md — automation_mentions: 42 — script_links: 8
+- QMOI-AUTOUPDATE.md — automation_mentions: 23 — script_links: 3
+- QMOI-CLOUD-ENHANCED.md — automation_mentions: 20 — script_links: 5
+- QMOI-CLOUD-OFFLOAD.md — automation_mentions: 9 — script_links: 3
+- QMOI-CLOUD.md — automation_mentions: 17 — script_links: 4
+- QMOI-CROSS-PLATFORM.md — automation_mentions: 5 — script_links: 3
+- QMOI-EARNING-ENHANCED.md — automation_mentions: 17 — script_links: 6
+- QMOI-ENHANCED-AUTOMATION.md — automation_mentions: 77 — script_links: 17
+- QMOI-ENHANCED-AUTOTESTS.md — automation_mentions: 19 — script_links: 4
+- QMOI-ENHANCED-COMPLETE.md — automation_mentions: 24 — script_links: 7
+- QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md — automation_mentions: 63 — script_links: 10
+- QMOI-ENHANCED-FEATURES.md — automation_mentions: 24 — script_links: 3
+- QMOI-ENHANCED-FINAL.md — automation_mentions: 26 — script_links: 17
+- QMOI-ENHANCED-README.md — automation_mentions: 26 — script_links: 4
+- QMOI-ENHANCED-SUMMARY.md — automation_mentions: 34 — script_links: 19
+- QMOI-ENHANCED-SYSTEM.md — automation_mentions: 8 — script_links: 8
+- QMOI-ENHANCEMENT-SUMMARY.md — automation_mentions: 5 — script_links: 3
+- QMOI-FEATURE-INDEX.md — automation_mentions: 16 — script_links: 3
+- QMOI-HUGGINGFACE-ENHANCEMENTS.md — automation_mentions: 18 — script_links: 14
+- QMOI-MASTER-CONTROLS.md — automation_mentions: 24 — script_links: 9
+- QMOI-OPTIMIZATION.md — automation_mentions: 7 — script_links: 3
+- QMOI-PLATFORM-ANALYTICS.md — automation_mentions: 5 — script_links: 3
+- QMOI-PLATFORM-AUTOMATION.md — automation_mentions: 21 — script_links: 3
+- QMOI-PLATFORM-MONITORING.md — automation_mentions: 5 — script_links: 3
+- QMOI-PLATFORM-SECURITY.md — automation_mentions: 5 — script_links: 3
+- QMOI-PLUGIN-SYSTEM.md — automation_mentions: 7 — script_links: 3
+- QMOI-PWA-SYNC.md — automation_mentions: 3 — script_links: 0
+- QMOI-REVENUE-README.md — automation_mentions: 17 — script_links: 4
+- QMOI-SPACE-PWA.md — automation_mentions: 5 — script_links: 3
+- QMOI-SPACE.md — automation_mentions: 5 — script_links: 3
+- QMOI-VOICE-ENHANCEMENT.md — automation_mentions: 6 — script_links: 3
+- QMOI.md — automation_mentions: 14 — script_links: 3
+- QMOIACCOUNTS.md — automation_mentions: 16 — script_links: 3
+- QMOIACCOUNTSPLATFORMS.md — automation_mentions: 10 — script_links: 4
+- QMOIAI.md — automation_mentions: 1 — script_links: 0
+- QMOIAICORE.md — automation_mentions: 20 — script_links: 3
+- QMOIAIUI.md — automation_mentions: 4 — script_links: 0
+- QMOIALLDEVICESHANDSFREE.md — automation_mentions: 37 — script_links: 4
+- QMOIALLDEVICESINSTALL.md — automation_mentions: 54 — script_links: 4
+- QMOIALLPLATFORMS.md — automation_mentions: 25 — script_links: 3
+- QMOIALLPROJECTSADDSTRAILERSDOCS.md — automation_mentions: 71 — script_links: 3
+- QMOIALWAYSPARALLEL.md — automation_mentions: 38 — script_links: 4
+- QMOIAPIKEYREADME.md — automation_mentions: 5 — script_links: 3
+- QMOIAPPS.md — automation_mentions: 12 — script_links: 3
+- QMOIARTISTS.md — automation_mentions: 15 — script_links: 3
+- QMOIAUTHBIOMETRICS.md — automation_mentions: 10 — script_links: 3
+- QMOIAUTOAPPSDEV.md — automation_mentions: 29 — script_links: 4
+- QMOIAUTOBET.md — automation_mentions: 26 — script_links: 3
+- QMOIAUTODEV.md — automation_mentions: 56 — script_links: 5
+- QMOIAUTODISTRIBUTEMARKET.md — automation_mentions: 30 — script_links: 3
+- QMOIAUTOEVOLVE.md — automation_mentions: 40 — script_links: 3
+- QMOIAUTOFIXREADME.md — automation_mentions: 37 — script_links: 5
+- QMOIAUTOGMAIL.md — automation_mentions: 21 — script_links: 4
+- QMOIAUTOMAKENEW.md — automation_mentions: 24 — script_links: 3
+- QMOIAUTOMAKESMONEY.md — automation_mentions: 42 — script_links: 3
+- QMOIAUTOMATIONMONITORING.md — automation_mentions: 66 — script_links: 3
+- QMOIAUTOOPPORTUNITIES.md — automation_mentions: 37 — script_links: 3
+- QMOIAUTOPROJECTS.md — automation_mentions: 98 — script_links: 3
+- QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md — automation_mentions: 97 — script_links: 3
+- QMOIAUTOREVENUEEARN.md — automation_mentions: 49 — script_links: 3
+- QMOIAVATAR.md — automation_mentions: 22 — script_links: 3
+- QMOIBINARIES.md — automation_mentions: 5 — script_links: 3
+- QMOIBROWSER.md — automation_mentions: 19 — script_links: 3
+- QMOICLONE.md — automation_mentions: 14 — script_links: 3
+- QMOICLONEGITHUB.md — automation_mentions: 42 — script_links: 3
+- QMOICLONEGITLAB.md — automation_mentions: 18 — script_links: 3
+- QMOICLONEGITPOD.md — automation_mentions: 6 — script_links: 3
+- QMOICLONEHF.md — automation_mentions: 5 — script_links: 3
+- QMOICLONEHUGGINGFACE.md — automation_mentions: 19 — script_links: 3
+- QMOICLONEQUANTUM.md — automation_mentions: 5 — script_links: 3
+- QMOICLONEVERCEL.md — automation_mentions: 5 — script_links: 3
+- QMOICOLABDAGSHUB.md — automation_mentions: 12 — script_links: 3
+- QMOIDATABASE.md — automation_mentions: 8 — script_links: 3
+- QMOIDATASETS.md — automation_mentions: 25 — script_links: 3
+- QMOIDEV.md — automation_mentions: 17 — script_links: 4
+- QMOIDEVICES.md — automation_mentions: 16 — script_links: 4
+- QMOIDNS.md — automation_mentions: 19 — script_links: 4
+- QMOIDOMAINS.md — automation_mentions: 20 — script_links: 3
+- QMOIDOMAINSLINKS.md — automation_mentions: 21 — script_links: 3
+- QMOIDOWNLOADS.md — automation_mentions: 6 — script_links: 3
+- QMOIEARNING.md — automation_mentions: 12 — script_links: 3
+- QMOIEMPLOYAUTOPAY.md — automation_mentions: 22 — script_links: 3
+- QMOIEMPLOYEES.md — automation_mentions: 6 — script_links: 3
+- QMOIEMULATORS.md — automation_mentions: 5 — script_links: 3
+- QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md — automation_mentions: 47 — script_links: 7
+- QMOIENHANCEMENTSSUMMARY.md — automation_mentions: 22 — script_links: 4
+- QMOIENVWITHALLPROGRAMMINGLANGUAGES.md — automation_mentions: 10 — script_links: 5
+- QMOIFINANCEENGINES.md — automation_mentions: 8 — script_links: 7
+- QMOIFORALL.md — automation_mentions: 18 — script_links: 3
+- QMOIFREE.md — automation_mentions: 9 — script_links: 3
+- QMOIGAMINGCLOUDUSERS.md — automation_mentions: 8 — script_links: 3
+- QMOIGAMINGGENREV.md — automation_mentions: 8 — script_links: 5
+- QMOIGITHUBAPP.md — automation_mentions: 17 — script_links: 6
+- QMOIGITHUBDEV.md — automation_mentions: 15 — script_links: 4
+- QMOIGITLABDEV.md — automation_mentions: 23 — script_links: 4
+- QMOIGITPODDEV.md — automation_mentions: 14 — script_links: 4
+- QMOIGLOBAL.md — automation_mentions: 12 — script_links: 3
+- QMOIHUGGINGFACEALWAYSUPDATE.md — automation_mentions: 9 — script_links: 3
+- QMOIHUGGINGFACESPACES.md — automation_mentions: 5 — script_links: 3
+- QMOIHUGGINGFACESPACESSETUPINST.md — automation_mentions: 49 — script_links: 36
+- QMOIJAVA.md — automation_mentions: 8 — script_links: 3
+- QMOIJEST.md — automation_mentions: 7 — script_links: 3
+- QMOILINT.md — automation_mentions: 5 — script_links: 3
+- QMOIMASKS.md — automation_mentions: 5 — script_links: 3
+- QMOIMEMORY.md — automation_mentions: 5 — script_links: 3
+- QMOIMIDEL.md — automation_mentions: 0 — script_links: 4
+- QMOIMODEL.md — automation_mentions: 7 — script_links: 7
+- QMOIMODELTESTS.md — automation_mentions: 4 — script_links: 3
+- QMOINETWORK.md — automation_mentions: 23 — script_links: 3
+- QMOINGROK.md — automation_mentions: 13 — script_links: 3
+- QMOIOWNDEVICE.md — automation_mentions: 13 — script_links: 10
+- QMOIPREDEVDOCACTIONS.md — automation_mentions: 12 — script_links: 4
+- QMOIQCITYAUTOMATIC.md — automation_mentions: 44 — script_links: 4
+- QMOIQTEAMCUSTOMERCARE.md — automation_mentions: 7 — script_links: 3
+- QMOIRADIOREADME.md — automation_mentions: 7 — script_links: 3
+- QMOIREADME.md — automation_mentions: 30 — script_links: 3
+- QMOIREGISTRY.md — automation_mentions: 23 — script_links: 17
+- QMOIREVENUEGENERATION.md — automation_mentions: 49 — script_links: 3
+- QMOISERVERS.md — automation_mentions: 11 — script_links: 3
+- QMOISPACEDEV.md — automation_mentions: 15 — script_links: 4
+- QMOISPACEUI.md — automation_mentions: 5 — script_links: 0
+- QMOISTATS.md — automation_mentions: 7 — script_links: 3
+- QMOISYSTEMAUTO.md — automation_mentions: 29 — script_links: 3
+- QMOISYSTEMEMAILS.md — automation_mentions: 25 — script_links: 3
+- QMOISYSTEMEMAILS_ENHANCED.md — automation_mentions: 16 — script_links: 3
+- QMOITESTENVIRONMENT.md — automation_mentions: 11 — script_links: 4
+- QMOITRADER.md — automation_mentions: 14 — script_links: 3
+- QMOIVERCELDEV.md — automation_mentions: 13 — script_links: 4
+- QMOIVIDEOPLATFORMS.md — automation_mentions: 9 — script_links: 3
+- QMOIWHATSAPP.md — automation_mentions: 7 — script_links: 3
+- QMOIWHATSAPPBROWSERPAGE.md — automation_mentions: 7 — script_links: 3
+- QMOI_9M_REVENUE_ENHANCEMENT_PLAN.md — automation_mentions: 9 — script_links: 0
+- QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md — automation_mentions: 48 — script_links: 3
+- QMOI_AGENT_INSTRUCTIONS.md — automation_mentions: 10 — script_links: 3
+- QMOI_AI_PRODUCTION_READY.md — automation_mentions: 9 — script_links: 13
+- QMOI_APIS_WEBHOOKS_ENDPOINTS.md — automation_mentions: 14 — script_links: 3
+- QMOI_APPS_AND_PLATFORMS_INVENTORY.md — automation_mentions: 5 — script_links: 3
+- QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md — automation_mentions: 5 — script_links: 3
+- QMOI_ARCHITECTURE.md — automation_mentions: 7 — script_links: 3
+- QMOI_AUTODEV.md — automation_mentions: 22 — script_links: 4
+- QMOI_AUTOFIX_FILES_CREATED.md — automation_mentions: 20 — script_links: 5
+- QMOI_AUTOFIX_IMPLEMENTATION_SUMMARY.md — automation_mentions: 21 — script_links: 4
+- QMOI_AUTOFIX_MASTER_GUIDE.md — automation_mentions: 25 — script_links: 6
+- QMOI_AUTOFIX_QUICK_REFERENCE.md — automation_mentions: 22 — script_links: 4
+- QMOI_AUTOFIX_SETUP_GUIDE.md — automation_mentions: 19 — script_links: 6
+- QMOI_AUTOFIX_SYSTEM_INDEX.md — automation_mentions: 16 — script_links: 5
+- QMOI_AUTOMATED_DEPLOYMENT_GUIDE.md — automation_mentions: 29 — script_links: 3
+- QMOI_AUTOMATED_SYSTEMS_README.md — automation_mentions: 21 — script_links: 13
+- QMOI_AUTONOMOUS_FEATURES.md — automation_mentions: 24 — script_links: 3
+- QMOI_AUTO_EVOLVING_STRATEGY.md — automation_mentions: 21 — script_links: 3
+- QMOI_AUTO_SETUP_IMPLEMENTATION.md — automation_mentions: 66 — script_links: 3
+- QMOI_AUTO_TESTING_UI_DEVELOPMENT.md — automation_mentions: 16 — script_links: 3
+- QMOI_BUILD_ENHANCEMENT_FINAL_REPORT.md — automation_mentions: 4 — script_links: 0
+- QMOI_BULK_OPERATIONS_GUIDE.md — automation_mentions: 1 — script_links: 5
+- QMOI_CHAT_FIX_GUIDE.md — automation_mentions: 6 — script_links: 3
+- QMOI_CI_SECRETS.md — automation_mentions: 10 — script_links: 3
+- QMOI_COMPLETE_ENHANCEMENT_SUMMARY.md — automation_mentions: 7 — script_links: 3
+- QMOI_COMPLETE_EVOLUTION_FRAMEWORK.md — automation_mentions: 44 — script_links: 3
+- QMOI_COMPLETE_INTEGRATION_MASTER.md — automation_mentions: 28 — script_links: 3
+- QMOI_COMPLETE_STATUS.md — automation_mentions: 8 — script_links: 3
+- QMOI_COMPLETE_SYSTEM.md — automation_mentions: 33 — script_links: 7
+- QMOI_COMPLETE_SYSTEM_OVERVIEW.md — automation_mentions: 23 — script_links: 3
+- QMOI_COMPREHENSIVE_SYSTEM_ENHANCEMENTS.md — automation_mentions: 4 — script_links: 0
+- QMOI_CONSCIOUSNESS.md — automation_mentions: 12 — script_links: 3
+- QMOI_CONSCIOUSNESS_MASTER_PLAN.md — automation_mentions: 14 — script_links: 4
+- QMOI_CONSCIOUSNESS_SYSTEM.md — automation_mentions: 9 — script_links: 3
+- QMOI_DOWNLOADED_APPS.md — automation_mentions: 5 — script_links: 3
+- QMOI_ENHANCED_COMPLETE_IMPLEMENTATION_AND_OPTIMIZATION_REPORT.md — automation_mentions: 11 — script_links: 9
+- QMOI_ENHANCED_COMPLETE_IMPLEMENTATION_REPORT.md — automation_mentions: 10 — script_links: 13
+- QMOI_ENHANCED_FINAL_SUMMARY.md — automation_mentions: 10 — script_links: 3
+- QMOI_ENHANCEMENT_COMPLETION_SUMMARY.md — automation_mentions: 7 — script_links: 3
+- QMOI_ENHANCEMENT_SUMMARY.md — automation_mentions: 33 — script_links: 3
+- QMOI_ENHANCEMENT_UPDATE_20260321.md — automation_mentions: 18 — script_links: 9
+- QMOI_EVOLUTION_ENHANCEMENT_PLAN.md — automation_mentions: 5 — script_links: 3
+- QMOI_FEATURES_COMPLETE.md — automation_mentions: 7 — script_links: 3
+- QMOI_FRIENDSHIP_ENHANCEMENT.md — automation_mentions: 7 — script_links: 3
+- QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md — automation_mentions: 26 — script_links: 3
+- QMOI_GITLAB_AUTOMATION.md — automation_mentions: 38 — script_links: 7
+- QMOI_GLOBAL_ENHANCEMENT_MASTER_PLAN_2026.md — automation_mentions: 4 — script_links: 0
+- QMOI_HYBRID_JAVA_WORKFLOW.md — automation_mentions: 9 — script_links: 3
+- QMOI_ITERATIVE_IMPROVEMENT_COMPLETE.md — automation_mentions: 5 — script_links: 3
+- QMOI_ITERATIVE_INDEX.md — automation_mentions: 5 — script_links: 3
+- QMOI_LINKS_DOMAINS_PROGRESS.md — automation_mentions: 28 — script_links: 12
+- QMOI_MARKDOWN_AUTO_UPDATE.md — automation_mentions: 59 — script_links: 3
+- QMOI_MASTER_INTEGRATION_VALIDATION.md — automation_mentions: 22 — script_links: 5
+- QMOI_MASTER_TESTING_GUIDE.md — automation_mentions: 8 — script_links: 3
+- QMOI_MASTER_TESTING_SUMMARY.md — automation_mentions: 29 — script_links: 3
+- QMOI_MEMORY.md — automation_mentions: 16 — script_links: 3
+- QMOI_MEMORY_AWARENESS_SYSTEM.md — automation_mentions: 39 — script_links: 3
+- QMOI_MODEL_COMPLETENESS.md — automation_mentions: 4 — script_links: 3
+- QMOI_OXYGEN_PULSE.md — automation_mentions: 6 — script_links: 3
+- QMOI_PERMANENT_RETENTION_ENHANCEMENT_PLAN.md — automation_mentions: 4 — script_links: 0
+- QMOI_PHASE_3_COMPLETION_SUMMARY.md — automation_mentions: 20 — script_links: 3
+- QMOI_PLATFORM_ARCHITECTURE.md — automation_mentions: 14 — script_links: 3
+- QMOI_PRODUCTION_API.md — automation_mentions: 10 — script_links: 4
+- QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md — automation_mentions: 36 — script_links: 12
+- QMOI_PRODUCTION_DEPLOYMENT.md — automation_mentions: 6 — script_links: 3
+- QMOI_PROFESSIONAL_DATASETS_PLAN.md — automation_mentions: 9 — script_links: 3
+- QMOI_PROJECT_MANAGEMENT_SYSTEMS.md — automation_mentions: 101 — script_links: 3
+- QMOI_QUICK_START.md — automation_mentions: 9 — script_links: 3
+- QMOI_QVS_COMPREHENSIVE_ENHANCEMENT_PLAN_2026.md — automation_mentions: 6 — script_links: 0
+- QMOI_REALTIME_RELEASES_IMPLEMENTATION.md — automation_mentions: 30 — script_links: 3
+- QMOI_RELEASE_VERIFICATION_SYSTEM.md — automation_mentions: 15 — script_links: 3
+- QMOI_RELEASE_VERSION_SYSTEM.md — automation_mentions: 20 — script_links: 3
+- QMOI_REVENUE_GENERATION_STRATEGY_2026.md — automation_mentions: 5 — script_links: 0
+- QMOI_SELF_EVOLVING_SYSTEM.md — automation_mentions: 4 — script_links: 0
+- QMOI_SELF_UPDATE_SYSTEM.md — automation_mentions: 50 — script_links: 3
+- QMOI_SPACE_QVILLAGE_ENHANCEMENT_PLAN.md — automation_mentions: 11 — script_links: 3
+- QMOI_SYSTEMS_COMPLETE_INDEX.md — automation_mentions: 23 — script_links: 3
+- QMOI_TESTING_INDEX.md — automation_mentions: 17 — script_links: 3
+- QMOI_TEST_DASHBOARD.md — automation_mentions: 26 — script_links: 3
+- QMOI_TRACKS_SYSTEM.md — automation_mentions: 18 — script_links: 3
+- QMOI_USER_IDENTIFICATION_IMPLEMENTATION_SUMMARY.md — automation_mentions: 6 — script_links: 3
+- QMOI_USER_IDENTIFICATION_INDEX.md — automation_mentions: 5 — script_links: 3
+- QMOI_USER_IDENTIFICATION_SYSTEM.md — automation_mentions: 5 — script_links: 3
+- QMOI_USER_TESTING_QUICK_REFERENCE.md — automation_mentions: 5 — script_links: 3
+- QMOI_V1_2_3_EXECUTIVE_SUMMARY.md — automation_mentions: 10 — script_links: 3
+- QMOI_V1_2_3_RELEASE_PLAN_SUMMARY.md — automation_mentions: 8 — script_links: 3
+- QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md — automation_mentions: 24 — script_links: 3
+- QMOI_VISION_AND_DEBATE_GUIDE.md — automation_mentions: 8 — script_links: 3
+- QMOI_WALLET_FINANCIAL_SYSTEMS.md — automation_mentions: 17 — script_links: 3
+- QMOI_WALLET_FINANCIAL_SYSTEMS_UPDATED.md — automation_mentions: 8 — script_links: 5
+- QMOI_v1.2.3_ALL_APPS_AND_DOWNLOADS.md — automation_mentions: 7 — script_links: 3
+- QMoi_Test_Report.md — automation_mentions: 5 — script_links: 3
+- QRADIOPROGRAMS.md — automation_mentions: 5 — script_links: 3
+- QSERVERREADME.md — automation_mentions: 29 — script_links: 5
+- QSIMTWO.md — automation_mentions: 5 — script_links: 3
+- QTEAMTERMS.md — automation_mentions: 5 — script_links: 3
+- QTOOLS.md — automation_mentions: 10 — script_links: 3
+- QUANTUGENREV.md — automation_mentions: 10 — script_links: 3
+- QUANTUM.md — automation_mentions: 51 — script_links: 3
+- QUANTUMAUTOMARKET.md — automation_mentions: 20 — script_links: 3
+- QUANTUMPAYED.md — automation_mentions: 5 — script_links: 3
+- QUICKSTART_LINKS_FIX.md — automation_mentions: 5 — script_links: 3
+- QUICK_ACTION_CHECKLIST.md — automation_mentions: 14 — script_links: 6
+- QUICK_REFERENCE.md — automation_mentions: 10 — script_links: 3
+- QUICK_REFERENCE_GUIDE.md — automation_mentions: 0 — script_links: 8
+- QUICK_REFERENCE_SPRINT_METRICS.md — automation_mentions: 12 — script_links: 17
+- QUICK_START.md — automation_mentions: 5 — script_links: 3
+- QUICK_START_MONITORING.md — automation_mentions: 9 — script_links: 3
+- QUICK_START_SESSION_4.md — automation_mentions: 10 — script_links: 13
+- QUICK_START_TESTING.md — automation_mentions: 8 — script_links: 3
+- QUICK_START_VISUAL.md — automation_mentions: 38 — script_links: 9
+- QUICK_TEST_START.md — automation_mentions: 20 — script_links: 3
+- QVERCELAGENT.md — automation_mentions: 9 — script_links: 3
+- QVILLAGE.md — automation_mentions: 51 — script_links: 5
+- QVILLAGEENHANCEMENTS.md — automation_mentions: 8 — script_links: 3
+- QVILLAGEEVOLUTION.md — automation_mentions: 25 — script_links: 3
+- QVILLAGESPACES.md — automation_mentions: 28 — script_links: 3
+- QVILLAGETESTS.md — automation_mentions: 9 — script_links: 3
+- QVILLAGEUI.md — automation_mentions: 3 — script_links: 0
+- QVILLAGE_ADVANCED_AUTOMATION_PLAN.md — automation_mentions: 31 — script_links: 3
+- QVILLAGE_ENHANCED_AUTO_EVOLUTION.md — automation_mentions: 22 — script_links: 3
+- QVILLAGE_ENHANCED_COMPLETE.md — automation_mentions: 11 — script_links: 3
+- QVILLAGE_ENHANCEMENT_COMPLETE.md — automation_mentions: 9 — script_links: 3
+- QVILLAGE_HUGGINGFACE_INTEGRATION.md — automation_mentions: 5 — script_links: 3
+- QVILLAGE_IMPLEMENTATION_SUMMARY.md — automation_mentions: 15 — script_links: 4
+- QVILLAGE_QMOI_MODELS_INTEGRATION.md — automation_mentions: 14 — script_links: 3
+- QVILLAGE_READY_FOR_PRODUCTION.md — automation_mentions: 15 — script_links: 4
+- QVPNREADME.md — automation_mentions: 11 — script_links: 3
+- QVS.md — automation_mentions: 5 — script_links: 3
+- QVS/AUTOJCA.md — automation_mentions: 17 — script_links: 0
+- QVS/ENHANCEDQVS.md — automation_mentions: 30 — script_links: 3
+- QVS/QVSREADME.md — automation_mentions: 27 — script_links: 3
+- Q_API_KEY_COMPREHENSIVE.md — automation_mentions: 7 — script_links: 3
+- Q_BALANCES_AUTO_UPDATE_README.md — automation_mentions: 31 — script_links: 5
+- Qstore.md — automation_mentions: 12 — script_links: 3
+- RBAC.md — automation_mentions: 2 — script_links: 0
+- RBAC_IMPLEMENTATION_SUMMARY.md — automation_mentions: 7 — script_links: 3
+- README (1).md — automation_mentions: 43 — script_links: 7
+- README.md — automation_mentions: 16 — script_links: 3
+- README_DOCUMENTATION.md — automation_mentions: 14 — script_links: 3
+- README_ENHANCED.md — automation_mentions: 7 — script_links: 3
+- README_MONITORING.md — automation_mentions: 9 — script_links: 3
+- README_PRODUCTION.md — automation_mentions: 7 — script_links: 4
+- README_QVILLAGE_ENHANCED.md — automation_mentions: 5 — script_links: 3
+- READY_TO_EXECUTE.md — automation_mentions: 9 — script_links: 22
+- REAL_IMPLEMENTATIONS_SUMMARY.md — automation_mentions: 5 — script_links: 3
+- REAL_IMPLEMENTATIONS_VERIFICATION.md — automation_mentions: 5 — script_links: 3
+- REFERENCES.md — automation_mentions: 16 — script_links: 3
+- RELEASETRACKS.md — automation_mentions: 9 — script_links: 3
+- RELEASE_FINALIZATION_PLAN.md — automation_mentions: 6 — script_links: 5
+- RELEASE_MAINTENANCE.md — automation_mentions: 5 — script_links: 7
+- RELEASE_NOTES_v1.2.4.md — automation_mentions: 6 — script_links: 3
+- RELEASE_NOTES_v2.4.0.md — automation_mentions: 7 — script_links: 3
+- RELEASE_VERIFICATION_V1_2_3.md — automation_mentions: 28 — script_links: 3
+- RELEASE_v1.2.3_COMPLETE.md — automation_mentions: 5 — script_links: 4
+- RELEASE_v1.2.5_COMPLETION_REPORT.md — automation_mentions: 8 — script_links: 12
+- RELEASE_v1.2.5_INSPECTION.md — automation_mentions: 5 — script_links: 3
+- RELEASE_v1.2.5_PUBLISH_REPORT.md — automation_mentions: 6 — script_links: 3
+- RELEASE_v1.2.5_READY.md — automation_mentions: 5 — script_links: 3
+- RELEASE_v1.2.5_STATUS_REPORT.md — automation_mentions: 13 — script_links: 19
+- RELEASE_v1.2.5_VERIFICATION_GUIDE.md — automation_mentions: 7 — script_links: 16
+- REPORTING_DASHBOARDS.md — automation_mentions: 4 — script_links: 3
+- REPORTS.md — automation_mentions: 5 — script_links: 3
+- REQUIREMENTS.md — automation_mentions: 5 — script_links: 3
+- RESOURCE_MANAGEMENT.md — automation_mentions: 5 — script_links: 3
+- RESPONSE_TIERS_QUICK_REFERENCE.md — automation_mentions: 6 — script_links: 3
+- RESULTS.md — automation_mentions: 5 — script_links: 3
+- REVENUEGENERATING.md — automation_mentions: 44 — script_links: 3
+- REVENUE_ENHANCEMENT_PLAN.md — automation_mentions: 25 — script_links: 3
+- REVENUE_VALIDATOR_COMPLETION_REPORT.md — automation_mentions: 3 — script_links: 6
+- ROLES_AND_PERMISSIONS.md — automation_mentions: 6 — script_links: 3
+- ROOT_PRODUCTION_STATUS.md — automation_mentions: 50 — script_links: 285
+- ROOT_production_STATUS.md — automation_mentions: 399 — script_links: 3683
+- ROUTES.md — automation_mentions: 31 — script_links: 0
+- ROUTES_COMPREHENSIVE.md — automation_mentions: 17 — script_links: 3
+- RSAAPIREADME.md — automation_mentions: 7 — script_links: 3
+- S1B_COMPLETION_SUMMARY.md — automation_mentions: 10 — script_links: 3
+- S1B_INTEGRATION_GUIDE.md — automation_mentions: 7 — script_links: 3
+- SCAN_RESULTS.md — automation_mentions: 5 — script_links: 3
+- SCRIPTS.md — automation_mentions: 34 — script_links: 7
+- SCRIPTSREADME.md — automation_mentions: 21 — script_links: 14
+- SECRET_SETUP.md — automation_mentions: 8 — script_links: 4
+- SECURITY.md — automation_mentions: 5 — script_links: 3
+- SECURITYREADME.md — automation_mentions: 6 — script_links: 3
+- SECURITY_AUDIT_CHECKLIST.md — automation_mentions: 6 — script_links: 3
+- SECURITY_AUTOMATION.md — automation_mentions: 24 — script_links: 4
+- SECURITY_CHECKLIST.md — automation_mentions: 8 — script_links: 3
+- SECURITY_HARDENING_SYSTEM.md — automation_mentions: 6 — script_links: 3
+- SECURITY_MONITORING.md — automation_mentions: 4 — script_links: 3
+- SELF_EVOLUTION.md — automation_mentions: 8 — script_links: 4
+- SERVEQCITYQMOIAIQMOISPACE.md — automation_mentions: 7 — script_links: 3
+- SERVER.md — automation_mentions: 5 — script_links: 3
+- SERVICES.md — automation_mentions: 11 — script_links: 0
+- SERVICE_LEVEL_AGREEMENT.md — automation_mentions: 5 — script_links: 3
+- SERVINGERRORSISSUES.md — automation_mentions: 5 — script_links: 4
+- SESSION5_PRODUCTION_SUMMARY.md — automation_mentions: 7 — script_links: 4
+- SESSION_3_COMPLETION_REPORT.md — automation_mentions: 7 — script_links: 1
+- SESSION_3_COMPLETION_SUMMARY.md — automation_mentions: 16 — script_links: 3
+- SESSION_4_COMPLETION_REPORT.md — automation_mentions: 8 — script_links: 3
+- SESSION_4_COMPLETION_SUMMARY.md — automation_mentions: 15 — script_links: 3
+- SESSION_4_DELIVERABLES.md — automation_mentions: 5 — script_links: 3
+- SESSION_4_SUMMARY.md — automation_mentions: 10 — script_links: 3
+- SESSION_COMPLETION_REPORT_TODOS_PRODUCTION_READY.md — automation_mentions: 7 — script_links: 4
+- SESSION_COMPLETION_SUMMARY.md — automation_mentions: 10 — script_links: 3
+- SESSION_COMPREHENSIVE_SUMMARY_20260321.md — automation_mentions: 19 — script_links: 16
+- SESSION_CONSCIOUSNESS_IMPLEMENTATION_SUMMARY.md — automation_mentions: 6 — script_links: 3
+- SESSION_DOCUMENTATION_STATUS_REPORT.md — automation_mentions: 5 — script_links: 5
+- SESSION_LINKS_DOMAINS_ENHANCEMENT_SUMMARY.md — automation_mentions: 16 — script_links: 13
+- SESSION_PHASE_COMPLETE.md — automation_mentions: 7 — script_links: 3
+- SESSION_PROGRESS.md — automation_mentions: 8 — script_links: 4
+- SESSION_SUMMARY_20260614.md — automation_mentions: 3 — script_links: 5
+- SETUP_SESSION_SUMMARY.md — automation_mentions: 4 — script_links: 10
+- SHELL.md — automation_mentions: 7 — script_links: 3
+- SISTERREADME.md — automation_mentions: 6 — script_links: 3
+- SPONSORED.md — automation_mentions: 6 — script_links: 3
+- SPONSORED_USERS.md — automation_mentions: 18 — script_links: 3
+- SRC.md — automation_mentions: 16 — script_links: 0
+- SSH-BACKEND.md — automation_mentions: 5 — script_links: 3
+- SSL_SETUP.md — automation_mentions: 7 — script_links: 3
+- START.md — automation_mentions: 5 — script_links: 5
+- STARTUP_NOTES.md — automation_mentions: 8 — script_links: 4
+- START_HERE.md — automation_mentions: 9 — script_links: 3
+- START_PRODUCTION_DEPLOYMENT.md — automation_mentions: 25 — script_links: 10
+- STATIC_FALLBACK.md — automation_mentions: 0 — script_links: 1
+- STYLES.md — automation_mentions: 10 — script_links: 1
+- SYNCREPOS.md — automation_mentions: 11 — script_links: 3
+- SYSTEM_CONFIGURATION_BASELINE.md — automation_mentions: 5 — script_links: 3
+- SYSTEM_IMPLEMENTATION_COMPLETE.md — automation_mentions: 26 — script_links: 17
+- SYSTEM_MONITORING.md — automation_mentions: 4 — script_links: 3
+- TABLE_OF_CONTENTS.md — automation_mentions: 64 — script_links: 15
+- TEAM_ONBOARDING_GUIDE.md — automation_mentions: 6 — script_links: 7
+- TEAM_OPERATIONS_GOVERNANCE.md — automation_mentions: 8 — script_links: 3
+- TECHNICAL_COMMANDS_REFERENCE.md — automation_mentions: 21 — script_links: 10
+- TEMPLATES.md — automation_mentions: 18 — script_links: 3
+- TEMPS.md — automation_mentions: 5 — script_links: 3
+- TERMINAL.md — automation_mentions: 8 — script_links: 3
+- TERMINAL_ENHANCEMENT_PLAN.md — automation_mentions: 17 — script_links: 3
+- TEST-RESULTS.md — automation_mentions: 5 — script_links: 3
+- TESTING.md — automation_mentions: 10 — script_links: 4
+- TESTREADME.md — automation_mentions: 6 — script_links: 7
+- TESTS.md — automation_mentions: 6 — script_links: 0
+- TEST_ANALYSIS_REPORT.md — automation_mentions: 6 — script_links: 3
+- TEST_COVERAGE_REPORT.md — automation_mentions: 39 — script_links: 3
+- THIRD-PARTYPLATFORMS.md — automation_mentions: 34 — script_links: 1
+- THREAT_DETECTION.md — automation_mentions: 5 — script_links: 3
+- TIER2_TESTS_READY_FOR_EXECUTION.md — automation_mentions: 3 — script_links: 3
+- TO-DOs.md — automation_mentions: 6 — script_links: 3
+- TODOS_COMPLETION_INDEX.md — automation_mentions: 5 — script_links: 3
+- TODOS_COMPLETION_VERIFICATION.md — automation_mentions: 10 — script_links: 3
+- TODO_PROD_BATCH_PENDING.md — automation_mentions: 10 — script_links: 4
+- TOOLS.md — automation_mentions: 93 — script_links: 9
+- TRACKS.md — automation_mentions: 67 — script_links: 3
+- TRADINGREADME.md — automation_mentions: 14 — script_links: 5
+- TREE.md — automation_mentions: 1 — script_links: 2
+- TREE_COMPREHENSIVE.md — automation_mentions: 18 — script_links: 28
+- TROUBLESHOOTING.md — automation_mentions: 9 — script_links: 3
+- TYPES.md — automation_mentions: 5 — script_links: 3
+- UI.md — automation_mentions: 12 — script_links: 0
+- UI_DOCUMENTATION_ENHANCEMENTS.md — automation_mentions: 6 — script_links: 0
+- UI_ENHANCEMENT_COMPREHENSIVE_PLAN.md — automation_mentions: 42 — script_links: 3
+- UI_ENHANCEMENT_IMPLEMENTATION_GUIDE.md — automation_mentions: 6 — script_links: 3
+- UI_ENHANCEMENT_QUICK_REFERENCE.md — automation_mentions: 6 — script_links: 3
+- UI_FEATURES_AUDIT_COMPREHENSIVE.md — automation_mentions: 22 — script_links: 3
+- UI_FEATURES_VALIDATION_COMPLETE.md — automation_mentions: 11 — script_links: 0
+- UI_SAMPLES.md — automation_mentions: 5 — script_links: 3
+- UNIVERSAL.md — automation_mentions: 8 — script_links: 0
+- UNIVERSALHEALTHRUNNERS.md — automation_mentions: 15 — script_links: 3
+- UNIVERSAL_AUTH.md — automation_mentions: 2 — script_links: 0
+- UNLIMITED_RESOURCES.md — automation_mentions: 3 — script_links: 3
+- UNUSED_API_ENDPOINTS.md — automation_mentions: 11 — script_links: 3
+- USEEMPLOYEESUSERS.md — automation_mentions: 9 — script_links: 3
+- USERREADME.md — automation_mentions: 5 — script_links: 3
+- USER_RESPONSE_STAGES_F_G_H.md — automation_mentions: 6 — script_links: 3
+- USER_RESPONSE_TESTING_INDEX.md — automation_mentions: 5 — script_links: 3
+- USER_SYSTEM_QUICK_REFERENCE.md — automation_mentions: 5 — script_links: 3
+- USER_TRAINING_GUIDE.md — automation_mentions: 2 — script_links: 0
+- UTILS.md — automation_mentions: 6 — script_links: 8
+- V1.2.5_RELEASE.md — automation_mentions: 5 — script_links: 3
+- V1_2_3_QUICK_REFERENCE.md — automation_mentions: 15 — script_links: 3
+- VALIDATION_ENHANCED.md — automation_mentions: 3 — script_links: 3
+- VALIDATION_IMPLEMENTATION_SUMMARY.md — automation_mentions: 12 — script_links: 3
+- VALIDATION_SYSTEM.md — automation_mentions: 25 — script_links: 3
+- VERCELHEALTHS.md — automation_mentions: 12 — script_links: 3
+- VERCELLINKS.md — automation_mentions: 18 — script_links: 3
+- VERCELPAYED.md — automation_mentions: 5 — script_links: 3
+- VERCEL_AUTO_DEPLOY_GUIDE.md — automation_mentions: 83 — script_links: 3
+- VERCEL_AUTO_UPDATE_README.md — automation_mentions: 27 — script_links: 7
+- VERCEL_DEPLOYMENT_GUIDE.md — automation_mentions: 5 — script_links: 3
+- VERCEL_DEPLOYMENT_READY.md — automation_mentions: 17 — script_links: 3
+- VERCEL_DEPLOYMENT_SETUP_CHECKLIST.md — automation_mentions: 10 — script_links: 3
+- VERCEL_DEPLOYMENT_STATUS.md — automation_mentions: 17 — script_links: 3
+- VERCEL_QMOI_AUTOFEATURES_MASTER.md — automation_mentions: 52 — script_links: 6
+- VERIFICATION_COMPLETE_2026-01-15.md — automation_mentions: 6 — script_links: 3
+- VERIFICATION_SYSTEM_ENHANCED.md — automation_mentions: 3 — script_links: 3
+- WALLET.md — automation_mentions: 8 — script_links: 3
+- WALLET_FINANCIAL_VALIDATION.md — automation_mentions: 9 — script_links: 3
+- WATCHDEBUG.md — automation_mentions: 20 — script_links: 4
+- WEBHOOKS.md — automation_mentions: 1 — script_links: 5
+- WHATSAPP-QMOI-BOT.md — automation_mentions: 4 — script_links: 1
+- WIRKFLOWSTRACKS.md — automation_mentions: 15 — script_links: 3
+- WORKFLOWS.md — automation_mentions: 147 — script_links: 3
+- WORKFLOWSHEALTHS.md — automation_mentions: 89 — script_links: 3
+- WORKSPACECODESPACEQCITYMINBUNDLESENHANCED.md — automation_mentions: 5 — script_links: 3
+- WORKSPACEGENERAL.md — automation_mentions: 16 — script_links: 12
+- WORKSPACE_LIGHT_MODE.md — automation_mentions: 7 — script_links: 3
+- WPA.md — automation_mentions: 14 — script_links: 8
+- ZERORATEDQMOI.md — automation_mentions: 13 — script_links: 3
+- _APP_ARCHIVED.md — automation_mentions: 5 — script_links: 3
+- _PAGES_ARCHIVED.md — automation_mentions: 5 — script_links: 3
+- allrefs.md — automation_mentions: 6 — script_links: 3
+- app/api/PRODUCTION_STATUS.md — automation_mentions: 10 — script_links: 5
+- app/api/production_STATUS.md — automation_mentions: 11 — script_links: 5
+- archives/placeholder_actions_20260426_102212.md — automation_mentions: 2099 — script_links: 860
+- assets/changelogs/qcity-changelog.md — automation_mentions: 5 — script_links: 3
+- assets/changelogs/qmoi_ai-changelog.md — automation_mentions: 5 — script_links: 3
+- assets/changelogs/qshare-changelog.md — automation_mentions: 5 — script_links: 3
+- assets/changelogs/qstore-changelog.md — automation_mentions: 5 — script_links: 3
+- assets/changelogs/qvillage-changelog.md — automation_mentions: 5 — script_links: 3
+- assets/changelogs/yap-changelog.md — automation_mentions: 5 — script_links: 3
+- autodev_enhancement_report.md — automation_mentions: 11 — script_links: 0
+- autodevtracks.md — automation_mentions: 19 — script_links: 0
+- autotest_report.md — automation_mentions: 16 — script_links: 3
+- components/qmedia-player.md — automation_mentions: 5 — script_links: 3
+- compulsories.md — automation_mentions: 26 — script_links: 5
+- compulsories_nonproduction_tasks.md — automation_mentions: 8 — script_links: 8
+- copilot-instructions.md — automation_mentions: 8 — script_links: 3
+- deploy/README.md — automation_mentions: 5 — script_links: 4
+- docs/ACCESSIBILITY.md — automation_mentions: 6 — script_links: 6
+- docs/ALLTESTSAUTOTESTS.md — automation_mentions: 17 — script_links: 9
+- docs/API.md — automation_mentions: 50 — script_links: 8
+- docs/API_AUDIT.md — automation_mentions: 6 — script_links: 3
+- docs/API_ENHANCEMENTS_PLAN.md — automation_mentions: 6 — script_links: 4
+- docs/API_REFERENCE.md — automation_mentions: 13 — script_links: 3
+- docs/APIs_v1.md — automation_mentions: 11 — script_links: 3
+- docs/APPSVALIDATION.md — automation_mentions: 6 — script_links: 5
+- docs/AUTODEV_INSTRUCTIONS.md — automation_mentions: 20 — script_links: 20
+- docs/AUTOEVOLVE.md — automation_mentions: 32 — script_links: 6
+- docs/AUTO_SETUP_GUIDE.md — automation_mentions: 58 — script_links: 3
+- docs/CLAUDE_SONNET_CONFIG.md — automation_mentions: 5 — script_links: 3
+- docs/CLONE_SYSTEMS.md — automation_mentions: 11 — script_links: 3
+- docs/COMPONENT_ARCHITECTURE_MAPPING.md — automation_mentions: 10 — script_links: 0
+- docs/COMPONENT_IMPORT_ANALYSIS.md — automation_mentions: 1 — script_links: 0
+- docs/CREDENTIAL_ROTATION_PLAYBOOK.md — automation_mentions: 7 — script_links: 3
+- docs/DEPLOY.md — automation_mentions: 7 — script_links: 10
+- docs/DOWNLOADVALIDATION.md — automation_mentions: 5 — script_links: 3
+- docs/ENHANCEDQVS.md — automation_mentions: 5 — script_links: 3
+- docs/ENHANCED_FEATURES.md — automation_mentions: 19 — script_links: 3
+- docs/EVOLUTION.md — automation_mentions: 20 — script_links: 3
+- docs/FEATURESINDEX.md — automation_mentions: 11 — script_links: 3
+- docs/IMPLEMENTATION_CHECKLIST.md — automation_mentions: 21 — script_links: 5
+- docs/IMPLEMENTATION_SUMMARY.md — automation_mentions: 39 — script_links: 7
+- docs/INDEX.md — automation_mentions: 1 — script_links: 0
+- docs/LIGHTWEIGHT_STRATEGY.md — automation_mentions: 5 — script_links: 4
+- docs/LINKVALIDATION.md — automation_mentions: 6 — script_links: 5
+- docs/LION-ENHANCEMENTS-PLAN.md — automation_mentions: 16 — script_links: 3
+- docs/LION-USAGE-PLAN.md — automation_mentions: 9 — script_links: 6
+- docs/LION-WEBHOOKS-ENHANCEMENTS.md — automation_mentions: 14 — script_links: 3
+- docs/LIONFEATURES_ENHANCED.md — automation_mentions: 7 — script_links: 3
+- docs/LIONOPERATINGSYSTEM.md — automation_mentions: 9 — script_links: 5
+- docs/LIONVALIDATION.md — automation_mentions: 6 — script_links: 3
+- docs/LIONVARIATIONS.md — automation_mentions: 21 — script_links: 4
+- docs/LION_ORCHESTRATOR_ENHANCEMENTS.md — automation_mentions: 8 — script_links: 15
+- docs/LOCAL_QMOI_DEVELOPMENT.md — automation_mentions: 5 — script_links: 3
+- docs/MASTER_INDEX.md — automation_mentions: 10 — script_links: 3
+- docs/MEMORYVALIDATION.md — automation_mentions: 6 — script_links: 3
+- docs/MONITORING_SYSTEM.md — automation_mentions: 9 — script_links: 21
+- docs/MSW_RUNTIME.md — automation_mentions: 5 — script_links: 3
+- docs/MSW_SETUP.md — automation_mentions: 5 — script_links: 3
+- docs/OFFLINE_FIRST_ARCHITECTURE.md — automation_mentions: 5 — script_links: 3
+- docs/OFFLINE_GUIDE.md — automation_mentions: 6 — script_links: 18
+- docs/PARALLEL.md — automation_mentions: 10 — script_links: 3
+- docs/PARALLEL_ENHANCEMENTS.md — automation_mentions: 5 — script_links: 8
+- docs/PLATFORM_AUTOMATION.md — automation_mentions: 21 — script_links: 3
+- docs/PLATFORM_EVOLUTION.md — automation_mentions: 18 — script_links: 3
+- docs/PRODUCTION_CHECKLIST.md — automation_mentions: 6 — script_links: 4
+- docs/QMEDIA_PLAYER_ENHANCEMENT_PLAN.md — automation_mentions: 11 — script_links: 3
+- docs/QMOI-ENHANCED-AUTOTESTS.md — automation_mentions: 17 — script_links: 6
+- docs/QMOICLONE.md — automation_mentions: 6 — script_links: 3
+- docs/QMOIGITHUBDEV.md — automation_mentions: 23 — script_links: 8
+- docs/QMOIGITLABDEV.md — automation_mentions: 15 — script_links: 9
+- docs/QMOIVERCELDEV.md — automation_mentions: 11 — script_links: 8
+- docs/QMOI_AI_GUIDE.md — automation_mentions: 10 — script_links: 4
+- docs/QMOI_BACKGROUND_AUTOMATION_GUIDE.md — automation_mentions: 69 — script_links: 3
+- docs/QMOI_BACKGROUND_AUTOMATION_README.md — automation_mentions: 54 — script_links: 5
+- docs/QMOI_CONSCIOUSNESS_AWARENESS_MEMORY.md — automation_mentions: 8 — script_links: 3
+- docs/QMOI_FRIENDSHIP_RUNBOOK.md — automation_mentions: 5 — script_links: 3
+- docs/QMOI_LION_EVOLUTION_ENHANCEMENT_PLAN.md — automation_mentions: 9 — script_links: 3
+- docs/QMOI_LION_QVILLAGE_AUTOMATION_PLAN.md — automation_mentions: 24 — script_links: 9
+- docs/QMOI_MEMORY.md — automation_mentions: 7 — script_links: 3
+- docs/QTOOLS.md — automation_mentions: 9 — script_links: 6
+- docs/QUEUE_SUPERVISOR.md — automation_mentions: 5 — script_links: 5
+- docs/QUICK_REFERENCE.md — automation_mentions: 30 — script_links: 6
+- docs/QVILLAGE_MANUAL.md — automation_mentions: 8 — script_links: 3
+- docs/README.md — automation_mentions: 6 — script_links: 9
+- docs/README_VALIDATION.md — automation_mentions: 5 — script_links: 6
+- docs/REFERENCES.md — automation_mentions: 13 — script_links: 7
+- docs/RELEASE_AUTOMATION.md — automation_mentions: 22 — script_links: 11
+- docs/REVENUE_SPEC.md — automation_mentions: 100 — script_links: 13
+- docs/REVENUE_SPEC.md.generated.md — automation_mentions: 34 — script_links: 7
+- docs/TODOS_ENHANCEMENTS.md — automation_mentions: 10 — script_links: 4
+- docs/TROUBLESHOOTING.md — automation_mentions: 5 — script_links: 3
+- docs/TROUBLESHOOTING_FAQ.md — automation_mentions: 26 — script_links: 5
+- docs/VALIDATIONSYSTEMS.md — automation_mentions: 5 — script_links: 6
+- docs/VALIDATION_STRATEGIES.md — automation_mentions: 9 — script_links: 3
+- docs/VALIDATION_TOOLS.md — automation_mentions: 7 — script_links: 24
+- docs/WALLET_RUNBOOK.md — automation_mentions: 5 — script_links: 3
+- docs/WALLET_SECURITY_PLAYBOOK.md — automation_mentions: 6 — script_links: 3
+- docs/components/COMPONENTS_INDEX.md — automation_mentions: 4 — script_links: 0
+- docs/components/QFileManager_component.md — automation_mentions: 2 — script_links: 0
+- docs/corrupted.md — automation_mentions: 5 — script_links: 3
+- docs/domain_health_markdown.md — automation_mentions: 5 — script_links: 3
+- docs/features/features_guide.md — automation_mentions: 10 — script_links: 0
+- docs/help/user_guide.md — automation_mentions: 9 — script_links: 0
+- docs/implementation/PRODUCTION_IMPLEMENTATION_GUIDE.md — automation_mentions: 8 — script_links: 4
+- docs/implemented_endpoints.md — automation_mentions: 6 — script_links: 3
+- docs/lion_evolution/LION_EVOLUTION_2_0_PLAN.md — automation_mentions: 21 — script_links: 3
+- docs/lion_evolution/LION_INTEGRATION_GUIDE.md — automation_mentions: 7 — script_links: 3
+- docs/lion_evolution/QVS_ENHANCEMENT_PLAN.md — automation_mentions: 7 — script_links: 3
+- docs/lion_features.md — automation_mentions: 10 — script_links: 4
+- docs/lion_variations/lion-ai.md — automation_mentions: 8 — script_links: 3
+- docs/lion_variations/lion-cloud.md — automation_mentions: 12 — script_links: 3
+- docs/lion_variations/lion-core.md — automation_mentions: 7 — script_links: 3
+- docs/lion_variations/lion-desktop.md — automation_mentions: 8 — script_links: 3
+- docs/lion_variations/lion-embedded.md — automation_mentions: 8 — script_links: 3
+- docs/lion_variations/lion-enterprise.md — automation_mentions: 8 — script_links: 3
+- docs/lion_variations/lion-lite.md — automation_mentions: 9 — script_links: 3
+- docs/lion_variations/lion-ml.md — automation_mentions: 7 — script_links: 3
+- docs/lion_variations/lion-os.md — automation_mentions: 8 — script_links: 3
+- docs/lion_variations/lion-plugin.md — automation_mentions: 8 — script_links: 3
+- docs/lion_variations/lion-sdk.md — automation_mentions: 7 — script_links: 3
+- docs/merged_remediation_plan.md — automation_mentions: 9 — script_links: 3
+- docs/navigation/navigation_flows.md — automation_mentions: 2 — script_links: 0
+- docs/operations.md — automation_mentions: 8 — script_links: 14
+- docs/qmoi_space_enhancements.md — automation_mentions: 7 — script_links: 3
+- docs/qvillage_features.md — automation_mentions: 18 — script_links: 3
+- docs/screens/admin-dashboard-screen.md — automation_mentions: 1 — script_links: 0
+- docs/screens/developer-utilities-screen.md — automation_mentions: 1 — script_links: 0
+- docs/screens/device-management-dashboard-screen.md — automation_mentions: 1 — script_links: 0
+- docs/screens/home-screen.md — automation_mentions: 3 — script_links: 0
+- docs/screens/master-email-configuration-screen.md — automation_mentions: 2 — script_links: 0
+- docs/screens/master-links-management-screen.md — automation_mentions: 1 — script_links: 0
+- docs/screens/master-tracks-management-screen.md — automation_mentions: 1 — script_links: 0
+- docs/screens/qcity-command-center-dashboard-screen.md — automation_mentions: 7 — script_links: 0
+- docs/screens/qmoi-ai-interactive-assistant-screen.md — automation_mentions: 2 — script_links: 0
+- docs/screens/qmoi-friendship-interface-screen.md — automation_mentions: 9 — script_links: 0
+- docs/screens/qmoi-space-spatial-collaboration-hub-screen.md — automation_mentions: 2 — script_links: 0
+- docs/screens/qvillage-community-hub-screen.md — automation_mentions: 3 — script_links: 0
+- docs/settings/settings_guide.md — automation_mentions: 21 — script_links: 0
+- docs/validation/ISSUES_MANUAL_TODOS.md — automation_mentions: 7 — script_links: 4
+- docs/validation/MANUAL_TODOS_ACTIONS.md — automation_mentions: 12 — script_links: 7
+- docs/validation/MANUAL_TODOS_TOP10.md — automation_mentions: 8 — script_links: 9
+- docs/validation/NEXT_UPGRADE_PLAN.md — automation_mentions: 5 — script_links: 3
+- docs/validation/PLACEHOLDER_FIX_ACTIONS.md — automation_mentions: 6 — script_links: 3
+- docs/workflow_fix_proposals.md — automation_mentions: 23 — script_links: 3
+- docs/workflows_remediation.md — automation_mentions: 11 — script_links: 3
+- duplicate_file_audit_report.md — automation_mentions: 20 — script_links: 27
+- duplicate_files_report.md — automation_mentions: 5 — script_links: 12
+- error-fix-summary.md — automation_mentions: 11 — script_links: 4
+- git-lfs-3.5.1/CHANGELOG.md — automation_mentions: 13 — script_links: 3
+- git-lfs-3.5.1/README.md — automation_mentions: 6 — script_links: 3
+- git-lfs-3.5.1/git-lfs-3.5.1/CHANGELOG.md — automation_mentions: 13 — script_links: 3
+- git-lfs-3.5.1/git-lfs-3.5.1/README.md — automation_mentions: 6 — script_links: 3
+- hf_space_qvillage/5.md — automation_mentions: 7 — script_links: 3
+- hf_space_qvillage/README.md — automation_mentions: 3 — script_links: 3
+- independent.md — automation_mentions: 5 — script_links: 7
+- instruct.md — automation_mentions: 1 — script_links: 0
+- issues/TODO-PROD-CURATE.md — automation_mentions: 6 — script_links: 4
+- issues/TODO-PROD-PLATFORMS.md — automation_mentions: 7 — script_links: 4
+- issues/TODO-PROD-REPORTS.md — automation_mentions: 6 — script_links: 4
+- issues/TODO-PROD-UIUX.md — automation_mentions: 6 — script_links: 4
+- link_report.md — automation_mentions: 5 — script_links: 3
+- missing_docs_report.md — automation_mentions: 5 — script_links: 3
+- mobile/README.md — automation_mentions: 6 — script_links: 3
+- models/latest/README.md — automation_mentions: 11 — script_links: 6
+- parallel.md — automation_mentions: 5 — script_links: 4
+- placeholder_scan_summary.md — automation_mentions: 6 — script_links: 3
+- production_deployment/DEPLOYMENT_CHECKLIST.md — automation_mentions: 5 — script_links: 3
+- pwa_apps/README.md — automation_mentions: 6 — script_links: 3
+- pwa_apps/q-alpha/README.md — automation_mentions: 5 — script_links: 3
+- q.md — automation_mentions: 9 — script_links: 3
+- q/AI_ENHANCED_INTELLIGENT_VALIDATION_ARCHITECTURE.md — automation_mentions: 10 — script_links: 3
+- q/BALANCES.md — automation_mentions: 12 — script_links: 3
+- q1.md — automation_mentions: 20 — script_links: 3
+- qcity/README.md — automation_mentions: 5 — script_links: 3
+- qmoi_master_memory/MASTER_COMPLETE_PROFILE.md — automation_mentions: 6 — script_links: 3
+- qmoi_remote_java_build.md — automation_mentions: 3 — script_links: 0
+- qvillage/README.md — automation_mentions: 5 — script_links: 3
+- reports/100PERCENT_DOMAIN_HEALTH_GUIDE.md — automation_mentions: 5 — script_links: 5
+- reports/COMPREHENSIVE_CONTENT_UI_VALIDATION_REPORT.md — automation_mentions: 7 — script_links: 7
+- reports/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md — automation_mentions: 11 — script_links: 4
+- reports/FINAL_100PERCENT_DOMAIN_HEALTH_ACHIEVEMENT.md — automation_mentions: 6 — script_links: 9
+- reports/PRODUCTION_FULL_VALIDATION_REPORT.md — automation_mentions: 6 — script_links: 7
+- reports/archived_high_conf_nonprod_1779517012.md — automation_mentions: 1 — script_links: 10
+- reports/nonproduction_candidates.md — automation_mentions: 2690 — script_links: 659
+- reports/production_FULL_VALIDATION_REPORT.md — automation_mentions: 6 — script_links: 7
+- reports/production_readiness_report.md — automation_mentions: 5 — script_links: 4
+- scan_results/production_readiness_summary.md — automation_mentions: 6 — script_links: 4
+- scripts/GITHUBCODESPACESCAPILOTCHATPAYED.md — automation_mentions: 9 — script_links: 0
+- scripts/README.md — automation_mentions: 8 — script_links: 5
+- scripts/daemon/README.md — automation_mentions: 6 — script_links: 10
+- scripts/diagnostics/README.md — automation_mentions: 7 — script_links: 4
+- scripts/finance/README.md — automation_mentions: 5 — script_links: 5
+- scripts/q/BALANCES.md — automation_mentions: 12 — script_links: 3
+- scripts/templates/README_template.en.md — automation_mentions: 12 — script_links: 13
+- scripts/templates/README_template.md — automation_mentions: 6 — script_links: 4
+- scripts/templates/README_template.sw.md — automation_mentions: 6 — script_links: 4
+- scripts/wallets/PRODUCTION_RUNBOOK.md — automation_mentions: 8 — script_links: 7
+- scripts/wallets/README.md — automation_mentions: 5 — script_links: 7
+- src/app/api/qmoi/self-work/code-review/tradingandothers.md — automation_mentions: 4 — script_links: 1
+- src/qcity/PRODUCTION_STATUS.md — automation_mentions: 7 — script_links: 5
+- tools/WORKSPACEGENERAL.updates.md — automation_mentions: 8 — script_links: 3
+- tools/allrefs_summary.md — automation_mentions: 10 — script_links: 3
+- tools/autotest_report.md — automation_mentions: 18 — script_links: 5
+- tools/dns_fix_summary.md — automation_mentions: 5 — script_links: 3
+- tools/dns_links_report.md — automation_mentions: 7 — script_links: 3
+- tools/light_index.md — automation_mentions: 5 — script_links: 3
+- tools/link_check_ci.md — automation_mentions: 10 — script_links: 3
+- tools/link_fix_actions.md — automation_mentions: 5 — script_links: 3
+- tools/link_fix_actions_more.md — automation_mentions: 9 — script_links: 5
+- tools/matches_priority.md — automation_mentions: 5 — script_links: 3
+- tools/placeholder_artifacts/README.md — automation_mentions: 5 — script_links: 3
+- tools/qmoi_lint_report.md — automation_mentions: 5 — script_links: 3
+- tools/release_remediation_guide.md — automation_mentions: 7 — script_links: 5
+- tools/releases_assets_report.md — automation_mentions: 5 — script_links: 3
+- tools/releases_audit.md — automation_mentions: 5 — script_links: 3
+- tools/remediation_plan.md — automation_mentions: 6 — script_links: 10
+- tools/rust_lint_fix/README.md — automation_mentions: 5 — script_links: 3
+- tools/update_markdown_report.md — automation_mentions: 5 — script_links: 3
+- tools/validation_report.md — automation_mentions: 5 — script_links: 3
+- unusedcomponentsui.md — automation_mentions: 6 — script_links: 5
+- vercelerrorlist.md — automation_mentions: 1 — script_links: 0
+- whatsapp-qmoi-bot/README.md — automation_mentions: 1 — script_links: 0
 
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:52.181849Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
-- lines: 391
-- words: 1484
-- characters: 24695
-- headings: 15
+- timestamp: 2026-06-22T19:07:24.498991Z
+- production status: ❌ needs production implementation
+- status tags: needs-production, nonproduction
+- lines: 1205
+- words: 9539
+- characters: 84489
+- headings: 2
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

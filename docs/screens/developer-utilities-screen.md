@@ -101,15 +101,15 @@ The PRODUCTIONeloper Utilities screen provides access to internal PRODUCTIONelop
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:04:11.754330Z
+- timestamp: 2026-06-22T19:07:46.264001Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 97
-- words: 511
-- characters: 4034
-- headings: 22
+- lines: 115
+- words: 583
+- characters: 4501
+- headings: 23
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

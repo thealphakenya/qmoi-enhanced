@@ -77,15 +77,15 @@ quantum-enabled: false
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:58.295040Z
+- timestamp: 2026-06-22T19:07:31.174151Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 73
-- words: 474
-- characters: 3859
-- headings: 9
+- lines: 91
+- words: 546
+- characters: 4324
+- headings: 10
 - links: 2
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

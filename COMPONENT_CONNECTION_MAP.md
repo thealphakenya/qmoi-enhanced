@@ -420,15 +420,15 @@ grep -r "from.*components\|from.*'./components\|from.*\"./components" pages/ --i
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:54.328390Z
+- timestamp: 2026-06-22T19:07:26.870711Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 416
-- words: 1153
-- characters: 9907
-- headings: 36
+- lines: 434
+- words: 1225
+- characters: 10376
+- headings: 37
 - links: 0
 - images: 0
 - tables: 26
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

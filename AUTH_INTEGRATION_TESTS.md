@@ -513,15 +513,15 @@ curl -X POST http://localhost:3000/api/auth/biometric/capture \
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:54.044320Z
+- timestamp: 2026-06-22T19:07:26.533867Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 509
-- words: 1959
-- characters: 12881
-- headings: 39
+- lines: 527
+- words: 2031
+- characters: 13350
+- headings: 40
 - links: 0
 - images: 0
 - tables: 18
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

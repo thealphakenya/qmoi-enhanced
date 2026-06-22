@@ -198,15 +198,15 @@ OUTPUT FORMAT
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:04:11.898946Z
+- timestamp: 2026-06-22T19:07:46.414295Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 194
-- words: 516
-- characters: 4797
-- headings: 5
+- lines: 212
+- words: 588
+- characters: 5263
+- headings: 6
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

@@ -113,8 +113,12 @@ def scan_file(path: Path) -> dict:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description='Scan QMOI Lion validation coverage for Markdown files')
     parser.add_argument('--out', type=Path, default=ROOT / 'docs' / 'lion_usage_report.json', help='Output JSON summary file path')
+    parser.add_argument('--report', action='store_true', help='Alias for --out default report path')
     parser.add_argument('--root', type=Path, default=ROOT, help='Repository root to scan')
-    return parser.parse_args()
+    args = parser.parse_args()
+    if args.report:
+        args.out = ROOT / 'docs' / 'lion_usage_report.json'
+    return args
 
 
 def main() -> int:

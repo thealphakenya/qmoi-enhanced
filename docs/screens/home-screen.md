@@ -182,15 +182,15 @@ Each card contains:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:04:11.760105Z
+- timestamp: 2026-06-22T19:07:46.268864Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 178
-- words: 899
-- characters: 6530
-- headings: 33
+- lines: 196
+- words: 971
+- characters: 6997
+- headings: 34
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

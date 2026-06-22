@@ -1,15 +1,22 @@
+Last refreshed: 2026-06-22T19:08:54.612477Z
+Resume update: auto-synced before bulk continuation.
+Resume point: continue from the next pending task after this header.
+Git commit: 058fc3e0b9
+Git branch: autosync-backup-20250926-232440
+Repository status: dirty
+
 QMOI production READINESS STATUS
-Last Scan: 2026-06-22T15:53:41.121672
-Scan ID: 1782143621
+Last Scan: 2026-06-22T19:08:15.004143
+Scan ID: 1782155295
 
 SUMMARY:
-- Total files scanned: 4736
+- Total files scanned: 4743
 - Total directories scanned: 809
-- Files with nonproduction markers: 0
-- Total markers found: 0
+- Files with nonproduction markers: 5
+- Total markers found: 6
 
 CURRENT STATE:
-- Status: ✅ production-ready. No nonproduction markers remain.
+- Status: ⚠️ Nonproduction markers remain. Review undone.txt and MATCHES.txt.
 
 NEXT STEPS:
 1. Open undone.txt for detailed marker locations.
@@ -53,9 +60,229 @@ TASKS FROM resumefromhere.txt:
 - Run safe bulk production fixer if any markers remain
 - Re-run scanner to verify final production readiness
 
+MARKER SUMMARY:
+- UNIMPLEMENTED: 6
+
 TRACKING FILES UPDATED:
 - resumefromhere.txt
 - INSTANCES.md
 - MATCHES.txt
 - MATCHES.md
 - undone.txt
+
+WORKFLOW TASKS:
+- Add Qcamera support in Qstore for street, road, thermal, panoramic, and infrared camera categories.
+- Ensure every Qstore app has a custom icon, platform-aware feature summary, and production-ready download link.
+- Update `Qstore.md`, `ALLVERSIONS.md`, `APIs_1.md`, `BULK_PRODUCTION_WORKFLOW.md`, and related docs with Qstore/Qcamera metadata.
+- Verify `assets/icons/qstore*.svg` and `tools/release_templates/icons/qstore.svg` are referenced correctly across documentation and app manifests.
+- Include Qstore/Qcamera platform/device coverage in the resume tracker and bulk auto-continue scripts.
+- Continue bulk production work until Qstore/Qcamera and app store documentation report zero nonproduction markers.
+
+================================================================================
+MERGE PHASE - DEDUPLICATION & CONSOLIDATION
+================================================================================
+
+STATUS: Starting merge phase for complete app consolidation
+
+MERGE OBJECTIVES:
+1. Consolidate duplicate app entry points (qmoi-ai, qmoi-space, qcity, qvillage, qalpha)
+2. Centralize all components into unified library
+3. Eliminate duplicate business logic and API endpoints
+4. Optimize QCamera with full hardware features and permissions
+5. Remove all orphaned/redundant files post-consolidation
+
+MERGE STATS:
+- Duplicate app entry points identified: 5/5
+- Duplicate components found: 115
+- Duplicate API routes found: 0
+- QCamera references found: 36
+- Files consolidated: 0
+- Files deleted: 0
+- Space saved: 0 MB
+
+MERGE PHASE TRACKING:
+
+[PHASE 1: Discovery & Cataloging]
+Status: NOT STARTED
+Progress: 0%
+Tasks:
+  - [ ] Scan all duplicate app entry points
+  - [ ] Map component duplicates and feature parity
+  - [ ] Catalog API route duplicates
+  - [ ] Audit QCamera references and implementations
+  - [ ] Document all entry points per app
+Target: 1 hour
+
+[PHASE 2: Component Consolidation]
+Status: NOT STARTED
+Progress: 0%
+Tasks:
+  - [ ] Create centralized lib/components structure
+  - [ ] Audit shared vs app-specific components
+  - [ ] Consolidate common components
+  - [ ] Update all imports to new locations
+  - [ ] Verify no build errors
+Target: 4 hours
+
+[PHASE 3: API Route Consolidation]
+Status: NOT STARTED
+Progress: 0%
+Tasks:
+  - [ ] Identify duplicate endpoint implementations
+  - [ ] Merge business logic into canonical routes
+  - [ ] Create unified middleware/utils
+  - [ ] Update all route references
+  - [ ] Test all endpoints end-to-end
+Target: 3 hours
+
+[PHASE 4: App Entry Point Consolidation]
+Status: NOT STARTED
+Progress: 0%
+Tasks:
+  - [ ] Establish primary entry point per app (Next.js page)
+  - [ ] Consolidate all features into primary entry
+  - [ ] Redirect secondary entry points
+  - [ ] Update ROUTES.md with canonical routes
+  - [ ] Test all apps load and function properly
+Target: 3 hours
+
+[PHASE 5: QCamera Enhancement]
+Status: NOT STARTED
+Progress: 0%
+Tasks:
+  - [ ] Audit QCamera UI/UX components
+  - [ ] Implement comprehensive camera permissions
+  - [ ] Add hardware feature support (thermal, IR, panoramic)
+  - [ ] Create unified camera interface
+  - [ ] Integrate QCamera across all apps
+  - [ ] Document QCamera features and hardware access
+Target: 6 hours
+
+[PHASE 6: Documentation Update]
+Status: NOT STARTED
+Progress: 0%
+Tasks:
+  - [ ] Update API.md with consolidated endpoints
+  - [ ] Update ENDPOINTS.md with unified routes
+  - [ ] Update ROUTES.md with canonical routes
+  - [ ] Update UNIVERSALS.md with shared features
+  - [ ] Update STYLES.md with design system
+  - [ ] Create MERGE_REPORT.md with consolidation summary
+Target: 2 hours
+
+[PHASE 7: Final Validation]
+Status: NOT STARTED
+Progress: 0%
+Tasks:
+  - [ ] Run full test suite
+  - [ ] Perform manual QA on all apps
+  - [ ] Verify no console errors
+  - [ ] Measure bundle size impact
+  - [ ] Verify performance metrics
+  - [ ] Final production scan
+Target: 3 hours
+
+MERGE STATS SUMMARY:
+- Total duplicates to consolidate: 155
+- Consolidation progress: 0/155 (0%)
+- Files merged: 0
+- Files deleted: 0
+- Space saved: 0 MB
+- Components unified: 0
+- API endpoints consolidated: 0
+- QCamera features implemented: 0/15
+
+MERGE NEXT ACTIONS:
+1. Review merge discovery report (.qmoi_validation/merge_discovery_report.json)
+2. Create feature branches for each consolidation phase
+3. Begin Phase 1 discovery documentation
+4. Start component consolidation (highest impact first)
+5. Run tests after each consolidation batch
+6. Update documentation incrementally
+
+UPDATED FILES IN THIS SESSION:
+- MERGE.md (expanded with comprehensive instructions)
+- UNIVERSALS.md (created with shared features specification)
+- STYLES.md (updated with design system details)
+- resumefromhere.txt (added MERGE tracking - this file)
+
+IMPORTANT: Before continuing, ensure all automation scripts are updated:
+- scripts/auto_continue_resumefromhere.py (add MERGE tasks)
+- scripts/auto_continue_resumefromhere_loop.py (integrate MERGE workflow)
+- scripts/merge_discovery_scanner.py (run hourly during merge phase)
+Progress: 0%
+Tasks:
+  - [ ] Enhance QCamera UI with all controls
+  - [ ] Implement all 15+ hardware features
+  - [ ] Configure all 8 permission types
+  - [ ] Integrate QCamera into all applicable UIs
+  - [ ] Test on multiple devices
+Target: 4 hours
+
+[PHASE 6: Cleanup & Verification]
+Status: NOT STARTED
+Progress: 0%
+Tasks:
+  - [ ] Backup original duplicate files
+  - [ ] Remove consolidated duplicates
+  - [ ] Remove orphaned directories
+  - [ ] Run full test suite
+  - [ ] Verify no broken links or imports
+  - [ ] Update documentation
+Target: 2 hours
+
+DETAILED INVENTORY:
+
+APPS WITH DUPLICATE ENTRY POINTS:
+1. qmoi-ai
+   - /app/qmoi-ai/page.tsx (Primary)
+   - /pwa_apps/qmoi-ai/index.html (Secondary)
+   - /public/qmoi-ai.html (Fallback)
+   - Status: PENDING CONSOLIDATION
+
+2. qmoi-space
+   - /app/qmoi-space/page.tsx (Primary)
+   - /pwa_apps/qmoi-space/index.html (Secondary)
+   - /public/qmoi-space.html (Fallback)
+   - Status: PENDING CONSOLIDATION
+
+3. qcity
+   - /app/qcity/page.tsx (Primary)
+   - /app/qcity/index.html (Backup)
+   - /public/qcity*.html (Multiple)
+   - /app/api/qcity/* (APIs)
+   - Status: PENDING CONSOLIDATION
+
+4. qvillage
+   - /app/qvillage/page.tsx (Primary)
+   - /public/qvillage-*.html (Fallbacks)
+   - Status: PENDING CONSOLIDATION
+
+5. qalpha
+   - /app/qalpha/page.tsx (Primary)
+   - /public/q-alpha.html (Fallback)
+   - Status: PENDING CONSOLIDATION
+
+QCAMERA CONSOLIDATION:
+- Current references: 0 identified
+- Hardware features: 0/15 implemented
+- Permissions: 0/8 configured
+- UI components: To be created
+- Integration points: 0 configured
+
+DUPLICATE COMPONENT PATTERNS:
+(To be populated during Phase 1 discovery)
+- Navigation components: TBD
+- Card/modal wrappers: TBD
+- Form components: TBD
+- Theme providers: TBD
+- Auth handlers: TBD
+- Analytics trackers: TBD
+
+NEXT ACTIONS:
+1. Run `python3 scripts/merge_discovery_scanner.py` to generate complete duplicate inventory
+2. Execute Phase 1 with automated discovery
+3. Update this section hourly with merge progress statistics
+4. Continue until all phases complete
+5. Re-run full test suite post-merge
+6. Update API.md, ROUTES.md, ALLMDFILESREFS.md with final structure

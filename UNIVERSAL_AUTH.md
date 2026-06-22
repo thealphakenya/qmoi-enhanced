@@ -456,15 +456,15 @@ For app-specific information, see:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:59.677615Z
+- timestamp: 2026-06-22T19:07:33.150652Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 452
-- words: 1220
-- characters: 10190
-- headings: 38
+- lines: 470
+- words: 1292
+- characters: 10658
+- headings: 39
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

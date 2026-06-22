@@ -403,15 +403,15 @@ One per regional office handling:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:55.282337Z
+- timestamp: 2026-06-22T19:07:27.842339Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 399
-- words: 1316
-- characters: 9737
-- headings: 52
+- lines: 417
+- words: 1388
+- characters: 10205
+- headings: 53
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

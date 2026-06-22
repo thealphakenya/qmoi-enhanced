@@ -140,15 +140,15 @@ curl -H "Authorization: Bearer YOUR_TOKEN" \
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:52.075786Z
+- timestamp: 2026-06-22T19:07:24.397005Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 136
-- words: 302
-- characters: 3135
-- headings: 26
+- lines: 154
+- words: 374
+- characters: 3601
+- headings: 27
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

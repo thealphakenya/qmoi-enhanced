@@ -10,12 +10,12 @@ quantum-enabled: true
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:58.458243Z
+- timestamp: 2026-06-22T19:07:31.261728Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 413
-- words: 1516
-- characters: 15204
+- lines: 422
+- words: 1554
+- characters: 15402
 - headings: 24
 - links: 36
 - images: 0
@@ -44,8 +44,27 @@ Qstore is the central hub for all Quantum multi orchestra intelligence (QMOI) (s
 | 🕰️   | QClock (skv)       | 1.1.0   | [Win](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qclock/windows.exe) [Mac](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qclock/mac.dmg) [Android](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qclock/android.apk) [iOS](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qclock/ios.ipa) [Linux](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qclock/linux.appimage)                               | v1.1.0   | Modern, animated, prodice-optimized   | Live chat, help, feedback | World clock, AI alarm |
 | 🗺️   | QMap (skv)         | 3.0.0   | [Win](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qmap/windows.exe) [Mac](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qmap/mac.dmg) [Android](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qmap/android.apk) [iOS](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qmap/ios.ipa) [Linux](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qmap/linux.appimage)                                         | v3.0.0   | Modern, animated, prodice-optimized   | Live chat, help, feedback | AR, live traffic      |
 | 🔍   | QSearch (skv)      | 1.0.5   | [Win](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qsearch/windows.exe) [Mac](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qsearch/mac.dmg) [Android](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qsearch/android.apk) [iOS](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qsearch/ios.ipa) [Linux](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qsearch/linux.appimage)                          | v1.0.5   | Modern, animated, prodice-optimized   | Live chat, help, feedback | Voice, image search   |
-| 💬   | QWhatsApp (skv)    | 2.2.0   | [Win](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qwhatsapp/windows.exe) [Mac](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qwhatsapp/mac.dmg) [Android](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qwhatsapp/android.apk) [iOS](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qwhatsapp/ios.ipa) [Linux](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qwhatsapp/linux.appimage)                | v2.2.0   | Modern, animated, prodice-optimized   | Live chat, help, feedback | More AI, business     |
+| �   | Qcamera Hub (skv)  | 1.0.0   | [Win](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qcamera/windows.exe) [Mac](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qcamera/mac.dmg) [Android](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qcamera/android.apk) [iOS](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qcamera/ios.ipa) [Linux](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qcamera/linux.appimage) | v1.0.0   | Handsfree remote monitoring, device management | Live support, diagnostics | Supports street, road, thermal, panoramic, infrared cameras |
+| �💬   | QWhatsApp (skv)    | 2.2.0   | [Win](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qwhatsapp/windows.exe) [Mac](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qwhatsapp/mac.dmg) [Android](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qwhatsapp/android.apk) [iOS](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qwhatsapp/ios.ipa) [Linux](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qwhatsapp/linux.appimage)                | v2.2.0   | Modern, animated, prodice-optimized   | Live chat, help, feedback | More AI, business     |
 | ⚡   | QAutoprod (skv)     | 1.0.0   | [Win](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qautoprod/windows.exe) [Mac](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qautoprod/mac.dmg) [Android](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qautoprod/android.apk) [iOS](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qautoprod/ios.ipa) [Linux](https://QQdownload.Quantum multi orchestra intelligence (QMOI).ai/apps/qautoprod/linux.appimage)                     | v1.0.0   | Modern, animated, prodice-optimized   | Live chat, help, feedback | More automation       |
+
+## Qcamera Integration
+
+- Qstore includes a dedicated Qcamera category with full platform support for street, road, thermal, panoramic, and infrared camera types.
+- Each Qcamera category is available with handsfree AI controls, remote monitoring, adaptive platform packages, and device-specific features.
+- Qcamera devices are managed through Qstore alongside app downloads and updates, with custom hardware icons, diagnostics, and secure deployment links.
+- Qcamera compatibility spans desktops, mobiles, embedded systems, Chromebooks, Raspberry Pi, and other platform-specific machine/device bundles.
+- Qstore references custom icon assets such as `assets/icons/qstore.svg`, `assets/icons/qstore-128.svg`, and `tools/release_templates/icons/qstore.svg` to ensure consistent store branding across docs and UIs.
+
+## Qcamera Device Types
+
+| Camera Type | Supported Platforms | Machine/Device Profiles | Key Features |
+| ----------- | ------------------- | ----------------------- | ------------ |
+| Street      | desktop, mobile, embedded | street-camera, city-grid nodes | real-time sync, global coverage, motion detection, handsfree voice control |
+| Road        | desktop, mobile, vehicle, edge | road-camera, traffic hub | traffic monitoring, route analysis, incident detection, speed optimization |
+| Thermal     | desktop, mobile, embedded | thermal-camera, perimeter node | night vision, heat detection, intrusion alerts, environmental sensing |
+| Panoramic   | desktop, mobile, control-room | panoramic-camera, venue dome | 360° capture, crowd analysis, panorama stitching, arena monitoring |
+| Infrared    | desktop, mobile, security-device | infrared-camera, perimeter sentinel | low-light monitoring, 24/7 surveillance, motion tracking, energy efficiency |
 
 ## Modern UI & prodice Optimization
 

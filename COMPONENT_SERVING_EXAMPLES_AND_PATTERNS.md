@@ -695,15 +695,15 @@ When adding/modifying components:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:54.335517Z
+- timestamp: 2026-06-22T19:07:26.876622Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 691
-- words: 1685
-- characters: 15643
-- headings: 38
+- lines: 709
+- words: 1757
+- characters: 16111
+- headings: 39
 - links: 6
 - images: 0
 - tables: 8
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

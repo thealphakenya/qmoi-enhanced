@@ -479,15 +479,15 @@ The public routes now reflect actual source channel wiring:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:59.387034Z
+- timestamp: 2026-06-22T19:07:32.650804Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 475
-- words: 2368
-- characters: 19949
-- headings: 52
+- lines: 493
+- words: 2440
+- characters: 20418
+- headings: 53
 - links: 5
 - images: 0
 - tables: 24
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

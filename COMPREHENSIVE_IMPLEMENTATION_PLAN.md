@@ -409,15 +409,15 @@ src/components/
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:54.371224Z
+- timestamp: 2026-06-22T19:07:26.903559Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 405
-- words: 1651
-- characters: 11963
-- headings: 40
+- lines: 423
+- words: 1723
+- characters: 12432
+- headings: 41
 - links: 0
 - images: 0
 - tables: 15
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

@@ -13,6 +13,8 @@ logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[1]
 TARGET = ROOT / 'ALLMDFILESREFS.md'
+OUTPUT_DIR = ROOT / '.qmoi_validation'
+JSON_INVENTORY = OUTPUT_DIR / 'md_inventory.json'
 EXCLUDE_DIRS = {'.git', 'node_modules', '.venv', '.backups', 'backups', '__pycache__', '.pytest_cache'}
 
 PRODUCTION_PATTERNS = [
@@ -157,6 +159,25 @@ def write_target(files: list[Path], lines: list[str], counts: dict[str, int]) ->
     ]
     TARGET.write_text('\n'.join(header + lines) + '\n', encoding='utf-8')
     logger.info('Updated %s with %d markdown paths', TARGET, len(files))
+    write_json_inventory(files, lines, counts)
+
+
+def write_json_inventory(files: list[Path], lines: list[str], counts: dict[str, int]) -> None:
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    data = {
+        'timestamp': datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
+        'total_markdown_files': len(files),
+        'counts': counts,
+        'entries': [
+            {
+                'path': str(Path('./') / file_path.relative_to(ROOT)),
+                'summary': lines[index],
+            }
+            for index, file_path in enumerate(files)
+        ],
+    }
+    JSON_INVENTORY.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding='utf-8')
+    logger.info('Wrote JSON markdown inventory to %s', JSON_INVENTORY)
 
 
 def parse_args() -> argparse.Namespace:

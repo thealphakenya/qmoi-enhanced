@@ -713,15 +713,15 @@ curl -X POST http://localhost:3000/api/auth/confirm-reset \
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:55.850832Z
+- timestamp: 2026-06-22T19:07:28.540245Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 709
-- words: 3032
-- characters: 18866
-- headings: 87
+- lines: 727
+- words: 3104
+- characters: 19335
+- headings: 88
 - links: 0
 - images: 0
 - tables: 37
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

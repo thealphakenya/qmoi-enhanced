@@ -548,15 +548,15 @@ For platform-specific guidance, see:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:54.614508Z
+- timestamp: 2026-06-22T19:07:27.102495Z
 - production status: ⚠️ mixed production markers
 - status tags: mixed, nonproduction, production, review
-- lines: 544
-- words: 1571
-- characters: 12430
-- headings: 115
+- lines: 562
+- words: 1643
+- characters: 12920
+- headings: 116
 - links: 13
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

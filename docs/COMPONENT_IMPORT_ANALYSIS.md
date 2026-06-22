@@ -941,15 +941,15 @@ This means:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:04:11.209862Z
+- timestamp: 2026-06-22T19:07:45.558631Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 937
-- words: 3318
-- characters: 26359
-- headings: 110
+- lines: 955
+- words: 3390
+- characters: 26829
+- headings: 111
 - links: 0
 - images: 0
 - tables: 23
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

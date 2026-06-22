@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-06-22T16:04:12.806816Z",
+  "timestamp": "2026-06-22T19:07:47.509427Z",
   "root": "/workspaces/qmoi-enhanced",
   "apply": true,
-  "total_files_scanned": 1236,
-  "updated_files": 1236,
+  "total_files_scanned": 1238,
+  "updated_files": 1238,
   "results": [
     {
       "path": "/workspaces/qmoi-enhanced/.devcontainer/README.md",
@@ -160,6 +160,12 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/ALLDEVICESSETTINGS.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/ALLDIRECTORIESMD.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/ALLDIRECTORIESMD.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/ALLERRORS.md",
@@ -7204,6 +7210,12 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/scan_results/production_readiness_summary.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/scripts/GITHUBCODESPACESCAPILOTCHATPAYED.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/scripts/GITHUBCODESPACESCAPILOTCHATPAYED.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/scripts/README.md",

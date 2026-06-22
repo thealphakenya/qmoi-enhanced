@@ -361,15 +361,15 @@ bash ./scripts/prod-start.sh
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:56.140098Z
+- timestamp: 2026-06-22T19:07:28.865406Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 357
-- words: 978
-- characters: 7175
-- headings: 90
+- lines: 375
+- words: 1050
+- characters: 7642
+- headings: 91
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

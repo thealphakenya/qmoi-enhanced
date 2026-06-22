@@ -295,15 +295,15 @@ app/components/
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:54.323291Z
+- timestamp: 2026-06-22T19:07:26.866737Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 291
-- words: 1252
-- characters: 9656
-- headings: 25
+- lines: 309
+- words: 1324
+- characters: 10124
+- headings: 26
 - links: 0
 - images: 0
 - tables: 6
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

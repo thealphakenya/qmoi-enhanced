@@ -201,15 +201,15 @@ interface Message {
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:04:11.773845Z
+- timestamp: 2026-06-22T19:07:46.283121Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 197
-- words: 979
-- characters: 7605
-- headings: 41
+- lines: 215
+- words: 1051
+- characters: 8073
+- headings: 42
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

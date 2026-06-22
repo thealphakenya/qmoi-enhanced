@@ -13,12 +13,12 @@ title: "Hugging Face Paid Plan Notes"
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:55.417106Z
+- timestamp: 2026-06-22T19:07:28.002451Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 362
-- words: 756
-- characters: 6647
+- lines: 371
+- words: 794
+- characters: 6842
 - headings: 21
 - links: 1
 - images: 0

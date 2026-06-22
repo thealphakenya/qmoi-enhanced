@@ -95,6 +95,7 @@ class ProductionImpl:
             '',
             '## Bulk work principles',
             '- Keep auth, theme, and universal app state consistent across QMOI shells.',
+            '- Add Qstore/Qcamera coverage to the resume tracker, app inventory, and documentation while fixing production markers.',
             '- Replace nonproduction markers with actual implementation, not temporary stubs.',
             '- Preserve documentation and synchronization across API, ROUTES, and style docs.',
             '- Use safe, deterministic operations and avoid destructive changes without review.',

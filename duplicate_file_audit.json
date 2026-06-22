@@ -1,6 +1,6 @@
 {
-  "generated": "2026-06-22T15:51:19.896522+00:00",
-  "total_files_scanned": 845,
+  "generated": "2026-06-22T19:01:18.429544+00:00",
+  "total_files_scanned": 976,
   "duplicate_groups": {
     "link_fixes_mapping.json": [
       "link_fixes_mapping.json",
@@ -23,6 +23,7 @@
       "hf_space_qvillage/5.md"
     ],
     "validation_report.json": [
+      ".qmoi_validation/validation_reports/tools/validation_report.json",
       "scripts/validation_report.json",
       "tools/validation_report.json",
       "validation_report.json"
@@ -39,6 +40,10 @@
     "dns_providers_config.json": [
       "dns_providers_config.json",
       "reports/dns_providers_config.json"
+    ],
+    "production_ready_summary.json": [
+      ".qmoi_validation/validation_reports/PRODUCTION_READY_SUMMARY.json",
+      "PRODUCTION_READY_SUMMARY.json"
     ],
     "system_integration_test_report.json": [
       "SYSTEM_INTEGRATION_TEST_REPORT.json",
@@ -81,6 +86,8 @@
       "vercel.json"
     ],
     "qmoi_memory.json": [
+      ".qmoi_validation/validation_reports/QMOI_MEMORY.json",
+      ".qmoi_validation/validation_reports/docs/QMOI_MEMORY.json",
       "qmoi_memory.json",
       "reports/qmoi_memory.json",
       "scripts/qmoi_memory.json"
@@ -160,6 +167,7 @@
       "ui_validation_report.json"
     ],
     "remediation_plan.json": [
+      ".qmoi_validation/validation_reports/tools/remediation_plan.json",
       "remediation_plan.json",
       "reports/remediation_plan.json"
     ],
@@ -198,6 +206,7 @@
       "reports/package-lock.json"
     ],
     "matches.json": [
+      ".qmoi_validation/validation_reports/MATCHES.json",
       "matches.json",
       "reports/matches.json"
     ],
@@ -320,6 +329,10 @@
       "eslint_changed.json",
       "reports/eslint_changed.json"
     ],
+    "final_production_readiness_report.json": [
+      ".qmoi_validation/validation_reports/FINAL_PRODUCTION_READINESS_REPORT.json",
+      "FINAL_PRODUCTION_READINESS_REPORT.json"
+    ],
     "openapi.json": [
       "openapi.json",
       "reports/openapi.json"
@@ -427,6 +440,7 @@
       "reports/parsing_clean_report.json"
     ],
     "components.json": [
+      ".qmoi_validation/validation_reports/COMPONENTS.json",
       "components.json",
       "reports/components.json"
     ],
@@ -551,6 +565,14 @@
       "lib/services/trading-engine.ts",
       "backend/trading-engine.ts"
     ],
+    "consciousness.json": [
+      ".qmoi_validation/validation_reports/CONSCIOUSNESS.json",
+      "qmoi_comprehensive_system/consciousness.json"
+    ],
+    "enhanced_features.json": [
+      ".qmoi_validation/validation_reports/docs/ENHANCED_FEATURES.json",
+      "config/enhanced_features.json"
+    ],
     "trading.ts": [
       "src/config/trading.ts",
       "src/types/trading.ts",
@@ -586,11 +608,16 @@
       "services/adapters/index.ts",
       "types/index.ts"
     ],
+    "allpercentages.json": [
+      ".qmoi_validation/allpercentages.json",
+      ".qmoi_validation/validation_reports/ALLPERCENTAGES.json"
+    ],
     "server.js": [
       "dashboard/server.js",
       "huggingface_space/server.js"
     ],
     "link_report.json": [
+      ".qmoi_validation/validation_reports/link_report.json",
       "docs/link_report.json",
       "tools/link_report.json"
     ],
@@ -602,9 +629,37 @@
       "scripts/autoheal.js",
       "tools/autoheal.js"
     ],
+    "light_index.json": [
+      ".qmoi_validation/validation_reports/tools/light_index.json",
+      "tools/light_index.json"
+    ],
     "update-docs.js": [
       "scripts/update-docs.js",
       "tools/update-docs.js"
+    ],
+    "releases_audit.json": [
+      ".qmoi_validation/validation_reports/tools/releases_audit.json",
+      "tools/releases_audit.json"
+    ],
+    "matches_priority.json": [
+      ".qmoi_validation/validation_reports/tools/matches_priority.json",
+      "tools/matches_priority.json"
+    ],
+    "update_markdown_report.json": [
+      ".qmoi_validation/validation_reports/tools/update_markdown_report.json",
+      "tools/update_markdown_report.json"
+    ],
+    "dns_links_report.json": [
+      ".qmoi_validation/validation_reports/tools/dns_links_report.json",
+      "tools/dns_links_report.json"
+    ],
+    "releases_assets_report.json": [
+      ".qmoi_validation/validation_reports/tools/releases_assets_report.json",
+      "tools/releases_assets_report.json"
+    ],
+    "qmoi_lint_report.json": [
+      ".qmoi_validation/validation_reports/tools/qmoi_lint_report.json",
+      "tools/qmoi_lint_report.json"
     ],
     "qmoi-auto-config.js": [
       "lib/qmoi-auto-config.js",
@@ -874,6 +929,178 @@
     "health.ts": [
       "pages/api/dashboard/health.ts",
       "pages/api/health.ts"
+    ],
+    "api_reference.json": [
+      ".qmoi_validation/validation_reports/API_REFERENCE.json",
+      ".qmoi_validation/validation_reports/docs/API_REFERENCE.json"
+    ],
+    "troubleshooting.json": [
+      ".qmoi_validation/validation_reports/TROUBLESHOOTING.json",
+      ".qmoi_validation/validation_reports/docs/TROUBLESHOOTING.json"
+    ],
+    "qvillage.json": [
+      ".qmoi_validation/validation_reports/QVILLAGE.json",
+      "assets/metadata/qvillage.json"
+    ],
+    "balances.json": [
+      ".qmoi_validation/validation_reports/BALANCES.json",
+      ".qmoi_validation/validation_reports/q/BALANCES.json",
+      ".qmoi_validation/validation_reports/scripts/q/BALANCES.json",
+      "scripts/cashon_data/balances.json"
+    ],
+    "qmoi-enhanced-autotests.json": [
+      ".qmoi_validation/validation_reports/QMOI-ENHANCED-AUTOTESTS.json",
+      ".qmoi_validation/validation_reports/docs/QMOI-ENHANCED-AUTOTESTS.json"
+    ],
+    "q.json": [
+      ".qmoi_validation/validation_reports/Q.json",
+      ".qmoi_validation/validation_reports/q.json"
+    ],
+    "readme.json": [
+      ".qmoi_validation/validation_reports/src/assets/icons/apps/README.json",
+      ".qmoi_validation/validation_reports/.devcontainer/README.json",
+      ".qmoi_validation/validation_reports/ALL_APPS/README.json",
+      ".qmoi_validation/validation_reports/README.json",
+      ".qmoi_validation/validation_reports/assets/icons/apps/README.json",
+      ".qmoi_validation/validation_reports/deploy/README.json",
+      ".qmoi_validation/validation_reports/deploy/static-nginx/README.json",
+      ".qmoi_validation/validation_reports/docs/README.json",
+      ".qmoi_validation/validation_reports/git-lfs-3.5.1/README.json",
+      ".qmoi_validation/validation_reports/git-lfs-3.5.1/git-lfs-3.5.1/README.json",
+      ".qmoi_validation/validation_reports/hf_space_qvillage/README.json",
+      ".qmoi_validation/validation_reports/mobile/README.json",
+      ".qmoi_validation/validation_reports/models/latest/README.json",
+      ".qmoi_validation/validation_reports/pwa_apps/README.json",
+      ".qmoi_validation/validation_reports/pwa_apps/q-alpha/README.json",
+      ".qmoi_validation/validation_reports/qcity/README.json",
+      ".qmoi_validation/validation_reports/qvillage/README.json",
+      ".qmoi_validation/validation_reports/scripts/README.json",
+      ".qmoi_validation/validation_reports/scripts/daemon/README.json",
+      ".qmoi_validation/validation_reports/scripts/diagnostics/README.json",
+      ".qmoi_validation/validation_reports/scripts/finance/README.json",
+      ".qmoi_validation/validation_reports/scripts/wallets/README.json",
+      ".qmoi_validation/validation_reports/tools/icon-manager/README.json",
+      ".qmoi_validation/validation_reports/tools/placeholder_artifacts/README.json",
+      ".qmoi_validation/validation_reports/tools/rust_lint_fix/README.json",
+      ".qmoi_validation/validation_reports/whatsapp-qmoi-bot/README.json"
+    ],
+    "credential_rotation_playbook.json": [
+      ".qmoi_validation/validation_reports/CREDENTIAL_ROTATION_PLAYBOOK.json",
+      ".qmoi_validation/validation_reports/docs/CREDENTIAL_ROTATION_PLAYBOOK.json"
+    ],
+    "comprehensive_production_readiness_report.json": [
+      ".qmoi_validation/validation_reports/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.json",
+      ".qmoi_validation/validation_reports/reports/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.json"
+    ],
+    "quick_reference.json": [
+      ".qmoi_validation/validation_reports/QUICK_REFERENCE.json",
+      ".qmoi_validation/validation_reports/docs/QUICK_REFERENCE.json"
+    ],
+    "qcity.json": [
+      ".qmoi_validation/validation_reports/QCITY.json",
+      "assets/metadata/qcity.json"
+    ],
+    "parallel.json": [
+      ".qmoi_validation/validation_reports/docs/PARALLEL.json",
+      ".qmoi_validation/validation_reports/parallel.json"
+    ],
+    "production_checklist.json": [
+      ".qmoi_validation/validation_reports/PRODUCTION_CHECKLIST.json",
+      ".qmoi_validation/validation_reports/docs/PRODUCTION_CHECKLIST.json"
+    ],
+    "implementation_summary.json": [
+      ".qmoi_validation/validation_reports/IMPLEMENTATION_SUMMARY.json",
+      ".qmoi_validation/validation_reports/docs/IMPLEMENTATION_SUMMARY.json"
+    ],
+    "qmoigithubdev.json": [
+      ".qmoi_validation/validation_reports/QMOIGITHUBDEV.json",
+      ".qmoi_validation/validation_reports/docs/QMOIGITHUBDEV.json"
+    ],
+    "qtools.json": [
+      ".qmoi_validation/validation_reports/QTOOLS.json",
+      ".qmoi_validation/validation_reports/docs/QTOOLS.json"
+    ],
+    "apis_v1.json": [
+      ".qmoi_validation/validation_reports/APIs_v1.json",
+      ".qmoi_validation/validation_reports/docs/APIs_v1.json"
+    ],
+    "references.json": [
+      ".qmoi_validation/validation_reports/REFERENCES.json",
+      ".qmoi_validation/validation_reports/docs/REFERENCES.json"
+    ],
+    "qmoiclone.json": [
+      ".qmoi_validation/validation_reports/QMOICLONE.json",
+      ".qmoi_validation/validation_reports/docs/QMOICLONE.json"
+    ],
+    "production_readiness_report.json": [
+      ".qmoi_validation/validation_reports/PRODUCTION_READINESS_REPORT.json",
+      ".qmoi_validation/validation_reports/reports/production_readiness_report.json"
+    ],
+    "api.json": [
+      ".qmoi_validation/validation_reports/API.json",
+      ".qmoi_validation/validation_reports/docs/API.json"
+    ],
+    "qmoigitlabdev.json": [
+      ".qmoi_validation/validation_reports/QMOIGITLABDEV.json",
+      ".qmoi_validation/validation_reports/docs/QMOIGITLABDEV.json"
+    ],
+    "qmoiverceldev.json": [
+      ".qmoi_validation/validation_reports/QMOIVERCELDEV.json",
+      ".qmoi_validation/validation_reports/docs/QMOIVERCELDEV.json"
+    ],
+    "deploy.json": [
+      ".qmoi_validation/validation_reports/DEPLOY.json",
+      ".qmoi_validation/validation_reports/docs/DEPLOY.json"
+    ],
+    "qstore.json": [
+      ".qmoi_validation/validation_reports/Qstore.json",
+      "assets/metadata/qstore.json"
+    ],
+    "alltestsautotests.json": [
+      ".qmoi_validation/validation_reports/ALLTESTSAUTOTESTS.json",
+      ".qmoi_validation/validation_reports/docs/ALLTESTSAUTOTESTS.json"
+    ],
+    "enhancedqvs.json": [
+      ".qmoi_validation/validation_reports/ENHANCEDQVS.json",
+      ".qmoi_validation/validation_reports/QVS/ENHANCEDQVS.json",
+      ".qmoi_validation/validation_reports/docs/ENHANCEDQVS.json"
+    ],
+    "deployment_checklist.json": [
+      ".qmoi_validation/validation_reports/DEPLOYMENT_CHECKLIST.json",
+      ".qmoi_validation/validation_reports/production_deployment/DEPLOYMENT_CHECKLIST.json"
+    ],
+    "autotest_report.json": [
+      ".qmoi_validation/validation_reports/autotest_report.json",
+      ".qmoi_validation/validation_reports/tools/autotest_report.json"
+    ],
+    "deployment_guide.json": [
+      ".qmoi_validation/validation_reports/.evolution_logs/DEPLOYMENT_GUIDE.json",
+      ".qmoi_validation/validation_reports/DEPLOYMENT_GUIDE.json"
+    ],
+    "evolution.json": [
+      ".qmoi_validation/validation_reports/EVOLUTION.json",
+      ".qmoi_validation/validation_reports/docs/EVOLUTION.json"
+    ],
+    "5.json": [
+      ".qmoi_validation/validation_reports/5.json",
+      ".qmoi_validation/validation_reports/hf_space_qvillage/5.json"
+    ],
+    "root_production_status.json": [
+      ".qmoi_validation/validation_reports/ROOT_PRODUCTION_STATUS.json",
+      ".qmoi_validation/validation_reports/ROOT_production_STATUS.json"
+    ],
+    "changelog.json": [
+      ".qmoi_validation/validation_reports/git-lfs-3.5.1/CHANGELOG.json",
+      ".qmoi_validation/validation_reports/git-lfs-3.5.1/git-lfs-3.5.1/CHANGELOG.json"
+    ],
+    "production_full_validation_report.json": [
+      ".qmoi_validation/validation_reports/reports/PRODUCTION_FULL_VALIDATION_REPORT.json",
+      ".qmoi_validation/validation_reports/reports/production_FULL_VALIDATION_REPORT.json"
+    ],
+    "production_status.json": [
+      ".qmoi_validation/validation_reports/app/api/PRODUCTION_STATUS.json",
+      ".qmoi_validation/validation_reports/app/api/production_STATUS.json",
+      ".qmoi_validation/validation_reports/src/qcity/PRODUCTION_STATUS.json"
     ],
     "client.ts": [
       "src/api/client.ts",

@@ -131,15 +131,15 @@ All API endpoints are organized under `/api/` with the following structure:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:52.593204Z
+- timestamp: 2026-06-22T19:07:24.841711Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 127
-- words: 548
-- characters: 4643
-- headings: 19
+- lines: 145
+- words: 620
+- characters: 5111
+- headings: 20
 - links: 22
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

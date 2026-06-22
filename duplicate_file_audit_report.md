@@ -1,9 +1,9 @@
 # Duplicate File Audit Report
 
-Generated: 2026-06-22T15:51:19.895357Z
+Generated: 2026-06-22T19:01:18.428144Z
 
-Total files scanned: 3445
-Total duplicate file titles found: 205
+Total files scanned: 4706
+Total duplicate file titles found: 253
 
 ## Duplicate Files by Filename
 
@@ -349,6 +349,36 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `app/admin/master/activity/page.tsx`
 
+### `readme.json` (26 copies)
+- `.qmoi_validation/validation_reports/src/assets/icons/apps/README.json`
+- `.qmoi_validation/validation_reports/.devcontainer/README.json`
+- `.qmoi_validation/validation_reports/ALL_APPS/README.json`
+- `.qmoi_validation/validation_reports/README.json`
+- `.qmoi_validation/validation_reports/assets/icons/apps/README.json`
+- `.qmoi_validation/validation_reports/deploy/README.json`
+- `.qmoi_validation/validation_reports/deploy/static-nginx/README.json`
+- `.qmoi_validation/validation_reports/docs/README.json`
+- `.qmoi_validation/validation_reports/git-lfs-3.5.1/README.json`
+- `.qmoi_validation/validation_reports/git-lfs-3.5.1/git-lfs-3.5.1/README.json`
+- `.qmoi_validation/validation_reports/hf_space_qvillage/README.json`
+- `.qmoi_validation/validation_reports/mobile/README.json`
+- `.qmoi_validation/validation_reports/models/latest/README.json`
+- `.qmoi_validation/validation_reports/pwa_apps/README.json`
+- `.qmoi_validation/validation_reports/pwa_apps/q-alpha/README.json`
+- `.qmoi_validation/validation_reports/qcity/README.json`
+- `.qmoi_validation/validation_reports/qvillage/README.json`
+- `.qmoi_validation/validation_reports/scripts/README.json`
+- `.qmoi_validation/validation_reports/scripts/daemon/README.json`
+- `.qmoi_validation/validation_reports/scripts/diagnostics/README.json`
+- `.qmoi_validation/validation_reports/scripts/finance/README.json`
+- `.qmoi_validation/validation_reports/scripts/wallets/README.json`
+- `.qmoi_validation/validation_reports/tools/icon-manager/README.json`
+- `.qmoi_validation/validation_reports/tools/placeholder_artifacts/README.json`
+- `.qmoi_validation/validation_reports/tools/rust_lint_fix/README.json`
+- `.qmoi_validation/validation_reports/whatsapp-qmoi-bot/README.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/src/assets/icons/apps/README.json`
+
 ### `readme.md` (26 copies)
 - `src/assets/icons/apps/README.md`
 - `.devcontainer/README.md`
@@ -440,6 +470,15 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `dashboard/package.json`
 
+### `qmoi_memory.json` (5 copies)
+- `.qmoi_validation/validation_reports/QMOI_MEMORY.json`
+- `.qmoi_validation/validation_reports/docs/QMOI_MEMORY.json`
+- `qmoi_memory.json`
+- `reports/qmoi_memory.json`
+- `scripts/qmoi_memory.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/QMOI_MEMORY.json`
+
 ### `service.ts` (5 copies)
 - `app/lib/auth/service.ts`
 - `lib/auth/service.ts`
@@ -456,6 +495,14 @@ Total duplicate file titles found: 205
 - `qmoi-space-pwa/js/app.js`
 
 **Recommended canonical source:** `src/App.js`
+
+### `balances.json` (4 copies)
+- `.qmoi_validation/validation_reports/BALANCES.json`
+- `.qmoi_validation/validation_reports/q/BALANCES.json`
+- `.qmoi_validation/validation_reports/scripts/q/BALANCES.json`
+- `scripts/cashon_data/balances.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/BALANCES.json`
 
 ### `index.js` (4 copies)
 - `dashboard/src/index.js`
@@ -489,6 +536,14 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `src/config/trading.ts`
 
+### `validation_report.json` (4 copies)
+- `.qmoi_validation/validation_reports/tools/validation_report.json`
+- `scripts/validation_report.json`
+- `tools/validation_report.json`
+- `validation_report.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/tools/validation_report.json`
+
 ### `wallet.ts` (4 copies)
 - `app/api/wallet.ts`
 - `src/config/wallet.ts`
@@ -518,6 +573,13 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `BALANCES.md`
 
+### `components.json` (3 copies)
+- `.qmoi_validation/validation_reports/COMPONENTS.json`
+- `components.json`
+- `reports/components.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/COMPONENTS.json`
+
 ### `config.ts` (3 copies)
 - `routes/api/qcity/config.ts`
 - `routes/api/qcity/trading/config.ts`
@@ -531,6 +593,13 @@ Total duplicate file titles found: 205
 - `reports/domain_health_report.json`
 
 **Recommended canonical source:** `docs/domain_health_report.json`
+
+### `enhancedqvs.json` (3 copies)
+- `.qmoi_validation/validation_reports/ENHANCEDQVS.json`
+- `.qmoi_validation/validation_reports/QVS/ENHANCEDQVS.json`
+- `.qmoi_validation/validation_reports/docs/ENHANCEDQVS.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/ENHANCEDQVS.json`
 
 ### `enhancedqvs.md` (3 copies)
 - `ENHANCEDQVS.md`
@@ -560,6 +629,13 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `app/components/LcSpaces.tsx`
 
+### `link_report.json` (3 copies)
+- `.qmoi_validation/validation_reports/link_report.json`
+- `docs/link_report.json`
+- `tools/link_report.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/link_report.json`
+
 ### `link_validation_report.json` (3 copies)
 - `link_validation_report.json`
 - `reports/link_validation_report.json`
@@ -573,6 +649,13 @@ Total duplicate file titles found: 205
 - `qmoi-space/public/manifest.json`
 
 **Recommended canonical source:** `qglobalsim/manifest.json`
+
+### `matches.json` (3 copies)
+- `.qmoi_validation/validation_reports/MATCHES.json`
+- `matches.json`
+- `reports/matches.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/MATCHES.json`
 
 ### `memory.ts` (3 copies)
 - `app/lib/auth/memory.ts`
@@ -609,6 +692,13 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `app/lib/db/prisma.ts`
 
+### `production_status.json` (3 copies)
+- `.qmoi_validation/validation_reports/app/api/PRODUCTION_STATUS.json`
+- `.qmoi_validation/validation_reports/app/api/production_STATUS.json`
+- `.qmoi_validation/validation_reports/src/qcity/PRODUCTION_STATUS.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/app/api/PRODUCTION_STATUS.json`
+
 ### `production_status.md` (3 copies)
 - `app/api/PRODUCTION_STATUS.md`
 - `app/api/production_STATUS.md`
@@ -637,13 +727,6 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `app/components/QIStateWindow.tsx`
 
-### `qmoi_memory.json` (3 copies)
-- `qmoi_memory.json`
-- `reports/qmoi_memory.json`
-- `scripts/qmoi_memory.json`
-
-**Recommended canonical source:** `qmoi_memory.json`
-
 ### `qmoiautofixdashboard.tsx` (3 copies)
 - `app/components/QMOIAutoFixDashboard.tsx`
 - `components/QMOIAutoFixDashboard.tsx`
@@ -657,6 +740,13 @@ Total duplicate file titles found: 205
 - `components/q-city/QVillage.tsx`
 
 **Recommended canonical source:** `app/components/QVillage.tsx`
+
+### `remediation_plan.json` (3 copies)
+- `.qmoi_validation/validation_reports/tools/remediation_plan.json`
+- `remediation_plan.json`
+- `reports/remediation_plan.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/tools/remediation_plan.json`
 
 ### `settingspanel.tsx` (3 copies)
 - `app/components/SettingsPanel.tsx`
@@ -686,19 +776,18 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `data/users.json`
 
-### `validation_report.json` (3 copies)
-- `scripts/validation_report.json`
-- `tools/validation_report.json`
-- `validation_report.json`
-
-**Recommended canonical source:** `scripts/validation_report.json`
-
 ### `voiceselector.tsx` (3 copies)
 - `src/components/qmoi/VoiceSelector.tsx`
 - `src/components/shared/voice/VoiceSelector.tsx`
 - `src/qcity/VoiceSelector.tsx`
 
 **Recommended canonical source:** `src/components/qmoi/VoiceSelector.tsx`
+
+### `5.json` (2 copies)
+- `.qmoi_validation/validation_reports/5.json`
+- `.qmoi_validation/validation_reports/hf_space_qvillage/5.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/5.json`
 
 ### `5.md` (2 copies)
 - `5.md`
@@ -730,6 +819,18 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `AI_POWERED_TRADING_REPORT.json`
 
+### `allpercentages.json` (2 copies)
+- `.qmoi_validation/allpercentages.json`
+- `.qmoi_validation/validation_reports/ALLPERCENTAGES.json`
+
+**Recommended canonical source:** `.qmoi_validation/allpercentages.json`
+
+### `alltestsautotests.json` (2 copies)
+- `.qmoi_validation/validation_reports/ALLTESTSAUTOTESTS.json`
+- `.qmoi_validation/validation_reports/docs/ALLTESTSAUTOTESTS.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/ALLTESTSAUTOTESTS.json`
+
 ### `alltestsautotests.md` (2 copies)
 - `ALLTESTSAUTOTESTS.md`
 - `docs/ALLTESTSAUTOTESTS.md`
@@ -742,17 +843,35 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `src/components/alpha-q-ai-system.tsx`
 
+### `api.json` (2 copies)
+- `.qmoi_validation/validation_reports/API.json`
+- `.qmoi_validation/validation_reports/docs/API.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/API.json`
+
 ### `api.md` (2 copies)
 - `API.md`
 - `docs/API.md`
 
 **Recommended canonical source:** `API.md`
 
+### `api_reference.json` (2 copies)
+- `.qmoi_validation/validation_reports/API_REFERENCE.json`
+- `.qmoi_validation/validation_reports/docs/API_REFERENCE.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/API_REFERENCE.json`
+
 ### `api_reference.md` (2 copies)
 - `API_REFERENCE.md`
 - `docs/API_REFERENCE.md`
 
 **Recommended canonical source:** `API_REFERENCE.md`
+
+### `apis_v1.json` (2 copies)
+- `.qmoi_validation/validation_reports/APIs_v1.json`
+- `.qmoi_validation/validation_reports/docs/APIs_v1.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/APIs_v1.json`
 
 ### `apis_v1.md` (2 copies)
 - `APIs_v1.md`
@@ -808,6 +927,12 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `scripts/autoheal.js`
 
+### `autotest_report.json` (2 copies)
+- `.qmoi_validation/validation_reports/autotest_report.json`
+- `.qmoi_validation/validation_reports/tools/autotest_report.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/autotest_report.json`
+
 ### `autotest_report.md` (2 copies)
 - `autotest_report.md`
 - `tools/autotest_report.md`
@@ -844,6 +969,12 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `build_report_v1.2.3.json`
 
+### `changelog.json` (2 copies)
+- `.qmoi_validation/validation_reports/git-lfs-3.5.1/CHANGELOG.json`
+- `.qmoi_validation/validation_reports/git-lfs-3.5.1/git-lfs-3.5.1/CHANGELOG.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/git-lfs-3.5.1/CHANGELOG.json`
+
 ### `changelog.md` (2 copies)
 - `git-lfs-3.5.1/CHANGELOG.md`
 - `git-lfs-3.5.1/git-lfs-3.5.1/CHANGELOG.md`
@@ -874,17 +1005,17 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `src/components/ComponentGallery.tsx`
 
-### `components.json` (2 copies)
-- `components.json`
-- `reports/components.json`
-
-**Recommended canonical source:** `components.json`
-
 ### `comprehensive_fixes_report.json` (2 copies)
 - `comprehensive_fixes_report.json`
 - `reports/comprehensive_fixes_report.json`
 
 **Recommended canonical source:** `comprehensive_fixes_report.json`
+
+### `comprehensive_production_readiness_report.json` (2 copies)
+- `.qmoi_validation/validation_reports/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.json`
+- `.qmoi_validation/validation_reports/reports/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.json`
 
 ### `comprehensive_production_readiness_report.md` (2 copies)
 - `COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md`
@@ -897,6 +1028,18 @@ Total duplicate file titles found: 205
 - `reports/config.json`
 
 **Recommended canonical source:** `config.json`
+
+### `consciousness.json` (2 copies)
+- `.qmoi_validation/validation_reports/CONSCIOUSNESS.json`
+- `qmoi_comprehensive_system/consciousness.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/CONSCIOUSNESS.json`
+
+### `credential_rotation_playbook.json` (2 copies)
+- `.qmoi_validation/validation_reports/CREDENTIAL_ROTATION_PLAYBOOK.json`
+- `.qmoi_validation/validation_reports/docs/CREDENTIAL_ROTATION_PLAYBOOK.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/CREDENTIAL_ROTATION_PLAYBOOK.json`
 
 ### `credential_rotation_playbook.md` (2 copies)
 - `CREDENTIAL_ROTATION_PLAYBOOK.md`
@@ -916,17 +1059,35 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `huggingface_space/dashboard.js`
 
+### `deploy.json` (2 copies)
+- `.qmoi_validation/validation_reports/DEPLOY.json`
+- `.qmoi_validation/validation_reports/docs/DEPLOY.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/DEPLOY.json`
+
 ### `deploy.md` (2 copies)
 - `DEPLOY.md`
 - `docs/DEPLOY.md`
 
 **Recommended canonical source:** `DEPLOY.md`
 
+### `deployment_checklist.json` (2 copies)
+- `.qmoi_validation/validation_reports/DEPLOYMENT_CHECKLIST.json`
+- `.qmoi_validation/validation_reports/production_deployment/DEPLOYMENT_CHECKLIST.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/DEPLOYMENT_CHECKLIST.json`
+
 ### `deployment_checklist.md` (2 copies)
 - `DEPLOYMENT_CHECKLIST.md`
 - `production_deployment/DEPLOYMENT_CHECKLIST.md`
 
 **Recommended canonical source:** `DEPLOYMENT_CHECKLIST.md`
+
+### `deployment_guide.json` (2 copies)
+- `.qmoi_validation/validation_reports/.evolution_logs/DEPLOYMENT_GUIDE.json`
+- `.qmoi_validation/validation_reports/DEPLOYMENT_GUIDE.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/.evolution_logs/DEPLOYMENT_GUIDE.json`
 
 ### `deployment_guide.md` (2 copies)
 - `.evolution_logs/DEPLOYMENT_GUIDE.md`
@@ -951,6 +1112,12 @@ Total duplicate file titles found: 205
 - `reports/dns_deployment_results.json`
 
 **Recommended canonical source:** `dns_deployment_results.json`
+
+### `dns_links_report.json` (2 copies)
+- `.qmoi_validation/validation_reports/tools/dns_links_report.json`
+- `tools/dns_links_report.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/tools/dns_links_report.json`
 
 ### `dns_providers_config.json` (2 copies)
 - `dns_providers_config.json`
@@ -1012,6 +1179,12 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `enhanced-error-fix.js`
 
+### `enhanced_features.json` (2 copies)
+- `.qmoi_validation/validation_reports/docs/ENHANCED_FEATURES.json`
+- `config/enhanced_features.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/docs/ENHANCED_FEATURES.json`
+
 ### `errorboundary.tsx` (2 copies)
 - `src/components/ErrorBoundary.tsx`
 - `components/ErrorBoundary.tsx`
@@ -1042,11 +1215,23 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `eslint_report_src.json`
 
+### `evolution.json` (2 copies)
+- `.qmoi_validation/validation_reports/EVOLUTION.json`
+- `.qmoi_validation/validation_reports/docs/EVOLUTION.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/EVOLUTION.json`
+
 ### `evolution.md` (2 copies)
 - `EVOLUTION.md`
 - `docs/EVOLUTION.md`
 
 **Recommended canonical source:** `EVOLUTION.md`
+
+### `final_production_readiness_report.json` (2 copies)
+- `.qmoi_validation/validation_reports/FINAL_PRODUCTION_READINESS_REPORT.json`
+- `FINAL_PRODUCTION_READINESS_REPORT.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/FINAL_PRODUCTION_READINESS_REPORT.json`
 
 ### `financialmanager.tsx` (2 copies)
 - `components/FinancialManager.tsx`
@@ -1102,6 +1287,12 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `app/components/HelpGuide.tsx`
 
+### `implementation_summary.json` (2 copies)
+- `.qmoi_validation/validation_reports/IMPLEMENTATION_SUMMARY.json`
+- `.qmoi_validation/validation_reports/docs/IMPLEMENTATION_SUMMARY.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/IMPLEMENTATION_SUMMARY.json`
+
 ### `implementation_summary.md` (2 copies)
 - `IMPLEMENTATION_SUMMARY.md`
 - `docs/IMPLEMENTATION_SUMMARY.md`
@@ -1138,17 +1329,17 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `license-report.json`
 
+### `light_index.json` (2 copies)
+- `.qmoi_validation/validation_reports/tools/light_index.json`
+- `tools/light_index.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/tools/light_index.json`
+
 ### `link_fixes_mapping.json` (2 copies)
 - `link_fixes_mapping.json`
 - `reports/link_fixes_mapping.json`
 
 **Recommended canonical source:** `link_fixes_mapping.json`
-
-### `link_report.json` (2 copies)
-- `docs/link_report.json`
-- `tools/link_report.json`
-
-**Recommended canonical source:** `docs/link_report.json`
 
 ### `links_domains_comprehensive_report.json` (2 copies)
 - `links_domains_comprehensive_report.json`
@@ -1180,11 +1371,11 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `app/lib/auth/master.ts`
 
-### `matches.json` (2 copies)
-- `matches.json`
-- `reports/matches.json`
+### `matches_priority.json` (2 copies)
+- `.qmoi_validation/validation_reports/tools/matches_priority.json`
+- `tools/matches_priority.json`
 
-**Recommended canonical source:** `matches.json`
+**Recommended canonical source:** `.qmoi_validation/validation_reports/tools/matches_priority.json`
 
 ### `memories.json` (2 copies)
 - `memories.json`
@@ -1239,6 +1430,12 @@ Total duplicate file titles found: 205
 - `reports/package-watchdebug.json`
 
 **Recommended canonical source:** `package-watchdebug.json`
+
+### `parallel.json` (2 copies)
+- `.qmoi_validation/validation_reports/docs/PARALLEL.json`
+- `.qmoi_validation/validation_reports/parallel.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/docs/PARALLEL.json`
 
 ### `parallel.md` (2 copies)
 - `docs/PARALLEL.md`
@@ -1300,6 +1497,12 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `postman-collection.json`
 
+### `production_checklist.json` (2 copies)
+- `.qmoi_validation/validation_reports/PRODUCTION_CHECKLIST.json`
+- `.qmoi_validation/validation_reports/docs/PRODUCTION_CHECKLIST.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/PRODUCTION_CHECKLIST.json`
+
 ### `production_checklist.md` (2 copies)
 - `PRODUCTION_CHECKLIST.md`
 - `docs/PRODUCTION_CHECKLIST.md`
@@ -1318,6 +1521,12 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `production_domain_health.json`
 
+### `production_full_validation_report.json` (2 copies)
+- `.qmoi_validation/validation_reports/reports/PRODUCTION_FULL_VALIDATION_REPORT.json`
+- `.qmoi_validation/validation_reports/reports/production_FULL_VALIDATION_REPORT.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/reports/PRODUCTION_FULL_VALIDATION_REPORT.json`
+
 ### `production_full_validation_report.md` (2 copies)
 - `reports/PRODUCTION_FULL_VALIDATION_REPORT.md`
 - `reports/production_FULL_VALIDATION_REPORT.md`
@@ -1330,11 +1539,29 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `production_health_check.json`
 
+### `production_readiness_report.json` (2 copies)
+- `.qmoi_validation/validation_reports/PRODUCTION_READINESS_REPORT.json`
+- `.qmoi_validation/validation_reports/reports/production_readiness_report.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/PRODUCTION_READINESS_REPORT.json`
+
 ### `production_readiness_report.md` (2 copies)
 - `PRODUCTION_READINESS_REPORT.md`
 - `reports/production_readiness_report.md`
 
 **Recommended canonical source:** `PRODUCTION_READINESS_REPORT.md`
+
+### `production_ready_summary.json` (2 copies)
+- `.qmoi_validation/validation_reports/PRODUCTION_READY_SUMMARY.json`
+- `PRODUCTION_READY_SUMMARY.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/PRODUCTION_READY_SUMMARY.json`
+
+### `q.json` (2 copies)
+- `.qmoi_validation/validation_reports/Q.json`
+- `.qmoi_validation/validation_reports/q.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/Q.json`
 
 ### `q.md` (2 copies)
 - `Q.md`
@@ -1353,6 +1580,12 @@ Total duplicate file titles found: 205
 - `src/qcity/QAvatar.tsx`
 
 **Recommended canonical source:** `components/QAvatar.tsx`
+
+### `qcity.json` (2 copies)
+- `.qmoi_validation/validation_reports/QCITY.json`
+- `assets/metadata/qcity.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/QCITY.json`
 
 ### `qcity.ts` (2 copies)
 - `api/qcity.ts`
@@ -1384,6 +1617,12 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `lib/qmoi-auto-config.js`
 
+### `qmoi-enhanced-autotests.json` (2 copies)
+- `.qmoi_validation/validation_reports/QMOI-ENHANCED-AUTOTESTS.json`
+- `.qmoi_validation/validation_reports/docs/QMOI-ENHANCED-AUTOTESTS.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/QMOI-ENHANCED-AUTOTESTS.json`
+
 ### `qmoi-enhanced-autotests.md` (2 copies)
 - `QMOI-ENHANCED-AUTOTESTS.md`
 - `docs/QMOI-ENHANCED-AUTOTESTS.md`
@@ -1408,11 +1647,23 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `qmoi_health_status.json`
 
+### `qmoi_lint_report.json` (2 copies)
+- `.qmoi_validation/validation_reports/tools/qmoi_lint_report.json`
+- `tools/qmoi_lint_report.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/tools/qmoi_lint_report.json`
+
 ### `qmoi_memory.md` (2 copies)
 - `QMOI_MEMORY.md`
 - `docs/QMOI_MEMORY.md`
 
 **Recommended canonical source:** `QMOI_MEMORY.md`
+
+### `qmoiclone.json` (2 copies)
+- `.qmoi_validation/validation_reports/QMOICLONE.json`
+- `.qmoi_validation/validation_reports/docs/QMOICLONE.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/QMOICLONE.json`
 
 ### `qmoiclone.md` (2 copies)
 - `QMOICLONE.md`
@@ -1426,11 +1677,23 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `components/QMOIDashboard.tsx`
 
+### `qmoigithubdev.json` (2 copies)
+- `.qmoi_validation/validation_reports/QMOIGITHUBDEV.json`
+- `.qmoi_validation/validation_reports/docs/QMOIGITHUBDEV.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/QMOIGITHUBDEV.json`
+
 ### `qmoigithubdev.md` (2 copies)
 - `QMOIGITHUBDEV.md`
 - `docs/QMOIGITHUBDEV.md`
 
 **Recommended canonical source:** `QMOIGITHUBDEV.md`
+
+### `qmoigitlabdev.json` (2 copies)
+- `.qmoi_validation/validation_reports/QMOIGITLABDEV.json`
+- `.qmoi_validation/validation_reports/docs/QMOIGITLABDEV.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/QMOIGITLABDEV.json`
 
 ### `qmoigitlabdev.md` (2 copies)
 - `QMOIGITLABDEV.md`
@@ -1456,11 +1719,29 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `components/QmoiRevenueDashboard.tsx`
 
+### `qmoiverceldev.json` (2 copies)
+- `.qmoi_validation/validation_reports/QMOIVERCELDEV.json`
+- `.qmoi_validation/validation_reports/docs/QMOIVERCELDEV.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/QMOIVERCELDEV.json`
+
 ### `qmoiverceldev.md` (2 copies)
 - `QMOIVERCELDEV.md`
 - `docs/QMOIVERCELDEV.md`
 
 **Recommended canonical source:** `QMOIVERCELDEV.md`
+
+### `qstore.json` (2 copies)
+- `.qmoi_validation/validation_reports/Qstore.json`
+- `assets/metadata/qstore.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/Qstore.json`
+
+### `qtools.json` (2 copies)
+- `.qmoi_validation/validation_reports/QTOOLS.json`
+- `.qmoi_validation/validation_reports/docs/QTOOLS.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/QTOOLS.json`
 
 ### `qtools.md` (2 copies)
 - `QTOOLS.md`
@@ -1468,11 +1749,23 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `QTOOLS.md`
 
+### `quick_reference.json` (2 copies)
+- `.qmoi_validation/validation_reports/QUICK_REFERENCE.json`
+- `.qmoi_validation/validation_reports/docs/QUICK_REFERENCE.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/QUICK_REFERENCE.json`
+
 ### `quick_reference.md` (2 copies)
 - `QUICK_REFERENCE.md`
 - `docs/QUICK_REFERENCE.md`
 
 **Recommended canonical source:** `QUICK_REFERENCE.md`
+
+### `qvillage.json` (2 copies)
+- `.qmoi_validation/validation_reports/QVILLAGE.json`
+- `assets/metadata/qvillage.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/QVILLAGE.json`
 
 ### `qvillagedatasetspanel.tsx` (2 copies)
 - `app/components/QVillageDatasetsPanel.tsx`
@@ -1485,6 +1778,12 @@ Total duplicate file titles found: 205
 - `lib/rbac.ts`
 
 **Recommended canonical source:** `app/api/auth/rbac.ts`
+
+### `references.json` (2 copies)
+- `.qmoi_validation/validation_reports/REFERENCES.json`
+- `.qmoi_validation/validation_reports/docs/REFERENCES.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/REFERENCES.json`
 
 ### `references.md` (2 copies)
 - `REFERENCES.md`
@@ -1504,11 +1803,17 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `release_assets_manifest.json`
 
-### `remediation_plan.json` (2 copies)
-- `remediation_plan.json`
-- `reports/remediation_plan.json`
+### `releases_assets_report.json` (2 copies)
+- `.qmoi_validation/validation_reports/tools/releases_assets_report.json`
+- `tools/releases_assets_report.json`
 
-**Recommended canonical source:** `remediation_plan.json`
+**Recommended canonical source:** `.qmoi_validation/validation_reports/tools/releases_assets_report.json`
+
+### `releases_audit.json` (2 copies)
+- `.qmoi_validation/validation_reports/tools/releases_audit.json`
+- `tools/releases_audit.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/tools/releases_audit.json`
 
 ### `replacement_apps_manifest.json` (2 copies)
 - `REPLACEMENT_APPS_MANIFEST.json`
@@ -1527,6 +1832,12 @@ Total duplicate file titles found: 205
 - `revoked_tokens.json`
 
 **Recommended canonical source:** `reports/revoked_tokens.json`
+
+### `root_production_status.json` (2 copies)
+- `.qmoi_validation/validation_reports/ROOT_PRODUCTION_STATUS.json`
+- `.qmoi_validation/validation_reports/ROOT_production_STATUS.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/ROOT_PRODUCTION_STATUS.json`
 
 ### `root_production_status.md` (2 copies)
 - `ROOT_PRODUCTION_STATUS.md`
@@ -1588,6 +1899,12 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `lib/services/trading-engine.ts`
 
+### `troubleshooting.json` (2 copies)
+- `.qmoi_validation/validation_reports/TROUBLESHOOTING.json`
+- `.qmoi_validation/validation_reports/docs/TROUBLESHOOTING.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/TROUBLESHOOTING.json`
+
 ### `troubleshooting.md` (2 copies)
 - `TROUBLESHOOTING.md`
 - `docs/TROUBLESHOOTING.md`
@@ -1617,6 +1934,12 @@ Total duplicate file titles found: 205
 - `tools/update-docs.js`
 
 **Recommended canonical source:** `scripts/update-docs.js`
+
+### `update_markdown_report.json` (2 copies)
+- `.qmoi_validation/validation_reports/tools/update_markdown_report.json`
+- `tools/update_markdown_report.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/tools/update_markdown_report.json`
 
 ### `use-mobile.tsx` (2 copies)
 - `components/ui/use-mobile.tsx`
@@ -1678,15 +2001,15 @@ Total duplicate file titles found: 205
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:04:11.823464Z
+- timestamp: 2026-06-22T19:07:46.333717Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 1674
-- words: 3352
-- characters: 49573
-- headings: 207
+- lines: 2015
+- words: 4070
+- characters: 64760
+- headings: 256
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

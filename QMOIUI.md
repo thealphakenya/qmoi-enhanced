@@ -19,15 +19,15 @@ Note (2026-06-03): `UniversalWindowManager` now uses a server-first strategy to 
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:57.235163Z
+- timestamp: 2026-06-22T19:07:30.181107Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 15
-- words: 93
-- characters: 694
-- headings: 1
+- lines: 33
+- words: 165
+- characters: 1159
+- headings: 2
 - links: 1
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

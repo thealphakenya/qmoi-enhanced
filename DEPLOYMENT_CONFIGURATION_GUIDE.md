@@ -589,15 +589,15 @@ echo "✅ Restore complete"
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:54.569294Z
+- timestamp: 2026-06-22T19:07:27.089811Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 585
-- words: 1574
-- characters: 14453
-- headings: 66
+- lines: 603
+- words: 1646
+- characters: 14921
+- headings: 67
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

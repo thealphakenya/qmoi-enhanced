@@ -1,0 +1,343 @@
+# ALLDIRECTORIESMD - Directory Documentation Index
+
+**Generated:** 2026-06-22T19:06:14.027417Z
+
+This file indexes all directory-specific documentation and tracks the production readiness of each directory's .md files.
+
+## Overview
+
+Each directory in the repository has associated `.md` files that document its purpose, structure, and production status. This index ensures:
+- All directories have comprehensive documentation
+- Documentation is kept current as work progresses
+- Production readiness is tracked per directory
+- Missing documentation is easily identified
+
+## Directory Documentation Status
+
+
+## SRC
+
+**Description:** Source code, core business logic, and application architecture
+
+**Paths:**
+- ✓ `src`
+- ✗ `app/src`
+
+**Documentation Files:**
+- ✓ [SRC.md](SRC.md) (20.04 KB)
+
+**Status:**
+- Production Ready: Yes ✓
+- Existing .md files: 1/1
+- File Counts:
+  - `src`: 466 files (3 .md)
+
+## COMPONENTS
+
+**Description:** Reusable UI components, component library, and component documentation
+
+**Paths:**
+- ✓ `src/components`
+- ✓ `components`
+- ✓ `app/components`
+
+**Documentation Files:**
+- ✓ [COMPONENTS.md](COMPONENTS.md) (23.45 KB)
+
+**Status:**
+- Production Ready: Yes ✓
+- Existing .md files: 1/1
+- File Counts:
+  - `src/components`: 96 files (0 .md)
+  - `components`: 215 files (1 .md)
+  - `app/components`: 74 files (0 .md)
+
+## WORKFLOWS
+
+**Description:** Workflow definitions, automation, CI/CD pipelines, and orchestration
+
+**Paths:**
+- ✗ `workflows`
+- ✗ `src/workflows`
+- ✓ `.github/workflows`
+
+**Documentation Files:**
+- ✓ [WORKFLOWS.md](WORKFLOWS.md) (40.89 KB)
+
+**Status:**
+- Production Ready: Yes ✓
+- Existing .md files: 1/1
+- File Counts:
+  - `.github/workflows`: 62 files (0 .md)
+
+## HOOKS
+
+**Description:** React hooks, webhooks, event handlers, and lifecycle management
+
+**Paths:**
+- ✓ `src/hooks`
+- ✓ `hooks`
+- ✓ `app/hooks`
+
+**Documentation Files:**
+- ✓ [HOOKS.md](HOOKS.md) (13.33 KB)
+- ✓ [WEBHOOKS.md](WEBHOOKS.md) (7.52 KB)
+- ✓ [ALLHOOKSWEBHOOKS.md](ALLHOOKSWEBHOOKS.md) (4.42 KB)
+
+**Status:**
+- Production Ready: Yes ✓
+- Existing .md files: 3/3
+- File Counts:
+  - `src/hooks`: 9 files (0 .md)
+  - `hooks`: 34 files (0 .md)
+  - `app/hooks`: 5 files (0 .md)
+
+## TESTS
+
+**Description:** Test suites, test utilities, integration tests, and testing documentation
+
+**Paths:**
+- ✓ `tests`
+- ✗ `test`
+- ✓ `__tests__`
+- ✗ `src/tests`
+- ✗ `app/tests`
+
+**Documentation Files:**
+- ✓ [TESTS.md](TESTS.md) (12.12 KB)
+- ✓ [ALLTESTSAUTOTESTS.md](ALLTESTSAUTOTESTS.md) (16.92 KB)
+
+**Status:**
+- Production Ready: Yes ✓
+- Existing .md files: 2/2
+- File Counts:
+  - `tests`: 70 files (0 .md)
+  - `__tests__`: 111 files (0 .md)
+
+## SCRIPTS
+
+**Description:** Utility scripts, CLI tools, build scripts, and automation utilities
+
+**Paths:**
+- ✓ `scripts`
+- ✗ `bin`
+
+**Documentation Files:**
+- ✓ [SCRIPTS.md](SCRIPTS.md) (12.27 KB)
+
+**Status:**
+- Production Ready: Yes ✓
+- Existing .md files: 1/1
+- File Counts:
+  - `scripts`: 1395 files (11 .md)
+
+## SERVICES
+
+**Description:** Backend services, microservices, API services, and business logic services
+
+**Paths:**
+- ✓ `src/services`
+- ✓ `services`
+- ✗ `app/services`
+
+**Documentation Files:**
+- ✓ [SERVICES.md](SERVICES.md) (7.45 KB)
+
+**Status:**
+- Production Ready: Yes ✓
+- Existing .md files: 1/1
+- File Counts:
+  - `src/services`: 24 files (0 .md)
+  - `services`: 37 files (0 .md)
+
+## LIB
+
+**Description:** Utility libraries, helper functions, and reusable library code
+
+**Paths:**
+- ✓ `src/lib`
+- ✓ `lib`
+- ✓ `app/lib`
+
+**Documentation Files:**
+- ✓ [LIB.md](LIB.md) (15.16 KB)
+
+**Status:**
+- Production Ready: Yes ✓
+- Existing .md files: 1/1
+- File Counts:
+  - `src/lib`: 67 files (0 .md)
+  - `lib`: 107 files (0 .md)
+  - `app/lib`: 14 files (0 .md)
+
+## CONFIG
+
+**Description:** Configuration files, environment setup, and deployment configuration
+
+**Paths:**
+- ✓ `config`
+- ✓ `src/config`
+- ✗ `.config`
+
+**Documentation Files:**
+- ✗ CONFIG.md (missing - generate with bulk workflow)
+
+**Status:**
+- Production Ready: No ✗
+- Existing .md files: 0/1
+- File Counts:
+  - `config`: 29 files (0 .md)
+  - `src/config`: 5 files (0 .md)
+
+## DATABASE
+
+**Description:** Database schemas, migrations, queries, and database documentation
+
+**Paths:**
+- ✓ `database`
+- ✓ `db`
+- ✗ `src/db`
+
+**Documentation Files:**
+- ✓ [DATABASE.md](DATABASE.md) (5.6 KB)
+- ✗ DATABASE_SCHEMA.md (missing - generate with bulk workflow)
+
+**Status:**
+- Production Ready: No ✗
+- Existing .md files: 1/2
+- File Counts:
+  - `database`: 2 files (0 .md)
+  - `db`: 3 files (0 .md)
+
+## API
+
+**Description:** API definitions, endpoints, routes, and API documentation
+
+**Paths:**
+- ✓ `api`
+- ✓ `src/api`
+- ✓ `app/api`
+
+**Documentation Files:**
+- ✓ [API.md](API.md) (2.94 KB)
+- ✓ [APIs_1.md](APIs_1.md) (2560.82 KB)
+- ✓ [APIs_v1.md](APIs_v1.md) (2715.56 KB)
+- ✓ [ENDPOINTS.md](ENDPOINTS.md) (1.96 KB)
+- ✓ [ROUTES.md](ROUTES.md) (21.45 KB)
+
+**Status:**
+- Production Ready: Yes ✓
+- Existing .md files: 5/5
+- File Counts:
+  - `api`: 1 files (0 .md)
+  - `src/api`: 5 files (0 .md)
+  - `app/api`: 616 files (2 .md)
+
+## UI
+
+**Description:** UI components, styling, theming, and user interface documentation
+
+**Paths:**
+- ✗ `ui`
+- ✗ `src/ui`
+- ✗ `app/ui`
+
+**Documentation Files:**
+- ✓ [UI.md](UI.md) (14.91 KB)
+- ✓ [QMOIAIUI.md](QMOIAIUI.md) (6.06 KB)
+- ✓ [QMOISPACEUI.md](QMOISPACEUI.md) (4.57 KB)
+- ✓ [QCITYUI.md](QCITYUI.md) (43.6 KB)
+- ✓ [QVILLAGEUI.md](QVILLAGEUI.md) (4.24 KB)
+- ✓ [QALPHAUI.md](QALPHAUI.md) (4.21 KB)
+
+**Status:**
+- Production Ready: Yes ✓
+- Existing .md files: 6/6
+
+## DOCS
+
+**Description:** Project documentation, guides, and reference materials
+
+**Paths:**
+- ✓ `docs`
+- ✗ `documentation`
+
+**Documentation Files:**
+- ✓ [DOCS.md](DOCS.md) (5.59 KB)
+
+**Status:**
+- Production Ready: Yes ✓
+- Existing .md files: 1/1
+- File Counts:
+  - `docs`: 309 files (130 .md)
+
+## MOBILE
+
+**Description:** Mobile application code, React Native, and mobile-specific documentation
+
+**Paths:**
+- ✓ `mobile`
+- ✗ `app/mobile`
+
+**Documentation Files:**
+- ✓ [MOBILE.md](MOBILE.md) (5.32 KB)
+
+**Status:**
+- Production Ready: Yes ✓
+- Existing .md files: 1/1
+- File Counts:
+  - `mobile`: 11846 files (466 .md)
+
+
+## Bulk Workflow Tasks
+
+When working in bulk:
+
+1. **Generate Missing .md Files**: Run directory-specific generators to create missing documentation
+2. **Update Existing .md Files**: Ensure each directory .md is current with the latest code changes
+3. **Validate Production Status**: Confirm each directory is production-ready before marking as complete
+4. **Track Status**: Update this index after changes to reflect current directory status
+5. **Consolidate Changes**: Merge all directory updates into the main ALLMDFILESREFS.md
+
+## Directory-Specific Generators
+
+These scripts generate and update directory .md files:
+
+- `scripts/generate_src_md.py` - Generate SRC.md
+- `scripts/generate_components_md.py` - Generate COMPONENTS.md
+- `scripts/generate_workflows_md.py` - Generate WORKFLOWS.md
+- `scripts/generate_hooks_md.py` - Generate HOOKS.md and WEBHOOKS.md
+- `scripts/generate_tests_md.py` - Generate TESTS.md
+- `scripts/generate_scripts_md.py` - Generate SCRIPTS.md
+- `scripts/generate_services_md.py` - Generate SERVICES.md
+- `scripts/generate_lib_md.py` - Generate LIB.md
+- `scripts/generate_api_md.py` - Consolidate API.md, APIs_1.md, ENDPOINTS.md, ROUTES.md
+- `scripts/generate_ui_md.py` - Generate UI.md and app-specific UI files
+
+## Related Files
+
+- [ALLMDFILESREFS.md](ALLMDFILESREFS.md) - Master index of all .md files with production status
+- [API.md](API.md) - Consolidated API documentation
+- [ENDPOINTS.md](ENDPOINTS.md) - All API endpoints
+- [ROUTES.md](ROUTES.md) - All application routes
+- [HOOKS.md](HOOKS.md) - Hooks documentation
+- [WEBHOOKS.md](WEBHOOKS.md) - Webhooks documentation
+
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-06-22T19:07:24.519527Z
+- production status: ✅ production-ready
+- status tags: production, production-ready
+- lines: 343
+- words: 1130
+- characters: 8197
+- headings: 21
+- links: 31
+- images: 0
+- tables: 0
+- lion validation block: present
+<!-- LION_VALIDATION_END -->

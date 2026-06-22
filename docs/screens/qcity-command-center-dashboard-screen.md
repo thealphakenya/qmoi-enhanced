@@ -203,15 +203,15 @@ Each incident: rounded-2xl border slate-800, slate-950/60 background, padding-4
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:04:11.768602Z
+- timestamp: 2026-06-22T19:07:46.277277Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 199
-- words: 1094
-- characters: 8760
-- headings: 38
+- lines: 217
+- words: 1166
+- characters: 9228
+- headings: 39
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

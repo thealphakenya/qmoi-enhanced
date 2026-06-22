@@ -62,15 +62,15 @@ File: src/components/q-city/QMOIDashboard.tsx
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:54.524512Z
+- timestamp: 2026-06-22T19:07:27.056020Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 58
-- words: 193
-- characters: 1540
-- headings: 3
+- lines: 76
+- words: 265
+- characters: 2004
+- headings: 4
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

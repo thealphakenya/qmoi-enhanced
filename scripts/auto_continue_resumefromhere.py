@@ -10,6 +10,8 @@ import sys
 from datetime import datetime
 from pathlib import Path
 from typing import List, Optional
+import os
+import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 RESUME_FILE = ROOT / "resumefromhere.txt"
@@ -22,8 +24,19 @@ LION_METADATA_SCRIPT = ROOT / "scripts" / "autotag_md_with_lion.py"
 LION_SCAN_SCRIPT = ROOT / "scripts" / "scan_lion_usage.py"
 LION_ORCHESTRATOR_SCRIPT = ROOT / "scripts" / "lion_orchestrator.py"
 LION_INTEGRATOR_SCRIPT = ROOT / "scripts" / "qmoi_bulk_lion_security_integrator.py"
+VALIDATE_MD_SCRIPT = ROOT / "scripts" / "validate_md.py"
+VALIDATE_LINKS_SCRIPT = ROOT / "scripts" / "validate_links.py"
+VALIDATE_APPS_SCRIPT = ROOT / "scripts" / "validate_apps.py"
+VALIDATE_YML_SCRIPT = ROOT / "scripts" / "validate_yml.py"
+VALIDATE_AND_SYNC_LINKS_SCRIPT = ROOT / "scripts" / "validate_and_sync_links.py"
+VALIDATE_API_DOCS_SCRIPT = ROOT / "scripts" / "validate_api_documentation.py"
 MD_STATUS_SCRIPT = ROOT / "scripts" / "generate_allmdrefs.py"
 LEGACY_MD_GENERATOR = ROOT / "tools" / "regenerate_allmdrefs.py"
+AUTO_UPDATE_ALLMDFILESREFS_SCRIPT = ROOT / "scripts" / "auto_update_allmdfilesrefs.py"
+AUTO_UPDATE_MATCHES_UNDONE_SCRIPT = ROOT / "scripts" / "auto_update_matches_undone.py"
+GENERATE_ALLDIRECTORIESMD_SCRIPT = ROOT / "scripts" / "generate_alldirectoriesmd.py"
+CONSOLIDATE_API_ENDPOINTS_SCRIPT = ROOT / "scripts" / "consolidate_api_endpoints.py"
+GENERATE_ENHANCED_ALLMDFILESREFS_SCRIPT = ROOT / "scripts" / "generate_allmdfilesrefs_enhanced.py"
 
 
 def git_summary() -> tuple[str, str, str]:
@@ -77,6 +90,15 @@ def extract_pending_tasks(block: str) -> List[str]:
             stripped = line.strip()
             if stripped.startswith("-") or stripped.startswith("•"):
                 tasks.append(stripped.lstrip("-• ").strip())
+    # If no explicit pending tasks found, try to synthesize from undone.txt and MATCHES.txt
+    if not tasks:
+        for p in (ROOT / 'undone.txt', ROOT / 'MATCHES.txt'):
+            if p.exists():
+                for l in p.read_text(encoding='utf-8', errors='ignore').splitlines():
+                    s = l.strip()
+                    if not s or s.startswith('#'):
+                        continue
+                    tasks.append(s)
     return tasks
 
 
@@ -120,19 +142,23 @@ def update_resume_tasks_block() -> None:
         '- Update all docs, endpoints, and app shell UI documentation while fixing production markers.',
         '- Generate and refresh ALLMDFILESREFS.md with per-file markdown production status annotations.',
         '- Ensure every markdown file in ALLMDFILESREFS.md is reviewed and marked production-ready, or tagged for follow-up fixes.',
+        '- Keep `HOOKS.md`, `WEBHOOKS.md`, `ALLHOOKSWEBHOOKS.md`, and `TREE.md` aligned with every production update.',
+        '- Update `API.md`, `APIs_1.md`, `ENDPOINTS.md`, `ROUTES.md`, and `ALLTESTSAUTOTESTS.md` as documentation changes occur.',
+        '- Apply Q Lion validation blocks and metadata to all `.md` files in the repository while continuing in bulk.',
+        '- Validate Markdown, links, YAML, app manifests, and API documentation in a single bulk run and record outputs under `.qmoi_validation/`.',
+        '- Include Qstore and Qcamera platform/device coverage in the bulk task list and resume tracker.',
+        '- Verify every Qstore app listing includes a custom icon, feature summary, and platform-aware download link.',
+        '- Refresh `resumefromhere.txt` before and after each bulk run so the resume tracker is always current.',
     ]
     task_block_lines += [f'- {task}' for task in merged_tasks[:50]]
     if len(merged_tasks) > 50:
         task_block_lines.append(f'- ... and {len(merged_tasks) - 50} more tasks from 14.txt/resumefromhere.txt.')
     task_block_lines.append('')
 
-    if 'WORKFLOW TASKS:' in resume_content:
-        resume_content = re.sub(
-            r'WORKFLOW TASKS:[\s\S]*?(?=\n\n|\Z)',
-            '\n'.join(task_block_lines),
-            resume_content,
-            flags=re.MULTILINE,
-        )
+    # Replace or insert the WORKFLOW TASKS block atomically
+    marker_pat = re.compile(r'WORKFLOW TASKS:[\s\S]*?(?=\n\n|\Z)', flags=re.MULTILINE)
+    if marker_pat.search(resume_content):
+        resume_content = marker_pat.sub('\n'.join(task_block_lines), resume_content)
     else:
         if 'Resume point:' in resume_content:
             parts = resume_content.split('\n\n', 1)
@@ -143,7 +169,18 @@ def update_resume_tasks_block() -> None:
         else:
             resume_content = '\n'.join(task_block_lines) + '\n' + resume_content
 
-    RESUME_FILE.write_text(resume_content, encoding='utf-8')
+    # Write atomically to avoid partial updates when other processes read the file
+    tmpfd, tmppath = tempfile.mkstemp(prefix='resumefromhere.', suffix='.tmp', dir=str(ROOT))
+    try:
+        with os.fdopen(tmpfd, 'w', encoding='utf-8') as fh:
+            fh.write(resume_content)
+        Path(tmppath).replace(RESUME_FILE)
+    finally:
+        if Path(tmppath).exists():
+            try:
+                Path(tmppath).unlink()
+            except Exception:
+                pass
 
 
 def run_command(command: list[str], description: str) -> bool:
@@ -160,9 +197,23 @@ def run_command(command: list[str], description: str) -> bool:
 
 
 DUPLICATE_FILE_AUDIT_SCRIPT = ROOT / "scripts" / "duplicate_file_audit.py"
+MERGE_DISCOVERY_SCANNER_SCRIPT = ROOT / "scripts" / "merge_discovery_scanner.py"
+
 
 
 def run_bulk_fixer() -> None:
+    # Simple lock to avoid concurrent bulk runs
+    lockfile = ROOT / '.resumefromhere.lock'
+    lock_acquired = False
+    try:
+        fd = os.open(str(lockfile), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        os.write(fd, f"pid:{os.getpid()}\n".encode())
+        os.close(fd)
+        lock_acquired = True
+    except FileExistsError:
+        print(f"Another bulk run appears to be active (lock: {lockfile}); aborting this run.")
+        return
+
     if DUPLICATE_CLEANUP_SCRIPT.exists():
         run_command([sys.executable, str(DUPLICATE_CLEANUP_SCRIPT)], 'duplicate cleanup')
     else:
@@ -182,7 +233,61 @@ def run_bulk_fixer() -> None:
         run_command(["bash", str(AUTODOC_SCRIPT)], 'autoupdate markdown docs')
     else:
         print(f"Warning: {AUTODOC_SCRIPT} not found; skipping markdown docs autoupdate.")
+    if VALIDATE_MD_SCRIPT.exists():
+        run_command([sys.executable, str(VALIDATE_MD_SCRIPT), "--apply", "--out", str(ROOT / "docs" / "md_validation_summary.json")], 'validate Markdown files and write Q Lion validation reports')
+    else:
+        print(f"Info: {VALIDATE_MD_SCRIPT} not found; skipping Markdown validation step.")
 
+    if VALIDATE_LINKS_SCRIPT.exists():
+        run_command([sys.executable, str(VALIDATE_LINKS_SCRIPT)], 'validate repository links')
+    else:
+        print(f"Info: {VALIDATE_LINKS_SCRIPT} not found; skipping link validation step.")
+
+    if VALIDATE_APPS_SCRIPT.exists():
+        run_command([sys.executable, str(VALIDATE_APPS_SCRIPT)], 'validate discovered app manifests')
+    else:
+        print(f"Info: {VALIDATE_APPS_SCRIPT} not found; skipping app validation step.")
+
+    if VALIDATE_YML_SCRIPT.exists():
+        run_command([sys.executable, str(VALIDATE_YML_SCRIPT)], 'validate YAML files and manifest syntax')
+    else:
+        print(f"Info: {VALIDATE_YML_SCRIPT} not found; skipping YAML validation step.")
+
+    if VALIDATE_AND_SYNC_LINKS_SCRIPT.exists():
+        run_command([sys.executable, str(VALIDATE_AND_SYNC_LINKS_SCRIPT)], 'validate and sync workspace links')
+    else:
+        print(f"Info: {VALIDATE_AND_SYNC_LINKS_SCRIPT} not found; skipping link sync validation step.")
+
+    if VALIDATE_API_DOCS_SCRIPT.exists():
+        run_command([sys.executable, str(VALIDATE_API_DOCS_SCRIPT)], 'validate API documentation sources')
+    else:
+        print(f"Info: {VALIDATE_API_DOCS_SCRIPT} not found; skipping API documentation validation step.")
+    
+    # Directory metadata and documentation generation
+    if GENERATE_ALLDIRECTORIESMD_SCRIPT.exists():
+        run_command([sys.executable, str(GENERATE_ALLDIRECTORIESMD_SCRIPT)], 'generate ALLDIRECTORIESMD.md directory index')
+    else:
+        print(f"Info: {GENERATE_ALLDIRECTORIESMD_SCRIPT} not found; skipping ALLDIRECTORIESMD generation.")
+    
+    # API consolidation
+    if CONSOLIDATE_API_ENDPOINTS_SCRIPT.exists():
+        run_command([sys.executable, str(CONSOLIDATE_API_ENDPOINTS_SCRIPT)], 'consolidate API documentation')
+    else:
+        print(f"Info: {CONSOLIDATE_API_ENDPOINTS_SCRIPT} not found; skipping API consolidation.")
+    
+    # Merge discovery scan (identify duplicates for consolidation)
+    if MERGE_DISCOVERY_SCANNER_SCRIPT.exists():
+        run_command([sys.executable, str(MERGE_DISCOVERY_SCANNER_SCRIPT)], 'scan for duplicate files and entry points for merge phase')
+    else:
+        print(f"Info: {MERGE_DISCOVERY_SCANNER_SCRIPT} not found; skipping merge discovery scan.")
+
+    
+    # Enhanced ALLMDFILESREFS.md with tags and status
+    if GENERATE_ENHANCED_ALLMDFILESREFS_SCRIPT.exists():
+        run_command([sys.executable, str(GENERATE_ENHANCED_ALLMDFILESREFS_SCRIPT)], 'generate enhanced ALLMDFILESREFS.md with tags and production status')
+    else:
+        print(f"Info: {GENERATE_ENHANCED_ALLMDFILESREFS_SCRIPT} not found; skipping enhanced ALLMDFILESREFS generation.")
+    
     qmoi_md_autoupdater = ROOT / "scripts" / "qmoi_md_autoupdater.py"
     if qmoi_md_autoupdater.exists():
         run_command([sys.executable, str(qmoi_md_autoupdater)], 'sync root documentation files')
@@ -201,8 +306,18 @@ def run_bulk_fixer() -> None:
     else:
         print(f"Warning: {LION_METADATA_SCRIPT} not found; skipping Lion metadata tagging.")
 
+    if AUTO_UPDATE_ALLMDFILESREFS_SCRIPT.exists():
+        run_command([sys.executable, str(AUTO_UPDATE_ALLMDFILESREFS_SCRIPT)], 'auto update ALLMDFILESREFS docs')
+    else:
+        print(f"Info: {AUTO_UPDATE_ALLMDFILESREFS_SCRIPT} not found; skipping auto_update_allmdfilesrefs step.")
+
+    if AUTO_UPDATE_MATCHES_UNDONE_SCRIPT.exists():
+        run_command([sys.executable, str(AUTO_UPDATE_MATCHES_UNDONE_SCRIPT)], 'auto update matches and undone trackers')
+    else:
+        print(f"Info: {AUTO_UPDATE_MATCHES_UNDONE_SCRIPT} not found; skipping auto_update_matches_undone step.")
+
     if LION_SCAN_SCRIPT.exists():
-        run_command([sys.executable, str(LION_SCAN_SCRIPT), "--report"], 'scan Lion usage and extension docs')
+        run_command([sys.executable, str(LION_SCAN_SCRIPT), "--out", str(ROOT / "docs" / "lion_usage_report.json")], 'scan Lion usage and extension docs')
     else:
         print(f"Warning: {LION_SCAN_SCRIPT} not found; skipping Lion usage scan.")
 
@@ -245,6 +360,12 @@ def run_bulk_fixer() -> None:
         print("Bulk production fixer completed successfully.")
     except subprocess.CalledProcessError as exc:
         print(f"Bulk production fixer failed: {exc}")
+    finally:
+        if lock_acquired and lockfile.exists():
+            try:
+                lockfile.unlink()
+            except Exception:
+                pass
 
 
 def refresh_resume_file() -> None:

@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-06-22T16:04:31.965443Z",
+  "timestamp": "2026-06-22T19:08:10.506416Z",
   "root": "/workspaces/qmoi-enhanced",
-  "total_files_scanned": 1236,
+  "total_files_scanned": 1238,
   "summary": {
-    "production-ready": 556,
-    "needs-production": 13,
+    "production-ready": 550,
+    "needs-production": 17,
     "mixed": 21,
-    "review": 646,
-    "lion-block": 1236
+    "review": 650,
+    "lion-block": 1238
   },
   "files": [
     {
@@ -387,15 +387,15 @@
     {
       "path": "ALLAUTO.md",
       "lion_block": true,
-      "production_status": "production-ready",
+      "production_status": "needs-production",
       "tags": [
         "lion-block",
-        "production-ready"
+        "needs-production"
       ],
       "stats": {
-        "lines": 409,
-        "words": 1552,
-        "headings": 16,
+        "lines": 1205,
+        "words": 9539,
+        "headings": 2,
         "links": 0,
         "images": 0,
         "tables": 0
@@ -448,6 +448,23 @@
         "words": 1667,
         "headings": 41,
         "links": 0,
+        "images": 0,
+        "tables": 0
+      }
+    },
+    {
+      "path": "ALLDIRECTORIESMD.md",
+      "lion_block": true,
+      "production_status": "production-ready",
+      "tags": [
+        "lion-block",
+        "production-ready"
+      ],
+      "stats": {
+        "lines": 343,
+        "words": 1130,
+        "headings": 21,
+        "links": 31,
         "images": 0,
         "tables": 0
       }
@@ -583,8 +600,8 @@
         "review"
       ],
       "stats": {
-        "lines": 1266,
-        "words": 28756,
+        "lines": 1268,
+        "words": 28822,
         "headings": 3,
         "links": 0,
         "images": 0,
@@ -645,15 +662,15 @@
     {
       "path": "ALLPERCENTAGES.md",
       "lion_block": true,
-      "production_status": "production-ready",
+      "production_status": "needs-production",
       "tags": [
         "lion-block",
-        "production-ready"
+        "needs-production"
       ],
       "stats": {
-        "lines": 163,
-        "words": 1278,
-        "headings": 24,
+        "lines": 1101,
+        "words": 5474,
+        "headings": 2,
         "links": 0,
         "images": 0,
         "tables": 0
@@ -917,16 +934,16 @@
     {
       "path": "API.md",
       "lion_block": true,
-      "production_status": "production-ready",
+      "production_status": "review",
       "tags": [
         "lion-block",
-        "production-ready"
+        "review"
       ],
       "stats": {
-        "lines": 12461,
-        "words": 26335,
-        "headings": 315,
-        "links": 0,
+        "lines": 102,
+        "words": 368,
+        "headings": 13,
+        "links": 6,
         "images": 0,
         "tables": 0
       }
@@ -1971,15 +1988,15 @@
     {
       "path": "BULK_PRODUCTION_WORKFLOW.md",
       "lion_block": true,
-      "production_status": "production-ready",
+      "production_status": "needs-production",
       "tags": [
         "lion-block",
-        "production-ready"
+        "needs-production"
       ],
       "stats": {
-        "lines": 96,
-        "words": 551,
-        "headings": 9,
+        "lines": 106,
+        "words": 588,
+        "headings": 11,
         "links": 0,
         "images": 0,
         "tables": 0
@@ -4047,18 +4064,18 @@
     {
       "path": "ENDPOINTS.md",
       "lion_block": true,
-      "production_status": "production-ready",
+      "production_status": "review",
       "tags": [
         "lion-block",
-        "production-ready"
+        "review"
       ],
       "stats": {
-        "lines": 3392,
-        "words": 8607,
-        "headings": 325,
-        "links": 1,
+        "lines": 76,
+        "words": 230,
+        "headings": 8,
+        "links": 3,
         "images": 0,
-        "tables": 33
+        "tables": 0
       }
     },
     {
@@ -5681,14 +5698,14 @@
     {
       "path": "INSTANCES.md",
       "lion_block": true,
-      "production_status": "production-ready",
+      "production_status": "needs-production",
       "tags": [
         "lion-block",
-        "production-ready"
+        "needs-production"
       ],
       "stats": {
-        "lines": 43,
-        "words": 173,
+        "lines": 48,
+        "words": 191,
         "headings": 8,
         "links": 0,
         "images": 0,
@@ -6486,8 +6503,8 @@
         "review"
       ],
       "stats": {
-        "lines": 30,
-        "words": 124,
+        "lines": 35,
+        "words": 149,
         "headings": 5,
         "links": 0,
         "images": 0,
@@ -14634,18 +14651,18 @@
     {
       "path": "ROUTES.md",
       "lion_block": true,
-      "production_status": "production-ready",
+      "production_status": "review",
       "tags": [
         "lion-block",
-        "production-ready"
+        "review"
       ],
       "stats": {
-        "lines": 848,
-        "words": 3740,
-        "headings": 59,
-        "links": 0,
+        "lines": 358,
+        "words": 1382,
+        "headings": 7,
+        "links": 3,
         "images": 0,
-        "tables": 24
+        "tables": 0
       }
     },
     {
@@ -19657,9 +19674,9 @@
         "review"
       ],
       "stats": {
-        "lines": 1692,
-        "words": 3424,
-        "headings": 208,
+        "lines": 2015,
+        "words": 4070,
+        "headings": 256,
         "links": 0,
         "images": 0,
         "tables": 0
@@ -20426,6 +20443,23 @@
         "lines": 362,
         "words": 752,
         "headings": 26,
+        "links": 0,
+        "images": 0,
+        "tables": 0
+      }
+    },
+    {
+      "path": "scripts/GITHUBCODESPACESCAPILOTCHATPAYED.md",
+      "lion_block": true,
+      "production_status": "review",
+      "tags": [
+        "lion-block",
+        "review"
+      ],
+      "stats": {
+        "lines": 495,
+        "words": 1216,
+        "headings": 1,
         "links": 0,
         "images": 0,
         "tables": 0

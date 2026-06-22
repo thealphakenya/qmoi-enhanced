@@ -300,15 +300,15 @@ Link to related documentation, APIs, and system artifacts.
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:54.867508Z
+- timestamp: 2026-06-22T19:07:27.322422Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 296
-- words: 1264
-- characters: 10775
-- headings: 40
+- lines: 314
+- words: 1336
+- characters: 11243
+- headings: 41
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

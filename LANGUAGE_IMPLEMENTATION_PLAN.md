@@ -66,15 +66,15 @@ Estimated effort per option: A: 40–90 minutes; B: 20–40 minutes; C: 20–60 
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:55.516003Z
+- timestamp: 2026-06-22T19:07:28.131935Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 62
-- words: 486
-- characters: 3882
-- headings: 1
+- lines: 80
+- words: 558
+- characters: 4346
+- headings: 2
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

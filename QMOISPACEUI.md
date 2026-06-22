@@ -100,15 +100,15 @@ The QMOI Space route is fully wired to the repo's app architecture and reflects 
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:57.177248Z
+- timestamp: 2026-06-22T19:07:30.105629Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 96
-- words: 542
-- characters: 4202
-- headings: 11
+- lines: 114
+- words: 614
+- characters: 4668
+- headings: 12
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

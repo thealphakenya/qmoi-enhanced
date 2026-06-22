@@ -52,15 +52,15 @@ This documentation now maps to the actual feature surface present in `app/qmoi-s
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:57.165977Z
+- timestamp: 2026-06-22T19:07:30.081594Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 48
-- words: 176
-- characters: 1357
-- headings: 6
+- lines: 66
+- words: 248
+- characters: 1821
+- headings: 7
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

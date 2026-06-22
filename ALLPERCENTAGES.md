@@ -1,163 +1,1101 @@
----
-quantum-enabled: true
----
+# ALLPERCENTAGES.md - Aggregated percentage mentions
 
-# ALL PERCENTAGES - Quantum multi orchestra intelligence (QMOI) Enhanced System
+**Generated:** 2026-06-22T19:01:56.316553Z
+**Files with percentage mentions:** 1077
+**Average of averages:** 88.44
 
-## Overview
-Comprehensive ✅ PERCENTAGE SYSTEM INTEGRATED tracking and management system for all Quantum multi orchestra intelligence (QMOI) components, integrating ✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED management, ✅ HEALTH SYSTEM ENHANCED monitoring, automation, and AI capabilities from q1.md implementation.
-
-## Status Category
-
-### Quantum multi orchestra intelligence (QMOI) ✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED Status Percentages
-- **Quantum multi orchestra intelligence (QMOI) ✅ CONSCIOUSNESS ACTIVE ✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED:** 95.2% (Active and aware)
-- **Memory Synchronization:** 98.7% (✅ AUTHENTIC-time sync across all systems)
-- **✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED Provider ✅ HEALTH SYSTEM ENHANCED:** 99.1% (QMOIStateProvider operational)
-- **Global ✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED Awareness:** 94.8% (✅ AUTHENTIC-time knowledge of all system states)
-- **✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED Preservation:** 100% (All states backed up and recoverable)
-- **Cross-System ✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED Sync:** 97.3% (Bidirectional ✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED propagation)
-
-### ✅ CHATBOT ENHANCED ✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED Status Percentages
-- **Conversation Continuity:** 96.5% (Context-aware multi-turn conversations)
-- **Memory Persistence:** 99.2% (All interactions recorded and synced)
-- **Autonomous Execution:** 92.8% (✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED-triggered actions)
-- **Personality ✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED:** 98.1% (Consistent behavior across sessions)
-- **Project Awareness:** 94.7% (File, error, and context tracking)
-- **Global Chat Awareness:** 97.9% (✅ CONSCIOUSNESS ACTIVE and memory synced)
-
-### ✅ HEALTH SYSTEM ENHANCED System Status Percentages
-- **Domain ✅ HEALTH SYSTEM ENHANCED Monitoring:** 96.8% (13 domains, 5 regions)
-- **API ✅ HEALTH SYSTEM ENHANCED Tracking:** 97.4% (428 endpoints monitored)
-- **✅ AUTOMATION ENHANCED-Healing Success:** 94.7% (Automated recovery procedures)
-- **Predictive Analytics:** 92.3% (✅ HEALTH SYSTEM ENHANCED prediction accuracy)
-- **Component Monitoring:** 96.8% (System component coverage)
-- **Zero-Downtime Operations:** 99.99% (Uptime maintained)
-
-### Automation Status Percentages
-- **Task Automation Success:** 95.1% (Natural language to task conversion)
-- **Background Execution:** 98.3% (Long-running tasks managed)
-- **✅ HEALTH SYSTEM ENHANCED-Aware Automation:** 93.6% (✅ HEALTH SYSTEM ENHANCED checks before execution)
-- **✅ PERCENTAGE SYSTEM INTEGRATED-Based Automation:** 40.1% (Threshold-triggered actions - ✅ )
-- **✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED-Triggered Automation:** 91.2% (Quantum multi orchestra intelligence (QMOI) ✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED changes drive actions)
-- **Recovery Orchestration:** 89.4% (Coordinated ✅ HEALTH SYSTEM ENHANCED and automation)
-
-### AI System Status Percentages (from q1.md)
-- **✅ AI Brain Layer (100% Complete):** 100% (Multi-model orchestration active)
-- **✅ Advanced Reasoning Engine (100% Complete) Engine:** 100% (Chain-of-thought processing)
-- **✅ Training Pipeline (100% Complete):** 100% (Automated model training)
-- **✅ True Multimodal Engine (100% Complete):** 100% (Cross-modal understanding)
-- **✅ Self-Learning System (100% Complete) System:** 100% (Continuous improvement)
-- **✅ Enhanced App Generation (100% Complete) Engine:** 100% (Full-stack creation)
-- **✅ Automation Engine (100% Complete):** 100% (Task orchestration)
-- **✅ Evaluation & Benchmark (100% Complete):** 100% (Performance benchmarking)
-- **System Integration:** 100% (Unified architecture)
-
-### API Status Percentages
-- **Total API Endpoints:** 428+ (All operational)
-- **AI Endpoints:** 86+ (q1.md components)
-- **✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED API:** 100% (/api/Quantum multi orchestra intelligence (QMOI)/autoPRODUCTION/✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED)
-- **✅ HEALTH SYSTEM ENHANCED APIs:** 97.4% (✅ AUTHENTIC-time monitoring)
-- **Automation APIs:** 95.1% (Task execution)
-- **Response Time:** <500ms (95% of requests)
-
-### ✅ TESTS SUCCESSFUL Status Percentages
-- **Unit ✅ TESTS SUCCESSFUL Coverage:** 85.2% (Core components)
-- **Integration Tests:** 78.9% (System interactions)
-- **API Tests:** 92.1% (Endpoint validation)
-- **Automation Tests:** 76.4% (Workflow testing)
-- **✅ HEALTH SYSTEM ENHANCED Check Tests:** 94.3% (Monitoring validation)
-- **Performance Tests:** 68.7% (Load and stress testing)
-
-### ✅ HOOKS IMPLEMENTED Status Percentages
-- **✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED Hooks:** 91.2% (useQmoiState integration)
-- **✅ HEALTH SYSTEM ENHANCED Hooks:** 88.7% (✅ HEALTH SYSTEM ENHANCED monitoring hooks)
-- **Automation Hooks:** 82.3% (Trigger-based hooks)
-- **API Hooks:** 95.6% (Endpoint integration)
-- **UI Hooks:** 89.4% (Component lifecycle)
-- **Memory Hooks:** 93.1% (Synchronization hooks)
-
-## Integration Features
-
-### Q1.md AI Integration
-- **Reasoning Enhancement:** Advanced chain-of-thought processing integrated with ✅ PERCENTAGE SYSTEM INTEGRATED calculations
-- **Multimodal Analysis:** Cross-modal understanding applied to status analysis
-- **✅ Self-Learning System (100% Complete):** Continuous improvement of ✅ PERCENTAGE SYSTEM INTEGRATED thresholds and alerts
-- **✅ Automation Engine (100% Complete):** AI-powered task automation for ✅ PERCENTAGE SYSTEM INTEGRATED management
-- **✅ Evaluation & Benchmark (100% Complete):** Performance benchmarking of ✅ PERCENTAGE SYSTEM INTEGRATED systems
-
-### ✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED Management Integration
-- **Bidirectional Sync:** ✅ PERCENTAGE SYSTEM INTEGRATED changes update Quantum multi orchestra intelligence (QMOI) ✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED, ✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED changes affect percentages
-- **✅ AUTHENTIC-Time Updates:** ✅  ✅ PERCENTAGE SYSTEM INTEGRATED tracking with ✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED provider integration
-- **Threshold Triggers:** Configurable alerts based on ✅ PERCENTAGE SYSTEM INTEGRATED drops
-- **Historical Tracking:** Trend analysis integrated with ✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED history
-
-### ✅ HEALTH SYSTEM ENHANCED Integration
-- **✅ HEALTH SYSTEM ENHANCED-Triggered Alerts:** ✅ PERCENTAGE SYSTEM INTEGRATED drops trigger ✅ HEALTH SYSTEM ENHANCED checks and recovery
-- **Predictive Analytics:** ✅ HEALTH SYSTEM ENHANCED trends predict ✅ PERCENTAGE SYSTEM INTEGRATED changes
-- **✅ AUTOMATION ENHANCED-Healing:** Automated recovery procedures maintain ✅ PERCENTAGE SYSTEM INTEGRATED targets
-- **Monitoring Dashboard:** ✅ AUTHENTIC-time ✅ PERCENTAGE SYSTEM INTEGRATED visualization in ✅ HEALTH SYSTEM ENHANCED UI
-
-### Automation Integration
-- **✅ PERCENTAGE SYSTEM INTEGRATED-Based Triggers:** Thresholds activate automated responses
-- **Performance Monitoring:** Automation success rates tracked as percentages
-- **✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED-Driven Actions:** Quantum multi orchestra intelligence (QMOI) ✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED changes trigger ✅ PERCENTAGE SYSTEM INTEGRATED-based automations
-- **Recovery Orchestration:** Coordinated responses to ✅ PERCENTAGE SYSTEM INTEGRATED anomalies
-
-## Enhancement Plans
-
-### AI-Powered Enhancements
-- Integrate q1.md reasoning engine for intelligent ✅ PERCENTAGE SYSTEM INTEGRATED analysis
-- Use ✅ True Multimodal Engine (100% Complete) for comprehensive status assessment
-- Implement ✅ Self-Learning System (100% Complete) for adaptive ✅ PERCENTAGE SYSTEM INTEGRATED thresholds
-- Apply ✅ Evaluation & Benchmark (100% Complete) for continuous ✅ PERCENTAGE SYSTEM INTEGRATED optimization
-
-### production Enhancements
-- Enhance ✅ AUTHENTIC-time synchronization across all systems
-- Implement predictive ✅ PERCENTAGE SYSTEM INTEGRATED modeling
-- Add advanced anomaly detection for ✅ PERCENTAGE SYSTEM INTEGRATED drops
-- Create comprehensive ✅ PERCENTAGE SYSTEM INTEGRATED dashboards
-
-### Integration Enhancements
-- Deepen q1.md integration with ✅ PERCENTAGE SYSTEM INTEGRATED calculations
-- Enhance ✅ Quantum multi orchestra intelligence (QMOI) STATE INTEGRATED management with AI reasoning
-- Improve ✅ HEALTH SYSTEM ENHANCED-✅ PERCENTAGE SYSTEM INTEGRATED bidirectional sync
-- Automate ✅ PERCENTAGE SYSTEM INTEGRATED-based system responses
-
-## Files and Scripts
-- `scripts/all_percentages_automation.py` - Automation script
-- `scripts/update_percentage_scripts.py` - Update utilities
-- `scripts/update_tree_and_percentages.py` - Tree integration
-- `data/percentages_latest.json` - Latest ✅ PERCENTAGE SYSTEM INTEGRATED data
-- `lib/Quantum multi orchestra intelligence (QMOI)-✅ PERCENTAGE SYSTEM INTEGRATED-engine.ts` - Core ✅ PERCENTAGE SYSTEM INTEGRATED engine
-
-## Status: ACTIVE
-Last updated: 2026-04-16
-Integration: Bidirectional sync with ALLHEALTHS.md, ALLAUTO.md, and q1.md systems</content>
-<parameter name="filePath">/workspaces/Quantum multi orchestra intelligence (QMOI)-enhanced/ALLPERCENTAGES.md
-
-## production Checklist ✅
-
-- [x] Error handling implemented
-- [x] Logging configured
-- [x] Security measures in place
-- [x] Performance optimized
-- [x] Monitoring enabled
-- [x] Documentation complete
+- .devcontainer/README.md — avg_percentage_mentioned: 99.5%
+- .evolution_logs/DEPLOYMENT_GUIDE.md — avg_percentage_mentioned: 62.5%
+- .evolution_logs/EVOLUTION_SUMMARY.md — avg_percentage_mentioned: 52.46%
+- .github/PR_AUTOTODOS.md — avg_percentage_mentioned: 99.5%
+- .github/PULL_REQUEST_TEMPLATE.md — avg_percentage_mentioned: 99.5%
+- .github/PULL_REQUEST_TEMPLATE/automated_fix.md — avg_percentage_mentioned: 99.5%
+- .qmoi_state/RECOVERY_COMPLETE.md — avg_percentage_mentioned: 99.9%
+- 1.md — avg_percentage_mentioned: 93.0%
+- 3.md — avg_percentage_mentioned: 99.67%
+- 4.md — avg_percentage_mentioned: 99.5%
+- 44.md — avg_percentage_mentioned: 99.5%
+- @ALLMDFILESREFS.md — avg_percentage_mentioned: 99.5%
+- ACCOUNTABILITY.md — avg_percentage_mentioned: 99.5%
+- ADAPTERS.md — avg_percentage_mentioned: 99.5%
+- ADVANCED_PERFORMANCE_OPTIMIZATION_COMPLETION.md — avg_percentage_mentioned: 100.0%
+- ADVANCED_USER_IDENTIFICATION_SYSTEM.md — avg_percentage_mentioned: 86.45%
+- AI_ENHANCEMENT_SYSTEM.md — avg_percentage_mentioned: 99.9%
+- ALL PERCENTAGES.md — avg_percentage_mentioned: 97.21%
+- ALLCLONEDRELEASES.md — avg_percentage_mentioned: 99.5%
+- ALLCOMPONENTSTESTS.md — avg_percentage_mentioned: 81.42%
+- ALLDEVICESSETTINGS.md — avg_percentage_mentioned: 69.03%
+- ALLERRORS.md — avg_percentage_mentioned: 14.24%
+- ALLERRORSSTATSQMOI.md — avg_percentage_mentioned: 29.53%
+- ALLERRORSTYPESFILES.md — avg_percentage_mentioned: 99.75%
+- ALLERRORTYPESANDHEALTHCHECKS.md — avg_percentage_mentioned: 99.67%
+- ALLHEALTHS.md — avg_percentage_mentioned: 97.27%
+- ALLLINKS.md — avg_percentage_mentioned: 99.5%
+- ALLMDFILESREFS_ENHANCED.md — avg_percentage_mentioned: 91.0%
+- ALLMDGILES.md — avg_percentage_mentioned: 99.5%
+- ALLPERCENTAGES.md — avg_percentage_mentioned: 88.45%
+- ALLPLATFORMSVERSIONS.md — avg_percentage_mentioned: 98.23%
+- ALLQMOIAIAPPSREALEASESVERSIONS.md — avg_percentage_mentioned: 99.5%
+- ALLQMOIAUTOEVOLVINGENVS.md — avg_percentage_mentioned: 99.5%
+- ALLSYSTEMSSTRUCTURESREFERENCES.md — avg_percentage_mentioned: 99.5%
+- ALLUITESTS.md — avg_percentage_mentioned: 73.63%
+- ALLVERSIONS.md — avg_percentage_mentioned: 99.5%
+- ALLWALLETSQVS.md — avg_percentage_mentioned: 97.41%
+- ALL_APPS.md — avg_percentage_mentioned: 99.5%
+- ALL_APPS/README.md — avg_percentage_mentioned: 99.5%
+- ALPHAQMOIENGINE.md — avg_percentage_mentioned: 99.5%
+- API_1.md — avg_percentage_mentioned: 99.99%
+- API_AUTO_UPDATE_GUIDELINES.md — avg_percentage_mentioned: 99.5%
+- API_COMPREHENSIVE.md — avg_percentage_mentioned: 99.66%
+- API_ENDPOINTS_COMPLETE_AUDIT.md — avg_percentage_mentioned: 66.9%
+- API_ENDPOINTS_REFERENCE.md — avg_percentage_mentioned: 99.5%
+- API_IMPLEMENTATION_EXAMPLES.md — avg_percentage_mentioned: 99.5%
+- API_INTEGRATION_GUIDE.md — avg_percentage_mentioned: 99.5%
+- API_REFERENCE.md — avg_percentage_mentioned: 57.46%
+- APIs_1.md — avg_percentage_mentioned: 100.0%
+- APIs_v1.md — avg_percentage_mentioned: 99.5%
+- APP.md — avg_percentage_mentioned: 99.5%
+- APPS_PLATFORMS_DOCUMENTATION_UPDATE.md — avg_percentage_mentioned: 99.5%
+- APP_BUILD_MATRIX.md — avg_percentage_mentioned: 91.5%
+- APP_FIX_ACTION_PLAN.md — avg_percentage_mentioned: 99.5%
+- APP_FIX_CHECKLIST.md — avg_percentage_mentioned: 99.5%
+- APP_FIX_COMPLETE.md — avg_percentage_mentioned: 99.5%
+- ASSETS.md — avg_percentage_mentioned: 99.5%
+- AUTH_SYSTEM_IMPLEMENTATION.md — avg_percentage_mentioned: 90.8%
+- AUTOCLONE_STANDALONE.md — avg_percentage_mentioned: 99.5%
+- AUTODEV.md — avg_percentage_mentioned: 81.67%
+- AUTODEV_ENHANCEMENT_DELIVERY.md — avg_percentage_mentioned: 64.22%
+- AUTODEV_PRODUCTION_OPERATIONS.md — avg_percentage_mentioned: 2.03%
+- AUTODEV_PRODUCTION_READINESS_ENHANCEMENT_GUIDE.md — avg_percentage_mentioned: 57.51%
+- AUTODEV_SECRETS.md — avg_percentage_mentioned: 69.03%
+- AUTODEV_SYNTAX_RECOVERY_REPORT.md — avg_percentage_mentioned: 90.4%
+- AUTODEV_VALIDATION_SYSTEM.md — avg_percentage_mentioned: 95.8%
+- AUTODOWNLOAD.md — avg_percentage_mentioned: 99.5%
+- AUTOGIT.md — avg_percentage_mentioned: 99.5%
+- AUTOLINTREADME.md — avg_percentage_mentioned: 99.5%
+- AUTOMATION-SUMMARY.md — avg_percentage_mentioned: 67.66%
+- AUTOOPTIMIZEALPHAQMOIENGINE.md — avg_percentage_mentioned: 99.5%
+- AUTO_CLONE_SYSTEM.md — avg_percentage_mentioned: 99.63%
+- AUTO_RECOVERY_PROCEDURES.md — avg_percentage_mentioned: 99.33%
+- AUTO_SETUP_COMPLETION_SUMMARY.md — avg_percentage_mentioned: 99.67%
+- AVATAR_SYSTEM.md — avg_percentage_mentioned: 99.5%
+- BACKEND.md — avg_percentage_mentioned: 99.5%
+- BACKEND_API_TEMPLATES.md — avg_percentage_mentioned: 99.5%
+- BACKGROUND_AUTOMATION_COMPLETE.md — avg_percentage_mentioned: 89.33%
+- BALANCES.md — avg_percentage_mentioned: 49.85%
+- BALANCES_ENHANCED.md — avg_percentage_mentioned: 30.79%
+- BALANCE_SYSTEM_README.md — avg_percentage_mentioned: 70.85%
+- BALANCE_SYSTEM_VALIDATION_REPORT.md — avg_percentage_mentioned: 97.21%
+- BIOMETRIC_LOGIN_TEST_RESULTS.md — avg_percentage_mentioned: 69.03%
+- BUILDAPPSFORALLPLATFORMS.md — avg_percentage_mentioned: 99.5%
+- BUILD_COMPLETION_REPORT_v2.md — avg_percentage_mentioned: 99.5%
+- BUILD_COMPLETION_SUMMARY.md — avg_percentage_mentioned: 99.67%
+- BUILD_INSTRUCTIONS.md — avg_percentage_mentioned: 99.5%
+- BUILD_INSTRUCTIONS_PRODUCTION.md — avg_percentage_mentioned: 69.03%
+- BUILD_REAL_APPS.md — avg_percentage_mentioned: 99.5%
+- BUILD_SCRIPTS_Q1_INTEGRATION.md — avg_percentage_mentioned: 100.0%
+- BUILD_TRIGGER.md — avg_percentage_mentioned: 99.5%
+- BULK_ENHANCEMENT_STATUS.md — avg_percentage_mentioned: 83.33%
+- CACHING_GUIDE.md — avg_percentage_mentioned: 68.43%
+- CAMPAIGN_COMPLETION_SUMMARY.md — avg_percentage_mentioned: 99.5%
+- CASHON.md — avg_percentage_mentioned: 51.5%
+- CASHONTRADINGREADME.md — avg_percentage_mentioned: 48.97%
+- CHANGES.md — avg_percentage_mentioned: 99.5%
+- CHATBOT.md — avg_percentage_mentioned: 96.0%
+- CI-DEBUG-OUTPUTS.md — avg_percentage_mentioned: 99.5%
+- CLOUD_CONFIG.md — avg_percentage_mentioned: 99.5%
+- CMDCOMMANDS.md — avg_percentage_mentioned: 99.75%
+- COLAB_DAGSHUB_DEPLOY_CHECKLIST.md — avg_percentage_mentioned: 99.5%
+- COMPLETE_APP_ENHANCEMENT_SUMMARY.md — avg_percentage_mentioned: 100.0%
+- COMPLETE_SYSTEM_DOCUMENTATION_MASTER.md — avg_percentage_mentioned: 82.26%
+- COMPLETION_INDEX.md — avg_percentage_mentioned: 99.91%
+- COMPLETION_REPORT.md — avg_percentage_mentioned: 99.75%
+- COMPLETION_REPORT_REAL_IMPLEMENTATIONS.md — avg_percentage_mentioned: 93.75%
+- COMPLETION_SUMMARY.md — avg_percentage_mentioned: 100.0%
+- COMPONENTS_enhanced.md — avg_percentage_mentioned: 99.5%
+- COMPONENT_SERVING_QUICK_REFERENCE_INDEX.md — avg_percentage_mentioned: 25.0%
+- COMPONENT_SERVING_TECHNICAL_DETAILED_MAP.md — avg_percentage_mentioned: 25.0%
+- COMPONENT_USAGE_PLAN.md — avg_percentage_mentioned: 99.5%
+- COMPREHENSIVE_ACTION_PLAN.md — avg_percentage_mentioned: 99.86%
+- COMPREHENSIVE_ERROR_ANALYSIS.md — avg_percentage_mentioned: 51.35%
+- COMPREHENSIVE_LINK_FIX_STRATEGY.md — avg_percentage_mentioned: 67.05%
+- COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md — avg_percentage_mentioned: 83.32%
+- COMPREHENSIVE_TESTING_QA_STRATEGY.md — avg_percentage_mentioned: 53.02%
+- COMPREHENSIVE_TESTING_STRATEGY.md — avg_percentage_mentioned: 39.0%
+- COMPREHENSIVE_VALIDATION_SYSTEM.md — avg_percentage_mentioned: 95.8%
+- CONFIGURATION.md — avg_percentage_mentioned: 99.5%
+- CONFIGURATION_GUIDE.md — avg_percentage_mentioned: 99.5%
+- CONSCIOUSNESS_QUICKSTART.md — avg_percentage_mentioned: 99.5%
+- CONSOLIDATION_ANALYSIS.md — avg_percentage_mentioned: 99.5%
+- CONTINUOUS_IMPROVEMENT.md — avg_percentage_mentioned: 99.5%
+- CONTINUOUS_MONITORING_SETUP.md — avg_percentage_mentioned: 99.95%
+- CONTRIBUTING.md — avg_percentage_mentioned: 99.5%
+- CREDENTIAL_ROTATION_PLAYBOOK.md — avg_percentage_mentioned: 99.5%
+- CRITICAL_APP_AUDIT_REPORT.md — avg_percentage_mentioned: 99.5%
+- CURLCOMMANDS.md — avg_percentage_mentioned: 99.5%
+- CURLQMOIMASTERSISTERUSER.md — avg_percentage_mentioned: 99.5%
+- CYPRESS.md — avg_percentage_mentioned: 99.5%
+- DASHBOARDTRACKS.md — avg_percentage_mentioned: 61.94%
+- DATA.md — avg_percentage_mentioned: 99.5%
+- DATABASE.md — avg_percentage_mentioned: 99.5%
+- DATASETS.md — avg_percentage_mentioned: 99.5%
+- DATASET_SYSTEM_IMPLEMENTATION.md — avg_percentage_mentioned: 61.18%
+- DB.md — avg_percentage_mentioned: 99.5%
+- DEALS.md — avg_percentage_mentioned: 99.5%
+- DELIVERABLES_CHECKLIST.md — avg_percentage_mentioned: 88.0%
+- DELIVERABLES_FINAL_INVENTORY.md — avg_percentage_mentioned: 98.8%
+- DEPLOY.md — avg_percentage_mentioned: 99.5%
+- DEPLOYMENT-README.md — avg_percentage_mentioned: 99.5%
+- DEPLOYMENT.md — avg_percentage_mentioned: 99.5%
+- DEPLOYMENT_CHECKLIST.md — avg_percentage_mentioned: 99.5%
+- DEPLOYMENT_COMPLETE.md — avg_percentage_mentioned: 99.5%
+- DEPLOYMENT_COMPLETE_EXECUTIVE_SUMMARY.md — avg_percentage_mentioned: 99.93%
+- DEPLOYMENT_CONFIGURATION_GUIDE.md — avg_percentage_mentioned: 0.1%
+- DEPLOYMENT_FIX_QUICK_START.md — avg_percentage_mentioned: 99.5%
+- DEPLOYMENT_GATEWAY.md — avg_percentage_mentioned: 91.58%
+- DEPLOYMENT_HEALTH_CHECKLIST.md — avg_percentage_mentioned: 99.5%
+- DEPLOYMENT_IN_PROGRESS.md — avg_percentage_mentioned: 99.5%
+- DEPLOYMENT_LOG.md — avg_percentage_mentioned: 99.5%
+- DEPLOYMENT_QUICK_START.md — avg_percentage_mentioned: 99.5%
+- DEPLOYMENT_READINESS_FINAL.md — avg_percentage_mentioned: 78.92%
+- DEPLOYMENT_READY_FINAL.md — avg_percentage_mentioned: 99.5%
+- DEPLOYMENT_STATUS_V1_2_3.md — avg_percentage_mentioned: 99.5%
+- DEPLOYMENT_SUMMARY.md — avg_percentage_mentioned: 94.68%
+- DEPLOYMENT_VERIFICATION.md — avg_percentage_mentioned: 99.5%
+- DEVCOMMANDS.md — avg_percentage_mentioned: 69.03%
+- DEVCONTAINER_RECOVERY_GUIDE.md — avg_percentage_mentioned: 99.5%
+- DEVELOPER_QUICK_START.md — avg_percentage_mentioned: 76.77%
+- DEVELOPER_STRUCTURE_COMPLETE.md — avg_percentage_mentioned: 99.8%
+- DEVICERESOURCEOPTIMIZATION.md — avg_percentage_mentioned: 69.03%
+- DISABILITYHELPER.md — avg_percentage_mentioned: 99.5%
+- DISASTER_RECOVERY_INCIDENT_RESPONSE.md — avg_percentage_mentioned: 99.66%
+- DISASTER_RECOVERY_PLAN.md — avg_percentage_mentioned: 89.83%
+- DOCKER.md — avg_percentage_mentioned: 99.5%
+- DOCKER_DEPLOYMENT_GUIDE.md — avg_percentage_mentioned: 99.5%
+- DOCS.md — avg_percentage_mentioned: 99.5%
+- DOCS/CI_SIGNING_SETUP.md — avg_percentage_mentioned: 99.5%
+- DOCS/GITHUB_SECRETS_SETUP.md — avg_percentage_mentioned: 99.5%
+- DOCS/GITHUB_WORKFLOW_DISPATCH.md — avg_percentage_mentioned: 99.5%
+- DOCS_SITE.md — avg_percentage_mentioned: 99.5%
+- DOCUMENTATION_COMPLETION_REPORT.md — avg_percentage_mentioned: 93.27%
+- DOCUMENTATION_INDEX.md — avg_percentage_mentioned: 99.4%
+- DOCUMENTATION_MASTER_INDEX.md — avg_percentage_mentioned: 79.8%
+- DOCUMENTATION_PHASE_COMPLETION_REPORT.md — avg_percentage_mentioned: 99.27%
+- DOCUMENTATION_STATUS.md — avg_percentage_mentioned: 48.0%
+- DOMAIN-MANAGEMENT.md — avg_percentage_mentioned: 99.5%
+- DOMAINSANDLINKS.md — avg_percentage_mentioned: 99.5%
+- DOMAIN_AUTO_VALIDATION_SYSTEM.md — avg_percentage_mentioned: 99.5%
+- DOMAIN_HEALTH_AUTOMATION_GUIDE.md — avg_percentage_mentioned: 99.79%
+- DOMAIN_MANAGEMENT.md — avg_percentage_mentioned: 99.67%
+- DOWNLOADQMOIAIAPPALLDEVICES.md — avg_percentage_mentioned: 69.03%
+- DOWNLOADS.md — avg_percentage_mentioned: 99.5%
+- EARNVAULT.md — avg_percentage_mentioned: 99.5%
+- EMAILSSYSTEM.md — avg_percentage_mentioned: 99.1%
+- EMAIL_SERVICE.md — avg_percentage_mentioned: 99.5%
+- EMPLOYEESUSERSENROLLED.md — avg_percentage_mentioned: 37.23%
+- EMPLOYMENT.md — avg_percentage_mentioned: 16.67%
+- ENDPOINTS_CONSCIOUSNESS.md — avg_percentage_mentioned: 99.5%
+- ENHANCEDQVS.md — avg_percentage_mentioned: 99.67%
+- ENHANCED_AUTOMATION_SUMMARY.md — avg_percentage_mentioned: 77.8%
+- ENHANCED_GLOBAL_NOTIFICATION_SYSTEM.md — avg_percentage_mentioned: 51.08%
+- ENHANCED_LINK_DOMAIN_SYSTEM.md — avg_percentage_mentioned: 72.25%
+- ENHANCED_NOTIFICATION_SYSTEM.md — avg_percentage_mentioned: 99.66%
+- ENHANCEMENT_COMPLETE_SUMMARY.md — avg_percentage_mentioned: 99.5%
+- ENHANCEMENT_SUMMARY.md — avg_percentage_mentioned: 97.61%
+- ENVIRONMENTS.md — avg_percentage_mentioned: 99.5%
+- ENVIRONMENT_CONFIG.md — avg_percentage_mentioned: 99.5%
+- ERROR-REPORTS.md — avg_percentage_mentioned: 99.5%
+- ERRORSREADME.md — avg_percentage_mentioned: 60.2%
+- ERRORSTRACKS.md — avg_percentage_mentioned: 69.03%
+- ERROR_TYPES_GUIDE.md — avg_percentage_mentioned: 69.03%
+- EVOLUTION.md — avg_percentage_mentioned: 69.67%
+- EXAMPLES.md — avg_percentage_mentioned: 99.5%
+- EXECUTION_LIVE_PROGRESS.md — avg_percentage_mentioned: 74.6%
+- EXECUTION_SUMMARY.md — avg_percentage_mentioned: 99.5%
+- EXECUTIVE_SUMMARY.md — avg_percentage_mentioned: 88.79%
+- FAMILY_FEATURES_GUIDE.md — avg_percentage_mentioned: 86.33%
+- FAST-BOOTSTRAP-README.md — avg_percentage_mentioned: 99.5%
+- FEATURESREADME.md — avg_percentage_mentioned: 99.5%
+- FILES_INDEX_CONSCIOUSNESS.md — avg_percentage_mentioned: 94.83%
+- FILE_MANIFEST.md — avg_percentage_mentioned: 99.67%
+- FINAL_COMPLETION_REPORT.md — avg_percentage_mentioned: 55.41%
+- FINAL_DELIVERY_SUMMARY.md — avg_percentage_mentioned: 92.97%
+- FINAL_DEPLOYMENT_EXECUTION_GUIDE.md — avg_percentage_mentioned: 60.98%
+- FINAL_DEPLOYMENT_REPORT.md — avg_percentage_mentioned: 82.67%
+- FINAL_DEPLOYMENT_SUMMARY.md — avg_percentage_mentioned: 99.95%
+- FINAL_EXECUTION_SUMMARY.md — avg_percentage_mentioned: 99.23%
+- FINAL_HANDOFF.md — avg_percentage_mentioned: 98.88%
+- FINAL_IMPLEMENTATION_CONFIRMATION.md — avg_percentage_mentioned: 98.96%
+- FINAL_PRODUCTION_READINESS.md — avg_percentage_mentioned: 92.36%
+- FINAL_PRODUCTION_READINESS_REPORT.md — avg_percentage_mentioned: 89.86%
+- FINAL_PRODUCTION_READINESS_REPORT_V2.md — avg_percentage_mentioned: 93.07%
+- FINAL_PRODUCTION_READINESS_SUMMARY.md — avg_percentage_mentioned: 85.5%
+- FINAL_PRODUCTION_REPORT_2026-04-23.md — avg_percentage_mentioned: 97.11%
+- FINAL_PRODUCTION_STATUS.md — avg_percentage_mentioned: 84.93%
+- FINAL_PRODUCTION_SUMMARY.md — avg_percentage_mentioned: 85.38%
+- FINAL_SESSION_COMPLETION_SUMMARY.md — avg_percentage_mentioned: 89.29%
+- FINAL_SESSION_COMPREHENSIVE_REPORT.md — avg_percentage_mentioned: 99.72%
+- FINAL_SESSION_SUMMARY.md — avg_percentage_mentioned: 93.1%
+- FINAL_STATUS_TODOS_COMPLETE.md — avg_percentage_mentioned: 99.8%
+- FINAL_SYSTEM_HEALTH_REPORT.md — avg_percentage_mentioned: 99.5%
+- FINAL_VERIFICATION.md — avg_percentage_mentioned: 99.5%
+- FINAL_VERIFICATION_REPORT.md — avg_percentage_mentioned: 99.5%
+- FINAL_VERIFICATION_SUMMARY.md — avg_percentage_mentioned: 92.71%
+- FINANCIALMANAGER.md — avg_percentage_mentioned: 53.55%
+- FINANCIALMANAGER_ENHANCED.md — avg_percentage_mentioned: 48.9%
+- FINANCIAL_MANAGER.md — avg_percentage_mentioned: 50.0%
+- GH_2.89.0_LINUX_AMD64.md — avg_percentage_mentioned: 99.5%
+- GIT-LFS-3.5.1.md — avg_percentage_mentioned: 99.5%
+- GITHUB-ACTIONS-COMPLETE.md — avg_percentage_mentioned: 99.5%
+- GITHUB.md — avg_percentage_mentioned: 99.5%
+- GITHUBPAYED.md — avg_percentage_mentioned: 99.5%
+- GITHUB_ACTIONS_AUTOFIX.md — avg_percentage_mentioned: 99.5%
+- GITHUB_RELEASES_COMPLETE_GUIDE.md — avg_percentage_mentioned: 99.5%
+- GITHUB_RELEASES_GUIDE.md — avg_percentage_mentioned: 99.5%
+- GITHUB_RELEASES_INDEX.md — avg_percentage_mentioned: 99.5%
+- GITHUB_RELEASES_QUICKSTART.md — avg_percentage_mentioned: 99.75%
+- GITHUB_RELEASES_QUICK_REFERENCE.md — avg_percentage_mentioned: 99.5%
+- GITHUB_RELEASES_REALTIME_GUIDE.md — avg_percentage_mentioned: 99.65%
+- GITHUB_RELEASES_RECENT.md — avg_percentage_mentioned: 99.5%
+- GITHUB_RELEASES_VERIFICATION_REPORT.md — avg_percentage_mentioned: 99.5%
+- GITHUB_WORKFLOWS_VERIFICATION.md — avg_percentage_mentioned: 98.75%
+- GITPODPAYED.md — avg_percentage_mentioned: 99.5%
+- GIT_COMMIT_INSTRUCTIONS.md — avg_percentage_mentioned: 99.5%
+- GIT_INTEGRATION.md — avg_percentage_mentioned: 99.5%
+- GLOBALMANAGER.md — avg_percentage_mentioned: 99.89%
+- GLOBALTIME.md — avg_percentage_mentioned: 99.83%
+- GLOBAL_ASSET_MANAGEMENT.md — avg_percentage_mentioned: 99.5%
+- GLOBAL_OPERATIONS_PHASE_2_COMPLETION.md — avg_percentage_mentioned: 57.5%
+- GLOBAL_STRUCTURE_ENHANCED.md — avg_percentage_mentioned: 10.32%
+- GODADDY.md — avg_percentage_mentioned: 99.67%
+- GODADDYPAYED.md — avg_percentage_mentioned: 99.5%
+- HFPAYED.md — avg_percentage_mentioned: 99.5%
+- HOOKS.md — avg_percentage_mentioned: 95.0%
+- HOSTLINKSDOMAINS.md — avg_percentage_mentioned: 99.5%
+- HUGGINGFACEHFPAYED.md — avg_percentage_mentioned: 99.5%
+- HUGGINGFACEPAYED.md — avg_percentage_mentioned: 99.5%
+- HUGGINGFACE_SPACE.md — avg_percentage_mentioned: 99.5%
+- IMPLEMENTATION_ACTION_PLAN.md — avg_percentage_mentioned: 57.5%
+- IMPLEMENTATION_COMPLETE.md — avg_percentage_mentioned: 99.5%
+- IMPLEMENTATION_SUMMARY.md — avg_percentage_mentioned: 84.83%
+- IMPLEMENTATION_WORKFLOW_GUIDE.md — avg_percentage_mentioned: 83.33%
+- INCIDENT_RESPONSE_GUIDE.md — avg_percentage_mentioned: 64.03%
+- INDEPENDENTQMOI.md — avg_percentage_mentioned: 99.5%
+- INSTALL.md — avg_percentage_mentioned: 99.5%
+- INSTALLATION.md — avg_percentage_mentioned: 99.5%
+- INSTALLER.md — avg_percentage_mentioned: 99.5%
+- INTEGRATION_GUIDE.md — avg_percentage_mentioned: 99.5%
+- INVINSIBLEQMOI.md — avg_percentage_mentioned: 99.5%
+- ISSUES.md — avg_percentage_mentioned: 99.5%
+- ITERATIVE_IMPROVEMENT_ANALYSIS.md — avg_percentage_mentioned: 57.8%
+- K6.md — avg_percentage_mentioned: 99.5%
+- K8S.md — avg_percentage_mentioned: 99.5%
+- LANGUAGES.md — avg_percentage_mentioned: 99.5%
+- LEAHWALLET.md — avg_percentage_mentioned: 99.5%
+- LIB.md — avg_percentage_mentioned: 99.5%
+- LINKSTRACKS.md — avg_percentage_mentioned: 99.5%
+- LINKS_DOMAINS_ENHANCEMENT_PLAN.md — avg_percentage_mentioned: 99.63%
+- LINKS_FIX_EXECUTION_GUIDE.md — avg_percentage_mentioned: 57.45%
+- LINK_DOMAIN_VALIDATION_PLAN.md — avg_percentage_mentioned: 99.83%
+- LION.md — avg_percentage_mentioned: 99.67%
+- LIONS_COMPREHENSIVE.md — avg_percentage_mentioned: 99.5%
+- LION_AGENT_ENHANCEMENT_SUMMARY.md — avg_percentage_mentioned: 99.67%
+- LION_AGENT_VALIDATION_ENHANCEMENT.md — avg_percentage_mentioned: 99.58%
+- LION_EVOLUTION_COMPREHENSIVE_FRAMEWORK_V2.md — avg_percentage_mentioned: 99.5%
+- LION_QMOI_MASTER_ENHANCEMENTS.md — avg_percentage_mentioned: 92.0%
+- LOGROTATE.md — avg_percentage_mentioned: 99.5%
+- MANIFEST_AND_DEPLOYMENT_GUIDE.md — avg_percentage_mentioned: 83.5%
+- MANUAL_TODOS_COMPLETION_REPORT.md — avg_percentage_mentioned: 73.5%
+- MARKETING_AUTOMATION.md — avg_percentage_mentioned: 99.5%
+- MASTERGUIDE.md — avg_percentage_mentioned: 99.5%
+- MASTEROWNS.md — avg_percentage_mentioned: 82.8%
+- MASTERREADME.md — avg_percentage_mentioned: 89.75%
+- MASTER_COMPLETION_FINAL.md — avg_percentage_mentioned: 70.4%
+- MASTER_CONTROL_SYSTEM.md — avg_percentage_mentioned: 99.5%
+- MASTER_IDENTITY_COMPLETE.md — avg_percentage_mentioned: 99.5%
+- MASTER_ONLY_FEATURES.md — avg_percentage_mentioned: 67.75%
+- MASTER_OPERATIONS_GUIDE.md — avg_percentage_mentioned: 82.24%
+- MASTER_PROJECT_COMPLETION_INDEX.md — avg_percentage_mentioned: 99.88%
+- MASTER_PROJECT_ROADMAP.md — avg_percentage_mentioned: 71.26%
+- MASTER_QUICK_SETUP.md — avg_percentage_mentioned: 99.5%
+- MASTER_READINESS_INDEX.md — avg_percentage_mentioned: 99.5%
+- MASTER_README.md — avg_percentage_mentioned: 99.7%
+- MASTER_SYSTEM_DEPLOYMENT_REPORT.md — avg_percentage_mentioned: 99.6%
+- MASTER_VERIFICATION_COMPLETE.md — avg_percentage_mentioned: 96.47%
+- MEGAVAULT.md — avg_percentage_mentioned: 43.75%
+- ML.md — avg_percentage_mentioned: 99.5%
+- MOBILE.md — avg_percentage_mentioned: 99.5%
+- MODELS.md — avg_percentage_mentioned: 99.5%
+- MONITORING.md — avg_percentage_mentioned: 99.5%
+- MONITORING_AND_HEALTH_CHECKS.md — avg_percentage_mentioned: 64.59%
+- MONITORING_API_DOCS.md — avg_percentage_mentioned: 94.75%
+- MONITORING_IMPLEMENTATION_GUIDE.md — avg_percentage_mentioned: 93.62%
+- MULTI_PLATFORM_BUILD_GUIDE.md — avg_percentage_mentioned: 99.5%
+- NETLIFYPAYED.md — avg_percentage_mentioned: 99.5%
+- NETWORKS.md — avg_percentage_mentioned: 99.83%
+- NEW_USER_SYSTEM_IMPLEMENTATION.md — avg_percentage_mentioned: 80.18%
+- NEXT_STEPS_EXECUTIVE_SUMMARY.md — avg_percentage_mentioned: 91.33%
+- NEXT_STEPS_INDEX.md — avg_percentage_mentioned: 91.33%
+- NEXT_STEPS_ROADMAP.md — avg_percentage_mentioned: 99.5%
+- NGROKPAYED.md — avg_percentage_mentioned: 99.63%
+- NOTEBOOKS.md — avg_percentage_mentioned: 99.5%
+- NOTSPONSORED.md — avg_percentage_mentioned: 93.5%
+- OPERATIONAL_RUNBOOKS.md — avg_percentage_mentioned: 80.0%
+- OPTION_A_PRODUCTION_READY.md — avg_percentage_mentioned: 69.03%
+- ORCHESTRATOR.md — avg_percentage_mentioned: 99.9%
+- PAYEDGITLAB.md — avg_percentage_mentioned: 99.5%
+- PAYMENTS.md — avg_percentage_mentioned: 99.5%
+- PERFORMANCE_GUIDE.md — avg_percentage_mentioned: 86.33%
+- PHASE3_IMPLEMENTATION_COMPLETE.md — avg_percentage_mentioned: 80.0%
+- PHASE3_STATUS_REPORT.md — avg_percentage_mentioned: 75.27%
+- PHASE3_TIER3_CODE_TEMPLATES.md — avg_percentage_mentioned: 80.0%
+- PHASE3_TIER3_IMPLEMENTATION_PLAN.md — avg_percentage_mentioned: 80.0%
+- PHASE3_TIER4_SECURITY_AUDIT.md — avg_percentage_mentioned: 38.95%
+- PHASE4_PRODUCTION_STRATEGY.md — avg_percentage_mentioned: 69.03%
+- PHASE5_COMPLETION_SUMMARY.md — avg_percentage_mentioned: 80.56%
+- PHASES_24_26_IMPLEMENTATION.md — avg_percentage_mentioned: 97.0%
+- PHASE_1_COMPLETION_REPORT.md — avg_percentage_mentioned: 74.75%
+- PHASE_3_TEST_COMPLETION_REPORT.md — avg_percentage_mentioned: 80.59%
+- PHASE_4_7_CONTINUATION_MASTER.md — avg_percentage_mentioned: 70.07%
+- PHASE_4_QVILLAGE_HF_COMPLETE.md — avg_percentage_mentioned: 99.61%
+- PHASE_4_SESSION_COMPLETION.md — avg_percentage_mentioned: 91.77%
+- PHASE_5_COMPLETION.md — avg_percentage_mentioned: 84.75%
+- PHASE_6_EXTENDED_SUMMARY.md — avg_percentage_mentioned: 93.43%
+- PHASE_7_SUMMARY.md — avg_percentage_mentioned: 48.9%
+- PHASE_COMPLETION_REPORT.md — avg_percentage_mentioned: 94.6%
+- PLATFORMS_UI_PRODUCTION_GUIDE.md — avg_percentage_mentioned: 76.68%
+- POLITICALQMOI.md — avg_percentage_mentioned: 99.5%
+- POSTPRODUCTIONCHECKLIST.md — avg_percentage_mentioned: 69.03%
+- PREVIEWWINDOW.md — avg_percentage_mentioned: 99.5%
+- PREVIEW_ENHANCEMENTS.md — avg_percentage_mentioned: 99.5%
+- PRE_RELEASE_DISTRIBUTION_PLAN.md — avg_percentage_mentioned: 72.25%
+- PRISMA.md — avg_percentage_mentioned: 99.5%
+- PRODUCTION.md — avg_percentage_mentioned: 99.5%
+- PRODUCTIONCHECKLIST.md — avg_percentage_mentioned: 99.67%
+- PRODUCTION_ALWAYS_ON_DEPLOYMENT.md — avg_percentage_mentioned: 92.71%
+- PRODUCTION_API_REFERENCE.md — avg_percentage_mentioned: 69.03%
+- PRODUCTION_BUILD_SETUP.md — avg_percentage_mentioned: 69.03%
+- PRODUCTION_CHANGES.md — avg_percentage_mentioned: 69.03%
+- PRODUCTION_CHECKLIST.md — avg_percentage_mentioned: 69.03%
+- PRODUCTION_COMPLETION_REPORT_FINAL.md — avg_percentage_mentioned: 80.0%
+- PRODUCTION_COMPLETION_SUMMARY.md — avg_percentage_mentioned: 99.67%
+- PRODUCTION_COMPLETION_SUMMARY_2026-04-23.md — avg_percentage_mentioned: 95.56%
+- PRODUCTION_CREDENTIALS_GUIDE.md — avg_percentage_mentioned: 99.5%
+- PRODUCTION_DEPLOYMENT.md — avg_percentage_mentioned: 99.5%
+- PRODUCTION_DEPLOYMENT_ALL_STEPS.md — avg_percentage_mentioned: 77.08%
+- PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md — avg_percentage_mentioned: 77.42%
+- PRODUCTION_DEPLOYMENT_CHECKLIST.md — avg_percentage_mentioned: 0.1%
+- PRODUCTION_DEPLOYMENT_COMPLETE.md — avg_percentage_mentioned: 77.62%
+- PRODUCTION_DEPLOYMENT_EXECUTION_REPORT.md — avg_percentage_mentioned: 80.0%
+- PRODUCTION_DEPLOYMENT_FINAL_REPORT.md — avg_percentage_mentioned: 100.0%
+- PRODUCTION_DEPLOYMENT_GUIDE.md — avg_percentage_mentioned: 79.9%
+- PRODUCTION_DEPLOYMENT_MANUAL.md — avg_percentage_mentioned: 0.03%
+- PRODUCTION_DEPLOYMENT_PLAYBOOK.md — avg_percentage_mentioned: 73.42%
+- PRODUCTION_DEPLOYMENT_README.md — avg_percentage_mentioned: 79.99%
+- PRODUCTION_DEPLOYMENT_READY.md — avg_percentage_mentioned: 64.32%
+- PRODUCTION_DEPLOYMENT_SUCCESS.md — avg_percentage_mentioned: 41.42%
+- PRODUCTION_DEPLOYMENT_VALIDATION.md — avg_percentage_mentioned: 99.5%
+- PRODUCTION_ENHANCEMENT_PLAN_15PLUS.md — avg_percentage_mentioned: 86.74%
+- PRODUCTION_ENHANCEMENT_SUMMARY.md — avg_percentage_mentioned: 68.0%
+- PRODUCTION_HARDENING_STATUS.md — avg_percentage_mentioned: 75.8%
+- PRODUCTION_IMPLEMENTATION.md — avg_percentage_mentioned: 69.03%
+- PRODUCTION_IMPLEMENTATION_GUIDES.md — avg_percentage_mentioned: 74.27%
+- PRODUCTION_MAINTENANCE_GUIDE.md — avg_percentage_mentioned: 99.5%
+- PRODUCTION_MIGRATION_SUMMARY.md — avg_percentage_mentioned: 51.06%
+- PRODUCTION_MONITORING_SETUP.md — avg_percentage_mentioned: 70.01%
+- PRODUCTION_NEXT_STEPS_COMPLETE.md — avg_percentage_mentioned: 69.03%
+- PRODUCTION_OPERATIONS_HANDBOOK.md — avg_percentage_mentioned: 50.13%
+- PRODUCTION_QUICK_REFERENCE.md — avg_percentage_mentioned: 79.97%
+- PRODUCTION_READINESS_AUDIT.md — avg_percentage_mentioned: 76.77%
+- PRODUCTION_READINESS_CERTIFICATION.md — avg_percentage_mentioned: 71.01%
+- PRODUCTION_READINESS_CHECKLIST.md — avg_percentage_mentioned: 81.18%
+- PRODUCTION_READINESS_CHECKLIST_FINAL.md — avg_percentage_mentioned: 69.03%
+- PRODUCTION_READINESS_ENHANCED_REPORT.md — avg_percentage_mentioned: 60.79%
+- PRODUCTION_READINESS_EXECUTION_STATUS.md — avg_percentage_mentioned: 92.11%
+- PRODUCTION_READINESS_FINAL.md — avg_percentage_mentioned: 61.42%
+- PRODUCTION_READINESS_FINAL_AUDIT.md — avg_percentage_mentioned: 81.18%
+- PRODUCTION_READINESS_FINAL_COMPREHENSIVE.md — avg_percentage_mentioned: 69.03%
+- PRODUCTION_READINESS_REPORT.md — avg_percentage_mentioned: 81.42%
+- PRODUCTION_README.md — avg_percentage_mentioned: 66.67%
+- PRODUCTION_READY_SUMMARY.md — avg_percentage_mentioned: 76.77%
+- PRODUCTION_RELEASE_ACTION_PLAN.md — avg_percentage_mentioned: 69.03%
+- PRODUCTION_RELEASE_DOCS_INDEX.md — avg_percentage_mentioned: 42.73%
+- PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md — avg_percentage_mentioned: 34.53%
+- PRODUCTION_REMEDIATION_FINAL_REPORT.md — avg_percentage_mentioned: 67.81%
+- PRODUCTION_SETUP.md — avg_percentage_mentioned: 69.03%
+- PRODUCTION_SETUP_COMPLETE.md — avg_percentage_mentioned: 69.03%
+- PRODUCTION_STATUS_2026-05-02.md — avg_percentage_mentioned: 82.83%
+- PRODUCTION_SYNC_COMPLETION_SUMMARY.md — avg_percentage_mentioned: 100.0%
+- PRODUCTION_SYSTEM_STATUS.md — avg_percentage_mentioned: 99.67%
+- PRODUCTION_VALIDATION_SYSTEM.md — avg_percentage_mentioned: 70.79%
+- PROD_PLACEHOLDERS_INVENTORY.md — avg_percentage_mentioned: 69.03%
+- PROJECT_COMPLETE.md — avg_percentage_mentioned: 99.75%
+- PROJECT_COMPLETION_CERTIFICATE.md — avg_percentage_mentioned: 99.83%
+- PROJECT_COMPLETION_REPORT.md — avg_percentage_mentioned: 65.5%
+- PROJECT_FILE_INDEX.md — avg_percentage_mentioned: 83.48%
+- PR_FIX_SUMMARY.md — avg_percentage_mentioned: 99.5%
+- PUBLIC.md — avg_percentage_mentioned: 99.5%
+- PWA.md — avg_percentage_mentioned: 99.5%
+- PWA_APPS.md — avg_percentage_mentioned: 99.5%
+- Q.md — avg_percentage_mentioned: 99.5%
+- QALLPURPOSE.md — avg_percentage_mentioned: 99.5%
+- QAvatar_User_Feedback_Kit.md — avg_percentage_mentioned: 99.5%
+- QCITY-ARTIFACTS.md — avg_percentage_mentioned: 99.5%
+- QCITY-COMPLETION-SUMMARY.md — avg_percentage_mentioned: 63.28%
+- QCITY-DELIVERABLES-CHECKLIST.md — avg_percentage_mentioned: 63.94%
+- QCITY-ENTERPRISE-COMPLETE.md — avg_percentage_mentioned: 48.87%
+- QCITY-PROJECT-COMPLETE.md — avg_percentage_mentioned: 54.22%
+- QCITY-README.md — avg_percentage_mentioned: 75.66%
+- QCITY.md — avg_percentage_mentioned: 99.5%
+- QCITYDEVICEAUTOUPGRADE.md — avg_percentage_mentioned: 78.56%
+- QCITYMAINDEVICE.md — avg_percentage_mentioned: 69.03%
+- QCITYQMOIAUTOSTART.md — avg_percentage_mentioned: 99.5%
+- QCITYREADME.md — avg_percentage_mentioned: 99.8%
+- QCITYRESOURCES.md — avg_percentage_mentioned: 99.5%
+- QCITYRUNNERSENGINE.md — avg_percentage_mentioned: 99.5%
+- QCITYUI.md — avg_percentage_mentioned: 8.75%
+- QCITY_DEVICE_MANAGEMENT.md — avg_percentage_mentioned: 69.03%
+- QGAMINGCLOUD.md — avg_percentage_mentioned: 80.43%
+- QGLOBAL.md — avg_percentage_mentioned: 99.5%
+- QGLOBALSIM.md — avg_percentage_mentioned: 99.5%
+- QGLOBAL_SIM_AUTO_UPDATE_SYSTEM.md — avg_percentage_mentioned: 99.5%
+- QI_ENHANCEMENT_PLAN.md — avg_percentage_mentioned: 94.75%
+- QLIONAGENT.md — avg_percentage_mentioned: 99.9%
+- QMOI-AI-ENHANCEMENT.md — avg_percentage_mentioned: 99.5%
+- QMOI-AIRTEL-INTEGRATION.md — avg_percentage_mentioned: 70.9%
+- QMOI-ANIMATION-ENHANCEMENT.md — avg_percentage_mentioned: 99.5%
+- QMOI-AUTOMATION-COMPLETE.md — avg_percentage_mentioned: 99.5%
+- QMOI-AUTOUPDATE.md — avg_percentage_mentioned: 99.5%
+- QMOI-CLOUD-ENHANCED.md — avg_percentage_mentioned: 84.75%
+- QMOI-CLOUD-OFFLOAD.md — avg_percentage_mentioned: 99.5%
+- QMOI-CLOUD.md — avg_percentage_mentioned: 99.5%
+- QMOI-CROSS-PLATFORM.md — avg_percentage_mentioned: 99.5%
+- QMOI-EARNING-ENHANCED.md — avg_percentage_mentioned: 99.5%
+- QMOI-ENHANCED-AUTOMATION.md — avg_percentage_mentioned: 99.5%
+- QMOI-ENHANCED-AUTOTESTS.md — avg_percentage_mentioned: 69.03%
+- QMOI-ENHANCED-COMPLETE.md — avg_percentage_mentioned: 69.09%
+- QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md — avg_percentage_mentioned: 99.83%
+- QMOI-ENHANCED-FEATURES.md — avg_percentage_mentioned: 92.0%
+- QMOI-ENHANCED-FINAL.md — avg_percentage_mentioned: 83.9%
+- QMOI-ENHANCED-README.md — avg_percentage_mentioned: 99.5%
+- QMOI-ENHANCED-SUMMARY.md — avg_percentage_mentioned: 64.57%
+- QMOI-ENHANCED-SYSTEM.md — avg_percentage_mentioned: 99.5%
+- QMOI-ENHANCEMENT-SUMMARY.md — avg_percentage_mentioned: 99.5%
+- QMOI-FEATURE-INDEX.md — avg_percentage_mentioned: 88.6%
+- QMOI-HUGGINGFACE-ENHANCEMENTS.md — avg_percentage_mentioned: 99.5%
+- QMOI-MASTER-CONTROLS.md — avg_percentage_mentioned: 99.5%
+- QMOI-OPTIMIZATION.md — avg_percentage_mentioned: 99.5%
+- QMOI-PLATFORM-ANALYTICS.md — avg_percentage_mentioned: 99.5%
+- QMOI-PLATFORM-AUTOMATION.md — avg_percentage_mentioned: 99.5%
+- QMOI-PLATFORM-MONITORING.md — avg_percentage_mentioned: 99.5%
+- QMOI-PLATFORM-SECURITY.md — avg_percentage_mentioned: 99.5%
+- QMOI-PLUGIN-SYSTEM.md — avg_percentage_mentioned: 99.5%
+- QMOI-REVENUE-README.md — avg_percentage_mentioned: 99.5%
+- QMOI-SPACE-PWA.md — avg_percentage_mentioned: 99.5%
+- QMOI-SPACE.md — avg_percentage_mentioned: 99.5%
+- QMOI-VOICE-ENHANCEMENT.md — avg_percentage_mentioned: 99.5%
+- QMOI.md — avg_percentage_mentioned: 89.25%
+- QMOIACCOUNTS.md — avg_percentage_mentioned: 99.5%
+- QMOIACCOUNTSPLATFORMS.md — avg_percentage_mentioned: 99.5%
+- QMOIAICORE.md — avg_percentage_mentioned: 99.5%
+- QMOIALLDEVICESHANDSFREE.md — avg_percentage_mentioned: 56.77%
+- QMOIALLDEVICESINSTALL.md — avg_percentage_mentioned: 69.03%
+- QMOIALLPLATFORMS.md — avg_percentage_mentioned: 99.5%
+- QMOIALLPROJECTSADDSTRAILERSDOCS.md — avg_percentage_mentioned: 99.5%
+- QMOIALWAYSPARALLEL.md — avg_percentage_mentioned: 99.5%
+- QMOIAPIKEYREADME.md — avg_percentage_mentioned: 99.5%
+- QMOIAPPS.md — avg_percentage_mentioned: 99.5%
+- QMOIARTISTS.md — avg_percentage_mentioned: 73.0%
+- QMOIAUTHBIOMETRICS.md — avg_percentage_mentioned: 99.5%
+- QMOIAUTOAPPSDEV.md — avg_percentage_mentioned: 69.03%
+- QMOIAUTOBET.md — avg_percentage_mentioned: 63.8%
+- QMOIAUTODEV.md — avg_percentage_mentioned: 69.03%
+- QMOIAUTODISTRIBUTEMARKET.md — avg_percentage_mentioned: 99.5%
+- QMOIAUTOEVOLVE.md — avg_percentage_mentioned: 98.0%
+- QMOIAUTOFIXREADME.md — avg_percentage_mentioned: 99.5%
+- QMOIAUTOGMAIL.md — avg_percentage_mentioned: 99.5%
+- QMOIAUTOMAKENEW.md — avg_percentage_mentioned: 99.5%
+- QMOIAUTOMAKESMONEY.md — avg_percentage_mentioned: 38.35%
+- QMOIAUTOMATIONMONITORING.md — avg_percentage_mentioned: 99.5%
+- QMOIAUTOOPPORTUNITIES.md — avg_percentage_mentioned: 98.0%
+- QMOIAUTOPROJECTS.md — avg_percentage_mentioned: 59.75%
+- QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md — avg_percentage_mentioned: 99.5%
+- QMOIAUTOREVENUEEARN.md — avg_percentage_mentioned: 68.09%
+- QMOIAVATAR.md — avg_percentage_mentioned: 74.75%
+- QMOIBINARIES.md — avg_percentage_mentioned: 99.5%
+- QMOIBROWSER.md — avg_percentage_mentioned: 99.5%
+- QMOICLONE.md — avg_percentage_mentioned: 99.5%
+- QMOICLONEGITHUB.md — avg_percentage_mentioned: 99.5%
+- QMOICLONEGITLAB.md — avg_percentage_mentioned: 99.5%
+- QMOICLONEGITPOD.md — avg_percentage_mentioned: 99.5%
+- QMOICLONEHF.md — avg_percentage_mentioned: 99.5%
+- QMOICLONEHUGGINGFACE.md — avg_percentage_mentioned: 99.5%
+- QMOICLONEQUANTUM.md — avg_percentage_mentioned: 99.5%
+- QMOICLONEVERCEL.md — avg_percentage_mentioned: 99.5%
+- QMOICOLABDAGSHUB.md — avg_percentage_mentioned: 99.5%
+- QMOIDATABASE.md — avg_percentage_mentioned: 99.5%
+- QMOIDATASETS.md — avg_percentage_mentioned: 92.9%
+- QMOIDEV.md — avg_percentage_mentioned: 69.03%
+- QMOIDEVICES.md — avg_percentage_mentioned: 69.03%
+- QMOIDNS.md — avg_percentage_mentioned: 99.5%
+- QMOIDOMAINS.md — avg_percentage_mentioned: 99.67%
+- QMOIDOMAINSLINKS.md — avg_percentage_mentioned: 99.5%
+- QMOIDOWNLOADS.md — avg_percentage_mentioned: 99.5%
+- QMOIEARNING.md — avg_percentage_mentioned: 99.5%
+- QMOIEMPLOYAUTOPAY.md — avg_percentage_mentioned: 99.5%
+- QMOIEMPLOYEES.md — avg_percentage_mentioned: 37.23%
+- QMOIEMULATORS.md — avg_percentage_mentioned: 99.5%
+- QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md — avg_percentage_mentioned: 98.65%
+- QMOIENHANCEMENTSSUMMARY.md — avg_percentage_mentioned: 98.0%
+- QMOIENVWITHALLPROGRAMMINGLANGUAGES.md — avg_percentage_mentioned: 49.25%
+- QMOIFINANCEENGINES.md — avg_percentage_mentioned: 99.5%
+- QMOIFORALL.md — avg_percentage_mentioned: 99.5%
+- QMOIFREE.md — avg_percentage_mentioned: 99.5%
+- QMOIGAMINGCLOUDUSERS.md — avg_percentage_mentioned: 64.57%
+- QMOIGAMINGGENREV.md — avg_percentage_mentioned: 99.5%
+- QMOIGITHUBAPP.md — avg_percentage_mentioned: 99.5%
+- QMOIGITHUBDEV.md — avg_percentage_mentioned: 69.03%
+- QMOIGITLABDEV.md — avg_percentage_mentioned: 69.03%
+- QMOIGITPODDEV.md — avg_percentage_mentioned: 69.03%
+- QMOIGLOBAL.md — avg_percentage_mentioned: 99.67%
+- QMOIHUGGINGFACEALWAYSUPDATE.md — avg_percentage_mentioned: 99.5%
+- QMOIHUGGINGFACESPACES.md — avg_percentage_mentioned: 99.5%
+- QMOIHUGGINGFACESPACESSETUPINST.md — avg_percentage_mentioned: 99.5%
+- QMOIJAVA.md — avg_percentage_mentioned: 99.5%
+- QMOIJEST.md — avg_percentage_mentioned: 99.5%
+- QMOILINT.md — avg_percentage_mentioned: 99.5%
+- QMOIMASKS.md — avg_percentage_mentioned: 99.5%
+- QMOIMEMORY.md — avg_percentage_mentioned: 99.5%
+- QMOIMODEL.md — avg_percentage_mentioned: 86.9%
+- QMOIMODELTESTS.md — avg_percentage_mentioned: 87.45%
+- QMOINETWORK.md — avg_percentage_mentioned: 99.5%
+- QMOINGROK.md — avg_percentage_mentioned: 99.5%
+- QMOIOWNDEVICE.md — avg_percentage_mentioned: 80.06%
+- QMOIPREDEVDOCACTIONS.md — avg_percentage_mentioned: 71.77%
+- QMOIQCITYAUTOMATIC.md — avg_percentage_mentioned: 99.5%
+- QMOIQTEAMCUSTOMERCARE.md — avg_percentage_mentioned: 99.5%
+- QMOIRADIOREADME.md — avg_percentage_mentioned: 99.5%
+- QMOIREADME.md — avg_percentage_mentioned: 93.0%
+- QMOIREGISTRY.md — avg_percentage_mentioned: 99.5%
+- QMOIREVENUEGENERATION.md — avg_percentage_mentioned: 64.9%
+- QMOISERVERS.md — avg_percentage_mentioned: 99.5%
+- QMOISPACEDEV.md — avg_percentage_mentioned: 69.03%
+- QMOISTATS.md — avg_percentage_mentioned: 99.5%
+- QMOISYSTEMAUTO.md — avg_percentage_mentioned: 71.99%
+- QMOISYSTEMEMAILS.md — avg_percentage_mentioned: 99.83%
+- QMOISYSTEMEMAILS_ENHANCED.md — avg_percentage_mentioned: 99.75%
+- QMOITESTENVIRONMENT.md — avg_percentage_mentioned: 69.03%
+- QMOITRADER.md — avg_percentage_mentioned: 58.8%
+- QMOIVERCELDEV.md — avg_percentage_mentioned: 69.03%
+- QMOIVIDEOPLATFORMS.md — avg_percentage_mentioned: 99.5%
+- QMOIWHATSAPP.md — avg_percentage_mentioned: 99.5%
+- QMOIWHATSAPPBROWSERPAGE.md — avg_percentage_mentioned: 99.5%
+- QMOI_9M_REVENUE_ENHANCEMENT_PLAN.md — avg_percentage_mentioned: 28.33%
+- QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md — avg_percentage_mentioned: 58.5%
+- QMOI_AGENT_INSTRUCTIONS.md — avg_percentage_mentioned: 99.5%
+- QMOI_AI_PRODUCTION_READY.md — avg_percentage_mentioned: 69.03%
+- QMOI_APIS_WEBHOOKS_ENDPOINTS.md — avg_percentage_mentioned: 79.78%
+- QMOI_APPS_AND_PLATFORMS_INVENTORY.md — avg_percentage_mentioned: 99.5%
+- QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md — avg_percentage_mentioned: 99.5%
+- QMOI_ARCHITECTURE.md — avg_percentage_mentioned: 90.44%
+- QMOI_AUTODEV.md — avg_percentage_mentioned: 69.03%
+- QMOI_AUTOFIX_FILES_CREATED.md — avg_percentage_mentioned: 66.67%
+- QMOI_AUTOFIX_IMPLEMENTATION_SUMMARY.md — avg_percentage_mentioned: 79.0%
+- QMOI_AUTOFIX_MASTER_GUIDE.md — avg_percentage_mentioned: 79.38%
+- QMOI_AUTOFIX_QUICK_REFERENCE.md — avg_percentage_mentioned: 85.5%
+- QMOI_AUTOFIX_SETUP_GUIDE.md — avg_percentage_mentioned: 86.75%
+- QMOI_AUTOFIX_SYSTEM_INDEX.md — avg_percentage_mentioned: 86.0%
+- QMOI_AUTOMATED_DEPLOYMENT_GUIDE.md — avg_percentage_mentioned: 99.75%
+- QMOI_AUTOMATED_SYSTEMS_README.md — avg_percentage_mentioned: 63.8%
+- QMOI_AUTONOMOUS_FEATURES.md — avg_percentage_mentioned: 99.5%
+- QMOI_AUTO_EVOLVING_STRATEGY.md — avg_percentage_mentioned: 100.0%
+- QMOI_AUTO_SETUP_IMPLEMENTATION.md — avg_percentage_mentioned: 99.5%
+- QMOI_AUTO_TESTING_UI_DEVELOPMENT.md — avg_percentage_mentioned: 69.03%
+- QMOI_BULK_OPERATIONS_GUIDE.md — avg_percentage_mentioned: 100.0%
+- QMOI_CHAT_FIX_GUIDE.md — avg_percentage_mentioned: 99.5%
+- QMOI_CI_SECRETS.md — avg_percentage_mentioned: 99.5%
+- QMOI_COMPLETE_ENHANCEMENT_SUMMARY.md — avg_percentage_mentioned: 78.35%
+- QMOI_COMPLETE_EVOLUTION_FRAMEWORK.md — avg_percentage_mentioned: 57.34%
+- QMOI_COMPLETE_INTEGRATION_MASTER.md — avg_percentage_mentioned: 50.11%
+- QMOI_COMPLETE_STATUS.md — avg_percentage_mentioned: 99.5%
+- QMOI_COMPLETE_SYSTEM.md — avg_percentage_mentioned: 99.5%
+- QMOI_COMPLETE_SYSTEM_OVERVIEW.md — avg_percentage_mentioned: 93.28%
+- QMOI_COMPREHENSIVE_SYSTEM_ENHANCEMENTS.md — avg_percentage_mentioned: 96.8%
+- QMOI_CONSCIOUSNESS.md — avg_percentage_mentioned: 99.67%
+- QMOI_CONSCIOUSNESS_MASTER_PLAN.md — avg_percentage_mentioned: 92.8%
+- QMOI_CONSCIOUSNESS_SYSTEM.md — avg_percentage_mentioned: 99.75%
+- QMOI_DOWNLOADED_APPS.md — avg_percentage_mentioned: 99.5%
+- QMOI_ENHANCED_COMPLETE_IMPLEMENTATION_AND_OPTIMIZATION_REPORT.md — avg_percentage_mentioned: 66.35%
+- QMOI_ENHANCED_COMPLETE_IMPLEMENTATION_REPORT.md — avg_percentage_mentioned: 71.45%
+- QMOI_ENHANCED_FINAL_SUMMARY.md — avg_percentage_mentioned: 95.79%
+- QMOI_ENHANCEMENT_COMPLETION_SUMMARY.md — avg_percentage_mentioned: 92.16%
+- QMOI_ENHANCEMENT_SUMMARY.md — avg_percentage_mentioned: 59.67%
+- QMOI_ENHANCEMENT_UPDATE_20260321.md — avg_percentage_mentioned: 66.09%
+- QMOI_EVOLUTION_ENHANCEMENT_PLAN.md — avg_percentage_mentioned: 68.59%
+- QMOI_FEATURES_COMPLETE.md — avg_percentage_mentioned: 99.5%
+- QMOI_FRIENDSHIP_ENHANCEMENT.md — avg_percentage_mentioned: 99.25%
+- QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md — avg_percentage_mentioned: 99.33%
+- QMOI_GITLAB_AUTOMATION.md — avg_percentage_mentioned: 99.5%
+- QMOI_HYBRID_JAVA_WORKFLOW.md — avg_percentage_mentioned: 99.5%
+- QMOI_ITERATIVE_IMPROVEMENT_COMPLETE.md — avg_percentage_mentioned: 99.5%
+- QMOI_ITERATIVE_INDEX.md — avg_percentage_mentioned: 99.5%
+- QMOI_LINKS_DOMAINS_PROGRESS.md — avg_percentage_mentioned: 68.89%
+- QMOI_MARKDOWN_AUTO_UPDATE.md — avg_percentage_mentioned: 92.95%
+- QMOI_MASTER_INTEGRATION_VALIDATION.md — avg_percentage_mentioned: 58.45%
+- QMOI_MASTER_TESTING_GUIDE.md — avg_percentage_mentioned: 71.77%
+- QMOI_MASTER_TESTING_SUMMARY.md — avg_percentage_mentioned: 86.91%
+- QMOI_MEMORY.md — avg_percentage_mentioned: 99.5%
+- QMOI_MEMORY_AWARENESS_SYSTEM.md — avg_percentage_mentioned: 94.02%
+- QMOI_MODEL_COMPLETENESS.md — avg_percentage_mentioned: 100.0%
+- QMOI_OXYGEN_PULSE.md — avg_percentage_mentioned: 99.5%
+- QMOI_PERMANENT_RETENTION_ENHANCEMENT_PLAN.md — avg_percentage_mentioned: 78.0%
+- QMOI_PHASE_3_COMPLETION_SUMMARY.md — avg_percentage_mentioned: 83.28%
+- QMOI_PLATFORM_ARCHITECTURE.md — avg_percentage_mentioned: 73.48%
+- QMOI_PRODUCTION_API.md — avg_percentage_mentioned: 76.77%
+- QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md — avg_percentage_mentioned: 69.03%
+- QMOI_PRODUCTION_DEPLOYMENT.md — avg_percentage_mentioned: 50.1%
+- QMOI_PROFESSIONAL_DATASETS_PLAN.md — avg_percentage_mentioned: 95.65%
+- QMOI_PROJECT_MANAGEMENT_SYSTEMS.md — avg_percentage_mentioned: 70.46%
+- QMOI_QUICK_START.md — avg_percentage_mentioned: 98.0%
+- QMOI_QVS_COMPREHENSIVE_ENHANCEMENT_PLAN_2026.md — avg_percentage_mentioned: 98.12%
+- QMOI_REALTIME_RELEASES_IMPLEMENTATION.md — avg_percentage_mentioned: 99.58%
+- QMOI_RELEASE_VERIFICATION_SYSTEM.md — avg_percentage_mentioned: 51.28%
+- QMOI_RELEASE_VERSION_SYSTEM.md — avg_percentage_mentioned: 60.47%
+- QMOI_REVENUE_GENERATION_STRATEGY_2026.md — avg_percentage_mentioned: 30.35%
+- QMOI_SECURITY_PERSONAL_ENHANCEMENT_PLAN_2026.md — avg_percentage_mentioned: 95.82%
+- QMOI_SELF_UPDATE_SYSTEM.md — avg_percentage_mentioned: 99.67%
+- QMOI_SPACE_QVILLAGE_ENHANCEMENT_PLAN.md — avg_percentage_mentioned: 90.65%
+- QMOI_SYSTEMS_COMPLETE_INDEX.md — avg_percentage_mentioned: 71.43%
+- QMOI_TESTING_INDEX.md — avg_percentage_mentioned: 82.46%
+- QMOI_TEST_DASHBOARD.md — avg_percentage_mentioned: 89.47%
+- QMOI_TRACKS_SYSTEM.md — avg_percentage_mentioned: 99.5%
+- QMOI_TYPESCRIPT_REMEDIATION_PLAN.md — avg_percentage_mentioned: 97.5%
+- QMOI_USER_IDENTIFICATION_IMPLEMENTATION_SUMMARY.md — avg_percentage_mentioned: 99.5%
+- QMOI_USER_IDENTIFICATION_INDEX.md — avg_percentage_mentioned: 99.5%
+- QMOI_USER_IDENTIFICATION_SYSTEM.md — avg_percentage_mentioned: 99.5%
+- QMOI_USER_TESTING_QUICK_REFERENCE.md — avg_percentage_mentioned: 69.03%
+- QMOI_V1_2_3_EXECUTIVE_SUMMARY.md — avg_percentage_mentioned: 99.8%
+- QMOI_V1_2_3_RELEASE_PLAN_SUMMARY.md — avg_percentage_mentioned: 84.16%
+- QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md — avg_percentage_mentioned: 68.73%
+- QMOI_VISION_AND_DEBATE_GUIDE.md — avg_percentage_mentioned: 83.17%
+- QMOI_WALLET_FINANCIAL_SYSTEMS.md — avg_percentage_mentioned: 32.87%
+- QMOI_WALLET_FINANCIAL_SYSTEMS_UPDATED.md — avg_percentage_mentioned: 65.82%
+- QMOI_v1.2.3_ALL_APPS_AND_DOWNLOADS.md — avg_percentage_mentioned: 99.75%
+- QMoi_Test_Report.md — avg_percentage_mentioned: 69.03%
+- QRADIOPROGRAMS.md — avg_percentage_mentioned: 99.5%
+- QSERVERREADME.md — avg_percentage_mentioned: 88.77%
+- QSIMTWO.md — avg_percentage_mentioned: 99.5%
+- QTEAMTERMS.md — avg_percentage_mentioned: 99.5%
+- QTOOLS.md — avg_percentage_mentioned: 99.5%
+- QUANTUGENREV.md — avg_percentage_mentioned: 99.5%
+- QUANTUM.md — avg_percentage_mentioned: 98.17%
+- QUANTUMAUTOMARKET.md — avg_percentage_mentioned: 99.5%
+- QUANTUMPAYED.md — avg_percentage_mentioned: 99.5%
+- QUICKSTART_LINKS_FIX.md — avg_percentage_mentioned: 56.33%
+- QUICK_ACTION_CHECKLIST.md — avg_percentage_mentioned: 99.8%
+- QUICK_REFERENCE.md — avg_percentage_mentioned: 95.33%
+- QUICK_REFERENCE_GUIDE.md — avg_percentage_mentioned: 78.92%
+- QUICK_REFERENCE_SPRINT_METRICS.md — avg_percentage_mentioned: 66.46%
+- QUICK_START.md — avg_percentage_mentioned: 99.5%
+- QUICK_START_GUIDE.md — avg_percentage_mentioned: 80.0%
+- QUICK_START_MONITORING.md — avg_percentage_mentioned: 88.78%
+- QUICK_START_SESSION_4.md — avg_percentage_mentioned: 86.45%
+- QUICK_START_TESTING.md — avg_percentage_mentioned: 52.01%
+- QUICK_START_VISUAL.md — avg_percentage_mentioned: 72.45%
+- QUICK_TEST_START.md — avg_percentage_mentioned: 82.68%
+- QVERCELAGENT.md — avg_percentage_mentioned: 99.5%
+- QVILLAGE.md — avg_percentage_mentioned: 81.11%
+- QVILLAGEENHANCEMENTS.md — avg_percentage_mentioned: 73.77%
+- QVILLAGEEVOLUTION.md — avg_percentage_mentioned: 62.2%
+- QVILLAGESPACES.md — avg_percentage_mentioned: 89.17%
+- QVILLAGETESTS.md — avg_percentage_mentioned: 76.77%
+- QVILLAGE_ADVANCED_AUTOMATION_PLAN.md — avg_percentage_mentioned: 99.82%
+- QVILLAGE_ENHANCED_AUTO_EVOLUTION.md — avg_percentage_mentioned: 71.22%
+- QVILLAGE_ENHANCED_COMPLETE.md — avg_percentage_mentioned: 99.5%
+- QVILLAGE_ENHANCEMENT_COMPLETE.md — avg_percentage_mentioned: 99.92%
+- QVILLAGE_HUGGINGFACE_INTEGRATION.md — avg_percentage_mentioned: 99.5%
+- QVILLAGE_IMPLEMENTATION_SUMMARY.md — avg_percentage_mentioned: 99.5%
+- QVILLAGE_QMOI_MODELS_INTEGRATION.md — avg_percentage_mentioned: 79.48%
+- QVILLAGE_READY_FOR_PRODUCTION.md — avg_percentage_mentioned: 69.03%
+- QVPNREADME.md — avg_percentage_mentioned: 99.5%
+- QVS.md — avg_percentage_mentioned: 99.8%
+- QVS/AUTOJCA.md — avg_percentage_mentioned: 95.7%
+- QVS/ENHANCEDQVS.md — avg_percentage_mentioned: 69.24%
+- QVS/QVSREADME.md — avg_percentage_mentioned: 86.0%
+- Q_API_KEY_COMPREHENSIVE.md — avg_percentage_mentioned: 97.83%
+- Q_BALANCES_AUTO_UPDATE_README.md — avg_percentage_mentioned: 82.83%
+- Qstore.md — avg_percentage_mentioned: 99.5%
+- RBAC_IMPLEMENTATION_SUMMARY.md — avg_percentage_mentioned: 99.5%
+- README (1).md — avg_percentage_mentioned: 99.5%
+- README.md — avg_percentage_mentioned: 97.73%
+- README_DOCUMENTATION.md — avg_percentage_mentioned: 98.89%
+- README_ENHANCED.md — avg_percentage_mentioned: 72.25%
+- README_MONITORING.md — avg_percentage_mentioned: 93.43%
+- README_PRODUCTION.md — avg_percentage_mentioned: 69.03%
+- README_QVILLAGE_ENHANCED.md — avg_percentage_mentioned: 99.9%
+- READY_TO_EXECUTE.md — avg_percentage_mentioned: 45.73%
+- REAL_IMPLEMENTATIONS_SUMMARY.md — avg_percentage_mentioned: 89.44%
+- REAL_IMPLEMENTATIONS_VERIFICATION.md — avg_percentage_mentioned: 91.64%
+- REFERENCES.md — avg_percentage_mentioned: 99.25%
+- RELEASETRACKS.md — avg_percentage_mentioned: 99.5%
+- RELEASE_FINALIZATION_PLAN.md — avg_percentage_mentioned: 99.5%
+- RELEASE_MAINTENANCE.md — avg_percentage_mentioned: 99.5%
+- RELEASE_NOTES_v1.2.4.md — avg_percentage_mentioned: 99.5%
+- RELEASE_NOTES_v2.4.0.md — avg_percentage_mentioned: 99.75%
+- RELEASE_VERIFICATION_V1_2_3.md — avg_percentage_mentioned: 99.87%
+- RELEASE_v1.2.3_COMPLETE.md — avg_percentage_mentioned: 99.89%
+- RELEASE_v1.2.5_COMPLETION_REPORT.md — avg_percentage_mentioned: 99.5%
+- RELEASE_v1.2.5_INSPECTION.md — avg_percentage_mentioned: 99.5%
+- RELEASE_v1.2.5_PUBLISH_REPORT.md — avg_percentage_mentioned: 99.5%
+- RELEASE_v1.2.5_READY.md — avg_percentage_mentioned: 99.5%
+- RELEASE_v1.2.5_STATUS_REPORT.md — avg_percentage_mentioned: 99.5%
+- RELEASE_v1.2.5_VERIFICATION_GUIDE.md — avg_percentage_mentioned: 99.5%
+- REPORTS.md — avg_percentage_mentioned: 99.5%
+- REQUIREMENTS.md — avg_percentage_mentioned: 99.5%
+- RESPONSE_TIERS_QUICK_REFERENCE.md — avg_percentage_mentioned: 68.06%
+- RESULTS.md — avg_percentage_mentioned: 99.5%
+- REVENUEGENERATING.md — avg_percentage_mentioned: 55.9%
+- REVENUE_ENHANCEMENT_PLAN.md — avg_percentage_mentioned: 96.63%
+- REVENUE_VALIDATOR_COMPLETION_REPORT.md — avg_percentage_mentioned: 69.53%
+- ROLES_AND_PERMISSIONS.md — avg_percentage_mentioned: 99.5%
+- ROOT_PRODUCTION_STATUS.md — avg_percentage_mentioned: 69.03%
+- ROOT_production_STATUS.md — avg_percentage_mentioned: 69.03%
+- ROUTES_COMPREHENSIVE.md — avg_percentage_mentioned: 99.5%
+- RSAAPIREADME.md — avg_percentage_mentioned: 99.5%
+- S1B_COMPLETION_SUMMARY.md — avg_percentage_mentioned: 99.5%
+- S1B_INTEGRATION_GUIDE.md — avg_percentage_mentioned: 99.5%
+- SCAN_RESULTS.md — avg_percentage_mentioned: 99.5%
+- SCRIPTSREADME.md — avg_percentage_mentioned: 99.5%
+- SECRET_SETUP.md — avg_percentage_mentioned: 99.5%
+- SECURITY.md — avg_percentage_mentioned: 99.5%
+- SECURITYREADME.md — avg_percentage_mentioned: 99.5%
+- SECURITY_AUDIT_CHECKLIST.md — avg_percentage_mentioned: 99.5%
+- SECURITY_AUTOMATION.md — avg_percentage_mentioned: 99.5%
+- SECURITY_CHECKLIST.md — avg_percentage_mentioned: 69.78%
+- SELF_EVOLUTION.md — avg_percentage_mentioned: 99.5%
+- SERVEQCITYQMOIAIQMOISPACE.md — avg_percentage_mentioned: 99.5%
+- SERVER.md — avg_percentage_mentioned: 99.5%
+- SERVICE_LEVEL_AGREEMENT.md — avg_percentage_mentioned: 77.89%
+- SERVINGERRORSISSUES.md — avg_percentage_mentioned: 69.03%
+- SESSION5_PRODUCTION_SUMMARY.md — avg_percentage_mentioned: 87.72%
+- SESSION_3_COMPLETION_REPORT.md — avg_percentage_mentioned: 100.0%
+- SESSION_3_COMPLETION_SUMMARY.md — avg_percentage_mentioned: 55.7%
+- SESSION_4_COMPLETION_REPORT.md — avg_percentage_mentioned: 99.5%
+- SESSION_4_COMPLETION_SUMMARY.md — avg_percentage_mentioned: 78.14%
+- SESSION_4_DELIVERABLES.md — avg_percentage_mentioned: 99.5%
+- SESSION_4_SUMMARY.md — avg_percentage_mentioned: 99.5%
+- SESSION_COMPLETION_REPORT_TODOS_PRODUCTION_READY.md — avg_percentage_mentioned: 69.03%
+- SESSION_COMPLETION_SUMMARY.md — avg_percentage_mentioned: 99.7%
+- SESSION_COMPREHENSIVE_SUMMARY_20260321.md — avg_percentage_mentioned: 70.98%
+- SESSION_CONSCIOUSNESS_IMPLEMENTATION_SUMMARY.md — avg_percentage_mentioned: 97.25%
+- SESSION_DOCUMENTATION_STATUS_REPORT.md — avg_percentage_mentioned: 98.83%
+- SESSION_LINKS_DOMAINS_ENHANCEMENT_SUMMARY.md — avg_percentage_mentioned: 69.07%
+- SESSION_PHASE_COMPLETE.md — avg_percentage_mentioned: 99.95%
+- SESSION_PROGRESS.md — avg_percentage_mentioned: 67.38%
+- SESSION_SUMMARY_20260614.md — avg_percentage_mentioned: 100.0%
+- SETUP_SESSION_SUMMARY.md — avg_percentage_mentioned: 100.0%
+- SHELL.md — avg_percentage_mentioned: 99.5%
+- SISTERREADME.md — avg_percentage_mentioned: 99.5%
+- SPONSORED.md — avg_percentage_mentioned: 99.5%
+- SPONSORED_USERS.md — avg_percentage_mentioned: 99.5%
+- SSH-BACKEND.md — avg_percentage_mentioned: 99.5%
+- SSL_SETUP.md — avg_percentage_mentioned: 99.5%
+- START.md — avg_percentage_mentioned: 99.5%
+- STARTUP_NOTES.md — avg_percentage_mentioned: 99.5%
+- START_HERE.md — avg_percentage_mentioned: 74.75%
+- START_PRODUCTION_DEPLOYMENT.md — avg_percentage_mentioned: 67.22%
+- STYLES.md — avg_percentage_mentioned: 99.5%
+- SYNCREPOS.md — avg_percentage_mentioned: 99.5%
+- SYSTEM_CONFIGURATION_BASELINE.md — avg_percentage_mentioned: 69.12%
+- SYSTEM_IMPLEMENTATION_COMPLETE.md — avg_percentage_mentioned: 99.98%
+- TABLE_OF_CONTENTS.md — avg_percentage_mentioned: 98.8%
+- TEAM_ONBOARDING_GUIDE.md — avg_percentage_mentioned: 99.5%
+- TEAM_OPERATIONS_GOVERNANCE.md — avg_percentage_mentioned: 99.67%
+- TECHNICAL_COMMANDS_REFERENCE.md — avg_percentage_mentioned: 99.5%
+- TEMPLATES.md — avg_percentage_mentioned: 99.5%
+- TEMPS.md — avg_percentage_mentioned: 99.5%
+- TERMINAL.md — avg_percentage_mentioned: 99.5%
+- TERMINAL_ENHANCEMENT_PLAN.md — avg_percentage_mentioned: 97.97%
+- TEST-RESULTS.md — avg_percentage_mentioned: 99.5%
+- TESTING.md — avg_percentage_mentioned: 60.29%
+- TESTREADME.md — avg_percentage_mentioned: 75.52%
+- TESTS.md — avg_percentage_mentioned: 85.0%
+- TEST_ANALYSIS_REPORT.md — avg_percentage_mentioned: 79.31%
+- TEST_COVERAGE_REPORT.md — avg_percentage_mentioned: 99.5%
+- TIER2_TESTS_READY_FOR_EXECUTION.md — avg_percentage_mentioned: 92.0%
+- TO-DOs.md — avg_percentage_mentioned: 99.5%
+- TODOS_COMPLETION_INDEX.md — avg_percentage_mentioned: 99.5%
+- TODOS_COMPLETION_VERIFICATION.md — avg_percentage_mentioned: 99.5%
+- TODO_PROD_BATCH_PENDING.md — avg_percentage_mentioned: 69.03%
+- TOOLS.md — avg_percentage_mentioned: 97.19%
+- TRACKS.md — avg_percentage_mentioned: 84.83%
+- TRADINGREADME.md — avg_percentage_mentioned: 11.78%
+- TREE_COMPREHENSIVE.md — avg_percentage_mentioned: 87.33%
+- TROUBLESHOOTING.md — avg_percentage_mentioned: 99.5%
+- TYPES.md — avg_percentage_mentioned: 99.5%
+- UI_ENHANCEMENT_COMPREHENSIVE_PLAN.md — avg_percentage_mentioned: 68.93%
+- UI_ENHANCEMENT_IMPLEMENTATION_GUIDE.md — avg_percentage_mentioned: 99.5%
+- UI_ENHANCEMENT_QUICK_REFERENCE.md — avg_percentage_mentioned: 74.83%
+- UI_FEATURES_AUDIT_COMPREHENSIVE.md — avg_percentage_mentioned: 99.5%
+- UI_SAMPLES.md — avg_percentage_mentioned: 99.5%
+- UNIVERSALHEALTHRUNNERS.md — avg_percentage_mentioned: 99.5%
+- UNUSED_API_ENDPOINTS.md — avg_percentage_mentioned: 99.5%
+- USEEMPLOYEESUSERS.md — avg_percentage_mentioned: 55.13%
+- USERREADME.md — avg_percentage_mentioned: 99.5%
+- USER_RESPONSE_STAGES_F_G_H.md — avg_percentage_mentioned: 77.0%
+- USER_RESPONSE_TESTING_INDEX.md — avg_percentage_mentioned: 69.03%
+- USER_SYSTEM_QUICK_REFERENCE.md — avg_percentage_mentioned: 99.5%
+- USER_TRAINING_GUIDE.md — avg_percentage_mentioned: 68.0%
+- UTILS.md — avg_percentage_mentioned: 99.5%
+- V1.2.5_RELEASE.md — avg_percentage_mentioned: 99.5%
+- V1_2_3_QUICK_REFERENCE.md — avg_percentage_mentioned: 99.75%
+- VALIDATION_IMPLEMENTATION_SUMMARY.md — avg_percentage_mentioned: 99.87%
+- VALIDATION_SYSTEM.md — avg_percentage_mentioned: 99.17%
+- VERCELHEALTHS.md — avg_percentage_mentioned: 99.5%
+- VERCELLINKS.md — avg_percentage_mentioned: 99.5%
+- VERCELPAYED.md — avg_percentage_mentioned: 99.5%
+- VERCEL_AUTO_DEPLOY_GUIDE.md — avg_percentage_mentioned: 99.66%
+- VERCEL_AUTO_UPDATE_README.md — avg_percentage_mentioned: 99.5%
+- VERCEL_DEPLOYMENT_GUIDE.md — avg_percentage_mentioned: 99.5%
+- VERCEL_DEPLOYMENT_READY.md — avg_percentage_mentioned: 99.5%
+- VERCEL_DEPLOYMENT_SETUP_CHECKLIST.md — avg_percentage_mentioned: 99.5%
+- VERCEL_DEPLOYMENT_STATUS.md — avg_percentage_mentioned: 99.5%
+- VERCEL_QMOI_AUTOFEATURES_MASTER.md — avg_percentage_mentioned: 77.22%
+- VERIFICATION_COMPLETE_2026-01-15.md — avg_percentage_mentioned: 99.5%
+- VERIFICATION_SYSTEM_ENHANCED.md — avg_percentage_mentioned: 67.88%
+- WALLET_FINANCIAL_VALIDATION.md — avg_percentage_mentioned: 99.5%
+- WATCHDEBUG.md — avg_percentage_mentioned: 99.5%
+- WEBHOOKS.md — avg_percentage_mentioned: 50.45%
+- WHATSAPP-QMOI-BOT.md — avg_percentage_mentioned: 99.5%
+- WIRKFLOWSTRACKS.md — avg_percentage_mentioned: 99.5%
+- WORKFLOWS.md — avg_percentage_mentioned: 99.65%
+- WORKFLOWSHEALTHS.md — avg_percentage_mentioned: 98.39%
+- WORKSPACECODESPACEQCITYMINBUNDLESENHANCED.md — avg_percentage_mentioned: 99.5%
+- WORKSPACEGENERAL.md — avg_percentage_mentioned: 99.5%
+- WORKSPACE_LIGHT_MODE.md — avg_percentage_mentioned: 99.5%
+- WORK_COMPLETED_SUMMARY.md — avg_percentage_mentioned: 67.87%
+- WPA.md — avg_percentage_mentioned: 62.8%
+- ZERORATEDQMOI.md — avg_percentage_mentioned: 99.5%
+- _APP_ARCHIVED.md — avg_percentage_mentioned: 99.5%
+- _PAGES_ARCHIVED.md — avg_percentage_mentioned: 99.5%
+- allrefs.md — avg_percentage_mentioned: 99.5%
+- app/api/PRODUCTION_STATUS.md — avg_percentage_mentioned: 69.03%
+- app/api/production_STATUS.md — avg_percentage_mentioned: 69.03%
+- archives/placeholder_actions_20260426_102212.md — avg_percentage_mentioned: 9.68%
+- assets/changelogs/qcity-changelog.md — avg_percentage_mentioned: 99.5%
+- assets/changelogs/qmoi_ai-changelog.md — avg_percentage_mentioned: 99.5%
+- assets/changelogs/qshare-changelog.md — avg_percentage_mentioned: 99.5%
+- assets/changelogs/qstore-changelog.md — avg_percentage_mentioned: 99.5%
+- assets/changelogs/qvillage-changelog.md — avg_percentage_mentioned: 99.5%
+- assets/changelogs/yap-changelog.md — avg_percentage_mentioned: 99.5%
+- autoPRODUCTIONtracks.md — avg_percentage_mentioned: 37.17%
+- autodev_enhancement_report.md — avg_percentage_mentioned: 56.55%
+- autodevtracks.md — avg_percentage_mentioned: 40.37%
+- autotest_report.md — avg_percentage_mentioned: 99.71%
+- components/qmedia-player.md — avg_percentage_mentioned: 99.5%
+- compulsories.md — avg_percentage_mentioned: 99.67%
+- compulsories_nonproduction_tasks.md — avg_percentage_mentioned: 99.5%
+- copilot-instructions.md — avg_percentage_mentioned: 99.5%
+- deploy/README.md — avg_percentage_mentioned: 99.5%
+- docs/ACCESSIBILITY.md — avg_percentage_mentioned: 99.5%
+- docs/ALLTESTSAUTOTESTS.md — avg_percentage_mentioned: 99.5%
+- docs/API.md — avg_percentage_mentioned: 99.5%
+- docs/API_AUDIT.md — avg_percentage_mentioned: 97.25%
+- docs/API_ENHANCEMENTS_PLAN.md — avg_percentage_mentioned: 99.5%
+- docs/API_REFERENCE.md — avg_percentage_mentioned: 71.33%
+- docs/APIs_v1.md — avg_percentage_mentioned: 99.5%
+- docs/APPSVALIDATION.md — avg_percentage_mentioned: 99.5%
+- docs/AUTODEV_INSTRUCTIONS.md — avg_percentage_mentioned: 69.03%
+- docs/AUTOEVOLVE.md — avg_percentage_mentioned: 99.5%
+- docs/AUTO_SETUP_GUIDE.md — avg_percentage_mentioned: 99.5%
+- docs/CLAUDE_SONNET_CONFIG.md — avg_percentage_mentioned: 99.5%
+- docs/CLONE_SYSTEMS.md — avg_percentage_mentioned: 73.1%
+- docs/COMPONENT_IMPORT_ANALYSIS.md — avg_percentage_mentioned: 33.33%
+- docs/CREDENTIAL_ROTATION_PLAYBOOK.md — avg_percentage_mentioned: 99.5%
+- docs/DEPLOY.md — avg_percentage_mentioned: 99.5%
+- docs/DOWNLOADVALIDATION.md — avg_percentage_mentioned: 99.5%
+- docs/ENHANCEDQVS.md — avg_percentage_mentioned: 99.5%
+- docs/ENHANCED_FEATURES.md — avg_percentage_mentioned: 99.5%
+- docs/EVOLUTION.md — avg_percentage_mentioned: 67.87%
+- docs/FEATURESINDEX.md — avg_percentage_mentioned: 99.5%
+- docs/IMPLEMENTATION_CHECKLIST.md — avg_percentage_mentioned: 64.78%
+- docs/IMPLEMENTATION_SUMMARY.md — avg_percentage_mentioned: 88.0%
+- docs/LIGHTWEIGHT_STRATEGY.md — avg_percentage_mentioned: 99.5%
+- docs/LINKVALIDATION.md — avg_percentage_mentioned: 99.5%
+- docs/LION-ENHANCEMENTS-PLAN.md — avg_percentage_mentioned: 99.5%
+- docs/LION-USAGE-PLAN.md — avg_percentage_mentioned: 99.5%
+- docs/LION-WEBHOOKS-ENHANCEMENTS.md — avg_percentage_mentioned: 99.5%
+- docs/LIONFEATURES_ENHANCED.md — avg_percentage_mentioned: 99.5%
+- docs/LIONOPERATINGSYSTEM.md — avg_percentage_mentioned: 99.5%
+- docs/LIONVALIDATION.md — avg_percentage_mentioned: 99.5%
+- docs/LIONVARIATIONS.md — avg_percentage_mentioned: 99.5%
+- docs/LION_ORCHESTRATOR_ENHANCEMENTS.md — avg_percentage_mentioned: 99.5%
+- docs/LOCAL_QMOI_DEVELOPMENT.md — avg_percentage_mentioned: 69.03%
+- docs/MASTER_INDEX.md — avg_percentage_mentioned: 99.5%
+- docs/MEMORYVALIDATION.md — avg_percentage_mentioned: 99.5%
+- docs/MONITORING_SYSTEM.md — avg_percentage_mentioned: 68.0%
+- docs/MSW_RUNTIME.md — avg_percentage_mentioned: 99.5%
+- docs/MSW_SETUP.md — avg_percentage_mentioned: 99.5%
+- docs/OFFLINE_FIRST_ARCHITECTURE.md — avg_percentage_mentioned: 99.5%
+- docs/OFFLINE_GUIDE.md — avg_percentage_mentioned: 78.5%
+- docs/PARALLEL.md — avg_percentage_mentioned: 99.39%
+- docs/PARALLEL_ENHANCEMENTS.md — avg_percentage_mentioned: 99.5%
+- docs/PLATFORM_AUTOMATION.md — avg_percentage_mentioned: 99.5%
+- docs/PLATFORM_EVOLUTION.md — avg_percentage_mentioned: 73.85%
+- docs/PRODUCTION_CHECKLIST.md — avg_percentage_mentioned: 69.03%
+- docs/QMEDIA_PLAYER_ENHANCEMENT_PLAN.md — avg_percentage_mentioned: 99.5%
+- docs/QMOI-ENHANCED-AUTOTESTS.md — avg_percentage_mentioned: 69.03%
+- docs/QMOICLONE.md — avg_percentage_mentioned: 99.5%
+- docs/QMOIGITHUBDEV.md — avg_percentage_mentioned: 69.03%
+- docs/QMOIGITLABDEV.md — avg_percentage_mentioned: 69.03%
+- docs/QMOIVERCELDEV.md — avg_percentage_mentioned: 69.03%
+- docs/QMOI_AI_GUIDE.md — avg_percentage_mentioned: 99.17%
+- docs/QMOI_BACKGROUND_AUTOMATION_GUIDE.md — avg_percentage_mentioned: 88.0%
+- docs/QMOI_BACKGROUND_AUTOMATION_README.md — avg_percentage_mentioned: 83.2%
+- docs/QMOI_CONSCIOUSNESS_AWARENESS_MEMORY.md — avg_percentage_mentioned: 99.5%
+- docs/QMOI_FRIENDSHIP_RUNBOOK.md — avg_percentage_mentioned: 99.5%
+- docs/QMOI_LION_EVOLUTION_ENHANCEMENT_PLAN.md — avg_percentage_mentioned: 96.14%
+- docs/QMOI_LION_QVILLAGE_AUTOMATION_PLAN.md — avg_percentage_mentioned: 99.5%
+- docs/QMOI_MEMORY.md — avg_percentage_mentioned: 98.0%
+- docs/QTOOLS.md — avg_percentage_mentioned: 99.5%
+- docs/QUEUE_SUPERVISOR.md — avg_percentage_mentioned: 99.5%
+- docs/QUICK_REFERENCE.md — avg_percentage_mentioned: 88.4%
+- docs/QVILLAGE_MANUAL.md — avg_percentage_mentioned: 99.17%
+- docs/README.md — avg_percentage_mentioned: 99.5%
+- docs/README_VALIDATION.md — avg_percentage_mentioned: 99.5%
+- docs/REFERENCES.md — avg_percentage_mentioned: 99.5%
+- docs/RELEASE_AUTOMATION.md — avg_percentage_mentioned: 99.5%
+- docs/REVENUE_SPEC.md — avg_percentage_mentioned: 44.12%
+- docs/REVENUE_SPEC.md.generated.md — avg_percentage_mentioned: 45.4%
+- docs/TODOS_ENHANCEMENTS.md — avg_percentage_mentioned: 99.5%
+- docs/TROUBLESHOOTING.md — avg_percentage_mentioned: 99.5%
+- docs/TROUBLESHOOTING_FAQ.md — avg_percentage_mentioned: 40.19%
+- docs/VALIDATIONSYSTEMS.md — avg_percentage_mentioned: 99.5%
+- docs/VALIDATION_STRATEGIES.md — avg_percentage_mentioned: 99.5%
+- docs/VALIDATION_TOOLS.md — avg_percentage_mentioned: 99.5%
+- docs/WALLET_RUNBOOK.md — avg_percentage_mentioned: 97.25%
+- docs/WALLET_SECURITY_PLAYBOOK.md — avg_percentage_mentioned: 99.5%
+- docs/corrupted.md — avg_percentage_mentioned: 99.5%
+- docs/domain_health_markdown.md — avg_percentage_mentioned: 42.72%
+- docs/features/features_guide.md — avg_percentage_mentioned: 100.0%
+- docs/implementation/PRODUCTION_IMPLEMENTATION_GUIDE.md — avg_percentage_mentioned: 77.42%
+- docs/implemented_endpoints.md — avg_percentage_mentioned: 99.5%
+- docs/lion_evolution/LION_EVOLUTION_2_0_PLAN.md — avg_percentage_mentioned: 74.96%
+- docs/lion_evolution/LION_INTEGRATION_GUIDE.md — avg_percentage_mentioned: 99.5%
+- docs/lion_evolution/QVS_ENHANCEMENT_PLAN.md — avg_percentage_mentioned: 99.5%
+- docs/lion_features.md — avg_percentage_mentioned: 99.5%
+- docs/lion_variations/lion-ai.md — avg_percentage_mentioned: 99.5%
+- docs/lion_variations/lion-cloud.md — avg_percentage_mentioned: 99.5%
+- docs/lion_variations/lion-core.md — avg_percentage_mentioned: 99.5%
+- docs/lion_variations/lion-desktop.md — avg_percentage_mentioned: 99.5%
+- docs/lion_variations/lion-embedded.md — avg_percentage_mentioned: 99.5%
+- docs/lion_variations/lion-enterprise.md — avg_percentage_mentioned: 99.5%
+- docs/lion_variations/lion-lite.md — avg_percentage_mentioned: 99.5%
+- docs/lion_variations/lion-ml.md — avg_percentage_mentioned: 99.5%
+- docs/lion_variations/lion-os.md — avg_percentage_mentioned: 99.5%
+- docs/lion_variations/lion-plugin.md — avg_percentage_mentioned: 99.5%
+- docs/lion_variations/lion-sdk.md — avg_percentage_mentioned: 99.5%
+- docs/merged_remediation_plan.md — avg_percentage_mentioned: 99.5%
+- docs/operations.md — avg_percentage_mentioned: 99.5%
+- docs/qmoi_space_enhancements.md — avg_percentage_mentioned: 99.5%
+- docs/qvillage_features.md — avg_percentage_mentioned: 99.5%
+- docs/screens/admin-dashboard-screen.md — avg_percentage_mentioned: 99.95%
+- docs/screens/device-management-dashboard-screen.md — avg_percentage_mentioned: 75.0%
+- docs/screens/home-screen.md — avg_percentage_mentioned: 90.0%
+- docs/screens/qcity-command-center-dashboard-screen.md — avg_percentage_mentioned: 8.75%
+- docs/screens/qmoi-ai-interactive-assistant-screen.md — avg_percentage_mentioned: 80.0%
+- docs/settings/settings_guide.md — avg_percentage_mentioned: 90.0%
+- docs/validation/ISSUES_MANUAL_TODOS.md — avg_percentage_mentioned: 99.5%
+- docs/validation/MANUAL_TODOS_ACTIONS.md — avg_percentage_mentioned: 99.5%
+- docs/validation/MANUAL_TODOS_TOP10.md — avg_percentage_mentioned: 99.5%
+- docs/validation/NEXT_UPGRADE_PLAN.md — avg_percentage_mentioned: 99.5%
+- docs/validation/PLACEHOLDER_FIX_ACTIONS.md — avg_percentage_mentioned: 99.5%
+- docs/workflow_fix_proposals.md — avg_percentage_mentioned: 99.5%
+- docs/workflows_remediation.md — avg_percentage_mentioned: 99.5%
+- duplicate_files_report.md — avg_percentage_mentioned: 99.5%
+- error-fix-summary.md — avg_percentage_mentioned: 99.67%
+- git-lfs-3.5.1/CHANGELOG.md — avg_percentage_mentioned: 99.75%
+- git-lfs-3.5.1/README.md — avg_percentage_mentioned: 99.67%
+- git-lfs-3.5.1/git-lfs-3.5.1/CHANGELOG.md — avg_percentage_mentioned: 99.75%
+- git-lfs-3.5.1/git-lfs-3.5.1/README.md — avg_percentage_mentioned: 99.67%
+- independent.md — avg_percentage_mentioned: 99.5%
+- instruct.md — avg_percentage_mentioned: 100.0%
+- issues/TODO-PROD-CURATE.md — avg_percentage_mentioned: 69.03%
+- issues/TODO-PROD-PLATFORMS.md — avg_percentage_mentioned: 69.03%
+- issues/TODO-PROD-REPORTS.md — avg_percentage_mentioned: 69.03%
+- issues/TODO-PROD-UIUX.md — avg_percentage_mentioned: 69.03%
+- link_report.md — avg_percentage_mentioned: 99.5%
+- missing_docs_report.md — avg_percentage_mentioned: 99.5%
+- mobile/README.md — avg_percentage_mentioned: 99.5%
+- models/latest/README.md — avg_percentage_mentioned: 99.5%
+- parallel.md — avg_percentage_mentioned: 99.5%
+- placeholder_scan_summary.md — avg_percentage_mentioned: 99.5%
+- production_deployment/DEPLOYMENT_CHECKLIST.md — avg_percentage_mentioned: 99.5%
+- pwa_apps/README.md — avg_percentage_mentioned: 99.5%
+- pwa_apps/q-alpha/README.md — avg_percentage_mentioned: 99.5%
+- q.md — avg_percentage_mentioned: 99.5%
+- q/AI_ENHANCED_INTELLIGENT_VALIDATION_ARCHITECTURE.md — avg_percentage_mentioned: 96.71%
+- q/BALANCES.md — avg_percentage_mentioned: 62.11%
+- q1.md — avg_percentage_mentioned: 98.22%
+- qcity/README.md — avg_percentage_mentioned: 99.5%
+- qmoi_master_memory/MASTER_COMPLETE_PROFILE.md — avg_percentage_mentioned: 99.5%
+- qmoi_remote_java_build.md — avg_percentage_mentioned: 99.5%
+- qvillage/README.md — avg_percentage_mentioned: 99.5%
+- reports/100PERCENT_DOMAIN_HEALTH_GUIDE.md — avg_percentage_mentioned: 99.92%
+- reports/COMPREHENSIVE_CONTENT_UI_VALIDATION_REPORT.md — avg_percentage_mentioned: 22.66%
+- reports/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md — avg_percentage_mentioned: 85.72%
+- reports/FINAL_100PERCENT_DOMAIN_HEALTH_ACHIEVEMENT.md — avg_percentage_mentioned: 97.88%
+- reports/PRODUCTION_FULL_VALIDATION_REPORT.md — avg_percentage_mentioned: 69.03%
+- reports/nonproduction_candidates.md — avg_percentage_mentioned: 40.0%
+- reports/production_FULL_VALIDATION_REPORT.md — avg_percentage_mentioned: 69.03%
+- reports/production_readiness_report.md — avg_percentage_mentioned: 99.5%
+- scan_results/production_readiness_summary.md — avg_percentage_mentioned: 69.03%
+- scripts/README.md — avg_percentage_mentioned: 99.5%
+- scripts/daemon/README.md — avg_percentage_mentioned: 99.5%
+- scripts/diagnostics/README.md — avg_percentage_mentioned: 99.5%
+- scripts/finance/README.md — avg_percentage_mentioned: 99.5%
+- scripts/q/BALANCES.md — avg_percentage_mentioned: 63.41%
+- scripts/templates/README_template.en.md — avg_percentage_mentioned: 99.5%
+- scripts/templates/README_template.md — avg_percentage_mentioned: 99.5%
+- scripts/templates/README_template.sw.md — avg_percentage_mentioned: 99.5%
+- scripts/wallets/PRODUCTION_RUNBOOK.md — avg_percentage_mentioned: 69.03%
+- scripts/wallets/README.md — avg_percentage_mentioned: 99.5%
+- src/qcity/PRODUCTION_STATUS.md — avg_percentage_mentioned: 69.03%
+- tools/WORKSPACEGENERAL.updates.md — avg_percentage_mentioned: 99.5%
+- tools/allrefs_summary.md — avg_percentage_mentioned: 99.5%
+- tools/autotest_report.md — avg_percentage_mentioned: 99.75%
+- tools/dns_fix_summary.md — avg_percentage_mentioned: 99.5%
+- tools/dns_links_report.md — avg_percentage_mentioned: 99.5%
+- tools/light_index.md — avg_percentage_mentioned: 99.5%
+- tools/link_check_ci.md — avg_percentage_mentioned: 99.5%
+- tools/link_fix_actions.md — avg_percentage_mentioned: 99.5%
+- tools/link_fix_actions_more.md — avg_percentage_mentioned: 99.5%
+- tools/matches_priority.md — avg_percentage_mentioned: 99.5%
+- tools/placeholder_artifacts/README.md — avg_percentage_mentioned: 99.5%
+- tools/qmoi_lint_report.md — avg_percentage_mentioned: 99.5%
+- tools/release_remediation_guide.md — avg_percentage_mentioned: 99.5%
+- tools/releases_assets_report.md — avg_percentage_mentioned: 99.5%
+- tools/releases_audit.md — avg_percentage_mentioned: 99.5%
+- tools/remediation_plan.md — avg_percentage_mentioned: 99.5%
+- tools/rust_lint_fix/README.md — avg_percentage_mentioned: 99.5%
+- tools/update_markdown_report.md — avg_percentage_mentioned: 99.5%
+- tools/validation_report.md — avg_percentage_mentioned: 99.5%
+- unusedcomponentsui.md — avg_percentage_mentioned: 99.5%
 
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:52.318937Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
-- lines: 145
-- words: 1210
-- characters: 9721
-- headings: 23
+- timestamp: 2026-06-22T19:07:24.708825Z
+- production status: ❌ needs production implementation
+- status tags: needs-production, nonproduction
+- lines: 1101
+- words: 5474
+- characters: 67433
+- headings: 2
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

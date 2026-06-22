@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-Simple helper to update resumefromhere.txt with current timestamp, git commit, and branch.
-Run locally in the repo to refresh progress notes without duplicating an existing header.
+Auto-update resumefromhere.txt with repository metadata and resume tracking information.
+This helper keeps the tracker fresh before bulk continuation runs.
 """
+import re
 import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
@@ -26,7 +27,7 @@ def normalize_content(existing: str) -> str:
     if len(lines) < 3:
         return existing
 
-    if lines[0].startswith("Resume point:"):
+    if lines[0].startswith("Resume update:") or lines[0].startswith("Resume point:"):
         idx = 0
         for idx, line in enumerate(lines):
             if line.strip() == "":
@@ -36,14 +37,27 @@ def normalize_content(existing: str) -> str:
     return existing
 
 
+def build_header(commit: str, branch: str, status: str) -> str:
+    now = datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
+    clean_state = 'clean' if status == '' else 'dirty'
+    return (
+        f"Last refreshed: {now}\n"
+        f"Resume update: auto-synced before bulk continuation.\n"
+        f"Resume point: continue from the next pending task after this header.\n"
+        f"Git commit: {commit}\n"
+        f"Git branch: {branch}\n"
+        f"Repository status: {clean_state}\n"
+        "\n"
+    )
+
+
 def main():
     commit, branch, status = git_summary()
-    now = datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
     content = OUT.read_text(encoding="utf-8") if OUT.exists() else ""
     clean_content = normalize_content(content)
-    header = f"Resume point: {now}\nGit commit: {commit}\nGit branch: {branch}\nRepository status: {'clean' if status == '' else 'dirty'}\n\n"
+    header = build_header(commit, branch, status)
     OUT.write_text(header + clean_content, encoding="utf-8")
-    print(f"Updated {OUT} with commit {commit} on branch {branch}")
+    print(f"Updated {OUT} with commit {commit} on branch {branch} and refreshed resume metadata.")
 
 
 if __name__ == '__main__':

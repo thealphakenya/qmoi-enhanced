@@ -751,15 +751,15 @@ async function apiCallWithRetry(url, options, maxRetries = 3) {
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:52.654811Z
+- timestamp: 2026-06-22T19:07:24.898197Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 747
-- words: 1811
-- characters: 16262
-- headings: 20
+- lines: 765
+- words: 1883
+- characters: 16731
+- headings: 21
 - links: 0
 - images: 0
 - tables: 10
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

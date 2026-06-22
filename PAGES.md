@@ -42,15 +42,15 @@ The actual production UI is served through the `app/` directory routes above. St
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:55.817812Z
+- timestamp: 2026-06-22T19:07:28.504415Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 38
-- words: 111
-- characters: 961
-- headings: 5
+- lines: 56
+- words: 183
+- characters: 1425
+- headings: 6
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

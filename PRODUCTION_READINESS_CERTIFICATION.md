@@ -288,15 +288,15 @@ See `TROUBLESHOOTING.md` and `RUNBOOK.md` for detailed procedures.
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T16:03:56.150875Z
+- timestamp: 2026-06-22T19:07:28.885473Z
 - production status: ⚠️ mixed production markers
 - status tags: mixed, nonproduction, production, review
-- lines: 284
-- words: 1168
-- characters: 8528
-- headings: 51
+- lines: 302
+- words: 1240
+- characters: 9015
+- headings: 52
 - links: 0
 - images: 0
 - tables: 9
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->
