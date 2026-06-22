@@ -387,3 +387,21 @@ Run the new tests with:
 npm ci
 npm test __tests__/api/auth.test.ts __tests__/api/auth.integration.test.ts __tests__/api/change-email.test.ts __tests__/api/hasAccess.test.ts __tests__/api/change-password.test.ts __tests__/api/preferences.test.ts
 ```
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-06-22T16:03:52.390071Z
+- production status: ✅ production-ready
+- status tags: production, production-ready
+- lines: 389
+- words: 1171
+- characters: 16805
+- headings: 13
+- links: 0
+- images: 0
+- tables: 8
+- lion validation block: inserted
+<!-- LION_VALIDATION_END -->

@@ -60,3 +60,21 @@ Next steps I can take now (pick one):
 - C: Implement server-side profile persistence endpoint checks and ensure `PUT /api/auth/profile` accepts `language` (it already appears to in signup route).
 
 Estimated effort per option: A: 40–90 minutes; B: 20–40 minutes; C: 20–60 minutes (depending on server API verification).
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-06-22T16:03:55.516003Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 62
+- words: 486
+- characters: 3882
+- headings: 1
+- links: 0
+- images: 0
+- tables: 0
+- lion validation block: inserted
+<!-- LION_VALIDATION_END -->

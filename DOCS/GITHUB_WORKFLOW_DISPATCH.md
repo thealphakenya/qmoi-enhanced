@@ -7,8 +7,17 @@ quantum-enabled: true
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-20T00:35:17.055857Z
-fully implemented
+- timestamp: 2026-06-22T16:03:54.774105Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 347
+- words: 840
+- characters: 7038
+- headings: 20
+- links: 0
+- images: 0
+- tables: 0
+- lion validation block: present
 <!-- LION_VALIDATION_END -->
 
 **Overview**: This document explains how to dispatch GitHub Actions workflows from a local environment or CI using a Personal Access Token (PAT). It also describes the helper script `scripts/dispatch_workflow_with_pat.sh` included in this repo.

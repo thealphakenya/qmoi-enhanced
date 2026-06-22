@@ -7,8 +7,17 @@ quantum-enabled: true
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-20T00:35:17.789992Z
-fully implemented
+- timestamp: 2026-06-22T16:03:59.091237Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 246
+- words: 1096
+- characters: 12307
+- headings: 45
+- links: 0
+- images: 0
+- tables: 12
+- lion validation block: present
 <!-- LION_VALIDATION_END -->
 
 # SCRIPTS.md - Automation & Utility Scripts ✅ 
@@ -235,11 +244,11 @@ This document provides a comprehensive catalog of all automation scripts, utilit
 This document is automatically maintained by the QMOI Lion enhancement system and updated with each script addition or modification.
 
 ---
-*Last generated: 2026-06-20T00:34:59.028786+00:00*
+*Last generated: 2026-06-22T15:51:26.562467+00:00*
 *Maintained by Quantum multi orchestra intelligence (QMOI) Enhancement System*
 
 <!-- AUTO_SCRIPTS_MD_SYNC_START -->
-- `scripts/qmoi_md_autoupdater.py` auto-sync complete: 2026-06-20T00:34:59.028786+00:00
+- `scripts/qmoi_md_autoupdater.py` auto-sync complete: 2026-06-22T15:51:26.562467+00:00
 - `scripts/update_api_docs.js` auto-injected API route inventory content
 - `scripts/autotag_md_with_lion.py` auto-applied Lion validation metadata
 - `scripts/autoupdate_docs.sh` refreshed ALLMDFILESREFS.md

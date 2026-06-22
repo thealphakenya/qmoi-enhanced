@@ -36,3 +36,21 @@ This file tracks the active page entrypoints used by the Next.js app router.
 
 ### Production Routing
 The actual production UI is served through the `app/` directory routes above. Static HTML shells under `public/` exist for compatibility, but the canonical user experience is built from the Next.js `app/` pages.
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-06-22T16:03:55.817812Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 38
+- words: 111
+- characters: 961
+- headings: 5
+- links: 0
+- images: 0
+- tables: 0
+- lion validation block: inserted
+<!-- LION_VALIDATION_END -->

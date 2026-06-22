@@ -344,3 +344,21 @@ Reusable UI primitives and patterns
 - **Screen Layouts**: See `/docs/screens/` for screen-level documentation
 - **Settings**: See `/docs/settings/` for configuration options
 - **Help Guide**: See `/docs/help/` for user instructions
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-06-22T16:04:11.625591Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 346
+- words: 1496
+- characters: 12295
+- headings: 55
+- links: 0
+- images: 0
+- tables: 0
+- lion validation block: inserted
+<!-- LION_VALIDATION_END -->

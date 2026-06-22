@@ -151,6 +151,9 @@ def run_command(command: list[str], description: str) -> bool:
     try:
         subprocess.run(command, cwd=ROOT, check=True)
         return True
+    except FileNotFoundError as exc:
+        print(f"{description} skipped: missing executable {command[0]} ({exc})")
+        return False
     except subprocess.CalledProcessError as exc:
         print(f"{description} failed: {exc}")
         return False

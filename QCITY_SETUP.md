@@ -285,3 +285,21 @@ For issues or questions about QCity setup, refer to:
 - Component documentation in individual files
 - Auth documentation in `app/lib/auth/`
 - Logger documentation in `lib/logger.ts`
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-06-22T16:03:56.402008Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 287
+- words: 1078
+- characters: 8235
+- headings: 43
+- links: 6
+- images: 0
+- tables: 0
+- lion validation block: inserted
+<!-- LION_VALIDATION_END -->

@@ -1,8 +1,8 @@
 # Duplicate File Audit Report
 
-Generated: 2026-06-21T15:00:55.880986Z
+Generated: 2026-06-22T15:51:19.895357Z
 
-Total files scanned: 3441
+Total files scanned: 3445
 Total duplicate file titles found: 205
 
 ## Duplicate Files by Filename
@@ -1672,3 +1672,21 @@ Total duplicate file titles found: 205
 
 **Recommended canonical source:** `app/components/WalletPanel.tsx`
 
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-06-22T16:04:11.823464Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 1674
+- words: 3352
+- characters: 49573
+- headings: 207
+- links: 0
+- images: 0
+- tables: 0
+- lion validation block: inserted
+<!-- LION_VALIDATION_END -->

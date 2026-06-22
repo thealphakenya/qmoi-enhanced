@@ -27,6 +27,9 @@ def run_command(command, description):
         subprocess.run(command, cwd=ROOT, check=True)
         logger.info('Completed: %s', description)
         return True
+    except FileNotFoundError as exc:
+        logger.warning('Skipped: %s because executable %s is missing (%s)', description, command[0], exc)
+        return False
     except subprocess.CalledProcessError as exc:
         logger.error('Failed: %s (%s)', description, exc)
         return False

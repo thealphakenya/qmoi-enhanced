@@ -7,7 +7,6 @@ import logging
 import re
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Iterable
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 logger = logging.getLogger(__name__)
@@ -25,35 +24,18 @@ PRODUCTION_PATTERNS = [
     re.compile(r'production.*status.*✅', re.IGNORECASE),
     re.compile(r'Status:\s*✅', re.IGNORECASE),
 ]
-
-# Pattern keywords for nonproduction detection (as strings to avoid false positives in scanner)
-NONPRODUCTION_KEYWORDS = [
-    'WIP',
-    'IN PROGRESS',
-    'UNIMPLEMENTED',  # KEYWORD: marks scanner tool itself - OK
-    'NOT IMPLEMENTED',  # KEYWORD: marks scanner tool itself - OK
-    'DEMO',
-    'TEST ONLY',
-    'REMOVE BEFORE production',
-    'FIXME',
-    'TODO',
-    'DRAFT',
-    'STUB',
-]
-
-# Compile patterns from keywords
 NONPRODUCTION_PATTERNS = [
-    re.compile(r'\b' + re.escape('WIP') + r'\b', re.IGNORECASE),
+    re.compile(r'\bWIP\b', re.IGNORECASE),
     re.compile(r'IN\s+PROGRESS', re.IGNORECASE),
     re.compile(r'UNIMPLEMENTED', re.IGNORECASE),
     re.compile(r'NOT\s+IMPLEMENTED', re.IGNORECASE),
-    re.compile(r'\b' + re.escape('DEMO') + r'\b', re.IGNORECASE),
-    re.compile(r'\b' + re.escape('TEST') + r'\s+' + re.escape('ONLY') + r'\b', re.IGNORECASE),
+    re.compile(r'\bDEMO\b', re.IGNORECASE),
+    re.compile(r'\bTEST\s+ONLY\b', re.IGNORECASE),
     re.compile(r'REMOVE\s+BEFORE\s+production', re.IGNORECASE),
     re.compile(r'FIXME', re.IGNORECASE),
     re.compile(r'TODO', re.IGNORECASE),
-    re.compile(r'\b' + re.escape('DRAFT') + r'\b', re.IGNORECASE),
-    re.compile(r'\b' + re.escape('STUB') + r'\b', re.IGNORECASE),
+    re.compile(r'\bDRAFT\b', re.IGNORECASE),
+    re.compile(r'\bSTUB\b', re.IGNORECASE),
 ]
 
 
@@ -74,35 +56,76 @@ def find_markdown_files() -> list[Path]:
     return files
 
 
-def detect_status(file_path: Path) -> str:
-    try:
-        content = file_path.read_text(encoding='utf-8', errors='ignore')
-    except Exception:
-        return '⚠️ review / unreadable'
+def compute_stats(content: str) -> dict[str, int]:
+    lines = content.count('\n') + (0 if content.endswith('\n') or content == '' else 1)
+    words = len(re.findall(r'\S+', content))
+    characters = len(content)
+    headings = len(re.findall(r'^\s*#+\s+', content, flags=re.MULTILINE))
+    links = len(re.findall(r'\[[^\]]+\]\([^\)]+\)', content))
+    images = len(re.findall(r'!\[[^\]]*\]\([^\)]+\)', content))
+    tables = len(re.findall(r'^\s*\|.+\|\s*$', content, flags=re.MULTILINE))
+    return {
+        'lines': lines,
+        'words': words,
+        'characters': characters,
+        'headings': headings,
+        'links': links,
+        'images': images,
+        'tables': tables,
+    }
 
+
+def detect_status(content: str) -> tuple[str, list[str]]:
     production_hit = any(pattern.search(content) for pattern in PRODUCTION_PATTERNS)
     nonproduction_hit = any(pattern.search(content) for pattern in NONPRODUCTION_PATTERNS)
+    tags: list[str] = []
 
     if production_hit and not nonproduction_hit:
-        return '✅ production-ready'
-    if nonproduction_hit and not production_hit:
-        return '❌ needs production implementation'
-    if production_hit and nonproduction_hit:
-        return '⚠️ mixed production markers'
-    return '⚠️ review / no explicit production status'
+        status = '✅ production-ready'
+        tags.append('production-ready')
+    elif nonproduction_hit and not production_hit:
+        status = '❌ needs production implementation'
+        tags.append('needs-production')
+    elif production_hit and nonproduction_hit:
+        status = '⚠️ mixed production markers'
+        tags.extend(['mixed', 'review'])
+    else:
+        status = '⚠️ review / no explicit production status'
+        tags.append('review')
+
+    if production_hit:
+        tags.append('production')
+    if nonproduction_hit:
+        tags.append('nonproduction')
+
+    return status, sorted(set(tags))
 
 
-def format_entry(path: Path, status: str) -> str:
+def format_entry(path: Path, status: str, tags: list[str], stats: dict[str, int]) -> str:
     rel = Path('./') / path.relative_to(ROOT)
-    return f'{rel.as_posix()} — {status}'
+    tag_list = ', '.join(tags)
+    return (
+        f'{rel.as_posix()} — {status} — tags: {tag_list} '
+        f'— lines: {stats["lines"]}, words: {stats["words"]}, headings: {stats["headings"]}, '
+        f'links: {stats["links"]}, images: {stats["images"]}, tables: {stats["tables"]}'
+    )
 
 
 def generate_inventory(files: list[Path]) -> tuple[list[str], dict[str, int]]:
     lines: list[str] = []
     counts = {'production_ready': 0, 'needs_work': 0, 'review': 0, 'mixed': 0, 'unreadable': 0}
     for file_path in files:
-        status = detect_status(file_path)
-        lines.append(format_entry(file_path, status))
+        try:
+            content = file_path.read_text(encoding='utf-8', errors='ignore')
+        except Exception:
+            status = '⚠️ review / unreadable'
+            tags = ['unreadable']
+            stats = {'lines': 0, 'words': 0, 'characters': 0, 'headings': 0, 'links': 0, 'images': 0, 'tables': 0}
+        else:
+            stats = compute_stats(content)
+            status, tags = detect_status(content)
+
+        lines.append(format_entry(file_path, status, tags, stats))
         if status == '✅ production-ready':
             counts['production_ready'] += 1
         elif status == '❌ needs production implementation':

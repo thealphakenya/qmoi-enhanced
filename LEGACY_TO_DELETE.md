@@ -32,3 +32,21 @@ Process recommendation:
 2. Add adapter re-exports in `app/lib/` to bridge imports during migration.
 3. Run `npx tsc --project tsconfig.json --noEmit` scoped to `app/` and `src/` to validate.
 4. Delete legacy directories in small batches, run tests and type-check after each batch.
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-06-22T16:03:55.520775Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 34
+- words: 293
+- characters: 2290
+- headings: 0
+- links: 0
+- images: 0
+- tables: 0
+- lion validation block: inserted
+<!-- LION_VALIDATION_END -->

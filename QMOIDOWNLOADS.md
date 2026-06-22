@@ -15,8 +15,17 @@ title: "QMOIDOWNLOADS"
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-20T00:35:17.445074Z
-fully implemented
+- timestamp: 2026-06-22T16:03:56.952874Z
+- production status: ✅ production-ready
+- status tags: production, production-ready
+- lines: 434
+- words: 3473
+- characters: 41248
+- headings: 21
+- links: 1
+- images: 0
+- tables: 0
+- lion validation block: present
 <!-- LION_VALIDATION_END -->
 
 [IMPORTANT] Official downloads have moved to GitHub Releases.

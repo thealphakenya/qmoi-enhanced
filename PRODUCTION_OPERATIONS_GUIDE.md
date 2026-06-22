@@ -355,3 +355,21 @@ bash ./scripts/prod-start.sh
 
 **For additional support, check logs in `.qmoi_prod.log` and ensure all health endpoints return positive responses.**
 
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-06-22T16:03:56.140098Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 357
+- words: 978
+- characters: 7175
+- headings: 90
+- links: 0
+- images: 0
+- tables: 0
+- lion validation block: inserted
+<!-- LION_VALIDATION_END -->

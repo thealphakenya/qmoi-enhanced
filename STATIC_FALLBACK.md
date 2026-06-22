@@ -20,3 +20,21 @@ http://127.0.0.1:8000/pwa_apps/qmoi-ai/index.html
 Notes:
 - The script attempts multiple host-side open methods (`$BROWSER`, `xdg-open`, `python3 webbrowser`). If those fail, open the printed URL manually.
 - For containerized production, serve the `public/` directory using nginx or any static file server.
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-06-22T16:03:59.419441Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 22
+- words: 108
+- characters: 811
+- headings: 2
+- links: 0
+- images: 0
+- tables: 0
+- lion validation block: inserted
+<!-- LION_VALIDATION_END -->

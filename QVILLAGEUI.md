@@ -71,3 +71,21 @@ quantum-enabled: false
 
 ## Next work
 - Ensure legacy `components/QVillage.tsx` and `components/q-city/QVillage.tsx` are either delegated to the canonical shell or their unique logic is migrated into `src/components/qvillage`.
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-06-22T16:03:58.295040Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 73
+- words: 474
+- characters: 3859
+- headings: 9
+- links: 2
+- images: 0
+- tables: 0
+- lion validation block: inserted
+<!-- LION_VALIDATION_END -->
