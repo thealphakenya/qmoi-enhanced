@@ -5,9 +5,11 @@ Integrates merge operations into bulk workflow automation
 """
 
 import json
+import re
 import subprocess
 from pathlib import Path
 from datetime import datetime
+from typing import Dict
 
 ROOT = Path(__file__).resolve().parents[1]
 MERGE_REPORT_DIR = ROOT / ".qmoi_validation"
@@ -56,13 +58,18 @@ def phase1_discovery():
         "python3 scripts/merge_discovery_scanner.py",
         "Running merge discovery scanner..."
     )
-    
-    # Generate detailed duplicate report
-    success &= run_command(
-        "python3 - <<'PY'\nfrom pathlib import Path\nimport json\n\nreport = Path('.qmoi_validation/merge_discovery_report.json').read_text()\ndata = json.loads(report)\n\nprint('\\n📊 MERGE DISCOVERY SUMMARY:')\nprint(f'   - Duplicate app entry points: {data.get(\"app_analysis\", {})}')\nprint(f'   - Duplicate components: {len([f for c in data.get(\"components\", {}).values() for f in c])}')\nprint(f'   - QCamera references: {data.get(\"qcamera\", {}).get(\"total_references\", 0)}')\nPY",
-        "Summarizing discovery results..."
-    )
-    
+
+    report_path = ROOT / ".qmoi_validation" / "merge_discovery_report.json"
+    if not report_path.exists():
+        discovery_dir = ROOT / ".qmoi_validation" / "merge_reports"
+        reports = sorted(discovery_dir.glob("merge_discovery_*.json"), reverse=True)
+        report_path = reports[0] if reports else None
+
+    if report_path and report_path.exists():
+        print(f"   ✓ Merge discovery report found: {report_path.relative_to(ROOT)}")
+    else:
+        print("   ⚠️  Merge discovery report not found.")
+
     return success
 
 def phase2_component_consolidation():
@@ -248,7 +255,94 @@ def phase7_validation():
     
     return success
 
-def generate_merge_report():
+def update_merge_md(report: Dict) -> None:
+    """Update MERGE.md with merge execution plan and status."""
+    merge_path = ROOT / "MERGE.md"
+    existing = merge_path.read_text(encoding="utf-8") if merge_path.exists() else "# MERGE.md\n\n"
+
+    lines = [
+        "## Merge execution plan",
+        "",
+        "This section is synchronized automatically by `scripts/merge_executor.py` and `scripts/merge_discovery_scanner.py`.",
+        "",
+        "### Phase statuses",
+    ]
+    for phase_key, phase_info in report.get("phases", {}).items():
+        status = phase_info.get("status", "UNKNOWN")
+        description = phase_info.get("description", "")
+        lines.append(f"- {phase_key}: {status} - {description}")
+
+    lines += [
+        "",
+        "### Merge statistics",
+        f"- Duplicate app entry points: {report['statistics'].get('duplicate_app_entry_points', 0)} / 5",
+        f"- Duplicate components: {report['statistics'].get('duplicate_components', 0)}",
+        f"- Duplicate API routes: {report['statistics'].get('api_route_duplicates', 0)}",
+        f"- QCamera references: {report['statistics'].get('qcamera_references', 0)}",
+        f"- Estimated consolidation hours: {report['statistics'].get('estimated_consolidation_hours', 0)}",
+        "",
+        "### Recommended next steps",
+        "- Execute component consolidation for duplicate UI and shared logic.",
+        "- Merge duplicate API routes into canonical handlers.",
+        "- Consolidate app entry points around a single primary shell per app.",
+        "- Update documentation and route definitions after each merge pass.",
+        "- Keep `resumefromhere.txt` aligned with merge progress and current goals.",
+    ]
+
+    section = "\n".join(lines) + "\n"
+    section_pattern = re.compile(r"## Merge execution plan[\s\S]*?(?=\n##\s|\Z)", flags=re.MULTILINE)
+    if section_pattern.search(existing):
+        existing = section_pattern.sub(section, existing)
+    else:
+        existing = existing.strip() + "\n\n" + section
+
+    merge_path.write_text(existing, encoding="utf-8")
+    print(f"✓ Updated MERGE.md with merge execution plan")
+
+
+def update_resumefromhere_with_merge(report: Dict) -> None:
+    """Update resumefromhere.txt with merge execution details."""
+    resume_file = ROOT / "resumefromhere.txt"
+    if not resume_file.exists():
+        return
+
+    content = resume_file.read_text(encoding="utf-8")
+    lines = [
+        "MERGE EXECUTION SUMMARY:",
+        f"- Timestamp: {datetime.utcnow().isoformat()}Z",
+    ]
+    for phase_key, phase_info in report.get("phases", {}).items():
+        status = phase_info.get("status", "UNKNOWN")
+        description = phase_info.get("description", "")
+        lines.append(f"- {phase_key}: {status} - {description}")
+    lines += [
+        "",
+        "MERGE STATISTICS:",
+        f"- Duplicate app entry points: {report['statistics'].get('duplicate_app_entry_points', 0)} / 5",
+        f"- Duplicate components: {report['statistics'].get('duplicate_components', 0)}",
+        f"- Duplicate API routes: {report['statistics'].get('api_route_duplicates', 0)}",
+        f"- QCamera references: {report['statistics'].get('qcamera_references', 0)}",
+        f"- Estimated consolidation hours: {report['statistics'].get('estimated_consolidation_hours', 0)}",
+        "",
+        "NEXT MERGE ACTIONS:",
+        "- Review duplicate app entry points and choose canonical shells.",
+        "- Consolidate shared components into `lib/components/`.",
+        "- Merge duplicate API routes and update API docs.",
+        "- Keep `MERGE.md` updated with every merge finding.",
+    ]
+
+    section = "\n".join(lines) + "\n"
+    section_pattern = re.compile(r"MERGE EXECUTION SUMMARY:[\s\S]*?(?=\n[A-Z]|\Z)", flags=re.MULTILINE)
+    if section_pattern.search(content):
+        content = section_pattern.sub(section, content)
+    else:
+        content = content.strip() + "\n\n" + section
+
+    resume_file.write_text(content, encoding="utf-8")
+    print("✓ Updated resumefromhere.txt with merge execution details")
+
+
+def generate_merge_report(phase_statuses: Dict[str, Dict[str, str]]):
     """Generate comprehensive merge report"""
     print("\n" + "="*80)
     print("GENERATING MERGE REPORT")
@@ -256,36 +350,7 @@ def generate_merge_report():
     
     report = {
         "timestamp": datetime.utcnow().isoformat() + "Z",
-        "phases": {
-            "phase1_discovery": {
-                "status": "COMPLETE",
-                "description": "Identified duplicates and entry points"
-            },
-            "phase2_components": {
-                "status": "PENDING",
-                "description": "Consolidate shared components"
-            },
-            "phase3_api": {
-                "status": "PENDING",
-                "description": "Consolidate API routes"
-            },
-            "phase4_apps": {
-                "status": "PENDING",
-                "description": "Consolidate app entry points"
-            },
-            "phase5_qcamera": {
-                "status": "PENDING",
-                "description": "Enhance QCamera features"
-            },
-            "phase6_docs": {
-                "status": "PENDING",
-                "description": "Update documentation"
-            },
-            "phase7_validation": {
-                "status": "PENDING",
-                "description": "Final validation"
-            },
-        },
+        "phases": phase_statuses,
         "statistics": {
             "duplicate_app_entry_points": 5,
             "duplicate_components": 115,
@@ -298,6 +363,9 @@ def generate_merge_report():
     report_file = MERGE_REPORT_DIR / "merge_execution_report.json"
     report_file.write_text(json.dumps(report, indent=2))
     
+    update_merge_md(report)
+    update_resumefromhere_with_merge(report)
+    
     print(f"\n✓ Merge report saved to {report_file}")
     
     return report
@@ -308,31 +376,48 @@ def main():
     print("="*80)
     print(f"Started: {datetime.utcnow().isoformat()}Z")
     
+    phase_statuses = {
+        "phase1_discovery": {"status": "PENDING", "description": "Identified duplicates and entry points"},
+        "phase2_components": {"status": "PENDING", "description": "Consolidate shared components"},
+        "phase3_api": {"status": "PENDING", "description": "Consolidate API routes"},
+        "phase4_apps": {"status": "PENDING", "description": "Consolidate app entry points"},
+        "phase5_qcamera": {"status": "PENDING", "description": "Enhance QCamera features"},
+        "phase6_docs": {"status": "PENDING", "description": "Update documentation"},
+        "phase7_validation": {"status": "PENDING", "description": "Final validation"},
+    }
+
     overall_success = True
     
-    # Phase 1: Discovery
-    overall_success &= phase1_discovery()
+    success = phase1_discovery()
+    phase_statuses["phase1_discovery"]["status"] = "COMPLETE" if success else "FAILED"
+    overall_success &= success
     
-    # Phase 2: Component Consolidation
-    overall_success &= phase2_component_consolidation()
+    success = phase2_component_consolidation()
+    phase_statuses["phase2_components"]["status"] = "COMPLETE" if success else "FAILED"
+    overall_success &= success
     
-    # Phase 3: API Consolidation
-    overall_success &= phase3_api_consolidation()
+    success = phase3_api_consolidation()
+    phase_statuses["phase3_api"]["status"] = "COMPLETE" if success else "FAILED"
+    overall_success &= success
     
-    # Phase 4: App Consolidation
-    overall_success &= phase4_app_consolidation()
+    success = phase4_app_consolidation()
+    phase_statuses["phase4_apps"]["status"] = "COMPLETE" if success else "FAILED"
+    overall_success &= success
     
-    # Phase 5: QCamera Enhancement
-    overall_success &= phase5_qcamera_enhancement()
+    success = phase5_qcamera_enhancement()
+    phase_statuses["phase5_qcamera"]["status"] = "COMPLETE" if success else "FAILED"
+    overall_success &= success
     
-    # Phase 6: Documentation
-    overall_success &= phase6_documentation()
+    success = phase6_documentation()
+    phase_statuses["phase6_docs"]["status"] = "COMPLETE" if success else "FAILED"
+    overall_success &= success
     
-    # Phase 7: Validation
-    overall_success &= phase7_validation()
+    success = phase7_validation()
+    phase_statuses["phase7_validation"]["status"] = "COMPLETE" if success else "FAILED"
+    overall_success &= success
     
     # Generate report
-    generate_merge_report()
+    generate_merge_report(phase_statuses)
     
     print("\n" + "="*80)
     print("MERGE EXECUTION SUMMARY")

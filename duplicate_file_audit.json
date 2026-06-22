@@ -1,6 +1,6 @@
 {
-  "generated": "2026-06-22T19:01:18.429544+00:00",
-  "total_files_scanned": 976,
+  "generated": "2026-06-22T22:50:31.421523+00:00",
+  "total_files_scanned": 983,
   "duplicate_groups": {
     "link_fixes_mapping.json": [
       "link_fixes_mapping.json",
@@ -601,6 +601,13 @@
       "src/components/shared/ui/index.ts",
       "src/components/shared/voice/index.ts",
       "components/q-city/index.ts",
+      "lib/components/auth/index.ts",
+      "lib/components/camera/index.ts",
+      "lib/components/data/index.ts",
+      "lib/components/forms/index.ts",
+      "lib/components/index.ts",
+      "lib/components/navigation/index.ts",
+      "lib/components/ui/index.ts",
       "src/qcity/dashboards/index.ts",
       "src/qcity/index.ts",
       "pages/api/zero-rated-sites/index.ts",

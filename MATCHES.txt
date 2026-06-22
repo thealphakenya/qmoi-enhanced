@@ -1,12 +1,14 @@
 QMOI production MARKER MATCHES
-Generated: 2026-06-22T19:08:15.004143
+Generated: 2026-06-22T22:56:02.374775
 
 SUMMARY:
-- Files with markers: 5
-- Total markers found: 6
+- Files with markers: 7
+- Total markers found: 9
 
 TOP MATCHES:
+- scripts/merge_first_bulk_orchestrator.py: 2 marker(s)
 - scripts/generate_allmdfilesrefs_enhanced.py: 2 marker(s)
+- COMPREHENSIVE_MERGE_FIRST_PLAN.md: 1 marker(s)
 - scripts/scan_lion_usage.py: 1 marker(s)
 - scripts/validate_md.py: 1 marker(s)
 - scripts/autotag_md_with_lion.py: 1 marker(s)

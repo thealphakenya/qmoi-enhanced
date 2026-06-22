@@ -94,10 +94,11 @@ def main() -> int:
         if success:
             if marker_count == 0:
                 print("✅ Repository is clean: no nonproduction markers found.")
-                if args.until_clean or not args.once:
+                if args.until_clean or args.once:
                     print("Stopping continuous monitor because work is complete.")
-                return 0
-            if marker_count > 0:
+                    return 0
+                print("Continuing because monitor is configured to run continuously.")
+            elif marker_count > 0:
                 print(f"⚠️  Bulk scan reports {marker_count} nonproduction marker(s) remaining.")
         else:
             print("⚠️  Auto-continue failed; retrying on next interval.")

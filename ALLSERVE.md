@@ -15,9 +15,6 @@
 - `/pwa_apps/qmoi-ai/preview.html` → `public/pwa_apps/qmoi-ai/preview.html`
 - `/pwa_apps/qmoi-space/index.html` → `public/pwa_apps/qmoi-space/index.html`
 - `/q-alpha.html` → `public/q-alpha.html`
-- `/qcity-complete.html` → `public/qcity-complete.html`
-- `/qcity-dashboard.html` → `public/qcity-dashboard.html`
-- `/qcity-enterprise.html` → `public/qcity-enterprise.html`
 - `/qcity/index.html` → `public/qcity/index.html`
 - `/qmoi-ai.html` → `public/qmoi-ai.html`
 - `/qmoi-space.html` → `public/qmoi-space.html`
@@ -42,12 +39,12 @@ This file is generated from the current set of app and public entrypoint files i
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T19:07:24.744182Z
+- timestamp: 2026-06-22T22:55:24.393910Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 38
-- words: 202
-- characters: 1711
+- lines: 35
+- words: 190
+- characters: 1537
 - headings: 6
 - links: 0
 - images: 0

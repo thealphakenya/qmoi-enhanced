@@ -253,7 +253,71 @@ def generate_merge_report():
     report_file = MERGE_REPORT_DIR / f"merge_discovery_{timestamp.replace(':', '-')}.json"
     report_file.write_text(json.dumps(report, indent=2), encoding="utf-8")
 
+    # Keep merge tracking docs in sync with discovery results
+    update_merge_md(report)
+
     return report
+
+
+def update_merge_md(report: Dict) -> None:
+    """Synchronize MERGE.md with the latest merge discovery findings."""
+    merge_path = ROOT / "MERGE.md"
+    existing = merge_path.read_text(encoding="utf-8") if merge_path.exists() else "# MERGE.md\n\n"
+
+    lines = [
+        "## Merge discovery results",
+        "",
+        "### Summary",
+        f"- Duplicate app entry points: {report['statistics']['app_duplicates']}/5",
+        f"- Duplicate components: {report['statistics']['component_duplicates']}",
+        f"- Duplicate API routes: {report['statistics']['api_route_duplicates']}",
+        f"- QCamera references: {report['statistics']['qcamera_references']}",
+        "",
+        "### Duplicate entry points by app",
+    ]
+    for app, entries in report["duplicate_app_entry_points"].items():
+        lines.append(f"- {app}: {len(entries)} entry points")
+        for entry in entries:
+            lines.append(f"  - {entry['path']} ({entry['type']})")
+    lines.append("")
+    lines.append("### Duplicate components (top findings)")
+    for name, paths in list(report["duplicate_components"].items())[:10]:
+        lines.append(f"- {name}: {len(paths)} instances")
+        for path in paths[:3]:
+            lines.append(f"  - {path}")
+        if len(paths) > 3:
+            lines.append(f"  - ... and {len(paths) - 3} more")
+    lines.append("")
+    lines.append("### Duplicate API routes")
+    if report["duplicate_api_routes"]:
+        for route, files in report["duplicate_api_routes"].items():
+            lines.append(f"- {route}: {len(files)} implementations")
+            for file in files[:3]:
+                lines.append(f"  - {file}")
+            if len(files) > 3:
+                lines.append(f"  - ... and {len(files) - 3} more")
+    else:
+        lines.append("- No duplicate API routes detected.")
+    lines.append("")
+    lines.append("### Recommended merge actions")
+    lines.append("- Consolidate duplicate app entry points under canonical app shells.")
+    lines.append("- Centralize shared component implementations into `lib/components/`.")
+    lines.append("- Merge duplicate API route handlers into canonical `/app/api/...` routes.")
+    lines.append("- Keep QCamera references aligned and documented in `MERGE.md`.")
+    lines.append("- Update `resumefromhere.txt` and `API.md` after every merge pass.")
+
+    new_section = "\n".join(lines) + "\n"
+    section_pattern = re.compile(r"## Merge discovery results[\s\S]*?(?=\n##\s|\Z)", flags=re.MULTILINE)
+    if section_pattern.search(existing):
+        existing = section_pattern.sub(new_section, existing)
+    else:
+        insert_at = existing.rfind("## 10. Quick Reference Commands")
+        if insert_at != -1:
+            existing = existing[:insert_at] + new_section + "\n" + existing[insert_at:]
+        else:
+            existing = existing.strip() + "\n\n" + new_section
+    merge_path.write_text(existing, encoding="utf-8")
+    print(f"✓ Updated MERGE.md with merge discovery findings")
 
 
 def update_resume_tracker(report: Dict):
@@ -268,21 +332,16 @@ def update_resume_tracker(report: Dict):
 - QCamera references found: {report['statistics']['qcamera_references']}
 - Files consolidated: 0
 - Files deleted: 0
-- Space saved: 0 MB"""
+- Space saved: 0 MB
+"""
 
     try:
         content = resume_file.read_text(encoding="utf-8")
-
-        # Replace merge stats section
-        old_stats_pattern = r"MERGE STATS:.*?- Space saved: 0 MB"
-        content = re.sub(
-            old_stats_pattern,
-            stats_update,
-            content,
-            flags=re.DOTALL,
-            count=1
-        )
-
+        old_stats_pattern = re.compile(r"MERGE STATS:[\s\S]*?(?=\n[A-Z]|\Z)", flags=re.MULTILINE)
+        if old_stats_pattern.search(content):
+            content = old_stats_pattern.sub(stats_update, content, count=1)
+        else:
+            content = content.strip() + "\n\n" + stats_update
         resume_file.write_text(content, encoding="utf-8")
         print(f"✓ Updated resumefromhere.txt with merge discovery stats")
 

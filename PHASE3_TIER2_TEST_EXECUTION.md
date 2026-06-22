@@ -713,7 +713,7 @@ curl -X POST http://localhost:3000/api/auth/confirm-reset \
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T19:07:28.540245Z
+- timestamp: 2026-06-22T22:55:27.523224Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
 - lines: 727

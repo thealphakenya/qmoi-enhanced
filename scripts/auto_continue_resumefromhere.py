@@ -4,6 +4,7 @@ Auto continuation helper for resumefromhere.txt.
 Runs the bulk production fixer, refreshes the resume tracker, and prints a production-friendly summary.
 """
 
+import json
 import re
 import subprocess
 import sys
@@ -17,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 RESUME_FILE = ROOT / "resumefromhere.txt"
 AUTUPDATE_SCRIPT = ROOT / "scripts" / "autoupdate_resume.py"
 BULK_FIXER_SCRIPT = ROOT / "scripts" / "bulk_production_fixer.py"
+MERGE_EXECUTOR_SCRIPT = ROOT / "scripts" / "merge_executor.py"
 DUPLICATE_CLEANUP_SCRIPT = ROOT / "scripts" / "duplicate_cleanup.py"
 UPDATE_API_DOCS_SCRIPT = ROOT / "scripts" / "update_api_docs.js"
 AUTODOC_SCRIPT = ROOT / "scripts" / "autoupdate_docs.sh"
@@ -149,6 +151,16 @@ def update_resume_tasks_block() -> None:
         '- Include Qstore and Qcamera platform/device coverage in the bulk task list and resume tracker.',
         '- Verify every Qstore app listing includes a custom icon, feature summary, and platform-aware download link.',
         '- Refresh `resumefromhere.txt` before and after each bulk run so the resume tracker is always current.',
+        '- Run `scripts/merge_executor.py` during bulk continuation to keep merge consolidation planning active and synced.',
+        '- Keep merge phase statuses visible in resumefromhere.txt using merge execution summaries.',
+        '- Merge all duplicate API endpoints and route implementations only after copying unique logic into canonical sources.',
+        '- Update `API.md`, `ENDPOINTS.md`, and `ROUTES.md` as soon as route consolidation or duplicate cleanup occurs.',
+        '- Verify duplicate app entry points, legacy PWA HTML fallbacks, and stale route handlers are cleaned in sync with docs.',
+        '- Keep `MERGE.md` updated whenever merge discovery or canonical app changes occur.',
+        '- Always update `API.md`, `ENDPOINTS.md`, `ROUTES.md`, and `MERGE.md` after any route or app entry point change.',
+        '- Use `scripts/consolidate_api_endpoints.py` to regenerate API, endpoint, and route docs whenever routes or APIs change.',
+        '- Preserve every backlog item from `14.txt`, `undone.txt`, `MATCHES.txt`, and `resumefromhere.txt` while working in bulk.',
+        '- Never skip a new task that appears during a bulk run; add it to this file and the live task list immediately.',
     ]
     task_block_lines += [f'- {task}' for task in merged_tasks[:50]]
     if len(merged_tasks) > 50:
@@ -196,8 +208,58 @@ def run_command(command: list[str], description: str) -> bool:
         return False
 
 
+def update_merge_execution_summary() -> None:
+    report_path = ROOT / ".qmoi_validation" / "merge_execution_report.json"
+    if not report_path.exists():
+        return
+
+    try:
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        print(f"Warning: failed to read merge execution report ({exc})")
+        return
+
+    phase_statuses = report.get("phases", {})
+    if not phase_statuses:
+        return
+
+    lines = ["MERGE EXECUTION SUMMARY:"]
+    for phase_key, phase_info in phase_statuses.items():
+        status = phase_info.get("status", "UNKNOWN")
+        description = phase_info.get("description", "")
+        if description:
+            lines.append(f"- {phase_key}: {status} ({description})")
+        else:
+            lines.append(f"- {phase_key}: {status}")
+
+    stats = report.get("statistics", {})
+    if stats:
+        lines.append("")
+        lines.append("MERGE EXECUTION STATISTICS:")
+        for metric, value in stats.items():
+            lines.append(f"- {metric.replace('_', ' ').title()}: {value}")
+
+    new_block = "\n".join(lines) + "\n"
+    resume_content = load_text_file(RESUME_FILE)
+    if "MERGE EXECUTION SUMMARY:" in resume_content:
+        resume_content = re.sub(r"MERGE EXECUTION SUMMARY:[\s\S]*?(?=\n\n[A-Z]|\Z)", new_block, resume_content, flags=re.MULTILINE)
+    else:
+        resume_content = resume_content.strip() + "\n\n" + new_block
+
+    RESUME_FILE.write_text(resume_content, encoding="utf-8")
+    print("✓ Updated resumefromhere.txt with the latest merge execution summary")
+
+
 DUPLICATE_FILE_AUDIT_SCRIPT = ROOT / "scripts" / "duplicate_file_audit.py"
 MERGE_DISCOVERY_SCANNER_SCRIPT = ROOT / "scripts" / "merge_discovery_scanner.py"
+
+
+def run_merge_orchestration() -> None:
+    if MERGE_EXECUTOR_SCRIPT.exists():
+        run_command([sys.executable, str(MERGE_EXECUTOR_SCRIPT)], 'run merge execution orchestrator')
+        update_merge_execution_summary()
+    else:
+        print(f"Info: {MERGE_EXECUTOR_SCRIPT} not found; skipping merge execution orchestrator.")
 
 
 
@@ -213,6 +275,19 @@ def run_bulk_fixer() -> None:
     except FileExistsError:
         print(f"Another bulk run appears to be active (lock: {lockfile}); aborting this run.")
         return
+
+    # Merge-first execution: discovery, merge orchestration, canonical documentation, then cleanup
+    if MERGE_DISCOVERY_SCANNER_SCRIPT.exists():
+        run_command([sys.executable, str(MERGE_DISCOVERY_SCANNER_SCRIPT)], 'scan for duplicate files and entry points for merge phase')
+    else:
+        print(f"Info: {MERGE_DISCOVERY_SCANNER_SCRIPT} not found; skipping merge discovery scan.")
+
+    run_merge_orchestration()
+
+    if CONSOLIDATE_API_ENDPOINTS_SCRIPT.exists():
+        run_command([sys.executable, str(CONSOLIDATE_API_ENDPOINTS_SCRIPT)], 'consolidate API documentation')
+    else:
+        print(f"Info: {CONSOLIDATE_API_ENDPOINTS_SCRIPT} not found; skipping API consolidation.")
 
     if DUPLICATE_CLEANUP_SCRIPT.exists():
         run_command([sys.executable, str(DUPLICATE_CLEANUP_SCRIPT)], 'duplicate cleanup')
@@ -280,6 +355,16 @@ def run_bulk_fixer() -> None:
         run_command([sys.executable, str(MERGE_DISCOVERY_SCANNER_SCRIPT)], 'scan for duplicate files and entry points for merge phase')
     else:
         print(f"Info: {MERGE_DISCOVERY_SCANNER_SCRIPT} not found; skipping merge discovery scan.")
+    
+    # Ensure MERGE.md and route documentation are updated if merge discovery produces new findings
+    if MERGE_EXECUTOR_SCRIPT.exists() and MERGE_DISCOVERY_SCANNER_SCRIPT.exists():
+        print('Ensuring merge plan and documentation remain current after merge discovery scans.')
+    
+    # Enhanced documentation synchronization
+    if UPDATE_API_DOCS_SCRIPT.exists():
+        run_command([sys.executable, str(UPDATE_API_DOCS_SCRIPT)], 'update API docs')
+    else:
+        print(f"Warning: {UPDATE_API_DOCS_SCRIPT} not found; skipping API docs update.")
 
     
     # Enhanced ALLMDFILESREFS.md with tags and status

@@ -1,6 +1,6 @@
 # BULK PRODUCTION WORKFLOW
 
-Generated: 2026-06-22T19:08:54.169973
+Generated: 2026-06-22T22:56:36.285803
 
 This file centralizes repository-wide production readiness work and helps you apply bulk fixes across many files at once.
 
@@ -20,15 +20,18 @@ This file centralizes repository-wide production readiness work and helps you ap
 - Use safe, deterministic operations and avoid destructive changes without review.
 
 ## Scan summary
-- Total files scanned: 4743
-- Files with markers: 5
-- Total markers found: 6
+- Total files scanned: 4623
+- Files with markers: 7
+- Total markers found: 9
 
 ## Marker summary
-- UNIMPLEMENTED: 6
+- UNIMPLEMENTED: 7
+- IN_PROGRESS: 2
 
 ## Top files requiring bulk production attention
+- scripts/merge_first_bulk_orchestrator.py: 2 marker(s)
 - scripts/generate_allmdfilesrefs_enhanced.py: 2 marker(s)
+- COMPREHENSIVE_MERGE_FIRST_PLAN.md: 1 marker(s)
 - scripts/scan_lion_usage.py: 1 marker(s)
 - scripts/validate_md.py: 1 marker(s)
 - scripts/autotag_md_with_lion.py: 1 marker(s)
@@ -59,10 +62,10 @@ This file centralizes repository-wide production readiness work and helps you ap
 - ... and 225 more tasks from 14.txt
 
 ### Tasks from resumefromhere.txt
-- Total files scanned: 4743
-- Total directories scanned: 809
-- Files with nonproduction markers: 5
-- Total markers found: 6
+- Total files scanned: 4623
+- Total directories scanned: 821
+- Files with nonproduction markers: 7
+- Total markers found: 9
 - Status: ⚠️ Nonproduction markers remain. Review undone.txt and MATCHES.txt.
 - Open undone.txt for detailed marker locations.
 - Update identified files with production implementations.
@@ -79,7 +82,7 @@ This file centralizes repository-wide production readiness work and helps you ap
 - Implement forgot-password, forgot-email, reset-password flows
 - Add email-verification functionality
 - Integrate biometric authentication
-- ... and 25 more tasks from resumefromhere.txt
+- ... and 26 more tasks from resumefromhere.txt
 
 ## Tracking files
 - resumefromhere.txt

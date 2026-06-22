@@ -1,7 +1,7 @@
 # ALLAUTO.md - Automation references inventory
 
-**Generated:** 2026-06-22T19:01:56.313607Z
-**Total entries:** 1182
+**Generated:** 2026-06-22T22:51:02.512058Z
+**Total entries:** 1186
 
 - .devcontainer/README.md — automation_mentions: 5 — script_links: 4
 - .evolution_logs/EVOLUTION_SUMMARY.md — automation_mentions: 1 — script_links: 0
@@ -48,7 +48,7 @@
 - ALL_APPS.md — automation_mentions: 5 — script_links: 3
 - ALL_APPS/README.md — automation_mentions: 5 — script_links: 4
 - ALPHAQMOIENGINE.md — automation_mentions: 17 — script_links: 3
-- API.md — automation_mentions: 1 — script_links: 2
+- API.md — automation_mentions: 33 — script_links: 2
 - API_1.md — automation_mentions: 8 — script_links: 0
 - API_AUTO_UPDATE_GUIDELINES.md — automation_mentions: 35 — script_links: 3
 - API_COMPREHENSIVE.md — automation_mentions: 14 — script_links: 3
@@ -144,6 +144,7 @@
 - COMPREHENSIVE_ERROR_ANALYSIS.md — automation_mentions: 6 — script_links: 3
 - COMPREHENSIVE_IMPLEMENTATION_PLAN.md — automation_mentions: 12 — script_links: 0
 - COMPREHENSIVE_LINK_FIX_STRATEGY.md — automation_mentions: 14 — script_links: 7
+- COMPREHENSIVE_MERGE_FIRST_PLAN.md — automation_mentions: 1 — script_links: 4
 - COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md — automation_mentions: 4 — script_links: 2
 - COMPREHENSIVE_TESTING_QA_STRATEGY.md — automation_mentions: 5 — script_links: 3
 - COMPREHENSIVE_TESTING_STRATEGY.md — automation_mentions: 2 — script_links: 0
@@ -366,6 +367,8 @@
 - MASTER_VERIFICATION_COMPLETE.md — automation_mentions: 22 — script_links: 3
 - MATCHES.md — automation_mentions: 0 — script_links: 5
 - MEGAVAULT.md — automation_mentions: 9 — script_links: 3
+- MERGE.md — automation_mentions: 15 — script_links: 2
+- MERGE_IMPLEMENTATION_SUMMARY.md — automation_mentions: 4 — script_links: 8
 - MERGE_PLAN_20260611.md — automation_mentions: 1 — script_links: 0
 - ML.md — automation_mentions: 5 — script_links: 3
 - ML_OPTIMIZATION_SYSTEM.md — automation_mentions: 4 — script_links: 3
@@ -826,7 +829,7 @@
 - ROLES_AND_PERMISSIONS.md — automation_mentions: 6 — script_links: 3
 - ROOT_PRODUCTION_STATUS.md — automation_mentions: 50 — script_links: 285
 - ROOT_production_STATUS.md — automation_mentions: 399 — script_links: 3683
-- ROUTES.md — automation_mentions: 31 — script_links: 0
+- ROUTES.md — automation_mentions: 16 — script_links: 0
 - ROUTES_COMPREHENSIVE.md — automation_mentions: 17 — script_links: 3
 - RSAAPIREADME.md — automation_mentions: 7 — script_links: 3
 - S1B_COMPLETION_SUMMARY.md — automation_mentions: 10 — script_links: 3
@@ -920,6 +923,7 @@
 - UI_SAMPLES.md — automation_mentions: 5 — script_links: 3
 - UNIVERSAL.md — automation_mentions: 8 — script_links: 0
 - UNIVERSALHEALTHRUNNERS.md — automation_mentions: 15 — script_links: 3
+- UNIVERSALS.md — automation_mentions: 4 — script_links: 0
 - UNIVERSAL_AUTH.md — automation_mentions: 2 — script_links: 0
 - UNLIMITED_RESOURCES.md — automation_mentions: 3 — script_links: 3
 - UNUSED_API_ENDPOINTS.md — automation_mentions: 11 — script_links: 3
@@ -1191,12 +1195,12 @@
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T19:07:24.498991Z
+- timestamp: 2026-06-22T22:55:24.207774Z
 - production status: ❌ needs production implementation
 - status tags: needs-production, nonproduction
-- lines: 1205
-- words: 9539
-- characters: 84489
+- lines: 1209
+- words: 9571
+- characters: 84760
 - headings: 2
 - links: 0
 - images: 0

@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-06-22T19:08:10.506416Z",
+  "timestamp": "2026-06-22T22:56:02.094571Z",
   "root": "/workspaces/qmoi-enhanced",
-  "total_files_scanned": 1238,
+  "total_files_scanned": 1242,
   "summary": {
-    "production-ready": 550,
-    "needs-production": 17,
+    "production-ready": 551,
+    "needs-production": 19,
     "mixed": 21,
-    "review": 650,
-    "lion-block": 1238
+    "review": 651,
+    "lion-block": 1242
   },
   "files": [
     {
@@ -125,6 +125,23 @@
         "words": 981,
         "headings": 26,
         "links": 0,
+        "images": 0,
+        "tables": 0
+      }
+    },
+    {
+      "path": ".qmoi_backups/pwa_apps/q-alpha/README.md",
+      "lion_block": true,
+      "production_status": "review",
+      "tags": [
+        "lion-block",
+        "review"
+      ],
+      "stats": {
+        "lines": 370,
+        "words": 826,
+        "headings": 21,
+        "links": 1,
         "images": 0,
         "tables": 0
       }
@@ -393,8 +410,8 @@
         "needs-production"
       ],
       "stats": {
-        "lines": 1205,
-        "words": 9539,
+        "lines": 1209,
+        "words": 9571,
         "headings": 2,
         "links": 0,
         "images": 0,
@@ -600,8 +617,8 @@
         "review"
       ],
       "stats": {
-        "lines": 1268,
-        "words": 28822,
+        "lines": 1272,
+        "words": 28914,
         "headings": 3,
         "links": 0,
         "images": 0,
@@ -651,8 +668,8 @@
         "review"
       ],
       "stats": {
-        "lines": 63,
-        "words": 265,
+        "lines": 60,
+        "words": 253,
         "headings": 4,
         "links": 0,
         "images": 0,
@@ -668,8 +685,8 @@
         "needs-production"
       ],
       "stats": {
-        "lines": 1101,
-        "words": 5474,
+        "lines": 1103,
+        "words": 5484,
         "headings": 2,
         "links": 0,
         "images": 0,
@@ -753,8 +770,8 @@
         "review"
       ],
       "stats": {
-        "lines": 56,
-        "words": 274,
+        "lines": 53,
+        "words": 262,
         "headings": 7,
         "links": 0,
         "images": 0,
@@ -804,8 +821,8 @@
         "review"
       ],
       "stats": {
-        "lines": 202,
-        "words": 505,
+        "lines": 184,
+        "words": 469,
         "headings": 6,
         "links": 0,
         "images": 0,
@@ -940,9 +957,9 @@
         "review"
       ],
       "stats": {
-        "lines": 102,
-        "words": 368,
-        "headings": 13,
+        "lines": 429,
+        "words": 2006,
+        "headings": 14,
         "links": 6,
         "images": 0,
         "tables": 0
@@ -1994,8 +2011,8 @@
         "needs-production"
       ],
       "stats": {
-        "lines": 106,
-        "words": 588,
+        "lines": 107,
+        "words": 604,
         "headings": 11,
         "links": 0,
         "images": 0,
@@ -2594,6 +2611,23 @@
         "words": 2333,
         "headings": 64,
         "links": 2,
+        "images": 0,
+        "tables": 0
+      }
+    },
+    {
+      "path": "COMPREHENSIVE_MERGE_FIRST_PLAN.md",
+      "lion_block": true,
+      "production_status": "needs-production",
+      "tags": [
+        "lion-block",
+        "needs-production"
+      ],
+      "stats": {
+        "lines": 245,
+        "words": 1055,
+        "headings": 40,
+        "links": 0,
         "images": 0,
         "tables": 0
       }
@@ -6524,6 +6558,40 @@
         "words": 2580,
         "headings": 107,
         "links": 1,
+        "images": 0,
+        "tables": 0
+      }
+    },
+    {
+      "path": "MERGE.md",
+      "lion_block": true,
+      "production_status": "review",
+      "tags": [
+        "lion-block",
+        "review"
+      ],
+      "stats": {
+        "lines": 651,
+        "words": 2735,
+        "headings": 67,
+        "links": 0,
+        "images": 0,
+        "tables": 0
+      }
+    },
+    {
+      "path": "MERGE_IMPLEMENTATION_SUMMARY.md",
+      "lion_block": true,
+      "production_status": "production-ready",
+      "tags": [
+        "lion-block",
+        "production-ready"
+      ],
+      "stats": {
+        "lines": 477,
+        "words": 1873,
+        "headings": 42,
+        "links": 0,
         "images": 0,
         "tables": 0
       }
@@ -13975,12 +14043,12 @@
         "review"
       ],
       "stats": {
-        "lines": 422,
-        "words": 1554,
-        "headings": 24,
-        "links": 36,
+        "lines": 441,
+        "words": 1836,
+        "headings": 26,
+        "links": 41,
         "images": 0,
-        "tables": 9
+        "tables": 17
       }
     },
     {
@@ -14657,8 +14725,8 @@
         "review"
       ],
       "stats": {
-        "lines": 358,
-        "words": 1382,
+        "lines": 717,
+        "words": 2096,
         "headings": 7,
         "links": 3,
         "images": 0,
@@ -16294,6 +16362,23 @@
         "words": 1091,
         "headings": 27,
         "links": 1,
+        "images": 0,
+        "tables": 0
+      }
+    },
+    {
+      "path": "UNIVERSALS.md",
+      "lion_block": true,
+      "production_status": "needs-production",
+      "tags": [
+        "lion-block",
+        "needs-production"
+      ],
+      "stats": {
+        "lines": 520,
+        "words": 1557,
+        "headings": 42,
+        "links": 10,
         "images": 0,
         "tables": 0
       }
@@ -19674,8 +19759,8 @@
         "review"
       ],
       "stats": {
-        "lines": 2015,
-        "words": 4070,
+        "lines": 2022,
+        "words": 4084,
         "headings": 256,
         "links": 0,
         "images": 0,
@@ -20051,23 +20136,6 @@
         "lines": 403,
         "words": 913,
         "headings": 27,
-        "links": 1,
-        "images": 0,
-        "tables": 0
-      }
-    },
-    {
-      "path": "pwa_apps/q-alpha/README.md",
-      "lion_block": true,
-      "production_status": "review",
-      "tags": [
-        "lion-block",
-        "review"
-      ],
-      "stats": {
-        "lines": 370,
-        "words": 826,
-        "headings": 21,
         "links": 1,
         "images": 0,
         "tables": 0

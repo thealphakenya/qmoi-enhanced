@@ -1,8 +1,8 @@
 # Duplicate File Audit Report
 
-Generated: 2026-06-22T19:01:18.428144Z
+Generated: 2026-06-22T22:50:31.420401Z
 
-Total files scanned: 4706
+Total files scanned: 4753
 Total duplicate file titles found: 253
 
 ## Duplicate Files by Filename
@@ -349,6 +349,36 @@ Total duplicate file titles found: 253
 
 **Recommended canonical source:** `app/admin/master/activity/page.tsx`
 
+### `index.ts` (26 copies)
+- `app/components/styles/index.ts`
+- `app/lib/auth/index.ts`
+- `src/components/qalpha/index.ts`
+- `src/components/qmoi/index.ts`
+- `src/components/qvillage/index.ts`
+- `src/components/shared/ai/index.ts`
+- `src/components/shared/dashboards/index.ts`
+- `src/components/shared/index.ts`
+- `src/components/shared/system/index.ts`
+- `src/components/shared/tools/index.ts`
+- `src/components/shared/ui/index.ts`
+- `src/components/shared/voice/index.ts`
+- `components/q-city/index.ts`
+- `lib/components/auth/index.ts`
+- `lib/components/camera/index.ts`
+- `lib/components/data/index.ts`
+- `lib/components/forms/index.ts`
+- `lib/components/index.ts`
+- `lib/components/navigation/index.ts`
+- `lib/components/ui/index.ts`
+- `src/qcity/dashboards/index.ts`
+- `src/qcity/index.ts`
+- `pages/api/zero-rated-sites/index.ts`
+- `routes/api/qcity/projects/index.ts`
+- `services/adapters/index.ts`
+- `types/index.ts`
+
+**Recommended canonical source:** `app/components/styles/index.ts`
+
 ### `readme.json` (26 copies)
 - `.qmoi_validation/validation_reports/src/assets/icons/apps/README.json`
 - `.qmoi_validation/validation_reports/.devcontainer/README.json`
@@ -408,29 +438,6 @@ Total duplicate file titles found: 253
 - `whatsapp-qmoi-bot/README.md`
 
 **Recommended canonical source:** `src/assets/icons/apps/README.md`
-
-### `index.ts` (19 copies)
-- `app/components/styles/index.ts`
-- `app/lib/auth/index.ts`
-- `src/components/qalpha/index.ts`
-- `src/components/qmoi/index.ts`
-- `src/components/qvillage/index.ts`
-- `src/components/shared/ai/index.ts`
-- `src/components/shared/dashboards/index.ts`
-- `src/components/shared/index.ts`
-- `src/components/shared/system/index.ts`
-- `src/components/shared/tools/index.ts`
-- `src/components/shared/ui/index.ts`
-- `src/components/shared/voice/index.ts`
-- `components/q-city/index.ts`
-- `src/qcity/dashboards/index.ts`
-- `src/qcity/index.ts`
-- `pages/api/zero-rated-sites/index.ts`
-- `routes/api/qcity/projects/index.ts`
-- `services/adapters/index.ts`
-- `types/index.ts`
-
-**Recommended canonical source:** `app/components/styles/index.ts`
 
 ### `sw.js` (11 copies)
 - `public/pwa_apps/qmoi-ai/sw.js`
@@ -2001,12 +2008,12 @@ Total duplicate file titles found: 253
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T19:07:46.333717Z
+- timestamp: 2026-06-22T22:55:42.257868Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 2015
-- words: 4070
-- characters: 64760
+- lines: 2022
+- words: 4084
+- characters: 64993
 - headings: 256
 - links: 0
 - images: 0

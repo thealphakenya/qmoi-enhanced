@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-06-22T19:01:55.703839Z",
+  "timestamp": "2026-06-22T22:51:02.080334Z",
   "root": "/workspaces/qmoi-enhanced",
   "apply": true,
-  "total_files_scanned": 1238,
-  "updated_files": 1238,
+  "total_files_scanned": 1242,
+  "updated_files": 1242,
   "counts": {
-    "production_ready": 550,
-    "needs_production": 17,
+    "production_ready": 551,
+    "needs_production": 19,
     "mixed": 21,
-    "review": 650,
+    "review": 651,
     "unreadable": 0
   },
   "results": [
@@ -670,9 +670,9 @@
       ],
       "lion_block": true,
       "stats": {
-        "lines": 1204,
-        "words": 9531,
-        "characters": 84434,
+        "lines": 1208,
+        "words": 9563,
+        "characters": 84680,
         "headings": 2,
         "links": 0,
         "images": 0,
@@ -681,7 +681,7 @@
         "inline_code": 0,
         "front_matter": 0,
         "toc_present": 0,
-        "reading_minutes": 47.66,
+        "reading_minutes": 47.81,
         "automation_mentions": 6,
         "script_links": 11,
         "avg_percentage_mentioned": null
@@ -1033,9 +1033,9 @@
       ],
       "lion_block": false,
       "stats": {
-        "lines": 1250,
-        "words": 28750,
-        "characters": 194228,
+        "lines": 1253,
+        "words": 28819,
+        "characters": 194695,
         "headings": 2,
         "links": 0,
         "images": 0,
@@ -1044,7 +1044,7 @@
         "inline_code": 0,
         "front_matter": 0,
         "toc_present": 0,
-        "reading_minutes": 143.75,
+        "reading_minutes": 144.09,
         "automation_mentions": 5,
         "script_links": 11,
         "avg_percentage_mentioned": null
@@ -1154,7 +1154,7 @@
       "stats": {
         "lines": 1102,
         "words": 5479,
-        "characters": 67486,
+        "characters": 67499,
         "headings": 2,
         "links": 0,
         "images": 0,
@@ -1166,7 +1166,7 @@
         "reading_minutes": 27.39,
         "automation_mentions": 5,
         "script_links": 10,
-        "avg_percentage_mentioned": 88.45
+        "avg_percentage_mentioned": 88.36
       },
       "updated": true,
       "reason": "applied",
@@ -1620,21 +1620,21 @@
       "tags": [
         "review"
       ],
-      "lion_block": true,
+      "lion_block": false,
       "stats": {
-        "lines": 102,
-        "words": 368,
-        "characters": 3004,
+        "lines": 411,
+        "words": 1934,
+        "characters": 27066,
         "headings": 13,
         "links": 6,
         "images": 0,
         "tables": 0,
         "code_blocks": 1,
-        "inline_code": 36,
+        "inline_code": 684,
         "front_matter": 0,
         "toc_present": 0,
-        "reading_minutes": 1.84,
-        "automation_mentions": 1,
+        "reading_minutes": 9.67,
+        "automation_mentions": 33,
         "script_links": 2,
         "avg_percentage_mentioned": null
       },
@@ -3462,9 +3462,9 @@
       ],
       "lion_block": false,
       "stats": {
-        "lines": 88,
-        "words": 518,
-        "characters": 3915,
+        "lines": 89,
+        "words": 534,
+        "characters": 4034,
         "headings": 10,
         "links": 0,
         "images": 0,
@@ -3473,7 +3473,7 @@
         "inline_code": 12,
         "front_matter": 0,
         "toc_present": 0,
-        "reading_minutes": 2.59,
+        "reading_minutes": 2.67,
         "automation_mentions": 3,
         "script_links": 10,
         "avg_percentage_mentioned": null
@@ -4511,6 +4511,36 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/COMPREHENSIVE_LINK_FIX_STRATEGY.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/COMPREHENSIVE_MERGE_FIRST_PLAN.md",
+      "relative_path": "COMPREHENSIVE_MERGE_FIRST_PLAN.md",
+      "production_status": "❌ needs production implementation",
+      "tags": [
+        "needs-production",
+        "nonproduction"
+      ],
+      "lion_block": false,
+      "stats": {
+        "lines": 227,
+        "words": 985,
+        "characters": 7511,
+        "headings": 39,
+        "links": 0,
+        "images": 0,
+        "tables": 0,
+        "code_blocks": 6,
+        "inline_code": 17,
+        "front_matter": 0,
+        "toc_present": 0,
+        "reading_minutes": 4.92,
+        "automation_mentions": 1,
+        "script_links": 4,
+        "avg_percentage_mentioned": 66.67
+      },
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/COMPREHENSIVE_MERGE_FIRST_PLAN.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md",
@@ -7046,12 +7076,12 @@
       "tags": [
         "review"
       ],
-      "lion_block": true,
+      "lion_block": false,
       "stats": {
-        "lines": 76,
-        "words": 230,
-        "characters": 2002,
-        "headings": 8,
+        "lines": 58,
+        "words": 158,
+        "characters": 1538,
+        "headings": 7,
         "links": 3,
         "images": 0,
         "tables": 0,
@@ -7059,7 +7089,7 @@
         "inline_code": 30,
         "front_matter": 0,
         "toc_present": 0,
-        "reading_minutes": 1.15,
+        "reading_minutes": 0.79,
         "automation_mentions": 0,
         "script_links": 0,
         "avg_percentage_mentioned": null
@@ -11311,6 +11341,65 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/MEGAVAULT.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/MERGE.md",
+      "relative_path": "MERGE.md",
+      "production_status": "⚠️ review / no explicit production status",
+      "tags": [
+        "review"
+      ],
+      "lion_block": true,
+      "stats": {
+        "lines": 651,
+        "words": 2735,
+        "characters": 19813,
+        "headings": 67,
+        "links": 0,
+        "images": 0,
+        "tables": 0,
+        "code_blocks": 19,
+        "inline_code": 60,
+        "front_matter": 0,
+        "toc_present": 0,
+        "reading_minutes": 13.68,
+        "automation_mentions": 15,
+        "script_links": 2,
+        "avg_percentage_mentioned": null
+      },
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/MERGE.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/MERGE_IMPLEMENTATION_SUMMARY.md",
+      "relative_path": "MERGE_IMPLEMENTATION_SUMMARY.md",
+      "production_status": "✅ production-ready",
+      "tags": [
+        "production",
+        "production-ready"
+      ],
+      "lion_block": true,
+      "stats": {
+        "lines": 477,
+        "words": 1873,
+        "characters": 13020,
+        "headings": 42,
+        "links": 0,
+        "images": 0,
+        "tables": 0,
+        "code_blocks": 9,
+        "inline_code": 46,
+        "front_matter": 0,
+        "toc_present": 0,
+        "reading_minutes": 9.37,
+        "automation_mentions": 4,
+        "script_links": 8,
+        "avg_percentage_mentioned": 0.0
+      },
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/MERGE_IMPLEMENTATION_SUMMARY.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/MERGE_PLAN_20260611.md",
@@ -24247,18 +24336,18 @@
       ],
       "lion_block": true,
       "stats": {
-        "lines": 422,
-        "words": 1554,
-        "characters": 15402,
-        "headings": 24,
-        "links": 36,
+        "lines": 441,
+        "words": 1836,
+        "characters": 17854,
+        "headings": 26,
+        "links": 41,
         "images": 0,
-        "tables": 9,
+        "tables": 17,
         "code_blocks": 2,
-        "inline_code": 10,
+        "inline_code": 13,
         "front_matter": 1,
         "toc_present": 0,
-        "reading_minutes": 7.77,
+        "reading_minutes": 9.18,
         "automation_mentions": 12,
         "script_links": 3,
         "avg_percentage_mentioned": 99.5
@@ -25430,21 +25519,21 @@
       "tags": [
         "review"
       ],
-      "lion_block": true,
+      "lion_block": false,
       "stats": {
-        "lines": 358,
-        "words": 1382,
-        "characters": 21346,
-        "headings": 7,
+        "lines": 377,
+        "words": 757,
+        "characters": 9530,
+        "headings": 3,
         "links": 3,
         "images": 0,
         "tables": 0,
         "code_blocks": 0,
-        "inline_code": 618,
+        "inline_code": 361,
         "front_matter": 0,
         "toc_present": 0,
-        "reading_minutes": 6.91,
-        "automation_mentions": 31,
+        "reading_minutes": 3.79,
+        "automation_mentions": 16,
         "script_links": 0,
         "avg_percentage_mentioned": null
       },
@@ -28290,6 +28379,36 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/UNIVERSALHEALTHRUNNERS.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/UNIVERSALS.md",
+      "relative_path": "UNIVERSALS.md",
+      "production_status": "❌ needs production implementation",
+      "tags": [
+        "needs-production",
+        "nonproduction"
+      ],
+      "lion_block": true,
+      "stats": {
+        "lines": 520,
+        "words": 1557,
+        "characters": 12458,
+        "headings": 42,
+        "links": 10,
+        "images": 0,
+        "tables": 0,
+        "code_blocks": 20,
+        "inline_code": 44,
+        "front_matter": 0,
+        "toc_present": 1,
+        "reading_minutes": 7.79,
+        "automation_mentions": 4,
+        "script_links": 0,
+        "avg_percentage_mentioned": null
+      },
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/UNIVERSALS.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/UNIVERSAL_AUTH.md",
@@ -34118,18 +34237,18 @@
       ],
       "lion_block": false,
       "stats": {
-        "lines": 1997,
-        "words": 3998,
-        "characters": 64290,
+        "lines": 2004,
+        "words": 4012,
+        "characters": 64523,
         "headings": 255,
         "links": 0,
         "images": 0,
         "tables": 0,
         "code_blocks": 0,
-        "inline_code": 1482,
+        "inline_code": 1489,
         "front_matter": 0,
         "toc_present": 0,
-        "reading_minutes": 19.99,
+        "reading_minutes": 20.06,
         "automation_mentions": 20,
         "script_links": 27,
         "avg_percentage_mentioned": null

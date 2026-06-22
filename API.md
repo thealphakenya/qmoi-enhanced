@@ -1,6 +1,6 @@
 # API Documentation
 
-**Last Generated:** 2026-06-22T20:12:13.554350Z
+**Last Generated:** 2026-06-22T22:53:46.991400Z
 
 This is the main API documentation file. It consolidates all API endpoints, routes, and related documentation from APIs_1.md, ENDPOINTS.md, and ROUTES.md.
 
@@ -409,3 +409,21 @@ python3 scripts/consolidate_api_endpoints.py
 python3 scripts/auto_update_allmdfilesrefs.py
 ```
 
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-06-22T22:55:24.445843Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 429
+- words: 2006
+- characters: 27535
+- headings: 14
+- links: 6
+- images: 0
+- tables: 0
+- lion validation block: present
+<!-- LION_VALIDATION_END -->

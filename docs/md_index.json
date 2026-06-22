@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-06-22T19:07:47.509427Z",
+  "timestamp": "2026-06-22T22:55:43.281537Z",
   "root": "/workspaces/qmoi-enhanced",
   "apply": true,
-  "total_files_scanned": 1238,
-  "updated_files": 1238,
+  "total_files_scanned": 1242,
+  "updated_files": 1242,
   "results": [
     {
       "path": "/workspaces/qmoi-enhanced/.devcontainer/README.md",
@@ -46,6 +46,12 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/.github/PULL_REQUEST_TEMPLATE.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/.qmoi_backups/pwa_apps/q-alpha/README.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/.qmoi_backups/pwa_apps/q-alpha/README.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/.qmoi_state/RECOVERY_COMPLETE.md",
@@ -916,6 +922,12 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/COMPREHENSIVE_LINK_FIX_STRATEGY.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/COMPREHENSIVE_MERGE_FIRST_PLAN.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/COMPREHENSIVE_MERGE_FIRST_PLAN.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md",
@@ -2302,6 +2314,18 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/MEGAVAULT.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/MERGE.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/MERGE.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/MERGE_IMPLEMENTATION_SUMMARY.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/MERGE_IMPLEMENTATION_SUMMARY.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/MERGE_PLAN_20260611.md",
@@ -5748,6 +5772,12 @@
       "backup": "/workspaces/qmoi-enhanced/UNIVERSALHEALTHRUNNERS.md.bak"
     },
     {
+      "path": "/workspaces/qmoi-enhanced/UNIVERSALS.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/UNIVERSALS.md.bak"
+    },
+    {
       "path": "/workspaces/qmoi-enhanced/UNIVERSAL_AUTH.md",
       "updated": true,
       "reason": "applied",
@@ -7072,12 +7102,6 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/pwa_apps/README.md.bak"
-    },
-    {
-      "path": "/workspaces/qmoi-enhanced/pwa_apps/q-alpha/README.md",
-      "updated": true,
-      "reason": "applied",
-      "backup": "/workspaces/qmoi-enhanced/pwa_apps/q-alpha/README.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/q/AI_ENHANCED_INTELLIGENT_VALIDATION_ARCHITECTURE.md",

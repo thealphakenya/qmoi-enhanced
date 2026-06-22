@@ -102,7 +102,7 @@ This UI documentation reflects the actual app implementation and route wiring pr
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T19:07:29.093274Z
+- timestamp: 2026-06-22T22:55:27.976653Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
 - lines: 116

@@ -1,6 +1,6 @@
 # All API Endpoints
 
-**Last Generated:** 2026-06-22T20:12:16.689183Z
+**Last Generated:** 2026-06-22T22:53:49.457193Z
 
 Complete reference of all API endpoints organized by method and path.
 
@@ -56,3 +56,21 @@ Complete reference of all API endpoints organized by method and path.
 - [ROUTES.md](ROUTES.md) - Application routes
 - [WEBHOOKS.md](WEBHOOKS.md) - Webhooks and WebSocket endpoints
 
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-06-22T22:55:26.619182Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 76
+- words: 230
+- characters: 2003
+- headings: 8
+- links: 3
+- images: 0
+- tables: 0
+- lion validation block: present
+<!-- LION_VALIDATION_END -->

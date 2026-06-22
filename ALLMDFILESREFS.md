@@ -1,9 +1,9 @@
 # ALLMDFILESREFS.md - Complete Markdown Inventory
 
-**Generated:** 2026-06-22T19:08:54.107298Z
-**Total Markdown Files:** 1238
-**Production-ready:** 550
-**Needs production implementation:** 17
+**Generated:** 2026-06-22T22:56:36.216226Z
+**Total Markdown Files:** 1242
+**Production-ready:** 552
+**Needs production implementation:** 19
 **Review / no explicit status:** 650
 **Mixed markers:** 21
 **Unreadable:** 0
@@ -17,6 +17,7 @@
 .github/PR_AUTOTODOS.md — ✅ production-ready — tags: production, production-ready — lines: 211, words: 1132, headings: 28, links: 0, images: 0, tables: 0
 .github/PULL_REQUEST_TEMPLATE/automated_fix.md — ✅ production-ready — tags: production, production-ready — lines: 210, words: 1055, headings: 29, links: 0, images: 0, tables: 0
 .github/PULL_REQUEST_TEMPLATE.md — ⚠️ review / no explicit production status — tags: review — lines: 193, words: 981, headings: 26, links: 0, images: 0, tables: 0
+.qmoi_backups/pwa_apps/q-alpha/README.md — ⚠️ review / no explicit production status — tags: review — lines: 370, words: 826, headings: 21, links: 1, images: 0, tables: 0
 .qmoi_state/RECOVERY_COMPLETE.md — ✅ production-ready — tags: production, production-ready — lines: 472, words: 1294, headings: 39, links: 0, images: 0, tables: 16
 1.md — ✅ production-ready — tags: production, production-ready — lines: 613, words: 1416, headings: 20, links: 0, images: 0, tables: 0
 1a.md — ✅ production-ready — tags: production, production-ready — lines: 108, words: 363, headings: 16, links: 0, images: 0, tables: 0
@@ -32,7 +33,7 @@ ADVANCED_USER_IDENTIFICATION_SYSTEM.md — ⚠️ review / no explicit productio
 AI_API_AUTHENTICATION_GUIDE.md — ⚠️ review / no explicit production status — tags: review — lines: 300, words: 794, headings: 40, links: 0, images: 0, tables: 0
 AI_ENHANCEMENT_SYSTEM.md — ⚠️ review / no explicit production status — tags: review — lines: 482, words: 1903, headings: 64, links: 0, images: 0, tables: 0
 ALL PERCENTAGES.md — ⚠️ review / no explicit production status — tags: review — lines: 350, words: 844, headings: 29, links: 0, images: 0, tables: 0
-ALLAUTO.md — ❌ needs production implementation — tags: needs-production, nonproduction — lines: 1205, words: 9539, headings: 2, links: 0, images: 0, tables: 0
+ALLAUTO.md — ❌ needs production implementation — tags: needs-production, nonproduction — lines: 1209, words: 9571, headings: 2, links: 0, images: 0, tables: 0
 ALLCLONEDRELEASES.md — ⚠️ review / no explicit production status — tags: review — lines: 444, words: 1228, headings: 35, links: 1, images: 0, tables: 0
 ALLCOMPONENTSTESTS.md — ✅ production-ready — tags: production, production-ready — lines: 389, words: 1006, headings: 27, links: 0, images: 0, tables: 7
 ALLDEVICESSETTINGS.md — ✅ production-ready — tags: production, production-ready — lines: 508, words: 1667, headings: 41, links: 0, images: 0, tables: 0
@@ -44,19 +45,19 @@ ALLERRORTYPESANDHEALTHCHECKS.md — ✅ production-ready — tags: production, p
 ALLHEALTHS.md — ⚠️ mixed production markers — tags: mixed, nonproduction, production, review — lines: 5725, words: 17265, headings: 202, links: 0, images: 0, tables: 10
 ALLHOOKSWEBHOOKS.md — ⚠️ review / no explicit production status — tags: review — lines: 324, words: 703, headings: 6, links: 0, images: 0, tables: 0
 ALLLINKS.md — ⚠️ review / no explicit production status — tags: review — lines: 518, words: 1159, headings: 57, links: 3, images: 0, tables: 0
-ALLMDFILESREFS.md — ⚠️ mixed production markers — tags: mixed, nonproduction, production, review — lines: 1268, words: 28822, headings: 3, links: 0, images: 0, tables: 0
+ALLMDFILESREFS.md — ⚠️ mixed production markers — tags: mixed, nonproduction, production, review — lines: 1272, words: 28914, headings: 3, links: 0, images: 0, tables: 0
 ALLMDFILESREFS_ENHANCED.md — ✅ production-ready — tags: production, production-ready — lines: 760, words: 2470, headings: 55, links: 2, images: 0, tables: 17
 ALLMDGILES.md — ✅ production-ready — tags: production, production-ready — lines: 431, words: 853, headings: 21, links: 1, images: 0, tables: 0
-ALLPAGES.md — ⚠️ review / no explicit production status — tags: review — lines: 63, words: 265, headings: 4, links: 0, images: 0, tables: 0
-ALLPERCENTAGES.md — ❌ needs production implementation — tags: needs-production, nonproduction — lines: 1101, words: 5474, headings: 2, links: 0, images: 0, tables: 0
+ALLPAGES.md — ⚠️ review / no explicit production status — tags: review — lines: 60, words: 253, headings: 4, links: 0, images: 0, tables: 0
+ALLPERCENTAGES.md — ❌ needs production implementation — tags: needs-production, nonproduction — lines: 1103, words: 5484, headings: 2, links: 0, images: 0, tables: 0
 ALLPLATFORMSVERSIONS.md — ✅ production-ready — tags: production, production-ready — lines: 1259, words: 4644, headings: 63, links: 0, images: 0, tables: 0
 ALLQMOIAIAPPSREALEASESVERSIONS.md — ⚠️ review / no explicit production status — tags: review — lines: 443, words: 1627, headings: 23, links: 1, images: 0, tables: 24
 ALLQMOIAUTOEVOLVINGENVS.md — ✅ production-ready — tags: production, production-ready — lines: 1647, words: 4604, headings: 75, links: 1, images: 0, tables: 0
 ALLREGISTRIES.md — ✅ production-ready — tags: production, production-ready — lines: 112, words: 431, headings: 17, links: 0, images: 0, tables: 0
-ALLSERVE.md — ⚠️ review / no explicit production status — tags: review — lines: 56, words: 274, headings: 7, links: 0, images: 0, tables: 0
+ALLSERVE.md — ⚠️ review / no explicit production status — tags: review — lines: 53, words: 262, headings: 7, links: 0, images: 0, tables: 0
 ALLSYSTEMSSTRUCTURESREFERENCES.md — ⚠️ review / no explicit production status — tags: review — lines: 480, words: 1356, headings: 28, links: 1, images: 0, tables: 0
 ALLTESTSAUTOTESTS.md — ✅ production-ready — tags: production, production-ready — lines: 407, words: 1239, headings: 14, links: 0, images: 0, tables: 8
-ALLUI.md — ⚠️ review / no explicit production status — tags: review — lines: 202, words: 505, headings: 6, links: 0, images: 0, tables: 0
+ALLUI.md — ⚠️ review / no explicit production status — tags: review — lines: 184, words: 469, headings: 6, links: 0, images: 0, tables: 0
 ALLUITESTS.md — ✅ production-ready — tags: production, production-ready — lines: 1814, words: 5421, headings: 86, links: 24, images: 0, tables: 52
 ALLVALIDATIONS.md — ⚠️ review / no explicit production status — tags: review — lines: 48, words: 295, headings: 6, links: 0, images: 0, tables: 0
 ALLVERSIONS.md — ⚠️ review / no explicit production status — tags: review — lines: 458, words: 1818, headings: 21, links: 118, images: 0, tables: 120
@@ -64,7 +65,7 @@ ALLWALLETSQVS.md — ✅ production-ready — tags: production, production-ready
 ALL_APPS/README.md — ⚠️ review / no explicit production status — tags: review — lines: 360, words: 861, headings: 21, links: 2, images: 0, tables: 0
 ALL_APPS.md — ⚠️ review / no explicit production status — tags: review — lines: 328, words: 669, headings: 21, links: 0, images: 0, tables: 0
 ALPHAQMOIENGINE.md — ⚠️ review / no explicit production status — tags: review — lines: 436, words: 1265, headings: 33, links: 1, images: 0, tables: 0
-API.md — ⚠️ review / no explicit production status — tags: review — lines: 102, words: 368, headings: 13, links: 6, images: 0, tables: 0
+API.md — ⚠️ review / no explicit production status — tags: review — lines: 429, words: 2006, headings: 14, links: 6, images: 0, tables: 0
 API_1.md — ✅ production-ready — tags: production, production-ready — lines: 571, words: 1418, headings: 74, links: 3, images: 0, tables: 0
 API_AUTO_UPDATE_GUIDELINES.md — ✅ production-ready — tags: production, production-ready — lines: 1243, words: 3810, headings: 113, links: 5, images: 0, tables: 0
 API_COMPREHENSIVE.md — ✅ production-ready — tags: production, production-ready — lines: 1003, words: 2231, headings: 110, links: 10, images: 0, tables: 20
@@ -126,7 +127,7 @@ BUILD_REAL_APPS.md — ⚠️ review / no explicit production status — tags: r
 BUILD_SCRIPTS_Q1_INTEGRATION.md — ✅ production-ready — tags: production, production-ready — lines: 395, words: 1501, headings: 64, links: 0, images: 0, tables: 18
 BUILD_TRIGGER.md — ⚠️ review / no explicit production status — tags: review — lines: 339, words: 736, headings: 21, links: 0, images: 0, tables: 0
 BULK_ENHANCEMENT_STATUS.md — ✅ production-ready — tags: production, production-ready — lines: 169, words: 489, headings: 22, links: 0, images: 0, tables: 0
-BULK_PRODUCTION_WORKFLOW.md — ❌ needs production implementation — tags: needs-production, nonproduction — lines: 106, words: 588, headings: 11, links: 0, images: 0, tables: 0
+BULK_PRODUCTION_WORKFLOW.md — ❌ needs production implementation — tags: needs-production, nonproduction — lines: 107, words: 604, headings: 11, links: 0, images: 0, tables: 0
 BUSINESS_INTELLIGENCE.md — ⚠️ review / no explicit production status — tags: review — lines: 321, words: 1228, headings: 35, links: 0, images: 0, tables: 0
 CACHING_GUIDE.md — ⚠️ review / no explicit production status — tags: review — lines: 925, words: 2406, headings: 72, links: 11, images: 0, tables: 0
 CACHING_STRATEGIES.md — ⚠️ review / no explicit production status — tags: review — lines: 267, words: 723, headings: 27, links: 0, images: 0, tables: 0
@@ -150,7 +151,7 @@ COMPLETION_REPORT.md — ⚠️ mixed production markers — tags: mixed, nonpro
 COMPLETION_REPORT_REAL_IMPLEMENTATIONS.md — ✅ production-ready — tags: production, production-ready — lines: 575, words: 1885, headings: 47, links: 0, images: 0, tables: 31
 COMPLETION_SUMMARY.md — ✅ production-ready — tags: production, production-ready — lines: 287, words: 1281, headings: 34, links: 0, images: 0, tables: 28
 COMPLIANCE_AUDITING.md — ⚠️ review / no explicit production status — tags: review — lines: 274, words: 829, headings: 28, links: 0, images: 0, tables: 0
-COMPONENTS.md — ✅ production-ready — tags: production, production-ready — lines: 501, words: 2821, headings: 57, links: 0, images: 0, tables: 8
+COMPONENTS.md — ✅ production-ready — tags: production, production-ready — lines: 135, words: 451, headings: 22, links: 0, images: 0, tables: 0
 COMPONENTS_enhanced.md — ⚠️ review / no explicit production status — tags: review — lines: 413, words: 911, headings: 29, links: 6, images: 0, tables: 0
 COMPONENT_APP_MAPPING.md — ⚠️ review / no explicit production status — tags: review — lines: 309, words: 1324, headings: 26, links: 0, images: 0, tables: 6
 COMPONENT_CONNECTION_MAP.md — ⚠️ review / no explicit production status — tags: review — lines: 434, words: 1225, headings: 37, links: 0, images: 0, tables: 26
@@ -162,6 +163,7 @@ COMPREHENSIVE_ACTION_PLAN.md — ✅ production-ready — tags: production, prod
 COMPREHENSIVE_ERROR_ANALYSIS.md — ✅ production-ready — tags: production, production-ready — lines: 418, words: 1069, headings: 31, links: 0, images: 0, tables: 15
 COMPREHENSIVE_IMPLEMENTATION_PLAN.md — ⚠️ review / no explicit production status — tags: review — lines: 423, words: 1723, headings: 41, links: 0, images: 0, tables: 15
 COMPREHENSIVE_LINK_FIX_STRATEGY.md — ✅ production-ready — tags: production, production-ready — lines: 696, words: 2333, headings: 64, links: 2, images: 0, tables: 0
+COMPREHENSIVE_MERGE_FIRST_PLAN.md — ❌ needs production implementation — tags: needs-production, nonproduction — lines: 245, words: 1055, headings: 40, links: 0, images: 0, tables: 0
 COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md — ✅ production-ready — tags: production, production-ready — lines: 318, words: 1165, headings: 63, links: 0, images: 0, tables: 0
 COMPREHENSIVE_TESTING_QA_STRATEGY.md — ✅ production-ready — tags: production, production-ready — lines: 408, words: 1020, headings: 30, links: 0, images: 0, tables: 0
 COMPREHENSIVE_TESTING_STRATEGY.md — ⚠️ review / no explicit production status — tags: review — lines: 443, words: 2751, headings: 72, links: 0, images: 0, tables: 112
@@ -344,7 +346,7 @@ INDEPENDENTQMOI.md — ⚠️ review / no explicit production status — tags: r
 INSTALL.md — ⚠️ review / no explicit production status — tags: review — lines: 366, words: 766, headings: 21, links: 1, images: 0, tables: 0
 INSTALLATION.md — ⚠️ review / no explicit production status — tags: review — lines: 366, words: 769, headings: 21, links: 1, images: 0, tables: 0
 INSTALLER.md — ⚠️ review / no explicit production status — tags: review — lines: 328, words: 669, headings: 21, links: 0, images: 0, tables: 0
-INSTANCES.md — ❌ needs production implementation — tags: needs-production, nonproduction — lines: 30, words: 121, headings: 7, links: 0, images: 0, tables: 0
+INSTANCES.md — ❌ needs production implementation — tags: needs-production, nonproduction — lines: 33, words: 132, headings: 7, links: 0, images: 0, tables: 0
 INTEGRATION_GUIDE.md — ✅ production-ready — tags: production, production-ready — lines: 887, words: 2605, headings: 92, links: 0, images: 0, tables: 0
 INVENTIONS.md — ✅ production-ready — tags: production, production-ready — lines: 246, words: 830, headings: 38, links: 0, images: 0, tables: 0
 INVINSIBLEQMOI.md — ⚠️ review / no explicit production status — tags: review — lines: 409, words: 1127, headings: 26, links: 1, images: 0, tables: 0
@@ -391,8 +393,10 @@ MASTER_READINESS_INDEX.md — ⚠️ review / no explicit production status — 
 MASTER_README.md — ⚠️ review / no explicit production status — tags: review — lines: 807, words: 1919, headings: 82, links: 5, images: 0, tables: 7
 MASTER_SYSTEM_DEPLOYMENT_REPORT.md — ⚠️ review / no explicit production status — tags: review — lines: 726, words: 2021, headings: 80, links: 0, images: 0, tables: 13
 MASTER_VERIFICATION_COMPLETE.md — ✅ production-ready — tags: production, production-ready — lines: 702, words: 2241, headings: 21, links: 0, images: 0, tables: 0
-MATCHES.md — ⚠️ review / no explicit production status — tags: review — lines: 17, words: 77, headings: 4, links: 0, images: 0, tables: 0
+MATCHES.md — ⚠️ review / no explicit production status — tags: review — lines: 19, words: 87, headings: 4, links: 0, images: 0, tables: 0
 MEGAVAULT.md — ⚠️ review / no explicit production status — tags: review — lines: 864, words: 2580, headings: 107, links: 1, images: 0, tables: 0
+MERGE.md — ⚠️ review / no explicit production status — tags: review — lines: 667, words: 2801, headings: 70, links: 0, images: 0, tables: 0
+MERGE_IMPLEMENTATION_SUMMARY.md — ✅ production-ready — tags: production, production-ready — lines: 477, words: 1873, headings: 42, links: 0, images: 0, tables: 0
 MERGE_PLAN_20260611.md — ⚠️ mixed production markers — tags: mixed, nonproduction, production, review — lines: 182, words: 914, headings: 23, links: 0, images: 0, tables: 0
 ML.md — ⚠️ review / no explicit production status — tags: review — lines: 328, words: 669, headings: 21, links: 0, images: 0, tables: 0
 ML_OPTIMIZATION_SYSTEM.md — ⚠️ review / no explicit production status — tags: review — lines: 239, words: 516, headings: 26, links: 0, images: 0, tables: 0
@@ -830,7 +834,7 @@ QVS/QVSREADME.md — ⚠️ review / no explicit production status — tags: rev
 QVS.md — ✅ production-ready — tags: production, production-ready — lines: 348, words: 912, headings: 24, links: 3, images: 0, tables: 0
 Q_API_KEY_COMPREHENSIVE.md — ⚠️ review / no explicit production status — tags: review — lines: 1193, words: 2959, headings: 128, links: 15, images: 0, tables: 22
 Q_BALANCES_AUTO_UPDATE_README.md — ✅ production-ready — tags: production, production-ready — lines: 777, words: 2346, headings: 105, links: 0, images: 0, tables: 9
-Qstore.md — ⚠️ review / no explicit production status — tags: review — lines: 422, words: 1554, headings: 24, links: 36, images: 0, tables: 9
+Qstore.md — ⚠️ review / no explicit production status — tags: review — lines: 441, words: 1836, headings: 26, links: 41, images: 0, tables: 17
 RBAC.md — ✅ production-ready — tags: production, production-ready — lines: 460, words: 2055, headings: 40, links: 10, images: 0, tables: 53
 RBAC_IMPLEMENTATION_SUMMARY.md — ✅ production-ready — tags: production, production-ready — lines: 488, words: 1443, headings: 43, links: 0, images: 0, tables: 13
 README (1).md — ⚠️ review / no explicit production status — tags: review — lines: 918, words: 4112, headings: 288, links: 5, images: 0, tables: 0
@@ -870,7 +874,7 @@ REVENUE_VALIDATOR_COMPLETION_REPORT.md — ✅ production-ready — tags: produc
 ROLES_AND_PERMISSIONS.md — ⚠️ review / no explicit production status — tags: review — lines: 832, words: 3097, headings: 72, links: 13, images: 0, tables: 55
 ROOT_PRODUCTION_STATUS.md — ✅ production-ready — tags: production, production-ready — lines: 3529, words: 20723, headings: 24, links: 0, images: 0, tables: 0
 ROOT_production_STATUS.md — ⚠️ mixed production markers — tags: mixed, nonproduction, production, review — lines: 10562, words: 78877, headings: 23, links: 0, images: 0, tables: 0
-ROUTES.md — ⚠️ review / no explicit production status — tags: review — lines: 358, words: 1382, headings: 7, links: 3, images: 0, tables: 0
+ROUTES.md — ✅ production-ready — tags: production, production-ready — lines: 61, words: 181, headings: 11, links: 0, images: 0, tables: 0
 ROUTES_COMPREHENSIVE.md — ✅ production-ready — tags: production, production-ready — lines: 768, words: 2114, headings: 92, links: 10, images: 0, tables: 0
 RSAAPIREADME.md — ⚠️ review / no explicit production status — tags: review — lines: 450, words: 1120, headings: 30, links: 2, images: 0, tables: 0
 S1B_COMPLETION_SUMMARY.md — ✅ production-ready — tags: production, production-ready — lines: 862, words: 2729, headings: 65, links: 0, images: 0, tables: 10
@@ -967,6 +971,7 @@ UI_FEATURES_VALIDATION_COMPLETE.md — ✅ production-ready — tags: production
 UI_SAMPLES.md — ⚠️ review / no explicit production status — tags: review — lines: 328, words: 669, headings: 21, links: 0, images: 0, tables: 0
 UNIVERSAL.md — ⚠️ review / no explicit production status — tags: review — lines: 462, words: 2843, headings: 40, links: 0, images: 0, tables: 39
 UNIVERSALHEALTHRUNNERS.md — ✅ production-ready — tags: production, production-ready — lines: 405, words: 1091, headings: 27, links: 1, images: 0, tables: 0
+UNIVERSALS.md — ❌ needs production implementation — tags: needs-production, nonproduction — lines: 520, words: 1557, headings: 42, links: 10, images: 0, tables: 0
 UNIVERSAL_AUTH.md — ⚠️ review / no explicit production status — tags: review — lines: 470, words: 1292, headings: 39, links: 0, images: 0, tables: 0
 UNLIMITED_RESOURCES.md — ⚠️ review / no explicit production status — tags: review — lines: 191, words: 332, headings: 16, links: 0, images: 0, tables: 0
 UNUSED_API_ENDPOINTS.md — ⚠️ review / no explicit production status — tags: review — lines: 392, words: 907, headings: 22, links: 1, images: 0, tables: 0
@@ -1165,7 +1170,7 @@ docs/validation/PLACEHOLDER_FIX_ACTIONS.md — ✅ production-ready — tags: pr
 docs/workflow_fix_proposals.md — ⚠️ review / no explicit production status — tags: review — lines: 521, words: 1668, headings: 54, links: 2, images: 0, tables: 0
 docs/workflows_remediation.md — ⚠️ review / no explicit production status — tags: review — lines: 442, words: 1243, headings: 37, links: 2, images: 0, tables: 0
 duplicate_api_endpoints_report.md — ⚠️ review / no explicit production status — tags: review — lines: 58, words: 156, headings: 8, links: 0, images: 0, tables: 0
-duplicate_file_audit_report.md — ⚠️ review / no explicit production status — tags: review — lines: 2015, words: 4070, headings: 256, links: 0, images: 0, tables: 0
+duplicate_file_audit_report.md — ⚠️ review / no explicit production status — tags: review — lines: 2022, words: 4084, headings: 256, links: 0, images: 0, tables: 0
 duplicate_files_report.md — ❌ needs production implementation — tags: needs-production, nonproduction — lines: 1121, words: 2321, headings: 140, links: 0, images: 0, tables: 0
 error-fix-summary.md — ✅ production-ready — tags: production, production-ready — lines: 402, words: 927, headings: 26, links: 0, images: 0, tables: 0
 git-lfs-3.5.1/CHANGELOG.md — ❌ needs production implementation — tags: needs-production, nonproduction — lines: 3113, words: 18986, headings: 326, links: 10, images: 0, tables: 0
@@ -1188,7 +1193,6 @@ parallel.md — ✅ production-ready — tags: production, production-ready — 
 placeholder_scan_summary.md — ⚠️ review / no explicit production status — tags: review — lines: 369, words: 879, headings: 20, links: 1, images: 0, tables: 0
 production_deployment/DEPLOYMENT_CHECKLIST.md — ⚠️ review / no explicit production status — tags: review — lines: 375, words: 877, headings: 26, links: 0, images: 0, tables: 0
 pwa_apps/README.md — ⚠️ review / no explicit production status — tags: review — lines: 403, words: 913, headings: 27, links: 1, images: 0, tables: 0
-pwa_apps/q-alpha/README.md — ⚠️ review / no explicit production status — tags: review — lines: 370, words: 826, headings: 21, links: 1, images: 0, tables: 0
 q/AI_ENHANCED_INTELLIGENT_VALIDATION_ARCHITECTURE.md — ⚠️ review / no explicit production status — tags: review — lines: 790, words: 2508, headings: 75, links: 0, images: 0, tables: 0
 q/BALANCES.md — ✅ production-ready — tags: production, production-ready — lines: 657, words: 2417, headings: 61, links: 0, images: 0, tables: 30
 q.md — ⚠️ review / no explicit production status — tags: review — lines: 375, words: 1845, headings: 19, links: 0, images: 0, tables: 0

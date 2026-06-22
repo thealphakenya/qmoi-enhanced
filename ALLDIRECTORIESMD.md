@@ -1,6 +1,6 @@
 # ALLDIRECTORIESMD - Directory Documentation Index
 
-**Generated:** 2026-06-22T19:06:14.027417Z
+**Generated:** 2026-06-22T22:53:46.247574Z
 
 This file indexes all directory-specific documentation and tracks the production readiness of each directory's .md files.
 
@@ -129,7 +129,7 @@ Each directory in the repository has associated `.md` files that document its pu
 - Production Ready: Yes ✓
 - Existing .md files: 1/1
 - File Counts:
-  - `scripts`: 1395 files (11 .md)
+  - `scripts`: 1404 files (11 .md)
 
 ## SERVICES
 
@@ -167,7 +167,7 @@ Each directory in the repository has associated `.md` files that document its pu
 - Existing .md files: 1/1
 - File Counts:
   - `src/lib`: 67 files (0 .md)
-  - `lib`: 107 files (0 .md)
+  - `lib`: 124 files (0 .md)
   - `app/lib`: 14 files (0 .md)
 
 ## CONFIG
@@ -219,11 +219,11 @@ Each directory in the repository has associated `.md` files that document its pu
 - ✓ `app/api`
 
 **Documentation Files:**
-- ✓ [API.md](API.md) (2.94 KB)
+- ✓ [API.md](API.md) (26.9 KB)
 - ✓ [APIs_1.md](APIs_1.md) (2560.82 KB)
 - ✓ [APIs_v1.md](APIs_v1.md) (2715.56 KB)
 - ✓ [ENDPOINTS.md](ENDPOINTS.md) (1.96 KB)
-- ✓ [ROUTES.md](ROUTES.md) (21.45 KB)
+- ✓ [ROUTES.md](ROUTES.md) (9.77 KB)
 
 **Status:**
 - Production Ready: Yes ✓
@@ -231,7 +231,7 @@ Each directory in the repository has associated `.md` files that document its pu
 - File Counts:
   - `api`: 1 files (0 .md)
   - `src/api`: 5 files (0 .md)
-  - `app/api`: 616 files (2 .md)
+  - `app/api`: 617 files (2 .md)
 
 ## UI
 
@@ -329,12 +329,12 @@ These scripts generate and update directory .md files:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T19:07:24.519527Z
+- timestamp: 2026-06-22T22:55:24.221501Z
 - production status: ✅ production-ready
 - status tags: production, production-ready
 - lines: 343
 - words: 1130
-- characters: 8197
+- characters: 8196
 - headings: 21
 - links: 31
 - images: 0

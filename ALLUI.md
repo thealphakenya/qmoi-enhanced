@@ -23,15 +23,15 @@
 - `app/master/links/page.tsx` → `/master/links`
 - `app/master/tracks/page.tsx` → `/master/tracks`
 - `app/qalpha/page.tsx` → `/qalpha`
-- `app/qalpha/styles/page.tsx` → `/qalpha/styles`
+- `app/qalpha/styles/.backup/page.tsx` → `/qalpha/styles/.backup`
 - `app/qcity/page.tsx` → `/qcity`
-- `app/qcity/styles/page.tsx` → `/qcity/styles`
+- `app/qcity/styles/.backup/page.tsx` → `/qcity/styles/.backup`
 - `app/qmoi-ai/page.tsx` → `/qmoi-ai`
-- `app/qmoi-ai/styles/page.tsx` → `/qmoi-ai/styles`
+- `app/qmoi-ai/styles/.backup/page.tsx` → `/qmoi-ai/styles/.backup`
 - `app/qmoi-space/page.tsx` → `/qmoi-space`
-- `app/qmoi-space/styles/page.tsx` → `/qmoi-space/styles`
+- `app/qmoi-space/styles/.backup/page.tsx` → `/qmoi-space/styles/.backup`
 - `app/qvillage/page.tsx` → `/qvillage`
-- `app/qvillage/styles/page.tsx` → `/qvillage/styles`
+- `app/qvillage/styles/.backup/page.tsx` → `/qvillage/styles/.backup`
 
 ## Shared UI Components
 
@@ -61,10 +61,8 @@
 - `app/components/Marketplace.tsx`
 - `app/components/MonitoringDashboard.tsx`
 - `app/components/NotificationCenter.tsx`
-- `app/components/PerformanceMonitor.tsx`
 - `app/components/PreviewWindow.tsx`
 - `app/components/QCityErrorManager.tsx`
-- `app/components/QCityThemeProvider.tsx`
 - `app/components/QI.tsx`
 - `app/components/QIStateWindow.tsx`
 - `app/components/QMOIAutoFixDashboard.tsx`
@@ -76,31 +74,18 @@
 - `app/components/ResourceManager.tsx`
 - `app/components/SecurityMonitor.tsx`
 - `app/components/SettingsPanel.tsx`
-- `app/components/SponsoredUsersManager.tsx`
 - `app/components/SupportTicketSystem.tsx`
 - `app/components/TestingAutomationSuite.tsx`
-- `app/components/ThemeCustomizer.tsx`
 - `app/components/TrainingCenter.tsx`
-- `app/components/UserManagementPanel.tsx`
 - `app/components/VisualEnhancement.tsx`
 - `app/components/WalletPanel.tsx`
 - `app/components/WorkflowAutomationEngine.tsx`
 - `app/components/audio/AudioMonitor.tsx`
-- `app/components/auth/AuthStatusCard.tsx`
 - `app/components/auth/BiometricEnrollment.tsx`
-- `app/components/auth/ForgotEmailForm.tsx`
-- `app/components/auth/LoginForm.tsx`
 - `app/components/auth/PrivacyMaskSettings.tsx`
-- `app/components/auth/RegisterForm.tsx`
-- `app/components/auth/ResetPasswordForm.tsx`
-- `app/components/auth/UniversalAuthHub.tsx`
 - `app/components/auth/UniversalRouteGuard.tsx`
 - `app/components/language/LanguageSelector.tsx`
-- `app/components/styles/StylePreviewCard.tsx`
 - `app/components/styles/index.ts`
-- `app/components/theme/ThemeProvider.tsx`
-- `app/components/theme/ThemeSelector.tsx`
-- `app/components/user/UserProfile.tsx`
 - `app/components/wallet/WalletList.tsx`
 - `src/components/@vercel/analytics/next.ts`
 - `src/components/@vercel/analytics/next.tsx`
@@ -128,7 +113,6 @@
 - `src/components/UniversalWindowManager.tsx`
 - `src/components/UsageAnalytics.tsx`
 - `src/components/VersionedStates.tsx`
-- `src/components/VoiceGestureHooks.tsx`
 - `src/components/WindowTelemetryPanel.tsx`
 - `src/components/alpha-q-ai-system.tsx`
 - `src/components/auth/RoleGate.tsx`
@@ -172,12 +156,10 @@
 - `src/components/shared/tools/index.ts`
 - `src/components/shared/ui/AccessibilityAdjuster.tsx`
 - `src/components/shared/ui/AdaptiveTheming.tsx`
-- `src/components/shared/ui/AppShellHeader.tsx`
 - `src/components/shared/ui/PrivacyModeToggle.tsx`
 - `src/components/shared/ui/index.ts`
 - `src/components/shared/voice/VoiceSelector.tsx`
 - `src/components/shared/voice/index.ts`
-- `src/components/ui/use-toast.tsx`
 - `src/components/vercel-analytics-next.ts`
 
 ## Notes
@@ -188,12 +170,12 @@ This inventory is generated from the current UI component and page entrypoint fi
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T19:07:24.759027Z
+- timestamp: 2026-06-22T22:55:24.404822Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 184
-- words: 433
-- characters: 7552
+- lines: 166
+- words: 397
+- characters: 6866
 - headings: 5
 - links: 0
 - images: 0
