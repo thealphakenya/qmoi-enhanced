@@ -1,8 +1,3 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:00.922472 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.181881 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:02.992266 -->
-{
-  "message": "Must have admin rights to Repository.",
-  "documentation_url": "https://docs.github.com/rest/actions/workflow-runs#download-workflow-run-logs",
-  "status": "403"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:f13cc8a25609ec7be74908bb683443a89260c4d4d23d030a1fde1843c8a16d72
+size 342
