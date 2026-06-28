@@ -1,0 +1,79 @@
+{
+  "models": [
+    {
+      "title": "Local Qwen Coder (QMOI Bulk)",
+      "provider": "ollama",
+      "model": "qwen2.5-coder:3b",
+      "systemMessage": "You are an expert AI assistant for QMOI bulk operations. Your specialized role is to:\n\n1. CONSOLIDATE AND MERGE:\n   - Consolidate API documentation (API.md, ENDPOINTS.md, ROUTES.md)\n   - Merge duplicate route handlers and modules\n   - Combine similar implementations into canonical versions\n   - Remove duplicate code while preserving all unique functionality\n\n2. WORK IN BULK:\n   - Process multiple files simultaneously\n   - Maintain consistency across all changes\n   - Update cross-references automatically\n   - Handle large refactorings without losing context\n\n3. FOLLOW BACKLOG:\n   - Work through items from 7.txt, 14.txt, undone.txt, MATCHES.txt systematically\n   - Never skip items\n   - Complete all items in one backlog before moving to next\n   - Update resumefromhere.txt with progress\n\n4. QUALITY STANDARDS:\n   - Maintain production-ready code quality\n   - Include comprehensive error handling\n   - Add logging and monitoring\n   - Write tests for all changes\n   - Update documentation automatically\n\n5. ARCHITECTURE COMPLIANCE:\n   - Follow QMOI architecture patterns\n   - Use universal auth across all apps\n   - Implement consistent API responses\n   - Maintain database schema consistency\n\n6. BULK OPERATION PRIORITIES:\n   1. Universal Auth (login/logout/register/forgot-password/reset-password/email-verification/session-refresh/biometric)\n   2. API Consolidation (merge duplicate API files)\n   3. Route Merging (consolidate duplicate route handlers)\n   4. Documentation Sync (update all markdown files)\n   5. Trading Features (implement from 7.txt backlog)\n   6. Wallet/Account Inventory (complete wallet system)\n\nAlways preserve functionality while improving organization. Work systematically without skipping any items."
+    }
+  ],
+  "tabAutocompleteModel": {
+    "title": "Local Qwen Coder (QMOI Bulk)",
+    "provider": "ollama",
+    "model": "qwen2.5-coder:3b"
+  },
+  "customCommands": [
+    {
+      "name": "bulk-consolidate-api",
+      "prompt": "Consolidate all API documentation files into canonical versions:\n1. Find all API*.md, APIs_*.md, ENDPOINT*.md, ROUTE*.md files\n2. Read current API.md, ENDPOINTS.md, ROUTES.md\n3. Merge all unique endpoints from all files into canonical versions\n4. Remove duplicates while preserving all unique functionality\n5. Update cross-references in UNIVERSAL.md\n6. Generate comprehensive documentation\n\nProvide summary of merged endpoints and consolidated documentation.",
+      "description": "Consolidate API Documentation (Bulk)"
+    },
+    {
+      "name": "bulk-merge-routes",
+      "prompt": "Merge duplicate route handlers across app/api and src/app/api:\n1. Find all duplicate route patterns\n2. Compare implementations side-by-side\n3. Select the most complete/correct version\n4. Merge any unique logic from other versions\n5. Delete duplicate files\n6. Update all imports and references\n7. Test that functionality is preserved\n\nProvide summary of merged routes and any remaining issues.",
+      "description": "Merge Duplicate Route Handlers (Bulk)"
+    },
+    {
+      "name": "bulk-update-docs",
+      "prompt": "Synchronize all markdown documentation with current code:\n1. Check API.md against all route handlers\n2. Check ENDPOINTS.md against all endpoints\n3. Check ROUTES.md against all app routes\n4. Update UNIVERSAL.md with universal auth flows\n5. Update app-specific UI docs (QMOIAIUI.md, QMOISPACEUI.md, QCITYUI.md, QVILLAGEUI.md, QALPHAUI.md)\n6. Fix all broken links\n7. Add missing endpoint documentation\n8. Generate updated markdown files\n\nProvide summary of documentation changes.",
+      "description": "Synchronize All Documentation (Bulk)"
+    },
+    {
+      "name": "bulk-inventory-wallets",
+      "prompt": "Create comprehensive wallet/account/balance inventory:\n1. Find all wallet-related files (*wallet*.md, *wallet*.ts, *wallet*.js)\n2. Find all account-related files (*account*.md, *account*.ts)\n3. Find all balance-related files (*balance*.md, *balance*.ts)\n4. Find all exchange-related files (*exchange*.md, *exchange*.ts)\n5. Find all platform-related files (*platform*.md, *platform*.ts)\n6. Create comprehensive inventory JSON with relationships\n7. Document in WALLET_INVENTORY.md\n\nProvide inventory summary with file counts and key relationships.",
+      "description": "Create Wallet/Account Inventory (Bulk)"
+    },
+    {
+      "name": "bulk-universal-auth",
+      "prompt": "Implement universal authentication across all QMOI apps:\n\n1. IMPLEMENT AUTH FLOWS:\n   - Login (email/password)\n   - Register (new account)\n   - Logout (session cleanup)\n   - Forgot Password (recovery email)\n   - Forgot Email (account recovery)\n   - Reset Password (new password)\n   - Email Verification (confirm email)\n   - Session Refresh (auto-refresh tokens)\n   - Biometric Auth (fingerprint/face ID)\n\n2. ENSURE UNIVERSAL:\n   - Same implementation across QMOI AI, QMOI Space, QCity, QVillage, QAlpha\n   - Consistent UI components\n   - Consistent error messages\n   - Consistent API endpoints\n   - Auto-channel to /universal entry point\n   - Redirect back to target app after auth\n\n3. UPDATE DOCUMENTATION:\n   - Update UNIVERSAL.md with complete auth flow\n   - Update 14.txt tier assignments\n   - Document all endpoints\n   - Add examples and test cases\n\nProvide implementation summary with all new endpoints.",
+      "description": "Implement Universal Auth (Bulk)"
+    },
+    {
+      "name": "bulk-trading-features",
+      "prompt": "Implement comprehensive trading features from 7.txt in bulk:\n\nFEATURES TO IMPLEMENT (in order):\n1. Spot Trading (trend following, mean reversion, momentum, breakout, scalping, swing)\n2. Futures Trading (long/short positions, leverage, liquidation avoidance, hedging)\n3. Options Trading (calls, puts, spreads, hedge)\n4. Grid Trading (auto buy/sell levels, grid adjustment)\n5. Arbitrage (exchange, triangular, statistical, latency)\n6. Market Making (bid/ask orders, spread earning, rebates)\n7. Liquidity Provision (auto add/remove liquidity)\n8. Copy Trading (follow successful traders)\n9. AI Signal Selling (generate buy/sell signals)\n10. Portfolio Management (diversification, rebalancing)\n11. AI Asset Allocation (capital allocation optimization)\n12. Yield Optimization (move funds to best yields)\n13. Staking (auto stake, restake, compare yields)\n14. Lending (earn interest on idle crypto)\n15. Borrowing Optimization (strategic borrowing)\n16. Funding Rate Strategies (earn from funding payments)\n17. Launchpool Participation (auto lock/claim)\n18. Launchpad Participation (evaluate new tokens)\n19. Token Research (whitepaper analysis, tokenomics, team, code)\n20. On-Chain Analytics (whale tracking, exchange flows)\n21. Sentiment Analysis (news/social/dev activity sentiment)\n22. News Trading (rapid reaction to market news)\n23. Risk Management (VaR, volatility, leverage, position closing)\n24. Tax Recording (transaction logging, gains/losses)\n25. AI Fraud Detection (suspicious activity detection)\n26. Cross-Exchange Optimization (best venue routing)\n27. Stablecoin Management (liquidity and risk policies)\n28. Auto-Reinvestment (compound and reallocate)\n29. Performance Analytics (returns, Sharpe ratio, drawdown, win rate)\n30. AI Self-Improvement (learn from trades)\n\nFor each feature:\n- Create production-ready modules\n- Implement proper error handling\n- Add comprehensive logging\n- Write unit tests\n- Document in API.md and ENDPOINTS.md\n\nProvide summary of implemented features.",
+      "description": "Implement Trading Features (Bulk - 30 features)"
+    },
+    {
+      "name": "bulk-theme-integration",
+      "prompt": "Ensure theme system works perfectly across all apps:\n1. Verify ThemeSelector component in all shells\n2. Test dark, light, high-contrast themes\n3. Ensure theme persistence\n4. Verify theme consistency across navigation\n5. Test theme with all UI components\n6. Document theme usage\n\nProvide verification report.",
+      "description": "Verify Theme Integration (Bulk)"
+    },
+    {
+      "name": "bulk-continue-optimization",
+      "prompt": "Optimize Continue integration for bulk operations:\n1. Ensure context preservation across large files\n2. Enable multi-file refactoring\n3. Add bulk operation logging\n4. Create pause/resume capability\n5. Optimize token usage\n6. Add automatic testing after bulk changes\n7. Document best practices\n\nProvide optimization summary.",
+      "description": "Optimize Continue Integration (Bulk)"
+    }
+  ],
+  "slashCommands": [
+    {
+      "name": "context",
+      "description": "Add file context to chat",
+      "prompt": "Add relevant context from:"
+    },
+    {
+      "name": "consolidate",
+      "description": "Start consolidation workflow",
+      "prompt": "I need to consolidate these items. Let me provide the files:"
+    },
+    {
+      "name": "merge",
+      "description": "Start merge workflow",
+      "prompt": "I need to merge these files/routes:"
+    },
+    {
+      "name": "inventory",
+      "description": "Start inventory workflow",
+      "prompt": "I need to inventory these items:"
+    }
+  ]
+}
