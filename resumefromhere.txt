@@ -1,72 +1,67 @@
-Last refreshed: 2026-06-22T22:56:36.779658Z
-Resume update: auto-synced before bulk continuation.
-Resume point: continue from the next pending task after this header.
-Git commit: 970c143595
-Git branch: autosync-backup-20250926-232440
-Repository status: dirty
+QMOI BULK CONTINUATION TRACKER
+==============================
 
-QMOI production READINESS STATUS
-Last Scan: 2026-06-22T22:56:02.374775
-Scan ID: 1782168962
+Last updated: 2026-06-28T19:36:00Z
+Status: paused after bulk workflow refresh
 
-SUMMARY:
-- Total files scanned: 4623
-- Total directories scanned: 821
-- Files with nonproduction markers: 7
-- Total markers found: 9
+MANDATORY BULK ORDER
+--------------------
+1. Review all instructions from 7.txt and 14.txt before any new work.
+2. Merge duplicate modules, routes, docs, and entry points first.
+3. Inventory every wallet, balance, account, exchange, platform, and related markdown file.
+4. Consolidate API, endpoint, route, and directory documentation into canonical files.
+5. Update MERGE.md, TREE.md, API.md, ENDPOINTS.md, ROUTES.md, and all related markdown files.
+6. Verify the repository state, then pause until the next bulk pass.
 
-CURRENT STATE:
-- Status: ⚠️ Nonproduction markers remain. Review undone.txt and MATCHES.txt.
+BULK WORKFLOW SCRIPT
+--------------------
+Run this script to continue in bulk:
+- python3 scripts/auto_continue_resumefromhere.py
 
-NEXT STEPS:
-1. Open undone.txt for detailed marker locations.
-2. Update identified files with production implementations.
-3. Re-run this scanner after fixes.
-4. Keep MATCHES.txt and MATCHES.md synchronized.
+The script must always:
+- refresh this file before and after each bulk run
+- include every instruction from 7.txt and 14.txt in the live task list
+- merge all API/endpoint/route markdown assets into canonical docs
+- work across every relevant wallet/balance/account surface and every related .md file
+- update MERGE.md and TREE.md as part of the same bulk pass
+- preserve the resume file and backup flow without deleting it
 
-BULK WORKFLOW:
-- Run `npm run resume:continue` or `python3 scripts/auto_continue_resumefromhere.py` to execute the bulk fixer and refresh the resume tracker.
-- Run `python3 scripts/auto_continue_resumefromhere_loop.py --until-clean` or `npm run resume:watch` to keep working in bulk automatically until the scan is clean.
-- Run `python3 thorough_production_scanner.py` or `python3 scripts/thorough_production_scanner.py` to scan every file, refresh undone.txt, and regenerate MATCHES files.
-- Only pause when the scan reports zero nonproduction markers.
-- Address high-priority files from undone.txt first, then re-run the scanner.
-- Preserve theme, auth, and universal app consistency during bulk production fixes.
+WORKFLOW TASKS:
+- Work on everything in bulk, in the required order, without skipping any backlog item from 7.txt, 14.txt, undone.txt, MATCHES.txt, or resumefromhere.txt.
+- Keep the system synchronized with the universal auth, theme, QM OI memory flow, finance/trading logic, wallet/balance/account inventory, and route documentation across all apps and portals.
+- Implement and verify universal login/logout/register/forgot-password/forgot-email/reset-password/email-verification/session-refresh/biometric flows everywhere.
+- Make the /universal portal the canonical entry point and auto-channel users back to their target app after auth.
+- Process the trading, finance, Bitget/Binance, revenue, and global-finance backlog from 7.txt in bulk with production-ready modules, routes, docs, and validation.
+- Work through the 7.txt backlog in bulk for spot trading, futures, options, grid, arbitrage, market making, liquidity provision, copy trading, signal selling, portfolio management, asset allocation, yield optimization, staking, lending, borrowing strategy, funding rate strategies, launchpool/launchpad participation, token research, on-chain analytics, sentiment analysis, news trading, risk management, tax recording, fraud detection, cross-exchange optimization, stablecoin management, auto-reinvestment, performance analytics, and AI self-improvement.
+- Prioritize canonical finance and trading routes before adding new UI shells or duplicate implementations.
+- Inventory every wallet, balance, account, exchange, platform, and related markdown file, then keep docs and route inventories aligned with the real implementation.
+- Consolidate all API, endpoint, route, and directory documentation into canonical files: API.md, ENDPOINTS.md, ROUTES.md, and TREE.md.
+- Merge all markdown files related to API, endpoints, routes, wallets, balances, accounts, and directories into the canonical documentation set, including files with those terms in their names or contents.
+- Ensure API.md contains all APIs discovered in APIs_1.md, APIs_v1.md, API*.md, and every other relevant .md or source file across the repository.
+- Ensure ENDPOINTS.md contains every endpoint discovered in all .md files, code, and route definitions across the repository.
+- Ensure ROUTES.md contains every route discovered in all .md files, code, and app entry points across the repository.
+- Update MERGE.md to describe the merge strategy for API files, endpoint files, route files, directories, and all source files across .js, .jsx, .ts, .tsx, .json, .py, .yml, and other file types.
+- Update TREE.md to reflect the canonical tree, merged directories, and the current bulk consolidation plan.
+- Update all docs, endpoints, app shell UI documentation, and cross-references while fixing production markers.
+- Generate and refresh ALLMDFILESREFS.md with per-file markdown production status annotations.
+- Ensure every markdown file in ALLMDFILESREFS.md is reviewed and marked production-ready, or tagged for follow-up fixes.
+- Keep HOOKS.md, WEBHOOKS.md, ALLHOOKSWEBHOOKS.md, TREE.md, API.md, APIs_1.md, ENDPOINTS.md, ROUTES.md, STYLES.md, UNIVERSAL.md, QMOIAIUI.md, QMOISPACEUI.md, QCITYUI.md, QVILLAGEUI.md, QALPHAUI.md, FINANCIALMANAGER.md, QMOIMODEL.md, MERGE.md, and all other relevant .md files synchronized.
+- Apply Q Lion validation blocks and metadata to all .md files in the repository while continuing in bulk.
+- Validate Markdown, links, YAML, app manifests, and API documentation in a single bulk run and record outputs under .qmoi_validation/.
+- Include Qstore and Qcamera platform/device coverage in the bulk task list and resume tracker.
+- Verify every Qstore app listing includes a custom icon, feature summary, and platform-aware download link.
+- Refresh resumefromhere.txt before and after each bulk run so the resume tracker is always current.
+- Run scripts/merge_executor.py during bulk continuation to keep merge consolidation planning active and synced.
+- Keep merge phase statuses visible in resumefromhere.txt using merge execution summaries.
+- Merge duplicate API endpoints and route implementations only after copying unique logic into canonical sources.
+- Verify duplicate app entry points, legacy PWA HTML fallbacks, and stale route handlers are cleaned in sync with docs.
+- Keep MERGE.md updated whenever merge discovery, canonical app changes, or bulk consolidation work occurs.
+- Always update API.md, ENDPOINTS.md, ROUTES.md, TREE.md, and MERGE.md after any route, app entry point, wallet, balance, account, or merge change.
+- Use scripts/consolidate_api_endpoints.py to regenerate API, endpoint, and route docs whenever routes or APIs change.
+- Preserve every backlog item from 14.txt, undone.txt, MATCHES.txt, and resumefromhere.txt while working in bulk.
+- Never skip a new task that appears during a bulk run; add it to this file and the live task list immediately.
 
-TASKS FROM 14.txt:
-- BUILD UNIVERSAL AUTH/BIOMETRIC FEATURES
-- Ensure login/logout/register work across all QMOI apps
-- Implement forgot-password, forgot-email, reset-password flows
-- Add email-verification functionality
-- Integrate biometric authentication
-- Implement session-refresh mechanism
-- Make auth universal with consistent UI and naming
-- UNIFIED AUTH ACROSS ALL APPS
-- QMOI AI: /qmoi-ai
-- QMOI Space: /qmoi-space
-- QCity: /qcity
-- QVillage: /qvillage
-- QAlpha: /qalpha
-- Universal Portal: /universal (first entry point)
-- DOCUMENTATION SYNCHRONIZATION
-- API.md
-- APIs_1.md
-- ENDPOINTS.md
-- ROUTES.md
-- Update all app-specific style docs (QMOIAIUI.md, QMOISPACEUI.md, QCITYUI.md, QVILLAGEUI.md, QALPHAUI.md)
-- ... and 225 more tasks from 14.txt
-
-TASKS FROM resumefromhere.txt:
-- Review marker summary and remediation plan
-- Run safe bulk production fixer if any markers remain
-- Re-run scanner to verify final production readiness
-
-MARKER SUMMARY:
-- UNIMPLEMENTED: 7
-- IN_PROGRESS: 2
-
-TRACKING FILES UPDATED:
-- resumefromhere.txt
-- INSTANCES.md
-- MATCHES.txt
-- MATCHES.md
-- undone.txt
+PAUSE STATE
+----------
+- Bulk workflow has been refreshed and the tracker is now explicit about the full consolidation scope.
+- The next pass should continue only after the merge, documentation, and tree updates are reviewed.

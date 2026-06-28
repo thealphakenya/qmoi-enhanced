@@ -367,12 +367,12 @@ CNY/USD: $50M exposure (hedge 60%)
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:26.066426Z
-- production status: ⚠️ review / no explicit production status
-- status tags: review
+- timestamp: 2026-06-28T19:36:36.841484Z
+- production status: ❌ needs production implementation
+- status tags: needs-production, nonproduction
 - lines: 381
-- words: 1138
-- characters: 8051
+- words: 1136
+- characters: 8068
 - headings: 42
 - links: 0
 - images: 0

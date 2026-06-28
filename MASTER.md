@@ -59,12 +59,12 @@ Master permissions available in `app/hooks/useAuth.ts`:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:27.285131Z
-- production status: ⚠️ review / no explicit production status
-- status tags: review
+- timestamp: 2026-06-28T19:36:38.080379Z
+- production status: ❌ needs production implementation
+- status tags: needs-production, nonproduction
 - lines: 73
-- words: 309
-- characters: 2133
+- words: 307
+- characters: 2150
 - headings: 10
 - links: 0
 - images: 0

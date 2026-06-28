@@ -1,6 +1,6 @@
 # Duplicate API Endpoint Report
 
-Generated: 2026-06-22T22:50:28.643085Z
+Generated: 2026-06-28T19:35:59.439732Z
 
 Total route files scanned: 307
 Total unique endpoints: 302
@@ -44,15 +44,15 @@ Duplicate endpoint groups: 5
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:42.238532Z
+- timestamp: 2026-06-28T19:36:51.514581Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 58
-- words: 156
-- characters: 1670
-- headings: 8
+- lines: 40
+- words: 84
+- characters: 1206
+- headings: 7
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: present
+- lion validation block: inserted
 <!-- LION_VALIDATION_END -->

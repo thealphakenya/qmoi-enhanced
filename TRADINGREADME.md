@@ -12,12 +12,12 @@ title: "Q-city Trading System"
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:30.353269Z
-- production status: ⚠️ review / no explicit production status
-- status tags: review
+- timestamp: 2026-06-28T19:36:42.018499Z
+- production status: ❌ needs production implementation
+- status tags: needs-production, nonproduction
 - lines: 1488
-- words: 4215
-- characters: 36553
+- words: 4213
+- characters: 36570
 - headings: 84
 - links: 1
 - images: 0

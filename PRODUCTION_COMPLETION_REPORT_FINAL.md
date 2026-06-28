@@ -384,12 +384,12 @@ Your QMOI-Enhanced application is now:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:27.674243Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:38.532862Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 398
-- words: 1325
-- characters: 10519
+- words: 1329
+- characters: 10540
 - headings: 53
 - links: 0
 - images: 0

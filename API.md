@@ -1,6 +1,6 @@
 # API Documentation
 
-**Last Generated:** 2026-06-22T22:53:46.991400Z
+**Last Generated:** 2026-06-28T19:35:56.942994Z
 
 This is the main API documentation file. It consolidates all API endpoints, routes, and related documentation from APIs_1.md, ENDPOINTS.md, and ROUTES.md.
 
@@ -11,6 +11,117 @@ The QMOI system provides multiple API access methods:
 - GraphQL APIs for flexible data queries
 - WebSocket APIs for real-time communication
 - Application routes for frontend navigation
+- **Local Ollama AI API** (free, unlimited, persistent)
+
+## 🤖 Local Ollama AI API (Production-Grade Free Agent)
+
+**Base URL:** `http://localhost:11434`
+
+### Description
+Local AI model server running on your Codespace. Provides unlimited, cost-free AI assistance with zero data leakage.
+
+**Model:** `qwen2.5-coder:3b` (2GB, ~3 seconds first response, <100ms cached)
+
+### Endpoints
+
+#### GET /api/tags
+List all available models and metadata.
+
+**Response:**
+```json
+{
+  "models": [
+    {
+      "name": "qwen2.5-coder:3b:latest",
+      "modified_at": "2024-01-15T10:30:00Z",
+      "size": 2000000000,
+      "digest": "sha256:abc123..."
+    }
+  ]
+}
+```
+
+#### POST /api/generate
+Generate completions from a prompt (streaming or non-streaming).
+
+**Request:**
+```json
+{
+  "model": "qwen2.5-coder:3b",
+  "prompt": "write a function that returns hello world",
+  "stream": false,
+  "temperature": 0.7,
+  "top_p": 0.9
+}
+```
+
+**Response (stream=false):**
+```json
+{
+  "model": "qwen2.5-coder:3b",
+  "response": "function helloWorld() {\n  return 'Hello, World!';\n}",
+  "done": true,
+  "context": [1, 2, 3, ...],
+  "total_duration": 2500000000,
+  "load_duration": 50000000,
+  "prompt_eval_count": 15,
+  "eval_count": 20
+}
+```
+
+#### POST /api/chat
+Chat interface (similar to OpenAI chat completion).
+
+**Request:**
+```json
+{
+  "model": "qwen2.5-coder:3b",
+  "messages": [
+    {
+      "role": "user",
+      "content": "How do I center a div in CSS?"
+    }
+  ],
+  "stream": false
+}
+```
+
+**Response:**
+```json
+{
+  "model": "qwen2.5-coder:3b",
+  "created_at": "2024-01-15T10:30:00Z",
+  "message": {
+    "role": "assistant",
+    "content": "To center a div in CSS:\n\n1. Flexbox: `display: flex; justify-content: center; align-items: center;`\n2. Grid: `display: grid; place-items: center;`\n3. Absolute positioning: `position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);`"
+  },
+  "done": true,
+  "eval_count": 45,
+  "prompt_eval_count": 20
+}
+```
+
+### Usage with Continue Extension
+
+Configure in Continue's `config.json`:
+```json
+{
+  "models": [
+    {
+      "title": "Local Qwen Coder",
+      "provider": "ollama",
+      "model": "qwen2.5-coder:3b"
+    }
+  ]
+}
+```
+
+### Environment Variables
+
+- `OLLAMA_KEEP_ALIVE`: `-1` (keeps model loaded indefinitely)
+- `OLLAMA_FLASH_ATTENTION`: `1` (optimized inference)
+
+---
 
 ## API Access Methods
 
@@ -23,8 +134,6 @@ REST APIs provide standard HTTP endpoints for CRUD operations and business logic
 #### Endpoints
 
 - `GET    /config` (defined in `api/qcity.ts`)
-- `GET    /links/FUNCTIONAL` (defined in `src/api/routes/links-validation.ts`)
-- `GET    /links/warnings` (defined in `src/api/routes/links-validation.ts`)
 - `GET    /logs` (defined in `api/qcity.ts`)
 - `GET    /notifications` (defined in `api/qcity.ts`)
 - `GET    /resources` (defined in `api/qcity.ts`)
@@ -88,7 +197,6 @@ These are the API route files exposed by Next.js under `app/api` and `src/app/ap
 - `/api/auth/forgot-email` (defined in `app/api/auth/forgot-email/route.ts`)
 - `/api/auth/forgot-password` (defined in `app/api/auth/forgot-password/route.ts`)
 - `/api/auth/login` (defined in `app/api/auth/login/route.ts`)
-- `/api/auth/logout` (defined in `app/api/auth/logout.ts`)
 - `/api/auth/me` (defined in `app/api/auth/me/route.ts`)
 - `/api/auth/memory` (defined in `app/api/auth/memory/route.ts`)
 - `/api/auth/oauth/[provider]` (defined in `src/app/api/auth/oauth/[provider]/route.ts`)
@@ -391,8 +499,8 @@ Documentation: See [WEBHOOKS.md](WEBHOOKS.md)
 
 ## API Status
 
-- REST Endpoints: 15 documented
-- Next.js API Routes: 323 documented
+- REST Endpoints: 13 documented
+- Next.js API Routes: 322 documented
 - GraphQL Endpoints: _To be documented_
 - WebSocket Endpoints: _To be documented_
 - Application Routes: _To be consolidated_
@@ -415,15 +523,15 @@ python3 scripts/auto_update_allmdfilesrefs.py
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:24.445843Z
-- production status: ⚠️ review / no explicit production status
-- status tags: review
-- lines: 429
-- words: 2006
-- characters: 27535
-- headings: 14
+- timestamp: 2026-06-28T19:36:35.447917Z
+- production status: ❌ needs production implementation
+- status tags: needs-production, nonproduction
+- lines: 408
+- words: 1917
+- characters: 26851
+- headings: 13
 - links: 6
 - images: 0
 - tables: 0
-- lion validation block: present
+- lion validation block: inserted
 <!-- LION_VALIDATION_END -->

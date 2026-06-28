@@ -565,12 +565,12 @@ For more information, see the full documentation in the repository root.
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:27.719566Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:38.591964Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 579
-- words: 1789
-- characters: 13035
+- words: 1793
+- characters: 13056
 - headings: 190
 - links: 0
 - images: 0

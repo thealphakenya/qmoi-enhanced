@@ -20,8 +20,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CONTINUE_SCRIPT = ROOT / "scripts" / "auto_continue_resumefromhere.py"
 RESUME_FILE = ROOT / "resumefromhere.txt"
-DEFAULT_INTERVAL = int(os.getenv("RESUME_MONITOR_INTERVAL", "300"))
-DEFAULT_MAX_RETRIES = int(os.getenv("RESUME_MONITOR_RETRIES", "3"))
+DEFAULT_INTERVAL = int(os.getenv("RESUME_MONITOR_INTERVAL", "60"))
+DEFAULT_MAX_RETRIES = int(os.getenv("RESUME_MONITOR_RETRIES", "2"))
 
 running = True
 
@@ -66,6 +66,14 @@ def run_continue_script(max_retries: int) -> bool:
     for attempt in range(1, max_retries + 1):
         try:
             print(f"[{datetime.now().isoformat()}] Running auto-continue script (attempt {attempt}/{max_retries})...")
+            # Refresh resumefromhere header before invoking the continue script
+            AUTUPDATE = ROOT / 'scripts' / 'autoupdate_resume.py'
+            if AUTUPDATE.exists():
+                try:
+                    subprocess.run([sys.executable, str(AUTUPDATE)], cwd=ROOT, check=True)
+                except Exception:
+                    print('Warning: autoupdate_resume.py failed; proceeding to continue script')
+
             subprocess.run([sys.executable, str(CONTINUE_SCRIPT)], cwd=ROOT, check=True)
             return True
         except subprocess.CalledProcessError as exc:

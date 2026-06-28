@@ -8,12 +8,12 @@ quantum-enabled: true
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:29.235593Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:40.484493Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 970
-- words: 2913
-- characters: 21126
+- words: 2917
+- characters: 21147
 - headings: 20
 - links: 0
 - images: 0

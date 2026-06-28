@@ -336,12 +336,12 @@ Link to related documentation, APIs, and system artifacts.
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:30.079206Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:41.762732Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 350
-- words: 1249
-- characters: 8912
+- words: 1253
+- characters: 8933
 - headings: 36
 - links: 0
 - images: 0

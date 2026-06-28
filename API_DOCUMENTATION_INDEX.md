@@ -131,12 +131,12 @@ All API endpoints are organized under `/api/` with the following structure:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:24.476514Z
-- production status: ⚠️ review / no explicit production status
-- status tags: review
+- timestamp: 2026-06-28T19:36:35.471833Z
+- production status: ❌ needs production implementation
+- status tags: needs-production, nonproduction
 - lines: 145
-- words: 620
-- characters: 5111
+- words: 618
+- characters: 5128
 - headings: 20
 - links: 22
 - images: 0

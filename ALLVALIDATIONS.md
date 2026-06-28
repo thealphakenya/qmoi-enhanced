@@ -34,9 +34,9 @@ This file provides an index of the repository's validation-focused documentation
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:24.419020Z
-- production status: ⚠️ review / no explicit production status
-- status tags: review
+- timestamp: 2026-06-28T19:36:35.420508Z
+- production status: ❌ needs production implementation
+- status tags: needs-production, nonproduction
 - lines: 48
 - words: 295
 - characters: 2283

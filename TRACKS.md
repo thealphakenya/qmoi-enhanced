@@ -210,12 +210,12 @@ title: "TRACKS.md"
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:30.339858Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:42.003484Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 1697
-- words: 5090
-- characters: 48492
+- words: 5094
+- characters: 48513
 - headings: 113
 - links: 20
 - images: 0

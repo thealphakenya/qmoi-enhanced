@@ -434,12 +434,12 @@ Routes by Access Level:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:42.156047Z
-- production status: ⚠️ review / no explicit production status
-- status tags: review
+- timestamp: 2026-06-28T19:36:51.440365Z
+- production status: ❌ needs production implementation
+- status tags: needs-production, nonproduction
 - lines: 448
-- words: 1691
-- characters: 12019
+- words: 1689
+- characters: 12036
 - headings: 73
 - links: 0
 - images: 0

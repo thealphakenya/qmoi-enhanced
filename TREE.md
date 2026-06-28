@@ -78,6 +78,13 @@ Shared resources and cross-app dependencies
 Operational note: quantum features are annotated in inventories (`ALLMDFILESREFS.md`, `ALLAUTO.md`, `API.md`, `ENDPOINTS.md`, `ROUTES.md`) with `quantum-enabled` flags to help discoverability and gating.
 - API routes for auth and memory live under `app/api/*` (preferred) and legacy duplicates may exist under `src/app/api/*` or `app/api/*` elsewhere.
 
+Bulk consolidation and documentation sync
+----------------------------------------
+- Keep the canonical app tree in sync with the merge workflow and update TREE.md whenever directories, entry points, routes, wallets, balances, accounts, or documentation clusters are consolidated.
+- Treat API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, and the wallet/balance/account markdown docs as canonical outputs of the bulk merge pass.
+- When a directory or module is merged, update the relevant entry points, route references, and markdown docs in the same pass.
+- Inventory all wallets, balances, accounts, exchanges, payment providers, and finance-related markdown files and reflect the current canonical state in TREE.md.
+
 Developer instructions
 ----------------------
 1) Run type-check and build checks
@@ -154,9 +161,9 @@ Created by automation: June 11, 2026
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:30.358690Z
-- production status: ⚠️ review / no explicit production status
-- status tags: review
+- timestamp: 2026-06-28T19:36:42.022343Z
+- production status: ❌ needs production implementation
+- status tags: needs-production, nonproduction
 - lines: 168
 - words: 1076
 - characters: 9766

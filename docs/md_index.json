@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-06-22T22:55:43.281537Z",
+  "timestamp": "2026-06-28T19:30:45.973824Z",
   "root": "/workspaces/qmoi-enhanced",
   "apply": true,
-  "total_files_scanned": 1242,
-  "updated_files": 1242,
+  "total_files_scanned": 1244,
+  "updated_files": 1244,
   "results": [
     {
       "path": "/workspaces/qmoi-enhanced/.devcontainer/README.md",
@@ -988,6 +988,12 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/CONSOLIDATION_ANALYSIS.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/CONSOLIDATION_EXECUTION_SUMMARY.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/CONSOLIDATION_EXECUTION_SUMMARY.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/CONTAINER_ORCHESTRATION.md",
@@ -2584,6 +2590,12 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/PHASE5_COMPLETION_SUMMARY.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/PHASES_1-3_COMPLETION_REPORT.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/PHASES_1-3_COMPLETION_REPORT.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/PHASES_24_26_IMPLEMENTATION.md",

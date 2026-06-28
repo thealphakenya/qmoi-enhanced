@@ -13,12 +13,12 @@ title: "LION Features (detailed)"
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:42.113860Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:51.390493Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 480
-- words: 1555
-- characters: 12841
+- words: 1559
+- characters: 12862
 - headings: 29
 - links: 1
 - images: 0

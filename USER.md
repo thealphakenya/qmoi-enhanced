@@ -42,12 +42,12 @@ User permissions defined in `app/hooks/useAuth.ts`:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:30.477293Z
-- production status: ⚠️ review / no explicit production status
-- status tags: review
+- timestamp: 2026-06-28T19:36:42.114543Z
+- production status: ❌ needs production implementation
+- status tags: needs-production, nonproduction
 - lines: 56
-- words: 231
-- characters: 1568
+- words: 229
+- characters: 1585
 - headings: 7
 - links: 0
 - images: 0

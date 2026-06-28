@@ -18,11 +18,12 @@
     "-c",
     "mkdir -p /workspace/logs /workspace/STABLE /workspace/.cache /workspace/.vscode-server"
   ],
-  "postCreateCommand": "bash .prodcontainer/prodcontainer-init.sh",
+  "postCreateCommand": "bash .prodcontainer/prodcontainer-init.sh && curl -fsSL https://ollama.com/install.sh | sh && ollama serve > /dev/null 2>&1 & sleep 5 && ollama pull qwen2.5-coder:3b",
   "updateContentCommand": "bash .prodcontainer/prodcontainer-update.sh",
   "customizations": {
     "vscode": {
       "extensions": [
+        "continue.continue",
         "esbenp.prettier-vscode",
         "dbaeumer.vscode-eslint",
         "GitHub.copilot",
@@ -32,6 +33,7 @@
         "eamodio.gitlens"
       ],
       "settings": {
+        "continue.telemetry": false,
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "extensions.ignoreRecommendations": false,
@@ -62,7 +64,8 @@
     3000,
     5432,
     6379,
-    8080
+    8080,
+    11434
   ],
   "portsAttributes": {
     "3000": {
@@ -80,13 +83,22 @@
     "8080": {
       "label": "RELEASE/production",
       "onAutoForward": "notify"
+    },
+    "11434": {
+      "label": "Ollama AI API",
+      "onAutoForward": "notify"
     }
   },
   "remoteUser": "node",
   "mounts": [
     "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,readonly",
-    "source=${localEnv:HOME}/.gitconfig,target=/home/node/.gitconfig,type=bind,readonly"
+    "source=${localEnv:HOME}/.gitconfig,target=/home/node/.gitconfig,type=bind,readonly",
+    "source=ollama_data,target=/root/.ollama,type=volume"
   ],
+  "containerEnv": {
+    "OLLAMA_KEEP_ALIVE": "-1",
+    "OLLAMA_FLASH_ATTENTION": "1"
+  },
   "shutdownAction": "stopContainer",
   "production": true,
   "RELEASE": false,

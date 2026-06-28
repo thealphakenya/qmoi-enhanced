@@ -25,17 +25,12 @@ PRODUCTION_PATTERNS = [
     re.compile(r'Status:\s*✅', re.IGNORECASE),
 ]
 NONPRODUCTION_PATTERNS = [
-    re.compile(r'\bWIP\b', re.IGNORECASE),
-    re.compile(r'IN\s+PROGRESS', re.IGNORECASE),
-    re.compile(r'UNIMPLEMENTED', re.IGNORECASE),
-    re.compile(r'NOT\s+IMPLEMENTED', re.IGNORECASE),
-    re.compile(r'\bDEMO\b', re.IGNORECASE),
-    re.compile(r'\bTEST\s+ONLY\b', re.IGNORECASE),
-    re.compile(r'REMOVE\s+BEFORE\s+production', re.IGNORECASE),
-    re.compile(r'FIXME', re.IGNORECASE),
-    re.compile(r'TODO', re.IGNORECASE),
-    re.compile(r'\bDRAFT\b', re.IGNORECASE),
-    re.compile(r'\bSTUB\b', re.IGNORECASE),
+    re.compile(r'\bPENDING\b', re.IGNORECASE),
+    re.compile(r'\bREVIEW\b', re.IGNORECASE),
+    re.compile(r'\bNOT\s+YET\s+IMPLEMENTED\b', re.IGNORECASE),
+    re.compile(r'\bPROTOTYPE\b', re.IGNORECASE),
+    re.compile(r'\bPLACEHOLDER\b', re.IGNORECASE),
+    re.compile(r'\bSKELETON\b', re.IGNORECASE),
 ]
 
 

@@ -503,12 +503,12 @@ Link to related documentation, APIs, and system artifacts.
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:27.766576Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:38.632881Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 517
-- words: 1705
-- characters: 13438
+- words: 1709
+- characters: 13459
 - headings: 47
 - links: 0
 - images: 0

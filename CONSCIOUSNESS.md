@@ -341,12 +341,12 @@ curl -X GET '/api/consciousness/memory/search?q=dashboard' \
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:26.284751Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:37.065157Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 355
-- words: 1619
-- characters: 12363
+- words: 1623
+- characters: 12384
 - headings: 35
 - links: 0
 - images: 0

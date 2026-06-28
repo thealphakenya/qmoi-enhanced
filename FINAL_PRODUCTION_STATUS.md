@@ -382,12 +382,12 @@ For daily operations, see `production_OPERATIONS_HANDBOOK.md`.
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:26.896715Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:37.688455Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 396
-- words: 1379
-- characters: 10557
+- words: 1383
+- characters: 10578
 - headings: 56
 - links: 0
 - images: 0

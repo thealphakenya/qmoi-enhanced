@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import List, Optional
 import os
 import tempfile
+import time
 
 ROOT = Path(__file__).resolve().parents[1]
 RESUME_FILE = ROOT / "resumefromhere.txt"
@@ -127,10 +128,12 @@ def extract_tasks_from_markdown(content: str) -> List[str]:
 def update_resume_tasks_block() -> None:
     resume_content = load_text_file(RESUME_FILE)
     fourteen_content = load_text_file(ROOT / '14.txt')
+    seven_content = load_text_file(ROOT / '7.txt')
     resume_tasks = extract_tasks_from_markdown(resume_content)
     fourteen_tasks = extract_tasks_from_markdown(fourteen_content)
+    seven_tasks = extract_tasks_from_markdown(seven_content)
     merged_tasks = []
-    for source_task in fourteen_tasks + resume_tasks:
+    for source_task in fourteen_tasks + seven_tasks + resume_tasks:
         if source_task not in merged_tasks:
             merged_tasks.append(source_task)
 
@@ -139,27 +142,38 @@ def update_resume_tasks_block() -> None:
 
     task_block_lines = [
         'WORKFLOW TASKS:',
-        '- Address all items in 14.txt and resumefromhere.txt with production implementations.',
-        '- Keep the system synchronized with the universal auth, theme, and QM OI memory flow.',
-        '- Update all docs, endpoints, and app shell UI documentation while fixing production markers.',
+        '- Work on everything in bulk, in the required order, without skipping any backlog item from 7.txt, 14.txt, undone.txt, MATCHES.txt, or resumefromhere.txt.',
+        '- Keep the system synchronized with the universal auth, theme, QM OI memory flow, finance/trading logic, wallet/balance/account inventory, and route documentation across all apps and portals.',
+        '- Implement and verify universal login/logout/register/forgot-password/forgot-email/reset-password/email-verification/session-refresh/biometric flows everywhere.',
+        '- Make the /universal portal the canonical entry point and auto-channel users back to their target app after auth.',
+        '- Process the trading, finance, Bitget/Binance, revenue, and global-finance backlog from 7.txt in bulk with production-ready modules, routes, docs, and validation.',
+        '- Work through the 7.txt backlog in bulk for spot trading, futures, options, grid, arbitrage, market making, liquidity provision, copy trading, signal selling, portfolio management, asset allocation, yield optimization, staking, lending, borrowing strategy, funding rate strategies, launchpool/launchpad participation, token research, on-chain analytics, sentiment analysis, news trading, risk management, tax recording, fraud detection, cross-exchange optimization, stablecoin management, auto-reinvestment, performance analytics, and AI self-improvement.',
+        '- Prioritize canonical finance and trading routes before adding new UI shells or duplicate implementations.',
+        '- Inventory every wallet, balance, account, exchange, platform, and related markdown file, then keep docs and route inventories aligned with the real implementation.',
+        '- Consolidate all API, endpoint, route, and directory documentation into canonical files: API.md, ENDPOINTS.md, ROUTES.md, and TREE.md.',
+        '- Merge all markdown files related to API, endpoints, routes, wallets, balances, accounts, and directories into the canonical documentation set, including files with those terms in their names or contents.',
+        '- Ensure API.md contains all APIs discovered in APIs_1.md, APIs_v1.md, API*.md, and every other relevant .md or source file across the repository.',
+        '- Ensure ENDPOINTS.md contains every endpoint discovered in all .md files, code, and route definitions across the repository.',
+        '- Ensure ROUTES.md contains every route discovered in all .md files, code, and app entry points across the repository.',
+        '- Update MERGE.md to describe the merge strategy for API files, endpoint files, route files, directories, and all source files across .js, .jsx, .ts, .tsx, .json, .py, .yml, and other file types.',
+        '- Update TREE.md to reflect the canonical tree, merged directories, and the current bulk consolidation plan.',
+        '- Update all docs, endpoints, app shell UI documentation, and cross-references while fixing production markers.',
         '- Generate and refresh ALLMDFILESREFS.md with per-file markdown production status annotations.',
         '- Ensure every markdown file in ALLMDFILESREFS.md is reviewed and marked production-ready, or tagged for follow-up fixes.',
-        '- Keep `HOOKS.md`, `WEBHOOKS.md`, `ALLHOOKSWEBHOOKS.md`, and `TREE.md` aligned with every production update.',
-        '- Update `API.md`, `APIs_1.md`, `ENDPOINTS.md`, `ROUTES.md`, and `ALLTESTSAUTOTESTS.md` as documentation changes occur.',
-        '- Apply Q Lion validation blocks and metadata to all `.md` files in the repository while continuing in bulk.',
-        '- Validate Markdown, links, YAML, app manifests, and API documentation in a single bulk run and record outputs under `.qmoi_validation/`.',
+        '- Keep HOOKS.md, WEBHOOKS.md, ALLHOOKSWEBHOOKS.md, TREE.md, API.md, APIs_1.md, ENDPOINTS.md, ROUTES.md, STYLES.md, UNIVERSAL.md, QMOIAIUI.md, QMOISPACEUI.md, QCITYUI.md, QVILLAGEUI.md, QALPHAUI.md, FINANCIALMANAGER.md, QMOIMODEL.md, MERGE.md, and all other relevant .md files synchronized.',
+        '- Apply Q Lion validation blocks and metadata to all .md files in the repository while continuing in bulk.',
+        '- Validate Markdown, links, YAML, app manifests, and API documentation in a single bulk run and record outputs under .qmoi_validation/.',
         '- Include Qstore and Qcamera platform/device coverage in the bulk task list and resume tracker.',
         '- Verify every Qstore app listing includes a custom icon, feature summary, and platform-aware download link.',
-        '- Refresh `resumefromhere.txt` before and after each bulk run so the resume tracker is always current.',
-        '- Run `scripts/merge_executor.py` during bulk continuation to keep merge consolidation planning active and synced.',
+        '- Refresh resumefromhere.txt before and after each bulk run so the resume tracker is always current.',
+        '- Run scripts/merge_executor.py during bulk continuation to keep merge consolidation planning active and synced.',
         '- Keep merge phase statuses visible in resumefromhere.txt using merge execution summaries.',
-        '- Merge all duplicate API endpoints and route implementations only after copying unique logic into canonical sources.',
-        '- Update `API.md`, `ENDPOINTS.md`, and `ROUTES.md` as soon as route consolidation or duplicate cleanup occurs.',
+        '- Merge duplicate API endpoints and route implementations only after copying unique logic into canonical sources.',
         '- Verify duplicate app entry points, legacy PWA HTML fallbacks, and stale route handlers are cleaned in sync with docs.',
-        '- Keep `MERGE.md` updated whenever merge discovery or canonical app changes occur.',
-        '- Always update `API.md`, `ENDPOINTS.md`, `ROUTES.md`, and `MERGE.md` after any route or app entry point change.',
-        '- Use `scripts/consolidate_api_endpoints.py` to regenerate API, endpoint, and route docs whenever routes or APIs change.',
-        '- Preserve every backlog item from `14.txt`, `undone.txt`, `MATCHES.txt`, and `resumefromhere.txt` while working in bulk.',
+        '- Keep MERGE.md updated whenever merge discovery, canonical app changes, or bulk consolidation work occurs.',
+        '- Always update API.md, ENDPOINTS.md, ROUTES.md, TREE.md, and MERGE.md after any route, app entry point, wallet, balance, account, or merge change.',
+        '- Use scripts/consolidate_api_endpoints.py to regenerate API, endpoint, and route docs whenever routes or APIs change.',
+        '- Preserve every backlog item from 14.txt, undone.txt, MATCHES.txt, and resumefromhere.txt while working in bulk.',
         '- Never skip a new task that appears during a bulk run; add it to this file and the live task list immediately.',
     ]
     task_block_lines += [f'- {task}' for task in merged_tasks[:50]]
@@ -193,6 +207,37 @@ def update_resume_tasks_block() -> None:
                 Path(tmppath).unlink()
             except Exception:
                 pass
+
+
+def create_resume_backup() -> None:
+    """Create a timestamped backup of resumefromhere.txt before bulk operations."""
+    try:
+        backup_dir = ROOT / 'var' / 'backups'
+        backup_dir.mkdir(parents=True, exist_ok=True)
+
+        if RESUME_FILE.exists():
+            resume_content = RESUME_FILE.read_text(encoding='utf-8')
+        else:
+            resume_content = ''
+            latest_backup = None
+            backups = sorted(backup_dir.glob('resumefromhere.*.bak'), key=lambda p: p.stat().st_mtime, reverse=True)
+            if backups:
+                latest_backup = backups[0]
+                try:
+                    resume_content = latest_backup.read_text(encoding='utf-8')
+                except Exception:
+                    resume_content = ''
+
+        ts = datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')
+        backup_path = backup_dir / f'resumefromhere.{ts}.bak'
+        backup_path.write_text(resume_content, encoding='utf-8')
+
+        if not RESUME_FILE.exists() and resume_content:
+            RESUME_FILE.write_text(resume_content, encoding='utf-8')
+
+        print(f"✓ Created resumefromhere backup: {backup_path}")
+    except Exception as exc:
+        print(f"Warning: could not create resumefromhere backup: {exc}")
 
 
 def run_command(command: list[str], description: str) -> bool:
@@ -250,20 +295,75 @@ def update_merge_execution_summary() -> None:
     print("✓ Updated resumefromhere.txt with the latest merge execution summary")
 
 
+def write_merge_md_from_report() -> None:
+    """If a merge execution report exists, write or update MERGE.md with an ordered plan
+    so resumefromhere and MERGE.md stay synchronized."""
+    report_path = ROOT / ".qmoi_validation" / "merge_execution_report.json"
+    merge_md = ROOT / "MERGE.md"
+    if not report_path.exists():
+        return
+
+    try:
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+    except Exception:
+        return
+
+    lines = ["# MERGE Plan (auto-generated)", "\n"]
+    phases = report.get("phases", {})
+    order = report.get("phase_order", []) or list(phases.keys())
+    lines.append("## Ordered Merge Phases")
+    for i, phase in enumerate(order, start=1):
+        info = phases.get(phase, {})
+        status = info.get("status", "PENDING")
+        desc = info.get("description", "")
+        lines.append(f"{i}. **{phase}** — {status} {('- ' + desc) if desc else ''}")
+
+    stats = report.get("statistics", {})
+    if stats:
+        lines.append('\n')
+        lines.append('## Statistics')
+        for k, v in stats.items():
+            lines.append(f"- {k}: {v}")
+
+    merge_md.write_text('\n'.join(lines), encoding='utf-8')
+    print("✓ Wrote MERGE.md from merge execution report")
+
+
 DUPLICATE_FILE_AUDIT_SCRIPT = ROOT / "scripts" / "duplicate_file_audit.py"
 MERGE_DISCOVERY_SCANNER_SCRIPT = ROOT / "scripts" / "merge_discovery_scanner.py"
 
 
-def run_merge_orchestration() -> None:
-    if MERGE_EXECUTOR_SCRIPT.exists():
-        run_command([sys.executable, str(MERGE_EXECUTOR_SCRIPT)], 'run merge execution orchestrator')
-        update_merge_execution_summary()
-    else:
+def run_merge_orchestration() -> bool:
+    """Run the merge executor and return True if execution appears successful.
+    This allows the bulk fixer to only run production replacements after merges finish."""
+    if not MERGE_EXECUTOR_SCRIPT.exists():
         print(f"Info: {MERGE_EXECUTOR_SCRIPT} not found; skipping merge execution orchestrator.")
+        return False
+
+    # Try merge execution with retries to ensure merge phase completes before post-merge work
+    max_attempts = 5
+    for attempt in range(1, max_attempts + 1):
+        print(f"Merge orchestrator attempt {attempt}/{max_attempts}")
+        ok = run_command([sys.executable, str(MERGE_EXECUTOR_SCRIPT)], 'run merge execution orchestrator')
+        update_merge_execution_summary()
+        try:
+            write_merge_md_from_report()
+        except Exception:
+            pass
+        if ok:
+            print("Merge orchestration completed successfully.")
+            return True
+        else:
+            print(f"Merge orchestration attempt {attempt} failed; retrying in 10s...")
+            time.sleep(10)
+
+    print("Merge orchestration did not complete after retries; marking as failed for now.")
+    return False
 
 
 
 def run_bulk_fixer() -> None:
+    """Execute a single high-impact bulk production pass across docs, automation, and validation workflows."""
     # Simple lock to avoid concurrent bulk runs
     lockfile = ROOT / '.resumefromhere.lock'
     lock_acquired = False
@@ -282,7 +382,7 @@ def run_bulk_fixer() -> None:
     else:
         print(f"Info: {MERGE_DISCOVERY_SCANNER_SCRIPT} not found; skipping merge discovery scan.")
 
-    run_merge_orchestration()
+    merge_ok = run_merge_orchestration()
 
     if CONSOLIDATE_API_ENDPOINTS_SCRIPT.exists():
         run_command([sys.executable, str(CONSOLIDATE_API_ENDPOINTS_SCRIPT)], 'consolidate API documentation')
@@ -308,6 +408,18 @@ def run_bulk_fixer() -> None:
         run_command(["bash", str(AUTODOC_SCRIPT)], 'autoupdate markdown docs')
     else:
         print(f"Warning: {AUTODOC_SCRIPT} not found; skipping markdown docs autoupdate.")
+
+    # Only run the bulk production fixer (replacements to production code) after merge phase
+    # completes successfully. This avoids applying production migrations to files that will
+    # be removed/merged during consolidation.
+    if merge_ok:
+        if BULK_FIXER_SCRIPT.exists():
+            run_command([sys.executable, str(BULK_FIXER_SCRIPT), "--scan"], 'run the bulk production workflow generator')
+        else:
+            print(f"Warning: {BULK_FIXER_SCRIPT} not found; skipping bulk workflow generation.")
+    else:
+        print("Info: Merge phase did not complete or was skipped — delaying bulk production replacements until merges are complete.")
+
     if VALIDATE_MD_SCRIPT.exists():
         run_command([sys.executable, str(VALIDATE_MD_SCRIPT), "--apply", "--out", str(ROOT / "docs" / "md_validation_summary.json")], 'validate Markdown files and write Q Lion validation reports')
     else:
@@ -465,6 +577,91 @@ def refresh_resume_file() -> None:
         print(f"Failed to refresh resumefromhere.txt: {exc}")
 
 
+def write_ordered_resume_plan() -> None:
+    """Ensure resumefromhere.txt includes a clear, numbered ORDERED WORK PLAN that
+    prioritizes merges first and documents script commands to run in bulk."""
+    plan_block = []
+    plan_block.append('ORDERED WORK PLAN (ENFORCED):')
+    plan_block.append('1) MERGE PHASE (FIRST PRIORITY)')
+    plan_block.append('   1.1 Run merge discovery: `python3 scripts/merge_discovery_scanner.py`')
+    plan_block.append('   1.2 Run merge executor: `python3 scripts/merge_executor.py`')
+    plan_block.append('   1.3 Produce merge report: .qmoi_validation/merge_execution_report.json')
+    plan_block.append('   1.4 Update MERGE.md and resumefromhere.txt with ordered merge phases')
+    plan_block.append('   1.5 Copy unique logic from duplicates into canonical sources (do not delete yet)')
+    plan_block.append('')
+    plan_block.append('2) PRE-MERGE VALIDATION & SAFE BACKUPS')
+    plan_block.append('   2.1 Create atomic backup: var/backups/')
+    plan_block.append('   2.2 Generate file tree hashes and duplicate matrix')
+    plan_block.append('')
+    plan_block.append('3) POST-MERGE IMPLEMENTATION (ONLY AFTER MERGE VERIFICATION PASSES)')
+    plan_block.append('   3.1 Consolidate components to lib/components/ and update imports')
+    plan_block.append('   3.2 Consolidate API routes: scripts/consolidate_api_endpoints.py')
+    plan_block.append('   3.3 Run bulk production fixer (dry-run first): scripts/bulk_production_fixer.py --dry-run')
+    plan_block.append('   3.4 Implement revenue and trading backlog from 7.txt: spot, futures, options, grid, arbitrage, market making, liquidity, staking, and lending flows')
+    plan_block.append('   3.5 Route finance and trading updates through canonical API and UI shells, including Bitget/Binance and global finance modules')
+    plan_block.append('   3.6 Sync FINANCIALMANAGER.md, QMOIMODEL.md, API.md, ENDPOINTS.md, and ROUTES.md with every finance/trading change')
+    plan_block.append('')
+    plan_block.append('4) DOCUMENTATION SYNC (RUN AS PART OF POST-MERGE)')
+    plan_block.append('   4.1 Update API.md, ENDPOINTS.md, ROUTES.md, ALLMDFILESREFS.md')
+    plan_block.append('')
+    plan_block.append('5) FINALIZATION & VERIFICATION')
+    plan_block.append('   5.1 Run end-to-end tests and smoke checks for each canonical app')
+    plan_block.append('   5.2 Archive verification artifacts under .qmoi_validation/')
+    plan_block.append('')
+
+    # Also include tasks from continues.txt when present
+    continues_tasks = load_continues_tasks()
+    if continues_tasks:
+        plan_block.append('\nCONTINUES.TXT TASKS:')
+        for i, t in enumerate(continues_tasks, start=1):
+            plan_block.append(f'   C{i}. {t} [PENDING]')
+
+    # Load existing resume content and replace or insert ordered plan atomically
+    content = load_text_file(RESUME_FILE)
+    if content is None:
+        return
+
+    marker = 'ORDERED WORK PLAN (ENFORCED):'
+    if marker in content:
+        content = re.sub(r'ORDERED WORK PLAN \(ENFORCED\):[\s\S]*?(?=\n\n[A-Z0-9\s]|\Z)', '\n'.join(plan_block) + '\n\n', content, flags=re.MULTILINE)
+    else:
+        content = content.strip() + '\n\n' + '\n'.join(plan_block) + '\n'
+
+    # atomic write
+    tmpfd, tmppath = tempfile.mkstemp(prefix='resumefromhere.plan.', suffix='.tmp', dir=str(ROOT))
+    try:
+        with os.fdopen(tmpfd, 'w', encoding='utf-8') as fh:
+            fh.write(content)
+        Path(tmppath).replace(RESUME_FILE)
+        print('✓ Wrote ordered work plan to resumefromhere.txt')
+    finally:
+        if Path(tmppath).exists():
+            try:
+                Path(tmppath).unlink()
+            except Exception:
+                pass
+
+
+def load_continues_tasks() -> list:
+    """Read `continues.txt` and return unchecked tasks as a list of strings."""
+    p = ROOT / 'continues.txt'
+    if not p.exists():
+        return []
+    tasks = []
+    for line in p.read_text(encoding='utf-8', errors='ignore').splitlines():
+        s = line.strip()
+        # capture lines like '- [ ] task' or '- task' but prefer unchecked checklist
+        m = None
+        if s.startswith('- [ ]'):
+            m = s[5:].strip()
+        elif s.startswith('-') and '[x]' not in s:
+            m = s.lstrip('-').strip()
+        if m:
+            tasks.append(m)
+    # dedupe
+    return list(dict.fromkeys(tasks))
+
+
 def print_task_summary(tasks: List[str], commit: str, branch: str, status: str) -> None:
     print("\n=== resumefromhere.txt Auto-Continue Summary ===")
     print(f"Git commit: {commit}")
@@ -487,8 +684,14 @@ def load_resume_content() -> Optional[str]:
 
 
 def main() -> None:
+    # Ensure resumefromhere.txt is backed up and refreshed before any bulk work
+    create_resume_backup()
     refresh_resume_file()
     update_resume_tasks_block()
+    # Ensure resumefromhere.txt contains the enforced ordered work plan before proceeding
+    write_ordered_resume_plan()
+    # snapshot resume state after task merge and before bulk run
+    create_resume_backup()
     run_bulk_fixer()
     refresh_resume_file()
 

@@ -302,12 +302,12 @@ For detailed information, see the full documentation in the root directory.
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:29.413334Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:40.775835Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 316
-- words: 1093
-- characters: 7668
+- words: 1097
+- characters: 7689
 - headings: 49
 - links: 0
 - images: 0

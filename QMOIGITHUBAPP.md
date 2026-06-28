@@ -13,12 +13,12 @@ title: "Quantum multi orchestra intelligence (QMOI) GitHub App design"
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:28.670357Z
-- production status: ⚠️ review / no explicit production status
-- status tags: review
+- timestamp: 2026-06-28T19:36:39.657287Z
+- production status: ❌ needs production implementation
+- status tags: needs-production, nonproduction
 - lines: 509
-- words: 2367
-- characters: 17960
+- words: 2365
+- characters: 17977
 - headings: 33
 - links: 1
 - images: 0

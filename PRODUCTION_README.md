@@ -151,12 +151,12 @@ All systems operational and monitored
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:27.848055Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:38.714058Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 165
-- words: 591
-- characters: 4284
+- words: 595
+- characters: 4305
 - headings: 20
 - links: 4
 - images: 0

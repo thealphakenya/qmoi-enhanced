@@ -401,12 +401,12 @@ This comprehensive audit has resulted in:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:30.687920Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:42.285573Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 415
-- words: 1896
-- characters: 13303
+- words: 1900
+- characters: 13324
 - headings: 43
 - links: 20
 - images: 0

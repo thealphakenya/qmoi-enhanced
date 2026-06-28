@@ -206,12 +206,12 @@ Status: COMPLETE AND production-READY
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:24.121384Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:35.070519Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 220
-- words: 952
-- characters: 7152
+- words: 956
+- characters: 7173
 - headings: 30
 - links: 0
 - images: 0

@@ -1,6 +1,6 @@
 # ALLAUTO.md - Automation references inventory
 
-**Generated:** 2026-06-22T22:51:02.512058Z
+**Generated:** 2026-06-28T19:36:53.522779Z
 **Total entries:** 1186
 
 - .devcontainer/README.md — automation_mentions: 5 — script_links: 4
@@ -8,6 +8,7 @@
 - .github/PR_AUTOTODOS.md — automation_mentions: 21 — script_links: 0
 - .github/PULL_REQUEST_TEMPLATE.md — automation_mentions: 7 — script_links: 1
 - .github/PULL_REQUEST_TEMPLATE/automated_fix.md — automation_mentions: 15 — script_links: 0
+- .qmoi_backups/pwa_apps/q-alpha/README.md — automation_mentions: 5 — script_links: 3
 - .qmoi_state/RECOVERY_COMPLETE.md — automation_mentions: 6 — script_links: 3
 - 1.md — automation_mentions: 18 — script_links: 3
 - 1a.md — automation_mentions: 5 — script_links: 3
@@ -108,7 +109,7 @@
 - BUILD_SCRIPTS_Q1_INTEGRATION.md — automation_mentions: 11 — script_links: 9
 - BUILD_TRIGGER.md — automation_mentions: 5 — script_links: 3
 - BULK_ENHANCEMENT_STATUS.md — automation_mentions: 3 — script_links: 3
-- BULK_PRODUCTION_WORKFLOW.md — automation_mentions: 3 — script_links: 10
+- BULK_PRODUCTION_WORKFLOW.md — automation_mentions: 3 — script_links: 5
 - BUSINESS_INTELLIGENCE.md — automation_mentions: 4 — script_links: 3
 - CACHING_GUIDE.md — automation_mentions: 5 — script_links: 3
 - CACHING_STRATEGIES.md — automation_mentions: 5 — script_links: 3
@@ -132,7 +133,7 @@
 - COMPLETION_REPORT_REAL_IMPLEMENTATIONS.md — automation_mentions: 5 — script_links: 3
 - COMPLETION_SUMMARY.md — automation_mentions: 0 — script_links: 1
 - COMPLIANCE_AUDITING.md — automation_mentions: 5 — script_links: 3
-- COMPONENTS.md — automation_mentions: 14 — script_links: 0
+- COMPONENTS.md — automation_mentions: 1 — script_links: 0
 - COMPONENTS_enhanced.md — automation_mentions: 9 — script_links: 4
 - COMPONENT_APP_MAPPING.md — automation_mentions: 12 — script_links: 0
 - COMPONENT_CONNECTION_MAP.md — automation_mentions: 4 — script_links: 0
@@ -155,6 +156,7 @@
 - CONSCIOUSNESS.md — automation_mentions: 1 — script_links: 0
 - CONSCIOUSNESS_QUICKSTART.md — automation_mentions: 9 — script_links: 3
 - CONSOLIDATION_ANALYSIS.md — automation_mentions: 5 — script_links: 3
+- CONSOLIDATION_EXECUTION_SUMMARY.md — automation_mentions: 0 — script_links: 1
 - CONTAINER_ORCHESTRATION.md — automation_mentions: 5 — script_links: 3
 - CONTINUOUS_IMPROVEMENT.md — automation_mentions: 11 — script_links: 4
 - CONTINUOUS_MONITORING_SETUP.md — automation_mentions: 12 — script_links: 11
@@ -321,7 +323,6 @@
 - INSTALL.md — automation_mentions: 5 — script_links: 3
 - INSTALLATION.md — automation_mentions: 5 — script_links: 3
 - INSTALLER.md — automation_mentions: 5 — script_links: 3
-- INSTANCES.md — automation_mentions: 0 — script_links: 5
 - INTEGRATION_GUIDE.md — automation_mentions: 9 — script_links: 3
 - INVENTIONS.md — automation_mentions: 7 — script_links: 3
 - INVINSIBLEQMOI.md — automation_mentions: 22 — script_links: 3
@@ -365,9 +366,8 @@
 - MASTER_README.md — automation_mentions: 24 — script_links: 3
 - MASTER_SYSTEM_DEPLOYMENT_REPORT.md — automation_mentions: 21 — script_links: 3
 - MASTER_VERIFICATION_COMPLETE.md — automation_mentions: 22 — script_links: 3
-- MATCHES.md — automation_mentions: 0 — script_links: 5
 - MEGAVAULT.md — automation_mentions: 9 — script_links: 3
-- MERGE.md — automation_mentions: 15 — script_links: 2
+- MERGE.md — automation_mentions: 1 — script_links: 0
 - MERGE_IMPLEMENTATION_SUMMARY.md — automation_mentions: 4 — script_links: 8
 - MERGE_PLAN_20260611.md — automation_mentions: 1 — script_links: 0
 - ML.md — automation_mentions: 5 — script_links: 3
@@ -409,6 +409,7 @@
 - PHASE3_TIER4_SECURITY_AUDIT.md — automation_mentions: 4 — script_links: 0
 - PHASE4_PRODUCTION_STRATEGY.md — automation_mentions: 6 — script_links: 4
 - PHASE5_COMPLETION_SUMMARY.md — automation_mentions: 5 — script_links: 3
+- PHASES_1-3_COMPLETION_REPORT.md — automation_mentions: 0 — script_links: 1
 - PHASES_24_26_IMPLEMENTATION.md — automation_mentions: 36 — script_links: 3
 - PHASE_1_COMPLETION_REPORT.md — automation_mentions: 7 — script_links: 3
 - PHASE_3_TEST_COMPLETION_REPORT.md — automation_mentions: 19 — script_links: 7
@@ -1135,7 +1136,6 @@
 - placeholder_scan_summary.md — automation_mentions: 6 — script_links: 3
 - production_deployment/DEPLOYMENT_CHECKLIST.md — automation_mentions: 5 — script_links: 3
 - pwa_apps/README.md — automation_mentions: 6 — script_links: 3
-- pwa_apps/q-alpha/README.md — automation_mentions: 5 — script_links: 3
 - q.md — automation_mentions: 9 — script_links: 3
 - q/AI_ENHANCED_INTELLIGENT_VALIDATION_ARCHITECTURE.md — automation_mentions: 10 — script_links: 3
 - q/BALANCES.md — automation_mentions: 12 — script_links: 3
@@ -1189,21 +1189,3 @@
 - unusedcomponentsui.md — automation_mentions: 6 — script_links: 5
 - vercelerrorlist.md — automation_mentions: 1 — script_links: 0
 - whatsapp-qmoi-bot/README.md — automation_mentions: 1 — script_links: 0
-
-<!-- LION_VALIDATION_START -->
-## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
-
-- validated: yes
-- validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:24.207774Z
-- production status: ❌ needs production implementation
-- status tags: needs-production, nonproduction
-- lines: 1209
-- words: 9571
-- characters: 84760
-- headings: 2
-- links: 0
-- images: 0
-- tables: 0
-- lion validation block: present
-<!-- LION_VALIDATION_END -->

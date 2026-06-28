@@ -436,12 +436,12 @@ All Phase 3 Tier 3 & 4 documentation is complete and committed. The project is f
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:30.037166Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:41.715639Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 450
-- words: 1920
-- characters: 13812
+- words: 1924
+- characters: 13833
 - headings: 46
 - links: 7
 - images: 0

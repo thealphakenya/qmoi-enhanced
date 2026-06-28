@@ -577,12 +577,12 @@ Link to related documentation, APIs, and system artifacts.
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:29.629316Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:41.082491Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 591
-- words: 1800
-- characters: 14300
+- words: 1804
+- characters: 14321
 - headings: 53
 - links: 0
 - images: 0

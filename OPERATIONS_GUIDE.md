@@ -385,12 +385,12 @@ The Quantum multi orchestra intelligence (QMOI) Enhanced AI system is now a comp
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:27.480159Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:38.284272Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 399
-- words: 1375
-- characters: 10155
+- words: 1379
+- characters: 10176
 - headings: 94
 - links: 0
 - images: 0

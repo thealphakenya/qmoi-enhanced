@@ -557,12 +557,12 @@ For API issues, support, or questions:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:24.451631Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:35.452030Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 571
-- words: 1418
-- characters: 12146
+- words: 1422
+- characters: 12167
 - headings: 74
 - links: 3
 - images: 0

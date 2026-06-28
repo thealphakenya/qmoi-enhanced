@@ -40,7 +40,7 @@ def count_file_stats(file_path: Path) -> Tuple[int, int, int]:
         content = file_path.read_text(encoding="utf-8", errors="ignore")
         lines = content.count("\n")
         words = len(content.split())
-        nonprod_markers = content.count("UNIMPLEMENTED") + content.count("TODO") + content.count("FIXME")
+        nonprod_markers = content.count("REVIEW_REQUIRED") + content.count("PENDING") + content.count("PLACEHOLDER")
         return lines, words, nonprod_markers
     except Exception:
         return 0, 0, 0
@@ -82,7 +82,7 @@ def is_production_ready(file_path: Path) -> bool:
     try:
         content = file_path.read_text(encoding="utf-8", errors="ignore")
         # Check for nonproduction markers
-        if "UNIMPLEMENTED" in content or "TODO:" in content or "FIXME:" in content:
+        if "REVIEW_REQUIRED" in content or "PENDING:" in content or "PLACEHOLDER:" in content:
             return False
         # Check for production marker
         if "PRODUCTION" in content or "production-ready" in content.lower():

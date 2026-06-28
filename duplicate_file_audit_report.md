@@ -1,9 +1,9 @@
 # Duplicate File Audit Report
 
-Generated: 2026-06-22T22:50:31.420401Z
+Generated: 2026-06-28T19:36:00.401176Z
 
-Total files scanned: 4753
-Total duplicate file titles found: 253
+Total files scanned: 4674
+Total duplicate file titles found: 252
 
 ## Duplicate Files by Filename
 
@@ -318,37 +318,6 @@ Total duplicate file titles found: 253
 
 **Recommended canonical source:** `app/api/account-automation/route.ts`
 
-### `page.tsx` (27 copies)
-- `app/admin/master/activity/page.tsx`
-- `app/admin/master/login/page.tsx`
-- `app/admin/master/page.tsx`
-- `app/admin/master/security/page.tsx`
-- `app/admin/master/settings/page.tsx`
-- `app/admin/page.tsx`
-- `app/dev/page.tsx`
-- `app/devices/page.tsx`
-- `app/friendship/page.tsx`
-- `app/master/email/page.tsx`
-- `app/master/links/page.tsx`
-- `app/master/tracks/page.tsx`
-- `app/page.tsx`
-- `app/qalpha/page.tsx`
-- `app/qalpha/styles/page.tsx`
-- `app/qcity/page.tsx`
-- `app/qcity/styles/page.tsx`
-- `app/qmoi-ai/page.tsx`
-- `app/qmoi-ai/styles/page.tsx`
-- `app/qmoi-space/page.tsx`
-- `app/qmoi-space/styles/page.tsx`
-- `app/qvillage/page.tsx`
-- `app/qvillage/styles/page.tsx`
-- `app/reset-password/page.tsx`
-- `app/universal/page.tsx`
-- `app/verify-email/page.tsx`
-- `src/app/master/domain-health/page.tsx`
-
-**Recommended canonical source:** `app/admin/master/activity/page.tsx`
-
 ### `index.ts` (26 copies)
 - `app/components/styles/index.ts`
 - `app/lib/auth/index.ts`
@@ -382,6 +351,7 @@ Total duplicate file titles found: 253
 ### `readme.json` (26 copies)
 - `.qmoi_validation/validation_reports/src/assets/icons/apps/README.json`
 - `.qmoi_validation/validation_reports/.devcontainer/README.json`
+- `.qmoi_validation/validation_reports/.qmoi_backups/pwa_apps/q-alpha/README.json`
 - `.qmoi_validation/validation_reports/ALL_APPS/README.json`
 - `.qmoi_validation/validation_reports/README.json`
 - `.qmoi_validation/validation_reports/assets/icons/apps/README.json`
@@ -394,7 +364,6 @@ Total duplicate file titles found: 253
 - `.qmoi_validation/validation_reports/mobile/README.json`
 - `.qmoi_validation/validation_reports/models/latest/README.json`
 - `.qmoi_validation/validation_reports/pwa_apps/README.json`
-- `.qmoi_validation/validation_reports/pwa_apps/q-alpha/README.json`
 - `.qmoi_validation/validation_reports/qcity/README.json`
 - `.qmoi_validation/validation_reports/qvillage/README.json`
 - `.qmoi_validation/validation_reports/scripts/README.json`
@@ -412,6 +381,7 @@ Total duplicate file titles found: 253
 ### `readme.md` (26 copies)
 - `src/assets/icons/apps/README.md`
 - `.devcontainer/README.md`
+- `.qmoi_backups/pwa_apps/q-alpha/README.md`
 - `ALL_APPS/README.md`
 - `README.md`
 - `assets/icons/apps/README.md`
@@ -424,7 +394,6 @@ Total duplicate file titles found: 253
 - `mobile/README.md`
 - `models/latest/README.md`
 - `pwa_apps/README.md`
-- `pwa_apps/q-alpha/README.md`
 - `qcity/README.md`
 - `qvillage/README.md`
 - `scripts/README.md`
@@ -439,12 +408,38 @@ Total duplicate file titles found: 253
 
 **Recommended canonical source:** `src/assets/icons/apps/README.md`
 
+### `page.tsx` (22 copies)
+- `app/admin/master/activity/page.tsx`
+- `app/admin/master/login/page.tsx`
+- `app/admin/master/page.tsx`
+- `app/admin/master/security/page.tsx`
+- `app/admin/master/settings/page.tsx`
+- `app/admin/page.tsx`
+- `app/dev/page.tsx`
+- `app/devices/page.tsx`
+- `app/friendship/page.tsx`
+- `app/master/email/page.tsx`
+- `app/master/links/page.tsx`
+- `app/master/tracks/page.tsx`
+- `app/page.tsx`
+- `app/qalpha/page.tsx`
+- `app/qcity/page.tsx`
+- `app/qmoi-ai/page.tsx`
+- `app/qmoi-space/page.tsx`
+- `app/qvillage/page.tsx`
+- `app/reset-password/page.tsx`
+- `app/universal/page.tsx`
+- `app/verify-email/page.tsx`
+- `src/app/master/domain-health/page.tsx`
+
+**Recommended canonical source:** `app/admin/master/activity/page.tsx`
+
 ### `sw.js` (11 copies)
+- `.qmoi_backups/pwa_apps/q-alpha/sw.js`
 - `public/pwa_apps/qmoi-ai/sw.js`
 - `public/pwa_apps/qmoi-space/sw.js`
 - `pwa_apps/admin/sw.js`
 - `pwa_apps/deals/sw.js`
-- `pwa_apps/q-alpha/sw.js`
 - `pwa_apps/qmoi-ai/sw.js`
 - `pwa_apps/qmoi-space/sw.js`
 - `pwa_apps/qmoi/sw.js`
@@ -452,7 +447,7 @@ Total duplicate file titles found: 253
 - `qmoi-space-pwa/sw.js`
 - `qmoi-space/public/sw.js`
 
-**Recommended canonical source:** `public/pwa_apps/qmoi-ai/sw.js`
+**Recommended canonical source:** `.qmoi_backups/pwa_apps/q-alpha/sw.js`
 
 ### `engine.ts` (8 copies)
 - `qmoi/core/accessibility/engine.ts`
@@ -467,15 +462,15 @@ Total duplicate file titles found: 253
 **Recommended canonical source:** `qmoi/core/accessibility/engine.ts`
 
 ### `package.json` (7 copies)
+- `.qmoi_backups/pwa_apps/q-alpha/package.json`
 - `dashboard/package.json`
 - `mobile/package.json`
 - `package.json`
 - `pwa_apps/admin/package.json`
 - `pwa_apps/deals/package.json`
-- `pwa_apps/q-alpha/package.json`
 - `tools/icon-manager/package.json`
 
-**Recommended canonical source:** `dashboard/package.json`
+**Recommended canonical source:** `.qmoi_backups/pwa_apps/q-alpha/package.json`
 
 ### `qmoi_memory.json` (5 copies)
 - `.qmoi_validation/validation_reports/QMOI_MEMORY.json`
@@ -917,16 +912,16 @@ Total duplicate file titles found: 253
 **Recommended canonical source:** `audit-report.json`
 
 ### `auth-service.ts` (2 copies)
-- `app/lib/auth-service.ts`
-- `lib/auth-service.ts`
+- `.qmoi_backups/components/app/lib/auth-service.ts`
+- `.qmoi_backups/components/lib/auth-service.ts`
 
-**Recommended canonical source:** `app/lib/auth-service.ts`
+**Recommended canonical source:** `.qmoi_backups/components/app/lib/auth-service.ts`
 
 ### `auth.ts` (2 copies)
-- `src/lib/auth.ts`
-- `utils/auth.ts`
+- `.qmoi_backups/components/src/lib/auth.ts`
+- `.qmoi_backups/components/utils/auth.ts`
 
-**Recommended canonical source:** `src/lib/auth.ts`
+**Recommended canonical source:** `.qmoi_backups/components/src/lib/auth.ts`
 
 ### `autoheal.js` (2 copies)
 - `scripts/autoheal.js`
@@ -947,10 +942,10 @@ Total duplicate file titles found: 253
 **Recommended canonical source:** `autotest_report.md`
 
 ### `biometricauth.tsx` (2 copies)
-- `components/BiometricAuth.tsx`
-- `components/auth/BiometricAuth.tsx`
+- `.qmoi_backups/components/components/BiometricAuth.tsx`
+- `.qmoi_backups/components/components/auth/BiometricAuth.tsx`
 
-**Recommended canonical source:** `components/BiometricAuth.tsx`
+**Recommended canonical source:** `.qmoi_backups/components/components/BiometricAuth.tsx`
 
 ### `biometricenrollment.tsx` (2 copies)
 - `app/components/auth/BiometricEnrollment.tsx`
@@ -1876,12 +1871,6 @@ Total duplicate file titles found: 253
 
 **Recommended canonical source:** `src/lib/services.ts`
 
-### `settings.json` (2 copies)
-- `.vscode/settings.json`
-- `.vscodes/settings.json`
-
-**Recommended canonical source:** `.vscode/settings.json`
-
 ### `system-production.ts` (2 copies)
 - `qmoi/core/emotional-intelligence/system-production.ts`
 - `qmoi/core/memory/system-production.ts`
@@ -1895,10 +1884,10 @@ Total duplicate file titles found: 253
 **Recommended canonical source:** `SYSTEM_INTEGRATION_TEST_REPORT.json`
 
 ### `themecustomizer.tsx` (2 copies)
-- `app/components/ThemeCustomizer.tsx`
-- `components/ThemeCustomizer.tsx`
+- `.qmoi_backups/components/app/components/ThemeCustomizer.tsx`
+- `.qmoi_backups/components/components/ThemeCustomizer.tsx`
 
-**Recommended canonical source:** `app/components/ThemeCustomizer.tsx`
+**Recommended canonical source:** `.qmoi_backups/components/app/components/ThemeCustomizer.tsx`
 
 ### `trading-engine.ts` (2 copies)
 - `lib/services/trading-engine.ts`
@@ -1949,28 +1938,28 @@ Total duplicate file titles found: 253
 **Recommended canonical source:** `.qmoi_validation/validation_reports/tools/update_markdown_report.json`
 
 ### `use-mobile.tsx` (2 copies)
-- `components/ui/use-mobile.tsx`
-- `hooks/use-mobile.tsx`
+- `.qmoi_backups/components/components/ui/use-mobile.tsx`
+- `.qmoi_backups/components/hooks/use-mobile.tsx`
 
-**Recommended canonical source:** `components/ui/use-mobile.tsx`
+**Recommended canonical source:** `.qmoi_backups/components/components/ui/use-mobile.tsx`
 
 ### `use-toast.ts` (2 copies)
-- `components/ui/use-toast.ts`
-- `hooks/use-toast.ts`
+- `.qmoi_backups/components/components/ui/use-toast.ts`
+- `.qmoi_backups/components/hooks/use-toast.ts`
 
-**Recommended canonical source:** `components/ui/use-toast.ts`
+**Recommended canonical source:** `.qmoi_backups/components/components/ui/use-toast.ts`
 
 ### `useauth.ts` (2 copies)
-- `app/hooks/useAuth.ts`
-- `src/hooks/useAuth.ts`
+- `.qmoi_backups/components/app/hooks/useAuth.ts`
+- `.qmoi_backups/components/src/hooks/useAuth.ts`
 
-**Recommended canonical source:** `app/hooks/useAuth.ts`
+**Recommended canonical source:** `.qmoi_backups/components/app/hooks/useAuth.ts`
 
 ### `useqmoichat.ts` (2 copies)
-- `src/hooks/useQMOIChat.ts`
-- `hooks/useQMOIChat.ts`
+- `.qmoi_backups/components/hooks/useQMOIChat.ts`
+- `.qmoi_backups/components/src/hooks/useQMOIChat.ts`
 
-**Recommended canonical source:** `src/hooks/useQMOIChat.ts`
+**Recommended canonical source:** `.qmoi_backups/components/hooks/useQMOIChat.ts`
 
 ### `utils.ts` (2 copies)
 - `lib/utils.ts`
@@ -2008,15 +1997,15 @@ Total duplicate file titles found: 253
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:42.257868Z
-- production status: ⚠️ review / no explicit production status
-- status tags: review
-- lines: 2022
-- words: 4084
-- characters: 64993
-- headings: 256
+- timestamp: 2026-06-28T19:36:51.531171Z
+- production status: ❌ needs production implementation
+- status tags: needs-production, nonproduction
+- lines: 1993
+- words: 3990
+- characters: 64898
+- headings: 254
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: present
+- lion validation block: inserted
 <!-- LION_VALIDATION_END -->

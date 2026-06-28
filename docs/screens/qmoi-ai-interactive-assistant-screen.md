@@ -218,9 +218,9 @@ export default function QMoiAIPage() {
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:42.188941Z
-- production status: ❌ needs production implementation
-- status tags: needs-production, nonproduction
+- timestamp: 2026-06-28T19:36:51.476230Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
 - lines: 232
 - words: 1168
 - characters: 8610

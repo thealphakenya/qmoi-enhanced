@@ -463,12 +463,12 @@ Before marking phases complete:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:27.391512Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:38.188926Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 477
-- words: 1873
-- characters: 13020
+- words: 1877
+- characters: 13041
 - headings: 42
 - links: 0
 - images: 0

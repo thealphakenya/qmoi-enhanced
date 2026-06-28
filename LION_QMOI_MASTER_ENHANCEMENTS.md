@@ -1422,12 +1422,12 @@ All systems use global memory sync:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:27.265054Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:38.058739Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 1436
-- words: 5237
-- characters: 44226
+- words: 5241
+- characters: 44247
 - headings: 116
 - links: 0
 - images: 0

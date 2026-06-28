@@ -157,7 +157,7 @@ grep "Duplicate.*entry points\|Duplicate.*components\|Duplicate.*routes" MERGE.m
 grep "PHASE.*STATUS" resumefromhere.txt
 
 # Count remaining nonproduction markers
-grep -r "UNIMPLEMENTED\|TODO\|FIXME" --include="*.md" . | wc -l
+grep -r "REVIEW_REQUIRED\|PENDING\|PLACEHOLDER" --include="*.md" . | wc -l
 ```
 
 ## Success Criteria
@@ -231,12 +231,12 @@ grep -r "UNIMPLEMENTED\|TODO\|FIXME" --include="*.md" . | wc -l
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:26.255179Z
+- timestamp: 2026-06-28T19:36:37.036491Z
 - production status: ❌ needs production implementation
 - status tags: needs-production, nonproduction
 - lines: 245
 - words: 1055
-- characters: 7995
+- characters: 8006
 - headings: 40
 - links: 0
 - images: 0

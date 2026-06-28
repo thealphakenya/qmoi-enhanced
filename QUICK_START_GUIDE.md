@@ -490,12 +490,12 @@ npm run test:tier2
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:29.425689Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:40.788310Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 504
-- words: 1939
-- characters: 12970
+- words: 1943
+- characters: 12991
 - headings: 87
 - links: 0
 - images: 0

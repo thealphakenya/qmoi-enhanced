@@ -306,12 +306,12 @@ For ongoing enhancements and maintenance:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:26.893625Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:37.685256Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 320
-- words: 1159
-- characters: 8575
+- words: 1163
+- characters: 8596
 - headings: 30
 - links: 0
 - images: 0

@@ -270,12 +270,12 @@ export default function Page() {
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:26.559673Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:37.331684Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 284
-- words: 1380
-- characters: 9744
+- words: 1384
+- characters: 9765
 - headings: 35
 - links: 0
 - images: 0

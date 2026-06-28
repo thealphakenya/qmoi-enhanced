@@ -359,12 +359,12 @@ All systems verified and operational. Monitoring active. Backups configured. Aut
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:26.453347Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:37.224452Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 373
-- words: 1531
-- characters: 10890
+- words: 1535
+- characters: 10911
 - headings: 61
 - links: 0
 - images: 0

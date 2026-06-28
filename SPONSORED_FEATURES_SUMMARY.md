@@ -82,9 +82,9 @@ These routes exist as stubs and are documented in the repository.
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:30.110095Z
-- production status: ❌ needs production implementation
-- status tags: needs-production, nonproduction
+- timestamp: 2026-06-28T19:36:41.802455Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
 - lines: 96
 - words: 448
 - characters: 3848

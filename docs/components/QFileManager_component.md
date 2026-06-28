@@ -354,12 +354,12 @@ function AdminPanel() {
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:42.064970Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:51.348896Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 368
-- words: 1352
-- characters: 10128
+- words: 1356
+- characters: 10149
 - headings: 71
 - links: 0
 - images: 0

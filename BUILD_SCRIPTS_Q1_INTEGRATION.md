@@ -381,12 +381,12 @@ The unified build system is **production-ready** with:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:26.108914Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:36.885902Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 395
-- words: 1501
-- characters: 11502
+- words: 1505
+- characters: 11523
 - headings: 64
 - links: 0
 - images: 0

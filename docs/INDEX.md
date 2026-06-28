@@ -431,12 +431,12 @@ The app uses Tailwind CSS with:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:41.682899Z
-- production status: ⚠️ review / no explicit production status
-- status tags: review
+- timestamp: 2026-06-28T19:36:51.013142Z
+- production status: ❌ needs production implementation
+- status tags: needs-production, nonproduction
 - lines: 445
-- words: 1933
-- characters: 17482
+- words: 1931
+- characters: 17499
 - headings: 44
 - links: 101
 - images: 0

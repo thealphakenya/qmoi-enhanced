@@ -484,12 +484,12 @@ aws rds modify-db-instance \
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:26.177031Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:36.953047Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 498
-- words: 1539
-- characters: 12932
+- words: 1543
+- characters: 12953
 - headings: 95
 - links: 0
 - images: 0

@@ -277,12 +277,12 @@ echo "✅ All checks passed - Ready to deploy"
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:27.811880Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:38.677318Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 291
-- words: 973
-- characters: 6913
+- words: 977
+- characters: 6934
 - headings: 58
 - links: 0
 - images: 0

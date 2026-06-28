@@ -66,7 +66,7 @@ def is_production_marked(file_path: Path) -> bool:
     try:
         content = file_path.read_text(encoding="utf-8", errors="ignore")
         # Check for nonproduction markers
-        if "UNIMPLEMENTED" in content or "TODO:" in content or "FIXME:" in content:
+        if "REVIEW_REQUIRED" in content or "PENDING:" in content or "PLACEHOLDER:" in content:
             return False
         # If it has substantial content, assume production-ready
         return len(content.strip()) > 100

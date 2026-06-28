@@ -1,6 +1,6 @@
 # ALLDIRECTORIESMD - Directory Documentation Index
 
-**Generated:** 2026-06-22T22:53:46.247574Z
+**Generated:** 2026-06-28T19:29:26.260386Z
 
 This file indexes all directory-specific documentation and tracks the production readiness of each directory's .md files.
 
@@ -24,13 +24,13 @@ Each directory in the repository has associated `.md` files that document its pu
 - ✗ `app/src`
 
 **Documentation Files:**
-- ✓ [SRC.md](SRC.md) (20.04 KB)
+- ✓ [SRC.md](SRC.md) (20.06 KB)
 
 **Status:**
 - Production Ready: Yes ✓
 - Existing .md files: 1/1
 - File Counts:
-  - `src`: 466 files (3 .md)
+  - `src`: 435 files (3 .md)
 
 ## COMPONENTS
 
@@ -42,15 +42,15 @@ Each directory in the repository has associated `.md` files that document its pu
 - ✓ `app/components`
 
 **Documentation Files:**
-- ✓ [COMPONENTS.md](COMPONENTS.md) (23.45 KB)
+- ✓ [COMPONENTS.md](COMPONENTS.md) (4.05 KB)
 
 **Status:**
 - Production Ready: Yes ✓
 - Existing .md files: 1/1
 - File Counts:
-  - `src/components`: 96 files (0 .md)
-  - `components`: 215 files (1 .md)
-  - `app/components`: 74 files (0 .md)
+  - `src/components`: 92 files (0 .md)
+  - `components`: 190 files (1 .md)
+  - `app/components`: 57 files (0 .md)
 
 ## WORKFLOWS
 
@@ -62,7 +62,7 @@ Each directory in the repository has associated `.md` files that document its pu
 - ✓ `.github/workflows`
 
 **Documentation Files:**
-- ✓ [WORKFLOWS.md](WORKFLOWS.md) (40.89 KB)
+- ✓ [WORKFLOWS.md](WORKFLOWS.md) (40.91 KB)
 
 **Status:**
 - Production Ready: Yes ✓
@@ -75,22 +75,18 @@ Each directory in the repository has associated `.md` files that document its pu
 **Description:** React hooks, webhooks, event handlers, and lifecycle management
 
 **Paths:**
-- ✓ `src/hooks`
-- ✓ `hooks`
-- ✓ `app/hooks`
+- ✗ `src/hooks`
+- ✗ `hooks`
+- ✗ `app/hooks`
 
 **Documentation Files:**
 - ✓ [HOOKS.md](HOOKS.md) (13.33 KB)
-- ✓ [WEBHOOKS.md](WEBHOOKS.md) (7.52 KB)
+- ✓ [WEBHOOKS.md](WEBHOOKS.md) (7.54 KB)
 - ✓ [ALLHOOKSWEBHOOKS.md](ALLHOOKSWEBHOOKS.md) (4.42 KB)
 
 **Status:**
 - Production Ready: Yes ✓
 - Existing .md files: 3/3
-- File Counts:
-  - `src/hooks`: 9 files (0 .md)
-  - `hooks`: 34 files (0 .md)
-  - `app/hooks`: 5 files (0 .md)
 
 ## TESTS
 
@@ -104,15 +100,15 @@ Each directory in the repository has associated `.md` files that document its pu
 - ✗ `app/tests`
 
 **Documentation Files:**
-- ✓ [TESTS.md](TESTS.md) (12.12 KB)
+- ✓ [TESTS.md](TESTS.md) (12.14 KB)
 - ✓ [ALLTESTSAUTOTESTS.md](ALLTESTSAUTOTESTS.md) (16.92 KB)
 
 **Status:**
 - Production Ready: Yes ✓
 - Existing .md files: 2/2
 - File Counts:
-  - `tests`: 70 files (0 .md)
-  - `__tests__`: 111 files (0 .md)
+  - `tests`: 69 files (0 .md)
+  - `__tests__`: 103 files (0 .md)
 
 ## SCRIPTS
 
@@ -129,7 +125,7 @@ Each directory in the repository has associated `.md` files that document its pu
 - Production Ready: Yes ✓
 - Existing .md files: 1/1
 - File Counts:
-  - `scripts`: 1404 files (11 .md)
+  - `scripts`: 1396 files (11 .md)
 
 ## SERVICES
 
@@ -147,8 +143,8 @@ Each directory in the repository has associated `.md` files that document its pu
 - Production Ready: Yes ✓
 - Existing .md files: 1/1
 - File Counts:
-  - `src/services`: 24 files (0 .md)
-  - `services`: 37 files (0 .md)
+  - `src/services`: 23 files (0 .md)
+  - `services`: 35 files (0 .md)
 
 ## LIB
 
@@ -166,9 +162,9 @@ Each directory in the repository has associated `.md` files that document its pu
 - Production Ready: Yes ✓
 - Existing .md files: 1/1
 - File Counts:
-  - `src/lib`: 67 files (0 .md)
-  - `lib`: 124 files (0 .md)
-  - `app/lib`: 14 files (0 .md)
+  - `src/lib`: 60 files (0 .md)
+  - `lib`: 119 files (0 .md)
+  - `app/lib`: 13 files (0 .md)
 
 ## CONFIG
 
@@ -219,19 +215,19 @@ Each directory in the repository has associated `.md` files that document its pu
 - ✓ `app/api`
 
 **Documentation Files:**
-- ✓ [API.md](API.md) (26.9 KB)
-- ✓ [APIs_1.md](APIs_1.md) (2560.82 KB)
-- ✓ [APIs_v1.md](APIs_v1.md) (2715.56 KB)
-- ✓ [ENDPOINTS.md](ENDPOINTS.md) (1.96 KB)
-- ✓ [ROUTES.md](ROUTES.md) (9.77 KB)
+- ✓ [API.md](API.md) (26.7 KB)
+- ✓ [APIs_1.md](APIs_1.md) (2560.84 KB)
+- ✓ [APIs_v1.md](APIs_v1.md) (2715.58 KB)
+- ✓ [ENDPOINTS.md](ENDPOINTS.md) (1.72 KB)
+- ✓ [ROUTES.md](ROUTES.md) (9.59 KB)
 
 **Status:**
 - Production Ready: Yes ✓
 - Existing .md files: 5/5
 - File Counts:
   - `api`: 1 files (0 .md)
-  - `src/api`: 5 files (0 .md)
-  - `app/api`: 617 files (2 .md)
+  - `src/api`: 4 files (0 .md)
+  - `app/api`: 616 files (2 .md)
 
 ## UI
 
@@ -243,12 +239,12 @@ Each directory in the repository has associated `.md` files that document its pu
 - ✗ `app/ui`
 
 **Documentation Files:**
-- ✓ [UI.md](UI.md) (14.91 KB)
+- ✓ [UI.md](UI.md) (14.93 KB)
 - ✓ [QMOIAIUI.md](QMOIAIUI.md) (6.06 KB)
-- ✓ [QMOISPACEUI.md](QMOISPACEUI.md) (4.57 KB)
-- ✓ [QCITYUI.md](QCITYUI.md) (43.6 KB)
+- ✓ [QMOISPACEUI.md](QMOISPACEUI.md) (4.59 KB)
+- ✓ [QCITYUI.md](QCITYUI.md) (43.62 KB)
 - ✓ [QVILLAGEUI.md](QVILLAGEUI.md) (4.24 KB)
-- ✓ [QALPHAUI.md](QALPHAUI.md) (4.21 KB)
+- ✓ [QALPHAUI.md](QALPHAUI.md) (4.22 KB)
 
 **Status:**
 - Production Ready: Yes ✓
@@ -286,7 +282,7 @@ Each directory in the repository has associated `.md` files that document its pu
 - Production Ready: Yes ✓
 - Existing .md files: 1/1
 - File Counts:
-  - `mobile`: 11846 files (466 .md)
+  - `mobile`: 11381 files (466 .md)
 
 
 ## Bulk Workflow Tasks
@@ -329,12 +325,12 @@ These scripts generate and update directory .md files:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:24.221501Z
+- timestamp: 2026-06-28T19:36:35.182746Z
 - production status: ✅ production-ready
 - status tags: production, production-ready
-- lines: 343
-- words: 1130
-- characters: 8196
+- lines: 339
+- words: 1109
+- characters: 8084
 - headings: 21
 - links: 31
 - images: 0

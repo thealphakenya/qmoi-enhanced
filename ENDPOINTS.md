@@ -1,8 +1,44 @@
 # All API Endpoints
 
-**Last Generated:** 2026-06-22T22:53:49.457193Z
+**Last Generated:** 2026-06-28T19:35:57.913827Z
 
 Complete reference of all API endpoints organized by method and path.
+
+## 🤖 Local Ollama AI Endpoints (Free Agent)
+
+**Base URL:** `http://localhost:11434`
+
+### GET Endpoints
+
+- `GET /api/tags` - List all available AI models and metadata
+- `GET /api/models` - Get model information
+
+### POST Endpoints
+
+- `POST /api/generate` - Generate text completions from a prompt
+  - Parameters: `model`, `prompt`, `stream`, `temperature`, `top_p`
+  - Returns: Generated text with timing metrics
+
+- `POST /api/chat` - Chat interface (OpenAI-compatible format)
+  - Parameters: `model`, `messages` (array of role/content), `stream`
+  - Returns: Assistant response with metadata
+
+- `POST /api/embed` - Generate embeddings for text
+  - Parameters: `model`, `input`
+  - Returns: Vector embeddings
+
+### Summary
+
+| Method | Endpoint | Purpose | Production |
+|--------|----------|---------|------------|
+| GET | `/api/tags` | List models | ✅ |
+| POST | `/api/generate` | Generate completions | ✅ |
+| POST | `/api/chat` | Chat completions | ✅ |
+| POST | `/api/embed` | Text embeddings | ✅ |
+
+**Status:** Running on localhost:11434 (persistent, unlimited, free)
+
+---
 
 ## REST Endpoints
 
@@ -12,8 +48,6 @@ Complete reference of all API endpoints organized by method and path.
 #### GET
 
 - `/config` (api/qcity.ts)
-- `/links/FUNCTIONAL` (src/api/routes/links-validation.ts)
-- `/links/warnings` (src/api/routes/links-validation.ts)
 - `/logs` (api/qcity.ts)
 - `/notifications` (api/qcity.ts)
 - `/resources` (api/qcity.ts)
@@ -36,8 +70,6 @@ Complete reference of all API endpoints organized by method and path.
 - `GET    /config` (api/qcity.ts)
 - `POST   /configure-platforms` (api/qcity.ts)
 - `POST   /enable-features` (api/qcity.ts)
-- `GET    /links/FUNCTIONAL` (src/api/routes/links-validation.ts)
-- `GET    /links/warnings` (src/api/routes/links-validation.ts)
 - `GET    /logs` (api/qcity.ts)
 - `POST   /monitor-resources` (api/qcity.ts)
 - `GET    /notifications` (api/qcity.ts)
@@ -62,15 +94,15 @@ Complete reference of all API endpoints organized by method and path.
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:26.619182Z
+- timestamp: 2026-06-28T19:36:37.393440Z
 - production status: ⚠️ review / no explicit production status
 - status tags: review
-- lines: 76
-- words: 230
-- characters: 2003
-- headings: 8
+- lines: 54
+- words: 144
+- characters: 1292
+- headings: 7
 - links: 3
 - images: 0
 - tables: 0
-- lion validation block: present
+- lion validation block: inserted
 <!-- LION_VALIDATION_END -->

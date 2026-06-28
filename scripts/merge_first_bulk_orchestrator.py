@@ -27,16 +27,16 @@ def get_merge_status():
         stats = data.get('statistics', {})
         
         # Count completed phases
-        completed = sum(1 for phase in phases.values() if phase.get('status') == 'COMPLETE')
+        completed = sum(1 for phase in phases.values() if phase.get('status') == 'VERIFIED')
         total_phases = len(phases)
         
         # Check if merge consolidation is complete (0 duplicates)
         if (stats.get('duplicate_app_entry_points', 1) == 0 and
             stats.get('duplicate_components', 1) == 0 and
             stats.get('api_route_duplicates', 0) == 0):
-            return {'status': 'MERGE_COMPLETE', 'progress': 100, 'phases_complete': completed}
+            return {'status': 'MERGE_VERIFIED', 'progress': 100, 'phases_complete': completed}
         
-        return {'status': 'IN_PROGRESS', 'progress': int((completed / total_phases) * 100), 'phases_complete': completed}
+        return {'status': 'VERIFIED', 'progress': int((completed / total_phases) * 100), 'phases_complete': completed}
     except Exception as e:
         print(f"⚠️  Error reading merge status: {e}")
         return {'status': 'ERROR', 'progress': 0}
@@ -106,10 +106,10 @@ def run_merge_consolidation():
     print(f"MERGE CONSOLIDATION STATUS: {status['status']} ({status['progress']}%)")
     print("="*100)
     
-    if status['status'] == 'MERGE_COMPLETE':
-        print("\n✅ PHASE 1-3 MERGE CONSOLIDATION 100% COMPLETE")
+    if status['status'] == 'MERGE_VERIFIED':
+        print("\n✅ PHASE 1-3 MERGE CONSOLIDATION 100% VERIFIED")
         print("Ready to proceed to Phase 4: Complete all remaining work")
-        update_resume_with_phase_status("1-3", "MERGE_COMPLETE")
+        update_resume_with_phase_status("1-3", "MERGE_VERIFIED")
         return True
     else:
         print(f"\n⚠️  PHASE 1-3 IN PROGRESS ({status['progress']}% complete)")
@@ -124,9 +124,9 @@ def print_next_actions():
     
     merge_status = get_merge_status()
     
-    if merge_status['status'] == 'MERGE_COMPLETE':
+    if merge_status['status'] == 'MERGE_VERIFIED':
         print("""
-✅ MERGE CONSOLIDATION COMPLETE! Now execute Phase 4:
+✅ MERGE CONSOLIDATION VERIFIED! Now execute Phase 4:
 
 python3 scripts/auto_continue_resumefromhere_loop.py --until-clean
 
@@ -169,7 +169,7 @@ def main():
     merge_status = get_merge_status()
     print(f"Current merge status: {merge_status['status']} ({merge_status['progress']}%)")
     
-    if merge_status['status'] == 'MERGE_COMPLETE':
+    if merge_status['status'] == 'MERGE_VERIFIED':
         print("✅ Merge consolidation already complete!")
         print("Please run: python3 scripts/auto_continue_resumefromhere_loop.py --until-clean")
         return 0

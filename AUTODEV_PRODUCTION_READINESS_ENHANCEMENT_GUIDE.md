@@ -402,12 +402,12 @@ Quantum multi orchestra intelligence (QMOI) integrates this automation with quan
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:25.973687Z
-- production status: ✅ production-ready
-- status tags: production, production-ready
+- timestamp: 2026-06-28T19:36:36.732547Z
+- production status: ⚠️ mixed production markers
+- status tags: mixed, nonproduction, production, review
 - lines: 416
-- words: 1811
-- characters: 14049
+- words: 1815
+- characters: 14070
 - headings: 69
 - links: 0
 - images: 0

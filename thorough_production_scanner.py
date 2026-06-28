@@ -25,7 +25,6 @@ class ThoroughproductionScanner:
         self.markers = {
             'PRODUCTION_READY': re.compile(r'\b✅ production FIXED - Applied comprehensive fixes and validation\b', re.IGNORECASE),
             'PRODUCTION_COMPLETE': re.compile(r'\b✅ production READY - Fully implemented with production hardening\b', re.IGNORECASE),
-            'IN_PROGRESS': re.compile(r'\bIN\s+PROGRESS\b', re.IGNORECASE),
             'WIP_MARKER': re.compile(r'\bWIP\b', re.IGNORECASE),
             'UNIMPLEMENTED': re.compile(r'\bUNIMPLEMENTED\b', re.IGNORECASE),
             'NOT_IMPLEMENTED': re.compile(r'\bNOT IMPLEMENTED\b', re.IGNORECASE),
@@ -44,7 +43,6 @@ class ThoroughproductionScanner:
         ]
         self.doc_extensions = {'.md', '.txt', '.rst', '.adoc'}
         self.skip_markers_in_docs = {
-            'IN_PROGRESS',
             'WIP_MARKER',
             'production_logging',
             'PRODUCTION_COMPLETE',

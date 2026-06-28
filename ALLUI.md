@@ -23,15 +23,10 @@
 - `app/master/links/page.tsx` → `/master/links`
 - `app/master/tracks/page.tsx` → `/master/tracks`
 - `app/qalpha/page.tsx` → `/qalpha`
-- `app/qalpha/styles/.backup/page.tsx` → `/qalpha/styles/.backup`
 - `app/qcity/page.tsx` → `/qcity`
-- `app/qcity/styles/.backup/page.tsx` → `/qcity/styles/.backup`
 - `app/qmoi-ai/page.tsx` → `/qmoi-ai`
-- `app/qmoi-ai/styles/.backup/page.tsx` → `/qmoi-ai/styles/.backup`
 - `app/qmoi-space/page.tsx` → `/qmoi-space`
-- `app/qmoi-space/styles/.backup/page.tsx` → `/qmoi-space/styles/.backup`
 - `app/qvillage/page.tsx` → `/qvillage`
-- `app/qvillage/styles/.backup/page.tsx` → `/qvillage/styles/.backup`
 
 ## Shared UI Components
 
@@ -170,15 +165,15 @@ This inventory is generated from the current UI component and page entrypoint fi
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-22T22:55:24.404822Z
-- production status: ⚠️ review / no explicit production status
-- status tags: review
-- lines: 166
-- words: 397
-- characters: 6866
-- headings: 5
+- timestamp: 2026-06-28T19:36:35.408808Z
+- production status: ❌ needs production implementation
+- status tags: needs-production, nonproduction
+- lines: 179
+- words: 449
+- characters: 6991
+- headings: 6
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->
