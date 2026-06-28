@@ -11,6 +11,14 @@ AUTOMATION UPDATE
 - Added workspace settings and extension recommendations under `.vscode/`.
 - Updated `.devcontainer/devcontainer.json` to invoke the open-continue helper on start.
 
+NEW: Full auto-start workflow
+- Added `.devcontainer/ensure-ollama.sh` to install/start Ollama and pull models when needed.
+- Added `.devcontainer/run-bulk-once.sh` to run the consolidation and merge scripts automatically after start.
+- Updated `postStartCommand` in `.devcontainer/devcontainer.json` to run these helpers in order: ensure Ollama, start auto-continue daemon, attempt to open Continue, then run bulk pass.
+
+Caveats:
+- Some Codespace VS Code CLI builds ignore `--command`, preventing programmatic focus of the Continue panel. The devcontainer still auto-installs the extension and the model; open Continue manually via Ctrl+I if the panel doesn't appear.
+
 To run the consolidation and regenerate canonical docs now:
 ```bash
 python3 scripts/consolidate_api_endpoints.py
