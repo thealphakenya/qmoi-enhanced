@@ -18,7 +18,8 @@
     "-c",
     "mkdir -p /workspace/logs /workspace/STABLE /workspace/.cache /workspace/.vscode-server"
   ],
-  "postCreateCommand": "bash .prodcontainer/prodcontainer-init.sh && curl -fsSL https://ollama.com/install.sh | sh && ollama serve > /dev/null 2>&1 & sleep 5 && ollama pull qwen2.5-coder:3b",
+  "postCreateCommand": "bash .prodcontainer/prodcontainer-init.sh && curl -fsSL https://ollama.com/install.sh | sh && ollama serve > /dev/null 2>&1 & sleep 5 && ollama pull qwen2.5-coder:3b && bash .devcontainer/start-auto-continue.sh",
+  "postStartCommand": "bash .devcontainer/start-auto-continue.sh",
   "updateContentCommand": "bash .prodcontainer/prodcontainer-update.sh",
   "customizations": {
     "vscode": {
@@ -97,7 +98,10 @@
   ],
   "containerEnv": {
     "OLLAMA_KEEP_ALIVE": "-1",
-    "OLLAMA_FLASH_ATTENTION": "1"
+    "OLLAMA_FLASH_ATTENTION": "1",
+    "AUTO_CONTINUE_ENABLED": "true",
+    "AUTO_CONTINUE_CHECK_INTERVAL": "10",
+    "AUTO_CONTINUE_MAX_RESTARTS": "5"
   },
   "shutdownAction": "stopContainer",
   "production": true,
