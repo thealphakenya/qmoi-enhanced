@@ -1,44 +1,8 @@
 # Application Routes
 
-**Last Generated:** 2026-06-28T19:35:58.883824Z
+**Last Generated:** 2026-06-28T23:46:01.692688Z
 
 Complete reference of all application routes and navigation paths.
-
-## 🤖 Local Ollama AI Routes (Free Production Agent)
-
-**Service:** Running on `localhost:11434` (persistent background daemon)
-
-### Route Mapping
-
-| Service | Route | Port | Status | Persistence |
-|---------|-------|------|--------|-------------|
-| Ollama Server | `http://localhost:11434` | 11434 | ✅ Running | Docker Volume (`ollama_data`) |
-| Model | `qwen2.5-coder:3b` | 11434 | ✅ Loaded in RAM | Persistent across rebuilds |
-| Continue Extension | Localhost | 11434 | ✅ Connected | Via VS Code config.json |
-
-### Ollama Service Routes
-
-- **Service Discovery**: `GET http://localhost:11434/api/tags`
-- **Code Generation**: `POST http://localhost:11434/api/generate`
-- **Chat/Assistance**: `POST http://localhost:11434/api/chat`
-- **Embeddings**: `POST http://localhost:11434/api/embed`
-
-### Integration Routes
-
-- **Continue Config File**: `.continue/config.json` → `{ provider: "ollama", model: "qwen2.5-coder:3b" }`
-- **Devcontainer Setup**: `.devcontainer/devcontainer.json` → Auto-installs Ollama + model
-- **Model Cache**: `/root/.ollama` → Persistent Docker volume (`ollama_data`)
-
-### Startup Sequence
-
-1. **Container Boot** → `.devcontainer/devcontainer.json` postCreateCommand triggers
-2. **Ollama Installation** → `curl -fsSL https://ollama.com/install.sh | sh`
-3. **Service Start** → `ollama serve > /dev/null 2>&1 &`
-4. **Model Pull** → `ollama pull qwen2.5-coder:3b` (auto-downloaded ~2GB)
-5. **Environment Setup** → `OLLAMA_KEEP_ALIVE=-1` (keeps model in RAM)
-6. **Ready for Continue** → Connect VS Code via `localhost:11434`
-
----
 
 ## Routes
 
@@ -402,21 +366,3 @@ Complete reference of all application routes and navigation paths.
 - [ENDPOINTS.md](ENDPOINTS.md) - REST endpoints
 - [WEBHOOKS.md](WEBHOOKS.md) - WebSocket routes
 
-
-<!-- LION_VALIDATION_START -->
-## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
-
-- validated: yes
-- validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-28T19:36:41.616306Z
-- production status: ❌ needs production implementation
-- status tags: needs-production, nonproduction
-- lines: 368
-- words: 739
-- characters: 9330
-- headings: 3
-- links: 3
-- images: 0
-- tables: 0
-- lion validation block: inserted
-<!-- LION_VALIDATION_END -->

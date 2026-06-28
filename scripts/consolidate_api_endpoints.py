@@ -1,5 +1,81 @@
 #!/usr/bin/env python3
 """
+Scan repository for common API, endpoint, and route patterns and generate
+API.md, ENDPOINTS.md, and ROUTES.md under the repo root. This is a best-effort
+assembler that aggregates discovered items for manual review.
+"""
+import re
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+IGNORE_DIRS = {".git", "node_modules", ".venv", "venv", "dist", "build"}
+
+route_patterns = [
+    re.compile(r"app\.(get|post|put|delete|patch)\(['\"]([^'\"]+)"),
+    re.compile(r"@app\.route\(['\"]([^'\"]+)") ,
+    re.compile(r"@app\.(get|post|put|delete|patch)\(['\"]([^'\"]+)") ,
+    re.compile(r"router\.(get|post|put|delete|patch)\(['\"]([^'\"]+)") ,
+]
+
+endpoints = set()
+apis = set()
+routes = set()
+
+def should_scan(path: Path):
+    parts = set(path.parts)
+    return not (parts & IGNORE_DIRS)
+
+def scan_file(path: Path):
+    try:
+        text = path.read_text(errors='ignore')
+    except Exception:
+        return
+    for p in route_patterns:
+        for m in p.finditer(text):
+            # group may be (method, path) or (path,)
+            if len(m.groups()) >= 2:
+                method = m.group(1)
+                pth = m.group(2)
+            else:
+                method = ""
+                pth = m.group(1)
+            routes.add(f"{method.upper()} {pth}".strip())
+            endpoints.add(pth)
+            apis.add(f"{path.relative_to(ROOT)}")
+
+def scan():
+    for p in ROOT.rglob('*'):
+        if p.is_file() and should_scan(p):
+            scan_file(p)
+
+def write_md():
+    (ROOT / 'API.md').write_text('# API Inventory\n\n')
+    with (ROOT / 'API.md').open('a') as f:
+        f.write('## Source files containing API/route code\n\n')
+        for a in sorted(apis):
+            f.write(f'- {a}\n')
+
+    (ROOT / 'ENDPOINTS.md').write_text('# Endpoints Inventory\n\n')
+    with (ROOT / 'ENDPOINTS.md').open('a') as f:
+        for e in sorted(endpoints):
+            f.write(f'- {e}\n')
+
+    (ROOT / 'ROUTES.md').write_text('# Routes Inventory\n\n')
+    with (ROOT / 'ROUTES.md').open('a') as f:
+        for r in sorted(routes):
+            f.write(f'- {r}\n')
+
+def main():
+    print('Scanning repository...')
+    scan()
+    print(f'Found {len(apis)} source files, {len(endpoints)} endpoints, {len(routes)} routes')
+    write_md()
+    print('Wrote API.md, ENDPOINTS.md, ROUTES.md')
+
+if __name__ == '__main__':
+    main()
+#!/usr/bin/env python3
+"""
 API and Endpoints consolidation script.
 Generates/updates API.md (main), APIs_1.md, ENDPOINTS.md, and ROUTES.md files.
 Consolidates all API documentation ensuring no duplication and complete coverage.

@@ -178,6 +178,13 @@ tail -f ~/.ollama/logs/
 
 ## 5. Troubleshooting
 
+### Verified environment status (2026-06-28)
+- Ollama is now running locally at http://127.0.0.1:11434
+- The model qwen2.5-coder:3b is installed and responding to requests
+- Continue is configured to use the local Ollama endpoint via ~/.continue/config.json
+- The workspace is ready for Continue-based bulk operations
+
+
 | Problem | Solution |
 |---------|----------|
 | **Continue shows "No model available"** | Verify Ollama is running: `curl http://localhost:11434/api/tags` |
@@ -218,6 +225,28 @@ Chat interface (similar to OpenAI)
 ```
 
 ### Update ROUTES.md
+
+## 7. Automation & Devcontainer Integration
+
+To ensure every Codespace automatically installs and configures Ollama and the Continue extension, this repository includes devcontainer automation and helper scripts.
+
+Files added:
+- `.devcontainer/open-continue.sh` — best-effort helper that issues VS Code CLI commands to open the Continue panel after the container starts.
+- `scripts/consolidate_api_endpoints.py` — scans the repo and regenerates `API.md`, `ENDPOINTS.md`, and `ROUTES.md`.
+- `.vscode/settings.json` and `.vscode/extensions.json` — workspace settings and extension recommendations.
+
+Devcontainer behavior:
+- `.devcontainer/devcontainer.json` runs `start-auto-continue.sh` on start and also invokes `open-continue.sh` to attempt to focus the Continue panel.
+- The container mounts `ollama_data` so models persist across rebuilds and uses `postCreateCommand` to install Ollama and pull `qwen2.5-coder:3b`.
+
+How to regenerate docs manually:
+```bash
+python3 scripts/consolidate_api_endpoints.py
+git add API.md ENDPOINTS.md ROUTES.md && git commit -m "chore(docs): regenerate api/endpoints/routes"
+```
+
+If the Continue panel does not open automatically on your Codespace, open the Continue view manually (Ctrl+I) — the extension will be installed automatically by the devcontainer and the model will be available at `http://localhost:11434`.
+
 Add routing information:
 ```
 ## Local AI Routes

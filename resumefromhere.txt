@@ -1,8 +1,26 @@
 QMOI BULK CONTINUATION TRACKER
 ==============================
 
-Last updated: 2026-06-28T23:06:00Z
-Status: CONTINUE EXTENSION FULLY SET UP & READY ✅
+Last updated: 2026-06-28T23:32:00Z
+Status: OLLAMA VERIFIED + CONTINUE READY ✅
+
+AUTOMATION UPDATE
+-----------------
+- Added `.devcontainer/open-continue.sh` to attempt opening Continue on container start.
+- Added `scripts/consolidate_api_endpoints.py` to generate `API.md`, `ENDPOINTS.md`, and `ROUTES.md` automatically.
+- Added workspace settings and extension recommendations under `.vscode/`.
+- Updated `.devcontainer/devcontainer.json` to invoke the open-continue helper on start.
+
+To run the consolidation and regenerate canonical docs now:
+```bash
+python3 scripts/consolidate_api_endpoints.py
+```
+
+The automation aims to ensure that on any Codespace for this repo, Ollama will be installed (via `postCreateCommand`), the auto-continue daemon will start, and Continue will be installed and (best-effort) opened. If automatic open fails, open the Continue panel manually (Ctrl+I).
+
+OPEN ATTEMPT STATUS
+-------------------
+- A best-effort helper script `.devcontainer/open-continue.sh` was added and invoked. In this Codespace the `code` CLI reports that `--command` is not supported, so automatically focusing the Continue panel is not available here. The extension is still installed automatically by the devcontainer and will be available in the VS Code UI — open it with Ctrl+I.
 
 CONTINUE EXTENSION SETUP (COMPLETED)
 -------------------------------------
@@ -17,20 +35,21 @@ CONTINUE EXTENSION SETUP (COMPLETED)
 
 SYSTEM STATUS
 -------------
-✅ Ollama + Auto-Continue Daemon: Installed and configured
-✅ Continue Extension: Fully set up with all configuration files
+✅ Ollama service: Running locally on localhost:11434
+✅ Model: qwen2.5-coder:3b pulled and responding
+✅ Continue Extension: Configured for local Ollama in ~/.continue/config.json
 ✅ Bulk Workflow System: Full tracking and checkpointing enabled
 ✅ Documentation: Complete guides for all bulk operations
-✅ Configuration: .continue/config.json fully configured
-✅ Automation: Auto-continue daemon 24/7 monitoring and auto-restart
+✅ Configuration: .continue/config.json verified for bulk commands
+✅ Automation: Local daemon startup path prepared and verified
 
 CONTINUE NOW READY FOR USE
 ---------------------------
 ✅ Extension installed and configured
-✅ Config files copied to ~/.continue/
+✅ Config files present in ~/.continue/
 ✅ 8 custom bulk commands ready
-✅ Ollama endpoint configured (localhost:11434)
-✅ Tab autocomplete enabled (will work after rebuild)
+✅ Ollama endpoint verified (localhost:11434)
+✅ Tab autocomplete model configured for Ollama
 ✅ Multi-file processing enabled
 ✅ Specialized bulk system message active
 
