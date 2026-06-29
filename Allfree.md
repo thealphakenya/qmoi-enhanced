@@ -259,8 +259,10 @@ python3 scripts/consolidate_api_endpoints.py
 
 ### Recovery and stability notes
 - The startup scripts use lock files so repeated lifecycle events do not retrigger the same setup repeatedly.
+- The devcontainer now uses a non-blocking bootstrap entry point so installs and model pulls do not hang the container during startup.
 - The devcontainer is configured to run the startup helpers on create, start, and attach events to recover from transient restarts.
 - If the panel does not open automatically in a given Codespace build, the extension is still installed and available in the VS Code UI; use Ctrl+I to open it.
+- Ollama and Continue are treated as persistent state: once installed and verified, the scripts skip redundant reinstall work and prefer recovery over fresh installation.
 
 ## 8. Continue: Setup, Usage, and Always-Automatic Configuration
 
