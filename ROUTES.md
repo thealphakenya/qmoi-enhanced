@@ -1,6 +1,6 @@
 # Application Routes
 
-**Last Generated:** 2026-06-28T23:46:01.692688Z
+**Last Generated:** 2026-06-29T00:02:57.315802Z
 
 Complete reference of all application routes and navigation paths.
 

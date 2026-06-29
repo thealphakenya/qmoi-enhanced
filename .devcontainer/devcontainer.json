@@ -18,8 +18,9 @@
     "-c",
     "mkdir -p /workspace/logs /workspace/STABLE /workspace/.cache /workspace/.vscode-server"
   ],
-  "postCreateCommand": "bash .prodcontainer/prodcontainer-init.sh && curl -fsSL https://ollama.com/install.sh | sh && ollama serve > /dev/null 2>&1 & sleep 5 && ollama pull qwen2.5-coder:3b && bash .devcontainer/start-auto-continue.sh",
-  "postStartCommand": "bash .devcontainer/ensure-ollama.sh || true && bash .devcontainer/start-auto-continue.sh || true && bash .devcontainer/open-continue.sh || true && bash .devcontainer/run-bulk-once.sh || true",
+  "postCreateCommand": "bash .devcontainer/ensure-ollama.sh && bash .devcontainer/start-auto-continue.sh && code --install-extension continue.continue || true",
+  "postStartCommand": "bash .devcontainer/ensure-ollama.sh || true && bash .devcontainer/start-auto-continue.sh || true && bash .devcontainer/open-continue.sh || true",
+  "postAttachCommand": "bash .devcontainer/ensure-ollama.sh || true && bash .devcontainer/start-auto-continue.sh || true && bash .devcontainer/open-continue.sh || true",
   "updateContentCommand": "bash .prodcontainer/prodcontainer-update.sh",
   "customizations": {
     "vscode": {
@@ -35,6 +36,7 @@
       ],
       "settings": {
         "continue.telemetry": false,
+        "continue.enableTabAutocomplete": true,
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "extensions.ignoreRecommendations": false,

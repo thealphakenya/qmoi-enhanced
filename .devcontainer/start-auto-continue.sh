@@ -1,23 +1,18 @@
 #!/bin/bash
+set -euo pipefail
 
-# Startup script for Ollama auto-continue daemon
-# Automatically started when Codespace loads
+PID_FILE="/tmp/auto-continue-daemon.pid"
+LOG_FILE="/tmp/auto-continue.log"
 
-set -e
+if [ -f "$PID_FILE" ] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null; then
+  echo "Auto-continue daemon already running"
+  exit 0
+fi
 
 echo "🚀 Starting Ollama Auto-Continue Daemon..."
-
-# Make daemon executable
 chmod +x "$(dirname "$0")/auto-continue-daemon.sh"
-
-# Start the daemon in background
-"$(dirname "$0")/auto-continue-daemon.sh" > /tmp/auto-continue.log 2>&1 &
+nohup bash "$(dirname "$0")/auto-continue-daemon.sh" > "$LOG_FILE" 2>&1 &
 DAEMON_PID=$!
-
+echo "$DAEMON_PID" > "$PID_FILE"
 echo "✅ Auto-Continue Daemon started (PID: $DAEMON_PID)"
-echo "📝 Logs: tail -f $HOME/.ollama/logs/auto-continue.log"
-
-# Save daemon PID for later management
-echo $DAEMON_PID > /tmp/auto-continue-daemon.pid
-
 exit 0

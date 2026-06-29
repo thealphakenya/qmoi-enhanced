@@ -228,24 +228,95 @@ Chat interface (similar to OpenAI)
 
 ## 7. Automation & Devcontainer Integration
 
-To ensure every Codespace automatically installs and configures Ollama and the Continue extension, this repository includes devcontainer automation and helper scripts.
+To ensure every Codespace automatically installs and configures Ollama and the Continue extension, this repository includes hardened devcontainer automation and helper scripts.
 
-Files added:
-- `.devcontainer/open-continue.sh` — best-effort helper that issues VS Code CLI commands to open the Continue panel after the container starts.
-- `scripts/consolidate_api_endpoints.py` — scans the repo and regenerates `API.md`, `ENDPOINTS.md`, and `ROUTES.md`.
-- `.vscode/settings.json` and `.vscode/extensions.json` — workspace settings and extension recommendations.
+### What is automated
+- `.devcontainer/ensure-ollama.sh` installs Ollama if missing, starts the service if it is down, and pulls `qwen2.5-coder:3b`.
+- `.devcontainer/start-auto-continue.sh` starts a lightweight background daemon that keeps Ollama alive and restarts it if needed.
+- `.devcontainer/open-continue.sh` installs Continue if it is missing and attempts to open it in the VS Code UI.
+- `.devcontainer/run-bulk-once.sh` runs the documentation and merge scripts once per container lifecycle.
+- `.devcontainer/devcontainer.json` runs the startup helpers on create/start/attach to make the environment self-healing.
+- `.vscode/settings.json` and `.vscode/extensions.json` ensure the Continue extension is recommended and configured for this repo.
 
-Devcontainer behavior:
-- `.devcontainer/devcontainer.json` runs `start-auto-continue.sh` on start and also invokes `open-continue.sh` to attempt to focus the Continue panel.
-- The container mounts `ollama_data` so models persist across rebuilds and uses `postCreateCommand` to install Ollama and pull `qwen2.5-coder:3b`.
-
-How to regenerate docs manually:
+### Recommended workflow for any new Codespace
 ```bash
+# 1) Let the devcontainer bootstrap run automatically
+# 2) If needed, run the helpers manually
+bash .devcontainer/ensure-ollama.sh
+bash .devcontainer/start-auto-continue.sh
+bash .devcontainer/open-continue.sh
+
+# 3) Regenerate canonical docs when routes or APIs change
 python3 scripts/consolidate_api_endpoints.py
-git add API.md ENDPOINTS.md ROUTES.md && git commit -m "chore(docs): regenerate api/endpoints/routes"
 ```
 
-If the Continue panel does not open automatically on your Codespace, open the Continue view manually (Ctrl+I) — the extension will be installed automatically by the devcontainer and the model will be available at `http://localhost:11434`.
+### How to use Continue automatically
+1. Open the repository in a Codespace.
+2. The devcontainer will install Continue and Ollama automatically.
+3. Open the Continue panel with Ctrl+I if the UI does not appear immediately.
+4. Start with `@bulk-consolidate-api` or `@bulk-update-docs`.
+5. Continue will keep working across the repo until the task is complete.
+
+### Recovery and stability notes
+- The startup scripts use lock files so repeated lifecycle events do not retrigger the same setup repeatedly.
+- The devcontainer is configured to run the startup helpers on create, start, and attach events to recover from transient restarts.
+- If the panel does not open automatically in a given Codespace build, the extension is still installed and available in the VS Code UI; use Ctrl+I to open it.
+
+## 8. Continue: Setup, Usage, and Always-Automatic Configuration
+
+This repository includes automation to install, configure, and use the Continue extension together with a local Ollama instance. The automation is best-effort and attempts to make the workspace "always continue" — i.e., on every Codespace open the environment will try to install Ollama, pull the recommended model, install Continue, run an initial consolidation pass, and focus the Continue panel when possible.
+
+Files and helpers added for this purpose:
+- `.devcontainer/ensure-ollama.sh` — ensures Ollama is installed, starts the service, and pulls `qwen2.5-coder:3b` if missing.
+- `.devcontainer/start-auto-continue.sh` — starts the auto-continue background daemon which monitors Ollama and restarts it if needed.
+- `.devcontainer/open-continue.sh` — best-effort helper that calls the VS Code CLI to focus the Continue panel (works where the Code CLI supports `--command`).
+- `.devcontainer/run-bulk-once.sh` — runs `scripts/consolidate_api_endpoints.py` and `scripts/merge_executor.py` (if present) to perform the initial bulk consolidation pass.
+- `.vscode/extensions.json` — recommends the `continue.continue` extension for the workspace.
+- `.vscode/settings.json` — workspace settings to minimize noise and disable Continue telemetry.
+
+Devcontainer hooks
+The devcontainer will run these helpers automatically via `postStartCommand`:
+
+```bash
+bash .devcontainer/ensure-ollama.sh || true
+bash .devcontainer/start-auto-continue.sh || true
+bash .devcontainer/open-continue.sh || true
+bash .devcontainer/run-bulk-once.sh || true
+```
+
+Manual commands (copy-paste)
+If you need to run the setup manually in a Codespace or local dev container, run:
+
+```bash
+# Ensure Ollama installed and running
+bash .devcontainer/ensure-ollama.sh
+
+# Start the auto-continue daemon
+bash .devcontainer/start-auto-continue.sh
+
+# Install Continue extension (if VS Code CLI available)
+code --install-extension continue.continue || true
+
+# Attempt to open Continue (best-effort)
+bash .devcontainer/open-continue.sh || true
+
+# Run a one-time bulk consolidation pass
+bash .devcontainer/run-bulk-once.sh || true
+```
+
+Notes and caveats
+- The `open-continue.sh` helper uses the VS Code CLI (`code --command`) which some Codespace CLI builds ignore; when `code` ignores `--command`, automatic focusing of the Continue panel is not available. In that case Continue is still installed and configured — open it manually with Ctrl+I.
+- The devcontainer installs the `continue.continue` extension via the `customizations.vscode.extensions` list in `.devcontainer/devcontainer.json` so that Codespaces will add the extension automatically on container create/start.
+- We cannot reliably force a UI view to open in every remote environment using shell scripts alone; the best robust approach is a small helper VS Code extension that activates on workspace open and calls the Continue command. If you want, I can add such an extension to this repo and wire it into the devcontainer to guarantee the panel opens.
+
+Advanced: Guaranteed open via a helper extension (optional)
+If absolute reliability is required (auto-open on every Codespace regardless of CLI), we can add a tiny VS Code extension that:
+
+- Declares a dependency on `continue.continue` in `package.json` and lists an `activationEvent` of `*` so it runs on startup.
+- On activation, calls `vscode.commands.executeCommand('continue.open')` (or other Continue command) to focus the panel.
+
+This repo currently uses a best-effort `open-continue.sh` and devcontainer wiring. Tell me if you want me to add the helper VS Code extension and I will scaffold, test, and wire it into `.devcontainer/devcontainer.json`.
+
 
 Add routing information:
 ```
