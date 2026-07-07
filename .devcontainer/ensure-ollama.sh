@@ -3,8 +3,11 @@ set -euo pipefail
 
 OLLAMA_HOST="${OLLAMA_HOST:-http://127.0.0.1:11434}"
 LOG_DIR="${HOME}/.ollama/logs"
+STATE_DIR="${HOME}/.ollama/state"
 LOCK_FILE="/tmp/ensure-ollama.lock"
-mkdir -p "$LOG_DIR"
+INSTALL_MARKER="$STATE_DIR/installed"
+MODEL_MARKER="$STATE_DIR/qwen2.5-coder:3b"
+mkdir -p "$LOG_DIR" "$STATE_DIR"
 
 if [ -f "$LOCK_FILE" ] && kill -0 "$(cat "$LOCK_FILE")" 2>/dev/null; then
   echo "ensure-ollama already running"
@@ -16,35 +19,106 @@ trap 'rm -f "$LOCK_FILE"' EXIT
 
 echo "→ Ensuring Ollama is installed and running..."
 
-if ! command -v ollama >/dev/null 2>&1; then
-  echo "ollama not found — attempting installer"
-  curl -fsSL https://ollama.com/install.sh | sh || true
-  if ! command -v ollama >/dev/null 2>&1; then
-    if [ -x /usr/bin/ollama ]; then
-      ln -sf /usr/bin/ollama /usr/local/bin/ollama || true
-    fi
+export LOG_DIR STATE_DIR
+
+validate_ollama_binary() {
+  local cmd="$1"
+  [ -z "$cmd" ] && return 1
+  if "$cmd" --version >/dev/null 2>&1; then
+    return 0
   fi
+  if [ -x /lib/libgcompat.so.0 ] && LD_PRELOAD=/lib/libgcompat.so.0 "$cmd" --version >/dev/null 2>&1; then
+    return 0
+  fi
+  return 1
+}
+
+resolve_ollama_cmd() {
+  local candidate
+  for candidate in "$(command -v ollama 2>/dev/null || true)" /usr/local/bin/ollama /usr/bin/ollama; do
+    [ -z "$candidate" ] && continue
+    if [ -x "$candidate" ] && validate_ollama_binary "$candidate"; then
+      printf '%s' "$candidate"
+      return 0
+    fi
+  done
+  return 1
+}
+
+OLLAMA_CMD="$(resolve_ollama_cmd || true)"
+
+if [ ! -f "$INSTALL_MARKER" ]; then
+  if [ -z "$OLLAMA_CMD" ]; then
+    echo "ollama not found — attempting installer"
+    curl -fsSL https://ollama.com/install.sh | sh || true
+    OLLAMA_CMD="$(resolve_ollama_cmd || true)"
+  fi
+
+  if [ -z "$OLLAMA_CMD" ] && [ -x /usr/bin/ollama ] && validate_ollama_binary /usr/bin/ollama; then
+    ln -sf /usr/bin/ollama /usr/local/bin/ollama || true
+    OLLAMA_CMD="/usr/local/bin/ollama"
+  fi
+
+  if [ -n "$OLLAMA_CMD" ]; then
+    touch "$INSTALL_MARKER"
+    echo "Installed Ollama and marked state"
+  fi
+else
+  echo "Ollama install marker found; skipping reinstall"
 fi
 
 if curl -sS "$OLLAMA_HOST/api/tags" >/dev/null 2>&1; then
   echo "Ollama API reachable"
 else
-  echo "Starting ollama serve in background"
-  nohup ollama serve > "$LOG_DIR/serve.log" 2>&1 &
-  for _ in $(seq 1 20); do
-    if curl -sS "$OLLAMA_HOST/api/tags" >/dev/null 2>&1; then
-      break
+  if [ -n "$OLLAMA_CMD" ]; then
+    echo "Starting Ollama serve in background"
+    if validate_ollama_binary "$OLLAMA_CMD"; then
+      nohup "$OLLAMA_CMD" serve > "$LOG_DIR/serve.log" 2>&1 &
+    elif [ -x /lib/libgcompat.so.0 ]; then
+      nohup env LD_PRELOAD=/lib/libgcompat.so.0 "$OLLAMA_CMD" serve > "$LOG_DIR/serve.log" 2>&1 &
+    else
+      echo "Ollama command found but unable to execute. Alpine compatibility may be required."
     fi
-    sleep 1
-  done
+    for _ in $(seq 1 25); do
+      if curl -sS "$OLLAMA_HOST/api/tags" >/dev/null 2>&1; then
+        break
+      fi
+      sleep 1
+    done
+  else
+    echo "Ollama command not available; cannot start service"
+  fi
 fi
 
 if curl -sS "$OLLAMA_HOST/api/tags" | grep -q 'qwen2.5-coder:3b'; then
   echo "Model qwen2.5-coder:3b present"
+  touch "$MODEL_MARKER"
 else
-  echo "Pulling model qwen2.5-coder:3b (may take several minutes)"
-  ollama pull qwen2.5-coder:3b > "$LOG_DIR/model-pull.log" 2>&1 || true
+  if [ ! -f "$MODEL_MARKER" ]; then
+    echo "Model pull queued for background (non-blocking)"
+    if [ -n "$OLLAMA_CMD" ]; then
+      nohup bash -lc 'sleep 5; echo "→ Pulling model qwen2.5-coder:3b..." >> "$LOG_DIR/model-pull.log"; "$OLLAMA_CMD" pull qwen2.5-coder:3b >> "$LOG_DIR/model-pull.log" 2>&1 && touch "$MODEL_MARKER"' > /dev/null 2>&1 < /dev/null &
+    else
+      echo "Cannot queue model pull: Ollama command not available"
+    fi
+  else
+    echo "Model marker exists; skipping redundant pull"
+  fi
+fi
+
+if curl -sS "$OLLAMA_HOST/api/tags" >/dev/null 2>&1; then
+  echo "Ollama verified and ready"
+else
+  echo "Ollama did not become ready; check logs"
 fi
 
 echo "→ Ollama ensured"
+# update resumefromhere tracker about Ollama status
+if [ -x "$(dirname "$0")/update-resume.sh" ]; then
+  if curl -sS "$OLLAMA_HOST/api/tags" >/dev/null 2>&1; then
+    bash "$(dirname "$0")/update-resume.sh" "Ollama ensured and API reachable" || true
+  else
+    bash "$(dirname "$0")/update-resume.sh" "Ollama install present but service not reachable or incompatible on this host" || true
+  fi
+fi
 exit 0

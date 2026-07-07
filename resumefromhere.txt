@@ -312,13 +312,13 @@ MERGE STATS:
 - Duplicate app entry points identified: 5/5
 - Duplicate components found: 101
 - Duplicate API routes found: 0
-- QCamera references found: 97
+- QCamera references found: 103
 - Files consolidated: 0
 - Files deleted: 0
 - Space saved: 0 MB
 
 MERGE EXECUTION SUMMARY:
-- Timestamp: 2026-06-29T00:59:37.621990Z
+- Timestamp: 2026-07-07T13:48:35.207546Z
 - phase1_discovery: COMPLETE - Identified duplicates and entry points
 - phase2_components: COMPLETE - Consolidate shared components
 - phase3_api: COMPLETE - Consolidate API routes
@@ -352,3 +352,34 @@ NEXT MERGE ACTIONS:
 - Consolidate shared components into `lib/components/`.
 - Merge duplicate API routes and update API docs.
 - Keep `MERGE.md` updated with every merge finding.
+
+MERGE STATISTICS:
+- Duplicate app entry points: 5 / 5
+- Duplicate components: 115
+- Duplicate API routes: 0
+- QCamera references: 31
+- Estimated consolidation hours: 20
+
+NEXT MERGE ACTIONS:
+- Review duplicate app entry points and choose canonical shells.
+- Consolidate shared components into `lib/components/`.
+- Merge duplicate API routes and update API docs.
+- Keep `MERGE.md` updated with every merge finding.
+
+MERGE STATISTICS:
+- Duplicate app entry points: 5 / 5
+- Duplicate components: 115
+- Duplicate API routes: 0
+- QCamera references: 31
+- Estimated consolidation hours: 20
+
+NEXT MERGE ACTIONS:
+- Review duplicate app entry points and choose canonical shells.
+- Consolidate shared components into `lib/components/`.
+- Merge duplicate API routes and update API docs.
+- Keep `MERGE.md` updated with every merge finding.
+2026-07-07T13:48:35Z - Bulk pass complete
+2026-07-07T13:52:45Z - manual-test from assistant
+2026-07-07T13:53:14Z - verify-ollama: FAILED — Ollama or model not responding; manual investigation required
+2026-07-07T13:56:15Z - verify-ollama: FAILED — Ollama or model not responding; manual investigation required
+2026-07-07T13:57:32Z - Ollama install present but service not reachable or incompatible on this host

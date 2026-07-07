@@ -1,6 +1,6 @@
 {
   "name": "QMOI Enhanced - production prod Container",
-  "image": "mcr.microsoft.com/prodcontainers/base:bullseye",
+  "image": "mcr.microsoft.com/devcontainers/base:bullseye",
   "runArgs": [
     "--cap-add=SYS_ADMIN",
     "--security-opt=apparmor=unconfined",

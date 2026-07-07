@@ -15,4 +15,6 @@ nohup bash "$(dirname "$0")/auto-continue-daemon.sh" > "$LOG_FILE" 2>&1 &
 DAEMON_PID=$!
 echo "$DAEMON_PID" > "$PID_FILE"
 echo "✅ Auto-Continue Daemon started (PID: $DAEMON_PID)"
+# update resume tracker
+bash "$(dirname "$0")/update-resume.sh" "Auto-Continue Daemon started (PID: $DAEMON_PID)" || true
 exit 0
