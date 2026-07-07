@@ -5,7 +5,8 @@
     "--cap-add=SYS_ADMIN",
     "--security-opt=apparmor=unconfined",
     "--memory=4g",
-    "--cpus=2"
+    "--cpus=2",
+    "--restart=unless-stopped"
   ],
   "features": {
     "ghcr.io/prodcontainers/features/github-cli:1": {},
