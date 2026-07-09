@@ -55,7 +55,7 @@
 - Duplicate app entry points: 5/5
 - Duplicate components: 101
 - Duplicate API routes: 0
-- QCamera references: 94
+- QCamera references: 103
 
 ### Duplicate entry points by app
 - qmoi-ai: 10 entry points

@@ -1,8 +1,75 @@
 # Application Routes
 
-**Last Generated:** 2026-06-29T00:02:57.315802Z
+**Last Generated:** 2026-07-09T23:08:49.374520Z
 
 Complete reference of all application routes and navigation paths.
+
+## 🌐 Universal Portal & Authentication Routes
+
+These routes handle authentication, onboarding, and universal app routing:
+
+| Route | Purpose | Auth Required |
+|-------|---------|---|
+| `/` | Home page / redirect | No |
+| `/universal` | Universal login/registration portal | No |
+| `/universal?redirect=/qmoi-ai` | Login with redirect to QMOI AI | No |
+| `/universal?redirect=/qmoi-space` | Login with redirect to QMOI Space | No |
+| `/universal?redirect=/qcity` | Login with redirect to QCity | No |
+| `/universal?redirect=/qvillage` | Login with redirect to QVillage | No |
+| `/universal?redirect=/qalpha` | Login with redirect to QAlpha | No |
+| `/login` | Legacy login page | No |
+| `/register` | User registration | No |
+| `/verify-email` | Email verification page | No |
+| `/forgot-password` | Password recovery | No |
+| `/reset-password` | Password reset | No |
+
+## 📱 Application Routes
+
+### QMOI AI (`/qmoi-ai`)
+- `/qmoi-ai` - Main QMOI AI interface
+- `/qmoi-ai/chat` - Chat interface
+- `/qmoi-ai/settings` - Settings
+- `/qmoi-ai/profile` - User profile
+- `/qmoi-ai/theme` - Theme selection
+
+### QMOI Space (`/qmoi-space`)
+- `/qmoi-space` - Main QMOI Space interface
+- `/qmoi-space/workspace` - Workspace management
+- `/qmoi-space/settings` - Settings
+- `/qmoi-space/profile` - User profile
+- `/qmoi-space/theme` - Theme selection
+
+### QCity (`/qcity`)
+- `/qcity` - Main QCity interface
+- `/qcity/devices` - Device management
+- `/qcity/settings` - Settings
+- `/qcity/profile` - User profile
+- `/qcity/theme` - Theme selection
+
+### QVillage (`/qvillage`)
+- `/qvillage` - Main QVillage interface
+- `/qvillage/models` - Model hub
+- `/qvillage/spaces` - Model spaces
+- `/qvillage/settings` - Settings
+- `/qvillage/profile` - User profile
+- `/qvillage/theme` - Theme selection
+
+### QAlpha (`/qalpha`)
+- `/qalpha` - Main QAlpha learning platform
+- `/qalpha/research` - Research tools
+- `/qalpha/models` - Model development
+- `/qalpha/settings` - Settings
+- `/qalpha/profile` - User profile
+- `/qalpha/theme` - Theme selection
+
+## 🔧 Admin Routes
+
+- `/admin` - Admin dashboard
+- `/admin/master` - Master admin console
+- `/admin/master/login` - Master authentication
+- `/admin/master/activity` - Activity monitoring
+- `/admin/master/security` - Security settings
+- `/admin/master/settings` - Configuration
 
 ## Routes
 

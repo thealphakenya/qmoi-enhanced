@@ -81,6 +81,106 @@ export default function MyApp() {
 }
 ```
 
+## 🎨 Universal Theme System
+
+QMOI provides a unified theme system that persists across all applications. Users select their preferred theme once, and it applies everywhere.
+
+### Theme Storage
+
+- **Storage Key:** `qmoi_theme`
+- **Storage Type:** localStorage (client-side) + auth profile (server-side)
+- **Sync Mechanism:** Persisted via auth session refresh on app change
+- **Persistence:** Theme preference survives across sessions, browsers, and app switching
+
+### Theme Application
+
+Themes are applied through a combination of:
+
+1. **CSS Variables** (`styles/theme.css`)
+   - Light mode: `html.light { --color-bg: #f1f5f9; --color-text: #0f172a; }`
+   - Dark mode: `html.dark { --color-bg: #0f172a; --color-text: #f1f5f9; }`
+   - High-contrast: `html.high-contrast { --color-bg: #000000; --color-text: #ffffff; }`
+
+2. **Next-Themes Provider** (`app/components/theme-provider.tsx`)
+   - Hydration-safe theme loading
+   - System theme preference detection
+   - Theme switching without Flash of Unstyled Content (FOUC)
+
+3. **Tailwind CSS Classes**
+   - Dynamic class application based on selected theme
+   - Responsive layout adjustments for each theme
+   - Accessibility enhancements in high-contrast mode
+
+### Theme Switching Across Apps
+
+When users switch between apps (e.g., from QMOI AI to QCity):
+
+1. Theme preference is **read** from localStorage or user profile
+2. Theme is **applied** immediately on app shell render
+3. User interface **reflects** selected theme without reload
+4. Theme remains **persistent** for future visits
+
+Example flow:
+```
+User in QMOI AI (Dark Theme)
+  → Clicks "Go to QCity"
+  → Navigates to /qcity
+  → QCityShell loads theme from localStorage
+  → Dark theme CSS applied
+  → User sees QCity in dark mode
+```
+
+### High-Contrast Mode
+
+For accessibility and reduced eye strain, the high-contrast theme provides:
+
+- **Pure black background:** RGB(0, 0, 0) for maximum contrast
+- **Pure white text:** RGB(255, 255, 255) for maximum readability
+- **Disabled drop shadows:** Cleaner interface
+- **Thicker borders:** Improved focus visibility
+- **Enhanced button states:** Clear active/hover indicators
+
+Users with visual impairments or preference for extreme contrast can select this mode in the ThemeSelector.
+
+### Privacy Mask Theme Preservation
+
+When privacy mask is enabled (sensitive data hidden), the selected theme is still applied:
+
+- Theme choice remains available in private mode
+- All CSS variables respect the selected theme
+- Text contrast remains accessible even with mask overlay
+
+**Usage in Privacy-Masked Sessions:**
+```
+User selects: High-Contrast theme + Enable Privacy Mask
+  → QM OI shows interface in high-contrast white/black
+  → User preferences are hidden/blurred
+  → Text remains readable with white-on-black contrast
+```
+
+## Integration Checklist
+
+To ensure full theme support across an app:
+
+- ✅ Import and use `useTheme()` hook from next-themes
+- ✅ Apply `ThemeSelector` component in the app shell header or sidebar
+- ✅ Use theme-aware CSS classes (Tailwind: `dark:`, `light:` prefixes)
+- ✅ Test in all three modes: dark, light, high-contrast
+- ✅ Verify theme persists after page refresh
+- ✅ Verify theme persists after navigating to other apps
+- ✅ Ensure text contrast meets WCAG AA standards in all themes
+- ✅ Document theme-specific colors in app's UI markdown file
+
+## Related Documentation
+
+- `app/components/theme/ThemeSelector.tsx` — Component source code
+- `app/components/theme-provider.tsx` — Theme provider implementation
+- `styles/theme.css` — Global theme CSS variables
+- `UNIVERSAL.md` — Universal auth and theme persistence
+- `QMOIAIUI.md`, `QMOISPACEUI.md`, `QCITYUI.md`, `QVILLAGEUI.md`, `QALPHAUI.md` — App-specific theme docs
+}
+```
+
 **Theme CSS Variables:**
 All theme colors are defined in `styles/theme.css` using CSS custom properties that respond to the `[data-theme]` attribute:
 

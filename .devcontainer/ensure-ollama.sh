@@ -8,6 +8,22 @@ LOCK_FILE="/tmp/ensure-ollama.lock"
 INSTALL_MARKER="$STATE_DIR/installed"
 MODEL_MARKER="$STATE_DIR/qwen2.5-coder:3b"
 mkdir -p "$LOG_DIR" "$STATE_DIR"
+export PATH="/usr/local/bin:/usr/bin:/bin:$PATH"
+
+ensure_runtime_compat() {
+  if [ -f /etc/alpine-release ]; then
+    echo "Detected Alpine runtime; installing glibc compatibility layers if needed"
+    if command -v apk >/dev/null 2>&1; then
+      apk add --no-cache gcompat libstdc++ >/dev/null 2>&1 || true
+    fi
+    if [ ! -e /lib64/ld-linux-x86-64.so.2 ] && [ -e /lib/ld-linux-x86-64.so.2 ]; then
+      mkdir -p /lib64
+      ln -sf /lib/ld-linux-x86-64.so.2 /lib64/ld-linux-x86-64.so.2 || true
+    fi
+  fi
+}
+
+ensure_runtime_compat
 
 if [ -f "$LOCK_FILE" ] && kill -0 "$(cat "$LOCK_FILE")" 2>/dev/null; then
   echo "ensure-ollama already running"
@@ -79,7 +95,7 @@ else
     else
       echo "Ollama command found but unable to execute. Alpine compatibility may be required."
     fi
-    for _ in $(seq 1 25); do
+    for _ in $(seq 1 40); do
       if curl -sS "$OLLAMA_HOST/api/tags" >/dev/null 2>&1; then
         break
       fi
@@ -90,7 +106,7 @@ else
   fi
 fi
 
-if curl -sS "$OLLAMA_HOST/api/tags" | grep -q 'qwen2.5-coder:3b'; then
+if curl -sS "$OLLAMA_HOST/api/tags" 2>/dev/null | grep -q 'qwen2.5-coder:3b'; then
   echo "Model qwen2.5-coder:3b present"
   touch "$MODEL_MARKER"
 else

@@ -1,6 +1,5 @@
 {
   "continue.telemetry": false,
-  "extensions.autoUpdate": true,
   "extensions.ignoreRecommendations": false,
   "files.exclude": {
     "**/.git": true,

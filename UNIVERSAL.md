@@ -177,6 +177,122 @@ export default function Page() {
 - Sets `qmoi_lang` localStorage key
 - Updates user profile via `PUT /api/auth/profile` when authenticated
 
+## 🎨 Universal Theme System Integration
+
+The QMOI system provides unified theme management across all applications:
+
+### Theme Persistence Across Apps
+
+**How It Works:**
+1. User selects theme in `/universal` portal → saved to `qmoi_theme` localStorage
+2. User logs in → theme preference loaded from user profile (if previously saved)
+3. User navigates to any app shell (QMOI AI, QCity, QVillage, etc.)
+4. App shell queries localStorage for `qmoi_theme` on load
+5. Theme CSS variables applied immediately on render
+6. Theme remains consistent as user switches between apps
+
+**Supported Themes:**
+- `dark` (default) — Slate-950 background, slate-100 text, violet accents
+- `light` — Slate-100 background, slate-950 text, purple accents  
+- `high-contrast` — Pure black background, white text, high WCAG AAA contrast
+
+### Theme Application in App Shells
+
+All app shells (QMOIAIShell, QMOISpaceShell, QCityShell, QVillageShell, QAlphaShell) include:
+
+```tsx
+// Inside each shell component
+const { theme, resolvedTheme } = useTheme();
+const effectiveTheme = theme === "system" ? resolvedTheme : theme;
+
+// Apply theme-aware CSS classes
+const shellClass = effectiveTheme === "light" 
+  ? "bg-slate-100 text-slate-950" 
+  : effectiveTheme === "high-contrast"
+  ? "bg-black text-white"
+  : "bg-slate-950 text-white"; // dark (default)
+
+// Render ThemeSelector component
+<section>
+  <ThemeSelector mode="compact" /> {/* Allow theme changes */}
+</section>
+```
+
+### ThemeSelector Component Placement
+
+Each app shell must include the `ThemeSelector` component to allow users to change themes:
+
+- **QMOI AI**: Sidebar → Settings panel or header
+- **QMOI Space**: Collaboration sidebar → Theme section
+- **QCity**: Master controls panel → Settings
+- **QVillage**: Marketplace header → Theme selector
+- **QAlpha**: Research dashboard → Settings
+
+**Component Integration:**
+```tsx
+import ThemeSelector from '@/app/components/theme/ThemeSelector';
+
+// In app shell
+<ThemeSelector mode="compact" /> {/* dropdown */}
+{/* or */}
+<ThemeSelector mode="full" /> {/* button group */}
+```
+
+## 🔄 Auto-Channel Routing
+
+After authentication, users are automatically routed to their target application based on context:
+
+### Routing Behavior
+
+**Standard Flow:**
+1. Unauthenticated user visits any app route
+2. Route guard detects no auth → redirect to `/universal?redirect=/target-path`
+3. User authenticates successfully
+4. System redirects back to original path
+
+**Examples:**
+```
+User visits /qmoi-ai (not logged in)
+  ↓ Redirect to /universal?redirect=/qmoi-ai
+  ↓ User logs in
+  ↓ Redirect back to /qmoi-ai
+  ↓ App shell loads in authenticated state
+
+User visits /qcity (not logged in)
+  ↓ Redirect to /universal?redirect=/qcity
+  ↓ User logs in
+  ↓ Redirect back to /qcity
+  ↓ Role check: if not master → redirect to /qmoi-ai
+```
+
+### Default App Assignment
+
+If no redirect is specified, authenticated users are sent to:
+
+**By Role:**
+- `master` → `/qcity` (command center)
+- `sister` → `/qmoi-space` (collaboration hub)
+- `user` → `/qmoi-ai` (chat interface)
+- `guest` → `/qmoi-ai` (limited chat)
+
+### Theme Preservation in Auto-Channel Flow
+
+When auto-routing to an app, the selected theme is preserved:
+
+1. **In transit:** `qmoi_theme` remains in localStorage
+2. **On app load:** New app shell reads `qmoi_theme` from localStorage  
+3. **Immediate apply:** CSS variables applied before first paint
+4. **No flashing:** No Flash of Unstyled Content (FOUC)
+
+Example:
+```
+User in QCity (Dark theme) → Navigates to QMOI Space
+  ↓ QMOISpaceShell mounts
+  ↓ Reads qmoi_theme="dark" from localStorage
+  ↓ Applies dark CSS variables
+  ↓ User sees QMOI Space in dark theme (seamless transition)
+```
+
 ## Universal Entry Behavior
 
 - The root route `/` now opens the universal auth portal by default via `app/page.tsx`.

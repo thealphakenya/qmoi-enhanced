@@ -1,49 +1,52 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:06.753183 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.613761 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:03.584714 -->
 #!/bin/bash
-# QMOI prod Container Update Script
-# Ensures dependencies are current and system is healthy
+set -euo pipefail
 
-set -e
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+LOG_DIR="${LOG_DIR:-$HOME/.cache/qmoi-devcontainer}"
+LOG_FILE="$LOG_DIR/devcontainer-update.log"
+mkdir -p "$LOG_DIR"
 
-# Colors for output
-BLUE='\033[0;34m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+exec > >(tee -a "$LOG_FILE") 2>&1
 
-echo -e "${BLUE}🔄 QMOI prod Container Update${NC}"
-echo "================================"
+echo "🔄 QMOI devcontainer update"
+echo "Repository: $REPO_ROOT"
 
-LOG_FILE="/workspace/logs/prodcontainer-update.log"
-echo "Update started: $(date)" >> "$LOG_FILE"
+echo "Update started: $(date)"
 
-# Update npm packages
-echo -e "${YELLOW}📦 Updating npm packages...${NC}"
-npm update 2>&1 | tee -a "$LOG_FILE" || echo "npm update completed with some warnings" >> "$LOG_FILE"
+cd "$REPO_ROOT"
 
-# Clear npm cache
-echo -e "${YELLOW}🧹 Clearing npm cache...${NC}"
-npm cache clean --force 2>&1 | tee -a "$LOG_FILE" || echo "Cache clear had issues" >> "$LOG_FILE"
+if command -v npm >/dev/null 2>&1; then
+  if [ -f package.json ]; then
+    if [ -f package-lock.json ]; then
+      echo "Installing Node dependencies with npm ci"
+      npm ci --no-audit --no-fund || true
+    elif [ -d node_modules ]; then
+      echo "Refreshing existing Node dependencies"
+      npm install --no-audit --no-fund || true
+    else
+      echo "Installing Node dependencies with npm install"
+      npm install --no-audit --no-fund || true
+    fi
 
-# Run type check if available
-if [ -f package.json ] && grep -q '"type-check"' package.json; then
-  echo -e "${YELLOW}🔍 Running type check...${NC}"
-  npm run type-check 2>&1 | tee -a "$LOG_FILE" || echo "Type check had issues" >> "$LOG_FILE"
+    if npm run | grep -q 'type-check'; then
+      echo "Running type check"
+      npm run type-check || true
+    fi
+
+    if npm run | grep -q 'lint'; then
+      echo "Running linter"
+      npm run lint || true
+    fi
+
+    if npm run | grep -q 'test'; then
+      echo "Running tests"
+      npm run test || true
+    fi
+  else
+    echo "No package.json found; skipping Node dependency update"
+  fi
+else
+  echo "npm not available in this shell; skipping dependency updates"
 fi
 
-# Run linting if available
-if [ -f package.json ] && grep -q '"lint"' package.json; then
-  echo -e "${YELLOW}📋 Running linter...${NC}"
-  npm run lint 2>&1 | tee -a "$LOG_FILE" || echo "Lint had warnings" >> "$LOG_FILE"
-fi
-
-# Run tests if available
-if [ -f package.json ] && grep -q '"test"' package.json; then
-  echo -e "${YELLOW}✅ Running tests...${NC}"
-  npm run test 2>&1 | tee -a "$LOG_FILE" || echo "Tests had issues" >> "$LOG_FILE"
-fi
-
-echo -e "${GREEN}✅ Update complete!${NC}"
-echo "Update completed: $(date)" >> "$LOG_FILE"
+echo "Update completed: $(date)"

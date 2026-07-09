@@ -1,6 +1,6 @@
 # API Documentation
 
-**Last Generated:** 2026-06-29T00:02:55.462446Z
+**Last Generated:** 2026-07-09T23:08:47.530714Z
 
 This is the main API documentation file. It consolidates all API endpoints, routes, and related documentation from APIs_1.md, ENDPOINTS.md, and ROUTES.md.
 
@@ -35,6 +35,105 @@ REST APIs provide standard HTTP endpoints for CRUD operations and business logic
 - `POST   /monitor-resources` (defined in `api/qcity.ts`)
 - `POST   /start` (defined in `api/qcity.ts`)
 - `POST   /stop` (defined in `api/qcity.ts`)
+
+## 🔐 Authentication & Universal Authorization
+
+QMOI provides a comprehensive, unified authentication system with universal access across all applications (QMOI AI, QMOI Space, QCity, QVillage, QAlpha).
+
+### Core Authentication Endpoints
+
+| Endpoint | Method | Purpose | File |
+|----------|--------|---------|------|
+| `/api/auth/me` | GET | Get current authenticated user | `app/api/auth/me/route.ts` |
+| `/api/auth/login` | POST | Universal login endpoint | `app/api/auth/login/route.ts` |
+| `/api/auth/register` | POST | User registration | `app/api/auth/register/route.ts` |
+| `/api/auth/logout` | POST | Logout and session termination | (built into session management) |
+| `/api/auth/refresh` | POST | Refresh authentication tokens | `app/api/auth/refresh/route.ts` |
+| `/api/auth/verify-email` | POST | Email verification | `app/api/auth/verify-email/route.ts` |
+| `/api/auth/forgot-password` | POST | Password recovery initiation | `app/api/auth/forgot-password/route.ts` |
+| `/api/auth/forgot-email` | POST | Email recovery initiation | `app/api/auth/forgot-email/route.ts` |
+| `/api/auth/reset-password` | POST | Password reset completion | `app/api/auth/reset-password/route.ts` |
+
+### Advanced Authentication Features
+
+**Biometric Authentication:**
+- `POST /api/auth/biometric/capture` - Enroll biometric data
+- `POST /api/auth/biometric/verify` - Verify biometric authentication
+- `GET /api/auth/biometric/status` - Check biometric status
+- `DELETE /api/auth/biometric/delete/[method]` - Remove biometric method
+
+**WebAuthn (FIDO2):**
+- `POST /api/auth/webauthn/register` - Start WebAuthn registration
+- `POST /api/auth/webauthn/register/options` - Get registration options
+- `POST /api/auth/webauthn/register/finish` - Complete registration
+- `POST /api/auth/webauthn/authenticate` - WebAuthn authentication
+- `POST /api/auth/webauthn/auth/options` - Get authentication options
+- `POST /api/auth/webauthn/auth/finish` - Complete authentication
+
+**Session Management:**
+- `GET /api/auth/sessions/get-sessions` - List all active sessions
+- `POST /api/auth/sessions/[id]/rename` - Rename session
+- `POST /api/auth/sessions/terminate/[id]` - Terminate specific session
+- `POST /api/auth/sessions/terminate-others` - Terminate all other sessions
+
+**Additional Auth Features:**
+- `GET /api/auth/profile` - Get user profile
+- `POST /api/auth/settings` - Update auth settings
+- `GET /api/auth/rbac` - Role-based access control
+- `GET /api/auth/roles` - Available user roles
+- `POST /api/auth/totp` - TOTP (2FA) setup
+- `POST /api/auth/privacy-mask/enable` - Enable privacy masking
+- `POST /api/auth/privacy-mask/disable` - Disable privacy masking
+- `GET /api/auth/privacy-mask/status` - Check privacy mask status
+
+### Universal Portal Routing
+
+After authentication, users are automatically routed to their target application:
+
+- `/universal` - Universal authentication & onboarding portal
+- `/universal?redirect=/qmoi-ai` - Redirect to QMOI AI after auth
+- `/universal?redirect=/qmoi-space` - Redirect to QMOI Space after auth
+- `/universal?redirect=/qcity` - Redirect to QCity after auth
+- `/universal?redirect=/qvillage` - Redirect to QVillage after auth
+- `/universal?redirect=/qalpha` - Redirect to QAlpha after auth
+
+### Authentication Flow
+
+1. User visits `/universal` (unauthenticated)
+2. System checks authentication status via `GET /api/auth/me`
+3. If unauthenticated, presents login/register options
+4. User authenticates via:
+   - Email/password (traditional)
+   - Biometric (fingerprint, facial recognition)
+   - WebAuthn (hardware security keys)
+   - OAuth providers (social login)
+5. On success, `POST /api/auth/refresh` generates session tokens
+6. User auto-channels to target app (or `/qmoi-ai` by default)
+7. Session persists via refresh tokens and cookies
+
+### Authentication Response Format
+
+```json
+{
+  "success": true,
+  "user": {
+    "id": "user_123",
+    "email": "user@example.com",
+    "displayName": "User Name",
+    "role": "user|sister|master",
+    "theme": "dark|light|high-contrast|system",
+    "biometricMethods": ["fingerprint", "face"],
+    "hasWebAuthn": true,
+    "privacyMaskEnabled": false,
+    "createdAt": "2026-07-01T00:00:00Z"
+  },
+  "session": {
+    "id": "session_456",
+    "expiresAt": "2026-07-10T00:00:00Z",
+    "refreshToken": "token_xyz"
+  }
+}
+```
 
 ### Next.js API Routes
 

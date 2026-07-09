@@ -16,29 +16,48 @@ This guide establishes a production-grade, completely free AI agent environment 
 
 ## 1. The Configuration (.devcontainer/devcontainer.json)
 
-Create or update `.devcontainer/devcontainer.json` in your repository root:
+Your repository now uses a safe, non-blocking bootstrap approach to start Ollama and Continue on Codespace startup.
 
 ```json
 {
-  "name": "Qmoi-Production-Agent-Environment",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "name": "QMOI Enhanced - production prod Container",
+  "image": "mcr.microsoft.com/prodcontainers/base:bullseye",
+  "features": {
+    "ghcr.io/prodcontainers/features/github-cli:1": {},
+    "ghcr.io/prodcontainers/features/node:20": {},
+    "ghcr.io/prodcontainers/features/python:3.11": {},
+    "ghcr.io/prodcontainers/features/git:latest": {}
+  },
+  "initializeCommand": [
+    "sh",
+    "-c",
+    "mkdir -p /workspace/logs /workspace/STABLE /workspace/.cache /workspace/.vscode-server"
+  ],
+  "postCreateCommand": "bash .devcontainer/bootstrap-runtime.sh",
+  "postStartCommand": "bash .devcontainer/bootstrap-runtime.sh",
+  "postAttachCommand": "bash .devcontainer/bootstrap-runtime.sh",
+  "mounts": [
+    "source=ollama_data,target=/root/.ollama,type=volume"
+  ],
+  "containerEnv": {
+    "OLLAMA_KEEP_ALIVE": "-1",
+    "OLLAMA_FLASH_ATTENTION": "1",
+    "AUTO_CONTINUE_ENABLED": "true",
+    "AUTO_CONTINUE_CHECK_INTERVAL": "10",
+    "AUTO_CONTINUE_MAX_RESTARTS": "5"
+  },
   "customizations": {
     "vscode": {
       "extensions": [
         "continue.continue"
       ],
       "settings": {
-        "continue.telemetry": false
+        "continue.telemetry": false,
+        "continue.enableTabAutocomplete": true,
+        "continue.enableQuickActions": true,
+        "continue.enableSystemMessage": true
       }
     }
-  },
-  "postCreateCommand": "curl -fsSL https://ollama.com/install.sh | sh && ollama serve > /dev/null 2>&1 & sleep 5 && ollama pull qwen2.5-coder:3b",
-  "mounts": [
-    "source=ollama_data,target=/root/.ollama,type=volume"
-  ],
-  "containerEnv": {
-    "OLLAMA_KEEP_ALIVE": "-1",
-    "OLLAMA_FLASH_ATTENTION": "1"
   }
 }
 ```
@@ -178,11 +197,11 @@ tail -f ~/.ollama/logs/
 
 ## 5. Troubleshooting
 
-### Verified environment status (2026-06-28)
-- Ollama is now running locally at http://127.0.0.1:11434
-- The model qwen2.5-coder:3b is installed and responding to requests
-- Continue is configured to use the local Ollama endpoint via ~/.continue/config.json
-- The workspace is ready for Continue-based bulk operations
+### Verified environment status (2026-07-09)
+- The bootstrap flow now installs Alpine glibc compatibility automatically when the runtime needs it for Ollama.
+- The workspace is expected to be ready for Continue-based bulk operations once the Ollama service responds at http://127.0.0.1:11434.
+- Continue is configured to use the local Ollama endpoint via ~/.continue/config.json.
+- If the container is Alpine-based, the startup script will install `gcompat` and create the missing loader symlink before starting Ollama.
 
 
 | Problem | Solution |
