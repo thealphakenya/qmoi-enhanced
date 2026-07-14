@@ -1,5 +1,9 @@
 {
   "continue.telemetry": false,
+  "continue.enableTabAutocomplete": true,
+  "continue.enableQuickActions": true,
+  "continue.enableSystemMessage": true,
+  "continue.openOnStart": false,
   "extensions.ignoreRecommendations": false,
   "files.exclude": {
     "**/.git": true,

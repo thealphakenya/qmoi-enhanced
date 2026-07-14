@@ -12,6 +12,11 @@ trap 'rm -f "$LOCK_FILE"' EXIT
 
 echo "→ Running automated bulk pass (best-effort)"
 
+bash "$(dirname "$0")/ensure-ollama.sh" || true
+bash "$(dirname "$0")/start-auto-continue.sh" || true
+bash "$(dirname "$0")/open-continue.sh" || true
+bash "$(dirname "$0")/verify-ollama.sh" || true
+
 if command -v python3 >/dev/null 2>&1 && [ -f "scripts/consolidate_api_endpoints.py" ]; then
   echo "-> Regenerating API docs"
   # record start

@@ -45,6 +45,30 @@ Complete reference of all API endpoints organized by method and path.
 - `GET    /workspace-logs` (api/qcity.ts)
 - `GET    /workspaces` (api/qcity.ts)
 
+## Local Ollama Endpoints (Free AI Agent)
+
+These endpoints are available when Ollama is installed and running locally in your Codespace.
+
+- `GET /api/tags` — Lists available Ollama models
+- `POST /api/generate` — Generates a completion from `qwen2.5-coder:3b`
+- `POST /api/chat` — Sends a chat-style request to Ollama
+
+**Request example:**
+```json
+{
+  "model": "qwen2.5-coder:3b",
+  "prompt": "Write a hello world function in JavaScript",
+  "stream": false
+}
+```
+
+**Response example:**
+```json
+{
+  "response": "function helloWorld() { console.log(\"Hello, world!\"); }",
+  "done": true
+}
+```
 
 ## Related Documentation
 

@@ -50,3 +50,4 @@ else
 fi
 
 echo "Update completed: $(date)"
+echo "Devcontainer update log: $LOG_FILE"

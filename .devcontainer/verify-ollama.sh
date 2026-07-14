@@ -1,10 +1,23 @@
 #!/bin/bash
+set -euo pipefail
 
 # Ollama Setup Verification Script
 # Run this after your Codespace rebuilds to verify everything is ready
 
 echo "🔍 Verifying Ollama AI Agent Setup..."
 echo "======================================"
+
+LOG_DIR="${HOME}/.ollama/logs"
+mkdir -p "$LOG_DIR"
+
+# Detect Alpine / musl environments early
+if ldd --version 2>&1 | head -n1 | grep -qi musl; then
+  echo ""
+  echo "⚠️  musl libc detected; Ollama requires glibc."
+  echo "    Rebuild the devcontainer using a glibc base image such as Debian bullseye."
+  echo "    Run: bash .devcontainer/rebuild-and-verify.sh"
+  exit 1
+fi
 
 # Check if Ollama is running
 echo ""
@@ -13,8 +26,12 @@ if curl -s http://localhost:11434/api/tags > /dev/null 2>&1; then
     echo "   ✅ Ollama is running on port 11434"
 else
     echo "   ⚠️  Ollama not responding. Starting service..."
-    ollama serve > /dev/null 2>&1 &
-    sleep 3
+    if command -v ollama >/dev/null 2>&1; then
+        nohup ollama serve > "$LOG_DIR/serve.log" 2>&1 &
+    else
+        echo "   ⚠️  Ollama CLI is not available in this shell"
+    fi
+    sleep 5
 fi
 
 # Check if model is available

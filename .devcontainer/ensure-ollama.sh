@@ -4,11 +4,12 @@ set -euo pipefail
 OLLAMA_HOST="${OLLAMA_HOST:-http://127.0.0.1:11434}"
 LOG_DIR="${HOME}/.ollama/logs"
 STATE_DIR="${HOME}/.ollama/state"
+BIN_DIR="${HOME}/.ollama/bin"
 LOCK_FILE="/tmp/ensure-ollama.lock"
 INSTALL_MARKER="$STATE_DIR/installed"
 MODEL_MARKER="$STATE_DIR/qwen2.5-coder:3b"
-mkdir -p "$LOG_DIR" "$STATE_DIR"
-export PATH="/usr/local/bin:/usr/bin:/bin:$PATH"
+mkdir -p "$LOG_DIR" "$STATE_DIR" "$BIN_DIR"
+export PATH="$BIN_DIR:/usr/local/bin:/usr/bin:/bin:$PATH"
 
 ensure_runtime_compat() {
   if [ -f /etc/alpine-release ]; then
@@ -19,6 +20,9 @@ ensure_runtime_compat() {
     if [ ! -e /lib64/ld-linux-x86-64.so.2 ] && [ -e /lib/ld-linux-x86-64.so.2 ]; then
       mkdir -p /lib64
       ln -sf /lib/ld-linux-x86-64.so.2 /lib64/ld-linux-x86-64.so.2 || true
+    fi
+    if [ -f /etc/os-release ] && grep -q 'Alpine' /etc/os-release 2>/dev/null; then
+      echo "Alpine host detected; bootstrapping a Debian-compatible fallback path is recommended for full Ollama reliability"
     fi
   fi
 }
@@ -51,7 +55,7 @@ validate_ollama_binary() {
 
 resolve_ollama_cmd() {
   local candidate
-  for candidate in "$(command -v ollama 2>/dev/null || true)" /usr/local/bin/ollama /usr/bin/ollama; do
+  for candidate in "$BIN_DIR/ollama" "$(command -v ollama 2>/dev/null || true)" /usr/local/bin/ollama /usr/bin/ollama; do
     [ -z "$candidate" ] && continue
     if [ -x "$candidate" ] && validate_ollama_binary "$candidate"; then
       printf '%s' "$candidate"
@@ -76,8 +80,21 @@ if [ ! -f "$INSTALL_MARKER" ]; then
   fi
 
   if [ -n "$OLLAMA_CMD" ]; then
-    touch "$INSTALL_MARKER"
-    echo "Installed Ollama and marked state"
+    mkdir -p "$BIN_DIR"
+    if [ ! -x "$BIN_DIR/ollama" ]; then
+      if cp "$OLLAMA_CMD" "$BIN_DIR/ollama" 2>/dev/null; then
+        chmod +x "$BIN_DIR/ollama"
+      else
+        ln -sf "$OLLAMA_CMD" "$BIN_DIR/ollama"
+      fi
+    fi
+    if validate_ollama_binary "$BIN_DIR/ollama"; then
+      touch "$INSTALL_MARKER"
+      echo "Installed Ollama and cached binary state"
+    else
+      echo "Warning: Ollama binary was cached but is not yet runnable in this environment."
+      echo "         This may indicate a musl/Alpine host; rebuild to a glibc-based devcontainer."
+    fi
   fi
 else
   echo "Ollama install marker found; skipping reinstall"

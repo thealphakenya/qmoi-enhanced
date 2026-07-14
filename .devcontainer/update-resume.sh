@@ -11,6 +11,9 @@ MSG="$*"
 TS="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
 mkdir -p "$(dirname "$OUT_FILE")"
+if [ -x "$REPO_ROOT/scripts/autoupdate_resume.py" ]; then
+  python3 "$REPO_ROOT/scripts/autoupdate_resume.py" || true
+fi
 echo "$TS - $MSG" >> "$OUT_FILE"
 
 exit 0

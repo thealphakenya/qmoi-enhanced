@@ -157,6 +157,10 @@ def update_resume_tasks_block() -> None:
         '- Ensure ROUTES.md contains every route discovered in all .md files, code, and app entry points across the repository.',
         '- Update MERGE.md to describe the merge strategy for API files, endpoint files, route files, directories, and all source files across .js, .jsx, .ts, .tsx, .json, .py, .yml, and other file types.',
         '- Update TREE.md to reflect the canonical tree, merged directories, and the current bulk consolidation plan.',
+        '- Always ensure all APIs are documented in API.md.',
+        '- Always ensure all endpoints are documented in ENDPOINTS.md.',
+        '- Always ensure all routes are documented in ROUTES.md.',
+        '- Always ensure every .md file in the repository is indexed in ALLMDFILESREFS.md.',
         '- Update all docs, endpoints, app shell UI documentation, and cross-references while fixing production markers.',
         '- Generate and refresh ALLMDFILESREFS.md with per-file markdown production status annotations.',
         '- Ensure every markdown file in ALLMDFILESREFS.md is reviewed and marked production-ready, or tagged for follow-up fixes.',
@@ -603,10 +607,12 @@ def write_ordered_resume_plan() -> None:
     plan_block.append('')
     plan_block.append('4) DOCUMENTATION SYNC (RUN AS PART OF POST-MERGE)')
     plan_block.append('   4.1 Update API.md, ENDPOINTS.md, ROUTES.md, ALLMDFILESREFS.md')
+    plan_block.append('   4.2 Verify all APIs in API.md, endpoints in ENDPOINTS.md, routes in ROUTES.md, and all .md files in ALLMDFILESREFS.md')
     plan_block.append('')
     plan_block.append('5) FINALIZATION & VERIFICATION')
     plan_block.append('   5.1 Run end-to-end tests and smoke checks for each canonical app')
     plan_block.append('   5.2 Archive verification artifacts under .qmoi_validation/')
+    plan_block.append('   5.3 Refresh resumefromhere.txt before and after each bulk run')
     plan_block.append('')
 
     # Also include tasks from continues.txt when present

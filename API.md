@@ -20,6 +20,41 @@ REST APIs provide standard HTTP endpoints for CRUD operations and business logic
 
 **Base URL:** `https://api.qmoi.com/v1` or relative `/api/v1`
 
+### Local Ollama API
+
+Local Ollama provides a free, local AI endpoint in Codespaces using the Ollama runtime and the Continue extension.
+
+- **Base URL:** `http://localhost:11434`
+- **Models endpoint:** `GET /api/tags`
+- **Generate endpoint:** `POST /api/generate`
+- **Chat endpoint:** `POST /api/chat`
+- **Recommended model:** `qwen2.5-coder:3b`
+- **Continue config path:** `~/.continue/config.json`
+- **Devcontainer helpers:** `.devcontainer/ensure-ollama.sh`, `.devcontainer/open-continue.sh`, `.devcontainer/verify-ollama.sh`
+
+**Local Ollama example request:**
+```json
+{
+  "model": "qwen2.5-coder:3b",
+  "prompt": "Write a hello world function in JavaScript",
+  "stream": false
+}
+```
+
+**Local Ollama example response:**
+```json
+{
+  "response": "function helloWorld() { console.log(\"Hello, world!\"); }",
+  "done": true
+}
+```
+
+### REST APIs
+
+REST APIs provide standard HTTP endpoints for CRUD operations and business logic.
+
+**Base URL:** `https://api.qmoi.com/v1` or relative `/api/v1`
+
 #### Endpoints
 
 - `GET    /config` (defined in `api/qcity.ts`)

@@ -48,6 +48,14 @@ def build_header(commit: str, branch: str, status: str) -> str:
         f"Git branch: {branch}\n"
         f"Repository status: {clean_state}\n"
         "\n"
+        "Tracker rules:\n"
+        "- Always update resumefromhere.txt before and after every bulk continuation run.\n"
+        "- Always ensure all APIs are documented in API.md.\n"
+        "- Always ensure all endpoints are documented in ENDPOINTS.md.\n"
+        "- Always ensure all routes are documented in ROUTES.md.\n"
+        "- Always ensure every .md file in the repository is indexed in ALLMDFILESREFS.md.\n"
+        "- Keep this file as the authoritative progress tracker and task list for bulk work.\n"
+        "\n"
     )
 
 

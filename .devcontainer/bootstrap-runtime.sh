@@ -48,4 +48,5 @@ run_step open-continue "$REPO_ROOT/.devcontainer/open-continue.sh"
 ) > "$LOG_DIR/run-bulk-once-wrapper.log" 2>&1 &
 
 echo "Bootstrap tasks launched. Logs: $LOG_DIR"
+echo "Tip: inspect $LOG_DIR for per-step logs if startup was partial."
 exit 0

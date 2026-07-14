@@ -35,14 +35,14 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "continue.continue",
         "esbenp.prettier-vscode",
         "dbaeumer.vscode-eslint",
         "GitHub.copilot",
         "ms-python.python",
         "charliermarsh.ruff",
         "ms-vscode.makefile-tools",
-        "eamodio.gitlens"
+        "eamodio.gitlens",
+        "continue.continue"
       ],
       "settings": {
         "continue.telemetry": false,

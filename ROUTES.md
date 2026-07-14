@@ -66,10 +66,24 @@ These routes handle authentication, onboarding, and universal app routing:
 
 - `/admin` - Admin dashboard
 - `/admin/master` - Master admin console
-- `/admin/master/login` - Master authentication
+- `/api/admin/master/login` - Master authentication
 - `/admin/master/activity` - Activity monitoring
 - `/admin/master/security` - Security settings
 - `/admin/master/settings` - Configuration
+
+## Local Ollama Service
+
+The local Ollama service runs as a separate local API on Codespace startup and is available at:
+
+- `http://localhost:11434`
+
+Local Ollama endpoints used by the workspace include:
+
+- `GET /api/tags`
+- `POST /api/generate`
+- `POST /api/chat`
+
+These are configured by the devcontainer and Continue helper scripts, including `.devcontainer/open-continue.sh` and `.devcontainer/ensure-ollama.sh`.
 
 ## Routes
 

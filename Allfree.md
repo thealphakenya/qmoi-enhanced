@@ -11,6 +11,7 @@ This guide establishes a production-grade, completely free AI agent environment 
 - **Persistent**: Models and configuration survive Codespace rebuilds
 - **Production-Grade**: Environment variables and volume mounts ensure stability
 - **Instant Assistance**: OLLAMA_KEEP_ALIVE ensures the model stays in RAM
+- **Always-On Continue**: Once Continue is installed, it automatically uses the local Ollama endpoint and stays aligned with the repo’s bulk workflow setup
 
 ---
 
@@ -20,8 +21,24 @@ Your repository now uses a safe, non-blocking bootstrap approach to start Ollama
 
 ```json
 {
-  "name": "QMOI Enhanced - production prod Container",
-  "image": "mcr.microsoft.com/prodcontainers/base:bullseye",
+  "name": "QMOI Enhanced - glibc devcontainer",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "runArgs": [
+    "--init",
+    "--cap-add=SYS_ADMIN",
+    "--security-opt=apparmor=unconfined",
+    "--memory=4g",
+    "--cpus=2",
+    "--restart=unless-stopped"
+  ],
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "4gb",
+    "storage": "32gb"
+  },
   "features": {
     "ghcr.io/prodcontainers/features/github-cli:1": {},
     "ghcr.io/prodcontainers/features/node:20": {},
@@ -31,34 +48,96 @@ Your repository now uses a safe, non-blocking bootstrap approach to start Ollama
   "initializeCommand": [
     "sh",
     "-c",
-    "mkdir -p /workspace/logs /workspace/STABLE /workspace/.cache /workspace/.vscode-server"
+    "mkdir -p /workspace/logs /workspace/STABLE /workspace/.cache /workspace/.vscode-server && chmod -R u+rwX /workspace/logs /workspace/STABLE /workspace/.cache /workspace/.vscode-server 2>/dev/null || true"
   ],
-  "postCreateCommand": "bash .devcontainer/bootstrap-runtime.sh",
-  "postStartCommand": "bash .devcontainer/bootstrap-runtime.sh",
-  "postAttachCommand": "bash .devcontainer/bootstrap-runtime.sh",
-  "mounts": [
-    "source=ollama_data,target=/root/.ollama,type=volume"
-  ],
-  "containerEnv": {
-    "OLLAMA_KEEP_ALIVE": "-1",
-    "OLLAMA_FLASH_ATTENTION": "1",
-    "AUTO_CONTINUE_ENABLED": "true",
-    "AUTO_CONTINUE_CHECK_INTERVAL": "10",
-    "AUTO_CONTINUE_MAX_RESTARTS": "5"
-  },
+  "postCreateCommand": "bash .devcontainer/bootstrap-runtime.sh || true",
+  "postStartCommand": "bash .devcontainer/bootstrap-runtime.sh || true",
+  "postAttachCommand": "bash .devcontainer/bootstrap-runtime.sh || true",
+  "updateContentCommand": "bash .devcontainer/devcontainer-update.sh",
   "customizations": {
     "vscode": {
       "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "GitHub.copilot",
+        "ms-python.python",
+        "charliermarsh.ruff",
+        "ms-vscode.makefile-tools",
+        "eamodio.gitlens",
         "continue.continue"
       ],
       "settings": {
         "continue.telemetry": false,
         "continue.enableTabAutocomplete": true,
         "continue.enableQuickActions": true,
-        "continue.enableSystemMessage": true
+        "continue.enableSystemMessage": true,
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.rulers": [100],
+        "extensions.ignoreRecommendations": false,
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.cwd": "${workspaceFolder}",
+        "python.defaultInterpreterPath": "/usr/local/bin/python3",
+        "python.terminal.activateEnvironment": true,
+        "files.exclude": {
+          "**/.git": true,
+          "**/node_modules": true,
+          "**/.next": true,
+          "**/.venv": true,
+          "**/__pycache__": true,
+          "**/.pytest_cache": true,
+          "**/dist": true,
+          "**/build": true
+        }
       }
     }
-  }
+  },
+  "forwardPorts": [
+    3000,
+    5432,
+    6379,
+    8080,
+    11434
+  ],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js App",
+      "onAutoForward": "notify"
+    },
+    "5432": {
+      "label": "PostgreSQL",
+      "onAutoForward": "silent"
+    },
+    "6379": {
+      "label": "Redis",
+      "onAutoForward": "silent"
+    },
+    "8080": {
+      "label": "RELEASE/production",
+      "onAutoForward": "notify"
+    },
+    "11434": {
+      "label": "Ollama AI API",
+      "onAutoForward": "notify"
+    }
+  },
+  "containerEnv": {
+    "OLLAMA_HOST": "http://127.0.0.1:11434",
+    "OLLAMA_KEEP_ALIVE": "-1",
+    "OLLAMA_FLASH_ATTENTION": "1",
+    "AUTO_CONTINUE_ENABLED": "true",
+    "AUTO_CONTINUE_CHECK_INTERVAL": "10",
+    "AUTO_CONTINUE_MAX_RESTARTS": "5",
+    "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8"
+  },
+  "remoteEnv": {
+    "PATH": "/home/node/.local/bin:${containerEnv:PATH}",
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8"
+  },
+  "shutdownAction": "stopContainer"
 }
 ```
 
@@ -67,7 +146,7 @@ Your repository now uses a safe, non-blocking bootstrap approach to start Ollama
 | Component | Purpose |
 |-----------|---------|
 | `name` | Identifies this as your production agent environment |
-| `image` | Ubuntu 22.04 base with full dev tools |
+| `image` | Debian bullseye base with full dev tools |
 | `extensions` | Installs Continue extension automatically |
 | `settings` | Disables telemetry for privacy |
 | `postCreateCommand` | Installs Ollama + automatically pulls qwen2.5-coder:3b model (~2GB) |
@@ -79,15 +158,21 @@ Your repository now uses a safe, non-blocking bootstrap approach to start Ollama
 
 ## 2. How to Connect the Agent (One-Time Setup)
 
+> Important: This repo is configured to use a glibc-based devcontainer build through `.devcontainer/Dockerfile` and `.devcontainer/devcontainer.json`. If your current Codespace shell still reports Alpine/musl, Ollama will not execute reliably until you rebuild the container using the `.devcontainer` configuration.
+
 ### Step 1: Rebuild Your Codespace
-Push the `.devcontainer/devcontainer.json` to your repository and rebuild your Codespace:
+Push the `.devcontainer` config to your repository and rebuild your Codespace:
 ```bash
-git add .devcontainer/devcontainer.json
-git commit -m "feat: add production-grade ollama AI environment"
+git add .devcontainer/devcontainer.json .devcontainer/Dockerfile
+git commit -m "chore: enable glibc-based devcontainer for Ollama"
 git push
 ```
 
-Then in GitHub, click "Rebuild container" to trigger the postCreateCommand.
+If your current shell still reports Alpine/musl, this rebuild is mandatory. The current repo uses a glibc-based `Dockerfile` and the bootstrapping scripts rely on that runtime.
+
+> Current status note: if you see `ldd --version` reporting `musl`, Ollama binaries will fail with missing `fcntl64` and `__res_search` symbols. Rebuild the devcontainer to glibc before retrying.
+
+Then in GitHub, click "Rebuild container" or run the VS Code command `Codespaces: Rebuild Container` to trigger the postCreateCommand.
 
 ### Step 2: Verify Ollama is Running
 ```bash
@@ -109,9 +194,14 @@ Expected output shows your model is available:
 ```
 
 ### Step 3: Open Continue in VS Code
-1. Click the **Continue icon** in the VS Code sidebar (left panel)
-2. Click the **gear icon** ⚙️ at the bottom right of the Continue panel
-3. This opens `config.json` in your editor
+1. Install the Continue extension from the Extensions view if it is not already present.
+2. Click the **Continue icon** in the VS Code sidebar (left panel).
+3. Click the **gear icon** ⚙️ at the bottom right of the Continue panel.
+4. This opens `config.json` in your editor.
+
+The repository writes a local Ollama-ready configuration automatically to `~/.continue/config.json`, so the extension will default to `http://127.0.0.1:11434` as soon as it is installed and the local Ollama service is available.
+
+> Note: If your container is still Alpine/musl, the Continue extension may load but Ollama will not be able to execute until the devcontainer is rebuilt to a glibc base image.
 
 ### Step 4: Configure the Model
 Replace the `models` array in your Continue `config.json`:
@@ -143,7 +233,35 @@ You should see the model respond instantly (model is already loaded in RAM).
 
 ---
 
-## 3. Why This Configuration Works Best
+## 4a. Lion and Ollama Configuration Paths
+These are the critical files and paths that enable the local Ollama + Continue experience on this repository.
+
+- Repository LION launch config: `.continue/config.json`
+- Repository LION helper script: `tools/lion_install.js`
+- Repository LION runtime helper: `tools/lionctl`
+- Repository LION environment example: `tools/lion.env.example`
+- Repository LION launch task definition: `tools/lionlaunch.json`
+- Repository LION documentation: `LION.md`
+- Local VS Code Continue config: `~/.continue/config.json`
+- Local Ollama binary path (installed by `.devcontainer/ensure-ollama.sh`): `~/.ollama/bin/ollama`
+- Fallback Ollama binary path: `/usr/local/bin/ollama`
+- Local Ollama logs: `~/.ollama/logs/`
+- Local Ollama state: `~/.ollama/state/`
+- Devcontainer config file: `.devcontainer/devcontainer.json`
+- Devcontainer base Dockerfile: `.devcontainer/Dockerfile`
+- Devcontainer helper scripts:
+  - `.devcontainer/ensure-ollama.sh`
+  - `.devcontainer/open-continue.sh`
+  - `.devcontainer/start-auto-continue.sh`
+  - `.devcontainer/verify-ollama.sh`
+  - `.devcontainer/rebuild-and-verify.sh`
+  - `.devcontainer/bootstrap-runtime.sh`
+  - `.devcontainer/run-bulk-once.sh`
+- Automatic resume tracker: `resumefromhere.txt`
+
+> Note: the repository `.continue/config.json` is a LION launch/task configuration file used by this repo. The actual VS Code Continue extension runtime config is stored in your home directory at `~/.continue/config.json`, and `.devcontainer/open-continue.sh` writes the local Ollama `apiBase` there.
+
+## 5. Why This Configuration Works Best
 
 | Feature | Benefit |
 |---------|---------|
@@ -198,10 +316,9 @@ tail -f ~/.ollama/logs/
 ## 5. Troubleshooting
 
 ### Verified environment status (2026-07-09)
-- The bootstrap flow now installs Alpine glibc compatibility automatically when the runtime needs it for Ollama.
 - The workspace is expected to be ready for Continue-based bulk operations once the Ollama service responds at http://127.0.0.1:11434.
 - Continue is configured to use the local Ollama endpoint via ~/.continue/config.json.
-- If the container is Alpine-based, the startup script will install `gcompat` and create the missing loader symlink before starting Ollama.
+- The repo prefers a glibc-based devcontainer; if your current environment still reports Alpine/musl, rebuild the container to Debian bullseye.
 
 
 | Problem | Solution |
@@ -252,7 +369,7 @@ To ensure every Codespace automatically installs and configures Ollama and the C
 ### What is automated
 - `.devcontainer/ensure-ollama.sh` installs Ollama if missing, starts the service if it is down, and pulls `qwen2.5-coder:3b`.
 - `.devcontainer/start-auto-continue.sh` starts a lightweight background daemon that keeps Ollama alive and restarts it if needed.
-- `.devcontainer/open-continue.sh` installs Continue if it is missing and attempts to open it in the VS Code UI.
+- `.devcontainer/open-continue.sh` prepares the Continue config for local Ollama and leaves extension installation as an explicit opt-in action.
 - `.devcontainer/run-bulk-once.sh` runs the documentation and merge scripts once per container lifecycle.
 - `.devcontainer/devcontainer.json` runs the startup helpers on create/start/attach to make the environment self-healing.
 - `.vscode/settings.json` and `.vscode/extensions.json` ensure the Continue extension is recommended and configured for this repo.
@@ -327,7 +444,8 @@ bash .devcontainer/run-bulk-once.sh || true
 
 Notes and caveats
 - The `open-continue.sh` helper uses the VS Code CLI (`code --command`) which some Codespace CLI builds ignore; when `code` ignores `--command`, automatic focusing of the Continue panel is not available. In that case Continue is still installed and configured — open it manually with Ctrl+I.
-- The devcontainer installs the `continue.continue` extension via the `customizations.vscode.extensions` list in `.devcontainer/devcontainer.json` so that Codespaces will add the extension automatically on container create/start.
+- The devcontainer no longer forces Continue installation; it only makes the local Ollama-compatible configuration available so that the extension uses Ollama automatically once installed.
+- On this workspace, a fully working local Ollama service still requires a glibc-based devcontainer runtime; the bootstrap scripts are prepared to self-heal as soon as that environment is available.
 - We cannot reliably force a UI view to open in every remote environment using shell scripts alone; the best robust approach is a small helper VS Code extension that activates on workspace open and calls the Continue command. If you want, I can add such an extension to this repo and wire it into the devcontainer to guarantee the panel opens.
 
 Advanced: Guaranteed open via a helper extension (optional)

@@ -1,8 +1,11 @@
 QMOI BULK CONTINUATION TRACKER
 ==============================
 
-Last updated: 2026-07-10T00:30:00Z
-Status: DOCUMENTATION COMPLETE — AWAITING CONTAINER REBUILD ⚠️
+Last updated: 2026-07-10T23:59:00Z
+STATUS: RUNTIME REPAIR ATTEMPTED — ALPINE HOST STILL BLOCKS FULL OLLAMA STARTUP
+
+REBUILD ACTION:
+- Container rebuild was triggered by the user on 2026-07-10; current shell still detects Alpine runtime, so reattach to the rebuilt container if this file is stale.
 
 CURRENT SESSION PROGRESS (2026-07-10)
 -------------------------------------
@@ -137,18 +140,17 @@ The automation aims to ensure that on any Codespace for this repo, Ollama will b
 
 OPEN ATTEMPT STATUS
 -------------------
-- A best-effort helper script `.devcontainer/open-continue.sh` was added and invoked. In this Codespace the `code` CLI reports that `--command` is not supported, so automatically focusing the Continue panel is not available here. The extension is still installed automatically by the devcontainer and will be available in the VS Code UI — open it with Ctrl+I.
+- The helper script `.devcontainer/open-continue.sh` now runs in opt-in mode only.
+- It prepares `~/.continue/config.json` for local Ollama but does not attempt to install the Continue extension automatically.
+- The devcontainer and workspace settings no longer recommend Continue by default, so installation remains manual and optional.
+- Runtime verification shows that the Ollama binary is present but cannot execute on this Alpine host due to a missing `fcntl64` symbol, so a glibc-based rebuild/container is still required for a fully working local service.
 
-CONTINUE EXTENSION SETUP (COMPLETED)
--------------------------------------
-✅ Continue extension installed: continue.continue
-✅ ~/.continue/config.json: Created with 8 bulk commands
-✅ ~/.continue/.continuerc.json: Indexing disabled
-✅ ~/.continue/config.ts: Configured
-✅ ~/.continue/ directory: Full structure in place
-✅ Ollama endpoint: Configured at localhost:11434
-✅ 8 custom commands: All configured in config.json
-✅ System message: Specialized for bulk operations
+CONTINUE EXTENSION SETUP (CURRENT STATE)
+---------------------------------------
+✅ Continue is not auto-installed during startup.
+✅ `~/.continue/config.json` is prepared for local Ollama at localhost:11434.
+✅ The extension can be installed later manually if desired.
+✅ Any later install or open action is now entirely opt-in.
 
 SYSTEM STATUS
 -------------
@@ -162,13 +164,13 @@ SYSTEM STATUS
 
 CONTINUE NOW READY FOR USE
 ---------------------------
-✅ Extension installed and configured
+✅ Continue configuration is present for local Ollama
 ✅ Config files present in ~/.continue/
-✅ 8 custom bulk commands ready
-✅ Ollama endpoint verified (localhost:11434)
-✅ Tab autocomplete model configured for Ollama
-✅ Multi-file processing enabled
-✅ Specialized bulk system message active
+✅ Bulk workflow configuration is ready
+✅ Ollama endpoint is available at localhost:11434 when installed locally
+✅ Tab autocomplete model can be configured manually if Continue is installed
+✅ Multi-file processing remains ready once the extension is installed
+✅ Specialized bulk system message is active
 
 HOW TO USE CONTINUE AFTER REBUILD
 ----------------------------------
@@ -185,7 +187,16 @@ MANDATORY BULK ORDER
 3. Inventory every wallet, balance, account, exchange, platform, and related markdown file.
 4. Consolidate API, endpoint, route, and directory documentation into canonical files.
 5. Update MERGE.md, TREE.md, API.md, ENDPOINTS.md, ROUTES.md, and all related markdown files.
-6. Verify the repository state, then pause until the next bulk pass.
+6. Verify the repository state, then pause only after all Ollama/Continue automation, verification, and documentation is complete.
+
+OLLAMA + CONTINUE AUTO-SETUP
+---------------------------
+- Ensure Ollama installs once and persists across rebuilds via the persistent volume `qmoi-ollama-data` mounted at `/home/node/.ollama`.
+- Cache the Ollama binary in `/home/node/.ollama/bin/ollama` so the runtime does not need to redownload it on every Codespace start.
+- Always run `.devcontainer/ensure-ollama.sh` before using Continue or before any bulk automation pass.
+- Always run `.devcontainer/verify-ollama.sh` to confirm the service is reachable and `qwen2.5-coder:3b` responds.
+- Always configure Continue to use `provider: ollama` and `model: qwen2.5-coder:3b` via `~/.continue/config.json`.
+- Only pause when all instructions related to Ollama, Continue, and bulk documentation automation are complete and verified.
 
 BULK WORKFLOW SCRIPT
 --------------------
@@ -199,6 +210,22 @@ The script must always:
 - work across every relevant wallet/balance/account surface and every related .md file
 - update MERGE.md and TREE.md as part of the same bulk pass
 - preserve the resume file and backup flow without deleting it
+- ensure Ollama is installed once, cached persistently, and verified before Continue starts
+- ensure Continue is configured to use the local Ollama endpoint automatically
+- ensure all changes are reflected in `Allfree.md`, `API.md`, `ENDPOINTS.md`, `ROUTES.md`, and `ALLMDFILESREFS.md`
+- always ensure all APIs are documented in API.md
+- always ensure all endpoints are documented in ENDPOINTS.md
+- always ensure all routes are documented in ROUTES.md
+- always ensure every .md file in the repository is indexed in ALLMDFILESREFS.md
+- always ensure all documentation changes are reflected in the live task list and tracker
+
+DOCUMENTATION RULES:
+- Always ensure all APIs are documented in API.md.
+- Always ensure all endpoints are documented in ENDPOINTS.md.
+- Always ensure all routes are documented in ROUTES.md.
+- Always ensure every .md file in the repository is indexed in ALLMDFILESREFS.md.
+- Refresh resumefromhere.txt before and after every bulk run.
+- Record every major action, completion, and follow-up step in resumefromhere.txt immediately.
 
 WORKFLOW TASKS:
 - Work on everything in bulk, in the required order, without skipping any backlog item from 7.txt, 14.txt, undone.txt, MATCHES.txt, or resumefromhere.txt.
@@ -654,3 +681,8 @@ SESSION COMPLETION CRITERIA ✅
 READY FOR REBUILD: ✅ YES
 
 ════════════════════════════════════════════════════════════════════════════════
+2026-07-10T00:18:07Z - Ollama install present but service not reachable or incompatible on this host
+2026-07-10T00:18:07Z - Auto-Continue Daemon started (PID: 5127)
+2026-07-10T00:23:07Z - Ollama install present but service not reachable or incompatible on this host
+2026-07-10T00:23:07Z - Auto-Continue Daemon started (PID: 2661)
+2026-07-10T00:23:35Z - Continue extension installed and base configuration ensured
