@@ -21,6 +21,16 @@ It contains exact runtime issues, permanent fixes, and the validated script to i
 - Run the continuation helper after the agent completes.
 - Follow the self-contained automation requirements from `copilotchat.md`: do not depend on Continue, do not require Copilot Chat, and keep `resumefromhere.txt` as the canonical tracker.
 
+## Documentation Index
+
+Fetch the complete Ollama documentation index at:
+
+```text
+https://docs.ollama.com/llms.txt
+```
+
+Use this file to discover all available pages before exploring further. It is the authoritative reference for Ollama CLI commands, model names, runtime options, and integration guidance.
+
 ## Validated run command
 
 Use the canonical agent script:
@@ -38,6 +48,162 @@ This script will:
 - verify each task with markers like [IN PROGRESS], [DONE], [VERIFY], [CONFIRMED]
 - append progress and summary blocks to `resumefromhere.txt`
 - run `scripts/auto_continue_resumefromhere.py` automatically when the agent succeeds
+
+## Execution and verification rules
+
+The agent now uses strict success criteria to avoid false-positive completion.
+
+- `ollama` responses must include explicit verification markers or a completed task list.
+- `done: true` from the Ollama API is not sufficient by itself.
+- The agent requires evidence of final completion, such as:
+  - `FINAL COMPLETION SUMMARY`
+  - `CONFIRMED` and `VERIFY` markers together
+  - an explicit task list where all statuses are `DONE`, `CONFIRMED`, or `VERIFIED`
+- If verification fails, the script will retry the prompt and will not mark the run as complete until the output is verified.
+
+## CLI Reference
+
+### Run a model
+
+```bash
+ollama run gemma4
+```
+
+### Launch integrations
+
+```bash
+ollama launch
+```
+
+Configure and launch external applications to use Ollama models. This provides an interactive way to set up and start integrations with supported apps.
+
+#### Supported integrations
+
+* **OpenCode** - Open-source coding assistant
+* **Claude Code** - Anthropic's agentic coding tool
+* **Codex** - OpenAI's coding assistant
+* **VS Code** - Microsoft's IDE with built-in AI chat
+* **Droid** - Factory's AI coding agent
+
+#### Examples
+
+Launch an integration interactively:
+
+```bash
+ollama launch
+```
+
+Launch a specific integration:
+
+```bash
+ollama launch claude
+```
+
+Launch with a specific model:
+
+```bash
+ollama launch claude --model qwen3.5
+```
+
+Configure without launching:
+
+```bash
+ollama launch droid --config
+```
+
+#### Multiline input
+
+For multiline input, you can wrap text with `"""`:
+
+```bash
+>>> """Hello,
+... world!
+... """
+I'm a basic program that prints the famous "Hello, world!" message to the console.
+```
+
+#### Multimodal models
+
+```bash
+ollama run gemma4 "What's in this image? /Users/jmorgan/Desktop/smile.png"
+```
+
+### Generate embeddings
+
+```bash
+ollama run embeddinggemma "Hello world"
+```
+
+Output is a JSON array:
+
+```bash
+echo "Hello world" | ollama run nomic-embed-text
+```
+
+### Download a model
+
+```bash
+ollama pull gemma4
+```
+
+### Remove a model
+
+```bash
+ollama rm gemma4
+```
+
+### List models
+
+```bash
+ollama ls
+```
+
+### Sign in to Ollama
+
+```bash
+ollama signin
+```
+
+### Sign out of Ollama
+
+```bash
+ollama signout
+```
+
+### Create a customized model
+
+First, create a `Modelfile`
+
+```text
+FROM gemma4
+SYSTEM """You are a happy cat."""
+```
+
+Then run `ollama create`:
+
+```bash
+ollama create -f Modelfile
+```
+
+### List running models
+
+```bash
+ollama ps
+```
+
+### Stop a running model
+
+```bash
+ollama stop gemma4
+```
+
+### Start Ollama
+
+```bash
+ollama serve
+```
+
+To view a list of environment variables that can be set run `ollama serve --help`
 
 ## Ollama CLI reference
 

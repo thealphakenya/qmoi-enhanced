@@ -20,11 +20,14 @@ RESUME_FILE = ROOT / "resumefromhere.txt"
 LOG_DIR = Path.home() / ".ollama" / "logs"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 AGENT_LOG = LOG_DIR / "ollama_autonomous_agent.log"
+OLLAMA_CLI_RAW_LOG = LOG_DIR / "ollama_autonomous_agent_cli_raw.log"
+OLLAMA_HTTP_RAW_LOG = LOG_DIR / "ollama_autonomous_agent_http_raw.log"
 OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434")
 MODEL_NAME = os.environ.get("OLLAMA_MODEL", "qwen2.5-coder:3b")
 ENSURE_SCRIPT = ROOT / ".devcontainer" / "ensure-ollama.sh"
 START_TIMEOUT = 120
 OLLAMA_FALLBACK_BIN = Path.home() / ".ollama" / "bin" / "ollama"
+AUTUPDATE_SCRIPT = ROOT / "scripts" / "autoupdate_resume.py"
 HTTP_NON_STREAM = True
 HTTP_MAX_TOKENS = 1024
 HTTP_TEMPERATURE = 0.1
@@ -32,12 +35,28 @@ HTTP_TOP_P = 0.95
 CLI_HANG_WARNING_SECONDS = 60
 CLI_HANG_KILL_SECONDS = 300
 CLI_TIMEOUT_SECONDS = 900
+RETRY_DELAY_SECONDS = 20
+MAX_AGENT_RUN_ATTEMPTS = int(os.getenv("OLLAMA_AGENT_MAX_ATTEMPTS", "0"))  # 0 means unlimited
 
 
 def write_log(message: str) -> None:
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     with AGENT_LOG.open("a", encoding="utf-8") as fh:
         fh.write(f"{timestamp} {message}\n")
+
+
+def write_raw_log(path: Path, source: str, content: str) -> None:
+    try:
+        timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        with path.open("a", encoding="utf-8") as fh:
+            fh.write(f"=== {timestamp} {source} RAW OUTPUT START ===\n")
+            fh.write(content)
+            if not content.endswith("\n"):
+                fh.write("\n")
+            fh.write(f"=== {timestamp} {source} RAW OUTPUT END ===\n\n")
+        write_log(f"Wrote raw {source} output to {path}")
+    except Exception as exc:
+        write_log(f"Failed to write raw log {path}: {exc}")
 
 
 def backup_resume_file() -> None:
@@ -263,7 +282,7 @@ def append_ollama_output_summary(output: str) -> None:
     for line in normalized.splitlines():
         if any(marker in line for marker in ['[IN PROGRESS]', '[DONE]', '[VERIFY]', '[CONFIRMED]', '[PENDING]', 'FINAL COMPLETION']):
             summary_lines.append(line)
-        elif any(key in line for key in ['IN PROGRESS', 'DONE', 'VERIFY', 'CONFIRMED', 'PENDING']):
+        elif any(key in line for key in ['IN PROGRESS', 'DONE', 'VERIFY', 'CONFIRMED', 'PENDING', 'RESPONSE', 'COMPLETION', 'MESSAGE']):
             summary_lines.append(line)
     if not summary_lines:
         lines = normalized.splitlines()
@@ -408,6 +427,7 @@ def run_ollama_cli(prompt: str) -> tuple[bool, str]:
         write_log(f"Failed to run Ollama CLI: {exc}")
         return False, ""
 
+    write_raw_log(OLLAMA_CLI_RAW_LOG, "CLI", output)
     output = normalize_ollama_cli_output(output)
     if output:
         print(output)
@@ -480,9 +500,24 @@ def extract_json_response_from_stream(text: str) -> str:
                     return str(parsed["response"]).strip()
                 if parsed.get("message") is not None:
                     return str(parsed["message"]).strip()
+                if parsed.get("completion") is not None:
+                    return str(parsed["completion"]).strip()
+                if parsed.get("content") is not None:
+                    return str(parsed["content"]).strip()
                 return json_to_text(parsed).strip()
             if isinstance(parsed, list):
-                messages = [str(item["response"]).strip() for item in parsed if isinstance(item, dict) and item.get("response") is not None]
+                messages = []
+                for item in parsed:
+                    if not isinstance(item, dict):
+                        continue
+                    if item.get("response") is not None:
+                        messages.append(str(item["response"]))
+                    elif item.get("message") is not None:
+                        messages.append(str(item["message"]))
+                    elif item.get("completion") is not None:
+                        messages.append(str(item["completion"]))
+                    elif item.get("content") is not None:
+                        messages.append(str(item["content"]))
                 if messages:
                     return "\n".join(messages).strip()
                 return json_to_text(parsed).strip()
@@ -528,6 +563,7 @@ def run_ollama_http(prompt: str) -> tuple[bool, str]:
     try:
         with urlopen(req, timeout=1200) as response:
             raw_output = response.read().decode("utf-8", errors="ignore")
+        write_raw_log(OLLAMA_HTTP_RAW_LOG, "HTTP", raw_output)
         try:
             parsed = json.loads(raw_output)
             if isinstance(parsed, dict):
@@ -535,6 +571,10 @@ def run_ollama_http(prompt: str) -> tuple[bool, str]:
                     return True, str(parsed["response"]).strip()
                 if parsed.get("message") is not None:
                     return True, str(parsed["message"]).strip()
+                if parsed.get("completion") is not None:
+                    return True, str(parsed["completion"]).strip()
+                if parsed.get("content") is not None:
+                    return True, str(parsed["content"]).strip()
                 if parsed.get("done") is True and parsed.get("response") is None:
                     return True, json_to_text(parsed).strip()
             if isinstance(parsed, list):
@@ -545,6 +585,10 @@ def run_ollama_http(prompt: str) -> tuple[bool, str]:
                             messages.append(str(item["response"]))
                         elif item.get("message") is not None:
                             messages.append(str(item["message"]))
+                        elif item.get("completion") is not None:
+                            messages.append(str(item["completion"]))
+                        elif item.get("content") is not None:
+                            messages.append(str(item["content"]))
                 if messages:
                     return True, "\n".join(messages).strip()
         except json.JSONDecodeError:
@@ -556,12 +600,15 @@ def run_ollama_http(prompt: str) -> tuple[bool, str]:
         return True, raw_output.strip()
     except HTTPError as exc:
         print(f"ERROR: Ollama HTTP generation failed: {exc.code} {exc.reason}")
+        write_log(f"Ollama HTTP generation failed: {exc.code} {exc.reason}")
         return False, ""
     except URLError as exc:
         print(f"ERROR: Ollama HTTP generation connection failed: {exc}")
+        write_log(f"Ollama HTTP generation connection failed: {exc}")
         return False, ""
     except Exception as exc:
         print(f"ERROR: Ollama HTTP generation unexpected error: {exc}")
+        write_log(f"Ollama HTTP generation unexpected error: {exc}")
         return False, ""
 
 
@@ -586,24 +633,71 @@ def ensure_model() -> None:
     shell_run([ollama_cmd, "pull", MODEL_NAME])
 
 
+def refresh_resume_tracker() -> None:
+    if AUTUPDATE_SCRIPT.exists():
+        print("==> Refreshing resumefromhere tracker before agent run")
+        if not run_command([sys.executable, str(AUTUPDATE_SCRIPT)], 'refresh resumefromhere tracker'):
+            print("WARNING: Failed to refresh resumefromhere tracker before run.")
+            write_log("Failed to refresh resumefromhere tracker before run")
+    else:
+        print("WARNING: autoupdate_resume.py is missing; skipping tracker refresh.")
+        write_log("autoupdate_resume.py missing; cannot refresh tracker")
+
+
 def run_continuation_script() -> bool:
     continue_script = ROOT / "scripts" / "auto_continue_resumefromhere.py"
     if not continue_script.exists():
         print(f"Continue bulk script not found: {continue_script}")
         return False
     print("==> Running the auto-continue bulk resume script after Ollama agent completion")
-    for attempt in range(1, 3):
-        print(f"Auto-continue attempt {attempt}/2")
+    for attempt in range(1, 4):
+        print(f"Auto-continue attempt {attempt}/3")
         if run_command([sys.executable, str(continue_script)], 'run auto-continue bulk resume script'):
             return True
         time.sleep(10)
     return False
 
 
+FINAL_COMPLETION_PHRASES = [
+    "final completion summary",
+    "final completion",
+    "completion summary",
+    "all tasks are complete",
+    "all tasks complete",
+    "task list completed",
+    "completed all tasks",
+    "verified completion",
+    "double-check",
+    "double checked",
+    "confirmed completion",
+    "fully complete",
+]
+
+
 def are_verification_markers_present(text: str) -> bool:
     confirmed_count = len(re.findall(r"\bCONFIRMED\b", text, flags=re.IGNORECASE))
     verify_count = len(re.findall(r"\bVERIFY\b", text, flags=re.IGNORECASE))
     return confirmed_count > 0 and verify_count > 0
+
+
+def output_has_final_completion_phrase(text: str) -> bool:
+    lower_text = text.lower()
+    return any(phrase in lower_text for phrase in FINAL_COMPLETION_PHRASES)
+
+
+def task_list_is_complete(parsed: dict) -> bool:
+    task_list = parsed.get("task_list") or parsed.get("tasks") or parsed.get("items")
+    if not isinstance(task_list, list) or not task_list:
+        return False
+
+    done_tokens = {"done", "completed", "confirmed", "verified", "finished"}
+    for item in task_list:
+        if not isinstance(item, dict):
+            return False
+        status = str(item.get("status", "") or "").strip().lower()
+        if not status or not any(token in status for token in done_tokens):
+            return False
+    return True
 
 
 def verify_agent_completion(output: str, tasks: list[str]) -> bool:
@@ -620,24 +714,40 @@ def verify_agent_completion(output: str, tasks: list[str]) -> bool:
 
     if isinstance(parsed, dict):
         flattened = json_to_text(parsed)
-        if are_verification_markers_present(flattened):
+
+        status_text = str(parsed.get("status", "") or "").strip().lower()
+        if status_text and any(token in status_text for token in ["in progress", "started", "running"]):
+            return False
+
+        if task_list_is_complete(parsed):
             return True
+
+        if are_verification_markers_present(flattened) and output_has_final_completion_phrase(flattened):
+            return True
+
         if parsed.get("done") is True:
-            if parsed.get("response") or parsed.get("message") or parsed.get("done_reason"):
-                print("NOTE: Ollama JSON response indicates completion with done=true.")
+            if output_has_final_completion_phrase(flattened):
                 return True
+            if are_verification_markers_present(flattened):
+                return True
+            if len(flattened) > 200 and any(token in flattened.lower() for token in ["complete", "finished", "confirmed", "verified"]):
+                return True
+            print("WARNING: Ollama JSON response indicates done=true, but it does not meet the strict completion criteria.")
+            return False
+
         progress = parsed.get("progress")
-        if isinstance(progress, dict):
-            if any(key.upper() in progress for key in ["CONFIRMED", "VERIFY"]):
-                return True
+        if isinstance(progress, dict) and any(key.upper() in progress for key in ["CONFIRMED", "VERIFY"]):
+            return True
+
         if any(key.upper() in parsed for key in ["CONFIRMED", "VERIFY"]):
             return True
+
         text = flattened
 
     if are_verification_markers_present(text):
         lower_text = text.lower()
-        if "final completion summary" not in lower_text and "final completion" not in lower_text and "completion summary" not in lower_text:
-            print("WARNING: The output does not appear to include a final completion summary.")
+        if not output_has_final_completion_phrase(lower_text):
+            print("WARNING: The output includes verification markers but lacks a strong final completion phrase.")
             return False
         return True
 
@@ -651,6 +761,24 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument('--no-continue', dest='continue_run', action='store_false', help='Do not run auto-continue after the Ollama agent (default behavior is to continue)')
     parser.set_defaults(continue_run=True)
     return parser.parse_args()
+
+
+def run_agent_cycle(tasks: list[str]) -> tuple[bool, str, bool, bool, float]:
+    prompt = build_ollama_prompt(tasks)
+    start_time = time.time()
+    cli_success, response_text = run_ollama_cli(prompt)
+    http_success = False
+    if not cli_success:
+        print("WARNING: Ollama CLI failed; falling back to HTTP API.")
+        write_log("Ollama CLI failed; attempting HTTP fallback")
+        http_success, response_text = run_ollama_http(prompt)
+    else:
+        if not verify_agent_completion(response_text, tasks):
+            print("WARNING: Ollama CLI output did not verify; retrying via HTTP API.")
+            write_log("Ollama CLI output verification failed; attempting HTTP fallback")
+            http_success, response_text = run_ollama_http(prompt)
+    elapsed = time.time() - start_time
+    return cli_success, response_text, http_success, verify_agent_completion(response_text, tasks), elapsed
 
 
 def main() -> None:
@@ -673,6 +801,7 @@ def main() -> None:
         sys.exit(1)
     ensure_model()
 
+    refresh_resume_tracker()
     content = read_resumefromhere()
     tasks = extract_tasks_from_resume(content)
     print(f"==> Extracted {len(tasks)} actionable tasks from resumefromhere.txt")
@@ -682,66 +811,76 @@ def main() -> None:
     else:
         print("WARNING: No explicit tasks could be extracted from resumefromhere.txt.")
 
-    prompt = build_ollama_prompt(tasks)
-    print("==> Running Ollama agent prompt")
-    start_time = time.time()
-    cli_success, response_text = run_ollama_cli(prompt)
-    http_success = False
-    if not cli_success:
-        print("WARNING: Ollama CLI failed; falling back to HTTP API.")
-        http_success, response_text = run_ollama_http(prompt)
-    else:
-        if not verify_agent_completion(response_text, tasks):
-            print("WARNING: Ollama CLI output did not verify; retrying via HTTP API.")
-            write_log("Ollama CLI output verification failed; attempting HTTP fallback")
-            http_success, response_text = run_ollama_http(prompt)
-    elapsed = time.time() - start_time
-    print(f"==> Ollama agent completed in {elapsed:.1f}s")
+    attempt = 0
+    while True:
+        attempt += 1
+        if MAX_AGENT_RUN_ATTEMPTS > 0 and attempt > MAX_AGENT_RUN_ATTEMPTS:
+            print(f"ERROR: Reached maximum agent run attempts ({MAX_AGENT_RUN_ATTEMPTS}).")
+            write_log("Reached maximum Ollama agent retry attempts")
+            append_resume_block('OLLAMA AGENT FAILURE', [
+                f'Reached maximum agent run attempts ({MAX_AGENT_RUN_ATTEMPTS}).',
+                'The Ollama agent did not complete successfully after repeated retries.'
+            ])
+            sys.exit(1)
 
-    append_ollama_output_summary(response_text)
-    append_resume_block('OLLAMA AGENT RESULT', [
-        f'Ollama agent completed in {elapsed:.1f}s.',
-        f'CLI success: {cli_success}',
-        f'HTTP fallback success: {http_success}',
-        f'Pending tasks found: {len(tasks)}',
-        'Output summary was appended to resumefromhere.txt.'
-    ])
+        print(f"==> Running Ollama agent prompt (attempt {attempt})")
+        cli_success, response_text, http_success, verified, elapsed = run_agent_cycle(tasks)
+        final_success = cli_success or http_success
 
-    final_success = cli_success or http_success
-    if not final_success:
-        print("ERROR: Ollama agent was not able to complete the prompt successfully.")
-        write_log("Ollama agent prompt failed")
-        append_resume_block('OLLAMA AGENT FAILURE', ['Ollama agent prompt failed. Check terminal output and logs.'])
-        sys.exit(1)
+        append_ollama_output_summary(response_text)
+        append_resume_block('OLLAMA AGENT RESULT', [
+            f'Ollama agent completed in {elapsed:.1f}s.',
+            f'CLI success: {cli_success}',
+            f'HTTP fallback success: {http_success}',
+            f'Pending tasks found: {len(tasks)}',
+            'Output summary was appended to resumefromhere.txt.'
+        ])
 
-    if not verify_agent_completion(response_text, tasks):
-        print("ERROR: Ollama output did not include required completion verification markers.")
-        write_log("Ollama output verification failed")
-        append_resume_block('OLLAMA AGENT VERIFICATION FAILURE', ['Ollama output verification failed. The run did not produce required completion markers.'])
-        sys.exit(1)
+        if final_success and verified:
+            append_resume_update([
+                'Ollama autonomous run finished successfully.',
+                'Tasks were executed in bulk, with self-directed decisions and double verification.',
+                f'Found {len(tasks)} tasks in resumefromhere.txt and verified completion markers.'
+            ])
+            print("==> Ollama agent completed successfully and verified output.")
+            update_resume_last_updated()
+            append_resume_block('OLLAMA AGENT VERIFICATION', [
+                'Ollama output verification passed.',
+                'Resumefromhere tracker updated with progress and completion markers.',
+            ])
+            if args.continue_run:
+                if run_continuation_script():
+                    append_resume_update(['Auto-continue bulk resume script completed successfully.'])
+                else:
+                    append_resume_update(['Auto-continue bulk resume script did not complete successfully.'])
+            print("==> Ollama autonomous run finished. Review the terminal output for progress and confirmations.")
+            print("==> Check the logs at ~/.ollama/logs/ollama_autonomous_agent.log if needed.")
+            write_log("Ollama autonomous agent run completed successfully")
+            return
 
-    success_block = append_resume_update([
-        'Ollama autonomous run finished successfully.',
-        'Tasks were executed in bulk, with self-directed decisions and double verification.',
-        f'Found {len(tasks)} tasks in resumefromhere.txt and verified completion markers.'
-    ])
-    print(success_block)
-    update_resume_last_updated()
+        write_log("Ollama agent run did not verify successfully; retrying")
+        append_resume_block('OLLAMA AGENT VERIFICATION FAILURE', [
+            'Ollama output verification failed. The run did not produce required completion markers.',
+            f'Attempt: {attempt}',
+            f'CLI success: {cli_success}',
+            f'HTTP fallback success: {http_success}',
+        ])
 
-    append_resume_block('OLLAMA AGENT VERIFICATION', [
-        'Ollama output verification passed.',
-        'Resumefromhere tracker updated with progress and completion markers.',
-    ])
-
-    if args.continue_run:
-        if run_continuation_script():
-            append_resume_update(['Auto-continue bulk resume script completed successfully.'])
+        if final_success:
+            print("WARNING: Ollama output did not include required completion verification markers.")
+            write_log("Ollama output verification failed despite successful model response")
         else:
-            append_resume_update(['Auto-continue bulk resume script did not complete successfully.'])
+            print("WARNING: Ollama agent did not complete successfully.")
+            write_log("Ollama agent prompt failed")
 
-    print("==> Ollama autonomous run finished. Review the terminal output for progress and confirmations.")
-    print("==> Check the logs at ~/.ollama/logs/ollama_autonomous_agent.log if needed.")
-    write_log("Ollama autonomous agent run completed successfully")
+        if args.continue_run:
+            if run_continuation_script():
+                append_resume_update(['Auto-continue bulk resume script completed successfully between retries.'])
+            else:
+                append_resume_update(['Auto-continue bulk resume script did not complete successfully between retries.'])
+
+        print(f"==> Waiting {RETRY_DELAY_SECONDS}s before retrying Ollama agent...")
+        time.sleep(RETRY_DELAY_SECONDS)
 
 
 if __name__ == "__main__":
