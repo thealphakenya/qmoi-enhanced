@@ -28,6 +28,7 @@ OLLAMA_FALLBACK_BIN = Path.home() / ".ollama" / "bin" / "ollama"
 HTTP_NON_STREAM = True
 CLI_HANG_WARNING_SECONDS = 60
 CLI_HANG_KILL_SECONDS = 300
+CLI_TIMEOUT_SECONDS = 600
 
 
 def write_log(message: str) -> None:
@@ -249,12 +250,22 @@ def append_ollama_output_summary(output: str) -> None:
     if not output:
         return
     summary_lines: list[str] = []
-    for line in output.splitlines():
+    normalized = output.strip()
+    try:
+        parsed = json.loads(normalized)
+        normalized = json_to_text(parsed)
+    except json.JSONDecodeError:
+        pass
+
+    for line in normalized.splitlines():
         if any(marker in line for marker in ['[IN PROGRESS]', '[DONE]', '[VERIFY]', '[CONFIRMED]', '[PENDING]', 'FINAL COMPLETION']):
             summary_lines.append(line)
+        elif any(key in line for key in ['IN PROGRESS', 'DONE', 'VERIFY', 'CONFIRMED', 'PENDING']):
+            summary_lines.append(line)
     if not summary_lines:
-        summary_lines = output.splitlines()[:40]
-        if len(output.splitlines()) > 40:
+        lines = normalized.splitlines()
+        summary_lines = lines[:40]
+        if len(lines) > 40:
             summary_lines.append('... (output truncated)')
     append_resume_block('OLLAMA AUTONOMOUS RESPONSE SUMMARY', summary_lines)
 
@@ -332,15 +343,17 @@ def stream_process_output(process: subprocess.Popen, description: str, warning_s
     return '\n'.join(line for line in output_buffer if line).strip()
 
 
+SPINNER_CHARS = '⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏⠛⠻⠽⠾'
+
+
 def clean_ollama_output(text: str) -> str:
     # Remove ANSI control sequences and spinner artifacts from Ollama CLI output.
     ansi_escape = re.compile(r'\x1b\[[0-9;]*[A-Za-z]')
     cleaned = ansi_escape.sub('', text)
-    # Remove stray carriage returns from spinner updates.
     cleaned = cleaned.replace('\r', '')
-    cleaned = cleaned.strip()
-    # Drop pure spinner lines to avoid noise in logs and terminal output.
-    if re.fullmatch(r'[\s⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏⠛⠻⠽⠾]+', cleaned):
+    cleaned = re.sub(rf'[{re.escape(SPINNER_CHARS)}]+', '', cleaned)
+    # Drop pure spinner / blank chunks to avoid noise in logs and terminal output.
+    if not cleaned.strip():
         return ''
     return cleaned
 
@@ -354,6 +367,13 @@ def strip_ollama_timing(text: str) -> str:
     return '\n'.join(lines).strip()
 
 
+def normalize_ollama_cli_output(text: str) -> str:
+    if text is None:
+        return ""
+    cleaned = clean_ollama_output(text)
+    return cleaned.strip()
+
+
 def run_ollama_cli(prompt: str) -> tuple[bool, str]:
     ollama_cmd = get_ollama_cmd()
     if not ollama_cmd:
@@ -362,42 +382,34 @@ def run_ollama_cli(prompt: str) -> tuple[bool, str]:
     print(f"==> Sending prompt to Ollama CLI via {ollama_cmd}")
     command = [ollama_cmd, "run", MODEL_NAME, "-", "--format", "json", "--hidethinking"]
     try:
-        process = subprocess.Popen(
+        result = subprocess.run(
             command,
             cwd=str(ROOT),
             env=get_ollama_env(),
-            stdin=subprocess.PIPE,
+            input=prompt,
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             text=True,
-            bufsize=1,
+            timeout=CLI_TIMEOUT_SECONDS,
         )
-    except FileNotFoundError:
-        return False, ""
-    except Exception as exc:
-        print(f"ERROR: Could not launch Ollama CLI: {exc}")
-        write_log(f"Failed to launch Ollama CLI: {exc}")
-        return False, ""
-
-    try:
-        if process.stdin:
-            process.stdin.write(prompt)
-            process.stdin.close()
-    except Exception as exc:
-        print(f"ERROR: Failed to write prompt to Ollama CLI stdin: {exc}")
-        write_log(f"Ollama CLI stdin write failed: {exc}")
-        process.kill()
-        return False, ""
-
-    output = stream_process_output(process, "Ollama CLI")
-    try:
-        return_code = process.wait(timeout=10)
     except subprocess.TimeoutExpired:
-        return_code = process.poll() if process.poll() is not None else -1
+        print(f"ERROR: Ollama CLI did not finish within {CLI_TIMEOUT_SECONDS} seconds; terminating.")
+        write_log(f"Ollama CLI timeout after {CLI_TIMEOUT_SECONDS}s")
+        return False, ""
+    except Exception as exc:
+        print(f"ERROR: Could not launch or run Ollama CLI: {exc}")
+        write_log(f"Failed to run Ollama CLI: {exc}")
+        return False, ""
 
-    if return_code != 0:
-        print(f"ERROR: Ollama CLI failed with exit code {return_code}")
-        write_log(f"Ollama CLI failed: rc={return_code}")
+    output = normalize_ollama_cli_output(result.stdout)
+    if output:
+        print(output)
+    else:
+        print("[No output from Ollama CLI]")
+
+    if result.returncode != 0:
+        print(f"ERROR: Ollama CLI failed with exit code {result.returncode}")
+        write_log(f"Ollama CLI failed: rc={result.returncode}")
         append_ollama_output_summary(output)
         return False, output
 
@@ -408,6 +420,15 @@ def run_ollama_cli(prompt: str) -> tuple[bool, str]:
         return False, output
 
     text_only = strip_ollama_timing(output)
+    try:
+        cli_json = json.loads(text_only)
+    except json.JSONDecodeError:
+        cli_json = None
+    if isinstance(cli_json, dict):
+        status = cli_json.get("status") or cli_json.get("Status")
+        if isinstance(status, str) and "in progress" in status.lower():
+            return False, text_only
+
     parsed_text = extract_json_response_from_stream(text_only)
     if parsed_text:
         return True, parsed_text
@@ -562,35 +583,45 @@ def run_continuation_script() -> bool:
     return False
 
 
+def are_verification_markers_present(text: str) -> bool:
+    confirmed_count = len(re.findall(r"\bCONFIRMED\b", text, flags=re.IGNORECASE))
+    verify_count = len(re.findall(r"\bVERIFY\b", text, flags=re.IGNORECASE))
+    return confirmed_count > 0 and verify_count > 0
+
+
 def verify_agent_completion(output: str, tasks: list[str]) -> bool:
     if not output:
         print("ERROR: No output was captured from Ollama.")
         return False
 
     text = output.strip()
+    parsed = None
     try:
         parsed = json.loads(text)
-        if isinstance(parsed, dict):
-            text = json_to_text(parsed)
     except json.JSONDecodeError:
         pass
 
-    confirmed_count = len(re.findall(r"\bCONFIRMED\b", text, flags=re.IGNORECASE))
-    verify_count = len(re.findall(r"\bVERIFY\b", text, flags=re.IGNORECASE))
+    if isinstance(parsed, dict):
+        flattened = json_to_text(parsed)
+        if are_verification_markers_present(flattened):
+            return True
+        progress = parsed.get("progress")
+        if isinstance(progress, dict):
+            if any(key.upper() in progress for key in ["CONFIRMED", "VERIFY"]):
+                return True
+        if any(key.upper() in parsed for key in ["CONFIRMED", "VERIFY"]):
+            return True
+        text = flattened
 
-    if confirmed_count == 0:
-        print("WARNING: No CONFIRMED marker found in Ollama output.")
-        return False
-    if verify_count == 0:
-        print("WARNING: No VERIFY marker found in Ollama output.")
-        return False
+    if are_verification_markers_present(text):
+        lower_text = text.lower()
+        if "final completion summary" not in lower_text and "final completion" not in lower_text and "completion summary" not in lower_text:
+            print("WARNING: The output does not appear to include a final completion summary.")
+            return False
+        return True
 
-    lower_text = text.lower()
-    if "final completion summary" not in lower_text and "final completion" not in lower_text and "completion summary" not in lower_text:
-        print("WARNING: The output does not appear to include a final completion summary.")
-        return False
-
-    return True
+    print("WARNING: No completion verification markers found in Ollama output.")
+    return False
 
 
 def parse_args() -> argparse.Namespace:
@@ -638,6 +669,11 @@ def main() -> None:
     if not cli_success:
         print("WARNING: Ollama CLI failed; falling back to HTTP API.")
         http_success, response_text = run_ollama_http(prompt)
+    else:
+        if not verify_agent_completion(response_text, tasks):
+            print("WARNING: Ollama CLI output did not verify; retrying via HTTP API.")
+            write_log("Ollama CLI output verification failed; attempting HTTP fallback")
+            http_success, response_text = run_ollama_http(prompt)
     elapsed = time.time() - start_time
     print(f"==> Ollama agent completed in {elapsed:.1f}s")
 
