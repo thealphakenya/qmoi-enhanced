@@ -1,6 +1,6 @@
 # API Documentation
 
-**Last Generated:** 2026-06-28T19:35:56.942994Z
+**Last Generated:** 2026-07-09T23:08:47.530714Z
 
 This is the main API documentation file. It consolidates all API endpoints, routes, and related documentation from APIs_1.md, ENDPOINTS.md, and ROUTES.md.
 
@@ -11,119 +11,43 @@ The QMOI system provides multiple API access methods:
 - GraphQL APIs for flexible data queries
 - WebSocket APIs for real-time communication
 - Application routes for frontend navigation
-- **Local Ollama AI API** (free, unlimited, persistent)
 
-## 🤖 Local Ollama AI API (Production-Grade Free Agent)
+## API Access Methods
 
-**Base URL:** `http://localhost:11434`
+### REST APIs
 
-### Description
-Local AI model server running on your Codespace. Provides unlimited, cost-free AI assistance with zero data leakage.
+REST APIs provide standard HTTP endpoints for CRUD operations and business logic.
 
-**Model:** `qwen2.5-coder:3b` (2GB, ~3 seconds first response, <100ms cached)
+**Base URL:** `https://api.qmoi.com/v1` or relative `/api/v1`
 
-### Endpoints
+### Local Ollama API
 
-#### GET /api/tags
-List all available models and metadata.
+Local Ollama provides a free, local AI endpoint in Codespaces using the Ollama runtime and the Continue extension.
 
-**Response:**
-```json
-{
-  "models": [
-    {
-      "name": "qwen2.5-coder:3b:latest",
-      "modified_at": "2024-01-15T10:30:00Z",
-      "size": 2000000000,
-      "digest": "sha256:abc123..."
-    }
-  ]
-}
-```
+- **Base URL:** `http://localhost:11434`
+- **Models endpoint:** `GET /api/tags`
+- **Generate endpoint:** `POST /api/generate`
+- **Chat endpoint:** `POST /api/chat`
+- **Recommended model:** `qwen2.5-coder:3b`
+- **Continue config path:** `~/.continue/config.json`
+- **Devcontainer helpers:** `.devcontainer/ensure-ollama.sh`, `.devcontainer/open-continue.sh`, `.devcontainer/verify-ollama.sh`
 
-#### POST /api/generate
-Generate completions from a prompt (streaming or non-streaming).
-
-**Request:**
+**Local Ollama example request:**
 ```json
 {
   "model": "qwen2.5-coder:3b",
-  "prompt": "write a function that returns hello world",
-  "stream": false,
-  "temperature": 0.7,
-  "top_p": 0.9
-}
-```
-
-**Response (stream=false):**
-```json
-{
-  "model": "qwen2.5-coder:3b",
-  "response": "function helloWorld() {\n  return 'Hello, World!';\n}",
-  "done": true,
-  "context": [1, 2, 3, ...],
-  "total_duration": 2500000000,
-  "load_duration": 50000000,
-  "prompt_eval_count": 15,
-  "eval_count": 20
-}
-```
-
-#### POST /api/chat
-Chat interface (similar to OpenAI chat completion).
-
-**Request:**
-```json
-{
-  "model": "qwen2.5-coder:3b",
-  "messages": [
-    {
-      "role": "user",
-      "content": "How do I center a div in CSS?"
-    }
-  ],
+  "prompt": "Write a hello world function in JavaScript",
   "stream": false
 }
 ```
 
-**Response:**
+**Local Ollama example response:**
 ```json
 {
-  "model": "qwen2.5-coder:3b",
-  "created_at": "2024-01-15T10:30:00Z",
-  "message": {
-    "role": "assistant",
-    "content": "To center a div in CSS:\n\n1. Flexbox: `display: flex; justify-content: center; align-items: center;`\n2. Grid: `display: grid; place-items: center;`\n3. Absolute positioning: `position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);`"
-  },
-  "done": true,
-  "eval_count": 45,
-  "prompt_eval_count": 20
+  "response": "function helloWorld() { console.log(\"Hello, world!\"); }",
+  "done": true
 }
 ```
-
-### Usage with Continue Extension
-
-Configure in Continue's `config.json`:
-```json
-{
-  "models": [
-    {
-      "title": "Local Qwen Coder",
-      "provider": "ollama",
-      "model": "qwen2.5-coder:3b"
-    }
-  ]
-}
-```
-
-### Environment Variables
-
-- `OLLAMA_KEEP_ALIVE`: `-1` (keeps model loaded indefinitely)
-- `OLLAMA_FLASH_ATTENTION`: `1` (optimized inference)
-
----
-
-## API Access Methods
 
 ### REST APIs
 
@@ -146,6 +70,105 @@ REST APIs provide standard HTTP endpoints for CRUD operations and business logic
 - `POST   /monitor-resources` (defined in `api/qcity.ts`)
 - `POST   /start` (defined in `api/qcity.ts`)
 - `POST   /stop` (defined in `api/qcity.ts`)
+
+## 🔐 Authentication & Universal Authorization
+
+QMOI provides a comprehensive, unified authentication system with universal access across all applications (QMOI AI, QMOI Space, QCity, QVillage, QAlpha).
+
+### Core Authentication Endpoints
+
+| Endpoint | Method | Purpose | File |
+|----------|--------|---------|------|
+| `/api/auth/me` | GET | Get current authenticated user | `app/api/auth/me/route.ts` |
+| `/api/auth/login` | POST | Universal login endpoint | `app/api/auth/login/route.ts` |
+| `/api/auth/register` | POST | User registration | `app/api/auth/register/route.ts` |
+| `/api/auth/logout` | POST | Logout and session termination | (built into session management) |
+| `/api/auth/refresh` | POST | Refresh authentication tokens | `app/api/auth/refresh/route.ts` |
+| `/api/auth/verify-email` | POST | Email verification | `app/api/auth/verify-email/route.ts` |
+| `/api/auth/forgot-password` | POST | Password recovery initiation | `app/api/auth/forgot-password/route.ts` |
+| `/api/auth/forgot-email` | POST | Email recovery initiation | `app/api/auth/forgot-email/route.ts` |
+| `/api/auth/reset-password` | POST | Password reset completion | `app/api/auth/reset-password/route.ts` |
+
+### Advanced Authentication Features
+
+**Biometric Authentication:**
+- `POST /api/auth/biometric/capture` - Enroll biometric data
+- `POST /api/auth/biometric/verify` - Verify biometric authentication
+- `GET /api/auth/biometric/status` - Check biometric status
+- `DELETE /api/auth/biometric/delete/[method]` - Remove biometric method
+
+**WebAuthn (FIDO2):**
+- `POST /api/auth/webauthn/register` - Start WebAuthn registration
+- `POST /api/auth/webauthn/register/options` - Get registration options
+- `POST /api/auth/webauthn/register/finish` - Complete registration
+- `POST /api/auth/webauthn/authenticate` - WebAuthn authentication
+- `POST /api/auth/webauthn/auth/options` - Get authentication options
+- `POST /api/auth/webauthn/auth/finish` - Complete authentication
+
+**Session Management:**
+- `GET /api/auth/sessions/get-sessions` - List all active sessions
+- `POST /api/auth/sessions/[id]/rename` - Rename session
+- `POST /api/auth/sessions/terminate/[id]` - Terminate specific session
+- `POST /api/auth/sessions/terminate-others` - Terminate all other sessions
+
+**Additional Auth Features:**
+- `GET /api/auth/profile` - Get user profile
+- `POST /api/auth/settings` - Update auth settings
+- `GET /api/auth/rbac` - Role-based access control
+- `GET /api/auth/roles` - Available user roles
+- `POST /api/auth/totp` - TOTP (2FA) setup
+- `POST /api/auth/privacy-mask/enable` - Enable privacy masking
+- `POST /api/auth/privacy-mask/disable` - Disable privacy masking
+- `GET /api/auth/privacy-mask/status` - Check privacy mask status
+
+### Universal Portal Routing
+
+After authentication, users are automatically routed to their target application:
+
+- `/universal` - Universal authentication & onboarding portal
+- `/universal?redirect=/qmoi-ai` - Redirect to QMOI AI after auth
+- `/universal?redirect=/qmoi-space` - Redirect to QMOI Space after auth
+- `/universal?redirect=/qcity` - Redirect to QCity after auth
+- `/universal?redirect=/qvillage` - Redirect to QVillage after auth
+- `/universal?redirect=/qalpha` - Redirect to QAlpha after auth
+
+### Authentication Flow
+
+1. User visits `/universal` (unauthenticated)
+2. System checks authentication status via `GET /api/auth/me`
+3. If unauthenticated, presents login/register options
+4. User authenticates via:
+   - Email/password (traditional)
+   - Biometric (fingerprint, facial recognition)
+   - WebAuthn (hardware security keys)
+   - OAuth providers (social login)
+5. On success, `POST /api/auth/refresh` generates session tokens
+6. User auto-channels to target app (or `/qmoi-ai` by default)
+7. Session persists via refresh tokens and cookies
+
+### Authentication Response Format
+
+```json
+{
+  "success": true,
+  "user": {
+    "id": "user_123",
+    "email": "user@example.com",
+    "displayName": "User Name",
+    "role": "user|sister|master",
+    "theme": "dark|light|high-contrast|system",
+    "biometricMethods": ["fingerprint", "face"],
+    "hasWebAuthn": true,
+    "privacyMaskEnabled": false,
+    "createdAt": "2026-07-01T00:00:00Z"
+  },
+  "session": {
+    "id": "session_456",
+    "expiresAt": "2026-07-10T00:00:00Z",
+    "refreshToken": "token_xyz"
+  }
+}
+```
 
 ### Next.js API Routes
 
@@ -517,21 +540,3 @@ python3 scripts/consolidate_api_endpoints.py
 python3 scripts/auto_update_allmdfilesrefs.py
 ```
 
-
-<!-- LION_VALIDATION_START -->
-## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
-
-- validated: yes
-- validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-28T19:36:35.447917Z
-- production status: ❌ needs production implementation
-- status tags: needs-production, nonproduction
-- lines: 408
-- words: 1917
-- characters: 26851
-- headings: 13
-- links: 6
-- images: 0
-- tables: 0
-- lion validation block: inserted
-<!-- LION_VALIDATION_END -->

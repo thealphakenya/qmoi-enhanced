@@ -1,12 +1,22 @@
 {
-  "name": "QMOI Enhanced - production prod Container",
-  "image": "mcr.microsoft.com/prodcontainers/base:bullseye",
+  "name": "QMOI Enhanced - glibc devcontainer",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
   "runArgs": [
+    "--init",
     "--cap-add=SYS_ADMIN",
     "--security-opt=apparmor=unconfined",
     "--memory=4g",
-    "--cpus=2"
+    "--cpus=2",
+    "--restart=unless-stopped"
   ],
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "4gb",
+    "storage": "32gb"
+  },
   "features": {
     "ghcr.io/prodcontainers/features/github-cli:1": {},
     "ghcr.io/prodcontainers/features/node:20": {},
@@ -16,29 +26,39 @@
   "initializeCommand": [
     "sh",
     "-c",
-    "mkdir -p /workspace/logs /workspace/STABLE /workspace/.cache /workspace/.vscode-server"
+    "mkdir -p /workspace/logs /workspace/STABLE /workspace/.cache /workspace/.vscode-server && chmod -R u+rwX /workspace/logs /workspace/STABLE /workspace/.cache /workspace/.vscode-server 2>/dev/null || true"
   ],
-  "postCreateCommand": "bash .prodcontainer/prodcontainer-init.sh && curl -fsSL https://ollama.com/install.sh | sh && ollama serve > /dev/null 2>&1 & sleep 5 && ollama pull qwen2.5-coder:3b && bash .devcontainer/start-auto-continue.sh",
-  "postStartCommand": "bash .devcontainer/start-auto-continue.sh",
-  "updateContentCommand": "bash .prodcontainer/prodcontainer-update.sh",
+  "postCreateCommand": "bash .devcontainer/bootstrap-runtime.sh || true",
+  "postStartCommand": "bash .devcontainer/bootstrap-runtime.sh || true",
+  "postAttachCommand": "bash .devcontainer/bootstrap-runtime.sh || true",
+  "updateContentCommand": "bash .devcontainer/devcontainer-update.sh",
   "customizations": {
     "vscode": {
       "extensions": [
-        "continue.continue",
         "esbenp.prettier-vscode",
         "dbaeumer.vscode-eslint",
         "GitHub.copilot",
         "ms-python.python",
         "charliermarsh.ruff",
         "ms-vscode.makefile-tools",
-        "eamodio.gitlens"
+        "eamodio.gitlens",
+        "continue.continue"
       ],
       "settings": {
         "continue.telemetry": false,
+        "continue.enableTabAutocomplete": true,
+        "continue.enableQuickActions": true,
+        "continue.enableSystemMessage": true,
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.rulers": [
+          100
+        ],
         "extensions.ignoreRecommendations": false,
         "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.cwd": "${workspaceFolder}",
+        "python.defaultInterpreterPath": "/usr/local/bin/python3",
+        "python.terminal.activateEnvironment": true,
         "files.exclude": {
           "**/.git": true,
           "**/node_modules": true,
@@ -90,18 +110,32 @@
       "onAutoForward": "notify"
     }
   },
+  "updateRemoteUserUID": true,
   "remoteUser": "node",
+  "containerUser": "node",
+  "overrideCommand": false,
   "mounts": [
     "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,readonly",
     "source=${localEnv:HOME}/.gitconfig,target=/home/node/.gitconfig,type=bind,readonly",
-    "source=ollama_data,target=/root/.ollama,type=volume"
+    "source=qmoi-ollama-data,target=/home/node/.ollama,type=volume",
+    "source=qmoi-continue-config,target=/home/node/.continue,type=volume",
+    "source=qmoi-node-cache,target=/home/node/.cache,type=volume"
   ],
   "containerEnv": {
+    "OLLAMA_HOST": "http://127.0.0.1:11434",
     "OLLAMA_KEEP_ALIVE": "-1",
     "OLLAMA_FLASH_ATTENTION": "1",
     "AUTO_CONTINUE_ENABLED": "true",
     "AUTO_CONTINUE_CHECK_INTERVAL": "10",
-    "AUTO_CONTINUE_MAX_RESTARTS": "5"
+    "AUTO_CONTINUE_MAX_RESTARTS": "5",
+    "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8"
+  },
+  "remoteEnv": {
+    "PATH": "/home/node/.ollama/bin:/home/node/.local/bin:${containerEnv:PATH}",
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8"
   },
   "shutdownAction": "stopContainer",
   "production": true,

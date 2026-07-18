@@ -1,0 +1,12 @@
+{
+  "continue.telemetry": false,
+  "continue.enableTabAutocomplete": true,
+  "continue.enableQuickActions": true,
+  "continue.enableSystemMessage": true,
+  "continue.openOnStart": true,
+  "extensions.ignoreRecommendations": false,
+  "files.exclude": {
+    "**/.git": true,
+    "**/node_modules": true
+  }
+}

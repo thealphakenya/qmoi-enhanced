@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "GitHub.copilot",
+    "ms-python.python",
+    "charliermarsh.ruff",
+    "ms-vscode.makefile-tools",
+    "esbenp.prettier-vscode",
+    "eamodio.gitlens",
+    "continue.continue"
+  ]
+}

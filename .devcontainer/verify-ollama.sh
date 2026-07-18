@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 # Ollama Setup Verification Script
 # Run this after your Codespace rebuilds to verify everything is ready
@@ -6,6 +7,29 @@
 echo "🔍 Verifying Ollama AI Agent Setup..."
 echo "======================================"
 
+export PATH="$HOME/.ollama/bin:$PATH"
+LOG_DIR="${HOME}/.ollama/logs"
+mkdir -p "$LOG_DIR"
+
+# Detect Alpine / musl environments early
+if ldd --version 2>&1 | head -n1 | grep -qi musl; then
+  if [ -f /etc/alpine-release ]; then
+    echo ""
+    echo "ℹ️  Alpine Linux detected. Using the Ollama source-build fallback path."
+  else
+    echo ""
+    echo "⚠️  musl libc detected on a non-Alpine host; Ollama requires glibc or Alpine source build support."
+    echo "    Rebuild the devcontainer using a glibc base image or run on Alpine with the Ollama source build path."
+    echo "    Run: bash .devcontainer/rebuild-and-verify.sh"
+    exit 1
+  fi
+fi
+
+echo ""
+echo "0. Ensuring Ollama is installed and configured..."
+bash .devcontainer/ensure-ollama.sh || true
+
+echo ""
 # Check if Ollama is running
 echo ""
 echo "1. Checking Ollama service..."
@@ -13,8 +37,12 @@ if curl -s http://localhost:11434/api/tags > /dev/null 2>&1; then
     echo "   ✅ Ollama is running on port 11434"
 else
     echo "   ⚠️  Ollama not responding. Starting service..."
-    ollama serve > /dev/null 2>&1 &
-    sleep 3
+    if command -v ollama >/dev/null 2>&1; then
+        nohup ollama serve > "$LOG_DIR/serve.log" 2>&1 &
+    else
+        echo "   ⚠️  Ollama CLI is not available in this shell"
+    fi
+    sleep 5
 fi
 
 # Check if model is available
@@ -25,7 +53,14 @@ if [ -n "$MODELS" ]; then
     echo "   ✅ qwen2.5-coder:3b is available"
 else
     echo "   ⚠️  Model not found. Pulling now (this takes ~2-3 minutes)..."
-    ollama pull qwen2.5-coder:3b
+    if command -v ollama >/dev/null 2>&1; then
+        ollama pull qwen2.5-coder:3b
+    else
+        echo "   ⚠️  Ollama CLI not installed or not runnable in this environment."
+        if [ -f /usr/local/bin/ollama ]; then
+            echo "      Found /usr/local/bin/ollama; this may require glibc support on Alpine Linux."
+        fi
+    fi
 fi
 
 # Check Continue extension
@@ -56,15 +91,16 @@ echo ""
 echo "5. Testing model response time..."
 START=$(date +%s%N)
 RESPONSE=$(curl -s -X POST http://localhost:11434/api/generate \
-  -d '{
-    "model": "qwen2.5-coder:3b",
-    "prompt": "say ok",
-    "stream": false
-  }')
+   -H 'Content-Type: application/json' \
+   -d '{
+     "model": "qwen2.5-coder:3b",
+     "prompt": "say ok",
+     "stream": false
+   }')
 END=$(date +%s%N)
 DURATION=$(( (END - START) / 1000000 ))
 
-if echo "$RESPONSE" | grep -q "ok"; then
+if echo "$RESPONSE" | grep -qi "ok"; then
     echo "   ✅ Model response: ${DURATION}ms"
     if [ "$DURATION" -lt 5000 ]; then
         echo "   ✅ Response time is excellent (model cached in RAM)"
@@ -75,9 +111,17 @@ else
     echo "   ⚠️  Model test failed - check Ollama logs"
 fi
 
-echo ""
-echo "======================================"
-echo "✨ Setup verification complete!"
+if command -v timeout >/dev/null 2>&1; then
+    RESPONSE_TIME=$(timeout 5 bash -c 'time (curl -s -X POST http://localhost:11434/api/generate \
+        -H "Content-Type: application/json" \
+        -d "{\"model\":\"qwen2.5-coder:3b\",\"prompt\":\"say ok\",\"stream\":false}" > /dev/null)' 2>&1 | grep real | awk '{print $2}')
+    if [ -n "$RESPONSE_TIME" ]; then
+        echo "   ✅ Response time check: $RESPONSE_TIME"
+    fi
+else
+    echo "   ℹ️  Response time check skipped: timeout command unavailable"
+fi
+
 echo ""
 echo "Next steps:"
 echo "1. Open Continue extension (left sidebar)"
@@ -89,3 +133,19 @@ echo "  - Allfree.md: Complete setup guide"
 echo "  - API.md: Ollama API reference"
 echo "  - ENDPOINTS.md: All local endpoints"
 echo "  - ROUTES.md: Route configuration"
+
+# Summarize verification to resumefromhere
+if [ -x "$(dirname "$0")/update-resume.sh" ]; then
+    # determine quick status
+    OK=0
+    if curl -s http://localhost:11434/api/tags >/dev/null 2>&1; then
+        if echo "$RESPONSE" | grep -qi "ok"; then
+            OK=1
+        fi
+    fi
+    if [ "$OK" -eq 1 ]; then
+        bash "$(dirname "$0")/update-resume.sh" "verify-ollama: OK — Ollama responsive and qwen2.5-coder responding (${DURATION}ms)" || true
+    else
+        bash "$(dirname "$0")/update-resume.sh" "verify-ollama: FAILED — Ollama or model not responding; manual investigation required" || true
+    fi
+fi

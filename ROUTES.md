@@ -1,44 +1,89 @@
 # Application Routes
 
-**Last Generated:** 2026-06-28T19:35:58.883824Z
+**Last Generated:** 2026-07-09T23:08:49.374520Z
 
 Complete reference of all application routes and navigation paths.
 
-## 🤖 Local Ollama AI Routes (Free Production Agent)
+## 🌐 Universal Portal & Authentication Routes
 
-**Service:** Running on `localhost:11434` (persistent background daemon)
+These routes handle authentication, onboarding, and universal app routing:
 
-### Route Mapping
+| Route | Purpose | Auth Required |
+|-------|---------|---|
+| `/` | Home page / redirect | No |
+| `/universal` | Universal login/registration portal | No |
+| `/universal?redirect=/qmoi-ai` | Login with redirect to QMOI AI | No |
+| `/universal?redirect=/qmoi-space` | Login with redirect to QMOI Space | No |
+| `/universal?redirect=/qcity` | Login with redirect to QCity | No |
+| `/universal?redirect=/qvillage` | Login with redirect to QVillage | No |
+| `/universal?redirect=/qalpha` | Login with redirect to QAlpha | No |
+| `/login` | Legacy login page | No |
+| `/register` | User registration | No |
+| `/verify-email` | Email verification page | No |
+| `/forgot-password` | Password recovery | No |
+| `/reset-password` | Password reset | No |
 
-| Service | Route | Port | Status | Persistence |
-|---------|-------|------|--------|-------------|
-| Ollama Server | `http://localhost:11434` | 11434 | ✅ Running | Docker Volume (`ollama_data`) |
-| Model | `qwen2.5-coder:3b` | 11434 | ✅ Loaded in RAM | Persistent across rebuilds |
-| Continue Extension | Localhost | 11434 | ✅ Connected | Via VS Code config.json |
+## 📱 Application Routes
 
-### Ollama Service Routes
+### QMOI AI (`/qmoi-ai`)
+- `/qmoi-ai` - Main QMOI AI interface
+- `/qmoi-ai/chat` - Chat interface
+- `/qmoi-ai/settings` - Settings
+- `/qmoi-ai/profile` - User profile
+- `/qmoi-ai/theme` - Theme selection
 
-- **Service Discovery**: `GET http://localhost:11434/api/tags`
-- **Code Generation**: `POST http://localhost:11434/api/generate`
-- **Chat/Assistance**: `POST http://localhost:11434/api/chat`
-- **Embeddings**: `POST http://localhost:11434/api/embed`
+### QMOI Space (`/qmoi-space`)
+- `/qmoi-space` - Main QMOI Space interface
+- `/qmoi-space/workspace` - Workspace management
+- `/qmoi-space/settings` - Settings
+- `/qmoi-space/profile` - User profile
+- `/qmoi-space/theme` - Theme selection
 
-### Integration Routes
+### QCity (`/qcity`)
+- `/qcity` - Main QCity interface
+- `/qcity/devices` - Device management
+- `/qcity/settings` - Settings
+- `/qcity/profile` - User profile
+- `/qcity/theme` - Theme selection
 
-- **Continue Config File**: `.continue/config.json` → `{ provider: "ollama", model: "qwen2.5-coder:3b" }`
-- **Devcontainer Setup**: `.devcontainer/devcontainer.json` → Auto-installs Ollama + model
-- **Model Cache**: `/root/.ollama` → Persistent Docker volume (`ollama_data`)
+### QVillage (`/qvillage`)
+- `/qvillage` - Main QVillage interface
+- `/qvillage/models` - Model hub
+- `/qvillage/spaces` - Model spaces
+- `/qvillage/settings` - Settings
+- `/qvillage/profile` - User profile
+- `/qvillage/theme` - Theme selection
 
-### Startup Sequence
+### QAlpha (`/qalpha`)
+- `/qalpha` - Main QAlpha learning platform
+- `/qalpha/research` - Research tools
+- `/qalpha/models` - Model development
+- `/qalpha/settings` - Settings
+- `/qalpha/profile` - User profile
+- `/qalpha/theme` - Theme selection
 
-1. **Container Boot** → `.devcontainer/devcontainer.json` postCreateCommand triggers
-2. **Ollama Installation** → `curl -fsSL https://ollama.com/install.sh | sh`
-3. **Service Start** → `ollama serve > /dev/null 2>&1 &`
-4. **Model Pull** → `ollama pull qwen2.5-coder:3b` (auto-downloaded ~2GB)
-5. **Environment Setup** → `OLLAMA_KEEP_ALIVE=-1` (keeps model in RAM)
-6. **Ready for Continue** → Connect VS Code via `localhost:11434`
+## 🔧 Admin Routes
 
----
+- `/admin` - Admin dashboard
+- `/admin/master` - Master admin console
+- `/api/admin/master/login` - Master authentication
+- `/admin/master/activity` - Activity monitoring
+- `/admin/master/security` - Security settings
+- `/admin/master/settings` - Configuration
+
+## Local Ollama Service
+
+The local Ollama service runs as a separate local API on Codespace startup and is available at:
+
+- `http://localhost:11434`
+
+Local Ollama endpoints used by the workspace include:
+
+- `GET /api/tags`
+- `POST /api/generate`
+- `POST /api/chat`
+
+These are configured by the devcontainer and Continue helper scripts, including `.devcontainer/open-continue.sh` and `.devcontainer/ensure-ollama.sh`.
 
 ## Routes
 
@@ -402,21 +447,3 @@ Complete reference of all application routes and navigation paths.
 - [ENDPOINTS.md](ENDPOINTS.md) - REST endpoints
 - [WEBHOOKS.md](WEBHOOKS.md) - WebSocket routes
 
-
-<!-- LION_VALIDATION_START -->
-## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
-
-- validated: yes
-- validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-28T19:36:41.616306Z
-- production status: ❌ needs production implementation
-- status tags: needs-production, nonproduction
-- lines: 368
-- words: 739
-- characters: 9330
-- headings: 3
-- links: 3
-- images: 0
-- tables: 0
-- lion validation block: inserted
-<!-- LION_VALIDATION_END -->

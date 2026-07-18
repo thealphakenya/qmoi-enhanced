@@ -68,11 +68,14 @@ show_status() {
     fi
     
     # Test model responsiveness
-    RESPONSE_TIME=$(timeout 5 bash -c 'time (curl -s -X POST http://localhost:11434/api/generate \
-        -d "{\"model\":\"qwen2.5-coder:3b\",\"prompt\":\"say ok\",\"stream\":false}" > /dev/null)' 2>&1 | grep real | awk '{print $2}')
-    
-    if [ -n "$RESPONSE_TIME" ]; then
-        echo "✅ Response Time:         $RESPONSE_TIME"
+    if command -v timeout >/dev/null 2>&1; then
+        RESPONSE_TIME=$(timeout 5 bash -c 'time (curl -s -X POST http://localhost:11434/api/generate \
+            -d "{\"model\":\"qwen2.5-coder:3b\",\"prompt\":\"say ok\",\"stream\":false}" > /dev/null)' 2>&1 | grep real | awk '{print $2}')
+        if [ -n "$RESPONSE_TIME" ]; then
+            echo "✅ Response Time:         $RESPONSE_TIME"
+        fi
+    else
+        echo "ℹ️  Response time unavailable: timeout command not installed"
     fi
     
     echo ""

@@ -2,15 +2,18 @@
 
 ## Step 1: Rebuild Your Codespace (First Time Only)
 
-Your `.devcontainer/devcontainer.json` now includes automatic Ollama setup. When you rebuild:
+Your `.devcontainer/devcontainer.json` now includes automatic Ollama setup and a glibc-based container build. When you rebuild:
 
 ```bash
 # In GitHub, click "Rebuild container" to trigger this automatically:
+# - Uses a Debian bullseye glibc base image
 # - Installs Ollama
 # - Pulls qwen2.5-coder:3b model (~2GB)
 # - Starts Ollama as background daemon
-# - Mounts persistent volume for model cache
+# - Mounts persistent volumes for model and Continue config persistence
 ```
+
+> Note: If your workspace is currently running Alpine/musl, Ollama will fail. Rebuild using the devcontainer config above before continuing.
 
 **Estimated time:** 5-10 minutes on first rebuild
 
