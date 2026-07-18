@@ -26,9 +26,12 @@ ENSURE_SCRIPT = ROOT / ".devcontainer" / "ensure-ollama.sh"
 START_TIMEOUT = 120
 OLLAMA_FALLBACK_BIN = Path.home() / ".ollama" / "bin" / "ollama"
 HTTP_NON_STREAM = True
+HTTP_MAX_TOKENS = 1024
+HTTP_TEMPERATURE = 0.1
+HTTP_TOP_P = 0.95
 CLI_HANG_WARNING_SECONDS = 60
 CLI_HANG_KILL_SECONDS = 300
-CLI_TIMEOUT_SECONDS = 600
+CLI_TIMEOUT_SECONDS = 900
 
 
 def write_log(message: str) -> None:
@@ -382,34 +385,38 @@ def run_ollama_cli(prompt: str) -> tuple[bool, str]:
     print(f"==> Sending prompt to Ollama CLI via {ollama_cmd}")
     command = [ollama_cmd, "run", MODEL_NAME, "-", "--format", "json", "--hidethinking"]
     try:
-        result = subprocess.run(
+        process = subprocess.Popen(
             command,
             cwd=str(ROOT),
             env=get_ollama_env(),
-            input=prompt,
+            stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             text=True,
-            timeout=CLI_TIMEOUT_SECONDS,
         )
+        output, _ = process.communicate(prompt, timeout=CLI_TIMEOUT_SECONDS)
     except subprocess.TimeoutExpired:
         print(f"ERROR: Ollama CLI did not finish within {CLI_TIMEOUT_SECONDS} seconds; terminating.")
         write_log(f"Ollama CLI timeout after {CLI_TIMEOUT_SECONDS}s")
+        try:
+            process.kill()
+        except Exception:
+            pass
         return False, ""
     except Exception as exc:
         print(f"ERROR: Could not launch or run Ollama CLI: {exc}")
         write_log(f"Failed to run Ollama CLI: {exc}")
         return False, ""
 
-    output = normalize_ollama_cli_output(result.stdout)
+    output = normalize_ollama_cli_output(output)
     if output:
         print(output)
     else:
         print("[No output from Ollama CLI]")
 
-    if result.returncode != 0:
-        print(f"ERROR: Ollama CLI failed with exit code {result.returncode}")
-        write_log(f"Ollama CLI failed: rc={result.returncode}")
+    if process.returncode != 0:
+        print(f"ERROR: Ollama CLI failed with exit code {process.returncode}")
+        write_log(f"Ollama CLI failed: rc={process.returncode}")
         append_ollama_output_summary(output)
         return False, output
 
@@ -426,14 +433,16 @@ def run_ollama_cli(prompt: str) -> tuple[bool, str]:
         cli_json = None
     if isinstance(cli_json, dict):
         status = cli_json.get("status") or cli_json.get("Status")
-        if isinstance(status, str) and "in progress" in status.lower():
+        if isinstance(status, str) and any(token in status.lower() for token in ["in progress", "started", "running"]):
             return False, text_only
+        if cli_json.get("done") is True or cli_json.get("done_reason") is not None:
+            return True, text_only
 
     parsed_text = extract_json_response_from_stream(text_only)
     if parsed_text:
         return True, parsed_text
 
-    if re.search(r'\{\s*"status"\s*:\s*"IN PROGRESS"|\[?IN PROGRESS\]?', text_only, re.IGNORECASE):
+    if re.search(r'\bIN PROGRESS\b|\[IN PROGRESS\]|\bSTARTED\b', text_only, re.IGNORECASE):
         return False, text_only
 
     return True, text_only
@@ -509,6 +518,9 @@ def run_ollama_http(prompt: str) -> tuple[bool, str]:
         "model": MODEL_NAME,
         "prompt": prompt,
         "stream": not HTTP_NON_STREAM,
+        "max_tokens": HTTP_MAX_TOKENS,
+        "temperature": HTTP_TEMPERATURE,
+        "top_p": HTTP_TOP_P,
     }
     data = json.dumps(body).encode("utf-8")
     headers = {"Content-Type": "application/json"}
@@ -523,11 +535,16 @@ def run_ollama_http(prompt: str) -> tuple[bool, str]:
                     return True, str(parsed["response"]).strip()
                 if parsed.get("message") is not None:
                     return True, str(parsed["message"]).strip()
+                if parsed.get("done") is True and parsed.get("response") is None:
+                    return True, json_to_text(parsed).strip()
             if isinstance(parsed, list):
                 messages = []
                 for item in parsed:
-                    if isinstance(item, dict) and item.get("response") is not None:
-                        messages.append(str(item["response"]))
+                    if isinstance(item, dict):
+                        if item.get("response") is not None:
+                            messages.append(str(item["response"]))
+                        elif item.get("message") is not None:
+                            messages.append(str(item["message"]))
                 if messages:
                     return True, "\n".join(messages).strip()
         except json.JSONDecodeError:
@@ -605,6 +622,10 @@ def verify_agent_completion(output: str, tasks: list[str]) -> bool:
         flattened = json_to_text(parsed)
         if are_verification_markers_present(flattened):
             return True
+        if parsed.get("done") is True:
+            if parsed.get("response") or parsed.get("message") or parsed.get("done_reason"):
+                print("NOTE: Ollama JSON response indicates completion with done=true.")
+                return True
         progress = parsed.get("progress")
         if isinstance(progress, dict):
             if any(key.upper() in progress for key in ["CONFIRMED", "VERIFY"]):
