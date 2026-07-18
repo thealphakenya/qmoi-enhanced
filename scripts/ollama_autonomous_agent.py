@@ -7,6 +7,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import threading
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -23,6 +24,9 @@ MODEL_NAME = os.environ.get("OLLAMA_MODEL", "qwen2.5-coder:3b")
 ENSURE_SCRIPT = ROOT / ".devcontainer" / "ensure-ollama.sh"
 START_TIMEOUT = 120
 OLLAMA_FALLBACK_BIN = Path.home() / ".ollama" / "bin" / "ollama"
+HTTP_NON_STREAM = True
+CLI_HANG_WARNING_SECONDS = 60
+CLI_HANG_KILL_SECONDS = 300
 
 
 def write_log(message: str) -> None:
@@ -287,32 +291,154 @@ def has_http_support() -> bool:
     return True
 
 
+def stream_process_output(process: subprocess.Popen, description: str, warning_seconds: int = CLI_HANG_WARNING_SECONDS, kill_seconds: int = CLI_HANG_KILL_SECONDS) -> str:
+    output_buffer: list[str] = []
+    last_output_time = time.time()
+
+    def reader(stream):
+        nonlocal last_output_time
+        while True:
+            chunk = stream.readline()
+            if not chunk:
+                break
+            last_output_time = time.time()
+            cleaned = clean_ollama_output(chunk)
+            if cleaned:
+                print(cleaned, end='', flush=True)
+                output_buffer.append(cleaned)
+            else:
+                print(chunk, end='', flush=True)
+                if chunk.strip():
+                    output_buffer.append(chunk.rstrip('\n'))
+        stream.close()
+
+    reader_thread = threading.Thread(target=reader, args=(process.stdout,), daemon=True)
+    reader_thread.start()
+
+    warning_emitted = False
+    while process.poll() is None:
+        time.sleep(0.5)
+        elapsed = time.time() - last_output_time
+        if elapsed >= kill_seconds:
+            print(f"ERROR: {description} produced no output for {kill_seconds} seconds; terminating.")
+            write_log(f"{description} killed after {kill_seconds}s without output")
+            process.kill()
+            break
+        if elapsed >= warning_seconds and not warning_emitted:
+            print(f"WARNING: {description} has not emitted output for {warning_seconds} seconds. Still waiting...")
+            write_log(f"{description} no output for {warning_seconds}s")
+            warning_emitted = True
+
+    reader_thread.join(timeout=5)
+    return '\n'.join(line for line in output_buffer if line).strip()
+
+
+def clean_ollama_output(text: str) -> str:
+    # Remove ANSI control sequences and spinner artifacts from Ollama CLI output.
+    ansi_escape = re.compile(r'\x1b\[[0-9;]*[A-Za-z]')
+    cleaned = ansi_escape.sub('', text)
+    # Remove stray carriage returns from spinner updates.
+    cleaned = cleaned.replace('\r', '')
+    cleaned = cleaned.strip()
+    # Drop pure spinner lines to avoid noise in logs and terminal output.
+    if re.fullmatch(r'[\s⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏⠛⠻⠽⠾]+', cleaned):
+        return ''
+    return cleaned
+
+
+def strip_ollama_timing(text: str) -> str:
+    lines = []
+    for line in text.splitlines():
+        if re.match(r'^(total duration|load duration|prompt eval count|prompt eval duration|prompt eval rate|eval count|eval duration|eval rate):', line.strip(), re.IGNORECASE):
+            break
+        lines.append(line)
+    return '\n'.join(lines).strip()
+
+
 def run_ollama_cli(prompt: str) -> tuple[bool, str]:
     ollama_cmd = get_ollama_cmd()
     if not ollama_cmd:
         return False, ""
-    print(f"==> Sending prompt to Ollama CLI (streaming output) via {ollama_cmd}")
-    command = [ollama_cmd, "run", MODEL_NAME, prompt, "--verbose"]
+
+    print(f"==> Sending prompt to Ollama CLI via {ollama_cmd}")
+    command = [ollama_cmd, "run", MODEL_NAME, "-", "--hidethinking"]
     try:
         process = subprocess.Popen(
             command,
             cwd=str(ROOT),
             env=get_ollama_env(),
+            stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             text=True,
+            bufsize=1,
         )
     except FileNotFoundError:
         return False, ""
-    assert process.stdout is not None
-    output_lines = []
-    for line in process.stdout:
-        print(line, end="")
-        output_lines.append(line)
-        sys.stdout.flush()
-    process.wait()
-    output_text = "".join(output_lines)
-    return process.returncode == 0, output_text
+    except Exception as exc:
+        print(f"ERROR: Could not launch Ollama CLI: {exc}")
+        write_log(f"Failed to launch Ollama CLI: {exc}")
+        return False, ""
+
+    try:
+        if process.stdin:
+            process.stdin.write(prompt)
+            process.stdin.close()
+    except Exception as exc:
+        print(f"ERROR: Failed to write prompt to Ollama CLI stdin: {exc}")
+        write_log(f"Ollama CLI stdin write failed: {exc}")
+        process.kill()
+        return False, ""
+
+    output = stream_process_output(process, "Ollama CLI")
+    try:
+        return_code = process.wait(timeout=10)
+    except subprocess.TimeoutExpired:
+        return_code = process.poll() if process.poll() is not None else -1
+
+    if return_code != 0:
+        print(f"ERROR: Ollama CLI failed with exit code {return_code}")
+        write_log(f"Ollama CLI failed: rc={return_code}")
+        append_ollama_output_summary(output)
+        return False, output
+
+    if any(err_keyword in output.lower() for err_keyword in ["error:", "unexpected eof", "internal server error"]):
+        print("ERROR: Ollama CLI output contained an error condition.")
+        write_log("Ollama CLI output contained an error condition")
+        append_ollama_output_summary(output)
+        return False, output
+
+    text_only = strip_ollama_timing(output)
+    parsed_text = extract_json_response_from_stream(text_only)
+    if parsed_text:
+        return True, parsed_text
+
+    if re.search(r'\{\s*"status"\s*:\s*"IN PROGRESS"|\[?IN PROGRESS\]?', text_only, re.IGNORECASE):
+        return False, text_only
+
+    return True, text_only
+
+
+def extract_json_response_from_stream(text: str) -> str:
+    responses: list[str] = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+        if stripped.startswith("data:"):
+            stripped = stripped[len("data:"):].strip()
+        if not stripped:
+            continue
+        try:
+            parsed = json.loads(stripped)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(parsed, dict):
+            if "response" in parsed:
+                responses.append(str(parsed["response"]))
+            elif "message" in parsed:
+                responses.append(str(parsed["message"]))
+    return "\n".join(responses).strip()
 
 
 def run_ollama_http(prompt: str) -> tuple[bool, str]:
@@ -321,23 +447,35 @@ def run_ollama_http(prompt: str) -> tuple[bool, str]:
     body = {
         "model": MODEL_NAME,
         "prompt": prompt,
-        "stream": True,
+        "stream": not HTTP_NON_STREAM,
     }
     data = json.dumps(body).encode("utf-8")
     headers = {"Content-Type": "application/json"}
     req = Request(f"{OLLAMA_HOST}/api/generate", data=data, headers=headers, method="POST")
     try:
-        output_chunks = []
-        with urlopen(req, timeout=600) as response:
-            while True:
-                chunk = response.read(4096)
-                if not chunk:
-                    break
-                decoded = chunk.decode("utf-8", errors="ignore")
-                output_chunks.append(decoded)
-                sys.stdout.write(decoded)
-                sys.stdout.flush()
-        return True, "".join(output_chunks)
+        with urlopen(req, timeout=1200) as response:
+            raw_output = response.read().decode("utf-8", errors="ignore")
+        try:
+            parsed = json.loads(raw_output)
+            if isinstance(parsed, dict):
+                if parsed.get("response") is not None:
+                    return True, str(parsed["response"]).strip()
+                if parsed.get("message") is not None:
+                    return True, str(parsed["message"]).strip()
+            if isinstance(parsed, list):
+                messages = []
+                for item in parsed:
+                    if isinstance(item, dict) and item.get("response") is not None:
+                        messages.append(str(item["response"]))
+                if messages:
+                    return True, "\n".join(messages).strip()
+        except json.JSONDecodeError:
+            pass
+
+        parsed_response = extract_json_response_from_stream(raw_output)
+        if parsed_response:
+            return True, parsed_response
+        return True, raw_output.strip()
     except HTTPError as exc:
         print(f"ERROR: Ollama HTTP generation failed: {exc.code} {exc.reason}")
         return False, ""
@@ -446,22 +584,25 @@ def main() -> None:
     prompt = build_ollama_prompt(tasks)
     print("==> Running Ollama agent prompt")
     start_time = time.time()
-    success, response_text = run_ollama_cli(prompt)
-    if not success:
-        print("WARNING: Ollama CLI stream failed or unavailable; falling back to HTTP API.")
-        success, response_text = run_ollama_http(prompt)
+    cli_success, response_text = run_ollama_cli(prompt)
+    http_success = False
+    if not cli_success:
+        print("WARNING: Ollama CLI failed; falling back to HTTP API.")
+        http_success, response_text = run_ollama_http(prompt)
     elapsed = time.time() - start_time
     print(f"==> Ollama agent completed in {elapsed:.1f}s")
 
     append_ollama_output_summary(response_text)
     append_resume_block('OLLAMA AGENT RESULT', [
         f'Ollama agent completed in {elapsed:.1f}s.',
-        f'CLI success: {success}',
+        f'CLI success: {cli_success}',
+        f'HTTP fallback success: {http_success}',
         f'Pending tasks found: {len(tasks)}',
         'Output summary was appended to resumefromhere.txt.'
     ])
 
-    if not success:
+    final_success = cli_success or http_success
+    if not final_success:
         print("ERROR: Ollama agent was not able to complete the prompt successfully.")
         write_log("Ollama agent prompt failed")
         append_resume_block('OLLAMA AGENT FAILURE', ['Ollama agent prompt failed. Check terminal output and logs.'])
