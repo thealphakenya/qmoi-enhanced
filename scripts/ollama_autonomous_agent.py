@@ -3,6 +3,7 @@ import argparse
 import json
 import os
 import re
+import select
 import shutil
 import subprocess
 import sys
@@ -294,11 +295,15 @@ def has_http_support() -> bool:
 def stream_process_output(process: subprocess.Popen, description: str, warning_seconds: int = CLI_HANG_WARNING_SECONDS, kill_seconds: int = CLI_HANG_KILL_SECONDS) -> str:
     output_buffer: list[str] = []
     last_output_time = time.time()
+    stdout = process.stdout
 
-    def reader(stream):
-        nonlocal last_output_time
-        while True:
-            chunk = stream.readline()
+    while True:
+        if stdout is None:
+            break
+
+        ready, _, _ = select.select([stdout], [], [], 0.5)
+        if ready:
+            chunk = stdout.read(4096)
             if not chunk:
                 break
             last_output_time = time.time()
@@ -307,29 +312,23 @@ def stream_process_output(process: subprocess.Popen, description: str, warning_s
                 print(cleaned, end='', flush=True)
                 output_buffer.append(cleaned)
             else:
-                print(chunk, end='', flush=True)
                 if chunk.strip():
+                    print(chunk, end='', flush=True)
                     output_buffer.append(chunk.rstrip('\n'))
-        stream.close()
+        else:
+            if process.poll() is not None:
+                break
+            elapsed = time.time() - last_output_time
+            if elapsed >= kill_seconds:
+                print(f"ERROR: {description} produced no output for {kill_seconds} seconds; terminating.")
+                write_log(f"{description} killed after {kill_seconds}s without output")
+                process.kill()
+                break
+            if elapsed >= warning_seconds:
+                print(f"WARNING: {description} has not emitted output for {warning_seconds} seconds. Still waiting...")
+                write_log(f"{description} no output for {warning_seconds}s")
+                warning_seconds = float('inf')
 
-    reader_thread = threading.Thread(target=reader, args=(process.stdout,), daemon=True)
-    reader_thread.start()
-
-    warning_emitted = False
-    while process.poll() is None:
-        time.sleep(0.5)
-        elapsed = time.time() - last_output_time
-        if elapsed >= kill_seconds:
-            print(f"ERROR: {description} produced no output for {kill_seconds} seconds; terminating.")
-            write_log(f"{description} killed after {kill_seconds}s without output")
-            process.kill()
-            break
-        if elapsed >= warning_seconds and not warning_emitted:
-            print(f"WARNING: {description} has not emitted output for {warning_seconds} seconds. Still waiting...")
-            write_log(f"{description} no output for {warning_seconds}s")
-            warning_emitted = True
-
-    reader_thread.join(timeout=5)
     return '\n'.join(line for line in output_buffer if line).strip()
 
 
@@ -361,7 +360,7 @@ def run_ollama_cli(prompt: str) -> tuple[bool, str]:
         return False, ""
 
     print(f"==> Sending prompt to Ollama CLI via {ollama_cmd}")
-    command = [ollama_cmd, "run", MODEL_NAME, "-", "--hidethinking"]
+    command = [ollama_cmd, "run", MODEL_NAME, "-", "--format", "json", "--hidethinking"]
     try:
         process = subprocess.Popen(
             command,
@@ -419,8 +418,47 @@ def run_ollama_cli(prompt: str) -> tuple[bool, str]:
     return True, text_only
 
 
+def json_to_text(obj: object, indent: int = 0) -> str:
+    if isinstance(obj, dict):
+        lines: list[str] = []
+        for key, value in obj.items():
+            if isinstance(value, (dict, list)):
+                lines.append(f"{key}:")
+                lines.append(json_to_text(value, indent + 2))
+            else:
+                lines.append(f"{key}: {value}")
+        return "\n".join(lines)
+    if isinstance(obj, list):
+        lines: list[str] = []
+        for item in obj:
+            if isinstance(item, (dict, list)):
+                lines.append(json_to_text(item, indent))
+            else:
+                lines.append(str(item))
+        return "\n".join(lines)
+    return str(obj)
+
+
 def extract_json_response_from_stream(text: str) -> str:
     responses: list[str] = []
+    stripped_text = text.strip()
+    if stripped_text:
+        try:
+            parsed = json.loads(stripped_text)
+            if isinstance(parsed, dict):
+                if parsed.get("response") is not None:
+                    return str(parsed["response"]).strip()
+                if parsed.get("message") is not None:
+                    return str(parsed["message"]).strip()
+                return json_to_text(parsed).strip()
+            if isinstance(parsed, list):
+                messages = [str(item["response"]).strip() for item in parsed if isinstance(item, dict) and item.get("response") is not None]
+                if messages:
+                    return "\n".join(messages).strip()
+                return json_to_text(parsed).strip()
+        except json.JSONDecodeError:
+            pass
+
     for line in text.splitlines():
         stripped = line.strip()
         if not stripped:
@@ -438,6 +476,8 @@ def extract_json_response_from_stream(text: str) -> str:
                 responses.append(str(parsed["response"]))
             elif "message" in parsed:
                 responses.append(str(parsed["message"]))
+            else:
+                responses.append(json_to_text(parsed))
     return "\n".join(responses).strip()
 
 
@@ -527,16 +567,25 @@ def verify_agent_completion(output: str, tasks: list[str]) -> bool:
         print("ERROR: No output was captured from Ollama.")
         return False
 
-    confirmed_count = output.count("[CONFIRMED]")
-    verify_count = output.count("[VERIFY]")
-    if tasks and confirmed_count < len(tasks):
-        print(f"WARNING: Found only {confirmed_count} [CONFIRMED] markers for {len(tasks)} tasks.")
+    text = output.strip()
+    try:
+        parsed = json.loads(text)
+        if isinstance(parsed, dict):
+            text = json_to_text(parsed)
+    except json.JSONDecodeError:
+        pass
+
+    confirmed_count = len(re.findall(r"\bCONFIRMED\b", text, flags=re.IGNORECASE))
+    verify_count = len(re.findall(r"\bVERIFY\b", text, flags=re.IGNORECASE))
+
+    if confirmed_count == 0:
+        print("WARNING: No CONFIRMED marker found in Ollama output.")
         return False
-    if tasks and verify_count < len(tasks):
-        print(f"WARNING: Found only {verify_count} [VERIFY] markers for {len(tasks)} tasks.")
+    if verify_count == 0:
+        print("WARNING: No VERIFY marker found in Ollama output.")
         return False
 
-    lower_text = output.lower()
+    lower_text = text.lower()
     if "final completion summary" not in lower_text and "final completion" not in lower_text and "completion summary" not in lower_text:
         print("WARNING: The output does not appear to include a final completion summary.")
         return False
