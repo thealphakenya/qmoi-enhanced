@@ -1,755 +1,120 @@
-QMOI BULK CONTINUATION TRACKER
-==============================
+QMOI CONTINUATION TRACKER
+========================
 
-Last updated: 2026-07-18T08:14:15Z
-STATUS: LOCAL OLLAMA READY — BULK TRADING, BITGET, DOCUMENTATION, AND CONTINUE SETUP PENDING
+Last updated: 2026-07-18T13:46:54Z
+STATUS: Code, balance verification, test coverage, and docs updates remain.
 
-REBUILD ACTION:
-- Container rebuild is not required if the current environment remains glibc and Ollama is running. If Ollama becomes unstable, rebuild using the `.devcontainer` devcontainer path.
-
-CURRENT SESSION PROGRESS (2026-07-18)
--------------------------------------
-✅ Identified root cause: Container is musl (Alpine), but Ollama requires glibc
-✅ Verified devcontainer.json is correctly configured for Debian bullseye (glibc)
-✅ All helper scripts are in place and working (ensure-ollama.sh, build-ollama-from-source.sh, etc.)
-✅ Updated Allfree.md with Alpine source build instructions and helper script usage
-✅ Updated Ollama source build fallback to install `~/.ollama/bin/llama-server`
-✅ Verified Ollama CLI and `qwen2.5-coder:3b` model availability
-✅ Confirmed local Ollama endpoint is reachable at http://127.0.0.1:11434
-✅ Completed all Tier 1 documentation updates:
-   - ✅ Verified QAlpha Shell ThemeSelector import
-   - ✅ Added "Authentication & Universal Authorization" section to API.md
-   - ✅ Organized ROUTES.md with universal portal, app routes, and admin routes
-   - ✅ Enhanced STYLES.md with universal theme system documentation
-   - ✅ Expanded UNIVERSAL.md with theme persistence and auto-channel routing flows
-   - ✅ Confirmed all app-specific UI docs (QMOIAIUI, QMOISPACEUI, QCITYUI, QVILLAGEUI, QALPHAUI) have theme selection docs
-
-CURRENT BLOCKERS AND FOCUS AREAS
---------------------------------
-- Continue extension is not yet installed or verified in this workspace
-- Trade.md, Bitget/Binance trading docs, and global finance docs are not fully synced
-- API.md, ENDPOINTS.md, ROUTES.md, TREE.md, MERGE.md, and related docs still need full bulk consolidation
-- Bitget credentials, balance display, and real trading memory integration require verification and secure storage
-- UI feature documentation for trading, balances, and global finance remains incomplete
-- Continue/ollama automation still needs a full bulk pass and `resumefromhere.txt` tracking update
-- MERGE.md shows duplicate app entry points and components still need consolidation, while duplicate API routes are already marked 0
-
-WHAT NEEDS TO HAPPEN NEXT
----------------------------
-1. Install the Continue extension and confirm it connects to local Ollama
-2. Verify Continue configuration at `~/.continue/config.json` and local Ollama readiness
-3. Run `bash .devcontainer/verify-ollama.sh` and confirm model responsiveness
-4. Run the bulk autonomous workflow:
-   ```bash
-   python3 scripts/ollama_autonomous_agent.py --continue
-   ```
-5. Regenerate and consolidate API/endpoints/route docs:
-   ```bash
-   python3 scripts/consolidate_api_endpoints.py
-   ```
-6. Run the merge executor for duplicate consolidation:
-   ```bash
-   python3 scripts/merge_executor.py
-   ```
-7. Update Trade.md with the Bitget account plan, actual balance, and UI balance display notes
-8. Update ollama.md, continueollam.md, Allfree.md, and Trade.md to reflect the current local Ollama + trading workflow
-9. Confirm Bitget credentials are stored securely via environment/secrets and not committed into Git
-10. Verify QMOI memory uses the same Bitget account credentials for all live trading actions
-11. Ensure all trading features include Bitget, Binance, and other platform support in docs and UI
-12. Ensure all API references are present in API.md, all endpoints in ENDPOINTS.md, and all routes in ROUTES.md
-13. Keep `7.txt`, `14.txt`, `undone.txt`, and `MATCHES.txt` backlog items visible and synced in this tracker
-
-REMAINING TIER 1 TASKS
--------------------------------------------------
-[ ] Install Continue extension and confirm local Ollama is active
-[ ] Run `bash .devcontainer/verify-ollama.sh` to verify Ollama health and Continue readiness
-[ ] Run bulk pass: `python3 scripts/consolidate_api_endpoints.py`
-[ ] Run merge executor: `python3 scripts/merge_executor.py`
-[ ] Update Trade.md, ollama.md, continueollam.md, and Allfree.md with current trading and Ollama workflows
-[ ] Update `API.md`, `ENDPOINTS.md`, `ROUTES.md`, `TREE.md`, and `MERGE.md` after consolidation
-[ ] Verify secure Bitget credential storage and runtime memory integration
-[ ] Confirm all updated docs are committed in markdown
-
-TRADING & BITGET ACTIONS
-------------------------
-- Document that QMOI uses the Bitget account with API key `bg_2eb93266c2bb0cd443cd51d08b662753`, secret `83fc35b8765c3f3bc7f8f4015d2241f8532d5d5ff9c57d2d75398573ec4232fc`, and passphrase `Victor9798`
-- Ensure Bitget account balance is retrieved live and reflected in Trade.md and UI balance displays
-- Confirm QMOI uses the same Bitget credentials for every Bitget trading flow
-- Verify Bitget, Binance, and other exchange trading features are fully autonomous and decision-enabled
-- Ensure all UI features related to trading, balances, and global finance are documented across the repository
-- Confirm trading strategies include confidence thresholds, risk controls, and actual fund usage rules
-- Validate real fund trading logic for Bitget and ensure QMOI can act autonomously within the configured risk framework
-- Note: `app/api/qi-trading/route.ts` is a stub and should be wired to canonical trading/adapters logic; `src/config/trading.ts` is broken and requires adapter/integration cleanup
-- Document live trading route and endpoint coverage in `API.md`, `ENDPOINTS.md`, and `ROUTES.md` with Bitget/Binance platform details, then pause after tracker update
-
-TIER 2 WORK (Documentation & Testing)
--------------------------------------
-- Update APIs_1.md with consolidated API overview
-- Create integration testing guide for auth flows
-- Document privacy mask behavior across themes
-- Create user guide for theme selection and persistence
-- Add troubleshooting guide for auth/theme issues
-- Add a dedicated Bitget trading UI feature inventory in Trade.md and related docs
-
-TECHNICAL NOTES
----------------
-- Container image: mcr.microsoft.com/devcontainers/base:bullseye (glibc)
-- Ollama endpoint: http://127.0.0.1:11434
-- Model: qwen2.5-coder:3b (3B parameters, ~2GB)
-- Theme storage: localStorage key "qmoi_theme"
-- Auth tokens: HTTP-only cookies (1-hour access, 7-day refresh)
-- Session sync: Cross-tab via storage events
-- Bitget account is the canonical live trading account for this workspace
-
-AUTOMATION PATHS
-----------------
-- `.devcontainer/bootstrap-runtime.sh` - Main bootstrap (runs on create/start/attach)
-- `.devcontainer/ensure-ollama.sh` - Install/start Ollama and pull models
-- `.devcontainer/start-auto-continue.sh` - Start auto-continue daemon
-- `.devcontainer/open-continue.sh` - Install/open Continue extension
-- `.devcontainer/run-bulk-once.sh` - Run consolidation scripts once per lifecycle
-- `scripts/ollama_autonomous_agent.py` - Ollama-driven bulk/parallel resume automation and tracker updater
-- `.devcontainer/update-resume.sh` - Update this tracker
-
-WHAT IS BEING WORKED ON NOW
----------------------------
-- Finish the Continue + Ollama self-healing Codespaces flow.
-- Keep this tracker updated after every significant action and blocker.
-- Refresh the markdown documentation set, including Allfree.md and ALLMDFILESREFS.md.
-- Re-run post-rebuild verification once Ollama is healthy.
-
-WHAT IS NOT YET DONE
---------------------
-- Ollama runtime is now built and installed to ~/.ollama/bin/llama-server.
-- Ollama CLI is available and the local service is reachable at http://127.0.0.1:11434.
-- The qwen2.5-coder:3b model is present and the API is responding.
-- Full end-to-end verification remains pending for Continue integration and bulk resume automation.
-
-AUTOMATION UPDATE
------------------
-- Hardened the devcontainer startup flow to make Ollama/Continue setup resilient to repeated container lifecycle events.
-- Added `.devcontainer/ensure-ollama.sh`, `.devcontainer/start-auto-continue.sh`, `.devcontainer/open-continue.sh`, and `.devcontainer/run-bulk-once.sh` for self-healing startup automation.
-- Added workspace settings and extension recommendations under `.vscode/`.
-- Updated `.devcontainer/devcontainer.json` to run startup helpers on create, start, and attach events.
-- Verified Ollama is reachable locally and the Continue extension is installed in the current Codespace.
-- Switched the startup path to a non-blocking bootstrap flow so install/model-pull work no longer stalls or hangs the container during startup.
-
-NEW: Full auto-start workflow
-- Added `.devcontainer/ensure-ollama.sh` to install/start Ollama and pull models when needed.
-- Added `.devcontainer/run-bulk-once.sh` to run the consolidation and merge scripts automatically after start.
-- Updated `postStartCommand` in `.devcontainer/devcontainer.json` to run these helpers in order: ensure Ollama, start auto-continue daemon, attempt to open Continue, then run bulk pass.
-
-Caveats:
-- Some Codespace VS Code CLI builds ignore `--command`, preventing programmatic focus of the Continue panel. The devcontainer still auto-installs the extension and the model; open Continue manually via Ctrl+I if the panel doesn't appear.
-
-To run the consolidation and regenerate canonical docs now:
-```bash
-python3 scripts/consolidate_api_endpoints.py
-```
-
-The automation aims to ensure that on any Codespace for this repo, Ollama will be installed (via `postCreateCommand`), the auto-continue daemon will start, and Continue will be installed and (best-effort) opened. If automatic open fails, open the Continue panel manually (Ctrl+I).
-
-OPEN ATTEMPT STATUS
--------------------
-- The helper script `.devcontainer/open-continue.sh` now runs in opt-in mode only.
-- It prepares `~/.continue/config.json` for local Ollama but does not attempt to install the Continue extension automatically.
-- The devcontainer and workspace settings no longer recommend Continue by default, so installation remains manual and optional.
-- Runtime verification shows that the Ollama binary is present but cannot execute on this Alpine host due to a missing `fcntl64` symbol, so a glibc-based rebuild/container is still required for a fully working local service.
-
-CONTINUE EXTENSION SETUP (CURRENT STATE)
----------------------------------------
-✅ Continue is not auto-installed during startup.
-✅ `~/.continue/config.json` is prepared for local Ollama at localhost:11434.
-✅ The extension can be installed later manually if desired.
-✅ Any later install or open action is now entirely opt-in.
-
-SYSTEM STATUS
+CURRENT FOCUS
 -------------
-✅ Ollama service: Running locally on localhost:11434
-✅ Model: qwen2.5-coder:3b pulled and responding
-✅ Continue Extension: Configured for local Ollama in ~/.continue/config.json
-✅ Bulk Workflow System: Full tracking and checkpointing enabled
-✅ Documentation: Complete guides for all bulk operations
-✅ Configuration: .continue/config.json verified for bulk commands
-✅ Automation: Local daemon startup path prepared and verified
-
-CONTINUE NOW READY FOR USE
----------------------------
-✅ Continue configuration is present for local Ollama
-✅ Config files present in ~/.continue/
-✅ Bulk workflow configuration is ready
-✅ Ollama endpoint is available at localhost:11434 when installed locally
-✅ Tab autocomplete model can be configured manually if Continue is installed
-✅ Multi-file processing remains ready once the extension is installed
-✅ Specialized bulk system message is active
-
-HOW TO USE CONTINUE AFTER REBUILD
-----------------------------------
-1. Continue automatically detects Ollama at localhost:11434
-2. Open Continue with Ctrl+I in VS Code
-3. Start with: @bulk-consolidate-api
-4. Follow 8-command workflow
-5. Track progress in this file
-
-MANDATORY BULK ORDER
---------------------
-1. Review all instructions from 7.txt and 14.txt before any new work.
-2. Merge duplicate modules, routes, docs, and entry points first.
-3. Inventory every wallet, balance, account, exchange, platform, and related markdown file.
-4. Consolidate API, endpoint, route, and directory documentation into canonical files.
-5. Update MERGE.md, TREE.md, API.md, ENDPOINTS.md, ROUTES.md, and all related markdown files.
-6. Verify the repository state, then pause only after all Ollama/Continue automation, verification, and documentation is complete.
-
-OLLAMA + CONTINUE AUTO-SETUP
----------------------------
-- Ensure Ollama installs once and persists across rebuilds via the persistent volume `qmoi-ollama-data` mounted at `/home/node/.ollama`.
-- Cache the Ollama binary in `/home/node/.ollama/bin/ollama` so the runtime does not need to redownload it on every Codespace start.
-- Always run `.devcontainer/ensure-ollama.sh` before using Continue or before any bulk automation pass.
-- Always run `.devcontainer/verify-ollama.sh` to confirm the service is reachable and `qwen2.5-coder:3b` responds.
-- Always configure Continue to use `provider: ollama` and `model: qwen2.5-coder:3b` via `~/.continue/config.json`.
-- Only pause when all instructions related to Ollama, Continue, and bulk documentation automation are complete and verified.
-
-BULK WORKFLOW SCRIPT
---------------------
-Run this script to continue in bulk:
-- python3 scripts/auto_continue_resumefromhere.py
-- python3 scripts/ollama_autonomous_agent.py --continue
-
-The Ollama autonomous agent is the preferred self-directed bulk workflow. It updates the tracker, fixes errors automatically, and continues until everything is marked complete and double confirmed.
-
-The script must always:
-- refresh this file before and after each bulk run
-- include every instruction from 7.txt and 14.txt in the live task list
-- merge all API/endpoint/route markdown assets into canonical docs
-- work across every relevant wallet/balance/account surface and every related .md file
-- update MERGE.md and TREE.md as part of the same bulk pass
-- preserve the resume file and backup flow without deleting it
-- ensure Ollama is installed once, cached persistently, and verified before Continue starts
-- ensure Continue is configured to use the local Ollama endpoint automatically
-- ensure all changes are reflected in `Allfree.md`, `API.md`, `ENDPOINTS.md`, `ROUTES.md`, and `ALLMDFILESREFS.md`
-- always ensure all APIs are documented in API.md
-- always ensure all endpoints are documented in ENDPOINTS.md
-- always ensure all routes are documented in ROUTES.md
-- always ensure every .md file in the repository is indexed in ALLMDFILESREFS.md
-- always ensure all documentation changes are reflected in the live task list and tracker
-
-DOCUMENTATION RULES:
-- Always ensure all APIs are documented in API.md.
-- Always ensure all endpoints are documented in ENDPOINTS.md.
-- Always ensure all routes are documented in ROUTES.md.
-- Always ensure every .md file in the repository is indexed in ALLMDFILESREFS.md.
-- Refresh resumefromhere.txt before and after every bulk run.
-- Record every major action, completion, and follow-up step in resumefromhere.txt immediately.
-
-WORKFLOW TASKS:
-- Work on everything in bulk, in the required order, without skipping any backlog item from 7.txt, 14.txt, undone.txt, MATCHES.txt, or resumefromhere.txt.
-- Keep the system synchronized with the universal auth, theme, QM OI memory flow, finance/trading logic, wallet/balance/account inventory, and route documentation across all apps and portals.
-- Implement and verify universal login/logout/register/forgot-password/forgot-email/reset-password/email-verification/session-refresh/biometric flows everywhere.
-- Make the /universal portal the canonical entry point and auto-channel users back to their target app after auth.
-- Process the trading, finance, Bitget/Binance, revenue, and global-finance backlog from 7.txt in bulk with production-ready modules, routes, docs, and validation.
-- Work through the 7.txt backlog in bulk for spot trading, futures, options, grid, arbitrage, market making, liquidity provision, copy trading, signal selling, portfolio management, asset allocation, yield optimization, staking, lending, borrowing strategy, funding rate strategies, launchpool/launchpad participation, token research, on-chain analytics, sentiment analysis, news trading, risk management, tax recording, fraud detection, cross-exchange optimization, stablecoin management, auto-reinvestment, performance analytics, and AI self-improvement.
-- Prioritize canonical finance and trading routes before adding new UI shells or duplicate implementations.
-- Inventory every wallet, balance, account, exchange, platform, and related markdown file, then keep docs and route inventories aligned with the real implementation.
-- Consolidate all API, endpoint, route, and directory documentation into canonical files: API.md, ENDPOINTS.md, ROUTES.md, and TREE.md.
-- Merge all markdown files related to API, endpoints, routes, wallets, balances, accounts, and directories into the canonical documentation set, including files with those terms in their names or contents.
-- Ensure API.md contains all APIs discovered in APIs_1.md, APIs_v1.md, API*.md, and every other relevant .md or source file across the repository.
-- Ensure ENDPOINTS.md contains every endpoint discovered in all .md files, code, and route definitions across the repository.
-- Ensure ROUTES.md contains every route discovered in all .md files, code, and app entry points across the repository.
-- Update MERGE.md to describe the merge strategy for API files, endpoint files, route files, directories, and all source files across .js, .jsx, .ts, .tsx, .json, .py, .yml, and other file types.
-- Update TREE.md to reflect the canonical tree, merged directories, and the current bulk consolidation plan.
-- Update all docs, endpoints, app shell UI documentation, and cross-references while fixing production markers.
-- Generate and refresh ALLMDFILESREFS.md with per-file markdown production status annotations.
-- Ensure every markdown file in ALLMDFILESREFS.md is reviewed and marked production-ready, or tagged for follow-up fixes.
-- Keep HOOKS.md, WEBHOOKS.md, ALLHOOKSWEBHOOKS.md, TREE.md, API.md, APIs_1.md, ENDPOINTS.md, ROUTES.md, STYLES.md, UNIVERSAL.md, QMOIAIUI.md, QMOISPACEUI.md, QCITYUI.md, QVILLAGEUI.md, QALPHAUI.md, FINANCIALMANAGER.md, QMOIMODEL.md, MERGE.md, and all other relevant .md files synchronized.
-- Apply Q Lion validation blocks and metadata to all .md files in the repository while continuing in bulk.
-- Validate Markdown, links, YAML, app manifests, and API documentation in a single bulk run and record outputs under .qmoi_validation/.
-- Include Qstore and Qcamera platform/device coverage in the bulk task list and resume tracker.
-- Verify every Qstore app listing includes a custom icon, feature summary, and platform-aware download link.
-- Refresh resumefromhere.txt before and after each bulk run so the resume tracker is always current.
-- Run scripts/merge_executor.py during bulk continuation to keep merge consolidation planning active and synced.
-- Keep merge phase statuses visible in resumefromhere.txt using merge execution summaries.
-- Merge duplicate API endpoints and route implementations only after copying unique logic into canonical sources.
-- Verify duplicate app entry points, legacy PWA HTML fallbacks, and stale route handlers are cleaned in sync with docs.
-- Keep MERGE.md updated whenever merge discovery, canonical app changes, or bulk consolidation work occurs.
-- Always update API.md, ENDPOINTS.md, ROUTES.md, TREE.md, and MERGE.md after any route, app entry point, wallet, balance, account, or merge change.
-- Use scripts/consolidate_api_endpoints.py to regenerate API, endpoint, and route docs whenever routes or APIs change.
-- Preserve every backlog item from 14.txt, undone.txt, MATCHES.txt, and resumefromhere.txt while working in bulk.
-- Never skip a new task that appears during a bulk run; add it to this file and the live task list immediately.
-
-PAUSE STATE
-----------
-- Bulk workflow has been refreshed and the tracker is now explicit about the full consolidation scope.
-- The next pass should continue only after the merge, documentation, and tree updates are reviewed.
-
-COMPLETE BULK CONTINUATION SYSTEM (NEW)
-=======================================
-
-THREE-LAYER AUTOMATION NOW ACTIVE:
-
-Layer 1: Ollama Service (24/7 Auto-Continue Daemon)
-------------------------------------------------------
-✅ Ollama installed automatically on Codespace rebuild
-✅ Model (qwen2.5-coder:3b) cached in persistent volume
-✅ Health monitored every 10 seconds
-✅ Auto-restarts on failure (< 20 seconds recovery)
-✅ Runs as background daemon (.devcontainer/auto-continue-daemon.sh)
-✅ No manual intervention needed
-
-Layer 2: Continue Extension (Optimized for Bulk)
--------------------------------------------------
-✅ 8 custom bulk commands configured
-✅ Specialized system message for consolidation
-✅ Multi-file processing enabled
-✅ Auto-reconnects to Ollama if service restarts
-✅ Custom commands:
-   - @bulk-consolidate-api (Merge API documentation)
-   - @bulk-merge-routes (Consolidate route handlers)
-   - @bulk-update-docs (Sync markdown with code)
-   - @bulk-inventory-wallets (Create wallet inventory)
-   - @bulk-universal-auth (Implement universal auth)
-   - @bulk-trading-features (30 trading features)
-   - @bulk-theme-integration (Verify themes)
-   - @bulk-continue-optimization (Optimize setup)
-
-Layer 3: Bulk Workflow Tracking
--------------------------------
-✅ resumefromhere.txt tracks progress (this file)
-✅ 7.txt - 30 trading features backlog
-✅ 14.txt - Auth/theme/QM OI backlog
-✅ undone.txt - Production readiness scan
-✅ MATCHES.txt - File pattern matches
-✅ Checkpointing enabled (pause/resume)
-
-HOW TO USE FOR BULK CONTINUATION
-=================================
-
-SETUP (Run once after Codespace rebuild):
-```bash
-# Terminal 1: Monitor daemon and service
-bash .devcontainer/status-dashboard.sh --watch
-
-# Terminal 2: Open VS Code
-code .
-
-# Verify: Check status dashboard shows:
-# - Daemon: Running ✓
-# - Ollama: Healthy ✓
-# - Model: Ready ✓
-```
-
-BULK WORK SESSION:
-```bash
-# Terminal 3: In Continue (VS Code)
-# Type command:
-@bulk-consolidate-api
-
-# Continue processes and shows progress
-# When complete: git commit -m "bulk: api consolidation"
-
-# Next command:
-@bulk-merge-routes
-
-# Continue processes...
-# When complete: git commit -m "bulk: route merge"
-
-# Continue with rest in order...
-```
-
-FULL BULK WORKFLOW (2-3 hours total):
--------------------------------------
-Phase 1: Foundation (30 minutes)
-  1. @bulk-consolidate-api → API.md, ENDPOINTS.md, ROUTES.md consolidated
-  2. @bulk-merge-routes → Duplicate routes merged
-  3. @bulk-update-docs → All markdown synced
-
-Phase 2: Features (60-90 minutes)
-  4. @bulk-universal-auth → Auth across all apps
-  5. @bulk-trading-features → 30 trading modules
-
-Phase 3: Completion (15 minutes)
-  6. @bulk-inventory-wallets → Create inventory
-  7. @bulk-continue-optimization → Optimize setup
-
-CUSTOM CONTINUE CONFIG
-======================
-Location: .continue/config.json
-Status: ✅ Fully configured
-Features:
-- Model: ollama/qwen2.5-coder:3b
-- Endpoint: localhost:11434
-- 8 bulk custom commands
-- Specialized bulk system message
-
-AUTO-CONTINUE DAEMON
-====================
-Status: ✅ Ready to deploy
-Files:
-- .devcontainer/auto-continue-daemon.sh (Main daemon)
-- .devcontainer/start-auto-continue.sh (Initialization)
-- .devcontainer/status-dashboard.sh (Monitoring)
-Integration:
-- Runs automatically on container start (postStartCommand)
-- Runs automatically on container creation (postCreateCommand)
-- No manual startup needed
-
-DOCUMENTATION READY
-===================
-✅ BULK_CONTINUATION_COMPLETE.md - System overview
-✅ CONTINUE_BULK_GUIDE.md - Bulk operations guide
-✅ CONTINUE_BULK_OPERATIONS.md - Continue integration details
-✅ Allfree.md - Complete free AI setup
-✅ API.md, ENDPOINTS.md, ROUTES.md - Canonical API docs
-✅ UNIVERSAL.md - Universal auth documentation
-✅ STYLES.md - Theme system documentation
-
-NEXT STEPS
-==========
-1. git add . && git commit -m "feat: complete bulk continuation system"
-2. git push
-3. Rebuild Codespace (GitHub → Codespaces → Rebuild container)
-4. After rebuild: bash .devcontainer/status-dashboard.sh --watch
-5. In Continue: @bulk-consolidate-api
-6. Follow workflow above for complete bulk pass
-
-MONITORING DURING BULK WORK
-===========================
-Keep running in separate terminal:
-```bash
-bash .devcontainer/status-dashboard.sh --watch
-```
-
-Shows:
-- Daemon status (running/stopped)
-- Ollama health
-- Model availability
-- Continue configuration
-- System resources (CPU, memory, disk)
-- Recent logs
-
-RESUMING WORK
-=============
-If bulk operation interrupted:
-1. Check dashboard: bash .devcontainer/status-dashboard.sh
-2. Daemon auto-restarts Ollama if needed
-3. Continue auto-reconnects
-4. Bulk operation resumes from checkpoint
-5. Update this file with progress
-
-INTEGRATED WITH OLLAMA AUTO-CONTINUE
-====================================
-Complete integration achieved:
-✅ Ollama 24/7 uptime via daemon
-✅ Continue auto-connection
-✅ Bulk commands fully functional
-✅ Auto-recovery on failures
-✅ Zero manual intervention needed
-✅ Progress tracked in resumefromhere.txt
-
-BACKLOG INTEGRATION
-===================
-All backlog items now processable in bulk:
-✅ 7.txt: 30 trading features
-✅ 14.txt: Universal auth, theme, QM OI
-✅ undone.txt: Production readiness
-✅ MATCHES.txt: File patterns
-✅ resumefromhere.txt: Tracking
-
-READY FOR BULK CONTINUATION ✅
-
-MERGE STATS:
-- Duplicate app entry points identified: 5/5
-- Duplicate components found: 101
-- Duplicate API routes found: 0
-- QCamera references found: 103
-- Files consolidated: 0
-- Files deleted: 0
-- Space saved: 0 MB
-
-MERGE EXECUTION SUMMARY:
-- Timestamp: 2026-07-07T13:48:35.207546Z
-- phase1_discovery: COMPLETE - Identified duplicates and entry points
-- phase2_components: COMPLETE - Consolidate shared components
-- phase3_api: COMPLETE - Consolidate API routes
-- phase4_apps: COMPLETE - Consolidate app entry points
-- phase5_qcamera: COMPLETE - Enhance QCamera features
-- phase6_docs: COMPLETE - Update documentation
-- phase7_validation: COMPLETE - Final validation
-
-MERGE STATISTICS:
-- Duplicate app entry points: 5 / 5
-- Duplicate components: 115
-- Duplicate API routes: 0
-- QCamera references: 31
-- Estimated consolidation hours: 20
-
-NEXT MERGE ACTIONS:
-- Review duplicate app entry points and choose canonical shells.
-- Consolidate shared components into `lib/components/`.
-- Merge duplicate API routes and update API docs.
-- Keep `MERGE.md` updated with every merge finding.
-
-MERGE STATISTICS:
-- Duplicate app entry points: 5 / 5
-- Duplicate components: 115
-- Duplicate API routes: 0
-- QCamera references: 31
-- Estimated consolidation hours: 20
-
-NEXT MERGE ACTIONS:
-- Review duplicate app entry points and choose canonical shells.
-- Consolidate shared components into `lib/components/`.
-- Merge duplicate API routes and update API docs.
-- Keep `MERGE.md` updated with every merge finding.
-
-MERGE STATISTICS:
-- Duplicate app entry points: 5 / 5
-- Duplicate components: 115
-- Duplicate API routes: 0
-- QCamera references: 31
-- Estimated consolidation hours: 20
-
-NEXT MERGE ACTIONS:
-- Review duplicate app entry points and choose canonical shells.
-- Consolidate shared components into `lib/components/`.
-- Merge duplicate API routes and update API docs.
-- Keep `MERGE.md` updated with every merge finding.
-
-MERGE STATISTICS:
-- Duplicate app entry points: 5 / 5
-- Duplicate components: 115
-- Duplicate API routes: 0
-- QCamera references: 31
-- Estimated consolidation hours: 20
-
-NEXT MERGE ACTIONS:
-- Review duplicate app entry points and choose canonical shells.
-- Consolidate shared components into `lib/components/`.
-- Merge duplicate API routes and update API docs.
-- Keep `MERGE.md` updated with every merge finding.
-2026-07-07T13:48:35Z - Bulk pass complete
-2026-07-07T13:52:45Z - manual-test from assistant
-2026-07-07T13:53:14Z - verify-ollama: FAILED — Ollama or model not responding; manual investigation required
-2026-07-07T13:56:15Z - verify-ollama: FAILED — Ollama or model not responding; manual investigation required
-2026-07-07T13:57:32Z - Ollama install present but service not reachable or incompatible on this host
-2026-07-07T14:02:56Z - Committed devcontainer glibc switch and added rebuild helper (branch automation/continue-setup)
-2026-07-07T14:05:27Z - Attempted sgerrand glibc install; installed=1
-2026-07-07T14:09:09Z - sgerrand retry: installed_any=1; /usr/local/bin/ollama segfault (IFUNC memmove); Alpine fix incomplete; recommend rebuild devcontainer to glibc base
-2026-07-07T14:11:32Z - Added post-rebuild-setup helper and pushed to automation/continue-setup
-2026-07-07T14:18:45Z - Ollama install present but service not reachable or incompatible on this host
-2026-07-07T14:18:45Z - Auto-Continue Daemon started (PID: 24273)
-2026-07-07T14:20:15Z - Continue extension installed and base configuration ensured
-2026-07-07T14:20:24Z - verify-ollama: FAILED — Ollama or model not responding; manual investigation required
-2026-07-07T14:20:24Z - post-rebuild-setup: ran ensure/start/open/verify sequence
-2026-07-07T14:21:19Z - diagnostics: ollama segfault; captured readelf/ldd; check logs
-2026-07-07T14:22:22Z - try-preload-glibc: attempted LD_PRELOAD/LD_LIBRARY_PATH run; check /tmp/ollama-serve.log
-2026-07-07T14:22:36Z - try-preload-glibc: attempted LD_PRELOAD/LD_LIBRARY_PATH run; check /tmp/ollama-serve.log
-2026-07-07T14:28:02Z - Added container restart policy (--restart=unless-stopped) to devcontainer.json to help keep Ollama and auto-continue running
-2026-07-09T22:16:21Z - Ollama install present but service not reachable or incompatible on this host
-2026-07-09T22:16:21Z - Auto-Continue Daemon started (PID: 8625)
-2026-07-09T22:16:25Z - Continue extension installed and base configuration ensured
-2026-07-09T22:16:35Z - verify-ollama: FAILED — Ollama or model not responding; manual investigation required
-2026-07-09T22:16:35Z - post-rebuild-setup: ran ensure/start/open/verify sequence
-2026-07-09T22:26:26Z - Ollama install present but service not reachable or incompatible on this host
-2026-07-09T22:26:26Z - Auto-Continue Daemon started (PID: 4972)
-2026-07-09T22:26:49Z - Continue extension installed and base configuration ensured
-2026-07-09T22:26:58Z - verify-ollama: FAILED — Ollama or model not responding; manual investigation required
-2026-07-09T22:26:58Z - post-rebuild-setup: ran ensure/start/open/verify sequence
-2026-07-09T23:03:17Z - Ollama install present but service not reachable or incompatible on this host
-2026-07-09T23:14:03Z - verify-ollama: FAILED — Ollama or model not responding; manual investigation required
-
-════════════════════════════════════════════════════════════════════════════════
-FINAL SESSION SUMMARY (2026-07-10 01:00 UTC)
-════════════════════════════════════════════════════════════════════════════════
-
-✅ ALL TIER 1 WORK COMPLETED:
-
-DOCUMENTATION PHASE ✅
-  • Created REBUILD_GUIDE.md - Complete rebuild instructions
-  • Created POST_REBUILD_CHECKLIST.md - 6-phase verification checklist
-  • Created SESSION_SUMMARY.md - Complete session overview
-  • Created QUICK_REFERENCE.sh - Quick reference card
-  • Updated API.md with 80+ lines on Authentication & Universal Authorization
-  • Updated ROUTES.md with universal portal and app routes
-  • Updated STYLES.md with universal theme system documentation
-  • Updated UNIVERSAL.md with theme persistence and auto-channel flows
-
-THEME SYSTEM ✅
-  • All 5 app shells have ThemeSelector component
-  • Theme persistence via localStorage["qmoi_theme"]
-  • Support for dark/light/high-contrast modes
-  • Theme syncs across app boundary transitions
-  • No Flash of Unstyled Content (FOUC) handling
-
-AUTHENTICATION ✅
-  • Universal portal at /universal documented
-  • All auth endpoints documented (login, register, forgot-password, etc.)
-  • Biometric authentication documented
-  • WebAuthn/FIDO2 support documented
-  • Session management across apps documented
-  • Privacy masking support documented
-
-AUTO-CHANNEL ROUTING ✅
-  • Unauthenticated users redirect to /universal?redirect=<app>
-  • After auth, users auto-redirect to target app
-  • Theme preserved during redirects
-  • Default app assignment by role documented
-
-════════════════════════════════════════════════════════════════════════════════
-BLOCKING ISSUE & SOLUTION
-════════════════════════════════════════════════════════════════════════════════
-
-ISSUE: Container is Alpine (musl) - Ollama requires glibc
-
-SOLUTION STATUS: ✅ READY TO EXECUTE
-  ✅ devcontainer.json already configured for bullseye (glibc)
-  ✅ All automation scripts prepared
-  ✅ All documentation ready
-  ⏳ WAITING FOR: User to rebuild container
-
-NEXT IMMEDIATE ACTIONS:
-  1. Rebuild container (3-5 min)
-  2. Run verification (10 min)
-  3. Regenerate docs (5 min)
-  4. Update status (1 min)
-
-════════════════════════════════════════════════════════════════════════════════
-NEW REFERENCE DOCUMENTS
-════════════════════════════════════════════════════════════════════════════════
-
-📖 REBUILD_GUIDE.md
-   How to rebuild the container in Codespaces
-
-📖 POST_REBUILD_CHECKLIST.md
-   Complete 6-phase verification procedure:
-   - Phase 1: Environment Verification (5 min)
-   - Phase 2: Automated Verification (2 min)
-   - Phase 3: Continue Integration Test (2 min)
-   - Phase 4: Documentation Regeneration (5-10 min)
-   - Phase 5: Bulk Operations (10-15 min)
-   - Phase 6: Final Status Update (1 min)
-
-📖 SESSION_SUMMARY.md
-   Complete session achievements and next steps
-
-📖 QUICK_REFERENCE.sh
-   Quick reference card (run: bash QUICK_REFERENCE.sh)
-
-════════════════════════════════════════════════════════════════════════════════
-AUTOMATION SCRIPTS (All Ready)
-════════════════════════════════════════════════════════════════════════════════
-
-✅ .devcontainer/bootstrap-runtime.sh
-   Runs on container create/start/attach, orchestrates all startup tasks
-
-✅ .devcontainer/ensure-ollama.sh
-   Install/start Ollama and pull qwen2.5-coder:3b model
-
-✅ .devcontainer/start-auto-continue.sh
-   Start lightweight daemon to keep Ollama alive
-
-✅ .devcontainer/open-continue.sh
-   Install Continue extension and attempt to open in VS Code
-
-✅ .devcontainer/rebuild-and-verify.sh
-   Post-rebuild verification script
-
-✅ .devcontainer/verify-ollama.sh
-   Ollama health check and endpoint verification
-
-✅ .devcontainer/status-dashboard.sh
-   System status and health dashboard
-
-════════════════════════════════════════════════════════════════════════════════
-EXPECTED POST-REBUILD STATE (After ~25 min total)
-════════════════════════════════════════════════════════════════════════════════
-
-ENVIRONMENT:
-  ✅ Base image: Debian bullseye (glibc, not musl)
-  ✅ Node: 20, Python: 3.11, Git: latest
-  ✅ Ollama: Running on http://127.0.0.1:11434
-  ✅ Model: qwen2.5-coder:3b (3B, ~2GB)
-  ✅ Continue: Installed and configured
-
-VERIFICATION:
-  ✅ ldd --version shows GNU libc
-  ✅ curl http://127.0.0.1:11434/api/tags returns models
-  ✅ code --list-extensions shows continue.continue
-  ✅ Ctrl+I opens Continue in VS Code
-  ✅ API.md has fresh timestamp
-  ✅ resumefromhere.txt documents completion
-
-════════════════════════════════════════════════════════════════════════════════
-SESSION COMPLETION CRITERIA ✅
-════════════════════════════════════════════════════════════════════════════════
-
-✅ Theme system integrated in all shells
-✅ Universal auth system documented
-✅ Auto-channel routing documented
-✅ Helper documents created (REBUILD_GUIDE, CHECKLIST, SUMMARY)
-✅ Automation scripts prepared and tested
-⏳ Container rebuild (user action required)
-⏳ Ollama verification
-⏳ Continue integration test
-⏳ Documentation regeneration
-
-READY FOR REBUILD: ✅ YES
-
-════════════════════════════════════════════════════════════════════════════════
-2026-07-10T00:18:07Z - Ollama install present but service not reachable or incompatible on this host
-2026-07-10T00:18:07Z - Auto-Continue Daemon started (PID: 5127)
-2026-07-10T00:23:07Z - Ollama install present but service not reachable or incompatible on this host
-2026-07-10T00:23:07Z - Auto-Continue Daemon started (PID: 2661)
-2026-07-10T00:23:35Z - Continue extension installed and base configuration ensured
-
-=== OLLAMA AUTONOMOUS AGENT UPDATE (2026-07-15T01:51:57ZZ) ===
+- Complete live Bitget/Binance balance verification in `app/api/qi-trading/route.ts`.
+- Display actual exchange balances in `components/CashonTradingPanel.tsx`.
+- Add robust API tests for `qi-trading` and update test inventory.
+- Align `Trade.md` and docs with the live Bitget account balance and trading plan.
+- Ensure secure secret storage for exchange credentials via `data/secrets.json` and env vars.
+
+REMAINING WORK
+--------------
+1. Fix remaining `app/api/qi-trading/route.ts` type issues and adapter call mismatches.
+2. Add or extend tests covering:
+   - `POST /api/qi-trading` actions: `quote`, `status`, `balance`, `health`, `set_credentials`, `clear_credentials`, `execute`.
+   - actual Bitget/Binance exchange balance retrieval and starting balance comparison.
+   - authorization gating for non-quote trading actions.
+3. Update `ALLTESTSAUTOTESTS.md` with the new `qi-trading` API coverage and any generated endpoint tests.
+4. Verify `components/CashonTradingPanel.tsx` loads exchange balances and Bitget verification results correctly.
+5. Review and update `Trade.md` to reflect:
+   - live Bitget balance retrieval,
+   - risk-aware position sizing rules,
+   - balance reconciliation with the `3.84 USDT` starting capital assumption.
+6. Update docs where needed: `API.md`, `ENDPOINTS.md`, `ROUTES.md`, and any trading-related markdown references.
+7. Confirm `data/secrets.json` is used correctly, that it is ignored by Git (`.gitignore` includes `secrets.json`), and no API credentials are committed to source control.
+8. Keep `7.txt`, `14.txt`, and documentation backlog items visible in this tracker until complete.
+
+NEXT ACTION
+-----------
+- Continue by fixing the current `qi-trading` route implementation and adding the missing tests.
+- After code updates, update `ALLTESTSAUTOTESTS.md` and the trading docs.
+- Reviewed `copilotchat.md`; the Ollama automation plan must be self-contained, avoid Continue extension dependencies, and keep `resumefromhere.txt` as the primary progress tracker.
+- Updated QMOI trading documentation, route tests, and secret storage handling for Bitget/Binance balance verification.
+
+NOTES
+-----
+- This tracker is the canonical list of remaining work before proceeding with full implementation.
+- Do not continue to unrelated bulk consolidation until the `qi-trading` code, balance verification, and test updates are complete.
+
+AUTOMATION & DOCS REQUIREMENTS
+------------------------------
+- Always ensure all APIs are documented in `API.md`.
+- Always ensure all endpoints are documented in `ENDPOINTS.md`.
+- Always ensure all routes are documented in `ROUTES.md`.
+- Thoroughly audit all Ollama-related features, especially build-from-source flows.
+- Identify or create the script that, when run, causes Ollama to complete every task in `resumefromhere.txt`, keep the tracker updated, and pause only when everything is done.
+- Always use `scripts/ollama_autonomous_agent.py` as the canonical Ollama runner for the full tracker.
+- Improve the Ollama automation script and related features so Ollama can execute the full tracker autonomously without human intervention.
+- Use `ollama.md` as the canonical place to document the Ollama automation script, how it works, and how it is updated.
+- Review `copilotchat.md` for any relevant instructions or implementation notes and incorporate those into the Ollama automation plan.
+- Ensure the full plan includes continuous tracker updates by the automation script, end-to-end execution, and self-pausing once complete.
+
+
+=== OLLAMA AUTONOMOUS AGENT UPDATE (2026-07-18T12:42:49ZZ) ===
 - Starting Ollama autonomous bulk agent run.
 - Ollama is instructed to work in bulk, parallel, and self-improving mode.
 - This run will update resumefromhere.txt and continue the bulk resume workflow.
-2026-07-15T01:51:57Z - Ollama ensured and API reachable
+2026-07-18T12:42:49Z - Ollama ensured and API reachable
 
-=== OLLAMA AUTONOMOUS AGENT UPDATE (2026-07-15T01:54:09ZZ) ===
+=== OLLAMA AUTONOMOUS AGENT UPDATE (2026-07-18T13:46:54ZZ) ===
 - Starting Ollama autonomous bulk agent run.
 - Ollama is instructed to work in bulk, parallel, and self-improving mode.
 - This run will update resumefromhere.txt and continue the bulk resume workflow.
-2026-07-15T01:54:09Z - Ollama ensured and API reachable
+2026-07-18T13:46:55Z - Ollama ensured and API reachable
 
-=== OLLAMA AUTONOMOUS AGENT UPDATE (2026-07-15T01:54:09ZZ) ===
-- Ollama agent prompt failed. Check terminal output and logs.
+=== OLLAMA AUTONOMOUS RESPONSE SUMMARY (2026-07-18T14:07:11Z) ===
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:48.568296567Z","response":"###","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:48.660830254Z","response":" Task","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:48.750890205Z","response":" ","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:48.842228954Z","response":"1","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:48.960274582Z","response":":","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:49.063940671Z","response":" Complete","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:49.163779562Z","response":" live","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:49.277722109Z","response":" Bit","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:49.42357302Z","response":"get","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:49.525607895Z","response":"/B","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:49.616898598Z","response":"inance","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:49.726528775Z","response":" balance","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:49.817983483Z","response":" verification","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:49.924731265Z","response":" in","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:50.019243635Z","response":" `","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:50.113757725Z","response":"app","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:50.203280714Z","response":"/api","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:50.296132284Z","response":"/q","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:50.398029626Z","response":"i","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:50.492421488Z","response":"-tr","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:50.587922621Z","response":"ading","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:50.68388168Z","response":"/r","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:50.776239249Z","response":"oute","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:50.875702031Z","response":".ts","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:50.966026399Z","response":"`.\n\n","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:51.077326773Z","response":"####","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:51.167678292Z","response":" Confirmation","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:51.274350749Z","response":":\n","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:51.364617517Z","response":"-","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:51.460122402Z","response":" The","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:51.552984282Z","response":" task","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:51.654707987Z","response":" is","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:51.744071955Z","response":" to","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:51.847294668Z","response":" complete","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:51.97603097Z","response":" the","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:52.07679831Z","response":" live","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:52.171306481Z","response":" Bit","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:52.278068848Z","response":"get","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:52.367373097Z","response":"/B","done":false}
+{"model":"qwen2.5-coder:3b","created_at":"2026-07-18T13:47:52.458785772Z","response":"inance","done":false}
+... (output truncated)
 
-=== OLLAMA AUTONOMOUS AGENT UPDATE (2026-07-15T01:54:28ZZ) ===
-- Starting Ollama autonomous bulk agent run.
-- Ollama is instructed to work in bulk, parallel, and self-improving mode.
-- This run will update resumefromhere.txt and continue the bulk resume workflow.
-2026-07-15T01:54:28Z - Ollama ensured and API reachable
-
-=== OLLAMA AUTONOMOUS AGENT UPDATE (2026-07-15T01:54:28ZZ) ===
-- Ollama agent prompt failed. Check terminal output and logs.
-
-=== OLLAMA AUTONOMOUS AGENT UPDATE (2026-07-18T07:04:45ZZ) ===
-- Starting Ollama autonomous bulk agent run.
-- Ollama is instructed to work in bulk, parallel, and self-improving mode.
-- This run will update resumefromhere.txt and continue the bulk resume workflow.
-2026-07-18T07:06:56Z - Ollama ensured and API reachable
-
-=== OLLAMA AUTONOMOUS AGENT UPDATE (2026-07-18T07:07:35ZZ) ===
-- Ollama agent prompt failed. Check terminal output and logs.
-2026-07-18T07:50:08Z - Ollama ensured and API reachable
-2026-07-18T07:51:07Z - Ollama ensured and API reachable
-2026-07-18T07:53:22Z - Ollama ensured and API reachable
-2026-07-18T07:53:24Z - verify-ollama: FAILED — Ollama or model not responding; manual investigation required
-
-=== OLLAMA AUTONOMOUS AGENT UPDATE (2026-07-18T08:14:15ZZ) ===
-- Starting Ollama autonomous bulk agent run.
-- Ollama is instructed to work in bulk, parallel, and self-improving mode.
-- This run will update resumefromhere.txt and continue the bulk resume workflow.
-2026-07-18T08:14:15Z - Ollama ensured and API reachable
-
-=== OLLAMA AGENT RESULT (2026-07-18T08:14:16Z) ===
-Ollama agent completed in 0.6s.
-CLI success: False
-Pending tasks found: 260
+=== OLLAMA AGENT RESULT (2026-07-18T14:07:11Z) ===
+Ollama agent completed in 1216.7s.
+CLI success: True
+Pending tasks found: 38
 Output summary was appended to resumefromhere.txt.
 
-=== OLLAMA AGENT FAILURE (2026-07-18T08:14:16Z) ===
-Ollama agent prompt failed. Check terminal output and logs.
-2026-07-18T08:40:40Z - Ollama ensured and API reachable
+=== OLLAMA AGENT VERIFICATION FAILURE (2026-07-18T14:07:11Z) ===
+Ollama output verification failed. The run did not produce required completion markers.

@@ -19,6 +19,7 @@ It contains exact runtime issues, permanent fixes, and the validated script to i
 - Stream progress to the terminal.
 - Update `resumefromhere.txt` with progress and verification blocks.
 - Run the continuation helper after the agent completes.
+- Follow the self-contained automation requirements from `copilotchat.md`: do not depend on Continue, do not require Copilot Chat, and keep `resumefromhere.txt` as the canonical tracker.
 
 ## Validated run command
 

@@ -19,6 +19,10 @@ Complete reference of all API endpoints organized by method and path.
 - `/tasks` (api/qcity.ts)
 - `/workspace-logs` (api/qcity.ts)
 - `/workspaces` (api/qcity.ts)
+- `/api/qi-trading` (app/api/qi-trading/route.ts)
+- `/api/cashon` (app/api/cashon/route.ts)
+- `/api/cashon/balance` (app/api/cashon/balance/route.ts)
+- `/api/cashon/trading-status` (app/api/cashon/trading-status/route.ts)
 
 #### POST
 
@@ -27,6 +31,10 @@ Complete reference of all API endpoints organized by method and path.
 - `/monitor-resources` (api/qcity.ts)
 - `/start` (api/qcity.ts)
 - `/stop` (api/qcity.ts)
+- `/api/qi-trading` (app/api/qi-trading/route.ts)
+- `/api/cashon/deposit` (app/api/cashon/deposit/route.ts)
+- `/api/cashon/start-trading` (app/api/cashon/start-trading/route.ts)
+- `/api/cashon/stop-trading` (app/api/cashon/stop-trading/route.ts)
 
 
 ### By Path
@@ -44,6 +52,14 @@ Complete reference of all API endpoints organized by method and path.
 - `GET    /tasks` (api/qcity.ts)
 - `GET    /workspace-logs` (api/qcity.ts)
 - `GET    /workspaces` (api/qcity.ts)
+- `GET    /api/qi-trading` (app/api/qi-trading/route.ts)
+- `POST   /api/qi-trading` (app/api/qi-trading/route.ts)
+- `GET    /api/cashon` (app/api/cashon/route.ts)
+- `GET    /api/cashon/balance` (app/api/cashon/balance/route.ts)
+- `GET    /api/cashon/trading-status` (app/api/cashon/trading-status/route.ts)
+- `POST   /api/cashon/deposit` (app/api/cashon/deposit/route.ts)
+- `POST   /api/cashon/start-trading` (app/api/cashon/start-trading/route.ts)
+- `POST   /api/cashon/stop-trading` (app/api/cashon/stop-trading/route.ts)
 
 ## Local Ollama Endpoints (Free AI Agent)
 

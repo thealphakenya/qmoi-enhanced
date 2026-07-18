@@ -32,6 +32,68 @@ Local Ollama provides a free, local AI endpoint in Codespaces using the Ollama r
 - **Continue config path:** `~/.continue/config.json`
 - **Devcontainer helpers:** `.devcontainer/ensure-ollama.sh`, `.devcontainer/open-continue.sh`, `.devcontainer/verify-ollama.sh`
 
+### Trading API Integration
+
+The QMOI trading stack provides a dedicated trading API route for exchange integration, order execution, and status monitoring.
+
+- `GET /api/qi-trading` - Trading endpoint metadata and supported platforms
+- `POST /api/qi-trading` - Trading actions: `quote`, `execute`, `status`, `health`, `set_credentials`, `clear_credentials`
+- `POST /api/qi-trading` payload example:
+  ```json
+  {
+    "action": "execute",
+    "platform": "bitget",
+    "symbol": "BTC/USDT",
+    "side": "buy",
+    "orderType": "market",
+    "quantity": 0.001,
+    "dryRun": true
+  }
+  ```
+- `POST /api/qi-trading` credential payload example:
+  ```json
+  {
+    "action": "set_credentials",
+    "platform": "bitget",
+    "credentials": {
+      "apiKey": "your-key",
+      "apiSecret": "your-secret",
+      "passphrase": "your-passphrase",
+      "realTrading": false
+    }
+  }
+  ```
+- `POST /api/qi-trading` clear credentials example:
+  ```json
+  {
+    "action": "clear_credentials",
+    "platform": "bitget"
+  }
+  ```
+- Supported platforms:
+  - `bitget` (`services/adapters/bitget.ts`)
+  - `binance` (`services/adapters/binance.ts`)
+- Exchange credentials are pulled from environment variables or secret storage:
+  - `BITGET_API_KEY`, `BITGET_API_SECRET`, `BITGET_PASSPHRASE`
+  - `BINANCE_API_KEY`, `BINANCE_API_SECRET`, `BINANCE_TESTNET`
+- The trading route returns live exchange balance data for Bitget and Binance, including `exchangeBalances` and `balanceVerification` for Bitget starting balance validation.
+- `REAL_TRADING` or platform-specific `BITGET_REAL_TRADING` / `BINANCE_REAL_TRADING` enables live execution. Otherwise, orders are simulated.
+- Non-quote `POST /api/qi-trading` requests require master/admin bearer authorization via `MASTER_TOKEN` or `ADMIN_TOKEN`.
+- Trading status requests also return local wallet balances from `src/config/wallet.ts`.
+
+### Cashon Trading API
+
+The Cashon wallet provides autonomous trading controls:
+- `GET /api/cashon` - Cashon API root
+- `GET /api/cashon/balance` - Fetch authorized Cashon balance
+- `POST /api/cashon/deposit` - Create a deposit request
+- `POST /api/cashon/start-trading` - Enable autonomous trading
+- `POST /api/cashon/stop-trading` - Disable autonomous trading
+- `GET /api/cashon/trading-status` - Get current Cashon trading status
+- `GET /api/cashon/signals` - Retrieve generated trading signals
+
+These endpoints connect the QMOI trading engine, Cashon wallet automation, and exchange adapters.
+
 **Local Ollama example request:**
 ```json
 {

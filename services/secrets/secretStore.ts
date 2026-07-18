@@ -51,3 +51,20 @@ export function selectSecretStore(): SecretStore {
   }
   return new LocalSecretStore();
 }
+
+export async function getSecretJson<T = unknown>(key: string): Promise<T | undefined> {
+  const store = selectSecretStore();
+  const raw = await store.getSecret(key);
+  if (!raw) return undefined;
+  try {
+    return JSON.parse(raw) as T;
+  } catch (error) {
+    console.error(`Failed to parse JSON secret for key ${key}:`, error);
+    return undefined;
+  }
+}
+
+export async function setSecretJson(key: string, value: unknown): Promise<void> {
+  const store = selectSecretStore();
+  await store.setSecret(key, JSON.stringify(value));
+}

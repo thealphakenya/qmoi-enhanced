@@ -118,6 +118,17 @@ def get_ollama_cmd() -> str | None:
     return None
 
 
+def get_ollama_env() -> dict[str, str]:
+    env = os.environ.copy()
+    if OLLAMA_FALLBACK_BIN.exists():
+        env["PATH"] = str(OLLAMA_FALLBACK_BIN.parent) + ":" + env.get("PATH", "")
+    build_lib_dir = Path.home() / ".ollama" / "source" / "build" / "llama-server-cpu" / "bin"
+    if build_lib_dir.exists():
+        env["GGML_BACKEND_PATH"] = str(build_lib_dir)
+        env["LD_LIBRARY_PATH"] = str(build_lib_dir) + ":" + env.get("LD_LIBRARY_PATH", "")
+    return env
+
+
 def is_ollama_cli_available() -> bool:
     return get_ollama_cmd() is not None
 
@@ -141,13 +152,9 @@ def start_ollama_service() -> bool:
         return False
 
     print(f"Starting Ollama service in the background using {ollama_cmd}...")
-    env = os.environ.copy()
-    if OLLAMA_FALLBACK_BIN.exists():
-        env["PATH"] = str(OLLAMA_FALLBACK_BIN.parent) + ":" + env.get("PATH", "")
+    env = get_ollama_env()
     build_lib_dir = Path.home() / ".ollama" / "source" / "build" / "llama-server-cpu" / "bin"
     if build_lib_dir.exists():
-        env["GGML_BACKEND_PATH"] = str(build_lib_dir)
-        env["LD_LIBRARY_PATH"] = str(build_lib_dir) + ":" + env.get("LD_LIBRARY_PATH", "")
         print(f"INFO: Configured GGML_BACKEND_PATH and LD_LIBRARY_PATH for source-built runtime: {build_lib_dir}")
     try:
         stdout = (LOG_DIR / "ollama_serve.stdout.log").open("a", encoding="utf-8")
@@ -285,9 +292,16 @@ def run_ollama_cli(prompt: str) -> tuple[bool, str]:
     if not ollama_cmd:
         return False, ""
     print(f"==> Sending prompt to Ollama CLI (streaming output) via {ollama_cmd}")
-    command = [ollama_cmd, "run", MODEL_NAME, "--prompt", prompt, "--stream", "--verbose"]
+    command = [ollama_cmd, "run", MODEL_NAME, prompt, "--verbose"]
     try:
-        process = subprocess.Popen(command, cwd=str(ROOT), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+        process = subprocess.Popen(
+            command,
+            cwd=str(ROOT),
+            env=get_ollama_env(),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+        )
     except FileNotFoundError:
         return False, ""
     assert process.stdout is not None

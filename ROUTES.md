@@ -62,6 +62,17 @@ These routes handle authentication, onboarding, and universal app routing:
 - `/qalpha/profile` - User profile
 - `/qalpha/theme` - Theme selection
 
+## 🧠 Trading Routes
+
+- `/api/qi-trading` - QMOI trading API root and execution route supporting Bitget/Binance quote, execute, status, health, and credential management actions
+- `/api/cashon` - Cashon wallet API root
+- `/api/cashon/balance` - Cashon balance query
+- `/api/cashon/deposit` - Cashon deposit request
+- `/api/cashon/signals` - Cashon trading signals
+- `/api/cashon/start-trading` - Cashon autonomous trading start
+- `/api/cashon/stop-trading` - Cashon autonomous trading stop
+- `/api/cashon/trading-status` - Cashon trading status
+
 ## 🔧 Admin Routes
 
 - `/admin` - Admin dashboard

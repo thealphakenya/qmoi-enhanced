@@ -193,6 +193,9 @@ API version compatibility
 comprehensive logging
 error reporting
 graceful degradation
+- `/api/qi-trading` is the canonical trading execution and quote endpoint wired to the Bitget and Binance adapter stack.
+- Trading actions support `quote`, `execute`, `status`, and `health` for exchange-level monitoring.
+- Cashon controls are exposed through `/api/cashon/*` for wallet balance, deposit, and autonomous trading management.
 Secret Management
 Never hard-code credentials.
 Store secrets securely using encrypted secret management or environment variables.
@@ -305,7 +308,7 @@ QMOI should continuously seek to improve its forecasting, execution, and operati
 
 
 
-
+INSTRUCTIONS Q
 
 
 
@@ -329,7 +332,7 @@ Increase the account balance over time through disciplined risk management and s
 QMOI must recognize that financial markets are uncertain and must never assume profits are guaranteed. It should aim for consistent, risk-aware growth while minimizing unnecessary losses.
 Balance Management
 QMOI shall:
-Retrieve the latest Bitget account balance before making any trading decision.
+Retrieve the latest Bitget account balance before making any trading decision by calling `POST /api/qi-trading` with `action: "status"` and verifying the Bitget USDT balance against the expected starting capital.
 Automatically update all calculations whenever the account balance changes.
 Calculate:
 Available balance

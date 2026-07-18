@@ -45,6 +45,19 @@ interface TradingStatus {
   totalProfit: number;
   lastTrade: Date | null;
 }
+interface ExchangeBalance {
+  platform: string;
+  balances: { asset: string; available: number }[];
+  usdtBalance: number;
+  timestamp: string;
+  startingBalanceComparison?: {
+    expected: number;
+    actual: number;
+    difference: number;
+    meetsExpected: boolean;
+  };
+  error?: string;
+}
 interface TradingSignal {
   symbol: string;
   action: "buy" | "sell" | "hold";
@@ -61,6 +74,8 @@ export default function CashonTradingPanel(): any {
     null,
   );
   const [signals, setSignals] = useState<TradingSignal[]>([]);
+  const [exchangeBalances, setExchangeBalances] = useState<ExchangeBalance[]>([]);
+  const [balanceVerification, setBalanceVerification] = useState<ExchangeBalance["startingBalanceComparison"] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isMaster, setIsMaster] = useState(false);
@@ -106,7 +121,7 @@ export default function CashonTradingPanel(): any {
       setError(null);
       const headers = buildMasterHeaders(masterToken);
 
-      // Load balance
+      // Load cashon wallet balance
       const balanceResponse = await fetch("/api/cashon/balance", { headers });
       if (balanceResponse.ok) {
         const balanceData = await balanceResponse.json();
@@ -125,6 +140,21 @@ export default function CashonTradingPanel(): any {
       if (signalsResponse.ok) {
         const signalsData = await signalsResponse.json();
         setSignals(signalsData.signals || signalsData || []);
+      }
+
+      // Load actual exchange balances from QMOI trading service
+      const exchangeResponse = await fetch("/api/qi-trading", {
+        method: "POST",
+        headers: {
+          ...headers,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ action: "status", platform: "bitget" }),
+      });
+      if (exchangeResponse.ok) {
+        const exchangeData = await exchangeResponse.json();
+        setExchangeBalances(exchangeData.exchangeBalances || []);
+        setBalanceVerification(exchangeData.balanceVerification || null);
       }
     } catch (err) {
       setError("Failed to load trading data");
@@ -332,6 +362,76 @@ export default function CashonTradingPanel(): any {
           </CardContent>
         </Card>
       </div>
+      {/* Exchange Balance Verification */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-sm font-medium">
+            Exchange Balance Verification
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          {exchangeBalances.length === 0 ? (
+            <p className="text-muted-foreground">
+              Actual Bitget/Binance balances have not been loaded yet.
+            </p>
+          ) : (
+            <div className="space-y-4">
+              {exchangeBalances.map((exchange) => (
+                <div key={exchange.platform} className="border rounded-lg p-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-sm font-medium">
+                        {exchange.platform.toUpperCase()} USDT Balance
+                      </div>
+                      <div className="text-2xl font-bold">
+                        {exchange.usdtBalance.toFixed(6)} USDT
+                      </div>
+                    </div>
+                    <div className="text-right text-xs text-muted-foreground">
+                      Last polled: {new Date(exchange.timestamp).toLocaleString()}
+                    </div>
+                  </div>
+                  {exchange.startingBalanceComparison ? (
+                    <div className="mt-3 text-sm">
+                      <div>
+                        Expected starting balance: {exchange.startingBalanceComparison.expected} USDT
+                      </div>
+                      <div>
+                        Actual balance: {exchange.startingBalanceComparison.actual} USDT
+                      </div>
+                      <div>
+                        Difference: {exchange.startingBalanceComparison.difference.toFixed(8)} USDT
+                      </div>
+                      <div>
+                        Status: {exchange.startingBalanceComparison.meetsExpected ? "Meets or exceeds expected balance" : "Below expected starting balance"}
+                      </div>
+                    </div>
+                  ) : null}
+                  {exchange.error ? (
+                    <div className="mt-3 text-sm text-red-600">
+                      Error: {exchange.error}
+                    </div>
+                  ) : null}
+                </div>
+              ))}
+            </div>
+          )}
+          <div className="mt-3">
+            <Button
+              onClick={loadData}
+              disabled={isLoading}
+              className="mr-3"
+            >
+              Refresh Exchange Balances
+            </Button>
+            {balanceVerification ? (
+              <div className="mt-2 text-sm text-slate-600">
+                Latest Bitget validation: {balanceVerification.meetsExpected ? "OK" : "Review required"}
+              </div>
+            ) : null}
+          </div>
+        </CardContent>
+      </Card>
       {/* Trading Controls */}
       <Card>
         <CardHeader>
