@@ -1,15 +1,25 @@
 #!/bin/bash
 set -euo pipefail
 
+export PATH="$HOME/.ollama/bin:$PATH"
 OLLAMA_PID_FILE="/tmp/ollama.pid"
 OLLAMA_LOG_FILE="$HOME/.ollama/logs/auto-continue.log"
-# 0 => unlimited retries with backoff
-MAX_RESTART_ATTEMPTS=0
+AUTO_CONTINUE_ENABLED="${AUTO_CONTINUE_ENABLED:-true}"
+AUTO_CONTINUE_CHECK_INTERVAL="${AUTO_CONTINUE_CHECK_INTERVAL:-10}"
+AUTO_CONTINUE_MAX_RESTARTS="${AUTO_CONTINUE_MAX_RESTARTS:-0}"
+MAX_RESTART_ATTEMPTS="$AUTO_CONTINUE_MAX_RESTARTS"
 mkdir -p "$(dirname "$OLLAMA_LOG_FILE")"
 
 log_message() {
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$OLLAMA_LOG_FILE"
 }
+
+if [ "$AUTO_CONTINUE_ENABLED" = "false" ] || [ "$AUTO_CONTINUE_ENABLED" = "0" ]; then
+  log_message "AUTO_CONTINUE_ENABLED=$AUTO_CONTINUE_ENABLED; auto-continue disabled, exiting."
+  exit 0
+fi
+
+log_message "Auto-continue daemon configuration: check interval=${AUTO_CONTINUE_CHECK_INTERVAL}s, max restarts=${MAX_RESTART_ATTEMPTS}"
 
 validate_ollama_binary() {
   local cmd="$1"
@@ -127,7 +137,7 @@ continuous_monitor() {
       restart_count=0
       backoff=5
     fi
-    sleep 15
+    sleep "$AUTO_CONTINUE_CHECK_INTERVAL"
   done
 }
 

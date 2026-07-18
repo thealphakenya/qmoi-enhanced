@@ -1,6 +1,12 @@
 #!/bin/bash
 set -euo pipefail
 
+AUTO_CONTINUE_ENABLED="${AUTO_CONTINUE_ENABLED:-true}"
+if [ "$AUTO_CONTINUE_ENABLED" = "false" ] || [ "$AUTO_CONTINUE_ENABLED" = "0" ]; then
+  echo "Auto-Continue disabled by AUTO_CONTINUE_ENABLED=$AUTO_CONTINUE_ENABLED"
+  exit 0
+fi
+
 PID_FILE="/tmp/auto-continue-daemon.pid"
 LOG_FILE="/tmp/auto-continue.log"
 

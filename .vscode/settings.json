@@ -3,7 +3,7 @@
   "continue.enableTabAutocomplete": true,
   "continue.enableQuickActions": true,
   "continue.enableSystemMessage": true,
-  "continue.openOnStart": false,
+  "continue.openOnStart": true,
   "extensions.ignoreRecommendations": false,
   "files.exclude": {
     "**/.git": true,

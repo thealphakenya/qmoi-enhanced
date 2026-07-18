@@ -8,9 +8,9 @@ mkdir -p "$STATE_DIR"
 CONTINUE_DIR="$HOME/.continue"
 mkdir -p "$CONTINUE_DIR"
 
-echo "→ Continue startup is now opt-in; no automatic installation will be attempted."
+echo "→ Ensuring Continue is installed, configured, and opened automatically"
 
-echo "→ Ensuring Continue config is available without forcing extension installation"
+echo "→ Ensuring Continue config is available and pinned to local Ollama"
 CONFIG_FILE="$CONTINUE_DIR/config.json"
 if [ ! -f "$CONFIG_FILE" ] || ! grep -q 'qwen2.5-coder:3b' "$CONFIG_FILE" 2>/dev/null; then
   cat > "$CONFIG_FILE" <<'EOF'
@@ -25,9 +25,9 @@ if [ ! -f "$CONFIG_FILE" ] || ! grep -q 'qwen2.5-coder:3b' "$CONFIG_FILE" 2>/dev
   ],
   "tabAutocompleteModel": {
     "title": "Local Qwen Coder",
-    "provider": "ollama",
-    "model": "qwen2.5-coder:3b",
-    "apiBase": "http://127.0.0.1:11434"
+      "provider": "ollama",
+      "model": "qwen2.5-coder:3b",
+      "apiBase": "http://127.0.0.1:11434"
   },
   "systemMessage": "You are a local Ollama assistant configured to support Continue bulk operations.",
   "settings": {
@@ -58,14 +58,18 @@ PY
   echo "Pinned Continue config to local Ollama at http://127.0.0.1:11434"
 fi
 
+if command -v code >/dev/null 2>&1; then
+  echo "→ Ensuring Continue extension is installed via VS Code CLI"
+  code --install-extension continue.continue --force >/dev/null 2>&1 || true
+  echo "→ Attempting to open Continue panel"
+  code --command continue.open >/dev/null 2>&1 || true
+  code --command continue.focus >/dev/null 2>&1 || true
+fi
+
 echo "→ Continue base configuration ensured"
 
 if [ -x "$(dirname "$0")/update-resume.sh" ]; then
-  if [ -f "$INSTALL_MARKER" ]; then
-    bash "$(dirname "$0")/update-resume.sh" "Continue configuration ensured; extension installation remains opt-in" || true
-  else
-    bash "$(dirname "$0")/update-resume.sh" "Continue configuration ensured; install later manually if desired" || true
-  fi
+  bash "$(dirname "$0")/update-resume.sh" "Continue configuration ensured; extension is installed and Continue panel requested" || true
 fi
 
 exit 0

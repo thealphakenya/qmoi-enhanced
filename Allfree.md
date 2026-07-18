@@ -15,7 +15,129 @@ This guide establishes a production-grade, completely free AI agent environment 
 
 ---
 
-## 1. The Configuration (.devcontainer/devcontainer.json)
+## 1. Alpine Source Build Fallback (Best for Alpine) ⭐⭐⭐⭐⭐
+
+If you are running on Alpine/musl and cannot immediately switch to the glibc-based `.devcontainer`, the preferred fallback is to build Ollama from source on Alpine.
+
+This gives the highest compatibility with musl because the binary is compiled specifically for Alpine instead of relying on glibc. It also makes upgrades and debugging easier.
+
+Requirements:
+
+- `go`
+- `git`
+- `build-base`
+
+Example:
+
+```bash
+apk add go git build-base
+git clone https://github.com/ollama/ollama.git
+cd ollama
+go build .
+mkdir -p ~/.ollama/bin
+mv ollama ~/.ollama/bin/ollama
+chmod +x ~/.ollama/bin/ollama
+```
+
+If you also need the runtime component for local Ollama service compatibility, verify the helper builds `llama-server` and installs it to `~/.ollama/bin/llama-server`.
+
+Or use the built-in helper script:
+
+```bash
+bash .devcontainer/build-ollama-from-source.sh
+```
+
+Your repo includes a helper script at `.devcontainer/build-ollama-from-source.sh` that automates dependency installation, source checkout, and build for Alpine hosts.
+
+### When to use this option
+
+- Your Codespace is running Alpine/musl
+- Docker is unavailable in this environment
+- You want the most musl-compatible Ollama binary
+
+### How it works
+
+- The repo detects Alpine at startup
+- It runs the source build helper automatically when needed
+- The built binary is placed into `~/.ollama/bin/ollama`
+- Continue can then connect to the local Ollama API at `http://127.0.0.1:11434`
+
+> Note: The primary supported path for this repository remains the glibc-based `.devcontainer` setup. Alpine source build is the best fallback when the host is Alpine and a glibc container cannot be used.
+
+### Continue auto-configuration
+
+This repository includes a Continue configuration at `.continue/config.json` that pins the local Ollama provider. The config is designed so that when Continue is installed, it prefers the local Ollama endpoint and model by default.
+
+Key Continue settings:
+
+- `provider`: `ollama`
+- `model`: `qwen2.5-coder:3b`
+- `apiBase`: `http://127.0.0.1:11434`
+- `useLocalOllamaByDefault`: `true`
+
+If you install Continue after startup, it will automatically use the local Ollama service for bulk operations and training commands.
+
+### Ollama-only autonomous agent workflow
+
+If Continue is not installed, Ollama still works independently as a local agent.
+Use the autonomous agent script to run every task in `resumefromhere.txt`, stream live progress to the terminal, and verify completion twice before stopping.
+
+Run this workflow:
+
+```bash
+bash .devcontainer/ensure-ollama.sh
+python3 scripts/ollama_autonomous_agent.py
+```
+
+Or use the npm alias:
+
+```bash
+npm run ollama:agent
+```
+
+This script:
+
+- ensures Ollama is installed and running locally
+- ensures `qwen2.5-coder:3b` is available
+- reads `resumefromhere.txt` for actionable tasks- instructs Ollama to complete, improve, and verify every task
+- works in bulk and parallel where safe, batching related edits and decisions
+- streams progress and validation output in real time
+- updates `resumefromhere.txt` automatically as it works
+- continues into the resume workflow until all tasks are double-marked complete
+
+Run with Continue-style bulk resume behavior:
+
+```bash
+python3 scripts/ollama_autonomous_agent.py --continue
+```
+
+If you only want the Ollama agent to run without the follow-up bulk resume script:
+
+```bash
+python3 scripts/ollama_autonomous_agent.py --no-continue
+```
+
+For detailed guidance, open `ollama.md`.
+
+---
+
+## 2. Alternative: Docker fallback for Alpine hosts
+
+If your current shell is Alpine/musl and the source build path is not available, the next reliable option is:
+
+- Keep Alpine as the host
+- Run Ollama inside a Debian/Ubuntu Docker container where the runtime is officially supported
+- Forward the Ollama port from the container to the host so VS Code and Continue can still reach `http://127.0.0.1:11434`
+
+That approach is ideal when Docker is available and the host cannot be changed to a glibc-based devcontainer.
+
+> Important: this repo’s primary supported path is still the `.devcontainer` glibc environment. The Docker fallback is a valid alternative only when Docker is installed and running on the host.
+
+Currently, Docker is not present in this Codespace, so the Docker fallback cannot be used in this workspace until Docker support is available.
+
+---
+
+## 3. The Configuration (.devcontainer/devcontainer.json)
 
 Your repository now uses a safe, non-blocking bootstrap approach to start Ollama and Continue on Codespace startup.
 

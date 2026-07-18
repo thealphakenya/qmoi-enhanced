@@ -7,18 +7,29 @@ set -euo pipefail
 echo "🔍 Verifying Ollama AI Agent Setup..."
 echo "======================================"
 
+export PATH="$HOME/.ollama/bin:$PATH"
 LOG_DIR="${HOME}/.ollama/logs"
 mkdir -p "$LOG_DIR"
 
 # Detect Alpine / musl environments early
 if ldd --version 2>&1 | head -n1 | grep -qi musl; then
-  echo ""
-  echo "⚠️  musl libc detected; Ollama requires glibc."
-  echo "    Rebuild the devcontainer using a glibc base image such as Debian bullseye."
-  echo "    Run: bash .devcontainer/rebuild-and-verify.sh"
-  exit 1
+  if [ -f /etc/alpine-release ]; then
+    echo ""
+    echo "ℹ️  Alpine Linux detected. Using the Ollama source-build fallback path."
+  else
+    echo ""
+    echo "⚠️  musl libc detected on a non-Alpine host; Ollama requires glibc or Alpine source build support."
+    echo "    Rebuild the devcontainer using a glibc base image or run on Alpine with the Ollama source build path."
+    echo "    Run: bash .devcontainer/rebuild-and-verify.sh"
+    exit 1
+  fi
 fi
 
+echo ""
+echo "0. Ensuring Ollama is installed and configured..."
+bash .devcontainer/ensure-ollama.sh || true
+
+echo ""
 # Check if Ollama is running
 echo ""
 echo "1. Checking Ollama service..."

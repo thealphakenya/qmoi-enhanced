@@ -9,25 +9,17 @@ LOCK_FILE="/tmp/ensure-ollama.lock"
 INSTALL_MARKER="$STATE_DIR/installed"
 MODEL_MARKER="$STATE_DIR/qwen2.5-coder:3b"
 mkdir -p "$LOG_DIR" "$STATE_DIR" "$BIN_DIR"
-export PATH="$BIN_DIR:/usr/local/bin:/usr/bin:/bin:$PATH"
+export PATH="$BIN_DIR:/home/node/.ollama/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
 
 ensure_runtime_compat() {
-  if [ -f /etc/alpine-release ]; then
-    echo "Detected Alpine runtime; installing glibc compatibility layers if needed"
-    if command -v apk >/dev/null 2>&1; then
-      apk add --no-cache gcompat libstdc++ >/dev/null 2>&1 || true
-    fi
-    if [ ! -e /lib64/ld-linux-x86-64.so.2 ] && [ -e /lib/ld-linux-x86-64.so.2 ]; then
-      mkdir -p /lib64
-      ln -sf /lib/ld-linux-x86-64.so.2 /lib64/ld-linux-x86-64.so.2 || true
-    fi
-    if [ -f /etc/os-release ] && grep -q 'Alpine' /etc/os-release 2>/dev/null; then
-      echo "Alpine host detected; bootstrapping a Debian-compatible fallback path is recommended for full Ollama reliability"
-    fi
-  fi
+  bash "$(dirname "$0")/check-glibc.sh"
 }
 
-ensure_runtime_compat
+is_alpine() {
+  [ -f /etc/alpine-release ]
+}
+
+ensure_runtime_compat || exit 1
 
 if [ -f "$LOCK_FILE" ] && kill -0 "$(cat "$LOCK_FILE")" 2>/dev/null; then
   echo "ensure-ollama already running"
@@ -69,9 +61,15 @@ OLLAMA_CMD="$(resolve_ollama_cmd || true)"
 
 if [ ! -f "$INSTALL_MARKER" ]; then
   if [ -z "$OLLAMA_CMD" ]; then
-    echo "ollama not found — attempting installer"
-    curl -fsSL https://ollama.com/install.sh | sh || true
-    OLLAMA_CMD="$(resolve_ollama_cmd || true)"
+    if is_alpine; then
+      echo "Alpine host detected; building Ollama from source for musl compatibility"
+      bash "$(dirname "$0")/build-ollama-from-source.sh"
+      OLLAMA_CMD="$BIN_DIR/ollama"
+    else
+      echo "ollama not found — attempting installer"
+      curl -fsSL https://ollama.com/install.sh | sh || true
+      OLLAMA_CMD="$(resolve_ollama_cmd || true)"
+    fi
   fi
 
   if [ -z "$OLLAMA_CMD" ] && [ -x /usr/bin/ollama ] && validate_ollama_binary /usr/bin/ollama; then
@@ -93,7 +91,16 @@ if [ ! -f "$INSTALL_MARKER" ]; then
       echo "Installed Ollama and cached binary state"
     else
       echo "Warning: Ollama binary was cached but is not yet runnable in this environment."
-      echo "         This may indicate a musl/Alpine host; rebuild to a glibc-based devcontainer."
+      if is_alpine; then
+        echo "         Alpine host detected; the source build may still require additional dependencies or compatibility fixes."
+      else
+        echo "         This may indicate a musl host; rebuild to a glibc-based devcontainer or use Alpine source build."
+      fi
+    fi
+  else
+    echo "Ollama command not available; cannot start service"
+    if is_alpine; then
+      echo "         Alpine source build failed or Ollama is not installed. See $HOME/.ollama/logs/build-source.log"
     fi
   fi
 else
@@ -105,6 +112,11 @@ if curl -sS "$OLLAMA_HOST/api/tags" >/dev/null 2>&1; then
 else
   if [ -n "$OLLAMA_CMD" ]; then
     echo "Starting Ollama serve in background"
+    if [ -d "$SRC_DIR/build/llama-server-cpu/bin" ]; then
+      export GGML_BACKEND_PATH="$SRC_DIR/build/llama-server-cpu/bin"
+      export LD_LIBRARY_PATH="$SRC_DIR/build/llama-server-cpu/bin:${LD_LIBRARY_PATH:-}"
+      echo "INFO: Using source-built runtime libs from $GGML_BACKEND_PATH"
+    fi
     if validate_ollama_binary "$OLLAMA_CMD"; then
       nohup "$OLLAMA_CMD" serve > "$LOG_DIR/serve.log" 2>&1 &
     elif [ -x /lib/libgcompat.so.0 ]; then

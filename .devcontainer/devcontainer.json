@@ -51,7 +51,9 @@
         "continue.enableSystemMessage": true,
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.rulers": [100],
+        "editor.rulers": [
+          100
+        ],
         "extensions.ignoreRecommendations": false,
         "terminal.integrated.defaultProfile.linux": "bash",
         "terminal.integrated.cwd": "${workspaceFolder}",
@@ -116,6 +118,7 @@
     "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,readonly",
     "source=${localEnv:HOME}/.gitconfig,target=/home/node/.gitconfig,type=bind,readonly",
     "source=qmoi-ollama-data,target=/home/node/.ollama,type=volume",
+    "source=qmoi-continue-config,target=/home/node/.continue,type=volume",
     "source=qmoi-node-cache,target=/home/node/.cache,type=volume"
   ],
   "containerEnv": {
@@ -130,7 +133,7 @@
     "LC_ALL": "C.UTF-8"
   },
   "remoteEnv": {
-    "PATH": "/home/node/.local/bin:${containerEnv:PATH}",
+    "PATH": "/home/node/.ollama/bin:/home/node/.local/bin:${containerEnv:PATH}",
     "LANG": "C.UTF-8",
     "LC_ALL": "C.UTF-8"
   },

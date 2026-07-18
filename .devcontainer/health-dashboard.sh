@@ -4,6 +4,7 @@ set -euo pipefail
 # Health Dashboard: Monitor Ollama and Continue setup status
 # Run this to check current health without any blocking operations
 
+export PATH="$HOME/.ollama/bin:$PATH"
 OLLAMA_HOST="${OLLAMA_HOST:-http://127.0.0.1:11434}"
 STATE_DIR="${HOME}/.ollama/state"
 CONTINUE_STATE_DIR="${HOME}/.vscode-remote/state"

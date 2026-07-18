@@ -39,6 +39,7 @@ if [ ! -d "$REPO_ROOT" ]; then
   exit 1
 fi
 
+run_step check-glibc "$REPO_ROOT/.devcontainer/check-glibc.sh"
 run_step ensure-ollama "$REPO_ROOT/.devcontainer/ensure-ollama.sh"
 run_step start-auto-continue "$REPO_ROOT/.devcontainer/start-auto-continue.sh"
 run_step open-continue "$REPO_ROOT/.devcontainer/open-continue.sh"
