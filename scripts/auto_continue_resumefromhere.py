@@ -377,8 +377,46 @@ def run_bulk_fixer() -> None:
         os.close(fd)
         lock_acquired = True
     except FileExistsError:
-        print(f"Another bulk run appears to be active (lock: {lockfile}); aborting this run.")
-        return
+        try:
+            existing = lockfile.read_text(encoding='utf-8', errors='ignore').strip()
+            if existing.startswith('pid:'):
+                pid = int(existing.split(':', 1)[1].strip())
+                if pid > 0:
+                    alive = False
+                    try:
+                        os.kill(pid, 0)
+                        alive = True
+                    except ProcessLookupError:
+                        alive = False
+                    except PermissionError:
+                        alive = True
+                    if not alive:
+                        print(f"Stale lock file found for PID {pid}; removing stale lock and continuing.")
+                        lockfile.unlink()
+                        fd = os.open(str(lockfile), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+                        os.write(fd, f"pid:{os.getpid()}\n".encode())
+                        os.close(fd)
+                        lock_acquired = True
+                    else:
+                        print(f"Another bulk run appears to be active (lock: {lockfile}, pid={pid}); aborting this run.")
+                        return
+                else:
+                    print(f"Invalid PID in lock file; removing stale lock and retrying.")
+                    lockfile.unlink()
+                    fd = os.open(str(lockfile), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+                    os.write(fd, f"pid:{os.getpid()}\n".encode())
+                    os.close(fd)
+                    lock_acquired = True
+            else:
+                print(f"Unknown lock file contents; removing stale lock and retrying.")
+                lockfile.unlink()
+                fd = os.open(str(lockfile), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+                os.write(fd, f"pid:{os.getpid()}\n".encode())
+                os.close(fd)
+                lock_acquired = True
+        except Exception as exc:
+            print(f"Could not inspect lock file; aborting this run. ({exc})")
+            return
 
     # Merge-first execution: discovery, merge orchestration, canonical documentation, then cleanup
     if MERGE_DISCOVERY_SCANNER_SCRIPT.exists():

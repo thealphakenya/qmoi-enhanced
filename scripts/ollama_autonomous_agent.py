@@ -32,6 +32,16 @@ HTTP_NON_STREAM = True
 HTTP_MAX_TOKENS = 1024
 HTTP_TEMPERATURE = 0.1
 HTTP_TOP_P = 0.95
+HTTP_OPTIONS = {
+    "temperature": HTTP_TEMPERATURE,
+    "top_p": HTTP_TOP_P,
+    "num_ctx": 32768,
+}
+SYSTEM_PROMPT = (
+    "You are an autonomous Ollama agent. Use repository context, backlog files, and resumefromhere.txt as the canonical tracker. "
+    "Complete tasks, update resumefromhere.txt with progress blocks, and verify completion with explicit markers. "
+    "If a task cannot be completed, explain why and what is required."
+)
 CLI_HANG_WARNING_SECONDS = 60
 CLI_HANG_KILL_SECONDS = 300
 CLI_TIMEOUT_SECONDS = 900
@@ -402,7 +412,7 @@ def run_ollama_cli(prompt: str) -> tuple[bool, str]:
         return False, ""
 
     print(f"==> Sending prompt to Ollama CLI via {ollama_cmd}")
-    command = [ollama_cmd, "run", MODEL_NAME, "-", "--format", "json", "--hidethinking"]
+    command = [ollama_cmd, "run", MODEL_NAME]
     try:
         process = subprocess.Popen(
             command,
@@ -551,11 +561,13 @@ def run_ollama_http(prompt: str) -> tuple[bool, str]:
         return False, ""
     body = {
         "model": MODEL_NAME,
+        "system": SYSTEM_PROMPT,
         "prompt": prompt,
         "stream": not HTTP_NON_STREAM,
         "max_tokens": HTTP_MAX_TOKENS,
         "temperature": HTTP_TEMPERATURE,
         "top_p": HTTP_TOP_P,
+        "options": HTTP_OPTIONS,
     }
     data = json.dumps(body).encode("utf-8")
     headers = {"Content-Type": "application/json"}
@@ -644,17 +656,33 @@ def refresh_resume_tracker() -> None:
         write_log("autoupdate_resume.py missing; cannot refresh tracker")
 
 
+AUTO_CONTINUE_SCRIPT = ROOT / "scripts" / "auto_continue_resumefromhere.py"
+AUTO_CONTINUE_LOOP_SCRIPT = ROOT / "scripts" / "auto_continue_resumefromhere_loop.py"
+
+
 def run_continuation_script() -> bool:
-    continue_script = ROOT / "scripts" / "auto_continue_resumefromhere.py"
-    if not continue_script.exists():
-        print(f"Continue bulk script not found: {continue_script}")
+    if AUTO_CONTINUE_LOOP_SCRIPT.exists():
+        print("==> Running the continuous auto-continue bulk resume monitor after Ollama agent completion")
+        return run_command([
+            sys.executable,
+            str(AUTO_CONTINUE_LOOP_SCRIPT),
+            "--interval",
+            "20",
+            "--max-retries",
+            "3",
+            "--until-clean",
+        ], 'run auto-continue bulk resume loop')
+
+    if AUTO_CONTINUE_SCRIPT.exists():
+        print("==> Running the auto-continue bulk resume script after Ollama agent completion")
+        for attempt in range(1, 4):
+            print(f"Auto-continue attempt {attempt}/3")
+            if run_command([sys.executable, str(AUTO_CONTINUE_SCRIPT)], 'run auto-continue bulk resume script'):
+                return True
+            time.sleep(10)
         return False
-    print("==> Running the auto-continue bulk resume script after Ollama agent completion")
-    for attempt in range(1, 4):
-        print(f"Auto-continue attempt {attempt}/3")
-        if run_command([sys.executable, str(continue_script)], 'run auto-continue bulk resume script'):
-            return True
-        time.sleep(10)
+
+    print(f"Continue bulk script not found: {AUTO_CONTINUE_LOOP_SCRIPT} or {AUTO_CONTINUE_SCRIPT}")
     return False
 
 

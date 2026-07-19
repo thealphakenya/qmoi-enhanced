@@ -237,7 +237,11 @@ Cause:
 Permanent fix:
 - The agent script has been updated to use:
   ```bash
-  ollama run qwen2.5-coder:3b --prompt "..." --stream --verbose
+  echo "..." | ollama run qwen2.5-coder:3b
+  ```
+  or equivalently:
+  ```bash
+  ollama run qwen2.5-coder:3b "..."
   ```
 - The `scripts/ollama_autonomous_agent.py` file is the canonical agent entrypoint.
 
