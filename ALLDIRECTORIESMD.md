@@ -1,6 +1,6 @@
 # ALLDIRECTORIESMD - Directory Documentation Index
 
-**Generated:** 2026-06-28T19:29:26.260386Z
+**Generated:** 2026-07-19T22:36:23.282356Z
 
 This file indexes all directory-specific documentation and tracks the production readiness of each directory's .md files.
 
@@ -82,7 +82,7 @@ Each directory in the repository has associated `.md` files that document its pu
 **Documentation Files:**
 - ✓ [HOOKS.md](HOOKS.md) (13.33 KB)
 - ✓ [WEBHOOKS.md](WEBHOOKS.md) (7.54 KB)
-- ✓ [ALLHOOKSWEBHOOKS.md](ALLHOOKSWEBHOOKS.md) (4.42 KB)
+- ✓ [ALLHOOKSWEBHOOKS.md](ALLHOOKSWEBHOOKS.md) (4.44 KB)
 
 **Status:**
 - Production Ready: Yes ✓
@@ -107,7 +107,7 @@ Each directory in the repository has associated `.md` files that document its pu
 - Production Ready: Yes ✓
 - Existing .md files: 2/2
 - File Counts:
-  - `tests`: 69 files (0 .md)
+  - `tests`: 73 files (0 .md)
   - `__tests__`: 103 files (0 .md)
 
 ## SCRIPTS
@@ -119,13 +119,13 @@ Each directory in the repository has associated `.md` files that document its pu
 - ✗ `bin`
 
 **Documentation Files:**
-- ✓ [SCRIPTS.md](SCRIPTS.md) (12.27 KB)
+- ✓ [SCRIPTS.md](SCRIPTS.md) (12.29 KB)
 
 **Status:**
 - Production Ready: Yes ✓
 - Existing .md files: 1/1
 - File Counts:
-  - `scripts`: 1396 files (11 .md)
+  - `scripts`: 1398 files (11 .md)
 
 ## SERVICES
 
@@ -156,7 +156,7 @@ Each directory in the repository has associated `.md` files that document its pu
 - ✓ `app/lib`
 
 **Documentation Files:**
-- ✓ [LIB.md](LIB.md) (15.16 KB)
+- ✓ [LIB.md](LIB.md) (15.18 KB)
 
 **Status:**
 - Production Ready: Yes ✓
@@ -195,7 +195,7 @@ Each directory in the repository has associated `.md` files that document its pu
 - ✗ `src/db`
 
 **Documentation Files:**
-- ✓ [DATABASE.md](DATABASE.md) (5.6 KB)
+- ✓ [DATABASE.md](DATABASE.md) (5.62 KB)
 - ✗ DATABASE_SCHEMA.md (missing - generate with bulk workflow)
 
 **Status:**
@@ -243,7 +243,7 @@ Each directory in the repository has associated `.md` files that document its pu
 - ✓ [QMOIAIUI.md](QMOIAIUI.md) (6.06 KB)
 - ✓ [QMOISPACEUI.md](QMOISPACEUI.md) (4.59 KB)
 - ✓ [QCITYUI.md](QCITYUI.md) (43.62 KB)
-- ✓ [QVILLAGEUI.md](QVILLAGEUI.md) (4.24 KB)
+- ✓ [QVILLAGEUI.md](QVILLAGEUI.md) (4.25 KB)
 - ✓ [QALPHAUI.md](QALPHAUI.md) (4.22 KB)
 
 **Status:**
@@ -259,7 +259,7 @@ Each directory in the repository has associated `.md` files that document its pu
 - ✗ `documentation`
 
 **Documentation Files:**
-- ✓ [DOCS.md](DOCS.md) (5.59 KB)
+- ✓ [DOCS.md](DOCS.md) (5.61 KB)
 
 **Status:**
 - Production Ready: Yes ✓
@@ -276,7 +276,7 @@ Each directory in the repository has associated `.md` files that document its pu
 - ✗ `app/mobile`
 
 **Documentation Files:**
-- ✓ [MOBILE.md](MOBILE.md) (5.32 KB)
+- ✓ [MOBILE.md](MOBILE.md) (5.33 KB)
 
 **Status:**
 - Production Ready: Yes ✓
@@ -325,12 +325,12 @@ These scripts generate and update directory .md files:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-28T19:36:35.182746Z
+- timestamp: 2026-07-19T22:37:39.826274Z
 - production status: ✅ production-ready
 - status tags: production, production-ready
 - lines: 339
 - words: 1109
-- characters: 8084
+- characters: 8086
 - headings: 21
 - links: 31
 - images: 0

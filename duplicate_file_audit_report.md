@@ -1,9 +1,9 @@
 # Duplicate File Audit Report
 
-Generated: 2026-06-28T19:36:00.401176Z
+Generated: 2026-07-19T22:31:52.116025Z
 
-Total files scanned: 4674
-Total duplicate file titles found: 252
+Total files scanned: 4697
+Total duplicate file titles found: 254
 
 ## Duplicate Files by Filename
 
@@ -582,6 +582,13 @@ Total duplicate file titles found: 252
 
 **Recommended canonical source:** `.qmoi_validation/validation_reports/COMPONENTS.json`
 
+### `config.json` (3 copies)
+- `.continue/config.json`
+- `config.json`
+- `reports/config.json`
+
+**Recommended canonical source:** `.continue/config.json`
+
 ### `config.ts` (3 copies)
 - `routes/api/qcity/config.ts`
 - `routes/api/qcity/trading/config.ts`
@@ -1024,12 +1031,6 @@ Total duplicate file titles found: 252
 - `reports/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md`
 
 **Recommended canonical source:** `COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md`
-
-### `config.json` (2 copies)
-- `config.json`
-- `reports/config.json`
-
-**Recommended canonical source:** `config.json`
 
 ### `consciousness.json` (2 copies)
 - `.qmoi_validation/validation_reports/CONSCIOUSNESS.json`
@@ -1871,6 +1872,18 @@ Total duplicate file titles found: 252
 
 **Recommended canonical source:** `src/lib/services.ts`
 
+### `session_summary.json` (2 copies)
+- `.qmoi_validation/validation_reports/SESSION_SUMMARY.json`
+- `reports/session_summary.json`
+
+**Recommended canonical source:** `.qmoi_validation/validation_reports/SESSION_SUMMARY.json`
+
+### `settings.json` (2 copies)
+- `.vscode/settings.json`
+- `.vscodes/settings.json`
+
+**Recommended canonical source:** `.vscode/settings.json`
+
 ### `system-production.ts` (2 copies)
 - `qmoi/core/emotional-intelligence/system-production.ts`
 - `qmoi/core/memory/system-production.ts`
@@ -1997,15 +2010,15 @@ Total duplicate file titles found: 252
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-28T19:36:51.531171Z
+- timestamp: 2026-07-19T22:37:47.245794Z
 - production status: ❌ needs production implementation
 - status tags: needs-production, nonproduction
-- lines: 1993
-- words: 3990
-- characters: 64898
-- headings: 254
+- lines: 2024
+- words: 4086
+- characters: 65792
+- headings: 257
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

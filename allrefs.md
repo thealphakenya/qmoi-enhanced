@@ -7,13 +7,13 @@ quantum-enabled: true
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-28T19:36:42.310625Z
+- timestamp: 2026-07-19T22:37:43.477688Z
 - production status: ❌ needs production implementation
 - status tags: needs-production, nonproduction
-- lines: 649
-- words: 1584
-- characters: 34299
-- headings: 23
+- lines: 658
+- words: 1693
+- characters: 35105
+- headings: 24
 - links: 0
 - images: 0
 - tables: 0
@@ -22,7 +22,16 @@ quantum-enabled: true
 
 # All refs snapshot ✅ 
 
-Generated: 2025-11-08T15:10:11.518370Z
+Generated: 2026-07-19T22:18:30Z
+
+This file is the canonical repository reference inventory for the Ollama autonomous agent, the markdown validation system, and the bulk consolidation workflow.
+It must stay synchronized with TREE_FULL_STRUCTURE.md, TREE.md, MERGE.md, API.md, ENDPOINTS.md, ROUTES.md, and resumefromhere.txt.
+
+## Operating contract
+- The Ollama autonomous agent must use this file as a high-level repository inventory reference during planning and execution.
+- Every major automation pass should refresh the inventory, validation counts, and cross-references for the repository.
+- Validation summaries must report accurate counts for files, markdown entries, links, images, tables, and other doc metrics.
+- All directories and major files identified here should be reflected in TREE_FULL_STRUCTURE.md and the live resume tracker.
 
 - Total files: 18921
 - Total bytes (approx): 1633704203

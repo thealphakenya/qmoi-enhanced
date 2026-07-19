@@ -70,21 +70,20 @@ def compute_stats(content: str) -> dict[str, int]:
     words = len(re.findall(r'\S+', content))
     characters = len(content)
     headings = len(re.findall(r'^\s*#+\s+', content, flags=re.MULTILINE))
-    links = len(re.findall(r'\[[^\]]+\]\([^\)]+\)', content))
-    images = len(re.findall(r'!\[[^\]]*\]\([^\)]+\)', content))
+    links = len(re.findall(r'\[[^\]]+\]\((?:[^)]+)\)', content))
+    images = len(re.findall(r'!\[[^\]]*\]\((?:[^)]+)\)', content))
     tables = len(re.findall(r'^\s*\|.+\|\s*$', content, flags=re.MULTILINE))
     code_blocks = len(re.findall(r'```', content)) // 2
     inline_code = len(re.findall(r'`[^`]+`', content))
     front_matter = 1 if re.match(r'^---\s*\n', content) else 0
     toc_present = 1 if re.search(r'(^|\n)##?\s*Table of Contents', content, flags=re.IGNORECASE) else 0
-    images_size = 0
-    # approximate reading time (words / 200 wpm)
     reading_minutes = round(words / 200, 2) if words else 0
-    # detect automation mentions and scripts references
     automation_mentions = len(re.findall(r'\b(auto|autoupdate|automation|autonat|autonation|workflow|github actions|action)\b', content, flags=re.IGNORECASE))
     script_links = len(re.findall(r'\b(?:scripts|bin)/[\w\-/.]+', content))
     percent_numbers = [float(x) for x in re.findall(r'([0-9]{1,3}(?:\.[0-9]+)?)\s*%',' ' + content) if 0 <= float(x) <= 100]
     avg_percentage = round(sum(percent_numbers)/len(percent_numbers),2) if percent_numbers else None
+    bullet_count = len(re.findall(r'^\s*[-*•]\s+', content, flags=re.MULTILINE))
+    checklist_count = len(re.findall(r'^\s*[-*•]\s*\[[ xX]\]', content, flags=re.MULTILINE))
 
     return {
         'lines': lines,
@@ -102,6 +101,8 @@ def compute_stats(content: str) -> dict[str, int]:
         'automation_mentions': automation_mentions,
         'script_links': script_links,
         'avg_percentage_mentioned': avg_percentage,
+        'bullet_count': bullet_count,
+        'checklist_count': checklist_count,
     }
 
 

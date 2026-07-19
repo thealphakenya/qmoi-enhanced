@@ -1,6 +1,6 @@
 {
-  "generated": "2026-06-28T19:36:00.402534+00:00",
-  "total_files_scanned": 976,
+  "generated": "2026-07-19T22:31:52.117170+00:00",
+  "total_files_scanned": 981,
   "duplicate_groups": {
     "link_fixes_mapping.json": [
       "link_fixes_mapping.json",
@@ -193,6 +193,7 @@
       "docs/QTOOLS.md"
     ],
     "config.json": [
+      ".continue/config.json",
       "config.json",
       "reports/config.json"
     ],
@@ -513,6 +514,10 @@
       "mobile/App.js",
       "qmoi-space-pwa/js/app.js"
     ],
+    "settings.json": [
+      ".vscode/settings.json",
+      ".vscodes/settings.json"
+    ],
     "clientadapters.ts": [
       "src/adapters/clientAdapters.ts",
       "adapters/clientAdapters.ts"
@@ -692,6 +697,10 @@
     "changelog.md": [
       "git-lfs-3.5.1/CHANGELOG.md",
       "git-lfs-3.5.1/git-lfs-3.5.1/CHANGELOG.md"
+    ],
+    "session_summary.json": [
+      ".qmoi_validation/validation_reports/SESSION_SUMMARY.json",
+      "reports/session_summary.json"
     ],
     "production_full_validation_report.md": [
       "reports/PRODUCTION_FULL_VALIDATION_REPORT.md",

@@ -189,4 +189,24 @@ It is intended to support the Ollama autonomous agent, merge planning, and docum
 
 - Treat this file as the canonical repository-wide structure reference.
 - Use it when scanning directories, planning merges, and deciding whether a path belongs to the canonical app tree or a legacy duplicate.
-- Keep this file synchronized with TREE.md, MERGE.md, API.md, ENDPOINTS.md, ROUTES.md, and DOCS.md whenever directories or routes are consolidated.
+- Keep this file synchronized with TREE.md, MERGE.md, API.md, ENDPOINTS.md, ROUTES.md, DOCS.md, allrefs.md, and resumefromhere.txt whenever directories, routes, docs, or validations are consolidated.
+- Ensure the autonomous agent uses this inventory to avoid missing files in any directory, including app/, api/, scripts/, tools/, docs/, data/, tests/, ci/, and deployment folders.
+- Keep allrefs.md aligned with the same inventory and update both when new directories or major files are introduced.
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-07-19T22:37:43.321538Z
+- production status: ❌ needs production implementation
+- status tags: needs-production, nonproduction
+- lines: 212
+- words: 578
+- characters: 3983
+- headings: 9
+- links: 0
+- images: 0
+- tables: 0
+- lion validation block: present
+<!-- LION_VALIDATION_END -->

@@ -1,10 +1,22 @@
 {
-  "timestamp": "2026-06-28T19:30:45.973824Z",
+  "timestamp": "2026-07-19T22:37:47.781087Z",
   "root": "/workspaces/qmoi-enhanced",
   "apply": true,
-  "total_files_scanned": 1244,
-  "updated_files": 1244,
+  "total_files_scanned": 1267,
+  "updated_files": 1267,
   "results": [
+    {
+      "path": "/workspaces/qmoi-enhanced/.devcontainer/AUTO_CONTINUE_GUIDE.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/.devcontainer/AUTO_CONTINUE_GUIDE.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/.devcontainer/QUICKSTART.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/.devcontainer/QUICKSTART.md.bak"
+    },
     {
       "path": "/workspaces/qmoi-enhanced/.devcontainer/README.md",
       "updated": true,
@@ -330,10 +342,22 @@
       "backup": "/workspaces/qmoi-enhanced/ALL_APPS.md.bak"
     },
     {
+      "path": "/workspaces/qmoi-enhanced/ALL_NEXT_STEPS_COMPLETE.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/ALL_NEXT_STEPS_COMPLETE.md.bak"
+    },
+    {
       "path": "/workspaces/qmoi-enhanced/ALPHAQMOIENGINE.md",
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/ALPHAQMOIENGINE.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/ALWAYS_AUTOMATICALLY_CONTINUE.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/ALWAYS_AUTOMATICALLY_CONTINUE.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/API.md",
@@ -558,6 +582,12 @@
       "backup": "/workspaces/qmoi-enhanced/AUTOMATION-SUMMARY.md.bak"
     },
     {
+      "path": "/workspaces/qmoi-enhanced/AUTOMATION_COMPLETE.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/AUTOMATION_COMPLETE.md.bak"
+    },
+    {
       "path": "/workspaces/qmoi-enhanced/AUTONOMOUS_LEARNING_SYSTEM.md",
       "updated": true,
       "reason": "applied",
@@ -598,6 +628,12 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/AVATAR_SYSTEM.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/Allfree.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/Allfree.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/BACKEND.md",
@@ -702,6 +738,12 @@
       "backup": "/workspaces/qmoi-enhanced/BUILD_TRIGGER.md.bak"
     },
     {
+      "path": "/workspaces/qmoi-enhanced/BULK_CONTINUATION_COMPLETE.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/BULK_CONTINUATION_COMPLETE.md.bak"
+    },
+    {
       "path": "/workspaces/qmoi-enhanced/BULK_ENHANCEMENT_STATUS.md",
       "updated": true,
       "reason": "applied",
@@ -712,6 +754,12 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/BULK_PRODUCTION_WORKFLOW.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/BULK_QUICK_REFERENCE.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/BULK_QUICK_REFERENCE.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/BUSINESS_INTELLIGENCE.md",
@@ -1000,6 +1048,18 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/CONTAINER_ORCHESTRATION.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/CONTINUE_BULK_GUIDE.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/CONTINUE_BULK_GUIDE.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/CONTINUE_BULK_OPERATIONS.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/CONTINUE_BULK_OPERATIONS.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/CONTINUOUS_IMPROVEMENT.md",
@@ -1986,6 +2046,12 @@
       "backup": "/workspaces/qmoi-enhanced/IMPLEMENTATION_COMPLETE.md.bak"
     },
     {
+      "path": "/workspaces/qmoi-enhanced/IMPLEMENTATION_REPORT.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/IMPLEMENTATION_REPORT.md.bak"
+    },
+    {
       "path": "/workspaces/qmoi-enhanced/IMPLEMENTATION_SUMMARY.md",
       "updated": true,
       "reason": "applied",
@@ -2478,6 +2544,12 @@
       "backup": "/workspaces/qmoi-enhanced/NOTSPONSORED.md.bak"
     },
     {
+      "path": "/workspaces/qmoi-enhanced/OLLAMA_CONTINUE_SETUP.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/OLLAMA_CONTINUE_SETUP.md.bak"
+    },
+    {
       "path": "/workspaces/qmoi-enhanced/OPERATIONAL_RUNBOOKS.md",
       "updated": true,
       "reason": "applied",
@@ -2688,6 +2760,12 @@
       "backup": "/workspaces/qmoi-enhanced/POSTPRODUCTIONCHECKLIST.md.bak"
     },
     {
+      "path": "/workspaces/qmoi-enhanced/POST_REBUILD_CHECKLIST.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/POST_REBUILD_CHECKLIST.md.bak"
+    },
+    {
       "path": "/workspaces/qmoi-enhanced/PREDICTIVE_ANALYTICS.md",
       "updated": true,
       "reason": "applied",
@@ -2704,6 +2782,12 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/PREVIEW_ENHANCEMENTS.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/PRE_LAUNCH_CHECKLIST.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/PRE_LAUNCH_CHECKLIST.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/PRE_RELEASE_DISTRIBUTION_PLAN.md",
@@ -5034,6 +5118,12 @@
       "backup": "/workspaces/qmoi-enhanced/READY_TO_EXECUTE.md.bak"
     },
     {
+      "path": "/workspaces/qmoi-enhanced/READY_TO_GO.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/READY_TO_GO.md.bak"
+    },
+    {
       "path": "/workspaces/qmoi-enhanced/REAL_IMPLEMENTATIONS_SUMMARY.md",
       "updated": true,
       "reason": "applied",
@@ -5044,6 +5134,12 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/REAL_IMPLEMENTATIONS_VERIFICATION.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/REBUILD_GUIDE.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/REBUILD_GUIDE.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/REFERENCES.md",
@@ -5424,10 +5520,22 @@
       "backup": "/workspaces/qmoi-enhanced/SESSION_PROGRESS.md.bak"
     },
     {
+      "path": "/workspaces/qmoi-enhanced/SESSION_SUMMARY.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/SESSION_SUMMARY.md.bak"
+    },
+    {
       "path": "/workspaces/qmoi-enhanced/SESSION_SUMMARY_20260614.md",
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/SESSION_SUMMARY_20260614.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/SETUP_CHECKLIST.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/SETUP_CHECKLIST.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/SETUP_SESSION_SUMMARY.md",
@@ -5548,6 +5656,12 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/SYSTEM_MONITORING.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/SYSTEM_READY.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/SYSTEM_READY.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/TABLE_OF_CONTENTS.md",
@@ -5706,6 +5820,12 @@
       "backup": "/workspaces/qmoi-enhanced/TREE_COMPREHENSIVE.md.bak"
     },
     {
+      "path": "/workspaces/qmoi-enhanced/TREE_FULL_STRUCTURE.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/TREE_FULL_STRUCTURE.md.bak"
+    },
+    {
       "path": "/workspaces/qmoi-enhanced/TROUBLESHOOTING.md",
       "updated": true,
       "reason": "applied",
@@ -5716,6 +5836,12 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/TYPES.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/Trade.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/Trade.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/UI.md",
@@ -6172,6 +6298,12 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/compulsories_nonproduction_tasks.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/continueollam.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/continueollam.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/copilot-instructions.md",
@@ -7090,6 +7222,12 @@
       "updated": true,
       "reason": "applied",
       "backup": "/workspaces/qmoi-enhanced/models/latest/README.md.bak"
+    },
+    {
+      "path": "/workspaces/qmoi-enhanced/ollama.md",
+      "updated": true,
+      "reason": "applied",
+      "backup": "/workspaces/qmoi-enhanced/ollama.md.bak"
     },
     {
       "path": "/workspaces/qmoi-enhanced/parallel.md",

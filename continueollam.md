@@ -108,3 +108,21 @@ If the Ollama binary fails to start on Alpine:
 
 This file is the canonical local Ollama + Continue workflow for the repo.
 Keep it updated whenever the startup scripts or Continue settings change.
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-07-19T22:37:46.874592Z
+- production status: ❌ needs production implementation
+- status tags: needs-production, nonproduction
+- lines: 128
+- words: 535
+- characters: 3804
+- headings: 11
+- links: 0
+- images: 0
+- tables: 0
+- lion validation block: present
+<!-- LION_VALIDATION_END -->

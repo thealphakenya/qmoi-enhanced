@@ -165,15 +165,15 @@ This inventory is generated from the current UI component and page entrypoint fi
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-28T19:36:35.408808Z
-- production status: ❌ needs production implementation
-- status tags: needs-production, nonproduction
-- lines: 179
-- words: 449
-- characters: 6991
-- headings: 6
+- timestamp: 2026-07-19T22:37:39.938277Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 161
+- words: 377
+- characters: 6524
+- headings: 5
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: present
+- lion validation block: inserted
 <!-- LION_VALIDATION_END -->

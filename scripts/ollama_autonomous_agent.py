@@ -271,12 +271,14 @@ def append_ollama_output_summary(output: str) -> None:
 def build_execution_plan(tasks: list[str]) -> str:
     plan_lines = [
         "PRODUCTION EXECUTION PLAN:",
-        "1. Inventory the repository using TREE_FULL_STRUCTURE.md, resumefromhere.txt, and the backlog files 7.txt, 14.txt, undone.txt, and MATCHES.txt.",
-        "2. Reconcile and update the canonical documentation set: API.md, ENDPOINTS.md, ROUTES.md, TREE.md, MERGE.md, and TREE_FULL_STRUCTURE.md.",
-        "3. Implement or wire real production modules rather than stubs, including finance/trading routes, auth/theme flows, and any referenced app entry points.",
-        "4. Run the canonical consolidation scripts: scripts/consolidate_api_endpoints.py and scripts/merge_executor.py, then incorporate their results into docs and code.",
-        "5. Verify the repo state with real checks, then update resumefromhere.txt with progress blocks, completion markers, and follow-up tasks.",
-        "6. Never stop at a shallow implementation; confirm the real implementation path, edge cases, and dependencies before marking a task as [CONFIRMED].",
+        "1. Inventory the repository using TREE_FULL_STRUCTURE.md, allrefs.md, resumefromhere.txt, and the backlog files 7.txt, 14.txt, undone.txt, and MATCHES.txt.",
+        "2. Reconcile and update the canonical documentation set: API.md, ENDPOINTS.md, ROUTES.md, TREE.md, MERGE.md, TREE_FULL_STRUCTURE.md, and allrefs.md.",
+        "3. Implement or wire real production modules rather than stubs, including finance/trading routes, auth/theme flows, markdown validation automation, and any referenced app entry points.",
+        "4. Run the canonical consolidation scripts: scripts/consolidate_api_endpoints.py, scripts/merge_executor.py, scripts/validate_md.py, and scripts/generate_allmdrefs.py, then incorporate their results into docs and code.",
+        "5. Update resumefromhere.txt before the run, after each major milestone, after every batch of 5-10 significant actions, and before stopping. Record progress blocks, completion markers, follow-up tasks, and the current validation state.",
+        "6. Verify the repo state with real checks, including accurate markdown link counts, validation summaries, and end-to-end repository-wide consistency checks.",
+        "7. Never stop at a shallow implementation; confirm the real implementation path, edge cases, and dependencies before marking a task as [CONFIRMED].",
+        "8. Ensure that every discovered file, directory, doc cluster, route, and validation issue is accounted for; do not ignore any path or backlog item.",
     ]
     if tasks:
         plan_lines.append("TASKS TO EXECUTE:")
@@ -568,6 +570,20 @@ def verify_agent_completion(output: str, tasks: list[str]) -> bool:
     done_count = output.count("[DONE]")
     progress_count = output.count("[IN PROGRESS]")
 
+    refusal_indicators = [
+        "can't assist with that request",
+        "cannot assist with that request",
+        "i can't assist",
+        "i cannot assist",
+        "i'm sorry, but i can't",
+        "i'm sorry, but i cannot",
+        "cannot help with that",
+        "can't help with that",
+    ]
+    if any(indicator in lower_text for indicator in refusal_indicators):
+        log("WARNING: Ollama returned a refusal or policy-style response instead of a work plan. Falling back to the repo automation path.", "WARNING")
+        return False
+
     if tasks:
         if progress_count < 1:
             log("WARNING: The output does not include any [IN PROGRESS] markers.", "WARNING")
@@ -683,10 +699,17 @@ def main() -> None:
         append_resume_block("OLLAMA AGENT FAILURE", ["Ollama agent prompt failed. Check terminal output and logs."])
         sys.exit(1)
 
-    if not verify_agent_completion(response_text, tasks):
-        log("ERROR: Ollama output did not include required completion verification markers.", "ERROR")
-        append_resume_block("OLLAMA AGENT VERIFICATION FAILURE", ["Ollama output verification failed. The run did not produce required completion markers."])
-        sys.exit(1)
+    verification_ok = verify_agent_completion(response_text, tasks)
+    if not verification_ok:
+        log("WARNING: Ollama output did not include required completion verification markers; continuing with the repo automation continuation path.", "WARNING")
+        append_resume_block("OLLAMA AGENT VERIFICATION FAILURE", ["Ollama output verification failed. The agent will continue using the deterministic repo automation scripts instead of relying on this response."])
+        if args.continue_run:
+            if run_continuation_script():
+                append_resume_update(["Auto-continue bulk resume script completed successfully after Ollama verification fallback."])
+            else:
+                append_resume_update(["Auto-continue bulk resume script did not complete successfully after Ollama verification fallback."])
+        log("==> Ollama autonomous run finished with fallback automation. Review the terminal output for progress and confirmations.", "INFO")
+        return
 
     success_block = append_resume_update([
         "Ollama autonomous run finished successfully.",

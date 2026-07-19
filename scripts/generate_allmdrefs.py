@@ -64,9 +64,11 @@ def compute_stats(content: str) -> dict[str, int]:
     words = len(re.findall(r'\S+', content))
     characters = len(content)
     headings = len(re.findall(r'^\s*#+\s+', content, flags=re.MULTILINE))
-    links = len(re.findall(r'\[[^\]]+\]\([^\)]+\)', content))
-    images = len(re.findall(r'!\[[^\]]*\]\([^\)]+\)', content))
+    links = len(re.findall(r'\[[^\]]+\]\((?:[^)]+)\)', content))
+    images = len(re.findall(r'!\[[^\]]*\]\((?:[^)]+)\)', content))
     tables = len(re.findall(r'^\s*\|.+\|\s*$', content, flags=re.MULTILINE))
+    bullet_count = len(re.findall(r'^\s*[-*•]\s+', content, flags=re.MULTILINE))
+    checklist_count = len(re.findall(r'^\s*[-*•]\s*\[[ xX]\]', content, flags=re.MULTILINE))
     return {
         'lines': lines,
         'words': words,
@@ -75,6 +77,8 @@ def compute_stats(content: str) -> dict[str, int]:
         'links': links,
         'images': images,
         'tables': tables,
+        'bullet_count': bullet_count,
+        'checklist_count': checklist_count,
     }
 
 
