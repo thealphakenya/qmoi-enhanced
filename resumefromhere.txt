@@ -1,3 +1,63 @@
+Last refreshed: 2026-07-19T18:04:21.667843Z
+Resume update: auto-synced before bulk continuation.
+Resume point: continue from the next pending task after this header.
+Git commit: 0a4a40e987
+Git branch: automation/continue-setup
+Repository status: dirty
+
+Tracker rules:
+- Always update resumefromhere.txt before and after every bulk continuation run.
+- Always ensure all APIs are documented in API.md.
+- Always ensure all endpoints are documented in ENDPOINTS.md.
+- Always ensure all routes are documented in ROUTES.md.
+- Always ensure every .md file in the repository is indexed in ALLMDFILESREFS.md.
+- Keep this file as the authoritative progress tracker and task list for bulk work.
+
+Last refreshed: 2026-07-19T18:04:17.209036Z
+Resume update: auto-synced before bulk continuation.
+Resume point: continue from the next pending task after this header.
+Git commit: 0a4a40e987
+Git branch: automation/continue-setup
+Repository status: dirty
+
+Tracker rules:
+- Always update resumefromhere.txt before and after every bulk continuation run.
+- Always ensure all APIs are documented in API.md.
+- Always ensure all endpoints are documented in ENDPOINTS.md.
+- Always ensure all routes are documented in ROUTES.md.
+- Always ensure every .md file in the repository is indexed in ALLMDFILESREFS.md.
+- Keep this file as the authoritative progress tracker and task list for bulk work.
+
+Last refreshed: 2026-07-19T17:57:58.970797Z
+Resume update: auto-synced before bulk continuation.
+Resume point: continue from the next pending task after this header.
+Git commit: 0a4a40e987
+Git branch: automation/continue-setup
+Repository status: dirty
+
+Tracker rules:
+- Always update resumefromhere.txt before and after every bulk continuation run.
+- Always ensure all APIs are documented in API.md.
+- Always ensure all endpoints are documented in ENDPOINTS.md.
+- Always ensure all routes are documented in ROUTES.md.
+- Always ensure every .md file in the repository is indexed in ALLMDFILESREFS.md.
+- Keep this file as the authoritative progress tracker and task list for bulk work.
+
+Last refreshed: 2026-07-19T17:57:58.718531Z
+Resume update: auto-synced before bulk continuation.
+Resume point: continue from the next pending task after this header.
+Git commit: 0a4a40e987
+Git branch: automation/continue-setup
+Repository status: dirty
+
+Tracker rules:
+- Always update resumefromhere.txt before and after every bulk continuation run.
+- Always ensure all APIs are documented in API.md.
+- Always ensure all endpoints are documented in ENDPOINTS.md.
+- Always ensure all routes are documented in ROUTES.md.
+- Always ensure every .md file in the repository is indexed in ALLMDFILESREFS.md.
+- Keep this file as the authoritative progress tracker and task list for bulk work.
+
 Last refreshed: 2026-07-18T16:35:22.587202Z
 Resume update: auto-synced before bulk continuation.
 Resume point: continue from the next pending task after this header.
@@ -135,7 +195,7 @@ Tracker rules:
 QMOI CONTINUATION TRACKER
 ========================
 
-Last updated: 2026-07-18T16:35:21Z
+Last updated: 2026-07-19T18:04:16Z
 STATUS: Code, balance verification, test coverage, and docs updates remain.
 
 CURRENT FOCUS
@@ -184,6 +244,8 @@ AUTOMATION & DOCS REQUIREMENTS
 - Identify or create the script that, when run, causes Ollama to complete every task in `resumefromhere.txt`, keep the tracker updated, and pause only when everything is done.
 - Always use `scripts/ollama_autonomous_agent.py` as the canonical Ollama runner for the full tracker.
 - Improve the Ollama automation script and related features so Ollama can execute the full tracker autonomously without human intervention.
+- Ensure `scripts/ollama_autonomous_agent.py` generates `TREE_FULL_STRUCTURE.md` on every run and uses `TREE.md` to validate full repo coverage.
+- Track all files and directories through `TREE_FULL_STRUCTURE.md`, including hidden directories, legacy paths, and nested source/content files.
 - Use `ollama.md` as the canonical place to document the Ollama automation script, how it works, and how it is updated.
 - Review `copilotchat.md` for any relevant instructions or implementation notes and incorporate those into the Ollama automation plan.
 - Ensure the full plan includes continuous tracker updates by the automation script, end-to-end execution, and self-pausing once complete.
@@ -877,3 +939,19 @@ CONTINUES.TXT TASKS:
 
 === OLLAMA AUTONOMOUS AGENT UPDATE (2026-07-18T16:35:22ZZ) ===
 - Auto-continue bulk resume script completed successfully.
+
+=== OLLAMA AUTONOMOUS AGENT UPDATE (2026-07-19T17:06:46ZZ) ===
+- Starting Ollama autonomous bulk agent run.
+- Ollama is instructed to work in bulk, parallel, and self-improving mode.
+- This run will update resumefromhere.txt and continue the bulk resume workflow.
+
+=== OLLAMA AUTONOMOUS AGENT UPDATE (2026-07-19T17:41:29ZZ) ===
+- Starting Ollama autonomous bulk agent run.
+- Ollama is instructed to work in bulk, parallel, and self-improving mode.
+- This run will update resumefromhere.txt and continue the bulk resume workflow.
+
+=== OLLAMA AUTONOMOUS AGENT UPDATE (2026-07-19T18:04:16ZZ) ===
+- Starting Ollama autonomous bulk agent run.
+- Ollama is instructed to work in bulk, parallel, and self-improving mode.
+- This run will update resumefromhere.txt and continue the bulk resume workflow.
+2026-07-19T18:04:16Z - Ollama ensured and API reachable

@@ -28,6 +28,8 @@ ENSURE_SCRIPT = ROOT / ".devcontainer" / "ensure-ollama.sh"
 START_TIMEOUT = 120
 OLLAMA_FALLBACK_BIN = Path.home() / ".ollama" / "bin" / "ollama"
 AUTUPDATE_SCRIPT = ROOT / "scripts" / "autoupdate_resume.py"
+TREE_FILE = ROOT / "TREE.md"
+TREE_FULL_STRUCTURE_FILE = ROOT / "TREE_FULL_STRUCTURE.md"
 HTTP_NON_STREAM = True
 HTTP_MAX_TOKENS = 1024
 HTTP_TEMPERATURE = 0.1
@@ -38,9 +40,10 @@ HTTP_OPTIONS = {
     "num_ctx": 32768,
 }
 SYSTEM_PROMPT = (
-    "You are an autonomous Ollama agent. Use repository context, backlog files, and resumefromhere.txt as the canonical tracker. "
+    "You are an autonomous Ollama agent. Use repository context, backlog files, resumefromhere.txt, and TREE_FULL_STRUCTURE.md as the canonical tracker. "
     "Complete tasks, update resumefromhere.txt with progress blocks, and verify completion with explicit markers. "
-    "If a task cannot be completed, explain why and what is required."
+    "If a task cannot be completed, explain why and what is required. "
+    "When verifying work, use TREE.md and TREE_FULL_STRUCTURE.md to confirm every file and directory is covered."
 )
 CLI_HANG_WARNING_SECONDS = 60
 CLI_HANG_KILL_SECONDS = 300
@@ -180,6 +183,46 @@ def is_service_ready() -> bool:
         return False
 
 
+def build_repo_structure_summary() -> str:
+    try:
+        file_count = 0
+        dir_count = 0
+        for path in ROOT.rglob('*'):
+            if '.git' in path.parts or path == TREE_FULL_STRUCTURE_FILE:
+                continue
+            if path.is_file():
+                file_count += 1
+            elif path.is_dir():
+                dir_count += 1
+
+        top_dirs = [path.name for path in ROOT.iterdir() if path.is_dir() and path.name != '.git']
+        top_dirs = sorted(top_dirs)
+        sample_dirs = ', '.join(top_dirs[:40])
+        return (
+            f"Repository structure summary:\n"
+            f"- Total files: {file_count}\n"
+            f"- Total directories: {dir_count}\n"
+            f"- Top-level directories: {sample_dirs}\n"
+            f"Use TREE.md and TREE_FULL_STRUCTURE.md for the complete repo structure guide."
+        )
+    except Exception as exc:
+        return f"Repository structure summary could not be generated: {exc}"
+
+
+def generate_tree_full_structure() -> None:
+    try:
+        lines: list[str] = ["# Full Repository Structure", ""]
+        for path in sorted(ROOT.rglob('*')):
+            if '.git' in path.parts or path == TREE_FULL_STRUCTURE_FILE:
+                continue
+            rel = path.relative_to(ROOT)
+            lines.append(rel.as_posix())
+        TREE_FULL_STRUCTURE_FILE.write_text('\n'.join(lines), encoding='utf-8')
+        write_log(f"Generated full repository structure at {TREE_FULL_STRUCTURE_FILE}")
+    except Exception as exc:
+        write_log(f"Failed to generate full repository structure file: {exc}")
+
+
 def start_ollama_service() -> bool:
     if is_service_ready():
         print("Ollama service is already running.")
@@ -261,6 +304,42 @@ def extract_tasks_from_resume(content: str) -> list[str]:
     return extract_tasks_from_backlog_files()
 
 
+def generate_repo_context_summary() -> str:
+    counts: dict[str, int] = {}
+    markdown_count = 0
+    source_count = 0
+    backlog_count = 0
+    total_files = 0
+    for path in ROOT.rglob('*'):
+        if not path.is_file():
+            continue
+        total_files += 1
+        ext = path.suffix.lower().lstrip('.') or 'none'
+        counts[ext] = counts.get(ext, 0) + 1
+        if ext in {'md', 'markdown'}:
+            markdown_count += 1
+        if ext in {'py', 'ts', 'tsx', 'js', 'jsx', 'json', 'yml', 'yaml'}:
+            source_count += 1
+        if path.name in {'7.txt', '14.txt', 'undone.txt', 'MATCHES.txt'}:
+            backlog_count += 1
+
+    important_paths = []
+    for name in ['resumefromhere.txt', 'API.md', 'ENDPOINTS.md', 'ROUTES.md', 'ALLMDFILESREFS.md', 'TREE.md', 'MERGE.md']:
+        p = ROOT / name
+        if p.exists():
+            important_paths.append(name)
+
+    summary_lines = [
+        f"Repository file summary: {total_files} total files, {source_count} source files, {markdown_count} markdown files.",
+        f"Backlog and tracker files detected: {backlog_count} (7.txt, 14.txt, undone.txt, MATCHES.txt).",
+    ]
+    if important_paths:
+        summary_lines.append(f"Important tracker files present: {', '.join(important_paths)}.")
+    top_extensions = sorted(counts.items(), key=lambda item: item[1], reverse=True)[:8]
+    summary_lines.append("Top file types: " + ", ".join(f"{ext}={count}" for ext, count in top_extensions))
+    return "\n".join(summary_lines)
+
+
 def append_resume_block(title: str, lines: list[str]) -> None:
     if not RESUME_FILE.exists():
         RESUME_FILE.write_text('', encoding='utf-8')
@@ -303,11 +382,13 @@ def append_ollama_output_summary(output: str) -> None:
 
 
 def build_ollama_prompt(tasks: list[str]) -> str:
+    repo_summary = generate_repo_context_summary()
     if not tasks:
         return (
             "You are an autonomous Ollama agent. There are no explicit tasks extracted from resumefromhere.txt. "
             "Scan the repository and the backlog files 7.txt, 14.txt, undone.txt, and MATCHES.txt. "
-            "Produce a clear plan, execute bulk improvements, update resumefromhere.txt, and verify readiness for production."
+            "Produce a clear plan, execute bulk improvements, update resumefromhere.txt, and verify readiness for production.\n\n"
+            f"Repository context:\n{repo_summary}"
         )
 
     task_block = "\n".join([f"{i+1}. {task}" for i, task in enumerate(tasks)])
@@ -322,12 +403,15 @@ def build_ollama_prompt(tasks: list[str]) -> str:
         "3) Mark the task as [IN PROGRESS], then [DONE], then [VERIFY], and finally [CONFIRMED].\n"
         "4) If the task can be completed in parallel with others, explain how you are parallelizing it.\n"
         "5) At the end, output a final completion summary with a double-check for every task.\n"
+        "6) Include a note describing the directory and file coverage for the work you did.\n"
         "If you cannot complete a task, explain why and what is required.\n\n"
         "TASK LIST:\n"
         f"{task_block}\n\n"
         "IMPORTANT: Verify completion by cross-checking file names, scripts, and markdown docs in this repo. "
         "Update resumefromhere.txt with progress blocks and new task markers. "
-        "Only finish when all tasks have been confirmed twice."
+        "Ensure no directory or file is ignored: scan all folders and all files, including hidden and nested paths. "
+        "Only finish when all tasks have been confirmed twice.\n\n"
+        f"Repository context:\n{repo_summary}"
     )
 
 
@@ -422,16 +506,20 @@ def run_ollama_cli(prompt: str) -> tuple[bool, str]:
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             text=True,
+            bufsize=1,
         )
-        output, _ = process.communicate(prompt, timeout=CLI_TIMEOUT_SECONDS)
-    except subprocess.TimeoutExpired:
-        print(f"ERROR: Ollama CLI did not finish within {CLI_TIMEOUT_SECONDS} seconds; terminating.")
-        write_log(f"Ollama CLI timeout after {CLI_TIMEOUT_SECONDS}s")
+        if process.stdin is None:
+            raise RuntimeError("Unable to open stdin for Ollama CLI")
+        process.stdin.write(prompt)
+        process.stdin.close()
+        output = stream_process_output(process, f"Ollama CLI ({MODEL_NAME})", warning_seconds=CLI_HANG_WARNING_SECONDS, kill_seconds=CLI_HANG_KILL_SECONDS)
         try:
+            rc = process.wait(timeout=CLI_TIMEOUT_SECONDS)
+        except subprocess.TimeoutExpired:
+            print(f"ERROR: Ollama CLI did not finish within {CLI_TIMEOUT_SECONDS} seconds; terminating.")
+            write_log(f"Ollama CLI timeout after {CLI_TIMEOUT_SECONDS}s")
             process.kill()
-        except Exception:
-            pass
-        return False, ""
+            rc = -1
     except Exception as exc:
         print(f"ERROR: Could not launch or run Ollama CLI: {exc}")
         write_log(f"Failed to run Ollama CLI: {exc}")
@@ -444,9 +532,9 @@ def run_ollama_cli(prompt: str) -> tuple[bool, str]:
     else:
         print("[No output from Ollama CLI]")
 
-    if process.returncode != 0:
-        print(f"ERROR: Ollama CLI failed with exit code {process.returncode}")
-        write_log(f"Ollama CLI failed: rc={process.returncode}")
+    if rc != 0:
+        print(f"ERROR: Ollama CLI failed with exit code {rc}")
+        write_log(f"Ollama CLI failed: rc={rc}")
         append_ollama_output_summary(output)
         return False, output
 
@@ -830,6 +918,7 @@ def main() -> None:
     ensure_model()
 
     refresh_resume_tracker()
+    generate_tree_full_structure()
     content = read_resumefromhere()
     tasks = extract_tasks_from_resume(content)
     print(f"==> Extracted {len(tasks)} actionable tasks from resumefromhere.txt")
@@ -852,6 +941,7 @@ def main() -> None:
             sys.exit(1)
 
         print(f"==> Running Ollama agent prompt (attempt {attempt})")
+        refresh_resume_tracker()
         cli_success, response_text, http_success, verified, elapsed = run_agent_cycle(tasks)
         final_success = cli_success or http_success
 

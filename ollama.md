@@ -43,11 +43,22 @@ This script will:
 
 - start or verify the Ollama service
 - pull the model if missing
+- generate `TREE_FULL_STRUCTURE.md` and update `TREE.md` with canonical repo structure guidance
 - extract tasks from `resumefromhere.txt`
 - instruct Ollama to work in bulk and parallel when safe
 - verify each task with markers like [IN PROGRESS], [DONE], [VERIFY], [CONFIRMED]
 - append progress and summary blocks to `resumefromhere.txt`
 - run `scripts/auto_continue_resumefromhere.py` automatically when the agent succeeds
+
+## Full structure and documentation references
+
+- `TREE.md` is the canonical app tree and structure index for the repo.
+- `TREE_FULL_STRUCTURE.md` is generated on each autonomous agent run and contains the full repository file listing.
+- `ollama.md` should always document the current canonical Ollama workflow and the script used to drive the bulk tracker.
+- Reference the Ollama docs directly from:
+  - `https://docs.ollama.com/llms.txt`
+  - `https://docs.ollama.com/command-reference`
+  - `https://docs.ollama.com/` for the latest CLI and API semantics.
 
 ## Execution and verification rules
 
