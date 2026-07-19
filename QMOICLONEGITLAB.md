@@ -13,12 +13,12 @@ title: "Quantum multi orchestra intelligence (QMOI) GitLab Integration & Automat
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-28T19:36:39.432972Z
-- production status: ❌ needs production implementation
-- status tags: needs-production, nonproduction
+- timestamp: 2026-07-19T18:36:17.946256Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
 - lines: 445
-- words: 1259
-- characters: 10146
+- words: 1257
+- characters: 10163
 - headings: 29
 - links: 2
 - images: 0

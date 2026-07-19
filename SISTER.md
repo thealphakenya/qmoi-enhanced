@@ -48,12 +48,12 @@ Sister permissions configured in `app/hooks/useAuth.ts`:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-28T19:36:41.792367Z
-- production status: ❌ needs production implementation
-- status tags: needs-production, nonproduction
+- timestamp: 2026-07-19T18:36:19.350619Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
 - lines: 62
-- words: 278
-- characters: 1925
+- words: 276
+- characters: 1942
 - headings: 9
 - links: 0
 - images: 0

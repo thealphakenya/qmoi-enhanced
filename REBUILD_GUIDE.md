@@ -233,3 +233,21 @@ Once Ollama and Continue are working:
 **Estimated rebuild time: 3-5 minutes**
 
 **Need help?** Run: `bash .devcontainer/rebuild-and-verify.sh` after rebuild
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-07-19T18:36:18.914789Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 253
+- words: 905
+- characters: 6479
+- headings: 30
+- links: 0
+- images: 0
+- tables: 8
+- lion validation block: present
+<!-- LION_VALIDATION_END -->

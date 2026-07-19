@@ -374,3 +374,21 @@ The canonical agent workflow is:
 - If the environment is Alpine/musl, the container should still support the local Ollama runtime via the source build and runtime compatibility path.
 - If `ollama serve` fails because of libc issues, use the container rebuild or glibc compatibility fallback from `.devcontainer/ensure-ollama.sh` and `.devcontainer/auto-continue-daemon.sh`.
 - This guide is the canonical reference for Ollama issues in this repository.
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-07-19T18:36:24.199599Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 394
+- words: 1496
+- characters: 11087
+- headings: 37
+- links: 0
+- images: 0
+- tables: 0
+- lion validation block: present
+<!-- LION_VALIDATION_END -->

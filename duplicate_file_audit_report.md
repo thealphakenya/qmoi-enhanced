@@ -1,9 +1,9 @@
 # Duplicate File Audit Report
 
-Generated: 2026-06-28T19:36:00.401176Z
+Generated: 2026-07-19T18:28:31.916616Z
 
-Total files scanned: 4674
-Total duplicate file titles found: 252
+Total files scanned: 4713
+Total duplicate file titles found: 254
 
 ## Duplicate Files by Filename
 
@@ -582,6 +582,13 @@ Total duplicate file titles found: 252
 
 **Recommended canonical source:** `.qmoi_validation/validation_reports/COMPONENTS.json`
 
+### `config.json` (3 copies)
+- `.continue/config.json`
+- `config.json`
+- `reports/config.json`
+
+**Recommended canonical source:** `.continue/config.json`
+
 ### `config.ts` (3 copies)
 - `routes/api/qcity/config.ts`
 - `routes/api/qcity/trading/config.ts`
@@ -1025,12 +1032,6 @@ Total duplicate file titles found: 252
 
 **Recommended canonical source:** `COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md`
 
-### `config.json` (2 copies)
-- `config.json`
-- `reports/config.json`
-
-**Recommended canonical source:** `config.json`
-
 ### `consciousness.json` (2 copies)
 - `.qmoi_validation/validation_reports/CONSCIOUSNESS.json`
 - `qmoi_comprehensive_system/consciousness.json`
@@ -1174,6 +1175,12 @@ Total duplicate file titles found: 252
 - `components/security/EncryptedAuditLog.tsx`
 
 **Recommended canonical source:** `components/analytics/EncryptedAuditLog.tsx`
+
+### `endpoints.test.ts` (2 copies)
+- `__tests__/api/cashon/endpoints.test.ts`
+- `__tests__/api/qi-trading/endpoints.test.ts`
+
+**Recommended canonical source:** `__tests__/api/cashon/endpoints.test.ts`
 
 ### `enhanced-error-fix.js` (2 copies)
 - `enhanced-error-fix.js`
@@ -1871,6 +1878,12 @@ Total duplicate file titles found: 252
 
 **Recommended canonical source:** `src/lib/services.ts`
 
+### `settings.json` (2 copies)
+- `.vscode/settings.json`
+- `.vscodes/settings.json`
+
+**Recommended canonical source:** `.vscode/settings.json`
+
 ### `system-production.ts` (2 copies)
 - `qmoi/core/emotional-intelligence/system-production.ts`
 - `qmoi/core/memory/system-production.ts`
@@ -1997,15 +2010,15 @@ Total duplicate file titles found: 252
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-28T19:36:51.531171Z
+- timestamp: 2026-07-19T18:36:24.115942Z
 - production status: ❌ needs production implementation
 - status tags: needs-production, nonproduction
-- lines: 1993
-- words: 3990
-- characters: 64898
-- headings: 254
+- lines: 2024
+- words: 4086
+- characters: 65767
+- headings: 257
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: inserted
+- lion validation block: present
 <!-- LION_VALIDATION_END -->

@@ -35,3 +35,21 @@ This document describes the Bitget exchange integration used by QMOI trading ser
 - Always store credentials securely and do not commit them to source control.
 - Use `BINANCE_TESTNET` for testing Binance separately from Bitget live mode.
 - `app/api/qi-trading/route.ts` directly routes Bitget actions through `BitgetAdapter`.
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-07-19T18:36:23.638695Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 55
+- words: 281
+- characters: 2112
+- headings: 6
+- links: 0
+- images: 0
+- tables: 0
+- lion validation block: present
+<!-- LION_VALIDATION_END -->

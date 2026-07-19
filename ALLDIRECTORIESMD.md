@@ -1,6 +1,6 @@
 # ALLDIRECTORIESMD - Directory Documentation Index
 
-**Generated:** 2026-06-28T19:29:26.260386Z
+**Generated:** 2026-07-19T18:33:43.620142Z
 
 This file indexes all directory-specific documentation and tracks the production readiness of each directory's .md files.
 
@@ -101,14 +101,14 @@ Each directory in the repository has associated `.md` files that document its pu
 
 **Documentation Files:**
 - ✓ [TESTS.md](TESTS.md) (12.14 KB)
-- ✓ [ALLTESTSAUTOTESTS.md](ALLTESTSAUTOTESTS.md) (16.92 KB)
+- ✓ [ALLTESTSAUTOTESTS.md](ALLTESTSAUTOTESTS.md) (16.96 KB)
 
 **Status:**
 - Production Ready: Yes ✓
 - Existing .md files: 2/2
 - File Counts:
   - `tests`: 69 files (0 .md)
-  - `__tests__`: 103 files (0 .md)
+  - `__tests__`: 105 files (0 .md)
 
 ## SCRIPTS
 
@@ -125,7 +125,7 @@ Each directory in the repository has associated `.md` files that document its pu
 - Production Ready: Yes ✓
 - Existing .md files: 1/1
 - File Counts:
-  - `scripts`: 1396 files (11 .md)
+  - `scripts`: 1401 files (11 .md)
 
 ## SERVICES
 
@@ -325,12 +325,12 @@ These scripts generate and update directory .md files:
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-28T19:36:35.182746Z
+- timestamp: 2026-07-19T18:36:14.972655Z
 - production status: ✅ production-ready
 - status tags: production, production-ready
 - lines: 339
 - words: 1109
-- characters: 8084
+- characters: 8085
 - headings: 21
 - links: 31
 - images: 0

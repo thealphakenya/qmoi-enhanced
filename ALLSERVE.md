@@ -39,15 +39,15 @@ This file is generated from the current set of app and public entrypoint files i
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-28T19:36:35.396035Z
-- production status: ❌ needs production implementation
-- status tags: needs-production, nonproduction
-- lines: 53
-- words: 262
-- characters: 2003
-- headings: 7
+- timestamp: 2026-07-19T18:36:15.111791Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 35
+- words: 190
+- characters: 1537
+- headings: 6
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: present
+- lion validation block: inserted
 <!-- LION_VALIDATION_END -->

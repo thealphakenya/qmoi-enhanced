@@ -82,12 +82,12 @@ These routes exist as stubs and are documented in the repository.
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-28T19:36:41.802455Z
-- production status: ⚠️ review / no explicit production status
-- status tags: review
+- timestamp: 2026-07-19T18:36:19.357248Z
+- production status: ❌ needs production implementation
+- status tags: needs-production, nonproduction
 - lines: 96
-- words: 448
-- characters: 3848
+- words: 450
+- characters: 3831
 - headings: 7
 - links: 0
 - images: 0

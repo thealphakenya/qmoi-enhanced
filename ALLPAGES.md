@@ -41,15 +41,15 @@ This inventory includes all live application page entrypoints and static HTML sh
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-06-28T19:36:35.339691Z
-- production status: ❌ needs production implementation
-- status tags: needs-production, nonproduction
-- lines: 55
-- words: 233
-- characters: 2213
-- headings: 4
+- timestamp: 2026-07-19T18:36:15.063617Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 37
+- words: 161
+- characters: 1748
+- headings: 3
 - links: 0
 - images: 0
 - tables: 0
-- lion validation block: present
+- lion validation block: inserted
 <!-- LION_VALIDATION_END -->

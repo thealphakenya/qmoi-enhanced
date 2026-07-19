@@ -35,3 +35,21 @@ This document describes the Binance exchange integration used by QMOI trading se
 - Proper API permissions are required for order placement and account data.
 - Keep Binance credentials in environment variables and secrets only.
 - Use testnet mode for development before enabling live trading.
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
+
+- validated: yes
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
+- timestamp: 2026-07-19T18:36:23.637333Z
+- production status: ⚠️ review / no explicit production status
+- status tags: review
+- lines: 55
+- words: 286
+- characters: 2153
+- headings: 6
+- links: 0
+- images: 0
+- tables: 0
+- lion validation block: present
+<!-- LION_VALIDATION_END -->

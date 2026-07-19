@@ -1,6 +1,6 @@
 {
-  "generated": "2026-06-28T19:36:00.402534+00:00",
-  "total_files_scanned": 976,
+  "generated": "2026-07-19T18:28:31.919399+00:00",
+  "total_files_scanned": 981,
   "duplicate_groups": {
     "link_fixes_mapping.json": [
       "link_fixes_mapping.json",
@@ -193,6 +193,7 @@
       "docs/QTOOLS.md"
     ],
     "config.json": [
+      ".continue/config.json",
       "config.json",
       "reports/config.json"
     ],
@@ -512,6 +513,10 @@
       "huggingface_space/app.js",
       "mobile/App.js",
       "qmoi-space-pwa/js/app.js"
+    ],
+    "settings.json": [
+      ".vscode/settings.json",
+      ".vscodes/settings.json"
     ],
     "clientadapters.ts": [
       "src/adapters/clientAdapters.ts",
@@ -846,6 +851,10 @@
     "qmoimediamanager.tsx": [
       "components/QmoiMediaManager.tsx",
       "src/qcity/QMoiMediaManager.tsx"
+    ],
+    "endpoints.test.ts": [
+      "__tests__/api/cashon/endpoints.test.ts",
+      "__tests__/api/qi-trading/endpoints.test.ts"
     ],
     "engine.ts": [
       "qmoi/core/accessibility/engine.ts",

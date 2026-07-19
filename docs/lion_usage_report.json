@@ -1,15 +1,49 @@
 {
-  "timestamp": "2026-06-28T19:30:55.818990Z",
+  "timestamp": "2026-07-19T18:36:37.054274Z",
   "root": "/workspaces/qmoi-enhanced",
-  "total_files_scanned": 1244,
+  "total_files_scanned": 1270,
   "summary": {
-    "production-ready": 281,
-    "needs-production": 658,
+    "production-ready": 293,
+    "needs-production": 672,
     "mixed": 294,
     "review": 11,
-    "lion-block": 1244
+    "lion-block": 1270
   },
   "files": [
+    {
+      "path": ".devcontainer/AUTO_CONTINUE_GUIDE.md",
+      "lion_block": true,
+      "production_status": "needs-production",
+      "tags": [
+        "lion-block",
+        "needs-production"
+      ],
+      "stats": {
+        "lines": 381,
+        "words": 1189,
+        "headings": 69,
+        "links": 0,
+        "images": 0,
+        "tables": 15
+      }
+    },
+    {
+      "path": ".devcontainer/QUICKSTART.md",
+      "lion_block": true,
+      "production_status": "production-ready",
+      "tags": [
+        "lion-block",
+        "production-ready"
+      ],
+      "stats": {
+        "lines": 235,
+        "words": 768,
+        "headings": 34,
+        "links": 4,
+        "images": 0,
+        "tables": 6
+      }
+    },
     {
       "path": ".devcontainer/README.md",
       "lion_block": true,
@@ -414,8 +448,8 @@
         "needs-production"
       ],
       "stats": {
-        "lines": 1209,
-        "words": 9571,
+        "lines": 1234,
+        "words": 9771,
         "headings": 2,
         "links": 0,
         "images": 0,
@@ -623,8 +657,8 @@
         "review"
       ],
       "stats": {
-        "lines": 1274,
-        "words": 28958,
+        "lines": 1300,
+        "words": 29552,
         "headings": 3,
         "links": 0,
         "images": 0,
@@ -692,8 +726,8 @@
         "review"
       ],
       "stats": {
-        "lines": 1104,
-        "words": 5489,
+        "lines": 1116,
+        "words": 5549,
         "headings": 2,
         "links": 0,
         "images": 0,
@@ -812,8 +846,8 @@
         "production-ready"
       ],
       "stats": {
-        "lines": 407,
-        "words": 1239,
+        "lines": 408,
+        "words": 1240,
         "headings": 14,
         "links": 0,
         "images": 0,
@@ -941,6 +975,23 @@
       }
     },
     {
+      "path": "ALL_NEXT_STEPS_COMPLETE.md",
+      "lion_block": true,
+      "production_status": "production-ready",
+      "tags": [
+        "lion-block",
+        "production-ready"
+      ],
+      "stats": {
+        "lines": 156,
+        "words": 637,
+        "headings": 13,
+        "links": 0,
+        "images": 0,
+        "tables": 25
+      }
+    },
+    {
       "path": "ALPHAQMOIENGINE.md",
       "lion_block": true,
       "production_status": "needs-production",
@@ -953,6 +1004,23 @@
         "words": 1265,
         "headings": 33,
         "links": 1,
+        "images": 0,
+        "tables": 0
+      }
+    },
+    {
+      "path": "ALWAYS_AUTOMATICALLY_CONTINUE.md",
+      "lion_block": true,
+      "production_status": "needs-production",
+      "tags": [
+        "lion-block",
+        "needs-production"
+      ],
+      "stats": {
+        "lines": 398,
+        "words": 1246,
+        "headings": 67,
+        "links": 0,
         "images": 0,
         "tables": 0
       }
@@ -1601,6 +1669,23 @@
       }
     },
     {
+      "path": "AUTOMATION_COMPLETE.md",
+      "lion_block": true,
+      "production_status": "needs-production",
+      "tags": [
+        "lion-block",
+        "needs-production"
+      ],
+      "stats": {
+        "lines": 424,
+        "words": 1413,
+        "headings": 54,
+        "links": 0,
+        "images": 0,
+        "tables": 32
+      }
+    },
+    {
       "path": "AUTONOMOUS_LEARNING_SYSTEM.md",
       "lion_block": true,
       "production_status": "production-ready",
@@ -1719,6 +1804,23 @@
         "links": 0,
         "images": 0,
         "tables": 0
+      }
+    },
+    {
+      "path": "Allfree.md",
+      "lion_block": true,
+      "production_status": "production-ready",
+      "tags": [
+        "lion-block",
+        "production-ready"
+      ],
+      "stats": {
+        "lines": 689,
+        "words": 3422,
+        "headings": 58,
+        "links": 0,
+        "images": 0,
+        "tables": 26
       }
     },
     {
@@ -2017,6 +2119,23 @@
       }
     },
     {
+      "path": "BULK_CONTINUATION_COMPLETE.md",
+      "lion_block": true,
+      "production_status": "production-ready",
+      "tags": [
+        "lion-block",
+        "production-ready"
+      ],
+      "stats": {
+        "lines": 558,
+        "words": 1792,
+        "headings": 86,
+        "links": 0,
+        "images": 0,
+        "tables": 19
+      }
+    },
+    {
       "path": "BULK_ENHANCEMENT_STATUS.md",
       "lion_block": true,
       "production_status": "production-ready",
@@ -2049,6 +2168,23 @@
         "links": 0,
         "images": 0,
         "tables": 0
+      }
+    },
+    {
+      "path": "BULK_QUICK_REFERENCE.md",
+      "lion_block": true,
+      "production_status": "production-ready",
+      "tags": [
+        "lion-block",
+        "production-ready"
+      ],
+      "stats": {
+        "lines": 302,
+        "words": 1014,
+        "headings": 33,
+        "links": 0,
+        "images": 0,
+        "tables": 7
       }
     },
     {
@@ -2876,6 +3012,40 @@
         "lines": 247,
         "words": 593,
         "headings": 25,
+        "links": 0,
+        "images": 0,
+        "tables": 0
+      }
+    },
+    {
+      "path": "CONTINUE_BULK_GUIDE.md",
+      "lion_block": true,
+      "production_status": "production-ready",
+      "tags": [
+        "lion-block",
+        "production-ready"
+      ],
+      "stats": {
+        "lines": 356,
+        "words": 1380,
+        "headings": 63,
+        "links": 0,
+        "images": 0,
+        "tables": 0
+      }
+    },
+    {
+      "path": "CONTINUE_BULK_OPERATIONS.md",
+      "lion_block": true,
+      "production_status": "production-ready",
+      "tags": [
+        "lion-block",
+        "production-ready"
+      ],
+      "stats": {
+        "lines": 733,
+        "words": 2051,
+        "headings": 47,
         "links": 0,
         "images": 0,
         "tables": 0
@@ -5706,6 +5876,23 @@
       }
     },
     {
+      "path": "IMPLEMENTATION_REPORT.md",
+      "lion_block": true,
+      "production_status": "production-ready",
+      "tags": [
+        "lion-block",
+        "production-ready"
+      ],
+      "stats": {
+        "lines": 365,
+        "words": 1462,
+        "headings": 44,
+        "links": 0,
+        "images": 0,
+        "tables": 26
+      }
+    },
+    {
       "path": "IMPLEMENTATION_SUMMARY.md",
       "lion_block": true,
       "production_status": "production-ready",
@@ -7115,6 +7302,23 @@
       }
     },
     {
+      "path": "OLLAMA_CONTINUE_SETUP.md",
+      "lion_block": true,
+      "production_status": "needs-production",
+      "tags": [
+        "lion-block",
+        "needs-production"
+      ],
+      "stats": {
+        "lines": 130,
+        "words": 456,
+        "headings": 19,
+        "links": 0,
+        "images": 0,
+        "tables": 0
+      }
+    },
+    {
       "path": "OPERATIONAL_RUNBOOKS.md",
       "lion_block": true,
       "production_status": "needs-production",
@@ -7721,6 +7925,23 @@
       }
     },
     {
+      "path": "POST_REBUILD_CHECKLIST.md",
+      "lion_block": true,
+      "production_status": "needs-production",
+      "tags": [
+        "lion-block",
+        "needs-production"
+      ],
+      "stats": {
+        "lines": 299,
+        "words": 1018,
+        "headings": 52,
+        "links": 0,
+        "images": 0,
+        "tables": 8
+      }
+    },
+    {
       "path": "PREDICTIVE_ANALYTICS.md",
       "lion_block": true,
       "production_status": "needs-production",
@@ -7769,6 +7990,23 @@
         "links": 0,
         "images": 0,
         "tables": 0
+      }
+    },
+    {
+      "path": "PRE_LAUNCH_CHECKLIST.md",
+      "lion_block": true,
+      "production_status": "production-ready",
+      "tags": [
+        "lion-block",
+        "production-ready"
+      ],
+      "stats": {
+        "lines": 446,
+        "words": 1491,
+        "headings": 51,
+        "links": 0,
+        "images": 0,
+        "tables": 12
       }
     },
     {
@@ -14480,6 +14718,23 @@
       }
     },
     {
+      "path": "READY_TO_GO.md",
+      "lion_block": true,
+      "production_status": "production-ready",
+      "tags": [
+        "lion-block",
+        "production-ready"
+      ],
+      "stats": {
+        "lines": 366,
+        "words": 1190,
+        "headings": 47,
+        "links": 0,
+        "images": 0,
+        "tables": 11
+      }
+    },
+    {
       "path": "REAL_IMPLEMENTATIONS_SUMMARY.md",
       "lion_block": true,
       "production_status": "mixed",
@@ -14513,6 +14768,23 @@
         "links": 0,
         "images": 0,
         "tables": 76
+      }
+    },
+    {
+      "path": "REBUILD_GUIDE.md",
+      "lion_block": true,
+      "production_status": "needs-production",
+      "tags": [
+        "lion-block",
+        "needs-production"
+      ],
+      "stats": {
+        "lines": 253,
+        "words": 907,
+        "headings": 30,
+        "links": 0,
+        "images": 0,
+        "tables": 8
       }
     },
     {
@@ -15604,6 +15876,23 @@
       }
     },
     {
+      "path": "SESSION_SUMMARY.md",
+      "lion_block": true,
+      "production_status": "needs-production",
+      "tags": [
+        "lion-block",
+        "needs-production"
+      ],
+      "stats": {
+        "lines": 335,
+        "words": 1362,
+        "headings": 40,
+        "links": 21,
+        "images": 0,
+        "tables": 27
+      }
+    },
+    {
       "path": "SESSION_SUMMARY_20260614.md",
       "lion_block": true,
       "production_status": "mixed",
@@ -15619,6 +15908,23 @@
         "links": 0,
         "images": 0,
         "tables": 21
+      }
+    },
+    {
+      "path": "SETUP_CHECKLIST.md",
+      "lion_block": true,
+      "production_status": "production-ready",
+      "tags": [
+        "lion-block",
+        "production-ready"
+      ],
+      "stats": {
+        "lines": 339,
+        "words": 1213,
+        "headings": 47,
+        "links": 0,
+        "images": 0,
+        "tables": 17
       }
     },
     {
@@ -15887,9 +16193,9 @@
         "needs-production"
       ],
       "stats": {
-        "lines": 489,
-        "words": 2221,
-        "headings": 22,
+        "lines": 589,
+        "words": 2742,
+        "headings": 30,
         "links": 0,
         "images": 0,
         "tables": 0
@@ -15962,6 +16268,23 @@
         "links": 0,
         "images": 0,
         "tables": 0
+      }
+    },
+    {
+      "path": "SYSTEM_READY.md",
+      "lion_block": true,
+      "production_status": "production-ready",
+      "tags": [
+        "lion-block",
+        "production-ready"
+      ],
+      "stats": {
+        "lines": 470,
+        "words": 1551,
+        "headings": 75,
+        "links": 7,
+        "images": 0,
+        "tables": 27
       }
     },
     {
@@ -16391,8 +16714,8 @@
         "needs-production"
       ],
       "stats": {
-        "lines": 168,
-        "words": 1076,
+        "lines": 222,
+        "words": 1321,
         "headings": 3,
         "links": 0,
         "images": 0,
@@ -16414,6 +16737,23 @@
         "links": 10,
         "images": 0,
         "tables": 31
+      }
+    },
+    {
+      "path": "TREE_FULL_STRUCTURE.md",
+      "lion_block": true,
+      "production_status": "needs-production",
+      "tags": [
+        "lion-block",
+        "needs-production"
+      ],
+      "stats": {
+        "lines": 28017,
+        "words": 28087,
+        "headings": 2,
+        "links": 0,
+        "images": 0,
+        "tables": 0
       }
     },
     {
@@ -16445,6 +16785,23 @@
         "lines": 328,
         "words": 669,
         "headings": 21,
+        "links": 0,
+        "images": 0,
+        "tables": 0
+      }
+    },
+    {
+      "path": "Trade.md",
+      "lion_block": true,
+      "production_status": "needs-production",
+      "tags": [
+        "lion-block",
+        "needs-production"
+      ],
+      "stats": {
+        "lines": 461,
+        "words": 1589,
+        "headings": 1,
         "links": 0,
         "images": 0,
         "tables": 0
@@ -16615,9 +16972,9 @@
         "needs-production"
       ],
       "stats": {
-        "lines": 462,
-        "words": 2841,
-        "headings": 40,
+        "lines": 578,
+        "words": 3361,
+        "headings": 48,
         "links": 0,
         "images": 0,
         "tables": 39
@@ -17703,6 +18060,40 @@
       }
     },
     {
+      "path": "binance.md",
+      "lion_block": true,
+      "production_status": "needs-production",
+      "tags": [
+        "lion-block",
+        "needs-production"
+      ],
+      "stats": {
+        "lines": 55,
+        "words": 288,
+        "headings": 6,
+        "links": 0,
+        "images": 0,
+        "tables": 0
+      }
+    },
+    {
+      "path": "bitget.md",
+      "lion_block": true,
+      "production_status": "needs-production",
+      "tags": [
+        "lion-block",
+        "needs-production"
+      ],
+      "stats": {
+        "lines": 55,
+        "words": 283,
+        "headings": 6,
+        "links": 0,
+        "images": 0,
+        "tables": 0
+      }
+    },
+    {
       "path": "components/qmedia-player.md",
       "lion_block": true,
       "production_status": "needs-production",
@@ -17755,6 +18146,23 @@
       }
     },
     {
+      "path": "continueollam.md",
+      "lion_block": true,
+      "production_status": "needs-production",
+      "tags": [
+        "lion-block",
+        "needs-production"
+      ],
+      "stats": {
+        "lines": 128,
+        "words": 535,
+        "headings": 11,
+        "links": 0,
+        "images": 0,
+        "tables": 0
+      }
+    },
+    {
       "path": "copilot-instructions.md",
       "lion_block": true,
       "production_status": "mixed",
@@ -17767,6 +18175,23 @@
         "lines": 425,
         "words": 1453,
         "headings": 32,
+        "links": 0,
+        "images": 0,
+        "tables": 0
+      }
+    },
+    {
+      "path": "copilotchat.md",
+      "lion_block": true,
+      "production_status": "needs-production",
+      "tags": [
+        "lion-block",
+        "needs-production"
+      ],
+      "stats": {
+        "lines": 356,
+        "words": 676,
+        "headings": 1,
         "links": 0,
         "images": 0,
         "tables": 0
@@ -17832,8 +18257,8 @@
         "production-ready"
       ],
       "stats": {
-        "lines": 516,
-        "words": 1340,
+        "lines": 517,
+        "words": 1342,
         "headings": 28,
         "links": 0,
         "images": 0,
@@ -20060,9 +20485,9 @@
         "needs-production"
       ],
       "stats": {
-        "lines": 2011,
-        "words": 4060,
-        "headings": 255,
+        "lines": 2024,
+        "words": 4086,
+        "headings": 257,
         "links": 0,
         "images": 0,
         "tables": 0
@@ -20372,6 +20797,23 @@
         "words": 1382,
         "headings": 31,
         "links": 6,
+        "images": 0,
+        "tables": 0
+      }
+    },
+    {
+      "path": "ollama.md",
+      "lion_block": true,
+      "production_status": "needs-production",
+      "tags": [
+        "lion-block",
+        "needs-production"
+      ],
+      "stats": {
+        "lines": 394,
+        "words": 1498,
+        "headings": 37,
+        "links": 0,
         "images": 0,
         "tables": 0
       }
