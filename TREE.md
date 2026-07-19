@@ -9,6 +9,9 @@ Summary
 -------
 This file documents canonical app entry points, directories each app uses, shared directories and files, and developer instructions for validating universal auth + theme behavior across the suite (QCity, QMOI AI, QVillage, QAlpha, QMOI Space).
 
+Full repository structure reference:
+- TREE_FULL_STRUCTURE.md — canonical inventory of all top-level directories, app directories, docs clusters, data/config directories, and automation/test directories. This file is used by the Ollama autonomous agent as a complete structure map for scans, merges, and documentation synchronization.
+
 Top-level apps (App Router entry pages)
 --------------------------------------
 - `app/qcity/page.tsx`              → wraps `QCityShell` (UniversalRouteGuard)

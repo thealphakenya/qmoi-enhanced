@@ -7,6 +7,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import threading
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -23,12 +24,30 @@ MODEL_NAME = os.environ.get("OLLAMA_MODEL", "qwen2.5-coder:3b")
 ENSURE_SCRIPT = ROOT / ".devcontainer" / "ensure-ollama.sh"
 START_TIMEOUT = 120
 OLLAMA_FALLBACK_BIN = Path.home() / ".ollama" / "bin" / "ollama"
+DEFAULT_TIMEOUT = 600
+DEFAULT_HEARTBEAT = 20
 
 
-def write_log(message: str) -> None:
-    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+def utc_timestamp() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def format_log_message(level: str, message: str) -> str:
+    return f"{utc_timestamp()} [{level}] {message}"
+
+
+def write_log(message: str, level: str = "INFO") -> None:
+    formatted = format_log_message(level, message)
     with AGENT_LOG.open("a", encoding="utf-8") as fh:
-        fh.write(f"{timestamp} {message}\n")
+        fh.write(f"{formatted}\n")
+
+
+def log(message: str, level: str = "INFO", print_to_stdout: bool = True) -> None:
+    formatted = format_log_message(level, message)
+    write_log(message, level)
+    if print_to_stdout:
+        print(formatted)
+        sys.stdout.flush()
 
 
 def backup_resume_file() -> None:
@@ -79,34 +98,31 @@ def update_resume_last_updated() -> None:
 
 
 def shell_run(command, **kwargs):
-    print(f"$ {' '.join(command)}")
-    sys.stdout.flush()
+    rendered = " ".join(command)
+    log(f"$ {rendered}", "DEBUG")
     try:
         result = subprocess.run(command, cwd=str(ROOT), check=True, text=True, **kwargs)
         return result
     except subprocess.CalledProcessError as exc:
-        print(f"ERROR: command failed: {exc}")
-        write_log(f"COMMAND FAILED: {' '.join(command)} -> {exc}")
+        log(f"COMMAND FAILED: {rendered} -> {exc}", "ERROR")
         return None
 
 
 def run_command(command: list[str], description: str) -> bool:
-    print(f"==> {description}: {' '.join(command)}")
-    sys.stdout.flush()
+    log(f"==> {description}: {' '.join(command)}", "INFO")
     result = shell_run(command)
     if result is None:
-        print(f"ERROR: {description} failed.")
-        write_log(f"{description} failed\nCommand: {' '.join(command)}")
+        log(f"ERROR: {description} failed.", "ERROR")
         return False
     return True
 
 
 def ensure_ollama_environment() -> None:
-    print("==> Ensuring local Ollama runtime and model environment")
+    log("==> Ensuring local Ollama runtime and model environment", "INFO")
     if ENSURE_SCRIPT.exists():
         shell_run(["bash", str(ENSURE_SCRIPT)])
     else:
-        print("WARNING: .devcontainer/ensure-ollama.sh is missing; continuing with best effort")
+        log("WARNING: .devcontainer/ensure-ollama.sh is missing; continuing with best effort", "WARNING")
 
 
 def get_ollama_cmd() -> str | None:
@@ -133,14 +149,14 @@ def is_service_ready() -> bool:
 
 def start_ollama_service() -> bool:
     if is_service_ready():
-        print("Ollama service is already running.")
+        log("Ollama service is already running.", "INFO")
         return True
     ollama_cmd = get_ollama_cmd()
     if not ollama_cmd:
-        print("Ollama CLI is not available; cannot start the service from the shell.")
+        log("Ollama CLI is not available; cannot start the service from the shell.", "ERROR")
         return False
 
-    print(f"Starting Ollama service in the background using {ollama_cmd}...")
+    log(f"Starting Ollama service in the background using {ollama_cmd}...", "INFO")
     env = os.environ.copy()
     if OLLAMA_FALLBACK_BIN.exists():
         env["PATH"] = str(OLLAMA_FALLBACK_BIN.parent) + ":" + env.get("PATH", "")
@@ -148,22 +164,21 @@ def start_ollama_service() -> bool:
     if build_lib_dir.exists():
         env["GGML_BACKEND_PATH"] = str(build_lib_dir)
         env["LD_LIBRARY_PATH"] = str(build_lib_dir) + ":" + env.get("LD_LIBRARY_PATH", "")
-        print(f"INFO: Configured GGML_BACKEND_PATH and LD_LIBRARY_PATH for source-built runtime: {build_lib_dir}")
+        log(f"Configured GGML_BACKEND_PATH and LD_LIBRARY_PATH for source-built runtime: {build_lib_dir}", "DEBUG")
     try:
         stdout = (LOG_DIR / "ollama_serve.stdout.log").open("a", encoding="utf-8")
         stderr = (LOG_DIR / "ollama_serve.stderr.log").open("a", encoding="utf-8")
         subprocess.Popen([ollama_cmd, "serve"], cwd=str(ROOT), stdout=stdout, stderr=stderr, env=env)
     except Exception as exc:
-        print(f"ERROR: could not launch Ollama service: {exc}")
-        write_log(f"Failed to start Ollama service: {exc}")
+        log(f"Failed to start Ollama service: {exc}", "ERROR")
         return False
 
     for attempt in range(START_TIMEOUT):
         if is_service_ready():
-            print("Ollama service is now available.")
+            log("Ollama service is now available.", "INFO")
             return True
         time.sleep(1)
-    print("ERROR: Ollama service did not become available in time.")
+    log("ERROR: Ollama service did not become available in time.", "ERROR")
     return False
 
 
@@ -248,10 +263,17 @@ def append_ollama_output_summary(output: str) -> None:
 
 
 def build_ollama_prompt(tasks: list[str]) -> str:
+    structure_inventory = ROOT / "TREE_FULL_STRUCTURE.md"
+    structure_note = (
+        "Use TREE_FULL_STRUCTURE.md as the canonical full repository structure inventory. "
+        "Treat it as the authoritative map for top-level directories, app directories, docs clusters, config/data directories, and automation/test directories."
+    )
+
     if not tasks:
         return (
             "You are an autonomous Ollama agent. There are no explicit tasks extracted from resumefromhere.txt. "
             "Scan the repository and the backlog files 7.txt, 14.txt, undone.txt, and MATCHES.txt. "
+            f"{structure_note} "
             "Produce a clear plan, execute bulk improvements, update resumefromhere.txt, and verify readiness for production."
         )
 
@@ -259,6 +281,7 @@ def build_ollama_prompt(tasks: list[str]) -> str:
     return (
         "You are a production-grade Ollama autonomous agent. Your mission is to complete everything listed in resumefromhere.txt "
         "and all referenced backlog files (7.txt, 14.txt, undone.txt, MATCHES.txt) for this repository. "
+        f"{structure_note} "
         "Treat resumefromhere.txt as the canonical tracker and update it with progress as you work. "
         "Use bulk, parallel, and merged execution when safe. Do not stop until every task is complete and verified. "
         "For each task, do the following:\n"
@@ -270,35 +293,142 @@ def build_ollama_prompt(tasks: list[str]) -> str:
         "If you cannot complete a task, explain why and what is required.\n\n"
         "TASK LIST:\n"
         f"{task_block}\n\n"
-        "IMPORTANT: Verify completion by cross-checking file names, scripts, and markdown docs in this repo. "
+        "IMPORTANT: Verify completion by cross-checking file names, scripts, markdown docs, and the full repository structure inventory in this repo. "
         "Update resumefromhere.txt with progress blocks and new task markers. "
         "Only finish when all tasks have been confirmed twice."
     )
+
+
+def display_path(path: Path) -> str:
+    try:
+        return str(path.relative_to(ROOT))
+    except ValueError:
+        return str(path)
+
+
+def collect_preflight_checks() -> tuple[list[str], list[str]]:
+    required_files = [
+        RESUME_FILE,
+        ROOT / "7.txt",
+        ROOT / "14.txt",
+        ROOT / "undone.txt",
+        ROOT / "MATCHES.txt",
+        ROOT / "TREE_FULL_STRUCTURE.md",
+        ROOT / "TREE.md",
+        ROOT / "MERGE.md",
+        ROOT / "API.md",
+        ROOT / "ENDPOINTS.md",
+        ROOT / "ROUTES.md",
+        ROOT / "ollama.md",
+        ENSURE_SCRIPT,
+        ROOT / "scripts" / "auto_continue_resumefromhere.py",
+    ]
+    present: list[str] = []
+    missing: list[str] = []
+    for path in required_files:
+        if path.exists():
+            present.append(display_path(path))
+        else:
+            missing.append(display_path(path))
+    return present, missing
+
+
+def report_preflight_checks() -> list[str]:
+    present, missing = collect_preflight_checks()
+    log("==> Preflight checks", "INFO")
+    if present:
+        log("  Present files:", "INFO")
+        for path in present:
+            log(f"    - {path}", "INFO")
+    if missing:
+        log("  Missing files:", "WARNING")
+        for path in missing:
+            log(f"    - {path}", "WARNING")
+    else:
+        log("  All required repo files for the Ollama workflow are present.", "INFO")
+    return missing
+
+
+def build_merge_plan_summary() -> str:
+    summary_lines = [
+        "REPO-WIDE MERGE PLAN SUMMARY",
+        "Canonical docs: TREE.md, MERGE.md, API.md, ENDPOINTS.md, ROUTES.md, TREE_FULL_STRUCTURE.md",
+        "Priority merge areas: duplicate app entry points, route duplicates, markdown documentation clusters, finance/trading routes, and universal auth/theme docs.",
+        "Structure inventory: app/, api/, components/, lib/, docs/, data/, deploy/, tests/, and automation scripts.",
+        "Next actions: sync docs to canonical files, verify route coverage, preserve backlog tasks, and keep resumefromhere.txt updated.",
+    ]
+    return "\n".join(summary_lines)
+
+
+def append_merge_plan_summary() -> None:
+    summary = build_merge_plan_summary()
+    log(summary, "INFO")
+    append_resume_block("REPO-WIDE MERGE PLAN SUMMARY", summary.splitlines())
 
 
 def has_http_support() -> bool:
     return True
 
 
-def run_ollama_cli(prompt: str) -> tuple[bool, str]:
+def stream_process_output(process, description: str, timeout_seconds: int, heartbeat_interval: int) -> tuple[int, str]:
+    output_lines: list[str] = []
+    start_time = time.time()
+    last_output_time = time.time()
+    stop_event = threading.Event()
+
+    def heartbeat() -> None:
+        while not stop_event.is_set() and process.poll() is None:
+            elapsed = int(time.time() - last_output_time)
+            if elapsed >= heartbeat_interval:
+                log(f"{description} heartbeat: still running with no new output for {elapsed}s", "DEBUG")
+            time.sleep(1)
+
+    heartbeat_thread = threading.Thread(target=heartbeat, daemon=True)
+    heartbeat_thread.start()
+
+    while True:
+        if process.stdout is None:
+            break
+        line = process.stdout.readline()
+        if line:
+            last_output_time = time.time()
+            output_lines.append(line)
+            print(line.rstrip())
+            sys.stdout.flush()
+            continue
+        if process.poll() is not None:
+            break
+        if time.time() - start_time > timeout_seconds:
+            log(f"{description} exceeded timeout of {timeout_seconds}s; terminating", "ERROR")
+            process.terminate()
+            time.sleep(5)
+            if process.poll() is None:
+                process.kill()
+            raise TimeoutError(description)
+        time.sleep(0.25)
+
+    stop_event.set()
+    heartbeat_thread.join(timeout=2)
+    return process.returncode, "".join(output_lines)
+
+
+def run_ollama_cli(prompt: str, timeout_seconds: int, heartbeat_interval: int) -> tuple[bool, str]:
     ollama_cmd = get_ollama_cmd()
     if not ollama_cmd:
         return False, ""
-    print(f"==> Sending prompt to Ollama CLI (streaming output) via {ollama_cmd}")
+    log(f"==> Sending prompt to Ollama CLI via {ollama_cmd}", "INFO")
     command = [ollama_cmd, "run", MODEL_NAME, "--prompt", prompt, "--stream", "--verbose"]
     try:
-        process = subprocess.Popen(command, cwd=str(ROOT), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+        process = subprocess.Popen(command, cwd=str(ROOT), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1, encoding="utf-8", errors="replace")
     except FileNotFoundError:
         return False, ""
-    assert process.stdout is not None
-    output_lines = []
-    for line in process.stdout:
-        print(line, end="")
-        output_lines.append(line)
-        sys.stdout.flush()
-    process.wait()
-    output_text = "".join(output_lines)
-    return process.returncode == 0, output_text
+
+    try:
+        returncode, output_text = stream_process_output(process, f"Ollama CLI ({MODEL_NAME})", timeout_seconds, heartbeat_interval)
+    except TimeoutError as exc:
+        log(f"Ollama CLI execution timed out: {exc}", "ERROR")
+        return False, ""
+    return returncode == 0, output_text
 
 
 def run_ollama_http(prompt: str) -> tuple[bool, str]:
@@ -336,35 +466,35 @@ def run_ollama_http(prompt: str) -> tuple[bool, str]:
 
 
 def ensure_model() -> None:
-    print(f"==> Ensuring model {MODEL_NAME} is available")
+    log(f"==> Ensuring model {MODEL_NAME} is available", "INFO")
     try:
         req = Request(f"{OLLAMA_HOST}/api/tags")
         with urlopen(req, timeout=20) as response:
             tags = json.loads(response.read().decode("utf-8", errors="ignore"))
             if any(tag.get("name") == MODEL_NAME for tag in tags.get("models", [])):
-                print(f"Model {MODEL_NAME} is already present.")
+                log(f"Model {MODEL_NAME} is already present.", "INFO")
                 return
     except Exception:
         pass
 
     ollama_cmd = get_ollama_cmd()
     if not ollama_cmd:
-        print("Ollama CLI not available; cannot pull model automatically.")
+        log("Ollama CLI not available; cannot pull model automatically.", "WARNING")
         return
 
-    print(f"Pulling model {MODEL_NAME} via {ollama_cmd}...")
+    log(f"Pulling model {MODEL_NAME} via {ollama_cmd}...", "INFO")
     shell_run([ollama_cmd, "pull", MODEL_NAME])
 
 
 def run_continuation_script() -> bool:
     continue_script = ROOT / "scripts" / "auto_continue_resumefromhere.py"
     if not continue_script.exists():
-        print(f"Continue bulk script not found: {continue_script}")
+        log(f"Continue bulk script not found: {continue_script}", "WARNING")
         return False
-    print("==> Running the auto-continue bulk resume script after Ollama agent completion")
+    log("==> Running the auto-continue bulk resume script after Ollama agent completion", "INFO")
     for attempt in range(1, 3):
-        print(f"Auto-continue attempt {attempt}/2")
-        if run_command([sys.executable, str(continue_script)], 'run auto-continue bulk resume script'):
+        log(f"Auto-continue attempt {attempt}/2", "INFO")
+        if run_command([sys.executable, str(continue_script)], "run auto-continue bulk resume script"):
             return True
         time.sleep(10)
     return False
@@ -372,115 +502,147 @@ def run_continuation_script() -> bool:
 
 def verify_agent_completion(output: str, tasks: list[str]) -> bool:
     if not output:
-        print("ERROR: No output was captured from Ollama.")
-        return False
-
-    confirmed_count = output.count("[CONFIRMED]")
-    verify_count = output.count("[VERIFY]")
-    if tasks and confirmed_count < len(tasks):
-        print(f"WARNING: Found only {confirmed_count} [CONFIRMED] markers for {len(tasks)} tasks.")
-        return False
-    if tasks and verify_count < len(tasks):
-        print(f"WARNING: Found only {verify_count} [VERIFY] markers for {len(tasks)} tasks.")
+        log("ERROR: No output was captured from Ollama.", "ERROR")
         return False
 
     lower_text = output.lower()
+    confirmed_count = output.count("[CONFIRMED]")
+    verify_count = output.count("[VERIFY]")
+    done_count = output.count("[DONE]")
+    progress_count = output.count("[IN PROGRESS]")
+
+    if tasks:
+        if progress_count < 1:
+            log("WARNING: The output does not include any [IN PROGRESS] markers.", "WARNING")
+            return False
+        if done_count < 1:
+            log("WARNING: The output does not include any [DONE] markers.", "WARNING")
+            return False
+        if verify_count < 1:
+            log("WARNING: The output does not include any [VERIFY] markers.", "WARNING")
+            return False
+        if confirmed_count < 1:
+            log("WARNING: The output does not include any [CONFIRMED] markers.", "WARNING")
+            return False
+    else:
+        if confirmed_count < 1 and done_count < 1:
+            log("WARNING: The output does not include completion markers for the empty-task fallback.", "WARNING")
+            return False
+
     if "final completion summary" not in lower_text and "final completion" not in lower_text and "completion summary" not in lower_text:
-        print("WARNING: The output does not appear to include a final completion summary.")
+        log("WARNING: The output does not appear to include a final completion summary.", "WARNING")
+        return False
+
+    if "double-check" not in lower_text and "double check" not in lower_text and "verified twice" not in lower_text:
+        log("WARNING: The output does not appear to include a double-check or second-verification statement.", "WARNING")
         return False
 
     return True
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description='Ollama autonomous bulk agent runner')
-    parser.add_argument('--continue', dest='continue_run', action='store_true', help='Run scripts/auto_continue_resumefromhere.py after Ollama agent completion')
-    parser.add_argument('--no-continue', dest='continue_run', action='store_false', help='Do not run auto-continue after the Ollama agent (default behavior is to continue)')
-    parser.set_defaults(continue_run=True)
+    parser = argparse.ArgumentParser(description="Ollama autonomous bulk agent runner")
+    parser.add_argument("--continue", dest="continue_run", action="store_true", help="Run scripts/auto_continue_resumefromhere.py after Ollama agent completion")
+    parser.add_argument("--no-continue", dest="continue_run", action="store_false", help="Do not run auto-continue after the Ollama agent (default behavior is to continue)")
+    parser.add_argument("--timeout", type=int, default=DEFAULT_TIMEOUT, help="Maximum seconds to wait for Ollama CLI execution before terminating")
+    parser.add_argument("--heartbeat-interval", type=int, default=DEFAULT_HEARTBEAT, help="Seconds between heartbeat logs when the Ollama process produces no output")
+    parser.add_argument("--dry-run", action="store_true", help="Perform preflight checks and log the plan without sending work to Ollama")
+    parser.add_argument("--merge-summary", dest="merge_summary", action="store_true", help="Generate a repo-wide merge planning summary before the Ollama run starts")
+    parser.add_argument("--no-merge-summary", dest="merge_summary", action="store_false", help="Skip the repo-wide merge planning summary")
+    parser.set_defaults(continue_run=True, merge_summary=False)
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    print("=== Ollama Autonomous Agent Startup ===")
-    write_log("Starting Ollama autonomous agent run")
+    log("=== Ollama Autonomous Agent Startup ===", "INFO")
+    log("Starting Ollama autonomous agent run", "INFO")
     backup_resume_file()
     start_block = append_resume_update([
-        'Starting Ollama autonomous bulk agent run.',
-        'Ollama is instructed to work in bulk, parallel, and self-improving mode.',
-        'This run will update resumefromhere.txt and continue the bulk resume workflow.'
+        "Starting Ollama autonomous bulk agent run.",
+        "Ollama is instructed to work in bulk, parallel, and self-improving mode.",
+        "This run will update resumefromhere.txt and continue the bulk resume workflow.",
+        f"Realtime logging is enabled with UTC timestamps and watchdog heartbeats every {args.heartbeat_interval}s.",
     ])
     print(start_block)
     update_resume_last_updated()
     ensure_ollama_environment()
     if not start_ollama_service():
-        print("ERROR: Unable to start Ollama service. Exiting.")
-        write_log("Ollama service failed to start")
-        append_resume_update(['Ollama service failed to start.'])
+        log("ERROR: Unable to start Ollama service. Exiting.", "ERROR")
+        append_resume_update(["Ollama service failed to start."])
         sys.exit(1)
     ensure_model()
 
+    report_preflight_checks()
+
     content = read_resumefromhere()
     tasks = extract_tasks_from_resume(content)
-    print(f"==> Extracted {len(tasks)} actionable tasks from resumefromhere.txt")
+    log(f"==> Extracted {len(tasks)} actionable tasks from resumefromhere.txt", "INFO")
     if tasks:
-        for i, t in enumerate(tasks, start=1):
-            print(f"  {i}. {t}")
+        for i, task in enumerate(tasks, start=1):
+            log(f"  {i}. {task}", "INFO")
     else:
-        print("WARNING: No explicit tasks could be extracted from resumefromhere.txt.")
+        log("WARNING: No explicit tasks could be extracted from resumefromhere.txt.", "WARNING")
+
+    if args.merge_summary or args.dry_run:
+        append_merge_plan_summary()
 
     prompt = build_ollama_prompt(tasks)
-    print("==> Running Ollama agent prompt")
+    if args.dry_run:
+        log("Dry run enabled; skipping Ollama execution and only logging the planned workflow.", "INFO")
+        append_resume_block("OLLAMA AGENT DRY RUN", ["Dry run enabled; no Ollama execution was performed.", "Preflight checks and merge planning summary were logged before the dry run exited."])
+        return
+
+    log("==> Running Ollama agent prompt", "INFO")
     start_time = time.time()
-    success, response_text = run_ollama_cli(prompt)
+    success, response_text = run_ollama_cli(prompt, args.timeout, args.heartbeat_interval)
     if not success:
-        print("WARNING: Ollama CLI stream failed or unavailable; falling back to HTTP API.")
+        log("WARNING: Ollama CLI stream failed or unavailable; falling back to HTTP API.", "WARNING")
         success, response_text = run_ollama_http(prompt)
     elapsed = time.time() - start_time
-    print(f"==> Ollama agent completed in {elapsed:.1f}s")
+    log(f"==> Ollama agent completed in {elapsed:.1f}s", "INFO")
 
     append_ollama_output_summary(response_text)
-    append_resume_block('OLLAMA AGENT RESULT', [
-        f'Ollama agent completed in {elapsed:.1f}s.',
-        f'CLI success: {success}',
-        f'Pending tasks found: {len(tasks)}',
-        'Output summary was appended to resumefromhere.txt.'
+    append_resume_block("OLLAMA AGENT RESULT", [
+        f"Ollama agent completed in {elapsed:.1f}s.",
+        f"CLI success: {success}",
+        f"Pending tasks found: {len(tasks)}",
+        "Output summary was appended to resumefromhere.txt.",
     ])
 
     if not success:
-        print("ERROR: Ollama agent was not able to complete the prompt successfully.")
-        write_log("Ollama agent prompt failed")
-        append_resume_block('OLLAMA AGENT FAILURE', ['Ollama agent prompt failed. Check terminal output and logs.'])
+        log("ERROR: Ollama agent was not able to complete the prompt successfully.", "ERROR")
+        append_resume_block("OLLAMA AGENT FAILURE", ["Ollama agent prompt failed. Check terminal output and logs."])
         sys.exit(1)
 
     if not verify_agent_completion(response_text, tasks):
-        print("ERROR: Ollama output did not include required completion verification markers.")
-        write_log("Ollama output verification failed")
-        append_resume_block('OLLAMA AGENT VERIFICATION FAILURE', ['Ollama output verification failed. The run did not produce required completion markers.'])
+        log("ERROR: Ollama output did not include required completion verification markers.", "ERROR")
+        append_resume_block("OLLAMA AGENT VERIFICATION FAILURE", ["Ollama output verification failed. The run did not produce required completion markers."])
         sys.exit(1)
 
     success_block = append_resume_update([
-        'Ollama autonomous run finished successfully.',
-        'Tasks were executed in bulk, with self-directed decisions and double verification.',
-        f'Found {len(tasks)} tasks in resumefromhere.txt and verified completion markers.'
+        "Ollama autonomous run finished successfully.",
+        "Tasks were executed in bulk, with self-directed decisions and double verification.",
+        f"Found {len(tasks)} tasks in resumefromhere.txt and verified completion markers.",
+        "Realtime logging remained active throughout the run and captured any stalls or failures.",
     ])
     print(success_block)
     update_resume_last_updated()
 
-    append_resume_block('OLLAMA AGENT VERIFICATION', [
-        'Ollama output verification passed.',
-        'Resumefromhere tracker updated with progress and completion markers.',
+    append_resume_block("OLLAMA AGENT VERIFICATION", [
+        "Ollama output verification passed.",
+        "Resumefromhere tracker updated with progress and completion markers.",
     ])
 
     if args.continue_run:
         if run_continuation_script():
-            append_resume_update(['Auto-continue bulk resume script completed successfully.'])
+            append_resume_update(["Auto-continue bulk resume script completed successfully."])
         else:
-            append_resume_update(['Auto-continue bulk resume script did not complete successfully.'])
+            append_resume_update(["Auto-continue bulk resume script did not complete successfully."])
 
-    print("==> Ollama autonomous run finished. Review the terminal output for progress and confirmations.")
-    print("==> Check the logs at ~/.ollama/logs/ollama_autonomous_agent.log if needed.")
-    write_log("Ollama autonomous agent run completed successfully")
+    log("==> Ollama autonomous run finished. Review the terminal output for progress and confirmations.", "INFO")
+    log("==> Check the logs at ~/.ollama/logs/ollama_autonomous_agent.log if needed.", "INFO")
+    log("Ollama autonomous agent run completed successfully", "INFO")
 
 
 if __name__ == "__main__":

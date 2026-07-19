@@ -1,15 +1,20 @@
 QMOI BULK CONTINUATION TRACKER
 ==============================
 
-Last updated: 2026-07-18T08:14:15Z
+Last updated: 2026-07-19T21:48:59Z
 STATUS: LOCAL OLLAMA READY — BULK TRADING, BITGET, DOCUMENTATION, AND CONTINUE SETUP PENDING
 
 REBUILD ACTION:
 - Container rebuild is not required if the current environment remains glibc and Ollama is running. If Ollama becomes unstable, rebuild using the `.devcontainer` devcontainer path.
 
-CURRENT SESSION PROGRESS (2026-07-18)
+CURRENT SESSION PROGRESS (2026-07-19)
 -------------------------------------
 ✅ Identified root cause: Container is musl (Alpine), but Ollama requires glibc
+✅ Added TREE_FULL_STRUCTURE.md as a canonical full-repo structure inventory for agent planning and merge work
+✅ Updated TREE.md to reference the new structure inventory file
+✅ Hardened scripts/ollama_autonomous_agent.py with richer logging, heartbeat visibility, and structure-aware prompt planning
+✅ Added regression coverage for the new structure-aware prompt behavior in tests/test_ollama_agent.py
+✅ Updated ollama.md with the new full-structure planning workflow
 ✅ Verified devcontainer.json is correctly configured for Debian bullseye (glibc)
 ✅ All helper scripts are in place and working (ensure-ollama.sh, build-ollama-from-source.sh, etc.)
 ✅ Updated Allfree.md with Alpine source build instructions and helper script usage
@@ -753,3 +758,30 @@ Output summary was appended to resumefromhere.txt.
 === OLLAMA AGENT FAILURE (2026-07-18T08:14:16Z) ===
 Ollama agent prompt failed. Check terminal output and logs.
 2026-07-18T08:40:40Z - Ollama ensured and API reachable
+
+=== OLLAMA AUTONOMOUS AGENT UPDATE (2026-07-19T21:35:49ZZ) ===
+- Starting Ollama autonomous bulk agent run.
+- Ollama is instructed to work in bulk, parallel, and self-improving mode.
+- This run will update resumefromhere.txt and continue the bulk resume workflow.
+- Realtime logging is enabled with UTC timestamps and watchdog heartbeats every 5s.
+
+=== OLLAMA AUTONOMOUS AGENT UPDATE (2026-07-19T21:48:59ZZ) ===
+- Starting Ollama autonomous bulk agent run.
+- Ollama is instructed to work in bulk, parallel, and self-improving mode.
+- This run will update resumefromhere.txt and continue the bulk resume workflow.
+- Realtime logging is enabled with UTC timestamps and watchdog heartbeats every 20s.
+
+=== REPO-WIDE MERGE PLAN SUMMARY (2026-07-19T21:49:42Z) ===
+REPO-WIDE MERGE PLAN SUMMARY
+Canonical docs: TREE.md, MERGE.md, API.md, ENDPOINTS.md, ROUTES.md, TREE_FULL_STRUCTURE.md
+Priority merge areas: duplicate app entry points, route duplicates, markdown documentation clusters, finance/trading routes, and universal auth/theme docs.
+Structure inventory: app/, api/, components/, lib/, docs/, data/, deploy/, tests/, and automation scripts.
+Next actions: sync docs to canonical files, verify route coverage, preserve backlog tasks, and keep resumefromhere.txt updated.
+
+=== OLLAMA AGENT DRY RUN (2026-07-19T21:49:42Z) ===
+Dry run enabled; no Ollama execution was performed.
+Preflight checks and merge planning summary were logged before the dry run exited.
+2026-07-19T21:51:07Z - Ollama ensured and API reachable
+
+=== OLLAMA AGENT DRY RUN (2026-07-19T21:51:07Z) ===
+Dry run enabled; no Ollama execution was performed.

@@ -15,6 +15,7 @@ It contains exact runtime issues, permanent fixes, and the validated script to i
 - Ensure Ollama CLI and local server are installed and running.
 - Ensure `qwen2.5-coder:3b` is available locally.
 - Read actionable tasks from `resumefromhere.txt` and backlog files.
+- Use `TREE_FULL_STRUCTURE.md` as the full repository structure inventory for repo-wide planning.
 - Send a production-grade prompt to Ollama.
 - Stream progress to the terminal.
 - Update `resumefromhere.txt` with progress and verification blocks.
@@ -33,6 +34,7 @@ This script will:
 - start or verify the Ollama service
 - pull the model if missing
 - extract tasks from `resumefromhere.txt`
+- use `TREE_FULL_STRUCTURE.md` to guide repo-wide planning and merge decisions
 - instruct Ollama to work in bulk and parallel when safe
 - verify each task with markers like [IN PROGRESS], [DONE], [VERIFY], [CONFIRMED]
 - append progress and summary blocks to `resumefromhere.txt`
