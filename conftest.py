@@ -1,8 +1,10 @@
 # QMOI Enhanced pytest configuration
+import logging
 import os
 import sys
-import logging
 from pathlib import Path
+
+import pytest
 
 # Add project root to path
 project_root = Path(__file__).parent

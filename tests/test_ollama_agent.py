@@ -36,3 +36,11 @@ def test_build_merge_plan_summary_mentions_canonical_docs():
     assert "API.md" in summary
     assert "ROUTES.md" in summary
     assert "TREE_FULL_STRUCTURE.md" in summary
+
+
+def test_build_execution_plan_mentions_canonical_docs_and_scripts():
+    plan = module.build_execution_plan(["inventory docs", "merge routes"])
+    assert "API.md" in plan
+    assert "ROUTES.md" in plan
+    assert "scripts/consolidate_api_endpoints.py" in plan
+    assert "scripts/merge_executor.py" in plan

@@ -29,6 +29,11 @@ if [ -f "scripts/merge_executor.py" ]; then
   python3 scripts/merge_executor.py || true
 fi
 
+if command -v python3 >/dev/null 2>&1 && [ -f "scripts/ollama_autonomous_agent.py" ]; then
+  echo "-> Launching autonomous Ollama continuation pass"
+  python3 scripts/ollama_autonomous_agent.py --continue --merge-summary --timeout 1800 --heartbeat-interval 15 || true
+fi
+
 echo "→ Bulk pass complete (check resumefromhere.txt for details)."
 # record completion
 bash "$(dirname "$0")/update-resume.sh" "Bulk pass complete" || true

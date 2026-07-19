@@ -2,13 +2,19 @@
 set -euo pipefail
 
 export PATH="$HOME/.ollama/bin:$PATH"
+REPO_ROOT="${REPO_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 OLLAMA_PID_FILE="/tmp/ollama.pid"
 OLLAMA_LOG_FILE="$HOME/.ollama/logs/auto-continue.log"
+AGENT_LOG_FILE="$HOME/.ollama/logs/auto-continue-agent.log"
+AGENT_LOCK_FILE="/tmp/auto-continue-agent.lock"
 AUTO_CONTINUE_ENABLED="${AUTO_CONTINUE_ENABLED:-true}"
 AUTO_CONTINUE_CHECK_INTERVAL="${AUTO_CONTINUE_CHECK_INTERVAL:-10}"
 AUTO_CONTINUE_MAX_RESTARTS="${AUTO_CONTINUE_MAX_RESTARTS:-0}"
+AUTO_CONTINUE_AGENT_INTERVAL="${AUTO_CONTINUE_AGENT_INTERVAL:-300}"
+AUTO_CONTINUE_AGENT_TIMEOUT="${AUTO_CONTINUE_AGENT_TIMEOUT:-1800}"
+AUTO_CONTINUE_AGENT_HEARTBEAT="${AUTO_CONTINUE_AGENT_HEARTBEAT:-15}"
 MAX_RESTART_ATTEMPTS="$AUTO_CONTINUE_MAX_RESTARTS"
-mkdir -p "$(dirname "$OLLAMA_LOG_FILE")"
+mkdir -p "$(dirname "$OLLAMA_LOG_FILE")" "$HOME/.ollama/logs"
 
 log_message() {
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$OLLAMA_LOG_FILE"
@@ -114,9 +120,40 @@ start_ollama() {
   fi
 }
 
+is_agent_run_in_progress() {
+  [ -f "$AGENT_LOCK_FILE" ] && kill -0 "$(cat "$AGENT_LOCK_FILE" 2>/dev/null)" 2>/dev/null
+}
+
+run_agent_once() {
+  if ! check_ollama_health; then
+    log_message "Skipping autonomous agent run because Ollama is not healthy"
+    return 0
+  fi
+  if is_agent_run_in_progress; then
+    log_message "Autonomous agent run already in progress; skipping"
+    return 0
+  fi
+
+  log_message "Launching autonomous agent run"
+  echo "$$" > "$AGENT_LOCK_FILE"
+  (
+    cd "$REPO_ROOT"
+    python3 scripts/ollama_autonomous_agent.py --continue --merge-summary --timeout "$AUTO_CONTINUE_AGENT_TIMEOUT" --heartbeat-interval "$AUTO_CONTINUE_AGENT_HEARTBEAT" >> "$AGENT_LOG_FILE" 2>&1
+  )
+  local rc=$?
+  rm -f "$AGENT_LOCK_FILE"
+  if [ "$rc" -eq 0 ]; then
+    log_message "Autonomous agent run completed successfully"
+  else
+    log_message "Autonomous agent run exited with status $rc"
+  fi
+  return 0
+}
+
 continuous_monitor() {
   local restart_count=0
   local backoff=5
+  local last_agent_run=0
   log_message "=== AUTO-CONTINUE DAEMON STARTED ==="
   while true; do
     if ! check_ollama_health; then
@@ -136,6 +173,12 @@ continuous_monitor() {
     else
       restart_count=0
       backoff=5
+      local now
+      now=$(date +%s)
+      if [ "$((now - last_agent_run))" -ge "$AUTO_CONTINUE_AGENT_INTERVAL" ]; then
+        last_agent_run="$now"
+        run_agent_once || true
+      fi
     fi
     sleep "$AUTO_CONTINUE_CHECK_INTERVAL"
   done

@@ -42,6 +42,12 @@ def write_log(message: str, level: str = "INFO") -> None:
         fh.write(f"{formatted}\n")
 
 
+def log_context_snapshot(label: str, context: dict[str, object]) -> None:
+    log(f"==> {label} snapshot", "DEBUG")
+    for key, value in context.items():
+        log(f"  {key}: {value}", "DEBUG")
+
+
 def log(message: str, level: str = "INFO", print_to_stdout: bool = True) -> None:
     formatted = format_log_message(level, message)
     write_log(message, level)
@@ -262,12 +268,30 @@ def append_ollama_output_summary(output: str) -> None:
     append_resume_block('OLLAMA AUTONOMOUS RESPONSE SUMMARY', summary_lines)
 
 
+def build_execution_plan(tasks: list[str]) -> str:
+    plan_lines = [
+        "PRODUCTION EXECUTION PLAN:",
+        "1. Inventory the repository using TREE_FULL_STRUCTURE.md, resumefromhere.txt, and the backlog files 7.txt, 14.txt, undone.txt, and MATCHES.txt.",
+        "2. Reconcile and update the canonical documentation set: API.md, ENDPOINTS.md, ROUTES.md, TREE.md, MERGE.md, and TREE_FULL_STRUCTURE.md.",
+        "3. Implement or wire real production modules rather than stubs, including finance/trading routes, auth/theme flows, and any referenced app entry points.",
+        "4. Run the canonical consolidation scripts: scripts/consolidate_api_endpoints.py and scripts/merge_executor.py, then incorporate their results into docs and code.",
+        "5. Verify the repo state with real checks, then update resumefromhere.txt with progress blocks, completion markers, and follow-up tasks.",
+        "6. Never stop at a shallow implementation; confirm the real implementation path, edge cases, and dependencies before marking a task as [CONFIRMED].",
+    ]
+    if tasks:
+        plan_lines.append("TASKS TO EXECUTE:")
+        for index, task in enumerate(tasks, start=1):
+            plan_lines.append(f"{index}. {task}")
+    return "\n".join(plan_lines)
+
+
 def build_ollama_prompt(tasks: list[str]) -> str:
     structure_inventory = ROOT / "TREE_FULL_STRUCTURE.md"
     structure_note = (
         "Use TREE_FULL_STRUCTURE.md as the canonical full repository structure inventory. "
         "Treat it as the authoritative map for top-level directories, app directories, docs clusters, config/data directories, and automation/test directories."
     )
+    execution_plan = build_execution_plan(tasks)
 
     if not tasks:
         return (
@@ -277,7 +301,6 @@ def build_ollama_prompt(tasks: list[str]) -> str:
             "Produce a clear plan, execute bulk improvements, update resumefromhere.txt, and verify readiness for production."
         )
 
-    task_block = "\n".join([f"{i+1}. {task}" for i, task in enumerate(tasks)])
     return (
         "You are a production-grade Ollama autonomous agent. Your mission is to complete everything listed in resumefromhere.txt "
         "and all referenced backlog files (7.txt, 14.txt, undone.txt, MATCHES.txt) for this repository. "
@@ -291,8 +314,7 @@ def build_ollama_prompt(tasks: list[str]) -> str:
         "4) If the task can be completed in parallel with others, explain how you are parallelizing it.\n"
         "5) At the end, output a final completion summary with a double-check for every task.\n"
         "If you cannot complete a task, explain why and what is required.\n\n"
-        "TASK LIST:\n"
-        f"{task_block}\n\n"
+        f"{execution_plan}\n\n"
         "IMPORTANT: Verify completion by cross-checking file names, scripts, markdown docs, and the full repository structure inventory in this repo. "
         "Update resumefromhere.txt with progress blocks and new task markers. "
         "Only finish when all tasks have been confirmed twice."
@@ -364,6 +386,41 @@ def append_merge_plan_summary() -> None:
     summary = build_merge_plan_summary()
     log(summary, "INFO")
     append_resume_block("REPO-WIDE MERGE PLAN SUMMARY", summary.splitlines())
+
+
+def append_execution_plan(tasks: list[str]) -> None:
+    plan = build_execution_plan(tasks)
+    log("==> Execution plan", "INFO")
+    log(plan, "INFO")
+    append_resume_block("PRODUCTION EXECUTION PLAN", plan.splitlines())
+
+
+def log_runtime_environment(tasks: list[str], dry_run: bool) -> None:
+    context = {
+        "repo_root": str(ROOT),
+        "resume_file": str(RESUME_FILE),
+        "ollama_host": OLLAMA_HOST,
+        "model": MODEL_NAME,
+        "ollama_cli": get_ollama_cmd() or "unavailable",
+        "dry_run": dry_run,
+        "task_count": len(tasks),
+        "task_preview": tasks[:8],
+        "python_executable": sys.executable,
+        "python_version": sys.version.split()[0],
+    }
+    log_context_snapshot("runtime environment", context)
+
+
+def append_execution_summary(tasks: list[str], prompt: str, dry_run: bool, elapsed: float | None = None) -> None:
+    summary_lines = [
+        f"Task count: {len(tasks)}",
+        f"Dry run: {dry_run}",
+        f"Prompt length: {len(prompt)}",
+        f"Prompt preview: {prompt[:400].replace(chr(10), ' ')}",
+    ]
+    if elapsed is not None:
+        summary_lines.append(f"Elapsed seconds: {elapsed:.2f}")
+    append_resume_block("OLLAMA EXECUTION SUMMARY", summary_lines)
 
 
 def has_http_support() -> bool:
@@ -576,6 +633,7 @@ def main() -> None:
     report_preflight_checks()
 
     content = read_resumefromhere()
+    log_runtime_environment(tasks=[] if not content else extract_tasks_from_resume(content), dry_run=args.dry_run)
     tasks = extract_tasks_from_resume(content)
     log(f"==> Extracted {len(tasks)} actionable tasks from resumefromhere.txt", "INFO")
     if tasks:
@@ -587,7 +645,16 @@ def main() -> None:
     if args.merge_summary or args.dry_run:
         append_merge_plan_summary()
 
+    append_execution_plan(tasks)
+    log_runtime_environment(tasks, dry_run=args.dry_run)
+
     prompt = build_ollama_prompt(tasks)
+    log(f"Prompt prepared with {len(prompt)} characters and {len(tasks)} task entries.", "INFO")
+    log_context_snapshot("prompt summary", {
+        "prompt_length": len(prompt),
+        "task_count": len(tasks),
+        "prompt_head": prompt[:600],
+    })
     if args.dry_run:
         log("Dry run enabled; skipping Ollama execution and only logging the planned workflow.", "INFO")
         append_resume_block("OLLAMA AGENT DRY RUN", ["Dry run enabled; no Ollama execution was performed.", "Preflight checks and merge planning summary were logged before the dry run exited."])
@@ -603,6 +670,7 @@ def main() -> None:
     log(f"==> Ollama agent completed in {elapsed:.1f}s", "INFO")
 
     append_ollama_output_summary(response_text)
+    append_execution_summary(tasks, prompt, dry_run=False, elapsed=elapsed)
     append_resume_block("OLLAMA AGENT RESULT", [
         f"Ollama agent completed in {elapsed:.1f}s.",
         f"CLI success: {success}",

@@ -1,7 +1,7 @@
 QMOI BULK CONTINUATION TRACKER
 ==============================
 
-Last updated: 2026-07-19T21:48:59Z
+Last updated: 2026-07-19T22:06:44Z
 STATUS: LOCAL OLLAMA READY — BULK TRADING, BITGET, DOCUMENTATION, AND CONTINUE SETUP PENDING
 
 REBUILD ACTION:
@@ -785,3 +785,591 @@ Preflight checks and merge planning summary were logged before the dry run exite
 
 === OLLAMA AGENT DRY RUN (2026-07-19T21:51:07Z) ===
 Dry run enabled; no Ollama execution was performed.
+
+=== OLLAMA AUTONOMOUS AGENT UPDATE (2026-07-19T22:06:05ZZ) ===
+- Starting Ollama autonomous bulk agent run.
+- Ollama is instructed to work in bulk, parallel, and self-improving mode.
+- This run will update resumefromhere.txt and continue the bulk resume workflow.
+- Realtime logging is enabled with UTC timestamps and watchdog heartbeats every 20s.
+2026-07-19T22:06:05Z - Ollama ensured and API reachable
+
+=== REPO-WIDE MERGE PLAN SUMMARY (2026-07-19T22:06:05Z) ===
+REPO-WIDE MERGE PLAN SUMMARY
+Canonical docs: TREE.md, MERGE.md, API.md, ENDPOINTS.md, ROUTES.md, TREE_FULL_STRUCTURE.md
+Priority merge areas: duplicate app entry points, route duplicates, markdown documentation clusters, finance/trading routes, and universal auth/theme docs.
+Structure inventory: app/, api/, components/, lib/, docs/, data/, deploy/, tests/, and automation scripts.
+Next actions: sync docs to canonical files, verify route coverage, preserve backlog tasks, and keep resumefromhere.txt updated.
+
+=== PRODUCTION EXECUTION PLAN (2026-07-19T22:06:05Z) ===
+PRODUCTION EXECUTION PLAN:
+1. Inventory the repository using TREE_FULL_STRUCTURE.md, resumefromhere.txt, and the backlog files 7.txt, 14.txt, undone.txt, and MATCHES.txt.
+2. Reconcile and update the canonical documentation set: API.md, ENDPOINTS.md, ROUTES.md, TREE.md, MERGE.md, and TREE_FULL_STRUCTURE.md.
+3. Implement or wire real production modules rather than stubs, including finance/trading routes, auth/theme flows, and any referenced app entry points.
+4. Run the canonical consolidation scripts: scripts/consolidate_api_endpoints.py and scripts/merge_executor.py, then incorporate their results into docs and code.
+5. Verify the repo state with real checks, then update resumefromhere.txt with progress blocks, completion markers, and follow-up tasks.
+6. Never stop at a shallow implementation; confirm the real implementation path, edge cases, and dependencies before marking a task as [CONFIRMED].
+TASKS TO EXECUTE:
+1. Container rebuild is not required if the current environment remains glibc and Ollama is running. If Ollama becomes unstable, rebuild using the `.devcontainer` devcontainer path.
+2. ✅ Verified QAlpha Shell ThemeSelector import
+3. ✅ Added "Authentication & Universal Authorization" section to API.md
+4. ✅ Organized ROUTES.md with universal portal, app routes, and admin routes
+5. ✅ Enhanced STYLES.md with universal theme system documentation
+6. ✅ Expanded UNIVERSAL.md with theme persistence and auto-channel routing flows
+7. ✅ Confirmed all app-specific UI docs (QMOIAIUI, QMOISPACEUI, QCITYUI, QVILLAGEUI, QALPHAUI) have theme selection docs
+8. Continue extension is not yet installed or verified in this workspace
+9. Trade.md, Bitget/Binance trading docs, and global finance docs are not fully synced
+10. API.md, ENDPOINTS.md, ROUTES.md, TREE.md, MERGE.md, and related docs still need full bulk consolidation
+11. Bitget credentials, balance display, and real trading memory integration require verification and secure storage
+12. UI feature documentation for trading, balances, and global finance remains incomplete
+13. Continue/ollama automation still needs a full bulk pass and `resumefromhere.txt` tracking update
+14. MERGE.md shows duplicate app entry points and components still need consolidation, while duplicate API routes are already marked 0
+15. Install the Continue extension and confirm it connects to local Ollama
+16. Verify Continue configuration at `~/.continue/config.json` and local Ollama readiness
+17. Run `bash .devcontainer/verify-ollama.sh` and confirm model responsiveness
+18. Run the bulk autonomous workflow:
+19. Regenerate and consolidate API/endpoints/route docs:
+20. Run the merge executor for duplicate consolidation:
+21. Update Trade.md with the Bitget account plan, actual balance, and UI balance display notes
+22. Update ollama.md, continueollam.md, Allfree.md, and Trade.md to reflect the current local Ollama + trading workflow
+23. Confirm Bitget credentials are stored securely via environment/secrets and not committed into Git
+24. Verify QMOI memory uses the same Bitget account credentials for all live trading actions
+25. Ensure all trading features include Bitget, Binance, and other platform support in docs and UI
+26. Ensure all API references are present in API.md, all endpoints in ENDPOINTS.md, and all routes in ROUTES.md
+27. Keep `7.txt`, `14.txt`, `undone.txt`, and `MATCHES.txt` backlog items visible and synced in this tracker
+28. Install Continue extension and confirm local Ollama is active
+29. Run `bash .devcontainer/verify-ollama.sh` to verify Ollama health and Continue readiness
+30. Run bulk pass: `python3 scripts/consolidate_api_endpoints.py`
+31. Run merge executor: `python3 scripts/merge_executor.py`
+32. Update Trade.md, ollama.md, continueollam.md, and Allfree.md with current trading and Ollama workflows
+33. Update `API.md`, `ENDPOINTS.md`, `ROUTES.md`, `TREE.md`, and `MERGE.md` after consolidation
+34. Verify secure Bitget credential storage and runtime memory integration
+35. Confirm all updated docs are committed in markdown
+36. Document that QMOI uses the Bitget account with API key `bg_2eb93266c2bb0cd443cd51d08b662753`, secret `83fc35b8765c3f3bc7f8f4015d2241f8532d5d5ff9c57d2d75398573ec4232fc`, and passphrase `Victor9798`
+37. Ensure Bitget account balance is retrieved live and reflected in Trade.md and UI balance displays
+38. Confirm QMOI uses the same Bitget credentials for every Bitget trading flow
+39. Verify Bitget, Binance, and other exchange trading features are fully autonomous and decision-enabled
+40. Ensure all UI features related to trading, balances, and global finance are documented across the repository
+41. Confirm trading strategies include confidence thresholds, risk controls, and actual fund usage rules
+42. Validate real fund trading logic for Bitget and ensure QMOI can act autonomously within the configured risk framework
+43. Note: `app/api/qi-trading/route.ts` is a stub and should be wired to canonical trading/adapters logic; `src/config/trading.ts` is broken and requires adapter/integration cleanup
+44. Document live trading route and endpoint coverage in `API.md`, `ENDPOINTS.md`, and `ROUTES.md` with Bitget/Binance platform details, then pause after tracker update
+45. Update APIs_1.md with consolidated API overview
+46. Create integration testing guide for auth flows
+47. Document privacy mask behavior across themes
+48. Create user guide for theme selection and persistence
+49. Add troubleshooting guide for auth/theme issues
+50. Add a dedicated Bitget trading UI feature inventory in Trade.md and related docs
+51. Container image: mcr.microsoft.com/devcontainers/base:bullseye (glibc)
+52. Ollama endpoint: http://127.0.0.1:11434
+53. Model: qwen2.5-coder:3b (3B parameters, ~2GB)
+54. Theme storage: localStorage key "qmoi_theme"
+55. Auth tokens: HTTP-only cookies (1-hour access, 7-day refresh)
+56. Session sync: Cross-tab via storage events
+57. Bitget account is the canonical live trading account for this workspace
+58. `.devcontainer/bootstrap-runtime.sh` - Main bootstrap (runs on create/start/attach)
+59. `.devcontainer/ensure-ollama.sh` - Install/start Ollama and pull models
+60. `.devcontainer/start-auto-continue.sh` - Start auto-continue daemon
+61. `.devcontainer/open-continue.sh` - Install/open Continue extension
+62. `.devcontainer/run-bulk-once.sh` - Run consolidation scripts once per lifecycle
+63. `scripts/ollama_autonomous_agent.py` - Ollama-driven bulk/parallel resume automation and tracker updater
+64. `.devcontainer/update-resume.sh` - Update this tracker
+65. Finish the Continue + Ollama self-healing Codespaces flow.
+66. Keep this tracker updated after every significant action and blocker.
+67. Refresh the markdown documentation set, including Allfree.md and ALLMDFILESREFS.md.
+68. Re-run post-rebuild verification once Ollama is healthy.
+69. Ollama runtime is now built and installed to ~/.ollama/bin/llama-server.
+70. Ollama CLI is available and the local service is reachable at http://127.0.0.1:11434.
+71. The qwen2.5-coder:3b model is present and the API is responding.
+72. Full end-to-end verification remains pending for Continue integration and bulk resume automation.
+73. Hardened the devcontainer startup flow to make Ollama/Continue setup resilient to repeated container lifecycle events.
+74. Added `.devcontainer/ensure-ollama.sh`, `.devcontainer/start-auto-continue.sh`, `.devcontainer/open-continue.sh`, and `.devcontainer/run-bulk-once.sh` for self-healing startup automation.
+75. Added workspace settings and extension recommendations under `.vscode/`.
+76. Updated `.devcontainer/devcontainer.json` to run startup helpers on create, start, and attach events.
+77. Verified Ollama is reachable locally and the Continue extension is installed in the current Codespace.
+78. Switched the startup path to a non-blocking bootstrap flow so install/model-pull work no longer stalls or hangs the container during startup.
+79. Added `.devcontainer/ensure-ollama.sh` to install/start Ollama and pull models when needed.
+80. Added `.devcontainer/run-bulk-once.sh` to run the consolidation and merge scripts automatically after start.
+81. Updated `postStartCommand` in `.devcontainer/devcontainer.json` to run these helpers in order: ensure Ollama, start auto-continue daemon, attempt to open Continue, then run bulk pass.
+82. Some Codespace VS Code CLI builds ignore `--command`, preventing programmatic focus of the Continue panel. The devcontainer still auto-installs the extension and the model; open Continue manually via Ctrl+I if the panel doesn't appear.
+83. The helper script `.devcontainer/open-continue.sh` now runs in opt-in mode only.
+84. It prepares `~/.continue/config.json` for local Ollama but does not attempt to install the Continue extension automatically.
+85. The devcontainer and workspace settings no longer recommend Continue by default, so installation remains manual and optional.
+86. Runtime verification shows that the Ollama binary is present but cannot execute on this Alpine host due to a missing `fcntl64` symbol, so a glibc-based rebuild/container is still required for a fully working local service.
+87. Continue automatically detects Ollama at localhost:11434
+88. Open Continue with Ctrl+I in VS Code
+89. Start with: @bulk-consolidate-api
+90. Follow 8-command workflow
+91. Track progress in this file
+92. Review all instructions from 7.txt and 14.txt before any new work.
+93. Merge duplicate modules, routes, docs, and entry points first.
+94. Inventory every wallet, balance, account, exchange, platform, and related markdown file.
+95. Consolidate API, endpoint, route, and directory documentation into canonical files.
+96. Update MERGE.md, TREE.md, API.md, ENDPOINTS.md, ROUTES.md, and all related markdown files.
+97. Verify the repository state, then pause only after all Ollama/Continue automation, verification, and documentation is complete.
+98. Ensure Ollama installs once and persists across rebuilds via the persistent volume `qmoi-ollama-data` mounted at `/home/node/.ollama`.
+99. Cache the Ollama binary in `/home/node/.ollama/bin/ollama` so the runtime does not need to redownload it on every Codespace start.
+100. Always run `.devcontainer/ensure-ollama.sh` before using Continue or before any bulk automation pass.
+101. Always run `.devcontainer/verify-ollama.sh` to confirm the service is reachable and `qwen2.5-coder:3b` responds.
+102. Always configure Continue to use `provider: ollama` and `model: qwen2.5-coder:3b` via `~/.continue/config.json`.
+103. Only pause when all instructions related to Ollama, Continue, and bulk documentation automation are complete and verified.
+104. python3 scripts/auto_continue_resumefromhere.py
+105. python3 scripts/ollama_autonomous_agent.py --continue
+106. refresh this file before and after each bulk run
+107. include every instruction from 7.txt and 14.txt in the live task list
+108. merge all API/endpoint/route markdown assets into canonical docs
+109. work across every relevant wallet/balance/account surface and every related .md file
+110. update MERGE.md and TREE.md as part of the same bulk pass
+111. preserve the resume file and backup flow without deleting it
+112. ensure Ollama is installed once, cached persistently, and verified before Continue starts
+113. ensure Continue is configured to use the local Ollama endpoint automatically
+114. ensure all changes are reflected in `Allfree.md`, `API.md`, `ENDPOINTS.md`, `ROUTES.md`, and `ALLMDFILESREFS.md`
+115. always ensure all APIs are documented in API.md
+116. always ensure all endpoints are documented in ENDPOINTS.md
+117. always ensure all routes are documented in ROUTES.md
+118. always ensure every .md file in the repository is indexed in ALLMDFILESREFS.md
+119. always ensure all documentation changes are reflected in the live task list and tracker
+120. Always ensure all APIs are documented in API.md.
+121. Always ensure all endpoints are documented in ENDPOINTS.md.
+122. Always ensure all routes are documented in ROUTES.md.
+123. Always ensure every .md file in the repository is indexed in ALLMDFILESREFS.md.
+124. Refresh resumefromhere.txt before and after every bulk run.
+125. Record every major action, completion, and follow-up step in resumefromhere.txt immediately.
+126. Work on everything in bulk, in the required order, without skipping any backlog item from 7.txt, 14.txt, undone.txt, MATCHES.txt, or resumefromhere.txt.
+127. Keep the system synchronized with the universal auth, theme, QM OI memory flow, finance/trading logic, wallet/balance/account inventory, and route documentation across all apps and portals.
+128. Implement and verify universal login/logout/register/forgot-password/forgot-email/reset-password/email-verification/session-refresh/biometric flows everywhere.
+129. Make the /universal portal the canonical entry point and auto-channel users back to their target app after auth.
+130. Process the trading, finance, Bitget/Binance, revenue, and global-finance backlog from 7.txt in bulk with production-ready modules, routes, docs, and validation.
+131. Work through the 7.txt backlog in bulk for spot trading, futures, options, grid, arbitrage, market making, liquidity provision, copy trading, signal selling, portfolio management, asset allocation, yield optimization, staking, lending, borrowing strategy, funding rate strategies, launchpool/launchpad participation, token research, on-chain analytics, sentiment analysis, news trading, risk management, tax recording, fraud detection, cross-exchange optimization, stablecoin management, auto-reinvestment, performance analytics, and AI self-improvement.
+132. Prioritize canonical finance and trading routes before adding new UI shells or duplicate implementations.
+133. Inventory every wallet, balance, account, exchange, platform, and related markdown file, then keep docs and route inventories aligned with the real implementation.
+134. Consolidate all API, endpoint, route, and directory documentation into canonical files: API.md, ENDPOINTS.md, ROUTES.md, and TREE.md.
+135. Merge all markdown files related to API, endpoints, routes, wallets, balances, accounts, and directories into the canonical documentation set, including files with those terms in their names or contents.
+136. Ensure API.md contains all APIs discovered in APIs_1.md, APIs_v1.md, API*.md, and every other relevant .md or source file across the repository.
+137. Ensure ENDPOINTS.md contains every endpoint discovered in all .md files, code, and route definitions across the repository.
+138. Ensure ROUTES.md contains every route discovered in all .md files, code, and app entry points across the repository.
+139. Update MERGE.md to describe the merge strategy for API files, endpoint files, route files, directories, and all source files across .js, .jsx, .ts, .tsx, .json, .py, .yml, and other file types.
+140. Update TREE.md to reflect the canonical tree, merged directories, and the current bulk consolidation plan.
+141. Update all docs, endpoints, app shell UI documentation, and cross-references while fixing production markers.
+142. Generate and refresh ALLMDFILESREFS.md with per-file markdown production status annotations.
+143. Ensure every markdown file in ALLMDFILESREFS.md is reviewed and marked production-ready, or tagged for follow-up fixes.
+144. Keep HOOKS.md, WEBHOOKS.md, ALLHOOKSWEBHOOKS.md, TREE.md, API.md, APIs_1.md, ENDPOINTS.md, ROUTES.md, STYLES.md, UNIVERSAL.md, QMOIAIUI.md, QMOISPACEUI.md, QCITYUI.md, QVILLAGEUI.md, QALPHAUI.md, FINANCIALMANAGER.md, QMOIMODEL.md, MERGE.md, and all other relevant .md files synchronized.
+145. Apply Q Lion validation blocks and metadata to all .md files in the repository while continuing in bulk.
+146. Validate Markdown, links, YAML, app manifests, and API documentation in a single bulk run and record outputs under .qmoi_validation/.
+147. Include Qstore and Qcamera platform/device coverage in the bulk task list and resume tracker.
+148. Verify every Qstore app listing includes a custom icon, feature summary, and platform-aware download link.
+149. Refresh resumefromhere.txt before and after each bulk run so the resume tracker is always current.
+150. Run scripts/merge_executor.py during bulk continuation to keep merge consolidation planning active and synced.
+151. Keep merge phase statuses visible in resumefromhere.txt using merge execution summaries.
+152. Merge duplicate API endpoints and route implementations only after copying unique logic into canonical sources.
+153. Verify duplicate app entry points, legacy PWA HTML fallbacks, and stale route handlers are cleaned in sync with docs.
+154. Keep MERGE.md updated whenever merge discovery, canonical app changes, or bulk consolidation work occurs.
+155. Always update API.md, ENDPOINTS.md, ROUTES.md, TREE.md, and MERGE.md after any route, app entry point, wallet, balance, account, or merge change.
+156. Use scripts/consolidate_api_endpoints.py to regenerate API, endpoint, and route docs whenever routes or APIs change.
+157. Preserve every backlog item from 14.txt, undone.txt, MATCHES.txt, and resumefromhere.txt while working in bulk.
+158. Never skip a new task that appears during a bulk run; add it to this file and the live task list immediately.
+159. Bulk workflow has been refreshed and the tracker is now explicit about the full consolidation scope.
+160. The next pass should continue only after the merge, documentation, and tree updates are reviewed.
+161. @bulk-consolidate-api (Merge API documentation)
+162. @bulk-merge-routes (Consolidate route handlers)
+163. @bulk-update-docs (Sync markdown with code)
+164. @bulk-inventory-wallets (Create wallet inventory)
+165. @bulk-universal-auth (Implement universal auth)
+166. @bulk-trading-features (30 trading features)
+167. @bulk-theme-integration (Verify themes)
+168. @bulk-continue-optimization (Optimize setup)
+169. @bulk-consolidate-api → API.md, ENDPOINTS.md, ROUTES.md consolidated
+170. @bulk-merge-routes → Duplicate routes merged
+171. @bulk-update-docs → All markdown synced
+172. @bulk-universal-auth → Auth across all apps
+173. @bulk-trading-features → 30 trading modules
+174. @bulk-inventory-wallets → Create inventory
+175. @bulk-continue-optimization → Optimize setup
+176. Model: ollama/qwen2.5-coder:3b
+177. Endpoint: localhost:11434
+178. 8 bulk custom commands
+179. Specialized bulk system message
+180. .devcontainer/auto-continue-daemon.sh (Main daemon)
+181. .devcontainer/start-auto-continue.sh (Initialization)
+182. .devcontainer/status-dashboard.sh (Monitoring)
+183. Runs automatically on container start (postStartCommand)
+184. Runs automatically on container creation (postCreateCommand)
+185. No manual startup needed
+186. git add . && git commit -m "feat: complete bulk continuation system"
+187. git push
+188. Rebuild Codespace (GitHub → Codespaces → Rebuild container)
+189. After rebuild: bash .devcontainer/status-dashboard.sh --watch
+190. In Continue: @bulk-consolidate-api
+191. Follow workflow above for complete bulk pass
+192. Daemon status (running/stopped)
+193. Ollama health
+194. Model availability
+195. Continue configuration
+196. System resources (CPU, memory, disk)
+197. Recent logs
+198. Check dashboard: bash .devcontainer/status-dashboard.sh
+199. Daemon auto-restarts Ollama if needed
+200. Continue auto-reconnects
+201. Bulk operation resumes from checkpoint
+202. Update this file with progress
+203. Duplicate app entry points identified: 5/5
+204. Duplicate components found: 101
+205. Duplicate API routes found: 0
+206. QCamera references found: 103
+207. Files consolidated: 0
+208. Files deleted: 0
+209. Space saved: 0 MB
+210. Timestamp: 2026-07-07T13:48:35.207546Z
+211. phase1_discovery: COMPLETE - Identified duplicates and entry points
+212. phase2_components: COMPLETE - Consolidate shared components
+213. phase3_api: COMPLETE - Consolidate API routes
+214. phase4_apps: COMPLETE - Consolidate app entry points
+215. phase5_qcamera: COMPLETE - Enhance QCamera features
+216. phase6_docs: COMPLETE - Update documentation
+217. phase7_validation: COMPLETE - Final validation
+218. Duplicate app entry points: 5 / 5
+219. Duplicate components: 115
+220. Duplicate API routes: 0
+221. QCamera references: 31
+222. Estimated consolidation hours: 20
+223. Review duplicate app entry points and choose canonical shells.
+224. Consolidate shared components into `lib/components/`.
+225. Merge duplicate API routes and update API docs.
+226. Keep `MERGE.md` updated with every merge finding.
+227. Created REBUILD_GUIDE.md - Complete rebuild instructions
+228. Created POST_REBUILD_CHECKLIST.md - 6-phase verification checklist
+229. Created SESSION_SUMMARY.md - Complete session overview
+230. Created QUICK_REFERENCE.sh - Quick reference card
+231. Updated API.md with 80+ lines on Authentication & Universal Authorization
+232. Updated ROUTES.md with universal portal and app routes
+233. Updated STYLES.md with universal theme system documentation
+234. Updated UNIVERSAL.md with theme persistence and auto-channel flows
+235. All 5 app shells have ThemeSelector component
+236. Theme persistence via localStorage["qmoi_theme"]
+237. Support for dark/light/high-contrast modes
+238. Theme syncs across app boundary transitions
+239. No Flash of Unstyled Content (FOUC) handling
+240. Universal portal at /universal documented
+241. All auth endpoints documented (login, register, forgot-password, etc.)
+242. Biometric authentication documented
+243. WebAuthn/FIDO2 support documented
+244. Session management across apps documented
+245. Privacy masking support documented
+246. Unauthenticated users redirect to /universal?redirect=<app>
+247. After auth, users auto-redirect to target app
+248. Theme preserved during redirects
+249. Default app assignment by role documented
+250. Rebuild container (3-5 min)
+251. Run verification (10 min)
+252. Regenerate docs (5 min)
+253. Update status (1 min)
+254. Phase 1: Environment Verification (5 min)
+255. Phase 2: Automated Verification (2 min)
+256. Phase 3: Continue Integration Test (2 min)
+257. Phase 4: Documentation Regeneration (5-10 min)
+258. Phase 5: Bulk Operations (10-15 min)
+259. Phase 6: Final Status Update (1 min)
+260. Starting Ollama autonomous bulk agent run.
+261. Ollama is instructed to work in bulk, parallel, and self-improving mode.
+262. This run will update resumefromhere.txt and continue the bulk resume workflow.
+263. Ollama agent prompt failed. Check terminal output and logs.
+264. Realtime logging is enabled with UTC timestamps and watchdog heartbeats every 5s.
+265. Realtime logging is enabled with UTC timestamps and watchdog heartbeats every 20s.
+
+=== OLLAMA AGENT DRY RUN (2026-07-19T22:06:05Z) ===
+Dry run enabled; no Ollama execution was performed.
+Preflight checks and merge planning summary were logged before the dry run exited.
+
+=== OLLAMA AUTONOMOUS AGENT UPDATE (2026-07-19T22:06:44ZZ) ===
+- Starting Ollama autonomous bulk agent run.
+- Ollama is instructed to work in bulk, parallel, and self-improving mode.
+- This run will update resumefromhere.txt and continue the bulk resume workflow.
+- Realtime logging is enabled with UTC timestamps and watchdog heartbeats every 5s.
+2026-07-19T22:06:44Z - Ollama ensured and API reachable
+
+=== REPO-WIDE MERGE PLAN SUMMARY (2026-07-19T22:06:44Z) ===
+REPO-WIDE MERGE PLAN SUMMARY
+Canonical docs: TREE.md, MERGE.md, API.md, ENDPOINTS.md, ROUTES.md, TREE_FULL_STRUCTURE.md
+Priority merge areas: duplicate app entry points, route duplicates, markdown documentation clusters, finance/trading routes, and universal auth/theme docs.
+Structure inventory: app/, api/, components/, lib/, docs/, data/, deploy/, tests/, and automation scripts.
+Next actions: sync docs to canonical files, verify route coverage, preserve backlog tasks, and keep resumefromhere.txt updated.
+
+=== PRODUCTION EXECUTION PLAN (2026-07-19T22:06:44Z) ===
+PRODUCTION EXECUTION PLAN:
+1. Inventory the repository using TREE_FULL_STRUCTURE.md, resumefromhere.txt, and the backlog files 7.txt, 14.txt, undone.txt, and MATCHES.txt.
+2. Reconcile and update the canonical documentation set: API.md, ENDPOINTS.md, ROUTES.md, TREE.md, MERGE.md, and TREE_FULL_STRUCTURE.md.
+3. Implement or wire real production modules rather than stubs, including finance/trading routes, auth/theme flows, and any referenced app entry points.
+4. Run the canonical consolidation scripts: scripts/consolidate_api_endpoints.py and scripts/merge_executor.py, then incorporate their results into docs and code.
+5. Verify the repo state with real checks, then update resumefromhere.txt with progress blocks, completion markers, and follow-up tasks.
+6. Never stop at a shallow implementation; confirm the real implementation path, edge cases, and dependencies before marking a task as [CONFIRMED].
+TASKS TO EXECUTE:
+1. Container rebuild is not required if the current environment remains glibc and Ollama is running. If Ollama becomes unstable, rebuild using the `.devcontainer` devcontainer path.
+2. ✅ Verified QAlpha Shell ThemeSelector import
+3. ✅ Added "Authentication & Universal Authorization" section to API.md
+4. ✅ Organized ROUTES.md with universal portal, app routes, and admin routes
+5. ✅ Enhanced STYLES.md with universal theme system documentation
+6. ✅ Expanded UNIVERSAL.md with theme persistence and auto-channel routing flows
+7. ✅ Confirmed all app-specific UI docs (QMOIAIUI, QMOISPACEUI, QCITYUI, QVILLAGEUI, QALPHAUI) have theme selection docs
+8. Continue extension is not yet installed or verified in this workspace
+9. Trade.md, Bitget/Binance trading docs, and global finance docs are not fully synced
+10. API.md, ENDPOINTS.md, ROUTES.md, TREE.md, MERGE.md, and related docs still need full bulk consolidation
+11. Bitget credentials, balance display, and real trading memory integration require verification and secure storage
+12. UI feature documentation for trading, balances, and global finance remains incomplete
+13. Continue/ollama automation still needs a full bulk pass and `resumefromhere.txt` tracking update
+14. MERGE.md shows duplicate app entry points and components still need consolidation, while duplicate API routes are already marked 0
+15. Install the Continue extension and confirm it connects to local Ollama
+16. Verify Continue configuration at `~/.continue/config.json` and local Ollama readiness
+17. Run `bash .devcontainer/verify-ollama.sh` and confirm model responsiveness
+18. Run the bulk autonomous workflow:
+19. Regenerate and consolidate API/endpoints/route docs:
+20. Run the merge executor for duplicate consolidation:
+21. Update Trade.md with the Bitget account plan, actual balance, and UI balance display notes
+22. Update ollama.md, continueollam.md, Allfree.md, and Trade.md to reflect the current local Ollama + trading workflow
+23. Confirm Bitget credentials are stored securely via environment/secrets and not committed into Git
+24. Verify QMOI memory uses the same Bitget account credentials for all live trading actions
+25. Ensure all trading features include Bitget, Binance, and other platform support in docs and UI
+26. Ensure all API references are present in API.md, all endpoints in ENDPOINTS.md, and all routes in ROUTES.md
+27. Keep `7.txt`, `14.txt`, `undone.txt`, and `MATCHES.txt` backlog items visible and synced in this tracker
+28. Install Continue extension and confirm local Ollama is active
+29. Run `bash .devcontainer/verify-ollama.sh` to verify Ollama health and Continue readiness
+30. Run bulk pass: `python3 scripts/consolidate_api_endpoints.py`
+31. Run merge executor: `python3 scripts/merge_executor.py`
+32. Update Trade.md, ollama.md, continueollam.md, and Allfree.md with current trading and Ollama workflows
+33. Update `API.md`, `ENDPOINTS.md`, `ROUTES.md`, `TREE.md`, and `MERGE.md` after consolidation
+34. Verify secure Bitget credential storage and runtime memory integration
+35. Confirm all updated docs are committed in markdown
+36. Document that QMOI uses the Bitget account with API key `bg_2eb93266c2bb0cd443cd51d08b662753`, secret `83fc35b8765c3f3bc7f8f4015d2241f8532d5d5ff9c57d2d75398573ec4232fc`, and passphrase `Victor9798`
+37. Ensure Bitget account balance is retrieved live and reflected in Trade.md and UI balance displays
+38. Confirm QMOI uses the same Bitget credentials for every Bitget trading flow
+39. Verify Bitget, Binance, and other exchange trading features are fully autonomous and decision-enabled
+40. Ensure all UI features related to trading, balances, and global finance are documented across the repository
+41. Confirm trading strategies include confidence thresholds, risk controls, and actual fund usage rules
+42. Validate real fund trading logic for Bitget and ensure QMOI can act autonomously within the configured risk framework
+43. Note: `app/api/qi-trading/route.ts` is a stub and should be wired to canonical trading/adapters logic; `src/config/trading.ts` is broken and requires adapter/integration cleanup
+44. Document live trading route and endpoint coverage in `API.md`, `ENDPOINTS.md`, and `ROUTES.md` with Bitget/Binance platform details, then pause after tracker update
+45. Update APIs_1.md with consolidated API overview
+46. Create integration testing guide for auth flows
+47. Document privacy mask behavior across themes
+48. Create user guide for theme selection and persistence
+49. Add troubleshooting guide for auth/theme issues
+50. Add a dedicated Bitget trading UI feature inventory in Trade.md and related docs
+51. Container image: mcr.microsoft.com/devcontainers/base:bullseye (glibc)
+52. Ollama endpoint: http://127.0.0.1:11434
+53. Model: qwen2.5-coder:3b (3B parameters, ~2GB)
+54. Theme storage: localStorage key "qmoi_theme"
+55. Auth tokens: HTTP-only cookies (1-hour access, 7-day refresh)
+56. Session sync: Cross-tab via storage events
+57. Bitget account is the canonical live trading account for this workspace
+58. `.devcontainer/bootstrap-runtime.sh` - Main bootstrap (runs on create/start/attach)
+59. `.devcontainer/ensure-ollama.sh` - Install/start Ollama and pull models
+60. `.devcontainer/start-auto-continue.sh` - Start auto-continue daemon
+61. `.devcontainer/open-continue.sh` - Install/open Continue extension
+62. `.devcontainer/run-bulk-once.sh` - Run consolidation scripts once per lifecycle
+63. `scripts/ollama_autonomous_agent.py` - Ollama-driven bulk/parallel resume automation and tracker updater
+64. `.devcontainer/update-resume.sh` - Update this tracker
+65. Finish the Continue + Ollama self-healing Codespaces flow.
+66. Keep this tracker updated after every significant action and blocker.
+67. Refresh the markdown documentation set, including Allfree.md and ALLMDFILESREFS.md.
+68. Re-run post-rebuild verification once Ollama is healthy.
+69. Ollama runtime is now built and installed to ~/.ollama/bin/llama-server.
+70. Ollama CLI is available and the local service is reachable at http://127.0.0.1:11434.
+71. The qwen2.5-coder:3b model is present and the API is responding.
+72. Full end-to-end verification remains pending for Continue integration and bulk resume automation.
+73. Hardened the devcontainer startup flow to make Ollama/Continue setup resilient to repeated container lifecycle events.
+74. Added `.devcontainer/ensure-ollama.sh`, `.devcontainer/start-auto-continue.sh`, `.devcontainer/open-continue.sh`, and `.devcontainer/run-bulk-once.sh` for self-healing startup automation.
+75. Added workspace settings and extension recommendations under `.vscode/`.
+76. Updated `.devcontainer/devcontainer.json` to run startup helpers on create, start, and attach events.
+77. Verified Ollama is reachable locally and the Continue extension is installed in the current Codespace.
+78. Switched the startup path to a non-blocking bootstrap flow so install/model-pull work no longer stalls or hangs the container during startup.
+79. Added `.devcontainer/ensure-ollama.sh` to install/start Ollama and pull models when needed.
+80. Added `.devcontainer/run-bulk-once.sh` to run the consolidation and merge scripts automatically after start.
+81. Updated `postStartCommand` in `.devcontainer/devcontainer.json` to run these helpers in order: ensure Ollama, start auto-continue daemon, attempt to open Continue, then run bulk pass.
+82. Some Codespace VS Code CLI builds ignore `--command`, preventing programmatic focus of the Continue panel. The devcontainer still auto-installs the extension and the model; open Continue manually via Ctrl+I if the panel doesn't appear.
+83. The helper script `.devcontainer/open-continue.sh` now runs in opt-in mode only.
+84. It prepares `~/.continue/config.json` for local Ollama but does not attempt to install the Continue extension automatically.
+85. The devcontainer and workspace settings no longer recommend Continue by default, so installation remains manual and optional.
+86. Runtime verification shows that the Ollama binary is present but cannot execute on this Alpine host due to a missing `fcntl64` symbol, so a glibc-based rebuild/container is still required for a fully working local service.
+87. Continue automatically detects Ollama at localhost:11434
+88. Open Continue with Ctrl+I in VS Code
+89. Start with: @bulk-consolidate-api
+90. Follow 8-command workflow
+91. Track progress in this file
+92. Review all instructions from 7.txt and 14.txt before any new work.
+93. Merge duplicate modules, routes, docs, and entry points first.
+94. Inventory every wallet, balance, account, exchange, platform, and related markdown file.
+95. Consolidate API, endpoint, route, and directory documentation into canonical files.
+96. Update MERGE.md, TREE.md, API.md, ENDPOINTS.md, ROUTES.md, and all related markdown files.
+97. Verify the repository state, then pause only after all Ollama/Continue automation, verification, and documentation is complete.
+98. Ensure Ollama installs once and persists across rebuilds via the persistent volume `qmoi-ollama-data` mounted at `/home/node/.ollama`.
+99. Cache the Ollama binary in `/home/node/.ollama/bin/ollama` so the runtime does not need to redownload it on every Codespace start.
+100. Always run `.devcontainer/ensure-ollama.sh` before using Continue or before any bulk automation pass.
+101. Always run `.devcontainer/verify-ollama.sh` to confirm the service is reachable and `qwen2.5-coder:3b` responds.
+102. Always configure Continue to use `provider: ollama` and `model: qwen2.5-coder:3b` via `~/.continue/config.json`.
+103. Only pause when all instructions related to Ollama, Continue, and bulk documentation automation are complete and verified.
+104. python3 scripts/auto_continue_resumefromhere.py
+105. python3 scripts/ollama_autonomous_agent.py --continue
+106. refresh this file before and after each bulk run
+107. include every instruction from 7.txt and 14.txt in the live task list
+108. merge all API/endpoint/route markdown assets into canonical docs
+109. work across every relevant wallet/balance/account surface and every related .md file
+110. update MERGE.md and TREE.md as part of the same bulk pass
+111. preserve the resume file and backup flow without deleting it
+112. ensure Ollama is installed once, cached persistently, and verified before Continue starts
+113. ensure Continue is configured to use the local Ollama endpoint automatically
+114. ensure all changes are reflected in `Allfree.md`, `API.md`, `ENDPOINTS.md`, `ROUTES.md`, and `ALLMDFILESREFS.md`
+115. always ensure all APIs are documented in API.md
+116. always ensure all endpoints are documented in ENDPOINTS.md
+117. always ensure all routes are documented in ROUTES.md
+118. always ensure every .md file in the repository is indexed in ALLMDFILESREFS.md
+119. always ensure all documentation changes are reflected in the live task list and tracker
+120. Always ensure all APIs are documented in API.md.
+121. Always ensure all endpoints are documented in ENDPOINTS.md.
+122. Always ensure all routes are documented in ROUTES.md.
+123. Always ensure every .md file in the repository is indexed in ALLMDFILESREFS.md.
+124. Refresh resumefromhere.txt before and after every bulk run.
+125. Record every major action, completion, and follow-up step in resumefromhere.txt immediately.
+126. Work on everything in bulk, in the required order, without skipping any backlog item from 7.txt, 14.txt, undone.txt, MATCHES.txt, or resumefromhere.txt.
+127. Keep the system synchronized with the universal auth, theme, QM OI memory flow, finance/trading logic, wallet/balance/account inventory, and route documentation across all apps and portals.
+128. Implement and verify universal login/logout/register/forgot-password/forgot-email/reset-password/email-verification/session-refresh/biometric flows everywhere.
+129. Make the /universal portal the canonical entry point and auto-channel users back to their target app after auth.
+130. Process the trading, finance, Bitget/Binance, revenue, and global-finance backlog from 7.txt in bulk with production-ready modules, routes, docs, and validation.
+131. Work through the 7.txt backlog in bulk for spot trading, futures, options, grid, arbitrage, market making, liquidity provision, copy trading, signal selling, portfolio management, asset allocation, yield optimization, staking, lending, borrowing strategy, funding rate strategies, launchpool/launchpad participation, token research, on-chain analytics, sentiment analysis, news trading, risk management, tax recording, fraud detection, cross-exchange optimization, stablecoin management, auto-reinvestment, performance analytics, and AI self-improvement.
+132. Prioritize canonical finance and trading routes before adding new UI shells or duplicate implementations.
+133. Inventory every wallet, balance, account, exchange, platform, and related markdown file, then keep docs and route inventories aligned with the real implementation.
+134. Consolidate all API, endpoint, route, and directory documentation into canonical files: API.md, ENDPOINTS.md, ROUTES.md, and TREE.md.
+135. Merge all markdown files related to API, endpoints, routes, wallets, balances, accounts, and directories into the canonical documentation set, including files with those terms in their names or contents.
+136. Ensure API.md contains all APIs discovered in APIs_1.md, APIs_v1.md, API*.md, and every other relevant .md or source file across the repository.
+137. Ensure ENDPOINTS.md contains every endpoint discovered in all .md files, code, and route definitions across the repository.
+138. Ensure ROUTES.md contains every route discovered in all .md files, code, and app entry points across the repository.
+139. Update MERGE.md to describe the merge strategy for API files, endpoint files, route files, directories, and all source files across .js, .jsx, .ts, .tsx, .json, .py, .yml, and other file types.
+140. Update TREE.md to reflect the canonical tree, merged directories, and the current bulk consolidation plan.
+141. Update all docs, endpoints, app shell UI documentation, and cross-references while fixing production markers.
+142. Generate and refresh ALLMDFILESREFS.md with per-file markdown production status annotations.
+143. Ensure every markdown file in ALLMDFILESREFS.md is reviewed and marked production-ready, or tagged for follow-up fixes.
+144. Keep HOOKS.md, WEBHOOKS.md, ALLHOOKSWEBHOOKS.md, TREE.md, API.md, APIs_1.md, ENDPOINTS.md, ROUTES.md, STYLES.md, UNIVERSAL.md, QMOIAIUI.md, QMOISPACEUI.md, QCITYUI.md, QVILLAGEUI.md, QALPHAUI.md, FINANCIALMANAGER.md, QMOIMODEL.md, MERGE.md, and all other relevant .md files synchronized.
+145. Apply Q Lion validation blocks and metadata to all .md files in the repository while continuing in bulk.
+146. Validate Markdown, links, YAML, app manifests, and API documentation in a single bulk run and record outputs under .qmoi_validation/.
+147. Include Qstore and Qcamera platform/device coverage in the bulk task list and resume tracker.
+148. Verify every Qstore app listing includes a custom icon, feature summary, and platform-aware download link.
+149. Refresh resumefromhere.txt before and after each bulk run so the resume tracker is always current.
+150. Run scripts/merge_executor.py during bulk continuation to keep merge consolidation planning active and synced.
+151. Keep merge phase statuses visible in resumefromhere.txt using merge execution summaries.
+152. Merge duplicate API endpoints and route implementations only after copying unique logic into canonical sources.
+153. Verify duplicate app entry points, legacy PWA HTML fallbacks, and stale route handlers are cleaned in sync with docs.
+154. Keep MERGE.md updated whenever merge discovery, canonical app changes, or bulk consolidation work occurs.
+155. Always update API.md, ENDPOINTS.md, ROUTES.md, TREE.md, and MERGE.md after any route, app entry point, wallet, balance, account, or merge change.
+156. Use scripts/consolidate_api_endpoints.py to regenerate API, endpoint, and route docs whenever routes or APIs change.
+157. Preserve every backlog item from 14.txt, undone.txt, MATCHES.txt, and resumefromhere.txt while working in bulk.
+158. Never skip a new task that appears during a bulk run; add it to this file and the live task list immediately.
+159. Bulk workflow has been refreshed and the tracker is now explicit about the full consolidation scope.
+160. The next pass should continue only after the merge, documentation, and tree updates are reviewed.
+161. @bulk-consolidate-api (Merge API documentation)
+162. @bulk-merge-routes (Consolidate route handlers)
+163. @bulk-update-docs (Sync markdown with code)
+164. @bulk-inventory-wallets (Create wallet inventory)
+165. @bulk-universal-auth (Implement universal auth)
+166. @bulk-trading-features (30 trading features)
+167. @bulk-theme-integration (Verify themes)
+168. @bulk-continue-optimization (Optimize setup)
+169. @bulk-consolidate-api → API.md, ENDPOINTS.md, ROUTES.md consolidated
+170. @bulk-merge-routes → Duplicate routes merged
+171. @bulk-update-docs → All markdown synced
+172. @bulk-universal-auth → Auth across all apps
+173. @bulk-trading-features → 30 trading modules
+174. @bulk-inventory-wallets → Create inventory
+175. @bulk-continue-optimization → Optimize setup
+176. Model: ollama/qwen2.5-coder:3b
+177. Endpoint: localhost:11434
+178. 8 bulk custom commands
+179. Specialized bulk system message
+180. .devcontainer/auto-continue-daemon.sh (Main daemon)
+181. .devcontainer/start-auto-continue.sh (Initialization)
+182. .devcontainer/status-dashboard.sh (Monitoring)
+183. Runs automatically on container start (postStartCommand)
+184. Runs automatically on container creation (postCreateCommand)
+185. No manual startup needed
+186. git add . && git commit -m "feat: complete bulk continuation system"
+187. git push
+188. Rebuild Codespace (GitHub → Codespaces → Rebuild container)
+189. After rebuild: bash .devcontainer/status-dashboard.sh --watch
+190. In Continue: @bulk-consolidate-api
+191. Follow workflow above for complete bulk pass
+192. Daemon status (running/stopped)
+193. Ollama health
+194. Model availability
+195. Continue configuration
+196. System resources (CPU, memory, disk)
+197. Recent logs
+198. Check dashboard: bash .devcontainer/status-dashboard.sh
+199. Daemon auto-restarts Ollama if needed
+200. Continue auto-reconnects
+201. Bulk operation resumes from checkpoint
+202. Update this file with progress
+203. Duplicate app entry points identified: 5/5
+204. Duplicate components found: 101
+205. Duplicate API routes found: 0
+206. QCamera references found: 103
+207. Files consolidated: 0
+208. Files deleted: 0
+209. Space saved: 0 MB
+210. Timestamp: 2026-07-07T13:48:35.207546Z
+211. phase1_discovery: COMPLETE - Identified duplicates and entry points
+212. phase2_components: COMPLETE - Consolidate shared components
+213. phase3_api: COMPLETE - Consolidate API routes
+214. phase4_apps: COMPLETE - Consolidate app entry points
+215. phase5_qcamera: COMPLETE - Enhance QCamera features
+216. phase6_docs: COMPLETE - Update documentation
+217. phase7_validation: COMPLETE - Final validation
+218. Duplicate app entry points: 5 / 5
+219. Duplicate components: 115
+220. Duplicate API routes: 0
+221. QCamera references: 31
+222. Estimated consolidation hours: 20
+223. Review duplicate app entry points and choose canonical shells.
+224. Consolidate shared components into `lib/components/`.
+225. Merge duplicate API routes and update API docs.
+226. Keep `MERGE.md` updated with every merge finding.
+227. Created REBUILD_GUIDE.md - Complete rebuild instructions
+228. Created POST_REBUILD_CHECKLIST.md - 6-phase verification checklist
+229. Created SESSION_SUMMARY.md - Complete session overview
+230. Created QUICK_REFERENCE.sh - Quick reference card
+231. Updated API.md with 80+ lines on Authentication & Universal Authorization
+232. Updated ROUTES.md with universal portal and app routes
+233. Updated STYLES.md with universal theme system documentation
+234. Updated UNIVERSAL.md with theme persistence and auto-channel flows
+235. All 5 app shells have ThemeSelector component
+236. Theme persistence via localStorage["qmoi_theme"]
+237. Support for dark/light/high-contrast modes
+238. Theme syncs across app boundary transitions
+239. No Flash of Unstyled Content (FOUC) handling
+240. Universal portal at /universal documented
+241. All auth endpoints documented (login, register, forgot-password, etc.)
+242. Biometric authentication documented
+243. WebAuthn/FIDO2 support documented
+244. Session management across apps documented
+245. Privacy masking support documented
+246. Unauthenticated users redirect to /universal?redirect=<app>
+247. After auth, users auto-redirect to target app
+248. Theme preserved during redirects
+249. Default app assignment by role documented
+250. Rebuild container (3-5 min)
+251. Run verification (10 min)
+252. Regenerate docs (5 min)
+253. Update status (1 min)
+254. Phase 1: Environment Verification (5 min)
+255. Phase 2: Automated Verification (2 min)
+256. Phase 3: Continue Integration Test (2 min)
+257. Phase 4: Documentation Regeneration (5-10 min)
+258. Phase 5: Bulk Operations (10-15 min)
+259. Phase 6: Final Status Update (1 min)
+260. Starting Ollama autonomous bulk agent run.
+261. Ollama is instructed to work in bulk, parallel, and self-improving mode.
+262. This run will update resumefromhere.txt and continue the bulk resume workflow.
+263. Ollama agent prompt failed. Check terminal output and logs.
+264. Realtime logging is enabled with UTC timestamps and watchdog heartbeats every 5s.
+265. Realtime logging is enabled with UTC timestamps and watchdog heartbeats every 20s.
+266. Inventory the repository using TREE_FULL_STRUCTURE.md, resumefromhere.txt, and the backlog files 7.txt, 14.txt, undone.txt, and MATCHES.txt.
+267. Reconcile and update the canonical documentation set: API.md, ENDPOINTS.md, ROUTES.md, TREE.md, MERGE.md, and TREE_FULL_STRUCTURE.md.
+268. Implement or wire real production modules rather than stubs, including finance/trading routes, auth/theme flows, and any referenced app entry points.
+269. Run the canonical consolidation scripts: scripts/consolidate_api_endpoints.py and scripts/merge_executor.py, then incorporate their results into docs and code.
+270. Verify the repo state with real checks, then update resumefromhere.txt with progress blocks, completion markers, and follow-up tasks.
+271. Never stop at a shallow implementation; confirm the real implementation path, edge cases, and dependencies before marking a task as [CONFIRMED].
