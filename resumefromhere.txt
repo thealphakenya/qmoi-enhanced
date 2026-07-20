@@ -39,26 +39,6 @@
 - The inventory should list the highest-priority files that still need work, grouped by area such as docs, tests, hooks, models, and errors.
 - The current scan should be refreshed whenever the repository changes.
 - Current pending inventory:
-- scripts/gitlab-automation.js
-- scripts/gitlab-notification-service.js
-- scripts/host_health_monitor.py
-- scripts/link_autoupdater.py
-- scripts/media_upload_api_example.js
-- scripts/models/qmoi_kernel.py
-- scripts/monitoring/monitoring_dashboard.py
-- scripts/monitoring/performance_monitoring.py
-- scripts/nonprod_scanner.py
-- scripts/ollama_autonomous_agent.py
-- scripts/placeholder_fixer.py
-- scripts/placeholder_scan.py
-- scripts/placeholder_scanner.py
-- scripts/postinstall-verify.js
-- scripts/preinstall-check.js
-- scripts/qcity-device-manager.js
-- scripts/qcity_npm_selfheal.ps1
-- scripts/qcity_npm_selfheal.sh
-- scripts/qmoi-auto-enhancement-system.js
-- scripts/qmoi-cloud-provider.js
 - scripts/qmoi-dashboard.py
 - scripts/qmoi-dev-actions.py
 - scripts/qmoi-enhanced-avatar-system.js
@@ -119,6 +99,26 @@
 - scripts/services/qcity_service.ts
 - scripts/services/role_management.ts
 - scripts/services/self_healing.ts
+- scripts/sync_qmoi_downloads.py
+- scripts/tests/endpoint_gating_test.js
+- scripts/tests/endpoint_gating_test.ts
+- scripts/todo_prod_batch.js
+- scripts/trading/enhanced_trading_system.py
+- scripts/ui/qcity_ui_enhancement.py
+- scripts/update_readme.py
+- scripts/utils/notify_enhancement.py
+- scripts/validate_payment_credentials.js
+- scripts/validate_ui_components.py
+- scripts/verify_and_finalize_done.py
+- scripts/verify_apps.py
+- scripts/wallets/adapter_base.py
+- scripts/wallets/adapters/mpesa_adapter.py
+- scripts/wallets/check_wallets.py
+- scripts/wallets/persist_history.py
+- scripts/whatsapp_verification.py
+- scripts/workspace_audit.py
+- security_proxy.py
+- services/adapters/payments/stripe.ts
 ## QMOI Model Requirements
 - Ensure the qmoi model remains the canonical aggregator model.
 - Keep documentation in QMOIMODEL.md aligned with the actual implementation.
@@ -144,39 +144,39 @@
 
 ## Processing This Run
 
-- [IN PROGRESS] scripts/daemon/README.md
-- [IN PROGRESS] scripts/create_issues_from_audit.py
-- [IN PROGRESS] scripts/collect_todos.js
-- [IN PROGRESS] scripts/create_release_placeholders.py
-- [IN PROGRESS] scripts/daemon/qmoi_daemon.py
-- [IN PROGRESS] scripts/create_dns_issues_using_pr.py
-- [IN PROGRESS] scripts/create_pr_and_issues.py
-- [IN PROGRESS] scripts/demo-automation.js
-- [IN PROGRESS] scripts/dev-placeholder.js
-- [IN PROGRESS] scripts/financial_verification.py
-- [IN PROGRESS] scripts/ensure-files.js
-- [IN PROGRESS] scripts/deploy_huggingface.js
-- [IN PROGRESS] scripts/downloadqmoiai.py
-- [IN PROGRESS] scripts/device_ownership_detector.py
-- [IN PROGRESS] scripts/doc_verifier.py
-- [IN PROGRESS] scripts/enhance_ai.py
-- [IN PROGRESS] scripts/fix_removed_placeholders_batch.py
-- [IN PROGRESS] scripts/generate_app_metadata.py
-- [IN PROGRESS] scripts/generate_issue_drafts_for_removed.py
-- [IN PROGRESS] scripts/generate_real_apps.py
+- [IN PROGRESS] scripts/gitlab-automation.js
+- [IN PROGRESS] scripts/host_health_monitor.py
+- [IN PROGRESS] scripts/models/qmoi_kernel.py
+- [IN PROGRESS] scripts/media_upload_api_example.js
+- [IN PROGRESS] scripts/gitlab-notification-service.js
+- [IN PROGRESS] scripts/monitoring/performance_monitoring.py
+- [IN PROGRESS] scripts/monitoring/monitoring_dashboard.py
+- [IN PROGRESS] scripts/link_autoupdater.py
+- [IN PROGRESS] scripts/nonprod_scanner.py
+- [IN PROGRESS] scripts/placeholder_scan.py
+- [IN PROGRESS] scripts/placeholder_fixer.py
+- [IN PROGRESS] scripts/placeholder_scanner.py
+- [IN PROGRESS] scripts/ollama_autonomous_agent.py
+- [IN PROGRESS] scripts/postinstall-verify.js
+- [IN PROGRESS] scripts/qcity_npm_selfheal.ps1
+- [IN PROGRESS] scripts/qcity-device-manager.js
+- [IN PROGRESS] scripts/preinstall-check.js
+- [IN PROGRESS] scripts/qcity_npm_selfheal.sh
+- [IN PROGRESS] scripts/qmoi-cloud-provider.js
+- [IN PROGRESS] scripts/qmoi-auto-enhancement-system.js
 
 
 ## Last Ollama Run
-- Timestamp: 2026-07-20T02:08:07.441009Z
-- Iteration: 8
-- Status: skipped
+- Timestamp: 2026-07-20T02:13:26.748834Z
+- Iteration: 9
+- Status: failed
 - Processed this run: 20
 - Updated files this run: 20
 - Failed items: 0
 - Missing preflight: TREE_FULL_STRUCTURE.md
-- Backup: /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260720T020807Z.bak
-- Error log: /workspaces/qmoi-enhanced/ALLERRORS.md
-- Notification feed: /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
+- Backup: /home/runner/work/qmoi-enhanced/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260720T021326Z.bak
+- Error log: /home/runner/work/qmoi-enhanced/qmoi-enhanced/ALLERRORS.md
+- Notification feed: /home/runner/work/qmoi-enhanced/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
 - Verification: {
   "python": {
     "status": "failed",
@@ -184,32 +184,32 @@
   },
   "tests": {
     "status": "failed",
-    "output": "\n==================================== ERRORS ====================================\n__________________ ERROR collecting tests/api/test_health.py ___________________\nImportError while importing test module '/workspaces/qmoi-enhanced/tests/api/test_health.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/python/3.11.15/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/api/test_health.py:1: in <module>\n    import requests\nE   ModuleNotFoundError: No module named 'requests'\n______ ERROR collecting tests/integration/test_financial_verification.py _______\nImportError while importing test module '/workspaces/qmoi-enhanced/tests/integration/test_financial_verification.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/python/3.11.15/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/integration/test_financial_verification.py:1: in <module>\n    import requests\nE   ModuleNotFoundError: No module named 'requests'\n__________ ERROR collecting tests/integration/test_qcity_audit_log.py __________\nImportError while importing test module '/workspaces/qmoi-enhanced/tests/integration/test_qcity_audit_log.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/python/3.11.15/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/integration/test_qcity_audit_log.py:1: in <module>\n    import requests\nE   ModuleNotFoundError: No module named 'requests'\n_______ ERROR collecting tests/integration/test_qcity_remote_command.py ________\nImportError while importing test module '/workspaces/qmoi-enhanced/tests/integration/test_qcity_remote_command.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/python/3.11.15/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/integration/test_qcity_remote_command.py:1: in <module>\n    import requests\nE   ModuleNotFoundError: No module named 'requests'\n___________ ERROR collecting tests/integration/test_qcity_status.py ____________\nImportError while importing test module '/workspaces/qmoi-enhanced/tests/integration/test_qcity_status.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/python/3.11.15/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/integration/test_qcity_status.py:1: in <module>\n    import requests\nE   ModuleNotFoundError: No module named 'requests'\n_______ ERROR collecting tests/integration/test_whatsapp_verification.py _______\nImportError while importing test module '/workspaces/qmoi-enhanced/tests/integration/test_whatsapp_verification.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/python/3.11.15/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/integration/test_whatsapp_verification.py:1: in <module>\n    import requests\nE   ModuleNotFoundError: No module named 'requests'\n__________________ ERROR collecting tests/md/test_md_links.py __________________\nImportError while importing test module '/workspaces/qmoi-enhanced/tests/md/test_md_links.py'.\nHint: make sure your test modules/packages have valid Python names.\n"
+    "output": "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python: No module named pytest\n"
   }
 }
-- Log: /home/node/.ollama/logs/ollama_autonomous_agent.log
+- Log: /home/runner/.ollama/logs/ollama_autonomous_agent.log
 - Output summary (truncated):
 
-No Ollama client installed; simulated run.
+HTTPConnectionPool(host='127.0.0.1', port=11434): Max retries exceeded with url: /api/models/qwen2.5-coder:3b/generate (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=11434): Failed to establish a new connection: [Errno 111] Connection refused"))
 
 Updated files:
-- scripts/daemon/README.md
-- scripts/create_issues_from_audit.py
-- scripts/collect_todos.js
-- scripts/create_release_placeholders.py
-- scripts/daemon/qmoi_daemon.py
-- scripts/create_dns_issues_using_pr.py
-- scripts/create_pr_and_issues.py
-- scripts/demo-automation.js
-- scripts/dev-placeholder.js
-- scripts/financial_verification.py
-- scripts/ensure-files.js
-- scripts/deploy_huggingface.js
-- scripts/downloadqmoiai.py
-- scripts/device_ownership_detector.py
-- scripts/doc_verifier.py
-- scripts/enhance_ai.py
-- scripts/fix_removed_placeholders_batch.py
-- scripts/generate_app_metadata.py
-- scripts/generate_issue_drafts_for_removed.py
-- scripts/generate_real_apps.py
+- scripts/gitlab-automation.js
+- scripts/host_health_monitor.py
+- scripts/models/qmoi_kernel.py
+- scripts/media_upload_api_example.js
+- scripts/gitlab-notification-service.js
+- scripts/monitoring/performance_monitoring.py
+- scripts/monitoring/monitoring_dashboard.py
+- scripts/link_autoupdater.py
+- scripts/nonprod_scanner.py
+- scripts/placeholder_scan.py
+- scripts/placeholder_fixer.py
+- scripts/placeholder_scanner.py
+- scripts/ollama_autonomous_agent.py
+- scripts/postinstall-verify.js
+- scripts/qcity_npm_selfheal.ps1
+- scripts/qcity-device-manager.js
+- scripts/preinstall-check.js
+- scripts/qcity_npm_selfheal.sh
+- scripts/qmoi-cloud-provider.js
+- scripts/qmoi-auto-enhancement-system.js
