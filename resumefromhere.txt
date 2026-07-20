@@ -1,0 +1,215 @@
+# Resume from here
+
+## Mission
+- Update this plan first and keep it as the source of truth for all future work.
+- Use Ollama as an autonomous agent that can complete the broadest possible set of tasks reliably.
+- Replace shallow/non-production implementations with stronger production-ready implementations wherever they are found.
+- Ensure all requested documentation, tests, hooks, webhooks, and accessibility features are implemented and verified.
+
+## Execution Order
+1. Update the plan and all required documentation files.
+2. Enhance the autonomous agent workflow and automation scripts.
+3. Implement or improve missing tests, hooks, webhooks, and model orchestration support.
+4. Scan for unfinished work and complete the highest-value tasks quickly.
+5. Fix remaining errors and issues only after the main implementation work is complete.
+
+## Core Directives
+- Always maintain a double-mark workflow: first mark when a task is done, second mark after independent verification.
+- Always add missing tests, hooks, and webhooks when implementing new functionality.
+- Always update ALLTESTSAUOTOTESTS.md and ALLHOOKSWEBHOOKS.md whenever automation or integration changes are made.
+- Always keep documentation production-ready and aligned with implementation reality.
+- Always surface unresolved issues in ALLERRORS.md and keep the logs current.
+
+## Ollama Agent Instructions
+- When the task scope is large, break it into phases and work through them in a reliable order.
+- Prioritize reliability, correctness, and verification over speed alone.
+- Use batch operations where possible and parallelize independent work when safe.
+- Scan the entire repository tree for files, scripts, docs, configs, hooks, webhooks, and tests before claiming the work is complete.
+- Never miss files because the scan is limited to one extension or one directory.
+- When encountering non-production implementations, replace them with production-ready versions that are observable and testable.
+- For accessibility, ensure the experience is compatible with multiple disability profiles and universal interaction modes.
+- For model work, keep the canonical model name as qmoi and ensure its behavior is consistent and documented.
+- Always update resumefromhere.txt with the current full plan before and after execution so it remains the source of truth.
+- Always keep ALLTESTSAUOTOTESTS.md, ALLHOOKSWEBHOOKS.md, ALLERRORS.md, QMOIMODEL.md, QMOIMODELTESTS.md, MATCHES.md, API.md, ENDPOINTS.md, ROUTES.md, and MERGE.md synchronized with the current implementation.
+- Treat the agent as a production-only operator: never stop early, never leave pending tasks unexplained, and keep auto-push and auto-merge enabled whenever repository credentials are available.
+- Ensure every GitHub-backed run reflects in the current codespace and any open workspace by updating shared manifests and the resume plan immediately.
+
+## Repository Scan Inventory
+- The agent must record the current pending inventory in this file after every scan.
+- The inventory should list the highest-priority files that still need work, grouped by area such as docs, tests, hooks, models, and errors.
+- The current scan should be refreshed whenever the repository changes.
+- Current pending inventory:
+- scripts/gitlab-automation.js
+- scripts/gitlab-notification-service.js
+- scripts/host_health_monitor.py
+- scripts/link_autoupdater.py
+- scripts/media_upload_api_example.js
+- scripts/models/qmoi_kernel.py
+- scripts/monitoring/monitoring_dashboard.py
+- scripts/monitoring/performance_monitoring.py
+- scripts/nonprod_scanner.py
+- scripts/ollama_autonomous_agent.py
+- scripts/placeholder_fixer.py
+- scripts/placeholder_scan.py
+- scripts/placeholder_scanner.py
+- scripts/postinstall-verify.js
+- scripts/preinstall-check.js
+- scripts/qcity-device-manager.js
+- scripts/qcity_npm_selfheal.ps1
+- scripts/qcity_npm_selfheal.sh
+- scripts/qmoi-auto-enhancement-system.js
+- scripts/qmoi-cloud-provider.js
+- scripts/qmoi-dashboard.py
+- scripts/qmoi-dev-actions.py
+- scripts/qmoi-enhanced-avatar-system.js
+- scripts/qmoi-enhanced-health-checker.py
+- scripts/qmoi-hf-test.py
+- scripts/qmoi-hot-reload.js
+- scripts/qmoi-huggingface-manager.js
+- scripts/qmoi-master-system.js
+- scripts/qmoi-mobile-auto-selfheal.js
+- scripts/qmoi-package-installer.py
+- scripts/qmoi-parallel-processor.py
+- scripts/qmoi-platform-manager.py
+- scripts/qmoi-research-engine.py
+- scripts/qmoi-revenue-enforcer.js
+- scripts/qmoi-secret-generator.js
+- scripts/qmoi-space-backend.py
+- scripts/qmoi-start.py
+- scripts/qmoi-ultimate-automation.py
+- scripts/qmoi-unified-push-ultimate.py
+- scripts/qmoi_advanced_analytics.py
+- scripts/qmoi_app_builder.py
+- scripts/qmoi_app_installer.py
+- scripts/qmoi_auto_app_delivery.py
+- scripts/qmoi_auto_ci_runner.sh
+- scripts/qmoi_auto_evolution_system.py
+- scripts/qmoi_auto_fix_enhanced.py
+- scripts/qmoi_auto_watcher.js
+- scripts/qmoi_cloud_integration_enhanced.py
+- scripts/qmoi_data_optimization_system.py
+- scripts/qmoi_doc_verifier.js
+- scripts/qmoi_enhanced_ai.py
+- scripts/qmoi_enhanced_automation.py
+- scripts/qmoi_env_manager.js
+- scripts/qmoi_generate_env.sh
+- scripts/qmoi_hf_auto_manager.py
+- scripts/qmoi_intelligent_scheduler.py
+- scripts/qmoi_master_website_automation.js
+- scripts/qmoi_model_enhancer.py
+- scripts/qmoi_notification_manager.py
+- scripts/qmoi_payment_fix.js
+- scripts/qmoi_security_monitor.py
+- scripts/qmoi_self_evolve.py
+- scripts/qmoi_self_test_runner.js
+- scripts/qmoi_todos.py
+- scripts/qserver-download-tester.py
+- scripts/replace_placeholders.py
+- scripts/restore_release_assets.py
+- scripts/run_placeholder_scans.py
+- scripts/run_validations.py
+- scripts/scan_and_index.py
+- scripts/scan_placeholders.py
+- scripts/scan_replace_placeholders.py
+- scripts/services/analytics_optimization.ts
+- scripts/services/asset_generation.ts
+- scripts/services/localization_service.ts
+- scripts/services/platform_discovery.ts
+- scripts/services/platform_integrations.ts
+- scripts/services/qcity_service.ts
+- scripts/services/role_management.ts
+- scripts/services/self_healing.ts
+## QMOI Model Requirements
+- Ensure the qmoi model remains the canonical aggregator model.
+- Keep documentation in QMOIMODEL.md aligned with the actual implementation.
+- Ensure tests cover override safety, model identity, and resilience.
+
+## Universal Accessibility Requirements
+- Ensure QMOIFORALL.md is implemented in a practical way across the supported apps and platforms.
+- Support multiple disability profiles and universal access patterns, including screen-reader, voice, haptic, and alternative input flows.
+
+## Documentation and Tracking Requirements
+- Update ollama.md with the current workflow and operating principles.
+- Update MATCHES.md with the important file and workflow relationships used by the agent.
+- Keep ALLERRORS.md updated with error summaries, root causes, and remediation status.
+- Ensure API.md, ENDPOINTS.md, ROUTES.md, and MERGE.md are refreshed on every run so GitHub and every open codespace stay aligned.
+
+## Operational Details
+- Environment: honor `OLLAMA_HOST`, `OLLAMA_MODEL`, and `OLLAMA_TIMEOUT` (seconds, default 600).
+- Logs: `~/.ollama/logs/ollama_autonomous_agent.log` (agent appends run output and errors).
+- Backups: before modifying resumefromhere.txt, the agent creates UTC timestamped backups in `ROOT/.backup/resumefromhere/`.
+- Preflight checks: agent verifies presence of `TREE_FULL_STRUCTURE.md` and other required references before calling Ollama.
+- Timeout and looping: Ollama calls default to 600s; the agent may operate in a loop until the pending inventory is reduced.
+- Streaming: when Ollama supports streaming, agent will stream incremental progress into the log and resumefromhere.txt.
+
+## Processing This Run
+
+- [IN PROGRESS] scripts/daemon/README.md
+- [IN PROGRESS] scripts/create_issues_from_audit.py
+- [IN PROGRESS] scripts/collect_todos.js
+- [IN PROGRESS] scripts/create_release_placeholders.py
+- [IN PROGRESS] scripts/daemon/qmoi_daemon.py
+- [IN PROGRESS] scripts/create_dns_issues_using_pr.py
+- [IN PROGRESS] scripts/create_pr_and_issues.py
+- [IN PROGRESS] scripts/demo-automation.js
+- [IN PROGRESS] scripts/dev-placeholder.js
+- [IN PROGRESS] scripts/financial_verification.py
+- [IN PROGRESS] scripts/ensure-files.js
+- [IN PROGRESS] scripts/deploy_huggingface.js
+- [IN PROGRESS] scripts/downloadqmoiai.py
+- [IN PROGRESS] scripts/device_ownership_detector.py
+- [IN PROGRESS] scripts/doc_verifier.py
+- [IN PROGRESS] scripts/enhance_ai.py
+- [IN PROGRESS] scripts/fix_removed_placeholders_batch.py
+- [IN PROGRESS] scripts/generate_app_metadata.py
+- [IN PROGRESS] scripts/generate_issue_drafts_for_removed.py
+- [IN PROGRESS] scripts/generate_real_apps.py
+
+
+## Last Ollama Run
+- Timestamp: 2026-07-20T02:08:07.441009Z
+- Iteration: 8
+- Status: skipped
+- Processed this run: 20
+- Updated files this run: 20
+- Failed items: 0
+- Missing preflight: TREE_FULL_STRUCTURE.md
+- Backup: /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260720T020807Z.bak
+- Error log: /workspaces/qmoi-enhanced/ALLERRORS.md
+- Notification feed: /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
+- Verification: {
+  "python": {
+    "status": "failed",
+    "output": "*** Error compiling './scripts/lion_feature_enhancer.py'...\nSorry: IndentationError: expected an indented block after 'for' statement on line 70 (lion_feature_enhancer.py, line 70)\n*** Error compiling './scripts/writing_assistant.py'...\n  File \"./scripts/writing_assistant.py\", line 17\n    from __future__ import annotations\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nSyntaxError: from __future__ imports must occur at the beginning of the file\n\n*** Error compiling './tools/link_check.py'...\n  File \"./tools/link_check.py\", line 23\n    URL_RE = re.compile(r\"https?://[^\")\\]\\s]+\", re.IGNORECASE)\n                                        ^\nSyntaxError: unexpected character after line continuation character\n\n*** Error compiling './tools/propose_apply_trivial_fixes.py'...\n  File \"./tools/propose_apply_trivial_fixes.py\", line 19\n    - For each `http://` link, tries `https://` HEAD request. If https returns 2xx/3xx,\n                                                                               ^\nSyntaxError: invalid decimal literal\n\n*** Error compiling './tools/update_resume_todos.py'...\n  File \"./tools/update_resume_todos.py\", line 12\n    git add\n        ^^^\nSyntaxError: invalid syntax\n\n"
+  },
+  "tests": {
+    "status": "failed",
+    "output": "\n==================================== ERRORS ====================================\n__________________ ERROR collecting tests/api/test_health.py ___________________\nImportError while importing test module '/workspaces/qmoi-enhanced/tests/api/test_health.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/python/3.11.15/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/api/test_health.py:1: in <module>\n    import requests\nE   ModuleNotFoundError: No module named 'requests'\n______ ERROR collecting tests/integration/test_financial_verification.py _______\nImportError while importing test module '/workspaces/qmoi-enhanced/tests/integration/test_financial_verification.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/python/3.11.15/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/integration/test_financial_verification.py:1: in <module>\n    import requests\nE   ModuleNotFoundError: No module named 'requests'\n__________ ERROR collecting tests/integration/test_qcity_audit_log.py __________\nImportError while importing test module '/workspaces/qmoi-enhanced/tests/integration/test_qcity_audit_log.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/python/3.11.15/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/integration/test_qcity_audit_log.py:1: in <module>\n    import requests\nE   ModuleNotFoundError: No module named 'requests'\n_______ ERROR collecting tests/integration/test_qcity_remote_command.py ________\nImportError while importing test module '/workspaces/qmoi-enhanced/tests/integration/test_qcity_remote_command.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/python/3.11.15/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/integration/test_qcity_remote_command.py:1: in <module>\n    import requests\nE   ModuleNotFoundError: No module named 'requests'\n___________ ERROR collecting tests/integration/test_qcity_status.py ____________\nImportError while importing test module '/workspaces/qmoi-enhanced/tests/integration/test_qcity_status.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/python/3.11.15/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/integration/test_qcity_status.py:1: in <module>\n    import requests\nE   ModuleNotFoundError: No module named 'requests'\n_______ ERROR collecting tests/integration/test_whatsapp_verification.py _______\nImportError while importing test module '/workspaces/qmoi-enhanced/tests/integration/test_whatsapp_verification.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/usr/local/python/3.11.15/lib/python3.11/importlib/__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/integration/test_whatsapp_verification.py:1: in <module>\n    import requests\nE   ModuleNotFoundError: No module named 'requests'\n__________________ ERROR collecting tests/md/test_md_links.py __________________\nImportError while importing test module '/workspaces/qmoi-enhanced/tests/md/test_md_links.py'.\nHint: make sure your test modules/packages have valid Python names.\n"
+  }
+}
+- Log: /home/node/.ollama/logs/ollama_autonomous_agent.log
+- Output summary (truncated):
+
+No Ollama client installed; simulated run.
+
+Updated files:
+- scripts/daemon/README.md
+- scripts/create_issues_from_audit.py
+- scripts/collect_todos.js
+- scripts/create_release_placeholders.py
+- scripts/daemon/qmoi_daemon.py
+- scripts/create_dns_issues_using_pr.py
+- scripts/create_pr_and_issues.py
+- scripts/demo-automation.js
+- scripts/dev-placeholder.js
+- scripts/financial_verification.py
+- scripts/ensure-files.js
+- scripts/deploy_huggingface.js
+- scripts/downloadqmoiai.py
+- scripts/device_ownership_detector.py
+- scripts/doc_verifier.py
+- scripts/enhance_ai.py
+- scripts/fix_removed_placeholders_batch.py
+- scripts/generate_app_metadata.py
+- scripts/generate_issue_drafts_for_removed.py
+- scripts/generate_real_apps.py

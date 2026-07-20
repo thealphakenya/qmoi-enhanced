@@ -38,6 +38,10 @@ If you are in a restricted environment, open the URL manually after running the 
 
 Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a unified build, automation, deployment, and update pipeline for **QMOI AI** and all **QCity-powered apps** across every platform and device.
 
+## 🤖 Ollama autonomous agent workflow
+
+The repository now includes an enhanced Ollama automation workflow in [scripts/ollama_autonomous_agent.py](scripts/ollama_autonomous_agent.py). It creates and refreshes [resumefromhere.txt](resumefromhere.txt), [Trade.md](Trade.md), [ollama.md](ollama.md), [QMOIMODEL.md](QMOIMODEL.md), [QMOIMODELTESTS.md](QMOIMODELTESTS.md), [ALLTESTSAUOTOTESTS.md](ALLTESTSAUOTOTESTS.md), [ALLHOOKSWEBHOOKS.md](ALLHOOKSWEBHOOKS.md), and [MATCHES.md](MATCHES.md) as part of the automation flow.
+
 ## 🎯 Latest Release
 
 📍 **Release v1.2.3** - November 12, 2025

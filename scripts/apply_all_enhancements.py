@@ -11,6 +11,8 @@ import logging
 import sys
 from pathlib import Path
 
+from scripts.ollama_autonomous_agent import run_agent
+
 # Setup logging
 logging.basicConfig(
     level=logging.INFO,
@@ -18,13 +20,19 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
 async def enhance_all_systems():
     """Apply all system enhancements."""
     try:
+        # Create and refresh the autonomous agent plan first.
+        plan_result = run_agent(Path.cwd())
+        logger.info("Updated resumefromhere and related docs")
+        logger.info(f"Pending implementation candidates: {len(plan_result['pending'])}")
+
         # Import the model enhancer
         from scripts.qmoi_model_enhancer import QmoiModelEnhancer
         enhancer = QmoiModelEnhancer()
-        
+
         # 1. Apply Claude Sonnet integration
         logger.info("Starting Claude Sonnet integration...")
         result = await enhancer.enhance_model("claude_sonnet_integration")
@@ -32,59 +40,61 @@ async def enhance_all_systems():
             logger.info(f"Claude integration complete! Improvement: {result.improvement:.2%}")
         else:
             logger.error("Claude integration failed!")
-            
+
         # 2. Optimize performance
         logger.info("Optimizing performance...")
         result = await enhancer.enhance_model("performance_optimization")
         if result.success:
             logger.info(f"Performance optimization complete! Improvement: {result.improvement:.2%}")
-            
+
         # 3. Enhance accuracy
         logger.info("Enhancing accuracy...")
         result = await enhancer.enhance_model("accuracy_enhancement")
         if result.success:
             logger.info(f"Accuracy enhancement complete! Improvement: {result.improvement:.2%}")
-            
+
         # 4. Optimize memory
         logger.info("Optimizing memory usage...")
         result = await enhancer.enhance_model("memory_optimization")
         if result.success:
             logger.info(f"Memory optimization complete! Improvement: {result.improvement:.2%}")
-            
+
         # 5. Optimize learning
         logger.info("Optimizing learning capabilities...")
         result = await enhancer.enhance_model("learning_optimization")
         if result.success:
             logger.info(f"Learning optimization complete! Improvement: {result.improvement:.2%}")
-            
+
         # 6. Apply architectural evolution
         logger.info("Evolving model architecture...")
         result = await enhancer.enhance_model("architecture_evolution")
         if result.success:
             logger.info(f"Architecture evolution complete! Improvement: {result.improvement:.2%}")
-            
+
         # Get final status
         status = await enhancer.get_model_status()
         logger.info("Enhancement process complete!")
         logger.info(f"Final metrics: {json.dumps(status['current_metrics'], indent=2)}")
-        
+
         return True
-        
+
     except Exception as e:
         logger.error(f"Enhancement process failed: {e}")
         return False
+
 
 async def validate_systems():
     """Run validation on all systems."""
     # Implement system validation here
     return True
 
+
 async def update_documentation():
     """Update all documentation."""
     try:
         docs_dir = Path("docs")
         docs_dir.mkdir(exist_ok=True)
-        
+
         # Update validation docs
         validation_docs = {
             "API_VALIDATION.md": "# API Validation\n\nThis document outlines validation strategies for API endpoints.",
@@ -98,23 +108,24 @@ async def update_documentation():
             "RESOURCE_VALIDATION.md": "# Resource Validation\n\nThis document outlines validation strategies for resources.",
             "SECURITY_VALIDATION.md": "# Security Validation\n\nThis document outlines security validation strategies."
         }
-        
+
         for filename, content in validation_docs.items():
             doc_path = docs_dir / filename
             doc_path.write_text(content)
             logger.info(f"Updated {filename}")
-            
+
         # Clear completed todos
         todos_path = Path("continuetodos.txt")
         if todos_path.exists():
             todos_path.unlink()
             logger.info("Cleared completed todos")
-            
+
         return True
-        
+
     except Exception as e:
         logger.error(f"Documentation update failed: {e}")
         return False
+
 
 async def main():
     """Main entry point."""
@@ -123,20 +134,20 @@ async def main():
         if not await enhance_all_systems():
             logger.error("Enhancement process failed!")
             return 1
-            
+
         # 2. Validate systems
         if not await validate_systems():
             logger.error("Validation failed!")
             return 1
-            
+
         # 3. Update documentation
         if not await update_documentation():
             logger.error("Documentation update failed!")
             return 1
-            
+
         logger.info("All processes completed successfully!")
         return 0
-        
+
     except Exception as e:
         logger.error(f"Process failed: {e}")
         return 1
