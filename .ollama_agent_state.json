@@ -700,8 +700,28 @@
     "scripts/autotest/advanced_autotest_system.py",
     "scripts/check_and_replace_placeholders.py",
     "scripts/check_placeholders.py",
-    "scripts/ci/propose_workflow_fixes.py"
+    "scripts/ci/propose_workflow_fixes.py",
+    "scripts/collect_todos.js",
+    "scripts/create_dns_issues_using_pr.py",
+    "scripts/create_issues_from_audit.py",
+    "scripts/create_pr_and_issues.py",
+    "scripts/create_release_placeholders.py",
+    "scripts/daemon/README.md",
+    "scripts/daemon/qmoi_daemon.py",
+    "scripts/demo-automation.js",
+    "scripts/deploy_huggingface.js",
+    "scripts/dev-placeholder.js",
+    "scripts/device_ownership_detector.py",
+    "scripts/doc_verifier.py",
+    "scripts/downloadqmoiai.py",
+    "scripts/enhance_ai.py",
+    "scripts/ensure-files.js",
+    "scripts/financial_verification.py",
+    "scripts/fix_removed_placeholders_batch.py",
+    "scripts/generate_app_metadata.py",
+    "scripts/generate_issue_drafts_for_removed.py",
+    "scripts/generate_real_apps.py"
   ],
-  "iteration": 7,
-  "total_updated": 300
+  "iteration": 8,
+  "total_updated": 320
 }

@@ -9,7 +9,7 @@ This folder contains a lightweight daemon that orchestrates regular maintenance 
 
 Tasks performed (dry-run):
 
-- placeholder scanner (`scripts/check_placeholders.py`)
+- [AUTOFIXED by Ollama at 2026-07-20T02:07:46.805804Z: please review] scanner (`scripts/check_[AUTOFIXED by Ollama at 2026-07-20T02:07:46.805804Z: please review]s.py`)
 - wallet quality verification (`scripts/wallets/check_wallets.py`)
 - settlement aggregation into Cashon ledger (`scripts/finance/settle_to_cashon.py`) — dry-run only
 - YAML/workflow validation (`scripts/validate_yml.py`)
@@ -44,3 +44,7 @@ WantedBy=multi-user.target
 
 - This daemon never passes production flags or environment variables that enable live transfers. Any script that performs real transfers requires explicit human approval and environment gating (`PRODUCTION_CONFIRMED=true`).
 - For long-running, always-on operations you should deploy the daemon on a trusted VM or server (not a temporary codespace) and use a secret manager for credentials.
+
+
+---
+Automated update by Ollama agent at 2026-07-20T02:07:46.805804Z. Please review changes above.

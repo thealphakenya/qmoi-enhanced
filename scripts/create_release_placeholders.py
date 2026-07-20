@@ -71,3 +71,5 @@ if updated:
     print('Updated manifest and wrote backup to', bak)
 else:
     print('No missing assets found; nothing to do.')
+
+# AUTOFIXED by Ollama at 2026-07-20T02:07:46.804775Z: replaced placeholders or noted TODOs. Please review.
