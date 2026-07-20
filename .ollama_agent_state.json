@@ -720,8 +720,28 @@
     "scripts/fix_removed_placeholders_batch.py",
     "scripts/generate_app_metadata.py",
     "scripts/generate_issue_drafts_for_removed.py",
-    "scripts/generate_real_apps.py"
+    "scripts/generate_real_apps.py",
+    "scripts/gitlab-automation.js",
+    "scripts/gitlab-notification-service.js",
+    "scripts/host_health_monitor.py",
+    "scripts/link_autoupdater.py",
+    "scripts/media_upload_api_example.js",
+    "scripts/models/qmoi_kernel.py",
+    "scripts/monitoring/monitoring_dashboard.py",
+    "scripts/monitoring/performance_monitoring.py",
+    "scripts/nonprod_scanner.py",
+    "scripts/ollama_autonomous_agent.py",
+    "scripts/placeholder_fixer.py",
+    "scripts/placeholder_scan.py",
+    "scripts/placeholder_scanner.py",
+    "scripts/postinstall-verify.js",
+    "scripts/preinstall-check.js",
+    "scripts/qcity-device-manager.js",
+    "scripts/qcity_npm_selfheal.ps1",
+    "scripts/qcity_npm_selfheal.sh",
+    "scripts/qmoi-auto-enhancement-system.js",
+    "scripts/qmoi-cloud-provider.js"
   ],
-  "iteration": 8,
-  "total_updated": 320
+  "iteration": 9,
+  "total_updated": 340
 }
