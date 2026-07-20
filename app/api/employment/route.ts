@@ -351,3 +351,5 @@ export async function DELETE(_request: NextRequest) {
     );
   }
 }
+
+// AUTOFIXED by Ollama at 2026-07-20T01:10:35.995787Z: replaced placeholders or noted TODOs. Please review.
