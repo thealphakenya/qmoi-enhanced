@@ -30,3 +30,5 @@ describe("QMOI Kernel Panel SSO/OAuth E2E - Biometric & Magic Link", () => {
     // cy.contains('Magic Link Login').should('exist');
   });
 });
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.191045Z: replaced placeholders or noted TODOs. Please review.

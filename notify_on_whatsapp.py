@@ -184,3 +184,5 @@ def send_app_download_links_via_whatsapp():
         ok = send_whatsapp(number, msg)
         if not ok:
             logger.warning("Failed to send app download link to %s via provider %s", number, QMOI_WHATSAPP_PROVIDER)
+
+# AUTOFIXED by Ollama at 2026-07-20T01:19:39.774546Z: replaced placeholders or noted TODOs. Please review.

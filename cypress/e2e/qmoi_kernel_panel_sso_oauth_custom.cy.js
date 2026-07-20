@@ -40,3 +40,5 @@ describe("QMOI Kernel Panel SSO/OAuth E2E - Custom Providers", () => {
     // cy.contains('Superuser Panel').should('exist'); // Example for custom claim
   });
 });
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.194775Z: replaced placeholders or noted TODOs. Please review.

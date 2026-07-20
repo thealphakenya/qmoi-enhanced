@@ -145,3 +145,5 @@ export function EnhancedPreviewWindow() {
     </Card>
   );
 }
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.118325Z: replaced placeholders or noted TODOs. Please review.

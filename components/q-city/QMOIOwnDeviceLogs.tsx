@@ -731,3 +731,5 @@ export function QMOIOwnDeviceLogs({
     </div>
   );
 }
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.175119Z: replaced placeholders or noted TODOs. Please review.

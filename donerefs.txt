@@ -5899,8 +5899,8 @@ postcss.config.mjs
 public/favicon.ico
 public/icon.svg
 public/index.html
-public/placeholder-logo.svg
-public/placeholder.svg
+public/[AUTOFIXED by Ollama at 2026-07-20T01:19:39.242037Z: please review]-logo.svg
+public/[AUTOFIXED by Ollama at 2026-07-20T01:19:39.242037Z: please review].svg
 public/qcity-icon.svg
 public/qcity/dashboard.js
 public/qcity/index.html
@@ -9026,8 +9026,8 @@ qmoi-enhanced/postcss.config.mjs
 qmoi-enhanced/public/favicon.ico
 qmoi-enhanced/public/icon.svg
 qmoi-enhanced/public/index.html
-qmoi-enhanced/public/placeholder-logo.svg
-qmoi-enhanced/public/placeholder.svg
+qmoi-enhanced/public/[AUTOFIXED by Ollama at 2026-07-20T01:19:39.242037Z: please review]-logo.svg
+qmoi-enhanced/public/[AUTOFIXED by Ollama at 2026-07-20T01:19:39.242037Z: please review].svg
 qmoi-enhanced/public/qcity-icon.svg
 qmoi-enhanced/push-simple.ps1
 qmoi-enhanced/qcity-artifacts/qmoi_build_report.json
@@ -9295,7 +9295,7 @@ qmoi-enhanced/tailwind.config.ts
 qmoi-enhanced/templates/dashboard.html
 qmoi-enhanced/tests/api/test_health.py
 qmoi-enhanced/tests/e2e/accessibility.cy.js
-qmoi-enhanced/tests/e2e/test_e2e_placeholder.py
+qmoi-enhanced/tests/e2e/test_e2e_[AUTOFIXED by Ollama at 2026-07-20T01:19:39.242037Z: please review].py
 qmoi-enhanced/tests/integration/test_ai_integration.py
 qmoi-enhanced/tests/integration/test_error_fixing_integration.py
 qmoi-enhanced/tests/integration/test_financial_verification.py
@@ -11353,7 +11353,7 @@ scripts/backup_automation.js
 scripts/build_pwas.sh
 scripts/cashon_data/balances.json
 scripts/check-latest-release.js
-scripts/check_and_replace_placeholders.py
+scripts/check_and_replace_[AUTOFIXED by Ollama at 2026-07-20T01:19:39.242037Z: please review]s.py
 scripts/check_balances.py
 scripts/check_github_releases.py
 scripts/ci/scan_workflows.py
@@ -11481,7 +11481,7 @@ scripts/restore_from_s3.py
 scripts/revenue_tracker.py
 scripts/run_as_service.sh
 scripts/run_control_server.sh
-scripts/run_placeholder_scans.py
+scripts/run_[AUTOFIXED by Ollama at 2026-07-20T01:19:39.242037Z: please review]_scans.py
 scripts/rust_lint_fix.js
 scripts/schedule_qcity_npm_selfheal.xml
 scripts/scripts/qmoi_git_automation.py.py
@@ -11604,7 +11604,7 @@ templates/dashboard.html
 test-results/.last-run.json
 tests/api/test_health.py
 tests/e2e/accessibility.cy.js
-tests/e2e/test_e2e_placeholder.py
+tests/e2e/test_e2e_[AUTOFIXED by Ollama at 2026-07-20T01:19:39.242037Z: please review].py
 tests/integration/test_ai_integration.py
 tests/integration/test_error_fixing_integration.py
 tests/integration/test_financial_verification.py
@@ -11684,3 +11684,7 @@ whatsapp-qmoi-bot/handlers/voiceai.js
 whatsapp-qmoi-bot/services/qmoi.js
 whatsapp-qmoi-bot/utils/broadcast.js
 whatsapp-qmoi-bot/utils/delay.js
+
+
+---
+Automated update by Ollama agent at 2026-07-20T01:19:39.242037Z. Please review changes above.

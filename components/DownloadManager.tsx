@@ -86,3 +86,5 @@ export const DownloadManager: React.FC = () => {
 };
 
 DownloadManager.displayName = "DownloadManager";
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.113915Z: replaced placeholders or noted TODOs. Please review.

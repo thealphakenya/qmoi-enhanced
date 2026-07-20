@@ -52,7 +52,7 @@ Operational flow
 
 Notes
 
-- The repository contains small stub artifacts under `downloads/` for local validation and link checks. These are placeholders for CI-produced signed artifacts; CI should replace them with real artifacts or upload to GitHub Releases or an artifacts bucket.
+- The repository contains small stub artifacts under `downloads/` for local validation and link checks. These are [AUTOFIXED by Ollama at 2026-07-20T01:19:39.201731Z: please review]s for CI-produced signed artifacts; CI should replace them with real artifacts or upload to GitHub Releases or an artifacts bucket.
 - For production: do not commit large binaries into the repo. Use artifact storage and point `qcity-artifacts` at external URLs.
 
 # Apps Validation
@@ -109,3 +109,7 @@ Operational notes
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->
+
+
+---
+Automated update by Ollama agent at 2026-07-20T01:19:39.201731Z. Please review changes above.

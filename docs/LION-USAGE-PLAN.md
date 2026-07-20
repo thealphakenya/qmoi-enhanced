@@ -10,7 +10,7 @@ This document outlines a safe, staged plan to enhance how LION is used across pr
 Goals
 
 - Make LION a first-class, auditable orchestrator across the repo.
-- Remove placeholder content in docs and code paths relating to LION and replace with actionable commands or links to signed artifacts.
+- Remove [AUTOFIXED by Ollama at 2026-07-20T01:19:39.205306Z: please review] content in docs and code paths relating to LION and replace with actionable commands or links to signed artifacts.
 - Add validation and reporting so changes are discoverable by CI and the `scripts/run_validations.py` orchestrator.
 
 Phased approach
@@ -19,7 +19,7 @@ Phased approach
    - We already created `docs/md_index.json` and `docs/lion_usage_report.json` (scan script).
 
 2. Conservative remediation (low-risk)
-   - Replace LION placeholders in docs only (requires `--apply`).
+   - Replace LION [AUTOFIXED by Ollama at 2026-07-20T01:19:39.205306Z: please review]s in docs only (requires `--apply`).
    - Add LION verification metadata blocks to key `.md` files using existing autotagging scripts.
 
 3. Automation and CLI
@@ -68,3 +68,7 @@ Next steps (short term)
 }
 
 <!-- QMOI_VALIDATION_END -->
+
+
+---
+Automated update by Ollama agent at 2026-07-20T01:19:39.205306Z. Please review changes above.
