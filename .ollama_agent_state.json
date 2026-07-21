@@ -740,8 +740,28 @@
     "scripts/qcity_npm_selfheal.ps1",
     "scripts/qcity_npm_selfheal.sh",
     "scripts/qmoi-auto-enhancement-system.js",
-    "scripts/qmoi-cloud-provider.js"
+    "scripts/qmoi-cloud-provider.js",
+    "scripts/qmoi-dashboard.py",
+    "scripts/qmoi-dev-actions.py",
+    "scripts/qmoi-enhanced-avatar-system.js",
+    "scripts/qmoi-enhanced-health-checker.py",
+    "scripts/qmoi-hf-test.py",
+    "scripts/qmoi-hot-reload.js",
+    "scripts/qmoi-huggingface-manager.js",
+    "scripts/qmoi-master-system.js",
+    "scripts/qmoi-mobile-auto-selfheal.js",
+    "scripts/qmoi-package-installer.py",
+    "scripts/qmoi-parallel-processor.py",
+    "scripts/qmoi-platform-manager.py",
+    "scripts/qmoi-research-engine.py",
+    "scripts/qmoi-revenue-enforcer.js",
+    "scripts/qmoi-secret-generator.js",
+    "scripts/qmoi-space-backend.py",
+    "scripts/qmoi-start.py",
+    "scripts/qmoi-ultimate-automation.py",
+    "scripts/qmoi-unified-push-ultimate.py",
+    "scripts/qmoi_advanced_analytics.py"
   ],
-  "iteration": 9,
-  "total_updated": 340
+  "iteration": 10,
+  "total_updated": 360
 }
