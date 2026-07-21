@@ -22,8 +22,8 @@ jobs:
   autonomous-agent:
     runs-on: ubuntu-latest
     env:
-      AUTO_PUSH: "0"
-      AUTO_MERGE: "0"
+      AUTO_PUSH: "1"
+      AUTO_MERGE: "1"
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       OLLAMA_TIMEOUT: "600"
       OLLAMA_BATCH_SIZE: "20"
@@ -96,10 +96,10 @@ jobs:
           path: OLLAMA_ACTIVITY_FEED.md
           if-no-files-found: ignore
 
-      - name: Finalize local autonomous state
+      - name: Push autonomous updates
         run: |
           if git status --porcelain | grep .; then
-            git add API.md ENDPOINTS.md ROUTES.md MERGE.md resumefromhere.txt ollama.md ALLTESTSAUOTOTOTESTS.md ALLHOOKSWEBHOOKS.md MATCHES.md ALLERRORS.md OLLAMA_ACTIVITY_FEED.md .ollama_agent_state.json
+            git add API.md ENDPOINTS.md ROUTES.md MERGE.md resumefromhere.txt ollama.md ALLTESTSAUOTOTESTS.md ALLHOOKSWEBHOOKS.md MATCHES.md ALLERRORS.md OLLAMA_ACTIVITY_FEED.md .ollama_agent_state.json
             git commit -m "chore: sync autonomous agent manifests" || true
-            echo "Automatic push disabled; local commit created only."
+            git push || true
           fi

@@ -31,3 +31,7 @@ If you'd like, I can:
 - open a PR from `autosync-links-20251107` with the changes I pushed, including a short PR description and testing notes; or
 - create a separate focused branch to only contain the preflight/start changes and the requirements update; or
 - continue by creating a CI job that runs the full start flow on an `ubuntu-latest` runner with CPU PyTorch wheels to validate end-to-end.
+
+
+---
+Checked by Ollama agent at 2026-07-21T23:24:30.680593Z. No immediate placeholders found.

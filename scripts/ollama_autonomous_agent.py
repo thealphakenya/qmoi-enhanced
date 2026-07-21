@@ -69,7 +69,10 @@ def _emit_status(message: str, level: str = "info") -> None:
     line = f"{prefix} {message}"
     print(line, flush=True)
     getattr(logger, level.lower(), logger.info)(message)
-    _append_runtime_event(message, level=level)
+    try:
+        _append_runtime_event(message, level=level)
+    except Exception:
+        pass
 
 
 def _load_state(target: Path | None = None) -> Dict[str, object]:
@@ -251,6 +254,20 @@ def update_documentation_manifests(
     _append_or_create(docs["endpoints"], "# Endpoint manifest", endpoints_body)
     _append_or_create(docs["routes"], "# Route manifest", routes_body)
     _append_or_create(docs["merge"], "# Merge manifest", merge_body)
+
+    # enrich MERGE.md with detected merge candidates (files with similar base names)
+    try:
+        merge_candidates = collect_merge_inventory(target)
+        if merge_candidates:
+            md = docs["merge"]
+            existing = md.read_text(encoding="utf-8", errors="ignore") if md.exists() else ""
+            if "## Merge Candidates" not in existing:
+                lines = ["\n## Merge Candidates\n"]
+                for g in merge_candidates:
+                    lines.append(f"- Group `{g['group']}`:\n  " + "\n  ".join([f"{p}" for p in g["paths"]]))
+                md.write_text(existing + "\n" + "\n".join(lines) + "\n", encoding="utf-8")
+    except Exception:
+        pass
 
     return docs
 
@@ -682,7 +699,8 @@ def scan_for_work(output_dir: Path | None = None) -> List[str]:
             continue
         if path.name.startswith("."):
             continue
-        if path.suffix.lower() not in scan_patterns and path.name not in {"package.json", "tsconfig.json", "pyproject.toml", "requirements.txt", "setup.py", "Dockerfile", "Makefile"}:
+        name_low = path.name.lower()
+        if path.suffix.lower() not in scan_patterns and name_low not in {"package.json", "tsconfig.json", "pyproject.toml", "requirements.txt", "setup.py", "dockerfile", "makefile"} and ".spec." not in name_low and ".test." not in name_low and not name_low.endswith(".spec"):
             continue
         try:
             text = path.read_text(encoding="utf-8", errors="ignore")
