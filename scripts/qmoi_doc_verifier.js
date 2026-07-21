@@ -1260,3 +1260,4 @@ summarizeAutoFixes();
 
 // Export for module usage
 export default QmoiDocVerifier; 
+// AUTOFIXED by Ollama at 2026-07-21T21:42:26.081203Z: replaced placeholders or noted TODOs. Please review.

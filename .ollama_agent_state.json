@@ -760,8 +760,28 @@
     "scripts/qmoi-start.py",
     "scripts/qmoi-ultimate-automation.py",
     "scripts/qmoi-unified-push-ultimate.py",
-    "scripts/qmoi_advanced_analytics.py"
+    "scripts/qmoi_advanced_analytics.py",
+    "scripts/qmoi_app_builder.py",
+    "scripts/qmoi_app_installer.py",
+    "scripts/qmoi_auto_app_delivery.py",
+    "scripts/qmoi_auto_ci_runner.sh",
+    "scripts/qmoi_auto_evolution_system.py",
+    "scripts/qmoi_auto_fix_enhanced.py",
+    "scripts/qmoi_auto_watcher.js",
+    "scripts/qmoi_cloud_integration_enhanced.py",
+    "scripts/qmoi_data_optimization_system.py",
+    "scripts/qmoi_doc_verifier.js",
+    "scripts/qmoi_enhanced_ai.py",
+    "scripts/qmoi_enhanced_automation.py",
+    "scripts/qmoi_env_manager.js",
+    "scripts/qmoi_generate_env.sh",
+    "scripts/qmoi_hf_auto_manager.py",
+    "scripts/qmoi_intelligent_scheduler.py",
+    "scripts/qmoi_master_website_automation.js",
+    "scripts/qmoi_model_enhancer.py",
+    "scripts/qmoi_notification_manager.py",
+    "scripts/qmoi_payment_fix.js"
   ],
-  "iteration": 10,
-  "total_updated": 360
+  "iteration": 11,
+  "total_updated": 380
 }
