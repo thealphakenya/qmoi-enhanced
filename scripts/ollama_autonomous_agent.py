@@ -636,35 +636,80 @@ def _preflight_checks(root: Path, required_files: List[str]) -> List[str]:
     return missing
 
 
+def _ensure_ollama_client() -> bool:
+    """Return True when the Ollama CLI is available on PATH."""
+    cli_path = shutil.which("ollama")
+    return bool(cli_path)
+
+
 def _ensure_ollama_service(timeout: int = 10) -> bool:
     """Check Ollama service reachable; if not, attempt to start local binary if available."""
     host = os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434")
     try:
         if requests:
-            resp = requests.get(host, timeout=2)
+            resp = requests.get(f"{host}/api/tags", timeout=2)
             if resp.status_code == 200:
                 logger.info("Ollama service reachable")
                 return True
     except Exception:
         logger.info("Ollama not reachable, attempting to start local binary")
-    # attempt to start binary
-    possible = [
-        Path("~/.ollama/bin/ollama").expanduser(),
-        Path("/usr/local/bin/ollama"),
-    ]
-    for p in possible:
-        if p.exists() and os.access(p, os.X_OK):
+
+    if not _ensure_ollama_client():
+        logger.warning("Ollama CLI not available")
+        return False
+
+    try:
+        logger.info("Starting Ollama service with the local CLI")
+        subprocess.Popen(["ollama", "serve"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
+        for _ in range(max(1, min(timeout, 10))):
             try:
-                logger.info(f"Starting Ollama binary at {p}")
-                # start detached
-                os.spawnl(os.P_NOWAIT, str(p), str(p), "daemon")
-                # give it a moment
-                time.sleep(3)
-                return True
-            except Exception as e:
-                logger.error(f"Failed to start Ollama binary: {e}")
+                if requests:
+                    resp = requests.get(f"{host}/api/tags", timeout=2)
+                    if resp.status_code == 200:
+                        logger.info("Ollama service started")
+                        return True
+            except Exception:
+                pass
+            time.sleep(1)
+    except Exception as e:
+        logger.error(f"Failed to start Ollama binary: {e}")
+
     logger.warning("Ollama service not available")
     return False
+
+
+def _ensure_model_available(model: str, timeout: int = 600) -> Optional[str]:
+    """Ensure a model is available locally; pull it when necessary."""
+    host = os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434")
+    if not _ensure_ollama_client():
+        return None
+    if not _ensure_ollama_service(timeout=min(10, max(2, timeout))):
+        return None
+
+    try:
+        if requests:
+            resp = requests.get(f"{host}/api/tags", timeout=10)
+            if resp.status_code == 200:
+                models = resp.json().get("models", [])
+                for entry in models:
+                    name = entry.get("name") if isinstance(entry, dict) else None
+                    if not name:
+                        continue
+                    if name == model or name.split(":", 1)[0] == model.split(":", 1)[0]:
+                        return name
+    except Exception:
+        pass
+
+    try:
+        logger.info(f"Pulling Ollama model {model}")
+        proc = subprocess.run(["ollama", "pull", model], capture_output=True, text=True, timeout=timeout)
+        if proc.returncode == 0:
+            return model
+        logger.warning(proc.stderr or proc.stdout)
+    except Exception as exc:
+        logger.error(f"Failed to pull model {model}: {exc}")
+
+    return None
 
 
 def _generate_prompt(tree_ref: Path, tasks: List[str]) -> str:
@@ -687,22 +732,34 @@ def _generate_prompt(tree_ref: Path, tasks: List[str]) -> str:
 
 
 def _call_ollama(prompt: str, timeout: int = 600) -> Dict[str, str]:
-    """Call Ollama API if available; otherwise simulate a safe response.
-    Returns dict with keys: status, output_summary"""
+    """Call Ollama using the CLI/API when available; otherwise return a clear skip/failure state."""
     host = os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434")
-    model = os.environ.get("OLLAMA_MODEL", "qwen2.5-coder:3b")
+    model = os.environ.get("OLLAMA_MODEL", "llama3.2:3b")
     result = {"status": "skipped", "output_summary": "No Ollama client installed; simulated run."}
+
+    if not _ensure_ollama_client():
+        return result
+
+    if not _ensure_ollama_service(timeout=min(10, max(2, timeout))):
+        return {"status": "failed", "output_summary": "Ollama service is unavailable"}
+
+    model_name = _ensure_model_available(model, timeout=max(300, timeout))
+    if not model_name:
+        return {"status": "failed", "output_summary": f"Unable to prepare Ollama model {model}"}
+
     try:
         if requests:
-            url = f"{host}/api/models/{model}/generate"
-            logger.info(f"Calling Ollama at {url} (timeout={timeout})")
-            resp = requests.post(url, json={"prompt": prompt}, timeout=timeout)
+            url = f"{host}/api/generate"
+            payload = {"model": model_name, "prompt": prompt, "stream": False}
+            logger.info(f"Calling Ollama at {url} using model {model_name} (timeout={timeout})")
+            resp = requests.post(url, json=payload, timeout=timeout)
             if resp.status_code == 200:
+                payload_data = resp.json()
+                response_text = payload_data.get("response") or json.dumps(payload_data)
                 logger.info("Ollama responded successfully")
-                return {"status": "ok", "output_summary": resp.text[:2000]}
-            else:
-                logger.error(f"Ollama error: {resp.status_code}")
-                return {"status": "error", "output_summary": resp.text[:2000]}
+                return {"status": "ok", "output_summary": response_text[:2000]}
+            logger.error(f"Ollama error: {resp.status_code} {resp.text[:1000]}")
+            return {"status": "error", "output_summary": resp.text[:2000]}
     except Exception as e:
         logger.error(f"Ollama call failed: {e}")
         return {"status": "failed", "output_summary": str(e)}
@@ -892,3 +949,5 @@ if __name__ == "__main__":
         print(json.dumps(serializable, indent=2))
     except BrokenPipeError:
         pass
+
+# AUTOFIXED by Ollama at 2026-07-21T21:30:40.265209Z: replaced placeholders or noted TODOs. Please review.
