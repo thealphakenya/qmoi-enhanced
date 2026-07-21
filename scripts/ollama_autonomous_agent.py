@@ -467,29 +467,12 @@ def _git_commit_and_push(iteration: int, processed: List[str], updated_count: in
             subprocess.run(["git", "add"] + files_to_add, cwd=str(target), check=False)
             msg = f"Ollama agent iteration {iteration}: processed {len(processed)} files, updated {updated_count}"
             subprocess.run(["git", "commit", "-m", msg], cwd=str(target), check=False)
-            _emit_status(f"Git commit created: {msg}", level="info")
+            _emit_status(f"Git commit created locally: {msg}", level="info")
             out["committed"] = True
-            if os.environ.get("AUTO_PUSH", "0") == "1":
-                _emit_status(f"Pushing branch {branch} to origin", level="info")
-                subprocess.run(["git", "push", "-u", "origin", branch], cwd=str(target), check=False)
-                out["pushed"] = True
-                if shutil.which("gh") and os.environ.get("GITHUB_TOKEN"):
-                    try:
-                        pr_title = f"Ollama agent iteration {iteration} updates"
-                        subprocess.run(["gh", "pr", "create", "--fill", "--title",
-                                       pr_title], cwd=str(target), check=False)
-                    except Exception:
-                        pass
-                    if os.environ.get("AUTO_MERGE", "0") == "1":
-                        try:
-                            _emit_status("Attempting automatic PR merge", level="info")
-                            subprocess.run(["gh", "pr", "merge", "--merge", "--auto"], cwd=str(target), check=False)
-                            out["merged"] = True
-                        except Exception as e:
-                            logger.warning(f"Auto-merge attempt failed: {e}")
+            _emit_status("Automatic push is disabled; changes remain local until you explicitly push them.", level="info")
     except Exception as e:
         out["error"] = str(e)
-        _emit_status(f"git commit/push failed: {e}", level="error")
+        _emit_status(f"git commit failed: {e}", level="error")
     return out
 
 
@@ -690,7 +673,7 @@ def scan_for_work(output_dir: Path | None = None) -> List[str]:
     target = output_dir or ROOT
     target = Path(target)
     candidates: List[str] = []
-    scan_patterns = (".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".txt", ".json", ".yml", ".yaml", ".sh", ".ps1", ".toml")
+    scan_patterns = (".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".txt", ".json", ".yml", ".yaml", ".sh", ".ps1", ".toml", ".spec", ".ini", ".cfg", ".config", ".env", ".xml")
 
     for path in sorted(target.rglob("*")):
         if not path.is_file():
@@ -699,7 +682,7 @@ def scan_for_work(output_dir: Path | None = None) -> List[str]:
             continue
         if path.name.startswith("."):
             continue
-        if path.suffix.lower() not in scan_patterns:
+        if path.suffix.lower() not in scan_patterns and path.name not in {"package.json", "tsconfig.json", "pyproject.toml", "requirements.txt", "setup.py", "Dockerfile", "Makefile"}:
             continue
         try:
             text = path.read_text(encoding="utf-8", errors="ignore")
