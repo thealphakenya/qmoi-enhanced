@@ -43,6 +43,25 @@ if not logger.handlers:
     logger.addHandler(stream_handler)
 
 
+def _append_runtime_event(message: str, level: str = "info") -> None:
+    """Persist a structured runtime event for audits and debugging."""
+    try:
+        ts = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+        log_path = ROOT / ".ollama_agent_audit.jsonl"
+        entry = {"timestamp": ts, "level": level.lower(), "message": message}
+        with log_path.open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(entry, sort_keys=True) + "\n")
+        summary_path = ROOT / "OLLAMA_DEBUG_LOG.md"
+        existing = summary_path.read_text(encoding="utf-8", errors="ignore") if summary_path.exists() else ""
+        lines = existing.splitlines()
+        while len(lines) > 80:
+            lines.pop(0)
+        lines.append(f"- [{ts}] {level.upper()}: {message}")
+        summary_path.write_text("# Ollama Debug Log\n\n" + "\n".join(lines) + "\n", encoding="utf-8")
+    except Exception:
+        pass
+
+
 def _emit_status(message: str, level: str = "info") -> None:
     """Emit a timestamped status message to stdout and the persistent agent log."""
     ts = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
@@ -50,6 +69,7 @@ def _emit_status(message: str, level: str = "info") -> None:
     line = f"{prefix} {message}"
     print(line, flush=True)
     getattr(logger, level.lower(), logger.info)(message)
+    _append_runtime_event(message, level=level)
 
 
 def _load_state(target: Path | None = None) -> Dict[str, object]:
@@ -91,6 +111,37 @@ def _comment_token_for_suffix(suffix: str) -> str:
         ".rb": "#",
         ".php": "//",
     }.get(suffix.lower(), "#")
+
+
+def collect_merge_inventory(root: Path | None = None) -> List[Dict[str, object]]:
+    """Group similar files such as *.spec.*, *.test.*, and base-name duplicates for merge review."""
+    target = Path(root or ROOT)
+    inventory: List[Dict[str, object]] = []
+    if not target.exists():
+        return inventory
+
+    groups: Dict[str, List[str]] = {}
+    for path in sorted(target.rglob("*")):
+        if not path.is_file():
+            continue
+        if any(part in {".git", "node_modules", ".venv", "__pycache__", "dist", "build", ".next"} for part in path.parts):
+            continue
+        if path.suffix.lower() not in {".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".txt", ".json", ".yml", ".yaml", ".sh", ".ps1", ".spec", ".ini", ".cfg", ".config", ".toml", ".env", ".xml"}:
+            continue
+        rel = path.relative_to(target).as_posix()
+        stem = path.stem.lower()
+        base = re.sub(r"(\.spec|\.test|\.integration|\.e2e|\.unit)$", "", stem)
+        if not base:
+            continue
+        groups.setdefault(base, []).append(rel)
+
+    for base, paths in sorted(groups.items()):
+        unique_paths = sorted(dict.fromkeys(paths))
+        if len(unique_paths) < 2:
+            continue
+        inventory.append({"group": base, "paths": unique_paths})
+
+    return inventory
 
 
 def collect_route_inventory(root: Path | None = None) -> List[Dict[str, object]]:
@@ -459,6 +510,20 @@ def build_plan_and_docs(output_dir: Path | None = None) -> Dict[str, Path]:
     docs["matches"] = target / "MATCHES.md"
     docs["routes"] = target / "ROUTES.md"
     docs["merge"] = target / "MERGE.md"
+    docs["tree_structure"] = target / "TREE_FULL_STRUCTURE.md"
+
+    tree_summary = []
+    if target.exists():
+        for child in sorted(target.iterdir()):
+            if child.name.startswith('.') and child.name not in {'.github'}:
+                continue
+            if child.name in {'.git', 'node_modules', '.venv', '__pycache__', 'dist', 'build', '.next'}:
+                continue
+            tree_summary.append(f"- {child.name}/" if child.is_dir() else f"- {child.name}")
+    docs["tree_structure"].write_text(
+        "# TREE_FULL_STRUCTURE\n\n" + "\n".join(tree_summary[:200]) + "\n",
+        encoding="utf-8",
+    )
 
     docs["resumefromhere"].write_text(
         """# Resume from here
@@ -640,8 +705,26 @@ def scan_for_work(output_dir: Path | None = None) -> List[str]:
             text = path.read_text(encoding="utf-8", errors="ignore")
         except Exception:
             continue
-        if any(marker.lower() in text.lower() for marker in (["[PRODUCTION IMPLEMENTATION REQUIRED]", "TODO", "placeholder", "TBD", "FIXME", "autofix", "review changes above"])):
+        lowered = text.lower()
+        if any(marker.lower() in lowered for marker in (["[PRODUCTION IMPLEMENTATION REQUIRED]", "TODO", "placeholder", "TBD", "FIXME", "autofix", "review changes above", "next steps", "needs review", "required", "implement"])):
             candidates.append(str(path.relative_to(target)))
+
+    if not candidates:
+        for path in sorted(target.rglob("*")):
+            if not path.is_file():
+                continue
+            if any(part in {".git", "node_modules", ".venv", "__pycache__", "dist", "build", ".next", ".backup", ".pytest_cache"} for part in path.parts):
+                continue
+            if path.name.startswith("."):
+                continue
+            if path.suffix.lower() not in scan_patterns:
+                continue
+            try:
+                text = path.read_text(encoding="utf-8", errors="ignore")
+            except Exception:
+                continue
+            if len(text) < 5000 and path.suffix.lower() in {".md", ".txt", ".json", ".yml", ".yaml"}:
+                candidates.append(str(path.relative_to(target)))
 
     return sorted(dict.fromkeys(candidates))
 
@@ -746,13 +829,19 @@ def _execute_autonomous_commands(root: Path | None = None) -> List[Dict[str, obj
     """Run discovered commands in a safe, recorded way when they appear relevant and executable."""
     target = Path(root or ROOT)
     results: List[Dict[str, object]] = []
-    for command in _discover_autonomous_commands(target):
+    commands = _discover_autonomous_commands(target)
+    for command in commands:
         try:
             _emit_status(f"Executing autonomous command: {command}", level="info")
-            proc = subprocess.run(command, cwd=str(target), shell=True, capture_output=True, text=True, timeout=600)
-            results.append({"command": command, "returncode": proc.returncode, "stdout": proc.stdout[:2000], "stderr": proc.stderr[:2000]})
+            proc = subprocess.run(command, cwd=str(target), shell=True, capture_output=True, text=True, timeout=900)
+            results.append({"command": command, "returncode": proc.returncode, "stdout": proc.stdout[:4000], "stderr": proc.stderr[:4000]})
+            if proc.returncode == 0:
+                _emit_status(f"Command completed successfully: {command}", level="info")
+            else:
+                _emit_status(f"Command failed with exit code {proc.returncode}: {command}", level="warning")
         except Exception as exc:
             results.append({"command": command, "returncode": -1, "stdout": "", "stderr": str(exc)})
+            _emit_status(f"Command execution error for {command}: {exc}", level="error")
     return results
 
 
@@ -898,6 +987,7 @@ def run_agent(output_dir: Path | None = None) -> Dict[str, object]:
     target.mkdir(parents=True, exist_ok=True)
     docs = build_plan_and_docs(target)
     _emit_status("Planning documents initialized", level="info")
+    _emit_status(f"Repository scan scope widened to include docs, configs, tests, scripts, and app assets under {target}", level="info")
 
     state = _load_state(target)
     processed_set = set(state.get("processed", []))
@@ -1023,6 +1113,10 @@ def run_agent(output_dir: Path | None = None) -> Dict[str, object]:
 
     command_results = _execute_autonomous_commands(target)
     _emit_status(f"Executed {len(command_results)} discovered autonomous commands", level="info")
+    if command_results:
+        for result in command_results:
+            if result.get("returncode") not in (0, None):
+                _emit_status(f"Autonomous command result: {result.get('command')} -> {result.get('returncode')}", level="warning")
 
     _emit_status(
         f"Agent run completed: status=ok, pending_remaining={len([p for p in scan_for_work(target) if p not in processed_set])}, processed_this_run={len(processed_set) - int(state.get('processed_count', 0)) if 'processed_count' in state else 0}, updated={total_updated}",

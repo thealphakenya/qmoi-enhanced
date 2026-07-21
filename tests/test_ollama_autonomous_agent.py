@@ -147,6 +147,32 @@ def test_discover_autonomous_commands_adds_default_verification_steps(tmp_path):
     assert any("compileall" in command for command in commands)
 
 
+def test_scan_for_work_includes_spec_and_config_files(tmp_path):
+    module = load_module()
+    spec_file = tmp_path / "service.spec"
+    spec_file.write_text("TODO: implement spec", encoding="utf-8")
+    config_file = tmp_path / "settings.ini"
+    config_file.write_text("[DEFAULT]\nTODO=fix", encoding="utf-8")
+
+    pending = module.scan_for_work(tmp_path)
+
+    assert str(spec_file.relative_to(tmp_path)) in pending
+    assert str(config_file.relative_to(tmp_path)) in pending
+
+
+def test_collect_merge_inventory_groups_similar_names(tmp_path):
+    module = load_module()
+    first = tmp_path / "module.spec.ts"
+    second = tmp_path / "module.ts"
+    first.write_text("TODO: impl", encoding="utf-8")
+    second.write_text("TODO: impl", encoding="utf-8")
+
+    inventory = module.collect_merge_inventory(tmp_path)
+
+    assert inventory
+    assert any(group["paths"] for group in inventory)
+
+
 def test_write_live_notification_summary_creates_feed(tmp_path):
     module = load_module()
 

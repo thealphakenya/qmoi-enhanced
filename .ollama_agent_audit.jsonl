@@ -1,0 +1,570 @@
+{"level": "info", "message": "Planning documents initialized", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Repository scan scope widened to include docs, configs, tests, scripts, and app assets under /tmp/pytest-of-node/pytest-6/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Starting autonomous loop 1/20", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Discovered 2 candidate files requiring attention", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-6/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-6/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Processing batch of 2 files out of 2 pending", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Updated file sample.md: replaced TODO, replaced placeholder", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Updated file Trade.md: replaced placeholder", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Batch complete: processed=2 updated=2 failed=0", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-6/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-6/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Collected 3 error markers", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-6/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Verification completed with python=skipped tests=skipped", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-6/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Backed up resume file to /tmp/pytest-of-node/pytest-6/test_run_agent_refreshes_resum0/.backup/resumefromhere/resumefromhere.20260721T222253Z.bak", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Preflight checks completed successfully", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Preparing Ollama prompt with repository context", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Generating Ollama prompt with 2 task entries", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Calling Ollama with timeout=600s and model=llama3.2:3b", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Calling Ollama at http://127.0.0.1:11434/api/generate using model llama3.2:3b", "timestamp": "2026-07-21T22:22:53Z"}
+{"level": "info", "message": "Ollama responded successfully", "timestamp": "2026-07-21T22:24:12Z"}
+{"level": "info", "message": "Ollama call completed with status=ok", "timestamp": "2026-07-21T22:24:12Z"}
+{"level": "info", "message": "Starting autonomous loop 2/20", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Discovered 2 candidate files requiring attention", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-6/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-6/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Processing batch of 0 files out of 0 pending", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Batch complete: processed=0 updated=0 failed=0", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-6/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-6/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Collected 4 error markers", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-6/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Verification completed with python=skipped tests=skipped", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-6/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Backed up resume file to /tmp/pytest-of-node/pytest-6/test_run_agent_refreshes_resum0/.backup/resumefromhere/resumefromhere.20260721T222413Z.bak", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Preflight checks completed successfully", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Preparing Ollama prompt with repository context", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Generating Ollama prompt with 2 task entries", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Calling Ollama with timeout=600s and model=llama3.2:3b", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Calling Ollama at http://127.0.0.1:11434/api/generate using model llama3.2:3b", "timestamp": "2026-07-21T22:24:13Z"}
+{"level": "info", "message": "Ollama responded successfully", "timestamp": "2026-07-21T22:24:42Z"}
+{"level": "info", "message": "Ollama call completed with status=ok", "timestamp": "2026-07-21T22:24:42Z"}
+{"level": "info", "message": "Resume ledger shows completed and confirmed work; stopping autonomous loop", "timestamp": "2026-07-21T22:24:42Z"}
+{"level": "info", "message": "Executed 0 discovered autonomous commands", "timestamp": "2026-07-21T22:24:42Z"}
+{"level": "info", "message": "Agent run completed: status=ok, pending_remaining=0, processed_this_run=0, updated=2", "timestamp": "2026-07-21T22:24:42Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-6/test_collect_route_inventory_f0", "timestamp": "2026-07-21T22:24:42Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-6/test_update_documentation_mani0", "timestamp": "2026-07-21T22:24:42Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/bin/ollama", "timestamp": "2026-07-21T22:24:42Z"}
+{"level": "info", "message": "live progress message", "timestamp": "2026-07-21T22:24:42Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-6/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:24:42Z"}
+{"level": "info", "message": "Planning documents initialized", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Repository scan scope widened to include docs, configs, tests, scripts, and app assets under /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Starting autonomous loop 1/20", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Discovered 5 candidate files requiring attention", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Processing batch of 5 files out of 5 pending", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "No edit required for resumefromhere.txt", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Updated file Trade.md: replaced placeholder", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Updated file sample.md: replaced TODO, replaced placeholder", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Updated file ollama.md: appended checked footer", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Updated file QMOIMODELTESTS.md: appended checked footer", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Batch complete: processed=5 updated=4 failed=0", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Collected 5 error markers", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Verification completed with python=skipped tests=skipped", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Backed up resume file to /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0/.backup/resumefromhere/resumefromhere.20260721T222856Z.bak", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Preflight checks completed successfully", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Preparing Ollama prompt with repository context", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Generating Ollama prompt with 5 task entries", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Calling Ollama with timeout=600s and model=llama3.2:3b", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Calling Ollama at http://127.0.0.1:11434/api/generate using model llama3.2:3b", "timestamp": "2026-07-21T22:28:56Z"}
+{"level": "info", "message": "Ollama responded successfully", "timestamp": "2026-07-21T22:29:33Z"}
+{"level": "info", "message": "Ollama call completed with status=ok", "timestamp": "2026-07-21T22:29:33Z"}
+{"level": "info", "message": "Starting autonomous loop 2/20", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Discovered 6 candidate files requiring attention", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Processing batch of 1 files out of 1 pending", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Updated file ALLERRORS.md: replaced placeholder", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Batch complete: processed=1 updated=1 failed=0", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Collected 7 error markers", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Verification completed with python=skipped tests=skipped", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Backed up resume file to /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0/.backup/resumefromhere/resumefromhere.20260721T222934Z.bak", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Preflight checks completed successfully", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Preparing Ollama prompt with repository context", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Generating Ollama prompt with 6 task entries", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Calling Ollama with timeout=600s and model=llama3.2:3b", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Calling Ollama at http://127.0.0.1:11434/api/generate using model llama3.2:3b", "timestamp": "2026-07-21T22:29:34Z"}
+{"level": "info", "message": "Ollama responded successfully", "timestamp": "2026-07-21T22:30:10Z"}
+{"level": "info", "message": "Ollama call completed with status=ok", "timestamp": "2026-07-21T22:30:10Z"}
+{"level": "info", "message": "Starting autonomous loop 3/20", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Discovered 6 candidate files requiring attention", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Processing batch of 0 files out of 0 pending", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Batch complete: processed=0 updated=0 failed=0", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Collected 7 error markers", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Verification completed with python=skipped tests=skipped", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Backed up resume file to /tmp/pytest-of-node/pytest-7/test_run_agent_refreshes_resum0/.backup/resumefromhere/resumefromhere.20260721T223011Z.bak", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Preflight checks completed successfully", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Preparing Ollama prompt with repository context", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Generating Ollama prompt with 6 task entries", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Calling Ollama with timeout=600s and model=llama3.2:3b", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Calling Ollama at http://127.0.0.1:11434/api/generate using model llama3.2:3b", "timestamp": "2026-07-21T22:30:11Z"}
+{"level": "info", "message": "Ollama responded successfully", "timestamp": "2026-07-21T22:30:21Z"}
+{"level": "info", "message": "Ollama call completed with status=ok", "timestamp": "2026-07-21T22:30:21Z"}
+{"level": "info", "message": "Resume ledger shows completed and confirmed work; stopping autonomous loop", "timestamp": "2026-07-21T22:30:21Z"}
+{"level": "info", "message": "Executed 0 discovered autonomous commands", "timestamp": "2026-07-21T22:30:21Z"}
+{"level": "info", "message": "Agent run completed: status=ok, pending_remaining=0, processed_this_run=0, updated=5", "timestamp": "2026-07-21T22:30:21Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-7/test_collect_route_inventory_f0", "timestamp": "2026-07-21T22:30:21Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-7/test_update_documentation_mani0", "timestamp": "2026-07-21T22:30:21Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/bin/ollama", "timestamp": "2026-07-21T22:30:21Z"}
+{"level": "info", "message": "live progress message", "timestamp": "2026-07-21T22:30:21Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-7/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:30:21Z"}
+{"level": "info", "message": "Planning documents initialized", "timestamp": "2026-07-21T22:30:44Z"}
+{"level": "info", "message": "Repository scan scope widened to include docs, configs, tests, scripts, and app assets under /workspaces/qmoi-enhanced", "timestamp": "2026-07-21T22:30:44Z"}
+{"level": "info", "message": "Starting autonomous loop 1/20", "timestamp": "2026-07-21T22:30:44Z"}
+{"level": "info", "message": "Discovered 3231 candidate files requiring attention", "timestamp": "2026-07-21T22:30:54Z"}
+{"level": "info", "message": "Scanning route definitions from /workspaces/qmoi-enhanced", "timestamp": "2026-07-21T22:30:54Z"}
+{"level": "info", "message": "Processing batch of 20 files out of 2386 pending", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for .github/workflows/ci-build-upload.yml", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for .github/workflows/auto_release_variations.yml", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for .github/workflows/link-check.yml", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for .github/workflows/android-build.yml", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for .github/workflows/ci.yml", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for .github/workflows/publish-releases-realtime.yml", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for .github/workflows/payed-validation.yml", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for .venv_qmoi_control/bin/Activate.ps1", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for .github/workflows/release.yml", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for ADVANCED_USER_IDENTIFICATION_SYSTEM.md", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for API_ENDPOINTS_REFERENCE.md", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for API_ENDPOINTS_COMPLETE_AUDIT.md", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for API_INTEGRATION_GUIDE.md", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for APP_BUILD_MATRIX.md", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for AUTH_SYSTEM_IMPLEMENTATION.md", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for AUTOLINTREADME.md", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for AUTODEV_SECRETS.md", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for AUTO_SETUP_COMPLETION_SUMMARY.md", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for AUTOOPTIMIZEALPHAQMOIENGINE.md", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "No edit required for AUTO_RECOVERY_PROCEDURES.md", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "Batch complete: processed=20 updated=0 failed=0", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "Scanning repository for error markers under /workspaces/qmoi-enhanced", "timestamp": "2026-07-21T22:30:56Z"}
+{"level": "info", "message": "Collected 4129 error markers", "timestamp": "2026-07-21T22:31:18Z"}
+{"level": "info", "message": "Wrote remediation inventory to /workspaces/qmoi-enhanced/ALLERRORS.md", "timestamp": "2026-07-21T22:31:18Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-07-21T22:31:18Z"}
+{"level": "info", "message": "Verification completed with python=failed tests=failed", "timestamp": "2026-07-21T22:31:23Z"}
+{"level": "info", "message": "Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:31:23Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260721T223123Z.bak", "timestamp": "2026-07-21T22:31:23Z"}
+{"level": "info", "message": "Preflight checks completed successfully", "timestamp": "2026-07-21T22:31:23Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:31:23Z"}
+{"level": "info", "message": "Preparing Ollama prompt with repository context", "timestamp": "2026-07-21T22:31:23Z"}
+{"level": "info", "message": "Generating Ollama prompt with 3231 task entries", "timestamp": "2026-07-21T22:31:23Z"}
+{"level": "info", "message": "Calling Ollama with timeout=600s and model=llama3.2:3b", "timestamp": "2026-07-21T22:31:23Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:31:23Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:31:23Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:31:23Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:31:23Z"}
+{"level": "info", "message": "Calling Ollama at http://127.0.0.1:11434/api/generate using model llama3.2:3b", "timestamp": "2026-07-21T22:31:23Z"}
+{"level": "info", "message": "Ollama responded successfully", "timestamp": "2026-07-21T22:34:26Z"}
+{"level": "info", "message": "Ollama call completed with status=ok", "timestamp": "2026-07-21T22:34:26Z"}
+{"level": "info", "message": "Starting autonomous loop 2/20", "timestamp": "2026-07-21T22:34:27Z"}
+{"level": "info", "message": "Discovered 3231 candidate files requiring attention", "timestamp": "2026-07-21T22:34:35Z"}
+{"level": "info", "message": "Scanning route definitions from /workspaces/qmoi-enhanced", "timestamp": "2026-07-21T22:34:35Z"}
+{"level": "info", "message": "Processing batch of 20 files out of 2366 pending", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for BUILD_COMPLETION_SUMMARY.md", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for CACHING_GUIDE.md", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for COLAB_DAGSHUB_DEPLOY_CHECKLIST.md", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for CASHON.md", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for BUILD_COMPLETION_REPORT_v2.md", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for CASHONTRADINGREADME.md", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for COMPLETION_REPORT.md", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for COMPLETION_REPORT.txt", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for BIOMETRIC_LOGIN_TEST_RESULTS.md", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for COMPLETE_SYSTEM_DOCUMENTATION_MASTER.md", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for COMPREHENSIVE_QMOI_RESPONSE_TESTING_SUMMARY.txt", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for CURLCOMMANDS.md", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for CURLQMOIMASTERSISTERUSER.md", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for DELIVERABLES_CHECKLIST.md", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for DEPLOYMENT_COMPLETION_REPORT.txt", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for DELIVERABLES_FINAL_INVENTORY.md", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for DEPLOYMENT_COMPLETE.md", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for DEPLOYMENT_FIX_QUICK_START.md", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "Updated file DEALS.md: appended checked footer", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "No edit required for DEPLOYMENT_IN_PROGRESS.md", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "Batch complete: processed=20 updated=1 failed=0", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "Scanning repository for error markers under /workspaces/qmoi-enhanced", "timestamp": "2026-07-21T22:34:37Z"}
+{"level": "info", "message": "Collected 4130 error markers", "timestamp": "2026-07-21T22:34:58Z"}
+{"level": "info", "message": "Wrote remediation inventory to /workspaces/qmoi-enhanced/ALLERRORS.md", "timestamp": "2026-07-21T22:34:58Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-07-21T22:34:58Z"}
+{"level": "info", "message": "Verification completed with python=failed tests=failed", "timestamp": "2026-07-21T22:35:02Z"}
+{"level": "info", "message": "Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:35:02Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260721T223502Z.bak", "timestamp": "2026-07-21T22:35:02Z"}
+{"level": "info", "message": "Preflight checks completed successfully", "timestamp": "2026-07-21T22:35:02Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:35:02Z"}
+{"level": "info", "message": "Preparing Ollama prompt with repository context", "timestamp": "2026-07-21T22:35:02Z"}
+{"level": "info", "message": "Generating Ollama prompt with 3231 task entries", "timestamp": "2026-07-21T22:35:02Z"}
+{"level": "info", "message": "Calling Ollama with timeout=600s and model=llama3.2:3b", "timestamp": "2026-07-21T22:35:02Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:35:02Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:35:02Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:35:02Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:35:02Z"}
+{"level": "info", "message": "Calling Ollama at http://127.0.0.1:11434/api/generate using model llama3.2:3b", "timestamp": "2026-07-21T22:35:02Z"}
+{"level": "info", "message": "Ollama responded successfully", "timestamp": "2026-07-21T22:36:07Z"}
+{"level": "info", "message": "Ollama call completed with status=ok", "timestamp": "2026-07-21T22:36:07Z"}
+{"level": "info", "message": "Starting autonomous loop 3/20", "timestamp": "2026-07-21T22:36:08Z"}
+{"level": "info", "message": "Discovered 3231 candidate files requiring attention", "timestamp": "2026-07-21T22:36:16Z"}
+{"level": "info", "message": "Scanning route definitions from /workspaces/qmoi-enhanced", "timestamp": "2026-07-21T22:36:16Z"}
+{"level": "info", "message": "Processing batch of 20 files out of 2346 pending", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for DEPLOYMENT_SUMMARY.txt", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for DEPLOYMENT_VERIFICATION.md", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for DEPLOY_TO_VERCEL.sh", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for DEVELOPER_QUICK_START.md", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for DOCKER_DEPLOYMENT_GUIDE.md", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for DEVICERESOURCEOPTIMIZATION.md", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for DOCUMENTATION_MASTER_INDEX.md", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for DOCS/GITHUB_SECRETS_SETUP.md", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for DOCUMENTATION_INDEX.md", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "Updated file DOCS/GITHUB_WORKFLOW_DISPATCH.md: appended checked footer", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for ENHANCED_AUTOMATION_SUMMARY.md", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for ENHANCEMENT_COMPLETE_SUMMARY.md", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for ENVIRONMENT_CONFIG.md", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for FILE_MANIFEST.md", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for FINAL_STATUS.txt", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for ERRORSREADME.md", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for GITHUB-ACTIONS-COMPLETE.md", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for GITHUBPAYED.md", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for GITHUB_RELEASES_COMPLETE_GUIDE.md", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "No edit required for GITHUB_RELEASES_QUICKSTART.md", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "Batch complete: processed=20 updated=1 failed=0", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "Scanning repository for error markers under /workspaces/qmoi-enhanced", "timestamp": "2026-07-21T22:36:18Z"}
+{"level": "info", "message": "Collected 4131 error markers", "timestamp": "2026-07-21T22:36:38Z"}
+{"level": "info", "message": "Wrote remediation inventory to /workspaces/qmoi-enhanced/ALLERRORS.md", "timestamp": "2026-07-21T22:36:38Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-07-21T22:36:38Z"}
+{"level": "info", "message": "Verification completed with python=failed tests=failed", "timestamp": "2026-07-21T22:36:43Z"}
+{"level": "info", "message": "Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:36:43Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260721T223643Z.bak", "timestamp": "2026-07-21T22:36:43Z"}
+{"level": "info", "message": "Preflight checks completed successfully", "timestamp": "2026-07-21T22:36:43Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:36:43Z"}
+{"level": "info", "message": "Preparing Ollama prompt with repository context", "timestamp": "2026-07-21T22:36:43Z"}
+{"level": "info", "message": "Generating Ollama prompt with 3231 task entries", "timestamp": "2026-07-21T22:36:43Z"}
+{"level": "info", "message": "Calling Ollama with timeout=600s and model=llama3.2:3b", "timestamp": "2026-07-21T22:36:43Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:36:43Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:36:43Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:36:43Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:36:43Z"}
+{"level": "info", "message": "Calling Ollama at http://127.0.0.1:11434/api/generate using model llama3.2:3b", "timestamp": "2026-07-21T22:36:43Z"}
+{"level": "info", "message": "Planning documents initialized", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Repository scan scope widened to include docs, configs, tests, scripts, and app assets under /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Starting autonomous loop 1/20", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Discovered 5 candidate files requiring attention", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Processing batch of 5 files out of 5 pending", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Updated file QMOIMODELTESTS.md: appended checked footer", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Updated file Trade.md: replaced placeholder", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "No edit required for resumefromhere.txt", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Updated file ollama.md: appended checked footer", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Updated file sample.md: replaced TODO, replaced placeholder", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Batch complete: processed=5 updated=4 failed=0", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Collected 5 error markers", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Verification completed with python=skipped tests=skipped", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Backed up resume file to /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0/.backup/resumefromhere/resumefromhere.20260721T223717Z.bak", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Preflight checks completed successfully", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Preparing Ollama prompt with repository context", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Generating Ollama prompt with 5 task entries", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Calling Ollama with timeout=600s and model=llama3.2:3b", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Calling Ollama at http://127.0.0.1:11434/api/generate using model llama3.2:3b", "timestamp": "2026-07-21T22:37:17Z"}
+{"level": "info", "message": "Ollama responded successfully", "timestamp": "2026-07-21T22:42:58Z"}
+{"level": "info", "message": "Ollama call completed with status=ok", "timestamp": "2026-07-21T22:42:58Z"}
+{"level": "info", "message": "Starting autonomous loop 4/20", "timestamp": "2026-07-21T22:42:59Z"}
+{"level": "info", "message": "Discovered 3231 candidate files requiring attention", "timestamp": "2026-07-21T22:43:10Z"}
+{"level": "info", "message": "Scanning route definitions from /workspaces/qmoi-enhanced", "timestamp": "2026-07-21T22:43:10Z"}
+{"level": "info", "message": "Processing batch of 20 files out of 2326 pending", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for GIT_COMMIT_INSTRUCTIONS.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for GITPODPAYED.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for HOSTLINKSDOMAINS.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for ITERATIVE_IMPROVEMENT_ANALYSIS.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for INTEGRATION_GUIDE.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for HUGGINGFACEPAYED.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for INDEPENDENTQMOI.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for MASTERGUIDE.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "Updated file LEAHWALLET.md: appended checked footer", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for MASTER_ONLY_FEATURES.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for MASTER_COMPLETION_FINAL.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for MANIFEST_AND_DEPLOYMENT_GUIDE.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for MASTER_OPERATIONS_GUIDE.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for MASTER_PROJECT_COMPLETION_INDEX.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for NEW_USER_SYSTEM_IMPLEMENTATION.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for MEGAVAULT.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for MONITORING_API_DOCS.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for MASTER_VERIFICATION_COMPLETE.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for NEXT_STEPS_EXECUTIVE_SUMMARY.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "No edit required for MULTI_PLATFORM_BUILD_GUIDE.md", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "Batch complete: processed=20 updated=1 failed=0", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json", "timestamp": "2026-07-21T22:43:12Z"}
+{"level": "info", "message": "Scanning repository for error markers under /workspaces/qmoi-enhanced", "timestamp": "2026-07-21T22:43:13Z"}
+{"level": "info", "message": "Ollama responded successfully", "timestamp": "2026-07-21T22:43:21Z"}
+{"level": "info", "message": "Ollama call completed with status=ok", "timestamp": "2026-07-21T22:43:21Z"}
+{"level": "info", "message": "Starting autonomous loop 2/20", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Discovered 7 candidate files requiring attention", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Processing batch of 2 files out of 2 pending", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "No edit required for QMOIMODELTESTS.md.ollama.bak", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Updated file ALLERRORS.md: replaced placeholder", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Batch complete: processed=2 updated=1 failed=0", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Collected 7 error markers", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Verification completed with python=skipped tests=skipped", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Backed up resume file to /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0/.backup/resumefromhere/resumefromhere.20260721T224322Z.bak", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Preflight checks completed successfully", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Preparing Ollama prompt with repository context", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Generating Ollama prompt with 7 task entries", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Calling Ollama with timeout=600s and model=llama3.2:3b", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Calling Ollama at http://127.0.0.1:11434/api/generate using model llama3.2:3b", "timestamp": "2026-07-21T22:43:22Z"}
+{"level": "info", "message": "Planning documents initialized", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Repository scan scope widened to include docs, configs, tests, scripts, and app assets under /tmp/pytest-of-node/pytest-9/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Starting autonomous loop 1/20", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Discovered 5 candidate files requiring attention", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-9/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-9/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Processing batch of 5 files out of 5 pending", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Updated file QMOIMODELTESTS.md: appended checked footer", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "No edit required for resumefromhere.txt", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Updated file Trade.md: replaced placeholder", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Updated file sample.md: replaced TODO, replaced placeholder", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Updated file ollama.md: appended checked footer", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Batch complete: processed=5 updated=4 failed=0", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-9/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-9/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Collected 5 error markers", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-9/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Verification completed with python=skipped tests=skipped", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-9/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Backed up resume file to /tmp/pytest-of-node/pytest-9/test_run_agent_refreshes_resum0/.backup/resumefromhere/resumefromhere.20260721T224335Z.bak", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Preflight checks completed successfully", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Preparing Ollama prompt with repository context", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Generating Ollama prompt with 5 task entries", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Calling Ollama with timeout=600s and model=llama3.2:3b", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Calling Ollama at http://127.0.0.1:11434/api/generate using model llama3.2:3b", "timestamp": "2026-07-21T22:43:35Z"}
+{"level": "info", "message": "Collected 4131 error markers", "timestamp": "2026-07-21T22:43:40Z"}
+{"level": "info", "message": "Wrote remediation inventory to /workspaces/qmoi-enhanced/ALLERRORS.md", "timestamp": "2026-07-21T22:43:40Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-07-21T22:43:40Z"}
+{"level": "info", "message": "Verification completed with python=failed tests=failed", "timestamp": "2026-07-21T22:43:47Z"}
+{"level": "info", "message": "Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:43:47Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260721T224347Z.bak", "timestamp": "2026-07-21T22:43:47Z"}
+{"level": "info", "message": "Preflight checks completed successfully", "timestamp": "2026-07-21T22:43:47Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:43:47Z"}
+{"level": "info", "message": "Preparing Ollama prompt with repository context", "timestamp": "2026-07-21T22:43:47Z"}
+{"level": "info", "message": "Generating Ollama prompt with 3231 task entries", "timestamp": "2026-07-21T22:43:47Z"}
+{"level": "info", "message": "Calling Ollama with timeout=600s and model=llama3.2:3b", "timestamp": "2026-07-21T22:43:47Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:43:47Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:43:47Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:43:47Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:43:47Z"}
+{"level": "info", "message": "Calling Ollama at http://127.0.0.1:11434/api/generate using model llama3.2:3b", "timestamp": "2026-07-21T22:43:47Z"}
+{"level": "info", "message": "Ollama responded successfully", "timestamp": "2026-07-21T22:44:49Z"}
+{"level": "info", "message": "Ollama call completed with status=ok", "timestamp": "2026-07-21T22:44:49Z"}
+{"level": "info", "message": "Starting autonomous loop 3/20", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Discovered 7 candidate files requiring attention", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Processing batch of 0 files out of 0 pending", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Batch complete: processed=0 updated=0 failed=0", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Collected 7 error markers", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Verification completed with python=skipped tests=skipped", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Backed up resume file to /tmp/pytest-of-node/pytest-8/test_run_agent_refreshes_resum0/.backup/resumefromhere/resumefromhere.20260721T224450Z.bak", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Preflight checks completed successfully", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Preparing Ollama prompt with repository context", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Generating Ollama prompt with 7 task entries", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Calling Ollama with timeout=600s and model=llama3.2:3b", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Calling Ollama at http://127.0.0.1:11434/api/generate using model llama3.2:3b", "timestamp": "2026-07-21T22:44:50Z"}
+{"level": "info", "message": "Planning documents initialized", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Repository scan scope widened to include docs, configs, tests, scripts, and app assets under /tmp/pytest-of-node/pytest-10/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Starting autonomous loop 1/20", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Discovered 5 candidate files requiring attention", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-10/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-10/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Processing batch of 5 files out of 5 pending", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Updated file QMOIMODELTESTS.md: appended checked footer", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Updated file Trade.md: replaced placeholder", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "No edit required for resumefromhere.txt", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Updated file ollama.md: appended checked footer", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Updated file sample.md: replaced TODO, replaced placeholder", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Batch complete: processed=5 updated=4 failed=0", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-10/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-10/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Collected 5 error markers", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-10/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Verification completed with python=skipped tests=skipped", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-10/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Backed up resume file to /tmp/pytest-of-node/pytest-10/test_run_agent_refreshes_resum0/.backup/resumefromhere/resumefromhere.20260721T224714Z.bak", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Preflight checks completed successfully", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Preparing Ollama prompt with repository context", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Generating Ollama prompt with 5 task entries", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Calling Ollama with timeout=600s and model=llama3.2:3b", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Calling Ollama at http://127.0.0.1:11434/api/generate using model llama3.2:3b", "timestamp": "2026-07-21T22:47:14Z"}
+{"level": "info", "message": "Ollama responded successfully", "timestamp": "2026-07-21T22:48:48Z"}
+{"level": "info", "message": "Ollama call completed with status=ok", "timestamp": "2026-07-21T22:48:48Z"}
+{"level": "info", "message": "Starting autonomous loop 5/20", "timestamp": "2026-07-21T22:48:49Z"}
+{"level": "info", "message": "Discovered 3231 candidate files requiring attention", "timestamp": "2026-07-21T22:49:02Z"}
+{"level": "info", "message": "Scanning route definitions from /workspaces/qmoi-enhanced", "timestamp": "2026-07-21T22:49:02Z"}
+{"level": "info", "message": "Processing batch of 20 files out of 2306 pending", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "No edit required for NEXT_STEPS_INDEX.md", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "Updated file OLLAMA_DEBUG_LOG.md: replaced TODO, replaced placeholder", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "No edit required for OPTION_A_PRODUCTION_READY.md", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "No edit required for PAYMENTS.md", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "No edit required for PERFORMANCE_GUIDE.md", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "No edit required for PHASE_1_COMPLETION_REPORT.md", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "No edit required for PHASE4_PRODUCTION_STRATEGY.md", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "No edit required for PHASE_5_COMPLETION.md", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "No edit required for PHASE_3_SESSION_COMPLETE.txt", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "No edit required for PHASE_4_COMPLETION_SUMMARY.md", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "No edit required for PHASE_4_SESSION_COMPLETION.md", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "No edit required for PHASE_6_EXTENDED_SUMMARY.md", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "No edit required for PRODUCTION_COMPLETION_SUMMARY.md", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "No edit required for PRODUCTION_CHECKLIST.md", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "No edit required for PRODUCTIONCHECKLIST.md", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "No edit required for PRE_RELEASE_DISTRIBUTION_PLAN.md", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "No edit required for PRODUCTION_BUILD_SETUP.md", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "No edit required for PRODUCTION_DEPLOYMENT_ALL_STEPS.md", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "No edit required for PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "Updated file PRODUCTION_CHANGES.md: appended checked footer", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "Batch complete: processed=20 updated=2 failed=0", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "Scanning repository for error markers under /workspaces/qmoi-enhanced", "timestamp": "2026-07-21T22:49:04Z"}
+{"level": "info", "message": "Ollama responded successfully", "timestamp": "2026-07-21T22:49:29Z"}
+{"level": "info", "message": "Ollama call completed with status=ok", "timestamp": "2026-07-21T22:49:29Z"}
+{"level": "info", "message": "Resume ledger shows completed and confirmed work; stopping autonomous loop", "timestamp": "2026-07-21T22:49:29Z"}
+{"level": "info", "message": "Executed 0 discovered autonomous commands", "timestamp": "2026-07-21T22:49:29Z"}
+{"level": "info", "message": "Agent run completed: status=ok, pending_remaining=0, processed_this_run=0, updated=5", "timestamp": "2026-07-21T22:49:29Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-8/test_collect_route_inventory_f0", "timestamp": "2026-07-21T22:49:29Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-8/test_update_documentation_mani0", "timestamp": "2026-07-21T22:49:29Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/bin/ollama", "timestamp": "2026-07-21T22:49:29Z"}
+{"level": "info", "message": "live progress message", "timestamp": "2026-07-21T22:49:29Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-8/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:49:29Z"}
+{"level": "info", "message": "Collected 4132 error markers", "timestamp": "2026-07-21T22:49:40Z"}
+{"level": "info", "message": "Wrote remediation inventory to /workspaces/qmoi-enhanced/ALLERRORS.md", "timestamp": "2026-07-21T22:49:40Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-07-21T22:49:40Z"}
+{"level": "info", "message": "Verification completed with python=failed tests=failed", "timestamp": "2026-07-21T22:49:46Z"}
+{"level": "info", "message": "Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:49:46Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260721T224946Z.bak", "timestamp": "2026-07-21T22:49:46Z"}
+{"level": "info", "message": "Preflight checks completed successfully", "timestamp": "2026-07-21T22:49:46Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:49:46Z"}
+{"level": "info", "message": "Preparing Ollama prompt with repository context", "timestamp": "2026-07-21T22:49:46Z"}
+{"level": "info", "message": "Generating Ollama prompt with 3231 task entries", "timestamp": "2026-07-21T22:49:46Z"}
+{"level": "info", "message": "Calling Ollama with timeout=600s and model=llama3.2:3b", "timestamp": "2026-07-21T22:49:46Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:49:46Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:49:46Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:49:46Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:49:46Z"}
+{"level": "info", "message": "Calling Ollama at http://127.0.0.1:11434/api/generate using model llama3.2:3b", "timestamp": "2026-07-21T22:49:46Z"}
+{"level": "info", "message": "Ollama responded successfully", "timestamp": "2026-07-21T22:50:22Z"}
+{"level": "info", "message": "Ollama call completed with status=ok", "timestamp": "2026-07-21T22:50:22Z"}
+{"level": "info", "message": "Starting autonomous loop 2/20", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Discovered 6 candidate files requiring attention", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-10/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-10/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Processing batch of 1 files out of 1 pending", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Updated file ALLERRORS.md: replaced placeholder", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Batch complete: processed=1 updated=1 failed=0", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-10/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-10/test_run_agent_refreshes_resum0", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Collected 7 error markers", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-10/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Verification completed with python=skipped tests=skipped", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-10/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Backed up resume file to /tmp/pytest-of-node/pytest-10/test_run_agent_refreshes_resum0/.backup/resumefromhere/resumefromhere.20260721T225023Z.bak", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Preflight checks completed successfully", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Preparing Ollama prompt with repository context", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Generating Ollama prompt with 6 task entries", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Calling Ollama with timeout=600s and model=llama3.2:3b", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Ollama CLI detected at /usr/local/bin/ollama", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Ollama service reachable", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Calling Ollama at http://127.0.0.1:11434/api/generate using model llama3.2:3b", "timestamp": "2026-07-21T22:50:23Z"}
+{"level": "info", "message": "Ollama responded successfully", "timestamp": "2026-07-21T22:50:49Z"}
+{"level": "info", "message": "Ollama call completed with status=ok", "timestamp": "2026-07-21T22:50:49Z"}
+{"level": "info", "message": "Starting autonomous loop 6/20", "timestamp": "2026-07-21T22:50:50Z"}
