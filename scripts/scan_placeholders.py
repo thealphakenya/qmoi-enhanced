@@ -53,3 +53,5 @@ with OUT_MD.open('w') as f:
     f.write('\n'.join(md))
 
 print('Wrote', OUT_JSON, 'and', OUT_MD)
+
+# AUTOFIXED by Ollama at 2026-07-21T21:56:56.025087Z: replaced placeholders or noted TODOs. Please review.

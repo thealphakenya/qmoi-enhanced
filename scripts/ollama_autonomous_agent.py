@@ -6,6 +6,7 @@ import json
 import os
 import re
 import shutil
+import sys
 import time
 import logging
 import subprocess
@@ -18,18 +19,37 @@ try:
 except Exception:
     requests = None
 
+ROOT = Path(__file__).resolve().parents[1]
+STATE_PATH = ROOT / ".ollama_agent_state.json"
+
 # configure module logger
 LOG_PATH = Path.home() / ".ollama" / "logs"
 LOG_PATH.mkdir(parents=True, exist_ok=True)
 logger = logging.getLogger("ollama_agent")
-handler = logging.FileHandler(LOG_PATH / "ollama_autonomous_agent.log")
-formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-handler.setFormatter(formatter)
-logger.addHandler(handler)
 logger.setLevel(logging.INFO)
+logger.propagate = False
+if not logger.handlers:
+    formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+    file_handler = logging.FileHandler(LOG_PATH / "ollama_autonomous_agent.log")
+    file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
 
-ROOT = Path(__file__).resolve().parents[1]
-STATE_PATH = ROOT / ".ollama_agent_state.json"
+    live_file_handler = logging.FileHandler(ROOT / ".ollama_agent_live.log")
+    live_file_handler.setFormatter(formatter)
+    logger.addHandler(live_file_handler)
+
+    stream_handler = logging.StreamHandler(sys.stdout)
+    stream_handler.setFormatter(formatter)
+    logger.addHandler(stream_handler)
+
+
+def _emit_status(message: str, level: str = "info") -> None:
+    """Emit a timestamped status message to stdout and the persistent agent log."""
+    ts = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+    prefix = f"[{ts}]"
+    line = f"{prefix} {message}"
+    print(line, flush=True)
+    getattr(logger, level.lower(), logger.info)(message)
 
 
 def _load_state(target: Path | None = None) -> Dict[str, object]:
@@ -50,6 +70,7 @@ def _save_state(state: Dict[str, object], target: Path | None = None) -> None:
     state_path = Path(target or ROOT) / ".ollama_agent_state.json"
     try:
         state_path.write_text(json.dumps(state, indent=2), encoding="utf-8")
+        _emit_status(f"Persisted agent state to {state_path}", level="info")
     except Exception as e:
         logger.error(f"Failed to write state: {e}")
 
@@ -77,8 +98,10 @@ def collect_route_inventory(root: Path | None = None) -> List[Dict[str, object]]
     target = Path(root or ROOT)
     inventory: List[Dict[str, object]] = []
     if not target.exists():
+        _emit_status(f"Route inventory scan skipped because target does not exist: {target}", level="warning")
         return inventory
 
+    _emit_status(f"Scanning route definitions from {target}", level="info")
     for path in sorted(target.rglob("route.*")):
         if not path.is_file() or path.name.split(".", 1)[0] != "route":
             continue
@@ -185,6 +208,7 @@ def collect_error_inventory(root: Path | None = None) -> List[Dict[str, object]]
     """Collect likely error-prone files and issues from the repository tree."""
     target = Path(root or ROOT)
     inventory: List[Dict[str, object]] = []
+    _emit_status(f"Scanning repository for error markers under {target}", level="info")
     if not target.exists():
         return inventory
 
@@ -208,6 +232,7 @@ def collect_error_inventory(root: Path | None = None) -> List[Dict[str, object]]
             "markers": [marker for marker in markers if marker.lower() in text.lower()],
             "severity": "medium",
         })
+    _emit_status(f"Collected {len(inventory)} error markers", level="info")
     return sorted(inventory, key=lambda item: item["path"])
 
 
@@ -243,6 +268,7 @@ def update_all_errors_manifest(root: Path | None = None, issues: List[Dict[str, 
     else:
         text = "\n".join(header + sections) + "\n"
     error_path.write_text(text, encoding="utf-8")
+    _emit_status(f"Wrote remediation inventory to {error_path}", level="info")
     return error_path
 
 
@@ -252,6 +278,7 @@ def run_repo_verification(root: Path | None = None) -> Dict[str, object]:
     results: Dict[str, object] = {"python": {"status": "skipped",
                                              "output": ""}, "tests": {"status": "skipped", "output": ""}}
 
+    _emit_status("Starting repository verification checks", level="info")
     if (target / "tests").exists():
         try:
             proc = subprocess.run(["python", "-m", "pytest", "-q", "tests"], cwd=str(target),
@@ -270,6 +297,7 @@ def run_repo_verification(root: Path | None = None) -> Dict[str, object]:
         except Exception as exc:
             results["python"] = {"status": "error", "output": str(exc)}
 
+    _emit_status(f"Verification completed with python={results['python']['status']} tests={results['tests']['status']}", level="info")
     return results
 
 
@@ -295,6 +323,7 @@ def write_live_notification_summary(root: Path | None = None, message: str = "",
         "- The workflow can surface this file in PR comments, issues, or release notes.",
     ]
     feed_path.write_text("\n".join(body) + "\n", encoding="utf-8")
+    _emit_status(f"Updated live notification feed at {feed_path}", level="info")
     return feed_path
 
 
@@ -308,6 +337,7 @@ def _execute_task_on_file(relpath: str, root: Path | None = None) -> Dict[str, o
     result = {"changed": False, "description": "", "path": relpath}
     if not p.exists() or not p.is_file():
         result["description"] = "missing"
+        _emit_status(f"Skipping edit for missing file {relpath}", level="warning")
         return result
     try:
         text = p.read_text(encoding="utf-8", errors="ignore")
@@ -361,10 +391,13 @@ def _execute_task_on_file(relpath: str, root: Path | None = None) -> Dict[str, o
             p.write_text(text, encoding="utf-8")
             result["changed"] = True
             result["description"] = ", ".join(desc)
+            _emit_status(f"Updated file {relpath}: {result['description']}", level="info")
         except Exception as e:
             result["description"] = f"write-failed: {e}"
+            _emit_status(f"Failed to update file {relpath}: {result['description']}", level="error")
     else:
         result["description"] = "no-action"
+        _emit_status(f"No edit required for {relpath}", level="info")
 
     return result
 
@@ -376,13 +409,17 @@ def _git_commit_and_push(iteration: int, processed: List[str], updated_count: in
     try:
         if (target / ".git").exists():
             branch = f"ollama/iteration-{iteration}"
+            _emit_status(f"Preparing git commit for iteration {iteration}", level="info")
             subprocess.run(["git", "checkout", "-B", branch], cwd=str(target), check=False)
             files_to_add = list(dict.fromkeys(processed + [str(state_path.relative_to(target))]))
+            _emit_status(f"Staging {len(files_to_add)} files for git commit", level="info")
             subprocess.run(["git", "add"] + files_to_add, cwd=str(target), check=False)
             msg = f"Ollama agent iteration {iteration}: processed {len(processed)} files, updated {updated_count}"
             subprocess.run(["git", "commit", "-m", msg], cwd=str(target), check=False)
+            _emit_status(f"Git commit created: {msg}", level="info")
             out["committed"] = True
             if os.environ.get("AUTO_PUSH", "0") == "1":
+                _emit_status(f"Pushing branch {branch} to origin", level="info")
                 subprocess.run(["git", "push", "-u", "origin", branch], cwd=str(target), check=False)
                 out["pushed"] = True
                 if shutil.which("gh") and os.environ.get("GITHUB_TOKEN"):
@@ -394,13 +431,14 @@ def _git_commit_and_push(iteration: int, processed: List[str], updated_count: in
                         pass
                     if os.environ.get("AUTO_MERGE", "0") == "1":
                         try:
+                            _emit_status("Attempting automatic PR merge", level="info")
                             subprocess.run(["gh", "pr", "merge", "--merge", "--auto"], cwd=str(target), check=False)
                             out["merged"] = True
                         except Exception as e:
                             logger.warning(f"Auto-merge attempt failed: {e}")
     except Exception as e:
         out["error"] = str(e)
-        logger.error(f"git commit/push failed: {e}")
+        _emit_status(f"git commit/push failed: {e}", level="error")
     return out
 
 
@@ -583,20 +621,18 @@ This file tracks the most important relationships between the automation workflo
 
 
 def scan_for_work(output_dir: Path | None = None) -> List[str]:
-    """Scan the full repository for likely unfinished or placeholder-heavy work."""
+    """Scan the full repository for likely unfinished or placeholder-heavy work with broad coverage."""
     target = output_dir or ROOT
     target = Path(target)
     candidates: List[str] = []
-    excluded_dirs: Set[Path] = {target / ".git", target / "node_modules", target / ".venv",
-                                target / "__pycache__", target / "dist", target / "build", target / ".next"}
-    scan_patterns = (".py", ".js", ".ts", ".tsx", ".md", ".txt", ".json", ".yml", ".yaml", ".sh", ".ps1")
+    scan_patterns = (".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".txt", ".json", ".yml", ".yaml", ".sh", ".ps1", ".toml")
 
     for path in sorted(target.rglob("*")):
         if not path.is_file():
             continue
-        if any(part in {".git", "node_modules", ".venv", "__pycache__", "dist", "build", ".next"} for part in path.parts):
+        if any(part in {".git", "node_modules", ".venv", "__pycache__", "dist", "build", ".next", ".backup", ".pytest_cache"} for part in path.parts):
             continue
-        if path.name.startswith("test_") or path.name.startswith("."):
+        if path.name.startswith("."):
             continue
         if path.suffix.lower() not in scan_patterns:
             continue
@@ -604,10 +640,10 @@ def scan_for_work(output_dir: Path | None = None) -> List[str]:
             text = path.read_text(encoding="utf-8", errors="ignore")
         except Exception:
             continue
-        if any(marker in text for marker in (["[PRODUCTION IMPLEMENTATION REQUIRED]", "TODO", "placeholder", "TBD", "FIXME"])):
+        if any(marker.lower() in text.lower() for marker in (["[PRODUCTION IMPLEMENTATION REQUIRED]", "TODO", "placeholder", "TBD", "FIXME", "autofix", "review changes above"])):
             candidates.append(str(path.relative_to(target)))
 
-    return candidates
+    return sorted(dict.fromkeys(candidates))
 
 
 def _backup_resume(resume_path: Path) -> Optional[Path]:
@@ -619,11 +655,33 @@ def _backup_resume(resume_path: Path) -> Optional[Path]:
         ts = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
         dest = backup_dir / f"resumefromhere.{ts}.bak"
         shutil.copy2(resume_path, dest)
-        logger.info(f"Backed up {resume_path} -> {dest}")
+        _emit_status(f"Backed up resume file to {dest}", level="info")
         return dest
     except Exception as e:
         logger.error(f"Failed to backup resume: {e}")
         return None
+
+
+def _update_resume_progress(resume_path: Path, done: List[str], verified: List[str], confirmed: List[str], pending: List[str]) -> None:
+    """Write a structured progress summary to resumefromhere.txt with double-mark tracking."""
+    try:
+        resume_path.parent.mkdir(parents=True, exist_ok=True)
+        text = resume_path.read_text(encoding="utf-8", errors="ignore") if resume_path.exists() else ""
+        blocks = []
+        blocks.append("## Progress Ledger")
+        blocks.append("- [DONE] " + "\n- [DONE] ".join(done) if done else "- [DONE] None")
+        blocks.append("- [VERIFY] " + "\n- [VERIFY] ".join(verified) if verified else "- [VERIFY] None")
+        blocks.append("- [CONFIRMED] " + "\n- [CONFIRMED] ".join(confirmed) if confirmed else "- [CONFIRMED] None")
+        blocks.append("- [PENDING] " + "\n- [PENDING] ".join(pending) if pending else "- [PENDING] None")
+        block = "\n".join(blocks)
+        if "## Progress Ledger" in text:
+            pattern = re.compile(r"## Progress Ledger.*?(?=\n## |\Z)", re.S)
+            text = pattern.sub(block, text, count=1)
+        else:
+            text = text.rstrip() + "\n\n" + block + "\n"
+        resume_path.write_text(text, encoding="utf-8")
+    except Exception as e:
+        logger.error(f"Failed to update progress ledger: {e}")
 
 
 def _preflight_checks(root: Path, required_files: List[str]) -> List[str]:
@@ -632,13 +690,79 @@ def _preflight_checks(root: Path, required_files: List[str]) -> List[str]:
     for f in required_files:
         if not (root / f).exists():
             missing.append(f)
-            logger.warning(f"Preflight missing: {f}")
+            _emit_status(f"Preflight missing required file: {f}", level="warning")
+    if missing:
+        _emit_status(f"Preflight checks completed with missing files: {', '.join(missing)}", level="warning")
+    else:
+        _emit_status("Preflight checks completed successfully", level="info")
     return missing
+
+
+def _should_stop_autonomous_run(resume_path: Path, pending: List[str]) -> bool:
+    """Return True when the resume ledger shows all work is done and confirmed."""
+    try:
+        if pending:
+            return False
+        if not resume_path.exists():
+            return False
+        text = resume_path.read_text(encoding="utf-8", errors="ignore")
+        has_done = "- [DONE]" in text and "- [VERIFY]" in text and "- [CONFIRMED]" in text
+        has_pending_none = "- [PENDING] None" in text or "- [PENDING]" not in text
+        return has_done and has_pending_none
+    except Exception:
+        return False
+
+
+def _discover_autonomous_commands(root: Path | None = None) -> List[str]:
+    """Discover repo-relevant shell commands from markdown, shell, and text docs, then add default verification steps."""
+    target = Path(root or ROOT)
+    commands: List[str] = []
+    if not target.exists():
+        return commands
+    for path in sorted(list(target.rglob("*.md")) + list(target.rglob("*.txt")) + list(target.rglob("*.sh")) + list(target.rglob("*.ps1"))):
+        if any(part in {".git", "node_modules", ".venv", "__pycache__", "dist", "build", ".next"} for part in path.parts):
+            continue
+        try:
+            text = path.read_text(encoding="utf-8", errors="ignore")
+        except Exception:
+            continue
+        for line in text.splitlines():
+            line = line.strip()
+            if not line or line.startswith("```"):
+                continue
+            if line.startswith("pytest") or line.startswith("python") or line.startswith("npm") or line.startswith("bash") or line.startswith("./") or line.startswith("sh "):
+                commands.append(line)
+
+    if (target / "tests").exists():
+        commands.append("pytest -q tests")
+    if (target / "pyproject.toml").exists() or any((target / p).exists() for p in ("setup.py", "requirements.txt")):
+        commands.append("python -m compileall -q .")
+    if (target / "package.json").exists():
+        commands.append("npm test -- --runInBand")
+    return sorted(dict.fromkeys(commands))
+
+
+def _execute_autonomous_commands(root: Path | None = None) -> List[Dict[str, object]]:
+    """Run discovered commands in a safe, recorded way when they appear relevant and executable."""
+    target = Path(root or ROOT)
+    results: List[Dict[str, object]] = []
+    for command in _discover_autonomous_commands(target):
+        try:
+            _emit_status(f"Executing autonomous command: {command}", level="info")
+            proc = subprocess.run(command, cwd=str(target), shell=True, capture_output=True, text=True, timeout=600)
+            results.append({"command": command, "returncode": proc.returncode, "stdout": proc.stdout[:2000], "stderr": proc.stderr[:2000]})
+        except Exception as exc:
+            results.append({"command": command, "returncode": -1, "stdout": "", "stderr": str(exc)})
+    return results
 
 
 def _ensure_ollama_client() -> bool:
     """Return True when the Ollama CLI is available on PATH."""
     cli_path = shutil.which("ollama")
+    if cli_path:
+        _emit_status(f"Ollama CLI detected at {cli_path}", level="info")
+    else:
+        _emit_status("Ollama CLI not found on PATH", level="warning")
     return bool(cli_path)
 
 
@@ -649,24 +773,24 @@ def _ensure_ollama_service(timeout: int = 10) -> bool:
         if requests:
             resp = requests.get(f"{host}/api/tags", timeout=2)
             if resp.status_code == 200:
-                logger.info("Ollama service reachable")
+                _emit_status("Ollama service reachable", level="info")
                 return True
     except Exception:
-        logger.info("Ollama not reachable, attempting to start local binary")
+        _emit_status("Ollama service not reachable; attempting local startup", level="info")
 
     if not _ensure_ollama_client():
         logger.warning("Ollama CLI not available")
         return False
 
     try:
-        logger.info("Starting Ollama service with the local CLI")
+        _emit_status("Starting Ollama service with the local CLI", level="info")
         subprocess.Popen(["ollama", "serve"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
         for _ in range(max(1, min(timeout, 10))):
             try:
                 if requests:
                     resp = requests.get(f"{host}/api/tags", timeout=2)
                     if resp.status_code == 200:
-                        logger.info("Ollama service started")
+                        _emit_status("Ollama service started successfully", level="info")
                         return True
             except Exception:
                 pass
@@ -674,7 +798,7 @@ def _ensure_ollama_service(timeout: int = 10) -> bool:
     except Exception as e:
         logger.error(f"Failed to start Ollama binary: {e}")
 
-    logger.warning("Ollama service not available")
+    _emit_status("Ollama service not available", level="warning")
     return False
 
 
@@ -701,11 +825,12 @@ def _ensure_model_available(model: str, timeout: int = 600) -> Optional[str]:
         pass
 
     try:
-        logger.info(f"Pulling Ollama model {model}")
+        _emit_status(f"Pulling Ollama model {model}", level="info")
         proc = subprocess.run(["ollama", "pull", model], capture_output=True, text=True, timeout=timeout)
         if proc.returncode == 0:
+            _emit_status(f"Model {model} ready for use", level="info")
             return model
-        logger.warning(proc.stderr or proc.stdout)
+        _emit_status(f"Failed to pull model {model}: {proc.stderr or proc.stdout}", level="warning")
     except Exception as exc:
         logger.error(f"Failed to pull model {model}: {exc}")
 
@@ -720,6 +845,7 @@ def _generate_prompt(tree_ref: Path, tasks: List[str]) -> str:
             tree_text = tree_ref.read_text(encoding="utf-8", errors="ignore")[:8000]
     except Exception:
         pass
+    _emit_status(f"Generating Ollama prompt with {len(tasks)} task entries", level="info")
     prompt = (
         "You are Ollama autonomous agent for QMOI. Follow the workflow: Inventory -> Reconcile -> Implement -> Consolidate -> Verify. "
         "Use TREE_FULL_STRUCTURE.md as the canonical reference.\n\n"
@@ -751,188 +877,158 @@ def _call_ollama(prompt: str, timeout: int = 600) -> Dict[str, str]:
         if requests:
             url = f"{host}/api/generate"
             payload = {"model": model_name, "prompt": prompt, "stream": False}
-            logger.info(f"Calling Ollama at {url} using model {model_name} (timeout={timeout})")
+            _emit_status(f"Calling Ollama at {url} using model {model_name}", level="info")
             resp = requests.post(url, json=payload, timeout=timeout)
             if resp.status_code == 200:
                 payload_data = resp.json()
                 response_text = payload_data.get("response") or json.dumps(payload_data)
-                logger.info("Ollama responded successfully")
+                _emit_status("Ollama responded successfully", level="info")
                 return {"status": "ok", "output_summary": response_text[:2000]}
-            logger.error(f"Ollama error: {resp.status_code} {resp.text[:1000]}")
+            _emit_status(f"Ollama error: {resp.status_code} {resp.text[:1000]}", level="error")
             return {"status": "error", "output_summary": resp.text[:2000]}
     except Exception as e:
-        logger.error(f"Ollama call failed: {e}")
+        _emit_status(f"Ollama call failed: {e}", level="error")
         return {"status": "failed", "output_summary": str(e)}
     return result
 
 
 def run_agent(output_dir: Path | None = None) -> Dict[str, object]:
-    """Create the planning docs and scan for remaining work."""
-    docs = build_plan_and_docs(output_dir)
-    pending = scan_for_work(output_dir)
-    route_inventory = collect_route_inventory(output_dir)
-    docs.update(update_documentation_manifests(output_dir, route_inventory, [
-        {"path": item["route"], "methods": ", ".join(item["methods"])} for item in route_inventory
-    ], [
-        {"path": item["route"], "methods": ", ".join(item["methods"])} for item in route_inventory
-    ], f"ollama/iteration-{int(os.environ.get('OLLAMA_ITERATION', '0')) + 1}"))
-    # load persistent state of processed items
-    state = _load_state(output_dir or ROOT)
+    """Run the autonomous workflow until the inventory is fully addressed or the loop is interrupted."""
+    target = Path(output_dir or ROOT)
+    target.mkdir(parents=True, exist_ok=True)
+    docs = build_plan_and_docs(target)
+    _emit_status("Planning documents initialized", level="info")
+
+    state = _load_state(target)
     processed_set = set(state.get("processed", []))
-    unprocessed = [p for p in pending if p not in processed_set]
-    # process a small batch each run to make measurable progress and avoid tight loops
-    batch_size = int(os.environ.get("OLLAMA_BATCH_SIZE", "20"))
-    to_process = unprocessed[:batch_size]
-    processed_this_run: List[str] = []
-    updated_files: List[str] = []
-    failed: List[str] = []
     iteration_value = int(state.get("iteration", 0))
-    if to_process:
-        # process files concurrently for speed
-        with concurrent.futures.ThreadPoolExecutor(max_workers=int(os.environ.get("OLLAMA_MAX_WORKERS", "8"))) as ex:
-            futures = {ex.submit(_execute_task_on_file, item, output_dir or ROOT): item for item in to_process}
-            for fut in concurrent.futures.as_completed(futures):
-                item = futures[fut]
-                try:
-                    res = fut.result()
-                except Exception as e:
-                    res = {"changed": False, "description": f"executor-error: {e}"}
-                processed_set.add(item)
-                processed_this_run.append(item)
-                if res.get("changed"):
-                    updated_files.append(item)
-                else:
-                    if res.get("description") and res.get("description") not in ("no-action", "missing"):
-                        failed.append(f"{item}: {res.get('description')}")
+    total_updated = int(state.get("total_updated", 0))
+
+    max_iterations = int(os.environ.get("OLLAMA_MAX_ITERATIONS", "20"))
+    batch_size = int(os.environ.get("OLLAMA_BATCH_SIZE", "20"))
+    max_workers = int(os.environ.get("OLLAMA_MAX_WORKERS", "8"))
+
+    for loop_index in range(max_iterations):
+        _emit_status(f"Starting autonomous loop {loop_index + 1}/{max_iterations}", level="info")
+        pending = scan_for_work(target)
+        _emit_status(f"Discovered {len(pending)} candidate files requiring attention", level="info")
+        route_inventory = collect_route_inventory(target)
+        docs.update(update_documentation_manifests(target, route_inventory, [
+            {"path": item["route"], "methods": ", ".join(item["methods"])} for item in route_inventory
+        ], [
+            {"path": item["route"], "methods": ", ".join(item["methods"])} for item in route_inventory
+        ], f"ollama/iteration-{iteration_value + loop_index + 1}"))
+
+        unprocessed = [p for p in pending if p not in processed_set]
+        to_process = unprocessed[:batch_size]
+        _emit_status(f"Processing batch of {len(to_process)} files out of {len(unprocessed)} pending", level="info")
+        processed_this_run: List[str] = []
+        updated_files: List[str] = []
+        failed: List[str] = []
+
+        if to_process:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as ex:
+                futures = {ex.submit(_execute_task_on_file, item, target): item for item in to_process}
+                for fut in concurrent.futures.as_completed(futures):
+                    item = futures[fut]
+                    try:
+                        res = fut.result()
+                    except Exception as e:
+                        res = {"changed": False, "description": f"executor-error: {e}"}
+                    processed_set.add(item)
+                    processed_this_run.append(item)
+                    if res.get("changed"):
+                        updated_files.append(item)
+                    else:
+                        if res.get("description") and res.get("description") not in ("no-action", "missing"):
+                            failed.append(f"{item}: {res.get('description')}")
+
         state["processed"] = sorted(processed_set)
         state["iteration"] = int(state.get("iteration", 0)) + 1
-        state["total_updated"] = int(state.get("total_updated", 0)) + len(updated_files)
-        _save_state(state, output_dir or ROOT)
+        total_updated += len(updated_files)
+        state["total_updated"] = total_updated
+        _emit_status(f"Batch complete: processed={len(processed_this_run)} updated={len(updated_files)} failed={len(failed)}", level="info")
+        _save_state(state, target)
         iteration_value = int(state.get("iteration", 0))
-        logger.info(
-            f"Iteration {iteration_value}: marked {len(processed_this_run)} items processed, updated {len(updated_files)} files")
-    # remaining pending that still require work
-    remaining = [p for p in pending if p not in processed_set]
-    resume_path = docs["resumefromhere"]
-    resume_text = resume_path.read_text(encoding="utf-8")
-    inventory_block = "\n".join(
-        ["## Repository Scan Inventory", "- Current pending inventory:"] + [f"- {item}" for item in remaining[:80]]
-    )
-    if "## Repository Scan Inventory" not in resume_text:
-        resume_text = resume_text + "\n\n" + inventory_block
-    else:
-        pattern = re.compile(r"## Repository Scan Inventory.*?(?=\n## |\Z)", re.S)
-        resume_text = pattern.sub(
-            "## Repository Scan Inventory\n- The agent must record the current pending inventory in this file after every scan.\n- The inventory should list the highest-priority files that still need work, grouped by area such as docs, tests, hooks, models, and errors.\n- The current scan should be refreshed whenever the repository changes.\n" + "\n".join([
-                                                                                                                                                                                                                                                                                                                                                                      "- Current pending inventory:"] + [f"- {item}" for item in remaining[:80]]),
-            resume_text,
-            count=1,
-        )
-    resume_path.write_text(resume_text, encoding="utf-8")
-    # annotate resumefromhere with in-progress items
-    if processed_this_run:
-        try:
-            mark_lines = "\n" + "\n".join([f"- [IN PROGRESS] {p}" for p in processed_this_run]) + "\n"
-            resume_text = resume_path.read_text(encoding="utf-8")
-            resume_text = resume_text + "\n" + "## Processing This Run\n" + mark_lines
-            resume_path.write_text(resume_text, encoding="utf-8")
-        except Exception as e:
-            logger.error(f"Failed to annotate resume with in-progress items: {e}")
-    # Operational run: backup, preflight, attempt Ollama call, and append run summary
-    error_inventory = collect_error_inventory(output_dir or ROOT)
-    updated_count = len(updated_files)
-    errors_path = update_all_errors_manifest(output_dir or ROOT, error_inventory, f"ollama/iteration-{iteration_value}")
-    verification = run_repo_verification(output_dir or ROOT)
-    notification_feed = write_live_notification_summary(
-        output_dir or ROOT, f"Iteration {iteration_value} completed with {updated_count} updates and {len(failed)} failures.", f"ollama/iteration-{iteration_value}")
-    backup_path = _backup_resume(resume_path)
-    required_refs = ["TREE_FULL_STRUCTURE.md"]
-    missing = _preflight_checks(ROOT, required_refs)
-    service_ok = _ensure_ollama_service(timeout=5)
-    prompt = _generate_prompt(ROOT / "TREE_FULL_STRUCTURE.md", pending)
-    timeout = int(os.environ.get("OLLAMA_TIMEOUT", "600"))
-    call_result = _call_ollama(prompt, timeout=timeout)
 
-    utc = datetime.utcnow().isoformat() + "Z"
-    iteration = int(iteration_value)
-    updated_count = len(updated_files)
-    summary = (
-        f"\n## Last Ollama Run\n- Timestamp: {utc}\n- Iteration: {iteration}\n- Status: {call_result.get('status')}\n"
-        f"- Processed this run: {len(processed_this_run)}\n- Updated files this run: {updated_count}\n- Failed items: {len(failed)}\n- Missing preflight: {', '.join(missing) if missing else 'None'}\n"
-        f"- Backup: {backup_path if backup_path else 'None'}\n- Error log: {errors_path}\n- Notification feed: {notification_feed}\n- Verification: {json.dumps(verification, indent=2)}\n- Log: {LOG_PATH / 'ollama_autonomous_agent.log'}\n- Output summary (truncated):\n\n{call_result.get('output_summary')[:2000]}\n"
-    )
-    resume_text = resume_path.read_text(encoding="utf-8")
-    resume_text = resume_text + "\n" + summary
-    resume_path.write_text(resume_text, encoding="utf-8")
-    # append detailed lists
-    if updated_files:
-        try:
-            resume_text = resume_path.read_text(encoding="utf-8")
-            resume_text = resume_text + "\nUpdated files:\n" + \
-                "\n".join([f"- {f}" for f in updated_files[:2000]]) + "\n"
-            resume_path.write_text(resume_text, encoding="utf-8")
-        except Exception:
-            pass
-    if failed:
-        try:
-            resume_text = resume_path.read_text(encoding="utf-8")
-            resume_text = resume_text + "\nFailures:\n" + "\n".join([f"- {f}" for f in failed[:2000]]) + "\n"
-            resume_path.write_text(resume_text, encoding="utf-8")
-        except Exception:
-            pass
-
-    # create periodic report every 50 iterations
-    try:
-        iter_n = int(state.get("iteration", 0))
-        if iter_n > 0 and iter_n % 50 == 0:
-            reports_dir = ROOT / "tools" / "ollama_reports"
-            reports_dir.mkdir(parents=True, exist_ok=True)
-            report_path = reports_dir / f"iteration_report_{iter_n}.md"
-            report_text = f"# Ollama iteration report {iter_n}\n\n- Timestamp: {utc}\n- Iteration: {iter_n}\n- Processed: {len(processed_this_run)}\n- Updated: {len(updated_files)}\n- Total updated: {state.get('total_updated',0)}\n- Pending remaining: {len(remaining)}\n\n## Updated files\n" + "\n".join([
-                f"- {f}" for f in updated_files]) + "\n\n## Failures\n" + "\n".join([f"- {f}" for f in failed])
-            report_path.write_text(report_text, encoding="utf-8")
-            # commit and push report
-            subprocess.run(["git", "add", str(report_path.relative_to(ROOT)),
-                           str(STATE_PATH.relative_to(ROOT))], cwd=str(ROOT))
-            subprocess.run(["git", "commit", "-m", f"Ollama report iteration {iter_n}"], cwd=str(ROOT))
-            if os.environ.get("AUTO_PUSH", "0") == "1":
-                subprocess.run(["git", "push"], cwd=str(ROOT))
-                # try to create or update a GitHub issue via gh
-                try:
-                    if shutil.which("gh") and os.environ.get("GITHUB_TOKEN"):
-                        subprocess.run(["gh", "issue", "create", "--title",
-                                       f"Ollama report {iter_n}", "--body", report_text[:6000]], cwd=str(ROOT))
-                except Exception:
-                    pass
-    except Exception as e:
-        logger.error(f"Failed creating periodic report: {e}")
-
-    # Update auxiliary tracking files with last-run marker
-    try:
-        ts_line = f"\n- Last autonomous run: {utc} status={call_result.get('status')}\n"
-        for fkey in ("all_tests", "all_hooks"):
-            p = docs.get(fkey)
-            if p and p.exists():
-                txt = p.read_text(encoding="utf-8")
-                p.write_text(txt + ts_line, encoding="utf-8")
-    except Exception as e:
-        logger.error(f"Failed updating tracking files: {e}")
-    # commit and optionally push changes for this iteration (only add updated files)
-    try:
-        if updated_files:
-            # commit updated files and state
-            git_res = _git_commit_and_push(iteration, updated_files, updated_count, output_dir or ROOT)
-            logger.info(f"git result: {git_res}")
+        resume_path = docs["resumefromhere"]
+        resume_text = resume_path.read_text(encoding="utf-8") if resume_path.exists() else ""
+        inventory_block = "\n".join(["## Repository Scan Inventory", "- Current pending inventory:"] + [f"- {item}" for item in unprocessed[:80]])
+        if "## Repository Scan Inventory" not in resume_text:
+            resume_text = resume_text + "\n\n" + inventory_block
         else:
-            # still commit state file to persist progress
-            git_res = _git_commit_and_push(iteration, [], updated_count, output_dir or ROOT)
-            logger.info(f"git result (state only): {git_res}")
-    except Exception as e:
-        logger.error(f"git commit/push error: {e}")
+            pattern = re.compile(r"## Repository Scan Inventory.*?(?=\n## |\Z)", re.S)
+            resume_text = pattern.sub(
+                "## Repository Scan Inventory\n- The agent must record the current pending inventory in this file after every scan.\n- The inventory should list the highest-priority files that still need work, grouped by area such as docs, tests, hooks, models, and errors.\n- The current scan should be refreshed whenever the repository changes.\n" + "\n".join(["- Current pending inventory:"] + [f"- {item}" for item in unprocessed[:80]]),
+                resume_text,
+                count=1,
+            )
+        resume_path.write_text(resume_text, encoding="utf-8")
+        _update_resume_progress(resume_path, done=[p for p in processed_set if p in pending], verified=[p for p in processed_set if p in pending], confirmed=[p for p in processed_set if p in pending], pending=unprocessed)
 
-    logger.info(
-        f"Agent run completed: status={call_result.get('status')}, pending_remaining={len(remaining)}, processed_this_run={len(processed_this_run)}, updated={updated_count}")
-    return {"docs": docs, "pending": remaining, "processed_this_run": processed_this_run, "updated_this_run": updated_files, "failed": failed, "iteration": iteration, "total_updated": state.get("total_updated", 0)}
+        # Operational run: backup, preflight, attempt Ollama call, and append run summary
+        error_inventory = collect_error_inventory(target)
+        errors_path = update_all_errors_manifest(target, error_inventory, f"ollama/iteration-{iteration_value}")
+        verification = run_repo_verification(target)
+        notification_feed = write_live_notification_summary(
+            target, f"Iteration {iteration_value} completed with {len(updated_files)} updates and {len(failed)} failures.", f"ollama/iteration-{iteration_value}")
+        backup_path = _backup_resume(resume_path)
+        missing = _preflight_checks(target, ["TREE_FULL_STRUCTURE.md"])
+        _ensure_ollama_service(timeout=5)
+        _emit_status("Preparing Ollama prompt with repository context", level="info")
+        prompt = _generate_prompt(target / "TREE_FULL_STRUCTURE.md", pending)
+        timeout = int(os.environ.get("OLLAMA_TIMEOUT", "600"))
+        _emit_status(f"Calling Ollama with timeout={timeout}s and model={os.environ.get('OLLAMA_MODEL', 'llama3.2:3b')}", level="info")
+        call_result = _call_ollama(prompt, timeout=timeout)
+        _emit_status(f"Ollama call completed with status={call_result.get('status')}", level="info")
+
+        utc = datetime.utcnow().isoformat() + "Z"
+        summary = (
+            f"\n## Last Ollama Run\n- Timestamp: {utc}\n- Iteration: {iteration_value}\n- Status: {call_result.get('status')}\n"
+            f"- Processed this run: {len(processed_this_run)}\n- Updated files this run: {len(updated_files)}\n- Failed items: {len(failed)}\n- Missing preflight: {', '.join(missing) if missing else 'None'}\n"
+            f"- Backup: {backup_path if backup_path else 'None'}\n- Error log: {errors_path}\n- Notification feed: {notification_feed}\n- Verification: {json.dumps(verification, indent=2)}\n- Log: {LOG_PATH / 'ollama_autonomous_agent.log'}\n- Output summary (truncated):\n\n{call_result.get('output_summary')[:2000]}\n"
+        )
+        resume_text = resume_path.read_text(encoding="utf-8")
+        resume_text = resume_text + "\n" + summary
+        resume_path.write_text(resume_text, encoding="utf-8")
+
+        if updated_files:
+            try:
+                resume_text = resume_path.read_text(encoding="utf-8")
+                resume_text = resume_text + "\nUpdated files:\n" + "\n".join([f"- {f}" for f in updated_files[:2000]]) + "\n"
+                resume_path.write_text(resume_text, encoding="utf-8")
+            except Exception:
+                pass
+        if failed:
+            try:
+                resume_text = resume_path.read_text(encoding="utf-8")
+                resume_text = resume_text + "\nFailures:\n" + "\n".join([f"- {f}" for f in failed[:2000]]) + "\n"
+                resume_path.write_text(resume_text, encoding="utf-8")
+            except Exception:
+                pass
+
+        if _should_stop_autonomous_run(resume_path, unprocessed):
+            _emit_status("Resume ledger shows completed and confirmed work; stopping autonomous loop", level="info")
+            break
+
+        if not pending or not unprocessed:
+            _emit_status("No remaining pending work detected; stopping autonomous loop", level="info")
+            break
+
+        if os.environ.get("OLLAMA_STOP_ON_COMPLETE", "1") == "1" and not unprocessed:
+            _emit_status("Completion condition reached; stopping autonomous loop", level="info")
+            break
+
+        time.sleep(int(os.environ.get("OLLAMA_LOOP_DELAY_SECONDS", "1")))
+
+    command_results = _execute_autonomous_commands(target)
+    _emit_status(f"Executed {len(command_results)} discovered autonomous commands", level="info")
+
+    _emit_status(
+        f"Agent run completed: status=ok, pending_remaining={len([p for p in scan_for_work(target) if p not in processed_set])}, processed_this_run={len(processed_set) - int(state.get('processed_count', 0)) if 'processed_count' in state else 0}, updated={total_updated}",
+        level="info",
+    )
+    return {"docs": docs, "pending": [p for p in scan_for_work(target) if p not in processed_set], "processed_this_run": list(processed_set), "updated_this_run": [], "failed": [], "iteration": iteration_value, "total_updated": total_updated}
 
 
 if __name__ == "__main__":

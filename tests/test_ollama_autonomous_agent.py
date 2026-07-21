@@ -1,6 +1,8 @@
 import importlib.util
 from pathlib import Path
 
+import pytest
+
 
 def load_module():
     module_path = Path(__file__).resolve().parents[1] / "scripts" / "ollama_autonomous_agent.py"
@@ -74,6 +76,75 @@ def test_update_documentation_manifests_writes_required_docs(tmp_path):
     assert (tmp_path / "MERGE.md").exists()
     assert "api/alpha" in (tmp_path / "ROUTES.md").read_text(encoding="utf-8")
     assert docs["merge"].exists()
+
+
+def test_ensure_ollama_client_detects_available_binary(monkeypatch):
+    module = load_module()
+
+    monkeypatch.setattr(module.shutil, "which", lambda name: "/usr/bin/ollama" if name == "ollama" else None)
+
+    assert module._ensure_ollama_client() is True
+
+
+def test_emit_status_prints_to_terminal_and_logs(capsys):
+    module = load_module()
+
+    module._emit_status("live progress message", level="info")
+
+    captured = capsys.readouterr()
+    assert "live progress message" in captured.out
+
+
+def test_update_resume_progress_writes_double_marks(tmp_path):
+    module = load_module()
+    resume_path = tmp_path / "resumefromhere.txt"
+    resume_path.write_text("# Resume\n\n## Repository Scan Inventory\n- pending item\n", encoding="utf-8")
+
+    module._update_resume_progress(
+        resume_path,
+        done=["alpha.py"],
+        verified=["alpha.py"],
+        confirmed=["alpha.py"],
+        pending=["beta.py"],
+    )
+
+    text = resume_path.read_text(encoding="utf-8")
+    assert "[DONE] alpha.py" in text
+    assert "[CONFIRMED] alpha.py" in text
+    assert "[PENDING] beta.py" in text
+
+
+def test_should_stop_only_when_resume_is_confirmed(tmp_path):
+    module = load_module()
+    resume_path = tmp_path / "resumefromhere.txt"
+    resume_path.write_text(
+        "# Resume\n\n## Progress Ledger\n- [DONE] alpha.py\n- [VERIFY] alpha.py\n- [CONFIRMED] alpha.py\n- [PENDING] None\n",
+        encoding="utf-8",
+    )
+
+    assert module._should_stop_autonomous_run(resume_path, pending=[])
+    assert not module._should_stop_autonomous_run(resume_path, pending=["beta.py"])
+
+
+def test_discover_autonomous_commands_reads_repo_docs(tmp_path):
+    module = load_module()
+    readme = tmp_path / "README.md"
+    readme.write_text("# Example\n\n```bash\npytest -q tests\n```\n", encoding="utf-8")
+
+    commands = module._discover_autonomous_commands(tmp_path)
+
+    assert any("pytest -q tests" in command for command in commands)
+
+
+def test_discover_autonomous_commands_adds_default_verification_steps(tmp_path):
+    module = load_module()
+    (tmp_path / "tests").mkdir()
+    (tmp_path / "pyproject.toml").write_text("[tool.pytest.ini_options]\n", encoding="utf-8")
+
+    commands = module._discover_autonomous_commands(tmp_path)
+
+    assert any("pytest -q tests" in command for command in commands)
+    assert any("compileall" in command for command in commands)
 
 
 def test_write_live_notification_summary_creates_feed(tmp_path):

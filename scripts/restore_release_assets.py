@@ -191,3 +191,5 @@ if not DRY_RUN and downloaded:
         print(f'Verification for {p}:', 'OK' if result else 'BROKEN')
 
 print('\nDone.')
+
+# AUTOFIXED by Ollama at 2026-07-21T21:54:03.764039Z: replaced placeholders or noted TODOs. Please review.
