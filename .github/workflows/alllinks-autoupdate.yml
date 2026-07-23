@@ -51,7 +51,7 @@ jobs:
       - name: Create Pull Request with changes
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
           commit-message: "chore: update ALLLINKS.md and link index"
           branch: "autoupdate/alllinks-${{ github.run_id }}"
           title: "Auto-update ALLLINKS.md"

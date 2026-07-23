@@ -1,60 +1,53 @@
 # Ollama Debug Log
 
-# Ollama Debug Log
-
-# Ollama Debug Log
-
-# Ollama Debug Log
-
-# Ollama Debug Log
-
-# Ollama Debug Log
-
-# Ollama Debug Log
-
-# Ollama Debug Log
-
-# Ollama Debug Log
-
-# Ollama Debug Log
-
-# Ollama Debug Log
-
-# Ollama Debug Log
-
-# Ollama Debug Log
-
-# Ollama Debug Log
-
-# Ollama Debug Log
-
-# Ollama Debug Log
-
-# Ollama Debug Log
-
-# Ollama Debug Log
-
-# Ollama Debug Log
-
-# Ollama Debug Log
-
-- [2026-07-21T23:02:43Z] INFO: Updated file ollama.md: appended checked footer
-- [2026-07-21T23:02:43Z] INFO: Batch complete: processed=5 updated=4 failed=0
-- [2026-07-21T23:02:43Z] INFO: Persisted agent state to /tmp/pytest-of-node/pytest-14/test_run_agent_refreshes_resum0/.ollama_agent_state.json
-- [2026-07-21T23:02:43Z] INFO: Scanning repository for error markers under /tmp/pytest-of-node/pytest-14/test_run_agent_refreshes_resum0
-- [2026-07-21T23:02:43Z] INFO: Collected 5 error markers
-- [2026-07-21T23:02:43Z] INFO: Wrote remediation inventory to /tmp/pytest-of-node/pytest-14/test_run_agent_refreshes_resum0/ALLERRORS.md
-- [2026-07-21T23:02:43Z] INFO: Starting repository verification checks
-- [2026-07-21T23:02:43Z] INFO: Verification completed with python=skipped tests=skipped
-- [2026-07-21T23:02:43Z] INFO: Updated live notification feed at /tmp/pytest-of-node/pytest-14/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md
-- [2026-07-21T23:02:43Z] INFO: Backed up resume file to /tmp/pytest-of-node/pytest-14/test_run_agent_refreshes_resum0/.backup/resumefromhere/resumefromhere.20260721T230243Z.bak
-- [2026-07-21T23:02:43Z] INFO: Preflight checks completed successfully
-- [2026-07-21T23:02:43Z] INFO: Ollama service reachable
-- [2026-07-21T23:02:43Z] INFO: Preparing Ollama prompt with repository context
-- [2026-07-21T23:02:43Z] INFO: Generating Ollama prompt with 5 task entries
-- [2026-07-21T23:02:43Z] INFO: Calling Ollama with timeout=600s and model=llama3.2:3b
-- [2026-07-21T23:02:43Z] INFO: Ollama CLI detected at /usr/local/bin/ollama
-- [2026-07-21T23:02:43Z] INFO: Ollama service reachable
-- [2026-07-21T23:02:43Z] INFO: Ollama CLI detected at /usr/local/bin/ollama
-- [2026-07-21T23:02:43Z] INFO: Ollama service reachable
-- [2026-07-21T23:02:43Z] INFO: Calling Ollama at http://127.0.0.1:11434/api/generate using model llama3.2:3b
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_build_plan_and_docs_creat0/MATCHES.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/resumefromhere.txt
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/Trade.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/ollama.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/QMOIMODEL.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/QMOIMODELTESTS.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/ALLTESTSAUOTOTESTS.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/ALLHOOKSWEBHOOKS.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/MATCHES.md
+- [2026-07-23T23:43:25Z] INFO: Persisted agent state to /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/.ollama_agent_state.json
+- [2026-07-23T23:43:25Z] INFO: Detected changes in resumefromhere.txt; refreshing execution plan.
+- [2026-07-23T23:43:25Z] INFO: Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260723T234325Z.bak
+- [2026-07-23T23:43:25Z] INFO: Updated resumefromhere progress: /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/resumefromhere.txt
+- [2026-07-23T23:43:25Z] INFO: Scanning route definitions from /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0
+- [2026-07-23T23:43:25Z] INFO: Scanning route definitions from /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0
+- [2026-07-23T23:43:25Z] INFO: Updated API.md
+- [2026-07-23T23:43:25Z] INFO: Updated ENDPOINTS.md
+- [2026-07-23T23:43:25Z] INFO: Updated ROUTES.md
+- [2026-07-23T23:43:25Z] INFO: Updated MERGE.md
+- [2026-07-23T23:43:25Z] INFO: Scanning repository for error markers under /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0
+- [2026-07-23T23:43:25Z] INFO: Collected 2 error markers
+- [2026-07-23T23:43:25Z] INFO: Wrote remediation inventory to /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/ALLERRORS.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/ALLBACKEND.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/ALLUI.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/ALLFRONTEND.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/ALLPORTS.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/UNIVERSALS.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/STYLES.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/QMOIAIUI.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/QMOISPACEUI.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/QALPHAUI.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/QCITYUI.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/DOCS.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/production.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/productionenhanced.md
+- [2026-07-23T23:43:25Z] INFO: Updated live notification feed at /tmp/pytest-of-node/pytest-22/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md
+- [2026-07-23T23:43:25Z] INFO: Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md
+- [2026-07-23T23:43:25Z] INFO: Run agent completed with 15 pending items
+- [2026-07-23T23:43:25Z] INFO: Scanning route definitions from /tmp/pytest-of-node/pytest-22/test_collect_route_inventory_f0
+- [2026-07-23T23:43:25Z] INFO: Scanning route definitions from /tmp/pytest-of-node/pytest-22/test_update_documentation_mani0
+- [2026-07-23T23:43:25Z] INFO: Updated API.md
+- [2026-07-23T23:43:25Z] INFO: Updated ENDPOINTS.md
+- [2026-07-23T23:43:25Z] INFO: Updated ROUTES.md
+- [2026-07-23T23:43:25Z] INFO: Updated MERGE.md
+- [2026-07-23T23:43:25Z] INFO: live progress message
+- [2026-07-23T23:43:25Z] INFO: Updated resumefromhere progress: /tmp/pytest-of-node/pytest-22/test_update_resume_progress_wr0/resumefromhere.txt
+- [2026-07-23T23:43:25Z] INFO: Updated resumefromhere progress: /tmp/pytest-of-node/pytest-22/test_update_resume_progress_in0/resumefromhere.txt
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_update_production_manifes0/DOCS.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_update_production_manifes0/production.md
+- [2026-07-23T23:43:25Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-22/test_update_production_manifes0/productionenhanced.md
+- [2026-07-23T23:43:25Z] INFO: Updated live notification feed at /tmp/pytest-of-node/pytest-22/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md

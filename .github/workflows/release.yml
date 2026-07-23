@@ -29,7 +29,7 @@ jobs:
       - name: Install deps
         run: pip install -r requirements.txt || true
       - name: Validate required secrets
-        if: secrets.GITHUB_TOKEN != ''
+        if: ${{ secrets.MY_CUSTOM_TOKEN != '' || secrets.GITHUB_TOKEN != '' }}
         run: |
           python scripts/env_manager.py --check
         shell: bash

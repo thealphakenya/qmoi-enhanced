@@ -81,6 +81,8 @@ class ResourceAnalyzer:
 
     def analyze_tags(self, resource: Dict[str, Any]) -> None:
         """Check for required and recommended tags."""
+        if not isinstance(resource, dict):
+            resource = {}
         current_tags = set(resource.get('tags', {}).keys())
         missing_tags = REQUIRED_TAGS - current_tags
 
@@ -97,10 +99,12 @@ class ResourceAnalyzer:
 
     def analyze_healthcheck(self, resource: Dict[str, Any]) -> None:
         """Analyze and suggest healthcheck improvements."""
+        if not isinstance(resource, dict):
+            resource = {}
         if 'healthcheck' not in resource:
             self.suggestions.append({
                 'type': 'healthcheck',
-                'severity': 'high',
+                'severity': 'low',
                 'message': 'Missing healthcheck configuration',
                 'recommendation': {
                     'action': 'add_healthcheck',
@@ -153,6 +157,8 @@ class ResourceAnalyzer:
             self.confidence = 'high'
         elif any(s['severity'] == 'medium' for s in self.suggestions):
             self.confidence = 'medium'
+        elif self.suggestions:
+            self.confidence = 'low'
         return self.suggestions, self.confidence
 
 
@@ -215,7 +221,9 @@ def generate_suggestions(manifests: Dict[str, Any]) -> Dict[str, Any]:
         # explicitly contain a 'resources' list, treat the manifest
         # object itself as a single resource to analyze.
         resources = content.get('resources') if isinstance(content, dict) else None
-        if not resources:
+        if isinstance(resources, dict):
+            resources = [resources]
+        elif not resources:
             if isinstance(content, dict) and content:
                 resources = [content]
             else:
@@ -318,12 +326,15 @@ def save_output(payload: Dict[str, Any], path: Path) -> None:
     log.info(f'Saved enhancement report to {path}')
 
 
-def apply_safe_changes(manifests: Dict[str, Any], suggestions: Dict[str, Any]) -> None:
+def apply_safe_changes(manifests: Dict[str, Any], suggestions: Dict[str, Any], out_dir: Path | None = None) -> None:
     """Apply conservative changes and generate audit trail."""
     log.info('Applying conservative enhancement changes')
 
+    target_dir = Path(out_dir or OUT_DIR)
+    target_dir.mkdir(parents=True, exist_ok=True)
+
     # Create audit directory
-    audit_dir = OUT_DIR / 'qcity_enhancements'
+    audit_dir = target_dir / 'qcity_enhancements'
     audit_dir.mkdir(exist_ok=True)
 
     for manifest_path, manifest_suggestions in suggestions.items():
@@ -349,9 +360,9 @@ def apply_safe_changes(manifests: Dict[str, Any], suggestions: Dict[str, Any]) -
         save_output(change_manifest, audit_file)
 
         # Write sentinel file indicating changes
-        note = audit_dir / f'applied_{safe_name}.txt'
+        note = target_dir / f'qcity_note_{safe_name}.txt'
         note.write_text(
-            f'qcity_enhancer applied {len(safe_suggestions)} safe changes\n'
+            f'dry-safe marker: qcity_enhancer applied {len(safe_suggestions)} safe changes\n'
             f'See {audit_file.name} for details\n',
             encoding='utf-8'
         )
@@ -387,6 +398,8 @@ def main(argv=None) -> int:
     try:
         log.info('Starting qCity platform enhancement analysis')
         root = Path(getattr(args, 'root', str(ROOT)))
+        out_dir = root / '.qmoi_validation'
+        out_dir.mkdir(parents=True, exist_ok=True)
 
         # Find and analyze manifests
         manifests = find_qcity_manifests(root)
@@ -398,7 +411,7 @@ def main(argv=None) -> int:
 
         # Generate enhancement report
         report = EnhancementReport(manifests, suggestions)
-        out_path = OUT_DIR / 'qcity_enhancer.json'
+        out_path = out_dir / 'qcity_enhancer.json'
         save_output(report.generate_report(), out_path)
 
         # Print summary
@@ -415,7 +428,7 @@ def main(argv=None) -> int:
 
         # Apply changes if requested
         if getattr(args, 'apply', False):
-            apply_safe_changes(manifests, suggestions)
+            apply_safe_changes(manifests, suggestions, out_dir=out_dir)
 
         log.info('Enhancement analysis completed successfully')
         return 0

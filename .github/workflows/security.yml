@@ -93,5 +93,5 @@ jobs:
             -Dsonar.projectKey=qmoi-enhanced
             -Dsonar.organization=your-org
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

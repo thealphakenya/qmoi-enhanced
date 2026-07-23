@@ -987,6 +987,8 @@
     "scripts/services/qcity_service.ts",
     "scripts/services/role_management.ts"
   ],
-  "iteration": 23,
-  "total_updated": 405
+  "iteration": 26,
+  "total_updated": 405,
+  "resume_checksum": "ea9a9b18b029a0d0fb188b0269d57f8b5c9851a0cf6ccb700fc75bd9c142c773",
+  "resume_last_checked": "2026-07-23T23:39:04.501376Z"
 }

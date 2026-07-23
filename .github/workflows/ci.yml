@@ -136,7 +136,7 @@ jobs:
           python3 -m pip install --upgrade pip
           if [ -f requirements-dev.txt ]; then python3 -m pip install -r requirements-dev.txt || true; fi
       - name: Validate required secrets (conditional)
-        if: secrets.GITHUB_TOKEN != ''
+        if: ${{ secrets.MY_CUSTOM_TOKEN != '' || secrets.GITHUB_TOKEN != '' }}
         run: python3 scripts/env_manager.py --check
         shell: bash
       - name: Byte-compile repository
@@ -165,7 +165,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Validate required secrets (conditional)
-        if: secrets.GITHUB_TOKEN != ''
+        if: ${{ secrets.MY_CUSTOM_TOKEN != '' || secrets.GITHUB_TOKEN != '' }}
         run: python3 scripts/env_manager.py --check
         shell: bash
       - name: Install dependencies

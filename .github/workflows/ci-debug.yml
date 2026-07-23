@@ -69,6 +69,7 @@ jobs:
         if: always()
         uses: actions/github-script@v6
         with:
+          github-token: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
             const { owner, repo } = context.repo;
@@ -117,6 +118,7 @@ jobs:
         if: always()
         uses: actions/github-script@v6
         with:
+          github-token: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
             const { owner, repo } = context.repo;
@@ -143,7 +145,7 @@ jobs:
         if: always()
         env:
           GH_REPO: ${{ github.repository }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
           BRANCH="ci-debug-output-${GITHUB_SHA}"

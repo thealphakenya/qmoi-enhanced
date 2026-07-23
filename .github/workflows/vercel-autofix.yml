@@ -63,7 +63,7 @@ jobs:
         if: success() || failure()
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
           commit-message: "chore: automated build fixes"
           title: "Automated: build fixes (from vercel-autofix)"
           body: "This PR contains automated build-fix attempts (dependency installs) created by CI. Please review before merging."

@@ -114,6 +114,44 @@ def test_update_resume_progress_writes_double_marks(tmp_path):
     assert "[PENDING] beta.py" in text
 
 
+def test_update_resume_progress_includes_counts_and_stats(tmp_path):
+    module = load_module()
+    resume_path = tmp_path / "resumefromhere.txt"
+    resume_path.write_text("# Resume\n", encoding="utf-8")
+
+    module._update_resume_progress(
+        resume_path,
+        done=["alpha.py"],
+        verified=["beta.py"],
+        confirmed=["gamma.py"],
+        pending=["delta.py", "epsilon.py"],
+    )
+
+    text = resume_path.read_text(encoding="utf-8")
+    assert "Pending items: 2" in text
+    assert "Verified items: 1" in text
+    assert "Confirmed items: 1" in text
+    assert "Completion ratio" in text
+    assert "Other items" in text
+
+
+def test_update_production_manifests_writes_docs_and_reports(tmp_path):
+    module = load_module()
+    doc_dir = tmp_path / "docs"
+    doc_dir.mkdir(parents=True, exist_ok=True)
+    (doc_dir / "guide.md").write_text("# Guide\n\nThis is the docs index source.\n", encoding="utf-8")
+    (tmp_path / "src").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "src" / "service.py").write_text("TODO: replace placeholder with production implementation\n", encoding="utf-8")
+
+    docs = module.update_production_manifests(tmp_path)
+
+    assert (tmp_path / "DOCS.md").exists()
+    assert (tmp_path / "production.md").exists()
+    assert (tmp_path / "productionenhanced.md").exists()
+    assert "guide.md" in (tmp_path / "DOCS.md").read_text(encoding="utf-8")
+    assert "service.py" in (tmp_path / "production.md").read_text(encoding="utf-8")
+
+
 def test_should_stop_only_when_resume_is_confirmed(tmp_path):
     module = load_module()
     resume_path = tmp_path / "resumefromhere.txt"
@@ -158,6 +196,21 @@ def test_scan_for_work_includes_spec_and_config_files(tmp_path):
 
     assert str(spec_file.relative_to(tmp_path)) in pending
     assert str(config_file.relative_to(tmp_path)) in pending
+
+
+def test_scan_for_work_reports_missing_required_docs_and_workflow_gaps(tmp_path):
+    module = load_module()
+    workflow_dir = tmp_path / ".github" / "workflows"
+    workflow_dir.mkdir(parents=True, exist_ok=True)
+    (workflow_dir / "example.yml").write_text(
+        "name: Example\nsteps:\n  - run: echo hi\n  - uses: actions/github-script@v6\n    with:\n      token: ${{ secrets.GITHUB_TOKEN }}\n",
+        encoding="utf-8",
+    )
+
+    pending = module.scan_for_work(tmp_path)
+
+    assert any("MISSING_REQUIRED_FILE" in item and "ALLHOOKSWEBHOOKS.md" in item for item in pending)
+    assert any("WORKFLOW_TOKEN_GAP" in item and "example.yml" in item for item in pending)
 
 
 def test_collect_merge_inventory_groups_similar_names(tmp_path):

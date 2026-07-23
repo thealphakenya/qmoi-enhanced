@@ -1,8 +1,20 @@
+import scripts.qmoi_local_server  # ensure the helper server module imports and starts
 import requests
 import os
+import sys
 import time
+import socket
+from pathlib import Path
 
-BASE = os.environ.get('QMOI_TEST_BASE', 'http://127.0.0.1:8080')
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+os.environ.setdefault("QMOI_HELPER_AUTOSTART", "1")
+os.environ.setdefault("QMOI_LOCAL_PORT", "8080")
+os.environ.setdefault("QMOI_API_HEALTH_URL", "http://127.0.0.1:8080/health")
+
+
+BASE = os.environ.get("QMOI_TEST_BASE", "http://127.0.0.1:8080")
 
 
 def wait_until_up(url, timeout=5):
@@ -72,7 +84,8 @@ def test_memory_persistence_and_recall():
     r = requests.post(f"{BASE}/v1/chat/completions", json={"messages": [{"role": "user", "content": msg}]}, timeout=3)
     assert r.status_code == 200
     # Now ask the helper to recall
-    r2 = requests.post(f"{BASE}/v1/chat/completions", json={"messages": [{"role": "user", "content": "What did I tell you earlier?"}]}, timeout=3)
+    r2 = requests.post(f"{BASE}/v1/chat/completions",
+                       json={"messages": [{"role": "user", "content": "What did I tell you earlier?"}]}, timeout=3)
     assert r2.status_code == 200
     js = r2.json()
     content = js['choices'][0]['message']['content']
