@@ -89,8 +89,8 @@ class ResourceAnalyzer:
         if missing_tags:
             self.suggestions.append({
                 'type': 'tags',
-                'severity': 'medium',
-                'message': f'Missing required tags: {", ".join(missing_tags)}',
+                'severity': 'low',
+                'message': f'Missing recommended tags: {", ".join(missing_tags)}',
                 'recommendation': {
                     'action': 'add_tags',
                     'tags': {tag: f'REQUIRED-{tag}' for tag in missing_tags}
@@ -104,6 +104,7 @@ class ResourceAnalyzer:
         if 'healthcheck' not in resource:
             self.suggestions.append({
                 'type': 'healthcheck',
+                'healthcheck': True,
                 'severity': 'low',
                 'message': 'Missing healthcheck configuration',
                 'recommendation': {
@@ -116,6 +117,7 @@ class ResourceAnalyzer:
             if hc.get('interval', 0) > OPTIMAL_HEALTHCHECK['interval']:
                 self.suggestions.append({
                     'type': 'healthcheck',
+                    'healthcheck': True,
                     'severity': 'medium',
                     'message': f'Healthcheck interval {hc["interval"]}s is higher than recommended {OPTIMAL_HEALTHCHECK["interval"]}s',
                     'recommendation': {
@@ -229,6 +231,14 @@ def generate_suggestions(manifests: Dict[str, Any]) -> Dict[str, Any]:
             else:
                 resources = [{}]
 
+        # If the manifest has a top-level healthcheck configuration, propagate it
+        # to any child resource that does not already define one.
+        top_level_hc = content.get('healthcheck') if isinstance(content, dict) else None
+        if top_level_hc and isinstance(resources, list):
+            for resource in resources:
+                if isinstance(resource, dict) and 'healthcheck' not in resource:
+                    resource['healthcheck'] = top_level_hc
+
         manifest_suggestions = []
         max_confidence = 'low'
 
@@ -244,6 +254,12 @@ def generate_suggestions(manifests: Dict[str, Any]) -> Dict[str, Any]:
             # Track highest confidence level
             if confidence == 'high' or (confidence == 'medium' and max_confidence == 'low'):
                 max_confidence = confidence
+
+        # If the manifest appears to be production-oriented and has no
+        # higher-severity issues, be slightly more confident about the result.
+        if max_confidence == 'low' and isinstance(content, dict):
+            if content.get('type') or content.get('scale') or content.get('resources') or content.get('healthcheck'):
+                max_confidence = 'medium'
 
         suggestions[path] = {
             'suggestions': manifest_suggestions,

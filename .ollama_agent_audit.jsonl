@@ -2325,3 +2325,755 @@
 {"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-22/test_update_production_manifes0/production.md", "timestamp": "2026-07-23T23:43:25Z"}
 {"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-22/test_update_production_manifes0/productionenhanced.md", "timestamp": "2026-07-23T23:43:25Z"}
 {"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-22/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:43:25Z"}
+{"level": "info", "message": "Starting enhanced production Ollama autonomous agent pass", "timestamp": "2026-07-23T23:46:58Z"}
+{"level": "info", "message": "Local helper server is responsive", "timestamp": "2026-07-23T23:46:58Z"}
+{"level": "info", "message": "Created or refreshed Trade.md", "timestamp": "2026-07-23T23:46:58Z"}
+{"level": "info", "message": "Created or refreshed ollama.md", "timestamp": "2026-07-23T23:46:58Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODEL.md", "timestamp": "2026-07-23T23:46:58Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODELTESTS.md", "timestamp": "2026-07-23T23:46:58Z"}
+{"level": "info", "message": "Created or refreshed ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-23T23:46:58Z"}
+{"level": "info", "message": "Created or refreshed ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-23T23:46:58Z"}
+{"level": "info", "message": "Created or refreshed MATCHES.md", "timestamp": "2026-07-23T23:46:58Z"}
+{"level": "info", "message": "Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json", "timestamp": "2026-07-23T23:46:58Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-07-23T23:46:58Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260723T234802Z.bak", "timestamp": "2026-07-23T23:48:02Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /workspaces/qmoi-enhanced/resumefromhere.txt", "timestamp": "2026-07-23T23:48:02Z"}
+{"level": "info", "message": "Scanning route definitions from /workspaces/qmoi-enhanced", "timestamp": "2026-07-23T23:48:02Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-23T23:48:06Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-23T23:48:06Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-23T23:48:06Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-23T23:48:06Z"}
+{"level": "info", "message": "Scanning repository for error markers under /workspaces/qmoi-enhanced", "timestamp": "2026-07-23T23:48:06Z"}
+{"level": "info", "message": "Collected 4140 error markers", "timestamp": "2026-07-23T23:48:25Z"}
+{"level": "info", "message": "Wrote remediation inventory to /workspaces/qmoi-enhanced/ALLERRORS.md", "timestamp": "2026-07-23T23:48:25Z"}
+{"level": "info", "message": "Created or refreshed ALLBACKEND.md", "timestamp": "2026-07-23T23:48:27Z"}
+{"level": "info", "message": "Created or refreshed ALLUI.md", "timestamp": "2026-07-23T23:48:30Z"}
+{"level": "info", "message": "Created or refreshed ALLFRONTEND.md", "timestamp": "2026-07-23T23:48:30Z"}
+{"level": "info", "message": "Created or refreshed ALLPORTS.md", "timestamp": "2026-07-23T23:48:55Z"}
+{"level": "info", "message": "Created or refreshed DOCS.md", "timestamp": "2026-07-23T23:49:13Z"}
+{"level": "info", "message": "Created or refreshed production.md", "timestamp": "2026-07-23T23:49:13Z"}
+{"level": "info", "message": "Created or refreshed productionenhanced.md", "timestamp": "2026-07-23T23:49:13Z"}
+{"level": "info", "message": "Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:49:13Z"}
+{"level": "info", "message": "Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:49:13Z"}
+{"level": "info", "message": "Run agent completed with 4142 pending items", "timestamp": "2026-07-23T23:49:13Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-07-23T23:49:13Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_build_plan_and_docs_creat0/resumefromhere.txt", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_build_plan_and_docs_creat0/Trade.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_build_plan_and_docs_creat0/ollama.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_build_plan_and_docs_creat0/QMOIMODEL.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_build_plan_and_docs_creat0/QMOIMODELTESTS.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_build_plan_and_docs_creat0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_build_plan_and_docs_creat0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_build_plan_and_docs_creat0/MATCHES.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/Trade.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/ollama.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/QMOIMODEL.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/QMOIMODELTESTS.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/MATCHES.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260723T234914Z.bak", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Collected 2 error markers", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/ALLBACKEND.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/ALLUI.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/ALLFRONTEND.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/ALLPORTS.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/UNIVERSALS.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/STYLES.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/QMOIAIUI.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/QMOISPACEUI.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/QALPHAUI.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/QCITYUI.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/DOCS.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/production.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/productionenhanced.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-23/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Run agent completed with 15 pending items", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-23/test_collect_route_inventory_f0", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-23/test_update_documentation_mani0", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "live progress message", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-23/test_update_resume_progress_wr0/resumefromhere.txt", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-23/test_update_resume_progress_in0/resumefromhere.txt", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_update_production_manifes0/DOCS.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_update_production_manifes0/production.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-23/test_update_production_manifes0/productionenhanced.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-23/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Verification completed with python=passed tests=failed", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Autonomous agent execution pass completed: pending=4142 tests=failed python=passed", "timestamp": "2026-07-23T23:49:14Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_build_plan_and_docs_creat0/resumefromhere.txt", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_build_plan_and_docs_creat0/Trade.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_build_plan_and_docs_creat0/ollama.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_build_plan_and_docs_creat0/QMOIMODEL.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_build_plan_and_docs_creat0/QMOIMODELTESTS.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_build_plan_and_docs_creat0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_build_plan_and_docs_creat0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_build_plan_and_docs_creat0/MATCHES.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/Trade.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/ollama.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/QMOIMODEL.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/QMOIMODELTESTS.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/MATCHES.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260723T235000Z.bak", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Collected 2 error markers", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/ALLBACKEND.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/ALLUI.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/ALLFRONTEND.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/ALLPORTS.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/UNIVERSALS.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/STYLES.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/QMOIAIUI.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/QMOISPACEUI.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/QALPHAUI.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/QCITYUI.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/DOCS.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/production.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/productionenhanced.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-24/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Run agent completed with 15 pending items", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-24/test_collect_route_inventory_f0", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-24/test_update_documentation_mani0", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "live progress message", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-24/test_update_resume_progress_wr0/resumefromhere.txt", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-24/test_update_resume_progress_in0/resumefromhere.txt", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_update_production_manifes0/DOCS.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_update_production_manifes0/production.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-24/test_update_production_manifes0/productionenhanced.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-24/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:50:00Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_build_plan_and_docs_creat0/resumefromhere.txt", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_build_plan_and_docs_creat0/Trade.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_build_plan_and_docs_creat0/ollama.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_build_plan_and_docs_creat0/QMOIMODEL.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_build_plan_and_docs_creat0/QMOIMODELTESTS.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_build_plan_and_docs_creat0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_build_plan_and_docs_creat0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_build_plan_and_docs_creat0/MATCHES.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/Trade.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/ollama.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/QMOIMODEL.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/QMOIMODELTESTS.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/MATCHES.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260723T235045Z.bak", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Collected 2 error markers", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/ALLBACKEND.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/ALLUI.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/ALLFRONTEND.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/ALLPORTS.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/UNIVERSALS.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/STYLES.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/QMOIAIUI.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/QMOISPACEUI.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/QALPHAUI.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/QCITYUI.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/DOCS.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/production.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/productionenhanced.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-25/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Run agent completed with 15 pending items", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-25/test_collect_route_inventory_f0", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-25/test_update_documentation_mani0", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "live progress message", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-25/test_update_resume_progress_wr0/resumefromhere.txt", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-25/test_update_resume_progress_in0/resumefromhere.txt", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_update_production_manifes0/DOCS.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_update_production_manifes0/production.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-25/test_update_production_manifes0/productionenhanced.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-25/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:50:45Z"}
+{"level": "info", "message": "Starting enhanced production Ollama autonomous agent pass", "timestamp": "2026-07-23T23:51:54Z"}
+{"level": "info", "message": "Local helper server is responsive", "timestamp": "2026-07-23T23:51:54Z"}
+{"level": "info", "message": "Created or refreshed Trade.md", "timestamp": "2026-07-23T23:51:54Z"}
+{"level": "info", "message": "Created or refreshed ollama.md", "timestamp": "2026-07-23T23:51:54Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODEL.md", "timestamp": "2026-07-23T23:51:54Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODELTESTS.md", "timestamp": "2026-07-23T23:51:54Z"}
+{"level": "info", "message": "Created or refreshed ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-23T23:51:54Z"}
+{"level": "info", "message": "Created or refreshed ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-23T23:51:54Z"}
+{"level": "info", "message": "Created or refreshed MATCHES.md", "timestamp": "2026-07-23T23:51:54Z"}
+{"level": "info", "message": "Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json", "timestamp": "2026-07-23T23:51:54Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-07-23T23:51:54Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260723T235256Z.bak", "timestamp": "2026-07-23T23:52:56Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /workspaces/qmoi-enhanced/resumefromhere.txt", "timestamp": "2026-07-23T23:52:56Z"}
+{"level": "info", "message": "Scanning route definitions from /workspaces/qmoi-enhanced", "timestamp": "2026-07-23T23:52:56Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-23T23:52:59Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-23T23:52:59Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-23T23:52:59Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-23T23:52:59Z"}
+{"level": "info", "message": "Scanning repository for error markers under /workspaces/qmoi-enhanced", "timestamp": "2026-07-23T23:52:59Z"}
+{"level": "info", "message": "Collected 4140 error markers", "timestamp": "2026-07-23T23:53:17Z"}
+{"level": "info", "message": "Wrote remediation inventory to /workspaces/qmoi-enhanced/ALLERRORS.md", "timestamp": "2026-07-23T23:53:17Z"}
+{"level": "info", "message": "Created or refreshed ALLBACKEND.md", "timestamp": "2026-07-23T23:53:19Z"}
+{"level": "info", "message": "Created or refreshed ALLUI.md", "timestamp": "2026-07-23T23:53:22Z"}
+{"level": "info", "message": "Created or refreshed ALLFRONTEND.md", "timestamp": "2026-07-23T23:53:22Z"}
+{"level": "info", "message": "Created or refreshed ALLPORTS.md", "timestamp": "2026-07-23T23:53:46Z"}
+{"level": "info", "message": "Created or refreshed DOCS.md", "timestamp": "2026-07-23T23:54:03Z"}
+{"level": "info", "message": "Created or refreshed production.md", "timestamp": "2026-07-23T23:54:03Z"}
+{"level": "info", "message": "Created or refreshed productionenhanced.md", "timestamp": "2026-07-23T23:54:03Z"}
+{"level": "info", "message": "Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:54:03Z"}
+{"level": "info", "message": "Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:54:03Z"}
+{"level": "info", "message": "Run agent completed with 4142 pending items", "timestamp": "2026-07-23T23:54:03Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-07-23T23:54:03Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_build_plan_and_docs_creat0/resumefromhere.txt", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_build_plan_and_docs_creat0/Trade.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_build_plan_and_docs_creat0/ollama.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_build_plan_and_docs_creat0/QMOIMODEL.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_build_plan_and_docs_creat0/QMOIMODELTESTS.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_build_plan_and_docs_creat0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_build_plan_and_docs_creat0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_build_plan_and_docs_creat0/MATCHES.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/Trade.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/ollama.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/QMOIMODEL.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/QMOIMODELTESTS.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/MATCHES.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260723T235404Z.bak", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Collected 2 error markers", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/ALLBACKEND.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/ALLUI.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/ALLFRONTEND.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/ALLPORTS.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/UNIVERSALS.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/STYLES.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/QMOIAIUI.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/QMOISPACEUI.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/QALPHAUI.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/QCITYUI.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/DOCS.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/production.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/productionenhanced.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-26/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Run agent completed with 15 pending items", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-26/test_collect_route_inventory_f0", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-26/test_update_documentation_mani0", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "live progress message", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-26/test_update_resume_progress_wr0/resumefromhere.txt", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-26/test_update_resume_progress_in0/resumefromhere.txt", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_update_production_manifes0/DOCS.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_update_production_manifes0/production.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-26/test_update_production_manifes0/productionenhanced.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-26/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Verification completed with python=passed tests=passed", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Autonomous agent execution pass completed: pending=4142 tests=passed python=passed", "timestamp": "2026-07-23T23:54:04Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_build_plan_and_docs_creat0/resumefromhere.txt", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_build_plan_and_docs_creat0/Trade.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_build_plan_and_docs_creat0/ollama.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_build_plan_and_docs_creat0/QMOIMODEL.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_build_plan_and_docs_creat0/QMOIMODELTESTS.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_build_plan_and_docs_creat0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_build_plan_and_docs_creat0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_build_plan_and_docs_creat0/MATCHES.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/Trade.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/ollama.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/QMOIMODEL.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/QMOIMODELTESTS.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/MATCHES.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260724T000417Z.bak", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Collected 2 error markers", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/ALLBACKEND.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/ALLUI.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/ALLFRONTEND.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/ALLPORTS.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/UNIVERSALS.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/STYLES.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/QMOIAIUI.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/QMOISPACEUI.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/QALPHAUI.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/QCITYUI.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/DOCS.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/production.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/productionenhanced.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-27/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Run agent completed with 15 pending items", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-27/test_collect_route_inventory_f0", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-27/test_update_documentation_mani0", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "live progress message", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-27/test_update_resume_progress_wr0/resumefromhere.txt", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-27/test_update_resume_progress_in0/resumefromhere.txt", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_update_production_manifes0/DOCS.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_update_production_manifes0/production.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-27/test_update_production_manifes0/productionenhanced.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-27/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:04:17Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_build_plan_and_docs_creat0/resumefromhere.txt", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_build_plan_and_docs_creat0/Trade.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_build_plan_and_docs_creat0/ollama.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_build_plan_and_docs_creat0/QMOIMODEL.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_build_plan_and_docs_creat0/QMOIMODELTESTS.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_build_plan_and_docs_creat0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_build_plan_and_docs_creat0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_build_plan_and_docs_creat0/MATCHES.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/Trade.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/ollama.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/QMOIMODEL.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/QMOIMODELTESTS.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/MATCHES.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260724T000919Z.bak", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Collected 2 error markers", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/ALLBACKEND.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/ALLUI.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/ALLFRONTEND.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/ALLPORTS.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/UNIVERSALS.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/STYLES.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/QMOIAIUI.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/QMOISPACEUI.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/QALPHAUI.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/QCITYUI.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/DOCS.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/production.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/productionenhanced.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-28/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Run agent completed with 15 pending items", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-28/test_collect_route_inventory_f0", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-28/test_update_documentation_mani0", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "live progress message", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-28/test_update_resume_progress_wr0/resumefromhere.txt", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-28/test_update_resume_progress_in0/resumefromhere.txt", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_update_production_manifes0/DOCS.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_update_production_manifes0/production.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-28/test_update_production_manifes0/productionenhanced.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-28/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:09:19Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_build_plan_and_docs_creat0/resumefromhere.txt", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_build_plan_and_docs_creat0/Trade.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_build_plan_and_docs_creat0/ollama.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_build_plan_and_docs_creat0/QMOIMODEL.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_build_plan_and_docs_creat0/QMOIMODELTESTS.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_build_plan_and_docs_creat0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_build_plan_and_docs_creat0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_build_plan_and_docs_creat0/MATCHES.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/Trade.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/ollama.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/QMOIMODEL.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/QMOIMODELTESTS.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/MATCHES.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260724T000948Z.bak", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Collected 2 error markers", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/ALLBACKEND.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/ALLUI.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/ALLFRONTEND.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/ALLPORTS.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/UNIVERSALS.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/STYLES.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/QMOIAIUI.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/QMOISPACEUI.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/QALPHAUI.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/QCITYUI.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/DOCS.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/production.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/productionenhanced.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-29/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Run agent completed with 15 pending items", "timestamp": "2026-07-24T00:09:48Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-29/test_collect_route_inventory_f0", "timestamp": "2026-07-24T00:09:49Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-29/test_update_documentation_mani0", "timestamp": "2026-07-24T00:09:49Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-24T00:09:49Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-24T00:09:49Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-24T00:09:49Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-24T00:09:49Z"}
+{"level": "info", "message": "live progress message", "timestamp": "2026-07-24T00:09:49Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-29/test_update_resume_progress_wr0/resumefromhere.txt", "timestamp": "2026-07-24T00:09:49Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-29/test_update_resume_progress_in0/resumefromhere.txt", "timestamp": "2026-07-24T00:09:49Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_update_production_manifes0/DOCS.md", "timestamp": "2026-07-24T00:09:49Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_update_production_manifes0/production.md", "timestamp": "2026-07-24T00:09:49Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-29/test_update_production_manifes0/productionenhanced.md", "timestamp": "2026-07-24T00:09:49Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-29/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:09:49Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_build_plan_and_docs_creat0/resumefromhere.txt", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_build_plan_and_docs_creat0/Trade.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_build_plan_and_docs_creat0/ollama.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_build_plan_and_docs_creat0/QMOIMODEL.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_build_plan_and_docs_creat0/QMOIMODELTESTS.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_build_plan_and_docs_creat0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_build_plan_and_docs_creat0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_build_plan_and_docs_creat0/MATCHES.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/Trade.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/ollama.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/QMOIMODEL.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/QMOIMODELTESTS.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/MATCHES.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260724T001212Z.bak", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Collected 2 error markers", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/ALLBACKEND.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/ALLUI.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/ALLFRONTEND.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/ALLPORTS.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/UNIVERSALS.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/STYLES.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/QMOIAIUI.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/QMOISPACEUI.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/QALPHAUI.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/QCITYUI.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/DOCS.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/production.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/productionenhanced.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-30/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Run agent completed with 15 pending items", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-30/test_collect_route_inventory_f0", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-30/test_update_documentation_mani0", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "live progress message", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-30/test_update_resume_progress_wr0/resumefromhere.txt", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-30/test_update_resume_progress_in0/resumefromhere.txt", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_update_production_manifes0/DOCS.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_update_production_manifes0/production.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-30/test_update_production_manifes0/productionenhanced.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-30/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:12:12Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_build_plan_and_docs_creat0/resumefromhere.txt", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_build_plan_and_docs_creat0/Trade.md", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_build_plan_and_docs_creat0/ollama.md", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_build_plan_and_docs_creat0/QMOIMODEL.md", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_build_plan_and_docs_creat0/QMOIMODELTESTS.md", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_build_plan_and_docs_creat0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_build_plan_and_docs_creat0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_build_plan_and_docs_creat0/MATCHES.md", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/Trade.md", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/ollama.md", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/QMOIMODEL.md", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/QMOIMODELTESTS.md", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/MATCHES.md", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260724T001346Z.bak", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Collected 2 error markers", "timestamp": "2026-07-24T00:13:46Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/ALLBACKEND.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/ALLUI.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/ALLFRONTEND.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/ALLPORTS.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/UNIVERSALS.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/STYLES.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/QMOIAIUI.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/QMOISPACEUI.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/QALPHAUI.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/QCITYUI.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/DOCS.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/production.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/productionenhanced.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-31/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Run agent completed with 15 pending items", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-31/test_collect_route_inventory_f0", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-31/test_update_documentation_mani0", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "live progress message", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-31/test_update_resume_progress_wr0/resumefromhere.txt", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-31/test_update_resume_progress_in0/resumefromhere.txt", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_update_production_manifes0/DOCS.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_update_production_manifes0/production.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-31/test_update_production_manifes0/productionenhanced.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-31/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:13:47Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_build_plan_and_docs_creat0/resumefromhere.txt", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_build_plan_and_docs_creat0/Trade.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_build_plan_and_docs_creat0/ollama.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_build_plan_and_docs_creat0/QMOIMODEL.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_build_plan_and_docs_creat0/QMOIMODELTESTS.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_build_plan_and_docs_creat0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_build_plan_and_docs_creat0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_build_plan_and_docs_creat0/MATCHES.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/Trade.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/ollama.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/QMOIMODEL.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/QMOIMODELTESTS.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/MATCHES.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260724T001435Z.bak", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Collected 2 error markers", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/ALLBACKEND.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/ALLUI.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/ALLFRONTEND.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/ALLPORTS.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/UNIVERSALS.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/STYLES.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/QMOIAIUI.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/QMOISPACEUI.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/QALPHAUI.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/QCITYUI.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/DOCS.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/production.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/productionenhanced.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-32/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Run agent completed with 15 pending items", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-32/test_collect_route_inventory_f0", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-node/pytest-32/test_update_documentation_mani0", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "live progress message", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-32/test_update_resume_progress_wr0/resumefromhere.txt", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-node/pytest-32/test_update_resume_progress_in0/resumefromhere.txt", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_update_production_manifes0/DOCS.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_update_production_manifes0/production.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-node/pytest-32/test_update_production_manifes0/productionenhanced.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-node/pytest-32/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:14:35Z"}
+{"level": "info", "message": "Starting enhanced production Ollama autonomous agent pass", "timestamp": "2026-07-24T00:24:55Z"}
+{"level": "info", "message": "Local helper server is responsive", "timestamp": "2026-07-24T00:24:55Z"}
+{"level": "info", "message": "Created or refreshed Trade.md", "timestamp": "2026-07-24T00:24:55Z"}
+{"level": "info", "message": "Created or refreshed ollama.md", "timestamp": "2026-07-24T00:24:55Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODEL.md", "timestamp": "2026-07-24T00:24:55Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODELTESTS.md", "timestamp": "2026-07-24T00:24:55Z"}
+{"level": "info", "message": "Created or refreshed ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-24T00:24:55Z"}
+{"level": "info", "message": "Created or refreshed ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-24T00:24:55Z"}
+{"level": "info", "message": "Created or refreshed MATCHES.md", "timestamp": "2026-07-24T00:24:55Z"}
+{"level": "info", "message": "Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json", "timestamp": "2026-07-24T00:24:55Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-07-24T00:24:55Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260724T002557Z.bak", "timestamp": "2026-07-24T00:25:57Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /workspaces/qmoi-enhanced/resumefromhere.txt", "timestamp": "2026-07-24T00:25:57Z"}
+{"level": "info", "message": "Scanning route definitions from /workspaces/qmoi-enhanced", "timestamp": "2026-07-24T00:25:57Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-24T00:26:01Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-24T00:26:01Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-24T00:26:01Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-24T00:26:01Z"}
+{"level": "info", "message": "Scanning repository for error markers under /workspaces/qmoi-enhanced", "timestamp": "2026-07-24T00:26:01Z"}
+{"level": "info", "message": "Collected 4140 error markers", "timestamp": "2026-07-24T00:26:19Z"}
+{"level": "info", "message": "Wrote remediation inventory to /workspaces/qmoi-enhanced/ALLERRORS.md", "timestamp": "2026-07-24T00:26:19Z"}
+{"level": "info", "message": "Created or refreshed ALLBACKEND.md", "timestamp": "2026-07-24T00:26:21Z"}
+{"level": "info", "message": "Created or refreshed ALLUI.md", "timestamp": "2026-07-24T00:26:23Z"}
+{"level": "info", "message": "Created or refreshed ALLFRONTEND.md", "timestamp": "2026-07-24T00:26:23Z"}
+{"level": "info", "message": "Created or refreshed ALLPORTS.md", "timestamp": "2026-07-24T00:26:48Z"}
+{"level": "info", "message": "Created or refreshed DOCS.md", "timestamp": "2026-07-24T00:27:05Z"}
+{"level": "info", "message": "Created or refreshed production.md", "timestamp": "2026-07-24T00:27:05Z"}
+{"level": "info", "message": "Created or refreshed productionenhanced.md", "timestamp": "2026-07-24T00:27:05Z"}
+{"level": "info", "message": "Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:27:05Z"}
+{"level": "info", "message": "Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:27:05Z"}
+{"level": "info", "message": "Run agent completed with 4142 pending items", "timestamp": "2026-07-24T00:27:05Z"}
+{"level": "info", "message": "Pending work remains; postponing final build/test verification until core work is completed.", "timestamp": "2026-07-24T00:27:05Z"}
+{"level": "info", "message": "Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:27:05Z"}
+{"level": "info", "message": "Autonomous agent execution pass completed: pending=4142 tests=skipped python=skipped", "timestamp": "2026-07-24T00:27:05Z"}
+{"level": "info", "message": "Starting enhanced production Ollama autonomous agent pass", "timestamp": "2026-07-24T00:28:49Z"}
+{"level": "info", "message": "Local helper server is responsive", "timestamp": "2026-07-24T00:28:49Z"}
+{"level": "info", "message": "Created or refreshed Trade.md", "timestamp": "2026-07-24T00:28:49Z"}
+{"level": "info", "message": "Created or refreshed ollama.md", "timestamp": "2026-07-24T00:28:49Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODEL.md", "timestamp": "2026-07-24T00:28:49Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODELTESTS.md", "timestamp": "2026-07-24T00:28:49Z"}
+{"level": "info", "message": "Created or refreshed ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-24T00:28:49Z"}
+{"level": "info", "message": "Created or refreshed ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-24T00:28:49Z"}
+{"level": "info", "message": "Created or refreshed MATCHES.md", "timestamp": "2026-07-24T00:28:49Z"}
+{"level": "info", "message": "Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json", "timestamp": "2026-07-24T00:28:49Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-07-24T00:28:49Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260724T002951Z.bak", "timestamp": "2026-07-24T00:29:51Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /workspaces/qmoi-enhanced/resumefromhere.txt", "timestamp": "2026-07-24T00:29:51Z"}
+{"level": "info", "message": "Scanning route definitions from /workspaces/qmoi-enhanced", "timestamp": "2026-07-24T00:29:51Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-24T00:29:54Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-24T00:29:54Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-24T00:29:54Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-24T00:29:54Z"}
+{"level": "info", "message": "Scanning repository for error markers under /workspaces/qmoi-enhanced", "timestamp": "2026-07-24T00:29:54Z"}
+{"level": "info", "message": "Collected 4140 error markers", "timestamp": "2026-07-24T00:30:12Z"}
+{"level": "info", "message": "Wrote remediation inventory to /workspaces/qmoi-enhanced/ALLERRORS.md", "timestamp": "2026-07-24T00:30:12Z"}
+{"level": "info", "message": "Created or refreshed ALLBACKEND.md", "timestamp": "2026-07-24T00:30:14Z"}
+{"level": "info", "message": "Created or refreshed ALLUI.md", "timestamp": "2026-07-24T00:30:16Z"}
+{"level": "info", "message": "Created or refreshed ALLFRONTEND.md", "timestamp": "2026-07-24T00:30:16Z"}
+{"level": "info", "message": "Created or refreshed ALLPORTS.md", "timestamp": "2026-07-24T00:30:42Z"}
+{"level": "info", "message": "Created or refreshed DOCS.md", "timestamp": "2026-07-24T00:30:59Z"}
+{"level": "info", "message": "Created or refreshed production.md", "timestamp": "2026-07-24T00:30:59Z"}
+{"level": "info", "message": "Created or refreshed productionenhanced.md", "timestamp": "2026-07-24T00:30:59Z"}
+{"level": "info", "message": "Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:30:59Z"}
+{"level": "info", "message": "Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:30:59Z"}
+{"level": "info", "message": "Run agent completed with 4142 pending items", "timestamp": "2026-07-24T00:30:59Z"}
+{"level": "info", "message": "Pending work remains; postponing final build/test verification until core work is completed.", "timestamp": "2026-07-24T00:30:59Z"}
+{"level": "info", "message": "Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:30:59Z"}
+{"level": "info", "message": "Autonomous agent execution pass completed: pending=4142 tests=skipped python=skipped", "timestamp": "2026-07-24T00:30:59Z"}
+{"level": "info", "message": "Starting enhanced production Ollama autonomous agent pass", "timestamp": "2026-07-24T00:32:00Z"}
+{"level": "info", "message": "Local helper server is responsive", "timestamp": "2026-07-24T00:32:01Z"}
+{"level": "info", "message": "Created or refreshed Trade.md", "timestamp": "2026-07-24T00:32:01Z"}
+{"level": "info", "message": "Created or refreshed ollama.md", "timestamp": "2026-07-24T00:32:01Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODEL.md", "timestamp": "2026-07-24T00:32:01Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODELTESTS.md", "timestamp": "2026-07-24T00:32:01Z"}
+{"level": "info", "message": "Created or refreshed ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-24T00:32:01Z"}
+{"level": "info", "message": "Created or refreshed ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-24T00:32:01Z"}
+{"level": "info", "message": "Created or refreshed MATCHES.md", "timestamp": "2026-07-24T00:32:01Z"}
+{"level": "info", "message": "Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json", "timestamp": "2026-07-24T00:32:01Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-07-24T00:32:01Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260724T003303Z.bak", "timestamp": "2026-07-24T00:33:03Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /workspaces/qmoi-enhanced/resumefromhere.txt", "timestamp": "2026-07-24T00:33:03Z"}
+{"level": "info", "message": "Scanning route definitions from /workspaces/qmoi-enhanced", "timestamp": "2026-07-24T00:33:03Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-07-24T00:33:06Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-07-24T00:33:06Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-07-24T00:33:06Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-07-24T00:33:06Z"}
+{"level": "info", "message": "Scanning repository for error markers under /workspaces/qmoi-enhanced", "timestamp": "2026-07-24T00:33:06Z"}
+{"level": "info", "message": "Collected 4140 error markers", "timestamp": "2026-07-24T00:33:24Z"}
+{"level": "info", "message": "Wrote remediation inventory to /workspaces/qmoi-enhanced/ALLERRORS.md", "timestamp": "2026-07-24T00:33:24Z"}
+{"level": "info", "message": "Created or refreshed ALLBACKEND.md", "timestamp": "2026-07-24T00:33:26Z"}
+{"level": "info", "message": "Created or refreshed ALLUI.md", "timestamp": "2026-07-24T00:33:28Z"}
+{"level": "info", "message": "Created or refreshed ALLFRONTEND.md", "timestamp": "2026-07-24T00:33:28Z"}
+{"level": "info", "message": "Created or refreshed ALLPORTS.md", "timestamp": "2026-07-24T00:33:54Z"}
+{"level": "info", "message": "Created or refreshed DOCS.md", "timestamp": "2026-07-24T00:34:10Z"}
+{"level": "info", "message": "Created or refreshed production.md", "timestamp": "2026-07-24T00:34:10Z"}
+{"level": "info", "message": "Created or refreshed productionenhanced.md", "timestamp": "2026-07-24T00:34:10Z"}
+{"level": "info", "message": "Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:34:10Z"}
+{"level": "info", "message": "Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:34:10Z"}
+{"level": "info", "message": "Run agent completed with 4142 pending items", "timestamp": "2026-07-24T00:34:10Z"}
+{"level": "info", "message": "Pending work remains; postponing final build/test verification until core work is completed.", "timestamp": "2026-07-24T00:34:10Z"}
+{"level": "info", "message": "Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-24T00:34:10Z"}
+{"level": "info", "message": "Autonomous agent execution pass completed: pending=4142 tests=skipped python=skipped", "timestamp": "2026-07-24T00:34:10Z"}

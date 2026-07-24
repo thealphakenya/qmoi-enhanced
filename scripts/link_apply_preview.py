@@ -22,6 +22,7 @@ def generate_preview(plan: dict):
 
     lines = []
     lines.append(f"Plan dry_run={plan.get('dry_run', True)}, allow_network={plan.get('allow_network', False)}")
+    failed_count = 0
     for e in entries:
         link = e.get('url') or e.get('link')
         old = e.get('old_status', None)
@@ -58,8 +59,25 @@ def generate_preview(plan: dict):
         else:
             lines.append(f"{host}: {old} -> {new}")
 
-    # Return a human-readable preview string
-    return "\n".join(lines)
+        status_text = str(new or '').lower()
+        if isinstance(new, int):
+            if not (200 <= new < 400):
+                failed_count += 1
+        elif status_text not in ('ok', '200', '201', '202', '203', '204', '205', '206'):
+            failed_count += 1
+
+    preview_text = "\n".join(lines)
+    return {
+        'summary': {
+            'dry_run': plan.get('dry_run', True),
+            'allow_network': plan.get('allow_network', False),
+            'entry_count': len(entries),
+            'failed_count': failed_count
+        },
+        'failed_count': failed_count,
+        'preview': preview_text,
+        'entries': entries
+    }
 
 
 def main():

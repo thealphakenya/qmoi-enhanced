@@ -2456,7 +2456,7 @@ This file tracks non-production implementations that should be upgraded to produ
 - scripts/postinstall-verify.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
 - scripts/preinstall-check.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
 - scripts/providers/__init__.py: ERROR
-- scripts/providers/aws_route53.py: Exception, ERROR
+- scripts/providers/aws_route53.py: placeholder, Exception, ERROR
 - scripts/providers/cloudflare.py: Exception, ERROR
 - scripts/providers/netlify.py: Exception, ERROR
 - scripts/providers/provider_base.py: Exception, ERROR

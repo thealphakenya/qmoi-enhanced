@@ -224,6 +224,106 @@
       "role": "user",
       "content": "What did I tell you earlier?",
       "ts": "2026-07-23T23:43:26.180951"
+    },
+    {
+      "role": "user",
+      "content": "How are you",
+      "ts": "2026-07-23T23:49:14.087803"
+    },
+    {
+      "role": "user",
+      "content": "Hello",
+      "ts": "2026-07-23T23:49:14.091534"
+    },
+    {
+      "role": "user",
+      "content": "Create a file named tests/tmp_test_file.txt with the content 'hello'",
+      "ts": "2026-07-23T23:49:14.095169"
+    },
+    {
+      "role": "user",
+      "content": "I like blueberries",
+      "ts": "2026-07-23T23:49:14.101179"
+    },
+    {
+      "role": "user",
+      "content": "What did I tell you earlier?",
+      "ts": "2026-07-23T23:49:14.103697"
+    },
+    {
+      "role": "user",
+      "content": "How are you",
+      "ts": "2026-07-23T23:50:00.309554"
+    },
+    {
+      "role": "user",
+      "content": "Hello",
+      "ts": "2026-07-23T23:50:00.314383"
+    },
+    {
+      "role": "user",
+      "content": "Create a file named tests/tmp_test_file.txt with the content 'hello'",
+      "ts": "2026-07-23T23:50:00.319204"
+    },
+    {
+      "role": "user",
+      "content": "I like blueberries",
+      "ts": "2026-07-23T23:50:00.325357"
+    },
+    {
+      "role": "user",
+      "content": "What did I tell you earlier?",
+      "ts": "2026-07-23T23:50:00.327908"
+    },
+    {
+      "role": "user",
+      "content": "How are you",
+      "ts": "2026-07-23T23:50:45.246776"
+    },
+    {
+      "role": "user",
+      "content": "Hello",
+      "ts": "2026-07-23T23:50:45.250934"
+    },
+    {
+      "role": "user",
+      "content": "Create a file named tests/tmp_test_file.txt with the content 'hello'",
+      "ts": "2026-07-23T23:50:45.254678"
+    },
+    {
+      "role": "user",
+      "content": "I like blueberries",
+      "ts": "2026-07-23T23:50:45.261338"
+    },
+    {
+      "role": "user",
+      "content": "What did I tell you earlier?",
+      "ts": "2026-07-23T23:50:45.264024"
+    },
+    {
+      "role": "user",
+      "content": "How are you",
+      "ts": "2026-07-23T23:54:04.224931"
+    },
+    {
+      "role": "user",
+      "content": "Hello",
+      "ts": "2026-07-23T23:54:04.229070"
+    },
+    {
+      "role": "user",
+      "content": "Create a file named tests/tmp_test_file.txt with the content 'hello'",
+      "ts": "2026-07-23T23:54:04.232527"
+    },
+    {
+      "role": "user",
+      "content": "I like blueberries",
+      "ts": "2026-07-23T23:54:04.238557"
+    },
+    {
+      "role": "user",
+      "content": "What did I tell you earlier?",
+      "ts": "2026-07-23T23:54:04.241266"
     }
   ]
 }
