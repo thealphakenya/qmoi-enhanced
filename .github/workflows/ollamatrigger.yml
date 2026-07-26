@@ -1,22 +1,16 @@
-name: Ollama autonomous agent
+name: Ollama trigger workflow
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-      - master
-      - ollama/**
-      - autosync/**
-      - auto/**
-      - automated/**
-  schedule:
-    - cron: "*/30 * * * *"
 
 permissions:
   contents: write
   pull-requests: write
   issues: write
+
+concurrency:
+  group: ollama-trigger-${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
 
 jobs:
   autonomous-agent:
