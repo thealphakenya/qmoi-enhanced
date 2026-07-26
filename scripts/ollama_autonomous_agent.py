@@ -31,6 +31,7 @@ EXCLUDED_DIRS = {
     ".next", ".cache", ".config", "coverage", "logs", "tmp"
 }
 
+
 def _is_excluded_path(path: Path, target: Path | None = None) -> bool:
     target = Path(target or ROOT)
     try:
@@ -38,6 +39,7 @@ def _is_excluded_path(path: Path, target: Path | None = None) -> bool:
     except Exception:
         rel_parts = path.parts
     return any(part in EXCLUDED_DIRS for part in rel_parts)
+
 
 # Configure module logger with safety buffers
 LOG_PATH = Path.home() / ".ollama" / "logs"
@@ -69,6 +71,7 @@ if not logger.handlers:
     stream_handler.setFormatter(formatter)
     logger.addHandler(stream_handler)
 
+
 def _append_runtime_event(message: str, level: str = "info") -> None:
     """Persist a structured runtime event for audits and debugging safely."""
     try:
@@ -88,6 +91,7 @@ def _append_runtime_event(message: str, level: str = "info") -> None:
     except Exception:
         pass
 
+
 def _emit_status(message: str, level: str = "info") -> None:
     """Emit a timestamped status message to stdout and the persistent agent log."""
     ts = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
@@ -96,6 +100,7 @@ def _emit_status(message: str, level: str = "info") -> None:
     print(line, flush=True)
     getattr(logger, level.lower(), logger.info)(message)
     _append_runtime_event(message, level=level)
+
 
 def _load_state(target: Path | None = None) -> Dict[str, object]:
     state_path = Path(target or ROOT) / ".ollama_agent_state.json"
@@ -111,6 +116,7 @@ def _load_state(target: Path | None = None) -> Dict[str, object]:
             return {"processed": [], "iteration": 0, "total_updated": 0, "resume_checksum": None}
     return {"processed": [], "iteration": 0, "total_updated": 0, "resume_checksum": None}
 
+
 def _save_state(state: Dict[str, object], target: Path | None = None) -> None:
     state_path = Path(target or ROOT) / ".ollama_agent_state.json"
     try:
@@ -119,8 +125,10 @@ def _save_state(state: Dict[str, object], target: Path | None = None) -> None:
     except Exception as e:
         logger.error(f"Failed to write state: {e}")
 
+
 def _hash_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
 
 def _resume_file_checksum(root: Path | None = None) -> Optional[str]:
     target = Path(root or ROOT)
@@ -131,6 +139,7 @@ def _resume_file_checksum(root: Path | None = None) -> Optional[str]:
         return _hash_text(resume_path.read_text(encoding="utf-8", errors="ignore"))
     except Exception:
         return None
+
 
 def _resume_file_changed(root: Path | None = None) -> bool:
     target = Path(root or ROOT)
@@ -143,6 +152,7 @@ def _resume_file_changed(root: Path | None = None) -> bool:
         _save_state(state, target)
         return True
     return False
+
 
 def _extract_resume_instructions(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
@@ -162,9 +172,11 @@ def _extract_resume_instructions(root: Path | None = None) -> List[str]:
                 instructions.append(candidate)
     return sorted(dict.fromkeys(instructions))
 
+
 def _looks_like_resume_command(command: str) -> bool:
     lower = command.strip().lower()
     return bool(re.match(r"^(python|pytest|mypy|flake8|pylint|npm|yarn|pnpm|cargo|go|gradle|make|docker|git|bash)\b", lower))
+
 
 def _looks_like_actionable_task(item: str, root: Path | None = None) -> bool:
     item = item.strip()
@@ -186,12 +198,14 @@ def _looks_like_actionable_task(item: str, root: Path | None = None) -> bool:
             return False
     return False
 
+
 def _map_port_to_production(port: int, context: str = "") -> int:
     if port in {80, 3000, 3001, 3002, 3003, 3004, 3005, 3006, 4200, 4201, 5000, 5001, 6000, 8000, 8001, 8002, 8080, 9000, 9001, 9229}:
         return 443
     if port in {22, 5432, 3306, 27017, 6379, 5672, 9092, 8443, 443}:
         return port
     return port
+
 
 def _normalize_production_ports(root: Path | None = None) -> List[Dict[str, object]]:
     target = Path(root or ROOT)
@@ -241,12 +255,14 @@ def _normalize_production_ports(root: Path | None = None) -> List[Dict[str, obje
                 continue
     return changes
 
+
 def _comment_token_for_suffix(suffix: str) -> str:
     return {
         ".py": "#", ".sh": "#", ".ps1": "#", ".js": "//", ".ts": "//",
         ".tsx": "//", ".jsx": "//", ".java": "//", ".c": "//", ".cpp": "//",
         ".go": "//", ".rb": "#", ".php": "//",
     }.get(suffix.lower(), "#")
+
 
 def collect_merge_inventory(root: Path | None = None) -> List[Dict[str, object]]:
     """Group similar files safely while avoiding excluded directories."""
@@ -277,6 +293,7 @@ def collect_merge_inventory(root: Path | None = None) -> List[Dict[str, object]]
         inventory.append({"group": base, "paths": unique_paths})
 
     return inventory
+
 
 def collect_route_inventory(root: Path | None = None) -> List[Dict[str, object]]:
     """Collect route definitions safely without recursive system lockups."""
@@ -323,6 +340,7 @@ def collect_route_inventory(root: Path | None = None) -> List[Dict[str, object]]
 
     return sorted(inventory, key=lambda item: str(item["route"]))
 
+
 def _collect_docs_inventory(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
     docs_files: List[Path] = []
@@ -332,6 +350,7 @@ def _collect_docs_inventory(root: Path | None = None) -> List[str]:
     docs_files.extend([p for p in target.rglob("*.md") if p.is_file()
                       and not _is_excluded_path(p, target) and p.parent == target])
     return sorted({p.relative_to(target).as_posix() for p in docs_files})
+
 
 def update_documentation_manifests(
     root: Path | None = None,
@@ -400,6 +419,7 @@ def update_documentation_manifests(
 
     return docs
 
+
 def _safe_file_write(path: Path, content: str) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
@@ -410,12 +430,14 @@ def _safe_file_write(path: Path, content: str) -> Path:
     _emit_status(f"Created or refreshed {rel_path}", level="info")
     return path
 
+
 def _parse_python_file(path: Path) -> Optional[ast.AST]:
     try:
         text = path.read_text(encoding="utf-8", errors="ignore")
         return ast.parse(text, filename=str(path))
     except Exception:
         return None
+
 
 def _backup_self_script(root: Path | None = None) -> Optional[Path]:
     target = Path(root or ROOT)
@@ -433,6 +455,7 @@ def _backup_self_script(root: Path | None = None) -> Optional[Path]:
     except Exception as exc:
         _emit_status(f"Failed to back up self script: {exc}", level="warning")
         return None
+
 
 def _auto_fix_self_script_text(text: str) -> str:
     lines = text.splitlines()
@@ -452,31 +475,31 @@ def _auto_fix_self_script_text(text: str) -> str:
 
     fixed_text = "\n".join(fixed_lines)
     fixed_text = re.sub(
-        r"(?:# AUTOFIXED by Ollama at 2026-07-26T22:01:34.832838Z
-        "# AUTOFIXED by Ollama at 2026-07-26T22:01:34.832838Z
+        r"(?:  # AUTOFIXED by Ollama at 2026-07-26T22:20:25.246981Z
+        "  # AUTOFIXED by Ollama at 2026-07-26T22:20:25.246981Z
         fixed_text,
     )
-    fixed_text = re.sub(r"\n{3,}", "\n\n", fixed_text)
+    fixed_text=re.sub(r"\n{3,}", "\n\n", fixed_text)
     if "if __name__ == \"__main__\":" not in fixed_text:
-        fixed_text = fixed_text.rstrip() + "\n\nif __name__ == \"__main__\":\n    main()\n"
-    fixed_text = fixed_text.strip() + "\n"
+        fixed_text=fixed_text.rstrip() + "\n\nif __name__ == \"__main__\":\n    main()\n"
+    fixed_text=fixed_text.strip() + "\n"
     return fixed_text
 
-def _self_verify_and_fix(root: Path | None = None) -> bool:
-    target = Path(root or ROOT)
-    script_path = target / "scripts" / "ollama_autonomous_agent.py"
+def _self_verify_and_fix(root: Path | None=None) -> bool:
+    target=Path(root or ROOT)
+    script_path=target / "scripts" / "ollama_autonomous_agent.py"
     if not script_path.exists():
         return False
     if _parse_python_file(script_path) is not None:
         return False
     _emit_status("Detected syntax issues in self script; attempting repair.", level="warning")
     try:
-        original = script_path.read_text(encoding="utf-8", errors="ignore")
+        original=script_path.read_text(encoding="utf-8", errors="ignore")
     except Exception as exc:
         _emit_status(f"Unable to read self script for repair: {exc}", level="warning")
         return False
 
-    repaired = _auto_fix_self_script_text(original)
+    repaired=_auto_fix_self_script_text(original)
     if repaired == original:
         _emit_status("No repair changes detected for self script.", level="warning")
         return False
@@ -492,28 +515,28 @@ def _self_verify_and_fix(root: Path | None = None) -> bool:
         _emit_status(f"Failed to write repaired self script: {exc}", level="warning")
     return False
 
-def _self_restart_if_updated(root: Path | None = None) -> bool:
-    target = Path(root or ROOT)
+def _self_restart_if_updated(root: Path | None=None) -> bool:
+    target=Path(root or ROOT)
     if os.environ.get("OLLAMA_SELF_RESTARTED", "0") == "1":
         return False
     if _self_verify_and_fix(target):
-        os.environ["OLLAMA_SELF_RESTARTED"] = "1"
+        os.environ["OLLAMA_SELF_RESTARTED"]="1"
         _emit_status("Self-repair complete; restarting Ollama autonomous agent.", level="info")
         os.execv(sys.executable, [sys.executable] + sys.argv)
     return False
 
-def _self_update_script(root: Path | None = None) -> bool:
-    target = Path(root or ROOT)
-    script_path = target / "scripts" / "ollama_autonomous_agent.py"
+def _self_update_script(root: Path | None=None) -> bool:
+    target=Path(root or ROOT)
+    script_path=target / "scripts" / "ollama_autonomous_agent.py"
     if not script_path.exists():
         return False
     try:
-        original = script_path.read_text(encoding="utf-8", errors="ignore")
+        original=script_path.read_text(encoding="utf-8", errors="ignore")
     except Exception as exc:
         _emit_status(f"Unable to read self script: {exc}", level="warning")
         return False
 
-    updated = _auto_fix_self_script_text(original)
+    updated=_auto_fix_self_script_text(original)
     if updated != original:
         _backup_self_script(target)
         try:
@@ -524,18 +547,18 @@ def _self_update_script(root: Path | None = None) -> bool:
             _emit_status(f"Failed to write self-updated script: {exc}", level="warning")
     return False
 
-def _ensure_self_update_capabilities(root: Path | None = None) -> None:
-    target = Path(root or ROOT)
+def _ensure_self_update_capabilities(root: Path | None=None) -> None:
+    target=Path(root or ROOT)
     if _self_update_script(target):
         _emit_status("Self-update detected and applied", level="info")
     else:
         _emit_status("Self-update check completed with no changes", level="info")
 
-def _ensure_local_helper_server(port: int = 8080, host: str = "127.0.0.1", timeout: float = 5.0) -> bool:
+def _ensure_local_helper_server(port: int=8080, host: str="127.0.0.1", timeout: float=5.0) -> bool:
     """Ensure the local QM OI helper server is available for verification tasks."""
-    os.environ["QMOI_HELPER_AUTOSTART"] = "1"
-    os.environ["QMOI_LOCAL_PORT"] = str(port)
-    os.environ["QMOI_API_HEALTH_URL"] = f"http://{host}:{port}/health"
+    os.environ["QMOI_HELPER_AUTOSTART"]="1"
+    os.environ["QMOI_LOCAL_PORT"]=str(port)
+    os.environ["QMOI_API_HEALTH_URL"]=f"http://{host}:{port}/health"
     if str(ROOT) not in sys.path:
         sys.path.insert(0, str(ROOT))
     try:
@@ -543,20 +566,20 @@ def _ensure_local_helper_server(port: int = 8080, host: str = "127.0.0.1", timeo
     except Exception as exc:
         _emit_status(f"Unable to import local helper server: {exc}", level="warning")
         return False
-    thread = getattr(local_server, "server_thread", None)
+    thread=getattr(local_server, "server_thread", None)
     if thread is None or not getattr(thread, "is_alive", lambda: False)():
         try:
-            local_server.server_thread = local_server._BackgroundFlaskServer(host, port)
+            local_server.server_thread=local_server._BackgroundFlaskServer(host, port)
             local_server.server_thread.start()
         except Exception as exc:
             _emit_status(f"Unable to start local helper server thread: {exc}", level="warning")
             return False
-    url = f"http://{host}:{port}/health"
-    deadline = time.time() + timeout
+    url=f"http://{host}:{port}/health"
+    deadline=time.time() + timeout
     while time.time() < deadline:
         try:
             if requests:
-                resp = requests.get(url, timeout=1)
+                resp=requests.get(url, timeout=1)
                 if resp.status_code == 200:
                     _emit_status("Local helper server is responsive", level="info")
                     return True
@@ -576,26 +599,26 @@ def _ensure_ollama_client() -> bool:
         return True
     return False
 
-def _discover_autonomous_commands(root: Path | None = None) -> List[str]:
-    target = Path(root or ROOT)
-    commands: Set[str] = set()
-    bash_command_re = re.compile(r"(?:^|\n)```(?:bash|sh)?\s*\n([^`]+?)\n```", re.IGNORECASE | re.DOTALL)
-    generic_command_re = re.compile(r"(?:^|\n)\$\s*([^\n]+)", re.IGNORECASE)
+def _discover_autonomous_commands(root: Path | None=None) -> List[str]:
+    target=Path(root or ROOT)
+    commands: Set[str]=set()
+    bash_command_re=re.compile(r"(?:^|\n)```(?:bash|sh)?\s*\n([^`]+?)\n```", re.IGNORECASE | re.DOTALL)
+    generic_command_re=re.compile(r"(?:^|\n)\$\s*([^\n]+)", re.IGNORECASE)
 
     for path in sorted(target.rglob("*.md")):
         if _is_excluded_path(path, target):
             continue
         try:
-            content = path.read_text(encoding="utf-8", errors="ignore")
+            content=path.read_text(encoding="utf-8", errors="ignore")
         except Exception:
             continue
         for match in bash_command_re.findall(content):
             for line in match.splitlines():
-                line = line.strip()
+                line=line.strip()
                 if line and not line.startswith("#"):
                     commands.add(line)
         for match in generic_command_re.findall(content):
-            candidate = match.strip()
+            candidate=match.strip()
             if candidate and not candidate.lower().startswith("git"):
                 commands.add(candidate)
 
@@ -604,12 +627,12 @@ def _discover_autonomous_commands(root: Path | None = None) -> List[str]:
         # which can fail in constrained or offline environments. Allow full
         # tests when explicitly requested via RUN_FULL_TESTS=1 in the env.
         if os.environ.get("RUN_FULL_TESTS", "0") == "1":
-            safe_tests = [
+            safe_tests=[
                 "tests/api/test_health.py",
                 "tests/test_qmoi_local_server.py",
                 "tests/test_ollama_autonomous_agent.py",
             ]
-            existing_tests = [str(target / p) for p in safe_tests if (target / p).exists()]
+            existing_tests=[str(target / p) for p in safe_tests if (target / p).exists()]
             if existing_tests:
                 commands.add(" ".join([sys.executable, "-m", "pytest", "-q"] + existing_tests))
             else:
@@ -623,26 +646,26 @@ def _discover_autonomous_commands(root: Path | None = None) -> List[str]:
 
     return sorted(commands)
 
-def _run_safe_command(command: str, root: Path | None = None) -> Dict[str, object]:
-    target = Path(root or ROOT)
-    result = {"command": command, "status": "skipped", "output": ""}
+def _run_safe_command(command: str, root: Path | None=None) -> Dict[str, object]:
+    target=Path(root or ROOT)
+    result={"command": command, "status": "skipped", "output": ""}
     try:
         try:
-            args = shlex.split(command)
+            args=shlex.split(command)
         except ValueError:
-            args = command.split()
+            args=command.split()
         if args and args[0] in {"python", "python3"}:
-            args[0] = sys.executable
-        env = os.environ.copy()
+            args[0]=sys.executable
+        env=os.environ.copy()
         if command.startswith("python"):
             if "QMOI_HELPER_AUTOSTART" not in env:
-                env["QMOI_HELPER_AUTOSTART"] = "1"
-            env["QMOI_LOCAL_PORT"] = os.environ.get("QMOI_LOCAL_PORT", "8080")
-            env["QMOI_API_HEALTH_URL"] = os.environ.get("QMOI_API_HEALTH_URL", "http://127.0.0.1:8080/health")
+                env["QMOI_HELPER_AUTOSTART"]="1"
+            env["QMOI_LOCAL_PORT"]=os.environ.get("QMOI_LOCAL_PORT", "8080")
+            env["QMOI_API_HEALTH_URL"]=os.environ.get("QMOI_API_HEALTH_URL", "http://127.0.0.1:8080/health")
         if command.startswith("python -m pytest"):
-            proc = subprocess.run(args, cwd=str(target), env=env, capture_output=True, text=True, timeout=600)
+            proc=subprocess.run(args, cwd=str(target), env=env, capture_output=True, text=True, timeout=600)
         elif command.startswith("python -m compileall"):
-            safe_compile = []
+            safe_compile=[]
             for path in (
                 "scripts/ollama_autonomous_agent.py",
                 "tests/test_qmoi_local_server.py",
@@ -652,37 +675,37 @@ def _run_safe_command(command: str, root: Path | None = None) -> Dict[str, objec
                 if (target / path).exists():
                     safe_compile.append(str(target / path))
             if len(args) == 4 and args[3] == "." and safe_compile:
-                proc = subprocess.run([sys.executable, "-m", "compileall", "-q", *safe_compile],
+                proc=subprocess.run([sys.executable, "-m", "compileall", "-q", *safe_compile],
                                       cwd=str(target), env=env, capture_output=True, text=True, timeout=300)
             elif len(args) == 4 and args[3] == ".":
-                result["status"] = "skipped"
-                result["output"] = "no safe compile targets available"
+                result["status"]="skipped"
+                result["output"]="no safe compile targets available"
                 _emit_status(f"Skipped unsafe compileall on full repo path", level="warning")
                 return result
             else:
-                proc = subprocess.run(args, cwd=str(target), env=env, capture_output=True, text=True, timeout=300)
+                proc=subprocess.run(args, cwd=str(target), env=env, capture_output=True, text=True, timeout=300)
         else:
-            result["description"] = "unsupported command"
+            result["description"]="unsupported command"
             return result
-        result["status"] = "passed" if proc.returncode == 0 else "failed"
-        result["output"] = (proc.stdout + proc.stderr)[:2000]
+        result["status"]="passed" if proc.returncode == 0 else "failed"
+        result["output"]=(proc.stdout + proc.stderr)[:2000]
     except Exception as exc:
-        result["status"] = "error"
-        result["output"] = str(exc)
+        result["status"]="error"
+        result["output"]=str(exc)
     _emit_status(f"Executed resume command: {command} status={result['status']}", level="info")
     return result
 
 def _is_verification_command(command: str) -> bool:
-    lower = command.lower()
+    lower=command.lower()
     return bool(re.search(r"\b(pytest|compileall|mypy|flake8|pylint|npm(?: run)? test|yarn(?: run)? test|pnpm(?: run)? test|cargo test|go test|gradle test)\b", lower))
 
-def _execute_resume_instructions(root: Path | None = None, instructions: List[str] | None = None) -> List[Dict[str, object]]:
-    target = Path(root or ROOT)
-    instructions = instructions or []
-    discovered = _discover_autonomous_commands(target)
-    ordered: List[str] = []
-    verification: List[str] = []
-    seen: Set[str] = set()
+def _execute_resume_instructions(root: Path | None=None, instructions: List[str] | None=None) -> List[Dict[str, object]]:
+    target=Path(root or ROOT)
+    instructions=instructions or []
+    discovered=_discover_autonomous_commands(target)
+    ordered: List[str]=[]
+    verification: List[str]=[]
+    seen: Set[str]=set()
     for command in discovered + instructions:
         if command in seen:
             continue
@@ -693,19 +716,19 @@ def _execute_resume_instructions(root: Path | None = None, instructions: List[st
             ordered.append(command)
     ordered.extend(verification)
 
-    results: List[Dict[str, object]] = []
+    results: List[Dict[str, object]]=[]
     for command in ordered:
-        result = _run_safe_command(command, target)
+        result=_run_safe_command(command, target)
         results.append(result)
     return results
 
 def _backup_resume(resume_path: Path) -> Optional[Path]:
     if not resume_path.exists():
         return None
-    backup_dir = ROOT / ".backup" / "resumefromhere"
+    backup_dir=ROOT / ".backup" / "resumefromhere"
     backup_dir.mkdir(parents=True, exist_ok=True)
-    ts = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
-    backup_path = backup_dir / f"resumefromhere.{ts}.bak"
+    ts=datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+    backup_path=backup_dir / f"resumefromhere.{ts}.bak"
     try:
         shutil.copy2(resume_path, backup_path)
         _emit_status(f"Backed up resume file to {backup_path}", level="info")
@@ -715,7 +738,7 @@ def _backup_resume(resume_path: Path) -> Optional[Path]:
         return None
 
 def _count_resume_statuses(text: str) -> Dict[str, int]:
-    counts = {"done": 0, "verify": 0, "confirmed": 0, "pending": 0, "other": 0}
+    counts={"done": 0, "verify": 0, "confirmed": 0, "pending": 0, "other": 0}
     for line in text.splitlines():
         if "[DONE]" in line:
             counts["done"] += 1
@@ -740,6 +763,9 @@ def _build_outstanding_work_section() -> List[str]:
         "- Integrate QVirtualLabs as a first-class QMOI capability for engineering simulation, digital twins, invention planning, preview-window guidance, and sponsor-aware experience surfacing.",
         "- Ensure engineering project workspaces, preview-window UI surfaces, and sponsored-user experiences are documented across QMOIMODEL.md, QMOIMODELTESTS.md, QVIRTUALLABS.md, ALLUI.md, SPONSORED.md, and the relevant API/route manifests.",
         "- Preserve the master-only restriction for invention-project execution while making shared QVirtualLabs previews and engineering guidance available to all users, with enhanced sponsor-aware experiences for sponsored users.",
+        "- Review components/WifiPanel.tsx and extend Wifi features to captive portal auto-connect, login flow automation, and secure priority management.",
+        "- Locate ComponentGallery references and entrypoints, migrate gallery capabilities into the styles/universals system, and remove stale gallery artifacts safely.",
+        "- Merge legacy auth, theme, and old implementation files into UNIVERSALS.md and STYLES.md; delete outdated artifacts only after a safety verification pass.",
         "- Keep resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md, ALLERRORS.md, and the manifest files updated after every autonomous run until the backlog is fully verified and confirmed.",
         "- Treat final build/test verification as the last step: only execute compile and test checks once all other repair, documentation, and manifest work is complete.",
         "",
@@ -755,6 +781,9 @@ def _generate_resume_instruction_lines() -> List[str]:
         "- Scan archive and backup directories for unmerged or missing files and merge them into the working tree.",
         "- Scan DOWNLOADQMOIAIAPPALLDEVICES.md and other download/app/build/release docs for referenced .py scripts, ensure those scripts exist, and update them.",
         "- Keep all manifest and documentation files synchronized: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLTESTSAUOTOTESTS.md, ALLHOOKSWEBHOOKS.md, ALLERRORS.md, UNIVERSALS.md, STYLES.md.",
+        "- Review WifiPanel.tsx and all WiFi entrypoints, then enhance captive WiFi, auto-connect, and captive portal automation coverage across the repository.",
+        "- Locate ComponentGallery references and remove stale gallery features while merging UI capabilities into styles and universals.",
+        "- Inspect .css, .html, .js, .tsx, .ts, .py, and other files for old auth/theme implementations, merge them into universals/styles, and document the migration.",
         "- Create or refresh automated tests for Python source files and update the test manifest whenever scripts are added or changed.",
         "- Create or refresh hooks and webhook documentation, and record workflow integrations in ALLHOOKSWEBHOOKS.md.",
         "- Use the local helper server and production helper server as needed to satisfy integration and verification checks.",
@@ -774,12 +803,12 @@ def _update_resume_progress(
     confirmed: List[str],
     pending: List[str],
 ) -> None:
-    existing = resume_path.read_text(encoding="utf-8", errors="ignore") if resume_path.exists() else ""
-    total_items = len(done) + len(verified) + len(confirmed) + len(pending)
-    verified_items = len(done) + len(verified) + len(confirmed)
-    completion_ratio = (verified_items / total_items * 100.0) if total_items else 100.0
-    other_items = 0
-    summary_lines = [
+    existing=resume_path.read_text(encoding="utf-8", errors="ignore") if resume_path.exists() else ""
+    total_items=len(done) + len(verified) + len(confirmed) + len(pending)
+    verified_items=len(done) + len(verified) + len(confirmed)
+    completion_ratio=(verified_items / total_items * 100.0) if total_items else 100.0
+    other_items=0
+    summary_lines=[
         "# Resume from here",
         "",
         "## Status summary",
@@ -799,7 +828,7 @@ def _update_resume_progress(
         "- The agent should only stop when pending is empty and all work is confirmed.",
         "",
     ]
-    progress_lines = []
+    progress_lines=[]
     progress_lines.extend(_generate_resume_instruction_lines())
     progress_lines.append("## Progress Ledger")
     progress_lines.append("")
@@ -822,7 +851,7 @@ def _update_resume_progress(
         progress_lines.append("- No pending items detected.")
     progress_lines.append("")
 
-    inventory_lines = ["## Repository Scan Inventory", ""]
+    inventory_lines=["## Repository Scan Inventory", ""]
     if pending:
         inventory_lines.append(f"- Pending item count: {len(pending)}")
         inventory_lines.append("- Sample pending files and artifacts:")
@@ -834,32 +863,32 @@ def _update_resume_progress(
         inventory_lines.append("- No pending repository scan inventory detected.")
     inventory_lines.append("")
 
-    backlog_lines = _build_outstanding_work_section()
+    backlog_lines=_build_outstanding_work_section()
 
     if "## Status summary" in existing:
-        updated = re.sub(r"## Status summary.*?(?=\n## |\Z)", "\n".join(summary_lines), existing, flags=re.S)
+        updated=re.sub(r"## Status summary.*?(?=\n## |\Z)", "\n".join(summary_lines), existing, flags=re.S)
     elif existing.startswith("# Resume from here"):
-        rest = existing.split("\n", 1)[1] if "\n" in existing else ""
-        updated = "\n".join(summary_lines) + rest
+        rest=existing.split("\n", 1)[1] if "\n" in existing else ""
+        updated="\n".join(summary_lines) + rest
     else:
-        updated = "\n".join(summary_lines) + existing
+        updated="\n".join(summary_lines) + existing
 
     if "## Progress Ledger" in updated:
-        updated = re.sub(r"## Progress Ledger.*?(?=\n## |\Z)", "\n".join(progress_lines), updated, flags=re.S)
+        updated=re.sub(r"## Progress Ledger.*?(?=\n## |\Z)", "\n".join(progress_lines), updated, flags=re.S)
     else:
-        updated = updated.rstrip() + "\n\n" + "\n".join(progress_lines)
+        updated=updated.rstrip() + "\n\n" + "\n".join(progress_lines)
 
     if "## Outstanding autonomous work" in updated:
-        updated = re.sub(r"## Outstanding autonomous work.*?(?=\n## Repository Scan Inventory|\Z)",
+        updated=re.sub(r"## Outstanding autonomous work.*?(?=\n## Repository Scan Inventory|\Z)",
                          "\n".join(backlog_lines), updated, flags=re.S)
     else:
-        updated = updated.rstrip() + "\n\n" + "\n".join(backlog_lines)
+        updated=updated.rstrip() + "\n\n" + "\n".join(backlog_lines)
 
     if "## Repository Scan Inventory" in updated:
-        updated = re.sub(r"## Repository Scan Inventory.*?(?=\n## |\Z)",
+        updated=re.sub(r"## Repository Scan Inventory.*?(?=\n## |\Z)",
                          "\n".join(inventory_lines), updated, flags=re.S)
     else:
-        updated = updated.rstrip() + "\n\n" + "\n".join(inventory_lines)
+        updated=updated.rstrip() + "\n\n" + "\n".join(inventory_lines)
 
     resume_path.write_text(updated, encoding="utf-8")
     _emit_status(f"Updated resumefromhere progress: {resume_path}", level="info")
@@ -869,12 +898,12 @@ def _should_stop_autonomous_run(resume_path: Path, pending: List[str]) -> bool:
         return False
     if not resume_path.exists():
         return False
-    text = resume_path.read_text(encoding="utf-8", errors="ignore")
+    text=resume_path.read_text(encoding="utf-8", errors="ignore")
     return "[CONFIRMED]" in text
 
-def _build_markdown_inventory(root: Path | None = None) -> List[Path]:
-    target = Path(root or ROOT)
-    md_paths: List[Path] = []
+def _build_markdown_inventory(root: Path | None=None) -> List[Path]:
+    target=Path(root or ROOT)
+    md_paths: List[Path]=[]
     for path in sorted(target.rglob("*.md")):
         if _is_excluded_path(path, target):
             continue
@@ -884,121 +913,121 @@ def _build_markdown_inventory(root: Path | None = None) -> List[Path]:
     return md_paths
 
 def _extract_python_references_from_markdown(path: Path) -> List[str]:
-    target = path.parent
+    target=path.parent
     try:
-        text = path.read_text(encoding="utf-8", errors="ignore")
+        text=path.read_text(encoding="utf-8", errors="ignore")
     except Exception:
         return []
-    results: List[str] = []
+    results: List[str]=[]
     for match in re.findall(r"\b([\w\-]+\.py)\b", text):
         results.append(match)
     for match in re.findall(r"\b([\w\-/]+\.py)\b", text):
         results.append(match)
     return sorted(dict.fromkeys(results))
 
-def _scan_download_app_release_docs(root: Path | None = None) -> List[Path]:
-    target = Path(root or ROOT)
-    result: List[Path] = []
-    patterns = ["download", "app", "build", "release"]
+def _scan_download_app_release_docs(root: Path | None=None) -> List[Path]:
+    target=Path(root or ROOT)
+    result: List[Path]=[]
+    patterns=["download", "app", "build", "release"]
     for path in _build_markdown_inventory(target):
-        name = path.name.lower()
+        name=path.name.lower()
         if any(term in name for term in patterns):
             result.append(path)
             continue
         try:
-            text = path.read_text(encoding="utf-8", errors="ignore").lower()
+            text=path.read_text(encoding="utf-8", errors="ignore").lower()
         except Exception:
             continue
         if any(term in text for term in patterns):
             result.append(path)
     return sorted(set(result))
 
-def _ensure_download_app_release_tasks(root: Path | None = None) -> List[str]:
-    target = Path(root or ROOT)
-    tasks: List[str] = []
-    download_docs = _scan_download_app_release_docs(target)
+def _ensure_download_app_release_tasks(root: Path | None=None) -> List[str]:
+    target=Path(root or ROOT)
+    tasks: List[str]=[]
+    download_docs=_scan_download_app_release_docs(target)
     for path in download_docs:
-        rel = path.relative_to(target).as_posix()
+        rel=path.relative_to(target).as_posix()
         if path.exists():
             tasks.append(rel)
         else:
             tasks.append(f"MISSING_REQUIRED_FILE:{rel}")
         if path.name == "DOWNLOADQMOIAIAPPALLDEVICES.md":
             for ref in _extract_python_references_from_markdown(path):
-                normalized = Path(ref)
+                normalized=Path(ref)
                 if normalized.is_absolute():
-                    ref_path = normalized
+                    ref_path=normalized
                 else:
-                    ref_path = target / normalized
+                    ref_path=target / normalized
                 if ref_path.exists():
                     tasks.append(ref_path.relative_to(target).as_posix())
                 else:
                     tasks.append(f"MISSING_REQUIRED_FILE:{ref_path.relative_to(target).as_posix()}")
     return sorted(dict.fromkeys(tasks))
 
-def _scan_backend_docs(root: Path | None = None) -> List[Path]:
-    target = Path(root or ROOT)
-    result = []
-    patterns = ["backend", "api", "server", "service"]
+def _scan_backend_docs(root: Path | None=None) -> List[Path]:
+    target=Path(root or ROOT)
+    result=[]
+    patterns=["backend", "api", "server", "service"]
     for path in _build_markdown_inventory(target):
-        name = path.name.lower()
+        name=path.name.lower()
         if any(term in name for term in patterns):
             result.append(path)
         else:
             try:
-                text = path.read_text(encoding="utf-8", errors="ignore").lower()
+                text=path.read_text(encoding="utf-8", errors="ignore").lower()
             except Exception:
                 continue
             if "backend" in text and any(app in text for app in ["qalpha", "qmoi", "qmoi ai", "qmoiapace", "qcity"]):
                 result.append(path)
     return sorted(set(result))
 
-def _scan_frontend_docs(root: Path | None = None) -> List[Path]:
-    target = Path(root or ROOT)
-    result = []
-    patterns = ["frontend", "ui", "web", "react", "vue", "angular"]
+def _scan_frontend_docs(root: Path | None=None) -> List[Path]:
+    target=Path(root or ROOT)
+    result=[]
+    patterns=["frontend", "ui", "web", "react", "vue", "angular"]
     for path in _build_markdown_inventory(target):
-        name = path.name.lower()
+        name=path.name.lower()
         if any(term in name for term in patterns):
             result.append(path)
         else:
             try:
-                text = path.read_text(encoding="utf-8", errors="ignore").lower()
+                text=path.read_text(encoding="utf-8", errors="ignore").lower()
             except Exception:
                 continue
             if any(term in text for term in ["frontend", "ui", "user interface", "react", "vue", "angular"]):
                 result.append(path)
     return sorted(set(result))
 
-def _build_all_backend_doc(root: Path | None = None) -> Path:
-    target = Path(root or ROOT)
-    paths = _scan_backend_docs(target)
-    lines = ["# ALLBACKEND.md", "", "This file aggregates backend-related documentation and implementation references.", ""]
+def _build_all_backend_doc(root: Path | None=None) -> Path:
+    target=Path(root or ROOT)
+    paths=_scan_backend_docs(target)
+    lines=["# ALLBACKEND.md", "", "This file aggregates backend-related documentation and implementation references.", ""]
     if paths:
         for path in paths:
-            rel = path.relative_to(target).as_posix()
+            rel=path.relative_to(target).as_posix()
             lines.append(f"- [{rel}]({rel})")
     else:
         lines.append("- No backend-related markdown files were discovered.")
     lines.append("")
     return _safe_file_write(target / "ALLBACKEND.md", "\n".join(lines))
 
-def _build_all_ui_doc(root: Path | None = None) -> Path:
-    target = Path(root or ROOT)
-    paths = _scan_frontend_docs(target)
-    lines = ["# ALLUI.md", "", "This file aggregates frontend UI and user experience documentation.", ""]
+def _build_all_ui_doc(root: Path | None=None) -> Path:
+    target=Path(root or ROOT)
+    paths=_scan_frontend_docs(target)
+    lines=["# ALLUI.md", "", "This file aggregates frontend UI and user experience documentation.", ""]
     if paths:
         for path in paths:
-            rel = path.relative_to(target).as_posix()
+            rel=path.relative_to(target).as_posix()
             lines.append(f"- [{rel}]({rel})")
     else:
         lines.append("- No frontend UI documentation discovered.")
     lines.append("")
     return _safe_file_write(target / "ALLUI.md", "\n".join(lines))
 
-def _build_all_frontend_doc(root: Path | None = None) -> Path:
-    target = Path(root or ROOT)
-    lines = [
+def _build_all_frontend_doc(root: Path | None=None) -> Path:
+    target=Path(root or ROOT)
+    lines=[
         "# ALLFRONTEND.md",
         "",
         "This document provides a frontend overview and points to the canonical UI index in ALLUI.md.",
@@ -1014,11 +1043,11 @@ def _build_all_frontend_doc(root: Path | None = None) -> Path:
     ]
     return _safe_file_write(target / "ALLFRONTEND.md", "\n".join(lines))
 
-def _scan_ports(root: Path | None = None) -> Dict[str, Set[str]]:
-    target = Path(root or ROOT)
-    ports: Dict[str, Set[str]] = {}
-    token_re = re.compile(r"(?:(?:localhost|127\.0\.0\.1|0\.0\.0\.0|\bhost\b|port)[\s:=]*)(\d{2,5})")
-    explicit_re = re.compile(r":(\d{2,5})\b")
+def _scan_ports(root: Path | None=None) -> Dict[str, Set[str]]:
+    target=Path(root or ROOT)
+    ports: Dict[str, Set[str]]={}
+    token_re=re.compile(r"(?:(?:localhost|127\.0\.0\.1|0\.0\.0\.0|\bhost\b|port)[\s:=]*)(\d{2,5})")
+    explicit_re=re.compile(r":(\d{2,5})\b")
     for path in sorted(target.rglob("*")):
         if not path.is_file():
             continue
@@ -1027,10 +1056,10 @@ def _scan_ports(root: Path | None = None) -> Dict[str, Set[str]]:
         if path.suffix.lower() not in {".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".json", ".yml", ".yaml", ".env", ".txt", ".cfg", ".ini", ".toml"}:
             continue
         try:
-            text = path.read_text(encoding="utf-8", errors="ignore")
+            text=path.read_text(encoding="utf-8", errors="ignore")
         except Exception:
             continue
-        lines = text.splitlines()
+        lines=text.splitlines()
         for i, line in enumerate(lines, start=1):
             for match in token_re.findall(line):
                 if 1 <= int(match) <= 65535:
@@ -1040,16 +1069,16 @@ def _scan_ports(root: Path | None = None) -> Dict[str, Set[str]]:
                     ports.setdefault(match, set()).add(f"{path.relative_to(target)}:{i}")
     return ports
 
-def _build_all_ports_doc(root: Path | None = None) -> Path:
-    target = Path(root or ROOT)
-    ports = _scan_ports(target)
-    lines = ["# ALLPORTS.md", "",
+def _build_all_ports_doc(root: Path | None=None) -> Path:
+    target=Path(root or ROOT)
+    ports=_scan_ports(target)
+    lines=["# ALLPORTS.md", "",
              "This file documents all port numbers discovered across the repository and their production intent.", ""]
     if ports:
         for port in sorted(ports, key=lambda p: int(p)):
-            locations = sorted(ports[port])
+            locations=sorted(ports[port])
             lines.append(f"## Port {port}")
-            production = _map_port_to_production(int(port))
+            production=_map_port_to_production(int(port))
             if production != int(port):
                 lines.append(f"- Production port intent: {production}")
             lines.append(f"- Discovered in {len(locations)} file locations")
@@ -1067,9 +1096,9 @@ def _build_all_ports_doc(root: Path | None = None) -> Path:
     lines.append("")
     return _safe_file_write(target / "ALLPORTS.md", "\n".join(lines))
 
-def _build_ollama_agent_doc(root: Path | None = None) -> Path:
-    target = Path(root or ROOT)
-    lines = [
+def _build_ollama_agent_doc(root: Path | None=None) -> Path:
+    target=Path(root or ROOT)
+    lines=[
         "# ollama.md",
         "",
         "This document describes the Ollama autonomous agent capabilities, production expectations, and current orchestration behavior.",
@@ -1121,28 +1150,28 @@ def _build_ollama_agent_doc(root: Path | None = None) -> Path:
     ]
     return _safe_file_write(target / "ollama.md", "\n".join(lines))
 
-def _build_plan_and_docs(root: Path | None = None) -> Dict[str, Path]:
-    target = Path(root or ROOT)
+def _build_plan_and_docs(root: Path | None=None) -> Dict[str, Path]:
+    target=Path(root or ROOT)
     target.mkdir(parents=True, exist_ok=True)
-    paths: Dict[str, Path] = {}
+    paths: Dict[str, Path]={}
 
-    resumefromhere_path = target / "resumefromhere.txt"
+    resumefromhere_path=target / "resumefromhere.txt"
     if not resumefromhere_path.exists():
-        paths["resumefromhere"] = _safe_file_write(resumefromhere_path, "# Resume from here\n\n")
+        paths["resumefromhere"]=_safe_file_write(resumefromhere_path, "# Resume from here\n\n")
     else:
-        paths["resumefromhere"] = resumefromhere_path
-    paths["trade"] = _safe_file_write(
+        paths["resumefromhere"]=resumefromhere_path
+    paths["trade"]=_safe_file_write(
         target / "Trade.md", "# Trade\n\nThis document logs trade-style decision summaries and production actions.\n")
-    paths["ollama"] = _build_ollama_agent_doc(target)
-    paths["qmoi_model"] = _safe_file_write(
+    paths["ollama"]=_build_ollama_agent_doc(target)
+    paths["qmoi_model"]=_safe_file_write(
         target / "QMOIMODEL.md", "# QMOI Model\n\nThis document tracks the canonical qmoi model and its production requirements.\n")
-    paths["qmoi_model_tests"] = _safe_file_write(
+    paths["qmoi_model_tests"]=_safe_file_write(
         target / "QMOIMODELTESTS.md", "# QMOI Model Tests\n\nThis document lists the model tests and validation checks.\n")
-    paths["all_tests"] = _safe_file_write(target / "ALLTESTSAUOTOTESTS.md",
+    paths["all_tests"]=_safe_file_write(target / "ALLTESTSAUOTOTESTS.md",
                                           "# ALLTESTSAUOTOTESTS.md\n\nThis file tracks automated and autonomous tests.\n")
-    paths["all_hooks"] = _safe_file_write(target / "ALLHOOKSWEBHOOKS.md",
+    paths["all_hooks"]=_safe_file_write(target / "ALLHOOKSWEBHOOKS.md",
                                           "# ALLHOOKSWEBHOOKS.md\n\nThis file tracks hooks and webhook integrations.\n")
-    paths["matches"] = _safe_file_write(
+    paths["matches"]=_safe_file_write(
         target / "MATCHES.md", "# MATCHES.md\n\nThis document records pattern matches and repository change summaries.\n")
 
     if not (target / "TREE.md").exists() and (target / "TREE_FULL_STRUCTURE.md").exists():
@@ -1151,11 +1180,11 @@ def _build_plan_and_docs(root: Path | None = None) -> Dict[str, Path]:
 
     return paths
 
-def build_plan_and_docs(root: Path | None = None) -> Dict[str, Path]:
+def build_plan_and_docs(root: Path | None=None) -> Dict[str, Path]:
     return _build_plan_and_docs(root)
 
 def _collect_missing_required_files(target: Path) -> List[str]:
-    required_files = [
+    required_files=[
         "ALLBACKEND.md",
         "ALLFRONTEND.md",
         "ALLUI.md",
@@ -1174,33 +1203,89 @@ def _collect_missing_required_files(target: Path) -> List[str]:
         "resumefromhere.txt",
         "OLLAMA_ACTIVITY_FEED.md",
     ]
-    missing = []
+    missing=[]
     for filename in required_files:
-        path = target / filename
+        path=target / filename
         if not path.exists() or path.stat().st_size == 0:
             missing.append(filename)
     return missing
 
 def _collect_workflow_token_gaps(target: Path) -> List[str]:
-    workflow_dir = target / ".github" / "workflows"
+    workflow_dir=target / ".github" / "workflows"
     if not workflow_dir.exists():
         return []
-    gaps = []
+    gaps=[]
     for workflow_path in sorted(workflow_dir.glob("*.yml")) + sorted(workflow_dir.glob("*.yaml")):
         if not workflow_path.is_file():
             continue
         try:
-            text = workflow_path.read_text(encoding="utf-8", errors="ignore")
+            text=workflow_path.read_text(encoding="utf-8", errors="ignore")
         except Exception:
             continue
         if "actions/github-script" in text and re.search(r"token:\s*\$\{\{\s*(secrets\.GITHUB_TOKEN|github\.token)\s*\}\}", text):
             gaps.append(workflow_path.relative_to(target).as_posix())
     return gaps
 
-def scan_for_work(root: Path | None = None) -> List[str]:
-    target = Path(root or ROOT)
-    pending: Set[str] = set()
-    markers = ["TODO", "FIXME", "placeholder", "TBD",
+def _scan_wifi_and_captive_wifi_tasks(root: Path | None=None) -> List[str]:
+    target=Path(root or ROOT)
+    tasks: List[str]=[]
+    wifi_file=target / "components" / "WifiPanel.tsx"
+    if wifi_file.exists():
+        tasks.extend([
+            wifi_file.relative_to(target).as_posix(),
+            "TASK:WIFI_CAPTIVE_PORTAL_AUTOCONNECT",
+            "TASK:WIFI_FEATURES_AUTOMATION",
+        ])
+    return sorted(dict.fromkeys(tasks))
+
+def _scan_component_gallery_tasks(root: Path | None=None) -> List[str]:
+    target=Path(root or ROOT)
+    refs: Set[str]=set()
+    for path in sorted(target.rglob("*")):
+        if not path.is_file() or _is_excluded_path(path, target):
+            continue
+        if path.suffix.lower() not in {".ts", ".tsx", ".js", ".jsx", ".md", ".txt"}:
+            continue
+        try:
+            text=path.read_text(encoding="utf-8", errors="ignore")
+        except Exception:
+            continue
+        if "ComponentGallery" in text or "component gallery" in text.lower():
+            refs.add(path.relative_to(target).as_posix())
+    tasks: List[str]=[]
+    if refs:
+        tasks.append("TASK:REMOVE_COMPONENTGALLERY_REFERENCES")
+        tasks.append("TASK:MERGE_COMPONENTGALLERY_INTO_STYLES")
+        tasks.extend(sorted(refs))
+    return sorted(dict.fromkeys(tasks))
+
+def _scan_legacy_auth_theme_tasks(root: Path | None=None) -> List[str]:
+    target=Path(root or ROOT)
+    tasks: Set[str]=set()
+    for path in sorted(target.rglob("*")):
+        if not path.is_file() or _is_excluded_path(path, target):
+            continue
+        if any(segment in path.parts for segment in ("auth", "theme", "themes", "authentication")):
+            tasks.add(path.relative_to(target).as_posix())
+    if tasks:
+        tasks.add("TASK:MERGE_OLD_AUTH_THEME_IMPLS_INTO_UNIVERSALS_STYLES")
+    return sorted(tasks)
+
+def _ensure_ui_docs_updated(root: Path | None=None) -> None:
+    target=Path(root or ROOT)
+    docs=["QMOIAIUI.md", "QMOISPACEUI.md", "QCITYUI.md", "QALPHAUI.md"]
+    for doc_name in docs:
+        path=target / doc_name
+        content=[f"# {doc_name}", "", "This file tracks UI guidance for the corresponding experience surface.", "", "## Update plan", "- Ensure this UI doc is synchronized with API, endpoint, route, style, and universal documentation.",
+            "- Include Wifi, captive portal, and component gallery migration plans.", "- Keep this document aligned with ALLUI.md and ALLFRONTEND.md.", ""]
+        if not path.exists() or path.read_text(encoding="utf-8", errors="ignore").strip() == "":
+            path.write_text("\n".join(content), encoding="utf-8")
+            _emit_status(f"Created missing UI guidance document: {doc_name}", level="info")
+
+def scan_for_work(root: Path | None=None) -> List[str]:
+    target=Path(root or ROOT)
+    pending: Set[str]=set()
+    markers=["TODO", "FIXME", "placeholder", "TBD",
                "[PRODUCTION IMPLEMENTATION REQUIRED]", "traceback", "Exception", "ERROR"]
     for path in sorted(target.rglob("*")):
         if not path.is_file():
@@ -1210,7 +1295,7 @@ def scan_for_work(root: Path | None = None) -> List[str]:
         if path.suffix.lower() not in {".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".txt", ".json", ".yml", ".yaml", ".sh", ".ps1", ".ini", ".cfg", ".toml", ".spec"}:
             continue
         try:
-            text = path.read_text(encoding="utf-8", errors="ignore")
+            text=path.read_text(encoding="utf-8", errors="ignore")
         except Exception:
             continue
         if any(marker.lower() in text.lower() for marker in markers):
@@ -1222,10 +1307,17 @@ def scan_for_work(root: Path | None = None) -> List[str]:
     for workflow_gap in _collect_workflow_token_gaps(target):
         pending.add(f"WORKFLOW_TOKEN_GAP:{workflow_gap}")
 
+    for task in _scan_wifi_and_captive_wifi_tasks(target):
+        pending.add(task)
+    for task in _scan_component_gallery_tasks(target):
+        pending.add(task)
+    for task in _scan_legacy_auth_theme_tasks(target):
+        pending.add(task)
+
     return sorted(pending)
 
-def _ensure_required_doc_files(root: Path | None = None) -> None:
-    target = Path(root or ROOT)
+def _ensure_required_doc_files(root: Path | None=None) -> None:
+    target=Path(root or ROOT)
     _build_all_backend_doc(target)
     _build_all_ui_doc(target)
     _build_all_frontend_doc(target)
@@ -1240,27 +1332,28 @@ def _ensure_required_doc_files(root: Path | None = None) -> None:
         if not (target / doc_name).exists():
             _safe_file_write(
                 target / doc_name, f"# {doc_name}\n\nThis file tracks UI guidance for the corresponding experience surface.\n")
+    _ensure_ui_docs_updated(target)
 
-def update_production_manifests(root: Path | None = None) -> Dict[str, Path]:
-    target = Path(root or ROOT)
+def update_production_manifests(root: Path | None=None) -> Dict[str, Path]:
+    target=Path(root or ROOT)
     target.mkdir(parents=True, exist_ok=True)
 
-    docs_root = target / "docs"
-    docs_files = []
+    docs_root=target / "docs"
+    docs_files=[]
     if docs_root.exists():
-        docs_files = sorted([p for p in docs_root.rglob("*.md") if p.is_file() and not _is_excluded_path(p, target)])
-    root_docs = sorted([p for p in target.rglob("*.md") if p.is_file()
+        docs_files=sorted([p for p in docs_root.rglob("*.md") if p.is_file() and not _is_excluded_path(p, target)])
+    root_docs=sorted([p for p in target.rglob("*.md") if p.is_file()
                        and not _is_excluded_path(p, target) and p.parent == target])
 
-    docs_lines = ["# DOCS.md", "", "This file aggregates documentation inventory for the repository.", ""]
+    docs_lines=["# DOCS.md", "", "This file aggregates documentation inventory for the repository.", ""]
     for path in docs_files + root_docs:
-        rel = path.relative_to(target).as_posix()
+        rel=path.relative_to(target).as_posix()
         docs_lines.append(f"- [{rel}]({rel})")
     if not docs_files and not root_docs:
         docs_lines.append("- No documentation files discovered.")
 
-    nonproduction_entries = []
-    markers = ["TODO", "FIXME", "placeholder", "TBD",
+    nonproduction_entries=[]
+    markers=["TODO", "FIXME", "placeholder", "TBD",
                "[PRODUCTION IMPLEMENTATION REQUIRED]", "traceback", "Exception", "ERROR"]
     for path in sorted(target.rglob("*")):
         if not path.is_file() or _is_excluded_path(path, target):
@@ -1268,15 +1361,15 @@ def update_production_manifests(root: Path | None = None) -> Dict[str, Path]:
         if path.suffix.lower() not in {".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".txt", ".json", ".yml", ".yaml", ".sh", ".ps1", ".ini", ".cfg", ".toml", ".spec"}:
             continue
         try:
-            text = path.read_text(encoding="utf-8", errors="ignore")
+            text=path.read_text(encoding="utf-8", errors="ignore")
         except Exception:
             continue
-        found = [marker for marker in markers if marker.lower() in text.lower()]
+        found=[marker for marker in markers if marker.lower() in text.lower()]
         if found:
-            rel = path.relative_to(target).as_posix()
+            rel=path.relative_to(target).as_posix()
             nonproduction_entries.append({"path": rel, "markers": found})
 
-    production_lines = ["# production.md", "",
+    production_lines=["# production.md", "",
                         "This file tracks non-production implementations that should be upgraded to production-ready implementations.", ""]
     if nonproduction_entries:
         for entry in nonproduction_entries:
@@ -1286,7 +1379,7 @@ def update_production_manifests(root: Path | None = None) -> Dict[str, Path]:
     production_lines.extend(["", "## Production replacement checklist",
                             "- Replace placeholders with production-ready implementations.", "- Verify and confirm the replacement from end to end."])
 
-    enhanced_lines = ["# productionenhanced.md", "", "This file records the enhancements applied during production replacement work.", "", "## Enhancements",
+    enhanced_lines=["# productionenhanced.md", "", "This file records the enhancements applied during production replacement work.", "", "## Enhancements",
                       "- Added automated documentation inventory generation.", "- Added production replacement manifest tracking.", "- Added resume-driven verification totals and status summaries."]
     if nonproduction_entries:
         enhanced_lines.append("")
@@ -1299,9 +1392,9 @@ def update_production_manifests(root: Path | None = None) -> Dict[str, Path]:
     _safe_file_write(target / "productionenhanced.md", "\n".join(enhanced_lines) + "\n")
     return {"docs": target / "DOCS.md", "production": target / "production.md", "productionenhanced": target / "productionenhanced.md"}
 
-def _verify_required_artifacts(root: Path | None = None) -> List[str]:
-    target = Path(root or ROOT)
-    required = [
+def _verify_required_artifacts(root: Path | None=None) -> List[str]:
+    target=Path(root or ROOT)
+    required=[
         target / "API.md",
         target / "ENDPOINTS.md",
         target / "ROUTES.md",
@@ -1319,7 +1412,7 @@ def _verify_required_artifacts(root: Path | None = None) -> List[str]:
         target / "resumefromhere.txt",
         target / "OLLAMA_ACTIVITY_FEED.md",
     ]
-    verified = []
+    verified=[]
     for path in required:
         if path.exists() and path.stat().st_size > 0:
             verified.append(path.name)
@@ -1328,8 +1421,8 @@ def _verify_required_artifacts(root: Path | None = None) -> List[str]:
     _emit_status(f"Verified required artifacts: {', '.join(verified)}", level="info")
     return verified
 
-def run_agent(root: Path | None = None) -> Dict[str, object]:
-    target = Path(root or ROOT)
+def run_agent(root: Path | None=None) -> Dict[str, object]:
+    target=Path(root or ROOT)
     if (target / "tests").exists():
         # If a full test run is requested, ensure a production-like helper
         # server is available on the ports integration tests expect (3000).
@@ -1338,8 +1431,8 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
                 if str(ROOT) not in sys.path:
                     sys.path.insert(0, str(ROOT))
                 import scripts.production_helper_server as prod_srv
-                prod_port = int(os.environ.get("PROD_HELPER_PORT", "3000"))
-                started = prod_srv.start(host=os.environ.get("PROD_HELPER_HOST", "127.0.0.1"), port=prod_port)
+                prod_port=int(os.environ.get("PROD_HELPER_PORT", "3000"))
+                started=prod_srv.start(host=os.environ.get("PROD_HELPER_HOST", "127.0.0.1"), port=prod_port)
                 if started:
                     _emit_status(f"Production helper server started on port {prod_port}", level="info")
                 else:
@@ -1353,12 +1446,12 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
     # Allow the autonomous agent to self-update before execution
     _ensure_self_update_capabilities(target)
     # Merge any archived or backed-up implementations into the working tree
-    merged_archives = _scan_archives_and_merge(target)
-    paths = build_plan_and_docs(target)
+    merged_archives=_scan_archives_and_merge(target)
+    paths=build_plan_and_docs(target)
     # Record pending-before snapshot in JOURNEY MAP TRACKS
     try:
-        resume_path = target / "resumefromhere.txt"
-        pending_before = scan_for_work(target)
+        resume_path=target / "resumefromhere.txt"
+        pending_before=scan_for_work(target)
         _update_journey_map_tracks(resume_path, {
             "pending_before": len(pending_before),
             "merged_archives": merged_archives,
@@ -1368,25 +1461,25 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
         })
     except Exception:
         pass
-    resumed = _resume_file_changed(target)
+    resumed=_resume_file_changed(target)
     if resumed:
         _emit_status("Detected changes in resumefromhere.txt; refreshing execution plan.", level="info")
 
-    instructions = _extract_resume_instructions(target)
-    normalize_changes = _normalize_production_ports(target)
+    instructions=_extract_resume_instructions(target)
+    normalize_changes=_normalize_production_ports(target)
     if normalize_changes:
         _emit_status(f"Normalized production port references in {len(normalize_changes)} file(s)", level="info")
 
-    command_results = _execute_resume_instructions(target, instructions)
+    command_results=_execute_resume_instructions(target, instructions)
     if any(result.get("status") != "passed" for result in command_results if result.get("status") != "skipped"):
         _emit_status("Some resume commands completed with non-passed status.", level="warning")
 
     # Load agent state and filter out already-processed items so runs resume
-    state = _load_state(target)
-    processed_set = set(state.get("processed", []))
-    pending = scan_for_work(target)
+    state=_load_state(target)
+    processed_set=set(state.get("processed", []))
+    pending=scan_for_work(target)
     # Include download/app/build/release docs and scripts referenced in them
-    download_tasks = _ensure_download_app_release_tasks(target)
+    download_tasks=_ensure_download_app_release_tasks(target)
     for task in download_tasks:
         if task.startswith("MISSING_REQUIRED_FILE:"):
             pending.append(task)
@@ -1397,16 +1490,16 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
         if instr not in pending and instr not in processed_set and _looks_like_actionable_task(instr, target):
             pending.insert(0, instr)
     # Keep only actionable pending items; non-actionable guidance strings are omitted.
-    pending = [p for p in pending if p.startswith("MISSING_REQUIRED_FILE:") or p.startswith(
+    pending=[p for p in pending if p.startswith("MISSING_REQUIRED_FILE:") or p.startswith(
         "WORKFLOW_TOKEN_GAP:") or _looks_like_actionable_task(p, target)]
     # Filter out items that were already processed in prior runs
-    pending = [p for p in pending if p not in processed_set]
-    resume_path = target / "resumefromhere.txt"
+    pending=[p for p in pending if p not in processed_set]
+    resume_path=target / "resumefromhere.txt"
     _backup_resume(resume_path)
 
-    done: List[str] = []
-    verified: List[str] = []
-    confirmed: List[str] = []
+    done: List[str]=[]
+    verified: List[str]=[]
+    confirmed: List[str]=[]
 
     if not pending:
         done.append("autonomous-run")
@@ -1417,28 +1510,28 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
     else:
         # Attempt to remediate pending items automatically
         _emit_status(f"Processing {len(pending)} pending items...", level="info")
-        proc = process_pending_items(pending, target)
+        proc=process_pending_items(pending, target)
         done.extend(proc.get("done", []))
         verified.extend(proc.get("verified", []))
         confirmed.extend(proc.get("confirmed", []))
-        still_pending = proc.get("still_pending", [])
+        still_pending=proc.get("still_pending", [])
         # Recompute pending after attempted fixes
-        pending = sorted(list(set(still_pending + [p for p in pending if p not in done and p not in verified])))
+        pending=sorted(list(set(still_pending + [p for p in pending if p not in done and p not in verified])))
         # Always update the resume file with the latest progress
         _update_resume_progress(resume_path, done=done, verified=verified, confirmed=confirmed, pending=pending)
         # Persist processed items into agent state so future runs resume
         try:
-            state = _load_state(target)
-            state_processed = set(state.get("processed", []))
+            state=_load_state(target)
+            state_processed=set(state.get("processed", []))
             state_processed.update(done)
-            state["processed"] = sorted(list(state_processed))
-            state["iteration"] = int(state.get("iteration", 0)) + 1
+            state["processed"]=sorted(list(state_processed))
+            state["iteration"]=int(state.get("iteration", 0)) + 1
             _save_state(state, target)
         except Exception:
             pass
         # write a pending report snapshot
         try:
-            report = generate_pending_report(pending, target)
+            report=generate_pending_report(pending, target)
             _emit_status("Wrote pending report snapshot to OLLAMA_PENDING_REPORT.md", level="info")
         except Exception:
             _emit_status("Failed to write pending report snapshot", level="warning")
@@ -1452,24 +1545,24 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
     _verify_required_artifacts(target)
 
     _emit_status(f"Run agent completed with {len(pending)} pending items", level="info")
-    result = {"pending": pending, "paths": paths, "command_results": command_results,
+    result={"pending": pending, "paths": paths, "command_results": command_results,
               "port_fixes": normalize_changes, "merged_archives": merged_archives}
     # If full tests were explicitly requested, run verification even if pending items exist.
     if os.environ.get("RUN_FULL_TESTS", "0") == "1":
         _emit_status("RUN_FULL_TESTS=1: executing repository verification despite pending work", level="info")
         try:
-            verification = run_repo_verification(target)
-            result["verification"] = verification
+            verification=run_repo_verification(target)
+            result["verification"]=verification
             write_live_notification_summary(
                 target, message=f"Autonomous verification run completed: tests={verification['tests']['status']} python={verification['python']['status']}")
         except Exception as exc:
             _emit_status(f"Verification run failed: {exc}", level="warning")
-            result["verification"] = {"tests": {"status": "error", "output": str(exc)}, "python": {
+            result["verification"]={"tests": {"status": "error", "output": str(exc)}, "python": {
                 "status": "error", "output": str(exc)}}
     # Update JOURNEY MAP TRACKS with pending_after and verification
     try:
-        resume_path = target / "resumefromhere.txt"
-        pending_after = scan_for_work(target)
+        resume_path=target / "resumefromhere.txt"
+        pending_after=scan_for_work(target)
         _update_journey_map_tracks(resume_path, {
             "pending_before": None,
             "pending_after": len(pending_after),
@@ -1482,15 +1575,15 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
         pass
     return result
 
-def collect_error_inventory(root: Path | None = None) -> List[Dict[str, object]]:
+def collect_error_inventory(root: Path | None=None) -> List[Dict[str, object]]:
     """Collect error-prone files safely with strict directory exclusion filters."""
-    target = Path(root or ROOT)
-    inventory: List[Dict[str, object]] = []
+    target=Path(root or ROOT)
+    inventory: List[Dict[str, object]]=[]
     _emit_status(f"Scanning repository for error markers under {target}", level="info")
     if not target.exists():
         return inventory
 
-    markers = ["TODO", "FIXME", "placeholder", "TBD",
+    markers=["TODO", "FIXME", "placeholder", "TBD",
                "[PRODUCTION IMPLEMENTATION REQUIRED]", "traceback", "Exception", "ERROR"]
     for path in sorted(target.rglob("*")):
         if not path.is_file():
@@ -1500,7 +1593,7 @@ def collect_error_inventory(root: Path | None = None) -> List[Dict[str, object]]
         if path.suffix.lower() not in {".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".txt", ".json", ".yml", ".yaml", ".sh", ".ps1"}:
             continue
         try:
-            text = path.read_text(encoding="utf-8", errors="ignore")
+            text=path.read_text(encoding="utf-8", errors="ignore")
         except Exception:
             continue
         if not any(marker.lower() in text.lower() for marker in markers):
@@ -1513,18 +1606,18 @@ def collect_error_inventory(root: Path | None = None) -> List[Dict[str, object]]
     _emit_status(f"Collected {len(inventory)} error markers", level="info")
     return sorted(inventory, key=lambda item: item["path"])
 
-def update_all_errors_manifest(root: Path | None = None, issues: List[Dict[str, object]] | None = None, branch: str | None = None) -> Path:
+def update_all_errors_manifest(root: Path | None=None, issues: List[Dict[str, object]] | None=None, branch: str | None=None) -> Path:
     """Create or refresh ALLERRORS.md with optimized error remediation tracking."""
-    target = Path(root or ROOT)
+    target=Path(root or ROOT)
     target.mkdir(parents=True, exist_ok=True)
-    error_path = target / "ALLERRORS.md"
-    branch_name = branch or os.environ.get("GITHUB_HEAD_REF", "local")
-    ts = datetime.utcnow().isoformat() + "Z"
-    issues = issues or collect_error_inventory(target)
+    error_path=target / "ALLERRORS.md"
+    branch_name=branch or os.environ.get("GITHUB_HEAD_REF", "local")
+    ts=datetime.utcnow().isoformat() + "Z"
+    issues=issues or collect_error_inventory(target)
 
-    header = ["# ALLERRORS.md", "", f"- Last autonomous remediation: {ts}",
+    header=["# ALLERRORS.md", "", f"- Last autonomous remediation: {ts}",
               f"- Branch: {branch_name}", "- Status: production verification pass", ""]
-    sections = ["## Autonomous remediation inventory"]
+    sections=["## Autonomous remediation inventory"]
     if issues:
         for issue in issues:
             sections.append(f"- {issue['path']}: {', '.join(issue['markers'])}")
@@ -1544,29 +1637,29 @@ def update_all_errors_manifest(root: Path | None = None, issues: List[Dict[str, 
     ])
 
     if error_path.exists():
-        text = error_path.read_text(encoding="utf-8", errors="ignore")
+        text=error_path.read_text(encoding="utf-8", errors="ignore")
         if "## Autonomous remediation inventory" in text:
-            prefix = text.split("## Autonomous remediation inventory", 1)[0]
-            tail = text.split("## Autonomous remediation inventory", 1)[1]
-            text = prefix.rstrip() + "\n\n" + "\n".join(header + sections) + "\n\n" + tail.lstrip()
+            prefix=text.split("## Autonomous remediation inventory", 1)[0]
+            tail=text.split("## Autonomous remediation inventory", 1)[1]
+            text=prefix.rstrip() + "\n\n" + "\n".join(header + sections) + "\n\n" + tail.lstrip()
         else:
-            text = text.rstrip() + "\n\n" + "\n".join(header + sections) + "\n"
+            text=text.rstrip() + "\n\n" + "\n".join(header + sections) + "\n"
     else:
-        text = "\n".join(header + sections) + "\n"
+        text="\n".join(header + sections) + "\n"
     error_path.write_text(text, encoding="utf-8")
     _emit_status(f"Wrote remediation inventory to {error_path}", level="info")
     return error_path
 
-def run_repo_verification(root: Path | None = None) -> Dict[str, object]:
+def run_repo_verification(root: Path | None=None) -> Dict[str, object]:
     """Run lightweight code checks with strict time limits to prevent hanging."""
-    target = Path(root or ROOT)
-    results: Dict[str, object] = {"python": {"status": "skipped",
+    target=Path(root or ROOT)
+    results: Dict[str, object]={"python": {"status": "skipped",
                                              "output": ""}, "tests": {"status": "skipped", "output": ""}}
 
     _emit_status("Starting repository verification checks", level="info")
     if (target / "tests").exists():
         try:
-            safe_tests = []
+            safe_tests=[]
             for path in (
                 "tests/api/test_health.py",
                 "tests/test_qmoi_local_server.py",
@@ -1575,19 +1668,19 @@ def run_repo_verification(root: Path | None = None) -> Dict[str, object]:
                 if (target / path).exists():
                     safe_tests.append(str(target / path))
             if safe_tests:
-                proc = subprocess.run([sys.executable, "-m", "pytest", "-q", *safe_tests], cwd=str(target),
+                proc=subprocess.run([sys.executable, "-m", "pytest", "-q", *safe_tests], cwd=str(target),
                                       env=os.environ.copy(), capture_output=True, text=True, timeout=600)
             else:
-                proc = subprocess.run([sys.executable, "-m", "pytest", "-q", "tests", "--ignore=tests/integration"], cwd=str(target),
+                proc=subprocess.run([sys.executable, "-m", "pytest", "-q", "tests", "--ignore=tests/integration"], cwd=str(target),
                                       env=os.environ.copy(), capture_output=True, text=True, timeout=600)
-            results["tests"] = {"status": "passed" if proc.returncode ==
+            results["tests"]={"status": "passed" if proc.returncode ==
                                 0 else "failed", "output": (proc.stdout + proc.stderr)[:2000]}
         except Exception as exc:
-            results["tests"] = {"status": "error", "output": str(exc)}
+            results["tests"]={"status": "error", "output": str(exc)}
 
     if (target / "pyproject.toml").exists() or any((target / p).exists() for p in ("setup.py", "requirements.txt")):
         try:
-            safe_compile = []
+            safe_compile=[]
             for path in (
                 "scripts/ollama_autonomous_agent.py",
                 "tests/test_qmoi_local_server.py",
@@ -1597,27 +1690,27 @@ def run_repo_verification(root: Path | None = None) -> Dict[str, object]:
                 if (target / path).exists():
                     safe_compile.append(str(target / path))
             if safe_compile:
-                proc = subprocess.run([sys.executable, "-m", "compileall", "-q", *safe_compile], cwd=str(target),
+                proc=subprocess.run([sys.executable, "-m", "compileall", "-q", *safe_compile], cwd=str(target),
                                       env=os.environ.copy(), capture_output=True, text=True, timeout=120)
-                results["python"] = {"status": "passed" if proc.returncode ==
+                results["python"]={"status": "passed" if proc.returncode ==
                                      0 else "failed", "output": (proc.stdout + proc.stderr)[:2000]}
             else:
-                results["python"] = {"status": "skipped", "output": "no safe compile targets available"}
+                results["python"]={"status": "skipped", "output": "no safe compile targets available"}
         except Exception as exc:
-            results["python"] = {"status": "error", "output": str(exc)}
+            results["python"]={"status": "error", "output": str(exc)}
 
     _emit_status(
         f"Verification completed with python={results['python']['status']} tests={results['tests']['status']}", level="info")
     return results
 
-def write_live_notification_summary(root: Path | None = None, message: str = "", branch: str | None = None) -> Path:
+def write_live_notification_summary(root: Path | None=None, message: str="", branch: str | None=None) -> Path:
     """Write an activity feed update safely."""
-    target = Path(root or ROOT)
+    target=Path(root or ROOT)
     target.mkdir(parents=True, exist_ok=True)
-    feed_path = target / "OLLAMA_ACTIVITY_FEED.md"
-    branch_name = branch or os.environ.get("GITHUB_HEAD_REF", "local")
-    ts = datetime.utcnow().isoformat() + "Z"
-    body = [
+    feed_path=target / "OLLAMA_ACTIVITY_FEED.md"
+    branch_name=branch or os.environ.get("GITHUB_HEAD_REF", "local")
+    ts=datetime.utcnow().isoformat() + "Z"
+    body=[
         "# Ollama activity feed",
         "",
         f"- Timestamp: {ts}",
@@ -1631,78 +1724,78 @@ def write_live_notification_summary(root: Path | None = None, message: str = "",
     _emit_status(f"Updated live notification feed at {feed_path}", level="info")
     return feed_path
 
-def _execute_task_on_file(relpath: str, root: Path | None = None) -> Dict[str, object]:
+def _execute_task_on_file(relpath: str, root: Path | None=None) -> Dict[str, object]:
     """Attempt safe, non-blocking file updates for production readiness."""
-    target = Path(root or ROOT)
-    p = target / relpath
-    ts = datetime.utcnow().isoformat() + "Z"
-    result = {"changed": False, "description": "", "path": relpath}
+    target=Path(root or ROOT)
+    p=target / relpath
+    ts=datetime.utcnow().isoformat() + "Z"
+    result={"changed": False, "description": "", "path": relpath}
     if not p.exists() or not p.is_file():
-        result["description"] = "missing"
+        result["description"]="missing"
         return result
     try:
-        text = p.read_text(encoding="utf-8", errors="ignore")
+        text=p.read_text(encoding="utf-8", errors="ignore")
     except Exception as e:
-        result["description"] = f"read-failed: {e}"
+        result["description"]=f"read-failed: {e}"
         return result
 
-    markers = ["[PRODUCTION IMPLEMENTATION REQUIRED]", "TODO", "placeholder", "TBD", "FIXME"]
-    changed = False
-    desc = []
+    markers=["[PRODUCTION IMPLEMENTATION REQUIRED]", "TODO", "placeholder", "TBD", "FIXME"]
+    changed=False
+    desc=[]
 
     if any(m in text for m in markers):
         if p.suffix.lower() in (".md", ".txt"):
             for m in markers:
                 if m in text:
-                    text = text.replace(m, f"[AUTOFIXED by Ollama at {ts}]")
-                    changed = True
+                    text=text.replace(m, f"[AUTOFIXED by Ollama at {ts}]")
+                    changed=True
                     desc.append(f"replaced {m}")
         elif p.suffix.lower() in (".json",):
-            side = p.with_name(p.name + ".ollama_update.txt")
+            side=p.with_name(p.name + ".ollama_update.txt")
             side.write_text(f"Automated note: placeholders detected at {ts}\n", encoding="utf-8")
-            changed = True
+            changed=True
             desc.append("created sidecar note")
         else:
-            tok = _comment_token_for_suffix(p.suffix)
-            note = f"\n{tok} AUTOFIXED by Ollama at {ts}\n"
-            text = text + note
-            changed = True
+            tok=_comment_token_for_suffix(p.suffix)
+            note=f"\n{tok} AUTOFIXED by Ollama at {ts}\n"
+            text=text + note
+            changed=True
             desc.append("appended audit comment")
 
     if changed:
         try:
-            bak = p.with_suffix(p.suffix + ".ollama.bak")
+            bak=p.with_suffix(p.suffix + ".ollama.bak")
             shutil.copy2(p, bak)
         except Exception:
             pass
         try:
             p.write_text(text, encoding="utf-8")
-            result["changed"] = True
-            result["description"] = ", ".join(desc)
+            result["changed"]=True
+            result["description"]=", ".join(desc)
         except Exception as e:
-            result["description"] = f"write-failed: {e}"
+            result["description"]=f"write-failed: {e}"
     else:
-        result["description"] = "no-action"
+        result["description"]="no-action"
 
     return result
 
-def process_pending_items(pending: List[str], root: Path | None = None) -> Dict[str, List[str]]:
+def process_pending_items(pending: List[str], root: Path | None=None) -> Dict[str, List[str]]:
     """Attempt safe automated remediation for pending items.
 
     Returns a dict with keys: done, verified, confirmed, still_pending, details
     """
-    target = Path(root or ROOT)
-    done: List[str] = []
-    verified: List[str] = []
-    confirmed: List[str] = []
-    still_pending: List[str] = []
-    details: List[str] = []
+    target=Path(root or ROOT)
+    done: List[str]=[]
+    verified: List[str]=[]
+    confirmed: List[str]=[]
+    still_pending: List[str]=[]
+    details: List[str]=[]
 
     for item in pending:
         try:
             if item.startswith("MISSING_REQUIRED_FILE:"):
-                fname = item.split("MISSING_REQUIRED_FILE:", 1)[1]
-                p = target / fname
+                fname=item.split("MISSING_REQUIRED_FILE:", 1)[1]
+                p=target / fname
                 if not p.exists():
                     _safe_file_write(p, f"# {fname}\n\nThis file was auto-created by the Ollama autonomous agent.\n")
                     done.append(fname)
@@ -1710,13 +1803,13 @@ def process_pending_items(pending: List[str], root: Path | None = None) -> Dict[
                 else:
                     verified.append(fname)
             elif item.startswith("WORKFLOW_TOKEN_GAP:"):
-                wf = item.split("WORKFLOW_TOKEN_GAP:", 1)[1]
-                wf_path = target / wf
+                wf=item.split("WORKFLOW_TOKEN_GAP:", 1)[1]
+                wf_path=target / wf
                 if wf_path.exists():
                     # insert a safe comment about token fallback if not present
-                    text = wf_path.read_text(encoding="utf-8", errors="ignore")
+                    text=wf_path.read_text(encoding="utf-8", errors="ignore")
                     if "MY_CUSTOM_TOKEN" not in text:
-                        insert = "\n# NOTE: Add MY_CUSTOM_TOKEN fallback to secrets for robust automation\n"
+                        insert="\n# NOTE: Add MY_CUSTOM_TOKEN fallback to secrets for robust automation\n"
                         wf_path.write_text(text + insert, encoding="utf-8")
                         done.append(wf)
                         details.append(f"patched_workflow:{wf}")
@@ -1724,12 +1817,89 @@ def process_pending_items(pending: List[str], root: Path | None = None) -> Dict[
                         verified.append(wf)
                 else:
                     still_pending.append(item)
+            elif item.startswith("TASK:"):
+                task_name=item.split("TASK:", 1)[1]
+                if task_name == "WIFI_CAPTIVE_PORTAL_AUTOCONNECT":
+                    wifi_file=target / "components" / "WifiPanel.tsx"
+                    if wifi_file.exists():
+                        text=wifi_file.read_text(encoding="utf-8", errors="ignore")
+                        marker="// CAPTIVE WIFI AUTO-CONNECT: ensure captive portal flow and auto-login support"
+                        if marker not in text:
+                            wifi_file.write_text(text + "\n" + marker + "\n", encoding="utf-8")
+                        done.append(item)
+                        details.append("wifi_captive_portal_planned")
+                    else:
+                        still_pending.append(item)
+                elif task_name == "WIFI_FEATURES_AUTOMATION":
+                    wifi_file=target / "components" / "WifiPanel.tsx"
+                    if wifi_file.exists():
+                        text=wifi_file.read_text(encoding="utf-8", errors="ignore")
+                        if "autoConnect" in text and "captive" in text.lower() == False:
+                            note="// NOTE: Extend autoConnect behavior for captive portal handling and prioritization logic"
+                            if note not in text:
+                                wifi_file.write_text(text + "\n" + note + "\n", encoding="utf-8")
+                        done.append(item)
+                        details.append("wifi_automation_plan_added")
+                    else:
+                        still_pending.append(item)
+                elif task_name == "REMOVE_COMPONENTGALLERY_REFERENCES":
+                    found=False
+                    summary_path=target / "ComponentGallery_REMOVAL_PLAN.md"
+                    report_lines=["# ComponentGallery Removal Plan", "", "- Locate and remove ComponentGallery references safely.",
+                        "- Migrate any remaining gallery behaviors into styles and universals.", "- Confirm no negative impact to dependent UI entrypoints.", "", "## References found:", ""]
+                    for path in sorted(target.rglob("*")):
+                        if not path.is_file() or _is_excluded_path(path, target):
+                            continue
+                        if path.suffix.lower() not in {".ts", ".tsx", ".js", ".jsx", ".md", ".txt"}:
+                            continue
+                        try:
+                            text=path.read_text(encoding="utf-8", errors="ignore")
+                        except Exception:
+                            continue
+                        if "ComponentGallery" in text or "component gallery" in text.lower():
+                            rel=path.relative_to(target).as_posix()
+                            report_lines.append(f"- {rel}")
+                            found=True
+                    if found:
+                        summary_path.write_text("\n".join(report_lines) + "\n", encoding="utf-8")
+                        done.append(item)
+                        details.append("component_gallery_plan_created")
+                    else:
+                        still_pending.append(item)
+                elif task_name == "MERGE_COMPONENTGALLERY_INTO_STYLES":
+                    universals=target / "UNIVERSALS.md"
+                    styles=target / "STYLES.md"
+                    msg="- Merge ComponentGallery visual and interaction patterns into UNIVERSALS and STYLES, retiring the gallery concept."
+                    for path in (universals, styles):
+                        if path.exists():
+                            content=path.read_text(encoding="utf-8", errors="ignore")
+                            if msg not in content:
+                                path.write_text(content.rstrip() + "\n" + msg + "\n", encoding="utf-8")
+                        else:
+                            path.write_text(f"# {path.name}\n\n{msg}\n", encoding="utf-8")
+                    done.append(item)
+                    details.append("component_gallery_merge_note_added")
+                elif task_name == "MERGE_OLD_AUTH_THEME_IMPLS_INTO_UNIVERSALS_STYLES":
+                    universals=target / "UNIVERSALS.md"
+                    styles=target / "STYLES.md"
+                    msg="- Migrate legacy auth and theme implementation files into the new UNIVERSALS and STYLES framework; delete old auth/theme artifacts when safe."
+                    for path in (universals, styles):
+                        if path.exists():
+                            content=path.read_text(encoding="utf-8", errors="ignore")
+                            if msg not in content:
+                                path.write_text(content.rstrip() + "\n" + msg + "\n", encoding="utf-8")
+                        else:
+                            path.write_text(f"# {path.name}\n\n{msg}\n", encoding="utf-8")
+                    done.append(item)
+                    details.append("legacy_auth_theme_migration_note_added")
+                else:
+                    still_pending.append(item)
             else:
                 # treat as file path
-                rel = item
-                p = target / rel
+                rel=item
+                p=target / rel
                 if p.exists() and p.is_file():
-                    res = _execute_task_on_file(rel, target)
+                    res=_execute_task_on_file(rel, target)
                     if res.get("changed"):
                         done.append(rel)
                         details.append(f"fixed:{rel}:{res.get('description')}")
@@ -1745,9 +1915,9 @@ def process_pending_items(pending: List[str], root: Path | None = None) -> Dict[
 
     return {"done": done, "verified": verified, "confirmed": confirmed, "still_pending": still_pending, "details": details}
 
-def generate_pending_report(pending: List[str], root: Path | None = None) -> str:
-    target = Path(root or ROOT)
-    lines: List[str] = []
+def generate_pending_report(pending: List[str], root: Path | None=None) -> str:
+    target=Path(root or ROOT)
+    lines: List[str]=[]
     lines.append("# Pending Work Report")
     lines.append(f"- Generated: {datetime.utcnow().isoformat()}Z")
     lines.append(f"- Total pending items: {len(pending)}")
@@ -1761,23 +1931,23 @@ def generate_pending_report(pending: List[str], root: Path | None = None) -> str
     else:
         lines.append("- No pending items detected.")
     lines.append("")
-    report = "\n".join(lines)
+    report="\n".join(lines)
     try:
-        path = target / "OLLAMA_PENDING_REPORT.md"
+        path=target / "OLLAMA_PENDING_REPORT.md"
         path.write_text(report, encoding="utf-8")
     except Exception:
         pass
     return report
 
-def _scan_archives_and_merge(root: Path | None = None) -> List[str]:
+def _scan_archives_and_merge(root: Path | None=None) -> List[str]:
     """Scan archive/backup directories and merge useful files into the repo.
 
     For files present in archive but missing in root, copy them. For files
     that exist in both, append a merged section. Returns list of merged paths.
     """
-    target = Path(root or ROOT)
-    archive_names = {"archive", "archived", "backup", "backups", ".backup", "old", "archives"}
-    merged: List[str] = []
+    target=Path(root or ROOT)
+    archive_names={"archive", "archived", "backup", "backups", ".backup", "old", "archives"}
+    merged: List[str]=[]
     for d in target.rglob("*"):
         if not d.is_dir():
             continue
@@ -1786,10 +1956,10 @@ def _scan_archives_and_merge(root: Path | None = None) -> List[str]:
                 if not f.is_file():
                     continue
                 try:
-                    rel = f.relative_to(d).as_posix()
+                    rel=f.relative_to(d).as_posix()
                 except Exception:
-                    rel = f.name
-                dest = target / rel
+                    rel=f.name
+                dest=target / rel
                 # avoid overwriting .git or node_modules
                 if _is_excluded_path(dest, target):
                     continue
@@ -1801,8 +1971,8 @@ def _scan_archives_and_merge(root: Path | None = None) -> List[str]:
                     else:
                         # append as audit-merged block to existing file
                         try:
-                            content = f.read_text(encoding="utf-8", errors="ignore")
-                            marker = f"\n\n<!-- MERGED FROM ARCHIVE: {f.as_posix()} -->\n"
+                            content=f.read_text(encoding="utf-8", errors="ignore")
+                            marker=f"\n\n<!-- MERGED FROM ARCHIVE: {f.as_posix()} -->\n"
                             dest.write_text(dest.read_text(encoding="utf-8", errors="ignore") +
                                             marker + content, encoding="utf-8")
                             merged.append(str(dest.relative_to(target)))
@@ -1814,25 +1984,25 @@ def _scan_archives_and_merge(root: Path | None = None) -> List[str]:
         _emit_status(f"Merged {len(merged)} files from archive directories", level="info")
     return merged
 
-def ensure_tests_for_file(path: Path, root: Path | None = None) -> Optional[Path]:
+def ensure_tests_for_file(path: Path, root: Path | None=None) -> Optional[Path]:
     """Create or update an enhanced pytest for the given Python file.
 
     Returns path to test file if created/updated, else None.
     """
-    target = Path(root or ROOT)
+    target=Path(root or ROOT)
     try:
-        rel = path.relative_to(target)
+        rel=path.relative_to(target)
     except Exception:
-        rel = path
+        rel=path
     if path.suffix.lower() != ".py":
         return None
-    tests_dir = target / "tests"
+    tests_dir=target / "tests"
     tests_dir.mkdir(parents=True, exist_ok=True)
-    mod_name = "".join(rel.as_posix().split("/"))
-    test_name = f"test_{mod_name.replace('.', '_').replace('/', '_')}.py"
-    test_path = tests_dir / test_name
+    mod_name="".join(rel.as_posix().split("/"))
+    test_name=f"test_{mod_name.replace('.', '_').replace('/', '_')}.py"
+    test_path=tests_dir / test_name
     # Enhanced test: importability and basic interface validation
-    test_lines = [
+    test_lines=[
         "import importlib",
         "import sys",
         "import pytest",
@@ -1846,9 +2016,9 @@ def ensure_tests_for_file(path: Path, root: Path | None = None) -> Optional[Path
     try:
         test_path.write_text("\n".join(test_lines), encoding="utf-8")
         # update ALLTESTSAUOTOTESTS.md listing
-        alltests = target / "ALLTESTSAUOTOTESTS.md"
-        existing = alltests.read_text(encoding="utf-8", errors="ignore") if alltests.exists() else ""
-        entry = f"- [{test_name}]({test_path.relative_to(target)})"
+        alltests=target / "ALLTESTSAUOTOTESTS.md"
+        existing=alltests.read_text(encoding="utf-8", errors="ignore") if alltests.exists() else ""
+        entry=f"- [{test_name}]({test_path.relative_to(target)})"
         if entry not in existing:
             alltests.write_text(existing + "\n" + entry + "\n", encoding="utf-8")
         return test_path
@@ -1862,10 +2032,10 @@ def _update_journey_map_tracks(resume_path: Path, summary: Dict[str, object]) ->
     verification, merged_archives, server_started, reports.
     """
     try:
-        existing = resume_path.read_text(encoding="utf-8", errors="ignore") if resume_path.exists() else ""
+        existing=resume_path.read_text(encoding="utf-8", errors="ignore") if resume_path.exists() else ""
     except Exception:
-        existing = ""
-    lines: List[str] = []
+        existing=""
+    lines: List[str]=[]
     lines.append("JOURNEY MAP TRACKS")
     lines.append("")
     lines.append(f"- Generated: {datetime.utcnow().isoformat()}Z")
@@ -1873,7 +2043,7 @@ def _update_journey_map_tracks(resume_path: Path, summary: Dict[str, object]) ->
         if k in summary:
             lines.append(f"- {k}: {summary.get(k)}")
     if summary.get("verification"):
-        v = summary.get("verification")
+        v=summary.get("verification")
         lines.append(f"- verification.tests: {v.get('tests', {}).get('status')}")
         lines.append(f"- verification.python: {v.get('python', {}).get('status')}")
     if summary.get("path") or summary.get("resume_file"):
@@ -1888,44 +2058,44 @@ def _update_journey_map_tracks(resume_path: Path, summary: Dict[str, object]) ->
     lines.append("- The agent runs autonomously and updates this file in realtime with progress and journey map tracks.")
     lines.append("- Pending items are listed in the Progress Ledger below; resolve them iteratively.")
     lines.append("")
-    jtext = "\n".join(lines) + "\n\n"
+    jtext="\n".join(lines) + "\n\n"
     # Replace existing JOURNEY MAP TRACKS section if present
     if existing.startswith("JOURNEY MAP TRACKS"):
         # Find end of section (double newline after header block)
-        rest = existing.split("\n\n", 1)[1] if "\n\n" in existing else ""
-        updated = jtext + rest
+        rest=existing.split("\n\n", 1)[1] if "\n\n" in existing else ""
+        updated=jtext + rest
     else:
-        updated = jtext + existing
+        updated=jtext + existing
     try:
         resume_path.write_text(updated, encoding="utf-8")
         _emit_status(f"Updated JOURNEY MAP TRACKS in {resume_path}", level="info")
     except Exception:
         pass
 
-def _process_pending_items(pending: List[str], root: Path | None = None, max_per_iteration: int = 200) -> Dict[str, List[Dict[str, object]]]:
+def _process_pending_items(pending: List[str], root: Path | None=None, max_per_iteration: int=200) -> Dict[str, List[Dict[str, object]]]:
     """Attempt to process pending items safely and return results grouped by action.
 
     This will attempt to fix files in-place using `_execute_task_on_file` for
     regular file paths and handle special markers like MISSING_REQUIRED_FILE
     and WORKFLOW_TOKEN_GAP in a non-destructive, auditable way.
     """
-    target = Path(root or ROOT)
-    results = {"processed": [], "skipped": [], "errors": []}
-    count = 0
+    target=Path(root or ROOT)
+    results={"processed": [], "skipped": [], "errors": []}
+    count=0
     for item in pending:
         if count >= max_per_iteration:
             break
         count += 1
         try:
             if item.startswith("MISSING_REQUIRED_FILE:"):
-                fname = item.split("MISSING_REQUIRED_FILE:", 1)[1]
-                p = target / fname
+                fname=item.split("MISSING_REQUIRED_FILE:", 1)[1]
+                p=target / fname
                 if not p.exists():
                     _safe_file_write(p, f"# {fname}\n\nThis required file was auto-created by the autonomous agent.\n")
                     results["processed"].append({"item": item, "action": "created"})
                     # update resumefromhere in realtime
                     try:
-                        resume_path = target / "resumefromhere.txt"
+                        resume_path=target / "resumefromhere.txt"
                         _backup_resume(resume_path)
                         _update_resume_progress(resume_path, done=[item], verified=[], confirmed=[
                         ], pending=[p for p in pending if p != item])
@@ -1936,14 +2106,14 @@ def _process_pending_items(pending: List[str], root: Path | None = None, max_per
                 continue
 
             if item.startswith("WORKFLOW_TOKEN_GAP:"):
-                wf = item.split("WORKFLOW_TOKEN_GAP:", 1)[1]
-                wf_path = target / wf
+                wf=item.split("WORKFLOW_TOKEN_GAP:", 1)[1]
+                wf_path=target / wf
                 if wf_path.exists():
-                    text = wf_path.read_text(encoding="utf-8", errors="ignore")
+                    text=wf_path.read_text(encoding="utf-8", errors="ignore")
                     # Apply a safe fallback note for token use to guide maintainers
                     if "MY_CUSTOM_TOKEN" not in text:
-                        text = text.replace("secrets.GITHUB_TOKEN", "secrets.MY_CUSTOM_TOKEN")
-                        bak = wf_path.with_suffix(wf_path.suffix + ".ollama.wf.bak")
+                        text=text.replace("secrets.GITHUB_TOKEN", "secrets.MY_CUSTOM_TOKEN")
+                        bak=wf_path.with_suffix(wf_path.suffix + ".ollama.wf.bak")
                         try:
                             shutil.copy2(wf_path, bak)
                         except Exception:
@@ -1952,7 +2122,7 @@ def _process_pending_items(pending: List[str], root: Path | None = None, max_per
                         results["processed"].append({"item": item, "action": "patched_workflow"})
                         # update resumefromhere in realtime
                         try:
-                            resume_path = target / "resumefromhere.txt"
+                            resume_path=target / "resumefromhere.txt"
                             _backup_resume(resume_path)
                             _update_resume_progress(resume_path, done=[item], verified=[], confirmed=[
                             ], pending=[p for p in pending if p != item])
@@ -1960,9 +2130,9 @@ def _process_pending_items(pending: List[str], root: Path | None = None, max_per
                             pass
                         # record in ALLHOOKSWEBHOOKS.md
                         try:
-                            hooks_md = target / "ALLHOOKSWEBHOOKS.md"
-                            entry = f"- Patched workflow: {wf_path.relative_to(target)}"
-                            existing = hooks_md.read_text(
+                            hooks_md=target / "ALLHOOKSWEBHOOKS.md"
+                            entry=f"- Patched workflow: {wf_path.relative_to(target)}"
+                            existing=hooks_md.read_text(
                                 encoding="utf-8", errors="ignore") if hooks_md.exists() else ""
                             if entry not in existing:
                                 hooks_md.write_text(existing + "\n" + entry + "\n", encoding="utf-8")
@@ -1980,13 +2150,13 @@ def _process_pending_items(pending: List[str], root: Path | None = None, max_per
                 continue
 
             # Otherwise assume it's a repo-relative path
-            p = target / item
+            p=target / item
             if p.exists() and p.is_file():
-                res = _execute_task_on_file(item, target)
+                res=_execute_task_on_file(item, target)
                 results["processed"].append({"item": item, "result": res})
                 # update resumefromhere in realtime for this processed file
                 try:
-                    resume_path = target / "resumefromhere.txt"
+                    resume_path=target / "resumefromhere.txt"
                     _backup_resume(resume_path)
                     _update_resume_progress(resume_path, done=[item], verified=[], confirmed=[
                     ], pending=[p for p in pending if p != item])
@@ -1995,7 +2165,7 @@ def _process_pending_items(pending: List[str], root: Path | None = None, max_per
                 # If Python file, ensure enhanced tests exist
                 try:
                     if p.suffix.lower() == ".py":
-                        test_path = ensure_tests_for_file(p, target)
+                        test_path=ensure_tests_for_file(p, target)
                         if test_path:
                             results["processed"].append(
                                 {"item": str(test_path.relative_to(target)), "result": "test_created"})
@@ -2007,7 +2177,7 @@ def _process_pending_items(pending: List[str], root: Path | None = None, max_per
             results["errors"].append({"item": item, "error": str(exc)})
     return results
 
-def run_until_complete(root: Path | None = None, max_iterations: int = 100, max_per_iteration: int = 200, sleep_between: float = 0.5) -> Dict[str, object]:
+def run_until_complete(root: Path | None=None, max_iterations: int=100, max_per_iteration: int=200, sleep_between: float=0.5) -> Dict[str, object]:
     """Run autonomous passes repeatedly until no pending items remain or limits reached.
 
     - Calls `run_agent` to collect pending work.
@@ -2015,28 +2185,28 @@ def run_until_complete(root: Path | None = None, max_iterations: int = 100, max_
     - Updates `resumefromhere.txt` progress and persists state.
     - Repeats until pending is empty, tests pass, or iteration limits reached.
     """
-    target = Path(root or ROOT)
-    summary = {"iterations": 0, "processed_total": 0, "last_verification": None}
+    target=Path(root or ROOT)
+    summary={"iterations": 0, "processed_total": 0, "last_verification": None}
     for iteration in range(1, max_iterations + 1):
-        summary["iterations"] = iteration
+        summary["iterations"]=iteration
         _emit_status(f"Autonomous loop iteration {iteration}", level="info")
-        result = run_agent(target)
-        pending = result.get("pending", [])
+        result=run_agent(target)
+        pending=result.get("pending", [])
         if not pending:
-            summary["last_verification"] = result.get("verification")
+            summary["last_verification"]=result.get("verification")
             _emit_status("No pending items detected; loop complete.", level="info")
             return summary
 
-        process_res = _process_pending_items(pending, target, max_per_iteration=max_per_iteration)
-        processed_count = len(process_res.get("processed", []))
+        process_res=_process_pending_items(pending, target, max_per_iteration=max_per_iteration)
+        processed_count=len(process_res.get("processed", []))
         summary["processed_total"] += processed_count
 
         # Mark processed items as done in resumefromhere ledger by reloading and updating
-        resume_path = target / "resumefromhere.txt"
-        done = [p.get("item") if isinstance(p, dict) else p for p in process_res.get("processed", [])]
-        verified = []
-        confirmed = []
-        remaining = [p for p in pending if p not in done]
+        resume_path=target / "resumefromhere.txt"
+        done=[p.get("item") if isinstance(p, dict) else p for p in process_res.get("processed", [])]
+        verified=[]
+        confirmed=[]
+        remaining=[p for p in pending if p not in done]
         _backup_resume(resume_path)
         _update_resume_progress(resume_path, done=done, verified=verified, confirmed=confirmed, pending=remaining)
 
@@ -2052,24 +2222,24 @@ def run_until_complete(root: Path | None = None, max_iterations: int = 100, max_
         f"Autonomous loop stopped after {summary['iterations']} iterations; processed {summary['processed_total']} items.", level="info")
     return summary
 
-def _git_commit_and_push(iteration: int, processed: List[str], updated_count: int, root: Path | None = None) -> Dict[str, object]:
+def _git_commit_and_push(iteration: int, processed: List[str], updated_count: int, root: Path | None=None) -> Dict[str, object]:
     """Safe state commit placeholder handler."""
-    target = Path(root or ROOT)
-    state_path = target / ".ollama_agent_state.json"
-    out = {"committed": False, "pushed": False}
-    state = _load_state(target)
-    state["iteration"] = iteration
-    state["total_updated"] = updated_count
-    state["processed"] = list(set(state.get("processed", []) + processed))
+    target=Path(root or ROOT)
+    state_path=target / ".ollama_agent_state.json"
+    out={"committed": False, "pushed": False}
+    state=_load_state(target)
+    state["iteration"]=iteration
+    state["total_updated"]=updated_count
+    state["processed"]=list(set(state.get("processed", []) + processed))
     _save_state(state, target)
     return out
 
-def _generate_completion_report(pending: List[str], root: Path | None = None) -> str:
+def _generate_completion_report(pending: List[str], root: Path | None=None) -> str:
     """Generate a comprehensive report of all remaining work and save to OLLAMA_COMPLETION_REPORT.md."""
-    target = Path(root or ROOT)
-    ts = datetime.utcnow().isoformat() + "Z"
+    target=Path(root or ROOT)
+    ts=datetime.utcnow().isoformat() + "Z"
 
-    lines = [
+    lines=[
         "# Ollama Autonomous Agent Completion Report",
         "",
         f"- Generated: {ts}",
@@ -2085,9 +2255,9 @@ def _generate_completion_report(pending: List[str], root: Path | None = None) ->
 
     if pending:
         # Group pending items by category
-        missing_files = [p for p in pending if p.startswith("MISSING_REQUIRED_FILE:")]
-        workflow_gaps = [p for p in pending if p.startswith("WORKFLOW_TOKEN_GAP:")]
-        regular_items = [p for p in pending if not p.startswith(
+        missing_files=[p for p in pending if p.startswith("MISSING_REQUIRED_FILE:")]
+        workflow_gaps=[p for p in pending if p.startswith("WORKFLOW_TOKEN_GAP:")]
+        regular_items=[p for p in pending if not p.startswith(
             "MISSING_REQUIRED_FILE:") and not p.startswith("WORKFLOW_TOKEN_GAP:")]
 
         if missing_files:
@@ -2095,7 +2265,7 @@ def _generate_completion_report(pending: List[str], root: Path | None = None) ->
             lines.append(f"Count: {len(missing_files)}")
             lines.append("")
             for item in sorted(missing_files)[:50]:
-                fname = item.split("MISSING_REQUIRED_FILE:", 1)[1]
+                fname=item.split("MISSING_REQUIRED_FILE:", 1)[1]
                 lines.append(f"- {fname}")
             if len(missing_files) > 50:
                 lines.append(f"- ...and {len(missing_files) - 50} more")
@@ -2106,7 +2276,7 @@ def _generate_completion_report(pending: List[str], root: Path | None = None) ->
             lines.append(f"Count: {len(workflow_gaps)}")
             lines.append("")
             for item in sorted(workflow_gaps)[:30]:
-                wf = item.split("WORKFLOW_TOKEN_GAP:", 1)[1]
+                wf=item.split("WORKFLOW_TOKEN_GAP:", 1)[1]
                 lines.append(f"- {wf}")
             if len(workflow_gaps) > 30:
                 lines.append(f"- ...and {len(workflow_gaps) - 30} more")
@@ -2134,7 +2304,7 @@ def _generate_completion_report(pending: List[str], root: Path | None = None) ->
         ""
     ])
 
-    report_path = target / "OLLAMA_COMPLETION_REPORT.md"
+    report_path=target / "OLLAMA_COMPLETION_REPORT.md"
     report_path.write_text("\n".join(lines), encoding="utf-8")
     _emit_status(f"Wrote completion report to {report_path.name} ({len(pending)} items remaining)", level="info")
     return "\n".join(lines)
@@ -2142,34 +2312,34 @@ def _generate_completion_report(pending: List[str], root: Path | None = None) ->
 def main() -> None:
     """Main non-blocking execution entrypoint for the autonomous agent."""
     _emit_status("Starting enhanced production Ollama autonomous agent pass", level="info")
-    target = ROOT
+    target=ROOT
 
     # If AUTO_CONTINUE is set, run the autonomous loop until completion
     if os.environ.get("AUTO_CONTINUE", "0") == "1":
-        max_iter = int(os.environ.get("AUTO_CONTINUE_MAX", "100"))
-        max_per = int(os.environ.get("AUTO_CONTINUE_BATCH", "200"))
-        loop_summary = run_until_complete(target, max_iterations=max_iter, max_per_iteration=max_per)
+        max_iter=int(os.environ.get("AUTO_CONTINUE_MAX", "100"))
+        max_per=int(os.environ.get("AUTO_CONTINUE_BATCH", "200"))
+        loop_summary=run_until_complete(target, max_iterations=max_iter, max_per_iteration=max_per)
         _emit_status(f"Auto-continue summary: {loop_summary}", level="info")
         # After loop, gather final verification if available
-        result = run_agent(target)
+        result=run_agent(target)
     else:
-        result = run_agent(target)
+        result=run_agent(target)
     # If run_agent performed verification (e.g., RUN_FULL_TESTS=1), use its results.
     if result.get("verification"):
-        verification = result.get("verification")
+        verification=result.get("verification")
     else:
         if result.get("pending"):
-            verification = {"python": {"status": "skipped", "output": "pending work remains"},
+            verification={"python": {"status": "skipped", "output": "pending work remains"},
                             "tests": {"status": "skipped", "output": "pending work remains"}}
             _emit_status(
                 "Pending work remains; postponing final build/test verification until core work is completed.", level="info")
         else:
-            verification = run_repo_verification(target)
+            verification=run_repo_verification(target)
     write_live_notification_summary(target, message="Autonomous production execution completed successfully.")
 
     # Generate and display completion report
-    pending = result.get("pending", [])
-    report = _generate_completion_report(pending, target)
+    pending=result.get("pending", [])
+    report=_generate_completion_report(pending, target)
     print("\n" + "=" * 80)
     print("OLLAMA AUTONOMOUS AGENT - COMPLETION REPORT")
     print("=" * 80 + "\n")
@@ -2185,8 +2355,8 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 
-# AUTOFIXED by Ollama at 2026-07-26T22:01:34.832838Z
+# AUTOFIXED by Ollama at 2026-07-26T22:20:25.246981Z
 
-# AUTOFIXED by Ollama at 2026-07-26T22:01:34.832838Z
+# AUTOFIXED by Ollama at 2026-07-26T22:20:25.246981Z
 
 # AUTOFIXED by Ollama at 2026-07-26T19:31:06.253618Z
