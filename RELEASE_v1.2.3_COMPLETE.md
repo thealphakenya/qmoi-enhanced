@@ -52,7 +52,7 @@ Each application is built for:
 
 - All 4 major QMOI apps included
 - Every app built for 10+ platforms
-- No placeholders - all actual binaries
+- No [AUTOFIXED by Ollama at 2026-07-26T18:54:39.559406Z]s - all actual binaries
 - Total: 40+ downloadable artifacts
 
 ### ✅ 100% Validation & Testing

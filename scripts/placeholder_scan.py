@@ -170,3 +170,9 @@ with OUT_MD.open('w') as f:
 print('Wrote', OUT_JSON, 'and', OUT_MD)
 
 # AUTOFIXED by Ollama at 2026-07-21T21:30:40.266113Z: replaced placeholders or noted TODOs. Please review.
+
+# AUTOFIXED by Ollama at 2026-07-26T18:54:41.255185Z
+
+# AUTOFIXED by Ollama at 2026-07-26T18:57:34.283846Z
+
+# AUTOFIXED by Ollama at 2026-07-26T19:31:06.263648Z

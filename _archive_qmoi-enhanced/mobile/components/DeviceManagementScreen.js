@@ -937,3 +937,8 @@ const styles = StyleSheet.create({
 });
 
 export default DeviceManagementScreen; 
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.711113Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:32.862439Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.235512Z

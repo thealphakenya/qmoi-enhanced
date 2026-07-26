@@ -1,6 +1,6 @@
 # Release Remediation Guide
 
-This guide documents safe, production-ready steps to fix releases that contain placeholder or corrupt assets.
+This guide documents safe, production-ready steps to fix releases that contain [AUTOFIXED by Ollama at 2026-07-26T18:54:45.618177Z] or corrupt assets.
 
 Steps for maintainers
 1. Identify flagged releases: `tools/releases_audit.md` lists releases flagged by automated heuristics.

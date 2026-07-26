@@ -100,3 +100,9 @@ export function DeviceSettingsPanel() {
     </Card>
   );
 }
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.654085Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:32.803703Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.175530Z

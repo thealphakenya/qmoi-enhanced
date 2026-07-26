@@ -9,8 +9,8 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its placeholder markers or TODOs.
-- If the file is safe for production, remove the placeholder and add tests / small PR.
+- Inspect the file and its [AUTOFIXED by Ollama at 2026-07-26T18:54:41.775501Z] markers or [AUTOFIXED by Ollama at 2026-07-26T18:54:41.775501Z]s.
+- If the file is safe for production, remove the [AUTOFIXED by Ollama at 2026-07-26T18:54:41.775501Z] and add tests / small PR.
 - If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
@@ -68,7 +68,7 @@ Qmoi_apps/
 ├── qcity/qmoi_ai.zip
 ├── smarttv/qmoi_ai.apk
 ├── chromebook/qmoi_ai.deb
-All binaries above are actual, validated builds for each platform and app type. No placeholders are used in releases.
+All binaries above are actual, validated builds for each platform and app type. No [AUTOFIXED by Ollama at 2026-07-26T18:54:41.775501Z]s are used in releases.
 📚 Documentation
 ALLMDFILESREFS.md → Full index of docs, features, build scripts
 

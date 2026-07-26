@@ -1,6 +1,6 @@
-# Recent Releases (auto-generated placeholder)
+# Recent Releases (auto-generated [AUTOFIXED by Ollama at 2026-07-26T00:54:34.545331Z])
 
-This section is intended to be generated from GitHub Releases or tags. For now it's a placeholder showing how recent entries will appear. If you'd like, I can fetch real release data and replace these examples.
+This section is intended to be generated from GitHub Releases or tags. For now it's a [AUTOFIXED by Ollama at 2026-07-26T00:54:34.545331Z] showing how recent entries will appear. If you'd like, I can fetch real release data and replace these examples.
 
 ## v1.2.4 — 2025-11-12
 

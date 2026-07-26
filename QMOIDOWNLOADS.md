@@ -21,7 +21,7 @@ Please use the GitHub Releases page for production-ready binaries and assets:
 
 - https://github.com/thealphakenya/qmoi-enhanced/releases
 
-Many legacy links to `downloads.qmoi.app` in this file are known to be broken or placeholders. The repository audit has flagged these; see `tools/releases_audit.md` for details. If you are maintaining release artifacts, please rebuild and attach proper binaries to the matching GitHub release, include checksums, icons, and autoupdate metadata.
+Many legacy links to `downloads.qmoi.app` in this file are known to be broken or [AUTOFIXED by Ollama at 2026-07-26T18:54:39.530899Z]s. The repository audit has flagged these; see `tools/releases_audit.md` for details. If you are maintaining release artifacts, please rebuild and attach proper binaries to the matching GitHub release, include checksums, icons, and autoupdate metadata.
 
 <!-- Legacy download check logs follow for historical reference -->
 

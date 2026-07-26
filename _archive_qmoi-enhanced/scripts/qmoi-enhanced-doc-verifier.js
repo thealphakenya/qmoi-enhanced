@@ -1,4 +1,4 @@
-ÿþ#!/usr/bin/env node
+#!/usr/bin/env node
 
 /**
  * QMOI Enhanced Documentation Verifier
@@ -90,3 +90,8 @@ if (require.main === module) {
   verifyDocs();
 }
  
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.765003Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:32.912917Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.288360Z

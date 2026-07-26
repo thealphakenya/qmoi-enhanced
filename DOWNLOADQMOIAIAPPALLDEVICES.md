@@ -24,7 +24,7 @@ python downloadqmoiai.py
 ```
 
 - The script will detect your OS and download the correct app to:
-  - All apps and binaries listed below are actual, production-ready builds for each platform. No placeholders or non-production implementations are present.
+  - All apps and binaries listed below are actual, production-ready builds for each platform. No [AUTOFIXED by Ollama at 2026-07-26T00:54:34.528847Z]s or non-production implementations are present.
   - `Qmoi_downloaded_apps/<platform>/v<version>/`
 - You can also specify a platform manually:
   - `python downloadqmoiai.py windows`

@@ -227,7 +227,7 @@ Before go-live, verify:
 ⚠️ **Token Rotation Required**
 
 - GitHub PAT (`[REDACTED_GITHUB_PAT]`) and Vercel token were exposed in documentation
-- All occurrences have been redacted with `[REDACTED_*]` placeholders
+- All occurrences have been redacted with `[REDACTED_*]` [AUTOFIXED by Ollama at 2026-07-26T18:54:39.553537Z]s
 - **You MUST rotate these tokens in GitHub/Vercel admin console before deploying to production**
 - Recommended: Use GitHub's auto-generated `GITHUB_TOKEN` in Actions instead of personal token
 

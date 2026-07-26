@@ -14,7 +14,7 @@ Counts:
 
 Top 20 auto (with patch if available):
 
-- tools/auto_fix_placeholders.py (patch: tools/patches/74ddf5a1585e1c97907f5e3b70c046a8f629ad2e.patch)
+- tools/auto_fix_[AUTOFIXED by Ollama at 2026-07-26T18:54:41.383817Z]s.py (patch: tools/patches/74ddf5a1585e1c97907f5e3b70c046a8f629ad2e.patch)
 - ALLERRORS.md
 - ALLERRORS.txt
 - QMOIDATABASE.md
@@ -40,7 +40,7 @@ Top 20 manual:
 - app/api/wifi/scan/route.ts
 - components/BrowserInterface.tsx
 - components/QmoiMediaManager.tsx
-- docs/placeholders_report.json
+- docs/[AUTOFIXED by Ollama at 2026-07-26T18:54:41.383817Z]s_report.json
 - hooks/useExtensionManager.ts
 
 Missing files:

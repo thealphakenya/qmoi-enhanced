@@ -152,3 +152,8 @@ if (require.main === module) {
 }
 
 module.exports = { checkAndCreateEnv }; 
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.794195Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:32.942146Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.318030Z

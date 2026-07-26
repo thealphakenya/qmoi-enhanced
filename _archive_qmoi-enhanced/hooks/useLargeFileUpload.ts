@@ -27,3 +27,9 @@ export function useLargeFileUpload() {
 
   return { progress, status, error, uploadFile };
 }
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.706039Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:32.857336Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.230345Z

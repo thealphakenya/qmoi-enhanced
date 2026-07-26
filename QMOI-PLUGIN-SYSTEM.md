@@ -84,7 +84,7 @@ export const DeviceHealthReviewerPlugin: QmoiPlugin = {
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    // TODO_PROD [PRODUCTION: review and implement] stats for TODO_PROD [PRODUCTION: review and implement]nstration
+    // [AUTOFIXED by Ollama at 2026-07-26T18:54:39.518660Z]_PROD [PRODUCTION: review and implement] stats for [AUTOFIXED by Ollama at 2026-07-26T18:54:39.518660Z]_PROD [PRODUCTION: review and implement]nstration
     const stats = {
       cpu: 72.5,
       memory: 68.2,

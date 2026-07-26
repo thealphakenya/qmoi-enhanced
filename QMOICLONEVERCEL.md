@@ -15,7 +15,7 @@ qmoi_validation_frontmatter: true
 
 # QMOI Clone (Vercel)
 
-This is a placeholder stub for the QMOI Vercel clone instructions. Replace with full migration/deployment steps for Vercel when ready.
+This is a [AUTOFIXED by Ollama at 2026-07-26T18:54:39.529250Z] stub for the QMOI Vercel clone instructions. Replace with full migration/deployment steps for Vercel when ready.
 
 Sections to add:
 

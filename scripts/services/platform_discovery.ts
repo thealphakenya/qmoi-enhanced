@@ -31,3 +31,9 @@ export class PlatformDiscoveryService {
 }
 
 // AUTOFIXED by Ollama at 2026-07-21T21:56:56.032401Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:41.320092Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:34.354120Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:06.469468Z

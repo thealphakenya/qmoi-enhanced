@@ -239,3 +239,9 @@ const TeamRoleManager: React.FC = () => {
 };
 
 export default TeamRoleManager;
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.672030Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:32.822187Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.194735Z

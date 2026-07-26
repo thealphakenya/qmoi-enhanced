@@ -4,7 +4,7 @@ This document defines universal patterns, shared user experience expectations, a
 
 ## Universal principles
 
-- Prefer production-ready implementations over placeholder or non-production fallbacks.
+- Prefer production-ready implementations over [AUTOFIXED by Ollama at 2026-07-26T18:54:39.572576Z] or non-production fallbacks.
 - Keep documentation, manifests, and implementation state synchronized.
 - Maintain consistent role-aware UI and workflow behavior across the QMOI ecosystem.
 - Preserve user trust by surfacing verification status, errors, and automation state explicitly.

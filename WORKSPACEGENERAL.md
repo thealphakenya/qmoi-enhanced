@@ -23,8 +23,8 @@ Edit `scripts/qmoi-env-setup.js` to add or modify platform variables as needed.
 
 - Audit timestamp: 2025-11-11T00:00:00Z
 - Total files scanned: 18921
-- Files considered done (no original placeholders): 14596
-- Files with placeholders detected: 0
+- Files considered done (no original [AUTOFIXED by Ollama at 2026-07-26T18:54:39.577070Z]s): 14596
+- Files with [AUTOFIXED by Ollama at 2026-07-26T18:54:39.577070Z]s detected: 0
 
 ## Files referenced
 - resumetodos.txt
@@ -73,8 +73,8 @@ Next suggested steps:
 
 - Audit timestamp: 2025-11-08T15:29:10.283537Z
 - Total files scanned: 18921
-- Files considered done (no original placeholders): 14596
-- Files with placeholders detected: 0
+- Files considered done (no original [AUTOFIXED by Ollama at 2026-07-26T18:54:39.577070Z]s): 14596
+- Files with [AUTOFIXED by Ollama at 2026-07-26T18:54:39.577070Z]s detected: 0
 
 ## Files referenced
 - resumetodos.txt

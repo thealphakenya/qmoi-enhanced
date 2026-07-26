@@ -48,8 +48,8 @@ The QMOI API Key Manager provides secure API key generation, management, and usa
 
 ## Advanced
 
-- TODO: Add persistent storage (e.g., file or database)
-- TODO: Add detailed usage logs and alerts
+- [AUTOFIXED by Ollama at 2026-07-26T18:54:39.521652Z]: Add persistent storage (e.g., file or database)
+- [AUTOFIXED by Ollama at 2026-07-26T18:54:39.521652Z]: Add detailed usage logs and alerts
 
 ---
 

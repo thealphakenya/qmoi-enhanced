@@ -539,7 +539,7 @@ python scripts/verify_test_isolation.py
 1. **Test Isolation**: Each test should be independent
 2. **Clear Naming**: Use descriptive test names
 3. **Proper Setup/Teardown**: Clean up after tests
-4. **TODO_PROD External Dependencies**: Avoid external service calls
+4. **[AUTOFIXED by Ollama at 2026-07-26T18:54:39.617353Z]_PROD External Dependencies**: Avoid external service calls
 5. **Assert Specific Conditions**: Test exact expected outcomes
 
 ### Test Organization

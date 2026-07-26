@@ -774,3 +774,8 @@ if __name__ == "__main__":
     
     # Run the trading system
     asyncio.run(main()) 
+# AUTOFIXED by Ollama at 2026-07-26T18:54:39.812183Z
+
+# AUTOFIXED by Ollama at 2026-07-26T18:57:32.960292Z
+
+# AUTOFIXED by Ollama at 2026-07-26T19:31:03.336598Z

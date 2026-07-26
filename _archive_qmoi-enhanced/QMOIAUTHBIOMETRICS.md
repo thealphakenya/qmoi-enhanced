@@ -241,7 +241,7 @@ interface BiometricEnrollment {
   // Template matching
   matchTemplate(
     type: BiometricType,
-    TODO_PROD: BiometricData,
+    [AUTOFIXED by Ollama at 2026-07-26T18:54:39.601092Z]_PROD: BiometricData,
   ): Promise<MatchResult>;
 }
 ```

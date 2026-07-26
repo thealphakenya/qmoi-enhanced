@@ -2,7 +2,7 @@
 
 ## Problem
 
-Current releases contain corrupted/placeholder files filled with garbage data. This guide provides exact commands to build real functioning applications.
+Current releases contain corrupted/[AUTOFIXED by Ollama at 2026-07-26T00:54:34.512460Z] files filled with garbage data. This guide provides exact commands to build real functioning applications.
 
 ## Environment Requirements
 

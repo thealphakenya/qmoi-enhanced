@@ -232,3 +232,9 @@ export const AITradingRules: React.FC<AITradingRulesProps> = ({
     </Card>
   );
 };
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.817626Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:32.965854Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.342522Z

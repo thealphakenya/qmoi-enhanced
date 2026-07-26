@@ -1,53 +1,53 @@
 # Ollama Debug Log
 
-- [2026-07-24T00:29:54Z] INFO: Updated MERGE.md
-- [2026-07-24T00:29:54Z] INFO: Scanning repository for error markers under /workspaces/qmoi-enhanced
-- [2026-07-24T00:30:12Z] INFO: Collected 4140 error markers
-- [2026-07-24T00:30:12Z] INFO: Wrote remediation inventory to /workspaces/qmoi-enhanced/ALLERRORS.md
-- [2026-07-24T00:30:14Z] INFO: Created or refreshed ALLBACKEND.md
-- [2026-07-24T00:30:16Z] INFO: Created or refreshed ALLUI.md
-- [2026-07-24T00:30:16Z] INFO: Created or refreshed ALLFRONTEND.md
-- [2026-07-24T00:30:42Z] INFO: Created or refreshed ALLPORTS.md
-- [2026-07-24T00:30:59Z] INFO: Created or refreshed DOCS.md
-- [2026-07-24T00:30:59Z] INFO: Created or refreshed production.md
-- [2026-07-24T00:30:59Z] INFO: Created or refreshed productionenhanced.md
-- [2026-07-24T00:30:59Z] INFO: Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
-- [2026-07-24T00:30:59Z] INFO: Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md
-- [2026-07-24T00:30:59Z] INFO: Run agent completed with 4142 pending items
-- [2026-07-24T00:30:59Z] INFO: Pending work remains; postponing final build/test verification until core work is completed.
-- [2026-07-24T00:30:59Z] INFO: Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
-- [2026-07-24T00:30:59Z] INFO: Autonomous agent execution pass completed: pending=4142 tests=skipped python=skipped
-- [2026-07-24T00:32:00Z] INFO: Starting enhanced production Ollama autonomous agent pass
-- [2026-07-24T00:32:01Z] INFO: Local helper server is responsive
-- [2026-07-24T00:32:01Z] INFO: Created or refreshed Trade.md
-- [2026-07-24T00:32:01Z] INFO: Created or refreshed ollama.md
-- [2026-07-24T00:32:01Z] INFO: Created or refreshed QMOIMODEL.md
-- [2026-07-24T00:32:01Z] INFO: Created or refreshed QMOIMODELTESTS.md
-- [2026-07-24T00:32:01Z] INFO: Created or refreshed ALLTESTSAUOTOTESTS.md
-- [2026-07-24T00:32:01Z] INFO: Created or refreshed ALLHOOKSWEBHOOKS.md
-- [2026-07-24T00:32:01Z] INFO: Created or refreshed MATCHES.md
-- [2026-07-24T00:32:01Z] INFO: Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json
-- [2026-07-24T00:32:01Z] INFO: Detected changes in resumefromhere.txt; refreshing execution plan.
-- [2026-07-24T00:33:03Z] INFO: Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260724T003303Z.bak
-- [2026-07-24T00:33:03Z] INFO: Updated resumefromhere progress: /workspaces/qmoi-enhanced/resumefromhere.txt
-- [2026-07-24T00:33:03Z] INFO: Scanning route definitions from /workspaces/qmoi-enhanced
-- [2026-07-24T00:33:06Z] INFO: Updated API.md
-- [2026-07-24T00:33:06Z] INFO: Updated ENDPOINTS.md
-- [2026-07-24T00:33:06Z] INFO: Updated ROUTES.md
-- [2026-07-24T00:33:06Z] INFO: Updated MERGE.md
-- [2026-07-24T00:33:06Z] INFO: Scanning repository for error markers under /workspaces/qmoi-enhanced
-- [2026-07-24T00:33:24Z] INFO: Collected 4140 error markers
-- [2026-07-24T00:33:24Z] INFO: Wrote remediation inventory to /workspaces/qmoi-enhanced/ALLERRORS.md
-- [2026-07-24T00:33:26Z] INFO: Created or refreshed ALLBACKEND.md
-- [2026-07-24T00:33:28Z] INFO: Created or refreshed ALLUI.md
-- [2026-07-24T00:33:28Z] INFO: Created or refreshed ALLFRONTEND.md
-- [2026-07-24T00:33:54Z] INFO: Created or refreshed ALLPORTS.md
-- [2026-07-24T00:34:10Z] INFO: Created or refreshed DOCS.md
-- [2026-07-24T00:34:10Z] INFO: Created or refreshed production.md
-- [2026-07-24T00:34:10Z] INFO: Created or refreshed productionenhanced.md
-- [2026-07-24T00:34:10Z] INFO: Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
-- [2026-07-24T00:34:10Z] INFO: Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md
-- [2026-07-24T00:34:10Z] INFO: Run agent completed with 4142 pending items
-- [2026-07-24T00:34:10Z] INFO: Pending work remains; postponing final build/test verification until core work is completed.
-- [2026-07-24T00:34:10Z] INFO: Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
-- [2026-07-24T00:34:10Z] INFO: Autonomous agent execution pass completed: pending=4142 tests=skipped python=skipped
+- [2026-07-26T22:01:58Z] INFO: Created or refreshed ALLTESTSAUOTOTESTS.md
+- [2026-07-26T22:01:59Z] INFO: Created or refreshed ALLHOOKSWEBHOOKS.md
+- [2026-07-26T22:01:59Z] INFO: Created or refreshed MATCHES.md
+- [2026-07-26T22:02:01Z] INFO: Created or refreshed ALLBACKEND.md
+- [2026-07-26T22:02:07Z] INFO: Created or refreshed ALLUI.md
+- [2026-07-26T22:02:07Z] INFO: Created or refreshed ALLFRONTEND.md
+- [2026-07-26T22:02:23Z] INFO: Updated JOURNEY MAP TRACKS in /workspaces/qmoi-enhanced/resumefromhere.txt
+- [2026-07-26T22:02:23Z] INFO: Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json
+- [2026-07-26T22:02:23Z] INFO: Detected changes in resumefromhere.txt; refreshing execution plan.
+- [2026-07-26T22:03:20Z] INFO: Created or refreshed ALLPORTS.md
+- [2026-07-26T22:03:26Z] INFO: Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260726T220326Z.bak
+- [2026-07-26T22:03:26Z] INFO: Processing 3275 pending items...
+- [2026-07-26T22:03:31Z] INFO: Updated resumefromhere progress: /workspaces/qmoi-enhanced/resumefromhere.txt
+- [2026-07-26T22:03:31Z] INFO: Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json
+- [2026-07-26T22:03:31Z] INFO: Wrote pending report snapshot to OLLAMA_PENDING_REPORT.md
+- [2026-07-26T22:03:31Z] INFO: Scanning route definitions from /workspaces/qmoi-enhanced
+- [2026-07-26T22:03:41Z] INFO: Updated API.md
+- [2026-07-26T22:03:41Z] INFO: Updated ENDPOINTS.md
+- [2026-07-26T22:03:41Z] INFO: Updated ROUTES.md
+- [2026-07-26T22:03:41Z] INFO: Updated MERGE.md
+- [2026-07-26T22:03:41Z] INFO: Scanning repository for error markers under /workspaces/qmoi-enhanced
+- [2026-07-26T22:03:59Z] INFO: Created or refreshed DOCS.md
+- [2026-07-26T22:03:59Z] INFO: Created or refreshed production.md
+- [2026-07-26T22:03:59Z] INFO: Created or refreshed productionenhanced.md
+- [2026-07-26T22:03:59Z] INFO: Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
+- [2026-07-26T22:03:59Z] INFO: Created or refreshed ollama.md
+- [2026-07-26T22:03:59Z] INFO: Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md
+- [2026-07-26T22:03:59Z] INFO: Run agent completed with 4 pending items
+- [2026-07-26T22:04:18Z] INFO: Collected 3457 error markers
+- [2026-07-26T22:04:18Z] INFO: Updated JOURNEY MAP TRACKS in /workspaces/qmoi-enhanced/resumefromhere.txt
+- [2026-07-26T22:04:18Z] INFO: Pending work remains; postponing final build/test verification until core work is completed.
+- [2026-07-26T22:04:18Z] INFO: Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
+- [2026-07-26T22:04:18Z] INFO: Wrote completion report to OLLAMA_COMPLETION_REPORT.md (4 items remaining)
+- [2026-07-26T22:04:18Z] INFO: Autonomous agent execution pass completed: pending=4 tests=skipped python=skipped
+- [2026-07-26T22:04:18Z] INFO: Wrote remediation inventory to /workspaces/qmoi-enhanced/ALLERRORS.md
+- [2026-07-26T22:04:23Z] INFO: Created or refreshed ALLBACKEND.md
+- [2026-07-26T22:04:26Z] INFO: Created or refreshed ALLUI.md
+- [2026-07-26T22:04:26Z] INFO: Created or refreshed ALLFRONTEND.md
+- [2026-07-26T22:05:08Z] INFO: Created or refreshed ALLPORTS.md
+- [2026-07-26T22:05:44Z] INFO: Created or refreshed DOCS.md
+- [2026-07-26T22:05:44Z] INFO: Created or refreshed production.md
+- [2026-07-26T22:05:44Z] INFO: Created or refreshed productionenhanced.md
+- [2026-07-26T22:05:44Z] INFO: Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
+- [2026-07-26T22:05:44Z] INFO: Created or refreshed ollama.md
+- [2026-07-26T22:05:44Z] INFO: Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md
+- [2026-07-26T22:05:44Z] INFO: Run agent completed with 4 pending items
+- [2026-07-26T22:06:17Z] INFO: Updated JOURNEY MAP TRACKS in /workspaces/qmoi-enhanced/resumefromhere.txt
+- [2026-07-26T22:06:17Z] INFO: Pending work remains; postponing final build/test verification until core work is completed.
+- [2026-07-26T22:06:17Z] INFO: Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
+- [2026-07-26T22:06:17Z] INFO: Wrote completion report to OLLAMA_COMPLETION_REPORT.md (4 items remaining)
+- [2026-07-26T22:06:17Z] INFO: Autonomous agent execution pass completed: pending=4 tests=skipped python=skipped

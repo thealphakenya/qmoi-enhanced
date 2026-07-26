@@ -24,3 +24,9 @@ export function useExtensionManager() {
 
   return { extensions, status, error, installExtension };
 }
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.705400Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:32.856667Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.229546Z

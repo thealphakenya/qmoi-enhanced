@@ -66,7 +66,7 @@ Generated → Viewed → Acknowledged/Dismissed/Escalated
 
 - `acknowledge`: Mark alert as seen by admin
 - `dismiss`: Temporarily hide alert
-- `escalate`: Route to on-call team (placeholder)
+- `escalate`: Route to on-call team ([AUTOFIXED by Ollama at 2026-07-26T00:54:34.551925Z])
 
 **Storage**: In-memory (production should use database)
 

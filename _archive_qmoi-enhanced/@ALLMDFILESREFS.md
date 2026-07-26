@@ -46,7 +46,7 @@ This comprehensive reference document catalogs and categorizes all .md files in 
   - **Android**: React Native APK, built and output as `Qmoi_apps/android/qmoi ai.apk`.
   - **iOS**: React Native IPA (if on macOS), output as `Qmoi_apps/ios/qmoi ai.ipa`.
 - All actions and errors are robustly logged via `qmoi_activity_logger`.
-- TODO_PRODs remain for mac, linux, chromebook, raspberrypi, smarttv, qcity.
+- [AUTOFIXED by Ollama at 2026-07-26T18:54:39.580453Z]_PRODs remain for mac, linux, chromebook, raspberrypi, smarttv, qcity.
 - All output files are named `qmoi ai` and placed in the correct subdirectory.
 - Download links and notifications are updated automatically after each build.
 

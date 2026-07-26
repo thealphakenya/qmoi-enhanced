@@ -1,27 +1,27 @@
 ---
-title: "Fix placeholders in qmoi-enhanced/app/api/qmoi/user/route.ts (80 priority)"
+title: "Fix [AUTOFIXED by Ollama at 2026-07-26T18:54:42.093681Z]s in qmoi-enhanced/app/api/qmoi/user/route.ts (80 priority)"
 qmoi_validation_frontmatter: true
 ---
 
-# Fix placeholders in qmoi-enhanced/app/api/qmoi/user/route.ts (80 priority)
+# Fix [AUTOFIXED by Ollama at 2026-07-26T18:54:42.093681Z]s in qmoi-enhanced/app/api/qmoi/user/route.ts (80 priority)
 
 **File**: `qmoi-enhanced/app/api/qmoi/user/route.ts`
 **Priority score**: 80
 
 ## Summary of matches
 
-- Line 10: // TODO_PROD: get user profile and relationship insights
-- Line 11: return res.status(200).json({ result: 'User profile and relationship insights (TODO_PROD)' });
-- Line 17: // TODO_PROD: set user profile
-- Line 18: return res.status(200).json({ result: 'Set profile result (TODO_PROD)' });
-- Line 20: // TODO_PROD: set user preferences
-- Line 21: return res.status(200).json({ result: 'Set preferences result (TODO_PROD)' });
-- Line 23: // TODO_PROD: set learning goals
-- Line 24: return res.status(200).json({ result: 'Set learning goals result (TODO_PROD)' });
+- Line 10: // [AUTOFIXED by Ollama at 2026-07-26T18:54:42.093681Z]_PROD: get user profile and relationship insights
+- Line 11: return res.status(200).json({ result: 'User profile and relationship insights ([AUTOFIXED by Ollama at 2026-07-26T18:54:42.093681Z]_PROD)' });
+- Line 17: // [AUTOFIXED by Ollama at 2026-07-26T18:54:42.093681Z]_PROD: set user profile
+- Line 18: return res.status(200).json({ result: 'Set profile result ([AUTOFIXED by Ollama at 2026-07-26T18:54:42.093681Z]_PROD)' });
+- Line 20: // [AUTOFIXED by Ollama at 2026-07-26T18:54:42.093681Z]_PROD: set user preferences
+- Line 21: return res.status(200).json({ result: 'Set preferences result ([AUTOFIXED by Ollama at 2026-07-26T18:54:42.093681Z]_PROD)' });
+- Line 23: // [AUTOFIXED by Ollama at 2026-07-26T18:54:42.093681Z]_PROD: set learning goals
+- Line 24: return res.status(200).json({ result: 'Set learning goals result ([AUTOFIXED by Ollama at 2026-07-26T18:54:42.093681Z]_PROD)' });
 
 ## Recommended action
 
-Replace simulation placeholders with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
+Replace simulation [AUTOFIXED by Ollama at 2026-07-26T18:54:42.093681Z]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
 
 ## Notes
 

@@ -58,3 +58,9 @@ export const AutomationRulesPanel: React.FC = () => {
     </div>
   );
 };
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.675970Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:32.826489Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.199515Z

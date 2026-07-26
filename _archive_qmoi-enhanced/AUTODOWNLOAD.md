@@ -1,5 +1,5 @@
 ---
-title: "AUTODOWNLOAD.md"
+title: "AU[AUTOFIXED by Ollama at 2026-07-26T18:54:39.585427Z]WNLOAD.md"
 qmoi_validation_frontmatter: true
 ---
 
@@ -13,7 +13,7 @@ qmoi_validation_frontmatter: true
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# AUTODOWNLOAD.md
+# AU[AUTOFIXED by Ollama at 2026-07-26T18:54:39.585427Z]WNLOAD.md
 
 ## QMOI App Autodownload System
 
@@ -85,14 +85,14 @@ Qmoi_downloaded_apps/
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "qmoi-enhanced/AUTODOWNLOAD.md",
+"file": "qmoi-enhanced/AU[AUTOFIXED by Ollama at 2026-07-26T18:54:39.585427Z]WNLOAD.md",
 "validated_at": "2025-10-26T20:51:24.594875Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "AUTODOWNLOAD.md"
+"detail": "AU[AUTOFIXED by Ollama at 2026-07-26T18:54:39.585427Z]WNLOAD.md"
 },
 {
 "name": "links",

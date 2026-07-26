@@ -117,7 +117,7 @@ npm run test:unit
 - Tests individual functions and components
 - Fast execution
 - High coverage requirements
-- TODO_PROD external dependencies
+- [AUTOFIXED by Ollama at 2026-07-26T18:54:39.594977Z]_PROD external dependencies
 
 ### Integration Tests
 
@@ -652,7 +652,7 @@ pipeline {
 1. **Use factories** for creating test data
 2. **Clean up test data** after each test
 3. **Use fixtures** for complex test data
-4. **TODO_PROD external dependencies** appropriately
+4. **[AUTOFIXED by Ollama at 2026-07-26T18:54:39.594977Z]_PROD external dependencies** appropriately
 5. **Use test databases** for integration tests
 
 ### Performance Testing

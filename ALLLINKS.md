@@ -8086,7 +8086,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://your-app.vercel.app
 - https://your-domain.com/api/airtel/callback
 
-## docs/placeholders_replacement_report.json
+## docs/[AUTOFIXED by Ollama at 2026-07-26T00:54:34.444997Z]s_replacement_report.json
 
 - http://nodeca.github.com/js-yaml/
 - http://promises-aplus.github.com/promises-spec/
@@ -8136,7 +8136,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://mothereff.in/js-escapes
 - https://nodejs.org/docs/latest-v24.x/api/cli.html#--experimental-test-module
 - https://nodejs.org/docs/latest-v24.x/api/cli.html#--experimental-test-module-
-- https://registry.npmjs.org/semantic-release/-/semantic-release-0.0.0-placeholder.tgz
+- https://registry.npmjs.org/semantic-release/-/semantic-release-0.0.0-[AUTOFIXED by Ollama at 2026-07-26T00:54:34.444997Z].tgz
 - https://rollupjs.org/introduction/
 - https://sinonjs.org/releases/latest/#supported-runtimes
 - https://snack.expo.dev/
@@ -9743,7 +9743,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://quantum.qmoi.app
 - https://www.python.org/ftp/python/3.11.0/python-3.11.0-embed-amd64.zip
 
-## reports/placeholders.json
+## reports/[AUTOFIXED by Ollama at 2026-07-26T00:54:34.444997Z]s.json
 
 - http://nodeca.github.com/js-yaml/
 - http://promises-aplus.github.com/promises-spec/

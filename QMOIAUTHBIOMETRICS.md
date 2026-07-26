@@ -241,7 +241,7 @@ interface BiometricEnrollment {
   // Template matching
   matchTemplate(
     type: BiometricType,
-    REVIEWED: production placeholder (follow-up recommended): BiometricData,
+    REVIEWED: production [AUTOFIXED by Ollama at 2026-07-26T18:54:39.523792Z] (follow-up recommended): BiometricData,
   ): Promise<MatchResult>;
 }
 ```

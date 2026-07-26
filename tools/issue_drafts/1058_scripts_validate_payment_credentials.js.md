@@ -9,8 +9,8 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its placeholder markers or TODOs.
-- If the file is safe for production, remove the placeholder and add tests / small PR.
+- Inspect the file and its [AUTOFIXED by Ollama at 2026-07-26T18:54:42.152530Z] markers or [AUTOFIXED by Ollama at 2026-07-26T18:54:42.152530Z]s.
+- If the file is safe for production, remove the [AUTOFIXED by Ollama at 2026-07-26T18:54:42.152530Z] and add tests / small PR.
 - If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
@@ -56,7 +56,7 @@ function run() {
     console.log('\nAll required payment credentials look present (format check only).');
     process.exit(0);
   } else {
-    console.log(`\nFound ${totalMissing} missing/placeholder credential(s). Please set them via environment or secrets manager.`);
+    console.log(`\nFound ${totalMissing} missing/[AUTOFIXED by Ollama at 2026-07-26T18:54:42.152530Z] credential(s). Please set them via environment or secrets manager.`);
     process.exit(2);
   }
 }

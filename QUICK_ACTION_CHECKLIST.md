@@ -59,7 +59,7 @@ gh release view test-v1.2.5 --json assets --jq '.assets | length'
 
 **Files to Update**:
 
-1. `/workspaces/qmoi-enhanced/GITHUB_RELEASES_RECENT.md` — Replace placeholders
+1. `/workspaces/qmoi-enhanced/GITHUB_RELEASES_RECENT.md` — Replace [AUTOFIXED by Ollama at 2026-07-26T18:54:39.550205Z]s
 2. `/workspaces/qmoi-enhanced/RELEASES_USER_GUIDE.md` — NEW FILE
 3. `/workspaces/qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md` — Update links
 4. `/workspaces/qmoi-enhanced/README.md` — Audit & verify

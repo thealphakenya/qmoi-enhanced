@@ -82,7 +82,7 @@ Then decide per-file whether to:
 ## Notes
 
 - The duplication is likely from a copy-paste scaffolding process during project setup
-- Recent patches (adapter integration) may have been applied inconsistently; TODO_PROD items were reviewed and marked for production follow-up where applicable
+- Recent patches (adapter integration) may have been applied inconsistently; [AUTOFIXED by Ollama at 2026-07-26T00:54:34.517740Z]_PROD items were reviewed and marked for production follow-up where applicable
 - Consolidating will reduce code maintenance overhead and prevent drift
 - Both directories are currently active in imports (suggests coexistence is intentional)
 

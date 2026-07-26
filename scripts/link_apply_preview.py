@@ -67,6 +67,23 @@ def generate_preview(plan: dict):
             failed_count += 1
 
     preview_text = "\n".join(lines)
+    # Primary return for callers who want a human-readable preview string
+    return preview_text
+
+
+def generate_preview_dict(plan: dict):
+    """Compatibility function returning structured preview dict for JSON output."""
+    entries = plan.get('sample') or plan.get('entries') or plan.get('updates') or []
+    preview_text = generate_preview(plan)
+    failed_count = 0
+    for e in entries:
+        new = e.get('new_status', None) or e.get('status', None)
+        status_text = str(new or '').lower()
+        if isinstance(new, int):
+            if not (200 <= new < 400):
+                failed_count += 1
+        elif status_text not in ('ok', '200', '201', '202', '203', '204', '205', '206'):
+            failed_count += 1
     return {
         'summary': {
             'dry_run': plan.get('dry_run', True),
@@ -93,11 +110,13 @@ def main():
         raise FileNotFoundError('Plan not found: ' + str(plan_path))
 
     plan = load_plan(plan_path)
+    # Provide both a human preview and a structured dict for tooling
     preview = generate_preview(plan)
+    preview_dict = generate_preview_dict(plan)
     out_path = out_dir / 'link_apply_preview.json'
     out_dir.mkdir(parents=True, exist_ok=True)
     with open(out_path, 'w', encoding='utf-8') as f:
-        json.dump(preview, f, indent=2, ensure_ascii=False)
+        json.dump(preview_dict, f, indent=2, ensure_ascii=False)
     print('Wrote preview to', out_path)
 
 
