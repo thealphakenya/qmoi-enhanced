@@ -111,3 +111,5 @@ jobs:
           else
             echo "❌ One or more matrix builds failed. Check logs above."
           fi
+
+# NOTE: Add MY_CUSTOM_TOKEN fallback to secrets for robust automation

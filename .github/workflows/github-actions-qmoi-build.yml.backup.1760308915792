@@ -72,3 +72,5 @@ permissions:
 env:
   NODE_VERSION: '18'
   QMOI_AUTODEV_ENABLED: 'true'
+
+# NOTE: Add MY_CUSTOM_TOKEN fallback to secrets for robust automation

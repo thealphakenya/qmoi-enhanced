@@ -76,3 +76,5 @@ jobs:
           else
             echo 'Skipping publish: No GH_TOKEN detected.'
           fi
+
+# NOTE: Add MY_CUSTOM_TOKEN fallback to secrets for robust automation

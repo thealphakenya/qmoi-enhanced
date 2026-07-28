@@ -22195,3 +22195,3333 @@ global.console = {
   // keep errors visible so setup failures surface in CI and dev runs
   _error: console.error,
 };
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/src.backup.20260121144720/setupTests.ts.bak.1768901506 -->
+/* eslint-env node, jest */
+/* global require */
+
+/* eslint-disable no-empty, @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any, @typescript-eslint/ban-ts-comment */
+import "@testing-library/jest-dom";
+import "whatwg-fetch";
+import { TextEncoder, TextDecoder } from "util";
+
+// Helper to set/get global test shims without using `any`
+const setGlobal = (k: string, v: unknown) => {
+  (globalThis as unknown as Record<string, unknown>)[k] = v;
+};
+const getGlobal = <T = unknown>(k: string) =>
+  (globalThis as unknown as Record<string, unknown>)[k] as T;
+
+// Node may not expose TextEncoder/TextDecoder in older runtimes; ensure they're available
+if (
+  typeof (globalThis as unknown as Record<string, unknown>).TextEncoder ===
+  "undefined"
+)
+  setGlobal("TextEncoder", TextEncoder);
+if (
+  typeof (globalThis as unknown as Record<string, unknown>).TextDecoder ===
+  "undefined"
+)
+  setGlobal("TextDecoder", TextDecoder);
+
+// Polyfill setImmediate in environments that don't provide it
+if (
+  typeof (globalThis as unknown as Record<string, unknown>).setImmediate ===
+  "undefined"
+) {
+  setGlobal("setImmediate", ((
+    fn: (...args: unknown[]) => void,
+    ...args: unknown[]
+  ) => setTimeout(() => fn(...(args as unknown[])), 0)) as unknown);
+}
+
+import { jest, beforeAll, afterAll, afterEach } from "@jest/globals";
+// Verify hook availability (kept minimal)
+const TEST_VERBOSE = process.env.TEST_VERBOSE === "1" || false;
+const debugLog = (...args: unknown[]) => {
+  if (TEST_VERBOSE) console.debug(...(args as unknown[]));
+};
+
+try {
+  console.warn("SETUP_TESTS: module loaded");
+} catch (_e) {
+  void _e; /* ignore */
+}
+
+debugLog(
+  "SETUP_TESTS: hooks -> beforeAll:",
+  typeof beforeAll,
+  "global.beforeAll:",
+  typeof (globalThis as any).beforeAll,
+);
+// Delay importing MSW until after early polyfills (setupFiles) run
+let server: unknown;
+let mswReady = false;
+
+declare global {
+  var localStorage: Storage;
+  var sessionStorage: Storage;
+  var console: Console;
+}
+
+// Augment Console with a non-standard `error` helper used in test setup
+declare global {
+  interface Console {
+    // Keep signature compatible with standard Console.error
+    error(...data: unknown[]): void;
+  }
+}
+
+// Ensure fetch exists; if not, provide a Jest mock (MSW will set up an implementation)
+if (!global.fetch) {
+  // jest.fn() typing is not compatible with the global fetch signature; coerce
+  // to any for test setup.
+  (global as any).fetch = jest.fn() as any;
+}
+
+// Provide a lightweight NextRequest shim for tests: many tests construct
+// NextRequest objects directly and only need a minimal subset of the
+// interface (url, method, headers, json/text helpers). Use a small shim
+// rather than the real Next.js Request to avoid environment incompatibilities.
+(global as any).Request = class PolyRequest {
+  url: string;
+  method: string;
+  headers: Headers;
+  body: unknown;
+  constructor(input: unknown, init: Record<string, unknown> = {}) {
+    const _url =
+      typeof input === "string"
+        ? input
+        : (input && ((input as any).url || String(input))) ||
+          "http://localhost";
+    Object.defineProperty(this, "url", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: _url,
+    });
+    Object.defineProperty(this, "method", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: (init && init.method) || "GET",
+    });
+    Object.defineProperty(this, "headers", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: new (global as any).Headers(
+        init && init.headers ? init.headers : {},
+      ),
+    });
+    Object.defineProperty(this, "body", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: init && init.body ? init.body : null,
+    });
+  }
+  clone() {
+    return new (global as any).Request(this.url, {
+      method: this.method,
+      headers: this.headers,
+      body: this.body,
+    });
+  }
+  async json() {
+    if (!this.body) return null;
+    if (typeof this.body === "string") {
+      try {
+        return JSON.parse(this.body);
+      } catch {
+    }
+    return this.body;
+  }
+  async text() {
+    return this.body ? String(this.body) : "";
+  }
+} as any;
+
+(global as any).NextRequest = class NextRequestShim {
+  url: string;
+  method: string;
+  headers: Headers;
+  body: unknown;
+  constructor(url: unknown, init: Record<string, unknown> = {}) {
+    const _url =
+      typeof url === "string"
+        ? url
+        : (url && ((url as any).url || String(url))) || "http://localhost";
+    Object.defineProperty(this, "url", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: _url,
+    });
+    Object.defineProperty(this, "method", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: (init && init.method) || "GET",
+    });
+    Object.defineProperty(this, "headers", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: new (global as any).Headers(
+        init && init.headers ? init.headers : {},
+      ),
+    });
+    Object.defineProperty(this, "body", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: init && init.body ? init.body : null,
+    });
+  }
+  async json() {
+    if (!this.body) return null;
+    if (typeof this.body === "string") {
+      try {
+        return JSON.parse(this.body);
+      } catch {
+    }
+    return this.body;
+  }
+  async text() {
+    return this.body ? String(this.body) : "";
+  }
+} as any;
+
+// Minimal NextResponse shim for tests that call NextResponse.json()
+if (typeof (global as any).NextResponse === "undefined") {
+  (global as any).NextResponse = {
+    json(body: unknown, opts: Record<string, unknown> = {}) {
+      // Return a plain object that mimics the minimal interface used in tests
+      const status = Number(
+        (opts && (opts as Record<string, unknown>).status) ?? 200,
+      );
+      const headersObj =
+        ((opts && (opts as Record<string, unknown>).headers) as Record<
+          string,
+          unknown
+        >) || {};
+      return {
+        status,
+        ok: status >= 200 && status < 300,
+        json: async () => body,
+        // also support text for completeness
+        text: async () =>
+          typeof body === "string" ? body : JSON.stringify(body),
+        headers: headersObj,
+      } as any;
+    },
+  } as any;
+}
+
+// MSW server lifecycle: initialize at module load so interceptors are active
+// before unknown test modules run. When running under Node (no `window`) we skip
+// MSW initialization to avoid ESM/loader issues and unnecessary browser
+// polyfills for node-only integration tests.
+let mswInitPromise: Promise<unknown>;
+if (typeof window === "undefined") {
+  debugLog(
+    "SETUP_TESTS: detected Node test environment; skipping MSW initialization",
+  );
+  mswInitPromise = Promise.resolve();
+  // Provide a minimal server object so downstream logic can safely call methods
+  server = {
+    use: () => undefined,
+    listen: () => undefined,
+    close: () => undefined,
+    resetHandlers: () => undefined,
+  } as any;
+  // Expose readiness promise for compatibility
+  setGlobal("__MSW_READY__", mswInitPromise);
+} else {
+  // Initialize MSW only in environments that look like browsers/jsdom
+  mswInitPromise = (async function initializeMswAtLoad() {
+    debugLog("SETUP_TESTS: initializing MSW at module load");
+    // Ensure stream polyfills are available in this module scope before importing MSW
+    try {
+      // Use dynamic import so ESM loaders handle the module correctly in test environments
+      const ws = await import("web-streams-polyfill");
+      const TransformStream = (ws as any).TransformStream;
+      const ReadableStream = (ws as any).ReadableStream;
+      const WritableStream = (ws as any).WritableStream;
+      if (typeof (global as any).TransformStream === "undefined")
+        (global as any).TransformStream = TransformStream;
+      if (typeof (global as any).ReadableStream === "undefined")
+        (global as any).ReadableStream = ReadableStream;
+      if (typeof (global as any).WritableStream === "undefined")
+        (global as any).WritableStream = WritableStream;
+      if (typeof globalThis !== "undefined") {
+        if (typeof (globalThis as any).TransformStream === "undefined")
+          (globalThis as any).TransformStream = TransformStream;
+      }
+    } catch (_e) {
+      void _e; /* ignore */
+    }
+
+    // MSW readiness flag (used by the fetch fallback)
+
+    try {
+      // Dynamically import MSW to let the ESM loader handle its deps.
+      debugLog("SETUP_TESTS: importing msw/node...");
+      const msw = await import("msw/node");
+      debugLog("SETUP_TESTS: imported msw/node successfully");
+      const handlersMod = await import("./mocks/handlers");
+      debugLog(
+        "SETUP_TESTS: imported handlers module",
+        Object.keys(handlersMod),
+      );
+      const { server: importedServer } = await import("./mocks/server");
+      debugLog("SETUP_TESTS: imported server module");
+
+      // Support both async getter and synchronous exports
+      let handlers: unknown[] = [];
+      if (typeof handlersMod.getHandlers === "function") {
+        try {
+          debugLog("SETUP_TESTS: invoking handlersMod.getHandlers()");
+          handlers = await (handlersMod as any).getHandlers();
+          debugLog("SETUP_TESTS: handlers resolved length=", handlers.length);
+        } catch (_err) {
+          void _err; /* fail fast */
+          (globalThis.console as any)?.error?.(
+            "SETUP_TESTS: handlersMod.getHandlers() threw:",
+            _err,
+          );
+          throw _err;
+        }
+      } else {
+        handlers =
+          (
+            handlersMod as unknown as {
+              handlers?: unknown[];
+              default?: unknown[];
+            }
+          ).handlers ||
+          (
+            handlersMod as unknown as {
+              handlers?: unknown[];
+              default?: unknown[];
+            }
+          ).default ||
+          [];
+        debugLog("SETUP_TESTS: handlers (sync) length=", handlers.length);
+      }
+
+      // Register handlers on the shared server and start it
+      debugLog("SETUP_TESTS: registering handlers on server", handlers.length);
+      if ((handlers as unknown[]).length)
+        (
+          importedServer as unknown as { use: (...args: unknown[]) => void }
+        ).use(...(handlers as unknown[]));
+      // Log unhandled requests to aid debugging when handlers don't match. By
+      // default we suppress these unless explicitly enabled in CI/dev by
+      // setting SHOW_MSW_UNHANDLED=1.
+      importedServer.listen({
+        onUnhandledRequest: (_req: unknown) => {
+          try {
+            const _req = _req as unknown as { method?: string; url?: unknown };
+            const urlStr = String(req.url || "");
+            if (process.env.SHOW_MSW_UNHANDLED === "1") {
+              (globalThis.console as any)?.error?.(
+                "MSW UNHANDLED REQUEST:",
+                req.method,
+                urlStr,
+              );
+            } else {
+              debugLog(
+                "MSW UNHANDLED REQUEST (suppressed):",
+                req.method,
+                urlStr,
+              );
+            }
+          } catch (_err) {
+            void _err; /* ignore malformed request */
+          }
+        },
+      });
+      debugLog("SETUP_TESTS: server.listen() called");
+      server = importedServer;
+      debugLog(
+        "SETUP_TESTS: MSW initialized; handlers registered",
+        handlers.length,
+      );
+    } catch (_e) {
+      // Log errors to surface them in CI/dev runs
+      (globalThis.console as any)?.error?.(
+        "setupTests failed to initialize MSW:",
+        _e,
+      );
+      // Fallback: if MSW cannot be initialized (ESM/loader issues), install a
+      // minimal fetch-based mock so tests don't hit the network. This mirrors
+      // the most common handlers used in tests.
+      (globalThis.console as any)?.error?.(
+        "SETUP_TESTS: Falling back to simple fetch mock server for tests",
+      );
+
+      const fallbackHandlers = [
+        {
+          method: "GET",
+          path: "/api/qmoi/status",
+          handler: async () =>
+            new Response(
+              JSON.stringify({
+                status: "OK",
+                last_check: "2024-06-01T12:00:00Z",
+                mutation_count: 5,
+                logs: ["Log 1", "Log 2"],
+              }),
+              {
+                status: 200,
+                headers: { "Content-Type": "application/json" },
+              },
+            ),
+        },
+        {
+          method: "POST",
+          path: "/api/qmoi/payload",
+          handler: async (_req: unknown) => {
+            const url =
+              typeof _req === "string"
+                ? new URL(_req, "http://localhost")
+                : (_req as unknown as { url?: string })?.url ||
+                  "http://localhost";
+            const q =
+              typeof url === "string" ? new URL(url, "http://localhost") : url;
+            const action =
+              (q as any).searchParams && (q as any).searchParams.has("qfix")
+                ? "QFix"
+                : (q as any).searchParams &&
+                    (q as any).searchParams.has("qoptimize")
+                  ? "QOptimize"
+                  : (q as any).searchParams &&
+                      (q as any).searchParams.has("qsecure")
+                    ? "QSecure"
+                    : "Unknown";
+            return new Response(JSON.stringify({ message: `${action} done` }), {
+              status: 200,
+              headers: { "Content-Type": "application/json" },
+            });
+          },
+        },
+      ];
+
+      // Replace global.fetch with a simple router that matches the fallback handlers.
+      try {
+        const originalFetch = getGlobal<unknown>("fetch");
+        setGlobal("fetch", async function fetchFallback(
+          input: unknown,
+          init: unknown,
+        ) {
+          try {
+            const url =
+              typeof input === "string"
+                ? input
+                : (input as unknown as { url?: string })?.url || "";
+            const u = new URL(url, "http://localhost");
+            const method =
+              (init as unknown as { method?: string })?.method || "GET";
+            for (const h of fallbackHandlers) {
+              const handler = h as unknown as {
+                method: string;
+                path: string;
+                handler: (arg?: unknown) => Promise<Response> | Response;
+              };
+              if (handler.method === method && handler.path === u.pathname) {
+                return handler.handler(u);
+              }
+            }
+          } catch (er) {
+            // ignore parsing errors and fall through to original fetch
+          }
+          return (
+            originalFetch as unknown as (
+              ...args: unknown[]
+            ) => Promise<Response>
+          ).apply(globalThis, [input, init]);
+        } as unknown);
+      } catch (er) {
+        (globalThis.console as any)?.error?.(
+          "SETUP_TESTS: failed to install fetch fallback:",
+          er,
+        );
+      }
+
+      // Provide a minimal server object with the same interface used elsewhere
+      server = {
+        use: () => undefined,
+        listen: () => undefined,
+        close: () => undefined,
+        resetHandlers: () => undefined,
+      } as unknown;
+    }
+  })();
+}
+
+// Expose readiness promise so tests can explicitly await MSW initialization
+setGlobal("__MSW_READY__", mswInitPromise);
+
+// Attempt an early reset of mock prisma stores at module load. This ensures
+// a clean in-memory DB even if other modules imported the mock before the
+// jest lifecycle hooks ran.
+try {
+  import("@/lib/db/prisma")
+    .then((mod) => {
+      const maybePrisma = (mod && (mod as any).default) || mod;
+      try {
+        if (
+          maybePrisma &&
+          typeof (maybePrisma as any).resetMockDb === "function"
+        ) {
+          (maybePrisma as any).resetMockDb();
+        } else if (
+          maybePrisma &&
+          (maybePrisma as any).prisma &&
+          typeof (maybePrisma as any).prisma.resetMockDb === "function"
+        ) {
+          (maybePrisma as any).prisma.resetMockDb();
+        } else if (
+          maybePrisma &&
+          (maybePrisma as any).prisma &&
+          typeof (maybePrisma as any).prisma.__resetMockStores === "function"
+        ) {
+          (maybePrisma as any).prisma.__resetMockStores();
+        }
+      } catch {
+    })
+    .catch(() => {});
+} catch {
+
+// Ensure Jest waits for MSW to finish initializing before unknown tests run.
+// This ensures XHR requests (which bypass our fetch wrapper) won't race ahead.
+beforeAll(async () => {
+  await mswInitPromise;
+  debugLog("SETUP_TESTS: msw ready (awaited in beforeAll)");
+  // Seed mock-prisma stores with minimal data used by admin and wallet tests
+  try {
+    const maybePrismaModule = await import("@/lib/db/prisma");
+    const maybePrisma =
+      (maybePrismaModule && (maybePrismaModule as any).default) ||
+      maybePrismaModule;
+    const stores =
+      (maybePrisma &&
+        (maybePrisma as any).prisma &&
+        (maybePrisma as any).prisma.__stores) ||
+      (maybePrisma && (maybePrisma as any).__stores) ||
+      null;
+    if (stores) {
+      try {
+        if (!stores.user) stores.user = new Map();
+        if (!stores.wallet) stores.wallet = new Map();
+        if (!stores.transaction) stores.transaction = new Map();
+      } catch {
+      const now = new Date().toISOString();
+      if (stores.user && stores.user.size === 0) {
+        stores.user.set("user_admin@example.com", {
+          id: "user_admin@example.com",
+          email: "admin@example.com",
+          username: "admin",
+          name: "Admin",
+          role: "admin",
+          createdAt: now,
+          updatedAt: now,
+        });
+      }
+      if (stores.wallet && stores.wallet.size === 0) {
+        stores.wallet.set("wallet_1", {
+          id: "wallet_1",
+          userId: "user_admin@example.com",
+          currency: "USD",
+          balance: 1000,
+          publicKey: null,
+          createdAt: now,
+          updatedAt: now,
+        });
+      }
+      if (stores.transaction && stores.transaction.size === 0) {
+        stores.transaction.set("tx_1", {
+          id: "tx_1",
+          walletId: "wallet_1",
+          amount: 1000,
+          type: "deposit",
+          status: "completed",
+          timestamp: now,
+        });
+      }
+    }
+  } catch {
+});
+
+// Reset mock DB stores before each test to ensure isolation between tests
+beforeEach(async () => {
+  try {
+    // Force-clear the global mock-prisma stores directly to avoid cases
+    // where module-scoped proxies hold stale references.
+    try {
+      const G = globalThis as unknown as Record<string, unknown>;
+      if (G.__qmoi_mock_prisma_stores) {
+        for (const k of Object.keys(G.__qmoi_mock_prisma_stores)) {
+          try {
+            const s = G.__qmoi_mock_prisma_stores[k];
+            if (s && typeof s.clear === "function") s.clear();
+          } catch {
+        }
+      }
+    } catch {
+    try {
+      console.warn("SETUP_TESTS: beforeEach - resetting mock stores");
+    } catch {
+    const gdb = (global as any).__qmoi_db;
+    // Primary: reset mock prisma if available
+    try {
+      if (gdb && gdb.prisma && typeof gdb.prisma.resetMockDb === "function") {
+        gdb.prisma.resetMockDb();
+      } else if (
+        gdb &&
+        gdb.prisma &&
+        typeof gdb.prisma.__resetMockStores === "function"
+      ) {
+        gdb.prisma.__resetMockStores();
+      }
+      // Defensive: if __stores map exposed, clear each map
+      if (gdb && gdb.prisma && gdb.prisma.__stores) {
+        try {
+          const stores = gdb.prisma.__stores;
+          for (const k of Object.keys(stores)) {
+            try {
+              stores[k].clear();
+            } catch {
+          }
+        } catch {
+      }
+    } catch {
+    // Secondary: clear any in-memory walletService stores used by fallback db shim
+    try {
+      try {
+        const maybeDbModule = await import("@/lib/db/prisma");
+        const maybeDb =
+          (maybeDbModule && (maybeDbModule as any).default) || maybeDbModule;
+        // Prefer top-level reset helper if available
+        try {
+          if (maybeDb && typeof (maybeDb as any).resetMockDb === "function") {
+            (maybeDb as any).resetMockDb();
+          } else if (
+            maybeDb &&
+            (maybeDb as any).prisma &&
+            typeof (maybeDb as any).prisma.resetMockDb === "function"
+          ) {
+            (maybeDb as any).prisma.resetMockDb();
+          }
+        } catch {
+        if (
+          maybeDb &&
+          (maybeDb as any).db &&
+          (maybeDb as any).db.walletService &&
+          (maybeDb as any).db.walletService._store
+        ) {
+          try {
+            const s = (maybeDb as any).db.walletService._store;
+            if (s && s.wallets && typeof s.wallets.clear === "function")
+              s.wallets.clear();
+            if (
+              s &&
+              s.transactions &&
+              typeof s.transactions.clear === "function"
+            )
+              s.transactions.clear();
+          } catch {
+        }
+      } catch {
+    } catch {
+    // Debug: print mock store counts to help diagnose pre-existing data
+    try {
+      try {
+        const modModule = await import("@/lib/db/prisma");
+        const mod = (modModule && (modModule as any).default) || modModule;
+        const stores =
+          (mod && (mod as any).prisma && (mod as any).prisma.__stores) ||
+          (mod && (mod as any).__stores) ||
+          null;
+        if (stores) {
+          const counts: Record<string, number> = {};
+          try {
+            for (const k of Object.keys(stores)) {
+              const s = stores[k];
+              counts[k] = s && typeof s.size === "number" ? s.size : 0;
+            }
+          } catch {
+          try {
+            const sampleUsers =
+              (stores.user &&
+                Array.from(stores.user.values())
+                  .slice(0, 5)
+                  .map((u: unknown) => u && (u as any).email)) ||
+              [];
+            console.warn(
+              "SETUP_TESTS: mock store counts ->",
+              counts,
+              "sampleUsers=",
+              sampleUsers,
+            );
+          } catch {
+        }
+      } catch {
+    } catch {
+  } catch {
+  try {
+    console.warn("SETUP_TESTS: beforeEach - reset complete");
+  } catch {
+});
+
+// Ensure a minimal global Response implementation exists (used by NextResponse plumbing)
+try {
+  const needsImpl =
+    typeof (global as any).Response === "undefined" ||
+    typeof (global as any).Response.prototype.json !== "function";
+  if (needsImpl) {
+    class ResponseMock {
+      _body: unknown;
+      status: number;
+      headers: unknown;
+      constructor(body: unknown = null, init: Record<string, unknown> = {}) {
+        this._body = body;
+        this.status = Number((init as Record<string, unknown>)?.status ?? 200);
+        const headersInit =
+          ((init as Record<string, unknown>)?.headers as Record<
+            string,
+            unknown
+          >) || {};
+        const HeadersCtor = getGlobal<unknown>("Headers") as unknown as new (
+          h?: unknown,
+        ) => unknown;
+        this.headers = new HeadersCtor(headersInit);
+      }
+      async json() {
+        if (
+          this._body === null ||
+          this._body === undefined ||
+          this._body === ""
+        )
+          return null;
+        try {
+          return JSON.parse(String(this._body));
+        } catch (_e) {
+          void _e;
+          return this._body;
+        }
+      }
+      async text() {
+        if (this._body === null || this._body === undefined) return "";
+        return typeof this._body === "string"
+          ? this._body
+          : JSON.stringify(this._body);
+      }
+      static json(body: unknown, init: Record<string, unknown> = {}) {
+        return new ResponseMock(JSON.stringify(body), init);
+      }
+    }
+    setGlobal("Response", ResponseMock as unknown);
+  } else if (
+    getGlobal<unknown>("Response") &&
+    typeof (getGlobal<unknown>("Response") as any).json !== "function"
+  ) {
+    (getGlobal<unknown>("Response") as any).json = function (
+      body: unknown,
+      init: Record<string, unknown> = {},
+    ) {
+      const headersObj =
+        ((init && (init as Record<string, unknown>).headers) as Record<
+          string,
+          unknown
+        >) || {};
+      const RespCtor = getGlobal<unknown>("Response") as unknown as new (
+        s: string,
+        o?: Record<string, unknown>,
+      ) => unknown;
+      return new RespCtor(JSON.stringify(body), {
+        status: Number((init as Record<string, unknown>)?.status ?? 200),
+        headers: { "Content-Type": "application/json", ...headersObj },
+      });
+    } as unknown;
+  }
+} catch {
+
+// Install a default jest `fetch` mock if one is not already present. This
+// provides sensible default responses for external QMOI calls and local
+// endpoints so tests can assert `fetch` usage reliably.
+try {
+  const ResponseCtor = getGlobal<unknown>("Response") as unknown as new (
+    s: string,
+    o?: Record<string, unknown>,
+  ) => unknown;
+  const makeJson = (obj: unknown, status = 200) =>
+    new ResponseCtor(JSON.stringify(obj), {
+      status,
+      headers: { "Content-Type": "application/json" },
+    });
+
+  if (
+    !getGlobal("fetch") ||
+    !(getGlobal("fetch") as unknown as { mock?: unknown }).mock
+  ) {
+    setGlobal(
+      "fetch",
+      jest.fn(async (input: unknown, init?: unknown) => {
+        const toUrlString = (v: unknown) => {
+          if (typeof v === "string") return v;
+          try {
+            const obj = v as { url?: unknown; toString?: () => string };
+            if (obj.url) return String(obj.url);
+            if (typeof obj.toString === "function") return obj.toString();
+          } catch {
+            /* ignore */
+          }
+          return "";
+        };
+        const urlStr = toUrlString(input);
+        try {
+          const u = new URL(urlStr, "http://localhost");
+          if (
+            u.pathname.includes("/v1/chat/completions") ||
+            urlStr.includes("v1/chat/completions")
+          ) {
+            return makeJson({
+              id: "mock_resp",
+              choices: [
+                { message: { role: "assistant", content: "mocked response" } },
+              ],
+            });
+          }
+          // Admin endpoints (basic auth enforcement based on Authorization header)
+          if (u.pathname.startsWith("/api/admin")) {
+            // Accept Authorization header passed either via `init.headers` or
+            // via a Request-like `input.headers` object (Headers instance or plain object).
+            const headersSource =
+              (init as unknown as { headers?: unknown })?.headers ??
+              (input as unknown as { headers?: unknown })?.headers ??
+              {};
+            let authHeader = "";
+            try {
+              const accessor = headersSource as unknown as {
+                get?: (k: string) => unknown;
+              };
+              if (accessor && typeof accessor.get === "function") {
+                authHeader = String(
+                  accessor.get!("authorization") ||
+                    accessor.get!("Authorization") ||
+                    "",
+                );
+              } else if (headersSource && typeof headersSource === "object") {
+                const h = headersSource as Record<string, unknown>;
+                authHeader = String(
+                  h["authorization"] || h["Authorization"] || "",
+                );
+              }
+            } catch {
+            if (!authHeader)
+              return new ResponseCtor(
+                JSON.stringify({ _error: "Unauthorized" }),
+                { status: 401 },
+              );
+
+            // Try to decode JWT (without verification) to inspect role for admin checks
+            let isAdmin = false;
+            try {
+              const tokenRaw = String(authHeader).replace(/^Bearer\s+/i, "");
+              // eslint-disable-next-line @typescript-eslint/no-require-imports
+              // eslint-disable-next-line @typescript-eslint/no-require-imports
+              const jwt = require("jsonwebtoken");
+              const payload = jwt.decode(tokenRaw) || {};
+              if (
+                payload &&
+                String((payload as unknown as { role?: unknown })?.role) ===
+                  "admin"
+              )
+                isAdmin = true;
+            } catch {
+
+            if (!isAdmin)
+              return new ResponseCtor(
+                JSON.stringify({ _error: "Invalid request" }),
+                { status: 403 },
+              );
+
+            // Simple admin responses for authorized admin users
+            if (u.pathname === "/api/admin/monitoring") {
+              return makeJson({
+                monitoring: {
+                  timestamp: new Date().toISOString(),
+                  system: {
+                    uptime: 1,
+                    memory: { heapUsedMB: 10, heapTotalMB: 20 },
+                    nodeVersion: process.version,
+                    platform: process.platform,
+                  },
+                  performance: {},
+                  errors: {},
+                  healthScore: 95,
+                  status: "healthy",
+                },
+              });
+            }
+
+            if (u.pathname === "/api/admin/alerts") {
+              // support GET list and POST actions
+              if (
+                (init &&
+                  (init as unknown as { method?: string }).method === "POST") ||
+                false
+              ) {
+                const body =
+                  init && (init as unknown as { body?: unknown })?.body
+                    ? JSON.parse(
+                        String((init as unknown as { body?: unknown })!.body),
+                      )
+                    : {};
+                if (body && body.action === "acknowledge")
+                  return makeJson({ success: true, action: "acknowledge" });
+                return new ResponseCtor(
+                  JSON.stringify({ _error: "Invalid request" }),
+                  { status: 400 },
+                );
+              }
+              return makeJson({ alerts: [], count: 0, criticalCount: 0 });
+            }
+
+            if (u.pathname.startsWith("/api/admin/rate-limits")) {
+              if (
+                init &&
+                (init as unknown as { method?: string }).method === "PUT"
+              ) {
+                const body =
+                  init && (init as unknown as { body?: unknown })?.body
+                    ? JSON.parse(
+                        String((init as unknown as { body?: unknown })!.body),
+                      )
+                    : {};
+                if (body && body.action === "reset") {
+                  return makeJson({ success: true });
+                }
+                if (body && typeof body.newLimit === "number") {
+                  return makeJson({ success: true, newLimit: body.newLimit });
+                }
+              }
+              return makeJson({
+                config: { defaultLimit: 100 },
+                currentUsage: [],
+              });
+            }
+
+            if (u.pathname.startsWith("/api/admin/audit-logs")) {
+              // Handle POST export with format
+              if (
+                init &&
+                (init as unknown as { method?: string }).method === "POST"
+              ) {
+                const body =
+                  init && (init as unknown as { body?: unknown })?.body
+                    ? JSON.parse(
+                        String((init as unknown as { body?: unknown })!.body),
+                      )
+                    : {};
+                if (body && body.format === "csv") {
+                  const csv = "id,timestamp,level,message\n";
+                  return new ResponseCtor(csv, {
+                    status: 200,
+                    headers: {
+                      "Content-Type": "text/csv",
+                      "Content-Disposition": "attachment; filename=export.csv",
+                    },
+                  });
+                }
+                if (body && body.format === "json") {
+                  const resp = new ResponseCtor(
+                    JSON.stringify({
+                      logs: [],
+                      pagination: { skip: 0, take: 10, total: 0 },
+                    }),
+                    {
+                      status: 200,
+                      headers: {
+                        "Content-Type": "application/json",
+                        "Content-Disposition":
+                          "attachment; filename=export.json",
+                      },
+                    },
+                  );
+                  return resp;
+                }
+                return new ResponseCtor(
+                  JSON.stringify({ _error: "Invalid request" }),
+                  { status: 400 },
+                );
+              }
+              return makeJson({
+                logs: [],
+                pagination: { skip: 0, take: 10, total: 0 },
+              });
+            }
+          }
+          if (u.pathname === "/api/qmoi/status")
+            return makeJson({
+              status: "OK",
+              last_check: new Date().toISOString(),
+              mutation_count: 5,
+              logs: ["Log 1", "Log 2"],
+            });
+          if (u.pathname === "/api/health") {
+            return makeJson({
+              status: "healthy",
+              checks: {
+                database: { status: "connected" },
+                memory: { heapUsedMB: 10, heapTotalMB: 20 },
+              },
+            });
+          }
+          if (u.pathname === "/api/qmoi/payload") {
+            const action =
+              u.searchParams &&
+              (u.searchParams.has("qfix") || u.searchParams.get("qfix"))
+                ? "QFix"
+                : u.searchParams &&
+                    (u.searchParams.has("qoptimize") ||
+                      u.searchParams.get("qoptimize"))
+                  ? "QOptimize"
+                  : u.searchParams &&
+                      (u.searchParams.has("qsecure") ||
+                        u.searchParams.get("qsecure"))
+                    ? "QSecure"
+                    : "Unknown";
+            return makeJson({ message: `${action} done` });
+          }
+        } catch {
+        return new ResponseCtor(JSON.stringify({ _error: "Invalid request" }), {
+          status: 404,
+        });
+      }) as unknown,
+    );
+  }
+} catch {
+
+// Wrap global.fetch so test code (and components) will wait for MSW to be ready
+try {
+  const originalFetch = global.fetch;
+  if (typeof originalFetch === "function") {
+    // Wrap with a jest.fn so tests can assert on `global.fetch` calls
+    setGlobal(
+      "fetch",
+      jest.fn(async (...args: unknown[]) => {
+        await mswInitPromise.catch(() => {});
+        try {
+          const input = args[0];
+          const url =
+            typeof input === "string"
+              ? input
+              : (input as unknown as { url?: string })?.url || "";
+          debugLog("FETCH CALL:", url);
+        } catch (_e) {
+          void _e;
+        }
+        return (
+          originalFetch as unknown as (...a: unknown[]) => Promise<Response>
+        ).apply(globalThis, args);
+      }) as unknown,
+    );
+  }
+} catch {
+
+afterEach(() => {
+  try {
+    if (server)
+      (server as unknown as { resetHandlers?: () => void }).resetHandlers?.();
+  } catch (_e) {
+    (globalThis.console as any)?.error?.(
+      "SETUP_TESTS: server.resetHandlers() failed:",
+      _e,
+    );
+  }
+});
+// Ensure we clear mock DB after each test as well to handle cases where
+// tests create data during execution and beforeEach might not run due to
+// unexpected ordering in some environments.
+afterEach(() => {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
+    const maybePrisma = require("../lib/db/prisma");
+    try {
+      if (maybePrisma && typeof maybePrisma.resetMockDb === "function")
+        maybePrisma.resetMockDb();
+      else if (
+        maybePrisma &&
+        maybePrisma.prisma &&
+        typeof maybePrisma.prisma.resetMockDb === "function"
+      )
+        maybePrisma.prisma.resetMockDb();
+      else if (
+        maybePrisma &&
+        maybePrisma.prisma &&
+        typeof maybePrisma.prisma.__resetMockStores === "function"
+      )
+        maybePrisma.prisma.__resetMockStores();
+    } catch {
+  } catch {
+});
+afterAll(() => {
+  try {
+    if (server) (server as unknown as { close?: () => void }).close?.();
+  } catch (_e) {
+    // Non-fatal: avoid failing the test run due to cleanup errors. If you'd
+    // like to see these details, set SHOW_MSW_UNHANDLED=1 to surface them.
+    console.warn("SETUP_TESTS: server.close() failed (suppressed):", _e);
+  }
+});
+
+// Mock sessionStorage
+const sessionStorageMock = {
+  getItem: jest.fn(),
+  setItem: jest.fn(),
+  removeItem: jest.fn(),
+  clear: jest.fn(),
+  key: jest.fn(),
+  length: 0,
+};
+global.sessionStorage = sessionStorageMock as unknown as Storage;
+
+// Mock console methods to reduce noise in tests
+// Ensure `error` exists on console (fall back to `console.error`)
+if (!console.error)
+  (console as unknown as { error?: (...args: unknown[]) => void }).error =
+    console.error;
+global.console = {
+  ...console,
+  log: jest.fn(),
+  debug: jest.fn(),
+  info: jest.fn(),
+  warn: jest.fn(),
+  // keep errors visible so setup failures surface in CI and dev runs
+  _error: console.error,
+};
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/src.backup.20260121144720/setupTests.ts.bak.1768901506 -->
+/* eslint-env node, jest */
+/* global require */
+
+/* eslint-disable no-empty, @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any, @typescript-eslint/ban-ts-comment */
+import "@testing-library/jest-dom";
+import "whatwg-fetch";
+import { TextEncoder, TextDecoder } from "util";
+
+// Helper to set/get global test shims without using `any`
+const setGlobal = (k: string, v: unknown) => {
+  (globalThis as unknown as Record<string, unknown>)[k] = v;
+};
+const getGlobal = <T = unknown>(k: string) =>
+  (globalThis as unknown as Record<string, unknown>)[k] as T;
+
+// Node may not expose TextEncoder/TextDecoder in older runtimes; ensure they're available
+if (
+  typeof (globalThis as unknown as Record<string, unknown>).TextEncoder ===
+  "undefined"
+)
+  setGlobal("TextEncoder", TextEncoder);
+if (
+  typeof (globalThis as unknown as Record<string, unknown>).TextDecoder ===
+  "undefined"
+)
+  setGlobal("TextDecoder", TextDecoder);
+
+// Polyfill setImmediate in environments that don't provide it
+if (
+  typeof (globalThis as unknown as Record<string, unknown>).setImmediate ===
+  "undefined"
+) {
+  setGlobal("setImmediate", ((
+    fn: (...args: unknown[]) => void,
+    ...args: unknown[]
+  ) => setTimeout(() => fn(...(args as unknown[])), 0)) as unknown);
+}
+
+import { jest, beforeAll, afterAll, afterEach } from "@jest/globals";
+// Verify hook availability (kept minimal)
+const TEST_VERBOSE = process.env.TEST_VERBOSE === "1" || false;
+const debugLog = (...args: unknown[]) => {
+  if (TEST_VERBOSE) console.debug(...(args as unknown[]));
+};
+
+try {
+  console.warn("SETUP_TESTS: module loaded");
+} catch (_e) {
+  void _e; /* ignore */
+}
+
+debugLog(
+  "SETUP_TESTS: hooks -> beforeAll:",
+  typeof beforeAll,
+  "global.beforeAll:",
+  typeof (globalThis as any).beforeAll,
+);
+// Delay importing MSW until after early polyfills (setupFiles) run
+let server: unknown;
+let mswReady = false;
+
+declare global {
+  var localStorage: Storage;
+  var sessionStorage: Storage;
+  var console: Console;
+}
+
+// Augment Console with a non-standard `error` helper used in test setup
+declare global {
+  interface Console {
+    // Keep signature compatible with standard Console.error
+    error(...data: unknown[]): void;
+  }
+}
+
+// Ensure fetch exists; if not, provide a Jest mock (MSW will set up an implementation)
+if (!global.fetch) {
+  // jest.fn() typing is not compatible with the global fetch signature; coerce
+  // to any for test setup.
+  (global as any).fetch = jest.fn() as any;
+}
+
+// Provide a lightweight NextRequest shim for tests: many tests construct
+// NextRequest objects directly and only need a minimal subset of the
+// interface (url, method, headers, json/text helpers). Use a small shim
+// rather than the real Next.js Request to avoid environment incompatibilities.
+(global as any).Request = class PolyRequest {
+  url: string;
+  method: string;
+  headers: Headers;
+  body: unknown;
+  constructor(input: unknown, init: Record<string, unknown> = {}) {
+    const _url =
+      typeof input === "string"
+        ? input
+        : (input && ((input as any).url || String(input))) ||
+          "http://localhost";
+    Object.defineProperty(this, "url", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: _url,
+    });
+    Object.defineProperty(this, "method", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: (init && init.method) || "GET",
+    });
+    Object.defineProperty(this, "headers", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: new (global as any).Headers(
+        init && init.headers ? init.headers : {},
+      ),
+    });
+    Object.defineProperty(this, "body", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: init && init.body ? init.body : null,
+    });
+  }
+  clone() {
+    return new (global as any).Request(this.url, {
+      method: this.method,
+      headers: this.headers,
+      body: this.body,
+    });
+  }
+  async json() {
+    if (!this.body) return null;
+    if (typeof this.body === "string") {
+      try {
+        return JSON.parse(this.body);
+      } catch {
+    }
+    return this.body;
+  }
+  async text() {
+    return this.body ? String(this.body) : "";
+  }
+} as any;
+
+(global as any).NextRequest = class NextRequestShim {
+  url: string;
+  method: string;
+  headers: Headers;
+  body: unknown;
+  constructor(url: unknown, init: Record<string, unknown> = {}) {
+    const _url =
+      typeof url === "string"
+        ? url
+        : (url && ((url as any).url || String(url))) || "http://localhost";
+    Object.defineProperty(this, "url", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: _url,
+    });
+    Object.defineProperty(this, "method", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: (init && init.method) || "GET",
+    });
+    Object.defineProperty(this, "headers", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: new (global as any).Headers(
+        init && init.headers ? init.headers : {},
+      ),
+    });
+    Object.defineProperty(this, "body", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: init && init.body ? init.body : null,
+    });
+  }
+  async json() {
+    if (!this.body) return null;
+    if (typeof this.body === "string") {
+      try {
+        return JSON.parse(this.body);
+      } catch {
+    }
+    return this.body;
+  }
+  async text() {
+    return this.body ? String(this.body) : "";
+  }
+} as any;
+
+// Minimal NextResponse shim for tests that call NextResponse.json()
+if (typeof (global as any).NextResponse === "undefined") {
+  (global as any).NextResponse = {
+    json(body: unknown, opts: Record<string, unknown> = {}) {
+      // Return a plain object that mimics the minimal interface used in tests
+      const status = Number(
+        (opts && (opts as Record<string, unknown>).status) ?? 200,
+      );
+      const headersObj =
+        ((opts && (opts as Record<string, unknown>).headers) as Record<
+          string,
+          unknown
+        >) || {};
+      return {
+        status,
+        ok: status >= 200 && status < 300,
+        json: async () => body,
+        // also support text for completeness
+        text: async () =>
+          typeof body === "string" ? body : JSON.stringify(body),
+        headers: headersObj,
+      } as any;
+    },
+  } as any;
+}
+
+// MSW server lifecycle: initialize at module load so interceptors are active
+// before unknown test modules run. When running under Node (no `window`) we skip
+// MSW initialization to avoid ESM/loader issues and unnecessary browser
+// polyfills for node-only integration tests.
+let mswInitPromise: Promise<unknown>;
+if (typeof window === "undefined") {
+  debugLog(
+    "SETUP_TESTS: detected Node test environment; skipping MSW initialization",
+  );
+  mswInitPromise = Promise.resolve();
+  // Provide a minimal server object so downstream logic can safely call methods
+  server = {
+    use: () => undefined,
+    listen: () => undefined,
+    close: () => undefined,
+    resetHandlers: () => undefined,
+  } as any;
+  // Expose readiness promise for compatibility
+  setGlobal("__MSW_READY__", mswInitPromise);
+} else {
+  // Initialize MSW only in environments that look like browsers/jsdom
+  mswInitPromise = (async function initializeMswAtLoad() {
+    debugLog("SETUP_TESTS: initializing MSW at module load");
+    // Ensure stream polyfills are available in this module scope before importing MSW
+    try {
+      // Use dynamic import so ESM loaders handle the module correctly in test environments
+      const ws = await import("web-streams-polyfill");
+      const TransformStream = (ws as any).TransformStream;
+      const ReadableStream = (ws as any).ReadableStream;
+      const WritableStream = (ws as any).WritableStream;
+      if (typeof (global as any).TransformStream === "undefined")
+        (global as any).TransformStream = TransformStream;
+      if (typeof (global as any).ReadableStream === "undefined")
+        (global as any).ReadableStream = ReadableStream;
+      if (typeof (global as any).WritableStream === "undefined")
+        (global as any).WritableStream = WritableStream;
+      if (typeof globalThis !== "undefined") {
+        if (typeof (globalThis as any).TransformStream === "undefined")
+          (globalThis as any).TransformStream = TransformStream;
+      }
+    } catch (_e) {
+      void _e; /* ignore */
+    }
+
+    // MSW readiness flag (used by the fetch fallback)
+
+    try {
+      // Dynamically import MSW to let the ESM loader handle its deps.
+      debugLog("SETUP_TESTS: importing msw/node...");
+      const msw = await import("msw/node");
+      debugLog("SETUP_TESTS: imported msw/node successfully");
+      const handlersMod = await import("./mocks/handlers");
+      debugLog(
+        "SETUP_TESTS: imported handlers module",
+        Object.keys(handlersMod),
+      );
+      const { server: importedServer } = await import("./mocks/server");
+      debugLog("SETUP_TESTS: imported server module");
+
+      // Support both async getter and synchronous exports
+      let handlers: unknown[] = [];
+      if (typeof handlersMod.getHandlers === "function") {
+        try {
+          debugLog("SETUP_TESTS: invoking handlersMod.getHandlers()");
+          handlers = await (handlersMod as any).getHandlers();
+          debugLog("SETUP_TESTS: handlers resolved length=", handlers.length);
+        } catch (_err) {
+          void _err; /* fail fast */
+          (globalThis.console as any)?.error?.(
+            "SETUP_TESTS: handlersMod.getHandlers() threw:",
+            _err,
+          );
+          throw _err;
+        }
+      } else {
+        handlers =
+          (
+            handlersMod as unknown as {
+              handlers?: unknown[];
+              default?: unknown[];
+            }
+          ).handlers ||
+          (
+            handlersMod as unknown as {
+              handlers?: unknown[];
+              default?: unknown[];
+            }
+          ).default ||
+          [];
+        debugLog("SETUP_TESTS: handlers (sync) length=", handlers.length);
+      }
+
+      // Register handlers on the shared server and start it
+      debugLog("SETUP_TESTS: registering handlers on server", handlers.length);
+      if ((handlers as unknown[]).length)
+        (
+          importedServer as unknown as { use: (...args: unknown[]) => void }
+        ).use(...(handlers as unknown[]));
+      // Log unhandled requests to aid debugging when handlers don't match. By
+      // default we suppress these unless explicitly enabled in CI/dev by
+      // setting SHOW_MSW_UNHANDLED=1.
+      importedServer.listen({
+        onUnhandledRequest: (_req: unknown) => {
+          try {
+            const _req = _req as unknown as { method?: string; url?: unknown };
+            const urlStr = String(req.url || "");
+            if (process.env.SHOW_MSW_UNHANDLED === "1") {
+              (globalThis.console as any)?.error?.(
+                "MSW UNHANDLED REQUEST:",
+                req.method,
+                urlStr,
+              );
+            } else {
+              debugLog(
+                "MSW UNHANDLED REQUEST (suppressed):",
+                req.method,
+                urlStr,
+              );
+            }
+          } catch (_err) {
+            void _err; /* ignore malformed request */
+          }
+        },
+      });
+      debugLog("SETUP_TESTS: server.listen() called");
+      server = importedServer;
+      debugLog(
+        "SETUP_TESTS: MSW initialized; handlers registered",
+        handlers.length,
+      );
+    } catch (_e) {
+      // Log errors to surface them in CI/dev runs
+      (globalThis.console as any)?.error?.(
+        "setupTests failed to initialize MSW:",
+        _e,
+      );
+      // Fallback: if MSW cannot be initialized (ESM/loader issues), install a
+      // minimal fetch-based mock so tests don't hit the network. This mirrors
+      // the most common handlers used in tests.
+      (globalThis.console as any)?.error?.(
+        "SETUP_TESTS: Falling back to simple fetch mock server for tests",
+      );
+
+      const fallbackHandlers = [
+        {
+          method: "GET",
+          path: "/api/qmoi/status",
+          handler: async () =>
+            new Response(
+              JSON.stringify({
+                status: "OK",
+                last_check: "2024-06-01T12:00:00Z",
+                mutation_count: 5,
+                logs: ["Log 1", "Log 2"],
+              }),
+              {
+                status: 200,
+                headers: { "Content-Type": "application/json" },
+              },
+            ),
+        },
+        {
+          method: "POST",
+          path: "/api/qmoi/payload",
+          handler: async (_req: unknown) => {
+            const url =
+              typeof _req === "string"
+                ? new URL(_req, "http://localhost")
+                : (_req as unknown as { url?: string })?.url ||
+                  "http://localhost";
+            const q =
+              typeof url === "string" ? new URL(url, "http://localhost") : url;
+            const action =
+              (q as any).searchParams && (q as any).searchParams.has("qfix")
+                ? "QFix"
+                : (q as any).searchParams &&
+                    (q as any).searchParams.has("qoptimize")
+                  ? "QOptimize"
+                  : (q as any).searchParams &&
+                      (q as any).searchParams.has("qsecure")
+                    ? "QSecure"
+                    : "Unknown";
+            return new Response(JSON.stringify({ message: `${action} done` }), {
+              status: 200,
+              headers: { "Content-Type": "application/json" },
+            });
+          },
+        },
+      ];
+
+      // Replace global.fetch with a simple router that matches the fallback handlers.
+      try {
+        const originalFetch = getGlobal<unknown>("fetch");
+        setGlobal("fetch", async function fetchFallback(
+          input: unknown,
+          init: unknown,
+        ) {
+          try {
+            const url =
+              typeof input === "string"
+                ? input
+                : (input as unknown as { url?: string })?.url || "";
+            const u = new URL(url, "http://localhost");
+            const method =
+              (init as unknown as { method?: string })?.method || "GET";
+            for (const h of fallbackHandlers) {
+              const handler = h as unknown as {
+                method: string;
+                path: string;
+                handler: (arg?: unknown) => Promise<Response> | Response;
+              };
+              if (handler.method === method && handler.path === u.pathname) {
+                return handler.handler(u);
+              }
+            }
+          } catch (er) {
+            // ignore parsing errors and fall through to original fetch
+          }
+          return (
+            originalFetch as unknown as (
+              ...args: unknown[]
+            ) => Promise<Response>
+          ).apply(globalThis, [input, init]);
+        } as unknown);
+      } catch (er) {
+        (globalThis.console as any)?.error?.(
+          "SETUP_TESTS: failed to install fetch fallback:",
+          er,
+        );
+      }
+
+      // Provide a minimal server object with the same interface used elsewhere
+      server = {
+        use: () => undefined,
+        listen: () => undefined,
+        close: () => undefined,
+        resetHandlers: () => undefined,
+      } as unknown;
+    }
+  })();
+}
+
+// Expose readiness promise so tests can explicitly await MSW initialization
+setGlobal("__MSW_READY__", mswInitPromise);
+
+// Attempt an early reset of mock prisma stores at module load. This ensures
+// a clean in-memory DB even if other modules imported the mock before the
+// jest lifecycle hooks ran.
+try {
+  import("@/lib/db/prisma")
+    .then((mod) => {
+      const maybePrisma = (mod && (mod as any).default) || mod;
+      try {
+        if (
+          maybePrisma &&
+          typeof (maybePrisma as any).resetMockDb === "function"
+        ) {
+          (maybePrisma as any).resetMockDb();
+        } else if (
+          maybePrisma &&
+          (maybePrisma as any).prisma &&
+          typeof (maybePrisma as any).prisma.resetMockDb === "function"
+        ) {
+          (maybePrisma as any).prisma.resetMockDb();
+        } else if (
+          maybePrisma &&
+          (maybePrisma as any).prisma &&
+          typeof (maybePrisma as any).prisma.__resetMockStores === "function"
+        ) {
+          (maybePrisma as any).prisma.__resetMockStores();
+        }
+      } catch {
+    })
+    .catch(() => {});
+} catch {
+
+// Ensure Jest waits for MSW to finish initializing before unknown tests run.
+// This ensures XHR requests (which bypass our fetch wrapper) won't race ahead.
+beforeAll(async () => {
+  await mswInitPromise;
+  debugLog("SETUP_TESTS: msw ready (awaited in beforeAll)");
+  // Seed mock-prisma stores with minimal data used by admin and wallet tests
+  try {
+    const maybePrismaModule = await import("@/lib/db/prisma");
+    const maybePrisma =
+      (maybePrismaModule && (maybePrismaModule as any).default) ||
+      maybePrismaModule;
+    const stores =
+      (maybePrisma &&
+        (maybePrisma as any).prisma &&
+        (maybePrisma as any).prisma.__stores) ||
+      (maybePrisma && (maybePrisma as any).__stores) ||
+      null;
+    if (stores) {
+      try {
+        if (!stores.user) stores.user = new Map();
+        if (!stores.wallet) stores.wallet = new Map();
+        if (!stores.transaction) stores.transaction = new Map();
+      } catch {
+      const now = new Date().toISOString();
+      if (stores.user && stores.user.size === 0) {
+        stores.user.set("user_admin@example.com", {
+          id: "user_admin@example.com",
+          email: "admin@example.com",
+          username: "admin",
+          name: "Admin",
+          role: "admin",
+          createdAt: now,
+          updatedAt: now,
+        });
+      }
+      if (stores.wallet && stores.wallet.size === 0) {
+        stores.wallet.set("wallet_1", {
+          id: "wallet_1",
+          userId: "user_admin@example.com",
+          currency: "USD",
+          balance: 1000,
+          publicKey: null,
+          createdAt: now,
+          updatedAt: now,
+        });
+      }
+      if (stores.transaction && stores.transaction.size === 0) {
+        stores.transaction.set("tx_1", {
+          id: "tx_1",
+          walletId: "wallet_1",
+          amount: 1000,
+          type: "deposit",
+          status: "completed",
+          timestamp: now,
+        });
+      }
+    }
+  } catch {
+});
+
+// Reset mock DB stores before each test to ensure isolation between tests
+beforeEach(async () => {
+  try {
+    // Force-clear the global mock-prisma stores directly to avoid cases
+    // where module-scoped proxies hold stale references.
+    try {
+      const G = globalThis as unknown as Record<string, unknown>;
+      if (G.__qmoi_mock_prisma_stores) {
+        for (const k of Object.keys(G.__qmoi_mock_prisma_stores)) {
+          try {
+            const s = G.__qmoi_mock_prisma_stores[k];
+            if (s && typeof s.clear === "function") s.clear();
+          } catch {
+        }
+      }
+    } catch {
+    try {
+      console.warn("SETUP_TESTS: beforeEach - resetting mock stores");
+    } catch {
+    const gdb = (global as any).__qmoi_db;
+    // Primary: reset mock prisma if available
+    try {
+      if (gdb && gdb.prisma && typeof gdb.prisma.resetMockDb === "function") {
+        gdb.prisma.resetMockDb();
+      } else if (
+        gdb &&
+        gdb.prisma &&
+        typeof gdb.prisma.__resetMockStores === "function"
+      ) {
+        gdb.prisma.__resetMockStores();
+      }
+      // Defensive: if __stores map exposed, clear each map
+      if (gdb && gdb.prisma && gdb.prisma.__stores) {
+        try {
+          const stores = gdb.prisma.__stores;
+          for (const k of Object.keys(stores)) {
+            try {
+              stores[k].clear();
+            } catch {
+          }
+        } catch {
+      }
+    } catch {
+    // Secondary: clear any in-memory walletService stores used by fallback db shim
+    try {
+      try {
+        const maybeDbModule = await import("@/lib/db/prisma");
+        const maybeDb =
+          (maybeDbModule && (maybeDbModule as any).default) || maybeDbModule;
+        // Prefer top-level reset helper if available
+        try {
+          if (maybeDb && typeof (maybeDb as any).resetMockDb === "function") {
+            (maybeDb as any).resetMockDb();
+          } else if (
+            maybeDb &&
+            (maybeDb as any).prisma &&
+            typeof (maybeDb as any).prisma.resetMockDb === "function"
+          ) {
+            (maybeDb as any).prisma.resetMockDb();
+          }
+        } catch {
+        if (
+          maybeDb &&
+          (maybeDb as any).db &&
+          (maybeDb as any).db.walletService &&
+          (maybeDb as any).db.walletService._store
+        ) {
+          try {
+            const s = (maybeDb as any).db.walletService._store;
+            if (s && s.wallets && typeof s.wallets.clear === "function")
+              s.wallets.clear();
+            if (
+              s &&
+              s.transactions &&
+              typeof s.transactions.clear === "function"
+            )
+              s.transactions.clear();
+          } catch {
+        }
+      } catch {
+    } catch {
+    // Debug: print mock store counts to help diagnose pre-existing data
+    try {
+      try {
+        const modModule = await import("@/lib/db/prisma");
+        const mod = (modModule && (modModule as any).default) || modModule;
+        const stores =
+          (mod && (mod as any).prisma && (mod as any).prisma.__stores) ||
+          (mod && (mod as any).__stores) ||
+          null;
+        if (stores) {
+          const counts: Record<string, number> = {};
+          try {
+            for (const k of Object.keys(stores)) {
+              const s = stores[k];
+              counts[k] = s && typeof s.size === "number" ? s.size : 0;
+            }
+          } catch {
+          try {
+            const sampleUsers =
+              (stores.user &&
+                Array.from(stores.user.values())
+                  .slice(0, 5)
+                  .map((u: unknown) => u && (u as any).email)) ||
+              [];
+            console.warn(
+              "SETUP_TESTS: mock store counts ->",
+              counts,
+              "sampleUsers=",
+              sampleUsers,
+            );
+          } catch {
+        }
+      } catch {
+    } catch {
+  } catch {
+  try {
+    console.warn("SETUP_TESTS: beforeEach - reset complete");
+  } catch {
+});
+
+// Ensure a minimal global Response implementation exists (used by NextResponse plumbing)
+try {
+  const needsImpl =
+    typeof (global as any).Response === "undefined" ||
+    typeof (global as any).Response.prototype.json !== "function";
+  if (needsImpl) {
+    class ResponseMock {
+      _body: unknown;
+      status: number;
+      headers: unknown;
+      constructor(body: unknown = null, init: Record<string, unknown> = {}) {
+        this._body = body;
+        this.status = Number((init as Record<string, unknown>)?.status ?? 200);
+        const headersInit =
+          ((init as Record<string, unknown>)?.headers as Record<
+            string,
+            unknown
+          >) || {};
+        const HeadersCtor = getGlobal<unknown>("Headers") as unknown as new (
+          h?: unknown,
+        ) => unknown;
+        this.headers = new HeadersCtor(headersInit);
+      }
+      async json() {
+        if (
+          this._body === null ||
+          this._body === undefined ||
+          this._body === ""
+        )
+          return null;
+        try {
+          return JSON.parse(String(this._body));
+        } catch (_e) {
+          void _e;
+          return this._body;
+        }
+      }
+      async text() {
+        if (this._body === null || this._body === undefined) return "";
+        return typeof this._body === "string"
+          ? this._body
+          : JSON.stringify(this._body);
+      }
+      static json(body: unknown, init: Record<string, unknown> = {}) {
+        return new ResponseMock(JSON.stringify(body), init);
+      }
+    }
+    setGlobal("Response", ResponseMock as unknown);
+  } else if (
+    getGlobal<unknown>("Response") &&
+    typeof (getGlobal<unknown>("Response") as any).json !== "function"
+  ) {
+    (getGlobal<unknown>("Response") as any).json = function (
+      body: unknown,
+      init: Record<string, unknown> = {},
+    ) {
+      const headersObj =
+        ((init && (init as Record<string, unknown>).headers) as Record<
+          string,
+          unknown
+        >) || {};
+      const RespCtor = getGlobal<unknown>("Response") as unknown as new (
+        s: string,
+        o?: Record<string, unknown>,
+      ) => unknown;
+      return new RespCtor(JSON.stringify(body), {
+        status: Number((init as Record<string, unknown>)?.status ?? 200),
+        headers: { "Content-Type": "application/json", ...headersObj },
+      });
+    } as unknown;
+  }
+} catch {
+
+// Install a default jest `fetch` mock if one is not already present. This
+// provides sensible default responses for external QMOI calls and local
+// endpoints so tests can assert `fetch` usage reliably.
+try {
+  const ResponseCtor = getGlobal<unknown>("Response") as unknown as new (
+    s: string,
+    o?: Record<string, unknown>,
+  ) => unknown;
+  const makeJson = (obj: unknown, status = 200) =>
+    new ResponseCtor(JSON.stringify(obj), {
+      status,
+      headers: { "Content-Type": "application/json" },
+    });
+
+  if (
+    !getGlobal("fetch") ||
+    !(getGlobal("fetch") as unknown as { mock?: unknown }).mock
+  ) {
+    setGlobal(
+      "fetch",
+      jest.fn(async (input: unknown, init?: unknown) => {
+        const toUrlString = (v: unknown) => {
+          if (typeof v === "string") return v;
+          try {
+            const obj = v as { url?: unknown; toString?: () => string };
+            if (obj.url) return String(obj.url);
+            if (typeof obj.toString === "function") return obj.toString();
+          } catch {
+            /* ignore */
+          }
+          return "";
+        };
+        const urlStr = toUrlString(input);
+        try {
+          const u = new URL(urlStr, "http://localhost");
+          if (
+            u.pathname.includes("/v1/chat/completions") ||
+            urlStr.includes("v1/chat/completions")
+          ) {
+            return makeJson({
+              id: "mock_resp",
+              choices: [
+                { message: { role: "assistant", content: "mocked response" } },
+              ],
+            });
+          }
+          // Admin endpoints (basic auth enforcement based on Authorization header)
+          if (u.pathname.startsWith("/api/admin")) {
+            // Accept Authorization header passed either via `init.headers` or
+            // via a Request-like `input.headers` object (Headers instance or plain object).
+            const headersSource =
+              (init as unknown as { headers?: unknown })?.headers ??
+              (input as unknown as { headers?: unknown })?.headers ??
+              {};
+            let authHeader = "";
+            try {
+              const accessor = headersSource as unknown as {
+                get?: (k: string) => unknown;
+              };
+              if (accessor && typeof accessor.get === "function") {
+                authHeader = String(
+                  accessor.get!("authorization") ||
+                    accessor.get!("Authorization") ||
+                    "",
+                );
+              } else if (headersSource && typeof headersSource === "object") {
+                const h = headersSource as Record<string, unknown>;
+                authHeader = String(
+                  h["authorization"] || h["Authorization"] || "",
+                );
+              }
+            } catch {
+            if (!authHeader)
+              return new ResponseCtor(
+                JSON.stringify({ _error: "Unauthorized" }),
+                { status: 401 },
+              );
+
+            // Try to decode JWT (without verification) to inspect role for admin checks
+            let isAdmin = false;
+            try {
+              const tokenRaw = String(authHeader).replace(/^Bearer\s+/i, "");
+              // eslint-disable-next-line @typescript-eslint/no-require-imports
+              // eslint-disable-next-line @typescript-eslint/no-require-imports
+              const jwt = require("jsonwebtoken");
+              const payload = jwt.decode(tokenRaw) || {};
+              if (
+                payload &&
+                String((payload as unknown as { role?: unknown })?.role) ===
+                  "admin"
+              )
+                isAdmin = true;
+            } catch {
+
+            if (!isAdmin)
+              return new ResponseCtor(
+                JSON.stringify({ _error: "Invalid request" }),
+                { status: 403 },
+              );
+
+            // Simple admin responses for authorized admin users
+            if (u.pathname === "/api/admin/monitoring") {
+              return makeJson({
+                monitoring: {
+                  timestamp: new Date().toISOString(),
+                  system: {
+                    uptime: 1,
+                    memory: { heapUsedMB: 10, heapTotalMB: 20 },
+                    nodeVersion: process.version,
+                    platform: process.platform,
+                  },
+                  performance: {},
+                  errors: {},
+                  healthScore: 95,
+                  status: "healthy",
+                },
+              });
+            }
+
+            if (u.pathname === "/api/admin/alerts") {
+              // support GET list and POST actions
+              if (
+                (init &&
+                  (init as unknown as { method?: string }).method === "POST") ||
+                false
+              ) {
+                const body =
+                  init && (init as unknown as { body?: unknown })?.body
+                    ? JSON.parse(
+                        String((init as unknown as { body?: unknown })!.body),
+                      )
+                    : {};
+                if (body && body.action === "acknowledge")
+                  return makeJson({ success: true, action: "acknowledge" });
+                return new ResponseCtor(
+                  JSON.stringify({ _error: "Invalid request" }),
+                  { status: 400 },
+                );
+              }
+              return makeJson({ alerts: [], count: 0, criticalCount: 0 });
+            }
+
+            if (u.pathname.startsWith("/api/admin/rate-limits")) {
+              if (
+                init &&
+                (init as unknown as { method?: string }).method === "PUT"
+              ) {
+                const body =
+                  init && (init as unknown as { body?: unknown })?.body
+                    ? JSON.parse(
+                        String((init as unknown as { body?: unknown })!.body),
+                      )
+                    : {};
+                if (body && body.action === "reset") {
+                  return makeJson({ success: true });
+                }
+                if (body && typeof body.newLimit === "number") {
+                  return makeJson({ success: true, newLimit: body.newLimit });
+                }
+              }
+              return makeJson({
+                config: { defaultLimit: 100 },
+                currentUsage: [],
+              });
+            }
+
+            if (u.pathname.startsWith("/api/admin/audit-logs")) {
+              // Handle POST export with format
+              if (
+                init &&
+                (init as unknown as { method?: string }).method === "POST"
+              ) {
+                const body =
+                  init && (init as unknown as { body?: unknown })?.body
+                    ? JSON.parse(
+                        String((init as unknown as { body?: unknown })!.body),
+                      )
+                    : {};
+                if (body && body.format === "csv") {
+                  const csv = "id,timestamp,level,message\n";
+                  return new ResponseCtor(csv, {
+                    status: 200,
+                    headers: {
+                      "Content-Type": "text/csv",
+                      "Content-Disposition": "attachment; filename=export.csv",
+                    },
+                  });
+                }
+                if (body && body.format === "json") {
+                  const resp = new ResponseCtor(
+                    JSON.stringify({
+                      logs: [],
+                      pagination: { skip: 0, take: 10, total: 0 },
+                    }),
+                    {
+                      status: 200,
+                      headers: {
+                        "Content-Type": "application/json",
+                        "Content-Disposition":
+                          "attachment; filename=export.json",
+                      },
+                    },
+                  );
+                  return resp;
+                }
+                return new ResponseCtor(
+                  JSON.stringify({ _error: "Invalid request" }),
+                  { status: 400 },
+                );
+              }
+              return makeJson({
+                logs: [],
+                pagination: { skip: 0, take: 10, total: 0 },
+              });
+            }
+          }
+          if (u.pathname === "/api/qmoi/status")
+            return makeJson({
+              status: "OK",
+              last_check: new Date().toISOString(),
+              mutation_count: 5,
+              logs: ["Log 1", "Log 2"],
+            });
+          if (u.pathname === "/api/health") {
+            return makeJson({
+              status: "healthy",
+              checks: {
+                database: { status: "connected" },
+                memory: { heapUsedMB: 10, heapTotalMB: 20 },
+              },
+            });
+          }
+          if (u.pathname === "/api/qmoi/payload") {
+            const action =
+              u.searchParams &&
+              (u.searchParams.has("qfix") || u.searchParams.get("qfix"))
+                ? "QFix"
+                : u.searchParams &&
+                    (u.searchParams.has("qoptimize") ||
+                      u.searchParams.get("qoptimize"))
+                  ? "QOptimize"
+                  : u.searchParams &&
+                      (u.searchParams.has("qsecure") ||
+                        u.searchParams.get("qsecure"))
+                    ? "QSecure"
+                    : "Unknown";
+            return makeJson({ message: `${action} done` });
+          }
+        } catch {
+        return new ResponseCtor(JSON.stringify({ _error: "Invalid request" }), {
+          status: 404,
+        });
+      }) as unknown,
+    );
+  }
+} catch {
+
+// Wrap global.fetch so test code (and components) will wait for MSW to be ready
+try {
+  const originalFetch = global.fetch;
+  if (typeof originalFetch === "function") {
+    // Wrap with a jest.fn so tests can assert on `global.fetch` calls
+    setGlobal(
+      "fetch",
+      jest.fn(async (...args: unknown[]) => {
+        await mswInitPromise.catch(() => {});
+        try {
+          const input = args[0];
+          const url =
+            typeof input === "string"
+              ? input
+              : (input as unknown as { url?: string })?.url || "";
+          debugLog("FETCH CALL:", url);
+        } catch (_e) {
+          void _e;
+        }
+        return (
+          originalFetch as unknown as (...a: unknown[]) => Promise<Response>
+        ).apply(globalThis, args);
+      }) as unknown,
+    );
+  }
+} catch {
+
+afterEach(() => {
+  try {
+    if (server)
+      (server as unknown as { resetHandlers?: () => void }).resetHandlers?.();
+  } catch (_e) {
+    (globalThis.console as any)?.error?.(
+      "SETUP_TESTS: server.resetHandlers() failed:",
+      _e,
+    );
+  }
+});
+// Ensure we clear mock DB after each test as well to handle cases where
+// tests create data during execution and beforeEach might not run due to
+// unexpected ordering in some environments.
+afterEach(() => {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
+    const maybePrisma = require("../lib/db/prisma");
+    try {
+      if (maybePrisma && typeof maybePrisma.resetMockDb === "function")
+        maybePrisma.resetMockDb();
+      else if (
+        maybePrisma &&
+        maybePrisma.prisma &&
+        typeof maybePrisma.prisma.resetMockDb === "function"
+      )
+        maybePrisma.prisma.resetMockDb();
+      else if (
+        maybePrisma &&
+        maybePrisma.prisma &&
+        typeof maybePrisma.prisma.__resetMockStores === "function"
+      )
+        maybePrisma.prisma.__resetMockStores();
+    } catch {
+  } catch {
+});
+afterAll(() => {
+  try {
+    if (server) (server as unknown as { close?: () => void }).close?.();
+  } catch (_e) {
+    // Non-fatal: avoid failing the test run due to cleanup errors. If you'd
+    // like to see these details, set SHOW_MSW_UNHANDLED=1 to surface them.
+    console.warn("SETUP_TESTS: server.close() failed (suppressed):", _e);
+  }
+});
+
+// Mock sessionStorage
+const sessionStorageMock = {
+  getItem: jest.fn(),
+  setItem: jest.fn(),
+  removeItem: jest.fn(),
+  clear: jest.fn(),
+  key: jest.fn(),
+  length: 0,
+};
+global.sessionStorage = sessionStorageMock as unknown as Storage;
+
+// Mock console methods to reduce noise in tests
+// Ensure `error` exists on console (fall back to `console.error`)
+if (!console.error)
+  (console as unknown as { error?: (...args: unknown[]) => void }).error =
+    console.error;
+global.console = {
+  ...console,
+  log: jest.fn(),
+  debug: jest.fn(),
+  info: jest.fn(),
+  warn: jest.fn(),
+  // keep errors visible so setup failures surface in CI and dev runs
+  _error: console.error,
+};
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/src.backup.20260121144720/setupTests.ts.bak.1768901506 -->
+/* eslint-env node, jest */
+/* global require */
+
+/* eslint-disable no-empty, @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any, @typescript-eslint/ban-ts-comment */
+import "@testing-library/jest-dom";
+import "whatwg-fetch";
+import { TextEncoder, TextDecoder } from "util";
+
+// Helper to set/get global test shims without using `any`
+const setGlobal = (k: string, v: unknown) => {
+  (globalThis as unknown as Record<string, unknown>)[k] = v;
+};
+const getGlobal = <T = unknown>(k: string) =>
+  (globalThis as unknown as Record<string, unknown>)[k] as T;
+
+// Node may not expose TextEncoder/TextDecoder in older runtimes; ensure they're available
+if (
+  typeof (globalThis as unknown as Record<string, unknown>).TextEncoder ===
+  "undefined"
+)
+  setGlobal("TextEncoder", TextEncoder);
+if (
+  typeof (globalThis as unknown as Record<string, unknown>).TextDecoder ===
+  "undefined"
+)
+  setGlobal("TextDecoder", TextDecoder);
+
+// Polyfill setImmediate in environments that don't provide it
+if (
+  typeof (globalThis as unknown as Record<string, unknown>).setImmediate ===
+  "undefined"
+) {
+  setGlobal("setImmediate", ((
+    fn: (...args: unknown[]) => void,
+    ...args: unknown[]
+  ) => setTimeout(() => fn(...(args as unknown[])), 0)) as unknown);
+}
+
+import { jest, beforeAll, afterAll, afterEach } from "@jest/globals";
+// Verify hook availability (kept minimal)
+const TEST_VERBOSE = process.env.TEST_VERBOSE === "1" || false;
+const debugLog = (...args: unknown[]) => {
+  if (TEST_VERBOSE) console.debug(...(args as unknown[]));
+};
+
+try {
+  console.warn("SETUP_TESTS: module loaded");
+} catch (_e) {
+  void _e; /* ignore */
+}
+
+debugLog(
+  "SETUP_TESTS: hooks -> beforeAll:",
+  typeof beforeAll,
+  "global.beforeAll:",
+  typeof (globalThis as any).beforeAll,
+);
+// Delay importing MSW until after early polyfills (setupFiles) run
+let server: unknown;
+let mswReady = false;
+
+declare global {
+  var localStorage: Storage;
+  var sessionStorage: Storage;
+  var console: Console;
+}
+
+// Augment Console with a non-standard `error` helper used in test setup
+declare global {
+  interface Console {
+    // Keep signature compatible with standard Console.error
+    error(...data: unknown[]): void;
+  }
+}
+
+// Ensure fetch exists; if not, provide a Jest mock (MSW will set up an implementation)
+if (!global.fetch) {
+  // jest.fn() typing is not compatible with the global fetch signature; coerce
+  // to any for test setup.
+  (global as any).fetch = jest.fn() as any;
+}
+
+// Provide a lightweight NextRequest shim for tests: many tests construct
+// NextRequest objects directly and only need a minimal subset of the
+// interface (url, method, headers, json/text helpers). Use a small shim
+// rather than the real Next.js Request to avoid environment incompatibilities.
+(global as any).Request = class PolyRequest {
+  url: string;
+  method: string;
+  headers: Headers;
+  body: unknown;
+  constructor(input: unknown, init: Record<string, unknown> = {}) {
+    const _url =
+      typeof input === "string"
+        ? input
+        : (input && ((input as any).url || String(input))) ||
+          "http://localhost";
+    Object.defineProperty(this, "url", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: _url,
+    });
+    Object.defineProperty(this, "method", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: (init && init.method) || "GET",
+    });
+    Object.defineProperty(this, "headers", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: new (global as any).Headers(
+        init && init.headers ? init.headers : {},
+      ),
+    });
+    Object.defineProperty(this, "body", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: init && init.body ? init.body : null,
+    });
+  }
+  clone() {
+    return new (global as any).Request(this.url, {
+      method: this.method,
+      headers: this.headers,
+      body: this.body,
+    });
+  }
+  async json() {
+    if (!this.body) return null;
+    if (typeof this.body === "string") {
+      try {
+        return JSON.parse(this.body);
+      } catch {
+    }
+    return this.body;
+  }
+  async text() {
+    return this.body ? String(this.body) : "";
+  }
+} as any;
+
+(global as any).NextRequest = class NextRequestShim {
+  url: string;
+  method: string;
+  headers: Headers;
+  body: unknown;
+  constructor(url: unknown, init: Record<string, unknown> = {}) {
+    const _url =
+      typeof url === "string"
+        ? url
+        : (url && ((url as any).url || String(url))) || "http://localhost";
+    Object.defineProperty(this, "url", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: _url,
+    });
+    Object.defineProperty(this, "method", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: (init && init.method) || "GET",
+    });
+    Object.defineProperty(this, "headers", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: new (global as any).Headers(
+        init && init.headers ? init.headers : {},
+      ),
+    });
+    Object.defineProperty(this, "body", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: init && init.body ? init.body : null,
+    });
+  }
+  async json() {
+    if (!this.body) return null;
+    if (typeof this.body === "string") {
+      try {
+        return JSON.parse(this.body);
+      } catch {
+    }
+    return this.body;
+  }
+  async text() {
+    return this.body ? String(this.body) : "";
+  }
+} as any;
+
+// Minimal NextResponse shim for tests that call NextResponse.json()
+if (typeof (global as any).NextResponse === "undefined") {
+  (global as any).NextResponse = {
+    json(body: unknown, opts: Record<string, unknown> = {}) {
+      // Return a plain object that mimics the minimal interface used in tests
+      const status = Number(
+        (opts && (opts as Record<string, unknown>).status) ?? 200,
+      );
+      const headersObj =
+        ((opts && (opts as Record<string, unknown>).headers) as Record<
+          string,
+          unknown
+        >) || {};
+      return {
+        status,
+        ok: status >= 200 && status < 300,
+        json: async () => body,
+        // also support text for completeness
+        text: async () =>
+          typeof body === "string" ? body : JSON.stringify(body),
+        headers: headersObj,
+      } as any;
+    },
+  } as any;
+}
+
+// MSW server lifecycle: initialize at module load so interceptors are active
+// before unknown test modules run. When running under Node (no `window`) we skip
+// MSW initialization to avoid ESM/loader issues and unnecessary browser
+// polyfills for node-only integration tests.
+let mswInitPromise: Promise<unknown>;
+if (typeof window === "undefined") {
+  debugLog(
+    "SETUP_TESTS: detected Node test environment; skipping MSW initialization",
+  );
+  mswInitPromise = Promise.resolve();
+  // Provide a minimal server object so downstream logic can safely call methods
+  server = {
+    use: () => undefined,
+    listen: () => undefined,
+    close: () => undefined,
+    resetHandlers: () => undefined,
+  } as any;
+  // Expose readiness promise for compatibility
+  setGlobal("__MSW_READY__", mswInitPromise);
+} else {
+  // Initialize MSW only in environments that look like browsers/jsdom
+  mswInitPromise = (async function initializeMswAtLoad() {
+    debugLog("SETUP_TESTS: initializing MSW at module load");
+    // Ensure stream polyfills are available in this module scope before importing MSW
+    try {
+      // Use dynamic import so ESM loaders handle the module correctly in test environments
+      const ws = await import("web-streams-polyfill");
+      const TransformStream = (ws as any).TransformStream;
+      const ReadableStream = (ws as any).ReadableStream;
+      const WritableStream = (ws as any).WritableStream;
+      if (typeof (global as any).TransformStream === "undefined")
+        (global as any).TransformStream = TransformStream;
+      if (typeof (global as any).ReadableStream === "undefined")
+        (global as any).ReadableStream = ReadableStream;
+      if (typeof (global as any).WritableStream === "undefined")
+        (global as any).WritableStream = WritableStream;
+      if (typeof globalThis !== "undefined") {
+        if (typeof (globalThis as any).TransformStream === "undefined")
+          (globalThis as any).TransformStream = TransformStream;
+      }
+    } catch (_e) {
+      void _e; /* ignore */
+    }
+
+    // MSW readiness flag (used by the fetch fallback)
+
+    try {
+      // Dynamically import MSW to let the ESM loader handle its deps.
+      debugLog("SETUP_TESTS: importing msw/node...");
+      const msw = await import("msw/node");
+      debugLog("SETUP_TESTS: imported msw/node successfully");
+      const handlersMod = await import("./mocks/handlers");
+      debugLog(
+        "SETUP_TESTS: imported handlers module",
+        Object.keys(handlersMod),
+      );
+      const { server: importedServer } = await import("./mocks/server");
+      debugLog("SETUP_TESTS: imported server module");
+
+      // Support both async getter and synchronous exports
+      let handlers: unknown[] = [];
+      if (typeof handlersMod.getHandlers === "function") {
+        try {
+          debugLog("SETUP_TESTS: invoking handlersMod.getHandlers()");
+          handlers = await (handlersMod as any).getHandlers();
+          debugLog("SETUP_TESTS: handlers resolved length=", handlers.length);
+        } catch (_err) {
+          void _err; /* fail fast */
+          (globalThis.console as any)?.error?.(
+            "SETUP_TESTS: handlersMod.getHandlers() threw:",
+            _err,
+          );
+          throw _err;
+        }
+      } else {
+        handlers =
+          (
+            handlersMod as unknown as {
+              handlers?: unknown[];
+              default?: unknown[];
+            }
+          ).handlers ||
+          (
+            handlersMod as unknown as {
+              handlers?: unknown[];
+              default?: unknown[];
+            }
+          ).default ||
+          [];
+        debugLog("SETUP_TESTS: handlers (sync) length=", handlers.length);
+      }
+
+      // Register handlers on the shared server and start it
+      debugLog("SETUP_TESTS: registering handlers on server", handlers.length);
+      if ((handlers as unknown[]).length)
+        (
+          importedServer as unknown as { use: (...args: unknown[]) => void }
+        ).use(...(handlers as unknown[]));
+      // Log unhandled requests to aid debugging when handlers don't match. By
+      // default we suppress these unless explicitly enabled in CI/dev by
+      // setting SHOW_MSW_UNHANDLED=1.
+      importedServer.listen({
+        onUnhandledRequest: (_req: unknown) => {
+          try {
+            const _req = _req as unknown as { method?: string; url?: unknown };
+            const urlStr = String(req.url || "");
+            if (process.env.SHOW_MSW_UNHANDLED === "1") {
+              (globalThis.console as any)?.error?.(
+                "MSW UNHANDLED REQUEST:",
+                req.method,
+                urlStr,
+              );
+            } else {
+              debugLog(
+                "MSW UNHANDLED REQUEST (suppressed):",
+                req.method,
+                urlStr,
+              );
+            }
+          } catch (_err) {
+            void _err; /* ignore malformed request */
+          }
+        },
+      });
+      debugLog("SETUP_TESTS: server.listen() called");
+      server = importedServer;
+      debugLog(
+        "SETUP_TESTS: MSW initialized; handlers registered",
+        handlers.length,
+      );
+    } catch (_e) {
+      // Log errors to surface them in CI/dev runs
+      (globalThis.console as any)?.error?.(
+        "setupTests failed to initialize MSW:",
+        _e,
+      );
+      // Fallback: if MSW cannot be initialized (ESM/loader issues), install a
+      // minimal fetch-based mock so tests don't hit the network. This mirrors
+      // the most common handlers used in tests.
+      (globalThis.console as any)?.error?.(
+        "SETUP_TESTS: Falling back to simple fetch mock server for tests",
+      );
+
+      const fallbackHandlers = [
+        {
+          method: "GET",
+          path: "/api/qmoi/status",
+          handler: async () =>
+            new Response(
+              JSON.stringify({
+                status: "OK",
+                last_check: "2024-06-01T12:00:00Z",
+                mutation_count: 5,
+                logs: ["Log 1", "Log 2"],
+              }),
+              {
+                status: 200,
+                headers: { "Content-Type": "application/json" },
+              },
+            ),
+        },
+        {
+          method: "POST",
+          path: "/api/qmoi/payload",
+          handler: async (_req: unknown) => {
+            const url =
+              typeof _req === "string"
+                ? new URL(_req, "http://localhost")
+                : (_req as unknown as { url?: string })?.url ||
+                  "http://localhost";
+            const q =
+              typeof url === "string" ? new URL(url, "http://localhost") : url;
+            const action =
+              (q as any).searchParams && (q as any).searchParams.has("qfix")
+                ? "QFix"
+                : (q as any).searchParams &&
+                    (q as any).searchParams.has("qoptimize")
+                  ? "QOptimize"
+                  : (q as any).searchParams &&
+                      (q as any).searchParams.has("qsecure")
+                    ? "QSecure"
+                    : "Unknown";
+            return new Response(JSON.stringify({ message: `${action} done` }), {
+              status: 200,
+              headers: { "Content-Type": "application/json" },
+            });
+          },
+        },
+      ];
+
+      // Replace global.fetch with a simple router that matches the fallback handlers.
+      try {
+        const originalFetch = getGlobal<unknown>("fetch");
+        setGlobal("fetch", async function fetchFallback(
+          input: unknown,
+          init: unknown,
+        ) {
+          try {
+            const url =
+              typeof input === "string"
+                ? input
+                : (input as unknown as { url?: string })?.url || "";
+            const u = new URL(url, "http://localhost");
+            const method =
+              (init as unknown as { method?: string })?.method || "GET";
+            for (const h of fallbackHandlers) {
+              const handler = h as unknown as {
+                method: string;
+                path: string;
+                handler: (arg?: unknown) => Promise<Response> | Response;
+              };
+              if (handler.method === method && handler.path === u.pathname) {
+                return handler.handler(u);
+              }
+            }
+          } catch (er) {
+            // ignore parsing errors and fall through to original fetch
+          }
+          return (
+            originalFetch as unknown as (
+              ...args: unknown[]
+            ) => Promise<Response>
+          ).apply(globalThis, [input, init]);
+        } as unknown);
+      } catch (er) {
+        (globalThis.console as any)?.error?.(
+          "SETUP_TESTS: failed to install fetch fallback:",
+          er,
+        );
+      }
+
+      // Provide a minimal server object with the same interface used elsewhere
+      server = {
+        use: () => undefined,
+        listen: () => undefined,
+        close: () => undefined,
+        resetHandlers: () => undefined,
+      } as unknown;
+    }
+  })();
+}
+
+// Expose readiness promise so tests can explicitly await MSW initialization
+setGlobal("__MSW_READY__", mswInitPromise);
+
+// Attempt an early reset of mock prisma stores at module load. This ensures
+// a clean in-memory DB even if other modules imported the mock before the
+// jest lifecycle hooks ran.
+try {
+  import("@/lib/db/prisma")
+    .then((mod) => {
+      const maybePrisma = (mod && (mod as any).default) || mod;
+      try {
+        if (
+          maybePrisma &&
+          typeof (maybePrisma as any).resetMockDb === "function"
+        ) {
+          (maybePrisma as any).resetMockDb();
+        } else if (
+          maybePrisma &&
+          (maybePrisma as any).prisma &&
+          typeof (maybePrisma as any).prisma.resetMockDb === "function"
+        ) {
+          (maybePrisma as any).prisma.resetMockDb();
+        } else if (
+          maybePrisma &&
+          (maybePrisma as any).prisma &&
+          typeof (maybePrisma as any).prisma.__resetMockStores === "function"
+        ) {
+          (maybePrisma as any).prisma.__resetMockStores();
+        }
+      } catch {
+    })
+    .catch(() => {});
+} catch {
+
+// Ensure Jest waits for MSW to finish initializing before unknown tests run.
+// This ensures XHR requests (which bypass our fetch wrapper) won't race ahead.
+beforeAll(async () => {
+  await mswInitPromise;
+  debugLog("SETUP_TESTS: msw ready (awaited in beforeAll)");
+  // Seed mock-prisma stores with minimal data used by admin and wallet tests
+  try {
+    const maybePrismaModule = await import("@/lib/db/prisma");
+    const maybePrisma =
+      (maybePrismaModule && (maybePrismaModule as any).default) ||
+      maybePrismaModule;
+    const stores =
+      (maybePrisma &&
+        (maybePrisma as any).prisma &&
+        (maybePrisma as any).prisma.__stores) ||
+      (maybePrisma && (maybePrisma as any).__stores) ||
+      null;
+    if (stores) {
+      try {
+        if (!stores.user) stores.user = new Map();
+        if (!stores.wallet) stores.wallet = new Map();
+        if (!stores.transaction) stores.transaction = new Map();
+      } catch {
+      const now = new Date().toISOString();
+      if (stores.user && stores.user.size === 0) {
+        stores.user.set("user_admin@example.com", {
+          id: "user_admin@example.com",
+          email: "admin@example.com",
+          username: "admin",
+          name: "Admin",
+          role: "admin",
+          createdAt: now,
+          updatedAt: now,
+        });
+      }
+      if (stores.wallet && stores.wallet.size === 0) {
+        stores.wallet.set("wallet_1", {
+          id: "wallet_1",
+          userId: "user_admin@example.com",
+          currency: "USD",
+          balance: 1000,
+          publicKey: null,
+          createdAt: now,
+          updatedAt: now,
+        });
+      }
+      if (stores.transaction && stores.transaction.size === 0) {
+        stores.transaction.set("tx_1", {
+          id: "tx_1",
+          walletId: "wallet_1",
+          amount: 1000,
+          type: "deposit",
+          status: "completed",
+          timestamp: now,
+        });
+      }
+    }
+  } catch {
+});
+
+// Reset mock DB stores before each test to ensure isolation between tests
+beforeEach(async () => {
+  try {
+    // Force-clear the global mock-prisma stores directly to avoid cases
+    // where module-scoped proxies hold stale references.
+    try {
+      const G = globalThis as unknown as Record<string, unknown>;
+      if (G.__qmoi_mock_prisma_stores) {
+        for (const k of Object.keys(G.__qmoi_mock_prisma_stores)) {
+          try {
+            const s = G.__qmoi_mock_prisma_stores[k];
+            if (s && typeof s.clear === "function") s.clear();
+          } catch {
+        }
+      }
+    } catch {
+    try {
+      console.warn("SETUP_TESTS: beforeEach - resetting mock stores");
+    } catch {
+    const gdb = (global as any).__qmoi_db;
+    // Primary: reset mock prisma if available
+    try {
+      if (gdb && gdb.prisma && typeof gdb.prisma.resetMockDb === "function") {
+        gdb.prisma.resetMockDb();
+      } else if (
+        gdb &&
+        gdb.prisma &&
+        typeof gdb.prisma.__resetMockStores === "function"
+      ) {
+        gdb.prisma.__resetMockStores();
+      }
+      // Defensive: if __stores map exposed, clear each map
+      if (gdb && gdb.prisma && gdb.prisma.__stores) {
+        try {
+          const stores = gdb.prisma.__stores;
+          for (const k of Object.keys(stores)) {
+            try {
+              stores[k].clear();
+            } catch {
+          }
+        } catch {
+      }
+    } catch {
+    // Secondary: clear any in-memory walletService stores used by fallback db shim
+    try {
+      try {
+        const maybeDbModule = await import("@/lib/db/prisma");
+        const maybeDb =
+          (maybeDbModule && (maybeDbModule as any).default) || maybeDbModule;
+        // Prefer top-level reset helper if available
+        try {
+          if (maybeDb && typeof (maybeDb as any).resetMockDb === "function") {
+            (maybeDb as any).resetMockDb();
+          } else if (
+            maybeDb &&
+            (maybeDb as any).prisma &&
+            typeof (maybeDb as any).prisma.resetMockDb === "function"
+          ) {
+            (maybeDb as any).prisma.resetMockDb();
+          }
+        } catch {
+        if (
+          maybeDb &&
+          (maybeDb as any).db &&
+          (maybeDb as any).db.walletService &&
+          (maybeDb as any).db.walletService._store
+        ) {
+          try {
+            const s = (maybeDb as any).db.walletService._store;
+            if (s && s.wallets && typeof s.wallets.clear === "function")
+              s.wallets.clear();
+            if (
+              s &&
+              s.transactions &&
+              typeof s.transactions.clear === "function"
+            )
+              s.transactions.clear();
+          } catch {
+        }
+      } catch {
+    } catch {
+    // Debug: print mock store counts to help diagnose pre-existing data
+    try {
+      try {
+        const modModule = await import("@/lib/db/prisma");
+        const mod = (modModule && (modModule as any).default) || modModule;
+        const stores =
+          (mod && (mod as any).prisma && (mod as any).prisma.__stores) ||
+          (mod && (mod as any).__stores) ||
+          null;
+        if (stores) {
+          const counts: Record<string, number> = {};
+          try {
+            for (const k of Object.keys(stores)) {
+              const s = stores[k];
+              counts[k] = s && typeof s.size === "number" ? s.size : 0;
+            }
+          } catch {
+          try {
+            const sampleUsers =
+              (stores.user &&
+                Array.from(stores.user.values())
+                  .slice(0, 5)
+                  .map((u: unknown) => u && (u as any).email)) ||
+              [];
+            console.warn(
+              "SETUP_TESTS: mock store counts ->",
+              counts,
+              "sampleUsers=",
+              sampleUsers,
+            );
+          } catch {
+        }
+      } catch {
+    } catch {
+  } catch {
+  try {
+    console.warn("SETUP_TESTS: beforeEach - reset complete");
+  } catch {
+});
+
+// Ensure a minimal global Response implementation exists (used by NextResponse plumbing)
+try {
+  const needsImpl =
+    typeof (global as any).Response === "undefined" ||
+    typeof (global as any).Response.prototype.json !== "function";
+  if (needsImpl) {
+    class ResponseMock {
+      _body: unknown;
+      status: number;
+      headers: unknown;
+      constructor(body: unknown = null, init: Record<string, unknown> = {}) {
+        this._body = body;
+        this.status = Number((init as Record<string, unknown>)?.status ?? 200);
+        const headersInit =
+          ((init as Record<string, unknown>)?.headers as Record<
+            string,
+            unknown
+          >) || {};
+        const HeadersCtor = getGlobal<unknown>("Headers") as unknown as new (
+          h?: unknown,
+        ) => unknown;
+        this.headers = new HeadersCtor(headersInit);
+      }
+      async json() {
+        if (
+          this._body === null ||
+          this._body === undefined ||
+          this._body === ""
+        )
+          return null;
+        try {
+          return JSON.parse(String(this._body));
+        } catch (_e) {
+          void _e;
+          return this._body;
+        }
+      }
+      async text() {
+        if (this._body === null || this._body === undefined) return "";
+        return typeof this._body === "string"
+          ? this._body
+          : JSON.stringify(this._body);
+      }
+      static json(body: unknown, init: Record<string, unknown> = {}) {
+        return new ResponseMock(JSON.stringify(body), init);
+      }
+    }
+    setGlobal("Response", ResponseMock as unknown);
+  } else if (
+    getGlobal<unknown>("Response") &&
+    typeof (getGlobal<unknown>("Response") as any).json !== "function"
+  ) {
+    (getGlobal<unknown>("Response") as any).json = function (
+      body: unknown,
+      init: Record<string, unknown> = {},
+    ) {
+      const headersObj =
+        ((init && (init as Record<string, unknown>).headers) as Record<
+          string,
+          unknown
+        >) || {};
+      const RespCtor = getGlobal<unknown>("Response") as unknown as new (
+        s: string,
+        o?: Record<string, unknown>,
+      ) => unknown;
+      return new RespCtor(JSON.stringify(body), {
+        status: Number((init as Record<string, unknown>)?.status ?? 200),
+        headers: { "Content-Type": "application/json", ...headersObj },
+      });
+    } as unknown;
+  }
+} catch {
+
+// Install a default jest `fetch` mock if one is not already present. This
+// provides sensible default responses for external QMOI calls and local
+// endpoints so tests can assert `fetch` usage reliably.
+try {
+  const ResponseCtor = getGlobal<unknown>("Response") as unknown as new (
+    s: string,
+    o?: Record<string, unknown>,
+  ) => unknown;
+  const makeJson = (obj: unknown, status = 200) =>
+    new ResponseCtor(JSON.stringify(obj), {
+      status,
+      headers: { "Content-Type": "application/json" },
+    });
+
+  if (
+    !getGlobal("fetch") ||
+    !(getGlobal("fetch") as unknown as { mock?: unknown }).mock
+  ) {
+    setGlobal(
+      "fetch",
+      jest.fn(async (input: unknown, init?: unknown) => {
+        const toUrlString = (v: unknown) => {
+          if (typeof v === "string") return v;
+          try {
+            const obj = v as { url?: unknown; toString?: () => string };
+            if (obj.url) return String(obj.url);
+            if (typeof obj.toString === "function") return obj.toString();
+          } catch {
+            /* ignore */
+          }
+          return "";
+        };
+        const urlStr = toUrlString(input);
+        try {
+          const u = new URL(urlStr, "http://localhost");
+          if (
+            u.pathname.includes("/v1/chat/completions") ||
+            urlStr.includes("v1/chat/completions")
+          ) {
+            return makeJson({
+              id: "mock_resp",
+              choices: [
+                { message: { role: "assistant", content: "mocked response" } },
+              ],
+            });
+          }
+          // Admin endpoints (basic auth enforcement based on Authorization header)
+          if (u.pathname.startsWith("/api/admin")) {
+            // Accept Authorization header passed either via `init.headers` or
+            // via a Request-like `input.headers` object (Headers instance or plain object).
+            const headersSource =
+              (init as unknown as { headers?: unknown })?.headers ??
+              (input as unknown as { headers?: unknown })?.headers ??
+              {};
+            let authHeader = "";
+            try {
+              const accessor = headersSource as unknown as {
+                get?: (k: string) => unknown;
+              };
+              if (accessor && typeof accessor.get === "function") {
+                authHeader = String(
+                  accessor.get!("authorization") ||
+                    accessor.get!("Authorization") ||
+                    "",
+                );
+              } else if (headersSource && typeof headersSource === "object") {
+                const h = headersSource as Record<string, unknown>;
+                authHeader = String(
+                  h["authorization"] || h["Authorization"] || "",
+                );
+              }
+            } catch {
+            if (!authHeader)
+              return new ResponseCtor(
+                JSON.stringify({ _error: "Unauthorized" }),
+                { status: 401 },
+              );
+
+            // Try to decode JWT (without verification) to inspect role for admin checks
+            let isAdmin = false;
+            try {
+              const tokenRaw = String(authHeader).replace(/^Bearer\s+/i, "");
+              // eslint-disable-next-line @typescript-eslint/no-require-imports
+              // eslint-disable-next-line @typescript-eslint/no-require-imports
+              const jwt = require("jsonwebtoken");
+              const payload = jwt.decode(tokenRaw) || {};
+              if (
+                payload &&
+                String((payload as unknown as { role?: unknown })?.role) ===
+                  "admin"
+              )
+                isAdmin = true;
+            } catch {
+
+            if (!isAdmin)
+              return new ResponseCtor(
+                JSON.stringify({ _error: "Invalid request" }),
+                { status: 403 },
+              );
+
+            // Simple admin responses for authorized admin users
+            if (u.pathname === "/api/admin/monitoring") {
+              return makeJson({
+                monitoring: {
+                  timestamp: new Date().toISOString(),
+                  system: {
+                    uptime: 1,
+                    memory: { heapUsedMB: 10, heapTotalMB: 20 },
+                    nodeVersion: process.version,
+                    platform: process.platform,
+                  },
+                  performance: {},
+                  errors: {},
+                  healthScore: 95,
+                  status: "healthy",
+                },
+              });
+            }
+
+            if (u.pathname === "/api/admin/alerts") {
+              // support GET list and POST actions
+              if (
+                (init &&
+                  (init as unknown as { method?: string }).method === "POST") ||
+                false
+              ) {
+                const body =
+                  init && (init as unknown as { body?: unknown })?.body
+                    ? JSON.parse(
+                        String((init as unknown as { body?: unknown })!.body),
+                      )
+                    : {};
+                if (body && body.action === "acknowledge")
+                  return makeJson({ success: true, action: "acknowledge" });
+                return new ResponseCtor(
+                  JSON.stringify({ _error: "Invalid request" }),
+                  { status: 400 },
+                );
+              }
+              return makeJson({ alerts: [], count: 0, criticalCount: 0 });
+            }
+
+            if (u.pathname.startsWith("/api/admin/rate-limits")) {
+              if (
+                init &&
+                (init as unknown as { method?: string }).method === "PUT"
+              ) {
+                const body =
+                  init && (init as unknown as { body?: unknown })?.body
+                    ? JSON.parse(
+                        String((init as unknown as { body?: unknown })!.body),
+                      )
+                    : {};
+                if (body && body.action === "reset") {
+                  return makeJson({ success: true });
+                }
+                if (body && typeof body.newLimit === "number") {
+                  return makeJson({ success: true, newLimit: body.newLimit });
+                }
+              }
+              return makeJson({
+                config: { defaultLimit: 100 },
+                currentUsage: [],
+              });
+            }
+
+            if (u.pathname.startsWith("/api/admin/audit-logs")) {
+              // Handle POST export with format
+              if (
+                init &&
+                (init as unknown as { method?: string }).method === "POST"
+              ) {
+                const body =
+                  init && (init as unknown as { body?: unknown })?.body
+                    ? JSON.parse(
+                        String((init as unknown as { body?: unknown })!.body),
+                      )
+                    : {};
+                if (body && body.format === "csv") {
+                  const csv = "id,timestamp,level,message\n";
+                  return new ResponseCtor(csv, {
+                    status: 200,
+                    headers: {
+                      "Content-Type": "text/csv",
+                      "Content-Disposition": "attachment; filename=export.csv",
+                    },
+                  });
+                }
+                if (body && body.format === "json") {
+                  const resp = new ResponseCtor(
+                    JSON.stringify({
+                      logs: [],
+                      pagination: { skip: 0, take: 10, total: 0 },
+                    }),
+                    {
+                      status: 200,
+                      headers: {
+                        "Content-Type": "application/json",
+                        "Content-Disposition":
+                          "attachment; filename=export.json",
+                      },
+                    },
+                  );
+                  return resp;
+                }
+                return new ResponseCtor(
+                  JSON.stringify({ _error: "Invalid request" }),
+                  { status: 400 },
+                );
+              }
+              return makeJson({
+                logs: [],
+                pagination: { skip: 0, take: 10, total: 0 },
+              });
+            }
+          }
+          if (u.pathname === "/api/qmoi/status")
+            return makeJson({
+              status: "OK",
+              last_check: new Date().toISOString(),
+              mutation_count: 5,
+              logs: ["Log 1", "Log 2"],
+            });
+          if (u.pathname === "/api/health") {
+            return makeJson({
+              status: "healthy",
+              checks: {
+                database: { status: "connected" },
+                memory: { heapUsedMB: 10, heapTotalMB: 20 },
+              },
+            });
+          }
+          if (u.pathname === "/api/qmoi/payload") {
+            const action =
+              u.searchParams &&
+              (u.searchParams.has("qfix") || u.searchParams.get("qfix"))
+                ? "QFix"
+                : u.searchParams &&
+                    (u.searchParams.has("qoptimize") ||
+                      u.searchParams.get("qoptimize"))
+                  ? "QOptimize"
+                  : u.searchParams &&
+                      (u.searchParams.has("qsecure") ||
+                        u.searchParams.get("qsecure"))
+                    ? "QSecure"
+                    : "Unknown";
+            return makeJson({ message: `${action} done` });
+          }
+        } catch {
+        return new ResponseCtor(JSON.stringify({ _error: "Invalid request" }), {
+          status: 404,
+        });
+      }) as unknown,
+    );
+  }
+} catch {
+
+// Wrap global.fetch so test code (and components) will wait for MSW to be ready
+try {
+  const originalFetch = global.fetch;
+  if (typeof originalFetch === "function") {
+    // Wrap with a jest.fn so tests can assert on `global.fetch` calls
+    setGlobal(
+      "fetch",
+      jest.fn(async (...args: unknown[]) => {
+        await mswInitPromise.catch(() => {});
+        try {
+          const input = args[0];
+          const url =
+            typeof input === "string"
+              ? input
+              : (input as unknown as { url?: string })?.url || "";
+          debugLog("FETCH CALL:", url);
+        } catch (_e) {
+          void _e;
+        }
+        return (
+          originalFetch as unknown as (...a: unknown[]) => Promise<Response>
+        ).apply(globalThis, args);
+      }) as unknown,
+    );
+  }
+} catch {
+
+afterEach(() => {
+  try {
+    if (server)
+      (server as unknown as { resetHandlers?: () => void }).resetHandlers?.();
+  } catch (_e) {
+    (globalThis.console as any)?.error?.(
+      "SETUP_TESTS: server.resetHandlers() failed:",
+      _e,
+    );
+  }
+});
+// Ensure we clear mock DB after each test as well to handle cases where
+// tests create data during execution and beforeEach might not run due to
+// unexpected ordering in some environments.
+afterEach(() => {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
+    const maybePrisma = require("../lib/db/prisma");
+    try {
+      if (maybePrisma && typeof maybePrisma.resetMockDb === "function")
+        maybePrisma.resetMockDb();
+      else if (
+        maybePrisma &&
+        maybePrisma.prisma &&
+        typeof maybePrisma.prisma.resetMockDb === "function"
+      )
+        maybePrisma.prisma.resetMockDb();
+      else if (
+        maybePrisma &&
+        maybePrisma.prisma &&
+        typeof maybePrisma.prisma.__resetMockStores === "function"
+      )
+        maybePrisma.prisma.__resetMockStores();
+    } catch {
+  } catch {
+});
+afterAll(() => {
+  try {
+    if (server) (server as unknown as { close?: () => void }).close?.();
+  } catch (_e) {
+    // Non-fatal: avoid failing the test run due to cleanup errors. If you'd
+    // like to see these details, set SHOW_MSW_UNHANDLED=1 to surface them.
+    console.warn("SETUP_TESTS: server.close() failed (suppressed):", _e);
+  }
+});
+
+// Mock sessionStorage
+const sessionStorageMock = {
+  getItem: jest.fn(),
+  setItem: jest.fn(),
+  removeItem: jest.fn(),
+  clear: jest.fn(),
+  key: jest.fn(),
+  length: 0,
+};
+global.sessionStorage = sessionStorageMock as unknown as Storage;
+
+// Mock console methods to reduce noise in tests
+// Ensure `error` exists on console (fall back to `console.error`)
+if (!console.error)
+  (console as unknown as { error?: (...args: unknown[]) => void }).error =
+    console.error;
+global.console = {
+  ...console,
+  log: jest.fn(),
+  debug: jest.fn(),
+  info: jest.fn(),
+  warn: jest.fn(),
+  // keep errors visible so setup failures surface in CI and dev runs
+  _error: console.error,
+};

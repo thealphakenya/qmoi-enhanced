@@ -5936,3 +5936,52 @@
 {"level": "info", "message": "Created or refreshed MATCHES.md", "timestamp": "2026-07-26T23:14:42Z"}
 {"level": "info", "message": "Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json", "timestamp": "2026-07-26T23:14:42Z"}
 {"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-07-26T23:14:42Z"}
+{"level": "info", "message": "Starting enhanced production Ollama autonomous agent pass", "timestamp": "2026-07-28T22:41:08Z"}
+{"level": "info", "message": "Autonomous loop iteration 1", "timestamp": "2026-07-28T22:41:08Z"}
+{"level": "info", "message": "Local helper server is responsive", "timestamp": "2026-07-28T22:41:08Z"}
+{"level": "info", "message": "Self-update check completed with no changes", "timestamp": "2026-07-28T22:41:08Z"}
+{"level": "info", "message": "Merged 628 files from archive directories", "timestamp": "2026-07-28T22:41:47Z"}
+{"level": "info", "message": "Created or refreshed Trade.md", "timestamp": "2026-07-28T22:41:47Z"}
+{"level": "info", "message": "Created or refreshed ollama.md", "timestamp": "2026-07-28T22:41:47Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODEL.md", "timestamp": "2026-07-28T22:41:47Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODELTESTS.md", "timestamp": "2026-07-28T22:41:47Z"}
+{"level": "info", "message": "Created or refreshed ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-28T22:41:47Z"}
+{"level": "info", "message": "Created or refreshed ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-28T22:41:47Z"}
+{"level": "info", "message": "Created or refreshed MATCHES.md", "timestamp": "2026-07-28T22:41:47Z"}
+{"level": "info", "message": "Starting enhanced production Ollama autonomous agent pass", "timestamp": "2026-07-28T22:46:32Z"}
+{"level": "info", "message": "Autonomous loop iteration 1", "timestamp": "2026-07-28T22:46:32Z"}
+{"level": "info", "message": "Local helper server is responsive", "timestamp": "2026-07-28T22:46:32Z"}
+{"level": "info", "message": "Backed up self script to /workspaces/qmoi-enhanced/.backup/self/ollama_autonomous_agent.20260728T224632Z.bak", "timestamp": "2026-07-28T22:46:32Z"}
+{"level": "info", "message": "Applied self-update improvements to the autonomous agent script", "timestamp": "2026-07-28T22:46:32Z"}
+{"level": "info", "message": "Self-update detected and applied", "timestamp": "2026-07-28T22:46:32Z"}
+{"level": "info", "message": "Merged 629 files from archive directories", "timestamp": "2026-07-28T22:47:01Z"}
+{"level": "info", "message": "Created or refreshed Trade.md", "timestamp": "2026-07-28T22:47:01Z"}
+{"level": "info", "message": "Created or refreshed ollama.md", "timestamp": "2026-07-28T22:47:01Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODEL.md", "timestamp": "2026-07-28T22:47:01Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODELTESTS.md", "timestamp": "2026-07-28T22:47:01Z"}
+{"level": "info", "message": "Created or refreshed ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-28T22:47:01Z"}
+{"level": "info", "message": "Created or refreshed ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-28T22:47:01Z"}
+{"level": "info", "message": "Created or refreshed MATCHES.md", "timestamp": "2026-07-28T22:47:01Z"}
+{"level": "info", "message": "Starting enhanced production Ollama autonomous agent pass", "timestamp": "2026-07-28T22:49:23Z"}
+{"level": "info", "message": "Local helper server is responsive", "timestamp": "2026-07-28T22:49:24Z"}
+{"level": "info", "message": "Self-update check completed with no changes", "timestamp": "2026-07-28T22:49:24Z"}
+{"level": "info", "message": "Merged 629 files from archive directories", "timestamp": "2026-07-28T22:49:59Z"}
+{"level": "info", "message": "Created or refreshed Trade.md", "timestamp": "2026-07-28T22:49:59Z"}
+{"level": "info", "message": "Created or refreshed ollama.md", "timestamp": "2026-07-28T22:49:59Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODEL.md", "timestamp": "2026-07-28T22:49:59Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODELTESTS.md", "timestamp": "2026-07-28T22:49:59Z"}
+{"level": "info", "message": "Created or refreshed ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-28T22:49:59Z"}
+{"level": "info", "message": "Created or refreshed ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-28T22:49:59Z"}
+{"level": "info", "message": "Created or refreshed MATCHES.md", "timestamp": "2026-07-28T22:49:59Z"}
+{"level": "info", "message": "Updated JOURNEY MAP TRACKS in /workspaces/qmoi-enhanced/resumefromhere.txt", "timestamp": "2026-07-28T22:50:26Z"}
+{"level": "info", "message": "Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json", "timestamp": "2026-07-28T22:50:26Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-07-28T22:50:26Z"}
+{"level": "info", "message": "Updated JOURNEY MAP TRACKS in /workspaces/qmoi-enhanced/resumefromhere.txt", "timestamp": "2026-07-28T22:51:30Z"}
+{"level": "info", "message": "Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json", "timestamp": "2026-07-28T22:51:30Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-07-28T22:51:30Z"}
+{"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260728T225329Z.bak", "timestamp": "2026-07-28T22:53:29Z"}
+{"level": "info", "message": "Processing 4955 pending items...", "timestamp": "2026-07-28T22:53:29Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /workspaces/qmoi-enhanced/resumefromhere.txt", "timestamp": "2026-07-28T22:55:31Z"}
+{"level": "info", "message": "Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json", "timestamp": "2026-07-28T22:55:31Z"}
+{"level": "info", "message": "Wrote pending report snapshot to OLLAMA_PENDING_REPORT.md", "timestamp": "2026-07-28T22:55:31Z"}
+{"level": "info", "message": "Scanning route definitions from /workspaces/qmoi-enhanced", "timestamp": "2026-07-28T22:55:31Z"}

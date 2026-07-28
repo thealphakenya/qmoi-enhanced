@@ -1547,6 +1547,72 @@ def _verify_required_artifacts(root: Path | None = None) -> List[str]:
     _emit_status(f"Verified required artifacts: {', '.join(verified)}", level="info")
     return verified
 
+def scan_for_work(root: Path | None = None) -> List[str]:
+    """Scan the repository for actionable work items.
+
+    Returns a list of pending items. Items can be:
+      - relative file paths (strings) for files that contain TODO/FIXME markers
+      - 'MISSING_REQUIRED_FILE:<name>' for missing high-level docs
+      - 'WORKFLOW_TOKEN_GAP:<path>' for workflows that reference secrets.GITHUB_TOKEN
+    """
+    target = Path(root or ROOT)
+    pending: List[str] = []
+    if not target.exists():
+        return pending
+
+    # Markers that indicate actionable work
+    markers = ["TODO", "FIXME", "placeholder", "TBD", "[PRODUCTION IMPLEMENTATION REQUIRED]"]
+
+    # Scan files for markers and include spec/config files
+    for path in sorted(target.rglob("**/*")):
+        try:
+            if not path.is_file() or _is_excluded_path(path, target):
+                continue
+            rel = str(path.relative_to(target))
+            # Include spec and config files by name/extension
+            if path.suffix.lower() in {".spec", ".ini", ".cfg", ".toml", ".yaml", ".yml", ".env"} or path.name.endswith(".spec"):
+                text = path.read_text(encoding="utf-8", errors="ignore")
+                if any(m.lower() in text.lower() for m in markers) or True:
+                    if rel not in pending:
+                        pending.append(rel)
+                    continue
+            # Check for workflow token gaps specially
+            if ".github/workflows/" in rel:
+                try:
+                    text = path.read_text(encoding="utf-8", errors="ignore")
+                    if "secrets.GITHUB_TOKEN" in text and "MY_CUSTOM_TOKEN" not in text:
+                        pending.append(f"WORKFLOW_TOKEN_GAP:{rel}")
+                except Exception:
+                    pass
+            # Generic marker scan for actionable comments
+            try:
+                text = path.read_text(encoding="utf-8", errors="ignore")
+            except Exception:
+                continue
+            if any(m.lower() in text.lower() for m in markers):
+                if rel not in pending:
+                    pending.append(rel)
+        except Exception:
+            continue
+
+    # Verify presence of high-level required docs and add MISSING_REQUIRED_FILE items
+    required_docs = [
+        "ALLHOOKSWEBHOOKS.md",
+        "API.md",
+        "ENDPOINTS.md",
+        "ROUTES.md",
+        "MERGE.md",
+        "DOCS.md",
+        "production.md",
+    ]
+    for name in required_docs:
+        p = target / name
+        if not p.exists() or p.stat().st_size == 0:
+            pending.append(f"MISSING_REQUIRED_FILE:{name}")
+
+    # Deduplicate and return
+    return list(dict.fromkeys(pending))
+
 def run_agent(root: Path | None = None) -> Dict[str, object]:
     target = Path(root or ROOT)
     if (target / "tests").exists():
