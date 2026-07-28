@@ -532,6 +532,53 @@ def _ensure_self_update_capabilities(root: Path | None = None) -> None:
     else:
         _emit_status("Self-update check completed with no changes", level="info")
 
+def _ensure_lib_production_ready(root: Path | None = None) -> List[str]:
+    """Validate that `lib/*.ts` production modules exist and appear production-ready.
+
+    Returns a list of status strings for each expected lib file.
+    """
+    target = Path(root or ROOT)
+    status: List[str] = []
+    lib_dir = target / "lib"
+    expected = {
+        "qmoi-bootstrap.ts": "QmoiBootstrap",
+        "qmoi-auto-setup-manager.ts": "QmoiAutoSetupManager",
+        "qmoi-automation-manager.ts": "QmoiAutomationManager",
+        "qmoi-background-autoscan.ts": "QmoiBackgroundAutoscan",
+    }
+    if not lib_dir.exists() or not lib_dir.is_dir():
+        status.append("lib_directory_missing")
+        _emit_status("lib directory missing; created by agent if needed", level="warning")
+        try:
+            lib_dir.mkdir(parents=True, exist_ok=True)
+        except Exception:
+            pass
+        return status
+
+    for fname, cls in expected.items():
+        p = lib_dir / fname
+        if not p.exists():
+            status.append(f"missing:{fname}")
+            continue
+        try:
+            txt = p.read_text(encoding="utf-8", errors="ignore")
+            if cls in txt and 'export' in txt:
+                status.append(f"ok:{fname}")
+            else:
+                status.append(f"no_export_marker:{fname}")
+        except Exception:
+            status.append(f"read_error:{fname}")
+
+    # persist a small status file for downstream automation and visibility
+    try:
+        marker = target / ".ollama_libs_status.json"
+        marker.write_text(json.dumps({"checked": True, "status": status,
+                          "ts": datetime.utcnow().isoformat()}), encoding="utf-8")
+    except Exception:
+        pass
+    _emit_status(f"Lib production readiness: {', '.join(status)}", level="info")
+    return status
+
 def _ensure_local_helper_server(port: int = 8080, host: str = "127.0.0.1", timeout: float = 5.0) -> bool:
     """Ensure the local QM OI helper server is available for verification tasks."""
     os.environ["QMOI_HELPER_AUTOSTART"] = "1"
@@ -1637,6 +1684,11 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
     _self_restart_if_updated(target)
     # Allow the autonomous agent to self-update before execution
     _ensure_self_update_capabilities(target)
+    # Ensure production-ready lib modules are present and record their status
+    try:
+        _ensure_lib_production_ready(target)
+    except Exception:
+        pass
     # Ensure the trigger workflow and directory docs exist for automated GitHub execution.
     _ensure_ollama_trigger_workflow(target)
     _ensure_directory_docs(target)
