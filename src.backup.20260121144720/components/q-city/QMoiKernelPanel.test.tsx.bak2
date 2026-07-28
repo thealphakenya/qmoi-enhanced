@@ -223,3 +223,15 @@ test("QMoiKernelPanel renders placeholder without crashing", () => {
   const { container } = render(<QMoiKernelPanel isMaster={false} />);
   expect(container).toBeTruthy();
 });
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/src.backup.20260121144720/components/q-city/QMoiKernelPanel.test.tsx.bak2 -->
+/* eslint-env jest, browser */
+import React from "react";
+import { render } from "@testing-library/react";
+import QMoiKernelPanel from "./QMoiKernelPanel";
+
+test("QMoiKernelPanel renders placeholder without crashing", () => {
+  const { container } = render(<QMoiKernelPanel isMaster={false} />);
+  expect(container).toBeTruthy();
+});

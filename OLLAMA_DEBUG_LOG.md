@@ -1,26 +1,5 @@
 # Ollama Debug Log
 
-- [2026-07-26T22:18:49Z] INFO: Created or refreshed ALLUI.md
-- [2026-07-26T22:18:49Z] INFO: Created or refreshed ALLFRONTEND.md
-- [2026-07-26T22:19:30Z] INFO: Created or refreshed ALLPORTS.md
-- [2026-07-26T22:19:55Z] INFO: Created or refreshed DOCS.md
-- [2026-07-26T22:19:55Z] INFO: Created or refreshed production.md
-- [2026-07-26T22:19:55Z] INFO: Created or refreshed productionenhanced.md
-- [2026-07-26T22:19:55Z] INFO: Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
-- [2026-07-26T22:19:55Z] INFO: Created or refreshed ollama.md
-- [2026-07-26T22:19:55Z] INFO: Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md
-- [2026-07-26T22:19:55Z] INFO: Run agent completed with 4 pending items
-- [2026-07-26T22:20:24Z] INFO: Updated JOURNEY MAP TRACKS in /workspaces/qmoi-enhanced/resumefromhere.txt
-- [2026-07-26T22:20:24Z] INFO: Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260726T222024Z.bak
-- [2026-07-26T22:20:24Z] INFO: Updated resumefromhere progress: /workspaces/qmoi-enhanced/resumefromhere.txt
-- [2026-07-26T22:20:24Z] INFO: Iteration 1: processed 0 items, 4 remaining
-- [2026-07-26T22:20:25Z] WARNING: No items processed in this iteration; stopping loop to avoid stall.
-- [2026-07-26T22:20:25Z] INFO: Autonomous loop stopped after 1 iterations; processed 0 items.
-- [2026-07-26T22:20:25Z] INFO: Auto-continue summary: {'iterations': 1, 'processed_total': 0, 'last_verification': None}
-- [2026-07-26T22:20:25Z] INFO: Local helper server is responsive
-- [2026-07-26T22:20:25Z] WARNING: Detected syntax issues in self script; attempting repair.
-- [2026-07-26T22:20:25Z] INFO: Backed up self script to /workspaces/qmoi-enhanced/.backup/self/ollama_autonomous_agent.20260726T222025Z.bak
-- [2026-07-26T22:20:25Z] WARNING: Self script repair did not produce valid syntax.
 - [2026-07-26T22:20:25Z] INFO: Backed up self script to /workspaces/qmoi-enhanced/.backup/self/ollama_autonomous_agent.20260726T222025Z.bak
 - [2026-07-26T22:20:25Z] INFO: Applied self-update improvements to the autonomous agent script
 - [2026-07-26T22:20:25Z] INFO: Self-update detected and applied
@@ -51,3 +30,24 @@
 - [2026-07-26T22:23:42Z] INFO: Created or refreshed ALLBACKEND.md
 - [2026-07-26T22:23:46Z] INFO: Created or refreshed ALLUI.md
 - [2026-07-26T22:23:46Z] INFO: Created or refreshed ALLFRONTEND.md
+- [2026-07-26T23:14:17Z] INFO: Starting enhanced production Ollama autonomous agent pass
+- [2026-07-26T23:14:17Z] INFO: Autonomous loop iteration 1
+- [2026-07-26T23:14:17Z] INFO: Local helper server is responsive
+- [2026-07-26T23:14:17Z] INFO: Backed up self script to /workspaces/qmoi-enhanced/.backup/self/ollama_autonomous_agent.20260726T231417Z.bak
+- [2026-07-26T23:14:17Z] INFO: Applied self-update improvements to the autonomous agent script
+- [2026-07-26T23:14:17Z] INFO: Self-update detected and applied
+- [2026-07-26T23:14:17Z] INFO: Updated directory doc with autonomous workflow integration: COMPONENTS.md
+- [2026-07-26T23:14:17Z] INFO: Updated directory doc with autonomous workflow integration: SRC.md
+- [2026-07-26T23:14:17Z] INFO: Updated directory doc with autonomous workflow integration: SCRIPTS.md
+- [2026-07-26T23:14:17Z] INFO: Updated directory doc with autonomous workflow integration: TESTS.md
+- [2026-07-26T23:14:17Z] INFO: Updated directory doc with autonomous workflow integration: WORKFLOWS.md
+- [2026-07-26T23:14:42Z] INFO: Merged 628 files from archive directories
+- [2026-07-26T23:14:42Z] INFO: Created or refreshed Trade.md
+- [2026-07-26T23:14:42Z] INFO: Created or refreshed ollama.md
+- [2026-07-26T23:14:42Z] INFO: Created or refreshed QMOIMODEL.md
+- [2026-07-26T23:14:42Z] INFO: Created or refreshed QMOIMODELTESTS.md
+- [2026-07-26T23:14:42Z] INFO: Created or refreshed ALLTESTSAUOTOTESTS.md
+- [2026-07-26T23:14:42Z] INFO: Created or refreshed ALLHOOKSWEBHOOKS.md
+- [2026-07-26T23:14:42Z] INFO: Created or refreshed MATCHES.md
+- [2026-07-26T23:14:42Z] INFO: Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json
+- [2026-07-26T23:14:42Z] INFO: Detected changes in resumefromhere.txt; refreshing execution plan.
