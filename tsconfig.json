@@ -19,7 +19,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@/components/*": ["./components/*"],
+      "@/components/*": ["./src/components/*"],
       "@/app/*": ["./app/*"],
       "@/services/*": ["./src/services/*"],
       "@/adapters/*": ["./src/adapters/*"],
@@ -36,12 +36,12 @@
     ],
     "strictNullChecks": true
   },
-  "include": [
+    "include": [
     "next-env.d.ts",
     "app/**/*",
     "pages/**/*",
     "src/**/*",
-    "components/**/*",
+    "src/components/**/*",
     "lib/**/*",
     "types/**/*",
     ".next/types/**/*.ts"
