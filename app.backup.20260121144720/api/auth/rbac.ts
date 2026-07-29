@@ -751,3 +751,59 @@ export function requireRole(roles: string[]) {
       }
     };
 }
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/api/auth/rbac.ts -->
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+
+import jwt from "jsonwebtoken";
+import { NextApiRequest, NextApiResponse } from "next";
+
+const JWT_SECRET = process.env.JWT_SECRET || "changeme";
+
+export function requireRole(roles: string[]) {
+  return (handler: (_req: NextApiRequest, _res: NextApiResponse) => unknown) =>
+    async (_req: NextApiRequest, _res: NextApiResponse) => {
+      const auth = _req.headers.authorization;
+      if (!auth || !auth.startsWith("Bearer "))
+        return _res.status(401).json({ _error: "No token" });
+      try {
+        const token = auth.slice(7);
+        const user = jwt.verify(token, JWT_SECRET) as any;
+        if (!roles.includes(user.role))
+          return _res.status(403).json({ _error: "Forbidden" });
+        (_req as any).user = user;
+        return handler(_req, _res);
+      } catch (e) {
+        return _res.status(401).json({ _error: "Invalid token" });
+      }
+    };
+}
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/api/auth/rbac.ts -->
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+
+import jwt from "jsonwebtoken";
+import { NextApiRequest, NextApiResponse } from "next";
+
+const JWT_SECRET = process.env.JWT_SECRET || "changeme";
+
+export function requireRole(roles: string[]) {
+  return (handler: (_req: NextApiRequest, _res: NextApiResponse) => unknown) =>
+    async (_req: NextApiRequest, _res: NextApiResponse) => {
+      const auth = _req.headers.authorization;
+      if (!auth || !auth.startsWith("Bearer "))
+        return _res.status(401).json({ _error: "No token" });
+      try {
+        const token = auth.slice(7);
+        const user = jwt.verify(token, JWT_SECRET) as any;
+        if (!roles.includes(user.role))
+          return _res.status(403).json({ _error: "Forbidden" });
+        (_req as any).user = user;
+        return handler(_req, _res);
+      } catch (e) {
+        return _res.status(401).json({ _error: "Invalid token" });
+      }
+    };
+}
