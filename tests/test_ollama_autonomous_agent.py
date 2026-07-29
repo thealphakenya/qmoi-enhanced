@@ -235,6 +235,24 @@ def test_write_live_notification_summary_creates_feed(tmp_path):
     assert "hello from ollama" in path.read_text(encoding="utf-8")
     assert "Ollama activity feed" in path.read_text(encoding="utf-8")
 
+
+def test_update_hook_and_webhook_manifests_records_discord_integration(tmp_path):
+    module = load_module()
+    workflow_dir = tmp_path / ".github" / "workflows"
+    workflow_dir.mkdir(parents=True, exist_ok=True)
+    (workflow_dir / "ollamatrigger.yml").write_text(
+        "name: Ollama trigger\nsteps:\n  - run: echo hi\n",
+        encoding="utf-8",
+    )
+
+    result = module.update_hook_and_webhook_manifests(tmp_path)
+
+    assert (tmp_path / "ALLHOOKSWEBHOOKS.md").exists()
+    assert (tmp_path / "WEBHOOKS.md").exists()
+    assert "Discord" in (tmp_path / "ALLHOOKSWEBHOOKS.md").read_text(encoding="utf-8")
+    assert result["all_hooks"].exists()
+    assert result["webhooks"].exists()
+
 # AUTOFIXED by Ollama at 2026-07-26T18:54:41.380965Z
 
 # AUTOFIXED by Ollama at 2026-07-26T18:57:34.420989Z
