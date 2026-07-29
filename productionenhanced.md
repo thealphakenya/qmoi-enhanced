@@ -166,6 +166,7 @@ This file records the enhancements applied during production replacement work.
 - MASTER_SYSTEM_DEPLOYMENT_REPORT.md
 - MASTER_VERIFICATION_COMPLETE.md
 - MERGE.md
+- MERGED_ARCHIVES_REPORT.md
 - MONITORING.md
 - MONITORING_API_DOCS.md
 - MONITORING_IMPLEMENTATION_GUIDE.md
