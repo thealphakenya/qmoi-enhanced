@@ -6293,3 +6293,26 @@
 {"level": "info", "message": "Detected 907 non-production implementation candidates; scheduling replacements.", "timestamp": "2026-07-29T02:33:02Z"}
 {"level": "info", "message": "Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260729T023806Z.bak", "timestamp": "2026-07-29T02:38:06Z"}
 {"level": "info", "message": "Processing 4951 pending items...", "timestamp": "2026-07-29T02:38:06Z"}
+{"level": "info", "message": "Starting enhanced production Ollama autonomous agent pass", "timestamp": "2026-07-29T04:22:11Z"}
+{"level": "info", "message": "Autonomous loop iteration 1", "timestamp": "2026-07-29T04:22:12Z"}
+{"level": "info", "message": "Local helper server is responsive", "timestamp": "2026-07-29T04:22:12Z"}
+{"level": "info", "message": "Backed up self script to /workspaces/qmoi-enhanced/.backup/self/ollama_autonomous_agent.20260729T042212Z.bak", "timestamp": "2026-07-29T04:22:12Z"}
+{"level": "info", "message": "Applied self-update improvements to the autonomous agent script", "timestamp": "2026-07-29T04:22:12Z"}
+{"level": "info", "message": "Self-update detected and applied", "timestamp": "2026-07-29T04:22:12Z"}
+{"level": "info", "message": "Lib production readiness: ok:qmoi-bootstrap.ts, ok:qmoi-auto-setup-manager.ts, ok:qmoi-automation-manager.ts, ok:qmoi-background-autoscan.ts", "timestamp": "2026-07-29T04:22:12Z"}
+{"level": "info", "message": "Rewrote ollamatrigger workflow to ensure manual dispatch and resume behavior.", "timestamp": "2026-07-29T04:22:12Z"}
+{"level": "info", "message": "Updated directory doc with autonomous workflow integration: WORKFLOWS.md", "timestamp": "2026-07-29T04:22:12Z"}
+{"level": "info", "message": "Merged 1864 files from archive directories", "timestamp": "2026-07-29T04:26:56Z"}
+{"level": "info", "message": "Created or refreshed ALLBACKEND.md", "timestamp": "2026-07-29T04:27:00Z"}
+{"level": "info", "message": "Created or refreshed ALLFRONTEND.md", "timestamp": "2026-07-29T04:27:00Z"}
+{"level": "info", "message": "Created or refreshed ALLUI.md", "timestamp": "2026-07-29T04:27:05Z"}
+{"level": "info", "message": "Created or refreshed ALLPORTS.md", "timestamp": "2026-07-29T04:27:50Z"}
+{"level": "info", "message": "Wrote archive merge report: MERGED_ARCHIVES_REPORT.md", "timestamp": "2026-07-29T04:27:50Z"}
+{"level": "info", "message": "Normalized resumefromhere.txt header at /workspaces/qmoi-enhanced/resumefromhere.txt", "timestamp": "2026-07-29T04:27:50Z"}
+{"level": "info", "message": "Created or refreshed Trade.md", "timestamp": "2026-07-29T04:27:50Z"}
+{"level": "info", "message": "Created or refreshed ollama.md", "timestamp": "2026-07-29T04:27:50Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODEL.md", "timestamp": "2026-07-29T04:27:50Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODELTESTS.md", "timestamp": "2026-07-29T04:27:50Z"}
+{"level": "info", "message": "Created or refreshed ALLTESTSAUOTOTESTS.md", "timestamp": "2026-07-29T04:27:50Z"}
+{"level": "info", "message": "Created or refreshed ALLHOOKSWEBHOOKS.md", "timestamp": "2026-07-29T04:27:50Z"}
+{"level": "info", "message": "Created or refreshed MATCHES.md", "timestamp": "2026-07-29T04:27:50Z"}

@@ -1,28 +1,5 @@
 # Ollama Debug Log
 
-- [2026-07-29T02:20:51Z] INFO: Updated ENDPOINTS.md
-- [2026-07-29T02:20:51Z] INFO: Updated ROUTES.md
-- [2026-07-29T02:20:51Z] INFO: Updated MERGE.md
-- [2026-07-29T02:20:51Z] INFO: Scanning repository for error markers under /workspaces/qmoi-enhanced
-- [2026-07-29T02:21:24Z] INFO: Collected 3460 error markers
-- [2026-07-29T02:21:24Z] INFO: Wrote remediation inventory to /workspaces/qmoi-enhanced/ALLERRORS.md
-- [2026-07-29T02:21:29Z] INFO: Created or refreshed ALLBACKEND.md
-- [2026-07-29T02:21:33Z] INFO: Created or refreshed ALLUI.md
-- [2026-07-29T02:21:33Z] INFO: Created or refreshed ALLFRONTEND.md
-- [2026-07-29T02:22:17Z] INFO: Created or refreshed ALLPORTS.md
-- [2026-07-29T02:22:44Z] INFO: Created or refreshed DOCS.md
-- [2026-07-29T02:22:44Z] INFO: Created or refreshed production.md
-- [2026-07-29T02:22:44Z] INFO: Created or refreshed productionenhanced.md
-- [2026-07-29T02:22:44Z] INFO: Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
-- [2026-07-29T02:22:44Z] INFO: Created or refreshed ollama.md
-- [2026-07-29T02:22:44Z] INFO: Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md
-- [2026-07-29T02:22:44Z] INFO: Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json
-- [2026-07-29T02:22:44Z] INFO: Run agent completed with 8 pending items
-- [2026-07-29T02:25:46Z] INFO: Updated JOURNEY MAP TRACKS in /workspaces/qmoi-enhanced/resumefromhere.txt
-- [2026-07-29T02:25:46Z] INFO: Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json
-- [2026-07-29T02:25:46Z] INFO: AUTO_PUSH is disabled; skipping git push.
-- [2026-07-29T02:25:46Z] INFO: Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260729T022546Z.bak
-- [2026-07-29T02:25:46Z] INFO: Updated resumefromhere progress: /workspaces/qmoi-enhanced/resumefromhere.txt
 - [2026-07-29T02:25:46Z] INFO: Iteration 1: processed 0 items, 8 remaining
 - [2026-07-29T02:25:46Z] WARNING: No items processed in this iteration; stopping loop to avoid stall.
 - [2026-07-29T02:25:46Z] INFO: Autonomous loop stopped after 1 iterations; processed 0 items.
@@ -51,3 +28,26 @@
 - [2026-07-29T02:33:02Z] INFO: Detected 907 non-production implementation candidates; scheduling replacements.
 - [2026-07-29T02:38:06Z] INFO: Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260729T023806Z.bak
 - [2026-07-29T02:38:06Z] INFO: Processing 4951 pending items...
+- [2026-07-29T04:22:11Z] INFO: Starting enhanced production Ollama autonomous agent pass
+- [2026-07-29T04:22:12Z] INFO: Autonomous loop iteration 1
+- [2026-07-29T04:22:12Z] INFO: Local helper server is responsive
+- [2026-07-29T04:22:12Z] INFO: Backed up self script to /workspaces/qmoi-enhanced/.backup/self/ollama_autonomous_agent.20260729T042212Z.bak
+- [2026-07-29T04:22:12Z] INFO: Applied self-update improvements to the autonomous agent script
+- [2026-07-29T04:22:12Z] INFO: Self-update detected and applied
+- [2026-07-29T04:22:12Z] INFO: Lib production readiness: ok:qmoi-bootstrap.ts, ok:qmoi-auto-setup-manager.ts, ok:qmoi-automation-manager.ts, ok:qmoi-background-autoscan.ts
+- [2026-07-29T04:22:12Z] INFO: Rewrote ollamatrigger workflow to ensure manual dispatch and resume behavior.
+- [2026-07-29T04:22:12Z] INFO: Updated directory doc with autonomous workflow integration: WORKFLOWS.md
+- [2026-07-29T04:26:56Z] INFO: Merged 1864 files from archive directories
+- [2026-07-29T04:27:00Z] INFO: Created or refreshed ALLBACKEND.md
+- [2026-07-29T04:27:00Z] INFO: Created or refreshed ALLFRONTEND.md
+- [2026-07-29T04:27:05Z] INFO: Created or refreshed ALLUI.md
+- [2026-07-29T04:27:50Z] INFO: Created or refreshed ALLPORTS.md
+- [2026-07-29T04:27:50Z] INFO: Wrote archive merge report: MERGED_ARCHIVES_REPORT.md
+- [2026-07-29T04:27:50Z] INFO: Normalized resumefromhere.txt header at /workspaces/qmoi-enhanced/resumefromhere.txt
+- [2026-07-29T04:27:50Z] INFO: Created or refreshed Trade.md
+- [2026-07-29T04:27:50Z] INFO: Created or refreshed ollama.md
+- [2026-07-29T04:27:50Z] INFO: Created or refreshed QMOIMODEL.md
+- [2026-07-29T04:27:50Z] INFO: Created or refreshed QMOIMODELTESTS.md
+- [2026-07-29T04:27:50Z] INFO: Created or refreshed ALLTESTSAUOTOTESTS.md
+- [2026-07-29T04:27:50Z] INFO: Created or refreshed ALLHOOKSWEBHOOKS.md
+- [2026-07-29T04:27:50Z] INFO: Created or refreshed MATCHES.md

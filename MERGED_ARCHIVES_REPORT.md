@@ -1,15 +1,10 @@
 # Merged archives report
 
-- Generated: 2026-07-29T02:29:15.380202Z
+- Generated: 2026-07-29T04:27:50.142663Z
 
 ## .
 - before-auto-merge-20251122T092741Z
-- before-auto-merge-20251122T092741Z
 - before-replacer-${TS}
-- before-replacer-${TS}
-- route.js
-- route.js.nft.json
-- route.ts
 - route.ts
 - route.ts
 - route.ts
@@ -32,6 +27,9 @@
 - route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 
 ## app.backup.20260121144720
 - app.backup.20260121144720/admin/page.tsx
@@ -52,6 +50,7 @@
 - app.backup.20260121144720/api/ai-anomaly-service/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/ai-anomaly-service/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/ai-anomaly-service/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- app.backup.20260121144720/api/ai-anomaly-service/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/ai-health/route.ts
 - app.backup.20260121144720/api/ai-health/route.ts.bak.1768901506
 - app.backup.20260121144720/api/ai-health/route.ts.bak.1768901506.ollama.bak
@@ -59,18 +58,21 @@
 - app.backup.20260121144720/api/ai-health/route.ts.bak.1768901506.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/ai-health/route.ts.bak.1768901506.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/ai-health/route.ts.bak.1768901506.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- app.backup.20260121144720/api/ai-health/route.ts.bak.1768901506.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/ai-health/route.ts.bak.1768903539
 - app.backup.20260121144720/api/ai-health/route.ts.bak.1768903539.ollama.bak
 - app.backup.20260121144720/api/ai-health/route.ts.bak.1768903539.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/ai-health/route.ts.bak.1768903539.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/ai-health/route.ts.bak.1768903539.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/ai-health/route.ts.bak.1768903539.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- app.backup.20260121144720/api/ai-health/route.ts.bak.1768903539.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/ai-health/route.ts.ollama.bak
 - app.backup.20260121144720/api/ai-health/route.ts.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/ai-health/route.ts.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/ai-health/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/ai-health/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/ai-health/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- app.backup.20260121144720/api/ai-health/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/ai-self-diagnostics/route.ts
 - app.backup.20260121144720/api/ai/scan/route.ts
 - app.backup.20260121144720/api/ai/scan/route.ts.ollama.bak
@@ -79,6 +81,7 @@
 - app.backup.20260121144720/api/ai/scan/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/ai/scan/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/ai/scan/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- app.backup.20260121144720/api/ai/scan/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/analytics/transactions/route.ts
 - app.backup.20260121144720/api/analytics/wallets/route.ts
 - app.backup.20260121144720/api/auth/login.ts
@@ -90,6 +93,7 @@
 - app.backup.20260121144720/api/auth/login.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/auth/login.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/auth/login.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- app.backup.20260121144720/api/auth/login.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/auth/login/route.ts
 - app.backup.20260121144720/api/auth/login/route.ts.bak.1768901506
 - app.backup.20260121144720/api/auth/logout.ts
@@ -115,6 +119,7 @@
 - app.backup.20260121144720/api/automation/status/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/automation/status/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/automation/status/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- app.backup.20260121144720/api/automation/status/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/biometric/templates/route.ts
 - app.backup.20260121144720/api/biometric/verify/route.ts
 - app.backup.20260121144720/api/cashon/balance/route.ts
@@ -133,6 +138,7 @@
 - app.backup.20260121144720/api/datasets/settings/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/datasets/settings/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/datasets/settings/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- app.backup.20260121144720/api/datasets/settings/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/debug/users/route.ts
 - app.backup.20260121144720/api/deploy/auto-redeploy/route.ts
 - app.backup.20260121144720/api/deploy/route.ts
@@ -146,6 +152,7 @@
 - app.backup.20260121144720/api/deployment-status/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/deployment-status/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/deployment-status/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- app.backup.20260121144720/api/deployment-status/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/device-fingerprint/route.ts
 - app.backup.20260121144720/api/document-backup/route.ts
 - app.backup.20260121144720/api/earning/route.ts
@@ -156,6 +163,7 @@
 - app.backup.20260121144720/api/employment/megavault/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/employment/megavault/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/employment/megavault/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- app.backup.20260121144720/api/employment/megavault/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/employment/payment/route.ts
 - app.backup.20260121144720/api/employment/payment/route.ts.ollama.bak
 - app.backup.20260121144720/api/employment/payment/route.ts.ollama.bak.ollama.bak
@@ -163,6 +171,7 @@
 - app.backup.20260121144720/api/employment/payment/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/employment/payment/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/employment/payment/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- app.backup.20260121144720/api/employment/payment/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/employment/revenue/route.ts
 - app.backup.20260121144720/api/employment/revenue/route.ts.ollama.bak
 - app.backup.20260121144720/api/employment/revenue/route.ts.ollama.bak.ollama.bak
@@ -170,6 +179,7 @@
 - app.backup.20260121144720/api/employment/revenue/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/employment/revenue/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/employment/revenue/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- app.backup.20260121144720/api/employment/revenue/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/employment/route.ts
 - app.backup.20260121144720/api/employment/route.ts.ollama.bak
 - app.backup.20260121144720/api/employment/route.ts.ollama.bak.ollama.bak
@@ -177,6 +187,7 @@
 - app.backup.20260121144720/api/employment/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/employment/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/employment/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- app.backup.20260121144720/api/employment/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/financial/audit/route.ts
 - app.backup.20260121144720/api/financial/transactions/route.ts
 - app.backup.20260121144720/api/financial/transactions/route.ts.ollama.bak
@@ -185,6 +196,7 @@
 - app.backup.20260121144720/api/financial/transactions/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/financial/transactions/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/financial/transactions/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- app.backup.20260121144720/api/financial/transactions/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/financial/verify/route.ts
 - app.backup.20260121144720/api/git/branch/route.ts
 - app.backup.20260121144720/api/git/branch/route.ts.bak.1768901506
@@ -203,6 +215,7 @@
 - app.backup.20260121144720/api/media/generate/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/media/generate/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/media/generate/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- app.backup.20260121144720/api/media/generate/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/media/status/route.ts
 - app.backup.20260121144720/api/media/status/route.ts.ollama.bak
 - app.backup.20260121144720/api/media/status/route.ts.ollama.bak.ollama.bak
@@ -210,6 +223,7 @@
 - app.backup.20260121144720/api/media/status/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/media/status/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/media/status/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- app.backup.20260121144720/api/media/status/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/metrics/route.ts
 - app.backup.20260121144720/api/middleware/roleAuth.ts
 - app.backup.20260121144720/api/middleware/roleAuth.ts.bak.1768901506
@@ -218,23 +232,7 @@
 - app.backup.20260121144720/api/monitor/status/route.ts.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/monitor/status/route.ts.ollama.bak.ollama.bak.ollama.bak
 - app.backup.20260121144720/api/monitor/status/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak
-- app.backup.20260121144720/api/monitor/status/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
-- app.backup.20260121144720/api/monitor/status/route.ts.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
-- app.backup.20260121144720/api/mpesa/callback/route.ts
-- app.backup.20260121144720/api/payments/initiate/route.ts
-- app.backup.20260121144720/api/qapikey/route.ts
-- app.backup.20260121144720/api/qcity/audit-log.ts
-- app.backup.20260121144720/api/qcity/audit-log.ts.bak.1768901506
-- app.backup.20260121144720/api/qcity/audit-log/route.ts
-- app.backup.20260121144720/api/qcity/audit-log/route.ts.bak.1768901506
-- app.backup.20260121144720/api/qcity/devices.ts
-- app.backup.20260121144720/api/qcity/metrics.ts
-- app.backup.20260121144720/api/qcity/plugins.ts
-- app.backup.20260121144720/api/qcity/remote-command.ts
-- app.backup.20260121144720/api/qcity/remote-command.ts.bak.1768901506
-- app.backup.20260121144720/api/qcity/remote-command/route.ts
-- app.backup.20260121144720/api/qcity/schedule.ts
-- ...and 249 more files
+- ...and 290 more files
 
 ## resumefromhere
 - resumefromhere/resumefromhere.20260723T185602Z.bak
@@ -250,6 +248,7 @@
 - resumefromhere/resumefromhere.20260723T212933Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260723T212933Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260723T212933Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260723T212933Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260723T215830Z.bak
 - resumefromhere/resumefromhere.20260723T215904Z.bak
 - resumefromhere/resumefromhere.20260723T220005Z.bak
@@ -269,6 +268,7 @@
 - resumefromhere/resumefromhere.20260723T233249Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260723T233249Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260723T233249Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260723T233249Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260723T233400Z.bak
 - resumefromhere/resumefromhere.20260723T234002Z.bak
 - resumefromhere/resumefromhere.20260723T234014Z.bak
@@ -278,6 +278,7 @@
 - resumefromhere/resumefromhere.20260723T234014Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260723T234014Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260723T234014Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260723T234014Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260723T234124Z.bak
 - resumefromhere/resumefromhere.20260723T234249Z.bak
 - resumefromhere/resumefromhere.20260723T234325Z.bak
@@ -288,6 +289,7 @@
 - resumefromhere/resumefromhere.20260723T234802Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260723T234802Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260723T234802Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260723T234802Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260723T234914Z.bak
 - resumefromhere/resumefromhere.20260723T235000Z.bak
 - resumefromhere/resumefromhere.20260723T235045Z.bak
@@ -298,6 +300,7 @@
 - resumefromhere/resumefromhere.20260723T235256Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260723T235256Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260723T235256Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260723T235256Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260723T235404Z.bak
 - resumefromhere/resumefromhere.20260724T000417Z.bak
 - resumefromhere/resumefromhere.20260724T000919Z.bak
@@ -312,6 +315,7 @@
 - resumefromhere/resumefromhere.20260724T002557Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260724T002557Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260724T002557Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260724T002557Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260724T002951Z.bak
 - resumefromhere/resumefromhere.20260724T002951Z.bak.ollama.bak
 - resumefromhere/resumefromhere.20260724T002951Z.bak.ollama.bak.ollama.bak
@@ -319,6 +323,7 @@
 - resumefromhere/resumefromhere.20260724T002951Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260724T002951Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260724T002951Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260724T002951Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260724T003303Z.bak
 - resumefromhere/resumefromhere.20260724T003303Z.bak.ollama.bak
 - resumefromhere/resumefromhere.20260724T003303Z.bak.ollama.bak.ollama.bak
@@ -326,6 +331,7 @@
 - resumefromhere/resumefromhere.20260724T003303Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260724T003303Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260724T003303Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260724T003303Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T001640Z.bak
 - resumefromhere/resumefromhere.20260726T002015Z.bak
 - resumefromhere/resumefromhere.20260726T002015Z.bak.ollama.bak
@@ -334,6 +340,7 @@
 - resumefromhere/resumefromhere.20260726T002015Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T002015Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T002015Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260726T002015Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T002725Z.bak
 - resumefromhere/resumefromhere.20260726T002725Z.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T002725Z.bak.ollama.bak.ollama.bak
@@ -341,6 +348,7 @@
 - resumefromhere/resumefromhere.20260726T002725Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T002725Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T002725Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260726T002725Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T002857Z.bak
 - resumefromhere/resumefromhere.20260726T003159Z.bak
 - resumefromhere/resumefromhere.20260726T004010Z.bak
@@ -350,6 +358,7 @@
 - resumefromhere/resumefromhere.20260726T004010Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T004010Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T004010Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260726T004010Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T004336Z.bak
 - resumefromhere/resumefromhere.20260726T004336Z.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T004336Z.bak.ollama.bak.ollama.bak
@@ -357,6 +366,7 @@
 - resumefromhere/resumefromhere.20260726T004336Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T004336Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T004336Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260726T004336Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T004722Z.bak
 - resumefromhere/resumefromhere.20260726T004722Z.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T004722Z.bak.ollama.bak.ollama.bak
@@ -364,6 +374,7 @@
 - resumefromhere/resumefromhere.20260726T004722Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T004722Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T004722Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260726T004722Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T004831Z.bak
 - resumefromhere/resumefromhere.20260726T005330Z.bak
 - resumefromhere/resumefromhere.20260726T005330Z.bak.ollama.bak
@@ -372,6 +383,7 @@
 - resumefromhere/resumefromhere.20260726T005330Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005330Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005330Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260726T005330Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005433Z.bak
 - resumefromhere/resumefromhere.20260726T005434Z.bak
 - resumefromhere/resumefromhere.20260726T005434Z.bak.ollama.bak
@@ -380,6 +392,7 @@
 - resumefromhere/resumefromhere.20260726T005434Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005434Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005434Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260726T005434Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005536Z.bak
 - resumefromhere/resumefromhere.20260726T005536Z.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005536Z.bak.ollama.bak.ollama.bak
@@ -387,6 +400,7 @@
 - resumefromhere/resumefromhere.20260726T005536Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005536Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005536Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260726T005536Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005642Z.bak
 - resumefromhere/resumefromhere.20260726T005643Z.bak
 - resumefromhere/resumefromhere.20260726T005643Z.bak.ollama.bak
@@ -395,6 +409,7 @@
 - resumefromhere/resumefromhere.20260726T005643Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005643Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005643Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260726T005643Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005744Z.bak
 - resumefromhere/resumefromhere.20260726T005744Z.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005744Z.bak.ollama.bak.ollama.bak
@@ -402,6 +417,7 @@
 - resumefromhere/resumefromhere.20260726T005744Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005744Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005744Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260726T005744Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005851Z.bak
 - resumefromhere/resumefromhere.20260726T005851Z.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005851Z.bak.ollama.bak.ollama.bak
@@ -409,6 +425,7 @@
 - resumefromhere/resumefromhere.20260726T005851Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005851Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005851Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260726T005851Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005953Z.bak
 - resumefromhere/resumefromhere.20260726T005953Z.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005953Z.bak.ollama.bak.ollama.bak
@@ -416,28 +433,9 @@
 - resumefromhere/resumefromhere.20260726T005953Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005953Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T005953Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- resumefromhere/resumefromhere.20260726T005953Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - resumefromhere/resumefromhere.20260726T010059Z.bak
-- resumefromhere/resumefromhere.20260726T010100Z.bak
-- resumefromhere/resumefromhere.20260726T010100Z.bak.ollama.bak
-- resumefromhere/resumefromhere.20260726T010100Z.bak.ollama.bak.ollama.bak
-- resumefromhere/resumefromhere.20260726T010100Z.bak.ollama.bak.ollama.bak.ollama.bak
-- resumefromhere/resumefromhere.20260726T010100Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
-- resumefromhere/resumefromhere.20260726T010100Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
-- resumefromhere/resumefromhere.20260726T010100Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
-- resumefromhere/resumefromhere.20260726T010201Z.bak
-- resumefromhere/resumefromhere.20260726T010201Z.bak.ollama.bak
-- resumefromhere/resumefromhere.20260726T010201Z.bak.ollama.bak.ollama.bak
-- resumefromhere/resumefromhere.20260726T010201Z.bak.ollama.bak.ollama.bak.ollama.bak
-- resumefromhere/resumefromhere.20260726T010201Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
-- resumefromhere/resumefromhere.20260726T010201Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
-- resumefromhere/resumefromhere.20260726T010201Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
-- resumefromhere/resumefromhere.20260726T010308Z.bak
-- resumefromhere/resumefromhere.20260726T010308Z.bak.ollama.bak
-- resumefromhere/resumefromhere.20260726T010308Z.bak.ollama.bak.ollama.bak
-- resumefromhere/resumefromhere.20260726T010308Z.bak.ollama.bak.ollama.bak.ollama.bak
-- resumefromhere/resumefromhere.20260726T010308Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
-- resumefromhere/resumefromhere.20260726T010308Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
-- ...and 318 more files
+- ...and 390 more files
 
 ## self
 - self/ollama_autonomous_agent.20260726T212439Z.bak
@@ -447,6 +445,7 @@
 - self/ollama_autonomous_agent.20260726T212439Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T212439Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T212439Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- self/ollama_autonomous_agent.20260726T212439Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T213503Z.bak
 - self/ollama_autonomous_agent.20260726T213503Z.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T213503Z.bak.ollama.bak.ollama.bak
@@ -454,6 +453,7 @@
 - self/ollama_autonomous_agent.20260726T213503Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T213503Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T213503Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- self/ollama_autonomous_agent.20260726T213503Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T214516Z.bak
 - self/ollama_autonomous_agent.20260726T214516Z.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T214516Z.bak.ollama.bak.ollama.bak
@@ -461,6 +461,7 @@
 - self/ollama_autonomous_agent.20260726T214516Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T214516Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T214516Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- self/ollama_autonomous_agent.20260726T214516Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T215736Z.bak
 - self/ollama_autonomous_agent.20260726T215736Z.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T215736Z.bak.ollama.bak.ollama.bak
@@ -468,6 +469,7 @@
 - self/ollama_autonomous_agent.20260726T215736Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T215736Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T215736Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- self/ollama_autonomous_agent.20260726T215736Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T220000Z.bak
 - self/ollama_autonomous_agent.20260726T220000Z.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T220000Z.bak.ollama.bak.ollama.bak
@@ -475,6 +477,7 @@
 - self/ollama_autonomous_agent.20260726T220000Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T220000Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T220000Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- self/ollama_autonomous_agent.20260726T220000Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T220134Z.bak
 - self/ollama_autonomous_agent.20260726T220134Z.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T220134Z.bak.ollama.bak.ollama.bak
@@ -482,6 +485,7 @@
 - self/ollama_autonomous_agent.20260726T220134Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T220134Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T220134Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- self/ollama_autonomous_agent.20260726T220134Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T221524Z.bak
 - self/ollama_autonomous_agent.20260726T221524Z.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T221524Z.bak.ollama.bak.ollama.bak
@@ -489,6 +493,7 @@
 - self/ollama_autonomous_agent.20260726T221524Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T221524Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T221524Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- self/ollama_autonomous_agent.20260726T221524Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T222025Z.bak
 - self/ollama_autonomous_agent.20260726T222025Z.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T222025Z.bak.ollama.bak.ollama.bak
@@ -496,6 +501,7 @@
 - self/ollama_autonomous_agent.20260726T222025Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T222025Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T222025Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- self/ollama_autonomous_agent.20260726T222025Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T231417Z.bak
 - self/ollama_autonomous_agent.20260726T231417Z.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T231417Z.bak.ollama.bak.ollama.bak
@@ -503,6 +509,7 @@
 - self/ollama_autonomous_agent.20260726T231417Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T231417Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260726T231417Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- self/ollama_autonomous_agent.20260726T231417Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260728T224632Z.bak
 - self/ollama_autonomous_agent.20260728T224632Z.bak.ollama.bak
 - self/ollama_autonomous_agent.20260728T224632Z.bak.ollama.bak.ollama.bak
@@ -510,20 +517,26 @@
 - self/ollama_autonomous_agent.20260728T224632Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260728T224632Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260728T224632Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- self/ollama_autonomous_agent.20260728T224632Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260728T230146Z.bak
 - self/ollama_autonomous_agent.20260728T230146Z.bak.ollama.bak
 - self/ollama_autonomous_agent.20260728T230146Z.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260728T230146Z.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260728T230146Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- self/ollama_autonomous_agent.20260728T230146Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260729T005137Z.bak
 - self/ollama_autonomous_agent.20260729T005137Z.bak.ollama.bak
 - self/ollama_autonomous_agent.20260729T005137Z.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260729T005137Z.bak.ollama.bak.ollama.bak.ollama.bak
+- self/ollama_autonomous_agent.20260729T005137Z.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260729T013505Z.bak
 - self/ollama_autonomous_agent.20260729T013505Z.bak.ollama.bak
 - self/ollama_autonomous_agent.20260729T013505Z.bak.ollama.bak.ollama.bak
+- self/ollama_autonomous_agent.20260729T013505Z.bak.ollama.bak.ollama.bak.ollama.bak
 - self/ollama_autonomous_agent.20260729T020614Z.bak
 - self/ollama_autonomous_agent.20260729T020614Z.bak.ollama.bak
+- self/ollama_autonomous_agent.20260729T020614Z.bak.ollama.bak.ollama.bak
+- self/ollama_autonomous_agent.20260729T042212Z.bak
 
 ## src.backup.20260121144720
 - src.backup.20260121144720/App.test.js
@@ -545,6 +558,7 @@
 - src.backup.20260121144720/components/Chatbot.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/Chatbot.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/Chatbot.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/Chatbot.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/DownloadQCity.tsx
 - src.backup.20260121144720/components/FileExplorer.tsx
 - src.backup.20260121144720/components/FloatingAQ.tsx
@@ -554,6 +568,7 @@
 - src.backup.20260121144720/components/FloatingAQ.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/FloatingAQ.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/FloatingAQ.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/FloatingAQ.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/GitStatus.tsx
 - src.backup.20260121144720/components/LcSpaces.tsx
 - src.backup.20260121144720/components/LcSpaces.tsx.ollama.bak
@@ -562,6 +577,7 @@
 - src.backup.20260121144720/components/LcSpaces.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/LcSpaces.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/LcSpaces.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/LcSpaces.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/PreviewWindow.tsx
 - src.backup.20260121144720/components/QI.tsx
 - src.backup.20260121144720/components/QI.tsx.ollama.bak
@@ -570,6 +586,7 @@
 - src.backup.20260121144720/components/QI.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/QI.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/QI.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/QI.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/QIStateWindow.tsx
 - src.backup.20260121144720/components/QiSpaces.tsx
 - src.backup.20260121144720/components/QiSpaces.tsx.ollama.bak
@@ -578,6 +595,7 @@
 - src.backup.20260121144720/components/QiSpaces.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/QiSpaces.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/QiSpaces.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/QiSpaces.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/TradingHistory.tsx
 - src.backup.20260121144720/components/TradingStatus.tsx
 - src.backup.20260121144720/components/UISettings.tsx
@@ -589,12 +607,14 @@
 - src.backup.20260121144720/components/q-city/AccountAutomationPanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AccountAutomationPanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AccountAutomationPanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/q-city/AccountAutomationPanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AccountAutomationPanel.tsx.ollama.bak
 - src.backup.20260121144720/components/q-city/AccountAutomationPanel.tsx.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AccountAutomationPanel.tsx.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AccountAutomationPanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AccountAutomationPanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AccountAutomationPanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/q-city/AccountAutomationPanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AuditLogPanel.tsx
 - src.backup.20260121144720/components/q-city/AuditLogPanel.tsx.bak2
 - src.backup.20260121144720/components/q-city/AuditLogPanel.tsx.bak2.ollama.bak
@@ -602,12 +622,14 @@
 - src.backup.20260121144720/components/q-city/AuditLogPanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AuditLogPanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AuditLogPanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/q-city/AuditLogPanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AuditLogPanel.tsx.ollama.bak
 - src.backup.20260121144720/components/q-city/AuditLogPanel.tsx.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AuditLogPanel.tsx.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AuditLogPanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AuditLogPanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AuditLogPanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/q-city/AuditLogPanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AvatarSelector.tsx
 - src.backup.20260121144720/components/q-city/AvatarSelector.tsx.bak2
 - src.backup.20260121144720/components/q-city/AvatarSelector.tsx.bak2.ollama.bak
@@ -615,12 +637,14 @@
 - src.backup.20260121144720/components/q-city/AvatarSelector.tsx.bak2.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AvatarSelector.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AvatarSelector.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/q-city/AvatarSelector.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AvatarSelector.tsx.ollama.bak
 - src.backup.20260121144720/components/q-city/AvatarSelector.tsx.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AvatarSelector.tsx.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AvatarSelector.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AvatarSelector.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AvatarSelector.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/q-city/AvatarSelector.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/AviatorGalleryPanel.tsx
 - src.backup.20260121144720/components/q-city/AviatorGalleryPanel.tsx.bak2
 - src.backup.20260121144720/components/q-city/BackupRestorePanel.tsx
@@ -632,18 +656,21 @@
 - src.backup.20260121144720/components/q-city/CommandPanel.tsx.bak.1768901506.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/CommandPanel.tsx.bak.1768901506.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/CommandPanel.tsx.bak.1768901506.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/q-city/CommandPanel.tsx.bak.1768901506.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/CommandPanel.tsx.bak2
 - src.backup.20260121144720/components/q-city/CommandPanel.tsx.bak2.ollama.bak
 - src.backup.20260121144720/components/q-city/CommandPanel.tsx.bak2.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/CommandPanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/CommandPanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/CommandPanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/q-city/CommandPanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/CommandPanel.tsx.ollama.bak
 - src.backup.20260121144720/components/q-city/CommandPanel.tsx.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/CommandPanel.tsx.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/CommandPanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/CommandPanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/CommandPanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/q-city/CommandPanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/Dashboard.tsx
 - src.backup.20260121144720/components/q-city/Dashboard.tsx.bak2
 - src.backup.20260121144720/components/q-city/DevicePanel.tsx
@@ -653,12 +680,14 @@
 - src.backup.20260121144720/components/q-city/DevicePanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/DevicePanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/DevicePanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/q-city/DevicePanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/DevicePanel.tsx.ollama.bak
 - src.backup.20260121144720/components/q-city/DevicePanel.tsx.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/DevicePanel.tsx.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/DevicePanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/DevicePanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/DevicePanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/q-city/DevicePanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/DevicesHub.tsx
 - src.backup.20260121144720/components/q-city/DevicesHub.tsx.bak2
 - src.backup.20260121144720/components/q-city/DocumentManagerPanel.tsx
@@ -668,12 +697,14 @@
 - src.backup.20260121144720/components/q-city/DocumentManagerPanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/DocumentManagerPanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/DocumentManagerPanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/q-city/DocumentManagerPanel.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/DocumentManagerPanel.tsx.ollama.bak
 - src.backup.20260121144720/components/q-city/DocumentManagerPanel.tsx.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/DocumentManagerPanel.tsx.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/DocumentManagerPanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/DocumentManagerPanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/DocumentManagerPanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/q-city/DocumentManagerPanel.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/EarningDashboard.tsx
 - src.backup.20260121144720/components/q-city/EarningDashboard.tsx.bak2
 - src.backup.20260121144720/components/q-city/EarningDashboard.tsx.bak2.ollama.bak
@@ -681,6 +712,7 @@
 - src.backup.20260121144720/components/q-city/EarningDashboard.tsx.bak2.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/EarningDashboard.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/EarningDashboard.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/q-city/EarningDashboard.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/EnhancedQMOIDashboard.tsx
 - src.backup.20260121144720/components/q-city/EnhancedQMOIDashboard.tsx.bak2
 - src.backup.20260121144720/components/q-city/HelpPanel.tsx
@@ -698,33 +730,14 @@
 - src.backup.20260121144720/components/q-city/Onboarding.tsx.bak2.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/Onboarding.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/Onboarding.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/q-city/Onboarding.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/Onboarding.tsx.ollama.bak
 - src.backup.20260121144720/components/q-city/Onboarding.tsx.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/Onboarding.tsx.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/Onboarding.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/Onboarding.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/Onboarding.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
+- src.backup.20260121144720/components/q-city/Onboarding.tsx.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
 - src.backup.20260121144720/components/q-city/PluginPanel.tsx
-- src.backup.20260121144720/components/q-city/PluginPanel.tsx.bak2
-- src.backup.20260121144720/components/q-city/QApiKeyManager.tsx
-- src.backup.20260121144720/components/q-city/QApiKeyManager.tsx.bak2
-- src.backup.20260121144720/components/q-city/QApiKeyManager.tsx.bak2.ollama.bak
-- src.backup.20260121144720/components/q-city/QApiKeyManager.tsx.bak2.ollama.bak.ollama.bak
-- src.backup.20260121144720/components/q-city/QApiKeyManager.tsx.bak2.ollama.bak.ollama.bak.ollama.bak
-- src.backup.20260121144720/components/q-city/QApiKeyManager.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak
-- src.backup.20260121144720/components/q-city/QApiKeyManager.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
-- src.backup.20260121144720/components/q-city/QAvatar.tsx
-- src.backup.20260121144720/components/q-city/QAvatar.tsx.bak.1768901506
-- src.backup.20260121144720/components/q-city/QAvatar.tsx.bak.1768901506.ollama.bak
-- src.backup.20260121144720/components/q-city/QAvatar.tsx.bak.1768901506.ollama.bak.ollama.bak
-- src.backup.20260121144720/components/q-city/QAvatar.tsx.bak.1768901506.ollama.bak.ollama.bak.ollama.bak
-- src.backup.20260121144720/components/q-city/QAvatar.tsx.bak.1768901506.ollama.bak.ollama.bak.ollama.bak.ollama.bak
-- src.backup.20260121144720/components/q-city/QAvatar.tsx.bak.1768901506.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
-- src.backup.20260121144720/components/q-city/QAvatar.tsx.bak2
-- src.backup.20260121144720/components/q-city/QAvatar.tsx.bak2.ollama.bak
-- src.backup.20260121144720/components/q-city/QAvatar.tsx.bak2.ollama.bak.ollama.bak
-- src.backup.20260121144720/components/q-city/QAvatar.tsx.bak2.ollama.bak.ollama.bak.ollama.bak
-- src.backup.20260121144720/components/q-city/QAvatar.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak
-- src.backup.20260121144720/components/q-city/QAvatar.tsx.bak2.ollama.bak.ollama.bak.ollama.bak.ollama.bak.ollama.bak
-- ...and 393 more files
+- ...and 458 more files
 
