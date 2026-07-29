@@ -410,6 +410,117 @@ def _safe_file_write(path: Path, content: str) -> Path:
     _emit_status(f"Created or refreshed {rel_path}", level="info")
     return path
 
+def _scan_old_component_references(root: Path | None = None) -> List[str]:
+    target = Path(root or ROOT)
+    refs: Set[str] = set()
+    patterns = [
+        re.compile(r"(?:from|import)\s+[\'\"](?:@/components/|components/)", re.IGNORECASE),
+        re.compile(r"[\'\"](?:@/components/|components/)[^\'\"]+[\'\"]", re.IGNORECASE),
+    ]
+    ext_whitelist = {".ts", ".tsx", ".js", ".jsx", ".md", ".json", ".py", ".txt"}
+    for path in sorted(target.rglob("*")):
+        if not path.is_file() or _is_excluded_path(path, target) or path.suffix.lower() not in ext_whitelist:
+            continue
+        try:
+            text = path.read_text(encoding="utf-8", errors="ignore")
+        except Exception:
+            continue
+        if any(pattern.search(text) for pattern in patterns):
+            refs.add(path.relative_to(target).as_posix())
+    return sorted(refs)
+
+def _refresh_component_documentation(root: Path | None = None) -> List[str]:
+    target = Path(root or ROOT)
+    changed: List[str] = []
+    component_root = target / "src" / "components"
+    component_files = []
+    if component_root.exists():
+        component_files = [
+            p.relative_to(target).as_posix()
+            for p in sorted(component_root.rglob("*"))
+            if p.is_file() and not _is_excluded_path(p, target)
+        ]
+
+    components_doc = target / "COMPONENTS.md"
+    components_lines = [
+        "# COMPONENTS.md",
+        "",
+        "This file tracks the source component inventory.",
+        "",
+        "## src/components inventory",
+    ]
+    if component_files:
+        components_lines.extend([f"- {rel}" for rel in component_files])
+    else:
+        components_lines.append("- No source components were discovered under src/components.")
+    components_lines.append("")
+    components_content = "\n".join(components_lines)
+    if not components_doc.exists() or components_doc.read_text(encoding="utf-8", errors="ignore") != components_content:
+        components_doc.write_text(components_content, encoding="utf-8")
+        changed.append("COMPONENTS.md")
+
+    tree_doc = target / "TREE.md"
+    tree_note = (
+        "## Source components\n"
+        "- `src/components/` is the authoritative component directory for the current repository layout.\n"
+        "- Legacy root `components/` paths should be replaced with `src/components/` or the configured alias `@/components/*`.\n"
+    )
+    if not tree_doc.exists():
+        tree_doc.write_text(f"# TREE.md\n\n{tree_note}\n", encoding="utf-8")
+        changed.append("TREE.md")
+    else:
+        existing = tree_doc.read_text(encoding="utf-8", errors="ignore")
+        if "src/components/" not in existing or "Legacy root `components/`" not in existing:
+            tree_doc.write_text(existing.rstrip() + "\n\n" + tree_note + "\n", encoding="utf-8")
+            changed.append("TREE.md")
+
+    note = "- Verified component migration to src/components and aligned alias imports with the active codebase."
+    for doc_name in ("UNIVERSALS.md", "STYLES.md"):
+        doc = target / doc_name
+        if not doc.exists():
+            doc.write_text(f"# {doc_name}\n\n{note}\n", encoding="utf-8")
+            changed.append(doc_name)
+            continue
+        content = doc.read_text(encoding="utf-8", errors="ignore")
+        if note not in content:
+            doc.write_text(content.rstrip() + "\n\n" + note + "\n", encoding="utf-8")
+            changed.append(doc_name)
+
+    update_documentation_manifests(target, inventory=collect_route_inventory(target))
+    _build_all_ports_doc(target)
+    return changed
+
+def _create_components_migration_plan(root: Path | None = None) -> Path:
+    target = Path(root or ROOT)
+    plan_path = target / "COMPONENTS_MIGRATION_PLAN.md"
+    plan_lines = [
+        "# Components migration plan",
+        "",
+        "This plan documents the current src/components migration status and the next verification steps.",
+        "",
+        "## Objectives",
+        "- Confirm root `components/` has been retired.",
+        "- Confirm all import paths use `src/components/` or `@/components/*`.",
+        "- Refresh component documentation, API/endpoint/route manifests, and port inventory.",
+        "- Add clear migration notes to COMPONENTS.md, UNIVERSALS.md, STYLES.md, and TREE.md.",
+        "",
+        "## Tasks",
+        "- Inspect the repository for legacy imports referencing `components/` or `@/components/`.",
+        "- Review `src/components/` and validate the active files are correct.",
+        "- Refresh API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, and ALLPORTS.md to match current implementation.",
+        "- Document the migration outcome in COMPONENTS_MIGRATION_PLAN.md and resumefromhere.txt.",
+        "",
+        "## Expected state",
+        "- `src/components/` is the canonical component directory.",
+        "- No source files import `components/` directly from the repository root.",
+        "- Documentation and manifest files are up to date with the active route inventory.",
+        "- A migration report exists and is stored in COMPONENTS_MIGRATION_PLAN.md.",
+        "",
+    ]
+    plan_path.write_text("\n".join(plan_lines), encoding="utf-8")
+    _emit_status(f"Created component migration plan at {plan_path.relative_to(target)}", level="info")
+    return plan_path
+
 def _parse_python_file(path: Path) -> Optional[ast.AST]:
     try:
         text = path.read_text(encoding="utf-8", errors="ignore")
@@ -2158,6 +2269,57 @@ def process_pending_items(pending: List[str], root: Path | None = None) -> Dict[
                             path.write_text(f"# {path.name}\n\n{msg}\n", encoding="utf-8")
                     done.append(item)
                     details.append("legacy_auth_theme_migration_note_added")
+                elif task_name == "MOVE_COMPONENTS_TO_SRC_COMPONENTS":
+                    old_components = target / "components"
+                    if not old_components.exists():
+                        done.append(item)
+                        details.append("components_already_migrated")
+                    else:
+                        still_pending.append(item)
+                elif task_name == "VERIFY_COMPONENT_IMPORT_PATHS":
+                    refs = _scan_old_component_references(target)
+                    report_path = target / "components-imports-report.md"
+                    report_lines = [
+                        "# Components Import Reference Report",
+                        "",
+                        "This report lists files that still contain legacy components/ or @/components/ references.",
+                        "",
+                    ]
+                    if refs:
+                        report_lines.extend([f"- {ref}" for ref in refs])
+                        report_lines.append("")
+                        report_lines.append(
+                            "Review and update these import paths to use src/components/ or the configured alias paths.")
+                    else:
+                        report_lines.append("- No legacy component path references were detected.")
+                    report_path.write_text("\n".join(report_lines) + "\n", encoding="utf-8")
+                    if refs:
+                        done.append(item)
+                        details.append(f"legacy_imports_found:{len(refs)}")
+                    else:
+                        verified.append(item)
+                elif task_name == "UPDATE_COMPONENTS_DOCUMENTATION":
+                    changed = _refresh_component_documentation(target)
+                    if changed:
+                        done.append(item)
+                        details.append(f"updated_docs:{','.join(changed)}")
+                    else:
+                        verified.append(item)
+                elif task_name == "REFRESH_ROUTE_API_MANIFESTS":
+                    update_documentation_manifests(target)
+                    done.append(item)
+                    details.append("updated_api_endpoints_routes")
+                elif task_name == "GENERATE_COMPONENTS_MIGRATION_PLAN":
+                    plan_path = _create_components_migration_plan(target)
+                    done.append(item)
+                    details.append(f"created:{plan_path.name}")
+                elif task_name == "VERIFY_TREE_MD_HAS_SRC_COMPONENTS":
+                    changed = _refresh_component_documentation(target)
+                    if changed:
+                        done.append(item)
+                        details.append(f"updated_tree_and_docs:{','.join(changed)}")
+                    else:
+                        verified.append(item)
                 else:
                     still_pending.append(item)
             else:

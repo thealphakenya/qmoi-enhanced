@@ -652,6 +652,7 @@ This file aggregates documentation inventory for the repository.
 - [autotest_report.md](autotest_report.md)
 - [error-fix-summary.md](error-fix-summary.md)
 - [link_report.md](link_report.md)
+- [note.md](note.md)
 - [ollama.md](ollama.md)
 - [placeholder_scan_summary.md](placeholder_scan_summary.md)
 - [production.md](production.md)
