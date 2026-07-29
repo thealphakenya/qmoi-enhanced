@@ -160,7 +160,41 @@ def _extract_resume_instructions(root: Path | None = None) -> List[str]:
             candidate = stripped[2:].strip()
             if candidate and len(candidate) > 3:
                 instructions.append(candidate)
-    return sorted(dict.fromkeys(instructions))
+    return sorted(dict.fromkeys(instructions))  # Ensure unique instructions
+
+def _load_migration_plan(root: Path | None = None, filename: str = "COMPONENTS_MIGRATION_PLAN.md") -> List[str]:
+    """Load user-provided migration plan tasks from a dedicated markdown file.
+
+    Lines starting with `TASK:` or `COMMAND:` are returned as actionable instructions.
+    The file is preserved and not normalized by the agent runtime.
+    """
+    target = Path(root or ROOT)
+    plan_path = target / filename
+    if not plan_path.exists():
+        return []
+    try:
+        text = plan_path.read_text(encoding="utf-8", errors="ignore")
+    except Exception:
+        return []
+    out: List[str] = []
+    for line in text.splitlines():
+        s = line.strip()
+        if not s:
+            continue
+        up = s.upper()
+        if up.startswith("TASK:") or up.startswith("COMMAND:"):
+            # split at first colon to get content after the marker
+            parts = s.split(":", 1)
+            if len(parts) > 1:
+                out.append(parts[1].strip())
+            else:
+                out.append(s)
+            continue
+        # allow simple task lines prefixed with '- TASK:' as well
+        if s.startswith("- TASK:") or s.startswith("- COMMAND:"):
+            token = s.split(":", 1)[1].strip() if ":" in s else s[1:].strip()
+            out.append(token)
+    return out
 
 def _looks_like_resume_command(command: str) -> bool:
     lower = command.strip().lower()
@@ -1805,6 +1839,16 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
     _ensure_directory_docs(target)
     # Merge any archived or backed-up implementations into the working tree
     merged_archives = _scan_archives_and_merge(target)
+    # Always refresh aggregate backend/frontend/docs after merges
+    try:
+        _build_all_backend_doc(target)
+        _build_all_frontend_doc(target)
+        _build_all_ui_doc(target)
+        _build_all_ports_doc(target)
+        # Write a human-readable merged archives report
+        _write_archive_merge_report(merged_archives, target)
+    except Exception:
+        _emit_status("Failed to refresh aggregate docs after archive merge", level="warning")
     paths = build_plan_and_docs(target)
     # Record pending-before snapshot in JOURNEY MAP TRACKS
     try:
@@ -1823,7 +1867,16 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
     if resumed:
         _emit_status("Detected changes in resumefromhere.txt; refreshing execution plan.", level="info")
 
+    # Load resume instructions and also any user-provided migration plan owned by the Ollama agent
     instructions = _extract_resume_instructions(target)
+    try:
+        plan_instr = _load_migration_plan(target)
+        if plan_instr:
+            # ensure plan instructions are executed before resume-file instructions
+            instructions = plan_instr + instructions
+            _emit_status(f"Loaded {len(plan_instr)} instructions from COMPONENTS_MIGRATION_PLAN.md", level="info")
+    except Exception:
+        pass
     normalize_changes = _normalize_production_ports(target)
     if normalize_changes:
         _emit_status(f"Normalized production port references in {len(normalize_changes)} file(s)", level="info")
@@ -2412,6 +2465,31 @@ def _scan_archives_and_merge(root: Path | None = None) -> List[str]:
         _emit_status(f"Merged {len(merged)} files from archive directories", level="info")
     return merged
 
+def _write_archive_merge_report(merged: List[str], root: Path | None = None) -> Optional[Path]:
+    """Write a simple report summarizing merged archive files grouped by directory."""
+    if not merged:
+        return None
+    target = Path(root or ROOT)
+    report = target / "MERGED_ARCHIVES_REPORT.md"
+    by_dir = {}
+    for p in merged:
+        d = p.split('/', 1)[0] if '/' in p else '.'
+        by_dir.setdefault(d, []).append(p)
+    lines = ["# Merged archives report", "", f"- Generated: {datetime.utcnow().isoformat()}Z", ""]
+    for d in sorted(by_dir.keys()):
+        lines.append(f"## {d}")
+        for p in sorted(by_dir[d])[:200]:
+            lines.append(f"- {p}")
+        if len(by_dir[d]) > 200:
+            lines.append(f"- ...and {len(by_dir[d]) - 200} more files")
+        lines.append("")
+    try:
+        report.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        _emit_status(f"Wrote archive merge report: {report.relative_to(target)}", level="info")
+        return report
+    except Exception:
+        return None
+
 def ensure_tests_for_file(path: Path, root: Path | None = None) -> Optional[Path]:
     """Create or update an enhanced pytest for the given Python file.
 
@@ -2809,8 +2887,8 @@ def main() -> None:
     _emit_status("Starting enhanced production Ollama autonomous agent pass", level="info")
     target = ROOT
 
-    # If AUTO_CONTINUE is set, run the autonomous loop until completion
-    if os.environ.get("AUTO_CONTINUE", "0") == "1":
+    # Enable AUTO_CONTINUE by default to always automatically continue passes
+    if os.environ.get("AUTO_CONTINUE", "1") == "1":
         max_iter = int(os.environ.get("AUTO_CONTINUE_MAX", "100"))
         max_per = int(os.environ.get("AUTO_CONTINUE_BATCH", "200"))
         loop_summary = run_until_complete(target, max_iterations=max_iter, max_per_iteration=max_per)

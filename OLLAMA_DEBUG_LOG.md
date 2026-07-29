@@ -1,30 +1,5 @@
 # Ollama Debug Log
 
-- [2026-07-28T23:38:01Z] INFO: Autonomous agent execution pass completed: pending=8 tests=skipped python=skipped
-- [2026-07-29T00:51:36Z] INFO: Starting enhanced production Ollama autonomous agent pass
-- [2026-07-29T00:51:37Z] INFO: Local helper server is responsive
-- [2026-07-29T00:51:37Z] INFO: Backed up self script to /workspaces/qmoi-enhanced/.backup/self/ollama_autonomous_agent.20260729T005137Z.bak
-- [2026-07-29T00:51:37Z] INFO: Applied self-update improvements to the autonomous agent script
-- [2026-07-29T00:51:37Z] INFO: Self-update detected and applied
-- [2026-07-29T00:51:37Z] INFO: Lib production readiness: ok:qmoi-bootstrap.ts, ok:qmoi-auto-setup-manager.ts, ok:qmoi-automation-manager.ts, ok:qmoi-background-autoscan.ts
-- [2026-07-29T00:52:45Z] INFO: Merged 1085 files from archive directories
-- [2026-07-29T00:52:45Z] INFO: Normalized resumefromhere.txt header at /workspaces/qmoi-enhanced/resumefromhere.txt
-- [2026-07-29T00:52:45Z] INFO: Created or refreshed Trade.md
-- [2026-07-29T00:52:45Z] INFO: Created or refreshed ollama.md
-- [2026-07-29T00:52:45Z] INFO: Created or refreshed QMOIMODEL.md
-- [2026-07-29T00:52:45Z] INFO: Created or refreshed QMOIMODELTESTS.md
-- [2026-07-29T00:52:45Z] INFO: Created or refreshed ALLTESTSAUOTOTESTS.md
-- [2026-07-29T00:52:45Z] INFO: Created or refreshed ALLHOOKSWEBHOOKS.md
-- [2026-07-29T00:52:45Z] INFO: Created or refreshed MATCHES.md
-- [2026-07-29T00:54:43Z] INFO: Updated JOURNEY MAP TRACKS in /workspaces/qmoi-enhanced/resumefromhere.txt
-- [2026-07-29T00:54:43Z] INFO: Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json
-- [2026-07-29T00:54:43Z] INFO: Detected changes in resumefromhere.txt; refreshing execution plan.
-- [2026-07-29T00:58:32Z] INFO: Backed up resume file to /workspaces/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260729T005832Z.bak
-- [2026-07-29T00:58:32Z] INFO: Processing 4965 pending items...
-- [2026-07-29T01:00:02Z] INFO: Updated resumefromhere progress: /workspaces/qmoi-enhanced/resumefromhere.txt
-- [2026-07-29T01:00:02Z] INFO: Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json
-- [2026-07-29T01:00:02Z] INFO: Wrote pending report snapshot to OLLAMA_PENDING_REPORT.md
-- [2026-07-29T01:00:02Z] INFO: Scanning route definitions from /workspaces/qmoi-enhanced
 - [2026-07-29T01:00:23Z] INFO: Updated API.md
 - [2026-07-29T01:00:23Z] INFO: Updated ENDPOINTS.md
 - [2026-07-29T01:00:23Z] INFO: Updated ROUTES.md
@@ -51,3 +26,28 @@
 - [2026-07-29T01:05:21Z] INFO: Updated live notification feed at /workspaces/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
 - [2026-07-29T01:05:21Z] INFO: Wrote completion report to OLLAMA_COMPLETION_REPORT.md (8 items remaining)
 - [2026-07-29T01:05:21Z] INFO: Autonomous agent execution pass completed: pending=8 tests=skipped python=skipped
+- [2026-07-29T01:35:04Z] INFO: Starting enhanced production Ollama autonomous agent pass
+- [2026-07-29T01:35:04Z] INFO: Autonomous loop iteration 1
+- [2026-07-29T01:35:05Z] INFO: Local helper server is responsive
+- [2026-07-29T01:35:05Z] INFO: Backed up self script to /workspaces/qmoi-enhanced/.backup/self/ollama_autonomous_agent.20260729T013505Z.bak
+- [2026-07-29T01:35:05Z] INFO: Applied self-update improvements to the autonomous agent script
+- [2026-07-29T01:35:05Z] INFO: Self-update detected and applied
+- [2026-07-29T01:35:05Z] INFO: Lib production readiness: ok:qmoi-bootstrap.ts, ok:qmoi-auto-setup-manager.ts, ok:qmoi-automation-manager.ts, ok:qmoi-background-autoscan.ts
+- [2026-07-29T01:36:38Z] INFO: Merged 1279 files from archive directories
+- [2026-07-29T01:36:44Z] INFO: Created or refreshed ALLBACKEND.md
+- [2026-07-29T01:36:44Z] INFO: Created or refreshed ALLFRONTEND.md
+- [2026-07-29T01:36:52Z] INFO: Created or refreshed ALLUI.md
+- [2026-07-29T01:37:38Z] INFO: Created or refreshed ALLPORTS.md
+- [2026-07-29T01:37:38Z] INFO: Wrote archive merge report: MERGED_ARCHIVES_REPORT.md
+- [2026-07-29T01:37:38Z] INFO: Normalized resumefromhere.txt header at /workspaces/qmoi-enhanced/resumefromhere.txt
+- [2026-07-29T01:37:38Z] INFO: Created or refreshed Trade.md
+- [2026-07-29T01:37:38Z] INFO: Created or refreshed ollama.md
+- [2026-07-29T01:37:38Z] INFO: Created or refreshed QMOIMODEL.md
+- [2026-07-29T01:37:38Z] INFO: Created or refreshed QMOIMODELTESTS.md
+- [2026-07-29T01:37:38Z] INFO: Created or refreshed ALLTESTSAUOTOTESTS.md
+- [2026-07-29T01:37:38Z] INFO: Created or refreshed ALLHOOKSWEBHOOKS.md
+- [2026-07-29T01:37:38Z] INFO: Created or refreshed MATCHES.md
+- [2026-07-29T01:40:26Z] INFO: Updated JOURNEY MAP TRACKS in /workspaces/qmoi-enhanced/resumefromhere.txt
+- [2026-07-29T01:40:26Z] INFO: Persisted agent state to /workspaces/qmoi-enhanced/.ollama_agent_state.json
+- [2026-07-29T01:40:26Z] INFO: Detected changes in resumefromhere.txt; refreshing execution plan.
+- [2026-07-29T01:40:26Z] INFO: Loaded 9 instructions from COMPONENTS_MIGRATION_PLAN.md
