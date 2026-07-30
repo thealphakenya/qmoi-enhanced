@@ -23,7 +23,7 @@ jobs:
       AUTO_CONTINUE_MAX: "20"
       AUTO_CONTINUE_BATCH: "200"
       AUTO_PUSH: "1"
-      TARGET_BRANCH: "autosync"
+      TARGET_BRANCH: "${{ github.ref_name }}"
       AUTO_MERGE: "0"
       GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
       GH_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
@@ -136,5 +136,5 @@ ${body.slice(0, 2000)}`);
           if git status --porcelain | grep .; then
             git add .
             git commit -m "chore: sync autonomous agent manifests and resume state" || true
-            git push origin HEAD:autosync || echo "Push to autosync failed; check permissions or branch protection."
+            git push origin HEAD:${{ env.TARGET_BRANCH }} || echo "Push to ${TARGET_BRANCH} failed; check permissions or branch protection."
           fi
