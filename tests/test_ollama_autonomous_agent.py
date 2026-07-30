@@ -497,6 +497,30 @@ def test_ensure_test_coverage_creates_test_stubs_for_source_files(tmp_path):
     assert (tmp_path / "tests" / "test_sample_tool.py").exists()
     assert result["created"] >= 1
 
+
+def test_consolidate_html_assets_and_pw_as_moves_pwa_and_removes_duplicates(tmp_path):
+    module = load_module()
+    app_dir = tmp_path / "apps" / "demo"
+    app_dir.mkdir(parents=True, exist_ok=True)
+    pwa_html = app_dir / "index.html"
+    pwa_html.write_text(
+        "<!doctype html><html><head><link rel='manifest' href='manifest.webmanifest' /></head></html>", encoding="utf-8")
+    duplicate_html = tmp_path / "duplicate.html"
+    duplicate_html.write_text(pwa_html.read_text(encoding="utf-8"), encoding="utf-8")
+    unused_html = tmp_path / "unused.html"
+    unused_html.write_text("<html><body>unused</body></html>", encoding="utf-8")
+
+    result = module.consolidate_html_assets_and_pw_as(tmp_path)
+
+    canonical = tmp_path / "pwa_apps" / "demo" / "index.html"
+    assert canonical.exists()
+    assert not duplicate_html.exists()
+    assert not unused_html.exists()
+    assert (tmp_path / "pwa_apps" / "demo" / "manifest.webmanifest").exists()
+    assert (tmp_path / "pwa_apps" / "demo" / "sw.js").exists()
+    assert result["moved"] >= 1
+    assert result["removed"] >= 1
+
 # AUTOFIXED by Ollama at 2026-07-26T18:54:41.380965Z
 
 # AUTOFIXED by Ollama at 2026-07-26T18:57:34.420989Z

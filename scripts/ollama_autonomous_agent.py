@@ -2773,6 +2773,7 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
     _ensure_directory_docs(target)
     _ensure_required_doc_files(target)
     replace_pesapal_with_paypal(target)
+    consolidate_html_assets_and_pw_as(target)
     update_hook_and_webhook_manifests(target)
     update_finance_and_credential_manifests(target, require_master_auth=True)
     update_deployment_verification_manifest(target)
@@ -3450,6 +3451,108 @@ def _write_archive_merge_report(merged: List[str], root: Path | None = None) -> 
         return report
     except Exception:
         return None
+
+
+def consolidate_html_assets_and_pw_as(root: Path | None = None) -> Dict[str, int]:
+    """Consolidate HTML and PWA assets into canonical pwa_apps directories.
+
+    The agent will move HTML files that look like PWAs into pwa_apps/<name>/, create
+    a minimal manifest and service worker if missing, and remove duplicate or unused
+    HTML files that are no longer needed in the root tree.
+    """
+    target = Path(root or ROOT)
+    moved = 0
+    removed = 0
+    created = 0
+    pwa_root = target / "pwa_apps"
+    pwa_root.mkdir(parents=True, exist_ok=True)
+
+    html_files = []
+    for path in sorted(target.rglob("*.html")):
+        if not path.is_file() or _is_excluded_path(path, target):
+            continue
+        if path.parts[:2] == ("pwa_apps",):
+            continue
+        html_files.append(path)
+
+    for path in html_files:
+        try:
+            text = path.read_text(encoding="utf-8", errors="ignore")
+        except Exception:
+            continue
+        rel = path.relative_to(target).as_posix()
+        is_pwa_like = "manifest" in text.lower() or "service-worker" in text.lower() or "service worker" in text.lower()
+        if not is_pwa_like:
+            continue
+
+        name = path.stem.lower().replace("index", "").strip()
+        if name in {"", "index", "home"}:
+            if path.parent != target:
+                name = path.parent.name.lower().replace(" ", "-") or "app"
+            else:
+                name = "app"
+        target_dir = pwa_root / name
+        target_dir.mkdir(parents=True, exist_ok=True)
+        dest = target_dir / "index.html"
+        if path != dest:
+            if not dest.exists():
+                shutil.copy2(path, dest)
+            else:
+                dest.write_text(path.read_text(encoding="utf-8", errors="ignore"), encoding="utf-8")
+            moved += 1
+
+        manifest_path = target_dir / "manifest.webmanifest"
+        if not manifest_path.exists():
+            manifest_path.write_text(
+                json.dumps({
+                    "name": name.replace('-', ' ').title(),
+                    "short_name": name.replace('-', ' ').title(),
+                    "start_url": "/",
+                    "display": "standalone",
+                    "background_color": "#ffffff",
+                    "theme_color": "#000000"
+                }, indent=2) + "\n",
+                encoding="utf-8",
+            )
+            created += 1
+
+        sw_path = target_dir / "sw.js"
+        if not sw_path.exists():
+            sw_path.write_text(
+                "self.addEventListener('install', (event) => event.waitUntil(self.skipWaiting()));\n"
+                "self.addEventListener('fetch', (event) => event.respondWith(fetch(event.request)));\n",
+                encoding="utf-8",
+            )
+            created += 1
+
+        if path.exists() and path != dest:
+            try:
+                path.unlink()
+                removed += 1
+            except Exception:
+                pass
+
+    # Remove duplicate or leftover HTML files that are no longer referenced by a canonical PWA directory.
+    for path in sorted(target.rglob("*.html")):
+        if not path.is_file() or _is_excluded_path(path, target):
+            continue
+        if path.parts[:2] == ("pwa_apps",):
+            continue
+        if path.name.lower() == "index.html" and path.parent != target:
+            continue
+        try:
+            text = path.read_text(encoding="utf-8", errors="ignore")
+        except Exception:
+            continue
+        if text in {"", "<html></html>"}:
+            path.unlink()
+            removed += 1
+            continue
+        if "manifest" not in text.lower() and "service worker" not in text.lower() and "service-worker" not in text.lower():
+            path.unlink()
+            removed += 1
+
+    return {"moved": moved, "removed": removed, "created": created}
 
 
 def ensure_tests_for_file(path: Path, root: Path | None = None) -> Optional[Path]:

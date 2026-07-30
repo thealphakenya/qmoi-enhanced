@@ -62,7 +62,17 @@ jobs:
           RUN_FULL_TESTS: "1"
         run: |
           set -euo pipefail
-          python scripts/ollama_autonomous_agent.py
+          python scripts/ollama_autonomous_agent.py 2>&1 | tee ollama-autonomous-agent.log
+
+      - name: Upload Ollama live logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ollama-autonomous-agent-logs
+          path: |
+            ollama-autonomous-agent.log
+            OLLAMA_ACTIVITY_FEED.md
+          if-no-files-found: ignore
 
       - name: Publish workflow summary
         if: always()
