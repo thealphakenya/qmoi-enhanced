@@ -42,8 +42,9 @@ jobs:
 
       - name: Install dependencies
         run: |
+          set -euo pipefail
           python -m pip install --upgrade pip
-          python -m pip install requests
+          python -m pip install pytest requests
 
       - name: Configure git user
         run: |
@@ -52,10 +53,14 @@ jobs:
 
       - name: Run regression checks
         run: |
-          pytest -q tests/test_ollama_autonomous_agent.py || true
+          set -euo pipefail
+          python -m pytest -q tests/test_ollama_autonomous_agent.py
 
       - name: Run Ollama autonomous agent
+        env:
+          RUN_FULL_TESTS: "1"
         run: |
+          set -euo pipefail
           python scripts/ollama_autonomous_agent.py
 
       - name: Publish live GitHub notification summary

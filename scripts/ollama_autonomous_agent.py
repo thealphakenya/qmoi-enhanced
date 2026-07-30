@@ -2730,12 +2730,21 @@ def scan_for_work(root: Path | None = None) -> List[str]:
     return list(dict.fromkeys(pending))
 
 
+def _should_run_full_verification() -> bool:
+    raw = os.environ.get("RUN_FULL_TESTS", "")
+    if raw.lower() in {"1", "true", "yes", "on"}:
+        return True
+    if os.environ.get("GITHUB_ACTIONS", "") == "true":
+        return True
+    return False
+
+
 def run_agent(root: Path | None = None) -> Dict[str, object]:
     target = Path(root or ROOT)
     if (target / "tests").exists():
         # If a full test run is requested, ensure a production-like helper
         # server is available on the ports integration tests expect (3000).
-        if os.environ.get("RUN_FULL_TESTS", "0") == "1":
+        if _should_run_full_verification():
             try:
                 if str(ROOT) not in sys.path:
                     sys.path.insert(0, str(ROOT))
@@ -2909,8 +2918,8 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
               "port_fixes": normalize_changes, "merged_archives": merged_archives,
               "merge_deletions": merge_deletions}
     # If full tests were explicitly requested, run verification even if pending items exist.
-    if os.environ.get("RUN_FULL_TESTS", "0") == "1":
-        _emit_status("RUN_FULL_TESTS=1: executing repository verification despite pending work", level="info")
+    if _should_run_full_verification():
+        _emit_status("Full verification enabled: executing repository verification despite pending work", level="info")
         try:
             verification = run_repo_verification(target)
             result["verification"] = verification
