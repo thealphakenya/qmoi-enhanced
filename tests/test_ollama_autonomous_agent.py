@@ -459,6 +459,44 @@ def test_validate_all_credentials_uses_paypal_env_vars(monkeypatch):
     assert validator.paypal_config["client_secret"] == "paypal-secret"
     assert validator.paypal_config["mode"] == "sandbox"
 
+
+def test_replace_pesapal_with_paypal_renames_paypal_named_files(tmp_path):
+    module = load_module()
+    target_dir = tmp_path / "docs"
+    target_dir.mkdir(parents=True, exist_ok=True)
+    legacy_path = target_dir / "paypal-helper.txt"
+    legacy_path.write_text("legacy", encoding="utf-8")
+
+    result = module.replace_pesapal_with_paypal(tmp_path)
+
+    assert not legacy_path.exists()
+    assert (target_dir / "PayPal-helper.txt").exists()
+    assert result["files_updated"] >= 1
+
+
+def test_collect_nonproduction_inventory_scans_all_directories(tmp_path):
+    module = load_module()
+    nested_dir = tmp_path / "nested" / "deep"
+    nested_dir.mkdir(parents=True, exist_ok=True)
+    (nested_dir / "legacy.ts").write_text("TODO: remove later\n", encoding="utf-8")
+
+    inventory = module.collect_nonproduction_inventory(tmp_path)
+
+    assert any(item["path"].endswith("legacy.ts") for item in inventory)
+
+
+def test_ensure_test_coverage_creates_test_stubs_for_source_files(tmp_path):
+    module = load_module()
+    scripts_dir = tmp_path / "scripts"
+    scripts_dir.mkdir(parents=True, exist_ok=True)
+    (scripts_dir / "sample_tool.py").write_text("def run():\n    return 1\n", encoding="utf-8")
+    (tmp_path / "tests").mkdir(parents=True, exist_ok=True)
+
+    result = module.ensure_test_coverage(tmp_path)
+
+    assert (tmp_path / "tests" / "test_sample_tool.py").exists()
+    assert result["created"] >= 1
+
 # AUTOFIXED by Ollama at 2026-07-26T18:54:41.380965Z
 
 # AUTOFIXED by Ollama at 2026-07-26T18:57:34.420989Z
