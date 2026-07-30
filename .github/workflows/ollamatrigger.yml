@@ -2,6 +2,9 @@ name: Ollama trigger workflow
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - autosync-backup-20250926-232440
 
 permissions:
   contents: write
