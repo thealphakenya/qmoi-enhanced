@@ -27,7 +27,8 @@ This file tracks non-production implementations that should be upgraded to produ
 - ALLERRORSSTATSQMOI.md: ERROR
 - ALLERRORSTYPESFILES.md: ERROR
 - ALLERRORTYPESANDHEALTHCHECKS.md: ERROR
-- ALLLINKS.md: Exception, ERROR
+- ALLLINKS.md: TODO, placeholder, ERROR
+- ALLMDFILES.md: TODO, placeholder, ERROR
 - ALLMDFILESREFS.md: TODO, placeholder, ERROR
 - ALLPORTS.md: TODO, placeholder, ERROR
 - ALLQMOIAUTOEVOLVINGENVS.md: Exception, ERROR
@@ -127,6 +128,7 @@ This file tracks non-production implementations that should be upgraded to produ
 - FINAL_VERIFICATION_CHECKLIST.txt: ERROR
 - FINAL_VERIFICATION_REPORT.md: ERROR
 - FINAL_VERIFICATION_REPORT.txt: Exception, ERROR
+- FINANCIALMANAGER.md: TODO, placeholder, ERROR
 - GITHUB-ACTIONS-COMPLETE.md: ERROR
 - GITHUBPAYED.md: ERROR
 - GITHUB_ACTIONS_AUTOFIX.md: ERROR
@@ -160,6 +162,7 @@ This file tracks non-production implementations that should be upgraded to produ
 - MASTER_SYSTEM_DEPLOYMENT_REPORT.md: ERROR
 - MASTER_VERIFICATION_COMPLETE.md: ERROR
 - MERGE.md: TODO, ERROR
+- MERGED_ARCHIVES_REPORT.md: ERROR
 - MONITORING.md: ERROR
 - MONITORING_API_DOCS.md: ERROR
 - MONITORING_IMPLEMENTATION_GUIDE.md: ERROR

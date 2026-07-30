@@ -27,6 +27,102 @@ def test_build_plan_and_docs_creates_required_files(tmp_path):
     assert result["matches"].exists()
 
 
+def test_build_plan_and_docs_creates_extended_docs_inventory(tmp_path):
+    module = load_module()
+    module.build_plan_and_docs(tmp_path)
+
+    for filename in ["ALLAUTO.md", "ALLMDFILES.md", "FINANCIALMANAGER.md", "STANDARD1.md", "ALLLINKS.md", "QMOI_MEMORY_AWARENESS_SYSTEM.md"]:
+        assert (tmp_path / filename).exists()
+
+
+def test_build_plan_and_docs_creates_memory_awareness_doc(tmp_path):
+    module = load_module()
+    result = module.build_plan_and_docs(tmp_path)
+
+    assert (tmp_path / "QMOI_MEMORY_AWARENESS_SYSTEM.md").exists()
+    assert "Autonomous execution surface" in (tmp_path / "QMOI_MEMORY_AWARENESS_SYSTEM.md").read_text(encoding="utf-8")
+    assert result["memory_awareness"].exists()
+
+
+def test_collect_finance_and_credential_inventory_detects_bitget_env_vars(tmp_path):
+    module = load_module()
+    sample_file = tmp_path / "app" / "api" / "qi-trading.ts"
+    sample_file.parent.mkdir(parents=True, exist_ok=True)
+    sample_file.write_text(
+        "const BITGET_API_KEY = process.env.BITGET_API_KEY;\n"
+        "const BITGET_SECRET_KEY = process.env.BITGET_SECRET_KEY;\n"
+        "const BITGET_API_PASSPHRASE = process.env.BITGET_API_PASSPHRASE;\n",
+        encoding="utf-8",
+    )
+
+    inventory = module.collect_finance_and_credential_inventory(tmp_path)
+    bitget = next((item for item in inventory if item["provider"] == "Bitget"), None)
+
+    assert bitget is not None
+    assert "BITGET_API_KEY" in bitget["env_vars"]
+    assert "BITGET_SECRET_KEY" in bitget["env_vars"]
+    assert "BITGET_API_PASSPHRASE" in bitget["env_vars"] or "BITGET_PASSPHRASE" in bitget["env_vars"]
+    assert bitget["requires_master_auth"] is True
+
+
+def test_update_finance_and_credential_manifests_includes_bitget(tmp_path):
+    module = load_module()
+    manifest_file = tmp_path / "FINANCE_CREDENTIALS.md"
+    sample_file = tmp_path / "app" / "api" / "qi-trading.ts"
+    sample_file.parent.mkdir(parents=True, exist_ok=True)
+    sample_file.write_text(
+        "const BITGET_API_KEY = process.env.BITGET_API_KEY;\n"
+        "const BITGET_SECRET_KEY = process.env.BITGET_SECRET_KEY;\n"
+        "const BITGET_API_PASSPHRASE = process.env.BITGET_API_PASSPHRASE;\n",
+        encoding="utf-8",
+    )
+
+    module.update_finance_and_credential_manifests(tmp_path, require_master_auth=True)
+    manifest_text = manifest_file.read_text(encoding="utf-8")
+
+    assert "Bitget" in manifest_text
+    assert "BITGET_API_KEY" in manifest_text
+    assert "BITGET_SECRET_KEY" in manifest_text
+    assert "BITGET_API_PASSPHRASE" in manifest_text or "BITGET_PASSPHRASE" in manifest_text
+    assert "master authorization required" in manifest_text
+
+
+def test_update_deployment_verification_manifest_writes_guidance(tmp_path):
+    module = load_module()
+    (tmp_path / "vercel.json").write_text("{\"version\": 2}", encoding="utf-8")
+
+    manifest_path = module.update_deployment_verification_manifest(tmp_path)
+    manifest_text = manifest_path.read_text(encoding="utf-8")
+
+    assert manifest_path.exists()
+    assert "Deployment verification manifest" in manifest_text
+    assert "Vercel" in manifest_text
+
+
+def test_update_feature_and_percentage_manifest_writes_inventory(tmp_path):
+    module = load_module()
+    (tmp_path / "app").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "app" / "feature.ts").write_text("const confidence = 0.85; const percent = 85%;", encoding="utf-8")
+
+    manifest_path = module.update_feature_and_percentage_manifest(tmp_path)
+    manifest_text = manifest_path.read_text(encoding="utf-8")
+
+    assert manifest_path.exists()
+    assert "Features and percentages manifest" in manifest_text
+    assert "percentages" in manifest_text.lower()
+
+
+def test_write_bitget_credential_guide_creates_reference_doc(tmp_path):
+    module = load_module()
+
+    guide_path = module._write_bitget_credential_guide(tmp_path)
+    guide_text = guide_path.read_text(encoding="utf-8")
+
+    assert guide_path.exists()
+    assert "BITGET_API_SECRET or BITGET_SECRET_KEY" in guide_text
+    assert ".qmoi_validation/credentials.enc" in guide_text
+
+
 def test_scan_for_work_covers_repo_files(tmp_path):
     module = load_module()
     sample_file = tmp_path / "sample.md"
@@ -252,6 +348,68 @@ def test_update_hook_and_webhook_manifests_records_discord_integration(tmp_path)
     assert "Discord" in (tmp_path / "ALLHOOKSWEBHOOKS.md").read_text(encoding="utf-8")
     assert result["all_hooks"].exists()
     assert result["webhooks"].exists()
+
+
+def test_collect_official_deployment_references_adds_known_sources(tmp_path):
+    module = load_module()
+
+    references = module.collect_official_deployment_references(tmp_path)
+
+    assert references
+    assert any(ref["platform"].lower() == "vercel" for ref in references)
+
+
+def test_merge_unused_files_logs_deletions_in_merge_manifest(tmp_path):
+    module = load_module()
+    backup_path = tmp_path / "archive" / "legacy-backup.txt"
+    backup_path.parent.mkdir(parents=True, exist_ok=True)
+    backup_path.write_text("legacy content that is no longer referenced\n", encoding="utf-8")
+
+    result = module.merge_unused_files_and_update_manifest(tmp_path)
+
+    assert not backup_path.exists()
+    assert (tmp_path / "MERGE.md").exists()
+    assert any(entry["path"].endswith("legacy-backup.txt") for entry in result)
+    assert "## DELS" in (tmp_path / "MERGE.md").read_text(encoding="utf-8")
+
+
+def test_collect_finance_and_credential_inventory_finds_provider_config(tmp_path):
+    module = load_module()
+    (tmp_path / "app" / "api").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "app" / "api" / "qi-trading.ts").write_text(
+        "const BITGET_API_KEY = process.env.BITGET_API_KEY;\n"
+        "const BITGET_API_SECRET = process.env.BITGET_API_SECRET;\n",
+        encoding="utf-8",
+    )
+    (tmp_path / ".env.example").write_text(
+        "PAYPAL_CLIENT_ID=\nPAYPAL_CLIENT_SECRET=\nPESAPAL_CONSUMER_KEY=\n",
+        encoding="utf-8",
+    )
+
+    inventory = module.collect_finance_and_credential_inventory(tmp_path)
+
+    assert any(item["provider"] == "Bitget" for item in inventory)
+    assert any("BITGET_API_KEY" in item["env_vars"] for item in inventory)
+    assert any(item["provider"] == "PayPal" for item in inventory)
+
+
+def test_update_finance_and_credential_manifests_writes_secure_plan(tmp_path):
+    module = load_module()
+    (tmp_path / "app" / "api").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "app" / "api" / "wallet.ts").write_text(
+        "const BINANCE_API_KEY = process.env.BINANCE_API_KEY;\n"
+        "const BINANCE_SECRET_KEY = process.env.BINANCE_SECRET_KEY;\n",
+        encoding="utf-8",
+    )
+
+    docs = module.update_finance_and_credential_manifests(tmp_path, require_master_auth=False)
+
+    manifest_path = docs["manifest"]
+    assert manifest_path.exists()
+    text = manifest_path.read_text(encoding="utf-8")
+    assert "Binance" in text
+    assert "Secure provisioning" in text
+    assert "BINANCE_API_KEY" in text
 
 # AUTOFIXED by Ollama at 2026-07-26T18:54:41.380965Z
 

@@ -18,7 +18,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Set, Optional
 try:
-    import requests
+    import requests  # type: ignore[import]
 except Exception:
     requests = None
 
@@ -31,6 +31,7 @@ EXCLUDED_DIRS = {
     ".next", ".cache", ".config", "coverage", "logs", "tmp"
 }
 
+
 def _is_excluded_path(path: Path, target: Path | None = None) -> bool:
     target = Path(target or ROOT)
     try:
@@ -38,6 +39,7 @@ def _is_excluded_path(path: Path, target: Path | None = None) -> bool:
     except Exception:
         rel_parts = path.parts
     return any(part in EXCLUDED_DIRS for part in rel_parts)
+
 
 # Configure module logger with safety buffers
 LOG_PATH = Path.home() / ".ollama" / "logs"
@@ -69,6 +71,7 @@ if not logger.handlers:
     stream_handler.setFormatter(formatter)
     logger.addHandler(stream_handler)
 
+
 def _append_runtime_event(message: str, level: str = "info") -> None:
     """Persist a structured runtime event for audits and debugging safely."""
     try:
@@ -88,6 +91,7 @@ def _append_runtime_event(message: str, level: str = "info") -> None:
     except Exception:
         pass
 
+
 def _emit_status(message: str, level: str = "info") -> None:
     """Emit a timestamped status message to stdout and the persistent agent log."""
     ts = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
@@ -96,6 +100,7 @@ def _emit_status(message: str, level: str = "info") -> None:
     print(line, flush=True)
     getattr(logger, level.lower(), logger.info)(message)
     _append_runtime_event(message, level=level)
+
 
 def _load_state(target: Path | None = None) -> Dict[str, object]:
     state_path = Path(target or ROOT) / ".ollama_agent_state.json"
@@ -111,6 +116,7 @@ def _load_state(target: Path | None = None) -> Dict[str, object]:
             return {"processed": [], "iteration": 0, "total_updated": 0, "resume_checksum": None}
     return {"processed": [], "iteration": 0, "total_updated": 0, "resume_checksum": None}
 
+
 def _save_state(state: Dict[str, object], target: Path | None = None) -> None:
     state_path = Path(target or ROOT) / ".ollama_agent_state.json"
     try:
@@ -119,8 +125,10 @@ def _save_state(state: Dict[str, object], target: Path | None = None) -> None:
     except Exception as e:
         logger.error(f"Failed to write state: {e}")
 
+
 def _hash_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
 
 def _resume_file_checksum(root: Path | None = None) -> Optional[str]:
     target = Path(root or ROOT)
@@ -131,6 +139,7 @@ def _resume_file_checksum(root: Path | None = None) -> Optional[str]:
         return _hash_text(resume_path.read_text(encoding="utf-8", errors="ignore"))
     except Exception:
         return None
+
 
 def _resume_file_changed(root: Path | None = None) -> bool:
     target = Path(root or ROOT)
@@ -143,6 +152,7 @@ def _resume_file_changed(root: Path | None = None) -> bool:
         _save_state(state, target)
         return True
     return False
+
 
 def _extract_resume_instructions(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
@@ -161,6 +171,7 @@ def _extract_resume_instructions(root: Path | None = None) -> List[str]:
             if candidate and len(candidate) > 3:
                 instructions.append(candidate)
     return sorted(dict.fromkeys(instructions))  # Ensure unique instructions
+
 
 def _load_migration_plan(root: Path | None = None, filename: str = "COMPONENTS_MIGRATION_PLAN.md") -> List[str]:
     """Load user-provided migration plan tasks from a dedicated markdown file.
@@ -196,9 +207,11 @@ def _load_migration_plan(root: Path | None = None, filename: str = "COMPONENTS_M
             out.append(token)
     return out
 
+
 def _looks_like_resume_command(command: str) -> bool:
     lower = command.strip().lower()
     return bool(re.match(r"^(python|pytest|mypy|flake8|pylint|npm|yarn|pnpm|cargo|go|gradle|make|docker|git|bash)\b", lower))
+
 
 def _looks_like_actionable_task(item: str, root: Path | None = None) -> bool:
     item = item.strip()
@@ -220,12 +233,14 @@ def _looks_like_actionable_task(item: str, root: Path | None = None) -> bool:
             return False
     return False
 
+
 def _map_port_to_production(port: int, context: str = "") -> int:
     if port in {80, 3000, 3001, 3002, 3003, 3004, 3005, 3006, 4200, 4201, 5000, 5001, 6000, 8000, 8001, 8002, 8080, 9000, 9001, 9229}:
         return 443
     if port in {22, 5432, 3306, 27017, 6379, 5672, 9092, 8443, 443}:
         return port
     return port
+
 
 def _normalize_production_ports(root: Path | None = None) -> List[Dict[str, object]]:
     target = Path(root or ROOT)
@@ -275,12 +290,343 @@ def _normalize_production_ports(root: Path | None = None) -> List[Dict[str, obje
                 continue
     return changes
 
+
 def _comment_token_for_suffix(suffix: str) -> str:
     return {
         ".py": "#", ".sh": "#", ".ps1": "#", ".js": "//", ".ts": "//",
         ".tsx": "//", ".jsx": "//", ".java": "//", ".c": "//", ".cpp": "//",
         ".go": "//", ".rb": "#", ".php": "//",
     }.get(suffix.lower(), "#")
+
+
+def _merge_deletion_log_path(root: Path | None = None) -> Path:
+    return Path(root or ROOT) / ".ollama_merge_deletions.json"
+
+
+def _load_merge_deletion_log(root: Path | None = None) -> List[Dict[str, object]]:
+    target = Path(root or ROOT)
+    path = _merge_deletion_log_path(target)
+    if not path.exists():
+        return []
+    try:
+        data = json.loads(path.read_text(encoding="utf-8", errors="ignore"))
+        if isinstance(data, list):
+            return data
+    except Exception:
+        pass
+    return []
+
+
+def _write_merge_deletion_log(entries: List[Dict[str, object]], root: Path | None = None) -> None:
+    target = Path(root or ROOT)
+    path = _merge_deletion_log_path(target)
+    path.write_text(json.dumps(entries, indent=2), encoding="utf-8")
+
+
+def collect_official_deployment_references(root: Path | None = None) -> List[Dict[str, object]]:
+    """Return a curated list of official deployment platform references for autonomous deployment checks."""
+    target = Path(root or ROOT)
+    references: List[Dict[str, object]] = [
+        {"platform": "Vercel", "docs_url": "https://vercel.com/docs",
+            "notes": "Use official Vercel documentation for deployments, redeployments, environment variables, and build settings."},
+        {"platform": "GitHub Actions", "docs_url": "https://docs.github.com/actions",
+            "notes": "Use GitHub Actions documentation for workflow reliability, secrets, and deployment automation."},
+        {"platform": "Netlify", "docs_url": "https://docs.netlify.com/",
+            "notes": "Use Netlify docs for deployment configuration, environment handling, and redeploys."},
+        {"platform": "Render", "docs_url": "https://render.com/docs",
+            "notes": "Use Render docs for service deployments, health checks, and runtime environment configuration."},
+        {"platform": "Railway", "docs_url": "https://docs.railway.app/",
+            "notes": "Use Railway docs for environment provisioning and staging deployment flows."},
+        {"platform": "Fly.io", "docs_url": "https://fly.io/docs/",
+            "notes": "Use Fly.io docs for app deployment, scaling, and runtime health checks."},
+    ]
+    detected = []
+    for config_name in ("vercel.json", "netlify.toml", "render.yaml", "railway.json", "fly.toml"):
+        if (target / config_name).exists():
+            detected.append(config_name)
+    if detected:
+        for ref in references:
+            ref["detected_configs"] = detected
+            break
+    if requests:
+        for ref in references:
+            try:
+                response = requests.get(ref["docs_url"], timeout=5, headers={"User-Agent": "Mozilla/5.0"})
+                ref["http_status"] = response.status_code
+            except Exception as exc:
+                ref["http_status"] = f"unavailable:{exc}"
+    return references
+
+
+def collect_deployment_verification_inventory(root: Path | None = None) -> List[Dict[str, object]]:
+    """Collect deployment-related files and configuration hints for verification and issue triage."""
+    target = Path(root or ROOT)
+    inventory: List[Dict[str, object]] = []
+    if not target.exists():
+        return inventory
+
+    platform_targets = {
+        "Vercel": ["vercel.json", ".github/workflows/deploy.yml", ".github/workflows/vercel-autofix.yml", "app/api/deploy/route.ts"],
+        "Netlify": ["netlify.toml"],
+        "Render": ["render.yaml"],
+        "Railway": ["railway.json"],
+        "Fly.io": ["fly.toml"],
+    }
+
+    for platform, candidates in platform_targets.items():
+        matched = [candidate for candidate in candidates if (target / candidate).exists()]
+        if matched:
+            inventory.append({"platform": platform, "files": matched,
+                             "notes": "Deployment configuration detected for automated verification."})
+
+    workflow_dir = target / ".github" / "workflows"
+    if workflow_dir.exists():
+        for workflow_path in sorted(workflow_dir.glob("*.yml")) + sorted(workflow_dir.glob("*.yaml")):
+            try:
+                text = workflow_path.read_text(encoding="utf-8", errors="ignore")
+            except Exception:
+                continue
+            if any(keyword in text.lower() for keyword in ("deploy", "vercel", "netlify", "render", "railway", "fly")):
+                inventory.append({"platform": "GitHub Actions", "files": [workflow_path.relative_to(
+                    target).as_posix()], "notes": "Workflow contains deployment automation."})
+
+    return sorted(inventory, key=lambda item: str(item["platform"]).lower())
+
+
+def update_deployment_verification_manifest(root: Path | None = None) -> Path:
+    """Write a deployment verification manifest with guidance for successful deployment and issue triage."""
+    target = Path(root or ROOT)
+    target.mkdir(parents=True, exist_ok=True)
+    inventory = collect_deployment_verification_inventory(target)
+    references = collect_official_deployment_references(target)
+    manifest_path = target / "DEPLOYMENT_VERIFICATION.md"
+
+    lines = [
+        "# Deployment verification manifest",
+        "",
+        "## Policy",
+        "- The Ollama autonomous agent must verify deployment configuration, environment variables, and official platform documentation before attempting fixes.",
+        "- Whenever a deployment fails, the agent should capture the exact error message, identify the likely root cause, and apply the smallest verified fix.",
+        "- For Vercel, GitHub Actions, and other host platforms, the agent should prefer the official platform docs and the repository's deployment workflow files over guesswork.",
+        "",
+        "## Detected deployment surfaces",
+    ]
+    if inventory:
+        for entry in inventory:
+            files = ", ".join(entry["files"]) if entry.get("files") else "<none detected>"
+            lines.append(f"- {entry['platform']}: {files}")
+    else:
+        lines.append("- No deployment configuration files were detected in the repository scan.")
+
+    lines.extend([
+        "",
+        "## Verification checklist",
+        "- Confirm build and install commands are valid for the current repository state.",
+        "- Verify required environment variables are present for the target platform before deployment.",
+        "- Check deployment logs and route health after a deploy or redeploy attempt.",
+        "- Re-run verification after each fix until deployment health is confirmed.",
+        "",
+        "## Official references",
+    ])
+    for ref in references[:8]:
+        lines.append(f"- {ref['platform']}: {ref['docs_url']} ({ref.get('notes', 'official documentation')})")
+
+    manifest_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    _emit_status(f"Updated deployment verification manifest at {manifest_path}", level="info")
+    return manifest_path
+
+
+def collect_feature_and_percentage_inventory(root: Path | None = None) -> List[Dict[str, object]]:
+    """Collect feature and percentage-related hints from repository files for documentation and automation coverage."""
+    target = Path(root or ROOT)
+    inventory: List[Dict[str, object]] = []
+    if not target.exists():
+        return inventory
+
+    patterns = [
+        ("percentage", ["percentage", "percent", "confidence", "threshold", "ratio"]),
+        ("feature", ["feature", "feature_flag", "feature flag", "global feature", "global"]),
+    ]
+    for label, keywords in patterns:
+        matches: List[Dict[str, object]] = []
+        for path in sorted(target.rglob("*")):
+            if not path.is_file() or _is_excluded_path(path, target):
+                continue
+            if path.suffix.lower() not in {".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".txt", ".json", ".yml", ".yaml", ".env", ".ini", ".cfg", ".toml", ".sh", ".ps1"}:
+                continue
+            try:
+                text = path.read_text(encoding="utf-8", errors="ignore")
+            except Exception:
+                continue
+            if any(keyword in text.lower() for keyword in keywords):
+                matches.append({"path": path.relative_to(target).as_posix(), "sample": text.strip()[:180]})
+        if matches:
+            inventory.append({"category": label, "matches": matches[:20]})
+
+    percentage_matches = []
+    for path in sorted(target.rglob("*")):
+        if not path.is_file() or _is_excluded_path(path, target):
+            continue
+        if path.suffix.lower() not in {".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".txt", ".json", ".yml", ".yaml", ".env", ".ini", ".cfg", ".toml", ".sh", ".ps1"}:
+            continue
+        try:
+            text = path.read_text(encoding="utf-8", errors="ignore")
+        except Exception:
+            continue
+        percentages = sorted(set(re.findall(r"\b\d+(?:\.\d+)?%", text)))
+        if percentages:
+            percentage_matches.append({"path": path.relative_to(target).as_posix(), "percentages": percentages})
+    if percentage_matches:
+        inventory.append({"category": "percentages", "matches": percentage_matches[:20]})
+
+    return inventory
+
+
+def update_feature_and_percentage_manifest(root: Path | None = None) -> Path:
+    """Write a documentation manifest covering global features and percentage-related values."""
+    target = Path(root or ROOT)
+    target.mkdir(parents=True, exist_ok=True)
+    inventory = collect_feature_and_percentage_inventory(target)
+    manifest_path = target / "FEATURES_AND_PERCENTAGES.md"
+
+    lines = [
+        "# Features and percentages manifest",
+        "",
+        "## Policy",
+        "- The Ollama autonomous agent should keep feature and percentage guidance synchronized with the code and docs so that global behavior and thresholds remain consistent.",
+        "- When a new feature, confidence threshold, or percentage-based rule is introduced, it should be documented here and in the relevant runtime manifest.",
+        "",
+        "## Inventory",
+    ]
+    if inventory:
+        for entry in inventory:
+            category = entry["category"]
+            matches = entry.get("matches", [])
+            if category == "percentages":
+                lines.append(f"- {category}: {len(matches)} files contain percentage values")
+                for item in matches[:8]:
+                    lines.append(f"  - {item['path']}: {', '.join(item['percentages'])}")
+            else:
+                lines.append(f"- {category}: {len(matches)} files mention related feature or global guidance")
+                for item in matches[:8]:
+                    lines.append(f"  - {item['path']}: {item['sample']}")
+    else:
+        lines.append("- No feature or percentage-related inventory was detected.")
+
+    manifest_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    _emit_status(f"Updated feature/percentage manifest at {manifest_path}", level="info")
+    return manifest_path
+
+
+def _write_bitget_credential_guide(root: Path | None = None) -> Path:
+    """Write a dedicated Bitget guidance document with credential storage and runtime instructions."""
+    target = Path(root or ROOT)
+    target.mkdir(parents=True, exist_ok=True)
+    guide_path = target / "bitget.md"
+    content = """# Bitget credential guide
+
+## Purpose
+This file is the canonical reference for Bitget credentials, runtime aliases, and storage locations used by the QMOI autonomous agent and finance integrations.
+
+## Credential storage locations
+- Encrypted credential store: .qmoi_validation/credentials.enc
+- Encryption key: .qmoi_validation/credential.key
+- Runtime environment variables: .env, .env.production, or the GitHub Actions secret store
+
+## Supported environment aliases
+- BITGET_API_KEY
+- BITGET_API_SECRET or BITGET_SECRET_KEY
+- BITGET_API_PASSPHRASE or BITGET_PASSPHRASE
+- BITGET_API_URL
+- MASTER_TOKEN for master-authorized routes
+
+## How the agent should use credentials
+- Prefer the secure encrypted credential store when the runtime is local.
+- Merge environment values into the encrypted store before any live validation or provisioning step.
+- Never write raw secret values into markdown or logs.
+- Validate with the credential validator before using the values for live trading or provisioning.
+
+## Operational notes
+- The autonomous agent must keep Bitget runtime integrations, manifests, and docs in sync whenever credentials or aliases change.
+- Master authorization is required for live financial actions and sensitive wallet routes.
+- If a credential is missing or invalid, the agent should flag it, record the issue, and refuse live provisioning until it is corrected.
+"""
+    guide_path.write_text(content, encoding="utf-8")
+    _emit_status(f"Updated Bitget guidance document at {guide_path}", level="info")
+    return guide_path
+
+
+def merge_unused_files_and_update_manifest(root: Path | None = None) -> List[Dict[str, object]]:
+    """Merge unreferenced archive/backup files into the merge manifest and delete the source file after merge."""
+    target = Path(root or ROOT)
+    candidates: List[Path] = []
+    for path in sorted(target.rglob("*")):
+        if not path.is_file() or _is_excluded_path(path, target):
+            continue
+        lowered = path.as_posix().lower()
+        if not any(token in lowered for token in ("archive", "archived", "backup", "backups", ".backup", "legacy", "old", "obsolete", "deprecated")):
+            continue
+        if path.name.startswith(".") and path.name not in {".env", ".gitignore"}:
+            continue
+        candidates.append(path)
+
+    entries: List[Dict[str, object]] = []
+    for path in candidates:
+        rel = path.relative_to(target).as_posix()
+        if path.name == "MERGE.md" or path.name == "OLLAMA_ACTIVITY_FEED.md":
+            continue
+        try:
+            text = path.read_text(encoding="utf-8", errors="ignore")
+        except Exception:
+            continue
+        if not text.strip():
+            continue
+        is_referenced = False
+        for scan_path in sorted(target.rglob("*")):
+            if not scan_path.is_file() or scan_path == path or _is_excluded_path(scan_path, target):
+                continue
+            try:
+                scan_text = scan_path.read_text(encoding="utf-8", errors="ignore")
+            except Exception:
+                continue
+            if rel in scan_text or path.name in scan_text or path.stem in scan_text:
+                is_referenced = True
+                break
+        if is_referenced:
+            continue
+
+        merge_manifest = target / "MERGE.md"
+        merge_manifest.parent.mkdir(parents=True, exist_ok=True)
+        existing = merge_manifest.read_text(encoding="utf-8", errors="ignore") if merge_manifest.exists() else ""
+        block = [
+            "",
+            f"## Merged content from {rel}",
+            "",
+            f"- Source file: {rel}",
+            "- Treatment: merged into the canonical manifests and removed after confirming the content was not actively referenced by the current implementation.",
+            "- Note: this file was considered a legacy or archive artifact and its information was preserved in the merge documentation.",
+            "",
+            text.strip(),
+            "",
+        ]
+        merge_manifest.write_text(existing.rstrip() + "\n" + "\n".join(block) + "\n", encoding="utf-8")
+        entry = {
+            "path": rel,
+            "merged_to": "MERGE.md",
+            "note": "Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.",
+        }
+        entries.append(entry)
+        try:
+            path.unlink(missing_ok=True)
+        except Exception:
+            pass
+
+    existing_entries = _load_merge_deletion_log(target)
+    merged_entries = existing_entries + entries
+    _write_merge_deletion_log(merged_entries, target)
+    update_documentation_manifests(target, inventory=collect_route_inventory(target))
+    return merged_entries
+
 
 def collect_merge_inventory(root: Path | None = None) -> List[Dict[str, object]]:
     """Group similar files safely while avoiding excluded directories."""
@@ -311,6 +657,7 @@ def collect_merge_inventory(root: Path | None = None) -> List[Dict[str, object]]
         inventory.append({"group": base, "paths": unique_paths})
 
     return inventory
+
 
 def collect_route_inventory(root: Path | None = None) -> List[Dict[str, object]]:
     """Collect route definitions safely without recursive system lockups."""
@@ -357,6 +704,146 @@ def collect_route_inventory(root: Path | None = None) -> List[Dict[str, object]]
 
     return sorted(inventory, key=lambda item: str(item["route"]))
 
+
+def collect_finance_and_credential_inventory(root: Path | None = None) -> List[Dict[str, object]]:
+    """Discover finance/provider integrations from repo files without exposing secret values."""
+    target = Path(root or ROOT)
+    inventory: List[Dict[str, object]] = []
+    if not target.exists():
+        return inventory
+
+    provider_rules = [
+        {
+            "provider": "Bitget",
+            "keywords": ["bitget", "qi-trading"],
+            "env_vars": [
+                "BITGET_API_KEY",
+                "BITGET_API_SECRET",
+                "BITGET_SECRET_KEY",
+                "BITGET_API_PASSPHRASE",
+                "BITGET_PASSPHRASE",
+                "BITGET_API_URL",
+            ],
+            "requires_master_auth": True,
+        },
+        {
+            "provider": "Binance",
+            "keywords": ["binance", "wallet"],
+            "env_vars": ["BINANCE_API_KEY", "BINANCE_SECRET_KEY", "BINANCE_WITHDRAWAL_ADDRESS"],
+            "requires_master_auth": False,
+        },
+        {
+            "provider": "PayPal",
+            "keywords": ["paypal"],
+            "env_vars": ["PAYPAL_CLIENT_ID", "PAYPAL_CLIENT_SECRET", "PAYPAL_MODE"],
+            "requires_master_auth": True,
+        },
+        {
+            "provider": "Pesapal",
+            "keywords": ["pesapal"],
+            "env_vars": ["PESAPAL_CONSUMER_KEY", "PESAPAL_CONSUMER_SECRET", "PESAPAL_ENVIRONMENT"],
+            "requires_master_auth": True,
+        },
+        {
+            "provider": "CashOn",
+            "keywords": ["cashon", "mpesa"],
+            "env_vars": ["CASHON_MPESA_NUMBER", "CASHON_WALLET"],
+            "requires_master_auth": True,
+        },
+        {
+            "provider": "Stripe",
+            "keywords": ["stripe"],
+            "env_vars": ["STRIPE_SECRET_KEY", "STRIPE_PUBLISHABLE_KEY", "STRIPE_WEBHOOK_SECRET"],
+            "requires_master_auth": True,
+        },
+        {
+            "provider": "Master/QMOI",
+            "keywords": ["qmoi_master", "master token", "master api key"],
+            "env_vars": ["QMOI_MASTER_TOKEN", "QMOI_MASTER_API_KEY"],
+            "requires_master_auth": True,
+        },
+    ]
+
+    allowed_suffixes = {".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".txt",
+                        ".json", ".yml", ".yaml", ".env", ".ini", ".cfg", ".toml", ".sh", ".ps1"}
+    for rule in provider_rules:
+        matched_files: List[str] = []
+        matched_vars: Set[str] = set()
+        for path in sorted(target.rglob("*")):
+            if not path.is_file() or _is_excluded_path(path, target):
+                continue
+            name = path.name.lower()
+            suffix = path.suffix.lower()
+            if name.startswith(".env") or suffix in allowed_suffixes or name.endswith(".example"):
+                pass
+            else:
+                continue
+            try:
+                text = path.read_text(encoding="utf-8", errors="ignore")
+            except Exception:
+                continue
+            lower_text = text.lower()
+            if any(keyword in lower_text for keyword in rule["keywords"]) or any(var in text for var in rule["env_vars"]):
+                matched_files.append(path.relative_to(target).as_posix())
+                for var in rule["env_vars"]:
+                    if var in text:
+                        matched_vars.add(var)
+        if matched_files or matched_vars:
+            inventory.append({
+                "provider": rule["provider"],
+                "env_vars": sorted(matched_vars),
+                "sources": sorted(dict.fromkeys(matched_files)),
+                "requires_master_auth": rule["requires_master_auth"],
+                "notes": "Discovered via environment-variable names and repository references; no secret values are written to disk.",
+            })
+
+    return sorted(inventory, key=lambda item: str(item["provider"]).lower())
+
+
+def update_finance_and_credential_manifests(root: Path | None = None, require_master_auth: bool = True) -> Dict[str, Path]:
+    """Create a secure finance/credential manifest describing discovered providers and provisioning guidance."""
+    target = Path(root or ROOT)
+    target.mkdir(parents=True, exist_ok=True)
+    inventory = collect_finance_and_credential_inventory(target)
+    manifest_path = target / "FINANCE_CREDENTIALS.md"
+
+    lines = [
+        "# Finance and credential provisioning manifest",
+        "",
+        "## Secure provisioning policy",
+        "- Discover credentials by variable name and repository source only; never print or persist secret values.",
+        "- Provisioning steps must use a secure vault or environment injection and remain gated by master authorization when live accounts are involved.",
+        "- Keep this manifest in sync with runtime integrations and documentation so automation can safely plan account provisioning.",
+        "",
+        "## Inventory",
+    ]
+    if inventory:
+        for entry in inventory:
+            env_list = ", ".join(entry["env_vars"]) or "<none detected>"
+            sources = ", ".join(entry["sources"][:8]) if entry["sources"] else "<none detected>"
+            gate = "master authorization required" if entry.get(
+                "requires_master_auth") else "standard environment injection"
+            lines.append(f"- {entry['provider']}: env vars [{env_list}] | sources [{sources}] | provisioning: {gate}")
+    else:
+        lines.append("- No finance or credential integrations were detected in the repository scan.")
+
+    lines.extend([
+        "",
+        "## Secure provisioning plan",
+        "- Validate each provider's environment variables in the runtime environment or secure vault before any provisioning action.",
+        "- Record approvals, account states, and provisioning outcomes in this manifest and the workflow activity feed.",
+        "- Keep live provisioning actions disabled unless the master/system authorization context is present.",
+        "",
+        "## Notes",
+        f"- Master authorization is {'required' if require_master_auth else 'not required for the inventory-only pass'} for live account provisioning.",
+        "- The autonomous agent should only create or update this manifest; it should not attempt live credential submission or external account creation without explicit master approval.",
+    ])
+
+    manifest_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    _emit_status(f"Updated finance/credential manifest at {manifest_path}", level="info")
+    return {"manifest": manifest_path}
+
+
 def _collect_docs_inventory(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
     docs_files: List[Path] = []
@@ -366,6 +853,7 @@ def _collect_docs_inventory(root: Path | None = None) -> List[str]:
     docs_files.extend([p for p in target.rglob("*.md") if p.is_file()
                       and not _is_excluded_path(p, target) and p.parent == target])
     return sorted({p.relative_to(target).as_posix() for p in docs_files})
+
 
 def update_documentation_manifests(
     root: Path | None = None,
@@ -410,6 +898,8 @@ def update_documentation_manifests(
         + [f"- {entry['path']} [{entry['methods']}]" for entry in route_endpoints]
     )
     docs_inventory = _collect_docs_inventory(target)
+    deployment_refs = collect_official_deployment_references(target)
+    deletion_entries = _load_merge_deletion_log(target)
     merge_body = "\n".join([
         "# Merge operations",
         f"- Branch: {branch_name}",
@@ -422,9 +912,17 @@ def update_documentation_manifests(
         *[f"- {entry}" for entry in docs_inventory[:80]],
         *([f"- ...and {len(docs_inventory) - 80} more documentation files"] if len(docs_inventory) > 80 else []),
         "",
+        "## Official deployment references",
+        *[f"- {ref['platform']}: {ref['docs_url']} ({ref['notes']})" for ref in deployment_refs[:8]],
+        "",
         "## Production sync notes",
         "- Ensure API.md, ENDPOINTS.md, ROUTES.md, and DOCS.md all reflect the current implementation.",
         "- Ensure UNIVERSALS.md and STYLES.md remain aligned with the active UI and accessibility guidance.",
+        "- Ensure deployment and redeployment workflows reference the official documentation for each supported platform.",
+        "",
+        "## DELS (all deleted after merge)",
+        *([f"- {entry['path']}: {entry['note']}" for entry in deletion_entries[:50]]
+          if deletion_entries else ["- No files were deleted after merge in this run."]),
     ])
 
     _write_manifest(docs["api"], "# API manifest", api_body)
@@ -433,6 +931,7 @@ def update_documentation_manifests(
     _write_manifest(docs["merge"], "# Merge manifest", merge_body)
 
     return docs
+
 
 def _safe_file_write(path: Path, content: str) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -443,6 +942,7 @@ def _safe_file_write(path: Path, content: str) -> Path:
         rel_path = path
     _emit_status(f"Created or refreshed {rel_path}", level="info")
     return path
+
 
 def _scan_old_component_references(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
@@ -462,6 +962,7 @@ def _scan_old_component_references(root: Path | None = None) -> List[str]:
         if any(pattern.search(text) for pattern in patterns):
             refs.add(path.relative_to(target).as_posix())
     return sorted(refs)
+
 
 def _refresh_component_documentation(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
@@ -524,6 +1025,7 @@ def _refresh_component_documentation(root: Path | None = None) -> List[str]:
     _build_all_ports_doc(target)
     return changed
 
+
 def _create_components_migration_plan(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
     plan_path = target / "COMPONENTS_MIGRATION_PLAN.md"
@@ -555,12 +1057,14 @@ def _create_components_migration_plan(root: Path | None = None) -> Path:
     _emit_status(f"Created component migration plan at {plan_path.relative_to(target)}", level="info")
     return plan_path
 
+
 def _parse_python_file(path: Path) -> Optional[ast.AST]:
     try:
         text = path.read_text(encoding="utf-8", errors="ignore")
         return ast.parse(text, filename=str(path))
     except Exception:
         return None
+
 
 def _backup_self_script(root: Path | None = None) -> Optional[Path]:
     target = Path(root or ROOT)
@@ -578,6 +1082,7 @@ def _backup_self_script(root: Path | None = None) -> Optional[Path]:
     except Exception as exc:
         _emit_status(f"Failed to back up self script: {exc}", level="warning")
         return None
+
 
 def _auto_fix_self_script_text(text: str) -> str:
     lines = text.splitlines()
@@ -607,6 +1112,7 @@ def _auto_fix_self_script_text(text: str) -> str:
         fixed_text = fixed_text.rstrip() + "\n\nif __name__ == \"__main__\":\n    main()\n"
     fixed_text = fixed_text.strip() + "\n"
     return fixed_text
+
 
 def _self_verify_and_fix(root: Path | None = None) -> bool:
     target = Path(root or ROOT)
@@ -638,6 +1144,7 @@ def _self_verify_and_fix(root: Path | None = None) -> bool:
         _emit_status(f"Failed to write repaired self script: {exc}", level="warning")
     return False
 
+
 def _self_restart_if_updated(root: Path | None = None) -> bool:
     target = Path(root or ROOT)
     if os.environ.get("OLLAMA_SELF_RESTARTED", "0") == "1":
@@ -647,6 +1154,7 @@ def _self_restart_if_updated(root: Path | None = None) -> bool:
         _emit_status("Self-repair complete; restarting Ollama autonomous agent.", level="info")
         os.execv(sys.executable, [sys.executable] + sys.argv)
     return False
+
 
 def _self_update_script(root: Path | None = None) -> bool:
     target = Path(root or ROOT)
@@ -670,12 +1178,14 @@ def _self_update_script(root: Path | None = None) -> bool:
             _emit_status(f"Failed to write self-updated script: {exc}", level="warning")
     return False
 
+
 def _ensure_self_update_capabilities(root: Path | None = None) -> None:
     target = Path(root or ROOT)
     if _self_update_script(target):
         _emit_status("Self-update detected and applied", level="info")
     else:
         _emit_status("Self-update check completed with no changes", level="info")
+
 
 def _ensure_lib_production_ready(root: Path | None = None) -> List[str]:
     """Validate that `lib/*.ts` production modules exist and appear production-ready.
@@ -724,6 +1234,7 @@ def _ensure_lib_production_ready(root: Path | None = None) -> List[str]:
     _emit_status(f"Lib production readiness: {', '.join(status)}", level="info")
     return status
 
+
 def _ensure_local_helper_server(port: int = 8080, host: str = "127.0.0.1", timeout: float = 5.0) -> bool:
     """Ensure the local QM OI helper server is available for verification tasks."""
     os.environ["QMOI_HELPER_AUTOSTART"] = "1"
@@ -764,10 +1275,12 @@ def _ensure_local_helper_server(port: int = 8080, host: str = "127.0.0.1", timeo
     _emit_status("Local helper server did not respond in time", level="warning")
     return False
 
+
 def _ensure_ollama_client() -> bool:
     if shutil.which("ollama"):
         return True
     return False
+
 
 def _discover_autonomous_commands(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
@@ -811,10 +1324,12 @@ def _discover_autonomous_commands(root: Path | None = None) -> List[str]:
             # Run a lightweight compile-only verification to avoid flaky integration
             # failures in environments without dependent services.
             commands.add(" ".join([sys.executable, "-m", "compileall", "-q", "."]))
+            commands.add("pytest -q tests")
     if any((target / p).exists() for p in ("pyproject.toml", "setup.py", "requirements.txt")):
         commands.add(" ".join([sys.executable, "-m", "compileall", "-q", "."]))
 
     return sorted(commands)
+
 
 def _run_safe_command(command: str, root: Path | None = None) -> Dict[str, object]:
     target = Path(root or ROOT)
@@ -865,9 +1380,11 @@ def _run_safe_command(command: str, root: Path | None = None) -> Dict[str, objec
     _emit_status(f"Executed resume command: {command} status={result['status']}", level="info")
     return result
 
+
 def _is_verification_command(command: str) -> bool:
     lower = command.lower()
     return bool(re.search(r"\b(pytest|compileall|mypy|flake8|pylint|npm(?: run)? test|yarn(?: run)? test|pnpm(?: run)? test|cargo test|go test|gradle test)\b", lower))
+
 
 def _execute_resume_instructions(root: Path | None = None, instructions: List[str] | None = None) -> List[Dict[str, object]]:
     target = Path(root or ROOT)
@@ -892,6 +1409,7 @@ def _execute_resume_instructions(root: Path | None = None, instructions: List[st
         results.append(result)
     return results
 
+
 def _backup_resume(resume_path: Path) -> Optional[Path]:
     if not resume_path.exists():
         return None
@@ -907,6 +1425,7 @@ def _backup_resume(resume_path: Path) -> Optional[Path]:
         _emit_status(f"Failed to back up resume file: {exc}", level="warning")
         return None
 
+
 def _count_resume_statuses(text: str) -> Dict[str, int]:
     counts = {"done": 0, "verify": 0, "confirmed": 0, "pending": 0, "other": 0}
     for line in text.splitlines():
@@ -921,6 +1440,7 @@ def _count_resume_statuses(text: str) -> Dict[str, int]:
         elif line.strip().startswith("-"):
             counts["other"] += 1
     return counts
+
 
 def _build_outstanding_work_section() -> List[str]:
     return [
@@ -941,6 +1461,7 @@ def _build_outstanding_work_section() -> List[str]:
         "",
     ]
 
+
 def _generate_resume_instruction_lines() -> List[str]:
     return [
         "## Agent instructions",
@@ -950,12 +1471,14 @@ def _generate_resume_instruction_lines() -> List[str]:
         "- Keep resumefromhere.txt updated in real time with progress counts, historical audit entries, and journey map tracks.",
         "- Scan archive and backup directories for unmerged or missing files and merge them into the working tree.",
         "- Scan DOWNLOADQMOIAIAPPALLDEVICES.md and other download/app/build/release docs for referenced .py scripts, ensure those scripts exist, and update them.",
-        "- Keep all manifest and documentation files synchronized: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLTESTSAUOTOTESTS.md, ALLHOOKSWEBHOOKS.md, ALLERRORS.md, UNIVERSALS.md, STYLES.md.",
+        "- Keep all manifest and documentation files synchronized: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLTESTSAUOTOTESTS.md, ALLHOOKSWEBHOOKS.md, ALLERRORS.md, ALLAUTO.md, ALLMDFILES.md, FINANCIALMANAGER.md, STANDARD1.md, ALLLINKS.md, UNIVERSALS.md, STYLES.md.",
         "- Review WifiPanel.tsx and all WiFi entrypoints, then enhance captive WiFi, auto-connect, and captive portal automation coverage across the repository.",
         "- Locate ComponentGallery references and remove stale gallery features while merging UI capabilities into styles and universals.",
         "- Inspect .css, .html, .js, .tsx, .ts, .py, and other files for old auth/theme implementations, merge them into universals/styles, and document the migration.",
         "- Create or refresh automated tests for Python source files and update the test manifest whenever scripts are added or changed.",
         "- Create or refresh hooks and webhook documentation, and record workflow integrations in ALLHOOKSWEBHOOKS.md.",
+        "- Treat financial, trading, and confidence-threshold notifications as production-critical and document them in FINANCIALMANAGER.md and ALLHOOKSWEBHOOKS.md.",
+        "- Load STANDARD1.md as the shared memory contract before planning the run so the agent understands repository context, UI sync expectations, and workflow behavior.",
         "- Use the local helper server and production helper server as needed to satisfy integration and verification checks.",
         "- Persist the agent state and mark processed items so future runs continue where the previous run left off.",
         "- Use AUTO_CONTINUE=1 to continue through batches until pending items are processed or iteration limits are reached.",
@@ -965,6 +1488,7 @@ def _generate_resume_instruction_lines() -> List[str]:
         "- Never ignore newly discovered required work, missing scripts, or production readiness markers.",
         "",
     ]
+
 
 def _update_resume_progress(
     resume_path: Path,
@@ -1063,6 +1587,7 @@ def _update_resume_progress(
     resume_path.write_text(updated, encoding="utf-8")
     _emit_status(f"Updated resumefromhere progress: {resume_path}", level="info")
 
+
 def _should_stop_autonomous_run(resume_path: Path, pending: List[str]) -> bool:
     if pending:
         return False
@@ -1070,6 +1595,7 @@ def _should_stop_autonomous_run(resume_path: Path, pending: List[str]) -> bool:
         return False
     text = resume_path.read_text(encoding="utf-8", errors="ignore")
     return "[CONFIRMED]" in text
+
 
 def _build_markdown_inventory(root: Path | None = None) -> List[Path]:
     target = Path(root or ROOT)
@@ -1081,6 +1607,7 @@ def _build_markdown_inventory(root: Path | None = None) -> List[Path]:
             continue
         md_paths.append(path)
     return md_paths
+
 
 def _extract_python_references_from_markdown(path: Path) -> List[str]:
     target = path.parent
@@ -1094,6 +1621,7 @@ def _extract_python_references_from_markdown(path: Path) -> List[str]:
     for match in re.findall(r"\b([\w\-/]+\.py)\b", text):
         results.append(match)
     return sorted(dict.fromkeys(results))
+
 
 def _scan_download_app_release_docs(root: Path | None = None) -> List[Path]:
     target = Path(root or ROOT)
@@ -1111,6 +1639,7 @@ def _scan_download_app_release_docs(root: Path | None = None) -> List[Path]:
         if any(term in text for term in patterns):
             result.append(path)
     return sorted(set(result))
+
 
 def _ensure_download_app_release_tasks(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
@@ -1135,6 +1664,7 @@ def _ensure_download_app_release_tasks(root: Path | None = None) -> List[str]:
                     tasks.append(f"MISSING_REQUIRED_FILE:{ref_path.relative_to(target).as_posix()}")
     return sorted(dict.fromkeys(tasks))
 
+
 def _scan_backend_docs(root: Path | None = None) -> List[Path]:
     target = Path(root or ROOT)
     result = []
@@ -1151,6 +1681,7 @@ def _scan_backend_docs(root: Path | None = None) -> List[Path]:
             if "backend" in text and any(app in text for app in ["qalpha", "qmoi", "qmoi ai", "qmoiapace", "qcity"]):
                 result.append(path)
     return sorted(set(result))
+
 
 def _scan_frontend_docs(root: Path | None = None) -> List[Path]:
     target = Path(root or ROOT)
@@ -1169,6 +1700,7 @@ def _scan_frontend_docs(root: Path | None = None) -> List[Path]:
                 result.append(path)
     return sorted(set(result))
 
+
 def _build_all_backend_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
     paths = _scan_backend_docs(target)
@@ -1182,6 +1714,7 @@ def _build_all_backend_doc(root: Path | None = None) -> Path:
     lines.append("")
     return _safe_file_write(target / "ALLBACKEND.md", "\n".join(lines))
 
+
 def _build_all_ui_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
     paths = _scan_frontend_docs(target)
@@ -1194,6 +1727,7 @@ def _build_all_ui_doc(root: Path | None = None) -> Path:
         lines.append("- No frontend UI documentation discovered.")
     lines.append("")
     return _safe_file_write(target / "ALLUI.md", "\n".join(lines))
+
 
 def _build_all_frontend_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
@@ -1212,6 +1746,181 @@ def _build_all_frontend_doc(root: Path | None = None) -> Path:
         ""
     ]
     return _safe_file_write(target / "ALLFRONTEND.md", "\n".join(lines))
+
+
+def _build_all_auto_doc(root: Path | None = None) -> Path:
+    target = Path(root or ROOT)
+    workflow_dir = target / ".github" / "workflows"
+    workflows = []
+    if workflow_dir.exists():
+        workflows = sorted([p.relative_to(target).as_posix() for p in workflow_dir.glob("*.yml")]) + \
+            sorted([p.relative_to(target).as_posix() for p in workflow_dir.glob("*.yaml")])
+    lines = [
+        "# ALLAUTO.md",
+        "",
+        "This document inventories the repository automation workflows and the agent responsibilities that keep them healthy.",
+        "",
+        "## Automation inventory",
+    ]
+    if workflows:
+        for workflow in workflows:
+            lines.append(f"- [{workflow}]({workflow})")
+    else:
+        lines.append("- No workflow automation files detected.")
+    lines.extend([
+        "",
+        "## Production expectations",
+        "- Ensure every workflow uses resilient token fallbacks and webhook notifications.",
+        "- Keep workflow automation aligned with resumefromhere.txt, ALLHOOKSWEBHOOKS.md, and the live Ollama activity feed.",
+        "",
+    ])
+    return _safe_file_write(target / "ALLAUTO.md", "\n".join(lines))
+
+
+def _build_all_md_files_doc(root: Path | None = None) -> Path:
+    target = Path(root or ROOT)
+    md_files = sorted([p.relative_to(target).as_posix() for p in target.rglob("*.md") if p.is_file()
+                      and not _is_excluded_path(p, target) and not p.name.startswith(".")])
+    lines = [
+        "# ALLMDFILES.md",
+        "",
+        "This document provides the canonical inventory of repository markdown files used by the Ollama autonomous agent.",
+        "",
+        "## Markdown inventory",
+    ]
+    if md_files:
+        for md_file in md_files:
+            lines.append(f"- [{md_file}]({md_file})")
+    else:
+        lines.append("- No markdown files detected.")
+    lines.extend(
+        ["", "## Notes", "- Keep this inventory synchronized with ALLLINKS.md and the agent's documentation manifests.", ""])
+    return _safe_file_write(target / "ALLMDFILES.md", "\n".join(lines))
+
+
+def _build_all_links_doc(root: Path | None = None) -> Path:
+    target = Path(root or ROOT)
+    md_files = sorted([p.relative_to(target).as_posix() for p in target.rglob("*.md") if p.is_file()
+                      and not _is_excluded_path(p, target) and not p.name.startswith(".")])
+    html_files = sorted([p.relative_to(target).as_posix()
+                        for p in target.rglob("*.html") if p.is_file() and not _is_excluded_path(p, target)])
+    lines = [
+        "# ALLLINKS.md",
+        "",
+        "This document consolidates markdown and HTML references so the Ollama agent can maintain links and documentation consistency across the repository.",
+        "",
+        "## Markdown links",
+    ]
+    if md_files:
+        for md_file in md_files:
+            lines.append(f"- [{md_file}]({md_file})")
+    else:
+        lines.append("- No markdown references detected.")
+    lines.extend(["", "## HTML asset inventory", ""])
+    if html_files:
+        for html_file in html_files:
+            lines.append(f"- [{html_file}]({html_file})")
+    else:
+        lines.append("- No HTML assets detected.")
+    lines.extend(["", "## Maintenance guidance", "- Keep these references synchronized with ALLMDFILES.md, ALLUI.md, and the progressive web app documentation surfaces.",
+                 "- Preserve production app HTML assets in their intended directories for qmoi ai, qmoi space, qcity, and qalpha.", ""])
+    return _safe_file_write(target / "ALLLINKS.md", "\n".join(lines))
+
+
+def _build_financial_manager_doc(root: Path | None = None) -> Path:
+    target = Path(root or ROOT)
+    keywords = ["fund", "funds", "balance", "balances", "wallet", "wallets", "trading", "trade",
+                "binance", "bitget", "account", "deposit", "withdraw", "confidence", "threshold"]
+    matches: List[Dict[str, object]] = []
+    for path in sorted(target.rglob("*.md")):
+        if not path.is_file() or _is_excluded_path(path, target) or path.name.startswith("."):
+            continue
+        try:
+            text = path.read_text(encoding="utf-8", errors="ignore").lower()
+        except Exception:
+            continue
+        found = [keyword for keyword in keywords if keyword in text]
+        if found:
+            matches.append({"path": path.relative_to(target).as_posix(), "keywords": found})
+    lines = [
+        "# FINANCIALMANAGER.md",
+        "",
+        "This document tracks financial and trading-related documentation so the autonomous agent can keep production finance work aligned with real balances, accounts, and confidence notifications.",
+        "",
+        "## Finance and trading inventory",
+    ]
+    if matches:
+        for entry in matches:
+            lines.append(f"- [{entry['path']}]({entry['path']}): {', '.join(entry['keywords'])}")
+    else:
+        lines.append("- No financial or trading-related markdown references detected.")
+    lines.extend([
+        "",
+        "## Production expectations",
+        "- Keep financial references tied to real balances, actual account data, and verified trading workflows.",
+        "- Surface confidence threshold alerts through workflow/webhook notifications whenever the trading confidence changes.",
+        "- Ensure trading automation is documented and reviewed before real funds are used.",
+        "",
+    ])
+    return _safe_file_write(target / "FINANCIALMANAGER.md", "\n".join(lines))
+
+
+def _build_standard1_doc(root: Path | None = None) -> Path:
+    target = Path(root or ROOT)
+    lines = [
+        "# STANDARD1.md",
+        "",
+        "This document provides the shared memory and orchestration contract for the QMOI model and Ollama autonomous agent.",
+        "",
+        "## Memory contract",
+        "- Load this document as part of the agent startup context so the model understands repository structure, documentation inventory, UI surfaces, and automation expectations.",
+        "- Keep this document synchronized with ALLLINKS.md, ALLMDFILES.md, ALLAUTO.md, FINANCIALMANAGER.md, UNIVERSALS.md, and STYLES.md.",
+        "",
+        "## Execution expectations",
+        "- Plan work in a production-first order: verify docs, verify workflows, update manifests, then execute repairs and tests.",
+        "- Preserve resumefromhere.txt as the source of truth for pending work, progress, and journey-map tracks.",
+        "- Keep progressive web apps aligned across qmoi ai, qmoi space, qcity, and qalpha with shared universal styling and UI capabilities.",
+        "",
+    ]
+    return _safe_file_write(target / "STANDARD1.md", "\n".join(lines))
+
+
+def _build_memory_awareness_doc(root: Path | None = None) -> Path:
+    target = Path(root or ROOT)
+    lines = [
+        "# QMOI_MEMORY_AWARENESS_SYSTEM.md",
+        "",
+        "This document describes the memory-aware operational architecture of the QMOI agent and its credential-aware autonomous behavior.",
+        "",
+        "## Purpose",
+        "- Track the repository’s active memory layers, credential stores, and automation awareness.",
+        "- Document how the Ollama autonomous agent discovers finance integrations, updates credential manifests, and preserves resume state.",
+        "- Serve as a canonical reference for secure account automation and master authorization gating.",
+        "",
+        "## Autonomous execution surface",
+        "- Primary entrypoint: `python scripts/ollama_autonomous_agent.py`.",
+        "- GitHub workflow triggers: `.github/workflows/ollama-autonomous-agent.yml` and `.github/workflows/ollamatrigger.yml`.",
+        "- Default runtime behavior: `AUTO_CONTINUE=1`, `AUTO_PUSH=1`, `TARGET_BRANCH=autosync`.",
+        "",
+        "## Credential and account automation",
+        "- The agent discovers finance and payment provider integrations by environment variable names and repository references only.",
+        "- It generates and maintains `FINANCE_CREDENTIALS.md` as the secure provisioning manifest for account automation.",
+        "- Live provisioning actions are gated by master authorization and are not executed without explicit approval.",
+        "- Secret values are never persisted by the agent; only env var names, sources, and secure guidance are recorded.",
+        "",
+        "## Verification and persistence",
+        "- Persistent runtime state is stored in `.ollama_agent_state.json`.",
+        "- Execution progress and pending work are tracked in `resumefromhere.txt`.",
+        "- Live activity summaries are recorded in `OLLAMA_ACTIVITY_FEED.md`.",
+        "- The agent verifies required artifacts and documentation manifests before finalizing each run.",
+        "",
+        "## Notes",
+        "- This document is part of the repository’s self-awareness inventory and is included in the agent’s documentation manifests.",
+        "- Keep this file synchronized with `ALLMDFILES.md`, `ALLLINKS.md`, `DOCS.md`, and `FINANCE_CREDENTIALS.md`.",
+        "",
+    ]
+    return _safe_file_write(target / "QMOI_MEMORY_AWARENESS_SYSTEM.md", "\n".join(lines))
+
 
 def _scan_ports(root: Path | None = None) -> Dict[str, Set[str]]:
     target = Path(root or ROOT)
@@ -1239,6 +1948,7 @@ def _scan_ports(root: Path | None = None) -> Dict[str, Set[str]]:
                     ports.setdefault(match, set()).add(f"{path.relative_to(target)}:{i}")
     return ports
 
+
 def _build_all_ports_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
     ports = _scan_ports(target)
@@ -1265,6 +1975,7 @@ def _build_all_ports_doc(root: Path | None = None) -> Path:
     lines.append("- Use environment variables and secure access controls for all public-facing ports.")
     lines.append("")
     return _safe_file_write(target / "ALLPORTS.md", "\n".join(lines))
+
 
 def _build_ollama_agent_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
@@ -1320,6 +2031,7 @@ def _build_ollama_agent_doc(root: Path | None = None) -> Path:
     ]
     return _safe_file_write(target / "ollama.md", "\n".join(lines))
 
+
 def _ensure_resume_file_header(resume_path: Path) -> None:
     if not resume_path.exists():
         return
@@ -1334,6 +2046,7 @@ def _ensure_resume_file_header(resume_path: Path) -> None:
             _emit_status(f"Normalized resumefromhere.txt header at {resume_path}", level="info")
         except Exception:
             pass
+
 
 def _build_plan_and_docs(root: Path | None = None) -> Dict[str, Path]:
     target = Path(root or ROOT)
@@ -1359,6 +2072,15 @@ def _build_plan_and_docs(root: Path | None = None) -> Dict[str, Path]:
                                           "# ALLHOOKSWEBHOOKS.md\n\nThis file tracks hooks and webhook integrations.\n")
     paths["matches"] = _safe_file_write(
         target / "MATCHES.md", "# MATCHES.md\n\nThis document records pattern matches and repository change summaries.\n")
+    paths["all_auto"] = _build_all_auto_doc(target)
+    paths["all_md_files"] = _build_all_md_files_doc(target)
+    paths["financial_manager"] = _build_financial_manager_doc(target)
+    paths["standard1"] = _build_standard1_doc(target)
+    paths["memory_awareness"] = _build_memory_awareness_doc(target)
+    paths["all_links"] = _build_all_links_doc(target)
+    paths["bitget"] = _write_bitget_credential_guide(target)
+    paths["deployment_verification"] = update_deployment_verification_manifest(target)
+    paths["feature_percentage"] = update_feature_and_percentage_manifest(target)
 
     if not (target / "TREE.md").exists() and (target / "TREE_FULL_STRUCTURE.md").exists():
         _safe_file_write(target / "TREE.md", (target /
@@ -1366,19 +2088,25 @@ def _build_plan_and_docs(root: Path | None = None) -> Dict[str, Path]:
 
     return paths
 
+
 def build_plan_and_docs(root: Path | None = None) -> Dict[str, Path]:
     return _build_plan_and_docs(root)
+
 
 def _collect_missing_required_files(target: Path) -> List[str]:
     required_files = [
         "ALLBACKEND.md",
         "ALLFRONTEND.md",
         "ALLUI.md",
-        "ALLTESTSAUOTOTESTS.md",
+        "ALLTESTSAUOTOTOTESTS.md",
         "ALLHOOKSWEBHOOKS.md",
         "UNIVERSALS.md",
         "STYLES.md",
         "API.md",
+        "FINANCE_CREDENTIALS.md",
+        "DEPLOYMENT_VERIFICATION.md",
+        "FEATURES_AND_PERCENTAGES.md",
+        "bitget.md",
         "ENDPOINTS.md",
         "ROUTES.md",
         "MERGE.md",
@@ -1386,6 +2114,11 @@ def _collect_missing_required_files(target: Path) -> List[str]:
         "production.md",
         "productionenhanced.md",
         "ALLERRORS.md",
+        "ALLAUTO.md",
+        "ALLMDFILES.md",
+        "FINANCIALMANAGER.md",
+        "STANDARD1.md",
+        "ALLLINKS.md",
         "resumefromhere.txt",
         "OLLAMA_ACTIVITY_FEED.md",
     ]
@@ -1395,6 +2128,7 @@ def _collect_missing_required_files(target: Path) -> List[str]:
         if not path.exists() or path.stat().st_size == 0:
             missing.append(filename)
     return missing
+
 
 def _collect_workflow_token_gaps(target: Path) -> List[str]:
     workflow_dir = target / ".github" / "workflows"
@@ -1412,6 +2146,7 @@ def _collect_workflow_token_gaps(target: Path) -> List[str]:
             gaps.append(workflow_path.relative_to(target).as_posix())
     return gaps
 
+
 def _scan_wifi_and_captive_wifi_tasks(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
     tasks: List[str] = []
@@ -1423,6 +2158,7 @@ def _scan_wifi_and_captive_wifi_tasks(root: Path | None = None) -> List[str]:
             "TASK:WIFI_FEATURES_AUTOMATION",
         ])
     return sorted(dict.fromkeys(tasks))
+
 
 def _scan_component_gallery_tasks(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
@@ -1445,6 +2181,7 @@ def _scan_component_gallery_tasks(root: Path | None = None) -> List[str]:
         tasks.extend(sorted(refs))
     return sorted(dict.fromkeys(tasks))
 
+
 def _scan_legacy_auth_theme_tasks(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
     tasks: Set[str] = set()
@@ -1457,6 +2194,7 @@ def _scan_legacy_auth_theme_tasks(root: Path | None = None) -> List[str]:
         tasks.add("TASK:MERGE_OLD_AUTH_THEME_IMPLS_INTO_UNIVERSALS_STYLES")
     return sorted(tasks)
 
+
 def _ensure_ui_docs_updated(root: Path | None = None) -> None:
     target = Path(root or ROOT)
     docs = ["QMOIAIUI.md", "QMOISPACEUI.md", "QCITYUI.md", "QALPHAUI.md"]
@@ -1467,6 +2205,7 @@ def _ensure_ui_docs_updated(root: Path | None = None) -> None:
         if not path.exists() or path.read_text(encoding="utf-8", errors="ignore").strip() == "":
             path.write_text("\n".join(content), encoding="utf-8")
             _emit_status(f"Created missing UI guidance document: {doc_name}", level="info")
+
 
 def _write_directory_doc_section(path: Path, section_title: str, lines: List[str]) -> None:
     try:
@@ -1481,6 +2220,7 @@ def _write_directory_doc_section(path: Path, section_title: str, lines: List[str
         _emit_status(f"Updated directory doc with autonomous workflow integration: {path.name}", level="info")
     except Exception:
         pass
+
 
 def _ensure_directory_docs(root: Path | None = None) -> None:
     target = Path(root or ROOT)
@@ -1501,6 +2241,7 @@ def _ensure_directory_docs(root: Path | None = None) -> None:
                 pass
             continue
         _write_directory_doc_section(path, section_title, lines)
+
 
 def _ensure_ollama_trigger_workflow(root: Path | None = None) -> None:
     target = Path(root or ROOT)
@@ -1634,12 +2375,19 @@ jobs:
         except Exception as exc:
             _emit_status(f"Failed to verify ollamatrigger workflow: {exc}", level="warning")
 
+
 def _ensure_required_doc_files(root: Path | None = None) -> None:
     target = Path(root or ROOT)
     _build_all_backend_doc(target)
     _build_all_ui_doc(target)
     _build_all_frontend_doc(target)
     _build_all_ports_doc(target)
+    _build_all_auto_doc(target)
+    _build_all_md_files_doc(target)
+    _build_all_links_doc(target)
+    _build_financial_manager_doc(target)
+    _build_standard1_doc(target)
+    _build_memory_awareness_doc(target)
     if not (target / "UNIVERSALS.md").exists():
         _safe_file_write(target / "UNIVERSALS.md",
                          "# UNIVERSALS.md\n\nThis document defines universal patterns, shared user experience expectations, and memory-aware interaction systems.\n")
@@ -1651,6 +2399,48 @@ def _ensure_required_doc_files(root: Path | None = None) -> None:
             _safe_file_write(
                 target / doc_name, f"# {doc_name}\n\nThis file tracks UI guidance for the corresponding experience surface.\n")
     _ensure_ui_docs_updated(target)
+
+
+def update_hook_and_webhook_manifests(root: Path | None = None) -> Dict[str, Path]:
+    """Create or refresh hook/webhook manifests with workflow and Discord integration notes."""
+    target = Path(root or ROOT)
+    target.mkdir(parents=True, exist_ok=True)
+    workflow_dir = target / ".github" / "workflows"
+    workflow_files = sorted([p.relative_to(target).as_posix() for p in workflow_dir.glob(
+        "*.yml")]) + sorted([p.relative_to(target).as_posix() for p in workflow_dir.glob("*.yaml")]) if workflow_dir.exists() else []
+    lines = [
+        "# ALLHOOKSWEBHOOKS.md",
+        "",
+        "This file tracks hooks, workflow notifications, and webhook integrations for the autonomous agent.",
+        "",
+        "## Workflow integrations",
+    ]
+    if workflow_files:
+        for workflow_file in workflow_files:
+            lines.append(f"- [{workflow_file}]({workflow_file})")
+    else:
+        lines.append("- No workflow files detected.")
+    lines.extend([
+        "",
+        "## Webhook and notification guidance",
+        "- Deliver Discord, GitHub issue, and workflow notification updates for Ollama activity and confidence threshold changes.",
+        "- Keep trade confidence notifications synchronized with the real trading automation workflow and the financial manager documentation.",
+        "",
+    ])
+    all_hooks = _safe_file_write(target / "ALLHOOKSWEBHOOKS.md", "\n".join(lines))
+    webhooks_lines = [
+        "# WEBHOOKS.md",
+        "",
+        "This document records webhook destinations and notification channels used by the repository automation.",
+        "",
+        "## Channels",
+        "- Discord: repository automation, Ollama activity, and confidence threshold alerts.",
+        "- GitHub issues: workflow summaries and autonomous run notifications.",
+        "",
+    ]
+    webhooks = _safe_file_write(target / "WEBHOOKS.md", "\n".join(webhooks_lines))
+    return {"all_hooks": all_hooks, "webhooks": webhooks}
+
 
 def update_production_manifests(root: Path | None = None) -> Dict[str, Path]:
     target = Path(root or ROOT)
@@ -1710,6 +2500,7 @@ def update_production_manifests(root: Path | None = None) -> Dict[str, Path]:
     _safe_file_write(target / "productionenhanced.md", "\n".join(enhanced_lines) + "\n")
     return {"docs": target / "DOCS.md", "production": target / "production.md", "productionenhanced": target / "productionenhanced.md"}
 
+
 def _verify_required_artifacts(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
     required = [
@@ -1729,6 +2520,8 @@ def _verify_required_artifacts(root: Path | None = None) -> List[str]:
         target / "STYLES.md",
         target / "resumefromhere.txt",
         target / "OLLAMA_ACTIVITY_FEED.md",
+        target / "FINANCE_CREDENTIALS.md",
+        target / "QMOI_MEMORY_AWARENESS_SYSTEM.md",
     ]
     verified = []
     for path in required:
@@ -1738,6 +2531,7 @@ def _verify_required_artifacts(root: Path | None = None) -> List[str]:
             _emit_status(f"Missing or empty verification artifact: {path.name}", level="warning")
     _emit_status(f"Verified required artifacts: {', '.join(verified)}", level="info")
     return verified
+
 
 def scan_for_work(root: Path | None = None) -> List[str]:
     """Scan the repository for actionable work items.
@@ -1767,7 +2561,6 @@ def scan_for_work(root: Path | None = None) -> List[str]:
                 if any(m.lower() in text.lower() for m in markers) or True:
                     if rel not in pending:
                         pending.append(rel)
-                    continue
             # Check for workflow token gaps specially
             if ".github/workflows/" in rel:
                 try:
@@ -1790,6 +2583,13 @@ def scan_for_work(root: Path | None = None) -> List[str]:
     # Verify presence of high-level required docs and add MISSING_REQUIRED_FILE items
     required_docs = [
         "ALLHOOKSWEBHOOKS.md",
+        "ALLAUTO.md",
+        "ALLMDFILES.md",
+        "FINANCIALMANAGER.md",
+        "FINANCE_CREDENTIALS.md",
+        "STANDARD1.md",
+        "QMOI_MEMORY_AWARENESS_SYSTEM.md",
+        "ALLLINKS.md",
         "API.md",
         "ENDPOINTS.md",
         "ROUTES.md",
@@ -1804,6 +2604,7 @@ def scan_for_work(root: Path | None = None) -> List[str]:
 
     # Deduplicate and return
     return list(dict.fromkeys(pending))
+
 
 def run_agent(root: Path | None = None) -> Dict[str, object]:
     target = Path(root or ROOT)
@@ -1834,11 +2635,19 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
         _ensure_lib_production_ready(target)
     except Exception:
         pass
-    # Ensure the trigger workflow and directory docs exist for automated GitHub execution.
+    # Ensure the trigger workflow, required docs, and directory docs exist for automated GitHub execution.
     _ensure_ollama_trigger_workflow(target)
     _ensure_directory_docs(target)
+    _ensure_required_doc_files(target)
+    update_hook_and_webhook_manifests(target)
+    update_finance_and_credential_manifests(target, require_master_auth=True)
+    update_deployment_verification_manifest(target)
+    update_feature_and_percentage_manifest(target)
+    _write_bitget_credential_guide(target)
     # Merge any archived or backed-up implementations into the working tree
     merged_archives = _scan_archives_and_merge(target)
+    # Merge unused/archive artifacts into the merge manifest and delete them once integrated.
+    merge_deletions = merge_unused_files_and_update_manifest(target)
     # Always refresh aggregate backend/frontend/docs after merges
     try:
         _build_all_backend_doc(target)
@@ -1967,7 +2776,8 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
 
     _emit_status(f"Run agent completed with {len(pending)} pending items", level="info")
     result = {"pending": pending, "paths": paths, "command_results": command_results,
-              "port_fixes": normalize_changes, "merged_archives": merged_archives}
+              "port_fixes": normalize_changes, "merged_archives": merged_archives,
+              "merge_deletions": merge_deletions}
     # If full tests were explicitly requested, run verification even if pending items exist.
     if os.environ.get("RUN_FULL_TESTS", "0") == "1":
         _emit_status("RUN_FULL_TESTS=1: executing repository verification despite pending work", level="info")
@@ -2005,6 +2815,7 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
         _emit_status(f"Failed to commit and push autonomous state: {exc}", level="warning")
     return result
 
+
 def collect_error_inventory(root: Path | None = None) -> List[Dict[str, object]]:
     """Collect error-prone files safely with strict directory exclusion filters."""
     target = Path(root or ROOT)
@@ -2035,6 +2846,7 @@ def collect_error_inventory(root: Path | None = None) -> List[Dict[str, object]]
         })
     _emit_status(f"Collected {len(inventory)} error markers", level="info")
     return sorted(inventory, key=lambda item: item["path"])
+
 
 def update_all_errors_manifest(root: Path | None = None, issues: List[Dict[str, object]] | None = None, branch: str | None = None) -> Path:
     """Create or refresh ALLERRORS.md with optimized error remediation tracking."""
@@ -2079,6 +2891,7 @@ def update_all_errors_manifest(root: Path | None = None, issues: List[Dict[str, 
     error_path.write_text(text, encoding="utf-8")
     _emit_status(f"Wrote remediation inventory to {error_path}", level="info")
     return error_path
+
 
 def run_repo_verification(root: Path | None = None) -> Dict[str, object]:
     """Run lightweight code checks with strict time limits to prevent hanging."""
@@ -2133,6 +2946,7 @@ def run_repo_verification(root: Path | None = None) -> Dict[str, object]:
         f"Verification completed with python={results['python']['status']} tests={results['tests']['status']}", level="info")
     return results
 
+
 def write_live_notification_summary(root: Path | None = None, message: str = "", branch: str | None = None) -> Path:
     """Write an activity feed update safely."""
     target = Path(root or ROOT)
@@ -2140,19 +2954,23 @@ def write_live_notification_summary(root: Path | None = None, message: str = "",
     feed_path = target / "OLLAMA_ACTIVITY_FEED.md"
     branch_name = branch or os.environ.get("GITHUB_HEAD_REF", "local")
     ts = datetime.utcnow().isoformat() + "Z"
+    confidence_threshold = os.environ.get("QMOI_CONFIDENCE_THRESHOLD", "not-set")
     body = [
         "# Ollama activity feed",
         "",
         f"- Timestamp: {ts}",
         f"- Branch: {branch_name}",
         "- Status: production stream active",
+        f"- Confidence threshold: {confidence_threshold}%",
         "",
         "## Latest update",
         f"- {message or 'Ollama completed a secure autonomous execution pass.'}",
+        "- Required docs refreshed: ALLAUTO.md, ALLMDFILES.md, FINANCIALMANAGER.md, STANDARD1.md, ALLLINKS.md, and ALLHOOKSWEBHOOKS.md",
     ]
     feed_path.write_text("\n".join(body) + "\n", encoding="utf-8")
     _emit_status(f"Updated live notification feed at {feed_path}", level="info")
     return feed_path
+
 
 def _execute_task_on_file(relpath: str, root: Path | None = None) -> Dict[str, object]:
     """Attempt safe, non-blocking file updates for production readiness."""
@@ -2208,6 +3026,7 @@ def _execute_task_on_file(relpath: str, root: Path | None = None) -> Dict[str, o
         result["description"] = "no-action"
 
     return result
+
 
 def process_pending_items(pending: List[str], root: Path | None = None) -> Dict[str, List[str]]:
     """Attempt safe automated remediation for pending items.
@@ -2396,6 +3215,7 @@ def process_pending_items(pending: List[str], root: Path | None = None) -> Dict[
 
     return {"done": done, "verified": verified, "confirmed": confirmed, "still_pending": still_pending, "details": details}
 
+
 def generate_pending_report(pending: List[str], root: Path | None = None) -> str:
     target = Path(root or ROOT)
     lines: List[str] = []
@@ -2419,6 +3239,7 @@ def generate_pending_report(pending: List[str], root: Path | None = None) -> str
     except Exception:
         pass
     return report
+
 
 def _scan_archives_and_merge(root: Path | None = None) -> List[str]:
     """Scan archive/backup directories and merge useful files into the repo.
@@ -2465,6 +3286,7 @@ def _scan_archives_and_merge(root: Path | None = None) -> List[str]:
         _emit_status(f"Merged {len(merged)} files from archive directories", level="info")
     return merged
 
+
 def _write_archive_merge_report(merged: List[str], root: Path | None = None) -> Optional[Path]:
     """Write a simple report summarizing merged archive files grouped by directory."""
     if not merged:
@@ -2489,6 +3311,7 @@ def _write_archive_merge_report(merged: List[str], root: Path | None = None) -> 
         return report
     except Exception:
         return None
+
 
 def ensure_tests_for_file(path: Path, root: Path | None = None) -> Optional[Path]:
     """Create or update an enhanced pytest for the given Python file.
@@ -2530,6 +3353,7 @@ def ensure_tests_for_file(path: Path, root: Path | None = None) -> Optional[Path
         return test_path
     except Exception:
         return None
+
 
 def _update_journey_map_tracks(resume_path: Path, summary: Dict[str, object]) -> None:
     """Prepend or replace the JOURNEY MAP TRACKS section at the top of resumefromhere.txt.
@@ -2577,6 +3401,7 @@ def _update_journey_map_tracks(resume_path: Path, summary: Dict[str, object]) ->
         _emit_status(f"Updated JOURNEY MAP TRACKS in {resume_path}", level="info")
     except Exception:
         pass
+
 
 def _process_pending_items(pending: List[str], root: Path | None = None, max_per_iteration: int = 200) -> Dict[str, List[Dict[str, object]]]:
     """Attempt to process pending items safely and return results grouped by action.
@@ -2683,6 +3508,7 @@ def _process_pending_items(pending: List[str], root: Path | None = None, max_per
             results["errors"].append({"item": item, "error": str(exc)})
     return results
 
+
 def run_until_complete(root: Path | None = None, max_iterations: int = 100, max_per_iteration: int = 200, sleep_between: float = 0.5) -> Dict[str, object]:
     """Run autonomous passes repeatedly until no pending items remain or limits reached.
 
@@ -2728,12 +3554,14 @@ def run_until_complete(root: Path | None = None, max_iterations: int = 100, max_
         f"Autonomous loop stopped after {summary['iterations']} iterations; processed {summary['processed_total']} items.", level="info")
     return summary
 
+
 def _run_shell_command(args: List[str], cwd: Path | None = None, capture_output: bool = True, check: bool = False) -> subprocess.CompletedProcess[str]:
     target = Path(cwd or ROOT)
     try:
         return subprocess.run(args, cwd=target, text=True, capture_output=capture_output, check=check)
     except subprocess.CalledProcessError as exc:
         return exc
+
 
 def _git_branch_exists(branch: str, root: Path | None = None) -> bool:
     target = Path(root or ROOT)
@@ -2743,6 +3571,7 @@ def _git_branch_exists(branch: str, root: Path | None = None) -> bool:
             return True
     result = _run_shell_command(["git", "ls-remote", "--heads", "origin", branch], cwd=target)
     return bool(result and getattr(result, "stdout", None) and result.stdout.strip())
+
 
 def _checkout_or_create_branch(branch: str, root: Path | None = None) -> bool:
     target = Path(root or ROOT)
@@ -2764,6 +3593,7 @@ def _checkout_or_create_branch(branch: str, root: Path | None = None) -> bool:
         return result.returncode == 0
     result = _run_shell_command(["git", "checkout", "-b", branch], cwd=target)
     return result.returncode == 0
+
 
 def _git_commit_and_push(iteration: int, processed: List[str], updated_count: int, root: Path | None = None) -> Dict[str, object]:
     """Commit and push autonomous run state to the target branch."""
@@ -2806,6 +3636,7 @@ def _git_commit_and_push(iteration: int, processed: List[str], updated_count: in
         _emit_status(
             f"Git push to {branch} failed: {getattr(push_result, 'stderr', '') or getattr(push_result, 'stdout', '')}", level="warning")
     return out
+
 
 def _generate_completion_report(pending: List[str], root: Path | None = None) -> str:
     """Generate a comprehensive report of all remaining work and save to OLLAMA_COMPLETION_REPORT.md."""
@@ -2882,6 +3713,7 @@ def _generate_completion_report(pending: List[str], root: Path | None = None) ->
     _emit_status(f"Wrote completion report to {report_path.name} ({len(pending)} items remaining)", level="info")
     return "\n".join(lines)
 
+
 def main() -> None:
     """Main non-blocking execution entrypoint for the autonomous agent."""
     _emit_status("Starting enhanced production Ollama autonomous agent pass", level="info")
@@ -2924,6 +3756,7 @@ def main() -> None:
         f"tests={verification['tests']['status']} python={verification['python']['status']}",
         level="info"
     )
+
 
 if __name__ == "__main__":
     main()

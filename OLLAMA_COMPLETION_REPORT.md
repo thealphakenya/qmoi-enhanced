@@ -1,8 +1,8 @@
 # Ollama Autonomous Agent Completion Report
 
-- Generated: 2026-07-29T01:05:21.670615Z
+- Generated: 2026-07-30T18:43:58.799083Z
 - Repository: /workspaces/qmoi-enhanced
-- Pending items remaining: 8
+- Pending items remaining: 10
 
 ## Summary
 The autonomous agent has completed its processing cycle. Below is the full inventory of remaining work.
@@ -10,11 +10,13 @@ The autonomous agent has completed its processing cycle. Below is the full inven
 ## Pending Items Inventory
 
 ### Workflow Token Gaps
-Count: 3
+Count: 5
 
 - .github/workflows/ci.yml.backup.1760308915786
 - .github/workflows/github-actions-qmoi-build.yml.backup.1760307818135
 - .github/workflows/github-actions-qmoi-build.yml.backup.1760308915792
+- _archive_qmoi-enhanced/.github/workflows/ci.yml
+- _archive_qmoi-enhanced/.github/workflows/github-actions-qmoi-build.yml
 
 ### Files with Production Markers
 Count: 5

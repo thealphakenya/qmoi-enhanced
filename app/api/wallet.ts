@@ -447,8 +447,9 @@ async function processBitget(amount: number, type: string) {
   try {
     const bitgetConfig = {
       apiKey: process.env.BITGET_API_KEY,
-      secretKey: process.env.BITGET_SECRET_KEY,
-      passphras_e: process.env.BITGET_PASSPHRASE,
+      secretKey: process.env.BITGET_API_SECRET || process.env.BITGET_SECRET_KEY,
+      passphras_e:
+        process.env.BITGET_API_PASSPHRASE || process.env.BITGET_PASSPHRASE,
       testnet: process.env.NODE_ENV !== "production",
     };
 

@@ -9,9 +9,11 @@ import { spawn } from "child_process";
 
 // Store Bitget credentials securely (in env vars or a secure vault in production)
 const BITGET_API_KEY = process.env.BITGET_API_KEY;
-const BITGET_API_SECRET = process.env.BITGET_API_SECRET;
-const BITGET_API_PASSPHRASE = process.env.BITGET_API_PASSPHRASE;
-const BITGET_API_BASE = "https://api.bitget.com";
+const BITGET_API_SECRET =
+  process.env.BITGET_API_SECRET || process.env.BITGET_SECRET_KEY;
+const BITGET_API_PASSPHRASE =
+  process.env.BITGET_API_PASSPHRASE || process.env.BITGET_PASSPHRASE;
+const BITGET_API_BASE = process.env.BITGET_API_URL || "https://api.bitget.com";
 const TRADING_LOG = path.join(process.cwd(), "trading-log.json");
 
 // Helper to sign Bitget API requests

@@ -34,6 +34,7 @@ This file records the enhancements applied during production replacement work.
 - ALLERRORSTYPESFILES.md
 - ALLERRORTYPESANDHEALTHCHECKS.md
 - ALLLINKS.md
+- ALLMDFILES.md
 - ALLMDFILESREFS.md
 - ALLPORTS.md
 - ALLQMOIAUTOEVOLVINGENVS.md
@@ -133,6 +134,7 @@ This file records the enhancements applied during production replacement work.
 - FINAL_VERIFICATION_CHECKLIST.txt
 - FINAL_VERIFICATION_REPORT.md
 - FINAL_VERIFICATION_REPORT.txt
+- FINANCIALMANAGER.md
 - GITHUB-ACTIONS-COMPLETE.md
 - GITHUBPAYED.md
 - GITHUB_ACTIONS_AUTOFIX.md
@@ -166,6 +168,7 @@ This file records the enhancements applied during production replacement work.
 - MASTER_SYSTEM_DEPLOYMENT_REPORT.md
 - MASTER_VERIFICATION_COMPLETE.md
 - MERGE.md
+- MERGED_ARCHIVES_REPORT.md
 - MONITORING.md
 - MONITORING_API_DOCS.md
 - MONITORING_IMPLEMENTATION_GUIDE.md

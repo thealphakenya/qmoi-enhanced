@@ -1,6 +1,6 @@
 # Pending Work Report
-- Generated: 2026-07-29T02:20:29.129175Z
-- Total pending items: 8
+- Generated: 2026-07-30T18:42:01.298382Z
+- Total pending items: 10
 
 ## Items (first 200)
 - .github/
@@ -11,3 +11,5 @@
 - WORKFLOW_TOKEN_GAP:.github/workflows/ci.yml.backup.1760308915786
 - WORKFLOW_TOKEN_GAP:.github/workflows/github-actions-qmoi-build.yml.backup.1760307818135
 - WORKFLOW_TOKEN_GAP:.github/workflows/github-actions-qmoi-build.yml.backup.1760308915792
+- WORKFLOW_TOKEN_GAP:_archive_qmoi-enhanced/.github/workflows/ci.yml
+- WORKFLOW_TOKEN_GAP:_archive_qmoi-enhanced/.github/workflows/github-actions-qmoi-build.yml
