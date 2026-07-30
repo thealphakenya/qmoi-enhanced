@@ -31,6 +31,22 @@ EXCLUDED_DIRS = {
     ".next", ".cache", ".config", "coverage", "logs", "tmp"
 }
 
+INCLUDED_FILE_EXTENSIONS = {
+    ".py", ".js", ".jsx", ".ts", ".tsx", ".mjs", ".cjs", ".json", ".jsonl",
+    ".md", ".markdown", ".txt", ".yml", ".yaml", ".env", ".ini", ".cfg",
+    ".conf", ".toml", ".sh", ".ps1", ".bat", ".cmd", ".html", ".htm",
+    ".css", ".scss", ".sass", ".less", ".xml", ".svg", ".webmanifest",
+    ".wasm", ".sql", ".csv", ".tsv", ".lock", ".ipynb", ".dockerfile",
+    ".gitignore", ".gitattributes", ".prettierrc", ".eslintrc", ".babelrc",
+    ".editorconfig", ".npmrc", ".yarnrc"
+}
+
+INCLUDED_FILE_NAMES = {
+    "dockerfile", "makefile", "procfile", ".gitignore", ".gitattributes",
+    ".env.example", ".npmrc", ".yarnrc", ".prettierrc", ".eslintrc",
+    ".babelrc", ".editorconfig"
+}
+
 
 def _is_excluded_path(path: Path, target: Path | None = None) -> bool:
     target = Path(target or ROOT)
@@ -39,6 +55,22 @@ def _is_excluded_path(path: Path, target: Path | None = None) -> bool:
     except Exception:
         rel_parts = path.parts
     return any(part in EXCLUDED_DIRS for part in rel_parts)
+
+
+def _is_included_file(path: Path, target: Path | None = None) -> bool:
+    if not path.is_file() or _is_excluded_path(path, target):
+        return False
+    suffix = path.suffix.lower()
+    name = path.name.lower()
+    if suffix in INCLUDED_FILE_EXTENSIONS:
+        return True
+    if name in INCLUDED_FILE_NAMES:
+        return True
+    return False
+
+
+def _included_file_types() -> List[str]:
+    return sorted(INCLUDED_FILE_EXTENSIONS | {f".{name}" for name in INCLUDED_FILE_NAMES if not name.startswith('.')})
 
 
 # Configure module logger with safety buffers
@@ -245,8 +277,7 @@ def _map_port_to_production(port: int, context: str = "") -> int:
 def _normalize_production_ports(root: Path | None = None) -> List[Dict[str, object]]:
     target = Path(root or ROOT)
     changes: List[Dict[str, object]] = []
-    ext_whitelist = {".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".json",
-                     ".yml", ".yaml", ".env", ".txt", ".cfg", ".ini", ".toml"}
+    ext_whitelist = set(INCLUDED_FILE_EXTENSIONS)
     patterns = [
         re.compile(r"(?P<prefix>http://(?:localhost|127\\.0\\.0\\.1|0\\.0\\.0\\.0):)(?P<port>\\d{2,5})", re.IGNORECASE),
         re.compile(
@@ -452,7 +483,7 @@ def collect_feature_and_percentage_inventory(root: Path | None = None) -> List[D
         for path in sorted(target.rglob("*")):
             if not path.is_file() or _is_excluded_path(path, target):
                 continue
-            if path.suffix.lower() not in {".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".txt", ".json", ".yml", ".yaml", ".env", ".ini", ".cfg", ".toml", ".sh", ".ps1"}:
+            if not _is_included_file(path, target):
                 continue
             try:
                 text = path.read_text(encoding="utf-8", errors="ignore")
@@ -467,7 +498,7 @@ def collect_feature_and_percentage_inventory(root: Path | None = None) -> List[D
     for path in sorted(target.rglob("*")):
         if not path.is_file() or _is_excluded_path(path, target):
             continue
-        if path.suffix.lower() not in {".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".txt", ".json", ".yml", ".yaml", ".env", ".ini", ".cfg", ".toml", ".sh", ".ps1"}:
+        if not _is_included_file(path, target):
             continue
         try:
             text = path.read_text(encoding="utf-8", errors="ignore")
@@ -641,7 +672,7 @@ def collect_merge_inventory(root: Path | None = None) -> List[Dict[str, object]]
             continue
         if _is_excluded_path(path, target):
             continue
-        if path.suffix.lower() not in {".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".txt", ".json", ".yml", ".yaml", ".sh", ".ps1", ".spec", ".ini", ".cfg", ".config", ".toml", ".env", ".xml"}:
+        if not _is_included_file(path, target):
             continue
         rel = path.relative_to(target).as_posix()
         stem = path.stem.lower()
@@ -1901,6 +1932,100 @@ def _build_all_auto_doc(root: Path | None = None) -> Path:
     return _safe_file_write(target / "ALLAUTO.md", "\n".join(lines))
 
 
+def _merge_workflow_yamls(root: Path | None = None) -> Dict[str, object]:
+    target = Path(root or ROOT)
+    workflow_dir = target / ".github" / "workflows"
+    if not workflow_dir.exists():
+        return {"merged": 0, "deleted": 0, "report": []}
+
+    seen: Dict[str, Path] = {}
+    deleted = 0
+    merged = 0
+    report: List[str] = []
+    candidates = sorted(workflow_dir.glob("*.yml")) + sorted(workflow_dir.glob("*.yaml"))
+    for path in candidates:
+        if not path.is_file() or _is_excluded_path(path, target):
+            continue
+        normalized_name = path.stem.lower()
+        normalized_name = re.sub(r"[-_.]+", "-", normalized_name).strip("-")
+        try:
+            content = path.read_text(encoding="utf-8", errors="ignore")
+        except Exception:
+            continue
+        key = normalized_name
+        if key in seen:
+            existing = seen[key]
+            try:
+                existing_text = existing.read_text(encoding="utf-8", errors="ignore")
+            except Exception:
+                existing_text = ""
+            if len(content) > len(existing_text):
+                discard, keep = existing, path
+            else:
+                discard, keep = path, existing
+            try:
+                discard.unlink(missing_ok=True)
+                deleted += 1
+                merged += 1
+                report.append(
+                    f"Removed duplicate workflow {discard.relative_to(target)} in favor of {keep.relative_to(target)}"
+                )
+                seen[key] = keep
+            except Exception:
+                report.append(f"Failed to remove duplicate workflow {discard.relative_to(target)}")
+        else:
+            seen[key] = path
+    if merged:
+        _emit_status(
+            f"Merged {merged} workflow YAML duplicates and removed {deleted} redundant workflow files",
+            level="info",
+        )
+    return {"merged": merged, "deleted": deleted, "report": report}
+
+
+def _build_workflows_doc(root: Path | None = None) -> Path:
+    target = Path(root or ROOT)
+    workflow_dir = target / ".github" / "workflows"
+    workflows: List[str] = []
+    if workflow_dir.exists():
+        for path in sorted(workflow_dir.glob("*.yml")) + sorted(workflow_dir.glob("*.yaml")):
+            if not path.is_file():
+                continue
+            name = None
+            try:
+                for line in path.read_text(encoding="utf-8", errors="ignore").splitlines():
+                    match = re.match(r"^\s*name\s*:\s*['\"]?(.*?[^'\"]?)['\"]?\s*$", line)
+                    if match:
+                        name = match.group(1).strip()
+                        break
+            except Exception:
+                pass
+            label = path.relative_to(target).as_posix()
+            if name:
+                label += f" — {name}"
+            workflows.append(label)
+    lines = [
+        "# WORKFLOWS.md",
+        "",
+        "This document records the repository's GitHub Actions workflow inventory and canonical workflow file state.",
+        "",
+        "## Workflow inventory",
+    ]
+    if workflows:
+        for workflow in workflows:
+            lines.append(f"- {workflow}")
+    else:
+        lines.append("- No workflow files detected under .github/workflows.")
+    lines.extend([
+        "",
+        "## Notes",
+        "- Keep WORKFLOWS.md synchronized with .github/workflows and ALLAUTO.md.",
+        "- Merge or remove redundant workflow definitions before applying workflow fixes.",
+        "",
+    ])
+    return _safe_file_write(target / "WORKFLOWS.md", "\n".join(lines))
+
+
 def _build_all_md_files_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
     md_files = sorted([p.relative_to(target).as_posix() for p in target.rglob("*.md") if p.is_file()
@@ -2056,7 +2181,7 @@ def _scan_ports(root: Path | None = None) -> Dict[str, Set[str]]:
             continue
         if _is_excluded_path(path, target):
             continue
-        if path.suffix.lower() not in {".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".json", ".yml", ".yaml", ".env", ".txt", ".cfg", ".ini", ".toml"}:
+        if not _is_included_file(path, target):
             continue
         try:
             text = path.read_text(encoding="utf-8", errors="ignore")
@@ -2197,6 +2322,7 @@ def _build_plan_and_docs(root: Path | None = None) -> Dict[str, Path]:
     paths["matches"] = _safe_file_write(
         target / "MATCHES.md", "# MATCHES.md\n\nThis document records pattern matches and repository change summaries.\n")
     paths["all_auto"] = _build_all_auto_doc(target)
+    paths["workflows"] = _build_workflows_doc(target)
     paths["all_md_files"] = _build_all_md_files_doc(target)
     paths["financial_manager"] = _build_financial_manager_doc(target)
     paths["standard1"] = _build_standard1_doc(target)
@@ -2290,7 +2416,7 @@ def _scan_component_gallery_tasks(root: Path | None = None) -> List[str]:
     for path in sorted(target.rglob("*")):
         if not path.is_file() or _is_excluded_path(path, target):
             continue
-        if path.suffix.lower() not in {".ts", ".tsx", ".js", ".jsx", ".md", ".txt"}:
+        if not _is_included_file(path, target):
             continue
         try:
             text = path.read_text(encoding="utf-8", errors="ignore")
@@ -2774,7 +2900,9 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
     _ensure_required_doc_files(target)
     replace_pesapal_with_paypal(target)
     consolidate_html_assets_and_pw_as(target)
+    _merge_workflow_yamls(target)
     update_hook_and_webhook_manifests(target)
+    _build_workflows_doc(target)
     update_finance_and_credential_manifests(target, require_master_auth=True)
     update_deployment_verification_manifest(target)
     update_feature_and_percentage_manifest(target)
@@ -2782,6 +2910,13 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
     ensure_test_coverage(target)
     # Merge any archived or backed-up implementations into the working tree
     merged_archives = _scan_archives_and_merge(target)
+    # Merge workflow YAML files and remove redundant workflow copies before repairing workflow content.
+    workflow_merge_result = _merge_workflow_yamls(target)
+    if workflow_merge_result.get("report"):
+        _emit_status(
+            f"Merged {workflow_merge_result.get('merged', 0)} redundant workflow YAML files and removed {workflow_merge_result.get('deleted', 0)} extras.",
+            level="info",
+        )
     # Merge unused/archive artifacts into the merge manifest and delete them once integrated.
     merge_deletions = merge_unused_files_and_update_manifest(target)
     # Always refresh aggregate backend/frontend/docs after merges
@@ -2899,6 +3034,7 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
     update_documentation_manifests(target, inventory=collect_route_inventory(target))
     update_all_errors_manifest(target)
     _ensure_required_doc_files(target)
+    _build_workflows_doc(target)
     update_production_manifests(target)
     write_live_notification_summary(target, message="Autonomous production execution completed successfully.")
     _build_ollama_agent_doc(target)
@@ -2971,7 +3107,7 @@ def collect_error_inventory(root: Path | None = None) -> List[Dict[str, object]]
             continue
         if _is_excluded_path(path, target):
             continue
-        if path.suffix.lower() not in {".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".txt", ".json", ".yml", ".yaml", ".sh", ".ps1"}:
+        if not _is_included_file(path, target):
             continue
         try:
             text = path.read_text(encoding="utf-8", errors="ignore")

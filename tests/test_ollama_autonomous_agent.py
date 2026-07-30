@@ -40,8 +40,17 @@ def test_build_plan_and_docs_creates_extended_docs_inventory(tmp_path):
     module = load_module()
     module.build_plan_and_docs(tmp_path)
 
-    for filename in ["ALLAUTO.md", "ALLMDFILES.md", "FINANCIALMANAGER.md", "STANDARD1.md", "ALLLINKS.md", "QMOI_MEMORY_AWARENESS_SYSTEM.md"]:
+    for filename in ["ALLAUTO.md", "ALLMDFILES.md", "WORKFLOWS.md", "FINANCIALMANAGER.md", "STANDARD1.md", "ALLLINKS.md", "QMOI_MEMORY_AWARENESS_SYSTEM.md"]:
         assert (tmp_path / filename).exists()
+
+
+def test_build_plan_and_docs_creates_workflows_doc(tmp_path):
+    module = load_module()
+    result = module.build_plan_and_docs(tmp_path)
+
+    assert (tmp_path / "WORKFLOWS.md").exists()
+    assert "Workflow inventory" in (tmp_path / "WORKFLOWS.md").read_text(encoding="utf-8")
+    assert result["workflows"].exists()
 
 
 def test_build_plan_and_docs_creates_memory_awareness_doc(tmp_path):
@@ -316,6 +325,31 @@ def test_scan_for_work_reports_missing_required_docs_and_workflow_gaps(tmp_path)
 
     assert any("MISSING_REQUIRED_FILE" in item and "ALLHOOKSWEBHOOKS.md" in item for item in pending)
     assert any("WORKFLOW_TOKEN_GAP" in item and "example.yml" in item for item in pending)
+
+
+def test_merge_workflow_yamls_removes_duplicate_workflows(tmp_path):
+    module = load_module()
+    workflow_dir = tmp_path / ".github" / "workflows"
+    workflow_dir.mkdir(parents=True, exist_ok=True)
+    first = workflow_dir / "build.yml"
+    second = workflow_dir / "build.yaml"
+    first.write_text(
+        "name: Build\non: push\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo first\n",
+        encoding="utf-8",
+    )
+    second.write_text(
+        "name: Build\non: push\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo second\n      - run: echo extra\n",
+        encoding="utf-8",
+    )
+
+    result = module._merge_workflow_yamls(tmp_path)
+
+    assert result["merged"] == 1
+    assert result["deleted"] == 1
+    remaining = [p.name for p in workflow_dir.iterdir() if p.is_file()]
+    assert len(remaining) == 1
+    assert remaining[0] in {"build.yml", "build.yaml"}
+    assert "diverged" not in result["report"][0].lower()
 
 
 def test_collect_merge_inventory_groups_similar_names(tmp_path):
