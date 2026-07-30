@@ -13,6 +13,15 @@ def load_module():
     return module
 
 
+def load_validator_module():
+    module_path = Path(__file__).resolve().parents[1] / "scripts" / "validate_all_credentials.py"
+    spec = importlib.util.spec_from_file_location("validate_all_credentials", module_path)
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+    return module
+
+
 def test_build_plan_and_docs_creates_required_files(tmp_path):
     module = load_module()
     result = module.build_plan_and_docs(tmp_path)
@@ -410,6 +419,45 @@ def test_update_finance_and_credential_manifests_writes_secure_plan(tmp_path):
     assert "Binance" in text
     assert "Secure provisioning" in text
     assert "BINANCE_API_KEY" in text
+
+
+def test_replace_pesapal_with_paypal_rewrites_validator_and_docs(tmp_path):
+    module = load_module()
+    validator_path = tmp_path / "scripts" / "validate_all_credentials.py"
+    validator_path.parent.mkdir(parents=True, exist_ok=True)
+    validator_path.write_text(
+        "PESAPAL_CONSUMER_KEY=\nPESAPAL_CONSUMER_SECRET=\n"
+        "# Pesapal credentials should be replaced by PayPal config\n",
+        encoding="utf-8",
+    )
+    readme_path = tmp_path / "README.md"
+    readme_path.write_text("This repo uses Pesapal for payments.\n", encoding="utf-8")
+
+    updated = module.replace_pesapal_with_paypal(tmp_path)
+
+    assert validator_path.exists()
+    assert updated["files_updated"] >= 2
+    validator_text = validator_path.read_text(encoding="utf-8")
+    assert "PAYPAL_CLIENT_ID" in validator_text
+    assert "PAYPAL_CLIENT_SECRET" in validator_text
+    assert "PESAPAL_CONSUMER_KEY" not in validator_text
+    assert "Pesapal credentials" not in validator_text
+    readme_text = readme_path.read_text(encoding="utf-8")
+    assert "PayPal" in readme_text
+    assert "Pesapal" not in readme_text
+
+
+def test_validate_all_credentials_uses_paypal_env_vars(monkeypatch):
+    validator_module = load_validator_module()
+    monkeypatch.setenv("PAYPAL_CLIENT_ID", "paypal-id")
+    monkeypatch.setenv("PAYPAL_CLIENT_SECRET", "paypal-secret")
+    monkeypatch.setenv("PAYPAL_MODE", "sandbox")
+
+    validator = validator_module.CredentialValidator()
+
+    assert validator.paypal_config["client_id"] == "paypal-id"
+    assert validator.paypal_config["client_secret"] == "paypal-secret"
+    assert validator.paypal_config["mode"] == "sandbox"
 
 # AUTOFIXED by Ollama at 2026-07-26T18:54:41.380965Z
 

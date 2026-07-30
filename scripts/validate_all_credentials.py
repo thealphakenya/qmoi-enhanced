@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Comprehensive credential validator for all wallet systems.
-Validates and tests credentials for Bitget, Cashon/Pesapal, and Megavault.
+Validates and tests credentials for Bitget, Cashon/PayPal, and Megavault.
 """
 import os
 import json
@@ -33,9 +33,9 @@ class CredentialValidator:
     def __init__(self):
         """Initialize validator with API endpoints."""
         self.bitget_api = "https://api.bitget.com"
-        self.pesapal_api = {
-            'sandbox': 'https://sandbox.pesapal.com',
-            'live': 'https://api.pesapal.com'
+        self.paypal_api = {
+            'sandbox': 'https://api.sandbox.paypal.com',
+            'live': 'https://api.paypal.com'
         }
         self.megavault_api = os.getenv('MEGAVAULT_API_URL')
 
@@ -51,13 +51,13 @@ class CredentialValidator:
             'passphrase': os.getenv('BITGET_API_PASSPHRASE') or os.getenv('BITGET_PASSPHRASE')
         }
 
-        # Pesapal credentials
-        self.pesapal_config = {
-            'consumer_key': os.getenv('PESAPAL_CONSUMER_KEY'),
-            'consumer_secret': os.getenv('PESAPAL_CONSUMER_SECRET'),
-            'environment': os.getenv('PESAPAL_ENVIRONMENT', 'sandbox'),
-            'callback_url': os.getenv('PESAPAL_CALLBACK_URL', 'https://qmoi.ai/callback'),
-            'ipn_url': os.getenv('PESAPAL_IPN_URL', 'https://qmoi.ai/ipn')
+        # PayPal credentials
+        self.paypal_config = {
+            'client_id': os.getenv('PAYPAL_CLIENT_ID') or os.getenv('PAYPAL_API_KEY') or os.getenv('PESAPAL_CONSUMER_KEY'),
+            'client_secret': os.getenv('PAYPAL_CLIENT_SECRET') or os.getenv('PAYPAL_API_SECRET') or os.getenv('PESAPAL_CONSUMER_SECRET'),
+            'mode': os.getenv('PAYPAL_MODE') or os.getenv('PAYPAL_ENVIRONMENT') or 'sandbox',
+            'callback_url': os.getenv('PAYPAL_CALLBACK_URL', 'https://qmoi.ai/callback'),
+            'ipn_url': os.getenv('PAYPAL_IPN_URL', 'https://qmoi.ai/ipn')
         }
 
         # Megavault credentials
@@ -127,27 +127,25 @@ class CredentialValidator:
                 'timestamp': datetime.utcnow().isoformat()
             }
 
-    async def validate_pesapal(self) -> Dict[str, Any]:
-        """Validate Pesapal/Cashon credentials."""
-        if not (self.pesapal_config['consumer_key'] and
-                self.pesapal_config['consumer_secret']):
+    async def validate_paypal(self) -> Dict[str, Any]:
+        """Validate PayPal/Cashon credentials."""
+        if not (self.paypal_config['client_id'] and
+                self.paypal_config['client_secret']):
             return {
                 'valid': False,
-                'error': 'Missing Pesapal credentials',
+                'error': 'Missing PayPal credentials',
                 'timestamp': datetime.utcnow().isoformat()
             }
 
         try:
-            base_url = self.pesapal_api[self.pesapal_config['environment']]
+            base_url = self.paypal_api[self.paypal_config['mode'] if self.paypal_config['mode'] in self.paypal_api else 'sandbox']
 
             async with aiohttp.ClientSession() as session:
                 async with session.post(
-                    f"{base_url}/v3/api/Auth/RequestToken",
-                    json={
-                        'consumer_key': self.pesapal_config['consumer_key'],
-                        'consumer_secret': self.pesapal_config['consumer_secret']
-                    },
-                    headers={'Content-Type': 'application/json'}
+                    f"{base_url}/v1/oauth2/token",
+                    data={'grant_type': 'client_credentials'},
+                    auth=aiohttp.BasicAuth(self.paypal_config['client_id'], self.paypal_config['client_secret']),
+                    headers={'Accept': 'application/json'}
                 ) as response:
                     if response.status == 200:
                         result = await response.json()
@@ -221,7 +219,7 @@ class CredentialValidator:
         results = {
             'timestamp': datetime.utcnow().isoformat(),
             'bitget': await self.validate_bitget(),
-            'pesapal': await self.validate_pesapal(),
+            'paypal': await self.validate_paypal(),
             'megavault': await self.validate_megavault(),
             'overall_status': 'validating'
         }
@@ -231,7 +229,7 @@ class CredentialValidator:
             1 for k, v in results.items()
             if k != 'timestamp' and k != 'overall_status' and v.get('valid', False)
         )
-        total_services = 3  # Bitget, Pesapal, Megavault
+        total_services = 3  # Bitget, PayPal, Megavault
 
         results['overall_status'] = 'valid' if valid_count == total_services else 'invalid'
 

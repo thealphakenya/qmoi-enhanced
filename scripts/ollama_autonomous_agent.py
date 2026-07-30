@@ -734,14 +734,8 @@ def collect_finance_and_credential_inventory(root: Path | None = None) -> List[D
         },
         {
             "provider": "PayPal",
-            "keywords": ["paypal"],
+            "keywords": ["paypal", "paypay"],
             "env_vars": ["PAYPAL_CLIENT_ID", "PAYPAL_CLIENT_SECRET", "PAYPAL_MODE"],
-            "requires_master_auth": True,
-        },
-        {
-            "provider": "Pesapal",
-            "keywords": ["pesapal"],
-            "env_vars": ["PESAPAL_CONSUMER_KEY", "PESAPAL_CONSUMER_SECRET", "PESAPAL_ENVIRONMENT"],
             "requires_master_auth": True,
         },
         {
@@ -798,6 +792,56 @@ def collect_finance_and_credential_inventory(root: Path | None = None) -> List[D
             })
 
     return sorted(inventory, key=lambda item: str(item["provider"]).lower())
+
+
+def replace_pesapal_with_paypal(root: Path | None = None) -> Dict[str, object]:
+    """Replace Pesapal-related provider names and environment variables with PayPal equivalents across repo text files."""
+    target = Path(root or ROOT)
+    target.mkdir(parents=True, exist_ok=True)
+
+    replacements = [
+        ("PESAPAL_CONSUMER_KEY", "PAYPAL_CLIENT_ID"),
+        ("PESAPAL_CONSUMER_SECRET", "PAYPAL_CLIENT_SECRET"),
+        ("PESAPAL_ENVIRONMENT", "PAYPAL_MODE"),
+        ("PESAPAL_CALLBACK_URL", "PAYPAL_CALLBACK_URL"),
+        ("PESAPAL_IPN_URL", "PAYPAL_IPN_URL"),
+        ("PESAPAL_API_KEY", "PAYPAL_CLIENT_ID"),
+        ("PESAPAL_API_SECRET", "PAYPAL_CLIENT_SECRET"),
+        ("PESAPAL_API_URL", "PAYPAL_API_URL"),
+        ("PESAPAL", "PAYPAL"),
+        ("Pesapal", "PayPal"),
+        ("pesapal", "paypal"),
+    ]
+    allowed_suffixes = {".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".txt", ".json", ".yml", ".yaml", ".env", ".ini", ".cfg", ".toml", ".sh", ".ps1", ".html", ".css", ".xml", ".sql", ".csv"}
+
+    updated_files: List[str] = []
+    replacements_applied = 0
+    for path in sorted(target.rglob("*")):
+        if not path.is_file() or _is_excluded_path(path, target):
+            continue
+        if path.name.endswith((".bak", ".bak2", ".old", ".orig", ".tmp")):
+            continue
+        suffix = path.suffix.lower()
+        name = path.name.lower()
+        if not (suffix in allowed_suffixes or name.startswith(".env") or name in {"dockerfile", "makefile", "procfile"}):
+            continue
+        try:
+            original_text = path.read_text(encoding="utf-8", errors="ignore")
+        except Exception:
+            continue
+        updated_text = original_text
+        for old, new in replacements:
+            updated_text, count = re.subn(re.escape(old), new, updated_text)
+            replacements_applied += count
+        if updated_text != original_text:
+            path.write_text(updated_text, encoding="utf-8")
+            updated_files.append(path.relative_to(target).as_posix())
+
+    _emit_status(
+        f"Replaced Pesapal references with PayPal in {len(updated_files)} files ({replacements_applied} replacements)",
+        level="info",
+    )
+    return {"files_updated": len(updated_files), "replacements": replacements_applied, "updated_files": updated_files}
 
 
 def update_finance_and_credential_manifests(root: Path | None = None, require_master_auth: bool = True) -> Dict[str, Path]:
@@ -2639,6 +2683,7 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
     _ensure_ollama_trigger_workflow(target)
     _ensure_directory_docs(target)
     _ensure_required_doc_files(target)
+    replace_pesapal_with_paypal(target)
     update_hook_and_webhook_manifests(target)
     update_finance_and_credential_manifests(target, require_master_auth=True)
     update_deployment_verification_manifest(target)
