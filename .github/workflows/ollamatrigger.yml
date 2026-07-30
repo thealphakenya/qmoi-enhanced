@@ -93,7 +93,7 @@ jobs:
                 ? fs.readFileSync(feed, 'utf8')
                 : `Ollama run completed. View the workflow run for details.
 
-Run: ${process.env.GH_RUN_URL}`;
+                  Run: ${process.env.GH_RUN_URL}`;
               const title = 'Ollama activity update';
               const { data: issues } = await github.rest.issues.listForRepo({
                 owner: context.repo.owner,
@@ -108,7 +108,7 @@ Run: ${process.env.GH_RUN_URL}`;
                 title,
                 body: `${body.slice(0, 5000)}
 
-Workflow: ${process.env.GH_RUN_URL}`
+                Workflow: ${process.env.GH_RUN_URL}`
               };
               if (existing) {
                 await github.rest.issues.update({ ...payload, issue_number: existing.number });
@@ -117,7 +117,7 @@ Workflow: ${process.env.GH_RUN_URL}`
               }
               core.summary.addRaw(`## Ollama activity
 
-${body.slice(0, 2000)}`);
+                ${body.slice(0, 2000)}`);
               await core.summary.write();
             } catch (error) {
               core.info(`Notification summary failed: ${error}`);
