@@ -1,53 +1,53 @@
 # Ollama Debug Log
 
-- [2026-07-30T21:16:10Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-0/test_run_agent_refreshes_resum0/productionenhanced.md
-- [2026-07-30T21:16:10Z] INFO: Updated live notification feed at /tmp/pytest-of-node/pytest-0/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md
-- [2026-07-30T21:16:10Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-0/test_run_agent_refreshes_resum0/ollama.md
-- [2026-07-30T21:16:10Z] INFO: Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md, FINANCE_CREDENTIALS.md, QMOI_MEMORY_AWARENESS_SYSTEM.md
-- [2026-07-30T21:16:10Z] INFO: Persisted agent state to /tmp/pytest-of-node/pytest-0/test_run_agent_refreshes_resum0/.ollama_agent_state.json
-- [2026-07-30T21:16:10Z] INFO: Run agent completed with 2 pending items
-- [2026-07-30T21:16:10Z] INFO: Updated JOURNEY MAP TRACKS in /tmp/pytest-of-node/pytest-0/test_run_agent_refreshes_resum0/resumefromhere.txt
-- [2026-07-30T21:16:10Z] INFO: Persisted agent state to /tmp/pytest-of-node/pytest-0/test_run_agent_refreshes_resum0/.ollama_agent_state.json
-- [2026-07-30T21:16:10Z] INFO: AUTO_PUSH is disabled; skipping git push.
-- [2026-07-30T21:16:10Z] INFO: Scanning route definitions from /tmp/pytest-of-node/pytest-0/test_collect_route_inventory_f0
-- [2026-07-30T21:16:10Z] INFO: Scanning route definitions from /tmp/pytest-of-node/pytest-0/test_update_documentation_mani0
-- [2026-07-30T21:16:11Z] INFO: Updated API.md
-- [2026-07-30T21:16:11Z] INFO: Updated ENDPOINTS.md
-- [2026-07-30T21:16:11Z] INFO: Updated ROUTES.md
-- [2026-07-30T21:16:11Z] INFO: Updated MERGE.md
-- [2026-07-30T21:16:11Z] INFO: live progress message
-- [2026-07-30T21:16:11Z] INFO: Updated resumefromhere progress: /tmp/pytest-of-node/pytest-0/test_update_resume_progress_wr0/resumefromhere.txt
-- [2026-07-30T21:16:11Z] INFO: Updated resumefromhere progress: /tmp/pytest-of-node/pytest-0/test_update_resume_progress_in0/resumefromhere.txt
-- [2026-07-30T21:16:11Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-0/test_update_production_manifes0/DOCS.md
-- [2026-07-30T21:16:11Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-0/test_update_production_manifes0/production.md
-- [2026-07-30T21:16:11Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-0/test_update_production_manifes0/productionenhanced.md
-- [2026-07-30T21:16:11Z] INFO: Updated live notification feed at /tmp/pytest-of-node/pytest-0/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md
-- [2026-07-30T21:16:11Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-0/test_update_hook_and_webhook_m0/ALLHOOKSWEBHOOKS.md
-- [2026-07-30T21:16:11Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-0/test_update_hook_and_webhook_m0/WEBHOOKS.md
-- [2026-07-30T21:16:12Z] INFO: Scanning route definitions from /tmp/pytest-of-node/pytest-0/test_merge_unused_files_logs_d0
-- [2026-07-30T21:16:12Z] INFO: Scanning route definitions from /tmp/pytest-of-node/pytest-0/test_merge_unused_files_logs_d0
-- [2026-07-30T21:16:14Z] INFO: Updated API.md
-- [2026-07-30T21:16:14Z] INFO: Updated ENDPOINTS.md
-- [2026-07-30T21:16:14Z] INFO: Updated ROUTES.md
-- [2026-07-30T21:16:14Z] INFO: Updated MERGE.md
-- [2026-07-30T21:16:14Z] INFO: Updated finance/credential manifest at /tmp/pytest-of-node/pytest-0/test_update_finance_and_creden1/FINANCE_CREDENTIALS.md
-- [2026-07-30T21:17:33Z] INFO: Updated Bitget guidance document at bitget.md
-- [2026-07-30T21:17:34Z] INFO: Updated deployment verification manifest at DEPLOYMENT_VERIFICATION.md
-- [2026-07-30T21:19:00Z] INFO: Updated feature/percentage manifest at FEATURES_AND_PERCENTAGES.md
-- [2026-07-30T21:19:00Z] INFO: Normalized resumefromhere.txt header at resumefromhere.txt
-- [2026-07-30T21:19:00Z] INFO: Created or refreshed Trade.md
-- [2026-07-30T21:19:00Z] INFO: Created or refreshed ollama.md
-- [2026-07-30T21:19:00Z] INFO: Created or refreshed QMOIMODEL.md
-- [2026-07-30T21:19:00Z] INFO: Created or refreshed QMOIMODELTESTS.md
-- [2026-07-30T21:19:00Z] INFO: Created or refreshed ALLTESTSAUOTOTESTS.md
-- [2026-07-30T21:19:00Z] INFO: Created or refreshed ALLHOOKSWEBHOOKS.md
-- [2026-07-30T21:19:00Z] INFO: Created or refreshed MATCHES.md
-- [2026-07-30T21:19:00Z] INFO: Created or refreshed ALLAUTO.md
-- [2026-07-30T21:19:01Z] INFO: Created or refreshed ALLMDFILES.md
-- [2026-07-30T21:19:04Z] INFO: Created or refreshed FINANCIALMANAGER.md
-- [2026-07-30T21:19:04Z] INFO: Created or refreshed STANDARD1.md
-- [2026-07-30T21:19:04Z] INFO: Created or refreshed QMOI_MEMORY_AWARENESS_SYSTEM.md
-- [2026-07-30T21:19:06Z] INFO: Created or refreshed ALLLINKS.md
-- [2026-07-30T21:19:06Z] INFO: Updated Bitget guidance document at bitget.md
-- [2026-07-30T21:19:07Z] INFO: Updated deployment verification manifest at DEPLOYMENT_VERIFICATION.md
-- [2026-07-30T21:19:41Z] INFO: Updated feature/percentage manifest at FEATURES_AND_PERCENTAGES.md
+- [2026-07-30T21:28:21Z] INFO: Updated API.md
+- [2026-07-30T21:28:21Z] INFO: Updated ENDPOINTS.md
+- [2026-07-30T21:28:21Z] INFO: Updated ROUTES.md
+- [2026-07-30T21:28:21Z] INFO: Updated MERGE.md
+- [2026-07-30T21:28:21Z] INFO: Scanning repository for error markers under /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0
+- [2026-07-30T21:28:21Z] INFO: Collected 4 error markers
+- [2026-07-30T21:28:21Z] INFO: Wrote remediation inventory to /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/ALLERRORS.md
+- [2026-07-30T21:28:21Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/ALLBACKEND.md
+- [2026-07-30T21:28:21Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/ALLUI.md
+- [2026-07-30T21:28:21Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/ALLFRONTEND.md
+- [2026-07-30T21:28:21Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/ALLPORTS.md
+- [2026-07-30T21:28:21Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/ALLAUTO.md
+- [2026-07-30T21:28:21Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/ALLMDFILES.md
+- [2026-07-30T21:28:21Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/ALLLINKS.md
+- [2026-07-30T21:28:21Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/FINANCIALMANAGER.md
+- [2026-07-30T21:28:21Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/STANDARD1.md
+- [2026-07-30T21:28:21Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/QMOI_MEMORY_AWARENESS_SYSTEM.md
+- [2026-07-30T21:28:21Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/DOCS.md
+- [2026-07-30T21:28:21Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/production.md
+- [2026-07-30T21:28:21Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/productionenhanced.md
+- [2026-07-30T21:28:21Z] INFO: Updated live notification feed at /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md
+- [2026-07-30T21:28:21Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/ollama.md
+- [2026-07-30T21:28:21Z] INFO: Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md, FINANCE_CREDENTIALS.md, QMOI_MEMORY_AWARENESS_SYSTEM.md
+- [2026-07-30T21:28:21Z] INFO: Persisted agent state to /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/.ollama_agent_state.json
+- [2026-07-30T21:28:21Z] INFO: Run agent completed with 2 pending items
+- [2026-07-30T21:28:21Z] INFO: Updated JOURNEY MAP TRACKS in /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/resumefromhere.txt
+- [2026-07-30T21:28:21Z] INFO: Persisted agent state to /tmp/pytest-of-node/pytest-1/test_run_agent_refreshes_resum0/.ollama_agent_state.json
+- [2026-07-30T21:28:21Z] INFO: AUTO_PUSH is disabled; skipping git push.
+- [2026-07-30T21:28:21Z] INFO: Scanning route definitions from /tmp/pytest-of-node/pytest-1/test_collect_route_inventory_f0
+- [2026-07-30T21:28:21Z] INFO: Scanning route definitions from /tmp/pytest-of-node/pytest-1/test_update_documentation_mani0
+- [2026-07-30T21:28:22Z] INFO: Updated API.md
+- [2026-07-30T21:28:22Z] INFO: Updated ENDPOINTS.md
+- [2026-07-30T21:28:22Z] INFO: Updated ROUTES.md
+- [2026-07-30T21:28:22Z] INFO: Updated MERGE.md
+- [2026-07-30T21:28:22Z] INFO: live progress message
+- [2026-07-30T21:28:22Z] INFO: Updated resumefromhere progress: /tmp/pytest-of-node/pytest-1/test_update_resume_progress_wr0/resumefromhere.txt
+- [2026-07-30T21:28:22Z] INFO: Updated resumefromhere progress: /tmp/pytest-of-node/pytest-1/test_update_resume_progress_in0/resumefromhere.txt
+- [2026-07-30T21:28:22Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_update_production_manifes0/DOCS.md
+- [2026-07-30T21:28:22Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_update_production_manifes0/production.md
+- [2026-07-30T21:28:22Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_update_production_manifes0/productionenhanced.md
+- [2026-07-30T21:28:22Z] INFO: Updated live notification feed at /tmp/pytest-of-node/pytest-1/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md
+- [2026-07-30T21:28:22Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_update_hook_and_webhook_m0/ALLHOOKSWEBHOOKS.md
+- [2026-07-30T21:28:22Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-1/test_update_hook_and_webhook_m0/WEBHOOKS.md
+- [2026-07-30T21:28:23Z] INFO: Scanning route definitions from /tmp/pytest-of-node/pytest-1/test_merge_unused_files_logs_d0
+- [2026-07-30T21:28:23Z] INFO: Scanning route definitions from /tmp/pytest-of-node/pytest-1/test_merge_unused_files_logs_d0
+- [2026-07-30T21:28:24Z] INFO: Updated API.md
+- [2026-07-30T21:28:24Z] INFO: Updated ENDPOINTS.md
+- [2026-07-30T21:28:24Z] INFO: Updated ROUTES.md
+- [2026-07-30T21:28:24Z] INFO: Updated MERGE.md
+- [2026-07-30T21:28:24Z] INFO: Updated finance/credential manifest at /tmp/pytest-of-node/pytest-1/test_update_finance_and_creden1/FINANCE_CREDENTIALS.md
+- [2026-07-30T21:28:24Z] INFO: Replaced Pesapal references with PayPal in 2 files (4 replacements)

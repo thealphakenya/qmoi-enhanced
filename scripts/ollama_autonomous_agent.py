@@ -812,7 +812,8 @@ def replace_pesapal_with_paypal(root: Path | None = None) -> Dict[str, object]:
         ("Pesapal", "PayPal"),
         ("pesapal", "paypal"),
     ]
-    allowed_suffixes = {".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".txt", ".json", ".yml", ".yaml", ".env", ".ini", ".cfg", ".toml", ".sh", ".ps1", ".html", ".css", ".xml", ".sql", ".csv"}
+    allowed_suffixes = {".py", ".js", ".ts", ".tsx", ".jsx", ".md", ".txt", ".json", ".yml", ".yaml",
+                        ".env", ".ini", ".cfg", ".toml", ".sh", ".ps1", ".html", ".css", ".xml", ".sql", ".csv"}
 
     updated_files: List[str] = []
     replacements_applied = 0

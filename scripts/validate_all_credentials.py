@@ -138,7 +138,8 @@ class CredentialValidator:
             }
 
         try:
-            base_url = self.paypal_api[self.paypal_config['mode'] if self.paypal_config['mode'] in self.paypal_api else 'sandbox']
+            base_url = self.paypal_api[self.paypal_config['mode']
+                                       if self.paypal_config['mode'] in self.paypal_api else 'sandbox']
 
             async with aiohttp.ClientSession() as session:
                 async with session.post(
