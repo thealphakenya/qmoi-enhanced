@@ -79,7 +79,7 @@ npm run dev
 - Check total revenue: **$323,999**
 - See liquid funds (KES 0 - accounts configured)
 - Review storage locations:
-  - CashOn Wallet (Pesapal)
+  - CashOn Wallet (PayPal)
   - PayPal Business
   - Cryptocurrency Wallets
   - Bank Accounts
@@ -109,7 +109,7 @@ npm run dev
 
 ### Financial Integration
 
-✅ Pesapal wallet - Payment processing
+✅ PayPal wallet - Payment processing
 ✅ PayPal integration - Alternative payments
 ✅ Cryptocurrency wallets - Digital assets
 ✅ Bank accounts - Traditional banking

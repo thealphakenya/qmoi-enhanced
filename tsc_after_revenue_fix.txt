@@ -148,7 +148,7 @@ app/api/employment/megavault/route.ts(432,20): error TS2304: Cannot find name 'f
 app/api/employment/megavault/route.ts(442,18): error TS2304: Cannot find name 'fals_e'.
 app/api/employment/megavault/route.ts(462,20): error TS2304: Cannot find name 'fals_e'.
 app/api/employment/megavault/route.ts(483,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/payment/route.ts(58,54): error TS2339: Property 'pesapal' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(58,54): error TS2339: Property 'paypal' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(59,48): error TS2339: Property 'mpesa' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(85,31): error TS2339: Property 'amount' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(86,31): error TS2339: Property 'mpesaNumber' does not exist on type 'unknown'.

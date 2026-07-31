@@ -60,7 +60,7 @@ export class AIRequestRouter {
       return this.handleProjectRequest(user, request);
     }
     if (
-      /wallet|fund|mpesa|airtel|pesapal|finance|transaction/i.test(
+      /wallet|fund|mpesa|airtel|paypal|finance|transaction/i.test(
         request.message,
       )
     ) {
@@ -88,7 +88,7 @@ export class AIRequestRouter {
   }
 
   private async handleFinancialRequest(user: User, request: AIRequest) {
-    // TODO: Integrate with wallet, Mpesa, Airtel, Pesapal, etc.
+    // TODO: Integrate with wallet, Mpesa, Airtel, PayPal, etc.
     return {
       status: "financial-handled",
       user: user.id,

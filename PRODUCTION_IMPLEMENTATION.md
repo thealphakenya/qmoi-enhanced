@@ -145,7 +145,7 @@ const result = await processWithdrawal(withdrawalId, "COMPLETED", providerRef);
 
 ### 5. **Payment Integration**
 
-- **Technology**: M-Pesa, Pesapal, Stripe-ready
+- **Technology**: M-Pesa, PayPal, Stripe-ready
 - **Implementation**: [lib/payments.ts](../lib/payments.ts)
 
 **M-Pesa Integration**:
@@ -159,12 +159,12 @@ MPESA_PASSKEY=your_passkey
 MPESA_CALLBACK_URL=https://yourdomain.com/api/mpesa/callback
 ```
 
-**Pesapal Integration**:
+**PayPal Integration**:
 
 ```bash
-PESAPAL_CONSUMER_KEY=your_key
-PESAPAL_CONSUMER_SECRET=your_secret
-PESAPAL_API_URL=https://api.pesapal.com/api/
+PAYPAL_CLIENT_ID=your_key
+PAYPAL_CLIENT_SECRET=your_secret
+PAYPAL_API_URL=https://api.paypal.com/api/
 ```
 
 **Functions**:
@@ -173,12 +173,12 @@ PESAPAL_API_URL=https://api.pesapal.com/api/
 // Initiate M-Pesa payment
 const result = await initiateMpesaPayment(userId, phoneNumber, amount);
 
-// Initiate Pesapal payment
-const result = await initiatePesapalPayment(userId, amount, email);
+// Initiate PayPal payment
+const result = await initiatePayPalPayment(userId, amount, email);
 
 // Handle webhook callbacks
 await handleMpesaCallback(transactionId, "success", mpesaId);
-await handlePesapalCallback(transactionId, "success", pesapalId);
+await handlePayPalCallback(transactionId, "success", paypalId);
 ```
 
 ---
@@ -193,10 +193,10 @@ All payment providers must call your webhook endpoints:
 POST /api/mpesa/callback
 ```
 
-### Pesapal Callback
+### PayPal Callback
 
 ```
-POST /api/pesapal/callback
+POST /api/paypal/callback
 ```
 
 ### WebHook Verification
@@ -302,7 +302,7 @@ await logAuditEntry(
 - [ ] Update `.env.local` with all provider credentials
 - [ ] Run `prisma migrate deploy` to set up database
 - [ ] Configure SendGrid API key
-- [ ] Set up M-Pesa/Pesapal webhooks
+- [ ] Set up M-Pesa/PayPal webhooks
 - [ ] Enable HTTPS for all webhook endpoints
 - [ ] Set up monitoring and alerting
 - [ ] Run security audit
@@ -331,9 +331,9 @@ await logAuditEntry(
 ### Payments
 
 - `POST /api/payments/mpesa` - Initiate M-Pesa
-- `POST /api/payments/pesapal` - Initiate Pesapal
+- `POST /api/payments/paypal` - Initiate PayPal
 - `POST /api/mpesa/callback` - M-Pesa webhook
-- `POST /api/pesapal/callback` - Pesapal webhook
+- `POST /api/paypal/callback` - PayPal webhook
 
 ---
 

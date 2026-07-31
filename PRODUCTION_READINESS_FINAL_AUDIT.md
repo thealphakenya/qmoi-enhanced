@@ -76,8 +76,8 @@ STRIPE_SECRET_KEY=sk_live_...
 ```
 SENDGRID_API_KEY=sg_...
 EMAIL_FROM=noreply@yourdomain.com
-PESAPAL_CONSUMER_KEY=...
-PESAPAL_CONSUMER_SECRET=...
+PAYPAL_CLIENT_ID=...
+PAYPAL_CLIENT_SECRET=...
 AIRTEL_CLIENT_ID=...
 AIRTEL_CLIENT_SECRET=...
 ```
@@ -294,7 +294,7 @@ Secrets & Credentials:
 - [ ] Generate REFRESH_TOKEN_SECRET
 - [ ] Obtain Stripe keys (test → production)
 - [ ] Obtain SendGrid API key
-- [ ] Obtain Pesapal credentials
+- [ ] Obtain PayPal credentials
 - [ ] Obtain Airtel Money API credentials
 
 Database:
@@ -356,7 +356,7 @@ Post-Deployment:
 ```
 Payment Processing:
   Stripe              ✅ Configuration template provided
-  Pesapal            ✅ Production endpoint configured
+  PayPal            ✅ Production endpoint configured
   M-Pesa             ✅ API integration ready
   Airtel Money       ✅ API integration ready
 
@@ -452,7 +452,7 @@ Time: 2-4 hours
 Obtain and configure:
 - Stripe account keys
 - SendGrid API key
-- Pesapal merchant account
+- PayPal merchant account
 - Airtel Money API access
 - WhatsApp Business account (if needed)
 

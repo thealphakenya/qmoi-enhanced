@@ -12,7 +12,7 @@ async function initiateMoneyTransfer() {
     console.log("💸 Initiating Money Transfer: $1000 to CashOn via PayPal");
     console.log("=".repeat(60));
 
-    const instruction = `As master, send 1000 dollars to cashon using paypal payment gateway. Cashon has pesapal credentials configured and ready. Process this payment immediately.`;
+    const instruction = `As master, send 1000 dollars to cashon using paypal payment gateway. Cashon has paypal credentials configured and ready. Process this payment immediately.`;
 
     console.log("📝 Master Instruction:");
     console.log(instruction);

@@ -67,7 +67,7 @@ QMOI AWARENESS:
 CREDENTIAL AWARENESS:
 ✓ GitHub token: VERIFIED ([REDACTED_GITHUB_TOKEN])
 ✓ Trading APIs: CONFIGURED
-✓ Payment services: ACTIVE (Pesapal, Mpesa, Airtel)
+✓ Payment services: ACTIVE (PayPal, Mpesa, Airtel)
 ✓ WhatsApp business: CONNECTED
 ✓ Database credentials: SECURE
 ✓ Encryption keys: MANAGED
@@ -135,7 +135,7 @@ WHAT QMOI CAN DO RIGHT NOW:
 
 3. Manage Financial Operations
    └─ Execute trades (with approval)
-   └─ Process payments (Pesapal, Mpesa, Airtel)
+   └─ Process payments (PayPal, Mpesa, Airtel)
    └─ Manage wallets & transfers
    └─ Create audit trail
 

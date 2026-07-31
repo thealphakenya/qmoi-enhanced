@@ -8,9 +8,9 @@ async function validateEnvironment() {
     "DATABASE_URL",
     "TRADING_ENGINE_URL",
     "TRADING_ENGINE_API_KEY",
-    "PESAPAL_CONSUMER_KEY",
-    "PESAPAL_CONSUMER_SECRET",
-    "PESAPAL_ENVIRONMENT",
+    "PAYPAL_CLIENT_ID",
+    "PAYPAL_CLIENT_SECRET",
+    "PAYPAL_MODE",
     "MASTER_TOKEN",
   ];
 
@@ -92,32 +92,32 @@ async function validateTradingEngine() {
   }
 }
 
-async function validatePesapal() {
-  // Test Pesapal credentials by attempting to get a token
+async function validatePayPal() {
+  // Test PayPal credentials by attempting to get a token
   try {
     const _response = await fetch(
-      `https://${process.env.PESAPAL_ENVIRONMENT === "live" ? "api" : "sandbox"}.pesapal.com/v3/api/Auth/RequestToken`,
+      `https://${process.env.PAYPAL_MODE === "live" ? "api" : "sandbox"}.paypal.com/v3/api/Auth/RequestToken`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          consumer_key: process.env.PESAPAL_CONSUMER_KEY,
-          consumer_secret: process.env.PESAPAL_CONSUMER_SECRET,
+          consumer_key: process.env.PAYPAL_CLIENT_ID,
+          consumer_secret: process.env.PAYPAL_CLIENT_SECRET,
         }),
       },
     );
 
     if (!response.ok) {
-      (console as any).error("❌ Pesapal authentication failed:", response.statusText);
+      (console as any).error("❌ PayPal authentication failed:", response.statusText);
       return false;
     }
 
-    console.log("✅ Pesapal credentials are valid");
+    console.log("✅ PayPal credentials are valid");
     return true;
   } catch (_error) {
-    (console as any).error("❌ Pesapal validation failed:", error.message);
+    (console as any).error("❌ PayPal validation failed:", error.message);
     return false;
   }
 }
@@ -129,7 +129,7 @@ async function main() {
     validateEnvironment(),
     validateDatabase(),
     validateTradingEngine(),
-    validatePesapal(),
+    validatePayPal(),
   ]);
 
   const allValid = results.every((r) => r);
@@ -155,5 +155,5 @@ module.exports = {
   validateEnvironment,
   validateDatabase,
   validateTradingEngine,
-  validatePesapal,
+  validatePayPal,
 };

@@ -1,0 +1,8 @@
+{
+  "name": "Docs_Site",
+  "short_name": "Docs_Site",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000"
+}

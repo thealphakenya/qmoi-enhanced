@@ -503,7 +503,7 @@ Initiate a payment with a provider.
 **Supported Methods:**
 
 - `mpesa` - Safaricom M-Pesa
-- `pesapal` - Pesapal gateway
+- `paypal` - PayPal gateway
 - `stripe` - Stripe payment processor
 
 ---

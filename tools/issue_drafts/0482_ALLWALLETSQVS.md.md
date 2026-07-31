@@ -35,7 +35,7 @@ Discovered wallet docs (non-exhaustive)
 - `LEAHWALLET.md` — Leah/Sister wallet guide and UI notes.
 - `QMOI-REVENUE-README.md`, `QMOIREVENUEGENERATION.md`, `QMOIAUTOREVENUEEARN.md` — revenue/autorevenue docs referencing Cashon and wallet flows.
 - `CASHONTRADINGREADME.md`, `TRADINGREADME.md` — trading + wallet integration notes.
-- Various README files reference wallets and payment providers (Mpesa, Pesapal, Binance, Bitget, CashApp). Use the repository-wide [AUTOFIXED by Ollama at 2026-07-26T18:54:41.708554Z] scanner to find more references.
+- Various README files reference wallets and payment providers (Mpesa, PayPal, Binance, Bitget, CashApp). Use the repository-wide [AUTOFIXED by Ollama at 2026-07-26T18:54:41.708554Z] scanner to find more references.
 
 Location of automated checks
 - Script: `scripts/wallets/check_wallets.py`
@@ -63,7 +63,7 @@ python3 scripts/wallets/check_wallets.py --real
 
 Next steps
 
-- Expand `scripts/wallets/` with adapters for testnets and exchanges (Binance, Bitget, Pesapal). Start with testnet-only adapters and automated unit tests.
+- Expand `scripts/wallets/` with adapters for testnets and exchanges (Binance, Bitget, PayPal). Start with testnet-only adapters and automated unit tests.
 - Add a
 
 ```

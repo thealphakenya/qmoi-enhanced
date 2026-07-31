@@ -259,7 +259,7 @@ API Calls with Bearer Token → Financial/Automation APIs
 - Success rate: 99.8%
 
 ### Fund Storage Confirmed
-1. ✅ CashOn Wallet (Pesapal)
+1. ✅ CashOn Wallet (PayPal)
 2. ✅ PayPal Business
 3. ✅ Cryptocurrency Wallets
 4. ✅ Bank Accounts (KCB, Standard Chartered)

@@ -79,7 +79,7 @@ Successfully implemented a complete Master Control System for QMOI with comprehe
 - Total revenue display: **$323,999 USD** (verified)
 - Liquid funds tracking: **KES 0** (accounts configured)
 - 4 secure fund storage locations:
-  - CashOn Wallet (Pesapal)
+  - CashOn Wallet (PayPal)
   - PayPal Business Account
   - Cryptocurrency Wallets (BTC/ETH)
   - Bank Accounts (KCB Kenya, Standard Chartered Singapore)
@@ -169,9 +169,9 @@ Total:              $323,999 (100%)
 
 ### Fund Storage Locations
 ```
-1. CashOn Wallet (Pesapal)
+1. CashOn Wallet (PayPal)
    - Merchant ID: QM-2026-001
-   - API: https://api.pesapal.com
+   - API: https://api.paypal.com
    - Status: Active
 
 2. PayPal Business

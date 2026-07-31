@@ -17,6 +17,8 @@ This file tracks non-production implementations that should be upgraded to produ
 - .gitlab-ci.yml: ERROR
 - .ollama_agent_state.json: TODO, placeholder, ERROR
 - .ollama_agent_state.json.ollama_update.txt: placeholder
+- .ollama_merge_deletions.json: placeholder
+- .ollama_merge_deletions.json.ollama_update.txt: placeholder
 - .qmoi_state/health_memory.json: ERROR
 - .qmoi_state/metrics_memory.json: ERROR
 - .venv_qmoi_control/bin/Activate.ps1: ERROR
@@ -128,6 +130,7 @@ This file tracks non-production implementations that should be upgraded to produ
 - FINAL_VERIFICATION_CHECKLIST.txt: ERROR
 - FINAL_VERIFICATION_REPORT.md: ERROR
 - FINAL_VERIFICATION_REPORT.txt: Exception, ERROR
+- FINANCE_CREDENTIALS.md: ERROR
 - FINANCIALMANAGER.md: TODO, placeholder, ERROR
 - GITHUB-ACTIONS-COMPLETE.md: ERROR
 - GITHUBPAYED.md: ERROR
@@ -161,7 +164,7 @@ This file tracks non-production implementations that should be upgraded to produ
 - MASTER_README.md: ERROR
 - MASTER_SYSTEM_DEPLOYMENT_REPORT.md: ERROR
 - MASTER_VERIFICATION_COMPLETE.md: ERROR
-- MERGE.md: TODO, ERROR
+- MERGE.md: TODO, placeholder, ERROR
 - MERGED_ARCHIVES_REPORT.md: ERROR
 - MONITORING.md: ERROR
 - MONITORING_API_DOCS.md: ERROR
@@ -338,7 +341,6 @@ This file tracks non-production implementations that should be upgraded to produ
 - QMOI_MASTER_TESTING_GUIDE.md: ERROR
 - QMOI_MASTER_TESTING_SUMMARY.md: ERROR
 - QMOI_MEMORY.md: ERROR
-- QMOI_MEMORY_AWARENESS_SYSTEM.md: ERROR
 - QMOI_PHASE_3_COMPLETION_SUMMARY.md: ERROR
 - QMOI_PLATFORM_ARCHITECTURE.md: Exception, ERROR
 - QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md: ERROR
@@ -2856,7 +2858,7 @@ This file tracks non-production implementations that should be upgraded to produ
 - security_proxy.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
 - server.py: ERROR
 - services/adapters/index.ts: ERROR
-- services/adapters/payments/paypal.ts: ERROR
+- services/adapters/payments/PayPal.ts: ERROR
 - services/adapters/payments/stripe.ts: placeholder
 - services/adapters/payments/webhooks.ts: ERROR
 - services/adapters/social/facebook.ts: ERROR
@@ -3149,6 +3151,7 @@ This file tracks non-production implementations that should be upgraded to produ
 - start_qmoi_ngrok.py: Exception
 - startup.sh: ERROR
 - temps/atoz.txt: ERROR
+- test-PayPal-verification.ts: ERROR
 - test-ai-integrations.js: placeholder, ERROR
 - test-api-connectivity.ts: ERROR
 - test-auto-setup.sh: ERROR
@@ -3156,14 +3159,13 @@ This file tracks non-production implementations that should be upgraded to produ
 - test-getHandlers.js: ERROR
 - test-msw-node.js: ERROR
 - test-msw.js: ERROR
-- test-pesapal-verification.ts: ERROR
 - test-qmoi-comprehensive.sh: Exception, ERROR
 - test-qmoi-iterations.sh: ERROR
 - test-qmoi-master.js: ERROR
 - test-real-money-transfer.ts: ERROR
-- test_paypal.js: ERROR
-- test_paypal_adapter.js: ERROR
-- test_paypal_direct.js: ERROR
+- test_PayPal.js: ERROR
+- test_PayPal_adapter.js: ERROR
+- test_PayPal_direct.js: ERROR
 - tests/e2e/test_e2e_placeholder.py: placeholder
 - tests/handlers.integration.test.ts: ERROR
 - tests/integration/test_error_fixing_integration.py: ERROR
@@ -3175,16 +3177,31 @@ This file tracks non-production implementations that should be upgraded to produ
 - tests/scripts/auto_trading.test.js: ERROR
 - tests/security/test_security_placeholder.py: placeholder
 - tests/test_billing_guard.py: ERROR
+- tests/test_custom_error_handler.py: ERROR
+- tests/test_error_fixer.py: ERROR
+- tests/test_error_handler.py: ERROR
+- tests/test_error_tracker.py: ERROR
+- tests/test_error_tracking.py: ERROR
+- tests/test_expand_platform_todos.py: TODO
 - tests/test_integration.py: Exception, ERROR
 - tests/test_link_autoupdater.py: placeholder
 - tests/test_link_systems.py: Exception, ERROR
 - tests/test_notify_on_whatsapp.py: ERROR
 - tests/test_ollama_autonomous_agent.py: TODO, placeholder
+- tests/test_placeholder_scan.py: placeholder
 - tests/test_providers.py: ERROR
+- tests/test_qmoi-error-handler.py: ERROR
+- tests/test_qmoi-universal-error-fixer.py: ERROR
+- tests/test_qmoi_error_auto_fix.py: ERROR
+- tests/test_qmoi_error_monitor.py: ERROR
 - tests/test_qmoi_friendship.js: ERROR
 - tests/test_qmoi_local_server.py: Exception
+- tests/test_qmoi_parallel_error_fixer.py: ERROR
+- tests/test_qmoi_todos.py: TODO
 - tests/test_queue_worker.py: Exception, ERROR
 - tests/test_release_helper.py: Exception
+- tests/test_test_error_fixing_suite.py: ERROR
+- tests/test_watch_error_fixing.py: ERROR
 - tests/ui/qmoi_ui_autotest.spec.js: ERROR
 - tests/unit/test_error_fixing.py: ERROR
 - teststoadd.txt: ERROR

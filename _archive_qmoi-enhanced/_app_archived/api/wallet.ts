@@ -65,7 +65,7 @@ const wallet = {
 
 const MPESA_API_URL = "https://api.safaricom.co.ke/mpesa";
 const BINANCE_API_URL = "https://api.binance.com";
-const PESA_API_URL = "https://api.pesapal.com";
+const PESA_API_URL = "https://api.paypal.com";
 const BITGET_API_URL = "https://api.bitget.com";
 
 function readWalletRequests() {
@@ -188,34 +188,34 @@ async function processBinance(amount: number, type: string) {
   }
 }
 
-async function processPesapal(amount: number, type: string) {
-  // Basic Pesapal API integration
+async function processPayPal(amount: number, type: string) {
+  // Basic PayPal API integration
   try {
-    const pesapalConfig = {
-      consumerKey: process.env.PESAPAL_CONSUMER_KEY,
-      consumerSecret: process.env.PESAPAL_CONSUMER_SECRET,
+    const paypalConfig = {
+      consumerKey: process.env.PAYPAL_CLIENT_ID,
+      consumerSecret: process.env.PAYPAL_CLIENT_SECRET,
       environment: process.env.NODE_ENV === "production" ? "live" : "sandbox",
     };
 
-    if (!pesapalConfig.consumerKey || !pesapalConfig.consumerSecret) {
-      console.warn("Pesapal credentials not configured, using simulation");
+    if (!paypalConfig.consumerKey || !paypalConfig.consumerSecret) {
+      console.warn("PayPal credentials not configured, using simulation");
       return {
         status: "success",
-        platform: "Pesapal",
+        platform: "PayPal",
         amount,
-        transactionId: `PESAPAL_${Date.now()}`,
+        transactionId: `PAYPAL_${Date.now()}`,
       };
     }
 
     // In a real implementation, you would:
-    // 1. Authenticate with Pesapal
+    // 1. Authenticate with PayPal
     // 2. Create payment request
-    // 3. Redirect user to Pesapal payment page
+    // 3. Redirect user to PayPal payment page
     // 4. Handle IPN callbacks
 
-    const transactionId = `PESAPAL_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    const transactionId = `PAYPAL_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
-    logAction("pesapal_transaction", {
+    logAction("paypal_transaction", {
       type,
       amount,
       transactionId,
@@ -224,17 +224,17 @@ async function processPesapal(amount: number, type: string) {
 
     return {
       status: "success",
-      platform: "Pesapal",
+      platform: "PayPal",
       amount,
       transactionId,
       message:
         type === "deposit" ? "Payment request created" : "Withdrawal initiated",
     };
   } catch (error) {
-    (globalThis.console as any)?.error?.("Pesapal processing error:", error);
+    (globalThis.console as any)?.error?.("PayPal processing error:", error);
     return {
       status: "error",
-      platform: "Pesapal",
+      platform: "PayPal",
       amount,
       error: error.message,
     };
@@ -300,7 +300,7 @@ async function processBitget(amount: number, type: string) {
 const platformHandlers: Record<string, any> = {
   Mpesa: processMpesa,
   Binance: processBinance,
-  Pesapal: processPesapal,
+  PayPal: processPayPal,
   Bitget: processBitget,
   Cashon: async (amount: number, type: string) => ({
     status: "success",

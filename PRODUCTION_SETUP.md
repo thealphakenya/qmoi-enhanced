@@ -10,7 +10,7 @@ The application now includes:
 
 - **Database Layer**: Prisma ORM with PostgreSQL support
 - **Authentication**: JWT-based with refresh tokens and 2FA
-- **Payment Processing**: M-Pesa, Pesapal, Stripe integrations
+- **Payment Processing**: M-Pesa, PayPal, Stripe integrations
 - **Email Notifications**: SendGrid integration with templates
 - **Communications**: WhatsApp, Telegram, SMS via Twilio
 - **Audit Logging**: Complete audit trail for compliance
@@ -82,16 +82,16 @@ MPESA_PASSKEY=your_passkey
 MPESA_CALLBACK_URL=https://yourdomain.com/api/webhooks/payments
 ```
 
-#### Pesapal
+#### PayPal
 
 ```bash
-# Register merchant account at https://pesapal.com
+# Register merchant account at https://paypal.com
 # Get API credentials from merchant dashboard
 
 # Add to .env.local
-PESAPAL_CONSUMER_KEY=your_consumer_key
-PESAPAL_CONSUMER_SECRET=your_consumer_secret
-PESAPAL_API_URL=https://api.pesapal.com/api/
+PAYPAL_CLIENT_ID=your_consumer_key
+PAYPAL_CLIENT_SECRET=your_consumer_secret
+PAYPAL_API_URL=https://api.paypal.com/api/
 ```
 
 #### Stripe (Optional)
@@ -215,7 +215,7 @@ SENDGRID_API_KEY=your_key
 SENDGRID_FROM_EMAIL=noreply@qmoi.app
 
 # Payments
-PAYMENT_PROVIDER=mpesa  # or pesapal, stripe
+PAYMENT_PROVIDER=mpesa  # or paypal, stripe
 MPESA_CONSUMER_KEY=key
 MPESA_CONSUMER_SECRET=secret
 
@@ -378,7 +378,7 @@ npx prisma db push
 - [Next.js Documentation](https://nextjs.org/docs)
 - [SendGrid API Reference](https://docs.sendgrid.com/api-reference)
 - [M-Pesa API Documentation](https://developer.safaricom.co.ke/)
-- [Pesapal Integration Guide](https://pesapal.com/api)
+- [PayPal Integration Guide](https://paypal.com/api)
 - [Twilio API Docs](https://www.twilio.com/docs)
 
 ## Support

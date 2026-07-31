@@ -7,7 +7,7 @@ const PaymentSchema = z.object({
   recipientId: z.string(),
   recipientType: z.enum(["employee", "user"]),
   amount: z.number().positive(),
-  paymentMethod: z.enum(["mpesa", "airtel", "pesapal", "bank"]),
+  paymentMethod: z.enum(["mpesa", "airtel", "paypal", "bank"]),
   description: z.string(),
   scheduledDate: z.string().optional(),
 });
@@ -15,7 +15,7 @@ const PaymentSchema = z.object({
 const PaymentInfoSchema = z.object({
   recipientId: z.string(),
   recipientType: z.enum(["employee", "user"]),
-  paymentMethod: z.enum(["mpesa", "airtel", "pesapal", "bank"]),
+  paymentMethod: z.enum(["mpesa", "airtel", "paypal", "bank"]),
   accountNumber: z.string().optional(),
   accountName: z.string().optional(),
   mpesaNumber: z.string().optional(),
@@ -30,9 +30,9 @@ const paymentLogs: unknown[] = [];
 // Secure credential storage (in production, use encrypted environment variables)
 // Do NOT keep fallback literal secrets in source. Provide via environment or secrets manager.
 const PAYMENT_CREDENTIALS = {
-  pesapal: {
-    consumerKey: process.env.PESAPAL_CONSUMER_KEY || "",
-    consumerSecret: process.env.PESAPAL_CONSUMER_SECRET || "",
+  paypal: {
+    consumerKey: process.env.PAYPAL_CLIENT_ID || "",
+    consumerSecret: process.env.PAYPAL_CLIENT_SECRET || "",
   },
   mpesa: {
     consumerKey: process.env.MPESA_CONSUMER_KEY || "",
@@ -53,7 +53,7 @@ function maskSecret(s: string | undefined | null) {
 async function backupCredentialsSafe(credentials: unknown, platform: string) {
   try {
     const masked = {
-      pesapal: { consumerKey: maskSecret(credentials.pesapal.consumerKey) },
+      paypal: { consumerKey: maskSecret(credentials.paypal.consumerKey) },
       mpesa: { passkey: maskSecret(credentials.mpesa.passkey) },
     };
     console.log(`Safe backup for ${platform}:`, masked);
@@ -148,18 +148,18 @@ async function processAirtelPayment(paymentData: unknown) {
   }
 }
 
-async function processPesapalPayment(paymentData: unknown) {
+async function processPayPalPayment(paymentData: unknown) {
   try {
-    // Simulate Pesapal API call
+    // Simulate PayPal API call
     const response = await fetch(
-      "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
+      "https://www.paypal.com/api/PostPayPalDirectOrderV4",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/xml",
         },
         body: `
-        <PesapalDirectOrderInfo 
+        <PayPalDirectOrderInfo 
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
           xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
           Amount="${paymentData.amount}" 
@@ -170,16 +170,16 @@ async function processPesapalPayment(paymentData: unknown) {
           LastName="${paymentData.accountName?.split(" ").slice(1).join(" ") || "Name"}" 
           Email="${paymentData.email}" 
           PhoneNumber="${paymentData.phone}" 
-          xmlns="http://www.pesapal.com" />
+          xmlns="http://www.paypal.com" />
       `,
       },
     );
 
     const result = await response.text();
-    return { success: true, reference: result, provider: "pesapal" };
+    return { success: true, reference: result, provider: "paypal" };
   } catch (error) {
-    (globalThis.console as any)?.error?.("Pesapal payment failed:", error);
-    return { success: false, error: "Pesapal payment failed" };
+    (globalThis.console as any)?.error?.("PayPal payment failed:", error);
+    return { success: false, error: "PayPal payment failed" };
   }
 }
 
@@ -203,7 +203,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({
         success: true,
         data: {
-          pesapal: { consumerKey: "***" },
+          paypal: { consumerKey: "***" },
           mpesa: { consumerKey: "***" },
           airtel: { clientId: "***" },
         },
@@ -253,8 +253,8 @@ export async function POST(request: NextRequest) {
         case "airtel":
           result = await processAirtelPayment(validatedData);
           break;
-        case "pesapal":
-          result = await processPesapalPayment(validatedData);
+        case "paypal":
+          result = await processPayPalPayment(validatedData);
           break;
         default:
           result = { success: false, error: "Unsupported payment method" };

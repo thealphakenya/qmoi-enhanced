@@ -24,7 +24,7 @@ qmoi_validation_frontmatter: true
 - **Earning & Cashon:**
   - Real-time earning and fund management
   - **Wallet Requests:** You can request a wallet at any time. The AI will notify the master, and your wallet will be created only after master approval (via WhatsApp or dashboard).
-  - **Fund Transfers:** Only the master can transfer funds out of Cashon (Pesapal). You can view your balance and receive funds, but cannot withdraw without master approval.
+  - **Fund Transfers:** Only the master can transfer funds out of Cashon (PayPal). You can view your balance and receive funds, but cannot withdraw without master approval.
   - **Audit & Notifications:** All wallet and fund actions are logged, and you will be notified of approvals or denials.
 - **Emotional Intelligence:**
   - Mood tracking and well-being support

@@ -338,7 +338,7 @@ Time: ${new Date().toLocaleString()}`;
     const body = message.body.toLowerCase();
 
     // Balance query
-    if (body.includes("balance") || body.includes("pesapal")) {
+    if (body.includes("balance") || body.includes("paypal")) {
       return await this.getBalanceResponse();
     }
 
@@ -517,8 +517,8 @@ Message: ${message.body}
 
   private async getBalanceResponse(): Promise<string> {
     try {
-      // Prefer a configured Pesapal balance endpoint for production
-      const balanceEndpoint = process.env.PESAPAL_BALANCE_URL;
+      // Prefer a configured PayPal balance endpoint for production
+      const balanceEndpoint = process.env.PAYPAL_BALANCE_URL;
       if (balanceEndpoint) {
         try {
           const res = await (
@@ -526,18 +526,18 @@ Message: ${message.body}
           ).default.get(balanceEndpoint, { timeout: 10_000 });
           const bal = res?.data?.balance ?? res?.data?.amount ?? null;
           if (typeof bal === "number") {
-            return `💰 Pesapal Balance: $${bal.toFixed(2)}\n\n💳 Account Status: Active\n📊 Last Updated: ${new Date().toLocaleString()}\n🔄 Auto-withdrawal: Enabled`;
+            return `💰 PayPal Balance: $${bal.toFixed(2)}\n\n💳 Account Status: Active\n📊 Last Updated: ${new Date().toLocaleString()}\n🔄 Auto-withdrawal: Enabled`;
           }
         } catch (e) {
           console.warn(
-            "Failed to fetch Pesapal balance from configured endpoint:",
+            "Failed to fetch PayPal balance from configured endpoint:",
             String(e),
           );
         }
       }
 
-      // Fallback: instruct admin to configure Pesapal integration
-      return `💰 Pesapal Balance: Unavailable\n\n⚠️ Pesapal integration is not configured. Set PESAPAL_BALANCE_URL or implement PesapalService.\n📄 See ENVIRONMENT_CONFIG.md for required keys.`;
+      // Fallback: instruct admin to configure PayPal integration
+      return `💰 PayPal Balance: Unavailable\n\n⚠️ PayPal integration is not configured. Set PAYPAL_BALANCE_URL or implement PayPalService.\n📄 See ENVIRONMENT_CONFIG.md for required keys.`;
     } catch (e) {
       void e;
       return "Unavailable";
@@ -550,7 +550,7 @@ Message: ${message.body}
 ✅ WhatsApp: Connected
 ✅ Trading: Active
 ✅ Earning: Running
-✅ Pesapal: Connected
+✅ PayPal: Connected
 ✅ AI: Operational
 
 📊 Performance:
@@ -601,7 +601,7 @@ General Commands:
 /start - Initialize the bot
 /help - Show this help message
 /status - Check system status
-/balance - Check Pesapal balance
+/balance - Check PayPal balance
 /earnings - View recent earnings
 
 Master Commands:
@@ -622,7 +622,7 @@ Master Commands:
 
 🤖 I'm your AI assistant for the QMOI earning system.
 💰 I can help you with:
-• Checking your Pesapal balance
+• Checking your PayPal balance
 • Viewing earnings reports
 • System status updates
 • Trading information
@@ -642,7 +642,7 @@ Master Commands:
 • Decision Engine: Online
 
 💰 Financial Systems:
-• Pesapal Integration: Connected
+• PayPal Integration: Connected
 • Auto-trading: Enabled
 • Risk Limits: 5% daily loss
 • Profit Targets: 4% per trade

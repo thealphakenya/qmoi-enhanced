@@ -120,7 +120,7 @@ qmoi_validation_frontmatter: true
 - AI self-update and self-enhancement engine with Hugging Face backup/restore
 - Parallel and large task handling (Colab/cloud integration)
 - Security proxy for masked, sandboxed external access
-- Wallet & real funds integration (Mpesa, Binance, Pesapal, Bitget, Cashon)
+- Wallet & real funds integration (Mpesa, Binance, PayPal, Bitget, Cashon)
 - Background trading and strategy management (autonomous, multi-strategy)
 - Bluetooth car integration with AI navigation and global support
 - Media preview and AI movie/animation generation (Stable Diffusion, StyleGAN, AnimateDiff, etc.)
@@ -585,7 +585,7 @@ _Last updated: June 9, 2025_
   - List, find, lock, and wipe devices
   - Master-only controls
 - **Cashon & Earning Automation:**
-  - Real-time Pesapal integration
+  - Real-time PayPal integration
   - Multiple earning strategies
 - **Onboarding: Join Q Community:**
   - Modern, elegant UI
@@ -603,7 +603,7 @@ _Last updated: June 9, 2025_
 
 ## Major Security & Fund Management Enhancements (2025-06-13)
 
-- **Master-Only Wallet & Fund Management:** Only the master can access, transfer, or withdraw funds from Cashon (Pesapal). All fund transfers and wallet creation for users require explicit master approval (via WhatsApp or dashboard).
+- **Master-Only Wallet & Fund Management:** Only the master can access, transfer, or withdraw funds from Cashon (PayPal). All fund transfers and wallet creation for users require explicit master approval (via WhatsApp or dashboard).
 - **WhatsApp Approval Flows:** Users can request wallets or fund transfers, but these are only processed after master approval. The AI notifies the master instantly and logs all actions.
 - **Audit Logging & Notifications:** Every sensitive action (wallet creation, fund transfer, earning) is logged, encrypted, and instantly reported to the master. Full audit trails are available for review.
 - **UI/UX Enhancements:** Wallet request buttons and approval status are now visible in the UI. Non-masters see only their own wallet and cannot withdraw funds without approval.

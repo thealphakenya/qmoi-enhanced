@@ -352,7 +352,7 @@ TRADING APIs:
 ├─ Balance Monitoring
 
 PAYMENT APIs:
-├─ Pesapal Integration
+├─ PayPal Integration
 ├─ M-Pesa Integration
 ├─ Airtel Integration
 ├─ Wallet Management

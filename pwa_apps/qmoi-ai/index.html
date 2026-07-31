@@ -5,27 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="QMOI AI - Quantum Master Orchestrator Intelligence. Advanced AI platform for intelligent automation and real-time orchestration."
+      content="QMOI AI - Advanced Artificial Intelligence for QMOI Ecosystem"
     />
-    <meta name="theme-color" content="#0b5fff" />
+    <meta name="theme-color" content="#FF6B35" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
     <meta name="apple-mobile-web-app-title" content="QMOI AI" />
 
-    <title>QMOI AI - Quantum Master Orchestrator Intelligence</title>
+    <link rel="manifest" href="/manifest-qmoi-ai.json" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect fill='%23FF6B35' width='180' height='180'/%3E%3Ctext x='50%' y='50%' font-size='80' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3E⚡%3C/text%3E%3C/svg%3E"
+    />
 
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.webmanifest" />
-
-    <!-- Icons -->
-    <link rel="icon" type="image/x-icon" href="icon-48.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png" />
-    <link rel="apple-touch-icon" href="icon-192.png" />
-
+    <title>QMOI AI</title>
     <style>
       * {
         margin: 0;
@@ -33,543 +27,307 @@
         box-sizing: border-box;
       }
 
-      :root {
-        --primary: #0b5fff;
-        --secondary: #667eea;
-        --background: #0b1220;
-        --surface: #0f1724;
-        --text: #e6eef8;
-        --muted: #9aa6bf;
-        --success: #10b981;
-        --error: #ef4444;
-      }
-
       body {
         font-family:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
-          Cantarell, sans-serif;
-        background: linear-gradient(180deg, var(--background), #071027);
-        color: var(--text);
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
-
-      #app {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+        color: #333;
         min-height: 100vh;
-      }
-
-      header {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        margin-bottom: 40px;
-        padding-bottom: 20px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        justify-content: center;
+        padding: 20px;
       }
 
-      h1 {
-        font-size: 24px;
-        font-weight: 600;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .card {
-        background: var(--surface);
+      .container {
+        background: white;
         border-radius: 12px;
-        padding: 24px;
-        margin-bottom: 20px;
-        box-shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-      }
-
-      .card h2 {
-        font-size: 18px;
-        margin-bottom: 16px;
-        color: var(--primary);
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 16px;
-        margin-bottom: 20px;
-      }
-
-      .stat-card {
-        background: rgba(11, 95, 255, 0.1);
-        border: 1px solid var(--primary);
-        border-radius: 8px;
-        padding: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        width: 100%;
+        padding: 40px;
         text-align: center;
       }
 
-      .stat-value {
-        font-size: 32px;
-        font-weight: 700;
-        color: var(--primary);
+      .header {
+        margin-bottom: 30px;
       }
 
-      .stat-label {
-        font-size: 12px;
-        color: var(--muted);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      button {
-        background: var(--primary);
+      .logo {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 48px;
         color: white;
-        border: none;
-        padding: 12px 24px;
-        border-radius: 8px;
+        margin: 0 auto 20px;
+        box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+      }
+
+      h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+        color: #ff6b35;
+      }
+
+      .subtitle {
+        color: #666;
         font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
+        margin-bottom: 20px;
       }
 
-      button:hover {
-        background: var(--secondary);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+      .status {
+        background: #f5f5f5;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-size: 14px;
       }
 
-      .install-btn {
-        display: none;
+      .status-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 8px 0;
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .status-item:last-child {
+        border-bottom: none;
+      }
+
+      .status-label {
+        text-align: left;
+        color: #666;
+      }
+
+      .status-value {
+        font-weight: bold;
+        color: #ff6b35;
+      }
+
+      .features {
+        text-align: left;
+        margin: 30px 0;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 8px;
+      }
+
+      .features h2 {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 12px;
+      }
+
+      .features ul {
+        list-style: none;
+      }
+
+      .features li {
+        padding: 8px 0;
+        color: #666;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+      }
+
+      .features li:before {
+        content: "✓";
+        color: #4caf50;
+        font-weight: bold;
         margin-right: 10px;
       }
 
-      .status-badge {
-        display: inline-block;
-        padding: 4px 12px;
-        border-radius: 12px;
+      .actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+      }
+
+      button {
+        flex: 1;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 140px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+        color: white;
+        box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+      }
+
+      .btn-secondary {
+        background: #f5f5f5;
+        color: #333;
+        border: 2px solid #ddd;
+      }
+
+      .btn-secondary:hover {
+        background: #efefef;
+      }
+
+      .version-info {
         font-size: 12px;
-        font-weight: 600;
+        color: #999;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
       }
 
-      .status-online {
-        background: rgba(16, 185, 129, 0.2);
-        color: var(--success);
-      }
-
-      .status-offline {
-        background: rgba(239, 68, 68, 0.2);
-        color: var(--error);
-      }
-
-      @media (max-width: 768px) {
-        #app {
-          padding: 16px;
+      @media (max-width: 600px) {
+        .container {
+          padding: 24px;
         }
 
         h1 {
-          font-size: 20px;
+          font-size: 24px;
         }
 
-        .grid {
-          grid-template-columns: 1fr;
+        .actions {
+          flex-direction: column;
         }
 
-        .card {
-          padding: 16px;
+        button {
+          width: 100%;
         }
-      }
-
-      .loader {
-        border: 2px solid rgba(255, 255, 255, 0.1);
-        border-top: 2px solid var(--primary);
-        border-radius: 50%;
-        width: 32px;
-        height: 32px;
-        animation: spin 1s linear infinite;
-        display: inline-block;
-      }
-
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      .notification {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: var(--surface);
-        border: 1px solid var(--primary);
-        border-radius: 8px;
-        padding: 16px;
-        max-width: 300px;
-        box-shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
       }
     </style>
   </head>
   <body>
-    <div id="app">
-      <header>
-        <h1>🤖 QMOI AI</h1>
-        <div>
-          <button id="install-btn" class="install-btn">📱 Install App</button>
-          <span id="status" class="status-badge status-online">● Online</span>
-        </div>
-      </header>
+    <div class="container">
+      <div class="header">
+        <div class="logo">⚡</div>
+        <h1>QMOI AI</h1>
+        <p class="subtitle">
+          Advanced Artificial Intelligence for QMOI Ecosystem
+        </p>
+      </div>
 
-      <div class="card">
-        <h2>Dashboard</h2>
-        <div class="grid">
-          <div class="stat-card">
-            <div class="stat-value" id="stat-uptime">99.9%</div>
-            <div class="stat-label">Uptime</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-value" id="stat-tasks">1,247</div>
-            <div class="stat-label">Tasks Completed</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-value" id="stat-platform">12+</div>
-            <div class="stat-label">Platforms</div>
-          </div>
+      <div class="status">
+        <div class="status-item">
+          <span class="status-label">📱 PWA Status:</span>
+          <span class="status-value" id="pwaStatus">Initializing...</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">🔄 Service Worker:</span>
+          <span class="status-value" id="swStatus">Checking...</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">🤖 AI Engine:</span>
+          <span class="status-value" id="aiStatus">Ready</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">📦 Version:</span>
+          <span class="status-value" id="versionStatus">1.0.0</span>
         </div>
       </div>
 
-      <div class="card">
-        <h2>Features</h2>
+      <div class="features">
+        <h2>✨ AI Capabilities</h2>
         <ul>
-          <li>✅ Cross-platform support (12+ platforms)</li>
-          <li>✅ Real-time orchestration</li>
-          <li>✅ Intelligent automation</li>
-          <li>✅ Multi-device sync</li>
-          <li>✅ Offline support</li>
-          <li>✅ Progressive enhancement</li>
+          <li>Machine learning model inference</li>
+          <li>Natural language processing</li>
+          <li>Real-time predictions and analytics</li>
+          <li>Automated decision making</li>
+          <li>Pattern recognition and anomaly detection</li>
+          <li>Continuous learning and improvement</li>
         </ul>
       </div>
 
-      <div class="card">
-        <h2>Quick Actions</h2>
-        <button onclick="launchDashboard()">📊 Open Dashboard</button>
-        <button onclick="accessSettings()">⚙️ Settings</button>
-        <button onclick="openPreview()">🔍 Preview</button>
-        <button onclick="shareApp()">🔗 Share</button>
-      </div>
-
-      <div class="card" id="alpha-qai-card">
-        <h2>Alpha-Q AI System</h2>
-        <div
-          style="
-            background: #071027;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 12px;
-            border-radius: 8px;
-          "
+      <div class="actions">
+        <button
+          class="btn-primary"
+          id="installBtn"
+          onclick="window.qmoiPWAManager?.promptInstall()"
         >
-          <div
-            style="
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              margin-bottom: 6px;
-            "
-          >
-            <div style="color: var(--muted); font-size: 13px">Status</div>
-            <div
-              style="
-                padding: 4px 8px;
-                border-radius: 6px;
-                background: #10b981;
-                color: #062018;
-                font-weight: 700;
-                font-size: 12px;
-              "
-            >
-              ACTIVE
-            </div>
-          </div>
-          <div
-            style="
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              margin-bottom: 6px;
-            "
-          >
-            <div style="color: var(--muted); font-size: 13px">Version</div>
-            <div style="color: var(--primary); font-weight: 700">
-              Alpha-Q-1.0.0
-            </div>
-          </div>
-          <div
-            style="
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-            "
-          >
-            <div style="color: var(--muted); font-size: 13px">Last Update</div>
-            <div style="color: var(--muted); font-size: 12px">Just now</div>
-          </div>
-          <div
-            style="
-              margin-top: 8px;
-              border-top: 1px dashed rgba(255, 255, 255, 0.03);
-              padding-top: 8px;
-              color: var(--muted);
-              font-size: 12px;
-            "
-          >
-            AI System running with enhanced QMOI integration
-          </div>
-        </div>
-      </div>
-
-      <div class="card" id="chatbot-card">
-        <h2>QMOI Chatbot</h2>
-        <div
-          id="chatbot"
-          style="
-            background: #071027;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 12px;
-            border-radius: 8px;
-          "
+          📥 Install App
+        </button>
+        <button
+          class="btn-secondary"
+          onclick="window.qmoiPWAManager?.downloadAppData()"
         >
-          <div
-            id="chat-history"
-            style="
-              height: 200px;
-              overflow-y: auto;
-              margin-bottom: 8px;
-              padding-right: 8px;
-            "
-          ></div>
-          <div style="display: flex; gap: 8px; align-items: center">
-            <select
-              id="chat-model"
-              style="
-                background: #0b1220;
-                color: var(--text);
-                border: 1px solid rgba(255, 255, 255, 0.04);
-                padding: 6px;
-                border-radius: 6px;
-              "
-            >
-              <option>Auto</option>
-              <option>GPT-4</option>
-              <option>Claude</option>
-              <option>QMOI</option>
-            </select>
-            <input
-              id="chat-input"
-              type="text"
-              placeholder="Ask QMOI..."
-              style="
-                flex: 1;
-                padding: 8px;
-                border-radius: 6px;
-                border: 1px solid rgba(255, 255, 255, 0.04);
-                background: #071027;
-                color: var(--text);
-              "
-            />
-            <button
-              id="chat-send"
-              style="
-                padding: 8px 12px;
-                border-radius: 6px;
-                background: var(--primary);
-                color: #fff;
-                border: none;
-              "
-            >
-              Send
-            </button>
-          </div>
-        </div>
+          ⬇️ Download Data
+        </button>
+        <button class="btn-secondary" onclick="checkAppInfo()">
+          ℹ️ App Info
+        </button>
       </div>
 
-      <div id="notification" class="notification" style="display: none"></div>
+      <div class="version-info">
+        <p>QMOI AI v1.0.0 • Powered by Advanced ML</p>
+        <p>
+          Visit
+          <a
+            href="https://qmoi.ai"
+            target="_blank"
+            style="color: #ff6b35; text-decoration: none"
+            >qmoi.ai</a
+          >
+          for more info
+        </p>
+      </div>
     </div>
 
+    <script src="/qmoi-pwa-manager.js"></script>
+
     <script>
-      // PWA Install Prompt
-      let deferredInstallPrompt;
-      const installBtn = document.getElementById("install-btn");
-      const statusEl = document.getElementById("status");
+      window.addEventListener("load", () => {
+        if (window.qmoiPWAManager) {
+          window.qmoiPWAManager.appName = "QMOI AI";
+          updateStatus();
+          window.qmoiPWAManager.requestNotificationPermission();
 
-      window.addEventListener("beforeinstallprompt", (e) => {
-        e.preventDefault();
-        deferredInstallPrompt = e;
-        installBtn.style.display = "block";
-      });
-
-      installBtn.addEventListener("click", async () => {
-        if (deferredInstallPrompt) {
-          deferredInstallPrompt.prompt();
-          const { outcome } = await deferredInstallPrompt.userChoice;
-          if (outcome === "accepted") {
-            showNotification("✅ App installed successfully!");
+          if (window.qmoiPWAManager.isInstalled()) {
+            const installBtn = document.getElementById("installBtn");
+            if (installBtn) installBtn.style.display = "none";
           }
-          deferredInstallPrompt = null;
-          installBtn.style.display = "none";
         }
       });
 
-      // Service Worker Registration
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker
-          .register("sw.js")
-          .then((reg) => {
-            console.log("Service Worker registered:", reg);
-          })
-          .catch((err) => console.error("SW registration failed:", err));
+      function updateStatus() {
+        const manager = window.qmoiPWAManager;
+        if (!manager) return;
+
+        const pwaStatus = document.getElementById("pwaStatus");
+        if (pwaStatus)
+          pwaStatus.textContent = manager.isInstalled()
+            ? "✓ Installed"
+            : "○ Web App";
+
+        const swStatus = document.getElementById("swStatus");
+        if (swStatus)
+          swStatus.textContent = manager.swRegistration
+            ? "✓ Active"
+            : "○ Not Active";
       }
 
-      // Online/Offline Detection
-      window.addEventListener("online", () => {
-        statusEl.textContent = "● Online";
-        statusEl.className = "status-badge status-online";
-      });
-
-      window.addEventListener("offline", () => {
-        statusEl.textContent = "● Offline";
-        statusEl.className = "status-badge status-offline";
-      });
-
-      // Functions
-      function launchDashboard() {
-        showNotification("📊 Dashboard loaded");
-      }
-
-      function accessSettings() {
-        showNotification("⚙️ Settings opened");
-      }
-
-      function shareApp() {
-        if (navigator.share) {
-          navigator.share({
-            title: "QMOI AI",
-            text: "Check out QMOI AI - Quantum Master Orchestrator Intelligence",
-            url: window.location.href,
-          });
-        } else {
-          showNotification("Share not supported on this device");
-        }
-      }
-
-      function showNotification(message) {
-        const notif = document.getElementById("notification");
-        notif.textContent = message;
-        notif.style.display = "block";
-        setTimeout(() => (notif.style.display = "none"), 3000);
-      }
-
-      // Preview popup
-      function openPreview() {
-        const w = window.open(
-          "/pwa_apps/qmoi-ai/preview.html",
-          "qmoiai-preview",
-          "width=900,height=700",
+      function checkAppInfo() {
+        const manager = window.qmoiPWAManager;
+        if (!manager) return;
+        const info = manager.getAppInfo();
+        alert(
+          `App: ${info.name}\nInstalled: ${info.installed}\nService Worker: ${info.swActive}`,
         );
-        if (!w) showNotification("Pop-up blocked — allow popups for preview");
       }
 
-      // Initialize
-      document.addEventListener("DOMContentLoaded", () => {
-        console.log("QMOI AI PWA loaded");
-
-        // Chatbot setup (lightweight fallback for static PWA)
-        const chatHistoryEl = document.getElementById("chat-history");
-        const chatInput = document.getElementById("chat-input");
-        const chatSend = document.getElementById("chat-send");
-        const chatModel = document.getElementById("chat-model");
-
-        function appendMessage(text, sender) {
-          const wrap = document.createElement("div");
-          wrap.style.padding = "8px";
-          wrap.style.marginBottom = "6px";
-          wrap.style.borderRadius = "6px";
-          wrap.style.maxWidth = "85%";
-          wrap.style.wordBreak = "break-word";
-          if (sender === "user") {
-            wrap.style.background = "#0b5fff";
-            wrap.style.color = "#fff";
-            wrap.style.marginLeft = "auto";
-          } else {
-            wrap.style.background = "#10b981";
-            wrap.style.color = "#062018";
-            wrap.style.marginRight = "auto";
-          }
-          wrap.textContent = text;
-          chatHistoryEl.appendChild(wrap);
-          chatHistoryEl.scrollTop = chatHistoryEl.scrollHeight;
-        }
-
-        chatSend.addEventListener("click", async () => {
-          const value = chatInput.value.trim();
-          if (!value) return;
-          appendMessage(value, "user");
-          chatInput.value = "";
-          const selected = chatModel.value || "Auto";
-          appendMessage("QMOI is thinking...", "ai");
-
-          // Try calling local API first
-          try {
-            const res = await fetch("http://localhost:8000/api/chat", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ message: value, model: selected }),
-            });
-            if (res.ok) {
-              const json = await res.json();
-              // remove thinking placeholder
-              if (chatHistoryEl.lastChild)
-                chatHistoryEl.removeChild(chatHistoryEl.lastChild);
-              appendMessage(
-                json.reply || "QMOI AI: " + (json.reply || "No reply"),
-                "ai",
-              );
-              return;
-            }
-          } catch (e) {
-            console.warn(
-              "Chat API error, falling back to simulated response",
-              e,
-            );
-          }
-
-          // Fallback simulated response
-          setTimeout(
-            () => {
-              if (chatHistoryEl.lastChild)
-                chatHistoryEl.removeChild(chatHistoryEl.lastChild);
-              appendMessage(
-                `QMOI AI (${selected}): I understand your message: "${value}". How can I help?`,
-                "ai",
-              );
-            },
-            900 + Math.floor(Math.random() * 800),
-          );
-        });
-
-        chatInput.addEventListener("keydown", (ev) => {
-          if (ev.key === "Enter") {
-            ev.preventDefault();
-            chatSend.click();
-          }
-        });
-      });
+      setInterval(updateStatus, 5000);
     </script>
   </body>
 </html>
-
-# AUTOFIXED by Ollama at 2026-07-28T22:54:36.352204Z
-
-# AUTOFIXED by Ollama at 2026-07-28T23:00:47.671046Z

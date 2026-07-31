@@ -1,15 +1,10 @@
 # Merged archives report
 
-- Generated: 2026-07-30T18:40:00.084855Z
+- Generated: 2026-07-31T00:14:08.590861Z
 
 ## .
 - before-auto-merge-20251122T092741Z
-- before-auto-merge-20251122T092741Z
 - before-replacer-${TS}
-- before-replacer-${TS}
-- route.js
-- route.js.nft.json
-- route.ts
 - route.ts
 - route.ts
 - route.ts
@@ -219,13 +214,10 @@
 - ...and 8 more files
 
 ## resumefromhere
-- resumefromhere/resumefromhere.20260730T182914Z.bak
-- resumefromhere/resumefromhere.20260730T183137Z.bak
-- resumefromhere/resumefromhere.20260730T183613Z.bak
+- resumefromhere/resumefromhere.20260730T235459Z.bak
 
 ## self
-- self/ollama_autonomous_agent.20260730T183234Z.bak
-- self/ollama_autonomous_agent.20260730T183234Z.bak.ollama.bak
+- self/ollama_autonomous_agent.20260730T235504Z.bak
 
 ## src.backup.20260121144720
 - src.backup.20260121144720/App.test.js

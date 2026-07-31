@@ -27,7 +27,7 @@ KEYWORDS = {
         'daily target', 'daily profit', 'projection', 'forecast'
     ],
     'payment_systems': [
-        'wallet', 'cashon', 'mpesa', 'pesapal', 'payment', 'transfer',
+        'wallet', 'cashon', 'mpesa', 'paypal', 'payment', 'transfer',
         'trading', 'payout', 'subscription', 'sale'
     ],
     'currencies': [

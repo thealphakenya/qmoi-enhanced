@@ -1112,7 +1112,7 @@ _Last updated: 2024-03-19_
 - **Automated Trading Strategies:**
   - AI-driven, adaptive, and resilient
 - **Cashon Integration:**
-  - Real-time fund management via Pesapal
+  - Real-time fund management via PayPal
 - **Earning Automation:**
   - Multiple strategies for different user types
 - **Error-Fixing & Resilience:**

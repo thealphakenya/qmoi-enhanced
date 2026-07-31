@@ -343,11 +343,11 @@ class DerivTrading(TradingPlatform):
             )
 
 class CashOnTrading(TradingPlatform):
-    """CashOn (Pesapal) trading platform integration"""
+    """CashOn (PayPal) trading platform integration"""
     
     def __init__(self, config: Dict):
         super().__init__("cashon", config)
-        self.base_url = "https://api.pesapal.com"
+        self.base_url = "https://api.paypal.com"
         self.consumer_key = config.get('consumer_key')
         self.consumer_secret = config.get('consumer_secret')
     

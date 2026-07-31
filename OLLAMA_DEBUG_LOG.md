@@ -1,53 +1,53 @@
 # Ollama Debug Log
 
-- [2026-07-30T23:37:36Z] INFO: Updated MERGE.md
-- [2026-07-30T23:37:36Z] INFO: Scanning repository for error markers under /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0
-- [2026-07-30T23:37:36Z] INFO: Collected 4 error markers
-- [2026-07-30T23:37:36Z] INFO: Wrote remediation inventory to /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/ALLERRORS.md
-- [2026-07-30T23:37:36Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/ALLBACKEND.md
-- [2026-07-30T23:37:36Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/ALLUI.md
-- [2026-07-30T23:37:36Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/ALLFRONTEND.md
-- [2026-07-30T23:37:36Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/ALLPORTS.md
-- [2026-07-30T23:37:36Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/ALLAUTO.md
-- [2026-07-30T23:37:36Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/ALLMDFILES.md
-- [2026-07-30T23:37:36Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/ALLLINKS.md
-- [2026-07-30T23:37:36Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/FINANCIALMANAGER.md
-- [2026-07-30T23:37:36Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/STANDARD1.md
-- [2026-07-30T23:37:36Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/QMOI_MEMORY_AWARENESS_SYSTEM.md
-- [2026-07-30T23:37:36Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/WORKFLOWS.md
-- [2026-07-30T23:37:36Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/DOCS.md
-- [2026-07-30T23:37:36Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/production.md
-- [2026-07-30T23:37:36Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/productionenhanced.md
-- [2026-07-30T23:37:36Z] INFO: Updated live notification feed at /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md
-- [2026-07-30T23:37:36Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/ollama.md
-- [2026-07-30T23:37:36Z] INFO: Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md, FINANCE_CREDENTIALS.md, QMOI_MEMORY_AWARENESS_SYSTEM.md
-- [2026-07-30T23:37:36Z] INFO: Persisted agent state to /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/.ollama_agent_state.json
-- [2026-07-30T23:37:36Z] INFO: Run agent completed with 2 pending items
-- [2026-07-30T23:37:36Z] INFO: Updated JOURNEY MAP TRACKS in /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/resumefromhere.txt
-- [2026-07-30T23:37:36Z] INFO: Persisted agent state to /tmp/pytest-of-node/pytest-11/test_run_agent_refreshes_resum0/.ollama_agent_state.json
-- [2026-07-30T23:37:36Z] INFO: AUTO_PUSH is disabled; skipping git push.
-- [2026-07-30T23:37:36Z] INFO: Scanning route definitions from /tmp/pytest-of-node/pytest-11/test_collect_route_inventory_f0
-- [2026-07-30T23:37:36Z] INFO: Scanning route definitions from /tmp/pytest-of-node/pytest-11/test_update_documentation_mani0
-- [2026-07-30T23:37:37Z] INFO: Updated API.md
-- [2026-07-30T23:37:37Z] INFO: Updated ENDPOINTS.md
-- [2026-07-30T23:37:37Z] INFO: Updated ROUTES.md
-- [2026-07-30T23:37:37Z] INFO: Updated MERGE.md
-- [2026-07-30T23:37:37Z] INFO: live progress message
-- [2026-07-30T23:37:37Z] INFO: Updated resumefromhere progress: /tmp/pytest-of-node/pytest-11/test_update_resume_progress_wr0/resumefromhere.txt
-- [2026-07-30T23:37:37Z] INFO: Updated resumefromhere progress: /tmp/pytest-of-node/pytest-11/test_update_resume_progress_in0/resumefromhere.txt
-- [2026-07-30T23:37:37Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_update_production_manifes0/DOCS.md
-- [2026-07-30T23:37:37Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_update_production_manifes0/production.md
-- [2026-07-30T23:37:37Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_update_production_manifes0/productionenhanced.md
-- [2026-07-30T23:37:37Z] INFO: Merged 1 workflow YAML duplicates and removed 1 redundant workflow files
-- [2026-07-30T23:37:37Z] INFO: Updated live notification feed at /tmp/pytest-of-node/pytest-11/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md
-- [2026-07-30T23:37:37Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_update_hook_and_webhook_m0/ALLHOOKSWEBHOOKS.md
-- [2026-07-30T23:37:37Z] INFO: Created or refreshed /tmp/pytest-of-node/pytest-11/test_update_hook_and_webhook_m0/WEBHOOKS.md
-- [2026-07-30T23:37:38Z] INFO: Scanning route definitions from /tmp/pytest-of-node/pytest-11/test_merge_unused_files_logs_d0
-- [2026-07-30T23:37:38Z] INFO: Scanning route definitions from /tmp/pytest-of-node/pytest-11/test_merge_unused_files_logs_d0
-- [2026-07-30T23:37:39Z] INFO: Updated API.md
-- [2026-07-30T23:37:39Z] INFO: Updated ENDPOINTS.md
-- [2026-07-30T23:37:39Z] INFO: Updated ROUTES.md
-- [2026-07-30T23:37:39Z] INFO: Updated MERGE.md
-- [2026-07-30T23:37:39Z] INFO: Updated finance/credential manifest at /tmp/pytest-of-node/pytest-11/test_update_finance_and_creden1/FINANCE_CREDENTIALS.md
-- [2026-07-30T23:37:39Z] INFO: Replaced Pesapal references with PayPal in 2 files (4 replacements)
-- [2026-07-30T23:37:39Z] INFO: Replaced Pesapal references with PayPal in 1 files (0 replacements)
+- [2026-07-31T00:14:08Z] INFO: Created or refreshed ALLMDFILES.md
+- [2026-07-31T00:14:11Z] INFO: Created or refreshed FINANCIALMANAGER.md
+- [2026-07-31T00:14:11Z] INFO: Created or refreshed STANDARD1.md
+- [2026-07-31T00:14:11Z] INFO: Created or refreshed QMOI_MEMORY_AWARENESS_SYSTEM.md
+- [2026-07-31T00:14:11Z] INFO: Created or refreshed ALLLINKS.md
+- [2026-07-31T00:14:11Z] INFO: Updated Bitget guidance document at /home/runner/work/qmoi-enhanced/qmoi-enhanced/bitget.md
+- [2026-07-31T00:14:15Z] INFO: Updated deployment verification manifest at /home/runner/work/qmoi-enhanced/qmoi-enhanced/DEPLOYMENT_VERIFICATION.md
+- [2026-07-31T00:14:43Z] INFO: Updated feature/percentage manifest at /home/runner/work/qmoi-enhanced/qmoi-enhanced/FEATURES_AND_PERCENTAGES.md
+- [2026-07-31T00:14:54Z] INFO: Updated JOURNEY MAP TRACKS in /home/runner/work/qmoi-enhanced/qmoi-enhanced/resumefromhere.txt
+- [2026-07-31T00:14:54Z] INFO: Persisted agent state to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.ollama_agent_state.json
+- [2026-07-31T00:14:54Z] INFO: Detected changes in resumefromhere.txt; refreshing execution plan.
+- [2026-07-31T00:14:54Z] INFO: Loaded 9 instructions from COMPONENTS_MIGRATION_PLAN.md
+- [2026-07-31T00:16:07Z] WARNING: Detected 3480 non-production markers across repository files
+- [2026-07-31T00:16:20Z] INFO: Backed up resume file to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260731T001620Z.bak
+- [2026-07-31T00:16:20Z] INFO: Processing 1761 pending items...
+- [2026-07-31T00:16:21Z] INFO: Updated resumefromhere progress: /home/runner/work/qmoi-enhanced/qmoi-enhanced/resumefromhere.txt
+- [2026-07-31T00:16:21Z] INFO: Persisted agent state to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.ollama_agent_state.json
+- [2026-07-31T00:16:21Z] INFO: Wrote pending report snapshot to OLLAMA_PENDING_REPORT.md
+- [2026-07-31T00:16:21Z] INFO: Scanning route definitions from /home/runner/work/qmoi-enhanced/qmoi-enhanced
+- [2026-07-31T00:16:28Z] INFO: Updated API.md
+- [2026-07-31T00:16:28Z] INFO: Updated ENDPOINTS.md
+- [2026-07-31T00:16:28Z] INFO: Updated ROUTES.md
+- [2026-07-31T00:16:28Z] INFO: Updated MERGE.md
+- [2026-07-31T00:16:28Z] INFO: Scanning repository for error markers under /home/runner/work/qmoi-enhanced/qmoi-enhanced
+- [2026-07-31T00:16:51Z] INFO: Collected 3538 error markers
+- [2026-07-31T00:16:51Z] INFO: Wrote remediation inventory to /home/runner/work/qmoi-enhanced/qmoi-enhanced/ALLERRORS.md
+- [2026-07-31T00:16:53Z] INFO: Created or refreshed ALLBACKEND.md
+- [2026-07-31T00:16:55Z] INFO: Created or refreshed ALLUI.md
+- [2026-07-31T00:16:55Z] INFO: Created or refreshed ALLFRONTEND.md
+- [2026-07-31T00:17:25Z] INFO: Created or refreshed ALLPORTS.md
+- [2026-07-31T00:17:25Z] INFO: Created or refreshed ALLAUTO.md
+- [2026-07-31T00:17:25Z] INFO: Created or refreshed ALLMDFILES.md
+- [2026-07-31T00:17:26Z] INFO: Created or refreshed ALLLINKS.md
+- [2026-07-31T00:17:28Z] INFO: Created or refreshed FINANCIALMANAGER.md
+- [2026-07-31T00:17:28Z] INFO: Created or refreshed STANDARD1.md
+- [2026-07-31T00:17:28Z] INFO: Created or refreshed QMOI_MEMORY_AWARENESS_SYSTEM.md
+- [2026-07-31T00:17:28Z] INFO: Created or refreshed WORKFLOWS.md
+- [2026-07-31T00:17:46Z] INFO: Created or refreshed DOCS.md
+- [2026-07-31T00:17:46Z] INFO: Created or refreshed production.md
+- [2026-07-31T00:17:46Z] INFO: Created or refreshed productionenhanced.md
+- [2026-07-31T00:17:46Z] INFO: Updated live notification feed at /home/runner/work/qmoi-enhanced/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
+- [2026-07-31T00:17:46Z] INFO: Created or refreshed ollama.md
+- [2026-07-31T00:17:46Z] INFO: Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md, FINANCE_CREDENTIALS.md, QMOI_MEMORY_AWARENESS_SYSTEM.md
+- [2026-07-31T00:17:46Z] INFO: Persisted agent state to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.ollama_agent_state.json
+- [2026-07-31T00:17:46Z] INFO: Run agent completed with 10 pending items
+- [2026-07-31T00:17:46Z] INFO: Full verification enabled: executing repository verification despite pending work
+- [2026-07-31T00:17:46Z] INFO: Starting repository verification checks
+- [2026-07-31T00:17:47Z] INFO: Verification completed with python=passed tests=failed
+- [2026-07-31T00:17:47Z] INFO: Updated live notification feed at /home/runner/work/qmoi-enhanced/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
+- [2026-07-31T00:17:58Z] INFO: Updated JOURNEY MAP TRACKS in /home/runner/work/qmoi-enhanced/qmoi-enhanced/resumefromhere.txt
+- [2026-07-31T00:17:58Z] INFO: Persisted agent state to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.ollama_agent_state.json

@@ -21,7 +21,7 @@ Repository: qmoi-enhanced (autosync-backup-20250926-232440)
    │  ├─ Internal Hooks (23+ hook types for QMOI event system)
    │  ├─ Platform-Specific APIs (QI, QCity, Mobile, Dashboard)
    │  ├─ Trading APIs (Bitget integration)
-   │  ├─ Payment APIs (Pesapal, M-Pesa, Airtel)
+   │  ├─ Payment APIs (PayPal, M-Pesa, Airtel)
    │  ├─ Runners & Engines (11+ documented)
    │  ├─ Bot APIs (WhatsApp, Discord, Telegram)
    │  └─ Monitoring & Validation (Real-time endpoint validation)
@@ -98,7 +98,7 @@ File 1: QMOI_APIS_WEBHOOKS_ENDPOINTS.md
 ├─ Hook Types: 23
 ├─ Bot Integrations: 3
 ├─ Trading APIs: 1 (Bitget)
-├─ Payment APIs: 3 (Pesapal, Mpesa, Airtel)
+├─ Payment APIs: 3 (PayPal, Mpesa, Airtel)
 └─ Status: ✅ COMPLETE & COMPREHENSIVE
 
 File 2: QMOI_PLATFORM_ARCHITECTURE.md

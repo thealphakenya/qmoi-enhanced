@@ -1068,7 +1068,7 @@ This software is proprietary and confidential. Unauthorized copying, distributio
 - **Automated Trading Strategies:**
   - AI-driven, adaptive, and resilient
 - **Cashon Integration:**
-  - Real-time fund management via Pesapal
+  - Real-time fund management via PayPal
 - **Earning Automation:**
   - Multiple strategies for different user types
 - **Error-Fixing & Resilience:**

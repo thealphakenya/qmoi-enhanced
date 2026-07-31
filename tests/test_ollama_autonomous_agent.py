@@ -425,7 +425,7 @@ def test_collect_finance_and_credential_inventory_finds_provider_config(tmp_path
         encoding="utf-8",
     )
     (tmp_path / ".env.example").write_text(
-        "PAYPAL_CLIENT_ID=\nPAYPAL_CLIENT_SECRET=\nPESAPAL_CONSUMER_KEY=\n",
+        "PAYPAL_CLIENT_ID=\nPAYPAL_CLIENT_SECRET=\nPAYPAL_CLIENT_ID=\n",
         encoding="utf-8",
     )
 
@@ -455,30 +455,30 @@ def test_update_finance_and_credential_manifests_writes_secure_plan(tmp_path):
     assert "BINANCE_API_KEY" in text
 
 
-def test_replace_pesapal_with_paypal_rewrites_validator_and_docs(tmp_path):
+def test_replace_paypal_with_paypal_rewrites_validator_and_docs(tmp_path):
     module = load_module()
     validator_path = tmp_path / "scripts" / "validate_all_credentials.py"
     validator_path.parent.mkdir(parents=True, exist_ok=True)
     validator_path.write_text(
-        "PESAPAL_CONSUMER_KEY=\nPESAPAL_CONSUMER_SECRET=\n"
-        "# Pesapal credentials should be replaced by PayPal config\n",
+        "PAYPAL_CLIENT_ID=\nPAYPAL_CLIENT_SECRET=\n"
+        "# PayPal credentials should be replaced by PayPal config\n",
         encoding="utf-8",
     )
     readme_path = tmp_path / "README.md"
-    readme_path.write_text("This repo uses Pesapal for payments.\n", encoding="utf-8")
+    readme_path.write_text("This repo uses PayPal for payments.\n", encoding="utf-8")
 
-    updated = module.replace_pesapal_with_paypal(tmp_path)
+    updated = module.replace_paypal_with_paypal(tmp_path)
 
     assert validator_path.exists()
     assert updated["files_updated"] >= 2
     validator_text = validator_path.read_text(encoding="utf-8")
     assert "PAYPAL_CLIENT_ID" in validator_text
     assert "PAYPAL_CLIENT_SECRET" in validator_text
-    assert "PESAPAL_CONSUMER_KEY" not in validator_text
-    assert "Pesapal credentials" not in validator_text
+    assert "PAYPAL_CLIENT_ID" not in validator_text
+    assert "PayPal credentials" not in validator_text
     readme_text = readme_path.read_text(encoding="utf-8")
     assert "PayPal" in readme_text
-    assert "Pesapal" not in readme_text
+    assert "PayPal" not in readme_text
 
 
 def test_validate_all_credentials_uses_paypal_env_vars(monkeypatch):
@@ -494,14 +494,14 @@ def test_validate_all_credentials_uses_paypal_env_vars(monkeypatch):
     assert validator.paypal_config["mode"] == "sandbox"
 
 
-def test_replace_pesapal_with_paypal_renames_paypal_named_files(tmp_path):
+def test_replace_paypal_with_paypal_renames_paypal_named_files(tmp_path):
     module = load_module()
     target_dir = tmp_path / "docs"
     target_dir.mkdir(parents=True, exist_ok=True)
     legacy_path = target_dir / "paypal-helper.txt"
     legacy_path.write_text("legacy", encoding="utf-8")
 
-    result = module.replace_pesapal_with_paypal(tmp_path)
+    result = module.replace_paypal_with_paypal(tmp_path)
 
     assert not legacy_path.exists()
     assert (target_dir / "PayPal-helper.txt").exists()

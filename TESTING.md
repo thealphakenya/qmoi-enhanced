@@ -85,7 +85,7 @@ npm test -- __tests__/api/payments.test.ts
 
 - ✓ Payment initiation
 - ✓ M-Pesa payment processing
-- ✓ Pesapal payment processing
+- ✓ PayPal payment processing
 - ✓ Stripe payment processing
 - ✓ Webhook signature verification
 - ✓ Transaction status updates

@@ -81,7 +81,7 @@
 
 - ✅ 25+ endpoints verified secure
 - ✅ All third-party integrations documented
-- ✅ Payment processing (Stripe, Pesapal, M-Pesa, Airtel)
+- ✅ Payment processing (Stripe, PayPal, M-Pesa, Airtel)
 - ✅ Email service (SendGrid, AWS SES)
 - ✅ Communication platforms (WhatsApp, Telegram)
 - ✅ Analytics ready (Mixpanel, Google Analytics)
@@ -126,7 +126,7 @@ Days 1-2 (4 hours)
 └── [ ] Third-Party Credentials (4 hours)
     ├── Stripe production keys
     ├── SendGrid API key
-    ├── Pesapal merchant account
+    ├── PayPal merchant account
     ├── Airtel Money API credentials
     └── WhatsApp Business account (optional)
 

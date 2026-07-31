@@ -21,7 +21,7 @@ A comprehensive, production-ready Next.js backend application with multi-provide
 ### 💳 Payment Processing
 
 - **M-Pesa** (Safaricom) with STK Push integration
-- **Pesapal** payment gateway support
+- **PayPal** payment gateway support
 - **Stripe** integration (optional)
 - Transaction tracking and status management
 - Webhook signature verification

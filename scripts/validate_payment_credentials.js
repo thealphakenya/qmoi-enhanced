@@ -4,10 +4,10 @@
 // Usage: node scripts/validate_payment_credentials.js
 
 const required = {
-  pesapal: [
-    "PESAPAL_CONSUMER_KEY",
-    "PESAPAL_CONSUMER_SECRET",
-    "PESAPAL_ENVIRONMENT",
+  paypal: [
+    "PAYPAL_CLIENT_ID",
+    "PAYPAL_CLIENT_SECRET",
+    "PAYPAL_MODE",
   ],
   mpesa: ["MPESA_CONSUMER_KEY", "MPESA_CONSUMER_SECRET", "MPESA_PASSKEY"],
   cashon: ["CASHON_MPESA_NUMBER", "MASTER_TOKEN"],

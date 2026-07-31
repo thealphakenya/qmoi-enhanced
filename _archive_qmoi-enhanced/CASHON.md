@@ -17,11 +17,11 @@ qmoi_validation_frontmatter: true
 
 ## Overview
 
-The QMOI AI Earning System is a fully autonomous money-making platform that operates 24/7, even when users are offline. It integrates with Pesapal for real-time balance tracking and multiple earning strategies.
+The QMOI AI Earning System is a fully autonomous money-making platform that operates 24/7, even when users are offline. It integrates with PayPal for real-time balance tracking and multiple earning strategies.
 
 ## Master-Only Fund Management & Approval Flows
 
-- **Master-Only Access:** Only the master can access, transfer, or withdraw funds from Cashon (Pesapal).
+- **Master-Only Access:** Only the master can access, transfer, or withdraw funds from Cashon (PayPal).
 - **Wallet Requests:** Users can request wallets, but creation only happens after explicit master approval (via WhatsApp or dashboard).
 - **Fund Transfers:** All user-initiated fund transfers require master approval. The AI notifies the master instantly and logs all actions.
 - **Audit Logging & Notifications:** Every sensitive action (wallet creation, fund transfer, earning) is logged, encrypted, and instantly reported to the master. Users are notified of approvals or denials.
@@ -65,12 +65,12 @@ The QMOI AI Earning System is a fully autonomous money-making platform that oper
 - **Customer Service**: AI chatbot for 24/7 customer support
 - **Marketing Automation**: Targeted advertising and email campaigns
 
-## Pesapal Integration
+## PayPal Integration
 
 ### Real-Time Balance Tracking
 
 ```typescript
-interface PesapalBalance {
+interface PayPalBalance {
   accountId: string;
   availableBalance: number;
   pendingBalance: number;
@@ -162,7 +162,7 @@ interface Action {
 
 ### Dashboard Components
 
-- **Real-Time Balance Display**: Shows actual Pesapal balance
+- **Real-Time Balance Display**: Shows actual PayPal balance
 - **Profit/Loss Charts**: Visual representation of earnings
 - **Portfolio Overview**: Asset allocation and performance
 - **Trading Activity**: Recent transactions and decisions
@@ -179,7 +179,7 @@ interface Action {
 
 ### WhatsApp Bot Integration
 
-- **Balance Queries**: Check Pesapal balance via WhatsApp
+- **Balance Queries**: Check PayPal balance via WhatsApp
 - **Transaction History**: View recent transactions
 - **Investment Updates**: Receive performance reports
 - **Emergency Alerts**: Critical notifications
@@ -193,7 +193,7 @@ interface Action {
 
 ## Getting Started
 
-1. **Account Setup**: Connect Pesapal account for real-time balance tracking
+1. **Account Setup**: Connect PayPal account for real-time balance tracking
 2. **Risk Assessment**: Complete risk tolerance questionnaire
 3. **Investment Goals**: Set financial objectives and timeframes
 4. **Notification Setup**: Configure WhatsApp and email alerts

@@ -53,8 +53,8 @@ class CredentialValidator:
 
         # PayPal credentials
         self.paypal_config = {
-            'client_id': os.getenv('PAYPAL_CLIENT_ID') or os.getenv('PAYPAL_API_KEY') or os.getenv('PESAPAL_CONSUMER_KEY'),
-            'client_secret': os.getenv('PAYPAL_CLIENT_SECRET') or os.getenv('PAYPAL_API_SECRET') or os.getenv('PESAPAL_CONSUMER_SECRET'),
+            'client_id': os.getenv('PAYPAL_CLIENT_ID') or os.getenv('PAYPAL_API_KEY') or os.getenv('PAYPAL_CLIENT_ID'),
+            'client_secret': os.getenv('PAYPAL_CLIENT_SECRET') or os.getenv('PAYPAL_API_SECRET') or os.getenv('PAYPAL_CLIENT_SECRET'),
             'mode': os.getenv('PAYPAL_MODE') or os.getenv('PAYPAL_ENVIRONMENT') or 'sandbox',
             'callback_url': os.getenv('PAYPAL_CALLBACK_URL', 'https://qmoi.ai/callback'),
             'ipn_url': os.getenv('PAYPAL_IPN_URL', 'https://qmoi.ai/ipn')

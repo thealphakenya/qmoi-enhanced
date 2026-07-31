@@ -657,7 +657,7 @@ REVENUE STREAM 2: PAYMENT PROCESSING
 │ └─ Premium features
 │
 ├─ Payment Gateway Integration
-│ ├─ Pesapal integration (automated)
+│ ├─ PayPal integration (automated)
 │ ├─ M-Pesa integration (automated)
 │ ├─ Airtel integration (automated)
 │ ├─ Credit card processing

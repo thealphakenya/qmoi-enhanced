@@ -29,7 +29,7 @@ import json
 import os
 from pathlib import Path
 
-KEYWORDS = ['leahwallet', 'cashon', 'wallet', 'mpesa', 'pesapal', 'binance', 'valr', 'wallets', 'leah']
+KEYWORDS = ['leahwallet', 'cashon', 'wallet', 'mpesa', 'paypal', 'binance', 'valr', 'wallets', 'leah']
 
 
 def scan_files(root: Path):

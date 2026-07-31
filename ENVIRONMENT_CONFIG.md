@@ -59,14 +59,14 @@ MPESA_BUSINESS_SHORT_CODE="174379"
 MPESA_CALLBACK_URL="http://localhost:3000/api/webhooks/payments"
 ```
 
-**Pesapal:**
+**PayPal:**
 
 ```bash
-PESAPAL_API_KEY="your-api-key"
-PESAPAL_API_SECRET="your-api-secret"
-PESAPAL_CONSUMER_KEY="your-consumer-key"
-PESAPAL_CONSUMER_SECRET="your-consumer-secret"
-PESAPAL_CALLBACK_URL="http://localhost:3000/api/webhooks/payments"
+PAYPAL_CLIENT_ID="your-api-key"
+PAYPAL_CLIENT_SECRET="your-api-secret"
+PAYPAL_CLIENT_ID="your-consumer-key"
+PAYPAL_CLIENT_SECRET="your-consumer-secret"
+PAYPAL_CALLBACK_URL="http://localhost:3000/api/webhooks/payments"
 ```
 
 **Stripe:**
@@ -139,7 +139,7 @@ SENDGRID_FROM_EMAIL="staging@qmoi.app"
 MPESA_BUSINESS_SHORT_CODE="174379"
 MPESA_CALLBACK_URL="https://staging-api.qmoi.app/api/webhooks/payments"
 
-PESAPAL_CALLBACK_URL="https://staging-api.qmoi.app/api/webhooks/payments"
+PAYPAL_CALLBACK_URL="https://staging-api.qmoi.app/api/webhooks/payments"
 
 NEXT_PUBLIC_API_URL="https://staging-api.qmoi.app"
 NODE_ENV="staging"
@@ -192,11 +192,11 @@ MPESA_PASS_KEY="prod-pass-key"
 MPESA_BUSINESS_SHORT_CODE="174379"
 MPESA_CALLBACK_URL="https://api.qmoi.app/api/webhooks/payments"
 
-PESAPAL_API_KEY="prod-api-key"
-PESAPAL_API_SECRET="prod-api-secret"
-PESAPAL_CONSUMER_KEY="prod-consumer-key"
-PESAPAL_CONSUMER_SECRET="prod-consumer-secret"
-PESAPAL_CALLBACK_URL="https://api.qmoi.app/api/webhooks/payments"
+PAYPAL_CLIENT_ID="prod-api-key"
+PAYPAL_CLIENT_SECRET="prod-api-secret"
+PAYPAL_CLIENT_ID="prod-consumer-key"
+PAYPAL_CLIENT_SECRET="prod-consumer-secret"
+PAYPAL_CALLBACK_URL="https://api.qmoi.app/api/webhooks/payments"
 
 STRIPE_PUBLIC_KEY="pk_live_xxx"
 STRIPE_SECRET_KEY="sk_live_xxx"
@@ -285,7 +285,7 @@ git push heroku main
 | `JWT_REFRESH_SECRET` | String | Yes      | -           | JWT refresh secret (min 32 chars)            |
 | `SENDGRID_API_KEY`   | String | No       | -           | SendGrid API key                             |
 | `MPESA_CONSUMER_KEY` | String | No       | -           | M-Pesa consumer key                          |
-| `PESAPAL_API_KEY`    | String | No       | -           | Pesapal API key                              |
+| `PAYPAL_CLIENT_ID`    | String | No       | -           | PayPal API key                              |
 | `STRIPE_SECRET_KEY`  | String | No       | -           | Stripe secret key                            |
 | `REDIS_URL`          | URL    | No       | -           | Redis connection URL                         |
 | `S3_BUCKET_NAME`     | String | No       | -           | AWS S3 bucket for backups                    |

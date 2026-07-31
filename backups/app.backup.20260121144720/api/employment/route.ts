@@ -11,7 +11,7 @@ const EmployeeSchema = z.object({
   email: z.string().email(),
   phone: z.string(),
   role: z.string(),
-  paymentMethod: z.enum(["mpesa", "airtel", "pesapal", "bank"]),
+  paymentMethod: z.enum(["mpesa", "airtel", "paypal", "bank"]),
   paymentInfo: z.object({
     accountNumber: z.string().optional(),
     accountName: z.string().optional(),
@@ -34,7 +34,7 @@ const UserSchema = z.object({
   email: z.string().email(),
   phone: z.string().optional(),
   role: z.string(),
-  paymentMethod: z.enum(["mpesa", "airtel", "pesapal", "bank"]).optional(),
+  paymentMethod: z.enum(["mpesa", "airtel", "paypal", "bank"]).optional(),
   paymentInfo: z
     .object({
       accountNumber: z.string().optional(),

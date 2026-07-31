@@ -7,11 +7,10 @@
 
 ## Inventory
 - Binance: env vars [BINANCE_API_KEY, BINANCE_SECRET_KEY, BINANCE_WITHDRAWAL_ADDRESS] | sources [.eslint_report_parsing_files.txt, .github/workflows/wallet-tests.yml, .ollama_agent_state.json, .qmoi_state/wallets.json, ALLAUTO.md, ALLERRORS.md, ALLERRORS.txt, ALLHOOKSWEBHOOKS.md] | provisioning: standard environment injection
-- Bitget: env vars [BITGET_API_KEY, BITGET_API_SECRET, BITGET_API_URL] | sources [.cspell.json, .eslint_report_parsing_files.txt, .ollama_agent_state.json, ALLBACKEND.md, ALLERRORS.md, ALLLINKS.md, ALLMDFILES.md, ALLMDFILESREFS.md] | provisioning: standard environment injection
+- Bitget: env vars [BITGET_API_KEY, BITGET_API_PASSPHRASE, BITGET_API_SECRET, BITGET_API_URL, BITGET_PASSPHRASE, BITGET_SECRET_KEY] | sources [.cspell.json, .env.example, .eslint_report_parsing_files.txt, .ollama_agent_state.json, ALLBACKEND.md, ALLERRORS.md, ALLLINKS.md, ALLMDFILES.md] | provisioning: master authorization required
 - CashOn: env vars [CASHON_MPESA_NUMBER, CASHON_WALLET] | sources [.ollama_agent_state.json, ALLERRORS.md, ALLERRORS.txt, ALLLINKS.md, ALLMDFILES.md, ALLMDFILESREFS.md, ALLUI.md, ALLVERSIONS.md] | provisioning: master authorization required
 - Master/QMOI: env vars [QMOI_MASTER_API_KEY, QMOI_MASTER_TOKEN] | sources [.eslint_report_parsing_files.txt, .ollama_agent_state.json, ALLBACKEND.md, ALLERRORS.md, ALLERRORS.txt, ALLLINKS.md, ALLMDFILES.md, ALLMDFILESREFS.md] | provisioning: master authorization required
-- PayPal: env vars [PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PAYPAL_MODE] | sources [.env.example, .env.production, ALLERRORS.md, COMPLETION_INDEX.md, COMPLETION_REPORT.md, FINAL_AUDIT_COMPLETION.txt, FINAL_COMPLETION_REPORT.md, IMPLEMENTATION_SUMMARY.md] | provisioning: master authorization required
-- Pesapal: env vars [PESAPAL_CONSUMER_KEY, PESAPAL_CONSUMER_SECRET, PESAPAL_ENVIRONMENT] | sources [ALLERRORS.md, ALLWALLETSQVS.md, API_REFERENCE.md, CASHON.md, CASHONTRADINGREADME.md, ENVIRONMENT_CONFIG.md, FEATURESREADME.md, FINAL_COMPLETION_REPORT.md] | provisioning: master authorization required
+- PayPal: env vars [PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PAYPAL_MODE] | sources [.env.example, .env.production, ALLERRORS.md, ALLWALLETSQVS.md, API_REFERENCE.md, CASHON.md, CASHONTRADINGREADME.md, COMPLETION_INDEX.md] | provisioning: master authorization required
 - Stripe: env vars [STRIPE_PUBLISHABLE_KEY, STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET] | sources [.env.example, .env.production, .ollama_agent_state.json, ALLERRORS.md, ALLMDFILESREFS.md, API_INTEGRATION_GUIDE.md, API_REFERENCE.md, COMPLETION_INDEX.md] | provisioning: master authorization required
 
 ## Secure provisioning plan

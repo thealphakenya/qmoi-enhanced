@@ -20,10 +20,10 @@ async function executeRealMoneyTransfer() {
     await new Promise(resolve => setTimeout(resolve, 5000));
 
     // Now verify the balance
-    console.log('\n🔍 Verifying Pesapal Balance After Transfer...\n');
+    console.log('\n🔍 Verifying PayPal Balance After Transfer...\n');
 
     const verificationResult = await aiService.generateResponse(
-      'master instruction verify pesapal balance',
+      'master instruction verify paypal balance',
       { task: 'post_transfer_verification' }
     );
 

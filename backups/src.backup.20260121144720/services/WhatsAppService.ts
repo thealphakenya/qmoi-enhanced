@@ -316,7 +316,7 @@ Time: ${new Date().toLocaleString()}`;
     const body = message.body.toLowerCase();
 
     // Balance query
-    if (body.includes("balance") || body.includes("pesapal")) {
+    if (body.includes("balance") || body.includes("paypal")) {
       return await this.getBalanceResponse();
     }
 
@@ -495,9 +495,9 @@ Message: ${message.body}
 
   private async getBalanceResponse(): Promise<string> {
     try {
-      // This would integrate with PesapalService
+      // This would integrate with PayPalService
       const balance = 1250.75; // [PRODUCTION IMPLEMENTATION REQUIRED] balance
-      return `💰 Pesapal Balance: $${balance.toFixed(2)}
+      return `💰 PayPal Balance: $${balance.toFixed(2)}
 
 💳 Account Status: Active
 📊 Last Updated: ${new Date().toLocaleString()}
@@ -514,7 +514,7 @@ Message: ${message.body}
 ✅ WhatsApp: Connected
 ✅ Trading: Active
 ✅ Earning: Running
-✅ Pesapal: Connected
+✅ PayPal: Connected
 ✅ AI: Operational
 
 📊 Performance:
@@ -552,7 +552,7 @@ General Commands:
 /start - Initialize the bot
 /help - Show this help message
 /status - Check system status
-/balance - Check Pesapal balance
+/balance - Check PayPal balance
 /earnings - View recent earnings
 
 Master Commands:
@@ -573,7 +573,7 @@ Master Commands:
 
 🤖 I'm your AI assistant for the QMOI earning system.
 💰 I can help you with:
-• Checking your Pesapal balance
+• Checking your PayPal balance
 • Viewing earnings reports
 • System status updates
 • Trading information
@@ -593,7 +593,7 @@ Master Commands:
 • Decision Engine: Online
 
 💰 Financial Systems:
-• Pesapal Integration: Connected
+• PayPal Integration: Connected
 • Auto-trading: Enabled
 • Risk Limits: 5% daily loss
 • Profit Targets: 4% per trade

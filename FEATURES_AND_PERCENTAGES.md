@@ -6,6 +6,11 @@
 
 ## Inventory
 - percentage: 20 files mention related feature or global guidance
+  - .env.example: # QMOI Enhanced - Environment Configuration Template
+# Copy this file to .env.local for local development
+# For production, use .env.production with actual values
+
+# ==============
   - .eslint_report_parsing_files.txt: _archive_qmoi-enhanced/_app_archived/api/qmoi/voice-preview/route.ts
 _archive_qmoi-enhanced/_app_archived/layout.js
 _archive_qmoi-enhanced/components/DownloadQApp.tsx
@@ -71,20 +76,6 @@ on:
 permissions:
   issues: write
   pull-reques
-  - .github/workflows/ci.yml: name: CI Build & Test
-
-on:
-  push:
-    branches: ["**"]
-  pull_request:
-    branches: ["**"]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
-    steps:
-      - u
 - feature: 20 files mention related feature or global guidance
   - .cspell.json: {
   "version": "0.2",
@@ -105,10 +96,24 @@ jobs:
   "image": "mcr.microsoft.com/devcontainers/javascript-node:18-bullseye",
   "features": {
     "ghcr.io/devcontainers/featu
+  - .env.example: # QMOI Enhanced - Environment Configuration Template
+# Copy this file to .env.local for local development
+# For production, use .env.production with actual values
+
+# ==============
   - .eslint_report_parsing_files.txt: _archive_qmoi-enhanced/_app_archived/api/qmoi/voice-preview/route.ts
 _archive_qmoi-enhanced/_app_archived/layout.js
 _archive_qmoi-enhanced/components/DownloadQApp.tsx
 _archive_qmoi
+  - .eslintrc.cjs: module.exports = {
+  // Temporary global env settings to reduce `no-undef` noise during triage.
+  env: {
+    node: true,
+    browser: true,
+    jest: true,
+  },
+  rules: {
+    // T
   - .eslintrc.json: {
   "env": {
     "browser": true,
@@ -149,31 +154,8 @@ jobs:
   ci-debug:
     name: CI Debug
     runs
-  - .github/workflows/ci-monitor.yml: name: CI Monitor
-
-on:
-  workflow_run:
-    workflows: ["CI Build & Smoke", "Docker Build & Container Smoke"]
-    types:
-      - completed
-
-permissions:
-  issues: write
-  pull-reques
-  - .github/workflows/enhancer-report.yml: name: Enhancement Report
-
-on:
-  pull_request:
-    types: [opened, synchronize]
-    paths:
-      - "**/*.md"
-      - "scripts/**"
-      - "docs/**"
-
-jobs:
-  analyze:
-    runs-on: ub
 - percentages: 20 files contain percentage values
+  - .ollama_agent_audit.jsonl: 100%
   - .qmoi_state/health_memory.json: 35%, 86.27%
   - ADVANCED_USER_IDENTIFICATION_SYSTEM.md: 100%, 40%, 70%, 75%, 85%, 90%, 95%, 98%, 99%
   - API_ENDPOINTS_COMPLETE_AUDIT.md: 99.9%, 99.99%
@@ -181,4 +163,3 @@ jobs:
   - APP_BUILD_MATRIX.md: 100%, 73%, 75%, 88%, 91%
   - AUTH_SYSTEM_IMPLEMENTATION.md: 85%
   - AUTO_RECOVERY_PROCEDURES.md: 5%, 99%
-  - AUTO_SETUP_COMPLETION_SUMMARY.md: 100%

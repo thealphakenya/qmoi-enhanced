@@ -17,7 +17,7 @@ async function executeMoneyTransfer() {
     console.log("=".repeat(70));
 
     const instruction =
-      "send 1000 dollars to cashon using paypal payment gateway - cashon has pesapal credentials configured";
+      "send 1000 dollars to cashon using paypal payment gateway - cashon has paypal credentials configured";
 
     console.log("📝 Master Instruction:");
     console.log(`"${instruction}"`);
