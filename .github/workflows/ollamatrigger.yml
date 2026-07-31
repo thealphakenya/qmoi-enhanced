@@ -1,4 +1,4 @@
-d name: Ollama trigger workflow
+name: Ollama trigger workflow
 
 on:
   workflow_dispatch:
