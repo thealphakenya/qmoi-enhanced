@@ -13,15 +13,6 @@ from pathlib import Path
 from typing import Dict
 
 import json
-"""Minimal Lion feature enhancer shim for tests.
-
-Exports:
-- `scan_for_lion(root)` -> dict
-- `make_recommendations(found)` -> dict
-- `main(args)` -> int (writes minimal artifacts)
-
-This module is intentionally tiny and deterministic for unit tests.
-"""
 
 
 def scan_for_lion(root: Path) -> Dict[str, dict]:
@@ -47,8 +38,10 @@ def make_recommendations(found: Dict[str, dict]) -> Dict[str, dict]:
         ]
         if "production" in snippet.lower():
             recommendations.append("Add backup and disaster recovery plans")
+        if "production" in snippet.lower() or "monitor" in snippet.lower() or v.get("metadata", {}).get("environment") == "production":
+            recommendations.append("Add performance monitoring and tuning")
         confidence = "low"
-        if "production" in snippet.lower() or "monitor" in snippet.lower():
+        if "production" in snippet.lower() or "monitor" in snippet.lower() or v.get("metadata", {}).get("environment") == "production":
             confidence = "high"
         recs[k] = {"recommendations": recommendations, "confidence": confidence}
     return recs
@@ -67,4 +60,3 @@ def main(args=None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-    for p in root.rglob("*.md"):

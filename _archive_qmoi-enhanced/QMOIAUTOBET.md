@@ -269,7 +269,7 @@ class EnhancedAutoBet:
 ### Additional Payment Methods
 
 - **Bank Transfer:** Direct bank account transfers
-- **Pesapal:** Local payment platform integration
+- **PayPal:** Local payment platform integration
 - **Crypto Wallets:** Cryptocurrency payments
 - **International Cards:** Credit/debit card support
 

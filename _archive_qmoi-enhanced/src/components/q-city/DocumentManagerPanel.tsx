@@ -175,3 +175,9 @@ const DocumentManagerPanel: React.FC = () => {
 };
 
 export default DocumentManagerPanel;
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.823911Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:32.972723Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.349419Z

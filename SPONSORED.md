@@ -17,6 +17,23 @@ qmoi_validation_frontmatter: true
 
 This file lists users that QMOI should treat as "sponsored" — they should not be charged for services and should receive master-level exemptions where appropriate.
 
+## Sponsored experience scope
+
+- Sponsored users should receive enhanced access to sponsored previews, engineering project inspiration, and premium UX highlights while remaining subject to role boundaries.
+- Sponsored users should be able to view shared QVirtualLabs previews, engineering project cards, and sponsor-tailored reports.
+- Master and sister accounts retain authority over invention projects and advanced engineering execution; sponsored users receive assisted access rather than unrestricted execution rights.
+
+## Related docs
+
+- QMOIMODEL.md
+- QMOIMODELTESTS.md
+- QVIRTUALLABS.md
+- ALLUI.md
+- ALLFRONTEND.md
+- API.md
+- ENDPOINTS.md
+- ROUTES.md
+
 Format: one username per line. The `qmoi_control_server.py` exposes endpoints to add/view sponsored users (`/sponsored/add`, `/sponsored/list`).
 
 Master and immediate family (example):

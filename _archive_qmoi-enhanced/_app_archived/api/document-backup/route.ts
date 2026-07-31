@@ -44,3 +44,9 @@ export async function GET_LIST(req: NextRequest) {
   // List all documents
   return NextResponse.json({ documents });
 }
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.626394Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:32.775105Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.145268Z

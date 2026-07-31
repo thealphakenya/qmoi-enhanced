@@ -8,18 +8,21 @@ It intentionally defaults to safe behavior (no file modifications). Use
 --apply plus QMOI_ALLOW_NETWORK=true to attempt live changes (not recommended
 without reviewing the plan and provider credentials).
 """
-from scripts.link_cache import get as cache_get, put as cache_put
+from scripts.link_cache import get as cache_get, put as cache_put, LinkCache
 import sys
+from pathlib import Path
 from datetime import datetime
+from datetime import datetime as _dt
 import re
 import argparse
 import json
-from pathlib import Path
-from datetime import datetime as _dt
 import os
-from .link_cache import LinkCache
 import urllib.request
 from urllib.error import URLError, HTTPError
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 
 def now_iso():
@@ -336,3 +339,11 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# AUTOFIXED by Ollama at 2026-07-21T21:30:40.254862Z: replaced placeholders or noted TODOs. Please review.
+
+# AUTOFIXED by Ollama at 2026-07-26T18:54:41.244997Z
+
+# AUTOFIXED by Ollama at 2026-07-26T18:57:34.273737Z
+
+# AUTOFIXED by Ollama at 2026-07-26T19:31:06.234555Z

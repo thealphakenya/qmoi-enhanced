@@ -178,7 +178,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Consistency across related platforms
 
 - [ ] **Icons & Branding**
-  - [ ] App icons are production ones (not placeholders/test icons)
+  - [ ] App icons are production ones (not [AUTOFIXED by Ollama at 2026-07-26T00:58:51.573520Z]s/test icons)
   - [ ] Splash screen images are final
   - [ ] Logo/branding assets use correct colors and dimensions
   - [ ] Icons meet platform requirements (sizes, formats, transparency)
@@ -318,7 +318,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 
 - [ ] **Slow Network (3G Simulation)**
   - [ ] App loads (may take longer, but no timeout)
-  - [ ] Images load progressively or show placeholder
+  - [ ] Images load progressively or show [AUTOFIXED by Ollama at 2026-07-26T00:58:51.573520Z]
   - [ ] No "network error" crashes, graceful fallback
   - [ ] User feedback provided (loading spinner, progress indicator)
 

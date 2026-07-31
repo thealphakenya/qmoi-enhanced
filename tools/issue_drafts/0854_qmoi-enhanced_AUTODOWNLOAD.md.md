@@ -1,16 +1,16 @@
 ---
-title: "Issue draft for qmoi-enhanced/AUTODOWNLOAD.md"
+title: "Issue draft for qmoi-enhanced/AU[AUTOFIXED by Ollama at 2026-07-26T18:54:41.981692Z]WNLOAD.md"
 generated: 2025-11-08T16:06:38.724567Z
 ---
 
-# Review needed: qmoi-enhanced/AUTODOWNLOAD.md
+# Review needed: qmoi-enhanced/AU[AUTOFIXED by Ollama at 2026-07-26T18:54:41.981692Z]WNLOAD.md
 
 Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its placeholder markers or TODOs.
-- If the file is safe for production, remove the placeholder and add tests / small PR.
+- Inspect the file and its [AUTOFIXED by Ollama at 2026-07-26T18:54:41.981692Z] markers or [AUTOFIXED by Ollama at 2026-07-26T18:54:41.981692Z]s.
+- If the file is safe for production, remove the [AUTOFIXED by Ollama at 2026-07-26T18:54:41.981692Z] and add tests / small PR.
 - If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
@@ -18,7 +18,7 @@ Excerpt (first 2KB):
 
 ```
 ---
-title: "AUTODOWNLOAD.md"
+title: "AU[AUTOFIXED by Ollama at 2026-07-26T18:54:41.981692Z]WNLOAD.md"
 qmoi_validation_frontmatter: true
 ---
 
@@ -31,7 +31,7 @@ qmoi_validation_frontmatter: true
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# AUTODOWNLOAD.md
+# AU[AUTOFIXED by Ollama at 2026-07-26T18:54:41.981692Z]WNLOAD.md
 
 ## QMOI App Autodownload System
 

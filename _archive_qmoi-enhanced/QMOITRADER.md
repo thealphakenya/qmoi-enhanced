@@ -55,7 +55,7 @@ QMOI TRADER is a comprehensive automated trading system that operates across mul
 - **Options Trading:** Options strategies and spreads
 - **Portfolio Management:** Advanced portfolio optimization
 
-### 5. CashOn (Pesapal) Trading
+### 5. CashOn (PayPal) Trading
 
 - **Local Market Access:** Kenyan market integration
 - **M-Pesa Integration:** Direct mobile money trading

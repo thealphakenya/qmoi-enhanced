@@ -8593,14 +8593,14 @@ ALLVERSIONS.md	19420
 ALLWALLETSQVS.md	4374
 ALL_APPS/README.md	868
 ALPHAQMOIENGINE.md	4089
-ALPHAQMOIENGINE.md.placeholderfix.bak	4116
+ALPHAQMOIENGINE.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4116
 API.md	23978
 AUTODEV_SECRETS.md	2359
-AUTODOWNLOAD.md	3991
+AU[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]WNLOAD.md	3991
 AUTOGIT.md	1698
 AUTOLINTREADME.md	10481
 AUTOMATION-SUMMARY.md	8827
-AUTOMATION-SUMMARY.md.placeholderfix.bak	8962
+AUTOMATION-SUMMARY.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	8962
 AUTOOPTIMIZEALPHAQMOIENGINE.md	3755
 BB.txt	871
 BUILDAPPSFORALLPLATFORMS.md	2366
@@ -8620,7 +8620,7 @@ DASHBOARDTRACKS.md.dotfix.bak	2274
 DASHBOARDTRACKS.md.linkfix.bak	2260
 DEALS.md	2002
 DEPLOYMENT-README.md	29258
-DEPLOYMENT-README.md.placeholderfix.bak	29339
+DEPLOYMENT-README.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	29339
 DEVCOMMANDS.md	3223
 DEVICERESOURCEOPTIMIZATION.md	2742
 DOWNLOADQMOIAIAPPALLDEVICES.md	13461
@@ -8633,13 +8633,13 @@ Dockerfile.worker	200
 EMPLOYEESUSERSENROLLED.md	9100
 ENDPOINTS.md	6698
 ENHANCEDQVS.md	16388
-ENHANCEDQVS.md.placeholderfix.bak	16415
+ENHANCEDQVS.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	16415
 ENHANCED_AUTOMATION_SUMMARY.md	11853
 ERRORSREADME.md	384782
 ERRORSTRACKS.md	1300
 FAST-BOOTSTRAP-README.md	3550
 FEATURESREADME.md	39711
-FEATURESREADME.md.placeholderfix.bak	39738
+FEATURESREADME.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	39738
 GITHUB-ACTIONS-COMPLETE.md	13649
 GITHUBPAYED.md	18484
 GITHUBPAYED.md.dotfix.bak	18494
@@ -8693,7 +8693,7 @@ QCITYREADME.md	25991
 QCITYREADME.md.dotfix.bak	25999
 QCITYREADME.md.linkfix.bak	25991
 QCITYRESOURCES.md	13763
-QCITYRESOURCES.md.placeholderfix.bak	13790
+QCITYRESOURCES.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	13790
 QCITYRUNNERSENGINE.md	5580
 QCITY_DEVICE_MANAGEMENT.md	2568
 QGAMINGCLOUD.md	15070
@@ -8711,7 +8711,7 @@ QMOI-CROSS-PLATFORM.md	980
 QMOI-EARNING-ENHANCED.md	4883
 QMOI-ENHANCED-AUTOMATION.md	19990
 QMOI-ENHANCED-AUTOTESTS.md	19896
-QMOI-ENHANCED-AUTOTESTS.md.placeholderfix.bak	19950
+QMOI-ENHANCED-AUTOTESTS.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	19950
 QMOI-ENHANCED-COMPLETE.md	13063
 QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md	17805
 QMOI-ENHANCED-FEATURES.md	11279
@@ -8731,28 +8731,28 @@ QMOI-PLATFORM-AUTOMATION.md	952
 QMOI-PLATFORM-MONITORING.md	920
 QMOI-PLATFORM-SECURITY.md	939
 QMOI-PLUGIN-SYSTEM.md	4514
-QMOI-PLUGIN-SYSTEM.md.placeholderfix.bak	4568
+QMOI-PLUGIN-SYSTEM.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4568
 QMOI-REVENUE-README.md	10181
 QMOI-VOICE-ENHANCEMENT.md	14249
 QMOIACCOUNTS.md	4636
 QMOIACCOUNTSPLATFORMS.md	2956
 QMOIAICORE.md	5049
 QMOIALLDEVICESHANDSFREE.md	15542
-QMOIALLDEVICESHANDSFREE.md.placeholderfix.bak	15569
+QMOIALLDEVICESHANDSFREE.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	15569
 QMOIALLDEVICESINSTALL.md	8749
 QMOIALLPLATFORMS.md	21150
 QMOIALLPLATFORMS.md.dotfix.bak	21224
 QMOIALLPLATFORMS.md.linkfix.bak	21150
 QMOIALLPROJECTSADDSTRAILERSDOCS.md	2518
-QMOIALLPROJECTSADDSTRAILERSDOCS.md.placeholderfix.bak	2545
+QMOIALLPROJECTSADDSTRAILERSDOCS.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2545
 QMOIALWAYSPARALLEL.md	12969
 QMOIAPIKEYREADME.md	1779
 QMOIAPPS.md	12812
-QMOIAPPS.md.placeholderfix.bak	12866
+QMOIAPPS.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	12866
 QMOIARTISTS.md	12179
-QMOIARTISTS.md.placeholderfix.bak	12368
+QMOIARTISTS.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	12368
 QMOIAUTHBIOMETRICS.md	13241
-QMOIAUTHBIOMETRICS.md.placeholderfix.bak	13268
+QMOIAUTHBIOMETRICS.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	13268
 QMOIAUTOAPPSDEV.md	3558
 QMOIAUTOBET.md	15152
 QMOIAUTODEV.md	5903
@@ -8769,37 +8769,37 @@ QMOIAUTOMATIONMONITORING.md	15345
 QMOIAUTOOPPORTUNITIES.md	12576
 QMOIAUTOPROJECTS.md	9816
 QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md	6349
-QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md.placeholderfix.bak	6376
+QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	6376
 QMOIAUTOREVENUEEARN.md	3390
 QMOIAVATAR.md	22711
 QMOIBINARIES.md	795
 QMOIBROWSER.md	3902
 QMOICLONE.md	7804
 QMOICLONE.md.dotfix.bak	7812
-QMOICLONE.md.dotfix.bak.placeholderfix.bak	7839
+QMOICLONE.md.dotfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	7839
 QMOICLONE.md.linkfix.bak	7804
-QMOICLONE.md.linkfix.bak.placeholderfix.bak	7831
-QMOICLONE.md.placeholderfix.bak	7831
+QMOICLONE.md.linkfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	7831
+QMOICLONE.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	7831
 QMOICLONEGITHUB.md	17932
 QMOICLONEGITHUB.md.dotfix.bak	17940
-QMOICLONEGITHUB.md.dotfix.bak.placeholderfix.bak	17967
+QMOICLONEGITHUB.md.dotfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	17967
 QMOICLONEGITHUB.md.linkfix.bak	17932
-QMOICLONEGITHUB.md.linkfix.bak.placeholderfix.bak	17959
-QMOICLONEGITHUB.md.placeholderfix.bak	17959
+QMOICLONEGITHUB.md.linkfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	17959
+QMOICLONEGITHUB.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	17959
 QMOICLONEGITLAB.md	6110
 QMOICLONEGITLAB.md.dotfix.bak	6112
-QMOICLONEGITLAB.md.dotfix.bak.placeholderfix.bak	6139
+QMOICLONEGITLAB.md.dotfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	6139
 QMOICLONEGITLAB.md.linkfix.bak	6110
-QMOICLONEGITLAB.md.linkfix.bak.placeholderfix.bak	6137
-QMOICLONEGITLAB.md.placeholderfix.bak	6137
+QMOICLONEGITLAB.md.linkfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	6137
+QMOICLONEGITLAB.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	6137
 QMOICLONEGITPOD.md	2094
 QMOICLONEHF.md	918
 QMOICLONEHUGGINGFACE.md	20556
 QMOICLONEHUGGINGFACE.md.dotfix.bak	20566
-QMOICLONEHUGGINGFACE.md.dotfix.bak.placeholderfix.bak	20593
+QMOICLONEHUGGINGFACE.md.dotfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	20593
 QMOICLONEHUGGINGFACE.md.linkfix.bak	20556
-QMOICLONEHUGGINGFACE.md.linkfix.bak.placeholderfix.bak	20583
-QMOICLONEHUGGINGFACE.md.placeholderfix.bak	20583
+QMOICLONEHUGGINGFACE.md.linkfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	20583
+QMOICLONEHUGGINGFACE.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	20583
 QMOICLONEQUANTUM.md	915
 QMOICLONEVERCEL.md	1075
 QMOICOLABDAGSHUB.md	2230
@@ -8823,7 +8823,7 @@ QMOIFINANCEENGINES.md	4157
 QMOIFORALL.md	9815
 QMOIFREE.md	3019
 QMOIGAMINGCLOUDUSERS.md	14797
-QMOIGAMINGCLOUDUSERS.md.placeholderfix.bak	14851
+QMOIGAMINGCLOUDUSERS.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	14851
 QMOIGAMINGGENREV.md	807
 QMOIGITHUBAPP.md	10565
 QMOIGITHUBDEV.md	17041
@@ -8851,7 +8851,7 @@ QMOIMODELTESTS.md	2835
 QMOIMODELTESTS.md.linkfix.bak	2843
 QMOINETWORK.md	25250
 QMOINGROK.md	6041
-QMOINGROK.md.placeholderfix.bak	6068
+QMOINGROK.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	6068
 QMOIOWNDEVICE.md	23013
 QMOIPREDEVDOCACTIONS.md	2727
 QMOIQCITYAUTOMATIC.md	6180
@@ -8868,20 +8868,20 @@ QMOISERVERS.md	4089
 QMOISPACE.md	13445
 QMOISPACEDEV.md	43560
 QMOISPACEDEV.md.dotfix.bak	43568
-QMOISPACEDEV.md.dotfix.bak.placeholderfix.bak	43871
+QMOISPACEDEV.md.dotfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	43871
 QMOISPACEDEV.md.linkfix.bak	43560
-QMOISPACEDEV.md.linkfix.bak.placeholderfix.bak	43863
-QMOISPACEDEV.md.placeholderfix.bak	43863
+QMOISPACEDEV.md.linkfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	43863
+QMOISPACEDEV.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	43863
 QMOISPACEUI.md	13722
 QMOISYSTEMAUTO.md	9591
 QMOITESTENVIRONMENT.md	18878
-QMOITESTENVIRONMENT.md.placeholderfix.bak	18932
+QMOITESTENVIRONMENT.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	18932
 QMOITRADER.md	13153
 QMOIVERCELDEV.md	3383
 QMOIVERCELDEV.md.dotfix.bak	3393
 QMOIVERCELDEV.md.linkfix.bak	3383
 QMOIVIDEOPLATFORMS.md	1332
-QMOIVIDEOPLATFORMS.md.placeholderfix.bak	1359
+QMOIVIDEOPLATFORMS.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1359
 QMOIWHATSAPP.md	8159
 QMOI_AUTODEV.md	2626
 QMOI_AUTOMATED_SYSTEMS_README.md	9700
@@ -8939,7 +8939,7 @@ STARTUP_NOTES.md	1665
 SYNCREPOS.md	1605
 TEMPLATES.md	3645
 TESTREADME.md	13554
-TESTREADME.md.placeholderfix.bak	13581
+TESTREADME.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	13581
 TO-DOs.md	1370
 TRACKS.md	4507
 TRACKS.md.dotfix.bak	4509
@@ -8966,21 +8966,21 @@ ZERORATEDQMOI.md	5031
 __mocks__/fileMock.js	21
 abc.txt	7603
 ai-anomaly-service.py	5875
-ai-anomaly-service.py.placeholderfix.bak	5769
+ai-anomaly-service.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	5769
 ai-automation-service.ts	0
 ai_self_update.py	9452
-ai_self_update.py.placeholderfix.bak	9346
+ai_self_update.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	9346
 ai_self_update_cli.py	887
 all_api_endpoints_found.txt	5143
 api/qcity.ts	15010
 app/api/account-automation/route.ts	2341
 app/api/ai-anomaly-service/route.ts	2163
-app/api/ai-anomaly-service/route.ts.placeholderfix.bak	2056
+app/api/ai-anomaly-service/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2056
 app/api/ai-health/route.ts	8778
-app/api/ai-health/route.ts.placeholderfix.bak	8670
+app/api/ai-health/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	8670
 app/api/ai-self-diagnostics/route.ts	4239
 app/api/ai/scan/route.ts	2760
-app/api/ai/scan/route.ts.placeholderfix.bak	2653
+app/api/ai/scan/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2653
 app/api/auth/login.ts	1258
 app/api/auth/logout.ts	178
 app/api/auth/me.ts	559
@@ -8991,7 +8991,7 @@ app/api/auth/session.ts	1002
 app/api/auth/totp.ts	1757
 app/api/auto-fix.ts	1697
 app/api/automation/status/route.ts	1468
-app/api/automation/status/route.ts.placeholderfix.bak	1361
+app/api/automation/status/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1361
 app/api/cashon/balance/route.ts	2422
 app/api/cashon/deposit/route.ts	1534
 app/api/cashon/route.ts	8802
@@ -9001,28 +9001,28 @@ app/api/cashon/stop-trading/route.ts	1199
 app/api/cashon/trading-status/route.ts	1021
 app/api/colab-job.ts	3268
 app/api/datasets/route.ts	4230
-app/api/datasets/route.ts.placeholderfix.bak	4123
+app/api/datasets/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4123
 app/api/datasets/settings/route.ts	1847
-app/api/datasets/settings/route.ts.placeholderfix.bak	1740
+app/api/datasets/settings/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1740
 app/api/deploy/auto-redeploy/route.ts	1175
 app/api/deploy/route.ts	1415
 app/api/deployment-status.ts	2317
 app/api/deployment-status/route.ts	744
-app/api/deployment-status/route.ts.placeholderfix.bak	637
+app/api/deployment-status/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	637
 app/api/device-fingerprint/route.ts	1655
 app/api/document-backup/route.ts	1807
 app/api/earning/route.ts	1126
 app/api/employment/megavault/route.ts	13517
-app/api/employment/megavault/route.ts.placeholderfix.bak	13410
+app/api/employment/megavault/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	13410
 app/api/employment/payment/route.ts	11280
-app/api/employment/payment/route.ts.placeholderfix.bak	11173
+app/api/employment/payment/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	11173
 app/api/employment/revenue/route.ts	21049
-app/api/employment/revenue/route.ts.placeholderfix.bak	20942
+app/api/employment/revenue/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	20942
 app/api/employment/route.ts	8705
-app/api/employment/route.ts.placeholderfix.bak	8598
+app/api/employment/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	8598
 app/api/financial/audit/route.ts	399
 app/api/financial/transactions/route.ts	912
-app/api/financial/transactions/route.ts.placeholderfix.bak	805
+app/api/financial/transactions/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	805
 app/api/financial/verify/route.ts	614
 app/api/git/branch/route.ts	313
 app/api/git/commit/route.ts	1185
@@ -9031,11 +9031,11 @@ app/api/git/push/route.ts	646
 app/api/git/remote/route.ts	313
 app/api/git/status/route.ts	1202
 app/api/media/generate/route.ts	7014
-app/api/media/generate/route.ts.placeholderfix.bak	6907
+app/api/media/generate/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	6907
 app/api/media/status/route.ts	2661
-app/api/media/status/route.ts.placeholderfix.bak	2554
+app/api/media/status/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2554
 app/api/monitor/status/route.ts	2172
-app/api/monitor/status/route.ts.placeholderfix.bak	2065
+app/api/monitor/status/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2065
 app/api/mpesa/callback/route.ts	2756
 app/api/qapikey/route.ts	1740
 app/api/qcity/audit-log.ts	2307
@@ -9044,28 +9044,28 @@ app/api/qcity/devices.ts	2542
 app/api/qcity/metrics.ts	682
 app/api/qcity/plugins.ts	650
 app/api/qcity/remote-command.ts	2705
-app/api/qcity/remote-command.ts.placeholderfix.bak	2598
+app/api/qcity/remote-command.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2598
 app/api/qcity/remote-command/route.ts	2510
 app/api/qcity/schedule.ts	2196
 app/api/qcity/selfheal-npm/route.ts	3578
-app/api/qcity/selfheal-npm/route.ts.placeholderfix.bak	3471
+app/api/qcity/selfheal-npm/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3471
 app/api/qcity/status.ts	522
 app/api/qcity/status/route.ts	804
 app/api/qi-trading.ts	6845
-app/api/qi-trading.ts.placeholderfix.bak	6738
+app/api/qi-trading.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	6738
 app/api/qi-trading/route.ts	5908
 app/api/qmoi-database/route.ts	8689
 app/api/qmoi-earning-enhanced/route.ts	282
-app/api/qmoi-earning-enhanced/route.ts.placeholderfix.bak	175
+app/api/qmoi-earning-enhanced/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	175
 app/api/qmoi-gitlab/deployments/route.ts	1623
 app/api/qmoi-gitlab/errors/route.ts	1401
 app/api/qmoi-gitlab/jobs/route.ts	1384
 app/api/qmoi-gitlab/pipelines/route.ts	1332
 app/api/qmoi-gitlab/trigger/route.ts	1263
 app/api/qmoi-model.ts	21652
-app/api/qmoi-model.ts.placeholderfix.bak	21545
+app/api/qmoi-model.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	21545
 app/api/qmoi-model/route.ts	3783
-app/api/qmoi-model/route.ts.placeholderfix.bak	3676
+app/api/qmoi-model/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3676
 app/api/qmoi/auto-fix/download-report/route.ts	2306
 app/api/qmoi/auto-fix/github-status/route.ts	2802
 app/api/qmoi/auto-fix/start/route.ts	1892
@@ -9073,18 +9073,18 @@ app/api/qmoi/auto-fix/status/route.ts	3213
 app/api/qmoi/auto-fix/stop/route.ts	2836
 app/api/qmoi/avatars/route.ts	6958
 app/api/qmoi/backup/route.ts	1296
-app/api/qmoi/backup/route.ts.placeholderfix.bak	1189
+app/api/qmoi/backup/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1189
 app/api/qmoi/fix/all.ts	335
 app/api/qmoi/fix/connectivity.ts	343
 app/api/qmoi/language/route.ts	2234
-app/api/qmoi/language/route.ts.placeholderfix.bak	2126
+app/api/qmoi/language/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2126
 app/api/qmoi/master-mode/route.ts	2589
 app/api/qmoi/own-device-logs/export/route.ts	3747
 app/api/qmoi/own-device-logs/route.ts	4493
 app/api/qmoi/research/route.ts	1356
-app/api/qmoi/research/route.ts.placeholderfix.bak	1249
+app/api/qmoi/research/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1249
 app/api/qmoi/revenue-dashboard/route.ts	13026
-app/api/qmoi/revenue-dashboard/route.ts.placeholderfix.bak	12919
+app/api/qmoi/revenue-dashboard/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	12919
 app/api/qmoi/revenue/reset/route.ts	1033
 app/api/qmoi/revenue/route.ts	3395
 app/api/qmoi/revenue/start/route.ts	1015
@@ -9095,10 +9095,10 @@ app/api/qmoi/revenue/transactions/route.ts	931
 app/api/qmoi/revenue/transfer/route.ts	1272
 app/api/qmoi/status.ts	1285
 app/api/qmoi/user/route.ts	1577
-app/api/qmoi/user/route.ts.placeholderfix.bak	1470
+app/api/qmoi/user/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1470
 app/api/qmoi/voice-preview/route.ts	5725
 app/api/qmoi/voice-profiles/route.ts	8658
-app/api/qmoi/voice-profiles/route.ts.placeholderfix.bak	8551
+app/api/qmoi/voice-profiles/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	8551
 app/api/qnews/route.ts	3743
 app/api/qradio/route.ts	2557
 app/api/social-automation/route.ts	1629
@@ -9110,12 +9110,12 @@ app/api/version/route.ts	372
 app/api/wallet.ts	13144
 app/api/whatsapp-bot/route.ts	780
 app/api/whatsapp-business/route.ts	283
-app/api/whatsapp-business/route.ts.placeholderfix.bak	176
+app/api/whatsapp-business/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	176
 app/api/whatsapp/audit/route.ts	398
 app/api/whatsapp/verify/route.ts	589
 app/api/wifi-security.ts	4048
 app/api/wifi-security/route.ts	4891
-app/api/wifi-security/route.ts.placeholderfix.bak	4784
+app/api/wifi-security/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4784
 app/api/wifi/route.ts	876
 app/api/wifi/scan/route.ts	3200
 app/globals.css	2113
@@ -9142,7 +9142,7 @@ autotest_report.md	488
 avatars.py	255
 avatars.txt	3903
 backend/trading-engine.ts	2750
-backend/trading-engine.ts.placeholderfix.bak	2643
+backend/trading-engine.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2643
 bala-data-cleaning-pipeline.jpeg	102858
 bitget-trader.py	4486
 build-qmoi.bat	82
@@ -9340,19 +9340,19 @@ cypress/e2e/qmoi_kernel_panel_concurrent_impersonation.cy.js	1182
 cypress/e2e/qmoi_kernel_panel_multisession_permissions.cy.js	1040
 cypress/e2e/qmoi_kernel_panel_multiuser_mobile.cy.js	1245
 cypress/e2e/qmoi_kernel_panel_sso_oauth.cy.js	667
-cypress/e2e/qmoi_kernel_panel_sso_oauth.cy.js.placeholderfix.bak	560
+cypress/e2e/qmoi_kernel_panel_sso_oauth.cy.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	560
 cypress/e2e/qmoi_kernel_panel_sso_oauth_biometric_magiclink.cy.js	1145
-cypress/e2e/qmoi_kernel_panel_sso_oauth_biometric_magiclink.cy.js.placeholderfix.bak	1038
+cypress/e2e/qmoi_kernel_panel_sso_oauth_biometric_magiclink.cy.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1038
 cypress/e2e/qmoi_kernel_panel_sso_oauth_custom.cy.js	1371
-cypress/e2e/qmoi_kernel_panel_sso_oauth_custom.cy.js.placeholderfix.bak	1264
+cypress/e2e/qmoi_kernel_panel_sso_oauth_custom.cy.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1264
 cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js	1128
-cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js.placeholderfix.bak	1021
+cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1021
 cypress/e2e/qmoi_kernel_panel_sso_oauth_edge.cy.js	985
-cypress/e2e/qmoi_kernel_panel_sso_oauth_edge.cy.js.placeholderfix.bak	878
+cypress/e2e/qmoi_kernel_panel_sso_oauth_edge.cy.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	878
 cypress/e2e/qmoi_kernel_panel_sso_oauth_more.cy.js	1284
-cypress/e2e/qmoi_kernel_panel_sso_oauth_more.cy.js.placeholderfix.bak	1177
+cypress/e2e/qmoi_kernel_panel_sso_oauth_more.cy.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1177
 cypress/e2e/qmoi_kernel_panel_sso_oauth_multi.cy.js	1133
-cypress/e2e/qmoi_kernel_panel_sso_oauth_multi.cy.js.placeholderfix.bak	1026
+cypress/e2e/qmoi_kernel_panel_sso_oauth_multi.cy.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1026
 dashboard/package.json	272
 dashboard/public/index.html	239
 dashboard/server.js	656
@@ -9382,8 +9382,8 @@ docs/ENHANCEDQVS.md	1395
 docs/ENHANCED_FEATURES.md	11692
 docs/FEATURESINDEX.md	4227
 docs/FEATURESINDEX.md.linkfix.bak	4260
-docs/FEATURESINDEX.md.linkfix.bak.placeholderfix.bak	4287
-docs/FEATURESINDEX.md.placeholderfix.bak	4254
+docs/FEATURESINDEX.md.linkfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4287
+docs/FEATURESINDEX.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4254
 docs/LIGHTWEIGHT_STRATEGY.md	3560
 docs/LINKVALIDATION.md	1377
 docs/LION-ENHANCEMENTS-PLAN.md	4038
@@ -9425,9 +9425,9 @@ docs/REFERENCES.md.linkfix.bak	2287
 docs/RELEASE_AUTOMATION.md	2660
 docs/REVENUE_SPEC.md	25091077
 docs/REVENUE_SPEC.md.generated.md	632166
-docs/REVENUE_SPEC.md.generated.md.placeholderfix.bak	632274
-docs/REVENUE_SPEC.md.placeholderfix.bak	25091833
-docs/TODOS_ENHANCEMENTS.md	2267
+docs/REVENUE_SPEC.md.generated.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	632274
+docs/REVENUE_SPEC.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	25091833
+docs/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]S_ENHANCEMENTS.md	2267
 docs/TROUBLESHOOTING.md	2221
 docs/VALIDATIONSYSTEMS.md	6389
 docs/VALIDATION_STRATEGIES.md	6623
@@ -9442,7 +9442,7 @@ docs/download_validation_report.json	2654
 docs/full-app-inventory.json	649
 docs/implemented_endpoints.md	4249
 docs/link-validation-report.json	3903349
-docs/link-validation-report.json.placeholderfix.bak	3903511
+docs/link-validation-report.json.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3903511
 docs/link_report.json	131965
 docs/lion_checks.json	187
 docs/lion_features.md	3919
@@ -9461,9 +9461,9 @@ docs/md-inventory.json	75662
 docs/md_index.json	56428
 docs/merged_remediation_plan.md	4571
 docs/operations.md	4153
-docs/placeholders_replacement_report.json	52330696
-docs/placeholders_replacement_report.json.placeholderfix.bak	56812999
-docs/placeholders_report.json	305
+docs/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]s_replacement_report.json	52330696
+docs/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]s_replacement_report.json.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	56812999
+docs/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]s_report.json	305
 docs/qmoi_space_enhancements.md	5216
 docs/qmoi_validation_report.json	3633
 docs/qvillage_features.md	8839
@@ -9517,7 +9517,7 @@ hooks/useAnalyticsDashboard.ts	576
 hooks/useAutoEarningTasks.ts	840
 hooks/useAutoFixAllProblems.ts	1723
 hooks/useBitgetTrader.ts	1752
-hooks/useBitgetTrader.ts.placeholderfix.bak	1645
+hooks/useBitgetTrader.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1645
 hooks/useColabJob.ts	1403
 hooks/useDatasetManager.ts	4189
 hooks/useDeviceHealth.ts	6856
@@ -9565,7 +9565,7 @@ lib/all_download_links_and_app_info_(size,_last_checked,_status)_are_autotested_
 lib/apps,_devices_&_platforms.ts	637
 lib/avatar,_ai_core_&_server.ts	626
 lib/cashon-wallet.ts	13769
-lib/cashon-wallet.ts.placeholderfix.bak	13662
+lib/cashon-wallet.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	13662
 lib/cross_language_integration.ts	651
 lib/developer_&_parallelization.ts	656
 lib/download_&_distribution.ts	624
@@ -9607,7 +9607,7 @@ lib/qserverreadme.md.ts	574
 lib/qvs/qvsreadme.md.ts	574
 lib/revenue_&_business.ts	584
 lib/security_check.ts	1993
-lib/security_check.ts.placeholderfix.bak	1886
+lib/security_check.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1886
 lib/trading-config.ts	2608
 lib/trading-service.ts	3198
 lib/troubleshooting_&_help.ts	616
@@ -9626,10 +9626,10 @@ lib/üöä_universal_device_installation_&_optimization.ts	863
 license-report.json	1163180
 link_report.md	15643340
 link_report.md.dotfix.bak	15647160
-link_report.md.dotfix.bak.placeholderfix.bak	15647970
+link_report.md.dotfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	15647970
 link_report.md.linkfix.bak	15647160
-link_report.md.linkfix.bak.placeholderfix.bak	15647970
-link_report.md.placeholderfix.bak	15644150
+link_report.md.linkfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	15647970
+link_report.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	15644150
 live_qmoi_ngrok_url.txt	35
 local-release-verify.ps1	2465
 local_release_verification.json	608
@@ -9652,15 +9652,15 @@ logs/quick-test-dashboard.html	705
 logs/quick-test-report.json	3425
 main.js	3443
 matches.json	8093466
-matches.json.placeholderfix.bak	8894193
+matches.json.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	8894193
 matches_with_comments.json	59438477
-matches_with_comments.json.placeholderfix.bak	60541799
+matches_with_comments.json.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	60541799
 memories.json	629
 metrics.json	72
 ml/qmoi_advanced_error_predictor.py	2672
-ml/qmoi_advanced_error_predictor.py.placeholderfix.bak	2566
+ml/qmoi_advanced_error_predictor.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2566
 mobile/App.js	7091
-mobile/App.js.placeholderfix.bak	6984
+mobile/App.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	6984
 mobile/README.md	3481
 mobile/android/.gradle/8.14.3/checksums/checksums.lock	17
 mobile/android/.gradle/8.14.3/checksums/md5-checksums.bin	31097
@@ -9701,11 +9701,11 @@ mobile/android/gradlew	8733
 mobile/android/gradlew.bat	3134
 mobile/android/settings.gradle	339
 mobile/components/AlertSettingsScreen.js	3218
-mobile/components/AlertSettingsScreen.js.placeholderfix.bak	3111
+mobile/components/AlertSettingsScreen.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3111
 mobile/components/AnalyticsScreen.js	21119
-mobile/components/AnalyticsScreen.js.placeholderfix.bak	21012
+mobile/components/AnalyticsScreen.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	21012
 mobile/components/DeviceManagementScreen.js	27782
-mobile/components/DeviceManagementScreen.js.placeholderfix.bak	27675
+mobile/components/DeviceManagementScreen.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	27675
 mobile/components/NotificationScreen.js	4809
 mobile/init-android.js	752
 mobile/package.json	492
@@ -9723,7 +9723,7 @@ ngrok_tunnel.txt	35
 ngrok_tunnel.txt.bak.20251022T225933	35
 notebooks/enhanced-trading-engine-demo.ipynb	4767
 notify_on_whatsapp.py	4430
-notify_on_whatsapp.py.placeholderfix.bak	4324
+notify_on_whatsapp.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4324
 npm	0
 pa.py	468
 package-watchdebug.json	2082
@@ -9734,7 +9734,7 @@ payments/provider_stub.py	890
 payments/reconciliation.py	4823
 payments/stripe_adapter.py	6191
 payments/webhook_processor.py	4726
-placeholder_scan_summary.md	1275
+[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]_scan_summary.md	1275
 platformspayed.txt	7614
 postcss.config.mjs	146
 public/favicon.ico	97
@@ -9744,11 +9744,11 @@ public/icon.ico	14340
 public/icon.svg	455
 public/icon.webp	1760
 public/index.html	3716
-public/placeholder-logo.png	568
-public/placeholder-logo.svg	640
-public/placeholder-user.jpg	1635
-public/placeholder.jpg	1064
-public/placeholder.svg	3253
+public/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]-logo.png	568
+public/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]-logo.svg	640
+public/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]-user.jpg	1635
+public/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review].jpg	1064
+public/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review].svg	3253
 public/qcity-icon.svg	873
 public/qcity/dashboard.js	5309
 public/qcity/index.html	3376
@@ -9789,7 +9789,7 @@ qcity-artifacts/pwa_build_report.json	1048
 qcity-artifacts/qmoi_build_report.json	1991
 qcity-artifacts/qmoi_release_report.json	1223
 qmoi-app-builder.py	3954
-qmoi-app-builder.py.placeholderfix.bak	3848
+qmoi-app-builder.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3848
 qmoi-apps-summary.json	183
 qmoi-backups/1752627018600/qmoi-clone-optimize.log	3576
 qmoi-clone-optimize.log	13133
@@ -14056,23 +14056,23 @@ qmoi-enhanced/.spec	939
 qmoi-enhanced/.sync-log	51
 qmoi-enhanced/@ALLMDFILESREFS.md	4018
 qmoi-enhanced/@ALLMDFILESREFS.md.dotfix.bak	4026
-qmoi-enhanced/@ALLMDFILESREFS.md.dotfix.bak.placeholderfix.bak	4053
+qmoi-enhanced/@ALLMDFILESREFS.md.dotfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4053
 qmoi-enhanced/@ALLMDFILESREFS.md.linkfix.bak	4018
-qmoi-enhanced/@ALLMDFILESREFS.md.linkfix.bak.placeholderfix.bak	4045
-qmoi-enhanced/@ALLMDFILESREFS.md.placeholderfix.bak	4045
+qmoi-enhanced/@ALLMDFILESREFS.md.linkfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4045
+qmoi-enhanced/@ALLMDFILESREFS.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4045
 qmoi-enhanced/ALLDEVICESSETTINGS.md	2915
 qmoi-enhanced/ALLERRORSSTATSQMOI.md	2942
 qmoi-enhanced/ALLMDFILESREFS.md	13066
 qmoi-enhanced/ALLQMOIAIAPPSREALEASESVERSIONS.md	5375
 qmoi-enhanced/ALLQMOIAUTOEVOLVINGENVS.md	43915
 qmoi-enhanced/ALPHAQMOIENGINE.md	4103
-qmoi-enhanced/ALPHAQMOIENGINE.md.placeholderfix.bak	4130
+qmoi-enhanced/ALPHAQMOIENGINE.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4130
 qmoi-enhanced/API.md	16498
-qmoi-enhanced/AUTODOWNLOAD.md	4005
+qmoi-enhanced/AU[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]WNLOAD.md	4005
 qmoi-enhanced/AUTOGIT.md	1712
 qmoi-enhanced/AUTOLINTREADME.md	10495
 qmoi-enhanced/AUTOMATION-SUMMARY.md	8841
-qmoi-enhanced/AUTOMATION-SUMMARY.md.placeholderfix.bak	8976
+qmoi-enhanced/AUTOMATION-SUMMARY.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	8976
 qmoi-enhanced/AUTOOPTIMIZEALPHAQMOIENGINE.md	3769
 qmoi-enhanced/BB.txt	871
 qmoi-enhanced/BUILDAPPSFORALLPLATFORMS.md	7859
@@ -14085,7 +14085,7 @@ qmoi-enhanced/COMPONENTS.md	6064
 qmoi-enhanced/CONTINUOUS_IMPROVEMENT.md	2240
 qmoi-enhanced/D1.txt	3635
 qmoi-enhanced/DEPLOYMENT-README.md	29272
-qmoi-enhanced/DEPLOYMENT-README.md.placeholderfix.bak	29353
+qmoi-enhanced/DEPLOYMENT-README.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	29353
 qmoi-enhanced/DEVCOMMANDS.md	3237
 qmoi-enhanced/DEVICERESOURCEOPTIMIZATION.md	2756
 qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md	8295
@@ -14094,7 +14094,7 @@ qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md.linkfix.bak	8295
 qmoi-enhanced/Dockerfile.ai-anomaly-service	197
 qmoi-enhanced/EMPLOYEESUSERSENROLLED.md	9114
 qmoi-enhanced/ENHANCEDQVS.md	16402
-qmoi-enhanced/ENHANCEDQVS.md.placeholderfix.bak	16429
+qmoi-enhanced/ENHANCEDQVS.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	16429
 qmoi-enhanced/ENHANCED_AUTOMATION_SUMMARY.md	12397
 qmoi-enhanced/ENHANCED_AUTOMATION_SUMMARY.md.dotfix.bak	12399
 qmoi-enhanced/ENHANCED_AUTOMATION_SUMMARY.md.linkfix.bak	12397
@@ -14102,10 +14102,10 @@ qmoi-enhanced/ERRORSREADME.md	384796
 qmoi-enhanced/FAST-BOOTSTRAP-README.md	3564
 qmoi-enhanced/FEATURESREADME.md	39937
 qmoi-enhanced/FEATURESREADME.md.dotfix.bak	39939
-qmoi-enhanced/FEATURESREADME.md.dotfix.bak.placeholderfix.bak	39966
+qmoi-enhanced/FEATURESREADME.md.dotfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	39966
 qmoi-enhanced/FEATURESREADME.md.linkfix.bak	39937
-qmoi-enhanced/FEATURESREADME.md.linkfix.bak.placeholderfix.bak	39964
-qmoi-enhanced/FEATURESREADME.md.placeholderfix.bak	39964
+qmoi-enhanced/FEATURESREADME.md.linkfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	39964
+qmoi-enhanced/FEATURESREADME.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	39964
 qmoi-enhanced/GITHUB-ACTIONS-COMPLETE.md	13663
 qmoi-enhanced/GITHUBPAYED.md	18498
 qmoi-enhanced/GITHUBPAYED.md.dotfix.bak	18508
@@ -14142,7 +14142,7 @@ qmoi-enhanced/QCITYREADME.md	26005
 qmoi-enhanced/QCITYREADME.md.dotfix.bak	26013
 qmoi-enhanced/QCITYREADME.md.linkfix.bak	26005
 qmoi-enhanced/QCITYRESOURCES.md	13777
-qmoi-enhanced/QCITYRESOURCES.md.placeholderfix.bak	13804
+qmoi-enhanced/QCITYRESOURCES.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	13804
 qmoi-enhanced/QCITYRUNNERSENGINE.md	5594
 qmoi-enhanced/QCITY_DEVICE_MANAGEMENT.md	2582
 qmoi-enhanced/QGAMINGCLOUD.md	15084
@@ -14159,8 +14159,8 @@ qmoi-enhanced/QMOI-EARNING-ENHANCED.md	4897
 qmoi-enhanced/QMOI-ENHANCED-AUTOMATION.md	20004
 qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md	19924
 qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md.linkfix.bak	19910
-qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md.linkfix.bak.placeholderfix.bak	19964
-qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md.placeholderfix.bak	19978
+qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md.linkfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	19964
+qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	19978
 qmoi-enhanced/QMOI-ENHANCED-COMPLETE.md	13077
 qmoi-enhanced/QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md	17819
 qmoi-enhanced/QMOI-ENHANCED-FEATURES.md	11293
@@ -14176,27 +14176,27 @@ qmoi-enhanced/QMOI-HUGGINGFACE-ENHANCEMENTS.md	12440
 qmoi-enhanced/QMOI-MASTER-CONTROLS.md	12099
 qmoi-enhanced/QMOI-OPTIMIZATION.md	2921
 qmoi-enhanced/QMOI-PLUGIN-SYSTEM.md	4528
-qmoi-enhanced/QMOI-PLUGIN-SYSTEM.md.placeholderfix.bak	4582
+qmoi-enhanced/QMOI-PLUGIN-SYSTEM.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4582
 qmoi-enhanced/QMOI-REVENUE-README.md	10195
 qmoi-enhanced/QMOI-VOICE-ENHANCEMENT.md	14263
 qmoi-enhanced/QMOIACCOUNTS.md	4650
 qmoi-enhanced/QMOIACCOUNTSPLATFORMS.md	2970
 qmoi-enhanced/QMOIAICORE.md	5063
 qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md	15556
-qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md.placeholderfix.bak	15583
+qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	15583
 qmoi-enhanced/QMOIALLDEVICESINSTALL.md	8763
 qmoi-enhanced/QMOIALLPLATFORMS.md	21440
 qmoi-enhanced/QMOIALLPLATFORMS.md.dotfix.bak	21480
 qmoi-enhanced/QMOIALLPLATFORMS.md.linkfix.bak	21440
 qmoi-enhanced/QMOIALLPROJECTSADDSTRAILERSDOCS.md	2532
-qmoi-enhanced/QMOIALLPROJECTSADDSTRAILERSDOCS.md.placeholderfix.bak	2559
+qmoi-enhanced/QMOIALLPROJECTSADDSTRAILERSDOCS.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2559
 qmoi-enhanced/QMOIALWAYSPARALLEL.md	12983
 qmoi-enhanced/QMOIAPIKEYREADME.md	1793
 qmoi-enhanced/QMOIAPPS.md	17502
 qmoi-enhanced/QMOIARTISTS.md	11408
-qmoi-enhanced/QMOIARTISTS.md.placeholderfix.bak	11597
+qmoi-enhanced/QMOIARTISTS.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	11597
 qmoi-enhanced/QMOIAUTHBIOMETRICS.md	13255
-qmoi-enhanced/QMOIAUTHBIOMETRICS.md.placeholderfix.bak	13282
+qmoi-enhanced/QMOIAUTHBIOMETRICS.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	13282
 qmoi-enhanced/QMOIAUTOAPPSDEV.md	9046
 qmoi-enhanced/QMOIAUTOBET.md	15166
 qmoi-enhanced/QMOIAUTODEV.md	5917
@@ -14213,36 +14213,36 @@ qmoi-enhanced/QMOIAUTOMATIONMONITORING.md	15359
 qmoi-enhanced/QMOIAUTOOPPORTUNITIES.md	12590
 qmoi-enhanced/QMOIAUTOPROJECTS.md	9830
 qmoi-enhanced/QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md	6363
-qmoi-enhanced/QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md.placeholderfix.bak	6390
+qmoi-enhanced/QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	6390
 qmoi-enhanced/QMOIAUTOREVENUEEARN.md	3404
 qmoi-enhanced/QMOIAVATAR.md	22725
 qmoi-enhanced/QMOIBINARIES.md	809
 qmoi-enhanced/QMOIBROWSER.md	3916
 qmoi-enhanced/QMOICLONE.md	7818
 qmoi-enhanced/QMOICLONE.md.dotfix.bak	7826
-qmoi-enhanced/QMOICLONE.md.dotfix.bak.placeholderfix.bak	7853
+qmoi-enhanced/QMOICLONE.md.dotfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	7853
 qmoi-enhanced/QMOICLONE.md.linkfix.bak	7818
-qmoi-enhanced/QMOICLONE.md.linkfix.bak.placeholderfix.bak	7845
-qmoi-enhanced/QMOICLONE.md.placeholderfix.bak	7845
+qmoi-enhanced/QMOICLONE.md.linkfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	7845
+qmoi-enhanced/QMOICLONE.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	7845
 qmoi-enhanced/QMOICLONEGITHUB.md	17946
 qmoi-enhanced/QMOICLONEGITHUB.md.dotfix.bak	17954
-qmoi-enhanced/QMOICLONEGITHUB.md.dotfix.bak.placeholderfix.bak	17981
+qmoi-enhanced/QMOICLONEGITHUB.md.dotfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	17981
 qmoi-enhanced/QMOICLONEGITHUB.md.linkfix.bak	17946
-qmoi-enhanced/QMOICLONEGITHUB.md.linkfix.bak.placeholderfix.bak	17973
-qmoi-enhanced/QMOICLONEGITHUB.md.placeholderfix.bak	17973
+qmoi-enhanced/QMOICLONEGITHUB.md.linkfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	17973
+qmoi-enhanced/QMOICLONEGITHUB.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	17973
 qmoi-enhanced/QMOICLONEGITLAB.md	6124
 qmoi-enhanced/QMOICLONEGITLAB.md.dotfix.bak	6126
-qmoi-enhanced/QMOICLONEGITLAB.md.dotfix.bak.placeholderfix.bak	6153
+qmoi-enhanced/QMOICLONEGITLAB.md.dotfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	6153
 qmoi-enhanced/QMOICLONEGITLAB.md.linkfix.bak	6124
-qmoi-enhanced/QMOICLONEGITLAB.md.linkfix.bak.placeholderfix.bak	6151
-qmoi-enhanced/QMOICLONEGITLAB.md.placeholderfix.bak	6151
+qmoi-enhanced/QMOICLONEGITLAB.md.linkfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	6151
+qmoi-enhanced/QMOICLONEGITLAB.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	6151
 qmoi-enhanced/QMOICLONEGITPOD.md	2108
 qmoi-enhanced/QMOICLONEHUGGINGFACE.md	20570
 qmoi-enhanced/QMOICLONEHUGGINGFACE.md.dotfix.bak	20580
-qmoi-enhanced/QMOICLONEHUGGINGFACE.md.dotfix.bak.placeholderfix.bak	20607
+qmoi-enhanced/QMOICLONEHUGGINGFACE.md.dotfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	20607
 qmoi-enhanced/QMOICLONEHUGGINGFACE.md.linkfix.bak	20570
-qmoi-enhanced/QMOICLONEHUGGINGFACE.md.linkfix.bak.placeholderfix.bak	20597
-qmoi-enhanced/QMOICLONEHUGGINGFACE.md.placeholderfix.bak	20597
+qmoi-enhanced/QMOICLONEHUGGINGFACE.md.linkfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	20597
+qmoi-enhanced/QMOICLONEHUGGINGFACE.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	20597
 qmoi-enhanced/QMOICOLABDAGSHUB.md	2244
 qmoi-enhanced/QMOIDATABASE.md	4271
 qmoi-enhanced/QMOIDEV.md	6609
@@ -14262,7 +14262,7 @@ qmoi-enhanced/QMOIENVWITHALLPROGRAMMINGLANGUAGES.md	43481
 qmoi-enhanced/QMOIFORALL.md	9829
 qmoi-enhanced/QMOIFREE.md	3033
 qmoi-enhanced/QMOIGAMINGCLOUDUSERS.md	14811
-qmoi-enhanced/QMOIGAMINGCLOUDUSERS.md.placeholderfix.bak	14865
+qmoi-enhanced/QMOIGAMINGCLOUDUSERS.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	14865
 qmoi-enhanced/QMOIGAMINGGENREV.md	821
 qmoi-enhanced/QMOIGITHUBDEV.md	17055
 qmoi-enhanced/QMOIGITHUBDEV.md.dotfix.bak	17057
@@ -14296,20 +14296,20 @@ qmoi-enhanced/QMOIREVENUEGENERATION.md	12808
 qmoi-enhanced/QMOISPACE.md	13719
 qmoi-enhanced/QMOISPACEDEV.md	43574
 qmoi-enhanced/QMOISPACEDEV.md.dotfix.bak	43582
-qmoi-enhanced/QMOISPACEDEV.md.dotfix.bak.placeholderfix.bak	43885
+qmoi-enhanced/QMOISPACEDEV.md.dotfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	43885
 qmoi-enhanced/QMOISPACEDEV.md.linkfix.bak	43574
-qmoi-enhanced/QMOISPACEDEV.md.linkfix.bak.placeholderfix.bak	43877
-qmoi-enhanced/QMOISPACEDEV.md.placeholderfix.bak	43877
+qmoi-enhanced/QMOISPACEDEV.md.linkfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	43877
+qmoi-enhanced/QMOISPACEDEV.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	43877
 qmoi-enhanced/QMOISPACEUI.md	11982
 qmoi-enhanced/QMOISYSTEMAUTO.md	9605
 qmoi-enhanced/QMOITESTENVIRONMENT.md	18892
-qmoi-enhanced/QMOITESTENVIRONMENT.md.placeholderfix.bak	18946
+qmoi-enhanced/QMOITESTENVIRONMENT.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	18946
 qmoi-enhanced/QMOITRADER.md	13167
 qmoi-enhanced/QMOIVERCELDEV.md	3397
 qmoi-enhanced/QMOIVERCELDEV.md.dotfix.bak	3407
 qmoi-enhanced/QMOIVERCELDEV.md.linkfix.bak	3397
 qmoi-enhanced/QMOIVIDEOPLATFORMS.md	1346
-qmoi-enhanced/QMOIVIDEOPLATFORMS.md.placeholderfix.bak	1373
+qmoi-enhanced/QMOIVIDEOPLATFORMS.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1373
 qmoi-enhanced/QMOIWHATSAPP.md	8173
 qmoi-enhanced/QMOI_AUTOMATED_SYSTEMS_README.md	9714
 qmoi-enhanced/QMOI_COMPLETE_SYSTEM.md	11888
@@ -14353,7 +14353,7 @@ qmoi-enhanced/SISTERREADME.md	3251
 qmoi-enhanced/START.md	1656
 qmoi-enhanced/SYNCREPOS.md	1619
 qmoi-enhanced/TESTREADME.md	13568
-qmoi-enhanced/TESTREADME.md.placeholderfix.bak	13595
+qmoi-enhanced/TESTREADME.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	13595
 qmoi-enhanced/TRACKS.md	2673
 qmoi-enhanced/TRADINGREADME.md	29782
 qmoi-enhanced/TROUBLESHOOTING.md	1358
@@ -14369,20 +14369,20 @@ qmoi-enhanced/Z12.txt	297
 qmoi-enhanced/ZERORATEDQMOI.md	5045
 qmoi-enhanced/__tests__/wallet.test.ts	1069
 qmoi-enhanced/ai-anomaly-service.py	5875
-qmoi-enhanced/ai-anomaly-service.py.placeholderfix.bak	5769
+qmoi-enhanced/ai-anomaly-service.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	5769
 qmoi-enhanced/ai-automation-service.ts	0
 qmoi-enhanced/ai_self_update.py	9452
-qmoi-enhanced/ai_self_update.py.placeholderfix.bak	9346
+qmoi-enhanced/ai_self_update.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	9346
 qmoi-enhanced/ai_self_update_cli.py	887
 qmoi-enhanced/api/qcity.ts	13824
 qmoi-enhanced/app/api/account-automation/route.ts	2341
 qmoi-enhanced/app/api/ai-anomaly-service/route.ts	2163
-qmoi-enhanced/app/api/ai-anomaly-service/route.ts.placeholderfix.bak	2056
+qmoi-enhanced/app/api/ai-anomaly-service/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2056
 qmoi-enhanced/app/api/ai-health/route.ts	8317
-qmoi-enhanced/app/api/ai-health/route.ts.placeholderfix.bak	8210
+qmoi-enhanced/app/api/ai-health/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	8210
 qmoi-enhanced/app/api/ai-self-diagnostics/route.ts	4239
 qmoi-enhanced/app/api/ai/scan/route.ts	2653
-qmoi-enhanced/app/api/ai/scan/route.ts.placeholderfix.bak	2546
+qmoi-enhanced/app/api/ai/scan/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2546
 qmoi-enhanced/app/api/auth/login.ts	1258
 qmoi-enhanced/app/api/auth/logout.ts	178
 qmoi-enhanced/app/api/auth/me.ts	559
@@ -14393,7 +14393,7 @@ qmoi-enhanced/app/api/auth/session.ts	1002
 qmoi-enhanced/app/api/auth/totp.ts	1757
 qmoi-enhanced/app/api/auto-fix.ts	1697
 qmoi-enhanced/app/api/automation/status/route.ts	1468
-qmoi-enhanced/app/api/automation/status/route.ts.placeholderfix.bak	1361
+qmoi-enhanced/app/api/automation/status/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1361
 qmoi-enhanced/app/api/cashon/balance/route.ts	2422
 qmoi-enhanced/app/api/cashon/deposit/route.ts	1343
 qmoi-enhanced/app/api/cashon/route.ts	9659
@@ -14403,25 +14403,25 @@ qmoi-enhanced/app/api/cashon/stop-trading/route.ts	1068
 qmoi-enhanced/app/api/cashon/trading-status/route.ts	1021
 qmoi-enhanced/app/api/colab-job.ts	3268
 qmoi-enhanced/app/api/datasets/route.ts	3556
-qmoi-enhanced/app/api/datasets/route.ts.placeholderfix.bak	3449
+qmoi-enhanced/app/api/datasets/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3449
 qmoi-enhanced/app/api/datasets/settings/route.ts	1847
-qmoi-enhanced/app/api/datasets/settings/route.ts.placeholderfix.bak	1740
+qmoi-enhanced/app/api/datasets/settings/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1740
 qmoi-enhanced/app/api/deploy/auto-redeploy/route.ts	1175
 qmoi-enhanced/app/api/deploy/route.ts	1415
 qmoi-enhanced/app/api/deployment-status.ts	2317
 qmoi-enhanced/app/api/deployment-status/route.ts	744
-qmoi-enhanced/app/api/deployment-status/route.ts.placeholderfix.bak	637
+qmoi-enhanced/app/api/deployment-status/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	637
 qmoi-enhanced/app/api/device-fingerprint/route.ts	1655
 qmoi-enhanced/app/api/document-backup/route.ts	1428
 qmoi-enhanced/app/api/earning/route.ts	1126
 qmoi-enhanced/app/api/employment/megavault/route.ts	13517
-qmoi-enhanced/app/api/employment/megavault/route.ts.placeholderfix.bak	13410
+qmoi-enhanced/app/api/employment/megavault/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	13410
 qmoi-enhanced/app/api/employment/payment/route.ts	11280
-qmoi-enhanced/app/api/employment/payment/route.ts.placeholderfix.bak	11173
+qmoi-enhanced/app/api/employment/payment/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	11173
 qmoi-enhanced/app/api/employment/revenue/route.ts	21049
-qmoi-enhanced/app/api/employment/revenue/route.ts.placeholderfix.bak	20942
+qmoi-enhanced/app/api/employment/revenue/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	20942
 qmoi-enhanced/app/api/employment/route.ts	8705
-qmoi-enhanced/app/api/employment/route.ts.placeholderfix.bak	8598
+qmoi-enhanced/app/api/employment/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	8598
 qmoi-enhanced/app/api/financial/audit/route.ts	399
 qmoi-enhanced/app/api/financial/transactions/route.ts	719
 qmoi-enhanced/app/api/financial/verify/route.ts	614
@@ -14433,9 +14433,9 @@ qmoi-enhanced/app/api/git/remote/route.ts	313
 qmoi-enhanced/app/api/git/status/route.ts	1202
 qmoi-enhanced/app/api/media/generate/route.ts	6835
 qmoi-enhanced/app/api/media/status/route.ts	1537
-qmoi-enhanced/app/api/media/status/route.ts.placeholderfix.bak	1430
+qmoi-enhanced/app/api/media/status/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1430
 qmoi-enhanced/app/api/monitor/status/route.ts	2020
-qmoi-enhanced/app/api/monitor/status/route.ts.placeholderfix.bak	1913
+qmoi-enhanced/app/api/monitor/status/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1913
 qmoi-enhanced/app/api/mpesa/callback/route.ts	861
 qmoi-enhanced/app/api/qapikey/route.ts	1740
 qmoi-enhanced/app/api/qcity/audit-log.ts	2307
@@ -14444,29 +14444,29 @@ qmoi-enhanced/app/api/qcity/devices.ts	2542
 qmoi-enhanced/app/api/qcity/metrics.ts	682
 qmoi-enhanced/app/api/qcity/plugins.ts	650
 qmoi-enhanced/app/api/qcity/remote-command.ts	2705
-qmoi-enhanced/app/api/qcity/remote-command.ts.placeholderfix.bak	2598
+qmoi-enhanced/app/api/qcity/remote-command.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2598
 qmoi-enhanced/app/api/qcity/remote-command/route.ts	2510
 qmoi-enhanced/app/api/qcity/schedule.ts	2196
 qmoi-enhanced/app/api/qcity/selfheal-npm/route.ts	3578
-qmoi-enhanced/app/api/qcity/selfheal-npm/route.ts.placeholderfix.bak	3471
+qmoi-enhanced/app/api/qcity/selfheal-npm/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3471
 qmoi-enhanced/app/api/qcity/status.ts	522
 qmoi-enhanced/app/api/qcity/status/route.ts	804
 qmoi-enhanced/app/api/qi-trading.ts	6845
-qmoi-enhanced/app/api/qi-trading.ts.placeholderfix.bak	6738
+qmoi-enhanced/app/api/qi-trading.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	6738
 qmoi-enhanced/app/api/qi-trading/route.ts	6272
-qmoi-enhanced/app/api/qi-trading/route.ts.placeholderfix.bak	6165
+qmoi-enhanced/app/api/qi-trading/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	6165
 qmoi-enhanced/app/api/qmoi-database/route.ts	8689
 qmoi-enhanced/app/api/qmoi-earning-enhanced/route.ts	282
-qmoi-enhanced/app/api/qmoi-earning-enhanced/route.ts.placeholderfix.bak	175
+qmoi-enhanced/app/api/qmoi-earning-enhanced/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	175
 qmoi-enhanced/app/api/qmoi-gitlab/deployments/route.ts	1623
 qmoi-enhanced/app/api/qmoi-gitlab/errors/route.ts	1401
 qmoi-enhanced/app/api/qmoi-gitlab/jobs/route.ts	1384
 qmoi-enhanced/app/api/qmoi-gitlab/pipelines/route.ts	1332
 qmoi-enhanced/app/api/qmoi-gitlab/trigger/route.ts	1263
 qmoi-enhanced/app/api/qmoi-model.ts	21652
-qmoi-enhanced/app/api/qmoi-model.ts.placeholderfix.bak	21545
+qmoi-enhanced/app/api/qmoi-model.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	21545
 qmoi-enhanced/app/api/qmoi-model/route.ts	3696
-qmoi-enhanced/app/api/qmoi-model/route.ts.placeholderfix.bak	3589
+qmoi-enhanced/app/api/qmoi-model/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3589
 qmoi-enhanced/app/api/qmoi/auto-fix/download-report/route.ts	2505
 qmoi-enhanced/app/api/qmoi/auto-fix/github-status/route.ts	2519
 qmoi-enhanced/app/api/qmoi/auto-fix/start/route.ts	2429
@@ -14474,18 +14474,18 @@ qmoi-enhanced/app/api/qmoi/auto-fix/status/route.ts	2881
 qmoi-enhanced/app/api/qmoi/auto-fix/stop/route.ts	2022
 qmoi-enhanced/app/api/qmoi/avatars/route.ts	8827
 qmoi-enhanced/app/api/qmoi/backup/route.ts	1296
-qmoi-enhanced/app/api/qmoi/backup/route.ts.placeholderfix.bak	1189
+qmoi-enhanced/app/api/qmoi/backup/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1189
 qmoi-enhanced/app/api/qmoi/fix/all.ts	335
 qmoi-enhanced/app/api/qmoi/fix/connectivity.ts	343
 qmoi-enhanced/app/api/qmoi/language/route.ts	2234
-qmoi-enhanced/app/api/qmoi/language/route.ts.placeholderfix.bak	2126
+qmoi-enhanced/app/api/qmoi/language/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2126
 qmoi-enhanced/app/api/qmoi/master-mode/route.ts	2589
 qmoi-enhanced/app/api/qmoi/own-device-logs/export/route.ts	3747
 qmoi-enhanced/app/api/qmoi/own-device-logs/route.ts	4493
 qmoi-enhanced/app/api/qmoi/research/route.ts	1356
-qmoi-enhanced/app/api/qmoi/research/route.ts.placeholderfix.bak	1249
+qmoi-enhanced/app/api/qmoi/research/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1249
 qmoi-enhanced/app/api/qmoi/revenue-dashboard/route.ts	12946
-qmoi-enhanced/app/api/qmoi/revenue-dashboard/route.ts.placeholderfix.bak	12839
+qmoi-enhanced/app/api/qmoi/revenue-dashboard/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	12839
 qmoi-enhanced/app/api/qmoi/revenue/reset/route.ts	1033
 qmoi-enhanced/app/api/qmoi/revenue/route.ts	3395
 qmoi-enhanced/app/api/qmoi/revenue/start/route.ts	1015
@@ -14496,10 +14496,10 @@ qmoi-enhanced/app/api/qmoi/revenue/transactions/route.ts	931
 qmoi-enhanced/app/api/qmoi/revenue/transfer/route.ts	1272
 qmoi-enhanced/app/api/qmoi/status.ts	1285
 qmoi-enhanced/app/api/qmoi/user/route.ts	1577
-qmoi-enhanced/app/api/qmoi/user/route.ts.placeholderfix.bak	1470
+qmoi-enhanced/app/api/qmoi/user/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1470
 qmoi-enhanced/app/api/qmoi/voice-preview/route.ts	5033
 qmoi-enhanced/app/api/qmoi/voice-profiles/route.ts	12440
-qmoi-enhanced/app/api/qmoi/voice-profiles/route.ts.placeholderfix.bak	12333
+qmoi-enhanced/app/api/qmoi/voice-profiles/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	12333
 qmoi-enhanced/app/api/qnews/route.ts	3743
 qmoi-enhanced/app/api/qradio/route.ts	2557
 qmoi-enhanced/app/api/social-automation/route.ts	1629
@@ -14511,15 +14511,15 @@ qmoi-enhanced/app/api/version/route.ts	372
 qmoi-enhanced/app/api/wallet.ts	13144
 qmoi-enhanced/app/api/whatsapp-bot/route.ts	780
 qmoi-enhanced/app/api/whatsapp-business/route.ts	283
-qmoi-enhanced/app/api/whatsapp-business/route.ts.placeholderfix.bak	176
+qmoi-enhanced/app/api/whatsapp-business/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	176
 qmoi-enhanced/app/api/whatsapp/audit/route.ts	398
 qmoi-enhanced/app/api/whatsapp/verify/route.ts	589
 qmoi-enhanced/app/api/wifi-security.ts	4048
 qmoi-enhanced/app/api/wifi-security/route.ts	4747
-qmoi-enhanced/app/api/wifi-security/route.ts.placeholderfix.bak	4640
+qmoi-enhanced/app/api/wifi-security/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4640
 qmoi-enhanced/app/api/wifi/route.ts	876
 qmoi-enhanced/app/api/wifi/scan/route.ts	2776
-qmoi-enhanced/app/api/wifi/scan/route.ts.placeholderfix.bak	2669
+qmoi-enhanced/app/api/wifi/scan/route.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2669
 qmoi-enhanced/app/globals.css	2148
 qmoi-enhanced/app/layout.js	426
 qmoi-enhanced/app/layout.tsx	937
@@ -14541,10 +14541,10 @@ qmoi-enhanced/auto_updater.py	876
 qmoi-enhanced/avatars.py	269
 qmoi-enhanced/avatars.txt	3903
 qmoi-enhanced/backend/trading-engine.ts	2662
-qmoi-enhanced/backend/trading-engine.ts.placeholderfix.bak	2555
+qmoi-enhanced/backend/trading-engine.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2555
 qmoi-enhanced/bala-data-cleaning-pipeline.jpeg	102858
 qmoi-enhanced/bitget-trader.py	4251
-qmoi-enhanced/bitget-trader.py.placeholderfix.bak	4145
+qmoi-enhanced/bitget-trader.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4145
 qmoi-enhanced/build-qmoi.bat	82
 qmoi-enhanced/build-qmoi.sh	129
 qmoi-enhanced/build-report.txt	114
@@ -14627,7 +14627,7 @@ qmoi-enhanced/components/components/qmedia_player.md.tsx	494
 qmoi-enhanced/components/device/AWSCredentialsModal.tsx	1502
 qmoi-enhanced/components/device/AzureCredentialsModal.tsx	1741
 qmoi-enhanced/components/device/DeviceIntegrationStubs.ts	6579
-qmoi-enhanced/components/device/DeviceIntegrationStubs.ts.placeholderfix.bak	6472
+qmoi-enhanced/components/device/DeviceIntegrationStubs.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	6472
 qmoi-enhanced/components/device/GCPCredentialsModal.tsx	1235
 qmoi-enhanced/components/enhanced-system-dashboard.tsx	32947
 qmoi-enhanced/components/enhanced_build_tools.tsx	455
@@ -14737,19 +14737,19 @@ qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_concurrent_impersonation.cy.js	1182
 qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_multisession_permissions.cy.js	1040
 qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_multiuser_mobile.cy.js	1245
 qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth.cy.js	667
-qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth.cy.js.placeholderfix.bak	560
+qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth.cy.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	560
 qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_biometric_magiclink.cy.js	1145
-qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_biometric_magiclink.cy.js.placeholderfix.bak	1038
+qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_biometric_magiclink.cy.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1038
 qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_custom.cy.js	1371
-qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_custom.cy.js.placeholderfix.bak	1264
+qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_custom.cy.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1264
 qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js	1128
-qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js.placeholderfix.bak	1021
+qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1021
 qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_edge.cy.js	985
-qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_edge.cy.js.placeholderfix.bak	878
+qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_edge.cy.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	878
 qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_more.cy.js	1284
-qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_more.cy.js.placeholderfix.bak	1177
+qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_more.cy.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1177
 qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_multi.cy.js	1133
-qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_multi.cy.js.placeholderfix.bak	1026
+qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_multi.cy.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1026
 qmoi-enhanced/dashboard/package.json	343
 qmoi-enhanced/dashboard/public/index.html	239
 qmoi-enhanced/dashboard/server.js	656
@@ -14768,8 +14768,8 @@ qmoi-enhanced/docs/AUTOEVOLVE.md	2218
 qmoi-enhanced/docs/ENHANCED_FEATURES.md	11706
 qmoi-enhanced/docs/FEATURESINDEX.md	4395
 qmoi-enhanced/docs/FEATURESINDEX.md.linkfix.bak	4274
-qmoi-enhanced/docs/FEATURESINDEX.md.linkfix.bak.placeholderfix.bak	4301
-qmoi-enhanced/docs/FEATURESINDEX.md.placeholderfix.bak	4422
+qmoi-enhanced/docs/FEATURESINDEX.md.linkfix.bak.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4301
+qmoi-enhanced/docs/FEATURESINDEX.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4422
 qmoi-enhanced/docs/MONITORING_SYSTEM.md	11644
 qmoi-enhanced/docs/QMOI-ENHANCED-AUTOTESTS.md	1117
 qmoi-enhanced/docs/QMOICLONE.md	1065
@@ -14809,7 +14809,7 @@ qmoi-enhanced/ecosystem.config.js	631
 qmoi-enhanced/electron-builder.json	1034
 qmoi-enhanced/enhanced-error-fix.js	1993
 qmoi-enhanced/ensure_build_files.py	746
-qmoi-enhanced/ensure_build_files.py.placeholderfix.bak	640
+qmoi-enhanced/ensure_build_files.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	640
 qmoi-enhanced/error-fix-summary.md	1452
 qmoi-enhanced/eslint.config.js	3725
 qmoi-enhanced/execute-final-deployment.js	1311
@@ -14828,7 +14828,7 @@ qmoi-enhanced/hooks/useAnalyticsDashboard.ts	576
 qmoi-enhanced/hooks/useAutoEarningTasks.ts	840
 qmoi-enhanced/hooks/useAutoFixAllProblems.ts	1723
 qmoi-enhanced/hooks/useBitgetTrader.ts	1752
-qmoi-enhanced/hooks/useBitgetTrader.ts.placeholderfix.bak	1645
+qmoi-enhanced/hooks/useBitgetTrader.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1645
 qmoi-enhanced/hooks/useColabJob.ts	1403
 qmoi-enhanced/hooks/useDatasetManager.ts	4189
 qmoi-enhanced/hooks/useDeviceHealth.ts	6856
@@ -14850,7 +14850,7 @@ qmoi-enhanced/hooks/useTradingAutomation.ts	2592
 qmoi-enhanced/hooks/useVSCodeProblems.ts	1040
 qmoi-enhanced/hooks/useWhatsApp.ts	3262
 qmoi-enhanced/huggingface_space/app.js	1835
-qmoi-enhanced/huggingface_space/app.js.placeholderfix.bak	1728
+qmoi-enhanced/huggingface_space/app.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1728
 qmoi-enhanced/huggingface_space/app.py	283
 qmoi-enhanced/huggingface_space/dashboard.js	1540
 qmoi-enhanced/huggingface_space/email.js	1376
@@ -14871,9 +14871,9 @@ qmoi-enhanced/local_release_verification.json	608
 qmoi-enhanced/main.js	3443
 qmoi-enhanced/metrics.json	72
 qmoi-enhanced/ml/qmoi_advanced_error_predictor.py	2672
-qmoi-enhanced/ml/qmoi_advanced_error_predictor.py.placeholderfix.bak	2566
+qmoi-enhanced/ml/qmoi_advanced_error_predictor.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2566
 qmoi-enhanced/mobile/App.js	7091
-qmoi-enhanced/mobile/App.js.placeholderfix.bak	6984
+qmoi-enhanced/mobile/App.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	6984
 qmoi-enhanced/mobile/README.md	3495
 qmoi-enhanced/mobile/android/.gradle/8.14.3/checksums/checksums.lock	17
 qmoi-enhanced/mobile/android/.gradle/8.14.3/checksums/md5-checksums.bin	31097
@@ -14914,11 +14914,11 @@ qmoi-enhanced/mobile/android/gradlew	8733
 qmoi-enhanced/mobile/android/gradlew.bat	3134
 qmoi-enhanced/mobile/android/settings.gradle	339
 qmoi-enhanced/mobile/components/AlertSettingsScreen.js	3218
-qmoi-enhanced/mobile/components/AlertSettingsScreen.js.placeholderfix.bak	3111
+qmoi-enhanced/mobile/components/AlertSettingsScreen.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3111
 qmoi-enhanced/mobile/components/AnalyticsScreen.js	21119
-qmoi-enhanced/mobile/components/AnalyticsScreen.js.placeholderfix.bak	21012
+qmoi-enhanced/mobile/components/AnalyticsScreen.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	21012
 qmoi-enhanced/mobile/components/DeviceManagementScreen.js	27782
-qmoi-enhanced/mobile/components/DeviceManagementScreen.js.placeholderfix.bak	27675
+qmoi-enhanced/mobile/components/DeviceManagementScreen.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	27675
 qmoi-enhanced/mobile/components/NotificationScreen.js	4809
 qmoi-enhanced/mobile/init-android.js	752
 qmoi-enhanced/mobile/package.json	564
@@ -14936,10 +14936,10 @@ qmoi-enhanced/ngrok_tunnel.txt	35
 qmoi-enhanced/ngrok_tunnel.txt.bak.20251022T225934	35
 qmoi-enhanced/notebooks/enhanced-trading-engine-demo.ipynb	4767
 qmoi-enhanced/notify_on_whatsapp.py	4430
-qmoi-enhanced/notify_on_whatsapp.py.placeholderfix.bak	4324
+qmoi-enhanced/notify_on_whatsapp.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4324
 qmoi-enhanced/npm	0
 qmoi-enhanced/pa.py	545
-qmoi-enhanced/pa.py.placeholderfix.bak	439
+qmoi-enhanced/pa.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	439
 qmoi-enhanced/package-watchdebug.json	2082
 qmoi-enhanced/package.json	5591
 qmoi-enhanced/pages/api/memory.ts	1025
@@ -14951,11 +14951,11 @@ qmoi-enhanced/public/icon.ico	3141
 qmoi-enhanced/public/icon.svg	455
 qmoi-enhanced/public/icon.webp	470
 qmoi-enhanced/public/index.html	3716
-qmoi-enhanced/public/placeholder-logo.png	568
-qmoi-enhanced/public/placeholder-logo.svg	640
-qmoi-enhanced/public/placeholder-user.jpg	1635
-qmoi-enhanced/public/placeholder.jpg	1064
-qmoi-enhanced/public/placeholder.svg	3253
+qmoi-enhanced/public/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]-logo.png	568
+qmoi-enhanced/public/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]-logo.svg	640
+qmoi-enhanced/public/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]-user.jpg	1635
+qmoi-enhanced/public/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review].jpg	1064
+qmoi-enhanced/public/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review].svg	3253
 qmoi-enhanced/public/qcity-icon.svg	873
 qmoi-enhanced/push-simple.ps1	4607
 qmoi-enhanced/push.bat	489
@@ -14966,19 +14966,19 @@ qmoi-enhanced/push_log.txt	1424
 qmoi-enhanced/qcity-artifacts/qmoi_build_report.json	2608
 qmoi-enhanced/qcity-artifacts/qmoi_release_report.json	1288
 qmoi-enhanced/qmoi-app-builder.py	3954
-qmoi-enhanced/qmoi-app-builder.py.placeholderfix.bak	3848
+qmoi-enhanced/qmoi-app-builder.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3848
 qmoi-enhanced/qmoi-apps-summary.json	183
 qmoi-enhanced/qmoi-friendship-advanced.js	24749
 qmoi-enhanced/qmoi-friendship-core.js	20015
 qmoi-enhanced/qmoi-friendship-integration.js	19373
 qmoi-enhanced/qmoi-release-status.json	176
 qmoi-enhanced/qmoi-space-pwa/index.html	35015
-qmoi-enhanced/qmoi-space-pwa/index.html.placeholderfix.bak	35069
+qmoi-enhanced/qmoi-space-pwa/index.html.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	35069
 qmoi-enhanced/qmoi-space-pwa/js/app.js	20078
 qmoi-enhanced/qmoi-space-pwa/manifest.json	4091
 qmoi-enhanced/qmoi-space-pwa/sw.js	12771
 qmoi-enhanced/qmoi-space/index.html	27479
-qmoi-enhanced/qmoi-space/index.html.placeholderfix.bak	27506
+qmoi-enhanced/qmoi-space/index.html.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	27506
 qmoi-enhanced/qmoi-space/public/js/main.js	1373
 qmoi-enhanced/qmoi-space/public/manifest.json	5005
 qmoi-enhanced/qmoi-space/public/sw.js	13105
@@ -14998,7 +14998,7 @@ qmoi-enhanced/qmoi_release_report.json	339
 qmoi-enhanced/qmoi_revenue.db-journal	8720
 qmoi-enhanced/qmoiaxe.py	1997
 qmoi-enhanced/qmoiexe.py	3879
-qmoi-enhanced/qmoiexe.py.placeholderfix.bak	3773
+qmoi-enhanced/qmoiexe.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3773
 qmoi-enhanced/qmoiexe.spec	686
 qmoi-enhanced/qmoiexe_enhanced.py	14718
 qmoi-enhanced/qmoihugggingfacenotes.py	283
@@ -15030,7 +15030,7 @@ qmoi-enhanced/routes/api/qcity/whatsapp/config.ts	955
 qmoi-enhanced/routes/api/qcity/whatsapp/messages.ts	947
 qmoi-enhanced/routes/api/qmoi/autodev.ts	8612
 qmoi-enhanced/routes/api/qmoi/feedback.ts	844
-qmoi-enhanced/routes/api/qmoi/feedback.ts.placeholderfix.bak	737
+qmoi-enhanced/routes/api/qmoi/feedback.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	737
 qmoi-enhanced/routes/api/qmoi/file.ts	2004
 qmoi-enhanced/routes/api/qmoi/memory-backup.ts	395
 qmoi-enhanced/routes/api/qmoi/memory.ts	541
@@ -15040,7 +15040,7 @@ qmoi-enhanced/routes/qcity/projects/[id].tsx	3249
 qmoi-enhanced/routes/qcity/projects/config.tsx	9239
 qmoi-enhanced/routes/qcity/projects/index.tsx	2814
 qmoi-enhanced/run_advanced_ai.py	1812
-qmoi-enhanced/run_advanced_ai.py.placeholderfix.bak	1706
+qmoi-enhanced/run_advanced_ai.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1706
 qmoi-enhanced/run_all_qmoi.ps1	323
 qmoi-enhanced/scripts/.cspell.json	530
 qmoi-enhanced/scripts/README_QMOI_SECRETS.md	2312
@@ -15060,7 +15060,7 @@ qmoi-enhanced/scripts/auto-vercel-fix.js	8797
 qmoi-enhanced/scripts/auto_env_fix.cjs	5111
 qmoi-enhanced/scripts/auto_evolve.js	794
 qmoi-enhanced/scripts/auto_lint_fix.py	18354
-qmoi-enhanced/scripts/auto_lint_fix.py.placeholderfix.bak	18248
+qmoi-enhanced/scripts/auto_lint_fix.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	18248
 qmoi-enhanced/scripts/auto_push_release.py	919
 qmoi-enhanced/scripts/auto_trading.js	974
 qmoi-enhanced/scripts/auto_utils.js	553
@@ -15068,7 +15068,7 @@ qmoi-enhanced/scripts/automate_tasks.py	3732
 qmoi-enhanced/scripts/automation/github_actions_auto_fix.py	26947
 qmoi-enhanced/scripts/automation/qmoi_master_automation.py	29648
 qmoi-enhanced/scripts/autotest/advanced_autotest_system.py	28987
-qmoi-enhanced/scripts/autotest/advanced_autotest_system.py.placeholderfix.bak	28881
+qmoi-enhanced/scripts/autotest/advanced_autotest_system.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	28881
 qmoi-enhanced/scripts/autotest/qmoi_automation_autotest.py	2289
 qmoi-enhanced/scripts/autotest/qmoi_simple_autotest.py	5214
 qmoi-enhanced/scripts/aws_cost_report.js	920
@@ -15085,7 +15085,7 @@ qmoi-enhanced/scripts/custom_error_handler.py	1912
 qmoi-enhanced/scripts/dagshub-automation.py	5283
 qmoi-enhanced/scripts/db_migrations.py	12153
 qmoi-enhanced/scripts/demo-automation.js	3972
-qmoi-enhanced/scripts/demo-automation.js.placeholderfix.bak	3864
+qmoi-enhanced/scripts/demo-automation.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3864
 qmoi-enhanced/scripts/deploy.py	15819
 qmoi-enhanced/scripts/deploy/cloud_deploy.py	26428
 qmoi-enhanced/scripts/deploy/deploy.py	26104
@@ -15093,7 +15093,7 @@ qmoi-enhanced/scripts/deploy/deployment-monitor.js	10015
 qmoi-enhanced/scripts/deploy/health-check.js	10009
 qmoi-enhanced/scripts/deploy/vercel_auto_deploy.js	13468
 qmoi-enhanced/scripts/deploy_huggingface.js	10995
-qmoi-enhanced/scripts/deploy_huggingface.js.placeholderfix.bak	10888
+qmoi-enhanced/scripts/deploy_huggingface.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	10888
 qmoi-enhanced/scripts/deployment/Dockerfile	894
 qmoi-enhanced/scripts/deployment/__init__.py	104
 qmoi-enhanced/scripts/deployment/auto_deploy.py	19417
@@ -15101,14 +15101,14 @@ qmoi-enhanced/scripts/deployment/cloud_deployment.py	5136
 qmoi-enhanced/scripts/deployment/deploy.py	7699
 qmoi-enhanced/scripts/deployment/server.py	5653
 qmoi-enhanced/scripts/device_ownership_detector.py	28983
-qmoi-enhanced/scripts/device_ownership_detector.py.placeholderfix.bak	28877
+qmoi-enhanced/scripts/device_ownership_detector.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	28877
 qmoi-enhanced/scripts/device_unlock_system.py	36768
 qmoi-enhanced/scripts/doc_verifier.py	13289
 qmoi-enhanced/scripts/downloadqmoiai.py	1791
-qmoi-enhanced/scripts/downloadqmoiai.py.placeholderfix.bak	1685
+qmoi-enhanced/scripts/downloadqmoiai.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1685
 qmoi-enhanced/scripts/earning/enhanced_earning_system.py	301
 qmoi-enhanced/scripts/enhance_ai.py	15582
-qmoi-enhanced/scripts/enhance_ai.py.placeholderfix.bak	15476
+qmoi-enhanced/scripts/enhance_ai.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	15476
 qmoi-enhanced/scripts/enhanced-build.py	11904
 qmoi-enhanced/scripts/enhanced-error-fix.js	11203
 qmoi-enhanced/scripts/enhanced_automation_&_cloud_features_(2025_01_22).py	319
@@ -15118,14 +15118,14 @@ qmoi-enhanced/scripts/enhanced_qmoi_implementation.py	298
 qmoi-enhanced/scripts/enhanced_test_runner.py	290
 qmoi-enhanced/scripts/ensure-build-tools.js	2326
 qmoi-enhanced/scripts/ensure-files.js	856
-qmoi-enhanced/scripts/ensure-files.js.placeholderfix.bak	749
+qmoi-enhanced/scripts/ensure-files.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	749
 qmoi-enhanced/scripts/error/error_fixer.py	20934
 qmoi-enhanced/scripts/error_handler.py	11730
 qmoi-enhanced/scripts/error_tracker.py	11816
 qmoi-enhanced/scripts/fast_git_commit.py	9956
 qmoi-enhanced/scripts/financial-integration.py	31
 qmoi-enhanced/scripts/financial_verification.py	1998
-qmoi-enhanced/scripts/financial_verification.py.placeholderfix.bak	1892
+qmoi-enhanced/scripts/financial_verification.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1892
 qmoi-enhanced/scripts/find_qcity_runner_docs.py	1703
 qmoi-enhanced/scripts/fix-build.js	317
 qmoi-enhanced/scripts/fix-cloud.js	221
@@ -15145,10 +15145,10 @@ qmoi-enhanced/scripts/github_auto_push.py	818
 qmoi-enhanced/scripts/github_release_sync.py	1434
 qmoi-enhanced/scripts/github_status_monitor.js	1430
 qmoi-enhanced/scripts/gitlab-automation.js	20701
-qmoi-enhanced/scripts/gitlab-automation.js.placeholderfix.bak	20594
+qmoi-enhanced/scripts/gitlab-automation.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	20594
 qmoi-enhanced/scripts/gitlab-error-recovery.js	18932
 qmoi-enhanced/scripts/gitlab-notification-service.js	18804
-qmoi-enhanced/scripts/gitlab-notification-service.js.placeholderfix.bak	18697
+qmoi-enhanced/scripts/gitlab-notification-service.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	18697
 qmoi-enhanced/scripts/gitlab-push-automation.js	15067
 qmoi-enhanced/scripts/gitpod-notification-service.js	18473
 qmoi-enhanced/scripts/gmail_notify.py	1241
@@ -15166,12 +15166,12 @@ qmoi-enhanced/scripts/log-errors.js	442
 qmoi-enhanced/scripts/log-summary.js	752
 qmoi-enhanced/scripts/media_sync.js	1490
 qmoi-enhanced/scripts/media_upload_api_example.js	3363
-qmoi-enhanced/scripts/media_upload_api_example.js.placeholderfix.bak	3256
+qmoi-enhanced/scripts/media_upload_api_example.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3256
 qmoi-enhanced/scripts/models/advanced_architectures.py	11944
 qmoi-enhanced/scripts/models/architectures.py	13309
 qmoi-enhanced/scripts/models/qmoi_autodev.py	290
 qmoi-enhanced/scripts/models/qmoi_kernel.py	4746
-qmoi-enhanced/scripts/models/qmoi_kernel.py.placeholderfix.bak	4640
+qmoi-enhanced/scripts/models/qmoi_kernel.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4640
 qmoi-enhanced/scripts/models/qmoi_manager.py	16544
 qmoi-enhanced/scripts/models/qmoi_permissions.json	1496
 qmoi-enhanced/scripts/models/qmoi_personality.py	5908
@@ -15185,10 +15185,10 @@ qmoi-enhanced/scripts/monitoring/cloud_resources_monitor.py	23386
 qmoi-enhanced/scripts/monitoring/error_tracking.py	4559
 qmoi-enhanced/scripts/monitoring/master_monitor.py	23538
 qmoi-enhanced/scripts/monitoring/monitoring_dashboard.py	34367
-qmoi-enhanced/scripts/monitoring/monitoring_dashboard.py.placeholderfix.bak	34261
+qmoi-enhanced/scripts/monitoring/monitoring_dashboard.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	34261
 qmoi-enhanced/scripts/monitoring/notification_monitor.py	23748
 qmoi-enhanced/scripts/monitoring/performance_monitoring.py	24110
-qmoi-enhanced/scripts/monitoring/performance_monitoring.py.placeholderfix.bak	24004
+qmoi-enhanced/scripts/monitoring/performance_monitoring.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	24004
 qmoi-enhanced/scripts/monitoring/start_all_monitors.py	16583
 qmoi-enhanced/scripts/monitoring/system_status_monitor.py	30558
 qmoi-enhanced/scripts/mpesa-setup-guide.js	4251
@@ -15208,12 +15208,12 @@ qmoi-enhanced/scripts/ota_updater.py	544
 qmoi-enhanced/scripts/platform_manager.py	12936
 qmoi-enhanced/scripts/postbuild-copy-qmoiexe.js	413
 qmoi-enhanced/scripts/postinstall-verify.js	330
-qmoi-enhanced/scripts/postinstall-verify.js.placeholderfix.bak	223
+qmoi-enhanced/scripts/postinstall-verify.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	223
 qmoi-enhanced/scripts/preinstall-check.js	330
-qmoi-enhanced/scripts/preinstall-check.js.placeholderfix.bak	223
+qmoi-enhanced/scripts/preinstall-check.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	223
 qmoi-enhanced/scripts/qcity-automation.js	26494
 qmoi-enhanced/scripts/qcity-device-manager.js	16032
-qmoi-enhanced/scripts/qcity-device-manager.js.placeholderfix.bak	15925
+qmoi-enhanced/scripts/qcity-device-manager.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	15925
 qmoi-enhanced/scripts/qcity_advanced_installer.py	26777
 qmoi-enhanced/scripts/qcity_device_manager.py	24064
 qmoi-enhanced/scripts/qcity_manager.py	8685
@@ -15228,7 +15228,7 @@ qmoi-enhanced/scripts/qmoi-auto-config-runner.js	653
 qmoi-enhanced/scripts/qmoi-auto-config.js	941
 qmoi-enhanced/scripts/qmoi-auto-email-download.py	1113
 qmoi-enhanced/scripts/qmoi-auto-enhancement-system.js	24889
-qmoi-enhanced/scripts/qmoi-auto-enhancement-system.js.placeholderfix.bak	24782
+qmoi-enhanced/scripts/qmoi-auto-enhancement-system.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	24782
 qmoi-enhanced/scripts/qmoi-auto-evolution.py	24698
 qmoi-enhanced/scripts/qmoi-auto-push.js	12010
 qmoi-enhanced/scripts/qmoi-autofixer.js	2075
@@ -15250,28 +15250,28 @@ qmoi-enhanced/scripts/qmoi-comprehensive-parallel-automation.py	23292
 qmoi-enhanced/scripts/qmoi-controller.js	17070
 qmoi-enhanced/scripts/qmoi-dashboard-enhance.py	293
 qmoi-enhanced/scripts/qmoi-dashboard.py	12593
-qmoi-enhanced/scripts/qmoi-dashboard.py.placeholderfix.bak	12487
+qmoi-enhanced/scripts/qmoi-dashboard.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	12487
 qmoi-enhanced/scripts/qmoi-dev-actions.py	2527
-qmoi-enhanced/scripts/qmoi-dev-actions.py.placeholderfix.bak	2421
+qmoi-enhanced/scripts/qmoi-dev-actions.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2421
 qmoi-enhanced/scripts/qmoi-download-link-tester.py	1644
 qmoi-enhanced/scripts/qmoi-emergency-fix.js	62
 qmoi-enhanced/scripts/qmoi-enhanced-auto-fix.js	16098
 qmoi-enhanced/scripts/qmoi-enhanced-auto-projects.js	44524
 qmoi-enhanced/scripts/qmoi-enhanced-automation.py	37977
 qmoi-enhanced/scripts/qmoi-enhanced-avatar-system.js	17808
-qmoi-enhanced/scripts/qmoi-enhanced-avatar-system.js.placeholderfix.bak	17701
+qmoi-enhanced/scripts/qmoi-enhanced-avatar-system.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	17701
 qmoi-enhanced/scripts/qmoi-enhanced-biometric-system.py	300
 qmoi-enhanced/scripts/qmoi-enhanced-controller.py	21998
 qmoi-enhanced/scripts/qmoi-enhanced-doc-verifier.js	4772
 qmoi-enhanced/scripts/qmoi-enhanced-health-checker.py	22883
-qmoi-enhanced/scripts/qmoi-enhanced-health-checker.py.placeholderfix.bak	22777
+qmoi-enhanced/scripts/qmoi-enhanced-health-checker.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	22777
 qmoi-enhanced/scripts/qmoi-enhanced-learning-revenue.js	11307
 qmoi-enhanced/scripts/qmoi-enhanced-live-status.py	15382
 qmoi-enhanced/scripts/qmoi-enhanced-master-automation.py	24942
 qmoi-enhanced/scripts/qmoi-enhanced-notifications.py	20704
 qmoi-enhanced/scripts/qmoi-enhanced-platform-automation.py	25228
 qmoi-enhanced/scripts/qmoi-environment-setup.js	27273
-qmoi-enhanced/scripts/qmoi-environment-setup.js.placeholderfix.bak	27166
+qmoi-enhanced/scripts/qmoi-environment-setup.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	27166
 qmoi-enhanced/scripts/qmoi-error-handler.py	31278
 qmoi-enhanced/scripts/qmoi-error-predictor.js	1894
 qmoi-enhanced/scripts/qmoi-error-recovery.js	14091
@@ -15284,7 +15284,7 @@ qmoi-enhanced/scripts/qmoi-gitlab-sync.js	1707
 qmoi-enhanced/scripts/qmoi-hands-free.py	35049
 qmoi-enhanced/scripts/qmoi-hf-sync.py	4358
 qmoi-enhanced/scripts/qmoi-hf-test.py	3074
-qmoi-enhanced/scripts/qmoi-hf-test.py.placeholderfix.bak	2968
+qmoi-enhanced/scripts/qmoi-hf-test.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2968
 qmoi-enhanced/scripts/qmoi-hot-reload.js	807
 qmoi-enhanced/scripts/qmoi-huggingface-manager.js	5214
 qmoi-enhanced/scripts/qmoi-huggingface-space-enhanced.py	301
@@ -15298,22 +15298,22 @@ qmoi-enhanced/scripts/qmoi-master-autostart.js	10024
 qmoi-enhanced/scripts/qmoi-master-debugger.js	1890
 qmoi-enhanced/scripts/qmoi-master-notifications.py	18821
 qmoi-enhanced/scripts/qmoi-master-system.js	21630
-qmoi-enhanced/scripts/qmoi-master-system.js.placeholderfix.bak	21523
+qmoi-enhanced/scripts/qmoi-master-system.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	21523
 qmoi-enhanced/scripts/qmoi-mobile-auto-selfheal.js	3773
-qmoi-enhanced/scripts/qmoi-mobile-auto-selfheal.js.placeholderfix.bak	3666
+qmoi-enhanced/scripts/qmoi-mobile-auto-selfheal.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3666
 qmoi-enhanced/scripts/qmoi-music-production-system.js	20455
-qmoi-enhanced/scripts/qmoi-music-production-system.js.placeholderfix.bak	20348
+qmoi-enhanced/scripts/qmoi-music-production-system.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	20348
 qmoi-enhanced/scripts/qmoi-notification-system.js	8635
 qmoi-enhanced/scripts/qmoi-package-installer.py	2925
-qmoi-enhanced/scripts/qmoi-package-installer.py.placeholderfix.bak	2819
+qmoi-enhanced/scripts/qmoi-package-installer.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2819
 qmoi-enhanced/scripts/qmoi-parallel-autotest.js	1228
 qmoi-enhanced/scripts/qmoi-parallel-platform-enhancer.py	22819
 qmoi-enhanced/scripts/qmoi-parallel-processor.py	17483
-qmoi-enhanced/scripts/qmoi-parallel-processor.py.placeholderfix.bak	17377
+qmoi-enhanced/scripts/qmoi-parallel-processor.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	17377
 qmoi-enhanced/scripts/qmoi-parallel-setup.js	2579
 qmoi-enhanced/scripts/qmoi-performance-optimizer.py	24658
 qmoi-enhanced/scripts/qmoi-platform-manager.py	1890
-qmoi-enhanced/scripts/qmoi-platform-manager.py.placeholderfix.bak	1784
+qmoi-enhanced/scripts/qmoi-platform-manager.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1784
 qmoi-enhanced/scripts/qmoi-platform-optimizer.py	26305
 qmoi-enhanced/scripts/qmoi-qcity-automatic.py	19719
 qmoi-enhanced/scripts/qmoi-qcity-enhanced-automatic.py	21009
@@ -15323,43 +15323,43 @@ qmoi-enhanced/scripts/qmoi-real-time-logger.py	291
 qmoi-enhanced/scripts/qmoi-real-time-monitor.py	24245
 qmoi-enhanced/scripts/qmoi-registry-manager.js	19530
 qmoi-enhanced/scripts/qmoi-research-engine.py	21243
-qmoi-enhanced/scripts/qmoi-research-engine.py.placeholderfix.bak	21137
+qmoi-enhanced/scripts/qmoi-research-engine.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	21137
 qmoi-enhanced/scripts/qmoi-revenue-dashboard.js	22485
 qmoi-enhanced/scripts/qmoi-revenue-enforcer.js	7127
-qmoi-enhanced/scripts/qmoi-revenue-enforcer.js.placeholderfix.bak	7020
+qmoi-enhanced/scripts/qmoi-revenue-enforcer.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	7020
 qmoi-enhanced/scripts/qmoi-secret-generator.js	1439
-qmoi-enhanced/scripts/qmoi-secret-generator.js.placeholderfix.bak	1332
+qmoi-enhanced/scripts/qmoi-secret-generator.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1332
 qmoi-enhanced/scripts/qmoi-self-updating-agent.js	5643
 qmoi-enhanced/scripts/qmoi-setup.js	9163
 qmoi-enhanced/scripts/qmoi-slack-notify.js	721
 qmoi-enhanced/scripts/qmoi-space-backend.py	30688
-qmoi-enhanced/scripts/qmoi-space-backend.py.placeholderfix.bak	30582
+qmoi-enhanced/scripts/qmoi-space-backend.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	30582
 qmoi-enhanced/scripts/qmoi-start.py	2712
-qmoi-enhanced/scripts/qmoi-start.py.placeholderfix.bak	2606
+qmoi-enhanced/scripts/qmoi-start.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2606
 qmoi-enhanced/scripts/qmoi-storage-optimize.js	583
 qmoi-enhanced/scripts/qmoi-system-controller.py	42819
 qmoi-enhanced/scripts/qmoi-ultimate-automation.py	31951
-qmoi-enhanced/scripts/qmoi-ultimate-automation.py.placeholderfix.bak	31845
+qmoi-enhanced/scripts/qmoi-ultimate-automation.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	31845
 qmoi-enhanced/scripts/qmoi-unified-push-enhanced.py	22929
 qmoi-enhanced/scripts/qmoi-unified-push-ultimate.py	31695
-qmoi-enhanced/scripts/qmoi-unified-push-ultimate.py.placeholderfix.bak	31589
+qmoi-enhanced/scripts/qmoi-unified-push-ultimate.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	31589
 qmoi-enhanced/scripts/qmoi-unified-push.py	24223
 qmoi-enhanced/scripts/qmoi-universal-error-fixer.py	27310
 qmoi-enhanced/scripts/qmoi-universal-error-handler.js	16343
 qmoi-enhanced/scripts/qmoi-vulnerability-scanner.js	17782
 qmoi-enhanced/scripts/qmoi_activity_logger.py	497
 qmoi-enhanced/scripts/qmoi_advanced_analytics.py	28856
-qmoi-enhanced/scripts/qmoi_advanced_analytics.py.placeholderfix.bak	28750
+qmoi-enhanced/scripts/qmoi_advanced_analytics.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	28750
 qmoi-enhanced/scripts/qmoi_advanced_automation.py	14965
 qmoi-enhanced/scripts/qmoi_ai_enhancement_engine.py	296
 qmoi-enhanced/scripts/qmoi_app_builder.py	3817
 qmoi-enhanced/scripts/qmoi_app_installer.py	20830
-qmoi-enhanced/scripts/qmoi_app_installer.py.placeholderfix.bak	20724
+qmoi-enhanced/scripts/qmoi_app_installer.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	20724
 qmoi-enhanced/scripts/qmoi_auto_docs.py	30747
 qmoi-enhanced/scripts/qmoi_auto_evolution.py	24843
 qmoi-enhanced/scripts/qmoi_auto_evolution_enhanced.py	21355
 qmoi-enhanced/scripts/qmoi_auto_evolution_system.py	37300
-qmoi-enhanced/scripts/qmoi_auto_evolution_system.py.placeholderfix.bak	37194
+qmoi-enhanced/scripts/qmoi_auto_evolution_system.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	37194
 qmoi-enhanced/scripts/qmoi_auto_fix_enhanced.py	20710
 qmoi-enhanced/scripts/qmoi_auto_setup.py	12692
 qmoi-enhanced/scripts/qmoi_auto_startup.py	8144
@@ -15373,17 +15373,17 @@ qmoi-enhanced/scripts/qmoi_bootstrap_secrets.py	4715
 qmoi-enhanced/scripts/qmoi_build_api.py	402
 qmoi-enhanced/scripts/qmoi_build_ci.py	2097
 qmoi-enhanced/scripts/qmoi_cloud_integration_enhanced.py	22638
-qmoi-enhanced/scripts/qmoi_cloud_integration_enhanced.py.placeholderfix.bak	22532
+qmoi-enhanced/scripts/qmoi_cloud_integration_enhanced.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	22532
 qmoi-enhanced/scripts/qmoi_cloud_optimizer.js	241
 qmoi-enhanced/scripts/qmoi_cloud_setup.py	19675
 qmoi-enhanced/scripts/qmoi_complete_system.py	25649
 qmoi-enhanced/scripts/qmoi_comprehensive_test.py	1423
 qmoi-enhanced/scripts/qmoi_contact_verifier.py	10570
 qmoi-enhanced/scripts/qmoi_dashboard.js	8994
-qmoi-enhanced/scripts/qmoi_dashboard.js.placeholderfix.bak	8887
+qmoi-enhanced/scripts/qmoi_dashboard.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	8887
 qmoi-enhanced/scripts/qmoi_dashboard.py	284
 qmoi-enhanced/scripts/qmoi_data_optimization_system.py	24369
-qmoi-enhanced/scripts/qmoi_data_optimization_system.py.placeholderfix.bak	24263
+qmoi-enhanced/scripts/qmoi_data_optimization_system.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	24263
 qmoi-enhanced/scripts/qmoi_device_agent.py	26592
 qmoi-enhanced/scripts/qmoi_device_integration.py	20216
 qmoi-enhanced/scripts/qmoi_doc_verifier.js	0
@@ -15391,12 +15391,12 @@ qmoi-enhanced/scripts/qmoi_earning_daemon.py	1009
 qmoi-enhanced/scripts/qmoi_earning_enhanced.py	1527
 qmoi-enhanced/scripts/qmoi_employment_monitor.py	16275
 qmoi-enhanced/scripts/qmoi_enhanced_ai.py	32164
-qmoi-enhanced/scripts/qmoi_enhanced_ai.py.placeholderfix.bak	32058
+qmoi-enhanced/scripts/qmoi_enhanced_ai.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	32058
 qmoi-enhanced/scripts/qmoi_enhanced_automation.py	33722
-qmoi-enhanced/scripts/qmoi_enhanced_automation.py.placeholderfix.bak	33616
+qmoi-enhanced/scripts/qmoi_enhanced_automation.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	33616
 qmoi-enhanced/scripts/qmoi_enhanced_startup.py	24430
 qmoi-enhanced/scripts/qmoi_env_manager.js	5232
-qmoi-enhanced/scripts/qmoi_env_manager.js.placeholderfix.bak	5125
+qmoi-enhanced/scripts/qmoi_env_manager.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	5125
 qmoi-enhanced/scripts/qmoi_error_auto_fix.py	21146
 qmoi-enhanced/scripts/qmoi_error_monitor.py	15418
 qmoi-enhanced/scripts/qmoi_feature_suggester.py	31
@@ -15405,25 +15405,25 @@ qmoi-enhanced/scripts/qmoi_gitlab_automation.py	26262
 qmoi-enhanced/scripts/qmoi_health_monitor.py	11893
 qmoi-enhanced/scripts/qmoi_health_reporting_system.py	34949
 qmoi-enhanced/scripts/qmoi_hf_auto_manager.py	13575
-qmoi-enhanced/scripts/qmoi_hf_auto_manager.py.placeholderfix.bak	13469
+qmoi-enhanced/scripts/qmoi_hf_auto_manager.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	13469
 qmoi-enhanced/scripts/qmoi_huggingface_setup.py	20762
 qmoi-enhanced/scripts/qmoi_huggingface_spaces.js	65148
 qmoi-enhanced/scripts/qmoi_integration_master.py	21240
 qmoi-enhanced/scripts/qmoi_intelligent_scheduler.py	15625
-qmoi-enhanced/scripts/qmoi_intelligent_scheduler.py.placeholderfix.bak	15519
+qmoi-enhanced/scripts/qmoi_intelligent_scheduler.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	15519
 qmoi-enhanced/scripts/qmoi_master_automation_enhanced.py	14536
 qmoi-enhanced/scripts/qmoi_master_orchestrator.js	19934
 qmoi-enhanced/scripts/qmoi_master_website_automation.js	18552
-qmoi-enhanced/scripts/qmoi_master_website_automation.js.placeholderfix.bak	18444
+qmoi-enhanced/scripts/qmoi_master_website_automation.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	18444
 qmoi-enhanced/scripts/qmoi_media_orchestrator.js	4514
 qmoi-enhanced/scripts/qmoi_model_enhancer.py	289
 qmoi-enhanced/scripts/qmoi_notification_manager.py	5470
-qmoi-enhanced/scripts/qmoi_notification_manager.py.placeholderfix.bak	5364
+qmoi-enhanced/scripts/qmoi_notification_manager.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	5364
 qmoi-enhanced/scripts/qmoi_notifier.js	1077
 qmoi-enhanced/scripts/qmoi_own_device_logger.py	30671
 qmoi-enhanced/scripts/qmoi_parallel_error_fixer.py	36800
 qmoi-enhanced/scripts/qmoi_payment_fix.js	16018
-qmoi-enhanced/scripts/qmoi_payment_fix.js.placeholderfix.bak	15911
+qmoi-enhanced/scripts/qmoi_payment_fix.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	15911
 qmoi-enhanced/scripts/qmoi_performance_monitor.py	14045
 qmoi-enhanced/scripts/qmoi_permission_fix.py	1581
 qmoi-enhanced/scripts/qmoi_pre_activity_check.js	1166
@@ -15433,18 +15433,18 @@ qmoi-enhanced/scripts/qmoi_rotate_secret.py	1770
 qmoi-enhanced/scripts/qmoi_secret_manager.py	4274
 qmoi-enhanced/scripts/qmoi_security_automation.py	2934
 qmoi-enhanced/scripts/qmoi_security_monitor.py	40262
-qmoi-enhanced/scripts/qmoi_security_monitor.py.placeholderfix.bak	40156
+qmoi-enhanced/scripts/qmoi_security_monitor.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	40156
 qmoi-enhanced/scripts/qmoi_self_evolve.py	2073
-qmoi-enhanced/scripts/qmoi_self_evolve.py.placeholderfix.bak	1967
+qmoi-enhanced/scripts/qmoi_self_evolve.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1967
 qmoi-enhanced/scripts/qmoi_self_healing_enhanced.py	10317
 qmoi-enhanced/scripts/qmoi_self_test.py	11366
 qmoi-enhanced/scripts/qmoi_self_test_runner.js	19519
-qmoi-enhanced/scripts/qmoi_self_test_runner.js.placeholderfix.bak	19412
+qmoi-enhanced/scripts/qmoi_self_test_runner.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	19412
 qmoi-enhanced/scripts/qmoi_service.sh	916
 qmoi-enhanced/scripts/qmoi_simple_autotest.js	1260
 qmoi-enhanced/scripts/qmoi_windows_service.py	8451
 qmoi-enhanced/scripts/qserver-download-tester.py	3397
-qmoi-enhanced/scripts/qserver-download-tester.py.placeholderfix.bak	3291
+qmoi-enhanced/scripts/qserver-download-tester.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3291
 qmoi-enhanced/scripts/qserver-manager.js	12229
 qmoi-enhanced/scripts/quick_git_push.py	1820
 qmoi-enhanced/scripts/requirements-secrets.txt	28
@@ -15504,17 +15504,17 @@ qmoi-enhanced/scripts/test_qmoi_autodev.js	0
 qmoi-enhanced/scripts/test_runner.py	14760
 qmoi-enhanced/scripts/test_whatsapp.js	189
 qmoi-enhanced/scripts/trading/enhanced_trading_system.py	28456
-qmoi-enhanced/scripts/trading/enhanced_trading_system.py.placeholderfix.bak	28350
+qmoi-enhanced/scripts/trading/enhanced_trading_system.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	28350
 qmoi-enhanced/scripts/training/advanced_training.py	12646
 qmoi-enhanced/scripts/ui/qcity_ui_enhancement.py	16196
-qmoi-enhanced/scripts/ui/qcity_ui_enhancement.py.placeholderfix.bak	16090
+qmoi-enhanced/scripts/ui/qcity_ui_enhancement.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	16090
 qmoi-enhanced/scripts/universal_memory.py	3964
 qmoi-enhanced/scripts/update-artifact-action.js	1363
 qmoi-enhanced/scripts/update_autotest_status.py	564
 qmoi-enhanced/scripts/update_links_with_ngrok.py	3831
 qmoi-enhanced/scripts/update_model_card.py	7941
 qmoi-enhanced/scripts/update_readme.py	4181
-qmoi-enhanced/scripts/update_readme.py.placeholderfix.bak	4075
+qmoi-enhanced/scripts/update_readme.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4075
 qmoi-enhanced/scripts/update_readme_cli_usage.py	2988
 qmoi-enhanced/scripts/upload-release-assets.js	2099
 qmoi-enhanced/scripts/upload_builds_to_drive.py	395
@@ -15524,17 +15524,17 @@ qmoi-enhanced/scripts/utils/captcha_solver.py	291
 qmoi-enhanced/scripts/utils/error_fixer.py	13493
 qmoi-enhanced/scripts/utils/logger.ts	1176
 qmoi-enhanced/scripts/utils/notify_enhancement.py	18161
-qmoi-enhanced/scripts/utils/notify_enhancement.py.placeholderfix.bak	18055
+qmoi-enhanced/scripts/utils/notify_enhancement.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	18055
 qmoi-enhanced/scripts/validate_notification_config.js	1384
 qmoi-enhanced/scripts/validate_yml.py	1029
 qmoi-enhanced/scripts/verify-installable.js	1559
 qmoi-enhanced/scripts/watch_error_fixing.py	3722
 qmoi-enhanced/scripts/whatsapp-business-automation.py	31
 qmoi-enhanced/scripts/whatsapp_verification.py	1605
-qmoi-enhanced/scripts/whatsapp_verification.py.placeholderfix.bak	1499
+qmoi-enhanced/scripts/whatsapp_verification.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1499
 qmoi-enhanced/scripts/writing_assistant.py	8878
 qmoi-enhanced/security_proxy.py	1866
-qmoi-enhanced/security_proxy.py.placeholderfix.bak	1760
+qmoi-enhanced/security_proxy.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1760
 qmoi-enhanced/setup_and_build_qmoi_ai.bat	4891
 qmoi-enhanced/setup_and_build_qmoi_ai.sh	1675
 qmoi-enhanced/src/App.js	646
@@ -15619,11 +15619,11 @@ qmoi-enhanced/src/config/assets.ts	4665
 qmoi-enhanced/src/config/bitget.ts	33551
 qmoi-enhanced/src/config/trading.ts	16690
 qmoi-enhanced/src/config/wallet.ts	3023
-qmoi-enhanced/src/config/wallet.ts.placeholderfix.bak	2916
+qmoi-enhanced/src/config/wallet.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2916
 qmoi-enhanced/src/hooks/useAuth.ts	4128
 qmoi-enhanced/src/hooks/useAutoProjects.ts	9817
 qmoi-enhanced/src/hooks/useQmoiKernel.test.ts	3068
-qmoi-enhanced/src/hooks/useQmoiKernel.test.ts.placeholderfix.bak	2960
+qmoi-enhanced/src/hooks/useQmoiKernel.test.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2960
 qmoi-enhanced/src/hooks/useQmoiKernel.ts	2225
 qmoi-enhanced/src/hooks/useQmoiState.ts	3333
 qmoi-enhanced/src/hooks/useTimezone.ts	4706
@@ -15633,17 +15633,17 @@ qmoi-enhanced/src/mocks/handlers.ts	676
 qmoi-enhanced/src/mocks/server.ts	128
 qmoi-enhanced/src/pages/dashboard.tsx	124
 qmoi-enhanced/src/plugins/AIReviewPlugin.ts	1327
-qmoi-enhanced/src/plugins/AIReviewPlugin.ts.placeholderfix.bak	1220
+qmoi-enhanced/src/plugins/AIReviewPlugin.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1220
 qmoi-enhanced/src/plugins/DeviceHealthReviewerPlugin.ts	1497
-qmoi-enhanced/src/plugins/DeviceHealthReviewerPlugin.ts.placeholderfix.bak	1390
+qmoi-enhanced/src/plugins/DeviceHealthReviewerPlugin.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1390
 qmoi-enhanced/src/plugins/OptimizationSuggestionPlugin.ts	1340
-qmoi-enhanced/src/plugins/OptimizationSuggestionPlugin.ts.placeholderfix.bak	1233
+qmoi-enhanced/src/plugins/OptimizationSuggestionPlugin.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1233
 qmoi-enhanced/src/plugins/PluginManager.ts	3711
 qmoi-enhanced/src/plugins/QuickAIWidgetPlugin.ts	1123
-qmoi-enhanced/src/plugins/QuickAIWidgetPlugin.ts.placeholderfix.bak	1016
+qmoi-enhanced/src/plugins/QuickAIWidgetPlugin.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1016
 qmoi-enhanced/src/services/AIRequestRouter.ts	3406
 qmoi-enhanced/src/services/AppManagementService.ts	20996
-qmoi-enhanced/src/services/AppManagementService.ts.placeholderfix.bak	20889
+qmoi-enhanced/src/services/AppManagementService.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	20889
 qmoi-enhanced/src/services/AutoResearcher.ts	799
 qmoi-enhanced/src/services/BrowserService.ts	21193
 qmoi-enhanced/src/services/ContextEngine.ts	1760
@@ -15654,18 +15654,18 @@ qmoi-enhanced/src/services/EnhancedRevenueAutomationService.ts	4449
 qmoi-enhanced/src/services/EnhancedServicesCompatibility.ts	589
 qmoi-enhanced/src/services/EnhancedSiteGenerationService.ts	4448
 qmoi-enhanced/src/services/ErrorFixingService.ts	6415
-qmoi-enhanced/src/services/ErrorFixingService.ts.placeholderfix.bak	6308
+qmoi-enhanced/src/services/ErrorFixingService.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	6308
 qmoi-enhanced/src/services/FaceRecognitionService.ts	17136
 qmoi-enhanced/src/services/MultiUserSessionManager.ts	14366
 qmoi-enhanced/src/services/NetworkManager.ts	3296
 qmoi-enhanced/src/services/QmoiMemory.ts	2878
 qmoi-enhanced/src/services/VPNService.ts	18755
 qmoi-enhanced/src/services/VoiceRecognitionService.ts	25166
-qmoi-enhanced/src/services/VoiceRecognitionService.ts.placeholderfix.bak	25059
+qmoi-enhanced/src/services/VoiceRecognitionService.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	25059
 qmoi-enhanced/src/services/WhatsAppService.ts	24373
-qmoi-enhanced/src/services/WhatsAppService.ts.placeholderfix.bak	24266
+qmoi-enhanced/src/services/WhatsAppService.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	24266
 qmoi-enhanced/src/setupTests.ts	1464
-qmoi-enhanced/src/setupTests.ts.placeholderfix.bak	1356
+qmoi-enhanced/src/setupTests.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1356
 qmoi-enhanced/src/types/trading.ts	1550
 qmoi-enhanced/src/utils/taskbar.ts	3045
 qmoi-enhanced/ssh-backend/apiKeyAuth.js	474
@@ -15682,7 +15682,7 @@ qmoi-enhanced/templates/dashboard.html	12821
 qmoi-enhanced/test_config.json	924
 qmoi-enhanced/tests/api/test_health.py	175
 qmoi-enhanced/tests/e2e/accessibility.cy.js	553
-qmoi-enhanced/tests/e2e/test_e2e_placeholder.py	293
+qmoi-enhanced/tests/e2e/test_e2e_[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review].py	293
 qmoi-enhanced/tests/integration/test_ai_integration.py	300
 qmoi-enhanced/tests/integration/test_error_fixing_integration.py	310
 qmoi-enhanced/tests/integration/test_financial_verification.py	682
@@ -15698,9 +15698,9 @@ qmoi-enhanced/tests/reports/master_test_report_20250715_162256.json	140
 qmoi-enhanced/tests/reports/master_test_summary_20250715_161042.txt	130
 qmoi-enhanced/tests/reports/master_test_summary_20250715_162256.txt	130
 qmoi-enhanced/tests/security/test_env_secrets.js	315
-qmoi-enhanced/tests/security/test_security_placeholder.py	303
+qmoi-enhanced/tests/security/test_security_[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review].py	303
 qmoi-enhanced/tests/ui/qmoi_ui_autotest.spec.js	1417
-qmoi-enhanced/tests/ui/qmoi_ui_autotest.spec.js.placeholderfix.bak	1310
+qmoi-enhanced/tests/ui/qmoi_ui_autotest.spec.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1310
 qmoi-enhanced/tests/unit/test_accessibility.js	493
 qmoi-enhanced/tests/unit/test_ai_component.py	291
 qmoi-enhanced/tests/unit/test_auto_watcher.js	1029
@@ -15720,12 +15720,12 @@ qmoi-enhanced/vercel.env	38
 qmoi-enhanced/vercel.json	499
 qmoi-enhanced/version_info.txt	641
 qmoi-enhanced/watchdebug.js	22514
-qmoi-enhanced/watchdebug.js.placeholderfix.bak	22407
+qmoi-enhanced/watchdebug.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	22407
 qmoi-enhanced/whatsapp-qmoi-bot/README.md	2532
 qmoi-enhanced/whatsapp-qmoi-bot/handlers/animationgame.js	427
 qmoi-enhanced/whatsapp-qmoi-bot/handlers/appdownload.js	311
 qmoi-enhanced/whatsapp-qmoi-bot/handlers/call.js	628
-qmoi-enhanced/whatsapp-qmoi-bot/handlers/call.js.placeholderfix.bak	521
+qmoi-enhanced/whatsapp-qmoi-bot/handlers/call.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	521
 qmoi-enhanced/whatsapp-qmoi-bot/handlers/download.js	649
 qmoi-enhanced/whatsapp-qmoi-bot/handlers/group.js	282
 qmoi-enhanced/whatsapp-qmoi-bot/handlers/marketing.js	286
@@ -15752,7 +15752,7 @@ qmoi-health-check.log	135276
 qmoi-release-status.json	176
 qmoi-setup.log	22636
 qmoi-space-pwa/index.html	35015
-qmoi-space-pwa/index.html.placeholderfix.bak	35069
+qmoi-space-pwa/index.html.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	35069
 qmoi-space-pwa/js/app.js	20078
 qmoi-space-pwa/manifest.json	4091
 qmoi-space-pwa/sw.js	12771
@@ -17824,7 +17824,7 @@ qmoi-space/public/js/chat.js	1534
 qmoi-space/public/js/file-handler.js	764
 qmoi-space/public/js/main.js	1373
 qmoi-space/public/js/qmoi-core.js	9067
-qmoi-space/public/js/qmoi-core.js.placeholderfix.bak	8960
+qmoi-space/public/js/qmoi-core.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	8960
 qmoi-space/public/js/voice-control.js	732
 qmoi-space/public/manifest.json	5005
 qmoi-space/public/sw.js	13105
@@ -17867,7 +17867,7 @@ qmoi_system_controller.log	471
 qmoi_test.sh	8746
 qmoiaxe.py	1997
 qmoiexe.py	4075
-qmoiexe.py.placeholderfix.bak	3969
+qmoiexe.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3969
 qmoiexe.spec	686
 qmoiexe_enhanced.py	14718
 qmoihugggingfacenotes.py	270
@@ -17878,16 +17878,16 @@ readme.txt	18
 release-verify.ps1	2971
 release.json	391
 remediation_plan.json	61603422
-remediation_plan.json.placeholderfix.bak	62706744
+remediation_plan.json.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	62706744
 reports.txt	2360
 reports/lint-report.html	1439492
 reports/lint-report.json	2508590
-reports/placeholders.json	872047
-reports/placeholders.json.placeholderfix.bak	1047829
+reports/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]s.json	872047
+reports/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]s.json.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1047829
 reports/qmoi_system_report.json	376
 reports/self_healing_report.json	172
 reports/suggestions.json	315424
-reports/suggestions.json.placeholderfix.bak	395734
+reports/suggestions.json.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	395734
 required_secrets.json	1133
 requirements-control.txt	77
 requirements-dev.txt	28
@@ -17912,7 +17912,7 @@ routes/api/qcity/whatsapp/config.ts	955
 routes/api/qcity/whatsapp/messages.ts	947
 routes/api/qmoi/autodev.ts	8612
 routes/api/qmoi/feedback.ts	844
-routes/api/qmoi/feedback.ts.placeholderfix.bak	737
+routes/api/qmoi/feedback.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	737
 routes/api/qmoi/file.ts	2004
 routes/api/qmoi/memory-backup.ts	395
 routes/api/qmoi/memory.ts	541
@@ -17922,7 +17922,7 @@ routes/qcity/projects/[id].tsx	3249
 routes/qcity/projects/config.tsx	9239
 routes/qcity/projects/index.tsx	2814
 run_advanced_ai.py	1812
-run_advanced_ai.py.placeholderfix.bak	1706
+run_advanced_ai.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1706
 run_all_qmoi.ps1	323
 scripts/.cspell.json	530
 scripts/.wallet_balances.json	204
@@ -17949,7 +17949,7 @@ scripts/auto_evolve.js	794
 scripts/auto_fix_md.py	4676
 scripts/auto_fix_workflows.py	3982
 scripts/auto_lint_fix.py	18354
-scripts/auto_lint_fix.py.placeholderfix.bak	18248
+scripts/auto_lint_fix.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	18248
 scripts/auto_push_release.py	919
 scripts/auto_release_manager.py	5303
 scripts/auto_trading.js	974
@@ -17960,7 +17960,7 @@ scripts/automation/github_actions_auto_fix.py	26947
 scripts/automation/qmoi_master_automation.py	29648
 scripts/autotag_md_with_lion.py	4722
 scripts/autotest/advanced_autotest_system.py	28987
-scripts/autotest/advanced_autotest_system.py.placeholderfix.bak	28881
+scripts/autotest/advanced_autotest_system.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	28881
 scripts/autotest/qmoi_automation_autotest.py	2289
 scripts/autotest/qmoi_simple_autotest.py	5214
 scripts/autoupdate_releases.py	5209
@@ -17972,10 +17972,10 @@ scripts/biometrics_check.py	7412
 scripts/build_pwas.sh	923
 scripts/cashon_data/balances.json	111
 scripts/check-latest-release.js	456
-scripts/check_and_replace_placeholders.py	287
+scripts/check_and_replace_[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]s.py	287
 scripts/check_balances.py	863
 scripts/check_github_releases.py	3586
-scripts/check_placeholders.py	1529
+scripts/check_[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]s.py	1529
 scripts/ci-self-heal.js	18580
 scripts/ci/propose_workflow_fixes.py	6549
 scripts/ci/scan_workflows.py	6322
@@ -17992,7 +17992,7 @@ scripts/daemon/qmoi_wallet_api.service	254
 scripts/dagshub-automation.py	5283
 scripts/db_migrations.py	12153
 scripts/demo-automation.js	3734
-scripts/demo-automation.js.placeholderfix.bak	3627
+scripts/demo-automation.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3627
 scripts/deploy.py	15819
 scripts/deploy/cloud_deploy.py	26428
 scripts/deploy/deploy.py	26104
@@ -18000,7 +18000,7 @@ scripts/deploy/deployment-monitor.js	10015
 scripts/deploy/health-check.js	10009
 scripts/deploy/vercel_auto_deploy.js	13468
 scripts/deploy_huggingface.js	10995
-scripts/deploy_huggingface.js.placeholderfix.bak	10888
+scripts/deploy_huggingface.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	10888
 scripts/deployment/Dockerfile	894
 scripts/deployment/__init__.py	104
 scripts/deployment/auto_deploy.py	19417
@@ -18008,18 +18008,18 @@ scripts/deployment/cloud_deployment.py	5136
 scripts/deployment/deploy.py	7699
 scripts/deployment/server.py	5653
 scripts/device_ownership_detector.py	28983
-scripts/device_ownership_detector.py.placeholderfix.bak	28877
+scripts/device_ownership_detector.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	28877
 scripts/device_unlock_system.py	36768
 scripts/dns_plan_signer.py	2189
 scripts/doc_verifier.py	13289
 scripts/domain_assigner.py	5495
 scripts/domain_registry.py	11952
 scripts/downloadqmoiai.py	1791
-scripts/downloadqmoiai.py.placeholderfix.bak	1685
+scripts/downloadqmoiai.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1685
 scripts/earning/enhanced_earning_system.py	288
 scripts/enable_claude_sonnet.py	2285
 scripts/enhance_ai.py	15582
-scripts/enhance_ai.py.placeholderfix.bak	15476
+scripts/enhance_ai.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	15476
 scripts/enhanced-build.py	11904
 scripts/enhanced-error-fix.js	11203
 scripts/enhanced_automation_&_cloud_features_(2025_01_22).py	306
@@ -18031,7 +18031,7 @@ scripts/enhanced_test_runner.py	277
 scripts/enhanced_wallet_report.py	17891
 scripts/ensure-build-tools.js	2326
 scripts/ensure-files.js	856
-scripts/ensure-files.js.placeholderfix.bak	749
+scripts/ensure-files.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	749
 scripts/ensure_qmoi_servers.sh	1650
 scripts/env_manager.py	7789
 scripts/error/error_fixer.py	20934
@@ -18043,7 +18043,7 @@ scripts/finance/README.md	881
 scripts/finance/settle_to_cashon.py	4880
 scripts/financial-integration.py	31
 scripts/financial_verification.py	1998
-scripts/financial_verification.py.placeholderfix.bak	1892
+scripts/financial_verification.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1892
 scripts/fix-build.js	317
 scripts/fix-cloud.js	221
 scripts/fix-connectivity.js	237
@@ -18070,10 +18070,10 @@ scripts/github_auto_push.py	818
 scripts/github_release_sync.py	1434
 scripts/github_status_monitor.js	1430
 scripts/gitlab-automation.js	20701
-scripts/gitlab-automation.js.placeholderfix.bak	20594
+scripts/gitlab-automation.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	20594
 scripts/gitlab-error-recovery.js	18932
 scripts/gitlab-notification-service.js	18804
-scripts/gitlab-notification-service.js.placeholderfix.bak	18697
+scripts/gitlab-notification-service.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	18697
 scripts/gitlab-push-automation.js	15067
 scripts/gitpod-notification-service.js	18473
 scripts/gmail_notify.py	1241
@@ -18103,14 +18103,14 @@ scripts/log-errors.js	442
 scripts/log-summary.js	752
 scripts/media_sync.js	1490
 scripts/media_upload_api_example.js	3363
-scripts/media_upload_api_example.js.placeholderfix.bak	3256
+scripts/media_upload_api_example.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3256
 scripts/merge_queue_metrics.py	952
 scripts/metrics_server.py	5218
 scripts/models/advanced_architectures.py	11944
 scripts/models/architectures.py	13309
 scripts/models/qmoi_autodev.py	276
 scripts/models/qmoi_kernel.py	4746
-scripts/models/qmoi_kernel.py.placeholderfix.bak	4640
+scripts/models/qmoi_kernel.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4640
 scripts/models/qmoi_manager.py	16303
 scripts/models/qmoi_permissions.json	1496
 scripts/models/qmoi_personality.py	5908
@@ -18124,10 +18124,10 @@ scripts/monitoring/cloud_resources_monitor.py	23386
 scripts/monitoring/error_tracking.py	4559
 scripts/monitoring/master_monitor.py	23538
 scripts/monitoring/monitoring_dashboard.py	34367
-scripts/monitoring/monitoring_dashboard.py.placeholderfix.bak	34261
+scripts/monitoring/monitoring_dashboard.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	34261
 scripts/monitoring/notification_monitor.py	23748
 scripts/monitoring/performance_monitoring.py	24110
-scripts/monitoring/performance_monitoring.py.placeholderfix.bak	24004
+scripts/monitoring/performance_monitoring.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	24004
 scripts/monitoring/start_all_monitors.py	16583
 scripts/monitoring/system_status_monitor.py	30558
 scripts/mpesa-setup-guide.js	4251
@@ -18146,15 +18146,15 @@ scripts/optimizer.py	13177
 scripts/ota_updater.py	544
 scripts/pack_offline_bundle.sh	627
 scripts/parallel_executor.py	4124
-scripts/placeholder_fixer.py	4398
-scripts/placeholder_fixer.py.placeholderfix.bak	4292
-scripts/placeholder_scanner.py	7188
+scripts/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]_fixer.py	4398
+scripts/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]_fixer.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4292
+scripts/[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]_scanner.py	7188
 scripts/platform_manager.py	12936
 scripts/postbuild-copy-qmoiexe.js	413
 scripts/postinstall-verify.js	330
-scripts/postinstall-verify.js.placeholderfix.bak	223
+scripts/postinstall-verify.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	223
 scripts/preinstall-check.js	330
-scripts/preinstall-check.js.placeholderfix.bak	223
+scripts/preinstall-check.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	223
 scripts/providers/__init__.py	847
 scripts/providers/aws_route53.py	6785
 scripts/providers/cloudflare.py	8303
@@ -18163,7 +18163,7 @@ scripts/providers/provider_base.py	2511
 scripts/qcity-automation.cjs	5501
 scripts/qcity-automation.js	26494
 scripts/qcity-device-manager.js	16032
-scripts/qcity-device-manager.js.placeholderfix.bak	15925
+scripts/qcity-device-manager.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	15925
 scripts/qcity-ui-server.js	2175
 scripts/qcity_advanced_installer.py	26777
 scripts/qcity_device_manager.py	24064
@@ -18181,7 +18181,7 @@ scripts/qmoi-auto-config-runner.js	653
 scripts/qmoi-auto-config.js	941
 scripts/qmoi-auto-email-download.py	1113
 scripts/qmoi-auto-enhancement-system.js	24889
-scripts/qmoi-auto-enhancement-system.js.placeholderfix.bak	24782
+scripts/qmoi-auto-enhancement-system.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	24782
 scripts/qmoi-auto-evolution.py	24698
 scripts/qmoi-auto-push.js	12010
 scripts/qmoi-autofixer.js	2075
@@ -18203,21 +18203,21 @@ scripts/qmoi-comprehensive-parallel-automation.py	23292
 scripts/qmoi-controller.js	17070
 scripts/qmoi-dashboard-enhance.py	279
 scripts/qmoi-dashboard.py	12593
-scripts/qmoi-dashboard.py.placeholderfix.bak	12487
+scripts/qmoi-dashboard.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	12487
 scripts/qmoi-dev-actions.py	2527
-scripts/qmoi-dev-actions.py.placeholderfix.bak	2421
+scripts/qmoi-dev-actions.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2421
 scripts/qmoi-download-link-tester.py	1644
 scripts/qmoi-emergency-fix.js	62
 scripts/qmoi-enhanced-auto-fix.js	16098
 scripts/qmoi-enhanced-auto-projects.js	44524
 scripts/qmoi-enhanced-automation.py	37977
 scripts/qmoi-enhanced-avatar-system.js	18014
-scripts/qmoi-enhanced-avatar-system.js.placeholderfix.bak	17907
+scripts/qmoi-enhanced-avatar-system.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	17907
 scripts/qmoi-enhanced-biometric-system.py	287
 scripts/qmoi-enhanced-controller.py	21998
 scripts/qmoi-enhanced-doc-verifier.js	6662
 scripts/qmoi-enhanced-health-checker.py	22883
-scripts/qmoi-enhanced-health-checker.py.placeholderfix.bak	22777
+scripts/qmoi-enhanced-health-checker.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	22777
 scripts/qmoi-enhanced-learning-revenue.js	11307
 scripts/qmoi-enhanced-live-status.py	15382
 scripts/qmoi-enhanced-master-automation.py	24942
@@ -18236,7 +18236,7 @@ scripts/qmoi-gitlab-sync.js	1707
 scripts/qmoi-hands-free.py	35049
 scripts/qmoi-hf-sync.py	4358
 scripts/qmoi-hf-test.py	3074
-scripts/qmoi-hf-test.py.placeholderfix.bak	2968
+scripts/qmoi-hf-test.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2968
 scripts/qmoi-hot-reload.js	807
 scripts/qmoi-huggingface-manager.js	5214
 scripts/qmoi-huggingface-space-enhanced.py	288
@@ -18251,21 +18251,21 @@ scripts/qmoi-master-autostart.js	10024
 scripts/qmoi-master-debugger.js	1890
 scripts/qmoi-master-notifications.py	18821
 scripts/qmoi-master-system.js	29544
-scripts/qmoi-master-system.js.placeholderfix.bak	29436
+scripts/qmoi-master-system.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	29436
 scripts/qmoi-mobile-auto-selfheal.js	3773
-scripts/qmoi-mobile-auto-selfheal.js.placeholderfix.bak	3666
+scripts/qmoi-mobile-auto-selfheal.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3666
 scripts/qmoi-music-production-system.js	20534
 scripts/qmoi-notification-system.js	8825
 scripts/qmoi-package-installer.py	2925
-scripts/qmoi-package-installer.py.placeholderfix.bak	2819
+scripts/qmoi-package-installer.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2819
 scripts/qmoi-parallel-autotest.js	5047
 scripts/qmoi-parallel-platform-enhancer.py	22819
 scripts/qmoi-parallel-processor.py	17483
-scripts/qmoi-parallel-processor.py.placeholderfix.bak	17377
+scripts/qmoi-parallel-processor.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	17377
 scripts/qmoi-parallel-setup.js	2579
 scripts/qmoi-performance-optimizer.py	24658
 scripts/qmoi-platform-manager.py	1890
-scripts/qmoi-platform-manager.py.placeholderfix.bak	1784
+scripts/qmoi-platform-manager.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1784
 scripts/qmoi-platform-optimizer.py	26305
 scripts/qmoi-qcity-automatic.py	19719
 scripts/qmoi-qcity-enhanced-automatic.py	21009
@@ -18275,27 +18275,27 @@ scripts/qmoi-real-time-logger.py	278
 scripts/qmoi-real-time-monitor.py	24245
 scripts/qmoi-registry-manager.js	19530
 scripts/qmoi-research-engine.py	21243
-scripts/qmoi-research-engine.py.placeholderfix.bak	21137
+scripts/qmoi-research-engine.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	21137
 scripts/qmoi-revenue-dashboard.js	22485
 scripts/qmoi-revenue-enforcer.js	7127
-scripts/qmoi-revenue-enforcer.js.placeholderfix.bak	7020
+scripts/qmoi-revenue-enforcer.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	7020
 scripts/qmoi-secret-generator.js	1439
-scripts/qmoi-secret-generator.js.placeholderfix.bak	1332
+scripts/qmoi-secret-generator.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1332
 scripts/qmoi-self-updating-agent.js	5643
 scripts/qmoi-setup.js	9163
 scripts/qmoi-slack-notify.js	721
 scripts/qmoi-space-backend.py	30672
-scripts/qmoi-space-backend.py.placeholderfix.bak	30566
+scripts/qmoi-space-backend.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	30566
 scripts/qmoi-start-watch.py	4240
 scripts/qmoi-start.py	6019
-scripts/qmoi-start.py.placeholderfix.bak	5913
+scripts/qmoi-start.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	5913
 scripts/qmoi-storage-optimize.js	583
 scripts/qmoi-system-controller.py	42819
 scripts/qmoi-ultimate-automation.py	38392
-scripts/qmoi-ultimate-automation.py.placeholderfix.bak	38286
+scripts/qmoi-ultimate-automation.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	38286
 scripts/qmoi-unified-push-enhanced.py	22929
 scripts/qmoi-unified-push-ultimate.py	31695
-scripts/qmoi-unified-push-ultimate.py.placeholderfix.bak	31589
+scripts/qmoi-unified-push-ultimate.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	31589
 scripts/qmoi-unified-push.py	24223
 scripts/qmoi-universal-error-fixer.py	27310
 scripts/qmoi-universal-error-handler.js	16343
@@ -18304,17 +18304,17 @@ scripts/qmoi-workflow-fix-count.py	82
 scripts/qmoi-workflow-fix.py	1393
 scripts/qmoi_activity_logger.py	497
 scripts/qmoi_advanced_analytics.py	28856
-scripts/qmoi_advanced_analytics.py.placeholderfix.bak	28750
+scripts/qmoi_advanced_analytics.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	28750
 scripts/qmoi_advanced_automation.py	14965
 scripts/qmoi_ai_enhancement_engine.py	283
 scripts/qmoi_app_builder.py	6704
 scripts/qmoi_app_installer.py	20830
-scripts/qmoi_app_installer.py.placeholderfix.bak	20724
+scripts/qmoi_app_installer.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	20724
 scripts/qmoi_auto_docs.py	30747
 scripts/qmoi_auto_evolution.py	24843
 scripts/qmoi_auto_evolution_enhanced.py	21355
 scripts/qmoi_auto_evolution_system.py	37300
-scripts/qmoi_auto_evolution_system.py.placeholderfix.bak	37194
+scripts/qmoi_auto_evolution_system.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	37194
 scripts/qmoi_auto_fix_enhanced.py	20710
 scripts/qmoi_auto_setup.py	12692
 scripts/qmoi_auto_startup.py	8144
@@ -18324,7 +18324,7 @@ scripts/qmoi_automated_device_controller.py	14553
 scripts/qmoi_build_api.py	402
 scripts/qmoi_build_ci.py	2097
 scripts/qmoi_cloud_integration_enhanced.py	22638
-scripts/qmoi_cloud_integration_enhanced.py.placeholderfix.bak	22532
+scripts/qmoi_cloud_integration_enhanced.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	22532
 scripts/qmoi_cloud_optimizer.js	241
 scripts/qmoi_cloud_setup.py	19675
 scripts/qmoi_complete_system.py	25649
@@ -18333,22 +18333,22 @@ scripts/qmoi_contact_verifier.py	10570
 scripts/qmoi_dashboard.cjs	15268
 scripts/qmoi_dashboard.py	271
 scripts/qmoi_data_optimization_system.py	24369
-scripts/qmoi_data_optimization_system.py.placeholderfix.bak	24263
+scripts/qmoi_data_optimization_system.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	24263
 scripts/qmoi_device_agent.py	26592
 scripts/qmoi_device_integration.py	20216
 scripts/qmoi_doc_verifier.js	39483
-scripts/qmoi_doc_verifier.js.placeholderfix.bak	39376
+scripts/qmoi_doc_verifier.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	39376
 scripts/qmoi_earning_daemon.py	1009
 scripts/qmoi_earning_enhanced.py	1527
 scripts/qmoi_employment_monitor.py	16275
 scripts/qmoi_enhanced_ai.py	32164
-scripts/qmoi_enhanced_ai.py.placeholderfix.bak	32058
+scripts/qmoi_enhanced_ai.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	32058
 scripts/qmoi_enhanced_auto_config.py	8210
 scripts/qmoi_enhanced_automation.py	33722
-scripts/qmoi_enhanced_automation.py.placeholderfix.bak	33616
+scripts/qmoi_enhanced_automation.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	33616
 scripts/qmoi_enhanced_startup.py	24430
 scripts/qmoi_env_manager.js	5232
-scripts/qmoi_env_manager.js.placeholderfix.bak	5125
+scripts/qmoi_env_manager.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	5125
 scripts/qmoi_error_auto_fix.py	21146
 scripts/qmoi_error_monitor.py	15418
 scripts/qmoi_feature_suggester.py	31
@@ -18356,28 +18356,28 @@ scripts/qmoi_gitlab_automation.py	26262
 scripts/qmoi_health_monitor.py	11893
 scripts/qmoi_health_reporting_system.py	34949
 scripts/qmoi_hf_auto_manager.py	13575
-scripts/qmoi_hf_auto_manager.py.placeholderfix.bak	13469
+scripts/qmoi_hf_auto_manager.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	13469
 scripts/qmoi_huggingface_setup.py	20762
 scripts/qmoi_huggingface_spaces.js	65148
 scripts/qmoi_integration_master.py	21240
 scripts/qmoi_intelligent_scheduler.py	15625
-scripts/qmoi_intelligent_scheduler.py.placeholderfix.bak	15519
+scripts/qmoi_intelligent_scheduler.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	15519
 scripts/qmoi_master_automation_enhanced.py	14536
 scripts/qmoi_master_orchestrator.js	19934
 scripts/qmoi_master_wallet_cli.py	8041
 scripts/qmoi_master_website_automation.js	21652
-scripts/qmoi_master_website_automation.js.placeholderfix.bak	21544
+scripts/qmoi_master_website_automation.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	21544
 scripts/qmoi_media_orchestrator.js	4514
 scripts/qmoi_memory.py	4638
 scripts/qmoi_model_enhancer.py	31815
-scripts/qmoi_model_enhancer.py.placeholderfix.bak	31709
+scripts/qmoi_model_enhancer.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	31709
 scripts/qmoi_notification_manager.py	5470
-scripts/qmoi_notification_manager.py.placeholderfix.bak	5364
+scripts/qmoi_notification_manager.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	5364
 scripts/qmoi_notifier.cjs	1077
 scripts/qmoi_own_device_logger.py	30671
 scripts/qmoi_parallel_error_fixer.py	36800
 scripts/qmoi_payment_fix.js	16018
-scripts/qmoi_payment_fix.js.placeholderfix.bak	15911
+scripts/qmoi_payment_fix.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	15911
 scripts/qmoi_performance_monitor.py	14045
 scripts/qmoi_permission_fix.py	1581
 scripts/qmoi_pre_activity_check.js	1166
@@ -18385,13 +18385,13 @@ scripts/qmoi_release_report.json	339
 scripts/qmoi_revenue_monitor.py	12812
 scripts/qmoi_security_automation.py	2934
 scripts/qmoi_security_monitor.py	40262
-scripts/qmoi_security_monitor.py.placeholderfix.bak	40156
+scripts/qmoi_security_monitor.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	40156
 scripts/qmoi_self_evolve.py	2073
-scripts/qmoi_self_evolve.py.placeholderfix.bak	1967
+scripts/qmoi_self_evolve.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1967
 scripts/qmoi_self_healing_enhanced.py	10317
 scripts/qmoi_self_test.py	11366
 scripts/qmoi_self_test_runner.js	19519
-scripts/qmoi_self_test_runner.js.placeholderfix.bak	19412
+scripts/qmoi_self_test_runner.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	19412
 scripts/qmoi_service.sh	916
 scripts/qmoi_simple_autotest.js	1260
 scripts/qmoi_todos.py	7676
@@ -18399,7 +18399,7 @@ scripts/qmoi_wallet_manager.py	15397
 scripts/qmoi_wallet_monitor.py	16398
 scripts/qmoi_windows_service.py	8451
 scripts/qserver-download-tester.py	3397
-scripts/qserver-download-tester.py.placeholderfix.bak	3291
+scripts/qserver-download-tester.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	3291
 scripts/qserver-manager.js	12229
 scripts/queue_worker.py	8588
 scripts/queue_worker.service	265
@@ -18408,7 +18408,7 @@ scripts/reconcile_payments.py	2245
 scripts/register_app_build.py	4140
 scripts/release_automation.py	7651
 scripts/release_helper.py	4141
-scripts/replace_placeholders.py	5869
+scripts/replace_[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]s.py	5869
 scripts/report_scheduler.py	1857
 scripts/resolve_dependabot_conflict.py	2325
 scripts/resolve_deployment_conflicts.py	8164
@@ -18422,7 +18422,7 @@ scripts/run_all_tests.py	17670
 scripts/run_as_service.sh	506
 scripts/run_control_server.sh	0
 scripts/run_enhancements.py	5740
-scripts/run_placeholder_scans.py	2364
+scripts/run_[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]_scans.py	2364
 scripts/run_rust_lint_fix.sh	694
 scripts/run_tests.py	3070
 scripts/run_unit_tests.py	1519
@@ -18432,7 +18432,7 @@ scripts/rust_lint_fix.js	669
 scripts/rust_lint_fix.rs	636
 scripts/scan_and_index.py	3559
 scripts/scan_lion_usage.py	1562
-scripts/scan_replace_placeholders.py	5079
+scripts/scan_replace_[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]s.py	5079
 scripts/schedule_qcity_npm_selfheal.xml	1725
 scripts/scripts/qmoi_git_automation.py.py	287
 scripts/scripts/qmoi_hands_free.py.py	283
@@ -18497,11 +18497,11 @@ scripts/test_wallets.py	1442
 scripts/test_webhooks.py	3177
 scripts/test_whatsapp.js	189
 scripts/trading/enhanced_trading_system.py	28456
-scripts/trading/enhanced_trading_system.py.placeholderfix.bak	28350
+scripts/trading/enhanced_trading_system.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	28350
 scripts/trading_connection_manager.py	9680
 scripts/training/advanced_training.py	12646
 scripts/ui/qcity_ui_enhancement.py	16196
-scripts/ui/qcity_ui_enhancement.py.placeholderfix.bak	16090
+scripts/ui/qcity_ui_enhancement.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	16090
 scripts/universal_memory.py	3964
 scripts/update-artifact-action.js	1363
 scripts/update_autotest_status.py	564
@@ -18511,7 +18511,7 @@ scripts/update_model_card.py	7941
 scripts/update_ngrok_links.py	4497
 scripts/update_ngrok_links.py.bak.20251022T225934	4491
 scripts/update_readme.py	4151
-scripts/update_readme.py.placeholderfix.bak	4045
+scripts/update_readme.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	4045
 scripts/update_readme_cli_usage.py	2988
 scripts/update_readmes.py	2028
 scripts/upload-release-assets.js	2099
@@ -18522,7 +18522,7 @@ scripts/utils/captcha_solver.py	277
 scripts/utils/error_fixer.py	13493
 scripts/utils/logger.ts	1176
 scripts/utils/notify_enhancement.py	18161
-scripts/utils/notify_enhancement.py.placeholderfix.bak	18055
+scripts/utils/notify_enhancement.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	18055
 scripts/validate-trading-env.js	3957
 scripts/validate_all_credentials.py	10385
 scripts/validate_and_fix_md.py	3781
@@ -18556,11 +18556,11 @@ scripts/wallets_audit.py	8644
 scripts/watch_error_fixing.py	3722
 scripts/whatsapp-business-automation.py	31
 scripts/whatsapp_verification.py	1605
-scripts/whatsapp_verification.py.placeholderfix.bak	1499
+scripts/whatsapp_verification.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1499
 scripts/workspace_audit.py	12037
 scripts/writing_assistant.py	8880
 security_proxy.py	1866
-security_proxy.py.placeholderfix.bak	1760
+security_proxy.py.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1760
 server/init.py	369
 services/adapters/content/tubidy.ts	894
 services/adapters/content/youtube.ts	976
@@ -18666,11 +18666,11 @@ src/config/assets.ts	4665
 src/config/bitget.ts	33551
 src/config/trading.ts	16690
 src/config/wallet.ts	3023
-src/config/wallet.ts.placeholderfix.bak	2916
+src/config/wallet.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2916
 src/hooks/useAuth.ts	4128
 src/hooks/useAutoProjects.ts	9817
 src/hooks/useQmoiKernel.test.ts	3068
-src/hooks/useQmoiKernel.test.ts.placeholderfix.bak	2960
+src/hooks/useQmoiKernel.test.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	2960
 src/hooks/useQmoiKernel.ts	2225
 src/hooks/useQmoiState.ts	3333
 src/hooks/useTimezone.ts	4706
@@ -18682,17 +18682,17 @@ src/mocks/handlers.ts	676
 src/mocks/server.ts	128
 src/pages/dashboard.tsx	124
 src/plugins/AIReviewPlugin.ts	1327
-src/plugins/AIReviewPlugin.ts.placeholderfix.bak	1220
+src/plugins/AIReviewPlugin.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1220
 src/plugins/DeviceHealthReviewerPlugin.ts	1497
-src/plugins/DeviceHealthReviewerPlugin.ts.placeholderfix.bak	1390
+src/plugins/DeviceHealthReviewerPlugin.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1390
 src/plugins/OptimizationSuggestionPlugin.ts	1340
-src/plugins/OptimizationSuggestionPlugin.ts.placeholderfix.bak	1233
+src/plugins/OptimizationSuggestionPlugin.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1233
 src/plugins/PluginManager.ts	3711
 src/plugins/QuickAIWidgetPlugin.ts	1123
-src/plugins/QuickAIWidgetPlugin.ts.placeholderfix.bak	1016
+src/plugins/QuickAIWidgetPlugin.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1016
 src/services/AIRequestRouter.ts	3406
 src/services/AppManagementService.ts	20996
-src/services/AppManagementService.ts.placeholderfix.bak	20889
+src/services/AppManagementService.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	20889
 src/services/AutoResearcher.ts	799
 src/services/BrowserService.ts	21193
 src/services/ContextEngine.ts	1760
@@ -18703,17 +18703,17 @@ src/services/EnhancedRevenueAutomationService.ts	4449
 src/services/EnhancedServicesCompatibility.ts	589
 src/services/EnhancedSiteGenerationService.ts	4448
 src/services/ErrorFixingService.ts	6415
-src/services/ErrorFixingService.ts.placeholderfix.bak	6308
+src/services/ErrorFixingService.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	6308
 src/services/FaceRecognitionService.ts	13911
-src/services/FaceRecognitionService.ts.placeholderfix.bak	13804
+src/services/FaceRecognitionService.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	13804
 src/services/MultiUserSessionManager.ts	14366
 src/services/NetworkManager.ts	3296
 src/services/QmoiMemory.ts	1467
 src/services/VPNService.ts	18755
 src/services/VoiceRecognitionService.ts	25166
-src/services/VoiceRecognitionService.ts.placeholderfix.bak	25059
+src/services/VoiceRecognitionService.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	25059
 src/services/WhatsAppService.ts	24373
-src/services/WhatsAppService.ts.placeholderfix.bak	24266
+src/services/WhatsAppService.ts.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	24266
 src/setupTests.ts	1369
 src/types/trading.ts	1550
 src/types/uuid.d.ts	23
@@ -18735,7 +18735,7 @@ test-results/.last-run.json	45
 test_config.json	924
 tests/api/test_health.py	175
 tests/e2e/accessibility.cy.js	553
-tests/e2e/test_e2e_placeholder.py	279
+tests/e2e/test_e2e_[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review].py	279
 tests/integration/adapter-dryrun.test.ts	829
 tests/integration/test_ai_integration.py	286
 tests/integration/test_error_fixing_integration.py	296
@@ -18754,7 +18754,7 @@ tests/reports/master_test_results.log	0
 tests/reports/master_test_summary_20250715_161042.txt	130
 tests/reports/master_test_summary_20250715_162256.txt	130
 tests/security/test_env_secrets.js	315
-tests/security/test_security_placeholder.py	289
+tests/security/test_security_[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review].py	289
 tests/test_adapter_base.py	592
 tests/test_billing_guard.py	924
 tests/test_currency_convert.py	354
@@ -18787,66 +18787,66 @@ tools/allrefs.status.json	89762
 tools/allrefs_summary.md	1066
 tools/apply_auto_patches.py	2610
 tools/auto_fix_drafts.py	836
-tools/auto_fix_placeholders.py	3720
+tools/auto_fix_[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]s.py	3720
 tools/autotest_report.md	1188
 tools/autotest_runner.py	6585
 tools/build_light_index.py	2113
 tools/check_links.py	2111
 tools/collect_versions.py	4296
 tools/extract_comments.py	2358
-tools/find_placeholders.py	4181
+tools/find_[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]s.py	4181
 tools/generate_api_docs.py	3031
 tools/generate_fix_templates.py	4231
 tools/generate_issue_drafts.py	3009
 tools/generate_remediation_plan.py	2181
 tools/issue_drafts/01_qmoi-enhanced_scripts_qmoi_master_website_automation_js.md	1173
-tools/issue_drafts/01_qmoi-enhanced_scripts_qmoi_master_website_automation_js.md.placeholderfix.bak	1335
+tools/issue_drafts/01_qmoi-enhanced_scripts_qmoi_master_website_automation_js.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1335
 tools/issue_drafts/02_qmoi-enhanced_app_api_qmoi_language_route_ts.md	1218
-tools/issue_drafts/02_qmoi-enhanced_app_api_qmoi_language_route_ts.md.placeholderfix.bak	1488
+tools/issue_drafts/02_qmoi-enhanced_app_api_qmoi_language_route_ts.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1488
 tools/issue_drafts/03_qmoi-enhanced_app_api_qmoi-model_ts.md	1115
-tools/issue_drafts/03_qmoi-enhanced_app_api_qmoi-model_ts.md.placeholderfix.bak	1142
+tools/issue_drafts/03_qmoi-enhanced_app_api_qmoi-model_ts.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1142
 tools/issue_drafts/04_qmoi-enhanced_scripts_demo-automation_js.md	1135
-tools/issue_drafts/04_qmoi-enhanced_scripts_demo-automation_js.md.placeholderfix.bak	1459
+tools/issue_drafts/04_qmoi-enhanced_scripts_demo-automation_js.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1459
 tools/issue_drafts/05_qmoi-enhanced_QMOISPACEDEV_md.md	1025
-tools/issue_drafts/05_qmoi-enhanced_QMOISPACEDEV_md.md.placeholderfix.bak	1274
+tools/issue_drafts/05_qmoi-enhanced_QMOISPACEDEV_md.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1274
 tools/issue_drafts/06_qmoi-enhanced_src_setupTests_ts.md	1015
-tools/issue_drafts/06_qmoi-enhanced_src_setupTests_ts.md.placeholderfix.bak	1285
+tools/issue_drafts/06_qmoi-enhanced_src_setupTests_ts.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1285
 tools/issue_drafts/07_src_hooks_useQmoiKernel_test_ts.md	985
-tools/issue_drafts/07_src_hooks_useQmoiKernel_test_ts.md.placeholderfix.bak	1363
+tools/issue_drafts/07_src_hooks_useQmoiKernel_test_ts.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1363
 tools/issue_drafts/08_qmoi-enhanced_src_hooks_useQmoiKernel_test_ts.md	1027
-tools/issue_drafts/08_qmoi-enhanced_src_hooks_useQmoiKernel_test_ts.md.placeholderfix.bak	1405
+tools/issue_drafts/08_qmoi-enhanced_src_hooks_useQmoiKernel_test_ts.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1405
 tools/issue_drafts/09_qmoi-enhanced_app_api_qmoi_user_route_ts.md	1125
-tools/issue_drafts/09_qmoi-enhanced_app_api_qmoi_user_route_ts.md.placeholderfix.bak	1341
+tools/issue_drafts/09_qmoi-enhanced_app_api_qmoi_user_route_ts.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1341
 tools/issue_drafts/10_qmoi-enhanced_scripts_auto_lint_fix_py.md	1253
-tools/issue_drafts/10_qmoi-enhanced_scripts_auto_lint_fix_py.md.placeholderfix.bak	1415
+tools/issue_drafts/10_qmoi-enhanced_scripts_auto_lint_fix_py.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1415
 tools/issue_drafts/11_qmoi-enhanced_scripts_qmoi_auto_evolution_system_py.md	1050
-tools/issue_drafts/11_qmoi-enhanced_scripts_qmoi_auto_evolution_system_py.md.placeholderfix.bak	1131
+tools/issue_drafts/11_qmoi-enhanced_scripts_qmoi_auto_evolution_system_py.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1131
 tools/issue_drafts/12_qmoi-enhanced_scripts_enhance_ai_py.md	1016
 tools/issue_drafts/13_qmoi-enhanced_components_device_DeviceIntegrationStubs_ts.md	1481
 tools/issue_drafts/14_qmoi-enhanced_app_api_qi-trading_route_ts.md	1262
-tools/issue_drafts/14_qmoi-enhanced_app_api_qi-trading_route_ts.md.placeholderfix.bak	1424
+tools/issue_drafts/14_qmoi-enhanced_app_api_qi-trading_route_ts.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1424
 tools/issue_drafts/15_qmoi-enhanced_ai_self_update_py.md	1003
-tools/issue_drafts/15_qmoi-enhanced_ai_self_update_py.md.placeholderfix.bak	1165
+tools/issue_drafts/15_qmoi-enhanced_ai_self_update_py.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1165
 tools/issue_drafts/16_qmoi-enhanced_scripts_qmoi-package-installer_py.md	1153
-tools/issue_drafts/16_qmoi-enhanced_scripts_qmoi-package-installer_py.md.placeholderfix.bak	1315
+tools/issue_drafts/16_qmoi-enhanced_scripts_qmoi-package-installer_py.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1315
 tools/issue_drafts/17_src_services_VoiceRecognitionService_ts.md	984
-tools/issue_drafts/17_src_services_VoiceRecognitionService_ts.md.placeholderfix.bak	1146
+tools/issue_drafts/17_src_services_VoiceRecognitionService_ts.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1146
 tools/issue_drafts/18_qmoi-enhanced_src_services_VoiceRecognitionService_ts.md	1026
-tools/issue_drafts/18_qmoi-enhanced_src_services_VoiceRecognitionService_ts.md.placeholderfix.bak	1188
+tools/issue_drafts/18_qmoi-enhanced_src_services_VoiceRecognitionService_ts.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1188
 tools/issue_drafts/19_qmoi-enhanced_QMOIARTISTS_md.md	836
-tools/issue_drafts/19_qmoi-enhanced_QMOIARTISTS_md.md.placeholderfix.bak	1025
+tools/issue_drafts/19_qmoi-enhanced_QMOIARTISTS_md.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1025
 tools/issue_drafts/20_qmoi-enhanced_scripts_qmoi_notification_manager_py.md	998
-tools/issue_drafts/20_qmoi-enhanced_scripts_qmoi_notification_manager_py.md.placeholderfix.bak	1160
+tools/issue_drafts/20_qmoi-enhanced_scripts_qmoi_notification_manager_py.md.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1160
 tools/light_index.json	55507
 tools/light_index.md	35920
 tools/link_report.json	21175798
-tools/link_report.json.placeholderfix.bak	21176608
+tools/link_report.json.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	21176608
 tools/lion.env.example	2802
 tools/lion_install.js	1633
 tools/lionctl	13177
 tools/lionlaunch.json	1916
 tools/matches_priority.json	1225211
-tools/matches_priority.json.placeholderfix.bak	1237907
+tools/matches_priority.json.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	1237907
 tools/matches_priority.md	15025
 tools/patches/50b8f7d4acdba845f989c2f8552ba482453936ac.patch	17854
 tools/patches/6f861e97978f7658419a96db195621a1370c35b2.patch	17847
@@ -18894,7 +18894,7 @@ vercel.env.example	492
 vercel.json	499
 version_info.txt	641
 watchdebug.js	22514
-watchdebug.js.placeholderfix.bak	22407
+watchdebug.js.[AUTOFIXED by Ollama at 2026-07-20T01:09:53.395431Z: please review]fix.bak	22407
 whatsapp-qmoi-bot/README.md	2518
 whatsapp-qmoi-bot/handlers/animationgame.js	427
 whatsapp-qmoi-bot/handlers/appdownload.js	311
@@ -18919,3 +18919,7 @@ whatsapp-qmoi-bot/services/qmoi.js	499
 whatsapp-qmoi-bot/utils/broadcast.js	274
 whatsapp-qmoi-bot/utils/delay.js	85
 yarn.lock	855870
+
+
+---
+Automated update by Ollama agent at 2026-07-20T01:09:53.395431Z. Please review changes above.

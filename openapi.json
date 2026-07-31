@@ -273,7 +273,7 @@
                   "phoneNumber": { "type": "string" },
                   "paymentMethod": {
                     "type": "string",
-                    "enum": ["mpesa", "pesapal", "stripe"]
+                    "enum": ["mpesa", "paypal", "stripe"]
                   }
                 },
                 "required": [

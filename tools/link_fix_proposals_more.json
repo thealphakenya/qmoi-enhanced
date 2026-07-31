@@ -2490,8 +2490,8 @@
     ]
   },
   {
-    "http": "http://www.pesapal.com",
-    "https": "https://www.pesapal.com",
+    "http": "http://www.paypal.com",
+    "https": "https://www.paypal.com",
     "status": 200,
     "files": [
       "./qmoi-enhanced/app/api/employment/megavault/route.ts",

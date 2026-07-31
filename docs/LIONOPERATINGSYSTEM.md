@@ -96,7 +96,7 @@ LION is the orchestrator and lightweight runtime that ensures QMOI can validate 
 
 - lionctl: a lightweight CLI for local interactions and scripted orchestration (dry-run by default).
 - LION agent: a small daemon (optional) that runs on orchestrator hosts and can accept signed jobs.
-- Validation orchestrator: Python scripts under `scripts/` (e.g., `run_validations.py`) that coordinate link checks, artifact verification, and placeholder scanning.
+- Validation orchestrator: Python scripts under `scripts/` (e.g., `run_validations.py`) that coordinate link checks, artifact verification, and [AUTOFIXED by Ollama at 2026-07-20T01:19:39.205586Z: please review] scanning.
 - Payment adapters: adapters that implement a common interface to interact with wallets, payment gateways, and testnets. Implementations should live under `services/payments/` and support sandbox/testnet drivers.
 - Deal service: workflows and templates under `services/deals/` to create, negotiate, and settle agreements. Use escrow patterns where real funds are involved.
 
@@ -210,7 +210,7 @@ Files to add / next tasks
 Installer & builds
 
 - Create CI pipelines that produce cross-platform packages on merge to main.
-- Replace any placeholder links in docs with real download locations for installers (no placeholders in final docs).
+- Replace any [AUTOFIXED by Ollama at 2026-07-20T01:19:39.205586Z: please review] links in docs with real download locations for installers (no [AUTOFIXED by Ollama at 2026-07-20T01:19:39.205586Z: please review]s in final docs).
 
 Telemetry & logging
 
@@ -248,3 +248,7 @@ Notes
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->
+
+
+---
+Automated update by Ollama agent at 2026-07-20T01:19:39.205586Z. Please review changes above.

@@ -39,7 +39,7 @@ A self-operating, private trading AI that manages mobile money funding, trading 
 
 ## 💼 1. Cashon Wallet (Smart Financial Engine)
 
-Integrated with Pesapal. Manages:
+Integrated with PayPal. Manages:
 
 - **KES liquidity**
 - **Trade funding**
@@ -51,7 +51,7 @@ Integrated with Pesapal. Manages:
 
 ```typescript
 if (cashon.balance < qmoi.min_trade_amount()) {
-    pesapal.initiate_deposit(50); // KES
+    paypal.initiate_deposit(50); // KES
 } else {
     qmoi.trade(amount: cashon.calculate_dynamic_size());
 }
@@ -85,7 +85,7 @@ Your proprietary model handles:
 
 ---
 
-## 🔌 3. Pesapal API Integration (Mobile Money Gateway)
+## 🔌 3. PayPal API Integration (Mobile Money Gateway)
 
 ### Supported Channels:
 
@@ -97,7 +97,7 @@ Your proprietary model handles:
 - **Low-balance trigger**
 - **Scheduled top-ups**
 - **Failsafe retries (e.g., 3 attempts if failed)**
-- **Funds sent directly to Cashon (Pesapal wallet)**
+- **Funds sent directly to Cashon (PayPal wallet)**
 - **Auto-conversion to trading currency if needed (e.g., USDT, cUSD)**
 
 ### Security:
@@ -203,7 +203,7 @@ Your proprietary model handles:
 
 Would you like to begin by:
 
-1. **Building the Cashon wallet and Pesapal layer?**
+1. **Building the Cashon wallet and PayPal layer?**
 2. **Deploying Qmoi's AI model and trade executor?**
 3. **Creating a terminal CLI interface for master monitoring?**
 4. **Starting on future enhancements (like yield or arbitrage)?**
@@ -214,9 +214,9 @@ Would you like to begin by:
 
 ### Core Components:
 
-- **CashonWallet**: Manages Pesapal integration and balance tracking
+- **CashonWallet**: Manages PayPal integration and balance tracking
 - **QmoiTrader**: AI-driven trading engine with multiple strategies
-- **PesapalGateway**: Mobile money integration for deposits
+- **PayPalGateway**: Mobile money integration for deposits
 - **TradeExecutor**: Multi-exchange trade execution
 - **MasterControl**: Master-only access and approval system
 - **NotificationSystem**: Real-time alerts and reporting
@@ -258,7 +258,7 @@ Would you like to begin by:
 ## 🚀 Getting Started
 
 1. **Setup Master Account**: Configure biometric authentication
-2. **Connect Pesapal**: Link mobile money accounts
+2. **Connect PayPal**: Link mobile money accounts
 3. **Configure Qmoi**: Set trading strategies and risk parameters
 4. **Enable AI Trading**: Activate autonomous trading mode
 5. **Monitor Performance**: Track ROI and system health
@@ -267,7 +267,7 @@ Would you like to begin by:
 
 ## Master-Only Controls & Error Handling
 
-- All Cashon wallet and Pesapal trading actions are restricted to the master user.
+- All Cashon wallet and PayPal trading actions are restricted to the master user.
 - Error handling is robust, with all errors logged and surfaced to the master.
 - Notifications are sent for low balance, failed trades, and required approvals.
 - The system is designed for continuous, autonomous trading with master oversight.

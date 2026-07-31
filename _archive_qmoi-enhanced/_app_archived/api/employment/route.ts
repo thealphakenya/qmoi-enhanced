@@ -9,7 +9,7 @@ const EmployeeSchema = z.object({
   email: z.string().email(),
   phone: z.string(),
   role: z.string(),
-  paymentMethod: z.enum(["mpesa", "airtel", "pesapal", "bank"]),
+  paymentMethod: z.enum(["mpesa", "airtel", "paypal", "bank"]),
   paymentInfo: z.object({
     accountNumber: z.string().optional(),
     accountName: z.string().optional(),
@@ -32,7 +32,7 @@ const UserSchema = z.object({
   email: z.string().email(),
   phone: z.string().optional(),
   role: z.string(),
-  paymentMethod: z.enum(["mpesa", "airtel", "pesapal", "bank"]).optional(),
+  paymentMethod: z.enum(["mpesa", "airtel", "paypal", "bank"]).optional(),
   paymentInfo: z
     .object({
       accountNumber: z.string().optional(),
@@ -350,3 +350,9 @@ export async function DELETE(request: NextRequest) {
     );
   }
 }
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.629427Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:32.778258Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.148521Z

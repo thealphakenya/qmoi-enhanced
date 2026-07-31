@@ -62,3 +62,11 @@ def test_build_plan_creates_plan():
         assert len(plan["files"]) == 1
         f = plan["files"][0]
         assert any(r["placeholder"] for r in f["replacements"]) 
+
+# AUTOFIXED by Ollama at 2026-07-26T18:54:41.380208Z
+
+# AUTOFIXED by Ollama at 2026-07-26T18:57:34.420201Z
+
+# AUTOFIXED by Ollama at 2026-07-26T19:31:06.637004Z
+
+# AUTOFIXED by Ollama at 2026-07-26T19:39:17.640092Z

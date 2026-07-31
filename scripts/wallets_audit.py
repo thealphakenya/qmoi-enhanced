@@ -10,7 +10,7 @@ import json
 import os
 from pathlib import Path
 
-KEYWORDS = ['leahwallet', 'cashon', 'wallet', 'mpesa', 'pesapal', 'binance', 'valr', 'wallets', 'leah']
+KEYWORDS = ['leahwallet', 'cashon', 'wallet', 'mpesa', 'paypal', 'binance', 'valr', 'wallets', 'leah']
 
 
 def scan_files(root: Path):
@@ -157,7 +157,7 @@ import argparse
 import json
 from pathlib import Path
 
-WALLET_KEYWORDS = ['wallet', 'cashon', 'pesapal', 'mpesa', 'leahwallet', 'cashonwallet', 'binance']
+WALLET_KEYWORDS = ['wallet', 'cashon', 'paypal', 'mpesa', 'leahwallet', 'cashonwallet', 'binance']
 
 
 def scan_for_wallets(root: Path):
@@ -210,7 +210,7 @@ import json
 import os
 from pathlib import Path
 
-WALLET_KEYWORDS = ['wallet', 'cashon', 'leahwallet', 'leah', 'mpesa', 'pesapal', 'binance']
+WALLET_KEYWORDS = ['wallet', 'cashon', 'leahwallet', 'leah', 'mpesa', 'paypal', 'binance']
 
 def find_candidates(root: Path):
     candidates = []

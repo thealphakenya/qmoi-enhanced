@@ -26,7 +26,7 @@ The Master Control System provides a secure, master-only interface for controlli
 - Total revenue display
 - Fund storage location information
 - 4 secure storage locations:
-  - CashOn Wallet (Pesapal)
+  - CashOn Wallet (PayPal)
   - PayPal Business Account
   - Cryptocurrency Wallets
   - Bank Deposits (KCB Kenya, Standard Chartered Singapore)

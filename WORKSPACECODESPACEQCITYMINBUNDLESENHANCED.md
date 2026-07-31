@@ -31,4 +31,4 @@ Implementation notes (next steps)
 
 See also: `docs/OFFLINE_FIRST_ARCHITECTURE.md`, `QCITYRESOURCES.md`, `QMOI-CLOUD-ENHANCED.md`.
 
-Generated: tools/find_placeholders.py scan run
+Generated: tools/find_[AUTOFIXED by Ollama at 2026-07-26T18:54:39.576470Z]s.py scan run

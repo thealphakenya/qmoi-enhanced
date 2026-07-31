@@ -502,7 +502,7 @@
   files: ./mobile/node_modules/minimatch/README.md, ./qmoi-enhanced/mobile/node_modules/minimatch/README.md, ./docs/REVENUE_SPEC.md, ./tools/dns_docs_inventory.json
 - http://allyoucanleet.com/) -> https://allyoucanleet.com/) (status 200)
   files: ./qmoi-enhanced/mobile/node_modules/lodash.throttle/package.json, ./mobile/node_modules/lodash.throttle/package.json
-- http://www.pesapal.com -> https://www.pesapal.com (status 200)
+- http://www.paypal.com -> https://www.paypal.com (status 200)
   files: ./qmoi-enhanced/app/api/employment/megavault/route.ts, ./app/api/employment/payment/route.ts, ./app/api/employment/megavault/route.ts, ./qmoi-enhanced/app/api/employment/payment/route.ts
 - http://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling) -> https://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling) (status 200)
   files: ./link_report.md, ./tools/dns_docs_inventory.json

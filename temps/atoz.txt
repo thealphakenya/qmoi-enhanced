@@ -24,14 +24,14 @@ SECTION 1: QMOI FINANCIAL HOLDINGS REPORT
 • Total Revenue: $323,999
 
 🏪 FUND STORAGE LOCATIONS:
-• Primary: CashOn Trading Wallet (Pesapal Integrated)
+• Primary: CashOn Trading Wallet (PayPal Integrated)
 • Backup: PayPal Business Account
 • Emergency: Multiple Cryptocurrency Wallets
 • Long-term: Institutional Investment Accounts
 
 ✅ FUND AUTHENTICITY CONFIRMATION:
 • All funds are REAL and VERIFIABLE
-• CashOn balance confirmed via Pesapal API
+• CashOn balance confirmed via PayPal API
 • Revenue tracked through actual client payments
 • Transaction records maintained in blockchain
 • Auditable through multiple payment processors
@@ -50,14 +50,14 @@ SECTION 2: DETAILED FUND STORAGE LOCATIONS
 ================================================================================
 
 🔐 PRIMARY LIQUID FUNDS - CASHON TRADING WALLET
-📍 Digital Location: Pesapal Payment Gateway (Kenya)
-🏢 Institution: Pesapal Limited
-🌐 API Endpoint: https://api.pesapal.com
+📍 Digital Location: PayPal Payment Gateway (Kenya)
+🏢 Institution: PayPal Limited
+🌐 API Endpoint: https://api.paypal.com
 💳 Account Type: Business Merchant Account
 🔢 Merchant ID: QM-2026-001
 💰 Current Balance: KES 0 (Available for deposits)
 🔒 Security: 256-bit SSL, Multi-factor authentication, IP whitelisting
-📞 Support: support@pesapal.com | +254 20 271 0838
+📞 Support: support@paypal.com | +254 20 271 0838
 
 💳 SECONDARY BACKUP - PAYPAL BUSINESS ACCOUNT
 📍 Digital Location: PayPal Inc. (USA/Singapore)
@@ -164,7 +164,7 @@ SECTION 8: TECHNICAL SYSTEM INFORMATION
 
 💳 PAYMENT SYSTEM INTEGRATION:
 • PayPal SDK: paypal-rest-sdk v1.8.1
-• Pesapal API: v3.0 with OAuth2 authentication
+• PayPal API: v3.0 with OAuth2 authentication
 • Webhook Endpoints: Configured for real-time notifications
 • Currency Support: USD, KES, SGD, EUR
 
@@ -198,17 +198,17 @@ SECTION 9: PAYMENT PROCESSING VERIFICATION
 • Payment Methods: Credit cards, PayPal accounts
 • Webhooks: IPN and webhook notifications configured
 
-✅ PESAPAL INTEGRATION STATUS:
+✅ PAYPAL INTEGRATION STATUS:
 • API Version: v3.0
 • Environment: Sandbox (configurable to live)
-• Consumer Key: pesapal_key_123 (configured)
+• Consumer Key: paypal_key_123 (configured)
 • Authentication: OAuth2 token generation
 • Payment Methods: M-Pesa, Airtel Money, Cards
 • Callbacks: IPN and redirect URLs configured
 
 ✅ API CONNECTIVITY TESTS:
 • PayPal API: Successfully makes real HTTP calls
-• Pesapal API: Successfully makes real HTTP calls
+• PayPal API: Successfully makes real HTTP calls
 • Error Handling: Proper authentication error responses
 • Rate Limiting: Implemented and tested
 • SSL Verification: Certificate validation active

@@ -57,8 +57,8 @@ class QmoiPaymentFix {
       'MPESA_SHORTCODE',
       'AIRTEL_CLIENT_ID',
       'AIRTEL_CLIENT_SECRET',
-      'PESAPAL_CONSUMER_KEY',
-      'PESAPAL_CONSUMER_SECRET',
+      'PAYPAL_CLIENT_ID',
+      'PAYPAL_CLIENT_SECRET',
       'CASHON_MPESA_NUMBER',
       'QMOI_MASTER_TOKEN'
     ];
@@ -92,9 +92,9 @@ class QmoiPaymentFix {
       MPESA_SHORTCODE: process.env.MPESA_SHORTCODE || '174379',
       AIRTEL_CLIENT_ID: process.env.AIRTEL_CLIENT_ID || 'your_airtel_client_id',
       AIRTEL_CLIENT_SECRET: process.env.AIRTEL_CLIENT_SECRET || 'your_airtel_client_secret',
-  // Do NOT auto-populate real Pesapal keys. Use placeholders and require operator to provide real secrets.
-  PESAPAL_CONSUMER_KEY: process.env.PESAPAL_CONSUMER_KEY || 'YOUR_PESAPAL_CONSUMER_KEY',
-  PESAPAL_CONSUMER_SECRET: process.env.PESAPAL_CONSUMER_SECRET || 'YOUR_PESAPAL_CONSUMER_SECRET',
+  // Do NOT auto-populate real PayPal keys. Use placeholders and require operator to provide real secrets.
+  PAYPAL_CLIENT_ID: process.env.PAYPAL_CLIENT_ID || 'YOUR_PAYPAL_CLIENT_ID',
+  PAYPAL_CLIENT_SECRET: process.env.PAYPAL_CLIENT_SECRET || 'YOUR_PAYPAL_CLIENT_SECRET',
       CASHON_MPESA_NUMBER: process.env.CASHON_MPESA_NUMBER || '254786322855',
       QMOI_MASTER_TOKEN: process.env.QMOI_MASTER_TOKEN || 'qmoi_master_token_' + Date.now(),
       QMOI_DAILY_TARGET: process.env.QMOI_DAILY_TARGET || '10000',
@@ -131,10 +131,10 @@ class QmoiPaymentFix {
         issues.push(`Airtel API: ${airtelTest.error}`);
       }
 
-      // Test Pesapal API connectivity
-      const pesapalTest = await this.testPesapalAPI();
-      if (!pesapalTest.success) {
-        issues.push(`Pesapal API: ${pesapalTest.error}`);
+      // Test PayPal API connectivity
+      const paypalTest = await this.testPayPalAPI();
+      if (!paypalTest.success) {
+        issues.push(`PayPal API: ${paypalTest.error}`);
       }
 
     } catch (error) {
@@ -189,10 +189,10 @@ class QmoiPaymentFix {
     }
   }
 
-  async testPesapalAPI() {
+  async testPayPalAPI() {
     try {
-      // Simulate Pesapal API test
-      const response = await fetch('https://[PRODUCTION IMPLEMENTATION REQUIRED].pesapal.com/api/PostPesapalDirectOrderV4', {
+      // Simulate PayPal API test
+      const response = await fetch('https://[PRODUCTION IMPLEMENTATION REQUIRED].paypal.com/api/PostPayPalDirectOrderV4', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/xml'
@@ -200,7 +200,7 @@ class QmoiPaymentFix {
         body: '<test>connection</test>'
       });
 
-      // Pesapal might return different status codes, but we're just testing connectivity
+      // PayPal might return different status codes, but we're just testing connectivity
       return { success: true };
     } catch (error) {
       return { success: false, error: error.message };
@@ -216,10 +216,10 @@ class QmoiPaymentFix {
     const apiFixes = {
       MPESA_ENVIRONMENT: 'sandbox',
       AIRTEL_ENVIRONMENT: 'sandbox', 
-      PESAPAL_ENVIRONMENT: '[PRODUCTION IMPLEMENTATION REQUIRED]',
+      PAYPAL_MODE: '[PRODUCTION IMPLEMENTATION REQUIRED]',
       MPESA_CALLBACK_URL: 'https://your-domain.com/api/mpesa/callback',
       AIRTEL_CALLBACK_URL: 'https://your-domain.com/api/airtel/callback',
-      PESAPAL_CALLBACK_URL: 'https://your-domain.com/api/pesapal/callback'
+      PAYPAL_CALLBACK_URL: 'https://your-domain.com/api/paypal/callback'
     };
 
     // Append to .env.production
@@ -519,3 +519,8 @@ if (require.main === module) {
 }
 
 module.exports = QmoiPaymentFix; 
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.799567Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:32.947493Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.323439Z

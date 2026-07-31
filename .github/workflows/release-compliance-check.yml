@@ -20,7 +20,7 @@ jobs:
 
       - name: Generate compliance report
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
         run: python3 scripts/generate_release_compliance_report.py
 
       - name: Upload report

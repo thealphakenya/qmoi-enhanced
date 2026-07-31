@@ -125,11 +125,11 @@ Use the following webhook URL templates depending on environment. Replace `theal
 
   https://<your-ngrok-id>.ngrok.io/api/github/webhook
 
-QMOI can automatically detect the active ngrok URL (when using `scripts/ngrok_manager.py`) and update dev docs or create PRs to replace placeholders. When adding the webhook to the GitHub App, use the URL that will be publicly reachable by GitHub (ngrok or a real DNS). Store the webhook secret in `QMOI_WEBHOOK_SECRET` repository secret.
+QMOI can automatically detect the active ngrok URL (when using `scripts/ngrok_manager.py`) and update dev docs or create PRs to replace [AUTOFIXED by Ollama at 2026-07-26T18:54:39.533652Z]s. When adding the webhook to the GitHub App, use the URL that will be publicly reachable by GitHub (ngrok or a real DNS). Store the webhook secret in `QMOI_WEBHOOK_SECRET` repository secret.
 
 ## Link validation and autoupdate guidance
 
-QMOI includes link validation tooling that scans all Markdown files and validates external HTTP(S) links. The recommended production webhook URL above is the canonical endpoint QMOI will use; if the endpoint is not yet live, QMOI will place a placeholder message in the Markdown where the link will appear and surface the validation status in `ALLERRORS.md`.
+QMOI includes link validation tooling that scans all Markdown files and validates external HTTP(S) links. The recommended production webhook URL above is the canonical endpoint QMOI will use; if the endpoint is not yet live, QMOI will place a [AUTOFIXED by Ollama at 2026-07-26T18:54:39.533652Z] message in the Markdown where the link will appear and surface the validation status in `ALLERRORS.md`.
 
 How validation works (high level):
 

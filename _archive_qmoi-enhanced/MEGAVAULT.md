@@ -26,7 +26,7 @@ The QMOI Megavault is the central financial hub of the QMOI ecosystem, managing 
 1. **Fund Management Engine**: Central hub for all financial operations
 2. **Profit Calculation Module**: Automated profit analysis and reporting
 3. **Dividend Distribution System**: Automated dividend calculation and distribution
-4. **Pesapal Integration**: Secure payment processing and fund transfers
+4. **PayPal Integration**: Secure payment processing and fund transfers
 5. **Audit Trail System**: Comprehensive financial transaction logging
 6. **Security Module**: Advanced security and fraud prevention
 7. **Analytics Dashboard**: Real-time financial analytics and reporting
@@ -98,14 +98,14 @@ Megavault Balance: $1,000,000
 - **Investor Dividends**: Dividends for investors
 - **Performance Bonuses**: Performance-based bonuses
 
-## Pesapal Integration
+## PayPal Integration
 
 ### Integration Details
 
 #### Credentials
 
-- **Consumer Key**: [PROVIDE VIA ENV: PESAPAL_CONSUMER_KEY]
-- **Consumer Secret**: [PROVIDE VIA ENV: PESAPAL_CONSUMER_SECRET]
+- **Consumer Key**: [PROVIDE VIA ENV: PAYPAL_CLIENT_ID]
+- **Consumer Secret**: [PROVIDE VIA ENV: PAYPAL_CLIENT_SECRET]
 - **Environment**: Production
 - **Account Type**: Merchant Account
 

@@ -22,20 +22,20 @@ async function testAPIConnectivity() {
       console.log('ℹ️  PayPal initialization failed (expected with fake credentials):', error.message);
     }
 
-    // Test Pesapal API connectivity
-    console.log('\n2. Testing Pesapal API connectivity...');
+    // Test PayPal API connectivity
+    console.log('\n2. Testing PayPal API connectivity...');
     const { cashonWallet } = await import('./lib/cashon-wallet.js');
     
     try {
-      const balanceResult = await cashonWallet.verifyPesapalBalance("master_token_789");
-      console.log('✅ Pesapal API call completed');
+      const balanceResult = await cashonWallet.verifyPayPalBalance("master_token_789");
+      console.log('✅ PayPal API call completed');
       console.log('📊 Balance check result:', {
         success: balanceResult.success,
         currentBalance: balanceResult.currentBalance,
         error: balanceResult.error
       });
     } catch (error) {
-      console.log('ℹ️  Pesapal API call failed (expected with fake credentials):', error.message);
+      console.log('ℹ️  PayPal API call failed (expected with fake credentials):', error.message);
     }
 
     // Test AI service with real API calls

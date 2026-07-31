@@ -8081,7 +8081,7 @@
       "http://nodeca.github.com/js-yaml/",
       "http://promises-aplus.github.com/promises-spec/",
       "https://android-developers.googleblog.com/2015/10/new-in-android-",
-      "https://api.pesapal.com",
+      "https://api.paypal.com",
       "https://aws.example.co",
       "https://codecov",
       "https://codecov.i",
@@ -8888,7 +8888,7 @@
       "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials",
       "https://your-domain.com/api/airtel/callback",
       "https://your-domain.com/api/mpesa/callback",
-      "https://your-domain.com/api/pesapal/callback",
+      "https://your-domain.com/api/paypal/callback",
       "https://api.github.com/repos/",
       "https://api.example.com",
       "http://localhost:3010",
@@ -8909,7 +8909,7 @@
       "https://github.com/thealphakenya/qmoi-enhanced/releases",
       "https://img.shields.io/badge/QMOI%20Build-Imepita-brightgreen?style=flat-square",
       "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
-      "https://api.pesapal.com",
+      "https://api.paypal.com",
       "https://ws.binaryws.com/websockets/v3",
       "https://github.com/your-org/Alpha-Q-ai",
       "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
@@ -8961,7 +8961,7 @@
       "http://nodeca.github.com/js-yaml/",
       "http://promises-aplus.github.com/promises-spec/",
       "https://android-developers.googleblog.com/2015/10/new-in-android-",
-      "https://api.pesapal.com",
+      "https://api.paypal.com",
       "https://codecov.io/gh/sinonjs/",
       "https://crbug.com/865247",
       "https://github.com/En",
@@ -9003,7 +9003,7 @@
       "http://nodeca.github.com/js-yaml/",
       "http://promises-aplus.github.com/promises-spec/",
       "https://android-developers.googleblog.com/2015/10/new-in-android-",
-      "https://api.pesapal.com",
+      "https://api.paypal.com",
       "https://codecov.io/gh/sinonjs/",
       "https://crbug.com/865247",
       "https://github.com/En",
@@ -9293,7 +9293,7 @@
       "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials",
       "https://your-domain.com/api/airtel/callback",
       "https://your-domain.com/api/mpesa/callback",
-      "https://your-domain.com/api/pesapal/callback",
+      "https://your-domain.com/api/paypal/callback",
       "https://api.github.com/repos/",
       "https://api.example.com",
       "http://localhost:3010",
@@ -9316,7 +9316,7 @@
       "https://img.shields.io/badge/QMOI%20Build-Imepita-brightgreen?style=flat-square",
       "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
       "http://localhost:8000/payments/webhook",
-      "https://api.pesapal.com",
+      "https://api.paypal.com",
       "https://ws.binaryws.com/websockets/v3",
       "https://github.com/your-org/Alpha-Q-ai",
       "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
@@ -102819,7 +102819,7 @@
     "QMOI_APIS_WEBHOOKS_ENDPOINTS.md": [
       "https://api.qmoi.dev/v1",
       "https://api.bitget.com/v2",
-      "https://api.pesapal.com/api/v3",
+      "https://api.paypal.com/api/v3",
       "https://api.safaricom.co.ke/oauth/v1"
     ],
     "QMOIFORALL.md": [
@@ -105188,8 +105188,8 @@
       "https://travis-ci.org/isaacs/minimatch)",
       "http://allyoucanleet.com/)",
       "https://allyoucanleet.com/)",
-      "http://www.pesapal.com",
-      "https://www.pesapal.com",
+      "http://www.paypal.com",
+      "https://www.paypal.com",
       "http://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling)",
       "https://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling)",
       "http://juliangruber.com",
@@ -109778,7 +109778,7 @@
       "https://[PRODUCTION",
       "https://your-domain.com/api/mpesa/callback'",
       "https://your-domain.com/api/airtel/callback'",
-      "https://your-domain.com/api/pesapal/callback'"
+      "https://your-domain.com/api/paypal/callback'"
     ],
     "qmoi-enhanced/scripts/qmoi-notification-system.js": [
       "https://api.telegram.org/bot$",
@@ -109917,7 +109917,7 @@
     "qmoi-enhanced/app/api/wallet.ts": [
       "https://api.safaricom.co.ke/mpesa'",
       "https://api.binance.com'",
-      "https://api.pesapal.com'",
+      "https://api.paypal.com'",
       "https://api.bitget.com'"
     ],
     "qmoi-enhanced/app/api/qmoi-model.ts": [
@@ -109937,10 +109937,10 @@
       "http://localhost:5001/analytics'"
     ],
     "qmoi-enhanced/app/api/employment/megavault/route.ts": [
-      "https://www.pesapal.com/api/PostPesapalDirectOrderV4'",
+      "https://www.paypal.com/api/PostPayPalDirectOrderV4'",
       "http://www.w3.org/2001/XMLSchema-instance",
       "http://www.w3.org/2001/XMLSchema",
-      "http://www.pesapal.com"
+      "http://www.paypal.com"
     ],
     "qmoi-enhanced/app/api/employment/revenue/route.ts": [
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate'"
@@ -109949,10 +109949,10 @@
       "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest'",
       "https://your-callback-url.com/mpesa'",
       "https://openapiuat.airtel.africa/merchant/v1/payments/'",
-      "https://www.pesapal.com/api/PostPesapalDirectOrderV4'",
+      "https://www.paypal.com/api/PostPayPalDirectOrderV4'",
       "http://www.w3.org/2001/XMLSchema-instance",
       "http://www.w3.org/2001/XMLSchema",
-      "http://www.pesapal.com"
+      "http://www.paypal.com"
     ],
     "qmoi-enhanced/routes/api/qmoi/autodev.ts": [
       "https://alpha-q-ai.vercel.app'"
@@ -110080,7 +110080,7 @@
       "https://[PRODUCTION",
       "https://your-domain.com/api/mpesa/callback'",
       "https://your-domain.com/api/airtel/callback'",
-      "https://your-domain.com/api/pesapal/callback'"
+      "https://your-domain.com/api/paypal/callback'"
     ],
     "scripts/qmoi-notification-system.js": [
       "https://api.telegram.org/bot$",
@@ -110208,7 +110208,7 @@
     "app/api/wallet.ts": [
       "https://api.safaricom.co.ke/mpesa'",
       "https://api.binance.com'",
-      "https://api.pesapal.com'",
+      "https://api.paypal.com'",
       "https://api.bitget.com'"
     ],
     "app/api/qmoi-model.ts": [
@@ -110226,10 +110226,10 @@
     ],
     "app/api/ai-anomaly-service/route.ts": ["http://localhost:5001/analytics'"],
     "app/api/employment/megavault/route.ts": [
-      "https://www.pesapal.com/api/PostPesapalDirectOrderV4'",
+      "https://www.paypal.com/api/PostPayPalDirectOrderV4'",
       "http://www.w3.org/2001/XMLSchema-instance",
       "http://www.w3.org/2001/XMLSchema",
-      "http://www.pesapal.com"
+      "http://www.paypal.com"
     ],
     "app/api/employment/revenue/route.ts": [
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate'"
@@ -110238,10 +110238,10 @@
       "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest'",
       "https://your-callback-url.com/mpesa'",
       "https://openapiuat.airtel.africa/merchant/v1/payments/'",
-      "https://www.pesapal.com/api/PostPesapalDirectOrderV4'",
+      "https://www.paypal.com/api/PostPayPalDirectOrderV4'",
       "http://www.w3.org/2001/XMLSchema-instance",
       "http://www.w3.org/2001/XMLSchema",
-      "http://www.pesapal.com"
+      "http://www.paypal.com"
     ],
     "lib/mpesa-api.ts": [
       "https://api.safaricom.co.ke'",
@@ -110252,9 +110252,9 @@
     ],
     "lib/qmoi-auto-config.ts": ["https://alpha-q-ai.vercel.app'"],
     "lib/cashon-wallet.ts": [
-      "https://api.pesapal.com'",
+      "https://api.paypal.com'",
       "https://[PRODUCTION",
-      "https://api.pesapal.com'",
+      "https://api.paypal.com'",
       "https://[PRODUCTION"
     ],
     "lib/qmoi-auto-config.js": [

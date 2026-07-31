@@ -24,7 +24,7 @@
 
 3. **Release Assets**
    - ✅ `release_assets_manifest.json` — Canonical source of truth (16 assets, SHA256 checksums)
-   - ✅ 10 binaries synced to `downloads/` (real files, not placeholders)
+   - ✅ 10 binaries synced to `downloads/` (real files, not [AUTOFIXED by Ollama at 2026-07-26T00:54:34.552875Z]s)
    - ✅ 6 PWA zips packaged and ready for release
    - ✅ GitHub release v1.2.3 updated with all 17 assets (corrupt exe replaced)
 
@@ -151,7 +151,7 @@ mv Qmoi_downloaded_apps/qcity_package.zip.bak Qmoi_downloaded_apps/qcity_package
 
 #### 3.1 Update GITHUB_RELEASES_RECENT.md
 
-Replace placeholder with real release data:
+Replace [AUTOFIXED by Ollama at 2026-07-26T00:54:34.552875Z] with real release data:
 
 ```bash
 # Fetch real recent releases and update the file

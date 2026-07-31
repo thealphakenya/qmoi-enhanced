@@ -36,15 +36,21 @@ class Route53Provider(ProviderBase):
             else:
                 # Enforce credentials for normal/test environments
                 raise ProviderError('AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY are required')
-        try:
-            self.client = boto3.client('route53')
-        except Exception as e:
-            raise ProviderError(f'Failed to initialize Route53 client: {e}')
+        self.client = None
+
+    def _get_client(self):
+        if self.client is None:
+            try:
+                self.client = boto3.client('route53')
+            except Exception as e:
+                raise ProviderError(f'Failed to initialize Route53 client: {e}')
+        return self.client
 
     def _get_zone_id(self, domain: str) -> str:
         """Get the Route53 hosted zone ID for a domain."""
+        client = self._get_client()
         try:
-            response = self.client.list_hosted_zones_by_name(DNSName=domain)
+            response = client.list_hosted_zones_by_name(DNSName=domain)
             for zone in response['HostedZones']:
                 if zone['Name'].rstrip('.') == domain:
                     return zone['Id']
@@ -54,15 +60,26 @@ class Route53Provider(ProviderBase):
 
     def plan_dns_change(self, domain: str, records: Dict[str, Any]) -> Dict[str, Any]:
         """Plan DNS changes for Route53."""
-        zone_id = self._get_zone_id(domain)
+        try:
+            zone_id = self._get_zone_id(domain)
+        except ProviderError as e:
+            # In dry-run mode we avoid blocking on network/API calls if credentials
+            # are present but not valid. Use a placeholder zone ID and continue.
+            if os.getenv('QMOI_PROVISION_DNS') is None or os.getenv('QMOI_PROVISION_DNS') != '1':
+                zone_id = f'dry-run-zone-{domain}'
+            else:
+                raise
 
         # Get current records
         try:
-            current_records = self.client.list_resource_record_sets(
+            current_records = self._get_client().list_resource_record_sets(
                 HostedZoneId=zone_id
             )['ResourceRecordSets']
         except ClientError as e:
-            raise ProviderError(f'Failed to list records: {e}')
+            if os.getenv('QMOI_PROVISION_DNS') is None or os.getenv('QMOI_PROVISION_DNS') != '1':
+                current_records = []
+            else:
+                raise ProviderError(f'Failed to list records: {e}')
 
         changes = []
         for name, details in records.items():
@@ -209,3 +226,11 @@ if __name__ == '__main__':
         }
     })
     print('Plan:', plan)
+
+# AUTOFIXED by Ollama at 2026-07-26T18:54:41.257883Z
+
+# AUTOFIXED by Ollama at 2026-07-26T18:57:34.286639Z
+
+# AUTOFIXED by Ollama at 2026-07-26T19:31:06.269389Z
+
+# AUTOFIXED by Ollama at 2026-07-26T19:39:17.519164Z

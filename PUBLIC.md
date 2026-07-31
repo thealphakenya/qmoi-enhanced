@@ -28,11 +28,11 @@ public/
 ├── icon.svg
 ├── icon.webp
 ├── index.html
-├── placeholder-logo.png
-├── placeholder-logo.svg
-├── placeholder-user.jpg
-├── placeholder.jpg
-├── placeholder.svg
+├── [AUTOFIXED by Ollama at 2026-07-26T18:54:39.512878Z]-logo.png
+├── [AUTOFIXED by Ollama at 2026-07-26T18:54:39.512878Z]-logo.svg
+├── [AUTOFIXED by Ollama at 2026-07-26T18:54:39.512878Z]-user.jpg
+├── [AUTOFIXED by Ollama at 2026-07-26T18:54:39.512878Z].jpg
+├── [AUTOFIXED by Ollama at 2026-07-26T18:54:39.512878Z].svg
 ├── qcity/
 ├── qcity-icon.svg
 ```

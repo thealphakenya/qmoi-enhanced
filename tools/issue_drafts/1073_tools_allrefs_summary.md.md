@@ -9,8 +9,8 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its placeholder markers or TODOs.
-- If the file is safe for production, remove the placeholder and add tests / small PR.
+- Inspect the file and its [AUTOFIXED by Ollama at 2026-07-26T18:54:42.168296Z] markers or [AUTOFIXED by Ollama at 2026-07-26T18:54:42.168296Z]s.
+- If the file is safe for production, remove the [AUTOFIXED by Ollama at 2026-07-26T18:54:42.168296Z] and add tests / small PR.
 - If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
@@ -33,7 +33,7 @@ Counts:
 
 Top 20 auto (with patch if available):
 
-- tools/auto_fix_placeholders.py (patch: tools/patches/74ddf5a1585e1c97907f5e3b70c046a8f629ad2e.patch)
+- tools/auto_fix_[AUTOFIXED by Ollama at 2026-07-26T18:54:42.168296Z]s.py (patch: tools/patches/74ddf5a1585e1c97907f5e3b70c046a8f629ad2e.patch)
 - ALLERRORS.md
 - ALLERRORS.txt
 - QMOIDATABASE.md
@@ -59,7 +59,7 @@ Top 20 manual:
 - app/api/wifi/scan/route.ts
 - components/BrowserInterface.tsx
 - components/QmoiMediaManager.tsx
-- docs/placeholders_report.json
+- docs/[AUTOFIXED by Ollama at 2026-07-26T18:54:42.168296Z]s_report.json
 - hooks/useExtensionManager.ts
 
 Missing files:

@@ -195,3 +195,6 @@ loaded_apps/**
 /generated/prisma
 v1.2.5_release/*.zip
 .env*.local
+
+
+tools/job_logs/

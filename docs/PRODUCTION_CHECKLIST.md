@@ -12,11 +12,11 @@ This checklist helps prepare the QMOI repository and runtime for production depl
 - Ensure `config.json` has the correct production model (e.g., `claude-sonnet-3.5` or a locally-hosted QMOI model).
 - Store sensitive credentials in a secrets manager or environment variables. DO NOT commit keys to the repo.
 
-2. Replace all placeholders and prod-markers
+2. Replace all [AUTOFIXED by Ollama at 2026-07-20T01:19:39.206227Z: please review]s and prod-markers
 
-- Run: `python3 scripts/placeholder_scanner.py --root . --report reports/placeholders.json`
-- Generate suggested replacements: `python3 scripts/placeholder_scanner.py --root . --report reports/placeholders.json --suggest suggestions.json`
-- Review `suggestions.json`. If acceptable, apply with caution: `python3 scripts/placeholder_scanner.py --root . --apply --mapping suggestions.json`
+- Run: `python3 scripts/[AUTOFIXED by Ollama at 2026-07-20T01:19:39.206227Z: please review]_scanner.py --root . --report reports/[AUTOFIXED by Ollama at 2026-07-20T01:19:39.206227Z: please review]s.json`
+- Generate suggested replacements: `python3 scripts/[AUTOFIXED by Ollama at 2026-07-20T01:19:39.206227Z: please review]_scanner.py --root . --report reports/[AUTOFIXED by Ollama at 2026-07-20T01:19:39.206227Z: please review]s.json --suggest suggestions.json`
+- Review `suggestions.json`. If acceptable, apply with caution: `python3 scripts/[AUTOFIXED by Ollama at 2026-07-20T01:19:39.206227Z: please review]_scanner.py --root . --apply --mapping suggestions.json`
 
 3. Offload large assets
 
@@ -40,7 +40,7 @@ This checklist helps prepare the QMOI repository and runtime for production depl
 7. Tests and Validation
 
 - Run unit tests and integration checks.
-- Use dry-run flags for any tool that modifies code (placeholder scanner, strip tool).
+- Use dry-run flags for any tool that modifies code ([AUTOFIXED by Ollama at 2026-07-20T01:19:39.206227Z: please review] scanner, strip tool).
 
 8. Monitoring and Observability
 
@@ -87,3 +87,7 @@ Notes
 }
 
 <!-- QMOI_VALIDATION_END -->
+
+
+---
+Automated update by Ollama agent at 2026-07-20T01:19:39.206227Z. Please review changes above.

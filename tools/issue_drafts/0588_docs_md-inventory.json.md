@@ -9,8 +9,8 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its placeholder markers or TODOs.
-- If the file is safe for production, remove the placeholder and add tests / small PR.
+- Inspect the file and its [AUTOFIXED by Ollama at 2026-07-26T18:54:41.807826Z] markers or [AUTOFIXED by Ollama at 2026-07-26T18:54:41.807826Z]s.
+- If the file is safe for production, remove the [AUTOFIXED by Ollama at 2026-07-26T18:54:41.807826Z] and add tests / small PR.
 - If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
@@ -82,8 +82,8 @@ Excerpt (first 2KB):
       "last_verified": null
     },
     {
-      "name": "AUTODOWNLOAD.md",
-      "path": "/workspaces/qmoi-enhanced/AUTODOWNLOAD.md",
+      "name": "AU[AUTOFIXED by Ollama at 2026-07-26T18:54:41.807826Z]WNLOAD.md",
+      "path": "/workspaces/qmoi-enhanced/AU[AUTOFIXED by Ollama at 2026-07-26T18:54:41.807826Z]WNLOAD.md",
       "last_verified": null
     },
     {

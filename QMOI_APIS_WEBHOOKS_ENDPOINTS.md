@@ -363,8 +363,8 @@ Endpoints:
 
 ==== PART 7: PAYMENT & WALLET APIs ====
 
-Pesapal API:
-Base: https://api.pesapal.com/api/v3
+PayPal API:
+Base: https://api.paypal.com/api/v3
 Endpoints:
 
 - POST /transactions/initiate (initiate payment)

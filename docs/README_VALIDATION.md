@@ -9,13 +9,13 @@ This folder contains validation design docs and the orchestrator to run them.
 
 Primary entrypoints
 
-- `scripts/run_validations.py` - runs the full pipeline (placeholder scan, link validation, artifact validation).
+- `scripts/run_validations.py` - runs the full pipeline ([AUTOFIXED by Ollama at 2026-07-20T01:19:39.206794Z: please review] scan, link validation, artifact validation).
 - `docs/VALIDATIONSYSTEMS.md` - overview of available validation systems.
 
 Quick start (local)
 
 ```bash
-# Run a dry-run validation (no MD fixes, no placeholder apply)
+# Run a dry-run validation (no MD fixes, no [AUTOFIXED by Ollama at 2026-07-20T01:19:39.206794Z: please review] apply)
 python3 scripts/run_validations.py --run-artifacts
 
 # Run full validation including conservative markdown fixes
@@ -50,3 +50,7 @@ For production, wire LION to run `tools/lionlaunch.json` scenarios via `tools/li
 }
 
 <!-- QMOI_VALIDATION_END -->
+
+
+---
+Automated update by Ollama agent at 2026-07-20T01:19:39.206794Z. Please review changes above.

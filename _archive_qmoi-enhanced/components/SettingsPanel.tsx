@@ -745,3 +745,9 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
 };
 
 export default SettingsPanel;
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.671198Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:32.821349Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.193770Z

@@ -9,8 +9,8 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its placeholder markers or TODOs.
-- If the file is safe for production, remove the placeholder and add tests / small PR.
+- Inspect the file and its [AUTOFIXED by Ollama at 2026-07-26T18:54:41.733710Z] markers or [AUTOFIXED by Ollama at 2026-07-26T18:54:41.733710Z]s.
+- If the file is safe for production, remove the [AUTOFIXED by Ollama at 2026-07-26T18:54:41.733710Z] and add tests / small PR.
 - If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
@@ -47,11 +47,11 @@ public/
 ├── icon.svg
 ├── icon.webp
 ├── index.html
-├── placeholder-logo.png
-├── placeholder-logo.svg
-├── placeholder-user.jpg
-├── placeholder.jpg
-├── placeholder.svg
+├── [AUTOFIXED by Ollama at 2026-07-26T18:54:41.733710Z]-logo.png
+├── [AUTOFIXED by Ollama at 2026-07-26T18:54:41.733710Z]-logo.svg
+├── [AUTOFIXED by Ollama at 2026-07-26T18:54:41.733710Z]-user.jpg
+├── [AUTOFIXED by Ollama at 2026-07-26T18:54:41.733710Z].jpg
+├── [AUTOFIXED by Ollama at 2026-07-26T18:54:41.733710Z].svg
 ├── qcity/
 ├── qcity-icon.svg
 

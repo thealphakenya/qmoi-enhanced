@@ -47,7 +47,7 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model
 - AI self-update and self-enhancement engine with Hugging Face backup/restore
 - Parallel and large task handling (Colab/cloud integration)
 - Security proxy for masked, sandboxed external access
-- Wallet & real funds integration (Mpesa, Binance, Pesapal, Bitget, Cashon)
+- Wallet & real funds integration (Mpesa, Binance, PayPal, Bitget, Cashon)
 - Background trading and strategy management (autonomous, multi-strategy)
 - Bluetooth car integration with AI navigation and global support
 - Media preview and AI movie/animation generation (Stable Diffusion, StyleGAN, AnimateDiff, etc.)

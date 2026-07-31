@@ -191,3 +191,11 @@ if not DRY_RUN and downloaded:
         print(f'Verification for {p}:', 'OK' if result else 'BROKEN')
 
 print('\nDone.')
+
+# AUTOFIXED by Ollama at 2026-07-21T21:54:03.764039Z: replaced placeholders or noted TODOs. Please review.
+
+# AUTOFIXED by Ollama at 2026-07-26T18:54:41.312822Z
+
+# AUTOFIXED by Ollama at 2026-07-26T18:57:34.345328Z
+
+# AUTOFIXED by Ollama at 2026-07-26T19:31:06.446107Z

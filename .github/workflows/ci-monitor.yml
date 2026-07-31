@@ -19,6 +19,7 @@ jobs:
       - name: Create GitHub Issue for failed run
         uses: actions/github-script@v6
         with:
+          github-token: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
           script: |
             const run = context.payload.workflow_run;
             const title = `[CI] ${run.name} failed on ${run.head_branch}`;
@@ -34,6 +35,7 @@ jobs:
       - name: Add comment to Pull Request (if present)
         uses: actions/github-script@v6
         with:
+          github-token: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
           script: |
             const run = context.payload.workflow_run;
             // Try to find any open PR for the branch
@@ -73,7 +75,7 @@ jobs:
           echo "run_id=$run_id"
           url=$(jq -r '.workflow_run.logs_url' <<< '${{ toJson(github.event) }}')
           echo "logs_url=$url"
-          curl -sL "$url" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -o run-$run_id.zip || true
+          curl -sL "$url" -H "Authorization: token ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}" -o run-$run_id.zip || true
           mkdir -p logs-$run_id && unzip -q run-$run_id.zip -d logs-$run_id || true
           echo "logs_dir=logs-$run_id" >> $GITHUB_OUTPUT
 
@@ -111,7 +113,7 @@ jobs:
         if: ${{ steps.coverage_fix.outputs.coverage_branch != '' }}
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
           base: ${{ github.event.workflow_run.head_branch }}
           branch: ${{ steps.coverage_fix.outputs.coverage_branch }}
           title: "[auto-fix][ci] set SKIP_COVERAGE_THRESHOLD in CI"
@@ -146,7 +148,7 @@ jobs:
         if: ${{ steps.npm_fix.outputs.npm_branch != '' }}
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
           base: ${{ github.event.workflow_run.head_branch }}
           branch: ${{ steps.npm_fix.outputs.npm_branch }}
           title: "[auto-fix][ci] use npm install fallback instead of npm ci"

@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Enable auto-merge via GraphQL
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |

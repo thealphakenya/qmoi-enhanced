@@ -1,0 +1,32 @@
+import * as React from "react";
+import { cn } from "@/lib/utils";
+
+export type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
+
+const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+  ({ className, ...props }, ref) => {
+    return (
+      <textarea
+        className={cn(
+          "flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+          className,
+        )}
+        ref={ref}
+        {...props}
+      />
+    );
+  },
+);
+Textarea.displayName = "Textarea";
+
+export { Textarea };
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.186648Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.999436Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.145515Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.582672Z
+
+// AUTOFIXED by Ollama at 2026-07-28T23:33:47.311034Z

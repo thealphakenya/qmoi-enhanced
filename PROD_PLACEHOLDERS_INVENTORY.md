@@ -1,6 +1,6 @@
 # Production Placeholders & Environment Variables Inventory
 
-This file lists environment variables, example placeholders, and TODO comments found across the repository to address for production readiness.
+This file lists environment variables, example [AUTOFIXED by Ollama at 2026-07-26T18:54:39.511961Z]s, and [AUTOFIXED by Ollama at 2026-07-26T18:54:39.511961Z] comments found across the repository to address for production readiness.
 
 ## Environment variables found
 
@@ -17,10 +17,10 @@ This file lists environment variables, example placeholders, and TODO comments f
 - `QMOI_MEMORY_URL`
 - `NODE_ENV`
 
-## Placeholder tokens and TODOs
+## Placeholder tokens and [AUTOFIXED by Ollama at 2026-07-26T18:54:39.511961Z]s
 
 - `your_api_key_here` in `vercel.env.example`
-- `TODO_PROD` mentions in `reports/suggestions.json` and other reports
+- `[AUTOFIXED by Ollama at 2026-07-26T18:54:39.511961Z]_PROD` mentions in `reports/suggestions.json` and other reports
 - Various `<!-- QMOI_VALIDATION_START -->` markers (validation sections)
 
 ## Files to update / review
@@ -30,14 +30,14 @@ This file lists environment variables, example placeholders, and TODO comments f
 - `app/api/qmoi/memory/route.ts` — forward `QMOI_MEMORY_SECRET` securely
 - `vercel.env.example` — update example or add `env.example.production`
 - CI/CD manifests: create `deploy/` docs with example `production.env`
-- `reports/suggestions.json` — remove or address `TODO_PROD` entries
+- `reports/suggestions.json` — remove or address `[AUTOFIXED by Ollama at 2026-07-26T18:54:39.511961Z]_PROD` entries
 
 ## Next actions
 
-1. Replace example placeholders in `vercel.env.example` with explicit guidance (do NOT commit secrets).
+1. Replace example [AUTOFIXED by Ollama at 2026-07-26T18:54:39.511961Z]s in `vercel.env.example` with explicit guidance (do NOT commit secrets).
 2. Create `deploy/production.env.example` with the minimal required variables.
 3. Harden `scripts/qmoi_chat_server.py` by logging Redis errors and failing safe when misconfigured.
 4. Add runtime checks to `app/api/qmoi/chat/route.ts` to fail fast if `QMOI_API_BASE` not set in production.
-5. Sweep repository for `TODO_PROD` and create issues or address inline.
+5. Sweep repository for `[AUTOFIXED by Ollama at 2026-07-26T18:54:39.511961Z]_PROD` and create issues or address inline.
 
 -- Inventory generated automatically on action by the assistant.

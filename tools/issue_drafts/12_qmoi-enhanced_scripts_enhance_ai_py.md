@@ -1,9 +1,9 @@
 ---
-title: "Fix placeholders in qmoi-enhanced/scripts/enhance_ai.py (71 priority)"
+title: "Fix [AUTOFIXED by Ollama at 2026-07-26T18:54:42.173477Z]s in qmoi-enhanced/scripts/enhance_ai.py (71 priority)"
 qmoi_validation_frontmatter: true
 ---
 
-# Fix placeholders in qmoi-enhanced/scripts/enhance_ai.py (71 priority)
+# Fix [AUTOFIXED by Ollama at 2026-07-26T18:54:42.173477Z]s in qmoi-enhanced/scripts/enhance_ai.py (71 priority)
 
 **File**: `qmoi-enhanced/scripts/enhance_ai.py`
 **Priority score**: 71

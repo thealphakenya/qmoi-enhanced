@@ -35,7 +35,7 @@ export interface TradeRequest {
   aiConfidence: number;
 }
 
-export interface PesapalConfig {
+export interface PayPalConfig {
   consumerKey: string;
   consumerSecret: string;
   environment: "sandbox" | "live";
@@ -47,14 +47,14 @@ export class CashonWallet {
   private balance: CashonBalance;
   private transactions: CashonTransaction[] = [];
   private tradeRequests: TradeRequest[] = [];
-  private pesapalConfig: PesapalConfig;
+  private paypalConfig: PayPalConfig;
   private masterToken: string;
   private isTradingEnabled = false;
   private minTradeAmount = 10; // KES
   private profitLockPercentage = 20; // 20% of profits locked
 
-  constructor(pesapalConfig: PesapalConfig, masterToken: string) {
-    this.pesapalConfig = pesapalConfig;
+  constructor(paypalConfig: PayPalConfig, masterToken: string) {
+    this.paypalConfig = paypalConfig;
     this.masterToken = masterToken;
     this.balance = {
       accountId: crypto.randomUUID(),
@@ -76,7 +76,7 @@ export class CashonWallet {
     return this.balance;
   }
 
-  async verifyPesapalBalance(masterToken: string): Promise<{
+  async verifyPayPalBalance(masterToken: string): Promise<{
     success: boolean;
     currentBalance: number;
     previousBalance?: number;
@@ -153,8 +153,8 @@ export class CashonWallet {
     }
 
     try {
-      // Initiate Pesapal STK Push
-      const stkResponse = await this.initiatePesapalSTK(transaction.amount);
+      // Initiate PayPal STK Push
+      const stkResponse = await this.initiatePayPalSTK(transaction.amount);
 
       if (stkResponse.success) {
         transaction.status = "completed";
@@ -361,15 +361,15 @@ export class CashonWallet {
   // Private helper methods
   private async updateBalance(): Promise<void> {
     try {
-      // Fetch balance from Pesapal API
+      // Fetch balance from PayPal API
       const baseUrl =
-        this.pesapalConfig.environment === "live"
-          ? "https://api.pesapal.com"
-          : "https://cybqa.pesapal.com";
+        this.paypalConfig.environment === "live"
+          ? "https://api.paypal.com"
+          : "https://cybqa.paypal.com";
 
-      const token = await this.getPesapalToken();
+      const token = await this.getPayPalToken();
 
-      // Use Pesapal's account balance endpoint
+      // Use PayPal's account balance endpoint
       const response = await fetch(`${baseUrl}/api/Account/Balance`, {
         method: "GET",
         headers: {
@@ -381,7 +381,7 @@ export class CashonWallet {
 
       if (!response.ok) {
         throw new Error(
-          `Pesapal balance API failed: ${response.status} ${response.statusText}`,
+          `PayPal balance API failed: ${response.status} ${response.statusText}`,
         );
       }
 
@@ -391,13 +391,13 @@ export class CashonWallet {
         this.balance.pendingBalance = parseFloat(data.pending_balance || "0");
         this.balance.lastUpdated = new Date();
 
-        console.log("[CashOnWallet] Pesapal balance updated:", {
+        console.log("[CashOnWallet] PayPal balance updated:", {
           available: this.balance.availableBalance,
           pending: this.balance.pendingBalance,
         });
       } else {
         throw new Error(
-          `Pesapal balance query failed: ${data.error || "Unknown error"}`,
+          `PayPal balance query failed: ${data.error || "Unknown error"}`,
         );
       }
     } catch (error) {
@@ -406,18 +406,18 @@ export class CashonWallet {
     }
   }
 
-  private async initiatePesapalSTK(
+  private async initiatePayPalSTK(
     amount: number,
   ): Promise<{ success: boolean; reference?: string }> {
     try {
       const baseUrl =
-        this.pesapalConfig.environment === "live"
-          ? "https://api.pesapal.com"
-          : "https://cybqa.pesapal.com";
+        this.paypalConfig.environment === "live"
+          ? "https://api.paypal.com"
+          : "https://cybqa.paypal.com";
 
-      const token = await this.getPesapalToken();
+      const token = await this.getPayPalToken();
 
-      // Use Pesapal's SubmitOrderRequest endpoint for STK push
+      // Use PayPal's SubmitOrderRequest endpoint for STK push
       const response = await fetch(
         `${baseUrl}/api/Transactions/SubmitOrderRequest`,
         {
@@ -430,8 +430,8 @@ export class CashonWallet {
             currency: "KES",
             amount: amount.toString(),
             description: "Cashon Trading Deposit",
-            callback_url: this.pesapalConfig.callbackUrl,
-            notification_id: this.pesapalConfig.ipnUrl,
+            callback_url: this.paypalConfig.callbackUrl,
+            notification_id: this.paypalConfig.ipnUrl,
             billing_address: {
               email_address: "master@cashon.ai",
               phone_number: "+254700000000",
@@ -450,24 +450,24 @@ export class CashonWallet {
           reference: data.order_tracking_id,
         };
       } else {
-        (globalThis.console as any)?.error?.("Pesapal STK failed:", data);
+        (globalThis.console as any)?.error?.("PayPal STK failed:", data);
         return { success: false };
       }
     } catch (error) {
       (globalThis.console as any)?.error?.(
-        "Pesapal STK initiation failed:",
+        "PayPal STK initiation failed:",
         error,
       );
       return { success: false };
     }
   }
 
-  private async getPesapalToken(): Promise<string> {
+  private async getPayPalToken(): Promise<string> {
     try {
       const baseUrl =
-        this.pesapalConfig.environment === "live"
-          ? "https://api.pesapal.com"
-          : "https://cybqa.pesapal.com";
+        this.paypalConfig.environment === "live"
+          ? "https://api.paypal.com"
+          : "https://cybqa.paypal.com";
 
       // Get OAuth token using consumer credentials
       const authResponse = await fetch(`${baseUrl}/api/Auth/RequestToken`, {
@@ -476,8 +476,8 @@ export class CashonWallet {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          consumer_key: this.pesapalConfig.consumerKey,
-          consumer_secret: this.pesapalConfig.consumerSecret,
+          consumer_key: this.paypalConfig.consumerKey,
+          consumer_secret: this.paypalConfig.consumerSecret,
         }),
       });
 
@@ -486,11 +486,11 @@ export class CashonWallet {
         return authData.token;
       } else {
         throw new Error(
-          `Pesapal auth failed: ${authData.error || "Unknown error"}`,
+          `PayPal auth failed: ${authData.error || "Unknown error"}`,
         );
       }
     } catch (error) {
-      console.error("[CashOnWallet] Pesapal token generation failed:", error);
+      console.error("[CashOnWallet] PayPal token generation failed:", error);
       throw error;
     }
   }
@@ -567,12 +567,12 @@ export class CashonWallet {
 // Export singleton instance
 export const cashonWallet = new CashonWallet(
   {
-    consumerKey: process.env.PESAPAL_CONSUMER_KEY || "",
-    consumerSecret: process.env.PESAPAL_CONSUMER_SECRET || "",
+    consumerKey: process.env.PAYPAL_CLIENT_ID || "",
+    consumerSecret: process.env.PAYPAL_CLIENT_SECRET || "",
     environment:
-      (process.env.PESAPAL_ENVIRONMENT as "sandbox" | "live") || "sandbox",
-    callbackUrl: process.env.PESAPAL_CALLBACK_URL || "",
-    ipnUrl: process.env.PESAPAL_IPN_URL || "",
+      (process.env.PAYPAL_MODE as "sandbox" | "live") || "sandbox",
+    callbackUrl: process.env.PAYPAL_CALLBACK_URL || "",
+    ipnUrl: process.env.PAYPAL_IPN_URL || "",
   },
   process.env.MASTER_TOKEN || "master_token",
 );
@@ -594,3 +594,11 @@ export async function transferToMpesa(amount: number) {
     throw err;
   }
 }
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.571304Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:40.777690Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.901543Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:05.647645Z

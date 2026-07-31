@@ -78,7 +78,7 @@ Backend: Next.js API Routes + Node.js
 Database: PostgreSQL/SQLite + Prisma ORM
 Cache: Redis
 Auth: JWT + bcrypt
-Payments: M-Pesa + Pesapal + Stripe
+Payments: M-Pesa + PayPal + Stripe
 Email: SendGrid
 Notifications: Twilio, Telegram, WhatsApp
 Container: Docker + Docker Compose
@@ -153,7 +153,7 @@ qmoi-enhanced/
 ### Payment Integration
 
 - ✅ M-Pesa integration
-- ✅ Pesapal integration
+- ✅ PayPal integration
 - ✅ Stripe integration
 - ✅ Webhook handlers
 - ✅ Transaction tracking

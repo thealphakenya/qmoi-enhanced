@@ -96,12 +96,12 @@ class EnhancedCredentialManager:
                 'api_secret': os.environ.get('BITGET_API_SECRET', ''),
                 'passphrase': os.environ.get('BITGET_API_PASSPHRASE', '')
             },
-            'pesapal': {
-                'consumer_key': os.environ.get('PESAPAL_CONSUMER_KEY', ''),
-                'consumer_secret': os.environ.get('PESAPAL_CONSUMER_SECRET', ''),
-                'environment': os.environ.get('PESAPAL_ENVIRONMENT', 'sandbox'),
-                'callback_url': os.environ.get('PESAPAL_CALLBACK_URL', ''),
-                'ipn_url': os.environ.get('PESAPAL_IPN_URL', '')
+            'paypal': {
+                'consumer_key': os.environ.get('PAYPAL_CLIENT_ID', ''),
+                'consumer_secret': os.environ.get('PAYPAL_CLIENT_SECRET', ''),
+                'environment': os.environ.get('PAYPAL_MODE', 'sandbox'),
+                'callback_url': os.environ.get('PAYPAL_CALLBACK_URL', ''),
+                'ipn_url': os.environ.get('PAYPAL_IPN_URL', '')
             },
             'megavault': {
                 'api_key': os.environ.get('MEGAVAULT_API_KEY', ''),
@@ -260,9 +260,9 @@ class EnhancedCredentialManager:
                 'api_secret': self._generate_secret('bitget'),
                 'passphrase': self._generate_passphrase('bitget')
             },
-            'pesapal': {
-                'consumer_key': self._generate_api_key('pesapal'),
-                'consumer_secret': self._generate_secret('pesapal')
+            'paypal': {
+                'consumer_key': self._generate_api_key('paypal'),
+                'consumer_secret': self._generate_secret('paypal')
             },
             'megavault': {
                 'api_key': self._generate_api_key('megavault')
@@ -357,30 +357,30 @@ class EnhancedCredentialManager:
         else:
             validation['bitget'] = False
         
-        # Validate Pesapal
-        pesapal_creds = self.get_credentials('pesapal')
-        if all(k in pesapal_creds and pesapal_creds[k] 
+        # Validate PayPal
+        paypal_creds = self.get_credentials('paypal')
+        if all(k in paypal_creds and paypal_creds[k] 
                for k in ['consumer_key', 'consumer_secret']):
             try:
                 base_url = (
-                    'https://api.pesapal.com' 
-                    if pesapal_creds['environment'] == 'production' 
-                    else 'https://sandbox.pesapal.com'
+                    'https://api.paypal.com' 
+                    if paypal_creds['environment'] == 'production' 
+                    else 'https://sandbox.paypal.com'
                 )
                 
                 async with aiohttp.ClientSession() as session:
                     async with session.post(
                         f"{base_url}/v3/api/Auth/RequestToken",
                         json={
-                            'consumer_key': pesapal_creds['consumer_key'],
-                            'consumer_secret': pesapal_creds['consumer_secret']
+                            'consumer_key': paypal_creds['consumer_key'],
+                            'consumer_secret': paypal_creds['consumer_secret']
                         }
                     ) as response:
-                        validation['pesapal'] = response.status == 200
+                        validation['paypal'] = response.status == 200
             except:
-                validation['pesapal'] = False
+                validation['paypal'] = False
         else:
-            validation['pesapal'] = False
+            validation['paypal'] = False
         
         # Validate Megavault
         megavault_creds = self.get_credentials('megavault')

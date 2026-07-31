@@ -1,0 +1,170 @@
+name: Ollama autonomous agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_iterations:
+        description: Maximum autonomous loop iterations before requeueing
+        required: false
+        type: string
+        default: "200"
+      max_per_iteration:
+        description: Maximum pending items to process per iteration
+        required: false
+        type: string
+        default: "200"
+      max_requeues:
+        description: Maximum additional workflow re-runs while pending work remains
+        required: false
+        type: string
+        default: "8"
+      allow_requeue:
+        description: Requeue the workflow automatically while work remains
+        required: false
+        type: string
+        default: "true"
+  workflow_call:
+
+permissions:
+  actions: write
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: ollama-autonomous-${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  autonomous-agent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      AUTO_CONTINUE: "1"
+      AUTO_CONTINUE_MAX: ${{ github.event.inputs.max_iterations || vars.OLLAMA_MAX_ITERATIONS || '200' }}
+      AUTO_CONTINUE_BATCH: ${{ github.event.inputs.max_per_iteration || vars.OLLAMA_MAX_BATCH || '200' }}
+      AUTO_PUSH: "1"
+      TARGET_BRANCH: "${{ github.ref_name }}"
+      AUTO_MERGE: "0"
+      GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
+      GH_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
+      OLLAMA_TIMEOUT: "600"
+      OLLAMA_BATCH_SIZE: "20"
+      OLLAMA_MAX_WORKERS: "8"
+      OLLAMA_MAX_REQUEUES: ${{ github.event.inputs.max_requeues || vars.OLLAMA_MAX_REQUEUES || '8' }}
+      OLLAMA_REQUEUE: ${{ github.event.inputs.allow_requeue || vars.OLLAMA_REQUEUE || 'true' }}
+      QMOI_CONFIDENCE_THRESHOLD: ${{ vars.QMOI_CONFIDENCE_THRESHOLD || '0' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install pytest requests
+
+      - name: Configure git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Run regression checks
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          python -m pytest -q tests/test_ollama_autonomous_agent.py || true
+
+      - name: Run Ollama autonomous agent
+        id: run_agent
+        continue-on-error: true
+        env:
+          RUN_FULL_TESTS: "1"
+        run: |
+          set -euo pipefail
+          status=0
+          python scripts/ollama_autonomous_agent.py 2>&1 | tee ollama-autonomous-agent.log || status=$?
+          echo "agent_exit_code=$status" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Requeue workflow if pending work remains
+        if: always()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ "${OLLAMA_REQUEUE:-true}" != "true" ]; then
+            echo "Requeue disabled; skipping dispatch."
+            exit 0
+          fi
+
+          if [ ! -f OLLAMA_COMPLETION_REPORT.md ]; then
+            echo "No completion report found; skipping requeue."
+            exit 0
+          fi
+
+          pending=$(grep -E 'Pending items remaining:' OLLAMA_COMPLETION_REPORT.md | tail -n1 | sed -E 's/.*: ([0-9]+).*/\1/' || true)
+          pending="${pending:-0}"
+          echo "Pending items remaining: ${pending}"
+
+          if [ "$pending" = "0" ]; then
+            echo "No pending work remains; skipping requeue."
+            exit 0
+          fi
+
+          max_requeues="${OLLAMA_MAX_REQUEUES:-8}"
+          if [ "$max_requeues" -le 0 ]; then
+            echo "Requeue limit reached; skipping."
+            exit 0
+          fi
+
+          echo "Pending work remains; dispatching another workflow run."
+          gh workflow run "Ollama autonomous agent" \
+            --ref "${GITHUB_REF_NAME}" \
+            -f max_iterations="${AUTO_CONTINUE_MAX:-200}" \
+            -f max_per_iteration="${AUTO_CONTINUE_BATCH:-200}" \
+            -f max_requeues="$((max_requeues - 1))" \
+            -f allow_requeue=true
+
+      - name: Upload Ollama live logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ollama-autonomous-agent-logs
+          path: |
+            ollama-autonomous-agent.log
+            OLLAMA_ACTIVITY_FEED.md
+          if-no-files-found: ignore
+
+      - name: Publish workflow summary
+        if: always()
+        continue-on-error: true
+        uses: actions/github-script@v7
+        env:
+          GH_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          GH_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const feed = path.join(process.cwd(), 'OLLAMA_ACTIVITY_FEED.md');
+            const body = fs.existsSync(feed) ? fs.readFileSync(feed, 'utf8') : 'Ollama run completed.';
+            core.summary.addRaw(`## Ollama autonomous run\n\n${body.slice(0, 4000)}`);
+            await core.summary.write();
+
+      - name: Finalize state
+        run: |
+          if git status --porcelain | grep .; then
+            git add .
+            git commit -m "chore: sync autonomous agent manifests and resume state" || true
+            git push origin HEAD:${{ env.TARGET_BRANCH }} || echo "Push to ${TARGET_BRANCH} failed; check permissions or branch protection."
+          fi

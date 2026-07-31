@@ -86,3 +86,9 @@ export const DownloadManager: React.FC = () => {
 };
 
 DownloadManager.displayName = "DownloadManager";
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.654659Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:32.804283Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.176153Z

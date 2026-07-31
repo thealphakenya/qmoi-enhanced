@@ -4,10 +4,10 @@
 // Usage: node scripts/validate_payment_credentials.js
 
 const required = {
-  pesapal: [
-    "PESAPAL_CONSUMER_KEY",
-    "PESAPAL_CONSUMER_SECRET",
-    "PESAPAL_ENVIRONMENT",
+  paypal: [
+    "PAYPAL_CLIENT_ID",
+    "PAYPAL_CLIENT_SECRET",
+    "PAYPAL_MODE",
   ],
   mpesa: ["MPESA_CONSUMER_KEY", "MPESA_CONSUMER_SECRET", "MPESA_PASSKEY"],
   cashon: ["CASHON_MPESA_NUMBER", "MASTER_TOKEN"],
@@ -57,3 +57,11 @@ function run() {
 }
 
 if (require.main === module) run();
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:41.335276Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:34.370849Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:06.503095Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:39:17.555147Z

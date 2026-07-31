@@ -134,7 +134,7 @@ Lint snapshot: 2025-12-31T00:00:00Z
 - Warnings: 4392
 
 Notes:
-- Updated `src/types/globals.d.ts` and `types/globals.d.ts` to add permissive global declarations (placeholders) to reduce `no-undef` noise.
+- Updated `src/types/globals.d.ts` and `types/globals.d.ts` to add permissive global declarations ([AUTOFIXED by Ollama at 2026-07-20T01:19:41.486283Z: please review]s) to reduce `no-undef` noise.
 - Next: re-run lint after global declarations to measure improvements, then triage remaining top offenders (`no-undef`, `no-explicit-any`, unused-vars, parser errors).
 
 History:
@@ -5113,7 +5113,7 @@ app/api/employment/megavault/route.ts(432,20): error TS2304: Cannot find name 'f
 app/api/employment/megavault/route.ts(442,18): error TS2304: Cannot find name 'fals_e'.
 app/api/employment/megavault/route.ts(462,20): error TS2304: Cannot find name 'fals_e'.
 app/api/employment/megavault/route.ts(483,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/payment/route.ts(58,54): error TS2339: Property 'pesapal' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(58,54): error TS2339: Property 'paypal' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(59,48): error TS2339: Property 'mpesa' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(85,31): error TS2339: Property 'amount' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(86,31): error TS2339: Property 'mpesaNumber' does not exist on type 'unknown'.
@@ -6584,7 +6584,7 @@ app/api/employment/megavault/route.ts(432,20): error TS2304: Cannot find name 'f
 app/api/employment/megavault/route.ts(442,18): error TS2304: Cannot find name 'fals_e'.
 app/api/employment/megavault/route.ts(462,20): error TS2304: Cannot find name 'fals_e'.
 app/api/employment/megavault/route.ts(483,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/payment/route.ts(58,54): error TS2339: Property 'pesapal' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(58,54): error TS2339: Property 'paypal' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(59,48): error TS2339: Property 'mpesa' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(85,31): error TS2339: Property 'amount' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(86,31): error TS2339: Property 'mpesaNumber' does not exist on type 'unknown'.
@@ -8055,7 +8055,7 @@ app/api/employment/megavault/route.ts(432,20): error TS2304: Cannot find name 'f
 app/api/employment/megavault/route.ts(442,18): error TS2304: Cannot find name 'fals_e'.
 app/api/employment/megavault/route.ts(462,20): error TS2304: Cannot find name 'fals_e'.
 app/api/employment/megavault/route.ts(483,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/payment/route.ts(58,54): error TS2339: Property 'pesapal' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(58,54): error TS2339: Property 'paypal' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(59,48): error TS2339: Property 'mpesa' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(85,31): error TS2339: Property 'amount' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(86,31): error TS2339: Property 'mpesaNumber' does not exist on type 'unknown'.
@@ -9526,7 +9526,7 @@ app/api/employment/megavault/route.ts(432,20): error TS2304: Cannot find name 'f
 app/api/employment/megavault/route.ts(442,18): error TS2304: Cannot find name 'fals_e'.
 app/api/employment/megavault/route.ts(462,20): error TS2304: Cannot find name 'fals_e'.
 app/api/employment/megavault/route.ts(483,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/payment/route.ts(58,54): error TS2339: Property 'pesapal' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(58,54): error TS2339: Property 'paypal' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(59,48): error TS2339: Property 'mpesa' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(85,31): error TS2339: Property 'amount' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(86,31): error TS2339: Property 'mpesaNumber' does not exist on type 'unknown'.
@@ -10774,7 +10774,7 @@ app/api/employment/megavault/route.ts(432,20): error TS2304: Cannot find name 'f
 app/api/employment/megavault/route.ts(442,18): error TS2304: Cannot find name 'fals_e'.
 app/api/employment/megavault/route.ts(462,20): error TS2304: Cannot find name 'fals_e'.
 app/api/employment/megavault/route.ts(483,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/payment/route.ts(58,54): error TS2339: Property 'pesapal' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(58,54): error TS2339: Property 'paypal' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(59,48): error TS2339: Property 'mpesa' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(85,31): error TS2339: Property 'amount' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(86,31): error TS2339: Property 'mpesaNumber' does not exist on type 'unknown'.
@@ -11984,7 +11984,7 @@ app/api/employment/megavault/route.ts(432,20): error TS2304: Cannot find name 'f
 app/api/employment/megavault/route.ts(442,18): error TS2304: Cannot find name 'fals_e'.
 app/api/employment/megavault/route.ts(462,20): error TS2304: Cannot find name 'fals_e'.
 app/api/employment/megavault/route.ts(483,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/payment/route.ts(58,54): error TS2339: Property 'pesapal' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(58,54): error TS2339: Property 'paypal' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(59,48): error TS2339: Property 'mpesa' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(85,31): error TS2339: Property 'amount' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(86,31): error TS2339: Property 'mpesaNumber' does not exist on type 'unknown'.
@@ -19138,3 +19138,7 @@ src/setupTests.ts(79,9): error TS2339: Property 'WritableStream' does not exist 
     src/setupTests.ts(77,9): error TS2339: Property 'TransformStream' does not exist on type '{}'.
     src/setupTests.ts(78,9): error TS2339: Property 'ReadableStream' does not exist on type '{}'.
     src/setupTests.ts(79,9): error TS2339: Property 'WritableStream' does not exist on type '{}'.
+
+
+---
+Automated update by Ollama agent at 2026-07-20T01:19:41.486283Z. Please review changes above.

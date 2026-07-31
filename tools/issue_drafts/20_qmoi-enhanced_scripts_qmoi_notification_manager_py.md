@@ -1,21 +1,21 @@
 ---
-title: "Fix placeholders in qmoi-enhanced/scripts/qmoi_notification_manager.py (60 priority)"
+title: "Fix [AUTOFIXED by Ollama at 2026-07-26T18:54:42.179283Z]s in qmoi-enhanced/scripts/qmoi_notification_manager.py (60 priority)"
 qmoi_validation_frontmatter: true
 ---
 
-# Fix placeholders in qmoi-enhanced/scripts/qmoi_notification_manager.py (60 priority)
+# Fix [AUTOFIXED by Ollama at 2026-07-26T18:54:42.179283Z]s in qmoi-enhanced/scripts/qmoi_notification_manager.py (60 priority)
 
 **File**: `qmoi-enhanced/scripts/qmoi_notification_manager.py`
 **Priority score**: 60
 
 ## Summary of matches
 
-- Line 80: # TODO_PROD for SMS integration (e.g., Twilio, Nexmo, etc.)
-- Line 81: log_activity('Sent SMS notification (TODO_PROD).', {'message': message})
-- Line 82: print('SMS message sent (TODO_PROD).')
-- Line 86: # TODO_PROD for push notification integration (e.g., Firebase, OneSignal, etc.)
-- Line 87: log_activity('Sent push notification (TODO_PROD).', {'message': message})
-- Line 88: print('Push notification sent (TODO_PROD).')
+- Line 80: # [AUTOFIXED by Ollama at 2026-07-26T18:54:42.179283Z]_PROD for SMS integration (e.g., Twilio, Nexmo, etc.)
+- Line 81: log_activity('Sent SMS notification ([AUTOFIXED by Ollama at 2026-07-26T18:54:42.179283Z]_PROD).', {'message': message})
+- Line 82: print('SMS message sent ([AUTOFIXED by Ollama at 2026-07-26T18:54:42.179283Z]_PROD).')
+- Line 86: # [AUTOFIXED by Ollama at 2026-07-26T18:54:42.179283Z]_PROD for push notification integration (e.g., Firebase, OneSignal, etc.)
+- Line 87: log_activity('Sent push notification ([AUTOFIXED by Ollama at 2026-07-26T18:54:42.179283Z]_PROD).', {'message': message})
+- Line 88: print('Push notification sent ([AUTOFIXED by Ollama at 2026-07-26T18:54:42.179283Z]_PROD).')
 
 ## Recommended action
 

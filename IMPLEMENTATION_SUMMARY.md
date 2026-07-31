@@ -50,7 +50,7 @@ QMOI has been enhanced with a complete Master Control System that provides:
 - [x] Financial data API endpoint
 - [x] Revenue tracking ($323,999 verified)
 - [x] Fund storage location tracking (4 locations)
-- [x] Payment processor integration (Pesapal, PayPal, Crypto, Banks)
+- [x] Payment processor integration (PayPal, PayPal, Crypto, Banks)
 - [x] Trading system integration (Bitget exchange)
 - [x] Wallet management system
 - [x] Financial audit documentation
@@ -192,7 +192,7 @@ From audit report (January 24, 2026):
 
 ### Fund Storage
 
-1. **CashOn Wallet** (Pesapal - Kenya)
+1. **CashOn Wallet** (PayPal - Kenya)
 2. **PayPal Business** (USA/Singapore)
 3. **Cryptocurrency Wallets** (Cold Storage)
 4. **Bank Accounts** (KCB Kenya, Standard Chartered Singapore)
@@ -281,7 +281,7 @@ QMOI_BOOTSTRAP_LOG_RETENTION=30        # 30 days
 
 # Financial Integration
 BITGET_API_KEY=           # Trading exchange
-PESAPAL_CLIENT_ID=        # Payment processor
+PAYPAL_CLIENT_ID=        # Payment processor
 PAYPAL_CLIENT_ID=         # Payment processor
 
 # Security
@@ -331,7 +331,7 @@ JWT_SECRET=               # Session secret
 
 ### Financial Integration
 
-✅ Pesapal wallet  
+✅ PayPal wallet  
 ✅ PayPal integration  
 ✅ Cryptocurrency wallets  
 ✅ Bank accounts  
@@ -402,7 +402,7 @@ QMOI is now equipped with a complete Master Control System that enables:
 
 ### External Integrations
 
-- **Payments**: M-Pesa (Safaricom), Pesapal, Stripe
+- **Payments**: M-Pesa (Safaricom), PayPal, Stripe
 - **Email**: SendGrid (transactional)
 - **SMS/WhatsApp**: Twilio
 - **Chat**: Telegram Bot API

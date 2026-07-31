@@ -25,7 +25,7 @@ Key features:
 
 Important safety notes:
 
-- This is a conservative scaffold: many repo files still contain placeholders and partial scripts. Review build steps before enabling `--apply` or deploying to production.
+- This is a conservative scaffold: many repo files still contain [AUTOFIXED by Ollama at 2026-07-26T18:54:39.614912Z]s and partial scripts. Review build steps before enabling `--apply` or deploying to production.
 - Secrets must be provisioned securely to runners (use keyring, GitHub Secrets, or a cloud KMS). Do not store raw secrets in the repository.
 
 Quick start (development):
@@ -43,7 +43,7 @@ python qmoi-enhanced/qmoi-enhanced/qmoi_orchestrator.py --dry-run
 
 Next steps to make this production-ready:
 
-- Replace placeholder auto-fixer script references with concrete fixers.
+- Replace [AUTOFIXED by Ollama at 2026-07-26T18:54:39.614912Z] auto-fixer script references with concrete fixers.
 - Integrate with managed secret stores and add transient token fetchers for CI/runners.
 - Replace the passive build driver with per-platform build pipelines and signing workflows.
 

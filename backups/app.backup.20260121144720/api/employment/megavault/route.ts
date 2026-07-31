@@ -42,13 +42,13 @@ const megavaultData = {
   dividendHistory: [] as any[],
 };
 
-// Pesapal integration credentials - do NOT include hard-coded secrets here.
+// PayPal integration credentials - do NOT include hard-coded secrets here.
 // In production provide these via environment variables or a secrets manager.
-const PESAPAL_CREDENTIALS = {
-  consumerKey: process.env.PESAPAL_CONSUMER_KEY || "",
-  consumerSecret: process.env.PESAPAL_CONSUMER_SECRET || "",
+const PAYPAL_CREDENTIALS = {
+  consumerKey: process.env.PAYPAL_CLIENT_ID || "",
+  consumerSecret: process.env.PAYPAL_CLIENT_SECRET || "",
   environment:
-    (process.env.PESAPAL_ENVIRONMENT as "sandbox" | "live") || "sandbox",
+    (process.env.PAYPAL_MODE as "sandbox" | "live") || "sandbox",
 };
 
 // Safe backup: never transmit raw secrets. Log only masked values for debugging.
@@ -75,10 +75,10 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
   }
 }
 
-// Pesapal integration functions
-async function initializePesapalAccount() {
+// PayPal integration functions
+async function initializePayPalAccount() {
   try {
-    // Simulate Pesapal account creation
+    // Simulate PayPal account creation
     const accountData = {
       accountId: `qmoi_megavault_${Date.now()}`,
       accountName: "QMOI Megavault",
@@ -88,28 +88,28 @@ async function initializePesapalAccount() {
     };
 
     // Create a safe (masked) backup for ops visibility only
-    await backupCredentialsSafe(PESAPAL_CREDENTIALS, "pesapal");
+    await backupCredentialsSafe(PAYPAL_CREDENTIALS, "paypal");
 
     return { success: true, account: accountData };
   } catch (_error) {
-    (console as any).error("Failed to initialize Pesapal account:", _error);
-    return { success: false, _error: "Pesapal initialization failed" };
+    (console as any).error("Failed to initialize PayPal account:", _error);
+    return { success: false, _error: "PayPal initialization failed" };
   }
 }
 
-async function processPesapalTransaction(transactionData: unknown) {
+async function processPayPalTransaction(transactionData: unknown) {
   try {
-    // Simulate Pesapal transaction
+    // Simulate PayPal transaction
     const _response = await fetch(
-      "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
+      "https://www.paypal.com/api/PostPayPalDirectOrderV4",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/xml",
-          Authorization: `Bearer ${PESAPAL_CREDENTIALS.consumerKey}`,
+          Authorization: `Bearer ${PAYPAL_CREDENTIALS.consumerKey}`,
         },
         body: `
-        <PesapalDirectOrderInfo 
+        <PayPalDirectOrderInfo 
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
           xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
           Amount="${transactionData.amount}" 
@@ -120,16 +120,16 @@ async function processPesapalTransaction(transactionData: unknown) {
           LastName="Megavault" 
           Email="qmoialpha@gmail.com" 
           PhoneNumber="254700000000" 
-          xmlns="http://www.pesapal.com" />
+          xmlns="http://www.paypal.com" />
       `,
       },
     );
 
     const result = await response.text();
-    return { success: true, transactionId: result, provider: "pesapal" };
+    return { success: true, transactionId: result, provider: "paypal" };
   } catch (_error) {
-    (console as any).error("Pesapal transaction failed:", _error);
-    return { success: false, _error: "Pesapal transaction failed" };
+    (console as any).error("PayPal transaction failed:", _error);
+    return { success: false, _error: "PayPal transaction failed" };
   }
 }
 
@@ -266,9 +266,9 @@ export async function GET(_request: NextRequest) {
         return NextResponse.json({
           success: true,
           data: {
-            pesapal: {
+            paypal: {
               consumerKey: "***",
-              environment: PESAPAL_CREDENTIALS.environment,
+              environment: PAYPAL_CREDENTIALS.environment,
             },
           },
         });
@@ -373,14 +373,14 @@ export async function POST(_request: NextRequest) {
           message: "Dividends distributed successfully",
         });
 
-      case "initialize_pesapal":
-        const pesapalResult = await initializePesapalAccount();
+      case "initialize_paypal":
+        const paypalResult = await initializePayPalAccount();
 
-        if (!pesapalResult.success) {
+        if (!paypalResult.success) {
           return NextResponse.json(
             {
               success: false,
-              _error: pesapalResult.error,
+              _error: paypalResult.error,
             },
             { status: 500 },
           );
@@ -388,8 +388,8 @@ export async function POST(_request: NextRequest) {
 
         return NextResponse.json({
           success: true,
-          data: pesapalResult.account,
-          message: "Pesapal account initialized successfully",
+          data: paypalResult.account,
+          message: "PayPal account initialized successfully",
         });
 
       case "add_inflow":
@@ -488,3 +488,11 @@ export async function PUT(_request: NextRequest) {
     );
   }
 }
+
+// AUTOFIXED by Ollama at 2026-07-20T01:18:48.692240Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.906628Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.051920Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.483495Z

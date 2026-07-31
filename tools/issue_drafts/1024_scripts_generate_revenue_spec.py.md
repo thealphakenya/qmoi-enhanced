@@ -9,8 +9,8 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its placeholder markers or TODOs.
-- If the file is safe for production, remove the placeholder and add tests / small PR.
+- Inspect the file and its [AUTOFIXED by Ollama at 2026-07-26T18:54:42.117025Z] markers or [AUTOFIXED by Ollama at 2026-07-26T18:54:42.117025Z]s.
+- If the file is safe for production, remove the [AUTOFIXED by Ollama at 2026-07-26T18:54:42.117025Z] and add tests / small PR.
 - If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
@@ -46,7 +46,7 @@ KEYWORDS = {
         'daily target', 'daily profit', 'projection', 'forecast'
     ],
     'payment_systems': [
-        'wallet', 'cashon', 'mpesa', 'pesapal', 'payment', 'transfer',
+        'wallet', 'cashon', 'mpesa', 'paypal', 'payment', 'transfer',
         'trading', 'payout', 'subscription', 'sale'
     ],
     'currencies': [

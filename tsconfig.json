@@ -19,7 +19,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@/components/*": ["./components/*"],
+      "@/components/*": ["./src/components/*"],
       "@/app/*": ["./app/*"],
       "@/services/*": ["./src/services/*"],
       "@/adapters/*": ["./src/adapters/*"],
@@ -41,7 +41,7 @@
     "app/**/*",
     "pages/**/*",
     "src/**/*",
-    "components/**/*",
+    "src/components/**/*",
     "lib/**/*",
     "types/**/*",
     ".next/types/**/*.ts"

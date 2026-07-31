@@ -81,7 +81,7 @@ This file lists HTTP endpoints found by scanning the codebase. For each endpoint
 
 Notes:
 
-- Some endpoints are implemented as examples or placeholders; test or confirm each in a staging environment before assuming production readiness.
+- Some endpoints are implemented as examples or [AUTOFIXED by Ollama at 2026-07-20T01:19:39.218253Z: please review]s; test or confirm each in a staging environment before assuming production readiness.
 - The control server contains admin endpoints which may require `QMOI_CONTROL_TOKEN` or other env vars.
 
 Next steps:
@@ -119,3 +119,7 @@ Next steps:
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->
+
+
+---
+Automated update by Ollama agent at 2026-07-20T01:19:39.218253Z. Please review changes above.

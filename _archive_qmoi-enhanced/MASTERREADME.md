@@ -27,7 +27,7 @@ qmoi_validation_frontmatter: true
   - Prioritize and control all device connections
 - **Cashon & Earning Automation:**
   - Real-time fund management and earning strategies
-  - **Master-only:** Only you can access, transfer, or withdraw funds from Cashon (Pesapal, Mpesa, Airtel, etc.)
+  - **Master-only:** Only you can access, transfer, or withdraw funds from Cashon (PayPal, Mpesa, Airtel, etc.)
   - **Approval Flows:** All user wallet requests and fund transfers require your explicit approval (via WhatsApp or dashboard)
   - **Audit & Logging:** All actions are logged, encrypted, and reportable to you
 - **WhatsApp Business Features:**
@@ -69,7 +69,7 @@ Welcome, Master! This guide covers all features, controls, and instructions for 
 
 ### 4. Wallet, Trading, and Financial Controls
 
-- All financial integrations (Pesapal, Mpesa, Airtel, etc.) are master-controlled.
+- All financial integrations (PayPal, Mpesa, Airtel, etc.) are master-controlled.
 - Approve, deny, or review all transactions and wallet requests from any interface.
 - All actions are logged and auditable.
 

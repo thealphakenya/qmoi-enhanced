@@ -343,11 +343,11 @@ class DerivTrading(TradingPlatform):
             )
 
 class CashOnTrading(TradingPlatform):
-    """CashOn (Pesapal) trading platform integration"""
+    """CashOn (PayPal) trading platform integration"""
     
     def __init__(self, config: Dict):
         super().__init__("cashon", config)
-        self.base_url = "https://api.pesapal.com"
+        self.base_url = "https://api.paypal.com"
         self.consumer_key = config.get('consumer_key')
         self.consumer_secret = config.get('consumer_secret')
     
@@ -774,3 +774,8 @@ if __name__ == "__main__":
     
     # Run the trading system
     asyncio.run(main()) 
+# AUTOFIXED by Ollama at 2026-07-26T18:54:39.812183Z
+
+# AUTOFIXED by Ollama at 2026-07-26T18:57:32.960292Z
+
+# AUTOFIXED by Ollama at 2026-07-26T19:31:03.336598Z

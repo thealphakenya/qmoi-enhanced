@@ -48,7 +48,7 @@ QMOI System Automation is an advanced AI-driven system that provides complete au
 
 ### Automated Features
 
-1. **Balance Monitoring**: Real-time Pesapal balance tracking
+1. **Balance Monitoring**: Real-time PayPal balance tracking
 2. **Deposit Requests**: Automatic deposit requests when balance is low
 3. **Strategy Switching**: AI switches strategies based on market conditions
 4. **Portfolio Rebalancing**: Automatic portfolio optimization

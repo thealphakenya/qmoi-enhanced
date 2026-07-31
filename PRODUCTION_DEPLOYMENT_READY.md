@@ -298,7 +298,7 @@ http://localhost:3000/admin/master/login
 
 **Fund Storage Locations (4 Secure Locations):**
 
-1. 🏪 CashOn Wallet (Pesapal - Kenya)
+1. 🏪 CashOn Wallet (PayPal - Kenya)
 2. 💳 PayPal Business Account (USA/Singapore)
 3. ₿ Cryptocurrency Wallets (Ledger Hardware)
 4. 🏛️ Bank Deposits (KCB Kenya, Standard Chartered Singapore)

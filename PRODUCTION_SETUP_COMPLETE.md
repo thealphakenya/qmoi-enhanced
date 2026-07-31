@@ -136,7 +136,7 @@ dist/                 (Optional build directory)
 
    ```bash
    cp .env.production .env.production.local
-   # Edit all placeholder values
+   # Edit all [AUTOFIXED by Ollama at 2026-07-26T18:54:39.511147Z] values
    ```
 
 2. **Choose Deployment Platform**

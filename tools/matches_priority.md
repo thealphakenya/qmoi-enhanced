@@ -1,9 +1,9 @@
 ---
-title: "Prioritized placeholder matches"
+title: "Prioritized [AUTOFIXED by Ollama at 2026-07-26T18:54:42.192786Z] matches"
 qmoi_validation_frontmatter: true
 ---
 
-# Prioritized placeholder matches
+# Prioritized [AUTOFIXED by Ollama at 2026-07-26T18:54:42.192786Z] matches
 
 Top files:
 

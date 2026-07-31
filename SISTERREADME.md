@@ -33,7 +33,7 @@ Welcome, Sister! This guide explains all the features you can use in the Alpha-Q
 
 - Send or receive money using the Wallet tab.
 - **Wallet Requests:** If you need a new wallet, the AI will notify the master. Your wallet will be created only after master approval (via WhatsApp or dashboard).
-- **Fund Transfers:** Only the master can transfer funds out of Cashon (Pesapal). You can view your balance and receive funds, but cannot withdraw without master approval.
+- **Fund Transfers:** Only the master can transfer funds out of Cashon (PayPal). You can view your balance and receive funds, but cannot withdraw without master approval.
 - **Audit & Notifications:** All wallet and fund actions are logged, and you will be notified of approvals or denials.
 
 ### 4. Kids Zone

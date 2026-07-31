@@ -62,7 +62,7 @@ interface DeviceInfo {
 
 ### 3. QMOI Earning Integration
 
-- **Balance Queries**: Check Pesapal balance via WhatsApp
+- **Balance Queries**: Check PayPal balance via WhatsApp
 - **Transaction Updates**: Real-time earning notifications
 - **Investment Reports**: Daily/weekly performance summaries
 - **Emergency Alerts**: Critical financial notifications
@@ -82,7 +82,7 @@ interface DeviceInfo {
 /start - Initialize the bot
 /help - Show available commands
 /status - Check system status
-/balance - Check Pesapal balance
+/balance - Check PayPal balance
 /earnings - View recent earnings
 /portfolio - Check investment portfolio
 ```

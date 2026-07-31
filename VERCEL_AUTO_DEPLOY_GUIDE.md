@@ -119,7 +119,7 @@ MPESA_CONSUMER_KEY=your_actual_key
 MPESA_CONSUMER_SECRET=your_actual_secret
 
 # Security (WILL BE AUTO-GENERATED ON FIRST DEPLOY)
-# These can be left as placeholders, QMOI will auto-generate:
+# These can be left as [AUTOFIXED by Ollama at 2026-07-26T18:54:39.574342Z]s, QMOI will auto-generate:
 QMOI_JWT_SECRET=auto_generated_on_deployment
 QMOI_ENCRYPTION_KEY=auto_generated_on_deployment
 ```

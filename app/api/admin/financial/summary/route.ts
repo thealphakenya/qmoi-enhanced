@@ -29,7 +29,7 @@ function readFinancialData() {
         liquid: 0,
         revenue: 323999,
         storageLocations: [
-          "CashOn Wallet (Pesapal)",
+          "CashOn Wallet (PayPal)",
           "PayPal Business Account",
           "Cryptocurrency Wallets (Ledger)",
           "KCB Bank Fixed Deposit",
@@ -70,7 +70,7 @@ function readFinancialData() {
       liquid: revenue,
       revenue: revenue,
       storageLocations: [
-        "🏪 CashOn Wallet (Pesapal - Kenya)",
+        "🏪 CashOn Wallet (PayPal - Kenya)",
         "💳 PayPal Business Account (USA/Singapore)",
         "₿ Cryptocurrency Wallets (Ledger Hardware)",
         "🏛️ KCB Bank Fixed Deposit (Nairobi, Kenya)",
@@ -92,7 +92,7 @@ function readFinancialData() {
       liquid: 0,
       revenue: 323999,
       storageLocations: [
-        "CashOn Wallet (Pesapal)",
+        "CashOn Wallet (PayPal)",
         "PayPal Business Account",
         "Cryptocurrency Wallets",
         "Bank Deposits",

@@ -77,3 +77,9 @@ describe("useQmoiKernel", () => {
     expect(result.current.error).toMatch(/Failed to run qfix/);
   });
 });
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.839607Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:32.987407Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.364572Z

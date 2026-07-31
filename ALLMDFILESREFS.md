@@ -32,7 +32,7 @@
 /workspaces/qmoi-enhanced/\_archive_qmoi-enhanced/ALLQMOIAUTOEVOLVINGENVS.md
 /workspaces/qmoi-enhanced/\_archive_qmoi-enhanced/ALPHAQMOIENGINE.md
 /workspaces/qmoi-enhanced/\_archive_qmoi-enhanced/API.md
-/workspaces/qmoi-enhanced/\_archive_qmoi-enhanced/AUTODOWNLOAD.md
+/workspaces/qmoi-enhanced/\_archive_qmoi-enhanced/AU[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]WNLOAD.md
 /workspaces/qmoi-enhanced/\_archive_qmoi-enhanced/AUTOGIT.md
 /workspaces/qmoi-enhanced/\_archive_qmoi-enhanced/AUTOLINTREADME.md
 /workspaces/qmoi-enhanced/\_archive_qmoi-enhanced/AUTOMATION-SUMMARY.md
@@ -981,7 +981,7 @@
 /workspaces/qmoi-enhanced/AUTH_SYSTEM_IMPLEMENTATION.md
 /workspaces/qmoi-enhanced/AUTOCLONE_STANDALONE.md
 /workspaces/qmoi-enhanced/AUTODEV_SECRETS.md
-/workspaces/qmoi-enhanced/AUTODOWNLOAD.md
+/workspaces/qmoi-enhanced/AU[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]WNLOAD.md
 /workspaces/qmoi-enhanced/AUTOGIT.md
 /workspaces/qmoi-enhanced/AUTOLINTREADME.md
 /workspaces/qmoi-enhanced/AUTOMATION-SUMMARY.md
@@ -1243,11 +1243,11 @@
 /workspaces/qmoi-enhanced/docs/RELEASE_AUTOMATION.md
 /workspaces/qmoi-enhanced/docs/REVENUE_SPEC.md
 /workspaces/qmoi-enhanced/docs/REVENUE_SPEC.md.generated.md
-/workspaces/qmoi-enhanced/docs/TODOS_ENHANCEMENTS.md
+/workspaces/qmoi-enhanced/docs/[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]S_ENHANCEMENTS.md
 /workspaces/qmoi-enhanced/docs/TROUBLESHOOTING.md
-/workspaces/qmoi-enhanced/docs/validation/ISSUES_MANUAL_TODOS.md
-/workspaces/qmoi-enhanced/docs/validation/MANUAL_TODOS_ACTIONS.md
-/workspaces/qmoi-enhanced/docs/validation/MANUAL_TODOS_TOP10.md
+/workspaces/qmoi-enhanced/docs/validation/ISSUES_MANUAL_[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]S.md
+/workspaces/qmoi-enhanced/docs/validation/MANUAL_[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]S_ACTIONS.md
+/workspaces/qmoi-enhanced/docs/validation/MANUAL_[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]S_TOP10.md
 /workspaces/qmoi-enhanced/docs/validation/NEXT_UPGRADE_PLAN.md
 /workspaces/qmoi-enhanced/docs/validation/PLACEHOLDER_FIX_ACTIONS.md
 /workspaces/qmoi-enhanced/docs/VALIDATION_STRATEGIES.md
@@ -1278,7 +1278,7 @@
 /workspaces/qmoi-enhanced/GITHUB_ACTIONS_AUTOFIX.md
 /workspaces/qmoi-enhanced/GITHUB-ACTIONS-COMPLETE.md
 /workspaces/qmoi-enhanced/GITHUBPAYED.md
-/workspaces/qmoi-enhanced/.github/PR_AUTOTODOS.md
+/workspaces/qmoi-enhanced/.github/PR_AUTO[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]S.md
 /workspaces/qmoi-enhanced/.github/PULL_REQUEST_TEMPLATE/automated_fix.md
 /workspaces/qmoi-enhanced/.github/PULL_REQUEST_TEMPLATE.md
 /workspaces/qmoi-enhanced/GITHUB_RELEASES_COMPLETE_GUIDE.md
@@ -1302,10 +1302,10 @@
 /workspaces/qmoi-enhanced/INSTALL.md
 /workspaces/qmoi-enhanced/INTEGRATION_GUIDE.md
 /workspaces/qmoi-enhanced/INVINSIBLEQMOI.md
-/workspaces/qmoi-enhanced/issues/TODO-PROD-CURATE.md
-/workspaces/qmoi-enhanced/issues/TODO-PROD-PLATFORMS.md
-/workspaces/qmoi-enhanced/issues/TODO-PROD-REPORTS.md
-/workspaces/qmoi-enhanced/issues/TODO-PROD-UIUX.md
+/workspaces/qmoi-enhanced/issues/[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]-PROD-CURATE.md
+/workspaces/qmoi-enhanced/issues/[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]-PROD-PLATFORMS.md
+/workspaces/qmoi-enhanced/issues/[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]-PROD-REPORTS.md
+/workspaces/qmoi-enhanced/issues/[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]-PROD-UIUX.md
 /workspaces/qmoi-enhanced/LANGUAGES.md
 /workspaces/qmoi-enhanced/LEAHWALLET.md
 /workspaces/qmoi-enhanced/link_report.md
@@ -3672,7 +3672,7 @@
 /workspaces/qmoi-enhanced/PHASE_5_COMPLETION.md
 /workspaces/qmoi-enhanced/PHASE_6_EXTENDED_SUMMARY.md
 /workspaces/qmoi-enhanced/PHASE_7_SUMMARY.md
-/workspaces/qmoi-enhanced/placeholder_scan_summary.md
+/workspaces/qmoi-enhanced/[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]_scan_summary.md
 /workspaces/qmoi-enhanced/POSTPRODUCTIONCHECKLIST.md
 /workspaces/qmoi-enhanced/PRE_RELEASE_DISTRIBUTION_PLAN.md
 /workspaces/qmoi-enhanced/PROD_PLACEHOLDERS_INVENTORY.md
@@ -3931,7 +3931,7 @@
 /workspaces/qmoi-enhanced/RELEASE_v1.2.5_STATUS_REPORT.md
 /workspaces/qmoi-enhanced/RELEASE_v1.2.5_VERIFICATION_GUIDE.md
 /workspaces/qmoi-enhanced/RELEASE_VERIFICATION_V1_2_3.md
-/workspaces/qmoi-enhanced/reports/TODO_PROD_AUDIT.md
+/workspaces/qmoi-enhanced/reports/[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]_PROD_AUDIT.md
 /workspaces/qmoi-enhanced/REVENUEGENERATING.md
 /workspaces/qmoi-enhanced/ROLES_AND_PERMISSIONS.md
 /workspaces/qmoi-enhanced/RSAAPIREADME.md
@@ -3976,8 +3976,8 @@
 /workspaces/qmoi-enhanced/TESTING.md
 /workspaces/qmoi-enhanced/TESTREADME.md
 /workspaces/qmoi-enhanced/TESTS.md
-/workspaces/qmoi-enhanced/TODO_PROD_BATCH_PENDING.md
-/workspaces/qmoi-enhanced/TODOS_COMPLETION_VERIFICATION.md
+/workspaces/qmoi-enhanced/[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]_PROD_BATCH_PENDING.md
+/workspaces/qmoi-enhanced/[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]S_COMPLETION_VERIFICATION.md
 /workspaces/qmoi-enhanced/TO-DOs.md
 /workspaces/qmoi-enhanced/tools/allrefs_summary.md
 /workspaces/qmoi-enhanced/tools/autotest_report.md
@@ -4468,7 +4468,7 @@
 /workspaces/qmoi-enhanced/tools/issue_drafts/0480_ALLDEVICESSETTINGS.md.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/0481_ALLERRORSSTATSQMOI.md.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/0482_ALLWALLETSQVS.md.md
-/workspaces/qmoi-enhanced/tools/issue_drafts/0483_AUTODOWNLOAD.md.md
+/workspaces/qmoi-enhanced/tools/issue_drafts/0483_AU[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]WNLOAD.md.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/0484_AUTOGIT.md.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/0485_AUTOLINTREADME.md.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/0486_BUILDAPPSFORALLPLATFORMS.md.md
@@ -4843,7 +4843,7 @@
 /workspaces/qmoi-enhanced/tools/issue_drafts/0851_qmoi-enhanced_ALLDEVICESSETTINGS.md.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/0852_qmoi-enhanced_ALLERRORSSTATSQMOI.md.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/0853_qmoi-enhanced_ALLQMOIAIAPPSREALEASESVERSIONS.md.md
-/workspaces/qmoi-enhanced/tools/issue_drafts/0854_qmoi-enhanced_AUTODOWNLOAD.md.md
+/workspaces/qmoi-enhanced/tools/issue_drafts/0854_qmoi-enhanced_AU[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]WNLOAD.md.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/0855_qmoi-enhanced_AUTOGIT.md.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/0856_qmoi-enhanced_AUTOLINTREADME.md.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/0857_qmoi-enhanced_BUILDAPPSFORALLPLATFORMS.md.md
@@ -4966,7 +4966,7 @@
 /workspaces/qmoi-enhanced/tools/issue_drafts/0973_qmoi-enhanced_src_hooks_useTimezone.ts.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/0974_qmoi-enhanced_src_services_QmoiMemory.ts.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/0975_qmoi-enhanced_test_config.json.md
-/workspaces/qmoi-enhanced/tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_placeholder.py.md
+/workspaces/qmoi-enhanced/tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z].py.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/0977_qmoi-space*.npm-cache**cacache*content-v2_sha512_02_d1_a8497e96eb39c7c4cebea38b288210ed76d0e62f7324915207a1dc0e8f59331e763661f76162b5546ca267cfc2e82f7f47666046b4ba41ffe8998b455e4d.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/0978_qmoi-space*.npm-cache**cacache*content-v2_sha512_05_12_a4cf29119d9bd5f491c4797687b1eb28e483bc0f6ec0306d1bc06915dfc5e8ed8239eecbb6eee440026388319ad245f9f597e784311aac2ba34d0856afb2.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/0979_qmoi-space*.npm-cache**cacache*content-v2_sha512_14_44_b2da51354ccd98e6fcd8250b982652bfe3126a7d85b1b85cb8e8b388fc2aa4b23fc7de9ad0684477c95ce93c22dabecf3032591914eb73647e42b6624673.md
@@ -5061,7 +5061,7 @@
 /workspaces/qmoi-enhanced/tools/issue_drafts/1067_src_hooks_useTimezone.ts.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/1068_test_config.json.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/1069_tests_integration_adapter-dryrun.test.ts.md
-/workspaces/qmoi-enhanced/tools/issue_drafts/1070_tests_security_test_security_placeholder.py.md
+/workspaces/qmoi-enhanced/tools/issue_drafts/1070_tests_security_test_security_[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z].py.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/1071_tests_test_integration.py.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/1072_tests_test_link_systems.py.md
 /workspaces/qmoi-enhanced/tools/issue_drafts/1073_tools_allrefs_summary.md.md
@@ -5086,8 +5086,8 @@
 /workspaces/qmoi-enhanced/tools/link_fix_actions.md
 /workspaces/qmoi-enhanced/tools/link_fix_actions_more.md
 /workspaces/qmoi-enhanced/tools/matches_priority.md
-/workspaces/qmoi-enhanced/tools/placeholder_actions.md
-/workspaces/qmoi-enhanced/tools/placeholder_artifacts/README.md
+/workspaces/qmoi-enhanced/tools/[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]_actions.md
+/workspaces/qmoi-enhanced/tools/[AUTOFIXED by Ollama at 2026-07-26T00:54:34.456395Z]_artifacts/README.md
 /workspaces/qmoi-enhanced/tools/qmoi_lint_report.md
 /workspaces/qmoi-enhanced/tools/release_remediation_guide.md
 /workspaces/qmoi-enhanced/tools/releases_assets_report.md

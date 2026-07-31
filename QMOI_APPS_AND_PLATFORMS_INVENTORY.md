@@ -86,7 +86,7 @@ This is the master inventory of all QMOI applications, their versions, supported
 
 ### ⚠️ qmoi_ai.exe Status
 
-**The Windows executable (`qmoi_ai.exe`) in this repository is currently a 169-byte placeholder stub.** This is used for documentation and link verification purposes only.
+**The Windows executable (`qmoi_ai.exe`) in this repository is currently a 169-byte [AUTOFIXED by Ollama at 2026-07-26T18:54:39.540243Z] stub.** This is used for documentation and link verification purposes only.
 
 **To obtain a working Windows build:**
 

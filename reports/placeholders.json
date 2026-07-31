@@ -13155,7 +13155,7 @@
   {
     "file": "src/services/AIRequestRouter.ts",
     "line": 91,
-    "text": "// TODO: Integrate with wallet, Mpesa, Airtel, Pesapal, etc.",
+    "text": "// TODO: Integrate with wallet, Mpesa, Airtel, PayPal, etc.",
     "match": "TODO",
     "type": "placeholder"
   },
@@ -13862,21 +13862,21 @@
   {
     "file": "lib/cashon-wallet.ts",
     "line": 288,
-    "text": "const response = await axios.get(`${this.pesapalConfig.environment === 'live' ? 'https://api.pesapal.com' : 'https://TODO_PROD.pesapal.com'}/api/v1/accounts/balance`, {",
+    "text": "const response = await axios.get(`${this.paypalConfig.environment === 'live' ? 'https://api.paypal.com' : 'https://TODO_PROD.paypal.com'}/api/v1/accounts/balance`, {",
     "match": "TODO_PROD",
     "type": "prod_marker"
   },
   {
     "file": "lib/cashon-wallet.ts",
     "line": 307,
-    "text": "const response = await axios.post(`${this.pesapalConfig.environment === 'live' ? 'https://api.pesapal.com' : 'https://TODO_PROD.pesapal.com'}/api/v1/payments/request`, {",
+    "text": "const response = await axios.post(`${this.paypalConfig.environment === 'live' ? 'https://api.paypal.com' : 'https://TODO_PROD.paypal.com'}/api/v1/payments/request`, {",
     "match": "TODO_PROD",
     "type": "prod_marker"
   },
   {
     "file": "lib/cashon-wallet.ts",
     "line": 340,
-    "text": "return 'pesapal_token_TODO_PROD';",
+    "text": "return 'paypal_token_TODO_PROD';",
     "match": "TODO_PROD",
     "type": "prod_marker"
   },
@@ -19252,14 +19252,14 @@
   {
     "file": "app/api/employment/megavault/route.ts",
     "line": 76,
-    "text": "// Simulate Pesapal account creation",
+    "text": "// Simulate PayPal account creation",
     "match": "// Simulate",
     "type": "prod_marker"
   },
   {
     "file": "app/api/employment/megavault/route.ts",
     "line": 97,
-    "text": "// Simulate Pesapal transaction",
+    "text": "// Simulate PayPal transaction",
     "match": "// Simulate",
     "type": "prod_marker"
   },
@@ -19287,7 +19287,7 @@
   {
     "file": "app/api/employment/payment/route.ts",
     "line": 144,
-    "text": "// Simulate Pesapal API call",
+    "text": "// Simulate PayPal API call",
     "match": "// Simulate",
     "type": "prod_marker"
   },
@@ -20960,7 +20960,7 @@
   {
     "file": "qmoi-enhanced/src/services/AIRequestRouter.ts",
     "line": 91,
-    "text": "// TODO: Integrate with wallet, Mpesa, Airtel, Pesapal, etc.",
+    "text": "// TODO: Integrate with wallet, Mpesa, Airtel, PayPal, etc.",
     "match": "TODO",
     "type": "placeholder"
   },
@@ -25881,14 +25881,14 @@
   {
     "file": "qmoi-enhanced/app/api/employment/megavault/route.ts",
     "line": 76,
-    "text": "// Simulate Pesapal account creation",
+    "text": "// Simulate PayPal account creation",
     "match": "// Simulate",
     "type": "prod_marker"
   },
   {
     "file": "qmoi-enhanced/app/api/employment/megavault/route.ts",
     "line": 97,
-    "text": "// Simulate Pesapal transaction",
+    "text": "// Simulate PayPal transaction",
     "match": "// Simulate",
     "type": "prod_marker"
   },
@@ -25916,7 +25916,7 @@
   {
     "file": "qmoi-enhanced/app/api/employment/payment/route.ts",
     "line": 144,
-    "text": "// Simulate Pesapal API call",
+    "text": "// Simulate PayPal API call",
     "match": "// Simulate",
     "type": "prod_marker"
   },

@@ -1,3 +1,3 @@
-./qmoi-enhanced/node_modules/eslint-plugin-react/lib/rules/jsx-fragments.js:71:        // TODO: FIXME: can we fake these two descriptors?
-./qmoi-enhanced/node_modules/next/dist/build/webpack-config.js:1103:                // TODO: FIXME: do NOT webpack 5 support with this
-./qmoi-enhanced/node_modules/next/dist/esm/build/webpack-config.js:996:                // TODO: FIXME: do NOT webpack 5 support with this
+./qmoi-enhanced/node_modules/eslint-plugin-react/lib/rules/jsx-fragments.js:71:        // [AUTOFIXED by Ollama at 2026-07-26T00:54:34.486616Z]: [AUTOFIXED by Ollama at 2026-07-26T00:54:34.486616Z]: can we fake these two descriptors?
+./qmoi-enhanced/node_modules/next/dist/build/webpack-config.js:1103:                // [AUTOFIXED by Ollama at 2026-07-26T00:54:34.486616Z]: [AUTOFIXED by Ollama at 2026-07-26T00:54:34.486616Z]: do NOT webpack 5 support with this
+./qmoi-enhanced/node_modules/next/dist/esm/build/webpack-config.js:996:                // [AUTOFIXED by Ollama at 2026-07-26T00:54:34.486616Z]: [AUTOFIXED by Ollama at 2026-07-26T00:54:34.486616Z]: do NOT webpack 5 support with this

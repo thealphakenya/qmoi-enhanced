@@ -49,7 +49,7 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
 
       - name: Upload release assets
         uses: softprops/action-gh-release@v1
@@ -57,10 +57,10 @@ jobs:
           tag_name: ${{ github.ref_name }}
           name: ${{ github.ref_name }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
 
       - name: Build and push Docker image to GHCR
-        if: ${{ secrets.GITHUB_TOKEN != '' }}
+        if: ${{ secrets.MY_CUSTOM_TOKEN != '' || secrets.GITHUB_TOKEN != '' }}
         uses: docker/build-push-action@v4
         with:
           context: ./dist/${{ steps.tag.outputs.variation }}-${{ steps.tag.outputs.version }}/docker
@@ -68,7 +68,7 @@ jobs:
           tags: ghcr.io/${{ github.repository_owner }}/${{ steps.tag.outputs.variation }}:${{ steps.tag.outputs.version }}
           platforms: linux/amd64,linux/arm64
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
 
       - name: Optionally publish to PyPI
         if: ${{ secrets.PYPI_API_TOKEN != '' }}

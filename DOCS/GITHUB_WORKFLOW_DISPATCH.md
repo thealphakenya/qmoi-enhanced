@@ -19,3 +19,7 @@ export GITHUB_PAT=ghp_xxx
 If your git `origin` remote is set, the script will auto-detect the owner/repo. You can also set `GITHUB_OWNER` and `GITHUB_REPO` env vars to override the detection.
 
 Security note: Do not commit PATs. Use local environment variables or a secure secrets manager. Prefer creating a short-lived PAT and revoking it after use.
+
+
+---
+Checked by Ollama agent at 2026-07-21T22:36:18.021951Z. No immediate [AUTOFIXED by Ollama at 2026-07-26T00:54:34.527879Z]s found.

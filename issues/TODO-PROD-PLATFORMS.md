@@ -1,7 +1,7 @@
-Title: TODO-PROD-PLATFORMS
+Title: [AUTOFIXED by Ollama at 2026-07-20T01:19:39.438485Z: please review]-PROD-PLATFORMS
 
 Summary:
-There are platform-specific `TODO_PROD` placeholders and follow-ups for building, packaging, and validating QMOI outputs on mac, linux, chromebook, raspberrypi, smarttv, and qcity.
+There are platform-specific `[AUTOFIXED by Ollama at 2026-07-20T01:19:39.438485Z: please review]_PROD` [AUTOFIXED by Ollama at 2026-07-20T01:19:39.438485Z: please review]s and follow-ups for building, packaging, and validating QMOI outputs on mac, linux, chromebook, raspberrypi, smarttv, and qcity.
 
 Objectives:
 
@@ -21,3 +21,7 @@ Notes:
 
 - This task may require macOS runners (for iOS/mac packaging) and Raspberry Pi cross-compilation support.
 - Consider using GitHub Actions matrix or self-hosted runners for specialized platforms.
+
+
+---
+Automated update by Ollama agent at 2026-07-20T01:19:39.438485Z. Please review changes above.

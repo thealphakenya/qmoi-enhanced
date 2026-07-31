@@ -47,7 +47,7 @@ jobs:
       - name: Create or update PR for proposals
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
           commit-message: "chore: add link-check proposals"
           title: "Automated link-check proposals"
           body: |

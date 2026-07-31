@@ -116,7 +116,7 @@ JWT_SECRET=your_jwt_secret
 
 # Financial Integration
 BITGET_API_KEY=your_bitget_key
-PESAPAL_CLIENT_ID=your_pesapal_id
+PAYPAL_CLIENT_ID=your_paypal_id
 PAYPAL_CLIENT_ID=your_paypal_id
 
 # Next.js
@@ -401,7 +401,7 @@ npm start
 
 **Fund Storage** (4 Locations):
 
-1. CashOn Wallet (Pesapal)
+1. CashOn Wallet (PayPal)
 2. PayPal Business
 3. Cryptocurrency Wallets
 4. Bank Accounts
