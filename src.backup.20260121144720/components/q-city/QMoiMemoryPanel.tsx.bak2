@@ -4317,3 +4317,129 @@ export default function QMoiMemoryPanel({
 # AUTOFIXED by Ollama at 2026-07-28T22:54:28.379000Z
 
 # AUTOFIXED by Ollama at 2026-07-28T23:00:40.774937Z
+
+
+<!-- MERGED FROM ARCHIVE: /home/runner/work/qmoi-enhanced/qmoi-enhanced/backups/src.backup.20260121144720/components/q-city/QMoiMemoryPanel.tsx.bak2 -->
+/* eslint-env browser */
+import React, { useEffect, useState } from "react";
+import {
+  fetchMemory as fetchMemoryApi,
+  syncMemory,
+} from "../../services/qmoiApi";
+
+export default function QMoiMemoryPanel({
+  isMaster = false,
+}: {
+  isMaster?: boolean;
+}) {
+  const [memory, setMemory] = useState<any>(null);
+  const [feedback, setFeedback] = useState("");
+  const [correction, setCorrection] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function fetchMemory() {
+    try {
+      const mem = await fetchMemoryApi();
+      setMemory(mem);
+    } catch (_e) {
+      console.warn("fetchMemory failed", _e);
+    }
+  }
+
+  async function submitFeedback() {
+    try {
+      await syncMemory({
+        feedback: feedback,
+        correction: correction ? { custom: correction } : undefined,
+      });
+      setMessage("Feedback submitted!");
+      fetchMemory();
+    } catch (_e) {
+      setMessage("Error submitting feedback.");
+    }
+  }
+
+  async function backupMemory() {
+    try {
+      // Trigger server backup via memory sync API (replace semantics as needed)
+      await syncMemory({ backup: true });
+      setMessage("Memory backup created!");
+    } catch (_e) {
+      setMessage("Backup failed.");
+    }
+  }
+
+  useEffect(() => {
+    if (isMaster) fetchMemory();
+  }, [isMaster]);
+  if (!isMaster) return null;
+
+  return (
+    <div
+      style={{
+        border: "1px solid #444",
+        padding: 16,
+        borderRadius: 8,
+        background: "#181818",
+        color: "#e0ffe0",
+        marginTop: 16,
+      }}
+    >
+      <h3>QMOI Memory & Personality</h3>
+      {memory ? (
+        <>
+          <p>
+            <b>Personality:</b> {JSON.stringify(memory.personality)}
+          </p>
+          <p>
+            <b>Recent Feedback:</b>
+          </p>
+          <ul>
+            {((memory && memory.master_feedback) || [])
+              .slice(-5)
+              .map((f: any, i: number) => (
+                <li key={i}>{JSON.stringify(f)}</li>
+              ))}
+          </ul>
+          <p>
+            <b>Recent Interactions:</b>
+          </p>
+          <ul>
+            {((memory && memory.history) || [])
+              .slice(-5)
+              .map((h: any, i: number) => (
+                <li key={i}>
+                  {h.input} ({h.emotion})
+                </li>
+              ))}
+          </ul>
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
+      <div style={{ marginTop: 12 }}>
+        <input
+          value={feedback}
+          onChange={(_e) => setFeedback(_e.target.value)}
+          placeholder="Feedback (praise/correction)"
+          style={{ marginRight: 8 }}
+        />
+        <input
+          value={correction}
+          onChange={(_e) => setCorrection(_e.target.value)}
+          placeholder="Correction (optional)"
+          style={{ marginRight: 8 }}
+        />
+        <button onClick={submitFeedback}>Submit Feedback</button>
+        <button onClick={backupMemory} style={{ marginLeft: 8 }}>
+          Backup Memory
+        </button>
+      </div>
+      {message && <p>{message}</p>}
+    </div>
+  );
+}
+
+# AUTOFIXED by Ollama at 2026-07-28T22:54:28.379000Z
+
+# AUTOFIXED by Ollama at 2026-07-28T23:00:40.774937Z

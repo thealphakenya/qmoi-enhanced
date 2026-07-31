@@ -1,7 +1,7 @@
 # Endpoint manifest
 ## Autonomous endpoint inventory
 - Branch: 
-- Last sync: 2026-07-31T00:16:25.228907Z
+- Last sync: 2026-07-31T00:38:53.046673Z
 - /api/account-automation [GET]
 - /api/admin/alerts [GET, POST]
 - /api/admin/audit-logs [GET, POST]

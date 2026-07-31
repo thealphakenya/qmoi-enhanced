@@ -4,7 +4,7 @@
 - Auto-push: 1
 - Auto-merge: 0
 - Policy: keep docs, tests, routes, manifests, styles, universals, and merge state synchronized securely.
-- Last sync: 2026-07-31T00:16:25.228907Z
+- Last sync: 2026-07-31T00:38:53.046673Z
 
 ## Documentation inventory
 - @ALLMDFILESREFS.md
@@ -116,3 +116,4 @@
 - tests/test_run_placeholder_scans.py: Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.
 - tests/test_scan_placeholders.py: Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.
 - tests/test_scan_replace_placeholders.py: Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.
+- tests/test_placeholder_scan.py.ollama.bak: Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.

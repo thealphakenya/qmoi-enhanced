@@ -18,7 +18,6 @@ This file tracks non-production implementations that should be upgraded to produ
 - .ollama_agent_state.json: TODO, placeholder, ERROR
 - .ollama_agent_state.json.ollama_update.txt: placeholder
 - .ollama_merge_deletions.json: placeholder
-- .ollama_merge_deletions.json.ollama_update.txt: placeholder
 - .qmoi_state/health_memory.json: ERROR
 - .qmoi_state/metrics_memory.json: ERROR
 - .venv_qmoi_control/bin/Activate.ps1: ERROR
@@ -3177,18 +3176,24 @@ This file tracks non-production implementations that should be upgraded to produ
 - tests/scripts/auto_trading.test.js: ERROR
 - tests/security/test_security_placeholder.py: placeholder
 - tests/test_billing_guard.py: ERROR
+- tests/test_check_and_replace_placeholders.py: placeholder
+- tests/test_check_placeholders.py: placeholder
+- tests/test_create_release_placeholders.py: placeholder
 - tests/test_custom_error_handler.py: ERROR
 - tests/test_error_fixer.py: ERROR
 - tests/test_error_handler.py: ERROR
 - tests/test_error_tracker.py: ERROR
 - tests/test_error_tracking.py: ERROR
 - tests/test_expand_platform_todos.py: TODO
+- tests/test_fix_removed_placeholders_batch.py: placeholder
 - tests/test_integration.py: Exception, ERROR
 - tests/test_link_autoupdater.py: placeholder
 - tests/test_link_systems.py: Exception, ERROR
 - tests/test_notify_on_whatsapp.py: ERROR
 - tests/test_ollama_autonomous_agent.py: TODO, placeholder
+- tests/test_placeholder_fixer.py: placeholder
 - tests/test_placeholder_scan.py: placeholder
+- tests/test_placeholder_scanner.py: placeholder
 - tests/test_providers.py: ERROR
 - tests/test_qmoi-error-handler.py: ERROR
 - tests/test_qmoi-universal-error-fixer.py: ERROR
@@ -3200,6 +3205,10 @@ This file tracks non-production implementations that should be upgraded to produ
 - tests/test_qmoi_todos.py: TODO
 - tests/test_queue_worker.py: Exception, ERROR
 - tests/test_release_helper.py: Exception
+- tests/test_replace_placeholders.py: placeholder
+- tests/test_run_placeholder_scans.py: placeholder
+- tests/test_scan_placeholders.py: placeholder
+- tests/test_scan_replace_placeholders.py: placeholder
 - tests/test_test_error_fixing_suite.py: ERROR
 - tests/test_watch_error_fixing.py: ERROR
 - tests/ui/qmoi_ui_autotest.spec.js: ERROR

@@ -49,7 +49,7 @@ This document tracks financial and trading-related documentation so the autonomo
 - [DEPLOYMENT_READY_FINAL.md](DEPLOYMENT_READY_FINAL.md): balance
 - [DEVICERESOURCEOPTIMIZATION.md](DEVICERESOURCEOPTIMIZATION.md): threshold
 - [DOCKER_DEPLOYMENT_GUIDE.md](DOCKER_DEPLOYMENT_GUIDE.md): balance, account
-- [DOCS.md](DOCS.md): wallet, wallets, trading, trade, account
+- [DOCS.md](DOCS.md): wallet, wallets, trading, trade, bitget, account
 - [DOCUMENTATION_MASTER_INDEX.md](DOCUMENTATION_MASTER_INDEX.md): fund, funds, wallet, wallets, trading, account, withdraw
 - [DOMAINSANDLINKS.md](DOMAINSANDLINKS.md): trading, trade
 - [EMPLOYEESUSERSENROLLED.md](EMPLOYEESUSERSENROLLED.md): trading, trade, binance, account

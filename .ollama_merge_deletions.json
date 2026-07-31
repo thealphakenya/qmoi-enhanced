@@ -63,5 +63,10 @@
     "path": "tests/test_scan_replace_placeholders.py",
     "merged_to": "MERGE.md",
     "note": "Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration."
+  },
+  {
+    "path": "tests/test_placeholder_scan.py.ollama.bak",
+    "merged_to": "MERGE.md",
+    "note": "Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration."
   }
 ]
