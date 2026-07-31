@@ -6,6 +6,7 @@ This document consolidates markdown and HTML references so the Ollama agent can 
 - [.github/PR_AUTOTODOS.md](.github/PR_AUTOTODOS.md)
 - [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md)
 - [.github/PULL_REQUEST_TEMPLATE/automated_fix.md](.github/PULL_REQUEST_TEMPLATE/automated_fix.md)
+- [.pytest_cache/README.md](.pytest_cache/README.md)
 - [@ALLMDFILESREFS.md](@ALLMDFILESREFS.md)
 - [ADVANCED_USER_IDENTIFICATION_SYSTEM.md](ADVANCED_USER_IDENTIFICATION_SYSTEM.md)
 - [ALLAUTO.md](ALLAUTO.md)
