@@ -1,30 +1,5 @@
 # Ollama Debug Log
 
-- [2026-07-31T00:36:38Z] INFO: Created or refreshed ALLLINKS.md
-- [2026-07-31T00:36:38Z] INFO: Updated Bitget guidance document at /home/runner/work/qmoi-enhanced/qmoi-enhanced/bitget.md
-- [2026-07-31T00:36:39Z] INFO: Updated deployment verification manifest at /home/runner/work/qmoi-enhanced/qmoi-enhanced/DEPLOYMENT_VERIFICATION.md
-- [2026-07-31T00:37:09Z] INFO: Updated feature/percentage manifest at /home/runner/work/qmoi-enhanced/qmoi-enhanced/FEATURES_AND_PERCENTAGES.md
-- [2026-07-31T00:37:20Z] INFO: Updated JOURNEY MAP TRACKS in /home/runner/work/qmoi-enhanced/qmoi-enhanced/resumefromhere.txt
-- [2026-07-31T00:37:20Z] INFO: Persisted agent state to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.ollama_agent_state.json
-- [2026-07-31T00:37:20Z] INFO: Detected changes in resumefromhere.txt; refreshing execution plan.
-- [2026-07-31T00:37:20Z] INFO: Loaded 9 instructions from COMPONENTS_MIGRATION_PLAN.md
-- [2026-07-31T00:38:35Z] WARNING: Detected 3491 non-production markers across repository files
-- [2026-07-31T00:38:47Z] INFO: Backed up resume file to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260731T003847Z.bak
-- [2026-07-31T00:38:47Z] INFO: Processing 1774 pending items...
-- [2026-07-31T00:38:48Z] INFO: Updated resumefromhere progress: /home/runner/work/qmoi-enhanced/qmoi-enhanced/resumefromhere.txt
-- [2026-07-31T00:38:48Z] INFO: Persisted agent state to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.ollama_agent_state.json
-- [2026-07-31T00:38:48Z] INFO: Wrote pending report snapshot to OLLAMA_PENDING_REPORT.md
-- [2026-07-31T00:38:48Z] INFO: Scanning route definitions from /home/runner/work/qmoi-enhanced/qmoi-enhanced
-- [2026-07-31T00:38:54Z] INFO: Updated API.md
-- [2026-07-31T00:38:54Z] INFO: Updated ENDPOINTS.md
-- [2026-07-31T00:38:54Z] INFO: Updated ROUTES.md
-- [2026-07-31T00:38:54Z] INFO: Updated MERGE.md
-- [2026-07-31T00:38:54Z] INFO: Scanning repository for error markers under /home/runner/work/qmoi-enhanced/qmoi-enhanced
-- [2026-07-31T00:39:17Z] INFO: Collected 3547 error markers
-- [2026-07-31T00:39:18Z] INFO: Wrote remediation inventory to /home/runner/work/qmoi-enhanced/qmoi-enhanced/ALLERRORS.md
-- [2026-07-31T00:39:19Z] INFO: Created or refreshed ALLBACKEND.md
-- [2026-07-31T00:39:21Z] INFO: Created or refreshed ALLUI.md
-- [2026-07-31T00:39:21Z] INFO: Created or refreshed ALLFRONTEND.md
 - [2026-07-31T00:39:52Z] INFO: Created or refreshed ALLPORTS.md
 - [2026-07-31T00:39:52Z] INFO: Created or refreshed ALLAUTO.md
 - [2026-07-31T00:39:52Z] INFO: Created or refreshed ALLMDFILES.md
@@ -51,3 +26,28 @@
 - [2026-07-31T00:40:34Z] INFO: Updated live notification feed at /home/runner/work/qmoi-enhanced/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
 - [2026-07-31T00:40:34Z] INFO: Wrote completion report to OLLAMA_COMPLETION_REPORT.md (10 items remaining)
 - [2026-07-31T00:40:34Z] INFO: Autonomous agent execution pass completed: pending=10 tests=failed python=passed
+- [2026-07-31T17:56:42Z] INFO: Starting enhanced production Ollama autonomous agent pass
+- [2026-07-31T17:56:42Z] INFO: Autonomous loop iteration 1
+- [2026-07-31T17:56:42Z] WARNING: Unable to import local helper server: No module named 'flask'
+- [2026-07-31T17:56:42Z] INFO: Self-update check completed with no changes
+- [2026-07-31T17:56:42Z] INFO: Lib production readiness: ok:qmoi-bootstrap.ts, ok:qmoi-auto-setup-manager.ts, ok:qmoi-automation-manager.ts, ok:qmoi-background-autoscan.ts
+- [2026-07-31T17:56:42Z] INFO: Updated directory doc with autonomous workflow integration: WORKFLOWS.md
+- [2026-07-31T17:56:53Z] INFO: Created or refreshed ALLBACKEND.md
+- [2026-07-31T17:56:56Z] INFO: Created or refreshed ALLUI.md
+- [2026-07-31T17:56:56Z] INFO: Created or refreshed ALLFRONTEND.md
+- [2026-07-31T17:57:48Z] INFO: Created or refreshed ALLPORTS.md
+- [2026-07-31T17:57:48Z] INFO: Created or refreshed ALLAUTO.md
+- [2026-07-31T17:57:50Z] INFO: Created or refreshed ALLMDFILES.md
+- [2026-07-31T17:57:53Z] INFO: Created or refreshed ALLLINKS.md
+- [2026-07-31T17:57:57Z] INFO: Created or refreshed FINANCIALMANAGER.md
+- [2026-07-31T17:57:57Z] INFO: Created or refreshed STANDARD1.md
+- [2026-07-31T17:57:57Z] INFO: Created or refreshed QMOI_MEMORY_AWARENESS_SYSTEM.md
+- [2026-07-31T17:58:14Z] INFO: Replaced PayPal references with PayPal in 0 files (9514 replacements)
+- [2026-07-31T17:58:17Z] INFO: Created or refreshed ALLHOOKSWEBHOOKS.md
+- [2026-07-31T17:58:17Z] INFO: Created or refreshed WEBHOOKS.md
+- [2026-07-31T17:58:17Z] INFO: Created or refreshed WORKFLOWS.md
+- [2026-07-31T17:59:01Z] INFO: Updated finance/credential manifest at /workspaces/qmoi-enhanced/FINANCE_CREDENTIALS.md
+- [2026-07-31T17:59:01Z] INFO: Updated deployment verification manifest at /workspaces/qmoi-enhanced/DEPLOYMENT_VERIFICATION.md
+- [2026-07-31T17:59:39Z] INFO: Updated feature/percentage manifest at /workspaces/qmoi-enhanced/FEATURES_AND_PERCENTAGES.md
+- [2026-07-31T17:59:39Z] INFO: Updated Bitget guidance document at /workspaces/qmoi-enhanced/bitget.md
+- [2026-07-31T17:59:44Z] INFO: Merged 428 files from archive directories
