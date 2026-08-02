@@ -915,3 +915,27 @@ export const QMoiProjectDashboard: React.FC = () => {
 # AUTOFIXED by Ollama at 2026-07-28T22:54:28.382389Z
 
 # AUTOFIXED by Ollama at 2026-07-28T23:00:40.967069Z
+
+
+<!-- MERGED FROM ARCHIVE: /home/runner/work/qmoi-enhanced/qmoi-enhanced/backups/src.backup.20260121144720/components/q-city/QMoiProjectDashboard.tsx.bak2 -->
+import React from "react";
+
+export const QMoiProjectDashboard: React.FC = () => {
+  // TODO: Fetch project list from backend
+  // TODO: Implement add/remove/monitor project features
+  // TODO: Support plugins/modules for new project types
+  return (
+    <div className="p-4">
+      <h2 className="text-xl font-bold mb-4 text-cyan-400">
+        QMOI Project Dashboard
+      </h2>
+      <div className="text-gray-300">
+        (Project management UI will appear here...)
+      </div>
+    </div>
+  );
+};
+
+# AUTOFIXED by Ollama at 2026-07-28T22:54:28.382389Z
+
+# AUTOFIXED by Ollama at 2026-07-28T23:00:40.967069Z
