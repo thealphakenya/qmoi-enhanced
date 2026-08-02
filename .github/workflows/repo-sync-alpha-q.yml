@@ -1,0 +1,42 @@
+name: Repo sync Alpha Q
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - autosync-backup-20250926-232440
+
+permissions:
+  contents: write
+
+jobs:
+  sync-repo:
+    runs-on: ubuntu-latest
+    env:
+      QMOI_SYNC_TARGET_REPO: ${{ vars.QMOI_SYNC_TARGET_REPO || 'thealphakenya/Alpha_Q_running' }}
+      QMOI_SYNC_TARGET_BRANCH: ${{ github.ref_name || 'main' }}
+      GH_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Configure git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Mirror branch to Alpha Q repo
+        run: |
+          set -euo pipefail
+          python3 scripts/repo_sync.py >/tmp/repo_sync.log 2>&1
+          cat /tmp/repo_sync.log
+          if grep -q 'https://github.com/' /tmp/repo_sync.log; then
+            echo "Mirror command prepared successfully."
+          else
+            echo "Mirror helper did not produce a push target."
+            exit 1
+          fi

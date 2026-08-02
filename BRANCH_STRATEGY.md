@@ -20,5 +20,6 @@
 
 ## Alpha Q AI repository alignment
 
-- The `alpha q ai` repository under the same GitHub owner should follow the same branch model: `main` as the primary default branch and an autosync backup branch for recovery and sync work.
+- The Alpha Q AI repository under the same GitHub owner should follow the same branch model: `main` as the primary default branch and an autosync backup branch for recovery and sync work.
+- The repo now includes a dedicated sync helper in [scripts/repo_sync.py](scripts/repo_sync.py) and a dedicated workflow in [.github/workflows/repo-sync-alpha-q.yml](.github/workflows/repo-sync-alpha-q.yml) to mirror the current branch to the configured Alpha Q repository.
 - Shared automation should keep both repositories aligned on the same branch naming convention and default-branch intent.
