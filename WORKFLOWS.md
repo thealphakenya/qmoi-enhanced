@@ -14,7 +14,7 @@ This document records the repository's GitHub Actions workflow inventory and can
 - .github/workflows/build-missing-platforms.yml — Build Missing Platforms
 - .github/workflows/build.yml — Build QMOI AI
 - .github/workflows/ci-build-upload.yml — CI Build & Release
-- .github/workflows/ci-build.yml — CI Build & Smoke
+- .github/workflows/ci-build.yml — Ollama trigger workflow
 - .github/workflows/ci-cd.yml — CI/CD Pipeline
 - .github/workflows/ci-debug.yml — CI Debug (test logs)
 - .github/workflows/ci-monitor.yml — CI Monitor

@@ -11871,3 +11871,309 @@
 {"level": "info", "message": "Updated live notification feed at /home/runner/work/qmoi-enhanced/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-07-31T21:23:58Z"}
 {"level": "info", "message": "Wrote completion report to OLLAMA_COMPLETION_REPORT.md (10 items remaining)", "timestamp": "2026-07-31T21:23:58Z"}
 {"level": "info", "message": "Autonomous agent execution pass completed: pending=10 tests=failed python=passed", "timestamp": "2026-07-31T21:23:58Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat0/resumefromhere.txt", "timestamp": "2026-08-02T12:53:33Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat0/Trade.md", "timestamp": "2026-08-02T12:53:33Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat0/ollama.md", "timestamp": "2026-08-02T12:53:33Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat0/QMOIMODEL.md", "timestamp": "2026-08-02T12:53:33Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat0/QMOIMODELTESTS.md", "timestamp": "2026-08-02T12:53:33Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-08-02T12:53:33Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-08-02T12:53:33Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat0/MATCHES.md", "timestamp": "2026-08-02T12:53:33Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat0/ALLAUTO.md", "timestamp": "2026-08-02T12:53:33Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat0/WORKFLOWS.md", "timestamp": "2026-08-02T12:53:33Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat0/ALLMDFILES.md", "timestamp": "2026-08-02T12:53:33Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat0/FINANCIALMANAGER.md", "timestamp": "2026-08-02T12:53:33Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat0/STANDARD1.md", "timestamp": "2026-08-02T12:53:33Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat0/QMOI_MEMORY_AWARENESS_SYSTEM.md", "timestamp": "2026-08-02T12:53:33Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat0/ALLLINKS.md", "timestamp": "2026-08-02T12:53:33Z"}
+{"level": "info", "message": "Updated Bitget guidance document at /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat0/bitget.md", "timestamp": "2026-08-02T12:53:33Z"}
+{"level": "info", "message": "Updated deployment verification manifest at /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat0/DEPLOYMENT_VERIFICATION.md", "timestamp": "2026-08-02T12:53:35Z"}
+{"level": "info", "message": "Updated feature/percentage manifest at /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat0/FEATURES_AND_PERCENTAGES.md", "timestamp": "2026-08-02T12:53:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat1/resumefromhere.txt", "timestamp": "2026-08-02T12:53:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat1/Trade.md", "timestamp": "2026-08-02T12:53:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat1/ollama.md", "timestamp": "2026-08-02T12:53:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat1/QMOIMODEL.md", "timestamp": "2026-08-02T12:53:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat1/QMOIMODELTESTS.md", "timestamp": "2026-08-02T12:53:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat1/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-08-02T12:53:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat1/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-08-02T12:53:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat1/MATCHES.md", "timestamp": "2026-08-02T12:53:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat1/ALLAUTO.md", "timestamp": "2026-08-02T12:53:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat1/WORKFLOWS.md", "timestamp": "2026-08-02T12:53:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat1/ALLMDFILES.md", "timestamp": "2026-08-02T12:53:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat1/FINANCIALMANAGER.md", "timestamp": "2026-08-02T12:53:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat1/STANDARD1.md", "timestamp": "2026-08-02T12:53:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat1/QMOI_MEMORY_AWARENESS_SYSTEM.md", "timestamp": "2026-08-02T12:53:35Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat1/ALLLINKS.md", "timestamp": "2026-08-02T12:53:35Z"}
+{"level": "info", "message": "Updated Bitget guidance document at /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat1/bitget.md", "timestamp": "2026-08-02T12:53:35Z"}
+{"level": "info", "message": "Updated deployment verification manifest at /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat1/DEPLOYMENT_VERIFICATION.md", "timestamp": "2026-08-02T12:53:36Z"}
+{"level": "info", "message": "Updated feature/percentage manifest at /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat1/FEATURES_AND_PERCENTAGES.md", "timestamp": "2026-08-02T12:53:36Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat2/resumefromhere.txt", "timestamp": "2026-08-02T12:53:36Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat2/Trade.md", "timestamp": "2026-08-02T12:53:36Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat2/ollama.md", "timestamp": "2026-08-02T12:53:36Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat2/QMOIMODEL.md", "timestamp": "2026-08-02T12:53:36Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat2/QMOIMODELTESTS.md", "timestamp": "2026-08-02T12:53:36Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat2/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-08-02T12:53:36Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat2/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-08-02T12:53:36Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat2/MATCHES.md", "timestamp": "2026-08-02T12:53:36Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat2/ALLAUTO.md", "timestamp": "2026-08-02T12:53:36Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat2/WORKFLOWS.md", "timestamp": "2026-08-02T12:53:36Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat2/ALLMDFILES.md", "timestamp": "2026-08-02T12:53:36Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat2/FINANCIALMANAGER.md", "timestamp": "2026-08-02T12:53:36Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat2/STANDARD1.md", "timestamp": "2026-08-02T12:53:36Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat2/QMOI_MEMORY_AWARENESS_SYSTEM.md", "timestamp": "2026-08-02T12:53:36Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat2/ALLLINKS.md", "timestamp": "2026-08-02T12:53:36Z"}
+{"level": "info", "message": "Updated Bitget guidance document at /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat2/bitget.md", "timestamp": "2026-08-02T12:53:36Z"}
+{"level": "info", "message": "Updated deployment verification manifest at /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat2/DEPLOYMENT_VERIFICATION.md", "timestamp": "2026-08-02T12:53:38Z"}
+{"level": "info", "message": "Updated feature/percentage manifest at /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat2/FEATURES_AND_PERCENTAGES.md", "timestamp": "2026-08-02T12:53:38Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat3/resumefromhere.txt", "timestamp": "2026-08-02T12:53:38Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat3/Trade.md", "timestamp": "2026-08-02T12:53:38Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat3/ollama.md", "timestamp": "2026-08-02T12:53:38Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat3/QMOIMODEL.md", "timestamp": "2026-08-02T12:53:38Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat3/QMOIMODELTESTS.md", "timestamp": "2026-08-02T12:53:38Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat3/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-08-02T12:53:38Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat3/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-08-02T12:53:38Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat3/MATCHES.md", "timestamp": "2026-08-02T12:53:38Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat3/ALLAUTO.md", "timestamp": "2026-08-02T12:53:38Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat3/WORKFLOWS.md", "timestamp": "2026-08-02T12:53:38Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat3/ALLMDFILES.md", "timestamp": "2026-08-02T12:53:38Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat3/FINANCIALMANAGER.md", "timestamp": "2026-08-02T12:53:38Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat3/STANDARD1.md", "timestamp": "2026-08-02T12:53:38Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat3/QMOI_MEMORY_AWARENESS_SYSTEM.md", "timestamp": "2026-08-02T12:53:38Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat3/ALLLINKS.md", "timestamp": "2026-08-02T12:53:38Z"}
+{"level": "info", "message": "Updated Bitget guidance document at /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat3/bitget.md", "timestamp": "2026-08-02T12:53:38Z"}
+{"level": "info", "message": "Updated deployment verification manifest at /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat3/DEPLOYMENT_VERIFICATION.md", "timestamp": "2026-08-02T12:53:39Z"}
+{"level": "info", "message": "Updated feature/percentage manifest at /tmp/pytest-of-runner/pytest-0/test_build_plan_and_docs_creat3/FEATURES_AND_PERCENTAGES.md", "timestamp": "2026-08-02T12:53:39Z"}
+{"level": "info", "message": "Updated finance/credential manifest at /tmp/pytest-of-runner/pytest-0/test_update_finance_and_creden0/FINANCE_CREDENTIALS.md", "timestamp": "2026-08-02T12:53:39Z"}
+{"level": "info", "message": "Updated deployment verification manifest at /tmp/pytest-of-runner/pytest-0/test_update_deployment_verific0/DEPLOYMENT_VERIFICATION.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Updated feature/percentage manifest at /tmp/pytest-of-runner/pytest-0/test_update_feature_and_percen0/FEATURES_AND_PERCENTAGES.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Updated Bitget guidance document at /tmp/pytest-of-runner/pytest-0/test_write_bitget_credential_g0/bitget.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Self-update check completed with no changes", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "warning", "message": "lib directory missing; created by agent if needed", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created new GitHub workflow trigger: .github/workflows/ollamatrigger.yml", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created missing directory doc: COMPONENTS.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created missing directory doc: SRC.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created missing directory doc: SCRIPTS.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created missing directory doc: TESTS.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created missing directory doc: WORKFLOWS.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLBACKEND.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLUI.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLFRONTEND.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLPORTS.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLAUTO.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLMDFILES.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLLINKS.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/FINANCIALMANAGER.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/STANDARD1.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/QMOI_MEMORY_AWARENESS_SYSTEM.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/UNIVERSALS.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/STYLES.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/QMOIAIUI.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/QMOISPACEUI.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/QALPHAUI.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/QCITYUI.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Replaced PayPal references with PayPal in 0 files (0 replacements)", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/WEBHOOKS.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/WORKFLOWS.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Updated finance/credential manifest at /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/FINANCE_CREDENTIALS.md", "timestamp": "2026-08-02T12:53:40Z"}
+{"level": "info", "message": "Updated deployment verification manifest at /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/DEPLOYMENT_VERIFICATION.md", "timestamp": "2026-08-02T12:53:41Z"}
+{"level": "info", "message": "Updated feature/percentage manifest at /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/FEATURES_AND_PERCENTAGES.md", "timestamp": "2026-08-02T12:53:41Z"}
+{"level": "info", "message": "Updated Bitget guidance document at /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/bitget.md", "timestamp": "2026-08-02T12:53:41Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0", "timestamp": "2026-08-02T12:53:41Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0", "timestamp": "2026-08-02T12:53:41Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLBACKEND.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLFRONTEND.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLUI.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLPORTS.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/Trade.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ollama.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/QMOIMODEL.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/QMOIMODELTESTS.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLTESTSAUOTOTESTS.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/MATCHES.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLAUTO.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/WORKFLOWS.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLMDFILES.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/FINANCIALMANAGER.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/STANDARD1.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/QMOI_MEMORY_AWARENESS_SYSTEM.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLLINKS.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Updated Bitget guidance document at /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/bitget.md", "timestamp": "2026-08-02T12:53:42Z"}
+{"level": "info", "message": "Updated deployment verification manifest at /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/DEPLOYMENT_VERIFICATION.md", "timestamp": "2026-08-02T12:53:43Z"}
+{"level": "info", "message": "Updated feature/percentage manifest at /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/FEATURES_AND_PERCENTAGES.md", "timestamp": "2026-08-02T12:53:43Z"}
+{"level": "info", "message": "Updated JOURNEY MAP TRACKS in /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-08-02T12:53:43Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-08-02T12:53:43Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-08-02T12:53:43Z"}
+{"level": "warning", "message": "Detected 4 non-production markers across repository files", "timestamp": "2026-08-02T12:53:43Z"}
+{"level": "info", "message": "Backed up resume file to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260802T125343Z.bak", "timestamp": "2026-08-02T12:53:43Z"}
+{"level": "info", "message": "Processing 12 pending items...", "timestamp": "2026-08-02T12:53:43Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/DOCS.md", "timestamp": "2026-08-02T12:53:43Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/production.md", "timestamp": "2026-08-02T12:53:43Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-08-02T12:53:43Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-08-02T12:53:43Z"}
+{"level": "info", "message": "Wrote pending report snapshot to OLLAMA_PENDING_REPORT.md", "timestamp": "2026-08-02T12:53:43Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0", "timestamp": "2026-08-02T12:53:43Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0", "timestamp": "2026-08-02T12:53:43Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Scanning repository for error markers under /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Collected 4 error markers", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Wrote remediation inventory to /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLERRORS.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLBACKEND.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLUI.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLFRONTEND.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLPORTS.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLAUTO.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLMDFILES.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ALLLINKS.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/FINANCIALMANAGER.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/STANDARD1.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/QMOI_MEMORY_AWARENESS_SYSTEM.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/WORKFLOWS.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/DOCS.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/production.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/productionenhanced.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/ollama.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md, FINANCE_CREDENTIALS.md, QMOI_MEMORY_AWARENESS_SYSTEM.md", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Run agent completed with 2 pending items", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Full verification enabled: executing repository verification despite pending work", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-08-02T12:53:44Z"}
+{"level": "info", "message": "Verification completed with python=skipped tests=failed", "timestamp": "2026-08-02T12:53:45Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-08-02T12:53:45Z"}
+{"level": "info", "message": "Updated JOURNEY MAP TRACKS in /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/resumefromhere.txt", "timestamp": "2026-08-02T12:53:45Z"}
+{"level": "info", "message": "Persisted agent state to /tmp/pytest-of-runner/pytest-0/test_run_agent_refreshes_resum0/.ollama_agent_state.json", "timestamp": "2026-08-02T12:53:45Z"}
+{"level": "warning", "message": "Unable to select or create branch main; skipping git push.", "timestamp": "2026-08-02T12:53:45Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-runner/pytest-0/test_collect_route_inventory_f0", "timestamp": "2026-08-02T12:53:45Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-runner/pytest-0/test_update_documentation_mani0", "timestamp": "2026-08-02T12:53:45Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-08-02T12:53:46Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-08-02T12:53:46Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-08-02T12:53:46Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-08-02T12:53:46Z"}
+{"level": "info", "message": "live progress message", "timestamp": "2026-08-02T12:53:46Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-runner/pytest-0/test_update_resume_progress_wr0/resumefromhere.txt", "timestamp": "2026-08-02T12:53:46Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /tmp/pytest-of-runner/pytest-0/test_update_resume_progress_in0/resumefromhere.txt", "timestamp": "2026-08-02T12:53:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_update_production_manifes0/DOCS.md", "timestamp": "2026-08-02T12:53:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_update_production_manifes0/production.md", "timestamp": "2026-08-02T12:53:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_update_production_manifes0/productionenhanced.md", "timestamp": "2026-08-02T12:53:46Z"}
+{"level": "info", "message": "Merged 1 workflow YAML duplicates and removed 1 redundant workflow files", "timestamp": "2026-08-02T12:53:46Z"}
+{"level": "info", "message": "Updated live notification feed at /tmp/pytest-of-runner/pytest-0/test_write_live_notification_s0/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-08-02T12:53:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_update_hook_and_webhook_m0/ALLHOOKSWEBHOOKS.md", "timestamp": "2026-08-02T12:53:46Z"}
+{"level": "info", "message": "Created or refreshed /tmp/pytest-of-runner/pytest-0/test_update_hook_and_webhook_m0/WEBHOOKS.md", "timestamp": "2026-08-02T12:53:46Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-runner/pytest-0/test_merge_unused_files_logs_d0", "timestamp": "2026-08-02T12:53:47Z"}
+{"level": "info", "message": "Scanning route definitions from /tmp/pytest-of-runner/pytest-0/test_merge_unused_files_logs_d0", "timestamp": "2026-08-02T12:53:47Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-08-02T12:53:48Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-08-02T12:53:48Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-08-02T12:53:48Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-08-02T12:53:48Z"}
+{"level": "info", "message": "Updated finance/credential manifest at /tmp/pytest-of-runner/pytest-0/test_update_finance_and_creden1/FINANCE_CREDENTIALS.md", "timestamp": "2026-08-02T12:53:48Z"}
+{"level": "info", "message": "Replaced PayPal references with PayPal in 0 files (9 replacements)", "timestamp": "2026-08-02T12:53:48Z"}
+{"level": "info", "message": "Replaced PayPal references with PayPal in 1 files (0 replacements)", "timestamp": "2026-08-02T12:53:48Z"}
+{"level": "info", "message": "Starting enhanced production Ollama autonomous agent pass", "timestamp": "2026-08-02T12:53:48Z"}
+{"level": "info", "message": "Autonomous loop iteration 1", "timestamp": "2026-08-02T12:53:48Z"}
+{"level": "warning", "message": "Unable to start production helper server: No module named 'flask'", "timestamp": "2026-08-02T12:53:48Z"}
+{"level": "warning", "message": "Unable to import local helper server: No module named 'flask'", "timestamp": "2026-08-02T12:53:48Z"}
+{"level": "info", "message": "Backed up self script to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.backup/self/ollama_autonomous_agent.20260802T125348Z.bak", "timestamp": "2026-08-02T12:53:48Z"}
+{"level": "info", "message": "Applied self-update improvements to the autonomous agent script", "timestamp": "2026-08-02T12:53:48Z"}
+{"level": "info", "message": "Self-update detected and applied", "timestamp": "2026-08-02T12:53:48Z"}
+{"level": "info", "message": "Lib production readiness: ok:qmoi-bootstrap.ts, ok:qmoi-auto-setup-manager.ts, ok:qmoi-automation-manager.ts, ok:qmoi-background-autoscan.ts", "timestamp": "2026-08-02T12:53:48Z"}
+{"level": "info", "message": "Updated directory doc with autonomous workflow integration: WORKFLOWS.md", "timestamp": "2026-08-02T12:53:48Z"}
+{"level": "info", "message": "Created or refreshed ALLBACKEND.md", "timestamp": "2026-08-02T12:53:52Z"}
+{"level": "info", "message": "Created or refreshed ALLUI.md", "timestamp": "2026-08-02T12:53:55Z"}
+{"level": "info", "message": "Created or refreshed ALLFRONTEND.md", "timestamp": "2026-08-02T12:53:55Z"}
+{"level": "info", "message": "Created or refreshed ALLPORTS.md", "timestamp": "2026-08-02T12:54:32Z"}
+{"level": "info", "message": "Created or refreshed ALLAUTO.md", "timestamp": "2026-08-02T12:54:32Z"}
+{"level": "info", "message": "Created or refreshed ALLMDFILES.md", "timestamp": "2026-08-02T12:54:33Z"}
+{"level": "info", "message": "Created or refreshed ALLLINKS.md", "timestamp": "2026-08-02T12:54:34Z"}
+{"level": "info", "message": "Created or refreshed FINANCIALMANAGER.md", "timestamp": "2026-08-02T12:54:38Z"}
+{"level": "info", "message": "Created or refreshed STANDARD1.md", "timestamp": "2026-08-02T12:54:38Z"}
+{"level": "info", "message": "Created or refreshed QMOI_MEMORY_AWARENESS_SYSTEM.md", "timestamp": "2026-08-02T12:54:38Z"}
+{"level": "info", "message": "Replaced PayPal references with PayPal in 0 files (10013 replacements)", "timestamp": "2026-08-02T12:54:52Z"}
+{"level": "info", "message": "Created or refreshed ALLHOOKSWEBHOOKS.md", "timestamp": "2026-08-02T12:54:53Z"}
+{"level": "info", "message": "Created or refreshed WEBHOOKS.md", "timestamp": "2026-08-02T12:54:53Z"}
+{"level": "info", "message": "Created or refreshed WORKFLOWS.md", "timestamp": "2026-08-02T12:54:53Z"}
+{"level": "info", "message": "Updated finance/credential manifest at /home/runner/work/qmoi-enhanced/qmoi-enhanced/FINANCE_CREDENTIALS.md", "timestamp": "2026-08-02T12:55:37Z"}
+{"level": "info", "message": "Updated deployment verification manifest at /home/runner/work/qmoi-enhanced/qmoi-enhanced/DEPLOYMENT_VERIFICATION.md", "timestamp": "2026-08-02T12:55:39Z"}
+{"level": "info", "message": "Updated feature/percentage manifest at /home/runner/work/qmoi-enhanced/qmoi-enhanced/FEATURES_AND_PERCENTAGES.md", "timestamp": "2026-08-02T12:56:16Z"}
+{"level": "info", "message": "Updated Bitget guidance document at /home/runner/work/qmoi-enhanced/qmoi-enhanced/bitget.md", "timestamp": "2026-08-02T12:56:16Z"}
+{"level": "info", "message": "Merged 425 files from archive directories", "timestamp": "2026-08-02T12:56:19Z"}
+{"level": "info", "message": "Scanning route definitions from /home/runner/work/qmoi-enhanced/qmoi-enhanced", "timestamp": "2026-08-02T15:29:39Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-08-02T15:29:47Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-08-02T15:29:47Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-08-02T15:29:47Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-08-02T15:29:47Z"}
+{"level": "info", "message": "Created or refreshed ALLBACKEND.md", "timestamp": "2026-08-02T15:29:50Z"}
+{"level": "info", "message": "Created or refreshed ALLFRONTEND.md", "timestamp": "2026-08-02T15:29:50Z"}
+{"level": "info", "message": "Created or refreshed ALLUI.md", "timestamp": "2026-08-02T15:29:53Z"}
+{"level": "info", "message": "Created or refreshed ALLPORTS.md", "timestamp": "2026-08-02T15:30:30Z"}
+{"level": "info", "message": "Wrote archive merge report: MERGED_ARCHIVES_REPORT.md", "timestamp": "2026-08-02T15:30:30Z"}
+{"level": "info", "message": "Normalized resumefromhere.txt header at /home/runner/work/qmoi-enhanced/qmoi-enhanced/resumefromhere.txt", "timestamp": "2026-08-02T15:30:30Z"}
+{"level": "info", "message": "Created or refreshed Trade.md", "timestamp": "2026-08-02T15:30:30Z"}
+{"level": "info", "message": "Created or refreshed ollama.md", "timestamp": "2026-08-02T15:30:30Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODEL.md", "timestamp": "2026-08-02T15:30:30Z"}
+{"level": "info", "message": "Created or refreshed QMOIMODELTESTS.md", "timestamp": "2026-08-02T15:30:30Z"}
+{"level": "info", "message": "Created or refreshed ALLTESTSAUOTOTESTS.md", "timestamp": "2026-08-02T15:30:30Z"}
+{"level": "info", "message": "Created or refreshed ALLHOOKSWEBHOOKS.md", "timestamp": "2026-08-02T15:30:30Z"}
+{"level": "info", "message": "Created or refreshed MATCHES.md", "timestamp": "2026-08-02T15:30:30Z"}
+{"level": "info", "message": "Created or refreshed ALLAUTO.md", "timestamp": "2026-08-02T15:30:30Z"}
+{"level": "info", "message": "Created or refreshed WORKFLOWS.md", "timestamp": "2026-08-02T15:30:30Z"}
+{"level": "info", "message": "Created or refreshed ALLMDFILES.md", "timestamp": "2026-08-02T15:30:31Z"}
+{"level": "info", "message": "Created or refreshed FINANCIALMANAGER.md", "timestamp": "2026-08-02T15:30:34Z"}
+{"level": "info", "message": "Created or refreshed STANDARD1.md", "timestamp": "2026-08-02T15:30:34Z"}
+{"level": "info", "message": "Created or refreshed QMOI_MEMORY_AWARENESS_SYSTEM.md", "timestamp": "2026-08-02T15:30:34Z"}
+{"level": "info", "message": "Created or refreshed ALLLINKS.md", "timestamp": "2026-08-02T15:30:35Z"}
+{"level": "info", "message": "Updated Bitget guidance document at /home/runner/work/qmoi-enhanced/qmoi-enhanced/bitget.md", "timestamp": "2026-08-02T15:30:35Z"}
+{"level": "info", "message": "Updated deployment verification manifest at /home/runner/work/qmoi-enhanced/qmoi-enhanced/DEPLOYMENT_VERIFICATION.md", "timestamp": "2026-08-02T15:30:37Z"}
+{"level": "info", "message": "Updated feature/percentage manifest at /home/runner/work/qmoi-enhanced/qmoi-enhanced/FEATURES_AND_PERCENTAGES.md", "timestamp": "2026-08-02T15:31:15Z"}
+{"level": "info", "message": "Updated JOURNEY MAP TRACKS in /home/runner/work/qmoi-enhanced/qmoi-enhanced/resumefromhere.txt", "timestamp": "2026-08-02T15:31:39Z"}
+{"level": "info", "message": "Persisted agent state to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.ollama_agent_state.json", "timestamp": "2026-08-02T15:31:39Z"}
+{"level": "info", "message": "Detected changes in resumefromhere.txt; refreshing execution plan.", "timestamp": "2026-08-02T15:31:39Z"}
+{"level": "info", "message": "Loaded 9 instructions from COMPONENTS_MIGRATION_PLAN.md", "timestamp": "2026-08-02T15:31:39Z"}
+{"level": "warning", "message": "Detected 3492 non-production markers across repository files", "timestamp": "2026-08-02T15:33:10Z"}
+{"level": "info", "message": "Backed up resume file to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260802T153337Z.bak", "timestamp": "2026-08-02T15:33:37Z"}
+{"level": "info", "message": "Processing 1811 pending items...", "timestamp": "2026-08-02T15:33:37Z"}
+{"level": "info", "message": "Updated resumefromhere progress: /home/runner/work/qmoi-enhanced/qmoi-enhanced/resumefromhere.txt", "timestamp": "2026-08-02T15:33:38Z"}
+{"level": "info", "message": "Persisted agent state to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.ollama_agent_state.json", "timestamp": "2026-08-02T15:33:38Z"}
+{"level": "info", "message": "Wrote pending report snapshot to OLLAMA_PENDING_REPORT.md", "timestamp": "2026-08-02T15:33:38Z"}
+{"level": "info", "message": "Scanning route definitions from /home/runner/work/qmoi-enhanced/qmoi-enhanced", "timestamp": "2026-08-02T15:33:38Z"}
+{"level": "info", "message": "Updated API.md", "timestamp": "2026-08-02T15:33:46Z"}
+{"level": "info", "message": "Updated ENDPOINTS.md", "timestamp": "2026-08-02T15:33:46Z"}
+{"level": "info", "message": "Updated ROUTES.md", "timestamp": "2026-08-02T15:33:46Z"}
+{"level": "info", "message": "Updated MERGE.md", "timestamp": "2026-08-02T15:33:46Z"}
+{"level": "info", "message": "Scanning repository for error markers under /home/runner/work/qmoi-enhanced/qmoi-enhanced", "timestamp": "2026-08-02T15:33:46Z"}
+{"level": "info", "message": "Collected 3550 error markers", "timestamp": "2026-08-02T15:34:16Z"}
+{"level": "info", "message": "Wrote remediation inventory to /home/runner/work/qmoi-enhanced/qmoi-enhanced/ALLERRORS.md", "timestamp": "2026-08-02T15:34:16Z"}
+{"level": "info", "message": "Created or refreshed ALLBACKEND.md", "timestamp": "2026-08-02T15:34:18Z"}
+{"level": "info", "message": "Created or refreshed ALLUI.md", "timestamp": "2026-08-02T15:34:21Z"}
+{"level": "info", "message": "Created or refreshed ALLFRONTEND.md", "timestamp": "2026-08-02T15:34:21Z"}
+{"level": "info", "message": "Created or refreshed ALLPORTS.md", "timestamp": "2026-08-02T15:34:58Z"}
+{"level": "info", "message": "Created or refreshed ALLAUTO.md", "timestamp": "2026-08-02T15:34:58Z"}
+{"level": "info", "message": "Created or refreshed ALLMDFILES.md", "timestamp": "2026-08-02T15:34:58Z"}
+{"level": "info", "message": "Created or refreshed ALLLINKS.md", "timestamp": "2026-08-02T15:35:00Z"}
+{"level": "info", "message": "Created or refreshed FINANCIALMANAGER.md", "timestamp": "2026-08-02T15:35:03Z"}
+{"level": "info", "message": "Created or refreshed STANDARD1.md", "timestamp": "2026-08-02T15:35:03Z"}
+{"level": "info", "message": "Created or refreshed QMOI_MEMORY_AWARENESS_SYSTEM.md", "timestamp": "2026-08-02T15:35:03Z"}
+{"level": "info", "message": "Created or refreshed WORKFLOWS.md", "timestamp": "2026-08-02T15:35:03Z"}
+{"level": "info", "message": "Created or refreshed DOCS.md", "timestamp": "2026-08-02T15:35:27Z"}
+{"level": "info", "message": "Created or refreshed production.md", "timestamp": "2026-08-02T15:35:27Z"}
+{"level": "info", "message": "Created or refreshed productionenhanced.md", "timestamp": "2026-08-02T15:35:27Z"}
+{"level": "info", "message": "Updated live notification feed at /home/runner/work/qmoi-enhanced/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-08-02T15:35:27Z"}
+{"level": "info", "message": "Created or refreshed ollama.md", "timestamp": "2026-08-02T15:35:27Z"}
+{"level": "info", "message": "Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md, FINANCE_CREDENTIALS.md, QMOI_MEMORY_AWARENESS_SYSTEM.md", "timestamp": "2026-08-02T15:35:27Z"}
+{"level": "info", "message": "Persisted agent state to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.ollama_agent_state.json", "timestamp": "2026-08-02T15:35:27Z"}
+{"level": "info", "message": "Run agent completed with 10 pending items", "timestamp": "2026-08-02T15:35:27Z"}
+{"level": "info", "message": "Full verification enabled: executing repository verification despite pending work", "timestamp": "2026-08-02T15:35:27Z"}
+{"level": "info", "message": "Starting repository verification checks", "timestamp": "2026-08-02T15:35:27Z"}
+{"level": "info", "message": "Verification completed with python=passed tests=failed", "timestamp": "2026-08-02T15:35:28Z"}
+{"level": "info", "message": "Updated live notification feed at /home/runner/work/qmoi-enhanced/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md", "timestamp": "2026-08-02T15:35:28Z"}
+{"level": "info", "message": "Updated JOURNEY MAP TRACKS in /home/runner/work/qmoi-enhanced/qmoi-enhanced/resumefromhere.txt", "timestamp": "2026-08-02T15:35:52Z"}
+{"level": "info", "message": "Persisted agent state to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.ollama_agent_state.json", "timestamp": "2026-08-02T15:35:52Z"}

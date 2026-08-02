@@ -7,8 +7,10 @@ This file tracks non-production implementations that should be upgraded to produ
 - .github/PR_AUTOTODOS.md: ERROR
 - .github/workflows/build-and-release.yml: ERROR
 - .github/workflows/build-missing-platforms.yml: placeholder
+- .github/workflows/ci-build.yml: ERROR
 - .github/workflows/ci-debug.yml: ERROR
 - .github/workflows/ci.yml: ERROR
+- .github/workflows/docker-build-push.yml: ERROR
 - .github/workflows/dry-run-tests.yml: placeholder
 - .github/workflows/ollama-autonomous-agent.yml: ERROR
 - .github/workflows/ollamatrigger.yml: ERROR
@@ -172,6 +174,7 @@ This file tracks non-production implementations that should be upgraded to produ
 - NEXT_STEPS_EXECUTIVE_SUMMARY.md: ERROR
 - NEXT_STEPS_ROADMAP.md: ERROR
 - NONPROD_REPORT_HEAD.txt: placeholder, TBD, ERROR
+- OLLAMA_ACTIVITY_FEED.md: ERROR
 - OLLAMA_DEBUG_LOG.md: ERROR
 - OPTION_A_PRODUCTION_READY.md: ERROR
 - PAGES.md: ERROR

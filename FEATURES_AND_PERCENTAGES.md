@@ -55,6 +55,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - u
+  - .github/workflows/ci-build.yml: name: Ollama trigger workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_iterations:
+        description: Maximum autonomous loop iterations before requeueing
+        required
   - .github/workflows/ci-cd.yml: name: CI/CD Pipeline
 
 on:
@@ -65,17 +73,6 @@ on:
   pull_request:
     branches: [main, develop]
   workflow_dis
-  - .github/workflows/ci-monitor.yml: name: CI Monitor
-
-on:
-  workflow_run:
-    workflows: ["CI Build & Smoke", "Docker Build & Container Smoke"]
-    types:
-      - completed
-
-permissions:
-  issues: write
-  pull-reques
 - feature: 20 files mention related feature or global guidance
   - .cspell.json: {
   "version": "0.2",

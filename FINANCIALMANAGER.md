@@ -101,7 +101,7 @@ This document tracks financial and trading-related documentation so the autonomo
 - [NEW_USER_SYSTEM_IMPLEMENTATION.md](NEW_USER_SYSTEM_IMPLEMENTATION.md): balance, balances, account, confidence
 - [NEXT_STEPS_EXECUTIVE_SUMMARY.md](NEXT_STEPS_EXECUTIVE_SUMMARY.md): confidence
 - [NEXT_STEPS_INDEX.md](NEXT_STEPS_INDEX.md): confidence
-- [OLLAMA_ACTIVITY_FEED.md](OLLAMA_ACTIVITY_FEED.md): confidence, threshold
+- [OLLAMA_ACTIVITY_FEED.md](OLLAMA_ACTIVITY_FEED.md): trade, bitget, confidence, threshold
 - [OLLAMA_DEBUG_LOG.md](OLLAMA_DEBUG_LOG.md): trade, bitget
 - [OPTION_A_PRODUCTION_READY.md](OPTION_A_PRODUCTION_READY.md): trading, account
 - [PAYMENTS.md](PAYMENTS.md): balance, balances, wallet, wallets

@@ -4,7 +4,7 @@
 - Auto-push: 1
 - Auto-merge: 0
 - Policy: keep docs, tests, routes, manifests, styles, universals, and merge state synchronized securely.
-- Last sync: 2026-07-31T21:22:12.307784Z
+- Last sync: 2026-08-02T15:33:44.619810Z
 
 ## Documentation inventory
 - @ALLMDFILESREFS.md
@@ -54,6 +54,7 @@
 - BACKEND_API_TEMPLATES.md
 - BACKGROUND_AUTOMATION_COMPLETE.md
 - BIOMETRIC_LOGIN_TEST_RESULTS.md
+- BRANCH_STRATEGY.md
 - BUILDAPPSFORALLPLATFORMS.md
 - BUILD_COMPLETION_REPORT_v2.md
 - BUILD_COMPLETION_SUMMARY.md
@@ -86,8 +87,7 @@
 - DEALS.md
 - DELIVERABLES_CHECKLIST.md
 - DELIVERABLES_FINAL_INVENTORY.md
-- DEPLOYMENT-README.md
-- ...and 586 more documentation files
+- ...and 587 more documentation files
 
 ## Official deployment references
 - Vercel: https://vercel.com/docs (Use official Vercel documentation for deployments, redeployments, environment variables, and build settings.)
