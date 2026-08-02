@@ -13,8 +13,10 @@ This file records the enhancements applied during production replacement work.
 - .github/PR_AUTOTODOS.md
 - .github/workflows/build-and-release.yml
 - .github/workflows/build-missing-platforms.yml
+- .github/workflows/ci-build.yml
 - .github/workflows/ci-debug.yml
 - .github/workflows/ci.yml
+- .github/workflows/docker-build-push.yml
 - .github/workflows/dry-run-tests.yml
 - .github/workflows/ollama-autonomous-agent.yml
 - .github/workflows/ollamatrigger.yml
@@ -178,6 +180,7 @@ This file records the enhancements applied during production replacement work.
 - NEXT_STEPS_EXECUTIVE_SUMMARY.md
 - NEXT_STEPS_ROADMAP.md
 - NONPROD_REPORT_HEAD.txt
+- OLLAMA_ACTIVITY_FEED.md
 - OLLAMA_DEBUG_LOG.md
 - OPTION_A_PRODUCTION_READY.md
 - PAGES.md
