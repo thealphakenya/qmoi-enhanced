@@ -1,7 +1,7 @@
 # API manifest
 ## Autonomous API inventory
 - Branch: 
-- Last sync: 2026-08-02T15:33:44.619810Z
+- Last sync: 2026-08-02T17:33:11.934740Z
 - /api/account-automation [GET]
 - /api/admin/alerts [GET, POST]
 - /api/admin/audit-logs [GET, POST]

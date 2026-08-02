@@ -1,6 +1,6 @@
 # Merged archives report
 
-- Generated: 2026-08-02T15:30:30.308611Z
+- Generated: 2026-08-02T17:29:57.250568Z
 
 ## .
 - before-auto-merge-20251122T092741Z
@@ -215,9 +215,12 @@
 
 ## resumefromhere
 - resumefromhere/resumefromhere.20260802T125343Z.bak
+- resumefromhere/resumefromhere.20260802T153337Z.bak
+- resumefromhere/resumefromhere.20260802T153610Z.bak
 
 ## self
 - self/ollama_autonomous_agent.20260802T125348Z.bak
+- self/ollama_autonomous_agent.20260802T125348Z.bak.ollama.bak
 
 ## src.backup.20260121144720
 - src.backup.20260121144720/App.test.js
