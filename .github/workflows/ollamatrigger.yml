@@ -25,6 +25,7 @@ on:
         default: "true"
   push:
     branches:
+      - main
       - autosync-backup-20250926-232440
 
 permissions:
@@ -46,7 +47,7 @@ jobs:
       AUTO_CONTINUE_MAX: ${{ github.event.inputs.max_iterations || vars.OLLAMA_MAX_ITERATIONS || '200' }}
       AUTO_CONTINUE_BATCH: ${{ github.event.inputs.max_per_iteration || vars.OLLAMA_MAX_BATCH || '200' }}
       AUTO_PUSH: "1"
-      TARGET_BRANCH: "${{ github.ref_name }}"
+      TARGET_BRANCH: "${{ github.ref_name || 'main' }}"
       AUTO_MERGE: "0"
       GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
       GH_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}

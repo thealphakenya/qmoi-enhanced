@@ -209,6 +209,14 @@ def test_emit_status_prints_to_terminal_and_logs(capsys):
     assert "live progress message" in captured.out
 
 
+def test_resolve_target_branch_defaults_to_main(monkeypatch):
+    module = load_module()
+    monkeypatch.delenv("TARGET_BRANCH", raising=False)
+    monkeypatch.delenv("GITHUB_REF_NAME", raising=False)
+
+    assert module._resolve_target_branch() == "main"
+
+
 def test_update_resume_progress_writes_double_marks(tmp_path):
     module = load_module()
     resume_path = tmp_path / "resumefromhere.txt"

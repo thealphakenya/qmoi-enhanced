@@ -5,8 +5,8 @@ on:
     - cron: "*/15 * * * *" # every 15 minutes
   push:
     branches:
-      - "autosync-*"
       - main
+      - "autosync-*"
 
 jobs:
   sync-memory:
