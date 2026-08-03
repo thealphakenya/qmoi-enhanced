@@ -1,0 +1,1182 @@
+app/api/account-automation/route.ts(17,20): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/account-automation/route.ts(31,15): error TS2304: Cannot find name 'fals_e'.
+app/api/account-automation/route.ts(41,20): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/account-automation/route.ts(49,14): error TS2339: Property 'username' does not exist on type 'unknown'.
+app/api/account-automation/route.ts(49,41): error TS2339: Property 'platform' does not exist on type 'unknown'.
+app/api/account-automation/route.ts(60,20): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/account-automation/route.ts(72,43): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/account-automation/route.ts(72,58): error TS2339: Property 'email' does not exist on type 'unknown'.
+app/api/account-automation/route.ts(75,17): error TS2339: Property 'verified' does not exist on type 'unknown'.
+app/api/account-automation/route.ts(76,17): error TS2339: Property 'status' does not exist on type 'unknown'.
+app/api/account-automation/route.ts(84,42): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/account-automation/route.ts(88,21): error TS2339: Property 'status' does not exist on type 'unknown'.
+app/api/account-automation/route.ts(89,23): error TS2339: Property 'verified' does not exist on type 'unknown'.
+app/api/ai-anomaly-service/route.ts(25,38): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/ai-anomaly-service/route.ts(26,23): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/ai-anomaly-service/route.ts(63,38): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/ai-anomaly-service/route.ts(64,23): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/ai-health/route.ts(79,35): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/ai-health/route.ts(80,20): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/ai-health/route.ts(284,35): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/ai-health/route.ts(285,20): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/ai-self-diagnostics/route.ts(29,38): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/ai-self-diagnostics/route.ts(30,23): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/ai-self-diagnostics/route.ts(85,38): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/ai-self-diagnostics/route.ts(86,23): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/auth/login.ts(18,9): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/auth/login.ts(22,11): error TS2339: Property 'username' does not exist on type '{}'.
+app/api/auth/login.ts(22,21): error TS2339: Property 'password' does not exist on type '{}'.
+app/api/auth/login.ts(26,22): error TS2339: Property 'find' does not exist on type 'unknown'.
+app/api/auth/login.ts(26,45): error TS2339: Property 'username' does not exist on type 'unknown'.
+app/api/auth/logout.ts(4,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/auth/me.ts(8,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/auth/rbac.ts(10,40): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/auth/rbac.ts(20,16): error TS2349: This expression is not callable.
+  Type '{}' has no call signatures.
+app/api/auth/register.ts(19,9): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/auth/register.ts(23,11): error TS2339: Property 'username' does not exist on type '{}'.
+app/api/auth/register.ts(23,21): error TS2339: Property 'password' does not exist on type '{}'.
+app/api/auth/register.ts(23,31): error TS2339: Property 'role' does not exist on type '{}'.
+app/api/auth/register.ts(27,13): error TS2339: Property 'find' does not exist on type 'unknown'.
+app/api/auth/register.ts(27,36): error TS2339: Property 'username' does not exist on type 'unknown'.
+app/api/auth/register.ts(37,9): error TS2339: Property 'push' does not exist on type 'unknown'.
+app/api/auth/register.ts(38,13): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
+  Type '{}' is missing the following properties from type 'unknown[]': length, pop, push, concat, and 28 more.
+app/api/auth/session.ts(12,9): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/auth/session.ts(23,33): error TS2339: Property 'action' does not exist on type 'unknown'.
+app/api/auth/session.ts(24,13): error TS2339: Property 'sid' does not exist on type '{}'.
+app/api/auth/totp.ts(19,9): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/auth/totp.ts(24,25): error TS2339: Property 'findIndex' does not exist on type 'unknown'.
+app/api/auth/totp.ts(24,53): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/auth/totp.ts(26,33): error TS2339: Property 'action' does not exist on type 'unknown'.
+app/api/auth/totp.ts(29,15): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
+  Type '{}' is missing the following properties from type 'unknown[]': length, pop, push, concat, and 28 more.
+app/api/auth/totp.ts(32,33): error TS2339: Property 'action' does not exist on type 'unknown'.
+app/api/auth/totp.ts(33,13): error TS2339: Property 'code' does not exist on type '{}'.
+app/api/auth/totp.ts(39,15): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
+  Type '{}' is missing the following properties from type 'unknown[]': length, pop, push, concat, and 28 more.
+app/api/auth/totp.ts(42,33): error TS2339: Property 'action' does not exist on type 'unknown'.
+app/api/auth/totp.ts(44,15): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
+  Type '{}' is missing the following properties from type 'unknown[]': length, pop, push, concat, and 28 more.
+app/api/auto-fix.ts(23,18): error TS2304: Cannot find name 'fals_e'.
+app/api/auto-fix.ts(85,20): error TS2304: Cannot find name 'fals_e'.
+app/api/cashon/balance/route.ts(31,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/cashon/balance/route.ts(32,27): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/cashon/deposit/route.ts(15,22): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/cashon/route.ts(17,22): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/cashon/route.ts(77,22): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/cashon/route.ts(281,11): error TS2304: Cannot find name 'fals_e'.
+app/api/cashon/route.ts(307,22): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/cashon/signals/route.ts(30,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/cashon/signals/route.ts(31,27): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/cashon/start-trading/route.ts(15,22): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/cashon/stop-trading/route.ts(15,22): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/cashon/trading-status/route.ts(30,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/cashon/trading-status/route.ts(31,27): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/colab-job.ts(52,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
+app/api/colab-job.ts(53,15): error TS2339: Property 'pkg' does not exist on type '{}'.
+app/api/colab-job.ts(53,20): error TS2339: Property 'manager' does not exist on type '{}'.
+app/api/colab-job.ts(57,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
+app/api/colab-job.ts(58,15): error TS2339: Property 'dataset' does not exist on type '{}'.
+app/api/colab-job.ts(62,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
+app/api/colab-job.ts(63,15): error TS2339: Property 'jobSpec' does not exist on type '{}'.
+app/api/colab-job.ts(67,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
+app/api/colab-job.ts(68,15): error TS2339: Property 'jobId' does not exist on type '{}'.
+app/api/colab-job.ts(72,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
+app/api/colab-job.ts(73,15): error TS2339: Property 'projectId' does not exist on type '{}'.
+app/api/colab-job.ts(73,26): error TS2339: Property 'projectType' does not exist on type '{}'.
+app/api/colab-job.ts(73,39): error TS2339: Property 'projectName' does not exist on type '{}'.
+app/api/colab-job.ts(84,13): error TS2339: Property 'type' does not exist on type '{}'.
+app/api/colab-job.ts(84,19): error TS2339: Property 'name' does not exist on type '{}'.
+app/api/datasets/route.ts(15,74): error TS2339: Property 'data' does not exist on type 'unknown'.
+app/api/deploy/auto-redeploy/route.ts(31,23): error TS2304: Cannot find name 'fals_e'.
+app/api/deploy/auto-redeploy/route.ts(38,70): error TS2339: Property 'message' does not exist on type 'unknown'.
+app/api/deploy/route.ts(44,53): error TS2339: Property 'message' does not exist on type 'unknown'.
+app/api/device-fingerprint/route.ts(44,18): error TS2339: Property 'push' does not exist on type 'unknown'.
+app/api/document-backup/route.ts(42,43): error TS2339: Property 'name' does not exist on type 'unknown'.
+app/api/document-backup/route.ts(43,47): error TS2339: Property 'type' does not exist on type 'unknown'.
+app/api/document-backup/route.ts(51,39): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/employment/megavault/route.ts(63,43): error TS2339: Property 'consumerKey' does not exist on type 'unknown'.
+app/api/employment/megavault/route.ts(64,46): error TS2339: Property 'consumerSecret' does not exist on type 'unknown'.
+app/api/employment/megavault/route.ts(65,32): error TS2339: Property 'environment' does not exist on type 'unknown'.
+app/api/employment/megavault/route.ts(95,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/megavault/route.ts(114,37): error TS2339: Property 'amount' does not exist on type 'unknown'.
+app/api/employment/megavault/route.ts(115,42): error TS2339: Property 'description' does not exist on type 'unknown'.
+app/api/employment/megavault/route.ts(117,40): error TS2339: Property 'reference' does not exist on type 'unknown'.
+app/api/employment/megavault/route.ts(131,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/megavault/route.ts(170,13): error TS2339: Property 'percentage' does not exist on type '{}'.
+app/api/employment/megavault/route.ts(170,25): error TS2339: Property 'recipients' does not exist on type '{}'.
+app/api/employment/megavault/route.ts(174,47): error TS2339: Property 'percentage' does not exist on type 'unknown'.
+app/api/employment/megavault/route.ts(176,32): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/employment/megavault/route.ts(177,34): error TS2339: Property 'type' does not exist on type 'unknown'.
+app/api/employment/megavault/route.ts(179,31): error TS2339: Property 'percentage' does not exist on type 'unknown'.
+app/api/employment/megavault/route.ts(193,9): error TS2698: Spread types may only be created from object types.
+app/api/employment/megavault/route.ts(211,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/megavault/route.ts(284,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/megavault/route.ts(304,24): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/megavault/route.ts(362,24): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/megavault/route.ts(381,24): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/megavault/route.ts(422,22): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/megavault/route.ts(432,20): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/megavault/route.ts(442,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/megavault/route.ts(462,20): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/megavault/route.ts(483,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(58,54): error TS2339: Property 'PayPal' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(59,48): error TS2339: Property 'mpesa' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(85,31): error TS2339: Property 'amount' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(86,31): error TS2339: Property 'mpesaNumber' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(88,36): error TS2339: Property 'mpesaNumber' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(90,41): error TS2339: Property 'description' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(91,40): error TS2339: Property 'description' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(104,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(126,33): error TS2339: Property 'airtelNumber' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(129,33): error TS2339: Property 'amount' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(146,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(164,33): error TS2339: Property 'amount' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(165,38): error TS2339: Property 'description' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(168,36): error TS2339: Property 'accountName' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(169,35): error TS2339: Property 'accountName' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(170,32): error TS2339: Property 'email' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(171,38): error TS2339: Property 'phone' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(181,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(194,47): error TS2339: Property 'status' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(195,52): error TS2339: Property 'recipientId' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(219,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(259,31): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(263,56): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(266,11): error TS2698: Spread types may only be created from object types.
+app/api/employment/payment/route.ts(326,20): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(336,20): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(346,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(359,47): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/employment/payment/route.ts(363,20): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(370,25): error TS2698: Spread types may only be created from object types.
+app/api/employment/payment/route.ts(389,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(207,36): error TS2339: Property 'reward' does not exist on type 'unknown'.
+app/api/employment/revenue/route.ts(208,34): error TS2339: Property 'reward' does not exist on type 'unknown'.
+app/api/employment/revenue/route.ts(212,64): error TS2339: Property 'title' does not exist on type 'unknown'.
+app/api/employment/revenue/route.ts(232,53): error TS2339: Property 'commission' does not exist on type 'unknown'.
+app/api/employment/revenue/route.ts(237,67): error TS2339: Property 'name' does not exist on type 'unknown'.
+app/api/employment/revenue/route.ts(257,35): error TS2339: Property 'reward' does not exist on type 'unknown'.
+app/api/employment/revenue/route.ts(258,37): error TS2339: Property 'reward' does not exist on type 'unknown'.
+app/api/employment/revenue/route.ts(262,65): error TS2339: Property 'title' does not exist on type 'unknown'.
+app/api/employment/revenue/route.ts(281,49): error TS2339: Property 'bonus' does not exist on type 'unknown'.
+app/api/employment/revenue/route.ts(286,66): error TS2339: Property 'name' does not exist on type 'unknown'.
+app/api/employment/revenue/route.ts(353,63): error TS2339: Property 'title' does not exist on type 'unknown'.
+app/api/employment/revenue/route.ts(378,38): error TS2339: Property 'project' does not exist on type 'unknown'.
+app/api/employment/revenue/route.ts(403,69): error TS2339: Property 'service' does not exist on type 'unknown'.
+app/api/employment/route.ts(70,27): error TS2339: Property 'status' does not exist on type 'unknown'.
+app/api/employment/route.ts(70,63): error TS2339: Property 'role' does not exist on type 'unknown'.
+app/api/employment/route.ts(75,28): error TS2339: Property 'status' does not exist on type 'unknown'.
+app/api/employment/route.ts(75,65): error TS2339: Property 'role' does not exist on type 'unknown'.
+app/api/employment/route.ts(91,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(155,20): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(165,20): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(175,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(189,54): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/employment/route.ts(193,22): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(200,28): error TS2698: Spread types may only be created from object types.
+app/api/employment/route.ts(207,47): error TS2339: Property 'name' does not exist on type 'unknown'.
+app/api/employment/route.ts(217,52): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/employment/route.ts(221,22): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(228,24): error TS2698: Spread types may only be created from object types.
+app/api/employment/route.ts(235,39): error TS2339: Property 'name' does not exist on type 'unknown'.
+app/api/employment/route.ts(247,20): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(256,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(273,20): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(281,54): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/employment/route.ts(285,22): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(300,39): error TS2339: Property 'name' does not exist on type 'unknown'.
+app/api/employment/route.ts(309,52): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/employment/route.ts(313,22): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(328,31): error TS2339: Property 'name' does not exist on type 'unknown'.
+app/api/employment/route.ts(339,20): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(348,18): error TS2304: Cannot find name 'fals_e'.
+app/api/financial/audit/route.ts(13,41): error TS2304: Cannot find name 'fals_e'.
+app/api/financial/verify/route.ts(7,9): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/financial/verify/route.ts(13,11): error TS2339: Property 'service' does not exist on type '{}'.
+app/api/financial/verify/route.ts(13,20): error TS2339: Property 'account' does not exist on type '{}'.
+app/api/financial/verify/route.ts(20,28): error TS2304: Cannot find name 'fals_e'.
+app/api/git/commit/route.ts(45,61): error TS2339: Property 'message' does not exist on type 'unknown'.
+app/api/git/pr/route.ts(43,67): error TS2339: Property 'message' does not exist on type 'unknown'.
+app/api/git/push/route.ts(23,59): error TS2339: Property 'message' does not exist on type 'unknown'.
+app/api/git/status/route.ts(42,61): error TS2339: Property 'message' does not exist on type 'unknown'.
+app/api/health/route.ts(32,24): error TS2304: Cannot find name 'fals_e'.
+app/api/health/route.ts(484,20): error TS2339: Property 'system' does not exist on type 'unknown'.
+app/api/health/route.ts(485,22): error TS2339: Property 'system' does not exist on type 'unknown'.
+app/api/health/route.ts(494,22): error TS2339: Property 'system' does not exist on type 'unknown'.
+app/api/health/route.ts(506,20): error TS2339: Property 'api' does not exist on type 'unknown'.
+app/api/health/route.ts(517,20): error TS2339: Property 'qmoi' does not exist on type 'unknown'.
+app/api/media/generate/route.ts(191,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/media/generate/route.ts(194,27): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/monitor/status/route.ts(23,18): error TS2304: Cannot find name 'fals_e'.
+app/api/mpesa/callback/route.ts(40,47): error TS2339: Property 'Name' does not exist on type 'unknown'.
+app/api/mpesa/callback/route.ts(42,47): error TS2339: Property 'Name' does not exist on type 'unknown'.
+app/api/mpesa/callback/route.ts(45,47): error TS2339: Property 'Name' does not exist on type 'unknown'.
+app/api/mpesa/callback/route.ts(48,47): error TS2339: Property 'Name' does not exist on type 'unknown'.
+app/api/mpesa/callback/route.ts(89,18): error TS2304: Cannot find name 'fals_e'.
+app/api/mpesa/callback/route.ts(100,18): error TS2304: Cannot find name 'fals_e'.
+app/api/qapikey/route.ts(24,16): error TS2304: Cannot find name 'fals_e'.
+app/api/qapikey/route.ts(45,14): error TS2304: Cannot find name 'fals_e'.
+app/api/qcity/audit-log.ts(11,11): error TS2339: Property 'method' does not exist on type '{}'.
+app/api/qcity/audit-log.ts(11,19): error TS2339: Property '_query' does not exist on type '{}'.
+app/api/qcity/audit-log.ts(13,17): error TS2339: Property 'status' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(16,8): error TS2339: Property 'status' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(31,42): error TS2339: Property 'user' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(31,52): error TS2339: Property 'user' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(33,42): error TS2339: Property 'action' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(33,54): error TS2339: Property 'action' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(35,42): error TS2339: Property 'status' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(35,54): error TS2339: Property 'status' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(38,25): error TS2339: Property 'timestamp' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(38,40): error TS2339: Property 'timestamp' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(51,13): error TS2339: Property 'timestamp' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(52,13): error TS2339: Property 'user' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(53,13): error TS2339: Property 'action' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(54,13): error TS2339: Property 'deviceId' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(55,13): error TS2339: Property 'status' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(56,13): error TS2339: Property 'command' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(62,10): error TS2339: Property 'setHeader' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(63,10): error TS2339: Property 'setHeader' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(67,17): error TS2339: Property 'status' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(70,10): error TS2339: Property 'setHeader' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(71,10): error TS2339: Property 'setHeader' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(75,17): error TS2339: Property 'status' does not exist on type 'unknown'.
+app/api/qcity/audit-log.ts(77,8): error TS2339: Property 'status' does not exist on type 'unknown'.
+app/api/qcity/audit-log/route.ts(18,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qcity/audit-log/route.ts(29,12): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
+app/api/qcity/audit-log/route.ts(33,43): error TS2339: Property 'action' does not exist on type 'unknown'.
+app/api/qcity/audit-log/route.ts(34,41): error TS2339: Property 'user' does not exist on type 'unknown'.
+app/api/qcity/audit-log/route.ts(35,45): error TS2339: Property 'deviceId' does not exist on type 'unknown'.
+app/api/qcity/audit-log/route.ts(36,43): error TS2339: Property 'status' does not exist on type 'unknown'.
+app/api/qcity/devices.ts(19,38): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qcity/devices.ts(20,27): error TS2339: Property '_query' does not exist on type 'NextApiRequest'.
+app/api/qcity/devices.ts(26,15): error TS2339: Property 'name' does not exist on type '{}'.
+app/api/qcity/devices.ts(26,21): error TS2339: Property 'host' does not exist on type '{}'.
+app/api/qcity/devices.ts(26,27): error TS2339: Property 'port' does not exist on type '{}'.
+app/api/qcity/devices.ts(26,33): error TS2339: Property 'username' does not exist on type '{}'.
+app/api/qcity/devices.ts(26,43): error TS2339: Property 'password' does not exist on type '{}'.
+app/api/qcity/devices.ts(26,53): error TS2339: Property 'privateKey' does not exist on type '{}'.
+app/api/qcity/devices.ts(40,15): error TS2339: Property 'push' does not exist on type 'unknown'.
+app/api/qcity/devices.ts(41,19): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
+  Type '{}' is missing the following properties from type 'unknown[]': length, pop, push, concat, and 28 more.
+app/api/qcity/devices.ts(45,15): error TS2339: Property 'id' does not exist on type '{}'.
+app/api/qcity/devices.ts(45,22): error TS2700: Rest types may only be created from object types.
+app/api/qcity/devices.ts(46,27): error TS2339: Property 'findIndex' does not exist on type 'unknown'.
+app/api/qcity/devices.ts(46,55): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/qcity/devices.ts(53,19): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
+  Type '{}' is missing the following properties from type 'unknown[]': length, pop, push, concat, and 28 more.
+app/api/qcity/devices.ts(57,15): error TS2339: Property 'id' does not exist on type '{}'.
+app/api/qcity/devices.ts(58,25): error TS2339: Property 'filter' does not exist on type 'unknown'.
+app/api/qcity/devices.ts(58,50): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/qcity/devices.ts(59,19): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
+  Type '{}' is missing the following properties from type 'unknown[]': length, pop, push, concat, and 28 more.
+app/api/qcity/devices.ts(63,15): error TS2339: Property 'id' does not exist on type '{}'.
+app/api/qcity/devices.ts(64,30): error TS2339: Property 'find' does not exist on type 'unknown'.
+app/api/qcity/devices.ts(64,53): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/qcity/devices.ts(74,55): error TS2339: Property 'message' does not exist on type 'unknown'.
+app/api/qcity/metrics.ts(8,9): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qcity/plugins.ts(11,9): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qcity/remote-command.ts(13,22): error TS2698: Spread types may only be created from object types.
+app/api/qcity/remote-command/route.ts(14,22): error TS2698: Spread types may only be created from object types.
+app/api/qcity/remote-command/route.ts(30,23): error TS2339: Property 'cmd' does not exist on type 'unknown'.
+app/api/qcity/remote-command/route.ts(36,11): error TS2339: Property 'cmd' does not exist on type '{}'.
+app/api/qcity/remote-command/route.ts(36,16): error TS2339: Property 'deviceId' does not exist on type '{}'.
+app/api/qcity/remote-command/route.ts(36,36): error TS2339: Property 'stream' does not exist on type '{}'.
+app/api/qcity/schedule.ts(18,9): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qcity/schedule.ts(20,25): error TS2339: Property '_query' does not exist on type 'NextApiRequest'.
+app/api/qcity/schedule.ts(26,13): error TS2339: Property 'name' does not exist on type '{}'.
+app/api/qcity/schedule.ts(26,19): error TS2339: Property 'command' does not exist on type '{}'.
+app/api/qcity/schedule.ts(26,28): error TS2339: Property 'cron' does not exist on type '{}'.
+app/api/qcity/schedule.ts(26,34): error TS2339: Property 'deviceId' does not exist on type '{}'.
+app/api/qcity/schedule.ts(26,44): error TS2339: Property 'notify' does not exist on type '{}'.
+app/api/qcity/schedule.ts(39,15): error TS2339: Property 'push' does not exist on type 'unknown'.
+app/api/qcity/schedule.ts(40,19): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
+  Type '{}' is missing the following properties from type 'unknown[]': length, pop, push, concat, and 28 more.
+app/api/qcity/schedule.ts(44,13): error TS2339: Property 'id' does not exist on type '{}'.
+app/api/qcity/schedule.ts(44,20): error TS2700: Rest types may only be created from object types.
+app/api/qcity/schedule.ts(45,27): error TS2339: Property 'findIndex' does not exist on type 'unknown'.
+app/api/qcity/schedule.ts(45,55): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/qcity/schedule.ts(52,19): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
+  Type '{}' is missing the following properties from type 'unknown[]': length, pop, push, concat, and 28 more.
+app/api/qcity/schedule.ts(56,13): error TS2339: Property 'id' does not exist on type '{}'.
+app/api/qcity/schedule.ts(57,27): error TS2339: Property 'filter' does not exist on type 'unknown'.
+app/api/qcity/schedule.ts(57,52): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/qcity/schedule.ts(58,19): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
+  Type '{}' is missing the following properties from type 'unknown[]': length, pop, push, concat, and 28 more.
+app/api/qcity/schedule.ts(62,13): error TS2339: Property 'id' does not exist on type '{}'.
+app/api/qcity/schedule.ts(63,27): error TS2339: Property 'find' does not exist on type 'unknown'.
+app/api/qcity/schedule.ts(63,50): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/qcity/selfheal-npm/route.ts(17,14): error TS2339: Property 'from' does not exist on type 'unknown'.
+app/api/qcity/selfheal-npm/route.ts(19,29): error TS2339: Property 'role' does not exist on type 'unknown'.
+app/api/qcity/selfheal-npm/route.ts(19,57): error TS2339: Property 'role' does not exist on type 'unknown'.
+app/api/qcity/selfheal-npm/route.ts(20,43): error TS2339: Property 'role' does not exist on type 'unknown'.
+app/api/qcity/selfheal-npm/route.ts(51,22): error TS2339: Property 'device' does not exist on type 'unknown'.
+app/api/qcity/selfheal-npm/route.ts(62,9): error TS2339: Property 'valid' does not exist on type 'unknown'.
+app/api/qcity/selfheal-npm/route.ts(70,14): error TS2339: Property 'valid' does not exist on type 'unknown'.
+app/api/qcity/selfheal-npm/route.ts(90,18): error TS2339: Property 'forceClean' does not exist on type 'unknown'.
+app/api/qcity/selfheal-npm/route.ts(91,18): error TS2339: Property 'essentialsOnly' does not exist on type 'unknown'.
+app/api/qcity/selfheal-npm/route.ts(92,18): error TS2339: Property 'upgradeAll' does not exist on type 'unknown'.
+app/api/qcity/selfheal-npm/route.ts(93,18): error TS2339: Property 'diagnosticsOnly' does not exist on type 'unknown'.
+app/api/qcity/selfheal-npm/route.ts(97,18): error TS2339: Property 'forceClean' does not exist on type 'unknown'.
+app/api/qcity/selfheal-npm/route.ts(98,18): error TS2339: Property 'essentialsOnly' does not exist on type 'unknown'.
+app/api/qcity/selfheal-npm/route.ts(99,18): error TS2339: Property 'upgradeAll' does not exist on type 'unknown'.
+app/api/qcity/selfheal-npm/route.ts(100,18): error TS2339: Property 'diagnosticsOnly' does not exist on type 'unknown'.
+app/api/qcity/selfheal-npm/route.ts(109,20): error TS2339: Property 'role' does not exist on type 'unknown'.
+app/api/qcity/status/route.ts(21,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qcity/status/route.ts(31,27): error TS2339: Property 'offloading' does not exist on type 'unknown'.
+app/api/qcity/status/route.ts(32,30): error TS2339: Property 'offloading' does not exist on type 'unknown'.
+app/api/qi-trading.ts(96,50): error TS2339: Property 'confidence' does not exist on type 'unknown'.
+app/api/qi-trading.ts(125,27): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
+app/api/qi-trading.ts(182,9): error TS2740: Type '{}' is missing the following properties from type 'any[]': length, pop, push, concat, and 28 more.
+app/api/qi-trading.ts(204,45): error TS2304: Cannot find name 'fals_e'.
+app/api/qi-trading.ts(310,11): error TS2740: Type '{}' is missing the following properties from type 'any[]': length, pop, push, concat, and 28 more.
+app/api/qi-trading.ts(329,48): error TS2339: Property 'message' does not exist on type 'unknown'.
+app/api/qi-trading/route.ts(93,18): error TS2304: Cannot find name 'fals_e'.
+app/api/qi-trading/route.ts(108,16): error TS2304: Cannot find name 'fals_e'.
+app/api/qi-trading/route.ts(120,29): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qi-trading/route.ts(159,29): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi-database/route.ts(10,51): error TS2307: Cannot find module '@/lib/prisma' or its corresponding type declarations.
+app/api/qmoi-database/route.ts(51,11): error TS2339: Property 'type' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(55,11): error TS2339: Property 'source' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(58,35): error TS2339: Property 'mediaTask' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(67,14): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(68,17): error TS2339: Property 'type' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(71,15): error TS2339: Property 'result' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(73,12): error TS2339: Property 'status' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(75,16): error TS2339: Property 'status' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(78,21): error TS2339: Property 'createdAt' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(79,21): error TS2339: Property 'updatedAt' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(86,34): error TS2339: Property 'mediaTask' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(91,23): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi-database/route.ts(100,18): error TS2339: Property 'mediaTask' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(107,18): error TS2339: Property 'mediaTask' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(122,18): error TS2339: Property 'mediaTask' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(131,16): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi-database/route.ts(147,11): error TS2339: Property 'action' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(151,11): error TS2339: Property 'resource' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(154,29): error TS2339: Property 'auditLog' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(215,38): error TS2339: Property 'user' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(216,42): error TS2339: Property 'auditLog' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(217,43): error TS2339: Property 'mediaTask' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(254,38): error TS2339: Property 'mediaTask' does not exist on type 'unknown'.
+app/api/qmoi-database/route.ts(283,37): error TS2339: Property 'auditLog' does not exist on type 'unknown'.
+app/api/qmoi-gitlab/trigger/route.ts(37,18): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi-model.ts(69,5): error TS2322: Type 'unknown[]' is not assignable to type 'AITaskLogEntry[]'.
+  Type '{}' is missing the following properties from type 'AITaskLogEntry': id, type, status, timestamp
+app/api/qmoi-model.ts(323,12): error TS2339: Property 'from' does not exist on type 'unknown'.
+app/api/qmoi-model.ts(327,22): error TS2339: Property 'concat' does not exist on type 'unknown'.
+app/api/qmoi-model.ts(333,21): error TS2339: Property 'from' does not exist on type 'unknown'.
+app/api/qmoi-model.ts(334,32): error TS2339: Property 'from' does not exist on type 'unknown'.
+app/api/qmoi-model.ts(337,12): error TS2339: Property 'from' does not exist on type 'unknown'.
+app/api/qmoi-model.ts(341,22): error TS2339: Property 'concat' does not exist on type 'unknown'.
+app/api/qmoi-model.ts(516,17): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi-model.ts(659,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
+app/api/qmoi-model.ts(663,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
+app/api/qmoi-model.ts(677,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
+app/api/qmoi-model.ts(684,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
+app/api/qmoi-model.ts(696,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
+app/api/qmoi-model.ts(708,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
+app/api/qmoi-model.ts(717,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
+app/api/qmoi-model.ts(744,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
+app/api/qmoi-model.ts(746,28): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
+app/api/qmoi-model.ts(750,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
+app/api/qmoi-model.ts(765,63): error TS2339: Property 'message' does not exist on type 'unknown'.
+app/api/qmoi-model.ts(766,19): error TS2339: Property 'file' does not exist on type 'unknown'.
+app/api/qmoi-model.ts(767,30): error TS2339: Property 'file' does not exist on type 'unknown'.
+app/api/qmoi-model.ts(771,63): error TS2339: Property '_query' does not exist on type 'unknown'.
+app/api/qmoi-model.ts(774,30): error TS2339: Property '_query' does not exist on type 'unknown'.
+app/api/qmoi-model.ts(820,23): error TS2339: Property 'reply' does not exist on type 'unknown'.
+app/api/qmoi-model.ts(821,30): error TS2339: Property 'conversation' does not exist on type 'unknown'.
+app/api/qmoi-model.ts(823,27): error TS2339: Property 'ssml' does not exist on type 'unknown'.
+app/api/qmoi-model.ts(823,41): error TS2339: Property 'ssml' does not exist on type 'unknown'.
+app/api/qmoi-model.ts(823,55): error TS2339: Property 'ssml' does not exist on type 'unknown'.
+app/api/qmoi-model.ts(825,26): error TS2339: Property 'suggestClientTTS' does not exist on type 'unknown'.
+app/api/qmoi/auto-fix/download-report/route.ts(14,20): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/auto-fix/github-status/route.ts(14,20): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/auto-fix/start/route.ts(16,22): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/auto-fix/status/route.ts(15,22): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/auto-fix/status/route.ts(44,7): error TS2739: Type '{}' is missing the following properties from type '{ timestamp: string; status: "running" | "completed" | "_error" | "unknown"; summary: { md_files_processed: number; claims_verified: number; claims_fixed: number; errors_fixed: number; manual_errors_fixed: number; new_features_documented: number; }; deployment: { ...; }; details: any[]; }': timestamp, status, summary, deployment, details
+app/api/qmoi/auto-fix/stop/route.ts(17,22): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/auto-fix/stop/route.ts(90,7): error TS18004: No value exists in scope for the shorthand property 'killedProcess_es'. Either declare one or provide an initializer.
+app/api/qmoi/backup/route.ts(9,9): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qmoi/backup/route.ts(16,15): error TS2339: Property 'action' does not exist on type '{}'.
+app/api/qmoi/chat/route.ts(24,51): error TS2304: Cannot find name 'qbas_e'.
+app/api/qmoi/chat/route.ts(94,28): error TS2339: Property 'choices' does not exist on type 'unknown'.
+app/api/qmoi/fix/all.ts(6,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qmoi/fix/connectivity.ts(6,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qmoi/language/route.ts(12,9): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qmoi/language/route.ts(17,20): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/language/route.ts(18,18): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/language/route.ts(22,25): error TS2339: Property '_query' does not exist on type 'NextApiRequest'.
+app/api/qmoi/language/route.ts(26,15): error TS2339: Property 'action' does not exist on type '{}'.
+app/api/qmoi/own-device-logs/export/route.ts(34,21): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/own-device-logs/export/route.ts(35,46): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/own-device-logs/route.ts(48,21): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/own-device-logs/route.ts(49,46): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/own-device-logs/route.ts(125,21): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/own-device-logs/route.ts(126,46): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/research/route.ts(9,9): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qmoi/research/route.ts(16,15): error TS2339: Property 'action' does not exist on type '{}'.
+app/api/qmoi/revenue/reset/route.ts(20,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/revenue/reset/route.ts(21,27): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/revenue/reset/route.ts(30,27): error TS2339: Property 'setMasterMode' does not exist on type 'unknown'.
+app/api/qmoi/revenue/reset/route.ts(31,25): error TS2339: Property 'setMasterMode' does not exist on type 'unknown'.
+app/api/qmoi/revenue/reset/route.ts(33,38): error TS2339: Property 'executeMasterCommand' does not exist on type 'unknown'.
+app/api/qmoi/revenue/reset/route.ts(34,33): error TS2339: Property 'executeMasterCommand' does not exist on type 'unknown'.
+app/api/qmoi/revenue/reset/route.ts(35,20): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi/revenue/route.ts(34,44): error TS2339: Property 'getTotalEarnings' does not exist on type 'QMOIRevenueEngine | typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
+  Property 'getTotalEarnings' does not exist on type 'typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
+app/api/qmoi/revenue/route.ts(35,44): error TS2339: Property 'getDailyProgress' does not exist on type 'QMOIRevenueEngine | typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
+  Property 'getDailyProgress' does not exist on type 'typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
+app/api/qmoi/revenue/route.ts(36,38): error TS2339: Property 'getRevenueStreams' does not exist on type 'QMOIRevenueEngine | typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
+  Property 'getRevenueStreams' does not exist on type 'typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
+app/api/qmoi/revenue/route.ts(42,43): error TS2339: Property 'getTransactions' does not exist on type 'QMOIRevenueEngine | typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
+  Property 'getTransactions' does not exist on type 'typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
+app/api/qmoi/revenue/route.ts(47,38): error TS2339: Property 'getRevenueStreams' does not exist on type 'QMOIRevenueEngine | typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
+  Property 'getRevenueStreams' does not exist on type 'typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
+app/api/qmoi/revenue/route.ts(52,44): error TS2339: Property 'getTotalEarnings' does not exist on type 'QMOIRevenueEngine | typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
+  Property 'getTotalEarnings' does not exist on type 'typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
+app/api/qmoi/revenue/route.ts(53,44): error TS2339: Property 'getDailyProgress' does not exist on type 'QMOIRevenueEngine | typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
+  Property 'getDailyProgress' does not exist on type 'typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
+app/api/qmoi/revenue/route.ts(54,38): error TS2339: Property 'getRevenueStreams' does not exist on type 'QMOIRevenueEngine | typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
+  Property 'getRevenueStreams' does not exist on type 'typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
+app/api/qmoi/revenue/route.ts(83,31): error TS2339: Property 'startRevenueGeneration' does not exist on type 'unknown'.
+app/api/qmoi/revenue/route.ts(84,35): error TS2339: Property 'startRevenueGeneration' does not exist on type 'unknown'.
+app/api/qmoi/revenue/route.ts(95,31): error TS2339: Property 'stop' does not exist on type 'unknown'.
+app/api/qmoi/revenue/route.ts(96,29): error TS2339: Property 'stop' does not exist on type 'unknown'.
+app/api/qmoi/revenue/route.ts(107,42): error TS2339: Property 'getTotalEarnings' does not exist on type 'unknown'.
+app/api/qmoi/revenue/route.ts(110,33): error TS2339: Property 'transferToMpesa' does not exist on type 'unknown'.
+app/api/qmoi/revenue/route.ts(111,37): error TS2339: Property 'transferToMpesa' does not exist on type 'unknown'.
+app/api/qmoi/revenue/route.ts(119,22): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi/revenue/start/route.ts(20,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/revenue/start/route.ts(21,27): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/revenue/start/route.ts(30,27): error TS2339: Property 'setMasterMode' does not exist on type 'unknown'.
+app/api/qmoi/revenue/start/route.ts(31,25): error TS2339: Property 'setMasterMode' does not exist on type 'unknown'.
+app/api/qmoi/revenue/start/route.ts(33,38): error TS2339: Property 'startRevenueEngine' does not exist on type 'unknown'.
+app/api/qmoi/revenue/start/route.ts(34,33): error TS2339: Property 'startRevenueEngine' does not exist on type 'unknown'.
+app/api/qmoi/revenue/start/route.ts(35,20): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi/revenue/status/route.ts(20,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/revenue/status/route.ts(21,27): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/revenue/status/route.ts(28,43): error TS2339: Property 'getTotalEarnings' does not exist on type 'QMOIRevenueEngine | typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
+  Property 'getTotalEarnings' does not exist on type 'typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
+app/api/qmoi/revenue/stop/route.ts(20,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/revenue/stop/route.ts(21,27): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/revenue/stop/route.ts(28,38): error TS2339: Property 'stopRevenueEngine' does not exist on type 'unknown'.
+app/api/qmoi/revenue/stop/route.ts(29,33): error TS2339: Property 'stopRevenueEngine' does not exist on type 'unknown'.
+app/api/qmoi/revenue/stop/route.ts(30,20): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi/revenue/target/route.ts(20,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/revenue/target/route.ts(21,27): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/revenue/target/route.ts(39,27): error TS2339: Property 'setMasterMode' does not exist on type 'unknown'.
+app/api/qmoi/revenue/target/route.ts(40,25): error TS2339: Property 'setMasterMode' does not exist on type 'unknown'.
+app/api/qmoi/revenue/target/route.ts(42,38): error TS2339: Property 'executeMasterCommand' does not exist on type 'unknown'.
+app/api/qmoi/revenue/target/route.ts(43,33): error TS2339: Property 'executeMasterCommand' does not exist on type 'unknown'.
+app/api/qmoi/revenue/target/route.ts(47,20): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi/revenue/transactions/route.ts(20,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/revenue/transactions/route.ts(21,27): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/revenue/transactions/route.ts(28,44): error TS2339: Property 'getTransactionHistory' does not exist on type 'unknown'.
+app/api/qmoi/revenue/transactions/route.ts(29,27): error TS2339: Property 'getTransactionHistory' does not exist on type 'unknown'.
+app/api/qmoi/revenue/transactions/route.ts(30,27): error TS2339: Property 'getTransactions' does not exist on type 'unknown'.
+app/api/qmoi/revenue/transactions/route.ts(31,29): error TS2339: Property 'getTransactions' does not exist on type 'unknown'.
+app/api/qmoi/revenue/transfer/route.ts(20,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/revenue/transfer/route.ts(21,27): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/revenue/transfer/route.ts(39,27): error TS2339: Property 'setMasterMode' does not exist on type 'unknown'.
+app/api/qmoi/revenue/transfer/route.ts(40,25): error TS2339: Property 'setMasterMode' does not exist on type 'unknown'.
+app/api/qmoi/revenue/transfer/route.ts(42,38): error TS2339: Property 'executeMasterCommand' does not exist on type 'unknown'.
+app/api/qmoi/revenue/transfer/route.ts(43,33): error TS2339: Property 'executeMasterCommand' does not exist on type 'unknown'.
+app/api/qmoi/revenue/transfer/route.ts(47,20): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi/status.ts(7,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qmoi/user/route.ts(11,9): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qmoi/user/route.ts(16,20): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/user/route.ts(17,18): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qmoi/user/route.ts(30,15): error TS2339: Property 'action' does not exist on type '{}'.
+app/api/qmoi/voice-preview/route.ts(38,18): error TS2339: Property 'from' does not exist on type 'unknown'.
+app/api/qmoi/voice-preview/route.ts(39,18): error TS2339: Property 'from' does not exist on type 'unknown'.
+app/api/qnews/route.ts(16,71): error TS2339: Property 'data' does not exist on type 'unknown'.
+app/api/qnews/route.ts(17,45): error TS2339: Property 'data' does not exist on type 'unknown'.
+app/api/qnews/route.ts(175,31): error TS2339: Property 'news' does not exist on type 'unknown'.
+app/api/qnews/route.ts(220,18): error TS2339: Property 'scheduledAt' does not exist on type 'unknown'.
+app/api/qnews/route.ts(223,31): error TS2339: Property 'news' does not exist on type 'unknown'.
+app/api/qnews/route.ts(264,31): error TS2339: Property 'news' does not exist on type 'unknown'.
+app/api/qnews/route.ts(306,31): error TS2339: Property 'news' does not exist on type 'unknown'.
+app/api/qnews/route.ts(316,13): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/qnews/route.ts(317,16): error TS2339: Property 'title' does not exist on type 'unknown'.
+app/api/qnews/route.ts(318,17): error TS2339: Property 'analytics' does not exist on type 'unknown'.
+app/api/qnews/route.ts(319,18): error TS2339: Property 'analytics' does not exist on type 'unknown'.
+app/api/qnews/route.ts(320,22): error TS2339: Property 'analytics' does not exist on type 'unknown'.
+app/api/qnews/route.ts(343,35): error TS2339: Property 'news' does not exist on type 'unknown'.
+app/api/qnews/route.ts(353,31): error TS2339: Property 'news' does not exist on type 'unknown'.
+app/api/qnews/route.ts(383,35): error TS2339: Property 'news' does not exist on type 'unknown'.
+app/api/qnews/route.ts(431,24): error TS2304: Cannot find name 'fals_e'.
+app/api/qnews/route.ts(439,20): error TS2304: Cannot find name 'fals_e'.
+app/api/qnews/route.ts(447,20): error TS2339: Property 'news' does not exist on type 'unknown'.
+app/api/qnews/route.ts(473,32): error TS2339: Property 'title' does not exist on type 'unknown'.
+app/api/qnews/route.ts(473,54): error TS2339: Property 'content' does not exist on type 'unknown'.
+app/api/qnews/route.ts(498,48): error TS2339: Property 'title' does not exist on type 'unknown'.
+app/api/qnews/route.ts(505,47): error TS2339: Property 'title' does not exist on type 'unknown'.
+app/api/qradio/route.ts(88,35): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/qradio/route.ts(89,20): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
+  Property '_response' does not exist on type '{ ok: true; }'.
+app/api/social-automation/route.ts(37,43): error TS2339: Property 'id' does not exist on type 'unknown'.
+app/api/social-automation/route.ts(40,22): error TS2339: Property 'tags' does not exist on type 'unknown'.
+app/api/social-automation/route.ts(40,56): error TS2339: Property 'tags' does not exist on type 'unknown'.
+app/api/whatsapp/audit/route.ts(13,41): error TS2304: Cannot find name 'fals_e'.
+app/api/whatsapp/verify/route.ts(7,9): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/whatsapp/verify/route.ts(13,11): error TS2339: Property 'phone' does not exist on type '{}'.
+app/api/whatsapp/verify/route.ts(20,28): error TS2304: Cannot find name 'fals_e'.
+app/api/wifi-security.ts(31,27): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
+app/api/wifi-security.ts(69,57): error TS2304: Cannot find name '_events'.
+app/api/wifi/scan/route.ts(78,16): error TS2304: Cannot find name 'fals_e'.
+app/page.tsx(29,26): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<{ id: string; name: string; email: string; role: string; avatar: any; }>'.
+app/page.tsx(38,20): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<{ id: string; name: string; email: string; role: string; avatar: any; }>'.
+components/AIContext.tsx(119,65): error TS2345: Argument of type '() => unknown' is not assignable to parameter of type 'ChatMessage[] | (() => ChatMessage[])'.
+  Type '() => unknown' is not assignable to type '() => ChatMessage[]'.
+    Type '{}' is missing the following properties from type 'ChatMessage[]': length, pop, push, concat, and 28 more.
+components/AIContext.tsx(152,5): error TS2345: Argument of type '() => unknown' is not assignable to parameter of type 'PersistentMemory | (() => PersistentMemory)'.
+  Type '() => unknown' is not assignable to type '() => PersistentMemory'.
+    Type 'unknown' is not assignable to type 'PersistentMemory'.
+      Index signature for type 'string' is missing in type '{}'.
+components/AIContext.tsx(185,72): error TS2345: Argument of type '() => unknown' is not assignable to parameter of type 'EmotionalState | (() => EmotionalState)'.
+  Type '() => unknown' is not assignable to type '() => EmotionalState'.
+    Type '{}' is missing the following properties from type 'EmotionalState': mood, lastInteraction, bondingLevel, preferredUsers, persona
+components/AccountabilitySystem.tsx(100,11): error TS2698: Spread types may only be created from object types.
+components/AccountabilitySystem.tsx(101,35): error TS2339: Property 'timestamp' does not exist on type 'unknown'.
+components/AccountabilitySystem.tsx(102,35): error TS2339: Property 'details' does not exist on type 'unknown'.
+components/AccountabilitySystem.tsx(581,37): error TS2339: Property 'description' does not exist on type 'unknown'.
+components/AccountabilitySystem.tsx(583,42): error TS2339: Property 'description' does not exist on type 'unknown'.
+components/AppManager.tsx(134,47): error TS2339: Property 'error' does not exist on type '{ appId: string; _error: string; }'.
+components/AppManager.tsx(302,43): error TS2339: Property 'severity' does not exist on type 'unknown'.
+components/BluetoothManager.tsx(32,18): error TS2339: Property 'message' does not exist on type 'unknown'.
+components/BluetoothManager.tsx(52,18): error TS2339: Property 'message' does not exist on type 'unknown'.
+components/BrowserInterface.tsx(254,32): error TS2698: Spread types may only be created from object types.
+components/BrowserInterface.tsx(260,53): error TS2698: Spread types may only be created from object types.
+components/BrowserInterface.tsx(290,13): error TS2339: Property 'stopPropagation' does not exist on type 'unknown'.
+components/CashonTradingPanel.tsx(503,34): error TS2339: Property 'type' does not exist on type 'unknown'.
+components/CashonTradingPanel.tsx(505,38): error TS2339: Property 'type' does not exist on type 'unknown'.
+components/CashonTradingPanel.tsx(510,33): error TS2339: Property 'type' does not exist on type 'unknown'.
+components/CashonTradingPanel.tsx(512,36): error TS2339: Property 'type' does not exist on type 'unknown'.
+components/CashonTradingPanel.tsx(519,62): error TS2339: Property 'description' does not exist on type 'unknown'.
+components/CashonTradingPanel.tsx(521,44): error TS2339: Property 'timestamp' does not exist on type 'unknown'.
+components/CashonTradingPanel.tsx(527,37): error TS2339: Property 'amount' does not exist on type 'unknown'.
+components/CashonTradingPanel.tsx(531,34): error TS2339: Property 'status' does not exist on type 'unknown'.
+components/CashonTradingPanel.tsx(536,33): error TS2339: Property 'status' does not exist on type 'unknown'.
+components/Chatbot.tsx(117,19): error TS2339: Property 'sender' does not exist on type 'unknown'.
+components/Chatbot.tsx(118,22): error TS2339: Property 'content' does not exist on type 'unknown'.
+components/Chatbot.tsx(118,35): error TS2339: Property 'text' does not exist on type 'unknown'.
+components/Chatbot.tsx(230,26): error TS2339: Property 'id' does not exist on type 'unknown'.
+components/Chatbot.tsx(232,23): error TS2339: Property 'sender' does not exist on type 'unknown'.
+components/Chatbot.tsx(237,47): error TS2339: Property 'content' does not exist on type 'unknown'.
+components/Chatbot.tsx(239,33): error TS2339: Property 'timestamp' does not exist on type 'unknown'.
+components/DeploymentStatusDashboard.tsx(57,20): error TS2339: Property 'message' does not exist on type 'unknown'.
+components/EmergencyPanel.tsx(11,22): error TS2339: Property 'message' does not exist on type 'unknown'.
+components/EmergencyPanel.tsx(21,22): error TS2339: Property 'message' does not exist on type 'unknown'.
+components/EmergencyPanel.tsx(31,22): error TS2339: Property 'message' does not exist on type 'unknown'.
+components/EmergencyPanel.tsx(41,22): error TS2339: Property 'message' does not exist on type 'unknown'.
+components/FloatingPreviewWindow.tsx(153,24): error TS2339: Property 'success' does not exist on type 'unknown'.
+components/FloatingPreviewWindow.tsx(153,49): error TS2339: Property 'url' does not exist on type 'unknown'.
+components/FloatingPreviewWindow.tsx(154,28): error TS2339: Property 'url' does not exist on type 'unknown'.
+components/FloatingPreviewWindow.tsx(156,50): error TS2339: Property 'error' does not exist on type 'unknown'.
+components/GlobalFileTransfer.tsx(23,28): error TS2339: Property 'success' does not exist on type 'unknown'.
+components/GlobalFileTransfer.tsx(26,47): error TS2339: Property 'error' does not exist on type 'unknown'.
+components/MemoryAwareness.tsx(81,24): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<MemoryStats>'.
+components/MemoryAwareness.tsx(87,51): error TS2339: Property 'map' does not exist on type 'unknown'.
+components/MemoryAwareness.tsx(88,11): error TS2698: Spread types may only be created from object types.
+components/MemoryAwareness.tsx(89,37): error TS2339: Property 'timestamp' does not exist on type 'unknown'.
+components/MemoryAwareness.tsx(90,40): error TS2339: Property 'lastAccessed' does not exist on type 'unknown'.
+components/MemoryAwareness.tsx(264,18): error TS2339: Property 'entries' does not exist on type 'unknown'.
+components/MemoryAwareness.tsx(265,33): error TS2339: Property 'entries' does not exist on type 'unknown'.
+components/MemoryAwareness.tsx(268,33): error TS2339: Property 'entries' does not exist on type 'unknown'.
+components/MemoryAwareness.tsx(273,43): error TS2339: Property 'entries' does not exist on type 'unknown'.
+components/NotificationCenter.tsx(15,21): error TS2339: Property 'detail' does not exist on type 'unknown'.
+components/QAvatar.tsx(235,66): error TS2345: Argument of type '() => unknown' is not assignable to parameter of type 'string[] | (() => string[])'.
+  Type '() => unknown' is not assignable to type '() => string[]'.
+    Type '{}' is missing the following properties from type 'string[]': length, pop, push, concat, and 28 more.
+components/QAvatar.tsx(244,66): error TS2345: Argument of type '() => unknown' is not assignable to parameter of type 'string[] | (() => string[])'.
+  Type '() => unknown' is not assignable to type '() => string[]'.
+    Type '{}' is missing the following properties from type 'string[]': length, pop, push, concat, and 28 more.
+components/QAvatar.tsx(252,5): error TS2345: Argument of type '() => unknown' is not assignable to parameter of type '{ [cmd: string]: number; } | (() => { [cmd: string]: number; })'.
+  Type '() => unknown' is not assignable to type '() => { [cmd: string]: number; }'.
+    Type 'unknown' is not assignable to type '{ [cmd: string]: number; }'.
+      Index signature for type 'string' is missing in type '{}'.
+components/QAvatar.tsx(472,41): error TS2698: Spread types may only be created from object types.
+components/QAvatar.tsx(815,31): error TS2345: Argument of type '(prev: AvatarConfig) => { type: unknown; size: { width: number; height: number; }; position: { x: number; y: number; }; isFloating: boolean; isMinimized: boolean; isMuted: boolean; volume: number; ... 22 more ...; performanceOptimization: boolean; }' is not assignable to parameter of type 'SetStateAction<AvatarConfig>'.
+  Type '(prev: AvatarConfig) => { type: unknown; size: { width: number; height: number; }; position: { x: number; y: number; }; isFloating: boolean; isMinimized: boolean; isMuted: boolean; volume: number; ... 22 more ...; performanceOptimization: boolean; }' is not assignable to type '(prevState: AvatarConfig) => AvatarConfig'.
+    Call signature return types '{ type: unknown; size: { width: number; height: number; }; position: { x: number; y: number; }; isFloating: boolean; isMinimized: boolean; isMuted: boolean; volume: number; animationSpeed: number; emotionalStyle: "neutral" | ... 6 more ... | "energetic"; ... 20 more ...; performanceOptimization: boolean; }' and 'AvatarConfig' are incompatible.
+      The types of 'type' are incompatible between these types.
+        Type 'unknown' is not assignable to type '"fantasy" | "space" | "human" | "animal" | "robot" | "abstract" | "cyberpunk" | "nature"'.
+components/QAvatar.tsx(840,31): error TS2345: Argument of type '(prev: AvatarConfig) => { environment: unknown; type: "fantasy" | "space" | "human" | "animal" | "robot" | "abstract" | "cyberpunk" | "nature"; size: { width: number; height: number; }; ... 26 more ...; performanceOptimization: boolean; }' is not assignable to parameter of type 'SetStateAction<AvatarConfig>'.
+  Type '(prev: AvatarConfig) => { environment: unknown; type: "fantasy" | "space" | "human" | "animal" | "robot" | "abstract" | "cyberpunk" | "nature"; size: { width: number; height: number; }; ... 26 more ...; performanceOptimization: boolean; }' is not assignable to type '(prevState: AvatarConfig) => AvatarConfig'.
+    Call signature return types '{ environment: unknown; type: "fantasy" | "space" | "human" | "animal" | "robot" | "abstract" | "cyberpunk" | "nature"; size: { width: number; height: number; }; position: { x: number; y: number; }; isFloating: boolean; ... 24 more ...; performanceOptimization: boolean; }' and 'AvatarConfig' are incompatible.
+      The types of 'environment' are incompatible between these types.
+        Type 'unknown' is not assignable to type '"fantasy" | "space" | "home" | "office" | "cyberpunk" | "nature" | "beach" | "mountain" | "city" | "dynamic"'.
+components/QAvatar.tsx(867,31): error TS2345: Argument of type '(prev: AvatarConfig) => { weather: unknown; type: "fantasy" | "space" | "human" | "animal" | "robot" | "abstract" | "cyberpunk" | "nature"; size: { width: number; height: number; }; ... 26 more ...; performanceOptimization: boolean; }' is not assignable to parameter of type 'SetStateAction<AvatarConfig>'.
+  Type '(prev: AvatarConfig) => { weather: unknown; type: "fantasy" | "space" | "human" | "animal" | "robot" | "abstract" | "cyberpunk" | "nature"; size: { width: number; height: number; }; ... 26 more ...; performanceOptimization: boolean; }' is not assignable to type '(prevState: AvatarConfig) => AvatarConfig'.
+    Call signature return types '{ weather: unknown; type: "fantasy" | "space" | "human" | "animal" | "robot" | "abstract" | "cyberpunk" | "nature"; size: { width: number; height: number; }; position: { x: number; y: number; }; isFloating: boolean; ... 24 more ...; performanceOptimization: boolean; }' and 'AvatarConfig' are incompatible.
+      The types of 'weather' are incompatible between these types.
+        Type 'unknown' is not assignable to type '"clear" | "dynamic" | "sunny" | "rainy" | "cloudy" | "snowy" | "stormy"'.
+components/QAvatar.tsx(891,31): error TS2345: Argument of type '(prev: AvatarConfig) => { floatingBehavior: unknown; type: "fantasy" | "space" | "human" | "animal" | "robot" | "abstract" | "cyberpunk" | "nature"; size: { width: number; height: number; }; ... 26 more ...; performanceOptimization: boolean; }' is not assignable to parameter of type 'SetStateAction<AvatarConfig>'.
+  Type '(prev: AvatarConfig) => { floatingBehavior: unknown; type: "fantasy" | "space" | "human" | "animal" | "robot" | "abstract" | "cyberpunk" | "nature"; size: { width: number; height: number; }; ... 26 more ...; performanceOptimization: boolean; }' is not assignable to type '(prevState: AvatarConfig) => AvatarConfig'.
+    Call signature return types '{ floatingBehavior: unknown; type: "fantasy" | "space" | "human" | "animal" | "robot" | "abstract" | "cyberpunk" | "nature"; size: { width: number; height: number; }; position: { x: number; y: number; }; ... 25 more ...; performanceOptimization: boolean; }' and 'AvatarConfig' are incompatible.
+      The types of 'floatingBehavior' are incompatible between these types.
+        Type 'unknown' is not assignable to type '"static" | "active" | "gentle" | "intelligent" | "adaptive" | "responsive"'.
+components/QAvatar.tsx(912,31): error TS2345: Argument of type '(prev: AvatarConfig) => { quality: unknown; type: "fantasy" | "space" | "human" | "animal" | "robot" | "abstract" | "cyberpunk" | "nature"; size: { width: number; height: number; }; ... 26 more ...; performanceOptimization: boolean; }' is not assignable to parameter of type 'SetStateAction<AvatarConfig>'.
+  Type '(prev: AvatarConfig) => { quality: unknown; type: "fantasy" | "space" | "human" | "animal" | "robot" | "abstract" | "cyberpunk" | "nature"; size: { width: number; height: number; }; ... 26 more ...; performanceOptimization: boolean; }' is not assignable to type '(prevState: AvatarConfig) => AvatarConfig'.
+    Call signature return types '{ quality: unknown; type: "fantasy" | "space" | "human" | "animal" | "robot" | "abstract" | "cyberpunk" | "nature"; size: { width: number; height: number; }; position: { x: number; y: number; }; isFloating: boolean; ... 24 more ...; performanceOptimization: boolean; }' and 'AvatarConfig' are incompatible.
+      The types of 'quality' are incompatible between these types.
+        Type 'unknown' is not assignable to type '"medium" | "low" | "high" | "ultra" | "ai-enhanced"'.
+components/QAvatar.tsx(1510,23): error TS2339: Property 'id' does not exist on type 'unknown'.
+components/QAvatar.tsx(1511,25): error TS2339: Property 'name' does not exist on type 'unknown'.
+components/QAvatar.tsx(1523,68): error TS2538: Type 'unknown' cannot be used as an index type.
+components/QAvatar.tsx(1546,19): error TS2322: Type 'unknown' is not assignable to type 'boolean'.
+components/QAvatar.tsx(1580,32): error TS2339: Property 'id' does not exist on type 'unknown'.
+components/QAvatar.tsx(1581,58): error TS2339: Property 'name' does not exist on type 'unknown'.
+components/QAvatar.tsx(1582,26): error TS2339: Property 'status' does not exist on type 'unknown'.
+components/QAvatar.tsx(1582,46): error TS2339: Property 'cpu' does not exist on type 'unknown'.
+components/QAvatar.tsx(1582,62): error TS2339: Property 'memory' does not exist on type 'unknown'.
+components/QAvatar.tsx(1986,34): error TS2339: Property 'commandHistory' does not exist on type 'unknown'.
+components/QAvatar.tsx(1988,34): error TS2339: Property 'pinnedCommands' does not exist on type 'unknown'.
+components/QAvatar.tsx(1989,56): error TS2339: Property 'usageCounts' does not exist on type 'unknown'.
+components/QAvatar.tsx(1990,53): error TS2339: Property 'adminKey' does not exist on type 'unknown'.
+components/QAvatar.tsx(1991,57): error TS2339: Property 'templateVars' does not exist on type 'unknown'.
+components/QAvatar.tsx(1993,34): error TS2339: Property 'selectedDevice' does not exist on type 'unknown'.
+components/QAvatar.tsx(1996,18): error TS2339: Property 'notificationSettings' does not exist on type 'unknown'.
+components/QAvatar.tsx(2065,23): error TS2339: Property 'message' does not exist on type 'unknown'.
+components/QConverse.tsx(96,26): error TS2339: Property 'resultIndex' does not exist on type 'unknown'.
+components/QConverse.tsx(96,49): error TS2339: Property 'results' does not exist on type 'unknown'.
+components/QConverse.tsx(97,19): error TS2339: Property 'results' does not exist on type 'unknown'.
+components/QConverse.tsx(98,36): error TS2339: Property 'results' does not exist on type 'unknown'.
+components/QFileManager.tsx(39,38): error TS2339: Property 'message' does not exist on type 'unknown'.
+components/QFileManager.tsx(40,30): error TS2339: Property 'message' does not exist on type 'unknown'.
+components/QFileManager.tsx(58,38): error TS2339: Property 'message' does not exist on type 'unknown'.
+components/QFileManager.tsx(59,30): error TS2339: Property 'message' does not exist on type 'unknown'.
+components/QI.tsx(586,32): error TS2339: Property 'message' does not exist on type 'unknown'.
+components/QI.tsx(587,54): error TS2339: Property 'message' does not exist on type 'unknown'.
+components/QmoiAccessibility.tsx(130,17): error TS2339: Property 'results' does not exist on type 'unknown'.
+components/QmoiAccessibility.tsx(130,31): error TS2339: Property 'results' does not exist on type 'unknown'.
+components/QmoiAccessibility.tsx(135,58): error TS2339: Property 'error' does not exist on type 'unknown'.
+components/QmoiAutoDistribution.tsx(262,27): error TS2339: Property 'message' does not exist on type 'unknown'.
+components/QmoiBrowser.tsx(82,20): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<Bookmark[]>'.
+components/QmoiBrowser.tsx(86,18): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<string[]>'.
+components/QmoiDialer.tsx(89,19): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<Contact[]>'.
+components/QmoiDialer.tsx(93,19): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<CallLog[]>'.
+components/QmoiDialer.tsx(99,20): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<Contact[]>'.
+components/QmoiEnhancedSystem.tsx(274,17): error TS2339: Property 'results' does not exist on type 'unknown'.
+components/QmoiEnhancedSystem.tsx(274,31): error TS2339: Property 'results' does not exist on type 'unknown'.
+components/QmoiEnhancedSystem.tsx(279,58): error TS2339: Property 'error' does not exist on type 'unknown'.
+components/QmoiEnhancedSystem.tsx(339,17): error TS2339: Property 'results' does not exist on type 'unknown'.
+components/QmoiEnhancedSystem.tsx(339,31): error TS2339: Property 'results' does not exist on type 'unknown'.
+components/QmoiKeyboard.tsx(154,28): error TS2339: Property 'resultIndex' does not exist on type 'unknown'.
+components/QmoiKeyboard.tsx(154,51): error TS2339: Property 'results' does not exist on type 'unknown'.
+components/QmoiKeyboard.tsx(155,21): error TS2339: Property 'results' does not exist on type 'unknown'.
+components/QmoiKeyboard.tsx(156,38): error TS2339: Property 'results' does not exist on type 'unknown'.
+components/QmoiKeyboard.tsx(167,58): error TS2339: Property 'error' does not exist on type 'unknown'.
+components/QmoiMediaManager.tsx(251,25): error TS2345: Argument of type '(prev: MediaItem[]) => unknown[]' is not assignable to parameter of type 'SetStateAction<MediaItem[]>'.
+  Type '(prev: MediaItem[]) => unknown[]' is not assignable to type '(prevState: MediaItem[]) => MediaItem[]'.
+    Type 'unknown[]' is not assignable to type 'MediaItem[]'.
+      Type '{}' is missing the following properties from type 'MediaItem': id, name, type, size, and 3 more.
+components/SisterProjects.tsx(12,22): error TS2339: Property 'detail' does not exist on type 'unknown'.
+components/WifiAutoConnectPanel.tsx(62,11): error TS2698: Spread types may only be created from object types.
+components/WifiAutoConnectPanel.tsx(63,27): error TS2339: Property 'secure' does not exist on type 'unknown'.
+components/WifiPanel.tsx(77,32): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<{ [ssid: string]: number; }>'.
+components/WifiPanel.tsx(106,26): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<string[]>'.
+components/WifiPanel.tsx(190,11): error TS2339: Property 'message' does not exist on type 'unknown'.
+components/analytics/AnalyticsCharts.tsx(32,11): error TS2339: Property 'type' does not exist on type 'unknown'.
+components/analytics/AnalyticsCharts.tsx(32,42): error TS2339: Property 'type' does not exist on type 'unknown'.
+components/analytics/AnalyticsCharts.tsx(33,22): error TS2339: Property 'payload' does not exist on type 'unknown'.
+components/analytics/AnalyticsCharts.tsx(42,23): error TS2339: Property 'timestamp' does not exist on type 'unknown'.
+components/device/DeviceIntegrationStubs.ts(84,16): error TS2339: Property 'manufacturer' does not exist on type 'unknown'.
+components/device/DeviceIntegrationStubs.ts(85,16): error TS2339: Property 'vendorId' does not exist on type 'unknown'.
+components/device/DeviceIntegrationStubs.ts(141,16): error TS2339: Property 'manufacturer' does not exist on type 'unknown'.
+components/device/DeviceIntegrationStubs.ts(142,16): error TS2339: Property 'vendorId' does not exist on type 'unknown'.
+components/device/DeviceIntegrationStubs.ts(336,21): error TS2339: Property 'type' does not exist on type 'unknown'.
+components/device/DeviceIntegrationStubs.ts(339,42): error TS2339: Property 'modelId' does not exist on type 'unknown'.
+components/device/DeviceIntegrationStubs.ts(342,28): error TS2339: Property 'modelId' does not exist on type 'unknown'.
+components/device/DeviceIntegrationStubs.ts(348,38): error TS2339: Property 'modelId' does not exist on type 'unknown'.
+components/device/DeviceIntegrationStubs.ts(428,23): error TS2339: Property 'simulate' does not exist on type 'unknown'.
+components/device/DeviceIntegrationStubs.ts(483,23): error TS2339: Property 'simulate' does not exist on type 'unknown'.
+components/device/DeviceIntegrationStubs.ts(541,23): error TS2339: Property 'simulate' does not exist on type 'unknown'.
+components/device/DeviceIntegrationStubs.ts(590,35): error TS2339: Property 'deviceId' does not exist on type 'unknown'.
+components/device/DeviceIntegrationStubs.ts(591,41): error TS2339: Property 'deviceId' does not exist on type 'unknown'.
+components/device/DeviceIntegrationStubs.ts(597,25): error TS2339: Property 'deviceId' does not exist on type 'unknown'.
+components/device/DeviceIntegrationStubs.ts(646,24): error TS2339: Property 'type' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(179,44): error TS2349: This expression is not callable.
+  Type '{}' has no call signatures.
+components/enhanced-system-dashboard.tsx(236,31): error TS2339: Property 'id' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(282,46): error TS2339: Property 'type' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(282,76): error TS2339: Property 'payload' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(858,38): error TS2339: Property 'name' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(861,38): error TS2339: Property 'description' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(869,72): error TS2339: Property 'id' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(870,73): error TS2339: Property 'id' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(873,45): error TS2339: Property 'id' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(874,47): error TS2339: Property 'name' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(875,39): error TS2339: Property 'description' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(880,44): error TS2339: Property 'id' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(887,71): error TS2339: Property 'id' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(900,74): error TS2339: Property 'id' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(902,72): error TS2339: Property 'id' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(904,49): error TS2339: Property 'name' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(908,71): error TS2339: Property 'id' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(909,54): error TS2339: Property 'name' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(913,71): error TS2339: Property 'id' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(917,39): error TS2339: Property 'getSettingsPanel' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(919,43): error TS2339: Property 'getSettingsPanel' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(948,43): error TS2339: Property 'type' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(948,68): error TS2339: Property 'payload' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(972,34): error TS2339: Property 'type' does not exist on type 'unknown'.
+components/enhanced-system-dashboard.tsx(972,59): error TS2339: Property 'payload' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(177,30): error TS2339: Property 'amount' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(189,11): error TS2698: Spread types may only be created from object types.
+components/q-city/EmploymentDashboard.tsx(225,11): error TS2698: Spread types may only be created from object types.
+components/q-city/EmploymentDashboard.tsx(261,11): error TS2698: Spread types may only be created from object types.
+components/q-city/EmploymentDashboard.tsx(296,28): error TS2339: Property 'type' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(297,11): error TS2698: Spread types may only be created from object types.
+components/q-city/EmploymentDashboard.tsx(447,59): error TS2339: Property 'description' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(449,43): error TS2339: Property 'timestamp' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(454,33): error TS2339: Property 'status' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(457,33): error TS2339: Property 'amount' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(664,59): error TS2339: Property 'title' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(666,33): error TS2339: Property 'category' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(668,67): error TS2339: Property 'reward' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(690,65): error TS2339: Property 'name' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(692,39): error TS2339: Property 'product' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(695,39): error TS2339: Property 'commission' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(718,64): error TS2339: Property 'title' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(720,38): error TS2339: Property 'type' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(723,39): error TS2339: Property 'reward' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(746,64): error TS2339: Property 'platform' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(748,38): error TS2339: Property 'status' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(751,47): error TS2339: Property 'createdAt' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(819,60): error TS2339: Property 'description' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(821,44): error TS2339: Property 'timestamp' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(826,34): error TS2339: Property 'type' does not exist on type 'unknown'.
+components/q-city/EmploymentDashboard.tsx(829,34): error TS2339: Property 'amount' does not exist on type 'unknown'.
+components/q-city/QCityDevicePanel.tsx(178,57): error TS2339: Property 'data' does not exist on type 'unknown'.
+components/q-city/QCityDevicePanel.tsx(182,56): error TS2339: Property 'data' does not exist on type 'unknown'.
+components/q-city/QCityDevicePanel.tsx(214,39): error TS2339: Property 'data' does not exist on type 'unknown'.
+components/q-city/QCityDevicePanel.tsx(217,39): error TS2339: Property 'data' does not exist on type 'unknown'.
+components/q-city/QMOIBiometricManager.tsx(361,51): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<number>'.
+components/ui/chart.tsx(189,44): error TS2339: Property 'name' does not exist on type 'unknown'.
+components/ui/chart.tsx(189,57): error TS2339: Property 'dataKey' does not exist on type 'unknown'.
+components/ui/chart.tsx(191,50): error TS2339: Property 'payload' does not exist on type 'unknown'.
+components/ui/chart.tsx(191,71): error TS2339: Property 'color' does not exist on type 'unknown'.
+components/ui/chart.tsx(195,27): error TS2339: Property 'dataKey' does not exist on type 'unknown'.
+components/ui/chart.tsx(201,37): error TS2339: Property 'value' does not exist on type 'unknown'.
+components/ui/chart.tsx(201,65): error TS2339: Property 'name' does not exist on type 'unknown'.
+components/ui/chart.tsx(202,34): error TS2339: Property 'value' does not exist on type 'unknown'.
+components/ui/chart.tsx(202,46): error TS2339: Property 'name' does not exist on type 'unknown'.
+components/ui/chart.tsx(202,70): error TS2339: Property 'payload' does not exist on type 'unknown'.
+components/ui/chart.tsx(238,54): error TS2339: Property 'name' does not exist on type 'unknown'.
+components/ui/chart.tsx(241,29): error TS2339: Property 'value' does not exist on type 'unknown'.
+components/ui/chart.tsx(243,33): error TS2339: Property 'value' does not exist on type 'unknown'.
+components/ui/chart.tsx(289,42): error TS2339: Property 'dataKey' does not exist on type 'unknown'.
+components/ui/chart.tsx(294,25): error TS2339: Property 'value' does not exist on type 'unknown'.
+components/ui/chart.tsx(305,43): error TS2339: Property 'color' does not exist on type 'unknown'.
+components/ui/chart.tsx(376,25): error TS2339: Property 'type' does not exist on type '{}'.
+components/ui/chart.tsx(376,31): error TS2339: Property 'data' does not exist on type '{}'.
+components/ui/chart.tsx(376,40): error TS2700: Rest types may only be created from object types.
+components/ui/form.tsx(35,6): error TS2700: Rest types may only be created from object types.
+hooks/useDeviceHealth.ts(105,27): error TS2339: Property 'level' does not exist on type 'unknown'.
+hooks/useProjects.ts(89,43): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<Error>'.
+hooks/useProjects.ts(104,43): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<Error>'.
+hooks/useProjects.ts(151,43): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<Error>'.
+hooks/useProjects.ts(167,43): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<Error>'.
+hooks/useProjects.ts(189,43): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<Error>'.
+hooks/useProjects.ts(208,43): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<Error>'.
+hooks/useProjects.ts(226,43): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<Error>'.
+hooks/useQVillage.ts(215,11): error TS2698: Spread types may only be created from object types.
+hooks/useQVillage.ts(381,32): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<{ highContrast: boolean; largeText: boolean; reducedMotion: boolean; screenReader: boolean; voiceCommands: boolean; hapticFeedback: boolean; }>'.
+hooks/useQVillage.ts(584,7): error TS2698: Spread types may only be created from object types.
+hooks/useTrading.ts(45,43): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<Error>'.
+hooks/useTrading.ts(60,43): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<Error>'.
+hooks/useTrading.ts(80,43): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<Error>'.
+hooks/useTrading.ts(94,43): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<Error>'.
+hooks/useTrading.ts(109,43): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<Error>'.
+lib/mpesa-api.ts(46,25): error TS2339: Property 'from' does not exist on type 'unknown'.
+lib/mpesa-api.ts(86,29): error TS2339: Property 'from' does not exist on type 'unknown'.
+lib/proposals.ts(12,24): error TS2339: Property 'get' does not exist on type 'unknown'.
+lib/proposals.ts(12,59): error TS2339: Property 'get' does not exist on type 'unknown'.
+lib/proposals.ts(45,25): error TS2339: Property 'id' does not exist on type 'unknown'.
+lib/proposals.ts(47,20): error TS2698: Spread types may only be created from object types.
+lib/qmoi-revenue-engine.ts(373,41): error TS2339: Property 'exports' does not exist on type 'unknown'.
+lib/qmoi-revenue-engine.ts(374,9): error TS2339: Property 'exports' does not exist on type 'unknown'.
+lib/qmoi-revenue-engine.ts(375,9): error TS2339: Property 'exports' does not exist on type 'unknown'.
+lib/qmoi-revenue-engine.ts(376,9): error TS2339: Property 'exports' does not exist on type 'unknown'.
+scripts/services/auto_fix_service.ts(97,43): error TS2339: Property 'message' does not exist on type 'unknown'.
+scripts/services/auto_fix_service.ts(98,34): error TS2339: Property 'name' does not exist on type 'unknown'.
+scripts/services/auto_fix_service.ts(99,35): error TS2339: Property 'stack' does not exist on type 'unknown'.
+scripts/services/auto_fix_service.ts(100,14): error TS2551: Property '_error' does not exist on type 'Logger'. Did you mean 'error'?
+scripts/services/auto_fix_service.ts(146,43): error TS2339: Property 'message' does not exist on type 'unknown'.
+scripts/services/auto_fix_service.ts(147,34): error TS2339: Property 'name' does not exist on type 'unknown'.
+scripts/services/auto_fix_service.ts(148,35): error TS2339: Property 'stack' does not exist on type 'unknown'.
+scripts/services/auto_fix_service.ts(149,14): error TS2551: Property '_error' does not exist on type 'Logger'. Did you mean 'error'?
+scripts/services/auto_fix_service.ts(198,56): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'QCityError'.
+  Type '{}' is missing the following properties from type 'QCityError': name, message
+scripts/services/auto_fix_service.ts(216,21): error TS2339: Property 'data' does not exist on type 'unknown'.
+scripts/services/auto_fix_service.ts(217,40): error TS2339: Property 'message' does not exist on type 'unknown'.
+scripts/services/auto_fix_service.ts(221,44): error TS2339: Property 'message' does not exist on type 'unknown'.
+scripts/services/auto_fix_service.ts(222,58): error TS2339: Property 'data' does not exist on type 'unknown'.
+scripts/services/auto_fix_service.ts(225,53): error TS2339: Property 'data' does not exist on type 'unknown'.
+scripts/services/auto_fix_service.ts(227,43): error TS2339: Property 'message' does not exist on type 'unknown'.
+scripts/services/auto_fix_service.ts(228,34): error TS2339: Property 'name' does not exist on type 'unknown'.
+scripts/services/auto_fix_service.ts(229,35): error TS2339: Property 'stack' does not exist on type 'unknown'.
+scripts/services/auto_fix_service.ts(230,14): error TS2551: Property '_error' does not exist on type 'Logger'. Did you mean 'error'?
+scripts/services/auto_fix_service.ts(290,14): error TS2551: Property '_error' does not exist on type 'Logger'. Did you mean 'error'?
+scripts/services/auto_fix_service.ts(294,26): error TS2339: Property 'message' does not exist on type 'unknown'.
+scripts/services/auto_fix_service.ts(295,26): error TS2339: Property 'stack' does not exist on type 'unknown'.
+scripts/services/auto_fix_service.ts(315,16): error TS2551: Property '_error' does not exist on type 'Logger'. Did you mean 'error'?
+scripts/services/notification_service.ts(7,18): error TS2349: This expression is not callable.
+  Type '{}' has no call signatures.
+scripts/services/notification_service.ts(117,14): error TS2551: Property '_error' does not exist on type 'Logger'. Did you mean 'error'?
+scripts/services/notification_service.ts(129,14): error TS2551: Property '_error' does not exist on type 'Logger'. Did you mean 'error'?
+scripts/services/notification_service.ts(141,14): error TS2551: Property '_error' does not exist on type 'Logger'. Did you mean 'error'?
+scripts/services/notification_service.ts(157,14): error TS2551: Property '_error' does not exist on type 'Logger'. Did you mean 'error'?
+scripts/services/notification_service.ts(166,28): error TS2339: Property 'messages' does not exist on type 'unknown'.
+scripts/services/notification_service.ts(174,14): error TS2551: Property '_error' does not exist on type 'Logger'. Did you mean 'error'?
+scripts/services/notification_service.ts(203,14): error TS2551: Property '_error' does not exist on type 'Logger'. Did you mean 'error'?
+scripts/services/qcity_service.ts(29,14): error TS2551: Property '_error' does not exist on type 'Logger'. Did you mean 'error'?
+scripts/services/qcity_service.ts(95,14): error TS2551: Property '_error' does not exist on type 'Logger'. Did you mean 'error'?
+scripts/services/qcity_service.ts(121,14): error TS2551: Property '_error' does not exist on type 'Logger'. Did you mean 'error'?
+scripts/services/qcity_service.ts(159,14): error TS2551: Property '_error' does not exist on type 'Logger'. Did you mean 'error'?
+scripts/services/qcity_service.ts(191,14): error TS2551: Property '_error' does not exist on type 'Logger'. Did you mean 'error'?
+scripts/services/qcity_service.ts(287,14): error TS2551: Property '_error' does not exist on type 'Logger'. Did you mean 'error'?
+scripts/services/qcity_service.ts(302,14): error TS2551: Property '_error' does not exist on type 'Logger'. Did you mean 'error'?
+src/adapters/appServiceInit.ts(49,3): error TS2322: Type '(...args: unknown[]) => Promise<unknown>' is not assignable to type '((input: URL | RequestInfo, init?: RequestInit) => Promise<Response>) & { (input: URL | RequestInfo, init?: RequestInit): Promise<...>; (input: string | ... 1 more ... | Request, init?: RequestInit): Promise<...>; }'.
+  Type '(...args: unknown[]) => Promise<unknown>' is not assignable to type '(input: URL | RequestInfo, init?: RequestInit) => Promise<Response>'.
+    Type 'Promise<unknown>' is not assignable to type 'Promise<Response>'.
+      Type '{}' is missing the following properties from type 'Response': headers, ok, redirected, status, and 12 more.
+src/adapters/appServiceInit.ts(53,22): error TS2339: Property 'ok' does not exist on type 'unknown'.
+src/adapters/appServiceInit.ts(53,38): error TS2339: Property 'status' does not exist on type 'unknown'.
+src/adapters/appServiceInit.ts(55,63): error TS2339: Property 'status' does not exist on type 'unknown'.
+src/adapters/appServiceInit.ts(59,29): error TS2339: Property 'status' does not exist on type 'unknown'.
+src/adapters/clientAdapters.ts(58,5): error TS2322: Type 'unknown' is not assignable to type 'T'.
+  'T' could be instantiated with an arbitrary type which could be unrelated to 'unknown'.
+src/components/AssetOverview.tsx(136,18): error TS2820: Type '"_error"' is not assignable to type 'OverridableStringUnion<AlertColor, AlertPropsColorOverrides>'. Did you mean '"error"'?
+src/components/AssetOverview.tsx(204,29): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & ChipOwnProps & ChipSlotsAndSlotProps & CommonProps & Omit<...>): Element', gave the following error.
+    Type '"default" | "success" | "warning" | "_error"' is not assignable to type 'OverridableStringUnion<"default" | "error" | "secondary" | "success" | "warning" | "info" | "primary", ChipPropsColorOverrides>'.
+      Type '"_error"' is not assignable to type 'OverridableStringUnion<"default" | "error" | "secondary" | "success" | "warning" | "info" | "primary", ChipPropsColorOverrides>'. Did you mean '"error"'?
+  Overload 2 of 2, '(props: DefaultComponentProps<ChipTypeMap<{}, "div">>): Element', gave the following error.
+    Type '"default" | "success" | "warning" | "_error"' is not assignable to type 'OverridableStringUnion<"default" | "error" | "secondary" | "success" | "warning" | "info" | "primary", ChipPropsColorOverrides>'.
+      Type '"_error"' is not assignable to type 'OverridableStringUnion<"default" | "error" | "secondary" | "success" | "warning" | "info" | "primary", ChipPropsColorOverrides>'. Did you mean '"error"'?
+src/components/Chatbot.tsx(59,24): error TS2339: Property 'reply' does not exist on type 'unknown'.
+src/components/Chatbot.tsx(59,48): error TS2339: Property 'reply' does not exist on type 'unknown'.
+src/components/Chatbot.tsx(62,14): error TS2339: Property 'choices' does not exist on type 'unknown'.
+src/components/Chatbot.tsx(63,28): error TS2339: Property 'choices' does not exist on type 'unknown'.
+src/components/Chatbot.tsx(64,14): error TS2339: Property 'choices' does not exist on type 'unknown'.
+src/components/Chatbot.tsx(67,16): error TS2339: Property 'choices' does not exist on type 'unknown'.
+src/components/Chatbot.tsx(67,52): error TS2339: Property 'choices' does not exist on type 'unknown'.
+src/components/Chatbot.tsx(80,24): error TS2339: Property 'ssml' does not exist on type 'unknown'.
+src/components/Chatbot.tsx(82,23): error TS2339: Property 'ssml' does not exist on type 'unknown'.
+src/components/DownloadQCity.tsx(87,47): error TS2820: Type '"_error"' is not assignable to type 'OverridableStringUnion<AlertColor, AlertPropsColorOverrides>'. Did you mean '"error"'?
+src/components/QI.tsx(68,39): error TS2339: Property 'channel' does not exist on type 'unknown'.
+src/components/QI.tsx(71,35): error TS2339: Property 'program' does not exist on type 'unknown'.
+src/components/QI.tsx(71,66): error TS2339: Property 'program' does not exist on type 'unknown'.
+src/components/QI.tsx(72,22): error TS2339: Property 'program' does not exist on type 'unknown'.
+src/components/QI.tsx(86,28): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/components/QI.tsx(86,41): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/components/QI.tsx(87,18): error TS2339: Property 'name' does not exist on type 'unknown'.
+src/components/QI.tsx(102,23): error TS2339: Property 'channel' does not exist on type 'unknown'.
+src/components/QI.tsx(103,19): error TS2339: Property 'channel' does not exist on type 'unknown'.
+src/components/QI.tsx(105,18): error TS2339: Property 'programs' does not exist on type 'unknown'.
+src/components/QI.tsx(107,23): error TS2339: Property 'time' does not exist on type 'unknown'.
+src/components/QI.tsx(107,35): error TS2339: Property 'title' does not exist on type 'unknown'.
+src/components/QI.tsx(107,47): error TS2339: Property 'type' does not exist on type 'unknown'.
+src/components/QI.tsx(107,61): error TS2339: Property 'presenter' does not exist on type 'unknown'.
+src/components/TradingHistory.tsx(64,11): error TS2698: Spread types may only be created from object types.
+src/components/TradingHistory.tsx(65,37): error TS2339: Property 'timestamp' does not exist on type 'unknown'.
+src/components/TradingHistory.tsx(145,18): error TS2820: Type '"_error"' is not assignable to type 'OverridableStringUnion<AlertColor, AlertPropsColorOverrides>'. Did you mean '"error"'?
+src/components/TradingHistory.tsx(225,25): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & ChipOwnProps & ChipSlotsAndSlotProps & CommonProps & Omit<...>): Element', gave the following error.
+    Type '"success" | "_error"' is not assignable to type 'OverridableStringUnion<"default" | "error" | "secondary" | "success" | "warning" | "info" | "primary", ChipPropsColorOverrides>'.
+      Type '"_error"' is not assignable to type 'OverridableStringUnion<"default" | "error" | "secondary" | "success" | "warning" | "info" | "primary", ChipPropsColorOverrides>'. Did you mean '"error"'?
+  Overload 2 of 2, '(props: DefaultComponentProps<ChipTypeMap<{}, "div">>): Element', gave the following error.
+    Type '"success" | "_error"' is not assignable to type 'OverridableStringUnion<"default" | "error" | "secondary" | "success" | "warning" | "info" | "primary", ChipPropsColorOverrides>'.
+      Type '"_error"' is not assignable to type 'OverridableStringUnion<"default" | "error" | "secondary" | "success" | "warning" | "info" | "primary", ChipPropsColorOverrides>'. Did you mean '"error"'?
+src/components/TradingHistory.tsx(251,25): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & ChipOwnProps & ChipSlotsAndSlotProps & CommonProps & Omit<...>): Element', gave the following error.
+    Type '"success" | "warning" | "_error"' is not assignable to type 'OverridableStringUnion<"default" | "error" | "secondary" | "success" | "warning" | "info" | "primary", ChipPropsColorOverrides>'.
+      Type '"_error"' is not assignable to type 'OverridableStringUnion<"default" | "error" | "secondary" | "success" | "warning" | "info" | "primary", ChipPropsColorOverrides>'. Did you mean '"error"'?
+  Overload 2 of 2, '(props: DefaultComponentProps<ChipTypeMap<{}, "div">>): Element', gave the following error.
+    Type '"success" | "warning" | "_error"' is not assignable to type 'OverridableStringUnion<"default" | "error" | "secondary" | "success" | "warning" | "info" | "primary", ChipPropsColorOverrides>'.
+      Type '"_error"' is not assignable to type 'OverridableStringUnion<"default" | "error" | "secondary" | "success" | "warning" | "info" | "primary", ChipPropsColorOverrides>'. Did you mean '"error"'?
+src/components/TradingStatus.tsx(108,15): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: { component: ElementType<any, keyof IntrinsicElements>; } & ChipOwnProps & ChipSlotsAndSlotProps & CommonProps & Omit<...>): Element', gave the following error.
+    Type '"success" | "_error"' is not assignable to type 'OverridableStringUnion<"default" | "error" | "secondary" | "success" | "warning" | "info" | "primary", ChipPropsColorOverrides>'.
+      Type '"_error"' is not assignable to type 'OverridableStringUnion<"default" | "error" | "secondary" | "success" | "warning" | "info" | "primary", ChipPropsColorOverrides>'. Did you mean '"error"'?
+  Overload 2 of 2, '(props: DefaultComponentProps<ChipTypeMap<{}, "div">>): Element', gave the following error.
+    Type '"success" | "_error"' is not assignable to type 'OverridableStringUnion<"default" | "error" | "secondary" | "success" | "warning" | "info" | "primary", ChipPropsColorOverrides>'.
+      Type '"_error"' is not assignable to type 'OverridableStringUnion<"default" | "error" | "secondary" | "success" | "warning" | "info" | "primary", ChipPropsColorOverrides>'. Did you mean '"error"'?
+src/components/UISettings.tsx(73,16): error TS2552: Cannot find name 'next'. Did you mean '_next'?
+src/components/UISettings.tsx(84,16): error TS2552: Cannot find name 'next'. Did you mean '_next'?
+src/components/q-city/AuditLogPanel.tsx(99,26): error TS2339: Property 'timestamp' does not exist on type 'unknown'.
+src/components/q-city/AuditLogPanel.tsx(100,26): error TS2339: Property 'action' does not exist on type 'unknown'.
+src/components/q-city/AuditLogPanel.tsx(101,26): error TS2339: Property 'user' does not exist on type 'unknown'.
+src/components/q-city/AuditLogPanel.tsx(102,26): error TS2339: Property 'deviceId' does not exist on type 'unknown'.
+src/components/q-city/AuditLogPanel.tsx(103,26): error TS2339: Property 'status' does not exist on type 'unknown'.
+src/components/q-city/AuditLogPanel.tsx(104,26): error TS2339: Property 'cmd' does not exist on type 'unknown'.
+src/components/q-city/CommandPanel.tsx(75,10): error TS2488: Type 'unknown' must have a '[Symbol.iterator]()' method that returns an iterator.
+src/components/q-city/CommandPanel.tsx(81,42): error TS2488: Type 'unknown' must have a '[Symbol.iterator]()' method that returns an iterator.
+src/components/q-city/CommandPanel.tsx(130,17): error TS2339: Property 'map' does not exist on type 'unknown'.
+src/components/q-city/CommandPanel.tsx(133,35): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<string>'.
+src/components/q-city/CommandPanel.tsx(136,13): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
+src/components/q-city/CommandPanel.tsx(142,18): error TS2339: Property 'map' does not exist on type 'unknown'.
+src/components/q-city/CommandPanel.tsx(145,37): error TS2339: Property 'cmd' does not exist on type 'unknown'.
+src/components/q-city/CommandPanel.tsx(148,16): error TS2339: Property 'cmd' does not exist on type 'unknown'.
+src/components/q-city/DevicePanel.tsx(28,34): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/DevicePanel.tsx(44,61): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/components/q-city/DevicePanel.tsx(58,34): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/DevicePanel.tsx(73,34): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/DevicePanel.tsx(91,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/DevicePanel.tsx(192,26): error TS2339: Property 'name' does not exist on type 'unknown'.
+src/components/q-city/DevicePanel.tsx(193,26): error TS2339: Property 'host' does not exist on type 'unknown'.
+src/components/q-city/DevicePanel.tsx(194,26): error TS2339: Property 'port' does not exist on type 'unknown'.
+src/components/q-city/DevicePanel.tsx(195,26): error TS2339: Property 'username' does not exist on type 'unknown'.
+src/components/q-city/DevicePanel.tsx(200,31): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<{ name: string; host: string; port: number; username: string; password: string; privateKey: string; }>'.
+src/components/q-city/DevicePanel.tsx(207,44): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/components/q-city/DevicePanel.tsx(213,45): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/components/q-city/EnhancedQMOIDashboard.tsx(169,52): error TS2339: Property 'queueLength' does not exist on type 'unknown'.
+src/components/q-city/EnhancedQMOIDashboard.tsx(173,52): error TS2339: Property 'isProcessing' does not exist on type 'unknown'.
+src/components/q-city/EnhancedQMOIDashboard.tsx(178,54): error TS2339: Property 'averageResponseTime' does not exist on type 'unknown'.
+src/components/q-city/EnhancedQMOIDashboard.tsx(270,62): error TS2339: Property 'systemStatus' does not exist on type 'unknown'.
+src/components/q-city/EnhancedQMOIDashboard.tsx(274,28): error TS2339: Property 'systemStatus' does not exist on type 'unknown'.
+src/components/q-city/EnhancedQMOIDashboard.tsx(279,59): error TS2339: Property 'systemStatus' does not exist on type 'unknown'.
+src/components/q-city/EnhancedQMOIDashboard.tsx(285,58): error TS2339: Property 'cpuUsage' does not exist on type 'unknown'.
+src/components/q-city/EnhancedQMOIDashboard.tsx(292,58): error TS2339: Property 'memoryUsage' does not exist on type 'unknown'.
+src/components/q-city/EnhancedQMOIDashboard.tsx(299,65): error TS2339: Property 'successRate' does not exist on type 'unknown'.
+src/components/q-city/EnhancedQMOIDashboard.tsx(307,64): error TS2339: Property 'tasksPerMinute' does not exist on type 'unknown'.
+src/components/q-city/EnhancedQMOIDashboard.tsx(328,27): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/components/q-city/EnhancedQMOIDashboard.tsx(334,36): error TS2339: Property 'status' does not exist on type 'unknown'.
+src/components/q-city/EnhancedQMOIDashboard.tsx(345,30): error TS2339: Property 'type' does not exist on type 'unknown'.
+src/components/q-city/EnhancedQMOIDashboard.tsx(345,48): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/components/q-city/EnhancedQMOIDashboard.tsx(349,35): error TS2339: Property 'status' does not exist on type 'unknown'.
+src/components/q-city/EnhancedQMOIDashboard.tsx(352,27): error TS2339: Property 'status' does not exist on type 'unknown'.
+src/components/q-city/EnhancedQMOIDashboard.tsx(352,42): error TS2339: Property 'progress' does not exist on type 'unknown'.
+src/components/q-city/EnhancedQMOIDashboard.tsx(366,38): error TS2339: Property 'progress' does not exist on type 'unknown'.
+src/components/q-city/MetricsPanel.tsx(17,34): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/MetricsPanel.tsx(30,37): error TS2339: Property 'hostname' does not exist on type 'unknown'.
+src/components/q-city/MetricsPanel.tsx(32,34): error TS2339: Property 'platform' does not exist on type 'unknown'.
+src/components/q-city/MetricsPanel.tsx(32,54): error TS2339: Property 'arch' does not exist on type 'unknown'.
+src/components/q-city/MetricsPanel.tsx(34,46): error TS2339: Property 'uptime' does not exist on type 'unknown'.
+src/components/q-city/MetricsPanel.tsx(35,38): error TS2339: Property 'cpus' does not exist on type 'unknown'.
+src/components/q-city/MetricsPanel.tsx(36,37): error TS2339: Property 'load' does not exist on type 'unknown'.
+src/components/q-city/MetricsPanel.tsx(37,39): error TS2339: Property 'totalMem' does not exist on type 'unknown'.
+src/components/q-city/MetricsPanel.tsx(38,38): error TS2339: Property 'freeMem' does not exist on type 'unknown'.
+src/components/q-city/PluginPanel.tsx(72,34): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/QAvatar.tsx(91,31): error TS2339: Property 'type' does not exist on type 'unknown'.
+src/components/q-city/QAvatar.tsx(93,32): error TS2698: Spread types may only be created from object types.
+src/components/q-city/QAvatar.tsx(107,31): error TS2339: Property 'env' does not exist on type 'unknown'.
+src/components/q-city/QAvatar.tsx(109,32): error TS2698: Spread types may only be created from object types.
+src/components/q-city/QAvatar.tsx(123,31): error TS2339: Property 'quality' does not exist on type 'unknown'.
+src/components/q-city/QAvatar.tsx(125,32): error TS2698: Spread types may only be created from object types.
+src/components/q-city/QFileManager.tsx(312,21): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/QFileManager.tsx(315,27): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/QFileManager.tsx(352,21): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/QFileManager.tsx(355,27): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/QMOIStateProvider.tsx(125,50): error TS2698: Spread types may only be created from object types.
+src/components/q-city/QMoiAutoDevPanel.tsx(94,9): error TS2698: Spread types may only be created from object types.
+src/components/q-city/QMoiAutoDevPanel.tsx(155,19): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(43,18): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(44,28): error TS2339: Property 'data' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(45,42): error TS2339: Property 'data' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(47,38): error TS2339: Property '_error' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(61,26): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(74,26): error TS2339: Property '_error' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(85,26): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(87,28): error TS2339: Property '_error' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(101,26): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(114,26): error TS2339: Property '_error' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(120,32): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(136,24): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(136,74): error TS2339: Property '_error' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(138,32): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(158,24): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(159,30): error TS2339: Property 'suggestion' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(160,26): error TS2339: Property '_error' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(162,32): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(182,24): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(182,74): error TS2339: Property '_error' does not exist on type 'unknown'.
+src/components/q-city/QMoiFileEditorChat.tsx(184,32): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/QMoiKernelPanel.integration.test.tsx(24,66): error TS2339: Property 'url' does not exist on type 'unknown'.
+src/components/q-city/QMoiKernelPanel.integration.test.tsx(149,20): error TS2349: This expression is not callable.
+  Type '{}' has no call signatures.
+src/components/q-city/QMoiKernelPanel.integration.test.tsx(149,29): error TS2339: Property 'status' does not exist on type 'unknown'.
+src/components/q-city/QMoiKernelPanel.integration.test.tsx(157,65): error TS2339: Property 'url' does not exist on type 'unknown'.
+src/components/q-city/QMoiMemoryPanel.tsx(70,56): error TS2339: Property 'personality' does not exist on type 'unknown'.
+src/components/q-city/QMoiMemoryPanel.tsx(76,22): error TS2339: Property 'master_feedback' does not exist on type 'unknown'.
+src/components/q-city/QMoiMemoryPanel.tsx(86,22): error TS2339: Property 'history' does not exist on type 'unknown'.
+src/components/q-city/QMoiMemoryPanel.tsx(88,20): error TS2339: Property 'input' does not exist on type 'unknown'.
+src/components/q-city/QMoiMemoryPanel.tsx(88,31): error TS2339: Property 'emotion' does not exist on type 'unknown'.
+src/components/q-city/QMoiSettingsPanel.tsx(44,18): error TS2339: Property 'settings' does not exist on type 'unknown'.
+src/components/q-city/QMoiSettingsPanel.tsx(44,46): error TS2339: Property 'settings' does not exist on type 'unknown'.
+src/components/q-city/QMoiSettingsPanel.tsx(45,18): error TS2339: Property 'cmdHistory' does not exist on type 'unknown'.
+src/components/q-city/QMoiSettingsPanel.tsx(48,33): error TS2339: Property 'cmdHistory' does not exist on type 'unknown'.
+src/components/q-city/QMoiSettingsPanel.tsx(50,18): error TS2339: Property 'pinned' does not exist on type 'unknown'.
+src/components/q-city/QMoiSettingsPanel.tsx(51,72): error TS2339: Property 'pinned' does not exist on type 'unknown'.
+src/components/q-city/QMoiSettingsPanel.tsx(52,18): error TS2339: Property 'qavatar' does not exist on type 'unknown'.
+src/components/q-city/QMoiSettingsPanel.tsx(55,33): error TS2339: Property 'qavatar' does not exist on type 'unknown'.
+src/components/q-city/QMoiSettingsPanel.tsx(73,29): error TS2339: Property 'autonomy' does not exist on type 'unknown'.
+src/components/q-city/QMoiSettingsPanel.tsx(75,30): error TS2698: Spread types may only be created from object types.
+src/components/q-city/QMoiSettingsPanel.tsx(88,29): error TS2339: Property 'allowedActions' does not exist on type 'unknown'.
+src/components/q-city/QMoiSettingsPanel.tsx(90,30): error TS2698: Spread types may only be created from object types.
+src/components/q-city/QMoiSettingsPanel.tsx(100,29): error TS2339: Property 'mediaPerms' does not exist on type 'unknown'.
+src/components/q-city/QMoiSettingsPanel.tsx(102,30): error TS2698: Spread types may only be created from object types.
+src/components/q-city/QMoiState.tsx(102,24): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/QMoiState.tsx(162,13): error TS2339: Property 'timestamp' does not exist on type 'unknown'.
+src/components/q-city/QMoiState.tsx(163,13): error TS2339: Property 'user' does not exist on type 'unknown'.
+src/components/q-city/QMoiState.tsx(164,13): error TS2339: Property 'action' does not exist on type 'unknown'.
+src/components/q-city/QMoiState.tsx(165,13): error TS2339: Property 'deviceId' does not exist on type 'unknown'.
+src/components/q-city/QMoiState.tsx(166,13): error TS2339: Property 'status' does not exist on type 'unknown'.
+src/components/q-city/QMoiState.tsx(167,13): error TS2339: Property 'command' does not exist on type 'unknown'.
+src/components/q-city/QMoiState.tsx(275,29): error TS2339: Property 'tasks' does not exist on type 'unknown'.
+src/components/q-city/QMoiState.tsx(275,62): error TS2339: Property 'projects' does not exist on type 'unknown'.
+src/components/q-city/QMoiState.tsx(276,30): error TS2339: Property 'errors' does not exist on type 'unknown'.
+src/components/q-city/QMoiState.tsx(286,34): error TS2339: Property 'totalTasks' does not exist on type 'unknown'.
+src/components/q-city/QMoiState.tsx(287,21): error TS2339: Property 'successRate' does not exist on type 'unknown'.
+src/components/q-city/QMoiState.tsx(391,54): error TS2339: Property 'timestamp' does not exist on type 'unknown'.
+src/components/q-city/QMoiState.tsx(392,54): error TS2339: Property 'user' does not exist on type 'unknown'.
+src/components/q-city/QMoiState.tsx(393,54): error TS2339: Property 'action' does not exist on type 'unknown'.
+src/components/q-city/QMoiState.tsx(394,54): error TS2339: Property 'deviceId' does not exist on type 'unknown'.
+src/components/q-city/QMoiState.tsx(395,54): error TS2339: Property 'status' does not exist on type 'unknown'.
+src/components/q-city/QMoiState.tsx(396,54): error TS2339: Property 'command' does not exist on type 'unknown'.
+src/components/q-city/QNewsDashboard.tsx(284,30): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/components/q-city/QNewsDashboard.tsx(285,28): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/components/q-city/QNewsDashboard.tsx(286,28): error TS2339: Property 'views' does not exist on type 'unknown'.
+src/components/q-city/QNewsDashboard.tsx(287,28): error TS2339: Property 'shares' does not exist on type 'unknown'.
+src/components/q-city/QNewsDashboard.tsx(288,28): error TS2339: Property 'engagement' does not exist on type 'unknown'.
+src/components/q-city/SchedulePanel.tsx(27,34): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/SchedulePanel.tsx(43,61): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/components/q-city/SchedulePanel.tsx(50,34): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/SchedulePanel.tsx(65,34): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/SchedulePanel.tsx(80,34): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/SchedulePanel.tsx(167,26): error TS2339: Property 'name' does not exist on type 'unknown'.
+src/components/q-city/SchedulePanel.tsx(168,26): error TS2339: Property 'command' does not exist on type 'unknown'.
+src/components/q-city/SchedulePanel.tsx(169,26): error TS2339: Property 'cron' does not exist on type 'unknown'.
+src/components/q-city/SchedulePanel.tsx(170,26): error TS2339: Property 'deviceId' does not exist on type 'unknown'.
+src/components/q-city/SchedulePanel.tsx(171,26): error TS2339: Property 'notify' does not exist on type 'unknown'.
+src/components/q-city/SchedulePanel.tsx(176,31): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<{ name: string; command: string; cron: string; deviceId: string; notify: string; }>'.
+src/components/q-city/SchedulePanel.tsx(183,44): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/components/q-city/SchedulePanel.tsx(189,47): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/components/q-city/SelfHealPanel.tsx(22,53): error TS2345: Argument of type '() => unknown' is not assignable to parameter of type 'unknown[] | (() => unknown[])'.
+  Type '() => unknown' is not assignable to type '() => unknown[]'.
+    Type '{}' is missing the following properties from type 'unknown[]': length, pop, push, concat, and 28 more.
+src/components/q-city/SelfHealPanel.tsx(76,21): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/SelfHealPanel.tsx(202,23): error TS2339: Property 'ts' does not exist on type 'unknown'.
+src/components/q-city/SelfHealPanel.tsx(202,57): error TS2339: Property '_options' does not exist on type 'unknown'.
+src/components/q-city/SelfHealPanel.tsx(203,75): error TS2339: Property 'log' does not exist on type 'unknown'.
+src/components/q-city/SessionPanel.tsx(17,34): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/SessionPanel.tsx(36,34): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/SessionPanel.tsx(59,24): error TS2339: Property 'sid' does not exist on type 'unknown'.
+src/components/q-city/SessionPanel.tsx(60,24): error TS2339: Property 'createdAt' does not exist on type 'unknown'.
+src/components/q-city/SessionPanel.tsx(61,24): error TS2339: Property 'expiresAt' does not exist on type 'unknown'.
+src/components/q-city/SessionPanel.tsx(64,45): error TS2339: Property 'sid' does not exist on type 'unknown'.
+src/components/q-city/SystemHealthPanel.tsx(24,21): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/SystemHealthPanel.tsx(101,30): error TS2339: Property 'status' does not exist on type 'unknown'.
+src/components/q-city/SystemHealthPanel.tsx(104,34): error TS2339: Property 'last_check' does not exist on type 'unknown'.
+src/components/q-city/SystemHealthPanel.tsx(145,30): error TS2339: Property 'preActivity' does not exist on type 'unknown'.
+src/components/q-city/SystemHealthPanel.tsx(158,30): error TS2339: Property 'connectivity' does not exist on type 'unknown'.
+src/components/q-city/SystemHealthPanel.tsx(171,30): error TS2339: Property 'cloud' does not exist on type 'unknown'.
+src/components/q-city/WalletManager.tsx(93,21): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/WalletManager.tsx(96,27): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/WalletManager.tsx(134,21): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/q-city/WalletManager.tsx(137,27): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/config/bitget.ts(831,26): error TS2339: Property 'alloc' does not exist on type 'unknown'.
+src/config/bitget.ts(841,25): error TS2339: Property 'randomBytes' does not exist on type 'unknown'.
+src/config/bitget.ts(842,19): error TS2339: Property 'pbkdf2Sync' does not exist on type 'unknown'.
+src/config/bitget.ts(1108,13): error TS2339: Property 'iv' does not exist on type '{}'.
+src/config/bitget.ts(1108,17): error TS2339: Property 'encrypted' does not exist on type '{}'.
+src/config/bitget.ts(1108,28): error TS2339: Property 'authTag' does not exist on type '{}'.
+src/config/bitget.ts(1113,14): error TS2339: Property 'from' does not exist on type 'unknown'.
+src/config/bitget.ts(1116,32): error TS2339: Property 'from' does not exist on type 'unknown'.
+src/config/trading.ts(168,15): error TS2349: This expression is not callable.
+  Type '{}' has no call signatures.
+src/hooks/useAutoProjects.ts(68,19): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<AutoProject[]>'.
+src/hooks/useAutoProjects.ts(73,20): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<DailyPlan>'.
+src/hooks/useQmoiKernel.ts(48,21): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/hooks/useQmoiKernel.ts(72,23): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/hooks/useQmoiKernel.ts(75,25): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/lib/security_check.ts(72,10): error TS2339: Property 'push' does not exist on type 'unknown'.
+src/lib/security_check.ts(75,14): error TS2339: Property 'length' does not exist on type 'unknown'.
+src/lib/security_check.ts(76,12): error TS2339: Property 'splice' does not exist on type 'unknown'.
+src/lib/security_check.ts(76,27): error TS2339: Property 'length' does not exist on type 'unknown'.
+src/mocks/handlers.ts(152,25): error TS2339: Property 'url' does not exist on type 'unknown'.
+src/mocks/handlers.ts(153,25): error TS2339: Property '_request' does not exist on type 'unknown'.
+src/mocks/handlers.ts(153,43): error TS2339: Property '_request' does not exist on type 'unknown'.
+src/plugins/PluginManager.ts(94,56): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(timeout: string | number | Timeout): void', gave the following error.
+    Argument of type 'unknown' is not assignable to parameter of type 'string | number | Timeout'.
+  Overload 2 of 2, '(id: number): void', gave the following error.
+    Argument of type 'unknown' is not assignable to parameter of type 'number'.
+src/services/AIRequestRouter.ts(49,42): error TS2345: Argument of type '{ userId: string; }' is not assignable to parameter of type 'UserContext'.
+  Type '{ userId: string; }' is missing the following properties from type 'UserContext': preferences, personalityTraits, moodHistory
+src/services/AppManagementService.ts(518,19): error TS2339: Property 'severity' does not exist on type 'unknown'.
+src/services/AppManagementService.ts(518,47): error TS2339: Property 'severity' does not exist on type 'unknown'.
+src/services/AppManagementService.ts(600,38): error TS2339: Property 'issue' does not exist on type 'unknown'.
+src/services/EnhancedErrorFixingService.ts(269,30): error TS2349: This expression is not callable.
+  Type '{}' has no call signatures.
+src/services/FaceRecognitionService.ts(180,43): error TS2339: Property 'detectFaces' does not exist on type 'unknown'.
+src/services/VoiceRecognitionService.ts(738,25): error TS2739: Type '{}' is missing the following properties from type 'SpeechSynthesisVoice': default, lang, localService, name, voiceURI
+src/setupTests.ts(77,9): error TS2339: Property 'TransformStream' does not exist on type '{}'.
+src/setupTests.ts(78,9): error TS2339: Property 'ReadableStream' does not exist on type '{}'.
+src/setupTests.ts(79,9): error TS2339: Property 'WritableStream' does not exist on type '{}'.

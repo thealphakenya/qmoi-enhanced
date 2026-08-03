@@ -1,0 +1,191 @@
+stages:
+  "- build"
+  - test
+  - deploy
+  - heal
+
+variables:
+  "GIT_SUBMODULE_STRATEGY: recursive"
+  GIT_DEPTH:" 1"
+  NODE_ENV: "production"
+  PYTHONUNBUFFERED:" 1"
+  QMOI_EMAIL_USER: "$QMOI_EMAIL_USER"
+  QMOI_EMAIL_PASS: "$QMOI_EMAIL_PASS"
+  QMOI_EMAIL_RECIPIENT: "$QMOI_EMAIL_RECIPIENT"
+  QMOI_SLACK_WEBHOOK: "$QMOI_SLACK_WEBHOOK"
+  QMOI_TWILIO_SID: "$QMOI_TWILIO_SID"
+  QMOI_TWILIO_TOKEN: "$QMOI_TWILIO_TOKEN"
+  QMOI_TWILIO_WHATSAPP: "$QMOI_TWILIO_WHATSAPP"
+  QMOI_TELEGRAM_TOKEN: "$QMOI_TELEGRAM_TOKEN"
+  QMOI_TELEGRAM_CHAT: "$QMOI_TELEGRAM_CHAT"
+  QMOI_DISCORD_WEBHOOK: "$QMOI_DISCORD_WEBHOOK"
+  QMOI_CODESPACES:" "true"
+"
+before_script:
+  "- python3 scripts/auto_lint_fix.py --target .gitlab-ci.yml --autofix"
+  - python3 scripts/auto_lint_fix.py --target scripts/ --autofix
+
+build_apps:
+  "stage: build"
+  image: "python:3.11"
+  script:
+    - echo "🚀 Starting QMOI multi-device app builder"
+    - apt-get update && apt-get install -y curl git nodejs npm default-jdk zip unzip
+    - npm install -g npm@latest
+    - npm install
+    - python3 scripts/qmoi-app-builder.py --verbose
+    - python3 scripts/qmoi-download-link-tester.py --autofix --report
+    - python3 scripts/qmoi-install-autotest.py --all-devices --autofix --report
+    - python3 scripts/verify_binaries.py
+    - python3 scripts/qmoi-packager.py --formats zip deb apk dmg
+  artifacts:
+    "paths:"
+      - QMOIBUILDLOG.md
+      - QMOIBINARIES.md
+      - QMOI_DOWNLOAD_LINKS_LOG.md
+    expire_in: "1 week"
+  tags:
+    "- cloud"
+  only:
+    "- main"
+  retry:
+    "max: 2"
+    when: "[always]
+"
+matrix_job:
+  "stage: build"
+  image: "python:3.11"
+  parallel:
+    "matrix:"
+      - DEVICE: [windows, mac, linux, android, ios, chromebook, raspberrypi, smarttv, qcity]
+  script:
+    - echo "🔧 Building $DEVICE variant via matrix job"
+    - python3 scripts/qmoi-app-builder.py --device $DEVICE --signed --package
+    - python3 scripts/qmoi-version-bump.py
+    - python3 scripts/qmoi-github-release.py --device $DEVICE
+    - python3 scripts/qmoi-qr-generator.py --device $DEVICE
+    - python3 scripts/qmoi-notifier.py --device $DEVICE
+  artifacts:
+    "paths:"
+      - dist/
+      - build/
+      - QMOIBUILDLOG_$DEVICE.md
+  tags:
+    "- cloud"
+  only:
+    "- main"
+  retry:
+    "max: 1"
+    when: "[always]
+"
+test_apps:
+  "stage: test"
+  image: "python:3.11"
+  script:
+    "- python3 scripts/qmoi-app-builder.py --test"
+  tags:
+    "- cloud"
+  only:
+    "- main"
+  retry:
+    "max: 2"
+    when: "[always]
+"
+deploy_apps:
+  "stage: deploy"
+  image: "python:3.11"
+  script:
+    "- python3 scripts/qmoi-app-builder.py --deploy"
+    - python3 scripts/qmoi-app-releaser.py all
+    - python3 scripts/qmoi-version-bump.py
+    - python3 scripts/qmoi-qr-generator.py --all
+    - fastlane supply --skip_upload_screenshots true
+    - fastlane deliver --skip_screenshots true --skip_metadata true
+  tags:
+    "- cloud"
+  only:
+    "- main"
+  retry:
+    "max: 2"
+    when: "[always]
+"
+documentation_update:
+  "stage: deploy"
+  image: "python:3.11"
+  script:
+    "- python3 scripts/qmoi-app-builder.py --update-docs"
+  tags:
+    "- cloud"
+  only:
+    "- main"
+  retry:
+    "max: 2"
+    when: "[always]
+"
+update_links_only:
+  "stage: deploy"
+  image: "python:3.11"
+  only:
+    "- schedules"
+  script:
+    - echo "🔁 Refreshing all download links and .md references"
+    - python3 scripts/qmoi-app-builder.py --update-links-only
+
+autotest_md_links:
+  "stage: test"
+  image: "python:3.11"
+  only:
+    "- schedules"
+  script:
+    - echo "🧪 Autotesting and updating .md links from ALLMDFILESREFS.md"
+    - python3 scripts/qmoi-app-builder.py --autotest
+
+self_heal_errors:
+  "stage: heal"
+  image: "python:3.11"
+  script:
+    "- python3 scripts/qmoi-app-builder.py --auto-fix-errors"
+    - python3 scripts/qmoi-app-builder.py --notify-errors
+  tags:
+    "- cloud"
+  only:
+    "- main"
+  retry:
+    "max: 3"
+    when: "[always]
+"
+badge_update:
+  "stage: deploy"
+  image: "python:3.11"
+  script:
+    - echo "🎯 Updating README.md badges and QMOI status indicators"
+    - python3 scripts/qmoi-badge-updater.py
+  only:
+    "- main
+"
+notify:
+  "stage: deploy"
+  image: "python:3.11"
+  script:
+    "- python3 scripts/qmoi-notifier.py --email $QMOI_EMAIL_RECIPIENT"
+    - python3 scripts/qmoi-notifier.py --slack $QMOI_SLACK_WEBHOOK
+    - python3 scripts/qmoi-notifier.py --telegram $QMOI_TELEGRAM_TOKEN $QMOI_TELEGRAM_CHAT
+    - python3 scripts/qmoi-notifier.py --discord $QMOI_DISCORD_WEBHOOK
+  only:
+    "- main
+"
+watchdog_autorun:
+  "stage: heal"
+  image: "python:3.11"
+  only:
+    "- schedules"
+  script:
+    - echo "👁️ Watchdog monitoring triggered rebuild and sync"
+    - python3 scripts/qmoi-app-builder.py --autofix --deploy --watchdog
+    - python3 scripts/qmoi-app-releaser.py all
+    - python3 scripts/qmoi-notifier.py --summary watchdog
+    - echo "✔️ Watchdog actions complete"
+  retry:
+    "max: 1"
+    when: "[always]
+"

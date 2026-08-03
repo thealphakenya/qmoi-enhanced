@@ -1,0 +1,27 @@
+{
+  "name": "QMOI AI - Node.js + Python Dev Environment",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:18-bullseye",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-next",
+        "ms-python.python"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
+    }
+  },
+  "forwardPorts": [3000, 8000, 8080],
+  "postCreateCommand": "npm install && npm run build",
+  "remoteUser": "node"
+}

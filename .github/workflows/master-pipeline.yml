@@ -1,0 +1,94 @@
+name: Master pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_ci:
+        description: Run the consolidated CI workflow
+        required: false
+        type: boolean
+        default: true
+      run_build:
+        description: Run the build workflow
+        required: false
+        type: boolean
+        default: true
+      run_security:
+        description: Run the security workflow
+        required: false
+        type: boolean
+        default: true
+      run_links:
+        description: Run the link checking workflow
+        required: false
+        type: boolean
+        default: true
+      run_deploy:
+        description: Run the deployment workflow
+        required: false
+        type: boolean
+        default: false
+      run_ollama_trigger:
+        description: Dispatch the Ollama trigger workflow
+        required: false
+        type: boolean
+        default: false
+      run_ollama_agent:
+        description: Dispatch the Ollama autonomous agent workflow
+        required: false
+        type: boolean
+        default: false
+      run_qmoi_autodev:
+        description: Dispatch the QMOI Autodev workflow
+        required: false
+        type: boolean
+        default: false
+  push:
+    branches:
+      - main
+      - master
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch selected workflows
+        uses: actions/github-script@v7
+        env:
+          RUN_CI: ${{ github.event.inputs.run_ci || 'true' }}
+          RUN_BUILD: ${{ github.event.inputs.run_build || 'true' }}
+          RUN_SECURITY: ${{ github.event.inputs.run_security || 'true' }}
+          RUN_LINKS: ${{ github.event.inputs.run_links || 'true' }}
+          RUN_DEPLOY: ${{ github.event.inputs.run_deploy || 'false' }}
+        with:
+          script: |
+            const workflows = [
+              { id: 'ci.yml', enabled: process.env.RUN_CI === 'true', name: 'CI' },
+              { id: 'build.yml', enabled: process.env.RUN_BUILD === 'true', name: 'Build' },
+              { id: 'security-checks.yml', enabled: process.env.RUN_SECURITY === 'true', name: 'Security' },
+              { id: 'link-check.yml', enabled: process.env.RUN_LINKS === 'true', name: 'Links' },
+              { id: 'deploy.yml', enabled: process.env.RUN_DEPLOY === 'true', name: 'Deploy' },
+              { id: 'ollamatrigger.yml', enabled: process.env.RUN_OLLAMA_TRIGGER === 'true', name: 'Ollama Trigger' },
+              { id: 'ollama-autonomous-agent.yml', enabled: process.env.RUN_OLLAMA_AGENT === 'true', name: 'Ollama Autonomous Agent' },
+              { id: 'qmoi-autodev.yml', enabled: process.env.RUN_QMOI_AUTODEV === 'true', name: 'QMOI Autodev' },
+            ];
+
+            const selected = workflows.filter((w) => w.enabled);
+            if (!selected.length) {
+              core.info('No workflows selected for dispatch.');
+              return;
+            }
+
+            for (const workflow of selected) {
+              core.info(`Dispatching ${workflow.name} (${workflow.id})`);
+              await github.rest.actions.createWorkflowDispatch({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                workflow_id: workflow.id,
+                ref: context.ref,
+              });
+            }

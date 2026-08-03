@@ -1,0 +1,8 @@
+{
+  "id": "qcity",
+  "name": "QCity",
+  "version": "v2.0.1",
+  "type": "binary-zip",
+  "platforms": ["Windows", "macOS", "Linux", "Android", "iOS"],
+  "icon": "assets/icons/qcity.svg"
+}

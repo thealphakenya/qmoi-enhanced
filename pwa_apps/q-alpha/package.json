@@ -1,0 +1,9 @@
+{
+  "name": "q-alpha-pwa",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "mkdir -p dist && cp -r index.html manifest.webmanifest sw.js icons dist/",
+    "clean": "rm -rf dist"
+  }
+}

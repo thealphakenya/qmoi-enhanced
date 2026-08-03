@@ -1,0 +1,8694 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.425948Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:39:17.423093Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /home/runner/work/qmoi-enhanced/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /home/runner/work/qmoi-enhanced/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /home/runner/work/qmoi-enhanced/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /home/runner/work/qmoi-enhanced/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /home/runner/work/qmoi-enhanced/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /home/runner/work/qmoi-enhanced/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /home/runner/work/qmoi-enhanced/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /home/runner/work/qmoi-enhanced/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /home/runner/work/qmoi-enhanced/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /home/runner/work/qmoi-enhanced/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z
+
+
+<!-- MERGED FROM ARCHIVE: /workspaces/qmoi-enhanced/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx -->
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [_error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Validate form
+      if (!formData.email || !formData.username || !formData.password) {
+        setError("All fields are required");
+        setLoading(false);
+        return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        setLoading(false);
+        return;
+      }
+
+      // Call registration API
+      const _response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      const { accessToken, user } = await response.json();
+
+      // Store token
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Create Account</h1>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
+      )}
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium mb-1">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="johndoe"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium mb-1">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          At least 8 characters with uppercase, numbers, and special characters
+        </p>
+      </div>
+
+      <div>
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
+      >
+        {loading ? "Creating account..." : "Create Account"}
+      </button>
+
+      <p className="text-center text-sm text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Sign in
+        </a>
+      </p>
+    </form>
+  );
+}
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.037582Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:39.928369Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.074142Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.508191Z

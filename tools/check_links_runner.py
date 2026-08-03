@@ -1,0 +1,151 @@
+#!/usr/bin/env python3
+"""
+A clean runner for link checking (stdlib only).
+This file is a safe alternative to `tools/check_links.py` if that file is corrupted.
+Produces the same outputs under `tools/`.
+"""
+import os
+import re
+import json
+import time
+import socket
+from urllib import request, error, parse
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+TOOLS_DIR = os.path.join(ROOT, 'tools')
+os.makedirs(TOOLS_DIR, exist_ok=True)
+
+LINK_RE = re.compile(r'https?://[^\s\)\]\>\"]+', re.IGNORECASE)
+MAX_LINKS = 1500
+DNS_TIMEOUT = 2.0
+HTTP_TIMEOUT = 4.0
+MAX_WORKERS = min(20, max(4, (os.cpu_count() or 2) * 2))
+
+
+def find_md_files(root):
+    for dirpath, dirs, files in os.walk(root):
+        if os.path.abspath(dirpath).startswith(os.path.abspath(TOOLS_DIR)):
+            continue
+        if '.git' in dirpath or 'node_modules' in dirpath:
+            continue
+        for f in files:
+            if f.lower().endswith('.md'):
+                yield os.path.join(dirpath, f)
+
+
+def extract_links(text):
+    return [m.group(0).rstrip('.,:;') for m in LINK_RE.finditer(text)]
+
+
+def resolve_hostname(hostname: str):
+    try:
+        orig = socket.getdefaulttimeout()
+        socket.setdefaulttimeout(DNS_TIMEOUT)
+        try:
+            ai = socket.getaddrinfo(hostname, None)
+            ips = sorted({a[4][0] for a in ai})
+            return ips
+        finally:
+            socket.setdefaulttimeout(orig)
+    except Exception:
+        return []
+
+
+def http_check(url: str):
+    rec = {'url': url, 'status': None, 'error': None, 'elapsed': None}
+    t0 = time.time()
+    last = None
+    for method in ('HEAD', 'GET'):
+        try:
+            req = request.Request(url, method=method, headers={'User-Agent': 'qmoi-link-checker/1.0'})
+            with request.urlopen(req, timeout=HTTP_TIMEOUT) as resp:
+                rec['status'] = resp.getcode()
+                rec['elapsed'] = time.time() - t0
+                return rec
+        except error.HTTPError as he:
+            rec['status'] = he.code
+            rec['error'] = f'http_error: {getattr(he, "reason", "")}'
+            rec['elapsed'] = time.time() - t0
+            return rec
+        except Exception as e:
+            last = e
+            continue
+    rec['error'] = f'network_error: {last}'
+    rec['elapsed'] = time.time() - t0
+    return rec
+
+
+def main():
+    md_files = list(find_md_files(ROOT))
+    docs_inventory = []
+    link_entries = []
+
+    for md in md_files:
+        try:
+            with open(md, 'r', encoding='utf-8', errors='replace') as fh:
+                txt = fh.read()
+        except Exception:
+            continue
+        lower = txt.lower()
+        if any(k in lower for k in ('dns', 'domain', 'cname', 'hostname', 'ngrok', 'url', 'link')):
+            docs_inventory.append({'path': os.path.relpath(md, ROOT)})
+        for u in extract_links(txt):
+            link_entries.append({'file': os.path.relpath(md, ROOT), 'url': u})
+
+    inv_path = os.path.join(TOOLS_DIR, 'dns_docs_inventory.json')
+    with open(inv_path, 'w', encoding='utf-8') as fh:
+        json.dump({'generated_at': time.time(), 'docs': docs_inventory, 'md_files': len(md_files)}, fh, indent=2)
+
+    if len(link_entries) > MAX_LINKS:
+        seen = set(); filtered = []
+        for e in link_entries:
+            if e['url'] in seen: continue
+            seen.add(e['url']); filtered.append(e)
+            if len(filtered) >= MAX_LINKS: break
+        link_entries = filtered
+
+    print(f'Checking {len(link_entries)} links from {len(md_files)} md files with {MAX_WORKERS} workers')
+
+    results = []
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
+        futures = {ex.submit(http_check, e['url']): e for e in link_entries}
+        for fut in as_completed(futures):
+            e = futures[fut]
+            try:
+                r = fut.result()
+            except Exception as exc:
+                r = {'url': e['url'], 'status': None, 'error': f'exception: {exc}', 'elapsed': None}
+            r['file'] = e['file']
+            parsed = parse.urlparse(e['url'])
+            host = parsed.hostname
+            if host:
+                r['resolved_ips'] = resolve_hostname(host)
+                r['dns_ok'] = bool(r['resolved_ips'])
+            else:
+                r['resolved_ips'] = []
+                r['dns_ok'] = False
+            results.append(r)
+
+    out_json = os.path.join(TOOLS_DIR, 'dns_links_report.json')
+    with open(out_json, 'w', encoding='utf-8') as fh:
+        json.dump({'generated_at': time.time(), 'total': len(results), 'results': results}, fh, indent=2)
+
+    out_md = os.path.join(TOOLS_DIR, 'dns_links_report.md')
+    failures = [x for x in results if x.get('error') or (x.get('status') and x.get('status') >= 400) or not x.get('dns_ok')]
+    with open(out_md, 'w', encoding='utf-8') as fh:
+        fh.write('# QMOI Link Check Summary\n\n')
+        fh.write(f'Generated: {time.ctime()}\n\n')
+        fh.write(f'Checked {len(results)} links; failures: {len(failures)}\n\n')
+        if failures:
+            fh.write('## Failures (top 200)\n\n')
+            for f in failures[:200]:
+                fh.write(f"- File: {f.get('file')}\n  - URL: {f.get('url')}\n  - Status: {f.get('status')}\n  - Error: {f.get('error')}\n  - DNS OK: {f.get('dns_ok')} Resolved: {', '.join(f.get('resolved_ips') or [])}\n\n")
+        else:
+            fh.write('No failures detected.\n')
+
+    print('Reports written:', inv_path, out_json, out_md)
+
+
+if __name__ == '__main__':
+    main()

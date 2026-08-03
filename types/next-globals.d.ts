@@ -1,0 +1,11 @@
+declare const Request: unknown;
+declare const URLSearchParams: unknown;
+declare const NextRequest: unknown;
+declare const NextResponse: unknown;
+declare const Headers: unknown;
+declare const Buffer: typeof globalThis.Buffer;
+declare const AbortController: unknown;
+declare const ReadableStream: unknown;
+declare const TransformStream: unknown;
+declare const TextEncoder: unknown;
+declare const TextDecoder: unknown;

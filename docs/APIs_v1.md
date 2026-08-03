@@ -1,0 +1,110 @@
+---
+title: "QMOI API snapshot (APIs_v1)"
+qmoi_validation_frontmatter: true
+---
+
+# QMOI API snapshot (APIs_v1)
+
+This file is an automated snapshot of commonly used API endpoints implemented under `app/api/**`.
+Mutating endpoints are _proposal-first_ by default and require explicit production confirmation (`PRODUCTION_CONFIRMED=true` + `--real`) to actually perform state-changing actions. All mutating endpoints write proposals to `.qmoi_validation/` when not run in confirmed production mode.
+
+## Auth model
+
+- Primary gating: `QMOI_API_KEY` via header `x-qmoi-api-key` or `Authorization: Bearer <key>` — enforced by `lib/proposals.requireApiKey()`.
+- Master-level operations: some endpoints still require `MASTER_TOKEN` in `Authorization: Bearer <MASTER_TOKEN>` header.
+
+---
+
+## /api/qmoi/auto-fix/start (POST)
+
+- Purpose: Start the auto-fix process for repository (runs `scripts/qmoi_auto_fix_enhanced.py`).
+- Implementation: [app/api/qmoi/auto-fix/start/route.ts](app/api/qmoi/auto-fix/start/route.ts)
+- Auth: `x-qmoi-api-key` or `MASTER_TOKEN`.
+- Behavior: writes proposal unless `PRODUCTION_CONFIRMED=true` and `--real` present; when allowed, spawns the auto-fix process.
+
+## /api/qmoi/auto-fix/status (GET)
+
+- Purpose: Get current status and latest report for auto-fix runs.
+- Implementation: [app/api/qmoi/auto-fix/status/route.ts](app/api/qmoi/auto-fix/status/route.ts)
+- Auth: `x-qmoi-api-key` (gated).
+- Read-only.
+
+## /api/qmoi/auto-fix/stop (POST)
+
+- Purpose: Stop running auto-fix processes (kill processes matching `qmoi_auto_fix`).
+- Implementation: [app/api/qmoi/auto-fix/stop/route.ts](app/api/qmoi/auto-fix/stop/route.ts)
+- Auth: `x-qmoi-api-key` and `MASTER_TOKEN` where configured.
+- Behavior: proposal-first for safety; writes proposal when not confirmed.
+
+## /api/qmoi/auto-fix/download-report (GET)
+
+- Purpose: Download the latest auto-fix JSON report.
+- Implementation: [app/api/qmoi/auto-fix/download-report/route.ts](app/api/qmoi/auto-fix/download-report/route.ts)
+- Auth: `x-qmoi-api-key`.
+- Behavior: read-only; logs access to `logs/download_fixes.log` (best-effort).
+
+## /api/qmoi/auto-fix/github-status (GET)
+
+- Purpose: Inspect GitHub Actions/workflow presence and recent runs for auto-fix workflows.
+- Implementation: [app/api/qmoi/auto-fix/github-status/route.ts](app/api/qmoi/auto-fix/github-status/route.ts)
+- Auth: `x-qmoi-api-key`.
+- Behavior: read-only.
+
+---
+
+## Implemented route index
+
+For quick cross-reference, the following important API routes are implemented and available in the codebase; follow the linked `route.ts` to see exact request/response schemas and auth checks.
+
+- /api/qmoi/auto-fix/_ -> `app/api/qmoi/auto-fix/_/route.ts`
+- /api/cashon/_ -> `app/api/cashon/_/route.ts`
+- /api/qi-trading -> [app/api/qi-trading/route.ts](app/api/qi-trading/route.ts)
+- /api/qmoi/chat -> [app/api/qmoi/chat/route.ts](app/api/qmoi/chat/route.ts)
+- /api/auth/_ -> `app/api/auth/_/route.ts`
+
+If you want any of the proposal-first endpoints to act immediately in production, set `PRODUCTION_CONFIRMED=true` and run the server with the `--real` flag (or the equivalent runner). This is intentional to prevent accidental destructive actions.
+
+---
+
+## /api/cashon/\*
+
+- GET /api/cashon/balance — returns balances via `cashonWallet.getBalance()` (MASTER_TOKEN required)
+- GET /api/cashon/trading-status — returns trading status
+- GET /api/cashon/qmoi-status — returns trader status
+- GET /api/cashon/signals — returns recent signals
+- GET /api/cashon/performance — returns performance metrics
+
+- POST /api/cashon/deposit — propose or initiate deposit
+- POST /api/cashon/approve-deposit — propose or approve deposit
+- POST /api/cashon/withdraw — propose or withdraw funds
+- POST /api/cashon/start-trading — propose or start AI trading
+- POST /api/cashon/stop-trading — propose or stop AI trading
+- POST /api/cashon/trade — propose or execute trade
+- POST /api/cashon/approve-trade — propose or approve trade
+
+- Auth: Master-level operations require `MASTER_TOKEN`; all endpoints also validate `x-qmoi-api-key` if configured.
+- Behavior: Mutating POSTs are proposal-first and write proposals to `.qmoi_validation/` when not confirmed.
+
+---
+
+## /api/qi-trading (GET, POST)
+
+- GET /api/qi-trading?stats=1 — returns trading statistics (mocked/stubbed data)
+- GET /api/qi-trading?history=1 — returns trade history (mocked)
+- GET /api/qi-trading?active=1 — returns active trades (mocked)
+
+- POST /api/qi-trading (body: { action: 'execute'|'cancel', trade }) — proposal-first for execute/cancel. Writes proposals when not confirmed.
+- Auth: `x-qmoi-api-key` recommended (enforced).
+
+---
+
+## Notes
+
+- Proposal files can be found in `.qmoi_validation/` (e.g., `proposal-*.json`, `[AUTOFIXED by Ollama at 2026-07-20T01:19:39.200236Z: please review]s_proposal_*.json`). Review them before applying.
+- To apply a proposal and run a mutating action, _set_ `PRODUCTION_CONFIRMED=true` in the environment and run the server with `--real` in the process arguments (or use a patched runner that forwards this flag). This gating is intentional to prevent accidental destructive actions.
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->
+
+
+---
+Automated update by Ollama agent at 2026-07-20T01:19:39.200236Z. Please review changes above.

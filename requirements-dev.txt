@@ -1,0 +1,11 @@
+flake8>=6.0.0
+pytest>=7.0.0
+
+requests
+Flask
+PyYAML
+aiohttp
+xmlrunner
+stripe
+pytest-cov
+coverage

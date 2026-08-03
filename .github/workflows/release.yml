@@ -1,0 +1,79 @@
+name: QMOI Auto Build & Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      variation:
+        description: Variation to build (e.g. lion-os, lion-cloud)
+        required: false
+      tag:
+        description: Release tag (vX.Y.Z)
+        required: true
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    steps:
+    - name: "\u2728 Checkout repository"
+      uses: actions/checkout@v4
+    - name: "\u267B Setup Node.js"
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+    - name: "\u267B Setup Python"
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.11
+    - name: "\u267B Install dependencies"
+      run: 'npm install
+
+        pip install -r requirements.txt || true
+
+        '
+    - name: "\U0001F30E Generate icons and validate files"
+      run: 'npm run generate:icon
+
+        npm run ensure:files
+
+        '
+    - name: "\U0001F528 Build PyInstaller EXE"
+      run: npm run pyinstaller:build
+    - name: "\U0001F680 Electron Build (all platforms)"
+      run: npm run electron:build:all
+    - name: "\U0001F50D Validate binaries"
+      run: npm run validate:binaries
+    - name: "\U0001F4CB Create GitHub Release"
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: qmoi-v${{ github.run_number }}
+        name: QMOI AI Release v${{ github.run_number }}
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+    - name: "\U0001F539 Upload Release Assets"
+      uses: softprops/action-gh-release@v2
+      with:
+        files: 'Qmoi_apps/windows/*.exe
+
+          Qmoi_apps/linux/*.AppImage
+
+          Qmoi_apps/mac/*.dmg
+
+          '
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+    timeout_minutes: 30
+'on':
+  push:
+    branches:
+    - main
+  workflow_dispatch: {}
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
+env:
+  NODE_VERSION: '18'
+  QMOI_AUTODEV_ENABLED: 'true'

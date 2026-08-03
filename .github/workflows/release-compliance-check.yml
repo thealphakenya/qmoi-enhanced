@@ -1,0 +1,69 @@
+name: Release Compliance Check
+
+on:
+  schedule:
+  - cron: 0 12 * * 0
+  workflow_dispatch: {}
+jobs:
+  compliance-check:
+    name: Check release compliance
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    - name: Generate compliance report
+      env:
+        GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
+      run: python3 scripts/generate_release_compliance_report.py
+    - name: Upload report
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: release-compliance-report
+        path: reports/release_compliance_report.json
+    - name: Check compliance status
+      id: check
+      run: 'STATUS=$(jq -r ''.compliance_status'' reports/release_compliance_report.json)
+
+        ALERTS=$(jq ''.alerts | length'' reports/release_compliance_report.json)
+
+        echo "status=$STATUS" >> $GITHUB_OUTPUT
+
+        echo "alerts=$ALERTS" >> $GITHUB_OUTPUT
+
+        '
+    - name: Create issue if compliance fails
+      if: steps.check.outputs.status == 'FAIL'
+      uses: actions/github-script@v6
+      with:
+        script: "const fs = require('fs');\nconst report = JSON.parse(fs.readFileSync('reports/release_compliance_report.json',\
+          \ 'utf8'));\nconst alerts = report.alerts || [];\n\nlet body = '## Release\
+          \ Compliance Check Failed\\n\\n';\nbody += `**Status**: ${report.compliance_status}\\\
+          n`;\nbody += `**Checked at**: ${report.timestamp}\\n`;\nbody += `**Releases**:\
+          \ ${report.total_releases} (${report.releases.filter(r => r.status === 'ALERT').length}\
+          \ with issues)\\n\\n`;\n\nif (alerts.length > 0) {\n  body += '### Alerts\\\
+          n\\n';\n  for (const alert of alerts) {\n    body += `- **${alert.release\
+          \ || 'General'}**: ${alert.issue}\\n`;\n    if (alert.recommendation) {\n\
+          \      body += `  - Recommendation: ${alert.recommendation}\\n`;\n    }\n\
+          \  }\n}\n\nbody += '\\n**Full Report**: See artifacts for `release_compliance_report.json`\\\
+          n';\n\ngithub.rest.issues.create({\n  owner: context.repo.owner,\n  repo:\
+          \ context.repo.repo,\n  title: `[Release Compliance] ${report.compliance_status\
+          \ === 'FAIL' ? 'Issues Found' : 'Status OK'}`,\n  body: body,\n  labels:\
+          \ ['release', 'compliance', 'automated']\n});\n"
+    - name: Comment on success
+      if: steps.check.outputs.status == 'PASS'
+      run: "echo \"\u2705 All releases are compliant with manifest\""
+'on':
+  push:
+    branches:
+    - main
+    - master
+  pull_request:
+    branches:
+    - main
+    - master
+  workflow_dispatch: {}

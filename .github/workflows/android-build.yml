@@ -1,0 +1,158 @@
+name: Android CI (QMOI)
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Set up Java 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: temurin
+    - name: Cache Gradle
+      uses: actions/cache@v4
+      with:
+        path: '~/.gradle/caches
+
+          ~/.gradle/wrapper
+
+          '
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties')
+          }}
+    - name: Install system deps
+      run: 'sudo apt-get update
+
+        sudo apt-get install -y curl unzip wget zip
+
+        '
+    - name: Install Android SDK commandline tools
+      run: 'ANDROID_SDK_ROOT="$HOME/android_sdk"
+
+        mkdir -p "$ANDROID_SDK_ROOT/cmdline-tools"
+
+        cd /tmp
+
+        curl -fsSL -o commandlinetools.zip https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip
+
+        unzip -q commandlinetools.zip -d "$ANDROID_SDK_ROOT/cmdline-tools"
+
+        mkdir -p "$ANDROID_SDK_ROOT/cmdline-tools/latest"
+
+        mv "$ANDROID_SDK_ROOT/cmdline-tools/cmdline-tools"/* "$ANDROID_SDK_ROOT/cmdline-tools/latest/"
+        || true
+
+        rm -f commandlinetools.zip
+
+        echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
+
+        echo "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin" >> $GITHUB_PATH
+
+        '
+    - name: Install Android build-tools and platform
+      run: 'yes | sdkmanager --sdk_root="$HOME/android_sdk" --licenses || true
+
+        sdkmanager --sdk_root="$HOME/android_sdk" "platform-tools" "platforms;android-33"
+        "build-tools;33.0.2"
+
+        '
+    - name: Prepare keystore (from secrets)
+      if: ${{ secrets.KEYSTORE_BASE64 != '' }}
+      env:
+        KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        KEYSTORE_ALIAS: ${{ secrets.KEYSTORE_ALIAS }}
+      run: 'mkdir -p mobile/android/app
+
+        echo "$KEYSTORE_BASE64" | base64 --decode > mobile/android/app/keystore.jks
+
+        # Create Gradle project properties that signing-config.gradle expects
+
+        echo "KEYSTORE_FILE=keystore.jks" > mobile/android/keystore.properties
+
+        echo "KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD" >> mobile/android/keystore.properties
+
+        echo "KEY_ALIAS=$KEYSTORE_ALIAS" >> mobile/android/keystore.properties
+
+        echo "KEY_PASSWORD=$KEYSTORE_PASSWORD" >> mobile/android/keystore.properties
+
+        '
+    - name: Build Android Release
+      working-directory: mobile/android
+      env:
+        ANDROID_SDK_ROOT: ${{ env.ANDROID_SDK_ROOT }}
+        JAVA_HOME: ${{ env.JAVA_HOME }}
+      run: 'chmod +x ./gradlew
+
+        ./gradlew clean assembleRelease --no-daemon
+
+        '
+    - name: Verify APK with apksigner
+      working-directory: mobile/android/app/build/outputs/apk/release
+      run: 'set -e
+
+        APK=$(ls app-*-release*.apk | head -n1)
+
+        if [ -z "$APK" ]; then echo "No APK found"; exit 1; fi
+
+        APKSIGNER="$HOME/android_sdk/build-tools/33.0.2/apksigner"
+
+        if [ ! -x "$APKSIGNER" ]; then echo "apksigner not found"; exit 1; fi
+
+        "$APKSIGNER" verify "$APK"
+
+        '
+    - name: Generate release validation markdown
+      working-directory: ${{ github.workspace }}
+      env:
+        GITHUB_RUN_ID: ${{ github.run_id }}
+      run: 'APK_PATH="${{ github.workspace }}/mobile/android/app/build/outputs/apk/release/$(ls
+        mobile/android/app/build/outputs/apk/release | grep ''app-.*-release.*\.apk''
+        | head -n1)"
+
+        OUTFILE="docs/release_validation_${{ github.run_id }}.md"
+
+        mkdir -p docs
+
+        bash ./scripts/qmoi_generate_release_validation.sh "$APK_PATH" "$OUTFILE"
+
+        '
+    - name: Upload release validation
+      uses: actions/upload-artifact@v4
+      with:
+        name: release-validation
+        path: docs/release_validation_*.md
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: android-apks
+        path: mobile/android/app/build/outputs/apk/**/app-*-release*.apk
+    - name: Run Unit Tests
+      working-directory: mobile/android
+      run: 'chmod +x ./gradlew
+
+        ./gradlew test --no-daemon || true
+
+        '
+'on':
+  push:
+    branches:
+    - main
+    - master
+  pull_request:
+    branches:
+    - main
+    - master
+  workflow_dispatch: {}

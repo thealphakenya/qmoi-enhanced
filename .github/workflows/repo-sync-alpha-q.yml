@@ -1,0 +1,46 @@
+name: Repo sync Alpha Q
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+    - main
+    - autosync-backup-20250926-232440
+permissions:
+  contents: write
+jobs:
+  sync-repo:
+    runs-on: ubuntu-latest
+    env:
+      QMOI_SYNC_TARGET_REPO: thealphakenya/Alpha-Q-ai
+      QMOI_SYNC_TARGET_BRANCH: ${{ github.ref_name || 'main' }}
+      MY_CUSTOM_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN }}
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        persist-credentials: true
+    - name: Configure git user
+      run: 'git config user.name "github-actions[bot]"
+
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+        '
+    - name: Mirror branch to Alpha Q repo
+      env:
+        GH_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN }}
+        MY_CUSTOM_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN }}
+      run: "set -o pipefail\nif [ -n \"$MY_CUSTOM_TOKEN\" ]; then\n  echo \"MY_CUSTOM_TOKEN\
+        \ is configured for this run.\"\nelse\n  echo \"MY_CUSTOM_TOKEN is not configured\
+        \ for this run.\"\nfi\npython3 scripts/repo_sync.py >/tmp/repo_sync.log 2>&1\
+        \ || status=$?\ncat /tmp/repo_sync.log\nif [ \"${status:-0}\" -ne 0 ]; then\n\
+        \  echo \"Mirror push failed. Verify that MY_CUSTOM_TOKEN has write access\
+        \ to the Alpha Q target repository.\"\n  exit \"$status\"\nfi\necho \"Mirror\
+        \ push completed successfully.\"\n"
+'on':
+  push:
+    branches:
+    - main
+    - master
+  workflow_dispatch: {}

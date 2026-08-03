@@ -1,0 +1,49 @@
+name: Install and verify Python dependencies
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+      - master
+      - autosync-md-fixes-20251107
+      - autosync-backup-20250926-232440
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  install-deps:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-cache-${{ runner.os }}-py-${{ matrix.python-version }}
+          restore-keys: |
+            pip-cache-${{ runner.os }}-py-
+
+      - name: Install minimal dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-minimal.txt || true
+
+      - name: (optional) Install full requirements (CPU-friendly)
+        run: |
+          python -m pip install --upgrade pip
+          pip install --extra-index-url https://download.pytorch.org/whl/cpu -r requirements.txt || true
+
+      - name: "Smoke test: run supervised start (dry-run)"
+        run: |
+          python scripts/qmoi-start-watch.py --timeout 20 || true

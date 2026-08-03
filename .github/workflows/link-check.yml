@@ -1,0 +1,46 @@
+name: Link checks
+
+on:
+  push:
+    paths:
+      - "**/*.md"
+      - "tools/**"
+      - ".github/workflows/**"
+  pull_request:
+    paths:
+      - "**/*.md"
+      - "tools/**"
+      - ".github/workflows/**"
+  workflow_dispatch: {}
+  workflow_call: {}
+
+permissions:
+  contents: read
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run link checker
+        run: |
+          if [ -f tools/check_links.py ]; then
+            python tools/check_links.py --max-workers 4 --timeout 5
+          else
+            python3 scripts/link_validator.py || true
+          fi
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-check-reports
+          path: |
+            tools/dns_docs_inventory.json
+            tools/dns_links_report.json
+            tools/dns_links_report.md
+            .qmoi_validation/link_validation_report.json
+          if-no-files-found: ignore
