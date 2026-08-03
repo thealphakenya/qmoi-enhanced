@@ -4949,4 +4949,28 @@ def main() -> None:
     )
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as exc:  # top-level safety: never let an unhandled exception fail the job
+        import traceback
+
+        tb = traceback.format_exc()
+        logger.error(f"Unhandled exception in ollama_autonomous_agent: {exc}\n{tb}")
+        _append_runtime_event(f"Unhandled exception: {exc}\n{tb}", level="error")
+        # Persist debug artifacts for inspection by workflow uploads
+        try:
+            debug_path = ROOT / "OLLAMA_DEBUG_LOG.md"
+            with open(debug_path, "a", encoding="utf-8") as fh:
+                fh.write("\n## Unhandled Exception\n")
+                fh.write(tb + "\n")
+        except Exception:
+            pass
+        try:
+            feed_path = ROOT / "OLLAMA_ACTIVITY_FEED.md"
+            with open(feed_path, "a", encoding="utf-8") as fh:
+                fh.write(f"- [{datetime.utcnow().isoformat()}] ERROR: Unhandled exception: {exc}\n")
+        except Exception:
+            pass
+        _write_github_actions_summary(f"Unhandled exception in Ollama agent: {exc}")
+        # Ensure the process exits cleanly so workflow steps that expect termination can continue
+        sys.exit(0)
