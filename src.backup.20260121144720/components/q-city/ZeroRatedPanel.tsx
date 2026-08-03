@@ -3559,3 +3559,84 @@ export default function ZeroRatedPanel() {
     </div>
   );
 }
+
+
+<!-- MERGED FROM ARCHIVE: /home/runner/work/qmoi-enhanced/qmoi-enhanced/backups/src.backup.20260121144720/components/q-city/ZeroRatedPanel.tsx -->
+import React, { useState, useEffect } from "react";
+import { useAuth } from "../../hooks/useAuth";
+
+interface ZeroRatedStatus {
+  active: boolean;
+  lastUsed: string;
+  logs: Array<{ time: string; _event: string }>;
+}
+
+const fetchZeroRatedStatus = async (): Promise<ZeroRatedStatus> => {
+  // Placeholder: fetch status from backend or local state
+  return {
+    active: true,
+    lastUsed: new Date().toLocaleString(),
+    logs: [
+      {
+        time: new Date().toLocaleString(),
+        _event: "Zero-rated mode activated",
+      },
+      {
+        time: new Date().toLocaleString(),
+        _event: "Fallback to Wikipedia proxy",
+      },
+    ],
+  };
+};
+
+export default function ZeroRatedPanel() {
+  const { user } = useAuth();
+  const isMaster = user?.role === "master";
+  const [status, setStatus] = useState<ZeroRatedStatus>({
+    active: false,
+    lastUsed: "",
+    logs: [],
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchZeroRatedStatus().then((data) => {
+      setStatus(data);
+      setLoading(false);
+    });
+  }, []);
+
+  if (!isMaster) return null;
+
+  return (
+    <div className="zero-rated-panel">
+      <h2>ZeroRated QMOI (Master Only)</h2>
+      {loading ? (
+        <div>Loading status...</div>
+      ) : (
+        <>
+          <div>
+            Status: <b>{status.active ? "Active" : "Inactive"}</b>
+          </div>
+          <div>Last Used: {status.lastUsed}</div>
+          <button
+            onClick={() => alert("Force zero-rated mode (not implemented)")}
+          >
+            Force ZeroRated Mode
+          </button>
+          <button onClick={() => alert("Test endpoints (not implemented)")}>
+            Test Endpoints
+          </button>
+          <h4>Logs</h4>
+          <ul>
+            {status.logs.map((log, i) => (
+              <li key={i}>
+                {log.time}: {log._event}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </div>
+  );
+}
