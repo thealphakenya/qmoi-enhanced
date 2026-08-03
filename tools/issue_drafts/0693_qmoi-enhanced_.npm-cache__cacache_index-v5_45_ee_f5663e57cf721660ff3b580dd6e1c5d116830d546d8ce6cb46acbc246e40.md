@@ -1,27 +1,3 @@
----
-title: "Issue draft for qmoi-enhanced/.npm-cache/_cacache/index-v5/45/ee/f5663e57cf721660ff3b580dd6e1c5d116830d546d8ce6cb46acbc246e40"
-generated: 2025-11-08T16:06:38.618280Z
----
-
-# Review needed: qmoi-enhanced/.npm-cache/\_cacache/index-v5/45/ee/f5663e57cf721660ff3b580dd6e1c5d116830d546d8ce6cb46acbc246e40
-
-Status: AUTOMATED_REMOVAL_FROM_DONEREFS
-
-Suggested next steps:
-
-- Inspect the file and its [AUTOFIXED by Ollama at 2026-07-26T18:54:41.876913Z] markers or [AUTOFIXED by Ollama at 2026-07-26T18:54:41.876913Z]s.
-- If the file is safe for production, remove the [AUTOFIXED by Ollama at 2026-07-26T18:54:41.876913Z] and add tests / small PR.
-- If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
-- After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
-
-Excerpt (first 2KB):
-
-```
-
-5a315e4e0e24fe18cc00271a48d922d221196c47	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/@babel/plugin-syntax-numeric-separator/-/plugin-syntax-numeric-separator-7.10.4.tgz","integrity":"sha512-9H6YdfkcK/uOnY/K7/aA2xpzaAgkQn37yzWUMRK7OaPOqOpGS1+n0H5hxT9AUw9EsSjPW8SVyMJwYRtWs3X3ug==","time":1760365063380,"size":1564,"metadata":{"time":1760365061300,"url":"https://registry.npmjs.org/@babel/plugin-syntax-numeric-separator/-/plugin-syntax-numeric-separator-7.10.4.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, must-revalidate, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 13 Oct 2025 14:17:41 GMT","etag":"\"3a96be8e5160d900fa53349b5cb9907e\"","last-modified":"Tue, 30 Jun 2020 13:11:54 GMT","vary":"Accept-Encoding"},"options":{"compress":true}}}
-```
-
-Notes:
-
-- This draft was generated automatically to help triage files removed from `donerefs.txt`.
-- Backups and previous runs may exist under `.qmoi_validation`.
+version https://git-lfs.github.com/spec/v1
+oid sha256:08ed7bafc2d7b6e17060663a9804c078c922fcd2430f063da2856d4867a3ac2d
+size 1897

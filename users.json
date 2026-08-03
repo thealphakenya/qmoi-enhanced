@@ -1,20 +1,3 @@
-{
-  "master": {
-    "pw": "<hidden>",
-    "created": "2025-10-21T00:00:00Z",
-    "profiles": [
-      "primary"
-    ]
-  },
-  "sister": {
-    "pw": "<hidden>",
-    "created": "2025-10-21T00:00:00Z",
-    "profiles": [
-      "secondary"
-    ]
-  },
-  "testuser_667c0c": {
-    "pw": "scrypt:32768:8:1$ratdSQvoVUD9ySMU$325035465c506088fb51fb6fce330ca29d597782d33bb9a883817682d4457cb78bc40a37e68c943241fc65111fe1b55958294feecc6a05c4894951b705be4ebd",
-    "created": "2025-10-21T01:34:28.313209"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:5f247b2ce20c71fcd2ada63cf51e3a2b8ef3ce9d893391d8d15eae11fb1cf433
+size 492

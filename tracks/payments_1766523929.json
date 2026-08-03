@@ -1,8 +1,3 @@
-{
-  "id": "b26dd79b-ea0e-499b-b931-403c9b79d7bb",
-  "type": "refund",
-  "refund_of": "5e0addb1-1a59-4161-bba2-9d659f4bfef5",
-  "amount_cents": 5000,
-  "timestamp": 1766523929,
-  "status": "succeeded"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2d8b7e3bc5071d70af0de0ed3c59402acc68df3344629d852d4fbc81263b47d4
+size 201

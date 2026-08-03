@@ -1,11 +1,3 @@
-# ALLFRONTEND.md
-
-This document provides a frontend overview and points to the canonical UI index in ALLUI.md.
-
-## Canonical UI documentation
-- Refer to [ALLUI.md](ALLUI.md) for the complete frontend UI and experience documentation.
-
-## Frontend production readiness
-- Ensure UI documentation is synchronized with implementation.
-- Ensure available frontend features map to real production UI flows.
-- Ensure UI docs reference backend API integration where required.
+version https://git-lfs.github.com/spec/v1
+oid sha256:a924f573498303277c3303925a8f82036355bebfc206e77b989cf58c53a2d92d
+size 467

@@ -1,14 +1,3 @@
-{
-  "nodes": [
-    "http://127.0.0.1:9000/",
-    "http://qcity-node-1.local:8000/"
-  ],
-  "fetch_timeout_seconds": 10,
-  "cache_ttl_seconds": 86400,
-  "max_cache_bytes": 209715200,
-  "max_rate_bytes_per_sec": 102400,
-  "auth": {
-    "type": "bearer",
-    "token": "REPLACE_WITH_QCITY_TOKEN"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b8be4376ea8d4ecfc6f85e33ad821e785049cc70d66590ea7cecf57b03d0cc81
+size 297

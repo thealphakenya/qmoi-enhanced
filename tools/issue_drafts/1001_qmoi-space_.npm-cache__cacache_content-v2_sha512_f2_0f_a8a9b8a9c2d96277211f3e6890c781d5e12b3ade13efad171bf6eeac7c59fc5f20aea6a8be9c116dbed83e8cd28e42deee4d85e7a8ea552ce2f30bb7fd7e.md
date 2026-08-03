@@ -1,26 +1,3 @@
----
-title: "Issue draft for qmoi-space/.npm-cache/_cacache/content-v2/sha512/f2/0f/a8a9b8a9c2d96277211f3e6890c781d5e12b3ade13efad171bf6eeac7c59fc5f20aea6a8be9c116dbed83e8cd28e42deee4d85e7a8ea552ce2f30bb7fd7e"
-generated: 2025-11-08T16:06:38.945813Z
----
-
-# Review needed: qmoi-space/.npm-cache/\_cacache/content-v2/sha512/f2/0f/a8a9b8a9c2d96277211f3e6890c781d5e12b3ade13efad171bf6eeac7c59fc5f20aea6a8be9c116dbed83e8cd28e42deee4d85e7a8ea552ce2f30bb7fd7e
-
-Status: AUTOMATED_REMOVAL_FROM_DONEREFS
-
-Suggested next steps:
-
-- Inspect the file and its [AUTOFIXED by Ollama at 2026-07-26T18:54:42.095163Z] markers or [AUTOFIXED by Ollama at 2026-07-26T18:54:42.095163Z]s.
-- If the file is safe for production, remove the [AUTOFIXED by Ollama at 2026-07-26T18:54:42.095163Z] and add tests / small PR.
-- If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
-- After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
-
-Excerpt (first 2KB):
-
-```
-{"name":"p-limit","dist-tags":{"latest":"7.1.1"},"versions":{"1.0.0":{"name":"p-limit","version":"1.0.0","devDependencies":{"xo":"*","ava":"*","delay":"^1.3.1","in-range":"^1.0.0","time-span":"^1.0.0","random-int":"^1.0.0"},"dist":{"shasum":"1b6d069a70cbb89c54c172765680eff803a1e0ec","tarball":"https://registry.npmjs.org/p-limit/-/p-limit-1.0.0.tgz","integrity":"sha512-J/cZiiZctdtx+MKlMP53tzYPWtP2JeaAB3keN+1auJNYq6lnOwvpFDMK7JMGdUw+deQFPPAdGUACuBNd0EwnmQ==","signatures":[{"sig":"MEUCIBQd0DoBEJGx1+JQ+wcmmROa5lAAcQUFGhWkUVc+nb8JAiEAhGSKWvnUBNn1/elD1dKt7kjm2Kc/KTfEUvr3WQaW0jk=","keyid":"SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"}]},"engines":{"node":">=4"}},"1.1.0":{"name":"p-limit","version":"1.1.0","devDependencies":{"xo":"*","ava":"*","delay":"^1.3.1","in-range":"^1.0.0","time-span":"^1.0.0","random-int":"^1.0.0"},"dist":{"shasum":"b07ff2d9a5d88bec806035895a2bab66a27988bc","tarball":"https://registry.npmjs.org/p-limit/-/p-limit-1.1.0.tgz","integrity":"sha512-sFSFmsGcVho1dNzsPGyiL1xs4KxZlM2QlznVxCDg0loLefThSsVkZPyBZEehQSci0nLwkgPZziJYpMGa59Vzqw==","signatures":[{"sig":"MEUCIHYBAjyIyAk2rCg/Y19Dj5zW9GCRUtFA9gx8VkXl9lv4AiEA4XF8zG+MxZudf+GizE9v4Ve8KcnxqdQ7DVEY1AwJzfs=","keyid":"SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"}]},"engines":{"node":">=4"}},"1.2.0":{"name":"p-limit","version":"1.2.0","dependencies":{"p-try":"^1.0.0"},"devDependencies":{"xo":"*","ava":"*","delay":"^2.0.0","in-range":"^1.0.0","time-span":"^2.0.0","random-int":"^1.0.0"},"dist":{"shasum":"0e92b6bedcb59f022c13d0f1949dc82d15909f1c","tarball":"https://registry.npmjs.org/p-limit/-/p-limit-1.2.0.tgz","integrity":"sha512-Y/OtIaXtUPr4/YpMv1pCL5L5ed0rumAaAeBSj12F+bSlMdys7i8oQF/GUJmfpTS/QoaRrS/k6pma29haJpsMng==","signatures":[{"sig":"MEQCIE6sxsCtPpmsNsn/vdDzBUFpsNRy9JGVWYGnLLaI3DiOAiBze4lrTowCDwNE2WbGmpPPKfaHMpDIIbsG8/uLpKofIg==","keyid":"SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"}]},"engines":{"node":">=4"}},"1.3.0":{"name":"p-limit","version":"1.3.0","dependencies":{"p-try":"^1.0.0"},"devDependencies":{"xo":"*","ava":"*","delay"
-```
-
-Notes:
-
-- This draft was generated automatically to help triage files removed from `donerefs.txt`.
-- Backups and previous runs may exist under `.qmoi_validation`.
+version https://git-lfs.github.com/spec/v1
+oid sha256:e7a0865983a09aea11773c9cc9ef13a99fdabc3bfdc99242638a4d413e537b5f
+size 3276

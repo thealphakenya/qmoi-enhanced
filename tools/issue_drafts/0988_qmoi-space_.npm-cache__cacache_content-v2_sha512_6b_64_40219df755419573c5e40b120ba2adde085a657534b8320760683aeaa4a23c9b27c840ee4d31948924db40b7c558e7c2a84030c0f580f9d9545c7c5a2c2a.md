@@ -1,26 +1,3 @@
----
-title: "Issue draft for qmoi-space/.npm-cache/_cacache/content-v2/sha512/6b/64/40219df755419573c5e40b120ba2adde085a657534b8320760683aeaa4a23c9b27c840ee4d31948924db40b7c558e7c2a84030c0f580f9d9545c7c5a2c2a"
-generated: 2025-11-08T16:06:38.887915Z
----
-
-# Review needed: qmoi-space/.npm-cache/\_cacache/content-v2/sha512/6b/64/40219df755419573c5e40b120ba2adde085a657534b8320760683aeaa4a23c9b27c840ee4d31948924db40b7c558e7c2a84030c0f580f9d9545c7c5a2c2a
-
-Status: AUTOMATED_REMOVAL_FROM_DONEREFS
-
-Suggested next steps:
-
-- Inspect the file and its [AUTOFIXED by Ollama at 2026-07-26T18:54:42.085363Z] markers or [AUTOFIXED by Ollama at 2026-07-26T18:54:42.085363Z]s.
-- If the file is safe for production, remove the [AUTOFIXED by Ollama at 2026-07-26T18:54:42.085363Z] and add tests / small PR.
-- If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
-- After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
-
-Excerpt (first 2KB):
-
-```
-{"name":"lodash.merge","dist-tags":{"latest":"4.6.2"},"versions":{"2.0.0":{"name":"lodash.merge","version":"2.0.0","dependencies":{"lodash._basecreatecallback":"~2.0.0","lodash._basemerge":"~2.0.0","lodash._getarray":"~2.0.0","lodash.isobject":"~2.0.0","lodash._releasearray":"~2.0.0"},"dist":{"shasum":"0fc4963e1947d2d892db0da045d8401e819ee838","tarball":"https://registry.npmjs.org/lodash.merge/-/lodash.merge-2.0.0.tgz","integrity":"sha512-vD5vGnRW2OiP7tae/l2E2iNwy2iZNN0ghKX/Hx15eryxYYuFijLa6GCHWXJ8G7CfVV1Z/SJaoS7Q3S2mQYwuXw==","signatures":[{"keyid":"SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA","sig":"MEUCIFdggW7O/0ixA7GT8Zama6dhnr7lHJC+dWFhijBlrTjHAiEApOHT/aQZC/9NHoWvpQMOSz6Hs4b/VHPId45jIBk6+mM="}]}},"2.1.0":{"name":"lodash.merge","version":"2.1.0","dependencies":{"lodash._basecreatecallback":"~2.1.0","lodash._basemerge":"~2.1.0","lodash._getarray":"~2.1.0","lodash.isobject":"~2.1.0","lodash._releasearray":"~2.1.0"},"dist":{"shasum":"ac631630df121f6874da08979c88d2cf6f92392e","tarball":"https://registry.npmjs.org/lodash.merge/-/lodash.merge-2.1.0.tgz","integrity":"sha512-OdCp1EzpzUbdDGDUUm0f+74qHBk3HpCfbwd1SEzE2h68qIFJavobnF6MfypJfk7SIUA+nXVhS0ZQ/FMphAmBLA==","signatures":[{"keyid":"SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA","sig":"MEUCIBxLsA0I05RIyQFb7eoJEy0Z5v4HhlA11Gq+3JgtpAS9AiEA8KyKLNuTunOD8j57BnciQ1ormtvyklzAYBWY+ChdD2c="}]}},"2.2.0":{"name":"lodash.merge","version":"2.2.0","dependencies":{"lodash._basecreatecallback":"~2.2.0","lodash._basemerge":"~2.2.0","lodash._getarray":"~2.2.0","lodash.isobject":"~2.2.0","lodash._releasearray":"~2.2.0"},"dist":{"shasum":"8f08a16917bd6a5897d8350de9aaf0e5196ba907","tarball":"https://registry.npmjs.org/lodash.merge/-/lodash.merge-2.2.0.tgz","integrity":"sha512-Cy7lU94sZmSmSR9JGOBNVa1q9dR4ePBgNzkbQHEbWLBvmxlUanMRVRQsEcEVN8mpOok2ahKqVdwI5dMBqDJ7XQ==","signatures":[{"keyid":"SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA","sig":"MEYCIQDtn5K366QPlrKzrrobQiIZ1decGV9KF9S+nQJDTPVB2wIhAIGydRg0I4DhPuoqJ0pMYcKJ2LSNr6urIdmlya7wnCtC"}]}},"2.2.1":{"name":"lodash.me
-```
-
-Notes:
-
-- This draft was generated automatically to help triage files removed from `donerefs.txt`.
-- Backups and previous runs may exist under `.qmoi_validation`.
+version https://git-lfs.github.com/spec/v1
+oid sha256:39f5499e0d4e53966ffc21ee08839e9d9bfec9fb15edd42cba792b7781750c7c
+size 3276

@@ -1,14 +1,3 @@
-{
-  "timestamp": "2025-07-14T16:55:16.109Z",
-  "fixes": [
-    "Installed dependencies with legacy peer deps"
-  ],
-  "errors": [
-    "Build failed: Command failed: npm run build"
-  ],
-  "summary": {
-    "totalFixes": 1,
-    "totalErrors": 1,
-    "success": false
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b69281ae0f6464b606d8d584e00c7927cd730d2ae4cdbc73b05f7d04eb038ef4
+size 267

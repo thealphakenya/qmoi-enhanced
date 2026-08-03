@@ -1,11 +1,3 @@
-# Validation Report
-Checked at: 2025-11-20T14:55:19.381353Z
-
-## App validation summary
-
-- **qmoi**: icons_found=True, pwa_manifest=False, service_worker=False, update_template=True, autoupdate_helpers=True
-- **qcity**: icons_found=True, pwa_manifest=False, service_worker=False, update_template=True, autoupdate_helpers=True
-- **qshare**: icons_found=True, pwa_manifest=False, service_worker=False, update_template=True, autoupdate_helpers=True
-- **yap**: icons_found=True, pwa_manifest=False, service_worker=False, update_template=True, autoupdate_helpers=True
-- **qstore**: icons_found=True, pwa_manifest=False, service_worker=False, update_template=True, autoupdate_helpers=True
-- **qvillage**: icons_found=True, pwa_manifest=False, service_worker=False, update_template=True, autoupdate_helpers=True
+version https://git-lfs.github.com/spec/v1
+oid sha256:9b83174ba6bafc8e4cb8870a19dcbdfc5f931eb7813d5ff8b4ec0c59804320d9
+size 803

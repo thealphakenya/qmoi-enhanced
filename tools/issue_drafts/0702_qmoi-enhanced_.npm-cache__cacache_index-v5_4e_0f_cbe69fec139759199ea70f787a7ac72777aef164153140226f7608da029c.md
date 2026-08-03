@@ -1,27 +1,3 @@
----
-title: "Issue draft for qmoi-enhanced/.npm-cache/_cacache/index-v5/4e/0f/cbe69fec139759199ea70f787a7ac72777aef164153140226f7608da029c"
-generated: 2025-11-08T16:06:38.626685Z
----
-
-# Review needed: qmoi-enhanced/.npm-cache/\_cacache/index-v5/4e/0f/cbe69fec139759199ea70f787a7ac72777aef164153140226f7608da029c
-
-Status: AUTOMATED_REMOVAL_FROM_DONEREFS
-
-Suggested next steps:
-
-- Inspect the file and its [AUTOFIXED by Ollama at 2026-07-26T18:54:41.883006Z] markers or [AUTOFIXED by Ollama at 2026-07-26T18:54:41.883006Z]s.
-- If the file is safe for production, remove the [AUTOFIXED by Ollama at 2026-07-26T18:54:41.883006Z] and add tests / small PR.
-- If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
-- After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
-
-Excerpt (first 2KB):
-
-```
-
-b10d46accf995d63d0075c3b3307f8b79d792222	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/@electron/get/-/get-2.0.3.tgz","integrity":"sha512-Qkzpg2s9GnVV2I2BjRksUi43U5e6+zaQMcjoJy0C+C5oxaKl+fmckGDQFtRpZpZV0NQekuZZ+tGz7EA9TVnQtQ==","time":1760365070852,"size":17544,"metadata":{"time":1760365069955,"url":"https://registry.npmjs.org/@electron/get/-/get-2.0.3.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, must-revalidate, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 13 Oct 2025 14:17:49 GMT","etag":"\"f423e5fc773dc54dc600790d6bc9fdfa\"","last-modified":"Tue, 05 Sep 2023 07:39:45 GMT","vary":"Accept-Encoding"},"options":{"compress":true}}}
-```
-
-Notes:
-
-- This draft was generated automatically to help triage files removed from `donerefs.txt`.
-- Backups and previous runs may exist under `.qmoi_validation`.
+version https://git-lfs.github.com/spec/v1
+oid sha256:1807ebe633af54a4e39dcb08cb10f9a5414fb653ccf3a4e2137cd411e7d833d7
+size 1790

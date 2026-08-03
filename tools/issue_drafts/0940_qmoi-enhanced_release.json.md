@@ -1,31 +1,3 @@
----
-title: "Issue draft for qmoi-enhanced/release.json"
-generated: 2025-11-08T16:06:38.807593Z
----
-
-# Review needed: qmoi-enhanced/release.json
-
-Status: AUTOMATED_REMOVAL_FROM_DONEREFS
-
-Suggested next steps:
-
-- Inspect the file and its [AUTOFIXED by Ollama at 2026-07-26T18:54:42.046053Z] markers or [AUTOFIXED by Ollama at 2026-07-26T18:54:42.046053Z]s.
-- If the file is safe for production, remove the [AUTOFIXED by Ollama at 2026-07-26T18:54:42.046053Z] and add tests / small PR.
-- If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
-- After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
-
-Excerpt (first 2KB):
-
-```
-{
-  "version": "v1.0.1",
-  "title": "QMOI v1.0.1 - Universal Fix & Deployment",
-  "changelog": "✅ All apps rebuilt, verified, installable, and now cross-platform auto-validated.\n\n- Android APKs\n- Windows EXEs\n- iOS IPAs\n- macOS Universal\n- Linux, RaspberryPi, QCity\n\nFixes:\n- Auto-repair support\n- Install test via emulator\n- GitHub asset publishing\n- Debug system enhanced"
-}
-
-```
-
-Notes:
-
-- This draft was generated automatically to help triage files removed from `donerefs.txt`.
-- Backups and previous runs may exist under `.qmoi_validation`.
+version https://git-lfs.github.com/spec/v1
+oid sha256:3d1760d051f1ff7af54d078689a8a745fb086c347aa7c16524f416971740576c
+size 1312

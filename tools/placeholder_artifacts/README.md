@@ -1,5 +1,3 @@
-# Placeholder artifacts
-
-This folder contains small stub artifacts created to satisfy local CI and validation scripts.
-
-DO NOT upload these [AUTOFIXED by Ollama at 2026-07-26T18:54:44.722426Z] files to GitHub Releases. Replace with real build artifacts and update `release_assets_manifest.json` with correct `size` and `sha256`.
+version https://git-lfs.github.com/spec/v1
+oid sha256:8c5cb22ac040ea7a835b4e0662d10dbc8505683a51956ecbfb95c350b9396f1c
+size 328
