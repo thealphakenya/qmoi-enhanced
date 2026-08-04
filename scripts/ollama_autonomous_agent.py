@@ -3888,13 +3888,26 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
 
     # Stage 1: Merge-first automation
     _emit_status("Starting merge-first automation stage", level="info")
+    _notify_phase_start("merge-first", {"step": "init", "target": str(target)}, root=target)
+    
     workflow_merge_result = _merge_workflow_yamls(target)
     if workflow_merge_result.get("report"):
+        merged_count = workflow_merge_result.get('merged', 0)
+        deleted_count = workflow_merge_result.get('deleted', 0)
         _emit_status(
-            f"Merged {workflow_merge_result.get('merged', 0)} redundant workflow YAML files and removed {workflow_merge_result.get('deleted', 0)} extras.",
+            f"Merged {merged_count} redundant workflow YAML files and removed {deleted_count} extras.",
             level="info",
         )
+        _log_phase_debug("merge-first", "workflow_merge", 
+                        f"Merged {merged_count} files, deleted {deleted_count}",
+                        {"merged": merged_count, "deleted": deleted_count, "report": workflow_merge_result.get("report")},
+                        root=target)
+    
     merged_archives = _scan_archives_and_merge(target)
+    _log_phase_debug("merge-first", "archive_scan", 
+                    f"Scanned and merged archives: {merged_archives} directories",
+                    {"merged_count": merged_archives, "target": str(target)},
+                    root=target)
     merge_deletions = merge_unused_files_and_update_manifest(target)
     update_hook_and_webhook_manifests(target)
     update_external_research_manifest(target)
@@ -3910,9 +3923,14 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
     _build_all_ports_doc(target)
     _write_archive_merge_report(merged_archives, target)
     _emit_status("Completed merge-first automation stage", level="info")
+    _notify_phase_complete("merge-first", {"merged_archives": merged_archives, "status": "completed"}, root=target)
 
     # Stage 2: Production replacement and verification setup
+    _emit_status("Starting production replacement and verification stage", level="info")
+    _notify_phase_start("production", {"step": "init", "target": str(target)}, root=target)
+    
     ensure_test_coverage(target)
+    _log_phase_debug("production", "test_coverage", "Ensured test coverage for all modules", root=target)
     paths = build_plan_and_docs(target)
     replace_paypal_with_paypal(target)
     consolidate_html_assets_and_pw_as(target)
@@ -3946,7 +3964,12 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
     instructions = _prioritize_resume_instructions(instructions)
     normalize_changes = _normalize_production_ports(target)
     if normalize_changes:
-        _emit_status(f"Normalized production port references in {len(normalize_changes)} file(s)", level="info")
+        normalize_count = len(normalize_changes)
+        _emit_status(f"Normalized production port references in {normalize_count} file(s)", level="info")
+        _log_phase_debug("production", "port_normalization", 
+                        f"Normalized ports in {normalize_count} files",
+                        {"normalized_files": normalize_count, "files": normalize_changes},
+                        root=target)
 
     command_results = _execute_resume_instructions(target, instructions)
     if any(result.get("status") != "passed" for result in command_results if result.get("status") != "skipped"):
@@ -3985,20 +4008,39 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
     verified: List[str] = []
     confirmed: List[str] = []
 
+    _emit_status("Completed production replacement stage", level="info")
+    _notify_phase_complete("production", {"port_normalizations": len(normalize_changes or []), "status": "completed"}, root=target)
+
+    # Stage 3: Pending item processing and reporting
+    _emit_status("Starting pending item processing stage", level="info")
+    _notify_phase_start("pending", {"pending_count": len(pending), "target": str(target)}, root=target)
+
     if not pending:
         done.append("autonomous-run")
         verified.append("autonomous-run")
         confirmed.append("autonomous-run")
         # update resume immediately
         _update_resume_progress(resume_path, done=done, verified=verified, confirmed=confirmed, pending=pending)
+        _log_phase_debug("pending", "completion", "No pending items; autonomous run complete", root=target)
     else:
         # Attempt to remediate pending items automatically after merge and manifest refresh
-        _emit_status(f"Processing {len(pending)} pending items after merge-stage completion...", level="info")
+        pending_count = len(pending)
+        _emit_status(f"Processing {pending_count} pending items after merge-stage completion...", level="info")
+        _log_phase_debug("pending", "processing_start", 
+                        f"Starting processing of {pending_count} items",
+                        {"pending_count": pending_count, "pending_items": pending[:5]},
+                        root=target)
+        
         proc = process_pending_items(pending, target)
         done.extend(proc.get("done", []))
         verified.extend(proc.get("verified", []))
         confirmed.extend(proc.get("confirmed", []))
         still_pending = proc.get("still_pending", [])
+        
+        _log_phase_debug("pending", "processing_complete", 
+                        f"Processed {len(done)} items; {len(still_pending)} still pending",
+                        {"done": len(done), "verified": len(verified), "still_pending": len(still_pending)},
+                        root=target)
         # Recompute pending after attempted fixes
         pending = sorted(list(set(still_pending + [p for p in pending if p not in done and p not in verified])))
         # Always update the resume file with the latest progress
@@ -4040,6 +4082,8 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
         pass
 
     _emit_status(f"Run agent completed with {len(pending)} pending items", level="info")
+    _notify_phase_complete("pending", {"done": len(done), "verified": len(verified), "confirmed": len(confirmed), "still_pending": len(pending), "status": "completed"}, root=target)
+    
     result = {"pending": pending, "paths": paths, "command_results": command_results,
               "port_fixes": normalize_changes, "merged_archives": merged_archives,
               "merge_deletions": merge_deletions}
