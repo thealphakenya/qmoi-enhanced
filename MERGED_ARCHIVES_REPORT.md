@@ -1,6 +1,6 @@
 # Merged archives report
 
-- Generated: 2026-08-04T19:40:22.501935Z
+- Generated: 2026-08-04T21:41:29.303186Z
 
 ## .
 - before-auto-merge-20251122T092741Z
@@ -215,6 +215,8 @@
 
 ## resumefromhere
 - resumefromhere/resumefromhere.20260804T170007Z.bak
+- resumefromhere/resumefromhere.20260804T194331Z.bak
+- resumefromhere/resumefromhere.20260804T194602Z.bak
 
 ## src.backup.20260121144720
 - src.backup.20260121144720/App.test.js

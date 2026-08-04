@@ -1,53 +1,53 @@
 # Ollama Debug Log
 
-- [2026-08-04T19:40:23Z] INFO: Created or refreshed ALLMDFILES.md
-- [2026-08-04T19:40:26Z] INFO: Created or refreshed FINANCIALMANAGER.md
-- [2026-08-04T19:40:26Z] INFO: Created or refreshed STANDARD1.md
-- [2026-08-04T19:40:26Z] INFO: Created or refreshed QMOI_MEMORY_AWARENESS_SYSTEM.md
-- [2026-08-04T19:40:27Z] INFO: Created or refreshed ALLLINKS.md
-- [2026-08-04T19:40:27Z] INFO: Updated Bitget guidance document at /home/runner/work/qmoi-enhanced/qmoi-enhanced/bitget.md
-- [2026-08-04T19:40:28Z] INFO: Updated deployment verification manifest at /home/runner/work/qmoi-enhanced/qmoi-enhanced/DEPLOYMENT_VERIFICATION.md
-- [2026-08-04T19:41:07Z] INFO: Updated feature/percentage manifest at /home/runner/work/qmoi-enhanced/qmoi-enhanced/FEATURES_AND_PERCENTAGES.md
-- [2026-08-04T19:41:32Z] INFO: Updated JOURNEY MAP TRACKS in /home/runner/work/qmoi-enhanced/qmoi-enhanced/resumefromhere.txt
-- [2026-08-04T19:41:32Z] INFO: Persisted agent state to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.ollama_agent_state.json
-- [2026-08-04T19:41:32Z] INFO: Detected changes in resumefromhere.txt; refreshing execution plan.
-- [2026-08-04T19:41:32Z] INFO: Loaded 9 instructions from COMPONENTS_MIGRATION_PLAN.md
-- [2026-08-04T19:43:03Z] WARNING: Detected 3492 non-production markers across repository files
-- [2026-08-04T19:43:31Z] INFO: Backed up resume file to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260804T194331Z.bak
-- [2026-08-04T19:43:31Z] INFO: Processing 1805 pending items...
-- [2026-08-04T19:43:32Z] INFO: Updated resumefromhere progress: /home/runner/work/qmoi-enhanced/qmoi-enhanced/resumefromhere.txt
-- [2026-08-04T19:43:32Z] INFO: Persisted agent state to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.ollama_agent_state.json
-- [2026-08-04T19:43:32Z] INFO: Wrote pending report snapshot to OLLAMA_PENDING_REPORT.md
-- [2026-08-04T19:43:32Z] INFO: Scanning route definitions from /home/runner/work/qmoi-enhanced/qmoi-enhanced
-- [2026-08-04T19:43:40Z] INFO: Updated API.md
-- [2026-08-04T19:43:40Z] INFO: Updated ENDPOINTS.md
-- [2026-08-04T19:43:40Z] INFO: Updated ROUTES.md
-- [2026-08-04T19:43:40Z] INFO: Updated MERGE.md
-- [2026-08-04T19:43:40Z] INFO: Scanning repository for error markers under /home/runner/work/qmoi-enhanced/qmoi-enhanced
-- [2026-08-04T19:44:09Z] INFO: Collected 3550 error markers
-- [2026-08-04T19:44:09Z] INFO: Wrote remediation inventory to /home/runner/work/qmoi-enhanced/qmoi-enhanced/ALLERRORS.md
-- [2026-08-04T19:44:12Z] INFO: Created or refreshed ALLBACKEND.md
-- [2026-08-04T19:44:14Z] INFO: Created or refreshed ALLUI.md
-- [2026-08-04T19:44:14Z] INFO: Created or refreshed ALLFRONTEND.md
-- [2026-08-04T19:44:53Z] INFO: Created or refreshed ALLPORTS.md
-- [2026-08-04T19:44:53Z] INFO: Created or refreshed ALLAUTO.md
-- [2026-08-04T19:44:53Z] INFO: Created or refreshed ALLMDFILES.md
-- [2026-08-04T19:44:55Z] INFO: Created or refreshed ALLLINKS.md
-- [2026-08-04T19:44:58Z] INFO: Created or refreshed FINANCIALMANAGER.md
-- [2026-08-04T19:44:58Z] INFO: Created or refreshed STANDARD1.md
-- [2026-08-04T19:44:58Z] INFO: Created or refreshed QMOI_MEMORY_AWARENESS_SYSTEM.md
-- [2026-08-04T19:44:58Z] INFO: Created or refreshed WORKFLOWS.md
-- [2026-08-04T19:45:23Z] INFO: Created or refreshed DOCS.md
-- [2026-08-04T19:45:23Z] INFO: Created or refreshed production.md
-- [2026-08-04T19:45:23Z] INFO: Created or refreshed productionenhanced.md
-- [2026-08-04T19:45:23Z] INFO: Updated live notification feed at /home/runner/work/qmoi-enhanced/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
-- [2026-08-04T19:45:23Z] INFO: Created or refreshed ollama.md
-- [2026-08-04T19:45:23Z] INFO: Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md, FINANCE_CREDENTIALS.md, QMOI_MEMORY_AWARENESS_SYSTEM.md
-- [2026-08-04T19:45:23Z] INFO: Persisted agent state to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.ollama_agent_state.json
-- [2026-08-04T19:45:23Z] INFO: Run agent completed with 10 pending items
-- [2026-08-04T19:45:23Z] INFO: Full verification enabled: executing repository verification despite pending work
-- [2026-08-04T19:45:23Z] INFO: Starting repository verification checks
-- [2026-08-04T19:45:24Z] INFO: Verification completed with python=passed tests=failed
-- [2026-08-04T19:45:24Z] INFO: Updated live notification feed at /home/runner/work/qmoi-enhanced/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
-- [2026-08-04T19:45:49Z] INFO: Updated JOURNEY MAP TRACKS in /home/runner/work/qmoi-enhanced/qmoi-enhanced/resumefromhere.txt
-- [2026-08-04T19:45:49Z] INFO: Persisted agent state to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.ollama_agent_state.json
+- [2026-08-04T21:41:30Z] INFO: Created or refreshed ALLMDFILES.md
+- [2026-08-04T21:41:33Z] INFO: Created or refreshed FINANCIALMANAGER.md
+- [2026-08-04T21:41:33Z] INFO: Created or refreshed STANDARD1.md
+- [2026-08-04T21:41:33Z] INFO: Created or refreshed QMOI_MEMORY_AWARENESS_SYSTEM.md
+- [2026-08-04T21:41:34Z] INFO: Created or refreshed ALLLINKS.md
+- [2026-08-04T21:41:34Z] INFO: Updated Bitget guidance document at /home/runner/work/qmoi-enhanced/qmoi-enhanced/bitget.md
+- [2026-08-04T21:41:35Z] INFO: Updated deployment verification manifest at /home/runner/work/qmoi-enhanced/qmoi-enhanced/DEPLOYMENT_VERIFICATION.md
+- [2026-08-04T21:42:15Z] INFO: Updated feature/percentage manifest at /home/runner/work/qmoi-enhanced/qmoi-enhanced/FEATURES_AND_PERCENTAGES.md
+- [2026-08-04T21:42:40Z] INFO: Updated JOURNEY MAP TRACKS in /home/runner/work/qmoi-enhanced/qmoi-enhanced/resumefromhere.txt
+- [2026-08-04T21:42:40Z] INFO: Persisted agent state to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.ollama_agent_state.json
+- [2026-08-04T21:42:40Z] INFO: Detected changes in resumefromhere.txt; refreshing execution plan.
+- [2026-08-04T21:42:40Z] INFO: Loaded 9 instructions from COMPONENTS_MIGRATION_PLAN.md
+- [2026-08-04T21:44:12Z] WARNING: Detected 3492 non-production markers across repository files
+- [2026-08-04T21:44:40Z] INFO: Backed up resume file to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.backup/resumefromhere/resumefromhere.20260804T214440Z.bak
+- [2026-08-04T21:44:40Z] INFO: Processing 1808 pending items...
+- [2026-08-04T21:44:41Z] INFO: Updated resumefromhere progress: /home/runner/work/qmoi-enhanced/qmoi-enhanced/resumefromhere.txt
+- [2026-08-04T21:44:41Z] INFO: Persisted agent state to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.ollama_agent_state.json
+- [2026-08-04T21:44:41Z] INFO: Wrote pending report snapshot to OLLAMA_PENDING_REPORT.md
+- [2026-08-04T21:44:41Z] INFO: Scanning route definitions from /home/runner/work/qmoi-enhanced/qmoi-enhanced
+- [2026-08-04T21:44:50Z] INFO: Updated API.md
+- [2026-08-04T21:44:50Z] INFO: Updated ENDPOINTS.md
+- [2026-08-04T21:44:50Z] INFO: Updated ROUTES.md
+- [2026-08-04T21:44:50Z] INFO: Updated MERGE.md
+- [2026-08-04T21:44:50Z] INFO: Scanning repository for error markers under /home/runner/work/qmoi-enhanced/qmoi-enhanced
+- [2026-08-04T21:45:19Z] INFO: Collected 3550 error markers
+- [2026-08-04T21:45:19Z] INFO: Wrote remediation inventory to /home/runner/work/qmoi-enhanced/qmoi-enhanced/ALLERRORS.md
+- [2026-08-04T21:45:22Z] INFO: Created or refreshed ALLBACKEND.md
+- [2026-08-04T21:45:25Z] INFO: Created or refreshed ALLUI.md
+- [2026-08-04T21:45:25Z] INFO: Created or refreshed ALLFRONTEND.md
+- [2026-08-04T21:46:03Z] INFO: Created or refreshed ALLPORTS.md
+- [2026-08-04T21:46:03Z] INFO: Created or refreshed ALLAUTO.md
+- [2026-08-04T21:46:04Z] INFO: Created or refreshed ALLMDFILES.md
+- [2026-08-04T21:46:05Z] INFO: Created or refreshed ALLLINKS.md
+- [2026-08-04T21:46:08Z] INFO: Created or refreshed FINANCIALMANAGER.md
+- [2026-08-04T21:46:08Z] INFO: Created or refreshed STANDARD1.md
+- [2026-08-04T21:46:08Z] INFO: Created or refreshed QMOI_MEMORY_AWARENESS_SYSTEM.md
+- [2026-08-04T21:46:08Z] INFO: Created or refreshed WORKFLOWS.md
+- [2026-08-04T21:46:33Z] INFO: Created or refreshed DOCS.md
+- [2026-08-04T21:46:33Z] INFO: Created or refreshed production.md
+- [2026-08-04T21:46:33Z] INFO: Created or refreshed productionenhanced.md
+- [2026-08-04T21:46:33Z] INFO: Updated live notification feed at /home/runner/work/qmoi-enhanced/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
+- [2026-08-04T21:46:33Z] INFO: Created or refreshed ollama.md
+- [2026-08-04T21:46:33Z] INFO: Verified required artifacts: API.md, ENDPOINTS.md, ROUTES.md, MERGE.md, DOCS.md, production.md, productionenhanced.md, ALLERRORS.md, ALLBACKEND.md, ALLFRONTEND.md, ALLUI.md, ALLPORTS.md, UNIVERSALS.md, STYLES.md, resumefromhere.txt, OLLAMA_ACTIVITY_FEED.md, FINANCE_CREDENTIALS.md, QMOI_MEMORY_AWARENESS_SYSTEM.md
+- [2026-08-04T21:46:33Z] INFO: Persisted agent state to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.ollama_agent_state.json
+- [2026-08-04T21:46:33Z] INFO: Run agent completed with 10 pending items
+- [2026-08-04T21:46:33Z] INFO: Full verification enabled: executing repository verification despite pending work
+- [2026-08-04T21:46:33Z] INFO: Starting repository verification checks
+- [2026-08-04T21:46:34Z] INFO: Verification completed with python=passed tests=failed
+- [2026-08-04T21:46:34Z] INFO: Updated live notification feed at /home/runner/work/qmoi-enhanced/qmoi-enhanced/OLLAMA_ACTIVITY_FEED.md
+- [2026-08-04T21:47:00Z] INFO: Updated JOURNEY MAP TRACKS in /home/runner/work/qmoi-enhanced/qmoi-enhanced/resumefromhere.txt
+- [2026-08-04T21:47:00Z] INFO: Persisted agent state to /home/runner/work/qmoi-enhanced/qmoi-enhanced/.ollama_agent_state.json
