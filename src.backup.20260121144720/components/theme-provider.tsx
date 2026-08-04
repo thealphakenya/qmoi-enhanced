@@ -2788,3 +2788,60 @@ export function ThemeProvider({
 }
 
 export default ThemeProvider;
+
+
+<!-- MERGED FROM ARCHIVE: /home/runner/work/qmoi-enhanced/qmoi-enhanced/backups/src.backup.20260121144720/components/theme-provider.tsx -->
+"use client";
+import React, { useEffect } from "react";
+
+type Props = {
+  children: React.ReactNode;
+  attribute?: string;
+  defaultTheme?: "light" | "dark" | "system";
+  enableSystem?: boolean;
+  // When true, temporarily disables CSS transitions during theme changes to avoid flashes
+  disableTransitionOnChange?: boolean;
+};
+
+export function ThemeProvider({
+  children,
+  attribute = "data-theme",
+  defaultTheme = "system",
+  enableSystem = true,
+  disableTransitionOnChange = false,
+}: Props) {
+  useEffect(() => {
+    try {
+      let theme = defaultTheme;
+      if (
+        defaultTheme === "system" &&
+        enableSystem &&
+        typeof window !== "undefined" &&
+        window.matchMedia
+      ) {
+        theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      }
+
+      // Optionally disable transitions during theme change to avoid visual flashes
+      if (disableTransitionOnChange && typeof document !== "undefined") {
+        document.documentElement.classList.add("qmoi-disable-theme-transition");
+        // Remove the class after a short delay so normal transitions resume
+        setTimeout(() => {
+          document.documentElement.classList.remove(
+            "qmoi-disable-theme-transition",
+          );
+        }, 250);
+      }
+
+      document.documentElement.setAttribute(attribute, theme as string);
+    } catch (e) {
+      void e;
+    }
+  }, [attribute, defaultTheme, enableSystem, disableTransitionOnChange]);
+
+  return <>{children}</>;
+}
+
+export default ThemeProvider;
