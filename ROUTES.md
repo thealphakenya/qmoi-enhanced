@@ -1,7 +1,7 @@
 # Route manifest
 ## Autonomous route inventory
 - Branch: 
-- Last sync: 2026-08-03T17:33:41.494272Z
+- Last sync: 2026-08-04T01:17:28.761022Z
 - /api/account-automation [GET]
 - /api/admin/alerts [GET, POST]
 - /api/admin/audit-logs [GET, POST]
