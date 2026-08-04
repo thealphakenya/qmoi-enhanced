@@ -292,7 +292,8 @@ def _trigger_webhook(url: str, event_type: str, payload: Dict[str, object], root
             _emit_status(f"Webhook '{event_type}' delivered to {url}", level="info", root=root)
             return True
         else:
-            _emit_status(f"Webhook '{event_type}' failed with status {response.status_code}", level="warning", root=root)
+            _emit_status(f"Webhook '{event_type}' failed with status {response.status_code}",
+                         level="warning", root=root)
             return False
     except Exception as e:
         _emit_status(f"Webhook trigger failed for '{event_type}': {e}", level="warning", root=root)
@@ -326,7 +327,8 @@ def _invoke_hook(hook_name: str, event_data: Dict[str, object], root: Path | Non
                 logger.debug(f"Hook output: {result.stdout}")
             return True
         else:
-            _emit_status(f"Hook '{hook_name}' failed with code {result.returncode}: {result.stderr}", level="warning", root=root)
+            _emit_status(f"Hook '{hook_name}' failed with code {result.returncode}: {result.stderr}",
+                         level="warning", root=root)
             return False
     except Exception as e:
         _emit_status(f"Failed to invoke hook '{hook_name}': {e}", level="warning", root=root)
@@ -350,10 +352,10 @@ def _notify_phase_start(phase_name: str, context: Dict[str, object], root: Path 
     target = Path(root or ROOT)
     webhooks = _load_webhooks_config(target)
     payload = {"phase": phase_name, "status": "started", **context}
-    
+
     for url in webhooks.get("phase_started", []):
         _trigger_webhook(url, f"phase.{phase_name}.started", payload, root=target)
-    
+
     _invoke_hook(f"phase_{phase_name}_started", payload, root=target)
     _emit_status(f"Phase '{phase_name}' started", level="info", root=target)
 
@@ -363,10 +365,10 @@ def _notify_phase_complete(phase_name: str, context: Dict[str, object], root: Pa
     target = Path(root or ROOT)
     webhooks = _load_webhooks_config(target)
     payload = {"phase": phase_name, "status": "completed", **context}
-    
+
     for url in webhooks.get("phase_completed", []):
         _trigger_webhook(url, f"phase.{phase_name}.completed", payload, root=target)
-    
+
     _invoke_hook(f"phase_{phase_name}_completed", payload, root=target)
     _emit_status(f"Phase '{phase_name}' completed", level="info", root=target)
 
@@ -383,7 +385,7 @@ def _log_phase_debug(phase_name: str, step: str, message: str, data: Dict[str, o
     }
     if data:
         debug_entry["data"] = data
-    
+
     # Append to OLLAMA_PHASE_DEBUG.jsonl
     debug_log = target / "OLLAMA_PHASE_DEBUG.jsonl"
     try:
@@ -391,9 +393,563 @@ def _log_phase_debug(phase_name: str, step: str, message: str, data: Dict[str, o
             f.write(json.dumps(debug_entry, sort_keys=True) + "\n")
     except Exception:
         pass
-    
+
     # Also log to regular audit
     _emit_status(f"[{phase_name}/{step}] {message}", level="debug", root=target)
+
+
+# ============================================================================
+# App Consolidation and Entry Point Detection Functions
+# ============================================================================
+
+def _scan_for_duplicate_apps(root: Path, app_name: str) -> List[Path]:
+    """Scan repository for duplicate instances of an app."""
+    target = Path(root or ROOT)
+    duplicates = []
+    seen = set()
+
+    # Common app name patterns
+    patterns = [
+        app_name,
+        app_name.replace("-", "_"),
+        f"{app_name.replace('-', '_')}_app",
+        f"{app_name.replace('-', '')}_app",
+    ]
+
+    # Look for directories matching app name patterns
+    for path in sorted(target.rglob("*")):
+        try:
+            if not path.is_dir() or _is_excluded_path(path, target):
+                continue
+
+            dir_name = path.name.lower()
+            path_str = str(path)
+
+            # Skip if already found
+            if path_str in seen:
+                continue
+
+            for pattern in patterns:
+                pattern_lower = pattern.lower()
+                # Check if this directory matches the pattern (name or contains pattern)
+                if pattern_lower == dir_name or (pattern_lower in dir_name and len(dir_name) < 50):
+                    # Check if it has any app-like files
+                    has_entry = (
+                        (path / "main.py").exists() or
+                        (path / "package.json").exists() or
+                        (path / f"{app_name.replace('-', '_')}.py").exists() or
+                        any(f.is_file() and f.suffix in ['.py', '.json'] for f in path.iterdir())
+                    )
+                    if has_entry:
+                        duplicates.append(path)
+                        seen.add(path_str)
+                        break
+        except Exception:
+            pass
+
+    return duplicates
+
+
+def _consolidate_app_files(root: Path, app_name: str, canonical: Path) -> Dict[str, object]:
+    """Consolidate scattered app files into canonical directory."""
+    target = Path(root or ROOT)
+    moved_files = 0
+    conflicts = []
+
+    # Find all duplicate locations
+    duplicates = _scan_for_duplicate_apps(target, app_name)
+
+    for dup_path in duplicates:
+        if dup_path == canonical:
+            continue
+
+        try:
+            for item in sorted(dup_path.rglob("**/*")):
+                if not item.is_file() or _is_excluded_path(item, target):
+                    continue
+
+                rel = item.relative_to(dup_path)
+                target_file = canonical / rel
+
+                # Check for conflicts
+                if target_file.exists():
+                    conflicts.append({"source": str(item), "target": str(target_file)})
+                    continue
+
+                # Move file
+                target_file.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(item, target_file)
+                moved_files += 1
+        except Exception as exc:
+            _emit_status(f"Error consolidating {dup_path}: {exc}", level="warning", root=target)
+
+    return {"moved_files": moved_files, "conflicts": conflicts}
+
+
+def _verify_single_app_instance(root: Path, app_name: str) -> bool:
+    """Verify only one instance of app exists."""
+    duplicates = _scan_for_duplicate_apps(root, app_name)
+    return len(duplicates) <= 1
+
+
+def _find_extra_app_instances(root: Path, app_name: str, canonical: Path) -> List[Path]:
+    """Find extra app instances that should be removed."""
+    duplicates = _scan_for_duplicate_apps(root, app_name)
+    return [d for d in duplicates if d != canonical]
+
+
+def _verify_app_directory_structure(app_dir: Path, structure_spec: dict) -> bool:
+    """Verify app directory has correct structure."""
+    try:
+        # Check required entry files
+        for entry_file in structure_spec.get("entry_files", []):
+            if not (app_dir / entry_file).exists():
+                return False
+
+        # Check required directories
+        for req_dir in structure_spec.get("required_dirs", []):
+            if not (app_dir / req_dir).exists():
+                return False
+
+        return True
+    except Exception:
+        return False
+
+
+def _detect_python_entry_points(app_dir: Path) -> List[Path]:
+    """Detect Python entry points in app."""
+    entry_points = []
+
+    patterns = ["main.py", "__main__.py", "cli.py", "app.py", "run.py"]
+
+    try:
+        for pattern in patterns:
+            if (app_dir / pattern).exists():
+                entry_points.append(app_dir / pattern)
+
+        # Also scan for files with if __name__ == '__main__':
+        for py_file in app_dir.rglob("*.py"):
+            try:
+                content = py_file.read_text(encoding="utf-8", errors="ignore")
+                if "if __name__" in content and "__main__" in content:
+                    if py_file not in entry_points:
+                        entry_points.append(py_file)
+            except Exception:
+                pass
+    except Exception:
+        pass
+
+    return entry_points
+
+
+def _detect_javascript_entry_points(app_dir: Path) -> List[Path]:
+    """Detect JavaScript entry points in app."""
+    entry_points = []
+
+    try:
+        # Check package.json
+        pkg_file = app_dir / "package.json"
+        if pkg_file.exists():
+            pkg_content = json.loads(pkg_file.read_text(encoding="utf-8", errors="ignore"))
+
+            # Check main, entry, exports fields
+            for key in ["main", "entry", "exports"]:
+                if key in pkg_content and isinstance(pkg_content[key], str):
+                    entry_file = app_dir / pkg_content[key]
+                    if entry_file.exists():
+                        entry_points.append(entry_file)
+
+        # Common entry file patterns
+        patterns = ["index.js", "src/index.js", "lib/index.js", "dist/index.js", "app.js"]
+        for pattern in patterns:
+            if (app_dir / pattern).exists():
+                entry_points.append(app_dir / pattern)
+    except Exception:
+        pass
+
+    return entry_points
+
+
+def _detect_html_entry_points(app_dir: Path) -> List[Path]:
+    """Detect HTML entry files in app."""
+    entry_points = []
+
+    try:
+        patterns = ["index.html", "public/index.html", "src/index.html", "pages/index.html"]
+        for pattern in patterns:
+            if (app_dir / pattern).exists():
+                entry_points.append(app_dir / pattern)
+    except Exception:
+        pass
+
+    return entry_points
+
+
+def _discover_all_entry_files(app_dir: Path) -> List[Path]:
+    """Discover all entry files in an app."""
+    entry_files = []
+    entry_files.extend(_detect_python_entry_points(app_dir))
+    entry_files.extend(_detect_javascript_entry_points(app_dir))
+    entry_files.extend(_detect_html_entry_points(app_dir))
+
+    # Remove duplicates while preserving order
+    seen = set()
+    unique_entries = []
+    for ef in entry_files:
+        if str(ef) not in seen:
+            seen.add(str(ef))
+            unique_entries.append(ef)
+
+    return unique_entries
+
+
+def _list_all_app_entry_points(root: Path) -> Dict[str, List[Path]]:
+    """List all entry points across all apps."""
+    target = Path(root or ROOT)
+    app_entry_points = {}
+
+    # Known app directories
+    app_names = ["qmoi-ai", "qcity", "qmoi-space", "qalpha"]
+
+    for app_name in app_names:
+        app_dir = target / app_name
+        if app_dir.exists():
+            entry_points = _discover_all_entry_files(app_dir)
+            if entry_points:
+                app_entry_points[app_name] = entry_points
+
+    return app_entry_points
+
+
+def _verify_entry_files_accessible(entry_files: List[Path]) -> bool:
+    """Verify entry files are accessible."""
+    try:
+        for ef in entry_files:
+            if not ef.exists() or not ef.is_file():
+                return False
+            if not os.access(ef, os.R_OK):
+                return False
+        return True
+    except Exception:
+        return False
+
+
+def _find_apps_missing_entry_files(root: Path) -> List[Path]:
+    """Find apps missing required entry files."""
+    target = Path(root or ROOT)
+    missing_apps = []
+
+    # Scan for app-like directories
+    for path in sorted(target.rglob("**/*")):
+        try:
+            if not path.is_dir() or _is_excluded_path(path, target):
+                continue
+
+            # Check if looks like an app
+            is_app = False
+            for indicator in ["main.py", "package.json", "index.html", "__main__.py"]:
+                if (path / indicator).exists():
+                    is_app = True
+                    break
+
+            if is_app:
+                # Verify entry files
+                entry_files = _discover_all_entry_files(path)
+                if not entry_files:
+                    missing_apps.append(path)
+        except Exception:
+            pass
+
+    return missing_apps
+
+
+def _detect_app_config_conflicts(app_dir: Path) -> List[Dict[str, str]]:
+    """Detect conflicts in app configurations."""
+    conflicts = []
+
+    try:
+        # Check for conflicting config files
+        config_files = {}
+        for config_file in app_dir.glob("**/config.*"):
+            if config_file.suffix in [".json", ".yaml", ".yml", ".ini", ".toml"]:
+                config_files[config_file.name] = config_file
+
+        if len(config_files) > 1:
+            conflicts.append({
+                "type": "multiple_config_files",
+                "files": list(config_files.keys()),
+                "location": str(app_dir)
+            })
+
+        # Check for conflicting version info
+        versions = {}
+        for root_file in [app_dir / "package.json", app_dir / "setup.py", app_dir / "pyproject.toml"]:
+            if root_file.exists():
+                try:
+                    content = root_file.read_text(encoding="utf-8", errors="ignore")
+                    # Extract version if possible
+                    if "version" in content:
+                        versions[root_file.name] = root_file
+                except Exception:
+                    pass
+
+        if len(versions) > 1:
+            conflicts.append({
+                "type": "version_info_conflict",
+                "files": list(versions.keys()),
+                "location": str(app_dir)
+            })
+    except Exception:
+        pass
+
+    return conflicts
+
+
+def _suggest_app_file_remediation(app_dir: Path, spec: dict) -> List[str]:
+    """Suggest remediation for missing app files."""
+    suggestions = []
+
+    # Check for missing files
+    for req_file in spec.get("required_files", []):
+        if not (app_dir / req_file).exists():
+            suggestions.append(f"Create missing file: {req_file}")
+
+    # Check for missing directories
+    for req_dir in spec.get("required_dirs", []):
+        if not (app_dir / req_dir).exists():
+            suggestions.append(f"Create missing directory: {req_dir}")
+
+    return suggestions
+
+
+def _prioritize_app_remediation_tasks(tasks: List[Dict]) -> List[Dict]:
+    """Prioritize app remediation tasks by severity."""
+    severity_order = {"critical": 0, "high": 1, "medium": 2, "low": 3}
+    return sorted(tasks, key=lambda t: severity_order.get(t.get("severity", "low"), 99))
+
+
+def _merge_duplicate_app_instances(root: Path, app_name: str, canonical: Path, duplicates: List[Path]) -> Dict[str, object]:
+    """Merge duplicate app instances into canonical."""
+    total_files = 0
+    total_conflicts = 0
+    moved_dirs: List[str] = []
+
+    for dup_path in duplicates:
+        if dup_path == canonical:
+            continue
+
+        try:
+            for item in sorted(dup_path.rglob("**/*")):
+                if not item.is_file() or _is_excluded_path(item, dup_path):
+                    continue
+
+                rel = item.relative_to(dup_path)
+                target_file = canonical / rel
+
+                if target_file.exists():
+                    total_conflicts += 1
+                    continue
+
+                target_file.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(item, target_file)
+                total_files += 1
+
+            # Remove the duplicate directory after consolidation if it is safe to delete.
+            if dup_path.exists():
+                shutil.rmtree(dup_path)
+                moved_dirs.append(str(dup_path))
+        except Exception as exc:
+            _emit_status(
+                f"Failed to merge duplicate app instance {dup_path}: {exc}",
+                level="warning",
+                root=Path(root or ROOT),
+            )
+
+    return {
+        "total_files_consolidated": total_files,
+        "conflicts": total_conflicts,
+        "removed_directories": moved_dirs,
+    }
+
+
+def _determine_canonical_app_location(locations: List[Path]) -> Path | None:
+    """Determine canonical app location from multiple options."""
+    if not locations:
+        return None
+
+    # Prefer based on directory name (shorter is more canonical)
+    # Then by presence of metadata.json with priority field
+    # Then by creation time
+
+    best = None
+    best_priority = -1
+
+    for loc in locations:
+        priority = 0
+
+        # Bonus for standard names
+        name_lower = loc.name.lower()
+        if name_lower in ["qmoi-ai", "qcity", "qmoi-space", "qalpha"]:
+            priority += 100
+        elif not any(x in name_lower for x in ["backup", "old", "deprecated", "archive"]):
+            priority += 50
+
+        # Check metadata
+        metadata_file = loc / "metadata.json"
+        if metadata_file.exists():
+            try:
+                metadata = json.loads(metadata_file.read_text(encoding="utf-8", errors="ignore"))
+                if "priority" in metadata:
+                    priority += metadata["priority"]
+            except Exception:
+                pass
+
+        if priority > best_priority:
+            best_priority = priority
+            best = loc
+
+    return best or locations[0]
+
+
+def _detect_unused_files_and_directories(root: Path) -> Dict[str, list]:
+    """Comprehensively scan for unused/unreferenced files and empty directories."""
+    target = Path(root or ROOT)
+    unused_files = []
+    empty_dirs = []
+
+    # Patterns for files/dirs that are typically unused
+    unused_patterns = {
+        ".bak", ".backup", ".old", ".obsolete", ".deprecated", ".archive",
+        ".temp", ".tmp", "__pycache__", ".pytest_cache", "node_modules",
+        ".DS_Store", "Thumbs.db", ".idea", ".vscode-settings"
+    }
+
+    try:
+        all_files = set(target.rglob("*"))
+        referenced_files = set()
+
+        # Scan all markdown and code files for references
+        for src_file in target.rglob("*"):
+            if not src_file.is_file() or _is_excluded_path(src_file, target):
+                continue
+            try:
+                content = src_file.read_text(encoding="utf-8", errors="ignore").lower()
+                for potential_ref in all_files:
+                    if potential_ref.is_file() and potential_ref != src_file:
+                        rel_path = potential_ref.relative_to(target).as_posix().lower()
+                        if rel_path in content or rel_path.replace("/", "\\") in content:
+                            referenced_files.add(potential_ref)
+            except Exception:
+                pass
+
+        # Find unused files
+        for file_path in all_files:
+            if not file_path.is_file() or file_path in referenced_files:
+                continue
+            if any(pattern in file_path.name.lower() or pattern in str(file_path).lower()
+                   for pattern in unused_patterns):
+                unused_files.append(file_path.relative_to(target).as_posix())
+
+        # Find empty directories
+        for dir_path in sorted(target.rglob("*"), reverse=True):
+            if dir_path.is_dir() and not _is_excluded_path(dir_path, target):
+                try:
+                    if not any(dir_path.iterdir()):
+                        empty_dirs.append(dir_path.relative_to(target).as_posix())
+                except Exception:
+                    pass
+    except Exception as exc:
+        _emit_status(f"Error scanning for unused files: {exc}", level="warning")
+
+    return {"unused_files": unused_files[:100], "empty_directories": empty_dirs[:100]}
+
+
+def _perform_full_app_consolidation(root: Path) -> Dict[str, object]:
+    """Perform comprehensive app consolidation with duplicate detection and cleanup."""
+    target = Path(root or ROOT)
+    result = {
+        "apps_consolidated": 0,
+        "total_duplicates_found": 0,
+        "canonical_locations_created": 0,
+        "files_consolidated": 0,
+        "unused_files_detected": 0,
+        "empty_dirs_deleted": 0,
+    }
+
+    app_names = ["qmoi-ai", "qcity", "qmoi-space", "qalpha"]
+
+    for app_name in app_names:
+        duplicates = _scan_for_duplicate_apps(target, app_name)
+        if len(duplicates) <= 1:
+            continue
+
+        result["apps_consolidated"] += 1
+        result["total_duplicates_found"] += len(duplicates)
+
+        # Determine canonical location
+        canonical = _determine_canonical_app_location(duplicates)
+        if canonical:
+            result["canonical_locations_created"] += 1
+
+            # Consolidate
+            others = [d for d in duplicates if d != canonical]
+            consolidated = _merge_duplicate_app_instances(target, app_name, canonical, others)
+            result["files_consolidated"] += consolidated.get("total_files_consolidated", 0)
+
+            # Ensure app-specific docs are synced after consolidation.
+            _refresh_app_docs_for_consolidated_app(target, app_name, canonical)
+
+    # Detect and clean up unused files and empty directories
+    unused_scan = _detect_unused_files_and_directories(target)
+    result["unused_files_detected"] = len(unused_scan["unused_files"])
+
+    for unused_file in unused_scan["unused_files"]:
+        try:
+            file_path = target / unused_file
+            if file_path.exists():
+                file_path.unlink()
+                _emit_status(f"Deleted unused file: {unused_file}", level="info")
+        except Exception as exc:
+            _emit_status(f"Failed to delete {unused_file}: {exc}", level="warning")
+
+    for empty_dir in unused_scan["empty_directories"]:
+        try:
+            dir_path = target / empty_dir
+            if dir_path.exists() and dir_path.is_dir():
+                dir_path.rmdir()
+                result["empty_dirs_deleted"] += 1
+                _emit_status(f"Deleted empty directory: {empty_dir}", level="info")
+        except Exception as exc:
+            _emit_status(f"Failed to delete empty directory {empty_dir}: {exc}", level="warning")
+
+    # Always refresh universal and style documentation after app consolidation.
+    _refresh_universal_and_style_docs(target)
+    return result
+
+
+def _verify_apps_consolidated(root: Path) -> Dict[str, object]:
+    """Verify apps are consolidated correctly."""
+    target = Path(root or ROOT)
+    consolidated_apps = []
+    issues = []
+
+    app_names = ["qmoi-ai", "qcity", "qmoi-space", "qalpha"]
+
+    for app_name in app_names:
+        duplicates = _scan_for_duplicate_apps(target, app_name)
+
+        if len(duplicates) == 0:
+            issues.append(f"App not found: {app_name}")
+        elif len(duplicates) == 1:
+            consolidated_apps.append(app_name)
+        else:
+            issues.append(f"Multiple instances of {app_name}: {len(duplicates)}")
+
+    return {
+        "all_apps_have_single_instance": len(issues) == 0,
+        "consolidated_apps": consolidated_apps,
+        "issues": issues,
+    }
 
 
 def _looks_like_resume_command(command: str) -> bool:
@@ -2915,6 +3471,133 @@ def _build_all_ports_doc(root: Path | None = None) -> Path:
     return _safe_file_write(target / "ALLPORTS.md", "\n".join(lines))
 
 
+def _refresh_app_docs_for_consolidated_app(root: Path | None, app_name: str, canonical: Path) -> None:
+    target = Path(root or ROOT)
+    app_tag = app_name.replace("-", "").upper()
+    doc_path = target / f"{app_tag}.md"
+    ui_doc_path = target / f"{app_tag}UI.md"
+
+    rel_canonical = canonical.relative_to(target).as_posix() if canonical.is_relative_to(target) else str(canonical)
+    app_files = sorted(
+        [p.relative_to(target).as_posix() for p in canonical.rglob("**/*")
+         if p.is_file() and not _is_excluded_path(p, target)]
+    )
+    ui_files = sorted(
+        [p.relative_to(target).as_posix() for p in canonical.rglob("**/*")
+         if p.is_file() and p.suffix.lower() in {".tsx", ".ts", ".jsx", ".js", ".html", ".css", ".scss", ".sass", ".less"}
+         and not _is_excluded_path(p, target)]
+    )
+
+    app_lines = [
+        f"# {app_tag}.md",
+        "",
+        f"This document tracks the canonical {app_name} application and its consolidated implementation.",
+        "",
+        "## Canonical application location",
+        f"- {rel_canonical}",
+        "",
+        "## Consolidated file inventory",
+    ]
+    if app_files:
+        for rel in app_files[:60]:
+            app_lines.append(f"- [{rel}]({rel})")
+        if len(app_files) > 60:
+            app_lines.append(f"- ...and {len(app_files) - 60} more files")
+    else:
+        app_lines.append("- No files were discovered in the canonical application directory.")
+    app_lines.extend([
+        "",
+        "## Notes",
+        f"- This document is refreshed after merging duplicate instances of {app_name}.",
+        "- Keep API, ENDPOINTS, ROUTES, ALLPORTS, UNIVERSALS, STYLES, and ALLUI in sync with the canonical application implementation.",
+        "",
+    ])
+    _safe_file_write(doc_path, "\n".join(app_lines))
+
+    ui_lines = [
+        f"# {app_tag}UI.md",
+        "",
+        f"This document tracks the user interface and presentation surfaces for {app_name}.",
+        "",
+        "## Canonical UI document location",
+        f"- {rel_canonical}",
+        "",
+        "## UI implementation files",
+    ]
+    if ui_files:
+        for rel in ui_files[:40]:
+            ui_lines.append(f"- [{rel}]({rel})")
+        if len(ui_files) > 40:
+            ui_lines.append(f"- ...and {len(ui_files) - 40} more UI-related files")
+    else:
+        ui_lines.append("- No UI implementation files were discovered for this application.")
+    ui_lines.extend([
+        "",
+        "## Styling and UX notes",
+        "- Keep UI documentation aligned with UNIVERSALS.md and STYLES.md.",
+        "- Document any cross-application shared patterns in UNIVERSALS.md.",
+        "",
+    ])
+    _safe_file_write(ui_doc_path, "\n".join(ui_lines))
+
+
+def _refresh_universal_and_style_docs(root: Path | None = None) -> None:
+    target = Path(root or ROOT)
+    universals_path = target / "UNIVERSALS.md"
+    styles_path = target / "STYLES.md"
+
+    shared_docs = sorted([p.relative_to(target).as_posix() for p in target.rglob("*.md")
+                          if p.is_file() and not _is_excluded_path(p, target) and p.name not in {"UNIVERSALS.md", "STYLES.md"}])
+    css_docs = sorted([p.relative_to(target).as_posix() for p in target.rglob("*.css")
+                       if p.is_file() and not _is_excluded_path(p, target)])
+
+    universals_lines = [
+        "# UNIVERSALS.md",
+        "",
+        "This document defines shared interface patterns, interaction models, and repository-wide conventions.",
+        "",
+        "## Shared documentation inventory",
+    ]
+    if shared_docs:
+        for doc in shared_docs[:80]:
+            universals_lines.append(f"- [{doc}]({doc})")
+        if len(shared_docs) > 80:
+            universals_lines.append(f"- ...and {len(shared_docs) - 80} more markdown documents")
+    else:
+        universals_lines.append("- No shared markdown documents were discovered.")
+    universals_lines.extend([
+        "",
+        "## Policy",
+        "- Use UNIVERSALS.md to capture patterns that apply across QMOI AI, QMOI Space, QCity, and QAlpha.",
+        "- Keep this document synchronized with ALLUI.md, ALLFRONTEND.md, and DOCS.md.",
+        "",
+    ])
+    _safe_file_write(universals_path, "\n".join(universals_lines))
+
+    styles_lines = [
+        "# STYLES.md",
+        "",
+        "This document defines repository-wide styling conventions, theme guidance, and production interface rules.",
+        "",
+        "## Discovered styling assets",
+    ]
+    if css_docs:
+        for path in css_docs[:80]:
+            styles_lines.append(f"- [{path}]({path})")
+        if len(css_docs) > 80:
+            styles_lines.append(f"- ...and {len(css_docs) - 80} more stylesheet files")
+    else:
+        styles_lines.append("- No styling assets were discovered.")
+    styles_lines.extend([
+        "",
+        "## Styling guidance",
+        "- Document any shared theme or layout assets in UNIVERSALS.md when they apply across multiple applications.",
+        "- Document platform-specific appearance notes in QMOIAIUI.md, QMOISPACEUI.md, QCITYUI.md, and QALPHAUI.md.",
+        "",
+    ])
+    _safe_file_write(styles_path, "\n".join(styles_lines))
+
+
 def _build_ollama_agent_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
     lines = [
@@ -3017,6 +3700,7 @@ def _build_plan_and_docs(root: Path | None = None) -> Dict[str, Path]:
     paths["standard1"] = _build_standard1_doc(target)
     paths["memory_awareness"] = _build_memory_awareness_doc(target)
     paths["all_links"] = _build_all_links_doc(target)
+    paths["all_ports"] = _build_all_ports_doc(target)
     paths["bitget"] = _write_bitget_credential_guide(target)
     paths["deployment_verification"] = update_deployment_verification_manifest(target)
     paths["external_research"] = update_external_research_manifest(target)
@@ -3032,6 +3716,9 @@ def _build_plan_and_docs(root: Path | None = None) -> Dict[str, Path]:
         target, inventory=[], api_endpoints=[], route_endpoints=[], branch="main")
     paths["merge"] = merge_docs["merge"]
 
+    # Ensure the broader documentation inventory includes all required reports.
+    _build_all_ports_doc(target)
+    _ensure_required_doc_files(target)
     return paths
 
 
@@ -3889,7 +4576,7 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
     # Stage 1: Merge-first automation
     _emit_status("Starting merge-first automation stage", level="info")
     _notify_phase_start("merge-first", {"step": "init", "target": str(target)}, root=target)
-    
+
     workflow_merge_result = _merge_workflow_yamls(target)
     if workflow_merge_result.get("report"):
         merged_count = workflow_merge_result.get('merged', 0)
@@ -3898,17 +4585,39 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
             f"Merged {merged_count} redundant workflow YAML files and removed {deleted_count} extras.",
             level="info",
         )
-        _log_phase_debug("merge-first", "workflow_merge", 
-                        f"Merged {merged_count} files, deleted {deleted_count}",
-                        {"merged": merged_count, "deleted": deleted_count, "report": workflow_merge_result.get("report")},
-                        root=target)
-    
+        _log_phase_debug("merge-first", "workflow_merge",
+                         f"Merged {merged_count} files, deleted {deleted_count}",
+                         {"merged": merged_count, "deleted": deleted_count,
+                             "report": workflow_merge_result.get("report")},
+                         root=target)
+
     merged_archives = _scan_archives_and_merge(target)
-    _log_phase_debug("merge-first", "archive_scan", 
-                    f"Scanned and merged archives: {merged_archives} directories",
-                    {"merged_count": merged_archives, "target": str(target)},
-                    root=target)
+    _log_phase_debug("merge-first", "archive_scan",
+                     f"Scanned and merged archives: {merged_archives} directories",
+                     {"merged_count": merged_archives, "target": str(target)},
+                     root=target)
     merge_deletions = merge_unused_files_and_update_manifest(target)
+
+    # Consolidate all canonical apps and ensure the canonical app manifests are refreshed
+    consolidation_result = _perform_full_app_consolidation(target)
+    _emit_status(
+        f"Consolidated {consolidation_result['apps_consolidated']} apps and moved {consolidation_result['files_consolidated']} files.",
+        level="info",
+    )
+    _log_phase_debug(
+        "merge-first", "app_consolidation",
+        "Consolidated duplicate app instances and refreshed canonical app inventory",
+        consolidation_result,
+        root=target,
+    )
+    verification = _verify_apps_consolidated(target)
+    if not verification["all_apps_have_single_instance"]:
+        _emit_status(
+            f"App consolidation verification failed: {verification['issues']}", level="warning",
+        )
+    else:
+        _emit_status("All app instances are consolidated into canonical locations.", level="info")
+
     update_hook_and_webhook_manifests(target)
     update_external_research_manifest(target)
     update_research_task_manifest(target)
@@ -3928,7 +4637,7 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
     # Stage 2: Production replacement and verification setup
     _emit_status("Starting production replacement and verification stage", level="info")
     _notify_phase_start("production", {"step": "init", "target": str(target)}, root=target)
-    
+
     ensure_test_coverage(target)
     _log_phase_debug("production", "test_coverage", "Ensured test coverage for all modules", root=target)
     paths = build_plan_and_docs(target)
@@ -3966,10 +4675,10 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
     if normalize_changes:
         normalize_count = len(normalize_changes)
         _emit_status(f"Normalized production port references in {normalize_count} file(s)", level="info")
-        _log_phase_debug("production", "port_normalization", 
-                        f"Normalized ports in {normalize_count} files",
-                        {"normalized_files": normalize_count, "files": normalize_changes},
-                        root=target)
+        _log_phase_debug("production", "port_normalization",
+                         f"Normalized ports in {normalize_count} files",
+                         {"normalized_files": normalize_count, "files": normalize_changes},
+                         root=target)
 
     command_results = _execute_resume_instructions(target, instructions)
     if any(result.get("status") != "passed" for result in command_results if result.get("status") != "skipped"):
@@ -4009,7 +4718,8 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
     confirmed: List[str] = []
 
     _emit_status("Completed production replacement stage", level="info")
-    _notify_phase_complete("production", {"port_normalizations": len(normalize_changes or []), "status": "completed"}, root=target)
+    _notify_phase_complete("production", {"port_normalizations": len(
+        normalize_changes or []), "status": "completed"}, root=target)
 
     # Stage 3: Pending item processing and reporting
     _emit_status("Starting pending item processing stage", level="info")
@@ -4026,21 +4736,21 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
         # Attempt to remediate pending items automatically after merge and manifest refresh
         pending_count = len(pending)
         _emit_status(f"Processing {pending_count} pending items after merge-stage completion...", level="info")
-        _log_phase_debug("pending", "processing_start", 
-                        f"Starting processing of {pending_count} items",
-                        {"pending_count": pending_count, "pending_items": pending[:5]},
-                        root=target)
-        
+        _log_phase_debug("pending", "processing_start",
+                         f"Starting processing of {pending_count} items",
+                         {"pending_count": pending_count, "pending_items": pending[:5]},
+                         root=target)
+
         proc = process_pending_items(pending, target)
         done.extend(proc.get("done", []))
         verified.extend(proc.get("verified", []))
         confirmed.extend(proc.get("confirmed", []))
         still_pending = proc.get("still_pending", [])
-        
-        _log_phase_debug("pending", "processing_complete", 
-                        f"Processed {len(done)} items; {len(still_pending)} still pending",
-                        {"done": len(done), "verified": len(verified), "still_pending": len(still_pending)},
-                        root=target)
+
+        _log_phase_debug("pending", "processing_complete",
+                         f"Processed {len(done)} items; {len(still_pending)} still pending",
+                         {"done": len(done), "verified": len(verified), "still_pending": len(still_pending)},
+                         root=target)
         # Recompute pending after attempted fixes
         pending = sorted(list(set(still_pending + [p for p in pending if p not in done and p not in verified])))
         # Always update the resume file with the latest progress
@@ -4082,8 +4792,9 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
         pass
 
     _emit_status(f"Run agent completed with {len(pending)} pending items", level="info")
-    _notify_phase_complete("pending", {"done": len(done), "verified": len(verified), "confirmed": len(confirmed), "still_pending": len(pending), "status": "completed"}, root=target)
-    
+    _notify_phase_complete("pending", {"done": len(done), "verified": len(verified), "confirmed": len(
+        confirmed), "still_pending": len(pending), "status": "completed"}, root=target)
+
     result = {"pending": pending, "paths": paths, "command_results": command_results,
               "port_fixes": normalize_changes, "merged_archives": merged_archives,
               "merge_deletions": merge_deletions}
@@ -5025,14 +5736,31 @@ def _run_shell_command(args: List[str], cwd: Path | None = None, capture_output:
         return exc
 
 
+def _resolve_current_branch(root: Path | None = None) -> Optional[str]:
+    """Resolve the Git branch for local and Codespaces execution when environment vars are absent."""
+    try:
+        target = Path(root or ROOT)
+        result = _run_shell_command(["git", "rev-parse", "--abbrev-ref", "HEAD"], cwd=target)
+        if result and getattr(result, "stdout", None):
+            branch = result.stdout.strip()
+            if branch and branch != "HEAD":
+                return branch
+    except Exception:
+        pass
+    return None
+
+
 def _resolve_target_branch() -> str:
-    """Resolve the branch the autonomous agent should update, preferring main."""
+    """Resolve the branch the autonomous agent should update, preferring explicit environment settings."""
     env_branch = os.environ.get("TARGET_BRANCH") or os.environ.get(
         "GITHUB_REF_NAME") or os.environ.get("GITHUB_HEAD_REF")
     if env_branch:
         candidate = env_branch.strip()
         if candidate:
             return candidate
+    current_branch = _resolve_current_branch()
+    if current_branch:
+        return current_branch
     return "main"
 
 
@@ -5134,6 +5862,17 @@ def _git_commit_and_push(iteration: int, processed: List[str], updated_count: in
     if push_result.returncode == 0:
         out["pushed"] = True
         _emit_status(f"Successfully pushed autonomous agent changes to branch {branch}.", level="info")
+        # If autosync is used as a backup branch, also mirror the same commit into main
+        if branch == "autosync":
+            main_push_result = _run_shell_command(["git", "push", "origin", "HEAD:main"], cwd=target)
+            if main_push_result.returncode == 0:
+                out["pushed_main"] = True
+                _emit_status("Successfully synchronized autosync changes into main.", level="info")
+            else:
+                out["pushed_main"] = False
+                _emit_status(
+                    f"Git push to main failed: {getattr(main_push_result, 'stderr', '') or getattr(main_push_result, 'stdout', '')}",
+                    level="warning")
     else:
         _emit_status(
             f"Git push to {branch} failed: {getattr(push_result, 'stderr', '') or getattr(push_result, 'stdout', '')}", level="warning")
@@ -5304,9 +6043,11 @@ def enforce_accountability_and_validations(root: Path | None = None) -> None:
                 validation_files.append(p.relative_to(target).as_posix())
 
         val_path = target / "VALIDATIONS.md"
-        val_path.write_text("# VALIDATIONS\n\nDetected validation files:\n\n" + "\n".join(f"- {f}" for f in validation_files) + "\n", encoding="utf-8")
+        val_path.write_text("# VALIDATIONS\n\nDetected validation files:\n\n" +
+                            "\n".join(f"- {f}" for f in validation_files) + "\n", encoding="utf-8")
         allval_path = target / "ALLVALIDATIONS.md"
-        allval_path.write_text("# ALLVALIDATIONS\n\n" + "\n".join(f"- {f}" for f in validation_files) + "\n", encoding="utf-8")
+        allval_path.write_text("# ALLVALIDATIONS\n\n" +
+                               "\n".join(f"- {f}" for f in validation_files) + "\n", encoding="utf-8")
         _emit_status(f"Wrote VALIDATIONS.md and ALLVALIDATIONS.md ({len(validation_files)} entries)", level="info")
 
         # 4. Ensure ALLMDFILESREFS.md inventories all md files and marks production-ready when possible
@@ -5328,7 +6069,8 @@ def enforce_accountability_and_validations(root: Path | None = None) -> None:
             refs_text += f"- {rel}\n"
         refs_text += f"\n\nTotal MD files: {len(md_files)}, production-ready markers detected: {prod_count}\n"
         refs_path.write_text(refs_text, encoding="utf-8")
-        _emit_status(f"Updated ALLMDFILESREFS.md ({len(md_files)} entries, {prod_count} marked production-ready)", level="info")
+        _emit_status(
+            f"Updated ALLMDFILESREFS.md ({len(md_files)} entries, {prod_count} marked production-ready)", level="info")
 
         # 5. Attempt to automatically tag md files that appear production-ready by simple heuristics
         for p in sorted(target.rglob("*.md")):
@@ -5362,7 +6104,8 @@ def auto_rerun_or_report_failed_workflows() -> None:
     token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN") or os.environ.get("MY_CUSTOM_TOKEN")
     try:
         # List recent failed runs via gh api
-        out = _run_shell_command(["gh", "run", "list", "--repo", repo, "--json", "databaseId,conclusion,htmlUrl,workflowName,status", "--limit", "30"], cwd=ROOT)
+        out = _run_shell_command(["gh", "run", "list", "--repo", repo, "--json",
+                                 "databaseId,conclusion,htmlUrl,workflowName,status", "--limit", "30"], cwd=ROOT)
         if out.returncode != 0 or not getattr(out, "stdout", None):
             _emit_status("Unable to list runs for auto-rerun; skipping.", level="warning")
             return
@@ -5391,6 +6134,41 @@ def ensure_alpha_q_ai_sync(branch: str = "main") -> None:
             _emit_status(f"Alpha-Q-ai sync not completed: {mirror}", level="warning")
     except Exception as exc:
         _emit_status(f"ensure_alpha_q_ai_sync error: {exc}", level="warning")
+
+
+def main():
+    """Main entry point for ollama autonomous agent.
+
+    Orchestrates all three execution stages:
+    1. Merge-first automation (consolidation, cleanup, doc refresh)
+    2. Production replacement and verification setup
+    3. Pending item processing and completion reporting
+
+    Returns: Dict with execution results including pending items, paths, git commits, and verification status
+    """
+    try:
+        root = Path(os.environ.get("GITHUB_WORKSPACE", ROOT))
+        _emit_status("Starting Ollama autonomous agent orchestration", level="info")
+        result = run_agent(root)
+
+        # Log final result summary
+        pending_count = len(result.get("pending", []))
+        done_count = result.get("done", 0)
+        verified_count = result.get("verified", 0)
+
+        if pending_count == 0:
+            _emit_status("✅ All work completed successfully - no pending items remaining", level="info")
+        else:
+            _emit_status(
+                f"⚠️ Autonomous run complete with {pending_count} pending items remaining "
+                f"(done: {done_count}, verified: {verified_count})",
+                level="warning"
+            )
+
+        return result
+    except Exception as exc:
+        _emit_status(f"Error in main execution: {exc}", level="error")
+        raise
 
 
 if __name__ == "__main__":

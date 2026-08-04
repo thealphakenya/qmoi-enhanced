@@ -1,4 +1,5 @@
 import importlib.util
+import os
 from pathlib import Path
 
 import pytest
@@ -34,6 +35,7 @@ def test_build_plan_and_docs_creates_required_files(tmp_path):
     assert result["all_tests"].exists()
     assert result["all_hooks"].exists()
     assert result["matches"].exists()
+    assert (tmp_path / "ALLPORTS.md").exists()
 
 
 def test_build_plan_and_docs_creates_extended_docs_inventory(tmp_path):
@@ -60,6 +62,24 @@ def test_build_plan_and_docs_creates_memory_awareness_doc(tmp_path):
     assert (tmp_path / "QMOI_MEMORY_AWARENESS_SYSTEM.md").exists()
     assert "Autonomous execution surface" in (tmp_path / "QMOI_MEMORY_AWARENESS_SYSTEM.md").read_text(encoding="utf-8")
     assert result["memory_awareness"].exists()
+
+
+def test_build_plan_and_docs_creates_app_specific_docs(tmp_path):
+    module = load_module()
+    module.build_plan_and_docs(tmp_path)
+
+    for filename in ["QMOIAIUI.md", "QMOISPACEUI.md", "QCITYUI.md", "QALPHAUI.md"]:
+        assert (tmp_path / filename).exists()
+        assert (tmp_path / filename).read_text(encoding="utf-8").startswith(f"# {filename}")
+
+
+def test_build_plan_and_docs_creates_universal_and_styles_docs(tmp_path):
+    module = load_module()
+    module.build_plan_and_docs(tmp_path)
+
+    for filename in ["UNIVERSALS.md", "STYLES.md"]:
+        assert (tmp_path / filename).exists()
+        assert (tmp_path / filename).read_text(encoding="utf-8").startswith(f"# {filename}")
 
 
 def test_collect_finance_and_credential_inventory_detects_bitget_env_vars(tmp_path):
@@ -160,6 +180,10 @@ def test_run_agent_refreshes_resume_with_pending_inventory(tmp_path):
 
     assert "## Repository Scan Inventory" in resume_text
     assert str(sample_file.relative_to(tmp_path)) in resume_text
+    assert (tmp_path / "API.md").exists()
+    assert (tmp_path / "ENDPOINTS.md").exists()
+    assert (tmp_path / "ROUTES.md").exists()
+    assert (tmp_path / "ALLPORTS.md").exists()
 
 
 def test_collect_route_inventory_finds_api_routes(tmp_path):
@@ -182,14 +206,52 @@ def test_update_documentation_manifests_writes_required_docs(tmp_path):
 
     inventory = module.collect_route_inventory(tmp_path)
     docs = module.update_documentation_manifests(
-        tmp_path, inventory, [{"path": "/api/alpha", "methods": "GET"}], [{"path": "/api/alpha", "methods": "GET"}], "branch/test")
+        tmp_path,
+        inventory,
+        [{"path": "/api/alpha", "methods": "GET"}],
+        [{"path": "/api/alpha", "methods": "GET"}],
+        "branch/test"
+    )
 
     assert (tmp_path / "API.md").exists()
     assert (tmp_path / "ENDPOINTS.md").exists()
     assert (tmp_path / "ROUTES.md").exists()
+    assert (tmp_path / "ALLPORTS.md").exists()
     assert (tmp_path / "MERGE.md").exists()
     assert "api/alpha" in (tmp_path / "ROUTES.md").read_text(encoding="utf-8")
     assert docs["merge"].exists()
+
+
+def test_generate_allports_doc_includes_discovered_ports(tmp_path):
+    module = load_module()
+    service_file = tmp_path / "service" / "server.py"
+    service_file.parent.mkdir(parents=True, exist_ok=True)
+    service_file.write_text(
+        "import os\nPORT = 3000\nprint('listening on port 3000')\n",
+        encoding="utf-8",
+    )
+    docs = module._build_all_ports_doc(tmp_path)
+
+    assert docs.exists()
+    content = docs.read_text(encoding="utf-8")
+    assert "## Port 3000" in content
+    assert "service/server.py" in content
+
+
+def test_run_agent_refreshes_resume_with_pending_inventory_and_required_docs(tmp_path):
+    module = load_module()
+    sample_file = tmp_path / "sample.md"
+    sample_file.write_text("TODO: replace placeholder with production implementation", encoding="utf-8")
+
+    result = module.run_agent(tmp_path)
+    resume_text = (tmp_path / "resumefromhere.txt").read_text(encoding="utf-8")
+
+    assert "## Repository Scan Inventory" in resume_text
+    assert str(sample_file.relative_to(tmp_path)) in resume_text
+    assert (tmp_path / "API.md").exists()
+    assert (tmp_path / "ENDPOINTS.md").exists()
+    assert (tmp_path / "ROUTES.md").exists()
+    assert (tmp_path / "ALLPORTS.md").exists()
 
 
 def test_build_plan_and_docs_also_creates_merge_manifest(tmp_path):
@@ -250,6 +312,7 @@ def test_prioritize_pending_items_orders_merge_and_task_items_first(tmp_path):
     assert ordered[4].startswith("MISSING_TESTS:"), "Missing tests should come before minimal implementations"
     assert ordered[5].startswith("MINIMAL_IMPLEMENTATION:"), "Minimal implementations should run after missing tests"
     assert ordered[-1].startswith("pytest"), "Resume commands should be lowest priority"
+    assert "ALLPORTS.md" not in ordered or all(isinstance(item, str) for item in ordered)
 
 
 def test_prioritize_resume_instructions_orders_plan_and_resume_commands():
@@ -313,6 +376,85 @@ def test_mirror_to_alpha_q_ai_uses_configured_target(monkeypatch, tmp_path):
     assert calls[0][0][0:3] == ["git", "push", "--force-with-lease"]
     assert calls[0][0][3] == "https://x-access-token:secret-token@github.com/thealphakenya/Alpha-Q-ai.git"
     assert calls[0][0][4] == "HEAD:main"
+
+
+def test_resolve_target_branch_uses_git_head_when_env_missing(monkeypatch):
+    module = load_module()
+    monkeypatch.delenv("TARGET_BRANCH", raising=False)
+    monkeypatch.delenv("GITHUB_REF_NAME", raising=False)
+    monkeypatch.delenv("GITHUB_HEAD_REF", raising=False)
+
+    def fake_run(command, cwd=None, capture_output=True, check=False):
+        if command == ["git", "rev-parse", "--abbrev-ref", "HEAD"]:
+            return type("Result", (), {"returncode": 0, "stdout": "feature/codespace\n", "stderr": ""})()
+        return type("Result", (), {"returncode": 0, "stdout": "", "stderr": ""})()
+
+    monkeypatch.setattr(module, "_run_shell_command", fake_run)
+
+    assert module._resolve_target_branch() == "feature/codespace"
+
+
+def test_save_and_load_state_persists_agent_state(tmp_path):
+    module = load_module()
+    state = {"processed": ["task1"], "iteration": 5, "resume_checksum": "abc123"}
+
+    module._save_state(state, tmp_path)
+    loaded = module._load_state(tmp_path)
+
+    assert loaded["processed"] == ["task1"]
+    assert loaded["iteration"] == 5
+    assert loaded["resume_checksum"] == "abc123"
+
+
+def test_resume_file_changed_updates_checksum_and_iteration(tmp_path):
+    module = load_module()
+    resume_path = tmp_path / "resumefromhere.txt"
+    resume_path.write_text("# Resume from here\n\n- TASK:do something\n", encoding="utf-8")
+    module._save_state({"processed": [], "iteration": 1, "resume_checksum": None}, tmp_path)
+
+    changed = module._resume_file_changed(tmp_path)
+    state = module._load_state(tmp_path)
+
+    assert changed is True
+    assert state["resume_checksum"] is not None
+    assert state["iteration"] == 2
+
+
+def test_write_github_actions_summary_appends_when_in_github_actions(monkeypatch, tmp_path):
+    module = load_module()
+    summary_path = tmp_path / "GITHUB_STEP_SUMMARY"
+    monkeypatch.setenv("GITHUB_ACTIONS", "true")
+    monkeypatch.setenv("GITHUB_STEP_SUMMARY", str(summary_path))
+
+    module._write_github_actions_summary("Test summary line")
+
+    assert summary_path.exists()
+    assert "Test summary line" in summary_path.read_text(encoding="utf-8")
+
+
+def test_git_commit_and_push_automatically_syncs_autosync_into_main(monkeypatch, tmp_path):
+    module = load_module()
+    monkeypatch.setenv("AUTO_PUSH", "1")
+    monkeypatch.setenv("TARGET_BRANCH", "autosync")
+
+    commands = []
+
+    def fake_run(command, cwd=None, capture_output=True, check=False):
+        commands.append(command)
+        if command[:3] == ["git", "diff", "--cached"]:
+            return type("Result", (), {"returncode": 0, "stdout": "file.py\n", "stderr": ""})()
+        return type("Result", (), {"returncode": 0, "stdout": "", "stderr": ""})()
+
+    monkeypatch.setattr(module, "_run_shell_command", fake_run)
+    monkeypatch.setattr(module, "_load_state", lambda target: {})
+    monkeypatch.setattr(module, "_save_state", lambda state, target: None)
+
+    result = module._git_commit_and_push(iteration=1, processed=["file.py"], updated_count=1, root=tmp_path)
+
+    assert result["pushed"] is True
+    assert result.get("pushed_main") is True
+    assert any(cmd[0:3] == ["git", "push", "origin"] and cmd[3] == "HEAD:autosync" for cmd in commands)
+    assert any(cmd[0:3] == ["git", "push", "origin"] and cmd[3] == "HEAD:main" for cmd in commands)
 
 
 def test_update_resume_progress_writes_double_marks(tmp_path):
@@ -785,6 +927,84 @@ def test_consolidate_html_assets_and_pw_as_moves_pwa_and_removes_duplicates(tmp_
     assert (tmp_path / "pwa_apps" / "demo" / "sw.js").exists()
     assert result["moved"] >= 1
     assert result["removed"] >= 1
+
+
+def test_detect_unused_files_and_directories_identifies_obsolete_assets(tmp_path):
+    module = load_module()
+    (tmp_path / "project" / "src").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "project" / "src" / "main.py").write_text("print('active')", encoding="utf-8")
+    (tmp_path / "project" / "old" / "legacy.py.bak").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "project" / "old" / "legacy.py.bak" / "file.py").write_text("# old", encoding="utf-8")
+    empty_dir = tmp_path / "project" / "empty"
+    empty_dir.mkdir(parents=True, exist_ok=True)
+
+    result = module._detect_unused_files_and_directories(tmp_path)
+
+    assert len(result["unused_files"]) > 0 or len(result["empty_directories"]) > 0
+    assert isinstance(result["unused_files"], list)
+    assert isinstance(result["empty_directories"], list)
+
+
+def test_perform_full_app_consolidation_updates_app_specific_docs(tmp_path):
+    module = load_module()
+    qmoi_dir = tmp_path / "qmoi-ai"
+    qmoi_dir.mkdir(parents=True, exist_ok=True)
+    (qmoi_dir / "index.tsx").write_text("export default App;", encoding="utf-8")
+    (qmoi_dir / "styles.css").write_text("body { color: blue; }", encoding="utf-8")
+
+    result = module._perform_full_app_consolidation(tmp_path)
+
+    assert (tmp_path / "QMOIAI.md").exists()
+    assert (tmp_path / "QMOIAIUI.md").exists()
+    qmoiai_text = (tmp_path / "QMOIAI.md").read_text(encoding="utf-8")
+    assert "qmoi-ai" in qmoiai_text or "QMOIAI" in qmoiai_text
+
+
+def test_perform_full_app_consolidation_refreshes_universals_and_styles(tmp_path):
+    module = load_module()
+    app_dir = tmp_path / "apps" / "qmoi-ai"
+    app_dir.mkdir(parents=True, exist_ok=True)
+    (app_dir / "app.tsx").write_text("export App", encoding="utf-8")
+    (app_dir / "theme.css").write_text(".primary { color: blue; }", encoding="utf-8")
+
+    result = module._perform_full_app_consolidation(tmp_path)
+
+    assert (tmp_path / "UNIVERSALS.md").exists()
+    assert (tmp_path / "STYLES.md").exists()
+    universals_text = (tmp_path / "UNIVERSALS.md").read_text(encoding="utf-8")
+    styles_text = (tmp_path / "STYLES.md").read_text(encoding="utf-8")
+    assert "UNIVERSALS" in universals_text
+    assert "STYLES" in styles_text
+
+
+def test_refresh_app_docs_for_consolidated_app_creates_app_inventory(tmp_path):
+    module = load_module()
+    app_dir = tmp_path / "qmoi-space"
+    app_dir.mkdir(parents=True, exist_ok=True)
+    (app_dir / "components" / "view.tsx").parent.mkdir(parents=True, exist_ok=True)
+    (app_dir / "components" / "view.tsx").write_text("export View", encoding="utf-8")
+    (app_dir / "styles" / "layout.css").parent.mkdir(parents=True, exist_ok=True)
+    (app_dir / "styles" / "layout.css").write_text(".layout { }", encoding="utf-8")
+
+    module._refresh_app_docs_for_consolidated_app(tmp_path, "qmoi-space", app_dir)
+
+    assert (tmp_path / "QMOISPACE.md").exists()
+    assert (tmp_path / "QMOISPACEUI.md").exists()
+    space_text = (tmp_path / "QMOISPACE.md").read_text(encoding="utf-8")
+    space_ui_text = (tmp_path / "QMOISPACEUI.md").read_text(encoding="utf-8")
+    assert "qmoi-space" in space_text or "view.tsx" in space_text
+    assert "UI" in space_ui_text or "layout.css" in space_ui_text
+
+
+def test_build_plan_and_docs_includes_allports(tmp_path):
+    module = load_module()
+
+    result = module.build_plan_and_docs(tmp_path)
+
+    assert "all_ports" in result
+    assert result["all_ports"].exists()
+    assert (tmp_path / "ALLPORTS.md").exists()
+
 
 # AUTOFIXED by Ollama at 2026-07-26T18:54:41.380965Z
 
