@@ -277,3 +277,9 @@ export default function TestPage() {
 export default function TestPage() {
   return <h1>Test Page Works!</h1>;
 }
+
+
+<!-- MERGED FROM ARCHIVE: backups/app.backup.20260121144720/test/page.tsx -->
+export default function TestPage() {
+  return <h1>Test Page Works!</h1>;
+}

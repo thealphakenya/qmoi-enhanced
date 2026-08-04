@@ -1,7 +1,3 @@
-# WEBHOOKS.md
-
-This document records webhook destinations and notification channels used by the repository automation.
-
-## Channels
-- Discord: repository automation, Ollama activity, and confidence threshold alerts.
-- GitHub issues: workflow summaries and autonomous run notifications.
+version https://git-lfs.github.com/spec/v1
+oid sha256:90f6e916a7013748d5e109b28c12e74ba9d93012dfe7b9284f998b6baa3e1d53
+size 286

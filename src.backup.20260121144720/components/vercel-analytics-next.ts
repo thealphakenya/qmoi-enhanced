@@ -277,3 +277,9 @@ export default function Analytics() {
 export default function Analytics() {
   return null;
 }
+
+
+<!-- MERGED FROM ARCHIVE: backups/src.backup.20260121144720/components/vercel-analytics-next.ts -->
+export default function Analytics() {
+  return null;
+}

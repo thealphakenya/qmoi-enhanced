@@ -47,7 +47,6 @@ INCLUDED_FILE_NAMES = {
     ".babelrc", ".editorconfig"
 }
 
-
 def _is_excluded_path(path: Path, target: Path | None = None) -> bool:
     target = Path(target or ROOT)
     try:
@@ -55,7 +54,6 @@ def _is_excluded_path(path: Path, target: Path | None = None) -> bool:
     except Exception:
         rel_parts = path.parts
     return any(part in EXCLUDED_DIRS for part in rel_parts)
-
 
 def _is_included_file(path: Path, target: Path | None = None) -> bool:
     if not path.is_file() or _is_excluded_path(path, target):
@@ -68,10 +66,8 @@ def _is_included_file(path: Path, target: Path | None = None) -> bool:
         return True
     return False
 
-
 def _included_file_types() -> List[str]:
     return sorted(INCLUDED_FILE_EXTENSIONS | {f".{name}" for name in INCLUDED_FILE_NAMES if not name.startswith('.')})
-
 
 # Configure module logger with safety buffers
 LOG_PATH = Path.home() / ".ollama" / "logs"
@@ -103,7 +99,6 @@ if not logger.handlers:
     stream_handler.setFormatter(formatter)
     logger.addHandler(stream_handler)
 
-
 def _append_runtime_event(message: str, level: str = "info", root: Path | None = None) -> None:
     """Persist a structured runtime event for audits and debugging safely."""
     try:
@@ -134,7 +129,6 @@ def _append_runtime_event(message: str, level: str = "info", root: Path | None =
     except Exception:
         pass
 
-
 def _write_github_actions_summary(message: str) -> None:
     """Append an action summary message when running inside GitHub Actions."""
     if os.environ.get("GITHUB_ACTIONS", "false").lower() != "true":
@@ -148,7 +142,6 @@ def _write_github_actions_summary(message: str) -> None:
     except Exception:
         pass
 
-
 def _emit_status(message: str, level: str = "info", root: Path | None = None) -> None:
     """Emit a timestamped status message to stdout and the persistent agent log."""
     ts = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
@@ -158,7 +151,6 @@ def _emit_status(message: str, level: str = "info", root: Path | None = None) ->
     getattr(logger, level.lower(), logger.info)(message)
     _append_runtime_event(message, level=level, root=root)
     _write_github_actions_summary(line)
-
 
 def _load_state(target: Path | None = None) -> Dict[str, object]:
     state_path = Path(target or ROOT) / ".ollama_agent_state.json"
@@ -174,7 +166,6 @@ def _load_state(target: Path | None = None) -> Dict[str, object]:
             return {"processed": [], "iteration": 0, "total_updated": 0, "resume_checksum": None}
     return {"processed": [], "iteration": 0, "total_updated": 0, "resume_checksum": None}
 
-
 def _save_state(state: Dict[str, object], target: Path | None = None) -> None:
     state_path = Path(target or ROOT) / ".ollama_agent_state.json"
     try:
@@ -183,10 +174,8 @@ def _save_state(state: Dict[str, object], target: Path | None = None) -> None:
     except Exception as e:
         logger.error(f"Failed to write state: {e}")
 
-
 def _hash_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
-
 
 def _resume_file_checksum(root: Path | None = None) -> Optional[str]:
     target = Path(root or ROOT)
@@ -197,7 +186,6 @@ def _resume_file_checksum(root: Path | None = None) -> Optional[str]:
         return _hash_text(resume_path.read_text(encoding="utf-8", errors="ignore"))
     except Exception:
         return None
-
 
 def _resume_file_changed(root: Path | None = None) -> bool:
     target = Path(root or ROOT)
@@ -210,7 +198,6 @@ def _resume_file_changed(root: Path | None = None) -> bool:
         _save_state(state, target)
         return True
     return False
-
 
 def _extract_resume_instructions(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
@@ -229,7 +216,6 @@ def _extract_resume_instructions(root: Path | None = None) -> List[str]:
             if candidate and len(candidate) > 3:
                 instructions.append(candidate)
     return sorted(dict.fromkeys(instructions))  # Ensure unique instructions
-
 
 def _load_migration_plan(root: Path | None = None, filename: str = "COMPONENTS_MIGRATION_PLAN.md") -> List[str]:
     """Load user-provided migration plan tasks from a dedicated markdown file.
@@ -265,11 +251,9 @@ def _load_migration_plan(root: Path | None = None, filename: str = "COMPONENTS_M
             out.append(token)
     return out
 
-
 def _looks_like_resume_command(command: str) -> bool:
     lower = command.strip().lower()
     return bool(re.match(r"^(python|pytest|mypy|flake8|pylint|npm|yarn|pnpm|cargo|go|gradle|make|docker|git|bash)\b", lower))
-
 
 def _trigger_webhook(url: str, event_type: str, payload: Dict[str, object], root: Path | None = None) -> bool:
     """Trigger a webhook endpoint with structured event data for Ollama agent phase updates."""
@@ -298,7 +282,6 @@ def _trigger_webhook(url: str, event_type: str, payload: Dict[str, object], root
     except Exception as e:
         _emit_status(f"Webhook trigger failed for '{event_type}': {e}", level="warning", root=root)
         return False
-
 
 def _invoke_hook(hook_name: str, event_data: Dict[str, object], root: Path | None = None) -> bool:
     """Invoke local hook scripts or commands for Ollama agent phase events."""
@@ -334,7 +317,6 @@ def _invoke_hook(hook_name: str, event_data: Dict[str, object], root: Path | Non
         _emit_status(f"Failed to invoke hook '{hook_name}': {e}", level="warning", root=root)
         return False
 
-
 def _load_webhooks_config(root: Path | None = None) -> Dict[str, List[str]]:
     """Load webhook URLs from .ollama_webhooks.json configuration file."""
     target = Path(root or ROOT)
@@ -345,7 +327,6 @@ def _load_webhooks_config(root: Path | None = None) -> Dict[str, List[str]]:
         return json.loads(config_path.read_text(encoding="utf-8"))
     except Exception:
         return {}
-
 
 def _notify_phase_start(phase_name: str, context: Dict[str, object], root: Path | None = None) -> None:
     """Notify webhooks and invoke hooks at the start of a phase."""
@@ -359,7 +340,6 @@ def _notify_phase_start(phase_name: str, context: Dict[str, object], root: Path 
     _invoke_hook(f"phase_{phase_name}_started", payload, root=target)
     _emit_status(f"Phase '{phase_name}' started", level="info", root=target)
 
-
 def _notify_phase_complete(phase_name: str, context: Dict[str, object], root: Path | None = None) -> None:
     """Notify webhooks and invoke hooks at completion of a phase."""
     target = Path(root or ROOT)
@@ -371,7 +351,6 @@ def _notify_phase_complete(phase_name: str, context: Dict[str, object], root: Pa
 
     _invoke_hook(f"phase_{phase_name}_completed", payload, root=target)
     _emit_status(f"Phase '{phase_name}' completed", level="info", root=target)
-
 
 def _log_phase_debug(phase_name: str, step: str, message: str, data: Dict[str, object] | None = None, root: Path | None = None) -> None:
     """Log detailed debug information for a specific phase and step."""
@@ -396,7 +375,6 @@ def _log_phase_debug(phase_name: str, step: str, message: str, data: Dict[str, o
 
     # Also log to regular audit
     _emit_status(f"[{phase_name}/{step}] {message}", level="debug", root=target)
-
 
 # ============================================================================
 # App Consolidation and Entry Point Detection Functions
@@ -449,7 +427,6 @@ def _scan_for_duplicate_apps(root: Path, app_name: str) -> List[Path]:
 
     return duplicates
 
-
 def _consolidate_app_files(root: Path, app_name: str, canonical: Path) -> Dict[str, object]:
     """Consolidate scattered app files into canonical directory."""
     target = Path(root or ROOT)
@@ -485,18 +462,15 @@ def _consolidate_app_files(root: Path, app_name: str, canonical: Path) -> Dict[s
 
     return {"moved_files": moved_files, "conflicts": conflicts}
 
-
 def _verify_single_app_instance(root: Path, app_name: str) -> bool:
     """Verify only one instance of app exists."""
     duplicates = _scan_for_duplicate_apps(root, app_name)
     return len(duplicates) <= 1
 
-
 def _find_extra_app_instances(root: Path, app_name: str, canonical: Path) -> List[Path]:
     """Find extra app instances that should be removed."""
     duplicates = _scan_for_duplicate_apps(root, app_name)
     return [d for d in duplicates if d != canonical]
-
 
 def _verify_app_directory_structure(app_dir: Path, structure_spec: dict) -> bool:
     """Verify app directory has correct structure."""
@@ -514,7 +488,6 @@ def _verify_app_directory_structure(app_dir: Path, structure_spec: dict) -> bool
         return True
     except Exception:
         return False
-
 
 def _detect_python_entry_points(app_dir: Path) -> List[Path]:
     """Detect Python entry points in app."""
@@ -540,7 +513,6 @@ def _detect_python_entry_points(app_dir: Path) -> List[Path]:
         pass
 
     return entry_points
-
 
 def _detect_javascript_entry_points(app_dir: Path) -> List[Path]:
     """Detect JavaScript entry points in app."""
@@ -569,7 +541,6 @@ def _detect_javascript_entry_points(app_dir: Path) -> List[Path]:
 
     return entry_points
 
-
 def _detect_html_entry_points(app_dir: Path) -> List[Path]:
     """Detect HTML entry files in app."""
     entry_points = []
@@ -583,7 +554,6 @@ def _detect_html_entry_points(app_dir: Path) -> List[Path]:
         pass
 
     return entry_points
-
 
 def _discover_all_entry_files(app_dir: Path) -> List[Path]:
     """Discover all entry files in an app."""
@@ -602,7 +572,6 @@ def _discover_all_entry_files(app_dir: Path) -> List[Path]:
 
     return unique_entries
 
-
 def _list_all_app_entry_points(root: Path) -> Dict[str, List[Path]]:
     """List all entry points across all apps."""
     target = Path(root or ROOT)
@@ -620,7 +589,6 @@ def _list_all_app_entry_points(root: Path) -> Dict[str, List[Path]]:
 
     return app_entry_points
 
-
 def _verify_entry_files_accessible(entry_files: List[Path]) -> bool:
     """Verify entry files are accessible."""
     try:
@@ -632,7 +600,6 @@ def _verify_entry_files_accessible(entry_files: List[Path]) -> bool:
         return True
     except Exception:
         return False
-
 
 def _find_apps_missing_entry_files(root: Path) -> List[Path]:
     """Find apps missing required entry files."""
@@ -661,7 +628,6 @@ def _find_apps_missing_entry_files(root: Path) -> List[Path]:
             pass
 
     return missing_apps
-
 
 def _detect_app_config_conflicts(app_dir: Path) -> List[Dict[str, str]]:
     """Detect conflicts in app configurations."""
@@ -704,7 +670,6 @@ def _detect_app_config_conflicts(app_dir: Path) -> List[Dict[str, str]]:
 
     return conflicts
 
-
 def _suggest_app_file_remediation(app_dir: Path, spec: dict) -> List[str]:
     """Suggest remediation for missing app files."""
     suggestions = []
@@ -721,12 +686,10 @@ def _suggest_app_file_remediation(app_dir: Path, spec: dict) -> List[str]:
 
     return suggestions
 
-
 def _prioritize_app_remediation_tasks(tasks: List[Dict]) -> List[Dict]:
     """Prioritize app remediation tasks by severity."""
     severity_order = {"critical": 0, "high": 1, "medium": 2, "low": 3}
     return sorted(tasks, key=lambda t: severity_order.get(t.get("severity", "low"), 99))
-
 
 def _merge_duplicate_app_instances(root: Path, app_name: str, canonical: Path, duplicates: List[Path]) -> Dict[str, object]:
     """Merge duplicate app instances into canonical."""
@@ -771,7 +734,6 @@ def _merge_duplicate_app_instances(root: Path, app_name: str, canonical: Path, d
         "removed_directories": moved_dirs,
     }
 
-
 def _determine_canonical_app_location(locations: List[Path]) -> Path | None:
     """Determine canonical app location from multiple options."""
     if not locations:
@@ -809,7 +771,6 @@ def _determine_canonical_app_location(locations: List[Path]) -> Path | None:
             best = loc
 
     return best or locations[0]
-
 
 def _detect_unused_files_and_directories(root: Path) -> Dict[str, list]:
     """Comprehensively scan for unused/unreferenced files and empty directories."""
@@ -862,7 +823,6 @@ def _detect_unused_files_and_directories(root: Path) -> Dict[str, list]:
         _emit_status(f"Error scanning for unused files: {exc}", level="warning")
 
     return {"unused_files": unused_files[:100], "empty_directories": empty_dirs[:100]}
-
 
 def _perform_full_app_consolidation(root: Path) -> Dict[str, object]:
     """Perform comprehensive app consolidation with duplicate detection and cleanup."""
@@ -926,7 +886,6 @@ def _perform_full_app_consolidation(root: Path) -> Dict[str, object]:
     _refresh_universal_and_style_docs(target)
     return result
 
-
 def _verify_apps_consolidated(root: Path) -> Dict[str, object]:
     """Verify apps are consolidated correctly."""
     target = Path(root or ROOT)
@@ -951,11 +910,9 @@ def _verify_apps_consolidated(root: Path) -> Dict[str, object]:
         "issues": issues,
     }
 
-
 def _looks_like_resume_command(command: str) -> bool:
     lower = command.strip().lower()
     return bool(re.match(r"^(python|pytest|mypy|flake8|pylint|npm|yarn|pnpm|cargo|go|gradle|make|docker|git|bash)\b", lower))
-
 
 def _looks_like_actionable_task(item: str, root: Path | None = None) -> bool:
     item = item.strip()
@@ -977,7 +934,6 @@ def _looks_like_actionable_task(item: str, root: Path | None = None) -> bool:
             return False
     return False
 
-
 def _item_priority(item: str) -> int:
     item = item.strip()
     if not item:
@@ -998,16 +954,13 @@ def _item_priority(item: str) -> int:
         return 60
     return 70
 
-
 def _prioritize_pending_items(pending: List[str]) -> List[str]:
     indexed = [(idx, item) for idx, item in enumerate(pending)]
     return [item for _, item in sorted(indexed, key=lambda pair: (_item_priority(pair[1]), pair[0]))]
 
-
 def _prioritize_resume_instructions(instructions: List[str]) -> List[str]:
     indexed = [(idx, item) for idx, item in enumerate(instructions)]
     return [item for _, item in sorted(indexed, key=lambda pair: (_item_priority(pair[1]), pair[0]))]
-
 
 def _map_port_to_production(port: int, context: str = "") -> int:
     if port in {80, 3000, 3001, 3002, 3003, 3004, 3005, 3006, 4200, 4201, 5000, 5001, 6000, 8000, 8001, 8002, 8080, 9000, 9001, 9229}:
@@ -1015,7 +968,6 @@ def _map_port_to_production(port: int, context: str = "") -> int:
     if port in {22, 5432, 3306, 27017, 6379, 5672, 9092, 8443, 443}:
         return port
     return port
-
 
 def _normalize_production_ports(root: Path | None = None) -> List[Dict[str, object]]:
     target = Path(root or ROOT)
@@ -1064,7 +1016,6 @@ def _normalize_production_ports(root: Path | None = None) -> List[Dict[str, obje
                 continue
     return changes
 
-
 def _comment_token_for_suffix(suffix: str) -> str:
     return {
         ".py": "#", ".sh": "#", ".ps1": "#", ".js": "//", ".ts": "//",
@@ -1072,10 +1023,8 @@ def _comment_token_for_suffix(suffix: str) -> str:
         ".go": "//", ".rb": "#", ".php": "//",
     }.get(suffix.lower(), "#")
 
-
 def _merge_deletion_log_path(root: Path | None = None) -> Path:
     return Path(root or ROOT) / ".ollama_merge_deletions.json"
-
 
 def _load_merge_deletion_log(root: Path | None = None) -> List[Dict[str, object]]:
     target = Path(root or ROOT)
@@ -1090,12 +1039,10 @@ def _load_merge_deletion_log(root: Path | None = None) -> List[Dict[str, object]
         pass
     return []
 
-
 def _write_merge_deletion_log(entries: List[Dict[str, object]], root: Path | None = None) -> None:
     target = Path(root or ROOT)
     path = _merge_deletion_log_path(target)
     path.write_text(json.dumps(entries, indent=2), encoding="utf-8")
-
 
 def collect_official_deployment_references(root: Path | None = None) -> List[Dict[str, object]]:
     """Return a curated list of official deployment platform references for autonomous deployment checks."""
@@ -1131,7 +1078,6 @@ def collect_official_deployment_references(root: Path | None = None) -> List[Dic
                 ref["http_status"] = f"unavailable:{exc}"
     return references
 
-
 def collect_deployment_verification_inventory(root: Path | None = None) -> List[Dict[str, object]]:
     """Collect deployment-related files and configuration hints for verification and issue triage."""
     target = Path(root or ROOT)
@@ -1165,7 +1111,6 @@ def collect_deployment_verification_inventory(root: Path | None = None) -> List[
                     target).as_posix()], "notes": "Workflow contains deployment automation."})
 
     return sorted(inventory, key=lambda item: str(item["platform"]).lower())
-
 
 def update_deployment_verification_manifest(root: Path | None = None) -> Path:
     """Write a deployment verification manifest with guidance for successful deployment and issue triage."""
@@ -1209,13 +1154,11 @@ def update_deployment_verification_manifest(root: Path | None = None) -> Path:
     _emit_status(f"Updated deployment verification manifest at {manifest_path}", level="info")
     return manifest_path
 
-
 def _extract_urls_from_text(text: str) -> List[str]:
     urls: List[str] = []
     for match in re.findall(r"https?://[^\)\]\s\"']+", text):
         urls.append(match.strip().rstrip(')\]\"\''))
     return sorted(dict.fromkeys(urls))
-
 
 def _collect_repo_research_topics(root: Path | None = None) -> List[Dict[str, object]]:
     target = Path(root or ROOT)
@@ -1329,10 +1272,8 @@ def _collect_repo_research_topics(root: Path | None = None) -> List[Dict[str, ob
             )
     return sorted(topics, key=lambda item: (item.get("platform"), item.get("docs_url")))
 
-
 def _collect_research_topics_from_repo(root: Path | None = None) -> List[Dict[str, object]]:
     return _collect_repo_research_topics(root)
-
 
 def collect_external_research_resources(root: Path | None = None) -> List[Dict[str, object]]:
     """Collect external research and platform documentation references for verification."""
@@ -1394,7 +1335,6 @@ def collect_external_research_resources(root: Path | None = None) -> List[Dict[s
                     entry["http_status"] = "unavailable"
     return resources
 
-
 def update_external_research_manifest(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
     target.mkdir(parents=True, exist_ok=True)
@@ -1430,7 +1370,6 @@ def update_external_research_manifest(root: Path | None = None) -> Path:
     manifest_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     _emit_status(f"Updated external research manifest at {manifest_path}", level="info")
     return manifest_path
-
 
 def update_research_task_manifest(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
@@ -1500,7 +1439,6 @@ def update_research_task_manifest(root: Path | None = None) -> Path:
     _emit_status(f"Updated research task manifest at {manifest_path}", level="info")
     return manifest_path
 
-
 def collect_feature_and_percentage_inventory(root: Path | None = None) -> List[Dict[str, object]]:
     """Collect feature and percentage-related hints from repository files for documentation and automation coverage."""
     target = Path(root or ROOT)
@@ -1546,7 +1484,6 @@ def collect_feature_and_percentage_inventory(root: Path | None = None) -> List[D
 
     return inventory
 
-
 def update_feature_and_percentage_manifest(root: Path | None = None) -> Path:
     """Write a documentation manifest covering global features and percentage-related values."""
     target = Path(root or ROOT)
@@ -1581,7 +1518,6 @@ def update_feature_and_percentage_manifest(root: Path | None = None) -> Path:
     manifest_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     _emit_status(f"Updated feature/percentage manifest at {manifest_path}", level="info")
     return manifest_path
-
 
 def _write_bitget_credential_guide(root: Path | None = None) -> Path:
     """Write a dedicated Bitget guidance document with credential storage and runtime instructions."""
@@ -1619,7 +1555,6 @@ This file is the canonical reference for Bitget credentials, runtime aliases, an
     guide_path.write_text(content, encoding="utf-8")
     _emit_status(f"Updated Bitget guidance document at {guide_path}", level="info")
     return guide_path
-
 
 def merge_unused_files_and_update_manifest(root: Path | None = None) -> List[Dict[str, object]]:
     """Merge unreferenced archive/backup files into the merge manifest and delete the source file after merge."""
@@ -1694,7 +1629,6 @@ def merge_unused_files_and_update_manifest(root: Path | None = None) -> List[Dic
     update_documentation_manifests(target, inventory=collect_route_inventory(target))
     return merged_entries
 
-
 def collect_merge_inventory(root: Path | None = None) -> List[Dict[str, object]]:
     """Group similar files safely while avoiding excluded directories."""
     target = Path(root or ROOT)
@@ -1724,7 +1658,6 @@ def collect_merge_inventory(root: Path | None = None) -> List[Dict[str, object]]
         inventory.append({"group": base, "paths": unique_paths})
 
     return inventory
-
 
 def collect_route_inventory(root: Path | None = None) -> List[Dict[str, object]]:
     """Collect route definitions safely without recursive system lockups."""
@@ -1770,7 +1703,6 @@ def collect_route_inventory(root: Path | None = None) -> List[Dict[str, object]]
             inventory.append({"path": rel, "route": route, "methods": methods})
 
     return sorted(inventory, key=lambda item: str(item["route"]))
-
 
 def collect_finance_and_credential_inventory(root: Path | None = None) -> List[Dict[str, object]]:
     """Discover finance/provider integrations from repo files without exposing secret values."""
@@ -1860,7 +1792,6 @@ def collect_finance_and_credential_inventory(root: Path | None = None) -> List[D
 
     return sorted(inventory, key=lambda item: str(item["provider"]).lower())
 
-
 def replace_paypal_with_paypal(root: Path | None = None) -> Dict[str, object]:
     """Replace PayPal-related provider names and environment variables with PayPal equivalents across repo text files and rename legacy file names to the canonical PayPal form."""
     target = Path(root or ROOT)
@@ -1924,7 +1855,6 @@ def replace_paypal_with_paypal(root: Path | None = None) -> Dict[str, object]:
     )
     return {"files_updated": len(updated_files), "replacements": replacements_applied, "updated_files": updated_files}
 
-
 def collect_nonproduction_inventory(root: Path | None = None) -> List[Dict[str, object]]:
     """Scan every repository directory for non-production markers and return a full inventory."""
     target = Path(root or ROOT)
@@ -1950,7 +1880,6 @@ def collect_nonproduction_inventory(root: Path | None = None) -> List[Dict[str, 
             "severity": "medium",
         })
     return sorted(inventory, key=lambda item: item["path"])
-
 
 def ensure_test_coverage(root: Path | None = None) -> Dict[str, object]:
     """Ensure Python source files have a corresponding test module when missing."""
@@ -1988,7 +1917,6 @@ def ensure_test_coverage(root: Path | None = None) -> Dict[str, object]:
             test_path.write_text("\n".join(test_content) + "\n", encoding="utf-8")
             created.append(test_path.relative_to(target).as_posix())
     return {"created": len(created), "files": created}
-
 
 def update_finance_and_credential_manifests(root: Path | None = None, require_master_auth: bool = True) -> Dict[str, Path]:
     """Create a secure finance/credential manifest describing discovered providers and provisioning guidance."""
@@ -2033,7 +1961,6 @@ def update_finance_and_credential_manifests(root: Path | None = None, require_ma
     _emit_status(f"Updated finance/credential manifest at {manifest_path}", level="info")
     return {"manifest": manifest_path}
 
-
 def _collect_docs_inventory(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
     docs_files: List[Path] = []
@@ -2043,7 +1970,6 @@ def _collect_docs_inventory(root: Path | None = None) -> List[str]:
     docs_files.extend([p for p in target.rglob("*.md") if p.is_file()
                       and not _is_excluded_path(p, target) and p.parent == target])
     return sorted({p.relative_to(target).as_posix() for p in docs_files})
-
 
 def update_documentation_manifests(
     root: Path | None = None,
@@ -2124,7 +2050,6 @@ def update_documentation_manifests(
 
     return docs
 
-
 def _safe_file_write(path: Path, content: str) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
@@ -2134,7 +2059,6 @@ def _safe_file_write(path: Path, content: str) -> Path:
         rel_path = path
     _emit_status(f"Created or refreshed {rel_path}", level="info")
     return path
-
 
 def _scan_old_component_references(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
@@ -2154,7 +2078,6 @@ def _scan_old_component_references(root: Path | None = None) -> List[str]:
         if any(pattern.search(text) for pattern in patterns):
             refs.add(path.relative_to(target).as_posix())
     return sorted(refs)
-
 
 def _refresh_component_documentation(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
@@ -2217,7 +2140,6 @@ def _refresh_component_documentation(root: Path | None = None) -> List[str]:
     _build_all_ports_doc(target)
     return changed
 
-
 def _create_components_migration_plan(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
     plan_path = target / "COMPONENTS_MIGRATION_PLAN.md"
@@ -2249,14 +2171,12 @@ def _create_components_migration_plan(root: Path | None = None) -> Path:
     _emit_status(f"Created component migration plan at {plan_path.relative_to(target)}", level="info")
     return plan_path
 
-
 def _parse_python_file(path: Path) -> Optional[ast.AST]:
     try:
         text = path.read_text(encoding="utf-8", errors="ignore")
         return ast.parse(text, filename=str(path))
     except Exception:
         return None
-
 
 def _backup_self_script(root: Path | None = None) -> Optional[Path]:
     target = Path(root or ROOT)
@@ -2274,7 +2194,6 @@ def _backup_self_script(root: Path | None = None) -> Optional[Path]:
     except Exception as exc:
         _emit_status(f"Failed to back up self script: {exc}", level="warning")
         return None
-
 
 def _auto_fix_self_script_text(text: str) -> str:
     lines = text.splitlines()
@@ -2304,7 +2223,6 @@ def _auto_fix_self_script_text(text: str) -> str:
         fixed_text = fixed_text.rstrip() + "\n\nif __name__ == \"__main__\":\n    main()\n"
     fixed_text = fixed_text.strip() + "\n"
     return fixed_text
-
 
 def _self_verify_and_fix(root: Path | None = None) -> bool:
     target = Path(root or ROOT)
@@ -2336,7 +2254,6 @@ def _self_verify_and_fix(root: Path | None = None) -> bool:
         _emit_status(f"Failed to write repaired self script: {exc}", level="warning")
     return False
 
-
 def _self_restart_if_updated(root: Path | None = None) -> bool:
     target = Path(root or ROOT)
     if os.environ.get("OLLAMA_SELF_RESTARTED", "0") == "1":
@@ -2346,7 +2263,6 @@ def _self_restart_if_updated(root: Path | None = None) -> bool:
         _emit_status("Self-repair complete; restarting Ollama autonomous agent.", level="info")
         os.execv(sys.executable, [sys.executable] + sys.argv)
     return False
-
 
 def _self_update_script(root: Path | None = None) -> bool:
     target = Path(root or ROOT)
@@ -2370,14 +2286,12 @@ def _self_update_script(root: Path | None = None) -> bool:
             _emit_status(f"Failed to write self-updated script: {exc}", level="warning")
     return False
 
-
 def _ensure_self_update_capabilities(root: Path | None = None) -> None:
     target = Path(root or ROOT)
     if _self_update_script(target):
         _emit_status("Self-update detected and applied", level="info")
     else:
         _emit_status("Self-update check completed with no changes", level="info")
-
 
 def _ensure_lib_production_ready(root: Path | None = None) -> List[str]:
     """Validate that `lib/*.ts` production modules exist and appear production-ready.
@@ -2426,7 +2340,6 @@ def _ensure_lib_production_ready(root: Path | None = None) -> List[str]:
     _emit_status(f"Lib production readiness: {', '.join(status)}", level="info")
     return status
 
-
 def _ensure_local_helper_server(port: int = 8080, host: str = "127.0.0.1", timeout: float = 5.0) -> bool:
     """Ensure the local QM OI helper server is available for verification tasks."""
     os.environ["QMOI_HELPER_AUTOSTART"] = "1"
@@ -2467,12 +2380,10 @@ def _ensure_local_helper_server(port: int = 8080, host: str = "127.0.0.1", timeo
     _emit_status("Local helper server did not respond in time", level="warning")
     return False
 
-
 def _ensure_ollama_client() -> bool:
     if shutil.which("ollama"):
         return True
     return False
-
 
 def _discover_autonomous_commands(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
@@ -2521,7 +2432,6 @@ def _discover_autonomous_commands(root: Path | None = None) -> List[str]:
         commands.add(" ".join([sys.executable, "-m", "compileall", "-q", "."]))
 
     return sorted(commands)
-
 
 def _run_safe_command(command: str, root: Path | None = None) -> Dict[str, object]:
     target = Path(root or ROOT)
@@ -2574,11 +2484,9 @@ def _run_safe_command(command: str, root: Path | None = None) -> Dict[str, objec
     _emit_status(f"Executed resume command: {command} status={result['status']}", level="info")
     return result
 
-
 def _is_verification_command(command: str) -> bool:
     lower = command.lower()
     return bool(re.search(r"\b(pytest|compileall|mypy|flake8|pylint|npm(?: run)? test|yarn(?: run)? test|pnpm(?: run)? test|cargo test|go test|gradle test)\b", lower))
-
 
 def _execute_resume_instructions(root: Path | None = None, instructions: List[str] | None = None) -> List[Dict[str, object]]:
     target = Path(root or ROOT)
@@ -2603,7 +2511,6 @@ def _execute_resume_instructions(root: Path | None = None, instructions: List[st
         results.append(result)
     return results
 
-
 def _backup_resume(resume_path: Path) -> Optional[Path]:
     if not resume_path.exists():
         return None
@@ -2619,7 +2526,6 @@ def _backup_resume(resume_path: Path) -> Optional[Path]:
         _emit_status(f"Failed to back up resume file: {exc}", level="warning")
         return None
 
-
 def _count_resume_statuses(text: str) -> Dict[str, int]:
     counts = {"done": 0, "verify": 0, "confirmed": 0, "pending": 0, "other": 0}
     for line in text.splitlines():
@@ -2634,7 +2540,6 @@ def _count_resume_statuses(text: str) -> Dict[str, int]:
         elif line.strip().startswith("-"):
             counts["other"] += 1
     return counts
-
 
 def _build_outstanding_work_section() -> List[str]:
     return [
@@ -2654,7 +2559,6 @@ def _build_outstanding_work_section() -> List[str]:
         "- Treat final build/test verification as the last step: only execute compile and test checks once all other repair, documentation, and manifest work is complete.",
         "",
     ]
-
 
 def _generate_resume_instruction_lines() -> List[str]:
     return [
@@ -2682,7 +2586,6 @@ def _generate_resume_instruction_lines() -> List[str]:
         "- Never ignore newly discovered required work, missing scripts, or production readiness markers.",
         "",
     ]
-
 
 def _update_resume_progress(
     resume_path: Path,
@@ -2782,7 +2685,6 @@ def _update_resume_progress(
     resume_path.write_text(updated, encoding="utf-8")
     _emit_status(f"Updated resumefromhere progress: {resume_path}", level="info")
 
-
 def _should_stop_autonomous_run(resume_path: Path, pending: List[str]) -> bool:
     if pending:
         return False
@@ -2790,7 +2692,6 @@ def _should_stop_autonomous_run(resume_path: Path, pending: List[str]) -> bool:
         return False
     text = resume_path.read_text(encoding="utf-8", errors="ignore")
     return "[CONFIRMED]" in text
-
 
 def _build_markdown_inventory(root: Path | None = None) -> List[Path]:
     target = Path(root or ROOT)
@@ -2802,7 +2703,6 @@ def _build_markdown_inventory(root: Path | None = None) -> List[Path]:
             continue
         md_paths.append(path)
     return md_paths
-
 
 def _extract_python_references_from_markdown(path: Path) -> List[str]:
     target = path.parent
@@ -2816,7 +2716,6 @@ def _extract_python_references_from_markdown(path: Path) -> List[str]:
     for match in re.findall(r"\b([\w\-/]+\.py)\b", text):
         results.append(match)
     return sorted(dict.fromkeys(results))
-
 
 def _scan_download_app_release_docs(root: Path | None = None) -> List[Path]:
     target = Path(root or ROOT)
@@ -2834,7 +2733,6 @@ def _scan_download_app_release_docs(root: Path | None = None) -> List[Path]:
         if any(term in text for term in patterns):
             result.append(path)
     return sorted(set(result))
-
 
 def _ensure_download_app_release_tasks(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
@@ -2859,7 +2757,6 @@ def _ensure_download_app_release_tasks(root: Path | None = None) -> List[str]:
                     tasks.append(f"MISSING_REQUIRED_FILE:{ref_path.relative_to(target).as_posix()}")
     return sorted(dict.fromkeys(tasks))
 
-
 def _scan_backend_docs(root: Path | None = None) -> List[Path]:
     target = Path(root or ROOT)
     result = []
@@ -2876,7 +2773,6 @@ def _scan_backend_docs(root: Path | None = None) -> List[Path]:
             if "backend" in text and any(app in text for app in ["qalpha", "qmoi", "qmoi ai", "qmoiapace", "qcity"]):
                 result.append(path)
     return sorted(set(result))
-
 
 def _scan_frontend_docs(root: Path | None = None) -> List[Path]:
     target = Path(root or ROOT)
@@ -2895,7 +2791,6 @@ def _scan_frontend_docs(root: Path | None = None) -> List[Path]:
                 result.append(path)
     return sorted(set(result))
 
-
 def _build_all_backend_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
     paths = _scan_backend_docs(target)
@@ -2909,7 +2804,6 @@ def _build_all_backend_doc(root: Path | None = None) -> Path:
     lines.append("")
     return _safe_file_write(target / "ALLBACKEND.md", "\n".join(lines))
 
-
 def _build_all_ui_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
     paths = _scan_frontend_docs(target)
@@ -2922,7 +2816,6 @@ def _build_all_ui_doc(root: Path | None = None) -> Path:
         lines.append("- No frontend UI documentation discovered.")
     lines.append("")
     return _safe_file_write(target / "ALLUI.md", "\n".join(lines))
-
 
 def _build_all_frontend_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
@@ -2941,7 +2834,6 @@ def _build_all_frontend_doc(root: Path | None = None) -> Path:
         ""
     ]
     return _safe_file_write(target / "ALLFRONTEND.md", "\n".join(lines))
-
 
 def _build_all_auto_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
@@ -3022,7 +2914,6 @@ def _build_all_auto_doc(root: Path | None = None) -> Path:
     ])
     return _safe_file_write(target / "ALLAUTO.md", "\n".join(lines))
 
-
 def _collect_automation_inventory(root: Path | None = None) -> Dict[str, List[str]]:
     target = Path(root or ROOT)
     inventory: Dict[str, List[str]] = {
@@ -3068,7 +2959,6 @@ def _collect_automation_inventory(root: Path | None = None) -> Dict[str, List[st
     inventory["missing_automations"] = sorted(dict.fromkeys(inventory["missing_automations"]))
     return inventory
 
-
 def _has_test_for_source(path: Path, target: Path) -> bool:
     rel = path.relative_to(target)
     test_root = target / "tests"
@@ -3091,7 +2981,6 @@ def _has_test_for_source(path: Path, target: Path) -> bool:
             return True
     return False
 
-
 def _detect_missing_tests(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
     missing: List[str] = []
@@ -3109,7 +2998,6 @@ def _detect_missing_tests(root: Path | None = None) -> List[str]:
         if not _has_test_for_source(path, target):
             missing.append(path.relative_to(target).as_posix())
     return sorted(dict.fromkeys(missing))
-
 
 def _detect_minimal_implementations(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
@@ -3133,7 +3021,6 @@ def _detect_minimal_implementations(root: Path | None = None) -> List[str]:
             minimal.append(path.relative_to(target).as_posix())
     return sorted(dict.fromkeys(minimal))
 
-
 def _merge_required_groups(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
     groups = collect_merge_inventory(target)
@@ -3141,7 +3028,6 @@ def _merge_required_groups(root: Path | None = None) -> List[str]:
     for entry in groups:
         result.append(entry["group"])
     return sorted(result)
-
 
 def _build_missing_tests_stub(path: Path, root: Path | None = None) -> Optional[Path]:
     target = Path(root or ROOT)
@@ -3167,7 +3053,6 @@ def _build_missing_tests_stub(path: Path, root: Path | None = None) -> Optional[
         return candidate
     return None
 
-
 def _merge_group_note(root: Path | None = None, group: str = "") -> None:
     target = Path(root or ROOT)
     merge_path = target / "MERGE.md"
@@ -3175,7 +3060,6 @@ def _merge_group_note(root: Path | None = None, group: str = "") -> None:
     marker = f"- MERGE REQUIRED GROUP: {group}"
     if marker not in content:
         merge_path.write_text(content.rstrip() + "\n" + marker + "\n", encoding="utf-8")
-
 
 def _merge_workflow_yamls(root: Path | None = None) -> Dict[str, object]:
     target = Path(root or ROOT)
@@ -3227,7 +3111,6 @@ def _merge_workflow_yamls(root: Path | None = None) -> Dict[str, object]:
         )
     return {"merged": merged, "deleted": deleted, "report": report}
 
-
 def _build_workflows_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
     workflow_dir = target / ".github" / "workflows"
@@ -3270,7 +3153,6 @@ def _build_workflows_doc(root: Path | None = None) -> Path:
     ])
     return _safe_file_write(target / "WORKFLOWS.md", "\n".join(lines))
 
-
 def _build_all_md_files_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
     md_files = sorted([p.relative_to(target).as_posix() for p in target.rglob("*.md") if p.is_file()
@@ -3290,7 +3172,6 @@ def _build_all_md_files_doc(root: Path | None = None) -> Path:
     lines.extend(
         ["", "## Notes", "- Keep this inventory synchronized with ALLLINKS.md and the agent's documentation manifests.", ""])
     return _safe_file_write(target / "ALLMDFILES.md", "\n".join(lines))
-
 
 def _build_all_links_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
@@ -3319,7 +3200,6 @@ def _build_all_links_doc(root: Path | None = None) -> Path:
     lines.extend(["", "## Maintenance guidance", "- Keep these references synchronized with ALLMDFILES.md, ALLUI.md, and the progressive web app documentation surfaces.",
                  "- Preserve production app HTML assets in their intended directories for qmoi ai, qmoi space, qcity, and qalpha.", ""])
     return _safe_file_write(target / "ALLLINKS.md", "\n".join(lines))
-
 
 def _build_financial_manager_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
@@ -3358,7 +3238,6 @@ def _build_financial_manager_doc(root: Path | None = None) -> Path:
     ])
     return _safe_file_write(target / "FINANCIALMANAGER.md", "\n".join(lines))
 
-
 def _build_standard1_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
     lines = [
@@ -3377,7 +3256,6 @@ def _build_standard1_doc(root: Path | None = None) -> Path:
         "",
     ]
     return _safe_file_write(target / "STANDARD1.md", "\n".join(lines))
-
 
 def _build_memory_awareness_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
@@ -3415,7 +3293,6 @@ def _build_memory_awareness_doc(root: Path | None = None) -> Path:
     ]
     return _safe_file_write(target / "QMOI_MEMORY_AWARENESS_SYSTEM.md", "\n".join(lines))
 
-
 def _scan_ports(root: Path | None = None) -> Dict[str, Set[str]]:
     target = Path(root or ROOT)
     ports: Dict[str, Set[str]] = {}
@@ -3441,7 +3318,6 @@ def _scan_ports(root: Path | None = None) -> Dict[str, Set[str]]:
                 if 1 <= int(match) <= 65535:
                     ports.setdefault(match, set()).add(f"{path.relative_to(target)}:{i}")
     return ports
-
 
 def _build_all_ports_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
@@ -3469,7 +3345,6 @@ def _build_all_ports_doc(root: Path | None = None) -> Path:
     lines.append("- Use environment variables and secure access controls for all public-facing ports.")
     lines.append("")
     return _safe_file_write(target / "ALLPORTS.md", "\n".join(lines))
-
 
 def _refresh_app_docs_for_consolidated_app(root: Path | None, app_name: str, canonical: Path) -> None:
     target = Path(root or ROOT)
@@ -3540,7 +3415,6 @@ def _refresh_app_docs_for_consolidated_app(root: Path | None, app_name: str, can
     ])
     _safe_file_write(ui_doc_path, "\n".join(ui_lines))
 
-
 def _refresh_universal_and_style_docs(root: Path | None = None) -> None:
     target = Path(root or ROOT)
     universals_path = target / "UNIVERSALS.md"
@@ -3597,7 +3471,6 @@ def _refresh_universal_and_style_docs(root: Path | None = None) -> None:
     ])
     _safe_file_write(styles_path, "\n".join(styles_lines))
 
-
 def _build_ollama_agent_doc(root: Path | None = None) -> Path:
     target = Path(root or ROOT)
     lines = [
@@ -3652,7 +3525,6 @@ def _build_ollama_agent_doc(root: Path | None = None) -> Path:
     ]
     return _safe_file_write(target / "ollama.md", "\n".join(lines))
 
-
 def _ensure_resume_file_header(resume_path: Path) -> None:
     if not resume_path.exists():
         return
@@ -3667,7 +3539,6 @@ def _ensure_resume_file_header(resume_path: Path) -> None:
             _emit_status(f"Normalized resumefromhere.txt header at {resume_path}", level="info")
         except Exception:
             pass
-
 
 def _build_plan_and_docs(root: Path | None = None) -> Dict[str, Path]:
     target = Path(root or ROOT)
@@ -3721,10 +3592,8 @@ def _build_plan_and_docs(root: Path | None = None) -> Dict[str, Path]:
     _ensure_required_doc_files(target)
     return paths
 
-
 def build_plan_and_docs(root: Path | None = None) -> Dict[str, Path]:
     return _build_plan_and_docs(root)
-
 
 def _collect_missing_required_files(target: Path) -> List[str]:
     required_files = [
@@ -3762,7 +3631,6 @@ def _collect_missing_required_files(target: Path) -> List[str]:
             missing.append(filename)
     return missing
 
-
 def _collect_workflow_token_gaps(target: Path) -> List[str]:
     workflow_dir = target / ".github" / "workflows"
     if not workflow_dir.exists():
@@ -3779,7 +3647,6 @@ def _collect_workflow_token_gaps(target: Path) -> List[str]:
             gaps.append(workflow_path.relative_to(target).as_posix())
     return gaps
 
-
 def _scan_wifi_and_captive_wifi_tasks(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
     tasks: List[str] = []
@@ -3791,7 +3658,6 @@ def _scan_wifi_and_captive_wifi_tasks(root: Path | None = None) -> List[str]:
             "TASK:WIFI_FEATURES_AUTOMATION",
         ])
     return sorted(dict.fromkeys(tasks))
-
 
 def _scan_component_gallery_tasks(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
@@ -3814,7 +3680,6 @@ def _scan_component_gallery_tasks(root: Path | None = None) -> List[str]:
         tasks.extend(sorted(refs))
     return sorted(dict.fromkeys(tasks))
 
-
 def _scan_legacy_auth_theme_tasks(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
     tasks: Set[str] = set()
@@ -3827,7 +3692,6 @@ def _scan_legacy_auth_theme_tasks(root: Path | None = None) -> List[str]:
         tasks.add("TASK:MERGE_OLD_AUTH_THEME_IMPLS_INTO_UNIVERSALS_STYLES")
     return sorted(tasks)
 
-
 def _ensure_ui_docs_updated(root: Path | None = None) -> None:
     target = Path(root or ROOT)
     docs = ["QMOIAIUI.md", "QMOISPACEUI.md", "QCITYUI.md", "QALPHAUI.md"]
@@ -3838,7 +3702,6 @@ def _ensure_ui_docs_updated(root: Path | None = None) -> None:
         if not path.exists() or path.read_text(encoding="utf-8", errors="ignore").strip() == "":
             path.write_text("\n".join(content), encoding="utf-8")
             _emit_status(f"Created missing UI guidance document: {doc_name}", level="info")
-
 
 def _write_directory_doc_section(path: Path, section_title: str, lines: List[str]) -> None:
     try:
@@ -3853,7 +3716,6 @@ def _write_directory_doc_section(path: Path, section_title: str, lines: List[str
         _emit_status(f"Updated directory doc with autonomous workflow integration: {path.name}", level="info")
     except Exception:
         pass
-
 
 def _ensure_directory_docs(root: Path | None = None) -> None:
     target = Path(root or ROOT)
@@ -3874,7 +3736,6 @@ def _ensure_directory_docs(root: Path | None = None) -> None:
                 pass
             continue
         _write_directory_doc_section(path, section_title, lines)
-
 
 def _ensure_ollama_trigger_workflow(root: Path | None = None) -> None:
     target = Path(root or ROOT)
@@ -4081,7 +3942,6 @@ jobs:
         except Exception as exc:
             _emit_status(f"Failed to verify ollamatrigger workflow: {exc}", level="warning")
 
-
 def _ensure_ollama_autonomous_agent_workflow(root: Path | None = None) -> None:
     target = Path(root or ROOT)
     workflow_dir = target / ".github" / "workflows"
@@ -4215,7 +4075,6 @@ jobs:
         except Exception as exc:
             _emit_status(f"Failed to verify ollama-autonomous-agent workflow: {exc}", level="warning")
 
-
 def _ensure_required_doc_files(root: Path | None = None) -> None:
     target = Path(root or ROOT)
     _build_all_backend_doc(target)
@@ -4280,7 +4139,6 @@ def _ensure_required_doc_files(root: Path | None = None) -> None:
     webhooks = _safe_file_write(target / "WEBHOOKS.md", "\n".join(webhooks_lines))
     return {"all_hooks": all_hooks, "webhooks": webhooks}
 
-
 def update_hook_and_webhook_manifests(root: Path | None = None) -> Dict[str, Path]:
     target = Path(root or ROOT)
     target.mkdir(parents=True, exist_ok=True)
@@ -4327,7 +4185,6 @@ def update_hook_and_webhook_manifests(root: Path | None = None) -> Dict[str, Pat
     ]
     webhooks = _safe_file_write(target / "WEBHOOKS.md", "\n".join(webhooks_lines))
     return {"all_hooks": all_hooks, "webhooks": webhooks}
-
 
 def update_production_manifests(root: Path | None = None) -> Dict[str, Path]:
     target = Path(root or ROOT)
@@ -4412,7 +4269,6 @@ def update_production_manifests(root: Path | None = None) -> Dict[str, Path]:
     _safe_file_write(target / "productionenhanced.md", "\n".join(enhanced_lines) + "\n")
     return {"docs": target / "DOCS.md", "production": target / "production.md", "productionenhanced": target / "productionenhanced.md"}
 
-
 def _verify_required_artifacts(root: Path | None = None) -> List[str]:
     target = Path(root or ROOT)
     required = [
@@ -4445,7 +4301,6 @@ def _verify_required_artifacts(root: Path | None = None) -> List[str]:
             _emit_status(f"Missing or empty verification artifact: {path.name}", level="warning")
     _emit_status(f"Verified required artifacts: {', '.join(verified)}", level="info")
     return verified
-
 
 def scan_for_work(root: Path | None = None) -> List[str]:
     """Scan the repository for actionable work items.
@@ -4528,7 +4383,6 @@ def scan_for_work(root: Path | None = None) -> List[str]:
     # Deduplicate and return
     return list(dict.fromkeys(pending))
 
-
 def _should_run_full_verification() -> bool:
     raw = os.environ.get("RUN_FULL_TESTS", "")
     if raw.lower() in {"1", "true", "yes", "on"}:
@@ -4536,7 +4390,6 @@ def _should_run_full_verification() -> bool:
     if os.environ.get("GITHUB_ACTIONS", "") == "true":
         return True
     return False
-
 
 def run_agent(root: Path | None = None) -> Dict[str, object]:
     target = Path(root or ROOT)
@@ -4844,7 +4697,6 @@ def run_agent(root: Path | None = None) -> Dict[str, object]:
         _emit_status(f"Failed to commit and push autonomous state: {exc}", level="warning")
     return result
 
-
 def collect_error_inventory(root: Path | None = None) -> List[Dict[str, object]]:
     """Collect error-prone files safely with strict directory exclusion filters."""
     target = Path(root or ROOT)
@@ -4875,7 +4727,6 @@ def collect_error_inventory(root: Path | None = None) -> List[Dict[str, object]]
         })
     _emit_status(f"Collected {len(inventory)} error markers", level="info")
     return sorted(inventory, key=lambda item: item["path"])
-
 
 def update_all_errors_manifest(root: Path | None = None, issues: List[Dict[str, object]] | None = None, branch: str | None = None) -> Path:
     """Create or refresh ALLERRORS.md with optimized error remediation tracking."""
@@ -4920,7 +4771,6 @@ def update_all_errors_manifest(root: Path | None = None, issues: List[Dict[str, 
     error_path.write_text(text, encoding="utf-8")
     _emit_status(f"Wrote remediation inventory to {error_path}", level="info")
     return error_path
-
 
 def run_repo_verification(root: Path | None = None) -> Dict[str, object]:
     """Run lightweight code checks with strict time limits to prevent hanging."""
@@ -4975,7 +4825,6 @@ def run_repo_verification(root: Path | None = None) -> Dict[str, object]:
         f"Verification completed with python={results['python']['status']} tests={results['tests']['status']}", level="info")
     return results
 
-
 def write_live_notification_summary(root: Path | None = None, message: str = "", branch: str | None = None) -> Path:
     """Write an activity feed update safely while preserving prior history."""
     target = Path(root or ROOT)
@@ -5006,7 +4855,6 @@ def write_live_notification_summary(root: Path | None = None, message: str = "",
     feed_path.write_text("\n".join(body) + "\n", encoding="utf-8")
     _emit_status(f"Updated live notification feed at {feed_path}", level="info")
     return feed_path
-
 
 def _execute_task_on_file(relpath: str, root: Path | None = None) -> Dict[str, object]:
     """Attempt safe, non-blocking file updates for production readiness."""
@@ -5062,7 +4910,6 @@ def _execute_task_on_file(relpath: str, root: Path | None = None) -> Dict[str, o
         result["description"] = "no-action"
 
     return result
-
 
 def process_pending_items(pending: List[str], root: Path | None = None) -> Dict[str, List[str]]:
     """Attempt safe automated remediation for pending items.
@@ -5280,7 +5127,6 @@ def process_pending_items(pending: List[str], root: Path | None = None) -> Dict[
 
     return {"done": done, "verified": verified, "confirmed": confirmed, "still_pending": still_pending, "details": details}
 
-
 def generate_pending_report(pending: List[str], root: Path | None = None) -> str:
     target = Path(root or ROOT)
     lines: List[str] = []
@@ -5304,7 +5150,6 @@ def generate_pending_report(pending: List[str], root: Path | None = None) -> str
     except Exception:
         pass
     return report
-
 
 def _scan_archives_and_merge(root: Path | None = None) -> List[str]:
     """Scan archive/backup directories and merge useful files into the repo.
@@ -5351,7 +5196,6 @@ def _scan_archives_and_merge(root: Path | None = None) -> List[str]:
         _emit_status(f"Merged {len(merged)} files from archive directories", level="info")
     return merged
 
-
 def _write_archive_merge_report(merged: List[str], root: Path | None = None) -> Optional[Path]:
     """Write a simple report summarizing merged archive files grouped by directory."""
     if not merged:
@@ -5376,7 +5220,6 @@ def _write_archive_merge_report(merged: List[str], root: Path | None = None) -> 
         return report
     except Exception:
         return None
-
 
 def consolidate_html_assets_and_pw_as(root: Path | None = None) -> Dict[str, int]:
     """Consolidate HTML and PWA assets into canonical pwa_apps directories.
@@ -5479,7 +5322,6 @@ def consolidate_html_assets_and_pw_as(root: Path | None = None) -> Dict[str, int
 
     return {"moved": moved, "removed": removed, "created": created}
 
-
 def ensure_tests_for_file(path: Path, root: Path | None = None) -> Optional[Path]:
     """Create or update an enhanced pytest for the given Python file.
 
@@ -5520,7 +5362,6 @@ def ensure_tests_for_file(path: Path, root: Path | None = None) -> Optional[Path
         return test_path
     except Exception:
         return None
-
 
 def _update_journey_map_tracks(resume_path: Path, summary: Dict[str, object]) -> None:
     """Prepend or replace the JOURNEY MAP TRACKS section at the top of resumefromhere.txt.
@@ -5574,7 +5415,6 @@ def _update_journey_map_tracks(resume_path: Path, summary: Dict[str, object]) ->
         _emit_status(f"Updated JOURNEY MAP TRACKS in {resume_path}", level="info")
     except Exception:
         pass
-
 
 def _process_pending_items(pending: List[str], root: Path | None = None, max_per_iteration: int = 200) -> Dict[str, List[Dict[str, object]]]:
     """Attempt to process pending items safely and return results grouped by action.
@@ -5681,7 +5521,6 @@ def _process_pending_items(pending: List[str], root: Path | None = None, max_per
             results["errors"].append({"item": item, "error": str(exc)})
     return results
 
-
 def run_until_complete(root: Path | None = None, max_iterations: int = 100, max_per_iteration: int = 200, sleep_between: float = 0.5) -> Dict[str, object]:
     """Run autonomous passes repeatedly until no pending items remain or limits reached.
 
@@ -5727,14 +5566,12 @@ def run_until_complete(root: Path | None = None, max_iterations: int = 100, max_
         f"Autonomous loop stopped after {summary['iterations']} iterations; processed {summary['processed_total']} items.", level="info")
     return summary
 
-
 def _run_shell_command(args: List[str], cwd: Path | None = None, capture_output: bool = True, check: bool = False) -> subprocess.CompletedProcess[str]:
     target = Path(cwd or ROOT)
     try:
         return subprocess.run(args, cwd=target, text=True, capture_output=capture_output, check=check)
     except subprocess.CalledProcessError as exc:
         return exc
-
 
 def _resolve_current_branch(root: Path | None = None) -> Optional[str]:
     """Resolve the Git branch for local and Codespaces execution when environment vars are absent."""
@@ -5749,7 +5586,6 @@ def _resolve_current_branch(root: Path | None = None) -> Optional[str]:
         pass
     return None
 
-
 def _resolve_target_branch() -> str:
     """Resolve the branch the autonomous agent should update, preferring explicit environment settings."""
     env_branch = os.environ.get("TARGET_BRANCH") or os.environ.get(
@@ -5763,7 +5599,6 @@ def _resolve_target_branch() -> str:
         return current_branch
     return "main"
 
-
 def _git_branch_exists(branch: str, root: Path | None = None) -> bool:
     target = Path(root or ROOT)
     result = _run_shell_command(["git", "branch", "--list", branch], cwd=target)
@@ -5772,7 +5607,6 @@ def _git_branch_exists(branch: str, root: Path | None = None) -> bool:
             return True
     result = _run_shell_command(["git", "ls-remote", "--heads", "origin", branch], cwd=target)
     return bool(result and getattr(result, "stdout", None) and result.stdout.strip())
-
 
 def _checkout_or_create_branch(branch: str, root: Path | None = None) -> bool:
     target = Path(root or ROOT)
@@ -5794,7 +5628,6 @@ def _checkout_or_create_branch(branch: str, root: Path | None = None) -> bool:
         return result.returncode == 0
     result = _run_shell_command(["git", "checkout", "-b", branch], cwd=target)
     return result.returncode == 0
-
 
 def _mirror_to_alpha_q_ai(branch: str, root: Path | None = None) -> Dict[str, object]:
     """Mirror the current repository state to the Alpha-Q-ai repository if credentials are available."""
@@ -5823,7 +5656,6 @@ def _mirror_to_alpha_q_ai(branch: str, root: Path | None = None) -> Dict[str, ob
         _emit_status(
             f"Alpha-Q-ai mirror push failed: {getattr(result, 'stderr', '') or getattr(result, 'stdout', '')}", level="warning")
     return out
-
 
 def _git_commit_and_push(iteration: int, processed: List[str], updated_count: int, root: Path | None = None) -> Dict[str, object]:
     """Commit and push autonomous run state to the target branch."""
@@ -5880,7 +5712,6 @@ def _git_commit_and_push(iteration: int, processed: List[str], updated_count: in
     mirror_result = _mirror_to_alpha_q_ai(branch, target)
     out["mirror"] = mirror_result
     return out
-
 
 def _generate_completion_report(pending: List[str], root: Path | None = None) -> str:
     """Generate a comprehensive report of all remaining work and save to OLLAMA_COMPLETION_REPORT.md."""
@@ -5957,7 +5788,6 @@ def _generate_completion_report(pending: List[str], root: Path | None = None) ->
     _emit_status(f"Wrote completion report to {report_path.name} ({len(pending)} items remaining)", level="info")
     return "\n".join(lines)
 
-
 def qmain() -> None:
     """Main non-blocking execution entrypoint for the autonomous agent."""
     _emit_status("Starting enhanced production Ollama autonomous agent pass", level="info")
@@ -6000,7 +5830,6 @@ def qmain() -> None:
         f"tests={verification['tests']['status']} python={verification['python']['status']}",
         level="info"
     )
-
 
 def enforce_accountability_and_validations(root: Path | None = None) -> None:
     """Ensure accountability files, validation manifests, md refs, and sync rules are present and updated.
@@ -6094,7 +5923,6 @@ def enforce_accountability_and_validations(root: Path | None = None) -> None:
     except Exception as exc:
         _emit_status(f"enforce_accountability_and_validations failed: {exc}", level="warning")
 
-
 def auto_rerun_or_report_failed_workflows() -> None:
     """Attempt to rerun recent failed workflows and create issues summarizing persistent failures.
 
@@ -6123,7 +5951,6 @@ def auto_rerun_or_report_failed_workflows() -> None:
     except Exception as exc:
         _emit_status(f"auto_rerun_or_report_failed_workflows error: {exc}", level="warning")
 
-
 def ensure_alpha_q_ai_sync(branch: str = "main") -> None:
     """Ensure mirror to Alpha-Q-ai exists and attempt lightweight sync if token available."""
     try:
@@ -6134,7 +5961,6 @@ def ensure_alpha_q_ai_sync(branch: str = "main") -> None:
             _emit_status(f"Alpha-Q-ai sync not completed: {mirror}", level="warning")
     except Exception as exc:
         _emit_status(f"ensure_alpha_q_ai_sync error: {exc}", level="warning")
-
 
 def main():
     """Main entry point for ollama autonomous agent.
@@ -6169,7 +5995,6 @@ def main():
     except Exception as exc:
         _emit_status(f"Error in main execution: {exc}", level="error")
         raise
-
 
 if __name__ == "__main__":
     try:
