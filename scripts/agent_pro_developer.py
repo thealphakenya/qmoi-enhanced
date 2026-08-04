@@ -156,17 +156,17 @@ Comprehensive multi-stage execution plan for autonomous agent operations.
             "",
             "## Analysis Results",
         ]
-        
+
         # Add context-based planning
         if context.get("pending_count", 0) > 0:
             plan_lines.append(f"- Pending items to process: {context['pending_count']}")
-        
+
         if context.get("merge_candidates", 0) > 0:
             plan_lines.append(f"- Applications to merge: {context['merge_candidates']}")
-        
+
         if context.get("test_failures", 0) > 0:
             plan_lines.append(f"- Test failures to resolve: {context['test_failures']}")
-        
+
         plan_lines.extend([
             "",
             "## Recommended Execution Order",
@@ -177,7 +177,7 @@ Comprehensive multi-stage execution plan for autonomous agent operations.
             "5. **Verify Phase**: Final validation and checks",
             "6. **Publish Phase**: Commit and push changes",
         ])
-        
+
         return "\n".join(plan_lines)
 
     def add_research_findings(self, findings: List[str]) -> None:
@@ -201,7 +201,7 @@ Comprehensive multi-stage execution plan for autonomous agent operations.
             "documentation_gaps": 0,
             "test_failures": 0
         }
-        
+
         try:
             # Run Python syntax check
             result = subprocess.run(
@@ -213,7 +213,7 @@ Comprehensive multi-stage execution plan for autonomous agent operations.
                 quality_issues["syntax_errors"] += 1
         except Exception as e:
             logger.warning(f"Syntax check failed: {e}")
-        
+
         return quality_issues
 
     def suggest_improvements(self) -> List[str]:
@@ -234,9 +234,11 @@ Comprehensive multi-stage execution plan for autonomous agent operations.
         """Create developer-friendly execution summary."""
         try:
             plan_content = self.plan_file.read_text(encoding="utf-8") if self.plan_file.exists() else "No plan"
-            research_content = self.research_file.read_text(encoding="utf-8") if self.research_file.exists() else "No research"
-            quality_content = self.quality_file.read_text(encoding="utf-8") if self.quality_file.exists() else "No quality data"
-            
+            research_content = self.research_file.read_text(
+                encoding="utf-8") if self.research_file.exists() else "No research"
+            quality_content = self.quality_file.read_text(
+                encoding="utf-8") if self.quality_file.exists() else "No quality data"
+
             summary = f"""# Developer Summary
 
 ## Current Plan
@@ -290,7 +292,7 @@ class GitHubPRIssueManager:
 - [x] Tests added/updated
 - [x] No breaking changes
 """
-            
+
             result = {
                 "title": title,
                 "description": pr_body,
@@ -298,7 +300,7 @@ class GitHubPRIssueManager:
                 "status": "ready_for_creation",
                 "timestamp": datetime.utcnow().isoformat() + "Z"
             }
-            
+
             logger.info(f"Prepared PR: {title}")
             return result
         except Exception as e:
@@ -320,7 +322,7 @@ Auto-generated from agent execution.
 """
             for item in pending_items[:count]:
                 issue_body += f"\n- [ ] {item}"
-            
+
             issue_body += """
 
 ## Resolution
@@ -329,7 +331,7 @@ This issue tracks work items that need manual resolution or further investigatio
 **Labels**: agent-pending, needs-review
 **Assignees**: @thealphakenya
 """
-            
+
             logger.info(f"Prepared issue for {count} pending items")
         except Exception as e:
             logger.error(f"Failed to create issue: {e}")
@@ -375,7 +377,7 @@ class RealTimeMonitoringDashboard:
 2. {metrics.get('next_step_2', 'Run verification tests')}
 3. {metrics.get('next_step_3', 'Commit and push changes')}
 """
-        
+
         try:
             self.dashboard_file.write_text(dashboard, encoding="utf-8")
             logger.info("Updated monitoring dashboard")
@@ -396,11 +398,11 @@ class RealTimeMonitoringDashboard:
 def main():
     """Main pro-developer enhancement entry point."""
     logger.info("Pro-Developer Workflow initialization...")
-    
+
     workflow = ProDeveloperWorkflow()
     pr_manager = GitHubPRIssueManager()
     dashboard = RealTimeMonitoringDashboard()
-    
+
     # Generate intelligent plan
     context = {
         "pending_count": 10,
@@ -409,7 +411,7 @@ def main():
     }
     plan = workflow.generate_intelligent_plan(context)
     workflow.plan_file.write_text(plan, encoding="utf-8")
-    
+
     # Add research findings
     findings = [
         "Agent execution efficiency improved by 40%",
@@ -418,14 +420,14 @@ def main():
         "Documentation fully updated"
     ]
     workflow.add_research_findings(findings)
-    
+
     # Create PR
     pr = pr_manager.create_pr_for_changes(
         title="chore: enhance ollama agent with pro-developer features",
         description="Comprehensive enhancements for reliability, monitoring, and automation"
     )
     logger.info(f"PR prepared: {pr.get('title')}")
-    
+
     # Update dashboard
     metrics = {
         "status": "completed",
@@ -436,7 +438,7 @@ def main():
         "branch": "fix/harden-ollama-agent"
     }
     dashboard.update_dashboard(metrics)
-    
+
     # Print summary
     print(workflow.create_dev_summary())
 

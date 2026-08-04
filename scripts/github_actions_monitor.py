@@ -49,7 +49,7 @@ class GitHubActionsMonitor:
     def create_workflow_status_report(self) -> str:
         """Create comprehensive workflow status report."""
         status = self.get_workflow_status()
-        
+
         report = f"""# GitHub Workflow Status Report
 
 **Generated**: {datetime.utcnow().isoformat()}Z
@@ -68,7 +68,7 @@ class GitHubActionsMonitor:
 
 ## Recent Job Executions
 """
-        
+
         jobs = [
             {
                 "name": "autonomous-agent",
@@ -77,19 +77,19 @@ class GitHubActionsMonitor:
                 "conclusion": "success"
             }
         ]
-        
+
         for job in jobs:
             report += f"\n### {job['name']}\n"
             report += f"- Status: {job['status']}\n"
             report += f"- Duration: {job['duration']}\n"
             report += f"- Conclusion: {job['conclusion']}\n"
-        
+
         try:
             self.workflow_status.write_text(report, encoding="utf-8")
             logger.info("Created workflow status report")
         except Exception as e:
             logger.error(f"Failed to write workflow status: {e}")
-        
+
         return report
 
     def track_check_runs(self, check_runs: List[Dict[str, Any]]) -> None:
@@ -100,13 +100,13 @@ class GitHubActionsMonitor:
 
 ## Recent Checks
 """
-        
+
         for check in check_runs:
             report += f"\n### {check.get('name', 'unknown')}\n"
             report += f"- Status: {check.get('status', 'unknown')}\n"
             report += f"- Conclusion: {check.get('conclusion', 'pending')}\n"
             report += f"- Output: {check.get('output', 'N/A')}\n"
-        
+
         try:
             self.check_runs_log.write_text(report, encoding="utf-8")
             logger.info("Updated check runs log")
@@ -121,13 +121,13 @@ class GitHubActionsMonitor:
 
 ## Active Pull Requests
 """
-        
+
         for pr in prs:
             report += f"\n### PR #{pr.get('number', '?')}: {pr.get('title', 'unknown')}\n"
             report += f"- State: {pr.get('state', 'unknown')}\n"
             report += f"- Status: {pr.get('status', 'pending')}\n"
             report += f"- Checks: {pr.get('checks_summary', 'N/A')}\n"
-        
+
         try:
             self.pr_status_log.write_text(report, encoding="utf-8")
             logger.info("Updated PR status log")
@@ -185,13 +185,13 @@ class WorkflowOrchestration:
 - Detailed error logging and reporting
 - Graceful degradation where possible
 """
-        
+
         try:
             self.orchestration_log.write_text(plan, encoding="utf-8")
             logger.info("Created orchestration plan")
         except Exception as e:
             logger.error(f"Failed to create orchestration plan: {e}")
-        
+
         return plan
 
     def trigger_workflow_cascade(self) -> Dict[str, Any]:
@@ -208,7 +208,7 @@ class WorkflowOrchestration:
             "expected_duration": "~2 hours",
             "monitoring_enabled": True
         }
-        
+
         logger.info(f"Triggered workflow cascade: {json.dumps(result, indent=2)}")
         return result
 
@@ -224,7 +224,7 @@ class RealTimeNotifications:
         """Send notification about agent status."""
         timestamp = datetime.utcnow().isoformat() + "Z"
         notification = f"- [{timestamp}] **{title}** ({level.upper()})\n  {message}\n"
-        
+
         try:
             with open(self.notification_log, "a", encoding="utf-8") as f:
                 f.write(notification)
@@ -276,19 +276,19 @@ class RealTimeNotifications:
 def main():
     """Main GitHub Actions monitoring entry point."""
     logger.info("GitHub Actions Real-Time Monitor starting...")
-    
+
     actions_monitor = GitHubActionsMonitor()
     orchestration = WorkflowOrchestration()
     notifications = RealTimeNotifications()
-    
+
     # Create workflow status report
     status_report = actions_monitor.create_workflow_status_report()
     print("\n" + status_report)
-    
+
     # Create orchestration plan
     orch_plan = orchestration.create_orchestration_plan()
     print("\n" + orch_plan)
-    
+
     # Track check runs
     check_runs = [
         {
@@ -308,14 +308,14 @@ def main():
         }
     ]
     actions_monitor.track_check_runs(check_runs)
-    
+
     # Send notifications
     notifications.notify_stage_start("ollama-autonomous-agent")
     notifications.notify_stage_complete("merge-first", "passed")
     notifications.notify_stage_complete("production", "passed")
     notifications.notify_stage_complete("pending-items", "passed")
     notifications.notify_pending_items(10)
-    
+
     logger.info("GitHub Actions monitoring complete")
 
 
