@@ -271,6 +271,136 @@ def _looks_like_resume_command(command: str) -> bool:
     return bool(re.match(r"^(python|pytest|mypy|flake8|pylint|npm|yarn|pnpm|cargo|go|gradle|make|docker|git|bash)\b", lower))
 
 
+def _trigger_webhook(url: str, event_type: str, payload: Dict[str, object], root: Path | None = None) -> bool:
+    """Trigger a webhook endpoint with structured event data for Ollama agent phase updates."""
+    if not url or not requests:
+        return False
+    try:
+        headers = {"Content-Type": "application/json", "User-Agent": "OllamaAutonomousAgent/1.0"}
+        data = {
+            "event_type": event_type,
+            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "environment": {
+                "github_actions": os.environ.get("GITHUB_ACTIONS", "false"),
+                "branch": os.environ.get("GITHUB_HEAD_REF", "local"),
+                "ci_build_id": os.environ.get("GITHUB_RUN_ID", os.environ.get("BUILD_ID", "local")),
+            },
+            "payload": payload,
+        }
+        response = requests.post(url, json=data, headers=headers, timeout=10)
+        if response.status_code in {200, 201, 202, 204}:
+            _emit_status(f"Webhook '{event_type}' delivered to {url}", level="info", root=root)
+            return True
+        else:
+            _emit_status(f"Webhook '{event_type}' failed with status {response.status_code}", level="warning", root=root)
+            return False
+    except Exception as e:
+        _emit_status(f"Webhook trigger failed for '{event_type}': {e}", level="warning", root=root)
+        return False
+
+
+def _invoke_hook(hook_name: str, event_data: Dict[str, object], root: Path | None = None) -> bool:
+    """Invoke local hook scripts or commands for Ollama agent phase events."""
+    target = Path(root or ROOT)
+    hooks_dir = target / ".ollama_hooks"
+    if not hooks_dir.exists():
+        return False
+    hook_script = hooks_dir / f"{hook_name}.sh"
+    if not hook_script.exists():
+        return False
+    try:
+        env = os.environ.copy()
+        env["OLLAMA_EVENT_DATA"] = json.dumps(event_data)
+        env["OLLAMA_EVENT_TYPE"] = hook_name
+        result = subprocess.run(
+            ["bash", str(hook_script)],
+            cwd=str(target),
+            env=env,
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        if result.returncode == 0:
+            _emit_status(f"Hook '{hook_name}' executed successfully", level="info", root=root)
+            if result.stdout:
+                logger.debug(f"Hook output: {result.stdout}")
+            return True
+        else:
+            _emit_status(f"Hook '{hook_name}' failed with code {result.returncode}: {result.stderr}", level="warning", root=root)
+            return False
+    except Exception as e:
+        _emit_status(f"Failed to invoke hook '{hook_name}': {e}", level="warning", root=root)
+        return False
+
+
+def _load_webhooks_config(root: Path | None = None) -> Dict[str, List[str]]:
+    """Load webhook URLs from .ollama_webhooks.json configuration file."""
+    target = Path(root or ROOT)
+    config_path = target / ".ollama_webhooks.json"
+    if not config_path.exists():
+        return {}
+    try:
+        return json.loads(config_path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def _notify_phase_start(phase_name: str, context: Dict[str, object], root: Path | None = None) -> None:
+    """Notify webhooks and invoke hooks at the start of a phase."""
+    target = Path(root or ROOT)
+    webhooks = _load_webhooks_config(target)
+    payload = {"phase": phase_name, "status": "started", **context}
+    
+    for url in webhooks.get("phase_started", []):
+        _trigger_webhook(url, f"phase.{phase_name}.started", payload, root=target)
+    
+    _invoke_hook(f"phase_{phase_name}_started", payload, root=target)
+    _emit_status(f"Phase '{phase_name}' started", level="info", root=target)
+
+
+def _notify_phase_complete(phase_name: str, context: Dict[str, object], root: Path | None = None) -> None:
+    """Notify webhooks and invoke hooks at completion of a phase."""
+    target = Path(root or ROOT)
+    webhooks = _load_webhooks_config(target)
+    payload = {"phase": phase_name, "status": "completed", **context}
+    
+    for url in webhooks.get("phase_completed", []):
+        _trigger_webhook(url, f"phase.{phase_name}.completed", payload, root=target)
+    
+    _invoke_hook(f"phase_{phase_name}_completed", payload, root=target)
+    _emit_status(f"Phase '{phase_name}' completed", level="info", root=target)
+
+
+def _log_phase_debug(phase_name: str, step: str, message: str, data: Dict[str, object] | None = None, root: Path | None = None) -> None:
+    """Log detailed debug information for a specific phase and step."""
+    target = Path(root or ROOT)
+    ts = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    debug_entry = {
+        "timestamp": ts,
+        "phase": phase_name,
+        "step": step,
+        "message": message,
+    }
+    if data:
+        debug_entry["data"] = data
+    
+    # Append to OLLAMA_PHASE_DEBUG.jsonl
+    debug_log = target / "OLLAMA_PHASE_DEBUG.jsonl"
+    try:
+        with debug_log.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(debug_entry, sort_keys=True) + "\n")
+    except Exception:
+        pass
+    
+    # Also log to regular audit
+    _emit_status(f"[{phase_name}/{step}] {message}", level="debug", root=target)
+
+
+def _looks_like_resume_command(command: str) -> bool:
+    lower = command.strip().lower()
+    return bool(re.match(r"^(python|pytest|mypy|flake8|pylint|npm|yarn|pnpm|cargo|go|gradle|make|docker|git|bash)\b", lower))
+
+
 def _looks_like_actionable_task(item: str, root: Path | None = None) -> bool:
     item = item.strip()
     if not item:
