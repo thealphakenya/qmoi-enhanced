@@ -50,7 +50,7 @@
     "verify-vercel": "npm run update-links && npm run check-deployment"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.71.2",
+    "@anthropic-ai/sdk": "^0.115.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@huggingface/inference": "^4.13.10",
