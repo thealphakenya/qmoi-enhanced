@@ -12,7 +12,7 @@ uvicorn>=0.24.0
 starlette>=0.27.0
 
 # UI and visualization
-gradio>=4.0.0
+gradio>=6.22.0
 streamlit>=1.28.0
 
 # AI and ML
