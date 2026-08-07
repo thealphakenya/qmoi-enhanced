@@ -9,7 +9,7 @@ datetime
 # Web framework and API
 fastapi>=0.104.0
 uvicorn>=0.24.0
-starlette>=0.27.0
+starlette>=1.3.1
 
 # UI and visualization
 gradio>=4.0.0
