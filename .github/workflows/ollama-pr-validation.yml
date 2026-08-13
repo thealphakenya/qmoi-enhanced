@@ -9,9 +9,11 @@ on:
     branches:
       - main
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+# ✅ NO CANCELLATION: Workflows run to completion regardless of new pushes
+# This ensures validation completes even if codespace closes or connection lost
+# concurrency:
+#   group: ${{ github.workflow }}-${{ github.ref }}
+#   cancel-in-progress: true
 
 jobs:
   # ========================================================================

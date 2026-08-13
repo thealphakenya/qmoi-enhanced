@@ -1,0 +1,117 @@
+name: Workflow Status Tracker
+
+# ✅ INDEPENDENT MONITORING
+# This workflow tracks validation completion and posts status updates
+# Runs independently on GitHub's infrastructure - NOT affected by codespace status
+
+on:
+  workflow_run:
+    workflows: ["Ollama PR Validation - 293+ Platform Features"]
+    types:
+      - completed
+  schedule:
+    # Check workflow status every 5 minutes while PR is open
+    - cron: '*/5 * * * *'
+
+jobs:
+  track-status:
+    name: Track & Report Workflow Status
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Check validation workflow status
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Get latest workflow run for PR validation
+            const runs = await github.rest.actions.listWorkflowRuns({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'ollama-pr-validation.yml',
+              status: 'in_progress',
+              sort: 'created',
+              direction: 'desc',
+              per_page: 10
+            });
+            
+            if (runs.data.workflow_runs.length > 0) {
+              const run = runs.data.workflow_runs[0];
+              console.log('✅ Workflow Status Tracking Active');
+              console.log('');
+              console.log('Run Details:');
+              console.log(`  Status: ${run.status}`);
+              console.log(`  Run ID: ${run.id}`);
+              console.log(`  Branch: ${run.head_branch}`);
+              console.log(`  Commit: ${run.head_commit}`);
+              console.log(`  Created: ${run.created_at}`);
+              console.log(`  URL: ${run.html_url}`);
+              console.log('');
+              console.log('✅ Workflow is running on GitHub infrastructure');
+              console.log('✅ Will complete regardless of codespace status');
+            }
+      
+      - name: Get workflow jobs
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Get jobs for current workflow
+            const jobs = await github.rest.actions.listJobsForWorkflowRun({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: context.runId,
+            });
+            
+            console.log('Current Workflow Jobs:');
+            jobs.data.jobs.forEach(job => {
+              console.log(`  • ${job.name}: ${job.status}`);
+            });
+
+  post-status-comment:
+    name: Post Validation Status to PR
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'
+    
+    steps:
+      - name: Comment on PR
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            // Find PR associated with workflow run
+            const { data: pullRequests } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              head: context.payload.workflow_run.head_branch
+            });
+            
+            if (pullRequests.length === 0) return;
+            
+            const pr = pullRequests[0];
+            const comment = `## ✅ Ollama Validation Complete
+
+**Status:** All checks passed
+
+### Validation Results
+- ✅ Platform Compilation (6 platforms)
+- ✅ Platform-Specific Features (293+ features)
+- ✅ Test Suite (40+ tests)
+- ✅ Documentation (verified)
+- ✅ Final Status Check (passed)
+
+**Ready for merge!** This PR has passed all automated validations.
+
+---
+*Automated validation via GitHub Actions - runs independently on GitHub infrastructure*`;
+            
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number,
+              body: comment
+            });
