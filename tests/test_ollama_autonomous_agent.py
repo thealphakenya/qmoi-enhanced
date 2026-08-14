@@ -353,6 +353,14 @@ class TestGitHubTokenConfiguration:
         assert "workflow_run:" in monitor_yaml or "schedule:" in monitor_yaml
         assert "workflow_run:" in tracker_yaml or "schedule:" in tracker_yaml
 
+    def test_repository_declares_python_dependencies_for_github_actions(self):
+        """GitHub-hosted validation must declare the Python toolchain it depends on."""
+        repo_root = Path(__file__).resolve().parent.parent
+        requirements = repo_root / "requirements.txt"
+        assert requirements.exists(), "requirements.txt is required for GitHub-hosted validation"
+        content = requirements.read_text().lower()
+        assert "pytest" in content
+
 
 class TestBranchSyncManager:
     """Tests for branch sync automation across the supported repo set."""
