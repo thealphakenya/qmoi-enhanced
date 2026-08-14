@@ -1,6 +1,7 @@
 name: Ollama PR Validation - 293+ Platform Features
 
 on:
+  workflow_dispatch:
   pull_request:
     branches:
       - main
@@ -8,6 +9,11 @@ on:
   push:
     branches:
       - main
+
+env:
+  MY_CUSTOM_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
+  GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
+  GH_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
 
 # ✅ NO CANCELLATION: Workflows run to completion regardless of new pushes
 # This ensures validation completes even if codespace closes or connection lost
@@ -116,12 +122,12 @@ jobs:
       - name: Run comprehensive test suite
         run: |
           echo "=========================================="
-          echo "Running 40+ Comprehensive Tests"
+          echo "Running full project test suite for GitHub proof"
           echo "=========================================="
-          python3 -m pytest tests/test_ollama_enhanced_features.py -v --tb=short 2>&1 | head -200 || true
+          python3 -m pytest tests/ -q --tb=short
           echo ""
-          echo "✅ Test suite execution completed"
-        continue-on-error: true
+          echo "✅ GitHub test proof suite completed successfully"
+        continue-on-error: false
       
       - name: Generate test report
         if: always()
