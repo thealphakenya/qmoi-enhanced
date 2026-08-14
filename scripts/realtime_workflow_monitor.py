@@ -243,6 +243,44 @@ class WorkflowMonitor:
                 alerts.append(f"{job.get('name', 'Unknown job')} is still in progress")
         return alerts
 
+    def build_validation_summary(self) -> Dict[str, Any]:
+        """Return a structured view of validation jobs, pass/fail counts, and failed job names."""
+        jobs = self.jobs_snapshot or []
+        validation_jobs = [
+            job for job in jobs
+            if 'validate' in (job.get('name', '')).lower() or 'validation' in (job.get('name', '')).lower() or 'test' in (job.get('name', '')).lower()
+        ]
+
+        failed_jobs = [job.get('name') for job in validation_jobs if job.get('conclusion') == 'failure']
+        successful_jobs = [job.get('name') for job in validation_jobs if job.get('conclusion') == 'success']
+
+        return {
+            "validation_jobs_total": len(validation_jobs),
+            "validation_jobs_completed": sum(1 for job in validation_jobs if job.get('status') == 'completed'),
+            "validation_jobs_failed": len(failed_jobs),
+            "validation_jobs_passed": len(successful_jobs),
+            "failed_jobs": failed_jobs,
+            "successful_jobs": successful_jobs,
+            "status": self.current_status,
+        }
+
+    def build_recovery_plan(self) -> List[str]:
+        """Return actionable remediation guidance for failed validation jobs."""
+        alerts: List[str] = []
+        validation = self.build_validation_summary()
+
+        if validation["validation_jobs_failed"]:
+            alerts.append("Investigate failed validation jobs before retrying the workflow.")
+            alerts.append("Retry only after fixing the root cause in the specific failing platform or test stage.")
+            alerts.append("Re-run the GitHub validation workflow and monitor the final validation status until all jobs pass.")
+        else:
+            alerts.append("Validation is stable; continue monitoring for the autonomous agent trigger.")
+
+        if not self.jobs_snapshot:
+            alerts.append("No job data loaded yet; wait for the next GitHub status refresh.")
+
+        return alerts
+
     def get_phase_summary(self) -> Dict[str, Any]:
         """Return the current live phase: tests still running or autonomous agent triggered."""
         jobs = self.jobs_snapshot or []
@@ -425,6 +463,22 @@ class WorkflowMonitor:
         metrics = self.calculate_metrics()
         self.print_metrics(metrics)
         self.print_quality_report(metrics)
+
+        validation_summary = self.build_validation_summary()
+        print(f"{Colors.BOLD}✅ VALIDATION SUMMARY:{Colors.RESET}")
+        print(f"Total validation jobs: {validation_summary['validation_jobs_total']}")
+        print(f"Passed: {validation_summary['validation_jobs_passed']}")
+        print(f"Failed: {validation_summary['validation_jobs_failed']}")
+        if validation_summary["failed_jobs"]:
+            print(f"Failed jobs: {', '.join(validation_summary['failed_jobs'])}")
+        print()
+
+        recovery_plan = self.build_recovery_plan()
+        print(f"{Colors.BOLD}🛠️ RECOVERY PLAN:{Colors.RESET}")
+        for item in recovery_plan:
+            print(f"- {item}")
+        print()
+
         self.print_alerts()
         
         # Footer

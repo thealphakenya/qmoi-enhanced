@@ -348,6 +348,23 @@ class TestWorkflowMonitor:
         assert "Execute Test Suite" in phase["active_jobs"][0]
         assert phase["agent_status"] == "queued"
 
+    def test_workflow_monitor_reports_validation_summary_and_recovery_plan(self):
+        """The monitor should give a structured validation summary and recovery guidance when a validation job fails."""
+        monitor = WorkflowMonitor("123456", token="test-token")
+        monitor.jobs_snapshot = [
+            {"name": "Validate Documentation", "status": "completed", "conclusion": "success"},
+            {"name": "Validate Platform Compilation (windows)", "status": "completed", "conclusion": "failure"},
+            {"name": "Execute Test Suite (40+ Tests)", "status": "queued", "conclusion": None},
+        ]
+
+        validation = monitor.build_validation_summary()
+        recovery = monitor.build_recovery_plan()
+
+        assert validation["validation_jobs_total"] >= 3
+        assert validation["validation_jobs_failed"] >= 1
+        assert "Validate Platform Compilation (windows)" in validation["failed_jobs"]
+        assert any("retry" in item.lower() or "investigate" in item.lower() for item in recovery)
+
 
 class TestGitHubTokenConfiguration:
     """Tests for secure GitHub token resolution and masking."""
