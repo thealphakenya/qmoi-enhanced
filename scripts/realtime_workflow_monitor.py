@@ -173,7 +173,8 @@ class WorkflowMonitor:
         
         jobs_total = len(self.jobs_snapshot)
         jobs_completed = sum(1 for j in self.jobs_snapshot if j.get('status') == 'completed')
-        jobs_in_progress = sum(1 for j in self.jobs_snapshot if j.get('status') == 'in_progress')
+        active_states = {'in_progress', 'queued', 'requested', 'waiting', 'pending'}
+        jobs_in_progress = sum(1 for j in self.jobs_snapshot if j.get('status') in active_states)
         jobs_passed = sum(1 for j in self.jobs_snapshot if j.get('conclusion') == 'success')
         jobs_failed = sum(1 for j in self.jobs_snapshot if j.get('conclusion') == 'failure')
         
@@ -224,7 +225,8 @@ class WorkflowMonitor:
         jobs_total = len(jobs)
         jobs_passed = sum(1 for j in jobs if j.get('conclusion') == 'success')
         jobs_failed = sum(1 for j in jobs if j.get('conclusion') == 'failure')
-        jobs_in_progress = sum(1 for j in jobs if j.get('status') == 'in_progress')
+        active_states = {'in_progress', 'queued', 'requested', 'waiting', 'pending'}
+        jobs_in_progress = sum(1 for j in jobs if j.get('status') in active_states)
         failed_jobs = [j.get('name') for j in jobs if j.get('conclusion') == 'failure']
         test_jobs = [j for j in jobs if 'test' in (j.get('name', '')).lower() or 'pytest' in (j.get('name', '')).lower()]
         test_summary = {
@@ -435,7 +437,8 @@ class WorkflowMonitor:
         print(f"Test Jobs:          {Colors.BOLD}{test_summary['total_test_jobs']}{Colors.RESET}")
         print(f"Passing Test Jobs:  {Colors.GREEN}{test_summary['passing_test_jobs']}{Colors.RESET}")
         print(f"Failing Test Jobs:  {Colors.RED}{test_summary['failing_test_jobs']}{Colors.RESET}")
-        
+        print(f"Active Test Jobs:   {Colors.YELLOW}{sum(1 for j in test_summary['job_names'] if j and j.lower())}{Colors.RESET}")
+
         print()
     
     def print_alerts(self):
