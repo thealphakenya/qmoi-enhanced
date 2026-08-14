@@ -414,6 +414,13 @@ class WorkflowMonitor:
         
         self.print_header()
         self.print_job_status(self.jobs_snapshot)
+
+        phase = self.get_phase_summary()
+        print(f"{Colors.BOLD}📡 LIVE PHASE:{Colors.RESET} {phase['phase']}")
+        print(f"{Colors.DIM}{phase['message']}{Colors.RESET}")
+        if phase.get('active_jobs'):
+            print(f"Active jobs: {', '.join(phase['active_jobs'])}")
+        print()
         
         metrics = self.calculate_metrics()
         self.print_metrics(metrics)
