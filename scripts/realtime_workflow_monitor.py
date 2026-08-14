@@ -497,8 +497,10 @@ class WorkflowMonitor:
         print(f"{Colors.DIM}Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         print(f"Updating every {self.update_interval} seconds (Ctrl+C to stop){Colors.RESET}\n")
         
-        # Return True if still running, False if complete
-        return self.current_status == 'in_progress'
+        # GitHub workflow runs commonly sit in queued/requested/waiting states
+        # before they move to in_progress. Treat all active states as still running.
+        active_statuses = {'queued', 'in_progress', 'requested', 'waiting', 'pending'}
+        return self.current_status in active_statuses
     
     def run_continuous(self, max_duration: int = 3600):
         """

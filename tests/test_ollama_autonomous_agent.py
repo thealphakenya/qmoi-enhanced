@@ -365,6 +365,23 @@ class TestWorkflowMonitor:
         assert "Validate Platform Compilation (windows)" in validation["failed_jobs"]
         assert any("retry" in item.lower() or "investigate" in item.lower() for item in recovery)
 
+    def test_workflow_monitor_keeps_monitoring_queued_runs(self, monkeypatch):
+        """Queued GitHub runs should be treated as active work rather than a completed workflow."""
+        monitor = WorkflowMonitor("123456", token="test-token")
+        monkeypatch.setattr(
+            monitor,
+            "get_run_status",
+            lambda: {
+                "status": "queued",
+                "conclusion": None,
+                "jobs": [
+                    {"name": "Validate Documentation", "status": "queued", "conclusion": None},
+                ],
+            },
+        )
+
+        assert monitor.monitor_once() is True
+
 
 class TestGitHubTokenConfiguration:
     """Tests for secure GitHub token resolution and masking."""
