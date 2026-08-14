@@ -316,6 +316,23 @@ class TestWorkflowMonitor:
         assert len(alerts) >= 1
         assert "Validate Platform Compilation (windows)" in alerts[0]
 
+    def test_workflow_monitor_tracks_test_jobs_in_real_time(self):
+        """The monitor should specifically surface GitHub-hosted tests as a first-class live signal."""
+        monitor = WorkflowMonitor("123456", token="test-token")
+        monitor.jobs_snapshot = [
+            {"name": "Validate Documentation", "status": "completed", "conclusion": "success"},
+            {"name": "Execute Test Suite (40+ Tests)", "status": "in_progress", "conclusion": None},
+            {"name": "Validate 293+ Platform-Specific Features", "status": "in_progress", "conclusion": None},
+        ]
+
+        summary = monitor.build_test_monitor_summary()
+
+        assert summary["total_test_jobs"] == 3
+        assert summary["completed_test_jobs"] == 1
+        assert "Validate Documentation" in summary["job_names"]
+        assert "Execute Test Suite (40+ Tests)" in summary["job_names"]
+        assert "Validate 293+ Platform-Specific Features" in summary["job_names"]
+
 
 class TestGitHubTokenConfiguration:
     """Tests for secure GitHub token resolution and masking."""

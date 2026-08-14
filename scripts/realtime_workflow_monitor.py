@@ -208,6 +208,14 @@ class WorkflowMonitor:
         jobs_failed = sum(1 for j in jobs if j.get('conclusion') == 'failure')
         jobs_in_progress = sum(1 for j in jobs if j.get('status') == 'in_progress')
         failed_jobs = [j.get('name') for j in jobs if j.get('conclusion') == 'failure']
+        test_jobs = [j for j in jobs if 'test' in (j.get('name', '')).lower() or 'pytest' in (j.get('name', '')).lower()]
+        test_summary = {
+            "total_test_jobs": len(test_jobs),
+            "completed_test_jobs": sum(1 for j in test_jobs if j.get('status') == 'completed'),
+            "passing_test_jobs": sum(1 for j in test_jobs if j.get('conclusion') == 'success'),
+            "failing_test_jobs": sum(1 for j in test_jobs if j.get('conclusion') == 'failure'),
+            "test_job_names": [j.get('name') for j in test_jobs],
+        }
 
         pass_rate = (jobs_passed / jobs_total * 100.0) if jobs_total else 0.0
         reliability_score = max(0.0, min(100.0, pass_rate))
@@ -222,6 +230,7 @@ class WorkflowMonitor:
             "failed_jobs": failed_jobs,
             "status": self.current_status,
             "conclusion": self.current_conclusion,
+            "test_summary": test_summary,
         }
 
     def get_alerts(self) -> List[str]:
@@ -233,6 +242,23 @@ class WorkflowMonitor:
             elif job.get('status') == 'in_progress' and job.get('conclusion') is None:
                 alerts.append(f"{job.get('name', 'Unknown job')} is still in progress")
         return alerts
+
+    def build_test_monitor_summary(self) -> Dict[str, Any]:
+        """Return a focused summary for GitHub-hosted PR test execution."""
+        jobs = self.jobs_snapshot or []
+        def is_test_or_validation_job(job_name: str) -> bool:
+            name = (job_name or '').lower()
+            return 'test' in name or 'pytest' in name or 'validate' in name or 'validation' in name
+
+        test_jobs = [j for j in jobs if is_test_or_validation_job(j.get('name', ''))]
+        test_summary = {
+            "total_test_jobs": len(test_jobs),
+            "completed_test_jobs": sum(1 for j in test_jobs if j.get('status') == 'completed'),
+            "passing_test_jobs": sum(1 for j in test_jobs if j.get('conclusion') == 'success'),
+            "failing_test_jobs": sum(1 for j in test_jobs if j.get('conclusion') == 'failure'),
+            "job_names": [j.get('name') for j in test_jobs],
+        }
+        return test_summary
 
     def print_header(self):
         """Print monitor header"""
@@ -311,6 +337,11 @@ class WorkflowMonitor:
         if elapsed_minutes > 0:
             avg_job_time = metrics.elapsed_seconds / metrics.jobs_completed if metrics.jobs_completed > 0 else 0
             print(f"Avg Job Duration:   {Colors.BOLD}{self.format_duration(int(avg_job_time))}{Colors.RESET}")
+
+        test_summary = self.build_test_monitor_summary()
+        print(f"Test Jobs:          {Colors.BOLD}{test_summary['total_test_jobs']}{Colors.RESET}")
+        print(f"Passing Test Jobs:  {Colors.GREEN}{test_summary['passing_test_jobs']}{Colors.RESET}")
+        print(f"Failing Test Jobs:  {Colors.RED}{test_summary['failing_test_jobs']}{Colors.RESET}")
         
         print()
     
