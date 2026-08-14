@@ -199,7 +199,34 @@ Updating every 10 seconds (Ctrl+C to stop)
 
 ---
 
-## 🚨 Alert Types & Responses
+## � Automation plan to improve monitoring quality
+
+The next monitor upgrade should be layered and evidence-driven:
+
+1. Phase-aware tracking
+   - Distinguish validation, branch-sync, and autonomous-trigger phases in one timeline.
+   - Keep a clean state model: queued -> in_progress -> completed -> success/failure.
+
+2. Failure-specific escalation
+   - On each failure, capture the exact failed job name, failing step, and relevant log excerpt.
+   - Recommend the next remediation action instead of only raising a generic alert.
+
+3. Persistent evidence store
+   - Save per-run JSON snapshots and summary artifacts to /tmp or a repository artifact location.
+   - Keep a run history file that correlates result, issue, and remediation.
+
+4. Cross-workflow correlation
+   - Link branch-sync failures with validation outcomes and with the auto-merge workflow to explain which phase actually broke.
+
+5. Resilience testing
+   - Expand monitor tests to cover queued runs, waiting jobs, failed-step extraction, recovery guidance, and cross-workflow phase transitions.
+
+6. GitHub-native alerting
+   - Add status-summary comments or step summaries that can be read from the Actions UI without manually opening multiple jobs.
+
+This plan gives the monitor enough evidence, automation, and test coverage to be useful as a real operational control system instead of a simple status display.
+
+## �🚨 Alert Types & Responses
 
 ### ✅ Success Alert
 - **When**: All jobs completed successfully
