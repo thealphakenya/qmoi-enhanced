@@ -21,10 +21,12 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  SOURCE_REPOSITORY: ${{ github.repository }}
+  SOURCE_REPOSITORY: thealphakenya/qmoi-enhanced
   TARGET_REPOSITORY: thealphakenya/Alpha-Q-ai
+
   SOURCE_MAIN_BRANCH: main
   SOURCE_BACKUP_BRANCH: autosync-backup
+
   TARGET_MAIN_BRANCH: main
   TARGET_BACKUP_BRANCH: autosync-backup
 
@@ -36,18 +38,18 @@ jobs:
 
     steps:
 
-      # ------------------------------------------------------------
-      # 1. Checkout qmoi-enhanced
-      # ------------------------------------------------------------
+      # ============================================================
+      # 1. Checkout source repository
+      # ============================================================
       - name: Checkout source repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
 
-      # ------------------------------------------------------------
+      # ============================================================
       # 2. Configure Git
-      # ------------------------------------------------------------
+      # ============================================================
       - name: Configure Git identity
         shell: bash
         run: |
@@ -58,10 +60,10 @@ jobs:
 
           echo "Git identity configured."
 
-      # ------------------------------------------------------------
-      # 3. Validate required cross-repository token
-      # ------------------------------------------------------------
-      - name: Validate synchronization credentials
+      # ============================================================
+      # 3. Validate token
+      # ============================================================
+      - name: Validate synchronization token
         shell: bash
         env:
           SYNC_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN }}
@@ -69,16 +71,45 @@ jobs:
           set -euo pipefail
 
           if [ -z "${SYNC_TOKEN:-}" ]; then
-            echo "::error::MY_CUSTOM_TOKEN is not configured."
-            echo "::error::A token with write access to ${TARGET_REPOSITORY} is required."
+            echo "::error::MY_CUSTOM_TOKEN is missing."
+            echo "::error::Configure MY_CUSTOM_TOKEN in GitHub Actions secrets."
             exit 1
           fi
 
-          echo "Cross-repository synchronization token is available."
+          echo "Synchronization token is available."
 
-      # ------------------------------------------------------------
-      # 4. Fetch source branches
-      # ------------------------------------------------------------
+      # ============================================================
+      # 4. Configure authenticated source remote
+      # ============================================================
+      - name: Configure authenticated source remote
+        shell: bash
+        env:
+          SYNC_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          git remote remove origin 2>/dev/null || true
+
+          git remote add origin \
+            "https://x-access-token:${SYNC_TOKEN}@github.com/${SOURCE_REPOSITORY}.git"
+
+          echo "Authenticated source remote configured."
+
+      # ============================================================
+      # 5. Verify source repository access
+      # ============================================================
+      - name: Verify source repository access
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git ls-remote origin HEAD >/dev/null
+
+          echo "✅ Source repository access verified."
+
+      # ============================================================
+      # 6. Fetch source branches
+      # ============================================================
       - name: Fetch source branches
         shell: bash
         run: |
@@ -86,13 +117,13 @@ jobs:
 
           git fetch origin --prune
 
-          echo "Available remote branches:"
+          echo "Source branches:"
           git branch -r
 
-      # ------------------------------------------------------------
-      # 5. Verify source main exists
-      # ------------------------------------------------------------
-      - name: Verify source main branch
+      # ============================================================
+      # 7. Verify source main exists
+      # ============================================================
+      - name: Verify source main
         shell: bash
         run: |
           set -euo pipefail
@@ -103,15 +134,15 @@ jobs:
             "refs/heads/${SOURCE_MAIN_BRANCH}" \
             >/dev/null 2>&1
           then
-            echo "::error::Source branch ${SOURCE_MAIN_BRANCH} does not exist."
+            echo "::error::Source main branch does not exist."
             exit 1
           fi
 
-          echo "Source main branch exists."
+          echo "✅ Source main exists."
 
-      # ------------------------------------------------------------
-      # 6. Ensure source autosync-backup exists
-      # ------------------------------------------------------------
+      # ============================================================
+      # 8. Ensure source autosync-backup exists
+      # ============================================================
       - name: Ensure source autosync-backup exists
         shell: bash
         run: |
@@ -123,25 +154,26 @@ jobs:
             "refs/heads/${SOURCE_BACKUP_BRANCH}" \
             >/dev/null 2>&1
           then
-            echo "Source autosync-backup already exists."
+            echo "✅ Source autosync-backup already exists."
           else
-            echo "Source autosync-backup does not exist."
-            echo "Creating it from source main..."
+            echo "autosync-backup does not exist."
+            echo "Creating it from main..."
 
             git fetch origin "${SOURCE_MAIN_BRANCH}"
 
             git checkout -B "${SOURCE_BACKUP_BRANCH}" \
               "origin/${SOURCE_MAIN_BRANCH}"
 
-            git push origin \
+            git push \
+              origin \
               "HEAD:${SOURCE_BACKUP_BRANCH}"
 
-            echo "Source autosync-backup created."
+            echo "✅ Source autosync-backup created."
           fi
 
-      # ------------------------------------------------------------
-      # 7. Make source autosync-backup exactly match main
-      # ------------------------------------------------------------
+      # ============================================================
+      # 9. Synchronize source autosync-backup with main
+      # ============================================================
       - name: Synchronize source autosync-backup with main
         shell: bash
         run: |
@@ -151,49 +183,42 @@ jobs:
             "${SOURCE_MAIN_BRANCH}" \
             "${SOURCE_BACKUP_BRANCH}"
 
-          MAIN_SHA="$(git rev-parse "origin/${SOURCE_MAIN_BRANCH}")"
-          BACKUP_SHA="$(git rev-parse "origin/${SOURCE_BACKUP_BRANCH}")"
+          MAIN_SHA="$(
+            git rev-parse "origin/${SOURCE_MAIN_BRANCH}"
+          )"
+
+          BACKUP_SHA="$(
+            git rev-parse "origin/${SOURCE_BACKUP_BRANCH}"
+          )"
 
           echo "Source main SHA:            ${MAIN_SHA}"
           echo "Source autosync-backup SHA: ${BACKUP_SHA}"
 
           if [ "${MAIN_SHA}" != "${BACKUP_SHA}" ]; then
-            echo "Source branches differ."
-            echo "Updating autosync-backup to exactly match main..."
+
+            echo "Branches differ."
+            echo "Making autosync-backup an exact mirror of main..."
 
             git checkout -B "${SOURCE_BACKUP_BRANCH}" \
               "origin/${SOURCE_MAIN_BRANCH}"
 
-            git push origin \
+            git reset --hard \
+              "origin/${SOURCE_MAIN_BRANCH}"
+
+            git push \
+              origin \
               "HEAD:${SOURCE_BACKUP_BRANCH}" \
               --force
 
-            echo "Source autosync-backup synchronized."
+            echo "✅ Source autosync-backup synchronized."
+
           else
-            echo "Source branches are already synchronized."
+            echo "✅ Source branches already match."
           fi
 
-      # ------------------------------------------------------------
-      # 8. Checkout source main again
-      # ------------------------------------------------------------
-      - name: Checkout validated source main
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          git fetch origin "${SOURCE_MAIN_BRANCH}"
-
-          git checkout -B "${SOURCE_MAIN_BRANCH}" \
-            "origin/${SOURCE_MAIN_BRANCH}"
-
-          git reset --hard "origin/${SOURCE_MAIN_BRANCH}"
-
-          echo "Validated source branch:"
-          git rev-parse HEAD
-
-      # ------------------------------------------------------------
-      # 9. Configure Alpha-Q-ai remote
-      # ------------------------------------------------------------
+      # ============================================================
+      # 10. Configure authenticated Alpha-Q-ai remote
+      # ============================================================
       - name: Configure Alpha-Q-ai remote
         shell: bash
         env:
@@ -201,34 +226,28 @@ jobs:
         run: |
           set -euo pipefail
 
-          TARGET_URL="https://x-access-token:${SYNC_TOKEN}@github.com/${TARGET_REPOSITORY}.git"
-
           git remote remove alpha-q-ai 2>/dev/null || true
 
-          git remote add alpha-q-ai "${TARGET_URL}"
+          git remote add alpha-q-ai \
+            "https://x-access-token:${SYNC_TOKEN}@github.com/${TARGET_REPOSITORY}.git"
 
           echo "Alpha-Q-ai remote configured."
 
-      # ------------------------------------------------------------
-      # 10. Verify Alpha-Q-ai access
-      # ------------------------------------------------------------
-      - name: Verify Alpha-Q-ai repository access
+      # ============================================================
+      # 11. Verify Alpha-Q-ai access
+      # ============================================================
+      - name: Verify Alpha-Q-ai access
         shell: bash
         run: |
           set -euo pipefail
 
-          echo "Testing access to ${TARGET_REPOSITORY}..."
+          git ls-remote alpha-q-ai HEAD >/dev/null
 
-          git ls-remote \
-            alpha-q-ai \
-            HEAD \
-            >/dev/null
+          echo "✅ Alpha-Q-ai access verified."
 
-          echo "Successfully authenticated to ${TARGET_REPOSITORY}."
-
-      # ------------------------------------------------------------
-      # 11. Fetch target repository
-      # ------------------------------------------------------------
+      # ============================================================
+      # 12. Fetch Alpha-Q-ai
+      # ============================================================
       - name: Fetch Alpha-Q-ai branches
         shell: bash
         run: |
@@ -239,69 +258,64 @@ jobs:
           echo "Alpha-Q-ai branches:"
           git branch -r | grep "alpha-q-ai/" || true
 
-      # ------------------------------------------------------------
-      # 12. Synchronize Alpha-Q-ai main
-      # ------------------------------------------------------------
+      # ============================================================
+      # 13. Synchronize Alpha-Q-ai/main
+      # ============================================================
       - name: Synchronize Alpha-Q-ai main
         shell: bash
         run: |
           set -euo pipefail
 
-          echo "Synchronizing:"
-          echo "  ${SOURCE_REPOSITORY}:${SOURCE_MAIN_BRANCH}"
-          echo "  ->"
-          echo "  ${TARGET_REPOSITORY}:${TARGET_MAIN_BRANCH}"
+          echo "Synchronizing source main -> Alpha-Q-ai main"
+
+          git fetch origin "${SOURCE_MAIN_BRANCH}"
 
           git push \
             alpha-q-ai \
             "origin/${SOURCE_MAIN_BRANCH}:${TARGET_MAIN_BRANCH}" \
             --force
 
-          echo "Alpha-Q-ai main synchronized."
+          echo "✅ Alpha-Q-ai/main synchronized."
 
-      # ------------------------------------------------------------
-      # 13. Synchronize Alpha-Q-ai autosync-backup
-      # ------------------------------------------------------------
+      # ============================================================
+      # 14. Synchronize Alpha-Q-ai/autosync-backup
+      # ============================================================
       - name: Synchronize Alpha-Q-ai autosync-backup
         shell: bash
         run: |
           set -euo pipefail
 
-          echo "Synchronizing:"
-          echo "  ${SOURCE_REPOSITORY}:${SOURCE_MAIN_BRANCH}"
-          echo "  ->"
-          echo "  ${TARGET_REPOSITORY}:${TARGET_BACKUP_BRANCH}"
+          echo "Synchronizing source main -> Alpha-Q-ai autosync-backup"
+
+          git fetch origin "${SOURCE_MAIN_BRANCH}"
 
           git push \
             alpha-q-ai \
             "origin/${SOURCE_MAIN_BRANCH}:${TARGET_BACKUP_BRANCH}" \
             --force
 
-          echo "Alpha-Q-ai autosync-backup synchronized."
+          echo "✅ Alpha-Q-ai/autosync-backup synchronized."
 
-      # ------------------------------------------------------------
-      # 14. Fetch target again after synchronization
-      # ------------------------------------------------------------
-      - name: Refresh Alpha-Q-ai state
+      # ============================================================
+      # 15. Refresh all remote state
+      # ============================================================
+      - name: Refresh synchronization state
         shell: bash
         run: |
           set -euo pipefail
 
+          git fetch origin --prune
           git fetch alpha-q-ai --prune
 
-          echo "Target repository state refreshed."
+          echo "Remote states refreshed."
 
-      # ------------------------------------------------------------
-      # 15. Verify source branches
-      # ------------------------------------------------------------
-      - name: Verify source synchronization
+      # ============================================================
+      # 16. Verify source synchronization
+      # ============================================================
+      - name: Verify source branches
         shell: bash
         run: |
           set -euo pipefail
-
-          git fetch origin \
-            "${SOURCE_MAIN_BRANCH}" \
-            "${SOURCE_BACKUP_BRANCH}"
 
           SOURCE_MAIN_SHA="$(
             git rev-parse "origin/${SOURCE_MAIN_BRANCH}"
@@ -319,12 +333,12 @@ jobs:
             exit 1
           fi
 
-          echo "Source branches verified."
+          echo "✅ Source branches match."
 
-      # ------------------------------------------------------------
-      # 16. Verify Alpha-Q-ai synchronization
-      # ------------------------------------------------------------
-      - name: Verify Alpha-Q-ai synchronization
+      # ============================================================
+      # 17. Verify Alpha-Q-ai synchronization
+      # ============================================================
+      - name: Verify Alpha-Q-ai branches
         shell: bash
         run: |
           set -euo pipefail
@@ -341,13 +355,15 @@ jobs:
             git rev-parse "alpha-q-ai/${TARGET_BACKUP_BRANCH}"
           )"
 
-          echo "----------------------------------------"
-          echo "Synchronization verification"
-          echo "----------------------------------------"
+          echo "=========================================="
+          echo "FINAL SYNCHRONIZATION VERIFICATION"
+          echo "=========================================="
+
           echo "Source main:              ${SOURCE_SHA}"
           echo "Alpha-Q-ai main:         ${TARGET_MAIN_SHA}"
           echo "Alpha-Q-ai autosync:     ${TARGET_BACKUP_SHA}"
-          echo "----------------------------------------"
+
+          echo "=========================================="
 
           if [ "${SOURCE_SHA}" != "${TARGET_MAIN_SHA}" ]; then
             echo "::error::Alpha-Q-ai main does not match source main."
@@ -359,13 +375,13 @@ jobs:
             exit 1
           fi
 
-          echo "✅ Source main matches Alpha-Q-ai main."
-          echo "✅ Source main matches Alpha-Q-ai autosync-backup."
-          echo "✅ Cross-repository synchronization verified."
+          echo "✅ Source main = Alpha-Q-ai main"
+          echo "✅ Source main = Alpha-Q-ai autosync-backup"
+          echo "✅ All required branches are synchronized."
 
-      # ------------------------------------------------------------
-      # 17. Final status report
-      # ------------------------------------------------------------
+      # ============================================================
+      # 18. Final status
+      # ============================================================
       - name: Report synchronization status
         uses: actions/github-script@v7
         with:
@@ -374,16 +390,12 @@ jobs:
             console.log('========================================');
             console.log('BRANCH SYNCHRONIZATION COMPLETE');
             console.log('========================================');
-            console.log(`Source repository: ${context.repo.owner}/${context.repo.repo}`);
-            console.log('Source branch: main');
-            console.log('Source backup: autosync-backup');
-            console.log('Target repository: thealphakenya/Alpha-Q-ai');
-            console.log('Target branch: main');
-            console.log('Target backup: autosync-backup');
+            console.log('Source: thealphakenya/qmoi-enhanced');
+            console.log('Target: thealphakenya/Alpha-Q-ai');
             console.log('----------------------------------------');
-            console.log('✅ Source branches synchronized');
+            console.log('✅ qmoi-enhanced/main synchronized');
+            console.log('✅ qmoi-enhanced/autosync-backup synchronized');
             console.log('✅ Alpha-Q-ai/main synchronized');
             console.log('✅ Alpha-Q-ai/autosync-backup synchronized');
-            console.log('✅ Cross-repository SHA verification passed');
-            console.log('✅ Codespace independence maintained');
+            console.log('✅ Commit SHA verification passed');
             console.log('========================================');
