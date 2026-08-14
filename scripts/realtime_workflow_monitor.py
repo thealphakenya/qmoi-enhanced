@@ -243,6 +243,43 @@ class WorkflowMonitor:
                 alerts.append(f"{job.get('name', 'Unknown job')} is still in progress")
         return alerts
 
+    def get_phase_summary(self) -> Dict[str, Any]:
+        """Return the current live phase: tests still running or autonomous agent triggered."""
+        jobs = self.jobs_snapshot or []
+        active_jobs = [j.get('name') for j in jobs if j.get('status') in {'in_progress', 'queued'}]
+        agent_jobs = [j for j in jobs if 'agent' in (j.get('name', '')).lower() or 'trigger' in (j.get('name', '')).lower()]
+        test_jobs = [j for j in jobs if 'test' in (j.get('name', '')).lower() or 'validate' in (j.get('name', '')).lower()]
+
+        if agent_jobs:
+            agent = agent_jobs[0]
+            phase = "autonomous_agent_running"
+            if agent.get('status') == 'queued':
+                phase = "autonomous_agent_ready"
+            return {
+                "phase": phase,
+                "active_jobs": active_jobs,
+                "agent_status": agent.get('status', 'unknown'),
+                "tests_status": "active" if test_jobs else "idle",
+                "message": "The PR Ollama autonomous agent has started or is queued after successful validation tests.",
+            }
+
+        if test_jobs:
+            return {
+                "phase": "tests_running",
+                "active_jobs": active_jobs,
+                "agent_status": "not_started",
+                "tests_status": "active",
+                "message": "GitHub is still in the automated test and validation stage.",
+            }
+
+        return {
+            "phase": "idle",
+            "active_jobs": active_jobs,
+            "agent_status": "not_started",
+            "tests_status": "idle",
+            "message": "No active test or agent jobs are currently running.",
+        }
+
     def build_test_monitor_summary(self) -> Dict[str, Any]:
         """Return a focused summary for GitHub-hosted PR test execution."""
         jobs = self.jobs_snapshot or []

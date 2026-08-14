@@ -333,6 +333,21 @@ class TestWorkflowMonitor:
         assert "Execute Test Suite (40+ Tests)" in summary["job_names"]
         assert "Validate 293+ Platform-Specific Features" in summary["job_names"]
 
+    def test_workflow_monitor_reports_live_phase_state(self):
+        """The monitor should tell whether the system is still in validation tests or has started the autonomous agent."""
+        monitor = WorkflowMonitor("123456", token="test-token")
+        monitor.jobs_snapshot = [
+            {"name": "Validate Documentation", "status": "completed", "conclusion": "success"},
+            {"name": "Execute Test Suite (40+ Tests)", "status": "in_progress", "conclusion": None},
+            {"name": "Trigger Ollama Autonomous Agent after proof validation", "status": "queued", "conclusion": None},
+        ]
+
+        phase = monitor.get_phase_summary()
+
+        assert phase["phase"] in {"tests_running", "autonomous_agent_ready"}
+        assert "Execute Test Suite" in phase["active_jobs"][0]
+        assert phase["agent_status"] == "queued"
+
 
 class TestGitHubTokenConfiguration:
     """Tests for secure GitHub token resolution and masking."""
