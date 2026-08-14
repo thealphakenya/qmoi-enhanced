@@ -1,0 +1,146 @@
+{
+  "generated": "2026-08-14T20:25:18.917391",
+  "files_tracked": 28,
+  "files": {
+    "IMPLEMENTATION_COMPLETE.md": {
+      "sha256": "25974ee4158dd21e",
+      "size_bytes": 20324,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "INSTALL.md": {
+      "sha256": "4345700ddf800a25",
+      "size_bytes": 16671,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "QMOI_REALTIME_MEMORY_INDEX.md": {
+      "sha256": "8bcdd663613e3f17",
+      "size_bytes": 2677,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "OLLAMA_ENHANCEMENT_SUCCESS.md": {
+      "sha256": "a12bc6099356cbef",
+      "size_bytes": 15071,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "ALLPLATFORMSDEVICE.md": {
+      "sha256": "56b491867a6389ca",
+      "size_bytes": 21028,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "QMOI_MODEL_CARD.md": {
+      "sha256": "ae650b4d4871720d",
+      "size_bytes": 3022,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "MONITORING_GUIDE.md": {
+      "sha256": "d6cbdc1a8c661c0e",
+      "size_bytes": 11669,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "BUILD.md": {
+      "sha256": "0080c042348fe404",
+      "size_bytes": 17287,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "ollama.md": {
+      "sha256": "c87c99c2819e2abf",
+      "size_bytes": 3209,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "OLLAMA_AUTOMATION_GUIDE.md": {
+      "sha256": "96fae24766481e42",
+      "size_bytes": 21367,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "GITHUB_SETUP_COMPLETE.md": {
+      "sha256": "e0e0377f8329e3b0",
+      "size_bytes": 6720,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "README.md": {
+      "sha256": "a58621bc37ac870c",
+      "size_bytes": 10871,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "QTEAM.md": {
+      "sha256": "0461f1b357555fbe",
+      "size_bytes": 18130,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "PLATFORM_REQUIREMENTS.md": {
+      "sha256": "a1134b60f7cd6cbf",
+      "size_bytes": 33439,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "DOWNLOAD.md": {
+      "sha256": "deb67c60e6d56ea3",
+      "size_bytes": 10204,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "STYLES.md": {
+      "sha256": "00ea0f1291578c6d",
+      "size_bytes": 18908,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "OLLAMA_ENHANCEMENT_COMPLETE.md": {
+      "sha256": "61c16a152d11c850",
+      "size_bytes": 13010,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "scripts/github_auto_setup.py": {
+      "sha256": "05c108a0dd034502",
+      "size_bytes": 11958,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "scripts/realtime_workflow_monitor.py": {
+      "sha256": "98bc6c7498b44081",
+      "size_bytes": 19562,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "scripts/ollama_autonomous_agent_enhanced.py": {
+      "sha256": "be219aaeb72e6e29",
+      "size_bytes": 34306,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "scripts/ollama_autonomous_agent.py": {
+      "sha256": "dd6efed467efe793",
+      "size_bytes": 44513,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "tests/test_ollama_enhanced_features.py": {
+      "sha256": "325d401eabca7f70",
+      "size_bytes": 21564,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    "tests/test_ollama_autonomous_agent.py": {
+      "sha256": "a4a4bc60e1078422",
+      "size_bytes": 28746,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    ".github/workflows/pr-monitor.yml": {
+      "sha256": "2e5c7454cbd1a7ea",
+      "size_bytes": 8443,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    ".github/workflows/auto-merge-automated-pr.yml": {
+      "sha256": "f818e95c005a163f",
+      "size_bytes": 1913,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    ".github/workflows/workflow-tracker.yml": {
+      "sha256": "716a1630c497ada0",
+      "size_bytes": 4067,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    ".github/workflows/branch-sync.yml": {
+      "sha256": "3982ea121b105848",
+      "size_bytes": 2671,
+      "last_check": "2026-08-14T20:25:18.917391"
+    },
+    ".github/workflows/ollama-pr-validation.yml": {
+      "sha256": "639379ab6d478220",
+      "size_bytes": 11115,
+      "last_check": "2026-08-14T20:25:18.917391"
+    }
+  }
+}

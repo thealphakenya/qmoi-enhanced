@@ -1,23 +1,155 @@
 name: PR Status Monitor & Auto-Report
 
+# 🔴 REAL-TIME MONITORING OF OLLAMA AUTONOMOUS AGENT
+# This workflow provides detailed tracking of PR validation workflow execution
+# Features:
+#   - Live job status tracking
+#   - Test result aggregation
+#   - Quality/reliability metrics
+#   - Performance analytics
+#   - Automatic alerts on failures
+#   - Agent behavior documentation
+
 on:
-  workflow_dispatch: {}
+  workflow_dispatch: 
+    inputs:
+      run_id:
+        description: 'Specific run ID to monitor (optional)'
+        required: false
   workflow_run:
     workflows: ["Ollama PR Validation - 293+ Platform Features"]
     types:
       - completed
+      - requested
 
 permissions:
   actions: read
   contents: read
   checks: read
   pull-requests: write
+  statuses: read
 
 jobs:
+  collect-workflow-metrics:
+    name: Collect & Analyze Workflow Metrics
+    runs-on: ubuntu-latest
+    outputs:
+      jobs_total: ${{ steps.metrics.outputs.jobs_total }}
+      jobs_passed: ${{ steps.metrics.outputs.jobs_passed }}
+      jobs_failed: ${{ steps.metrics.outputs.jobs_failed }}
+      elapsed_time: ${{ steps.metrics.outputs.elapsed_time }}
+      pass_rate: ${{ steps.metrics.outputs.pass_rate }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Collect workflow metrics
+        id: metrics
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Get the workflow run to analyze
+            const runId = context.payload.inputs?.run_id || context.payload.workflow_run?.id || context.runId;
+            
+            const { data: run } = await github.rest.actions.getWorkflowRun({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: runId,
+            });
+            
+            console.log('='.repeat(70));
+            console.log('🔴 OLLAMA AUTONOMOUS AGENT - WORKFLOW METRICS COLLECTION');
+            console.log('='.repeat(70));
+            console.log('');
+            console.log('Run Details:');
+            console.log(`  ID: ${run.id}`);
+            console.log(`  Name: ${run.name}`);
+            console.log(`  Status: ${run.status}`);
+            console.log(`  Conclusion: ${run.conclusion || 'In Progress'}`);
+            console.log(`  Branch: ${run.head_branch}`);
+            console.log(`  Commit: ${run.head_sha.substring(0, 7)}`);
+            console.log(`  Created: ${run.created_at}`);
+            console.log(`  Updated: ${run.updated_at}`);
+            console.log('');
+            
+            // Get all jobs for this run
+            const { data: jobsData } = await github.rest.actions.listJobsForWorkflowRun({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: runId,
+              per_page: 100,
+            });
+            
+            const jobs = jobsData.jobs;
+            console.log(`Jobs Total: ${jobs.length}`);
+            console.log('');
+            
+            // Analyze jobs
+            const jobsPassed = jobs.filter(j => j.conclusion === 'success').length;
+            const jobsFailed = jobs.filter(j => j.conclusion === 'failure').length;
+            const jobsInProgress = jobs.filter(j => j.status === 'in_progress').length;
+            const jobsSkipped = jobs.filter(j => j.conclusion === 'skipped').length;
+            
+            console.log('Job Status Distribution:');
+            console.log(`  ✅ Passed:      ${jobsPassed}/${jobs.length}`);
+            console.log(`  ❌ Failed:      ${jobsFailed}/${jobs.length}`);
+            console.log(`  ⏳ In Progress: ${jobsInProgress}/${jobs.length}`);
+            console.log(`  ⏭️  Skipped:     ${jobsSkipped}/${jobs.length}`);
+            console.log('');
+            
+            const passRate = jobs.length > 0 ? ((jobsPassed / jobs.length) * 100).toFixed(1) : 0;
+            console.log(`Pass Rate: ${passRate}%`);
+            
+            // Calculate elapsed time
+            const createdAt = new Date(run.created_at);
+            const updatedAt = new Date(run.updated_at);
+            const elapsedMs = updatedAt - createdAt;
+            const elapsedSec = Math.floor(elapsedMs / 1000);
+            const elapsedMin = Math.floor(elapsedSec / 60);
+            const elapsedHours = Math.floor(elapsedMin / 60);
+            
+            let elapsedStr = '';
+            if (elapsedHours > 0) {
+              elapsedStr = `${elapsedHours}h ${elapsedMin % 60}m ${elapsedSec % 60}s`;
+            } else if (elapsedMin > 0) {
+              elapsedStr = `${elapsedMin}m ${elapsedSec % 60}s`;
+            } else {
+              elapsedStr = `${elapsedSec}s`;
+            }
+            
+            console.log(`Elapsed Time: ${elapsedStr}`);
+            console.log('');
+            
+            // Job details
+            console.log('Job Details:');
+            jobs.forEach((job, idx) => {
+              const statusIcon = job.conclusion === 'success' ? '✅' : 
+                                job.conclusion === 'failure' ? '❌' :
+                                job.status === 'in_progress' ? '⏳' : '⏭️ ';
+              const jobElapsed = new Date(job.completed_at || new Date()) - new Date(job.started_at);
+              const jobSec = Math.floor(jobElapsed / 1000);
+              console.log(`  ${statusIcon} [${idx + 1}/${jobs.length}] ${job.name}`);
+              console.log(`      Status: ${job.status} | Conclusion: ${job.conclusion || 'N/A'} | Time: ${jobSec}s`);
+            });
+            
+            console.log('');
+            console.log('='.repeat(70));
+            
+            // Set outputs
+            core.setOutput('jobs_total', jobs.length.toString());
+            core.setOutput('jobs_passed', jobsPassed.toString());
+            core.setOutput('jobs_failed', jobsFailed.toString());
+            core.setOutput('elapsed_time', elapsedStr);
+            core.setOutput('pass_rate', passRate.toString());
+
   monitor-and-report:
     name: Monitor PR Validation & Report Status
+    needs: collect-workflow-metrics
     runs-on: ubuntu-latest
-    if: github.event.workflow_run.event == 'pull_request'
+    if: github.event.workflow_run.event == 'pull_request' || github.event_name == 'workflow_dispatch'
     
     steps:
       - name: Checkout code
