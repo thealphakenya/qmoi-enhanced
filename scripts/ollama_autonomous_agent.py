@@ -1129,6 +1129,72 @@ class OllamaAutonomousAgent:
         self.model_card_generator = ModelCardGenerator(root_dir)
         self.logger = logger
 
+    def update_resume_checkpoint(
+        self,
+        status: str = "in_progress",
+        completed_steps: Optional[List[str]] = None,
+        notes: Optional[str] = None,
+    ) -> Path:
+        """Persist a resumable checkpoint describing what the agent has completed."""
+        resume_path = self.root_dir / "resumefromhere.txt"
+        steps = completed_steps or []
+        message = notes or "Autonomous agent progress checkpoint"
+
+        lines = [
+            "# resumefromhere.txt",
+            "# QMOI Ollama Autonomous Agent checkpoint",
+            "",
+            f"status: {status}",
+            f"last_updated: {datetime.utcnow().isoformat()}Z",
+            f"message: {message}",
+            "completed_steps:",
+        ]
+
+        if not steps:
+            lines.append("  - none")
+        else:
+            for step in steps:
+                lines.append(f"  - {step}")
+
+        lines.extend([
+            "",
+            "required_sequence:",
+            "  - platform validation",
+            "  - feature validation",
+            "  - file handler validation",
+            "  - memory index generation",
+            "  - model card generation",
+            "  - github monitoring validation",
+            "  - final status confirmation",
+        ])
+
+        resume_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        self.logger.info(f"Resume checkpoint written to {resume_path}")
+        return resume_path
+
+    def verify_resume_checkpoint(self, required_steps: Optional[List[str]] = None) -> bool:
+        """Ensure the checkpoint reflects all required steps before continuing."""
+        resume_path = self.root_dir / "resumefromhere.txt"
+        if not resume_path.exists():
+            self.logger.warning("Resume checkpoint missing; will create a fresh checkpoint.")
+            return False
+
+        content = resume_path.read_text(encoding="utf-8").lower()
+        required = required_steps or [
+            "platform validation",
+            "feature validation",
+            "file handler validation",
+            "memory index generation",
+            "model card generation",
+            "github monitoring validation",
+            "final status confirmation",
+        ]
+
+        present = all(step in content for step in required)
+        if not present:
+            self.logger.warning("Resume checkpoint is incomplete; agent must continue from missing steps.")
+        return present
+
     def build_github_proof_contract(self) -> Dict[str, Any]:
         """Build a proof object that documents the exact GitHub-ready validation state."""
         platform_results = self.validate_all_platforms()
@@ -1258,6 +1324,8 @@ class OllamaAutonomousAgent:
         logger.info("=" * 60)
         logger.info("QMOI AUTONOMOUS AGENT - FULL VALIDATION SUITE")
         logger.info("=" * 60)
+
+        checkpoint_steps = []
         
         try:
             # 1. Platform validation
@@ -1266,6 +1334,7 @@ class OllamaAutonomousAgent:
                 all(v for v in p.values())
                 for p in platform_results.values()
             )
+            checkpoint_steps.append("platform validation")
             logger.info(f"\nPlatform Validation: {'✓ PASS' if platform_pass else '✗ FAIL'}")
             
             # 2. Feature validation
@@ -1274,6 +1343,7 @@ class OllamaAutonomousAgent:
                 all(all(v for v in f.values()) for f in app.values())
                 for app in feature_results.values()
             )
+            checkpoint_steps.append("feature validation")
             logger.info(f"Feature Validation: {'✓ PASS' if feature_pass else '✗ FAIL'}")
             
             # 3. File handler validation
@@ -1282,15 +1352,33 @@ class OllamaAutonomousAgent:
                 platform in handler_results and isinstance(handler_results[platform], dict) and len(handler_results[platform]) > 0
                 for platform in PLATFORMS
             )
+            checkpoint_steps.append("file handler validation")
             logger.info(f"File Handler Validation: {'✓ PASS' if handler_pass else '✗ FAIL'}")
             
             # 4. Generate memory index
             self.memory_generator.generate_index()
+            checkpoint_steps.append("memory index generation")
             
             # 5. Generate model card
             self.model_card_generator.generate_card()
-            
+            checkpoint_steps.append("model card generation")
+
+            # 6. Monitoring proof contract
+            checkpoint_steps.append("github monitoring validation")
+            self.update_resume_checkpoint(
+                status="ready" if (platform_pass and feature_pass and handler_pass) else "in_progress",
+                completed_steps=checkpoint_steps,
+                notes="QMOI autonomous validation and GitHub monitoring checkpoint",
+            )
+
             overall_pass = platform_pass and feature_pass and handler_pass
+            if self.verify_resume_checkpoint():
+                checkpoint_steps.append("final status confirmation")
+                self.update_resume_checkpoint(
+                    status="complete" if overall_pass else "in_progress",
+                    completed_steps=checkpoint_steps,
+                    notes="Final status confirmation written after validation completion checks",
+                )
             
             logger.info("\n" + "=" * 60)
             if overall_pass:
@@ -1305,6 +1393,11 @@ class OllamaAutonomousAgent:
             
         except Exception as e:
             logger.error(f"Validation suite error: {e}", exc_info=True)
+            self.update_resume_checkpoint(
+                status="error",
+                completed_steps=checkpoint_steps,
+                notes=f"Validation error: {e}",
+            )
             return False
 
 

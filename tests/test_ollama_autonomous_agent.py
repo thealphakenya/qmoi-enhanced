@@ -379,6 +379,33 @@ class TestGitHubTokenConfiguration:
         assert "pytest" in content
 
 
+class TestResumeCheckpoint:
+    """Tests for the resumable state contract after each validation cycle."""
+
+    def test_resume_checkpoint_records_progress_and_checks(self, tmp_path):
+        """The agent should always write a resumable checkpoint with the work performed."""
+        agent = OllamaAutonomousAgent(tmp_path)
+        resume_path = agent.update_resume_checkpoint(
+            status="ready",
+            completed_steps=["platform validation", "feature validation", "github monitoring"],
+        )
+
+        assert resume_path.exists()
+        content = resume_path.read_text()
+        assert "resumefromhere" in content.lower()
+        assert "platform validation" in content.lower()
+        assert "feature validation" in content.lower()
+        assert "github monitoring" in content.lower()
+
+    def test_autonomous_agent_trigger_workflow_exists(self):
+        """A successful validation run should automatically trigger the autonomous agent."""
+        workflow_path = Path(__file__).resolve().parent.parent / ".github" / "workflows" / "ollama-autonomous-agent.yml"
+        assert workflow_path.exists()
+        content = workflow_path.read_text()
+        assert "workflow_run" in content
+        assert "validate-all" in content or "ollama_autonomous_agent.py" in content
+
+
 class TestBranchSyncManager:
     """Tests for branch sync automation across the supported repo set."""
 

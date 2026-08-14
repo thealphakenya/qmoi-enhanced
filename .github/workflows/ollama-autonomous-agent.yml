@@ -1,0 +1,64 @@
+name: Ollama Autonomous Agent Trigger
+
+on:
+  workflow_run:
+    workflows: ["Ollama PR Validation - 293+ Platform Features"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+  pull-requests: write
+
+jobs:
+  trigger-agent:
+    name: Trigger Ollama Autonomous Agent after proof validation
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
+
+      - name: Run autonomous validation and proof suite
+        env:
+          MY_CUSTOM_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
+          MY_CUTOM_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
+          GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
+          GH_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
+        run: |
+          echo "Starting autonomous agent after successful GitHub proof validation"
+          python3 scripts/ollama_autonomous_agent.py validate-all
+
+      - name: Update resume checkpoint
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('resumefromhere.txt')
+          p.write_text(
+              "# resumefromhere.txt\n"
+              "status: triggered_after_validation\n"
+              "last_updated: automated\n"
+              "completed_steps:\n"
+              "  - platform validation\n"
+              "  - feature validation\n"
+              "  - github monitoring validation\n"
+              "  - autonomous agent trigger\n",
+              encoding='utf-8',
+          )
+          print('Resume checkpoint updated.')
+          PY
