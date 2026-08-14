@@ -837,6 +837,77 @@ Apps available on:
         logger.info("Model card generated successfully")
 
 
+def resolve_github_token() -> Optional[str]:
+    """Resolve GitHub auth token without hardcoding secrets.
+
+    Order of precedence:
+    1. MY_CUSTOM_TOKEN
+    2. MY_CUTOM_TOKEN (legacy/alias)
+    3. GITHUB_TOKEN
+    4. GH_TOKEN
+    5. GitHub CLI auth token
+    """
+    for key in ("MY_CUSTOM_TOKEN", "MY_CUTOM_TOKEN", "GITHUB_TOKEN", "GH_TOKEN"):
+        value = os.environ.get(key, "").strip()
+        if value:
+            return value
+
+    try:
+        result = subprocess.run(
+            ["gh", "auth", "token"],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        token = result.stdout.strip()
+        if token and result.returncode == 0:
+            return token
+    except Exception:
+        pass
+
+    return None
+
+
+def mask_github_token(token: Optional[str]) -> Optional[str]:
+    """Return a safe masked token for logs and status output."""
+    if not token:
+        return None
+    token = token.strip()
+    if len(token) <= 8:
+        return "*" * len(token)
+    return f"{token[:4]}...{token[-4:]}"
+
+
+class BranchSyncManager:
+    """Tracks the branch sync contract for protected automation paths."""
+
+    DEFAULT_BRANCH = "main"
+    BACKUP_BRANCH = "autosync-backup"
+    TARGET_REPOSITORIES = [
+        "thealphakenya/qmoi-enhanced",
+        "thealphakenya/Alpha-Q-ai",
+    ]
+
+    @classmethod
+    def required_branches(cls) -> List[str]:
+        return [cls.DEFAULT_BRANCH, cls.BACKUP_BRANCH]
+
+    @classmethod
+    def sync_targets(cls) -> List[str]:
+        return list(cls.TARGET_REPOSITORIES)
+
+    @classmethod
+    def build_sync_plan(cls) -> Dict[str, Any]:
+        return {
+            "default_branch": cls.DEFAULT_BRANCH,
+            "backup_branch": cls.BACKUP_BRANCH,
+            "branches": cls.required_branches(),
+            "repositories": cls.sync_targets(),
+            "strategy": "merge main into autosync-backup and mirror the latest validated branch state",
+            "monitoring": "workflow_dispatch + scheduled GitHub Actions run",
+        }
+
+
 class WorkflowNormalizer:
     """Normalizes workflow YAML indentation to prevent drift."""
     
@@ -853,25 +924,16 @@ class WorkflowNormalizer:
             if not line.strip():
                 normalized_lines.append('')
                 continue
-            
-            # Count leading spaces
-            leading_spaces = len(line) - len(line.lstrip())
-            
-            # Convert all indentation to 2-space multiples
-            if leading_spaces > 0:
-                # Determine indentation level
-                indent_level = leading_spaces // 4  # Assume 4-space base
-                if leading_spaces % 4 != 0:
-                    # Handle mixed indentation
-                    indent_level = leading_spaces // 2 // 2
-                
-                # Convert to 2-space indentation
-                normalized_indent = '  ' * indent_level
-                normalized_line = normalized_indent + line.lstrip()
-            else:
-                normalized_line = line
-            
-            normalized_lines.append(normalized_line)
+
+            stripped = line.lstrip(' ')
+            leading_spaces = len(line) - len(stripped)
+
+            if leading_spaces == 0:
+                normalized_lines.append(line)
+                continue
+
+            target_indent = ' ' * max(0, (leading_spaces + 1) // 2)
+            normalized_lines.append(target_indent + stripped)
         
         return '\n'.join(normalized_lines)
 

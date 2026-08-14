@@ -13,6 +13,11 @@ on:
     # Check workflow status every 5 minutes while PR is open
     - cron: '*/5 * * * *'
 
+permissions:
+  actions: read
+  contents: read
+  pull-requests: write
+
 jobs:
   track-status:
     name: Track & Report Workflow Status
@@ -80,7 +85,7 @@ jobs:
       - name: Comment on PR
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
           script: |
             // Find PR associated with workflow run
             const { data: pullRequests } = await github.rest.pulls.list({

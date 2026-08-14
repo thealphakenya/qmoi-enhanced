@@ -3,10 +3,12 @@ name: Auto-merge automated proposals
 on:
   pull_request_target:
     types:
-    - opened
-    - edited
-    - reopened
-    - synchronize
+      - opened
+      - edited
+      - reopened
+      - synchronize
+  workflow_dispatch: {}
+
 permissions:
   actions: write
   contents: write
@@ -22,7 +24,7 @@ jobs:
     steps:
     - name: Enable auto-merge via GraphQL
       env:
-        GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
         REPO: ${{ github.repository }}
         PR_NUMBER: ${{ github.event.pull_request.number }}
       run: "echo \"Querying pull request node id...\"\nQUERY='{\"query\":\"query($owner:String!,\

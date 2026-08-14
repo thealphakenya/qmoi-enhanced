@@ -42,6 +42,64 @@ DIST_DIR = ROOT_DIR / "dist"
 TESTS_DIR = ROOT_DIR / "tests"
 APPS_DIR = ROOT_DIR / "apps"
 
+
+def resolve_github_token() -> Optional[str]:
+    """Resolve a GitHub token without hardcoding secrets."""
+    for key in ("MY_CUSTOM_TOKEN", "MY_CUTOM_TOKEN", "GITHUB_TOKEN", "GH_TOKEN"):
+        value = os.environ.get(key, "").strip()
+        if value:
+            return value
+
+    try:
+        result = subprocess.run(["gh", "auth", "token"], capture_output=True, text=True, check=False)
+        if result.returncode == 0 and result.stdout.strip():
+            return result.stdout.strip()
+    except Exception:
+        pass
+
+    return None
+
+
+def mask_github_token(token: Optional[str]) -> Optional[str]:
+    """Mask a GitHub token for logs and reporting."""
+    if not token:
+        return None
+    token = token.strip()
+    if len(token) <= 8:
+        return "*" * len(token)
+    return f"{token[:4]}...{token[-4:]}"
+
+
+class BranchSyncManager:
+    """Tracks the main/autosync-backup branch contract and cross-repo sync policy."""
+
+    DEFAULT_BRANCH = "main"
+    BACKUP_BRANCH = "autosync-backup"
+    TARGET_REPOSITORIES = [
+        "thealphakenya/qmoi-enhanced",
+        "thealphakenya/Alpha-Q-ai",
+    ]
+
+    @classmethod
+    def required_branches(cls) -> List[str]:
+        return [cls.DEFAULT_BRANCH, cls.BACKUP_BRANCH]
+
+    @classmethod
+    def sync_targets(cls) -> List[str]:
+        return list(cls.TARGET_REPOSITORIES)
+
+    @classmethod
+    def build_sync_plan(cls) -> Dict[str, Any]:
+        return {
+            "default_branch": cls.DEFAULT_BRANCH,
+            "backup_branch": cls.BACKUP_BRANCH,
+            "branches": cls.required_branches(),
+            "repositories": cls.sync_targets(),
+            "strategy": "merge validated main into autosync-backup and mirror the latest state to related repositories",
+            "monitoring": "GitHub Actions workflow dispatch + scheduled monitoring",
+        }
+
+
 # Supported platforms and apps
 PLATFORMS = ["windows", "macos", "linux", "ios", "android", "web"]
 QMOI_APPS = {
