@@ -5,6 +5,7 @@ Tests all validation functions, feature checks, and platform compliance.
 """
 
 import json
+import subprocess
 import pytest
 from pathlib import Path
 import sys
@@ -30,6 +31,7 @@ from ollama_autonomous_agent import (
     resolve_github_token,
     mask_github_token,
 )
+from realtime_workflow_monitor import WorkflowMonitor
 
 
 class TestPlatformValidator:
@@ -279,6 +281,42 @@ jobs:
         assert '' in lines
 
 
+class TestWorkflowMonitor:
+    """Tests for real-time GitHub workflow monitoring behavior."""
+
+    def test_workflow_monitor_builds_health_summary(self):
+        """The monitor should compute a reliable health summary from live job data."""
+        monitor = WorkflowMonitor("123456", token="test-token")
+        monitor.jobs_snapshot = [
+            {"name": "Validate Documentation", "status": "completed", "conclusion": "success"},
+            {"name": "Validate Platform Compilation (web)", "status": "completed", "conclusion": "failure"},
+            {"name": "Validate Platform Compilation (linux)", "status": "in_progress", "conclusion": None},
+        ]
+
+        summary = monitor.build_health_summary()
+
+        assert summary["jobs_total"] == 3
+        assert summary["jobs_passed"] == 1
+        assert summary["jobs_failed"] == 1
+        assert summary["jobs_in_progress"] == 1
+        assert summary["pass_rate"] > 0
+        assert summary["reliability_score"] >= 0
+        assert "Validate Platform Compilation (web)" in summary["failed_jobs"]
+
+    def test_workflow_monitor_detects_failure_alerts(self):
+        """The monitor must identify failed jobs and raise actionable alerts."""
+        monitor = WorkflowMonitor("123456", token="test-token")
+        monitor.jobs_snapshot = [
+            {"name": "Validate Documentation", "status": "completed", "conclusion": "success"},
+            {"name": "Validate Platform Compilation (windows)", "status": "completed", "conclusion": "failure"},
+        ]
+
+        alerts = monitor.get_alerts()
+
+        assert len(alerts) >= 1
+        assert "Validate Platform Compilation (windows)" in alerts[0]
+
+
 class TestGitHubTokenConfiguration:
     """Tests for secure GitHub token resolution and masking."""
 
@@ -446,6 +484,32 @@ class TestOllamaAutonomousAgent:
         assert isinstance(results, dict)
         for platform in ["windows", "macos", "linux", "ios", "android", "web"]:
             assert platform in results
+
+
+class TestGitHubProofContract:
+    """A proof-oriented contract proving the agent will succeed in GitHub automation."""
+
+    def test_cli_full_validation_produces_success_exit(self):
+        """The real CLI validation entrypoint should succeed when the agent is ready for GitHub."""
+        repo_root = Path(__file__).resolve().parent.parent
+        result = subprocess.run(
+            [sys.executable, str(repo_root / "scripts" / "ollama_autonomous_agent.py"), "validate-all"],
+            cwd=str(repo_root),
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        assert result.returncode == 0, result.stderr or result.stdout
+
+    def test_agent_builds_github_proof_contract(self, tmp_path):
+        """The agent should produce a structured proof object covering all core GitHub automation requirements."""
+        agent = OllamaAutonomousAgent(tmp_path)
+        proof = agent.build_github_proof_contract()
+        assert proof["status"] == "ready_for_github"
+        assert proof["proof"]["platform_validation_passed"] is True
+        assert proof["proof"]["feature_validation_passed"] is True
+        assert proof["proof"]["file_handler_validation_passed"] is True
+        assert proof["branch_sync"]["owner"] == "thealphakenya"
 
 
 class TestPRSuccessContract:
