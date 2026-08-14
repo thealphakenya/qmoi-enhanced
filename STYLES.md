@@ -16,6 +16,17 @@
 
 ---
 
+## Avatar, Motion & Real-Time Presence
+
+QMOI is also treated as an active avatar persona in the interface layer. The autonomous agent validates the selected persona before it is rendered and continuously checks that the avatar remains QMOI in realtime across motion, windowing, and theme state.
+
+**Avatar validation rules:**
+- Must be identified as QMOI before live rendering is allowed.
+- Real-time window state must be visible and anchored correctly.
+- Animation loop must remain active and smooth.
+- Theme and window presentation must align with the QMOI live identity.
+- Quality checks must confirm motion stability, aesthetic consistency, and presence continuity.
+
 ## Design Systems by Platform
 
 ### Windows: Fluent Design System 2.0

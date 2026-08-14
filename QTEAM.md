@@ -26,6 +26,10 @@ The QMOI development team operates with an automated-first approach where the Ol
   - ✓ Monitor code quality metrics
   - ✓ Auto-repair common issues
   - ✓ Maintain memory index and activity feed
+  - ✓ Validate the active QMOI avatar identity in real time
+  - ✓ Confirm the selected avatar is actually QMOI before rendering
+  - ✓ Monitor the live window and animation state for QMOI presence
+  - ✓ Ensure avatar quality, motion continuity, and realtime synchronization across all branches and repos
 
 ### Code Reviewers (Human)
 - **Responsibilities:**

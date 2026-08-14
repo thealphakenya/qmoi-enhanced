@@ -22,6 +22,8 @@ from ollama_autonomous_agent import (
     ModelCardGenerator,
     WorkflowNormalizer,
     BranchSyncManager,
+    AvatarIdentityValidator,
+    AvatarWindowMonitor,
     resolve_github_token,
     mask_github_token,
 )
@@ -343,6 +345,33 @@ class TestBranchSyncManager:
         content = workflow_path.read_text()
         assert "autosync-backup" in content
         assert "Alpha-Q-ai" in content or "Alpha-Q-ai" in content
+
+
+class TestAvatarRealtimeValidation:
+    """Tests for avatar identity and live QMOI rendering."""
+
+    def test_qmoi_identity_validation_accepts_qmoi(self):
+        validator = AvatarIdentityValidator("qmoi")
+        assert validator.validate_identity() is True
+        report = validator.generate_identity_report()
+        assert report["is_qmoi"] is True
+
+    def test_qmoi_identity_validation_rejects_non_qmoi(self):
+        validator = AvatarIdentityValidator("other-avatar")
+        assert validator.validate_identity() is False
+
+    def test_avatar_window_monitor_reports_live_realtime_state(self):
+        monitor = AvatarWindowMonitor("qmoi", "QMOI")
+        snapshot = monitor.generate_animation_snapshot()
+        assert snapshot["status"] == "live"
+        assert snapshot["window"]["identity_matches_qmoi"] is True
+        assert snapshot["window"]["realtime_render"] is True
+
+    def test_branch_sync_plan_uses_thealphakenya_owner(self):
+        plan = BranchSyncManager.build_sync_plan()
+        assert plan["owner"] == "thealphakenya"
+        assert "thealphakenya/qmoi-enhanced" in plan["repositories"]
+        assert "thealphakenya/Alpha-Q-ai" in plan["repositories"]
 
 
 class TestOllamaAutonomousAgent:

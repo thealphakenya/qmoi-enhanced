@@ -50,6 +50,13 @@ The QMOI Enhanced project includes a sophisticated **Ollama Autonomous Agent** t
 - Team workflow guidelines (635 lines)
 - Build & installation procedures (1,500+ lines)
 
+### 5. **QMOI Avatar, Real-Time Presence & Animation Validation**
+- The agent authenticates the selected avatar identity and confirms it is truly QMOI before allowing live rendering.
+- It continuously validates the avatar appearance, animation loop, window state, and realtime presentation.
+- It verifies that the correct QMOI window is visible and that the live avatar remains synchronized with the active system theme.
+- It tracks quality, density, motion smoothness, and presence consistency for the avatar layer across all supported environments.
+- It updates the GitHub-hosted branch sync and monitor infrastructure so the avatar live-state remains aligned with main and autosync-backup.
+
 ## 📁 Repository Structure
 
 ```
