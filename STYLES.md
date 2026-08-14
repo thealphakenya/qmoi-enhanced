@@ -27,6 +27,13 @@ QMOI is also treated as an active avatar persona in the interface layer. The aut
 - Theme and window presentation must align with the QMOI live identity.
 - Quality checks must confirm motion stability, aesthetic consistency, and presence continuity.
 
+**Enhanced avatar-selection UI contract:**
+- All avatars should be listed in a navigable catalog with live preview metadata.
+- Each avatar preview should autoplay in sequence for a minimum of 5 seconds.
+- Users should be able to compare avatars quickly and choose the one that fits their preferred QMOI identity.
+- Voice selection should be tied to the selected avatar and should expose the enhanced QMOI voice presets.
+- The avatar window style should apply immersive glass, glow, and motion treatments to show QMOI as a full live presence in the interface.
+
 ## Design Systems by Platform
 
 ### Windows: Fluent Design System 2.0

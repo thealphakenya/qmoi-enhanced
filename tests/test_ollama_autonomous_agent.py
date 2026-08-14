@@ -24,6 +24,9 @@ from ollama_autonomous_agent import (
     BranchSyncManager,
     AvatarIdentityValidator,
     AvatarWindowMonitor,
+    AvatarSelectionNavigator,
+    VoiceProfileSelector,
+    QMOIAvatarWindowStyle,
     resolve_github_token,
     mask_github_token,
 )
@@ -348,7 +351,7 @@ class TestBranchSyncManager:
 
 
 class TestAvatarRealtimeValidation:
-    """Tests for avatar identity and live QMOI rendering."""
+    """Tests for avatar identity, custom selection, voice profiles, and live rendering."""
 
     def test_qmoi_identity_validation_accepts_qmoi(self):
         validator = AvatarIdentityValidator("qmoi")
@@ -366,6 +369,29 @@ class TestAvatarRealtimeValidation:
         assert snapshot["status"] == "live"
         assert snapshot["window"]["identity_matches_qmoi"] is True
         assert snapshot["window"]["realtime_render"] is True
+
+    def test_avatar_selection_catalog_has_autoplay_preview_clips(self):
+        navigator = AvatarSelectionNavigator("qmoi")
+        catalog = navigator.get_catalog()
+        assert len(catalog) >= 3
+        qmoi_entry = next(item for item in catalog if item["id"] == "qmoi")
+        assert qmoi_entry["autoplay"] is True
+        assert qmoi_entry["preview_seconds"] >= 5
+
+    def test_voice_profile_selector_exposes_qmoi_voice_choices(self):
+        selector = VoiceProfileSelector("qmoi")
+        profiles = selector.available_voice_profiles()
+        assert "qmoi-default" in profiles
+        assert "qmoi-guardian" in profiles
+        selection = selector.select_voice("qmoi-guardian")
+        assert selection["is_available"] is True
+
+    def test_avatar_window_style_handles_qmoi_avatar_window(self):
+        style = QMOIAvatarWindowStyle("live")
+        spec = style.build_style_spec()
+        assert spec["window_title"] == "QMOI Avatar"
+        assert spec["autoplay_preview"] is True
+        assert spec["preview_seconds_minimum"] >= 5
 
     def test_branch_sync_plan_uses_thealphakenya_owner(self):
         plan = BranchSyncManager.build_sync_plan()

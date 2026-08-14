@@ -975,6 +975,120 @@ class AvatarWindowMonitor:
         }
 
 
+class AvatarSelectionNavigator:
+    """Provides a catalog of avatars and autoplay preview clips for selection."""
+
+    AVAILABLE_AVATARS = [
+        "qmoi",
+        "aura",
+        "nova",
+        "luma",
+        "atlas",
+        "zen",
+        "echo",
+    ]
+
+    def __init__(self, selected_avatar: str = "qmoi"):
+        self.selected_avatar = selected_avatar
+
+    def get_catalog(self) -> List[Dict[str, Any]]:
+        catalog = []
+        for avatar in self.AVAILABLE_AVATARS:
+            preview_seconds = 5 if avatar == "qmoi" else 6
+            catalog.append({
+                "id": avatar,
+                "name": avatar,
+                "preview_seconds": preview_seconds,
+                "autoplay": True,
+                "loop": True,
+                "is_qmoi": AvatarIdentityValidator(avatar).validate_identity(),
+                "voice_profiles": self._voice_profiles_for_avatar(avatar),
+            })
+        return catalog
+
+    def _voice_profiles_for_avatar(self, avatar: str) -> List[str]:
+        base_profiles = ["calm", "friendly", "energetic", "professional", "narrator"]
+        if avatar == "qmoi":
+            return ["qmoi-default", "qmoi-guardian", "qmoi-oracle", *base_profiles]
+        return base_profiles
+
+    def choose_avatar(self, avatar_name: str) -> Dict[str, Any]:
+        identity = AvatarIdentityValidator(avatar_name).generate_identity_report()
+        preview = self.get_catalog()
+        selected = next((item for item in preview if item["id"] == avatar_name), preview[0])
+        return {
+            "selected_avatar": avatar_name,
+            "is_qmoi": identity["is_qmoi"],
+            "preview_seconds": max(5, selected["preview_seconds"]),
+            "autoplay": True,
+            "catalog": preview,
+            "voice_profiles": selected["voice_profiles"],
+            "window_state": AvatarWindowMonitor(avatar_name).validate_window_state(),
+        }
+
+
+class VoiceProfileSelector:
+    """Exposes voice options and QMOI voice automation controls for the user."""
+
+    def __init__(self, avatar_name: str = "qmoi"):
+        self.avatar_name = avatar_name
+
+    def available_voice_profiles(self) -> List[str]:
+        options = [
+            "qmoi-default",
+            "qmoi-guardian",
+            "qmoi-oracle",
+            "qmoi-assistant",
+            "calm",
+            "friendly",
+            "energetic",
+            "professional",
+            "narrator",
+        ]
+        if self.avatar_name != "qmoi":
+            return [profile for profile in options if "qmoi-" not in profile]
+        return options
+
+    def select_voice(self, voice_name: str) -> Dict[str, Any]:
+        available = self.available_voice_profiles()
+        valid = voice_name in available
+        return {
+            "selected_voice": voice_name,
+            "is_available": valid,
+            "avatar": self.avatar_name,
+            "enhanced_voice_controls": [
+                "voice_preview",
+                "speed_control",
+                "pitch_control",
+                "emotion_mode",
+                "language_mode",
+            ],
+        }
+
+
+class QMOIAvatarWindowStyle:
+    """Defines the enhanced window styling that presents QMOI as an avatar."""
+
+    def __init__(self, mode: str = "live"):
+        self.mode = mode
+
+    def build_style_spec(self) -> Dict[str, Any]:
+        return {
+            "window_title": "QMOI Avatar",
+            "theme": "qmoi-live",
+            "background": "glass-dark",
+            "panel_style": "floating-immersive",
+            "border_radius": 24,
+            "elevation": "soft-glow",
+            "show_avatar_name": True,
+            "show_voice_indicator": True,
+            "motion_mode": self.mode,
+            "animation_layers": ["idle", "blink", "speech", "ambient-glow"],
+            "autoplay_preview": True,
+            "preview_seconds_minimum": 5,
+        }
+
+
 class WorkflowNormalizer:
     """Normalizes workflow YAML indentation to prevent drift."""
     

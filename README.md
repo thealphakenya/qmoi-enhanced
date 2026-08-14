@@ -56,6 +56,9 @@ The QMOI Enhanced project includes a sophisticated **Ollama Autonomous Agent** t
 - It verifies that the correct QMOI window is visible and that the live avatar remains synchronized with the active system theme.
 - It tracks quality, density, motion smoothness, and presence consistency for the avatar layer across all supported environments.
 - It updates the GitHub-hosted branch sync and monitor infrastructure so the avatar live-state remains aligned with main and autosync-backup.
+- It enhances the full avatar selection system so users can browse a richer catalog of avatars, compare enhanced previews, and choose the best QMOI persona with autoplay preview clips of at least 5 seconds.
+- It validates the voice profile choices tied to QMOI and extends the automation so the selected avatar, voice, and visual style remain synchronized and easy to navigate.
+- It strengthens the UI presentation layer so the avatar window, styles, and live preview experience are built as a complete QMOI identity environment instead of a single static render.
 
 ## 📁 Repository Structure
 

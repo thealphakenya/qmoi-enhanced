@@ -30,6 +30,10 @@ The QMOI development team operates with an automated-first approach where the Ol
   - ✓ Confirm the selected avatar is actually QMOI before rendering
   - ✓ Monitor the live window and animation state for QMOI presence
   - ✓ Ensure avatar quality, motion continuity, and realtime synchronization across all branches and repos
+  - ✓ Catalogue each avatar with autoplay preview clips and compareable selector metadata
+  - ✓ Enhance voice selection automation for the chosen QMOI persona and voice profile
+  - ✓ Strengthen the full UI flow for avatar browsing, previewing, and final choice confirmation
+  - ✓ Ensure the style system presents QMOI as an immersive avatar window instead of a flat static panel
 
 ### Code Reviewers (Human)
 - **Responsibilities:**
