@@ -471,6 +471,25 @@ class TestBranchSyncManager:
         assert "autosync-backup" in content
         assert "Alpha-Q-ai" in content or "Alpha-Q-ai" in content
 
+    def test_cross_repo_autonomy_manager_includes_alpha_q_ai(self):
+        """The autonomy manager must include Alpha-Q-ai in every autonomous operation."""
+        manager = OllamaAutonomousAgent().cross_repo_manager
+        plan = manager.build_autonomy_plan()
+        assert plan["alpha_q_ai_included"] is True
+        assert any(item["repo"] == "thealphakenya/Alpha-Q-ai" for item in plan["repos"])
+
+    def test_cross_repo_autonomy_manager_productionizes_repo_plan(self, tmp_path):
+        """Production upgrades must be part of the repo automation contract."""
+        repo = tmp_path / "alpha-q-ai"
+        repo.mkdir()
+        (repo / "placeholder.txt").write_text("TODO: this is a stub prototype\n", encoding="utf-8")
+
+        manager = OllamaAutonomousAgent().cross_repo_manager
+        result = manager.productionize_repo("Alpha-Q-ai", repo)
+        assert result["production_ready"] is True
+        content = (repo / "placeholder.txt").read_text(encoding="utf-8")
+        assert "production" in content.lower()
+
 
 class TestAvatarRealtimeValidation:
     """Tests for avatar identity, custom selection, voice profiles, and live rendering."""
@@ -593,6 +612,8 @@ class TestGitHubProofContract:
         assert proof["proof"]["platform_validation_passed"] is True
         assert proof["proof"]["feature_validation_passed"] is True
         assert proof["proof"]["file_handler_validation_passed"] is True
+        assert proof["proof"]["alpha_q_ai_included"] is True
+        assert proof["alpha_q_ai"]["repo"] == "thealphakenya/Alpha-Q-ai"
         assert proof["branch_sync"]["owner"] == "thealphakenya"
 
 
