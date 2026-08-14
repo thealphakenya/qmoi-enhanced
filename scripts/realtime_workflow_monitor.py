@@ -107,22 +107,34 @@ class WorkflowMonitor:
         os.environ['MY_CUSTOM_TOKEN'] = self.token
     
     def _run_gh_command(self, cmd: str) -> Dict[str, Any]:
-        """Execute gh CLI command and return parsed JSON"""
-        try:
-            full_cmd = f"GH_PAGER=cat gh {cmd}"
-            result = subprocess.run(
-                full_cmd,
-                shell=True,
-                capture_output=True,
-                text=True,
-                timeout=30
-            )
-            if result.returncode == 0 and result.stdout.strip():
-                return json.loads(result.stdout)
-            return {}
-        except Exception as e:
-            print(f"{Colors.RED}Error running gh command: {e}{Colors.RESET}")
-            return {}
+        """Execute gh CLI command and return parsed JSON with retry/backoff for transient failures."""
+        last_error = None
+        for attempt in range(1, 4):
+            try:
+                full_cmd = f"GH_PAGER=cat gh {cmd}"
+                result = subprocess.run(
+                    full_cmd,
+                    shell=True,
+                    capture_output=True,
+                    text=True,
+                    timeout=30
+                )
+                if result.returncode == 0 and result.stdout.strip():
+                    try:
+                        return json.loads(result.stdout)
+                    except json.JSONDecodeError:
+                        last_error = f"JSON decode failed on attempt {attempt}: {result.stdout[:200]}"
+                else:
+                    last_error = f"gh command returned code {result.returncode}: {result.stderr.strip() or result.stdout.strip()}"
+            except Exception as e:
+                last_error = f"Error running gh command: {e}"
+
+            if attempt < 3:
+                time.sleep(2 * attempt)
+
+        if last_error:
+            print(f"{Colors.YELLOW}⚠️ {last_error}{Colors.RESET}")
+        return {}
     
     def get_run_status(self) -> Dict[str, Any]:
         """Fetch current run status from GitHub"""

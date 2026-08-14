@@ -33,90 +33,106 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            // Get latest workflow run for PR validation
-            const runs = await github.rest.actions.listWorkflowRuns({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'ollama-pr-validation.yml',
-              status: 'in_progress',
-              sort: 'created',
-              direction: 'desc',
-              per_page: 10
-            });
-            
-            if (runs.data.workflow_runs.length > 0) {
-              const run = runs.data.workflow_runs[0];
-              console.log('✅ Workflow Status Tracking Active');
-              console.log('');
-              console.log('Run Details:');
-              console.log(`  Status: ${run.status}`);
-              console.log(`  Run ID: ${run.id}`);
-              console.log(`  Branch: ${run.head_branch}`);
-              console.log(`  Commit: ${run.head_commit}`);
-              console.log(`  Created: ${run.created_at}`);
-              console.log(`  URL: ${run.html_url}`);
-              console.log('');
-              console.log('✅ Workflow is running on GitHub infrastructure');
-              console.log('✅ Will complete regardless of codespace status');
+            try {
+              const runs = await github.rest.actions.listWorkflowRuns({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                workflow_id: 'ollama-pr-validation.yml',
+                status: 'in_progress',
+                sort: 'created',
+                direction: 'desc',
+                per_page: 10
+              });
+
+              if (runs.data.workflow_runs.length > 0) {
+                const run = runs.data.workflow_runs[0];
+                console.log('✅ Workflow Status Tracking Active');
+                console.log('');
+                console.log('Run Details:');
+                console.log('  Status: ' + run.status);
+                console.log('  Run ID: ' + run.id);
+                console.log('  Branch: ' + run.head_branch);
+                console.log('  Commit: ' + run.head_commit);
+                console.log('  Created: ' + run.created_at);
+                console.log('  URL: ' + run.html_url);
+                console.log('');
+                console.log('✅ Workflow is running on GitHub infrastructure');
+                console.log('✅ Will complete regardless of codespace status');
+              } else {
+                console.log('ℹ️ No in-progress workflow runs found for the validation workflow.');
+              }
+            } catch (error) {
+              console.log('⚠️ Workflow tracker could not fetch workflow status: ' + error.message);
             }
-      
+
       - name: Get workflow jobs
         uses: actions/github-script@v7
         with:
           script: |
-            // Get jobs for current workflow
-            const jobs = await github.rest.actions.listJobsForWorkflowRun({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              run_id: context.runId,
-            });
-            
-            console.log('Current Workflow Jobs:');
-            jobs.data.jobs.forEach(job => {
-              console.log(`  • ${job.name}: ${job.status}`);
-            });
+            try {
+              const jobs = await github.rest.actions.listJobsForWorkflowRun({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                run_id: context.runId,
+              });
+
+              console.log('Current Workflow Jobs:');
+              for (const job of jobs.data.jobs) {
+                console.log('  • ' + job.name + ': ' + job.status);
+              }
+            } catch (error) {
+              console.log('⚠️ Workflow tracker could not fetch jobs: ' + error.message);
+            }
 
   post-status-comment:
     name: Post Validation Status to PR
     runs-on: ubuntu-latest
     if: github.event.workflow_run.conclusion == 'success'
-    
+
     steps:
       - name: Comment on PR
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
           script: |
-            // Find PR associated with workflow run
-            const { data: pullRequests } = await github.rest.pulls.list({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open',
-              head: context.payload.workflow_run.head_branch
-            });
-            
-            if (pullRequests.length === 0) return;
-            
-            const pr = pullRequests[0];
-            const comment = `## ✅ Ollama Validation Complete
+            try {
+              const { data: pullRequests } = await github.rest.pulls.list({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'open',
+                head: context.payload.workflow_run.head_branch
+              });
 
-**Status:** All checks passed
+              if (pullRequests.length === 0) {
+                console.log('ℹ️ No open PR found for the successful workflow run.');
+                return;
+              }
 
-### Validation Results
-- ✅ Platform Compilation (6 platforms)
-- ✅ Platform-Specific Features (293+ features)
-- ✅ Test Suite (40+ tests)
-- ✅ Documentation (verified)
-- ✅ Final Status Check (passed)
+              const pr = pullRequests[0];
+              const comment = [
+                '## ✅ Ollama Validation Complete',
+                '',
+                '**Status:** All checks passed',
+                '',
+                '### Validation Results',
+                '- ✅ Platform Compilation (6 platforms)',
+                '- ✅ Platform-Specific Features (293+ features)',
+                '- ✅ Test Suite (40+ tests)',
+                '- ✅ Documentation (verified)',
+                '- ✅ Final Status Check (passed)',
+                '',
+                '**Ready for merge!** This PR has passed all automated validations.',
+                '',
+                '---',
+                '*Automated validation via GitHub Actions - runs independently on GitHub infrastructure*'
+              ].join('\n');
 
-**Ready for merge!** This PR has passed all automated validations.
-
----
-*Automated validation via GitHub Actions - runs independently on GitHub infrastructure*`;
-            
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: pr.number,
-              body: comment
-            });
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                body: comment
+              });
+            } catch (error) {
+              console.log('⚠️ Could not post status comment: ' + error.message);
+            }
