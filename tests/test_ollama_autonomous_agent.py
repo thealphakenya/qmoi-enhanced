@@ -382,6 +382,22 @@ class TestWorkflowMonitor:
 
         assert monitor.monitor_once() is True
 
+    def test_workflow_monitor_uses_valid_gh_run_fields(self, monkeypatch):
+        """The API request must not use invalid GitHub JSON field names."""
+        monitor = WorkflowMonitor("123456", token="test-token")
+        calls = []
+
+        def fake_gh_command(cmd):
+            calls.append(cmd)
+            return {"status": "in_progress", "conclusion": None, "jobs": []}
+
+        monkeypatch.setattr(monitor, "_run_gh_command", fake_gh_command)
+        monitor.get_run_status()
+
+        issued = "".join(calls)
+        assert "runNumber" not in issued
+        assert "number" in issued
+
 
 class TestGitHubTokenConfiguration:
     """Tests for secure GitHub token resolution and masking."""

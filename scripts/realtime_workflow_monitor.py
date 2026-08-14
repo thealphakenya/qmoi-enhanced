@@ -137,11 +137,17 @@ class WorkflowMonitor:
         return {}
     
     def get_run_status(self) -> Dict[str, Any]:
-        """Fetch current run status from GitHub"""
+        """Fetch current run status from GitHub."""
+        # gh run view supports fields like number, status, conclusion, jobs, etc.
+        # runNumber is not a valid field name for gh JSON output; using it causes the
+        # GitHub CLI to exit with code 1 and triggers the monitor's "Failed to fetch run status" path.
         cmd = f"run view {self.run_id} --repo {self.repo} --json " \
               f"databaseId,displayTitle,status,conclusion,headBranch,createdAt," \
-              f"updatedAt,startedAt,url,headSha,runNumber,event,jobs"
-        return self._run_gh_command(cmd)
+              f"updatedAt,startedAt,url,headSha,number,event,jobs,name"
+        data = self._run_gh_command(cmd)
+        if not isinstance(data, dict):
+            return {}
+        return data
     
     def get_job_logs(self, job_id: str) -> str:
         """Fetch logs for a specific job"""
@@ -447,14 +453,14 @@ class WorkflowMonitor:
     
     def monitor_once(self) -> bool:
         """
-        Perform one monitoring cycle and return True if still running, False if complete
+        Perform one monitoring cycle and return True if still running, False if complete.
         """
         data = self.get_run_status()
-        
+
         if not data:
-            print(f"{Colors.RED}Failed to fetch run status{Colors.RESET}")
+            print(f"{Colors.RED}Failed to fetch run status from GitHub API. The run may still be starting or the CLI response may be temporarily empty.{Colors.RESET}")
             return True
-        
+
         self.current_status = data.get('status', 'unknown')
         self.current_conclusion = data.get('conclusion', '')
         self.jobs_snapshot = data.get('jobs', []) or []
