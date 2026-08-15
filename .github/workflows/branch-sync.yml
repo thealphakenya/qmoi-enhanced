@@ -210,6 +210,9 @@ jobs:
               "HEAD:${SOURCE_BACKUP_BRANCH}" \
               --force
 
+            # Immediately update local ref cache to prevent stale verification errors
+            git update-ref "refs/remotes/origin/${SOURCE_BACKUP_BRANCH}" "${MAIN_SHA}"
+
             echo "✅ Source autosync-backup synchronized."
 
           else
@@ -293,6 +296,11 @@ jobs:
             alpha-q-ai \
             "origin/${SOURCE_MAIN_BRANCH}:${TARGET_BACKUP_BRANCH}" \
             --force
+
+          # Immediately update local target remote ref cache
+          MAIN_SHA="$(git rev-parse "origin/${SOURCE_MAIN_BRANCH}")"
+          git update-ref "refs/remotes/alpha-q-ai/${TARGET_BACKUP_BRANCH}" "${MAIN_SHA}"
+          git update-ref "refs/remotes/alpha-q-ai/${TARGET_MAIN_BRANCH}" "${MAIN_SHA}"
 
           echo "✅ Alpha-Q-ai/autosync-backup synchronized."
 
